@@ -1,0 +1,11 @@
+// retrieve color from $colors map ie. `set-color(base, primary)`
+
+@function set-color($color-name, $color-variant:null) {
+  // color variant is optional
+  @if ($color-variant != null) {
+    // map inception
+    @return map-get(map-get($vf-colors-map, $color-name), $color-variant);
+  } @else {
+    @return map-get($vf-colors-map, $color-name);
+  }
+}

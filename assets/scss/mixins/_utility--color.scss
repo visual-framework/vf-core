@@ -1,0 +1,9 @@
+@mixin color-modifiers($attribute: 'color', $prefix: '-') {
+
+  @each $name, $hex in $vf-colors-map {
+    $name: str-replace($name, 10);
+    &#{$prefix}#{$name} {
+      #{$attribute}: $hex;
+    }
+  }
+}

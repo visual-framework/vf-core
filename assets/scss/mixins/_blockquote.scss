@@ -1,0 +1,15 @@
+@mixin blockquote() {
+  @include set-type(body--l);
+  margin: 0;
+  padding: 10px 8px 10px 32px;
+  position: relative;
+
+  &::before {
+    content: '';
+    border-left: 4px solid map-get($vf-colors-map, vf-color-gray-bright);
+    position: absolute;
+    left: 12px;
+    height: 100%;
+    top: 0;
+  }
+}

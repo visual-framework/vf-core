@@ -1,0 +1,60 @@
+{% extends "layouts/doc.nunj"%}
+{% import "macros/status.nunj" as status %}
+
+{% set pathParam = request.params.path %}
+{% set doc = frctl.docs.find('path', pathParam | default('')) %}
+
+{% if pathParam and not doc %}{{ throw(404, 'Page not found') }}{% endif %}
+
+{% set page = {
+    title: doc.title | default('Patterns overview') | default(frctl.get('project.title')) | default('Welcome to your component library')
+} %}
+
+{% set status = status.tag(doc.status) %}
+
+{% block docContent %}
+
+<div class="pattern-library-notes">
+
+{% asyncEach item in frctl.docs %}
+  <ul>
+  {% asyncEach menuitem in item %}
+    {% if item.name == doc.path %}
+      {% if menuitem.isIndex != true %}
+        <li>
+          <a href="{{ path( (menuitem | url), request ) }}">{{ menuitem.title }}</a>
+
+        </li>
+        {#
+        {{ menuitem | dump(2) }}
+        #}
+      {% endif %}
+    {% endif %}
+  {% endeach %}
+  </ul>
+{% endeach %}
+
+{#
+<nav class="Navigation">
+    {% include 'partials/navigation/docs.nunj' %}
+</nav>
+#}
+
+
+
+{% block pageContent %}
+{% import "macros/errors.nunj" as errors %}
+{% if doc %}
+    {% set contents = doc.render(null, renderEnv) | async(true) %}
+    {% if contents | isError %}
+    {{ errors.renderError('page', contents.message) }}
+    {% else %}
+    {{ contents }}
+    {% endif %}
+{% else %}
+{% include 'partials/content/overview.nunj' %}
+{% endif %}
+{% endblock %}
+</div>
+
+{% endblock %}

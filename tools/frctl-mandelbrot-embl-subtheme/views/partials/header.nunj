@@ -1,0 +1,47 @@
+<header class="vf-header">
+  <div class="vf-global-header">
+  <a href="http://www.embl.de" class="vf-logo">
+    <img src="../../assets/elements/vf-logo/assets/logo.png" alt="European Molecular Biology Laboratory Home">
+  </a>
+
+  </div>
+
+  <div class="vf-masthead vf-masthead--with-title-block | embl-grid embl-grid--with-sidebar" style="background-image: url('{{ path('/assets/blocks/vf-masthead/assets/group-bg.png') }}')">
+    <div class="vf-masthead__title">
+      <div class="vf-masthead__title-inner">
+        <h1 class="vf-masthead__heading">
+          <a href="http://dev.beta.embl.org/guidelines/visual-framework" class="Header-title" data-pjax>{{ frctl.get('project.title') | default('Component Library') }}</a>
+        </h1>
+        <h2 class="vf-masthead__subheading">
+          <span class="vf-masthead__location">EMBL</span>
+          <span class="vf-masthead__group"><a href="http://dev.beta.embl.org/guidelines/">Guidelines</a></span>
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="vf-navigation vf-navigation--primary">
+    <nav class="vf-navigation">
+      <ul class="vf-navigation__list | vf-list--inline">
+        <li class="vf-navigation__item">
+          <a href="http://dev.beta.embl.org/guidelines/visual-framework/" class="vf-navigation__link">Home</a>
+        </li>
+        <li class="vf-navigation__item">
+          <a href="{{ path('/') }}" class="vf-navigation__link">The patterns</a>
+        </li>
+        {% asyncEach item in frctl.docs %}
+        {% asyncEach menuitem in item %}
+        {% if menuitem.isIndex == true %}
+        <li class="vf-navigation__item">
+          <a href="{{ path( (menuitem | url), request ) }}" class="vf-navigation__link">{{ menuitem.title }}</a>
+        </li>
+        {% endif %}
+        {% endeach %}
+        {% endeach %}
+        <li class="vf-navigation__item">
+          <a href="https://embl-vf.slack.com/messages" class="vf-navigation__link">Help!</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

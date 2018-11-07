@@ -1,0 +1,123 @@
+// vf-tags
+
+$vf-tags--primary-color--background: set-color(vf-color-azure) !default;
+$vf-tags--primary-color--border: set-color(vf-color-azure) !default;
+$vf-tags--primary-color--text: set-color(vf-color-white) !default;
+
+$vf-tags-rounded-border--radius: $vf-radius--xs !default;
+$vf-tags-pill-border--radius: $vf-radius-pill !default;
+
+$vf-tags--outline-color--background: transparent !default;
+$vf-tags--outline-color--text: set-color(vf-color-azure) !default;
+
+$vf-tags--secondary-color--background: set-color(vf-color-green) !default;
+$vf-tags--secondary-color--border: set-color(vf-color-green) !default;
+$vf-tags--secondary-color--text: set-color(vf-color-white) !default;
+
+$vf-tags--tertiary-color--background: set-color(vf-color-gray-dark) !default;
+$vf-tags--tertiary-color--border: set-color(vf-color-gray-dark) !default;
+$vf-tags--tertiary-color--text: set-color(vf-color-white) !default;
+
+
+.vf-tags {
+  @include set-type(button--r);
+
+  border: 1px solid currentColor;
+  color: inherit;
+  display: inline-flex;
+  letter-spacing: .05em;
+  padding: 4px 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.vf-tags--pill {
+  border-radius: $vf-radius-pill;
+}
+
+.vf-tags--rounded {
+  border-radius: $vf-radius--xs;
+}
+
+.vf-tags--square {
+  border: 0;
+  display: inline-block;
+  height: 12px;
+  padding: 0;
+  width: 12px;
+}
+
+.vf-tags--primary {
+  background-color: $vf-tags--primary-color--background;
+  border-color: $vf-tags--primary-color--border;
+  color: $vf-tags--primary-color--text;
+}
+
+.vf-tags--secondary {
+  background-color: $vf-tags--secondary-color--background;
+  border-color: $vf-tags--secondary-color--border;
+  color: $vf-tags--secondary-color--text;
+}
+
+.vf-tags--tertiary {
+  background-color: $vf-tags--tertiary-color--background;
+  border-color: $vf-tags--tertiary-color--border;
+  color: $vf-tags--tertiary-color--text;
+}
+
+.vf-tags--outline {
+  background-color: $vf-tags--outline-color--background;
+  color: $vf-tags--outline-color--text;
+}
+
+
+.vf-tags--square {
+  height: 12px;
+  padding: 0;
+  width: 12px;
+  position: relative;
+  margin-left: 0;
+}
+
+.Tree-entityLink {
+  align-items: center;
+  display: flex;
+}
+
+
+.Status,
+.Status-dots {
+    display: flex;
+    align-items: center;
+}
+
+.Status-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 100%;
+}
+
+.Status-dot + .Status-dot {
+    margin-left: 3px;
+}
+
+.Status-label {
+    font: normal 0.75rem/1.66667 "Open Sans", Helvetica, Arial, sans-serif;
+    display: inline-block;
+    border-radius: 2rem;
+    padding: 0.125rem 0.75rem;
+    color: white;
+    white-space: nowrap;
+}
+
+.Status-label + .Status-label {
+    margin-left: 3px;
+}
+
+.Status--labelled {
+    .Status-label {
+        margin-right: 3px;
+    }
+}

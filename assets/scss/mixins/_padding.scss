@@ -1,0 +1,43 @@
+@mixin padding--block($size1, $size2) {
+  @if $size1 == all {
+    padding-bottom: $size2;
+    padding-top: $size2;
+  }
+  @else if $size1 == top {
+    padding: $size2 0 0 0;
+  }
+  @else if $size1 == bottom {
+    padding: 0 0 $size2 0;
+  }
+  @else {
+    padding-bottom: $size2;
+    padding-top: $size1;
+  }
+}
+
+@mixin padding--inline($size1, $size2) {
+  @if $size1 == all {
+    padding-left: $size2;
+    padding-right: $size2;
+  }
+  @else if $size1 == left {
+    padding-left: 0 0 0 $size;
+  }
+  @else if $size1 == right {
+    padding-right: 0 $size2 0 0;
+  }
+  @else {
+    padding-left: $size2;
+    padding-right: $size1;
+  }
+}
+
+
+@mixin padding($size1, $size2: null, $size3: null, $size4: null) {
+  @if $size1 == all {
+    padding: $size2;
+  }
+  @else {
+    padding: $size1 $size2 $size3 $size4;
+  }
+}

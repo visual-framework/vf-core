@@ -1,0 +1,96 @@
+/*
+ *
+ * styles.css
+ * The Visual Framework kitchen sink of styles.
+ * Include this style sheet as a quick way to get *everything*,
+ * or follow the guide at github.com/visual-framework/vf-core
+ * to learn how to build custom and optimised CSS.
+ *
+ */
+$use-global-typography: true !default;
+
+@import 'variables/vf-global-variables.scss';
+@import 'variables/variables.scss';
+@import 'functions/functions.scss';
+@import 'mixins/mixins.scss';
+@import 'node-normalize-scss/normalize.scss';
+
+@import 'utilities/vf-screen-reader.scss';
+
+/* Visual Framework Utility Class Mixins */
+
+@import 'mixins/utility-mixins.scss';
+
+/* All Visual Framework Font Patterns */
+@import 'vf-font-plex-mono/vf-font-plex-mono';
+@import 'vf-font-plex-sans/vf-font-plex-sans';
+
+html, button {
+  @if $use-global-typography == true {
+    font-family: $vf-font-family-monospace;
+  }
+}
+
+/* Visual Framework content compatibility
+ * We put this first so it will have the least specificity
+ */
+@import 'vf-content/vf-content.scss';
+
+/* All Visual Framework grids */
+@import 'vf-grid/vf-grid.scss';
+@import 'vf-grid-page/vf-grid-page.scss';
+@import 'embl-grid/embl-grid.scss';
+
+
+/* All Visual Framework Elements */
+@import 'vf-heading/vf-heading.scss';
+@import 'vf-tags/vf-tags.scss';
+@import 'vf-text/vf-text.scss';
+@import 'vf-link/vf-link.scss';
+@import 'vf-logo/vf-logo.scss';
+@import 'vf-form/index.scss';
+@import 'vf-button/vf-button.scss';
+@import 'vf-figure/vf-figure.scss';
+@import 'vf-list/vf-list.scss';
+@import 'vf-blockquote/vf-blockquote.scss';
+@import 'vf-divider/vf-divider.scss';
+@import 'vf-box/vf-box.scss';
+
+
+
+
+/* All Visual Framework Blocks */
+@import 'vf-breadcrumbs/vf-breadcrumbs.scss';
+@import 'vf-factoid/vf-factoid.scss';
+@import 'vf-snippet/vf-snippet.scss';
+@import 'vf-code-example/vf-code-example.scss';
+@import 'vf-page-header/vf-page-header.scss';
+@import 'vf-link-list/vf-link-list.scss';
+@import 'vf-header/vf-header.scss';
+@import 'vf-masthead/vf-masthead.scss';
+@import 'vf-navigation/vf-navigation.scss';
+@import 'vf-job-description/vf-job-description.scss';
+@import 'vf-section-header/vf-section-header.scss';
+@import 'vf-activity-list/vf-activity-list.scss';
+@import 'vf-contact/vf-contact.scss';
+@import 'vf-news-item/vf-news-item.scss';
+@import 'vf-video/vf-video.scss';
+@import 'vf-video-teaser/vf-video-teaser.scss';
+@import 'vf-global-header/vf-global-header.scss';
+@import 'vf-tabs/vf-tabs';
+
+
+/* All Visual Framework Containers */
+
+@import 'vf-activity-group/vf-activity-group.scss';
+@import 'vf-intro/vf-intro.scss';
+
+/* All Visual Framework Utility Classes */
+@import 'vf-utility-classes/vf-utility-classes';
+
+
+/* Adds a shame.scss file for things that haven't got a
+ * place in the Visual Framework yet
+ */
+
+ @import '_shame.scss';

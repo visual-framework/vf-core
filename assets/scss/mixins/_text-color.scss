@@ -1,0 +1,21 @@
+// @function choose-contrast-color($color) {
+//   @if (lightness($color) > 50) {
+//     @return #000000; // Lighter backgorund, return dark color
+//   } @else {
+//     @return #ffffff; // Darker background, return light color
+//   }
+// }
+
+
+@mixin choose-contrast-color($n) {
+  $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
+  $light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
+
+  @if abs($color-brightness) < ($light-color/2){
+    color: white;
+  }
+
+  @else {
+    color: black;
+  }
+}

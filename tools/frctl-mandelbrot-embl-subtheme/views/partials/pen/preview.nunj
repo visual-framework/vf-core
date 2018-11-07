@@ -1,0 +1,35 @@
+<style>
+  .Pen-panel {
+    height: auto !important;
+  }
+</style>
+<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-{{ entity.id }}">
+    <div class="Preview-wrapper" data-role="resizer-disabled">
+        <div class="Preview-resizer">
+            {% if renderError -%}
+                {{ renderError }}
+            {% else %}
+             <iframe
+                class="Preview-iframe"
+                data-role="window"
+                src="{{ previewUrl }}"
+                sandbox="allow-same-origin allow-scripts allow-forms"
+
+                marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
+                onload="resizeIframe(this)"
+              >
+            </iframe>
+            {%- endif %}
+        </div>
+        <div class="Preview-handle" data-role="resize-handle"></div>
+        <div class="Preview-overlay"></div>
+    </div>
+</div>
+
+{% if entity.notes %}
+<div class="pattern-library-notes">
+{{ frctl.docs.renderString(entity.notes, renderEnv) | async }}
+</div>
+{% else %}
+<p class="Browser-isEmptyNote">There are no notes for this item.</p>
+{% endif %}

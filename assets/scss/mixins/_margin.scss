@@ -1,0 +1,43 @@
+@mixin margin--block($size1, $size2) {
+  @if $size1 == all {
+    margin-bottom: $size2;
+    margin-top: $size2;
+  }
+  @else if $size1 == top {
+    margin: $size2 0 0 0;
+  }
+  @else if $size1 == bottom {
+    margin: 0 0 $size2 0;
+  }
+  @else {
+    margin-bottom: $size2;
+    margin-top: $size1;
+  }
+}
+
+@mixin margin--inline($size1, $size2) {
+  @if $size1 == all {
+    margin-left: $size2;
+    margin-right: $size2;
+  }
+  @else if $size1 == left {
+    margin-left: 0 0 0 $size;
+  }
+  @else if $size1 == right {
+    margin-right: 0 $size2 0 0;
+  }
+  @else {
+    margin-left: $size1;
+    margin-right: $size2;
+  }
+}
+
+
+@mixin margin($size1, $size2: null, $size3: null, $size4: null) {
+  @if $size1 == all {
+    margin: $size2 $size2 $size2 $size2;
+  }
+  @else {
+    margin: $size1 $size2 $size3 $size4;
+  }
+}

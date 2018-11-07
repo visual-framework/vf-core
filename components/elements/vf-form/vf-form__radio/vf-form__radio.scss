@@ -1,0 +1,60 @@
+// vf-form__radio
+
+.vf-form__radio {
+  position: absolute; // take it out of document flow
+  opacity: 0; // hide it
+
+  & + .vf-form__label {
+    position: relative;
+    cursor: pointer;
+    color: set-color(vf-color-gray-dark);
+    padding: 0;
+  }
+
+  // Box.
+  & + .vf-form__label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: center;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 6px;
+    background: set-color(vf-color-white);
+    border: 3px solid set-color(vf-color-gray);
+    border-radius: 50%;
+  }
+
+  // Box hover
+  &:hover + .vf-form__label:before {
+    border-color: set-color(vf-color-gray-dark);
+  }
+
+  // Box focus
+  &:focus + .vf-form__label:before {
+    border-color: set-color(vf-color-gray-dark);
+  }
+
+  // Box checked
+  &:checked + .vf-form__label:before {
+    background: set-color(vf-color-azure-dark);
+    border-color: set-color(vf-color-azure-dark);
+  }
+
+  // Disabled state .vf-form__label.
+  &:disabled + .vf-form__label {
+    color: set-color(vf-color-gray-dark);
+    cursor: auto;
+  }
+
+  // Disabled box.
+  &:disabled + .vf-form__label:before {
+    box-shadow: none;
+    background: set-color(vf-color-gray);
+  }
+
+  // Checkmark. Could be replaced with an image
+  &:checked + .vf-form__label:after {
+  }
+  }

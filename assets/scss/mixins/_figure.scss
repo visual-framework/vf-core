@@ -1,0 +1,15 @@
+@mixin figure($has-caption: true) {
+  margin: 0;
+  &__image {
+    @include margin--block(bottom, 21px);
+  }
+
+  @if $has-caption == true {
+    &__caption {
+      @include set-type(body--s);
+
+      color: map-get($vf-colors-map, vf-color-gray);
+      font-style: italic;
+    }
+  }
+}

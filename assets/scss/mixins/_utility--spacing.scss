@@ -1,0 +1,37 @@
+@mixin spacing-modifiers($attribute: 'padding', $prefix: '-') {
+
+  @each $name, $hex in $vf-spacing-map {
+    $name: str-replace($name, 12);
+    &#{$prefix}#{$name} {
+      #{$attribute}: $hex;
+    }
+  }
+  $newattribute: $attribute + "-bottom";
+  @each $name, $hex in $vf-spacing-map {
+    $name: str-replace($name, 12);
+    &__bottom#{$prefix}#{$name} {
+      #{$newattribute}: $hex;
+    }
+  }
+  $newattribute: $attribute + "-top";
+  @each $name, $hex in $vf-spacing-map {
+    $name: str-replace($name, 12);
+    &__top#{$prefix}#{$name} {
+      #{$newattribute}: $hex;
+    }
+  }
+  $newattribute: $attribute + "-left";
+  @each $name, $hex in $vf-spacing-map {
+    $name: str-replace($name, 12);
+    &__left#{$prefix}#{$name} {
+      #{$newattribute}: $hex;
+    }
+  }
+  $newattribute: $attribute + "-right";
+  @each $name, $hex in $vf-spacing-map {
+    $name: str-replace($name, 12);
+    &__right#{$prefix}#{$name} {
+      #{$newattribute}: $hex;
+    }
+  }
+}

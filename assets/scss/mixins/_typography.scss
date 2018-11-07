@@ -1,0 +1,31 @@
+// mixin to generate correct font information when included into an element
+$global-font-family: $vf-typography--monospace;
+
+@mixin set-type($font-size, $global-font-family: $global-font-family) {
+  @if $global-font-family != $vf-typography--monospace {
+
+    font-family: $global-font-family;
+    $map-font-family: $vf-typography--sans-serif;
+    font-size: map-deep-get($map-font-family, $font-size, font-size);
+
+    @if map-deep-get($map-font-family, $font-size, font-weight) == 400 {
+
+    }
+    @else {
+      font-weight: map-deep-get($map-font-family, $font-size, font-weight);
+    }
+    line-height: map-deep-get($map-font-family, $font-size, line-height);
+  }
+  @else {
+
+    $map-font-family: $vf-typography--monospace;
+    font-size: map-deep-get($map-font-family, $font-size, font-size);
+    @if map-deep-get($map-font-family, $font-size, font-weight) == 400 {
+
+    }
+    @else {
+      font-weight: map-deep-get($map-font-family, $font-size, font-weight);
+    }
+    line-height: map-deep-get($map-font-family, $font-size, line-height);
+  }
+}

@@ -1,0 +1,89 @@
+{% import "macros/status.nunj" as status %}
+
+{#
+<h3>The basics</h3>
+<p>Need to build a site using the Visual Framework 2.0 for EMBL branded sites? Read these first to get started:</p>
+
+{% asyncEach item in frctl.docs %}
+  {% asyncEach menuitem in item %}
+    {% if menuitem.isIndex == true %}
+      <li>
+        <a href="{{ path('/') }}docs/{{ menuitem.path }}">{{ menuitem.title }}</a>
+      </li>
+    {% endif %}
+  {% endeach %}
+{% endeach %}
+
+<nav class="Navigation">
+    {% include 'partials/navigation/docs.nunj' %}
+</nav>
+#}
+
+<p>Here you'll find developer documentation on using patterns and creating new patterns for the Visual Framework.</p>
+
+<ol>
+  <li>Read <a href="#">the basics of the Visual Framework</a>;</li>
+  <li>Grab a boilerplate [link to come];</li>
+  <li>Browse the patterns below;</li>
+  <li>Learn <a href="#">how to create new patterns</a>;</li>
+  <li>Dive deep and make your own theme[link to come]; and</li>
+  <li><a href="https://embl-vf.slack.com/messages">Ask the community for help</a>.</li>
+</ol>
+
+<h1 class="vf-text vf-text--display-xl vf-text--invert">All the patterns</h1>
+
+{% asyncEach items in frctl.components %}
+  {% if  (items.title == 'Grids') or (items.title == 'Elements') or (items.title == 'Blocks') or (items.title == 'Containers') %}
+    <section class="embl-grid embl-grid--with-label">
+      <section data-description="label area">
+        <h4>{{ items.title }}</h4>
+        {% if items.title == 'Grids' %}
+        <p>Put stuff in columns.</p>
+        {% endif %}
+        {% if items.title == 'Elements' %}
+        <p>The micro elements of the pattern library.</p>
+        {% endif %}
+        {% if items.title == 'Blocks' %}
+        <p>Simple patterns like sections headers, galleries and so on.</p>
+        {% endif %}
+        {% if items.title == 'Containers' %}
+        <p>More complex patterns that sometimes have specific layout, like page intros, mastheads, news sections and so on.</p>
+        {% endif %}
+      </section>
+      <section data-description="pattern list">
+        <div class="vf-grid vf-grid__col-3">
+          {% set group = items %}
+          {% asyncEach items in group %}
+            <div>
+              <h5><a href="{{ path(frctl.theme.urlFromRoute('component', { handle: items.handle })) }}">{{ items.label }}</a></h5>
+            </div>
+          {% endeach %}
+        </div>
+      </section>
+    </section>
+  {% endif %}
+{% endeach %}
+
+
+{#
+{{ frctl.components|dump(2)}}
+{{ nav.tree(frctl.components, entity, request) }}
+#}
+
+{#
+
+<h3>Component statuses</h3>
+<p>Components and their variants have been given statuses reflecting their state of completion. The available statuses are listed below.</p>
+<table>
+<tr>
+    <th>Label</th>
+    <th>Description</th>
+</tr>
+{% for handle, st in frctl.get('components.statuses') %}
+<tr>
+    <td>{{ status.tag(st) }}</td>
+    <td>{{ st.description }}</td>
+</tr>
+{% endfor %}
+</table>
+#}
