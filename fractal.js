@@ -33,9 +33,7 @@ const mandelbrot = require('@frctl/mandelbrot');
 const VFTheme = mandelbrot({
   favicon: '/assets/favicon.ico',
   styles: [
-    // 'default',
-    '/css/local.css',
-    '/css/styles.css'
+    '/css/local.css'
   ],
   format: 'YAML',
   panels: ["html", "info", "resources"]

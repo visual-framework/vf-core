@@ -202,6 +202,7 @@ gulp.task('tokens:maps', () =>
 
 
 gulp.task('frctlStart', function() {
+  fractal.set('project.environment.local', 'true');
   const server = fractal.web.server({
     sync: true
   });
@@ -213,6 +214,7 @@ gulp.task('frctlStart', function() {
 });
 
 gulp.task('frctlBuild', function() {
+  fractal.set('project.environment.production', 'true');
   const builder = fractal.web.builder();
   builder.on('progress', (completed, total) =>
     logger.update(`Exported ${completed} of ${total} items`, 'info')
