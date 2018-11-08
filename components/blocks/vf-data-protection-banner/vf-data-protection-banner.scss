@@ -1,0 +1,48 @@
+// vf-data-protecion-banner
+
+// local variables
+
+$vf-data-protection-banner-column-gap: $global-grid-column-gap;
+
+$vf-data-protection-banner-color--background: set-color(vf-color-gray-dark);
+$vf-data-protection-banner-color--text: set-color(vf-color-white);
+$vf-data-protection-banner-color--link: inherit;
+
+$vf-data-protection-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
+
+
+
+.vf-data-protection-banner {
+
+  @include padding(all, $vf-data-protection-banner-padding);
+
+  align-items: center;
+  background-color: $vf-data-protection-banner-color--background;
+  bottom: 0;
+  box-sizing: border-box;
+  color: $vf-data-protection-banner-color--text;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 5150;
+
+  @media (min-width: $vf-breakpoint-r) {
+    display: grid;
+    grid-template-columns: auto max-content;
+    grid-column-gap: $vf-data-protection-banner-column-gap;
+  }
+}
+
+.vf-data-protection-banner__text {
+  max-width: 64em;
+
+  @media (min-width: $vf-breakpoint-r) {
+    margin: 0;
+  }
+  & .vf-link {
+    color: $vf-data-protection-banner-color--link;
+  }
+}
+.vf-data-protection-banner__button {
+  margin-left: auto;
+}
