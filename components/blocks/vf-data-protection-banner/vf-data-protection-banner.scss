@@ -1,0 +1,35 @@
+// vf-data-protecion-banner
+
+.vf-data-protection-banner {
+  align-items: center;
+  background-color: set-color(vf-color-gray-dark);
+  bottom: 0;
+  box-sizing: border-box;
+  color: set-color(vf-color-white);
+  grid-column: 1 / -1;
+  left: 0;
+  padding: 24px;
+  position: absolute;
+  width: 100%;
+  z-index: 5150;
+
+  @media (min-width: $vf-breakpoint-r) {
+    display: grid;
+    grid-template-columns: auto max-content;
+    grid-column-gap: 16px;
+  }
+}
+
+.vf-data-protection-banner__text {
+  max-width: 64em;
+
+  @media (min-width: $vf-breakpoint-r) {
+    margin: 0;
+  }
+  & .vf-link {
+    color: inherit;
+  }
+}
+.vf-data-protection-banner__button {
+  margin-left: auto;
+}
