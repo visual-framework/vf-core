@@ -51,7 +51,7 @@ deploy-dev:
   script:
     - for VM in ${VM_DEV}; do rsync -acv --delete-after build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH}/; done;
   only:
-    - master
+    - develop
 
 deploy-prod:
   stage: deploy
@@ -78,7 +78,7 @@ deploy-aws-dev:
   script:
     - bin/deploy-aws
   only:
-    - master
+    - develop
 
 deploy-aws-prod:
   stage: deploy
