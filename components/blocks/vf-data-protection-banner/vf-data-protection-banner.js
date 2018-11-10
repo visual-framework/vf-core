@@ -1,7 +1,7 @@
 // vf-data-protecion-banner
 
 var remove = function(){
-    this.parentNode.remove();
+    this.closest('.vf-data-protection-banner').remove();
 };
 
 var GDPRBanner = document.querySelectorAll('.vf-data-protection-banner');
