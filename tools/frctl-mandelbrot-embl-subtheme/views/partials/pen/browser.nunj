@@ -1,3 +1,15 @@
-<div class="Pen-panel Pen-info" data-role="info">
-    {% include 'partials/browser/browser.nunj' %}
+<div class="vf-body">
+  <div class="vf-grid">
+    <div class="Pen-panel Pen-info" data-role="info">
+        {% include 'partials/browser/browser.nunj' %}
+    </div>
+
+
+
+    {% if page.title != "Patterns overview" %}
+      <div class="Frame-panel Frame-panel--sidebar" data-role="sidebar">
+          {% include 'partials/navigation/navigation.nunj' %}
+      </div>
+    {% endif %}
+  </div>
 </div>
