@@ -1,7 +1,18 @@
 <div class="vf-body">
   <div class="vf-grid">
-    <div class="Pen-panel Pen-info" data-role="info">
-        {% include 'partials/browser/browser.nunj' %}
+
+    <div class="pattern-info">
+      {% if entity.notes %}
+      <div class="pattern-library-notes">
+      {{ frctl.docs.renderString(entity.notes, renderEnv) | async }}
+      </div>
+      {% else %}
+      <p class="Browser-isEmptyNote">There are no notes for this item.</p>
+      {% endif %}
+
+      <div class="Pen-panel Pen-info" data-role="info">
+          {% include 'partials/browser/browser.nunj' %}
+      </div>
     </div>
 
 
