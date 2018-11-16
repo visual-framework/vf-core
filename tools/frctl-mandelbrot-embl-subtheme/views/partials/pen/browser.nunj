@@ -1,5 +1,5 @@
 <div class="vf-body">
-  <div class="vf-grid">
+  <div class="vf-grid vf-grid__col-1">
 
     <div class="pattern-info">
       {% if entity.notes %}
@@ -15,12 +15,18 @@
       </div>
     </div>
 
-
-
     {% if page.title != "Patterns overview" %}
+
+      <div>
+      {% include 'partials/browser/pattern-list.nunj' %}
+      </div>
+
+      {#
       <div class="Frame-panel Frame-panel--sidebar" data-role="sidebar">
           {% include 'partials/navigation/navigation.nunj' %}
       </div>
+      #}
+
     {% endif %}
   </div>
 </div>

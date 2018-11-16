@@ -1,0 +1,40 @@
+{% import "macros/status.nunj" as status %}
+
+<h1 class="vf-text vf-text--display-xl vf-text--invert">All the patterns</h1>
+
+{% asyncEach items in frctl.components %}
+  {% if  (items.title == 'Grids') or (items.title == 'Elements') or (items.title == 'Blocks') or (items.title == 'Containers') %}
+    <section class="embl-grid embl-grid--with-label">
+      <section data-description="label area">
+        <h4 class="vf-text vf-text--heading-s">{{ items.title }}</h4>
+        <p class="vf-text--body vf-text--body-r">
+          {% if items.title == 'Grids' %}
+          Put stuff in columns.
+          {% endif %}
+          {% if items.title == 'Elements' %}
+          The micro elements of the pattern library.
+          {% endif %}
+          {% if items.title == 'Blocks' %}
+          Simple patterns like sections headers, galleries and so on.
+          {% endif %}
+          {% if items.title == 'Containers' %}
+          More complex patterns that sometimes have specific layout, like page intros, mastheads, news sections and so on.
+        {% endif %}
+        </p>
+      </section>
+      <section data-description="pattern list">
+        <div class="vf-grid vf-grid__col-3">
+          {% set group = items %}
+          {% asyncEach items in group %}
+            <p class="vf-text">
+              <a class="vf-link" href="{{ path(frctl.theme.urlFromRoute('component', { handle: items.handle })) }}">{{ items.label }}</a>
+              {% if items.status %}{{ status.unlabelled(items.status) }}{% endif %}
+            </p>
+          {% endeach %}
+        </div>
+      </section>
+    </section>
+    <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+  {% endif %}
+{% endeach %}
