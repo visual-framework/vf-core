@@ -1,4 +1,5 @@
-<div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-{{ entity.id }}-panel-context">
+<h3 class="vf-text vf-text--heading-r">Context</h3>
+<div class="Browser-code" data-role="tab-panel" id="browser-{{ entity.id }}-panel-context">
     <code class="Code Code--lang-{{ frctl.theme.get('format') }} vf-code-example">
         {% if not entity.isCollated or entity.isVariant or entity.variants().size == 1 %}
             {% if entity.hasContext() | async %}
