@@ -7,12 +7,23 @@
   text-decoration: none;
 }
 
-.vf-logo__text {
-  align-self: center;
-  left: 100px;
-  position: relative;
 
-  @media (max-width: 767px) {
-    display: none;
+.vf-logo--responsive {
+  min-width: 100px;
+  height: 30px;
+  display: flex;
+  background-repeat: no-repeat;
+  background-image: url('../assets/elements/vf-logo/assets/logo-small.svg');
+  background-size: auto 100%;
+}
+
+@media (min-width: 500px) {
+  .vf-logo--responsive {
+    background-image: url('../assets/elements/vf-logo/assets/logo-medium.svg');
+  }
+}
+@media (min-width: 999px) {
+  .vf-logo--responsive {
+    background-image: url('../assets/elements/vf-logo/assets/logo.svg');
   }
 }
