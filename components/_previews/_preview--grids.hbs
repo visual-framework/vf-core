@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="vf-no-js">
 <head>
-  <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
-  <title>{{ _target.title }} | EMBL Visual Framework</title>
+  <script>
+  // Detect if JS is on and swap no-js for js on the html element
+  (function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement);
+  </script>
+  <title>{{ _target.title }} | {{ _config.project.title }}</title>
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/elements/vf-favicon/assets/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/elements/vf-favicon/assets/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/elements/vf-favicon/assets/favicon-16x16.png">
-  <link rel="manifest" href="/assets/elements/vf-favicon/assets/site.webmanifest">
-  <link rel="mask-icon" href="/assets/elements/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="theme-color" content="#ffffff">
+  {{> @vf-favicon}}
 
-  <!-- If you prefer to load google fonts -->
-  {{!-- <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,500,700," rel="stylesheet"> --}}
   {{#if _config.project.environment.local }}
   <link rel="stylesheet" href="{{ path '/css/styles.css' }}">
   {{/if}}
