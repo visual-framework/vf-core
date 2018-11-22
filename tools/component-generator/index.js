@@ -28,7 +28,7 @@ module.exports = class extends Generator {
       chalk.white("https://git.VF.de/grp-stratcom/visual-framework-tooling-prototype/blob/setup/initial-installs/README.md#creating-a-new-component")
     ));
 
-    var componentType = ['elements', 'blocks', 'containers', 'grids'];
+    var componentType = ['elements', 'blocks', 'containers', 'grids', 'boilerplates'];
     var DepartmentType = ['VF Global', 'EMBL', 'EMBL-EBI'];
 
     var prompts = [{
@@ -47,7 +47,7 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'componentName',
       required: true,
-      message: 'What\'s the name of your component?',
+      message: 'What\'s the name of your component? (all lowercase, a hyphen instead of space, will be prefixed with `vf-`)',
       description: 'Component name'
     }, {
       type: 'confirm',
