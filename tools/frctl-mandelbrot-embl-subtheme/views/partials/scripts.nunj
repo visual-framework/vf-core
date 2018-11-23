@@ -2,6 +2,11 @@
 <!--
 -->
 <script src="{{ path(script) }}?cachebust={{ frctl.theme.get('version') }}"></script>
+{% if frctl.env.server %}
+<script src="{{ path('/scripts/scripts.js') }}?cachebust={{ frctl.theme.get('version') }}"></script>
+{% else %}
+<script src="https://dev.assets.emblstatic.net/vf/scripts/scripts.js?cachebust={{ frctl.theme.get('version') }}"></script>
+{% endif %}
 
 <script>
   var resizeIframeChecks = 0;
