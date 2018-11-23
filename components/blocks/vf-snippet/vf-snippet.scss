@@ -1,17 +1,14 @@
 // vf-snippet
 
 .vf-snippet {
-  margin-bottom: map-get($vf-spacing-map, vf-spacing-xxl) *2;
+  margin-bottom: map-get($vf-spacing-map, vf-spacing-xxl) * 2;
   & + & {
-    padding-top: map-get($vf-spacing-map, vf-spacing-xxl);
     border-top: 1px solid set-color(vf-color-gray);
+    padding-top: map-get($vf-spacing-map, vf-spacing-xxl);
   }
   &:last-of-type {
     margin-bottom: 0;
   }
-}
-
-.vf-snippet__heading {
 }
 
 .vf-snippet__meta {
@@ -32,8 +29,8 @@
 
 @media (min-width: 600px) {
   .vf-snippet__date {
-    position: relative;
     margin-right: 30px;
+    position: relative;
 
     &::after {
       content: ' — ';
@@ -45,12 +42,12 @@
   }
 
   .vf-snippet__author {
-    position: relative;
     margin-right: 16px;
+    position: relative;
 
     &::after {
-      content: ',';
       color: set-color(vf-color-black);
+      content: ',';
       font-family: inherit;
       font-size: inherit;
       position: absolute;
@@ -64,12 +61,10 @@
 }
 
 .vf-snippet__teaser {
-  
   &:last-of-type {
     margin: 0;
   }
 }
-
 
 .vf-snippet__read-more {
   @include margin--block(top, map-get($vf-spacing-map, vf-spacing-l));

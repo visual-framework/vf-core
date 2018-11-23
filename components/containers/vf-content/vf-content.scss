@@ -1,7 +1,6 @@
 // vf-content
 
 .vf-content {
-
   // some elements are imported again as children of .vf-content,
   // this helps resolve some issues on higher CSS specificity of elements
   // over classes
@@ -23,20 +22,22 @@
     margin: 0;
     + small {
       display: block;
-      margin-top: 22px;
       margin-bottom: 35px;
+      margin-top: 22px;
     }
   }
   h2 {
     @include set-type(heading--l);
+
     border-top: 3px solid set-color(vf-color-gray-bright);
     display: block;
-    padding-top: 13px;
-    margin-top: 0;
     margin-bottom: 39px;
+    margin-top: 0;
+    padding-top: 13px;
   }
   h3 {
     @include set-type(heading--r);
+
     display: block;
     margin: 24px 0 13px 0;
   }
@@ -76,8 +77,9 @@
     }
   }
   small {
-    display: block;
     @include set-type(body--s);
+    
+    display: block;
   }
 
   ol {
@@ -95,14 +97,11 @@
 
   code {
     background: set-color(vf-color-off-white);
-    padding-right: 3px;
     padding-left: 3px;
-
+    padding-right: 3px;
   }
 
-
   .vf-content__standfirst {
-
     font-size: 21px;
     line-height: 31px;
     margin-bottom: 46px;
