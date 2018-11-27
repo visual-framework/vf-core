@@ -40,7 +40,7 @@ const theo = require('theo')
 // Configuration
 // -----------------------------------------------------------------------------
 
-const SassInput = './assets/scss/*.scss';
+const SassInput = './assets/scss/styles.scss';
 const SassOutput = './public/css';
 const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
 
