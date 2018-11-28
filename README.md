@@ -47,6 +47,14 @@ We support the last two major releases with bug fixes and branding. New features
 
 Where's version 1.X, you ask? That's the [EMBL-EBI Visual Framework](https://github.com/ebiwd/EBI-Framework) from where this concept [originated, and evolved](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/).
 
+### Versioning of patterns
+
+Pattern versions follow the major releases for compatibility. That is:
+
+- All patterns for `v2.0` should be comptabile with eachother;
+- It is not intended to use a `vf-pattern:2.1.x` pattern with `vf-core:2.0.x`; and
+- Minor versions of packages should generally be inter-compatible to use `vf-pattern-a:2.0.12` with `vf-pattern-b:2.0.2`
+
 ### Test releases
 Testing releases will be identified in their tag, a la: `v2.0-alpha.1`, where `-alpha.1` is the tag. `-alpha`, `-beta` and `-rc` are tag suffixes.
 
