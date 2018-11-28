@@ -134,7 +134,7 @@ A core principle of the Visual Framework is simple integration into workflows. A
 
 ### Nesting
 
-Sass allows [Nesting](http://www.sitepoint.com/sass-reference/selector-nesting/) of CSS. This is a very nice feature but can be over used and abused. To stop this getting out of hand you should only nest media queries, pseudo classes and where referencing the parent makes sense (things like .no-js and modernizr classes).
+Sass allows [Nesting](http://www.sitepoint.com/sass-reference/selector-nesting/) of CSS. This is a very nice feature but can be over used and abused. To stop this getting out of hand you should only nest media queries, pseudo classes and where referencing the parent makes sense (things like .vf-no-js and modernizr classes).
 
 For example, in Sass:
 
@@ -147,7 +147,7 @@ a {
   @media (min-width: 800px) {
     font-weight: 700;
   }
-  .no-js & {
+  .vf-no-js & {
     color: blue;
   }
 }
@@ -166,7 +166,7 @@ a:hover {
     font-weight: 700;
   }
 }
-.no-js a {
+.vf-no-js a {
   color: blue;
 }
 ```

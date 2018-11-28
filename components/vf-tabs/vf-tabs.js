@@ -1,7 +1,15 @@
-(function() {
+/**
+ * Finds all tabs on a page and activates them
+ * @example vfTabs()
+ */
+function vfTabs() {
   // Get relevant elements and collections
   const tabbed = document.querySelector('.vf-tabs');
   const tabbedContent = document.querySelector('.vf-tabs-content');
+  if (!tabbed || !tabbedContent) {
+    // exit: either tabs or tabbed content not found
+    return;
+  }
   const tablist = tabbed.querySelector('.vf-tabs__list');
   const tabs = tablist.querySelectorAll('.vf-tabs__link');
   const panels = tabbedContent.querySelectorAll('[id^="vf-tabs__section"]');
@@ -36,6 +44,11 @@
     tab.setAttribute('data-tabs__item', 'tab' + (i + 1));
     tab.setAttribute('tabindex', '-1');
     tab.parentNode.setAttribute('role', 'presentation');
+
+    // Reset any active tabs from a previous JS call
+    tab.removeAttribute('aria-selected');
+    tab.setAttribute('tabindex', '-1');
+    tab.classList.remove('is-active');
 
     // Handle clicking of tabs for mouse users
     tab.addEventListener('click', e => {
@@ -76,4 +89,6 @@
   tabs[0].setAttribute('aria-selected', 'true');
   tabs[0].classList.add('is-active');
   panels[0].hidden = false;
-})();
+}
+
+vfTabs();

@@ -24,6 +24,10 @@ There are three ways that we discuss and track ideas:
 
 Why use three things? Because there is no one tool that's good for all problems and all types of stakeholders.
 
+### Contributing and branch naming
+
+[See the Contributing guide](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md)
+
 ## Versioning
 
 As not all users of the Visual Framework will be able to update to the very latest and we do not wish to hold others back, we are using a semantic versioning style of releases.
