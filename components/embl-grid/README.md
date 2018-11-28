@@ -1,8 +1,10 @@
-# EMBL Layout Containers and Grids
-
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fembl-grid.svg)](https://badge.fury.io/js/%40visual-framework%2Fembl-grid)
 
 ## About
+
+The EMBL Layout System is applied to the Container patterns. It is an asymmetrical grid of four columns. There are 3 layout options.
+
+All EMBL Layouts are single column until the viewport is 768px or more. EMBL Layouts have two classes. One to define the grid area and where it is in the Page Grid another to determine what columns there are available.
 
 ## Installation and Implementation
 
@@ -26,11 +28,7 @@ _Make sure you import any requirements along with the modules._
 }
 </style>
 
-The EMBL Layout System is applied to the Container patterns. It is an asymmetrical grid of four columns. There are 3 layout options.
-
-All EMBL Layouts are single column until the viewport is 768px or more. EMBL Layouts have two classes. One to define the grid area and where it is in the Page Grid another to determine what columns there are available.
-
-### Usage
+## Usage
 
 The CSS classnames available should be used on their own on a Container or added to a Containers exisitng classname declaration in the HTML.
 
@@ -46,11 +44,11 @@ If the EMBL Layout System is being added to a Container that has a classname we 
 
 To set up a Container so that it uses the EMBL Layout System we need to include the initial class of `.embl-grid`
 
-###### HTML
+##### HTML
 ```html
 <section class="embl-grid">...</section>
 ```
-###### Example
+##### Example
 <section class="embl-grid">
   <p>1</p>
 </section>
@@ -60,11 +58,11 @@ As the EMBL Layout System is used on Containers we cannot know what Blocks will 
 ### An EMBL Layout with Label and Sidebar
 
 
-###### HTML
+##### HTML
 ```html
 <section class="embl-grid embl-grid--labeled-with-sidebar"> ... </section>
 ```
-###### Example
+##### Example
 <section class="embl-grid embl-grid--labeled-with-sidebar">
   <p>1</p>
   <p>2</p>
@@ -75,12 +73,12 @@ As the EMBL Layout System is used on Containers we cannot know what Blocks will 
 ### An EMBL Layout with Sidebar
 
 
-###### HTML
+##### HTML
 ```html
 <section class="embl-grid embl-grid--with-sidebar"> ... </section>
 ```
 
-###### Example
+##### Example
 <section class="embl-grid embl-grid--with-sidebar">
   <p>1</p>
   <p>2</p>
@@ -88,14 +86,14 @@ As the EMBL Layout System is used on Containers we cannot know what Blocks will 
 
 ---
 
-#### An EMBL Layout with Label
+### An EMBL Layout with Label
 
-###### HTML
+##### HTML
 ```html
 <section class="embl-grid embl-grid--with-label"> ... </section>
 ```
 
-###### Example
+##### Example
 <section class="embl-grid embl-grid--with-label">
   <p>1</p>
   <p>2</p>
