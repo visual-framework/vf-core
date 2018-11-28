@@ -4,6 +4,14 @@
 
 ## About
 
+As we cannot guarantee the Blocks within the a Micro Grid and make use of the child combinator `>` and the universal selector `*` to target them.
+
+A Simple Grid is written to go from single column, to two column, to their respective column count depending on the size of the viewport.
+
+You can define the number of columns with a modifier class.
+
+***Do Not Use*** with any component that uses the `<table>` HTML element as this breaks built-in browser accessibility for screen readers etc.
+
 ## Installation and Implementation
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-grid` with this command.
@@ -27,14 +35,6 @@ _Make sure you import any requirements along with the modules._
 }
 </style>
 
-
-As we cannot guarantee the Blocks within the a Micro Grid and make use of the child combinator `>` and the universal selector `*` to target them.
-
-A Simple Grid is written to go from single column, to two column, to their respective column count depending on the size of the viewport.
-
-You can define the number of columns with a modifier class.
-
-***Do Not Use*** with any component that uses the `<table>` HTML element as this breaks built-in browser accessibility for screen readers etc.
 
 
 ### Visual Framework Grid (auto layout)
