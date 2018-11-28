@@ -39,6 +39,8 @@ build:
   cache:
     paths:
       - node_modules
+  except:
+    - /^@visual-framework\/.*$/
 
 deploy-dev:
   stage: deploy
@@ -67,6 +69,7 @@ deploy-prod:
     - tags
   except:
     - branches
+    - /^@visual-framework\/.*$/
 
 deploy-aws-dev:
   stage: deploy
@@ -93,3 +96,4 @@ deploy-aws-prod:
     - tags
   except:
     - branches
+    - /^@visual-framework\/.*$/
