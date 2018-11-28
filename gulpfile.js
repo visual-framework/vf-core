@@ -253,7 +253,6 @@ var genCss = function (option) {
     .pipe(gulp.dest(option.dir));
 };
 
-
 gulp.task('CSSGen', function(done) {
   recursive(patternPath, ['*.css'], function (err, files) {
     files.forEach(function(file) {
