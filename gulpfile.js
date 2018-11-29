@@ -40,7 +40,7 @@ const theo = require('theo')
 // Configuration
 // -----------------------------------------------------------------------------
 
-const SassInput = './assets/scss/*.scss';
+const SassInput = './assets/scss/styles.scss';
 const SassOutput = './public/css';
 const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
 
@@ -56,11 +56,7 @@ gulp.task('css', function() {
     importer: [nodeModuleImport],
     includePaths: [
       path.resolve(__dirname, 'assets/scss'),
-      path.resolve(__dirname, 'components/utilities'),
-      path.resolve(__dirname, 'components/elements'),
-      path.resolve(__dirname, 'components/blocks'),
-      path.resolve(__dirname, 'components/containers'),
-      path.resolve(__dirname, 'components/grids')
+      path.resolve(__dirname, 'components')
     ]
   };
   return gulp
@@ -167,7 +163,7 @@ ${result
 });
 
 gulp.task('tokens:typographic-scale', () =>
-  gulp.src('./design-tokens/typographic-scales/*.yml')
+  gulp.src('./components/vf-design-tokens/typographic-scales/*.yml')
     .pipe(theoG({
       transform: { type: 'web' },
       format: { type: 'typography-map' }
@@ -175,25 +171,25 @@ gulp.task('tokens:typographic-scale', () =>
     .pipe(rename(function (path) {
       path.extname = ".scss";
     }))
-    .pipe(gulp.dest('./assets/scss/variables'))
+    .pipe(gulp.dest('./components/vf-sass-config/variables'))
 )
 
 gulp.task('tokens:variables', () =>
-  gulp.src('./design-tokens/variables/*.yml')
+  gulp.src('./components/vf-design-tokens/variables/*.yml')
     .pipe(theoG({
       transform: { type: 'web' },
       format: { type: 'scss' }
     }))
-    .pipe(gulp.dest('./assets/scss/variables'))
+    .pipe(gulp.dest('./components/vf-sass-config/variables'))
 )
 
 gulp.task('tokens:maps', () =>
-  gulp.src(['./design-tokens/maps/*.yml', '!./design-tokens/typographic-scales/*.yml'])
+  gulp.src(['./components/vf-design-tokens/maps/*.yml', '!./components/vf-design-tokens/typographic-scales/*.yml'])
     .pipe(theoG({
       transform: { type: 'web' },
       format: { type: 'map.scss' }
     }))
-    .pipe(gulp.dest('./assets/scss/variables'))
+    .pipe(gulp.dest('./components/vf-sass-config/variables'))
 )
 
 // -----------------------------------------------------------------------------
@@ -252,7 +248,6 @@ var genCss = function (option) {
     .pipe(rename(file_name))
     .pipe(gulp.dest(option.dir));
 };
-
 
 gulp.task('CSSGen', function(done) {
   recursive(patternPath, ['*.css'], function (err, files) {

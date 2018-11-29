@@ -1,1 +1,0 @@
-# vf-video-teaser Pattern

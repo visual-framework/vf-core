@@ -1,1 +1,0 @@
-# Activity List Group Pattern
