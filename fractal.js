@@ -31,7 +31,7 @@ fractal.web.set('server.syncOptions', {
 const mandelbrot = require('@frctl/mandelbrot');
 
 const VFTheme = mandelbrot({
-  favicon: '/assets/favicon.ico',
+  // favicon: 'https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon.ico',
   styles: [
     '/css/local.css'
   ],
