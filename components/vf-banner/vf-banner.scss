@@ -1,0 +1,82 @@
+$vf-data-protection-banner-color--background: set-color(vf-color-gray-dark);
+$vf-color--text: set-color(vf-color-white);
+$vf-data-protection-banner-color--link: inherit;
+
+$vf-data-protection-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
+
+.vf-banner {
+  box-sizing: border-box;
+  padding: 0 12px;
+
+  .vf-tag {
+    margin-right: 16px;
+  }
+}
+
+.vf-banner--fixed {
+  display: grid;
+  left: 0;
+  grid-column: 1 / -1;
+  grid-template-columns:
+    [full-start]
+      minmax(1em, auto)
+      [main-start]
+        minmax(18em, 81.25em) // 1300px
+      [main-end]
+      minmax(1em, auto)
+    [full-end];
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 5150;
+}
+
+.vf-banner__content {
+  align-items: center;
+  align-content: center;
+
+  @media (max-width: 63.9375em) {
+    display: block; // overideing the .emlb-grid code
+  }
+
+  @media (min-width: $vf-breakpoint-l) {
+    grid-column: main;
+  }
+}
+
+.vf-banner--top {
+  top: 0;
+}
+
+.vf-banner--bottom {
+  bottom: 0;
+}
+
+.vf-banner--phase {
+  background-color: #FFFADC;
+}
+
+.vf-banner--gdpr {
+  background-color: set-color(vf-color-gray-dark);
+
+  .vf-text {
+    color: $vf-color--text;
+    margin-bottom: 24px;
+    max-width: 64em;
+
+    @media (min-width: $vf-breakpoint-l) {
+      margin: 0;
+    }
+
+    & .vf-link {
+      color: $vf-data-protection-banner-color--link;
+    }
+  }
+
+  .vf-button {
+    @media (min-width: $vf-breakpoint-l) {
+      align-self: center;
+      justify-self: end;
+    }
+  }
+}
