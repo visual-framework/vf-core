@@ -1,8 +1,11 @@
-$vf-data-protection-banner-color--background: set-color(vf-color-gray-dark);
-$vf-color--text: set-color(vf-color-white);
-$vf-data-protection-banner-color--link: inherit;
+$vf-gdpr-banner-color--background: set-color(vf-color-gray-dark);
+$vf-gdpr-banner-color--text: set-color(vf-color-white);
+$vf-gdpr-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
 
-$vf-data-protection-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
+$vf-phase-banner-color--background: #FFFADC;
+$vf-phase-banner-color--text: set-color(vf-color-gray-dark);
+
+$vf-banner-color--link: inherit;
 
 .vf-banner {
   box-sizing: border-box;
@@ -15,7 +18,6 @@ $vf-data-protection-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
 
 .vf-banner--fixed {
   display: grid;
-  left: 0;
   grid-column: 1 / -1;
   grid-template-columns:
     [full-start]
@@ -25,6 +27,7 @@ $vf-data-protection-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
       [main-end]
       minmax(1em, auto)
     [full-end];
+  left: 0;
   padding: 0;
   position: fixed;
   width: 100%;
@@ -32,8 +35,8 @@ $vf-data-protection-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
 }
 
 .vf-banner__content {
-  align-items: center;
   align-content: center;
+  align-items: center;
 
   @media (max-width: 63.9375em) {
     display: block; // overideing the .emlb-grid code
@@ -53,14 +56,27 @@ $vf-data-protection-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
 }
 
 .vf-banner--phase {
-  background-color: #FFFADC;
+  background-color: $vf-phase-banner-color--background;
+  [class*=vf-text] {
+    color: $vf-phase-banner-color--text;
+    margin: 12px 0;
+
+    & .vf-link {
+      color: $vf-banner-color--link;
+    }
+  }
+  .vf-banner__content {
+    display: flex;
+  }
 }
 
 .vf-banner--gdpr {
-  background-color: $vf-data-protection-banner-color--background;
+  @include padding--block(all, $vf-gdpr-banner-padding);
+
+  background-color: $vf-gdpr-banner-color--background;
 
   .vf-text {
-    color: $vf-color--text;
+    color: $vf-gdpr-banner-color--text;
     margin-bottom: 24px;
     max-width: 64em;
 
@@ -69,7 +85,7 @@ $vf-data-protection-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
     }
 
     & .vf-link {
-      color: $vf-data-protection-banner-color--link;
+      color: $vf-banner-color--link;
     }
   }
 
