@@ -105,17 +105,8 @@ gulp.task('linting', function(done) {
 });
 
 // -----------------------------------------------------------------------------
-// Image Tasks
+// Scripts Tasks
 // -----------------------------------------------------------------------------
-var source = './assets/images',
-destination = './public/images';
-gulp.task('watch-images', function() {
-  gulp.src(source + '/**/*', {base: source})
-  .pipe(watch(source, {base: source}))
-  .pipe(gulp.dest(destination));
-});
-
-
 gulp.task('scripts', function() {
   return gulp
   .src('./components/**/*.js')
@@ -265,8 +256,7 @@ gulp.task('CSSGen', function(done) {
 gulp.task('watch', function(done) {
   fractal.watch();
   gulp.watch('./**/*.scss', gulp.series('css')).on('change', reload);
-  gulp.watch('./assets/images', gulp.series('watch-images')).on('change', reload);
-  gulp.watch(['./assets/scripts/**/*.js','./components/**/*.js'], gulp.series('scripts')).on('change', reload);
+  gulp.watch(['./components/**/*.js'], gulp.series('scripts')).on('change', reload);
   gulp.watch('./components/**/**/assets/*', gulp.series('pattern-assets')).on('change', reload);
 });
 
