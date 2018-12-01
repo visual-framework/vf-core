@@ -235,11 +235,10 @@ var genCss = function (option) {
   return gulp.src(option.file_path)
     .pipe(sass({
       includePaths: [
-        path.resolve(__dirname, 'assets/scss/variables'),
-        path.resolve(__dirname, 'assets/scss/functions'),
-        path.resolve(__dirname, 'assets/scss/mixins'),
-        path.resolve(__dirname, 'patterns/blocks'),
-        path.resolve(__dirname, 'patterns/containers')
+        path.resolve(__dirname, 'components/vf-sass-config/variables'),
+        path.resolve(__dirname, 'components/vf-sass-config/functions'),
+        path.resolve(__dirname, 'components/vf-sass-config/mixins'),
+        path.resolve(__dirname, 'components')
       ],
       outputStyle: 'expanded'
     })
