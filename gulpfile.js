@@ -237,8 +237,7 @@ var genCss = function (option) {
       includePaths: [
         path.resolve(__dirname, 'components/vf-sass-config/variables'),
         path.resolve(__dirname, 'components/vf-sass-config/functions'),
-        path.resolve(__dirname, 'components/vf-sass-config/mixins'),
-        path.resolve(__dirname, 'components')
+        path.resolve(__dirname, 'components/vf-sass-config/mixins')
       ],
       outputStyle: 'expanded'
     })
