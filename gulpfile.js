@@ -55,6 +55,9 @@ gulp.task('css', function() {
   const opts = {
     importer: [nodeModuleImport],
     includePaths: [
+      path.resolve(__dirname, 'components/vf-sass-config/variables'),
+      path.resolve(__dirname, 'components/vf-sass-config/functions'),
+      path.resolve(__dirname, 'components/vf-sass-config/mixins'),
       path.resolve(__dirname, 'assets/scss'),
       path.resolve(__dirname, 'components')
     ]
