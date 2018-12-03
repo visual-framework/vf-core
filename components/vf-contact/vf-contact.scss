@@ -36,11 +36,11 @@
   }
 }
 
-
 .vf-contact__team {
+  --vf-contact__margin--bottom: 24px;
+  
   @include set-type(heading--r);
 
-  --vf-contact__margin--bottom: 24px;
   margin: 0 0 var(--vf-contact__margin--bottom) 0;
 }
 
@@ -54,12 +54,12 @@
 
 .vf-contact__image {
   // the image will be as large as possible unless within a smaller grid item
-  object-fit: contain;
   margin: 0 0 var(--vf-contact__margin--bottom) 0;
+  object-fit: contain;
+}
 
-  &--circle {
-    border-radius: 50%;
-  }
+.vf-contact__image--circle {
+  border-radius: 50%;
 }
 
 .vf-contact__phone-number {
@@ -74,20 +74,18 @@
 }
 
 .vf-contact__phone-number--mobile {
-
   &::after {
-    content: "(mobile)";
-    position: absolute;
+    content: '(mobile)';
     margin-left: 8px;
+    position: absolute;
   }
 }
 
 .vf-contact__email {
   @include inline-link;
+
   margin-bottom: var(--vf-contact__margin--bottom);
 }
-
-
 
 // ----------------------------------------------------------------------
 // variants
@@ -125,7 +123,7 @@
     grid-column: 2;
   }
 
- /* As the text is on the right, having a bottom margin on the last phone-number or a element causes the
+  /* As the text is on the right, having a bottom margin on the last phone-number or a element causes the
   * avatar to look misaligned, removing the maring-bottom on it fixes this.
   */
   a:last-of-type {
@@ -137,10 +135,10 @@
   }
 
   .vf-contact__image {
+    align-self: center;
     grid-column: 1;
     grid-row: 1 / -1;
     margin-bottom: 0;
     max-width: 170px;
-    align-self: center;
   }
 }

@@ -1,45 +1,40 @@
 // vf-form__select
 
-.vf-form__select {
-
-}
-
-
 .vf-form__select-container {
-  position: relative;
-  height: 61.5px;
   background: white;
+  height: 61.5px;
+  position: relative;
 
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 0;
-    height: 0;
-    right: 21px;
-    bottom: 0;
-    margin: auto;
+  &::after {
+    border-color: set-color(vf-color-gray) transparent transparent transparent;
     border-style: solid;
     border-width: 9px 9px 0 9px;
-    border-color: set-color(vf-color-gray) transparent transparent transparent;
+    bottom: 0;
+    content: '';
+    height: 0;
+    margin: auto;
     pointer-events: none;
+    position: absolute;
+    right: 21px;
+    top: 0;
+    width: 0;
   }
 
-  &:before {
-    width: 56px;
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    bottom: 1px;
+  &::before {
     border-left: 3px solid set-color(vf-color-gray);;
+    bottom: 1px;
     content: '';
     pointer-events: none;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    width: 56px;
   }
   &:hover {
-    &:after {
+    &::after {
       border-color: set-color(vf-color-black) transparent transparent transparent;
     }
-    &:before {
+    &::before {
       border-left: 3px solid set-color(vf-color-black);
     }
   }
@@ -48,30 +43,25 @@
   .vf-form__select {
     @include set-type(body--r);
 
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
+    appearance: none;
     background: transparent;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    color: set-color(vf-color-gray-dark);
-    outline: none;
-    padding-right: 35px;
-    padding-left: 15px;
+    border: none;
     border: 3px solid set-color(vf-color-gray);
-
-    // Disable default styling on ff
-    -moz-appearance: none;
+    border-radius: 0;
+    box-shadow: none;
+    color: set-color(vf-color-gray-dark);
+    cursor: pointer;
+    height: 100%;
+    outline: none;
+    padding-left: 15px;
+    padding-right: 35px;
+    width: 100%;
 
     // Disable ugly ass outline on firefox
     &:-moz-focusring {
       color: transparent;
       text-shadow: 0 0 0 set-color(vf-color-gray-black);
     }
-
-    // Disable default styling on webkit browsers
-    -webkit-appearance: none;
 
     // Disable default arrow on IE 11+
     &::-ms-expand {
@@ -89,13 +79,14 @@
 }
 
 // IE 9 only
-@media all and (min-width:0\0) and (min-resolution:.001dpcm){
+@media all and (min-width: 0\0) and (min-resolution: .001dpcm){
   .vf-form__select-container {
     .vf-form__select {
       padding-right: 0;
     }
 
-    &:after, &:before {
+    &::after,
+    &::before {
       display: none;
     }
   }

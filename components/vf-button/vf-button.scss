@@ -1,16 +1,18 @@
 // button reset
 
 .vf-button {
+  @include set-type(button--r);
+
   appearance: none;
   border: 0;
   cursor: pointer;
   display: inline-block;
   margin: 0;
+  padding: 16px 24px;
   text-decoration: none;
 
   // @include padding(all, map-get($vf-spacing-map, vf-spacing-r));
-  padding: 16px 24px;
-  @include set-type(button--r);
+
 }
 
 .vf-button--primary {
@@ -46,9 +48,10 @@
 }
 
 .vf-button--s {
+  @include set-type(button--s);
+
   padding: 12px 8px;
   // @include padding(all, map-get($vf-spacing-map, vf-spacing-s));
-  @include set-type(button--s);
 
   &.vf-button--rounded {
     border-radius: 8px;
@@ -56,13 +59,14 @@
 }
 
 .vf-button--l {
+  @include set-type(button--r);
+  
   padding: 20px 32px;
   // @include padding(all, map-get($vf-spacing-map, vf-spacing-l));
-  @include set-type(button--r);
 }
 
 
 
-[span*="Examples "] {
+[span*='Examples '] {
   display: none;
 }

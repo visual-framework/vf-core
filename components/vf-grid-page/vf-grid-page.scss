@@ -17,30 +17,23 @@
 html {
   margin: 0 1.25em;
 }
+
 .vf-body {
-  max-width: 81.25em;
   margin: 0 auto;
+  max-width: 81.25em;
 }
 
 // If the browser does support grid it will get this
-@supports(display: grid) {
+@supports (display: grid) {
   // first we need to unset some rulesets
   html {
     margin: unset;
   }
 
   .vf-body {
-    max-width: unset;
-    margin: unset;
-    // now we can write our CSS grid layout rules
     display: grid;
-    grid-template-columns:
-      [full-start]
-        minmax(1em, auto)
-        [main-start]
-          minmax(300px, 81.25em) // 1300px
-        [main-end]
-        minmax(1em, auto)
-      [full-end];
+    grid-template-columns: [full-start] minmax(1em, auto) [main-start] minmax(300px, 81.25em) [main-end] minmax(1em, auto) [full-end];
+    margin: unset;
+    max-width: unset;
   }
 }

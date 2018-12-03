@@ -1,6 +1,6 @@
 // vf-form__input
 
-.vf-form__input:not([type=file]) {
+.vf-form__input:not([type='file']) {
   @include set-type(body--r);
 
   border-color: set-color(vf-color-gray);
@@ -21,22 +21,22 @@
 }
 
 .vf-form__wrap .vf-form__label {
-  opacity: 0;
-  visibility: hidden;
+  border-radius-top-left: 3px;
   display: block;
+  line-height: 1;
+  opacity: 0;
   position: absolute;
   top: -16px;
-  line-height: 1;
-  border-radius-top-left: 3px;
   transition: all .2s ease-in-out;
+  visibility: hidden;
   z-index: 1;
 }
 
 .vf-form__form .vf-form__wrap {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   position: relative;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -65,11 +65,10 @@
 }
 
 .vf-form__form select.vf-form__select {
-  position: relative;
+  appearance: none;
   color: set-color(vf-color-gray-dark);
   cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  position: relative;
 }
 
 .vf-form__form select.vf-form__select::-ms-expand {
@@ -79,9 +78,9 @@
 .vf-form__form .vf-form__is-active input.vf-form__input,
 .vf-form__form .vf-form__is-active select.vf-form__select,
 .vf-form__form .vf-form__is-active textarea.vf-form__textarea {
-  color: #444;
   background-color: #fff;
   border-color: #dfdfdf;
+  color: #444;
 }
 
 .vf-form__form .vf-form__has-focus input.vf-form__input,
@@ -92,15 +91,15 @@
 }
 
 .vf-form__wrap .vf-form__form label.vf-form__label {
-  opacity: 0;
-  visibility: hidden;
+  border-radius-top-left: 3px;
+  color: set-color(vf-color-gray-dark);
   display: block;
+  left: 26px;
+  opacity: 0;
   position: absolute;
   top: -24px;
-  left: 26px;
-  color: set-color(vf-color-gray-dark);
-  border-radius-top-left: 3px;
-  transition: all 0.2s ease-in-out;
+  transition: all .2s ease-in-out;
+  visibility: hidden;
   z-index: 1;
 }
 
@@ -113,21 +112,21 @@
   color: set-color(vf-color-black);
 }
 
-.vf-form__form .vf-form__is-required:before {
-  opacity: 1;
+.vf-form__form .vf-form__is-required::before {
+  color: #D32F2F;
   content: '*';
   display: block;
-  position: absolute;
-  top: 1px;
-  right: 15px;
   font-size: 16px;
   line-height: 1.75;
-  color: #D32F2F;
-  transition: all 0.2s ease-in-out;
+  opacity: 1;
   padding: 6px 0 0;
+  position: absolute;
+  right: 15px;
+  top: 1px;
+  transition: all .2s ease-in-out;
   z-index: 1;
 }
 
-.vf-form__form .vf-form__is-required.vf-form__is-active:before {
+.vf-form__form .vf-form__is-required.vf-form__is-active::before {
   opacity: 0;
 }

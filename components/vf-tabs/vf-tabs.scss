@@ -6,7 +6,7 @@ $vf-tabs__list-border--color: set-color(vf-color-black) !default;
 $vf-tabs__link--is-active: (
   $vf-tabs__link-text--color: set-color(vf-color-black),
   $vf-tabs__link-background--color: set-color(vf-color-white),
-  $vf-tabs__list-border--color: set-color(vf-color-white)
+  $vf-tabs__list-border--color: set-color(vf-color-white),
 );
 
 .vf-tabs__list {
@@ -22,24 +22,25 @@ $vf-tabs__link--is-active: (
 }
 
 .vf-tabs__link {
-  outline: 0;
   background: $vf-tabs__link-background--color;
-  border: 1px solid transparent;
-  border-bottom-color: $vf-tabs__list-border--color;
+  border-color: transparent transparent $vf-tabs__list-border--color transparent;
+  border-style: solid;
+  border-width: 1px;
   color: $vf-tabs__link-text--color;
-  text-decoration: none;
+  outline: 0;
   padding: 12px 16px;
+  text-decoration: none !important;
   top: 1px;
+
   &:hover {
-    background-color: #6B6B6B;
+    background-color: #6b6b6b;
     color: $vf-tabs__link-text--color-hover;
   }
 }
 
 .vf-tabs__link.is-active {
-  background: map-get($vf-tabs__link--is-active, $vf-tabs__link-background--color);
-  border-color: $vf-tabs__list-border--color;
-  border-bottom-color: map-get($vf-tabs__link--is-active, $vf-tabs__list-border--color);
+  background: map-get( $vf-tabs__link--is-active, $vf-tabs__link-background--color );
+  border-color: $vf-tabs__list-border--color $vf-tabs__list-border--color map-get($vf-tabs__link--is-active, $vf-tabs__list-border--color) $vf-tabs__list-border--color;
   color: map-get($vf-tabs__link--is-active, $vf-tabs__link-text--color);
 }
 
@@ -47,31 +48,30 @@ $vf-tabs__link--is-active: (
   padding: 8px 16px;
 }
 
-
 @media (max-width: 550px) {
   .vf-tabs__list {
-    padding: 0;
+    border-bottom: 0;
     display: flex;
     flex-wrap: wrap;
-    border-bottom: 0;
+    padding: 0;
   }
   .vf-tabs__item {
     display: block;
-    position: static;
     flex-basis: auto; /* default value */
     flex-grow: 1;
     margin: 2px;
+    position: static;
   }
 
   .vf-tabs__link {
-    display: block;
     border-color: transparent;
+    display: block;
     top: unset;
   }
 
   .vf-tabs__link.is-active {
-    position: static;
     border-color: $vf-tabs__list-border--color;
+    position: static;
   }
   .vf-tabs__section {
     padding: 8px;

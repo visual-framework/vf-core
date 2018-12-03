@@ -19,14 +19,7 @@ $vf-banner-color--link: inherit;
 .vf-banner--fixed {
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns:
-    [full-start]
-      minmax(1em, auto)
-      [main-start]
-        minmax(18em, 81.25em) // 1300px
-      [main-end]
-      minmax(1em, auto)
-    [full-end];
+  grid-template-columns: [full-start] minmax(1em, auto) [main-start] minmax(18em, 81.25em) [main-end] minmax(1em, auto) [full-end];
   left: 0;
   padding: 0;
   position: fixed;
@@ -57,7 +50,7 @@ $vf-banner-color--link: inherit;
 
 .vf-banner--phase {
   background-color: $vf-phase-banner-color--background;
-  [class*=vf-text] {
+  [class*='vf-text'] {
     color: $vf-phase-banner-color--text;
     margin: 12px 0;
 
@@ -80,12 +73,12 @@ $vf-banner-color--link: inherit;
     margin-bottom: 24px;
     max-width: 64em;
 
-    @media (min-width: $vf-breakpoint-l) {
-      margin: 0;
-    }
-
     & .vf-link {
       color: $vf-banner-color--link;
+    }
+
+    @media (min-width: $vf-breakpoint-l) {
+      margin: 0;
     }
   }
 
