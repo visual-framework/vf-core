@@ -105,17 +105,8 @@ gulp.task('linting', function(done) {
 });
 
 // -----------------------------------------------------------------------------
-// Image Tasks
+// Scripts Tasks
 // -----------------------------------------------------------------------------
-var source = './assets/images',
-destination = './public/images';
-gulp.task('watch-images', function() {
-  gulp.src(source + '/**/*', {base: source})
-  .pipe(watch(source, {base: source}))
-  .pipe(gulp.dest(destination));
-});
-
-
 gulp.task('scripts', function() {
   return gulp
   .src('./components/**/*.js')
@@ -235,11 +226,9 @@ var genCss = function (option) {
   return gulp.src(option.file_path)
     .pipe(sass({
       includePaths: [
-        path.resolve(__dirname, 'assets/scss/variables'),
-        path.resolve(__dirname, 'assets/scss/functions'),
-        path.resolve(__dirname, 'assets/scss/mixins'),
-        path.resolve(__dirname, 'patterns/blocks'),
-        path.resolve(__dirname, 'patterns/containers')
+        path.resolve(__dirname, 'components/vf-sass-config/variables'),
+        path.resolve(__dirname, 'components/vf-sass-config/functions'),
+        path.resolve(__dirname, 'components/vf-sass-config/mixins')
       ],
       outputStyle: 'expanded'
     })
@@ -267,8 +256,7 @@ gulp.task('CSSGen', function(done) {
 gulp.task('watch', function(done) {
   fractal.watch();
   gulp.watch('./**/*.scss', gulp.series('css')).on('change', reload);
-  gulp.watch('./assets/images', gulp.series('watch-images')).on('change', reload);
-  gulp.watch(['./assets/scripts/**/*.js','./components/**/*.js'], gulp.series('scripts')).on('change', reload);
+  gulp.watch(['./components/**/*.js'], gulp.series('scripts')).on('change', reload);
   gulp.watch('./components/**/**/assets/*', gulp.series('pattern-assets')).on('change', reload);
 });
 

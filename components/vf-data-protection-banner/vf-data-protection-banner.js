@@ -1,4 +1,4 @@
-// vf-data-protecion-banner
+// vf-data-protection-banner
 
 var remove = function(){
   this.closest('.vf-data-protection-banner').remove();
