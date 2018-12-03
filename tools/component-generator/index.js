@@ -28,7 +28,7 @@ module.exports = class extends Generator {
       chalk.white("https://git.VF.de/grp-stratcom/visual-framework-tooling-prototype/blob/setup/initial-installs/README.md#creating-a-new-component")
     ));
 
-    var componentType = ['elements', 'blocks', 'containers', 'grids', 'boilerplates'];
+    var componentType = ['element', 'block', 'container', 'grid', 'boilerplate'];
     var DepartmentType = ['VF Global', 'EMBL', 'EMBL-EBI'];
 
     var prompts = [{
@@ -77,8 +77,8 @@ module.exports = class extends Generator {
       var namespace = "ebi-";
       break;
     }
-
-    var totalPath = path + this.props.type + "/" + namespace + this.props.componentName + "/";
+    var patternType = this.props.type;
+    var totalPath = path + namespace + this.props.componentName + "/";
     var fileName = namespace + this.props.componentName;
 
 
@@ -119,6 +119,7 @@ module.exports = class extends Generator {
       this.templatePath('_component.config.yml'),
       this.destinationPath(totalPath + outputFile),
       {
+        componentType: patternType,
         componentName: fileName
       }
     );

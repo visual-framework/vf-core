@@ -1,0 +1,91 @@
+$vf-gdpr-banner-color--background: set-color(vf-color-gray-dark);
+$vf-gdpr-banner-color--text: set-color(vf-color-white);
+$vf-gdpr-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
+
+$vf-phase-banner-color--background: #FFFADC;
+$vf-phase-banner-color--text: set-color(vf-color-gray-dark);
+
+$vf-banner-color--link: inherit;
+
+.vf-banner {
+  box-sizing: border-box;
+  padding: 0 12px;
+
+  .vf-tag {
+    margin-right: 16px;
+  }
+}
+
+.vf-banner--fixed {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: [full-start] minmax(1em, auto) [main-start] minmax(18em, 81.25em) [main-end] minmax(1em, auto) [full-end];
+  left: 0;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 5150;
+}
+
+.vf-banner__content {
+  align-content: center;
+  align-items: center;
+
+  @media (max-width: 63.9375em) {
+    display: block; // overideing the .emlb-grid code
+  }
+
+  @media (min-width: $vf-breakpoint-l) {
+    grid-column: main;
+  }
+}
+
+.vf-banner--top {
+  top: 0;
+}
+
+.vf-banner--bottom {
+  bottom: 0;
+}
+
+.vf-banner--phase {
+  background-color: $vf-phase-banner-color--background;
+  [class*='vf-text'] {
+    color: $vf-phase-banner-color--text;
+    margin: 12px 0;
+
+    & .vf-link {
+      color: $vf-banner-color--link;
+    }
+  }
+  .vf-banner__content {
+    display: flex;
+  }
+}
+
+.vf-banner--gdpr {
+  @include padding--block(all, $vf-gdpr-banner-padding);
+
+  background-color: $vf-gdpr-banner-color--background;
+
+  .vf-text {
+    color: $vf-gdpr-banner-color--text;
+    margin-bottom: 24px;
+    max-width: 64em;
+
+    & .vf-link {
+      color: $vf-banner-color--link;
+    }
+
+    @media (min-width: $vf-breakpoint-l) {
+      margin: 0;
+    }
+  }
+
+  .vf-button {
+    @media (min-width: $vf-breakpoint-l) {
+      align-self: center;
+      justify-self: end;
+    }
+  }
+}
