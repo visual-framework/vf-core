@@ -321,7 +321,7 @@ gulp.task('CSSGen', function(done) {
 gulp.task('watch', function(done) {
   fractal.watch();
   gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
-  gulp.watch('./assets/images', gulp.series('watch-images')).on('change', reload);
+
   gulp.watch(['./assets/scripts/**/*.js','./components/**/*.js'], gulp.series('scripts')).on('change', reload);
   gulp.watch('./components/**/**/assets/*', gulp.series('pattern-assets')).on('change', reload);
 });

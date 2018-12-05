@@ -20,7 +20,8 @@
   background-color: set-color(vf-color-black);
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: minmax(1em, 1fr) minmax(auto, 80em) minmax(1em, 1fr);
+  grid-column-gap: var(--page-grid-gap);
+  grid-template-columns: minmax(var(--page-grid-gap), auto) minmax(auto, 76.5em) minmax(var(--page-grid-gap), auto);
   height: 60px;
 
   & > .vf-navigation {
@@ -69,7 +70,7 @@
 
     display: block;
     text-decoration: none;
-    
+
     &:visited {
       color: set-color(vf-color-white);
     }
@@ -83,8 +84,9 @@
   border-width: 1px 0 1px 0;
   display: grid;
   grid-column: 1 / -1;
+  grid-column-gap: var(--page-grid-gap);
   grid-row: 2;
-  grid-template-columns: minmax(1em, 1fr) minmax(auto, 80em) minmax(1em, 1fr);
+  grid-template-columns: minmax(var(--page-grid-gap), auto) minmax(auto, 76.5em) minmax(var(--page-grid-gap), auto);
   padding: 4px 0;
   text-transform: uppercase;
 }
