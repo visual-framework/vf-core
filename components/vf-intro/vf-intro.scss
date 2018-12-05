@@ -2,6 +2,10 @@
 
 .vf-intro {
   @include margin--block(bottom, 110px);
+
+  & > * {
+    grid-column: 2 / span 1;
+  }
 }
 
 .vf-intro__heading {
@@ -11,8 +15,8 @@
 .vf-intro__heading--has-tag {
   align-items: center;
   display: flex;
-  position: relative;
   left: -83px;
+  position: relative;
 
   .vf-tag {
     order: -1;
