@@ -3,6 +3,8 @@
 $vf-tag--primary-color--background: set-color(vf-color-azure) !default;
 $vf-tag--primary-color--border: set-color(vf-color-azure) !default;
 $vf-tag--primary-color--text: set-color(vf-color-white) !default;
+$vf-tag--primary--hover-color--background: set-color(vf-color-azure-dark) !default;
+$vf-tag--primary--hover-color--border: set-color(vf-color-azure-dark) !default;
 
 $vf-tag-rounded-border--radius: $vf-radius--xs !default;
 $vf-tag-pill-border--radius: $vf-radius-pill !default;
@@ -51,6 +53,11 @@ $vf-tag--tertiary-color--text: set-color(vf-color-white) !default;
   background-color: $vf-tag--primary-color--background;
   border-color: $vf-tag--primary-color--border;
   color: $vf-tag--primary-color--text;
+
+  &:hover {
+    background-color: $vf-tag--primary--hover-color--background;
+    border-color: $vf-tag--primary--hover-color--border;
+  }
 }
 
 .vf-tag--secondary {
@@ -76,6 +83,16 @@ $vf-tag--tertiary-color--text: set-color(vf-color-white) !default;
   padding: 0;
   position: relative;
   width: 12px;
+}
+
+
+.vf-tag--phases {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  // padding: 8px 8px 6px 8px; // 6px because typography
+  margin: 0 12px 0 0;
 }
 
 .Tree-entityLink {
