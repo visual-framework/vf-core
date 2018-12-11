@@ -88,3 +88,39 @@
     grid-column: 1 / -1;
   }
 }
+
+.vf-summary--article {
+  .vf-summary__meta {
+    align-items: center;
+    display: flex;
+    margin-bottom: 24px;
+
+    > * {
+      margin: 0;
+    }
+  }
+  .vf-summary__author {
+    margin-right: 12px;
+    position: relative;
+    &::after {
+      color: set-color(vf-color-black);
+      content: ',';
+      font-family: inherit;
+      font-size: inherit;
+      position: absolute;
+      right: -6px;
+    }
+  }
+  .vf-summary__date {
+    margin-right: 24px;
+    position: relative;
+
+    &::after {
+      content: ' — ';
+      font-family: inherit;
+      font-size: inherit;
+      position: absolute;
+      right: -18px;
+    }
+  }
+}
