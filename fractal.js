@@ -56,6 +56,11 @@ fractal.components.set('statuses', {
     label: "live",
     description: "Ready to implement.",
     color: "#19993B"
+  },
+  deprecated: {
+    label: "deprecated",
+    description: "Never use this again.",
+    color: "#707372"
   }
 });
 
