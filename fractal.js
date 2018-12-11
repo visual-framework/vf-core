@@ -57,8 +57,8 @@ fractal.components.set('statuses', {
     description: "Ready to implement.",
     color: "#19993B"
   },
-  depriciated: {
-    label: "depriciated",
+  deprecated: {
+    label: "deprecated",
     description: "Never use this again.",
     color: "#707372"
   }
