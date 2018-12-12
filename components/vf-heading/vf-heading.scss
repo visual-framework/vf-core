@@ -2,20 +2,28 @@
   @include margin--block(bottom, 16px);
 }
 
-.vf-text--heading-s {
-  @include set-type(heading--s);
-}
-.vf-text--heading-r {
-  @include set-type(heading--r);
-}
-.vf-text--heading-alt {
-  @include set-type(heading--l-alt);
-}
-.vf-text--heading-l {
-  @include set-type(heading--l);
-}
-.vf-text--heading-xl {
-  @include set-type(heading--xl);
+.vf-text--heading {
+
+  &-s {
+    @include set-type(heading--s);
+  }
+  &-r {
+    @include set-type(heading--r);
+  }
+  &-alt {
+    @include set-type(heading--l-alt);
+  }
+  &-l {
+    @include set-type(heading--l);
+  }
+  &-xl {
+    @include set-type(heading--xl);
+  }
+  &__pattern_default {
+    // use this hook name + one of the above `@include`s
+    // in other patterns' .scss to set a default
+  }
+
 }
 
 .vf-text--has-tag {
