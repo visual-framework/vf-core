@@ -5,8 +5,16 @@ $vf-factoid-outer-spacing: map-get($vf-spacing-map, vf-spacing-xl) !default;
 .vf-factoid {
   margin-bottom: $vf-factoid-outer-spacing;
 
+  &.vf-text--body-default {
+    @include set-type(body--r);
+  }
+
   // we don't want the the last element within the component to have a bottom margin.
   & :last-child {
     margin: 0;
   }
+}
+
+.vf-factoid__heading.vf-text--body-default {
+  @include set-type(body--r);
 }
