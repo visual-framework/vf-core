@@ -11,6 +11,13 @@
   }
 }
 
+.vf-snippet__heading {
+  &.vf-text--heading-default {
+    @include set-type(heading--r);
+  }
+}
+
+
 .vf-snippet__meta {
   @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing-xxl));
 
@@ -20,6 +27,10 @@
   @media (min-width: 600px) {
     align-items: center;
     flex-direction: row;
+  }
+
+  &.vf-text--body-default {
+    @include set-type(body--s);
   }
 }
 
@@ -64,11 +75,17 @@
   &:last-of-type {
     margin: 0;
   }
+  &.vf-text--body-default {
+    @include set-type(body--r);
+  }
 }
 
 .vf-snippet__read-more {
   @include margin--block(top, map-get($vf-spacing-map, vf-spacing-l));
   @include inline-link;
-
   display: block;
+
+  &.vf-text--body-default {
+    @include set-type(body--r);
+  }
 }

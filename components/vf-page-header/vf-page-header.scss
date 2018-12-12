@@ -11,6 +11,9 @@ $vf-page-header__sub-heading-text--color: set-color(vf-color-gray);
 
 .vf-page-header__heading {
   margin: 0;
+  &.vf-text--heading-default {
+    @include set-type(heading--l);
+  }
 }
 
 .vf-page-header__sub-heading {
@@ -18,6 +21,9 @@ $vf-page-header__sub-heading-text--color: set-color(vf-color-gray);
     bottom,
     map-get($vf-spacing-map, vf-spacing-extra-tight)
   );
+  &.vf-text--heading-default {
+    @include set-type(heading--l);
+  }
 
   color: $vf-page-header__sub-heading-text--color;
 }
