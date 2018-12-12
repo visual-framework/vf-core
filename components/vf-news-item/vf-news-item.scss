@@ -28,6 +28,9 @@
 
 .vf-news-item__title {
   line-height: 1.35;
+  &.vf-text--heading-default {
+    @include set-type(heading--r);
+  }
 }
 
 .vf-news-item__category {
@@ -48,6 +51,9 @@
 
 .vf-news-item__date {
   color: set-color(vf-color-gray);
+  &.vf-text--body-default {
+    @include set-type(body--xs);
+  }
 }
 
 .vf-news-item__source {
@@ -65,7 +71,8 @@
   }
 }
 
-// Support defaults
-.vf-news-item__title.vf-text--heading-default {
-  @include set-type(heading--r);
+.vf-news-item__text {
+  &.vf-text--body-default {
+    @include set-type(body--r);
+  }
 }
