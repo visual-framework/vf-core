@@ -44,6 +44,7 @@ $vf-tag--tertiary-color--text: set-color(vf-color-white) !default;
 .vf-tag--square {
   border: 0;
   display: inline-block;
+  // font: 0/0 a;
   height: 12px;
   padding: 0;
   width: 12px;
@@ -53,11 +54,10 @@ $vf-tag--tertiary-color--text: set-color(vf-color-white) !default;
   background-color: $vf-tag--primary-color--background;
   border-color: $vf-tag--primary-color--border;
   color: $vf-tag--primary-color--text;
-
-  &:hover {
-    background-color: $vf-tag--primary--hover-color--background;
-    border-color: $vf-tag--primary--hover-color--border;
-  }
+}
+a.vf-tag--primary:hover {
+  background-color: $vf-tag--primary--hover-color--background;
+  border-color: $vf-tag--primary--hover-color--border;
 }
 
 .vf-tag--secondary {
@@ -92,47 +92,4 @@ $vf-tag--tertiary-color--text: set-color(vf-color-white) !default;
   justify-content: center;
   margin: 0 12px 0 0;
   min-width: 52px;
-}
-
-.Tree-entityLink {
-  align-items: center;
-  display: flex;
-}
-
-
-.Status,
-.Status-dots {
-  align-items: center;
-  display: flex;
-}
-
-.Status-dot {
-  background-color: white;
-  border: 1px solid transparent;
-  border-radius: 100%;
-  height: .5rem;
-  width: .5rem;
-}
-
-.Status-dot + .Status-dot {
-  margin-left: 3px;
-}
-
-.Status-label {
-  border-radius: 2rem;
-  color: white;
-  display: inline-block;
-  font: normal .75rem/1.66667 'Open Sans', Helvetica, Arial, sans-serif;
-  padding: .125rem .75rem;
-  white-space: nowrap;
-}
-
-.Status-label + .Status-label {
-  margin-left: 3px;
-}
-
-.Status--labelled {
-  .Status-label {
-    margin-right: 3px;
-  }
 }

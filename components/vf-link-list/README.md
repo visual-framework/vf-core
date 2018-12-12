@@ -10,7 +10,7 @@ In each list item you can have:
 
 A link `<a class="vf-links__link" href="">Example Link</a>`.
 
-It can make use of the Tags pattern `<span class="vf-tag">Example Tag</span>`.
+It can make use of the `vf-badge` pattern `<span class="vf-badge">Example Tag</span>`.
 
 It can include meta information `<p class="vf-links__meta">Example Meta</p>`.
 

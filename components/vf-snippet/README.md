@@ -1,6 +1,6 @@
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-snippet.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-snippet)
+<h2>This pattern has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="../detail/vf-summary-article">vf-summary--article</a> pattern.</h2>
 
-## About
+[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-snippet.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-snippet)
 
 ## Installation and Implementation
 
