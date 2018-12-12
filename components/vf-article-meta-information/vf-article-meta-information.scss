@@ -22,6 +22,10 @@
     align-self: center;
     margin: 0 0 0 8px;
 
+    .vf-text--body-default {
+      @include set-type(body--xs);
+    }
+
     span {
       display: block;
     }
@@ -55,6 +59,9 @@
   .vf-meta__topics {
     color: set-color(vf-color-gray);
     margin: 0 0 4px 0;
+    &.vf-text--body-default {
+      @include set-type(body--xs);
+    }
     .vf-link {
       color: inherit;
     }
@@ -62,6 +69,9 @@
   .vf-meta__date {
     color: set-color(vf-color-gray);
     margin: 0;
+    &.vf-text--body-default {
+      @include set-type(body--xs);
+    }
   }
 }
 
@@ -69,7 +79,8 @@
 .vf-article-meta-info__links {
   padding: 0;
 
-  h6.vf-text--body-xs {
+  .vf-text--body-default {
+    @include set-type(body--xs);
     color: set-color(vf-color-gray);
     font-weight: 400;
     margin-bottom: 8px;
@@ -84,7 +95,8 @@
 
 .vf-meta__comments {
 
-  .vf-text--body-xs {
+  .vf-text--body-default {
+    @include set-type(body--xs);
     color: set-color(vf-color-gray);
     margin: 0;
   }

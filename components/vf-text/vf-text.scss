@@ -3,31 +3,37 @@
   > a {
     @include inline-link;
   }
-}
-.vf-text--body-xs {
-  @include set-type(body--xs);
-}
 
-.vf-text--body-s {
-  @include set-type(body--s);
-}
+  &-xs {
+    @include set-type(body--xs);
+  }
 
-.vf-text--body-s-alt {
-  @include set-type(body--s-alt);
-}
+  &-s {
+    @include set-type(body--s);
+  }
 
-.vf-text--body-r {
-  @include set-type(body--r);
-}
+  &-s-alt {
+    @include set-type(body--s-alt);
+  }
 
-.vf-text--body-l {
-  @include set-type(body--l);
-}
+  &-r {
+    @include set-type(body--r);
+  }
 
-.vf-text--body-xl {
-  @include set-type(body--xl);
-}
+  &-l {
+    @include set-type(body--l);
+  }
 
-.vf-text--body-link {
-  @include inline-link;
+  &-xl {
+    @include set-type(body--xl);
+  }
+
+  &-link {
+    @include inline-link;
+  }
+
+  &-default {
+    // use this hook name + one of the above `@include`s
+    // in other patterns' .scss to set a default
+  }
 }
