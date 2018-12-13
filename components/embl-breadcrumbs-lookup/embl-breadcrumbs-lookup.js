@@ -22,8 +22,6 @@ function emblBreadcrumbsLookup(metaProperties) {
       emblBreadcrumbAppend(metaProperties[majorFacets[i]],majorFacets[i],'related')
     }
   }
-
-
 }
 
 /**
@@ -54,20 +52,56 @@ function emblBreadcrumbAppend(term,facet,type) {
     var loadingText = document.querySelectorAll('.embl-breadcrumbs-lookup__loading-text');
     if (loadingText.length > 0) { loadingText[0].remove(); }
 
+    // to do, construct/fetch parents
+
+    // add breadcrumb
     var newBreadcrumb = document.createElement("li");
-    newBreadcrumb.innerHTML = term;
+    newBreadcrumb.innerHTML = '<a href="#" class="vf-breadcrumbs__link">' + term + '</a>';
     newBreadcrumb.classList.toggle('vf-breadcrumbs__item')
     breadcrumbTarget.prepend(newBreadcrumb);
+  }
 
-
-    // breadcrumbTarget.prepend += `
-    //     dsaf<li class="vf-breadcrumbs__item">
-    //       ` + term + `
-    //     </li>
-    //     `;
+  // find the related breadcrumb ul, if it doesn't exist, make it
+  function getRelatedBreadcrumbTarget() {
+    var breadcrumbTargetRelated = document.querySelectorAll('.embl-breadcrumbs-lookup .vf-breadcrumbs--related');
+    if (breadcrumbTargetRelated.length > 0) {
+      // there's already a releated container, use it
+      breadcrumbTargetRelated = breadcrumbTargetRelated[0];
+      return breadcrumbTargetRelated;
+    } else {
+      breadcrumbTarget.innerHTML += `<ul class="vf-breadcrumbs vf-breadcrumbs--related | vf-list vf-list--inline"></ul>`;
+      return document.querySelectorAll('.embl-breadcrumbs-lookup .vf-breadcrumbs--related')[0];
+    }
 
   }
 
+  // ensure the "related" label is present
+  function addRelatedBreadcrumbLabel(breadcrumbTargetRelated) {
+    var relatedLabel = breadcrumbTargetRelated.querySelectorAll('.vf-breadcrumbs__item-related-label');
+    console.log(relatedLabel)
+    if (relatedLabel.length === 0) {
+      // no label, so we make it
+      breadcrumbTargetRelated
+      var newRelatedLabel = document.createElement("li");
+      newRelatedLabel.innerHTML = 'Related';
+      newRelatedLabel.classList.add('vf-breadcrumbs__item','vf-breadcrumbs__item-related-label')
+      breadcrumbTargetRelated.prepend(newRelatedLabel);
+    }
+  }
+
+  if (type == 'related') {
+    // get/make the related ul
+    var breadcrumbTargetRelated = getRelatedBreadcrumbTarget();
+    // ensure there's a label
+    addRelatedBreadcrumbLabel(breadcrumbTargetRelated);
+
+    // add breadcrumb
+    var newBreadcrumb = document.createElement("li");
+    newBreadcrumb.innerHTML = '<a href="#" class="vf-breadcrumbs__link">' + term + '</a>';
+    newBreadcrumb.classList.toggle('vf-breadcrumbs__item')
+    breadcrumbTargetRelated.append(newBreadcrumb);
+
+  }
 
 
 
