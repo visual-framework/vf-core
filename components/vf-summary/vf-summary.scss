@@ -1,126 +1,54 @@
+@import 'vf-summary.config.scss';
+
 // vf-summary
 .vf-summary {
-  display: grid;
   align-self: start;
+  display: grid;
   grid-column-gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: $vf-summary-margin-bottom;
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+.vf-summary__button {
+  --vf-summary__text-margin--bottom: 0;
+
+  @include vf-button;
+  @include set-type($vf-summary__button-typography);
+
+  margin-bottom: 0;
 }
 
 .vf-summary__category {
+  --vf-summary__text-margin--bottom: 0;
 
-  color: set-color(vf-color-gray);
-  font-size: 14px;
-  margin-right: 16px;
-  position: relative;
-  text-transform: uppercase;
+  @include set-type($vf-summary__category-typography);
 
-  &::after {
-    content: '–';
-    position: absolute;
-    right: -12px;
-  }
+  color: set-color($vf-summary__category-color--text);
+  margin-bottom: 0;
 }
 
-.vf-summary--job {
-  grid-template-columns: auto 1fr;
+.vf-summary__date {
+  @include set-type($vf-summary__date-typography);
 
-  .vf-summary__meta {
-    grid-column: 1 / -1;
-    grid-row: 1;
-  }
-  .vf-summary__title {
-    grid-column: 1 / -1;
-  }
-  .vf-summary__text {
-    grid-column: 1 / -1;
-  }
-  .vf-summary__date {
-    align-self: center;
-    margin: 0;
-    span {
-      color: set-color(vf-color-ruby);
-    }
-  }
-  margin-bottom: 16px;
+  color: set-color($vf-summary__date-color--text);
 }
 
-
-.vf-summary--news {
-
-  .vf-summary__text {
-    align-items: center;
-    display: flex;
-  }
-  .vf-summary__category {
-    order: -1;
-  }
-  .vf-summary__date {
-    color: set-color(vf-color-gray);
-    grid-row: 1;
-    grid-column: 1 / -1;
-  }
+.vf-summary__link {
+  @include inline-link();
 }
 
-.vf-summary--news-has-image {
-  grid-template-columns: min-content auto;
-  grid-template-rows: auto;
-
-  .vf-summary__title {
-    grid-column: 2 / span 1;
-    grid-row: 2;
-  }
-
-  .vf-summary__text {
-    align-items: center;
-    display: flex;
-    grid-column: 2 / span 1;
-    grid-row: 3;
-  }
-
-  .vf-summary__image{
-    grid-row: 2 / span 4;
-    grid-column: 1 / span 1;
-  }
-
-  .vf-summary__date {
-    color: set-color(vf-color-gray);
-    grid-row: 1;
-    grid-column: 1 / -1;
-  }
+.vf-summary__meta {
+  @include set-type($vf-summary__meta-typography);
 }
 
-.vf-summary--article {
-  .vf-summary__meta {
-    align-items: center;
-    display: flex;
-    margin-bottom: 24px;
+.vf-summary__text {
+  @include set-type($vf-summary__body-typography);
+}
 
-    > * {
-      margin: 0;
-    }
-  }
-  .vf-summary__author {
-    margin-right: 12px;
-    position: relative;
-    &::after {
-      color: set-color(vf-color-black);
-      content: ',';
-      font-family: inherit;
-      font-size: inherit;
-      position: absolute;
-      right: -6px;
-    }
-  }
-  .vf-summary__date {
-    margin-right: 24px;
-    position: relative;
-
-    &::after {
-      content: ' — ';
-      font-family: inherit;
-      font-size: inherit;
-      position: absolute;
-      right: -18px;
-    }
-  }
+.vf-summary__title {
+  @include set-type($vf-summary__title-typography);
 }
