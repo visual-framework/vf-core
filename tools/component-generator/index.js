@@ -103,6 +103,16 @@ module.exports = class extends Generator {
       }
     );
 
+    var outputFile =  fileName + '.variables.scss';
+
+    this.fs.copyTpl(
+      this.templatePath('_component.variables.scss'),
+      this.destinationPath(totalPath + outputFile),
+      {
+        componentName: fileName
+      }
+    );
+
     var outputFile =  fileName + '.js';
 
     this.fs.copyTpl(
