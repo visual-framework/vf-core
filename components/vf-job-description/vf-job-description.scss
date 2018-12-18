@@ -1,15 +1,18 @@
 // vf-job-description
+.vf-body:not(.vf-disable-deprecated) {
+  @warn $vf-deprecation-warning;
 
-.vf-job-description {
-  @include margin--block(bottom, 40px);
-  @media (min-width: $vf-breakpoint-l) {
-    @include margin--block(bottom, 48px);
+  .vf-job-description {
+    @include margin--block(bottom, 40px);
+    @media (min-width: $vf-breakpoint-l) {
+      @include margin--block(bottom, 48px);
+    }
   }
-}
 
-.vf-job-description__dates {
-  display: inline;
-  span {
-    color: set-color(vf-color-ruby);
+  .vf-job-description__dates {
+    display: inline;
+    span {
+      color: set-color(vf-color-ruby);
+    }
   }
 }
