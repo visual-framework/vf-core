@@ -2,7 +2,9 @@
 
 ## What is this?
 
-This project helps ensure brand consistency and the easy use of modern web design best practices -- such as responsive design, iterative maintenance cycles, and UX-tested patterns. It also does so with particular consideration for life science content: guidance for tables, graphs, data-heavy typography.
+This framework is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfear with your existing patterns that use Bootstrap, Angular, or something else.
+
+The VF 2.0 is extensible, modular and overridable; it's there to help and not get in the way.
 
 - [Visual Framework 2.0 introduction](https://dev.beta.embl.org/guidelines/visual-framework/)
 - [Online pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs)
