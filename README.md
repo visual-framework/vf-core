@@ -28,8 +28,6 @@ There are three ways that we discuss and track ideas:
 - General: Slack at [embl-vf.slack.com](https://embl-vf.slack.com/messages) for general ideas and discussion
 - Technical: [GitHub issues here](https://github.com/visual-framework/vf-ebi/issues) for implementing deeply technical and specific issues, like the Sass build process, browser bugs
 
-Why use three things? Because there is no one tool that's good for all problems and all types of stakeholders.
-
 ### Contributing and branch naming
 
 [See the Contributing guide](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md)
