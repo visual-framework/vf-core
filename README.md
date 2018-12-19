@@ -19,7 +19,7 @@ Include the [CSS, JS, copy a boilerplate](https://dev.beta.embl.org/guidelines/v
 
 ### Do I need to install this repo?
 
-This is repo is only needed for those wanting to develop or customise the Visual Framework 2.0. If you want to use the VF on your site, have a look [at the boilerplate source](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/render/vf-boilerplate-page.html) and [pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/).
+You only need download this repo if you wish to develop or customise the Visual Framework 2.0. If you want to use the VF on your site, have a look [at the boilerplate source](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/render/vf-boilerplate-page.html) and [pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/).
 
 ### I have an idea or concern!
 
