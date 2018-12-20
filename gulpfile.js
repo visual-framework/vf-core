@@ -19,8 +19,14 @@ const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const nodeModuleImport = require('@node-sass/node-module-importer');
-const sassLint = require('gulp-sass-lint');
 const recursive = require('./tools/css-generator/recursive-readdir');
+
+// Linting things
+const prettier = require('gulp-prettier');
+const postcss     = require('gulp-postcss');
+const reporter    = require('postcss-reporter');
+const syntax_scss = require('postcss-scss');
+const stylelint   = require('stylelint');
 
 // JS Stuff
 const concat = require('gulp-concat');
@@ -40,7 +46,7 @@ const theo = require('theo')
 // Configuration
 // -----------------------------------------------------------------------------
 
-const SassInput = './assets/scss/*.scss';
+const SassInput = './assets/scss/styles.scss';
 const SassOutput = './public/css';
 const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
 
@@ -55,12 +61,11 @@ gulp.task('css', function() {
   const opts = {
     importer: [nodeModuleImport],
     includePaths: [
+      path.resolve(__dirname, 'components/vf-sass-config/variables'),
+      path.resolve(__dirname, 'components/vf-sass-config/functions'),
+      path.resolve(__dirname, 'components/vf-sass-config/mixins'),
       path.resolve(__dirname, 'assets/scss'),
-      path.resolve(__dirname, 'components/utilities'),
-      path.resolve(__dirname, 'components/elements'),
-      path.resolve(__dirname, 'components/blocks'),
-      path.resolve(__dirname, 'components/containers'),
-      path.resolve(__dirname, 'components/grids')
+      path.resolve(__dirname, 'components')
     ]
   };
   return gulp
@@ -86,40 +91,87 @@ gulp.task('css', function() {
 });
 
 // Sass Lint
-gulp.task('linting', function(done) {
-  gulp
-    .src(['./components/**/*.s+(a|c)ss', './assets/scss/***.s+(a|c)ss'])
-    .pipe(
-      sassLint({
-        files: {},
-        rules: {
-          'class-name-format': 0,
-          'variable-name-format': 0,
-          'no-empty-rulesets': 0,
-          'final-newline': 0,
-          'space-around-operator': 0,
-          'space-after-comma': 0,
-          'mixin-name-format': 0
+gulp.task("scss-lint", function() {
+
+  // Stylelint config rules
+  var stylelintConfig = {
+    "plugins": [
+      "stylelint-order",
+      "stylelint-scss"
+    ],
+    "extends": [
+      "./node_modules/prettier-stylelint/config.js"
+    ],
+    "rules": {
+      "indentation": 2,
+      "string-quotes": "single",
+      "order/order": [
+        [
+        "custom-properties",
+        "dollar-variables",
+        {
+        type: "at-rule",
+        name: "include",
+        parameter: "set-*",
+        message: "Stop being lazy and flatten your classnames"
+        },
+        "declarations",
+        "rules",
+        {
+        	type: "at-rule",
+        	name: "media",
+        	hasBlock: true
         }
-      })
+      ]
+      ],
+      "order/properties-alphabetical-order": true,
+      "block-no-empty": true,
+      "color-no-invalid-hex": true,
+      "declaration-colon-space-after": "always",
+      "declaration-colon-space-before": "never",
+      "function-comma-space-after": "always",
+      "media-feature-colon-space-after": "always",
+      "media-feature-colon-space-before": "never",
+      "media-feature-name-no-vendor-prefix": true,
+      "max-empty-lines": 3,
+      "max-nesting-depth": 3,
+      "selector-nested-pattern": [ "^(?!&__|&--|&-|&_).*", {
+        "message": "Stop being lazy and flatten your classnames",
+        "severity": "warning"
+      } ],
+      "number-leading-zero": "never",
+      "number-no-trailing-zeros": true,
+      "property-no-vendor-prefix": true,
+      "selector-list-comma-space-before": "never",
+      "selector-list-comma-newline-after": "always",
+      "string-quotes": "single",
+      "value-no-vendor-prefix": true,
+      // "indentation": [ 2, {
+      //   "except": ["block"],
+      //   "message": "Please use 2 spaces for indentation. Tabs make Stuart very grumpy.",
+      //   "severity": "warning"
+      // } ]
+    }
+  }
+
+  var processors = [
+    stylelint(stylelintConfig),
+    reporter({
+      clearMessages: true,
+      throwError: false,
+    })
+  ];
+
+  return gulp.src(
+      ['components/**/vf-*.scss', '!components/**/index.scss', '!assets/**/*.scss']
     )
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError());
-  done();
-});
-
-// -----------------------------------------------------------------------------
-// Image Tasks
-// -----------------------------------------------------------------------------
-var source = './assets/images',
-destination = './public/images';
-gulp.task('watch-images', function() {
-  gulp.src(source + '/**/*', {base: source})
-  .pipe(watch(source, {base: source}))
-  .pipe(gulp.dest(destination));
+    .pipe(postcss(processors, {syntax: syntax_scss}));
 });
 
 
+// -----------------------------------------------------------------------------
+// Scripts Tasks
+// -----------------------------------------------------------------------------
 gulp.task('scripts', function() {
   return gulp
   .src('./components/**/*.js')
@@ -167,7 +219,7 @@ ${result
 });
 
 gulp.task('tokens:typographic-scale', () =>
-  gulp.src('./design-tokens/typographic-scales/*.yml')
+  gulp.src('./components/vf-design-tokens/typographic-scales/*.yml')
     .pipe(theoG({
       transform: { type: 'web' },
       format: { type: 'typography-map' }
@@ -175,25 +227,25 @@ gulp.task('tokens:typographic-scale', () =>
     .pipe(rename(function (path) {
       path.extname = ".scss";
     }))
-    .pipe(gulp.dest('./assets/scss/variables'))
+    .pipe(gulp.dest('./components/vf-sass-config/variables'))
 )
 
 gulp.task('tokens:variables', () =>
-  gulp.src('./design-tokens/variables/*.yml')
+  gulp.src('./components/vf-design-tokens/variables/*.yml')
     .pipe(theoG({
       transform: { type: 'web' },
       format: { type: 'scss' }
     }))
-    .pipe(gulp.dest('./assets/scss/variables'))
+    .pipe(gulp.dest('./components/vf-sass-config/variables'))
 )
 
 gulp.task('tokens:maps', () =>
-  gulp.src(['./design-tokens/maps/*.yml', '!./design-tokens/typographic-scales/*.yml'])
+  gulp.src(['./components/vf-design-tokens/maps/*.yml', '!./components/vf-design-tokens/typographic-scales/*.yml'])
     .pipe(theoG({
       transform: { type: 'web' },
       format: { type: 'map.scss' }
     }))
-    .pipe(gulp.dest('./assets/scss/variables'))
+    .pipe(gulp.dest('./components/vf-sass-config/variables'))
 )
 
 // -----------------------------------------------------------------------------
@@ -239,11 +291,9 @@ var genCss = function (option) {
   return gulp.src(option.file_path)
     .pipe(sass({
       includePaths: [
-        path.resolve(__dirname, 'assets/scss/variables'),
-        path.resolve(__dirname, 'assets/scss/functions'),
-        path.resolve(__dirname, 'assets/scss/mixins'),
-        path.resolve(__dirname, 'patterns/blocks'),
-        path.resolve(__dirname, 'patterns/containers')
+        path.resolve(__dirname, 'components/vf-sass-config/variables'),
+        path.resolve(__dirname, 'components/vf-sass-config/functions'),
+        path.resolve(__dirname, 'components/vf-sass-config/mixins')
       ],
       outputStyle: 'expanded'
     })
@@ -252,7 +302,6 @@ var genCss = function (option) {
     .pipe(rename(file_name))
     .pipe(gulp.dest(option.dir));
 };
-
 
 gulp.task('CSSGen', function(done) {
   recursive(patternPath, ['*.css'], function (err, files) {
@@ -271,8 +320,8 @@ gulp.task('CSSGen', function(done) {
 
 gulp.task('watch', function(done) {
   fractal.watch();
-  gulp.watch('./**/*.scss', gulp.series('css')).on('change', reload);
-  gulp.watch('./assets/images', gulp.series('watch-images')).on('change', reload);
+  gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
+
   gulp.watch(['./assets/scripts/**/*.js','./components/**/*.js'], gulp.series('scripts')).on('change', reload);
   gulp.watch('./components/**/**/assets/*', gulp.series('pattern-assets')).on('change', reload);
 });
@@ -284,7 +333,7 @@ gulp.task('watch', function(done) {
 
 // Build as a static site for CI
 gulp.task('build', gulp.series(
-    'css', 'pattern-assets', 'scripts', 'frctlBuild'
+    'scss-lint', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
 ));
 
 gulp.task('dev', gulp.parallel(

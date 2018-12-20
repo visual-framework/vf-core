@@ -1,1 +1,0 @@
-# vf-summary Pattern

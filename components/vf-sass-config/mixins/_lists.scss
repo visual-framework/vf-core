@@ -1,0 +1,68 @@
+
+
+@mixin list($classname, $type: null) {
+  @if $type == null {
+    list-style-type: none;
+    padding: 0;
+  }
+  margin: 0;
+
+  @if $type == unordered {
+    padding-left: 16px;
+    list-style-type: disc;
+
+    // .vf-list__item {
+    //   padding-left: 0;
+    //   position: relative;
+    //
+    //   &:before {
+    //     content: '•';
+    //     left: -30px;
+    //     position: absolute;
+    //   }
+    // }
+  }
+
+  @else if $type == ordered {
+    list-style-type: decimal;
+    padding-left: 16px;
+    // counter-reset: step-counter 0;
+    // & > & {
+    //   padding-left: 16px;
+    // }
+    // .vf-list__item {
+    //   counter-increment: step-counter;
+    //
+    //   &:before {
+    //     content: counter(step-counter)'.';
+    //     margin-right: 5px;
+    //   }
+    // }
+  }
+
+  @else if $type == inline {
+    padding: 0;
+    @if $classname == null {
+      li {
+        display: inline;
+      }
+    }
+    @else {
+      [class*=__item] {
+        display: inline;
+      }
+    }
+  }
+  @if $classname != null {
+    @at-root .#{$classname} {
+      @at-root  .#{$classname}__item {
+        margin-bottom: map-get($vf-spacing-map, vf-spacing-r);
+      }
+    }
+  }
+  @else {
+    li {
+      margin-bottom: map-get($vf-spacing-map, vf-spacing-r);
+    }
+  }
+}

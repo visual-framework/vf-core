@@ -1,22 +1,30 @@
 {
   "version": "0.0.1",
-  "name": "<%= componentName %>",
+  "name": "@visual-framework/<%= componentName %>",
   "description": "<%= componentName %> component",
   "homepage": "http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/",
   "author": "VF",
   "license": "Apache 2.0",
-  "style": "build/<%= componentName %>.css",
+  "style": "<%= componentName %>.css",
+  "sass": "index.scss",
   "main": "build/index.js",
   "files": [
     "index.scss",
-    "<%= componentName %>.css"
+    "<%= componentName %>.scss",
+    "<%= componentName %>.css",
+    "<%= componentName %>.hbs",
+    "<%= componentName %>.config.yml"
   ],
   "test": "echo \"Error: no test specified\" && exit 1",
-  "repo": "https://github.com/visual-framework/vf-core/tree/master/components/elements/<%= componentName %>",
+"publishConfig": {
+  "access": "public"
+},
+  "repo": "https://github.com/visual-framework/vf-core/tree/master/tree/master/components/<%= componentName %>",
   "bugs": {
     "url": "https://github.com/visual-framework/vf-core/issues"
   },
   "dependencies": {
+    "@visual-framework/vf-sass-config": "^0.0.12"
   },
   "keywords": [
     "fractal",

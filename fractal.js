@@ -31,7 +31,7 @@ fractal.web.set('server.syncOptions', {
 const mandelbrot = require('@frctl/mandelbrot');
 
 const VFTheme = mandelbrot({
-  favicon: '/assets/favicon.ico',
+  // favicon: 'https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon.ico',
   styles: [
     '/css/local.css'
   ],
@@ -56,6 +56,11 @@ fractal.components.set('statuses', {
     label: "live",
     description: "Ready to implement.",
     color: "#19993B"
+  },
+  deprecated: {
+    label: "deprecated",
+    description: "Never use this again.",
+    color: "#707372"
   }
 });
 

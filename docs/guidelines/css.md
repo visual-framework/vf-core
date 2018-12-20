@@ -121,8 +121,8 @@ A Container is a horizontal slice of a page that contains Blocks and Elements. A
 
 ```html
 <div class="vf-intro">
-  <h1 class="vf-intro__heading | vf-text--display vf-text--display-xl">Cancer</h1>
-  <p class="vf-lede | vf-text--display vf-text--display-l">Cancer is a generic term for lots of different diseases in which cells divide many more times than usual. This abnormal growth can affect many cell types in almost any part of the body.</p>
+  <h1 class="vf-intro__heading | vf-text--heading vf-text--heading-xl">Cancer</h1>
+  <p class="vf-lede | vf-text--heading vf-text--heading-l">Cancer is a generic term for lots of different diseases in which cells divide many more times than usual. This abnormal growth can affect many cell types in almost any part of the body.</p>
   <p class="vf-intro__text | vf-text--body vf-text--body-r">Cancer is a multi-stage process. Normal cells begin to divide abnormally, spreading beyond their normal boundaries, and abnormal tissue growth causes swellings called tumours to form. Tumours can be benign – with no harmful effect on the body – or malignant, invading healthy tissue and interfering with normal bodily functions.</p>
   <p class="vf-intro__text | vf-text--body vf-text--body-r">There are more than 100 types of cancer and symptoms vary depending on the type. <a href="JavaScript:Void(0);">Read more about Cancer</a>.</p>
 </div>
@@ -134,7 +134,7 @@ A core principle of the Visual Framework is simple integration into workflows. A
 
 ### Nesting
 
-Sass allows [Nesting](http://www.sitepoint.com/sass-reference/selector-nesting/) of CSS. This is a very nice feature but can be over used and abused. To stop this getting out of hand you should only nest media queries, pseudo classes and where referencing the parent makes sense (things like .no-js and modernizr classes).
+Sass allows [Nesting](http://www.sitepoint.com/sass-reference/selector-nesting/) of CSS. This is a very nice feature but can be over used and abused. To stop this getting out of hand you should only nest media queries, pseudo classes and where referencing the parent makes sense (things like .vf-no-js and modernizr classes).
 
 For example, in Sass:
 
@@ -147,7 +147,7 @@ a {
   @media (min-width: 800px) {
     font-weight: 700;
   }
-  .no-js & {
+  .vf-no-js & {
     color: blue;
   }
 }
@@ -166,7 +166,7 @@ a:hover {
     font-weight: 700;
   }
 }
-.no-js a {
+.vf-no-js a {
   color: blue;
 }
 ```

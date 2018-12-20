@@ -1,0 +1,17 @@
+// vf-footer
+
+.vf-footer {
+  background: set-color(vf-color-gray-bright);
+  padding: 10px 0;
+}
+
+.vf-footer-grid {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(var(--page-grid-gap), auto) [main-start] minmax(288px, 76.5em) [main-end] minmax(var(--page-grid-gap), auto);
+  grid-template-rows: 1fr 40px;
+
+  > * {
+    grid-column: 2;
+  }
+}

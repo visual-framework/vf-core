@@ -30,40 +30,7 @@
   <li><a href="https://embl-vf.slack.com/messages">Ask the community for help</a>.</li>
 </ol>
 
-<h1 class="vf-text vf-text--display-xl vf-text--invert">All the patterns</h1>
-
-{% asyncEach items in frctl.components %}
-  {% if  (items.title == 'Grids') or (items.title == 'Elements') or (items.title == 'Blocks') or (items.title == 'Containers') %}
-    <section class="embl-grid embl-grid--with-label">
-      <section data-description="label area">
-        <h4>{{ items.title }}</h4>
-        {% if items.title == 'Grids' %}
-        <p>Put stuff in columns.</p>
-        {% endif %}
-        {% if items.title == 'Elements' %}
-        <p>The micro elements of the pattern library.</p>
-        {% endif %}
-        {% if items.title == 'Blocks' %}
-        <p>Simple patterns like sections headers, galleries and so on.</p>
-        {% endif %}
-        {% if items.title == 'Containers' %}
-        <p>More complex patterns that sometimes have specific layout, like page intros, mastheads, news sections and so on.</p>
-        {% endif %}
-      </section>
-      <section data-description="pattern list">
-        <div class="vf-grid vf-grid__col-3">
-          {% set group = items %}
-          {% asyncEach items in group %}
-            <div>
-              <h5><a href="{{ path(frctl.theme.urlFromRoute('component', { handle: items.handle })) }}">{{ items.label }}</a></h5>
-            </div>
-          {% endeach %}
-        </div>
-      </section>
-    </section>
-  {% endif %}
-{% endeach %}
-
+{% include 'partials/browser/pattern-list.nunj' %}
 
 {#
 {{ frctl.components|dump(2)}}

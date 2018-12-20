@@ -7,27 +7,37 @@
  * to learn how to build custom and optimised CSS.
  *
  */
-$use-global-typography: true !default;
 
-@import 'variables/vf-global-variables.scss';
-@import 'variables/variables.scss';
-@import 'functions/functions.scss';
-@import 'mixins/mixins.scss';
+ /* A shame.scss file for things that haven't got a
+  * place in the Visual Framework yet
+  */
+@import '_shame.scss';
+
+
+@import 'vf-global-custom-properties.scss';
+
+@import 'vf-global-variables.scss';
+@import 'vf-variables.scss';
+$global-font-family: $vf-font-family-sans-serif;
+@import 'vf-functions.scss';
+@import 'vf-mixins.scss';
 @import 'node-normalize-scss/normalize.scss';
 
-@import 'utilities/vf-screen-reader.scss';
+@import 'vf-sass-utilities/vf-screen-reader.scss';
 
 /* Visual Framework Utility Class Mixins */
 
-@import 'mixins/utility-mixins.scss';
+@import 'vf-utility-mixins.scss';
 
 /* All Visual Framework Font Patterns */
-@import 'vf-font-plex-mono/vf-font-plex-mono';
-@import 'vf-font-plex-sans/vf-font-plex-sans';
+// @import 'vf-font-plex-mono/vf-font-plex-mono.scss';
+@import 'vf-font-plex-sans/vf-font-plex-sans.scss';
 
 html, button {
   @if $use-global-typography == true {
-    font-family: $vf-font-family-monospace;
+    font-family: $vf-font-family-sans-serif;
+
+
   }
 }
 
@@ -43,9 +53,7 @@ html, button {
 
 
 /* All Visual Framework Elements */
-@import 'vf-heading/vf-heading.scss';
-@import 'vf-tags/vf-tags.scss';
-@import 'vf-text/vf-text.scss';
+@import 'vf-badge/vf-badge.scss';
 @import 'vf-link/vf-link.scss';
 @import 'vf-logo/vf-logo.scss';
 @import 'vf-form/index.scss';
@@ -62,32 +70,47 @@ html, button {
 /* All Visual Framework Blocks */
 @import 'vf-breadcrumbs/vf-breadcrumbs.scss';
 @import 'vf-factoid/vf-factoid.scss';
-@import 'vf-snippet/vf-snippet.scss';
+@import 'vf-data-protection-banner/vf-data-protection-banner.scss';
 @import 'vf-code-example/vf-code-example.scss';
 @import 'vf-page-header/vf-page-header.scss';
 @import 'vf-link-list/vf-link-list.scss';
 @import 'vf-header/vf-header.scss';
 @import 'vf-masthead/vf-masthead.scss';
 @import 'vf-navigation/vf-navigation.scss';
-@import 'vf-job-description/vf-job-description.scss';
 @import 'vf-section-header/vf-section-header.scss';
 @import 'vf-activity-list/vf-activity-list.scss';
 @import 'vf-contact/vf-contact.scss';
-@import 'vf-news-item/vf-news-item.scss';
+@import 'vf-article-meta-information/vf-article-meta-information.scss';
+@import 'vf-summary/vf-summary.scss';
+  @import 'vf-summary/vf-summary--article.scss';
+  @import 'vf-summary/vf-summary--job.scss';
+  @import 'vf-summary/vf-summary--news.scss';
+  @import 'vf-summary/vf-summary--news-has-image.scss';
 @import 'vf-video/vf-video.scss';
 @import 'vf-video-teaser/vf-video-teaser.scss';
 @import 'vf-global-header/vf-global-header.scss';
-@import 'vf-tabs/vf-tabs';
+@import 'vf-tabs/vf-tabs.scss';
 
 
 /* All Visual Framework Containers */
 
 @import 'vf-activity-group/vf-activity-group.scss';
 @import 'vf-intro/vf-intro.scss';
+@import 'vf-banner/vf-banner.scss';
+@import 'vf-news-container/vf-news-container.scss';
+@import 'vf-video-container/vf-video-container.scss';
+@import 'vf-footer/vf-footer.scss';
 
-/* All Visual Framework Utility Classes */
-@import 'vf-utility-classes/vf-utility-classes';
+/* All Visual Framework Deprecated Patterns */
+@import 'vf-tag/vf-tag.scss';
+@import 'vf-job-description/vf-job-description.scss';
+@import 'vf-news-item/vf-news-item.scss';
+@import 'vf-snippet/vf-snippet.scss';
 
+/* All Visual Framework Utility and high-specificity patterns */
+@import 'vf-utility-classes/vf-utility-classes.scss';
+@import 'vf-heading/vf-heading.scss';
+@import 'vf-text/vf-text.scss';
 
 /* Adds a shame.scss file for things that haven't got a
  * place in the Visual Framework yet

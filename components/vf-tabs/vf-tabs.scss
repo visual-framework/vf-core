@@ -1,0 +1,79 @@
+$vf-tabs__link-text--color: set-color(vf-color-gray-dark) !default;
+$vf-tabs__link-text--color-hover: set-color(vf-color-white) !default;
+$vf-tabs__link-background--color: set-color(vf-color-gray-bright) !default;
+$vf-tabs__list-border--color: set-color(vf-color-black) !default;
+
+$vf-tabs__link--is-active: (
+  $vf-tabs__link-text--color: set-color(vf-color-black),
+  $vf-tabs__link-background--color: set-color(vf-color-white),
+  $vf-tabs__list-border--color: set-color(vf-color-white),
+);
+
+.vf-tabs__list {
+  border-bottom: 1px solid $vf-tabs__list-border--color;
+  margin: 0;
+  padding: 0 0 0px 16px;
+}
+
+.vf-tabs__item,
+.vf-tabs__link {
+  display: inline-block;
+  position: relative;
+}
+
+.vf-tabs__link {
+  background: $vf-tabs__link-background--color;
+  border-color: transparent transparent $vf-tabs__list-border--color transparent;
+  border-style: solid;
+  border-width: 1px;
+  color: $vf-tabs__link-text--color;
+  outline: 0;
+  padding: 12px 16px;
+  text-decoration: none !important;
+  top: 1px;
+
+  &:hover {
+    background-color: #6b6b6b;
+    color: $vf-tabs__link-text--color-hover;
+  }
+}
+
+.vf-tabs__link.is-active {
+  background: map-get( $vf-tabs__link--is-active, $vf-tabs__link-background--color );
+  border-color: $vf-tabs__list-border--color $vf-tabs__list-border--color map-get($vf-tabs__link--is-active, $vf-tabs__list-border--color) $vf-tabs__list-border--color;
+  color: map-get($vf-tabs__link--is-active, $vf-tabs__link-text--color);
+}
+
+.vf-tabs__section {
+  padding: 8px 16px;
+}
+
+@media (max-width: 550px) {
+  .vf-tabs__list {
+    border-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+  .vf-tabs__item {
+    display: block;
+    flex-basis: auto; /* default value */
+    flex-grow: 1;
+    margin: 2px;
+    position: static;
+  }
+
+  .vf-tabs__link {
+    border-color: transparent;
+    display: block;
+    top: unset;
+  }
+
+  .vf-tabs__link.is-active {
+    border-color: $vf-tabs__list-border--color;
+    position: static;
+  }
+  .vf-tabs__section {
+    padding: 8px;
+  }
+}

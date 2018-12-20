@@ -1,0 +1,29 @@
+// vf-breadcrumbs
+
+$vf-breadcrumbs__item-text--color: set-color(vf-color-black);
+$vf-breadcrumbs__item-chevron--color: set-color(vf-color-gray);
+
+.embl-grid > .vf-breadcrumbs:first-child {
+  grid-column: 1 / -1;
+}
+
+.vf-breadcrumbs__item {
+  @include set-type(body--r);
+
+  color: $vf-breadcrumbs__item-text--color;
+  margin-right: 3px;
+  position: relative;
+
+  &:not(:last-of-type) {
+    &::after {
+      color: $vf-breadcrumbs__item-chevron--color;
+      content: '>';
+      display: inline-block;
+      margin-left: 3px;
+    }
+  }
+}
+
+.vf-breadcrumbs__link {
+  color: currentColor;
+}

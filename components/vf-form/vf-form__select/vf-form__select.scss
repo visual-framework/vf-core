@@ -1,0 +1,93 @@
+// vf-form__select
+
+.vf-form__select-container {
+  background: white;
+  height: 61.5px;
+  position: relative;
+
+  &::after {
+    border-color: set-color(vf-color-gray) transparent transparent transparent;
+    border-style: solid;
+    border-width: 9px 9px 0 9px;
+    bottom: 0;
+    content: '';
+    height: 0;
+    margin: auto;
+    pointer-events: none;
+    position: absolute;
+    right: 21px;
+    top: 0;
+    width: 0;
+  }
+
+  &::before {
+    border-left: 3px solid set-color(vf-color-gray);;
+    bottom: 1px;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    width: 56px;
+  }
+  &:hover {
+    &::after {
+      border-color: set-color(vf-color-black) transparent transparent transparent;
+    }
+    &::before {
+      border-left: 3px solid set-color(vf-color-black);
+    }
+  }
+
+
+  .vf-form__select {
+    @include set-type(body--r);
+
+    appearance: none;
+    background: transparent;
+    border: none;
+    border: 3px solid set-color(vf-color-gray);
+    border-radius: 0;
+    box-shadow: none;
+    color: set-color(vf-color-gray-dark);
+    cursor: pointer;
+    height: 100%;
+    outline: none;
+    padding-left: 15px;
+    padding-right: 35px;
+    width: 100%;
+
+    // Disable ugly ass outline on firefox
+    &:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 set-color(vf-color-gray-black);
+    }
+
+    // Disable default arrow on IE 11+
+    &::-ms-expand {
+      display: none;
+    }
+    &:hover {
+      border-color: set-color(vf-color-black);
+      color: set-color(vf-color-black);
+    }
+    &:focus {
+      border-color: set-color(vf-color-black);
+      color: set-color(vf-color-black);
+    }
+  }
+}
+
+// IE 9 only
+@media all and (min-width: 0\0) and (min-resolution: .001dpcm){
+  .vf-form__select-container {
+    .vf-form__select {
+      padding-right: 0;
+    }
+
+    &::after,
+    &::before {
+      display: none;
+    }
+  }
+}

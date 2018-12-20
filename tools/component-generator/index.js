@@ -28,7 +28,7 @@ module.exports = class extends Generator {
       chalk.white("https://git.VF.de/grp-stratcom/visual-framework-tooling-prototype/blob/setup/initial-installs/README.md#creating-a-new-component")
     ));
 
-    var componentType = ['elements', 'blocks', 'containers', 'grids'];
+    var componentType = ['element', 'block', 'container', 'grid', 'boilerplate'];
     var DepartmentType = ['VF Global', 'EMBL', 'EMBL-EBI'];
 
     var prompts = [{
@@ -47,7 +47,7 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'componentName',
       required: true,
-      message: 'What\'s the name of your component?',
+      message: 'What\'s the name of your component? (all lowercase, a hyphen instead of space, will be prefixed with `vf-`)',
       description: 'Component name'
     }, {
       type: 'confirm',
@@ -77,8 +77,8 @@ module.exports = class extends Generator {
       var namespace = "ebi-";
       break;
     }
-
-    var totalPath = path + this.props.type + "/" + namespace + this.props.componentName + "/";
+    var patternType = this.props.type;
+    var totalPath = path + namespace + this.props.componentName + "/";
     var fileName = namespace + this.props.componentName;
 
 
@@ -103,6 +103,16 @@ module.exports = class extends Generator {
       }
     );
 
+    var outputFile =  fileName + '.variables.scss';
+
+    this.fs.copyTpl(
+      this.templatePath('_component.variables.scss'),
+      this.destinationPath(totalPath + outputFile),
+      {
+        componentName: fileName
+      }
+    );
+
     var outputFile =  fileName + '.js';
 
     this.fs.copyTpl(
@@ -119,6 +129,7 @@ module.exports = class extends Generator {
       this.templatePath('_component.config.yml'),
       this.destinationPath(totalPath + outputFile),
       {
+        componentType: patternType,
         componentName: fileName
       }
     );

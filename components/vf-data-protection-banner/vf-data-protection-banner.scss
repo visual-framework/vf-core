@@ -1,0 +1,56 @@
+// vf-data-protection-banner
+
+// local variables
+
+$vf-data-protection-banner-color--background: set-color(vf-color-gray-dark);
+$vf-data-protection-banner-color--text: set-color(vf-color-white);
+$vf-data-protection-banner-color--link: inherit;
+
+$vf-data-protection-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
+
+.vf-data-protection-banner {
+  @include padding--block(all, $vf-data-protection-banner-padding);
+
+  align-items: center;
+  background-color: $vf-data-protection-banner-color--background;
+  bottom: 0;
+  box-sizing: border-box;
+  color: $vf-data-protection-banner-color--text;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: [full-start] minmax(1em, auto) [main-start] minmax(300px, 81.25em) [main-end] minmax(1em, auto) [full-end];
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 5150;
+}
+
+.vf-data-protection-banner__content {
+  @media (max-width: 63.9375em) {
+    display: block; // overideing the .emlb-grid code
+  }
+
+  @media (min-width: $vf-breakpoint-l) {
+    grid-column: main;
+  }
+}
+
+.vf-data-protection-banner__text {
+  margin-bottom: 24px;
+  max-width: 64em;
+
+  & .vf-link {
+    color: $vf-data-protection-banner-color--link;
+  }
+
+  @media (min-width: $vf-breakpoint-l) {
+    margin: 0;
+  }
+}
+
+.vf-data-protection-banner__button {
+  @media (min-width: $vf-breakpoint-l) {
+    align-self: center;
+    justify-self: end;
+  }
+}

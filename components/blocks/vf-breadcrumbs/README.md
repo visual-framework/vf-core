@@ -1,1 +1,0 @@
-# vf-b-breadcrumbs Pattern

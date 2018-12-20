@@ -1,1 +1,0 @@
-# vf-page-header Pattern

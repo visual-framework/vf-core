@@ -1,0 +1,25 @@
+// vf-page-header
+
+$vf-page-header__sub-heading-text--color: set-color(vf-color-gray);
+
+.vf-page-header {
+  @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing-l));
+
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.vf-page-header__heading {
+  @include set-type(heading--l);
+  margin: 0;
+}
+
+.vf-page-header__sub-heading {
+  @include set-type(heading--r);
+  @include margin--block(
+    bottom,
+    map-get($vf-spacing-map, vf-spacing-extra-tight)
+  );
+
+  color: $vf-page-header__sub-heading-text--color;
+}
