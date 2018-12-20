@@ -1,28 +1,32 @@
 # Visual Framework 2.0
 
-- [Setting Up](#Setting-Up)
-
 ## What is this?
 
-This project helps ensure brand consistency and the easy use of modern web design best practices -- such as responsive design, iterative maintenance cycles, and UX-tested patterns. It also does so with particular consideration for life science content: guidance for tables, graphs, data-heavy typography.
+This framework is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfear with your existing patterns that use Bootstrap, Angular, or something else.
 
-### Can I find an updated version on the web?
+The VF 2.0 is extensible, modular and overridable; it's there to help and not get in the way.
 
-When we release an update to the Visual Framework to the master is compiled and [the pattern library is published to embl.org/guidelines/visual-framework/dev-docs](dev.beta.embl.org/guidelines/visual-framework/dev-docs).
+- [Visual Framework 2.0 introduction](https://dev.beta.embl.org/guidelines/visual-framework/)
+- [Online pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs)
+- [About the aims of the VF 2.0](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/)
+- [Principles and Methods](https://dev.beta.embl.org/guidelines/visual-framework/principles-methods/)
+- [Changelog](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/docs/changelog.html)
+- [Contributing guide](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md) and [pattern development](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/docs/guidelines.html)
 
-### Do I need to install this?
+### How do I use this?
 
-This is meant for those wanting to develop or customise the Visual Framework. If you're building a basic integration with vanilla HTML, Angular, React, Wordpress or Drupal, see the integration guides [LINK TO BE MADE].
+Include the [CSS, JS, copy a boilerplate](https://dev.beta.embl.org/guidelines/visual-framework/analytics/), or build your own `vf-child` theme (documentation to come).
+
+### Do I need to install this repo?
+
+You only need download this repo if you wish to develop or customise the Visual Framework 2.0. If you want to use the VF on your site, have a look [at the boilerplate source](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/render/vf-boilerplate-page.html) and [pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/).
 
 ### I have an idea or concern!
 
 There are three ways that we discuss and track ideas:
 
 - General: Slack at [embl-vf.slack.com](https://embl-vf.slack.com/messages) for general ideas and discussion
-- Creative: [Trello](https://trello.com/b/TpdoWYC5/visual-framework-20) for conceptual things like new design patterns and approaches to CSS standards and HTML guidelines
 - Technical: [GitHub issues here](https://github.com/visual-framework/vf-ebi/issues) for implementing deeply technical and specific issues, like the Sass build process, browser bugs
-
-Why use three things? Because there is no one tool that's good for all problems and all types of stakeholders.
 
 ### Contributing and branch naming
 
@@ -35,102 +39,52 @@ As not all users of the Visual Framework will be able to update to the very late
 | Major release | Minor release | Note |
 | ------------- | ------------- | ---- |
 | (Branch)      | (Tag)         | |
-| 2.0           | v2.0.0            | Initial release evolving from Compliance theme |
-| "             | v2.0.1            | Tagged minor release |
-| "             | v2.0.2            | Tagged minor release |
-| "             | v2.0.3            | Tagged minor release |
-| 2.1           | v2.1.0            | Documented, breaking release |
-| "             | v2.1.1            | Tagged minor release |
-| 2.2           | v2.2.0            | Documented, breaking release |
+| 2.0           | v2.0.0        | Initial release evolving from Compliance theme |
+| "             | v2.0.1        | Tagged patch release |
+| "             | v2.0.2        | Tagged patch release |
+| "             | v2.0.3        | Tagged patch release |
+| 2.1           | v2.1.0        | Minor release with possible breaking changes |
+| "             | v2.1.1        | Tagged patch release |
+| 2.2           | v2.2.0        | Minor release with possible breaking changes |
+| 3.0           | v3.0.0        | Major release with many breaking changes|
 
 Difference between major, minor releases:
-- Major releases (.1, .2, .3...) can have breaking changes and any such changes will be detailed and tested.
-- Minor releases (0.0.X) will not have changes to code structure or parts and will mainly add features or update visual assets (such as logos or icon fonts).
+- Minor releases (.1, .2, .3...) can have breaking changes and any such changes will be detailed and tested.
+- Patch releases (0.0.X) will not have changes to code structure or parts and will mainly add features or update visual assets (such as logos or icon fonts).
 
-We support the last two major releases with bug fixes and branding. New features will only be added to the current and development versions.
+We support the last two minor releases with bug fixes and branding. New features will only be added to the current and development versions.
 
-Where's version 1.X, you ask? That's the [EMBL-EBI Visual Framework](https://github.com/ebiwd/EBI-Framework) from where this concept [originated, and evolved](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/).
+Where's version 1.X, you ask? That's the [EMBL-EBI specific Visual Framework](https://github.com/ebiwd/EBI-Framework) from where this concept [originated, and evolved](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/).
 
 ### Test releases
 Testing releases will be identified in their tag, a la: `v2.0-alpha.1`, where `-alpha.1` is the tag. `-alpha`, `-beta` and `-rc` are tag suffixes.
 
 ### Alpha development of v2.0
 
-As the Visual Framework is in heavy, active development, we will have many `v2.0.0-alpha.X` releases. With new alphas planned on a monthly basis.
+As the Visual Framework is in heavy, active development, we will have many `v2.0.0-alpha.X` releases. With new alphas planned on a monthly basis (last Thursday of each month).
 
-### Dealing with deprecated patterns
+## Local development
 
-Inevitably patterns will stop being used; we have a few ways to help you identify and work around these:
+### Setting Up
 
-1. A pattern's README.md will indicate if it's deprecated an what you should do;
-1. The pattern pattern web pages indicated deprecated patterns in their own section;
-1. If you're compiling Sass, you'll also get an `@warn` in your terminal; and
-1. If you add `.vf-disable-deprecated` to your `.vf-body` (`div class="vf-body vf-disable-deprecated"`), the pattern's css will be deactivated.
+To use the Visual Framework your machine will require some software to be installed to start. [See the SETTINGUP.md guide](https://github.com/visual-framework/vf-core/blob/develop/SETTINGUP.md).
 
-## Setting Up
-
-To use the Visual Framework your machine will require some software to be installed to start.
-
-The software you will need is:
-
-  - Node.js
-  - Gulp
-
-You can check to see if you have these installed in the command line by entering the name of the package with -v afterwards, for example.
-
-```
-$ node -v
-
-$ gulp -v
-```
-
-If either of these throw an error in your command line application then you will need to install them.
-
-### To install Node
-
-The easiest way to download and install Node is via the official [downloads page](https://nodejs.org/download/) where you can download the correct version for your operating system.
-
-### To install Gulp
-
-Once you have Node install you can easily install the Gulp task manager by entering the following command into your command line application:
-
-```
-npm install gulpjs/gulp-cli -g
-```
-
-## Installing the Visual Framework
+### Installing the Visual Framework
 
 You will need to install this repo onto your machine so that you can update, amend, and and delete patterns to the Visual Framework as required.
 
-#### 1. Clone this repo
-
-```
-git clone https://github.com/visual-framework/vf-ebi.git
-
-cd visual-framework-tooling-prototype
-```
-
-#### 2. Install [fractal](https://github.com/frctl/fractal)
-
-You might need to use `sudo`.
-
-```
-npm i -g @frctl/fractal
-```
-
-#### 3. Download all the things
-
-```
-npm install
-```
-
-#### 4. Run a dev build
-
-You're now setup to run the visual framework's component library, run a dev build:
-
-```
-gulp dev
-```
+1. Clone this repo
+    - `git clone https://github.com/visual-framework/vf-ebi.git`
+1. Move to the directory
+    - `cd visual-framework-tooling-prototype`
+1. You probably want the develop branch (or [your new feature branch](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md))
+    - `git checkout develop`
+1. Install [fractal](https://github.com/frctl/fractal) You might need to use `sudo`.
+    - `npm i -g @frctl/fractal`
+1. Download all the things
+    - `npm install`
+1. Run a dev build and open in your browser
+    - `gulp dev`
 
 ## Creating a new component
 
