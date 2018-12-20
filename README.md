@@ -63,7 +63,6 @@ Testing releases will be identified in their tag, a la: `v2.0-alpha.1`, where `-
 
 As the Visual Framework is in heavy, active development, we will have many `v2.0.0-alpha.X` releases. With new alphas planned on a monthly basis (last Thursday of each month).
 
-
 ## Local development
 
 ### Setting Up
