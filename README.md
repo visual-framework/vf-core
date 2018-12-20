@@ -56,7 +56,16 @@ Testing releases will be identified in their tag, a la: `v2.0-alpha.1`, where `-
 
 ### Alpha development of v2.0
 
-As the Visual Framework is in heavy, active development, we will have many `v2.0.0-alpha.X` releases. With new alphas planned on a weekly basis (Fridays).
+As the Visual Framework is in heavy, active development, we will have many `v2.0.0-alpha.X` releases. With new alphas planned on a monthly basis.
+
+### Dealing with deprecated patterns
+
+Inevitably patterns will stop being used; we have a few ways to help you identify and work around these:
+
+1. A pattern's README.md will indicate if it's deprecated an what you should do;
+1. The pattern pattern web pages indicated deprecated patterns in their own section;
+1. If you're compiling Sass, you'll also get an `@warn` in your terminal; and
+1. If you add `.vf-disable-deprecated` to your `.vf-body` (`div class="vf-body vf-disable-deprecated"`), the pattern's css will be deactivated.
 
 ## Setting Up
 
