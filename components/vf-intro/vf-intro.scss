@@ -16,11 +16,19 @@
 .vf-intro__heading--has-tag {
   align-items: center;
   display: flex;
-  left: -83px;
-  position: relative;
 
   .vf-badge {
-    order: -1;
+    margin-left: .5rem;
+  }
+
+  @media (min-width: $vf-breakpoint-l) {
+    left: -83px;
+    position: relative;
+
+    .vf-badge {
+      margin-left: 0;
+      order: -1;
+    }
   }
 }
 

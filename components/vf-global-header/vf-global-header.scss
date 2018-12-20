@@ -7,7 +7,9 @@ $vf-global-header__link-text--color: set-color(vf-color-black);
   align-items: center;
   background-color: $vf-global-header-background--color;
   border-bottom: solid 1px set-color(vf-color-gray);
+  display: grid;
   grid-column: 1 / -1;
+  grid-template-columns: minmax(var(--page-grid-gap), auto) minmax(auto, $global-page-max-width) minmax(var(--page-grid-gap), auto);
   height: auto;
   margin-bottom: -1px; // this hides the border if it's part of a larger header
   padding: .5rem 0;
@@ -15,8 +17,7 @@ $vf-global-header__link-text--color: set-color(vf-color-black);
 
 .vf-global-header__inner {
   display: flex;
-  max-width: 76.5em;
-  margin: 0 auto;
+  grid-column: 2 / -2;
 }
 
 .vf-global-header {
