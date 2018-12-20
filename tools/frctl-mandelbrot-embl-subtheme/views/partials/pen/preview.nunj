@@ -15,19 +15,17 @@
             </li>
             {% for variant in variants.items() %}
 
-
-
-
               {% if entity.handle == variant.handle %}
                 <a class="vf-tabs__link is-active" href="#is-active">
                   {{ variant.label }}
                 </a>
-
               {% else %}
-                <a class="vf-tabs__link" href="{{ path(frctl.theme.urlFromRoute('component', { handle: variant.handle })) }}">
-                {{ variant.label }}
-                </a>
-              {% endif %}
+                {% if variant.isHidden == false %}
+                  <a class="vf-tabs__link" href="{{ path(frctl.theme.urlFromRoute('component', { handle: variant.handle })) }}">
+                    {{ variant.label }}
+                  </a>
+                {% endif %} {# end variant.isHidden #}
+              {% endif %} {# end entity.handle == variant.handle #}
 
             {% endfor %}
           </ul>
@@ -36,10 +34,6 @@
 
 
     {% endif %}
-
-
-
-
     </div>
   </div>
 </div>
@@ -60,7 +54,6 @@
         >
       </iframe>
       {%- endif %}
-
 
       <div class="vf-body">
         <div class="vf-grid">
