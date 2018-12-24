@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This framework is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfear with your existing patterns that use Bootstrap, Angular, or something else.
+This framework is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfere with your existing patterns that use Bootstrap, Angular, or something else.
 
 The VF 2.0 is extensible, modular and overridable; it's there to help and not get in the way.
 
@@ -20,6 +20,14 @@ Include the [CSS, JS, copy a boilerplate](https://dev.beta.embl.org/guidelines/v
 ### Do I need to install this repo?
 
 You only need download this repo if you wish to develop or customise the Visual Framework 2.0. If you want to use the VF on your site, have a look [at the boilerplate source](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/render/vf-boilerplate-page.html) and [pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/).
+
+### How do I make my own theme or customise patterns?
+
+<a id="childtheme"></a>Unless you want to tweak the core patterns or the build process, there's really little reason to customise this repo. If your desire is to make your own theme or patterns, you should follow a guide on:
+
+1. Setting up your own child theme [link to come to `vf-child-theme-template` repo, once it's ready], and then:
+2. Add your own patterns to the new child theme [link to guide inside `vf-child-theme-template`]; finally:
+3. Publish your patterns to npm or submit a pull request to this project (`vf-core`) [link to guide inside `vf-child-theme-template`]
 
 ### I have an idea or concern!
 
