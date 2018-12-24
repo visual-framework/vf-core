@@ -5,7 +5,10 @@
 {% macro patternByType(displayName='Grids', type='grid', description='') %}
 <section class="embl-grid embl-grid--with-label">
   <section data-description="label area">
-    <h4 class="vf-text vf-text--heading-s">{{ displayName }}</h4>
+    <h4 class="vf-text vf-text--heading-s">
+      {{ displayName }}
+      <a id="{{ type }}"></a>
+    </h4>
     <p class="vf-text--body vf-text--body-r">
       {{ description }}
     </p>
