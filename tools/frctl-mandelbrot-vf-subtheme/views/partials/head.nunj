@@ -1,0 +1,6 @@
+{% set rendered = frctl.components.find('@vf-favicon').render(null, renderEnv, { preview: withLayout, collate: withCollation }) | async(true) %}
+{{ rendered }}
+
+
+{% include 'partials/stylesheets.nunj' %}
+<title>{% if page.title %}{{ page.title }} | {% endif %}{{ frctl.get('project.title') }}</title>

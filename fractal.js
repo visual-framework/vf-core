@@ -79,7 +79,7 @@ const mandelbrot = require('@frctl/mandelbrot');
 const VFTheme = mandelbrot({
   // favicon: 'https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon.ico',
   styles: [
-    '/css/local.css'
+    '/local.css'
   ],
   format: 'YAML',
   panels: ["html", "info", "resources"]
@@ -110,14 +110,11 @@ fractal.components.set('statuses', {
   }
 });
 
-
-
 // Customise Fractal templates
 // https://fractal.build/guide/customisation/web-themes#template-customisation
-VFTheme.addLoadPath(__dirname + '/tools/frctl-mandelbrot-embl-subtheme/views');
+VFTheme.addLoadPath(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/views');
 // Specify the static assets directory that contains the custom stylesheet.
-VFTheme.addStatic(__dirname + '/tools/frctl-mandelbrot-embl-subtheme/assets', '/');
-
+VFTheme.addStatic(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/assets', '/');
 
 fractal.web.theme(VFTheme);
 
