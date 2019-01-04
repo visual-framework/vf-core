@@ -15,9 +15,12 @@ The VF 2.0 is extensible, modular and overridable; it's there to help and not ge
 
 ### How do I use this?
 
-Include the [CSS, JS, copy a boilerplate](https://dev.beta.embl.org/guidelines/visual-framework/analytics/), or build your own `vf-child` theme (documentation to come).
+- If you want to utilise the framework unaltered, include the [CSS, JS and copy a boilerplate](https://dev.beta.embl.org/guidelines/visual-framework/analytics/)
+- Or customise the framework and build your own `vf-child` theme (add link to child repo template)
 
-### Do I need to install this repo?
+#### Do I need to install this repo?
+
+Usually: no.
 
 You only need download this repo if you wish to develop or customise the Visual Framework 2.0. If you want to use the VF on your site, have a look [at the boilerplate source](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/render/vf-boilerplate-page.html) and [pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/).
 
