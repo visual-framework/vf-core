@@ -1,5 +1,18 @@
 'use strict';
 
+const fs = require('fs');
+
+// -----------------------------------------------------------------------------
+// Configuration
+// -----------------------------------------------------------------------------
+
+const SassInput = './assets/scss/styles.scss';
+const SassOutput = './public/css';
+const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
+const config = JSON.parse(fs.readFileSync('./package.json'));
+global.vfName = config.vfConfig.vfName;
+global.vfNamespace = config.vfConfig.vfNamespace;
+
 // -----------------------------------------------------------------------------
 // Dependencies
 // -----------------------------------------------------------------------------
@@ -41,15 +54,6 @@ const reload = browserSync.reload;
 // Design Tokens
 const theoG = require('gulp-theo')
 const theo = require('theo')
-
-// -----------------------------------------------------------------------------
-// Configuration
-// -----------------------------------------------------------------------------
-
-const SassInput = './assets/scss/styles.scss';
-const SassOutput = './public/css';
-const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
-
 
 // -----------------------------------------------------------------------------
 // Sass and CSS Tasks

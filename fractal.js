@@ -2,9 +2,10 @@
 
 /* Create a new Fractal instance and export it for use elsewhere if required */
 const fractal = module.exports = require('@frctl/fractal').create();
+const projectTitle = vfName;
 
 /* Set the title of the project */
-fractal.set('project.title', 'Visual Framework 2.0');
+fractal.set('project.title', projectTitle);
 
 /* Tell Fractal where the components will live */
 fractal.components.set('path', __dirname + '/components');

@@ -2,6 +2,7 @@ var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var path = require('path');
+var config = require('../../package.json');
 
 module.exports = class extends Generator {
   prompting() {
@@ -66,7 +67,7 @@ module.exports = class extends Generator {
     switch (this.props.dept) {
       case "VF Global":
       var path = "./components" + "/";
-      var namespace = "vf-";
+      var namespace = config.vfConfig.vfNamespace;
       break;
       case "EMBL":
       var path = "./components/EMBL" + "/";
