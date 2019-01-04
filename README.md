@@ -37,17 +37,17 @@ The Visual Framework address three major needs:
    - A little: Instead you can include `.scss` partials or per-pattern `.css` and `.js` files. You can do this through making a [child theme](https://github.com/khawkins98/vf-child-playground) or [npm installs](https://www.npmjs.com/org/visual-framework).
 1. ☕️ BYOJS: Bring your own JavaScript. We've included only a minimal amount of JS in patterns and it's fully optional (just remove the JavaScript selectors). So if you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way.
 
-### How do I use this?
+### Get started
 
-- If you want to utilise the Framework unaltered, include the [CSS, JS and copy a boilerplate](https://dev.beta.embl.org/guidelines/visual-framework/analytics/)
-- [Install a specific pattern from npm](https://www.npmjs.com/org/visual-framework)
-- Or customise the framework with [your own Visual Framework child theme](https://github.com/khawkins98/vf-child-playground)
+Here's three ways you can make use of the Visual Framework.
 
-#### Do I need to install this repo?
+1. 🏎 Utilise the whole, unaltered Framework: include the [CSS, JS and copy a boilerplate](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/render/vf-boilerplate-page)
+1. 🚰 [Install a specific pattern from npm](https://www.npmjs.com/org/visual-framework) and include the Sass/JS
+1. 🏗 Or customise the framework with [your own Visual Framework child theme](https://github.com/khawkins98/vf-child-playground)
 
-Usually: no.
+**Should you install/clone this repo?**
 
-You only need download this repo if you wish to develop or customise the Visual Framework 2.0. If you want to use the VF on your site, have a look [at the boilerplate source](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/render/vf-boilerplate-page.html) and [pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/).
+Usually: no. Only clone this repo if you wish to further develop the Visual Framework core or contribute a global pattern, otherwise follow one of the bullets above.
 
 ### How do I make my own theme or customise patterns?
 
@@ -94,6 +94,7 @@ We support the last two minor releases with bug fixes and branding. New features
 Where's version 1.X, you ask? That's the [EMBL-EBI specific Visual Framework](https://github.com/ebiwd/EBI-Framework) from where this concept [originated, and evolved](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/).
 
 ### Test releases
+
 Testing releases will be identified in their tag, a la: `v2.0-alpha.1`, where `-alpha.1` is the tag. `-alpha`, `-beta` and `-rc` are tag suffixes.
 
 ### Alpha development of v2.0
