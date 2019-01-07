@@ -1,5 +1,6 @@
 {% for script in frctl.theme.get('scripts') %}
-<script src="{{ path(script) }}?cachebust={{ frctl.theme.get('version') }}"></script>
+<!--<script src="{{ path(script) }}?cachebust={{ frctl.theme.get('version') }}"></script>-->
+{% endfor %}
 {% if frctl.env.server %}
 <script src="{{ path('/scripts/scripts.js') }}?cachebust={{ frctl.theme.get('version') }}"></script>
 {% else %}
@@ -22,4 +23,3 @@
     }
   }
 </script>
-{% endfor %}

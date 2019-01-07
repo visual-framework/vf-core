@@ -1,3 +1,5 @@
+// document.
+
 /**
  * Finds all tabs on a page and activates them
  * @example vfTabs()
@@ -5,7 +7,7 @@
 function vfTabs() {
   // Get relevant elements and collections
   // todo: `document` here should be a scopped passed param like #mydiv or .my-div
-  const tablist = document.querySelectorAll('.vf-tabs__list');
+  const tablist = document.querySelectorAll('[data-vf-tabs_list]');
   const tabsSection = "vf-tabs__section--";
   const panelsList = document.querySelectorAll('.vf-tabs-content');
   const panels = document.querySelectorAll('[id^="vf-tabs__section"]');
