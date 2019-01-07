@@ -4,53 +4,29 @@ node_js:
   - 10
 
 stages:
-  - build
   - deploy
-
-build:
-  script:
-    - npm install
-    - npm install -g gulp-cli
-    - gulp build
-  artifacts:
-    paths:
-      - build
-  cache:
-    paths:
-      - node_modules
-  except:
-    - /^.visual-framework\/.*$/
 
 deploy:
   # tags:
   #   - docker
   # before_script:
   #   - add-ssh-key ${SSH_OWNER_ID} "${SSH_OWNER_KEY}" ${SSH_APACHE_ID} "${SSH_APACHE_KEY}"
+  script:
+    - npm install
+    - npm install -g gulp-cli
+    - gulp build
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep-history: true
   target-branch: gh-pages
-  # local-dir: build
-  script:
-    # - for VM in ${VM_DEV}; do rsync -acv --delete-after build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH}/; done;
+  local-dir: build
+  cache:
+    paths:
+      - node_modules
   on:
     branch:
       - develop
-      - gh-pages-ci
-
-# deploy-prod:
-#   stage: deploy
-#   image: node:10.9.0
-#   # tags:
-#   #   - docker
-#   # before_script:
-#   #   - add-ssh-key ${SSH_OWNER_ID} "${SSH_OWNER_KEY}" ${SSH_APACHE_ID} "${SSH_APACHE_KEY}"
-#   # script:
-#   #   - for VM in ${VM_PROD}; do rsync -acv --delete-after build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH}/; done;
-#   only:
-#     - tags
-#   except:
-#     - branches
-#     - /^.visual-framework\/.*$/
-#
+      - "gh-pages-ci"
+  except:
+    - /^.visual-framework\/.*$/
