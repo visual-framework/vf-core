@@ -7,12 +7,15 @@
 function vfTabs() {
   // Get relevant elements and collections
   // todo: `document` here should be a scopped passed param like #mydiv or .my-div
-  const tablist = document.querySelectorAll('[data-vf-tabs_list]');
-  const tabsSection = "vf-tabs__section--";
-  const panelsList = document.querySelectorAll('.vf-tabs-content');
-  const panels = document.querySelectorAll('[id^="vf-tabs__section"]');
-  const tabs = document.querySelectorAll('.vf-tabs__link');
+  const tablist = document.querySelectorAll('[data-vf-js-tabs]');
+  const panelsList = document.querySelectorAll('[data-vf-js-tabs-content]');
+  const panels = document.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
+  const tabs = document.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
   if (!tablist || !panels || !tabs) {
+    // exit: either tabs or tabbed content not found
+    return;
+  }
+  if (tablist.length == 0 || panels.length == 0 || tabs.length == 0) {
     // exit: either tabs or tabbed content not found
     return;
   }
