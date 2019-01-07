@@ -10,10 +10,12 @@ branches:
 stages:
   - deploy
 
+before_script:
+  - npm install
+  - npm install -g gulp-cli
+
 deploy:
   script:
-    - npm install
-    - npm install -g gulp-cli
     - gulp build
   provider: pages
   skip-cleanup: true
