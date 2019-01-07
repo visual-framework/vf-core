@@ -4,7 +4,7 @@
 <h3 class="vf-text vf-text--heading-r">Resources and files</h3>
 
 <div class="vf-tabs">
-  <ul class="vf-tabs__list">
+  <ul class="vf-tabs__list" data-vf-js-tabs>
     <!--<li class="vf-tabs__item">Pattern files</li>-->
     {% for resource in collection.items() %}
       {% if resource.base != 'package-lock.json' %}
@@ -16,7 +16,7 @@
   </ul>
 
 </div>
-<div class="vf-tabs-content">
+<div class="vf-tabs-content" data-vf-js-tabs-content>
   {% for resource in collection.items() %}
     {% if resource.base != 'package-lock.json' %}
     <section class="vf-tabs__section" id="vf-tabs__section--{{ resource.id }}">
