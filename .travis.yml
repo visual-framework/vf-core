@@ -10,11 +10,12 @@ branches:
 stages:
   - deploy
 
+before_script:
+  - npm install
+  - npm install -g gulp-cli
+  - gulp build
+
 deploy:
-  script:
-    - npm install
-    - npm install -g gulp-cli
-    - gulp build
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
@@ -27,4 +28,3 @@ deploy:
   on:
     branch:
       - develop
-      - "gh-pages-ci"
