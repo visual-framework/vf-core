@@ -1,0 +1,48 @@
+{% macro _dot(color, label) %}<span class="vf-badge vf-badge--square" style="background-color: {{ color }};" title="{{ label }}"></span>{% endmacro %}
+
+{% macro _tag(color, label) %}
+<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: {{ color }}; border-color: {{ color }};">{{ label }}</span>
+{% endmacro %}
+
+{% macro _dots(status) %}
+{% if status.statuses %}
+{% for stat in status.statuses %}
+{{ _dot(stat.color, stat.label) }}
+{% endfor %}
+{% else %}
+{{ _dot(status.color, status.label) }}
+{% endif %}
+{% endmacro %}
+
+{% macro _tags(status) %}
+{% if status.statuses %}
+{% for stat in status.statuses %}
+{{ _tag(stat.color, stat.label) }}
+{% endfor %}
+{% else %}
+{{ _tag(status.color, status.label) }}
+{% endif %}
+{% endmacro %}
+
+{% macro labelled(status, modifier) %}
+{% if status %}
+<div class="Status Status--labelled{% if modifier %} Status--{{ modifier }}{% endif %}">
+    <label class="Status-label">{{ status.label }} HELLO</label>
+    {{ _dots(status) }}
+</div>
+{% endif %}
+{% endmacro %}
+
+{% macro unlabelled(status, modifier) %}
+{% if status %}
+{{ _dots(status) }}
+{% endif %}
+{% endmacro %}
+
+{% macro tag(status, modifier) %}
+{% if status %}
+
+{{ _tag(status.color, status.label) }}
+
+{% endif %}
+{% endmacro %}

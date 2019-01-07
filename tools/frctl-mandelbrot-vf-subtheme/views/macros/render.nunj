@@ -1,0 +1,11 @@
+{% macro entity(rendered) %}
+{% if rendered | isError %}
+{#
+If render fails, return nothing.
+{% set renderError %}<!-- Error rendering component: {{ error.message }} -->{% endset %}
+{{ renderError | highlight('html') }}
+#}
+{% else %}
+{{ rendered | beautify | highlight('html') }}
+{% endif %}
+{% endmacro %}

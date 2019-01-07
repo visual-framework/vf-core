@@ -32,7 +32,7 @@
         {% asyncEach item in frctl.docs %}
         {% asyncEach menuitem in item %}
         {% if menuitem.isIndex == true %}
-        <li class="vf-navigation__item">
+        <li class="vf-navigation__item {% if doc.path == menuitem.path %}is-active{% endif %}">
           <a href="{{ path( (menuitem | url), request ) }}" class="vf-navigation__link">{{ menuitem.title }}</a>
         </li>
         {% endif %}

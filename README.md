@@ -2,35 +2,72 @@
 
 ## What is this?
 
-This framework is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfear with your existing patterns that use Bootstrap, Angular, or something else.
+This framework is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfere with your existing patterns that use Bootstrap, Angular, or something else.
 
 The VF 2.0 is extensible, modular and overridable; it's there to help and not get in the way.
 
-- [Visual Framework 2.0 introduction](https://dev.beta.embl.org/guidelines/visual-framework/)
-- [Online pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs)
-- [About the aims of the VF 2.0](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/)
-- [Principles and Methods](https://dev.beta.embl.org/guidelines/visual-framework/principles-methods/)
-- [Changelog](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/docs/changelog.html)
-- [Contributing guide](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md) and [pattern development](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/docs/guidelines.html)
+- Demo:
+  - [Online pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs)
+  - [Changelog](https://github.com/visual-framework/vf-core/blob/develop/docs/changelog/index.md)
+- Philosophy:
+  - [Aims of the VF 2.0](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/)
+  - [Principles and Methods](https://dev.beta.embl.org/guidelines/visual-framework/principles-methods/)
+- Help out:
+  - [Contributing guide](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md)
+  - [Request a pattern](https://github.com/visual-framework/vf-core/issues/new?template=new-pattern-request.md)
+  - [Make a new pattern](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/docs/guidelines.html)
+- Make it your own:
+  - [Clone the child theme template](https://github.com/khawkins98/vf-child-playground)
 
-### How do I use this?
+### Why use this?
 
-Include the [CSS, JS, copy a boilerplate](https://dev.beta.embl.org/guidelines/visual-framework/analytics/), or build your own `vf-child` theme (documentation to come).
+The Visual Framework address three major needs:
 
-### Do I need to install this repo?
+1. ⚗️🌳 Life Sciences: We address common needs for the Life Science websites. The Visual Framework can be easily tailored to niche needs, but out of the box it's pleasant looking, but dry and serious to support focus, clarity and data.
+1. 🏚 Compatibility: the Visual Framework is designed to work with other frameworks (both CSS, like Bootstrap, and JS, like React or Angular). We mainly achieve this by:
+   - Name spacing all selectors for CSS or JS (`vf-*`)
+   - No CSS styling on HTML elements. We only attached to name spaced classes, that is:
+      - ✅ `.vf-button {}`
+      - 🚫 `.button {}`
+      - 🚫 `button {}`
+      - 🚫🙊🙉 `div.button {}`
+   - 🖕 This necessarily requires a bit more class writing, but it ensures the Visual Framework won't break existing code.
+1. 🌕🌜 Use a little or a lot:
+   - A lot: The framework (and [child theme template](https://github.com/khawkins98/vf-child-playground)) will generate a monolithic `styles.css` and `script.js` that can be easily included, a la Bootstrap.
+   - A little: Instead you can include `.scss` partials or per-pattern `.css` and `.js` files. You can do this through making a [child theme](https://github.com/khawkins98/vf-child-playground) or [npm installs](https://www.npmjs.com/org/visual-framework).
+1. ☕️ BYOJS: Bring your own JavaScript. We've included only a minimal amount of JS in patterns and it's fully optional (just remove the JavaScript selectors). So if you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way.
 
-You only need download this repo if you wish to develop or customise the Visual Framework 2.0. If you want to use the VF on your site, have a look [at the boilerplate source](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/render/vf-boilerplate-page.html) and [pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/).
+### Get started
+
+Here's three ways you can make use of the Visual Framework.
+
+1. 🏎 Utilise the whole, unaltered Framework: include the [CSS, JS and copy a boilerplate](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/render/vf-boilerplate-page)
+1. 🚰 [Install a specific pattern from npm](https://www.npmjs.com/org/visual-framework) and include the Sass/JS
+1. 🏗 Or customise the framework with [your own Visual Framework child theme](https://github.com/khawkins98/vf-child-playground)
+
+**Should you install/clone this repo?**
+
+Usually: no. Only clone this repo if you wish to further develop the Visual Framework core or contribute a global pattern, otherwise follow one of the bullets above.
+
+### How do I make my own theme or customise patterns?
+
+<a id="childtheme"></a>Unless you want to tweak the core patterns or the build process, there's really little reason to customise this repo. If your desire is to make your own theme or patterns, you should follow a guide on:
+
+1. 🚧 [Set up your own child theme](https://github.com/khawkins98/vf-child-playground), and then:
+2. 🎨 [Add your own patterns to the new child theme](https://github.com/khawkins98/vf-child-playground#make-and-edit-patterns; finally:
+3. 🍻 Bonus! [Contribute patterns this core Visual Framework](https://github.com/khawkins98/vf-child-playground#contribute-new-patterns-back-to-the-global-vf-core)
 
 ### I have an idea or concern!
 
-There are three ways that we discuss and track ideas:
+There are a few ways that we discuss and track ideas:
 
-- General: Slack at [embl-vf.slack.com](https://embl-vf.slack.com/messages) for general ideas and discussion
-- Technical: [GitHub issues here](https://github.com/visual-framework/vf-ebi/issues) for implementing deeply technical and specific issues, like the Sass build process, browser bugs
+- ⁉ General: Slack at [embl-vf.slack.com](https://embl-vf.slack.com/messages) for general ideas and discussion
+- ⚙️ Technical: [GitHub issues here](https://github.com/visual-framework/vf-ebi/issues) for implementing deeply technical and specific issues, like the Sass build process, browser bugs
+- 🏢 E-mail: if you have a sweeping Big Idea™️, e-mail Ken Hawkins <ken.hawkins@embl.de>
 
 ### Contributing and branch naming
 
-[See the Contributing guide](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md)
+[See the Contributing and branch naming guide](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md)
 
 ## Versioning
 
@@ -57,6 +94,7 @@ We support the last two minor releases with bug fixes and branding. New features
 Where's version 1.X, you ask? That's the [EMBL-EBI specific Visual Framework](https://github.com/ebiwd/EBI-Framework) from where this concept [originated, and evolved](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/).
 
 ### Test releases
+
 Testing releases will be identified in their tag, a la: `v2.0-alpha.1`, where `-alpha.1` is the tag. `-alpha`, `-beta` and `-rc` are tag suffixes.
 
 ### Alpha development of v2.0
