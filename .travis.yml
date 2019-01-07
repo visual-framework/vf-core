@@ -3,14 +3,14 @@ language: node_js
 node_js:
   - 10
 
+branches:
+  except:
+    - /^.visual-framework\/.*$/
+
 stages:
   - deploy
 
 deploy:
-  # tags:
-  #   - docker
-  # before_script:
-  #   - add-ssh-key ${SSH_OWNER_ID} "${SSH_OWNER_KEY}" ${SSH_APACHE_ID} "${SSH_APACHE_KEY}"
   script:
     - npm install
     - npm install -g gulp-cli
@@ -28,5 +28,3 @@ deploy:
     branch:
       - develop
       - "gh-pages-ci"
-  except:
-    - /^.visual-framework\/.*$/
