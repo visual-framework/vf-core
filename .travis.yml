@@ -35,8 +35,9 @@ deploy:
   script:
     # - for VM in ${VM_DEV}; do rsync -acv --delete-after build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH}/; done;
   on:
-    # branch: develop
-    branch: gh-pages-ci
+    branch:
+      - develop
+      - gh-pages-ci
 
 # deploy-prod:
 #   stage: deploy
