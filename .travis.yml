@@ -8,9 +8,6 @@ stages:
   - deploy
 
 build:
-  stage: build
-  tags:
-    - docker
   script:
     - npm install
     - npm install -g gulp-cli
@@ -25,8 +22,6 @@ build:
     - /^.visual-framework\/.*$/
 
 deploy:
-  stage: deploy
-  image: node:10.9.0
   # tags:
   #   - docker
   # before_script:
