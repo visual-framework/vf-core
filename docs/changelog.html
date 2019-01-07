@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- todo: update this to use the VF patterns -->
+<html lang="en" dir="ltr" class="vf-no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    window.frctl = {
+        env: 'static'
+    };
+    </script>
+    <script>var cl = document.querySelector('html').classList; cl.remove('vf-no-js'); cl.add('vf-js');</script>
+    
+<link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png">
+<link rel="manifest" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest">
+<link rel="mask-icon" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/css/styles.css?cachebust=1.2.0" type="text/css">
+
+
+<link rel="stylesheet" href="../local.css?cachebust=1.2.0" type="text/css">
+
+
+<title>Changelog | Visual Framework 2.0</title>
+
+</head>
+<body>
+
+
+
+
+
+<header class="vf-header">
+  <div class="vf-global-header">
+    <div class="vf-global-header__inner">
+    <a href="/" class="vf-logo--responsive"></a>
+
+    <p class="vf-global-header__site-name">Visual Framework for Life Science websites</p>
+    </div>
+  </div>
+</header>
+
+
+<section class="Frame-body" data-role="body">
+<!--
+embl-grid embl-grid--has-sidebar
+-->
+  
+
+<div class="Document vf-body">
+  <div class="vf-grid vf-grid__col-1">
+
+    <div class="vf-content">
+
+      <div class="Document-header">
+          
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Changelog</h1>
+          
+
+
+          
+      </div>
+
+      
+
+<div class="pattern-library-notes">
+
+
+  <ul>
+  
+    
+      
+    
+  
+  </ul>
+
+  <ul>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  </ul>
+
+
+
+
+
+    
+    
+    <p>What we’ve been working on. You can <a href="https://github.com/visual-framework/vf-core/releases">view and download all releases here</a>.</p>
+<h2 id="how-to-make-these-release-notes-">How to make these release notes?</h2>
+<ul>
+<li>Generate with:<code><pre>git log 0.2.2..HEAD --pretty=format:'
+<span class="hljs-bullet">- </span>[<span class="hljs-string">%s</span>](<span class="hljs-link">https://github.com/visual-framework/vf-core/commit/%H</span>)
+<span class="hljs-code">    - %b</span>
+' --reverse</pre></code></li>
+</ul>
+
+    
+
+
+</div>
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+
+
+<script src="../themes/mandelbrot/js/mandelbrot.js?cachebust=1.2.0"></script>
+
+<script src="https://dev.assets.emblstatic.net/vf/scripts/scripts.js?cachebust=1.2.0"></script>
+
+
+<script>
+  var resizeIframeChecks = 0;
+  function resizeIframe(obj) {
+    var obj = obj || document.getElementsByClassName("Preview-iframe")[0];
+    var newHeight = obj.contentWindow.document.body.scrollHeight;
+    if (newHeight < 10) {
+      if (resizeIframeChecks < 2) {
+        // if less than 10px high, that's weird check again. maybe some JS is at play?
+        setTimeout(resizeIframe, 1000);
+        resizeIframeChecks ++;
+      }
+    } else {
+      obj.style.height = newHeight + 'px';
+    }
+  }
+</script>
+
+
+
+</body>
+</html>

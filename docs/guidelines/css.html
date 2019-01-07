@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!-- todo: update this to use the VF patterns -->
+<html lang="en" dir="ltr" class="vf-no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    window.frctl = {
+        env: 'static'
+    };
+    </script>
+    <script>var cl = document.querySelector('html').classList; cl.remove('vf-no-js'); cl.add('vf-js');</script>
+    
+<link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png">
+<link rel="manifest" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest">
+<link rel="mask-icon" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/css/styles.css?cachebust=1.2.0" type="text/css">
+
+
+<link rel="stylesheet" href="../../local.css?cachebust=1.2.0" type="text/css">
+
+
+<title>Sass and CSS guidelines | Visual Framework 2.0</title>
+
+</head>
+<body>
+
+
+
+
+
+<header class="vf-header">
+  <div class="vf-global-header">
+    <div class="vf-global-header__inner">
+    <a href="/" class="vf-logo--responsive"></a>
+
+    <p class="vf-global-header__site-name">Visual Framework for Life Science websites</p>
+    </div>
+  </div>
+</header>
+
+
+<section class="Frame-body" data-role="body">
+<!--
+embl-grid embl-grid--has-sidebar
+-->
+  
+
+<div class="Document vf-body">
+  <div class="vf-grid vf-grid__col-1">
+
+    <div class="vf-content">
+
+      <div class="Document-header">
+          
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Sass and CSS guidelines</h1>
+          
+
+
+          
+      </div>
+
+      
+
+<div class="pattern-library-notes">
+
+
+  <ul>
+  
+    
+  
+  </ul>
+
+  <ul>
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  </ul>
+
+
+
+
+
+    
+    
+    <h2 id="css-naming-conventions">CSS Naming conventions</h2>
+<p>Components in the Visual Framework follow the BEM naming convention.</p>
+<code class="lang-scss"><pre><span class="hljs-selector-class">.pattern</span> {
+
+}
+
+<span class="hljs-selector-class">.pattern__item</span> {
+
+}
+
+<span class="hljs-selector-class">.pattern--alternative</span> {
+
+}</pre></code><h2 id="namespacing">Namespacing</h2>
+<p>We namespace all universal patterns with a prefix of <code>vf-</code>. This ensures that the component will not break an existing codebase.</p>
+<code class="lang-css"><pre><span class="hljs-selector-class">.vf-pattern</span> {
+
+}</pre></code><p>This allows the Visual Framework to also include team specific patterns that are owned by those teams.</p>
+<code class="lang-css"><pre><span class="hljs-selector-class">.embl-grid</span> {
+
+}</pre></code><h2 id="design-patterns-and-components">Design Patterns and Components</h2>
+<p>The Visual Framework makes use of Atomic Design to define components. Instead of using Atoms, Molecules, Organisms the Visual Framework uses the terms Elements, Blocks, and Containers.</p>
+<p>In code we do not include further prefixes for the Visual Frameworks version of Atomic Design. Instead we rely on other patterns to help determine what is an Element, a Block, or a Container.</p>
+<h3 id="elements">Elements</h3>
+<p>An Element: headings, lists, buttons, dividers, links, etc. are named after what they are semantically.</p>
+<code class="lang-css"><pre><span class="hljs-selector-class">.vf-heading</span> {
+
+}
+<span class="hljs-selector-class">.vf-heading--xl</span> {
+
+}</pre></code><h3 id="blocks">Blocks</h3>
+<p>A Block: headers, lists, etc. are a single purpose design pattern that is also named after what it does or where it would go as part of a document structure. It makes use of Elements in the HTML where needed.</p>
+<code class="lang-css"><pre><span class="hljs-selector-class">.vf-breadcrumbs</span> {
+
+}
+<span class="hljs-selector-class">.vf-page-header</span> {
+
+}</pre></code><p>In the HTML the Visual Framework makes use of <code>|</code> to separate Element classes from Block classes</p>
+<code class="lang-html"><pre><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-page-header"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-page-header__heading | vf-heading vf-heading--l"</span>&gt;</span>Strategy &amp;amp Communications<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-page-header__sub-heading | vf-heading vf-heading--r"</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></pre></code><h3 id="mixes">Mixes</h3>
+<p>When creating components you may find that a block you are wanting to use needs specific styling within it’s parent. To do this we make use of BEM’s mixes. Where not only do you include the relevant classnames for the block but add an additional class that includes the parent classname.</p>
+<p>For example, the page header has two text nodes:</p>
+<code class="lang-html"><pre><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-page-header"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-page-header__heading | vf-text vf-text--heading-l"</span>&gt;</span>Strategy &amp;amp Communications<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-page-header__sub-heading  | vf-text vf-text--heading-r"</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></pre></code><p>The span needs to be a gray colour instead of the default black so we add a mix class to it. Instead of including the elements and relying on the parent class (<code>.vf-page-header</code>) to alter the styling, writing our HTML like this:</p>
+<code class="lang-html"><pre><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-page-header"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text vf-text--heading-l"</span>&gt;</span>Strategy &amp;amp Communications<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text vf-text--heading-r"</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></pre></code><p>We add component specific mix classes to the <code>h1</code> and <code>span</code> to be able to style them:</p>
+<code class="lang-html"><pre><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-page-header"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-page-header__heading | vf-text vf-text--heading-l"</span>&gt;</span>Strategy &amp;amp Communications<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-page-header__sub-heading  | vf-text vf-text--heading-r"</span>&gt;</span>Blog<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></pre></code><h4 id="notes">Notes</h4>
+<p>It is good practice when creating a component to include a mix for any child element used. All mix classes should be written in the parents <code>.scss</code> file. So for the <code>vf-page-header</code> example we would write the required CSS in that patterns <code>.scss</code> file rather than in the <code>vf-text.scss</code> file.</p>
+<hr>
+<h3 id="containers">Containers</h3>
+<p>A Container is a horizontal slice of a page that contains Blocks and Elements. A Container is named after its purpose rather than an abstract concept.</p>
+<code class="lang-html"><pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-intro"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-intro__heading | vf-text--heading vf-text--heading-xl"</span>&gt;</span>Cancer<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-lede | vf-text--heading vf-text--heading-l"</span>&gt;</span>Cancer is a generic term for lots of different diseases in which cells divide many more times than usual. This abnormal growth can affect many cell types in almost any part of the body.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-intro__text | vf-text--body vf-text--body-r"</span>&gt;</span>Cancer is a multi-stage process. Normal cells begin to divide abnormally, spreading beyond their normal boundaries, and abnormal tissue growth causes swellings called tumours to form. Tumours can be benign – with no harmful effect on the body – or malignant, invading healthy tissue and interfering with normal bodily functions.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-intro__text | vf-text--body vf-text--body-r"</span>&gt;</span>There are more than 100 types of cancer and symptoms vary depending on the type. <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>Read more about Cancer<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></code><h2 id="how-to-write-your-sass">How to write your Sass</h2>
+<p>A core principle of the Visual Framework is simple integration into workflows. Accordingly, we use Sass in this project but keep it close to CSS structure so that it’s easily understandable.</p>
+<h3 id="nesting">Nesting</h3>
+<p>Sass allows <a href="http://www.sitepoint.com/sass-reference/selector-nesting/">Nesting</a> of CSS. This is a very nice feature but can be over used and abused. To stop this getting out of hand you should only nest media queries, pseudo classes and where referencing the parent makes sense (things like .vf-no-js and modernizr classes).</p>
+<p>For example, in Sass:</p>
+<code><pre><span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">text-decoration</span>: none;
+  &amp;:hover {
+    <span class="hljs-attribute">text-decoration</span>: underline;
+  }
+  @<span class="hljs-keyword">media</span> (min-width: 800px) {
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
+  }
+  <span class="hljs-selector-class">.vf-no-js</span> &amp; {
+    <span class="hljs-attribute">color</span>: blue;
+  }
+}</pre></code><p>And the compiled CSS:</p>
+<code><pre><span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">text-decoration</span>: underline;  
+}
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">800px</span>) {
+  <span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
+  }
+}
+<span class="hljs-selector-class">.vf-no-js</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}</pre></code><h3 id="variables">Variables</h3>
+<p><a href="http://www.sitepoint.com/sass-reference/variables/">Variables</a> in Sass allow you to reuse things like font stacks, colors and margins etc. Within the UI Pattern Library there is a file within the <code>global</code> folder called <code>_variables.scss</code> where these are defined.</p>
+<p>If you find yourself repeating a declaration in your CSS a few times it may be worth adding a new variable for this. Try to be as abstract as you can when naming it. For example rather than write <code>$tab-navigation-padding: 10px;</code> and <code>$tab-card-padding: 10px;</code> consider writing <code>$tab-padding</code> or <code>$padding-small;</code> so that it can be used elsewhere without confusion.</p>
+<h3 id="mixins">Mixins</h3>
+<p>By default there are only a limited amount of mixins in the UI Pattern Library. They are more to make writing code easier than doing anything fancy. If you take a look at the <code>_mixin.scss</code> file that’s in the <code>global</code> folder in the <code>scss</code> folder there is a mixin that will make writing media queries, responsive typography and placeholders’s easier when using a pattern. As this UI Pattern Library can make it’s way into various aspects of the company mixins should be kept to a minimum so that it is easy to understand what they do.</p>
+<h3 id="working-on-a-project">Working on a project</h3>
+<p>When you’re working on a project you may need to make notes for things to get back to, or things that are’t done and could change. You should use Sass comments for this.</p>
+<p>If you have written some code that needs something fixed or added to then add a comment prefixed with <code>@todo</code>. Something like this:</p>
+<code><pre><span class="hljs-comment">// @todo fix height issue</span></pre></code><p>If you have written some code that may change as it maybe something that gets pushed back into the patter library or something that may change by design use <code>@maychange</code>. It would look something like this:</p>
+<code><pre><span class="hljs-regexp">//</span> @maychange <span class="hljs-keyword">this</span> shade <span class="hljs-keyword">of</span> blue may change <span class="hljs-keyword">in</span> next design overhaul
+</pre></code><p>Depending on your code editor it could be quick to find these when mopping up before a project goes live.</p>
+
+    
+
+
+</div>
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+
+
+<script src="../../themes/mandelbrot/js/mandelbrot.js?cachebust=1.2.0"></script>
+
+<script src="https://dev.assets.emblstatic.net/vf/scripts/scripts.js?cachebust=1.2.0"></script>
+
+
+<script>
+  var resizeIframeChecks = 0;
+  function resizeIframe(obj) {
+    var obj = obj || document.getElementsByClassName("Preview-iframe")[0];
+    var newHeight = obj.contentWindow.document.body.scrollHeight;
+    if (newHeight < 10) {
+      if (resizeIframeChecks < 2) {
+        // if less than 10px high, that's weird check again. maybe some JS is at play?
+        setTimeout(resizeIframe, 1000);
+        resizeIframeChecks ++;
+      }
+    } else {
+      obj.style.height = newHeight + 'px';
+    }
+  }
+</script>
+
+
+
+</body>
+</html>
