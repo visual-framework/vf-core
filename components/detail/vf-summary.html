@@ -290,7 +290,7 @@ embl-grid embl-grid--has-sidebar
 </pre>
   
 <pre class="vf-code-example__pre"><span class="hljs-comment">&lt;!-- News Has Image --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary vf-summary--news-has-image"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary vf-summary--news"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__date"</span>&gt;</span>22 June 2018<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__image"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../assets/vf-summary/assets/vf-summary--news-has-image.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__title"</span>&gt;</span>
@@ -351,12 +351,6 @@ embl-grid embl-grid--has-sidebar
       
       <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--cc7b15cf3d9cda46aa17dcc360f0934e">vf-summary--job.scss</a>
-      </li>
-      
-    
-      
-      <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--cc5cb04e98f88f061264b5692ef81364">vf-summary--news-has-image.scss</a>
       </li>
       
     
@@ -566,7 +560,7 @@ embl-grid embl-grid--has-sidebar
   }
 
   <span class="hljs-selector-class">.vf-summary__title</span> {
-    --vf-summary__text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">4px</span>;
+    --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">4px</span>;
   }
 }
 </pre>
@@ -581,7 +575,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-summary/vf-summary--article.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">707 Bytes</span>
+        <span class="Meta-value">698 Bytes</span>
     </section>
     
   
@@ -604,7 +598,7 @@ embl-grid embl-grid--has-sidebar
   }
 
   <span class="hljs-selector-class">.vf-summary__meta</span> {
-    --vf-summary__text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">4px</span>;
+    --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">4px</span>;
 
     grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   }
@@ -612,7 +606,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-selector-class">.vf-summary__text</span> {
     grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   }
-  
+
   <span class="hljs-selector-class">.vf-summary__title</span> {
     grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   }
@@ -630,59 +624,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-summary/vf-summary--job.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">370 Bytes</span>
-    </section>
-    
-  
-    
-    <section class="vf-tabs__section" id="vf-tabs__section--cc5cb04e98f88f061264b5692ef81364">
-    <!--  -->
-        <div class="FileBrowser-itemPreview">
-          
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-summary--news-has-image</span> {
-  grid-template-<span class="hljs-attribute">columns</span>: <span class="hljs-number">180px</span> <span class="hljs-number">1</span>fr;
-  grid-template-rows: auto;
-
-  <span class="hljs-selector-class">.vf-summary__date</span> {
-    --vf-summary__text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">4px</span>;
-
-    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-    grid-row: <span class="hljs-number">1</span>;
-  }
-
-  <span class="hljs-selector-class">.vf-summary__image</span>{
-    grid-column: <span class="hljs-number">1</span> / span <span class="hljs-number">1</span>;
-    grid-row: <span class="hljs-number">2</span> / span <span class="hljs-number">4</span>;
-    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
-  }
-
-  <span class="hljs-selector-class">.vf-summary__text</span> {
-    <span class="hljs-attribute">align-items</span>: center;
-    <span class="hljs-attribute">display</span>: flex;
-    grid-column: <span class="hljs-number">2</span> / span <span class="hljs-number">1</span>;
-    grid-row: <span class="hljs-number">3</span>;
-  }
-
-  <span class="hljs-selector-class">.vf-summary__title</span> {
-    grid-column: <span class="hljs-number">2</span> / span <span class="hljs-number">1</span>;
-    grid-row: <span class="hljs-number">2</span>;
-  }
-
-}
-</pre>
-          </code>
-          
-        </div>
-
-        <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/vf-summary/vf-summary--news-has-image.scss"><span>/components/raw/vf-summary/vf-summary--news-has-image.scss</span></a></span>
-
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-summary/vf-summary--news-has-image.scss</span>
-
-        <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">505 Bytes</span>
+        <span class="Meta-value">359 Bytes</span>
     </section>
     
   
@@ -694,28 +636,47 @@ embl-grid embl-grid--has-sidebar
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
             <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-summary--news</span> {
 
+  grid-<span class="hljs-attribute">column-gap</span>: <span class="hljs-number">0</span>;
+  grid-template-<span class="hljs-attribute">columns</span>: minmax(<span class="hljs-number">0</span>, auto) <span class="hljs-number">1</span>fr;
+  grid-template-rows: auto;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
+
+  <span class="hljs-selector-class">.vf-summary__image</span>{
+    grid-column: <span class="hljs-number">1</span> / span <span class="hljs-number">1</span>;
+    grid-row: <span class="hljs-number">1</span> / span <span class="hljs-number">4</span>;
+    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">30px</span>;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">180px</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-summary__title</span> {
+    grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
+  }
+
   <span class="hljs-selector-class">.vf-summary__category</span> {
+    <span class="hljs-attribute">display</span>: block;
+    grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
     <span class="hljs-attribute">margin-right</span>: <span class="hljs-variable">$vf-summary--news__category-margin-right</span>;
     <span class="hljs-attribute">position</span>: relative;
     <span class="hljs-attribute">text-transform</span>: uppercase;
-
-    &amp;::after {
-      <span class="hljs-attribute">content</span>: <span class="hljs-string">'–'</span>;
-      <span class="hljs-attribute">position</span>: absolute;
-      <span class="hljs-attribute">right</span>: -<span class="hljs-number">12px</span>;
-    }
   }
 
   <span class="hljs-selector-class">.vf-summary__date</span> {
-    --vf-summary__text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">4px</span>;
+    --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0px</span>;
 
-    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+    grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
     grid-row: <span class="hljs-number">1</span>;
   }
 
   <span class="hljs-selector-class">.vf-summary__text</span> {
     <span class="hljs-attribute">align-items</span>: center;
-    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">display</span>: block;
+    grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
+
+    &amp; &gt; <span class="hljs-selector-class">.vf-summary__category</span> {
+      <span class="hljs-attribute">margin-top</span>: -<span class="hljs-number">16px</span>; <span class="hljs-comment">// so that if there's not a category there's space between title and text</span>
+    }
   }
 
 }
@@ -731,7 +692,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-summary/vf-summary--news.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">444 Bytes</span>
+        <span class="Meta-value">897 Bytes</span>
     </section>
     
   
@@ -757,7 +718,7 @@ embl-grid embl-grid--has-sidebar
 }
 
 <span class="hljs-selector-class">.vf-summary__button</span> {
-  --vf-summary__text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 
   @<span class="hljs-keyword">include</span> vf-button;
   @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__button-typography</span>);
@@ -766,7 +727,7 @@ embl-grid embl-grid--has-sidebar
 }
 
 <span class="hljs-selector-class">.vf-summary__category</span> {
-  --vf-summary__text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 
   @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__category-typography</span>);
 
@@ -807,7 +768,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-summary/vf-summary.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">984 Bytes</span>
+        <span class="Meta-value">966 Bytes</span>
     </section>
     
   
@@ -854,7 +815,7 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-comment">// ------------------------------------------------------------</span>
 
 <span class="hljs-selector-class">.vf-summary</span> {
-  --vf-summary__text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">16px</span>;
+  --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">16px</span>;
 }
 
 
