@@ -8,7 +8,7 @@ Usually you don't need this whole repo. Only clone this repo if you wish to furt
 
 ---
 
-## What is this?
+## 🎫 What is this?
 
 The Visual Framework (VF) is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfere with your existing patterns that use Bootstrap, Angular, or something else.
 
@@ -27,12 +27,20 @@ The VF 2.0 enables consistency and portability, it is extensible, modular and ov
 - **Make it your own:** &nbsp;
 [Clone the child theme template](https://github.com/khawkins98/vf-child-playground)
 
-### Why a VF?
+### ⏰ When will this be ready?
+
+- This is a v2.0 that was imagined in 2017 and development began in the summer of 2018.
+- As of January 2019 we're in early alpha.
+- We're hopeful a beta could be ready before summer 2018.
+
+Watch the [releases](https://github.com/visual-framework/vf-core/releases) and let us know your feedback: [issues](https://github.com/visual-framework/vf-core/issues) or [email](mailto:ken.hawkins@embl.de).
+
+### 🤔 Why a VF?
 
 The Visual Framework address three major needs:
 
-1. ⚗️🌳 Life Sciences: We address common needs for the Life Science websites. The Visual Framework can be easily tailored to niche needs, but out of the box it's pleasant looking, but dry and serious to support focus, clarity and data.
-1. 🏚 Compatibility: the Visual Framework is designed to work with other frameworks (both CSS, like Bootstrap, and JS, like React or Angular). We mainly achieve this by:
+1. ⚗️🌳 Life sciences: We address common needs for [life science websites](https://www.ebi.ac.uk/services). The Visual Framework can be easily tailored to niche needs, but out of the box it's pleasant looking, but dry and serious to support focus, clarity and data.
+1. 🏰 Share only what you need to: the Visual Framework is designed to work with other frameworks (both CSS, like Bootstrap, and JS, like React or Angular). This allows common patterns (and brand design) to be shared between sites without cross-contaminating into another framework. We mainly achieve this by:
    - Name spacing all selectors for CSS or JS (`vf-*`)
    - No CSS styling on HTML elements. We only attached to name spaced classes, that is:
       - ✅ `.vf-button {}`
@@ -40,14 +48,14 @@ The Visual Framework address three major needs:
       - 🚫 `button {}`
       - 🚫🙊🙉 `div.button {}`
    - 🖕 This necessarily requires a bit more class writing, but it ensures the Visual Framework won't break existing code.
+   - BYOJS: Bring your own JavaScript. We've included only a minimal amount of JS in patterns and it's fully optional (just remove the JavaScript selectors). So if you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way.
 1. 🌕🌜 Use a little or a lot:
    - A lot: The framework (and [child theme template](https://github.com/khawkins98/vf-child-playground)) will generate a monolithic `styles.css` and `script.js` that can be easily included, a la Bootstrap.
    - A little: Instead you can include `.scss` partials or per-pattern `.css` and `.js` files. You can do this through making a [child theme](https://github.com/khawkins98/vf-child-playground) or [npm installs](https://www.npmjs.com/org/visual-framework).
-1. ☕️ BYOJS: Bring your own JavaScript. We've included only a minimal amount of JS in patterns and it's fully optional (just remove the JavaScript selectors). So if you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way.
 
-### Get started
+### 🚼 Get started
 
-Here are ways to utilise the Visual Framework:
+<a id="get-started"></a>Here are ways to utilise the Visual Framework:
 
 1. 🛍 [Browse the online patterns](https://visual-framework.github.io/vf-core)
 1. 🏎 Utilise the whole, unaltered Framework: include the [CSS, JS and copy a boilerplate](https://visual-framework.github.io/vf-core/components/render/vf-boilerplate-page)
@@ -169,5 +177,5 @@ You can find the Design Tokens in `components/vf-design-tokens`.
 
 The `vf-core` project is being led by EMBL where British English and we're aware that most code is American English (`colour` vs `color`); so:
 
-- 📚🇬🇧 Documentation is written in British English 💂‍ `I like the centred text and colours`
+- 📚🇬🇧 Documentation is written in British English 💂‍ `Rarely use centred text, always use colours`
 - ⌨️🇺🇸 Code is written in American english 🧢 `$vf-main-color: green;`
