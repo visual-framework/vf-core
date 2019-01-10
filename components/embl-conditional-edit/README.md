@@ -8,7 +8,7 @@ Edit and configuration buttons often point to separate domain where the login st
 
 Currently supported methods:
 - URL param: `?embl-conditional-edit=enabled` or `?embl-conditional-edit=1`
-- CSS cascaded: `embl-coditional-edit__enabled > .embl-conditional-edit { display: unset; }`
+- CSS cascaded: `embl-coditional-edit__enabled .embl-conditional-edit { display: unset; }`
 
 Note: this method is not about hiding the a URL from a user being able to see the link, rather it simply hides or shows a link based off a parameter.
 
