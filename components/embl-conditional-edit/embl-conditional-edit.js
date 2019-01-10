@@ -18,10 +18,8 @@ function emblConditionalEdit() {
   Array.prototype.forEach.call(emblConditionalEdit, (element, i) => {
     emblConditionalEditDetectParam(location.href,element);
   });
-
-
-
 }
+
 /**
  * Detects `?embl-conditional-edit=enabled` or `?embl-conditional-edit=1`
  * and adds `.embl-coditional-edit__enabled` to display the edit links
