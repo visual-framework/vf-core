@@ -1,30 +1,46 @@
 # Visual Framework 2.0
 
-## What is this?
+---
 
-This framework is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfere with your existing patterns that use Bootstrap, Angular, or something else.
+**👋 Downloading or cloning this repo? 🛑**
 
-The VF 2.0 is extensible, modular and overridable; it's there to help and not get in the way.
+Usually you don't need this whole repo. Only clone this repo if you wish to further develop the Visual Framework core or contribute a global pattern, otherwise: [see the "Get Started" section](#get-started).
 
-- Demo:
-  - [Online pattern library](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs)
-  - [Changelog](https://github.com/visual-framework/vf-core/blob/develop/docs/changelog/index.md)
-- Philosophy:
-  - [Aims of the VF 2.0](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/)
-  - [Principles and Methods](https://dev.beta.embl.org/guidelines/visual-framework/principles-methods/)
-- Help out:
-  - [Contributing guide](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md)
-  - [Request a pattern](https://github.com/visual-framework/vf-core/issues/new?template=new-pattern-request.md)
-  - [Make a new pattern](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/docs/guidelines.html)
-- Make it your own:
-  - [Clone the child theme template](https://github.com/khawkins98/vf-child-playground)
+---
 
-### Why use this?
+## 🎫 What is this?
+
+The Visual Framework (VF) is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfere with your existing patterns that use Bootstrap, Angular, or something else.
+
+The VF 2.0 enables consistency and portability, it is extensible, modular and overridable; here to help and not get in the way.
+
+- **Demo:** &nbsp;
+[Online pattern library](https://visual-framework.github.io/vf-core)
+&nbsp; § &nbsp; [Changelog](https://github.com/visual-framework/vf-core/blob/develop/docs/changelog/index.md)
+- **Philosophy:** &nbsp;
+[Aims of the VF 2.0](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/)
+&nbsp; § &nbsp; [Principles and Methods](https://dev.beta.embl.org/guidelines/visual-framework/principles-methods/)
+- **Help out:** &nbsp;
+[Contributing guide](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md)
+&nbsp; § &nbsp; [Request a pattern](https://github.com/visual-framework/vf-core/issues/new?template=new-pattern-request.md)
+&nbsp; § &nbsp; [Make a new pattern](https://visual-framework.github.io/vf-core/docs/guidelines.html)
+- **Make it your own:** &nbsp;
+[Clone the child theme template](https://github.com/khawkins98/vf-child-playground)
+
+### ⏰ When will this be ready?
+
+- This is a v2.0 that was imagined in 2017 and development began in the summer of 2018.
+- As of January 2019 we're in early alpha.
+- We're hopeful a beta could be ready before summer 2018.
+
+Watch the [releases](https://github.com/visual-framework/vf-core/releases) and let us know your feedback: [issues](https://github.com/visual-framework/vf-core/issues) or [email](mailto:ken.hawkins@embl.de).
+
+### 🤔 Why a VF?
 
 The Visual Framework address three major needs:
 
-1. ⚗️🌳 Life Sciences: We address common needs for the Life Science websites. The Visual Framework can be easily tailored to niche needs, but out of the box it's pleasant looking, but dry and serious to support focus, clarity and data.
-1. 🏚 Compatibility: the Visual Framework is designed to work with other frameworks (both CSS, like Bootstrap, and JS, like React or Angular). We mainly achieve this by:
+1. ⚗️🌳 Life sciences: We address common needs for [life science websites](https://www.ebi.ac.uk/services). The Visual Framework can be easily tailored to niche needs, but out of the box it's pleasant looking, but dry and serious to support focus, clarity and data.
+1. 🏰 Share only what you need to: the Visual Framework is designed to work with other frameworks (both CSS, like Bootstrap, and JS, like React or Angular). This allows common patterns (and brand design) to be shared between sites without cross-contaminating into another framework. We mainly achieve this by:
    - Name spacing all selectors for CSS or JS (`vf-*`)
    - No CSS styling on HTML elements. We only attached to name spaced classes, that is:
       - ✅ `.vf-button {}`
@@ -32,29 +48,30 @@ The Visual Framework address three major needs:
       - 🚫 `button {}`
       - 🚫🙊🙉 `div.button {}`
    - 🖕 This necessarily requires a bit more class writing, but it ensures the Visual Framework won't break existing code.
+   - BYOJS: Bring your own JavaScript. We've included only a minimal amount of JS in patterns and it's fully optional (just remove the JavaScript selectors). So if you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way.
 1. 🌕🌜 Use a little or a lot:
    - A lot: The framework (and [child theme template](https://github.com/khawkins98/vf-child-playground)) will generate a monolithic `styles.css` and `script.js` that can be easily included, a la Bootstrap.
    - A little: Instead you can include `.scss` partials or per-pattern `.css` and `.js` files. You can do this through making a [child theme](https://github.com/khawkins98/vf-child-playground) or [npm installs](https://www.npmjs.com/org/visual-framework).
-1. ☕️ BYOJS: Bring your own JavaScript. We've included only a minimal amount of JS in patterns and it's fully optional (just remove the JavaScript selectors). So if you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way.
 
-### Get started
+### 🚼 Get started
 
-Here's three ways you can make use of the Visual Framework.
+<a id="get-started"></a>Here are ways to utilise the Visual Framework:
 
-1. 🏎 Utilise the whole, unaltered Framework: include the [CSS, JS and copy a boilerplate](https://dev.beta.embl.org/guidelines/visual-framework/dev-docs/components/render/vf-boilerplate-page)
+1. 🛍 [Browse the online patterns](https://visual-framework.github.io/vf-core)
+1. 🏎 Utilise the whole, unaltered Framework: include the [CSS, JS and copy a boilerplate](https://visual-framework.github.io/vf-core/components/render/vf-boilerplate-page)
 1. 🚰 [Install a specific pattern from npm](https://www.npmjs.com/org/visual-framework) and include the Sass/JS
-1. 🏗 Or customise the framework with [your own Visual Framework child theme](https://github.com/khawkins98/vf-child-playground)
+1. 🏗 Get a custom look and patterns with [your own Visual Framework child theme](https://github.com/khawkins98/vf-child-playground)
 
-**Should you install/clone this repo?**
+---
 
-Usually: no. Only clone this repo if you wish to further develop the Visual Framework core or contribute a global pattern, otherwise follow one of the bullets above.
+## 🚧 ✍ Developing, contributing
 
 ### How do I make my own theme or customise patterns?
 
 <a id="childtheme"></a>Unless you want to tweak the core patterns or the build process, there's really little reason to customise this repo. If your desire is to make your own theme or patterns, you should follow a guide on:
 
-1. 🚧 [Set up your own child theme](https://github.com/khawkins98/vf-child-playground), and then:
-2. 🎨 [Add your own patterns to the new child theme](https://github.com/khawkins98/vf-child-playground#make-and-edit-patterns; finally:
+1. 🏗  [Set up your own child theme](https://github.com/khawkins98/vf-child-playground), and then:
+2. 🎨 [Add your own patterns to the new child theme](https://github.com/khawkins98/vf-child-playground#make-and-edit-patterns); finally:
 3. 🍻 Bonus! [Contribute patterns this core Visual Framework](https://github.com/khawkins98/vf-child-playground#contribute-new-patterns-back-to-the-global-vf-core)
 
 ### I have an idea or concern!
@@ -131,20 +148,34 @@ This codebase includes a folder and file creation tool. It allows you to quickly
 1. Install Yeoman
    - If you've come this far and you don't have `yo`, you should be able to install it with `npm install -g yo@latest`
    - If you get stuck, [see the official install guide](http://yeoman.io/codelab/setup.html)
-2. Create a new component
-   - You will need to use the vf-font-monospace-stack `gulp component` and answer the questions when prompted.
+1. Create a new component
+   - Run `gulp component` and answer the questions when prompted.
        - **Type of component:** We use a variation of the atomic design methodology, [read about the differences here](http://bradfrost.com/blog/post/atomic-web-design/#atoms). We use: elements, blocks, and containers.
            - an element would be a heading, or a button
            - a block would be a teaser, or a search form
            - a container would be a group of teasers
        - **Name of component:** Go for something simple and obvious (todo: we need a guide/documentation on how we name things). Don't worry about namespacing and prefixing, the tooling will take care of this.
        - **NPM package:** If you're making something interesting (probably not an 'element'), then saying 'yes' will allow the component to be shared as an optional part of the framework on NPM.
-3. Developing your component
-   - Detailed guide to come, but for now edit the new files and develop with `gulp dev`
-4. Sharing you component back
-   - If you didn't make it an NPM package: Make a pull request?
-   - If it is an NPM package: Submit guide here?
+    - You customised template pattern will have been added to your `/components` directory.
+1. Add the `@import 'vfc-your-pattern.scss';` to `/assets/scss/styles.scss`.
+1. Developing your component
+   - Edit your template files in the `/components/your-pattern-name` folder
+   - Run `gulp dev` to compile and preview the pattern
+1. Sharing you component back
+   - Publish it to npm; or
+   - If you think your pattern is of use to the wider `vf-core` community, [make a Pull Request](https://github.com/visual-framework/vf-core/pulls).
 
-## Design Tokens
+## Global colour, typography and spacing.
 
-The [Design Token concept](https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421) specifies design (colour, spacing, type) as reusable JSON or YAML that are translated from `.yml` data into `.scss` using [Theo](https://github.com/salesforce-ux/theo#-theo).
+The Visual Framework uses the [Design Token concept](https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421) to specify design (colour, spacing, type) as reusable JSON or YAML that are translated from `.yml` data into `.scss` using [Theo](https://github.com/salesforce-ux/theo#-theo).
+
+This Design Token abstraction [helps portability and integration](https://uxdesign.cc/design-tokens-for-dummies-8acebf010d71) with other technical systems.
+
+You can find the Design Tokens in `components/vf-design-tokens`.
+
+## Language and spelling of documentation, code
+
+The `vf-core` project is being led by EMBL where British English and we're aware that most code is American English (`colour` vs `color`); so:
+
+- 📚🇬🇧 Documentation is written in British English 💂‍ `Rarely use centred text, always use colours`
+- ⌨️🇺🇸 Code is written in American english 🧢 `$vf-main-color: green;`
