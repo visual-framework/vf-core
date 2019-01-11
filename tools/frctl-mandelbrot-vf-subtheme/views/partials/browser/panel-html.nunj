@@ -1,0 +1,20 @@
+{% import "macros/render.nunj" as render %}
+<h3 class="vf-text vf-text--heading-r">Code example</h3>
+<code class="Code Code--lang-html vf-code-example">
+  {% if not entity.isCollated or entity.isVariant or entity.variants().size == 1 %}
+  <pre class="vf-code-example__pre">
+{% set renderedItem = render.entity(entity.render(null, renderEnv, {preview: false, collate: false},entity) | async(true)) | trim %}
+{% if renderedItem != '' %}
+{{ renderedItem }}
+{% else %}
+{{ entity.content | highlight('html') }}
+{% endif %}
+  </pre>
+  {% else %}
+  {% for variant in entity.variants().items() %}
+<pre class="vf-code-example__pre">{{ '<span class="hljs-comment">&lt;!-- ' + variant.label + ' --&gt;</span>' }}
+{{ render.entity(variant.render(null, renderEnv, {preview: false, collate: false}) | async(true)) | trim }}
+</pre>
+  {% endfor %}
+  {% endif %}
+</code>

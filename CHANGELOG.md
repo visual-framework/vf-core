@@ -1,3 +1,3 @@
 # CHANGELOG
 
-See http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/changelog
+See https://visual-framework.github.io/vf-core/changelog
