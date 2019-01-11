@@ -1,6 +1,6 @@
 // mixin to generate correct font information when included into an element
 
-@mixin set-type($font-size, $global-font-family: $global-font-family) {
+@mixin set-type($font-size, $global-font-family: $global-font-family, $set-margins: true) {
   // @if $global-font-family != $vf-typography--monospace {
 
     font-family: $global-font-family;
@@ -14,8 +14,10 @@
       font-weight: map-deep-get($map-font-family, $font-size, font-weight);
     }
     line-height: map-deep-get($map-font-family, $font-size, line-height);
-    margin: 0 0 $vf-text-margin--bottom 0;
-    margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+    @if $set-margins {
+      margin: 0 0 $vf-text-margin--bottom 0;
+      margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+    }
   // }
   // @else {
   //
