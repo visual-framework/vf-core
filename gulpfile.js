@@ -69,7 +69,8 @@ gulp.task('css', function() {
       path.resolve(__dirname, 'components/vf-sass-config/functions'),
       path.resolve(__dirname, 'components/vf-sass-config/mixins'),
       path.resolve(__dirname, 'assets/scss'),
-      path.resolve(__dirname, 'components')
+      path.resolve(__dirname, 'components'),
+      path.resolve(__dirname, 'components/vf-core-patterns')
     ]
   };
   return gulp
