@@ -1,6 +1,6 @@
 // mixin to generate correct font information when included into an element
 
-@mixin set-type($font-size, $global-font-family: $global-font-family) {
+@mixin set-type($font-size, $global-font-family: $global-font-family, $set-margins: true) {
   // @if $global-font-family != $vf-typography--monospace {
 
     font-family: $global-font-family;
@@ -15,16 +15,19 @@
     }
     line-height: map-deep-get($map-font-family, $font-size, line-height);
 
-    @if (str-index($name, 'body--')) {
-      margin: 0 0 $vf-text-margin--bottom 0;
-      margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+    @if $set-margins {
+      @if (str-index($name, 'body--')) {
+        margin: 0 0 $vf-text-margin--bottom 0;
+        margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+      }
+
+      @if (str-index($name, 'heading--')) {
+        // This approach would work if  we want a $vf-heading-margin--bottom, or something
+        margin: 0 0 $vf-text-margin--bottom 0;
+        margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+      }
     }
 
-    @if (str-index($name, 'heading--')) {
-      // This approach would work if  we want a $vf-heading-margin--bottom, or something
-      margin: 0 0 $vf-text-margin--bottom 0;
-      margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
-    }
   // }
   // @else {
   //
