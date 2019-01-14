@@ -87,6 +87,38 @@ embl-grid embl-grid--has-sidebar
     
     
     
+        <div class="vf-tabs">
+          <ul class="vf-tabs__list">
+            <li class="vf-tabs__item">
+              This pattern has variants:
+            </li>
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-breadcrumbs--default.html">
+                    Default
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-breadcrumbs--with-related.html">
+                    With Related
+                  </a>
+                 
+               
+
+            
+          </ul>
+
+      </div>
+
+
+    
     </div>
   </div>
 </div>
@@ -137,6 +169,8 @@ embl-grid embl-grid--has-sidebar
       <div class="pattern-library-notes">
       <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-breadcrumbs"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-breadcrumbs.svg" alt="npm version"></a></p>
 <h2 id="about">About</h2>
+<p>Your meat-and-potatoes breadcrumbs. A max depth of no-more-than three items is recommended.</p>
+<p>The “With Related” variant allows you to indicate related items.</p>
 <h2 id="installation-and-implementation">Installation and Implementation</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-breadcrumbs</code> with this command.</p>
 <code><pre>$ <span class="hljs-built_in">npm</span> install --save @visual-framework/vf-breadcrumbs</pre></code><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
@@ -360,6 +394,8 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-variable">$vf-breadcrumbs__item-text--color</span>: set-color(vf-color-black);
 <span class="hljs-variable">$vf-breadcrumbs__item-chevron--color</span>: set-color(vf-color-gray);
+<span class="hljs-variable">$vf-breadcrumbs__item-related-text--color</span>: set-color(vf-color-gray);
+<span class="hljs-variable">$vf-breadcrumbs__item-related-link--color</span>: set-color(vf-color-gray);
 
 <span class="hljs-selector-class">.embl-grid</span> &gt; <span class="hljs-selector-class">.vf-breadcrumbs</span>:first-child {
   grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
@@ -385,6 +421,26 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-selector-class">.vf-breadcrumbs__link</span> {
   <span class="hljs-attribute">color</span>: currentColor;
 }
+
+<span class="hljs-selector-class">.vf-breadcrumbs--related</span> {
+
+  <span class="hljs-selector-class">.vf-breadcrumbs__item</span> {
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">16px</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-breadcrumbs__item-related-text--color</span>;
+    <span class="hljs-attribute">position</span>: relative;
+
+    &amp;:not(:last-of-type) {
+      &amp;::after {
+        <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+      }
+    }
+  }
+
+  <span class="hljs-selector-class">.vf-breadcrumbs__link</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-breadcrumbs__item-related-link--color</span>;
+  }
+
+}
 </pre>
           </code>
           
@@ -397,7 +453,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-breadcrumbs/vf-breadcrumbs.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">584 Bytes</span>
+        <span class="Meta-value">1.1 KB</span>
     </section>
     
   
@@ -456,6 +512,8 @@ embl-grid embl-grid--has-sidebar
   </section>
   <section data-description="pattern list">
     <div class="vf-grid vf-grid__col-3">
+      
+        
       
         
       
@@ -639,6 +697,8 @@ embl-grid embl-grid--has-sidebar
   </section>
   <section data-description="pattern list">
     <div class="vf-grid vf-grid__col-3">
+      
+        
       
         
       
@@ -982,7 +1042,35 @@ embl-grid embl-grid--has-sidebar
         
       
         
+        <p class="vf-text">
+          <a class="vf-link" href="embl-breadcrumbs-lookup.html">EMBL Breadcrumbs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
       
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-content-meta-properties.html">EMBL Content meta properties</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
         
       
         
@@ -1413,6 +1501,8 @@ embl-grid embl-grid--has-sidebar
         
       
         
+      
+        
         <p class="vf-text">
           <a class="vf-link" href="vf-activity-group.html">Acivity List Group</a>
           
@@ -1666,6 +1756,8 @@ embl-grid embl-grid--has-sidebar
         
       
         
+      
+        
         <p class="vf-text">
           <a class="vf-link" href="embl-group-page.html">EMBL Group</a>
           
@@ -1839,6 +1931,8 @@ embl-grid embl-grid--has-sidebar
   </section>
   <section data-description="pattern list">
     <div class="vf-grid vf-grid__col-3">
+      
+        
       
         
       

@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<!-- todo: update this to use the VF patterns -->
+<html lang="en" dir="ltr" class="vf-no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    window.frctl = {
+        env: 'static'
+    };
+    </script>
+    <script>var cl = document.querySelector('html').classList; cl.remove('vf-no-js'); cl.add('vf-js');</script>
+    
+<link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png">
+<link rel="manifest" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest">
+<link rel="mask-icon" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/css/styles.css?cachebust=1.2.0" type="text/css">
+
+
+<link rel="stylesheet" href="../../local.css?cachebust=1.2.0" type="text/css">
+
+
+<title>EMBL Breadcrumbs lookup | Visual Framework 2.0</title>
+
+</head>
+<body>
+
+
+
+
+
+<header class="vf-header">
+  <div class="vf-global-header">
+    <div class="vf-global-header__inner">
+    <a href="/" class="vf-logo--responsive"></a>
+
+    <p class="vf-global-header__site-name">Visual Framework for Life Science websites</p>
+    </div>
+  </div>
+</header>
+
+
+<section class="Frame-body" data-role="body">
+<!--
+embl-grid embl-grid--has-sidebar
+-->
+  
+
+
+    
+    
+
+<div class="Pen" data-behaviour="pen" id="pen-6f6ed27105bb9df7e728b7003446e4fc">
+
+    
+
+    <div class="vf-body">
+<header class="vf-grid vf-page-header | vf-u-padding-l">
+  <h1 class="vf-page-header__heading | vf-text vf-text--heading-l vf-text--has-tag">
+    EMBL Breadcrumbs lookup
+    
+
+
+
+<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #DC0A28; border-color: #DC0A28;">alhpa</span>
+
+
+
+
+  </h1>
+</header>
+</div>
+
+
+    <div class="vf-body">
+  <div class="vf-grid">
+    <div>
+
+    
+    
+    
+    
+    </div>
+  </div>
+</div>
+
+<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-6f6ed27105bb9df7e728b7003446e4fc">
+    <div class="Preview-wrapper" data-role="resizer-disabled">
+      
+       <iframe
+          class="Preview-iframe"
+          data-role="window"
+          src="../preview/embl-breadcrumbs-lookup.html"
+          sandbox="allow-same-origin allow-scripts allow-forms"
+
+          marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
+          onload="resizeIframe(this)"
+        >
+      </iframe>
+
+      <div class="vf-body">
+        <div class="vf-grid">
+          <p class="vf-figure__caption">
+            Open the above preview in a new window:
+            <a data-no-pjax href="../preview/embl-breadcrumbs-lookup.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
+</svg>
+</a>
+            <a data-no-pjax href="../render/embl-breadcrumbs-lookup.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
+</svg>
+</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+
+    <div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
+
+    <div class="vf-body">
+  <div class="vf-grid vf-grid__col-1">
+
+    <div class="pattern-info">
+      
+      <div class="pattern-library-notes">
+      <h1 id="embl-breadcrumbs-lookup-pattern">EMBL Breadcrumbs Lookup Pattern</h1>
+<p>This requires and builds atop the <code>vf-breadcrumbs</code> and
+<code>embl-content-meta-properties</code> patterns for EMBL pages.</p>
+<p>This pattern reads meta properties and then performs a lookup to the EMBL contentHub.
+Returned are appropriate primary and secondary breadcrumbs.</p>
+
+      </div>
+      
+
+      <div class="Pen-panel Pen-info" data-role="info">
+          <div class="">
+
+  
+
+  <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+  
+<h3 class="vf-text vf-text--heading-r">Code example</h3>
+<code class="Code Code--lang-html vf-code-example">
+  
+  <pre class="vf-code-example__pre">
+
+
+<span class="hljs-comment">&lt;!-- Content descriptors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:who"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Strategy and Communications"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- the people, groups and teams involved --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:where"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"EMBL"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- at which EMBL sites the content applies --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:what"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Visual Framework"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- the activities covered --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:active"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"what"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- which of the who/what/where is active --&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Content role --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:utility"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-8"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- if content is task and work based or if is meant to inspire --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:reach"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-5"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- if content is externally (public) or internally focused (those that work at EMBL) --&gt;</span>
+<span class="hljs-comment">&lt;!-- Page infromation --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:maintainer"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Strategy and Communications"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- the contact person or group responsible for the page --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:last-review"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"2019-01-20"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- the last time the page was reviewed or updated --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:review-cycle"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"180"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- how long in days before the page should be checked --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:expiry"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"2019-06-20"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- if there is a fixed point in time when the page is no longer relevant --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-breadcrumbs-lookup"</span> <span class="hljs-attr">data-embl-js-breadcrumbs-lookup</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs | vf-list vf-list--inline"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs__item | embl-breadcrumbs-lookup__loading-text"</span>&gt;</span>
+            Breadcrumbs are loading...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- &lt;li class="vf-breadcrumbs__item"&gt;
+        &lt;a href="JavaScript:Void(0);" class="vf-breadcrumbs__link"&gt;Explore&lt;/a&gt;
+    &lt;/li&gt; --&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs vf-breadcrumbs--related | vf-list vf-list--inline"</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- &lt;li class="vf-breadcrumbs__item"&gt;
+        &lt;a href="JavaScript:Void(0);" class="vf-breadcrumbs__link"&gt;Placeholder&lt;/a&gt;
+      &lt;/li&gt; --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  </pre>
+  
+</code>
+
+
+
+  <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+  <div class="vf-grid vf-grid__col-3">
+    <div class="vf-grid__col--span-2">
+      
+
+
+<h3 class="vf-text vf-text--heading-r">Resources and files</h3>
+
+<div class="vf-tabs">
+  <ul class="vf-tabs__list" data-vf-js-tabs>
+    <!--<li class="vf-tabs__item">Pattern files</li>-->
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--04901a7ad89598b5e5a0ae61e75d2dde">CHANGELOG.md</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--ac0d5c26cee28e6390695e6e40dfbf65">embl-breadcrumbs-lookup.js</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--55616e5aa106d0c451ddbe0368fc29ff">embl-breadcrumbs-lookup.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--7a40f9f7caca0afa998c3468d163f776">index.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--12b87a6db5a17baebffe32eab7d8eb91">package.json</a>
+      </li>
+      
+    
+  </ul>
+
+</div>
+<div class="vf-tabs-content" data-vf-js-tabs-content>
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--04901a7ad89598b5e5a0ae61e75d2dde">
+    <!--  is-active -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-section"># 0.1.0</span>
+
+<span class="hljs-section">### Added</span>
+<span class="hljs-bullet">- </span>added this
+<span class="hljs-bullet">- </span>added that
+
+<span class="hljs-section">### Changes</span>
+
+<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">- </span>changed that
+
+<span class="hljs-section">### Removed</span>
+
+<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">- </span>deleted that
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-breadcrumbs-lookup/CHANGELOG.md"><span>/components/raw/embl-breadcrumbs-lookup/CHANGELOG.md</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-breadcrumbs-lookup/CHANGELOG.md</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">133 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--ac0d5c26cee28e6390695e6e40dfbf65">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-breadcrumbs-lookup</span>
+
+<span class="hljs-comment">/**
+ * Take any appropriate actions depending on present metaTags
+ * @example emblBreadcrumbsLookup()
+ * @param {object} [metaProperties] - if you do not have meta tags on the page,
+ *                                    you can explicitly pass options
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcrumbsLookup</span>(<span class="hljs-params">metaProperties</span>) </span>{
+  <span class="hljs-keyword">var</span> emblBreadcrumbTarget = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-embl-js-breadcrumbs-lookup] &gt; .vf-breadcrumbs'</span>);
+
+  <span class="hljs-keyword">if</span> (emblBreadcrumbTarget.length === <span class="hljs-number">0</span>) {
+    <span class="hljs-comment">// console.warn('There is no `[data-embl-js-breadcrumbs-lookup] &gt; .vf-breadcrumbs` in which to insert the breadcrumbs; exiting');</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  }
+  <span class="hljs-keyword">if</span> (emblBreadcrumbTarget.length &gt; <span class="hljs-number">1</span>) {
+    <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'There is more than one `[data-embl-js-breadcrumbs-lookup] &gt; .vf-breadcrumbs` in which to insert the breadcrumbs; continuing but only the first element will be updated.'</span>);
+  }
+
+  <span class="hljs-keyword">var</span> majorFacets = [<span class="hljs-string">'who'</span>,<span class="hljs-string">'what'</span>,<span class="hljs-string">'where'</span>];
+
+  <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'todo: rather than writing to the DOM each time, we shold construct the full breadcrumb and write once.'</span>);
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; majorFacets.length; i++) {
+    <span class="hljs-keyword">if</span> (majorFacets[i] == metaProperties.active) {
+      emblBreadcrumbAppend(emblBreadcrumbTarget,metaProperties[majorFacets[i]],majorFacets[i],<span class="hljs-string">'primary'</span>);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// do the related paths</span>
+      emblBreadcrumbAppend(emblBreadcrumbTarget,metaProperties[majorFacets[i]],majorFacets[i],<span class="hljs-string">'related'</span>);
+    }
+  }
+}
+
+<span class="hljs-comment">/**
+ * Get the EMBL taxonomy json from the ContentHub
+ * @example emblGetTaxonomy()
+ * @param {string} [url] - URL to pull the taxonomy from
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblGetTaxonomy</span>(<span class="hljs-params">url</span>) </span>{
+  <span class="hljs-keyword">var</span> url = url || <span class="hljs-string">'http://dev.content.embl.org/api/v1/pattern.json?pattern=embl-taxonomy'</span>;
+
+  <span class="hljs-comment">// from https://developers.google.com/web/fundamentals/primers/promises</span>
+  <span class="hljs-comment">// Return a new promise.</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-comment">// Do the usual XHR stuff</span>
+    <span class="hljs-keyword">var</span> req = <span class="hljs-keyword">new</span> XMLHttpRequest();
+    req.open(<span class="hljs-string">'GET'</span>, url);
+
+    req.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-comment">// This is called even on 404 etc</span>
+      <span class="hljs-comment">// so check the status</span>
+      <span class="hljs-keyword">if</span> (req.status == <span class="hljs-number">200</span>) {
+        <span class="hljs-comment">// Resolve the promise with the response text</span>
+        resolve(req.response);
+      }
+      <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// Otherwise reject with the status text</span>
+        <span class="hljs-comment">// which will hopefully be a meaningful error</span>
+        reject(<span class="hljs-built_in">Error</span>(req.statusText));
+      }
+    };
+
+    <span class="hljs-comment">// Handle network errors</span>
+    req.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      reject(<span class="hljs-built_in">Error</span>(<span class="hljs-string">"Network Error"</span>));
+    };
+
+    <span class="hljs-comment">// Make the request</span>
+    req.send();
+  });
+}
+
+<span class="hljs-comment">/**
+ * Receive a term and its context and create a breadcrumb
+ * @example emblBreadcrumbAppend(term,facet,type)
+ * @param {string} [termName]  - the taxonomy item found, e.g. `Cancer`
+ * @param {string} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
+ * @param {string} [type]  - if this is a `primary` or `related` path
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcrumbAppend</span>(<span class="hljs-params">breadcrumbTarget,termName,facet,type</span>) </span>{
+  <span class="hljs-comment">// console.log('Processing breadcrumb for:', termName + ', ' + facet + ', ' + type);</span>
+
+  <span class="hljs-comment">// find the related breadcrumb ul, if it doesn't exist, make it</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRelatedBreadcrumbTarget</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> breadcrumbTargetRelated = breadcrumbTarget.querySelectorAll(<span class="hljs-string">'.vf-breadcrumbs--related'</span>);
+    <span class="hljs-keyword">if</span> (breadcrumbTargetRelated.length &gt; <span class="hljs-number">0</span>) {
+      <span class="hljs-comment">// there's already a releated container, use it</span>
+      breadcrumbTargetRelated = breadcrumbTargetRelated[<span class="hljs-number">0</span>];
+      <span class="hljs-keyword">return</span> breadcrumbTargetRelated;
+    } <span class="hljs-keyword">else</span> {
+      breadcrumbTarget.innerHTML += <span class="hljs-string">`&lt;ul class="vf-breadcrumbs vf-breadcrumbs--related | vf-list vf-list--inline"&gt;&lt;/ul&gt;`</span>;
+      <span class="hljs-keyword">return</span> breadcrumbTarget.querySelectorAll(<span class="hljs-string">'.vf-breadcrumbs--related'</span>)[<span class="hljs-number">0</span>];
+    }
+  }
+
+  <span class="hljs-comment">// ensure a "related" label is present</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addRelatedBreadcrumbLabel</span>(<span class="hljs-params">breadcrumbTargetRelated</span>) </span>{
+    <span class="hljs-keyword">var</span> relatedLabel = breadcrumbTargetRelated.querySelectorAll(<span class="hljs-string">'.vf-breadcrumbs__item-related-label'</span>);
+
+    <span class="hljs-keyword">if</span> (relatedLabel.length === <span class="hljs-number">0</span>) {
+      <span class="hljs-comment">// no label, so we make it</span>
+      <span class="hljs-comment">// breadcrumbTargetRelated</span>
+      <span class="hljs-keyword">var</span> newRelatedLabel = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>);
+      newRelatedLabel.innerHTML = <span class="hljs-string">'Related'</span>;
+      newRelatedLabel.classList.add(<span class="hljs-string">'vf-breadcrumbs__item'</span>,<span class="hljs-string">'vf-breadcrumbs__item-related-label'</span>)
+      breadcrumbTargetRelated.prepend(newRelatedLabel);
+    }
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCurrentTerm</span>(<span class="hljs-params">termName</span>) </span>{
+    <span class="hljs-keyword">if</span> (termName === <span class="hljs-string">'EMBL'</span>) termName = <span class="hljs-string">'All EMBL sites'</span>; <span class="hljs-comment">// hack as we're not using IDs</span>
+
+    <span class="hljs-keyword">var</span> termObject;
+
+    <span class="hljs-built_in">Array</span>.prototype.forEach.call(emblTaxonomy.terms, (term, i) =&gt; {
+      <span class="hljs-keyword">if</span> (term.name_display === termName) {
+        termObject = term;
+        <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
+      }
+    });
+
+    <span class="hljs-keyword">return</span> termObject;
+  }
+
+  <span class="hljs-comment">/**
+   * Take a term and get its parent term
+   * @example getBreadcrumbParentTerm(parents,context)
+   * @param {array} [parents]  - array of UUIDs
+   * @param {string} [facet] - who, what, where
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBreadcrumbParentTerm</span>(<span class="hljs-params">parents,facet</span>) </span>{
+    <span class="hljs-keyword">var</span> parentTodos = {
+      <span class="hljs-number">1</span>: <span class="hljs-string">'what is the parent term context? who/what/where'</span>,
+      <span class="hljs-comment">// 2: 'scan the taxonomy and get any parent IDs',</span>
+      <span class="hljs-comment">// 3: 'if there are parent IDs, add breadcrumb and set URL',</span>
+      <span class="hljs-number">4</span>: <span class="hljs-string">'if parent was found, does the parent have a parent?'</span>
+    };
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Todos for getBreadcrumbParentTerm():'</span>,parentTodos);
+
+    <span class="hljs-comment">// what = 98831673-5bc8-4348-8f42-17b09c1d5462</span>
+    <span class="hljs-comment">// where = ce40f8b4-c7c3-40fe-911e-8d248654fe7e</span>
+    <span class="hljs-comment">// who = 8c9899b9-b197-4750-b955-894cda8bf9d5</span>
+
+    <span class="hljs-comment">// look up each parent UUID</span>
+    <span class="hljs-comment">// todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless</span>
+    <span class="hljs-comment">//       of it's who/what/where path, but maybe this will provide an interesting</span>
+    <span class="hljs-comment">//       "odeur d'information"</span>
+    <span class="hljs-built_in">Array</span>.prototype.forEach.call(parents, (parentId, i) =&gt; {
+      <span class="hljs-built_in">Array</span>.prototype.forEach.call(emblTaxonomy.terms, (term, i) =&gt; {
+        <span class="hljs-keyword">if</span> (parentId === term.uuid) {
+          insertBreadcrumb(term.name_display,term.url,<span class="hljs-string">'prepend'</span>);
+          <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
+        }
+      });
+    });
+
+    <span class="hljs-keyword">return</span>;
+  }
+
+  <span class="hljs-comment">/**
+   * Generate an HTML elem and insert it into the DOM
+   * @example insertBreadcrumb(term,breadcrumbUrl,position)
+   * @param {string} [termName]  - the taxonomy string of the item, e.g. `Cancer`
+   * @param {string} [breadcrumbUrl] - a fully formed URL
+   * @param {string} [position] - where to place it, `prepend` or `append`
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertBreadcrumb</span>(<span class="hljs-params">termName,breadcrumbUrl,position</span>) </span>{
+    <span class="hljs-keyword">var</span> newBreadcrumb = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>);
+    newBreadcrumb.innerHTML = <span class="hljs-string">'&lt;a href="'</span>+breadcrumbUrl+<span class="hljs-string">'" class="vf-breadcrumbs__link"&gt;'</span> + termName + <span class="hljs-string">'&lt;/a&gt;'</span>;
+    newBreadcrumb.classList.toggle(<span class="hljs-string">'vf-breadcrumbs__item'</span>);
+
+    <span class="hljs-keyword">if</span> (position === <span class="hljs-string">'prepend'</span>) {
+      breadcrumbTarget.prepend(newBreadcrumb);
+    } <span class="hljs-keyword">else</span> {
+      breadcrumbTargetRelated.append(newBreadcrumb);
+    }
+  }
+
+  <span class="hljs-keyword">var</span> currentTerm = getCurrentTerm(termName);
+  <span class="hljs-keyword">var</span> breadcrumbId = currentTerm.uuid,
+      breadcrumbUrl = currentTerm.url,
+      breadcrumbParents = currentTerm.parents;
+
+  <span class="hljs-comment">// narrow down to the first matching element</span>
+  breadcrumbTarget = breadcrumbTarget[<span class="hljs-number">0</span>];
+
+  <span class="hljs-keyword">if</span> (type == <span class="hljs-string">'primary'</span>) {
+    <span class="hljs-comment">// remove any loading text</span>
+    <span class="hljs-keyword">var</span> loadingText = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'.embl-breadcrumbs-lookup__loading-text'</span>);
+    <span class="hljs-keyword">if</span> (loadingText.length &gt; <span class="hljs-number">0</span>) { loadingText[<span class="hljs-number">0</span>].remove(); }
+
+    <span class="hljs-comment">// add breadcrumb</span>
+    insertBreadcrumb(currentTerm.name_display,breadcrumbUrl,<span class="hljs-string">'prepend'</span>);
+
+    <span class="hljs-comment">// fetch parents</span>
+    getBreadcrumbParentTerm(breadcrumbParents, facet);
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (type == <span class="hljs-string">'related'</span>) {
+    <span class="hljs-comment">// get/make the related ul</span>
+    <span class="hljs-keyword">var</span> breadcrumbTargetRelated = getRelatedBreadcrumbTarget();
+    <span class="hljs-comment">// ensure there's a label</span>
+    addRelatedBreadcrumbLabel(breadcrumbTargetRelated);
+
+    <span class="hljs-comment">// add breadcrumb</span>
+    insertBreadcrumb(currentTerm.name_display,breadcrumbUrl,<span class="hljs-string">'append'</span>);
+  }
+}
+
+
+<span class="hljs-keyword">var</span> emblTaxonomy = {};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcrumbs</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// We start the breadcrumbs by first getting the EMBL taxonomy.</span>
+  <span class="hljs-comment">// todo: some sort of caching here, perhaps we write to local storage.</span>
+  <span class="hljs-comment">// todo: abstract this out into its own `embl-taxonomy` pattern?</span>
+  emblGetTaxonomy().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
+    emblTaxonomy = <span class="hljs-built_in">JSON</span>.parse(response);
+
+    <span class="hljs-comment">// Preprocess the emblTaxonomy for some cleanup tasks</span>
+    <span class="hljs-built_in">Array</span>.prototype.forEach.call(emblTaxonomy.terms, (term, i) =&gt; {
+      <span class="hljs-comment">// If `name_display` is not set, use the internal name</span>
+      <span class="hljs-keyword">if</span> (term.name_display === <span class="hljs-string">''</span>) term.name_display = term.name;
+      <span class="hljs-comment">// handle null URL</span>
+      <span class="hljs-keyword">if</span> (term.url === <span class="hljs-string">''</span>) term.url = <span class="hljs-string">'https://embl.org/#no_url_specified'</span>;
+    });
+
+    <span class="hljs-comment">// Invoke embl-content-meta-properties function to pull tags from page</span>
+    emblBreadcrumbsLookup(emblContentMetaProperties_Read());
+
+  }, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Failed to get EMBL taxonomy"</span>, error);
+  });
+}
+
+
+<span class="hljs-comment">// Prepend polyfill for IE</span>
+<span class="hljs-comment">// Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/prepend()/prepend().md</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">arr</span>) </span>{
+  arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>{
+    <span class="hljs-keyword">if</span> (item.hasOwnProperty(<span class="hljs-string">'prepend'</span>)) {
+      <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-built_in">Object</span>.defineProperty(item, <span class="hljs-string">'prepend'</span>, {
+      <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prepend</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> argArr = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>),
+          docFrag = <span class="hljs-built_in">document</span>.createDocumentFragment();
+
+        argArr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">argItem</span>) </span>{
+          <span class="hljs-keyword">var</span> isNode = argItem <span class="hljs-keyword">instanceof</span> Node;
+          docFrag.appendChild(isNode ? argItem : <span class="hljs-built_in">document</span>.createTextNode(<span class="hljs-built_in">String</span>(argItem)));
+        });
+
+        <span class="hljs-keyword">this</span>.insertBefore(docFrag, <span class="hljs-keyword">this</span>.firstChild);
+      }
+    });
+  });
+})([Element.prototype, Document.prototype, DocumentFragment.prototype]);
+
+<span class="hljs-comment">// Run it on default</span>
+emblBreadcrumbs();
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.js"><span>/components/raw/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.js</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.js</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">9.4 KB</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--55616e5aa106d0c451ddbe0368fc29ff">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-breadcrumbs-lookup</span>
+
+<span class="hljs-selector-class">.embl-breadcrumbs-lookup</span> {
+
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.scss"><span>/components/raw/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">58 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--7a40f9f7caca0afa998c3468d163f776">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// setup files required</span>
+
+<span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+
+<span class="hljs-comment">// pattern specific styles</span>
+
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-breadcrumbs-lookup.scss'</span>;
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-breadcrumbs-lookup/index.scss"><span>/components/raw/embl-breadcrumbs-lookup/index.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-breadcrumbs-lookup/index.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">234 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--12b87a6db5a17baebffe32eab7d8eb91">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre">{
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.1"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"embl-breadcrumbs-lookup"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"embl-breadcrumbs-lookup component"</span>,
+  <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/"</span>,
+  <span class="hljs-attr">"author"</span>: <span class="hljs-string">"VF"</span>,
+  <span class="hljs-attr">"license"</span>: <span class="hljs-string">"Apache 2.0"</span>,
+  <span class="hljs-attr">"style"</span>: <span class="hljs-string">"build/embl-breadcrumbs-lookup.css"</span>,
+  <span class="hljs-attr">"main"</span>: <span class="hljs-string">"build/index.js"</span>,
+  <span class="hljs-attr">"files"</span>: [
+    <span class="hljs-string">"index.scss"</span>,
+    <span class="hljs-string">"embl-breadcrumbs-lookup.scss"</span>,
+    <span class="hljs-string">"embl-breadcrumbs-lookup.css"</span>
+  ],
+  <span class="hljs-attr">"test"</span>: <span class="hljs-string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,
+  <span class="hljs-attr">"repo"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/tree/master/components/elements/embl-breadcrumbs-lookup"</span>,
+  <span class="hljs-attr">"bugs"</span>: {
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/issues"</span>
+  },
+  <span class="hljs-attr">"dependencies"</span>: {
+  },
+  <span class="hljs-attr">"keywords"</span>: [
+    <span class="hljs-string">"fractal"</span>,
+    <span class="hljs-string">"component"</span>
+  ]
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-breadcrumbs-lookup/package.json"><span>/components/raw/embl-breadcrumbs-lookup/package.json</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-breadcrumbs-lookup/package.json</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">751 Bytes</span>
+    </section>
+    
+  
+</div>
+
+
+
+
+    </div>
+    <div class="vf-grid__col--span-1">
+      <h3 class="vf-text vf-text--heading-r">Meta information</h3>
+<ul class="Meta">
+    <li class="Meta-item">
+        <strong class="Meta-key">Handle:</strong>
+        <span class="Meta-value">@embl-breadcrumbs-lookup</span>
+    </li>
+    
+    
+    
+    <li class="Meta-item">
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.hbs</span>
+    </li>
+    
+    <li class="Meta-item">
+        <strong class="Meta-key">References <em class="Meta-count">(1)</em>:</strong>
+        <span class="Meta-value Meta-value--linkList">
+        
+            <a href="embl-content-meta-properties.html">@<span>embl-content-meta-properties</span></a>
+        
+        </span>
+    </li class="Meta-item">
+    
+    
+</ul>
+
+    </div>
+  </div>
+
+</div>
+
+      </div>
+    </div>
+
+    <!-- List all the patterns at the footer -->
+    
+
+      <div>
+      
+
+<h1 class="vf-text vf-text--heading-xl vf-text--invert">All the patterns</h1>
+
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Grids
+      <a id="grid"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      Put stuff in columns.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-grid.html">EMBL Grid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-grid.html">Grid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-grid-page.html">Page Grid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Elements
+      <a id="element"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      The micro elements of the pattern library.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-conditional-edit.html">EMBL Conditional Edit</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-logo.html">EMBL Logo</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-badge.html">Badges</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-blockquote.html">Blockquote</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #E89300;" title="beta"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-box.html">Box</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-button.html">Button</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #E89300;" title="beta"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-divider.html">Divider</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-favicon.html">Favicon</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-figure.html">Figure</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-heading.html">Headings</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-link.html">Link</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-list.html">Lists</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-logo.html">Logo</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-no-js.html">No JS</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-text.html">Text</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Blocks
+      <a id="block"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      Simple patterns like sections headers, galleries and so on.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="">EMBL Breadcrumbs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-content-meta-properties.html">EMBL Content meta properties</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-activity-list.html">Activity List</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-article-meta-information.html">Article Meta Information</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-breadcrumbs.html">Breadcrumbs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-code-example.html">Code Example</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-contact.html">Contact</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-data-protection-banner.html">Data Protection</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-factoid.html">Factoid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-font-plex-mono.html">Plex Mono Font</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-font-plex-sans.html">Plex Sans Font</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-footer.html">Footer</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-form.html">Vf Form</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-global-header.html">Global Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-link-list.html">Links List</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-masthead.html">Masthead</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-navigation.html">Navigation</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-page-header.html">Page Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-section-header.html">Section Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-summary.html">Summary</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-tabs.html">Tabs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-video.html">Video</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-video-teaser.html">Video Teaser</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Container
+      <a id="container"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      More complex patterns that sometimes have specific layout, like page intros, mastheads, news sections and so on.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-activity-group.html">Acivity List Group</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-banner.html">Banner</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-content.html">Content</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-header.html">Site Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-intro.html">Intro</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-news-container.html">News Container</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-summary-container.html">Summary Container</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-video-container.html">Video Container</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Boilerplates
+      <a id="boilerplate"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      Whole-page templates that are a collection of many patterns.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-boilerplate-page.html">EMBL Boilerplate</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-group-page.html">EMBL Group</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-subsite-page.html">EMBL Subsite</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-boilerplate-page.html">VF Boilerplate</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Deprecated
+      <a id="deprecated"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      These patterns are no longer maintained.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-job-description.html">Job Description</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-news-item.html">News Item</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-snippet.html">Snippet</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-tag.html">Tags</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+      </div>
+
+      
+
+    
+  </div>
+</div>
+
+
+    
+
+</div>
+
+
+</section>
+
+
+
+
+<!--<script src="../../themes/mandelbrot/js/mandelbrot.js?cachebust=1.2.0"></script>-->
+
+
+<script src="https://dev.assets.emblstatic.net/vf/scripts/scripts.js?cachebust=1.2.0"></script>
+
+
+<script>
+  var resizeIframeChecks = 0;
+  function resizeIframe(obj) {
+    var obj = obj || document.getElementsByClassName("Preview-iframe")[0];
+    var newHeight = obj.contentWindow.document.body.scrollHeight;
+    if (newHeight < 10) {
+      if (resizeIframeChecks < 2) {
+        // if less than 10px high, that's weird check again. maybe some JS is at play?
+        setTimeout(resizeIframe, 1000);
+        resizeIframeChecks ++;
+      }
+    } else {
+      obj.style.height = newHeight + 'px';
+    }
+  }
+</script>
+
+
+</body>
+</html>

@@ -141,8 +141,9 @@ embl-grid embl-grid--has-sidebar
 <ul>
 <li>Content descriptors<ul>
 <li><code>embl:who</code> the people, groups and teams involved</li>
-<li><code>embl:where</code> at which EMBL sites the content applies</li>
 <li><code>embl:what</code> the activities covered</li>
+<li><code>embl:where</code> at which EMBL sites the content applies</li>
+<li><code>embl:active</code> which of the above three facets is most important for this content</li>
 </ul>
 </li>
 <li>Content role:<ul>
@@ -190,6 +191,9 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-comment">&lt;!-- at which EMBL sites the content applies --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:what"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"services, websites"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- the activities covered --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:active"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"what"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- which of the who/what/where is active --&gt;</span>
+
 <span class="hljs-comment">&lt;!-- Content role --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:utility"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-8"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- if content is task and work based or if is meant to inspire --&gt;</span>
@@ -198,11 +202,11 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-comment">&lt;!-- Page infromation --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:maintainer"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Strategy and Communications"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- the contact person or group responsible for the page --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:last-review"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"[object Object]"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:last-review"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"2019-01-20"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- the last time the page was reviewed or updated --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:review-cycle"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"180"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- how long in days before the page should be checked --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:expiry"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"[object Object]"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:expiry"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"2019-06-20"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- if there is a fixed point in time when the page is no longer relevant --&gt;</span>
 
   </pre>
@@ -309,19 +313,20 @@ embl-grid embl-grid--has-sidebar
 
 
 <span class="hljs-comment">/**
- * Read metaProperties from existing metaTags and then runs
- * emblContentMetaProperties_Process()
+ * Read metaProperties from page's metatags
  * @example emblContentMetaProperties_Read()
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentMetaProperties_Read</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">var</span> metaProperties = {};
   <span class="hljs-comment">// &lt;!-- Content descriptors --&gt;</span>
   <span class="hljs-comment">// &lt;meta name="embl:who" content="{{ meta-who }}"&gt; &lt;!-- the people, groups and teams involved --&gt;</span>
-  <span class="hljs-comment">// &lt;meta name="embl:where" content="{{ meta-where }}"&gt; &lt;!-- at which EMBL sites the content applies --&gt;</span>
   <span class="hljs-comment">// &lt;meta name="embl:what" content="{{ meta-what }}"&gt; &lt;!-- the activities covered --&gt;</span>
+  <span class="hljs-comment">// &lt;meta name="embl:where" content="{{ meta-where }}"&gt; &lt;!-- at which EMBL sites the content applies --&gt;</span>
+  <span class="hljs-comment">// &lt;meta name="embl:active" content="{{ meta-active }}"&gt; &lt;!-- which of the who/what/where is active --&gt;</span>
   metaProperties.who = metaProperties.who || <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"meta[name='embl:who']"</span>);
   metaProperties.what = metaProperties.what || <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"meta[name='embl:what']"</span>);
-  metaProperties.who = metaProperties.who || <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"meta[name='embl:who']"</span>);
+  metaProperties.where = metaProperties.where || <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"meta[name='embl:where']"</span>);
+  metaProperties.active = metaProperties.active || <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"meta[name='embl:active']"</span>);
 
   <span class="hljs-comment">// &lt;!-- Content role --&gt;</span>
   <span class="hljs-comment">// &lt;meta name="embl:utility" content="-8"&gt; &lt;!-- if content is task and work based or if is meant to inspire --&gt;</span>
@@ -347,23 +352,8 @@ embl-grid embl-grid--has-sidebar
     }
   }
 
-  emblContentMetaProperties_Process(metaProperties);
+  <span class="hljs-keyword">return</span> metaProperties;
 }
-
-<span class="hljs-comment">/**
- * Take any appropriate actions depending on present metaTags
- * @example emblContentMetaProperties_Process()
- * @param {object} [metaProperties] - if you do not have meta tags on the page,
- *                                    you can explicitly pass options
- */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentMetaProperties_Process</span>(<span class="hljs-params">metaProperties</span>) </span>{
-  <span class="hljs-keyword">var</span> metaProperties = metaProperties || {<span class="hljs-attr">a</span>: a, <span class="hljs-attr">b</span>: b, <span class="hljs-attr">c</span>: c};
-
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'readTags'</span>,metaProperties)
-}
-
-<span class="hljs-comment">// Process metaProperties</span>
-emblContentMetaProperties_Read();
 </pre>
           </code>
           
@@ -376,7 +366,7 @@ emblContentMetaProperties_Read();
         <span class="Meta-value">components/embl-content-meta-properties/embl-content-meta-properties.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">3.3 KB</span>
+        <span class="Meta-value">3 KB</span>
     </section>
     
   
@@ -452,19 +442,24 @@ emblContentMetaProperties_Read();
   <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/"</span>,
   <span class="hljs-attr">"author"</span>: <span class="hljs-string">"VF"</span>,
   <span class="hljs-attr">"license"</span>: <span class="hljs-string">"Apache 2.0"</span>,
-  <span class="hljs-attr">"style"</span>: <span class="hljs-string">"build/embl-content-meta-properties.css"</span>,
-  <span class="hljs-attr">"main"</span>: <span class="hljs-string">"build/index.js"</span>,
+  <span class="hljs-attr">"style"</span>: <span class="hljs-string">"embl-content-meta-properties.css"</span>,
+  <span class="hljs-attr">"sass"</span>: <span class="hljs-string">"index.scss"</span>,
   <span class="hljs-attr">"files"</span>: [
     <span class="hljs-string">"index.scss"</span>,
+    <span class="hljs-string">"embl-content-meta-properties.scss"</span>,
     <span class="hljs-string">"embl-content-meta-properties.css"</span>
   ],
   <span class="hljs-attr">"test"</span>: <span class="hljs-string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,
   <span class="hljs-attr">"publishConfig"</span>: {
     <span class="hljs-attr">"access"</span>: <span class="hljs-string">"public"</span>
   },
-  <span class="hljs-attr">"repo"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/tree/master/components/blocks/embl-content-meta-properties"</span>,
+  <span class="hljs-attr">"repo"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/tree/master/components/embl-content-meta-properties"</span>,
   <span class="hljs-attr">"bugs"</span>: {
-    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/issues"</span>
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/issues/new"</span>
+  },
+  <span class="hljs-attr">"dependencies"</span>: {
+    <span class="hljs-attr">"@visual-framework/vf-sass-config"</span>: <span class="hljs-string">"^0.0.16"</span>,
+    <span class="hljs-attr">"node-normalize-scss"</span>: <span class="hljs-string">"^8.0.0"</span>
   },
   <span class="hljs-attr">"keywords"</span>: [
     <span class="hljs-string">"fractal"</span>,
@@ -484,7 +479,7 @@ emblContentMetaProperties_Read();
         <span class="Meta-value">components/embl-content-meta-properties/package.json</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">837 Bytes</span>
+        <span class="Meta-value">977 Bytes</span>
     </section>
     
   
@@ -511,10 +506,12 @@ emblContentMetaProperties_Read();
     
     
     <li class="Meta-item">
-        <strong class="Meta-key">Referenced by <em class="Meta-count">(5)</em>:</strong>
+        <strong class="Meta-key">Referenced by <em class="Meta-count">(6)</em>:</strong>
         <span class="Meta-value Meta-value--linkList">
         
             <a href="embl-boilerplate-page.html">@<span>embl-boilerplate-page</span></a>, 
+        
+            <a href="embl-breadcrumbs-lookup.html">@<span>embl-breadcrumbs-lookup</span></a>, 
         
             <a href="embl-group-page.html">@<span>embl-group-page</span></a>, 
         
@@ -560,6 +557,8 @@ emblContentMetaProperties_Read();
   </section>
   <section data-description="pattern list">
     <div class="vf-grid vf-grid__col-3">
+      
+        
       
         
       
@@ -743,6 +742,8 @@ emblContentMetaProperties_Read();
   </section>
   <section data-description="pattern list">
     <div class="vf-grid vf-grid__col-3">
+      
+        
       
         
       
@@ -1086,7 +1087,35 @@ emblContentMetaProperties_Read();
         
       
         
+        <p class="vf-text">
+          <a class="vf-link" href="embl-breadcrumbs-lookup.html">EMBL Breadcrumbs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
       
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="">EMBL Content meta properties</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
         
       
         
@@ -1517,6 +1546,8 @@ emblContentMetaProperties_Read();
         
       
         
+      
+        
         <p class="vf-text">
           <a class="vf-link" href="vf-activity-group.html">Acivity List Group</a>
           
@@ -1770,6 +1801,8 @@ emblContentMetaProperties_Read();
         
       
         
+      
+        
         <p class="vf-text">
           <a class="vf-link" href="embl-group-page.html">EMBL Group</a>
           
@@ -1943,6 +1976,8 @@ emblContentMetaProperties_Read();
   </section>
   <section data-description="pattern list">
     <div class="vf-grid vf-grid__col-3">
+      
+        
       
         
       

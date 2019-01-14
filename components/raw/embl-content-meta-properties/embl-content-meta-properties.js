@@ -5,19 +5,20 @@
 
 
 /**
- * Read metaProperties from existing metaTags and then runs
- * emblContentMetaProperties_Process()
+ * Read metaProperties from page's metatags
  * @example emblContentMetaProperties_Read()
  */
 function emblContentMetaProperties_Read() {
   var metaProperties = {};
   // <!-- Content descriptors -->
   // <meta name="embl:who" content="{{ meta-who }}"> <!-- the people, groups and teams involved -->
-  // <meta name="embl:where" content="{{ meta-where }}"> <!-- at which EMBL sites the content applies -->
   // <meta name="embl:what" content="{{ meta-what }}"> <!-- the activities covered -->
+  // <meta name="embl:where" content="{{ meta-where }}"> <!-- at which EMBL sites the content applies -->
+  // <meta name="embl:active" content="{{ meta-active }}"> <!-- which of the who/what/where is active -->
   metaProperties.who = metaProperties.who || document.querySelector("meta[name='embl:who']");
   metaProperties.what = metaProperties.what || document.querySelector("meta[name='embl:what']");
-  metaProperties.who = metaProperties.who || document.querySelector("meta[name='embl:who']");
+  metaProperties.where = metaProperties.where || document.querySelector("meta[name='embl:where']");
+  metaProperties.active = metaProperties.active || document.querySelector("meta[name='embl:active']");
 
   // <!-- Content role -->
   // <meta name="embl:utility" content="-8"> <!-- if content is task and work based or if is meant to inspire -->
@@ -43,20 +44,5 @@ function emblContentMetaProperties_Read() {
     }
   }
 
-  emblContentMetaProperties_Process(metaProperties);
+  return metaProperties;
 }
-
-/**
- * Take any appropriate actions depending on present metaTags
- * @example emblContentMetaProperties_Process()
- * @param {object} [metaProperties] - if you do not have meta tags on the page,
- *                                    you can explicitly pass options
- */
-function emblContentMetaProperties_Process(metaProperties) {
-  var metaProperties = metaProperties || {a: a, b: b, c: c};
-
-  console.log('readTags',metaProperties)
-}
-
-// Process metaProperties
-emblContentMetaProperties_Read();
