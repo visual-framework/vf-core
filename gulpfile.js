@@ -41,6 +41,10 @@ const reporter    = require('postcss-reporter');
 const syntax_scss = require('postcss-scss');
 const stylelint   = require('stylelint');
 
+// Image things
+
+const svgo = require('gulp-svgo');
+
 // JS Stuff
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
@@ -195,6 +199,15 @@ gulp.task('pattern-assets', function() {
 });
 
 
+// -----------------------------------------------------------------------------
+// Pattern Assets
+// -----------------------------------------------------------------------------
+gulp.task('images', () => {
+
+    return gulp.src('./components/*.svg')
+        .pipe(svgo())
+        .pipe(gulp.dest('./components'));
+});
 
 // -----------------------------------------------------------------------------
 // Design Token Tasks
