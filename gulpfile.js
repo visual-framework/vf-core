@@ -6,7 +6,7 @@ const fs = require('fs');
 // Configuration
 // -----------------------------------------------------------------------------
 
-const SassInput = './assets/scss/styles.scss';
+const SassInput = './components/vf-core/index.scss';
 const SassOutput = './public/css';
 const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
 const config = JSON.parse(fs.readFileSync('./package.json'));
@@ -41,6 +41,10 @@ const reporter    = require('postcss-reporter');
 const syntax_scss = require('postcss-scss');
 const stylelint   = require('stylelint');
 
+// Image things
+
+const svgo = require('gulp-svgo');
+
 // JS Stuff
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
@@ -69,7 +73,8 @@ gulp.task('css', function() {
       path.resolve(__dirname, 'components/vf-sass-config/functions'),
       path.resolve(__dirname, 'components/vf-sass-config/mixins'),
       path.resolve(__dirname, 'assets/scss'),
-      path.resolve(__dirname, 'components')
+      path.resolve(__dirname, 'components'),
+      path.resolve(__dirname, 'components/vf-core-patterns')
     ]
   };
   return gulp
@@ -84,6 +89,11 @@ gulp.task('css', function() {
     )
     .pipe(browserSync.stream())
     .pipe(sourcemaps.write())
+    .pipe(rename(
+      {
+        basename: "styles"
+      }
+    ))
     .pipe(gulp.dest(SassOutput))
     .pipe(cssnano())
     .pipe(rename(
@@ -194,6 +204,15 @@ gulp.task('pattern-assets', function() {
 });
 
 
+// -----------------------------------------------------------------------------
+// Pattern Assets
+// -----------------------------------------------------------------------------
+gulp.task('images', () => {
+
+    return gulp.src('./components/**/*.svg')
+        .pipe(svgo())
+        .pipe(gulp.dest('./components'));
+});
 
 // -----------------------------------------------------------------------------
 // Design Token Tasks
@@ -325,9 +344,8 @@ gulp.task('CSSGen', function(done) {
 gulp.task('watch', function(done) {
   fractal.watch();
   gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
-
-  gulp.watch(['./assets/scripts/**/*.js','./components/**/*.js'], gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*', gulp.series('pattern-assets')).on('change', reload);
+  gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
+  gulp.watch('./components/**/**/assets/*', gulp.series('images, pattern-assets')).on('change', reload);
 });
 
 
