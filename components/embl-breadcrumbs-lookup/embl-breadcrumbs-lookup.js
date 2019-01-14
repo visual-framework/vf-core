@@ -66,9 +66,9 @@ function emblGetTaxonomy(url) {
 /**
  * Receive a term and its context and create a breadcrumb
  * @example emblBreadcrumbAppend(term,facet,type)
- * @param {object} [term]  - the taxonomy item found, e.g. `Cancer`
- * @param {object} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
- * @param {object} [type]  - if this is a `primary` or `related` path
+ * @param {string} [term]  - the taxonomy item found, e.g. `Cancer`
+ * @param {string} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
+ * @param {string} [type]  - if this is a `primary` or `related` path
  */
 function emblBreadcrumbAppend(term,facet,type) {
   // find the related breadcrumb ul, if it doesn't exist, make it
@@ -119,10 +119,19 @@ function emblBreadcrumbAppend(term,facet,type) {
 
   // Get the URL of a term
   function getBreadcrumbUrl(id) {
-    var url = id;
-    var urlPrefix = 'https://dev.beta.embl.org/'
+    var url = 'https://embl.org/#no_match_found';
 
-    return urlPrefix + url;
+    // Add tab panel semantics and hide them all
+    Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
+      if (id === term.uuid) {
+        url = term.url;
+        return; //exit
+      }
+    });
+
+    if (url === '') url = 'https://embl.org/#no_url_specified';
+
+    return url;
   }
 
   // Take a term and get its parent term
@@ -147,15 +156,15 @@ function emblBreadcrumbAppend(term,facet,type) {
   /**
    * Generate an HTML elem and insert it into the DOM
    * @example insertBreadcrumb(term,breadcrumbUrl,position)
-   * @param {object} [term]  - the taxonomy string of the item, e.g. `Cancer`
-   * @param {object} [breadcrumbUrl] - a fully formed URL
-   * @param {object} [position] - where to place it, `prepend` or `append`
+   * @param {string} [term]  - the taxonomy string of the item, e.g. `Cancer`
+   * @param {string} [breadcrumbUrl] - a fully formed URL
+   * @param {string} [position] - where to place it, `prepend` or `append`
    */
   console.warn('todo: rather than writing to the DOM each time, we shold construct the full breadcrumb and write once.');
   function insertBreadcrumb(term,breadcrumbUrl,position) {
     var newBreadcrumb = document.createElement("li");
     newBreadcrumb.innerHTML = '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + term + '</a>';
-    newBreadcrumb.classList.toggle('vf-breadcrumbs__item')
+    newBreadcrumb.classList.toggle('vf-breadcrumbs__item');
 
     if (position === 'prepend') {
       breadcrumbTarget.prepend(newBreadcrumb);
