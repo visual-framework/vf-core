@@ -6,7 +6,7 @@ const fs = require('fs');
 // Configuration
 // -----------------------------------------------------------------------------
 
-const SassInput = './assets/scss/styles.scss';
+const SassInput = './components/vf-core/index.scss';
 const SassOutput = './public/css';
 const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
 const config = JSON.parse(fs.readFileSync('./package.json'));
@@ -89,6 +89,11 @@ gulp.task('css', function() {
     )
     .pipe(browserSync.stream())
     .pipe(sourcemaps.write())
+    .pipe(rename(
+      {
+        basename: "styles"
+      }
+    ))
     .pipe(gulp.dest(SassOutput))
     .pipe(cssnano())
     .pipe(rename(
