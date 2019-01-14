@@ -207,26 +207,29 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
 var emblTaxonomy = {};
 
-// We start the breadcrumbs by first getting the EMBL taxonomy.
-// todo: some sort of caching here, perhaps we write to local storage.
-// todo: abstract this out into its own `embl-taxonomy` pattern?
-emblGetTaxonomy().then(function(response) {
-  emblTaxonomy = JSON.parse(response);
+function emblBreadcrumbs() {
+  // We start the breadcrumbs by first getting the EMBL taxonomy.
+  // todo: some sort of caching here, perhaps we write to local storage.
+  // todo: abstract this out into its own `embl-taxonomy` pattern?
+  emblGetTaxonomy().then(function(response) {
+    emblTaxonomy = JSON.parse(response);
 
-  // Preprocess the emblTaxonomy for some cleanup tasks
-  Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
-    // If `name_display` is not set, use the internal name
-    if (term.name_display === '') term.name_display = term.name;
-    // handle null URL
-    if (term.url === '') term.url = 'https://embl.org/#no_url_specified';
+    // Preprocess the emblTaxonomy for some cleanup tasks
+    Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
+      // If `name_display` is not set, use the internal name
+      if (term.name_display === '') term.name_display = term.name;
+      // handle null URL
+      if (term.url === '') term.url = 'https://embl.org/#no_url_specified';
+    });
+
+    // Invoke embl-content-meta-properties function to pull tags from page
+    emblBreadcrumbsLookup(emblContentMetaProperties_Read());
+
+  }, function(error) {
+    console.error("Failed to get EMBL taxonomy", error);
   });
+}
 
-  // Invoke embl-content-meta-properties function to pull tags from page
-  emblBreadcrumbsLookup(emblContentMetaProperties_Read());
-
-}, function(error) {
-  console.error("Failed to get EMBL taxonomy", error);
-});
 
 // Prepend polyfill for IE
 // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/prepend()/prepend().md
@@ -253,3 +256,6 @@ emblGetTaxonomy().then(function(response) {
     });
   });
 })([Element.prototype, Document.prototype, DocumentFragment.prototype]);
+
+// Run it on default
+emblBreadcrumbs();
