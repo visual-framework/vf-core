@@ -12,14 +12,12 @@ var emblBreadcrumbsDebug = true;
 function emblBreadcrumbsLookup(metaProperties) {
   var majorFacets = ['who','what','where'];
 
-  // console.log('processing meta properties for: ', metaProperties);
-
   for (var i = 0; i < majorFacets.length; i++) {
     if (majorFacets[i] == metaProperties.active) {
-      emblBreadcrumbAppend(metaProperties[majorFacets[i]],majorFacets[i],'primary')
+      emblBreadcrumbAppend(metaProperties[majorFacets[i]],majorFacets[i],'primary');
     } else {
       // do the related paths
-      emblBreadcrumbAppend(metaProperties[majorFacets[i]],majorFacets[i],'related')
+      emblBreadcrumbAppend(metaProperties[majorFacets[i]],majorFacets[i],'related');
     }
   }
 }
@@ -66,11 +64,11 @@ function emblGetTaxonomy(url) {
 /**
  * Receive a term and its context and create a breadcrumb
  * @example emblBreadcrumbAppend(term,facet,type)
- * @param {string} [term]  - the taxonomy item found, e.g. `Cancer`
+ * @param {string} [termName]  - the taxonomy item found, e.g. `Cancer`
  * @param {string} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
  * @param {string} [type]  - if this is a `primary` or `related` path
  */
-function emblBreadcrumbAppend(term,facet,type) {
+function emblBreadcrumbAppend(termName,facet,type) {
   // find the related breadcrumb ul, if it doesn't exist, make it
   function getRelatedBreadcrumbTarget() {
     var breadcrumbTargetRelated = document.querySelectorAll('.embl-breadcrumbs-lookup .vf-breadcrumbs--related');
@@ -98,72 +96,67 @@ function emblBreadcrumbAppend(term,facet,type) {
     }
   }
 
-  // We don't have a way to handle term IDs yet, so do a basic lookup based off
-  // of the string name
-  function getBreadcrumbId(termName) {
+  function getCurrentTerm(termName) {
     if (termName === 'EMBL') termName = 'All EMBL sites'; // hack as we're not using IDs
-    // console.log('Looking up',termName,emblTaxonomy);
 
-    var id = 'no_match_found';
+    var termObject;
 
-    // Add tab panel semantics and hide them all
     Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
-      if (term.name === termName) {
-        id = term.uuid;
+      if (term.name_display === termName) {
+        termObject = term;
         return; //exit
       }
     });
 
-    return id;
+    return termObject;
   }
 
-  // Get the URL of a term
-  function getBreadcrumbUrl(id) {
-    var url = 'https://embl.org/#no_match_found';
-
-    // Add tab panel semantics and hide them all
-    Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
-      if (id === term.uuid) {
-        url = term.url;
-        return; //exit
-      }
-    });
-
-    if (url === '') url = 'https://embl.org/#no_url_specified';
-
-    return url;
-  }
-
-  // Take a term and get its parent term
-  function getBreadcrumbParentTerm(id) {
+  /**
+   * Take a term and get its parent term
+   * @example getBreadcrumbParentTerm(parents,context)
+   * @param {array} [parents]  - array of UUIDs
+   * @param {string} [facet] - who, what, where
+   */
+  function getBreadcrumbParentTerm(parents,facet) {
     var parentTodos = {
       1: 'what is the parent term context? who/what/where',
-      2: 'scan the taxonomy and get any parent IDs',
-      3: 'if there are parent IDs, add breadcrumb and set URL',
+      // 2: 'scan the taxonomy and get any parent IDs',
+      // 3: 'if there are parent IDs, add breadcrumb and set URL',
       4: 'if parent was found, does the parent have a parent?'
-    }
+    };
     console.log('todo for getBreadcrumbParentTerm:',parentTodos);
 
-    var term = 'Parent of Term';
-    var breadcrumbUrl = id;
-    insertBreadcrumb(term,breadcrumbUrl,'prepend');
+    // what = 98831673-5bc8-4348-8f42-17b09c1d5462
+    // where = ce40f8b4-c7c3-40fe-911e-8d248654fe7e
+    // who = 8c9899b9-b197-4750-b955-894cda8bf9d5
 
+    // look up each parent UUID
+    // todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless
+    //       of it's who/what/where path, but maybe this will provide an interesting
+    //       "odeur d'information"
+    Array.prototype.forEach.call(parents, (parentId, i) => {
+      Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
+        if (parentId === term.uuid) {
+          insertBreadcrumb(term.name_display,term.url,'prepend');
+          return; //exit
+        }
+      });
+    });
 
     return;
-
   }
 
   /**
    * Generate an HTML elem and insert it into the DOM
    * @example insertBreadcrumb(term,breadcrumbUrl,position)
-   * @param {string} [term]  - the taxonomy string of the item, e.g. `Cancer`
+   * @param {string} [termName]  - the taxonomy string of the item, e.g. `Cancer`
    * @param {string} [breadcrumbUrl] - a fully formed URL
    * @param {string} [position] - where to place it, `prepend` or `append`
    */
   console.warn('todo: rather than writing to the DOM each time, we shold construct the full breadcrumb and write once.');
-  function insertBreadcrumb(term,breadcrumbUrl,position) {
+  function insertBreadcrumb(termName,breadcrumbUrl,position) {
     var newBreadcrumb = document.createElement("li");
-    newBreadcrumb.innerHTML = '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + term + '</a>';
+    newBreadcrumb.innerHTML = '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + termName + '</a>';
     newBreadcrumb.classList.toggle('vf-breadcrumbs__item');
 
     if (position === 'prepend') {
@@ -173,7 +166,7 @@ function emblBreadcrumbAppend(term,facet,type) {
     }
   }
 
-  console.log('Processing breadcrumb for:', term + ', ' + facet + ', ' + type);
+  console.log('Processing breadcrumb for:', termName + ', ' + facet + ', ' + type);
 
   var breadcrumbTarget = document.querySelectorAll('.embl-breadcrumbs-lookup > .vf-breadcrumbs');
 
@@ -185,13 +178,13 @@ function emblBreadcrumbAppend(term,facet,type) {
     console.warn('There is more than one `.embl-breadcrumbs-lookup > .vf-breadcrumbs` in which to insert the breadcrumbs; continuing but only the first element will be updated.');
   }
 
-  var breadcrumbId = getBreadcrumbId(term);
-  var breadcrumbUrl = getBreadcrumbUrl(breadcrumbId);
+  var currentTerm = getCurrentTerm(termName);
+  var breadcrumbId = currentTerm.uuid,
+      breadcrumbUrl = currentTerm.url,
+      breadcrumbParents = currentTerm.parents;
 
   // narrow down to the first matching element
   breadcrumbTarget = breadcrumbTarget[0];
-
-
 
   if (type == 'primary') {
     // remove any loading text
@@ -199,10 +192,10 @@ function emblBreadcrumbAppend(term,facet,type) {
     if (loadingText.length > 0) { loadingText[0].remove(); }
 
     // add breadcrumb
-    insertBreadcrumb(term,breadcrumbUrl,'prepend');
+    insertBreadcrumb(currentTerm.name_display,breadcrumbUrl,'prepend');
 
     // fetch parents
-    getBreadcrumbParentTerm(breadcrumbId);
+    getBreadcrumbParentTerm(breadcrumbParents, facet);
   } else if (type == 'related') {
     // get/make the related ul
     var breadcrumbTargetRelated = getRelatedBreadcrumbTarget();
@@ -210,7 +203,7 @@ function emblBreadcrumbAppend(term,facet,type) {
     addRelatedBreadcrumbLabel(breadcrumbTargetRelated);
 
     // add breadcrumb
-    insertBreadcrumb(term,breadcrumbUrl,'append');
+    insertBreadcrumb(currentTerm.name_display,breadcrumbUrl,'append');
   }
 }
 
@@ -223,6 +216,14 @@ var emblTaxonomy = {};
 emblGetTaxonomy().then(function(response) {
   emblTaxonomy = JSON.parse(response);
 
+  // Preprocess the emblTaxonomy for some cleanup tasks
+  Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
+    // If `name_display` is not set, use the internal name
+    if (term.name_display === '') term.name_display = term.name;
+    // handle null URL
+    if (term.url === '') term.url = 'https://embl.org/#no_url_specified';
+  });
+
   // Invoke embl-content-meta-properties function to pull tags from page
   emblBreadcrumbsLookup(emblContentMetaProperties_Read());
 
@@ -230,9 +231,7 @@ emblGetTaxonomy().then(function(response) {
   console.error("Failed to get EMBL taxonomy", error);
 });
 
-
-
-// prepend polyfill for IE
+// Prepend polyfill for IE
 // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/prepend()/prepend().md
 (function (arr) {
   arr.forEach(function (item) {
