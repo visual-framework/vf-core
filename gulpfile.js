@@ -204,7 +204,7 @@ gulp.task('pattern-assets', function() {
 // -----------------------------------------------------------------------------
 gulp.task('images', () => {
 
-    return gulp.src('./components/*.svg')
+    return gulp.src('./components/**/*.svg')
         .pipe(svgo())
         .pipe(gulp.dest('./components'));
 });
@@ -339,9 +339,8 @@ gulp.task('CSSGen', function(done) {
 gulp.task('watch', function(done) {
   fractal.watch();
   gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
-
-  gulp.watch(['./assets/scripts/**/*.js','./components/**/*.js'], gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*', gulp.series('pattern-assets')).on('change', reload);
+  gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
+  gulp.watch('./components/**/**/assets/*', gulp.series('images, pattern-assets')).on('change', reload);
 });
 
 
