@@ -1,8 +1,5 @@
 // embl-breadcrumbs-lookup
 
-var emblBreadcrumbsDebug = false;
-var emblBreadcrumbsDebug = true;
-
 /**
  * Take any appropriate actions depending on present metaTags
  * @example emblBreadcrumbsLookup()
@@ -10,14 +7,25 @@ var emblBreadcrumbsDebug = true;
  *                                    you can explicitly pass options
  */
 function emblBreadcrumbsLookup(metaProperties) {
+  var emblBreadcrumbTarget = document.querySelectorAll('[data-embl-js-breadcrumbs-lookup] > .vf-breadcrumbs');
+
+  if (emblBreadcrumbTarget.length === 0) {
+    // console.warn('There is no `[data-embl-js-breadcrumbs-lookup] > .vf-breadcrumbs` in which to insert the breadcrumbs; exiting');
+    return false;
+  }
+  if (emblBreadcrumbTarget.length > 1) {
+    console.warn('There is more than one `[data-embl-js-breadcrumbs-lookup] > .vf-breadcrumbs` in which to insert the breadcrumbs; continuing but only the first element will be updated.');
+  }
+
   var majorFacets = ['who','what','where'];
 
+  console.warn('todo: rather than writing to the DOM each time, we shold construct the full breadcrumb and write once.');
   for (var i = 0; i < majorFacets.length; i++) {
     if (majorFacets[i] == metaProperties.active) {
-      emblBreadcrumbAppend(metaProperties[majorFacets[i]],majorFacets[i],'primary');
+      emblBreadcrumbAppend(emblBreadcrumbTarget,metaProperties[majorFacets[i]],majorFacets[i],'primary');
     } else {
       // do the related paths
-      emblBreadcrumbAppend(metaProperties[majorFacets[i]],majorFacets[i],'related');
+      emblBreadcrumbAppend(emblBreadcrumbTarget,metaProperties[majorFacets[i]],majorFacets[i],'related');
     }
   }
 }
@@ -68,17 +76,19 @@ function emblGetTaxonomy(url) {
  * @param {string} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
  * @param {string} [type]  - if this is a `primary` or `related` path
  */
-function emblBreadcrumbAppend(termName,facet,type) {
+function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
+  // console.log('Processing breadcrumb for:', termName + ', ' + facet + ', ' + type);
+
   // find the related breadcrumb ul, if it doesn't exist, make it
   function getRelatedBreadcrumbTarget() {
-    var breadcrumbTargetRelated = document.querySelectorAll('.embl-breadcrumbs-lookup .vf-breadcrumbs--related');
+    var breadcrumbTargetRelated = breadcrumbTarget.querySelectorAll('.vf-breadcrumbs--related');
     if (breadcrumbTargetRelated.length > 0) {
       // there's already a releated container, use it
       breadcrumbTargetRelated = breadcrumbTargetRelated[0];
       return breadcrumbTargetRelated;
     } else {
       breadcrumbTarget.innerHTML += `<ul class="vf-breadcrumbs vf-breadcrumbs--related | vf-list vf-list--inline"></ul>`;
-      return document.querySelectorAll('.embl-breadcrumbs-lookup .vf-breadcrumbs--related')[0];
+      return breadcrumbTarget.querySelectorAll('.vf-breadcrumbs--related')[0];
     }
   }
 
@@ -124,7 +134,7 @@ function emblBreadcrumbAppend(termName,facet,type) {
       // 3: 'if there are parent IDs, add breadcrumb and set URL',
       4: 'if parent was found, does the parent have a parent?'
     };
-    console.log('todo for getBreadcrumbParentTerm:',parentTodos);
+    console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
 
     // what = 98831673-5bc8-4348-8f42-17b09c1d5462
     // where = ce40f8b4-c7c3-40fe-911e-8d248654fe7e
@@ -153,7 +163,6 @@ function emblBreadcrumbAppend(termName,facet,type) {
    * @param {string} [breadcrumbUrl] - a fully formed URL
    * @param {string} [position] - where to place it, `prepend` or `append`
    */
-  console.warn('todo: rather than writing to the DOM each time, we shold construct the full breadcrumb and write once.');
   function insertBreadcrumb(termName,breadcrumbUrl,position) {
     var newBreadcrumb = document.createElement("li");
     newBreadcrumb.innerHTML = '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + termName + '</a>';
@@ -164,18 +173,6 @@ function emblBreadcrumbAppend(termName,facet,type) {
     } else {
       breadcrumbTargetRelated.append(newBreadcrumb);
     }
-  }
-
-  console.log('Processing breadcrumb for:', termName + ', ' + facet + ', ' + type);
-
-  var breadcrumbTarget = document.querySelectorAll('.embl-breadcrumbs-lookup > .vf-breadcrumbs');
-
-  if (breadcrumbTarget.length === 0) {
-    console.warn('There is no `.embl-breadcrumbs-lookup > .vf-breadcrumbs` in which to insert the breadcrumbs; exiting');
-    return false;
-  }
-  if (breadcrumbTarget.length > 1) {
-    console.warn('There is more than one `.embl-breadcrumbs-lookup > .vf-breadcrumbs` in which to insert the breadcrumbs; continuing but only the first element will be updated.');
   }
 
   var currentTerm = getCurrentTerm(termName);
