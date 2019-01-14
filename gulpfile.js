@@ -176,7 +176,8 @@ gulp.task("scss-lint", function() {
     })
   ];
 
-  return gulp.src(
+  return gulp
+    .src(
       ['components/**/vf-*.scss', '!components/**/index.scss', '!assets/**/*.scss']
     )
     .pipe(postcss(processors, {syntax: syntax_scss}));
@@ -188,9 +189,9 @@ gulp.task("scss-lint", function() {
 // -----------------------------------------------------------------------------
 gulp.task('scripts', function() {
   return gulp
-  .src('./components/**/*.js')
-  .pipe(concat('scripts.js'))
-  .pipe(gulp.dest('./public/scripts'));
+    .src('./components/**/*.js')
+    .pipe(concat('scripts.js'))
+    .pipe(gulp.dest('./public/scripts'));
 });
 
 // -----------------------------------------------------------------------------
@@ -198,9 +199,9 @@ gulp.task('scripts', function() {
 // -----------------------------------------------------------------------------
 gulp.task('pattern-assets', function() {
   return gulp
-  .src(['./components/**/**/assets/**/*'])
-  .pipe(gulp.dest('./public/assets'));
-  // .pipe(gulp.dest('./assets'));
+    .src(['./components/**/**/assets/**/*'])
+    .pipe(gulp.dest('./public/assets'));
+    // .pipe(gulp.dest('./assets'));
 });
 
 
@@ -208,10 +209,10 @@ gulp.task('pattern-assets', function() {
 // Pattern Assets
 // -----------------------------------------------------------------------------
 gulp.task('images', () => {
-
-    return gulp.src('./components/**/*.svg')
-        .pipe(svgo())
-        .pipe(gulp.dest('./components'));
+  return gulp
+    .src('./components/**/*.svg')
+    .pipe(svgo())
+    .pipe(gulp.dest('./components'));
 });
 
 // -----------------------------------------------------------------------------
@@ -251,7 +252,7 @@ gulp.task('tokens:typographic-scale', () =>
       path.extname = ".scss";
     }))
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
-)
+);
 
 gulp.task('tokens:variables', () =>
   gulp.src('./components/vf-design-tokens/variables/*.yml')
@@ -260,7 +261,7 @@ gulp.task('tokens:variables', () =>
       format: { type: 'scss' }
     }))
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
-)
+);
 
 gulp.task('tokens:maps', () =>
   gulp.src(['./components/vf-design-tokens/maps/*.yml', '!./components/vf-design-tokens/typographic-scales/*.yml'])
@@ -269,12 +270,11 @@ gulp.task('tokens:maps', () =>
       format: { type: 'map.scss' }
     }))
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
-)
+);
 
 // -----------------------------------------------------------------------------
 // Fractal Tasks
 // -----------------------------------------------------------------------------
-
 
 gulp.task('frctlStart', function() {
   fractal.set('project.environment.local', 'true');
@@ -345,7 +345,7 @@ gulp.task('watch', function(done) {
   fractal.watch();
   gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
   gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*', gulp.series('images, pattern-assets')).on('change', reload);
+  gulp.watch('./components/**/**/assets/*', gulp.series('images', 'pattern-assets')).on('change', reload);
 });
 
 
@@ -355,15 +355,17 @@ gulp.task('watch', function(done) {
 
 // Build as a static site for CI
 gulp.task('build', gulp.series(
-    'scss-lint', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
+  'scss-lint', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
 ));
 
 gulp.task('dev', gulp.parallel(
-    'frctlStart', 'pattern-assets', 'css', 'scripts', 'watch'
+  'frctlStart', 'pattern-assets', 'css', 'scripts', 'watch'
 ));
 
 gulp.task('tokens', gulp.parallel(
-    'tokens:variables', 'tokens:typographic-scale', 'tokens:maps'
+  'tokens:variables', 'tokens:typographic-scale', 'tokens:maps'
 ));
 
-gulp.task('component', shell.task(['yo ./tools/component-generator']));
+gulp.task('component', shell.task(
+  ['yo ./tools/component-generator']
+));
