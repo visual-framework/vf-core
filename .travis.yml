@@ -13,8 +13,8 @@ stages:
 before_script:
   - npm install
   - npm install -g gulp-cli
-  - curl https://www.projectwallace.com/webhooks/v1/imports?token=$WALLACE_TOKEN -fsS --retry 3 -X POST -H 'Content-Type: text/css' -d @build/css/styles.css
   - gulp build
+  - curl https://www.projectwallace.com/webhooks/v1/imports?token=$WALLACE_TOKEN -fsS --retry 3 -X POST -H 'Content-Type: text/css' -d @build/css/styles.css
 
 deploy:
   provider: pages
