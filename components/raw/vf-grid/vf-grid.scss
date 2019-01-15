@@ -30,8 +30,7 @@
   .vf-grid {
     flex-wrap: wrap;
   }
-  .vf-grid > *,
-  [class*='micro--'] > * {
+  .vf-grid > *{
     flex: 0 0 calc(50% - 20px);
   }
 }
@@ -41,11 +40,7 @@
     grid-column: main;
     grid-column-gap: var(--page-grid-gap);
   }
-  @media (max-width: 1023px) {
-    [class*='micro'] {
-      grid-template-columns: 1fr 1fr !important;
-    }
-  }
+
   @media (min-width: 840px) {
     .vf-grid {
       grid-auto-flow: column
