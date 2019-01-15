@@ -69,7 +69,7 @@ embl-grid embl-grid--has-sidebar
 
 
 
-<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #DC0A28; border-color: #DC0A28;">alhpa</span>
+<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #707372; border-color: #707372;">deprecated</span>
 
 
 
@@ -210,7 +210,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"tel: 01234 567 890"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-contact__phone-number"</span>&gt;</span>01234 567 890<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"tel: 09876 543 210"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-contact__phone-number vf-contact__phone-number--mobile"</span>&gt;</span>09876 543 210<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-contact__image vf-u-circle"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://dev-embl-communications.pantheonsite.io/wp-content/uploads/2018/07/female-head-300x300.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"image of the contact"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-contact__image vf-u-circle"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://secure.gravatar.com/avatar/1e26fd486cb8a2d843e0085bd1382f2b?s=49&amp;d=mm&amp;r=g"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"image of the contact"</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">address</span>&gt;</span>
 
   </pre>
@@ -399,149 +399,153 @@ embl-grid embl-grid--has-sidebar
         <div class="FileBrowser-itemPreview">
           
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-contact</span>
+            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-body</span>:not(<span class="hljs-selector-class">.vf-disable-deprecated</span>) {
+  @<span class="hljs-keyword">warn</span> <span class="hljs-variable">$vf-deprecation-warning</span>;
 
-<span class="hljs-selector-class">.vf-contact</span> {
-  --vf-contact__margin--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-comment">// vf-contact</span>
+  <span class="hljs-selector-class">.vf-contact</span> {
+    --vf-contact__margin--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">8px</span>;
 
-  <span class="hljs-attribute">align-items</span>: flex-start;
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">flex-direction</span>: column;
-  <span class="hljs-attribute">font-style</span>: normal; <span class="hljs-comment">// the address element italicises any typography</span>
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">24px</span> <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">align-items</span>: flex-start;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: column;
+    <span class="hljs-attribute">font-style</span>: normal; <span class="hljs-comment">// the address element italicises any typography</span>
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">24px</span> <span class="hljs-number">0</span>;
 
-  <span class="hljs-comment">/* we don't want the last phone number or email to have any bottom margin */</span>
-  &gt; <span class="hljs-selector-tag">a</span>:last-child {
-    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-comment">/* we don't want the last phone number or email to have any bottom margin */</span>
+    &gt; <span class="hljs-selector-tag">a</span>:last-child {
+      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+    }
+
+    <span class="hljs-comment">/* In the source order the image is at the bottom. For the layout
+    * the image needs to be between the contact details and links. So we set
+    * the order of these with CSS, targetting the elements, rather than classes
+    */</span>
+    <span class="hljs-selector-tag">p</span> {
+      <span class="hljs-attribute">order</span>: <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-selector-tag">img</span> {
+      <span class="hljs-attribute">order</span>: <span class="hljs-number">2</span>;
+    }
+
+    <span class="hljs-selector-tag">a</span> {
+      <span class="hljs-attribute">order</span>: <span class="hljs-number">3</span>;
+    }
+
+    <span class="hljs-comment">/* We are using CSS custom properties, for IE11 we need a generic fallback */</span>
+    &gt; * {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">12px</span> <span class="hljs-number">0</span>;
+    }
   }
 
-  <span class="hljs-comment">/* In the source order the image is at the bottom. For the layout
-   * the image needs to be between the contact details and links. So we set
-   * the order of these with CSS, targetting the elements, rather than classes
-   */</span>
-  <span class="hljs-selector-tag">p</span> {
-    <span class="hljs-attribute">order</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-selector-class">.vf-contact__team</span> {
+    --vf-contact__margin--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">24px</span>;
+
+    @<span class="hljs-keyword">include</span> set-type(heading--r);
+
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> var(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
   }
 
-  <span class="hljs-selector-tag">img</span> {
-    <span class="hljs-attribute">order</span>: <span class="hljs-number">2</span>;
+  <span class="hljs-selector-class">.vf-contact__name</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> var(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
   }
 
-  <span class="hljs-selector-tag">a</span> {
-    <span class="hljs-attribute">order</span>: <span class="hljs-number">3</span>;
-  }
-
-  <span class="hljs-comment">/* We are using CSS custom properties, for IE11 we need a generic fallback */</span>
-  &gt; * {
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">12px</span> <span class="hljs-number">0</span>;
-  }
-}
-
-<span class="hljs-selector-class">.vf-contact__team</span> {
-  --vf-contact__margin--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">24px</span>;
-
-  @<span class="hljs-keyword">include</span> set-type(heading--r);
-
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> var(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
-}
-
-<span class="hljs-selector-class">.vf-contact__name</span> {
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> var(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
-}
-
-<span class="hljs-selector-class">.vf-contact__job-title</span> {
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> var(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
-}
-
-<span class="hljs-selector-class">.vf-contact__image</span> {
-  <span class="hljs-comment">// the image will be as large as possible unless within a smaller grid item</span>
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> var(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
-  <span class="hljs-selector-tag">object</span>-fit: contain;
-}
-
-<span class="hljs-selector-class">.vf-contact__image--circle</span> {
-  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
-}
-
-<span class="hljs-selector-class">.vf-contact__phone-number</span> {
-  <span class="hljs-attribute">color</span>: set-color(vf-color-black);
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> var(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">position</span>: relative;
-  <span class="hljs-attribute">text-decoration</span>: none;
-
-  &amp;:hover {
-    <span class="hljs-attribute">text-decoration</span>: underline;
-  }
-}
-
-<span class="hljs-selector-class">.vf-contact__phone-number--mobile</span> {
-  &amp;::after {
-    <span class="hljs-attribute">content</span>: <span class="hljs-string">'(mobile)'</span>;
-    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
-    <span class="hljs-attribute">position</span>: absolute;
-  }
-}
-
-<span class="hljs-selector-class">.vf-contact__email</span> {
-  @<span class="hljs-keyword">include</span> inline-link;
-
-  <span class="hljs-attribute">margin-bottom</span>: var(--vf-contact__margin--bottom);
-}
-
-<span class="hljs-comment">// ----------------------------------------------------------------------</span>
-<span class="hljs-comment">// variants</span>
-<span class="hljs-comment">// ----------------------------------------------------------------------</span>
-
-<span class="hljs-comment">// ----------------------------------------------------------------------</span>
-<span class="hljs-comment">// Simple Contact Details Component</span>
-
-<span class="hljs-comment">/* The simple contact component only contains the name, image, and job title.
- * With the same HTML being used we know the title should be the third
- * item being used in the component
- */</span>
-
-<span class="hljs-selector-class">.vf-contact--simple</span> {
   <span class="hljs-selector-class">.vf-contact__job-title</span> {
-    <span class="hljs-attribute">order</span>: <span class="hljs-number">3</span>;
-  }
-}
-
-<span class="hljs-comment">// ----------------------------------------------------------------------</span>
-<span class="hljs-comment">// Horizontal Contact Details Component</span>
-
-<span class="hljs-comment">/* The horizontal contact component has an image on the left and the text on
- * on the right.
- */</span>
-
-<span class="hljs-selector-class">.vf-contact--horizontal</span> {
-  <span class="hljs-attribute">display</span>: grid;
-  grid-<span class="hljs-attribute">column-gap</span>: <span class="hljs-number">32px</span>;
-  grid-template-<span class="hljs-attribute">columns</span>: auto <span class="hljs-number">1</span>fr;
-  grid-template-rows: repeat(<span class="hljs-number">6</span>, min-content);
-
-  &gt; * {
-    <span class="hljs-comment">// we want all details of the contact to be in the 2nd column of the grid.</span>
-    grid-column: <span class="hljs-number">2</span>;
-  }
-
-  <span class="hljs-comment">/* As the text is on the right, having a bottom margin on the last phone-number or a element causes the
-  * avatar to look misaligned, removing the maring-bottom on it fixes this.
-  */</span>
-  <span class="hljs-selector-tag">a</span>:last-of-type {
-    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
-  }
-
-  <span class="hljs-selector-class">.vf-contact__email</span> {
-    --vf-contact__margin--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">18px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> var(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
   }
 
   <span class="hljs-selector-class">.vf-contact__image</span> {
-    <span class="hljs-attribute">align-self</span>: center;
-    grid-column: <span class="hljs-number">1</span>;
-    grid-row: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">170px</span>;
+    <span class="hljs-comment">// the image will be as large as possible unless within a smaller grid item</span>
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> var(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
+    <span class="hljs-selector-tag">object</span>-fit: contain;
   }
+
+  <span class="hljs-selector-class">.vf-contact__image--circle</span> {
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-contact__phone-number</span> {
+    <span class="hljs-attribute">color</span>: set-color(vf-color-black);
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> var(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">position</span>: relative;
+    <span class="hljs-attribute">text-decoration</span>: none;
+
+    &amp;:hover {
+      <span class="hljs-attribute">text-decoration</span>: underline;
+    }
+  }
+
+  <span class="hljs-selector-class">.vf-contact__phone-number--mobile</span> {
+    &amp;::after {
+      <span class="hljs-attribute">content</span>: <span class="hljs-string">'(mobile)'</span>;
+      <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
+      <span class="hljs-attribute">position</span>: absolute;
+    }
+  }
+
+  <span class="hljs-selector-class">.vf-contact__email</span> {
+    @<span class="hljs-keyword">include</span> inline-link;
+
+    <span class="hljs-attribute">margin-bottom</span>: var(--vf-contact__margin--bottom);
+  }
+
+  <span class="hljs-comment">// ----------------------------------------------------------------------</span>
+  <span class="hljs-comment">// variants</span>
+  <span class="hljs-comment">// ----------------------------------------------------------------------</span>
+
+  <span class="hljs-comment">// ----------------------------------------------------------------------</span>
+  <span class="hljs-comment">// Simple Contact Details Component</span>
+
+  <span class="hljs-comment">/* The simple contact component only contains the name, image, and job title.
+  * With the same HTML being used we know the title should be the third
+  * item being used in the component
+  */</span>
+
+  <span class="hljs-selector-class">.vf-contact--simple</span> {
+    <span class="hljs-selector-class">.vf-contact__job-title</span> {
+      <span class="hljs-attribute">order</span>: <span class="hljs-number">3</span>;
+    }
+  }
+
+  <span class="hljs-comment">// ----------------------------------------------------------------------</span>
+  <span class="hljs-comment">// Horizontal Contact Details Component</span>
+
+  <span class="hljs-comment">/* The horizontal contact component has an image on the left and the text on
+  * on the right.
+  */</span>
+
+  <span class="hljs-selector-class">.vf-contact--horizontal</span> {
+    <span class="hljs-attribute">display</span>: grid;
+    grid-<span class="hljs-attribute">column-gap</span>: <span class="hljs-number">32px</span>;
+    grid-template-<span class="hljs-attribute">columns</span>: auto <span class="hljs-number">1</span>fr;
+    grid-template-rows: repeat(<span class="hljs-number">6</span>, min-content);
+
+    &gt; * {
+      <span class="hljs-comment">// we want all details of the contact to be in the 2nd column of the grid.</span>
+      grid-column: <span class="hljs-number">2</span>;
+    }
+
+    <span class="hljs-comment">/* As the text is on the right, having a bottom margin on the last phone-number or a element causes the
+    * avatar to look misaligned, removing the maring-bottom on it fixes this.
+    */</span>
+    <span class="hljs-selector-tag">a</span>:last-of-type {
+      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+    }
+
+    <span class="hljs-selector-class">.vf-contact__email</span> {
+      --vf-contact__margin--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">18px</span>;
+    }
+
+    <span class="hljs-selector-class">.vf-contact__image</span> {
+      <span class="hljs-attribute">align-self</span>: center;
+      grid-column: <span class="hljs-number">1</span>;
+      grid-row: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">max-width</span>: <span class="hljs-number">170px</span>;
+    }
+  }
+
 }
 </pre>
           </code>
@@ -555,7 +559,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-contact/vf-contact.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">3.2 KB</span>
+        <span class="Meta-value">3.5 KB</span>
     </section>
     
   
@@ -1259,19 +1263,6 @@ embl-grid embl-grid--has-sidebar
         </p>
         
       
-        
-        <p class="vf-text">
-          <a class="vf-link" href="vf-contact.html">Contact</a>
-          
-
-
-
-<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
-
-
-
-
-        </p>
         
       
         
@@ -2074,6 +2065,19 @@ embl-grid embl-grid--has-sidebar
       
         
       
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-contact.html">Contact</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
         
       
         
