@@ -72,9 +72,9 @@ gulp.task('css', function() {
       path.resolve(__dirname, 'components/vf-sass-config/variables'),
       path.resolve(__dirname, 'components/vf-sass-config/functions'),
       path.resolve(__dirname, 'components/vf-sass-config/mixins'),
-      path.resolve(__dirname, 'assets/scss'),
       path.resolve(__dirname, 'components'),
-      path.resolve(__dirname, 'components/vf-core-patterns')
+      path.resolve(__dirname, 'components/vf-core-patterns'),
+      path.resolve(__dirname, 'node_modules'),
     ]
   };
   return gulp
@@ -310,13 +310,16 @@ gulp.task('frctlBuild', function() {
 // -----------------------------------------------------------------------------
 
 var genCss = function (option) {
-  var file_name = path.basename(path.dirname(option.file_path)) + ".css"
+  var file_name = path.basename(path.dirname(option.file_path)) + ".css";
   return gulp.src(option.file_path)
     .pipe(sass({
       includePaths: [
         path.resolve(__dirname, 'components/vf-sass-config/variables'),
         path.resolve(__dirname, 'components/vf-sass-config/functions'),
-        path.resolve(__dirname, 'components/vf-sass-config/mixins')
+        path.resolve(__dirname, 'components/vf-sass-config/mixins'),
+        path.resolve(__dirname, 'components'),
+        path.resolve(__dirname, 'components/vf-core-patterns'),
+        path.resolve(__dirname, 'node_modules')
       ],
       outputStyle: 'expanded'
     })
@@ -355,7 +358,7 @@ gulp.task('watch', function(done) {
 
 // Build as a static site for CI
 gulp.task('build', gulp.series(
-  'scss-lint', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
+  'scss-lint', 'CSSGen', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
 ));
 
 gulp.task('dev', gulp.parallel(
