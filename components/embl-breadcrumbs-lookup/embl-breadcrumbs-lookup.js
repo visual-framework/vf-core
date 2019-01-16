@@ -112,7 +112,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     var termObject;
 
     Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
-      if (term.name_display === termName) {
+      if (term.name === termName) {
         termObject = term;
         return; //exit
       }
@@ -168,7 +168,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     if (breadcrumbUrl && breadcrumbUrl !== 'null') {
       newBreadcrumb.innerHTML = '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + termName + '</a>';
     } else {
-      newBreadcrumb.innerHTML = termName;      
+      newBreadcrumb.innerHTML = termName;
     }
     newBreadcrumb.classList.toggle('vf-breadcrumbs__item');
 
