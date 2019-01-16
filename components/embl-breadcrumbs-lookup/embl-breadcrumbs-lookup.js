@@ -160,12 +160,16 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
    * Generate an HTML elem and insert it into the DOM
    * @example insertBreadcrumb(term,breadcrumbUrl,position)
    * @param {string} [termName]  - the taxonomy string of the item, e.g. `Cancer`
-   * @param {string} [breadcrumbUrl] - a fully formed URL
+   * @param {string} [breadcrumbUrl] - a fully formed URL, or 'null' to not make a link
    * @param {string} [position] - where to place it, `prepend` or `append`
    */
   function insertBreadcrumb(termName,breadcrumbUrl,position) {
     var newBreadcrumb = document.createElement("li");
-    newBreadcrumb.innerHTML = '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + termName + '</a>';
+    if (breadcrumbUrl && breadcrumbUrl !== 'null') {
+      newBreadcrumb.innerHTML = '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + termName + '</a>';
+    } else {
+      newBreadcrumb.innerHTML = termName;      
+    }
     newBreadcrumb.classList.toggle('vf-breadcrumbs__item');
 
     if (position === 'prepend') {
@@ -189,7 +193,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     if (loadingText.length > 0) { loadingText[0].remove(); }
 
     // add breadcrumb
-    insertBreadcrumb(currentTerm.name_display,breadcrumbUrl,'prepend');
+    insertBreadcrumb(currentTerm.name_display,'null','prepend');
 
     // fetch parents
     getBreadcrumbParentTerm(breadcrumbParents, facet);
