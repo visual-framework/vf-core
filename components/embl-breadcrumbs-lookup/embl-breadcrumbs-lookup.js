@@ -180,6 +180,9 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
   }
 
   var currentTerm = getCurrentTerm(termName);
+  if (currentTerm == undefined) {
+    console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName '`; Exiting.')
+  }
   var breadcrumbId = currentTerm.uuid,
       breadcrumbUrl = currentTerm.url,
       breadcrumbParents = currentTerm.parents;
