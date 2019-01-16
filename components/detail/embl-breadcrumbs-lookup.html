@@ -412,7 +412,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
     <span class="hljs-keyword">var</span> termObject;
 
     <span class="hljs-built_in">Array</span>.prototype.forEach.call(emblTaxonomy.terms, (term, i) =&gt; {
-      <span class="hljs-keyword">if</span> (term.name_display === termName) {
+      <span class="hljs-keyword">if</span> (term.name === termName) {
         termObject = term;
         <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
       }
@@ -460,12 +460,16 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
    * Generate an HTML elem and insert it into the DOM
    * @example insertBreadcrumb(term,breadcrumbUrl,position)
    * @param {string} [termName]  - the taxonomy string of the item, e.g. `Cancer`
-   * @param {string} [breadcrumbUrl] - a fully formed URL
+   * @param {string} [breadcrumbUrl] - a fully formed URL, or 'null' to not make a link
    * @param {string} [position] - where to place it, `prepend` or `append`
    */</span>
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertBreadcrumb</span>(<span class="hljs-params">termName,breadcrumbUrl,position</span>) </span>{
     <span class="hljs-keyword">var</span> newBreadcrumb = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>);
-    newBreadcrumb.innerHTML = <span class="hljs-string">'&lt;a href="'</span>+breadcrumbUrl+<span class="hljs-string">'" class="vf-breadcrumbs__link"&gt;'</span> + termName + <span class="hljs-string">'&lt;/a&gt;'</span>;
+    <span class="hljs-keyword">if</span> (breadcrumbUrl &amp;&amp; breadcrumbUrl !== <span class="hljs-string">'null'</span>) {
+      newBreadcrumb.innerHTML = <span class="hljs-string">'&lt;a href="'</span>+breadcrumbUrl+<span class="hljs-string">'" class="vf-breadcrumbs__link"&gt;'</span> + termName + <span class="hljs-string">'&lt;/a&gt;'</span>;
+    } <span class="hljs-keyword">else</span> {
+      newBreadcrumb.innerHTML = termName;
+    }
     newBreadcrumb.classList.toggle(<span class="hljs-string">'vf-breadcrumbs__item'</span>);
 
     <span class="hljs-keyword">if</span> (position === <span class="hljs-string">'prepend'</span>) {
@@ -476,8 +480,11 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
   }
 
   <span class="hljs-keyword">var</span> currentTerm = getCurrentTerm(termName);
+  <span class="hljs-keyword">if</span> (currentTerm == <span class="hljs-literal">undefined</span>) {
+    <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'embl-js-breadcumbs-lookup: No matching breadcrumb found for `'</span> + termName + <span class="hljs-string">'`; Exiting.'</span>)
+  }
   <span class="hljs-keyword">var</span> breadcrumbId = currentTerm.uuid,
-      breadcrumbUrl = currentTerm.url,
+      breadcrumbUrl = currentTerm.url || <span class="hljs-string">'null'</span>,
       breadcrumbParents = currentTerm.parents;
 
   <span class="hljs-comment">// narrow down to the first matching element</span>
@@ -489,7 +496,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
     <span class="hljs-keyword">if</span> (loadingText.length &gt; <span class="hljs-number">0</span>) { loadingText[<span class="hljs-number">0</span>].remove(); }
 
     <span class="hljs-comment">// add breadcrumb</span>
-    insertBreadcrumb(currentTerm.name_display,breadcrumbUrl,<span class="hljs-string">'prepend'</span>);
+    insertBreadcrumb(currentTerm.name_display,<span class="hljs-string">'null'</span>,<span class="hljs-string">'prepend'</span>);
 
     <span class="hljs-comment">// fetch parents</span>
     getBreadcrumbParentTerm(breadcrumbParents, facet);
@@ -571,7 +578,7 @@ emblBreadcrumbs();
         <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">9.4 KB</span>
+        <span class="Meta-value">9.7 KB</span>
     </section>
     
   
