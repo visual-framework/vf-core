@@ -232,6 +232,12 @@ embl-grid embl-grid--has-sidebar
     
       
       <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--70f8b67c1a299e2903658199f6871bbd">vf-summary-container.css</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--c78b406d61e197ba0c31d8e6cf9fa8fd">vf-summary-container.scss</a>
       </li>
       
@@ -377,6 +383,372 @@ embl-grid embl-grid--has-sidebar
 
         <strong class="Meta-key">Size:</strong>
         <span class="Meta-value">1.2 KB</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--70f8b67c1a299e2903658199f6871bbd">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.embl-grid</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column</span>: main;
+  <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-built_in">var</span>(--page-grid-gap);
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">calc</span>(var(--embl-grid-module--prime) + <span class="hljs-built_in">var</span>(--embl-grid-spacing-normaliser)) <span class="hljs-built_in">repeat</span>(auto-fit, minmax(288px, 1fr));
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
+}
+
+<span class="hljs-selector-class">.embl-grid</span> &gt; <span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-built_in">var</span>(--embl-grid-spacing-normaliser);
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">846px</span>) {
+  <span class="hljs-selector-class">.embl-grid</span> &gt; <span class="hljs-selector-pseudo">:first-child</span> {
+    <span class="hljs-attribute">grid-column</span>: span <span class="hljs-number">1</span>;
+  }
+}
+
+@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">845px</span>) {
+  <span class="hljs-selector-class">.embl-grid</span> &gt; *<span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span> {
+    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  }
+}
+
+<span class="hljs-selector-class">.embl-grid--has-centered-content</span> {
+  <span class="hljs-attribute">--embl-grid-spacing-normaliser</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">--page-grid-gap</span>: <span class="hljs-number">0</span>;
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
+  <span class="hljs-selector-class">.embl-grid--has-centered-content</span> {
+    <span class="hljs-attribute">--page-grid-gap</span>: <span class="hljs-number">36px</span>;
+    <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">var</span>(--embl-grid-module--prime) auto <span class="hljs-built_in">var</span>(--embl-grid-module--prime);
+  }
+}
+
+<span class="hljs-selector-class">.embl-grid--has-sidebar</span> &gt; *<span class="hljs-selector-pseudo">:nth-child(3n+2)</span> {
+  <span class="hljs-attribute">grid-column</span>: span <span class="hljs-number">2</span>;
+}
+
+@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">845px</span>) {
+  <span class="hljs-selector-class">.embl-grid--has-sidebar</span> &gt; *<span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">846px</span>) and (max-width: <span class="hljs-number">1219px</span>) {
+  <span class="hljs-selector-class">.embl-grid--has-sidebar</span> &gt; *<span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1220px</span>) {
+  <span class="hljs-selector-class">.embl-grid--has-sidebar</span> &gt; *<span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">position</span>: relative;
+  }
+  <span class="hljs-selector-class">.embl-grid--has-sidebar</span> &gt; *<span class="hljs-selector-pseudo">:last-child</span><span class="hljs-selector-pseudo">::before</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#D8D8D8</span>;
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">left</span>: -<span class="hljs-number">18px</span>;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">1px</span>;
+  }
+}
+
+<span class="hljs-selector-class">.embl-grid--alt</span> {
+  <span class="hljs-attribute">--page-grid-gap</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#282d23</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(1em, auto) <span class="hljs-built_in">calc</span>(var(--embl-grid-module--prime) + <span class="hljs-built_in">var</span>(--embl-grid-spacing-normaliser)) <span class="hljs-built_in">minmax</span>(288px, calc(76.5em - 206px)) <span class="hljs-built_in">minmax</span>(1em, auto);
+  <span class="hljs-attribute">-webkit-box-pack</span>: center;
+      <span class="hljs-attribute">-ms-flex-pack</span>: center;
+          <span class="hljs-attribute">justify-content</span>: center;
+  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">1.5rem</span>;
+}
+
+<span class="hljs-selector-class">.embl-grid--alt</span> &gt; <span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.embl-grid--alt</span> &gt; <span class="hljs-selector-pseudo">:last-child</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">768px</span>) {
+  <span class="hljs-selector-class">.embl-grid--alt</span> &gt; <span class="hljs-selector-pseudo">:first-child</span> {
+    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / span <span class="hljs-number">1</span>;
+  }
+  <span class="hljs-selector-class">.embl-grid--alt</span> &gt; <span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">16px</span>;
+    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">3</span>;
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1200px</span>) {
+  <span class="hljs-selector-class">.embl-grid--alt</span> &gt; <span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">30px</span>;
+  }
+}
+
+<span class="hljs-comment">/* stylelint-disable order/order */</span>
+<span class="hljs-selector-class">.vf-grid</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
+  <span class="hljs-attribute">display</span>: flex;
+}
+
+<span class="hljs-selector-class">.vf-grid</span> &gt; * {
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">1</span>;
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-attr">[class*='vf-grid__']</span> {
+  <span class="hljs-attribute">-ms-flex-wrap</span>: wrap;
+      <span class="hljs-attribute">flex-wrap</span>: wrap;
+}
+
+<span class="hljs-selector-class">.vf-grid__col-2</span> &gt; * {
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+}
+
+<span class="hljs-selector-class">.vf-grid__col-3</span> &gt; * {
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(33.3333% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(33.3333% - 20px);
+}
+
+<span class="hljs-selector-class">.vf-grid__col-4</span> &gt; * {
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(25% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(25% - 20px);
+}
+
+<span class="hljs-selector-class">.vf-grid__col-5</span> &gt; * {
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16% - 20px);
+}
+
+<span class="hljs-selector-class">.vf-grid__col-6</span> &gt; * {
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16.666666667% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16.666666667% - 20px);
+}
+
+@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1023px</span>) {
+  <span class="hljs-selector-class">.vf-grid</span> {
+    <span class="hljs-attribute">-ms-flex-wrap</span>: wrap;
+        <span class="hljs-attribute">flex-wrap</span>: wrap;
+  }
+  <span class="hljs-selector-class">.vf-grid</span> &gt; * {
+    <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+            <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+  }
+}
+
+@<span class="hljs-keyword">supports</span> (display: grid) {
+  <span class="hljs-selector-class">.vf-grid</span> {
+    <span class="hljs-attribute">display</span>: grid;
+    <span class="hljs-attribute">grid-column</span>: main;
+    <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-built_in">var</span>(--page-grid-gap);
+  }
+  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">840px</span>) {
+    <span class="hljs-selector-class">.vf-grid</span> {
+      <span class="hljs-attribute">grid-auto-flow</span>: column;
+    }
+  }
+  @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1299px</span>) {
+    <span class="hljs-selector-class">.vf-grid</span> {
+      <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+    }
+  }
+  <span class="hljs-selector-class">.vf-grid</span> &gt; * {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  }
+  <span class="hljs-selector-attr">[class*='grid__']</span> {
+    <span class="hljs-attribute">grid-auto-flow</span>: unset;
+  }
+  <span class="hljs-selector-class">.vf-grid__col-1</span> &gt; * + * {
+    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#707372</span>;
+    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">32px</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__col-1</span> &gt; * + *<span class="hljs-selector-pseudo">:last-of-type</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__col-1</span> {
+    <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(1, 1fr);
+  }
+  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">768px</span>) {
+    <span class="hljs-selector-class">.vf-grid__col-2</span> {
+      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(2, 1fr);
+    }
+    <span class="hljs-selector-class">.vf-grid__col-3</span> {
+      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(3, 1fr);
+    }
+    <span class="hljs-selector-class">.vf-grid__col-4</span> {
+      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(2, 1fr);
+    }
+    <span class="hljs-selector-class">.vf-grid__col-5</span> {
+      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(3, 1fr);
+    }
+    <span class="hljs-selector-class">.vf-grid__col-6</span> {
+      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(3, 1fr);
+    }
+  }
+  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
+    <span class="hljs-selector-class">.vf-grid__col-4</span> {
+      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(4, 1fr);
+    }
+    <span class="hljs-selector-class">.vf-grid__col-5</span> {
+      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(5, 1fr);
+    }
+    <span class="hljs-selector-class">.vf-grid__col-6</span> {
+      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(6, 1fr);
+    }
+  }
+  <span class="hljs-selector-class">.vf-grid__col--span-2</span> {
+    <span class="hljs-attribute">grid-column-end</span>: span <span class="hljs-number">2</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__col--span-3</span> {
+    <span class="hljs-attribute">grid-column-end</span>: span <span class="hljs-number">3</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__col--span-4</span> {
+    <span class="hljs-attribute">grid-column-end</span>: span <span class="hljs-number">4</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__col--span-5</span> {
+    <span class="hljs-attribute">grid-column-end</span>: span <span class="hljs-number">5</span>;
+  }
+}
+
+<span class="hljs-comment">/* stylelint-enable order/order */</span>
+<span class="hljs-selector-class">.vf-section-header__heading</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.333</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary</span> {
+  <span class="hljs-attribute">align-self</span>: start;
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">2rem</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary</span> &gt; *<span class="hljs-selector-pseudo">:last-child</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__button</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-webkit-appearance</span>: none;
+     <span class="hljs-attribute">-moz-appearance</span>: none;
+          <span class="hljs-attribute">appearance</span>: none;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span> <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__category</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__date</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#287ae2</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#003da5</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__link</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
+}
+
+<span class="hljs-selector-class">.vf-summary__meta</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__text</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">19px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.421</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__title</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.333</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-summary-container/vf-summary-container.css"><span>/components/raw/vf-summary-container/vf-summary-container.css</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-summary-container/vf-summary-container.css</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">7.1 KB</span>
     </section>
     
   

@@ -216,6 +216,12 @@ No sample.
     
       
       <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--c1741e12402f0355ba9757131ca3360f">vf-grid-page.css</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--64f4d4688096791c1cd4c365f3e35760">vf-grid-page.scss</a>
       </li>
       
@@ -347,6 +353,60 @@ No sample.
 
         <strong class="Meta-key">Size:</strong>
         <span class="Meta-value">900 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--c1741e12402f0355ba9757131ca3360f">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">/* The Page Grid
+ * -------------- // --------------
+ *
+ * All content except for a few design patterns are tied into a grid with a maximum
+ * width of 1300px. We use CSS grid layout on the `body` element to set a simple
+ * 3 column grid with the central grid set to a maximum of 81.25em (1300px).
+ *
+ * Because we are supporting IE11 we also need to include a similar page layout.
+ * We initially set up the page layout without using CSS grid layout and make use
+ * of `@supports` to invoke CSS grid layout on browsers that support it.
+ *
+ */</span>
+<span class="hljs-selector-tag">html</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">1.25em</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
+}
+
+@<span class="hljs-keyword">supports</span> (display: grid) {
+  <span class="hljs-selector-tag">html</span> {
+    <span class="hljs-attribute">margin</span>: unset;
+  }
+  <span class="hljs-selector-class">.vf-body</span> {
+    <span class="hljs-attribute">display</span>: grid;
+    <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) [main-start] <span class="hljs-built_in">minmax</span>(288px, 76.5em) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
+    <span class="hljs-attribute">margin</span>: unset;
+    <span class="hljs-attribute">max-width</span>: unset;
+  }
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-grid-page/vf-grid-page.css"><span>/components/raw/vf-grid-page/vf-grid-page.css</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-grid-page/vf-grid-page.css</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">910 Bytes</span>
     </section>
     
   

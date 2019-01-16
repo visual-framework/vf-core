@@ -229,6 +229,12 @@ embl-grid embl-grid--has-sidebar
     
       
       <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--0c020c8ba1ac36b385cb8293f4584aee">embl-grid.css</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--1cf83a95299349083980946a7b2e394e">embl-grid.scss</a>
       </li>
       
@@ -284,6 +290,131 @@ embl-grid embl-grid--has-sidebar
 
         <strong class="Meta-key">Size:</strong>
         <span class="Meta-value">133 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--0c020c8ba1ac36b385cb8293f4584aee">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.embl-grid</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column</span>: main;
+  <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-built_in">var</span>(--page-grid-gap);
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">calc</span>(var(--embl-grid-module--prime) + <span class="hljs-built_in">var</span>(--embl-grid-spacing-normaliser)) <span class="hljs-built_in">repeat</span>(auto-fit, minmax(288px, 1fr));
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
+}
+
+<span class="hljs-selector-class">.embl-grid</span> &gt; <span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-built_in">var</span>(--embl-grid-spacing-normaliser);
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">846px</span>) {
+  <span class="hljs-selector-class">.embl-grid</span> &gt; <span class="hljs-selector-pseudo">:first-child</span> {
+    <span class="hljs-attribute">grid-column</span>: span <span class="hljs-number">1</span>;
+  }
+}
+
+@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">845px</span>) {
+  <span class="hljs-selector-class">.embl-grid</span> &gt; *<span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span> {
+    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  }
+}
+
+<span class="hljs-selector-class">.embl-grid--has-centered-content</span> {
+  <span class="hljs-attribute">--embl-grid-spacing-normaliser</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">--page-grid-gap</span>: <span class="hljs-number">0</span>;
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
+  <span class="hljs-selector-class">.embl-grid--has-centered-content</span> {
+    <span class="hljs-attribute">--page-grid-gap</span>: <span class="hljs-number">36px</span>;
+    <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">var</span>(--embl-grid-module--prime) auto <span class="hljs-built_in">var</span>(--embl-grid-module--prime);
+  }
+}
+
+<span class="hljs-selector-class">.embl-grid--has-sidebar</span> &gt; *<span class="hljs-selector-pseudo">:nth-child(3n+2)</span> {
+  <span class="hljs-attribute">grid-column</span>: span <span class="hljs-number">2</span>;
+}
+
+@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">845px</span>) {
+  <span class="hljs-selector-class">.embl-grid--has-sidebar</span> &gt; *<span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">846px</span>) and (max-width: <span class="hljs-number">1219px</span>) {
+  <span class="hljs-selector-class">.embl-grid--has-sidebar</span> &gt; *<span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1220px</span>) {
+  <span class="hljs-selector-class">.embl-grid--has-sidebar</span> &gt; *<span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">position</span>: relative;
+  }
+  <span class="hljs-selector-class">.embl-grid--has-sidebar</span> &gt; *<span class="hljs-selector-pseudo">:last-child</span><span class="hljs-selector-pseudo">::before</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#D8D8D8</span>;
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">left</span>: -<span class="hljs-number">18px</span>;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">1px</span>;
+  }
+}
+
+<span class="hljs-selector-class">.embl-grid--alt</span> {
+  <span class="hljs-attribute">--page-grid-gap</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#282d23</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(1em, auto) <span class="hljs-built_in">calc</span>(var(--embl-grid-module--prime) + <span class="hljs-built_in">var</span>(--embl-grid-spacing-normaliser)) <span class="hljs-built_in">minmax</span>(288px, calc(76.5em - 206px)) <span class="hljs-built_in">minmax</span>(1em, auto);
+  <span class="hljs-attribute">-webkit-box-pack</span>: center;
+      <span class="hljs-attribute">-ms-flex-pack</span>: center;
+          <span class="hljs-attribute">justify-content</span>: center;
+  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">1.5rem</span>;
+}
+
+<span class="hljs-selector-class">.embl-grid--alt</span> &gt; <span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.embl-grid--alt</span> &gt; <span class="hljs-selector-pseudo">:last-child</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">768px</span>) {
+  <span class="hljs-selector-class">.embl-grid--alt</span> &gt; <span class="hljs-selector-pseudo">:first-child</span> {
+    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / span <span class="hljs-number">1</span>;
+  }
+  <span class="hljs-selector-class">.embl-grid--alt</span> &gt; <span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">16px</span>;
+    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">3</span>;
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1200px</span>) {
+  <span class="hljs-selector-class">.embl-grid--alt</span> &gt; <span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">30px</span>;
+  }
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-grid/embl-grid.css"><span>/components/raw/embl-grid/embl-grid.css</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-grid/embl-grid.css</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">2.2 KB</span>
     </section>
     
   
@@ -428,6 +559,7 @@ embl-grid embl-grid--has-sidebar
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
             <pre class="vf-code-example__pre"><span class="hljs-comment">// setup files required</span>
 
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
@@ -447,7 +579,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/embl-grid/index.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">149 Bytes</span>
+        <span class="Meta-value">180 Bytes</span>
     </section>
     
   

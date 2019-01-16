@@ -249,6 +249,12 @@ embl-grid embl-grid--has-sidebar
     
       
       <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--95a51968a950316aa597bb2da7b686a0">vf-contact.css</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--61c477daa260bea968fce781ffa2381f">vf-contact.scss</a>
       </li>
       
@@ -385,6 +391,187 @@ embl-grid embl-grid--has-sidebar
 
         <strong class="Meta-key">Size:</strong>
         <span class="Meta-value">971 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--95a51968a950316aa597bb2da7b686a0">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> {
+  <span class="hljs-comment">/* The simple contact component only contains the name, image, and job title.
+  * With the same HTML being used we know the title should be the third
+  * item being used in the component
+  */</span>
+  <span class="hljs-comment">/* The horizontal contact component has an image on the left and the text on
+  * on the right.
+  */</span>
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact</span> {
+  <span class="hljs-attribute">--vf-contact__margin--bottom</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">-webkit-box-align</span>: start;
+      <span class="hljs-attribute">-ms-flex-align</span>: start;
+          <span class="hljs-attribute">align-items</span>: flex-start;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">-webkit-box-orient</span>: vertical;
+  <span class="hljs-attribute">-webkit-box-direction</span>: normal;
+      <span class="hljs-attribute">-ms-flex-direction</span>: column;
+          <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">font-style</span>: normal;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">24px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-comment">/* we don't want the last phone number or email to have any bottom margin */</span>
+  <span class="hljs-comment">/* In the source order the image is at the bottom. For the layout
+    * the image needs to be between the contact details and links. So we set
+    * the order of these with CSS, targetting the elements, rather than classes
+    */</span>
+  <span class="hljs-comment">/* We are using CSS custom properties, for IE11 we need a generic fallback */</span>
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact</span> &gt; <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:last-child</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact</span> <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">-webkit-box-ordinal-group</span>: <span class="hljs-number">2</span>;
+      <span class="hljs-attribute">-ms-flex-order</span>: <span class="hljs-number">1</span>;
+          <span class="hljs-attribute">order</span>: <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact</span> <span class="hljs-selector-tag">img</span> {
+  <span class="hljs-attribute">-webkit-box-ordinal-group</span>: <span class="hljs-number">3</span>;
+      <span class="hljs-attribute">-ms-flex-order</span>: <span class="hljs-number">2</span>;
+          <span class="hljs-attribute">order</span>: <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">-webkit-box-ordinal-group</span>: <span class="hljs-number">4</span>;
+      <span class="hljs-attribute">-ms-flex-order</span>: <span class="hljs-number">3</span>;
+          <span class="hljs-attribute">order</span>: <span class="hljs-number">3</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact</span> &gt; * {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">12px</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__team</span> {
+  <span class="hljs-attribute">--vf-contact__margin--bottom</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">21px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.29</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__name</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__job-title</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__image</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-o-object-fit</span>: contain;
+     <span class="hljs-attribute">object-fit</span>: contain;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__image--circle</span> {
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__phone-number</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#282d23</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-contact__margin--bottom) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__phone-number</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">text-decoration</span>: underline;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__phone-number--mobile</span><span class="hljs-selector-pseudo">::after</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">'(mobile)'</span>;
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__email</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#287ae2</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-built_in">var</span>(--vf-contact__margin--bottom);
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__email</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__email</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#003da5</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact__email</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact--simple</span> <span class="hljs-selector-class">.vf-contact__job-title</span> {
+  <span class="hljs-attribute">-webkit-box-ordinal-group</span>: <span class="hljs-number">4</span>;
+      <span class="hljs-attribute">-ms-flex-order</span>: <span class="hljs-number">3</span>;
+          <span class="hljs-attribute">order</span>: <span class="hljs-number">3</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact--horizontal</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-number">32px</span>;
+  <span class="hljs-attribute">grid-template-columns</span>: auto <span class="hljs-number">1</span>fr;
+  <span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-built_in">repeat</span>(6, -webkit-min-content);
+  <span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-built_in">repeat</span>(6, min-content);
+  <span class="hljs-comment">/* As the text is on the right, having a bottom margin on the last phone-number or a element causes the
+    * avatar to look misaligned, removing the maring-bottom on it fixes this.
+    */</span>
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact--horizontal</span> &gt; * {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact--horizontal</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:last-of-type</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact--horizontal</span> <span class="hljs-selector-class">.vf-contact__email</span> {
+  <span class="hljs-attribute">--vf-contact__margin--bottom</span>: <span class="hljs-number">18px</span>;
+}
+
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-contact--horizontal</span> <span class="hljs-selector-class">.vf-contact__image</span> {
+  <span class="hljs-attribute">-ms-flex-item-align</span>: center;
+      <span class="hljs-attribute">align-self</span>: center;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">170px</span>;
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-contact/vf-contact.css"><span>/components/raw/vf-contact/vf-contact.css</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-contact/vf-contact.css</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">4.5 KB</span>
     </section>
     
   
