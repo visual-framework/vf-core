@@ -403,6 +403,8 @@ for (var i = 0, len = GDPRBanner.length; i < len; i++) {
 
 // vf-footer
 
+// vf-inlay
+
 // vf-no-js
 
 // document.

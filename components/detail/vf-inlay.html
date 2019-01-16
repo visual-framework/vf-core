@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<!-- todo: update this to use the VF patterns -->
+<html lang="en" dir="ltr" class="vf-no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    window.frctl = {
+        env: 'static'
+    };
+    </script>
+    <script>var cl = document.querySelector('html').classList; cl.remove('vf-no-js'); cl.add('vf-js');</script>
+    
+<link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png">
+<link rel="manifest" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest">
+<link rel="mask-icon" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/css/styles.css?cachebust=1.2.0" type="text/css">
+
+
+<link rel="stylesheet" href="../../local.css?cachebust=1.2.0" type="text/css">
+
+
+<title>vf-inlay | Visual Framework 2.0</title>
+
+</head>
+<body>
+
+
+
+
+
+<header class="vf-header">
+  <div class="vf-global-header">
+    <div class="vf-global-header__inner">
+    <a href="/" class="vf-logo--responsive"></a>
+
+    <p class="vf-global-header__site-name">Visual Framework for Life Science websites</p>
+    </div>
+  </div>
+</header>
+
+
+<section class="Frame-body" data-role="body">
+<!--
+embl-grid embl-grid--has-sidebar
+-->
+  
+
+
+    
+    
+
+<div class="Pen" data-behaviour="pen" id="pen-b711c38649665155c7b8b6a9a2eb1177">
+
+    
+
+    <div class="vf-body">
+<header class="vf-grid vf-page-header | vf-u-padding-l">
+  <h1 class="vf-page-header__heading | vf-text vf-text--heading-l vf-text--has-tag">
+    vf-inlay
+    
+
+
+
+<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #DC0A28; border-color: #DC0A28;">alhpa</span>
+
+
+
+
+  </h1>
+</header>
+</div>
+
+
+    <div class="vf-body">
+  <div class="vf-grid">
+    <div>
+
+    
+    
+    
+    
+    </div>
+  </div>
+</div>
+
+<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-b711c38649665155c7b8b6a9a2eb1177">
+    <div class="Preview-wrapper" data-role="resizer-disabled">
+      
+       <iframe
+          class="Preview-iframe"
+          data-role="window"
+          src="../preview/vf-inlay.html"
+          sandbox="allow-same-origin allow-scripts allow-forms"
+
+          marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
+          onload="resizeIframe(this)"
+        >
+      </iframe>
+
+      <div class="vf-body">
+        <div class="vf-grid">
+          <p class="vf-figure__caption">
+            Open the above preview in a new window:
+            <a data-no-pjax href="../preview/vf-inlay.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
+</svg>
+</a>
+            <a data-no-pjax href="../render/vf-inlay.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
+</svg>
+</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+
+    <div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
+
+    <div class="vf-body">
+  <div class="vf-grid vf-grid__col-1">
+
+    <div class="pattern-info">
+      
+      <div class="pattern-library-notes">
+      <h1 id="vf-inlay-pattern">vf-inlay Pattern</h1>
+<p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-inlay"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-inlay.svg" alt="npm version"></a></p>
+<h2 id="install">Install</h2>
+<p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>primer-buttons</code> with this command.</p>
+<code><pre>$ <span class="hljs-built_in">npm</span> install --save @visual-framework/vf-inlay</pre></code><h2 id="usage">Usage</h2>
+<p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<code><pre>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-inlay/index.scss"</span>;</pre></code><p><em>Make sure you import any requirements along with the modules.</em></p>
+
+      </div>
+      
+
+      <div class="Pen-panel Pen-info" data-role="info">
+          <div class="">
+
+  
+
+  <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+  
+<h3 class="vf-text vf-text--heading-r">Code example</h3>
+<code class="Code Code--lang-html vf-code-example">
+  
+  <pre class="vf-code-example__pre">
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__header"</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__title"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content vf-inlay__content--main"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content vf-inlay__content--additional"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+
+  </pre>
+  
+</code>
+
+
+
+  <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+  <div class="vf-grid vf-grid__col-3">
+    <div class="vf-grid__col--span-2">
+      
+
+
+<h3 class="vf-text vf-text--heading-r">Resources and files</h3>
+
+<div class="vf-tabs">
+  <ul class="vf-tabs__list" data-vf-js-tabs>
+    <!--<li class="vf-tabs__item">Pattern files</li>-->
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--d57d735ddd546bfbbea1355c673ba6e4">CHANGELOG.md</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--bb0be499fbc02134ed5d9f66de6d4849">index.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--1397850151f1d8c3c22f364d15664f61">package.json</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--88bb37ea23d3b3a2f1b11589f6ea8f2e">vf-inlay.js</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--d9c75a6aa75f905b39c874df554d5ece">vf-inlay.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--1ea9b0723ee0171e5004ece7d3972e90">vf-inlay.variables.scss</a>
+      </li>
+      
+    
+  </ul>
+
+</div>
+<div class="vf-tabs-content" data-vf-js-tabs-content>
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--d57d735ddd546bfbbea1355c673ba6e4">
+    <!--  is-active -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-section"># 0.1.0</span>
+
+<span class="hljs-section">### Added</span>
+<span class="hljs-bullet">- </span>added this
+<span class="hljs-bullet">- </span>added that
+
+<span class="hljs-section">### Changes</span>
+
+<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">- </span>changed that
+
+<span class="hljs-section">### Removed</span>
+
+<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">- </span>deleted that
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-inlay/CHANGELOG.md"><span>/components/raw/vf-inlay/CHANGELOG.md</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-inlay/CHANGELOG.md</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">133 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--bb0be499fbc02134ed5d9f66de6d4849">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// setup files required</span>
+
+<span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+
+<span class="hljs-comment">// pattern specific styles</span>
+
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-inlay.variables.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-inlay.scss'</span>;
+
+<span class="hljs-comment">// pattern variant styles</span>
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-inlay/index.scss"><span>/components/raw/vf-inlay/index.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-inlay/index.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">281 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--1397850151f1d8c3c22f364d15664f61">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre">{
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.1"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/vf-inlay"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"vf-inlay component"</span>,
+  <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"https://visual-framework.github.io/vf-core"</span>,
+  <span class="hljs-attr">"author"</span>: <span class="hljs-string">"VF"</span>,
+  <span class="hljs-attr">"license"</span>: <span class="hljs-string">"Apache 2.0"</span>,
+  <span class="hljs-attr">"style"</span>: <span class="hljs-string">"vf-inlay.css"</span>,
+  <span class="hljs-attr">"sass"</span>: <span class="hljs-string">"index.scss"</span>,
+  <span class="hljs-attr">"main"</span>: <span class="hljs-string">"build/index.js"</span>,
+  <span class="hljs-attr">"files"</span>: [
+    <span class="hljs-string">"index.scss"</span>,
+    <span class="hljs-string">"vf-inlay.scss"</span>,
+    <span class="hljs-string">"vf-inlay.css"</span>,
+    <span class="hljs-string">"vf-inlay.hbs"</span>,
+    <span class="hljs-string">"vf-inlay.config.yml"</span>
+  ],
+  <span class="hljs-attr">"test"</span>: <span class="hljs-string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,
+<span class="hljs-attr">"publishConfig"</span>: {
+  <span class="hljs-attr">"access"</span>: <span class="hljs-string">"public"</span>
+},
+  <span class="hljs-attr">"repo"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/tree/master/tree/master/components/vf-inlay"</span>,
+  <span class="hljs-attr">"bugs"</span>: {
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/issues"</span>
+  },
+  <span class="hljs-attr">"dependencies"</span>: {
+    <span class="hljs-attr">"@visual-framework/vf-sass-config"</span>: <span class="hljs-string">"^0.0.12"</span>
+  },
+  <span class="hljs-attr">"keywords"</span>: [
+    <span class="hljs-string">"fractal"</span>,
+    <span class="hljs-string">"component"</span>
+  ]
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-inlay/package.json"><span>/components/raw/vf-inlay/package.json</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-inlay/package.json</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">820 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--88bb37ea23d3b3a2f1b11589f6ea8f2e">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-inlay</span>
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-inlay/vf-inlay.js"><span>/components/raw/vf-inlay/vf-inlay.js</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-inlay/vf-inlay.js</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">12 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--d9c75a6aa75f905b39c874df554d5ece">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-inlay</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  grid-template-<span class="hljs-attribute">columns</span>:
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+
+    [main-start]
+      minmax(auto, <span class="hljs-number">47.5em</span>)
+      minmax(<span class="hljs-number">18.125em</span>, auto)
+    [main-end]
+
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+  ;
+
+  @<span class="hljs-keyword">media</span> (min-width: 480px) {
+    grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  }
+
+  @<span class="hljs-keyword">media</span> (min-width: 1024px) {
+    --page-grid-gap: <span class="hljs-number">36px</span>;
+  }
+
+  <span class="hljs-comment">// overides vf-grid's natural inclination to be full width</span>
+  &amp; <span class="hljs-selector-class">.vf-grid</span> {
+    @<span class="hljs-keyword">media</span> (max-width: 1299px) {
+      grid-column: main;
+    }
+  }
+}
+
+<span class="hljs-selector-class">.vf-inlay__header</span> {
+  <span class="hljs-attribute">display</span>: grid;
+
+  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  grid-template-<span class="hljs-attribute">columns</span>:
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+
+      minmax(auto, <span class="hljs-number">47.5em</span>)
+      minmax(<span class="hljs-number">18.125em</span>, auto)
+
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+  ;
+}
+
+<span class="hljs-selector-class">.vf-inlay__title</span> {
+  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>
+}
+
+.vf-inlay__content--main {
+  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+
+  @<span class="hljs-keyword">media</span> (min-width: 1100px) {
+    grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
+    <span class="hljs-attribute">margin-right</span>: var(--page-grid-gap);
+  }
+}
+
+<span class="hljs-selector-class">.vf-inlay__content--additional</span> {
+  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  
+  @<span class="hljs-keyword">media</span> (min-width: 1100px) {
+    grid-column: <span class="hljs-number">3</span> / <span class="hljs-number">4</span>;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">350px</span>;
+  }
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-inlay/vf-inlay.scss"><span>/components/raw/vf-inlay/vf-inlay.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-inlay/vf-inlay.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">1.1 KB</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--1ea9b0723ee0171e5004ece7d3972e90">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre">
+<span class="hljs-comment">// vf-inlay Sass variables file.</span>
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+<span class="hljs-comment">// Default component variables</span>
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-inlay/vf-inlay.variables.scss"><span>/components/raw/vf-inlay/vf-inlay.variables.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-inlay/vf-inlay.variables.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">258 Bytes</span>
+    </section>
+    
+  
+</div>
+
+
+
+
+    </div>
+    <div class="vf-grid__col--span-1">
+      <h3 class="vf-text vf-text--heading-r">Meta information</h3>
+<ul class="Meta">
+    <li class="Meta-item">
+        <strong class="Meta-key">Handle:</strong>
+        <span class="Meta-value">@vf-inlay</span>
+    </li>
+    
+    
+    
+    <li class="Meta-item">
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-inlay/vf-inlay.hbs</span>
+    </li>
+    
+    
+</ul>
+
+    </div>
+  </div>
+
+</div>
+
+      </div>
+    </div>
+
+    <!-- List all the patterns at the footer -->
+    
+
+      <div>
+      
+
+<h1 class="vf-text vf-text--heading-xl vf-text--invert">All the patterns</h1>
+
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Grids
+      <a id="grid"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      Put stuff in columns.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-grid.html">EMBL Grid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-grid.html">Grid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-grid-page.html">Page Grid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="">vf-inlay</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Elements
+      <a id="element"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      The micro elements of the pattern library.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-conditional-edit.html">EMBL Conditional Edit</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-logo.html">EMBL Logo</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-badge.html">Badges</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-blockquote.html">Blockquote</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #E89300;" title="beta"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-box.html">Box</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-button.html">Button</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #E89300;" title="beta"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-divider.html">Divider</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-favicon.html">Favicon</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-figure.html">Figure</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-heading.html">Headings</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-link.html">Link</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-list.html">Lists</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-logo.html">Logo</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-no-js.html">No JS</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-text.html">Text</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Blocks
+      <a id="block"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      Simple patterns like sections headers, galleries and so on.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-breadcrumbs-lookup.html">EMBL Breadcrumbs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-content-meta-properties.html">EMBL Content meta properties</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-activity-list.html">Activity List</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-article-meta-information.html">Article Meta Information</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-breadcrumbs.html">Breadcrumbs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-code-example.html">Code Example</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-data-protection-banner.html">Data Protection</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-factoid.html">Factoid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-font-plex-mono.html">Plex Mono Font</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-font-plex-sans.html">Plex Sans Font</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-footer.html">Footer</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-form.html">Vf Form</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-global-header.html">Global Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-link-list.html">Links List</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-masthead.html">Masthead</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-navigation.html">Navigation</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-page-header.html">Page Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-section-header.html">Section Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-summary.html">Summary</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-tabs.html">Tabs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-video.html">Video</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-video-teaser.html">Video Teaser</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Container
+      <a id="container"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      More complex patterns that sometimes have specific layout, like page intros, mastheads, news sections and so on.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-activity-group.html">Acivity List Group</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-banner.html">Banner</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-content.html">Content</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-header.html">Site Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-intro.html">Intro</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-news-container.html">News Container</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-summary-container.html">Summary Container</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-video-container.html">Video Container</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Boilerplates
+      <a id="boilerplate"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      Whole-page templates that are a collection of many patterns.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-boilerplate-page.html">EMBL Boilerplate</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-group-page.html">EMBL Group</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-subsite-page.html">EMBL Subsite</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-boilerplate-page.html">VF Boilerplate</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Deprecated
+      <a id="deprecated"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      These patterns are no longer maintained.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-contact.html">Contact</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-job-description.html">Job Description</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-news-item.html">News Item</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-snippet.html">Snippet</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-tag.html">Tags</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+      </div>
+
+      
+
+    
+  </div>
+</div>
+
+
+    
+
+</div>
+
+
+</section>
+
+
+
+
+<!--<script src="../../themes/mandelbrot/js/mandelbrot.js?cachebust=1.2.0"></script>-->
+
+
+<script src="https://dev.assets.emblstatic.net/vf/scripts/scripts.js?cachebust=1.2.0"></script>
+
+
+<script>
+  var resizeIframeChecks = 0;
+  function resizeIframe(obj) {
+    var obj = obj || document.getElementsByClassName("Preview-iframe")[0];
+    var newHeight = obj.contentWindow.document.body.scrollHeight;
+    if (newHeight < 10) {
+      if (resizeIframeChecks < 2) {
+        // if less than 10px high, that's weird check again. maybe some JS is at play?
+        setTimeout(resizeIframe, 1000);
+        resizeIframeChecks ++;
+      }
+    } else {
+      obj.style.height = newHeight + 'px';
+    }
+  }
+</script>
+
+
+</body>
+</html>
