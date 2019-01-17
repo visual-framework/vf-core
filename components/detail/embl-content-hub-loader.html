@@ -1,0 +1,2567 @@
+<!DOCTYPE html>
+<!-- todo: update this to use the VF patterns -->
+<html lang="en" dir="ltr" class="vf-no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    window.frctl = {
+        env: 'static'
+    };
+    </script>
+    <script>var cl = document.querySelector('html').classList; cl.remove('vf-no-js'); cl.add('vf-js');</script>
+    
+<link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png">
+<link rel="manifest" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest">
+<link rel="mask-icon" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/css/styles.css?cachebust=1.2.0" type="text/css">
+
+
+<link rel="stylesheet" href="../../local.css?cachebust=1.2.0" type="text/css">
+
+
+<title>EMBL ContentHub Loader pattern | Visual Framework 2.0</title>
+
+</head>
+<body>
+
+
+
+
+
+<header class="vf-header">
+  <div class="vf-global-header">
+    <div class="vf-global-header__inner">
+    <a href="/" class="vf-logo--responsive"></a>
+
+    <p class="vf-global-header__site-name">Visual Framework for Life Science websites</p>
+    </div>
+  </div>
+</header>
+
+
+<section class="Frame-body" data-role="body">
+<!--
+embl-grid embl-grid--has-sidebar
+-->
+  
+
+
+    
+    
+
+<div class="Pen" data-behaviour="pen" id="pen-40d2e9587f63dba53d0aca97e6cb33ae">
+
+    
+
+    <div class="vf-body">
+<header class="vf-grid vf-page-header | vf-u-padding-l">
+  <h1 class="vf-page-header__heading | vf-text vf-text--heading-l vf-text--has-tag">
+    EMBL ContentHub Loader pattern
+    
+
+
+
+<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #E89300; border-color: #E89300;">beta</span>
+
+
+
+
+  </h1>
+</header>
+</div>
+
+
+    <div class="vf-body">
+  <div class="vf-grid">
+    <div>
+
+    
+    
+    
+    
+    </div>
+  </div>
+</div>
+
+<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-40d2e9587f63dba53d0aca97e6cb33ae">
+    <div class="Preview-wrapper" data-role="resizer-disabled">
+      
+       <iframe
+          class="Preview-iframe"
+          data-role="window"
+          src="../preview/embl-content-hub-loader.html"
+          sandbox="allow-same-origin allow-scripts allow-forms"
+
+          marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
+          onload="resizeIframe(this)"
+        >
+      </iframe>
+
+      <div class="vf-body">
+        <div class="vf-grid">
+          <p class="vf-figure__caption">
+            Open the above preview in a new window:
+            <a data-no-pjax href="../preview/embl-content-hub-loader.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
+</svg>
+</a>
+            <a data-no-pjax href="../render/embl-content-hub-loader.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
+</svg>
+</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+
+    <div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
+
+    <div class="vf-body">
+  <div class="vf-grid vf-grid__col-1">
+
+    <div class="pattern-info">
+      
+      <div class="pattern-library-notes">
+      <h1 id="embl-contenthub-loader-pattern">EMBL ContentHub Loader Pattern</h1>
+<p><a href="https://badge.fury.io/js/%40visual-framework%2Fembl-content-hub-loader"><img src="https://badge.fury.io/js/%40visual-framework%2Fembl-content-hub-loader.svg" alt="npm version"></a></p>
+<p>Use this pattern to remotely load markup and content from the central EMBL ContentHub, this particular pattern allows reuse and distribution of content ranging articles to navigation elements (such as a global footer).</p>
+<p>Currently this is done as HTML imports (see the code example) + some JS. In the future other methods will be support (such as JSON).</p>
+<h2 id="install">Install</h2>
+<p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>primer-buttons</code> with this command.</p>
+<code><pre>$ <span class="hljs-built_in">npm</span> install --save @visual-framework/embl-content-hub-loader</pre></code><h2 id="usage">Usage</h2>
+<p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<code><pre>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/embl-content-hub-loader/index.scss"</span>;</pre></code><p><em>Make sure you import any requirements along with the modules.</em></p>
+
+      </div>
+      
+
+      <div class="Pen-panel Pen-info" data-role="info">
+          <div class="">
+
+  
+
+  <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+  
+<h3 class="vf-text vf-text--heading-r">Code example</h3>
+<code class="Code Code--lang-html vf-code-example">
+  
+  <pre class="vf-code-example__pre">
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-content-hub-loader"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Below we do a sample import from the ContentHub:<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=575&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  </pre>
+  
+</code>
+
+
+
+  <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+  <div class="vf-grid vf-grid__col-3">
+    <div class="vf-grid__col--span-2">
+      
+
+
+<h3 class="vf-text vf-text--heading-r">Resources and files</h3>
+
+<div class="vf-tabs">
+  <ul class="vf-tabs__list" data-vf-js-tabs>
+    <!--<li class="vf-tabs__item">Pattern files</li>-->
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--6d0c049f94e417c45a0b9c1f427245ec">CHANGELOG.md</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--2cc4dc9f4234620d86fbad06127f5be0">embl-content-hub-loader.css</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--42c034ad2ae0fda02cba895296c768b7">embl-content-hub-loader.js</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--b9dc9b649de7c9f2b582a25960d2c1b2">embl-content-hub-loader.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--ea65e9fcae0eb6a990f15e029c219d72">embl-content-hub-loader.variables.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--1ae9de03ccc7af333110b6330339145e">embl-content-hub-loader__html-imports.js</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--24689dd68ead81861917aa3852260530">index.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--d4c4fae5eb4ef9ef6e8d368af65ef7b3">package.json</a>
+      </li>
+      
+    
+  </ul>
+
+</div>
+<div class="vf-tabs-content" data-vf-js-tabs-content>
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--6d0c049f94e417c45a0b9c1f427245ec">
+    <!--  is-active -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-section"># 0.1.0</span>
+
+<span class="hljs-section">### Added</span>
+<span class="hljs-bullet">- </span>added this
+<span class="hljs-bullet">- </span>added that
+
+<span class="hljs-section">### Changes</span>
+
+<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">- </span>changed that
+
+<span class="hljs-section">### Removed</span>
+
+<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">- </span>deleted that
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/CHANGELOG.md"><span>/components/raw/embl-content-hub-loader/CHANGELOG.md</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/CHANGELOG.md</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">133 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--2cc4dc9f4234620d86fbad06127f5be0">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"></pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader.css"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader.css</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.css</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">0 Byte</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--42c034ad2ae0fda02cba895296c768b7">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-content-hub-loader</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHub</span>(<span class="hljs-params"></span>) </span>{
+
+  <span class="hljs-comment">// Some JS utilities</span>
+  <span class="hljs-comment">// via https://stackoverflow.com/a/32135318</span>
+  Element.prototype.appendBefore = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element</span>) </span>{
+    element.parentNode.insertBefore(<span class="hljs-keyword">this</span>, element);
+  },<span class="hljs-literal">false</span>;
+  Element.prototype.appendAfter = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element</span>) </span>{
+    element.parentNode.insertBefore(<span class="hljs-keyword">this</span>, element.nextSibling);
+  },<span class="hljs-literal">false</span>;
+
+
+  <span class="hljs-comment">/**
+   * Get the number of days between two dates.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">days_between</span>(<span class="hljs-params">date1, date2</span>) </span>{
+    <span class="hljs-comment">// The number of milliseconds in one day</span>
+    <span class="hljs-keyword">var</span> ONE_DAY = <span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span>;
+
+    <span class="hljs-comment">// Convert both dates to milliseconds</span>
+    <span class="hljs-keyword">var</span> date1_ms = date1.getTime();
+    <span class="hljs-keyword">var</span> date2_ms = date2.getTime();
+
+    <span class="hljs-comment">// Calculate the difference in milliseconds</span>
+    <span class="hljs-keyword">var</span> difference_ms = <span class="hljs-built_in">Math</span>.abs(date1_ms - date2_ms);
+
+    <span class="hljs-comment">// Convert back to days and return</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.round(difference_ms/ONE_DAY) + <span class="hljs-number">1</span>;
+  }
+
+  <span class="hljs-comment">// A list of all the links</span>
+  <span class="hljs-keyword">var</span> emblContentHubLinks = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-embl-js-content-hub-loader]'</span>);
+  <span class="hljs-keyword">var</span> emblContentHubLinkLoadingProgress = {};
+  <span class="hljs-keyword">var</span> emblContentHubShowTimers = <span class="hljs-literal">false</span>;
+
+  <span class="hljs-comment">// Handle the import of each element</span>
+  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; emblContentHubLinks.length; ++i) {
+    (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">var</span> linkPosition = i;
+
+      <span class="hljs-comment">// track time it takes for link to be shown</span>
+      <span class="hljs-keyword">if</span> (emblContentHubShowTimers) { <span class="hljs-built_in">console</span>.time(<span class="hljs-string">'timer for import '</span> + linkPosition); }
+
+      <span class="hljs-comment">// if native, no need to wait</span>
+      <span class="hljs-keyword">if</span> (emblContentHubLinks[linkPosition].import !== <span class="hljs-literal">undefined</span>) {
+        emblContentHubGrabTheContent(emblContentHubLinks[linkPosition],linkPosition);
+        <span class="hljs-keyword">if</span> (linkPosition+<span class="hljs-number">1</span> == emblContentHubLinks.length) {
+          emblContentHubSignalFinished();
+        }
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// await the import's loading</span>
+        emblContentHubAwaitLoading(emblContentHubLinks[linkPosition],linkPosition);
+      }
+
+    }());
+  }
+
+  <span class="hljs-comment">// Add a class to the body once the last item has been processed</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubSignalFinished</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>].classList.add(<span class="hljs-string">'embl-content-hub-loaded'</span>);
+  }
+
+  <span class="hljs-comment">// Dispatch load to the pollyfill</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubAwaitLoading</span>(<span class="hljs-params">targetLink,position</span>) </span>{
+    <span class="hljs-comment">// Docs: https://github.com/AshleyScirra/html-imports-polyfill#usage</span>
+    addImport(targetLink.href, <span class="hljs-literal">null</span>, emblContentHubLinkLoadingProgress).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>{
+      emblContentHubGrabTheContent(targetLink,position,value);
+
+      <span class="hljs-keyword">if</span> (position+<span class="hljs-number">1</span> == emblContentHubLinks.length) {
+        emblContentHubSignalFinished();
+      }
+    });
+  }
+
+  <span class="hljs-comment">// Generate a unique ID for the target element on the page</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubGenerateID</span>(<span class="hljs-params">position</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'contentDbItem'</span> + (<span class="hljs-string">'0000'</span> + position).slice(<span class="hljs-number">-5</span>);
+  }
+
+  <span class="hljs-comment">// Show the remote content</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubGrabTheContent</span>(<span class="hljs-params">targetLink,position,exportedContent</span>) </span>{
+
+    <span class="hljs-comment">// pickup the "meat" of the exported content</span>
+    exportedContent = exportedContent || targetLink.import.querySelector(<span class="hljs-string">'.vf-content-hub-html'</span>);
+
+    <span class="hljs-comment">// if there is just one child element and it is a div, use that</span>
+    <span class="hljs-comment">// (this helps with css grid layout)</span>
+    <span class="hljs-keyword">if</span> (exportedContent.childElementCount === <span class="hljs-number">1</span> &amp;&amp;
+        exportedContent.firstElementChild.innerHTML.trimLeft().substr(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>) === <span class="hljs-string">'&lt;div'</span>
+       ) {
+      exportedContent = exportedContent.firstElementChild;
+      exportedContent.classList.add(<span class="hljs-string">'vf-content-hub-html'</span>);
+      exportedContent.classList.add(<span class="hljs-string">'vf-content-hub-html__derived-div'</span>);
+    }
+
+    <span class="hljs-keyword">var</span> contentID = emblContentHubGenerateID(position);
+
+    <span class="hljs-comment">// where does the content go?</span>
+    <span class="hljs-keyword">if</span> (targetLink.dataset.target === <span class="hljs-string">'self'</span>) {
+      <span class="hljs-comment">// if element already exists, remove it</span>
+      <span class="hljs-keyword">var</span> oldElement = <span class="hljs-built_in">document</span>.getElementById(contentID);
+      <span class="hljs-keyword">if</span> (oldElement) {
+        oldElement.innerHTML = exportedContent.innerHTML;
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// give content an ID</span>
+        exportedContent.setAttribute(<span class="hljs-string">"id"</span>, contentID);
+        exportedContent.classList.add(contentID);
+        <span class="hljs-comment">// just insert the new content</span>
+        exportedContent.appendAfter(targetLink);
+      } <span class="hljs-comment">// end if oldElement</span>
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">var</span> targetLocation = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.'</span>+targetLink.dataset.target);
+      <span class="hljs-comment">// exportedContent.appendAfter(targetLocation);</span>
+      targetLocation.classList.add(contentID);
+      targetLocation.innerHTML = exportedContent.innerHTML;
+    }
+
+    <span class="hljs-comment">// display how long it took to load</span>
+    <span class="hljs-keyword">if</span> (emblContentHubShowTimers) { <span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">'timer for import '</span> + position); }
+
+    emblContentHubAssignClasses(targetLink,position);
+    emblContentHubUpdateDatesFormat(position);
+  }
+
+  <span class="hljs-comment">// Enable class injection after loading contents</span>
+  <span class="hljs-comment">// ... for all those edge cases</span>
+  <span class="hljs-comment">// Background: https://gitlabci.ebi.ac.uk/emblorg/backlog/issues/82</span>
+  <span class="hljs-comment">// Sample:</span>
+  <span class="hljs-comment">//  &lt;link rel="import" href="url" data-target="self"</span>
+  <span class="hljs-comment">//        data-inject-class="vf-grid vf-grid__col-2"</span>
+  <span class="hljs-comment">//        data-inject-class-target="ul"</span>
+  <span class="hljs-comment">//        data-embl-js-content-hub-loader&gt;</span>
+  <span class="hljs-comment">//  This would make the ul a two-column grid.</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubAssignClasses</span>(<span class="hljs-params">targetLink,position</span>) </span>{
+    <span class="hljs-comment">// var injectRequests = document.querySelectorAll('[data-inject-class][data-inject-class-target]');</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// for (i = 0; i &lt; injectRequests.length; ++i) {</span>
+
+    <span class="hljs-keyword">var</span> classesToInject = targetLink.getAttribute(<span class="hljs-string">'data-inject-class'</span>);
+    <span class="hljs-keyword">var</span> targetSelectorToInject = targetLink.getAttribute(<span class="hljs-string">'data-inject-class-target'</span>);
+
+    <span class="hljs-keyword">if</span> (classesToInject &amp;&amp; targetSelectorToInject) {
+      <span class="hljs-comment">// Limit scope to the imported element</span>
+      <span class="hljs-keyword">var</span> targetElement = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.'</span>+emblContentHubGenerateID(position)).querySelector(targetSelectorToInject);
+
+      <span class="hljs-comment">// We can't inject space separated classes to we need to split it into arrays and add one by one.</span>
+      <span class="hljs-keyword">var</span> classesToInject = classesToInject.split(<span class="hljs-string">' '</span>);
+
+      <span class="hljs-keyword">for</span> (classNumber = <span class="hljs-number">0</span>; classNumber &lt; classesToInject.length; classNumber++) {
+        targetElement.classList.add(classesToInject[classNumber]);
+      }
+
+    }
+
+
+  }
+
+  <span class="hljs-comment">/**
+   * Update the format of close date.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubUpdateDatesFormat</span>(<span class="hljs-params">position</span>) </span>{
+    <span class="hljs-keyword">var</span> dateRemainingList = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.'</span>+emblContentHubGenerateID(position)).querySelectorAll(<span class="hljs-string">'.date-days-remaining'</span>);
+    <span class="hljs-keyword">var</span> todayDate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+    <span class="hljs-keyword">if</span> (dateRemainingList.length &gt; <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">for</span> (dateRemainingIndex = <span class="hljs-number">0</span>; dateRemainingIndex &lt; dateRemainingList.length; dateRemainingIndex++) {
+        <span class="hljs-keyword">var</span> dateValue = <span class="hljs-built_in">parseInt</span>(dateRemainingList[dateRemainingIndex].getAttribute(<span class="hljs-string">'data-datetime'</span>)) * <span class="hljs-number">1000</span>;
+        dateValue = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(dateValue);
+        <span class="hljs-keyword">var</span> numberOfDiffDays = days_between(dateValue, todayDate);
+        <span class="hljs-comment">// Update to 'Closes in 6 Days.' format if number of days is less than 30 days.</span>
+        <span class="hljs-keyword">if</span> (numberOfDiffDays &lt; <span class="hljs-number">30</span> &amp;&amp; numberOfDiffDays &gt; <span class="hljs-number">1</span>) {
+          dateRemainingList[dateRemainingIndex].innerHTML =  <span class="hljs-string">'Closes in '</span> + <span class="hljs-string">'&lt;span&gt;'</span> + numberOfDiffDays + <span class="hljs-string">' Days.&lt;/span&gt;'</span>;
+        }
+
+        <span class="hljs-keyword">if</span> (numberOfDiffDays == <span class="hljs-number">1</span>) {
+          dateRemainingList[dateRemainingIndex].innerHTML =  <span class="hljs-string">'Closes in '</span> + <span class="hljs-string">'&lt;span&gt;'</span> + numberOfDiffDays + <span class="hljs-string">' Day.&lt;/span&gt;'</span>;
+        }
+      }
+    }
+  }
+
+}
+
+emblContentHub();
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader.js"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader.js</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.js</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">6.9 KB</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--b9dc9b649de7c9f2b582a25960d2c1b2">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-content-hub-loader</span>
+
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-content-hub-loader.variables.scss'</span>;
+
+<span class="hljs-selector-class">.embl-content-hub-loader</span> {
+
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader.scss"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">109 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--ea65e9fcae0eb6a990f15e029c219d72">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre">
+<span class="hljs-comment">// embl-content-hub-loader Sass variables file.</span>
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+<span class="hljs-comment">// Default component variables</span>
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader.variables.scss"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader.variables.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.variables.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">273 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--1ae9de03ccc7af333110b6330339145e">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-content-hub-loader__html-imports</span>
+
+<span class="hljs-comment">// A trimmed down version of</span>
+<span class="hljs-comment">// https://github.com/AshleyScirra/html-imports-polyfill/blob/master/htmlimports.js</span>
+<span class="hljs-comment">// mostly we dropped CSS and sub-imports</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubLoaderHtmlImports</span>(<span class="hljs-params"></span>) </span>{
+	<span class="hljs-comment">// Map a script URL to its import document for GetImportDocument()</span>
+	<span class="hljs-keyword">const</span> scriptUrlToImportDoc = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetPathFromURL</span>(<span class="hljs-params">url</span>)
+	</span>{
+		<span class="hljs-keyword">if</span> (!url.length)
+			<span class="hljs-keyword">return</span> url;		<span class="hljs-comment">// empty string</span>
+
+		<span class="hljs-keyword">const</span> lastCh = url.charAt(url.length - <span class="hljs-number">1</span>);
+		<span class="hljs-keyword">if</span> (lastCh === <span class="hljs-string">"/"</span> || lastCh === <span class="hljs-string">"\\"</span>)
+			<span class="hljs-keyword">return</span> url;		<span class="hljs-comment">// already a path terminated by slash</span>
+
+		<span class="hljs-keyword">let</span> last_slash = url.lastIndexOf(<span class="hljs-string">"/"</span>);
+
+		<span class="hljs-keyword">if</span> (last_slash === <span class="hljs-number">-1</span>)
+			last_slash = url.lastIndexOf(<span class="hljs-string">"\\"</span>);
+
+		<span class="hljs-keyword">if</span> (last_slash === <span class="hljs-number">-1</span>)
+			<span class="hljs-keyword">return</span> <span class="hljs-string">""</span>;			<span class="hljs-comment">// neither slash found, assume no path (e.g. "file.ext" returns "" as path)</span>
+
+		<span class="hljs-keyword">return</span> url.substr(<span class="hljs-number">0</span>, last_slash + <span class="hljs-number">1</span>);
+	};
+
+	<span class="hljs-comment">// Determine base URL of document.</span>
+	<span class="hljs-keyword">const</span> baseElem = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"base"</span>);
+	<span class="hljs-keyword">let</span> baseHref = ((baseElem &amp;&amp; baseElem.hasAttribute(<span class="hljs-string">"href"</span>)) ? baseElem.getAttribute(<span class="hljs-string">"href"</span>) : <span class="hljs-string">""</span>);
+
+	<span class="hljs-comment">// If there is a base href, ensure it is of the form 'path/' (not '/path', 'path' etc)</span>
+	<span class="hljs-keyword">if</span> (baseHref)
+	{
+		<span class="hljs-keyword">if</span> (baseHref.startsWith(<span class="hljs-string">"/"</span>))
+			baseHref = baseHref.substr(<span class="hljs-number">1</span>);
+
+		<span class="hljs-keyword">if</span> (!baseHref.endsWith(<span class="hljs-string">"/"</span>))
+			baseHref += <span class="hljs-string">"/"</span>;
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GetBaseURL</span>(<span class="hljs-params"></span>)
+	</span>{
+		<span class="hljs-keyword">return</span> GetPathFromURL(location.origin + location.pathname) + baseHref;
+	};
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">FetchAs</span>(<span class="hljs-params">url, responseType</span>)
+	</span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span>
+		{
+			<span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+			xhr.onload = <span class="hljs-function">(<span class="hljs-params">(</span>) =&gt;</span>
+			{
+				<span class="hljs-keyword">if</span> (xhr.status &gt;= <span class="hljs-number">200</span> &amp;&amp; xhr.status &lt; <span class="hljs-number">300</span>)
+				{
+					resolve(xhr.response);
+				}
+				<span class="hljs-keyword">else</span>
+				{
+					reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Failed to fetch '"</span> + url + <span class="hljs-string">"': "</span> + xhr.status + <span class="hljs-string">" "</span> + xhr.statusText));
+				}
+			});
+			xhr.onerror = reject;
+
+			xhr.open(<span class="hljs-string">"GET"</span>, url);
+			xhr.responseType = responseType;
+			xhr.send();
+		});
+	}
+
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_AddImport</span>(<span class="hljs-params">url, preFetchedDoc, rootContext, progressObject</span>)
+	</span>{
+		<span class="hljs-keyword">let</span> isRoot = <span class="hljs-literal">false</span>;
+
+		<span class="hljs-comment">// The initial import creates a root context, which is passed along to all sub-imports.</span>
+		<span class="hljs-keyword">if</span> (!rootContext)
+		{
+			isRoot = <span class="hljs-literal">true</span>;
+			rootContext = {
+				<span class="hljs-attr">alreadyImportedUrls</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(),		<span class="hljs-comment">// for deduplicating imports</span>
+				stylePromises: [],
+				<span class="hljs-attr">scriptPromises</span>: [],
+				<span class="hljs-attr">progress</span>: (progressObject || {})	<span class="hljs-comment">// progress written to this object (loaded, total)</span>
+			};
+
+			rootContext.progress.loaded = <span class="hljs-number">0</span>;
+			rootContext.progress.total = <span class="hljs-number">1</span>;			<span class="hljs-comment">// add root import</span>
+		}
+
+		<span class="hljs-comment">// Each import also tracks its own state with its own context.</span>
+		<span class="hljs-keyword">const</span> context = {
+			<span class="hljs-attr">importDoc</span>: <span class="hljs-literal">null</span>,
+			<span class="hljs-attr">baseUrl</span>: GetPathFromURL(url),
+			<span class="hljs-attr">dependencies</span>: []
+		};
+
+		<span class="hljs-comment">// preFetchedDoc is passed for sub-imports which pre-fetch their documents as an optimisation. If it's not passed,</span>
+		<span class="hljs-comment">// fetch the URL to get the document.</span>
+		<span class="hljs-keyword">let</span> loadDocPromise;
+
+		<span class="hljs-keyword">if</span> (preFetchedDoc)
+			loadDocPromise = <span class="hljs-built_in">Promise</span>.resolve(preFetchedDoc);
+		<span class="hljs-keyword">else</span>
+			loadDocPromise = FetchAs(url, <span class="hljs-string">"document"</span>);
+
+		<span class="hljs-keyword">return</span> loadDocPromise
+		.then(<span class="hljs-function"><span class="hljs-params">doc</span> =&gt;</span>
+		{
+			<span class="hljs-comment">// HACK: in Edge, due to this bug: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/12458748/</span>
+			<span class="hljs-comment">// the fetched document URL is incorrect. doc.URL is also read-only so cannot directly be assigned. To work around this,</span>
+			<span class="hljs-comment">// calculate the correct URL and use Object.defineProperty to override the returned document URL.</span>
+			<span class="hljs-built_in">Object</span>.defineProperty(doc, <span class="hljs-string">"URL"</span>, {
+				<span class="hljs-attr">value</span>: <span class="hljs-keyword">new</span> URL(url, GetBaseURL()).toString()
+			});
+
+			<span class="hljs-comment">// we don't need the `body` wrapper, so return the first child</span>
+			<span class="hljs-keyword">return</span> doc.body.firstChild;
+		})
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">AddImport</span>(<span class="hljs-params">url, async, progressObject</span>)
+	</span>{
+		<span class="hljs-comment">// Note async attribute ignored (was only used for old native implementation).</span>
+		<span class="hljs-keyword">return</span> _AddImport(url, <span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, progressObject);
+	}
+
+	<span class="hljs-built_in">window</span>[<span class="hljs-string">"addImport"</span>] = AddImport;
+}
+
+emblContentHubLoaderHtmlImports();
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader__html-imports.js"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader__html-imports.js</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader__html-imports.js</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">3.7 KB</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--24689dd68ead81861917aa3852260530">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// setup files required</span>
+
+<span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+
+<span class="hljs-comment">// pattern specific styles</span>
+
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-content-hub-loader.variables.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-content-hub-loader.scss'</span>;
+
+<span class="hljs-comment">// pattern variant styles</span>
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/index.scss"><span>/components/raw/embl-content-hub-loader/index.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/index.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">311 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--d4c4fae5eb4ef9ef6e8d368af65ef7b3">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre">{
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.1"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/embl-content-hub-loader"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"embl-content-hub-loader component"</span>,
+  <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"https://visual-framework.github.io/vf-core"</span>,
+  <span class="hljs-attr">"author"</span>: <span class="hljs-string">"VF"</span>,
+  <span class="hljs-attr">"license"</span>: <span class="hljs-string">"Apache 2.0"</span>,
+  <span class="hljs-attr">"style"</span>: <span class="hljs-string">"embl-content-hub-loader.css"</span>,
+  <span class="hljs-attr">"sass"</span>: <span class="hljs-string">"index.scss"</span>,
+  <span class="hljs-attr">"main"</span>: <span class="hljs-string">"build/index.js"</span>,
+  <span class="hljs-attr">"files"</span>: [
+    <span class="hljs-string">"index.scss"</span>,
+    <span class="hljs-string">"embl-content-hub-loader.scss"</span>,
+    <span class="hljs-string">"embl-content-hub-loader.css"</span>,
+    <span class="hljs-string">"embl-content-hub-loader.hbs"</span>,
+    <span class="hljs-string">"embl-content-hub-loader.config.yml"</span>
+  ],
+  <span class="hljs-attr">"test"</span>: <span class="hljs-string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,
+<span class="hljs-attr">"publishConfig"</span>: {
+  <span class="hljs-attr">"access"</span>: <span class="hljs-string">"public"</span>
+},
+  <span class="hljs-attr">"repo"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/tree/master/tree/master/components/embl-content-hub-loader"</span>,
+  <span class="hljs-attr">"bugs"</span>: {
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/issues"</span>
+  },
+  <span class="hljs-attr">"dependencies"</span>: {
+    <span class="hljs-attr">"@visual-framework/vf-sass-config"</span>: <span class="hljs-string">"^0.0.12"</span>
+  },
+  <span class="hljs-attr">"keywords"</span>: [
+    <span class="hljs-string">"fractal"</span>,
+    <span class="hljs-string">"component"</span>
+  ]
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/package.json"><span>/components/raw/embl-content-hub-loader/package.json</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/package.json</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">940 Bytes</span>
+    </section>
+    
+  
+</div>
+
+
+
+
+    </div>
+    <div class="vf-grid__col--span-1">
+      <h3 class="vf-text vf-text--heading-r">Meta information</h3>
+<ul class="Meta">
+    <li class="Meta-item">
+        <strong class="Meta-key">Handle:</strong>
+        <span class="Meta-value">@embl-content-hub-loader</span>
+    </li>
+    
+    
+    
+    <li class="Meta-item">
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.hbs</span>
+    </li>
+    
+    
+</ul>
+
+    </div>
+  </div>
+
+</div>
+
+      </div>
+    </div>
+
+    <!-- List all the patterns at the footer -->
+    
+
+      <div>
+      
+
+<h1 class="vf-text vf-text--heading-xl vf-text--invert">All the patterns</h1>
+
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Grids
+      <a id="grid"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      Put stuff in columns.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-grid.html">EMBL Grid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-grid.html">Grid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-grid-page.html">Page Grid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-inlay.html">vf-inlay</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Elements
+      <a id="element"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      The micro elements of the pattern library.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-conditional-edit.html">EMBL Conditional Edit</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-logo.html">EMBL Logo</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-badge.html">Badges</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-blockquote.html">Blockquote</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #E89300;" title="beta"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-box.html">Box</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-button.html">Button</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #E89300;" title="beta"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-divider.html">Divider</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #19993B;" title="live"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-favicon.html">Favicon</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-figure.html">Figure</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-heading.html">Headings</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-link.html">Link</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-list.html">Lists</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-logo.html">Logo</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-no-js.html">No JS</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-text.html">Text</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Blocks
+      <a id="block"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      Simple patterns like sections headers, galleries and so on.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-breadcrumbs-lookup.html">EMBL Breadcrumbs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-content-meta-properties.html">EMBL Content meta properties</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-activity-list.html">Activity List</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-article-meta-information.html">Article Meta Information</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-breadcrumbs.html">Breadcrumbs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-code-example.html">Code Example</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-data-protection-banner.html">Data Protection</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-factoid.html">Factoid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-font-plex-mono.html">Plex Mono Font</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-font-plex-sans.html">Plex Sans Font</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-footer.html">Footer</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-form.html">Vf Form</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-global-header.html">Global Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-link-list.html">Links List</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-masthead.html">Masthead</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-navigation.html">Navigation</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-page-header.html">Page Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-section-header.html">Section Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-summary.html">Summary</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-tabs.html">Tabs</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-video.html">Video</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-video-teaser.html">Video Teaser</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Container
+      <a id="container"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      More complex patterns that sometimes have specific layout, like page intros, mastheads, news sections and so on.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="">EMBL ContentHub Loader</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #E89300;" title="beta"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-activity-group.html">Acivity List Group</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-banner.html">Banner</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-content.html">Content</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-header.html">Site Header</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-intro.html">Intro</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-news-container.html">News Container</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-summary-container.html">Summary Container</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-video-container.html">Video Container</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Boilerplates
+      <a id="boilerplate"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      Whole-page templates that are a collection of many patterns.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-boilerplate-page.html">EMBL Boilerplate</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-group-page.html">EMBL Group</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="embl-subsite-page.html">EMBL Subsite</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-boilerplate-page.html">VF Boilerplate</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+
+<section class="embl-grid embl-grid--with-label">
+  <section data-description="label area">
+    <h4 class="vf-text vf-text--heading-s">
+      Deprecated
+      <a id="deprecated"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      These patterns are no longer maintained.
+    </p>
+  </section>
+  <section data-description="pattern list">
+    <div class="vf-grid vf-grid__col-3">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-contact.html">Contact</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-job-description.html">Job Description</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-news-item.html">News Item</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-snippet.html">Snippet</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-tag.html">Tags</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+
+
+      </div>
+
+      
+
+    
+  </div>
+</div>
+
+
+    
+
+</div>
+
+
+</section>
+
+
+
+
+<!--<script src="../../themes/mandelbrot/js/mandelbrot.js?cachebust=1.2.0"></script>-->
+
+
+<script src="https://dev.assets.emblstatic.net/vf/scripts/scripts.js?cachebust=1.2.0"></script>
+
+
+<script>
+  var resizeIframeChecks = 0;
+  function resizeIframe(obj) {
+    var obj = obj || document.getElementsByClassName("Preview-iframe")[0];
+    var newHeight = obj.contentWindow.document.body.scrollHeight;
+    if (newHeight < 10) {
+      if (resizeIframeChecks < 2) {
+        // if less than 10px high, that's weird check again. maybe some JS is at play?
+        setTimeout(resizeIframe, 1000);
+        resizeIframeChecks ++;
+      }
+    } else {
+      obj.style.height = newHeight + 'px';
+    }
+  }
+</script>
+
+
+</body>
+</html>
