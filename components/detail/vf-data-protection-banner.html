@@ -69,7 +69,7 @@ embl-grid embl-grid--has-sidebar
 
 
 
-<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #DC0A28; border-color: #DC0A28;">alhpa</span>
+<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #707372; border-color: #707372;">deprecated</span>
 
 
 
@@ -137,6 +137,8 @@ embl-grid embl-grid--has-sidebar
       <div class="pattern-library-notes">
       <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-data-protection-banner"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-data-protection-banner.svg" alt="npm version"></a></p>
 <h2 id="about">About</h2>
+<h2>This pattern has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="../detail/vf-summary-job">vf-banner–gdpr</a> pattern.</h2>
+
 <h2 id="installation-and-implementation">Installation and Implementation</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-data-protection-banner</code> with this command.</p>
 <code><pre>$ <span class="hljs-built_in">npm</span> install --save @visual-framework/vf-data-protection-banner</pre></code><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
@@ -774,7 +776,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">cursor</span>: not-allowed;
 }
 
-<span class="hljs-selector-class">.vf-data-protection-banner</span> {
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-data-protection-banner</span> {
   <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">16px</span>;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">16px</span>;
   <span class="hljs-attribute">-webkit-box-align</span>: center;
@@ -795,34 +797,34 @@ embl-grid embl-grid--has-sidebar
 }
 
 @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">63.9375em</span>) {
-  <span class="hljs-selector-class">.vf-data-protection-banner__content</span> {
+  <span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-data-protection-banner__content</span> {
     <span class="hljs-attribute">display</span>: block;
   }
 }
 
 @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
-  <span class="hljs-selector-class">.vf-data-protection-banner__content</span> {
+  <span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-data-protection-banner__content</span> {
     <span class="hljs-attribute">grid-column</span>: main;
   }
 }
 
-<span class="hljs-selector-class">.vf-data-protection-banner__text</span> {
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-data-protection-banner__text</span> {
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64em</span>;
 }
 
-<span class="hljs-selector-class">.vf-data-protection-banner__text</span> <span class="hljs-selector-class">.vf-link</span> {
+<span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-data-protection-banner__text</span> <span class="hljs-selector-class">.vf-link</span> {
   <span class="hljs-attribute">color</span>: inherit;
 }
 
 @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
-  <span class="hljs-selector-class">.vf-data-protection-banner__text</span> {
+  <span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-data-protection-banner__text</span> {
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
   }
 }
 
 @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
-  <span class="hljs-selector-class">.vf-data-protection-banner__button</span> {
+  <span class="hljs-selector-class">.vf-body</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-data-protection-banner__button</span> {
     <span class="hljs-attribute">-ms-flex-item-align</span>: center;
         <span class="hljs-attribute">align-self</span>: center;
     <span class="hljs-attribute">justify-self</span>: end;
@@ -840,7 +842,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-data-protection-banner/vf-data-protection-banner.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">8.6 KB</span>
+        <span class="Meta-value">8.9 KB</span>
     </section>
     
   
@@ -894,50 +896,52 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-variable">$vf-data-protection-banner-padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-r);
 
-<span class="hljs-selector-class">.vf-data-protection-banner</span> {
-  @<span class="hljs-keyword">include</span> padding--block(all, <span class="hljs-variable">$vf-data-protection-banner-padding</span>);
+<span class="hljs-selector-class">.vf-body</span>:not(<span class="hljs-selector-class">.vf-disable-deprecated</span>) {
+  <span class="hljs-selector-class">.vf-data-protection-banner</span> {
+    @<span class="hljs-keyword">include</span> padding--block(all, <span class="hljs-variable">$vf-data-protection-banner-padding</span>);
 
-  <span class="hljs-attribute">align-items</span>: center;
-  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-data-protection-banner-color--background</span>;
-  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">box-sizing</span>: border-box;
-  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-data-protection-banner-color--text</span>;
-  <span class="hljs-attribute">display</span>: grid;
-  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-  grid-template-<span class="hljs-attribute">columns</span>: [full-start] minmax(<span class="hljs-number">1em</span>, auto) [main-start] minmax(<span class="hljs-number">300px</span>, <span class="hljs-number">81.25em</span>) [main-end] minmax(<span class="hljs-number">1em</span>, auto) [full-end];
-  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">position</span>: fixed;
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
-}
-
-<span class="hljs-selector-class">.vf-data-protection-banner__content</span> {
-  @<span class="hljs-keyword">media</span> (max-width: 63.9375em) {
-    <span class="hljs-attribute">display</span>: block; <span class="hljs-comment">// overideing the .emlb-grid code</span>
+    <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-data-protection-banner-color--background</span>;
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-data-protection-banner-color--text</span>;
+    <span class="hljs-attribute">display</span>: grid;
+    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+    grid-template-<span class="hljs-attribute">columns</span>: [full-start] minmax(<span class="hljs-number">1em</span>, auto) [main-start] minmax(<span class="hljs-number">300px</span>, <span class="hljs-number">81.25em</span>) [main-end] minmax(<span class="hljs-number">1em</span>, auto) [full-end];
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">position</span>: fixed;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
   }
 
-  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint-l</span>) {
-    grid-column: main;
-  }
-}
+  <span class="hljs-selector-class">.vf-data-protection-banner__content</span> {
+    @<span class="hljs-keyword">media</span> (max-width: 63.9375em) {
+      <span class="hljs-attribute">display</span>: block; <span class="hljs-comment">// overideing the .emlb-grid code</span>
+    }
 
-<span class="hljs-selector-class">.vf-data-protection-banner__text</span> {
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
-  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64em</span>;
-
-  &amp; <span class="hljs-selector-class">.vf-link</span> {
-    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-data-protection-banner-color--link</span>;
+    @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint-l</span>) {
+      grid-column: main;
+    }
   }
 
-  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint-l</span>) {
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-  }
-}
+  <span class="hljs-selector-class">.vf-data-protection-banner__text</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64em</span>;
 
-<span class="hljs-selector-class">.vf-data-protection-banner__button</span> {
-  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint-l</span>) {
-    <span class="hljs-attribute">align-self</span>: center;
-    justify-self: end;
+    &amp; <span class="hljs-selector-class">.vf-link</span> {
+      <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-data-protection-banner-color--link</span>;
+    }
+
+    @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint-l</span>) {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    }
+  }
+
+  <span class="hljs-selector-class">.vf-data-protection-banner__button</span> {
+    @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint-l</span>) {
+      <span class="hljs-attribute">align-self</span>: center;
+      justify-self: end;
+    }
   }
 }
 </pre>
@@ -952,7 +956,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-data-protection-banner/vf-data-protection-banner.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">1.4 KB</span>
+        <span class="Meta-value">1.5 KB</span>
     </section>
     
   
@@ -1685,19 +1689,6 @@ embl-grid embl-grid--has-sidebar
       
         
       
-        
-        <p class="vf-text">
-          <a class="vf-link" href="">Data Protection</a>
-          
-
-
-
-<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
-
-
-
-
-        </p>
         
       
         
@@ -2525,6 +2516,19 @@ embl-grid embl-grid--has-sidebar
       
         
       
+        
+        <p class="vf-text">
+          <a class="vf-link" href="">Data Protection</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
         
       
         
