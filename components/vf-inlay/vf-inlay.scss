@@ -12,19 +12,19 @@
     minmax(var(--page-grid-gap), 60px)
   ;
 
+  // overides vf-grid's natural inclination to be full width
+  & .vf-grid {
+    @media (max-width: 1299px) {
+      grid-column: main;
+    }
+  }
+
   @media (min-width: 480px) {
     grid-column: 2 / -2;
   }
 
   @media (min-width: 1024px) {
     --page-grid-gap: 36px;
-  }
-
-  // overides vf-grid's natural inclination to be full width
-  & .vf-grid {
-    @media (max-width: 1299px) {
-      grid-column: main;
-    }
   }
 }
 
@@ -57,7 +57,7 @@
 
 .vf-inlay__content--additional {
   grid-column: 2 / -2;
-  
+
   @media (min-width: 1100px) {
     grid-column: 3 / 4;
     max-width: 350px;

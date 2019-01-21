@@ -2,6 +2,8 @@
 
 ## About
 
+<h2>This pattern has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="../detail/vf-box-factoid">this</a> pattern.</h2>
+
 The `vf-factoid` design pattern can be used in a container that has a sidebar. It consists of a heading and text. It makes use of the `vf-box` element for colour and internal spacing.
 
 ## Installation and Implementation
