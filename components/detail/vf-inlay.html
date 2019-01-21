@@ -160,7 +160,7 @@ embl-grid embl-grid--has-sidebar
   <pre class="vf-code-example__pre">
 
 
-<span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay"</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__header"</span>&gt;</span>
 
@@ -174,7 +174,7 @@ embl-grid embl-grid--has-sidebar
     <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content vf-inlay__content--additional"</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
 
-<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
 
   </pre>
   
@@ -382,6 +382,10 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>) [main-start] <span class="hljs-built_in">minmax</span>(auto, 47.5em) <span class="hljs-built_in">minmax</span>(18.125em, auto) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>);
 }
 
+<span class="hljs-selector-class">.vf-inlay</span><span class="hljs-selector-pseudo">:last-of-type</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
+}
+
 @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1299px</span>) {
   <span class="hljs-selector-class">.vf-inlay</span> <span class="hljs-selector-class">.vf-grid</span> {
     <span class="hljs-attribute">grid-column</span>: main;
@@ -489,6 +493,10 @@ embl-grid embl-grid--has-sidebar
 
     minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
   ;
+
+  &amp;:last-of-type {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
+  }
 
   <span class="hljs-comment">// overides vf-grid's natural inclination to be full width</span>
   &amp; <span class="hljs-selector-class">.vf-grid</span> {
