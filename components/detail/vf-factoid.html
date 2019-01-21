@@ -69,7 +69,7 @@ embl-grid embl-grid--has-sidebar
 
 
 
-<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #DC0A28; border-color: #DC0A28;">alhpa</span>
+<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #707372; border-color: #707372;">deprecated</span>
 
 
 
@@ -137,6 +137,8 @@ embl-grid embl-grid--has-sidebar
       <div class="pattern-library-notes">
       <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-factoid"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-factoid.svg" alt="npm version"></a></p>
 <h2 id="about">About</h2>
+<h2>This pattern has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="../detail/vf-box-factoid">this</a> pattern.</h2>
+
 <p>The <code>vf-factoid</code> design pattern can be used in a container that has a sidebar. It consists of a heading and text. It makes use of the <code>vf-box</code> element for colour and internal spacing.</p>
 <h2 id="installation-and-implementation">Installation and Implementation</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-factoid</code> with this command.</p>
@@ -515,15 +517,15 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">cursor</span>: not-allowed;
 }
 
-<span class="hljs-selector-class">.vf-factoid</span> {
+<span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-factoid</span> {
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
 }
 
-<span class="hljs-selector-class">.vf-factoid</span> <span class="hljs-selector-pseudo">:last-child</span> {
+<span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-factoid</span> <span class="hljs-selector-pseudo">:last-child</span> {
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 }
 
-<span class="hljs-selector-class">.vf-factoid__heading</span> {
+<span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-factoid__heading</span> {
   <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">21px</span>;
   <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
@@ -533,7 +535,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
 }
 
-<span class="hljs-selector-class">.vf-factoid__text</span> {
+<span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-factoid__text</span> {
   <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.71</span>;
@@ -553,7 +555,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-factoid/vf-factoid.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">3.7 KB</span>
+        <span class="Meta-value">3.9 KB</span>
     </section>
     
   
@@ -564,26 +566,29 @@ embl-grid embl-grid--has-sidebar
           
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
             <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-factoid</span>
+<span class="hljs-selector-tag">html</span>:not(<span class="hljs-selector-class">.vf-disable-deprecated</span>) {
 
-<span class="hljs-variable">$vf-factoid-outer-spacing</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-xl) !default;
+  <span class="hljs-variable">$vf-factoid-outer-spacing</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-xl) !default;
 
-<span class="hljs-selector-class">.vf-factoid</span> {
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-variable">$vf-factoid-outer-spacing</span>;
+  <span class="hljs-selector-class">.vf-factoid</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-variable">$vf-factoid-outer-spacing</span>;
 
-  <span class="hljs-comment">// we don't want the the last element within the component to have a bottom margin.</span>
-  &amp; :last-child {
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// we don't want the the last element within the component to have a bottom margin.</span>
+    &amp; :last-child {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    }
   }
-}
 
-<span class="hljs-selector-class">.vf-factoid__heading</span> {
-  @<span class="hljs-keyword">include</span> set-type(heading--r);
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
-}
+  <span class="hljs-selector-class">.vf-factoid__heading</span> {
+    @<span class="hljs-keyword">include</span> set-type(heading--r);
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  }
 
-<span class="hljs-selector-class">.vf-factoid__text</span> {
-  @<span class="hljs-keyword">include</span> set-type(body--r);
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-selector-class">.vf-factoid__text</span> {
+    @<span class="hljs-keyword">include</span> set-type(body--r);
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  }
+
 }
 </pre>
           </code>
@@ -597,7 +602,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-factoid/vf-factoid.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">433 Bytes</span>
+        <span class="Meta-value">503 Bytes</span>
     </section>
     
   
@@ -776,7 +781,7 @@ embl-grid embl-grid--has-sidebar
       
         
         <p class="vf-text">
-          <a class="vf-link" href="vf-inlay.html">vf-inlay</a>
+          <a class="vf-link" href="vf-inlay.html">Inlay</a>
           
 
 
@@ -945,19 +950,6 @@ embl-grid embl-grid--has-sidebar
       
         
       
-        
-        <p class="vf-text">
-          <a class="vf-link" href="vf-box.html">Box</a>
-          
-
-
-
-<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
-
-
-
-
-        </p>
         
       
         
@@ -1291,6 +1283,19 @@ embl-grid embl-grid--has-sidebar
         
       
         
+        <p class="vf-text">
+          <a class="vf-link" href="vf-box.html">Box</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
       
         
         <p class="vf-text">
@@ -1336,19 +1341,6 @@ embl-grid embl-grid--has-sidebar
       
         
       
-        
-        <p class="vf-text">
-          <a class="vf-link" href="">Factoid</a>
-          
-
-
-
-<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
-
-
-
-
-        </p>
         
       
         
@@ -2176,6 +2168,19 @@ embl-grid embl-grid--has-sidebar
       
         
       
+        
+        <p class="vf-text">
+          <a class="vf-link" href="">Factoid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
         
       
         

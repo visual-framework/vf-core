@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="../../local.css?cachebust=1.2.0" type="text/css">
 
 
-<title>vf-inlay | Visual Framework 2.0</title>
+<title>Inlay | Visual Framework 2.0</title>
 
 </head>
 <body>
@@ -64,7 +64,7 @@ embl-grid embl-grid--has-sidebar
     <div class="vf-body">
 <header class="vf-grid vf-page-header | vf-u-padding-l">
   <h1 class="vf-page-header__heading | vf-text vf-text--heading-l vf-text--has-tag">
-    vf-inlay
+    Inlay
     
 
 
@@ -382,6 +382,12 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>) [main-start] <span class="hljs-built_in">minmax</span>(auto, 47.5em) <span class="hljs-built_in">minmax</span>(18.125em, auto) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>);
 }
 
+@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1299px</span>) {
+  <span class="hljs-selector-class">.vf-inlay</span> <span class="hljs-selector-class">.vf-grid</span> {
+    <span class="hljs-attribute">grid-column</span>: main;
+  }
+}
+
 @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">480px</span>) {
   <span class="hljs-selector-class">.vf-inlay</span> {
     <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
@@ -391,12 +397,6 @@ embl-grid embl-grid--has-sidebar
 @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
   <span class="hljs-selector-class">.vf-inlay</span> {
     <span class="hljs-attribute">--page-grid-gap</span>: <span class="hljs-number">36px</span>;
-  }
-}
-
-@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1299px</span>) {
-  <span class="hljs-selector-class">.vf-inlay</span> <span class="hljs-selector-class">.vf-grid</span> {
-    <span class="hljs-attribute">grid-column</span>: main;
   }
 }
 
@@ -490,19 +490,19 @@ embl-grid embl-grid--has-sidebar
     minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
   ;
 
+  <span class="hljs-comment">// overides vf-grid's natural inclination to be full width</span>
+  &amp; <span class="hljs-selector-class">.vf-grid</span> {
+    @<span class="hljs-keyword">media</span> (max-width: 1299px) {
+      grid-column: main;
+    }
+  }
+
   @<span class="hljs-keyword">media</span> (min-width: 480px) {
     grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
   }
 
   @<span class="hljs-keyword">media</span> (min-width: 1024px) {
     --page-grid-gap: <span class="hljs-number">36px</span>;
-  }
-
-  <span class="hljs-comment">// overides vf-grid's natural inclination to be full width</span>
-  &amp; <span class="hljs-selector-class">.vf-grid</span> {
-    @<span class="hljs-keyword">media</span> (max-width: 1299px) {
-      grid-column: main;
-    }
   }
 }
 
@@ -535,7 +535,7 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-selector-class">.vf-inlay__content--additional</span> {
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
-  
+
   @<span class="hljs-keyword">media</span> (min-width: 1100px) {
     grid-column: <span class="hljs-number">3</span> / <span class="hljs-number">4</span>;
     <span class="hljs-attribute">max-width</span>: <span class="hljs-number">350px</span>;
@@ -761,7 +761,7 @@ embl-grid embl-grid--has-sidebar
       
         
         <p class="vf-text">
-          <a class="vf-link" href="">vf-inlay</a>
+          <a class="vf-link" href="">Inlay</a>
           
 
 
@@ -930,19 +930,6 @@ embl-grid embl-grid--has-sidebar
       
         
       
-        
-        <p class="vf-text">
-          <a class="vf-link" href="vf-box.html">Box</a>
-          
-
-
-
-<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
-
-
-
-
-        </p>
         
       
         
@@ -1276,6 +1263,19 @@ embl-grid embl-grid--has-sidebar
         
       
         
+        <p class="vf-text">
+          <a class="vf-link" href="vf-box.html">Box</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
       
         
         <p class="vf-text">
@@ -1321,19 +1321,6 @@ embl-grid embl-grid--has-sidebar
       
         
       
-        
-        <p class="vf-text">
-          <a class="vf-link" href="vf-factoid.html">Factoid</a>
-          
-
-
-
-<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
-
-
-
-
-        </p>
         
       
         
@@ -2161,6 +2148,19 @@ embl-grid embl-grid--has-sidebar
       
         
       
+        
+        <p class="vf-text">
+          <a class="vf-link" href="vf-factoid.html">Factoid</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #707372;" title="deprecated"></span>
+
+
+
+
+        </p>
         
       
         

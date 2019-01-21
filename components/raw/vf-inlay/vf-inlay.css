@@ -4,6 +4,12 @@
   grid-template-columns: minmax(var(--page-grid-gap), 60px) [main-start] minmax(auto, 47.5em) minmax(18.125em, auto) [main-end] minmax(var(--page-grid-gap), 60px);
 }
 
+@media (max-width: 1299px) {
+  .vf-inlay .vf-grid {
+    grid-column: main;
+  }
+}
+
 @media (min-width: 480px) {
   .vf-inlay {
     grid-column: 2 / -2;
@@ -13,12 +19,6 @@
 @media (min-width: 1024px) {
   .vf-inlay {
     --page-grid-gap: 36px;
-  }
-}
-
-@media (max-width: 1299px) {
-  .vf-inlay .vf-grid {
-    grid-column: main;
   }
 }
 
