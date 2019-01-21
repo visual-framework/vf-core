@@ -1,10 +1,35 @@
 // vf-box
 
+@import 'vf-box.variables.scss';
+
 .vf-box {
+  background-color: set-color(vf-color-gray-dark);
+  border-color: set-color(vf-color-gray-dark);
   box-sizing: border-box;
-  margin-bottom: 24px;
+  color: white;
+  margin-bottom: $vf-box-outer-spacing;
+  padding: 24px 16px;
   width: 100%;
+
+  // we don't want the the last element within the component to have a bottom margin.
+  & :last-child {
+    margin: 0;
+  }
 }
+
+.vf-box__heading {
+  @include set-type(heading--r);
+}
+
+.vf-box__text {
+  @include set-type(body--r);
+}
+
+
+
+
+
+// The CSS below is on notice
 
 .vf-box--s {
   padding: 16px;
