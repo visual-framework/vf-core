@@ -183,23 +183,9 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:expiry"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"2019-06-20"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- if there is a fixed point in time when the page is no longer relevant --&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-breadcrumbs-lookup"</span> <span class="hljs-attr">data-embl-js-breadcrumbs-lookup</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs | vf-list vf-list--inline"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs__item | embl-breadcrumbs-lookup__loading-text"</span>&gt;</span>
-            Breadcrumbs are loading...
-        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- &lt;li class="vf-breadcrumbs__item"&gt;
-        &lt;a href="JavaScript:Void(0);" class="vf-breadcrumbs__link"&gt;Explore&lt;/a&gt;
-    &lt;/li&gt; --&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs vf-breadcrumbs--related | vf-list vf-list--inline"</span>&gt;</span>
-            <span class="hljs-comment">&lt;!-- &lt;li class="vf-breadcrumbs__item"&gt;
-        &lt;a href="JavaScript:Void(0);" class="vf-breadcrumbs__link"&gt;Placeholder&lt;/a&gt;
-      &lt;/li&gt; --&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs embl-breadcrumbs-lookup"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Breadcrumb"</span> <span class="hljs-attr">data-embl-js-breadcrumbs-lookup</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text embl-breadcrumbs-lookup--loading-text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 
   </pre>
   
@@ -304,7 +290,11 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         <div class="FileBrowser-itemPreview">
           
           <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"></pre>
+            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.embl-breadcrumbs-lookup--loading-text</span><span class="hljs-selector-pseudo">::before</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">"Breadcrumbs are loading"</span>;
+}
+</pre>
           </code>
           
         </div>
@@ -316,7 +306,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">0 Byte</span>
+        <span class="Meta-value">107 Bytes</span>
     </section>
     
   
@@ -328,6 +318,15 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
             <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-breadcrumbs-lookup</span>
 
+<span class="hljs-comment">// to hold the EMBL taxonomy</span>
+<span class="hljs-keyword">var</span> emblTaxonomy = {};
+
+<span class="hljs-comment">// placeholders for our new breadcrumbs</span>
+<span class="hljs-keyword">var</span> emblBreadcrumbPrimary = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"ul"</span>);
+    emblBreadcrumbPrimary.classList.add(<span class="hljs-string">'vf-breadcrumbs__list'</span>,<span class="hljs-string">'vf-list'</span>,<span class="hljs-string">'vf-list--inline'</span>);
+<span class="hljs-keyword">var</span> emblBreadcrumbRelated = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"ul"</span>);
+    emblBreadcrumbRelated.classList.add(<span class="hljs-string">'vf-breadcrumbs__list'</span>,<span class="hljs-string">'vf-breadcrumbs__list--related'</span>,<span class="hljs-string">'vf-list'</span>,<span class="hljs-string">'vf-list--inline'</span>);
+
 <span class="hljs-comment">/**
  * Take any appropriate actions depending on present metaTags
  * @example emblBreadcrumbsLookup()
@@ -335,19 +334,18 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
  *                                    you can explicitly pass options
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcrumbsLookup</span>(<span class="hljs-params">metaProperties</span>) </span>{
-  <span class="hljs-keyword">var</span> emblBreadcrumbTarget = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-embl-js-breadcrumbs-lookup] &gt; .vf-breadcrumbs'</span>);
+  <span class="hljs-keyword">var</span> emblBreadcrumbTarget = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-embl-js-breadcrumbs-lookup]'</span>);
 
   <span class="hljs-keyword">if</span> (emblBreadcrumbTarget.length === <span class="hljs-number">0</span>) {
-    <span class="hljs-comment">// console.warn('There is no `[data-embl-js-breadcrumbs-lookup] &gt; .vf-breadcrumbs` in which to insert the breadcrumbs; exiting');</span>
+    <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'There is no `[data-embl-js-breadcrumbs-lookup]` in which to insert the breadcrumbs; exiting'</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
   }
   <span class="hljs-keyword">if</span> (emblBreadcrumbTarget.length &gt; <span class="hljs-number">1</span>) {
-    <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'There is more than one `[data-embl-js-breadcrumbs-lookup] &gt; .vf-breadcrumbs` in which to insert the breadcrumbs; continuing but only the first element will be updated.'</span>);
+    <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'There is more than one `[data-embl-js-breadcrumbs-lookup]` in which to insert the breadcrumbs; continuing but only the first element will be updated.'</span>);
   }
 
   <span class="hljs-keyword">var</span> majorFacets = [<span class="hljs-string">'who'</span>,<span class="hljs-string">'what'</span>,<span class="hljs-string">'where'</span>];
 
-  <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'todo: rather than writing to the DOM each time, we shold construct the full breadcrumb and write once.'</span>);
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; majorFacets.length; i++) {
     <span class="hljs-keyword">if</span> (majorFacets[i] == metaProperties.active) {
       emblBreadcrumbAppend(emblBreadcrumbTarget,metaProperties[majorFacets[i]],majorFacets[i],<span class="hljs-string">'primary'</span>);
@@ -356,6 +354,14 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
       emblBreadcrumbAppend(emblBreadcrumbTarget,metaProperties[majorFacets[i]],majorFacets[i],<span class="hljs-string">'related'</span>);
     }
   }
+
+  <span class="hljs-comment">// make a 'related' label</span>
+  <span class="hljs-keyword">var</span> relatedLabel = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"span"</span>);
+      relatedLabel.innerHTML = <span class="hljs-string">'Related:'</span>;
+      relatedLabel.classList.add(<span class="hljs-string">'vf-breadcrumbs__heading'</span>);
+
+  <span class="hljs-comment">// now that we've processed all the meta properties, insert our rendered breadcrumbs</span>
+  emblBreadcrumbTarget[<span class="hljs-number">0</span>].innerHTML = emblBreadcrumbPrimary.outerHTML + relatedLabel.outerHTML + emblBreadcrumbRelated.outerHTML;
 }
 
 <span class="hljs-comment">/**
@@ -364,7 +370,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
  * @param {string} [url] - URL to pull the taxonomy from
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblGetTaxonomy</span>(<span class="hljs-params">url</span>) </span>{
-  <span class="hljs-keyword">var</span> url = url || <span class="hljs-string">'http://dev.content.embl.org/api/v1/pattern.json?pattern=embl-taxonomy'</span>;
+  <span class="hljs-keyword">var</span> url = url || <span class="hljs-string">'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-taxonomy&amp;source=contenthub'</span>;
 
   <span class="hljs-comment">// from https://developers.google.com/web/fundamentals/primers/promises</span>
   <span class="hljs-comment">// Return a new promise.</span>
@@ -407,33 +413,6 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcrumbAppend</span>(<span class="hljs-params">breadcrumbTarget,termName,facet,type</span>) </span>{
   <span class="hljs-comment">// console.log('Processing breadcrumb for:', termName + ', ' + facet + ', ' + type);</span>
 
-  <span class="hljs-comment">// find the related breadcrumb ul, if it doesn't exist, make it</span>
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRelatedBreadcrumbTarget</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">var</span> breadcrumbTargetRelated = breadcrumbTarget.querySelectorAll(<span class="hljs-string">'.vf-breadcrumbs--related'</span>);
-    <span class="hljs-keyword">if</span> (breadcrumbTargetRelated.length &gt; <span class="hljs-number">0</span>) {
-      <span class="hljs-comment">// there's already a releated container, use it</span>
-      breadcrumbTargetRelated = breadcrumbTargetRelated[<span class="hljs-number">0</span>];
-      <span class="hljs-keyword">return</span> breadcrumbTargetRelated;
-    } <span class="hljs-keyword">else</span> {
-      breadcrumbTarget.innerHTML += <span class="hljs-string">`&lt;ul class="vf-breadcrumbs vf-breadcrumbs--related | vf-list vf-list--inline"&gt;&lt;/ul&gt;`</span>;
-      <span class="hljs-keyword">return</span> breadcrumbTarget.querySelectorAll(<span class="hljs-string">'.vf-breadcrumbs--related'</span>)[<span class="hljs-number">0</span>];
-    }
-  }
-
-  <span class="hljs-comment">// ensure a "related" label is present</span>
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addRelatedBreadcrumbLabel</span>(<span class="hljs-params">breadcrumbTargetRelated</span>) </span>{
-    <span class="hljs-keyword">var</span> relatedLabel = breadcrumbTargetRelated.querySelectorAll(<span class="hljs-string">'.vf-breadcrumbs__item-related-label'</span>);
-
-    <span class="hljs-keyword">if</span> (relatedLabel.length === <span class="hljs-number">0</span>) {
-      <span class="hljs-comment">// no label, so we make it</span>
-      <span class="hljs-comment">// breadcrumbTargetRelated</span>
-      <span class="hljs-keyword">var</span> newRelatedLabel = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>);
-      newRelatedLabel.innerHTML = <span class="hljs-string">'Related'</span>;
-      newRelatedLabel.classList.add(<span class="hljs-string">'vf-breadcrumbs__item'</span>,<span class="hljs-string">'vf-breadcrumbs__item-related-label'</span>)
-      breadcrumbTargetRelated.prepend(newRelatedLabel);
-    }
-  }
-
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCurrentTerm</span>(<span class="hljs-params">termName</span>) </span>{
     <span class="hljs-keyword">if</span> (termName === <span class="hljs-string">'EMBL'</span>) termName = <span class="hljs-string">'All EMBL sites'</span>; <span class="hljs-comment">// hack as we're not using IDs</span>
 
@@ -475,7 +454,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
     <span class="hljs-built_in">Array</span>.prototype.forEach.call(parents, (parentId, i) =&gt; {
       <span class="hljs-built_in">Array</span>.prototype.forEach.call(emblTaxonomy.terms, (term, i) =&gt; {
         <span class="hljs-keyword">if</span> (parentId === term.uuid) {
-          insertBreadcrumb(term.name_display,term.url,<span class="hljs-string">'prepend'</span>);
+          emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(term.name_display,term.url) + emblBreadcrumbPrimary.innerHTML;
           <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
         }
       });
@@ -485,26 +464,21 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
   }
 
   <span class="hljs-comment">/**
-   * Generate an HTML elem and insert it into the DOM
-   * @example insertBreadcrumb(term,breadcrumbUrl,position)
+   * Generate HTML for a new breadcrumb
+   * @example formatBreadcrumb(term,breadcrumbUrl)
    * @param {string} [termName]  - the taxonomy string of the item, e.g. `Cancer`
    * @param {string} [breadcrumbUrl] - a fully formed URL, or 'null' to not make a link
-   * @param {string} [position] - where to place it, `prepend` or `append`
    */</span>
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertBreadcrumb</span>(<span class="hljs-params">termName,breadcrumbUrl,position</span>) </span>{
-    <span class="hljs-keyword">var</span> newBreadcrumb = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>);
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatBreadcrumb</span>(<span class="hljs-params">termName,breadcrumbUrl</span>) </span>{
+    <span class="hljs-keyword">var</span> newBreadcrumb = <span class="hljs-string">'&lt;li class="vf-breadcrumbs__item"&gt;'</span>;
     <span class="hljs-keyword">if</span> (breadcrumbUrl &amp;&amp; breadcrumbUrl !== <span class="hljs-string">'null'</span>) {
-      newBreadcrumb.innerHTML = <span class="hljs-string">'&lt;a href="'</span>+breadcrumbUrl+<span class="hljs-string">'" class="vf-breadcrumbs__link"&gt;'</span> + termName + <span class="hljs-string">'&lt;/a&gt;'</span>;
+      newBreadcrumb += <span class="hljs-string">'&lt;a href="'</span>+breadcrumbUrl+<span class="hljs-string">'" class="vf-breadcrumbs__link"&gt;'</span> + termName + <span class="hljs-string">'&lt;/a&gt;'</span>;
     } <span class="hljs-keyword">else</span> {
-      newBreadcrumb.innerHTML = termName;
+      newBreadcrumb += termName;
     }
-    newBreadcrumb.classList.toggle(<span class="hljs-string">'vf-breadcrumbs__item'</span>);
+    newBreadcrumb += <span class="hljs-string">'&lt;/li&gt;'</span>;
 
-    <span class="hljs-keyword">if</span> (position === <span class="hljs-string">'prepend'</span>) {
-      breadcrumbTarget.prepend(newBreadcrumb);
-    } <span class="hljs-keyword">else</span> {
-      breadcrumbTargetRelated.append(newBreadcrumb);
-    }
+    <span class="hljs-keyword">return</span> newBreadcrumb;
   }
 
   <span class="hljs-keyword">var</span> currentTerm = getCurrentTerm(termName);
@@ -524,23 +498,15 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
     <span class="hljs-keyword">if</span> (loadingText.length &gt; <span class="hljs-number">0</span>) { loadingText[<span class="hljs-number">0</span>].remove(); }
 
     <span class="hljs-comment">// add breadcrumb</span>
-    insertBreadcrumb(currentTerm.name_display,<span class="hljs-string">'null'</span>,<span class="hljs-string">'prepend'</span>);
+    emblBreadcrumbPrimary.innerHTML += formatBreadcrumb(currentTerm.name_display,<span class="hljs-string">'null'</span>);
 
     <span class="hljs-comment">// fetch parents</span>
     getBreadcrumbParentTerm(breadcrumbParents, facet);
   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (type == <span class="hljs-string">'related'</span>) {
-    <span class="hljs-comment">// get/make the related ul</span>
-    <span class="hljs-keyword">var</span> breadcrumbTargetRelated = getRelatedBreadcrumbTarget();
-    <span class="hljs-comment">// ensure there's a label</span>
-    addRelatedBreadcrumbLabel(breadcrumbTargetRelated);
-
     <span class="hljs-comment">// add breadcrumb</span>
-    insertBreadcrumb(currentTerm.name_display,breadcrumbUrl,<span class="hljs-string">'append'</span>);
+    emblBreadcrumbRelated.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl);
   }
 }
-
-
-<span class="hljs-keyword">var</span> emblTaxonomy = {};
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcrumbs</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-comment">// We start the breadcrumbs by first getting the EMBL taxonomy.</span>
@@ -606,7 +572,7 @@ emblBreadcrumbs();
         <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">9.7 KB</span>
+        <span class="Meta-value">8.8 KB</span>
     </section>
     
   
@@ -618,11 +584,10 @@ emblBreadcrumbs();
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
             <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-breadcrumbs-lookup</span>
 
-<span class="hljs-comment">// "This page was intentionally left blank"</span>
-
-<span class="hljs-comment">// .embl-breadcrumbs-lookup {</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// }</span>
+<span class="hljs-selector-class">.embl-breadcrumbs-lookup--loading-text</span>::before {
+  <span class="hljs-attribute">color</span>: set-color(vf-color-gray);
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">"Breadcrumbs are loading"</span>;
+}
 </pre>
           </code>
           
@@ -635,7 +600,7 @@ emblBreadcrumbs();
         <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">111 Bytes</span>
+        <span class="Meta-value">152 Bytes</span>
     </section>
     
   
