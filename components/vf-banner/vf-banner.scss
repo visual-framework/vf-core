@@ -1,11 +1,4 @@
-$vf-modal-banner-color--background: set-color(vf-color-gray-dark);
-$vf-modal-banner-color--text: set-color(vf-color-white);
-$vf-modal-banner-padding: map-get($vf-spacing-map, vf-spacing-r);
-
-$vf-phase-banner-color--background: #FFFADC;
-$vf-phase-banner-color--text: set-color(vf-color-gray-dark);
-
-$vf-banner-color--link: inherit;
+@import "vf-banner.variables.scss";
 
 .vf-banner {
   box-sizing: border-box;
@@ -16,16 +9,6 @@ $vf-banner-color--link: inherit;
   }
 }
 
-.vf-banner--fixed {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: minmax(var(--page-grid-gap), auto) [main-start] minmax(288px, 76.5em) [main-end] minmax(var(--page-grid-gap), auto);
-  left: 0;
-  padding: 0;
-  position: fixed;
-  width: 100%;
-  z-index: 5150;
-}
 
 .vf-banner--blocking {
   display: grid;
