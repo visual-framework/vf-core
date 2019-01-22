@@ -48,28 +48,13 @@
   bottom: 0;
 }
 
-.vf-banner--phase {
-  background-color: $vf-phase-banner-color--background;
-  [class*='vf-text'] {
-    color: $vf-phase-banner-color--text;
-    margin: 12px 0;
+.vf-banner--notice {
+  @include padding--block(all, $vf-notice-banner-padding);
 
-    & .vf-link {
-      color: $vf-banner-color--link;
-    }
-  }
-  .vf-banner__content {
-    display: flex;
-  }
-}
-
-.vf-banner--modal {
-  @include padding--block(all, $vf-modal-banner-padding);
-
-  background-color: $vf-modal-banner-color--background;
+  background-color: $vf-notice-banner-color--background;
 
   .vf-text {
-    color: $vf-modal-banner-color--text;
+    color: $vf-notice-banner-color--text;
     margin-bottom: 24px;
     max-width: 64em;
 
@@ -91,44 +76,14 @@
 }
 
 
-.vf-banner--blocking.vf-banner--modal {
-  @include padding--block(all, $vf-modal-banner-padding);
+.vf-banner--blocking.vf-banner--notice {
+  @include padding--block(all, $vf-notice-banner-padding);
 
   background-color: rgba(0,0,0,.1); // to do: do we do an alpha mix in?
 }
 
-.vf-banner--blocking.vf-banner--modal .vf-banner__content {
-  @include padding--block(all, $vf-modal-banner-padding);
+.vf-banner--blocking.vf-banner--notice .vf-banner__content {
+  @include padding--block(all, $vf-notice-banner-padding);
 
-  background-color: $vf-modal-banner-color--background;
-}
-
-// Note: deprecated, but I don't think we have a way to deprectate a variant alone?
-.vf-body:not(.vf-disable-deprecated) {
-  .vf-banner--gdpr {
-    @include padding--block(all, $vf-modal-banner-padding);
-
-    background-color: $vf-modal-banner-color--background;
-
-    .vf-text {
-      color: $vf-modal-banner-color--text;
-      margin-bottom: 24px;
-      max-width: 64em;
-
-      & .vf-link {
-        color: $vf-banner-color--link;
-      }
-
-      @media (min-width: $vf-breakpoint-l) {
-        margin: 0;
-      }
-    }
-
-    .vf-button {
-      @media (min-width: $vf-breakpoint-l) {
-        align-self: center;
-        justify-self: end;
-      }
-    }
-  }
+  background-color: $vf-notice-banner-color--background;
 }

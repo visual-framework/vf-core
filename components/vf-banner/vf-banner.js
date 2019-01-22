@@ -2,7 +2,7 @@
 
 
 // Turn the below code snippet into a banner
-// <div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--modal"
+// <div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
 // data-vf-js-banner
 // data-vf-js-banner-state="persistent|dismissible|blocking" data-vf-js-banner-esc-close="y|n"
 // data-vf-js-banner-cookie-name="{{data-service-id}}"
@@ -22,14 +22,14 @@
 /**
  * Clear the cooke. This is mostly a development tool.
  */
-function vfBannerModalReset(vfBannerCookieNameAndVersion) {
+function vfBannerReset(vfBannerCookieNameAndVersion) {
   vfBannerSetCookie(vfBannerCookieNameAndVersion,false);
 }
 
 /**
  * Confirm a banner, initiate cookie logging
  */
-function vfBannerModalConfirm(banner,vfBannerCookieNameAndVersion) {
+function vfBannerConfirm(banner,vfBannerCookieNameAndVersion) {
   banner.classList += " vf-u-display-none";
   if (vfBannerCookieNameAndVersion !== 'null') {
     vfBannerSetCookie(vfBannerCookieNameAndVersion,true);
@@ -70,10 +70,10 @@ function vfBannerGetCookie(c_name) {
 
 
 /**
- * Finds all vf-banner--modal on a page and activates them
- * @example vfBannerModal()
+ * Finds all vf-banner on a page and activates them
+ * @example vfBanner()
  */
-function vfBannerModal() {
+function vfBanner() {
   const bannerList = document.querySelectorAll('[data-vf-js-banner]');
 
   if (!bannerList) {
@@ -91,33 +91,37 @@ function vfBannerModal() {
     // map the JS data attributes to our object structure
     var bannerRemapped = banner.dataset;
     // pickup text from existing element
-    bannerRemapped.vfJsBannerModalText = banner.querySelectorAll('[data-vf-js-banner-modal-text]')[0].innerHTML;
+    bannerRemapped.vfJsBannerText = banner.querySelectorAll('[data-vf-js-banner-text]')[0].innerHTML;
 
     var uniqueId = Math.round(Math.random()*10000000);
 
     // set an id to target this banner
-    banner.setAttribute('data-vf-js-banner-modal-id',uniqueId);
+    banner.setAttribute('data-vf-js-banner-id',uniqueId);
+
+    // preserve the classlist
+    bannerRemapped.classList = banner.querySelectorAll('[data-vf-js-banner-text]')[0].classList;
 
     // Make the banner come alive
-    vfBannerModalInsert(bannerRemapped,uniqueId);
+    vfBannerInsert(bannerRemapped,uniqueId);
   });
 
 }
 
 /**
  * Takes a banner object and creates the necesary html markup, js events, and inserts
- * @example vfBannerModalInsert()
+ * @example vfBannerInsert()
  * @param {object} [banner]  -
- * @param {string} [bannerModalId] - the id of the target div, `data-vf-js-banner-modal-id="1"`
+ * @param {string} [bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
  */
-function vfBannerModalInsert(banner,bannerModalId) {
-  var targetBanner = document.querySelectorAll('[data-vf-js-banner-modal-id="'+bannerModalId+'"]')[0];
+function vfBannerInsert(banner,bannerId) {
+  var targetBanner = document.querySelectorAll('[data-vf-js-banner-id="'+bannerId+'"]')[0];
   if (targetBanner == undefined) {
     return;
   }
-  var generatedBannerHtml = '<div class="vf-banner__content | vf-grid">';
+  console.log(banner)
+  var generatedBannerHtml = '<div class="'+banner.classList+'">';
 
-  generatedBannerHtml += banner.vfJsBannerModalText;
+  generatedBannerHtml += banner.vfJsBannerText;
 
   // What type of banner?
   if (banner.vfJsBannerState === 'persistent') {
@@ -127,13 +131,13 @@ function vfBannerModalInsert(banner,bannerModalId) {
     // nothing more to do for dismissible
 
   } else if (banner.vfJsBannerState === 'blocking') {
-    console.warn('vf-banner--modal: Note, the blocking implementation is not yet feature complete.');
+    console.warn('vf-banner: Note, the blocking implementation is not yet feature complete.');
     // escape only works when blocking
     if (banner.vfJsBannerEscClose === 'y' || banner.vfJsBannerEscClose === 'Y') {
       document.onkeydown = function(evt) {
         evt = evt || window.event;
         if (evt.keyCode == 27) {
-          vfBannerModalConfirm(targetBanner,'null');
+          vfBannerConfirm(targetBanner,'null');
         }
       };
     }
@@ -175,8 +179,8 @@ function vfBannerModalInsert(banner,bannerModalId) {
     if (banner.vfJsBannerCookieName && banner.vfJsBannerCookieVersion) {
       vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + '_' + banner.vfJsBannerCookieVersion;
 
-      // console.warn('vf-banner--modal: vfBannerModalReset cookie reset override is on.');
-      // vfBannerModalReset(vfBannerCookieNameAndVersion);
+      // console.warn('vf-banner: vfBannerReset cookie reset override is on.');
+      // vfBannerReset(vfBannerCookieNameAndVersion);
 
       if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
         // banner has been accepted, close
@@ -189,21 +193,21 @@ function vfBannerModalInsert(banner,bannerModalId) {
     // On click: close banner, pass any cooke name (or `null`)
     if (banner.vfJsBannerButtonText) {
       targetBanner.addEventListener('click', function(){
-        vfBannerModalConfirm(targetBanner,vfBannerCookieNameAndVersion);
+        vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
       }, false);
     }
   }
 }
 
-vfBannerModal();
+vfBanner();
 
 
 // By default this creates banners from HTML
 // optionally you can programatically supply
 // Target HTML
-// `<div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--modal"
+// `<div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
 //       data-vf-js-banner
-//       data-vf-js-banner-modal-id="32423"
+//       data-vf-js-banner-id="32423"
 //
 // ></div>`
 // var programaticalBanner = {
@@ -212,8 +216,8 @@ vfBannerModal();
 //   vfJsBannerCookieName: "MyService",
 //   vfJsBannerCookieVersion: "0.1",
 //   vfJsBannerExtraButton: "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>",
-//   vfJsBannerModalId: "2352286",
-//   vfJsBannerModalText: '<p class="vf-text vf-text--body-l">This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-link" href="JavaScript:Void(0);">Terms Of Use</a>.</p>',
+//   vfJsBannerId: "2352286",
+//   vfJsBannerText: '<p class="vf-text vf-text--body-l">This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-link" href="JavaScript:Void(0);">Terms Of Use</a>.</p>',
 //   vfJsBannerState: "dismissible"
 // };
-// vfBannerModalInsert(programaticalBanner,'32423');
+// vfBannerInsert(programaticalBanner,'32423');

@@ -2,6 +2,13 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-banner.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-banner)
 
+## Reflecting status
+
+- General notice `vf-banner vf-banner--notice`
+- In development services `vf-banner vf-banner--phase`
+- Success (to come) `vf-banner vf-banner--success`
+- Alert (to come) `vf-banner vf-banner--alert`
+- Warning (to come) `vf-banner vf-banner--warning`
 
 ## JS Documentation for `--modal` variant
 
