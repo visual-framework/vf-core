@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="../../local.css?cachebust=1.2.0" type="text/css">
 
 
-<title>Banner: Phase | Visual Framework 2.0</title>
+<title>Banner: Inline | Visual Framework 2.0</title>
 
 </head>
 <body>
@@ -57,14 +57,14 @@ embl-grid embl-grid--has-sidebar
     
     
 
-<div class="Pen" data-behaviour="pen" id="pen-ecfa1f2be145411ace0bc9592996083c">
+<div class="Pen" data-behaviour="pen" id="pen-e2b66c71067cf10b290135a9bf3cf5ac">
 
     
 
     <div class="vf-body">
 <header class="vf-grid vf-page-header | vf-u-padding-l">
   <h1 class="vf-page-header__heading | vf-text vf-text--heading-l vf-text--has-tag">
-    Banner: Phase
+    Banner: Inline
     
 
 
@@ -95,10 +95,6 @@ embl-grid embl-grid--has-sidebar
             
 
               
-                
-                  <a class="vf-tabs__link" href="vf-banner--default.html">
-                    Default
-                  </a>
                  
                
 
@@ -106,8 +102,8 @@ embl-grid embl-grid--has-sidebar
 
               
                 
-                  <a class="vf-tabs__link" href="vf-banner--gdpr.html">
-                    Gdpr
+                  <a class="vf-tabs__link" href="vf-banner--fixed.html">
+                    Fixed
                   </a>
                  
                
@@ -116,7 +112,7 @@ embl-grid embl-grid--has-sidebar
 
               
                 <a class="vf-tabs__link is-active" href="#is-active">
-                  Phase
+                  Inline
                 </a>
                
 
@@ -124,8 +120,8 @@ embl-grid embl-grid--has-sidebar
 
               
                 
-                  <a class="vf-tabs__link" href="vf-banner--phase-inline.html">
-                    Phase Inline
+                  <a class="vf-tabs__link" href="vf-banner--top.html">
+                    Top
                   </a>
                  
                
@@ -141,13 +137,13 @@ embl-grid embl-grid--has-sidebar
   </div>
 </div>
 
-<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-ecfa1f2be145411ace0bc9592996083c">
+<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-e2b66c71067cf10b290135a9bf3cf5ac">
     <div class="Preview-wrapper" data-role="resizer-disabled">
       
        <iframe
           class="Preview-iframe"
           data-role="window"
-          src="../preview/vf-banner--phase.html"
+          src="../preview/vf-banner--inline.html"
           sandbox="allow-same-origin allow-scripts allow-forms"
 
           marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
@@ -159,12 +155,12 @@ embl-grid embl-grid--has-sidebar
         <div class="vf-grid">
           <p class="vf-figure__caption">
             Open the above preview in a new window:
-            <a data-no-pjax href="../preview/vf-banner--phase.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+            <a data-no-pjax href="../preview/vf-banner--inline.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
 </svg>
 </a>
-            <a data-no-pjax href="../render/vf-banner--phase.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+            <a data-no-pjax href="../render/vf-banner--inline.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
 </svg>
@@ -187,6 +183,53 @@ embl-grid embl-grid--has-sidebar
       <div class="pattern-library-notes">
       <h1 id="vf-banner-pattern">vf-banner Pattern</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-banner"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-banner.svg" alt="npm version"></a></p>
+<h2 id="reflecting-status">Reflecting status</h2>
+<ul>
+<li>General notice <code>vf-banner vf-banner--notice</code></li>
+<li>In development services <code>vf-banner vf-banner--phase</code></li>
+<li>Success (to come) <code>vf-banner vf-banner--success</code></li>
+<li>Alert (to come) <code>vf-banner vf-banner--alert</code></li>
+<li>Warning (to come) <code>vf-banner vf-banner--warning</code></li>
+</ul>
+<h2 id="js-documentation-for-modal-variant">JS Documentation for <code>--modal</code> variant</h2>
+<p>Like all JS-enabled patterns in the Visual Framework, if you wish to use the bundled JS, you need to include JS data attributes, here is an overview of what the options are for the <code>vf-banner--modal</code> variant.</p>
+<ul>
+<li>Enable VF JS:<ul>
+<li>data-vf-js-banner</li>
+</ul>
+</li>
+<li>Banner type:<ul>
+<li><code>dismissible</code>: standard messaging type</li>
+<li><code>blocking</code>: full screen</li>
+<li><code>persistent</code>: no close button</li>
+<li>data-vf-js-banner-state=”name_of_type”</li>
+</ul>
+</li>
+<li>ESC to close:<ul>
+<li>Only works with <code>blocking</code> banner state</li>
+<li>data-vf-js-banner-esc-close=<code>&quot;y&quot;</code></li>
+</ul>
+</li>
+<li>Button text:<ul>
+<li>Optional, leaving off will not incekt a close button</li>
+<li>data-vf-js-banner-button-text=”Accept and close”</li>
+</ul>
+</li>
+<li>Cookies:<ul>
+<li>Both are optional, leaving either off will deactivate cookie storage</li>
+<li>data-vf-js-banner-cookie-name=<code>&quot;myServiceName&quot;</code></li>
+<li>data-vf-js-banner-cookie-version=<code>&quot;0.1&quot;</code> Incrementing this string will invalidate old cookies.</li>
+</ul>
+</li>
+<li>Extra buttons:<ul>
+<li>data-vf-js-banner-extra-button=<code>&quot;&lt;a href=&#39;#&#39;&gt;Optional button&lt;/a&gt;&lt;a target=&#39;_blank&#39; href=&#39;#&#39;&gt;New tab button&lt;/a&gt;&quot;&gt;</code> This HTML string will be converted into VF markup for extra buttons. Optional.</li>
+</ul>
+</li>
+<li>Message:<ul>
+<li>data-vf-js-banner-modal-text: the <code>.innerHTML</code> of this element will be used as the markup for the message itself</li>
+</ul>
+</li>
+</ul>
 <h2 id="install">Install</h2>
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>primer-buttons</code> with this command.</p>
 <code><pre>$ <span class="hljs-built_in">npm</span> install --save @visual-framework/vf-banner</pre></code><h2 id="usage">Usage</h2>
@@ -210,10 +253,9 @@ embl-grid embl-grid--has-sidebar
   <pre class="vf-code-example__pre">
 
 
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--top vf-banner--phase"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--phase"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-badge vf-badge--primary"</span>&gt;</span>BETA<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text--body-r"</span>&gt;</span>This is the new EMBL.org <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Complete our quick survey<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> to help us make it better.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text--body-r"</span>&gt;</span>This is a new web page. <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Complete our quick survey<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> to help us make it better.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
@@ -251,12 +293,6 @@ embl-grid embl-grid--has-sidebar
       
       <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--15b7989fffea4744523128036f00d34c">package.json</a>
-      </li>
-      
-    
-      
-      <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--096c7b7d09670d928cdeb0cf695afb69">vf-banner--phase.scss</a>
       </li>
       
     
@@ -417,46 +453,6 @@ embl-grid embl-grid--has-sidebar
     
   
     
-    <section class="vf-tabs__section" id="vf-tabs__section--096c7b7d09670d928cdeb0cf695afb69">
-    <!--  -->
-        <div class="FileBrowser-itemPreview">
-          
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-banner--phase</span> {
-  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-phase-banner-color--background</span>;
-
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
-
-  <span class="hljs-selector-attr">[class*='vf-text']</span> {
-    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-phase-banner-color--text</span>;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">12px</span> <span class="hljs-number">0</span>;
-
-    &amp; <span class="hljs-selector-class">.vf-link</span> {
-      <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-banner-color--link</span>;
-    }
-  }
-  
-  <span class="hljs-selector-class">.vf-banner__content</span> {
-    <span class="hljs-attribute">display</span>: flex;
-  }
-}
-</pre>
-          </code>
-          
-        </div>
-
-        <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/vf-banner/vf-banner--phase.scss"><span>/components/raw/vf-banner/vf-banner--phase.scss</span></a></span>
-
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-banner/vf-banner--phase.scss</span>
-
-        <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">302 Bytes</span>
-    </section>
-    
-  
-    
     <section class="vf-tabs__section" id="vf-tabs__section--70e35ba26f71782516b33f82ac435374">
     <!--  -->
         <div class="FileBrowser-itemPreview">
@@ -470,6 +466,19 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-selector-class">.vf-banner</span> <span class="hljs-selector-class">.vf-badge</span> {
   <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-class">.vf-banner--blocking</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) [main-start] <span class="hljs-built_in">minmax</span>(288px, 76.5em) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">position</span>: fixed;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
 }
 
 <span class="hljs-selector-class">.vf-banner__content</span> {
@@ -507,6 +516,48 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-selector-class">.vf-banner--bottom</span> {
   <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 }
+
+<span class="hljs-selector-class">.vf-banner--notice</span> {
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-banner--notice</span> <span class="hljs-selector-class">.vf-text</span> {
+  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64em</span>;
+}
+
+<span class="hljs-selector-class">.vf-banner--notice</span> <span class="hljs-selector-class">.vf-text</span> <span class="hljs-selector-class">.vf-link</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
+  <span class="hljs-selector-class">.vf-banner--notice</span> <span class="hljs-selector-class">.vf-text</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
+  <span class="hljs-selector-class">.vf-banner--notice</span> <span class="hljs-selector-class">.vf-button</span> {
+    <span class="hljs-attribute">-ms-flex-item-align</span>: center;
+        <span class="hljs-attribute">align-self</span>: center;
+    <span class="hljs-attribute">justify-self</span>: end;
+  }
+}
+
+<span class="hljs-selector-class">.vf-banner--blocking</span><span class="hljs-selector-class">.vf-banner--notice</span> {
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.1);
+}
+
+<span class="hljs-selector-class">.vf-banner--blocking</span><span class="hljs-selector-class">.vf-banner--notice</span> <span class="hljs-selector-class">.vf-banner__content</span> {
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+}
 </pre>
           </code>
           
@@ -519,7 +570,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-banner/vf-banner.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">757 Bytes</span>
+        <span class="Meta-value">1.8 KB</span>
     </section>
     
   
@@ -531,16 +582,227 @@ embl-grid embl-grid--has-sidebar
           <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
             <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-banner</span>
 
-<span class="hljs-keyword">var</span> remove = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-  <span class="hljs-keyword">this</span>.closest(<span class="hljs-string">'.vf-banner--gdpr'</span>).remove();
-};
 
-<span class="hljs-keyword">var</span> GDPRBanner = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'.vf-banner--gdpr'</span>);
-<span class="hljs-keyword">var</span> GDPRButton = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'.vf-banner--gdpr .vf-button'</span>);
+<span class="hljs-comment">// Turn the below code snippet into a banner</span>
+<span class="hljs-comment">// &lt;div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"</span>
+<span class="hljs-comment">// data-vf-js-banner</span>
+<span class="hljs-comment">// data-vf-js-banner-state="persistent|dismissible|blocking" data-vf-js-banner-esc-close="y|n"</span>
+<span class="hljs-comment">// data-vf-js-banner-cookie-name="{{data-service-id}}"</span>
+<span class="hljs-comment">// data-vf-js-banner-cookie-version="{{data-protection-version}}"</span>
+<span class="hljs-comment">// data-vf-js-banner-extra-button="&lt;a href='#'&gt;string1&lt;/a&gt;&lt;a href='#'&gt;string2&lt;/a&gt;"&gt;</span>
+<span class="hljs-comment">//   &lt;div class="vf-banner__content | vf-grid"&gt;</span>
+<span class="hljs-comment">//     &lt;p class="vf-text vf-text--body-l"&gt;</span>
+<span class="hljs-comment">//       This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our &lt;a class="vf-link" href="JavaScript:Void(0);"&gt;Privacy Notice&lt;/a&gt; and &lt;a class="vf-link" href="JavaScript:Void(0);"&gt;Terms Of Use&lt;/a&gt;.</span>
+<span class="hljs-comment">//     &lt;/p&gt;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//     &lt;button class="vf-button vf-button--secondary"&gt;</span>
+<span class="hljs-comment">//       {{vf-data-protection-banner__link}}</span>
+<span class="hljs-comment">//     &lt;/button&gt;</span>
+<span class="hljs-comment">//   &lt;/div&gt;</span>
+  <span class="hljs-comment">// &lt;/div&gt;</span>
 
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = GDPRBanner.length; i &lt; len; i++) {
-  GDPRButton[i].addEventListener(<span class="hljs-string">'click'</span>, remove, <span class="hljs-literal">false</span>);
+<span class="hljs-comment">/**
+ * Clear the cooke. This is mostly a development tool.
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerReset</span>(<span class="hljs-params">vfBannerCookieNameAndVersion</span>) </span>{
+  vfBannerSetCookie(vfBannerCookieNameAndVersion,<span class="hljs-literal">false</span>);
 }
+
+<span class="hljs-comment">/**
+ * Confirm a banner, initiate cookie logging
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerConfirm</span>(<span class="hljs-params">banner,vfBannerCookieNameAndVersion</span>) </span>{
+  banner.classList += <span class="hljs-string">" vf-u-display-none"</span>;
+  <span class="hljs-keyword">if</span> (vfBannerCookieNameAndVersion !== <span class="hljs-string">'null'</span>) {
+    vfBannerSetCookie(vfBannerCookieNameAndVersion,<span class="hljs-literal">true</span>);
+  }
+}
+
+<span class="hljs-comment">/**
+ * Log a cookie
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerSetCookie</span>(<span class="hljs-params">c_name, value, exdays</span>) </span>{
+  <span class="hljs-comment">// var value = value || 'true';</span>
+  <span class="hljs-keyword">var</span> exdays = exdays || <span class="hljs-number">90</span>;
+  <span class="hljs-keyword">var</span> exdate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+  <span class="hljs-keyword">var</span> c_value;
+  exdate.setDate(exdate.getDate() + exdays);
+  c_value = <span class="hljs-built_in">escape</span>(value) + (exdays === <span class="hljs-literal">null</span> ? <span class="hljs-string">""</span> : <span class="hljs-string">";expires="</span> + exdate.toUTCString()) + <span class="hljs-string">";domain="</span> + <span class="hljs-built_in">document</span>.domain + <span class="hljs-string">";path=/"</span>;
+  <span class="hljs-built_in">document</span>.cookie = c_name + <span class="hljs-string">"="</span> + c_value;
+}
+
+<span class="hljs-comment">/**
+ * See if a cookie has been set
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerGetCookie</span>(<span class="hljs-params">c_name</span>) </span>{
+  <span class="hljs-keyword">var</span> i,
+      x,
+      y,
+      ARRcookies = <span class="hljs-built_in">document</span>.cookie.split(<span class="hljs-string">";"</span>);
+  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; ARRcookies.length; i++) {
+    x = ARRcookies[i].substr(<span class="hljs-number">0</span>, ARRcookies[i].indexOf(<span class="hljs-string">"="</span>));
+    y = ARRcookies[i].substr(ARRcookies[i].indexOf(<span class="hljs-string">"="</span>) + <span class="hljs-number">1</span>);
+    x = x.replace(<span class="hljs-regexp">/^\s+|\s+$/g</span>, <span class="hljs-string">""</span>);
+    <span class="hljs-keyword">if</span> (x === c_name) {
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">unescape</span>(y);
+    }
+  }
+}
+
+
+
+<span class="hljs-comment">/**
+ * Finds all vf-banner on a page and activates them
+ * @example vfBanner()
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBanner</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> bannerList = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner]'</span>);
+
+  <span class="hljs-keyword">if</span> (!bannerList) {
+    <span class="hljs-comment">// exit: banners not found</span>
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-keyword">if</span> (bannerList.length == <span class="hljs-number">0</span>) {
+    <span class="hljs-comment">// exit: banner content not found</span>
+    <span class="hljs-keyword">return</span>;
+  }
+
+  <span class="hljs-comment">// generate the banner pattern, js events</span>
+  <span class="hljs-built_in">Array</span>.prototype.forEach.call(bannerList, (banner, i) =&gt; {
+
+    <span class="hljs-comment">// map the JS data attributes to our object structure</span>
+    <span class="hljs-keyword">var</span> bannerRemapped = banner.dataset;
+    <span class="hljs-comment">// pickup text from existing element</span>
+    bannerRemapped.vfJsBannerText = banner.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner-text]'</span>)[<span class="hljs-number">0</span>].innerHTML;
+
+    <span class="hljs-keyword">var</span> uniqueId = <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random()*<span class="hljs-number">10000000</span>);
+
+    <span class="hljs-comment">// set an id to target this banner</span>
+    banner.setAttribute(<span class="hljs-string">'data-vf-js-banner-id'</span>,uniqueId);
+
+    <span class="hljs-comment">// preserve the classlist</span>
+    bannerRemapped.classList = banner.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner-text]'</span>)[<span class="hljs-number">0</span>].classList;
+
+    <span class="hljs-comment">// Make the banner come alive</span>
+    vfBannerInsert(bannerRemapped,uniqueId);
+  });
+
+}
+
+<span class="hljs-comment">/**
+ * Takes a banner object and creates the necesary html markup, js events, and inserts
+ * @example vfBannerInsert()
+ * @param {object} [banner]  -
+ * @param {string} [bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerInsert</span>(<span class="hljs-params">banner,bannerId</span>) </span>{
+  <span class="hljs-keyword">var</span> targetBanner = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner-id="'</span>+bannerId+<span class="hljs-string">'"]'</span>)[<span class="hljs-number">0</span>];
+  <span class="hljs-keyword">if</span> (targetBanner == <span class="hljs-literal">undefined</span>) {
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-built_in">console</span>.log(banner)
+  <span class="hljs-keyword">var</span> generatedBannerHtml = <span class="hljs-string">'&lt;div class="'</span>+banner.classList+<span class="hljs-string">'"&gt;'</span>;
+
+  generatedBannerHtml += banner.vfJsBannerText;
+
+  <span class="hljs-comment">// What type of banner?</span>
+  <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'persistent'</span>) {
+    <span class="hljs-comment">// nothing more to do for persistent, you can't close it</span>
+
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>) {
+    <span class="hljs-comment">// nothing more to do for dismissible</span>
+
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span>) {
+    <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'vf-banner: Note, the blocking implementation is not yet feature complete.'</span>);
+    <span class="hljs-comment">// escape only works when blocking</span>
+    <span class="hljs-keyword">if</span> (banner.vfJsBannerEscClose === <span class="hljs-string">'y'</span> || banner.vfJsBannerEscClose === <span class="hljs-string">'Y'</span>) {
+      <span class="hljs-built_in">document</span>.onkeydown = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>{
+        evt = evt || <span class="hljs-built_in">window</span>.event;
+        <span class="hljs-keyword">if</span> (evt.keyCode == <span class="hljs-number">27</span>) {
+          vfBannerConfirm(targetBanner,<span class="hljs-string">'null'</span>);
+        }
+      };
+    }
+  }
+
+  <span class="hljs-comment">// Split passed links into buttons</span>
+  <span class="hljs-comment">// &lt;a href='#'&gt;string1&lt;/a&gt;\&lt;a href='#'&gt;string2&lt;/a&gt;</span>
+  <span class="hljs-keyword">if</span> (banner.vfJsBannerExtraButton) {
+    <span class="hljs-keyword">var</span> vfBannerExtraButtons = banner.vfJsBannerExtraButton.split(<span class="hljs-string">'&lt;/a&gt;'</span>);
+
+    vfBannerExtraButtons.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">button</span>)</span>{
+      <span class="hljs-keyword">if</span> (button.length &gt; <span class="hljs-number">1</span>) {
+        button += <span class="hljs-string">'&lt;/a&gt;'</span>;
+        <span class="hljs-keyword">var</span> newButton = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
+        newButton.innerHTML = button;
+        newButton = newButton.firstChild;
+        newButton.classList = <span class="hljs-string">'vf-button vf-button--primary'</span>;
+        generatedBannerHtml += newButton.outerHTML;
+      }
+    });
+  }
+
+  <span class="hljs-comment">// if there is a vfJsBannerButtonText and banner is blocking or dismissible,</span>
+  <span class="hljs-comment">// add a button so user can close the banner</span>
+  <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonText &amp;&amp; (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span> || banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>)) {
+    generatedBannerHtml += <span class="hljs-string">'&lt;button class="vf-button vf-button--secondary" data-vf-js-banner-close&gt;'</span>+banner.vfJsBannerButtonText+<span class="hljs-string">'&lt;/button&gt;'</span>;
+  }
+
+  generatedBannerHtml += <span class="hljs-string">'&lt;/div&gt;'</span>;
+
+  <span class="hljs-comment">// set the html of the banner</span>
+  targetBanner.innerHTML = generatedBannerHtml;
+
+  <span class="hljs-comment">// if blocking or dismissible, allow the user to close it, store a cookie (if specified)</span>
+  <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span> || banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>) {
+
+    <span class="hljs-comment">// prep for cookie</span>
+    <span class="hljs-keyword">var</span> vfBannerCookieNameAndVersion = <span class="hljs-string">'null'</span>;
+    <span class="hljs-keyword">if</span> (banner.vfJsBannerCookieName &amp;&amp; banner.vfJsBannerCookieVersion) {
+      vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + <span class="hljs-string">'_'</span> + banner.vfJsBannerCookieVersion;
+
+      <span class="hljs-comment">// console.warn('vf-banner: vfBannerReset cookie reset override is on.');</span>
+      <span class="hljs-comment">// vfBannerReset(vfBannerCookieNameAndVersion);</span>
+
+      <span class="hljs-keyword">if</span> (vfBannerGetCookie(vfBannerCookieNameAndVersion) === <span class="hljs-string">'true'</span>) {
+        <span class="hljs-comment">// banner has been accepted, close</span>
+        targetBanner.classList += <span class="hljs-string">" vf-u-display-none"</span>;
+        <span class="hljs-comment">// exit, nothng more to do</span>
+        <span class="hljs-keyword">return</span>;
+      }
+    }
+
+    <span class="hljs-comment">// On click: close banner, pass any cooke name (or `null`)</span>
+    <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonText) {
+      targetBanner.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
+      }, <span class="hljs-literal">false</span>);
+    }
+  }
+}
+
+vfBanner();
+
+
+<span class="hljs-comment">// By default this creates banners from HTML</span>
+<span class="hljs-comment">// optionally you can programatically supply</span>
+<span class="hljs-comment">// Target HTML</span>
+<span class="hljs-comment">// `&lt;div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"</span>
+<span class="hljs-comment">//       data-vf-js-banner</span>
+<span class="hljs-comment">//       data-vf-js-banner-id="32423"</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// &gt;&lt;/div&gt;`</span>
+<span class="hljs-comment">// var programaticalBanner = {</span>
+<span class="hljs-comment">//   vfJsBanner: "",</span>
+<span class="hljs-comment">//   vfJsBannerButtonText: "I agree, dismiss this banner",</span>
+<span class="hljs-comment">//   vfJsBannerCookieName: "MyService",</span>
+<span class="hljs-comment">//   vfJsBannerCookieVersion: "0.1",</span>
+<span class="hljs-comment">//   vfJsBannerExtraButton: "&lt;a href='#'&gt;Optional button&lt;/a&gt;&lt;a target='_blank' href='#'&gt;New tab button&lt;/a&gt;",</span>
+<span class="hljs-comment">//   vfJsBannerId: "2352286",</span>
+<span class="hljs-comment">//   vfJsBannerText: '&lt;p class="vf-text vf-text--body-l"&gt;This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our &lt;a class="vf-link" href="JavaScript:Void(0);"&gt;Privacy Notice&lt;/a&gt; and &lt;a class="vf-link" href="JavaScript:Void(0);"&gt;Terms Of Use&lt;/a&gt;.&lt;/p&gt;',</span>
+<span class="hljs-comment">//   vfJsBannerState: "dismissible"</span>
+<span class="hljs-comment">// };</span>
+<span class="hljs-comment">// vfBannerInsert(programaticalBanner,'32423');</span>
 </pre>
           </code>
           
@@ -553,7 +815,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-banner/vf-banner.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">345 Bytes</span>
+        <span class="Meta-value">7.8 KB</span>
     </section>
     
   
@@ -574,6 +836,19 @@ embl-grid embl-grid--has-sidebar
   }
 }
 
+
+<span class="hljs-selector-class">.vf-banner--blocking</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  grid-template-<span class="hljs-attribute">columns</span>: minmax(var(--page-grid-gap), auto) [main-start] minmax(<span class="hljs-number">288px</span>, <span class="hljs-number">76.5em</span>) [main-end] minmax(var(--page-grid-gap), auto);
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">position</span>: fixed;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
+}
 
 <span class="hljs-selector-class">.vf-banner__content</span> {
   <span class="hljs-attribute">align-content</span>: center;
@@ -599,6 +874,46 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-selector-class">.vf-banner--bottom</span> {
   <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 }
+
+<span class="hljs-selector-class">.vf-banner--notice</span> {
+  @<span class="hljs-keyword">include</span> padding--block(all, <span class="hljs-variable">$vf-notice-banner-padding</span>);
+
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-notice-banner-color--background</span>;
+
+  <span class="hljs-selector-class">.vf-text</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-notice-banner-color--text</span>;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64em</span>;
+
+    &amp; <span class="hljs-selector-class">.vf-link</span> {
+      <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-banner-color--link</span>;
+    }
+
+    @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint-l</span>) {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    }
+  }
+
+  <span class="hljs-selector-class">.vf-button</span> {
+    @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint-l</span>) {
+      <span class="hljs-attribute">align-self</span>: center;
+      justify-self: end;
+    }
+  }
+}
+
+
+<span class="hljs-selector-class">.vf-banner--blocking</span><span class="hljs-selector-class">.vf-banner--notice</span> {
+  @<span class="hljs-keyword">include</span> padding--block(all, <span class="hljs-variable">$vf-notice-banner-padding</span>);
+
+  <span class="hljs-attribute">background-color</span>: rgba(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,.<span class="hljs-number">1</span>); <span class="hljs-comment">// to do: do we do an alpha mix in?</span>
+}
+
+<span class="hljs-selector-class">.vf-banner--blocking</span><span class="hljs-selector-class">.vf-banner--notice</span> <span class="hljs-selector-class">.vf-banner__content</span> {
+  @<span class="hljs-keyword">include</span> padding--block(all, <span class="hljs-variable">$vf-notice-banner-padding</span>);
+
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-notice-banner-color--background</span>;
+}
 </pre>
           </code>
           
@@ -611,7 +926,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-banner/vf-banner.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">496 Bytes</span>
+        <span class="Meta-value">1.7 KB</span>
     </section>
     
   
@@ -624,6 +939,10 @@ embl-grid embl-grid--has-sidebar
             <pre class="vf-code-example__pre"><span class="hljs-variable">$vf-gdpr-banner-color--background</span>: set-color(vf-color-gray-dark);
 <span class="hljs-variable">$vf-gdpr-banner-color--text</span>: set-color(vf-color-white);
 <span class="hljs-variable">$vf-gdpr-banner-padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-r);
+
+<span class="hljs-variable">$vf-notice-banner-color--background</span>: set-color(vf-color-gray-dark);
+<span class="hljs-variable">$vf-notice-banner-color--text</span>: set-color(vf-color-white);
+<span class="hljs-variable">$vf-notice-banner-padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-r);
 
 <span class="hljs-variable">$vf-phase-banner-color--background</span>: <span class="hljs-number">#FFFADC</span>;
 <span class="hljs-variable">$vf-phase-banner-color--text</span>: set-color(vf-color-gray-dark);
@@ -641,7 +960,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-banner/vf-banner.variables.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">328 Bytes</span>
+        <span class="Meta-value">522 Bytes</span>
     </section>
     
   
@@ -656,14 +975,14 @@ embl-grid embl-grid--has-sidebar
 <ul class="Meta">
     <li class="Meta-item">
         <strong class="Meta-key">Handle:</strong>
-        <span class="Meta-value">@vf-banner--phase</span>
+        <span class="Meta-value">@vf-banner--inline</span>
     </li>
     
     
     
     <li class="Meta-item">
         <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-banner/vf-banner--phase.hbs</span>
+        <span class="Meta-value">components/vf-banner/vf-banner--inline.hbs</span>
     </li>
     
     
