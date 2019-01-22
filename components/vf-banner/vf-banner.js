@@ -175,8 +175,8 @@ function vfBannerModalInsert(banner,bannerModalId) {
     if (banner.vfJsBannerCookieName && banner.vfJsBannerCookieVersion) {
       vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + '_' + banner.vfJsBannerCookieVersion;
 
-      console.warn('vf-banner--modal: vfBannerModalReset cookie reset override is on.');
-      vfBannerModalReset(vfBannerCookieNameAndVersion);
+      // console.warn('vf-banner--modal: vfBannerModalReset cookie reset override is on.');
+      // vfBannerModalReset(vfBannerCookieNameAndVersion);
 
       if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
         // banner has been accepted, close
