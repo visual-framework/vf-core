@@ -10,6 +10,19 @@
 }
 
 
+.vf-banner--blocking {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(var(--page-grid-gap), auto) [main-start] minmax(288px, 76.5em) [main-end] minmax(var(--page-grid-gap), auto);
+  left: 0;
+  height: 100%;
+  top: 0;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 5150;
+}
+
 .vf-banner__content {
   align-content: center;
   align-items: center;
@@ -33,4 +46,44 @@
 
 .vf-banner--bottom {
   bottom: 0;
+}
+
+.vf-banner--notice {
+  @include padding--block(all, $vf-notice-banner-padding);
+
+  background-color: $vf-notice-banner-color--background;
+
+  .vf-text {
+    color: $vf-notice-banner-color--text;
+    margin-bottom: 24px;
+    max-width: 64em;
+
+    & .vf-link {
+      color: $vf-banner-color--link;
+    }
+
+    @media (min-width: $vf-breakpoint-l) {
+      margin: 0;
+    }
+  }
+
+  .vf-button {
+    @media (min-width: $vf-breakpoint-l) {
+      align-self: center;
+      justify-self: end;
+    }
+  }
+}
+
+
+.vf-banner--blocking.vf-banner--notice {
+  @include padding--block(all, $vf-notice-banner-padding);
+
+  background-color: rgba(0,0,0,.1); // to do: do we do an alpha mix in?
+}
+
+.vf-banner--blocking.vf-banner--notice .vf-banner__content {
+  @include padding--block(all, $vf-notice-banner-padding);
+
+  background-color: $vf-notice-banner-color--background;
 }
