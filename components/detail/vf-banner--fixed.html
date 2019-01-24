@@ -255,7 +255,7 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-comment">&lt;!-- dismissible banner --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"I agree, dismiss this banner"</span> <span class="hljs-attr">data-vf-js-banner-cookie-name</span>=<span class="hljs-string">"MyService"</span> <span class="hljs-attr">data-vf-js-banner-cookie-version</span>=<span class="hljs-string">"0.1"</span>
-    <span class="hljs-attr">data-vf-js-banner-extra-button</span>=<span class="hljs-string">"&lt;a href='#'&gt;Optional button&lt;/a&gt;&lt;a target='_blank' href='#'&gt;New tab button&lt;/a&gt;"</span>&gt;</span>
+    <span class="hljs-attr">data-vf-js-banner-extra-button</span>=<span class="hljs-string">"&lt;a href='#'&gt;Optional button&lt;/a&gt;&lt;a target='_blank' href='#'&gt;New tab button&lt;/a&gt;"</span> <span class="hljs-attr">data-vf-js-banner-auto-accept</span>=<span class="hljs-string">"false"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content | vf-grid"</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text vf-text--body-l"</span>&gt;</span>
             This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>Privacy Notice<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> and <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>
@@ -829,32 +829,45 @@ data-vf-js-banner-cookie-version="0.1"&gt;
   <span class="hljs-comment">// set the html of the banner</span>
   targetBanner.innerHTML = generatedBannerHtml;
 
-  <span class="hljs-comment">// if blocking or dismissible, allow the user to close it, store a cookie (if specified)</span>
-  <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span> || banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>) {
+  <span class="hljs-comment">// prep for cookie</span>
+  <span class="hljs-keyword">var</span> vfBannerCookieNameAndVersion = <span class="hljs-string">'null'</span>;
+  <span class="hljs-keyword">if</span> (banner.vfJsBannerCookieName &amp;&amp; banner.vfJsBannerCookieVersion) {
+    vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + <span class="hljs-string">'_'</span> + banner.vfJsBannerCookieVersion;
+  }
 
-    <span class="hljs-comment">// prep for cookie</span>
-    <span class="hljs-keyword">var</span> vfBannerCookieNameAndVersion = <span class="hljs-string">'null'</span>;
-    <span class="hljs-keyword">if</span> (banner.vfJsBannerCookieName &amp;&amp; banner.vfJsBannerCookieVersion) {
-      vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + <span class="hljs-string">'_'</span> + banner.vfJsBannerCookieVersion;
+  <span class="hljs-keyword">if</span> (vfBannerCookieNameAndVersion != <span class="hljs-string">"null"</span>) {
+    <span class="hljs-comment">// utility to reset cookie when developing</span>
+    <span class="hljs-comment">// console.warn('vf-banner: vfBannerReset cookie reset override is on.');</span>
+    <span class="hljs-comment">// vfBannerReset(vfBannerCookieNameAndVersion);</span>
 
-      <span class="hljs-comment">// console.warn('vf-banner: vfBannerReset cookie reset override is on.');</span>
-      <span class="hljs-comment">// vfBannerReset(vfBannerCookieNameAndVersion);</span>
+    <span class="hljs-comment">// if blocking or dismissible, allow the user to close it, store a cookie (if specified)</span>
+    <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span> || banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>) {
 
-      <span class="hljs-keyword">if</span> (vfBannerGetCookie(vfBannerCookieNameAndVersion) === <span class="hljs-string">'true'</span>) {
-        <span class="hljs-comment">// banner has been accepted, close</span>
-        targetBanner.classList += <span class="hljs-string">" vf-u-display-none"</span>;
-        <span class="hljs-comment">// exit, nothng more to do</span>
-        <span class="hljs-keyword">return</span>;
+      <span class="hljs-comment">// On click: close banner, pass any cooke name (or `null`)</span>
+      <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonText) {
+        targetBanner.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+          vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
+        }, <span class="hljs-literal">false</span>);
       }
     }
 
-    <span class="hljs-comment">// On click: close banner, pass any cooke name (or `null`)</span>
-    <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonText) {
-      targetBanner.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-        vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
-      }, <span class="hljs-literal">false</span>);
+    <span class="hljs-comment">// if banner has been previously accepted</span>
+    <span class="hljs-keyword">if</span> (vfBannerGetCookie(vfBannerCookieNameAndVersion) === <span class="hljs-string">'true'</span>) {
+      <span class="hljs-comment">// banner has been accepted, close</span>
+      targetBanner.classList += <span class="hljs-string">" vf-u-display-none"</span>;
+      <span class="hljs-comment">// exit, nothng more to do</span>
+      <span class="hljs-keyword">return</span>;
     }
+
+    <span class="hljs-comment">// if banner is marked as auto-accept, set as read</span>
+    <span class="hljs-keyword">if</span> (banner.vfJsBannerAutoAccept == <span class="hljs-string">"true"</span>) {
+      <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span> || banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>) {
+        vfBannerSetCookie(vfBannerCookieNameAndVersion,<span class="hljs-literal">true</span>);
+      }
+    }
+
   }
+
 }
 
 vfBanner();
@@ -876,7 +889,8 @@ vfBanner();
 <span class="hljs-comment">//   vfJsBannerExtraButton: "&lt;a href='#'&gt;Optional button&lt;/a&gt;&lt;a target='_blank' href='#'&gt;New tab button&lt;/a&gt;",</span>
 <span class="hljs-comment">//   vfJsBannerId: "2352286",</span>
 <span class="hljs-comment">//   vfJsBannerText: '&lt;p class="vf-text vf-text--body-l"&gt;This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our &lt;a class="vf-link" href="JavaScript:Void(0);"&gt;Privacy Notice&lt;/a&gt; and &lt;a class="vf-link" href="JavaScript:Void(0);"&gt;Terms Of Use&lt;/a&gt;.&lt;/p&gt;',</span>
-<span class="hljs-comment">//   vfJsBannerState: "dismissible"</span>
+<span class="hljs-comment">//   vfJsBannerState: "dismissible",</span>
+<span class="hljs-comment">//   vfJsBannerAutoAccept: "true"</span>
 <span class="hljs-comment">// };</span>
 <span class="hljs-comment">// vfBannerInsert(programaticalBanner,'32423');</span>
 </pre>
@@ -891,7 +905,7 @@ vfBanner();
         <span class="Meta-value">components/vf-banner/vf-banner.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">7.8 KB</span>
+        <span class="Meta-value">8.2 KB</span>
     </section>
     
   
