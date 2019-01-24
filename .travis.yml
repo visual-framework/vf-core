@@ -1,0 +1,32 @@
+# Deploy the pattern library to gh-pages
+language: node_js
+node_js:
+  - 10
+
+branches:
+  except:
+    - /^.visual-framework\/.*$/
+
+stages:
+  - deploy
+
+before_script:
+  - npm install
+  - npm install -g gulp-cli
+  - gulp build
+  - "curl https://www.projectwallace.com/webhooks/v1/imports?token=$WALLACE_TOKEN -fsS --retry 3 -X POST -H 'Content-Type: text/css' -d @build/css/styles.css"
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  wallace-token: $WALLACE_TOKEN
+  keep-history: true
+  target-branch: gh-pages
+  local-dir: build
+  cache:
+    paths:
+      - node_modules
+  on:
+    branch:
+      - develop

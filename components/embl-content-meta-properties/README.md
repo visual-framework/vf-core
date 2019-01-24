@@ -6,8 +6,9 @@ These consist of:
 
 - Content descriptors
     - `embl:who` the people, groups and teams involved
-    - `embl:where` at which EMBL sites the content applies
     - `embl:what` the activities covered
+    - `embl:where` at which EMBL sites the content applies
+    - `embl:active` which of the above three facets is most important for this content
 - Content role:
     - `embl:utility` if content is task and work based or if is meant to inspire
     - `embl:reach` if content is externally (public) or internally focused (those that work at EMBL)

@@ -2,15 +2,62 @@
 
 /* Create a new Fractal instance and export it for use elsewhere if required */
 const fractal = module.exports = require('@frctl/fractal').create();
+const projectTitle = vfName;
 
 /* Set the title of the project */
-fractal.set('project.title', 'Visual Framework 2.0');
+fractal.set('project.title', projectTitle);
 
 /* Tell Fractal where the components will live */
 fractal.components.set('path', __dirname + '/components');
 
 /* Tell Fractal where the documentation pages will live */
 fractal.docs.set('path', __dirname + '/docs');
+
+/* Handlebars with custom helpers */
+const handlebars = require('gulp-compile-handlebars');
+const hljs = require('highlight.js');
+const hbs = require('@frctl/handlebars')({
+  helpers: {
+    striptags: function(txt,context){
+      txt = txt.fn(context);
+      if(typeof txt == "undefined") return;
+      // the regular expresion
+      var regexp = /<[\/\w]+>/g
+      // replacing the text
+      return txt.replace(regexp, '');
+    },
+    escapetags: function(txt,context){
+      txt = txt.fn(context);
+      if(typeof txt == "undefined") return;
+      return handlebars.Handlebars.Utils.escapeExpression(txt);
+    },
+    codeblockhtml: function(txt,context){
+      txt = txt.fn(context);
+      if(typeof txt == "undefined") return;
+      return '<code class="Code Code--lang-html vf-code-example"><pre class="vf-code-example__pre">' +
+      hljs.highlight('html', txt).value + '</pre></code>';
+    },
+    codeblockjs: function(txt,context){
+      txt = txt.fn(context);
+      if(typeof txt == "undefined") return;
+      return '<code class="Code Code--lang-js vf-code-example"><pre class="vf-code-example__pre">' +
+      hljs.highlight('js', txt).value + '</pre></code>';
+    }
+    // bold: function(options) {
+    //   return new handlebars.Handlebars.SafeString(
+    //       '<strong class="mybold">'
+    //       + options.fn(this)
+    //       + '</strong>');
+    // },
+    // uppercase: function(str) {
+    //     return str.toUpperCase();
+    // }
+  }
+});
+
+fractal.components.engine(hbs); /* set as the default template engine for components */
+fractal.docs.engine(hbs); /* you can also use the same instance for documentation, if you like! */
+
 
 /* configure components */
 fractal.components.set('default.status', 'alpha');
@@ -33,7 +80,7 @@ const mandelbrot = require('@frctl/mandelbrot');
 const VFTheme = mandelbrot({
   // favicon: 'https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon.ico',
   styles: [
-    '/css/local.css'
+    '/local.css'
   ],
   format: 'YAML',
   panels: ["html", "info", "resources"]
@@ -64,14 +111,11 @@ fractal.components.set('statuses', {
   }
 });
 
-
-
 // Customise Fractal templates
 // https://fractal.build/guide/customisation/web-themes#template-customisation
-VFTheme.addLoadPath(__dirname + '/tools/frctl-mandelbrot-embl-subtheme/views');
+VFTheme.addLoadPath(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/views');
 // Specify the static assets directory that contains the custom stylesheet.
-VFTheme.addStatic(__dirname + '/tools/frctl-mandelbrot-embl-subtheme/assets', '/');
-
+VFTheme.addStatic(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/assets', '/');
 
 fractal.web.theme(VFTheme);
 

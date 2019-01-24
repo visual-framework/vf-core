@@ -1,0 +1,11 @@
+<hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
+<h3 class="vf-text vf-text--heading-r">Notes</h3>
+<div class="vf-content">
+  <div class="pattern-library-notes pattern-library-notes--condensed">
+    {% if entity.notes %}
+    {{ frctl.docs.renderString(entity.notes, renderEnv) | async }}
+    {% else %}
+    <p class="Browser-isEmptyNote">There are no notes for this item.</p>
+    {% endif %}
+  </div>
+</div>

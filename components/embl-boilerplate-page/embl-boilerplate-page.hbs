@@ -19,12 +19,27 @@
 </head>
 <body>
   <header class="vf-header">
-    {{> @vf-global-header}}
+    <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=574&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
   </header>
+
+  <!-- dismissible banner -->
+  <section class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--phase" data-vf-js-banner data-vf-js-banner-state="dismissible" data-vf-js-banner-button-text="Close notice">
+      <div class="vf-banner__content | " data-vf-js-banner-text>
+        <div>
+          <h3 class="vf-text vf-text--heading-r">
+            Don't need to customise the EMBL Design Language for Websites?
+          </h3>
+          <p class="vf-banner__text">Here's the core CSS and JS you need. Don't forget to <a href="http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/" class="vf-link">consult the pattern library</a>.</p>
+      {{~#codeblockhtml~}}
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/css/styles.css">
+<script src="https://dev.assets.emblstatic.net/vf/scripts/scripts.js"></script>
+      {{/codeblockhtml}}
+        </div>
+      </div>
+  </section>
 
   <div class="vf-body">
     {{> @vf-intro }}
-
 
     <section class="vf-news-container | embl-grid embl-grid--has-sidebar">
 
@@ -55,7 +70,7 @@
 
   </div>
 
-  {{> @vf-footer }}
+  <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=569&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
 
   <script src="{{ path '/scripts/scripts.js' }}"></script>
 </body>
