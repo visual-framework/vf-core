@@ -1,10 +1,5 @@
 <header class="vf-header">
-  <div class="vf-global-header">
-    <div class="vf-global-header__inner">
-      <a href="http://www.embl.de" class="vf-logo--responsive">
-      </a>
-    </div>
-  </div>
+  <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=574&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
 
   <div class="vf-masthead vf-masthead--with-title-block" style="background-image: url('{{ path('/assets/vf-masthead/assets/group-bg.png') }}')">
     <div class="vf-masthead__title">
@@ -32,7 +27,7 @@
         {% asyncEach item in frctl.docs %}
         {% asyncEach menuitem in item %}
         {% if menuitem.isIndex == true %}
-        <li class="vf-navigation__item">
+        <li class="vf-navigation__item {% if doc.path == menuitem.path %}is-active{% endif %}">
           <a href="{{ path( (menuitem | url), request ) }}" class="vf-navigation__link">{{ menuitem.title }}</a>
         </li>
         {% endif %}

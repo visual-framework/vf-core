@@ -2,6 +2,7 @@ var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var path = require('path');
+var config = require('../../package.json');
 
 module.exports = class extends Generator {
   prompting() {
@@ -25,7 +26,7 @@ module.exports = class extends Generator {
     this.log((
       chalk.white("This tool helps you develop new components for the Visual Framework \n") +
       chalk.white("Not sure which options to pick? See the guide at: \n") +
-      chalk.white("https://git.VF.de/grp-stratcom/visual-framework-tooling-prototype/blob/setup/initial-installs/README.md#creating-a-new-component")
+      chalk.white("https://github.com/visual-framework/vf-core#creating-a-new-component")
     ));
 
     var componentType = ['element', 'block', 'container', 'grid', 'boilerplate'];
@@ -66,7 +67,7 @@ module.exports = class extends Generator {
     switch (this.props.dept) {
       case "VF Global":
       var path = "./components" + "/";
-      var namespace = "vf-";
+      var namespace = config.vfConfig.vfNamespace;
       break;
       case "EMBL":
       var path = "./components/EMBL" + "/";
@@ -156,6 +157,7 @@ module.exports = class extends Generator {
         this.destinationPath(totalPath + 'package.json'),
         {
           componentName: fileName,
+          componentHomepage: config.vfConfig.vfHomepage,
           componentStylesheet: fileName + '.scss'
         }
       );

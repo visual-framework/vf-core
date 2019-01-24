@@ -11,13 +11,19 @@ $vf-global-header__link-text--color: set-color(vf-color-black);
   grid-column: 1 / -1;
   grid-template-columns: minmax(var(--page-grid-gap), auto) minmax(auto, $global-page-max-width) minmax(var(--page-grid-gap), auto);
   height: auto;
-  margin-bottom: -1px; // this hides the border if it's part of a larger header
+  margin-bottom: 16px;
   padding: .5rem 0;
 }
 
 .vf-global-header__inner {
   display: flex;
   grid-column: 2 / -2;
+}
+
+.vf-global-header__site-name {
+  align-self: center;
+  display: block;
+  margin: 0;
 }
 
 .vf-global-header {

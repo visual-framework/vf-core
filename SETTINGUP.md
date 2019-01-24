@@ -1,33 +1,28 @@
 # Setting Up
 
-To use the Visual Framework your machine will require some software to be installed to start.
+To develop the Visual Framework your will need some software.
 
-The software you will need is:
+## Development environment
 
-  - Node.js
-  - Gulp
+If you don't already have a code editor and are new to git, a good starting point is to:
 
-You can check to see if you have these installed in the command line by entering the name of the package with -v afterwards, for example.
+1. [Setup a GitHub.com account](https://github.com/join)
+1. Install the [GitHub Desktop git client](https://desktop.github.com/)
+1. For editing code, [install Atom](https://atom.io/)
 
-```
-$ node -v
+## Development tools
 
-$ gulp -v
-```
+First, see if you have the needed tools installed.
 
-If either of these throw an error in your command line application then you will need to install them.
+1. Open a command line/terminal
+1. Enter `node -v`
+1. Enter `gulp -v`
 
-## To install Node
+If either of those steps return an error you need to install the corresponding
+software.
 
-The easiest way to download and install Node is via the official [downloads page](https://nodejs.org/download/) where you can download the correct version for your operating system.
-
-## To install Gulp
-
-Once you have Node install you can easily install the Gulp task manager by entering the following command into your command line application:
-
-```
-npm install gulpjs/gulp-cli -g
-```
+- To install Node: go to the official [downloads page](https://nodejs.org/download/)
+- To install Gulp: Gulp requires Node and can be installed by: `npm install gulpjs/gulp-cli -g`
 
 ## Installing the Visual Framework
 
