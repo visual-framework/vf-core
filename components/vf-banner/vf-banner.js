@@ -171,32 +171,45 @@ function vfBannerInsert(banner,bannerId) {
   // set the html of the banner
   targetBanner.innerHTML = generatedBannerHtml;
 
-  // if blocking or dismissible, allow the user to close it, store a cookie (if specified)
-  if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
+  // prep for cookie
+  var vfBannerCookieNameAndVersion = 'null';
+  if (banner.vfJsBannerCookieName && banner.vfJsBannerCookieVersion) {
+    vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + '_' + banner.vfJsBannerCookieVersion;
+  }
 
-    // prep for cookie
-    var vfBannerCookieNameAndVersion = 'null';
-    if (banner.vfJsBannerCookieName && banner.vfJsBannerCookieVersion) {
-      vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + '_' + banner.vfJsBannerCookieVersion;
+  if (vfBannerCookieNameAndVersion != "null") {
+    // utility to reset cookie when developing
+    // console.warn('vf-banner: vfBannerReset cookie reset override is on.');
+    // vfBannerReset(vfBannerCookieNameAndVersion);
 
-      // console.warn('vf-banner: vfBannerReset cookie reset override is on.');
-      // vfBannerReset(vfBannerCookieNameAndVersion);
+    // if blocking or dismissible, allow the user to close it, store a cookie (if specified)
+    if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
 
-      if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
-        // banner has been accepted, close
-        targetBanner.classList += " vf-u-display-none";
-        // exit, nothng more to do
-        return;
+      // On click: close banner, pass any cooke name (or `null`)
+      if (banner.vfJsBannerButtonText) {
+        targetBanner.addEventListener('click', function(){
+          vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
+        }, false);
       }
     }
 
-    // On click: close banner, pass any cooke name (or `null`)
-    if (banner.vfJsBannerButtonText) {
-      targetBanner.addEventListener('click', function(){
-        vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
-      }, false);
+    // if banner has been previously accepted
+    if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
+      // banner has been accepted, close
+      targetBanner.classList += " vf-u-display-none";
+      // exit, nothng more to do
+      return;
     }
+
+    // if banner is marked as auto-accept, set as read
+    if (banner.vfJsBannerAutoAccept == "true") {
+      if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
+        vfBannerSetCookie(vfBannerCookieNameAndVersion,true);
+      }
+    }
+
   }
+
 }
 
 vfBanner();
@@ -218,6 +231,7 @@ vfBanner();
 //   vfJsBannerExtraButton: "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>",
 //   vfJsBannerId: "2352286",
 //   vfJsBannerText: '<p class="vf-text vf-text--body-l">This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-link" href="JavaScript:Void(0);">Terms Of Use</a>.</p>',
-//   vfJsBannerState: "dismissible"
+//   vfJsBannerState: "dismissible",
+//   vfJsBannerAutoAccept: "true"
 // };
 // vfBannerInsert(programaticalBanner,'32423');
