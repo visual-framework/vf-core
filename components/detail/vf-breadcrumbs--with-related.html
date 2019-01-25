@@ -350,6 +350,7 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-comment">// pattern specific styles</span>
 
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-breadcrumbs.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-breadcrumbs--with-related.scss'</span>;
 </pre>
           </code>
           
@@ -362,7 +363,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-breadcrumbs/index.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">291 Bytes</span>
+        <span class="Meta-value">336 Bytes</span>
     </section>
     
   
@@ -592,6 +593,24 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-selector-class">.vf-breadcrumbs__link</span> {
   <span class="hljs-attribute">color</span>: currentColor;
 }
+
+<span class="hljs-selector-class">.vf-breadcrumbs__list--related</span> <span class="hljs-selector-class">.vf-breadcrumbs__item</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">position</span>: relative;
+}
+
+<span class="hljs-selector-class">.vf-breadcrumbs__list--related</span> <span class="hljs-selector-class">.vf-breadcrumbs__item</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:last-of-type)</span><span class="hljs-selector-pseudo">::after</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+}
+
+<span class="hljs-selector-class">.vf-breadcrumbs__list--related</span> <span class="hljs-selector-class">.vf-breadcrumbs__link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#287ae2</span>;
+}
+
+<span class="hljs-selector-class">.vf-breadcrumbs__list--related</span> <span class="hljs-selector-class">.vf-breadcrumbs__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+}
 </pre>
           </code>
           
@@ -604,7 +623,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-breadcrumbs/vf-breadcrumbs.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">2.1 KB</span>
+        <span class="Meta-value">2.4 KB</span>
     </section>
     
   

@@ -305,6 +305,12 @@ embl-grid embl-grid--has-sidebar
     
       
       <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--d7beb9fdfac024950454f999664b7e5c">vf-summary.css</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--cfbdfbeb7352548e0787532dd6ad5be7">vf-summary.scss</a>
       </li>
       
@@ -381,7 +387,7 @@ embl-grid embl-grid--has-sidebar
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary--article.scss'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary--job.scss'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary--news.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary--news-has-image.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary--profile.scss'</span>;
 </pre>
           </code>
           
@@ -394,7 +400,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-summary/index.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">430 Bytes</span>
+        <span class="Meta-value">423 Bytes</span>
     </section>
     
   
@@ -584,6 +590,351 @@ embl-grid embl-grid--has-sidebar
 
         <strong class="Meta-key">Size:</strong>
         <span class="Meta-value">1.6 KB</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--d7beb9fdfac024950454f999664b7e5c">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-summary</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary</span> {
+  <span class="hljs-attribute">align-self</span>: start;
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">2rem</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary</span> &gt; *<span class="hljs-selector-pseudo">:last-child</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__button</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-webkit-appearance</span>: none;
+     <span class="hljs-attribute">-moz-appearance</span>: none;
+          <span class="hljs-attribute">appearance</span>: none;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span> <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__category</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__date</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#287ae2</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#003da5</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__link</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
+}
+
+<span class="hljs-selector-class">.vf-summary__meta</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__text</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">19px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.421</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__title</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.333</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--article</span> <span class="hljs-selector-class">.vf-summary__date</span> {
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">0.75rem</span>;
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">0.75rem</span>;
+  <span class="hljs-attribute">position</span>: relative;
+}
+
+<span class="hljs-selector-class">.vf-summary--article</span> <span class="hljs-selector-class">.vf-summary__meta</span> {
+  <span class="hljs-attribute">-webkit-box-align</span>: center;
+      <span class="hljs-attribute">-ms-flex-align</span>: center;
+          <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
+  <span class="hljs-attribute">display</span>: flex;
+}
+
+<span class="hljs-selector-class">.vf-summary--article</span> <span class="hljs-selector-class">.vf-summary__meta</span> &gt; * {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--article</span> <span class="hljs-selector-class">.vf-summary__title</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">4px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--job</span> {
+  <span class="hljs-attribute">grid-template-columns</span>: auto <span class="hljs-number">1</span>fr;
+}
+
+<span class="hljs-selector-class">.vf-summary--job</span> <span class="hljs-selector-class">.vf-summary__date</span> {
+  <span class="hljs-attribute">-ms-flex-item-align</span>: center;
+      <span class="hljs-attribute">align-self</span>: center;
+}
+
+<span class="hljs-selector-class">.vf-summary--job</span> <span class="hljs-selector-class">.vf-summary__date</span> <span class="hljs-selector-tag">span</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#e40046</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--job</span> <span class="hljs-selector-class">.vf-summary__meta</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--job</span> <span class="hljs-selector-class">.vf-summary__text</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--job</span> <span class="hljs-selector-class">.vf-summary__title</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--news</span> {
+  <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(0, auto) <span class="hljs-number">1</span>fr;
+  <span class="hljs-attribute">grid-template-rows</span>: auto;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--news</span> <span class="hljs-selector-class">.vf-summary__image</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / span <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">1</span> / span <span class="hljs-number">4</span>;
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">30px</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">180px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--news</span> <span class="hljs-selector-class">.vf-summary__title</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--news</span> <span class="hljs-selector-class">.vf-summary__category</span> {
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">1rem</span>;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">text-transform</span>: uppercase;
+}
+
+<span class="hljs-selector-class">.vf-summary--news</span> <span class="hljs-selector-class">.vf-summary__date</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">0px</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--news</span> <span class="hljs-selector-class">.vf-summary__text</span> {
+  <span class="hljs-attribute">-webkit-box-align</span>: center;
+      <span class="hljs-attribute">-ms-flex-align</span>: center;
+          <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--news</span> <span class="hljs-selector-class">.vf-summary__text</span> &gt; <span class="hljs-selector-class">.vf-summary__category</span> {
+  <span class="hljs-attribute">margin-top</span>: -<span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile</span> {
+  <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(0, auto) <span class="hljs-number">1</span>fr;
+  <span class="hljs-attribute">grid-template-rows</span>: auto;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile</span> <span class="hljs-selector-class">.vf-summary__image</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / span <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">1</span> / span <span class="hljs-number">6</span>;
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">30px</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">170px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile</span> <span class="hljs-selector-class">.vf-summary__title</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">19px</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile</span> <span class="hljs-selector-class">.vf-summary__text</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__image--avatar</span> {
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__email</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">19px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.421</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#287ae2</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__email</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__email</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#003da5</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__email</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
+}
+
+<span class="hljs-selector-class">.vf-summary__phone</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">19px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.421</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__phone</span> + <span class="hljs-selector-class">.vf-summary__phone</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">8px</span>;
+}
+
+<span class="hljs-selector-class">.vf-sumary--mobile</span> {
+  <span class="hljs-attribute">position</span>: relative;
+}
+
+<span class="hljs-selector-class">.vf-sumary--mobile</span><span class="hljs-selector-pseudo">::after</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">'(mobile)'</span>;
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+}
+
+<span class="hljs-selector-class">.vf-summary__uuid</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile-l</span> <span class="hljs-selector-class">.vf-summary__email</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">8px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile-l</span> <span class="hljs-selector-class">.vf-summary__image</span> {
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">127px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile-r</span> <span class="hljs-selector-class">.vf-summary__title</span> {
+  <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">8px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile-r</span> <span class="hljs-selector-class">.vf-summary__text</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile-r</span> <span class="hljs-selector-class">.vf-summary__email</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile-r</span> <span class="hljs-selector-class">.vf-summary__image</span> {
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">87px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile-s</span> <span class="hljs-selector-class">.vf-summary__image</span> {
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">57px</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary--profile-s</span> <span class="hljs-selector-class">.vf-summary__text</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-summary/vf-summary.css"><span>/components/raw/vf-summary/vf-summary.css</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-summary/vf-summary.css</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">6.5 KB</span>
     </section>
     
   
