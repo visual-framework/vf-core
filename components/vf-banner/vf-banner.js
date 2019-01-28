@@ -67,14 +67,14 @@ function vfBannerGetCookie(c_name) {
   }
 }
 
-
-
 /**
  * Finds all vf-banner on a page and activates them
- * @example vfBanner()
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+ * @example vfBanner(document.querySelectorAll('.vf-pattern__container')[0]);
  */
-function vfBanner() {
-  const bannerList = document.querySelectorAll('[data-vf-js-banner]');
+function vfBanner(scope) {
+  var scope = scope || document;
+  const bannerList = scope.querySelectorAll('[data-vf-js-banner]');
 
   if (!bannerList) {
     // exit: banners not found
@@ -89,20 +89,25 @@ function vfBanner() {
   Array.prototype.forEach.call(bannerList, (banner, i) => {
 
     // map the JS data attributes to our object structure
-    var bannerRemapped = banner.dataset;
-    // pickup text from existing element
-    bannerRemapped.vfJsBannerText = banner.querySelectorAll('[data-vf-js-banner-text]')[0].innerHTML;
+    var bannerRemapped = JSON.parse(JSON.stringify(banner.dataset));
 
-    var uniqueId = Math.round(Math.random()*10000000);
+    if (typeof(banner.dataset.vfJsBannerId) != "undefined") {
+      // don't reactivate an already processed banner
+    } else {
+      bannerRemapped.vfJsBannerText = banner.querySelectorAll('[data-vf-js-banner-text]')[0].innerHTML;
 
-    // set an id to target this banner
-    banner.setAttribute('data-vf-js-banner-id',uniqueId);
+      var uniqueId = Math.round(Math.random()*10000000);
 
-    // preserve the classlist
-    bannerRemapped.classList = banner.querySelectorAll('[data-vf-js-banner-text]')[0].classList;
+      // set an id to target this banner
+      banner.setAttribute('data-vf-js-banner-id',uniqueId);
 
-    // Make the banner come alive
-    vfBannerInsert(bannerRemapped,uniqueId);
+      // preserve the classlist
+      bannerRemapped.classList = banner.querySelectorAll('[data-vf-js-banner-text]')[0].classList;
+
+      // Make the banner come alive
+      vfBannerInsert(bannerRemapped,uniqueId);
+    }
+
   });
 
 }
@@ -111,15 +116,17 @@ function vfBanner() {
  * Takes a banner object and creates the necesary html markup, js events, and inserts
  * @example vfBannerInsert()
  * @param {object} [banner]  -
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  * @param {string} [bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
  */
-function vfBannerInsert(banner,bannerId) {
-  var targetBanner = document.querySelectorAll('[data-vf-js-banner-id="'+bannerId+'"]')[0];
+function vfBannerInsert(banner,bannerId,scope) {
+  var scope = scope || document;
+  var targetBanner = scope.querySelectorAll('[data-vf-js-banner-id="'+bannerId+'"]')[0];
   if (targetBanner == undefined) {
     return;
   }
-  console.log(banner)
-  var generatedBannerHtml = '<div class="'+banner.classList+'">';
+
+  var generatedBannerHtml = '<div class="'+banner.classList+'" data-vf-js-banner-text>';
 
   generatedBannerHtml += banner.vfJsBannerText;
 
@@ -213,7 +220,6 @@ function vfBannerInsert(banner,bannerId) {
 }
 
 vfBanner();
-
 
 // By default this creates banners from HTML
 // optionally you can programatically supply
