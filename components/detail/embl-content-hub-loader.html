@@ -219,6 +219,12 @@ embl-grid embl-grid--has-sidebar
     
       
       <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--b6d886c311227f481098d01496ffa0eb">embl-content-hub-loader__fetch.js</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--1ae9de03ccc7af333110b6330339145e">embl-content-hub-loader__html-imports.js</a>
       </li>
       
@@ -308,6 +314,103 @@ embl-grid embl-grid--has-sidebar
             <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-content-hub-loader</span>
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHub</span>(<span class="hljs-params"></span>) </span>{
+
+  <span class="hljs-comment">// 1. make sure we have imports or a pollyfill</span>
+  emblContentHubLoaderHtmlImports();
+
+  <span class="hljs-comment">// 2. import the content</span>
+  emblContentHubFetch();
+}
+
+emblContentHub();
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader.js"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader.js</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.js</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">217 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--b9dc9b649de7c9f2b582a25960d2c1b2">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-content-hub-loader</span>
+
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-content-hub-loader.variables.scss'</span>;
+
+<span class="hljs-comment">// "This page was intentionally left blank"</span>
+
+<span class="hljs-comment">// .embl-content-hub-loader {</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// }</span>
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader.scss"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">162 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--ea65e9fcae0eb6a990f15e029c219d72">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre">
+<span class="hljs-comment">// embl-content-hub-loader Sass variables file.</span>
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+<span class="hljs-comment">// Default component variables</span>
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader.variables.scss"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader.variables.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.variables.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">273 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--b6d886c311227f481098d01496ffa0eb">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-content-hub-loader__fetch</span>
+
+<span class="hljs-comment">/**
+ * Fetch html links from content.embl.org
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubFetch</span>(<span class="hljs-params"></span>) </span>{
 
   <span class="hljs-comment">// Some JS utilities</span>
   <span class="hljs-comment">// via https://stackoverflow.com/a/32135318</span>
@@ -429,6 +532,17 @@ embl-grid embl-grid--has-sidebar
 
     emblContentHubAssignClasses(targetLink,position);
     emblContentHubUpdateDatesFormat(position);
+
+    <span class="hljs-comment">// run JS for some patterns on content, if they exist</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span>(vfBanner) === <span class="hljs-string">'function'</span>) {
+      vfBanner(targetLocation);
+    }
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span>(vfTabs) === <span class="hljs-string">'function'</span>) {
+      vfTabs(targetLocation);
+    }
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span>(emblBreadcrumbs) === <span class="hljs-string">'function'</span>) {
+      emblBreadcrumbs(); <span class="hljs-comment">// no scope for emblBreadcrumbs</span>
+    }
   }
 
   <span class="hljs-comment">// Enable class injection after loading contents</span>
@@ -460,8 +574,6 @@ embl-grid embl-grid--has-sidebar
       }
 
     }
-
-
   }
 
   <span class="hljs-comment">/**
@@ -488,81 +600,19 @@ embl-grid embl-grid--has-sidebar
   }
 
 }
-
-emblContentHub();
 </pre>
           </code>
           
         </div>
 
         <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader.js"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader.js</span></a></span>
+        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader__fetch.js"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader__fetch.js</span></a></span>
 
         <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.js</span>
+        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader__fetch.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">6.9 KB</span>
-    </section>
-    
-  
-    
-    <section class="vf-tabs__section" id="vf-tabs__section--b9dc9b649de7c9f2b582a25960d2c1b2">
-    <!--  -->
-        <div class="FileBrowser-itemPreview">
-          
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-content-hub-loader</span>
-
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-content-hub-loader.variables.scss'</span>;
-
-<span class="hljs-comment">// "This page was intentionally left blank"</span>
-
-<span class="hljs-comment">// .embl-content-hub-loader {</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// }</span>
-</pre>
-          </code>
-          
-        </div>
-
-        <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader.scss"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader.scss</span></a></span>
-
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.scss</span>
-
-        <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">162 Bytes</span>
-    </section>
-    
-  
-    
-    <section class="vf-tabs__section" id="vf-tabs__section--ea65e9fcae0eb6a990f15e029c219d72">
-    <!--  -->
-        <div class="FileBrowser-itemPreview">
-          
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre">
-<span class="hljs-comment">// embl-content-hub-loader Sass variables file.</span>
-<span class="hljs-comment">// ------------------------------------------------------------</span>
-
-<span class="hljs-comment">// ------------------------------------------------------------</span>
-<span class="hljs-comment">// Default component variables</span>
-<span class="hljs-comment">// ------------------------------------------------------------</span>
-</pre>
-          </code>
-          
-        </div>
-
-        <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/embl-content-hub-loader/embl-content-hub-loader.variables.scss"><span>/components/raw/embl-content-hub-loader/embl-content-hub-loader.variables.scss</span></a></span>
-
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.variables.scss</span>
-
-        <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">273 Bytes</span>
+        <span class="Meta-value">7.3 KB</span>
     </section>
     
   
@@ -778,6 +828,9 @@ emblContentHubLoaderHtmlImports();
     <span class="hljs-string">"index.scss"</span>,
     <span class="hljs-string">"embl-content-hub-loader.scss"</span>,
     <span class="hljs-string">"embl-content-hub-loader.css"</span>,
+    <span class="hljs-string">"embl-content-hub-loader.js"</span>,
+    <span class="hljs-string">"embl-content-hub-loader__fetch.js"</span>,
+    <span class="hljs-string">"embl-content-hub-loader__html-imports.js"</span>,
     <span class="hljs-string">"embl-content-hub-loader.hbs"</span>,
     <span class="hljs-string">"embl-content-hub-loader.config.yml"</span>
   ],
@@ -809,7 +862,7 @@ emblContentHubLoaderHtmlImports();
         <span class="Meta-value">components/embl-content-hub-loader/package.json</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">946 Bytes</span>
+        <span class="Meta-value">1.1 KB</span>
     </section>
     
   

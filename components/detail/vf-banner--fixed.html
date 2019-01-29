@@ -768,14 +768,14 @@ data-vf-js-banner-cookie-version="0.1"&gt;
   }
 }
 
-
-
 <span class="hljs-comment">/**
  * Finds all vf-banner on a page and activates them
- * @example vfBanner()
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+ * @example vfBanner(document.querySelectorAll('.vf-pattern__container')[0]);
  */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBanner</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">const</span> bannerList = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner]'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBanner</span>(<span class="hljs-params">scope</span>) </span>{
+  <span class="hljs-keyword">var</span> scope = scope || <span class="hljs-built_in">document</span>;
+  <span class="hljs-keyword">const</span> bannerList = scope.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner]'</span>);
 
   <span class="hljs-keyword">if</span> (!bannerList) {
     <span class="hljs-comment">// exit: banners not found</span>
@@ -790,20 +790,25 @@ data-vf-js-banner-cookie-version="0.1"&gt;
   <span class="hljs-built_in">Array</span>.prototype.forEach.call(bannerList, (banner, i) =&gt; {
 
     <span class="hljs-comment">// map the JS data attributes to our object structure</span>
-    <span class="hljs-keyword">var</span> bannerRemapped = banner.dataset;
-    <span class="hljs-comment">// pickup text from existing element</span>
-    bannerRemapped.vfJsBannerText = banner.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner-text]'</span>)[<span class="hljs-number">0</span>].innerHTML;
+    <span class="hljs-keyword">var</span> bannerRemapped = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(banner.dataset));
 
-    <span class="hljs-keyword">var</span> uniqueId = <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random()*<span class="hljs-number">10000000</span>);
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span>(banner.dataset.vfJsBannerId) != <span class="hljs-string">"undefined"</span>) {
+      <span class="hljs-comment">// don't reactivate an already processed banner</span>
+    } <span class="hljs-keyword">else</span> {
+      bannerRemapped.vfJsBannerText = banner.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner-text]'</span>)[<span class="hljs-number">0</span>].innerHTML;
 
-    <span class="hljs-comment">// set an id to target this banner</span>
-    banner.setAttribute(<span class="hljs-string">'data-vf-js-banner-id'</span>,uniqueId);
+      <span class="hljs-keyword">var</span> uniqueId = <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random()*<span class="hljs-number">10000000</span>);
 
-    <span class="hljs-comment">// preserve the classlist</span>
-    bannerRemapped.classList = banner.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner-text]'</span>)[<span class="hljs-number">0</span>].classList;
+      <span class="hljs-comment">// set an id to target this banner</span>
+      banner.setAttribute(<span class="hljs-string">'data-vf-js-banner-id'</span>,uniqueId);
 
-    <span class="hljs-comment">// Make the banner come alive</span>
-    vfBannerInsert(bannerRemapped,uniqueId);
+      <span class="hljs-comment">// preserve the classlist</span>
+      bannerRemapped.classList = banner.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner-text]'</span>)[<span class="hljs-number">0</span>].classList;
+
+      <span class="hljs-comment">// Make the banner come alive</span>
+      vfBannerInsert(bannerRemapped,uniqueId);
+    }
+
   });
 
 }
@@ -812,15 +817,17 @@ data-vf-js-banner-cookie-version="0.1"&gt;
  * Takes a banner object and creates the necesary html markup, js events, and inserts
  * @example vfBannerInsert()
  * @param {object} [banner]  -
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  * @param {string} [bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
  */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerInsert</span>(<span class="hljs-params">banner,bannerId</span>) </span>{
-  <span class="hljs-keyword">var</span> targetBanner = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner-id="'</span>+bannerId+<span class="hljs-string">'"]'</span>)[<span class="hljs-number">0</span>];
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerInsert</span>(<span class="hljs-params">banner,bannerId,scope</span>) </span>{
+  <span class="hljs-keyword">var</span> scope = scope || <span class="hljs-built_in">document</span>;
+  <span class="hljs-keyword">var</span> targetBanner = scope.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner-id="'</span>+bannerId+<span class="hljs-string">'"]'</span>)[<span class="hljs-number">0</span>];
   <span class="hljs-keyword">if</span> (targetBanner == <span class="hljs-literal">undefined</span>) {
     <span class="hljs-keyword">return</span>;
   }
-  <span class="hljs-built_in">console</span>.log(banner)
-  <span class="hljs-keyword">var</span> generatedBannerHtml = <span class="hljs-string">'&lt;div class="'</span>+banner.classList+<span class="hljs-string">'"&gt;'</span>;
+
+  <span class="hljs-keyword">var</span> generatedBannerHtml = <span class="hljs-string">'&lt;div class="'</span>+banner.classList+<span class="hljs-string">'" data-vf-js-banner-text&gt;'</span>;
 
   generatedBannerHtml += banner.vfJsBannerText;
 
@@ -915,7 +922,6 @@ data-vf-js-banner-cookie-version="0.1"&gt;
 
 vfBanner();
 
-
 <span class="hljs-comment">// By default this creates banners from HTML</span>
 <span class="hljs-comment">// optionally you can programatically supply</span>
 <span class="hljs-comment">// Target HTML</span>
@@ -948,7 +954,7 @@ vfBanner();
         <span class="Meta-value">components/vf-banner/vf-banner.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">8.2 KB</span>
+        <span class="Meta-value">8.7 KB</span>
     </section>
     
   

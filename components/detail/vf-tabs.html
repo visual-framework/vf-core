@@ -534,19 +534,20 @@ embl-grid embl-grid--has-sidebar
         <div class="FileBrowser-itemPreview">
           
           <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-comment">// document.</span>
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-tabs</span>
 
 <span class="hljs-comment">/**
  * Finds all tabs on a page and activates them
- * @example vfTabs()
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+ * @example vfTabs(document.querySelectorAll('.vf-pattern__container')[0]);
  */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfTabs</span>(<span class="hljs-params"></span>) </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfTabs</span>(<span class="hljs-params">scope</span>) </span>{
+  <span class="hljs-keyword">var</span> scope = scope || <span class="hljs-built_in">document</span>;
   <span class="hljs-comment">// Get relevant elements and collections</span>
-  <span class="hljs-comment">// todo: `document` here should be a scopped passed param like #mydiv or .my-div</span>
-  <span class="hljs-keyword">const</span> tablist = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-vf-js-tabs]'</span>);
-  <span class="hljs-keyword">const</span> panelsList = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-vf-js-tabs-content]'</span>);
-  <span class="hljs-keyword">const</span> panels = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-vf-js-tabs-content] [id^="vf-tabs__section"]'</span>);
-  <span class="hljs-keyword">const</span> tabs = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-vf-js-tabs] .vf-tabs__link'</span>);
+  <span class="hljs-keyword">const</span> tablist = scope.querySelectorAll(<span class="hljs-string">'[data-vf-js-tabs]'</span>);
+  <span class="hljs-keyword">const</span> panelsList = scope.querySelectorAll(<span class="hljs-string">'[data-vf-js-tabs-content]'</span>);
+  <span class="hljs-keyword">const</span> panels = scope.querySelectorAll(<span class="hljs-string">'[data-vf-js-tabs-content] [id^="vf-tabs__section"]'</span>);
+  <span class="hljs-keyword">const</span> tabs = scope.querySelectorAll(<span class="hljs-string">'[data-vf-js-tabs] .vf-tabs__link'</span>);
   <span class="hljs-keyword">if</span> (!tablist || !panels || !tabs) {
     <span class="hljs-comment">// exit: either tabs or tabbed content not found</span>
     <span class="hljs-keyword">return</span>;
@@ -640,9 +641,7 @@ embl-grid embl-grid--has-sidebar
     <span class="hljs-keyword">let</span> firstPanel = panel.querySelectorAll(<span class="hljs-string">'.vf-tabs__section'</span>)[<span class="hljs-number">0</span>];
     firstPanel.hidden = <span class="hljs-literal">false</span>;
   });
-
 }
-
 
 vfTabs();
 </pre>
@@ -657,7 +656,7 @@ vfTabs();
         <span class="Meta-value">components/vf-tabs/vf-tabs.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">4.1 KB</span>
+        <span class="Meta-value">4.2 KB</span>
     </section>
     
   

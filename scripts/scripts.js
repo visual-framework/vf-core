@@ -298,6 +298,22 @@ emblConditionalEdit();
 
 function emblContentHub() {
 
+  // 1. make sure we have imports or a pollyfill
+  emblContentHubLoaderHtmlImports();
+
+  // 2. import the content
+  emblContentHubFetch();
+}
+
+emblContentHub();
+
+// embl-content-hub-loader__fetch
+
+/**
+ * Fetch html links from content.embl.org
+ */
+function emblContentHubFetch() {
+
   // Some JS utilities
   // via https://stackoverflow.com/a/32135318
   Element.prototype.appendBefore = function (element) {
@@ -418,6 +434,17 @@ function emblContentHub() {
 
     emblContentHubAssignClasses(targetLink,position);
     emblContentHubUpdateDatesFormat(position);
+
+    // run JS for some patterns on content, if they exist
+    if (typeof(vfBanner) === 'function') {
+      vfBanner(targetLocation);
+    }
+    if (typeof(vfTabs) === 'function') {
+      vfTabs(targetLocation);
+    }
+    if (typeof(emblBreadcrumbs) === 'function') {
+      emblBreadcrumbs(); // no scope for emblBreadcrumbs
+    }
   }
 
   // Enable class injection after loading contents
@@ -449,8 +476,6 @@ function emblContentHub() {
       }
 
     }
-
-
   }
 
   /**
@@ -477,8 +502,6 @@ function emblContentHub() {
   }
 
 }
-
-emblContentHub();
 
 // embl-content-hub-loader__html-imports
 
@@ -739,14 +762,14 @@ function vfBannerGetCookie(c_name) {
   }
 }
 
-
-
 /**
  * Finds all vf-banner on a page and activates them
- * @example vfBanner()
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+ * @example vfBanner(document.querySelectorAll('.vf-pattern__container')[0]);
  */
-function vfBanner() {
-  const bannerList = document.querySelectorAll('[data-vf-js-banner]');
+function vfBanner(scope) {
+  var scope = scope || document;
+  const bannerList = scope.querySelectorAll('[data-vf-js-banner]');
 
   if (!bannerList) {
     // exit: banners not found
@@ -761,20 +784,25 @@ function vfBanner() {
   Array.prototype.forEach.call(bannerList, (banner, i) => {
 
     // map the JS data attributes to our object structure
-    var bannerRemapped = banner.dataset;
-    // pickup text from existing element
-    bannerRemapped.vfJsBannerText = banner.querySelectorAll('[data-vf-js-banner-text]')[0].innerHTML;
+    var bannerRemapped = JSON.parse(JSON.stringify(banner.dataset));
 
-    var uniqueId = Math.round(Math.random()*10000000);
+    if (typeof(banner.dataset.vfJsBannerId) != "undefined") {
+      // don't reactivate an already processed banner
+    } else {
+      bannerRemapped.vfJsBannerText = banner.querySelectorAll('[data-vf-js-banner-text]')[0].innerHTML;
 
-    // set an id to target this banner
-    banner.setAttribute('data-vf-js-banner-id',uniqueId);
+      var uniqueId = Math.round(Math.random()*10000000);
 
-    // preserve the classlist
-    bannerRemapped.classList = banner.querySelectorAll('[data-vf-js-banner-text]')[0].classList;
+      // set an id to target this banner
+      banner.setAttribute('data-vf-js-banner-id',uniqueId);
 
-    // Make the banner come alive
-    vfBannerInsert(bannerRemapped,uniqueId);
+      // preserve the classlist
+      bannerRemapped.classList = banner.querySelectorAll('[data-vf-js-banner-text]')[0].classList;
+
+      // Make the banner come alive
+      vfBannerInsert(bannerRemapped,uniqueId);
+    }
+
   });
 
 }
@@ -783,15 +811,17 @@ function vfBanner() {
  * Takes a banner object and creates the necesary html markup, js events, and inserts
  * @example vfBannerInsert()
  * @param {object} [banner]  -
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  * @param {string} [bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
  */
-function vfBannerInsert(banner,bannerId) {
-  var targetBanner = document.querySelectorAll('[data-vf-js-banner-id="'+bannerId+'"]')[0];
+function vfBannerInsert(banner,bannerId,scope) {
+  var scope = scope || document;
+  var targetBanner = scope.querySelectorAll('[data-vf-js-banner-id="'+bannerId+'"]')[0];
   if (targetBanner == undefined) {
     return;
   }
-  console.log(banner)
-  var generatedBannerHtml = '<div class="'+banner.classList+'">';
+
+  var generatedBannerHtml = '<div class="'+banner.classList+'" data-vf-js-banner-text>';
 
   generatedBannerHtml += banner.vfJsBannerText;
 
@@ -886,7 +916,6 @@ function vfBannerInsert(banner,bannerId) {
 
 vfBanner();
 
-
 // By default this creates banners from HTML
 // optionally you can programatically supply
 // Target HTML
@@ -929,19 +958,20 @@ for (var i = 0, len = GDPRBanner.length; i < len; i++) {
 
 // vf-no-js
 
-// document.
+// vf-tabs
 
 /**
  * Finds all tabs on a page and activates them
- * @example vfTabs()
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+ * @example vfTabs(document.querySelectorAll('.vf-pattern__container')[0]);
  */
-function vfTabs() {
+function vfTabs(scope) {
+  var scope = scope || document;
   // Get relevant elements and collections
-  // todo: `document` here should be a scopped passed param like #mydiv or .my-div
-  const tablist = document.querySelectorAll('[data-vf-js-tabs]');
-  const panelsList = document.querySelectorAll('[data-vf-js-tabs-content]');
-  const panels = document.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
-  const tabs = document.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
+  const tablist = scope.querySelectorAll('[data-vf-js-tabs]');
+  const panelsList = scope.querySelectorAll('[data-vf-js-tabs-content]');
+  const panels = scope.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
+  const tabs = scope.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
   if (!tablist || !panels || !tabs) {
     // exit: either tabs or tabbed content not found
     return;
@@ -1035,9 +1065,7 @@ function vfTabs() {
     let firstPanel = panel.querySelectorAll('.vf-tabs__section')[0];
     firstPanel.hidden = false;
   });
-
 }
-
 
 vfTabs();
 
