@@ -329,6 +329,7 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-comment">// pattern specific styles</span>
 
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-box.variables.scss'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-box.scss'</span>;
 </pre>
           </code>
@@ -342,7 +343,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-box/index.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">217 Bytes</span>
+        <span class="Meta-value">250 Bytes</span>
     </section>
     
   
@@ -364,6 +365,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attr">"files"</span>: [
     <span class="hljs-string">"index.scss"</span>,
     <span class="hljs-string">"vf-box.scss"</span>,
+    <span class="hljs-string">"vf-box.variables.scss"</span>,
     <span class="hljs-string">"vf-box.css"</span>,
     <span class="hljs-string">"vf-box.hbs"</span>,
     <span class="hljs-string">"vf-box.config.yml"</span>
@@ -398,7 +400,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-box/package.json</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">879 Bytes</span>
+        <span class="Meta-value">908 Bytes</span>
     </section>
     
   
@@ -412,6 +414,12 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">background-color</span>: set-color(vf-color-green);
   <span class="hljs-attribute">border-color</span>: set-color(vf-color-green);
 }
+
+<span class="hljs-selector-class">.vf-box--factoid</span>,
+<span class="hljs-selector-class">.vf-box--factoid</span> <span class="hljs-selector-class">.vf-box__text</span>,
+<span class="hljs-selector-class">.vf-box--factoid</span> <span class="hljs-selector-class">.vf-box__heading</span> {
+  <span class="hljs-attribute">color</span>: set-color(vf-color-white);
+}
 </pre>
           </code>
           
@@ -424,7 +432,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-box/vf-box--factoid.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">111 Bytes</span>
+        <span class="Meta-value">236 Bytes</span>
     </section>
     
   
@@ -563,7 +571,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">background-color</span>: set-color(vf-color-gray-dark);
   <span class="hljs-attribute">border-color</span>: set-color(vf-color-gray-dark);
   <span class="hljs-attribute">box-sizing</span>: border-box;
-  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">color</span>: set-color(vf-color-white);
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-variable">$vf-box-outer-spacing</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">24px</span> <span class="hljs-number">16px</span>;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
@@ -582,10 +590,6 @@ embl-grid embl-grid--has-sidebar
   @<span class="hljs-keyword">include</span> set-type(body--r);
 }
 
-
-
-
-
 <span class="hljs-comment">// The CSS below is on notice</span>
 
 <span class="hljs-selector-class">.vf-box--s</span> {
@@ -600,13 +604,11 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">32px</span>;
 }
 
-
 <span class="hljs-selector-class">.vf-box--primary</span> {
   <span class="hljs-attribute">background-color</span>: set-color(vf-color-azure-dark);
   <span class="hljs-attribute">border-color</span>: set-color(vf-color-azure-dark);
   <span class="hljs-attribute">color</span>: set-color(vf-color-white);
 }
-
 
 <span class="hljs-selector-class">.vf-box--secondary</span> {
   <span class="hljs-attribute">background-color</span>: set-color(vf-color-green);
