@@ -565,32 +565,6 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 }
 
-@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">600px</span>) {
-  <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-snippet__date</span> {
-    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">30px</span>;
-    <span class="hljs-attribute">position</span>: relative;
-  }
-  <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-snippet__date</span><span class="hljs-selector-pseudo">::after</span> {
-    <span class="hljs-attribute">content</span>: <span class="hljs-string">' — '</span>;
-    <span class="hljs-attribute">font-family</span>: inherit;
-    <span class="hljs-attribute">font-size</span>: inherit;
-    <span class="hljs-attribute">position</span>: absolute;
-    <span class="hljs-attribute">right</span>: -<span class="hljs-number">20px</span>;
-  }
-  <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-snippet__author</span> {
-    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>;
-    <span class="hljs-attribute">position</span>: relative;
-  }
-  <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-snippet__author</span><span class="hljs-selector-pseudo">::after</span> {
-    <span class="hljs-attribute">color</span>: <span class="hljs-number">#282d23</span>;
-    <span class="hljs-attribute">content</span>: <span class="hljs-string">','</span>;
-    <span class="hljs-attribute">font-family</span>: inherit;
-    <span class="hljs-attribute">font-size</span>: inherit;
-    <span class="hljs-attribute">position</span>: absolute;
-    <span class="hljs-attribute">right</span>: -<span class="hljs-number">8px</span>;
-  }
-}
-
 <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-snippet__link</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#287ae2</span>;
 }
@@ -629,6 +603,32 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-snippet__read-more</span><span class="hljs-selector-attr">[disabled]</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
   <span class="hljs-attribute">cursor</span>: not-allowed;
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">600px</span>) {
+  <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-snippet__date</span> {
+    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">30px</span>;
+    <span class="hljs-attribute">position</span>: relative;
+  }
+  <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-snippet__date</span><span class="hljs-selector-pseudo">::after</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">' — '</span>;
+    <span class="hljs-attribute">font-family</span>: inherit;
+    <span class="hljs-attribute">font-size</span>: inherit;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">right</span>: -<span class="hljs-number">20px</span>;
+  }
+  <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-snippet__author</span> {
+    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>;
+    <span class="hljs-attribute">position</span>: relative;
+  }
+  <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not(.vf-disable-deprecated)</span> <span class="hljs-selector-class">.vf-snippet__author</span><span class="hljs-selector-pseudo">::after</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#282d23</span>;
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">','</span>;
+    <span class="hljs-attribute">font-family</span>: inherit;
+    <span class="hljs-attribute">font-size</span>: inherit;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">right</span>: -<span class="hljs-number">8px</span>;
+  }
 }
 </pre>
           </code>
@@ -683,6 +683,23 @@ embl-grid embl-grid--has-sidebar
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
   }
 
+  <span class="hljs-selector-class">.vf-snippet__link</span> {
+    @<span class="hljs-keyword">include</span> inline-link;
+  }
+
+  <span class="hljs-selector-class">.vf-snippet__teaser</span> {
+    &amp;:last-of-type {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    }
+  }
+
+  <span class="hljs-selector-class">.vf-snippet__read-more</span> {
+    @<span class="hljs-keyword">include</span> margin--block(top, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-l));
+    @<span class="hljs-keyword">include</span> inline-link;
+
+    <span class="hljs-attribute">display</span>: block;
+  }
+
   @<span class="hljs-keyword">media</span> (min-width: 600px) {
     <span class="hljs-selector-class">.vf-snippet__date</span> {
       <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">30px</span>;
@@ -710,23 +727,6 @@ embl-grid embl-grid--has-sidebar
         <span class="hljs-attribute">right</span>: -<span class="hljs-number">8px</span>;
       }
     }
-  }
-
-  <span class="hljs-selector-class">.vf-snippet__link</span> {
-    @<span class="hljs-keyword">include</span> inline-link;
-  }
-
-  <span class="hljs-selector-class">.vf-snippet__teaser</span> {
-    &amp;:last-of-type {
-      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-    }
-  }
-
-  <span class="hljs-selector-class">.vf-snippet__read-more</span> {
-    @<span class="hljs-keyword">include</span> margin--block(top, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-l));
-    @<span class="hljs-keyword">include</span> inline-link;
-
-    <span class="hljs-attribute">display</span>: block;
   }
 
 }
