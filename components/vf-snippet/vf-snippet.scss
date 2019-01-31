@@ -29,6 +29,23 @@ html:not(.vf-disable-deprecated) {
     margin: 0;
   }
 
+  .vf-snippet__link {
+    @include inline-link;
+  }
+
+  .vf-snippet__teaser {
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
+  .vf-snippet__read-more {
+    @include margin--block(top, map-get($vf-spacing-map, vf-spacing-l));
+    @include inline-link;
+
+    display: block;
+  }
+
   @media (min-width: 600px) {
     .vf-snippet__date {
       margin-right: 30px;
@@ -56,23 +73,6 @@ html:not(.vf-disable-deprecated) {
         right: -8px;
       }
     }
-  }
-
-  .vf-snippet__link {
-    @include inline-link;
-  }
-
-  .vf-snippet__teaser {
-    &:last-of-type {
-      margin: 0;
-    }
-  }
-
-  .vf-snippet__read-more {
-    @include margin--block(top, map-get($vf-spacing-map, vf-spacing-l));
-    @include inline-link;
-
-    display: block;
   }
 
 }
