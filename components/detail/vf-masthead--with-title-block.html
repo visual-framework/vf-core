@@ -105,6 +105,16 @@ embl-grid embl-grid--has-sidebar
             
 
               
+                
+                  <a class="vf-tabs__link" href="vf-masthead--inlay.html">
+                    Inlay
+                  </a>
+                 
+               
+
+            
+
+              
                 <a class="vf-tabs__link is-active" href="#is-active">
                   With Title Block
                 </a>
@@ -544,9 +554,8 @@ embl-grid embl-grid--has-sidebar
 }
 
 <span class="hljs-comment">/* stylelint-enable order/order */</span>
-<span class="hljs-selector-class">.vf-masthead</span> {
+<span class="hljs-selector-class">.vf-header</span> <span class="hljs-selector-class">.vf-masthead</span> {
   <span class="hljs-attribute">display</span>: grid;
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) <span class="hljs-built_in">minmax</span>(auto, 76.5em) <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
 }
 
@@ -560,6 +569,52 @@ embl-grid embl-grid--has-sidebar
     <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">calc</span>(var(--embl-grid-module--prime) + <span class="hljs-built_in">var</span>(--embl-grid-spacing-normaliser)) <span class="hljs-built_in">repeat</span>(auto-fit, minmax(288px, 1fr));
     <span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-number">48px</span> <span class="hljs-number">1</span>fr;
   }
+}
+
+<span class="hljs-selector-class">.vf-masthead__title</span> {
+  <span class="hljs-attribute">-ms-flex-item-align</span>: unset;
+      <span class="hljs-attribute">align-self</span>: unset;
+  <span class="hljs-attribute">display</span>: -webkit-inline-box;
+  <span class="hljs-attribute">display</span>: -ms-inline-flexbox;
+  <span class="hljs-attribute">display</span>: inline-flex;
+  <span class="hljs-attribute">-webkit-box-orient</span>: vertical;
+  <span class="hljs-attribute">-webkit-box-direction</span>: reverse;
+      <span class="hljs-attribute">-ms-flex-direction</span>: column-reverse;
+          <span class="hljs-attribute">flex-direction</span>: column-reverse;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / span <span class="hljs-number">3</span>;
+  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.vf-masthead__heading</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">42px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.547</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: white;
+}
+
+<span class="hljs-selector-class">.vf-masthead__heading</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
+}
+
+<span class="hljs-selector-class">.vf-masthead__subheading</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">text-transform</span>: uppercase;
+}
+
+<span class="hljs-selector-class">.vf-masthead__subheading</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
 }
 
 <span class="hljs-selector-class">.vf-masthead--with-title-block</span> {
@@ -596,71 +651,6 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">grid-auto-columns</span>: max-content;
   <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">3</span> / -<span class="hljs-number">2</span>;
   <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">16px</span>;
-}
-
-<span class="hljs-selector-class">.vf-masthead__title</span> {
-  <span class="hljs-attribute">color</span>: white;
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / span <span class="hljs-number">3</span>;
-  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">2</span>;
-  <span class="hljs-attribute">position</span>: relative;
-}
-
-<span class="hljs-selector-class">.vf-masthead__title</span> <span class="hljs-selector-class">.vf-masthead__title-inner</span> {
-  <span class="hljs-attribute">display</span>: -webkit-box;
-  <span class="hljs-attribute">display</span>: -ms-flexbox;
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">-webkit-box-orient</span>: vertical;
-  <span class="hljs-attribute">-webkit-box-direction</span>: reverse;
-      <span class="hljs-attribute">-ms-flex-direction</span>: column-reverse;
-          <span class="hljs-attribute">flex-direction</span>: column-reverse;
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
-}
-
-@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
-  <span class="hljs-selector-class">.vf-masthead__title</span> <span class="hljs-selector-class">.vf-masthead__title-inner</span> {
-    <span class="hljs-attribute">display</span>: grid;
-    <span class="hljs-attribute">grid-auto-columns</span>: -webkit-max-content;
-    <span class="hljs-attribute">grid-auto-columns</span>: max-content;
-  }
-}
-
-<span class="hljs-selector-class">.vf-masthead__title</span> <span class="hljs-selector-tag">h1</span>,
-<span class="hljs-selector-class">.vf-masthead__title</span> <span class="hljs-selector-tag">h2</span> {
-  <span class="hljs-attribute">display</span>: inline-block;
-  <span class="hljs-attribute">grid-area</span>: dave;
-  <span class="hljs-attribute">grid-auto-columns</span>: -webkit-max-content;
-  <span class="hljs-attribute">grid-auto-columns</span>: max-content;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-}
-
-<span class="hljs-selector-class">.vf-masthead__title</span> <span class="hljs-selector-tag">h1</span> {
-  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">2</span>;
-  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">16px</span>;
-  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">40px</span>;
-}
-
-<span class="hljs-selector-class">.vf-masthead__title</span> <span class="hljs-selector-tag">h2</span> {
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
-  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
-  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">1</span>;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">text-transform</span>: uppercase;
-}
-
-<span class="hljs-selector-class">.vf-masthead__heading</span> {
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-}
-
-<span class="hljs-selector-class">.vf-masthead__heading</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">color</span>: inherit;
-  <span class="hljs-attribute">text-decoration</span>: none;
-  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
-}
-
-<span class="hljs-selector-class">.vf-masthead__subheading</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">color</span>: inherit;
-  <span class="hljs-attribute">text-decoration</span>: none;
-  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
 }
 
 <span class="hljs-selector-class">.vf-masthead__form--search</span> {
@@ -751,7 +741,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-masthead/vf-masthead.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">6.8 KB</span>
+        <span class="Meta-value">6.6 KB</span>
     </section>
     
   
@@ -765,11 +755,11 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-comment">// vf-masthead</span>
 
-<span class="hljs-selector-class">.vf-masthead</span> {
+<span class="hljs-selector-class">.vf-header</span> <span class="hljs-selector-class">.vf-masthead</span> {
   <span class="hljs-attribute">display</span>: grid;
-  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   grid-template-<span class="hljs-attribute">columns</span>: minmax(var(--page-grid-gap), auto) minmax(auto, <span class="hljs-number">76.5em</span>) minmax(var(--page-grid-gap), auto);
 }
+
 <span class="hljs-selector-class">.vf-masthead__inner</span> {
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
 
@@ -779,6 +769,42 @@ embl-grid embl-grid--has-sidebar
     grid-template-rows: <span class="hljs-number">48px</span> <span class="hljs-number">1</span>fr;
   }
 }
+
+
+<span class="hljs-selector-class">.vf-masthead__title</span> {
+  <span class="hljs-attribute">align-self</span>: unset;
+  <span class="hljs-attribute">display</span>: inline-flex;
+  <span class="hljs-attribute">flex-direction</span>: column-reverse;
+  grid-column: <span class="hljs-number">1</span> / span <span class="hljs-number">3</span>;
+  grid-row: <span class="hljs-number">2</span>;
+}
+
+
+<span class="hljs-selector-class">.vf-masthead__heading</span> {
+  @<span class="hljs-keyword">include</span> set-type(heading--xl);
+
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-masthead__title-text--color</span>;
+}
+
+<span class="hljs-selector-class">.vf-masthead__heading</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
+}
+
+<span class="hljs-selector-class">.vf-masthead__subheading</span> {
+  @<span class="hljs-keyword">include</span> set-type(body--s-alt, <span class="hljs-variable">$custom-margin-bottom</span>: 0);
+
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-masthead__title-text--color</span>;
+  <span class="hljs-attribute">text-transform</span>: uppercase;
+}
+
+<span class="hljs-selector-class">.vf-masthead__subheading</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
+}
+
 
 <span class="hljs-selector-class">.vf-masthead--with-title-block</span> {
   grid-<span class="hljs-attribute">column-gap</span>: <span class="hljs-number">0</span>;
@@ -804,58 +830,6 @@ embl-grid embl-grid--has-sidebar
       <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">16px</span>;
     }
   }
-}
-
-<span class="hljs-selector-class">.vf-masthead__title</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-masthead__title-text--color</span>;
-  grid-column: <span class="hljs-number">1</span> / span <span class="hljs-number">3</span>;
-  grid-row: <span class="hljs-number">2</span>;
-  <span class="hljs-attribute">position</span>: relative;
-
-  <span class="hljs-selector-class">.vf-masthead__title-inner</span> {
-    <span class="hljs-attribute">display</span>: flex;
-    <span class="hljs-attribute">flex-direction</span>: column-reverse;
-    grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
-
-    @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint-l</span>) {
-      <span class="hljs-attribute">display</span>: grid;
-      grid-<span class="hljs-attribute">auto</span>-<span class="hljs-attribute">columns</span>: max-content;
-    }
-  }
-
-  <span class="hljs-selector-tag">h1</span>,
-  <span class="hljs-selector-tag">h2</span> {
-    <span class="hljs-comment">// background-color: set-color(vf-color-black);</span>
-    <span class="hljs-attribute">display</span>: inline-block;
-    grid-<span class="hljs-selector-tag">area</span>: dave;
-    grid-<span class="hljs-attribute">auto</span>-<span class="hljs-attribute">columns</span>: max-content;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-  }
-  <span class="hljs-selector-tag">h1</span> {
-    grid-row: <span class="hljs-number">2</span>;
-    <span class="hljs-attribute">padding-bottom</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-r);
-    <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">40px</span>;
-  }
-  <span class="hljs-selector-tag">h2</span> {
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
-    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
-    grid-row: <span class="hljs-number">1</span>;
-    <span class="hljs-attribute">padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-r) <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">text-transform</span>: uppercase;
-  }
-}
-<span class="hljs-selector-class">.vf-masthead__heading</span> {
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-}
-<span class="hljs-selector-class">.vf-masthead__heading</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">color</span>: inherit;
-  <span class="hljs-attribute">text-decoration</span>: none;
-  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
-}
-<span class="hljs-selector-class">.vf-masthead__subheading</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">color</span>: inherit;
-  <span class="hljs-attribute">text-decoration</span>: none;
-  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
 }
 
 <span class="hljs-selector-class">.vf-masthead__form--search</span> {
@@ -929,7 +903,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-masthead/vf-masthead.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">3.2 KB</span>
+        <span class="Meta-value">2.7 KB</span>
     </section>
     
   

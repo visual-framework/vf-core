@@ -168,7 +168,7 @@ embl-grid embl-grid--has-sidebar
 
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-global-header__site-name"</span>&gt;</span>Visual Framework for Life Science websites<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-    {{render '@vf-navigation--tertiary'}}
+    {{render '@vf-navigation--global'}}
 
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
@@ -406,20 +406,6 @@ embl-grid embl-grid--has-sidebar
   }
 }
 
-<span class="hljs-selector-class">.vf-navigation--inner</span> {
-  <span class="hljs-attribute">display</span>: -webkit-box;
-  <span class="hljs-attribute">display</span>: -ms-flexbox;
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
-}
-
-<span class="hljs-selector-class">.vf-navigation__heading</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
-  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">40px</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">text-transform</span>: uppercase;
-}
-
 <span class="hljs-selector-class">.vf-navigation__list</span> {
   <span class="hljs-attribute">display</span>: -webkit-box;
   <span class="hljs-attribute">display</span>: -ms-flexbox;
@@ -430,229 +416,8 @@ embl-grid embl-grid--has-sidebar
           <span class="hljs-attribute">flex-direction</span>: row;
 }
 
-<span class="hljs-selector-class">.vf-navigation--primary</span> {
-  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
-  <span class="hljs-attribute">display</span>: grid;
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) <span class="hljs-built_in">minmax</span>(auto, 76.5em) <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> &gt; <span class="hljs-selector-class">.vf-navigation</span> {
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
-}
-
-@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
-  <span class="hljs-selector-class">.vf-navigation--primary</span> &gt; <span class="hljs-selector-class">.vf-navigation</span> {
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
-  }
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__list</span> {
-  <span class="hljs-attribute">display</span>: block;
-}
-
-@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
-  <span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__list</span> {
-    <span class="hljs-attribute">-webkit-box-align</span>: center;
-        <span class="hljs-attribute">-ms-flex-align</span>: center;
-            <span class="hljs-attribute">align-items</span>: center;
-    <span class="hljs-attribute">display</span>: -webkit-box;
-    <span class="hljs-attribute">display</span>: -ms-flexbox;
-    <span class="hljs-attribute">display</span>: flex;
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
-  }
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__item</span> {
-  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
-  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
-  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.333</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">display</span>: block;
+<span class="hljs-selector-class">.vf-navigation__heading</span> {
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:first-child</span> {
-  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0</span>;
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-class">.is-active</span> {
-  <span class="hljs-attribute">-webkit-box-align</span>: center;
-      <span class="hljs-attribute">-ms-flex-align</span>: center;
-          <span class="hljs-attribute">align-items</span>: center;
-  <span class="hljs-attribute">background-color</span>: white;
-  <span class="hljs-attribute">display</span>: -webkit-box;
-  <span class="hljs-attribute">display</span>: -ms-flexbox;
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-class">.is-active</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#282d23</span>;
-  <span class="hljs-attribute">display</span>: block;
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:hover</span> {
-  <span class="hljs-attribute">-webkit-box-align</span>: center;
-      <span class="hljs-attribute">-ms-flex-align</span>: center;
-          <span class="hljs-attribute">align-items</span>: center;
-  <span class="hljs-attribute">background-color</span>: white;
-  <span class="hljs-attribute">display</span>: -webkit-box;
-  <span class="hljs-attribute">display</span>: -ms-flexbox;
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#282d23</span>;
-  <span class="hljs-attribute">display</span>: block;
-}
-
-@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
-  <span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__item</span> {
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">16px</span>;
-  }
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
-  <span class="hljs-attribute">color</span>: white;
-  <span class="hljs-attribute">display</span>: block;
-  <span class="hljs-attribute">text-decoration</span>: none;
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:visited</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:hover</span> {
-  <span class="hljs-attribute">color</span>: white;
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-attr">[disabled]</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
-  <span class="hljs-attribute">cursor</span>: not-allowed;
-}
-
-<span class="hljs-selector-class">.vf-navigation--primary</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:visited</span> {
-  <span class="hljs-attribute">color</span>: white;
-}
-
-<span class="hljs-selector-class">.vf-navigation--secondary</span> {
-  <span class="hljs-attribute">-webkit-box-align</span>: center;
-      <span class="hljs-attribute">-ms-flex-align</span>: center;
-          <span class="hljs-attribute">align-items</span>: center;
-  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
-  <span class="hljs-attribute">border</span>: <span class="hljs-number">0px</span> solid <span class="hljs-number">#707372</span>;
-  <span class="hljs-attribute">border-width</span>: <span class="hljs-number">1px</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">display</span>: grid;
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">2</span>;
-  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) <span class="hljs-built_in">minmax</span>(auto, 76.5em) <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">text-transform</span>: uppercase;
-}
-
-<span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation--inner</span> {
-  <span class="hljs-attribute">display</span>: block;
-  <span class="hljs-attribute">-webkit-box-orient</span>: horizontal;
-  <span class="hljs-attribute">-webkit-box-direction</span>: normal;
-      <span class="hljs-attribute">-ms-flex-direction</span>: row;
-          <span class="hljs-attribute">flex-direction</span>: row;
-  <span class="hljs-attribute">position</span>: relative;
-}
-
-@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">800px</span>) {
-  <span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation--inner</span> {
-    <span class="hljs-attribute">display</span>: grid;
-    <span class="hljs-attribute">-webkit-box-orient</span>: unset;
-    <span class="hljs-attribute">-webkit-box-direction</span>: unset;
-        <span class="hljs-attribute">-ms-flex-direction</span>: unset;
-            <span class="hljs-attribute">flex-direction</span>: unset;
-    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-    <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) <span class="hljs-built_in">minmax</span>(auto, 76.5em) <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
-  }
-}
-
-@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">800px</span>) {
-  <span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation</span> {
-    <span class="hljs-attribute">-ms-flex-item-align</span>: center;
-        <span class="hljs-attribute">align-self</span>: center;
-    <span class="hljs-attribute">display</span>: -webkit-box;
-    <span class="hljs-attribute">display</span>: -ms-flexbox;
-    <span class="hljs-attribute">display</span>: flex;
-    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / span <span class="hljs-number">1</span>;
-    <span class="hljs-attribute">position</span>: absolute;
-    <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
-  }
-}
-
-<span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation__heading</span> {
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / span <span class="hljs-number">1</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-}
-
-@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">799px</span>) {
-  <span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation__heading</span> {
-    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">1rem</span>;
-  }
-}
-
-@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">799px</span>) {
-  <span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation__list</span> {
-    <span class="hljs-attribute">display</span>: block;
-  }
-}
-
-<span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span> {
-  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">1rem</span>;
-}
-
-@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">800px</span>) {
-  <span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span> {
-    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">2rem</span>;
-  }
-}
-
-<span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#e1e1e1</span>;
-  <span class="hljs-attribute">text-decoration</span>: none;
-}
-
-<span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:visited</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
-}
-
-<span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:hover</span> {
-  <span class="hljs-attribute">color</span>: white;
-}
-
-<span class="hljs-selector-class">.vf-navigation--secondary</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-attr">[disabled]</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
-  <span class="hljs-attribute">cursor</span>: not-allowed;
-}
-
-<span class="hljs-selector-class">.vf-navigation--tertiary</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span> {
-  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">24px</span>;
-}
-
-<span class="hljs-selector-class">.vf-navigation--tertiary</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
-  <span class="hljs-attribute">text-decoration</span>: none;
-}
-
-<span class="hljs-selector-class">.vf-navigation--tertiary</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:visited</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
-}
-
-<span class="hljs-selector-class">.vf-navigation--tertiary</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:hover</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#282d23</span>;
-}
-
-<span class="hljs-selector-class">.vf-navigation--tertiary</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-attr">[disabled]</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
-  <span class="hljs-attribute">cursor</span>: not-allowed;
 }
 
 <span class="hljs-selector-class">.vf-global-header</span> {
@@ -700,7 +465,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-global-header/vf-global-header.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">6.9 KB</span>
+        <span class="Meta-value">1.7 KB</span>
     </section>
     
   
@@ -787,7 +552,7 @@ embl-grid embl-grid--has-sidebar
         
             <a href="vf-logo--responsive.html">@<span>vf-logo--responsive</span></a>, 
         
-            <a href="vf-navigation--tertiary.html">@<span>vf-navigation--tertiary</span></a>
+            <a href="vf-navigation--global.html">@<span>vf-navigation--global</span></a>
         
         </span>
     </li class="Meta-item">
