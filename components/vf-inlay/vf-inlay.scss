@@ -38,7 +38,6 @@
 
 .vf-inlay__header {
   display: grid;
-
   grid-column: 1 / -1;
   /* stylelint-disable declaration-colon-space-after, indentation */
   grid-template-columns:
@@ -52,8 +51,21 @@
   /* stylelint-enable */
 }
 
-.vf-inlay__title {
-  grid-column: 2 / -2
+.vf-inlay__navigation {
+  background-color: set-color(vf-color-gray-dark);
+  display: grid;
+  grid-column: 1 / -1;
+  /* stylelint-disable declaration-colon-space-after, indentation */
+  grid-template-columns:
+    minmax(var(--page-grid-gap), 60px)
+    auto
+    minmax(var(--page-grid-gap), 60px)
+  ;
+  /* stylelint-enable */
+  > * {
+    grid-column: 2 / -2;
+    margin-left: -18px;
+  }
 }
 
 .vf-inlay__content--main {
