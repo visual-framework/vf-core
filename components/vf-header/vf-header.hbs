@@ -2,10 +2,12 @@
 
   {{render '@vf-global-header'}}
 
-  {{render '@vf-masthead'}}
-
-  {{render '@vf-navigation--primary'}}
-
-  {{render '@vf-navigation--secondary'}}
+  {{> '@vf-masthead'}}
+  <div class="vf-header__navigation vf-header__navigation--site">
+  {{render '@vf-navigation--site'}}
+  </div>
+  <div class="vf-header__navigation vf-header__navigation--team">
+  {{render '@vf-navigation--team'}}
+  </div>
 
 </header>
