@@ -56,6 +56,10 @@ embl-grid embl-grid--has-sidebar
 
     
     
+        
+        
+        
+    
 
 <div class="Pen" data-behaviour="pen" id="pen-e3131f9611ddddac375a13a50ef2021b">
 
@@ -124,16 +128,16 @@ embl-grid embl-grid--has-sidebar
 <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-e3131f9611ddddac375a13a50ef2021b">
     <div class="Preview-wrapper" data-role="resizer-disabled">
       
-       <iframe
-          class="Preview-iframe"
-          data-role="window"
-          src="../preview/embl-group-page--default.html"
-          sandbox="allow-same-origin allow-scripts allow-forms"
+<div class="Error Error--render">
+    <h4 class="Error-title">Error rendering component</h4>
+    <div class="Error-message pattern-library-notes">
+        <p>Could not render component &#39;@vf-navigation--site&#39; - component not found.</p>
 
-          marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
-          onload="resizeIframe(this)"
-        >
-      </iframe>
+    </div>
+    
+</div>
+
+      
 
       <div class="vf-body">
         <div class="vf-grid">
@@ -225,12 +229,46 @@ embl-grid embl-grid--has-sidebar
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-body"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-grid"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Group container here<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-body vf-u-background-color-gray-bright"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay vf-u-background-color-green"</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__header"</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>Häring Group<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__navigation vf-inlay__navigation--site"</span>&gt;</span>
+          {{render '@vf-navigation--site'}}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content vf-inlay__content--main"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content vf-inlay__content--additional"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+
     <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
 
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-grid embl-grid--has-centered-content vf-u-background-color-white"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        {{&gt; '@vf-content'}}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-body"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container | embl-grid embl-grid--has-sidebar"</span>&gt;</span>
 
       {{&gt; '@vf-section-header' section-title='Latest Press Releases'}}
@@ -485,7 +523,7 @@ embl-grid embl-grid--has-sidebar
     </li>
     
     <li class="Meta-item">
-        <strong class="Meta-key">References <em class="Meta-count">(6)</em>:</strong>
+        <strong class="Meta-key">References <em class="Meta-count">(7)</em>:</strong>
         <span class="Meta-value Meta-value--linkList">
         
             <a href="vf-no-js.html">@<span>vf-no-js</span></a>, 
@@ -493,6 +531,8 @@ embl-grid embl-grid--has-sidebar
             <a href="vf-favicon.html">@<span>vf-favicon</span></a>, 
         
             <a href="embl-content-meta-properties.html">@<span>embl-content-meta-properties</span></a>, 
+        
+            <a href="vf-content.html">@<span>vf-content</span></a>, 
         
             <a href="vf-section-header.html">@<span>vf-section-header</span></a>, 
         
