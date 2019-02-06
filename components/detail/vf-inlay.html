@@ -160,31 +160,38 @@ embl-grid embl-grid--has-sidebar
   <pre class="vf-code-example__pre">
 
 
-<span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay vf-u-background-color-green"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-body"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay vf-u-background-color-gray-bright"</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__header"</span>&gt;</span>
-    
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>Häring Group<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__header vf-u-background-color-green"</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>Häring Group<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__navigation vf-inlay__navigation--site"</span>&gt;</span>
-      {{render '@vf-navigation--main'}}
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__navigation vf-inlay__navigation--site"</span>&gt;</span>
+        {{render '@vf-navigation--main'}}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content vf-inlay__content--main"</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content vf-u-background-color-white"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content--main"</span>&gt;</span>
+        {{&gt; '@vf-content'}}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content vf-inlay__content--additional"</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content--additional"</span>&gt;</span>
+        {{&gt; '@vf-box'}}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
 
-<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 
   </pre>
@@ -393,7 +400,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">display</span>: grid;
   <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   <span class="hljs-comment">/* stylelint-disable  declaration-colon-space-after, indentation */</span>
-  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>) [main-start] <span class="hljs-built_in">minmax</span>(auto, 47.5em) <span class="hljs-built_in">minmax</span>(18.125em, auto) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>);
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) <span class="hljs-built_in">minmax</span>(auto, 76.5em) <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
   <span class="hljs-comment">/* stylelint-enable */</span>
 }
 
@@ -407,12 +414,6 @@ embl-grid embl-grid--has-sidebar
   }
 }
 
-@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">480px</span>) {
-  <span class="hljs-selector-class">.vf-inlay</span> {
-    <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
-  }
-}
-
 @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
   <span class="hljs-selector-class">.vf-inlay</span> {
     <span class="hljs-attribute">--page-grid-gap</span>: <span class="hljs-number">36px</span>;
@@ -421,7 +422,7 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-selector-class">.vf-inlay__header</span> {
   <span class="hljs-attribute">display</span>: grid;
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
   <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
   <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>) <span class="hljs-built_in">minmax</span>(auto, 47.5em) <span class="hljs-built_in">minmax</span>(18.125em, auto) <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>);
   <span class="hljs-comment">/* stylelint-enable */</span>
@@ -441,14 +442,23 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">18px</span>;
 }
 
+<span class="hljs-selector-class">.vf-inlay__content</span> {
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">36px</span>;
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>) [main-start] <span class="hljs-built_in">minmax</span>(auto, 100%) <span class="hljs-built_in">minmax</span>(18.125em, auto) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>);
+  <span class="hljs-comment">/* stylelint-enable */</span>
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
+}
+
 <span class="hljs-selector-class">.vf-inlay__content--main</span> {
   <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-built_in">var</span>(--page-grid-gap);
 }
 
 @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1100px</span>) {
   <span class="hljs-selector-class">.vf-inlay__content--main</span> {
     <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
-    <span class="hljs-attribute">margin-right</span>: <span class="hljs-built_in">var</span>(--page-grid-gap);
   }
 }
 
@@ -459,7 +469,6 @@ embl-grid embl-grid--has-sidebar
 @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1100px</span>) {
   <span class="hljs-selector-class">.vf-inlay__content--additional</span> {
     <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">3</span> / <span class="hljs-number">4</span>;
-    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">350px</span>;
   }
 }
 </pre>
@@ -474,7 +483,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-inlay/vf-inlay.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">1.6 KB</span>
+        <span class="Meta-value">1.8 KB</span>
     </section>
     
   
@@ -514,14 +523,11 @@ embl-grid embl-grid--has-sidebar
   grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   <span class="hljs-comment">/* stylelint-disable  declaration-colon-space-after, indentation */</span>
   grid-template-<span class="hljs-attribute">columns</span>:
-    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+    minmax(var(--page-grid-gap), auto)
 
-    [main-start]
-      minmax(auto, <span class="hljs-number">47.5em</span>)
-      minmax(<span class="hljs-number">18.125em</span>, auto)
-    [main-end]
+    minmax(auto, <span class="hljs-number">76.5em</span>)
 
-    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+    minmax(var(--page-grid-gap), auto)
   ;
   <span class="hljs-comment">/* stylelint-enable */</span>
 
@@ -537,7 +543,7 @@ embl-grid embl-grid--has-sidebar
   }
 
   @<span class="hljs-keyword">media</span> (min-width: 480px) {
-    grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+    <span class="hljs-comment">// grid-column: 2 / -2;</span>
   }
 
   @<span class="hljs-keyword">media</span> (min-width: 1024px) {
@@ -547,7 +553,7 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-selector-class">.vf-inlay__header</span> {
   <span class="hljs-attribute">display</span>: grid;
-  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
   <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
   grid-template-<span class="hljs-attribute">columns</span>:
     minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
@@ -577,13 +583,29 @@ embl-grid embl-grid--has-sidebar
   }
 }
 
+<span class="hljs-selector-class">.vf-inlay__content</span> {
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">36px</span>;
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
+  grid-template-<span class="hljs-attribute">columns</span>:
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+    [main-start]
+      minmax(auto, <span class="hljs-number">100%</span>)
+      minmax(<span class="hljs-number">18.125em</span>, auto)
+    [main-end]
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+  ;
+  <span class="hljs-comment">/* stylelint-enable */</span>
+  grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
+}
 <span class="hljs-selector-class">.vf-inlay__content--main</span> {
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
 
   @<span class="hljs-keyword">media</span> (min-width: 1100px) {
     grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
-    <span class="hljs-attribute">margin-right</span>: var(--page-grid-gap);
   }
+
+  <span class="hljs-attribute">padding-right</span>: var(--page-grid-gap);
 }
 
 <span class="hljs-selector-class">.vf-inlay__content--additional</span> {
@@ -591,7 +613,6 @@ embl-grid embl-grid--has-sidebar
 
   @<span class="hljs-keyword">media</span> (min-width: 1100px) {
     grid-column: <span class="hljs-number">3</span> / <span class="hljs-number">4</span>;
-    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">350px</span>;
   }
 }
 </pre>
@@ -606,7 +627,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-inlay/vf-inlay.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">1.7 KB</span>
+        <span class="Meta-value">2 KB</span>
     </section>
     
   
@@ -661,10 +682,14 @@ embl-grid embl-grid--has-sidebar
     </li>
     
     <li class="Meta-item">
-        <strong class="Meta-key">References <em class="Meta-count">(1)</em>:</strong>
+        <strong class="Meta-key">References <em class="Meta-count">(3)</em>:</strong>
         <span class="Meta-value Meta-value--linkList">
         
-            <a href="vf-navigation--main.html">@<span>vf-navigation--main</span></a>
+            <a href="vf-navigation--main.html">@<span>vf-navigation--main</span></a>, 
+        
+            <a href="vf-content.html">@<span>vf-content</span></a>, 
+        
+            <a href="vf-box.html">@<span>vf-box</span></a>
         
         </span>
     </li class="Meta-item">
