@@ -38,12 +38,12 @@
   grid-column: 2 / -2;
   /* stylelint-disable declaration-colon-space-after, indentation */
   grid-template-columns:
-    minmax(var(--page-grid-gap), 60px)
+    minmax(var(--page-grid-gap), auto)
 
       minmax(auto, 47.5em)
       minmax(18.125em, auto)
 
-    minmax(var(--page-grid-gap), 60px)
+    minmax(var(--page-grid-gap), auto)
   ;
   /* stylelint-enable */
 }
@@ -70,27 +70,24 @@
   display: grid;
   /* stylelint-disable declaration-colon-space-after, indentation */
   grid-template-columns:
-    minmax(var(--page-grid-gap), 60px)
+    minmax(var(--page-grid-gap), auto)
     [main-start]
       minmax(auto, 100%)
       minmax(18.125em, auto)
     [main-end]
-    minmax(var(--page-grid-gap), 60px)
+    minmax(var(--page-grid-gap), auto)
   ;
   /* stylelint-enable */
   grid-column: 2 / 3;
-  padding-right: minmax(var(--page-grid-gap), 60px);
-  padding-left: minmax(var(--page-grid-gap), 60px);
-
 }
 .vf-inlay__content--main {
   grid-column: 2 / -2;
 
   @media (min-width: 1100px) {
     grid-column: 2 / 3;
-    // padding-right: minmax(var(--page-grid-gap), 60px);
-    // padding-left: minmax(var(--page-grid-gap), 60px);
   }
+
+  padding-right: var(--page-grid-gap);
 }
 
 .vf-inlay__content--additional {
