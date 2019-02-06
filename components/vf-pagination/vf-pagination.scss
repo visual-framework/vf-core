@@ -1,0 +1,51 @@
+// vf-pagination
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'vf-pagination.variables.scss';
+
+.vf-pagination {
+
+}
+
+.vf-pagination__list {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(24px, 1fr) );
+  list-style-type: none;
+  padding-left: 0;
+}
+.vf-pagination__item {
+  padding: 4px 8px;
+  text-align: center;
+
+  &:hover {
+    background-color: set-color(vf-color-gray);
+    .vf-pagination__link {
+      color: set-color(vf-color-white);
+    }
+  }
+}
+.vf-pagination__item--is-active {
+  background-color: set-color(vf-color-gray);
+
+  .vf-pagination__link {
+    color: set-color(vf-color-white);
+  }
+
+  &:hover {
+    background-color: set-color(vf-color-gray-dark);
+  }
+}
+
+.vf-pagination__link {
+  @include set-type(body--r, $custom-margin-bottom: 0);
+
+  color: set-color(vf-color-gray);
+  display: block;
+  text-decoration: none;
+}
