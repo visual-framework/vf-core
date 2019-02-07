@@ -7,3 +7,14 @@
     }
   }
 }
+
+
+@mixin ui-color-modifiers($attribute: 'color', $prefix: '-') {
+
+  @each $name, $hex in $vf-ui-colors-map {
+    $name: str-replace($name, 13);
+    &#{$prefix}#{$name} {
+      #{$attribute}: $hex;
+    }
+  }
+}
