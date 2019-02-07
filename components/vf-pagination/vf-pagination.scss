@@ -11,6 +11,7 @@
 
 .vf-pagination__list {
   display: flex;
+  justify-content: space-between;
   list-style-type: none;
   padding-left: 0;
 }
@@ -28,6 +29,7 @@
 .vf-pagination__item--is-active {
   background-color: set-color(vf-color-gray);
 
+  .vf-pagination__label,
   .vf-pagination__link {
     color: set-color(vf-color-white);
   }
@@ -37,6 +39,7 @@
   }
 }
 
+.vf-pagination__label,
 .vf-pagination__link {
   @include set-type(body--r, $custom-margin-bottom: 0);
 
@@ -44,4 +47,12 @@
   display: block;
   padding: 4px 8px;
   text-decoration: none;
+}
+
+.vf-pagination__item--jump-back {
+  border-right: 1px solid set-color(vf-color-gray-bright);
+}
+
+.vf-pagination__item--jump-forward {
+  border-left: 1px solid set-color(vf-color-gray-bright);
 }
