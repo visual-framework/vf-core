@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="../../local.css?cachebust=1.2.0" type="text/css">
 
 
-<title>Pagination | Visual Framework 2.0</title>
+<title>Pagination: Expanded | Visual Framework 2.0</title>
 
 </head>
 <body>
@@ -57,14 +57,14 @@ embl-grid embl-grid--has-sidebar
     
     
 
-<div class="Pen" data-behaviour="pen" id="pen-74a4dbe7c7b1fd98ae4d7eabd15372e3">
+<div class="Pen" data-behaviour="pen" id="pen-60753bc1042acf8e6a91123c4300bc16">
 
     
 
     <div class="vf-body">
 <header class="vf-grid vf-page-header | vf-u-padding-l">
   <h1 class="vf-page-header__heading | vf-text vf-text--heading-l vf-text--has-tag">
-    Pagination
+    Pagination: Expanded
     
 
 
@@ -111,11 +111,9 @@ embl-grid embl-grid--has-sidebar
             
 
               
-                
-                  <a class="vf-tabs__link" href="vf-pagination--expanded.html">
-                    Expanded
-                  </a>
-                 
+                <a class="vf-tabs__link is-active" href="#is-active">
+                  Expanded
+                </a>
                
 
             
@@ -149,13 +147,13 @@ embl-grid embl-grid--has-sidebar
   </div>
 </div>
 
-<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-74a4dbe7c7b1fd98ae4d7eabd15372e3">
+<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-60753bc1042acf8e6a91123c4300bc16">
     <div class="Preview-wrapper" data-role="resizer-disabled">
       
        <iframe
           class="Preview-iframe"
           data-role="window"
-          src="../preview/vf-pagination.html"
+          src="../preview/vf-pagination--expanded.html"
           sandbox="allow-same-origin allow-scripts allow-forms"
 
           marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
@@ -167,12 +165,12 @@ embl-grid embl-grid--has-sidebar
         <div class="vf-grid">
           <p class="vf-figure__caption">
             Open the above preview in a new window:
-            <a data-no-pjax href="../preview/vf-pagination.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+            <a data-no-pjax href="../preview/vf-pagination--expanded.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
 </svg>
 </a>
-            <a data-no-pjax href="../render/vf-pagination.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+            <a data-no-pjax href="../render/vf-pagination--expanded.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
 </svg>
@@ -218,7 +216,59 @@ embl-grid embl-grid--has-sidebar
   <pre class="vf-code-example__pre">
 
 
-This page intentionally left blank. See the pattern variants.
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text--body vf-text--body-r"</span>&gt;</span>
+    For when there are many pages and a need to filter past unwanted sections, such as long alphabetical lists.
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Pagination"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__list"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item vf-pagination__item--jump-back"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__link"</span>&gt;</span>
+        First <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span> page<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__label"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>Previous pages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> ...
+            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__link"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>Page <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>6
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__link"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>Page <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>7
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item vf-pagination__item--is-active"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__label"</span> <span class="hljs-attr">aria-current</span>=<span class="hljs-string">"page"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>Page <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>8
+            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__link"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>Page <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>9
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__link"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>Page <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>10
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__label"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>Next pages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> ...
+            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item vf-pagination__item--jump-forward"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__link"</span>&gt;</span>
+        Last <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span> page<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 
   </pre>
   
@@ -254,12 +304,6 @@ This page intentionally left blank. See the pattern variants.
       
       <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--23ab3d2428f4c4f1acf28a6bd502fb0a">package.json</a>
-      </li>
-      
-    
-      
-      <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--2ec8e753e7e56ceca48b8924ad8c68da">vf-pagination--full.scss</a>
       </li>
       
     
@@ -420,35 +464,6 @@ This page intentionally left blank. See the pattern variants.
 
         <strong class="Meta-key">Size:</strong>
         <span class="Meta-value">928 Bytes</span>
-    </section>
-    
-  
-    
-    <section class="vf-tabs__section" id="vf-tabs__section--2ec8e753e7e56ceca48b8924ad8c68da">
-    <!--  -->
-        <div class="FileBrowser-itemPreview">
-          
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-pagination__item--pages-per</span> {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>;
-
-  &amp;:hover {
-    <span class="hljs-attribute">background</span>: unset;
-  }
-}
-</pre>
-          </code>
-          
-        </div>
-
-        <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/vf-pagination/vf-pagination--full.scss"><span>/components/raw/vf-pagination/vf-pagination--full.scss</span></a></span>
-
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-pagination/vf-pagination--full.scss</span>
-
-        <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">91 Bytes</span>
     </section>
     
   
@@ -715,14 +730,14 @@ vfPatternName();
 <ul class="Meta">
     <li class="Meta-item">
         <strong class="Meta-key">Handle:</strong>
-        <span class="Meta-value">@vf-pagination</span>
+        <span class="Meta-value">@vf-pagination--expanded</span>
     </li>
     
     
     
     <li class="Meta-item">
         <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-pagination/vf-pagination.hbs</span>
+        <span class="Meta-value">components/vf-pagination/vf-pagination--expanded.hbs</span>
     </li>
     
     
@@ -1547,7 +1562,7 @@ vfPatternName();
       
         
         <p class="vf-text">
-          <a class="vf-link" href="">Pagination</a>
+          <a class="vf-link" href="vf-pagination.html">Pagination</a>
           
 
 

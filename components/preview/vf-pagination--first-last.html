@@ -7,7 +7,7 @@
   // Detect if JS is on and swap vf-no-js for vf-js on the html element
   (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
   </script>
-  <title>Pagination: Default | Visual Framework 2.0</title>
+  <title>Pagination: First Last | Visual Framework 2.0</title>
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
@@ -25,7 +25,40 @@
 <body class="vf-body">
   <div class="vf-grid">
     <div class="vf-pattern__container">
-      This page intentionally left blank. See the pattern variants.
+      <p class="vf-text--body vf-text--body-r">
+  Use this if there are many pages of results where users may go deep into the
+  result set, and want to know the total depth of results.
+</p>
+
+<nav class="vf-pagination" aria-label="Pagination">
+  <ul class="vf-pagination__list">
+    <li class="vf-pagination__item vf-pagination__item--jump-back">
+      <a href="#" class="vf-pagination__link">
+        First<span class="vf-sr-only"> page</span> (1)
+      </a>
+    </li>
+    <li class="vf-pagination__item vf-pagination__item--previous-page">
+      <a href="#" class="vf-pagination__link">
+        Previous<span class="vf-sr-only"> page</span> (5)
+      </a>
+    </li>
+    <li class="vf-pagination__item vf-pagination__item--is-active">
+      <span class="vf-pagination__label" aria-current="page">
+        <span class="vf-sr-only">Page </span>6
+      </span>
+    </li>
+    <li class="vf-pagination__item vf-pagination__item--next-page">
+      <a href="#" class="vf-pagination__link">
+        Next<span class="vf-sr-only"> page</span> (7)
+      </a>
+    </li>
+    <li class="vf-pagination__item vf-pagination__item--jump-forward">
+      <a href="#" class="vf-pagination__link">
+        Last<span class="vf-sr-only"> page</span> (88)
+      </a>
+    </li>
+  </ul>
+</nav>
 
     </div>
   </div>

@@ -2,6 +2,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   list-style-type: none;
   padding-left: 0;
 }
@@ -25,6 +28,7 @@
   background-color: #707372;
 }
 
+.vf-pagination__item--is-active .vf-pagination__label,
 .vf-pagination__item--is-active .vf-pagination__link {
   color: white;
 }
@@ -33,6 +37,7 @@
   background-color: #54585a;
 }
 
+.vf-pagination__label,
 .vf-pagination__link {
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -42,4 +47,22 @@
   display: block;
   padding: 4px 8px;
   text-decoration: none;
+}
+
+.vf-pagination__item--jump-back {
+  border-right: 1px solid #b9b3a8;
+}
+
+.vf-pagination__item--jump-forward {
+  border-left: 1px solid #b9b3a8;
+}
+
+.vf-pagination__item--pages-per {
+  -webkit-box-flex: 2;
+      -ms-flex: 2 1 0px;
+          flex: 2 1 0;
+}
+
+.vf-pagination__item--pages-per:hover {
+  background: unset;
 }
