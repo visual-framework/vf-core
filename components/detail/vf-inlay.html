@@ -443,12 +443,12 @@ embl-grid embl-grid--has-sidebar
 }
 
 <span class="hljs-selector-class">.vf-inlay__content</span> {
-  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">36px</span>;
   <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
   <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
   <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>) [main-start] <span class="hljs-built_in">minmax</span>(auto, 100%) <span class="hljs-built_in">minmax</span>(18.125em, auto) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>);
   <span class="hljs-comment">/* stylelint-enable */</span>
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">36px</span>;
 }
 
 <span class="hljs-selector-class">.vf-inlay__content--main</span> {
@@ -584,8 +584,8 @@ embl-grid embl-grid--has-sidebar
 }
 
 <span class="hljs-selector-class">.vf-inlay__content</span> {
-  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">36px</span>;
   <span class="hljs-attribute">display</span>: grid;
+  grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
   <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
   grid-template-<span class="hljs-attribute">columns</span>:
     minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
@@ -596,16 +596,16 @@ embl-grid embl-grid--has-sidebar
     minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
   ;
   <span class="hljs-comment">/* stylelint-enable */</span>
-  grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">36px</span>;
 }
+
 <span class="hljs-selector-class">.vf-inlay__content--main</span> {
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  <span class="hljs-attribute">padding-right</span>: var(--page-grid-gap);
 
   @<span class="hljs-keyword">media</span> (min-width: 1100px) {
     grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
   }
-
-  <span class="hljs-attribute">padding-right</span>: var(--page-grid-gap);
 }
 
 <span class="hljs-selector-class">.vf-inlay__content--additional</span> {
