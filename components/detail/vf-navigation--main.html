@@ -365,6 +365,9 @@ embl-grid embl-grid--has-sidebar
 
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-navigation.variables.scss'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-navigation.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-navigation--global.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-navigation--main.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-navigation--additional.scss'</span>;
 </pre>
           </code>
           
@@ -377,7 +380,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-navigation/index.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">330 Bytes</span>
+        <span class="Meta-value">446 Bytes</span>
     </section>
     
   
@@ -618,6 +621,154 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-selector-class">.vf-navigation__heading</span> {
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 }
+
+<span class="hljs-selector-class">.vf-navigation--global</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span> {
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">24px</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--global</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-class">.vf-navigation--global</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--global</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#282d23</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--global</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__list</span> {
+  <span class="hljs-attribute">display</span>: block;
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
+  <span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__list</span> {
+    <span class="hljs-attribute">-webkit-box-align</span>: center;
+        <span class="hljs-attribute">-ms-flex-align</span>: center;
+            <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">display</span>: -webkit-box;
+    <span class="hljs-attribute">display</span>: -ms-flexbox;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  }
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__item</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.333</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-class">.is-active</span> {
+  <span class="hljs-attribute">background-color</span>: white;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-class">.is-active</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#282d23</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">-webkit-box-align</span>: center;
+      <span class="hljs-attribute">-ms-flex-align</span>: center;
+          <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">background-color</span>: white;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#282d23</span>;
+  <span class="hljs-attribute">display</span>: block;
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
+  <span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__item</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(var(--page-grid-gap) / <span class="hljs-number">2</span>);
+  }
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
+  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: white;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: white;
+}
+
+<span class="hljs-selector-class">.vf-navigation--additional</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">0px</span> solid <span class="hljs-number">#707372</span>;
+  <span class="hljs-attribute">border-width</span>: <span class="hljs-number">1px</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-webkit-box-sizing</span>: border-box;
+          <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">text-transform</span>: uppercase;
+}
+
+<span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__heading</span> {
+  <span class="hljs-attribute">color</span>: white;
+}
+
+<span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__list</span> {
+  <span class="hljs-attribute">margin-left</span>: auto;
+}
+
+<span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span> {
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">24px</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fafafa</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: white;
+}
+
+<span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
+}
 </pre>
           </code>
           
@@ -630,7 +781,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-navigation/vf-navigation.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">1.4 KB</span>
+        <span class="Meta-value">4.5 KB</span>
     </section>
     
   
@@ -880,6 +1031,8 @@ embl-grid embl-grid--has-sidebar
 
 
         </p>
+        
+      
         
       
         
@@ -1195,6 +1348,8 @@ embl-grid embl-grid--has-sidebar
 
 
         </p>
+        
+      
         
       
         
@@ -1545,6 +1700,21 @@ embl-grid embl-grid--has-sidebar
         
       
         
+        <p class="vf-text">
+          <a class="vf-link" href="vf-pagination.html">Pagination</a>
+          
+
+
+
+<span class="vf-badge vf-badge--square" style="background-color: #DC0A28;" title="alhpa"></span>
+
+
+
+
+        </p>
+        
+      
+        
       
         
       
@@ -1848,6 +2018,8 @@ embl-grid embl-grid--has-sidebar
         
       
         
+      
+        
         <p class="vf-text">
           <a class="vf-link" href="vf-summary-container.html">Summary Container</a>
           
@@ -2052,6 +2224,8 @@ embl-grid embl-grid--has-sidebar
       
         
       
+        
+      
     </div>
   </section>
 </section>
@@ -2095,6 +2269,8 @@ embl-grid embl-grid--has-sidebar
 
 
         </p>
+        
+      
         
       
         
@@ -2391,6 +2567,8 @@ embl-grid embl-grid--has-sidebar
       
         
       
+        
+      
     </div>
   </section>
 </section>
@@ -2567,6 +2745,8 @@ embl-grid embl-grid--has-sidebar
       
         
       
+        
+      
     </div>
   </section>
 </section>
@@ -2606,6 +2786,8 @@ embl-grid embl-grid--has-sidebar
 
 
         </p>
+        
+      
         
       
         
@@ -2919,6 +3101,8 @@ embl-grid embl-grid--has-sidebar
       
         
       
+        
+      
     </div>
   </section>
 </section>
@@ -3103,6 +3287,8 @@ embl-grid embl-grid--has-sidebar
 
 
         </p>
+        
+      
         
       
         
