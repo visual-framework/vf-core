@@ -424,7 +424,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">display</span>: grid;
   <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
   <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
-  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>) <span class="hljs-built_in">minmax</span>(auto, 47.5em) <span class="hljs-built_in">minmax</span>(18.125em, auto) <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>);
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>) [main-start] auto <span class="hljs-built_in">minmax</span>(auto, 18.125em) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>);
   <span class="hljs-comment">/* stylelint-enable */</span>
 }
 
@@ -556,12 +556,12 @@ embl-grid embl-grid--has-sidebar
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
   <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
   grid-template-<span class="hljs-attribute">columns</span>:
-    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
-
-      minmax(auto, <span class="hljs-number">47.5em</span>)
-      minmax(<span class="hljs-number">18.125em</span>, auto)
-
-    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+    minmax(var(--page-grid-gap),<span class="hljs-number">60px</span>)
+    [main-start]
+      auto
+      minmax(auto, <span class="hljs-number">18.125em</span>)
+    [main-end]
+    minmax(var(--page-grid-gap),<span class="hljs-number">60px</span>)
   ;
   <span class="hljs-comment">/* stylelint-enable */</span>
 }
