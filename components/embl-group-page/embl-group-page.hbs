@@ -38,11 +38,11 @@
       </div>
   </section>
 
-  <div class="vf-body vf-u-background-color-gray-bright">
+  <div class="vf-body ">
 
-    <section class="vf-inlay vf-u-background-color-green">
+    <section class="vf-inlay vf-u-background-color-gray-bright">
 
-      <header class="vf-inlay__header">
+      <header class="vf-inlay__header vf-u-background-color-green">
 
         <div class="vf-masthead">
           <div class="vf-masthead__inner">
@@ -58,26 +58,38 @@
 
       </header>
 
-      <main class="vf-inlay__content vf-inlay__content--main">
-      </main>
+      <section class="vf-inlay__content vf-u-background-color-white">
 
-      <aside class="vf-inlay__content vf-inlay__content--additional">
-      </aside>
+        <div class="vf-grid">
+          {{> '@vf-banner--inline'}}
+        </div>
+
+
+        <main class="vf-inlay__content--main">
+          <h1>The Häring group aims to understand the molecular machinery that organises eukaryotic genomes. <a href="http://vfthemeprototype.lndo.site/about/">Read more about the Häring group</a></h1>  </main>
+        </main>
+
+        <aside class="vf-inlay__content--additional">
+          [group leader]
+        </aside>
+
+        <hr class="vf-divider" />
+      </section>
+
+      <section class="vf-inlay__content vf-u-background-color-white">
+        <main class="vf-inlay__content--main">
+          {{> '@vf-content'}}
+        </main>
+
+        <aside class="vf-inlay__content--additional">
+          {{> '@vf-box'}}
+        </aside>
+
+      </section>
 
     </section>
 
 
-    <section class="embl-grid embl-grid--has-centered-content vf-u-background-color-white">
-      <div></div>
-      <div>
-        {{> '@vf-content'}}
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="vf-body">
     <section class="vf-news-container | embl-grid embl-grid--has-sidebar">
 
       {{> '@vf-section-header' section-title='Latest Press Releases'}}

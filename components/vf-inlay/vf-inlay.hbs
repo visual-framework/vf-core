@@ -1,25 +1,32 @@
-<section class="vf-inlay vf-u-background-color-green">
+<div class="vf-body">
+  <section class="vf-inlay vf-u-background-color-gray-bright">
 
-  <header class="vf-inlay__header">
+    <header class="vf-inlay__header vf-u-background-color-green">
 
-    <div class="vf-masthead">
-      <div class="vf-masthead__inner">
-        <div class="vf-masthead__title">
-          <h1 class="vf-masthead__heading">Häring Group</h1>
+      <div class="vf-masthead">
+        <div class="vf-masthead__inner">
+          <div class="vf-masthead__title">
+            <h1 class="vf-masthead__heading">Häring Group</h1>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="vf-inlay__navigation vf-inlay__navigation--main">
-      {{render '@vf-navigation--main'}}
-    </div>
+      <div class="vf-inlay__navigation vf-inlay__navigation--main">
+        {{render '@vf-navigation--main'}}
+      </div>
 
-  </header>
+    </header>
 
-  <main class="vf-inlay__content vf-inlay__content--main">
-  </main>
+    <section class="vf-inlay__content vf-u-background-color-white">
+      <main class="vf-inlay__content--main">
+        {{> '@vf-content'}}
+      </main>
 
-  <aside class="vf-inlay__content vf-inlay__content--additional">
-  </aside>
+      <aside class="vf-inlay__content--additional">
+        {{> '@vf-box'}}
+      </aside>
+    </section>
 
-</section>
+  </section>
+
+</div>
