@@ -53,8 +53,7 @@
     "stylelint-order": "^2.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
-    "precommit": "gulp scss-lint"
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -71,5 +70,10 @@
     "library"
   ],
   "author": "Stuart Robson <stu@alwaystwisted.com> (http://www.alwaystwisted.com/)",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "husky": {
+    "hooks": {
+      "pre-commit": "gulp scss-lint"
+    }
+  }
 }
