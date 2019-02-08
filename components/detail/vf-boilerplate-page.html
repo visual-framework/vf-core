@@ -165,7 +165,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1, minimum-scale=1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span>&gt;</span>
 
   {{&gt; @vf-favicon}}
-  {{&gt; @embl-content-meta-properties meta-who="Group Jane" meta-where="Barcelona" meta-what="research,cancer" }}
+  {{&gt; @embl-content-meta-properties meta-who="Group Jane" meta-where="Barcelona" meta-what="research,cancer" meta-active="what"}}
 
   {{#if _config.project.environment.local }}
   <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ path '/css/styles.css' }}"</span>&gt;</span>
@@ -181,16 +181,16 @@ embl-grid embl-grid--has-sidebar
 
   <span class="hljs-comment">&lt;!-- dismissible banner --&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--bottom vf-banner--phase"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"Close notice"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content | "</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text vf-text--heading-r"</span>&gt;</span>
             Don't need to customise the EMBL Design Language for Websites?
           <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>Here's the core CSS and JS you need. Don't forget to <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>consult the pattern library<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-      {{~#codeblockhtml~}}
+{{~#codeblockhtml~}}
 <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/css/styles.css"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/scripts/scripts.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-      {{/codeblockhtml}}
+{{/codeblockhtml}}
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>

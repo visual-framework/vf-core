@@ -379,7 +379,7 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-comment">// pattern specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">"vf-banner.variables.scss"</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-banner.variables.scss'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-banner.scss'</span>;
 
 <span class="hljs-comment">// positional banners</span>
@@ -812,22 +812,21 @@ embl-grid embl-grid--has-sidebar
     vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + <span class="hljs-string">'_'</span> + banner.vfJsBannerCookieVersion;
   }
 
-  <span class="hljs-keyword">if</span> (vfBannerCookieNameAndVersion != <span class="hljs-string">"null"</span>) {
-    <span class="hljs-comment">// utility to reset cookie when developing</span>
-    <span class="hljs-comment">// console.warn('vf-banner: vfBannerReset cookie reset override is on.');</span>
-    <span class="hljs-comment">// vfBannerReset(vfBannerCookieNameAndVersion);</span>
+  <span class="hljs-comment">// utility to reset cookie when developing</span>
+  <span class="hljs-comment">// console.warn('vf-banner: vfBannerReset cookie reset override is on.');</span>
+  <span class="hljs-comment">// vfBannerReset(vfBannerCookieNameAndVersion);</span>
 
-    <span class="hljs-comment">// if blocking or dismissible, allow the user to close it, store a cookie (if specified)</span>
-    <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span> || banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>) {
-
-      <span class="hljs-comment">// On click: close banner, pass any cooke name (or `null`)</span>
-      <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonText) {
-        targetBanner.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-          vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
-        }, <span class="hljs-literal">false</span>);
-      }
+  <span class="hljs-comment">// if blocking or dismissible, allow the user to close it, store a cookie (if specified)</span>
+  <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span> || banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>) {
+    <span class="hljs-comment">// On click: close banner, pass any cooke name (or `null`)</span>
+    <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonText) {
+      targetBanner.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
+      }, <span class="hljs-literal">false</span>);
     }
+  }
 
+  <span class="hljs-keyword">if</span> (vfBannerCookieNameAndVersion != <span class="hljs-string">"null"</span>) {
     <span class="hljs-comment">// if banner has been previously accepted</span>
     <span class="hljs-keyword">if</span> (vfBannerGetCookie(vfBannerCookieNameAndVersion) === <span class="hljs-string">'true'</span>) {
       <span class="hljs-comment">// banner has been accepted, close</span>
