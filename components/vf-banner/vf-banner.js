@@ -184,22 +184,21 @@ function vfBannerInsert(banner,bannerId,scope) {
     vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + '_' + banner.vfJsBannerCookieVersion;
   }
 
-  if (vfBannerCookieNameAndVersion != "null") {
-    // utility to reset cookie when developing
-    // console.warn('vf-banner: vfBannerReset cookie reset override is on.');
-    // vfBannerReset(vfBannerCookieNameAndVersion);
+  // utility to reset cookie when developing
+  // console.warn('vf-banner: vfBannerReset cookie reset override is on.');
+  // vfBannerReset(vfBannerCookieNameAndVersion);
 
-    // if blocking or dismissible, allow the user to close it, store a cookie (if specified)
-    if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
-
-      // On click: close banner, pass any cooke name (or `null`)
-      if (banner.vfJsBannerButtonText) {
-        targetBanner.addEventListener('click', function(){
-          vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
-        }, false);
-      }
+  // if blocking or dismissible, allow the user to close it, store a cookie (if specified)
+  if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
+    // On click: close banner, pass any cooke name (or `null`)
+    if (banner.vfJsBannerButtonText) {
+      targetBanner.addEventListener('click', function(){
+        vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
+      }, false);
     }
+  }
 
+  if (vfBannerCookieNameAndVersion != "null") {
     // if banner has been previously accepted
     if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
       // banner has been accepted, close
