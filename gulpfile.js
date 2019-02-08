@@ -39,10 +39,9 @@ const prettier = require('gulp-prettier');
 const postcss     = require('gulp-postcss');
 const reporter    = require('postcss-reporter');
 const syntax_scss = require('postcss-scss');
-const stylelint   = require('stylelint');
+const gulpStylelint = require('gulp-stylelint');
 
 // Image things
-
 const svgo = require('gulp-svgo');
 
 // JS Stuff
@@ -105,81 +104,20 @@ gulp.task('css', function() {
 });
 
 // Sass Lint
-gulp.task("scss-lint", function() {
+gulp.task("scss-lint", function lintCssTask() {
 
-  // Stylelint config rules
-  var stylelintConfig = {
-    "plugins": [
-      "stylelint-order",
-      "stylelint-scss"
-    ],
-    "extends": [
-      "./node_modules/prettier-stylelint/config.js"
-    ],
-    "rules": {
-      "indentation": 2,
-      "string-quotes": "single",
-      "order/order": [
-        [
-        "custom-properties",
-        "dollar-variables",
-        {
-        type: "at-rule",
-        name: "include",
-        parameter: "set-*",
-        message: "Stop being lazy and flatten your classnames"
-        },
-        "declarations",
-        "rules",
-        {
-        	type: "at-rule",
-        	name: "media",
-        	hasBlock: true
-        }
-      ]
-      ],
-      "order/properties-alphabetical-order": true,
-      "block-no-empty": true,
-      "color-no-invalid-hex": true,
-      "declaration-colon-space-after": "always",
-      "declaration-colon-space-before": "never",
-      "function-comma-space-after": "always",
-      "media-feature-colon-space-after": "always",
-      "media-feature-colon-space-before": "never",
-      "media-feature-name-no-vendor-prefix": true,
-      "max-empty-lines": 3,
-      "max-nesting-depth": 3,
-      "selector-nested-pattern": [ "^(?!&__|&--|&-|&_).*", {
-        "message": "Stop being lazy and flatten your classnames",
-        "severity": "warning"
-      } ],
-      "number-leading-zero": "never",
-      "number-no-trailing-zeros": true,
-      "property-no-vendor-prefix": true,
-      "selector-list-comma-space-before": "never",
-      "selector-list-comma-newline-after": "always",
-      "value-no-vendor-prefix": true,
-      // "indentation": [ 2, {
-      //   "except": ["block"],
-      //   "message": "Please use 2 spaces for indentation. Tabs make Stuart very grumpy.",
-      //   "severity": "warning"
-      // } ]
-    }
-  }
-
-  var processors = [
-    stylelint(stylelintConfig),
-    reporter({
-      clearMessages: true,
-      throwError: false,
-    })
-  ];
+  // For stylelint config rules see .stylelinrc
 
   return gulp
     .src(
-      ['components/**/vf-*.scss', '!components/**/index.scss', '!assets/**/*.scss']
+      ['components/**/embl-*.scss', 'components/**/vf-*.scss', '!components/**/index.scss', '!assets/**/*.scss']
     )
-    .pipe(postcss(processors, {syntax: syntax_scss}));
+    .pipe(gulpStylelint({
+      failAfterError: true,
+      reporters: [
+        {formatter: "string", console: true}
+      ]
+    }));
 });
 
 
