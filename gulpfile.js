@@ -158,7 +158,6 @@ gulp.task("scss-lint", function() {
       "property-no-vendor-prefix": true,
       "selector-list-comma-space-before": "never",
       "selector-list-comma-newline-after": "always",
-      "string-quotes": "single",
       "value-no-vendor-prefix": true,
       // "indentation": [ 2, {
       //   "except": ["block"],
