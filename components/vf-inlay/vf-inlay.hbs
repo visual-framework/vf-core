@@ -1,32 +1,26 @@
 <div class="vf-body">
-  <section class="vf-inlay vf-u-background-color-ui-gray">
+  <div class="vf-grid">
+    <div class="vf-box">
 
-    <header class="vf-inlay__header vf-u-background-color-green">
+      <p class="vf-text vf-text--r">
+        Use this for content that should be set within other content.
+        The design on this page is not stylisitic, but structural.
+      </p>
 
-      <div class="vf-masthead">
-        <div class="vf-masthead__inner">
-          <div class="vf-masthead__title">
-            <h1 class="vf-masthead__heading">Häring Group</h1>
-          </div>
-        </div>
-      </div>
+      <section class="vf-inlay vf-u-background-color-off-white vf-u-text-color-gray-dark">
+        <section class="vf-inlay__content">
+          <main class="vf-inlay__content--full-width">
+            {{> '@vf-summary--article'}}
+          </main>
+          <main class="vf-inlay__content--main">
+            {{> '@vf-content'}}
+          </main>
+          <main class="vf-inlay__content--additional">
+            {{> '@vf-box'}}
+          </main>
+        </section>
+      </section>
 
-      <div class="vf-inlay__navigation vf-inlay__navigation--main">
-        {{render '@vf-navigation--main'}}
-      </div>
-
-    </header>
-
-    <section class="vf-inlay__content vf-u-background-color-white">
-      <main class="vf-inlay__content--main">
-        {{> '@vf-content'}}
-      </main>
-
-      <aside class="vf-inlay__content--additional">
-        {{> '@vf-box'}}
-      </aside>
-    </section>
-
-  </section>
-
+    </div>
+  </div>
 </div>
