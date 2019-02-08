@@ -133,9 +133,10 @@ function emblContentHubFetch() {
     if (typeof(vfTabs) === 'function') {
       vfTabs(targetLocation);
     }
-    if (typeof(emblBreadcrumbs) === 'function') {
-      emblBreadcrumbs(); // no scope for emblBreadcrumbs
-    }
+    // don't run breadcrumbs as part of contenthub, use case is different
+    // if (typeof(emblBreadcrumbs) === 'function') {
+    //   emblBreadcrumbs(); // no scope for emblBreadcrumbs
+    // }
   }
 
   // Enable class injection after loading contents
