@@ -1,7 +1,8 @@
 {% import "macros/render.nunj" as render %}
-<h3 class="vf-text vf-text--heading-r">Code example</h3>
+{% if not ((entity.preview == '@preview--blocks') or (entity.preview == '@preview--elements')) %}
+ <h3 class="vf-text vf-text--heading-r">Code example</h3>
 <code class="Code Code--lang-html vf-code-example">
-  {% if not entity.isCollated or entity.isVariant or entity.variants().size == 1 %}
+  {% if entity.isVariant or entity.variants().size == 1 %}
   <pre class="vf-code-example__pre">
 {% set renderedItem = render.entity(entity.render(null, renderEnv, {preview: false, collate: false},entity) | async(true)) | trim %}
 {% if renderedItem != '' %}
@@ -19,3 +20,4 @@
   {% endfor %}
   {% endif %}
 </code>
+{% endif %}
