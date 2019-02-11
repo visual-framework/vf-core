@@ -7,7 +7,7 @@
     {% else %}
     {% set variants = entity.parent.variants() %}
     {% endif %}
-    {% if variants.size > 1 and entity.isCollated == "false" %}
+    {% if variants.size > 1 and entity.preview != '@preview--blocks' and entity.preview != '@preview--elements' %}
         <div class="vf-tabs">
           <ul class="vf-tabs__list">
             <li class="vf-tabs__item">
@@ -39,15 +39,20 @@
 </div>
 
 
-{% if ((entity.preview == '@preview--blocks') or (entity.preview == '@preview--elements') or (entity.isCollated)) -%}
+{% import "macros/render.nunj" as render %}
+{% if (entity.preview == '@preview--blocks') or (entity.preview == '@preview--elements') -%}
   <div class="vf-body"><div class="vf-grid">
   <div class="vf-pattern__container">
   <!-- @preview--blocks aren't done in iframes, this allows us a bit more flexibility and to test cross-contamination -->
   {% for item in entity.variants().items() %}
     {% if item.isHidden == false %}
       <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#{{ item.handle }}" id="{{ item.handle }}">Variant {{ item.label }}</a></h3>
-      {% set rendered = item.render(null, renderEnv, { preview: withLayout, collate: withCollation }) | async(true) %}
-      {{ rendered}}
+{% set rendered = item.render(null, renderEnv, { preview: withLayout, collate: withCollation }) | async(true) %}
+{{ rendered}}
+<pre class="vf-code-example__pre">
+{{ render.entity(item.render(null, renderEnv, {preview: false, collate: false}) | async(true)) | trim }}
+</pre>
+
       <hr class="vf-divider" />
     {% endif %}
   {% endfor %}
@@ -70,18 +75,16 @@
           >
         </iframe>
         {%- endif %}
+        <div class="vf-body">
+          <div class="vf-grid">
+            <p class="vf-figure__caption">
+              Open the above preview in a new window:
+              <a data-no-pjax href="{{ path(frctl.theme.urlFromRoute('preview', { handle: entity.handle })) }}"><span>With layout</span> {% include "icons/open-in-browser.svg" %}</a>
+              <a data-no-pjax href="{{ path(frctl.theme.urlFromRoute('render', { handle: entity.handle })) }}"><span>Component only</span> {% include "icons/open-in-browser.svg" %}</a>
+            </p>
+          </div>
+        </div>
 
       </div>
   </div>
 {%- endif %}
-
-
-<div class="vf-body">
-  <div class="vf-grid">
-    <p class="vf-figure__caption">
-      Open the above preview in a new window:
-      <a data-no-pjax href="{{ path(frctl.theme.urlFromRoute('preview', { handle: entity.handle })) }}"><span>With layout</span> {% include "icons/open-in-browser.svg" %}</a>
-      <a data-no-pjax href="{{ path(frctl.theme.urlFromRoute('render', { handle: entity.handle })) }}"><span>Component only</span> {% include "icons/open-in-browser.svg" %}</a>
-    </p>
-  </div>
-</div>
