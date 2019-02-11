@@ -2,7 +2,9 @@
   display: grid;
   grid-column: main;
   grid-column-gap: var(--page-grid-gap);
+  /* stylelint-disable declaration-colon-space-after */
   grid-template-columns: calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser)) repeat(auto-fit, minmax(288px, 1fr));
+  /* stylelint-enable */
   margin-bottom: 48px;
 }
 
@@ -31,7 +33,9 @@
 @media (min-width: 1024px) {
   .embl-grid--has-centered-content {
     --page-grid-gap: 36px;
+    /* stylelint-disable declaration-colon-space-after */
     grid-template-columns: var(--embl-grid-module--prime) auto var(--embl-grid-module--prime);
+    /* stylelint-enable */
   }
 }
 
@@ -68,14 +72,18 @@
 .embl-grid--alt {
   --page-grid-gap: 0;
   background-color: #282d23;
+  color: white;
   grid-column: 1 / -1;
+  /* stylelint-disable declaration-colon-space-after */
   grid-template-columns: minmax(1em, auto) calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser)) minmax(288px, calc(76.5em - 206px)) minmax(1em, auto);
+  /* stylelint-enable */
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: white;
   position: relative;
+  /* stylelint-disable order/properties-alphabetical-order, order/order  */
   padding-top: 1.5rem;
+  /* stylelint-enable */
 }
 
 .embl-grid--alt > :first-child {
@@ -91,8 +99,8 @@
     grid-column: 2 / span 1;
   }
   .embl-grid--alt > :last-child {
-    margin-left: 16px;
     grid-column: 3;
+    margin-left: 16px;
   }
 }
 

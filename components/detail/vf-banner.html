@@ -87,92 +87,167 @@ embl-grid embl-grid--has-sidebar
     
     
     
-        <div class="vf-tabs">
-          <ul class="vf-tabs__list">
-            <li class="vf-tabs__item">
-              This pattern has variants:
-            </li>
-            
-
-              
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-banner--fixed.html">
-                    Fixed
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-banner--inline.html">
-                    Inline
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-banner--top.html">
-                    Top
-                  </a>
-                 
-               
-
-            
-          </ul>
-
-      </div>
-
-
-    
     </div>
   </div>
 </div>
 
-<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-55bfdb5dab2d2c3b2cc26e860a8bd206">
-    <div class="Preview-wrapper" data-role="resizer-disabled">
-      
-       <iframe
-          class="Preview-iframe"
-          data-role="window"
-          src="../preview/vf-banner.html"
-          sandbox="allow-same-origin allow-scripts allow-forms"
 
-          marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
-          onload="resizeIframe(this)"
-        >
-      </iframe>
 
-      <div class="vf-body">
-        <div class="vf-grid">
-          <p class="vf-figure__caption">
-            Open the above preview in a new window:
-            <a data-no-pjax href="../preview/vf-banner.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
-</svg>
-</a>
-            <a data-no-pjax href="../render/vf-banner.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
-</svg>
-</a>
-          </p>
-        </div>
-      </div>
+<div class="vf-body"><div class="vf-grid">
+  <div class="vf-pattern__container">
+  <!-- @preview--blocks aren't done in iframes, this allows us a bit more flexibility and to test cross-contamination -->
+  
+    
+  
+    
+      <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#vf-banner--fixed" id="vf-banner--fixed">Variant Fixed</a></h3>
 
-    </div>
+<!-- dismissible banner -->
+<div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
+data-vf-js-banner
+data-vf-js-banner-state="dismissible"
+data-vf-js-banner-button-text="I agree, dismiss this banner"
+data-vf-js-banner-cookie-name="MyService"
+data-vf-js-banner-cookie-version="0.1"
+data-vf-js-banner-extra-button="<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>"
+data-vf-js-banner-auto-accept="false">
+  <div class="vf-banner__content | vf-grid" data-vf-js-banner-text>
+    <p class="vf-text vf-text--body-l">
+      This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-link" href="JavaScript:Void(0);">Terms Of Use</a>.
+    </p>
+  </div>
 </div>
+
+<!-- persistent banner -->
+<!-- <div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
+data-vf-js-banner
+data-vf-js-banner-state="persistent"
+data-vf-js-banner-extra-button="<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>">
+  <div class="vf-banner__content | vf-grid" data-vf-js-banner-notice-text>
+    <p class="vf-text vf-text--body-l">
+      A persistent banner <a class="vf-link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-link" href="JavaScript:Void(0);">Terms Of Use</a>.
+    </p>
+  </div>
+</div> -->
+
+<!-- Blocking, dismissible banner -->
+<!-- <div class="vf-banner vf-banner--blocking vf-banner--notice"
+data-vf-js-banner
+data-vf-js-banner-state="blocking" data-vf-js-banner-esc-close="y"
+data-vf-js-banner-cookie-name="MyService"
+data-vf-js-banner-cookie-version="0.1">
+  <div class="vf-banner__content | vf-grid" data-vf-js-banner-notice-text>
+
+    <div class="vf-box">
+        <h2 class="vf-text vf-text--heading-l">A blocking banner</h2>
+        <p class="vf-text vf-text--body-r">This might have a richer layout. Note, this implementation is not yet feature complete.</p>
+    </div>
+
+  </div>
+</div> -->
+
+<!-- programatic banner -->
+<!-- <div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
+      data-vf-js-banner-id="32423"
+></div> -->
+
+<pre class="vf-code-example__pre">
+<span class="hljs-comment">&lt;!-- dismissible banner --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"I agree, dismiss this banner"</span> <span class="hljs-attr">data-vf-js-banner-cookie-name</span>=<span class="hljs-string">"MyService"</span> <span class="hljs-attr">data-vf-js-banner-cookie-version</span>=<span class="hljs-string">"0.1"</span>
+    <span class="hljs-attr">data-vf-js-banner-extra-button</span>=<span class="hljs-string">"&lt;a href='#'&gt;Optional button&lt;/a&gt;&lt;a target='_blank' href='#'&gt;New tab button&lt;/a&gt;"</span> <span class="hljs-attr">data-vf-js-banner-auto-accept</span>=<span class="hljs-string">"false"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content | vf-grid"</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text vf-text--body-l"</span>&gt;</span>
+            This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>Privacy Notice<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> and <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>
+                <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>Terms Of Use<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- persistent banner --&gt;</span>
+<span class="hljs-comment">&lt;!-- &lt;div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
+data-vf-js-banner
+data-vf-js-banner-state="persistent"
+data-vf-js-banner-extra-button="&lt;a href='#'&gt;Optional button&lt;/a&gt;&lt;a target='_blank' href='#'&gt;New tab button&lt;/a&gt;"&gt;
+  &lt;div class="vf-banner__content | vf-grid" data-vf-js-banner-notice-text&gt;
+    &lt;p class="vf-text vf-text--body-l"&gt;
+      A persistent banner &lt;a class="vf-link" href="JavaScript:Void(0);"&gt;Privacy Notice&lt;/a&gt; and &lt;a class="vf-link" href="JavaScript:Void(0);"&gt;Terms Of Use&lt;/a&gt;.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt; --&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Blocking, dismissible banner --&gt;</span>
+<span class="hljs-comment">&lt;!-- &lt;div class="vf-banner vf-banner--blocking vf-banner--notice"
+data-vf-js-banner
+data-vf-js-banner-state="blocking" data-vf-js-banner-esc-close="y"
+data-vf-js-banner-cookie-name="MyService"
+data-vf-js-banner-cookie-version="0.1"&gt;
+  &lt;div class="vf-banner__content | vf-grid" data-vf-js-banner-notice-text&gt;
+
+    &lt;div class="vf-box"&gt;
+        &lt;h2 class="vf-text vf-text--heading-l"&gt;A blocking banner&lt;/h2&gt;
+        &lt;p class="vf-text vf-text--body-r"&gt;This might have a richer layout. Note, this implementation is not yet feature complete.&lt;/p&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt; --&gt;</span>
+
+<span class="hljs-comment">&lt;!-- programatic banner --&gt;</span>
+<span class="hljs-comment">&lt;!-- &lt;div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
+      data-vf-js-banner-id="32423"
+&gt;&lt;/div&gt; --&gt;</span>
+</pre>
+
+      <hr class="vf-divider" />
+    
+  
+    
+      <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#vf-banner--inline" id="vf-banner--inline">Variant Inline</a></h3>
+
+<div class="vf-banner vf-banner--phase">
+  <div class="vf-banner__content">
+    <p class="vf-text--body-r">This is a new web page. <a href="" class="vf-link">Complete our quick survey</a> to help us make it better.</p>
+  </div>
+</div>
+
+<pre class="vf-code-example__pre">
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--phase"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text--body-r"</span>&gt;</span>This is a new web page. <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Complete our quick survey<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> to help us make it better.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</pre>
+
+      <hr class="vf-divider" />
+    
+  
+    
+      <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#vf-banner--top" id="vf-banner--top">Variant Top</a></h3>
+
+<div class="vf-banner vf-banner--fixed vf-banner--top vf-banner--phase"
+data-vf-js-banner
+data-vf-js-banner-state="dismissible"
+data-vf-js-banner-button-text="Close notice">
+  <div class="vf-banner__content" data-vf-js-banner-text>
+    <span class="vf-badge vf-badge--primary">BETA</span>
+    <p class="vf-text--body-r">This is the new EMBL.org <a href="" class="vf-link">Complete our quick survey</a> to help us make it better.</p>
+  </div>
+</div>
+
+<pre class="vf-code-example__pre">
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--top vf-banner--phase"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"Close notice"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-badge vf-badge--primary"</span>&gt;</span>BETA<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text--body-r"</span>&gt;</span>This is the new EMBL.org <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Complete our quick survey<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> to help us make it better.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</pre>
+
+      <hr class="vf-divider" />
+    
+  
+  </div>
+  </div></div>
+
 
 
     <div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
@@ -249,24 +324,14 @@ embl-grid embl-grid--has-sidebar
   <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
 
   
-<h3 class="vf-text vf-text--heading-r">Code example</h3>
-<code class="Code Code--lang-html vf-code-example">
-  
-  <pre class="vf-code-example__pre">
 
-
-Intentionally blank.
-
-  </pre>
-  
-</code>
 
 
 
   <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
 
   <div class="vf-grid vf-grid__col-3">
-    <div class="vf-grid__col--span-2">
+    <div class="vf-grid__col--span-3">
       
 
 
@@ -487,6 +552,7 @@ Intentionally blank.
   grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   grid-template-<span class="hljs-attribute">columns</span>: minmax(var(--page-grid-gap), auto) [main-start] minmax(<span class="hljs-number">288px</span>, <span class="hljs-number">76.5em</span>) [main-end] minmax(var(--page-grid-gap), auto);
   <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">position</span>: fixed;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
@@ -504,7 +570,7 @@ Intentionally blank.
         <span class="Meta-value">components/vf-banner/vf-banner--fixed.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">280 Bytes</span>
+        <span class="Meta-value">293 Bytes</span>
     </section>
     
   
@@ -719,6 +785,7 @@ Intentionally blank.
   <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) [main-start] <span class="hljs-built_in">minmax</span>(288px, 76.5em) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
   <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">position</span>: fixed;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
@@ -1181,7 +1248,7 @@ vfBanner();
 
 
     </div>
-    <div class="vf-grid__col--span-1">
+    <div class="vf-grid__col--span-3">
       <h3 class="vf-text vf-text--heading-r">Meta information</h3>
 <ul class="Meta">
     <li class="Meta-item">
@@ -1196,15 +1263,6 @@ vfBanner();
         <span class="Meta-value">components/vf-banner/vf-banner.hbs</span>
     </li>
     
-    
-    <li class="Meta-item">
-        <strong class="Meta-key">Referenced by <em class="Meta-count">(1)</em>:</strong>
-        <span class="Meta-value Meta-value--linkList">
-        
-            <a href="embl-group-page.html">@<span>embl-group-page</span></a>
-        
-        </span>
-    </li>
     
 </ul>
 

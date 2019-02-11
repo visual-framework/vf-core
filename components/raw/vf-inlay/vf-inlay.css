@@ -2,7 +2,7 @@
   display: grid;
   grid-column: 1 / -1;
   /* stylelint-disable  declaration-colon-space-after, indentation */
-  grid-template-columns: minmax(var(--page-grid-gap), auto) minmax(auto, 76.5em) minmax(var(--page-grid-gap), auto);
+  grid-template-columns: minmax(var(--page-grid-gap), auto) [main-start] minmax(auto, 76.5em) [main-end] minmax(var(--page-grid-gap), auto);
   /* stylelint-enable */
 }
 
@@ -20,28 +20,6 @@
   .vf-inlay {
     --page-grid-gap: 36px;
   }
-}
-
-.vf-inlay__header {
-  display: grid;
-  grid-column: 2 / -2;
-  /* stylelint-disable declaration-colon-space-after, indentation */
-  grid-template-columns: minmax(var(--page-grid-gap), 60px) [main-start] auto minmax(auto, 18.125em) [main-end] minmax(var(--page-grid-gap), 60px);
-  /* stylelint-enable */
-}
-
-.vf-inlay__navigation {
-  background-color: #54585a;
-  display: grid;
-  grid-column: 1 / -1;
-  /* stylelint-disable declaration-colon-space-after, indentation */
-  grid-template-columns: minmax(var(--page-grid-gap), 60px) auto minmax(var(--page-grid-gap), 60px);
-  /* stylelint-enable */
-}
-
-.vf-inlay__navigation > * {
-  grid-column: 2 / -2;
-  margin-left: -18px;
 }
 
 .vf-inlay__content {

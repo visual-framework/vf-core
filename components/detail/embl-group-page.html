@@ -123,40 +123,42 @@ embl-grid embl-grid--has-sidebar
   </div>
 </div>
 
-<div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-78ed7cb79a779ae398c52e2598fb5a7e">
-    <div class="Preview-wrapper" data-role="resizer-disabled">
-      
-       <iframe
-          class="Preview-iframe"
-          data-role="window"
-          src="../preview/embl-group-page.html"
-          sandbox="allow-same-origin allow-scripts allow-forms"
 
-          marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
-          onload="resizeIframe(this)"
-        >
-      </iframe>
 
-      <div class="vf-body">
-        <div class="vf-grid">
-          <p class="vf-figure__caption">
-            Open the above preview in a new window:
-            <a data-no-pjax href="../preview/embl-group-page.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+
+  <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-78ed7cb79a779ae398c52e2598fb5a7e">
+      <div class="Preview-wrapper" data-role="resizer-disabled">
+        
+         <iframe
+            class="Preview-iframe"
+            data-role="window"
+            src="../preview/embl-group-page.html"
+            sandbox="allow-same-origin allow-scripts allow-forms"
+
+            marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
+            onload="resizeIframe(this)"
+          >
+        </iframe>
+        <div class="vf-body">
+          <div class="vf-grid">
+            <p class="vf-figure__caption">
+              Open the above preview in a new window:
+              <a data-no-pjax href="../preview/embl-group-page.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
 </svg>
 </a>
-            <a data-no-pjax href="../render/embl-group-page.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+              <a data-no-pjax href="../render/embl-group-page.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
 </svg>
 </a>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
 
-    </div>
-</div>
+      </div>
+  </div>
 
 
     <div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
@@ -181,148 +183,99 @@ embl-grid embl-grid--has-sidebar
   <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
 
   
-<h3 class="vf-text vf-text--heading-r">Code example</h3>
+
+ <h3 class="vf-text vf-text--heading-r">Code example</h3>
 <code class="Code Code--lang-html vf-code-example">
   
-  <pre class="vf-code-example__pre">
+  
+<a id="embl-group-page--default-code" href="#embl-group-page--default-code">Anchor (todo: `vf-link--anchor` or such)</a>
+<pre class="vf-code-example__pre"><span class="hljs-comment">&lt;!-- Default --&gt;</span>
 
-
+</pre>
+  
+<a id="embl-group-page--contact-code" href="#embl-group-page--contact-code">Anchor (todo: `vf-link--anchor` or such)</a>
+<pre class="vf-code-example__pre"><span class="hljs-comment">&lt;!-- Contact --&gt;</span>
 <span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-no-js"</span>&gt;</span>
+
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-  {{&gt; @vf-no-js }}
-  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{{ _target.title }} | {{ _config.project.title }}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-comment">// Detect if JS is on and swap vf-no-js for vf-js on the html element</span>
+        (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">H</span>) </span>{
+            H.className = H.className.replace(<span class="hljs-regexp">/\bvf-no-js\b/</span>, <span class="hljs-string">'vf-js'</span>)
+        })(<span class="hljs-built_in">document</span>.documentElement);
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span> | Visual Framework 2.0<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1, minimum-scale=1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1, minimum-scale=1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span>&gt;</span>
 
-  {{&gt; @vf-favicon}}
-  {{&gt; @embl-content-meta-properties meta-who="Strategy and Communications" meta-where="EMBL" meta-what="Visual Framework" meta-last-review="2019-01-20" meta-active="what"}}
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"apple-touch-icon"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"180x180"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"32x32"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"16x16"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"manifest"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"mask-icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#ffffff"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"msapplication-TileColor"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#ffffff"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"theme-color"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#ffffff"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Content descriptors --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:who"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Group Jane"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- the people, groups and teams involved --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:where"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Barcelona"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- at which EMBL sites the content applies --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:what"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"research,cancer"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- the activities covered --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:active"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"what"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- which of the who/what/where is active --&gt;</span>
 
-  {{#if _config.project.environment.local }}
-  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ path '/css/styles.css' }}"</span>&gt;</span>
-  {{/if}}
-  {{#if _config.project.environment.production }}
-  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/css/styles.css"</span>&gt;</span>
-  {{/if}}
+    <span class="hljs-comment">&lt;!-- Content role --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:utility"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-8"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- if content is task and work based or if is meant to inspire --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:reach"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-5"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- if content is externally (public) or internally focused (those that work at EMBL) --&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Page infromation --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:maintainer"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- the contact person or group responsible for the page --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:last-review"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- the last time the page was reviewed or updated --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:review-cycle"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- how long in days before the page should be checked --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:expiry"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- if there is a fixed point in time when the page is no longer relevant --&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/css/styles.css"</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-header"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=574&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-header"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=574&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
 
-  <span class="hljs-comment">&lt;!-- dismissible banner --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--bottom vf-banner--phase"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"Close notice"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text vf-text--heading-r"</span>&gt;</span>
-            Don't need to customise the EMBL Design Language for Websites?
-          <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>Here's the core CSS and JS you need. Don't forget to <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>consult the pattern library<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-{{~#codeblockhtml~}}
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/css/styles.css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/scripts/scripts.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-{{/codeblockhtml}}
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-body"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-grid embl-grid--has-sidebar"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>To come<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-body embl-group-page--bg-color"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=569&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-grid"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs embl-breadcrumbs-lookup"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Breadcrumb"</span> <span class="hljs-attr">data-embl-js-breadcrumbs-lookup</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text embl-breadcrumbs-lookup--loading-text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay"</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__header embl-group-page--vf-header--bg-color"</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>Häring Group<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__navigation vf-inlay__navigation--main"</span>&gt;</span>
-          {{render '@vf-navigation--main'}}
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content vf-u-background-color-white"</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-grid"</span>&gt;</span>
-          {{&gt; '@vf-banner--inline'}}
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content--main"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>The Häring group aims to understand the molecular machinery that organises eukaryotic genomes. <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://vfthemeprototype.lndo.site/about/"</span>&gt;</span>Read more about the Häring group<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>  <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content--additional"</span>&gt;</span>
-          [group leader]
-        <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-divider"</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content vf-u-background-color-white"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content--main"</span>&gt;</span>
-          {{&gt; '@vf-content'}}
-        <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content--additional"</span>&gt;</span>
-          {{&gt; '@vf-box'}}
-        <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
-
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container | embl-grid embl-grid--has-sidebar"</span>&gt;</span>
-
-      {{&gt; '@vf-section-header' section-title='Latest Press Releases'}}
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container__content"</span>&gt;</span>
-        {{ render '@vf-news-item' }}
-        {{ render '@vf-news-item' }}
-        {{ render '@vf-news-item' }}
-        {{ render '@vf-news-item' }}
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container__sidebar"</span>&gt;</span>
-        {{ render '@vf-news-item--snippet' }}
-        {{ render '@vf-news-item--snippet' }}
-        {{ render '@vf-news-item--snippet' }}
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=569&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"{{ path '/scripts/scripts.js' }}"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../scripts/scripts.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
-
-
-  </pre>
+</pre>
+  
   
 </code>
+
 
 
 
   <hr class="vf-divider vf-u-margin__bottom-xl vf-u-margin__top-xl">
 
   <div class="vf-grid vf-grid__col-3">
-    <div class="vf-grid__col--span-2">
+    <div class="vf-grid__col--span-3">
       
 
 
@@ -429,6 +382,28 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-selector-class">.embl-group-page--vf-header--bg-color</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#009f4d</span>;
 }
+
+<span class="hljs-selector-class">.embl-group-header__header</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>) [main-start] auto <span class="hljs-built_in">minmax</span>(auto, 18.125em) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>);
+  <span class="hljs-comment">/* stylelint-enable */</span>
+}
+
+<span class="hljs-selector-class">.embl-group-header__navigation</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>) auto <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), <span class="hljs-number">60px</span>);
+  <span class="hljs-comment">/* stylelint-enable */</span>
+}
+
+<span class="hljs-selector-class">.embl-group-header__navigation</span> &gt; * {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">18px</span>;
+}
 </pre>
           </code>
           
@@ -441,7 +416,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/embl-group-page/embl-group-page.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">132 Bytes</span>
+        <span class="Meta-value">831 Bytes</span>
     </section>
     
   
@@ -484,6 +459,38 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-selector-class">.embl-group-page--vf-header--bg-color</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$embl-group-page--vf-header--background</span>;
 }
+
+<span class="hljs-selector-class">.embl-group-header__header</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
+  grid-template-<span class="hljs-attribute">columns</span>:
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+    [main-start]
+      auto
+      minmax(auto, <span class="hljs-number">18.125em</span>)
+    [main-end]
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+  ;
+  <span class="hljs-comment">/* stylelint-enable */</span>
+}
+
+<span class="hljs-selector-class">.embl-group-header__navigation</span> {
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color-gray-dark);
+  <span class="hljs-attribute">display</span>: grid;
+  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
+  grid-template-<span class="hljs-attribute">columns</span>:
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+    auto
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+  ;
+  <span class="hljs-comment">/* stylelint-enable */</span>
+  &gt; * {
+    grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+    <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">18px</span>;
+  }
+}
 </pre>
           </code>
           
@@ -496,7 +503,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/embl-group-page/embl-group-page.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">247 Bytes</span>
+        <span class="Meta-value">990 Bytes</span>
     </section>
     
   
@@ -618,7 +625,7 @@ embl-grid embl-grid--has-sidebar
 
 
     </div>
-    <div class="vf-grid__col--span-1">
+    <div class="vf-grid__col--span-3">
       <h3 class="vf-text vf-text--heading-r">Meta information</h3>
 <ul class="Meta">
     <li class="Meta-item">
@@ -634,7 +641,7 @@ embl-grid embl-grid--has-sidebar
     </li>
     
     <li class="Meta-item">
-        <strong class="Meta-key">References <em class="Meta-count">(10)</em>:</strong>
+        <strong class="Meta-key">References <em class="Meta-count">(9)</em>:</strong>
         <span class="Meta-value Meta-value--linkList">
         
             <a href="vf-no-js.html">@<span>vf-no-js</span></a>, 
@@ -644,8 +651,6 @@ embl-grid embl-grid--has-sidebar
             <a href="embl-content-meta-properties.html">@<span>embl-content-meta-properties</span></a>, 
         
             <a href="vf-navigation--main.html">@<span>vf-navigation--main</span></a>, 
-        
-            <a href="vf-banner--inline.html">@<span>vf-banner--inline</span></a>, 
         
             <a href="vf-content.html">@<span>vf-content</span></a>, 
         
