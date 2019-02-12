@@ -87,6 +87,7 @@ gulp.task('css', function() {
         return 'Problem file : ' + error.message;
       })
     )
+    .pipe(autoprefixer(autoprefixerOptions))
     .pipe(browserSync.stream())
     .pipe(sourcemaps.write())
     .pipe(rename(
