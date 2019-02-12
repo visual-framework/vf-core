@@ -63,8 +63,6 @@ const theo = require('theo')
 // -----------------------------------------------------------------------------
 
 gulp.task('css', function() {
-  const options = {
-  };
   const opts = {
     importer: [nodeModuleImport],
     includePaths: [
@@ -84,7 +82,8 @@ gulp.task('css', function() {
     .on(
       'error',
       notify.onError(function(error) {
-        return 'Problem file : ' + error.message;
+        process.emit('exit') // this fails precommit, but allows guld dev to work
+        return 'Problem at file: ' + error.message;
       })
     )
     .pipe(autoprefixer(autoprefixerOptions))
