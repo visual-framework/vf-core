@@ -10,31 +10,20 @@
 }
 
 .vf-pagination__item {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 0px;
           flex: 1 1 0;
   text-align: center;
 }
 
-.vf-pagination__item:hover {
-  background-color: #707372;
-}
-
-.vf-pagination__item:hover .vf-pagination__link {
-  color: white;
-}
-
 .vf-pagination__item--is-active {
   background-color: #707372;
 }
 
-.vf-pagination__item--is-active .vf-pagination__label,
-.vf-pagination__item--is-active .vf-pagination__link {
+.vf-pagination__item--is-active .vf-pagination__label {
   color: white;
-}
-
-.vf-pagination__item--is-active:hover {
-  background-color: #54585a;
 }
 
 .vf-pagination__label,
@@ -49,6 +38,11 @@
   text-decoration: none;
 }
 
+.vf-pagination__link:hover {
+  background-color: #707372;
+  color: white;
+}
+
 .vf-pagination__item--jump-back {
   border-right: 1px solid #b9b3a8;
 }
@@ -61,6 +55,7 @@
   -webkit-box-flex: 2;
       -ms-flex: 2 1 0px;
           flex: 2 1 0;
+  margin-left: 16px;
 }
 
 .vf-pagination__item--pages-per:hover {

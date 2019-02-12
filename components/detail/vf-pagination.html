@@ -163,7 +163,6 @@ embl-grid embl-grid--has-sidebar
     </li>
     <li class="vf-pagination__item">
       <span class="vf-pagination__label">
-        <span class="vf-sr-only">Previous pages</span>
         ...
       </span>
     </li>
@@ -194,7 +193,6 @@ embl-grid embl-grid--has-sidebar
     </li>
     <li class="vf-pagination__item">
       <span class="vf-pagination__label">
-        <span class="vf-sr-only">Next pages</span>
         ...
       </span>
     </li>
@@ -220,8 +218,8 @@ embl-grid embl-grid--has-sidebar
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item"</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__label"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>Previous pages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> ...
-            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        ...
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item"</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__link"</span>&gt;</span>
@@ -250,8 +248,8 @@ embl-grid embl-grid--has-sidebar
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item"</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__label"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>Next pages<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> ...
-            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        ...
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__item vf-pagination__item--jump-forward"</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-pagination__link"</span>&gt;</span>
@@ -780,7 +778,8 @@ embl-grid embl-grid--has-sidebar
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
             <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-pagination__item--pages-per</span> {
   <span class="hljs-attribute">flex</span>: <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>;
-
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">16px</span>;
+  
   &amp;:hover {
     <span class="hljs-attribute">background</span>: unset;
   }
@@ -797,7 +796,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-pagination/vf-pagination--full.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">91 Bytes</span>
+        <span class="Meta-value">114 Bytes</span>
     </section>
     
   
@@ -819,31 +818,20 @@ embl-grid embl-grid--has-sidebar
 }
 
 <span class="hljs-selector-class">.vf-pagination__item</span> {
+  <span class="hljs-attribute">-ms-flex-item-align</span>: end;
+      <span class="hljs-attribute">align-self</span>: flex-end;
   <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">1</span>;
       <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0px</span>;
           <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">text-align</span>: center;
 }
 
-<span class="hljs-selector-class">.vf-pagination__item</span><span class="hljs-selector-pseudo">:hover</span> {
-  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#707372</span>;
-}
-
-<span class="hljs-selector-class">.vf-pagination__item</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-class">.vf-pagination__link</span> {
-  <span class="hljs-attribute">color</span>: white;
-}
-
 <span class="hljs-selector-class">.vf-pagination__item--is-active</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#707372</span>;
 }
 
-<span class="hljs-selector-class">.vf-pagination__item--is-active</span> <span class="hljs-selector-class">.vf-pagination__label</span>,
-<span class="hljs-selector-class">.vf-pagination__item--is-active</span> <span class="hljs-selector-class">.vf-pagination__link</span> {
+<span class="hljs-selector-class">.vf-pagination__item--is-active</span> <span class="hljs-selector-class">.vf-pagination__label</span> {
   <span class="hljs-attribute">color</span>: white;
-}
-
-<span class="hljs-selector-class">.vf-pagination__item--is-active</span><span class="hljs-selector-pseudo">:hover</span> {
-  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
 }
 
 <span class="hljs-selector-class">.vf-pagination__label</span>,
@@ -858,6 +846,11 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">text-decoration</span>: none;
 }
 
+<span class="hljs-selector-class">.vf-pagination__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#707372</span>;
+  <span class="hljs-attribute">color</span>: white;
+}
+
 <span class="hljs-selector-class">.vf-pagination__item--jump-back</span> {
   <span class="hljs-attribute">border-right</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#b9b3a8</span>;
 }
@@ -870,6 +863,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">2</span>;
       <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0px</span>;
           <span class="hljs-attribute">flex</span>: <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">16px</span>;
 }
 
 <span class="hljs-selector-class">.vf-pagination__item--pages-per</span><span class="hljs-selector-pseudo">:hover</span> {
@@ -887,7 +881,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-pagination/vf-pagination.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">1.3 KB</span>
+        <span class="Meta-value">1.2 KB</span>
     </section>
     
   
@@ -968,26 +962,17 @@ vfPatternName();
   <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0</span>;
 }
 <span class="hljs-selector-class">.vf-pagination__item</span> {
+  <span class="hljs-attribute">align-self</span>: flex-end;
   <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">text-align</span>: center;
-
-  &amp;:hover {
-    <span class="hljs-attribute">background-color</span>: set-color(vf-color-gray);
-    <span class="hljs-selector-class">.vf-pagination__link</span> {
-      <span class="hljs-attribute">color</span>: set-color(vf-color-white);
-    }
-  }
 }
+
+
 <span class="hljs-selector-class">.vf-pagination__item--is-active</span> {
   <span class="hljs-attribute">background-color</span>: set-color(vf-color-gray);
 
-  <span class="hljs-selector-class">.vf-pagination__label</span>,
-  <span class="hljs-selector-class">.vf-pagination__link</span> {
+  <span class="hljs-selector-class">.vf-pagination__label</span> {
     <span class="hljs-attribute">color</span>: set-color(vf-color-white);
-  }
-
-  &amp;:hover {
-    <span class="hljs-attribute">background-color</span>: set-color(vf-color-gray-dark);
   }
 }
 
@@ -999,6 +984,11 @@ vfPatternName();
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">8px</span>;
   <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-class">.vf-pagination__link</span>:hover {
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color-gray);
+  <span class="hljs-attribute">color</span>: set-color(vf-color-white);
 }
 
 <span class="hljs-selector-class">.vf-pagination__item--jump-back</span> {
@@ -1020,7 +1010,7 @@ vfPatternName();
         <span class="Meta-value">components/vf-pagination/vf-pagination.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">1.4 KB</span>
+        <span class="Meta-value">1.3 KB</span>
     </section>
     
   
