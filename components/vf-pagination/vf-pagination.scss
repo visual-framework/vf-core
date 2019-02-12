@@ -19,27 +19,14 @@
   align-self: flex-end;
   flex: 1 1 0;
   text-align: center;
-
-  &:hover {
-    background-color: set-color(vf-color-gray);
-
-    .vf-pagination__label,
-    .vf-pagination__link {
-      color: set-color(vf-color-white);
-    }
-  }
 }
+
 
 .vf-pagination__item--is-active {
   background-color: set-color(vf-color-gray);
 
-  .vf-pagination__label,
-  .vf-pagination__link {
+  .vf-pagination__label {
     color: set-color(vf-color-white);
-  }
-
-  &:hover {
-    background-color: set-color(vf-color-gray-dark);
   }
 }
 
@@ -51,6 +38,11 @@
   display: block;
   padding: 4px 8px;
   text-decoration: none;
+}
+
+.vf-pagination__link:hover {
+  background-color: set-color(vf-color-gray);
+  color: set-color(vf-color-white);
 }
 
 .vf-pagination__item--jump-back {
