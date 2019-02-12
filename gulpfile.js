@@ -309,6 +309,10 @@ gulp.task('tokens', gulp.parallel(
   'tokens:variables', 'tokens:typographic-scale', 'tokens:maps'
 ));
 
+gulp.task('precommit-test', gulp.parallel(
+  'scss-lint', 'css'
+));
+
 gulp.task('component', shell.task(
   ['yo ./tools/component-generator']
 ));
