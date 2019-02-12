@@ -72,6 +72,7 @@ gulp.task('css', function() {
       path.resolve(__dirname, 'components/vf-sass-config/functions'),
       path.resolve(__dirname, 'components/vf-sass-config/mixins'),
       path.resolve(__dirname, 'components'),
+      path.resolve(__dirname, 'components/vf-form'),
       path.resolve(__dirname, 'components/vf-core-patterns'),
       path.resolve(__dirname, 'node_modules'),
     ]
@@ -86,6 +87,7 @@ gulp.task('css', function() {
         return 'Problem file : ' + error.message;
       })
     )
+    .pipe(autoprefixer(autoprefixerOptions))
     .pipe(browserSync.stream())
     .pipe(sourcemaps.write())
     .pipe(rename(
@@ -255,6 +257,7 @@ var genCss = function (option) {
         path.resolve(__dirname, 'components/vf-sass-config/functions'),
         path.resolve(__dirname, 'components/vf-sass-config/mixins'),
         path.resolve(__dirname, 'components'),
+        path.resolve(__dirname, 'components/vf-form'),
         path.resolve(__dirname, 'components/vf-core-patterns'),
         path.resolve(__dirname, 'node_modules')
       ],
