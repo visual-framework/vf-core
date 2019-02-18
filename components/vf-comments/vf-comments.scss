@@ -1,0 +1,59 @@
+// vf-comments
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'vf-comments.variables.scss';
+
+
+.vf-comments__title {
+  @include set-type(heading--l);
+}
+
+.vf-comments__item {
+  border-top: 1px solid set-color(vf-color-gray-bright);
+  margin-bottom: 24px;
+  padding-top: 24px;
+}
+
+.vf-comments__meta {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+
+.vf-comments__author {
+  @include set-type(heading--s, $custom-margin-bottom: 14);
+
+  font-style: normal;
+}
+
+.vf-comment__date {
+  @include set-type(body--r, $custom-margin-bottom: 0);
+  color: set-color(vf-color-gray-bright);
+}
+
+.vf-comments__author-avatar {
+  border-radius: 50%;
+  float: left;
+  margin-right: 24px;
+  width: 57px;
+}
+
+.vf-comments__item {
+  .vf-comments__list {
+    margin-top: 24px;
+    .vf-comments__item {
+      padding-left: 40px;
+    }
+  }
+}
+
+
+.vf-comment {
+  margin-bottom: 16px;
+}
