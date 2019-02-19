@@ -459,7 +459,13 @@ embl-grid embl-grid--has-sidebar
             <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-footer</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#707372</span>;
   <span class="hljs-attribute">border-top</span>: <span class="hljs-number">8px</span> solid <span class="hljs-number">#009f4d</span>;
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">60px</span>;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">24px</span>;
+}
+
+<span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-links</span> {
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">0</span>;
 }
 
 <span class="hljs-selector-class">.vf-footer__notice</span> {
@@ -478,20 +484,35 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-selector-class">.vf-footer__legal</span> {
   <span class="hljs-attribute">color</span>: white;
-  <span class="hljs-attribute">display</span>: -webkit-box;
-  <span class="hljs-attribute">display</span>: -ms-flexbox;
-  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(4, -webkit-max-content);
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(4, max-content);
 }
 
-<span class="hljs-selector-class">.vf-footer__legal</span> &gt; * {
-  <span class="hljs-attribute">-ms-flex-preferred-size</span>: <span class="hljs-number">0</span>;
-      <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">0</span>;
+<span class="hljs-selector-class">.vf-footer__legal</span> <span class="hljs-selector-class">.vf-footer__legal-text</span>,
+<span class="hljs-selector-class">.vf-footer__legal</span> <span class="hljs-selector-class">.vf-footer__link</span> {
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">12px</span>;
+}
+
+<span class="hljs-selector-class">.vf-footer__link</span> {
+  <span class="hljs-attribute">color</span>: white;
+}
+
+<span class="hljs-selector-class">.vf-footer__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-footer__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+}
+
+<span class="hljs-selector-class">.vf-footer__link</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
 }
 
 <span class="hljs-selector-class">.vf-footer__list--legal</span> {
-  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
-      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">100%</span>;
-          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
 }
 
 <span class="hljs-selector-class">.vf-footer__links-group</span> {
@@ -525,9 +546,35 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-attribute">color</span>: white;
 }
 
+<span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-links__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-links__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+}
+
+<span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-links__link</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
+}
+
 <span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-list__link</span> {
   <span class="hljs-attribute">color</span>: white;
   <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">24px</span>;
+}
+
+<span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-list__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-list__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+}
+
+<span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-list__link</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
 }
 </pre>
           </code>
@@ -541,7 +588,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-footer/vf-footer.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">1.3 KB</span>
+        <span class="Meta-value">2.1 KB</span>
     </section>
     
   
@@ -580,8 +627,13 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-selector-class">.vf-footer</span> {
   <span class="hljs-attribute">background-color</span>: set-color(vf-color-gray);
   <span class="hljs-attribute">border-top</span>: <span class="hljs-number">8px</span> solid set-color(vf-color-green);
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">60px</span>;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">24px</span>;
 
+  <span class="hljs-selector-class">.vf-links</span> {
+    <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">0</span>;
+  }
 }
 
 <span class="hljs-selector-class">.vf-footer__notice</span> {
@@ -597,14 +649,25 @@ embl-grid embl-grid--has-sidebar
 
 <span class="hljs-selector-class">.vf-footer__legal</span> {
   <span class="hljs-attribute">color</span>: set-color(vf-color-white);
-  <span class="hljs-attribute">display</span>: flex;
-  &gt; * {
-    <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">display</span>: grid;
+  grid-template-<span class="hljs-attribute">columns</span>: repeat(<span class="hljs-number">4</span>, max-content);
+
+  <span class="hljs-selector-class">.vf-footer__legal-text</span>,
+  <span class="hljs-selector-class">.vf-footer__link</span> {
+    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">12px</span>;
   }
 }
 
+<span class="hljs-selector-class">.vf-footer__link</span> {
+  @<span class="hljs-keyword">include</span> inline-link(
+    <span class="hljs-variable">$vf-link-color</span>: set-color(vf-color-white),
+    <span class="hljs-variable">$vf-link-hover-color</span>: set-color(vf-color-gray-bright),
+    <span class="hljs-variable">$vf-link-visited-color</span>: <span class="hljs-variable">$vf-link-visited-color</span>
+  );
+}
+
 <span class="hljs-selector-class">.vf-footer__list--legal</span> {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">100%</span>;
+  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
 }
 
 <span class="hljs-selector-class">.vf-footer__links-group</span> {
@@ -631,11 +694,19 @@ embl-grid embl-grid--has-sidebar
 }
 
 <span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-links__link</span> {
-  <span class="hljs-attribute">color</span>: set-color(vf-color-white);
+  @<span class="hljs-keyword">include</span> inline-link(
+    <span class="hljs-variable">$vf-link-color</span>: set-color(vf-color-white),
+    <span class="hljs-variable">$vf-link-hover-color</span>: set-color(vf-color-gray-bright),
+    <span class="hljs-variable">$vf-link-visited-color</span>: <span class="hljs-variable">$vf-link-visited-color</span>
+  );
 }
 
 <span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-list__link</span> {
-  <span class="hljs-attribute">color</span>: set-color(vf-color-white);
+  @<span class="hljs-keyword">include</span> inline-link(
+    <span class="hljs-variable">$vf-link-color</span>: set-color(vf-color-white),
+    <span class="hljs-variable">$vf-link-hover-color</span>: set-color(vf-color-gray-bright),
+    <span class="hljs-variable">$vf-link-visited-color</span>: <span class="hljs-variable">$vf-link-visited-color</span>
+  );
   <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">24px</span>;
 }
 </pre>
@@ -650,7 +721,7 @@ embl-grid embl-grid--has-sidebar
         <span class="Meta-value">components/vf-footer/vf-footer.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">1.1 KB</span>
+        <span class="Meta-value">1.7 KB</span>
     </section>
     
   

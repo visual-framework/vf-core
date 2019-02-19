@@ -1022,7 +1022,7 @@ vfPatternName();
 
 // vf-no-js
 
-// vf-simple-search
+// vf-pagination
 
 // Don't need JS?
 // Feel free to delete this file.
@@ -1054,7 +1054,7 @@ function vfPatternName(firstPassedVar) {
 
 vfPatternName();
 
-// vf-pagination
+// vf-simple-search
 
 // Don't need JS?
 // Feel free to delete this file.
