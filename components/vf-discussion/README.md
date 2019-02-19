@@ -1,13 +1,13 @@
-# vf-comments Pattern
+# vf-discussion Pattern
 
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-comments.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-comments)
+[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-discussion.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-discussion)
 
 ## Install
 
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `primer-buttons` with this command.
 
 ```
-$ npm install --save @visual-framework/vf-comments
+$ npm install --save @visual-framework/vf-discussion
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ $ npm install --save @visual-framework/vf-comments
 The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
-@import "@visual-framework/vf-comments/index.scss";
+@import "@visual-framework/vf-discussion/index.scss";
 ```
 
 _Make sure you import any requirements along with the modules._

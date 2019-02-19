@@ -1,4 +1,4 @@
-// vf-comments
+// vf-discussion
 
 // Don't need JS?
 // Feel free to delete this file.
