@@ -4,8 +4,13 @@
 .vf-footer {
   background-color: set-color(vf-color-gray);
   border-top: 8px solid set-color(vf-color-green);
+  padding-bottom: 60px;
   padding-top: 24px;
 
+  .vf-links {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .vf-footer__notice {
@@ -21,14 +26,25 @@
 
 .vf-footer__legal {
   color: set-color(vf-color-white);
-  display: flex;
-  > * {
-    flex-basis: 0;
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+
+  .vf-footer__legal-text,
+  .vf-footer__link {
+    padding-top: 12px;
   }
 }
 
+.vf-footer__link {
+  @include inline-link(
+    $vf-link-color: set-color(vf-color-white),
+    $vf-link-hover-color: set-color(vf-color-gray-bright),
+    $vf-link-visited-color: $vf-link-visited-color
+  );
+}
+
 .vf-footer__list--legal {
-  flex: 0 0 100%;
+  grid-column: 1 / -1;
 }
 
 .vf-footer__links-group {
@@ -55,10 +71,18 @@
 }
 
 .vf-footer .vf-links__link {
-  color: set-color(vf-color-white);
+  @include inline-link(
+    $vf-link-color: set-color(vf-color-white),
+    $vf-link-hover-color: set-color(vf-color-gray-bright),
+    $vf-link-visited-color: $vf-link-visited-color
+  );
 }
 
 .vf-footer .vf-list__link {
-  color: set-color(vf-color-white);
+  @include inline-link(
+    $vf-link-color: set-color(vf-color-white),
+    $vf-link-hover-color: set-color(vf-color-gray-bright),
+    $vf-link-visited-color: $vf-link-visited-color
+  );
   margin-right: 24px;
 }
