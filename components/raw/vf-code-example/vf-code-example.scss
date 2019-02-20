@@ -8,12 +8,11 @@ $vf-code-example-enable-hljs: true !default;
 .vf-code-example__pre,
 .vf-code-example {
   // pre and code should always be monospace
-  @include set-type(body--s,$vf-font-family-monospace);
+  @include set-type(body--s,$vf-font-family-monospace, $custom-margin-bottom: 0);
 }
 
 .vf-code-example {
   display: grid;
-  margin-bottom: map-get($vf-spacing-map, vf-spacing-xxl) * 2;
 }
 
 .vf-content pre,
