@@ -317,6 +317,9 @@ embl-grid embl-grid--has-sidebar
           <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
             <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-content-hub-loader</span>
 
+<span class="hljs-keyword">import</span> { emblContentHubLoaderHtmlImports } <span class="hljs-keyword">from</span> <span class="hljs-string">'embl-content-hub-loader/embl-content-hub-loader__html-imports'</span>;
+<span class="hljs-keyword">import</span> { emblContentHubFetch } <span class="hljs-keyword">from</span> <span class="hljs-string">'embl-content-hub-loader/embl-content-hub-loader__fetch'</span>;
+
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHub</span>(<span class="hljs-params"></span>) </span>{
 
   <span class="hljs-comment">// 1. make sure we have imports or a pollyfill</span>
@@ -327,6 +330,8 @@ embl-grid embl-grid--has-sidebar
 }
 
 emblContentHub();
+
+<span class="hljs-keyword">export</span> { emblContentHub };
 </pre>
           </code>
           
@@ -339,7 +344,7 @@ emblContentHub();
         <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">217 Bytes</span>
+        <span class="Meta-value">453 Bytes</span>
     </section>
     
   
@@ -411,6 +416,11 @@ emblContentHub();
           <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
             <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-content-hub-loader__fetch</span>
 
+
+<span class="hljs-keyword">import</span> { vfBanner } <span class="hljs-keyword">from</span> <span class="hljs-string">'vf-banner/vf-banner'</span>;
+<span class="hljs-keyword">import</span> { vfTabs } <span class="hljs-keyword">from</span> <span class="hljs-string">'vf-tabs/vf-tabs'</span>;
+
+
 <span class="hljs-comment">/**
  * Fetch html links from content.embl.org
  */</span>
@@ -450,7 +460,7 @@ emblContentHub();
   <span class="hljs-keyword">var</span> emblContentHubShowTimers = <span class="hljs-literal">false</span>;
 
   <span class="hljs-comment">// Handle the import of each element</span>
-  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; emblContentHubLinks.length; ++i) {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; emblContentHubLinks.length; ++i) {
     (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
       <span class="hljs-keyword">var</span> linkPosition = i;
 
@@ -562,7 +572,7 @@ emblContentHub();
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubAssignClasses</span>(<span class="hljs-params">targetLink,position</span>) </span>{
     <span class="hljs-comment">// var injectRequests = document.querySelectorAll('[data-inject-class][data-inject-class-target]');</span>
     <span class="hljs-comment">//</span>
-    <span class="hljs-comment">// for (i = 0; i &lt; injectRequests.length; ++i) {</span>
+    <span class="hljs-comment">// for (var i = 0; i &lt; injectRequests.length; ++i) {</span>
 
     <span class="hljs-keyword">var</span> classesToInject = targetLink.getAttribute(<span class="hljs-string">'data-inject-class'</span>);
     <span class="hljs-keyword">var</span> targetSelectorToInject = targetLink.getAttribute(<span class="hljs-string">'data-inject-class-target'</span>);
@@ -605,6 +615,8 @@ emblContentHub();
   }
 
 }
+
+<span class="hljs-keyword">export</span> { emblContentHubFetch };
 </pre>
           </code>
           
@@ -617,7 +629,7 @@ emblContentHub();
         <span class="Meta-value">components/embl-content-hub-loader/embl-content-hub-loader__fetch.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">7.4 KB</span>
+        <span class="Meta-value">7.5 KB</span>
     </section>
     
   
@@ -760,7 +772,7 @@ emblContentHub();
 	<span class="hljs-built_in">window</span>[<span class="hljs-string">"addImport"</span>] = AddImport;
 }
 
-emblContentHubLoaderHtmlImports();
+<span class="hljs-keyword">export</span> { emblContentHubLoaderHtmlImports };
 </pre>
           </code>
           

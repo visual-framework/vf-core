@@ -1,5 +1,10 @@
 // embl-content-hub-loader__fetch
 
+
+import { vfBanner } from 'vf-banner/vf-banner';
+import { vfTabs } from 'vf-tabs/vf-tabs';
+
+
 /**
  * Fetch html links from content.embl.org
  */
@@ -39,7 +44,7 @@ function emblContentHubFetch() {
   var emblContentHubShowTimers = false;
 
   // Handle the import of each element
-  for (i = 0; i < emblContentHubLinks.length; ++i) {
+  for (var i = 0; i < emblContentHubLinks.length; ++i) {
     (function () {
       var linkPosition = i;
 
@@ -151,7 +156,7 @@ function emblContentHubFetch() {
   function emblContentHubAssignClasses(targetLink,position) {
     // var injectRequests = document.querySelectorAll('[data-inject-class][data-inject-class-target]');
     //
-    // for (i = 0; i < injectRequests.length; ++i) {
+    // for (var i = 0; i < injectRequests.length; ++i) {
 
     var classesToInject = targetLink.getAttribute('data-inject-class');
     var targetSelectorToInject = targetLink.getAttribute('data-inject-class-target');
@@ -194,3 +199,5 @@ function emblContentHubFetch() {
   }
 
 }
+
+export { emblContentHubFetch };

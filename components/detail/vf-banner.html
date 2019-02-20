@@ -898,7 +898,7 @@ data-vf-js-banner-button-text="Close notice">
       x,
       y,
       ARRcookies = <span class="hljs-built_in">document</span>.cookie.split(<span class="hljs-string">";"</span>);
-  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; ARRcookies.length; i++) {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; ARRcookies.length; i++) {
     x = ARRcookies[i].substr(<span class="hljs-number">0</span>, ARRcookies[i].indexOf(<span class="hljs-string">"="</span>));
     y = ARRcookies[i].substr(ARRcookies[i].indexOf(<span class="hljs-string">"="</span>) + <span class="hljs-number">1</span>);
     x = x.replace(<span class="hljs-regexp">/^\s+|\s+$/g</span>, <span class="hljs-string">""</span>);
@@ -1059,7 +1059,8 @@ data-vf-js-banner-button-text="Close notice">
 
 }
 
-vfBanner();
+
+<span class="hljs-keyword">export</span> { vfBanner };
 
 <span class="hljs-comment">// By default this creates banners from HTML</span>
 <span class="hljs-comment">// optionally you can programatically supply</span>
