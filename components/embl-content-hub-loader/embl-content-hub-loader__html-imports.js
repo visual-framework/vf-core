@@ -131,4 +131,4 @@ function emblContentHubLoaderHtmlImports() {
 	window["addImport"] = AddImport;
 }
 
-emblContentHubLoaderHtmlImports();
+export { emblContentHubLoaderHtmlImports };

@@ -45,4 +45,4 @@ function emblConditionalEditDetectParam(url,element) {
   }
 }
 
-emblConditionalEdit();
+export { emblConditionalEdit };
