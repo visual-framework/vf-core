@@ -107,4 +107,4 @@ function vfTabs(scope) {
   });
 }
 
-vfTabs();
+export { vfTabs };

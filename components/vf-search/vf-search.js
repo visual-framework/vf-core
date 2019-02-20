@@ -23,9 +23,9 @@
   * @example vfPatternName(firstPassedVar)
   * @param {string} [firstPassedVar]  - An option to be passed
   */
-function vfPatternName(firstPassedVar) {
-  firstPassedVar = firstPassedVar || 'defaultVal';
-
-}
-
-vfPatternName();
+// function vfPatternName(firstPassedVar) {
+//   firstPassedVar = firstPassedVar || 'defaultVal';
+//
+// }
+//
+// vfPatternName();

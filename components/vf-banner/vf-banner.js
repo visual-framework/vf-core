@@ -57,7 +57,7 @@ function vfBannerGetCookie(c_name) {
       x,
       y,
       ARRcookies = document.cookie.split(";");
-  for (i = 0; i < ARRcookies.length; i++) {
+  for (var i = 0; i < ARRcookies.length; i++) {
     x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
     y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
     x = x.replace(/^\s+|\s+$/g, "");
@@ -218,7 +218,8 @@ function vfBannerInsert(banner,bannerId,scope) {
 
 }
 
-vfBanner();
+
+export { vfBanner };
 
 // By default this creates banners from HTML
 // optionally you can programatically supply

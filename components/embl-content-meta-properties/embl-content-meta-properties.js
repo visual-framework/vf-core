@@ -46,3 +46,5 @@ function emblContentMetaProperties_Read() {
 
   return metaProperties;
 }
+
+export { emblContentMetaProperties_Read };

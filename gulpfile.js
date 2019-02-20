@@ -174,7 +174,7 @@ gulp.task('scripts:es5', function() {
 
 // Eventually we'll want to support ES6 natively with ES5 as fallback, `scripts.es5.js`
 gulp.task('scripts:modern', function() {
-  return gulp.src('./public/scripts/scripts.js')
+  return gulp.src('./components/vf-core/scripts.js')
       .pipe(rename(function (path) {
         path.extname = ".modern.js";
       }))
