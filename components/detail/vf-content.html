@@ -427,52 +427,69 @@ html elements. Some patterns may also add specific support for <code>.vf-content
 <span class="hljs-comment">// vf-* class hasn't been able to be applied</span>
 
 <span class="hljs-selector-class">.vf-content</span> {
+
   <span class="hljs-selector-tag">h1</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> set-type(heading--xl);
+
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+
     + <span class="hljs-selector-tag">small</span> {
       <span class="hljs-attribute">display</span>: block;
       <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">35px</span>;
       <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">22px</span>;
     }
   }
+
   <span class="hljs-selector-tag">h2</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> set-type(heading--l);
-    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">3px</span> solid set-color(vf-color-gray-bright);
+
     <span class="hljs-attribute">display</span>: block;
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">39px</span>;
     <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">13px</span>;
   }
+
   <span class="hljs-selector-tag">h3</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> set-type(heading--l-alt);
+
     <span class="hljs-attribute">display</span>: block;
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">24px</span> <span class="hljs-number">0</span> <span class="hljs-number">13px</span> <span class="hljs-number">0</span>;
   }
+
   <span class="hljs-selector-tag">h4</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> set-type(heading--r);
+
     <span class="hljs-attribute">display</span>: block;
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">24px</span> <span class="hljs-number">0</span> <span class="hljs-number">13px</span>;
   }
+
   <span class="hljs-selector-tag">h5</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> set-type(heading--s);
+
     <span class="hljs-attribute">display</span>: block;
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">24px</span> <span class="hljs-number">0</span> <span class="hljs-number">13px</span>;
   }
+
   <span class="hljs-selector-tag">h6</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> set-type(heading--s);
+
     <span class="hljs-attribute">display</span>: block;
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">24px</span> <span class="hljs-number">0</span> <span class="hljs-number">13px</span>;
   }
+
   <span class="hljs-selector-tag">p</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> set-type(body--l);
+
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">24px</span> <span class="hljs-number">0</span>;
+
     + <span class="hljs-selector-tag">p</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
       <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
     }
   }
+
   <span class="hljs-selector-tag">a</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> inline-link;
+
     &amp;:visited {
       <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-link-visited-color</span>;
     }
@@ -481,32 +498,40 @@ html elements. Some patterns may also add specific support for <code>.vf-content
       <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-link-hover-color</span>;
     }
   }
+
   <span class="hljs-selector-tag">small</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> set-type(body--s);
+
     <span class="hljs-attribute">display</span>: block;
   }
+
   <span class="hljs-selector-tag">ol</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> list(vf-list--ordered, ordered);
   }
+
   <span class="hljs-selector-tag">ul</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> list(vf-list--unordered, unordered);
   }
+
   <span class="hljs-selector-tag">li</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> set-type(body--r);
+
     <span class="hljs-attribute">margin-bottom</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-s);
   }
+
   <span class="hljs-selector-tag">li</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>):last-of-type {
     <span class="hljs-attribute">margin-bottom</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-r);
   }
+
   <span class="hljs-selector-tag">hr</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> divider;
   }
+
   <span class="hljs-selector-tag">code</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     <span class="hljs-attribute">background</span>: set-color(vf-color-off-white);
     <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">3px</span>;
     <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">3px</span>;
   }
-
 }
 
 <span class="hljs-selector-class">.vf-content__standfirst</span> {
@@ -514,9 +539,11 @@ html elements. Some patterns may also add specific support for <code>.vf-content
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">31px</span>;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">46px</span>;
   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0</span>;
+
   + <span class="hljs-selector-class">.vf-content__standfirst</span> {
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
   }
+
   + <span class="hljs-selector-tag">small</span> {
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">42px</span>;
   }
@@ -533,7 +560,7 @@ html elements. Some patterns may also add specific support for <code>.vf-content
         <span class="Meta-value">components/vf-content/vf-content.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">2.2 KB</span>
+        <span class="Meta-value">2.1 KB</span>
     </section>
     
   

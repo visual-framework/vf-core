@@ -4,52 +4,69 @@
 // vf-* class hasn't been able to be applied
 
 .vf-content {
+
   h1:not([class*='vf-']) {
     @include set-type(heading--xl);
+
     margin: 0;
+
     + small {
       display: block;
       margin-bottom: 35px;
       margin-top: 22px;
     }
   }
+
   h2:not([class*='vf-']) {
     @include set-type(heading--l);
-    border-top: 3px solid set-color(vf-color-gray-bright);
+
     display: block;
     margin-bottom: 39px;
     margin-top: 0;
     padding-top: 13px;
   }
+
   h3:not([class*='vf-']) {
     @include set-type(heading--l-alt);
+
     display: block;
     margin: 24px 0 13px 0;
   }
+
   h4:not([class*='vf-']) {
     @include set-type(heading--r);
+
     display: block;
     margin: 24px 0 13px;
   }
+
   h5:not([class*='vf-']) {
     @include set-type(heading--s);
+
     display: block;
     margin: 24px 0 13px;
   }
+
   h6:not([class*='vf-']) {
     @include set-type(heading--s);
+
     display: block;
     margin: 24px 0 13px;
   }
+
   p:not([class*='vf-']) {
     @include set-type(body--l);
+
     margin: 0 0 24px 0;
+
     + p:not([class*='vf-']) {
       margin: 0;
     }
   }
+
   a:not([class*='vf-']) {
     @include inline-link;
+
     &:visited {
       color: $vf-link-visited-color;
     }
@@ -58,32 +75,40 @@
       color: $vf-link-hover-color;
     }
   }
+
   small:not([class*='vf-']) {
     @include set-type(body--s);
+
     display: block;
   }
+
   ol:not([class*='vf-']) {
     @include list(vf-list--ordered, ordered);
   }
+
   ul:not([class*='vf-']) {
     @include list(vf-list--unordered, unordered);
   }
+
   li:not([class*='vf-']) {
     @include set-type(body--r);
+
     margin-bottom: map-get($vf-spacing-map, vf-spacing-s);
   }
+
   li:not([class*='vf-']):last-of-type {
     margin-bottom: map-get($vf-spacing-map, vf-spacing-r);
   }
+
   hr:not([class*='vf-']) {
     @include divider;
   }
+
   code:not([class*='vf-']) {
     background: set-color(vf-color-off-white);
     padding-left: 3px;
     padding-right: 3px;
   }
-
 }
 
 .vf-content__standfirst {
@@ -91,9 +116,11 @@
   line-height: 31px;
   margin-bottom: 46px;
   margin-top: 0;
+
   + .vf-content__standfirst {
     margin-bottom: 24px;
   }
+
   + small {
     margin-bottom: 42px;
   }
