@@ -27,3 +27,5 @@ emblBreadcrumbs();
 
 import { emblContentMetaProperties_Read } from 'embl-content-meta-properties/embl-content-meta-properties';
 // No default invokation
+
+import 'vf-form/vf-form__core/assets/float-labels.js';
