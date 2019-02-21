@@ -13,6 +13,8 @@ vfBanner();
 import { vfTabs } from 'vf-tabs/vf-tabs';
 vfTabs();
 
+import 'vf-form/vf-form__core/assets/float-labels.js';
+
 // All EMBL JS
 import { emblConditionalEdit } from 'embl-conditional-edit/embl-conditional-edit';
 emblConditionalEdit();
@@ -27,5 +29,3 @@ emblBreadcrumbs();
 
 import { emblContentMetaProperties_Read } from 'embl-content-meta-properties/embl-content-meta-properties';
 // No default invokation
-
-import 'vf-form/vf-form__core/assets/float-labels.js';
