@@ -49,9 +49,11 @@
       <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#{{ item.handle }}" id="{{ item.handle }}">Variant {{ item.label }}</a></h3>
 {% set rendered = item.render(null, renderEnv, { preview: withLayout, collate: withCollation }) | async(true) %}
 {{ rendered}}
+<div class="vf-grid">
 <pre class="vf-code-example__pre">
 {{ render.entity(item.render(null, renderEnv, {preview: false, collate: false}) | async(true)) | trim }}
 </pre>
+</div>
 
       <hr class="vf-divider" />
     {% endif %}
