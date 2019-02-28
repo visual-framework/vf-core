@@ -13,7 +13,8 @@ $vf-masthead__title-text--color: set-color(vf-color-white);
   @media (min-width: $vf-breakpoint-l) {
     display: grid;
     grid-template-columns: calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser)) repeat(auto-fit, minmax(288px, 1fr));
-    grid-template-rows: 48px 1fr;
+    grid-template-rows: max-content 1fr;
+    padding: 16px 0;
   }
 }
 
@@ -28,9 +29,17 @@ $vf-masthead__title-text--color: set-color(vf-color-white);
 
 
 .vf-masthead__heading {
-  @include set-type(heading--xl);
+  @include set-type(heading--xl, $custom-margin-bottom: 0);
 
   color: $vf-masthead__title-text--color;
+  display: flex;
+  flex-direction: column;
+}
+
+.vf-masthead__heading--additional {
+  @include set-type(body--l, $custom-margin-bottom: 0);
+  font-weight: 400;
+  transform: translateY(-8px);
 }
 
 .vf-masthead__sub-heading {
