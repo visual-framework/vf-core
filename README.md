@@ -30,7 +30,7 @@ The VF 2.0 enables consistency and portability, it is extensible, modular and ov
 ### ⏰ When will this be ready?
 
 - This is a v2.0 that was imagined in 2017 and development began in the summer of 2018.
-- As of January 2019 we're in early alpha.
+- As of February 2019 we're on alpha.3.
 - We're hopeful a beta could be ready before summer 2018.
 
 Watch the [releases](https://github.com/visual-framework/vf-core/releases) and let us know your feedback: [issues](https://github.com/visual-framework/vf-core/issues) or [email](mailto:ken.hawkins@embl.de).
