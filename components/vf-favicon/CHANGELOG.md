@@ -21,7 +21,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # 2.0.0-alpha.1 (2018-12-20)
 
-**Note:** Version bump only for package @visual-framework/vf-favison
+**Note:** Version bump only for package @visual-framework/vf-favicon
 
 
 
