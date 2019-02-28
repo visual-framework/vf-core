@@ -2,22 +2,24 @@
   display: grid;
   grid-column: main;
   grid-column-gap: var(--page-grid-gap);
+  /* stylelint-disable declaration-colon-space-after */
   grid-template-columns:
     calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
     repeat(auto-fit, minmax(288px, 1fr))
   ;
+  /* stylelint-enable */
   margin-bottom: 48px;
 
   & > :first-child {
     grid-column: 1 / -1;
     margin-right: var(--embl-grid-spacing-normaliser);
 
-    @media (min-width:846px) {
+    @media (min-width: 846px) {
       grid-column: span 1;
     }
   }
   & > *:not(:first-child) {
-    @media (max-width:845px) {
+    @media (max-width: 845px) {
       grid-column: 1 / -1;
     }
   }
@@ -30,11 +32,13 @@
   @media (min-width: $vf-breakpoint-l) {
     --page-grid-gap: 36px;
 
+    /* stylelint-disable declaration-colon-space-after */
     grid-template-columns:
       var(--embl-grid-module--prime)
       auto
       var(--embl-grid-module--prime)
     ;
+    /* stylelint-enable */
   }
 }
 
@@ -72,15 +76,17 @@
 .embl-grid--alt {
   --page-grid-gap: 0;
   background-color: set-color(vf-color-black);
+  color: set-color(vf-color-white);
   grid-column: 1 / -1;
+  /* stylelint-disable declaration-colon-space-after */
   grid-template-columns:
     minmax(1em, auto)
     calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
     minmax(288px, calc(76.5em - 206px))
     minmax(1em, auto)
   ;
+  /* stylelint-enable */
   justify-content: center;
-  color: white;
   position: relative;
 
   & > :first-child {
@@ -95,8 +101,8 @@
       grid-column: 2 / span 1;
     }
     & > :last-child {
-      margin-left: 16px;
       grid-column: 3;
+      margin-left: 16px;
     }
   }
   @media (min-width: 1200px) {
@@ -106,6 +112,7 @@
   }
 
   // HACK: put here for now
-
+  /* stylelint-disable order/properties-alphabetical-order, order/order  */
   padding-top: 1.5rem;
+  /* stylelint-enable */
 }

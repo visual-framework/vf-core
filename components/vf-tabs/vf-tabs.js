@@ -1,16 +1,17 @@
-// document.
+// vf-tabs
 
 /**
  * Finds all tabs on a page and activates them
- * @example vfTabs()
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+ * @example vfTabs(document.querySelectorAll('.vf-pattern__container')[0]);
  */
-function vfTabs() {
+function vfTabs(scope) {
+  var scope = scope || document;
   // Get relevant elements and collections
-  // todo: `document` here should be a scopped passed param like #mydiv or .my-div
-  const tablist = document.querySelectorAll('[data-vf-js-tabs]');
-  const panelsList = document.querySelectorAll('[data-vf-js-tabs-content]');
-  const panels = document.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
-  const tabs = document.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
+  const tablist = scope.querySelectorAll('[data-vf-js-tabs]');
+  const panelsList = scope.querySelectorAll('[data-vf-js-tabs-content]');
+  const panels = scope.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
+  const tabs = scope.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
   if (!tablist || !panels || !tabs) {
     // exit: either tabs or tabbed content not found
     return;
@@ -104,8 +105,6 @@ function vfTabs() {
     let firstPanel = panel.querySelectorAll('.vf-tabs__section')[0];
     firstPanel.hidden = false;
   });
-
 }
 
-
-vfTabs();
+export { vfTabs };

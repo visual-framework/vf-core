@@ -1,0 +1,59 @@
+// vf-navigation
+@import 'vf-navigation.variables.scss';
+
+.vf-navigation--main {
+  background-color: set-color(vf-color-gray-dark);
+
+  .vf-navigation__list {
+    display: block;
+    @media (min-width: $vf-breakpoint-l) {
+      align-items: center;
+      display: flex;
+      height: 100%;
+    }
+  }
+
+  .vf-navigation__item {
+    @include set-type(heading--s);
+
+    display: block;
+    margin: 0;
+
+    &.is-active {
+      background-color: set-color(vf-color-white);
+
+      .vf-navigation__link {
+        color: set-color(vf-color-black);
+      }
+    }
+
+    &:hover {
+      align-items: center;
+      background-color: set-color(vf-color-white);
+      display: flex;
+      height: 100%;
+
+      .vf-navigation__link {
+        color: set-color(vf-color-black);
+        display: block;
+      }
+    }
+
+    @media (min-width: $vf-breakpoint-l) {
+      padding: 4px $vf-navigation__item-gap;
+    }
+  }
+
+  .vf-navigation__link {
+    @include inline-link(
+      $vf-link-color: set-color(vf-color-white),
+      $vf-link-hover-color: set-color(vf-color-white)
+    );
+
+    text-decoration: none;
+
+    &:visited {
+      color: set-color(vf-color-white);
+    }
+  }
+}

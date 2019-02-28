@@ -1,7 +1,6 @@
 // <%= componentName %>
 
-// Don't need JS?
-// Feel free to delete this file.
+// Don't need JS? Then feel free to delete this file.
 
 /*
  * A note on the Visual Framework and JavaScript:
@@ -18,14 +17,27 @@
  * to drop `data-vf-js-PATTERN` and still maintain CSS styling.
  */
 
- /**
-  * The global function for this pattern
-  * @example vfPatternName(firstPassedVar)
-  * @param {string} [firstPassedVar]  - An option to be passed
-  */
-function vfPatternName(firstPassedVar) {
-  firstPassedVar = firstPassedVar || 'defaultVal';
-
-}
-
-vfPatternName();
+// Uncomment this boilerplate
+// // if you need to import any other patterns' JS to use here
+// import { vfOtherPattern } from 'vf-other-pattern/vf-other-pattern';
+//
+//  /**
+//   * The global function for this pattern
+//   * @example vfPatternName(firstPassedVar)
+//   * @param {string} [firstPassedVar]  - An option to be passed
+//   */
+// function vfPatternName(firstPassedVar) {
+//   firstPassedVar = firstPassedVar || 'defaultVal';
+//
+// }
+//
+// // If you need to invoke the pattern by default
+// vfPatternName();
+//
+// // By default your pattern should be usable with js imports
+// export { vfPatternName };
+//
+// // You should also import it at ./components/vf-core/scripts.js
+// // import { vfPatternName } from '../components/raw/vf-pattern/vf-pattern.js';
+// // And, if needed, invoke it
+// // vfPatternName();

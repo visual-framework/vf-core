@@ -1,6 +1,10 @@
-@mixin inline-link($vf-link-color: $vf-link-color, $vf-link-hover-color: $vf-link-hover-color) {
-  color: $vf-link-color;
+@mixin inline-link(
+  $vf-link-color: $vf-link-color,
+  $vf-link-hover-color: $vf-link-hover-color,
+  $vf-link-visited-color: $vf-link-visited-color,
+  $vf-link-disabled-color: $vf-link-disabled-color) {
 
+  color: $vf-link-color;
 
   &:visited {
     color: $vf-link-visited-color;
@@ -17,7 +21,11 @@
 }
 
 
-@mixin button-link($vf-link-color, $vf-link-hover-color) {
+@mixin button-link(
+  $vf-link-color: $vf-link-color,
+  $vf-link-hover-color: $vf-link-hover-color,
+  $vf-link-visited-color: $vf-link-visited-color) {
+
   background-color: $vf-link-color;
   border: 2px solid $vf-link-color;
   color: map-get($vf-colors-map, vf-color-white);
@@ -25,6 +33,7 @@
 
   &:visited {
     background-color: $vf-link-visited-color;
+    border-color: $vf-link-visited-color;
   }
 
   &:hover {
@@ -39,13 +48,19 @@
 }
 
 
-@mixin button-link--ghost($vf-link-color: $vf-link-color, $vf-link-hover-color: $vf-link-hover-color) {
+@mixin button-link--ghost(
+  $vf-link-color: $vf-link-color,
+  $vf-link-hover-color: $vf-link-hover-color,
+  $vf-link-visited-color: $vf-link-visited-color) {
+    
   background-color: map-get($vf-colors-map, vf-color-white);
   border: 2px solid $vf-link-color;
   color: $vf-link-color;
 
   &:visited {
     background-color: $vf-link-visited-color;
+    border-color: $vf-link-visited-color;
+    color: map-get($vf-colors-map, vf-color-white);
   }
 
   &:hover {

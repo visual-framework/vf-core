@@ -3,13 +3,13 @@
 .vf-form__input:not([type='file']) {
   @include set-type(body--r);
 
-  border-color: set-color(vf-color-gray);
+  border-color: set-ui-color(vf-ui-color-gray);
   border-style: solid;
   border-width: 3px;
   box-sizing: border-box;
   color: set-color(vf-color-gray-dark);
   display: block;
-  padding: 16px 24px;
+  padding: 12px;
   width: 100%;
 
   &:focus,
@@ -32,7 +32,7 @@
   z-index: 1;
 }
 
-.vf-form__form .vf-form__wrap {
+.vf-form__input .vf-form__wrap {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   position: relative;
@@ -40,57 +40,57 @@
 }
 
 
-.vf-form__form input.vf-form__input:-moz-placeholder,
-.vf-form__form select.vf-form__select:-moz-placeholder,
-.vf-form__form textarea.vf-form__textarea:-moz-placeholder {
+.vf-form__input::placeholder,
+.vf-form__select::placeholder,
+.vf-form__textarea::placeholder {
   color: set-color(vf-color-gray-dark);
 }
 
-.vf-form__form input.vf-form__input::-moz-placeholder,
-.vf-form__form select.vf-form__select::-moz-placeholder,
-.vf-form__form textarea.vf-form__textarea::-moz-placeholder {
+.vf-form__input::-moz-placeholder,
+.vf-form__select::-moz-placeholder,
+.vf-form__textarea::-moz-placeholder {
   color: set-color(vf-color-gray-dark);
 }
 
-.vf-form__form input.vf-form__input:-ms-input-placeholder,
-.vf-form__form select.vf-form__select:-ms-input-placeholder,
-.vf-form__form textarea.vf-form__textarea:-ms-input-placeholder {
+.vf-form__input:-ms-input-placeholder,
+.vf-form__select:-ms-input-placeholder,
+.vf-form__textarea:-ms-input-placeholder {
   color: set-color(vf-color-gray-dark);
 }
 
-.vf-form__form input.vf-form__input::-webkit-input-placeholder,
-.vf-form__form select.vf-form__select::-webkit-input-placeholder,
-.vf-form__form textarea.vf-form__textarea::-webkit-input-placeholder {
+.vf-form__input::-webkit-input-placeholder,
+.vf-form__select::-webkit-input-placeholder,
+.vf-form__textarea::-webkit-input-placeholder {
   color: set-color(vf-color-gray-dark);
 }
 
-.vf-form__form select.vf-form__select {
+.vf-form__input select.vf-form__select {
   appearance: none;
   color: set-color(vf-color-gray-dark);
   cursor: pointer;
   position: relative;
 }
 
-.vf-form__form select.vf-form__select::-ms-expand {
+.vf-form__input select.vf-form__select::-ms-expand {
   display: none;
 }
 
-.vf-form__form .vf-form__is-active input.vf-form__input,
-.vf-form__form .vf-form__is-active select.vf-form__select,
-.vf-form__form .vf-form__is-active textarea.vf-form__textarea {
-  background-color: #fff;
-  border-color: #dfdfdf;
-  color: #444;
+.vf-form__input .vf-form__is-active input.vf-form__input,
+.vf-form__input .vf-form__is-active select.vf-form__select,
+.vf-form__input .vf-form__is-active textarea.vf-form__textarea {
+  background-color: set-color(vf-color-white);
+  border-color: set-ui-color(vf-ui-gray);
+  color: set-color(vf-gray-dark);
 }
 
-.vf-form__form .vf-form__has-focus input.vf-form__input,
-.vf-form__form .vf-form__has-focus select.vf-form__select,
-.vf-form__form .vf-form__has-focus textarea.vf-form__textarea {
-  background-color: #fff;
+.vf-form__input .vf-form__has-focus input.vf-form__input,
+.vf-form__input .vf-form__has-focus select.vf-form__select,
+.vf-form__input .vf-form__has-focus textarea.vf-form__textarea {
+  background-color: set-color(vf-color-white);
   border-color: set-color(vf-color-black);
 }
 
-.vf-form__wrap .vf-form__form label.vf-form__label {
+.vf-form__wrap .vf-form__input label.vf-form__label {
   border-radius-top-left: 3px;
   color: set-color(vf-color-gray-dark);
   display: block;
@@ -103,17 +103,17 @@
   z-index: 1;
 }
 
-.vf-form__form .vf-form__is-active label.vf-form__label {
+.vf-form__input .vf-form__is-active label.vf-form__label {
   opacity: 1;
   visibility: visible;
 }
 
-.vf-form__form .vf-form__has-focus label.vf-form__label {
+.vf-form__input .vf-form__has-focus label.vf-form__label {
   color: set-color(vf-color-black);
 }
 
-.vf-form__form .vf-form__is-required::before {
-  color: #D32F2F;
+.vf-form__input .vf-form__is-required::before {
+  color: set-ui-color(vf-ui-color-red);
   content: '*';
   display: block;
   font-size: 16px;
@@ -127,6 +127,6 @@
   z-index: 1;
 }
 
-.vf-form__form .vf-form__is-required.vf-form__is-active::before {
+.vf-form__input .vf-form__is-required.vf-form__is-active::before {
   opacity: 0;
 }

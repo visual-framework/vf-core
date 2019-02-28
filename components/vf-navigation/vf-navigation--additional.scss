@@ -1,0 +1,35 @@
+// vf-navigation
+@import 'vf-navigation.variables.scss';
+
+.vf-navigation--additional {
+  background-color: set-color(vf-color-gray-dark);
+  border: 0px solid set-color(vf-color-gray);
+  border-width: 1px 0 1px 0;
+  box-sizing: border-box;
+  display: flex;
+  padding: 4px 0;
+  text-transform: uppercase;
+
+  .vf-navigation__heading {
+    color: set-color(vf-color-white);
+  }
+
+  .vf-navigation__list {
+    margin-left: auto;
+  }
+
+  .vf-navigation__item:not(:first-child) {
+    margin-left: 24px;
+  }
+
+
+  .vf-navigation__link {
+    @include inline-link(
+      $vf-link-color: set-color(vf-color-off-white),
+      $vf-link-hover-color: set-color(vf-color-white)
+    );
+
+    text-decoration: none;
+  }
+
+}

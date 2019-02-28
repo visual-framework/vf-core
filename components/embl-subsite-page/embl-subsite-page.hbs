@@ -8,7 +8,7 @@
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
 
   {{> @vf-favicon}}
-  {{> @embl-content-meta-properties meta-who="Group Jane" meta-where="Barcelona" meta-what="research,cancer" }}
+  {{> @embl-content-meta-properties meta-who="Group Jane" meta-where="Barcelona" meta-what="research,cancer" meta-active="what"}}
 
   {{#if _config.project.environment.local }}
   <link rel="stylesheet" href="{{ path '/css/styles.css' }}">
@@ -23,9 +23,9 @@
 
     {{render '@vf-masthead'}}
 
-    {{render '@vf-navigation--primary'}}
+    {{render '@vf-navigation--main'}}
 
-    {{render '@vf-navigation--secondary'}}
+    {{render '@vf-navigation--additional'}}
   </header>
 
   <!-- dismissible banner -->

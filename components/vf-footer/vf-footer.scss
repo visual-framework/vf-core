@@ -1,17 +1,88 @@
 // vf-footer
+@import 'vf-footer.variables.scss';
 
 .vf-footer {
-  background: set-color(vf-color-gray-bright);
-  padding: 10px 0;
+  background-color: set-color(vf-color-gray);
+  border-top: 8px solid set-color(vf-color-green);
+  padding-bottom: 60px;
+  padding-top: 24px;
+
+  .vf-links {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
-.vf-footer-grid {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: minmax(var(--page-grid-gap), auto) [main-start] minmax(288px, 76.5em) [main-end] minmax(var(--page-grid-gap), auto);
-  grid-template-rows: 1fr 40px;
+.vf-footer__notice {
+  @include set-type(body--r);
 
-  > * {
-    grid-column: 2;
+  color: set-color(vf-color-white);
+  max-width: 52em;
+}
+
+.vf-footer__inner {
+  grid-column: main;
+}
+
+.vf-footer__legal {
+  color: set-color(vf-color-white);
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+
+  .vf-footer__legal-text,
+  .vf-footer__link {
+    padding-top: 12px;
   }
+}
+
+.vf-footer__link {
+  @include inline-link(
+    $vf-link-color: set-color(vf-color-white),
+    $vf-link-hover-color: set-color(vf-color-gray-bright),
+    $vf-link-visited-color: $vf-link-visited-color
+  );
+}
+
+.vf-footer__list--legal {
+  grid-column: 1 / -1;
+}
+
+.vf-footer__links-group {
+  border: solid 0px set-color(vf-color-gray-bright);
+  border-width: 1px 0;
+  margin-bottom: 12px;
+
+  .vf-links__heading {
+    @include set-type(body--xs);
+
+    color: set-color(vf-color-gray-bright);
+    text-transform: uppercase;
+  }
+
+  .vf-links {
+    margin-bottom: 48px;
+    padding-bottom: 0;
+    padding-top: 12px;
+  }
+
+  .vf-links__item {
+    margin-bottom: 0;
+  }
+}
+
+.vf-footer .vf-links__link {
+  @include inline-link(
+    $vf-link-color: set-color(vf-color-white),
+    $vf-link-hover-color: set-color(vf-color-gray-bright),
+    $vf-link-visited-color: $vf-link-visited-color
+  );
+}
+
+.vf-footer .vf-list__link {
+  @include inline-link(
+    $vf-link-color: set-color(vf-color-white),
+    $vf-link-hover-color: set-color(vf-color-gray-bright),
+    $vf-link-visited-color: $vf-link-visited-color
+  );
+  margin-right: 24px;
 }

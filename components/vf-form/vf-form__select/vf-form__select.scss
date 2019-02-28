@@ -1,93 +1,39 @@
-// vf-form__select
+.vf-form__select {
+  @include set-type(body--r);
 
-.vf-form__select-container {
-  background: white;
-  height: 61.5px;
-  position: relative;
+  appearance: none;
+  background-color: set-color(vf-color-white);
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='18' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23707372' fill-rule='evenodd'%3E%3Cpath d='M6 0l6 8H0zM6 18l6-8H0z'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: right .7em top 50%, 0 0;
+  background-repeat: no-repeat, repeat;
+  background-size: .65em auto, 100%;
+  border-color: set-ui-color(vf-ui-color-gray);
+  border-radius: 0;
+  border-style: solid;
+  border-width: 3px;
+  box-sizing: border-box;
+  color: set-color(vf-color-gray-dark);;
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: 16px 24px;
+  width: 100%;
 
-  &::after {
-    border-color: set-color(vf-color-gray) transparent transparent transparent;
-    border-style: solid;
-    border-width: 9px 9px 0 9px;
-    bottom: 0;
-    content: '';
-    height: 0;
-    margin: auto;
-    pointer-events: none;
-    position: absolute;
-    right: 21px;
-    top: 0;
-    width: 0;
-  }
-
-  &::before {
-    border-left: 3px solid set-color(vf-color-gray);;
-    bottom: 1px;
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    right: 1px;
-    top: 1px;
-    width: 56px;
-  }
+  &:focus,
   &:hover {
-    &::after {
-      border-color: set-color(vf-color-black) transparent transparent transparent;
-    }
-    &::before {
-      border-left: 3px solid set-color(vf-color-black);
-    }
+    border-color: currentColor;
+    color: set-color(vf-color-black);
+    outline: 0;
   }
 
-
-  .vf-form__select {
-    @include set-type(body--r);
-
-    appearance: none;
-    background: transparent;
-    border: none;
-    border: 3px solid set-color(vf-color-gray);
-    border-radius: 0;
-    box-shadow: none;
-    color: set-color(vf-color-gray-dark);
-    cursor: pointer;
-    height: 100%;
-    outline: none;
-    padding-left: 15px;
-    padding-right: 35px;
-    width: 100%;
-
-    // Disable ugly ass outline on firefox
-    &:-moz-focusring {
-      color: transparent;
-      text-shadow: 0 0 0 set-color(vf-color-gray-black);
-    }
-
-    // Disable default arrow on IE 11+
-    &::-ms-expand {
-      display: none;
-    }
-    &:hover {
-      border-color: set-color(vf-color-black);
-      color: set-color(vf-color-black);
-    }
-    &:focus {
-      border-color: set-color(vf-color-black);
-      color: set-color(vf-color-black);
-    }
-  }
 }
 
-// IE 9 only
-@media all and (min-width: 0\0) and (min-resolution: .001dpcm){
-  .vf-form__select-container {
-    .vf-form__select {
-      padding-right: 0;
-    }
+.vf-form__select::-ms-expand {
+  display: none;
+}
 
-    &::after,
-    &::before {
-      display: none;
-    }
-  }
+
+
+.vf-form__select option {
+  font-weight: normal;
 }

@@ -1,19 +1,20 @@
+@import 'vf-inlay.variables.scss';
+
 .vf-inlay {
   display: grid;
   grid-column: 1 / -1;
+  /* stylelint-disable  declaration-colon-space-after, indentation */
   grid-template-columns:
-    minmax(var(--page-grid-gap), 60px)
-
+    minmax(var(--page-grid-gap), auto)
     [main-start]
-      minmax(auto, 47.5em)
-      minmax(18.125em, auto)
+      minmax(auto, 76.5em)
     [main-end]
-
-    minmax(var(--page-grid-gap), 60px)
+    minmax(var(--page-grid-gap), auto)
   ;
+  /* stylelint-enable */
 
   &:last-of-type {
-    margin-bottom: 48px;
+    @include margin--block(bottom, $vf-inlay__spacing--bottom);
   }
 
   // overides vf-grid's natural inclination to be full width
@@ -24,7 +25,7 @@
   }
 
   @media (min-width: 480px) {
-    grid-column: 2 / -2;
+    // grid-column: 2 / -2;
   }
 
   @media (min-width: 1024px) {
@@ -32,31 +33,35 @@
   }
 }
 
-.vf-inlay__header {
+.vf-inlay__content {
   display: grid;
-
-  grid-column: 1 / -1;
+  grid-column: 2 / 3;
+  /* stylelint-disable declaration-colon-space-after, indentation */
   grid-template-columns:
     minmax(var(--page-grid-gap), 60px)
-
-      minmax(auto, 47.5em)
-      minmax(18.125em, auto)
-
+    [main-start]
+      minmax(auto, 100%)
+      minmax(auto, 22.125em)
+    [main-end]
     minmax(var(--page-grid-gap), 60px)
   ;
+  /* stylelint-enable */
+  padding-top: 36px;
 }
 
-.vf-inlay__title {
-  grid-column: 2 / -2
+.vf-inlay__content--full-width {
+  grid-column: 2 / -2;
+  @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing-l));
 }
 
 .vf-inlay__content--main {
   grid-column: 2 / -2;
+  padding-right: var(--page-grid-gap);
 
   @media (min-width: 1100px) {
     grid-column: 2 / 3;
-    margin-right: var(--page-grid-gap);
   }
+  @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing-l));
 }
 
 .vf-inlay__content--additional {
@@ -64,6 +69,5 @@
 
   @media (min-width: 1100px) {
     grid-column: 3 / 4;
-    max-width: 350px;
   }
 }

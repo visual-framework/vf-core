@@ -2,6 +2,7 @@
 
 <h1 class="vf-text vf-text--heading-xl vf-text--invert">All the patterns</h1>
 
+
 {% macro patternByType(displayName='Grids', type='grid', description='') %}
 <section class="embl-grid embl-grid--with-label">
   <section data-description="label area">
@@ -15,11 +16,24 @@
   </section>
   <section data-description="pattern list">
     <div class="vf-grid vf-grid__col-3">
-      {% asyncEach items in frctl.components %}
-        {% if items.context['pattern-type'] == type %}
+      {% asyncEach component in frctl.components %}
+
+        {# handle component collections, aka "subpatterns" #}
+        {% if component.isCollection == true and component.isHidden == false %}
+          {% for subcomponent in component %}
+            {% if subcomponent.context['pattern-type'] == type and subcomponent.isHidden != true %}
+              <p class="vf-text">
+                <a class="vf-link" href="{{ path(frctl.theme.urlFromRoute('component', { handle: subcomponent.handle })) }}">{{ subcomponent.label }}</a>
+                {% if subcomponent.status %}{{ status.unlabelled(subcomponent.status) }}{% endif %}
+              </p>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        {% if component.context['pattern-type'] == type %}
         <p class="vf-text">
-          <a class="vf-link" href="{{ path(frctl.theme.urlFromRoute('component', { handle: items.handle })) }}">{{ items.label }}</a>
-          {% if items.status %}{{ status.unlabelled(items.status) }}{% endif %}
+          <a class="vf-link" href="{{ path(frctl.theme.urlFromRoute('component', { handle: component.handle })) }}">{{ component.label }}</a>
+          {% if component.status %}{{ status.unlabelled(component.status) }}{% endif %}
         </p>
         {% endif %}
       {% endeach %}

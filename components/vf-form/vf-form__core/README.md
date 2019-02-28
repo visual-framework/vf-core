@@ -13,7 +13,7 @@ $ npm install --save @visual-framework/vf-form
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
-@import "@visual-framework/vf-form/index.scss";
+@import "@visual-framework/vf-form__core/vf-form__core.scss";
 ```
 
 _Make sure you import any requirements along with the modules._
