@@ -54,7 +54,7 @@ function emblBreadcrumbsLookup(metaProperties) {
  * @param {string} [url] - URL to pull the taxonomy from
  */
 function emblGetTaxonomy(url) {
-  var url = url || 'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-taxonomy&source=contenthub';
+  var url = url || 'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-ontology&source=contenthub';
 
   // from https://developers.google.com/web/fundamentals/primers/promises
   // Return a new promise.
@@ -102,13 +102,16 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
     var termObject;
 
-    Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
+    Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
+      let term = emblTaxonomy.terms[termId];
+      console.log(term);
       if (term.name === termName) {
         termObject = term;
         return; //exit
       }
     });
 
+    console.log(termObject);
     return termObject;
   }
 
@@ -167,10 +170,16 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
   var currentTerm = getCurrentTerm(termName);
   if (currentTerm == undefined || currentTerm == null) {
-    console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Exiting.');
+    console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will use a simple unlinked term.');
+    var currentTerm = {};
+    currentTerm.name_display = termName;
+    currentTerm.uuid = 'null';
+    currentTerm.uuid = [];
+    currentTerm.url = '#addBreadcrumbPatternForSimpleTerms'
   }
+  console.log(currentTerm)
   var breadcrumbId = currentTerm.uuid,
-      breadcrumbUrl = currentTerm.url || 'null',
+      breadcrumbUrl = currentTerm.url || '#addFunctionForBreadcrumbPatternForSimpleTerms',
       breadcrumbParents = currentTerm.parents;
 
   // narrow down to the first matching element
@@ -200,7 +209,8 @@ function emblBreadcrumbs() {
     emblTaxonomy = JSON.parse(response);
 
     // Preprocess the emblTaxonomy for some cleanup tasks
-    Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
+    Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
+      let term = emblTaxonomy.terms[termId];
       // If `name_display` is not set, use the internal name
       if (term.name_display === '') term.name_display = term.name;
       // handle null URL
