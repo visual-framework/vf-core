@@ -147,6 +147,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
         console.warn('embl-js-breadcumbs-lookup: No matching parent found; Stopping parent lookup.');
         return;
       }
+      activeParent.url = activeParent.url || '#addPatternForTermsWithNoUrl';
       emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
 
       // get parents of parent
