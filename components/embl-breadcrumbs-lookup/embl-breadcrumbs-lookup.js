@@ -124,24 +124,23 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
   }
 
   /**
-   * Take a term and get its parent term
+   * Take a term and get its parent term UUID
+   * todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless
+   *       of it's who/what/where path, but maybe this will provide an interesting
+   *       "odeur d'information"
    * @example getBreadcrumbParentTerm(parents,context)
    * @param {array} [parents]  - array of UUIDs
    * @param {string} [facet] - who, what, where
    */
   function getBreadcrumbParentTerm(parents,facet) {
     var parentTodos = {
-      1: 'what is the parent term context? who/what/where'
+      1: 'Respect the parent term context: who/what/where'
       // 2: 'scan the taxonomy and get any parent IDs',
       // 3: 'if there are parent IDs, add breadcrumb and set URL',
       // 4: 'if parent was found, does the parent have a parent?'
     };
     console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
 
-    // Get each parent by UUID
-    // todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless
-    //       of it's who/what/where path, but maybe this will provide an interesting
-    //       "odeur d'information"
 
     function insertParent(activeParent) {
       if (activeParent == undefined || activeParent == null) {
