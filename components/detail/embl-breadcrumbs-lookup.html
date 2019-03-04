@@ -101,9 +101,9 @@ embl-grid embl-grid--has-sidebar
       <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#embl-breadcrumbs-lookup--default" id="embl-breadcrumbs-lookup--default">Variant Default</a></h3>
 
 <!-- Content descriptors -->
-<meta name="embl:who" content="Strategy and Communications"> <!-- the people, groups and teams involved -->
-<meta name="embl:where" content="EMBL"> <!-- at which EMBL sites the content applies -->
-<meta name="embl:what" content="Visual Framework"> <!-- the activities covered -->
+<meta name="embl:who" content="James Sharpe"> <!-- the people, groups and teams involved -->
+<meta name="embl:where" content="EMBL Barcelona"> <!-- at which EMBL sites the content applies -->
+<meta name="embl:what" content="Sharpe Group"> <!-- the activities covered -->
 <meta name="embl:active" content="what"> <!-- which of the who/what/where is active -->
 
 <!-- Content role -->
@@ -123,11 +123,11 @@ embl-grid embl-grid--has-sidebar
 <div class="vf-grid">
 <pre class="vf-code-example__pre">
 <span class="hljs-comment">&lt;!-- Content descriptors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:who"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Strategy and Communications"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:who"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"James Sharpe"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- the people, groups and teams involved --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:where"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"EMBL"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:where"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"EMBL Barcelona"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- at which EMBL sites the content applies --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:what"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Visual Framework"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:what"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Sharpe Group"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- the activities covered --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:active"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"what"</span>&gt;</span>
 <span class="hljs-comment">&lt;!-- which of the who/what/where is active --&gt;</span>
@@ -391,7 +391,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * @param {string} [url] - URL to pull the taxonomy from
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblGetTaxonomy</span>(<span class="hljs-params">url</span>) </span>{
-  <span class="hljs-keyword">var</span> url = url || <span class="hljs-string">'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-taxonomy&amp;source=contenthub'</span>;
+  <span class="hljs-keyword">var</span> url = url || <span class="hljs-string">'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-ontology&amp;source=contenthub'</span>;
 
   <span class="hljs-comment">// from https://developers.google.com/web/fundamentals/primers/promises</span>
   <span class="hljs-comment">// Return a new promise.</span>
@@ -439,47 +439,74 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
     <span class="hljs-keyword">var</span> termObject;
 
-    <span class="hljs-built_in">Array</span>.prototype.forEach.call(emblTaxonomy.terms, (term, i) =&gt; {
+    <span class="hljs-built_in">Array</span>.prototype.forEach.call(<span class="hljs-built_in">Object</span>.keys(emblTaxonomy.terms), (termId) =&gt; {
+      <span class="hljs-keyword">let</span> term = emblTaxonomy.terms[termId];
       <span class="hljs-keyword">if</span> (term.name === termName) {
         termObject = term;
         <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
       }
     });
 
+    <span class="hljs-comment">// we never want to return undefined</span>
+    <span class="hljs-keyword">if</span> (termObject == <span class="hljs-literal">undefined</span> || termObject == <span class="hljs-literal">null</span>) {
+      <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'embl-js-breadcumbs-lookup: No matching breadcrumb found for `'</span> + termName + <span class="hljs-string">'`; Will use a simple unlinked term.'</span>);
+      termObject = {};
+      termObject.name_display = termName;
+      termObject.uuid = <span class="hljs-string">'null'</span>;
+      termObject.uuid = [];
+      termObject.url = <span class="hljs-string">'#addBreadcrumbPatternForSimpleTerms'</span>;
+    }
+
     <span class="hljs-keyword">return</span> termObject;
   }
 
   <span class="hljs-comment">/**
-   * Take a term and get its parent term
+   * Take a term and get its parent term UUID
+   * todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless
+   *       of it's who/what/where path, but maybe this will provide an interesting
+   *       "odeur d'information"
    * @example getBreadcrumbParentTerm(parents,context)
    * @param {array} [parents]  - array of UUIDs
    * @param {string} [facet] - who, what, where
    */</span>
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBreadcrumbParentTerm</span>(<span class="hljs-params">parents,facet</span>) </span>{
     <span class="hljs-keyword">var</span> parentTodos = {
-      <span class="hljs-number">1</span>: <span class="hljs-string">'what is the parent term context? who/what/where'</span>,
+      <span class="hljs-number">1</span>: <span class="hljs-string">'Respect the parent term context: who/what/where'</span>
       <span class="hljs-comment">// 2: 'scan the taxonomy and get any parent IDs',</span>
       <span class="hljs-comment">// 3: 'if there are parent IDs, add breadcrumb and set URL',</span>
-      <span class="hljs-number">4</span>: <span class="hljs-string">'if parent was found, does the parent have a parent?'</span>
+      <span class="hljs-comment">// 4: 'if parent was found, does the parent have a parent?'</span>
     };
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Todos for getBreadcrumbParentTerm():'</span>,parentTodos);
 
-    <span class="hljs-comment">// what = 98831673-5bc8-4348-8f42-17b09c1d5462</span>
-    <span class="hljs-comment">// where = ce40f8b4-c7c3-40fe-911e-8d248654fe7e</span>
-    <span class="hljs-comment">// who = 8c9899b9-b197-4750-b955-894cda8bf9d5</span>
 
-    <span class="hljs-comment">// look up each parent UUID</span>
-    <span class="hljs-comment">// todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless</span>
-    <span class="hljs-comment">//       of it's who/what/where path, but maybe this will provide an interesting</span>
-    <span class="hljs-comment">//       "odeur d'information"</span>
-    <span class="hljs-built_in">Array</span>.prototype.forEach.call(parents, (parentId, i) =&gt; {
-      <span class="hljs-built_in">Array</span>.prototype.forEach.call(emblTaxonomy.terms, (term, i) =&gt; {
-        <span class="hljs-keyword">if</span> (parentId === term.uuid) {
-          emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(term.name_display,term.url) + emblBreadcrumbPrimary.innerHTML;
-          <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
-        }
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertParent</span>(<span class="hljs-params">activeParent</span>) </span>{
+      <span class="hljs-keyword">if</span> (activeParent == <span class="hljs-literal">undefined</span> || activeParent == <span class="hljs-literal">null</span>) {
+        <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'embl-js-breadcumbs-lookup: No matching parent found; Stopping parent lookup.'</span>);
+        <span class="hljs-keyword">return</span>;
+      }
+      activeParent.url = activeParent.url || <span class="hljs-string">'#addPatternForTermsWithNoUrl'</span>;
+      emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+
+      <span class="hljs-comment">// get parents of parent</span>
+      <span class="hljs-keyword">if</span> (activeParent.parents) {
+        getBreadcrumbParentTerm(activeParent.parents,facet);
+      }
+
+    }
+
+    <span class="hljs-keyword">var</span> activeParent;
+
+    <span class="hljs-keyword">if</span> (parents[facet]) {
+      <span class="hljs-comment">// if a parent has structured who/what/where parents</span>
+      activeParent = emblTaxonomy.terms[parents[facet]];
+      insertParent(activeParent);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// otherwise lookup each parent</span>
+      parents.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">parentId</span>) </span>{
+        activeParent = emblTaxonomy.terms[parentId];
+        insertParent(activeParent);
       });
-    });
+    }
 
     <span class="hljs-keyword">return</span>;
   }
@@ -503,11 +530,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 
   <span class="hljs-keyword">var</span> currentTerm = getCurrentTerm(termName);
-  <span class="hljs-keyword">if</span> (currentTerm == <span class="hljs-literal">undefined</span> || currentTerm == <span class="hljs-literal">null</span>) {
-    <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'embl-js-breadcumbs-lookup: No matching breadcrumb found for `'</span> + termName + <span class="hljs-string">'`; Exiting.'</span>);
-  }
   <span class="hljs-keyword">var</span> breadcrumbId = currentTerm.uuid,
-      breadcrumbUrl = currentTerm.url || <span class="hljs-string">'null'</span>,
+      breadcrumbUrl = currentTerm.url || <span class="hljs-string">'#addFunctionForBreadcrumbPatternForSimpleTerms'</span>,
       breadcrumbParents = currentTerm.parents;
 
   <span class="hljs-comment">// narrow down to the first matching element</span>
@@ -537,7 +561,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     emblTaxonomy = <span class="hljs-built_in">JSON</span>.parse(response);
 
     <span class="hljs-comment">// Preprocess the emblTaxonomy for some cleanup tasks</span>
-    <span class="hljs-built_in">Array</span>.prototype.forEach.call(emblTaxonomy.terms, (term, i) =&gt; {
+    <span class="hljs-built_in">Array</span>.prototype.forEach.call(<span class="hljs-built_in">Object</span>.keys(emblTaxonomy.terms), (termId) =&gt; {
+      <span class="hljs-keyword">let</span> term = emblTaxonomy.terms[termId];
       <span class="hljs-comment">// If `name_display` is not set, use the internal name</span>
       <span class="hljs-keyword">if</span> (term.name_display === <span class="hljs-string">''</span>) term.name_display = term.name;
       <span class="hljs-comment">// handle null URL</span>
@@ -595,7 +620,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">9 KB</span>
+        <span class="Meta-value">9.8 KB</span>
     </section>
     
   
