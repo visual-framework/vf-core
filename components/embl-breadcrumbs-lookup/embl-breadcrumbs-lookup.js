@@ -104,14 +104,22 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
     Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
       let term = emblTaxonomy.terms[termId];
-      console.log(term);
       if (term.name === termName) {
         termObject = term;
         return; //exit
       }
     });
 
-    console.log(termObject);
+    // we never want to return undefined
+    if (termObject == undefined || termObject == null) {
+      console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will use a simple unlinked term.');
+      termObject = {};
+      termObject.name_display = termName;
+      termObject.uuid = 'null';
+      termObject.uuid = [];
+      termObject.url = '#addBreadcrumbPatternForSimpleTerms';
+    }
+
     return termObject;
   }
 
@@ -134,18 +142,18 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     // where = ce40f8b4-c7c3-40fe-911e-8d248654fe7e
     // who = 8c9899b9-b197-4750-b955-894cda8bf9d5
 
-    // look up each parent UUID
+
+    // Get each parent by UUID
     // todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless
     //       of it's who/what/where path, but maybe this will provide an interesting
     //       "odeur d'information"
-    Array.prototype.forEach.call(parents, (parentId, i) => {
-      Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
-        if (parentId === term.uuid) {
-          emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(term.name_display,term.url) + emblBreadcrumbPrimary.innerHTML;
-          return; //exit
-        }
-      });
-    });
+    var activeParent = emblTaxonomy.terms[parents[facet]];
+    console.log(activeParent)
+    if (activeParent == undefined || activeParent == null) {
+      console.warn('embl-js-breadcumbs-lookup: No matching parent found; Stopping parent lookup.');
+      return;
+    }
+    emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
 
     return;
   }
@@ -169,15 +177,6 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
   }
 
   var currentTerm = getCurrentTerm(termName);
-  if (currentTerm == undefined || currentTerm == null) {
-    console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will use a simple unlinked term.');
-    var currentTerm = {};
-    currentTerm.name_display = termName;
-    currentTerm.uuid = 'null';
-    currentTerm.uuid = [];
-    currentTerm.url = '#addBreadcrumbPatternForSimpleTerms'
-  }
-  console.log(currentTerm)
   var breadcrumbId = currentTerm.uuid,
       breadcrumbUrl = currentTerm.url || '#addFunctionForBreadcrumbPatternForSimpleTerms',
       breadcrumbParents = currentTerm.parents;
