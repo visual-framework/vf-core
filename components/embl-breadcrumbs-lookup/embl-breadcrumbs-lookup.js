@@ -131,29 +131,45 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
    */
   function getBreadcrumbParentTerm(parents,facet) {
     var parentTodos = {
-      1: 'what is the parent term context? who/what/where',
+      1: 'what is the parent term context? who/what/where'
       // 2: 'scan the taxonomy and get any parent IDs',
       // 3: 'if there are parent IDs, add breadcrumb and set URL',
-      4: 'if parent was found, does the parent have a parent?'
+      // 4: 'if parent was found, does the parent have a parent?'
     };
     console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
-
-    // what = 98831673-5bc8-4348-8f42-17b09c1d5462
-    // where = ce40f8b4-c7c3-40fe-911e-8d248654fe7e
-    // who = 8c9899b9-b197-4750-b955-894cda8bf9d5
-
 
     // Get each parent by UUID
     // todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless
     //       of it's who/what/where path, but maybe this will provide an interesting
     //       "odeur d'information"
-    var activeParent = emblTaxonomy.terms[parents[facet]];
-    console.log(activeParent)
-    if (activeParent == undefined || activeParent == null) {
-      console.warn('embl-js-breadcumbs-lookup: No matching parent found; Stopping parent lookup.');
-      return;
+
+    function insertParent(activeParent) {
+      if (activeParent == undefined || activeParent == null) {
+        console.warn('embl-js-breadcumbs-lookup: No matching parent found; Stopping parent lookup.');
+        return;
+      }
+      emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+
+      // get parents of parent
+      if (activeParent.parents) {
+        getBreadcrumbParentTerm(activeParent.parents,facet);
+      }
+
     }
-    emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+
+    var activeParent;
+
+    if (parents[facet]) {
+      // if a parent has structured who/what/where parents
+      activeParent = emblTaxonomy.terms[parents[facet]];
+      insertParent(activeParent);
+    } else {
+      // otherwise lookup each parent
+      parents.forEach(function (parentId) {
+        activeParent = emblTaxonomy.terms[parentId];
+        insertParent(activeParent);
+      });
+    }
 
     return;
   }
