@@ -152,6 +152,12 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
         return;
       }
       activeParent.url = activeParent.url || '#addPatternForTermsWithNoUrl';
+
+      if (activeParent.name.indexOf(' root term') > 0) {
+        // if we've reached a root term, abort lookups and don't insert a root term as a crumb
+        return;
+      }
+
       emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
 
       // get parents of parent
