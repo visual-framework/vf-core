@@ -141,6 +141,10 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     };
     console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
 
+    if (parents == undefined || parents == null) {
+      // no parent breadcrumb preset, exiting
+      return;
+    }
 
     function insertParent(activeParent) {
       if (activeParent == undefined || activeParent == null) {
