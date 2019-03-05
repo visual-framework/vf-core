@@ -133,13 +133,13 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
    * @param {string} [facet] - who, what, where
    */
   function getBreadcrumbParentTerm(parents,facet) {
-    var parentTodos = {
-      1: 'Respect the parent term context: who/what/where'
-      // 2: 'scan the taxonomy and get any parent IDs',
-      // 3: 'if there are parent IDs, add breadcrumb and set URL',
-      // 4: 'if parent was found, does the parent have a parent?'
-    };
-    console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
+    // var parentTodos = {
+    //   // 1: 'Respect the parent term context: who/what/where'
+    //   // 2: 'scan the taxonomy and get any parent IDs',
+    //   // 3: 'if there are parent IDs, add breadcrumb and set URL',
+    //   // 4: 'if parent was found, does the parent have a parent?'
+    // };
+    // console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
 
     if (parents == undefined || parents == null) {
       // no parent breadcrumb preset, exiting
@@ -158,7 +158,10 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
         return;
       }
 
-      emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+      if (activeParent.primary == facet) {
+        // only insert crumb if it respects the original term context: who/what/where
+        emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+      }
 
       // get parents of parent
       if (activeParent.parents) {
