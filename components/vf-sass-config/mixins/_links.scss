@@ -2,23 +2,39 @@
   $vf-link-color: $vf-link-color,
   $vf-link-hover-color: $vf-link-hover-color,
   $vf-link-visited-color: $vf-link-visited-color,
-  $vf-link-disabled-color: $vf-link-disabled-color) {
+  $vf-link-disabled-color: $vf-link-disabled-color,
+  $vf-include-normalisations: $vf-include-normalisations) {
+
+  /// @todo Add documentation about how/when/where to expect, use $vf-include-normalisations
+  @if $vf-include-normalisations == true {
+    border-bottom: none;
+  }
 
   color: $vf-link-color;
 
-  border-bottom: none;
-
   &:visited {
     color: $vf-link-visited-color;
+
+    @if $vf-include-normalisations == true {
+      border-bottom: none;
+    }
   }
 
   &:hover {
     color: $vf-link-hover-color;
+
+    @if $vf-include-normalisations == true {
+      border-bottom: none;
+    }
   }
 
   &[disabled] {
     color: $vf-link-disabled-color;
     cursor: not-allowed;
+
+    @if $vf-include-normalisations == true {
+      border-bottom: none;
+    }
   }
 }
 
