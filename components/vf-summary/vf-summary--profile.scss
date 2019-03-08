@@ -1,6 +1,6 @@
 .vf-summary--profile {
   grid-column-gap: 0;
-  grid-template-columns: minmax(0, auto) 1fr;
+  grid-template-columns: minmax( 0, var(--vf-icon--avatar-width) ) 1fr;
   grid-template-rows: auto;
   margin-bottom: 48px;
 
@@ -68,15 +68,17 @@
 // variants
 
 .vf-summary--profile-l {
+  --vf-icon--avatar-width: 128px;
+
   .vf-summary__email {
     --vf-text-margin--bottom: 8px;
   }
-  .vf-summary__image {
-    max-width: 127px;
-  }
+
 }
 
 .vf-summary--profile-r {
+  --vf-icon--avatar-width: 80px;
+
   .vf-summary__title {
     --vf-text-margin--bottom: 8px;
   }
@@ -88,15 +90,15 @@
   }
   .vf-summary__image {
     margin-right: 16px;
-    max-width: 87px;
   }
 }
 
 
 .vf-summary--profile-s {
+  --vf-icon--avatar-width: 60px;
+
   .vf-summary__image {
     margin-right: 8px;
-    max-width: 57px;
   }
   .vf-summary__text {
     @include set-type(body--s);
