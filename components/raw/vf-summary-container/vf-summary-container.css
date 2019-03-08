@@ -260,15 +260,28 @@
   --vf-text-margin--bottom: 16px;
 }
 
+.vf-summary--profile {
+  --vf-icon--avatar-width: 178px;
+}
+
 .vf-summary {
   align-self: start;
   display: grid;
   grid-column-gap: 16px;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .vf-summary > *:last-child {
   margin-bottom: 0;
+}
+
+.vf-summary__link--overlay {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .vf-summary__button {
@@ -311,6 +324,7 @@
 
 .vf-summary__link {
   color: #287ae2;
+  z-index: 5150;
 }
 
 .vf-summary__link:visited {
