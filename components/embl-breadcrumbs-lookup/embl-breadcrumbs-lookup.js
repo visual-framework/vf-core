@@ -89,7 +89,8 @@ function emblGetTaxonomy(url) {
 
 /**
  * Receive a term and its context and create a breadcrumb
- * @example emblBreadcrumbAppend(term,facet,type)
+ * @example emblBreadcrumbAppend(breadcrumbTarget,term,facet,type)
+ * @param {dom elements} [breadcrumbTarget]  - elements with data-embl-js-breadcrumbs-lookup
  * @param {string} [termName]  - the taxonomy item found, e.g. `Cancer`
  * @param {string} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
  * @param {string} [type]  - if this is a `primary` or `related` path
