@@ -56,8 +56,6 @@ function emblBreadcrumbsLookup(metaProperties) {
 function emblGetTaxonomy(url) {
   var url = url || 'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-ontology&source=contenthub';
 
-  // from https://developers.google.com/web/fundamentals/primers/promises
-  // Return a new promise.
   return new Promise(function(resolve, reject) {
     // Do the usual XHR stuff
     var req = new XMLHttpRequest();
@@ -79,12 +77,14 @@ function emblGetTaxonomy(url) {
 
     // Handle network errors
     req.onerror = function() {
-      reject(Error("Network Error"));
+      reject(Error("Error loading ontology"));
+
     };
 
     // Make the request
     req.send();
   });
+
 }
 
 /**
@@ -250,7 +250,11 @@ function emblBreadcrumbs() {
     emblBreadcrumbsLookup(emblContentMetaProperties_Read());
 
   }, function(error) {
-    console.error("Failed to get EMBL taxonomy", error);
+    console.warn("Failed to get EMBL ontology", error);
+    var emblBreadcrumbTarget = document.querySelectorAll('[data-embl-js-breadcrumbs-lookup]');
+    if (emblBreadcrumbTarget.length > 0) {
+      emblBreadcrumbTarget[0].innerHTML = '<!-- Breadcrumbs failed to render due to network issue -->';
+    }
   });
 }
 
