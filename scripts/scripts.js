@@ -748,8 +748,6 @@ function emblContentHub() {
   emblContentHubFetch();
 }
 
-emblContentHub();
-
 // embl-content-meta-properties
 
 // In addition to being queried by other patterns' JS, this could
