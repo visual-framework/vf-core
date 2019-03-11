@@ -40,7 +40,9 @@ $vf-masthead__title-text--color: set-color(vf-color-white);
 }
 
 .vf-masthead__heading__link {
-  color: inherit;
+  @include inline-link($vf-masthead__title-text--color,$vf-masthead__title-text--color,$vf-masthead__title-text--color,$vf-masthead__title-text--color);
+
+  color: $vf-masthead__title-text--color;
   text-decoration: none;
   z-index: 5150;
 }
