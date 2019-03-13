@@ -216,7 +216,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
   if (type == 'primary') {
     // remove any loading text
-    var loadingText = document.querySelectorAll('.embl-breadcrumbs-lookup__loading-text');
+    var loadingText = document.querySelectorAll('.embl-breadcrumbs-lookup__ghosting');
     if (loadingText.length > 0) { loadingText[0].remove(); }
 
     // add breadcrumb
