@@ -1,10 +1,20 @@
 // embl-breadcrumbs-lookup
 
 .embl-breadcrumbs-lookup--ghosting {
-  background: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="300px" height="7.8px" viewBox="0 0 300 7.8" style="enable-background:new 0 0 300 7.8;" xml:space="preserve"><style>.st0{fill: rgb(200,200,200);}</style><rect class="st0" width="59" height="7.8"/><rect x="64.8" class="st0" width="59" height="7.8"/><rect x="171.9" class="st0" width="24.3" height="7.8"/><rect x="202.1" class="st0" width="46.1" height="7.8"/><rect x="253.9" class="st0" width="46.1" height="7.8"/></svg>') left top no-repeat;
-  background-size: contain;
-  color: set-color(vf-color-gray);
+  animation: embl-breadcrumbs-lookup-ghosting-animation 4s ease-in-out infinite alternate;
+  background: 50% top / 15% 60% linear-gradient(90deg, set-ui-color(vf-ui-color-gray-light) 0%, set-ui-color(vf-ui-color-gray) 30%, set-ui-color(vf-ui-color-gray) 50%, set-ui-color(vf-ui-color-gray-light) 100%);
   display: block;
-  min-height: 27px;
-  min-width: 100%;
+  filter: blur(1rem);
+  height: 17px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  mask-border: url('../assets/embl-breadcrumbs-lookup/assets/embl-breadcrumbs-lookup-ghost.svg') stretch;
+  max-width: 60rem;
+  width: 100%;
+}
+
+@keyframes embl-breadcrumbs-lookup-ghosting-animation {
+  to {
+    background-position: 100%;
+  }
 }
