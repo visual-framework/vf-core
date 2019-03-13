@@ -87,10 +87,26 @@
   margin: 0 0 16px 0;
   margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
   margin: 0 0 20px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .vf-links__list .vf-badge {
   margin-left: 8px;
+}
+
+.vf-links__list--has-image .vf-list__item {
+  display: grid;
+  grid-template-columns: minmax(0, 60px) auto;
+}
+
+.vf-list__image + .vf-list__link {
+  grid-column: 2;
+}
+
+.vf-list__image {
+  justify-self: center;
 }
 
 .vf-links__meta {
