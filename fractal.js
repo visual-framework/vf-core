@@ -16,21 +16,8 @@ fractal.docs.set('path', __dirname + '/docs');
 /* Handlebars with custom helpers */
 const handlebars = require('gulp-compile-handlebars');
 const hljs = require('highlight.js');
-const hbs = require('@frctl/handlebars')({
+const nunj = require('@frctl/nunjucks')({
   helpers: {
-    striptags: function(txt,context){
-      txt = txt.fn(context);
-      if(typeof txt == "undefined") return;
-      // the regular expresion
-      var regexp = /<[\/\w]+>/g
-      // replacing the text
-      return txt.replace(regexp, '');
-    },
-    escapetags: function(txt,context){
-      txt = txt.fn(context);
-      if(typeof txt == "undefined") return;
-      return handlebars.Handlebars.Utils.escapeExpression(txt);
-    },
     codeblockhtml: function(txt,context){
       txt = txt.fn(context);
       if(typeof txt == "undefined") return;
@@ -43,20 +30,12 @@ const hbs = require('@frctl/handlebars')({
       return '<code class="Code Code--lang-js vf-code-example"><pre class="vf-code-example__pre">' +
       hljs.highlight('js', txt).value + '</pre></code>';
     }
-    // bold: function(options) {
-    //   return new handlebars.Handlebars.SafeString(
-    //       '<strong class="mybold">'
-    //       + options.fn(this)
-    //       + '</strong>');
-    // },
-    // uppercase: function(str) {
-    //     return str.toUpperCase();
-    // }
   }
 });
 
-fractal.components.engine(hbs); /* set as the default template engine for components */
-fractal.docs.engine(hbs); /* you can also use the same instance for documentation, if you like! */
+fractal.components.set('ext', '.nunj'); // look for files with a .nunj file extension
+fractal.components.engine(nunj); /* set as the default template engine for components */
+fractal.docs.engine(nunj); /* you can also use the same instance for documentation, if you like! */
 
 
 /* configure components */
@@ -118,10 +97,3 @@ VFTheme.addLoadPath(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/views');
 VFTheme.addStatic(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/assets', '/');
 
 fractal.web.theme(VFTheme);
-
-// fractal.components.set('resources', {
-//   scss: {
-//     label: 'SCSS',
-//     match: ['**/*.scss']
-//   }
-// });
