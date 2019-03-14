@@ -139,6 +139,48 @@ embl-grid embl-grid--has-sidebar
       <hr class="vf-divider" />
     
   
+    
+      <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#vf-link--secondary" id="vf-link--secondary">Variant Secondary</a></h3>
+
+<p class="vf-text">
+  <a class="vf-link--secondary" href="#">A secondary link</a>
+</p>
+
+<p class="vf-text">
+  <a class="vf-link vf-link--secondary vf-link--secondary--hover" href="#">A secondary link :hover</a>
+</p>
+
+<p class="vf-text">
+  <a class="vf-link vf-link--secondary vf-link--secondary--visited" href="#">A secondary link :visited</a>
+</p>
+
+<p class="vf-text">
+  <a class="vf-link--secondary" href="#" disabled>A secondary link :disabled</a>
+</p>
+
+<div class="vf-grid">
+<pre class="vf-code-example__pre">
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link--secondary"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>A secondary link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link vf-link--secondary vf-link--secondary--hover"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>A secondary link :hover<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link vf-link--secondary vf-link--secondary--visited"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>A secondary link :visited<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link--secondary"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">disabled</span>&gt;</span>A secondary link :disabled<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</pre>
+</div>
+
+      <hr class="vf-divider" />
+    
+  
   </div>
   </div></div>
 
@@ -204,6 +246,12 @@ embl-grid embl-grid--has-sidebar
       
       <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--c99b935bdc8375e5af5c78f453cef3e8">package.json</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--c4dfd8547ab02bc548da73d5618bd554">vf-link--secondary.scss</a>
       </li>
       
     
@@ -279,6 +327,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-comment">// pattern specific styles</span>
 
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-link.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-link--secondary.scss'</span>;
 </pre>
           </code>
           
@@ -291,7 +340,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <span class="Meta-value">components/vf-link/index.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">218 Bytes</span>
+        <span class="Meta-value">253 Bytes</span>
     </section>
     
   
@@ -315,8 +364,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attr">"files"</span>: [
     <span class="hljs-string">"index.scss"</span>,
     <span class="hljs-string">"vf-link.scss"</span>,
+    <span class="hljs-string">"vf-link--secondary.scss"</span>,
     <span class="hljs-string">"vf-link.css"</span>,
     <span class="hljs-string">"vf-link.hbs"</span>,
+    <span class="hljs-string">"vf-link--secondary.hbs"</span>,
     <span class="hljs-string">"vf-link.config.yml"</span>
   ],
   <span class="hljs-attr">"test"</span>: <span class="hljs-string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,
@@ -349,7 +400,46 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <span class="Meta-value">components/vf-link/package.json</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">887 Bytes</span>
+        <span class="Meta-value">948 Bytes</span>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--c4dfd8547ab02bc548da73d5618bd554">
+    <!--  -->
+        <div class="FileBrowser-itemPreview">
+          
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+            <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-link</span>
+
+<span class="hljs-variable">$vf-link--secondary-color</span>: set-color(vf-color-gray) !default;
+<span class="hljs-variable">$vf-link--secondary-color--hover</span>: lighten(saturate(adjust-hue(<span class="hljs-variable">$vf-link-color</span>, <span class="hljs-number">5</span>), <span class="hljs-number">32.54</span>), <span class="hljs-number">10.78</span>) !default;
+<span class="hljs-variable">$vf-link--secondary-color--visited</span>: set-color(vf-color-gray-bright) !default;
+
+<span class="hljs-selector-class">.vf-link--secondary</span> {
+  @<span class="hljs-keyword">include</span> inline-link(<span class="hljs-variable">$vf-link--secondary-color</span>, <span class="hljs-variable">$vf-link--secondary-color--hover</span>, <span class="hljs-variable">$vf-link--secondary-color--visited</span>, <span class="hljs-variable">$vf-include-normalisations</span>: true);
+}
+
+<span class="hljs-selector-class">.vf-link--secondary--visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-link--secondary-color--visited</span>;
+}
+
+<span class="hljs-selector-class">.vf-link--secondary--hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-link--secondary-color--hover</span>;
+}
+</pre>
+          </code>
+          
+        </div>
+
+        <strong class="Meta-key">URL:</strong>
+        <span class="Meta-value"><a data-no-pjax href="../raw/vf-link/vf-link--secondary.scss"><span>/components/raw/vf-link/vf-link--secondary.scss</span></a></span>
+
+        <strong class="Meta-key">Filesystem Path:</strong>
+        <span class="Meta-value">components/vf-link/vf-link--secondary.scss</span>
+
+        <strong class="Meta-key">Size:</strong>
+        <span class="Meta-value">593 Bytes</span>
     </section>
     
   
@@ -391,6 +481,39 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-link--hover</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#4286ff</span>;
 }
+
+<span class="hljs-selector-class">.vf-link--secondary</span> {
+  <span class="hljs-attribute">border-bottom</span>: none;
+  <span class="hljs-attribute">text-decoration</span>: underline;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+}
+
+<span class="hljs-selector-class">.vf-link--secondary</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">border-bottom</span>: none;
+  <span class="hljs-attribute">text-decoration</span>: underline;
+}
+
+<span class="hljs-selector-class">.vf-link--secondary</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#4286ff</span>;
+  <span class="hljs-attribute">border-bottom</span>: none;
+  <span class="hljs-attribute">text-decoration</span>: underline;
+}
+
+<span class="hljs-selector-class">.vf-link--secondary</span><span class="hljs-selector-attr">[disabled]</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+  <span class="hljs-attribute">cursor</span>: not-allowed;
+  <span class="hljs-attribute">border-bottom</span>: none;
+  <span class="hljs-attribute">text-decoration</span>: underline;
+}
+
+<span class="hljs-selector-class">.vf-link--secondary--visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#b9b3a8</span>;
+}
+
+<span class="hljs-selector-class">.vf-link--secondary--hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#4286ff</span>;
+}
 </pre>
           </code>
           
@@ -403,7 +526,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <span class="Meta-value">components/vf-link/vf-link.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">466 Bytes</span>
+        <span class="Meta-value">999 Bytes</span>
     </section>
     
   
@@ -418,6 +541,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-link</span> {
   @<span class="hljs-keyword">include</span> inline-link;
 }
+
 <span class="hljs-selector-class">.vf-link--visited</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-link-visited-color</span>;
 }
@@ -437,7 +561,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <span class="Meta-value">components/vf-link/vf-link.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">198 Bytes</span>
+        <span class="Meta-value">199 Bytes</span>
     </section>
     
   
