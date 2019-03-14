@@ -42,7 +42,7 @@ const syntax_scss = require('postcss-scss');
 const gulpStylelint = require('gulp-stylelint');
 
 // Image things
-const svgo = require('gulp-svgo');
+const svgmin = require('gulp-svgmin');
 
 // JS Stuff
 const concat = require('gulp-concat');
@@ -194,10 +194,10 @@ gulp.task('pattern-assets', function() {
 // -----------------------------------------------------------------------------
 // Pattern Assets
 // -----------------------------------------------------------------------------
-gulp.task('images', () => {
+gulp.task('svg', () => {
   return gulp
     .src('./components/**/*.svg')
-    .pipe(svgo())
+    .pipe(svgmin())
     .pipe(gulp.dest('./components'));
 });
 
@@ -335,7 +335,7 @@ gulp.task('watch', function(done) {
   fractal.watch();
   gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
   gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*', gulp.series('images', 'pattern-assets')).on('change', reload);
+  gulp.watch('./components/**/**/assets/*', gulp.series('svg', 'pattern-assets')).on('change', reload);
 });
 
 // -----------------------------------------------------------------------------
