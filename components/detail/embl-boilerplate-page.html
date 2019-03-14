@@ -162,82 +162,179 @@ site.</p>
 
 <span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-no-js"</span>&gt;</span>
+
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-  {{&gt; @vf-no-js }}
-  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{{ _target.title }} | {{ _config.project.title }}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-comment">// Detect if JS is on and swap vf-no-js for vf-js on the html element</span>
+        (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">H</span>) </span>{
+            H.className = H.className.replace(<span class="hljs-regexp">/\bvf-no-js\b/</span>, <span class="hljs-string">'vf-js'</span>)
+        })(<span class="hljs-built_in">document</span>.documentElement);
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span> | Visual Framework 2.0<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1, minimum-scale=1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1, minimum-scale=1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span>&gt;</span>
 
-  {{&gt; @vf-favicon}}
-  {{&gt; @embl-content-meta-properties meta-who="Group Jane" meta-where="Barcelona" meta-what="research,cancer" meta-active="what"}}
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"apple-touch-icon"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"180x180"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"32x32"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"16x16"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"manifest"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"mask-icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#ffffff"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"msapplication-TileColor"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#ffffff"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"theme-color"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#ffffff"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Content descriptors --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:who"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Group Jane"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- the people, groups and teams involved --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:where"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Barcelona"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- at which EMBL sites the content applies --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:what"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"research,cancer"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- the activities covered --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:active"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"what"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- which of the who/what/where is active --&gt;</span>
 
-  {{#if _config.project.environment.local }}
-  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ path '/css/styles.css' }}"</span>&gt;</span>
-  {{/if}}
-  {{#if _config.project.environment.production }}
-  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/css/styles.css"</span>&gt;</span>
-  {{/if}}
+    <span class="hljs-comment">&lt;!-- Content role --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:utility"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-8"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- if content is task and work based or if is meant to inspire --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:reach"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-5"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- if content is externally (public) or internally focused (those that work at EMBL) --&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Page infromation --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:maintainer"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- the contact person or group responsible for the page --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:last-review"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- the last time the page was reviewed or updated --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:review-cycle"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- how long in days before the page should be checked --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:expiry"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- if there is a fixed point in time when the page is no longer relevant --&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/css/styles.css"</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-header"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=574&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-header"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=574&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
 
-  <span class="hljs-comment">&lt;!-- dismissible banner --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--bottom vf-banner--phase"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"Close notice"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content | "</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text vf-text--heading-r"</span>&gt;</span>
-            Don't need to customise the EMBL Design Language for Websites?
-          <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>Here's the core CSS and JS you need. Don't forget to <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>consult the pattern library<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-      {{~#codeblockhtml~}}
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/css/styles.css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/scripts/scripts.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-      {{/codeblockhtml}}
+    <span class="hljs-comment">&lt;!-- dismissible banner --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--bottom vf-banner--phase"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"Close notice"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content | "</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text vf-text--heading-r"</span>&gt;</span>
+                    Don't need to customise the EMBL Design Language for Websites?
+                <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>Here's the core CSS and JS you need. Don't forget to <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>consult the pattern library<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">code</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"Code Code--lang-html vf-code-example"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-code-example__pre"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-tag"</span>&gt;</span>&amp;lt;<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-name"</span>&gt;</span>link<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-attr"</span>&gt;</span>rel<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>=<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-string"</span>&gt;</span>"stylesheet"<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-attr"</span>&gt;</span>href<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>=<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-string"</span>&gt;</span>"https://dev.assets.emblstatic.net/vf/css/styles.css"<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>&amp;gt;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-tag"</span>&gt;</span>&amp;lt;<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-name"</span>&gt;</span>script<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-attr"</span>&gt;</span>src<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>=<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-string"</span>&gt;</span>"https://dev.assets.emblstatic.net/vf/scripts/scripts.js"<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>&amp;gt;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"undefined"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-tag"</span>&gt;</span>&amp;lt;/<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hljs-name"</span>&gt;</span>script<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>&amp;gt;<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-body"</span>&gt;</span>
-    {{&gt; @vf-intro }}
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container | embl-grid embl-grid--has-sidebar"</span>&gt;</span>
-
-      {{&gt; '@vf-section-header' section-title='Latest Press Releases'}}
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container__content"</span>&gt;</span>
-        {{ render '@vf-news-item' }}
-        {{ render '@vf-news-item' }}
-        {{ render '@vf-news-item' }}
-        {{ render '@vf-news-item' }}
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container__sidebar"</span>&gt;</span>
-        {{ render '@vf-news-item--snippet' }}
-        {{ render '@vf-news-item--snippet' }}
-        {{ render '@vf-news-item--snippet' }}
-      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
     <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container | embl-grid embl-grid--alt"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-body"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-intro | embl-grid embl-grid--has-centered-content"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-intro__heading vf-intro__heading--has-tag"</span>&gt;</span>Cancer <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-badge vf-badge--primary vf-badge--phases"</span>&gt;</span>BETA<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-lede"</span>&gt;</span>Cancer is a generic term for lots of different diseases in which cells divide many more times than usual. <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>This abnormal growth<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> can affect many cell types in almost any part of the body.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-      {{&gt; '@vf-section-header' section-title='Latest Press Releases'}}
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-intro__text"</span>&gt;</span>Cancer is a multi-stage process. Normal cells begin to divide abnormally, spreading beyond their normal boundaries, and abnormal tissue growth causes swellings called tumours to form. Tumours can be benign – with no harmful effect on the
+                    body – or malignant, invading healthy tissue and interfering with normal bodily functions.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-intro__text"</span>&gt;</span>There are more than 100 types of cancer and symptoms vary depending on the type. <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>Read more about Cancer<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-      {{&gt; '@vf-figure'}}
+        <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container | embl-grid embl-grid--has-sidebar"</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-section-header"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-section-header__heading"</span>&gt;</span>Latest Press Releases<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container__content"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__date vf-text vf-text--body-xs"</span>&gt;</span>22 June 2018<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__title vf-text vf-text--heading-r"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Miniature testing of drug pairs on tumour biopsies<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__category"</span>&gt;</span>General<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__text vf-text vf-text--regular"</span>&gt;</span>Combinations of cancer drugs can be quickly and cheaply tested using a novel microfluidic device<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=569&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__date vf-text vf-text--body-xs"</span>&gt;</span>22 June 2018<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__title vf-text vf-text--heading-r"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Miniature testing of drug pairs on tumour biopsies<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__category"</span>&gt;</span>General<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__text vf-text vf-text--regular"</span>&gt;</span>Combinations of cancer drugs can be quickly and cheaply tested using a novel microfluidic device<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"{{ path '/scripts/scripts.js' }}"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__date vf-text vf-text--body-xs"</span>&gt;</span>22 June 2018<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__title vf-text vf-text--heading-r"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Miniature testing of drug pairs on tumour biopsies<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__category"</span>&gt;</span>General<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__text vf-text vf-text--regular"</span>&gt;</span>Combinations of cancer drugs can be quickly and cheaply tested using a novel microfluidic device<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__date vf-text vf-text--body-xs"</span>&gt;</span>22 June 2018<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__title vf-text vf-text--heading-r"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Miniature testing of drug pairs on tumour biopsies<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__category"</span>&gt;</span>General<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__text vf-text vf-text--regular"</span>&gt;</span>Combinations of cancer drugs can be quickly and cheaply tested using a novel microfluidic device<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container__sidebar"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item vf-news-item--snippet"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__title vf-text vf-text--heading-r"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Miniature testing of drug pairs on tumour biopsies<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__source"</span>&gt;</span>Sanger Institute<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item vf-news-item--snippet"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__title vf-text vf-text--heading-r"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Miniature testing of drug pairs on tumour biopsies<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__source"</span>&gt;</span>Sanger Institute<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item vf-news-item--snippet"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__title vf-text vf-text--heading-r"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Miniature testing of drug pairs on tumour biopsies<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-item__source"</span>&gt;</span>Sanger Institute<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-news-container | embl-grid embl-grid--alt"</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-section-header"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-section-header__heading"</span>&gt;</span>Latest Press Releases<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-figure"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-figure__image"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../assets/vf-figure/assets/figure-example.png"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-figure__caption"</span>&gt;</span>Version, 1982, Adenovirus with 217 dots<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=569&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../scripts/scripts.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 
   </pre>
   

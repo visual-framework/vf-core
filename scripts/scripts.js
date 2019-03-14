@@ -434,7 +434,7 @@ function emblContentHubLoaderHtmlImports() {
 			return "";			// neither slash found, assume no path (e.g. "file.ext" returns "" as path)
 
 		return url.substr(0, last_slash + 1);
-	}
+	};
 
 	// Determine base URL of document.
 	const baseElem = document.querySelector("base");
@@ -453,7 +453,7 @@ function emblContentHubLoaderHtmlImports() {
 	function GetBaseURL()
 	{
 		return GetPathFromURL(location.origin + location.pathname) + baseHref;
-	}
+	};
 
 	function FetchAs(url, responseType)
 	{
