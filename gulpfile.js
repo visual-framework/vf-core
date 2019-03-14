@@ -35,7 +35,6 @@ const nodeModuleImport = require('@node-sass/node-module-importer');
 const recursive = require('./tools/css-generator/recursive-readdir');
 
 // Linting things
-const prettier = require('gulp-prettier');
 const postcss     = require('gulp-postcss');
 const reporter    = require('postcss-reporter');
 const syntax_scss = require('postcss-scss');
