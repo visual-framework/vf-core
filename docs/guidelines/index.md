@@ -1,6 +1,6 @@
 ---
 title: Developing patterns
-label: Guidelines
+label: Coding guidelines and standards
 order: 3
 isIndex: true
 ---
