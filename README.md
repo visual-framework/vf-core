@@ -88,7 +88,7 @@ There are a few ways that we discuss and track ideas:
 
 ## Versioning
 
-As not all users of the Visual Framework will be able to update to the very latest and we do not wish to hold others back, we are using a semantic versioning style of releases.
+As not all users of the Visual Framework will be able to update to the very latest and we do not wish to hold others back, we are using a [semantic versioning](https://semver.org/) style of releases.
 
 | Major release | Minor release | Note |
 | ------------- | ------------- | ---- |
@@ -101,10 +101,6 @@ As not all users of the Visual Framework will be able to update to the very late
 | "             | v2.1.1        | Tagged patch release |
 | 2.2           | v2.2.0        | Minor release with possible breaking changes |
 | 3.0           | v3.0.0        | Major release with many breaking changes|
-
-Difference between major, minor releases:
-- Minor releases (.1, .2, .3...) can have breaking changes and any such changes will be detailed and tested.
-- Patch releases (0.0.X) will not have changes to code structure or parts and will mainly add features or update visual assets (such as logos or icon fonts).
 
 We support the last two minor releases with bug fixes and branding. New features will only be added to the current and development versions.
 
