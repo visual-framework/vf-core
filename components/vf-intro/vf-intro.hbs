@@ -2,8 +2,8 @@
   <div><!-- empty --></div>
   <div>
     <h1 class="vf-intro__heading {{#if vf-intro-phase}}vf-intro__heading--has-tag{{/if}}
-">Cancer {{#if vf-intro-phase}}<a href="" class="vf-badge vf-badge--primary vf-badge--phases">{{vf-intro-phase}}</a>{{/if}}</h1>
-    {{render '@vf-lede'}}
+">{{vf-intro--heading}} {{#if vf-intro-phase}}<a href="" class="vf-badge vf-badge--primary vf-badge--phases">{{vf-intro-phase}}</a>{{/if}}</h1>
+    {{> '@vf-lede' vf-lede-text=vf-intro_lede}}
     {{#each vf-intro-text}}
       <p class="vf-intro__text">{{{this}}}</p>
     {{/each}}
