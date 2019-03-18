@@ -1,8 +1,11 @@
-# This script runs on gitlabci.ebi.ac.uk
-# https://gitlabci.ebi.ac.uk/emblorg/visual-framework
+# This script runs on gitlab.ebi.ac.uk
+# https://gitlab.ebi.ac.uk/emblorg/vf-core-mirror
 # We do it to deploy the pattern library for view
 # http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/
-# https://dev.assets.emblstatic.net/vf/
+# https://dev.assets.emblstatic.net/vf/develop/
+# https://dev.assets.emblstatic.net/vf/{tag}/ (eg v2.1.2)
+# https://dev.assets.emblstatic.net/vf/{minor}/ (eg v2.1)
+# https://dev.assets.emblstatic.net/vf/{major}/ (eg v2)
 image: node:10.9.0
 
 variables:
@@ -53,7 +56,10 @@ deploy-dev:
   script:
     - for VM in ${VM_DEV}; do rsync -acv --delete-after build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH}/; done;
   only:
+    # only match on develop branch, or specific tag patterns
     - develop
+    - /^v\d+\.\d+\.\d+$/
+    - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\d+$/
 
 deploy-prod:
   stage: deploy
@@ -66,10 +72,9 @@ deploy-prod:
   script:
     - for VM in ${VM_PROD}; do rsync -acv --delete-after build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH}/; done;
   only:
-    - tags
-  except:
-    - branches
-    - /^.visual-framework\/.*$/
+    # only match on specific tag patterns
+    - /^v\d+\.\d+\.\d+$/
+    - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\d+$/
 
 deploy-aws-dev:
   stage: deploy
@@ -81,7 +86,10 @@ deploy-aws-dev:
   script:
     - bin/deploy-aws
   only:
+    # only match on develop branch, or specific tag patterns
     - develop
+    - /^v\d+\.\d+\.\d+$/
+    - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\d+$/
 
 deploy-aws-prod:
   stage: deploy
@@ -93,7 +101,6 @@ deploy-aws-prod:
   script:
     - bin/deploy-aws prod
   only:
-    - tags
-  except:
-    - branches
-    - /^.visual-framework\/.*$/
+    # only match on specific tag patterns
+    - /^v\d+\.\d+\.\d+$/
+    - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\d+$/
