@@ -1,0 +1,17 @@
+// vf-link
+
+$vf-link--secondary-color: set-color(vf-color-gray) !default;
+$vf-link--secondary-color--hover: lighten(saturate(adjust-hue($vf-link-color, 5), 32.54), 10.78) !default;
+$vf-link--secondary-color--visited: set-color(vf-color-gray-bright) !default;
+
+.vf-link--secondary {
+  @include inline-link($vf-link--secondary-color, $vf-link--secondary-color--hover, $vf-link--secondary-color--visited, $vf-include-normalisations: true);
+}
+
+.vf-link--secondary--visited {
+  color: $vf-link--secondary-color--visited;
+}
+
+.vf-link--secondary--hover {
+  color: $vf-link--secondary-color--hover;
+}
