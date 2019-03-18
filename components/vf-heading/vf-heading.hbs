@@ -1,8 +1,7 @@
-{{#with vf-heading-modifiers as |modifier|}}
-{{ log modifier }}
-  {{#each modifier as |modifier key|}}
-    <!-- {{ key }} -->
-    <{{this.element}} class="vf-text vf-text--heading{{this.modifiers}}">{{this.title}}</{{this.element}}>
+<!-- Variant modifiers from the pattern Yaml -->
+{{#each vf-heading-modifiers as |modifier type|}}
+  {{> @vf-heading--template modifier title=modifier.title }}
+{{/each}}
 
-  {{/each}}
-{{/with}}
+<!-- Variant modifier directly from vf-heading--template.hbs  -->
+{{> @vf-heading--template large="true" title="I'm a large headline" }}
