@@ -5,13 +5,33 @@ set -e;
 # abort on undefined variable
 set -u;
 
-# get current branch from git info
-PROJECT=${CI_PROJECT_NAME};
-BRANCH=$(echo "${CI_COMMIT_REF_NAME}" | cut -d'.' -f1-2); # first two parts, if tag name
+# CI_COMMIT_REF_NAME: The branch or tag name for which project is built
+# only the following options will be forwarded .gitlab-ci
+# - develop                 [for develop branch]
+# - vX.Y.Z                  [for stable releases]
+# - vX.Y.Z-(alpha|beta|rc)? [for pre-releases]
+BRANCHORTAG=${CI_COMMIT_REF_NAME};
+MINOR=$(echo "${BRANCHORTAG}" | cut -s -d'.' -f1-2); # vX.Y
+MAJOR=$(echo "${BRANCHORTAG}" | cut -s -d'.' -f1); # vX
+PRERELEASE=$(echo ${BRANCHORTAG} | cut -s -d'-' -f2); # null or (alpha|beta|rc)?
 
 # set project base
 SOURCE_PATH="build";
-DEPLOY_PATH="vf";
+DEPLOY_BASE="vf";
+
+# set deploy paths
+if [ "${BRANCHORTAG}" = "develop" ]; then
+  # if this is the develop branch, only deploy to develop folder
+  DEPLOY_PATHS="${DEPLOY_BASE}/${BRANCHORTAG}";
+elif [ -n "${PRERELEASE}" ]; then
+  # if this is a pre-release, only deploy to pre-release folder
+  DEPLOY_PATHS="${DEPLOY_BASE}/${BRANCHORTAG}";
+else
+  # if this is a stable release (ie not alpha, beta, rc)
+  # then also create major and minor versions
+  # NB: symlinks are not possible on AWS
+  DEPLOY_PATHS="${DEPLOY_BASE}/${BRANCHORTAG} ${DEPLOY_BASE}/${MINOR} ${DEPLOY_BASE}/${MAJOR}";
+fi;
 
 if [ "${1:-''}" = "prod" ]; then
   S3_BUCKET=${S3_BUCKET_PROD};
@@ -20,11 +40,14 @@ else
   S3_BUCKET=${S3_BUCKET_DEV};
 fi;
 
-# push to AWS (exclude bin and .git)
-aws s3 sync ${SOURCE_PATH} s3://${S3_BUCKET}/${DEPLOY_PATH} \
-  --exclude ".git*" \
-  --exclude "bin/*" \
-  --exclude "*.html" \
-  --delete \
-  --cache-control "max-age=${MAX_AGE:-60}" \
-  ;
+# iterate through deploy paths
+for DEPLOY_PATH in ${DEPLOY_PATHS}; do
+  # push to AWS (exclude bin, .git* and *.html)
+  aws s3 sync ${SOURCE_PATH} s3://${S3_BUCKET}/${DEPLOY_PATH} \
+    --exclude ".git*" \
+    --exclude "bin/*" \
+    --exclude "*.html" \
+    --delete \
+    --cache-control "max-age=${MAX_AGE:-60}" \
+    ;
+done;
