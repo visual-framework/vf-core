@@ -257,6 +257,31 @@ gulp.task('tokens:maps', () =>
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
 );
 
+theo.registerFormat(
+  "custom-properties.scss",
+  `
+  :root {
+  {{#each props as |prop|}}
+    {{#if prop.comment}}
+    {{{trimLeft (indent (comment (trim prop.comment)))}}}
+    {{/if}}
+    --{{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
+  {{/each}}
+  }
+`
+);
+
+
+
+gulp.task('tokens:props', () =>
+  gulp.src(['./components/vf-design-tokens/maps/*.yml'])
+    .pipe(theoG({
+      transform: { type: 'web' },
+      format: { type: 'custom-properties.scss' }
+    }))
+    .pipe(gulp.dest('./components/vf-sass-config/variables'))
+);
+
 // -----------------------------------------------------------------------------
 // Fractal Tasks
 // -----------------------------------------------------------------------------
@@ -355,7 +380,7 @@ gulp.task('dev', gulp.parallel(
 ));
 
 gulp.task('tokens', gulp.parallel(
-  'tokens:variables', 'tokens:typographic-scale', 'tokens:maps'
+  'tokens:variables', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
 ));
 
 gulp.task('prepush-test', gulp.parallel(
