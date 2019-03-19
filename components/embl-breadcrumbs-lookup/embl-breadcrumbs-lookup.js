@@ -56,8 +56,6 @@ function emblBreadcrumbsLookup(metaProperties) {
 function emblGetTaxonomy(url) {
   var url = url || 'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-ontology&source=contenthub';
 
-  // from https://developers.google.com/web/fundamentals/primers/promises
-  // Return a new promise.
   return new Promise(function(resolve, reject) {
     // Do the usual XHR stuff
     var req = new XMLHttpRequest();
@@ -79,17 +77,20 @@ function emblGetTaxonomy(url) {
 
     // Handle network errors
     req.onerror = function() {
-      reject(Error("Network Error"));
+      reject(Error("Error loading ontology"));
+
     };
 
     // Make the request
     req.send();
   });
+
 }
 
 /**
  * Receive a term and its context and create a breadcrumb
- * @example emblBreadcrumbAppend(term,facet,type)
+ * @example emblBreadcrumbAppend(breadcrumbTarget,term,facet,type)
+ * @param {dom elements} [breadcrumbTarget]  - elements with data-embl-js-breadcrumbs-lookup
  * @param {string} [termName]  - the taxonomy item found, e.g. `Cancer`
  * @param {string} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
  * @param {string} [type]  - if this is a `primary` or `related` path
@@ -133,14 +134,18 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
    * @param {string} [facet] - who, what, where
    */
   function getBreadcrumbParentTerm(parents,facet) {
-    var parentTodos = {
-      1: 'Respect the parent term context: who/what/where'
-      // 2: 'scan the taxonomy and get any parent IDs',
-      // 3: 'if there are parent IDs, add breadcrumb and set URL',
-      // 4: 'if parent was found, does the parent have a parent?'
-    };
-    console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
+    // var parentTodos = {
+    //   // 1: 'Respect the parent term context: who/what/where'
+    //   // 2: 'scan the taxonomy and get any parent IDs',
+    //   // 3: 'if there are parent IDs, add breadcrumb and set URL',
+    //   // 4: 'if parent was found, does the parent have a parent?'
+    // };
+    // console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
 
+    if (parents == undefined || parents == null) {
+      // no parent breadcrumb preset, exiting
+      return;
+    }
 
     function insertParent(activeParent) {
       if (activeParent == undefined || activeParent == null) {
@@ -148,7 +153,16 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
         return;
       }
       activeParent.url = activeParent.url || '#addPatternForTermsWithNoUrl';
-      emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+
+      if (activeParent.name.indexOf(' root term') > 0) {
+        // if we've reached a root term, abort lookups and don't insert a root term as a crumb
+        return;
+      }
+
+      if (activeParent.primary == facet) {
+        // only insert crumb if it respects the original term context: who/what/where
+        emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+      }
 
       // get parents of parent
       if (activeParent.parents) {
@@ -202,7 +216,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
   if (type == 'primary') {
     // remove any loading text
-    var loadingText = document.querySelectorAll('.embl-breadcrumbs-lookup__loading-text');
+    var loadingText = document.querySelectorAll('.embl-breadcrumbs-lookup__ghosting');
     if (loadingText.length > 0) { loadingText[0].remove(); }
 
     // add breadcrumb
@@ -236,7 +250,11 @@ function emblBreadcrumbs() {
     emblBreadcrumbsLookup(emblContentMetaProperties_Read());
 
   }, function(error) {
-    console.error("Failed to get EMBL taxonomy", error);
+    console.warn("Failed to get EMBL ontology", error);
+    var emblBreadcrumbTarget = document.querySelectorAll('[data-embl-js-breadcrumbs-lookup]');
+    if (emblBreadcrumbTarget.length > 0) {
+      emblBreadcrumbTarget[0].innerHTML = '<!-- Breadcrumbs failed to render due to network issue -->';
+    }
   });
 }
 
