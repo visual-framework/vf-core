@@ -1,4 +1,28 @@
-.embl-breadcrumbs-lookup--loading-text::before {
-  color: #707372;
-  content: 'Breadcrumbs are loading';
+.embl-breadcrumbs-lookup--ghosting {
+  -webkit-animation: embl-breadcrumbs-lookup-ghosting-animation 4s ease-in-out infinite alternate;
+          animation: embl-breadcrumbs-lookup-ghosting-animation 4s ease-in-out infinite alternate;
+  background: 50% top/15% 60% -webkit-gradient(linear, left top, right top, from(#d8d8d8), color-stop(30%, #f3f3f3), color-stop(50%, #f3f3f3), to(#d8d8d8));
+  background: 50% top/15% 60% linear-gradient(90deg, #d8d8d8 0%, #f3f3f3 30%, #f3f3f3 50%, #d8d8d8 100%);
+  display: block;
+  -webkit-filter: blur(1rem);
+          filter: blur(1rem);
+  height: 17px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  -webkit-mask-box-image: url("../assets/embl-breadcrumbs-lookup/assets/embl-breadcrumbs-lookup-ghost.svg") stretch;
+          mask-border: url("../assets/embl-breadcrumbs-lookup/assets/embl-breadcrumbs-lookup-ghost.svg") stretch;
+  max-width: 60rem;
+  width: 100%;
+}
+
+@-webkit-keyframes embl-breadcrumbs-lookup-ghosting-animation {
+  to {
+    background-position: 100%;
+  }
+}
+
+@keyframes embl-breadcrumbs-lookup-ghosting-animation {
+  to {
+    background-position: 100%;
+  }
 }

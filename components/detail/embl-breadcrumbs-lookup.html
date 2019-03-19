@@ -117,7 +117,7 @@ embl-grid embl-grid--has-sidebar
 <meta name="embl:expiry" content="2019-06-20"> <!-- if there is a fixed point in time when the page is no longer relevant -->
 
 <nav class="vf-breadcrumbs embl-breadcrumbs-lookup" aria-label="Breadcrumb" data-embl-js-breadcrumbs-lookup>
-  <div class="vf-text embl-breadcrumbs-lookup--loading-text"></div>
+  <div class="vf-list vf-list--inline | vf-breadcrumbs__list | embl-breadcrumbs-lookup--ghosting"></div>
 </nav>
 
 <div class="vf-grid">
@@ -149,7 +149,7 @@ embl-grid embl-grid--has-sidebar
 <span class="hljs-comment">&lt;!-- if there is a fixed point in time when the page is no longer relevant --&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs embl-breadcrumbs-lookup"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Breadcrumb"</span> <span class="hljs-attr">data-embl-js-breadcrumbs-lookup</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text embl-breadcrumbs-lookup--loading-text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list vf-list--inline | vf-breadcrumbs__list | embl-breadcrumbs-lookup--ghosting"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 </pre>
 </div>
@@ -309,9 +309,33 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <div class="FileBrowser-itemPreview">
           
           <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.embl-breadcrumbs-lookup--loading-text</span><span class="hljs-selector-pseudo">::before</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
-  <span class="hljs-attribute">content</span>: <span class="hljs-string">'Breadcrumbs are loading'</span>;
+            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.embl-breadcrumbs-lookup--ghosting</span> {
+  <span class="hljs-attribute">-webkit-animation</span>: embl-breadcrumbs-lookup-ghosting-animation <span class="hljs-number">4s</span> ease-in-out infinite alternate;
+          <span class="hljs-attribute">animation</span>: embl-breadcrumbs-lookup-ghosting-animation <span class="hljs-number">4s</span> ease-in-out infinite alternate;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">50%</span> top/<span class="hljs-number">15%</span> <span class="hljs-number">60%</span> <span class="hljs-built_in">-webkit-gradient</span>(linear, left top, right top, from(#d8d8d8), <span class="hljs-built_in">color-stop</span>(30%, #f3f3f3), <span class="hljs-built_in">color-stop</span>(50%, #f3f3f3), <span class="hljs-built_in">to</span>(#d8d8d8));
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">50%</span> top/<span class="hljs-number">15%</span> <span class="hljs-number">60%</span> <span class="hljs-built_in">linear-gradient</span>(90deg, #d8d8d8 0%, #f3f3f3 30%, #f3f3f3 50%, #d8d8d8 100%);
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">-webkit-filter</span>: <span class="hljs-built_in">blur</span>(1rem);
+          <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">blur</span>(1rem);
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">17px</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">-webkit-mask-box-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../assets/embl-breadcrumbs-lookup/assets/embl-breadcrumbs-lookup-ghost.svg"</span>) stretch;
+          <span class="hljs-attribute">mask-border</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../assets/embl-breadcrumbs-lookup/assets/embl-breadcrumbs-lookup-ghost.svg"</span>) stretch;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">60rem</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+@-<span class="hljs-keyword">webkit</span>-<span class="hljs-keyword">keyframes</span> embl-breadcrumbs-lookup-ghosting-animation {
+  <span class="hljs-selector-tag">to</span> {
+    <span class="hljs-attribute">background-position</span>: <span class="hljs-number">100%</span>;
+  }
+}
+
+@<span class="hljs-keyword">keyframes</span> embl-breadcrumbs-lookup-ghosting-animation {
+  <span class="hljs-selector-tag">to</span> {
+    <span class="hljs-attribute">background-position</span>: <span class="hljs-number">100%</span>;
+  }
 }
 </pre>
           </code>
@@ -325,7 +349,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.css</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">107 Bytes</span>
+        <span class="Meta-value">1.1 KB</span>
     </section>
     
   
@@ -393,8 +417,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblGetTaxonomy</span>(<span class="hljs-params">url</span>) </span>{
   <span class="hljs-keyword">var</span> url = url || <span class="hljs-string">'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-ontology&amp;source=contenthub'</span>;
 
-  <span class="hljs-comment">// from https://developers.google.com/web/fundamentals/primers/promises</span>
-  <span class="hljs-comment">// Return a new promise.</span>
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
     <span class="hljs-comment">// Do the usual XHR stuff</span>
     <span class="hljs-keyword">var</span> req = <span class="hljs-keyword">new</span> XMLHttpRequest();
@@ -416,17 +438,20 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
     <span class="hljs-comment">// Handle network errors</span>
     req.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-      reject(<span class="hljs-built_in">Error</span>(<span class="hljs-string">"Network Error"</span>));
+      reject(<span class="hljs-built_in">Error</span>(<span class="hljs-string">"Error loading ontology"</span>));
+
     };
 
     <span class="hljs-comment">// Make the request</span>
     req.send();
   });
+
 }
 
 <span class="hljs-comment">/**
  * Receive a term and its context and create a breadcrumb
- * @example emblBreadcrumbAppend(term,facet,type)
+ * @example emblBreadcrumbAppend(breadcrumbTarget,term,facet,type)
+ * @param {dom elements} [breadcrumbTarget]  - elements with data-embl-js-breadcrumbs-lookup
  * @param {string} [termName]  - the taxonomy item found, e.g. `Cancer`
  * @param {string} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
  * @param {string} [type]  - if this is a `primary` or `related` path
@@ -470,14 +495,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
    * @param {string} [facet] - who, what, where
    */</span>
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBreadcrumbParentTerm</span>(<span class="hljs-params">parents,facet</span>) </span>{
-    <span class="hljs-keyword">var</span> parentTodos = {
-      <span class="hljs-number">1</span>: <span class="hljs-string">'Respect the parent term context: who/what/where'</span>
-      <span class="hljs-comment">// 2: 'scan the taxonomy and get any parent IDs',</span>
-      <span class="hljs-comment">// 3: 'if there are parent IDs, add breadcrumb and set URL',</span>
-      <span class="hljs-comment">// 4: 'if parent was found, does the parent have a parent?'</span>
-    };
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Todos for getBreadcrumbParentTerm():'</span>,parentTodos);
+    <span class="hljs-comment">// var parentTodos = {</span>
+    <span class="hljs-comment">//   // 1: 'Respect the parent term context: who/what/where'</span>
+    <span class="hljs-comment">//   // 2: 'scan the taxonomy and get any parent IDs',</span>
+    <span class="hljs-comment">//   // 3: 'if there are parent IDs, add breadcrumb and set URL',</span>
+    <span class="hljs-comment">//   // 4: 'if parent was found, does the parent have a parent?'</span>
+    <span class="hljs-comment">// };</span>
+    <span class="hljs-comment">// console.log('Todos for getBreadcrumbParentTerm():',parentTodos);</span>
 
+    <span class="hljs-keyword">if</span> (parents == <span class="hljs-literal">undefined</span> || parents == <span class="hljs-literal">null</span>) {
+      <span class="hljs-comment">// no parent breadcrumb preset, exiting</span>
+      <span class="hljs-keyword">return</span>;
+    }
 
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">insertParent</span>(<span class="hljs-params">activeParent</span>) </span>{
       <span class="hljs-keyword">if</span> (activeParent == <span class="hljs-literal">undefined</span> || activeParent == <span class="hljs-literal">null</span>) {
@@ -485,7 +514,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <span class="hljs-keyword">return</span>;
       }
       activeParent.url = activeParent.url || <span class="hljs-string">'#addPatternForTermsWithNoUrl'</span>;
-      emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+
+      <span class="hljs-keyword">if</span> (activeParent.name.indexOf(<span class="hljs-string">' root term'</span>) &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-comment">// if we've reached a root term, abort lookups and don't insert a root term as a crumb</span>
+        <span class="hljs-keyword">return</span>;
+      }
+
+      <span class="hljs-keyword">if</span> (activeParent.primary == facet) {
+        <span class="hljs-comment">// only insert crumb if it respects the original term context: who/what/where</span>
+        emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+      }
 
       <span class="hljs-comment">// get parents of parent</span>
       <span class="hljs-keyword">if</span> (activeParent.parents) {
@@ -539,7 +577,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-keyword">if</span> (type == <span class="hljs-string">'primary'</span>) {
     <span class="hljs-comment">// remove any loading text</span>
-    <span class="hljs-keyword">var</span> loadingText = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'.embl-breadcrumbs-lookup__loading-text'</span>);
+    <span class="hljs-keyword">var</span> loadingText = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'.embl-breadcrumbs-lookup__ghosting'</span>);
     <span class="hljs-keyword">if</span> (loadingText.length &gt; <span class="hljs-number">0</span>) { loadingText[<span class="hljs-number">0</span>].remove(); }
 
     <span class="hljs-comment">// add breadcrumb</span>
@@ -573,7 +611,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     emblBreadcrumbsLookup(emblContentMetaProperties_Read());
 
   }, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
-    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Failed to get EMBL taxonomy"</span>, error);
+    <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">"Failed to get EMBL ontology"</span>, error);
+    <span class="hljs-keyword">var</span> emblBreadcrumbTarget = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-embl-js-breadcrumbs-lookup]'</span>);
+    <span class="hljs-keyword">if</span> (emblBreadcrumbTarget.length &gt; <span class="hljs-number">0</span>) {
+      emblBreadcrumbTarget[<span class="hljs-number">0</span>].innerHTML = <span class="hljs-string">'&lt;!-- Breadcrumbs failed to render due to network issue --&gt;'</span>;
+    }
   });
 }
 
@@ -620,7 +662,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.js</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">9.8 KB</span>
+        <span class="Meta-value">10.5 KB</span>
     </section>
     
   
@@ -632,9 +674,23 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
             <pre class="vf-code-example__pre"><span class="hljs-comment">// embl-breadcrumbs-lookup</span>
 
-<span class="hljs-selector-class">.embl-breadcrumbs-lookup--loading-text</span>::before {
-  <span class="hljs-attribute">color</span>: set-color(vf-color-gray);
-  <span class="hljs-attribute">content</span>: <span class="hljs-string">'Breadcrumbs are loading'</span>;
+<span class="hljs-selector-class">.embl-breadcrumbs-lookup--ghosting</span> {
+  <span class="hljs-attribute">animation</span>: embl-breadcrumbs-lookup-ghosting-animation <span class="hljs-number">4s</span> ease-in-out infinite alternate;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">50%</span> top / <span class="hljs-number">15%</span> <span class="hljs-number">60%</span> linear-gradient(<span class="hljs-number">90deg</span>, set-ui-color(vf-ui-color-gray-light) <span class="hljs-number">0%</span>, set-ui-color(vf-ui-color-gray) <span class="hljs-number">30%</span>, set-ui-color(vf-ui-color-gray) <span class="hljs-number">50%</span>, set-ui-color(vf-ui-color-gray-light) <span class="hljs-number">100%</span>);
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">filter</span>: blur(<span class="hljs-number">1rem</span>);
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">17px</span>;
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">5px</span>;
+  <span class="hljs-attribute">mask</span>-<span class="hljs-attribute">border</span>: url(<span class="hljs-string">'../assets/embl-breadcrumbs-lookup/assets/embl-breadcrumbs-lookup-ghost.svg'</span>) stretch;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">60rem</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+@keyframes embl-breadcrumbs-lookup-ghosting-animation {
+  to {
+    <span class="hljs-attribute">background-position</span>: <span class="hljs-number">100%</span>;
+  }
 }
 </pre>
           </code>
@@ -648,7 +704,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <span class="Meta-value">components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.scss</span>
 
         <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">152 Bytes</span>
+        <span class="Meta-value">709 Bytes</span>
     </section>
     
   
