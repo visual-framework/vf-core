@@ -305,9 +305,9 @@ theo.registerFormat("typography-map", result => {
     .first()
     .toJS();
   return `${theoGeneratedFileWarning}
-  // Source: ${path.basename(result.getIn(["meta", "file"]))}
+// Source: ${path.basename(result.getIn(["meta", "file"]))}
 
-  $vf-${category}--${type}: (
+$vf-${category}--${type}: (
 ${result
   .get("props")
   .map(
