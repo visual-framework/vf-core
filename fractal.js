@@ -17,6 +17,18 @@ fractal.docs.set('path', __dirname + '/docs');
 const handlebars = require('gulp-compile-handlebars');
 const hljs = require('highlight.js');
 const nunj = require('@frctl/nunjucks')({
+  // env: {
+  //   // Nunjucks environment opts: https://mozilla.github.io/nunjucks/api.html#configure
+  // },
+  // filters: {
+  //   // filter-name: function filterFunc(){}
+  // },
+  // globals: {
+  //   // global-name: global-val
+  // },
+  // extensions: {
+  //   // extension-name: function extensionFunc(){}
+  // },
   helpers: {
     codeblockhtml: function(txt,context){
       txt = txt.fn(context);
@@ -35,8 +47,8 @@ const nunj = require('@frctl/nunjucks')({
 
 fractal.components.set('ext', '.nunj'); // look for files with a .nunj file extension
 fractal.components.engine(nunj); /* set as the default template engine for components */
+fractal.docs.set('ext', '.nunj'); // look for files with a .nunj file extension
 fractal.docs.engine(nunj); /* you can also use the same instance for documentation, if you like! */
-
 
 /* configure components */
 fractal.components.set('default.status', 'alpha');
@@ -54,16 +66,8 @@ fractal.web.set('server.syncOptions', {
   sync: true
 });
 /* Theme */
-const mandelbrot = require('@frctl/mandelbrot');
-
-const VFTheme = mandelbrot({
-  // favicon: 'https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon.ico',
-  styles: [
-    '/local.css'
-  ],
-  format: 'YAML',
-  panels: ["html", "info", "resources"]
-});
+const vfTheme = require('./tools/vf-frctl-theme');
+const vfThemeConfig = vfTheme({}, fractal);
 
 fractal.components.set('statuses', {
   /* status definitions here */
@@ -92,8 +96,8 @@ fractal.components.set('statuses', {
 
 // Customise Fractal templates
 // https://fractal.build/guide/customisation/web-themes#template-customisation
-VFTheme.addLoadPath(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/views');
+// VFTheme.addLoadPath(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/views');
 // Specify the static assets directory that contains the custom stylesheet.
-VFTheme.addStatic(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/assets', '/');
+// VFTheme.addStatic(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/assets', '/');
 
-fractal.web.theme(VFTheme);
+fractal.web.theme(vfThemeConfig);
