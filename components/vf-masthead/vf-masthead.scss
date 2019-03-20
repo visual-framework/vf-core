@@ -2,49 +2,13 @@ $vf-masthead__title-text--color: set-color(vf-color-white);
 
 // vf-masthead
 
-.vf-inlay__header {
-  margin: 0 auto;
-  max-width: 76.5em;
-  padding: 0 1em;
-  position: relative;
-
-  .vf-navigation {
-    &::before {
-      background-color: inherit;
-      content: '';
-      height: 37px; // special number
-      left: 50%;
-      margin: 0 -50vw;
-      position: absolute;
-      right: 50%;
-      width: 100vw;
-      z-index: -1;
-    }
-  }
+.vf-header .vf-masthead {
+  display: grid;
+  grid-template-columns: minmax(var(--page-grid-gap), auto) minmax(auto, 76.5em) minmax(var(--page-grid-gap), auto);
 }
 
-.vf-masthead {
-
-  --vf-masthead__color--foreround-default: var(--vf-color-white);
-  --vf-masthead__color--background-default: var(--vf-color-green);
-
-  background-color: set-color(vf-color-green);
-  color: set-color(vf-color-white);
-
-  &::before {
-    background-color: inherit;
-    background-image: var( --vf-masthead__bg-image, 0);
-    background-repeat: no-repeat;
-    background-size: cover;
-    content: '';
-    height: 100%;
-    left: 50%;
-    margin: 0 -50vw;
-    position: absolute;
-    right: 50%;
-    width: 100vw;
-    z-index: -1;
-  }
+.vf-masthead__inner {
+  grid-column: 2 / -2;
 
   @media (min-width: $vf-breakpoint-l) {
     display: grid;
@@ -64,19 +28,9 @@ $vf-masthead__title-text--color: set-color(vf-color-white);
 
 
 .vf-masthead__heading {
-  @include set-type(heading--xl, $custom-margin-bottom: 8px);
+  @include set-type(heading--xl);
 
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-}
-
-.vf-masthead__heading--additional {
-  @include set-type(heading--s, $custom-margin-bottom: 0);
-
-  color: inherit;
-  position: relative;
-  top: -8px;
+  color: $vf-masthead__title-text--color;
 }
 
 .vf-masthead__sub-heading {
@@ -88,7 +42,7 @@ $vf-masthead__title-text--color: set-color(vf-color-white);
 .vf-masthead__heading__link {
   @include inline-link($vf-masthead__title-text--color,$vf-masthead__title-text--color,$vf-masthead__title-text--color,$vf-masthead__title-text--color);
 
-  color: inherit;
+  color: $vf-masthead__title-text--color;
   text-decoration: none;
   z-index: 5150;
 }
