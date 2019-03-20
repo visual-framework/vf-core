@@ -45,9 +45,9 @@ const nunj = require('@frctl/nunjucks')({
   }
 });
 
-fractal.components.set('ext', '.nunj'); // look for files with a .nunj file extension
+fractal.components.set('ext', '.njk'); // look for files with a .nunj file extension
 fractal.components.engine(nunj); /* set as the default template engine for components */
-fractal.docs.set('ext', '.nunj'); // look for files with a .nunj file extension
+fractal.docs.set('ext', '.njk'); // look for files with a .nunj file extension
 fractal.docs.engine(nunj); /* you can also use the same instance for documentation, if you like! */
 
 /* configure components */
