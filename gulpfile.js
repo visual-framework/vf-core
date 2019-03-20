@@ -380,17 +380,17 @@ gulp.task('scripts', gulp.series(
   'scripts:es5', 'scripts:modern'
 ));
 
-// Build as a static site for CI
-gulp.task('build', gulp.series(
-  'scss-lint', 'CSSGen', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
-));
-
 gulp.task('dev', gulp.parallel(
   'frctlStart', 'pattern-assets', 'css', 'scripts', 'watch'
 ));
 
 gulp.task('tokens', gulp.parallel(
   'tokens:variables', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
+));
+
+// Build as a static site for CI
+gulp.task('build', gulp.series(
+  'tokens', 'scss-lint', 'CSSGen', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
 ));
 
 gulp.task('prepush-test', gulp.parallel(
