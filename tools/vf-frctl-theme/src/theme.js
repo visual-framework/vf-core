@@ -97,8 +97,6 @@ module.exports = function(options, fractal){
     });
 
     theme.on('init', function(env, app){
-      // console.log(env._engine);
-      // env.engine(nunj);
       require('./filters')(theme, env, app, fractal);
       require('./extensions')(theme, env, app, fractal);
     });
