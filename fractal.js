@@ -17,9 +17,12 @@ fractal.docs.set('path', __dirname + '/docs');
 const handlebars = require('gulp-compile-handlebars');
 const hljs = require('highlight.js');
 const nunj = require('@frctl/nunjucks')({
-  // env: {
-  //   // Nunjucks environment opts: https://mozilla.github.io/nunjucks/api.html#configure
-  // },
+  env: {
+    lstripBlocks: true,
+    trimBlocks: true,
+    autoescape: false
+    // Nunjucks environment opts: https://mozilla.github.io/nunjucks/api.html#configure
+  },
   // filters: {
   //   // filter-name: function filterFunc(){}
   // },
