@@ -1,0 +1,19 @@
+{{!--
+  Pass in your display type and title:
+  {{> @vf-heading--template small="true" title="I'm a small headline"}}
+--}}
+
+{{#if display}}
+  <h1 class="vf-text vf-text--heading-xl vf-text--invert">{{{title}}}</h1>
+{{else if extra-large}}
+  <h2 class="vf-text vf-text--heading-xl">{{{title}}}</h2>
+{{else if large}}
+  <h3 class="vf-text vf-text--heading-l">{{{title}}}</h3>
+{{else if regular}}
+  <h4 class="vf-text vf-text--heading-r">{{{title}}}</h4>
+{{else if small}}
+  <h5 class="vf-text vf-text--heading-s">{{{title}}}</h5>
+{{else}}
+  {{!-- catch all for if the heading type doesn't match --}}
+  <h6 class="vf-text vf-text--heading-s">{{{title}}}</h6>
+{{/if}}
