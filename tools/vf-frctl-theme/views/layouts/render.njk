@@ -3,7 +3,7 @@
 {% set rendered = entity.render(null, renderEnv, { preview: withLayout, collate: withCollation }) | async(true) %}
 
 {% if rendered | isError -%}
-{% extends 'layouts/full.njk' %}
+{% extends 'layouts/frame.njk' %}
 {% set error = rendered %}
 {% set page = {
     title: 'Error rendering component ' + request.params.handle
