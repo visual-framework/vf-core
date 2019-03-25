@@ -15,7 +15,6 @@ fractal.docs.set('path', __dirname + '/docs');
 
 /* Handlebars with custom helpers */
 const handlebars = require('gulp-compile-handlebars');
-const hljs = require('highlight.js');
 const nunj = require('@frctl/nunjucks')({
   env: {
     lstripBlocks: true,
@@ -29,22 +28,9 @@ const nunj = require('@frctl/nunjucks')({
   // globals: {
   //   // global-name: global-val
   // },
-  // extensions: {
-  //   // extension-name: function extensionFunc(){}
-  // },
-  helpers: {
-    codeblockhtml: function(txt,context){
-      txt = txt.fn(context);
-      if(typeof txt == "undefined") return;
-      return '<code class="Code Code--lang-html vf-code-example"><pre class="vf-code-example__pre">' +
-      hljs.highlight('html', txt).value + '</pre></code>';
-    },
-    codeblockjs: function(txt,context){
-      txt = txt.fn(context);
-      if(typeof txt == "undefined") return;
-      return '<code class="Code Code--lang-js vf-code-example"><pre class="vf-code-example__pre">' +
-      hljs.highlight('js', txt).value + '</pre></code>';
-    }
+  extensions: {
+    // extension-name: function extensionFunc(){}
+    codeblock: require('./tools/vf-frctl-extensions/codeblock.js')
   }
 });
 
