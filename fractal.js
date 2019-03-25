@@ -22,9 +22,23 @@ const nunj = require('@frctl/nunjucks')({
     autoescape: false
     // Nunjucks environment opts: https://mozilla.github.io/nunjucks/api.html#configure
   },
-  // filters: {
-  //   // filter-name: function filterFunc(){}
-  // },
+  filters: {
+    // A filter and non-async version of frctl's context extension from
+    // https://github.com/frctl/nunjucks/blob/develop/src/extensions/context.js
+    // We mainly use this to make a pattern's YAML data available to REAMDE.md
+    // {% set context = '@vf-heading' | patternContexts %}
+    patternContexts:  function(pattern) {
+      const source = fractal.components;
+      const handle = pattern;
+      const entity = source.find(handle);
+      if (!entity) {
+        throw new Error(`Could not render component '${handle}' - component not found.`);
+      }
+      const context = entity.isComponent ? entity.variants().default().context : entity.context;
+      return context;
+    }
+
+  },
   // globals: {
   //   // global-name: global-val
   // },
