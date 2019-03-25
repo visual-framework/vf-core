@@ -1,0 +1,22 @@
+<div class="">
+
+  {#
+  {% include 'partials/browser/controls.njk' %}
+  {% asyncAll panel in frctl.theme.get('panels') %}
+  {% include 'partials/browser/panel-' + panel + '.njk' %}
+  {% endall %}
+  #}
+  {% include 'partials/browser/panel-info.njk' %}
+
+  {% include 'partials/browser/panel-html.njk' %}
+
+  <div class="vf-grid vf-grid__col-3">
+    <div class="vf-grid__col--span-3">
+      <hr class="vf-divider vf-u-margin__bottom-r vf-u-margin__top-r">
+    </div>
+    <div class="vf-grid__col--span-3">
+      {% include 'partials/browser/panel-resources.njk' %}
+    </div>
+  </div>
+
+</div>

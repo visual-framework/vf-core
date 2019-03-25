@@ -1,0 +1,9 @@
+<hr class="vf-divider vf-u-margin__bottom-r vf-u-margin__top-r">
+<h3 class="vf-text vf-text--heading-r">Notes</h3>
+{% if entity.notes %}
+<div class="vf-content">
+  {{ frctl.docs.renderString(entity.notes, renderEnv) | async }}
+</div>
+{% else %}
+<p class="vf-text">There are no notes for this item.</p>
+{% endif %}
