@@ -13,8 +13,6 @@ fractal.components.set('path', __dirname + '/components');
 /* Tell Fractal where the documentation pages will live */
 fractal.docs.set('path', __dirname + '/docs');
 
-/* Handlebars with custom helpers */
-const handlebars = require('gulp-compile-handlebars');
 const nunj = require('@frctl/nunjucks')({
   env: {
     lstripBlocks: true,
@@ -37,13 +35,11 @@ const nunj = require('@frctl/nunjucks')({
       const context = entity.isComponent ? entity.variants().default().context : entity.context;
       return context;
     }
-
   },
   // globals: {
   //   // global-name: global-val
   // },
   extensions: {
-    // extension-name: function extensionFunc(){}
     codeblock: require('./tools/vf-frctl-extensions/codeblock.js')
   }
 });
@@ -68,7 +64,7 @@ fractal.web.set('server.syncOptions', {
   browser: 'default',
   sync: true
 });
-/* Theme */
+
 const vfTheme = require('./tools/vf-frctl-theme');
 const vfThemeConfig = vfTheme({}, fractal);
 
@@ -96,11 +92,5 @@ fractal.components.set('statuses', {
     color: "#707372"
   }
 });
-
-// Customise Fractal templates
-// https://fractal.build/guide/customisation/web-themes#template-customisation
-// VFTheme.addLoadPath(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/views');
-// Specify the static assets directory that contains the custom stylesheet.
-// VFTheme.addStatic(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/assets', '/');
 
 fractal.web.theme(vfThemeConfig);
