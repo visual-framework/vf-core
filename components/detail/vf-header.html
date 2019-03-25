@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<!-- todo: update this to use the VF patterns -->
 <html lang="en" dir="ltr" class="vf-no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>
-    window.frctl = {
-        env: 'static'
-    };
-    </script>
-    <script>var cl = document.querySelector('html').classList; cl.remove('vf-no-js'); cl.add('vf-js');</script>
-    
-<link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
+  <script>
+// Detect if JS is on and swap vf-no-js for vf-js on the html element
+(function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
+</script>
+
+  <title>Site Header pattern | Visual Framework 2.0</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png">
 <link rel="manifest" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest">
@@ -19,29 +17,30 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
 
+  
+  
+  <script>
+  window.frctl = {
+    env: 'static'
+  };
+  </script>
+  
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css?cachebust=0.0.1" type="text/css">
 
 
-<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css?cachebust=1.2.0" type="text/css">
+<link rel="stylesheet" href="../../themes/vf-frctl-theme/css/default.css?cachebust=0.0.1" type="text/css">
 
-
-<link rel="stylesheet" href="../../local.css?cachebust=1.2.0" type="text/css">
-
-
-<title>Site Header | Visual Framework 2.0</title>
 
 </head>
 <body>
 
 
-
-
-
 <header class="vf-header">
   <div class="vf-global-header">
     <div class="vf-global-header__inner">
-    <a href="/" class="vf-logo--responsive"></a>
+      <a href="/" class="vf-logo--responsive"></a>
 
-    <p class="vf-global-header__site-name">Visual Framework for Life Science websites</p>
+      <p class="vf-global-header__site-name">Visual Framework 2.0</p>
     </div>
   </div>
 </header>
@@ -59,9 +58,9 @@ embl-grid embl-grid--has-sidebar
 
 <div class="Pen" data-behaviour="pen" id="pen-2173b0a0501bc0cd79dd7dfbb5a873b7">
 
-    
+  
 
-    <div class="vf-body">
+  <div class="vf-body">
 <header class="vf-grid vf-page-header | vf-u-padding-l">
   <h1 class="vf-page-header__heading | vf-text vf-text--heading-l vf-text--has-tag">
     Site Header
@@ -79,7 +78,7 @@ embl-grid embl-grid--has-sidebar
 </div>
 
 
-    <div class="vf-body">
+  <div class="vf-body">
   <div class="vf-grid">
     <div>
 
@@ -90,7 +89,6 @@ embl-grid embl-grid--has-sidebar
     </div>
   </div>
 </div>
-
 
 
 
@@ -111,16 +109,8 @@ embl-grid embl-grid--has-sidebar
           <div class="vf-grid">
             <p class="vf-figure__caption">
               Open the above preview in a new window:
-              <a data-no-pjax href="../preview/vf-header.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
-</svg>
-</a>
-              <a data-no-pjax href="../render/vf-header.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 0h24v24H0z" fill="none"/>
-    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
-</svg>
-</a>
+              <a href="../preview/vf-header.html"><span>With layout</span> Open</a>
+              <a href="../render/vf-header.html"><span>Component only</span> Open</a>
             </p>
           </div>
         </div>
@@ -129,9 +119,7 @@ embl-grid embl-grid--has-sidebar
   </div>
 
 
-    <div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
-
-    <div class="vf-body">
+  <div class="vf-body">
   <div class="vf-grid vf-grid__col-1">
 
     <div class="pattern-info">
@@ -148,15 +136,39 @@ embl-grid embl-grid--has-sidebar
       
 
       <div class="Pen-panel Pen-info" data-role="info">
-          <div class="">
+      <div class="">
+
+  
+  <h3 class="vf-text vf-text--heading-r">Pattern information</h3>
+<ul class="vf-list vf-list--unordered">
+    <li class="vf-list__item">
+        Handle: @vf-header
+    </li>
+    
+    <li class="vf-list__item">
+        Filesystem path: components/vf-header/vf-header.njk
+    </li>
+    
+    <li class="vf-list__item">
+      References (4):
+      
+        <a href="vf-global-header.html">@vf-global-header</a>, 
+      
+        <a href="vf-masthead.html">@vf-masthead</a>, 
+      
+        <a href="vf-navigation--main.html">@vf-navigation--main</a>, 
+      
+        <a href="vf-navigation--additional.html">@vf-navigation--additional</a>
+      
+    </li>
+    
+    
+</ul>
+
 
   
 
-  <hr class="vf-divider vf-u-margin__bottom-r vf-u-margin__top-r">
-
-  
-
- <h3 class="vf-text vf-text--heading-r">Code example</h3>
+<h3 class="vf-text vf-text--heading-r">Code example</h3>
 <code class="Code Code--lang-html vf-code-example">
   
   <pre class="vf-code-example__pre">
@@ -241,7 +253,6 @@ embl-grid embl-grid--has-sidebar
                 <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-header__navigation vf-header__navigation--additional"</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation vf-navigation--additional"</span>&gt;</span>
@@ -261,7 +272,6 @@ embl-grid embl-grid--has-sidebar
                 <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
@@ -269,13 +279,14 @@ embl-grid embl-grid--has-sidebar
   </pre>
   
 </code>
+<hr class="vf-divider vf-u-margin__bottom-r vf-u-margin__top-r">
 
 
-
-
-  <hr class="vf-divider vf-u-margin__bottom-r vf-u-margin__top-r">
 
   <div class="vf-grid vf-grid__col-3">
+    <div class="vf-grid__col--span-3">
+      <hr class="vf-divider vf-u-margin__bottom-r vf-u-margin__top-r">
+    </div>
     <div class="vf-grid__col--span-3">
       
 
@@ -319,17 +330,16 @@ embl-grid embl-grid--has-sidebar
       
     
   </ul>
-
 </div>
+
 <div class="vf-tabs-content" data-vf-js-tabs-content>
   
     
     <section class="vf-tabs__section" id="vf-tabs__section--ef3a9b1d515934ef97f5f57c8da724f7">
-    <!--  is-active -->
-        <div class="FileBrowser-itemPreview">
-          
-          <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-section"># Change Log</span>
+      <div class="FileBrowser-itemPreview">
+        
+        <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example">
+          <pre class="vf-code-example__pre"><span class="hljs-section"># Change Log</span>
 
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
@@ -366,28 +376,32 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-bullet">- </span>deleted this
 <span class="hljs-bullet">- </span>deleted that
 </pre>
-          </code>
-          
-        </div>
+        </code>
+        
+      </div>
 
-        <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/vf-header/CHANGELOG.md"><span>/components/raw/vf-header/CHANGELOG.md</span></a></span>
-
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-header/CHANGELOG.md</span>
-
-        <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">494 Bytes</span>
+      <h3 class="vf-text vf-text--heading-r">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-header/CHANGELOG.md">/components/raw/vf-header/CHANGELOG.md</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-header/CHANGELOG.md
+        </li>
+        <li class="vf-list__item">
+          Size: 494 Bytes
+        </li>
+      </ul>
     </section>
     
   
     
     <section class="vf-tabs__section" id="vf-tabs__section--4feaa0d7593c962c256bb5f045fb6e3d">
-    <!--  -->
-        <div class="FileBrowser-itemPreview">
-          
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-comment">// setup files required</span>
+      <div class="FileBrowser-itemPreview">
+        
+        <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+          <pre class="vf-code-example__pre"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
@@ -405,18 +419,23 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-header.scss'</span>;
 </pre>
-          </code>
-          
-        </div>
+        </code>
+        
+      </div>
 
-        <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/vf-header/index.scss"><span>/components/raw/vf-header/index.scss</span></a></span>
-
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-header/index.scss</span>
-
-        <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">394 Bytes</span>
+      <h3 class="vf-text vf-text--heading-r">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-header/index.scss">/components/raw/vf-header/index.scss</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-header/index.scss
+        </li>
+        <li class="vf-list__item">
+          Size: 394 Bytes
+        </li>
+      </ul>
     </section>
     
   
@@ -424,11 +443,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   
     
     <section class="vf-tabs__section" id="vf-tabs__section--b726d86c69d3d0e8c377eafa5f1822b6">
-    <!--  -->
-        <div class="FileBrowser-itemPreview">
-          
-          <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre">{
+      <div class="FileBrowser-itemPreview">
+        
+        <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">
+          <pre class="vf-code-example__pre">{
   <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.28"</span>,
   <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/vf-header"</span>,
   <span class="hljs-attr">"description"</span>: <span class="hljs-string">"vf-header component"</span>,
@@ -441,7 +459,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-string">"index.scss"</span>,
     <span class="hljs-string">"vf-header.scss"</span>,
     <span class="hljs-string">"vf-header.css"</span>,
-    <span class="hljs-string">"vf-header.hbs"</span>,
+    <span class="hljs-string">"vf-header.njk"</span>,
     <span class="hljs-string">"vf-header.config.yml"</span>
   ],
   <span class="hljs-attr">"test"</span>: <span class="hljs-string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,
@@ -466,28 +484,32 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attr">"gitHead"</span>: <span class="hljs-string">"ce5e8d5c5c0b99c706f3f67324bf4c058ec89ccd"</span>
 }
 </pre>
-          </code>
-          
-        </div>
+        </code>
+        
+      </div>
 
-        <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/vf-header/package.json"><span>/components/raw/vf-header/package.json</span></a></span>
-
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-header/package.json</span>
-
-        <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">1.1 KB</span>
+      <h3 class="vf-text vf-text--heading-r">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-header/package.json">/components/raw/vf-header/package.json</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-header/package.json
+        </li>
+        <li class="vf-list__item">
+          Size: 1.1 KB
+        </li>
+      </ul>
     </section>
     
   
     
     <section class="vf-tabs__section" id="vf-tabs__section--e36a8fa1aa5b9492e380bead37f6dbc7">
-    <!--  -->
-        <div class="FileBrowser-itemPreview">
-          
-          <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-global-header</span> {
+      <div class="FileBrowser-itemPreview">
+        
+        <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
+          <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-global-header</span> {
   <span class="hljs-attribute">-webkit-box-align</span>: center;
       <span class="hljs-attribute">-ms-flex-align</span>: center;
           <span class="hljs-attribute">align-items</span>: center;
@@ -777,28 +799,32 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">2</span>;
 }
 </pre>
-          </code>
-          
-        </div>
+        </code>
+        
+      </div>
 
-        <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/vf-header/vf-header.css"><span>/components/raw/vf-header/vf-header.css</span></a></span>
-
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-header/vf-header.css</span>
-
-        <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">6.3 KB</span>
+      <h3 class="vf-text vf-text--heading-r">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-header/vf-header.css">/components/raw/vf-header/vf-header.css</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-header/vf-header.css
+        </li>
+        <li class="vf-list__item">
+          Size: 6.3 KB
+        </li>
+      </ul>
     </section>
     
   
     
     <section class="vf-tabs__section" id="vf-tabs__section--90310dd7efc4899e683e6f293236a339">
-    <!--  -->
-        <div class="FileBrowser-itemPreview">
-          
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-            <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-header</span>
+      <div class="FileBrowser-itemPreview">
+        
+        <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+          <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-header</span>
 
 <span class="hljs-selector-class">.vf-header</span> {
   <span class="hljs-attribute">background-position</span>: top center;
@@ -834,18 +860,23 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   grid-row: <span class="hljs-number">2</span>;
 }
 </pre>
-          </code>
-          
-        </div>
+        </code>
+        
+      </div>
 
-        <strong class="Meta-key">URL:</strong>
-        <span class="Meta-value"><a data-no-pjax href="../raw/vf-header/vf-header.scss"><span>/components/raw/vf-header/vf-header.scss</span></a></span>
-
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-header/vf-header.scss</span>
-
-        <strong class="Meta-key">Size:</strong>
-        <span class="Meta-value">817 Bytes</span>
+      <h3 class="vf-text vf-text--heading-r">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-header/vf-header.scss">/components/raw/vf-header/vf-header.scss</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-header/vf-header.scss
+        </li>
+        <li class="vf-list__item">
+          Size: 817 Bytes
+        </li>
+      </ul>
     </section>
     
   
@@ -853,40 +884,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 
 
-
-    </div>
-    <div class="vf-grid__col--span-3">
-      <h3 class="vf-text vf-text--heading-r">Meta information</h3>
-<ul class="Meta">
-    <li class="Meta-item">
-        <strong class="Meta-key">Handle:</strong>
-        <span class="Meta-value">@vf-header</span>
-    </li>
-    
-    
-    
-    <li class="Meta-item">
-        <strong class="Meta-key">Filesystem Path:</strong>
-        <span class="Meta-value">components/vf-header/vf-header.hbs</span>
-    </li>
-    
-    <li class="Meta-item">
-        <strong class="Meta-key">References <em class="Meta-count">(4)</em>:</strong>
-        <span class="Meta-value Meta-value--linkList">
-        
-            <a href="vf-global-header.html">@<span>vf-global-header</span></a>, 
-        
-            <a href="vf-masthead.html">@<span>vf-masthead</span></a>, 
-        
-            <a href="vf-navigation--main.html">@<span>vf-navigation--main</span></a>, 
-        
-            <a href="vf-navigation--additional.html">@<span>vf-navigation--additional</span></a>
-        
-        </span>
-    </li class="Meta-item">
-    
-    
-</ul>
 
     </div>
   </div>
@@ -898,12 +895,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
     <!-- List all the patterns at the footer -->
     
-
       <div>
       
 
 <h1 class="vf-text vf-text--heading-xl vf-text--invert">All the patterns</h1>
-
 
 
 
@@ -5672,7 +5667,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 
 
-
 <section class="vf-grid">
   <section data-description="label area" style="grid-column: 1 / -1;">
     <h4 class="vf-text vf-text--heading-s">
@@ -6155,15 +6149,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 
       </div>
-
-      
-
     
   </div>
 </div>
 
 
-    
+  
 
 </div>
 
@@ -6172,11 +6163,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 
 
+<!--<script src="../../themes/vf-frctl-theme/js/vf-frctl-theme.js?cachebust=0.0.1"></script>-->
 
-<!--<script src="../../themes/mandelbrot/js/mandelbrot.js?cachebust=1.2.0"></script>-->
 
-
-<script src="https://dev.assets.emblstatic.net/vf/develop/scripts/scripts.js?cachebust=1.2.0"></script>
+<script src="https://dev.assets.emblstatic.net/vf/develop/scripts/scripts.js?cachebust=0.0.1"></script>
 
 
 <script>
@@ -6195,7 +6185,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     }
   }
 </script>
-
 
 </body>
 </html>
