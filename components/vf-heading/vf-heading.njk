@@ -7,28 +7,19 @@
   Set our data for the template
 #}
 
-{% if type and title %}
-  {% set vf_heading_modifiers = [{ "type": type, "title" : title}] %}
-{% endif %}
-
-{#
-  Template
-  If type && title are not passed it will use default modifiers in the pattern YAML
-#}
-
-{% for modifier in vf_heading_modifiers %}
-  {% if modifier.type == "display" -%}
-    <h1 class="vf-text vf-text--heading-xl vf-text--invert">{{modifier.title}}</h1>
-  {% elif modifier.type == "extra-large" -%}
-    <h2 class="vf-text vf-text--heading-xl">{{modifier.title}}</h2>
-  {% elif modifier.type == "large" -%}
-    <h3 class="vf-text vf-text--heading-l">{{modifier.title}}</h3>
-  {% elif modifier.type == "regular" -%}
-    <h4 class="vf-text vf-text--heading-r">{{modifier.title}}</h4>
-  {% elif modifier.type == "small" -%}
-    <h5 class="vf-text vf-text--heading-s">{{modifier.title}}</h5>
-  {% else -%}
+{%- if type and title -%}
+  {%- if type == "display" -%}
+    <h1 class="vf-text vf-text--heading-xl vf-text--invert">{{title}}</h1>
+  {%- elif type == "extra-large" -%}
+    <h2 class="vf-text vf-text--heading-xl">{{title}}</h2>
+  {%- elif type == "large" -%}
+    <h3 class="vf-text vf-text--heading-l">{{title}}</h3>
+  {%- elif type == "regular" -%}
+    <h4 class="vf-text vf-text--heading-r">{{title}}</h4>
+  {%- elif type == "small" -%}
+    <h5 class="vf-text vf-text--heading-s">{{title}}</h5>
+  {%- else -%}
     {# catch all for if the heading type doesn't match #}
-    <h5 class="vf-text vf-text--heading-s">{{modifier.title}}</h5>
+    <h5 class="vf-text vf-text--heading-s">{{title}}</h5>
   {% endif %}
-{% endfor %}
+{% endif %}

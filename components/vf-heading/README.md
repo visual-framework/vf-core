@@ -2,13 +2,29 @@
 
 ## About
 
+Basic headline styles.
+
 ## Demo
 
 {% set context = '@vf-heading' | patternContexts %}
 
 {% for modifier in context.vf_heading_modifiers %}
   {% render '@vf-heading', {"type": modifier.type, "title": modifier.title} %}
+  {# blank space needed for html sample rendering #}
+  ```html
+  {% render '@vf-heading', {"type": modifier.type, "title": modifier.title} %}
+  ```
 {% endfor %}
+
+---
+
+## Nunjucks template
+
+{% verbatim %}
+    {% render '@vf-heading', {"type": "large", "title": "Your headline"} %}
+{% endverbatim %}
+
+---
 
 ## Installation and Implementation
 
