@@ -13,9 +13,6 @@ fractal.components.set('path', __dirname + '/components');
 /* Tell Fractal where the documentation pages will live */
 fractal.docs.set('path', __dirname + '/docs');
 
-/* Handlebars with custom helpers */
-const handlebars = require('gulp-compile-handlebars');
-const hljs = require('highlight.js');
 const nunj = require('@frctl/nunjucks')({
   env: {
     lstripBlocks: true,
@@ -23,28 +20,27 @@ const nunj = require('@frctl/nunjucks')({
     autoescape: false
     // Nunjucks environment opts: https://mozilla.github.io/nunjucks/api.html#configure
   },
-  // filters: {
-  //   // filter-name: function filterFunc(){}
-  // },
+  filters: {
+    // A filter and non-async version of frctl's context extension from
+    // https://github.com/frctl/nunjucks/blob/develop/src/extensions/context.js
+    // We mainly use this to make a pattern's YAML data available to REAMDE.md
+    // {% set context = '@vf-heading' | patternContexts %}
+    patternContexts:  function(pattern) {
+      const source = fractal.components;
+      const handle = pattern;
+      const entity = source.find(handle);
+      if (!entity) {
+        throw new Error(`Could not render component '${handle}' - component not found.`);
+      }
+      const context = entity.isComponent ? entity.variants().default().context : entity.context;
+      return context;
+    }
+  },
   // globals: {
   //   // global-name: global-val
   // },
-  // extensions: {
-  //   // extension-name: function extensionFunc(){}
-  // },
-  helpers: {
-    codeblockhtml: function(txt,context){
-      txt = txt.fn(context);
-      if(typeof txt == "undefined") return;
-      return '<code class="Code Code--lang-html vf-code-example"><pre class="vf-code-example__pre">' +
-      hljs.highlight('html', txt).value + '</pre></code>';
-    },
-    codeblockjs: function(txt,context){
-      txt = txt.fn(context);
-      if(typeof txt == "undefined") return;
-      return '<code class="Code Code--lang-js vf-code-example"><pre class="vf-code-example__pre">' +
-      hljs.highlight('js', txt).value + '</pre></code>';
-    }
+  extensions: {
+    codeblock: require('./tools/vf-frctl-extensions/codeblock.js')
   }
 });
 
@@ -68,7 +64,7 @@ fractal.web.set('server.syncOptions', {
   browser: 'default',
   sync: true
 });
-/* Theme */
+
 const vfTheme = require('./tools/vf-frctl-theme');
 const vfThemeConfig = vfTheme({}, fractal);
 
@@ -96,11 +92,5 @@ fractal.components.set('statuses', {
     color: "#707372"
   }
 });
-
-// Customise Fractal templates
-// https://fractal.build/guide/customisation/web-themes#template-customisation
-// VFTheme.addLoadPath(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/views');
-// Specify the static assets directory that contains the custom stylesheet.
-// VFTheme.addStatic(__dirname + '/tools/frctl-mandelbrot-vf-subtheme/assets', '/');
 
 fractal.web.theme(vfThemeConfig);

@@ -17,17 +17,17 @@
 #}
 
 {% for modifier in vf_heading_modifiers %}
-  {% if modifier.type == "display" %}
+  {% if modifier.type == "display" -%}
     <h1 class="vf-text vf-text--heading-xl vf-text--invert">{{modifier.title}}</h1>
-  {% elif modifier.type == "extra-large" %}
+  {% elif modifier.type == "extra-large" -%}
     <h2 class="vf-text vf-text--heading-xl">{{modifier.title}}</h2>
-  {% elif modifier.type == "large" %}
+  {% elif modifier.type == "large" -%}
     <h3 class="vf-text vf-text--heading-l">{{modifier.title}}</h3>
-  {% elif modifier.type == "regular" %}
+  {% elif modifier.type == "regular" -%}
     <h4 class="vf-text vf-text--heading-r">{{modifier.title}}</h4>
-  {% elif modifier.type == "small" %}
+  {% elif modifier.type == "small" -%}
     <h5 class="vf-text vf-text--heading-s">{{modifier.title}}</h5>
-  {% else %}
+  {% else -%}
     {# catch all for if the heading type doesn't match #}
     <h5 class="vf-text vf-text--heading-s">{{modifier.title}}</h5>
   {% endif %}
