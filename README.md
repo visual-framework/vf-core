@@ -57,7 +57,7 @@ The Visual Framework address three major needs:
 
 ### How do I make my own theme or customise patterns?
 
-[See the contributing guide](https://github.com/visual-framework/vf-core/blob/develop/docs)
+<a id="get-started"></a> [See the contributing guide](https://github.com/visual-framework/vf-core/blob/develop/docs)
 
 ### I have an idea or concern!
 
