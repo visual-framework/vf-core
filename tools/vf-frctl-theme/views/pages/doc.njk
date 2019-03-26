@@ -16,7 +16,27 @@
 
 <div class="pattern-library-notes">
 
+{% block pageContent %}
+{% import "macros/errors.njk" as errors %}
+{% if doc %}
+    {% set contents = doc.render(null, renderEnv) | async(true) %}
+    {% if contents | isError %}
+    {{ errors.renderError('page', contents.message) }}
+    {% else %}
+    {{ contents }}
+    {% endif %}
+{% else %}
+{% include 'partials/content/overview.njk' %}
+{% endif %}
+{% endblock %}
+</div>
+
+{% render '@vf-divider' %}
+
+{% render '@vf-heading', {"type": "large", "title": "In this section"} %}
+
 {% asyncEach item in frctl.docs %}
+
   <ul>
   {% asyncEach menuitem in item %}
     {% if item.name == doc.path %}
@@ -33,19 +53,5 @@
   </ul>
 {% endeach %}
 
-{% block pageContent %}
-{% import "macros/errors.njk" as errors %}
-{% if doc %}
-    {% set contents = doc.render(null, renderEnv) | async(true) %}
-    {% if contents | isError %}
-    {{ errors.renderError('page', contents.message) }}
-    {% else %}
-    {{ contents }}
-    {% endif %}
-{% else %}
-{% include 'partials/content/overview.njk' %}
-{% endif %}
-{% endblock %}
-</div>
 
 {% endblock %}
