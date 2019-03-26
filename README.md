@@ -88,7 +88,7 @@ There are a few ways that we discuss and track ideas:
 
 ## Versioning
 
-[See the versioning guide](https://github.com/visual-framework/vf-core/blob/develop/docs/contributing/versioning)
+[See the versioning guide in the changelog](https://github.com/visual-framework/vf-core/blob/develop/docs/changelog)
 
 ### Alpha development of v2.0
 
