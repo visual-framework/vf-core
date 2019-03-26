@@ -2,6 +2,14 @@
 
 ## About
 
+## Demo
+
+{% set context = '@vf-heading' | patternContexts %}
+
+{% for modifier in context.vf_heading_modifiers %}
+  {% render '@vf-heading', {"type": modifier.type, "title": modifier.title} %}
+{% endfor %}
+
 ## Installation and Implementation
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-heading` with this command.

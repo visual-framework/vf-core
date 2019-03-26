@@ -1,8 +1,0 @@
----
-title: Changelog
-label: CHANGELOG
-order: 200
-isIndex: true
----
-
-You can [view and download all releases here](https://github.com/visual-framework/vf-core/releases).

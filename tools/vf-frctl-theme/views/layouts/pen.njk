@@ -1,0 +1,39 @@
+{% extends "layouts/pjax.njk" if request.isPjax else "layouts/frame.njk" %}
+{% import "macros/image.njk" as img %}
+{% import "macros/status.njk" as status %}
+{% import "macros/errors.njk" as errors %}
+
+{% set page = {
+    title: entity.title
+} %}
+
+{% set previewUrl = path(frctl.theme.urlFromRoute('preview', {handle: entity.handle})) %}
+
+{% block content %}
+
+{% if frctl.env.server and frctl.env.sync %}
+    {% set rendered = false %}
+{% else %}
+    {% set rendered = entity.render(null, renderEnv, { preview: true, collate: true }) | async(true) %}
+    {% if rendered | isError %}
+        {% set error = rendered %}
+        {% set renderError %}{{ errors.renderError('component', error.message) }}{% endset %}
+        {% set rendered = false %}
+    {% endif %}
+{%- endif %}
+
+<div class="Pen" data-behaviour="pen" id="pen-{{ entity.id }}">
+
+  {% block penContent %}
+
+  {% include "partials/pen/header.njk" %}
+
+  {% include "partials/pen/preview.njk" %}
+
+  {% include "partials/pen/browser.njk" %}
+
+  {% endblock %}
+
+</div>
+
+{% endblock %}

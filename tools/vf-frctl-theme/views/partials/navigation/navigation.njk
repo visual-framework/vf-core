@@ -1,0 +1,7 @@
+<nav class="Navigation">
+{% include 'partials/navigation/components.njk' %}
+
+{% for navPartial in frctl.theme.get('nav') %}
+    {% include 'partials/navigation/' + navPartial + '.njk' %}
+{% endfor %}
+</nav>

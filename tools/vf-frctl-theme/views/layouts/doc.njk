@@ -1,0 +1,25 @@
+{% extends "layouts/pjax.njk" if request.isPjax else "layouts/frame.njk" %}
+
+{% block content %}
+
+<div class="Document vf-body">
+  <div class="vf-grid vf-grid__col-1">
+
+    <div class="vf-content">
+
+      <div class="Document-header">
+          {% block docHeader %}
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">{{ page.title }}</h1>
+          {% if status %}{{ status }}{% endif %}
+          {% endblock %}
+      </div>
+
+      {% block docContent %}{% endblock %}
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
