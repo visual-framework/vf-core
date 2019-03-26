@@ -5,15 +5,11 @@ order: 200
 isIndex: true
 ---
 
-<a id="get-started"></a>Here are ways to utilise the Visual Framework:
+There's no need to download or clone the `vf-core` repository, instead you can use
+its patterns to enhance or build your design system:
 
-1. 🛍 [Browse the online patterns](https://visual-framework.github.io/vf-core)
-1. 🏎 Utilise the whole, unaltered Framework: include the [CSS, JS and copy a boilerplate](https://visual-framework.github.io/vf-core/components/render/vf-boilerplate-page)
-1. 🚰 [Install a specific pattern from npm](https://www.npmjs.com/org/visual-framework) and include the Sass/JS
-1. 🏗 Get a custom look and patterns with [your own Visual Framework child theme](https://github.com/khawkins98/vf-child-playground)
+- Use the [Visual Framework child theme](https://github.com/khawkins98/vf-child-playground) as a boilerplate
+- [Install a specific pattern from npm](https://www.npmjs.com/org/visual-framework)
 
-([This is pulled from the README.md](https://github.com/visual-framework/vf-core#-get-started))
-
-## to-do
-
-- Once we have the generic VF available on unpkg, we need to add links
+If those don't cover your use case, and you just need some CSS and JS to plug-in to
+your website, [let us know](https://github.com/visual-framework/vf-core/issues/new/choose).
