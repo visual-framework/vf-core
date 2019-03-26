@@ -53,26 +53,11 @@ The Visual Framework address three major needs:
    - A lot: The framework (and [child theme template](https://github.com/khawkins98/vf-child-playground)) will generate a monolithic `styles.css` and `script.js` that can be easily included, a la Bootstrap.
    - A little: Instead you can include `.scss` partials or per-pattern `.css` and `.js` files. You can do this through making a [child theme](https://github.com/khawkins98/vf-child-playground) or [npm installs](https://www.npmjs.com/org/visual-framework).
 
-### 🚼 Get started
-
-<a id="get-started"></a>Here are ways to utilise the Visual Framework:
-
-1. 🛍 [Browse the online patterns](https://visual-framework.github.io/vf-core)
-1. 🏎 Utilise the whole, unaltered Framework: include the [CSS, JS and copy a boilerplate](https://visual-framework.github.io/vf-core/components/render/vf-boilerplate-page)
-1. 🚰 [Install a specific pattern from npm](https://www.npmjs.com/org/visual-framework) and include the Sass/JS
-1. 🏗 Get a custom look and patterns with [your own Visual Framework child theme](https://github.com/khawkins98/vf-child-playground)
-
----
-
 ## 🚧 ✍ Developing, contributing
 
 ### How do I make my own theme or customise patterns?
 
-<a id="childtheme"></a>Unless you want to tweak the core patterns or the build process, there's really little reason to customise this repo. If your desire is to make your own theme or patterns, you should follow a guide on:
-
-1. 🏗  [Set up your own child theme](https://github.com/khawkins98/vf-child-playground), and then:
-2. 🎨 [Add your own patterns to the new child theme](https://github.com/khawkins98/vf-child-playground#make-and-edit-patterns); finally:
-3. 🍻 Bonus! [Contribute patterns this core Visual Framework](https://github.com/khawkins98/vf-child-playground#contribute-new-patterns-back-to-the-global-vf-core)
+[See the contributing guide](https://github.com/visual-framework/vf-core/blob/develop/docs)
 
 ### I have an idea or concern!
 
@@ -81,10 +66,6 @@ There are a few ways that we discuss and track ideas:
 - ⁉ General: Slack at [embl-vf.slack.com](https://embl-vf.slack.com/messages) for general ideas and discussion
 - ⚙️ Technical: [GitHub issues here](https://github.com/visual-framework/vf-ebi/issues) for implementing deeply technical and specific issues, like the Sass build process, browser bugs
 - 🏢 E-mail: if you have a sweeping Big Idea™️, e-mail Ken Hawkins <ken.hawkins@embl.de>
-
-### Contributing
-
-[See the contributing guide](https://github.com/visual-framework/vf-core/blob/develop/docs)
 
 ## Versioning
 
