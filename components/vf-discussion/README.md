@@ -1,4 +1,4 @@
-# vf-discussion Pattern
+# vf-discussion component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-discussion.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-discussion)
 

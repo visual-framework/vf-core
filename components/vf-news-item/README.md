@@ -1,4 +1,4 @@
-<h2>This pattern has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="../detail/vf-summary-news">vf-summary--news</a> pattern.</h2>
+<h2>This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="../detail/vf-summary-news">vf-summary--news</a> component.</h2>
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-news-item.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-news-item)
 

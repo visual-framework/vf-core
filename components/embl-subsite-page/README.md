@@ -4,7 +4,7 @@ This is reference on the basic HTML structure for EMBL-branded pages for a
 sub-section or service.
 
 The main difference between this and the standard EMBL boilerplate is a
-the usage of the `vf-masthead` pattern for additional identity and navigation.
+the usage of the `vf-masthead` component for additional identity and navigation.
 
 ## What's a sub-section or service?
 

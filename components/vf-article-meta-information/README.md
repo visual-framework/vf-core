@@ -1,4 +1,4 @@
-# vf-article-meta-information Pattern
+# vf-article-meta-information component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-article-meta-information.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-article-meta-information)
 

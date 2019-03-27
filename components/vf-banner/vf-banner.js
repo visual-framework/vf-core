@@ -70,7 +70,7 @@ function vfBannerGetCookie(c_name) {
 /**
  * Finds all vf-banner on a page and activates them
  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
- * @example vfBanner(document.querySelectorAll('.vf-pattern__container')[0]);
+ * @example vfBanner(document.querySelectorAll('.vf-component__container')[0]);
  */
 function vfBanner(scope) {
   var scope = scope || document;
@@ -85,7 +85,7 @@ function vfBanner(scope) {
     return;
   }
 
-  // generate the banner pattern, js events
+  // generate the banner component, js events
   Array.prototype.forEach.call(bannerList, (banner, i) => {
 
     // map the JS data attributes to our object structure

@@ -1,4 +1,4 @@
-# Activity List Group Pattern
+# Activity List Group component
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-activity-group.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-activity-group)
 
 ## About

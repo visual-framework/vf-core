@@ -1,4 +1,4 @@
-# vf-simple-search Pattern
+# vf-simple-search component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-simple-search.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-simple-search)
 

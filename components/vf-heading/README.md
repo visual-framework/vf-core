@@ -4,7 +4,7 @@
 
 ## Demo
 
-{% set context = '@vf-heading' | patternContexts %}
+{% set context = '@vf-heading' | componentContexts %}
 
 {% for modifier in context.vf_heading_modifiers %}
   {% render '@vf-heading', {"type": modifier.type, "title": modifier.title} %}

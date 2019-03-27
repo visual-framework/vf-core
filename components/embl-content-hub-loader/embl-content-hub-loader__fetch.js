@@ -131,7 +131,7 @@ function emblContentHubFetch() {
     emblContentHubAssignClasses(targetLink,position);
     emblContentHubUpdateDatesFormat(position);
 
-    // run JS for some patterns on content, if they exist
+    // run JS for some components on content, if they exist
     if (typeof(vfBanner) === 'function') {
       vfBanner(targetLocation);
     }

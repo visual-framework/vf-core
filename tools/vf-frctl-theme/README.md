@@ -10,8 +10,8 @@ for details on configuration.
 
 - Much less CSS, JS
   - Instead we leverage the core VF library
-- Exposes patterns directly to the template layer
-  - build the pattern library with your patterns `{% "@vf-pattern" %}`
+- Exposes components directly to the template layer
+  - build the component library with your components `{% "@vf-component" %}`
 - Theme layer uses `.njk` instead of `.nunj`
 
 ## History

@@ -1,4 +1,4 @@
-# No JS Pattern
+# No JS component
 Include this snippet directly in your `<head>` along with adding class `.vf-no-js` to your `<html>` (`<html class="vf-no-js">`).
 
 

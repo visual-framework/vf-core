@@ -1,7 +1,7 @@
-# EMBL Breadcrumbs Lookup Pattern
+# EMBL Breadcrumbs Lookup Component
 
 This requires and builds atop the `vf-breadcrumbs` and
-`embl-content-meta-properties` patterns for EMBL pages.
+`embl-content-meta-properties` components for EMBL pages.
 
-This pattern reads meta properties and then performs a lookup to the EMBL contentHub.
+This component reads meta properties and then performs a lookup to the EMBL contentHub.
 Returned are appropriate primary and secondary breadcrumbs.

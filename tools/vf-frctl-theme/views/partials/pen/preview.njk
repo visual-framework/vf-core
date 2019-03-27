@@ -11,7 +11,7 @@
         <div class="vf-tabs">
           <ul class="vf-tabs__list">
             <li class="vf-tabs__item">
-              This pattern has variants:
+              This component has variants:
             </li>
             {% for variant in variants.items() %}
 
@@ -40,7 +40,7 @@
 {% import "macros/render.njk" as render %}
 {% if (entity.preview == '@preview--blocks') or (entity.preview == '@preview--elements') -%}
   <div class="vf-body"><div class="vf-grid">
-  <div class="vf-pattern__container">
+  <div class="vf-component__container">
   <!-- @preview--blocks aren't done in iframes, this allows us a bit more flexibility and to test cross-contamination -->
   {% for item in entity.variants().items() %}
     {% if item.isHidden == false %}

@@ -2,7 +2,7 @@
 
 ## About
 
-The `vf-divider` pattern creates a horizontal dividing line to help separate content into their own container chunks.
+The `vf-divider` component creates a horizontal dividing line to help separate content into their own container chunks.
 
 ## Installation and Implementation
 
