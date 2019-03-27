@@ -51,7 +51,7 @@ const babel = require('gulp-babel');
 const rollup = require('gulp-better-rollup');
 const includePaths = require('rollup-plugin-includepaths');
 
-const patternPath = path.resolve(__dirname, 'components' );
+const componentPath = path.resolve(__dirname, 'components' );
 
 // Local Server Stuff
 const browserSync = require('browser-sync').create();
@@ -181,9 +181,9 @@ gulp.task('scripts:modern', function() {
 });
 
 // -----------------------------------------------------------------------------
-// Pattern Assets
+// Component Assets
 // -----------------------------------------------------------------------------
-gulp.task('pattern-assets', function() {
+gulp.task('component-assets', function() {
   return gulp
     .src(['./components/**/**/assets/**/*'])
     .pipe(gulp.dest('./public/assets'));
@@ -191,7 +191,7 @@ gulp.task('pattern-assets', function() {
 
 
 // -----------------------------------------------------------------------------
-// Pattern Assets
+// Component Assets
 // -----------------------------------------------------------------------------
 gulp.task('svg', () => {
   return gulp
@@ -316,7 +316,7 @@ var genCss = function (option) {
 };
 
 gulp.task('CSSGen', function(done) {
-  recursive(patternPath, ['*.css'], function (err, files) {
+  recursive(componentPath, ['*.css'], function (err, files) {
     files.forEach(function(file) {
       if (file.file.indexOf('index.scss') > -1) {
         genCss(file);
@@ -334,7 +334,7 @@ gulp.task('watch', function(done) {
   fractal.watch();
   gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
   gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*', gulp.series('svg', 'pattern-assets')).on('change', reload);
+  gulp.watch('./components/**/**/assets/*', gulp.series('svg', 'component-assets')).on('change', reload);
 });
 
 // -----------------------------------------------------------------------------
@@ -347,11 +347,11 @@ gulp.task('scripts', gulp.series(
 
 // Build as a static site for CI
 gulp.task('build', gulp.series(
-  'scss-lint', 'CSSGen', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
+  'scss-lint', 'CSSGen', 'css', 'component-assets', 'scripts', 'frctlBuild'
 ));
 
 gulp.task('dev', gulp.parallel(
-  'frctlStart', 'pattern-assets', 'css', 'scripts', 'watch'
+  'frctlStart', 'component-assets', 'css', 'scripts', 'watch'
 ));
 
 gulp.task('tokens', gulp.parallel(
