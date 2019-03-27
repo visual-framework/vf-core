@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Pattern naming pattern | Visual Framework 2.0</title>
+  <title>Creating a new component pattern | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -59,7 +59,7 @@ embl-grid embl-grid--has-sidebar
 
       <div class="Document-header">
           
-          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Pattern naming</h1>
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Creating a new component</h1>
           
 
 
@@ -75,26 +75,46 @@ embl-grid embl-grid--has-sidebar
 
     
     
-    <p>The Visual Framework uses a dual approach for naming of patterns.</p>
-<h2 id="tip-">Tip!</h2>
-<p>Confused? Rule of thumb: if you use a pattern to make other patterns, name it for what is (i.e. “vf-box”). If a pattern has a particular style and personality, name it for the role it performs (i.e. “vf-yourbrand-photo-gallery-tiles”).</p>
-<h2 id="a-is-it-a-utility-pattern-name-it-for-what-it-is">A: Is it a utility pattern? Name it for what it is</h2>
-<p>For reusable patterns that are (or are intended to be) part of the Visual Framework core, name for what it is; that is:</p>
-<ul>
-<li>vf-box (not “vf-introduction”)</li>
-<li><a href="/components/detail/vf-button--sizes">vf-button</a> (not “vf-call-to-action”)</li>
-<li>vf-grid (not “vf-wide-layout”)</li>
-<li>vf-header (not “vf-big-headline”)</li>
+    <p>This codebase includes a folder and file creation tool. It allows you to quickly create all the required files to make a component. It gives you the option to create am element, block, or container.</p>
+<ol>
+<li>Install Yeoman<ul>
+<li>If you’ve come this far and you don’t have <code>yo</code>, you should be able to install it with <code>npm install -g yo@latest</code></li>
+<li>If you get stuck, <a href="http://yeoman.io/codelab/setup.html">see the official install guide</a></li>
 </ul>
-<p>Why? This ensures that that a box will always be rectangular-ish pattern on pages, whereas an “introduction” may be a box today, but become simply large text after a redesign.</p>
-<h2 id="b-specific-to-you-sites-brand-name-it-for-its-role">B: Specific to you sites/brand? Name it for its role</h2>
-<p>If your pattern is primarily intended to be used for particular websites or a brand, give it a name that is attached to the role it performs; that is:</p>
-<ul>
-<li>vf-yourbrand-masthead</li>
-<li>vf-yourbrand-group-activity-list</li>
-<li>vf-yourbrand-display-headline</li>
+</li>
+<li>Create a new component<ul>
+<li>Run <code>gulp component</code> and answer the questions when prompted.<ul>
+<li><strong>Type of component:</strong> We use a variation of the atomic design methodology, <a href="http://bradfrost.com/blog/post/atomic-web-design/#atoms">read about the differences here</a>. We use: elements, blocks, and containers.<ul>
+<li>an element would be a heading, or a button</li>
+<li>a block would be a teaser, or a search form</li>
+<li>a container would be a group of teasers</li>
 </ul>
-<p>Why? Naming for the role the pattern does allows us to change the future visual structure, so a “display headline” today may have a black background, but tomorrow might have no background and be large and italic text.</p>
+</li>
+<li><strong>Name of component:</strong> Go for something simple and obvious (todo: we need a guide/documentation on how we name things). Don’t worry about namespacing and prefixing, the tooling will take care of this.</li>
+<li><strong>NPM package:</strong> If you’re making something interesting (probably not an ‘element’), then saying ‘yes’ will allow the component to be shared as an optional part of the framework on NPM.<ul>
+<li>You customised template pattern will have been added to your <code>/components</code> directory.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Add the <code>@import &#39;vfc-your-pattern.scss&#39;;</code> to <code>/assets/scss/styles.scss</code>.</li>
+<li>Developing your component<ul>
+<li>Edit your template files in the <code>/components/your-pattern-name</code> folder</li>
+<li>Run <code>gulp dev</code> to compile and preview the pattern</li>
+</ul>
+</li>
+<li><p>Sharing you component back</p>
+<ul>
+<li>Publish it to npm; or</li>
+<li>If you think your pattern is of use to the wider <code>vf-core</code> community, <a href="https://github.com/visual-framework/vf-core/pulls">make a Pull Request</a>.</li>
+</ul>
+<div class="vf-box">
+Tip: also consult the <a href="guidelines">guidelines</a> for the naming of things and coding standards.
+</div>
+</li>
+</ol>
 
     
 
@@ -129,53 +149,53 @@ embl-grid embl-grid--has-sidebar
 
   
     
-  
-    
-  
-    
-  
-    
-  
-    
-  
-
-
-  
-    
         <li>
-          <a href="global-token-variables.html">Global token variables</a>
-          
-        </li>
-    
-  
-    
-        <li>
-          <a href="../guidelines.html">Developing patterns</a>
-          
-        </li>
-    
-  
-    
-        <li>
-          <a href="css.html">Sass and CSS guidelines</a>
-          
-        </li>
-    
-  
-    
-        <li>
-          <a href="javascript.html">JavaScript guidelines</a>
-          
-        </li>
-    
-  
-    
-        <li>
-          <a href="">Pattern naming</a>
+          <a href="">Creating a new component</a>
           
           <span class="vf-badge">You are here</span>
           
         </li>
+    
+  
+    
+        <li>
+          <a href="file-structure.html">File structure of the Visual Framework</a>
+          
+        </li>
+    
+  
+    
+        <li>
+          <a href="../contributing.html">Contributing</a>
+          
+        </li>
+    
+  
+    
+        <li>
+          <a href="setting-up.html">Setup</a>
+          
+        </li>
+    
+  
+    
+        <li>
+          <a href="user-base.html">User base</a>
+          
+        </li>
+    
+  
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
     
   
 

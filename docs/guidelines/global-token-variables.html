@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Pattern naming pattern | Visual Framework 2.0</title>
+  <title>Global token variables pattern | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -59,7 +59,7 @@ embl-grid embl-grid--has-sidebar
 
       <div class="Document-header">
           
-          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Pattern naming</h1>
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Global token variables</h1>
           
 
 
@@ -75,26 +75,10 @@ embl-grid embl-grid--has-sidebar
 
     
     
-    <p>The Visual Framework uses a dual approach for naming of patterns.</p>
-<h2 id="tip-">Tip!</h2>
-<p>Confused? Rule of thumb: if you use a pattern to make other patterns, name it for what is (i.e. “vf-box”). If a pattern has a particular style and personality, name it for the role it performs (i.e. “vf-yourbrand-photo-gallery-tiles”).</p>
-<h2 id="a-is-it-a-utility-pattern-name-it-for-what-it-is">A: Is it a utility pattern? Name it for what it is</h2>
-<p>For reusable patterns that are (or are intended to be) part of the Visual Framework core, name for what it is; that is:</p>
-<ul>
-<li>vf-box (not “vf-introduction”)</li>
-<li><a href="/components/detail/vf-button--sizes">vf-button</a> (not “vf-call-to-action”)</li>
-<li>vf-grid (not “vf-wide-layout”)</li>
-<li>vf-header (not “vf-big-headline”)</li>
-</ul>
-<p>Why? This ensures that that a box will always be rectangular-ish pattern on pages, whereas an “introduction” may be a box today, but become simply large text after a redesign.</p>
-<h2 id="b-specific-to-you-sites-brand-name-it-for-its-role">B: Specific to you sites/brand? Name it for its role</h2>
-<p>If your pattern is primarily intended to be used for particular websites or a brand, give it a name that is attached to the role it performs; that is:</p>
-<ul>
-<li>vf-yourbrand-masthead</li>
-<li>vf-yourbrand-group-activity-list</li>
-<li>vf-yourbrand-display-headline</li>
-</ul>
-<p>Why? Naming for the role the pattern does allows us to change the future visual structure, so a “display headline” today may have a black background, but tomorrow might have no background and be large and italic text.</p>
+    <h3 id="global-colour-typography-and-spacing-">Global colour, typography and spacing.</h3>
+<p>The Visual Framework uses the <a href="https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421">Design Token concept</a> to specify design (colour, spacing, type) as reusable JSON or YAML that are translated from <code>.yml</code> data into <code>.scss</code> using <a href="https://github.com/salesforce-ux/theo#-theo">Theo</a>.</p>
+<p>This Design Token abstraction <a href="https://uxdesign.cc/design-tokens-for-dummies-8acebf010d71">helps portability and integration</a> with other technical systems.</p>
+<p>You can find the Design Tokens in <code>components/vf-design-tokens</code>.</p>
 
     
 
@@ -143,7 +127,9 @@ embl-grid embl-grid--has-sidebar
   
     
         <li>
-          <a href="global-token-variables.html">Global token variables</a>
+          <a href="">Global token variables</a>
+          
+          <span class="vf-badge">You are here</span>
           
         </li>
     
@@ -171,9 +157,7 @@ embl-grid embl-grid--has-sidebar
   
     
         <li>
-          <a href="">Pattern naming</a>
-          
-          <span class="vf-badge">You are here</span>
+          <a href="naming.html">Pattern naming</a>
           
         </li>
     

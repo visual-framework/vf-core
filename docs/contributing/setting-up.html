@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Pattern naming pattern | Visual Framework 2.0</title>
+  <title>Setup pattern | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -59,7 +59,7 @@ embl-grid embl-grid--has-sidebar
 
       <div class="Document-header">
           
-          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Pattern naming</h1>
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Setup</h1>
           
 
 
@@ -75,26 +75,55 @@ embl-grid embl-grid--has-sidebar
 
     
     
-    <p>The Visual Framework uses a dual approach for naming of patterns.</p>
-<h2 id="tip-">Tip!</h2>
-<p>Confused? Rule of thumb: if you use a pattern to make other patterns, name it for what is (i.e. “vf-box”). If a pattern has a particular style and personality, name it for the role it performs (i.e. “vf-yourbrand-photo-gallery-tiles”).</p>
-<h2 id="a-is-it-a-utility-pattern-name-it-for-what-it-is">A: Is it a utility pattern? Name it for what it is</h2>
-<p>For reusable patterns that are (or are intended to be) part of the Visual Framework core, name for what it is; that is:</p>
+    <p>To develop the Visual Framework your will need some software.</p>
+<h2 id="development-environment">Development environment</h2>
+<p>If you don’t already have a code editor and are new to git, a good starting point is to:</p>
+<ol>
+<li><a href="https://github.com/join">Setup a GitHub.com account</a></li>
+<li>Install the <a href="https://desktop.github.com/">GitHub Desktop git client</a></li>
+<li>For editing code, <a href="https://atom.io/">install Atom</a></li>
+</ol>
+<h2 id="development-tools">Development tools</h2>
+<p>First, see if you have the needed tools installed.</p>
+<ol>
+<li>Open a command line/terminal</li>
+<li>Enter <code>node -v</code></li>
+<li>Enter <code>gulp -v</code></li>
+</ol>
+<p>If either of those steps return an error you need to install the corresponding
+software.</p>
 <ul>
-<li>vf-box (not “vf-introduction”)</li>
-<li><a href="/components/detail/vf-button--sizes">vf-button</a> (not “vf-call-to-action”)</li>
-<li>vf-grid (not “vf-wide-layout”)</li>
-<li>vf-header (not “vf-big-headline”)</li>
+<li>To install Node: go to the official <a href="https://nodejs.org/download/">downloads page</a></li>
+<li>To install Gulp: Gulp requires Node and can be installed by: <code>npm install gulpjs/gulp-cli -g</code></li>
 </ul>
-<p>Why? This ensures that that a box will always be rectangular-ish pattern on pages, whereas an “introduction” may be a box today, but become simply large text after a redesign.</p>
-<h2 id="b-specific-to-you-sites-brand-name-it-for-its-role">B: Specific to you sites/brand? Name it for its role</h2>
-<p>If your pattern is primarily intended to be used for particular websites or a brand, give it a name that is attached to the role it performs; that is:</p>
-<ul>
-<li>vf-yourbrand-masthead</li>
-<li>vf-yourbrand-group-activity-list</li>
-<li>vf-yourbrand-display-headline</li>
+<h2 id="installing-the-visual-framework">Installing the Visual Framework</h2>
+<p>You will need to install this repo onto your machine so that you can update, amend, and and delete patterns to the Visual Framework as required.</p>
+<ol>
+<li>Clone this repo<ul>
+<li><code>git clone https://github.com/visual-framework/vf-ebi.git</code></li>
 </ul>
-<p>Why? Naming for the role the pattern does allows us to change the future visual structure, so a “display headline” today may have a black background, but tomorrow might have no background and be large and italic text.</p>
+</li>
+<li>Move to the directory<ul>
+<li><code>cd visual-framework-tooling-prototype</code></li>
+</ul>
+</li>
+<li>You probably want the develop branch (or <a href="https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md">your new feature branch</a>)<ul>
+<li><code>git checkout develop</code></li>
+</ul>
+</li>
+<li>Install <a href="https://github.com/frctl/fractal">fractal</a> You might need to use <code>sudo</code>.<ul>
+<li><code>npm i -g @frctl/fractal</code></li>
+</ul>
+</li>
+<li>Download all the things<ul>
+<li><code>npm install</code></li>
+</ul>
+</li>
+<li>Run a dev build and open in your browser<ul>
+<li><code>gulp dev</code></li>
+</ul>
+</li>
+</ol>
 
     
 
@@ -129,53 +158,53 @@ embl-grid embl-grid--has-sidebar
 
   
     
-  
-    
-  
-    
-  
-    
-  
-    
-  
-
-
-  
-    
         <li>
-          <a href="global-token-variables.html">Global token variables</a>
+          <a href="components.html">Creating a new component</a>
           
         </li>
     
   
     
         <li>
-          <a href="../guidelines.html">Developing patterns</a>
+          <a href="file-structure.html">File structure of the Visual Framework</a>
           
         </li>
     
   
     
         <li>
-          <a href="css.html">Sass and CSS guidelines</a>
+          <a href="../contributing.html">Contributing</a>
           
         </li>
     
   
     
         <li>
-          <a href="javascript.html">JavaScript guidelines</a>
-          
-        </li>
-    
-  
-    
-        <li>
-          <a href="">Pattern naming</a>
+          <a href="">Setup</a>
           
           <span class="vf-badge">You are here</span>
           
         </li>
+    
+  
+    
+        <li>
+          <a href="user-base.html">User base</a>
+          
+        </li>
+    
+  
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
     
   
 
