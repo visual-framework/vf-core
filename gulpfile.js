@@ -204,28 +204,51 @@ gulp.task('svg', () => {
 // Design Token Tasks
 // -----------------------------------------------------------------------------
 
-theo.registerFormat("typography-map", result => {
-  let { category, type } = result
-    .get("props")
-    .first()
-    .toJS();
-  return `$vf-${category}--${type}: (
-${result
-  .get("props")
-  .map(
-  prop => `
-  '${prop.get("name")}': (
-    'font-size': ${prop.getIn(["value", "font-size"])},
-    'font-weight': ${prop.getIn(["value", "font-weight"])},
-    'line-height': ${prop.getIn(["value", "line-height"])}
-  ),`
-  )
-  .sort()
-  .join("\n")}
+const theoGeneratedFileWarning = `// This file has been dynamically generated from design tokens
+// Please do NOT edit directly.`;
+const theoSourceTokenLocation = `// Source: {{relative "${ patternPath }" meta.file}}`;
 
+const theoGeneratedPropertiesTemplate = `${theoGeneratedFileWarning}
+
+${theoSourceTokenLocation}
+
+:root {
+  {{#each props as |prop|}}
+  {{#if prop.comment}}
+  {{{trimLeft (indent (comment (trim prop.comment)))}}}
+  {{/if}}
+  --{{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
+{{/each}}
+}
+`;
+
+const theoGeneratedMapTemplate = `${theoGeneratedFileWarning}
+
+${theoSourceTokenLocation}
+
+\${{stem meta.file}}-map: (
+{{#each props as |prop|}}
+  {{#if prop.comment}}
+  {{{trimLeft (indent (comment (trim prop.comment)))}}}
+  {{/if}}
+  '{{kebabcase prop.name}}': ({{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}}),
+{{/each}}
 );
-  `;
-});
+`;
+
+const theoGeneratedSassTemplate = `${theoGeneratedFileWarning}
+
+${theoSourceTokenLocation}
+
+{{#each props as |prop|}}
+{{#if prop.comment}}
+{{{trimLeft (indent (comment (trim prop.comment)))}}}
+{{/if}}
+\${{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
+{{/each}}
+`;
+
+// Register design tokens to be processed by Theo
 
 gulp.task('tokens:typographic-scale', () =>
   gulp.src('./components/vf-design-tokens/typographic-scales/*.yml')
@@ -243,7 +266,7 @@ gulp.task('tokens:variables', () =>
   gulp.src('./components/vf-design-tokens/variables/*.yml')
     .pipe(theoG({
       transform: { type: 'web' },
-      format: { type: 'scss' }
+      format: { type: 'variables.scss' }
     }))
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
 );
@@ -256,6 +279,49 @@ gulp.task('tokens:maps', () =>
     }))
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
 );
+
+gulp.task('tokens:props', () =>
+  gulp.src(['./components/vf-design-tokens/maps/*.yml'])
+    .pipe(theoG({
+      transform: { type: 'web' },
+      format: { type: 'custom-properties.scss' }
+    }))
+    .pipe(gulp.dest('./components/vf-sass-config/variables'))
+);
+
+// Register output format for token types
+theo.registerFormat( "variables.scss",`${theoGeneratedSassTemplate}`);
+theo.registerFormat( "map.scss",`${theoGeneratedMapTemplate}`);
+theo.registerFormat( "custom-properties.scss",`${theoGeneratedPropertiesTemplate}`);
+
+// The Theo typography token processor is a bit more complex
+// and uses a custom format as a function
+theo.registerFormat("typography-map", result => {
+  let { category, type } = result
+    .get("props")
+    .first()
+    .toJS();
+  return `${theoGeneratedFileWarning}
+// Source: ${path.basename(result.getIn(["meta", "file"]))}
+
+$vf-${category}--${type}: (
+${result
+  .get("props")
+  .map(
+  prop => `
+  '${prop.get("name")}': (
+    'font-size': ${prop.getIn(["value", "font-size"])},
+    'font-weight': ${prop.getIn(["value", "font-weight"])},
+    'line-height': ${prop.getIn(["value", "line-height"])}
+  ),`
+  )
+  .sort()
+  .join("\n")}
+
+);
+  `;
+});
+
 
 // -----------------------------------------------------------------------------
 // Fractal Tasks
@@ -345,6 +411,7 @@ gulp.task('scripts', gulp.series(
   'scripts:es5', 'scripts:modern'
 ));
 
+
 // Build as a static site for CI
 gulp.task('build', gulp.series(
   'scss-lint', 'CSSGen', 'css', 'component-assets', 'scripts', 'frctlBuild'
@@ -355,7 +422,7 @@ gulp.task('dev', gulp.parallel(
 ));
 
 gulp.task('tokens', gulp.parallel(
-  'tokens:variables', 'tokens:typographic-scale', 'tokens:maps'
+  'tokens:variables', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
 ));
 
 gulp.task('prepush-test', gulp.parallel(
