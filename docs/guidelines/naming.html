@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Pattern naming pattern | Visual Framework 2.0</title>
+  <title>Component and pattern naming component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -59,7 +59,7 @@ embl-grid embl-grid--has-sidebar
 
       <div class="Document-header">
           
-          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Pattern naming</h1>
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Component and pattern naming</h1>
           
 
 
@@ -68,33 +68,60 @@ embl-grid embl-grid--has-sidebar
 
       
 
-<div class="pattern-library-notes">
+<div class="component-library-notes">
 
 
 
 
     
     
-    <p>The Visual Framework uses a dual approach for naming of patterns.</p>
-<h2 id="tip-">Tip!</h2>
-<p>Confused? Rule of thumb: if you use a pattern to make other patterns, name it for what is (i.e. “vf-box”). If a pattern has a particular style and personality, name it for the role it performs (i.e. “vf-yourbrand-photo-gallery-tiles”).</p>
-<h2 id="a-is-it-a-utility-pattern-name-it-for-what-it-is">A: Is it a utility pattern? Name it for what it is</h2>
-<p>For reusable patterns that are (or are intended to be) part of the Visual Framework core, name for what it is; that is:</p>
+    <p class="vf-lede">The Visual Framework uses a dual approach for the naming of things.</p>
+
+<p>At the lower level there are <strong>components</strong> which are a type of “ingredient” used
+to assembl into the higher level <strong>patterns</strong> that are richer templates with
+usability guidance.</p>
+<h2 id="type-1-components">Type 1: Components</h2>
+<p>Components are intended for re-use and should be named for what they are; that is:</p>
 <ul>
 <li>vf-box (not “vf-introduction”)</li>
 <li><a href="/components/detail/vf-button--sizes">vf-button</a> (not “vf-call-to-action”)</li>
 <li>vf-grid (not “vf-wide-layout”)</li>
 <li>vf-header (not “vf-big-headline”)</li>
+<li>vf-form</li>
 </ul>
-<p>Why? This ensures that that a box will always be rectangular-ish pattern on pages, whereas an “introduction” may be a box today, but become simply large text after a redesign.</p>
-<h2 id="b-specific-to-you-sites-brand-name-it-for-its-role">B: Specific to you sites/brand? Name it for its role</h2>
-<p>If your pattern is primarily intended to be used for particular websites or a brand, give it a name that is attached to the role it performs; that is:</p>
+<p>Why? This ensures that that a box will always be rectangular-ish pattern on pages,
+whereas an “introduction” may be a box today, but become simply large text after a redesign.</p>
+<h3 id="components-have">Components have</h3>
 <ul>
-<li>vf-yourbrand-masthead</li>
-<li>vf-yourbrand-group-activity-list</li>
-<li>vf-yourbrand-display-headline</li>
+<li>Lots of code<ul>
+<li>Generally that CSS/Sass and some JS</li>
 </ul>
-<p>Why? Naming for the role the pattern does allows us to change the future visual structure, so a “display headline” today may have a black background, but tomorrow might have no background and be large and italic text.</p>
+</li>
+<li>An HTML code template (Nunjucks)</li>
+<li>Documentation on how to use</li>
+</ul>
+<h2 id="type-2-patterns">Type 2: Patterns</h2>
+<p>If your pattern is primarily intended to be used for particular websites or a brand,
+give it a name that is attached to the role it performs; that is:</p>
+<ul>
+<li>vf-group-masthead</li>
+<li>vf-registration-form</li>
+<li>vf-start-page</li>
+</ul>
+<p>Why? Naming for the role the pattern does allows us to change the future visual structure,
+so a “display headline” today may have a black background, but tomorrow might have no background
+and be large and italic text.</p>
+<h3 id="patterns-have">Patterns have</h3>
+<ul>
+<li>Lots of code<ul>
+<li>Generally that CSS/Sass and some JS</li>
+</ul>
+</li>
+<li>An HTML code template (Nunjucks)</li>
+<li>Documentation on how to use</li>
+</ul>
+<p>For further guidance on the distinctions, see: <a href="https://medium.com/eightshapes-llc/patterns-components-2ce778cbe4e8">Patterns ≠ Components</a>
+and UK.gov’s information on <a href="https://design-system.service.gov.uk/patterns">patterns</a> vs <a href="https://design-system.service.gov.uk/components">components</a>.</p>
 
     
 
@@ -150,7 +177,7 @@ embl-grid embl-grid--has-sidebar
   
     
         <li>
-          <a href="../guidelines.html">Developing patterns</a>
+          <a href="../guidelines.html">Developing components</a>
           
         </li>
     
@@ -171,7 +198,7 @@ embl-grid embl-grid--has-sidebar
   
     
         <li>
-          <a href="">Pattern naming</a>
+          <a href="">Component and pattern naming</a>
           
           <span class="vf-badge">You are here</span>
           

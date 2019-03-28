@@ -233,7 +233,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 function emblBreadcrumbs() {
   // We start the breadcrumbs by first getting the EMBL taxonomy.
   // todo: some sort of caching here, perhaps we write to local storage.
-  // todo: abstract this out into its own `embl-taxonomy` pattern?
+  // todo: abstract this out into its own `embl-taxonomy` component?
   emblGetTaxonomy().then(function(response) {
     emblTaxonomy = JSON.parse(response);
 

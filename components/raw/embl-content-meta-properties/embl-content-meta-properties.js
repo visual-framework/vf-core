@@ -1,6 +1,6 @@
 // embl-content-meta-properties
 
-// In addition to being queried by other patterns' JS, this could
+// In addition to being queried by other components' JS, this could
 // also add classes to a page to affect the overall look of a page.
 
 

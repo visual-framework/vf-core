@@ -72,7 +72,7 @@ function vfBannerGetCookie(c_name) {
 /**
  * Finds all vf-banner on a page and activates them
  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
- * @example vfBanner(document.querySelectorAll('.vf-pattern__container')[0]);
+ * @example vfBanner(document.querySelectorAll('.vf-component__container')[0]);
  */
 function vfBanner(scope) {
   var scope = scope || document;
@@ -87,7 +87,7 @@ function vfBanner(scope) {
     return;
   }
 
-  // generate the banner pattern, js events
+  // generate the banner component, js events
   Array.prototype.forEach.call(bannerList, (banner, i) => {
 
     // map the JS data attributes to our object structure
@@ -246,7 +246,7 @@ function vfBannerInsert(banner,bannerId,scope) {
 /**
  * Finds all tabs on a page and activates them
  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
- * @example vfTabs(document.querySelectorAll('.vf-pattern__container')[0]);
+ * @example vfTabs(document.querySelectorAll('.vf-component__container')[0]);
  */
 function vfTabs(scope) {
   var scope = scope || document;
@@ -668,7 +668,7 @@ function emblContentHubFetch() {
     emblContentHubAssignClasses(targetLink,position);
     emblContentHubUpdateDatesFormat(position);
 
-    // run JS for some patterns on content, if they exist
+    // run JS for some components on content, if they exist
     if (typeof(vfBanner) === 'function') {
       vfBanner(targetLocation);
     }
@@ -750,7 +750,7 @@ function emblContentHub() {
 
 // embl-content-meta-properties
 
-// In addition to being queried by other patterns' JS, this could
+// In addition to being queried by other components' JS, this could
 // also add classes to a page to affect the overall look of a page.
 
 
@@ -1030,7 +1030,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 function emblBreadcrumbs() {
   // We start the breadcrumbs by first getting the EMBL taxonomy.
   // todo: some sort of caching here, perhaps we write to local storage.
-  // todo: abstract this out into its own `embl-taxonomy` pattern?
+  // todo: abstract this out into its own `embl-taxonomy` component?
   emblGetTaxonomy().then(function(response) {
     emblTaxonomy = JSON.parse(response);
 

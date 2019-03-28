@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>JavaScript guidelines pattern | Visual Framework 2.0</title>
+  <title>JavaScript guidelines component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -68,7 +68,7 @@ embl-grid embl-grid--has-sidebar
 
       
 
-<div class="pattern-library-notes">
+<div class="component-library-notes">
 
 
 
@@ -77,18 +77,18 @@ embl-grid embl-grid--has-sidebar
     
     <h2 id="just-enough-javascript">Just enough JavaScript</h2>
 <p>The Visual Framework isn’t intended as a general-purpose JavaScript solution, however we know it is helpful that a minimal amount of basic functionality is supported.</p>
-<p>All patterns are provided as functional solutions, so where JavaScript is required (such as <a href="../../components/detail/vf-tabs.html">tabs</a>) there is a fully functional set of JavaScript bundled and available in:</p>
+<p>All components are provided as functional solutions, so where JavaScript is required (such as <a href="../../components/detail/vf-tabs.html">tabs</a>) there is a fully functional set of JavaScript bundled and available in:</p>
 <ul>
 <li><code>vf-tabs.js</code> and</li>
 <li><code>scripts.js</code></li>
 </ul>
 <h2 id="an-opt-in-philosophy">An opt-in philosophy</h2>
-<p>But we know many users would prefer to use their own JavaScript tooling for all – or some – patterns on a case-by-case basis.</p>
+<p>But we know many users would prefer to use their own JavaScript tooling for all – or some – components on a case-by-case basis.</p>
 <p>Why? As <a href="https://github.com/adobe/spectrum-css#where-is-the-javascript">Adobe’s Spectrum CSS puts it</a>:</p>
 <blockquote>
 <p>We have found that JavaScript is where a framework or library quickly becomes opinionated and stops being easy to use with or across other frameworks. To avoid this problem, Spectrum CSS avoids implementation details that require JavaScript.</p>
 </blockquote>
-<p>Likewise we don’t require the use of the Visual Framework JavaScript, instead the behviour can be optionally invoke per-pattern with JavaScript data selectors.</p>
+<p>Likewise we don’t require the use of the Visual Framework JavaScript, instead the behviour can be optionally invoke per-component with JavaScript data selectors.</p>
 <p>So to activate the Visual Framework JavaScript for <code>vf-tabs</code> we add <code>data-vf-js-tabs</code> and <code>data-vf-js-tabs-content</code>, like so:</p>
 <code class="lang-html"><pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-tabs"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-tabs__list"</span> <span class="hljs-attr">data-vf-js-tabs</span>&gt;</span>
@@ -110,7 +110,7 @@ embl-grid embl-grid--has-sidebar
   <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre></code><p>Leaving these data selectors off will cause <code>vf-tabs.js</code> to simply ignore the tabs.</p>
 <h3 id="naming">Naming</h3>
-<p>The name of your selector should follow your pattern’s name, plus an additional <code>-js-</code> prefix.</p>
+<p>The name of your selector should follow your component’s name, plus an additional <code>-js-</code> prefix.</p>
 <p>So:</p>
 <ul>
 <li><code>vf-tabs</code> = <code>data-vf-js-tabs</code></li>
@@ -172,7 +172,7 @@ embl-grid embl-grid--has-sidebar
   
     
         <li>
-          <a href="../guidelines.html">Developing patterns</a>
+          <a href="../guidelines.html">Developing components</a>
           
         </li>
     
@@ -195,7 +195,7 @@ embl-grid embl-grid--has-sidebar
   
     
         <li>
-          <a href="naming.html">Pattern naming</a>
+          <a href="naming.html">Component and pattern naming</a>
           
         </li>
     
