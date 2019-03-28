@@ -13,7 +13,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.24 (2019-02-28)
 
-**Note:** Version bump only for package @visual-framework/vf-plex-mono-font
+**Note:** Version bump only for package @visual-framework/vf-font-plex-mono
 
 
 
@@ -21,7 +21,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.23 (2019-02-28)
 
-**Note:** Version bump only for package @visual-framework/vf-plex-mono-font
+**Note:** Version bump only for package @visual-framework/vf-font-plex-mono
 
 
 
