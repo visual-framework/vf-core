@@ -13,7 +13,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.3 (2019-02-28)
 
-**Note:** Version bump only for package @visual-framework/vf-simple-search
+**Note:** Version bump only for package @visual-framework/vf-search
 
 
 
@@ -21,7 +21,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.2 (2019-02-28)
 
-**Note:** Version bump only for package @visual-framework/vf-simple-search
+**Note:** Version bump only for package @visual-framework/vf-search
 
 
 
