@@ -26,6 +26,6 @@ _Make sure you import any requirements along with the modules._
 
 The CSS classnames available should be used on their own on a Container or added to a Containers exisitng classname declaration in the HTML.
 
-A EMBL Layout should only be applied to Containers. For Blocks you should use the [Visual Framework Grid System]({{ path '/docs/grids/grid-system' }}).
+A EMBL Layout should only be applied to Containers. For Blocks you should use the [Visual Framework Grid System]({{ '/docs/grids/grid-system' | path }}).
 
 If the EMBL Layout System is being added to a Container that has a classname we separate the classes in the HTML with a `|`.
