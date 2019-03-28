@@ -74,7 +74,7 @@ gulp.task('css', function() {
       path.resolve(__dirname, 'components/vf-sass-config/mixins'),
       path.resolve(__dirname, 'components'),
       path.resolve(__dirname, 'components/vf-form'),
-      path.resolve(__dirname, 'components/vf-core-patterns'),
+      path.resolve(__dirname, 'components/vf-core-components'),
       path.resolve(__dirname, 'node_modules'),
     ]
   };
@@ -135,7 +135,7 @@ gulp.task('scripts:es5', function() {
       include: {},
       paths: [
         path.resolve(__dirname, 'components'),
-        path.resolve(__dirname, 'components/vf-core-patterns'),
+        path.resolve(__dirname, 'components/vf-core-components'),
         path.resolve(__dirname, 'components/vf-form'),
       ],
       external: ['vfTabs'],
@@ -370,7 +370,7 @@ var genCss = function (option) {
         path.resolve(__dirname, 'components/vf-sass-config/mixins'),
         path.resolve(__dirname, 'components'),
         path.resolve(__dirname, 'components/vf-form'),
-        path.resolve(__dirname, 'components/vf-core-patterns'),
+        path.resolve(__dirname, 'components/vf-core-components'),
         path.resolve(__dirname, 'node_modules')
       ],
       outputStyle: 'expanded'
@@ -421,7 +421,7 @@ gulp.task('tokens', gulp.parallel(
 
 // Build as a static site for CI
 gulp.task('build', gulp.series(
-  'tokens', 'scss-lint', 'CSSGen', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
+  'tokens', 'scss-lint', 'CSSGen', 'css', 'component-assets', 'scripts', 'frctlBuild'
 ));
 
 gulp.task('prepush-test', gulp.parallel(
