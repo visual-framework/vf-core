@@ -1,4 +1,4 @@
-// vf-simple-search
+// vf-search
 
 // Don't need JS?
 // Feel free to delete this file.
