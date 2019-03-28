@@ -1,0 +1,15 @@
+{% extends "layouts/skeleton.njk" %}
+{% import "macros/navigation.njk" as nav %}
+
+{% block page %}
+
+{% include 'partials/header.njk' %}
+
+<section class="Frame-body" data-role="body">
+<!--
+embl-grid {% if page.title != "Components overview" %}embl-grid--has-sidebar{% endif %}
+-->
+  {% block content %}{% endblock %}
+</section>
+
+{% endblock %}

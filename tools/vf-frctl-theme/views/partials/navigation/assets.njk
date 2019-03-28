@@ -1,0 +1,8 @@
+{% if frctl.assets.visible().length %}
+  <h3 class="vf-text vf-text--l">{{ frctl.get('assets.label') }}</h3>
+  {% for item in frctl.assets.visible() %}
+    <a class="vf-link" href="{{ path( (item | url), request) }}">
+      <span>{{ item.label }}</span>
+    </a>
+  {% endfor %}
+{% endif %}

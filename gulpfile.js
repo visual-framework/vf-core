@@ -35,14 +35,13 @@ const nodeModuleImport = require('@node-sass/node-module-importer');
 const recursive = require('./tools/css-generator/recursive-readdir');
 
 // Linting things
-const prettier = require('gulp-prettier');
 const postcss     = require('gulp-postcss');
 const reporter    = require('postcss-reporter');
 const syntax_scss = require('postcss-scss');
 const gulpStylelint = require('gulp-stylelint');
 
 // Image things
-const svgo = require('gulp-svgo');
+const svgmin = require('gulp-svgmin');
 
 // JS Stuff
 const concat = require('gulp-concat');
@@ -52,7 +51,7 @@ const babel = require('gulp-babel');
 const rollup = require('gulp-better-rollup');
 const includePaths = require('rollup-plugin-includepaths');
 
-const patternPath = path.resolve(__dirname, 'components' );
+const componentPath = path.resolve(__dirname, 'components' );
 
 // Local Server Stuff
 const browserSync = require('browser-sync').create();
@@ -75,7 +74,7 @@ gulp.task('css', function() {
       path.resolve(__dirname, 'components/vf-sass-config/mixins'),
       path.resolve(__dirname, 'components'),
       path.resolve(__dirname, 'components/vf-form'),
-      path.resolve(__dirname, 'components/vf-core-patterns'),
+      path.resolve(__dirname, 'components/vf-core-components'),
       path.resolve(__dirname, 'node_modules'),
     ]
   };
@@ -136,7 +135,7 @@ gulp.task('scripts:es5', function() {
       include: {},
       paths: [
         path.resolve(__dirname, 'components'),
-        path.resolve(__dirname, 'components/vf-core-patterns'),
+        path.resolve(__dirname, 'components/vf-core-components'),
         path.resolve(__dirname, 'components/vf-form'),
       ],
       external: ['vfTabs'],
@@ -182,9 +181,9 @@ gulp.task('scripts:modern', function() {
 });
 
 // -----------------------------------------------------------------------------
-// Pattern Assets
+// Component Assets
 // -----------------------------------------------------------------------------
-gulp.task('pattern-assets', function() {
+gulp.task('component-assets', function() {
   return gulp
     .src(['./components/**/**/assets/**/*'])
     .pipe(gulp.dest('./public/assets'));
@@ -192,12 +191,12 @@ gulp.task('pattern-assets', function() {
 
 
 // -----------------------------------------------------------------------------
-// Pattern Assets
+// Component Assets
 // -----------------------------------------------------------------------------
-gulp.task('images', () => {
+gulp.task('svg', () => {
   return gulp
     .src('./components/**/*.svg')
-    .pipe(svgo())
+    .pipe(svgmin())
     .pipe(gulp.dest('./components'));
 });
 
@@ -205,28 +204,51 @@ gulp.task('images', () => {
 // Design Token Tasks
 // -----------------------------------------------------------------------------
 
-theo.registerFormat("typography-map", result => {
-  let { category, type } = result
-    .get("props")
-    .first()
-    .toJS();
-  return `$vf-${category}--${type}: (
-${result
-  .get("props")
-  .map(
-  prop => `
-  '${prop.get("name")}': (
-    'font-size': ${prop.getIn(["value", "font-size"])},
-    'font-weight': ${prop.getIn(["value", "font-weight"])},
-    'line-height': ${prop.getIn(["value", "line-height"])}
-  ),`
-  )
-  .sort()
-  .join("\n")}
+const theoGeneratedFileWarning = `// This file has been dynamically generated from design tokens
+// Please do NOT edit directly.`;
+const theoSourceTokenLocation = `// Source: {{relative "${ componentPath }" meta.file}}`;
 
+const theoGeneratedPropertiesTemplate = `${theoGeneratedFileWarning}
+
+${theoSourceTokenLocation}
+
+:root {
+  {{#each props as |prop|}}
+  {{#if prop.comment}}
+  {{{trimLeft (indent (comment (trim prop.comment)))}}}
+  {{/if}}
+  --{{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
+{{/each}}
+}
+`;
+
+const theoGeneratedMapTemplate = `${theoGeneratedFileWarning}
+
+${theoSourceTokenLocation}
+
+\${{stem meta.file}}-map: (
+{{#each props as |prop|}}
+  {{#if prop.comment}}
+  {{{trimLeft (indent (comment (trim prop.comment)))}}}
+  {{/if}}
+  '{{kebabcase prop.name}}': ({{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}}),
+{{/each}}
 );
-  `;
-});
+`;
+
+const theoGeneratedSassTemplate = `${theoGeneratedFileWarning}
+
+${theoSourceTokenLocation}
+
+{{#each props as |prop|}}
+{{#if prop.comment}}
+{{{trimLeft (indent (comment (trim prop.comment)))}}}
+{{/if}}
+\${{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
+{{/each}}
+`;
+
+// Register design tokens to be processed by Theo
 
 gulp.task('tokens:typographic-scale', () =>
   gulp.src('./components/vf-design-tokens/typographic-scales/*.yml')
@@ -244,7 +266,7 @@ gulp.task('tokens:variables', () =>
   gulp.src('./components/vf-design-tokens/variables/*.yml')
     .pipe(theoG({
       transform: { type: 'web' },
-      format: { type: 'scss' }
+      format: { type: 'variables.scss' }
     }))
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
 );
@@ -257,6 +279,49 @@ gulp.task('tokens:maps', () =>
     }))
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
 );
+
+gulp.task('tokens:props', () =>
+  gulp.src(['./components/vf-design-tokens/maps/*.yml'])
+    .pipe(theoG({
+      transform: { type: 'web' },
+      format: { type: 'custom-properties.scss' }
+    }))
+    .pipe(gulp.dest('./components/vf-sass-config/variables'))
+);
+
+// Register output format for token types
+theo.registerFormat( "variables.scss",`${theoGeneratedSassTemplate}`);
+theo.registerFormat( "map.scss",`${theoGeneratedMapTemplate}`);
+theo.registerFormat( "custom-properties.scss",`${theoGeneratedPropertiesTemplate}`);
+
+// The Theo typography token processor is a bit more complex
+// and uses a custom format as a function
+theo.registerFormat("typography-map", result => {
+  let { category, type } = result
+    .get("props")
+    .first()
+    .toJS();
+  return `${theoGeneratedFileWarning}
+// Source: ${path.basename(result.getIn(["meta", "file"]))}
+
+$vf-${category}--${type}: (
+${result
+  .get("props")
+  .map(
+  prop => `
+  '${prop.get("name")}': (
+    'font-size': ${prop.getIn(["value", "font-size"])},
+    'font-weight': ${prop.getIn(["value", "font-weight"])},
+    'line-height': ${prop.getIn(["value", "line-height"])}
+  ),`
+  )
+  .sort()
+  .join("\n")}
+
+);
+  `;
+});
+
 
 // -----------------------------------------------------------------------------
 // Fractal Tasks
@@ -305,7 +370,7 @@ var genCss = function (option) {
         path.resolve(__dirname, 'components/vf-sass-config/mixins'),
         path.resolve(__dirname, 'components'),
         path.resolve(__dirname, 'components/vf-form'),
-        path.resolve(__dirname, 'components/vf-core-patterns'),
+        path.resolve(__dirname, 'components/vf-core-components'),
         path.resolve(__dirname, 'node_modules')
       ],
       outputStyle: 'expanded'
@@ -317,7 +382,7 @@ var genCss = function (option) {
 };
 
 gulp.task('CSSGen', function(done) {
-  recursive(patternPath, ['*.css'], function (err, files) {
+  recursive(componentPath, ['*.css'], function (err, files) {
     files.forEach(function(file) {
       if (file.file.indexOf('index.scss') > -1) {
         genCss(file);
@@ -335,7 +400,7 @@ gulp.task('watch', function(done) {
   fractal.watch();
   gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
   gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*', gulp.series('images', 'pattern-assets')).on('change', reload);
+  gulp.watch('./components/**/**/assets/*', gulp.series('svg', 'component-assets')).on('change', reload);
 });
 
 // -----------------------------------------------------------------------------
@@ -346,17 +411,17 @@ gulp.task('scripts', gulp.series(
   'scripts:es5', 'scripts:modern'
 ));
 
-// Build as a static site for CI
-gulp.task('build', gulp.series(
-  'scss-lint', 'CSSGen', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
-));
-
 gulp.task('dev', gulp.parallel(
-  'frctlStart', 'pattern-assets', 'css', 'scripts', 'watch'
+  'frctlStart', 'component-assets', 'css', 'scripts', 'watch'
 ));
 
 gulp.task('tokens', gulp.parallel(
-  'tokens:variables', 'tokens:typographic-scale', 'tokens:maps'
+  'tokens:variables', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
+));
+
+// Build as a static site for CI
+gulp.task('build', gulp.series(
+  'tokens', 'scss-lint', 'CSSGen', 'css', 'component-assets', 'scripts', 'frctlBuild'
 ));
 
 gulp.task('prepush-test', gulp.parallel(

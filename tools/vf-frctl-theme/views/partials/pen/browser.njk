@@ -1,0 +1,25 @@
+<div class="vf-body">
+  <div class="vf-grid vf-grid__col-1">
+
+    <div class="component-info">
+      {% if entity.notes %}
+      <div class="component-library-notes">
+      {{ frctl.docs.renderString(entity.notes, renderEnv) | async }}
+      </div>
+      {% else %}
+      <p class="Browser-isEmptyNote">There are no notes for this item.</p>
+      {% endif %}
+
+      <div class="Pen-panel Pen-info" data-role="info">
+      {% include 'partials/browser/browser.njk' %}
+      </div>
+    </div>
+
+    <!-- List all the components at the footer -->
+    {% if page.title != "Components overview" %}
+      <div>
+      {% include 'partials/browser/component-list.njk' %}
+      </div>
+    {% endif %}
+  </div>
+</div>

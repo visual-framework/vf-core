@@ -1,0 +1,25 @@
+{% for script in frctl.theme.get('scripts') %}
+<!--<script src="{{ path(script) }}?cachebust={{ frctl.theme.get('version') }}"></script>-->
+{% endfor %}
+{% if frctl.env.server %}
+<script src="{{ path('/scripts/scripts.js') }}?cachebust={{ frctl.theme.get('version') }}"></script>
+{% else %}
+<script src="https://dev.assets.emblstatic.net/vf/develop/scripts/scripts.js?cachebust={{ frctl.theme.get('version') }}"></script>
+{% endif %}
+
+<script>
+  var resizeIframeChecks = 0;
+  function resizeIframe(obj) {
+    var obj = obj || document.getElementsByClassName("Preview-iframe")[0];
+    var newHeight = obj.contentWindow.document.body.scrollHeight;
+    if (newHeight < 10) {
+      if (resizeIframeChecks < 2) {
+        // if less than 10px high, that's weird check again. maybe some JS is at play?
+        setTimeout(resizeIframe, 1000);
+        resizeIframeChecks ++;
+      }
+    } else {
+      obj.style.height = newHeight + 'px';
+    }
+  }
+</script>

@@ -1,0 +1,8 @@
+{% if frctl.env.server %}
+<link rel="stylesheet" href="{{ path('/css/styles.css') }}?cachebust={{ frctl.theme.get('version') }}" type="text/css">
+{% else %}
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css?cachebust={{ frctl.theme.get('version') }}" type="text/css">
+{% endif %}
+{% for stylesheet in frctl.theme.get('styles') %}
+<link rel="stylesheet" href="{{ path(stylesheet) }}?cachebust={{ frctl.theme.get('version') }}" type="text/css">
+{% endfor %}

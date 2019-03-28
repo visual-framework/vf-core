@@ -1,0 +1,24 @@
+{% import "macros/render.njk" as render %}
+{% if not ((entity.preview == '@preview--blocks') or (entity.preview == '@preview--elements')) %}
+<h3 class="vf-text vf-text--heading-r">Code example</h3>
+<code class="Code Code--lang-html vf-code-example">
+  {% if entity.isVariant or entity.variants().size == 1 %}
+  <pre class="vf-code-example__pre">
+{% set renderedItem = render.entity(entity.render(null, renderEnv, {preview: false, collate: false},entity) | async(true)) | trim %}
+{% if renderedItem != '' %}
+{{ renderedItem }}
+{% else %}
+{{ entity.content | highlight('html') }}
+{% endif %}
+  </pre>
+  {% else %}
+  {% for variant in entity.variants().items() %}
+<a id="{{ variant.handle }}-code" href="#{{ variant.handle }}-code">Anchor (todo: `vf-link--anchor` or such)</a>
+<pre class="vf-code-example__pre">{{ '<span class="hljs-comment">&lt;!-- ' + variant.label + ' --&gt;</span>' }}
+{{ render.entity(variant.render(null, renderEnv, {preview: false, collate: false}) | async(true)) | trim }}
+</pre>
+  {% endfor %}
+  {% endif %}
+</code>
+<hr class="vf-divider vf-u-margin__bottom-r vf-u-margin__top-r">
+{% endif %}

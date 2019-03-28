@@ -1,4 +1,4 @@
-# vf-core Pattern
+# vf-core Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-core.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-core)
 

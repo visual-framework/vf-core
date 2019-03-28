@@ -12,6 +12,4 @@ function emblContentHub() {
   emblContentHubFetch();
 }
 
-emblContentHub();
-
 export { emblContentHub };

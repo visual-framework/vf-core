@@ -1,0 +1,61 @@
+{% import "macros/status.njk" as status %}
+
+<h1 class="vf-text vf-text--heading-xl vf-text--invert">All the components</h1>
+
+{% macro componentByType(displayName='Grids', type='grid', description='') %}
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text--heading-s">
+      {{ displayName }}
+      <a id="{{ type }}"></a>
+    </h4>
+    <p class="vf-text--body vf-text--body-r">
+      {{ description }}
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      {% asyncEach component in frctl.components %}
+
+        {# handle component collections, aka "subcomponents" #}
+        {% if component.isCollection == true and component.isHidden == false %}
+          {% for subcomponent in component %}
+            {% if subcomponent.context['component-type'] == type and subcomponent.isHidden != true %}
+              <p class="vf-text">
+                <a class="vf-link--secondary" href="{{ path(frctl.theme.urlFromRoute('component', { handle: subcomponent.handle })) }}">{{ subcomponent.label }}</a>
+              </p>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        {% if component.context['component-type'] == type %}
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="{{ path(frctl.theme.urlFromRoute('component', { handle: component.handle })) }}">{{ component.label }}</a>
+        </p>
+        {% endif %}
+      {% endeach %}
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom-r vf-u-margin__top-r">
+{% endmacro %}
+
+{{ componentByType('Grids', type='grid', description='Put stuff in columns.') }}
+
+{{ componentByType('Elements', type='element', description='The micro elements of the component library.') }}
+
+{{ componentByType('Blocks', type='block', description='Simple components like sections headers, galleries and so on.') }}
+
+{{ componentByType('Container', type='container', description='More complex components that sometimes have specific layout, like page intros, mastheads, news sections and so on.') }}
+
+{{ componentByType('Boilerplates', type='boilerplate', description='Whole-page templates that are a collection of many components.') }}
+
+{{ componentByType('EMBL Grids', type='embl-grid', description='EMBLs way to put stuff in columns.') }}
+
+{{ componentByType('EMBL Elements', type='embl-element', description='EMBLs micro elements of the component library.') }}
+
+{{ componentByType('EMBL Blocks', type='embl-block', description='Simple components from EMBL like sections headers, galleries and so on.') }}
+
+{{ componentByType('EMBL Containers', type='embl-container', description='More complex EMBL components that sometimes have specific layout, like page intros, mastheads, news sections and so on.') }}
+
+{{ componentByType('EMBL Boilerplates', type='embl-boilerplate', description='Whole-page templates that are a collection of many components.') }}
+
+{{ componentByType('Deprecated', type='deprecated', description='These components are no longer maintained.') }}

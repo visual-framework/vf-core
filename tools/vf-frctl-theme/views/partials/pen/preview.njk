@@ -1,0 +1,90 @@
+<div class="vf-body">
+  <div class="vf-grid">
+    <div>
+
+    {% if entity.isComponent %}
+    {% set variants = entity.variants() %}
+    {% else %}
+    {% set variants = entity.parent.variants() %}
+    {% endif %}
+    {% if variants.size > 1 and entity.preview != '@preview--blocks' and entity.preview != '@preview--elements' %}
+        <div class="vf-tabs">
+          <ul class="vf-tabs__list">
+            <li class="vf-tabs__item">
+              This component has variants:
+            </li>
+            {% for variant in variants.items() %}
+
+              {% if entity.handle == variant.handle %}
+                <a class="vf-tabs__link is-active" href="#is-active">
+                  {{ variant.label }}
+                </a>
+              {% else %}
+                {% if variant.isHidden == false %}
+                  <a class="vf-tabs__link" href="{{ path(frctl.theme.urlFromRoute('component', { handle: variant.handle })) }}">
+                    {{ variant.label }}
+                  </a>
+                {% endif %} {# end variant.isHidden #}
+              {% endif %} {# end entity.handle == variant.handle #}
+
+            {% endfor %}
+          </ul>
+
+      </div>
+
+    {% endif %}
+    </div>
+  </div>
+</div>
+
+{% import "macros/render.njk" as render %}
+{% if (entity.preview == '@preview--blocks') or (entity.preview == '@preview--elements') -%}
+  <div class="vf-body"><div class="vf-grid">
+  <div class="vf-component__container">
+  <!-- @preview--blocks aren't done in iframes, this allows us a bit more flexibility and to test cross-contamination -->
+  {% for item in variants %}
+    {% if item.isHidden == false %}
+      <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#{{ item.handle }}" id="{{ item.handle }}">Variant {{ item.label }}</a></h3>
+{% set rendered = item.render(null, renderEnv, { preview: withLayout, collate: withCollation }) | async(true) %}
+{{ rendered }}
+<div class="vf-grid">
+<pre class="vf-code-example__pre">
+{{ render.entity(item.render(null, renderEnv, {preview: false, collate: false}) | async(true)) | trim }}
+</pre>
+</div>
+
+      <hr class="vf-divider" />
+    {% endif %}
+  {% endfor %}
+  </div>
+  </div></div>
+{% else %}
+  <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-{{ entity.id }}">
+      <div class="Preview-wrapper" data-role="resizer-disabled">
+        {% if renderError -%}
+            {{ renderError }}
+        {% else %}
+         <iframe
+            class="Preview-iframe"
+            data-role="window"
+            src="{{ previewUrl }}"
+            sandbox="allow-same-origin allow-scripts allow-forms"
+
+            marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
+            onload="resizeIframe(this)"
+          >
+        </iframe>
+        {%- endif %}
+        <div class="vf-body">
+          <div class="vf-grid">
+            <p class="vf-figure__caption">
+              Open the above preview in a new window:
+              <a href="{{ path(frctl.theme.urlFromRoute('preview', { handle: entity.handle })) }}"><span>With layout</span> Open</a>
+              <a href="{{ path(frctl.theme.urlFromRoute('render', { handle: entity.handle })) }}"><span>Component only</span> Open</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+  </div>
+{%- endif %}

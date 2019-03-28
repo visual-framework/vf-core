@@ -54,10 +54,8 @@ function emblBreadcrumbsLookup(metaProperties) {
  * @param {string} [url] - URL to pull the taxonomy from
  */
 function emblGetTaxonomy(url) {
-  var url = url || 'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-taxonomy&source=contenthub';
+  var url = url || 'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-ontology&source=contenthub';
 
-  // from https://developers.google.com/web/fundamentals/primers/promises
-  // Return a new promise.
   return new Promise(function(resolve, reject) {
     // Do the usual XHR stuff
     var req = new XMLHttpRequest();
@@ -79,17 +77,20 @@ function emblGetTaxonomy(url) {
 
     // Handle network errors
     req.onerror = function() {
-      reject(Error("Network Error"));
+      reject(Error("Error loading ontology"));
+
     };
 
     // Make the request
     req.send();
   });
+
 }
 
 /**
  * Receive a term and its context and create a breadcrumb
- * @example emblBreadcrumbAppend(term,facet,type)
+ * @example emblBreadcrumbAppend(breadcrumbTarget,term,facet,type)
+ * @param {dom elements} [breadcrumbTarget]  - elements with data-embl-js-breadcrumbs-lookup
  * @param {string} [termName]  - the taxonomy item found, e.g. `Cancer`
  * @param {string} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
  * @param {string} [type]  - if this is a `primary` or `related` path
@@ -102,47 +103,87 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
     var termObject;
 
-    Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
+    Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
+      let term = emblTaxonomy.terms[termId];
       if (term.name === termName) {
         termObject = term;
         return; //exit
       }
     });
 
+    // we never want to return undefined
+    if (termObject == undefined || termObject == null) {
+      console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will use a simple unlinked term.');
+      termObject = {};
+      termObject.name_display = termName;
+      termObject.uuid = 'null';
+      termObject.uuid = [];
+      termObject.url = '#addBreadcrumbPatternForSimpleTerms';
+    }
+
     return termObject;
   }
 
   /**
-   * Take a term and get its parent term
+   * Take a term and get its parent term UUID
+   * todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless
+   *       of it's who/what/where path, but maybe this will provide an interesting
+   *       "odeur d'information"
    * @example getBreadcrumbParentTerm(parents,context)
    * @param {array} [parents]  - array of UUIDs
    * @param {string} [facet] - who, what, where
    */
   function getBreadcrumbParentTerm(parents,facet) {
-    var parentTodos = {
-      1: 'what is the parent term context? who/what/where',
-      // 2: 'scan the taxonomy and get any parent IDs',
-      // 3: 'if there are parent IDs, add breadcrumb and set URL',
-      4: 'if parent was found, does the parent have a parent?'
-    };
-    console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
+    // var parentTodos = {
+    //   // 1: 'Respect the parent term context: who/what/where'
+    //   // 2: 'scan the taxonomy and get any parent IDs',
+    //   // 3: 'if there are parent IDs, add breadcrumb and set URL',
+    //   // 4: 'if parent was found, does the parent have a parent?'
+    // };
+    // console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
 
-    // what = 98831673-5bc8-4348-8f42-17b09c1d5462
-    // where = ce40f8b4-c7c3-40fe-911e-8d248654fe7e
-    // who = 8c9899b9-b197-4750-b955-894cda8bf9d5
+    if (parents == undefined || parents == null) {
+      // no parent breadcrumb preset, exiting
+      return;
+    }
 
-    // look up each parent UUID
-    // todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless
-    //       of it's who/what/where path, but maybe this will provide an interesting
-    //       "odeur d'information"
-    Array.prototype.forEach.call(parents, (parentId, i) => {
-      Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
-        if (parentId === term.uuid) {
-          emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(term.name_display,term.url) + emblBreadcrumbPrimary.innerHTML;
-          return; //exit
-        }
+    function insertParent(activeParent) {
+      if (activeParent == undefined || activeParent == null) {
+        console.warn('embl-js-breadcumbs-lookup: No matching parent found; Stopping parent lookup.');
+        return;
+      }
+      activeParent.url = activeParent.url || '#addPatternForTermsWithNoUrl';
+
+      if (activeParent.name.indexOf(' root term') > 0) {
+        // if we've reached a root term, abort lookups and don't insert a root term as a crumb
+        return;
+      }
+
+      if (activeParent.primary == facet) {
+        // only insert crumb if it respects the original term context: who/what/where
+        emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+      }
+
+      // get parents of parent
+      if (activeParent.parents) {
+        getBreadcrumbParentTerm(activeParent.parents,facet);
+      }
+
+    }
+
+    var activeParent;
+
+    if (parents[facet]) {
+      // if a parent has structured who/what/where parents
+      activeParent = emblTaxonomy.terms[parents[facet]];
+      insertParent(activeParent);
+    } else {
+      // otherwise lookup each parent
+      parents.forEach(function (parentId) {
+        activeParent = emblTaxonomy.terms[parentId];
+        insertParent(activeParent);
       });
-    });
+    }
 
     return;
   }
@@ -166,11 +207,8 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
   }
 
   var currentTerm = getCurrentTerm(termName);
-  if (currentTerm == undefined || currentTerm == null) {
-    console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Exiting.');
-  }
   var breadcrumbId = currentTerm.uuid,
-      breadcrumbUrl = currentTerm.url || 'null',
+      breadcrumbUrl = currentTerm.url || '#addFunctionForBreadcrumbPatternForSimpleTerms',
       breadcrumbParents = currentTerm.parents;
 
   // narrow down to the first matching element
@@ -178,7 +216,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
   if (type == 'primary') {
     // remove any loading text
-    var loadingText = document.querySelectorAll('.embl-breadcrumbs-lookup__loading-text');
+    var loadingText = document.querySelectorAll('.embl-breadcrumbs-lookup__ghosting');
     if (loadingText.length > 0) { loadingText[0].remove(); }
 
     // add breadcrumb
@@ -195,12 +233,13 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 function emblBreadcrumbs() {
   // We start the breadcrumbs by first getting the EMBL taxonomy.
   // todo: some sort of caching here, perhaps we write to local storage.
-  // todo: abstract this out into its own `embl-taxonomy` pattern?
+  // todo: abstract this out into its own `embl-taxonomy` component?
   emblGetTaxonomy().then(function(response) {
     emblTaxonomy = JSON.parse(response);
 
     // Preprocess the emblTaxonomy for some cleanup tasks
-    Array.prototype.forEach.call(emblTaxonomy.terms, (term, i) => {
+    Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
+      let term = emblTaxonomy.terms[termId];
       // If `name_display` is not set, use the internal name
       if (term.name_display === '') term.name_display = term.name;
       // handle null URL
@@ -211,7 +250,11 @@ function emblBreadcrumbs() {
     emblBreadcrumbsLookup(emblContentMetaProperties_Read());
 
   }, function(error) {
-    console.error("Failed to get EMBL taxonomy", error);
+    console.warn("Failed to get EMBL ontology", error);
+    var emblBreadcrumbTarget = document.querySelectorAll('[data-embl-js-breadcrumbs-lookup]');
+    if (emblBreadcrumbTarget.length > 0) {
+      emblBreadcrumbTarget[0].innerHTML = '<!-- Breadcrumbs failed to render due to network issue -->';
+    }
   });
 }
 

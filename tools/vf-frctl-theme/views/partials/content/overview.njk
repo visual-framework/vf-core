@@ -1,0 +1,33 @@
+{% import "macros/status.njk" as status %}
+
+<p>Here you'll find developer documentation on using components and creating new components for the Visual Framework.</p>
+
+<ol class="vf-grid vf-grid__col-3">
+  <li>Read <a href="https://github.com/visual-framework/vf-core">the basics of the Visual Framework</a>;</li>
+  <li><a href="#boilerplate">Grab a boilerplate</a>;</li>
+  <li>Browse <a href="#grids">the components</a> below;</li>
+  <li>Learn <a href="docs/guidelines">how to create new components</a> or <a href="https://github.com/visual-framework/vf-core/issues/new?template=new-component-request.md">request a new component</a> for the global `vf-core`;</li>
+  <li>Dive deep and <a href="https://github.com/visual-framework/vf-core#childtheme">make your own theme</a>; and</li>
+  <li><a href="https://embl-vf.slack.com/messages">Ask the community for help</a> or <a href="http://github.com/visual-framework/vf-core/issues/">open an issue</a>.</li>
+</ol>
+
+<h2>Todo: make this a container-ized list of the docs</h2>
+<p>(The best nav is no nav)</p>
+
+<li class="vf-navigation__item">
+  <a href="{{ path('/') }}" class="vf-navigation__link">The components</a>
+</li>
+{% asyncEach item in frctl.docs %}
+{% asyncEach menuitem in item %}
+{% if menuitem.isIndex == true %}
+<li class="vf-navigation__item {% if doc.path == menuitem.path %}is-active{% endif %}">
+  <a href="{{ path( (menuitem | url), request ) }}" class="vf-navigation__link">{{ menuitem.title }}</a>
+</li>
+{% endif %}
+{% endeach %}
+{% endeach %}
+<li class="vf-navigation__item">
+  <a href="https://embl-vf.slack.com/messages" class="vf-navigation__link">Help!</a>
+</li>
+
+{% include 'partials/browser/component-list.njk' %}

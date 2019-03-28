@@ -30,7 +30,7 @@ _Make sure you import any requirements along with the modules._
 
 
 <style>
-.pattern-library-notes .vf-grid > * {
+.component-library-notes .vf-grid > * {
   background-color: rgb(141, 191, 226)
 }
 </style>

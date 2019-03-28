@@ -1,14 +1,22 @@
-@import 'vf-font-families.scss';
+// typography variables
+
+@import 'vf-font-families.variables.scss';
 $use-global-typography: true !default;
 $global-font-family: $vf-font-family-sans-serif;
-
+$vf-text-margin--bottom: 16px;
 
 // grid variables
 
 $global-grid-column-gap: 1em;
-$vf-text-margin--bottom: 16px;
-
 $global-page-max-width: 76.5em;
 
-// deprecation
-$vf-deprecation-warning: 'This pattern has been deprecated. Consult the pattern\'s README.md for migration tips.';
+// deprecation variables
+
+$vf-deprecation-warning: 'This component has been deprecated. Consult the component\'s README.md for migration tips.';
+
+// normalisation variables
+//
+// This is set to true to remove styling that is added to the VF 2.0 codebase from older VF 1.0 code that
+// could also be included on the same page.
+
+$vf-include-normalisations: true !default;

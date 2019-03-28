@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" class="vf-no-js">
+<head>
+  {% render '@vf-no-js' %}
+  <title>{{ _target.title }} | {{ _config.project.title }}</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+
+  {% render '@vf-favicon' %}
+
+  {% if _config.project.environment.local %}
+  <link rel="stylesheet" href="{{ '/css/styles.css' | path }}">
+  {% endif %}
+  {% if _config.project.environment.production %}
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css">
+  {% endif %}
+</head>
+<body class="">
+  <div class="vf-grid">
+    <div class="vf-component__container">
+      {{ yield | safe }}
+    </div>
+  </div>
+  <script src="{{ '/scripts/scripts.js' | path }}"></script>
+</body>
+</html>

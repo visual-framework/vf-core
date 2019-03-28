@@ -1,0 +1,33 @@
+<h3 class="vf-text vf-text--heading-r">Component information</h3>
+<ul class="vf-list vf-list--unordered">
+    <li class="vf-list__item">
+        Handle: @{{ entity.handle }}
+    </li>
+    {% if entity.tags.length > 1 %}
+    <li class="vf-list__item">
+        Tags:
+        {% for tag in entity.tags %}
+            {% if tag %}{{ tag }}{% if not loop.last %}, {% endif %}{% endif %}
+        {% endfor %}
+    </li>
+    {% endif %}
+    <li class="vf-list__item">
+        Filesystem path: {{ entity.viewPath | componentPath }}
+    </li>
+    {% if entity.references.length %}
+    <li class="vf-list__item">
+      References ({{ entity.references.length }}):
+      {% for ref in entity.references %}
+        <a href="{{ path(frctl.theme.urlFromRoute('component', { handle: ref.handle })) }}">@{{ ref.handle }}</a>{% if not loop.last %}, {% endif %}
+      {% endfor %}
+    </li>
+    {% endif %}
+    {% if entity.referencedBy.length %}
+    <li class="vf-list__item">
+        Referenced by {{ entity.referencedBy.length }} components:
+        {% for ref in entity.referencedBy %}
+          <a href="{{ path(frctl.theme.urlFromRoute('component', { handle: ref.handle })) }}">@{{ ref.handle }}</a>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    </li>
+    {% endif %}
+</ul>

@@ -1,0 +1,47 @@
+---
+title: Setup
+label: Setting Up
+order: 200
+isIndex: false
+---
+
+To develop the Visual Framework your will need some software.
+
+## Development environment
+
+If you don't already have a code editor and are new to git, a good starting point is to:
+
+1. [Setup a GitHub.com account](https://github.com/join)
+1. Install the [GitHub Desktop git client](https://desktop.github.com/)
+1. For editing code, [install Atom](https://atom.io/)
+
+## Development tools
+
+First, see if you have the needed tools installed.
+
+1. Open a command line/terminal
+1. Enter `node -v`
+1. Enter `gulp -v`
+
+If either of those steps return an error you need to install the corresponding
+software.
+
+- To install Node: go to the official [downloads page](https://nodejs.org/download/)
+- To install Gulp: Gulp requires Node and can be installed by: `npm install gulpjs/gulp-cli -g`
+
+## Installing the Visual Framework
+
+You will need to install this repo onto your machine so that you can update, amend, and and delete components to the Visual Framework as required.
+
+1. Clone this repo
+    - `git clone https://github.com/visual-framework/vf-ebi.git`
+1. Move to the directory
+    - `cd visual-framework-tooling-prototype`
+1. You probably want the develop branch (or [your new feature branch](https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md))
+    - `git checkout develop`
+1. Install [fractal](https://github.com/frctl/fractal) You might need to use `sudo`.
+    - `npm i -g @frctl/fractal`
+1. Download all the things
+    - `npm install`
+1. Run a dev build and open in your browser
+    - `gulp dev`

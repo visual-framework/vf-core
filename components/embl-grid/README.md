@@ -2,7 +2,7 @@
 
 ## About
 
-The EMBL Layout System is applied to the Container patterns. It is an asymmetrical grid of four columns. There are 3 layout options.
+The EMBL Layout System is applied to the Container components. It is an asymmetrical grid of four columns. There are 3 layout options.
 
 All EMBL Layouts are single column until the viewport is 768px or more. EMBL Layouts have two classes. One to define the grid area and where it is in the Page Grid another to determine what columns there are available.
 
@@ -26,6 +26,6 @@ _Make sure you import any requirements along with the modules._
 
 The CSS classnames available should be used on their own on a Container or added to a Containers exisitng classname declaration in the HTML.
 
-A EMBL Layout should only be applied to Containers. For Blocks you should use the [Visual Framework Grid System]({{ path '/docs/grids/grid-system' }}).
+A EMBL Layout should only be applied to Containers. For Blocks you should use the [Visual Framework Grid System]({{ '/docs/grids/grid-system' | path }}).
 
 If the EMBL Layout System is being added to a Container that has a classname we separate the classes in the HTML with a `|`.

@@ -1,8 +1,8 @@
-# EMBL ContentHub Loader Pattern
+# EMBL ContentHub Loader component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fembl-content-hub-loader.svg)](https://badge.fury.io/js/%40visual-framework%2Fembl-content-hub-loader)
 
-Use this pattern to remotely load markup and content from the central EMBL ContentHub, this particular pattern allows reuse and distribution of content ranging articles to navigation elements (such as a global footer).
+Use this component to remotely load markup and content from the central EMBL ContentHub, this particular component allows reuse and distribution of content ranging articles to navigation elements (such as a global footer).
 
 Currently this is done as HTML imports (see the code example) + some JS. In the future other methods will be support (such as JSON).
 

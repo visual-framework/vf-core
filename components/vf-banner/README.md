@@ -1,4 +1,4 @@
-# vf-banner Pattern
+# vf-banner component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-banner.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-banner)
 
@@ -12,7 +12,7 @@
 
 ## JS Documentation for `--modal` variant
 
-Like all JS-enabled patterns in the Visual Framework, if you wish to use the bundled JS, you need to include JS data attributes, here is an overview of what the options are for the `vf-banner--modal` variant.
+Like all JS-enabled components in the Visual Framework, if you wish to use the bundled JS, you need to include JS data attributes, here is an overview of what the options are for the `vf-banner--modal` variant.
 
 - Enable VF JS:
   - data-vf-js-banner
