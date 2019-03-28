@@ -3,6 +3,7 @@
 /* Create a new Fractal instance and export it for use elsewhere if required */
 const fractal        = module.exports = require('@frctl/fractal').create();
 const projectTitle   = vfName;
+const renderMarkdown = require('marked');
 
 /* Set the title of the project */
 fractal.set('project.title', projectTitle);
@@ -21,6 +22,9 @@ const nunj = require('@frctl/nunjucks')({
     // Nunjucks environment opts: https://mozilla.github.io/nunjucks/api.html#configure
   },
   filters: {
+    marked: function(string) {
+      return renderMarkdown(string);
+    },
     // A filter and non-async version of frctl's context extension from
     // https://github.com/frctl/nunjucks/blob/develop/src/extensions/context.js
     // We mainly use this to make a component's YAML data available to REAMDE.md
@@ -40,7 +44,8 @@ const nunj = require('@frctl/nunjucks')({
   //   // global-name: global-val
   // },
   extensions: {
-    codeblock: require('./tools/vf-frctl-extensions/codeblock.js')
+    codeblock: require('./tools/vf-frctl-extensions/codeblock.js'),
+    markdown: require('./tools/vf-frctl-extensions/markdown.js')
   }
 });
 
