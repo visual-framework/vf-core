@@ -1,13 +1,13 @@
-# vf-simple-search component
+# vf-search component
 
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-simple-search.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-simple-search)
+[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-search.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-search)
 
 ## Install
 
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `primer-buttons` with this command.
 
 ```
-$ npm install --save @visual-framework/vf-simple-search
+$ npm install --save @visual-framework/vf-search
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ $ npm install --save @visual-framework/vf-simple-search
 The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
-@import "@visual-framework/vf-simple-search/index.scss";
+@import "@visual-framework/vf-search/index.scss";
 ```
 
 _Make sure you import any requirements along with the modules._
