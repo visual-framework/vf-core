@@ -7,14 +7,14 @@
 {% if pathParam and not doc %}{{ throw(404, 'Page not found') }}{% endif %}
 
 {% set page = {
-    title: doc.title | default('Patterns overview') | default(frctl.get('project.title')) | default('Welcome to your component library')
+    title: doc.title | default('Components overview') | default(frctl.get('project.title')) | default('Welcome to your component library')
 } %}
 
 {% set status = status.tag(doc.status) %}
 
 {% block docContent %}
 
-<div class="pattern-library-notes">
+<div class="component-library-notes">
 
 {% block pageContent %}
 {% import "macros/errors.njk" as errors %}

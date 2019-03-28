@@ -1,9 +1,9 @@
 <div class="vf-body">
   <div class="vf-grid vf-grid__col-1">
 
-    <div class="pattern-info">
+    <div class="component-info">
       {% if entity.notes %}
-      <div class="pattern-library-notes">
+      <div class="component-library-notes">
       {{ frctl.docs.renderString(entity.notes, renderEnv) | async }}
       </div>
       {% else %}
@@ -15,10 +15,10 @@
       </div>
     </div>
 
-    <!-- List all the patterns at the footer -->
-    {% if page.title != "Patterns overview" %}
+    <!-- List all the components at the footer -->
+    {% if page.title != "Components overview" %}
       <div>
-      {% include 'partials/browser/pattern-list.njk' %}
+      {% include 'partials/browser/component-list.njk' %}
       </div>
     {% endif %}
   </div>

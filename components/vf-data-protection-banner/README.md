@@ -2,7 +2,7 @@
 
 ## About
 
-<h2>This pattern has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="../detail/vf-summary-job">vf-banner--gdpr</a> pattern.</h2>
+<h2>This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="../detail/vf-summary-job">vf-banner--gdpr</a> component.</h2>
 
 ## Installation and Implementation
 

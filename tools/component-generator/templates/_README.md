@@ -1,4 +1,4 @@
-# <%= componentName %> Pattern
+# <%= componentName %> Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2F<%= componentName %>.svg)](https://badge.fury.io/js/%40visual-framework%2F<%= componentName %>)
 

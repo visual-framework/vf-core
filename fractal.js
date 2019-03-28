@@ -1,8 +1,8 @@
 'use strict';
 
 /* Create a new Fractal instance and export it for use elsewhere if required */
-const fractal = module.exports = require('@frctl/fractal').create();
-const projectTitle = vfName;
+const fractal        = module.exports = require('@frctl/fractal').create();
+const projectTitle   = vfName;
 
 /* Set the title of the project */
 fractal.set('project.title', projectTitle);
@@ -23,11 +23,11 @@ const nunj = require('@frctl/nunjucks')({
   filters: {
     // A filter and non-async version of frctl's context extension from
     // https://github.com/frctl/nunjucks/blob/develop/src/extensions/context.js
-    // We mainly use this to make a pattern's YAML data available to REAMDE.md
-    // {% set context = '@vf-heading' | patternContexts %}
-    patternContexts:  function(pattern) {
+    // We mainly use this to make a component's YAML data available to REAMDE.md
+    // {% set context = '@vf-heading' | componentContexts %}
+    componentContexts:  function(component) {
       const source = fractal.components;
-      const handle = pattern;
+      const handle = component;
       const entity = source.find(handle);
       if (!entity) {
         throw new Error(`Could not render component '${handle}' - component not found.`);
@@ -46,7 +46,7 @@ const nunj = require('@frctl/nunjucks')({
 
 fractal.components.set('ext', '.njk'); // look for files with a .nunj file extension
 fractal.components.engine(nunj); /* set as the default template engine for components */
-fractal.docs.set('ext', '.njk'); // look for files with a .nunj file extension
+fractal.docs.set('ext', '.njk'); // look for files with a .njk file extension
 fractal.docs.engine(nunj); /* you can also use the same instance for documentation, if you like! */
 
 /* configure components */

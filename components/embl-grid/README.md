@@ -2,7 +2,7 @@
 
 ## About
 
-The EMBL Layout System is applied to the Container patterns. It is an asymmetrical grid of four columns. There are 3 layout options.
+The EMBL Layout System is applied to the Container components. It is an asymmetrical grid of four columns. There are 3 layout options.
 
 All EMBL Layouts are single column until the viewport is 768px or more. EMBL Layouts have two classes. One to define the grid area and where it is in the Page Grid another to determine what columns there are available.
 

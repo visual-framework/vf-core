@@ -51,7 +51,7 @@ const babel = require('gulp-babel');
 const rollup = require('gulp-better-rollup');
 const includePaths = require('rollup-plugin-includepaths');
 
-const patternPath = path.resolve(__dirname, 'components' );
+const componentPath = path.resolve(__dirname, 'components' );
 
 // Local Server Stuff
 const browserSync = require('browser-sync').create();
@@ -74,7 +74,7 @@ gulp.task('css', function() {
       path.resolve(__dirname, 'components/vf-sass-config/mixins'),
       path.resolve(__dirname, 'components'),
       path.resolve(__dirname, 'components/vf-form'),
-      path.resolve(__dirname, 'components/vf-core-patterns'),
+      path.resolve(__dirname, 'components/vf-core-components'),
       path.resolve(__dirname, 'node_modules'),
     ]
   };
@@ -135,7 +135,7 @@ gulp.task('scripts:es5', function() {
       include: {},
       paths: [
         path.resolve(__dirname, 'components'),
-        path.resolve(__dirname, 'components/vf-core-patterns'),
+        path.resolve(__dirname, 'components/vf-core-components'),
         path.resolve(__dirname, 'components/vf-form'),
       ],
       external: ['vfTabs'],
@@ -181,9 +181,9 @@ gulp.task('scripts:modern', function() {
 });
 
 // -----------------------------------------------------------------------------
-// Pattern Assets
+// Component Assets
 // -----------------------------------------------------------------------------
-gulp.task('pattern-assets', function() {
+gulp.task('component-assets', function() {
   return gulp
     .src(['./components/**/**/assets/**/*'])
     .pipe(gulp.dest('./public/assets'));
@@ -191,7 +191,7 @@ gulp.task('pattern-assets', function() {
 
 
 // -----------------------------------------------------------------------------
-// Pattern Assets
+// Component Assets
 // -----------------------------------------------------------------------------
 gulp.task('svg', () => {
   return gulp
@@ -206,7 +206,7 @@ gulp.task('svg', () => {
 
 const theoGeneratedFileWarning = `// This file has been dynamically generated from design tokens
 // Please do NOT edit directly.`;
-const theoSourceTokenLocation = `// Source: {{relative "${ patternPath }" meta.file}}`;
+const theoSourceTokenLocation = `// Source: {{relative "${ componentPath }" meta.file}}`;
 
 const theoGeneratedPropertiesTemplate = `${theoGeneratedFileWarning}
 
@@ -370,7 +370,7 @@ var genCss = function (option) {
         path.resolve(__dirname, 'components/vf-sass-config/mixins'),
         path.resolve(__dirname, 'components'),
         path.resolve(__dirname, 'components/vf-form'),
-        path.resolve(__dirname, 'components/vf-core-patterns'),
+        path.resolve(__dirname, 'components/vf-core-components'),
         path.resolve(__dirname, 'node_modules')
       ],
       outputStyle: 'expanded'
@@ -382,7 +382,7 @@ var genCss = function (option) {
 };
 
 gulp.task('CSSGen', function(done) {
-  recursive(patternPath, ['*.css'], function (err, files) {
+  recursive(componentPath, ['*.css'], function (err, files) {
     files.forEach(function(file) {
       if (file.file.indexOf('index.scss') > -1) {
         genCss(file);
@@ -400,7 +400,7 @@ gulp.task('watch', function(done) {
   fractal.watch();
   gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
   gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*', gulp.series('svg', 'pattern-assets')).on('change', reload);
+  gulp.watch('./components/**/**/assets/*', gulp.series('svg', 'component-assets')).on('change', reload);
 });
 
 // -----------------------------------------------------------------------------
@@ -412,7 +412,7 @@ gulp.task('scripts', gulp.series(
 ));
 
 gulp.task('dev', gulp.parallel(
-  'frctlStart', 'pattern-assets', 'css', 'scripts', 'watch'
+  'frctlStart', 'component-assets', 'css', 'scripts', 'watch'
 ));
 
 gulp.task('tokens', gulp.parallel(
@@ -421,7 +421,7 @@ gulp.task('tokens', gulp.parallel(
 
 // Build as a static site for CI
 gulp.task('build', gulp.series(
-  'tokens', 'scss-lint', 'CSSGen', 'css', 'pattern-assets', 'scripts', 'frctlBuild'
+  'tokens', 'scss-lint', 'CSSGen', 'css', 'component-assets', 'scripts', 'frctlBuild'
 ));
 
 gulp.task('prepush-test', gulp.parallel(

@@ -1,4 +1,4 @@
-# EMBL Conditional Edit Links pattern
+# EMBL Conditional Edit Links component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fembl-conditional-edit.svg)](https://badge.fury.io/js/%40visual-framework%2Fembl-conditional-edit)
 

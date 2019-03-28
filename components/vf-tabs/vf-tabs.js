@@ -3,7 +3,7 @@
 /**
  * Finds all tabs on a page and activates them
  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
- * @example vfTabs(document.querySelectorAll('.vf-pattern__container')[0]);
+ * @example vfTabs(document.querySelectorAll('.vf-component__container')[0]);
  */
 function vfTabs(scope) {
   var scope = scope || document;
