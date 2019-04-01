@@ -1,0 +1,16 @@
+---
+title: Component versioning
+---
+
+[Looking for notes on versioning of vf-core]({{ '/docs/changelog' | path }})?
+
+There are two principles to note:
+
+- Components use a [semantic versioning](https://semver.org/) style of releases
+- Versioning of component is self-contained and distinct from the version number of `vf-core`
+
+That is, if a `vf-pattern@2.2.0` has a breaking change, it would be updated to
+`vf-pattern@v3.0.0` and still be compatible with `vf-core@2.x`.
+
+All patterns should be designed to work with vf-core 2.x, but the may specify a
+minimum required minor version of vf-core.
