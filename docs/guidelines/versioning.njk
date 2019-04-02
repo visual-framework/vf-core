@@ -4,16 +4,17 @@ title: Component versioning
 
 [Looking for notes on versioning of vf-core]({{ '/docs/changelog' | path }})?
 
-There are two principles to note:
+The versioning of components is self-contained and distinct from the version number of `vf-core`
 
-- Components use a [semantic versioning](https://semver.org/) style of releases
-- Versioning of component is self-contained and distinct from the version number of `vf-core`
+Example: if `vf-component`@`2.2.0` has a breaking change, it would be updated to
+`vf-component`@`3.0.0`. That new version number does not affect compatibility with with `vf-core`@`2.x`.
 
-That is, if a `vf-pattern@2.2.0` has a breaking change, it would be updated to
-`vf-pattern@v3.0.0` and still be compatible with `vf-core@2.x`.
+Other notes and tips on components:
 
-All patterns should be designed to work with vf-core 2.x, but the may specify a
+- should use a [semantic versioning](https://semver.org/) style of releases.
+- must work with `vf-core v2.x`, but a component may specify a
 minimum required minor version of vf-core.
-
-You should indicate any required versions of vf-core or peer-components in your
-component's README.md.
+- may indicate any required versions of peer-components in your component's README.md.
+    - `vf-component-x`@`2.1.2` requires `vf-component-y`@`^8.1.0`
+- can live as part of the `vf-core` [monorepo](https://gomonorepo.org/)
+    - Interested in adding a component? [Get in touch](https://embl-vf.slack.com/messages)
