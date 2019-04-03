@@ -13,23 +13,23 @@
 
 
 {# Decide upon which 'style' the badge has #}
-
-
 <{{tags}}
-
+{# If there's an href put it here #}
 {%- if tags == 'a' %}
  href="{{ href if href else '#' }}"
 {%- endif %}
-
+{# You're using an ID? Really?? That'll go here #}
 {% if id %} id="{{-id-}}"{% endif %}
 
 class="vf-badge
+{#- This will list the them classname #}
 {%- if theme_class %} vf-badge--{{theme_class}}{% endif %}
+{# If you're styling the shape of the item, the classnames will render in this for loop #}
 {%- if style %}
   {% for styles in style %} vf-badge--{{styles}}{% endfor -%}
 {% endif -%}
-
-{%- if overide_class %} {{overide_class}}{% endif -%}
+{# You want a snowflake of a classname for something, here you  #}
+{%- if overide_class %} | {{overide_class}}{% endif -%}
 
 ">
 
