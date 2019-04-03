@@ -25,6 +25,7 @@ const notify = require('gulp-notify');
 const shell = require('gulp-shell');
 const rename = require('gulp-rename');
 const watch = require('gulp-watch');
+const ListStream = require('list-stream');
 
 // Sass and CSS Stuff
 const sass = require('gulp-sass');
@@ -67,7 +68,42 @@ const theo = require('theo')
 
 gulp.task('css', function() {
   const opts = {
-    importer: [nodeModuleImport],
+    // importer: [nodeModuleImport],
+    importer: [nodeModuleImport, function(url,prev,done) {
+      var truncatedUrl = url.split(/[/]+/).pop();
+
+      var parentFile = prev.split(/[/]+/).pop();
+
+      // we don't want to interveen in these types
+      // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
+      //   return null;
+      // }
+
+      // console.log(`Importing ${url}`);
+
+      // only intervene in vf-core/index.scss
+      if (parentFile == 'index.scss') {
+        // console.log(url);
+        // console.log(availableComponents)
+        if (availableComponents[url]) {
+          done(url);
+        } else if (availableComponents['_'+truncatedUrl]) {
+          // maybe it was an _filename.scss?
+          done(url);
+        } else if (availableComponents[truncatedUrl]) {
+          done(url);
+        } else {
+          // console.log(url)
+          // return null;
+          done(new console.warn(`Couldn\'t find ${url}, it might not be included in your css build`));
+        }
+      } else {
+        return null;
+      }
+
+
+
+    }],
     includePaths: [
       path.resolve(__dirname, 'components/vf-sass-config/variables'),
       path.resolve(__dirname, 'components/vf-sass-config/functions'),
@@ -78,33 +114,73 @@ gulp.task('css', function() {
       path.resolve(__dirname, 'node_modules'),
     ]
   };
+
+  // find all the component sass available
+  // we'll pass this as a variable to our sass build so we can
+  // only include the file if it exists.
+  var availableComponents = {}; // track the components avaialble
   return gulp
-    .src(SassInput)
-    .pipe(sourcemaps.init())
-    .pipe(sass(opts))
-    .on(
-      'error',
-      notify.onError(function(error) {
-        process.emit('exit') // this fails precommit, but allows guld dev to work
-        return 'Problem at file: ' + error.message;
-      })
-    )
-    .pipe(autoprefixer(autoprefixerOptions))
-    .pipe(browserSync.stream())
-    .pipe(sourcemaps.write())
-    .pipe(rename(
-      {
-        basename: "styles"
-      }
-    ))
-    .pipe(gulp.dest(SassOutput))
-    .pipe(cssnano())
-    .pipe(rename(
-      {
-        suffix: ".min"
-      }
-    ))
-    .pipe(gulp.dest(SassOutput));
+    .src(['components/**/*.scss'], {
+      allowEmpty: true,
+      ignore: ['components/**/index.scss']
+    })
+    .pipe(ListStream.obj(function (err, data) {
+      if (err)
+        throw err
+      data.forEach(function (value, i) {
+        // keep only the file name + directory
+        // `vf-font/vf-font.scss`
+        // var value = value.history[0].split(/[/]+/).splice(-2, 2).join('/');
+
+        // keep only the file name
+        var value = value.history[0].split(/[/]+/).pop();
+
+        // remove `.scss`
+        // var regex = /\.scss/gi;
+        // value = value.replace(regex, '');
+
+        // change any `.` to `_`
+        // regex = /\./gi;
+        // value = value.replace(regex, '_');
+
+        availableComponents[value] = true;
+      });
+
+      // console.log(availableComponents)
+
+      buildGulp();
+    }));
+
+    function buildGulp(){
+      gulp
+        .src(SassInput)
+        .pipe(sourcemaps.init())
+        .pipe(sass(opts))
+        .on(
+          'error',
+          notify.onError(function(error) {
+            process.emit('exit') // this fails precommit, but allows guld dev to work
+            return 'Problem at file: ' + error.message;
+          })
+        )
+        .pipe(autoprefixer(autoprefixerOptions))
+        .pipe(browserSync.stream())
+        .pipe(sourcemaps.write())
+        .pipe(rename(
+          {
+            basename: "styles"
+          }
+        ))
+        .pipe(gulp.dest(SassOutput))
+        .pipe(cssnano())
+        .pipe(rename(
+          {
+            suffix: ".min"
+          }
+        ))
+        .pipe(gulp.dest(SassOutput));
+    }
+
 });
 
 // Sass Lint
