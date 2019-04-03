@@ -1,5 +1,14 @@
-<p class="vf-text--body vf-text--body-xs">This text is extra small</p>
-<p class="vf-text--body vf-text--body-s">This text is small</p>
-<p class="vf-text--body vf-text--body-r">This text is regular</p>
-<p class="vf-text--body vf-text--body-l">This text is large</p>
-<a class="vf-text--body vf-text--body-link" href="#">This text is a link</a>
+<p
+{# You're using an ID? Really?? That'll go here #}
+{% if id %} id="{{-id-}}"{% endif %}
+
+{# Here is where we are adding the vf-text--body modifier #}
+class="vf-text--body vf-text--body-{{ class -}}
+
+{# You want a snowflake of a classname for something, here you  #}
+{%- if overide_class %} | {{overide_class}}{% endif -%}
+">
+
+{{- html | safe if html else text -}}
+
+</p>
