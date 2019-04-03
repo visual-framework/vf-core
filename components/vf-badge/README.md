@@ -1,5 +1,12 @@
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-badge.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-badge)
 
+{% render "@vf-badge" %}
+
+{% from "vf-badge/macro.njk" import vfbadge %}
+
+{{ vfbadge({ text: "dave", theme: "primary" }) }}
+
+
 ## About
 
 The `vf-badge` component is used to label a page, part of a page, or a component. The `vf-badge` component can also be a link using `<a class="vf-badge" href="">badge title</a>`.

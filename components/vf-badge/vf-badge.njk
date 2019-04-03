@@ -1,3 +1,8 @@
-<{{vf_badge_tags}} class="vf-badge{% if vf_badge_classes %} {{vf_badge_classes}}{% endif %}">
-  {{vf_badge_name}}
-</{{vf_badge_tags}}>
+
+{% from "vf-badge/macro.njk" import vfbadge %}
+
+
+{{ vfbadge({
+  text: "hello",
+  theme: "primary"
+}) }}

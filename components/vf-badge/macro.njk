@@ -1,0 +1,48 @@
+{% macro vfbadge(context) %}
+
+  {# Determine type of element to use, if not explicitly set -#}
+
+  {% if context.element %}
+    {% set element = context.element | lower %}
+  {% else %}
+    {% if href %}
+      {% set element = 'a' %}
+    {% else %}
+      {% set element = 'span' %}
+    {% endif %}
+  {% endif %}
+
+  {# Work out what colour theme is needed for the styling #}
+  {% if context.theme %}
+    {% set palette_class = context.theme %}
+  {% endif %}
+
+
+  {# Decide upon which 'style' the badge has #}
+  {% if context.style %}
+    {% set style_class = context.style %}
+  {% endif %}
+
+  {#  If there's an href present you will get a link #}
+  {%- if element == 'a' %}
+    <a
+    href="{{ context.href if context.href else '#' }}"
+    class="vf-badge
+    {%- if palette_class %} vf-badge--{{palette_class}}{% endif %}
+    {% if style_class %} vf-badge--{{style_class}}{% endif -%}
+    ">
+       {{- context.html | safe if context.html else context.text -}}
+    </a>
+
+  {#  Otherwise you get a span #}
+  {%- elseif element == 'span' %}
+    <span
+    class="vf-badge
+    {%- if palette_class %} vf-badge--{{palette_class}}{% endif %}
+    {% if style_class %} vf-badge--{{style_class}}{% endif -%}
+    ">
+       {{- context.html | safe if context.html else context.text -}}
+    </span>
+  {%- endif %}
+
+{% endmacro %}
