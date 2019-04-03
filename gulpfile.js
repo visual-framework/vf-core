@@ -68,18 +68,19 @@ const theo = require('theo')
 
 gulp.task('css', function() {
   const opts = {
-    // importer: [nodeModuleImport],
+    // Import sass files
+    // We'll check to see if the file exists before passing
+    // it to sass for compilation
     importer: [nodeModuleImport, function(url,prev,done) {
       var truncatedUrl = url.split(/[/]+/).pop();
-
       var parentFile = prev.split(/[/]+/).pop();
+
+      // console.log(`Importing ${url}`);
 
       // we don't want to interveen in these types
       // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
       //   return null;
       // }
-
-      // console.log(`Importing ${url}`);
 
       // only intervene in vf-core/index.scss
       if (parentFile == 'index.scss') {
@@ -100,8 +101,6 @@ gulp.task('css', function() {
       } else {
         return null;
       }
-
-
 
     }],
     includePaths: [
@@ -148,10 +147,11 @@ gulp.task('css', function() {
 
       // console.log(availableComponents)
 
-      buildGulp();
+      // once we've scanned for sass files, continue the build
+      runSassBuild();
     }));
 
-    function buildGulp(){
+    function runSassBuild(){
       gulp
         .src(SassInput)
         .pipe(sourcemaps.init())
