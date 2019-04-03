@@ -20,6 +20,7 @@ const nunj = require('@frctl/nunjucks')({
     autoescape: false
     // Nunjucks environment opts: https://mozilla.github.io/nunjucks/api.html#configure
   },
+  paths: ["./components"],
   filters: {
     // A filter and non-async version of frctl's context extension from
     // https://github.com/frctl/nunjucks/blob/develop/src/extensions/context.js
