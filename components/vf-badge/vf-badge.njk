@@ -15,25 +15,24 @@
 {# Decide upon which 'style' the badge has #}
 
 
-  <{{tags}}
+<{{tags}}
 
-  {%- if tags == 'a' %}
-  href="{{ href if href else '#' }}"
-  {%- endif %}
+{%- if tags == 'a' %}
+ href="{{ href if href else '#' }}"
+{%- endif %}
 
-  {% if id %} id="{{-id-}}"{% endif %}
+{% if id %} id="{{-id-}}"{% endif %}
 
-  class="vf-badge
-  {%- if theme_class %} vf-badge--{{theme_class}}{% endif %}
-  {%- if style %}
-    {% for styles in style %} vf-badge--{{styles}}{% endfor -%}
-  {% endif -%}
-  {%- if rounded %} {{rounded_class}}{% endif -%}
-  {%- if outline %} {{outline_class}}{% endif -%}
-  {%- if pill %} {{pill_class}}{% endif -%}
-  {%- if square %} {{square_class}}{% endif -%}
-  {%- if overide_class %} {{overide_class}}{% endif -%}
-  ">
-     {{- html | safe if html else text -}}
+class="vf-badge
+{%- if theme_class %} vf-badge--{{theme_class}}{% endif %}
+{%- if style %}
+  {% for styles in style %} vf-badge--{{styles}}{% endfor -%}
+{% endif -%}
 
-  </{{tags}}>
+{%- if overide_class %} {{overide_class}}{% endif -%}
+
+">
+
+   {{- html | safe if html else text -}}
+
+</{{tags}}>
