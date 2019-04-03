@@ -1,6 +1,13 @@
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-badge.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-badge)
 
-{% render "@vf-badge", {text: "alpha", theme: "primary"} %}
+{% render "@vf-badge", {
+  href: "www.kens-home.com",
+  id: "harsh",
+  overide_class: "overide",
+  style: ["outline", "pill"],
+  text: "alpha",
+  theme: "primary"
+} %}
 
 
 ## About

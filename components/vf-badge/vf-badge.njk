@@ -1,39 +1,39 @@
 {# Determine type of element to use, if not explicitly set -#}
+
 {% if href %}
-  {% set element = 'a' %}
+  {% set tags = 'a' %}
 {% else %}
-  {% set element = 'span' %}
+  {% set tags = 'span' %}
 {% endif %}
 
 {# Work out what colour theme is needed for the styling #}
 {% if theme %}
-  {% set palette_class = theme %}
+  {% set theme_class = theme %}
 {% endif %}
 
 
 {# Decide upon which 'style' the badge has #}
-{% if style %}
-  {% set style_class = style %}
-{% endif %}
 
-{#  If there's an href present you will get a link #}
-{%- if element == 'a' -%}
-  <a
+
+  <{{tags}}
+
+  {%- if tags == 'a' %}
   href="{{ href if href else '#' }}"
-  class="vf-badge
-  {%- if palette_class %} vf-badge--{{palette_class}}{% endif %}
-  {% if style_class %} vf-badge--{{style_class}}{% endif -%}
-  ">
-     {{- html | safe if html else text -}}
-  </a>
+  {%- endif %}
 
-{#  Otherwise you get a span #}
-{%- elseif element == 'span' -%}
-  <span
+  {% if id %} id="{{-id-}}"{% endif %}
+
   class="vf-badge
-  {%- if palette_class %} vf-badge--{{palette_class}}{% endif %}
-  {% if style_class %} vf-badge--{{style_class}}{% endif -%}
+  {%- if theme_class %} vf-badge--{{theme_class}}{% endif %}
+  {%- if style %}
+    {% for styles in style %} vf-badge--{{styles}}{% endfor -%}
+  {% endif -%}
+  {%- if rounded %} {{rounded_class}}{% endif -%}
+  {%- if outline %} {{outline_class}}{% endif -%}
+  {%- if pill %} {{pill_class}}{% endif -%}
+  {%- if square %} {{square_class}}{% endif -%}
+  {%- if overide_class %} {{overide_class}}{% endif -%}
   ">
      {{- html | safe if html else text -}}
-  </span>
-{%- endif %}
+
+  </{{tags}}>
