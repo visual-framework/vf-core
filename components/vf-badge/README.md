@@ -1,10 +1,6 @@
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-badge.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-badge)
 
-{% render "@vf-badge" %}
-
-{% from "vf-badge/macro.njk" import vfbadge %}
-
-{{ vfbadge({ text: "dave", theme: "primary" }) }}
+{% render "@vf-badge", {text: "alpha", theme: "primary"} %}
 
 
 ## About
