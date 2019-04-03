@@ -24,7 +24,7 @@
   {% endif %}
 
   {#  If there's an href present you will get a link #}
-  {%- if element == 'a' %}
+  {%- if element == 'a' -%}
     <a
     href="{{ context.href if context.href else '#' }}"
     class="vf-badge
@@ -35,7 +35,7 @@
     </a>
 
   {#  Otherwise you get a span #}
-  {%- elseif element == 'span' %}
+  {%- elseif element == 'span' -%}
     <span
     class="vf-badge
     {%- if palette_class %} vf-badge--{{palette_class}}{% endif %}
