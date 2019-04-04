@@ -12,14 +12,13 @@ const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR
 const config = JSON.parse(fs.readFileSync('./package.json'));
 global.vfName = config.vfConfig.vfName;
 global.vfNamespace = config.vfConfig.vfNamespace;
+global.vfComponentPath = __dirname + '/components';
 
 // -----------------------------------------------------------------------------
 // Dependencies
 // -----------------------------------------------------------------------------
 
 const gulp = require('gulp');
-const fractal = require('./fractal.js');
-const logger = fractal.cli.console;
 const path = require('path');
 const notify = require('gulp-notify');
 const shell = require('gulp-shell');
@@ -327,33 +326,18 @@ ${result
 // Fractal Tasks
 // -----------------------------------------------------------------------------
 
-gulp.task('frctlStart', function() {
-  fractal.set('project.environment.local', 'true');
-  const server = fractal.web.server({
-    sync: true
-  });
-  server.on('error', err => logger.error(err.message));
-  return server.start().then(() => {
-    logger.success(`Fractal server is now running at ${server.url}`);
-    logger.success(`Network URL: ${server.urls.sync.external}`);
-  });
+gulp.task('frctlStart', function(done) {
+  const fractal = require('./fractal.js').initialize('server',fractalReadyCallback);
+  function fractalReadyCallback() {
+    done();
+  }
 });
 
 gulp.task('frctlBuild', function() {
-  fractal.set('project.environment.production', 'true');
-  const builder = fractal.web.builder();
-  builder.on('progress', (completed, total) =>
-    logger.update(`Exported ${completed} of ${total} items`, 'info')
-  );
-  builder.on('error', err => logger.error(err.message));
-  return builder.build().then(() => {
-    logger.success('Fractal build completed!');
-
-    // Copy compiled css/js and other assets
-    gulp.src('./public/**/*')
-    .pipe(gulp.dest('./build'));
-    logger.success('Copied `/public` assets.');
-  });
+  const fractal = require('./fractal.js').initialize('build',fractalReadyCallback);
+  function fractalReadyCallback() {
+    done();
+  }
 });
 
 // -----------------------------------------------------------------------------
@@ -397,7 +381,6 @@ gulp.task('CSSGen', function(done) {
 // -----------------------------------------------------------------------------
 
 gulp.task('watch', function(done) {
-  fractal.watch();
   gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
   gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
   gulp.watch('./components/**/**/assets/*', gulp.series('svg', 'component-assets')).on('change', reload);
