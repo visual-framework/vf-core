@@ -17,7 +17,8 @@ module.exports = {
     fractal.components.set('path', vfComponentPath);
 
     /* Tell Fractal where the documentation pages will live */
-    fractal.docs.set('path', __dirname + '/docs');
+    var vfDocsPath = global.vfDocsPath || __dirname + '/docs';
+    fractal.docs.set('path', vfDocsPath);
 
     const nunj = require('@frctl/nunjucks')({
       env: {
@@ -60,7 +61,8 @@ module.exports = {
     fractal.components.set('default.preview', `@preview`);
 
     /* build destination */
-    fractal.web.set('builder.dest', __dirname + '/build');
+    var vfBuilderPath = global.vfBuilderPath || __dirname + '/build';
+    fractal.web.set('builder.dest', vfBuilderPath);
 
     /* configure web */
     fractal.web.set('static.path', __dirname + '/public');
