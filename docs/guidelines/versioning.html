@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Setup component | Visual Framework 2.0</title>
+  <title>Component versioning component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -59,7 +59,7 @@ embl-grid embl-grid--has-sidebar
 
       <div class="Document-header">
           
-          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Setup</h1>
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Component versioning</h1>
           
 
 
@@ -75,55 +75,24 @@ embl-grid embl-grid--has-sidebar
 
     
     
-    <p>To develop the Visual Framework your will need some software.</p>
-<h2 id="development-environment">Development environment</h2>
-<p>If you don’t already have a code editor and are new to git, a good starting point is to:</p>
-<ol>
-<li><a href="https://github.com/join">Setup a GitHub.com account</a></li>
-<li>Install the <a href="https://desktop.github.com/">GitHub Desktop git client</a></li>
-<li>For editing code, <a href="https://atom.io/">install Atom</a></li>
-</ol>
-<h2 id="development-tools">Development tools</h2>
-<p>First, see if you have the needed tools installed.</p>
-<ol>
-<li>Open a command line/terminal</li>
-<li>Enter <code>node -v</code></li>
-<li>Enter <code>gulp -v</code></li>
-</ol>
-<p>If either of those steps return an error you need to install the corresponding
-software.</p>
+    <p><a href="../changelog.html">Looking for notes on versioning of vf-core</a>?</p>
+<p>The versioning of components is self-contained and distinct from the version number of <code>vf-core</code></p>
+<p>Example: if <code>vf-component</code>@<code>2.2.0</code> has a breaking change, it would be updated to
+<code>vf-component</code>@<code>3.0.0</code>. That new version number does not affect compatibility with with <code>vf-core</code>@<code>2.x</code>.</p>
+<p>Other notes and tips on components:</p>
 <ul>
-<li>To install Node: go to the official <a href="https://nodejs.org/download/">downloads page</a></li>
-<li>To install Gulp: Gulp requires Node and can be installed by: <code>npm install gulpjs/gulp-cli -g</code></li>
-</ul>
-<h2 id="installing-the-visual-framework">Installing the Visual Framework</h2>
-<p>You will need to install this repo onto your machine so that you can update, amend, and and delete components to the Visual Framework as required.</p>
-<ol>
-<li>Clone this repo<ul>
-<li><code>git clone https://github.com/visual-framework/vf-ebi.git</code></li>
+<li>should use a <a href="https://semver.org/">semantic versioning</a> style of releases.</li>
+<li>must work with <code>vf-core v2.x</code>, but a component may specify a
+minimum required minor version of vf-core.</li>
+<li>may indicate any required versions of peer-components in your component’s README.md.<ul>
+<li><code>vf-component-x</code>@<code>2.1.2</code> requires <code>vf-component-y</code>@<code>^8.1.0</code></li>
 </ul>
 </li>
-<li>Move to the directory<ul>
-<li><code>cd visual-framework-tooling-prototype</code></li>
+<li>can live as part of the <code>vf-core</code> <a href="https://gomonorepo.org/">monorepo</a><ul>
+<li>Interested in adding a component? <a href="https://embl-vf.slack.com/messages">Get in touch</a></li>
 </ul>
 </li>
-<li>You probably want the develop branch (or <a href="https://github.com/visual-framework/vf-core/blob/develop/CONTRIBUTING.md">your new feature branch</a>)<ul>
-<li><code>git checkout develop</code></li>
 </ul>
-</li>
-<li>Install <a href="https://github.com/frctl/fractal">fractal</a> You might need to use <code>sudo</code>.<ul>
-<li><code>npm i -g @frctl/fractal</code></li>
-</ul>
-</li>
-<li>Download all the things<ul>
-<li><code>npm install</code></li>
-</ul>
-</li>
-<li>Run a dev build and open in your browser<ul>
-<li><code>gulp dev</code></li>
-</ul>
-</li>
-</ol>
 
     
 
@@ -158,55 +127,60 @@ software.</p>
 
   
     
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+    
         <li>
-          <a href="components.html">Creating a new component</a>
+          <a href="global-token-variables.html">Global token variables</a>
           
         </li>
     
   
     
         <li>
-          <a href="file-structure.html">File structure of the Visual Framework</a>
+          <a href="../guidelines.html">Developing components</a>
           
         </li>
     
   
     
         <li>
-          <a href="../contributing.html">Contributing</a>
+          <a href="css.html">Sass and CSS guidelines</a>
           
         </li>
     
   
     
         <li>
-          <a href="">Setup</a>
+          <a href="javascript.html">JavaScript guidelines</a>
+          
+        </li>
+    
+  
+    
+        <li>
+          <a href="naming.html">Component and pattern naming</a>
+          
+        </li>
+    
+  
+    
+        <li>
+          <a href="">Component versioning</a>
           
           <span class="vf-badge">You are here</span>
           
         </li>
-    
-  
-    
-        <li>
-          <a href="user-base.html">User base</a>
-          
-        </li>
-    
-  
-
-
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
     
   
 
