@@ -6,12 +6,14 @@ module.exports = {
     /* Create a new Fractal instance and export it for use elsewhere if required */
     const fractal        = module.exports = require('@frctl/fractal').create();
     const logger         = fractal.cli.console;
+    var vfName           = global.vfName || 'Visual Framework component library';
     const projectTitle   = vfName;
 
     /* Set the title of the project */
     fractal.set('project.title', projectTitle);
 
     /* Tell Fractal where the components will live */
+    var vfComponentPath = global.vfComponentPath || __dirname + '/components';
     fractal.components.set('path', vfComponentPath);
 
     /* Tell Fractal where the documentation pages will live */
@@ -107,7 +109,6 @@ module.exports = {
       fractalServer.start().then(() => {
         logger.success(`Your Visual Framework component library is available at ${fractalServer.url}`);
         // logger.success(`Network URL: ${server.urls.sync.external}`);
-        console.log('done over here');
         fractal.watch();
         callback(fractal);
       });
