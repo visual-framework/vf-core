@@ -60,6 +60,7 @@ const reload = browserSync.reload;
 const theoG = require('gulp-theo')
 const theo = require('theo')
 
+
 // -----------------------------------------------------------------------------
 // Sass and CSS Tasks
 // -----------------------------------------------------------------------------
@@ -333,9 +334,14 @@ gulp.task('frctlStart', function(done) {
   }
 });
 
-gulp.task('frctlBuild', function() {
+gulp.task('frctlBuild', function(done) {
   const fractal = require('./fractal.js').initialize('build',fractalReadyCallback);
   function fractalReadyCallback() {
+    // Copy compiled css/js and other assets
+    gulp.src('./public/**/*')
+      .pipe(gulp.dest('./build'));
+      console.info('Copied `/public` assets.');
+
     done();
   }
 });

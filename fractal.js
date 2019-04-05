@@ -123,10 +123,6 @@ module.exports = {
       return builder.build().then(() => {
         logger.success('Fractal build completed!');
 
-        // Copy compiled css/js and other assets
-        gulp.src('./public/**/*')
-        .pipe(gulp.dest('./build'));
-        logger.success('Copied `/public` assets.');
         callback(fractal);
       });
     }
