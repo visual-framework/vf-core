@@ -40,7 +40,7 @@ const nunj = require('@frctl/nunjucks')({
   //   // global-name: global-val
   // },
   extensions: {
-    codeblock: require('./tools/vf-frctl-extensions/codeblock.js')
+    codeblock: require('./tools/vf-frctl-extensions/codeblock.js')(fractal)
   }
 });
 
