@@ -6,7 +6,7 @@ const fs = require('fs');
 // Configuration
 // -----------------------------------------------------------------------------
 
-const SassInput = './components/vf-core/index.scss';
+const SassInput = './components/vf-componenet-rollup/index.scss';
 const SassOutput = './public/css';
 const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
 const config = JSON.parse(fs.readFileSync('./package.json'));
@@ -142,7 +142,7 @@ gulp.task('scripts:es5', function() {
       extensions: ['.js']
   };
 
-  return gulp.src('./components/vf-core/scripts.js')
+  return gulp.src('./components/vf-componenet-rollup/scripts.js')
     // .pipe(sourcemaps.init())
     .pipe(rollup({
       // There is no `input` option as rollup integrates into the gulp pipeline
@@ -173,7 +173,7 @@ gulp.task('scripts:es5', function() {
 
 // Eventually we'll want to support ES6 natively with ES5 as fallback, `scripts.es5.js`
 gulp.task('scripts:modern', function() {
-  return gulp.src('./components/vf-core/scripts.js')
+  return gulp.src('./components/vf-componenet-rollup/scripts.js')
       .pipe(rename(function (path) {
         path.extname = ".modern.js";
       }))
