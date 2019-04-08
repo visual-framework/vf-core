@@ -5,7 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.9 (2019-03-28)
 
-**Note:** Version bump only for package @visual-framework/vf-core
+**Note:** Version bump only for package @visual-framework/vf-componenet-rollup
 
 
 
@@ -13,7 +13,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.8 (2019-02-28)
 
-**Note:** Version bump only for package @visual-framework/vf-core
+**Note:** Version bump only for package @visual-framework/vf-componenet-rollup
 
 
 
@@ -21,7 +21,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.0.7 (2019-02-28)
 
-**Note:** Version bump only for package @visual-framework/vf-core
+**Note:** Version bump only for package @visual-framework/vf-componenet-rollup
 
 
 

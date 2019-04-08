@@ -47,7 +47,7 @@ module.exports = {
       //   // global-name: global-val
       // },
       extensions: {
-        codeblock: require('./tools/vf-frctl-extensions/codeblock.js')(fractal)
+        codeblock: require(__dirname + '/tools/vf-frctl-extensions/codeblock.js')(fractal)
       }
     });
 
@@ -65,15 +65,18 @@ module.exports = {
     fractal.web.set('builder.dest', vfBuilderPath);
 
     /* configure web */
-    fractal.web.set('static.path', __dirname + '/public');
+    var vfStaticPath = global.vfStaticPath || __dirname + '/public';
+    fractal.web.set('static.path', vfStaticPath);
     fractal.web.set('server.sync', true);
+    var vfOpenBrowswer = global.vfOpenBrowswer || true;
     fractal.web.set('server.syncOptions', {
-      open: true,
+      open: vfOpenBrowswer,
       browser: 'default',
       sync: true
     });
 
-    const vfTheme = require('./tools/vf-frctl-theme');
+    var vfThemePath = global.vfThemePath || '@frctl/mandelbrot';
+    const vfTheme = require(vfThemePath);
     const vfThemeConfig = vfTheme({}, fractal);
 
     fractal.components.set('statuses', {
