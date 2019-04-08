@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>File structure of the Visual Framework component | Visual Framework 2.0</title>
+  <title>Deprecating components component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -59,7 +59,7 @@ embl-grid embl-grid--has-sidebar
 
       <div class="Document-header">
           
-          <h1 class="vf-text vf-text--heading-xl vf-text--invert">File structure of the Visual Framework</h1>
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Deprecating components</h1>
           
 
 
@@ -75,38 +75,52 @@ embl-grid embl-grid--has-sidebar
 
     
     
-    <p>The <code>vf-core</code> repo contains three types of files:</p>
+    <p>Inevitably code will be replaced and improved, leaving components stale and or outdated. So we should tell developers to not use them, here’s how.</p>
+<p>Here’s what we need to make sure we do:</p>
 <ol>
-<li>Components that are located in <code>./components</code></li>
-<li>Build scripts located in the root of the project (mainly)</li>
-<li>The web interface <code>./tools/vf-frctl-theme</code></li>
+<li>Developers can avoid installing and outdated componetn;</li>
+<li>Developers can know to stop using a componetn; and</li>
+<li>Components aren’t removed so existing sites continue to function.</li>
 </ol>
-<h2 id="detailed-overview">Detailed overview</h2>
-<div class="vf-box">
-
-<pre>
-    ├── .editorconfig
-    ├── CHANGELOG.md
-    ├── CONTRIBUTING.md
-    ├── README.md
-    ├── components  (all the components you wish to use)
-    │   ├── _previews (templates for the web component browser)
-    │   ├── vf-activity-group
-    |   |   …
-    │   └── vf-video-teaser
-    ├── docs (documentation files for the web interface)
-    ├── fractal.js (configuration for the web component library)
-    ├── gulpfile.js
-    ├── lerna.json
-    ├── package.json
-    ├── public (dynamic folder used for rendering of global CSS, JS, component assets)
-    └── tools
-        ├── component-generator (make new components)
-        ├── css-generator (build requirement)
-        └── vf-frctl-theme (web interface)
-</pre>
-
-</div>
+<h2 id="how-to-deprecate-an-entire-component">How to deprecate an entire component</h2>
+<ol>
+<li>In the <code>component-name.config.yml</code> file add:<ul>
+<li><code>status: deprecated</code></li>
+<li><code>component-type: deprecated</code></li>
+<li><code>hidden: true</code></li>
+</ul>
+</li>
+<li>In the <code>component-name.scss</code> file wrap the sass with:<ul>
+<li><code>html:not(.vf-disable-deprecated) {</code></li>
+</ul>
+</li>
+<li>Update <code>README.md</code> with:<ul>
+<li>why the component has been deprecated</li>
+<li>what component(s) developers should instead use</li>
+<li>Use this template: <code>&lt;h2&gt;This component has been &lt;span style=&quot;color: rgb(228, 0, 70);&quot;&gt;deprecated&lt;/span&gt;. Please use the &lt;a class=&quot;vf-link&quot; href=&quot;#&quot;new&lt;/a&gt; component.&lt;/h2&gt; in the README.md file.</code></li>
+</ul>
+</li>
+<li>Publish on NPM:<ul>
+<li>follow the guidelines to update the packages using Lerna(TODO). This would be a major release for the deprecated component, decide on other pattern version numbers as described in the documentation for publishing(TODO).</li>
+</ul>
+</li>
+<li>Remove the component from <code>vf-core</code></li>
+<li>Deprecate on npm:<ul>
+<li><code>npm deprecate @visual-framework/component &quot;no longer supported use the @visual-framework/component instead&quot;</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="need-to-deprecate-just-one-variant-of-a-component-">Need to deprecate just one variant of a component?</h2>
+<ol>
+<li>Add a note to the <code>--variant.njk</code><ul>
+<li>Use this template: <code>&lt;h2&gt;This variant has been &lt;span style=&quot;color: rgb(228, 0, 70);&quot;&gt;deprecated&lt;/span&gt;. Please use the &lt;a class=&quot;vf-link&quot; href=&quot;#&quot;new&lt;/a&gt; component.&lt;/h2&gt; in the README.md file.</code></li>
+</ul>
+</li>
+<li>Wrap the relevant Sass in <code>html:not(.vf-disable-deprecated) {</code></li>
+<li>Hide the variant tab in <code>.config.yml</code>:<code><pre><span class="hljs-attr">variants:</span>
+<span class="hljs-attr">- name:</span> <span class="hljs-string">deprecated-variant</span>
+<span class="hljs-attr"> hidden:</span> <span class="hljs-literal">true</span></pre></code></li>
+</ol>
 
     
 
@@ -170,9 +184,7 @@ embl-grid embl-grid--has-sidebar
   
     
         <li>
-          <a href="">File structure of the Visual Framework</a>
-          
-          <span class="vf-badge">You are here</span>
+          <a href="file-structure.html">File structure of the Visual Framework</a>
           
         </li>
     
@@ -193,7 +205,9 @@ embl-grid embl-grid--has-sidebar
   
     
         <li>
-          <a href="deprecating-components.html">Deprecating components</a>
+          <a href="">Deprecating components</a>
+          
+          <span class="vf-badge">You are here</span>
           
         </li>
     
