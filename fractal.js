@@ -68,9 +68,9 @@ module.exports = {
     var vfStaticPath = global.vfStaticPath || __dirname + '/public';
     fractal.web.set('static.path', vfStaticPath);
     fractal.web.set('server.sync', true);
-    var vfOpenBrowswer = global.vfOpenBrowswer || true;
+    var vfOpenBrowser = typeof global.vfOpenBrowser === "undefined" ? true : global.vfOpenBrowser;
     fractal.web.set('server.syncOptions', {
-      open: vfOpenBrowswer,
+      open: vfOpenBrowser,
       browser: 'default',
       sync: true
     });
