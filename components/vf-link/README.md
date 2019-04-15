@@ -7,30 +7,28 @@
 {% render "@vf-link", {
   href: "#",
   id: "harsh",
-  class: "none",
   text: "A default link"
 } %}
 <br/>
 {% render "@vf-link", {
   href: "#",
   id: "harsh",
-  class: "hover",
+  style: ["hover"],
   text: "A default:hover link"
 } %}
 <br/>
 {% render "@vf-link", {
   href: "#",
   id: "harsh",
-  class: "visited",
+  style: ["visited"],
   text: "A default:visited link"
 } %}
 <br/>
 {% render "@vf-link", {
   href: "#",
   id: "harsh",
-  class: "disabled",
-  text: "A disabled default link",
-  disable: true
+  style: ["disable"],
+  text: "A disabled default link"
 } %}
 
 
@@ -39,30 +37,32 @@
 {% render "@vf-link", {
   href: "#",
   id: "harsh",
-  class: "secondary",
+  theme: "secondary",
   text: "A secondary link"
 } %}
 <br/>
 {% render "@vf-link--secondary", {
   href: "#",
   id: "harsh",
-  class: "secondary--hover",
+  theme: "secondary",
+  style: ["hover"],
   text: "A secondary:hover link"
 } %}
 <br/>
 {% render "@vf-link--secondary", {
   href: "#",
   id: "harsh",
-  class: "secondary--visited",
+  theme: "secondary",
+  style: ["visited"],
   text: "A secondary:visited link"
 } %}
 <br/>
 {% render "@vf-link--secondary", {
   href: "#",
   id: "harsh",
-  class: "secondary--disabled",
-  text: "A disabled secondary link",
-  disable: true
+  theme: "secondary",
+  style: ["disabled"],
+  text: "A disabled secondary link"
 } %}
 
 

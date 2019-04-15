@@ -8,11 +8,44 @@ context:
 variants:
   - name: default
     context:
-      text: An inline link
-      class: none
-      href: https://example.com/
+      href: "#"
+      id: "harsh"
+      text: "A default link"
+  - name: default-hover
+    context:
+      href: "#"
+      style: ["hover"]
+      text: "A default:hover link"
+  - name: default-visited
+    context:
+      href: "#"
+      style: ["visited"]
+      text: "A default:visited link"
+  - name: default-disabled
+    context:
+      href: "#"
+      style: ["disabled"]
+      text: "A disabled default link"
   - name: secondary
     context:
+      href: "#"
       text: A secondary link
-      class: secondary
-      href: https://example.com/
+      theme: secondary
+  - name: secondary-hover
+    context:
+      href: "#"
+      text: A secondary:hover link
+      theme: secondary
+      style: ["hover"]
+  - name: secondary-visited
+    context:
+      href: "#"
+      text: A secondary:visited link
+      theme: secondary
+      style: ["visited"]
+  - name: secondary-disabled
+    context:
+      href: "#"
+      text: A disabled secondary link
+      theme: secondary
+      style: ["disabled"]
