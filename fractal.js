@@ -48,7 +48,8 @@ module.exports = {
       //   // global-name: global-val
       // },
       extensions: {
-        codeblock: require(__dirname + '/tools/vf-frctl-extensions/codeblock.js')(fractal)
+        codeblock: require(__dirname + '/tools/vf-frctl-extensions/codeblock.js')(fractal),
+        spaceless: require(__dirname + '/tools/vf-frctl-extensions/spaceless.js')(fractal)
       }
     });
 
