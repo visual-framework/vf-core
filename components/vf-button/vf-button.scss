@@ -51,16 +51,19 @@
   }
 }
 
-.vf-button--outline--primary {
-  @include button-link--ghost;
-}
+.vf-button--outline {
 
-.vf-button--outline--secondary {
-  @include button-link--ghost($vf-link-color: set-color(vf-color-green), $vf-link-hover-color: set-color(vf-color-green-dark));
-}
+  &.vf-button--primary {
+    @include button-link--ghost;
+  }
 
-.vf-button--outline--tertiary {
-  @include button-link--ghost($vf-link-color: set-color(vf-color-gray-dark), $vf-link-hover-color: set-color(vf-color-gray));
+  &.vf-button--secondary {
+    @include button-link--ghost($vf-link-color: set-color(vf-color-green), $vf-link-hover-color: set-color(vf-color-green-dark));
+  }
+
+  &.vf-button--tertiary {
+    @include button-link--ghost($vf-link-color: set-color(vf-color-gray-dark), $vf-link-hover-color: set-color(vf-color-gray));
+  }
 }
 
 .vf-button--pill {
