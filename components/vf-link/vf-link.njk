@@ -1,15 +1,26 @@
-<p class="vf-text">
-  <a class="vf-link" href="#">An inline link</a>
-</p>
+{% spaceless %}
+<a
+{# Using an ID? Really?? That goes here #}
+{%- if id %} id="{{-id-}}"{% endif -%}
 
-<p class="vf-text">
-  <a class="vf-link vf-link--hover" href="#">An inline link :hover</a>
-</p>
+{# Gotta have a link #}
+href="{{-href-}}"
 
-<p class="vf-text">
-  <a class="vf-link vf-link--visited" href="#">An inline link :visited</a>
-</p>
+{# Have a target like _blank? That goes here #}
+{%- if target %} target="_{{-target-}}"{% endif -%}
 
-<p class="vf-text">
-  <a class="vf-link" href="#" disabled>An inline link :disabled</a>
-</p>
+{# Here is where we are adding the vf-text--body modifier #}
+class="vf-link vf-link--{{ class -}}
+
+{# You want a snowflake of a classname for something, here you  #}
+{%- if override_class %} | {{override_class}}{% endif -%}
+"
+
+{# Link is disabled?  #}
+{%- if disable %} disabled{% endif -%}
+>
+
+{{- html | safe if html else text -}}
+
+</a>
+{% endspaceless %}

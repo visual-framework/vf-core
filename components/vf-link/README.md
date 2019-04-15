@@ -2,6 +2,71 @@
 
 ## About
 
+## Demonstration
+
+{% render "@vf-link", {
+  href: "#",
+  id: "harsh",
+  class: "none",
+  text: "A default link"
+} %}
+<br/>
+{% render "@vf-link", {
+  href: "#",
+  id: "harsh",
+  class: "hover",
+  text: "A default:hover link"
+} %}
+<br/>
+{% render "@vf-link", {
+  href: "#",
+  id: "harsh",
+  class: "visited",
+  text: "A default:visited link"
+} %}
+<br/>
+{% render "@vf-link", {
+  href: "#",
+  id: "harsh",
+  class: "disabled",
+  text: "A disabled default link",
+  disable: true
+} %}
+
+
+### Secondary links
+
+{% render "@vf-link", {
+  href: "#",
+  id: "harsh",
+  class: "secondary",
+  text: "A secondary link"
+} %}
+<br/>
+{% render "@vf-link--secondary", {
+  href: "#",
+  id: "harsh",
+  class: "secondary--hover",
+  text: "A secondary:hover link"
+} %}
+<br/>
+{% render "@vf-link--secondary", {
+  href: "#",
+  id: "harsh",
+  class: "secondary--visited",
+  text: "A secondary:visited link"
+} %}
+<br/>
+{% render "@vf-link--secondary", {
+  href: "#",
+  id: "harsh",
+  class: "secondary--disabled",
+  text: "A disabled secondary link",
+  disable: true
+} %}
+
+
+
 ## Installation and Implementation
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-link` with this command.
