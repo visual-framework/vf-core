@@ -54,6 +54,7 @@
   id: "harsh",
   theme: "secondary",
   style: ["visited"],
+  target: "blank",
   text: "A secondary:visited link"
 } %}
 <br/>
