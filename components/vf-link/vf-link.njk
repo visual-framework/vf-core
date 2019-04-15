@@ -21,16 +21,17 @@ class="vf-link
 {# If you're styling the shape of the item, the classnames will render in this for loop #}
 {%- if style -%}
   {% for styles in style %}
-    vf-link--{% if theme %}{{theme}}--{% endif %}{{styles-}}
-
     {# Link is disabled? #}
     {%- if styles == "disabled" %}
+      vf-link--{{styles-}}
       {% set disabled = true %}
-    {% endif -%}
+    {%- else %}
+      vf-link--{% if theme %}{{theme}}--{% endif %}{{styles-}}
+    {% endif %}
   {% endfor -%}
 {% endif -%}
 
-{# You want a snowflake of a classname for something, here you  #}
+{# You want a snowflake of a classname for something, here you go  #}
 {%- if override_class %} | {{override_class}}{% endif -%}
 "
 
