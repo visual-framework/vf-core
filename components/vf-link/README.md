@@ -41,7 +41,7 @@
   text: "A secondary link"
 } %}
 <br/>
-{% render "@vf-link--secondary", {
+{% render "@vf-link", {
   href: "#",
   id: "harsh",
   theme: "secondary",
@@ -49,7 +49,7 @@
   text: "A secondary:hover link"
 } %}
 <br/>
-{% render "@vf-link--secondary", {
+{% render "@vf-link", {
   href: "#",
   id: "harsh",
   theme: "secondary",
@@ -57,7 +57,7 @@
   text: "A secondary:visited link"
 } %}
 <br/>
-{% render "@vf-link--secondary", {
+{% render "@vf-link", {
   href: "#",
   id: "harsh",
   theme: "secondary",
