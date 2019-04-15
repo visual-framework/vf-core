@@ -21,10 +21,7 @@
   .vf-author__name {
     align-self: center;
     margin: 0 0 0 8px;
-
-    span {
-      display: block;
-    }
+    word-spacing: 100vw; // so first name and surname split
   }
 
   .vf-author__title {
@@ -57,8 +54,26 @@
     margin: 0 0 4px 0;
     .vf-link {
       color: inherit;
+      position: relative;
+    }
+    .vf-link:nth-last-child(n+2),
+    .vf-link:nth-last-child(n+2) ~ .vf-link {
+      margin-right: 4px;
+
+      &::before {
+        content: ',';
+        position: absolute;
+        right: -4px;
+      }
+    }
+
+    .vf-link:last-of-type {
+      &::before {
+        content: '' !important;
+      }
     }
   }
+
   .vf-meta__date {
     color: set-color(vf-color-gray);
     margin: 0;

@@ -62,10 +62,7 @@
   -ms-flex-item-align: center;
       align-self: center;
   margin: 0 0 0 8px;
-}
-
-.vf-article-meta-info__author .vf-author__name span {
-  display: block;
+  word-spacing: 100vw;
 }
 
 .vf-article-meta-info__author .vf-author__title {
@@ -96,6 +93,23 @@
 
 .vf-meta__details .vf-meta__topics .vf-link {
   color: inherit;
+  position: relative;
+}
+
+.vf-meta__details .vf-meta__topics .vf-link:nth-last-child(n+2),
+.vf-meta__details .vf-meta__topics .vf-link:nth-last-child(n+2) ~ .vf-link {
+  margin-right: 4px;
+}
+
+.vf-meta__details .vf-meta__topics .vf-link:nth-last-child(n+2)::before,
+.vf-meta__details .vf-meta__topics .vf-link:nth-last-child(n+2) ~ .vf-link::before {
+  content: ',';
+  position: absolute;
+  right: -4px;
+}
+
+.vf-meta__details .vf-meta__topics .vf-link:last-of-type::before {
+  content: '' !important;
 }
 
 .vf-meta__details .vf-meta__date {
