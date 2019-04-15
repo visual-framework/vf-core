@@ -1,9 +1,9 @@
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-badge.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-badge)
 
 {% render "@vf-badge", {
-  href: "www.kens-home.com",
+  href: "https://www.kens-home.com",
   id: "harsh",
-  overide_class: "overide",
+  override_class: "override",
   style: ["outline", "pill"],
   text: "alpha",
   theme: "primary"
