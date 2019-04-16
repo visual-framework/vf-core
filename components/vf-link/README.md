@@ -31,6 +31,39 @@
   text: "A disabled default link"
 } %}
 
+### Primary links
+
+{% render "@vf-link", {
+  href: "#",
+  id: "harsh",
+  theme: "primary",
+  text: "A primary link"
+} %}
+<br/>
+{% render "@vf-link", {
+  href: "#",
+  id: "harsh",
+  theme: "primary",
+  style: ["hover"],
+  text: "A primary:hover link"
+} %}
+<br/>
+{% render "@vf-link", {
+  href: "#",
+  id: "harsh",
+  theme: "primary",
+  style: ["visited"],
+  target: "blank",
+  text: "A primary:visited link"
+} %}
+<br/>
+{% render "@vf-link", {
+  href: "#",
+  id: "harsh",
+  theme: "primary",
+  style: ["disabled"],
+  text: "A disabled primary link"
+} %}
 
 ### Secondary links
 
