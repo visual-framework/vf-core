@@ -8,6 +8,7 @@ module.exports = {
     const logger         = fractal.cli.console;
     var vfName           = global.vfName || 'Visual Framework component library';
     const projectTitle   = vfName;
+    const path           = require('path');
 
     /* Set the title of the project */
     fractal.set('project.title', projectTitle);
@@ -71,6 +72,9 @@ module.exports = {
     fractal.web.set('server.sync', true);
     var vfOpenBrowser = typeof global.vfOpenBrowser === "undefined" ? true : global.vfOpenBrowser;
     fractal.web.set('server.syncOptions', {
+      watchOptions: {
+        ignored: path.join(__dirname, './components/**/*.scss'),
+      },
       open: vfOpenBrowser,
       browser: 'default',
       sync: true

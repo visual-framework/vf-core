@@ -388,9 +388,10 @@ gulp.task('CSSGen', function(done) {
 // -----------------------------------------------------------------------------
 
 gulp.task('watch', function(done) {
-  gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
+  gulp.watch('./components/**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
   gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*', gulp.series('svg', 'component-assets')).on('change', reload);
+  gulp.watch('./components/**/**/assets/*.svg', gulp.series('svg','component-assets')).on('change', reload);
+  gulp.watch(['./components/**/**/assets/*', '!./components/**/**/assets/*.svg'], gulp.series('component-assets')).on('change', reload);
 });
 
 // -----------------------------------------------------------------------------
@@ -401,8 +402,8 @@ gulp.task('scripts', gulp.series(
   'scripts:es5', 'scripts:modern'
 ));
 
-gulp.task('dev', gulp.parallel(
-  'frctlStart', 'component-assets', 'css', 'scripts', 'watch'
+gulp.task('dev', gulp.series(
+  'component-assets', ['css', 'scripts'], 'frctlStart', 'watch'
 ));
 
 gulp.task('tokens', gulp.parallel(
