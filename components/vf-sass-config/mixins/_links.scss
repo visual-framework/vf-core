@@ -2,7 +2,6 @@
   $vf-link-color: $vf-link-color,
   $vf-link-hover-color: $vf-link-hover-color,
   $vf-link-visited-color: $vf-link-visited-color,
-  $vf-link-disabled-color: $vf-link-disabled-color,
   $vf-include-normalisations: $vf-include-normalisations) {
 
   /// @todo Add documentation about how/when/where to expect, use $vf-include-normalisations
@@ -30,16 +29,6 @@
       text-decoration: underline;
     }
   }
-
-  &[disabled] {
-    color: $vf-link-disabled-color;
-    cursor: not-allowed;
-
-    @if $vf-include-normalisations == true {
-      border-bottom: none;
-      text-decoration: underline;
-    }
-  }
 }
 
 
@@ -61,11 +50,6 @@
     background-color: $vf-link-hover-color;
     border-color: $vf-link-hover-color;
   }
-
-  &[disabled] {
-    background-color: $vf-link-disabled-color;
-    cursor: not-allowed;
-  }
 }
 
 
@@ -85,10 +69,5 @@
   &:hover {
     background-color: $vf-link-hover-color;
     color: map-get($vf-colors-map, vf-color-white);
-  }
-
-  &[disabled] {
-    background-color: $vf-link-disabled-color;
-    cursor: not-allowed;
   }
 }
