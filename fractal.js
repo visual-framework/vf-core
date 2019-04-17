@@ -30,7 +30,9 @@ module.exports = {
       },
       paths: ["./components"],
       filters: {
+        // {{ "## Parse me" | marked }}
         marked: function(string) {
+          const renderMarkdown = require('marked');
           return renderMarkdown(string);
         },
         // A filter and non-async version of frctl's context extension from

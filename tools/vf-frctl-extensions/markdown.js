@@ -83,19 +83,3 @@ module.exports = function(fractal){
   return new MarkdownExtenstion();
 
 };
-
-
-
-/*
-'use strict';
-
-const renderMarkdown   = require('marked');
-const nunjucks = require('nunjucks');
-
-
-module.exports = function(theme, env, app, fractal){
-
-
-
- };
-*/
