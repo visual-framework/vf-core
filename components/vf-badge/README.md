@@ -1,5 +1,15 @@
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-badge.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-badge)
 
+{% render "@vf-badge", {
+  href: "https://www.kens-home.com",
+  id: "harsh",
+  override_class: "override",
+  style: ["outline", "pill"],
+  text: "alpha",
+  theme: "primary"
+} %}
+
+
 ## About
 
 The `vf-badge` component is used to label a page, part of a page, or a component. The `vf-badge` component can also be a link using `<a class="vf-badge" href="">badge title</a>`.

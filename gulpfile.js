@@ -6,20 +6,20 @@ const fs = require('fs');
 // Configuration
 // -----------------------------------------------------------------------------
 
-const SassInput = './components/vf-core/index.scss';
+const SassInput = './components/vf-componenet-rollup/index.scss';
 const SassOutput = './public/css';
 const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
 const config = JSON.parse(fs.readFileSync('./package.json'));
 global.vfName = config.vfConfig.vfName;
 global.vfNamespace = config.vfConfig.vfNamespace;
+global.vfComponentPath = __dirname + '/components';
+global.vfThemePath = './tools/vf-frctl-theme';
 
 // -----------------------------------------------------------------------------
 // Dependencies
 // -----------------------------------------------------------------------------
 
 const gulp = require('gulp');
-const fractal = require('./fractal.js');
-const logger = fractal.cli.console;
 const path = require('path');
 const notify = require('gulp-notify');
 const shell = require('gulp-shell');
@@ -61,6 +61,7 @@ const reload = browserSync.reload;
 // Design Tokens
 const theoG = require('gulp-theo')
 const theo = require('theo')
+
 
 // -----------------------------------------------------------------------------
 // Sass and CSS Tasks
@@ -218,7 +219,7 @@ gulp.task('scripts:es5', function() {
       extensions: ['.js']
   };
 
-  return gulp.src('./components/vf-core/scripts.js')
+  return gulp.src('./components/vf-componenet-rollup/scripts.js')
     // .pipe(sourcemaps.init())
     .pipe(rollup({
       // There is no `input` option as rollup integrates into the gulp pipeline
@@ -249,7 +250,7 @@ gulp.task('scripts:es5', function() {
 
 // Eventually we'll want to support ES6 natively with ES5 as fallback, `scripts.es5.js`
 gulp.task('scripts:modern', function() {
-  return gulp.src('./components/vf-core/scripts.js')
+  return gulp.src('./components/vf-componenet-rollup/scripts.js')
       .pipe(rename(function (path) {
         path.extname = ".modern.js";
       }))
@@ -403,33 +404,23 @@ ${result
 // Fractal Tasks
 // -----------------------------------------------------------------------------
 
-gulp.task('frctlStart', function() {
-  fractal.set('project.environment.local', 'true');
-  const server = fractal.web.server({
-    sync: true
-  });
-  server.on('error', err => logger.error(err.message));
-  return server.start().then(() => {
-    logger.success(`Fractal server is now running at ${server.url}`);
-    logger.success(`Network URL: ${server.urls.sync.external}`);
-  });
+gulp.task('frctlStart', function(done) {
+  const fractal = require('./fractal.js').initialize('server',fractalReadyCallback);
+  function fractalReadyCallback() {
+    done();
+  }
 });
 
-gulp.task('frctlBuild', function() {
-  fractal.set('project.environment.production', 'true');
-  const builder = fractal.web.builder();
-  builder.on('progress', (completed, total) =>
-    logger.update(`Exported ${completed} of ${total} items`, 'info')
-  );
-  builder.on('error', err => logger.error(err.message));
-  return builder.build().then(() => {
-    logger.success('Fractal build completed!');
-
+gulp.task('frctlBuild', function(done) {
+  const fractal = require('./fractal.js').initialize('build',fractalReadyCallback);
+  function fractalReadyCallback() {
     // Copy compiled css/js and other assets
     gulp.src('./public/**/*')
-    .pipe(gulp.dest('./build'));
-    logger.success('Copied `/public` assets.');
-  });
+      .pipe(gulp.dest('./build'));
+      console.info('Copied `/public` assets.');
+
+    done();
+  }
 });
 
 // -----------------------------------------------------------------------------
@@ -473,10 +464,10 @@ gulp.task('CSSGen', function(done) {
 // -----------------------------------------------------------------------------
 
 gulp.task('watch', function(done) {
-  fractal.watch();
-  gulp.watch('./**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
+  gulp.watch('./components/**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
   gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*', gulp.series('svg', 'component-assets')).on('change', reload);
+  gulp.watch('./components/**/**/assets/*.svg', gulp.series('svg','component-assets')).on('change', reload);
+  gulp.watch(['./components/**/**/assets/*', '!./components/**/**/assets/*.svg'], gulp.series('component-assets')).on('change', reload);
 });
 
 // -----------------------------------------------------------------------------
@@ -487,8 +478,8 @@ gulp.task('scripts', gulp.series(
   'scripts:es5', 'scripts:modern'
 ));
 
-gulp.task('dev', gulp.parallel(
-  'frctlStart', 'component-assets', 'css', 'scripts', 'watch'
+gulp.task('dev', gulp.series(
+  'component-assets', ['css', 'scripts'], 'frctlStart', 'watch'
 ));
 
 gulp.task('tokens', gulp.parallel(
