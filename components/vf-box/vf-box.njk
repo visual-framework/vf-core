@@ -1,4 +1,16 @@
-<div class="vf-box">
-  {% render '@vf-heading', {"type": "large", "title": "Hello World"} %}
-  <p class="vf-text vf-text--body-r">This is some more content that would be in the box.</p>
+<div
+
+{# You're using an ID? Really?? That'll go here #}
+{%- if id %} id="{{-id-}}"{% endif %}
+
+{# Here is where we are adding the vf-text--body modifier #}
+class="vf-box
+{%- if class %} {{class}}{% endif -%}
+
+{# You want a snowflake of a classname for something, here you  #}
+{%- if override_class %} | {{override_class}}{% endif -%}
+
+">
+  <h3 class="vf-box__heading">{{- heading -}}</h3>
+  <p class="vf-box__text">{{- text -}}/p>
 </div>
