@@ -15,6 +15,7 @@ Confused? Rule of thumb: if you use a component to make other components, name i
 */
 
 // Note: The structure of this file's paramaters are slightly different so we can't easily reuse the /tools/vf-frctl-extensions/markdown.js
+//       Though it might be something we revisit
 
 module.exports = function(theme, env, app, fractal){
 
