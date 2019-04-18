@@ -1,4 +1,8 @@
-<figure class="vf-figure">
-  <img class="vf-figure__image" src="{{ '/assets/vf-figure/assets/figure-example.png' | path }}" alt="">
-  <figcaption class="vf-figure__caption">Version, 1982, Adenovirus with 217 dots</figcaption>
+<figure
+{# You're using an ID? Really?? That'll go here #}
+{% if id %} id="{{-id-}}"{% endif %}
+class="vf-figure
+{%- if override_class %} | {{override_class}}{% endif -%}">
+  <img class="vf-figure__image" src="{{imageUrl}}" alt="{{alttext}}">
+  <figcaption class="vf-figure__caption">{{- html | safe if html else text -}}</figcaption>
 </figure>
