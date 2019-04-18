@@ -4,5 +4,5 @@
 {# Here is where we are adding the vf-text--body modifier #}
 class="vf-blockquote
 {%- if override_class %} | {{override_class}}{% endif -%}">
-{{ text }}
+{{- html | safe if html else text -}}
 </blockquote>
