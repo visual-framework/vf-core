@@ -38,7 +38,11 @@
 <header class="vf-header">
   <div class="vf-global-header">
     <div class="vf-global-header__inner">
-      <a href="/" class="vf-logo--responsive"></a>
+      <a href="http://www.embl.de"
+
+class="vf-logo--responsive">
+  <span class="vf-sr-only">Visual Framework 2.0</span>
+</a>
 
       <p class="vf-global-header__site-name">Visual Framework 2.0</p>
     </div>
@@ -96,9 +100,12 @@ embl-grid embl-grid--has-sidebar
   <!-- @preview--blocks aren't done in iframes, this allows us a bit more flexibility and to test cross-contamination -->
   
     
-      <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#vf-list--default" id="vf-list--default">Variant Block</a></h3>
+      <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#vf-list--default" id="vf-list--default">Variant Default</a></h3>
 
-<ul class="vf-list">
+<ul
+
+
+class="vf-list">
   <li class="vf-list__item">a list item</li>
   <li class="vf-list__item">another list item</li>
   <li class="vf-list__item">and another list item</li>
@@ -122,7 +129,10 @@ embl-grid embl-grid--has-sidebar
     
       <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#vf-list--inline" id="vf-list--inline">Variant Inline</a></h3>
 
-<ul class="vf-list vf-list--inline">
+<ul
+
+
+class="vf-list vf-list--inline">
   <li class="vf-list__item">a list item</li>
   <li class="vf-list__item">another list item</li>
   <li class="vf-list__item">and another list item</li>
@@ -146,37 +156,24 @@ embl-grid embl-grid--has-sidebar
     
       <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#vf-list--ordered" id="vf-list--ordered">Variant Ordered</a></h3>
 
-<ol class="vf-list vf-list--ordered">
+<ul
+
+
+class="vf-list vf-list--ordered">
   <li class="vf-list__item">a list item</li>
   <li class="vf-list__item">another list item</li>
-  <ol class="vf-list vf-list--ordered">
-    <li class="vf-list__item">a list item</li>
-    <li class="vf-list__item">another list item</li>
-    <li class="vf-list__item">and another list item</li>
-    <li class="vf-list__item">yet another list item</li>
-    <ol class="vf-list vf-list--ordered">
-      <li class="vf-list__item">a list item</li>
-      <li class="vf-list__item">another list item</li>
-    </ol>
-  </ol>
-</ol>
+  <li class="vf-list__item">and another list item</li>
+  <li class="vf-list__item">yet another list item</li>
+</ul>
 
 <div class="vf-grid">
 <pre class="vf-code-example__pre">
-<span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list vf-list--ordered"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list vf-list--ordered"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__item"</span>&gt;</span>a list item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__item"</span>&gt;</span>another list item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list vf-list--ordered"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__item"</span>&gt;</span>a list item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__item"</span>&gt;</span>another list item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__item"</span>&gt;</span>and another list item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__item"</span>&gt;</span>yet another list item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list vf-list--ordered"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__item"</span>&gt;</span>a list item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__item"</span>&gt;</span>another list item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__item"</span>&gt;</span>and another list item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__item"</span>&gt;</span>yet another list item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 </pre>
 </div>
 
@@ -186,7 +183,10 @@ embl-grid embl-grid--has-sidebar
     
       <h3 class="vf-text vf-text--heading-r"><a class="vf-badge vf-badge--tertiary" href="#vf-list--unordered" id="vf-list--unordered">Variant Unordered</a></h3>
 
-<ul class="vf-list vf-list--unordered">
+<ul
+
+
+class="vf-list vf-list--unordered">
   <li class="vf-list__item">a list item</li>
   <li class="vf-list__item">another list item</li>
   <li class="vf-list__item">and another list item</li>
@@ -239,7 +239,7 @@ embl-grid embl-grid--has-sidebar
     </li>
     
     <li class="vf-list__item">
-        Filesystem path: components/vf-list/vf-list--unordered.njk
+        Filesystem path: components/vf-list/vf-list.njk
     </li>
     
     
