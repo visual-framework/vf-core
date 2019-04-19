@@ -1,34 +1,46 @@
-{#
-  Pass in your display type and title:
-  {% render '@vf-heading', {"type": "large", "title": "large"} %}
-#}
+{% spaceless %}
 
-{#
-  Set our data for the template
-#}
-
-{% if type and title %}
-  {% set vf_heading_modifiers = [{ "type": type, "title" : title}] %}
+{# Determine type of element to use, if not explicitly set -#}
+{% if tags %}
+{% else %}
+  {% set tags = 'p' %}
 {% endif %}
 
-{#
-  Template
-  If type && title are not passed it will use default modifiers in the component YAML
-#}
+{# Work out what colour theme is needed for the styling #}
+{% if style %}
+  {% set style_class = style %}
+{% endif %}
 
-{% for modifier in vf_heading_modifiers %}
-  {% if modifier.type == "display" -%}
-    <h1 class="vf-text vf-text--heading-xl vf-text--invert">{{modifier.title}}</h1>
-  {% elif modifier.type == "extra-large" -%}
-    <h2 class="vf-text vf-text--heading-xl">{{modifier.title}}</h2>
-  {% elif modifier.type == "large" -%}
-    <h3 class="vf-text vf-text--heading-l">{{modifier.title}}</h3>
-  {% elif modifier.type == "regular" -%}
-    <h4 class="vf-text vf-text--heading-r">{{modifier.title}}</h4>
-  {% elif modifier.type == "small" -%}
-    <h5 class="vf-text vf-text--heading-s">{{modifier.title}}</h5>
-  {% else -%}
-    {# catch all for if the heading type doesn't match #}
-    <h5 class="vf-text vf-text--heading-s">{{modifier.title}}</h5>
-  {% endif %}
-{% endfor %}
+{# Set font-size class to be used #}
+{% if type == "display" %}
+  {% set size = "xl" %}
+{% elseif type == "extra-large" %}
+  {% set size = "xl" %}
+{% elseif type == "large" %}
+  {% set size = "l" %}
+{% elseif type == "regular" %}
+  {% set size = "r" %}
+{% elseif type == "small" %}
+  {% set size = "s" %}
+{% endif %}
+
+
+<{{tags}}
+
+{# You're using an ID? Really?? That'll go here #}
+{%- if id %} id="{{-id-}}"{% endif %}
+
+class="vf-text
+
+{%- if type %} vf-text--heading-{{size}}{% endif -%}
+
+{%- if style_class %} vf-text--{{style_class}}{% endif -%}
+
+{# You want a snowflake of a classname for something, here you  #}
+{%- if override_class %} | {{override_class}}{% endif -%}
+">
+
+{{- html | safe if html else heading -}}
+
+</{{tags}}>
+{% endspaceless %}
