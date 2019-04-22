@@ -30,6 +30,11 @@ module.exports = {
       },
       paths: ["./components"],
       filters: {
+        // {{ "## Parse me" | marked }}
+        marked: function(string) {
+          const renderMarkdown = require('marked');
+          return renderMarkdown(string);
+        },
         // A filter and non-async version of frctl's context extension from
         // https://github.com/frctl/nunjucks/blob/develop/src/extensions/context.js
         // We mainly use this to make a component's YAML data available to REAMDE.md
@@ -50,7 +55,8 @@ module.exports = {
       // },
       extensions: {
         codeblock: require(__dirname + '/tools/vf-frctl-extensions/codeblock.js')(fractal),
-        spaceless: require(__dirname + '/tools/vf-frctl-extensions/spaceless.js')(fractal)
+        spaceless: require(__dirname + '/tools/vf-frctl-extensions/spaceless.js')(fractal),
+        markdown:  require(__dirname + '/tools/vf-frctl-extensions/markdown.js')(fractal)
       }
     });
 

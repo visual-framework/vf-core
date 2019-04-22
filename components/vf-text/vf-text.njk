@@ -1,9 +1,24 @@
+{% spaceless %}
+
+{# Set font-size class to be used #}
+{% if type == "extra-large" %}
+  {% set size = "xl" %}
+{% elseif type == "large" %}
+    {% set size = "l" %}
+{% elseif type == "regular" %}
+  {% set size = "r" %}
+{% elseif type == "small" %}
+  {% set size = "s" %}
+{% elseif type == "extra-small" %}
+  {% set size = "xs" %}
+{% endif %}
+
 <p
-{# You're using an ID? Really?? That'll go here #}
 {% if id %} id="{{-id-}}"{% endif %}
 
-{# Here is where we are adding the vf-text--body modifier #}
-class="vf-text--body vf-text--body-{{ class -}}
+class="vf-text--body
+
+{%- if type %} vf-text--body-{{size}}{% endif -%}
 
 {# You want a snowflake of a classname for something, here you  #}
 {%- if override_class %} | {{override_class}}{% endif -%}
@@ -12,3 +27,5 @@ class="vf-text--body vf-text--body-{{ class -}}
 {{- html | safe if html else text -}}
 
 </p>
+
+{% endspaceless %}
