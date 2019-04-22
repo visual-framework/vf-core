@@ -68,7 +68,7 @@ const theo = require('theo')
 // -----------------------------------------------------------------------------
 
 gulp.task('css', function() {
-  const opts = {
+  const sassOpts = {
     // Import sass files
     // We'll check to see if the file exists before passing
     // it to sass for compilation
@@ -76,17 +76,13 @@ gulp.task('css', function() {
       var truncatedUrl = url.split(/[/]+/).pop();
       var parentFile = prev.split(/[/]+/).pop();
 
-      // console.log(`Importing ${url}`);
-
-      // we don't want to interveen in these types
+      // If you do not want to interveen in certain file names
       // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
       //   return null;
       // }
 
-      // only intervene in vf-core/index.scss
+      // only intervene in index.scss rollups
       if (parentFile == 'index.scss') {
-        // console.log(url);
-        // console.log(availableComponents)
         if (availableComponents[url]) {
           done(url);
         } else if (availableComponents['_'+truncatedUrl]) {
@@ -95,9 +91,9 @@ gulp.task('css', function() {
         } else if (availableComponents[truncatedUrl]) {
           done(url);
         } else {
-          // console.log(url)
-          // return null;
-          done(new console.warn(`Couldn\'t find ${url}, it might not be included in your css build`));
+          let importWarning = `Couldn\'t find ${url} referenced in ${prev}`;
+          console.warn(importWarning);
+          done({ contents: `/* ${importWarning} */` });
         }
       } else {
         return null;
@@ -115,8 +111,8 @@ gulp.task('css', function() {
     ]
   };
 
-  // find all the component sass available
-  // we'll pass this as a variable to our sass build so we can
+  // Find all the component sass files available.
+  // We'll pass this as a variable to our sass build so we can
   // only include the file if it exists.
   var availableComponents = {}; // track the components avaialble
   return gulp
@@ -128,27 +124,12 @@ gulp.task('css', function() {
       if (err)
         throw err
       data.forEach(function (value, i) {
-        // keep only the file name + directory
-        // `vf-font/vf-font.scss`
-        // var value = value.history[0].split(/[/]+/).splice(-2, 2).join('/');
-
-        // keep only the file name
+        // Keep only the file name
         var value = value.history[0].split(/[/]+/).pop();
-
-        // remove `.scss`
-        // var regex = /\.scss/gi;
-        // value = value.replace(regex, '');
-
-        // change any `.` to `_`
-        // regex = /\./gi;
-        // value = value.replace(regex, '_');
 
         availableComponents[value] = true;
       });
 
-      // console.log(availableComponents)
-
-      // once we've scanned for sass files, continue the build
       runSassBuild();
     }));
 
@@ -156,7 +137,7 @@ gulp.task('css', function() {
       gulp
         .src(SassInput)
         .pipe(sourcemaps.init())
-        .pipe(sass(opts))
+        .pipe(sass(sassOpts))
         .on(
           'error',
           notify.onError(function(error) {
