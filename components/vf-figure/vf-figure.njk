@@ -3,6 +3,6 @@
 {% if id %} id="{{-id-}}"{% endif %}
 class="vf-figure
 {%- if override_class %} | {{override_class}}{% endif -%}">
-  <img class="vf-figure__image" src="{{imageUrl}}" alt="{{alttext}}">
+  <img class="vf-figure__image" src="{{imageUrl | path}}" alt="{{alttext}}">
   <figcaption class="vf-figure__caption">{{- html | safe if html else text -}}</figcaption>
 </figure>
