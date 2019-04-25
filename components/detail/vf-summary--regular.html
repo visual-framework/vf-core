@@ -325,6 +325,18 @@ embl-grid embl-grid--has-sidebar
   </p>
 </article>
 
+<article class="vf-summary vf-summary--has-image">
+  <!-- for cases when there is no image -->
+  <h3 class="vf-summary__title">
+    <a href="//www.ebi.ac.uk/biosamples/" class="vf-summary__link">
+      Imageless sample
+    </a>
+  </h3>
+  <p class="vf-summary__text">
+    Not all lists with images have an image for every item.
+  </p>
+</article>
+
 <div class="vf-grid">
 <pre class="vf-code-example__pre">
 <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary vf-summary--has-image"</span>&gt;</span>
@@ -338,6 +350,18 @@ embl-grid embl-grid--has-sidebar
     <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__text"</span>&gt;</span>
         A database describing biological samples and providing links to associated experimental data.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary vf-summary--has-image"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- for cases when there is no image --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__title"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"//www.ebi.ac.uk/biosamples/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__link"</span>&gt;</span>
+      Imageless sample
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__text"</span>&gt;</span>
+        Not all lists with images have an image for every item.
     <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
 </pre>
@@ -1202,7 +1226,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-summary--has-image</span> {
   <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-number">18px</span>;
-  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(0, auto) <span class="hljs-number">1</span>fr;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(50px, auto) <span class="hljs-number">1</span>fr;
   <span class="hljs-attribute">grid-template-rows</span>: auto;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">48px</span> <span class="hljs-number">0</span>;
 }
@@ -1400,6 +1424,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 
 <span class="hljs-variable">$vf-summary--news__category-margin-right</span>: <span class="hljs-number">1rem</span>;
+
+<span class="hljs-variable">$vf-summary--has-image-width</span>: <span class="hljs-number">50px</span>;
 </pre>
         </code>
         
