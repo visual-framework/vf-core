@@ -196,11 +196,13 @@ embl-grid embl-grid--has-sidebar
     
     
     <li class="vf-list__item">
-        Referenced by 2 components:
+        Referenced by 3 components:
         
           <a href="embl-subsite-page.html">@embl-subsite-page</a>, 
         
-          <a href="vf-header.html">@vf-header</a>
+          <a href="vf-header.html">@vf-header</a>, 
+        
+          <a href="embl-group-page.html">@embl-group-page</a>
         
     </li>
     
@@ -750,10 +752,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">/* stylelint-enable order/order */</span>
 <span class="hljs-selector-class">.vf-inlay__header</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1em</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
   <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.vf-inlay__header</span> <span class="hljs-selector-class">.vf-masthead__heading</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
 }
 
 <span class="hljs-selector-class">.vf-inlay__header</span> <span class="hljs-selector-class">.vf-navigation</span><span class="hljs-selector-pseudo">::before</span> {
@@ -1004,7 +1012,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-masthead/vf-masthead.css
         </li>
         <li class="vf-list__item">
-          Size: 9.2 KB
+          Size: 9.3 KB
         </li>
       </ul>
     </section>
@@ -1020,10 +1028,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-comment">// vf-masthead</span>
 
 <span class="hljs-selector-class">.vf-inlay__header</span> {
+  <span class="hljs-comment">// box-sizing: border-box;</span>
+  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1em</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
   <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+
+  <span class="hljs-selector-class">.vf-masthead__heading</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
+  }
 
   <span class="hljs-selector-class">.vf-navigation</span> {
     &amp;::before {
@@ -1224,7 +1239,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-masthead/vf-masthead.scss
         </li>
         <li class="vf-list__item">
-          Size: 4 KB
+          Size: 4.2 KB
         </li>
       </ul>
     </section>

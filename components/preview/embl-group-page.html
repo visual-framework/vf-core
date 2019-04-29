@@ -38,27 +38,27 @@
   <link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css">
 </head>
 <body>
-  <header class="vf-header">
-    <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=574&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
-  </header>
 
   <!-- dismissible banner -->
   <section class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--phase" data-vf-js-banner data-vf-js-banner-state="dismissible" data-vf-js-banner-button-text="Close notice">
-      <div class="vf-banner__content" data-vf-js-banner-text>
-        <div>
-          <h3 class="vf-text vf-text--heading-r">
-            Don't need to customise the EMBL Design Language for Websites?
-          </h3>
-          <p class="vf-banner__text">Here's the core CSS and JS you need. Don't forget to <a href="http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/" class="vf-link">consult the pattern library</a>.</p>
+    <div class="vf-banner__content" data-vf-js-banner-text>
+      <div>
+        <h3 class="vf-text vf-text--heading-r">
+          Don't need to customise the EMBL Design Language for Websites?
+        </h3>
+        <p class="vf-banner__text">Here's the core CSS and JS you need. Don't forget to <a href="http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/" class="vf-link">consult the pattern library</a>.</p>
 <code class="Code Code--lang-html vf-code-example"><pre class="vf-code-example__pre"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/develop/css/styles.css"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/develop/scripts/scripts.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-</pre></code>        </div>
-      </div>
+        <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/develop/scripts/scripts.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</pre></code>      </div>
+    </div>
   </section>
+
+  <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=574&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+
 
   <div class="vf-body vf-body__main-content embl-group-page--bg-color">
 
-    <section class="embl-grid">
+    <section class="vf-grid">
       <nav class="vf-breadcrumbs embl-breadcrumbs-lookup" aria-label="Breadcrumb" data-embl-js-breadcrumbs-lookup>
         <div class="vf-list vf-list--inline | vf-breadcrumbs__list | embl-breadcrumbs-lookup--ghosting"></div>
       </nav>
@@ -68,51 +68,37 @@
       <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?pattern=node-body&filter-content-type=article&filter-id=580&source=contenthub" data-target="self" data-embl-js-content-hub-loader="">
     </div>
 
-    <header class="embl-group-header__header embl-group-page--vf-header--bg-color">
+<style>
+:root {
+  /* These CSS properties are theming variables. If used, add to your HTML
+     after the VF CSS for vf-masthead and before the HTML for vf-masthead. */
+  /* --vf-masthead__color--background: none; */
+  /* --vf-masthead__color--foreground: #000000; */
+  /* --vf-masthead__bg-image: url('http://www.fillmurray.com/800/200'); */
+}
+</style>
 
-      <div class="vf-masthead">
-        <div class="vf-masthead__inner">
-          <div class="vf-masthead__title">
-            <h1 class="vf-masthead__heading">
-              <a href="#" class="vf-masthead__heading__link">Häring Group</a>
-            </h1>
-            <p class="vf-masthead__sub-heading">Chromosome structure and dynamics</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="embl-group-header__navigation embl-group-header__navigation--main">
-<nav class="vf-navigation vf-navigation--main">
-  <ul class="vf-navigation__list | vf-list--inline">
-    <li class="vf-navigation__item">
-      <a href="#" class="vf-navigation__link">Home</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="#" class="vf-navigation__link">Download</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="#" class="vf-navigation__link">Release Notes</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="#" class="vf-navigation__link">FAQ</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="#" class="vf-navigation__link">Help</a>
-    </li>
-    <li class="vf-navigation__item is-active">
-      <a href="#" class="vf-navigation__link">Licence</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="#" class="vf-navigation__link">About</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="#" class="vf-navigation__link">Feedback</a>
-    </li>
-  </ul>
-</nav>
-      </div>
-
-    </header>
+<header class="vf-inlay__header">
+  <div class="vf-masthead" style="background-color: var(--vf-masthead__color--background, var(--vf-masthead__color--background-default)); color: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default) );">
+    <div class="vf-masthead__title">
+      <h1 class="vf-masthead__heading">
+        <a class="vf-masthead__heading__link" href="http://dev-vf-theme-prototype.pantheonsite.io">Häring Group</a>
+        <span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span>
+      </h1>
+    </div>
+  </div>  <!--/vf-masthead-->
+  <nav class="vf-navigation vf-navigation--main">
+    <ul class="vf-navigation__list | vf-list--inline">
+      <li class="vf-navigation__item"><a href="http://dev-vf-theme-prototype.pantheonsite.io/about/" class="vf-navigation__link">About</a></li>
+      <li class="vf-navigation__item"><a href="http://dev-vf-theme-prototype.pantheonsite.io/members/" class="vf-navigation__link">Members</a></li>
+      <li class="vf-navigation__item"><a href="http://dev-vf-theme-prototype.pantheonsite.io/publications/" class="vf-navigation__link">Publications</a></li>
+      <li class="vf-navigation__item"><a href="http://dev-vf-theme-prototype.pantheonsite.io/jobs/" class="vf-navigation__link">Jobs</a></li>
+      <li class="vf-navigation__item"><a href="http://dev-vf-theme-prototype.pantheonsite.io/blog/" class="vf-navigation__link">Blog</a></li>
+      <li class="vf-navigation__item"><a href="http://dev-vf-theme-prototype.pantheonsite.io/optional/" class="vf-navigation__link">Optional</a></li>
+    </ul>
+  </nav>
+  <!--/vf-navigation-->
+</header>
 
     <section class="vf-inlay">
 
@@ -273,6 +259,8 @@ class="vf-box">
     </section>
 
   </div>
+
+
 
   <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=569&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
 
