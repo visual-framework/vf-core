@@ -1,48 +1,45 @@
 <section class="vf-discussion">
-  <h3 class="vf-discussion__title"><span>3</span> comments on 'EMBL's graphic design history'</h3>
+  <h3 class="vf-discussion__title"><span>{{number}}</span> {{text}}</h3>
 
   <ol class="vf-discussion__list | vf-list">
+    {% for item in discussions %}
     <li class="vf-discussion__item">
       <div class="vf-discussion__meta">
-        <img class="vf-discussion__author-avatar" src="{{ './vf-summary/assets/vf-summary--profile-img.png' | path  }}" alt="">
-        <cite class="vf-discussion__author">Title If Relevant</cite><span> says:</span>
-        <p class="vf-discussion__date">15th February 2018</p>
+        <img class="vf-discussion__author-avatar" src="{{item.imageUrl | path  }}" alt="">
+        <cite class="vf-discussion__author">{{item.name}}</cite><span> says:</span>
+        <p class="vf-discussion__date">{{item.date}}</p>
       </div>
       <div class="vf-discussion__comment | vf-content">
-        <p>Really enjoyed reading this post, thank you.</p>
-
-        <p>For me, any communications strategy should be deeply rooted in the organisational strategy. And yet, your closing question reminded me how the discussions we lead about communications can often result in much broader discussions on organisational goals, ambitions and approaches.</p>
+        {{item.content}}
       </div>
-      <button class="vf-button vf-button--outline--primary | vf-discussion__reply">Reply</button>
-      <a href="#" class="vf-button vf-button--outline--tertiary | vf-discussion__action">Optional action</a>
+      <button class="vf-button vf-button--outline vf-button--primary | vf-discussion__reply">{{item.button_text}}</button>
+      {% if item.secondary_button %}
+      <a href="#" class="vf-button vf-button--outline vf-button--tertiary | vf-discussion__action">{{item.secondary_button}}</a>
+      {% endif %}
+
+      {% if item.nested %}
+        <ol class="vf-discussion__list | vf-list">
+          {% for item in item.nested %}
+          <li class="vf-discussion__item">
+            <div class="vf-discussion__meta">
+              <img class="vf-discussion__author-avatar" src="{{item.imageUrl | path  }}" alt="">
+              <cite class="vf-discussion__author">{{item.name}}</cite><span> says:</span>
+              <p class="vf-discussion__date">{{item.date}}</p>
+            </div>
+            <div class="vf-discussion__comment | vf-content">
+              {{item.content}}
+            </div>
+            <button class="vf-button vf-button--outline vf-button--primary | vf-discussion__reply">{{item.button_text}}</button>
+            {% if item.secondary_button %}
+            <a href="#" class="vf-button vf-button--outline vf-button--tertiary | vf-discussion__action">{{item.secondary_button}}</a>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+      {% endif %}
+      
     </li>
-
-    <li class="vf-discussion__item">
-      <div class="vf-discussion__meta">
-        <img class="vf-discussion__author-avatar" src="{{ './vf-summary/assets/vf-summary--profile-img.png' | path }}" alt="">
-        <cite class="vf-discussion__author">Title If Relevant</cite><span> says:</span>
-        <p class="vf-discussion__date">15th February 2018</p>
-      </div>
-      <div class="vf-discussion__comment | vf-content">
-        <p>Really enjoyed reading this post, thank you.</p>
-      </div>
-      <button class="vf-button vf-button--outline--primary | vf-discussion__reply">Reply</button>
-
-      <ol class="vf-discussion__list | vf-list">
-        <li class="vf-discussion__item">
-          <div class="vf-discussion__meta">
-            <img class="vf-discussion__author-avatar" src="{{ './vf-summary/assets/vf-summary--profile-img.png' | path }}" alt="">
-            <cite class="vf-discussion__author">Title If Relevant</cite><span> says:</span>
-            <p class="vf-discussion__date">15th February 2018</p>
-          </div>
-          <div class="vf-discussion__comment | vf-content">
-            <p>Really enjoyed reading this post, thank you.</p>
-          </div>
-          <button class="vf-button vf-button--outline--primary | vf-discussion__reply">Reply</button>
-        </li>
-      </ol>
-
-    </li>
+    {% endfor %}
 
   </ol>
 </section>
