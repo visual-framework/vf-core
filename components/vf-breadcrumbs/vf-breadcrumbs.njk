@@ -1,13 +1,13 @@
 <nav class="vf-breadcrumbs" aria-label="Breadcrumb">
   <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+    {% for breadcrumb in breadcrumbs %}
     <li class="vf-breadcrumbs__item">
-      <a href="JavaScript:Void(0);" class="vf-breadcrumbs__link">Explore</a>
+      {% if breadcrumb.url %}
+      <a href="{{ url }}" class="vf-breadcrumbs__link">{{ breadcrumb.text }}</a>
+      {% else %}
+      {{ breadcrumb.text }}
+      {% endif %}
     </li>
-    <li class="vf-breadcrumbs__item">
-      <a href="JavaScript:Void(0);" class="vf-breadcrumbs__link">Topics</a>
-    </li>
-    <li class="vf-breadcrumbs__item" aria-current="page">
-      Center
-    </li>
+    {% endfor %}
   </ul>
 </nav>
