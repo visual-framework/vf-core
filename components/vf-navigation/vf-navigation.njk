@@ -1,1 +1,12 @@
-See primary, secondary, and tertiary variants.
+<nav class="vf-navigation {%- if classModifier %} vf-navigation--{{ classModifier }}{% endif %}">
+  {% if heading %}
+  <h3 class="vf-navigation__heading">{{ heading }}</h3>
+  {% endif %}
+  <ul class="vf-navigation__list | vf-list--inline">
+    {% for item in navigation %}
+    <li class="vf-navigation__item">
+      <a href="{{ item.url }}" class="vf-navigation__link">{{ item.text }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
