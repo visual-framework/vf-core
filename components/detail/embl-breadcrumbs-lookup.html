@@ -658,19 +658,22 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   breadcrumbTarget = breadcrumbTarget[<span class="hljs-number">0</span>];
 
   <span class="hljs-keyword">if</span> (type == <span class="hljs-string">'primary'</span>) {
-    <span class="hljs-comment">// remove any loading text</span>
-    <span class="hljs-keyword">var</span> loadingText = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'.embl-breadcrumbs-lookup__ghosting'</span>);
-    <span class="hljs-keyword">if</span> (loadingText.length &gt; <span class="hljs-number">0</span>) { loadingText[<span class="hljs-number">0</span>].remove(); }
+
+    <span class="hljs-comment">// don't show path of breadcrumb if it is the current path</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> URL(breadcrumbUrl).pathname == <span class="hljs-built_in">window</span>.location.pathname) {
+      breadcrumbUrl = <span class="hljs-literal">null</span>;
+    }
 
     <span class="hljs-comment">// add breadcrumb</span>
-    emblBreadcrumbPrimary.innerHTML += formatBreadcrumb(currentTerm.name_display,<span class="hljs-string">'null'</span>);
+    emblBreadcrumbPrimary.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl);
 
-    <span class="hljs-comment">// fetch parents</span>
+    <span class="hljs-comment">// fetch parents for primary path</span>
     getBreadcrumbParentTerm(breadcrumbParents, facet);
   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (type == <span class="hljs-string">'related'</span>) {
     <span class="hljs-comment">// add breadcrumb</span>
     emblBreadcrumbRelated.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl);
   }
+
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcrumbs</span>(<span class="hljs-params"></span>) </span>{
@@ -747,7 +750,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.js
         </li>
         <li class="vf-list__item">
-          Size: 10.5 KB
+          Size: 10.6 KB
         </li>
       </ul>
     </section>

@@ -1012,19 +1012,22 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
   breadcrumbTarget = breadcrumbTarget[0];
 
   if (type == 'primary') {
-    // remove any loading text
-    var loadingText = document.querySelectorAll('.embl-breadcrumbs-lookup__ghosting');
-    if (loadingText.length > 0) { loadingText[0].remove(); }
+
+    // don't show path of breadcrumb if it is the current path
+    if (new URL(breadcrumbUrl).pathname == window.location.pathname) {
+      breadcrumbUrl = null;
+    }
 
     // add breadcrumb
-    emblBreadcrumbPrimary.innerHTML += formatBreadcrumb(currentTerm.name_display,'null');
+    emblBreadcrumbPrimary.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl);
 
-    // fetch parents
+    // fetch parents for primary path
     getBreadcrumbParentTerm(breadcrumbParents, facet);
   } else if (type == 'related') {
     // add breadcrumb
     emblBreadcrumbRelated.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl);
   }
+
 }
 
 function emblBreadcrumbs() {
