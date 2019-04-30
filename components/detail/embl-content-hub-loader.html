@@ -366,6 +366,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">--vf-ui-color-yellow</span>: <span class="hljs-built_in">rgb</span>(255, 250, 220);
   <span class="hljs-attribute">--vf-ui-color-red</span>: <span class="hljs-built_in">rgb</span>(211, 47, 47);
 }
+
+<span class="hljs-selector-class">.vf-content-hub-html</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+}
 </pre>
         </code>
         
@@ -437,11 +441,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-content-hub-loader.variables.scss'</span>;
 
-<span class="hljs-comment">// "This page was intentionally left blank"</span>
-
-<span class="hljs-comment">// .embl-content-hub-loader {</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// }</span>
+<span class="hljs-comment">// contentHub html caries an extra div that should be outside of the grid layout</span>
+<span class="hljs-selector-class">.vf-content-hub-html</span> {
+  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-comment">// @todo: this should probably be .embl-content-hub-html, but that requires a</span>
+  <span class="hljs-comment">//        disruptive change in the contenthub itself and will impact many systems.</span>
+  <span class="hljs-comment">//        that change will require coordination</span>
+}
 </pre>
         </code>
         
@@ -457,7 +463,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-content-hub-loader/embl-content-hub-loader.scss
         </li>
         <li class="vf-list__item">
-          Size: 162 Bytes
+          Size: 423 Bytes
         </li>
       </ul>
     </section>
