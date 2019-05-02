@@ -1,0 +1,142 @@
+/*
+ *
+ * styles.css
+ * The Visual Framework kitchen sink of styles.
+ * Include this style sheet as a quick way to get *everything*,
+ * or follow the guide at github.com/visual-framework/vf-core
+ * to learn how to build custom and optimised CSS.
+ *
+ */
+
+@import 'vf-global-custom-properties.scss';
+
+@import 'vf-global-variables.scss';
+@import 'vf-variables.scss';
+@import 'vf-functions.scss';
+@import 'vf-mixins.scss';
+@import 'node-normalize-scss/normalize.scss';
+
+@import 'vf-sass-utilities/vf-screen-reader.scss';
+
+/* Visual Framework Utility Class Mixins */
+
+@import 'vf-utility-mixins.scss';
+
+/* All Visual Framework Font components */
+// @import 'vf-font-plex-mono/vf-font-plex-mono.scss';
+@import 'vf-font-plex-sans/vf-font-plex-sans.scss';
+
+html, button {
+  @if $use-global-typography == true {
+    font-family: $vf-font-family-sans-serif;
+  }
+}
+
+/* Visual Framework content compatibility
+ * We put this first so it will have the least specificity
+ */
+@import 'vf-content/vf-content.scss';
+
+/* All Visual Framework grids */
+
+@import 'vf-grid/vf-grid.scss';
+@import 'vf-inlay/vf-inlay.scss';
+@import 'vf-grid-page/vf-grid-page.scss';
+@import 'embl-grid/embl-grid.scss';
+
+/* All Visual Framework Elements */
+
+@import 'vf-badge/vf-badge.scss';
+@import 'vf-link/vf-link.scss';
+  @import 'vf-link/vf-link--primary.scss';
+  @import 'vf-link/vf-link--secondary.scss';
+  @import 'vf-link/vf-link--disabled.scss';
+@import 'vf-logo/vf-logo.scss';
+@import 'embl-logo/embl-logo.scss';
+@import 'vf-form__core/vf-form__core.scss';
+@import 'vf-button/vf-button.scss';
+@import 'vf-figure/vf-figure.scss';
+@import 'vf-list/vf-list.scss';
+@import 'vf-blockquote/vf-blockquote.scss';
+@import 'vf-divider/vf-divider.scss';
+@import 'embl-conditional-edit/embl-conditional-edit.scss';
+
+/* All Visual Framework Blocks */
+
+@import 'vf-box/vf-box.scss';
+  @import 'vf-box/vf-box--inlay.scss';
+  @import 'vf-box/vf-box--factoid.scss';
+
+@import 'vf-breadcrumbs/vf-breadcrumbs.scss';
+  @import 'vf-breadcrumbs/vf-breadcrumbs--with-related.scss';
+
+@import 'vf-discussion/vf-discussion.scss';
+
+@import 'vf-code-example/vf-code-example.scss';
+@import 'vf-page-header/vf-page-header.scss';
+@import 'vf-link-list/vf-link-list.scss';
+@import 'vf-header/vf-header.scss';
+
+@import 'vf-lede/vf-lede.scss';
+
+@import 'vf-masthead/vf-masthead.scss';
+  @import 'vf-masthead/vf-masthead--supports.scss';
+
+@import 'vf-navigation/vf-navigation.scss';
+  @import 'vf-navigation/vf-navigation--global.scss';
+  @import 'vf-navigation/vf-navigation--main.scss';
+  @import 'vf-navigation/vf-navigation--additional.scss';
+
+@import 'vf-section-header/vf-section-header.scss';
+@import 'vf-activity-list/vf-activity-list.scss';
+@import 'vf-article-meta-information/vf-article-meta-information.scss';
+
+@import 'vf-search/vf-search.scss';
+
+@import 'vf-summary/vf-summary.scss';
+  @import 'vf-summary/vf-summary--article.scss';
+  @import 'vf-summary/vf-summary--job.scss';
+  @import 'vf-summary/vf-summary--profile.scss';
+  @import 'vf-summary/vf-summary--news.scss';
+  @import 'vf-summary/vf-summary--has-image.scss';
+
+@import 'vf-video/vf-video.scss';
+@import 'vf-video-teaser/vf-video-teaser.scss';
+@import 'vf-global-header/vf-global-header.scss';
+@import 'vf-tabs/vf-tabs.scss';
+@import 'embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.scss';
+@import 'vf-pagination/vf-pagination.scss';
+  @import 'vf-pagination/vf-pagination--full.scss';
+
+/* All Visual Framework Containers */
+
+@import 'vf-activity-group/vf-activity-group.scss';
+@import 'vf-intro/vf-intro.scss';
+@import 'embl-content-hub-loader/embl-content-hub-loader.scss';
+
+@import 'vf-banner/vf-banner.scss';
+  @import 'vf-banner/vf-banner--phase.scss';
+  @import 'vf-banner/vf-banner--fixed.scss';
+  @import 'vf-banner/vf-banner--gdpr.scss';
+
+@import 'vf-news-container/vf-news-container.scss';
+@import 'vf-video-container/vf-video-container.scss';
+@import 'vf-footer/vf-footer.scss';
+
+/* All Visual Framework Boilerplates */
+
+@import 'embl-group-page/embl-group-page.scss';
+
+/* All Visual Framework Deprecated components */
+
+@import 'vf-deprecated/vf-deprecated.scss';
+
+/* All Visual Framework Utility and high-specificity components */
+
+@import 'vf-utility-classes/vf-utility-classes.scss';
+@import 'vf-heading/vf-heading.scss';
+@import 'vf-text/vf-text.scss';
+
+// This is a demonstration of vf-core's ability to warn and proceed on missing
+// sass imports
+@import 'vf-somepattern/vf-i-dont-exist.scss';

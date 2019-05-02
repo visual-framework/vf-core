@@ -2,19 +2,35 @@ title: Visual Framework Headings
 label: Headings
 preview: '@preview--elements'
 status: beta
-variants:
-  - name: template
-    hidden: true
 context:
   component-type: element
-  vf_heading_modifiers:
-    - type: display
-      title: This heading size is display and inverted
-    - type: extra-large
-      title: This heading size is extra large
-    - type: large
-      title: This heading size is large
-    - type: regular
-      title: This heading size is regular
-    - type: small
-      title: This heading size is small
+
+variants:
+  - name: default
+    hidden: true
+  - name: display
+    context:
+      type: display
+      heading: This heading size is extra large and inverted
+      style: invert
+      tags: h1
+  - name: extra-large
+    context:
+      type: extra-large
+      heading: This heading size is extra large
+      tags: h1
+  - name: large
+    context:
+      type: large
+      heading: This heading size is large
+      tags: h2
+  - name: regular
+    context:
+      type: regular
+      heading: This heading size is regular
+      tags: h3
+  - name: small
+    context:
+      type: small
+      heading: This heading size is smalls
+      tags: h4

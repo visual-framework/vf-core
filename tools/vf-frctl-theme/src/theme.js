@@ -5,7 +5,6 @@ const _           = require('lodash');
 const Theme       = require('@frctl/fractal').WebTheme;
 const packageJSON = require('../package.json');
 
-
 module.exports = function(options, fractal){
 
     const config = _.defaultsDeep(_.clone(options || {}), {
@@ -98,7 +97,8 @@ module.exports = function(options, fractal){
 
     theme.on('init', function(env, app){
       require('./filters')(theme, env, app, fractal);
-      require('./extensions')(theme, env, app, fractal);
+      require('./extensions/render.js')(theme, env, app, fractal);
+      require('./extensions/markdown.js')(theme, env, app, fractal);
     });
 
     let handles = null;

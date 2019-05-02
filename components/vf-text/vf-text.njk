@@ -1,5 +1,31 @@
-<p class="vf-text--body vf-text--body-xs">This text is extra small</p>
-<p class="vf-text--body vf-text--body-s">This text is small</p>
-<p class="vf-text--body vf-text--body-r">This text is regular</p>
-<p class="vf-text--body vf-text--body-l">This text is large</p>
-<a class="vf-text--body vf-text--body-link" href="#">This text is a link</a>
+{% spaceless %}
+
+{# Set font-size class to be used #}
+{% if type == "extra-large" %}
+  {% set size = "xl" %}
+{% elseif type == "large" %}
+    {% set size = "l" %}
+{% elseif type == "regular" %}
+  {% set size = "r" %}
+{% elseif type == "small" %}
+  {% set size = "s" %}
+{% elseif type == "extra-small" %}
+  {% set size = "xs" %}
+{% endif %}
+
+<p
+{% if id %} id="{{-id-}}"{% endif %}
+
+class="vf-text--body
+
+{%- if type %} vf-text--body-{{size}}{% endif -%}
+
+{# You want a snowflake of a classname for something, here you  #}
+{%- if override_class %} | {{override_class}}{% endif -%}
+">
+
+{{- html | safe if html else text -}}
+
+</p>
+
+{% endspaceless %}

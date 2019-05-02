@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="{{ '/css/styles.css' | path }}">
   {% endif %}
   {% if _config.project.environment.production %}
-  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/css/styles.css">
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css">
   {% endif %}
 </head>
 <body>
@@ -46,16 +46,14 @@
       {% render '@vf-section-header', {"section-title":"Latest Press Releases"} %}
 
       <div class="vf-news-container__content">
-        {% render '@vf-news-item' %}
-        {% render '@vf-news-item' %}
-        {% render '@vf-news-item' %}
-        {% render '@vf-news-item' %}
+        {% render '@vf-summary--news' %}
+        {% render '@vf-summary--news' %}
+        {% render '@vf-summary--news' %}
+        {% render '@vf-summary--news' %}
       </div>
 
       <div class="vf-news-container__sidebar">
-        {% render '@vf-news-item--snippet' %}
-        {% render '@vf-news-item--snippet' %}
-        {% render '@vf-news-item--snippet' %}
+
       </div>
 
     </section>

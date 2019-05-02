@@ -83,10 +83,10 @@ module.exports = class extends Generator {
     var fileName = namespace + this.props.componentName;
 
 
-    var outputFile = fileName + '.hbs';
+    var outputFile = fileName + '.njk';
 
     this.fs.copyTpl(
-      this.templatePath('_component.hbs'),
+      this.templatePath('_component.njk'),
       this.destinationPath(totalPath + outputFile),
       {
         componentName: fileName
@@ -138,6 +138,14 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_README.md'),
       this.destinationPath(totalPath + 'README.md'),
+      {
+        componentName: fileName
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_.npmignore'),
+      this.destinationPath(totalPath + '.npmignore'),
       {
         componentName: fileName
       }

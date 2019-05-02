@@ -1,0 +1,14 @@
+
+$vf-link-disabled-color: $vf-link-disabled-color;
+
+@mixin vf-disabled(
+  $vf-link-disabled-color,
+  $vf-include-normalisations: $vf-include-normalisations) {
+  color: $vf-link-disabled-color;
+  cursor: not-allowed;
+
+  @if $vf-include-normalisations == true {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+}
