@@ -495,13 +495,6 @@ gulp.task('testdone', function(done) {
 // -----------------------------------------------------------------------------
 
 
-gulp.task('replace-prod', function() {
-  gulp.src("./components/_previews/_preview.njk")
-    .pipe(replace("environment.local", "environment.dave"))
-});
-
-
-
 gulp.task('scripts', gulp.series(
   'scripts:es5', 'scripts:modern'
 ));
