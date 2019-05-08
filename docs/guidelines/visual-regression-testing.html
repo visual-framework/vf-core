@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Component versioning component | Visual Framework 2.0</title>
+  <title>Visual Regression Testing component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -63,7 +63,7 @@ embl-grid embl-grid--has-sidebar
 
       <div class="Document-header">
           
-          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Component versioning</h1>
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Visual Regression Testing</h1>
           
 
 
@@ -79,24 +79,17 @@ embl-grid embl-grid--has-sidebar
 
     
     
-    <p><a href="../changelog.html">Looking for notes on versioning of vf-core</a>?</p>
-<p>The versioning of components is self-contained and distinct from the version number of <code>vf-core</code></p>
-<p>Example: if <code>vf-component</code>@<code>2.2.0</code> has a breaking change, it would be updated to
-<code>vf-component</code>@<code>3.0.0</code>. That new version number does not affect compatibility with with <code>vf-core</code>@<code>2.x</code>.</p>
-<p>Other notes and tips on components:</p>
-<ul>
-<li>should use a <a href="https://semver.org/">semantic versioning</a> style of releases.</li>
-<li>must work with <code>vf-core v2.x</code>, but a component may specify a
-minimum required minor version of vf-core.</li>
-<li>may indicate any required versions of peer-components in your component’s README.md.<ul>
-<li><code>vf-component-x</code>@<code>2.1.2</code> requires <code>vf-component-y</code>@<code>^8.1.0</code></li>
-</ul>
-</li>
-<li>can live as part of the <code>vf-core</code> <a href="https://gomonorepo.org/">monorepo</a><ul>
-<li>Interested in adding a component? <a href="https://embl-vf.slack.com/messages">Get in touch</a></li>
-</ul>
-</li>
-</ul>
+    <p>To be confident that we can ammend components code if needed without breaking anything we need to test against the agreed look and interaction(s) of a component.</p>
+<p>We are making use of <a href="https://github.com/garris/BackstopJS">BackStopJS</a> to do this. We store the reference ‘truth’ on github inside the component library monorepo <a href="https://github.com/visual-framework/vf-core">vf-core</a>. We run this locally on our machines before pushing to the remomte repository to create a PR.</p>
+<h2 id="to-get-this-working-">To get this working:</h2>
+<p>First, make sure you have the latest <code>develop</code> branch and have <code>npm install</code>ed so everything is in place. When you get to a point in your code where you want to create a PR you will need to test your changes against the Visual Regressiong Testing (VRT) reference images.</p>
+<h2 id="to-do-this-">To do this:</h2>
+<ol>
+<li>Run <code>gulp frctlVRT</code> to create an updated static build of the component library.</li>
+<li>Run <code>gulp vizres-test</code> to start the test.</li>
+</ol>
+<p>When the test is complete it will open your default browser and display the results.</p>
+<p>It currently fails comparisons that have a 1.0% or more difference.</p>
 
     
 
@@ -154,16 +147,16 @@ class="vf-divider">
   
     
         <li>
-          <a href="visual-regression-testing.html">Visual Regression Testing</a>
+          <a href="">Visual Regression Testing</a>
+          
+          <span class="vf-badge">You are here</span>
           
         </li>
     
   
     
         <li>
-          <a href="">Component versioning</a>
-          
-          <span class="vf-badge">You are here</span>
+          <a href="versioning.html">Component versioning</a>
           
         </li>
     
