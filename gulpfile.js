@@ -26,6 +26,9 @@ const shell = require('gulp-shell');
 const rename = require('gulp-rename');
 const watch = require('gulp-watch');
 const ListStream = require('list-stream');
+const connect = require('gulp-connect');
+const glob = require('glob');
+const replace = require('gulp-replace');
 
 // Sass and CSS Stuff
 const sass = require('gulp-sass');
@@ -38,8 +41,9 @@ const recursive = require('./tools/css-generator/recursive-readdir');
 // Linting things
 const postcss     = require('gulp-postcss');
 const reporter    = require('postcss-reporter');
-const syntax_scss = require('postcss-scss');
-const gulpStylelint = require('gulp-stylelint');
+const syntax_scss     = require('postcss-scss');
+const gulpStylelint   = require('gulp-stylelint');
+const backstopjs        = require('backstopjs');
 
 // Image things
 const svgmin = require('gulp-svgmin');
@@ -404,6 +408,18 @@ gulp.task('frctlBuild', function(done) {
   }
 });
 
+gulp.task('frctlVRT', function(done) {
+  const fractal = require('./fractal.js').initialize('VRT',fractalReadyCallback);
+  function fractalReadyCallback() {
+    // Copy compiled css/js and other assets
+    gulp.src('./public/**/*')
+      .pipe(gulp.dest('./build'));
+      console.info('Copied `/public` assets.');
+
+    done();
+  }
+});
+
 // -----------------------------------------------------------------------------
 // CSS Generator Tasks
 // -----------------------------------------------------------------------------
@@ -452,8 +468,32 @@ gulp.task('watch', function(done) {
 });
 
 // -----------------------------------------------------------------------------
+// Backstop Tasks
+// -----------------------------------------------------------------------------
+
+var backstopConfig = {
+  //Config file location
+  config: './backstopConfig.js'
+}
+
+gulp.task('backstop_reference', () => backstopjs('reference', backstopConfig));
+gulp.task('backstop_test', () => backstopjs('test', backstopConfig));
+
+gulp.task('tests', function(done) {
+  connect.server({
+    port: 8888
+  });
+  done();
+});
+gulp.task('testdone', function(done) {
+  connect.serverClose();
+  done();
+});
+
+// -----------------------------------------------------------------------------
 // Default Tasks
 // -----------------------------------------------------------------------------
+
 
 gulp.task('scripts', gulp.series(
   'scripts:es5', 'scripts:modern'
@@ -479,3 +519,7 @@ gulp.task('prepush-test', gulp.parallel(
 gulp.task('component', shell.task(
   ['yo ./tools/component-generator']
 ));
+
+
+gulp.task('vizres-setup', gulp.series('tests', 'css', 'backstop_reference', 'testdone'));
+gulp.task('vizres-test', gulp.series('tests', 'css', 'backstop_test', 'testdone'));
