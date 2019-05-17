@@ -24,7 +24,7 @@ This is set in the components Sass partial but is used in the components HTML in
   ">
 ```
 
-To override this the changes to `--vf-masthead__color--foreround-default` and `--vf-masthead__color--background-default` need to be applied either after the Sass partial is compiled in your build step or in the HTML on the page using `root`:
+To override this the changes to `--vf-masthead__color--foreground-default` and `--vf-masthead__color--background-default` need to be applied either after the Sass partial is compiled in your build step or in the HTML on the page using `root`:
 
 ```html
 <style>
@@ -39,17 +39,17 @@ To override this the changes to `--vf-masthead__color--foreround-default` and `-
 
 If you are overriding the background or foreground (text) colour make sure you are:
 
-- using a colour from the Visual Framework.
-- testing to be sure that the contrast ratio meets accessibility guidelines.
+- using a colour from the Visual Framework
+- testing to be sure that the contrast ratio meets accessibility guidelines
 
 ---
 
 ### Background Images
 
-If you wish to use an image instead of a colour for the background of your masthead you will need to define it's location as a CSS Custom Property.
+If you wish to use an image instead of a colour for the background of your masthead you will need to define its location as a CSS Custom Property.
 
 ```css
---vf-masthead__bg-image: url('path/to/background-image.png');
+--vf-masthead__bg-image: url('path/to/background-image_00EF00.png');
 ```
 
 #### Image Size
@@ -81,7 +81,7 @@ The JavaScript looks for this hexidecimal colour code and mathematically works o
 </style>
 ```
 
-If JavaScript is disabled, or if it doesn't load with the page. The masthead will defualt to the background colour.
+If JavaScript is disabled, or if it doesn't load with the page. The masthead will default to the background colour.
 
 ---
 
