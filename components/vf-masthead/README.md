@@ -64,7 +64,7 @@ When using a background image we have to determine the best text colour to meet 
 
 We do this using JavaScript and the background image filename.
 
-In creating the background images for mastheads each image filename needs to have it's most dominate colour added as a hexidecimal code.
+In creating the background images for mastheads each image filename needs to have it's most dominate colour added as a hexadecimal code.
 
 ```bash
 masthead-background-image--00EF00.png
