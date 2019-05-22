@@ -3,6 +3,19 @@
 
 .vf-navigation--main {
   background-color: set-color(vf-color-gray-dark);
+  position: relative;
+
+  &::before {
+    background-color: inherit;
+    content: '';
+    height: 37px; // special number
+    left: 50%;
+    margin: 0 -50vw;
+    position: absolute;
+    right: 50%;
+    width: 100vw;
+    z-index: -1;
+  }
 
   .vf-navigation__list {
     display: block;

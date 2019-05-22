@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Masthead component | Visual Framework 2.0</title>
+  <title>Site Header: Inlay component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -60,14 +60,14 @@ embl-grid embl-grid--has-sidebar
     
     
 
-<div class="Pen" data-behaviour="pen" id="pen-71645ab4b791f73d8ed9cee4a9fc8aaa">
+<div class="Pen" data-behaviour="pen" id="pen-368d837774291243f50047b87fdfe009">
 
   
 
   <div class="vf-body">
 <header class="vf-grid vf-page-header | vf-u-padding-l">
   <h1 class="vf-page-header__heading | vf-text vf-text--heading-l vf-text--has-tag">
-    Masthead
+    Site Header: Inlay
     
 
 
@@ -99,7 +99,7 @@ embl-grid embl-grid--has-sidebar
 
               
                 
-                  <a class="vf-tabs__link" href="vf-masthead--default.html">
+                  <a class="vf-tabs__link" href="vf-header--default.html">
                     Default
                   </a>
                  
@@ -108,21 +108,9 @@ embl-grid embl-grid--has-sidebar
             
 
               
-                
-                  <a class="vf-tabs__link" href="vf-masthead--inlay.html">
-                    Inlay
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-masthead--with-title-block.html">
-                    With Title Block
-                  </a>
-                 
+                <a class="vf-tabs__link is-active" href="#is-active">
+                  Inlay
+                </a>
                
 
             
@@ -137,13 +125,13 @@ embl-grid embl-grid--has-sidebar
 
 
 
-  <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-71645ab4b791f73d8ed9cee4a9fc8aaa">
+  <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-368d837774291243f50047b87fdfe009">
       <div class="Preview-wrapper" data-role="resizer-disabled">
         
          <iframe
             class="Preview-iframe"
             data-role="window"
-            src="../preview/vf-masthead.html"
+            src="../preview/vf-header--inlay.html"
             sandbox="allow-same-origin allow-scripts allow-forms"
 
             marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
@@ -154,8 +142,8 @@ embl-grid embl-grid--has-sidebar
           <div class="vf-grid">
             <p class="vf-figure__caption">
               Open the above preview in a new window:
-              <a href="../preview/vf-masthead.html"><span>With layout</span> Open</a>
-              <a href="../render/vf-masthead.html"><span>Component only</span> Open</a>
+              <a href="../preview/vf-header--inlay.html"><span>With layout</span> Open</a>
+              <a href="../render/vf-header--inlay.html"><span>Component only</span> Open</a>
             </p>
           </div>
         </div>
@@ -170,55 +158,12 @@ embl-grid embl-grid--has-sidebar
     <div class="component-info">
       
       <div class="component-library-notes">
-      <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-masthead"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-masthead.svg" alt="npm version"></a></p>
+      <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-header"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-header.svg" alt="npm version"></a></p>
 <h2 id="about">About</h2>
-<h2 id="usage">Usage</h2>
-<h3 id="background-colours">Background Colours</h3>
-<p>By default, the background colour for the masthead is <code>vf-color-green</code>. To make this more adaptable for other teams and organisation the Visual Framework uses CSS Custom Properties in order to be able to switch this colour to something more in-keeping with the team wanting to use this component.</p>
-<p>The colour values are stored in two CSS custom properties. One for the background colour itself and the other for the text colour.</p>
-<code class="lang-css"><pre>  <span class="hljs-selector-tag">--vf-masthead__color--foreround-default</span>: <span class="hljs-selector-tag">var</span>(<span class="hljs-selector-tag">--vf-color-white</span>);
-  <span class="hljs-selector-tag">--vf-masthead__color--background-default</span>: <span class="hljs-selector-tag">var</span>(<span class="hljs-selector-tag">--vf-color-green</span>);</pre></code><p>This is set in the components Sass partial but is used in the components HTML inline.</p>
-<code class="lang-html"><pre>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"
-    background-color: var( --vf-masthead__color--background, var(--vf-masthead__color--background-default) );
-    color: var( --vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default) );
-  "</span>&gt;</span></pre></code><p>To override this the changes to <code>--vf-masthead__color--foreground-default</code> and <code>--vf-masthead__color--background-default</code> need to be applied either after the Sass partial is compiled in your build step or in the HTML on the page using <code>root</code>:</p>
-<code class="lang-html"><pre><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-<span class="hljs-selector-pseudo">:root</span> {
-  <span class="hljs-attribute">--vf-masthead__color--background</span>: none;
-  <span class="hljs-attribute">--vf-masthead__color--foreground</span>: <span class="hljs-number">#000000</span>;
-}
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></pre></code><h4 id="notes-">notes:</h4>
-<p>If you are overriding the background or foreground (text) colour make sure you are:</p>
-<ul>
-<li>using a colour from the Visual Framework</li>
-<li>testing to be sure that the contrast ratio meets accessibility guidelines</li>
-</ul>
-<hr>
-<h3 id="background-images">Background Images</h3>
-<p>If you wish to use an image instead of a colour for the background of your masthead you will need to define its location as a CSS Custom Property.</p>
-<code class="lang-css"><pre>--vf-masthead__bg-image: url('path/to/background-image_00EF00.png');</pre></code><h4 id="image-size">Image Size</h4>
-<p>The maximum dimensions for a background image is 1224px wide with a height of 150px. As more and more displays are what we term ‘retina’ they need to be twice the width and height to look crisp.</p>
-<p>Images that are used for mastheads need to have dimensions of 2448px by 300px.</p>
-<h4 id="text-colour">Text Colour</h4>
-<p>When using a background image we have to determine the best text colour to meet the contrast ratio from our accessibility guidelines.</p>
-<p>We do this using JavaScript and the background image filename.</p>
-<p>In creating the background images for mastheads each image filename needs to have it’s most dominate colour added as a hexadecimal code.</p>
-<code class="lang-bash"><pre>masthead-background-image--00EF00.png</pre></code><p>The JavaScript looks for this hexidecimal colour code and mathematically works out the correct text colour to use. The CSS custom property <code>--vf-masthead__color--foreground</code> is then added as a style block after the <code>body</code> tag in the HTML page. It will also add the custom property <code>--vf-masthead__color--background: none</code> to remove the background colour.</p>
-<code class="lang-html"><pre><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-<span class="hljs-selector-pseudo">:root</span> {
-  <span class="hljs-attribute">--vf-masthead__color--background</span>: none;
-  <span class="hljs-attribute">--vf-masthead__color--foreground</span>: <span class="hljs-number">#00EF00</span>;
-}
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></pre></code><p>If JavaScript is disabled, or if it doesn’t load with the page. The masthead will default to the background colour.</p>
-<hr>
-<h3 id="browser-support">Browser Support</h3>
-<p>CSS Custom Properties do not work in older versions of Internet Explorer. We provide a default look for the masthead for these browser which is a white foreground colour (for text) on a green background.</p>
-<p>However, this can be overriden if needed using the Sass variables.</p>
-<p><br></p>
 <h2 id="installation-and-implementation">Installation and Implementation</h2>
-<p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-masthead</code> with this command.</p>
-<code><pre>$ <span class="hljs-built_in">npm</span> install --save @visual-framework/vf-masthead</pre></code><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<code><pre>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-masthead/index.scss"</span>;</pre></code><p><em>Make sure you import any requirements along with the modules.</em></p>
+<p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-header</code> with this command.</p>
+<code><pre>$ <span class="hljs-built_in">npm</span> install --save @visual-framework/vf-header</pre></code><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<code><pre>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-header/index.scss"</span>;</pre></code><p><em>Make sure you import any requirements along with the modules.</em></p>
 
       </div>
       
@@ -230,22 +175,27 @@ embl-grid embl-grid--has-sidebar
   <h3 class="vf-text vf-text--heading-r">Component information</h3>
 <ul class="vf-list vf-list--unordered">
     <li class="vf-list__item">
-        Handle: @vf-masthead
+        Handle: @vf-header--inlay
     </li>
     
     <li class="vf-list__item">
-        Filesystem path: components/vf-masthead/vf-masthead.njk
+        Filesystem path: components/vf-header/vf-header--inlay.njk
+    </li>
+    
+    <li class="vf-list__item">
+      References (2):
+      
+        <a href="vf-masthead--inlay.html">@vf-masthead--inlay</a>, 
+      
+        <a href="vf-navigation--main.html">@vf-navigation--main</a>
+      
     </li>
     
     
     <li class="vf-list__item">
-        Referenced by 3 components:
+        Referenced by 1 components:
         
-          <a href="embl-subsite-page.html">@embl-subsite-page</a>, 
-        
-          <a href="vf-header.html">@vf-header</a>, 
-        
-          <a href="vf-header--inlay.html">@vf-header--inlay</a>
+          <a href="embl-group-page.html">@embl-group-page</a>
         
     </li>
     
@@ -257,35 +207,9 @@ embl-grid embl-grid--has-sidebar
 <h3 class="vf-text vf-text--heading-r">Code example</h3>
 <code class="Code Code--lang-html vf-code-example">
   
-  
-<a id="vf-masthead--default-code" href="#vf-masthead--default-code">Anchor (todo: `vf-link--anchor` or such)</a>
-<pre class="vf-code-example__pre"><span class="hljs-comment">&lt;!-- Default --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: var(--vf-masthead__color--background, var(--vf-masthead__color--background-default)); color: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default) );"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy &amp;amp; Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__location"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__group"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <pre class="vf-code-example__pre">
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__form--search"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__form__item"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__form__label"</span>&gt;</span>Search This Project<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__form__input--text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Enter gene query…"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__button vf-u-text-replacement"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 451 451"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"search-examples"</span>&gt;</span>Examples: <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>ASPM<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>, <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>Apoptosis<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>, <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>ENSMUSG00000021789<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</pre>
-  
-<a id="vf-masthead--inlay-code" href="#vf-masthead--inlay-code">Anchor (todo: `vf-link--anchor` or such)</a>
-<pre class="vf-code-example__pre"><span class="hljs-comment">&lt;!-- Inlay --&gt;</span>
+
 <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
      <span class="hljs-selector-pseudo">:root</span> {
         <span class="hljs-comment">/* These CSS properties are theming variables. If used, add to your HTML
@@ -293,45 +217,59 @@ embl-grid embl-grid--has-sidebar
         <span class="hljs-attribute">--vf-masthead__bg-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../../assets/vf-masthead/assets/group-bg_2d4155.png'</span>);
     }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-vf-js-masthead</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: 'var(--vf-masthead__color--background', var(--vf-masthead__color--background-default)); color: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreground-default) );"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>Häring Group<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-comment">&lt;!--/vf-masthead--&gt;</span>
-</pre>
-  
-<a id="vf-masthead--with-title-block-code" href="#vf-masthead--with-title-block-code">Anchor (todo: `vf-link--anchor` or such)</a>
-<pre class="vf-code-example__pre"><span class="hljs-comment">&lt;!-- With Title Block --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead vf-masthead--with-title-block"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-image: url('../../assets/vf-masthead/assets/group-bg.png')"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy &amp;amp; Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__location"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__group"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__form--search"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__form__item"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__form__label"</span>&gt;</span>Search This Project<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__form__input--text"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Enter gene query…"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__button vf-u-text-replacement"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 451 451"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M447.05 428l-109.6-109.6c29.4-33.8 47.2-77.9 47.2-126.1C384.65 86.2 298.35 0 192.35 0 86.25 0 .05 86.3.05 192.3s86.3 192.3 192.3 192.3c48.2 0 92.3-17.8 126.1-47.2L428.05 447c2.6 2.6 6.1 4 9.5 4s6.9-1.3 9.5-4c5.2-5.2 5.2-13.8 0-19zM26.95 192.3c0-91.2 74.2-165.3 165.3-165.3 91.2 0 165.3 74.2 165.3 165.3s-74.1 165.4-165.3 165.4c-91.1 0-165.3-74.2-165.3-165.4z"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-header vf-header--inlay"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+         <span class="hljs-selector-pseudo">:root</span> {
+            <span class="hljs-comment">/* These CSS properties are theming variables. If used, add to your HTML
+     after the VF CSS for vf-masthead and before the HTML for vf-masthead. */</span>
+            <span class="hljs-attribute">--vf-masthead__bg-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../../assets/vf-masthead/assets/group-bg_2d4155.png'</span>);
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-vf-js-masthead</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: 'var(--vf-masthead__color--background', var(--vf-masthead__color--background-default)); color: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreground-default) );"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>Häring Group<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"search-examples"</span>&gt;</span>Examples: <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>ASPM<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>, <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>Apoptosis<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>, <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>ENSMUSG00000021789<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</pre>
-  
+    <span class="hljs-comment">&lt;!--/vf-masthead--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation vf-navigation--main"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__list | vf-list--inline"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__item"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__link"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__item"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__link"</span>&gt;</span>Download<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__item"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__link"</span>&gt;</span>Release Notes<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__item"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__link"</span>&gt;</span>FAQ<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__item"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__link"</span>&gt;</span>Help<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__item"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__link"</span>&gt;</span>Licence<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__item"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__link"</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__item"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__link"</span>&gt;</span>Feedback<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+  </pre>
   
 </code>
 <hr class="vf-divider vf-u-margin__bottom-r vf-u-margin__top-r">
@@ -354,13 +292,13 @@ embl-grid embl-grid--has-sidebar
     
       
       <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--5b3ab1390e17923321397e1f25b86823">CHANGELOG.md</a>
+        <a class="vf-tabs__link" href="#vf-tabs__section--ef3a9b1d515934ef97f5f57c8da724f7">CHANGELOG.md</a>
       </li>
       
     
       
       <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--44598087fa43a84b1cb8164d9bd08a02">index.scss</a>
+        <a class="vf-tabs__link" href="#vf-tabs__section--4feaa0d7593c962c256bb5f045fb6e3d">index.scss</a>
       </li>
       
     
@@ -368,31 +306,19 @@ embl-grid embl-grid--has-sidebar
     
       
       <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--5f546fa13c5264583c7bda4f2716dd26">package.json</a>
+        <a class="vf-tabs__link" href="#vf-tabs__section--b726d86c69d3d0e8c377eafa5f1822b6">package.json</a>
       </li>
       
     
       
       <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--51278b1ccf38738a6f75e8cbdd8f7fad">vf-masthead--supports.scss</a>
+        <a class="vf-tabs__link" href="#vf-tabs__section--e36a8fa1aa5b9492e380bead37f6dbc7">vf-header.css</a>
       </li>
       
     
       
       <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--5ee2a963c0afc6a7664974b78868ad21">vf-masthead.css</a>
-      </li>
-      
-    
-      
-      <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--ae4e0ed8e10208d5903e932d81d626c1">vf-masthead.js</a>
-      </li>
-      
-    
-      
-      <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--765d19fc2cf0371d889132a6de393060">vf-masthead.scss</a>
+        <a class="vf-tabs__link" href="#vf-tabs__section--90310dd7efc4899e683e6f293236a339">vf-header.scss</a>
       </li>
       
     
@@ -402,7 +328,7 @@ embl-grid embl-grid--has-sidebar
 <div class="vf-tabs-content" data-vf-js-tabs-content>
   
     
-    <section class="vf-tabs__section" id="vf-tabs__section--5b3ab1390e17923321397e1f25b86823">
+    <section class="vf-tabs__section" id="vf-tabs__section--ef3a9b1d515934ef97f5f57c8da724f7">
       <div class="FileBrowser-itemPreview">
         
         <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example">
@@ -413,7 +339,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-section">## 0.0.30 (2019-05-02)</span>
 
-<span class="hljs-strong">**Note:**</span> Version bump only for package @visual-framework/vf-masthead
+<span class="hljs-strong">**Note:**</span> Version bump only for package @visual-framework/vf-header
 
 
 
@@ -421,7 +347,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-section">## 0.0.29 (2019-03-28)</span>
 
-<span class="hljs-strong">**Note:**</span> Version bump only for package @visual-framework/vf-masthead
+<span class="hljs-strong">**Note:**</span> Version bump only for package @visual-framework/vf-header
 
 
 
@@ -429,7 +355,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-section">## 0.0.28 (2019-02-28)</span>
 
-<span class="hljs-strong">**Note:**</span> Version bump only for package @visual-framework/vf-masthead
+<span class="hljs-strong">**Note:**</span> Version bump only for package @visual-framework/vf-header
 
 
 
@@ -437,7 +363,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-section">## 0.0.27 (2019-02-28)</span>
 
-<span class="hljs-strong">**Note:**</span> Version bump only for package @visual-framework/vf-masthead
+<span class="hljs-strong">**Note:**</span> Version bump only for package @visual-framework/vf-header
 
 
 
@@ -467,25 +393,26 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <ul class="vf-list vf-list--unordered">
         <li class="vf-list__item">
           URL:
-          <a data-no-pjax href="../raw/vf-masthead/CHANGELOG.md">/components/raw/vf-masthead/CHANGELOG.md</a>
+          <a data-no-pjax href="../raw/vf-header/CHANGELOG.md">/components/raw/vf-header/CHANGELOG.md</a>
         </li>
         <li class="vf-list__item">
-          Filesystem path: components/vf-masthead/CHANGELOG.md
+          Filesystem path: components/vf-header/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 696 Bytes
+          Size: 688 Bytes
         </li>
       </ul>
     </section>
     
   
     
-    <section class="vf-tabs__section" id="vf-tabs__section--44598087fa43a84b1cb8164d9bd08a02">
+    <section class="vf-tabs__section" id="vf-tabs__section--4feaa0d7593c962c256bb5f045fb6e3d">
       <div class="FileBrowser-itemPreview">
         
         <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
           <pre class="vf-code-example__pre"><span class="hljs-comment">// setup files required</span>
 
+<span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
@@ -493,11 +420,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">// other components being used</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-grid/vf-grid.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'../vf-global-header/vf-global-header.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'../vf-masthead/vf-masthead.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'../vf-navigation/vf-navigation.scss'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-masthead.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-header.scss'</span>;
 </pre>
         </code>
         
@@ -507,13 +436,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <ul class="vf-list vf-list--unordered">
         <li class="vf-list__item">
           URL:
-          <a data-no-pjax href="../raw/vf-masthead/index.scss">/components/raw/vf-masthead/index.scss</a>
+          <a data-no-pjax href="../raw/vf-header/index.scss">/components/raw/vf-header/index.scss</a>
         </li>
         <li class="vf-list__item">
-          Filesystem path: components/vf-masthead/index.scss
+          Filesystem path: components/vf-header/index.scss
         </li>
         <li class="vf-list__item">
-          Size: 249 Bytes
+          Size: 398 Bytes
         </li>
       </ul>
     </section>
@@ -522,29 +451,38 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     
   
     
-    <section class="vf-tabs__section" id="vf-tabs__section--5f546fa13c5264583c7bda4f2716dd26">
+    <section class="vf-tabs__section" id="vf-tabs__section--b726d86c69d3d0e8c377eafa5f1822b6">
       <div class="FileBrowser-itemPreview">
         
         <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">
           <pre class="vf-code-example__pre">{
   <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.30"</span>,
-  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/vf-masthead"</span>,
-  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"vf-masthead component"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/vf-header"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"vf-header component"</span>,
   <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"https://visual-framework.github.io/vf-core/"</span>,
   <span class="hljs-attr">"author"</span>: <span class="hljs-string">"VF"</span>,
   <span class="hljs-attr">"license"</span>: <span class="hljs-string">"Apache 2.0"</span>,
-  <span class="hljs-attr">"style"</span>: <span class="hljs-string">"vf-masthead.css"</span>,
+  <span class="hljs-attr">"style"</span>: <span class="hljs-string">"vf-header.css"</span>,
   <span class="hljs-attr">"sass"</span>: <span class="hljs-string">"index.scss"</span>,
+  <span class="hljs-attr">"files"</span>: [
+    <span class="hljs-string">"index.scss"</span>,
+    <span class="hljs-string">"vf-header.scss"</span>,
+    <span class="hljs-string">"vf-header.css"</span>,
+    <span class="hljs-string">"vf-header.njk"</span>,
+    <span class="hljs-string">"vf-header.config.yml"</span>
+  ],
   <span class="hljs-attr">"test"</span>: <span class="hljs-string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,
   <span class="hljs-attr">"publishConfig"</span>: {
     <span class="hljs-attr">"access"</span>: <span class="hljs-string">"public"</span>
   },
-  <span class="hljs-attr">"repo"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/tree/master/components/blocks/vf-masthead"</span>,
+  <span class="hljs-attr">"repo"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/tree/master/components/containers/vf-header"</span>,
   <span class="hljs-attr">"bugs"</span>: {
     <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/issues/new"</span>
   },
   <span class="hljs-attr">"dependencies"</span>: {
-    <span class="hljs-attr">"@visual-framework/vf-grid"</span>: <span class="hljs-string">"^0.0.29"</span>,
+    <span class="hljs-attr">"@visual-framework/vf-global-header"</span>: <span class="hljs-string">"^0.0.30"</span>,
+    <span class="hljs-attr">"@visual-framework/vf-masthead"</span>: <span class="hljs-string">"^0.0.30"</span>,
+    <span class="hljs-attr">"@visual-framework/vf-navigation"</span>: <span class="hljs-string">"^0.0.30"</span>,
     <span class="hljs-attr">"@visual-framework/vf-sass-config"</span>: <span class="hljs-string">"^0.0.26"</span>,
     <span class="hljs-attr">"node-normalize-scss"</span>: <span class="hljs-string">"^8.0.0"</span>
   },
@@ -563,53 +501,20 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <ul class="vf-list vf-list--unordered">
         <li class="vf-list__item">
           URL:
-          <a data-no-pjax href="../raw/vf-masthead/package.json">/components/raw/vf-masthead/package.json</a>
+          <a data-no-pjax href="../raw/vf-header/package.json">/components/raw/vf-header/package.json</a>
         </li>
         <li class="vf-list__item">
-          Filesystem path: components/vf-masthead/package.json
+          Filesystem path: components/vf-header/package.json
         </li>
         <li class="vf-list__item">
-          Size: 826 Bytes
+          Size: 1.1 KB
         </li>
       </ul>
     </section>
     
   
     
-    <section class="vf-tabs__section" id="vf-tabs__section--51278b1ccf38738a6f75e8cbdd8f7fad">
-      <div class="FileBrowser-itemPreview">
-        
-        <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-          <pre class="vf-code-example__pre"><span class="hljs-selector-class">.vf-header</span> <span class="hljs-selector-class">.vf-masthead</span> {
-  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-}
-
-<span class="hljs-selector-class">.embl-group-header__header</span> <span class="hljs-selector-class">.vf-masthead</span> {
-  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
-}
-</pre>
-        </code>
-        
-      </div>
-
-      <h3 class="vf-text vf-text--heading-r">File information</h3>
-      <ul class="vf-list vf-list--unordered">
-        <li class="vf-list__item">
-          URL:
-          <a data-no-pjax href="../raw/vf-masthead/vf-masthead--supports.scss">/components/raw/vf-masthead/vf-masthead--supports.scss</a>
-        </li>
-        <li class="vf-list__item">
-          Filesystem path: components/vf-masthead/vf-masthead--supports.scss
-        </li>
-        <li class="vf-list__item">
-          Size: 119 Bytes
-        </li>
-      </ul>
-    </section>
-    
-  
-    
-    <section class="vf-tabs__section" id="vf-tabs__section--5ee2a963c0afc6a7664974b78868ad21">
+    <section class="vf-tabs__section" id="vf-tabs__section--e36a8fa1aa5b9492e380bead37f6dbc7">
       <div class="FileBrowser-itemPreview">
         
         <code class="Code Code--lang-CSS FileBrowser-code vf-code-example">
@@ -651,142 +556,39 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">--vf-ui-color-red</span>: <span class="hljs-built_in">rgb</span>(211, 47, 47);
 }
 
-<span class="hljs-comment">/* stylelint-disable order/order */</span>
-<span class="hljs-selector-class">.vf-grid</span> {
+<span class="hljs-selector-class">.vf-global-header</span> {
+  <span class="hljs-attribute">-webkit-box-align</span>: center;
+      <span class="hljs-attribute">-ms-flex-align</span>: center;
+          <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">background-color</span>: white;
+  <span class="hljs-attribute">border-bottom</span>: solid <span class="hljs-number">1px</span> <span class="hljs-number">#707372</span>;
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) <span class="hljs-built_in">minmax</span>(auto, 76.5em) <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
+  <span class="hljs-attribute">height</span>: auto;
+  <span class="hljs-attribute">padding</span>: .<span class="hljs-number">5rem</span> <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-global-header__inner</span> {
   <span class="hljs-attribute">display</span>: -webkit-box;
   <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
 }
 
-<span class="hljs-selector-class">.vf-grid</span> &gt; * {
-  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">1</span>;
-      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">1</span>;
-          <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
+<span class="hljs-selector-class">.vf-global-header__site-name</span> {
+  <span class="hljs-attribute">-ms-flex-item-align</span>: center;
+      <span class="hljs-attribute">align-self</span>: center;
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 }
 
-<span class="hljs-selector-attr">[class*='vf-grid__']</span> {
-  <span class="hljs-attribute">-ms-flex-wrap</span>: wrap;
-      <span class="hljs-attribute">flex-wrap</span>: wrap;
+<span class="hljs-selector-class">.vf-global-header</span> <span class="hljs-selector-attr">[class*='navigation']</span> {
+  <span class="hljs-attribute">-ms-flex-item-align</span>: center;
+      <span class="hljs-attribute">align-self</span>: center;
+  <span class="hljs-attribute">margin-left</span>: auto;
 }
 
-<span class="hljs-selector-class">.vf-grid__col-2</span> &gt; * {
-  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
-      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
-          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
-}
-
-<span class="hljs-selector-class">.vf-grid__col-3</span> &gt; * {
-  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
-      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(33.3333% - 20px);
-          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(33.3333% - 20px);
-}
-
-<span class="hljs-selector-class">.vf-grid__col-4</span> &gt; * {
-  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
-      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(25% - 20px);
-          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(25% - 20px);
-}
-
-<span class="hljs-selector-class">.vf-grid__col-5</span> &gt; * {
-  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
-      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16% - 20px);
-          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16% - 20px);
-}
-
-<span class="hljs-selector-class">.vf-grid__col-6</span> &gt; * {
-  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
-      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16.666666667% - 20px);
-          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16.666666667% - 20px);
-}
-
-@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1023px</span>) {
-  <span class="hljs-selector-class">.vf-grid</span> {
-    <span class="hljs-attribute">-ms-flex-wrap</span>: wrap;
-        <span class="hljs-attribute">flex-wrap</span>: wrap;
-  }
-  <span class="hljs-selector-class">.vf-grid</span> &gt; * {
-    <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
-        <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
-            <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
-  }
-}
-
-@<span class="hljs-keyword">supports</span> (display: grid) {
-  <span class="hljs-selector-class">.vf-grid</span> {
-    <span class="hljs-attribute">display</span>: grid;
-    <span class="hljs-attribute">grid-column</span>: main;
-    <span class="hljs-attribute">grid-column-gap</span>: <span class="hljs-built_in">var</span>(--page-grid-gap);
-  }
-  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">840px</span>) {
-    <span class="hljs-selector-class">.vf-grid</span> {
-      <span class="hljs-attribute">grid-auto-flow</span>: column;
-    }
-  }
-  @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1299px</span>) {
-    <span class="hljs-selector-class">.vf-grid</span> {
-      <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-    }
-  }
-  <span class="hljs-selector-class">.vf-grid</span> &gt; * {
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-  }
-  <span class="hljs-selector-attr">[class*='grid__']</span> {
-    <span class="hljs-attribute">grid-auto-flow</span>: unset;
-  }
-  <span class="hljs-selector-class">.vf-grid__col-1</span> &gt; * + * {
-    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#707372</span>;
-    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">32px</span>;
-  }
-  <span class="hljs-selector-class">.vf-grid__col-1</span> &gt; * + *<span class="hljs-selector-pseudo">:last-of-type</span> {
-    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
-  }
-  <span class="hljs-selector-class">.vf-grid__col-1</span> {
-    <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(1, 1fr);
-  }
-  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">768px</span>) {
-    <span class="hljs-selector-class">.vf-grid__col-2</span> {
-      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(2, 1fr);
-    }
-    <span class="hljs-selector-class">.vf-grid__col-3</span> {
-      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(3, 1fr);
-    }
-    <span class="hljs-selector-class">.vf-grid__col-4</span> {
-      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(2, 1fr);
-    }
-    <span class="hljs-selector-class">.vf-grid__col-5</span> {
-      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(3, 1fr);
-    }
-    <span class="hljs-selector-class">.vf-grid__col-6</span> {
-      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(3, 1fr);
-    }
-  }
-  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
-    <span class="hljs-selector-class">.vf-grid__col-4</span> {
-      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(4, 1fr);
-    }
-    <span class="hljs-selector-class">.vf-grid__col-5</span> {
-      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(5, 1fr);
-    }
-    <span class="hljs-selector-class">.vf-grid__col-6</span> {
-      <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">repeat</span>(6, 1fr);
-    }
-  }
-  <span class="hljs-selector-class">.vf-grid__col--span-2</span> {
-    <span class="hljs-attribute">grid-column-end</span>: span <span class="hljs-number">2</span>;
-  }
-  <span class="hljs-selector-class">.vf-grid__col--span-3</span> {
-    <span class="hljs-attribute">grid-column-end</span>: span <span class="hljs-number">3</span>;
-  }
-  <span class="hljs-selector-class">.vf-grid__col--span-4</span> {
-    <span class="hljs-attribute">grid-column-end</span>: span <span class="hljs-number">4</span>;
-  }
-  <span class="hljs-selector-class">.vf-grid__col--span-5</span> {
-    <span class="hljs-attribute">grid-column-end</span>: span <span class="hljs-number">5</span>;
-  }
-}
-
-<span class="hljs-comment">/* stylelint-enable order/order */</span>
 <span class="hljs-selector-class">.vf-masthead</span> {
   <span class="hljs-attribute">--vf-masthead__color--foreround-default</span>: <span class="hljs-built_in">var</span>(--vf-color-white);
   <span class="hljs-attribute">--vf-masthead__color--background-default</span>: <span class="hljs-built_in">var</span>(--vf-color-green);
@@ -1004,6 +806,68 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">color</span>: white;
   <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">0px</span> black;
 }
+
+<span class="hljs-selector-class">.vf-navigation__list</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">-webkit-box-orient</span>: horizontal;
+  <span class="hljs-attribute">-webkit-box-direction</span>: normal;
+      <span class="hljs-attribute">-ms-flex-direction</span>: row;
+          <span class="hljs-attribute">flex-direction</span>: row;
+}
+
+<span class="hljs-selector-class">.vf-navigation__heading</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-header</span> {
+  <span class="hljs-attribute">background-position</span>: top center;
+  <span class="hljs-attribute">background-size</span>: cover;
+  <span class="hljs-attribute">-webkit-box-sizing</span>: border-box;
+          <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) <span class="hljs-built_in">minmax</span>(auto, 76.5em) <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
+}
+
+<span class="hljs-selector-class">.vf-header</span> <span class="hljs-selector-class">.vf-navigation--main</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.vf-header</span> <span class="hljs-selector-class">.vf-navigation--additional</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.vf-header__navigation--site</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-header__navigation--site</span> &gt; * {
+  <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">16px</span>;
+}
+
+<span class="hljs-selector-class">.vf-header__navigation--additional</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+  <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.vf-header</span> &gt; <span class="hljs-selector-class">.vf-global-header</span> {
+  <span class="hljs-attribute">margin-bottom</span>: -<span class="hljs-number">1px</span>;
+}
+
+<span class="hljs-selector-class">.vf-header--inlay</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.vf-header--inlay</span> <span class="hljs-selector-class">.vf-masthead__heading</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
+}
+
+<span class="hljs-selector-class">.vf-header--inlay</span> <span class="hljs-selector-class">.vf-navigation</span> {
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+}
 </pre>
         </code>
         
@@ -1013,269 +877,69 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <ul class="vf-list vf-list--unordered">
         <li class="vf-list__item">
           URL:
-          <a data-no-pjax href="../raw/vf-masthead/vf-masthead.css">/components/raw/vf-masthead/vf-masthead.css</a>
+          <a data-no-pjax href="../raw/vf-header/vf-header.css">/components/raw/vf-header/vf-header.css</a>
         </li>
         <li class="vf-list__item">
-          Filesystem path: components/vf-masthead/vf-masthead.css
+          Filesystem path: components/vf-header/vf-header.css
         </li>
         <li class="vf-list__item">
-          Size: 9 KB
+          Size: 8.2 KB
         </li>
       </ul>
     </section>
     
   
     
-    <section class="vf-tabs__section" id="vf-tabs__section--ae4e0ed8e10208d5903e932d81d626c1">
-      <div class="FileBrowser-itemPreview">
-        
-        <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example">
-          <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-masthead</span>
-
-
-<span class="hljs-comment">// The background image for the banner element are taken from the database.</span>
-<span class="hljs-comment">// The filename includes the hex code for the background colour of the image.</span>
-<span class="hljs-comment">// Then test if the 6 characters are a hex code and declare the background-color</span>
-
-<span class="hljs-comment">/**
-  * Function for making background color of banner from image file name
-  * @example vfMastheadSetStyle()
-  */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfMastheadSetStyle</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">const</span> vfMastheads = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-vf-js-masthead]'</span>);
-  <span class="hljs-keyword">if</span> (vfMastheads[<span class="hljs-number">0</span>]) {
-    <span class="hljs-keyword">let</span> el = vfMastheads[<span class="hljs-number">0</span>];
-    <span class="hljs-keyword">let</span> bannerBG = getComputedStyle(el).getPropertyValue(<span class="hljs-string">'--vf-masthead__bg-image'</span>);
-    <span class="hljs-keyword">let</span> filename = bannerBG.substr(<span class="hljs-number">0</span>, bannerBG.lastIndexOf(<span class="hljs-string">'.'</span>)) || bannerBG;
-    <span class="hljs-keyword">let</span> hexcode = filename.substr(filename.length - <span class="hljs-number">6</span>);
-    <span class="hljs-keyword">let</span> bannerBGC = <span class="hljs-string">"#"</span> + hexcode;
-    <span class="hljs-keyword">let</span> regHex = <span class="hljs-regexp">/[0-9A-Fa-f]{6}/g</span>;
-    <span class="hljs-keyword">let</span> threshold = <span class="hljs-number">130</span>; <span class="hljs-comment">// about half of 256. Lower threshold equals more dark text on dark background</span>
-    <span class="hljs-keyword">let</span> cBrightness = <span class="hljs-number">255</span>; <span class="hljs-comment">// default to above the threshold</span>
-
-    <span class="hljs-keyword">if</span> (regHex.test(hexcode)) {
-
-      <span class="hljs-keyword">if</span> (!bannerBGC) <span class="hljs-keyword">return</span>;
-
-      bannerBGC = bannerBGC.trim();
-
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cutHex</span>(<span class="hljs-params">h</span>) </span>{<span class="hljs-keyword">return</span> (h.charAt(<span class="hljs-number">0</span>)==<span class="hljs-string">"#"</span>) ? h.substring(<span class="hljs-number">1</span>,<span class="hljs-number">7</span>):h}
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hexToR</span>(<span class="hljs-params">h</span>) </span>{<span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>((cutHex(h)).substring(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>),<span class="hljs-number">16</span>)}
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hexToG</span>(<span class="hljs-params">h</span>) </span>{<span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>((cutHex(h)).substring(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>),<span class="hljs-number">16</span>)}
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hexToB</span>(<span class="hljs-params">h</span>) </span>{<span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>((cutHex(h)).substring(<span class="hljs-number">4</span>,<span class="hljs-number">6</span>),<span class="hljs-number">16</span>)}
-
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCorrectTextColor</span>(<span class="hljs-params">hex</span>)</span>{
-        <span class="hljs-keyword">let</span> hRed = hexToR(hex);
-        <span class="hljs-keyword">let</span> hGreen = hexToG(hex);
-        <span class="hljs-keyword">let</span> hBlue = hexToB(hex);
-        <span class="hljs-keyword">return</span> ((hRed * <span class="hljs-number">299</span>) + (hGreen * <span class="hljs-number">587</span>) + (hBlue * <span class="hljs-number">114</span>)) / <span class="hljs-number">1000</span>;
-      }
-
-      cBrightness = getCorrectTextColor(bannerBGC);
-
-      <span class="hljs-keyword">if</span> (cBrightness &gt; threshold){
-        el.style.setProperty(<span class="hljs-string">'--vf-masthead__color--foreground'</span>, <span class="hljs-string">"#000000"</span>);
-      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cBrightness &lt; threshold) {
-        el.style.setProperty(<span class="hljs-string">'--vf-masthead__color--foreground'</span>, <span class="hljs-string">"#FFFFFF"</span>);
-      }
-    }
-  }
-};
-
-<span class="hljs-keyword">export</span> { vfMastheadSetStyle };
-</pre>
-        </code>
-        
-      </div>
-
-      <h3 class="vf-text vf-text--heading-r">File information</h3>
-      <ul class="vf-list vf-list--unordered">
-        <li class="vf-list__item">
-          URL:
-          <a data-no-pjax href="../raw/vf-masthead/vf-masthead.js">/components/raw/vf-masthead/vf-masthead.js</a>
-        </li>
-        <li class="vf-list__item">
-          Filesystem path: components/vf-masthead/vf-masthead.js
-        </li>
-        <li class="vf-list__item">
-          Size: 1.9 KB
-        </li>
-      </ul>
-    </section>
-    
-  
-    
-    <section class="vf-tabs__section" id="vf-tabs__section--765d19fc2cf0371d889132a6de393060">
+    <section class="vf-tabs__section" id="vf-tabs__section--90310dd7efc4899e683e6f293236a339">
       <div class="FileBrowser-itemPreview">
         
         <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-          <pre class="vf-code-example__pre"><span class="hljs-variable">$vf-masthead__title-text--color</span>: set-color(vf-color-white);
+          <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-header</span>
 
-<span class="hljs-comment">// vf-masthead</span>
-
-<span class="hljs-selector-class">.vf-masthead</span> {
-
-  --vf-masthead__color--foreround-default: var(--vf-color-white);
-  --vf-masthead__color--<span class="hljs-attribute">background</span>-default: var(--vf-color-green);
-
-  <span class="hljs-attribute">background-color</span>: set-color(vf-color-green);
-  <span class="hljs-attribute">background-image</span>: var( --vf-masthead__bg-image, none);
-  <span class="hljs-attribute">background-repeat</span>: no-repeat;
+<span class="hljs-selector-class">.vf-header</span> {
+  <span class="hljs-attribute">background-position</span>: top center;
   <span class="hljs-attribute">background-size</span>: cover;
-  <span class="hljs-attribute">color</span>: set-color(vf-color-white);
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">display</span>: grid;
+  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  grid-template-<span class="hljs-attribute">columns</span>: minmax(var(--page-grid-gap), auto) minmax(auto, <span class="hljs-variable">$global-page-max-width</span>) minmax(var(--page-grid-gap), auto);
+}
 
-  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint-l</span>) {
-    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">48px</span>;
+<span class="hljs-selector-class">.vf-header</span> {
+  <span class="hljs-selector-class">.vf-navigation--main</span> {
+    grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  }
+  <span class="hljs-selector-class">.vf-navigation--additional</span> {
+    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+    grid-row: <span class="hljs-number">2</span>;
   }
 }
 
-<span class="hljs-selector-class">.vf-masthead__inner</span> {
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
-  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-}
-
-
-<span class="hljs-selector-class">.vf-masthead__title</span> {
-  <span class="hljs-attribute">align-self</span>: unset;
-  <span class="hljs-attribute">display</span>: inline-flex;
-  <span class="hljs-attribute">flex-direction</span>: column-reverse;
-  <span class="hljs-comment">// margin: 0 auto;</span>
-  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">2</span>;
-}
-
-
-<span class="hljs-selector-class">.vf-masthead__heading</span> {
-  @<span class="hljs-keyword">include</span> set-type(heading--xl, <span class="hljs-variable">$custom-margin-bottom</span>: 8px);
-
-  <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default) );
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">flex-direction</span>: column;
-}
-
-<span class="hljs-selector-class">.vf-masthead__heading--additional</span> {
-  @<span class="hljs-keyword">include</span> set-type(heading--s, <span class="hljs-variable">$custom-margin-bottom</span>: 0);
-
-  <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default) );
-  <span class="hljs-attribute">position</span>: relative;
-  <span class="hljs-attribute">top</span>: -<span class="hljs-number">8px</span>;
-}
-
-<span class="hljs-selector-class">.vf-masthead__sub-heading</span> {
-  @<span class="hljs-keyword">include</span> set-type(heading--s);
-
-  <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default) );
-}
-
-<span class="hljs-selector-class">.vf-masthead__heading__link</span> {
-  @<span class="hljs-keyword">include</span> inline-link(<span class="hljs-variable">$vf-masthead__title-text--color</span>,<span class="hljs-variable">$vf-masthead__title-text--color</span>,<span class="hljs-variable">$vf-masthead__title-text--color</span>,<span class="hljs-variable">$vf-masthead__title-text--color</span>);
-
-  <span class="hljs-attribute">color</span>: inherit;
-  <span class="hljs-attribute">text-decoration</span>: none;
-  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
-}
-
-<span class="hljs-selector-class">.vf-masthead__subheading</span> {
-  @<span class="hljs-keyword">include</span> set-type(body--s-alt, <span class="hljs-variable">$custom-margin-bottom</span>: 0);
-
-  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-masthead__title-text--color</span>;
-  <span class="hljs-attribute">text-transform</span>: uppercase;
-}
-
-<span class="hljs-selector-class">.vf-masthead__subheading</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">color</span>: inherit;
-  <span class="hljs-attribute">text-decoration</span>: none;
-  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
-}
-
-
-<span class="hljs-selector-class">.vf-masthead--with-title-block</span> {
-
-  <span class="hljs-selector-class">.vf-masthead__title</span> {
-    <span class="hljs-attribute">background-color</span>: set-color(vf-color-black);
-    <span class="hljs-attribute">display</span>: inline-flex;
-    <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">16px</span>;
-    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">16px</span>;
-    <span class="hljs-attribute">position</span>: relative;
-
-    &amp;::before {
-      <span class="hljs-attribute">background-color</span>: set-color(vf-color-black);
-      <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
-      <span class="hljs-attribute">display</span>: inline-flex;
-      <span class="hljs-attribute">flex-direction</span>: column-reverse;
-      grid-<span class="hljs-attribute">auto</span>-<span class="hljs-attribute">columns</span>: max-content;
-      <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
-      <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">16px</span>;
-      <span class="hljs-attribute">position</span>: absolute;
-      <span class="hljs-attribute">transform</span>: translateX(-<span class="hljs-number">50%</span>);
-      <span class="hljs-attribute">width</span>: <span class="hljs-number">50vw</span>;
-    }
-  }
-  <span class="hljs-selector-class">.vf-masthead__subheading</span> {
-    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
+<span class="hljs-selector-class">.vf-header__navigation--site</span> {
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color-gray-dark);
+  &amp; &gt; * {
+    <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">16px</span>;
   }
 }
 
-<span class="hljs-selector-class">.vf-masthead__form--search</span> {
-  <span class="hljs-attribute">align-self</span>: flex-end;
+<span class="hljs-selector-class">.vf-header__navigation--additional</span> {
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color-gray-dark);
   grid-row: <span class="hljs-number">2</span>;
-  <span class="hljs-attribute">justify-content</span>: flex-end;
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">12px</span>;
-  <span class="hljs-attribute">margin-left</span>: auto;
-  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">288px</span>;
-  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
 }
 
-<span class="hljs-selector-class">.vf-masthead__form__item</span> {
-  <span class="hljs-attribute">color</span>: set-color(vf-color-white);
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">flex-direction</span>: row;
-  <span class="hljs-attribute">flex-wrap</span>: wrap;
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">6px</span>;
+<span class="hljs-selector-class">.vf-header</span> &gt; <span class="hljs-selector-class">.vf-global-header</span> {
+  <span class="hljs-attribute">margin-bottom</span>: -<span class="hljs-number">1px</span>;
 }
 
-<span class="hljs-selector-class">.vf-masthead__button</span> {
-  <span class="hljs-attribute">align-items</span>: flex-end;
-  <span class="hljs-attribute">background-color</span>: set-color(vf-color-azure-dark);
-  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">color</span>: set-color(vf-color-white);
-  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
-  <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">12px</span>;
+<span class="hljs-selector-class">.vf-header--inlay</span> {
+  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
 
-  svg {
-    fill: set-color(vf-color-white);
-    <span class="hljs-attribute">width</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-selector-class">.vf-masthead__heading</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
   }
-}
 
-<span class="hljs-selector-class">.vf-masthead__form__label</span> {
-  <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">100%</span>;
-  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">4px</span>;
-  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">3px</span> set-color(vf-color-white);
-}
-
-<span class="hljs-selector-class">.vf-masthead__form__input--text</span> {
-  <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">79%</span>;
-  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
-  <span class="hljs-attribute">font-style</span>: italic;
-  <span class="hljs-attribute">padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-tight);
-}
-
-<span class="hljs-selector-class">.search-examples</span> {
-  <span class="hljs-comment">// white-space: nowrap;</span>
-  <span class="hljs-attribute">color</span>: set-color(vf-color-white);
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
-  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">0px</span> set-ui-color(vf-ui-color-black);
-
-  <span class="hljs-selector-tag">a</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color-white);
-    <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">0px</span> set-ui-color(vf-ui-color-black);
+  <span class="hljs-selector-class">.vf-navigation</span> {
+    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   }
 }
 </pre>
@@ -1287,13 +951,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <ul class="vf-list vf-list--unordered">
         <li class="vf-list__item">
           URL:
-          <a data-no-pjax href="../raw/vf-masthead/vf-masthead.scss">/components/raw/vf-masthead/vf-masthead.scss</a>
+          <a data-no-pjax href="../raw/vf-header/vf-header.scss">/components/raw/vf-header/vf-header.scss</a>
         </li>
         <li class="vf-list__item">
-          Filesystem path: components/vf-masthead/vf-masthead.scss
+          Filesystem path: components/vf-header/vf-header.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.7 KB
+          Size: 871 Bytes
         </li>
       </ul>
     </section>
@@ -2576,7 +2240,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         <p class="vf-text">
-          <a class="vf-link--secondary" href="">Masthead</a>
+          <a class="vf-link--secondary" href="vf-masthead.html">Masthead</a>
         </p>
         
       

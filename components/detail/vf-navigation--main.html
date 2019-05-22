@@ -200,11 +200,13 @@ embl-grid embl-grid--has-sidebar
     
     
     <li class="vf-list__item">
-        Referenced by 2 components:
+        Referenced by 3 components:
         
           <a href="embl-subsite-page.html">@embl-subsite-page</a>, 
         
-          <a href="vf-header.html">@vf-header</a>
+          <a href="vf-header.html">@vf-header</a>, 
+        
+          <a href="vf-header--inlay.html">@vf-header--inlay</a>
         
     </li>
     
@@ -521,6 +523,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-navigation--main</span> {
   <span class="hljs-attribute">background-color</span>: set-color(vf-color-gray-dark);
+  <span class="hljs-attribute">position</span>: relative;
+
+  &amp;::before {
+    <span class="hljs-attribute">background-color</span>: inherit;
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">37px</span>; <span class="hljs-comment">// special number</span>
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> -<span class="hljs-number">50vw</span>;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;
+    <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">1</span>;
+  }
 
   <span class="hljs-selector-class">.vf-navigation__list</span> {
     <span class="hljs-attribute">display</span>: block;
@@ -590,7 +605,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-navigation/vf-navigation--main.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.2 KB
+          Size: 1.4 KB
         </li>
       </ul>
     </section>
@@ -753,6 +768,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-navigation--main</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+  <span class="hljs-attribute">position</span>: relative;
+}
+
+<span class="hljs-selector-class">.vf-navigation--main</span><span class="hljs-selector-pseudo">::before</span> {
+  <span class="hljs-attribute">background-color</span>: inherit;
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">37px</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> -<span class="hljs-number">50vw</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;
+  <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">1</span>;
 }
 
 <span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__list</span> {
@@ -844,16 +872,35 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">display</span>: -webkit-box;
   <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">position</span>: relative;
   <span class="hljs-attribute">text-transform</span>: uppercase;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.vf-navigation--additional</span><span class="hljs-selector-pseudo">::before</span> {
+  <span class="hljs-attribute">background-color</span>: inherit;
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">35px</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> -<span class="hljs-number">50vw</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;
+  <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">1</span>;
 }
 
 <span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__heading</span> {
   <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">6px</span>;
 }
 
 <span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__list</span> {
   <span class="hljs-attribute">margin-left</span>: auto;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">5px</span>;
 }
 
 <span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-pseudo">:first-child)</span> {
@@ -893,7 +940,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-navigation/vf-navigation.css
         </li>
         <li class="vf-list__item">
-          Size: 6.1 KB
+          Size: 6.6 KB
         </li>
       </ul>
     </section>
@@ -910,6 +957,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-navigation__list</span> {
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">flex-direction</span>: row;
+
 }
 
 <span class="hljs-selector-class">.vf-navigation__heading</span> {
@@ -930,7 +978,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-navigation/vf-navigation.scss
         </li>
         <li class="vf-list__item">
-          Size: 165 Bytes
+          Size: 166 Bytes
         </li>
       </ul>
     </section>

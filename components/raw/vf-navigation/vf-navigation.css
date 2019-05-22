@@ -150,6 +150,19 @@
 
 .vf-navigation--main {
   background-color: #54585a;
+  position: relative;
+}
+
+.vf-navigation--main::before {
+  background-color: inherit;
+  content: '';
+  height: 37px;
+  left: 50%;
+  margin: 0 -50vw;
+  position: absolute;
+  right: 50%;
+  width: 100vw;
+  z-index: -1;
 }
 
 .vf-navigation--main .vf-navigation__list {
@@ -241,16 +254,35 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 0 auto;
+  max-width: 76.5em;
   padding: 4px 0;
+  position: relative;
   text-transform: uppercase;
+  width: 100%;
+}
+
+.vf-navigation--additional::before {
+  background-color: inherit;
+  content: '';
+  height: 35px;
+  left: 50%;
+  margin: 0 -50vw;
+  position: absolute;
+  right: 50%;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
 }
 
 .vf-navigation--additional .vf-navigation__heading {
   color: white;
+  padding-top: 6px;
 }
 
 .vf-navigation--additional .vf-navigation__list {
   margin-left: auto;
+  padding-top: 5px;
 }
 
 .vf-navigation--additional .vf-navigation__item:not(:first-child) {
