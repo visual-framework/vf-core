@@ -247,7 +247,7 @@ gulp.task('scripts:modern', function() {
 // -----------------------------------------------------------------------------
 gulp.task('component-assets', function() {
   return gulp
-    .src(['./components/**/**/assets/**/*'])
+    .src(['./components/**/assets/**/*','./components/vf-core-components/**/assets/**/*'])
     .pipe(gulp.dest('./public/assets'));
 });
 
