@@ -6,8 +6,6 @@ const fs = require('fs');
 // Configuration
 // -----------------------------------------------------------------------------
 
-const SassInput = './components/vf-componenet-rollup/index.scss';
-const SassOutput = './public/css';
 const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
 const config = JSON.parse(fs.readFileSync('./package.json'));
 global.vfName = config.vfConfig.vfName;
@@ -16,6 +14,8 @@ global.vfComponentPath = __dirname + '/components';
 global.vfThemePath = './tools/vf-frctl-theme';
 const path = require('path');
 const componentPath = path.resolve(__dirname, 'components' );
+const SassInput = componentPath + '/vf-componenet-rollup/index.scss';
+const SassOutput = './build/css';
 
 // -----------------------------------------------------------------------------
 // Dependencies
@@ -109,9 +109,10 @@ gulp.task('vf-css', function() {
       componentPath + '/vf-sass-config/mixins',
       componentPath,
       componentPath + '/vf-form',
-      componentPath + '/vf-components',
       componentPath + '/vf-core-components',
-      componentPath + '/vf-components', // we have a consistency issue to clean up here in some clients of vf-core :(
+      componentPath + '/vf-core-components/vf-sass-config/variables',
+      componentPath + '/vf-core-components/vf-sass-config/functions',
+      componentPath + '/vf-core-components/vf-sass-config/mixins',
       path.resolve(__dirname, 'node_modules'),
     ]
   };
@@ -121,9 +122,9 @@ gulp.task('vf-css', function() {
   // only include the file if it exists.
   var availableComponents = {}; // track the components avaialble
   return gulp
-    .src([componentPath+'/**/*.scss'], {
+    .src([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss'], {
       allowEmpty: true,
-      ignore: [componentPath+'/**/index.scss']
+      ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss']
     })
     .pipe(ListStream.obj(function (err, data) {
       if (err)
@@ -435,6 +436,9 @@ var genCss = function (option) {
         componentPath,
         componentPath + '/vf-form',
         componentPath + '/vf-core-components',
+        componentPath + '/vf-core-components/vf-sass-config/variables',
+        componentPath + '/vf-core-components/vf-sass-config/functions',
+        componentPath + '/vf-core-components/vf-sass-config/mixins',
         path.resolve(__dirname, 'node_modules')
       ],
       outputStyle: 'expanded'
