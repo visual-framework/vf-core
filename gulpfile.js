@@ -14,13 +14,14 @@ global.vfName = config.vfConfig.vfName;
 global.vfNamespace = config.vfConfig.vfNamespace;
 global.vfComponentPath = __dirname + '/components';
 global.vfThemePath = './tools/vf-frctl-theme';
+const path = require('path');
+const componentPath = path.resolve(__dirname, 'components' );
 
 // -----------------------------------------------------------------------------
 // Dependencies
 // -----------------------------------------------------------------------------
 
 const gulp = require('gulp');
-const path = require('path');
 const notify = require('gulp-notify');
 const shell = require('gulp-shell');
 const rename = require('gulp-rename');
@@ -55,8 +56,6 @@ const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
 const rollup = require('gulp-better-rollup');
 const includePaths = require('rollup-plugin-includepaths');
-
-const componentPath = path.resolve(__dirname, 'components' );
 
 // Local Server Stuff
 const browserSync = require('browser-sync').create();
@@ -105,13 +104,14 @@ gulp.task('vf-css', function() {
 
     }],
     includePaths: [
-      path.resolve(__dirname, 'components/vf-sass-config/variables'),
-      path.resolve(__dirname, 'components/vf-sass-config/functions'),
-      path.resolve(__dirname, 'components/vf-sass-config/mixins'),
-      path.resolve(__dirname, 'components'),
-      path.resolve(__dirname, 'components/vf-form'),
-      path.resolve(__dirname, 'components/vf-components'),
-      path.resolve(__dirname, 'components/vf-core-components'),
+      componentPath + '/vf-sass-config/variables',
+      componentPath + '/vf-sass-config/functions',
+      componentPath + '/vf-sass-config/mixins',
+      componentPath,
+      componentPath + '/vf-form',
+      componentPath + '/vf-components',
+      componentPath + '/vf-core-components',
+      componentPath + '/vf-components', // we have a consistency issue to clean up here in some clients of vf-core :(
       path.resolve(__dirname, 'node_modules'),
     ]
   };
@@ -121,9 +121,9 @@ gulp.task('vf-css', function() {
   // only include the file if it exists.
   var availableComponents = {}; // track the components avaialble
   return gulp
-    .src(['components/**/*.scss'], {
+    .src([componentPath+'/**/*.scss'], {
       allowEmpty: true,
-      ignore: ['components/**/index.scss']
+      ignore: [componentPath+'/**/index.scss']
     })
     .pipe(ListStream.obj(function (err, data) {
       if (err)
@@ -171,13 +171,12 @@ gulp.task('vf-css', function() {
 });
 
 // Sass Lint
+// For stylelint config rules see .stylelinrc
 gulp.task('vf-scss-lint', function lintCssTask() {
-
-  // For stylelint config rules see .stylelinrc
 
   return gulp
     .src(
-      ['components/**/embl-*.scss', 'components/**/vf-*.scss', '!components/**/index.scss', '!assets/**/*.scss']
+      [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss']
     )
     .pipe(gulpStylelint({
       failAfterError: true,
@@ -197,15 +196,15 @@ gulp.task('vf-scripts:es5', function() {
   let includePathOptions = {
       include: {},
       paths: [
-        path.resolve(__dirname, 'components'),
-        path.resolve(__dirname, 'components/vf-core-components'),
-        path.resolve(__dirname, 'components/vf-form'),
+        componentPath,
+        componentPath + '/vf-core-components',
+        componentPath + '/vf-form',
       ],
       external: ['vfTabs'],
       extensions: ['.js']
   };
 
-  return gulp.src('./components/vf-componenet-rollup/scripts.js')
+  return gulp.src(componentPath + '/vf-componenet-rollup/scripts.js')
     // .pipe(sourcemaps.init())
     .pipe(rollup({
       // There is no `input` option as rollup integrates into the gulp pipeline
@@ -236,7 +235,7 @@ gulp.task('vf-scripts:es5', function() {
 
 // Eventually we'll want to support ES6 natively with ES5 as fallback, `scripts.es5.js`
 gulp.task('vf-scripts:modern', function() {
-  return gulp.src('./components/vf-componenet-rollup/scripts.js')
+  return gulp.src(componentPath + '/vf-componenet-rollup/scripts.js')
       .pipe(rename(function (path) {
         path.extname = '.modern.js';
       }))
@@ -248,7 +247,7 @@ gulp.task('vf-scripts:modern', function() {
 // -----------------------------------------------------------------------------
 gulp.task('vf-component-assets', function() {
   return gulp
-    .src(['./components/**/assets/**/*','./components/vf-core-components/**/assets/**/*'])
+    .src([componentPath + '/**/assets/**/*', componentPath + '/vf-core-components/**/assets/**/*'])
     .pipe(gulp.dest('./public/assets'));
 });
 
@@ -258,9 +257,9 @@ gulp.task('vf-component-assets', function() {
 // -----------------------------------------------------------------------------
 gulp.task('svg', () => {
   return gulp
-    .src('./components/**/*.svg')
+    .src(componentPath + '/**/*.svg')
     .pipe(svgmin())
-    .pipe(gulp.dest('./components'));
+    .pipe(gulp.dest(componentPath));
 });
 
 // -----------------------------------------------------------------------------
@@ -314,7 +313,7 @@ ${theoSourceTokenLocation}
 // Register design tokens to be processed by Theo
 
 gulp.task('vf-tokens:typographic-scale', () =>
-  gulp.src('./components/vf-design-tokens/typographic-scales/*.yml')
+  gulp.src(componentPath + '/vf-design-tokens/typographic-scales/*.yml')
     .pipe(theoG({
       transform: { type: 'web' },
       format: { type: 'typography-map' }
@@ -322,34 +321,34 @@ gulp.task('vf-tokens:typographic-scale', () =>
     .pipe(rename(function (path) {
       path.extname = ".scss";
     }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
+    .pipe(gulp.dest(componentPath + '/vf-sass-config/variables'))
 );
 
 gulp.task('vf-tokens:variables', () =>
-  gulp.src('./components/vf-design-tokens/variables/*.yml')
+  gulp.src(componentPath + '/vf-design-tokens/variables/*.yml')
     .pipe(theoG({
       transform: { type: 'web' },
       format: { type: 'variables.scss' }
     }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
+    .pipe(gulp.dest(componentPath + '/vf-sass-config/variables'))
 );
 
 gulp.task('vf-tokens:maps', () =>
-  gulp.src(['./components/vf-design-tokens/maps/*.yml', '!./components/vf-design-tokens/typographic-scales/*.yml'])
+  gulp.src([componentPath + '/vf-design-tokens/maps/*.yml', '!'+componentPath + '/vf-design-tokens/typographic-scales/*.yml'])
     .pipe(theoG({
       transform: { type: 'web' },
       format: { type: 'map.scss' }
     }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
+    .pipe(gulp.dest(componentPath + '/vf-sass-config/variables'))
 );
 
 gulp.task('vf-tokens:props', () =>
-  gulp.src(['./components/vf-design-tokens/maps/*.yml'])
+  gulp.src([componentPath + '/vf-design-tokens/maps/*.yml'])
     .pipe(theoG({
       transform: { type: 'web' },
       format: { type: 'custom-properties.scss' }
     }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
+    .pipe(gulp.dest(componentPath + '/vf-sass-config/variables'))
 );
 
 // Register output format for token types
@@ -430,12 +429,12 @@ var genCss = function (option) {
   return gulp.src(option.file_path)
     .pipe(sass({
       includePaths: [
-        path.resolve(__dirname, 'components/vf-sass-config/variables'),
-        path.resolve(__dirname, 'components/vf-sass-config/functions'),
-        path.resolve(__dirname, 'components/vf-sass-config/mixins'),
-        path.resolve(__dirname, 'components'),
-        path.resolve(__dirname, 'components/vf-form'),
-        path.resolve(__dirname, 'components/vf-core-components'),
+        componentPath + '/vf-sass-config/variables',
+        componentPath + '/vf-sass-config/functions',
+        componentPath + '/vf-sass-config/mixins',
+        componentPath,
+        componentPath + '/vf-form',
+        componentPath + '/vf-core-components',
         path.resolve(__dirname, 'node_modules')
       ],
       outputStyle: 'expanded'
@@ -462,10 +461,10 @@ gulp.task('vf-css-gen', function(done) {
 // -----------------------------------------------------------------------------
 
 gulp.task('vf-watch', function(done) {
-  gulp.watch('./components/**/*.scss', gulp.series(['vf-css', 'vf-scss-lint'])).on('change', reload);
-  gulp.watch('./components/**/*.js', gulp.series('vf-scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*.svg', gulp.series('svg','vf-component-assets')).on('change', reload);
-  gulp.watch(['./components/**/**/assets/*', '!./components/**/**/assets/*.svg'], gulp.series('vf-component-assets')).on('change', reload);
+  gulp.watch(componentPath + '/**/*.scss', gulp.series(['vf-css', 'vf-scss-lint'])).on('change', reload);
+  gulp.watch(componentPath + '/**/*.js', gulp.series('vf-scripts')).on('change', reload);
+  gulp.watch(componentPath + '/**/**/assets/*.svg', gulp.series('svg','vf-component-assets')).on('change', reload);
+  gulp.watch([componentPath + '/**/**/assets/*', '!' + componentPath + '/**/**/assets/*.svg'], gulp.series('vf-component-assets')).on('change', reload);
 });
 
 // -----------------------------------------------------------------------------
