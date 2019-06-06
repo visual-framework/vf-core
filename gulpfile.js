@@ -71,7 +71,7 @@ const theo = require('theo')
 // Sass and CSS Tasks
 // -----------------------------------------------------------------------------
 
-gulp.task('css', function() {
+gulp.task('vf-css', function() {
   const sassOpts = {
     // Import sass files
     // We'll check to see if the file exists before passing
@@ -110,6 +110,7 @@ gulp.task('css', function() {
       path.resolve(__dirname, 'components/vf-sass-config/mixins'),
       path.resolve(__dirname, 'components'),
       path.resolve(__dirname, 'components/vf-form'),
+      path.resolve(__dirname, 'components/vf-components'),
       path.resolve(__dirname, 'components/vf-core-components'),
       path.resolve(__dirname, 'node_modules'),
     ]
@@ -154,14 +155,14 @@ gulp.task('css', function() {
         .pipe(sourcemaps.write())
         .pipe(rename(
           {
-            basename: "styles"
+            basename: 'styles'
           }
         ))
         .pipe(gulp.dest(SassOutput))
         .pipe(cssnano())
         .pipe(rename(
           {
-            suffix: ".min"
+            suffix: '.min'
           }
         ))
         .pipe(gulp.dest(SassOutput));
@@ -170,7 +171,7 @@ gulp.task('css', function() {
 });
 
 // Sass Lint
-gulp.task("scss-lint", function lintCssTask() {
+gulp.task('vf-scss-lint', function lintCssTask() {
 
   // For stylelint config rules see .stylelinrc
 
@@ -181,7 +182,7 @@ gulp.task("scss-lint", function lintCssTask() {
     .pipe(gulpStylelint({
       failAfterError: true,
       reporters: [
-        {formatter: "string", console: true}
+        {formatter: 'string', console: true}
       ]
     }));
 });
@@ -192,7 +193,7 @@ gulp.task("scss-lint", function lintCssTask() {
 // -----------------------------------------------------------------------------
 
 // Rollup all JS imports into CJS and babel them to ES5
-gulp.task('scripts:es5', function() {
+gulp.task('vf-scripts:es5', function() {
   let includePathOptions = {
       include: {},
       paths: [
@@ -212,11 +213,11 @@ gulp.task('scripts:es5', function() {
       // external: ['vfTabs','vfBanner'],
       plugins: [
         babel({
-          "presets": [
+          'presets': [
             [
-              "@babel/preset-env",
+              '@babel/preset-env',
               {
-                "targets": "> 0.25%, not dead, last 2 versions"
+                'targets': '> 0.25%, not dead, last 2 versions'
               }
             ]
           ]
@@ -234,10 +235,10 @@ gulp.task('scripts:es5', function() {
 
 
 // Eventually we'll want to support ES6 natively with ES5 as fallback, `scripts.es5.js`
-gulp.task('scripts:modern', function() {
+gulp.task('vf-scripts:modern', function() {
   return gulp.src('./components/vf-componenet-rollup/scripts.js')
       .pipe(rename(function (path) {
-        path.extname = ".modern.js";
+        path.extname = '.modern.js';
       }))
     .pipe(gulp.dest('./public/scripts'));
 });
@@ -245,7 +246,7 @@ gulp.task('scripts:modern', function() {
 // -----------------------------------------------------------------------------
 // Component Assets
 // -----------------------------------------------------------------------------
-gulp.task('component-assets', function() {
+gulp.task('vf-component-assets', function() {
   return gulp
     .src(['./components/**/assets/**/*','./components/vf-core-components/**/assets/**/*'])
     .pipe(gulp.dest('./public/assets'));
@@ -312,7 +313,7 @@ ${theoSourceTokenLocation}
 
 // Register design tokens to be processed by Theo
 
-gulp.task('tokens:typographic-scale', () =>
+gulp.task('vf-tokens:typographic-scale', () =>
   gulp.src('./components/vf-design-tokens/typographic-scales/*.yml')
     .pipe(theoG({
       transform: { type: 'web' },
@@ -324,7 +325,7 @@ gulp.task('tokens:typographic-scale', () =>
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
 );
 
-gulp.task('tokens:variables', () =>
+gulp.task('vf-tokens:variables', () =>
   gulp.src('./components/vf-design-tokens/variables/*.yml')
     .pipe(theoG({
       transform: { type: 'web' },
@@ -333,7 +334,7 @@ gulp.task('tokens:variables', () =>
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
 );
 
-gulp.task('tokens:maps', () =>
+gulp.task('vf-tokens:maps', () =>
   gulp.src(['./components/vf-design-tokens/maps/*.yml', '!./components/vf-design-tokens/typographic-scales/*.yml'])
     .pipe(theoG({
       transform: { type: 'web' },
@@ -342,7 +343,7 @@ gulp.task('tokens:maps', () =>
     .pipe(gulp.dest('./components/vf-sass-config/variables'))
 );
 
-gulp.task('tokens:props', () =>
+gulp.task('vf-tokens:props', () =>
   gulp.src(['./components/vf-design-tokens/maps/*.yml'])
     .pipe(theoG({
       transform: { type: 'web' },
@@ -352,23 +353,23 @@ gulp.task('tokens:props', () =>
 );
 
 // Register output format for token types
-theo.registerFormat( "variables.scss",`${theoGeneratedSassTemplate}`);
-theo.registerFormat( "map.scss",`${theoGeneratedMapTemplate}`);
-theo.registerFormat( "custom-properties.scss",`${theoGeneratedPropertiesTemplate}`);
+theo.registerFormat( 'variables.scss',`${theoGeneratedSassTemplate}`);
+theo.registerFormat( 'map.scss',`${theoGeneratedMapTemplate}`);
+theo.registerFormat( 'custom-properties.scss',`${theoGeneratedPropertiesTemplate}`);
 
 // The Theo typography token processor is a bit more complex
 // and uses a custom format as a function
-theo.registerFormat("typography-map", result => {
+theo.registerFormat('typography-map', result => {
   let { category, type } = result
-    .get("props")
+    .get('props')
     .first()
     .toJS();
   return `${theoGeneratedFileWarning}
-// Source: ${path.basename(result.getIn(["meta", "file"]))}
+// Source: ${path.basename(result.getIn(['meta', 'file']))}
 
 $vf-${category}--${type}: (
 ${result
-  .get("props")
+  .get('props')
   .map(
   prop => `
   '${prop.get("name")}': (
@@ -378,7 +379,7 @@ ${result
   ),`
   )
   .sort()
-  .join("\n")}
+  .join('\n')}
 
 );
   `;
@@ -425,7 +426,7 @@ gulp.task('frctlVRT', function(done) {
 // -----------------------------------------------------------------------------
 
 var genCss = function (option) {
-  var file_name = path.basename(path.dirname(option.file_path)) + ".css";
+  var file_name = path.basename(path.dirname(option.file_path)) + '.css';
   return gulp.src(option.file_path)
     .pipe(sass({
       includePaths: [
@@ -445,7 +446,7 @@ var genCss = function (option) {
     .pipe(gulp.dest(option.dir));
 };
 
-gulp.task('CSSGen', function(done) {
+gulp.task('vf-css-gen', function(done) {
   recursive(componentPath, ['*.css'], function (err, files) {
     files.forEach(function(file) {
       if (file.file.indexOf('index.scss') > -1) {
@@ -460,11 +461,11 @@ gulp.task('CSSGen', function(done) {
 // Watch Tasks
 // -----------------------------------------------------------------------------
 
-gulp.task('watch', function(done) {
-  gulp.watch('./components/**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
-  gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*.svg', gulp.series('svg','component-assets')).on('change', reload);
-  gulp.watch(['./components/**/**/assets/*', '!./components/**/**/assets/*.svg'], gulp.series('component-assets')).on('change', reload);
+gulp.task('vf-watch', function(done) {
+  gulp.watch('./components/**/*.scss', gulp.series(['vf-css', 'vf-scss-lint'])).on('change', reload);
+  gulp.watch('./components/**/*.js', gulp.series('vf-scripts')).on('change', reload);
+  gulp.watch('./components/**/**/assets/*.svg', gulp.series('svg','vf-component-assets')).on('change', reload);
+  gulp.watch(['./components/**/**/assets/*', '!./components/**/**/assets/*.svg'], gulp.series('vf-component-assets')).on('change', reload);
 });
 
 // -----------------------------------------------------------------------------
@@ -479,13 +480,13 @@ var backstopConfig = {
 gulp.task('backstop_reference', () => backstopjs('reference', backstopConfig));
 gulp.task('backstop_test', () => backstopjs('test', backstopConfig));
 
-gulp.task('tests', function(done) {
+gulp.task('vf-tests', function(done) {
   connect.server({
     port: 8888
   });
   done();
 });
-gulp.task('testdone', function(done) {
+gulp.task('vf-testdone', function(done) {
   connect.serverClose();
   done();
 });
@@ -495,31 +496,30 @@ gulp.task('testdone', function(done) {
 // -----------------------------------------------------------------------------
 
 
-gulp.task('scripts', gulp.series(
-  'scripts:es5', 'scripts:modern'
+gulp.task('vf-scripts', gulp.series(
+  'vf-scripts:es5', 'vf-scripts:modern'
 ));
 
-gulp.task('dev', gulp.series(
-  'component-assets', ['css', 'scripts'], 'frctlStart', 'watch'
+gulp.task('vf-dev', gulp.series(
+  'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', 'vf-watch'
 ));
 
-gulp.task('tokens', gulp.parallel(
-  'tokens:variables', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
+gulp.task('vf-tokens', gulp.parallel(
+  'vf-tokens:variables', 'vf-tokens:typographic-scale', 'vf-tokens:maps', 'vf-tokens:props'
 ));
 
 // Build as a static site for CI
-gulp.task('build', gulp.series(
-  'tokens', 'scss-lint', 'CSSGen', 'css', 'component-assets', 'scripts', 'frctlBuild'
+gulp.task('vf-build', gulp.series(
+  'vf-tokens', 'vf-scss-lint', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
 ));
 
-gulp.task('prepush-test', gulp.parallel(
-  'scss-lint', 'css'
+gulp.task('vf-prepush-test', gulp.parallel(
+  'vf-scss-lint', 'vf-css'
 ));
 
-gulp.task('component', shell.task(
+gulp.task('vf-component', shell.task(
   ['yo ./tools/component-generator']
 ));
 
-
-gulp.task('vizres-setup', gulp.series('tests', 'css', 'backstop_reference', 'testdone'));
-gulp.task('vizres-test', gulp.series('tests', 'css', 'backstop_test', 'testdone'));
+gulp.task('vizres-setup', gulp.series('vf-tests', 'vf-css', 'backstop_reference', 'vf-testdone'));
+gulp.task('vizres-test', gulp.series('vf-tests', 'vf-css', 'backstop_test', 'vf-testdone'));
