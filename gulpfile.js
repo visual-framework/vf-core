@@ -70,6 +70,19 @@ const theo = require('theo')
 // Sass and CSS Tasks
 // -----------------------------------------------------------------------------
 
+const sassPaths = [
+  componentPath + '/vf-sass-config/variables',
+  componentPath + '/vf-sass-config/functions',
+  componentPath + '/vf-sass-config/mixins',
+  componentPath,
+  componentPath + '/vf-form',
+  componentPath + '/vf-core-components',
+  componentPath + '/vf-core-components/vf-sass-config/variables',
+  componentPath + '/vf-core-components/vf-sass-config/functions',
+  componentPath + '/vf-core-components/vf-sass-config/mixins',
+  path.resolve(__dirname, 'node_modules'),
+];
+
 gulp.task('vf-css', function() {
   const sassOpts = {
     // Import sass files
@@ -103,18 +116,7 @@ gulp.task('vf-css', function() {
       }
 
     }],
-    includePaths: [
-      componentPath + '/vf-sass-config/variables',
-      componentPath + '/vf-sass-config/functions',
-      componentPath + '/vf-sass-config/mixins',
-      componentPath,
-      componentPath + '/vf-form',
-      componentPath + '/vf-core-components',
-      componentPath + '/vf-core-components/vf-sass-config/variables',
-      componentPath + '/vf-core-components/vf-sass-config/functions',
-      componentPath + '/vf-core-components/vf-sass-config/mixins',
-      path.resolve(__dirname, 'node_modules'),
-    ]
+    includePaths: sassPaths
   };
 
   // Find all the component sass files available.
@@ -429,18 +431,7 @@ var genCss = function (option) {
   var file_name = path.basename(path.dirname(option.file_path)) + '.css';
   return gulp.src(option.file_path)
     .pipe(sass({
-      includePaths: [
-        componentPath + '/vf-sass-config/variables',
-        componentPath + '/vf-sass-config/functions',
-        componentPath + '/vf-sass-config/mixins',
-        componentPath,
-        componentPath + '/vf-form',
-        componentPath + '/vf-core-components',
-        componentPath + '/vf-core-components/vf-sass-config/variables',
-        componentPath + '/vf-core-components/vf-sass-config/functions',
-        componentPath + '/vf-core-components/vf-sass-config/mixins',
-        path.resolve(__dirname, 'node_modules')
-      ],
+      includePaths: sassPaths,
       outputStyle: 'expanded'
     })
     .on('error', sass.logError))
@@ -452,7 +443,8 @@ var genCss = function (option) {
 gulp.task('vf-css-gen', function(done) {
   recursive(componentPath, ['*.css'], function (err, files) {
     files.forEach(function(file) {
-      if (file.file.indexOf('index.scss') > -1) {
+      // only generate CSS for index.scss files, but not for the vf rollup
+      if ((file.file.indexOf('index.scss') > -1) && (file.file_path.indexOf('vf-componenet-rollup/index.scss') == -1)) {
         genCss(file);
       }
     });
