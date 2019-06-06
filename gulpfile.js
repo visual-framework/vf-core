@@ -37,6 +37,8 @@ const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const nodeModuleImport = require('@node-sass/node-module-importer');
 const recursive = require('./tools/css-generator/recursive-readdir');
+const magicImporter = require('node-sass-magic-importer');
+
 
 // Linting things
 const postcss     = require('gulp-postcss');
@@ -62,10 +64,6 @@ const componentPath = path.resolve(__dirname, 'components' );
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 
-// Design Tokens
-const theoG = require('gulp-theo')
-const theo = require('theo')
-
 
 // -----------------------------------------------------------------------------
 // Sass and CSS Tasks
@@ -73,6 +71,7 @@ const theo = require('theo')
 
 gulp.task('css', function() {
   const sassOpts = {
+    importer: magicImporter(),
     // Import sass files
     // We'll check to see if the file exists before passing
     // it to sass for compilation
@@ -111,6 +110,9 @@ gulp.task('css', function() {
       path.resolve(__dirname, 'components'),
       path.resolve(__dirname, 'components/vf-form'),
       path.resolve(__dirname, 'components/vf-core-components'),
+      path.resolve(__dirname, 'components/vf-design-tokens/dist/sass'),
+      path.resolve(__dirname, 'components/vf-design-tokens/dist/sass/custom-properties'),
+      path.resolve(__dirname, 'components/vf-design-tokens/dist/sass/maps'),
       path.resolve(__dirname, 'node_modules'),
     ]
   };
@@ -263,129 +265,6 @@ gulp.task('svg', () => {
 });
 
 // -----------------------------------------------------------------------------
-// Design Token Tasks
-// -----------------------------------------------------------------------------
-
-const theoGeneratedFileWarning = `// This file has been dynamically generated from design tokens
-// Please do NOT edit directly.`;
-const theoSourceTokenLocation = `// Source: {{relative "${ componentPath }" meta.file}}`;
-
-const theoGeneratedPropertiesTemplate = `${theoGeneratedFileWarning}
-
-${theoSourceTokenLocation}
-
-:root {
-  {{#each props as |prop|}}
-  {{#if prop.comment}}
-  {{{trimLeft (indent (comment (trim prop.comment)))}}}
-  {{/if}}
-  --{{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
-{{/each}}
-}
-`;
-
-const theoGeneratedMapTemplate = `${theoGeneratedFileWarning}
-
-${theoSourceTokenLocation}
-
-\${{stem meta.file}}-map: (
-{{#each props as |prop|}}
-  {{#if prop.comment}}
-  {{{trimLeft (indent (comment (trim prop.comment)))}}}
-  {{/if}}
-  '{{kebabcase prop.name}}': ({{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}}),
-{{/each}}
-);
-`;
-
-const theoGeneratedSassTemplate = `${theoGeneratedFileWarning}
-
-${theoSourceTokenLocation}
-
-{{#each props as |prop|}}
-{{#if prop.comment}}
-{{{trimLeft (indent (comment (trim prop.comment)))}}}
-{{/if}}
-\${{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
-{{/each}}
-`;
-
-// Register design tokens to be processed by Theo
-
-gulp.task('tokens:typographic-scale', () =>
-  gulp.src('./components/vf-design-tokens/typographic-scales/*.yml')
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'typography-map' }
-    }))
-    .pipe(rename(function (path) {
-      path.extname = ".scss";
-    }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
-);
-
-gulp.task('tokens:variables', () =>
-  gulp.src('./components/vf-design-tokens/variables/*.yml')
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'variables.scss' }
-    }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
-);
-
-gulp.task('tokens:maps', () =>
-  gulp.src(['./components/vf-design-tokens/maps/*.yml', '!./components/vf-design-tokens/typographic-scales/*.yml'])
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'map.scss' }
-    }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
-);
-
-gulp.task('tokens:props', () =>
-  gulp.src(['./components/vf-design-tokens/maps/*.yml'])
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'custom-properties.scss' }
-    }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
-);
-
-// Register output format for token types
-theo.registerFormat( "variables.scss",`${theoGeneratedSassTemplate}`);
-theo.registerFormat( "map.scss",`${theoGeneratedMapTemplate}`);
-theo.registerFormat( "custom-properties.scss",`${theoGeneratedPropertiesTemplate}`);
-
-// The Theo typography token processor is a bit more complex
-// and uses a custom format as a function
-theo.registerFormat("typography-map", result => {
-  let { category, type } = result
-    .get("props")
-    .first()
-    .toJS();
-  return `${theoGeneratedFileWarning}
-// Source: ${path.basename(result.getIn(["meta", "file"]))}
-
-$vf-${category}--${type}: (
-${result
-  .get("props")
-  .map(
-  prop => `
-  '${prop.get("name")}': (
-    'font-size': ${prop.getIn(["value", "font-size"])},
-    'font-weight': ${prop.getIn(["value", "font-weight"])},
-    'line-height': ${prop.getIn(["value", "line-height"])}
-  ),`
-  )
-  .sort()
-  .join("\n")}
-
-);
-  `;
-});
-
-
-// -----------------------------------------------------------------------------
 // Fractal Tasks
 // -----------------------------------------------------------------------------
 
@@ -503,13 +382,10 @@ gulp.task('dev', gulp.series(
   'component-assets', ['css', 'scripts'], 'frctlStart', 'watch'
 ));
 
-gulp.task('tokens', gulp.parallel(
-  'tokens:variables', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
-));
 
 // Build as a static site for CI
 gulp.task('build', gulp.series(
-  'tokens', 'scss-lint', 'CSSGen', 'css', 'component-assets', 'scripts', 'frctlBuild'
+  'scss-lint', 'css', 'component-assets', 'scripts', 'frctlBuild'
 ));
 
 gulp.task('prepush-test', gulp.parallel(
