@@ -366,7 +366,6 @@ gulp.task('vf-testdone', function(done) {
 // Default Tasks
 // -----------------------------------------------------------------------------
 
-
 gulp.task('vf-scripts', gulp.series(
   'vf-scripts:es5', 'vf-scripts:modern'
 ));
