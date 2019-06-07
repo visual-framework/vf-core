@@ -138,13 +138,11 @@ ${result
   .join("\n")}
 
 );
-{{#if prop.comment}}
-{{{trimLeft (indent (comment (trim prop.comment)))}}}
   `;
 });
 
 
 
 gulp.task('vf-tokens', gulp.parallel(
-  'tokens:variables', 'tokens:json', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
+  'tokens:variables', 'tokens:js', 'tokens:json', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
 ));
