@@ -1,2 +1,7 @@
-# vf-tokens
+# vf-design-tokens
+
 These are the colour, typography, spacing, and other stylistic decisions as design tokens for consumption
+
+## Building
+
+To update these run `gulp vf-tokens` from the `vf-design-tokens` folder.
