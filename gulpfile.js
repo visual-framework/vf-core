@@ -38,8 +38,6 @@ const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const nodeModuleImport = require('@node-sass/node-module-importer');
 const recursive = require('./tools/css-generator/recursive-readdir');
-const magicImporter = require('node-sass-magic-importer');
-
 
 // Linting things
 const postcss     = require('gulp-postcss');
@@ -78,15 +76,14 @@ const sassPaths = [
   componentPath + '/vf-core-components/vf-sass-config/variables',
   componentPath + '/vf-core-components/vf-sass-config/functions',
   componentPath + '/vf-core-components/vf-sass-config/mixins',
-  componentPath + '/vf-design-tokens/dist/sass'),
-  componentPath + '/vf-design-tokens/dist/sass/custom-properties'),
-  componentPath + '/vf-design-tokens/dist/sass/maps'),
+  componentPath + '/vf-design-tokens/dist/sass',
+  componentPath + '/vf-design-tokens/dist/sass/custom-properties',
+  componentPath + '/vf-design-tokens/dist/sass/maps',
   path.resolve(__dirname, 'node_modules'),
 ];
 
 gulp.task('vf-css', function() {
   const sassOpts = {
-    importer: magicImporter(),
     // Import sass files
     // We'll check to see if the file exists before passing
     // it to sass for compilation
@@ -380,8 +377,8 @@ gulp.task('vf-dev', gulp.series(
 
 
 // Build as a static site for CI
-gulp.task('build', gulp.series(
-  'scss-lint', 'css', 'component-assets', 'scripts', 'frctlBuild'
+gulp.task('vf-build', gulp.series(
+  'vf-scss-lint', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
 ));
 
 gulp.task('vf-prepush-test', gulp.parallel(
