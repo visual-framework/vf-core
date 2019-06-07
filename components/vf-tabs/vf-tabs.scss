@@ -4,11 +4,9 @@ $vf-tabs__link-background--color: set-color(vf-color--grey-bright) !default;
 $vf-tabs__link-background--hover: set-color(vf-color--grey-dark) !default;
 $vf-tabs__list-border--color: set-color(vf-color--black) !default;
 
-$vf-tabs__link--is-active: (
-  $vf-tabs__link-text--color: set-color(vf-color--black),
-  $vf-tabs__link-background--color: set-color(vf-color--white),
-  $vf-tabs__list-border--color: set-color(vf-color--white),
-);
+$vf-tabs__link--active-text--color: set-color(vf-color--black);
+$vf-tabs__link--active-background--color: set-color(vf-color--white);
+$vf-tabs__list--active-border--color: set-color(vf-color--white);
 
 .vf-tabs__list {
   border-bottom: 1px solid $vf-tabs__list-border--color;
@@ -40,9 +38,9 @@ $vf-tabs__link--is-active: (
 }
 
 .vf-tabs__link.is-active {
-  background: map-get( $vf-tabs__link--is-active, $vf-tabs__link-background--color );
-  border-color: $vf-tabs__list-border--color $vf-tabs__list-border--color map-get($vf-tabs__link--is-active, $vf-tabs__list-border--color) $vf-tabs__list-border--color;
-  color: map-get($vf-tabs__link--is-active, $vf-tabs__link-text--color);
+  background: $vf-tabs__link--active-background--color;
+  border-bottom-color: $vf-tabs__list--active-border--color;
+  color: $vf-tabs__link--active-text--color;
 }
 
 .vf-tabs__section {
