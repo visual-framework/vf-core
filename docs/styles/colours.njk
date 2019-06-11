@@ -125,17 +125,17 @@ return hexToRGB(hex);
     {% if item.meta.sassVariable %}
       <p class="vf-swatch__sass-variable">
         <span class="vf-swatch__meta">Sass Variable: </span>
-        ${{- item.meta.sassVariable }}
+        $`{{- item.meta.sassVariable }}`
       </p>
       <p class="vf-swatch__sass-variable">
         <span class="vf-swatch__meta">Sass Map: </span>
-        map-get($vf-colors-map, {{ item.meta.sassVariable }})
+        map-get($vf-colors-map, `{{ item.meta.sassVariable }})`
       </p>
     {% endif %}
     {% if item.meta.CSSCustomProperty %}
       <p class="vf-swatch__css-property">
         <span class="vf-swatch__meta">CSS Custom Property: </span>
-        {{ item.meta.CSSCustomProperty }}
+        `{{ item.meta.CSSCustomProperty }}`
       </p>
     {% endif %}
     {% if item.meta.comment %}
