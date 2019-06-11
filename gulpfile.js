@@ -250,7 +250,7 @@ gulp.task('vf-scripts:modern', function() {
 // -----------------------------------------------------------------------------
 gulp.task('vf-component-assets', function() {
   return gulp
-    .src([componentPath + '/**/assets/**/*', componentPath + '/vf-core-components/**/assets/**/*'])
+    .src([componentPath + '/vf-core-components/**/assets/**/*', componentPath + '/**/assets/**/*'])
     .pipe(gulp.dest('./temp/build-files/assets'));
 });
 
