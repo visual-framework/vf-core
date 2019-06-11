@@ -5,7 +5,6 @@ const path = require('path');
 const theoG = require('gulp-theo');
 const rename = require('gulp-rename');
 const theo = require('theo');
-
 const componentPath = path.resolve(__dirname, 'src' );
 
 // -----------------------------------------------------------------------------
@@ -97,6 +96,15 @@ gulp.task('tokens:json', () =>
     .pipe(gulp.dest('./dist/json'))
 );
 
+gulp.task('tokens2:json', () =>
+  gulp.src(['./src/typographic-scales/*.yml'])
+    .pipe(theoG({
+      transform: { type: 'web', includeMeta: true },
+      format: { type: 'typography-map-json' }
+    }))
+    .pipe(gulp.dest('./dist/json'))
+);
+
 gulp.task('tokens:props', () =>
   gulp.src(['./src/maps/*.yml'])
     .pipe(theoG({
@@ -128,9 +136,9 @@ ${result
   .map(
   prop => `
   '${prop.get("name")}': (
-    'font-size': ${prop.getIn(["value", "font-size"])},
-    'font-weight': ${prop.getIn(["value", "font-weight"])},
-    'line-height': ${prop.getIn(["value", "line-height"])}
+    'font-size': ${prop.getIn(["value", "fontSize"])},
+    'font-weight': ${prop.getIn(["value", "fontWeight"])},
+    'line-height': ${prop.getIn(["value", "lineHeight"])}
   ),`
   )
   .sort()
@@ -138,6 +146,7 @@ ${result
 );
   `;
 });
+
 
 
 
