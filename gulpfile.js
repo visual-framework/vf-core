@@ -62,10 +62,6 @@ const includePaths = require('rollup-plugin-includepaths');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 
-// Design Tokens
-const theoG = require('gulp-theo')
-const theo = require('theo')
-
 
 // -----------------------------------------------------------------------------
 // Sass and CSS Tasks
@@ -81,6 +77,9 @@ const sassPaths = [
   componentPath + '/vf-core-components/vf-sass-config/variables',
   componentPath + '/vf-core-components/vf-sass-config/functions',
   componentPath + '/vf-core-components/vf-sass-config/mixins',
+  componentPath + '/vf-design-tokens/dist/sass',
+  componentPath + '/vf-design-tokens/dist/sass/custom-properties',
+  componentPath + '/vf-design-tokens/dist/sass/maps',
   path.resolve(__dirname, 'node_modules'),
 ];
 
@@ -267,129 +266,6 @@ gulp.task('svg', () => {
 });
 
 // -----------------------------------------------------------------------------
-// Design Token Tasks
-// -----------------------------------------------------------------------------
-
-const theoGeneratedFileWarning = `// This file has been dynamically generated from design tokens
-// Please do NOT edit directly.`;
-const theoSourceTokenLocation = `// Source: {{relative "${ componentPath }" meta.file}}`;
-
-const theoGeneratedPropertiesTemplate = `${theoGeneratedFileWarning}
-
-${theoSourceTokenLocation}
-
-:root {
-  {{#each props as |prop|}}
-  {{#if prop.comment}}
-  {{{trimLeft (indent (comment (trim prop.comment)))}}}
-  {{/if}}
-  --{{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
-{{/each}}
-}
-`;
-
-const theoGeneratedMapTemplate = `${theoGeneratedFileWarning}
-
-${theoSourceTokenLocation}
-
-\${{stem meta.file}}-map: (
-{{#each props as |prop|}}
-  {{#if prop.comment}}
-  {{{trimLeft (indent (comment (trim prop.comment)))}}}
-  {{/if}}
-  '{{kebabcase prop.name}}': ({{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}}),
-{{/each}}
-);
-`;
-
-const theoGeneratedSassTemplate = `${theoGeneratedFileWarning}
-
-${theoSourceTokenLocation}
-
-{{#each props as |prop|}}
-{{#if prop.comment}}
-{{{trimLeft (indent (comment (trim prop.comment)))}}}
-{{/if}}
-\${{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
-{{/each}}
-`;
-
-// Register design tokens to be processed by Theo
-
-gulp.task('vf-tokens:typographic-scale', () =>
-  gulp.src(componentPath + '/vf-design-tokens/typographic-scales/*.yml')
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'typography-map' }
-    }))
-    .pipe(rename(function (path) {
-      path.extname = ".scss";
-    }))
-    .pipe(gulp.dest(componentPath + '/vf-sass-config/variables'))
-);
-
-gulp.task('vf-tokens:variables', () =>
-  gulp.src(componentPath + '/vf-design-tokens/variables/*.yml')
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'variables.scss' }
-    }))
-    .pipe(gulp.dest(componentPath + '/vf-sass-config/variables'))
-);
-
-gulp.task('vf-tokens:maps', () =>
-  gulp.src([componentPath + '/vf-design-tokens/maps/*.yml', '!'+componentPath + '/vf-design-tokens/typographic-scales/*.yml'])
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'map.scss' }
-    }))
-    .pipe(gulp.dest(componentPath + '/vf-sass-config/variables'))
-);
-
-gulp.task('vf-tokens:props', () =>
-  gulp.src([componentPath + '/vf-design-tokens/maps/*.yml'])
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'custom-properties.scss' }
-    }))
-    .pipe(gulp.dest(componentPath + '/vf-sass-config/variables'))
-);
-
-// Register output format for token types
-theo.registerFormat( 'variables.scss',`${theoGeneratedSassTemplate}`);
-theo.registerFormat( 'map.scss',`${theoGeneratedMapTemplate}`);
-theo.registerFormat( 'custom-properties.scss',`${theoGeneratedPropertiesTemplate}`);
-
-// The Theo typography token processor is a bit more complex
-// and uses a custom format as a function
-theo.registerFormat('typography-map', result => {
-  let { category, type } = result
-    .get('props')
-    .first()
-    .toJS();
-  return `${theoGeneratedFileWarning}
-// Source: ${path.basename(result.getIn(['meta', 'file']))}
-
-$vf-${category}--${type}: (
-${result
-  .get('props')
-  .map(
-  prop => `
-  '${prop.get("name")}': (
-    'font-size': ${prop.getIn(["value", "font-size"])},
-    'font-weight': ${prop.getIn(["value", "font-weight"])},
-    'line-height': ${prop.getIn(["value", "line-height"])}
-  ),`
-  )
-  .sort()
-  .join('\n')}
-
-);
-  `;
-});
-
-
-// -----------------------------------------------------------------------------
 // Fractal Tasks
 // -----------------------------------------------------------------------------
 
@@ -499,7 +375,6 @@ gulp.task('vf-clean', function(){
 // Default Tasks
 // -----------------------------------------------------------------------------
 
-
 gulp.task('vf-scripts', gulp.series(
   'vf-scripts:es5', 'vf-scripts:modern'
 ));
@@ -508,13 +383,10 @@ gulp.task('vf-dev', gulp.series(
   'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', 'vf-watch'
 ));
 
-gulp.task('vf-tokens', gulp.parallel(
-  'vf-tokens:variables', 'vf-tokens:typographic-scale', 'vf-tokens:maps', 'vf-tokens:props'
-));
 
 // Build as a static site for CI
 gulp.task('vf-build', gulp.series(
-  'vf-clean', 'vf-tokens', 'vf-scss-lint', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
+  'vf-clean', 'vf-scss-lint', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
 ));
 
 gulp.task('vf-prepush-test', gulp.parallel(

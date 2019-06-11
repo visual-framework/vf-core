@@ -6,13 +6,13 @@
 
 ### Background Colours
 
-By default, the background colour for the masthead is `vf-color-green`. To make this more adaptable for other teams and organisation the Visual Framework uses CSS Custom Properties in order to be able to switch this colour to something more in-keeping with the team wanting to use this component.
+By default, the background colour for the masthead is `vf-color--green`. To make this more adaptable for other teams and organisation the Visual Framework uses CSS Custom Properties in order to be able to switch this colour to something more in-keeping with the team wanting to use this component.
 
 The colour values are stored in two CSS custom properties. One for the background colour itself and the other for the text colour.
 
 ```css
-  --vf-masthead__color--foreround-default: var(--vf-color-white);
-  --vf-masthead__color--background-default: var(--vf-color-green);
+  --vf-masthead__color--foreround-default: var(--vf-color--white);
+  --vf-masthead__color--background-default: var(--vf-color--green);
 ```
 
 This is set in the components Sass partial but is used in the components HTML inline.
