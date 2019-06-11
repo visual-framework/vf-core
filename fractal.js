@@ -87,7 +87,7 @@ module.exports = {
     fractal.web.set('builder.dest', vfBuilderPath);
 
     /* configure web */
-    var vfStaticPath = global.vfStaticPath || __dirname + '/public';
+    var vfStaticPath = global.vfStaticPath || __dirname + '/temp/build-files';
     fractal.web.set('static.path', vfStaticPath);
     fractal.web.set('server.sync', true);
     var vfOpenBrowser = typeof global.vfOpenBrowser === "undefined" ? true : global.vfOpenBrowser;
