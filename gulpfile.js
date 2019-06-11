@@ -15,7 +15,7 @@ global.vfThemePath = './tools/vf-frctl-theme';
 const path = require('path');
 const componentPath = path.resolve(__dirname, 'components' );
 const SassInput = componentPath + '/vf-componenet-rollup/index.scss';
-const SassOutput = './build/css';
+const SassOutput = './public/css';
 
 // -----------------------------------------------------------------------------
 // Dependencies
