@@ -15,7 +15,7 @@ global.vfThemePath = './tools/vf-frctl-theme';
 const path = require('path');
 const componentPath = path.resolve(__dirname, 'components' );
 const SassInput = componentPath + '/vf-componenet-rollup/index.scss';
-const SassOutput = './public/css';
+const SassOutput = './temp/build-files/css';
 
 // -----------------------------------------------------------------------------
 // Dependencies
@@ -30,6 +30,7 @@ const ListStream = require('list-stream');
 const connect = require('gulp-connect');
 const glob = require('glob');
 const replace = require('gulp-replace');
+const del = require('del');
 
 // Sass and CSS Stuff
 const sass = require('gulp-sass');
@@ -232,7 +233,7 @@ gulp.task('vf-scripts:es5', function() {
     }))
     // inlining the sourcemap into the exported .js file
     // .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./public/scripts'));
+    .pipe(gulp.dest('./temp/build-files/scripts'));
 });
 
 
@@ -242,7 +243,7 @@ gulp.task('vf-scripts:modern', function() {
       .pipe(rename(function (path) {
         path.extname = '.modern.js';
       }))
-    .pipe(gulp.dest('./public/scripts'));
+    .pipe(gulp.dest('./temp/build-files/scripts'));
 });
 
 // -----------------------------------------------------------------------------
@@ -251,7 +252,7 @@ gulp.task('vf-scripts:modern', function() {
 gulp.task('vf-component-assets', function() {
   return gulp
     .src([componentPath + '/**/assets/**/*', componentPath + '/vf-core-components/**/assets/**/*'])
-    .pipe(gulp.dest('./public/assets'));
+    .pipe(gulp.dest('./temp/build-files/assets'));
 });
 
 
@@ -403,9 +404,9 @@ gulp.task('frctlBuild', function(done) {
   const fractal = require('./fractal.js').initialize('build',fractalReadyCallback);
   function fractalReadyCallback() {
     // Copy compiled css/js and other assets
-    gulp.src('./public/**/*')
+    gulp.src('./temp/build-files/**/*')
       .pipe(gulp.dest('./build'));
-      console.info('Copied `/public` assets.');
+      console.info('Copied `/temp/build-files` assets.');
 
     done();
   }
@@ -415,9 +416,9 @@ gulp.task('frctlVRT', function(done) {
   const fractal = require('./fractal.js').initialize('VRT',fractalReadyCallback);
   function fractalReadyCallback() {
     // Copy compiled css/js and other assets
-    gulp.src('./public/**/*')
+    gulp.src('./temp/build-files/**/*')
       .pipe(gulp.dest('./build'));
-      console.info('Copied `/public` assets.');
+      console.info('Copied `/temp/build-files` assets.');
 
     done();
   }
@@ -487,6 +488,14 @@ gulp.task('vf-testdone', function(done) {
 });
 
 // -----------------------------------------------------------------------------
+// Cleanup Tasks
+// -----------------------------------------------------------------------------
+
+gulp.task('vf-clean', function(){
+  return del(['build/**','temp/**'], {force:true});
+});
+
+// -----------------------------------------------------------------------------
 // Default Tasks
 // -----------------------------------------------------------------------------
 
@@ -496,7 +505,7 @@ gulp.task('vf-scripts', gulp.series(
 ));
 
 gulp.task('vf-dev', gulp.series(
-  'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', 'vf-watch'
+  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', 'vf-watch'
 ));
 
 gulp.task('vf-tokens', gulp.parallel(
@@ -505,7 +514,7 @@ gulp.task('vf-tokens', gulp.parallel(
 
 // Build as a static site for CI
 gulp.task('vf-build', gulp.series(
-  'vf-tokens', 'vf-scss-lint', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
+  'vf-clean', 'vf-tokens', 'vf-scss-lint', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
 ));
 
 gulp.task('vf-prepush-test', gulp.parallel(
