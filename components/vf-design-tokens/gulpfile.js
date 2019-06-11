@@ -115,17 +115,16 @@ theo.registerFormat( "custom-properties.scss",`${theoGeneratedPropertiesTemplate
 
 // The Theo typography token processor is a bit more complex
 // and uses a custom format as a function
-theo.registerFormat("typography-map", result => {
+theo.registerFormat('typography-map', result => {
   let { category, type } = result
-    .get("props")
+    .get('props')
     .first()
     .toJS();
   return `${theoGeneratedFileWarning}
-// Source: ${path.basename(result.getIn(["meta", "file"]))}
-
+// Source: ${path.basename(result.getIn(['meta', 'file']))}
 $vf-${category}--${type}: (
 ${result
-  .get("props")
+  .get('props')
   .map(
   prop => `
   '${prop.get("name")}': (
@@ -135,11 +134,8 @@ ${result
   ),`
   )
   .sort()
-  .join("\n")}
-
+  .join('\n')}
 );
-{{#if prop.comment}}
-{{{trimLeft (indent (comment (trim prop.comment)))}}}
   `;
 });
 

@@ -1,0 +1,121 @@
+---
+title: Colours
+---
+<script>
+/**
+* Converts a hex color to RBG
+*
+* @param {String} text
+*/
+
+module.exports = function(text) {
+function hexToRGB(hex) {
+    var r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+    return "rgb(" + r + ", " + g + ", " + b + ")";
+}
+
+var hex = new String(text);
+
+return hexToRGB(hex);
+};
+
+// config.addFilter("hextorgb", require("./src/filters/hextorgb.js") );
+
+</script>
+
+
+<style>
+.swatches {
+  grid-row-gap: 32px;
+  margin: 48px 0;
+}
+.swatch {
+  border: 2px solid #333;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+
+.swatch__details {
+  padding: 16px;
+}
+.swatch:nth-of-type(6),
+.swatch:nth-of-type(11) {
+  grid-column-start: 1;
+}
+.swatch__colour {
+  border-right: 2px solid #333;
+  height: 100%;
+  width: 100%;
+}
+.swatch__colour-name {
+  margin: 0 0 12px 0;
+}
+
+.swatch__colour-hex,
+.swatch__sass-variable,
+.swatch__comment,
+.swatch__css-property {
+  margin: 0 0 12px 0;
+}
+
+.swatch__colour-hex,
+.swatch__sass-variable,
+.swatch__css-property {
+  font-family: monospace;
+  font-size: 1em;
+  align-items: start;
+}
+
+.swatch__colour-hex,
+.swatch__sass-variable,
+.swatch__css-property {
+  font-family: 'IBM Plex Mono', Monaco, Consolas, 'Lucida Console', monospace;
+}
+.swatch__notes {
+  margin: 12px 0 0px 0;
+}
+.swatch__notes,
+.swatch__colour-name,
+.swatch__meta {
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+}
+.swatch__meta {
+  display: block;
+  margin-bottom: 4px;
+}
+.swatch__css-property {
+  margin-bottom: 0;
+}
+</style>
+
+<main class="swatches | vf-grid vf-grid__col-3">
+{% for item in colors.properties %}
+
+<article class="swatch">
+  <div class="swatch__colour" style="background-color: {{ item.value}};"></div>
+  <section class="swatch__details">
+  <h3 class="swatch__colour-name">{{ item.meta.friendlyName }}</h3>
+  <p class="swatch__colour-hex"><span class="swatch__meta">Hex: </span>{{ item.value }}</p>
+  <p class="swatch__colour-hex"><span class="swatch__meta">RGB: </span> {{ item.value | hextorgb }}</p>
+  {% if item.meta.sassVariable %}
+  <p class="swatch__sass-variable"><span class="swatch__meta">Sass Variable: </span>${{- item.meta.sassVariable }}</p>
+  <p class="swatch__sass-variable"><span class="swatch__meta">Sass Map: </span>map-get($vf-colors-map, {{ item.meta.sassVariable }})</p>
+  {% endif %}
+  {% if item.meta.CSSCustomProperty %}
+  <p class="swatch__css-property"><span class="swatch__meta">CSS Custom Property: </span>{{ item.meta.CSSCustomProperty }}</p>
+  {% endif %}
+  {% if item.meta.comment %}
+  <h4 class="swatch__notes">notes:</h4>
+  <p class="swatch__comment">{{ item.meta.comment }}</p>
+  {% endif %}
+  </section>
+</article>
+
+{% else %}
+
+<p>bugger</p>
+
+{% endfor %}
+</main>
