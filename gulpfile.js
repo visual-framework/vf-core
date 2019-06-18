@@ -183,7 +183,7 @@ gulp.task('vf-scss-lint', function lintCssTask() {
 
   return gulp
     .src(
-      [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss']
+      [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss', '!'+componentPath+'/vf-design-tokens/dist/**/*.scss']
     )
     .pipe(gulpStylelint({
       failAfterError: true,
@@ -236,7 +236,7 @@ gulp.task('vf-scripts:es5', function() {
     }))
     // inlining the sourcemap into the exported .js file
     // .pipe(sourcemaps.write())
-    .pipe(gulp.dest(buildDestionation + buildDestionation + '/scripts'));
+    .pipe(gulp.dest(buildDestionation + '/scripts'));
 });
 
 
