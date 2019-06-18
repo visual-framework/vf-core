@@ -6,18 +6,26 @@ const fs = require('fs');
 // Configuration
 // -----------------------------------------------------------------------------
 
-// Pull in some optional configuration from the package.json file
+// Pull in some optional configuration from the package.json file, a la:
+// "vfConfig": {
+//   "vfName": "My Component Library",
+//   "vfNameSpace": "myco-",
+//   "vfComponentPath": "./src/components",
+//   "vfBuildDestination": "./build",
+//   "vfThemePath": "@frctl/mandelbrot"
+// },
+// all settings are optional
 const config = JSON.parse(fs.readFileSync('./package.json'));
 config.vfConfig = config.vfConfig || [];
 global.vfName = config.vfConfig.vfName || "Visual Framework 2.0";
 global.vfNamespace = config.vfConfig.vfNamespace || "vf-";
 global.vfComponentPath = config.vfConfig.vfComponentPath || __dirname + '/components';
 global.vfBuildDestination = config.vfConfig.vfBuildDestination || __dirname + '/temp/build-files';
-global.vfThemePath = './tools/vf-frctl-theme';
+global.vfThemePath = config.vfConfig.vfThemePath || './tools/vf-frctl-theme';
 const autoprefixerOptions = { overrideBrowserslist: ['last 2 versions', '> 5%', 'Firefox ESR'] };
 const path = require('path');
-const componentPath = global.vfComponentPath;
-const buildDestionation = global.vfBuildDestination;
+const componentPath = path.resolve('.', global.vfComponentPath);
+const buildDestionation = path.resolve('.', global.vfBuildDestination);
 const SassInput = componentPath + '/vf-componenet-rollup/index.scss';
 const SassOutput = buildDestionation + '/css';
 
