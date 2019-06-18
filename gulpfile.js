@@ -183,7 +183,7 @@ gulp.task('vf-scss-lint', function lintCssTask() {
 
   return gulp
     .src(
-      [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss']
+      [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss', '!'+componentPath+'/vf-design-tokens/dist/**/*.scss']
     )
     .pipe(gulpStylelint({
       failAfterError: true,
