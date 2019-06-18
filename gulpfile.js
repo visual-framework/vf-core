@@ -6,7 +6,15 @@ const fs = require('fs');
 // Configuration
 // -----------------------------------------------------------------------------
 
-// Pull in some optional configuration from the package.json file
+// Pull in some optional configuration from the package.json file, a la:
+// "vfConfig": {
+//   "vfName": "My Component Library",
+//   "vfNameSpace": "myco-",
+//   "vfComponentPath": "./src/components",
+//   "vfBuildDestination": "./build",
+//   "vfThemePath": "@frctl/mandelbrot"
+// },
+// all settings are optional
 const config = JSON.parse(fs.readFileSync('./package.json'));
 config.vfConfig = config.vfConfig || [];
 global.vfName = config.vfConfig.vfName || "Visual Framework 2.0";
