@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="vf-no-js">
+<head>
+  <script>
+// Detect if JS is on and swap vf-no-js for vf-js on the html element
+(function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
+</script>
+
+  <title>Colours component | Visual Framework 2.0</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png">
+<link rel="manifest" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest">
+<link rel="mask-icon" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+  
+  
+  <script>
+  window.frctl = {
+    env: 'static'
+  };
+  </script>
+  
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css?cachebust=0.0.1" type="text/css">
+
+
+<link rel="stylesheet" href="../../themes/vf-frctl-theme/css/default.css?cachebust=0.0.1" type="text/css">
+
+
+</head>
+<body>
+
+
+<header class="vf-header">
+  <div class="vf-global-header">
+    <div class="vf-global-header__inner">
+      <a href="http://www.embl.de"
+
+class="vf-logo--responsive">
+  <span class="vf-sr-only">Visual Framework 2.0</span>
+</a>
+
+      <p class="vf-global-header__site-name">Visual Framework 2.0</p>
+    </div>
+  </div>
+</header>
+
+
+<section class="Frame-body" data-role="body">
+<!--
+embl-grid embl-grid--has-sidebar
+-->
+  
+
+<div class="Document vf-body">
+  <div class="vf-grid vf-grid__col-1">
+
+    <div class="vf-content">
+
+      <div class="Document-header">
+          
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Colours</h1>
+          
+
+
+          
+      </div>
+
+      
+
+<div class="component-library-notes">
+
+
+
+
+    
+    
+    <script>
+/**
+* Converts a hex color to RBG
+*
+* @param {String} text
+*/
+
+module.exports = function(text) {
+function hexToRGB(hex) {
+    var r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+    return "rgb(" + r + ", " + g + ", " + b + ")";
+}
+
+var hex = new String(text);
+
+return hexToRGB(hex);
+};
+
+// config.addFilter("hextorgb", require("./src/filters/hextorgb.js") );
+
+</script>
+
+
+<style>
+.vf-swatches {
+  grid-row-gap: 32px;
+  margin: 48px 0;
+}
+.vf-swatch {
+  border: 1px solid #d0d0ce;
+  display: grid;
+  grid-template-rows: 160px 1fr;
+}
+
+.vf-swatch__details {
+  padding: 16px;
+  border-top: 1px solid #d0d0ce;
+}
+.vf-swatch:nth-of-type(6),
+.vf-swatch:nth-of-type(11) {
+  grid-column-start: 1;
+}
+.vf-swatch__colour {
+  /* margin: 16px;
+  height: calc(100% - 32px);
+  width: calc(100% - 32px); */
+  height: 100%;
+  width: 100%;
+}
+.vf-swatch__colour-name {
+  margin: 0 0 12px 0;
+}
+
+.vf-swatch__colour-hex,
+.vf-swatch__sass-variable,
+.vf-swatch__comment,
+.vf-swatch__css-property {
+  margin: 0 0 12px 0;
+}
+
+.vf-swatch__colour-hex,
+.vf-swatch__sass-variable,
+.vf-swatch__css-property {
+  font-family: monospace;
+  font-size: 1em;
+  align-items: start;
+}
+
+.vf-swatch__colour-hex,
+.vf-swatch__sass-variable,
+.vf-swatch__css-property {
+  font-family: 'IBM Plex Mono', Monaco, Consolas, 'Lucida Console', monospace;
+  font-size: 14px;
+}
+
+.vf-swatch__notes {
+  margin: 12px 0 0px 0;
+}
+
+.vf-swatch__notes,
+.vf-swatch__colour-name,
+.vf-swatch__meta {
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+}
+.vf-swatch__colour-name {
+  padding: 16px;
+}
+
+.vf-swatch__meta {
+  font-size: 16px;
+}
+
+.vf-swatch__details p {
+  margin-bottom: 16px;
+}
+.vf-swatch__details p:last-of-type {
+  margin-bottom: 0;
+}
+</style>
+
+<main class="vf-swatches | vf-grid vf-grid__col-3">
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #009f4d;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorGreen
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #009f4d
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(0, 159, 77)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--green</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--green)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--green</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #115740;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorGreenDarkest
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #115740
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(17, 87, 64)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--green--darkest</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--green--darkest)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--green--darkest</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #007a53;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorGreenDark
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #007a53
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(0, 122, 83)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--green--dark</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--green--dark)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--green--dark</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #6cc24a;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorGreenLight
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #6cc24a
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(108, 194, 74)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--green--light</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--green--light)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--green--light</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #d0debb;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorGreenLightest
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #d0debb
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(208, 222, 187)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--green--lightest</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--green--lightest)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--green--lightest</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #707372;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorGrey
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #707372
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(112, 115, 114)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--grey</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--grey)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--grey</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #373a36;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorGreyDarkest
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #373a36
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(55, 58, 54)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--grey--darkest</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--grey--darkest)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--grey--darkest</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #54585a;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorGreyDark
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #54585a
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(84, 88, 90)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--grey--dark</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--grey--dark)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--grey--dark</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #d0d0ce;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorGreyLight
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #d0d0ce
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(208, 208, 206)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--grey--light</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--grey--light)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--grey--light</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #a8a99e;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorGreyLightest
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #a8a99e
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(168, 169, 158)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--grey--lightest</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--grey--lightest)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--grey--lightest</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #e40046;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorRed
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #e40046
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(228, 0, 70)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--red</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--red)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--red</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #a6093d;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorRedDark
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #a6093d
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(166, 9, 61)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--red--dark</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--red--dark)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--red--dark</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #e58f9e;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorRedLight
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #e58f9e
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(229, 143, 158)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--red--light</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--red--light)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--red--light</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #307fe2;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorBlue
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #307fe2
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(48, 127, 226)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--blue</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--blue)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--blue</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #003da5;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorBlueDark
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #003da5
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(0, 61, 165)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--blue--dark</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--blue--dark)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--blue--dark</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #8bb8e8;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorBlueLight
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #8bb8e8
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(139, 184, 232)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--blue--light</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--blue--light)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--blue--light</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #8246af;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorPurple
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #8246af
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(130, 70, 175)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--purple</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--purple)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--purple</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #563d82;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorPurpleDark
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #563d82
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(86, 61, 130)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--purple--dark</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--purple--dark)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--purple--dark</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #cba3d8;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorPurpleLight
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #cba3d8
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(203, 163, 216)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--purple--light</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--purple--light)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--purple--light</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #ffa300;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorOrange
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #ffa300
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(255, 163, 0)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--orange</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--orange)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--orange</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #be5400;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorOrangeDark
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #be5400
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(190, 84, 0)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--orange--dark</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--orange--dark)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--orange--dark</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #efc06e;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorOrangeLight
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #efc06e
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(239, 192, 110)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--orange--light</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--orange--light)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--orange--light</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #ffcd00;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorYellow
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #ffcd00
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(255, 205, 0)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--yellow</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--yellow)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--yellow</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #ffb81c;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorYellowDark
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #ffb81c
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(255, 184, 28)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--yellow--dark</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--yellow--dark)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--yellow--dark</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #fdd757;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorYellowLight
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #fdd757
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(253, 215, 87)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--yellow--light</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--yellow--light)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--yellow--light</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #a8c700;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorBrightGreen
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #a8c700
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(168, 199, 0)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--bright-green</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--bright-green)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--bright-green</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #84bd00;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorBrightGreenDark
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #84bd00
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(132, 189, 0)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--bright-green--dark</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--bright-green--dark)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--bright-green--dark</code>
+      </p>
+  </section>
+</article>
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: #e2e868;">
+    <h3 class="vf-swatch__colour-name">
+      vfColorBrightGreenLight
+    </h3>
+  </div>
+
+  <section class="vf-swatch__details">
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">Hex: </span>
+      #e2e868
+    </p>
+    <p class="vf-swatch__colour-hex">
+      <span class="vf-swatch__meta">RGB: </span>
+      rgb(226, 232, 104)
+    </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Variable: </span>
+        $<code>vf-color--bright-green--light</code>
+      </p>
+      <p class="vf-swatch__sass-variable">
+        <span class="vf-swatch__meta">Sass Map: </span>
+        map-get($vf-colors-map, <code>vf-color--bright-green--light)</code>
+      </p>
+      <p class="vf-swatch__css-property">
+        <span class="vf-swatch__meta">CSS Custom Property: </span>
+        <code>--vf-color--bright-green--light</code>
+      </p>
+  </section>
+</article>
+
+</main>
+
+    
+
+
+</div>
+
+<hr
+
+
+class="vf-divider">
+
+
+
+ <p class="vf-text vf-text--heading-l"></p> 
+
+
+
+
+
+<ul>
+
+
+  
+    
+  
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+    
+  
+    
+  
+
+
+  
+    
+        <li>
+          <a href="">Colours</a>
+          
+          <span class="vf-badge">You are here</span>
+          
+        </li>
+    
+  
+    
+        <li>
+          <a href="spacing.html">Spacing</a>
+          
+        </li>
+    
+  
+    
+        <li>
+          <a href="typography.html">Typography</a>
+          
+        </li>
+    
+  
+
+</ul>
+
+
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+
+<!--<script src="../../themes/vf-frctl-theme/js/vf-frctl-theme.js?cachebust=0.0.1"></script>-->
+
+
+<script src="https://dev.assets.emblstatic.net/vf/develop/scripts/scripts.js?cachebust=0.0.1"></script>
+
+
+<script>
+  var resizeIframeChecks = 0;
+  function resizeIframe(obj) {
+    var obj = obj || document.getElementsByClassName("Preview-iframe")[0];
+    var newHeight = obj.contentWindow.document.body.scrollHeight;
+    if (newHeight < 10) {
+      if (resizeIframeChecks < 2) {
+        // if less than 10px high, that's weird check again. maybe some JS is at play?
+        setTimeout(resizeIframe, 1000);
+        resizeIframeChecks ++;
+      }
+    } else {
+      obj.style.height = newHeight + 'px';
+    }
+  }
+</script>
+
+</body>
+</html>

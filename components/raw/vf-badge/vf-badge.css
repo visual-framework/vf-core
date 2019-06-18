@@ -1,39 +1,40 @@
 :root {
-  --vf-color-white: rgb(255, 255, 255);
-  --vf-color-off-white: rgb(250, 250, 250);
-  --vf-color-black: rgb(40, 45, 35);
-  --vf-color-gray: rgb(112, 115, 114);
-  --vf-color-gray-bright: rgb(185, 179, 168);
-  --vf-color-gray-dark: rgb(84, 88, 90);
-  --vf-color-green: rgb(0, 159, 77);
-  --vf-color-green-bright: rgb(108, 194, 74);
-  --vf-color-green-dark: rgb(0, 123, 83);
-  --vf-color-light-green: rgb(168, 199, 0);
-  --vf-color-light-green-bright: rgb(226, 232, 104);
-  --vf-color-light-green-dark: rgb(132, 189, 0);
-  --vf-color-ruby: rgb(228, 0, 70);
-  --vf-color-ruby-bright: rgb(229, 143, 158);
-  --vf-color-ruby-dark: rgb(166, 9, 61);
-  --vf-color-yellow: rgb(255, 205, 0);
-  --vf-color-yellow-bright: rgb(253, 215, 87);
-  --vf-color-yellow-dark: rgb(255, 184, 28);
-  --vf-color-purple: rgb(130, 70, 175);
-  --vf-color-purple-bright: rgb(203, 163, 216);
-  --vf-color-purple-dark: rgb(86, 61, 130);
-  --vf-color-amber: rgb(255, 163, 0);
-  --vf-color-amber-bright: rgb(190, 84, 0);
-  --vf-color-amber-dark: rgb(239, 192, 110);
-  --vf-color-azure: rgb(40, 122, 226);
-  --vf-color-azure-bright: rgb(139, 184, 232);
-  --vf-color-azure-dark: rgb(0, 61, 165);
+  --vf-color--green: #009f4d;
+  --vf-color--green--darkest: #115740;
+  --vf-color--green--dark: #007a53;
+  --vf-color--green--light: #6cc24a;
+  --vf-color--green--lightest: #d0debb;
+  --vf-color--grey: #707372;
+  --vf-color--grey--darkest: #373a36;
+  --vf-color--grey--dark: #54585a;
+  --vf-color--grey--light: #d0d0ce;
+  --vf-color--grey--lightest: #a8a99e;
+  --vf-color--red: #e40046;
+  --vf-color--red--dark: #a6093d;
+  --vf-color--red--light: #e58f9e;
+  --vf-color--blue: #307fe2;
+  --vf-color--blue--dark: #003da5;
+  --vf-color--blue--light: #8bb8e8;
+  --vf-color--purple: #8246af;
+  --vf-color--purple--dark: #563d82;
+  --vf-color--purple--light: #cba3d8;
+  --vf-color--orange: #ffa300;
+  --vf-color--orange--dark: #be5400;
+  --vf-color--orange--light: #efc06e;
+  --vf-color--yellow: #ffcd00;
+  --vf-color--yellow--dark: #ffb81c;
+  --vf-color--yellow--light: #fdd757;
+  --vf-color--bright-green: #a8c700;
+  --vf-color--bright-green--dark: #84bd00;
+  --vf-color--bright-green--light: #e2e868;
 }
 
 :root {
-  --vf-ui-color-black: rgb(0, 0, 0);
-  --vf-ui-color-gray: rgb(243, 243, 243);
-  --vf-ui-color-gray-light: rgb(216, 216, 216);
-  --vf-ui-color-yellow: rgb(255, 250, 220);
-  --vf-ui-color-red: rgb(211, 47, 47);
+  --vf-ui-color--black: #000000;
+  --vf-ui-color--grey: #f3f3f3;
+  --vf-ui-color--grey--light: #d8d8d8;
+  --vf-ui-color--yellow: #fffadc;
+  --vf-ui-color--red: #d32f2f;
 }
 
 .vf-badge {
@@ -43,8 +44,6 @@
   line-height: 1;
   border: 1px solid currentColor;
   color: inherit;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   letter-spacing: .05em;
   padding: 4px 8px;
@@ -53,7 +52,7 @@
 }
 
 .vf-badge--pill {
-  border-radius: 500px;
+  border-radius: vf-radius--pill;
 }
 
 .vf-badge--rounded {
@@ -70,79 +69,22 @@
 }
 
 .vf-badge--phases {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
+  align-items: center;
   display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin: 0 12px 0 0;
   min-width: 52px;
-}
-
-.vf-badge--primary {
-  background-color: #287ae2;
-  border-color: #287ae2;
-  color: white;
-  color: white;
-}
-
-.vf-badge--primary:visited {
-  color: white;
-}
-
-.vf-badge--primary:hover {
-  color: white;
-}
-
-a.vf-badge--primary:hover {
-  background-color: #003da5;
-  border-color: #003da5;
 }
 
 .vf-badge--secondary {
   background-color: #009f4d;
   border-color: #009f4d;
-  color: white;
-  color: white;
-}
-
-.vf-badge--secondary:visited {
-  color: white;
-}
-
-.vf-badge--secondary:hover {
-  color: white;
-}
-
-.vf-badge--tertiary {
-  background-color: #54585a;
-  border-color: #54585a;
-  color: white;
-  color: white;
-}
-
-.vf-badge--tertiary:visited {
-  color: white;
-}
-
-.vf-badge--tertiary:hover {
-  color: white;
 }
 
 .vf-badge--outline {
   background-color: transparent;
-  color: #287ae2;
-  color: #287ae2;
 }
 
 .vf-badge--outline:visited {
   color: #54585a;
-}
-
-.vf-badge--outline:hover {
-  color: #287ae2;
 }
