@@ -236,7 +236,7 @@ gulp.task('vf-scripts:es5', function() {
     }))
     // inlining the sourcemap into the exported .js file
     // .pipe(sourcemaps.write())
-    .pipe(gulp.dest(buildDestionation + buildDestionation + '/scripts'));
+    .pipe(gulp.dest(buildDestionation + '/scripts'));
 });
 
 
