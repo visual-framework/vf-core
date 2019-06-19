@@ -2,7 +2,7 @@
 @import 'vf-navigation.variables.scss';
 
 .vf-navigation--main {
-  background-color: set-color(vf-color--grey-dark);
+  background-color: set-color(vf-color--grey--dark);
   position: relative;
 
   &::before {
@@ -33,7 +33,7 @@
     margin: 0;
 
     &.is-active {
-      background-color: set-color(vf-color--white);
+      background-color: set-ui-color(vf-ui-color--white);
 
       .vf-navigation__link {
         color: set-color(vf-color--black);
@@ -42,7 +42,7 @@
 
     &:hover {
       align-items: center;
-      background-color: set-color(vf-color--white);
+      background-color: set-ui-color(vf-ui-color--white);
       display: flex;
       height: 100%;
 
@@ -59,14 +59,14 @@
 
   .vf-navigation__link {
     @include inline-link(
-      $vf-link--color: set-color(vf-color--white),
-      $vf-link--hover-color: set-color(vf-color--white)
+      $vf-link--color: set-ui-color(vf-ui-color--white),
+      $vf-link--hover-color: set-ui-color(vf-ui-color--white)
     );
 
     text-decoration: none;
 
     &:visited {
-      color: set-color(vf-color--white);
+      color: set-ui-color(vf-ui-color--white);
     }
   }
 }

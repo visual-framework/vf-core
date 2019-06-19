@@ -176,7 +176,7 @@ embl-grid embl-grid--has-sidebar
 <h3 id="background-colours">Background Colours</h3>
 <p>By default, the background colour for the masthead is <code>vf-color--green</code>. To make this more adaptable for other teams and organisation the Visual Framework uses CSS Custom Properties in order to be able to switch this colour to something more in-keeping with the team wanting to use this component.</p>
 <p>The colour values are stored in two CSS custom properties. One for the background colour itself and the other for the text colour.</p>
-<code class="lang-css"><pre>  <span class="hljs-selector-tag">--vf-masthead__color--foreround-default</span>: <span class="hljs-selector-tag">var</span>(<span class="hljs-selector-tag">--vf-color--white</span>);
+<code class="lang-css"><pre>  <span class="hljs-selector-tag">--vf-masthead__color--foreround-default</span>: <span class="hljs-selector-tag">var</span>(<span class="hljs-selector-tag">--vf-ui-color--white</span>);
   <span class="hljs-selector-tag">--vf-masthead__color--background-default</span>: <span class="hljs-selector-tag">var</span>(<span class="hljs-selector-tag">--vf-color--green</span>);</pre></code><p>This is set in the components Sass partial but is used in the components HTML inline.</p>
 <code class="lang-html"><pre>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"
     background-color: var( --vf-masthead__color--background, var(--vf-masthead__color--background-default) );
@@ -656,6 +656,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">--vf-ui-color--grey--light</span>: <span class="hljs-number">#d8d8d8</span>;
   <span class="hljs-attribute">--vf-ui-color--yellow</span>: <span class="hljs-number">#fffadc</span>;
   <span class="hljs-attribute">--vf-ui-color--red</span>: <span class="hljs-number">#d32f2f</span>;
+  <span class="hljs-attribute">--vf-ui-color--white</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">--vf-ui-color--off-white</span>: <span class="hljs-number">#fafafa</span>;
 }
 
 <span class="hljs-comment">/* stylelint-disable order/order */</span>
@@ -776,12 +778,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">/* stylelint-enable order/order */</span>
 <span class="hljs-selector-class">.vf-masthead</span> {
-  <span class="hljs-attribute">--vf-masthead__color--foreround-default</span>: <span class="hljs-built_in">var</span>(--vf-color--white);
+  <span class="hljs-attribute">--vf-masthead__color--foreround-default</span>: <span class="hljs-built_in">var</span>(--vf-ui-color--white);
   <span class="hljs-attribute">--vf-masthead__color--background-default</span>: <span class="hljs-built_in">var</span>(--vf-color--green);
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#009f4d</span>;
   <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">var</span>(--vf-masthead__bg-image, none);
   <span class="hljs-attribute">background-repeat</span>: no-repeat;
   <span class="hljs-attribute">background-size</span>: cover;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
 }
 
 @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
@@ -837,9 +840,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-masthead__heading__link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">color</span>: inherit;
   <span class="hljs-attribute">text-decoration</span>: none;
   <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
+}
+
+<span class="hljs-selector-class">.vf-masthead__heading__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
+<span class="hljs-selector-class">.vf-masthead__heading__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
 }
 
 <span class="hljs-selector-class">.vf-masthead__subheading</span> {
@@ -848,6 +860,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">500</span>;
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">text-transform</span>: uppercase;
 }
 
@@ -893,6 +906,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-masthead__form__item</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">flex-direction</span>: row;
   <span class="hljs-attribute">flex-wrap</span>: wrap;
@@ -902,12 +916,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-masthead__button</span> {
   <span class="hljs-attribute">align-items</span>: flex-end;
   <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
   <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">12px</span>;
 }
 
 <span class="hljs-selector-class">.vf-masthead__button</span> <span class="hljs-selector-tag">svg</span> {
+  <span class="hljs-attribute">fill</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">16px</span>;
 }
 
@@ -916,7 +932,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">4px</span>;
-  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">3px</span>;
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">3px</span> <span class="hljs-number">#ffffff</span>;
 }
 
 <span class="hljs-selector-class">.vf-masthead__form__input--text</span> {
@@ -928,11 +944,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.search-examples</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
   <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">0px</span> <span class="hljs-number">#000000</span>;
 }
 
 <span class="hljs-selector-class">.search-examples</span> <span class="hljs-selector-tag">a</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">0px</span> <span class="hljs-number">#000000</span>;
 }
 </pre>
@@ -950,7 +968,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-masthead/vf-masthead.css
         </li>
         <li class="vf-list__item">
-          Size: 6.6 KB
+          Size: 7 KB
         </li>
       </ul>
     </section>
@@ -1040,20 +1058,20 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <div class="FileBrowser-itemPreview">
         
         <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-          <pre class="vf-code-example__pre"><span class="hljs-variable">$vf-masthead__title-text--color</span>: set-color(vf-color--white);
+          <pre class="vf-code-example__pre"><span class="hljs-variable">$vf-masthead__title-text--color</span>: set-ui-color(vf-ui-color--white);
 
 <span class="hljs-comment">// vf-masthead</span>
 
 <span class="hljs-selector-class">.vf-masthead</span> {
 
-  --vf-masthead__color--foreround-default: var(--vf-color--white);
+  --vf-masthead__color--foreround-default: var(--vf-ui-color--white);
   --vf-masthead__color--<span class="hljs-attribute">background</span>-default: var(--vf-color--green);
 
   <span class="hljs-attribute">background-color</span>: set-color(vf-color--green);
   <span class="hljs-attribute">background-image</span>: var( --vf-masthead__bg-image, none);
   <span class="hljs-attribute">background-repeat</span>: no-repeat;
   <span class="hljs-attribute">background-size</span>: cover;
-  <span class="hljs-attribute">color</span>: set-color(vf-color--white);
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
 
   @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--l</span>) {
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">48px</span>;
@@ -1159,7 +1177,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-masthead__form__item</span> {
-  <span class="hljs-attribute">color</span>: set-color(vf-color--white);
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">flex-direction</span>: row;
   <span class="hljs-attribute">flex-wrap</span>: wrap;
@@ -1170,13 +1188,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">align-items</span>: flex-end;
   <span class="hljs-attribute">background-color</span>: set-color(vf-color--azure-dark);
   <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">color</span>: set-color(vf-color--white);
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
   <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
   <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">12px</span>;
 
   svg {
-    fill: set-color(vf-color--white);
+    fill: set-ui-color(vf-ui-color--white);
     <span class="hljs-attribute">width</span>: <span class="hljs-number">16px</span>;
   }
 }
@@ -1186,7 +1204,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">4px</span>;
-  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">3px</span> set-color(vf-color--white);
+  <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">3px</span> set-ui-color(vf-ui-color--white);
 }
 
 <span class="hljs-selector-class">.vf-masthead__form__input--text</span> {
@@ -1200,12 +1218,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.search-examples</span> {
   <span class="hljs-comment">// white-space: nowrap;</span>
-  <span class="hljs-attribute">color</span>: set-color(vf-color--white);
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
   <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">0px</span> set-ui-color(vf-ui-color--black);
 
   <span class="hljs-selector-tag">a</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--white);
+    <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
     <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">0px</span> set-ui-color(vf-ui-color--black);
   }
 }

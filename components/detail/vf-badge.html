@@ -595,6 +595,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">--vf-ui-color--grey--light</span>: <span class="hljs-number">#d8d8d8</span>;
   <span class="hljs-attribute">--vf-ui-color--yellow</span>: <span class="hljs-number">#fffadc</span>;
   <span class="hljs-attribute">--vf-ui-color--red</span>: <span class="hljs-number">#d32f2f</span>;
+  <span class="hljs-attribute">--vf-ui-color--white</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">--vf-ui-color--off-white</span>: <span class="hljs-number">#fafafa</span>;
 }
 
 <span class="hljs-selector-class">.vf-badge</span> {
@@ -636,9 +638,47 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">min-width</span>: <span class="hljs-number">52px</span>;
 }
 
+<span class="hljs-selector-class">.vf-badge--primary</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
+<span class="hljs-selector-class">.vf-badge--primary</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
+<span class="hljs-selector-class">.vf-badge--primary</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
 <span class="hljs-selector-class">.vf-badge--secondary</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#009f4d</span>;
   <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#009f4d</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
+<span class="hljs-selector-class">.vf-badge--secondary</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
+<span class="hljs-selector-class">.vf-badge--secondary</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
+<span class="hljs-selector-class">.vf-badge--tertiary</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#54585a</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
+<span class="hljs-selector-class">.vf-badge--tertiary</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
+<span class="hljs-selector-class">.vf-badge--tertiary</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
 }
 
 <span class="hljs-selector-class">.vf-badge--outline</span> {
@@ -663,7 +703,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-badge/vf-badge.css
         </li>
         <li class="vf-list__item">
-          Size: 2 KB
+          Size: 2.6 KB
         </li>
       </ul>
     </section>
@@ -678,7 +718,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-variable">$vf-badge--primary-color--background</span>: set-color(vf-color--azure) !default;
 <span class="hljs-variable">$vf-badge--primary-color--border</span>: set-color(vf-color--azure) !default;
-<span class="hljs-variable">$vf-badge--primary-color--text</span>: set-color(vf-color--white) !default;
+<span class="hljs-variable">$vf-badge--primary-color--text</span>: set-ui-color(vf-ui-color--white) !default;
 <span class="hljs-variable">$vf-badge--primary--hover-color--background</span>: set-color(vf-color--azure-dark) !default;
 <span class="hljs-variable">$vf-badge--primary--hover-color--border</span>: set-color(vf-color--azure-dark) !default;
 
@@ -690,11 +730,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-variable">$vf-badge--secondary-color--background</span>: set-color(vf-color--green) !default;
 <span class="hljs-variable">$vf-badge--secondary-color--border</span>: set-color(vf-color--green) !default;
-<span class="hljs-variable">$vf-badge--secondary-color--text</span>: set-color(vf-color--white) !default;
+<span class="hljs-variable">$vf-badge--secondary-color--text</span>: set-ui-color(vf-ui-color--white) !default;
 
-<span class="hljs-variable">$vf-badge--tertiary-color--background</span>: set-color(vf-color--grey-dark) !default;
-<span class="hljs-variable">$vf-badge--tertiary-color--border</span>: set-color(vf-color--grey-dark) !default;
-<span class="hljs-variable">$vf-badge--tertiary-color--text</span>: set-color(vf-color--white) !default;
+<span class="hljs-variable">$vf-badge--tertiary-color--background</span>: set-color(vf-color--grey--dark) !default;
+<span class="hljs-variable">$vf-badge--tertiary-color--border</span>: set-color(vf-color--grey--dark) !default;
+<span class="hljs-variable">$vf-badge--tertiary-color--text</span>: set-ui-color(vf-ui-color--white) !default;
 
 
 <span class="hljs-selector-class">.vf-badge</span> {

@@ -544,6 +544,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">--vf-ui-color--grey--light</span>: <span class="hljs-number">#d8d8d8</span>;
   <span class="hljs-attribute">--vf-ui-color--yellow</span>: <span class="hljs-number">#fffadc</span>;
   <span class="hljs-attribute">--vf-ui-color--red</span>: <span class="hljs-number">#d32f2f</span>;
+  <span class="hljs-attribute">--vf-ui-color--white</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">--vf-ui-color--off-white</span>: <span class="hljs-number">#fafafa</span>;
 }
 
 <span class="hljs-selector-class">.vf-text</span> {
@@ -605,6 +607,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-text--invert</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">display</span>: inline-block;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">8px</span> <span class="hljs-number">4px</span> <span class="hljs-number">4px</span>;
 }
@@ -647,6 +650,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">display</span>: inline;
   <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span>;
 }
@@ -665,11 +669,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-links__list--secondary</span> <span class="hljs-selector-class">.vf-list__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">border-bottom</span>: none;
   <span class="hljs-attribute">text-decoration</span>: underline;
 }
 
 <span class="hljs-selector-class">.vf-links__list--secondary</span> <span class="hljs-selector-class">.vf-list__meta</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">position</span>: relative;
 }
 
@@ -711,7 +717,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-link-list/vf-link-list.css
         </li>
         <li class="vf-list__item">
-          Size: 4.4 KB
+          Size: 4.6 KB
         </li>
       </ul>
     </section>
@@ -760,7 +766,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-links__meta</span> {
   @<span class="hljs-keyword">include</span> set-type(body--s);
 
-  <span class="hljs-attribute">color</span>: set-color(vf-color--grey-dark);
+  <span class="hljs-attribute">color</span>: set-color(vf-color--grey--dark);
   <span class="hljs-attribute">display</span>: inline;
   <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span>;
 }
@@ -770,14 +776,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.vf-list__link</span> {
     @<span class="hljs-keyword">include</span> inline-link(
       <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--grey),
-      <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--grey-dark)
+      <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--grey--dark)
     );
 
     <span class="hljs-attribute">text-decoration</span>: none;
   }
 
   <span class="hljs-selector-class">.vf-list__meta</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--grey-dark);
+    <span class="hljs-attribute">color</span>: set-color(vf-color--grey--dark);
     <span class="hljs-attribute">position</span>: relative;
 
     &amp;::before {

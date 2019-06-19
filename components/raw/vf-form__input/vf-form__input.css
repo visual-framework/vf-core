@@ -35,6 +35,8 @@
   --vf-ui-color--grey--light: #d8d8d8;
   --vf-ui-color--yellow: #fffadc;
   --vf-ui-color--red: #d32f2f;
+  --vf-ui-color--white: #ffffff;
+  --vf-ui-color--off-white: #fafafa;
 }
 
 .vf-form__input:not([type='file']) {
@@ -47,6 +49,7 @@
   border-style: solid;
   border-width: 3px;
   box-sizing: border-box;
+  color: #54585a;
   display: block;
   padding: 12px;
   width: 100%;
@@ -76,10 +79,53 @@
   text-rendering: optimizeLegibility;
 }
 
+.vf-form__input::-webkit-input-placeholder,
+.vf-form__select::-webkit-input-placeholder,
+.vf-form__textarea::-webkit-input-placeholder {
+  color: #54585a;
+}
+
+.vf-form__input:-ms-input-placeholder,
+.vf-form__select:-ms-input-placeholder,
+.vf-form__textarea:-ms-input-placeholder {
+  color: #54585a;
+}
+
+.vf-form__input::-ms-input-placeholder,
+.vf-form__select::-ms-input-placeholder,
+.vf-form__textarea::-ms-input-placeholder {
+  color: #54585a;
+}
+
+.vf-form__input::placeholder,
+.vf-form__select::placeholder,
+.vf-form__textarea::placeholder {
+  color: #54585a;
+}
+
+.vf-form__input::-moz-placeholder,
+.vf-form__select::-moz-placeholder,
+.vf-form__textarea::-moz-placeholder {
+  color: #54585a;
+}
+
+.vf-form__input:-ms-input-placeholder,
+.vf-form__select:-ms-input-placeholder,
+.vf-form__textarea:-ms-input-placeholder {
+  color: #54585a;
+}
+
+.vf-form__input::-webkit-input-placeholder,
+.vf-form__select::-webkit-input-placeholder,
+.vf-form__textarea::-webkit-input-placeholder {
+  color: #54585a;
+}
+
 .vf-form__input select.vf-form__select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  color: #54585a;
   cursor: pointer;
   position: relative;
 }
@@ -88,8 +134,21 @@
   display: none;
 }
 
+.vf-form__input .vf-form__is-active input.vf-form__input,
+.vf-form__input .vf-form__is-active select.vf-form__select,
+.vf-form__input .vf-form__is-active textarea.vf-form__textarea {
+  background-color: #ffffff;
+}
+
+.vf-form__input .vf-form__has-focus input.vf-form__input,
+.vf-form__input .vf-form__has-focus select.vf-form__select,
+.vf-form__input .vf-form__has-focus textarea.vf-form__textarea {
+  background-color: #ffffff;
+}
+
 .vf-form__wrap .vf-form__input label.vf-form__label {
   border-radius-top-left: 3px;
+  color: #54585a;
   display: block;
   left: 26px;
   opacity: 0;

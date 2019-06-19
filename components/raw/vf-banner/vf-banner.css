@@ -35,6 +35,8 @@
   --vf-ui-color--grey--light: #d8d8d8;
   --vf-ui-color--yellow: #fffadc;
   --vf-ui-color--red: #d32f2f;
+  --vf-ui-color--white: #ffffff;
+  --vf-ui-color--off-white: #fafafa;
 }
 
 .vf-banner {
@@ -92,7 +94,12 @@
   bottom: 0;
 }
 
+.vf-banner--notice {
+  background-color: #54585a;
+}
+
 .vf-banner--notice .vf-text {
+  color: #ffffff;
   margin-bottom: 24px;
   max-width: 64em;
 }
@@ -118,6 +125,10 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.vf-banner--blocking.vf-banner--notice .vf-banner__content {
+  background-color: #54585a;
+}
+
 .vf-banner--fixed {
   display: grid;
   grid-column: 1 / -1;
@@ -136,6 +147,7 @@
 }
 
 .vf-banner--phase [class*='vf-text'] {
+  color: #54585a;
   margin: 12px 0;
 }
 

@@ -35,6 +35,8 @@
   --vf-ui-color--grey--light: #d8d8d8;
   --vf-ui-color--yellow: #fffadc;
   --vf-ui-color--red: #d32f2f;
+  --vf-ui-color--white: #ffffff;
+  --vf-ui-color--off-white: #fafafa;
 }
 
 .vf-form__item {
@@ -66,12 +68,14 @@
 }
 
 .vf-form__checkbox + .vf-form__label {
+  color: #54585a;
   cursor: pointer;
   padding: 0;
   position: relative;
 }
 
 .vf-form__checkbox + .vf-form__label::before {
+  background: #ffffff;
   border: 3px solid #f3f3f3;
   content: '';
   display: inline-block;
@@ -83,7 +87,16 @@
   width: 16px;
 }
 
+.vf-form__checkbox:hover + .vf-form__label:before {
+  border-color: #54585a;
+}
+
+.vf-form__checkbox:focus + .vf-form__label:before {
+  border-color: #54585a;
+}
+
 .vf-form__checkbox:disabled + .vf-form__label {
+  color: #54585a;
   cursor: auto;
 }
 

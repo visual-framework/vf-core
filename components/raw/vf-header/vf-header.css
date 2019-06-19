@@ -35,10 +35,13 @@
   --vf-ui-color--grey--light: #d8d8d8;
   --vf-ui-color--yellow: #fffadc;
   --vf-ui-color--red: #d32f2f;
+  --vf-ui-color--white: #ffffff;
+  --vf-ui-color--off-white: #fafafa;
 }
 
 .vf-global-header {
   align-items: center;
+  background-color: #ffffff;
   border-bottom: solid 1px #707372;
   display: grid;
   grid-column: 1 / -1;
@@ -64,12 +67,13 @@
 }
 
 .vf-masthead {
-  --vf-masthead__color--foreround-default: var(--vf-color--white);
+  --vf-masthead__color--foreround-default: var(--vf-ui-color--white);
   --vf-masthead__color--background-default: var(--vf-color--green);
   background-color: #009f4d;
   background-image: var(--vf-masthead__bg-image, none);
   background-repeat: no-repeat;
   background-size: cover;
+  color: #ffffff;
 }
 
 @media (min-width: 1024px) {
@@ -125,9 +129,18 @@
 }
 
 .vf-masthead__heading__link {
+  color: #ffffff;
   color: inherit;
   text-decoration: none;
   z-index: 5150;
+}
+
+.vf-masthead__heading__link:visited {
+  color: #ffffff;
+}
+
+.vf-masthead__heading__link:hover {
+  color: #ffffff;
 }
 
 .vf-masthead__subheading {
@@ -136,6 +149,7 @@
   font-weight: 500;
   line-height: 1.57;
   margin: 0 0 0 0;
+  color: #ffffff;
   text-transform: uppercase;
 }
 
@@ -181,6 +195,7 @@
 }
 
 .vf-masthead__form__item {
+  color: #ffffff;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -190,12 +205,14 @@
 .vf-masthead__button {
   align-items: flex-end;
   border: 0;
+  color: #ffffff;
   margin-left: 8px;
   outline: 0;
   padding: 8px 12px;
 }
 
 .vf-masthead__button svg {
+  fill: #ffffff;
   width: 16px;
 }
 
@@ -204,7 +221,7 @@
   flex-grow: 0;
   flex-shrink: 0;
   margin-bottom: 4px;
-  text-shadow: 1px 1px 3px;
+  text-shadow: 1px 1px 3px #ffffff;
 }
 
 .vf-masthead__form__input--text {
@@ -216,11 +233,13 @@
 }
 
 .search-examples {
+  color: #ffffff;
   font-size: 12px;
   text-shadow: 1px 1px 0px #000000;
 }
 
 .search-examples a {
+  color: #ffffff;
   text-shadow: 1px 1px 0px #000000;
 }
 
@@ -251,11 +270,16 @@
   grid-row: 2;
 }
 
+.vf-header__navigation--site {
+  background-color: #54585a;
+}
+
 .vf-header__navigation--site > * {
   margin-left: -16px;
 }
 
 .vf-header__navigation--additional {
+  background-color: #54585a;
   grid-row: 2;
 }
 

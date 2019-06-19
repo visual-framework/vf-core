@@ -783,6 +783,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">--vf-ui-color--grey--light</span>: <span class="hljs-number">#d8d8d8</span>;
   <span class="hljs-attribute">--vf-ui-color--yellow</span>: <span class="hljs-number">#fffadc</span>;
   <span class="hljs-attribute">--vf-ui-color--red</span>: <span class="hljs-number">#d32f2f</span>;
+  <span class="hljs-attribute">--vf-ui-color--white</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">--vf-ui-color--off-white</span>: <span class="hljs-number">#fafafa</span>;
 }
 
 <span class="hljs-selector-class">.vf-banner</span> {
@@ -840,7 +842,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 }
 
+<span class="hljs-selector-class">.vf-banner--notice</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+}
+
 <span class="hljs-selector-class">.vf-banner--notice</span> <span class="hljs-selector-class">.vf-text</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64em</span>;
 }
@@ -866,6 +873,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.1);
 }
 
+<span class="hljs-selector-class">.vf-banner--blocking</span><span class="hljs-selector-class">.vf-banner--notice</span> <span class="hljs-selector-class">.vf-banner__content</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+}
+
 <span class="hljs-selector-class">.vf-banner--fixed</span> {
   <span class="hljs-attribute">display</span>: grid;
   <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
@@ -884,6 +895,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-banner--phase</span> <span class="hljs-selector-attr">[class*='vf-text']</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">12px</span> <span class="hljs-number">0</span>;
 }
 
@@ -915,7 +927,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-banner/vf-banner.css
         </li>
         <li class="vf-list__item">
-          Size: 3.2 KB
+          Size: 3.4 KB
         </li>
       </ul>
     </section>
@@ -1310,16 +1322,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <div class="FileBrowser-itemPreview">
         
         <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
-          <pre class="vf-code-example__pre"><span class="hljs-variable">$vf-gdpr-banner-color--background</span>: set-color(vf-color--grey-dark);
-<span class="hljs-variable">$vf-gdpr-banner-color--text</span>: set-color(vf-color--white);
+          <pre class="vf-code-example__pre"><span class="hljs-variable">$vf-gdpr-banner-color--background</span>: set-color(vf-color--grey--dark);
+<span class="hljs-variable">$vf-gdpr-banner-color--text</span>: set-ui-color(vf-ui-color--white);
 <span class="hljs-variable">$vf-gdpr-banner-padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-r);
 
-<span class="hljs-variable">$vf-notice-banner-color--background</span>: set-color(vf-color--grey-dark);
-<span class="hljs-variable">$vf-notice-banner-color--text</span>: set-color(vf-color--white);
+<span class="hljs-variable">$vf-notice-banner-color--background</span>: set-color(vf-color--grey--dark);
+<span class="hljs-variable">$vf-notice-banner-color--text</span>: set-ui-color(vf-ui-color--white);
 <span class="hljs-variable">$vf-notice-banner-padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-r);
 
 <span class="hljs-variable">$vf-phase-banner-color--background</span>: set-ui-color(vf-ui-color--yellow);
-<span class="hljs-variable">$vf-phase-banner-color--text</span>: set-color(vf-color--grey-dark);
+<span class="hljs-variable">$vf-phase-banner-color--text</span>: set-color(vf-color--grey--dark);
 
 <span class="hljs-variable">$vf-banner-color--link</span>: inherit;
 </pre>
@@ -1337,7 +1349,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-banner/vf-banner.variables.scss
         </li>
         <li class="vf-list__item">
-          Size: 553 Bytes
+          Size: 568 Bytes
         </li>
       </ul>
     </section>

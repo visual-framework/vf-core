@@ -467,6 +467,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">--vf-ui-color--grey--light</span>: <span class="hljs-number">#d8d8d8</span>;
   <span class="hljs-attribute">--vf-ui-color--yellow</span>: <span class="hljs-number">#fffadc</span>;
   <span class="hljs-attribute">--vf-ui-color--red</span>: <span class="hljs-number">#d32f2f</span>;
+  <span class="hljs-attribute">--vf-ui-color--white</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">--vf-ui-color--off-white</span>: <span class="hljs-number">#fafafa</span>;
 }
 
 <span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-attr">[type='file']</span>) {
@@ -479,6 +481,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">border-style</span>: solid;
   <span class="hljs-attribute">border-width</span>: <span class="hljs-number">3px</span>;
   <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
@@ -508,10 +511,53 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">text-rendering</span>: optimizeLegibility;
 }
 
+<span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__textarea</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">:-ms-input-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">:-ms-input-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__textarea</span><span class="hljs-selector-pseudo">:-ms-input-placeholder</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">::-ms-input-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">::-ms-input-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__textarea</span><span class="hljs-selector-pseudo">::-ms-input-placeholder</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">::placeholder</span>,
+<span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">::placeholder</span>,
+<span class="hljs-selector-class">.vf-form__textarea</span><span class="hljs-selector-pseudo">::placeholder</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">::-moz-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">::-moz-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__textarea</span><span class="hljs-selector-pseudo">::-moz-placeholder</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">:-ms-input-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">:-ms-input-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__textarea</span><span class="hljs-selector-pseudo">:-ms-input-placeholder</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__textarea</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-tag">select</span><span class="hljs-selector-class">.vf-form__select</span> {
   <span class="hljs-attribute">-webkit-appearance</span>: none;
      <span class="hljs-attribute">-moz-appearance</span>: none;
           <span class="hljs-attribute">appearance</span>: none;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">cursor</span>: pointer;
   <span class="hljs-attribute">position</span>: relative;
 }
@@ -520,8 +566,21 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">display</span>: none;
 }
 
+<span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__is-active</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-class">.vf-form__input</span>,
+<span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__is-active</span> <span class="hljs-selector-tag">select</span><span class="hljs-selector-class">.vf-form__select</span>,
+<span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__is-active</span> <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-class">.vf-form__textarea</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
+<span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__has-focus</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-class">.vf-form__input</span>,
+<span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__has-focus</span> <span class="hljs-selector-tag">select</span><span class="hljs-selector-class">.vf-form__select</span>,
+<span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__has-focus</span> <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-class">.vf-form__textarea</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
 <span class="hljs-selector-class">.vf-form__wrap</span> <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-class">.vf-form__label</span> {
   <span class="hljs-attribute">border-radius-top-left</span>: <span class="hljs-number">3px</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">left</span>: <span class="hljs-number">26px</span>;
   <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
@@ -570,7 +629,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-form/vf-form__input/vf-form__input.css
         </li>
         <li class="vf-list__item">
-          Size: 3 KB
+          Size: 4.6 KB
         </li>
       </ul>
     </section>
@@ -590,7 +649,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">border-style</span>: solid;
   <span class="hljs-attribute">border-width</span>: <span class="hljs-number">3px</span>;
   <span class="hljs-attribute">box-sizing</span>: border-box;
-  <span class="hljs-attribute">color</span>: set-color(vf-color--grey-dark);
+  <span class="hljs-attribute">color</span>: set-color(vf-color--grey--dark);
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
@@ -626,30 +685,30 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-form__input</span>::placeholder,
 .vf-form__select::placeholder,
 .vf-form__textarea::placeholder {
-  color: set-color(vf-color--grey-dark);
+  color: set-color(vf-color--grey--dark);
 }
 
 <span class="hljs-selector-class">.vf-form__input</span>::-moz-placeholder,
 .vf-form__select::-moz-placeholder,
 .vf-form__textarea::-moz-placeholder {
-  color: set-color(vf-color--grey-dark);
+  color: set-color(vf-color--grey--dark);
 }
 
 <span class="hljs-selector-class">.vf-form__input</span>:-ms-input-placeholder,
 .vf-form__select:-ms-input-placeholder,
 .vf-form__textarea:-ms-input-placeholder {
-  color: set-color(vf-color--grey-dark);
+  color: set-color(vf-color--grey--dark);
 }
 
 <span class="hljs-selector-class">.vf-form__input</span>::-webkit-input-placeholder,
 .vf-form__select::-webkit-input-placeholder,
 .vf-form__textarea::-webkit-input-placeholder {
-  color: set-color(vf-color--grey-dark);
+  color: set-color(vf-color--grey--dark);
 }
 
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-tag">select</span><span class="hljs-selector-class">.vf-form__select</span> {
   appearance: none;
-  <span class="hljs-attribute">color</span>: set-color(vf-color--grey-dark);
+  <span class="hljs-attribute">color</span>: set-color(vf-color--grey--dark);
   <span class="hljs-attribute">cursor</span>: pointer;
   <span class="hljs-attribute">position</span>: relative;
 }
@@ -661,7 +720,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__is-active</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-class">.vf-form__input</span>,
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__is-active</span> <span class="hljs-selector-tag">select</span><span class="hljs-selector-class">.vf-form__select</span>,
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__is-active</span> <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-class">.vf-form__textarea</span> {
-  <span class="hljs-attribute">background-color</span>: set-color(vf-color--white);
+  <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--white);
   <span class="hljs-attribute">border-color</span>: set-ui-color(vf-ui-grey);
   <span class="hljs-attribute">color</span>: set-color(vf-grey-dark);
 }
@@ -669,13 +728,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__has-focus</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-class">.vf-form__input</span>,
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__has-focus</span> <span class="hljs-selector-tag">select</span><span class="hljs-selector-class">.vf-form__select</span>,
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__has-focus</span> <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-class">.vf-form__textarea</span> {
-  <span class="hljs-attribute">background-color</span>: set-color(vf-color--white);
+  <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--white);
   <span class="hljs-attribute">border-color</span>: set-color(vf-color--black);
 }
 
 <span class="hljs-selector-class">.vf-form__wrap</span> <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-class">.vf-form__label</span> {
   <span class="hljs-attribute">border-radius</span>-<span class="hljs-attribute">top</span>-<span class="hljs-attribute">left</span>: <span class="hljs-number">3px</span>;
-  <span class="hljs-attribute">color</span>: set-color(vf-color--grey-dark);
+  <span class="hljs-attribute">color</span>: set-color(vf-color--grey--dark);
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">left</span>: <span class="hljs-number">26px</span>;
   <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;

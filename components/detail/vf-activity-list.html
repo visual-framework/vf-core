@@ -474,6 +474,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">--vf-ui-color--grey--light</span>: <span class="hljs-number">#d8d8d8</span>;
   <span class="hljs-attribute">--vf-ui-color--yellow</span>: <span class="hljs-number">#fffadc</span>;
   <span class="hljs-attribute">--vf-ui-color--red</span>: <span class="hljs-number">#d32f2f</span>;
+  <span class="hljs-attribute">--vf-ui-color--white</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">--vf-ui-color--off-white</span>: <span class="hljs-number">#fafafa</span>;
 }
 
 <span class="hljs-selector-class">.vf-list</span> {
@@ -548,7 +550,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-blockquote</span><span class="hljs-selector-pseudo">::before</span> {
   <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
-  <span class="hljs-attribute">border-left</span>: <span class="hljs-number">4px</span> solid;
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-number">4px</span> solid <span class="hljs-number">#d0d0ce</span>;
   <span class="hljs-attribute">position</span>: absolute;
   <span class="hljs-attribute">left</span>: <span class="hljs-number">12px</span>;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
@@ -580,6 +582,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#707372</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">22px</span> <span class="hljs-number">16px</span>;
 }
@@ -608,6 +611,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">8px</span>;
   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">16px</span>;
 }
@@ -626,7 +630,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-activity-list/vf-activity-list.css
         </li>
         <li class="vf-list__item">
-          Size: 3.8 KB
+          Size: 3.9 KB
         </li>
       </ul>
     </section>
@@ -639,9 +643,9 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
           <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-activity-list</span>
 
-<span class="hljs-variable">$vf-activity-list__item-background--color</span>: set-color(vf-color--white);
+<span class="hljs-variable">$vf-activity-list__item-background--color</span>: set-ui-color(vf-ui-color--white);
 <span class="hljs-variable">$vf-activity-list__item-border--color</span>: set-color(vf-color--grey);
-<span class="hljs-variable">$vf-activity-list__blockquote-text--color</span>: set-color(vf-color--grey-dark);
+<span class="hljs-variable">$vf-activity-list__blockquote-text--color</span>: set-color(vf-color--grey--dark);
 
 <span class="hljs-selector-class">.vf-activity</span> {
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">54px</span>;
@@ -691,7 +695,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-activity-list/vf-activity-list.scss
         </li>
         <li class="vf-list__item">
-          Size: 841 Bytes
+          Size: 848 Bytes
         </li>
       </ul>
     </section>

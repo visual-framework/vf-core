@@ -579,7 +579,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-navigation.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-navigation--additional</span> {
-  <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey-dark);
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey--dark);
   <span class="hljs-attribute">border</span>: <span class="hljs-number">0px</span> solid set-color(vf-color--grey);
   <span class="hljs-attribute">border-width</span>: <span class="hljs-number">1px</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">box-sizing</span>: border-box;
@@ -605,7 +605,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 
   <span class="hljs-selector-class">.vf-navigation__heading</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--white);
+    <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">6px</span>; <span class="hljs-comment">// magic number</span>
   }
 
@@ -622,8 +622,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.vf-navigation__link</span> {
     @<span class="hljs-keyword">include</span> inline-link(
       <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--off-white),
-      <span class="hljs-variable">$vf-link--visited-color</span>: set-color(vf-color--white),
-      <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--white)
+      <span class="hljs-variable">$vf-link--visited-color</span>: set-ui-color(vf-ui-color--white),
+      <span class="hljs-variable">$vf-link--hover-color</span>: set-ui-color(vf-ui-color--white)
     );
 
     <span class="hljs-attribute">text-decoration</span>: none;
@@ -645,7 +645,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-navigation/vf-navigation--additional.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.1 KB
+          Size: 1.2 KB
         </li>
       </ul>
     </section>
@@ -665,7 +665,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-selector-class">.vf-navigation__link</span> {
     @<span class="hljs-keyword">include</span> inline-link(
-      <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--grey-dark),
+      <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--grey--dark),
       <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--black)
     );
 
@@ -687,7 +687,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-navigation/vf-navigation--global.scss
         </li>
         <li class="vf-list__item">
-          Size: 303 Bytes
+          Size: 304 Bytes
         </li>
       </ul>
     </section>
@@ -702,7 +702,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-navigation.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-navigation--main</span> {
-  <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey-dark);
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey--dark);
   <span class="hljs-attribute">position</span>: relative;
 
   &amp;::before {
@@ -733,7 +733,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 
     &amp;<span class="hljs-selector-class">.is-active</span> {
-      <span class="hljs-attribute">background-color</span>: set-color(vf-color--white);
+      <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--white);
 
       <span class="hljs-selector-class">.vf-navigation__link</span> {
         <span class="hljs-attribute">color</span>: set-color(vf-color--black);
@@ -742,7 +742,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
     &amp;:hover {
       <span class="hljs-attribute">align-items</span>: center;
-      <span class="hljs-attribute">background-color</span>: set-color(vf-color--white);
+      <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--white);
       <span class="hljs-attribute">display</span>: flex;
       <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
 
@@ -759,14 +759,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-selector-class">.vf-navigation__link</span> {
     @<span class="hljs-keyword">include</span> inline-link(
-      <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--white),
-      <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--white)
+      <span class="hljs-variable">$vf-link--color</span>: set-ui-color(vf-ui-color--white),
+      <span class="hljs-variable">$vf-link--hover-color</span>: set-ui-color(vf-ui-color--white)
     );
 
     <span class="hljs-attribute">text-decoration</span>: none;
 
     &amp;:visited {
-      <span class="hljs-attribute">color</span>: set-color(vf-color--white);
+      <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
     }
   }
 }
@@ -833,6 +833,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">--vf-ui-color--grey--light</span>: <span class="hljs-number">#d8d8d8</span>;
   <span class="hljs-attribute">--vf-ui-color--yellow</span>: <span class="hljs-number">#fffadc</span>;
   <span class="hljs-attribute">--vf-ui-color--red</span>: <span class="hljs-number">#d32f2f</span>;
+  <span class="hljs-attribute">--vf-ui-color--white</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">--vf-ui-color--off-white</span>: <span class="hljs-number">#fafafa</span>;
 }
 
 <span class="hljs-selector-class">.vf-list</span> {
@@ -910,6 +912,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-navigation--global</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
   <span class="hljs-attribute">border-bottom</span>: none;
   <span class="hljs-attribute">text-decoration</span>: underline;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">text-decoration</span>: none;
 }
 
@@ -925,6 +928,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-navigation--main</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">position</span>: relative;
 }
 
@@ -963,8 +967,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 }
 
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-class">.is-active</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
 <span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:hover</span> {
   <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
 }
@@ -982,6 +991,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__link</span> {
   <span class="hljs-attribute">border-bottom</span>: none;
   <span class="hljs-attribute">text-decoration</span>: underline;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">text-decoration</span>: none;
 }
 
@@ -992,11 +1002,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">border-bottom</span>: none;
   <span class="hljs-attribute">text-decoration</span>: underline;
 }
 
+<span class="hljs-selector-class">.vf-navigation--main</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+}
+
 <span class="hljs-selector-class">.vf-navigation--additional</span> {
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">border</span>: <span class="hljs-number">0px</span> solid <span class="hljs-number">#707372</span>;
   <span class="hljs-attribute">border-width</span>: <span class="hljs-number">1px</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">box-sizing</span>: border-box;
@@ -1023,6 +1039,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__heading</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">6px</span>;
 }
 
@@ -1042,11 +1059,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">border-bottom</span>: none;
   <span class="hljs-attribute">text-decoration</span>: underline;
 }
 
 <span class="hljs-selector-class">.vf-navigation--additional</span> <span class="hljs-selector-class">.vf-navigation__link</span><span class="hljs-selector-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">border-bottom</span>: none;
   <span class="hljs-attribute">text-decoration</span>: underline;
 }
@@ -1065,7 +1084,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-navigation/vf-navigation.css
         </li>
         <li class="vf-list__item">
-          Size: 5.3 KB
+          Size: 5.7 KB
         </li>
       </ul>
     </section>

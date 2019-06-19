@@ -35,10 +35,12 @@
   --vf-ui-color--grey--light: #d8d8d8;
   --vf-ui-color--yellow: #fffadc;
   --vf-ui-color--red: #d32f2f;
+  --vf-ui-color--white: #ffffff;
+  --vf-ui-color--off-white: #fafafa;
 }
 
 .vf-tabs__list {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #000000;
   margin: 0;
   padding: 0 0 0px 16px;
 }
@@ -50,13 +52,26 @@
 }
 
 .vf-tabs__link {
-  border-color: transparent transparent transparent;
+  background: #d0d0ce;
+  border-color: transparent transparent #000000 transparent;
   border-style: solid;
   border-width: 1px;
+  color: #54585a;
   outline: 0;
   padding: 12px 16px;
   text-decoration: none;
   top: 1px;
+}
+
+.vf-tabs__link:hover {
+  background-color: #54585a;
+  color: #ffffff;
+}
+
+.vf-tabs__link.is-active {
+  background: #fafafa;
+  border-bottom-color: #ffffff;
+  color: #000000;
 }
 
 .vf-tabs__section {
@@ -84,6 +99,7 @@
     top: unset;
   }
   .vf-tabs__link.is-active {
+    border-color: #000000;
     position: static;
   }
   .vf-tabs__section {
