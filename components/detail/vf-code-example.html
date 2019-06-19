@@ -489,6 +489,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-comment">/* github.com style (c) Vasily Polovnyov &lt;vast@whiteants.net&gt; */</span>
 <span class="hljs-selector-class">.hljs</span> {
   <span class="hljs-attribute">background</span>: <span class="hljs-number">#f3f3f3</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">overflow-x</span>: auto;
   <span class="hljs-attribute">padding</span>: .<span class="hljs-number">5em</span>;
@@ -503,12 +504,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.hljs-keyword</span>,
 <span class="hljs-selector-class">.hljs-selector-tag</span>,
 <span class="hljs-selector-class">.hljs-subst</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;
   <span class="hljs-attribute">font-weight</span>: bold;
+}
+
+<span class="hljs-selector-class">.hljs-string</span>,
+<span class="hljs-selector-class">.hljs-doctag</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#e40046</span>;
 }
 
 <span class="hljs-selector-class">.hljs-title</span>,
 <span class="hljs-selector-class">.hljs-section</span>,
 <span class="hljs-selector-class">.hljs-selector-id</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#a6093d</span>;
   <span class="hljs-attribute">font-weight</span>: bold;
 }
 
@@ -518,12 +526,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.hljs-type</span>,
 <span class="hljs-selector-class">.hljs-class</span> <span class="hljs-selector-class">.hljs-title</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#307fe2</span>;
   <span class="hljs-attribute">font-weight</span>: bold;
 }
 
 <span class="hljs-selector-class">.hljs-tag</span>,
 <span class="hljs-selector-class">.hljs-name</span>,
 <span class="hljs-selector-class">.hljs-attribute</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#003da5</span>;
   <span class="hljs-attribute">font-weight</span>: normal;
 }
 
@@ -532,9 +542,27 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#009f4d</span>;
 }
 
+<span class="hljs-selector-class">.hljs-symbol</span>,
+<span class="hljs-selector-class">.hljs-bullet</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#a6093d</span>;
+}
+
+<span class="hljs-selector-class">.hljs-built_in</span>,
+<span class="hljs-selector-class">.hljs-builtin-name</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#307fe2</span>;
+}
+
 <span class="hljs-selector-class">.hljs-meta</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#d0d0ce</span>;
   <span class="hljs-attribute">font-weight</span>: bold;
+}
+
+<span class="hljs-selector-class">.hljs-deletion</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#e58f9e</span>;
+}
+
+<span class="hljs-selector-class">.hljs-addition</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#e2e868</span>;
 }
 
 <span class="hljs-selector-class">.hljs-emphasis</span> {
@@ -559,7 +587,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-code-example/vf-code-example.css
         </li>
         <li class="vf-list__item">
-          Size: 2.3 KB
+          Size: 2.7 KB
         </li>
       </ul>
     </section>
@@ -598,7 +626,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-comment">/* github.com style (c) Vasily Polovnyov &lt;vast@whiteants.net&gt; */</span>
   <span class="hljs-selector-class">.hljs</span> {
     <span class="hljs-attribute">background</span>: set-ui-color(vf-ui-color--grey);
-    <span class="hljs-attribute">color</span>: set-color(vf-color--black);
+    <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
     <span class="hljs-attribute">display</span>: block;
     <span class="hljs-attribute">overflow-x</span>: auto;
     <span class="hljs-attribute">padding</span>: .<span class="hljs-number">5em</span>; }
@@ -611,7 +639,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.hljs-keyword</span>,
   <span class="hljs-selector-class">.hljs-selector-tag</span>,
   <span class="hljs-selector-class">.hljs-subst</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--black);
+    <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
     <span class="hljs-attribute">font-weight</span>: bold; }
 
   <span class="hljs-selector-class">.hljs-number</span>,
@@ -619,16 +647,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.hljs-variable</span>,
   <span class="hljs-selector-class">.hljs-template-variable</span>,
   <span class="hljs-selector-class">.hljs-tag</span> <span class="hljs-selector-class">.hljs-attr</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--azure-dark); }
+    <span class="hljs-attribute">color</span>: set-color(vf-color--blue---dark); }
 
   <span class="hljs-selector-class">.hljs-string</span>,
   <span class="hljs-selector-class">.hljs-doctag</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--ruby); }
+    <span class="hljs-attribute">color</span>: set-color(vf-color--red); }
 
   <span class="hljs-selector-class">.hljs-title</span>,
   <span class="hljs-selector-class">.hljs-section</span>,
   <span class="hljs-selector-class">.hljs-selector-id</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--ruby-dark);
+    <span class="hljs-attribute">color</span>: set-color(vf-color--red--dark);
     <span class="hljs-attribute">font-weight</span>: bold; }
 
   <span class="hljs-selector-class">.hljs-subst</span> {
@@ -636,13 +664,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-selector-class">.hljs-type</span>,
   <span class="hljs-selector-class">.hljs-class</span> <span class="hljs-selector-class">.hljs-title</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--azure);
+    <span class="hljs-attribute">color</span>: set-color(vf-color--blue);
     <span class="hljs-attribute">font-weight</span>: bold; }
 
   <span class="hljs-selector-class">.hljs-tag</span>,
   <span class="hljs-selector-class">.hljs-name</span>,
   <span class="hljs-selector-class">.hljs-attribute</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--azure-dark);
+    <span class="hljs-attribute">color</span>: set-color(vf-color--blue--dark);
     <span class="hljs-attribute">font-weight</span>: normal; }
 
   <span class="hljs-selector-class">.hljs-regexp</span>,
@@ -651,21 +679,21 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-selector-class">.hljs-symbol</span>,
   <span class="hljs-selector-class">.hljs-bullet</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--ruby-dark); }
+    <span class="hljs-attribute">color</span>: set-color(vf-color--red--dark); }
 
   <span class="hljs-selector-class">.hljs-built_in</span>,
   <span class="hljs-selector-class">.hljs-builtin-name</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--azure); }
+    <span class="hljs-attribute">color</span>: set-color(vf-color--blue); }
 
   <span class="hljs-selector-class">.hljs-meta</span> {
     <span class="hljs-attribute">color</span>: set-color(vf-color--grey--light);
     <span class="hljs-attribute">font-weight</span>: bold; }
 
   <span class="hljs-selector-class">.hljs-deletion</span> {
-    <span class="hljs-attribute">background</span>: set-color(vf-color--ruby-light); }
+    <span class="hljs-attribute">background</span>: set-color(vf-color--red--light); }
 
   <span class="hljs-selector-class">.hljs-addition</span> {
-    <span class="hljs-attribute">background</span>: set-color(vf-color--light-green-light); }
+    <span class="hljs-attribute">background</span>: set-color(vf-color--bright-green--light); }
 
   <span class="hljs-selector-class">.hljs-emphasis</span> {
     <span class="hljs-attribute">font-style</span>: italic; }

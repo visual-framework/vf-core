@@ -490,6 +490,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-attr">[type='file']</span>)<span class="hljs-selector-pseudo">:focus</span>, <span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-attr">[type='file']</span>)<span class="hljs-selector-pseudo">:hover</span> {
   <span class="hljs-attribute">border-color</span>: currentColor;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;
   <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;
 }
 
@@ -577,6 +578,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__has-focus</span> <span class="hljs-selector-tag">select</span><span class="hljs-selector-class">.vf-form__select</span>,
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__has-focus</span> <span class="hljs-selector-tag">textarea</span><span class="hljs-selector-class">.vf-form__textarea</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#000000</span>;
 }
 
 <span class="hljs-selector-class">.vf-form__wrap</span> <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-class">.vf-form__label</span> {
@@ -595,6 +597,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__is-active</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-class">.vf-form__label</span> {
   <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
   <span class="hljs-attribute">visibility</span>: visible;
+}
+
+<span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__has-focus</span> <span class="hljs-selector-tag">label</span><span class="hljs-selector-class">.vf-form__label</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;
 }
 
 <span class="hljs-selector-class">.vf-form__input</span> <span class="hljs-selector-class">.vf-form__is-required</span><span class="hljs-selector-pseudo">::before</span> {
@@ -645,6 +651,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">:focus</span>, <span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">:hover</span> {
   <span class="hljs-attribute">border-color</span>: currentColor;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;
   <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;
 }
 
@@ -689,6 +696,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#54585a</span>;
 }
 
+<span class="hljs-selector-class">.vf-form__checkbox</span><span class="hljs-selector-pseudo">:checked</span> + <span class="hljs-selector-class">.vf-form__label</span><span class="hljs-selector-pseudo">:before</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#307fe2</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#307fe2</span>;
+}
+
 <span class="hljs-selector-class">.vf-form__checkbox</span><span class="hljs-selector-pseudo">:disabled</span> + <span class="hljs-selector-class">.vf-form__label</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">cursor</span>: auto;
@@ -731,6 +743,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-form__radio</span><span class="hljs-selector-pseudo">:focus</span> + <span class="hljs-selector-class">.vf-form__label</span><span class="hljs-selector-pseudo">::before</span> {
   <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-form__radio</span><span class="hljs-selector-pseudo">:checked</span> + <span class="hljs-selector-class">.vf-form__label</span><span class="hljs-selector-pseudo">::before</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#003da5</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#003da5</span>;
 }
 
 <span class="hljs-selector-class">.vf-form__radio</span><span class="hljs-selector-pseudo">:disabled</span> + <span class="hljs-selector-class">.vf-form__label</span> {
@@ -808,6 +825,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">:focus</span>, <span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">:hover</span> {
   <span class="hljs-attribute">border-color</span>: currentColor;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;
   <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;
 }
 
@@ -833,7 +851,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-form/vf-form__select/vf-form__select.css
         </li>
         <li class="vf-list__item">
-          Size: 9.1 KB
+          Size: 9.5 KB
         </li>
       </ul>
     </section>
@@ -868,7 +886,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   &amp;:focus,
   &amp;:hover {
     <span class="hljs-attribute">border-color</span>: currentColor;
-    <span class="hljs-attribute">color</span>: set-color(vf-color--black);
+    <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
     <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;
   }
 
@@ -898,7 +916,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-form/vf-form__select/vf-form__select.scss
         </li>
         <li class="vf-list__item">
-          Size: 957 Bytes
+          Size: 963 Bytes
         </li>
       </ul>
     </section>
