@@ -11,7 +11,7 @@ By default, the background colour for the masthead is `vf-color--green`. To make
 The colour values are stored in two CSS custom properties. One for the background colour itself and the other for the text colour.
 
 ```css
-  --vf-masthead__color--foreround-default: var(--vf-color--white);
+  --vf-masthead__color--foreround-default: var(--vf-ui-color--white);
   --vf-masthead__color--background-default: var(--vf-color--green);
 ```
 
