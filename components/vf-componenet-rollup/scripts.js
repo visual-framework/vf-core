@@ -10,6 +10,9 @@
 import { vfBanner } from 'vf-banner/vf-banner';
 vfBanner();
 
+import { vfMastheadSetStyle } from 'vf-masthead/vf-masthead';
+vfMastheadSetStyle();
+
 import { vfTabs } from 'vf-tabs/vf-tabs';
 vfTabs();
 

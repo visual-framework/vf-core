@@ -58,21 +58,17 @@
     @include set-type(body--l);
 
     margin: 0 0 24px 0;
-
-    + p:not([class*='vf-']) {
-      margin: 0;
-    }
   }
 
   a:not([class*='vf-']) {
     @include inline-link;
 
     &:visited {
-      color: $vf-link-visited-color;
+      color: $vf-link--visited-color;
     }
 
     &:hover {
-      color: $vf-link-hover-color;
+      color: $vf-link--hover-color;
     }
   }
 
@@ -91,7 +87,7 @@
   }
 
   li:not([class*='vf-']) {
-    @include set-type(body--r);
+    @include set-type(body--l);
 
     margin-bottom: map-get($vf-spacing-map, vf-spacing-s);
   }
@@ -105,7 +101,7 @@
   }
 
   code:not([class*='vf-']) {
-    background: set-color(vf-color-off-white);
+    background: set-color(vf-color--off-white);
     padding-left: 3px;
     padding-right: 3px;
   }

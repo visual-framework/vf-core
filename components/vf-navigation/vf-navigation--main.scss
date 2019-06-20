@@ -2,11 +2,24 @@
 @import 'vf-navigation.variables.scss';
 
 .vf-navigation--main {
-  background-color: set-color(vf-color-gray-dark);
+  background-color: set-color(vf-color--grey--dark);
+  position: relative;
+
+  &::before {
+    background-color: inherit;
+    content: '';
+    height: 37px; // special number
+    left: 50%;
+    margin: 0 -50vw;
+    position: absolute;
+    right: 50%;
+    width: 100vw;
+    z-index: -1;
+  }
 
   .vf-navigation__list {
     display: block;
-    @media (min-width: $vf-breakpoint-l) {
+    @media (min-width: $vf-breakpoint--l) {
       align-items: center;
       display: flex;
       height: 100%;
@@ -20,40 +33,40 @@
     margin: 0;
 
     &.is-active {
-      background-color: set-color(vf-color-white);
+      background-color: set-ui-color(vf-ui-color--white);
 
       .vf-navigation__link {
-        color: set-color(vf-color-black);
+        color: set-ui-color(vf-ui-color--black);
       }
     }
 
     &:hover {
       align-items: center;
-      background-color: set-color(vf-color-white);
+      background-color: set-ui-color(vf-ui-color--white);
       display: flex;
       height: 100%;
 
       .vf-navigation__link {
-        color: set-color(vf-color-black);
+        color: set-ui-color(vf-ui-color--black);
         display: block;
       }
     }
 
-    @media (min-width: $vf-breakpoint-l) {
+    @media (min-width: $vf-breakpoint--l) {
       padding: 4px $vf-navigation__item-gap;
     }
   }
 
   .vf-navigation__link {
     @include inline-link(
-      $vf-link-color: set-color(vf-color-white),
-      $vf-link-hover-color: set-color(vf-color-white)
+      $vf-link--color: set-ui-color(vf-ui-color--white),
+      $vf-link--hover-color: set-ui-color(vf-ui-color--white)
     );
 
     text-decoration: none;
 
     &:visited {
-      color: set-color(vf-color-white);
+      color: set-ui-color(vf-ui-color--white);
     }
   }
 }

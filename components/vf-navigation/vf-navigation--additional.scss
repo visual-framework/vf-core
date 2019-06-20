@@ -2,20 +2,39 @@
 @import 'vf-navigation.variables.scss';
 
 .vf-navigation--additional {
-  background-color: set-color(vf-color-gray-dark);
-  border: 0px solid set-color(vf-color-gray);
+  background-color: set-color(vf-color--grey--dark);
+  border: 0px solid set-color(vf-color--grey);
   border-width: 1px 0 1px 0;
   box-sizing: border-box;
   display: flex;
+  margin: 0 auto;
+  max-width: 76.5em;
   padding: 4px 0;
+  position: relative;
   text-transform: uppercase;
+  width: 100%;
+
+  &::before {
+    background-color: inherit;
+    content: '';
+    height: 35px; // magic number
+    left: 50%;
+    margin: 0 -50vw;
+    position: absolute;
+    right: 50%;
+    top: 0;
+    width: 100vw;
+    z-index: -1;
+  }
 
   .vf-navigation__heading {
-    color: set-color(vf-color-white);
+    color: set-ui-color(vf-ui-color--white);
+    padding-top: 6px; // magic number
   }
 
   .vf-navigation__list {
     margin-left: auto;
+    padding-top: 5px; // magic number
   }
 
   .vf-navigation__item:not(:first-child) {
@@ -25,9 +44,9 @@
 
   .vf-navigation__link {
     @include inline-link(
-      $vf-link-color: set-color(vf-color-off-white),
-      $vf-link-visited-color: set-color(vf-color-white),
-      $vf-link-hover-color: set-color(vf-color-white)
+      $vf-link--color: set-color(vf-color--off-white),
+      $vf-link--visited-color: set-ui-color(vf-ui-color--white),
+      $vf-link--hover-color: set-ui-color(vf-ui-color--white)
     );
 
     text-decoration: none;

@@ -4,7 +4,7 @@
   position: absolute; // take it out of document flow
 
   + .vf-form__label {
-    color: set-color(vf-color-gray-dark);
+    color: set-color(vf-color--grey--dark);
     cursor: pointer;
     padding: 0;
     position: relative;
@@ -12,8 +12,8 @@
 
   // Box.
   + .vf-form__label::before {
-    background: set-color(vf-color-white);
-    border: 3px solid set-ui-color(vf-ui-color-gray);
+    background: set-ui-color(vf-ui-color--white);
+    border: 3px solid set-ui-color(vf-ui-color--grey);
     content: '';
     display: inline-block;
     height: 16px;
@@ -26,29 +26,29 @@
 
   // Box hover
   &:hover + .vf-form__label:before {
-    border-color: set-color(vf-color-gray-dark);
+    border-color: set-color(vf-color--grey--dark);
   }
 
   // Box focus
   &:focus + .vf-form__label:before {
-    border-color: set-color(vf-color-gray-dark);
+    border-color: set-color(vf-color--grey--dark);
   }
 
   // Box checked
   &:checked + .vf-form__label:before {
-    background: set-color(vf-color-azure);
-    border-color: set-color(vf-color-azure);
+    background: set-color(vf-color--blue);
+    border-color: set-color(vf-color--blue);
   }
 
   // Disabled state .vf-form__label.
   &:disabled + .vf-form__label {
-    color: set-color(vf-color-gray-dark);
+    color: set-color(vf-color--grey--dark);
     cursor: auto;
   }
 
   // Disabled box.
   &:disabled + .vf-form__label:before {
-    background: set-color(vf-color-gray);
+    background: set-color(vf-color--grey);
     box-shadow: none;
   }
 

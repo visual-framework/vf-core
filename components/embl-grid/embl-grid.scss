@@ -29,7 +29,7 @@
   --embl-grid-spacing-normaliser: 0; // removes margin from first child
   --page-grid-gap: 0; //
 
-  @media (min-width: $vf-breakpoint-l) {
+  @media (min-width: $vf-breakpoint--l) {
     --page-grid-gap: 36px;
 
     /* stylelint-disable declaration-colon-space-after */
@@ -63,7 +63,7 @@
       position: relative;
     }
     & > *:last-child::before {
-      background-color: set-ui-color(vf-ui-color-gray-light);
+      background-color: set-ui-color(vf-ui-color--grey--light);
       content: '';
       height: 100%;
       left: -18px;
@@ -75,8 +75,8 @@
 
 .embl-grid--alt {
   --page-grid-gap: 0;
-  background-color: set-color(vf-color-black);
-  color: set-color(vf-color-white);
+  background-color: set-ui-color(vf-ui-color--black);
+  color: set-ui-color(vf-ui-color--white);
   grid-column: 1 / -1;
   /* stylelint-disable declaration-colon-space-after */
   grid-template-columns:
@@ -96,7 +96,7 @@
     grid-column: 2 / -2;
   }
 
-  @media (min-width: $vf-breakpoint-r) {
+  @media (min-width: $vf-breakpoint--r) {
     & > :first-child {
       grid-column: 2 / span 1;
     }

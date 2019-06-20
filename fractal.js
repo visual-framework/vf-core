@@ -48,7 +48,20 @@ module.exports = {
           }
           const context = entity.isComponent ? entity.variants().default().context : entity.context;
           return context;
-        }
+        },
+        hextorgb: module.exports = function(text) {
+          function hexToRGB(hex) {
+            var r = parseInt(hex.slice(1, 3), 16),
+                g = parseInt(hex.slice(3, 5), 16),
+                b = parseInt(hex.slice(5, 7), 16);
+            return "rgb(" + r + ", " + g + ", " + b + ")";
+          }
+
+          var hex = new String(text);
+
+          return hexToRGB(hex);
+          }
+
       },
       // globals: {
       //   // global-name: global-val
@@ -74,7 +87,7 @@ module.exports = {
     fractal.web.set('builder.dest', vfBuilderPath);
 
     /* configure web */
-    var vfStaticPath = global.vfStaticPath || __dirname + '/public';
+    var vfStaticPath = global.vfStaticPath || __dirname + '/temp/build-files';
     fractal.web.set('static.path', vfStaticPath);
     fractal.web.set('server.sync', true);
     var vfOpenBrowser = typeof global.vfOpenBrowser === "undefined" ? true : global.vfOpenBrowser;
@@ -144,6 +157,18 @@ module.exports = {
         callback(fractal);
       });
     }
+    if (mode == 'VRT') {
+      fractal.set('project.environment.local', 'true');
+      const builder = fractal.web.builder();
+      builder.on('progress', (completed, total) =>
+        logger.update(`Exported ${completed} of ${total} items`, 'info')
+      );
+      builder.on('error', err => logger.error(err.message));
+      return builder.build().then(() => {
+        logger.success('Fractal build completed!');
 
+        callback(fractal);
+      });
+    }
   }
 }

@@ -6,26 +6,43 @@ const fs = require('fs');
 // Configuration
 // -----------------------------------------------------------------------------
 
-const SassInput = './components/vf-componenet-rollup/index.scss';
-const SassOutput = './public/css';
-const autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
+// Pull in some optional configuration from the package.json file, a la:
+// "vfConfig": {
+//   "vfName": "My Component Library",
+//   "vfNameSpace": "myco-",
+//   "vfComponentPath": "./src/components",
+//   "vfBuildDestination": "./build",
+//   "vfThemePath": "@frctl/mandelbrot"
+// },
+// all settings are optional
 const config = JSON.parse(fs.readFileSync('./package.json'));
-global.vfName = config.vfConfig.vfName;
-global.vfNamespace = config.vfConfig.vfNamespace;
-global.vfComponentPath = __dirname + '/components';
-global.vfThemePath = './tools/vf-frctl-theme';
+config.vfConfig = config.vfConfig || [];
+global.vfName = config.vfConfig.vfName || "Visual Framework 2.0";
+global.vfNamespace = config.vfConfig.vfNamespace || "vf-";
+global.vfComponentPath = config.vfConfig.vfComponentPath || __dirname + '/components';
+global.vfBuildDestination = config.vfConfig.vfBuildDestination || __dirname + '/temp/build-files';
+global.vfThemePath = config.vfConfig.vfThemePath || './tools/vf-frctl-theme';
+const autoprefixerOptions = { overrideBrowserslist: ['last 2 versions', '> 5%', 'Firefox ESR'] };
+const path = require('path');
+const componentPath = path.resolve('.', global.vfComponentPath);
+const buildDestionation = path.resolve('.', global.vfBuildDestination);
+const SassInput = componentPath + '/vf-componenet-rollup/index.scss';
+const SassOutput = buildDestionation + '/css';
 
 // -----------------------------------------------------------------------------
 // Dependencies
 // -----------------------------------------------------------------------------
 
 const gulp = require('gulp');
-const path = require('path');
 const notify = require('gulp-notify');
 const shell = require('gulp-shell');
 const rename = require('gulp-rename');
 const watch = require('gulp-watch');
 const ListStream = require('list-stream');
+const connect = require('gulp-connect');
+const glob = require('glob');
+const replace = require('gulp-replace');
+const del = require('del');
 
 // Sass and CSS Stuff
 const sass = require('gulp-sass');
@@ -38,8 +55,9 @@ const recursive = require('./tools/css-generator/recursive-readdir');
 // Linting things
 const postcss     = require('gulp-postcss');
 const reporter    = require('postcss-reporter');
-const syntax_scss = require('postcss-scss');
-const gulpStylelint = require('gulp-stylelint');
+const syntax_scss     = require('postcss-scss');
+const gulpStylelint   = require('gulp-stylelint');
+const backstopjs        = require('backstopjs');
 
 // Image things
 const svgmin = require('gulp-svgmin');
@@ -52,22 +70,32 @@ const babel = require('gulp-babel');
 const rollup = require('gulp-better-rollup');
 const includePaths = require('rollup-plugin-includepaths');
 
-const componentPath = path.resolve(__dirname, 'components' );
-
 // Local Server Stuff
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
-
-// Design Tokens
-const theoG = require('gulp-theo')
-const theo = require('theo')
 
 
 // -----------------------------------------------------------------------------
 // Sass and CSS Tasks
 // -----------------------------------------------------------------------------
 
-gulp.task('css', function() {
+const sassPaths = [
+  componentPath + '/vf-sass-config/variables',
+  componentPath + '/vf-sass-config/functions',
+  componentPath + '/vf-sass-config/mixins',
+  componentPath,
+  componentPath + '/vf-form',
+  componentPath + '/vf-core-components',
+  componentPath + '/vf-core-components/vf-sass-config/variables',
+  componentPath + '/vf-core-components/vf-sass-config/functions',
+  componentPath + '/vf-core-components/vf-sass-config/mixins',
+  componentPath + '/vf-design-tokens/dist/sass',
+  componentPath + '/vf-design-tokens/dist/sass/custom-properties',
+  componentPath + '/vf-design-tokens/dist/sass/maps',
+  path.resolve(__dirname, 'node_modules'),
+];
+
+gulp.task('vf-css', function() {
   const sassOpts = {
     // Import sass files
     // We'll check to see if the file exists before passing
@@ -100,15 +128,7 @@ gulp.task('css', function() {
       }
 
     }],
-    includePaths: [
-      path.resolve(__dirname, 'components/vf-sass-config/variables'),
-      path.resolve(__dirname, 'components/vf-sass-config/functions'),
-      path.resolve(__dirname, 'components/vf-sass-config/mixins'),
-      path.resolve(__dirname, 'components'),
-      path.resolve(__dirname, 'components/vf-form'),
-      path.resolve(__dirname, 'components/vf-core-components'),
-      path.resolve(__dirname, 'node_modules'),
-    ]
+    includePaths: sassPaths
   };
 
   // Find all the component sass files available.
@@ -116,9 +136,9 @@ gulp.task('css', function() {
   // only include the file if it exists.
   var availableComponents = {}; // track the components avaialble
   return gulp
-    .src(['components/**/*.scss'], {
+    .src([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss'], {
       allowEmpty: true,
-      ignore: ['components/**/index.scss']
+      ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss']
     })
     .pipe(ListStream.obj(function (err, data) {
       if (err)
@@ -150,14 +170,14 @@ gulp.task('css', function() {
         .pipe(sourcemaps.write())
         .pipe(rename(
           {
-            basename: "styles"
+            basename: 'styles'
           }
         ))
         .pipe(gulp.dest(SassOutput))
         .pipe(cssnano())
         .pipe(rename(
           {
-            suffix: ".min"
+            suffix: '.min'
           }
         ))
         .pipe(gulp.dest(SassOutput));
@@ -166,18 +186,17 @@ gulp.task('css', function() {
 });
 
 // Sass Lint
-gulp.task("scss-lint", function lintCssTask() {
-
-  // For stylelint config rules see .stylelinrc
+// For stylelint config rules see .stylelinrc
+gulp.task('vf-scss-lint', function lintCssTask() {
 
   return gulp
     .src(
-      ['components/**/embl-*.scss', 'components/**/vf-*.scss', '!components/**/index.scss', '!assets/**/*.scss']
+      [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss', '!'+componentPath+'/vf-design-tokens/dist/**/*.scss']
     )
     .pipe(gulpStylelint({
       failAfterError: true,
       reporters: [
-        {formatter: "string", console: true}
+        {formatter: 'string', console: true}
       ]
     }));
 });
@@ -188,19 +207,19 @@ gulp.task("scss-lint", function lintCssTask() {
 // -----------------------------------------------------------------------------
 
 // Rollup all JS imports into CJS and babel them to ES5
-gulp.task('scripts:es5', function() {
+gulp.task('vf-scripts:es5', function() {
   let includePathOptions = {
       include: {},
       paths: [
-        path.resolve(__dirname, 'components'),
-        path.resolve(__dirname, 'components/vf-core-components'),
-        path.resolve(__dirname, 'components/vf-form'),
+        componentPath,
+        componentPath + '/vf-core-components',
+        componentPath + '/vf-form',
       ],
       external: ['vfTabs'],
       extensions: ['.js']
   };
 
-  return gulp.src('./components/vf-componenet-rollup/scripts.js')
+  return gulp.src(componentPath + '/vf-componenet-rollup/scripts.js')
     // .pipe(sourcemaps.init())
     .pipe(rollup({
       // There is no `input` option as rollup integrates into the gulp pipeline
@@ -208,11 +227,11 @@ gulp.task('scripts:es5', function() {
       // external: ['vfTabs','vfBanner'],
       plugins: [
         babel({
-          "presets": [
+          'presets': [
             [
-              "@babel/preset-env",
+              '@babel/preset-env',
               {
-                "targets": "> 0.25%, not dead, last 2 versions"
+                'targets': '> 0.25%, not dead, last 2 versions'
               }
             ]
           ]
@@ -225,26 +244,26 @@ gulp.task('scripts:es5', function() {
     }))
     // inlining the sourcemap into the exported .js file
     // .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./public/scripts'));
+    .pipe(gulp.dest(buildDestionation + '/scripts'));
 });
 
 
 // Eventually we'll want to support ES6 natively with ES5 as fallback, `scripts.es5.js`
-gulp.task('scripts:modern', function() {
-  return gulp.src('./components/vf-componenet-rollup/scripts.js')
+gulp.task('vf-scripts:modern', function() {
+  return gulp.src(componentPath + '/vf-componenet-rollup/scripts.js')
       .pipe(rename(function (path) {
-        path.extname = ".modern.js";
+        path.extname = '.modern.js';
       }))
-    .pipe(gulp.dest('./public/scripts'));
+    .pipe(gulp.dest(buildDestionation + '/scripts'));
 });
 
 // -----------------------------------------------------------------------------
 // Component Assets
 // -----------------------------------------------------------------------------
-gulp.task('component-assets', function() {
+gulp.task('vf-component-assets', function() {
   return gulp
-    .src(['./components/**/**/assets/**/*'])
-    .pipe(gulp.dest('./public/assets'));
+    .src([componentPath + '/vf-core-components/**/assets/**/*', componentPath + '/**/assets/**/*'])
+    .pipe(gulp.dest(buildDestionation + '/assets'));
 });
 
 
@@ -253,133 +272,10 @@ gulp.task('component-assets', function() {
 // -----------------------------------------------------------------------------
 gulp.task('svg', () => {
   return gulp
-    .src('./components/**/*.svg')
+    .src(componentPath + '/**/*.svg')
     .pipe(svgmin())
-    .pipe(gulp.dest('./components'));
+    .pipe(gulp.dest(componentPath));
 });
-
-// -----------------------------------------------------------------------------
-// Design Token Tasks
-// -----------------------------------------------------------------------------
-
-const theoGeneratedFileWarning = `// This file has been dynamically generated from design tokens
-// Please do NOT edit directly.`;
-const theoSourceTokenLocation = `// Source: {{relative "${ componentPath }" meta.file}}`;
-
-const theoGeneratedPropertiesTemplate = `${theoGeneratedFileWarning}
-
-${theoSourceTokenLocation}
-
-:root {
-  {{#each props as |prop|}}
-  {{#if prop.comment}}
-  {{{trimLeft (indent (comment (trim prop.comment)))}}}
-  {{/if}}
-  --{{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
-{{/each}}
-}
-`;
-
-const theoGeneratedMapTemplate = `${theoGeneratedFileWarning}
-
-${theoSourceTokenLocation}
-
-\${{stem meta.file}}-map: (
-{{#each props as |prop|}}
-  {{#if prop.comment}}
-  {{{trimLeft (indent (comment (trim prop.comment)))}}}
-  {{/if}}
-  '{{kebabcase prop.name}}': ({{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}}),
-{{/each}}
-);
-`;
-
-const theoGeneratedSassTemplate = `${theoGeneratedFileWarning}
-
-${theoSourceTokenLocation}
-
-{{#each props as |prop|}}
-{{#if prop.comment}}
-{{{trimLeft (indent (comment (trim prop.comment)))}}}
-{{/if}}
-\${{kebabcase prop.name}}: {{#eq prop.type "string"}}"{{/eq}}{{{prop.value}}}{{#eq prop.type "string"}}"{{/eq}};
-{{/each}}
-`;
-
-// Register design tokens to be processed by Theo
-
-gulp.task('tokens:typographic-scale', () =>
-  gulp.src('./components/vf-design-tokens/typographic-scales/*.yml')
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'typography-map' }
-    }))
-    .pipe(rename(function (path) {
-      path.extname = ".scss";
-    }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
-);
-
-gulp.task('tokens:variables', () =>
-  gulp.src('./components/vf-design-tokens/variables/*.yml')
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'variables.scss' }
-    }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
-);
-
-gulp.task('tokens:maps', () =>
-  gulp.src(['./components/vf-design-tokens/maps/*.yml', '!./components/vf-design-tokens/typographic-scales/*.yml'])
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'map.scss' }
-    }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
-);
-
-gulp.task('tokens:props', () =>
-  gulp.src(['./components/vf-design-tokens/maps/*.yml'])
-    .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'custom-properties.scss' }
-    }))
-    .pipe(gulp.dest('./components/vf-sass-config/variables'))
-);
-
-// Register output format for token types
-theo.registerFormat( "variables.scss",`${theoGeneratedSassTemplate}`);
-theo.registerFormat( "map.scss",`${theoGeneratedMapTemplate}`);
-theo.registerFormat( "custom-properties.scss",`${theoGeneratedPropertiesTemplate}`);
-
-// The Theo typography token processor is a bit more complex
-// and uses a custom format as a function
-theo.registerFormat("typography-map", result => {
-  let { category, type } = result
-    .get("props")
-    .first()
-    .toJS();
-  return `${theoGeneratedFileWarning}
-// Source: ${path.basename(result.getIn(["meta", "file"]))}
-
-$vf-${category}--${type}: (
-${result
-  .get("props")
-  .map(
-  prop => `
-  '${prop.get("name")}': (
-    'font-size': ${prop.getIn(["value", "font-size"])},
-    'font-weight': ${prop.getIn(["value", "font-weight"])},
-    'line-height': ${prop.getIn(["value", "line-height"])}
-  ),`
-  )
-  .sort()
-  .join("\n")}
-
-);
-  `;
-});
-
 
 // -----------------------------------------------------------------------------
 // Fractal Tasks
@@ -396,9 +292,21 @@ gulp.task('frctlBuild', function(done) {
   const fractal = require('./fractal.js').initialize('build',fractalReadyCallback);
   function fractalReadyCallback() {
     // Copy compiled css/js and other assets
-    gulp.src('./public/**/*')
+    gulp.src(buildDestionation + '/**/*')
       .pipe(gulp.dest('./build'));
-      console.info('Copied `/public` assets.');
+      console.info('Copied `/temp/build-files` assets.');
+
+    done();
+  }
+});
+
+gulp.task('frctlVRT', function(done) {
+  const fractal = require('./fractal.js').initialize('VRT',fractalReadyCallback);
+  function fractalReadyCallback() {
+    // Copy compiled css/js and other assets
+    gulp.src(buildDestionation + '/**/*')
+      .pipe(gulp.dest('./build'));
+      console.info('Copied `/temp/build-files` assets.');
 
     done();
   }
@@ -409,18 +317,10 @@ gulp.task('frctlBuild', function(done) {
 // -----------------------------------------------------------------------------
 
 var genCss = function (option) {
-  var file_name = path.basename(path.dirname(option.file_path)) + ".css";
+  var file_name = path.basename(path.dirname(option.file_path)) + '.css';
   return gulp.src(option.file_path)
     .pipe(sass({
-      includePaths: [
-        path.resolve(__dirname, 'components/vf-sass-config/variables'),
-        path.resolve(__dirname, 'components/vf-sass-config/functions'),
-        path.resolve(__dirname, 'components/vf-sass-config/mixins'),
-        path.resolve(__dirname, 'components'),
-        path.resolve(__dirname, 'components/vf-form'),
-        path.resolve(__dirname, 'components/vf-core-components'),
-        path.resolve(__dirname, 'node_modules')
-      ],
+      includePaths: sassPaths,
       outputStyle: 'expanded'
     })
     .on('error', sass.logError))
@@ -429,10 +329,11 @@ var genCss = function (option) {
     .pipe(gulp.dest(option.dir));
 };
 
-gulp.task('CSSGen', function(done) {
+gulp.task('vf-css-gen', function(done) {
   recursive(componentPath, ['*.css'], function (err, files) {
     files.forEach(function(file) {
-      if (file.file.indexOf('index.scss') > -1) {
+      // only generate CSS for index.scss files, but not for the vf rollup
+      if ((file.file.indexOf('index.scss') > -1) && (file.file_path.indexOf('vf-componenet-rollup/index.scss') == -1)) {
         genCss(file);
       }
     });
@@ -444,38 +345,68 @@ gulp.task('CSSGen', function(done) {
 // Watch Tasks
 // -----------------------------------------------------------------------------
 
-gulp.task('watch', function(done) {
-  gulp.watch('./components/**/*.scss', gulp.series(['css', 'scss-lint'])).on('change', reload);
-  gulp.watch('./components/**/*.js', gulp.series('scripts')).on('change', reload);
-  gulp.watch('./components/**/**/assets/*.svg', gulp.series('svg','component-assets')).on('change', reload);
-  gulp.watch(['./components/**/**/assets/*', '!./components/**/**/assets/*.svg'], gulp.series('component-assets')).on('change', reload);
+gulp.task('vf-watch', function(done) {
+  gulp.watch(componentPath + '/**/*.scss', gulp.series(['vf-css', 'vf-scss-lint'])).on('change', reload);
+  gulp.watch(componentPath + '/**/*.js', gulp.series('vf-scripts')).on('change', reload);
+  gulp.watch(componentPath + '/**/**/assets/*.svg', gulp.series('svg','vf-component-assets')).on('change', reload);
+  gulp.watch([componentPath + '/**/**/assets/*', '!' + componentPath + '/**/**/assets/*.svg'], gulp.series('vf-component-assets')).on('change', reload);
+});
+
+// -----------------------------------------------------------------------------
+// Backstop Tasks
+// -----------------------------------------------------------------------------
+
+var backstopConfig = {
+  //Config file location
+  config: './backstopConfig.js'
+}
+
+gulp.task('backstop_reference', () => backstopjs('reference', backstopConfig));
+gulp.task('backstop_test', () => backstopjs('test', backstopConfig));
+
+gulp.task('vf-tests', function(done) {
+  connect.server({
+    port: 8888
+  });
+  done();
+});
+gulp.task('vf-testdone', function(done) {
+  connect.serverClose();
+  done();
+});
+
+// -----------------------------------------------------------------------------
+// Cleanup Tasks
+// -----------------------------------------------------------------------------
+
+gulp.task('vf-clean', function(){
+  return del(['build/**','temp/**'], {force:true});
 });
 
 // -----------------------------------------------------------------------------
 // Default Tasks
 // -----------------------------------------------------------------------------
 
-gulp.task('scripts', gulp.series(
-  'scripts:es5', 'scripts:modern'
+gulp.task('vf-scripts', gulp.series(
+  'vf-scripts:es5', 'vf-scripts:modern'
 ));
 
-gulp.task('dev', gulp.series(
-  'component-assets', ['css', 'scripts'], 'frctlStart', 'watch'
-));
-
-gulp.task('tokens', gulp.parallel(
-  'tokens:variables', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
+gulp.task('vf-dev', gulp.series(
+  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', 'vf-watch'
 ));
 
 // Build as a static site for CI
-gulp.task('build', gulp.series(
-  'tokens', 'scss-lint', 'CSSGen', 'css', 'component-assets', 'scripts', 'frctlBuild'
+gulp.task('vf-build', gulp.series(
+  'vf-clean', 'vf-scss-lint', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
 ));
 
-gulp.task('prepush-test', gulp.parallel(
-  'scss-lint', 'css'
+gulp.task('vf-prepush-test', gulp.parallel(
+  'vf-scss-lint', 'vf-css'
 ));
 
-gulp.task('component', shell.task(
+gulp.task('vf-component', shell.task(
   ['yo ./tools/component-generator']
 ));
+
+gulp.task('vizres-setup', gulp.series('vf-tests', 'vf-css', 'backstop_reference', 'vf-testdone'));
+gulp.task('vizres-test', gulp.series('vf-tests', 'vf-css', 'backstop_test', 'vf-testdone'));

@@ -50,7 +50,7 @@
       <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?pattern=node-body&filter-content-type=article&filter-id=580&source=contenthub" data-target="self" data-embl-js-content-hub-loader="">
     </div>
 
-    {% render '@vf-masthead--inlay' %}
+    {% render '@vf-header--inlay' %}
 
     <section class="vf-inlay">
 
@@ -59,58 +59,62 @@
       <section class="vf-inlay__content vf-u-background-color-white">
 
         <main class="vf-inlay__content--main">
-          <div class="vf-text vf-text--body-xl">The Häring group aims to understand the molecular machinery that organises eukaryotic genomes. <a href="http://vfthemeprototype.lndo.site/about/">Read more about the Häring group</a></div>  </main>
+          <div class="vf-text vf-text--body-xl">The Häring group aims to understand the molecular machinery that organises eukaryotic genomes. <a class="vf-link" href="http://vfthemeprototype.lndo.site/about/">Read more about the Häring group</a></div>  </main>
         </main>
 
         <aside class="vf-inlay__content--additional">
-          <article class="vf-summary | vf-summary--profile vf-summary--profile-r">
-            <img class="vf-summary__image vf-summary__image--avatar" src="{{ '/assets/vf-summary/assets/vf-summary--profile-img.png' | path }}" alt="">
-            <h3 class="vf-summary__title">Person Name</h3>
-            <p class="vf-summary__text">Group Leader</p>
-            <a href="##" class="vf-summary__email">Contact Person</a>
-          </article>
-        </aside>
+        <article class="vf-summary vf-summary--profile vf-summary--profile-r">
+          <img class="vf-summary__image vf-summary__image--avatar" src="{{ '/assets/vf-summary/assets/vf-summary--profile-img.png' | path }}" alt="">
+          <h3 class="vf-summary__title">
+            <a href="javascript:void(0);" class="vf-summary__link">FirstName Surname</a>
+          </h3>
+          <p class="vf-summary__text">EMBL Press Office</p>
+          <p class="vf-summary__email">
+            <a href="mailto:contact@persons.com" class="vf-summary__link vf-summary__link--secondary">contact@persons.com</a>
+          </p>
+        </article>
+      </aside>
 
-        <hr class="vf-divider" />
-      </section>
-
-      <section class="vf-inlay__content vf-u-background-color-white">
-        <main class="vf-inlay__content--main">
-          {% render '@vf-content' %}
-        </main>
-
-        <aside class="vf-inlay__content--additional">
-          {% render '@vf-box' %}
-        </aside>
-
-      </section>
-
+      <hr class="vf-divider" />
     </section>
-  </div>
 
-  <div class="vf-body vf-body__additional-content">
-    <section class="vf-news-container | embl-grid embl-grid--has-sidebar vf-u-margin__top-xl">
+    <section class="vf-inlay__content vf-u-background-color-white">
+      <main class="vf-inlay__content--main">
+        {% render '@vf-content' %}
+      </main>
 
-      {% render '@vf-section-header', {'section-title': 'Latest Press Releases'} %}
-
-      <div class="vf-news-container__content">
-        {% render '@vf-summary--news' %}
-        {% render '@vf-summary--news' %}
-        {% render '@vf-summary--news' %}
-        {% render '@vf-summary--news' %}
-      </div>
-
-      <div class="vf-news-container__sidebar">
-      </div>
+      <aside class="vf-inlay__content--additional">
+        {% render '@vf-box' %}
+      </aside>
 
     </section>
 
-  </div>
+  </section>
+</div>
+
+<div class="vf-body vf-body__additional-content">
+  <section class="vf-news-container | embl-grid embl-grid--has-sidebar vf-u-margin__top-xl">
+
+    {% render '@vf-section-header', {'section-title': 'Latest Press Releases'} %}
+
+    <div class="vf-news-container__content">
+      {% render '@vf-summary--news' %}
+      {% render '@vf-summary--news' %}
+      {% render '@vf-summary--news' %}
+      {% render '@vf-summary--news' %}
+    </div>
+
+    <div class="vf-news-container__sidebar">
+    </div>
+
+  </section>
+
+</div>
 
 
 
-  <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=569&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+<link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=569&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
 
-  <script src="{{ '/scripts/scripts.js' | path }}"></script>
+<script src="{{ '/scripts/scripts.js' | path }}"></script>
 </body>
 </html>

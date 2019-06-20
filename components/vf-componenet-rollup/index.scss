@@ -11,10 +11,25 @@
 @import 'vf-global-custom-properties.scss';
 
 @import 'vf-global-variables.scss';
-@import 'vf-variables.scss';
+@import '_vf-variables.shame.scss';
+@import 'vf-global-variables.scss';
+@import 'vf-border-radius.variables.scss';
+@import 'vf-breakpoints.variables.scss';
+@import 'vf-colors.map.scss';
+@import 'vf-ui-colors.map.scss';
+@import 'vf-font--monospace.scss';
+@import 'vf-font--sans.scss';
+@import 'vf-font-families.variables.scss';
+@import 'vf-links.variables.scss';
+@import 'vf-spacing.map.scss';
+
+@import 'vf-colors.custom-properties.scss';
+@import 'vf-ui-colors.custom-properties.scss';
+
 @import 'vf-functions.scss';
 @import 'vf-mixins.scss';
 @import 'node-normalize-scss/normalize.scss';
+
 
 @import 'vf-sass-utilities/vf-screen-reader.scss';
 
@@ -28,7 +43,7 @@
 
 html, button {
   @if $use-global-typography == true {
-    font-family: $vf-font-family-sans-serif;
+    font-family: $vf-font-family--sans-serif;
   }
 }
 
@@ -133,9 +148,9 @@ html, button {
 
 /* All Visual Framework Utility and high-specificity components */
 
-@import 'vf-utility-classes/vf-utility-classes.scss';
 @import 'vf-heading/vf-heading.scss';
 @import 'vf-text/vf-text.scss';
+@import 'vf-utility-classes/vf-utility-classes.scss';
 
 // This is a demonstration of vf-core's ability to warn and proceed on missing
 // sass imports
