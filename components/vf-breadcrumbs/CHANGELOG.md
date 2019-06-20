@@ -3,6 +3,156 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.37 (2019-06-20)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a6))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
+## 0.0.36 (2019-06-20)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a6))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
+## 0.0.35 (2019-06-20)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a6))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
+## 0.0.34 (2019-06-20)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a6))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
+## 0.0.33 (2019-06-20)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a6))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
+## 0.0.37 (2019-06-20)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a6))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
+## 0.0.36 (2019-06-20)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a6))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
+## 0.0.35 (2019-06-20)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a6))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
+## 0.0.34 (2019-06-20)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a6))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
+## 0.0.33 (2019-06-20)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a6))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
 ## 0.0.32 (2019-06-03)
 
 
