@@ -490,13 +490,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-bullet">- </span>added that
 
 <span class="hljs-section">### Changes</span>
-
-<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">
+- </span>changed this
 <span class="hljs-bullet">- </span>changed that
 
 <span class="hljs-section">### Removed</span>
-
-<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">
+- </span>deleted this
 <span class="hljs-bullet">- </span>deleted that
 </pre>
         </code>
@@ -653,44 +653,62 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">/* stylelint-disable order/order */</span>
 <span class="hljs-selector-class">.vf-grid</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
 }
 
 <span class="hljs-selector-class">.vf-grid</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">1</span>;
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
 }
 
 <span class="hljs-selector-attr">[class*='vf-grid__']</span> {
-  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">-ms-flex-wrap</span>: wrap;
+      <span class="hljs-attribute">flex-wrap</span>: wrap;
 }
 
 <span class="hljs-selector-class">.vf-grid__col-2</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
 }
 
 <span class="hljs-selector-class">.vf-grid__col-3</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(33.3333% - 20px);
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(33.3333% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(33.3333% - 20px);
 }
 
 <span class="hljs-selector-class">.vf-grid__col-4</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(25% - 20px);
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(25% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(25% - 20px);
 }
 
 <span class="hljs-selector-class">.vf-grid__col-5</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16% - 20px);
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16% - 20px);
 }
 
 <span class="hljs-selector-class">.vf-grid__col-6</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16.666666667% - 20px);
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16.666666667% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16.666666667% - 20px);
 }
 
 @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1023px</span>) {
   <span class="hljs-selector-class">.vf-grid</span> {
-    <span class="hljs-attribute">flex-wrap</span>: wrap;
+    <span class="hljs-attribute">-ms-flex-wrap</span>: wrap;
+        <span class="hljs-attribute">flex-wrap</span>: wrap;
   }
   <span class="hljs-selector-class">.vf-grid</span> &gt; * {
-    <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+    <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+            <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
   }
 }
 
@@ -783,7 +801,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-grid/vf-grid.css
         </li>
         <li class="vf-list__item">
-          Size: 3.3 KB
+          Size: 3.9 KB
         </li>
       </ul>
     </section>

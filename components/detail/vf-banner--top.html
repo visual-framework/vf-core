@@ -470,13 +470,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-bullet">- </span>added that
 
 <span class="hljs-section">### Changes</span>
-
-<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">
+- </span>changed this
 <span class="hljs-bullet">- </span>changed that
 
 <span class="hljs-section">### Removed</span>
-
-<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">
+- </span>deleted this
 <span class="hljs-bullet">- </span>deleted that
 </pre>
         </code>
@@ -643,7 +643,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-banner</span> {
-  <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">-webkit-box-sizing</span>: border-box;
+          <span class="hljs-attribute">box-sizing</span>: border-box;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">12px</span>;
 }
 
@@ -665,8 +666,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-banner__content</span> {
-  <span class="hljs-attribute">align-content</span>: center;
-  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">-ms-flex-line-pack</span>: center;
+      <span class="hljs-attribute">align-content</span>: center;
+  <span class="hljs-attribute">-webkit-box-align</span>: center;
+      <span class="hljs-attribute">-ms-flex-align</span>: center;
+          <span class="hljs-attribute">align-items</span>: center;
 }
 
 @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">63.9375em</span>) {
@@ -719,7 +723,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
   <span class="hljs-selector-class">.vf-banner--notice</span> <span class="hljs-selector-class">.vf-button</span> {
-    <span class="hljs-attribute">align-self</span>: center;
+    <span class="hljs-attribute">-ms-flex-item-align</span>: center;
+        <span class="hljs-attribute">align-self</span>: center;
     <span class="hljs-attribute">justify-self</span>: end;
   }
 }
@@ -759,6 +764,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-banner--phase</span> <span class="hljs-selector-class">.vf-banner__content</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
 }
 
@@ -782,7 +789,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-banner/vf-banner.css
         </li>
         <li class="vf-list__item">
-          Size: 3.4 KB
+          Size: 3.7 KB
         </li>
       </ul>
     </section>

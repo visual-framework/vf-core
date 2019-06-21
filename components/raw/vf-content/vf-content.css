@@ -89,7 +89,11 @@
 }
 
 .vf-text--has-tag {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -111,6 +115,8 @@
   line-height: 1;
   border: 1px solid currentColor;
   color: inherit;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
   letter-spacing: .05em;
   padding: 4px 8px;
@@ -136,9 +142,15 @@
 }
 
 .vf-badge--phases {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 0 12px 0 0;
   min-width: 52px;
 }
@@ -321,7 +333,8 @@ a.vf-badge--primary:hover {
   border-color: #f3f3f3;
   border-style: solid;
   border-width: 3px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: #54585a;
   display: block;
   padding: 12px;
@@ -341,6 +354,7 @@ a.vf-badge--primary:hover {
   opacity: 0;
   position: absolute;
   top: -16px;
+  -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
   visibility: hidden;
   z-index: 1;
@@ -356,6 +370,12 @@ a.vf-badge--primary:hover {
 .vf-form__input::-webkit-input-placeholder,
 .vf-form__select::-webkit-input-placeholder,
 .vf-form__textarea::-webkit-input-placeholder {
+  color: #54585a;
+}
+
+.vf-form__input::-moz-placeholder,
+.vf-form__select::-moz-placeholder,
+.vf-form__textarea::-moz-placeholder {
   color: #54585a;
 }
 
@@ -429,6 +449,7 @@ a.vf-badge--primary:hover {
   opacity: 0;
   position: absolute;
   top: -24px;
+  -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
   visibility: hidden;
   z-index: 1;
@@ -454,6 +475,7 @@ a.vf-badge--primary:hover {
   position: absolute;
   right: 15px;
   top: 1px;
+  -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
   z-index: 1;
 }
@@ -480,7 +502,8 @@ a.vf-badge--primary:hover {
   border-radius: 0;
   border-style: solid;
   border-width: 3px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: #54585a;
   display: block;
   margin: 0;
@@ -548,7 +571,8 @@ a.vf-badge--primary:hover {
 
 .vf-form__checkbox:disabled + .vf-form__label:before {
   background: #707372;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .vf-form__radio {
@@ -597,12 +621,14 @@ a.vf-badge--primary:hover {
 
 .vf-form__radio:disabled + .vf-form__label::before {
   background: #707372;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .vf-form__textarea {
   border: 3px solid #f3f3f3;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: block;
   padding: 12px;
   width: 100%;
@@ -656,7 +682,8 @@ a.vf-badge--primary:hover {
   background-color: #307fe2;
   border: 2px solid #307fe2;
   color: #ffffff;
-  box-shadow: 0px 6px 0px 0px #003da5;
+  -webkit-box-shadow: 0px 6px 0px 0px #003da5;
+          box-shadow: 0px 6px 0px 0px #003da5;
   margin-bottom: 6px;
 }
 
@@ -671,7 +698,8 @@ a.vf-badge--primary:hover {
 }
 
 .vf-button--primary:hover {
-  box-shadow: 0px 2px 0px 0px #003da5;
+  -webkit-box-shadow: 0px 2px 0px 0px #003da5;
+          box-shadow: 0px 2px 0px 0px #003da5;
   position: relative;
   top: 4px;
 }
@@ -680,7 +708,8 @@ a.vf-badge--primary:hover {
   background-color: #009f4d;
   border: 2px solid #009f4d;
   color: #ffffff;
-  box-shadow: 0px 6px 0px 0px #007a53;
+  -webkit-box-shadow: 0px 6px 0px 0px #007a53;
+          box-shadow: 0px 6px 0px 0px #007a53;
   margin-bottom: 6px;
 }
 
@@ -695,7 +724,8 @@ a.vf-badge--primary:hover {
 }
 
 .vf-button--secondary:hover {
-  box-shadow: 0px 2px 0px 0px #007a53;
+  -webkit-box-shadow: 0px 2px 0px 0px #007a53;
+          box-shadow: 0px 2px 0px 0px #007a53;
   position: relative;
   top: 4px;
 }
@@ -704,7 +734,8 @@ a.vf-badge--primary:hover {
   background-color: #54585a;
   border: 2px solid #54585a;
   color: #ffffff;
-  box-shadow: 0px 6px 0px 0px #707372;
+  -webkit-box-shadow: 0px 6px 0px 0px #707372;
+          box-shadow: 0px 6px 0px 0px #707372;
   margin-bottom: 6px;
 }
 
@@ -719,7 +750,8 @@ a.vf-badge--primary:hover {
 }
 
 .vf-button--tertiary:hover {
-  box-shadow: 0px 2px 0px 0px #707372;
+  -webkit-box-shadow: 0px 2px 0px 0px #707372;
+          box-shadow: 0px 2px 0px 0px #707372;
   position: relative;
   top: 4px;
 }
@@ -916,7 +948,8 @@ a.vf-badge--primary:hover {
 .vf-box {
   background-color: #54585a;
   border-color: #54585a;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: #ffffff;
   padding: 24px 16px;
   width: 100%;

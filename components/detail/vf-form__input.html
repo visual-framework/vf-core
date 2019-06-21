@@ -384,13 +384,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-bullet">- </span>added that
 
 <span class="hljs-section">### Changes</span>
-
-<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">
+- </span>changed this
 <span class="hljs-bullet">- </span>changed that
 
 <span class="hljs-section">### Removed</span>
-
-<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">
+- </span>deleted this
 <span class="hljs-bullet">- </span>deleted that
 </pre>
         </code>
@@ -560,7 +560,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#f3f3f3</span>;
   <span class="hljs-attribute">border-style</span>: solid;
   <span class="hljs-attribute">border-width</span>: <span class="hljs-number">3px</span>;
-  <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">-webkit-box-sizing</span>: border-box;
+          <span class="hljs-attribute">box-sizing</span>: border-box;
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
@@ -580,6 +581,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">position</span>: absolute;
   <span class="hljs-attribute">top</span>: -<span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">-webkit-transition</span>: all .<span class="hljs-number">2s</span> ease-in-out;
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">2s</span> ease-in-out;
   <span class="hljs-attribute">visibility</span>: hidden;
   <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
@@ -595,6 +597,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span>,
 <span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span>,
 <span class="hljs-selector-class">.vf-form__textarea</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
+}
+
+<span class="hljs-selector-class">.vf-form__input</span><span class="hljs-selector-pseudo">::-moz-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__select</span><span class="hljs-selector-pseudo">::-moz-placeholder</span>,
+<span class="hljs-selector-class">.vf-form__textarea</span><span class="hljs-selector-pseudo">::-moz-placeholder</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#54585a</span>;
 }
 
@@ -668,6 +676,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">position</span>: absolute;
   <span class="hljs-attribute">top</span>: -<span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">-webkit-transition</span>: all .<span class="hljs-number">2s</span> ease-in-out;
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">2s</span> ease-in-out;
   <span class="hljs-attribute">visibility</span>: hidden;
   <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
@@ -693,6 +702,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">position</span>: absolute;
   <span class="hljs-attribute">right</span>: <span class="hljs-number">15px</span>;
   <span class="hljs-attribute">top</span>: <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">-webkit-transition</span>: all .<span class="hljs-number">2s</span> ease-in-out;
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">2s</span> ease-in-out;
   <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
 }
@@ -715,7 +725,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-form/vf-form__input/vf-form__input.css
         </li>
         <li class="vf-list__item">
-          Size: 4.7 KB
+          Size: 5 KB
         </li>
       </ul>
     </section>

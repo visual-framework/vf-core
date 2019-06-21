@@ -432,13 +432,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-bullet">- </span>added that
 
 <span class="hljs-section">### Changes</span>
-
-<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">
+- </span>changed this
 <span class="hljs-bullet">- </span>changed that
 
 <span class="hljs-section">### Removed</span>
-
-<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">
+- </span>deleted this
 <span class="hljs-bullet">- </span>deleted that
 </pre>
         </code>
@@ -599,15 +599,22 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-pagination__list</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">justify-content</span>: space-between;
+  <span class="hljs-attribute">-webkit-box-pack</span>: justify;
+      <span class="hljs-attribute">-ms-flex-pack</span>: justify;
+          <span class="hljs-attribute">justify-content</span>: space-between;
   <span class="hljs-attribute">list-style-type</span>: none;
   <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0</span>;
 }
 
 <span class="hljs-selector-class">.vf-pagination__item</span> {
-  <span class="hljs-attribute">align-self</span>: flex-end;
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-ms-flex-item-align</span>: end;
+      <span class="hljs-attribute">align-self</span>: flex-end;
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0px</span>;
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">text-align</span>: center;
 }
 
@@ -645,7 +652,9 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-pagination__item--pages-per</span> {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">2</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0px</span>;
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">16px</span>;
 }
 
@@ -667,7 +676,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-pagination/vf-pagination.css
         </li>
         <li class="vf-list__item">
-          Size: 2.2 KB
+          Size: 2.5 KB
         </li>
       </ul>
     </section>

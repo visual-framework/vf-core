@@ -365,13 +365,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-bullet">- </span>added that
 
 <span class="hljs-section">### Changes</span>
-
-<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">
+- </span>changed this
 <span class="hljs-bullet">- </span>changed that
 
 <span class="hljs-section">### Removed</span>
-
-<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">
+- </span>deleted this
 <span class="hljs-bullet">- </span>deleted that
 </pre>
         </code>
@@ -583,7 +583,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-text--has-tag</span> {
-  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">-webkit-box-align</span>: center;
+      <span class="hljs-attribute">-ms-flex-align</span>: center;
+          <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
 }
 
@@ -600,8 +604,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-page-header</span> {
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">flex-direction</span>: column-reverse;
+  <span class="hljs-attribute">-webkit-box-orient</span>: vertical;
+  <span class="hljs-attribute">-webkit-box-direction</span>: reverse;
+      <span class="hljs-attribute">-ms-flex-direction</span>: column-reverse;
+          <span class="hljs-attribute">flex-direction</span>: column-reverse;
 }
 
 <span class="hljs-selector-class">.vf-page-header__heading</span> {
@@ -639,7 +648,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-page-header/vf-page-header.css
         </li>
         <li class="vf-list__item">
-          Size: 3.2 KB
+          Size: 3.5 KB
         </li>
       </ul>
     </section>

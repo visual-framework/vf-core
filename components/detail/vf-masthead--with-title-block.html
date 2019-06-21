@@ -471,13 +471,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-bullet">- </span>added that
 
 <span class="hljs-section">### Changes</span>
-
-<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">
+- </span>changed this
 <span class="hljs-bullet">- </span>changed that
 
 <span class="hljs-section">### Removed</span>
-
-<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">
+- </span>deleted this
 <span class="hljs-bullet">- </span>deleted that
 </pre>
         </code>
@@ -642,44 +642,62 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">/* stylelint-disable order/order */</span>
 <span class="hljs-selector-class">.vf-grid</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
 }
 
 <span class="hljs-selector-class">.vf-grid</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">1</span>;
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
 }
 
 <span class="hljs-selector-attr">[class*='vf-grid__']</span> {
-  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">-ms-flex-wrap</span>: wrap;
+      <span class="hljs-attribute">flex-wrap</span>: wrap;
 }
 
 <span class="hljs-selector-class">.vf-grid__col-2</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
 }
 
 <span class="hljs-selector-class">.vf-grid__col-3</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(33.3333% - 20px);
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(33.3333% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(33.3333% - 20px);
 }
 
 <span class="hljs-selector-class">.vf-grid__col-4</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(25% - 20px);
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(25% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(25% - 20px);
 }
 
 <span class="hljs-selector-class">.vf-grid__col-5</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16% - 20px);
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16% - 20px);
 }
 
 <span class="hljs-selector-class">.vf-grid__col-6</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16.666666667% - 20px);
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16.666666667% - 20px);
+          <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(16.666666667% - 20px);
 }
 
 @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1023px</span>) {
   <span class="hljs-selector-class">.vf-grid</span> {
-    <span class="hljs-attribute">flex-wrap</span>: wrap;
+    <span class="hljs-attribute">-ms-flex-wrap</span>: wrap;
+        <span class="hljs-attribute">flex-wrap</span>: wrap;
   }
   <span class="hljs-selector-class">.vf-grid</span> &gt; * {
-    <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+    <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">-ms-flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
+            <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">calc</span>(50% - 20px);
   }
 }
 
@@ -774,6 +792,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-masthead__inner</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
@@ -781,9 +801,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-masthead__title</span> {
-  <span class="hljs-attribute">align-self</span>: unset;
+  <span class="hljs-attribute">-ms-flex-item-align</span>: unset;
+      <span class="hljs-attribute">align-self</span>: unset;
+  <span class="hljs-attribute">display</span>: -webkit-inline-box;
+  <span class="hljs-attribute">display</span>: -ms-inline-flexbox;
   <span class="hljs-attribute">display</span>: inline-flex;
-  <span class="hljs-attribute">flex-direction</span>: column-reverse;
+  <span class="hljs-attribute">-webkit-box-orient</span>: vertical;
+  <span class="hljs-attribute">-webkit-box-direction</span>: reverse;
+      <span class="hljs-attribute">-ms-flex-direction</span>: column-reverse;
+          <span class="hljs-attribute">flex-direction</span>: column-reverse;
   <span class="hljs-attribute">z-index</span>: <span class="hljs-number">2</span>;
 }
 
@@ -794,8 +820,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.547</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default));
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">-webkit-box-orient</span>: vertical;
+  <span class="hljs-attribute">-webkit-box-direction</span>: normal;
+      <span class="hljs-attribute">-ms-flex-direction</span>: column;
+          <span class="hljs-attribute">flex-direction</span>: column;
 }
 
 <span class="hljs-selector-class">.vf-masthead__heading--additional</span> {
@@ -852,6 +883,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-masthead--with-title-block</span> <span class="hljs-selector-class">.vf-masthead__title</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#000000</span>;
+  <span class="hljs-attribute">display</span>: -webkit-inline-box;
+  <span class="hljs-attribute">display</span>: -ms-inline-flexbox;
   <span class="hljs-attribute">display</span>: inline-flex;
   <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">16px</span>;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">16px</span>;
@@ -861,8 +894,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-masthead--with-title-block</span> <span class="hljs-selector-class">.vf-masthead__title</span><span class="hljs-selector-pseudo">::before</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#000000</span>;
   <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+  <span class="hljs-attribute">display</span>: -webkit-inline-box;
+  <span class="hljs-attribute">display</span>: -ms-inline-flexbox;
   <span class="hljs-attribute">display</span>: inline-flex;
-  <span class="hljs-attribute">flex-direction</span>: column-reverse;
+  <span class="hljs-attribute">-webkit-box-orient</span>: vertical;
+  <span class="hljs-attribute">-webkit-box-direction</span>: reverse;
+      <span class="hljs-attribute">-ms-flex-direction</span>: column-reverse;
+          <span class="hljs-attribute">flex-direction</span>: column-reverse;
   <span class="hljs-attribute">grid-auto-columns</span>: -webkit-max-content;
   <span class="hljs-attribute">grid-auto-columns</span>: max-content;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
@@ -880,7 +918,9 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-masthead__form--search</span> {
   <span class="hljs-attribute">align-self</span>: flex-end;
   <span class="hljs-attribute">grid-row</span>: <span class="hljs-number">2</span>;
-  <span class="hljs-attribute">justify-content</span>: flex-end;
+  <span class="hljs-attribute">-webkit-box-pack</span>: end;
+      <span class="hljs-attribute">-ms-flex-pack</span>: end;
+          <span class="hljs-attribute">justify-content</span>: flex-end;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">12px</span>;
   <span class="hljs-attribute">margin-left</span>: auto;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">288px</span>;
@@ -889,14 +929,22 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-masthead__form__item</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">flex-direction</span>: row;
-  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">-webkit-box-orient</span>: horizontal;
+  <span class="hljs-attribute">-webkit-box-direction</span>: normal;
+      <span class="hljs-attribute">-ms-flex-direction</span>: row;
+          <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">-ms-flex-wrap</span>: wrap;
+      <span class="hljs-attribute">flex-wrap</span>: wrap;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">6px</span>;
 }
 
 <span class="hljs-selector-class">.vf-masthead__button</span> {
-  <span class="hljs-attribute">align-items</span>: flex-end;
+  <span class="hljs-attribute">-webkit-box-align</span>: end;
+      <span class="hljs-attribute">-ms-flex-align</span>: end;
+          <span class="hljs-attribute">align-items</span>: flex-end;
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#003da5</span>;
   <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
@@ -911,17 +959,25 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-masthead__form__label</span> {
-  <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">100%</span>;
-  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-ms-flex-preferred-size</span>: <span class="hljs-number">100%</span>;
+      <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex-positive</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-ms-flex-negative</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">4px</span>;
   <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">1px</span> <span class="hljs-number">1px</span> <span class="hljs-number">3px</span> <span class="hljs-number">#ffffff</span>;
 }
 
 <span class="hljs-selector-class">.vf-masthead__form__input--text</span> {
-  <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">79%</span>;
-  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-ms-flex-preferred-size</span>: <span class="hljs-number">79%</span>;
+      <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">79%</span>;
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">-ms-flex-positive</span>: <span class="hljs-number">0</span>;
+          <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">-ms-flex-negative</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
   <span class="hljs-attribute">font-style</span>: italic;
 }
@@ -951,7 +1007,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-masthead/vf-masthead.css
         </li>
         <li class="vf-list__item">
-          Size: 7.1 KB
+          Size: 8.8 KB
         </li>
       </ul>
     </section>

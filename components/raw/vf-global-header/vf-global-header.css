@@ -41,6 +41,8 @@
 
 .vf-logo {
   color: #000000;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 41px;
   text-decoration: none;
@@ -50,6 +52,8 @@
   background-image: url("../assets/vf-logo/assets/logo-small.svg");
   background-repeat: no-repeat;
   background-size: auto 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 25px;
   min-width: 70px;
@@ -70,8 +74,13 @@
 }
 
 .vf-navigation__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .vf-navigation__heading {
@@ -79,7 +88,9 @@
 }
 
 .vf-global-header {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #ffffff;
   border-bottom: solid 1px #707372;
   display: grid;
@@ -90,17 +101,21 @@
 }
 
 .vf-global-header__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   grid-column: 2 / -2;
 }
 
 .vf-global-header__site-name {
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   display: block;
   margin: 0;
 }
 
 .vf-global-header [class*='navigation'] {
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   margin-left: auto;
 }

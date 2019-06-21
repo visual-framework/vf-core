@@ -408,13 +408,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-bullet">- </span>added that
 
 <span class="hljs-section">### Changes</span>
-
-<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">
+- </span>changed this
 <span class="hljs-bullet">- </span>changed that
 
 <span class="hljs-section">### Removed</span>
-
-<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">
+- </span>deleted this
 <span class="hljs-bullet">- </span>deleted that
 </pre>
         </code>
@@ -575,12 +575,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-search--inline</span> {
-  <span class="hljs-attribute">align-items</span>: flex-start;
+  <span class="hljs-attribute">-webkit-box-align</span>: start;
+      <span class="hljs-attribute">-ms-flex-align</span>: start;
+          <span class="hljs-attribute">align-items</span>: flex-start;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
 }
 
 <span class="hljs-selector-class">.vf-search--inline</span> <span class="hljs-selector-class">.vf-search__item</span> {
-  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">-webkit-box-flex</span>: <span class="hljs-number">1</span>;
+      <span class="hljs-attribute">-ms-flex-positive</span>: <span class="hljs-number">1</span>;
+          <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
 }
 
 <span class="hljs-selector-class">.vf-search--inline</span> <span class="hljs-selector-class">.vf-search__button</span> {
@@ -603,7 +609,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-search/vf-search.css
         </li>
         <li class="vf-list__item">
-          Size: 1.5 KB
+          Size: 1.7 KB
         </li>
       </ul>
     </section>

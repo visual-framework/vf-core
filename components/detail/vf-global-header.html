@@ -410,13 +410,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-bullet">- </span>added that
 
 <span class="hljs-section">### Changes</span>
-
-<span class="hljs-bullet">- </span>changed this
+<span class="hljs-bullet">
+- </span>changed this
 <span class="hljs-bullet">- </span>changed that
 
 <span class="hljs-section">### Removed</span>
-
-<span class="hljs-bullet">- </span>deleted this
+<span class="hljs-bullet">
+- </span>deleted this
 <span class="hljs-bullet">- </span>deleted that
 </pre>
         </code>
@@ -584,6 +584,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-logo</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">41px</span>;
   <span class="hljs-attribute">text-decoration</span>: none;
@@ -593,6 +595,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../assets/vf-logo/assets/logo-small.svg"</span>);
   <span class="hljs-attribute">background-repeat</span>: no-repeat;
   <span class="hljs-attribute">background-size</span>: auto <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;
   <span class="hljs-attribute">min-width</span>: <span class="hljs-number">70px</span>;
@@ -613,8 +617,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-navigation__list</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">-webkit-box-orient</span>: horizontal;
+  <span class="hljs-attribute">-webkit-box-direction</span>: normal;
+      <span class="hljs-attribute">-ms-flex-direction</span>: row;
+          <span class="hljs-attribute">flex-direction</span>: row;
 }
 
 <span class="hljs-selector-class">.vf-navigation__heading</span> {
@@ -622,7 +631,9 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-global-header</span> {
-  <span class="hljs-attribute">align-items</span>: center;
+  <span class="hljs-attribute">-webkit-box-align</span>: center;
+      <span class="hljs-attribute">-ms-flex-align</span>: center;
+          <span class="hljs-attribute">align-items</span>: center;
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffffff</span>;
   <span class="hljs-attribute">border-bottom</span>: solid <span class="hljs-number">1px</span> <span class="hljs-number">#707372</span>;
   <span class="hljs-attribute">display</span>: grid;
@@ -633,18 +644,22 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-global-header__inner</span> {
+  <span class="hljs-attribute">display</span>: -webkit-box;
+  <span class="hljs-attribute">display</span>: -ms-flexbox;
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
 }
 
 <span class="hljs-selector-class">.vf-global-header__site-name</span> {
-  <span class="hljs-attribute">align-self</span>: center;
+  <span class="hljs-attribute">-ms-flex-item-align</span>: center;
+      <span class="hljs-attribute">align-self</span>: center;
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 }
 
 <span class="hljs-selector-class">.vf-global-header</span> <span class="hljs-selector-attr">[class*='navigation']</span> {
-  <span class="hljs-attribute">align-self</span>: center;
+  <span class="hljs-attribute">-ms-flex-item-align</span>: center;
+      <span class="hljs-attribute">align-self</span>: center;
   <span class="hljs-attribute">margin-left</span>: auto;
 }
 </pre>
@@ -662,7 +677,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-global-header/vf-global-header.css
         </li>
         <li class="vf-list__item">
-          Size: 2.5 KB
+          Size: 2.9 KB
         </li>
       </ul>
     </section>
