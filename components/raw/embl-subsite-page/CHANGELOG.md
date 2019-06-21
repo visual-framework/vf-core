@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.22 (2019-06-21)
+
+**Note:** Version bump only for package @visual-framework/embl-subsite-page
+
+
+
+
+
 ## 0.0.21 (2019-06-20)
 
 **Note:** Version bump only for package @visual-framework/embl-subsite-page
