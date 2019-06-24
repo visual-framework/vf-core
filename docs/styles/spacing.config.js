@@ -10,14 +10,14 @@ try {
   if (path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-colors.ios.json')) {
     module.exports = {
       context: {
-        colors: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-spacing.ios.json'))
+        spacing: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-spacing.ios.json'))
       }
     };
   }
 } catch(err) {
   module.exports = {
     context: {
-      colors: null
+      spacing: null
     }
   }
 }
