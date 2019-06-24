@@ -2,8 +2,22 @@
 
 const path = require('path');
 
-module.exports = {
-  context: {
-    spacing: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-spacing.ios.json'))
+// Only generate the colour tokens if the vf-design-tokens are installed.
+// That is: if this is a full VF desing system, we probably have design tokens,
+// if not we're likely running as a VF component system and we don't want things
+// to blow up
+try {
+  if (path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-colors.ios.json')) {
+    module.exports = {
+      context: {
+        spacing: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-spacing.ios.json'))
+      }
+    };
   }
-};
+} catch(err) {
+  module.exports = {
+    context: {
+      spacing: null
+    }
+  }
+}
