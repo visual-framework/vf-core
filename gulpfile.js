@@ -146,7 +146,7 @@ gulp.task('vf-css', function() {
   return gulp
     .src([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss'], {
       allowEmpty: true,
-      ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss','!'+componentPath+'/vf-core-components/vf-core/components/**/*.scss']
+      ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss',componentPath+'/vf-core-components/vf-core/components/**/*.scss']
     })
     .pipe(ListStream.obj(function (err, data) {
       if (err)
