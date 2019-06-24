@@ -306,17 +306,6 @@ gulp.task('frctlBuild', function(done) {
   }
 });
 
-gulp.task('frctlVRT', function(done) {
-  const fractal = require('./fractal.js').initialize('VRT',fractalReadyCallback);
-  function fractalReadyCallback() {
-    // Copy compiled css/js and other assets
-    gulp.src(buildDestionation + '/**/*')
-      .pipe(gulp.dest('./build'));
-      console.info('Copied `/temp/build-files` assets.');
-
-    done();
-  }
-});
 
 // -----------------------------------------------------------------------------
 // CSS Generator Tasks

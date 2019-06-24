@@ -15,6 +15,7 @@ before_script:
   - npm install -g gulp-cli
   - gulp vf-build
   - "curl https://www.projectwallace.com/webhooks/v1/imports?token=$WALLACE_TOKEN -fsS --retry 3 -X POST -H 'Content-Type: text/css' -d @build/css/styles.css"
+  - npx percy snapshot build/components/preview/
 
 deploy:
   provider: pages
