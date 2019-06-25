@@ -3,18 +3,22 @@
 
 .vf-navigation--main {
   background-color: set-color(vf-color--grey--dark);
+  grid-column: main;
   position: relative;
 
   &::before {
     background-color: inherit;
     content: '';
-    height: 37px; // special number
+    height: 100%;
     left: 50%;
     margin: 0 -50vw;
     position: absolute;
     right: 50%;
     width: 100vw;
     z-index: -1;
+  }
+  @media (max-width: $vf-breakpoint--l - 1) {
+    padding: 0 1rem;
   }
 
   .vf-navigation__list {
