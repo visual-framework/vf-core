@@ -2,10 +2,22 @@
 @import 'vf-breadcrumbs.variables.scss';
 
 .vf-breadcrumbs {
-  display: flex;
-  grid-column: 1 / -1; // so that it takes up all the space no matter the parent grid
+  grid-column: main;
   margin-bottom: $vf-breadcrumbs__margin--bottom;
+  margin-left: auto;
   margin-top: $vf-breadcrumbs__margin--top;
+  margin-right: auto;
+  max-width: 76.5em;
+  width: 100%;
+
+  @media (min-width: $vf-breakpoint--l) {
+    display: flex;
+  }
+}
+@media (max-wdith: $vf-breakpoint--l - 1) {
+  .vf-breadcrumbs__list:first-of-type {
+    display: block;
+  }
 }
 
 .vf-breadcrumbs__item {
@@ -31,8 +43,10 @@
 
   display: inline;
 
-  .vf-breadcrumbs__list + & {
-    margin-left: 32px;
+  @media (min-width: $vf-breakpoint--l) {
+    .vf-breadcrumbs__list + & {
+      margin-left: 32px;
+    }
   }
 }
 
