@@ -38,11 +38,18 @@
 .vf-header--inlay {
   grid-column: 2 / -2;
 
-  .vf-masthead__heading {
-    padding: 0 1rem;
+  .vf-navigation--main {
+    &::before {
+      display: none;
+    }
   }
 
-  .vf-navigation {
-    grid-column: 1 / -1;
+  @media (min-width: $vf-breakpoint--l) {
+    .vf-masthead__heading {
+      padding: 0 3.75rem; // this makes the header have the same spacing as the rest of the inlay
+    }
+    .vf-navigation--main {
+      padding: 0 3rem; // this is so the first list item lines up
+    }
   }
 }
