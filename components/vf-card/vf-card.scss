@@ -1,0 +1,109 @@
+// vf-card
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'vf-card.variables.scss';
+
+.vf-card {
+  display: grid;
+  grid-template-rows: 216px repeat(6, 36px);
+  margin: 0 16px;
+  padding: 0 -16px;
+  transition: all .1s linear;
+  &:hover {
+    margin: 0 0;
+    padding: 0;
+    transition: all .1s linear;
+  }
+}
+
+.vf-card--topic {
+  background-color: set-color(vf-color--yellow);
+
+  .vf-card__content {
+    grid-row: 2 / -1;
+    z-index: 101;
+  }
+
+  &:hover {
+    .vf-card__title {
+      padding-left: 34px;
+      transition: all .1s linear;
+    }
+    .vf-card__text {
+      padding-left: 34px;
+      padding-right: 34px;
+      transition: all .1s linear;
+    }
+  }
+
+  .vf-card__title {
+    @include set-type(body--s);
+
+    background-color: set-color(vf-color--yellow);
+    display: inline-block;
+    margin-bottom: 0;
+    padding: 12px 18px;
+    text-transform: uppercase;
+  }
+
+  .vf-card__text {
+    background-color: set-color(vf-color--yellow);
+    padding: 12px 18px;
+  }
+}
+
+.vf-card--navigation {
+
+  .vf-card__content {
+    background-color: set-ui-color(vf-ui-color--grey--light);
+    grid-row: 3 / -1;
+    padding: 12px 18px;
+  }
+
+  &:hover {
+    .vf-card__content {
+      padding-left: 34px;
+      padding-right: 34px;
+      transition: all .1s linear;
+    }
+  }
+
+}
+
+.vf-card__content {
+  grid-column: 1 / -1;
+  transition: all .1s linear;
+}
+
+
+.vf-card__image {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 3;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+
+}
+
+.vf-card__title {
+  @include set-type(heading--l);
+
+  transition: all .1s linear;
+}
+
+.vf-card__text {
+  @include set-type(body--l);
+
+  transition: all .1s linear;
+}
+
+.vf-card__link {
+  @include inline-link;
+}
