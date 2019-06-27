@@ -1001,7 +1001,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
         console.warn('embl-js-breadcumbs-lookup: No matching parent found; Stopping parent lookup.');
         return;
       }
-      activeParent.url = activeParent.url || '#addPatternForTermsWithNoUrl';
+      activeParent.url = activeParent.url || '#no_url_specified';
 
       if (activeParent.name.indexOf(' root term') > 0) {
         // if we've reached a root term, abort lookups and don't insert a root term as a crumb
@@ -1045,7 +1045,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
    */
   function formatBreadcrumb(termName,breadcrumbUrl) {
     var newBreadcrumb = '<li class="vf-breadcrumbs__item">';
-    if (breadcrumbUrl && breadcrumbUrl !== 'null') {
+    if (breadcrumbUrl && breadcrumbUrl !== 'null' && breadcrumbUrl !== '#no_url_specified') {
       newBreadcrumb += '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + termName + '</a>';
     } else {
       newBreadcrumb += termName;
@@ -1095,7 +1095,7 @@ function emblBreadcrumbs() {
       // If `name_display` is not set, use the internal name
       if (term.name_display === '') term.name_display = term.name;
       // handle null URL
-      if (term.url === '') term.url = 'https://embl.org/#no_url_specified';
+      if (term.url === '') term.url = '#no_url_specified';
     });
 
     // Invoke embl-content-meta-properties function to pull tags from page

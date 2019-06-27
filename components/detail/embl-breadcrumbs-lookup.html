@@ -766,7 +766,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'embl-js-breadcumbs-lookup: No matching parent found; Stopping parent lookup.'</span>);
         <span class="hljs-keyword">return</span>;
       }
-      activeParent.url = activeParent.url || <span class="hljs-string">'#addPatternForTermsWithNoUrl'</span>;
+      activeParent.url = activeParent.url || <span class="hljs-string">'#no_url_specified'</span>;
 
       <span class="hljs-keyword">if</span> (activeParent.name.indexOf(<span class="hljs-string">' root term'</span>) &gt; <span class="hljs-number">0</span>) {
         <span class="hljs-comment">// if we've reached a root term, abort lookups and don't insert a root term as a crumb</span>
@@ -810,7 +810,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
    */</span>
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatBreadcrumb</span>(<span class="hljs-params">termName,breadcrumbUrl</span>) </span>{
     <span class="hljs-keyword">var</span> newBreadcrumb = <span class="hljs-string">'&lt;li class="vf-breadcrumbs__item"&gt;'</span>;
-    <span class="hljs-keyword">if</span> (breadcrumbUrl &amp;&amp; breadcrumbUrl !== <span class="hljs-string">'null'</span>) {
+    <span class="hljs-keyword">if</span> (breadcrumbUrl &amp;&amp; breadcrumbUrl !== <span class="hljs-string">'null'</span> &amp;&amp; breadcrumbUrl !== <span class="hljs-string">'#no_url_specified'</span>) {
       newBreadcrumb += <span class="hljs-string">'&lt;a href="'</span>+breadcrumbUrl+<span class="hljs-string">'" class="vf-breadcrumbs__link"&gt;'</span> + termName + <span class="hljs-string">'&lt;/a&gt;'</span>;
     } <span class="hljs-keyword">else</span> {
       newBreadcrumb += termName;
@@ -860,7 +860,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <span class="hljs-comment">// If `name_display` is not set, use the internal name</span>
       <span class="hljs-keyword">if</span> (term.name_display === <span class="hljs-string">''</span>) term.name_display = term.name;
       <span class="hljs-comment">// handle null URL</span>
-      <span class="hljs-keyword">if</span> (term.url === <span class="hljs-string">''</span>) term.url = <span class="hljs-string">'https://embl.org/#no_url_specified'</span>;
+      <span class="hljs-keyword">if</span> (term.url === <span class="hljs-string">''</span>) term.url = <span class="hljs-string">'#no_url_specified'</span>;
     });
 
     <span class="hljs-comment">// Invoke embl-content-meta-properties function to pull tags from page</span>
