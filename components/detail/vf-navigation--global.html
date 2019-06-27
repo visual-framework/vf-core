@@ -763,13 +763,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-navigation--main</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
+  <span class="hljs-attribute">grid-column</span>: main;
   <span class="hljs-attribute">position</span>: relative;
 }
 
 <span class="hljs-selector-class">.vf-navigation--main</span><span class="hljs-selector-pseudo">::before</span> {
   <span class="hljs-attribute">background-color</span>: inherit;
   <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">37px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
   <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> -<span class="hljs-number">50vw</span>;
   <span class="hljs-attribute">position</span>: absolute;
@@ -858,6 +859,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;
 }
 
+@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1023px</span>) {
+  <span class="hljs-selector-class">.vf-navigation--main</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
+  }
+}
+
 <span class="hljs-selector-class">.vf-navigation--additional</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#54585a</span>;
   <span class="hljs-attribute">border</span>: <span class="hljs-number">0px</span> solid <span class="hljs-number">#707372</span>;
@@ -934,7 +941,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-navigation/vf-navigation.css
         </li>
         <li class="vf-list__item">
-          Size: 6.3 KB
+          Size: 6.4 KB
         </li>
       </ul>
     </section>

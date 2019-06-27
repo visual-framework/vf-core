@@ -137,13 +137,14 @@
 
 .vf-navigation--main {
   background-color: #54585a;
+  grid-column: main;
   position: relative;
 }
 
 .vf-navigation--main::before {
   background-color: inherit;
   content: '';
-  height: 37px;
+  height: 100%;
   left: 50%;
   margin: 0 -50vw;
   position: absolute;
@@ -230,6 +231,12 @@
 
 .vf-navigation--main .vf-navigation__link:visited {
   color: #ffffff;
+}
+
+@media (max-width: 1023px) {
+  .vf-navigation--main {
+    padding: 0 1rem;
+  }
 }
 
 .vf-navigation--additional {

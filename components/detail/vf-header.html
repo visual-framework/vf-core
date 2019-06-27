@@ -1034,7 +1034,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-header</span> <span class="hljs-selector-class">.vf-navigation--main</span> {
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
 }
 
 <span class="hljs-selector-class">.vf-header</span> <span class="hljs-selector-class">.vf-navigation--additional</span> {
@@ -1063,12 +1063,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
 }
 
-<span class="hljs-selector-class">.vf-header--inlay</span> <span class="hljs-selector-class">.vf-masthead__heading</span> {
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
+<span class="hljs-selector-class">.vf-header--inlay</span> <span class="hljs-selector-class">.vf-navigation--main</span><span class="hljs-selector-pseudo">::before</span> {
+  <span class="hljs-attribute">display</span>: none;
 }
 
-<span class="hljs-selector-class">.vf-header--inlay</span> <span class="hljs-selector-class">.vf-navigation</span> {
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
+  <span class="hljs-selector-class">.vf-header--inlay</span> <span class="hljs-selector-class">.vf-masthead__heading</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">3.75rem</span>;
+  }
+  <span class="hljs-selector-class">.vf-header--inlay</span> <span class="hljs-selector-class">.vf-navigation--main</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">3rem</span>;
+  }
 }
 </pre>
         </code>
@@ -1085,7 +1090,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-header/vf-header.css
         </li>
         <li class="vf-list__item">
-          Size: 8.1 KB
+          Size: 8.2 KB
         </li>
       </ul>
     </section>
@@ -1109,7 +1114,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-header</span> {
   <span class="hljs-selector-class">.vf-navigation--main</span> {
-    grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   }
   <span class="hljs-selector-class">.vf-navigation--additional</span> {
     grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
@@ -1136,12 +1141,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-header--inlay</span> {
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
 
-  <span class="hljs-selector-class">.vf-masthead__heading</span> {
-    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
+  <span class="hljs-selector-class">.vf-navigation--main</span> {
+    &amp;::before {
+      <span class="hljs-attribute">display</span>: none;
+    }
   }
 
-  <span class="hljs-selector-class">.vf-navigation</span> {
-    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--l</span>) {
+    <span class="hljs-selector-class">.vf-masthead__heading</span> {
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">3.75rem</span>; <span class="hljs-comment">// this makes the header have the same spacing as the rest of the inlay</span>
+    }
+    <span class="hljs-selector-class">.vf-navigation--main</span> {
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">3rem</span>; <span class="hljs-comment">// this is so the first list item lines up</span>
+    }
   }
 }
 </pre>
@@ -1159,7 +1171,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-header/vf-header.scss
         </li>
         <li class="vf-list__item">
-          Size: 875 Bytes
+          Size: 1.1 KB
         </li>
       </ul>
     </section>

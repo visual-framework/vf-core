@@ -804,12 +804,27 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-breadcrumbs</span> {
-  <span class="hljs-attribute">display</span>: -webkit-box;
-  <span class="hljs-attribute">display</span>: -ms-flexbox;
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-attribute">grid-column</span>: main;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">margin-left</span>: auto;
+  <span class="hljs-attribute">margin-right</span>: auto;
   <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
+  <span class="hljs-selector-class">.vf-breadcrumbs</span> {
+    <span class="hljs-attribute">display</span>: -webkit-box;
+    <span class="hljs-attribute">display</span>: -ms-flexbox;
+    <span class="hljs-attribute">display</span>: flex;
+  }
+}
+
+@<span class="hljs-keyword">media</span> (max-wdith: <span class="hljs-number">1023px</span>) {
+  <span class="hljs-selector-class">.vf-breadcrumbs__list</span><span class="hljs-selector-pseudo">:not(.vf-breadcrumbs__list.vr-breadcrumbs__list--related)</span> {
+    <span class="hljs-attribute">display</span>: block;
+  }
 }
 
 <span class="hljs-selector-class">.vf-breadcrumbs__item</span> {
@@ -838,8 +853,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">display</span>: inline;
 }
 
-<span class="hljs-selector-class">.vf-breadcrumbs__list</span> + <span class="hljs-selector-class">.vf-breadcrumbs__heading</span> {
-  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">32px</span>;
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-number">1024px</span>) {
+  <span class="hljs-selector-class">.vf-breadcrumbs__list</span> + <span class="hljs-selector-class">.vf-breadcrumbs__heading</span> {
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">32px</span>;
+  }
 }
 
 <span class="hljs-selector-class">.vf-breadcrumbs__link</span> {
@@ -878,7 +895,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-breadcrumbs/vf-breadcrumbs.css
         </li>
         <li class="vf-list__item">
-          Size: 3.5 KB
+          Size: 3.8 KB
         </li>
       </ul>
     </section>
@@ -893,10 +910,22 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-breadcrumbs.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-breadcrumbs</span> {
-  <span class="hljs-attribute">display</span>: flex;
-  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>; <span class="hljs-comment">// so that it takes up all the space no matter the parent grid</span>
+  grid-column: main;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-variable">$vf-breadcrumbs__margin--bottom</span>;
+  <span class="hljs-attribute">margin-left</span>: auto;
+  <span class="hljs-attribute">margin-right</span>: auto;
   <span class="hljs-attribute">margin-top</span>: <span class="hljs-variable">$vf-breadcrumbs__margin--top</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+
+  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--l</span>) {
+    <span class="hljs-attribute">display</span>: flex;
+  }
+}
+@<span class="hljs-keyword">media</span> (max-wdith: <span class="hljs-variable">$vf-breakpoint--l</span> - 1) {
+  <span class="hljs-selector-class">.vf-breadcrumbs__list</span>:not(<span class="hljs-selector-class">.vf-breadcrumbs__list</span><span class="hljs-selector-class">.vr-breadcrumbs__list--related</span>) {
+    <span class="hljs-attribute">display</span>: block;
+  }
 }
 
 <span class="hljs-selector-class">.vf-breadcrumbs__item</span> {
@@ -922,8 +951,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-attribute">display</span>: inline;
 
-  <span class="hljs-selector-class">.vf-breadcrumbs__list</span> + &amp; {
-    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">32px</span>;
+  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--l</span>) {
+    <span class="hljs-selector-class">.vf-breadcrumbs__list</span> + &amp; {
+      <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">32px</span>;
+    }
   }
 }
 
@@ -945,7 +976,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-breadcrumbs/vf-breadcrumbs.scss
         </li>
         <li class="vf-list__item">
-          Size: 812 Bytes
+          Size: 1.1 KB
         </li>
       </ul>
     </section>
