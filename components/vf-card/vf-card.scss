@@ -11,9 +11,9 @@
 
 .vf-card {
   display: grid;
-  grid-template-rows: 210px repeat(6, 35px);
+  grid-template-rows: 216px repeat(6, 36px);
   margin: 0 16px;
-  padding: -16px;
+  padding: 0 -16px;
   transition: all .1s linear;
   &:hover {
     margin: 0 0;
@@ -28,6 +28,18 @@
   .vf-card__content {
     grid-row: 2 / -1;
     z-index: 101;
+  }
+
+  &:hover {
+    .vf-card__title {
+      padding-left: 34px;
+      transition: all .1s linear;
+    }
+    .vf-card__text {
+      padding-left: 34px;
+      padding-right: 34px;
+      transition: all .1s linear;
+    }
   }
 
   .vf-card__title {
@@ -54,28 +66,42 @@
     padding: 12px 18px;
   }
 
+  &:hover {
+    .vf-card__content {
+      padding-left: 34px;
+      padding-right: 34px;
+      transition: all .1s linear;
+    }
+  }
+
 }
 
 .vf-card__content {
   grid-column: 1 / -1;
+  transition: all .1s linear;
 }
 
 
 .vf-card__image {
   grid-column: 1 / -1;
   grid-row: 1 / span 3;
-  height: auto;
+  height: 100%;
   max-width: 100%;
+  object-fit: fill;
   width: 100%;
 
 }
 
 .vf-card__title {
   @include set-type(heading--l);
+
+  transition: all .1s linear;
 }
 
 .vf-card__text {
   @include set-type(body--l);
+
+  transition: all .1s linear;
 }
 
 .vf-card__link {
