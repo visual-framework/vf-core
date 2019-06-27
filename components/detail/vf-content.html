@@ -239,6 +239,13 @@ html elements. Some components may also add specific support for <code>.vf-conte
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Attract the best scientists, engineers, technicians and support staff<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Inform scientists about training opportunities and services<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>We are a group of user experience specialists in an international scientific organisation<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Our aim is to help teams design services to meet the needs of their users<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>We believe in openness , transparency, working collaboratively and iteratively, continuously learning and sharing knowledge throughout the organisation<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">cite</span>&gt;</span>EMBl-EBI Web Development UX Team Mission<span class="hljs-tag">&lt;/<span class="hljs-name">cite</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
   </pre>
@@ -1512,6 +1519,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">8px</span> <span class="hljs-number">10px</span> <span class="hljs-number">32px</span>;
   <span class="hljs-attribute">position</span>: relative;
 }
@@ -1755,6 +1763,27 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">3px</span>;
 }
 
+<span class="hljs-selector-class">.vf-content</span> <span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-attr">[class*='vf-']</span>) {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">19px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.421</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">8px</span> <span class="hljs-number">10px</span> <span class="hljs-number">32px</span>;
+  <span class="hljs-attribute">position</span>: relative;
+}
+
+<span class="hljs-selector-class">.vf-content</span> <span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:not(</span><span class="hljs-selector-attr">[class*='vf-']</span>)<span class="hljs-selector-pseudo">::before</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+  <span class="hljs-attribute">border-left</span>: <span class="hljs-number">4px</span> solid <span class="hljs-number">#d0d0ce</span>;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+}
+
 <span class="hljs-selector-class">.vf-content__standfirst</span> {
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">21px</span>;
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">31px</span>;
@@ -1784,7 +1813,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-content/vf-content.css
         </li>
         <li class="vf-list__item">
-          Size: 24.3 KB
+          Size: 24.8 KB
         </li>
       </ul>
     </section>
@@ -1901,6 +1930,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">background</span>: set-color(vf-color--off-white);
     <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">3px</span>;
     <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">3px</span>;
+  }
+
+  <span class="hljs-selector-tag">blockquote</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
+    @<span class="hljs-keyword">include</span> blockquote;
   }
 }
 
