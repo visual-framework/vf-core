@@ -505,6 +505,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-comment">/**
  * Invoke emblConditionalEditDetectParam scopped to objects where
  * data-embl-js-conditional-edit is present
+ * This will be dynamically run once emblContentHubSignalFinished is triggered.
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblConditionalEdit</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">const</span> emblConditionalEdit = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-embl-js-conditional-edit]'</span>);
@@ -523,7 +524,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-comment">/**
- * Detects `?embl-conditional-edit=enabled` or `?embl-conditional-edit=1`
+ * Detects `?embl-conditional-edit=enabled` or `?embl-conditional-edit=1` or ?embl-conditional-edit=true`
  * and adds `.embl-coditional-edit__enabled` to display the edit links
  * @param {string} [url] - the url to check for an enabling param
  * @param {element} [element] - the scopped element to be processed
@@ -542,7 +543,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
   captured = captured[<span class="hljs-number">1</span>];
 
-  <span class="hljs-keyword">if</span> (captured == <span class="hljs-string">'1'</span> || captured == <span class="hljs-string">'enabled'</span>) {
+  <span class="hljs-keyword">if</span> (captured == <span class="hljs-string">'1'</span> || captured == <span class="hljs-string">'enabled'</span> || captured == <span class="hljs-string">'true'</span>) {
     element.className += <span class="hljs-string">' '</span> + <span class="hljs-string">'embl-coditional-edit__enabled'</span>;
   }
 }
@@ -563,7 +564,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-conditional-edit/embl-conditional-edit.js
         </li>
         <li class="vf-list__item">
-          Size: 1.4 KB
+          Size: 1.5 KB
         </li>
       </ul>
     </section>
