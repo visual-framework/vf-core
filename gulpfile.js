@@ -360,7 +360,7 @@ gulp.task('vf-css-gen', function(done) {
 // -----------------------------------------------------------------------------
 
 gulp.task('vf-watch', function(done) {
-  gulp.watch(componentPath + '/**/*.scss', gulp.series('vf-css','vf-lint:scss-soft-fail')).on('change', reload);
+  gulp.watch(componentPath + '/**/*.scss', gulp.series('vf-css')).on('change', reload);
   gulp.watch(componentPath + '/**/*.js', gulp.series('vf-scripts')).on('change', reload);
   gulp.watch(componentPath + '/**/**/assets/*.svg', gulp.series('svg','vf-component-assets')).on('change', reload);
   gulp.watch([componentPath + '/**/**/assets/*', '!' + componentPath + '/**/**/assets/*.svg'], gulp.series('vf-component-assets')).on('change', reload);
@@ -406,7 +406,7 @@ gulp.task('vf-scripts', gulp.series(
 ));
 
 gulp.task('vf-dev', gulp.series(
-  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', ['vf-watch', 'vf-lint:scss-soft-fail']
+  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', ['vf-lint:scss-soft-fail', 'vf-watch']
 ));
 
 // Build as a static site for CI
