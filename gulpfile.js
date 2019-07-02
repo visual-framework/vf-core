@@ -103,7 +103,7 @@ const sassPaths = [
   path.resolve(__dirname, 'node_modules'),
 ];
 
-gulp.task('vf-css', function() {
+gulp.task('vf-css', function(done) {
   const sassOpts = {
     // Import sass files
     // We'll check to see if the file exists before passing
@@ -143,7 +143,7 @@ gulp.task('vf-css', function() {
   // We'll pass this as a variable to our sass build so we can
   // only include the file if it exists.
   var availableComponents = {}; // track the components avaialble
-  return gulp
+  gulp
     .src([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss'], {
       allowEmpty: true,
       ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss',componentPath+'/vf-core-components/vf-core/components/**/*.scss']
@@ -161,8 +161,8 @@ gulp.task('vf-css', function() {
       runSassBuild();
     }));
 
-    function runSassBuild(){
-      gulp
+    function runSassBuild() {
+      return gulp
         .src(SassInput)
         .pipe(sourcemaps.init())
         .pipe(sass(sassOpts))
@@ -188,27 +188,33 @@ gulp.task('vf-css', function() {
             suffix: '.min'
           }
         ))
-        .pipe(gulp.dest(SassOutput));
+        .pipe(gulp.dest(SassOutput))
+        .on('end', function() {
+          done();
+        });
     }
 
 });
 
 // Sass Lint
 // For stylelint config rules see .stylelinrc
-gulp.task('vf-scss-lint', function lintCssTask() {
-
+const vfScssLintPaths = [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss', '!'+componentPath+'/vf-design-tokens/dist/**/*.scss'];
+gulp.task('vf-lint:scss-soft-fail', function() {
   return gulp
-    .src(
-      [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss', '!'+componentPath+'/vf-design-tokens/dist/**/*.scss']
-    )
+    .src(vfScssLintPaths)
     .pipe(gulpStylelint({
-      failAfterError: true,
-      reporters: [
-        {formatter: 'string', console: true}
-      ]
+      failAfterError: false,
+      reporters: [{formatter: 'string', console: true}]
     }));
 });
-
+gulp.task('vf-lint:scss-hard-fail', function() {
+  return gulp
+    .src(vfScssLintPaths)
+    .pipe(gulpStylelint({
+      failAfterError: true,
+      reporters: [{formatter: 'string', console: true}]
+    }));
+});
 
 // -----------------------------------------------------------------------------
 // Scripts Tasks
@@ -354,7 +360,7 @@ gulp.task('vf-css-gen', function(done) {
 // -----------------------------------------------------------------------------
 
 gulp.task('vf-watch', function(done) {
-  gulp.watch(componentPath + '/**/*.scss', gulp.series(['vf-css', 'vf-scss-lint'])).on('change', reload);
+  gulp.watch(componentPath + '/**/*.scss', gulp.series('vf-css','vf-lint:scss-soft-fail')).on('change', reload);
   gulp.watch(componentPath + '/**/*.js', gulp.series('vf-scripts')).on('change', reload);
   gulp.watch(componentPath + '/**/**/assets/*.svg', gulp.series('svg','vf-component-assets')).on('change', reload);
   gulp.watch([componentPath + '/**/**/assets/*', '!' + componentPath + '/**/**/assets/*.svg'], gulp.series('vf-component-assets')).on('change', reload);
@@ -400,16 +406,16 @@ gulp.task('vf-scripts', gulp.series(
 ));
 
 gulp.task('vf-dev', gulp.series(
-  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', 'vf-watch'
+  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', ['vf-watch', 'vf-lint:scss-soft-fail']
 ));
 
 // Build as a static site for CI
 gulp.task('vf-build', gulp.series(
-  'vf-clean', 'vf-scss-lint', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
+  'vf-clean', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
 ));
 
 gulp.task('vf-prepush-test', gulp.parallel(
-  'vf-scss-lint', 'vf-css'
+  'vf-lint:scss-hard-fail', 'vf-css'
 ));
 
 gulp.task('vf-component', shell.task(
