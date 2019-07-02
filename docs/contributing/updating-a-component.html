@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Global token variables component | Visual Framework 2.0</title>
+  <title>Versioning and updating a component component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -63,7 +63,7 @@ embl-grid embl-grid--has-sidebar
 
       <div class="Document-header">
           
-          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Global token variables</h1>
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">Versioning and updating a component</h1>
           
 
 
@@ -79,10 +79,14 @@ embl-grid embl-grid--has-sidebar
 
     
     
-    <h3 id="global-colour-typography-and-spacing-">Global colour, typography and spacing.</h3>
-<p>The Visual Framework uses the <a href="https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421">Design Token concept</a> to specify design (colour, spacing, type) as reusable JSON or YAML that are translated from <code>.yml</code> data into <code>.scss</code> using <a href="https://github.com/salesforce-ux/theo#-theo">Theo</a>.</p>
-<p>This Design Token abstraction <a href="https://uxdesign.cc/design-tokens-for-dummies-8acebf010d71">helps portability and integration</a> with other technical systems.</p>
-<p>You can find the Design Tokens in <code>components/vf-design-tokens</code>.</p>
+    <p>Like the Visual Framework 2.0, components follow <a href="https://semver.org/">semantic versioning</a> by increasing their full version number every time they have breaking changes.</p>
+<p>However the version number of components its not tied to the version number of the Visual Framework’s <code>vf-core</code>; that is:</p>
+<ul>
+<li><code>vf-core​@2.1.2</code> might use <code>vf-button​@1.0.1</code> and <code>vf-component-x​@8.2.1</code>.</li>
+</ul>
+<p>As such components should specify if they only support specific versions of <code>vf-core</code> or require other specific versions of patterns.</p>
+<p>You can read more about <a href="https://github.com/visual-framework/vf-core/issues/119">component versioning in this issue</a>.</p>
+<p><span class="vf-badge vf-badge--tertiary">Related</span> <a href="../changelog#versioning.html">Notes on VF versioning</a>.</p>
 
     
 
@@ -120,9 +124,7 @@ class="vf-divider">
   
     
         <li>
-          <a href="">Global token variables</a>
-          
-          <span class="vf-badge">You are here</span>
+          <a href="global-token-variables.html">Global token variables</a>
           
         </li>
     
@@ -171,7 +173,9 @@ class="vf-divider">
   
     
         <li>
-          <a href="updating-a-component.html">Versioning and updating a component</a>
+          <a href="">Versioning and updating a component</a>
+          
+          <span class="vf-badge">You are here</span>
           
         </li>
     

@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>User base component | Visual Framework 2.0</title>
+  <title>User base and needs component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -63,7 +63,7 @@ embl-grid embl-grid--has-sidebar
 
       <div class="Document-header">
           
-          <h1 class="vf-text vf-text--heading-xl vf-text--invert">User base</h1>
+          <h1 class="vf-text vf-text--heading-xl vf-text--invert">User base and needs</h1>
           
 
 
@@ -80,29 +80,60 @@ embl-grid embl-grid--has-sidebar
     
     
     <p>The Visual Framework core (‘vf-core’) is not intended for direct consumption into
-websites, rather it’s a component library that can be consumed and extended
-to build design systems.</p>
+websites, rather it’s a component library that should be installed as an npm and
+Sass dependency to build design systems.</p>
+<h2 id="common-needs">Common needs</h2>
+<p>For all supported audiences, we work to address shared needs:</p>
+<ol>
+<li>Reusable, structured CSS and JS</li>
+<li>CSS and JS that runs with and alongside other major tools (Foundation, Bootstrap and from the JS side Angular, React)</li>
+<li>A component library</li>
+<li>Sane defaults for new websites</li>
+<li>Make a “look and feel” more consistent</li>
+<li>Provide versioned upgrades</li>
+<li>Easily add your own patterns, tweak existing patterns</li>
+<li>No fixed look (doesn’t have to look like any specific organisation, such as EMBL)</li>
+</ol>
+<h2 id="audience-types">Audience types</h2>
 <p>Our target audience sits in three layers:</p>
 <ol>
+<li>Maintainers of design systems for life science websites <span class="vf-badge vf-badge--tertiary">Primary</span><ul>
+<li>needs:<ul>
+<li>create a design system that utilises the <code>vf-core</code></li>
+<li>add a vf-core component to an existing vf-core compatible system</li>
+</ul>
+</li>
+<li>primary interface:<ul>
+<li>npm</li>
+<li>online docs</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Lower-level developers<ul>
 <li>needs: build a design system for orgs that work with life science info</li>
-<li>interface: docs, code, command line utils</li>
+<li>primary interface:<ul>
+<li>docs</li>
+<li>code</li>
+<li>command line utils</li>
 </ul>
 </li>
-<li>Maintainers of design systems<ul>
-<li>need to: add a vf-core component to an existing vf-core compatible system</li>
-<li>primary interface: npm, online docs</li>
 </ul>
 </li>
-<li>Those curious/learning/evaluating the VF<ul>
-<li>need to: understand what vf-core is</li>
-<li>primary interface: the static site, GitHub readme, examples of orgs using the VF</li>
+<li>Those curious/learning/evaluating the Visual Framework<ul>
+<li>needs: understand what vf-core is</li>
+<li>primary interface:<ul>
+<li>the static site</li>
+<li><a href="https://github.com/visual-framework/vf-welcome">vf-welcome site</a></li>
+<li>examples of organisations using <code>vf-core</code></li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
 <p>What’s not above: people building a site using generic VF-core CSS, JS and HTML
-components. If there is demand for that, we may in the future provide a <code>vf-standard</code>,
-but that has yet to be fully considered.</p>
+components. That’s currently not a use-case we encourage or see the need for beyond
+as a demonstrative design system.</p>
 
     
 
@@ -161,13 +192,6 @@ class="vf-divider">
   
     
         <li>
-          <a href="creating-new-components.html">Creating a new component</a>
-          
-        </li>
-    
-  
-    
-        <li>
           <a href="file-structure.html">File structure of the Visual Framework</a>
           
         </li>
@@ -182,9 +206,23 @@ class="vf-divider">
   
     
         <li>
-          <a href="">User base</a>
+          <a href="">User base and needs</a>
           
           <span class="vf-badge">You are here</span>
+          
+        </li>
+    
+  
+    
+        <li>
+          <a href="creating-new-components.html">Creating a new component</a>
+          
+        </li>
+    
+  
+    
+        <li>
+          <a href="updating-a-component.html">Versioning and updating a component</a>
           
         </li>
     
