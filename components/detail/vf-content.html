@@ -213,6 +213,19 @@ html elements. Some components may also add specific support for <code>.vf-conte
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Interactions with industry and technology transfer<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Playing a leading role in the integration of life science research<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"further-examples-of-bullets"</span>&gt;</span>Further examples of bullets<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A bulleted item
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A nested bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A nested bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>What is EMBL?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>EMBL is Europe’s flagship laboratory for the life sciences. We are an intergovernmental organisation established in 1974 and are supported by over 20 member states.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
@@ -679,11 +692,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-tag">li</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     @<span class="hljs-keyword">include</span> set-type(body--l);
 
-    <span class="hljs-attribute">margin-bottom</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-s);
+    <span class="hljs-attribute">margin-bottom</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--s);
+
+    &gt; <span class="hljs-selector-tag">ul</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>),
+    &gt; <span class="hljs-selector-tag">ol</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
+      <span class="hljs-attribute">margin-top</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--s);
+    }
   }
 
   <span class="hljs-selector-tag">li</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>):last-of-type {
-    <span class="hljs-attribute">margin-bottom</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-r);
+    <span class="hljs-attribute">margin-bottom</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--r);
   }
 
   <span class="hljs-selector-tag">hr</span>:not(<span class="hljs-selector-attr">[class*='vf-']</span>) {
@@ -730,7 +748,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-content/vf-content.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.1 KB
+          Size: 2.3 KB
         </li>
       </ul>
     </section>

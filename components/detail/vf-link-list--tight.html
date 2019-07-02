@@ -720,7 +720,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.421</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">-webkit-box-align</span>: center;
       <span class="hljs-attribute">-ms-flex-align</span>: center;
           <span class="hljs-attribute">align-items</span>: center;
@@ -791,6 +791,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
 }
 
+<span class="hljs-selector-class">.vf-links--tight</span> <span class="hljs-selector-class">.vf-links__item</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">8px</span>;
+}
+
 <span class="hljs-selector-class">.vf-links__list--s</span> <span class="hljs-selector-class">.vf-list__item</span> {
   <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
@@ -812,7 +816,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-link-list/vf-link-list.css
         </li>
         <li class="vf-list__item">
-          Size: 4.8 KB
+          Size: 4.9 KB
         </li>
       </ul>
     </section>
@@ -837,7 +841,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-selector-class">.vf-list__item</span> {
     @<span class="hljs-keyword">include</span> set-type(body--l);
-    @<span class="hljs-keyword">include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-l));
+    @<span class="hljs-keyword">include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--l));
 
     <span class="hljs-attribute">align-items</span>: center;
   }
@@ -899,7 +903,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 
   <span class="hljs-selector-class">.vf-links__item</span> {
-    <span class="hljs-attribute">margin-bottom</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing-s);
+    <span class="hljs-attribute">margin-bottom</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--s);
   }
 }
 
