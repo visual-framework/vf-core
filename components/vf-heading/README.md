@@ -4,11 +4,20 @@
 
 ## Demo
 
-{% set context = '@vf-heading' | componentContexts %}
+{% set context = '@vf-heading--display' | componentContexts %}
+{% render '@vf-heading', {"type": context.type, "html": context.heading, "style": "invert"} %}
 
-{% for modifier in context.vf_heading_modifiers %}
-  {% render '@vf-heading', {"type": modifier.type, "title": modifier.title} %}
-{% endfor %}
+{% set context = '@vf-heading--extra-large' | componentContexts %}
+{% render '@vf-heading', {"type": context.type, "html": context.heading} %}
+
+{% set context = '@vf-heading--large' | componentContexts %}
+{% render '@vf-heading', {"type": context.type, "html": context.heading} %}
+
+{% set context = '@vf-heading--regular' | componentContexts %}
+{% render '@vf-heading', {"type": context.type, "html": context.heading} %}
+
+{% set context = '@vf-heading--small' | componentContexts %}
+{% render '@vf-heading', {"type": context.type, "html": context.heading} %}
 
 ## Installation and Implementation
 
