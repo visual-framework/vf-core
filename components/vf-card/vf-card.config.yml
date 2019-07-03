@@ -4,11 +4,7 @@ title: Card
 label: Card
 status: alpha
 # The template used from /components/_previews
-#
-# Per-variant options
-# variants:
-  # - name: default
-  #   hidden: true
+
 context:
   component-type: block
   # custom-values: passed as {{custom-values}}
@@ -16,3 +12,18 @@ context:
   title: Title Block
   text: two lines of text
   image: ../../assets/vf-card/assets/vf-card-example.png
+
+variants:
+  - name: default
+    hidden: true
+  - name: topic card
+    context:
+      title: Title Block
+      text: two lines of text
+      modifier: vf-card--topic
+
+  - name: navigation card
+    context:
+      title: Title Block
+      text: two lines of text
+      modifier: vf-card--navigation
