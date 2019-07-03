@@ -9,7 +9,7 @@ The `vf-componenet-rollup` compiles component Sass and JS into style.css and scr
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `vf-componenet-rollup` with this command.
 
 ```
-$ npm install --save @visual-framework/vf-componenet-rollup
+$ yarn add --dev @visual-framework/vf-componenet-rollup
 ```
 
 ## Usage

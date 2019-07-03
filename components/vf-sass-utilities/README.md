@@ -11,7 +11,7 @@ Note that this differs from `vf-utility-classes` as these are not isolated setti
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `vf-sass-utilities` with this command.
 
 ```
-$ npm install --save @visual-framework/vf-sass-utilities
+$ yarn add --dev @visual-framework/vf-sass-utilities
 ```
 
 ## Usage

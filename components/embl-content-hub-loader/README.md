@@ -11,7 +11,7 @@ Currently this is done as HTML imports (see the code example) + some JS. In the 
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `primer-buttons` with this command.
 
 ```
-$ npm install --save @visual-framework/embl-content-hub-loader
+$ yarn add --dev @visual-framework/embl-content-hub-loader
 ```
 
 ## Usage

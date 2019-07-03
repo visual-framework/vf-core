@@ -43,7 +43,7 @@ Like all JS-enabled components in the Visual Framework, if you wish to use the b
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `primer-buttons` with this command.
 
 ```
-$ npm install --save @visual-framework/vf-banner
+$ yarn add --dev @visual-framework/vf-banner
 ```
 
 ## Usage

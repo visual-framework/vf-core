@@ -11,7 +11,7 @@ There are currently two types of card component that can be used for your projec
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `vf-card` with this command.
 
 ```
-$ npm install --save @visual-framework/vf-card
+$ yarn add --dev @visual-framework/vf-card
 ```
 
 ## Usage
