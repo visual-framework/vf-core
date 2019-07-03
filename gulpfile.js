@@ -39,7 +39,6 @@ const shell = require('gulp-shell');
 const rename = require('gulp-rename');
 const watch = require('gulp-watch');
 const ListStream = require('list-stream');
-const connect = require('gulp-connect');
 const glob = require('glob');
 const replace = require('gulp-replace');
 const del = require('del');
@@ -57,7 +56,6 @@ const postcss     = require('gulp-postcss');
 const reporter    = require('postcss-reporter');
 const syntax_scss     = require('postcss-scss');
 const gulpStylelint   = require('gulp-stylelint');
-const backstopjs        = require('backstopjs');
 
 // Image things
 const svgmin = require('gulp-svgmin');
@@ -314,17 +312,6 @@ gulp.task('frctlBuild', function(done) {
   }
 });
 
-gulp.task('frctlVRT', function(done) {
-  const fractal = require('./fractal.js').initialize('VRT',fractalReadyCallback);
-  function fractalReadyCallback() {
-    // Copy compiled css/js and other assets
-    gulp.src(buildDestionation + '/**/*')
-      .pipe(gulp.dest('./build'));
-      console.info('Copied `/temp/build-files` assets.');
-
-    done();
-  }
-});
 
 // -----------------------------------------------------------------------------
 // CSS Generator Tasks
@@ -367,29 +354,6 @@ gulp.task('vf-watch', function(done) {
 });
 
 // -----------------------------------------------------------------------------
-// Backstop Tasks
-// -----------------------------------------------------------------------------
-
-var backstopConfig = {
-  //Config file location
-  config: './backstopConfig.js'
-}
-
-gulp.task('backstop_reference', () => backstopjs('reference', backstopConfig));
-gulp.task('backstop_test', () => backstopjs('test', backstopConfig));
-
-gulp.task('vf-tests', function(done) {
-  connect.server({
-    port: 8888
-  });
-  done();
-});
-gulp.task('vf-testdone', function(done) {
-  connect.serverClose();
-  done();
-});
-
-// -----------------------------------------------------------------------------
 // Cleanup Tasks
 // -----------------------------------------------------------------------------
 
@@ -421,6 +385,3 @@ gulp.task('vf-prepush-test', gulp.parallel(
 gulp.task('vf-component', shell.task(
   ['yo ./tools/component-generator']
 ));
-
-gulp.task('vizres-setup', gulp.series('vf-tests', 'vf-css', 'backstop_reference', 'vf-testdone'));
-gulp.task('vizres-test', gulp.series('vf-tests', 'vf-css', 'backstop_test', 'vf-testdone'));
