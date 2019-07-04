@@ -7,7 +7,7 @@
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `primer-buttons` with this command.
 
 ```
-$ npm install --save @visual-framework/vf-lede
+$ yarn add --dev @visual-framework/vf-lede
 ```
 
 ## Usage

@@ -11,7 +11,7 @@ The "With Related" variant allows you to indicate related items.
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-breadcrumbs` with this command.
 
 ```
-$ npm install --save @visual-framework/vf-breadcrumbs
+$ yarn add --dev @visual-framework/vf-breadcrumbs
 ```
 
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.

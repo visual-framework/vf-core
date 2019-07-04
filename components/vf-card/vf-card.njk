@@ -1,28 +1,22 @@
-<div class="vf-grid  vf-grid__col-3">
+<div
 
-  <div class="vf-card vf-card--topic">
-    <img src="{{ image }}" alt="" class="vf-card__image">
-    <div class="vf-card__content">
-      <h3 class="vf-card__title">
-        {{ title }}
-      </h3>
-      <p class="vf-card__text">
-        {{ text }}
-      </p>
-    </div>
+  {# You're using an ID? Really?? That'll go here #}
+  {%- if id %} id="{{-id-}}"{% endif %}
+
+  {# Here is where we are adding any modifier #}
+  class="vf-card
+  {%- if modifier %} {{modifier}}{% endif -%}
+
+  {# You want a snowflake of a classname for something, here you  #}
+  {%- if override_class %} | {{override_class}}{% endif %}
+">
+  <img src="{{ image }}" alt="" class="vf-card__image">
+  <div class="vf-card__content">
+    <h3 class="vf-card__title">
+      {{ title }}
+    </h3>
+    <p class="vf-card__text">
+      {{ text }}
+    </p>
   </div>
-
-
-  <div class="vf-card vf-card--navigation">
-    <img src="{{ image }}" alt="" class="vf-card__image">
-    <div class="vf-card__content">
-      <h3 class="vf-card__title">
-        <a href="#" class="vf-card__link">{{ title }}</a>
-      </h3>
-      <p class="vf-card__text">
-        {{ text }}
-      </p>
-    </div>
-  </div>
-
 </div>

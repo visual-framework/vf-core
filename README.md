@@ -1,5 +1,7 @@
 # Visual Framework 2.0
 
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/EMBL/EMBL-Visual-Framework)
+
 ---
 
 **👋 Downloading or cloning this repo? 🛑**
