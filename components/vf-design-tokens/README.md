@@ -4,4 +4,4 @@ These are the colour, typography, spacing, and other stylistic decisions as desi
 
 ## Building
 
-To update these run `gulp vf-tokens` from the `vf-design-tokens` folder.
+To update these run `gulp vf-tokens` from `./components/vf-design-tokens`.
