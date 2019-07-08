@@ -7,7 +7,7 @@
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `<%= componentName %>` with this command.
 
 ```
-$ npm install --save @visual-framework/<%= componentName %>
+$ yarn add --dev @visual-framework/<%= componentName %>
 ```
 
 ## Usage

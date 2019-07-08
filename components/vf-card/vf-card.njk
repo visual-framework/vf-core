@@ -1,0 +1,22 @@
+<div
+
+  {# You're using an ID? Really?? That'll go here #}
+  {%- if id %} id="{{-id-}}"{% endif %}
+
+  {# Here is where we are adding any modifier #}
+  class="vf-card
+  {%- if modifier %} {{modifier}}{% endif -%}
+
+  {# You want a snowflake of a classname for something, here you  #}
+  {%- if override_class %} | {{override_class}}{% endif %}
+">
+  <img src="{{ image }}" alt="" class="vf-card__image">
+  <div class="vf-card__content">
+    <h3 class="vf-card__title">
+      {{ title }}
+    </h3>
+    <p class="vf-card__text">
+      {{ text }}
+    </p>
+  </div>
+</div>

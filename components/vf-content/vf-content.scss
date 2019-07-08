@@ -89,11 +89,16 @@
   li:not([class*='vf-']) {
     @include set-type(body--l);
 
-    margin-bottom: map-get($vf-spacing-map, vf-spacing-s);
+    margin-bottom: map-get($vf-spacing-map, vf-spacing--s);
+
+    > ul:not([class*='vf-']),
+    > ol:not([class*='vf-']) {
+      margin-top: map-get($vf-spacing-map, vf-spacing--s);
+    }
   }
 
   li:not([class*='vf-']):last-of-type {
-    margin-bottom: map-get($vf-spacing-map, vf-spacing-r);
+    margin-bottom: map-get($vf-spacing-map, vf-spacing--r);
   }
 
   hr:not([class*='vf-']) {
@@ -104,6 +109,10 @@
     background: set-color(vf-color--off-white);
     padding-left: 3px;
     padding-right: 3px;
+  }
+
+  blockquote:not([class*='vf-']) {
+    @include blockquote;
   }
 }
 

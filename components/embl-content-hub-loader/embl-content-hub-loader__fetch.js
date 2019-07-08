@@ -68,6 +68,11 @@ function emblContentHubFetch() {
   // Add a class to the body once the last item has been processed
   function emblContentHubSignalFinished() {
     document.querySelectorAll('body')[0].classList.add('embl-content-hub-loaded');
+
+    // if the JS to run embl-conditional-edit is present, run it now
+    if (typeof emblConditionalEdit === "function") {
+      emblConditionalEdit();
+    }
   }
 
   // Dispatch load to the pollyfill

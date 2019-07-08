@@ -7,7 +7,7 @@
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-favicon` with this command.
 
 ```
-$ npm install --save @visual-framework/vf-favicon
+$ yarn add --dev @visual-framework/vf-favicon
 ```
 
 

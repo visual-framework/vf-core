@@ -11,7 +11,7 @@ All EMBL Layouts are single column until the viewport is 768px or more. EMBL Lay
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `embl-grid` with this command.
 
 ```
-$ npm install --save @visual-framework/embl-grid
+$ yarn add --dev @visual-framework/embl-grid
 ```
 
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.

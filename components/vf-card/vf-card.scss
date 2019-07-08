@@ -1,0 +1,105 @@
+// vf-card
+
+
+@import 'vf-card.variables.scss';
+
+.vf-card {
+  @include margin( 0, map-get($vf-spacing-map, vf-spacing--r) );
+
+  display: grid;
+  grid-template-rows: 216px repeat(6, 36px);
+  padding: 0 -16px;
+  transition: all .1s linear;
+
+  &:hover {
+    margin: 0;
+    padding: 0;
+    transition: all .1s linear;
+  }
+}
+
+.vf-card--topic {
+  background-color: $vf-card--topic-bg-color;
+
+  .vf-card__content {
+    grid-row: 2 / -1;
+    z-index: 101;
+  }
+
+  &:hover {
+    .vf-card__title {
+      padding-left: 32px;
+      transition: all .1s linear;
+    }
+    .vf-card__text {
+      padding-left: 32px;
+      padding-right: 32px;
+      transition: all .1s linear;
+    }
+  }
+
+  .vf-card__title {
+    @include set-type(body--s);
+
+    background-color: $vf-card--topic-bg-color;
+    display: inline-block;
+    margin-bottom: 0;
+    padding: map-get($vf-spacing-map, vf-spacing--r) map-get($vf-spacing-map, vf-spacing--l);
+    text-transform: uppercase;
+  }
+
+  .vf-card__text {
+    background-color: $vf-card--topic-bg-color;
+    padding: map-get($vf-spacing-map, vf-spacing--r) map-get($vf-spacing-map, vf-spacing--l);
+  }
+}
+
+.vf-card--navigation {
+
+  .vf-card__content {
+    background-color: $vf-card--navigation-bg-color;
+    grid-row: 3 / -1;
+    padding: map-get($vf-spacing-map, vf-spacing--r) map-get($vf-spacing-map, vf-spacing--l);
+  }
+
+  &:hover {
+    .vf-card__content {
+      padding-left: 34px;
+      padding-right: 34px;
+      transition: all .1s linear;
+    }
+  }
+
+}
+
+.vf-card__content {
+  grid-column: 1 / -1;
+  transition: all .1s linear;
+}
+
+
+.vf-card__image {
+  grid-column: 1 / -1;
+  grid-row: 1 / span 3;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+
+}
+
+.vf-card__title {
+  @include set-type(heading--l-alt);
+
+  transition: all .1s linear;
+}
+
+.vf-card__text {
+  @include set-type(body--l);
+
+  transition: all .1s linear;
+}
+
+.vf-card__link {
+  @include inline-link;
+}

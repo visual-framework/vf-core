@@ -1,5 +1,4 @@
 
-
 @mixin list($classname, $type: null) {
   @if $type == null {
     list-style-type: none;
@@ -56,13 +55,13 @@
   @if $classname != null {
     @at-root .#{$classname} {
       @at-root  .#{$classname}__item {
-        margin-bottom: map-get($vf-spacing-map, vf-spacing-r);
+        margin-bottom: map-get($vf-spacing-map, vf-spacing--r);
       }
     }
   }
   @else {
     li {
-      margin-bottom: map-get($vf-spacing-map, vf-spacing-r);
+      margin-bottom: map-get($vf-spacing-map, vf-spacing--r);
     }
   }
 }

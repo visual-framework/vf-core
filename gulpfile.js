@@ -39,7 +39,6 @@ const shell = require('gulp-shell');
 const rename = require('gulp-rename');
 const watch = require('gulp-watch');
 const ListStream = require('list-stream');
-const connect = require('gulp-connect');
 const glob = require('glob');
 const replace = require('gulp-replace');
 const del = require('del');
@@ -57,7 +56,6 @@ const postcss     = require('gulp-postcss');
 const reporter    = require('postcss-reporter');
 const syntax_scss     = require('postcss-scss');
 const gulpStylelint   = require('gulp-stylelint');
-const backstopjs        = require('backstopjs');
 
 // Image things
 const svgmin = require('gulp-svgmin');
@@ -80,22 +78,30 @@ const reload = browserSync.reload;
 // -----------------------------------------------------------------------------
 
 const sassPaths = [
-  componentPath + '/vf-sass-config/variables',
-  componentPath + '/vf-sass-config/functions',
-  componentPath + '/vf-sass-config/mixins',
-  componentPath,
-  componentPath + '/vf-form',
-  componentPath + '/vf-core-components',
-  componentPath + '/vf-core-components/vf-sass-config/variables',
-  componentPath + '/vf-core-components/vf-sass-config/functions',
-  componentPath + '/vf-core-components/vf-sass-config/mixins',
+  // Design tokens have first priority
   componentPath + '/vf-design-tokens/dist/sass',
   componentPath + '/vf-design-tokens/dist/sass/custom-properties',
   componentPath + '/vf-design-tokens/dist/sass/maps',
+  componentPath + '/vf-core-components/vf-design-tokens/dist/sass',
+  componentPath + '/vf-core-components/vf-design-tokens/dist/sass/custom-properties',
+  componentPath + '/vf-core-components/vf-design-tokens/dist/sass/maps',
+  // then sass config
+  componentPath + '/vf-sass-config/variables',
+  componentPath + '/vf-sass-config/functions',
+  componentPath + '/vf-sass-config/mixins',
+  componentPath + '/vf-core-components/vf-sass-config/variables',
+  componentPath + '/vf-core-components/vf-sass-config/functions',
+  componentPath + '/vf-core-components/vf-sass-config/mixins',
+  // then components
+  componentPath,
+  componentPath + '/vf-core-components',
+  // and finally any multi-components
+  componentPath + '/vf-form',
+  componentPath + '/vf-core-components/vf-form',
   path.resolve(__dirname, 'node_modules'),
 ];
 
-gulp.task('vf-css', function() {
+gulp.task('vf-css', function(done) {
   const sassOpts = {
     // Import sass files
     // We'll check to see if the file exists before passing
@@ -135,10 +141,10 @@ gulp.task('vf-css', function() {
   // We'll pass this as a variable to our sass build so we can
   // only include the file if it exists.
   var availableComponents = {}; // track the components avaialble
-  return gulp
+  gulp
     .src([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss'], {
       allowEmpty: true,
-      ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss']
+      ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss',componentPath+'/vf-core-components/vf-core/components/**/*.scss']
     })
     .pipe(ListStream.obj(function (err, data) {
       if (err)
@@ -153,8 +159,8 @@ gulp.task('vf-css', function() {
       runSassBuild();
     }));
 
-    function runSassBuild(){
-      gulp
+    function runSassBuild() {
+      return gulp
         .src(SassInput)
         .pipe(sourcemaps.init())
         .pipe(sass(sassOpts))
@@ -180,27 +186,33 @@ gulp.task('vf-css', function() {
             suffix: '.min'
           }
         ))
-        .pipe(gulp.dest(SassOutput));
+        .pipe(gulp.dest(SassOutput))
+        .on('end', function() {
+          done();
+        });
     }
 
 });
 
 // Sass Lint
 // For stylelint config rules see .stylelinrc
-gulp.task('vf-scss-lint', function lintCssTask() {
-
+const vfScssLintPaths = [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss', '!'+componentPath+'/vf-design-tokens/dist/**/*.scss'];
+gulp.task('vf-lint:scss-soft-fail', function() {
   return gulp
-    .src(
-      [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss', '!'+componentPath+'/vf-design-tokens/dist/**/*.scss']
-    )
+    .src(vfScssLintPaths)
     .pipe(gulpStylelint({
-      failAfterError: true,
-      reporters: [
-        {formatter: 'string', console: true}
-      ]
+      failAfterError: false,
+      reporters: [{formatter: 'string', console: true}]
     }));
 });
-
+gulp.task('vf-lint:scss-hard-fail', function() {
+  return gulp
+    .src(vfScssLintPaths)
+    .pipe(gulpStylelint({
+      failAfterError: true,
+      reporters: [{formatter: 'string', console: true}]
+    }));
+});
 
 // -----------------------------------------------------------------------------
 // Scripts Tasks
@@ -300,17 +312,6 @@ gulp.task('frctlBuild', function(done) {
   }
 });
 
-gulp.task('frctlVRT', function(done) {
-  const fractal = require('./fractal.js').initialize('VRT',fractalReadyCallback);
-  function fractalReadyCallback() {
-    // Copy compiled css/js and other assets
-    gulp.src(buildDestionation + '/**/*')
-      .pipe(gulp.dest('./build'));
-      console.info('Copied `/temp/build-files` assets.');
-
-    done();
-  }
-});
 
 // -----------------------------------------------------------------------------
 // CSS Generator Tasks
@@ -346,33 +347,10 @@ gulp.task('vf-css-gen', function(done) {
 // -----------------------------------------------------------------------------
 
 gulp.task('vf-watch', function(done) {
-  gulp.watch(componentPath + '/**/*.scss', gulp.series(['vf-css', 'vf-scss-lint'])).on('change', reload);
+  gulp.watch(componentPath + '/**/*.scss', gulp.series('vf-css')).on('change', reload);
   gulp.watch(componentPath + '/**/*.js', gulp.series('vf-scripts')).on('change', reload);
   gulp.watch(componentPath + '/**/**/assets/*.svg', gulp.series('svg','vf-component-assets')).on('change', reload);
   gulp.watch([componentPath + '/**/**/assets/*', '!' + componentPath + '/**/**/assets/*.svg'], gulp.series('vf-component-assets')).on('change', reload);
-});
-
-// -----------------------------------------------------------------------------
-// Backstop Tasks
-// -----------------------------------------------------------------------------
-
-var backstopConfig = {
-  //Config file location
-  config: './backstopConfig.js'
-}
-
-gulp.task('backstop_reference', () => backstopjs('reference', backstopConfig));
-gulp.task('backstop_test', () => backstopjs('test', backstopConfig));
-
-gulp.task('vf-tests', function(done) {
-  connect.server({
-    port: 8888
-  });
-  done();
-});
-gulp.task('vf-testdone', function(done) {
-  connect.serverClose();
-  done();
 });
 
 // -----------------------------------------------------------------------------
@@ -392,21 +370,18 @@ gulp.task('vf-scripts', gulp.series(
 ));
 
 gulp.task('vf-dev', gulp.series(
-  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', 'vf-watch'
+  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', ['vf-lint:scss-soft-fail', 'vf-watch']
 ));
 
 // Build as a static site for CI
 gulp.task('vf-build', gulp.series(
-  'vf-clean', 'vf-scss-lint', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
+  'vf-clean', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
 ));
 
 gulp.task('vf-prepush-test', gulp.parallel(
-  'vf-scss-lint', 'vf-css'
+  'vf-lint:scss-hard-fail', 'vf-css'
 ));
 
 gulp.task('vf-component', shell.task(
   ['yo ./tools/component-generator']
 ));
-
-gulp.task('vizres-setup', gulp.series('vf-tests', 'vf-css', 'backstop_reference', 'vf-testdone'));
-gulp.task('vizres-test', gulp.series('vf-tests', 'vf-css', 'backstop_test', 'vf-testdone'));
