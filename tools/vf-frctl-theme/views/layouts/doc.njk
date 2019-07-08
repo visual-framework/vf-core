@@ -2,23 +2,35 @@
 
 {% block content %}
 
-<div class="Document vf-body">
+<div class="vf-body">
+
+  <section class="vf-intro | vf-grid embl-grid--has-centered-content">
+    <div>
+        <!-- empty -->
+    </div>
+    <div>
+      <h1 class="vf-intro__heading vf-intro__heading--has-tag">{{ page.title }} <a href="" class="vf-badge vf-badge--primary vf-badge--phases">{% if status.length >= 3 %}{{ status.val }}{% else %}alpha{% endif %}</a></h1>
+      {% if page.lede %}
+        <p class="vf-lede">{{ page.lede }}</p>
+      {% endif %}
+      {% if page.intro %}
+        <p class="vf-intro__text">{{ page.intro }}</p>
+      {% endif %}
+    </div>
+  </section>
+
   <div class="vf-grid vf-grid__col-1">
-
     <div class="vf-content">
-
-      <div class="Document-header">
-          {% block docHeader %}
-          <h1 class="vf-text vf-text--heading-xl vf-text--invert">{{ page.title }}</h1>
-          {% if status %}{{ status }}{% endif %}
-          {% endblock %}
-      </div>
 
       {% block docContent %}{% endblock %}
 
     </div>
-
   </div>
+
+  {% if request.path == '/' %}
+  {# Only show component list on documentation homepage #}
+    {% include 'partials/content/overview.njk' %}
+  {% endif %}
 
 </div>
 
