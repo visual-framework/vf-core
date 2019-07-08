@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.37 (2019-07-08)
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+**Note:** Version bump only for package @visual-framework/vf-favicon
+
+
+
+
+
 ## 0.0.36 (2019-06-21)
 
 
