@@ -1,33 +1,32 @@
 {% import "macros/status.njk" as status %}
 
-<p>Here you'll find developer documentation on using components and creating new components for the Visual Framework.</p>
-
-<ol class="vf-grid vf-grid__col-3">
-  <li>Read <a href="https://github.com/visual-framework/vf-core">the basics of the Visual Framework</a>;</li>
-  <li><a href="#boilerplate">Grab a boilerplate</a>;</li>
-  <li>Browse <a href="#grids">the components</a> below;</li>
-  <li>Learn <a href="docs/guidelines">how to create new components</a> or <a href="https://github.com/visual-framework/vf-core/issues/new?template=new-component-request.md">request a new component</a> for the global `vf-core`;</li>
-  <li>Dive deep and <a href="https://github.com/visual-framework/vf-core#childtheme">make your own theme</a>; and</li>
-  <li><a href="https://embl-vf.slack.com/messages">Ask the community for help</a> or <a href="http://github.com/visual-framework/vf-core/issues/">open an issue</a>.</li>
-</ol>
-
-<h2>Todo: make this a container-ized list of the docs</h2>
-<p>(The best nav is no nav)</p>
-
-<li class="vf-navigation__item">
-  <a href="{{ path('/') }}" class="vf-navigation__link">The components</a>
-</li>
+{# Docs inside the component library should be thin,
+   instead they should be on a centralised documentation site.
+   https://github.com/visual-framework/vf-core/issues/447#issuecomment-507190595
+   Rather linking to pages we make a container-ized list of the docs (the best nav is no nav) #}
 {% asyncEach item in frctl.docs %}
-{% asyncEach menuitem in item %}
-{% if menuitem.isIndex == true %}
-<li class="vf-navigation__item {% if doc.path == menuitem.path %}is-active{% endif %}">
-  <a href="{{ path( (menuitem | url), request ) }}" class="vf-navigation__link">{{ menuitem.title }}</a>
-</li>
-{% endif %}
-{% endeach %}
-{% endeach %}
-<li class="vf-navigation__item">
-  <a href="https://embl-vf.slack.com/messages" class="vf-navigation__link">Help!</a>
-</li>
+  {% asyncEach menuitem in item %}
+    {# {% if menuitem.isIndex == true %} #}
+      <section class="embl-grid embl-grid--has-centered-content">
+        <div>
+          <h3 class="vf-text vf-text--heading-r">{{ menuitem.title }}</h3>
+        </div>
+        <div class="vf-content">
+          <p class="vf-text--body vf-text--body-l">{{ menuitem.context.intro }}</p>
 
-{% include 'partials/browser/component-list.njk' %}
+          {{ menuitem.content | markdown }}
+          {# <li class="vf-navigation__item {% if doc.path == menuitem.path %}is-active{% endif %}">
+            <a href="{{ path( (menuitem | url), request ) }}" class="vf-navigation__link">{{ menuitem.title }}</a>
+          </li> #}
+          {# <hr class="vf-divider" /> #}
+        </div>
+      </section>
+    {# {% endif %} #}
+  {% endeach %}
+{% endeach %}
+
+<div class="vf-grid vf-grid__col-1">
+  <div class="">
+    {% include 'partials/browser/component-list.njk' %}
+  </div>
+</div>
