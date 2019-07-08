@@ -80,14 +80,15 @@
 <main class="vf-swatches | vf-grid vf-grid__col-3">
 {% for item in colors.properties %}
 
+
 <article class="vf-swatch">
   <div class="vf-swatch__colour" style="background-color: {{ item.value}};">
-    <h3 class="vf-swatch__colour-name">
-      {{ item.name }}
-    </h3>
   </div>
 
   <section class="vf-swatch__details">
+    <h3 class="vf-swatch__colour-name">
+      {{- item.meta.friendlyName }}
+    </h3>
     <p class="vf-swatch__colour-hex">
       <span class="vf-swatch__meta">Hex: </span>
       {{ item.value }}
