@@ -5,8 +5,9 @@ var path = require('path');
 var config = require(path.resolve('.','package.json'));
 
 config.vfConfig = config.vfConfig || [];
-global.vfName = config.vfConfig.vfName || "Visual Framework 2.0";
-global.vfNamespace = config.vfConfig.vfNamespace || "vf-";
+vfName = config.vfConfig.vfName || "Visual Framework 2.0";
+vfNamespace = config.vfConfig.vfNamespace || "vf-";
+vfComponentPath = config.vfConfig.vfComponentPath || __dirname + '/components';
 
 module.exports = class extends Generator {
   prompting() {
@@ -34,10 +35,10 @@ module.exports = class extends Generator {
     ));
 
     var componentType = ['element', 'block', 'container', 'grid', 'boilerplate'];
-    if (global.vfNamespace != 'vf-') {
-      var DepartmentType = [global.vfName, 'VF Global'];
+    if (vfNamespace != 'vf-') {
+      var DepartmentType = [vfName, 'VF Global'];
     } else {
-      var DepartmentType = [global.vfName];
+      var DepartmentType = [vfName];
     }
 
     var prompts = [{
@@ -73,17 +74,15 @@ module.exports = class extends Generator {
   writing() {
 
     switch (this.props.dept) {
-      case global.vfName:
-      var path = "./components/";
-      var namespace = global.vfNamespace;
+      case vfName:
+      var namespace = vfNamespace;
       break;
       case "VF Global":
-      var path = "./components/";
       var namespace = "vf-";
       break;
     }
     var patternType = this.props.type;
-    var totalPath = path + namespace + this.props.componentName + "/";
+    var totalPath = vfComponentPath + '/' + namespace + this.props.componentName + "/";
     var fileName = namespace + this.props.componentName;
 
     var outputFile = fileName + '.njk';
