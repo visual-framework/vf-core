@@ -61,7 +61,7 @@ module.exports = class extends Generator {
     }, {
       type: 'confirm',
       name: 'npm',
-      message: 'Is it a npm package?',
+      message: 'Will this be published to npm?',
       default: true
     }];
 
