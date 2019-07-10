@@ -35,7 +35,7 @@ module.exports = class extends Generator {
 
     var componentType = ['element', 'block', 'container', 'grid', 'boilerplate'];
     if (global.vfNamespace != 'vf-') {
-      var DepartmentType = ['VF Global', global.vfName];
+      var DepartmentType = [global.vfName, 'VF Global'];
     } else {
       var DepartmentType = [global.vfName];
     }
