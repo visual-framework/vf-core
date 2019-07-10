@@ -56,7 +56,7 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'componentName',
       required: true,
-      message: 'What\'s the name of your component? (all lowercase, a hyphen instead of space, will be prefixed with `vf-`)',
+      message: 'What\'s the name of your component? (all lowercase, a hyphen instead of space, will be prefixed with your project\'s namespace.)',
       description: 'Component name'
     }, {
       type: 'confirm',
