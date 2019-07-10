@@ -38,23 +38,24 @@
 {% endif %}
 
 {% if doc %}
-{% set docSection = doc.path.split("/") %}
+  {% set docSection = doc.path.split("/") %}
 
-<ul>
-{% asyncEach item in frctl.docs %}
-
-  {% asyncEach menuitem in item %}
-    {% if item.path == docSection[0] %}
-        <li>
-          <a href="{{ path( (menuitem | url), request ) }}">{{ menuitem.title }}</a>
-          {% if menuitem.path == doc.path %}
-          <span class="vf-badge">You are here</span>
-          {% endif %}
-        </li>
-    {% endif %}
-  {% endeach %}
-{% endeach %}
-</ul>
+  {% if docSection != "" %}
+  <ul>
+    {% asyncEach item in frctl.docs %}
+      {% asyncEach menuitem in item %}
+          {% if item.path == docSection[0] %}
+              <li>
+                <a href="{{ path( (menuitem | url), request ) }}">{{ menuitem.title }}</a>
+                {% if menuitem.path == doc.path %}
+                <span class="vf-badge">You are here</span>
+                {% endif %}
+              </li>
+        {% endif %}
+      {% endeach %}
+    {% endeach %}
+    </ul>
+  {% endif %}
 {% endif %}
 
 
