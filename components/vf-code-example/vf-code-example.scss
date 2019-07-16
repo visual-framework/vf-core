@@ -10,7 +10,7 @@ $vf-code-example-enable-hljs: true !default;
   // pre and code should always be monospace
   @include set-type(body--s,$vf-font-family--monospace);
 
-  @include padding--block(4px,4px);
+  @include padding--block(all,map-get($vf-spacing-map, vf-spacing--xs));
   background: set-ui-color(vf-ui-color--grey);
   border-radius: $vf-radius--xs;
 }
@@ -29,6 +29,9 @@ $vf-code-example-enable-hljs: true !default;
   border: 1px;
   min-width: 0;
   overflow: auto;
+  white-space: pre-wrap;
+  display: inline-block;
+  @include padding--inline(all,map-get($vf-spacing-map, vf-spacing--s));
 }
 
 @if $vf-code-example-enable-hljs == true {
