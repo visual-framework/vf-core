@@ -8,7 +8,16 @@ $vf-code-example-enable-hljs: true !default;
 .vf-code-example__pre,
 .vf-code-example {
   // pre and code should always be monospace
-  @include set-type(body--s,$vf-font-family--monospace, $custom-margin-bottom: 0);
+  @include set-type(body--s,$vf-font-family--monospace);
+
+  @include padding--block(4px,4px);
+  background: set-ui-color(vf-ui-color--grey);
+  border-radius: $vf-radius--xs;
+}
+
+.vf-content code,
+.vf-code-example {
+  font-size: inherit;
 }
 
 .vf-code-example {
