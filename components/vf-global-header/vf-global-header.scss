@@ -1,7 +1,6 @@
 // vf-global-header
 
-$vf-global-header-background--color: set-ui-color(vf-ui-color--white);
-$vf-global-header__link-text--color: set-ui-color(vf-ui-color--black);
+@import 'vf-global-header.variables.scss';
 
 .vf-global-header {
   align-items: center;
@@ -24,6 +23,15 @@ $vf-global-header__link-text--color: set-ui-color(vf-ui-color--black);
   align-self: center;
   display: block;
   margin: 0;
+}
+
+.vf-global-header__link {
+  @include inline-link(
+    $vf-link--color: $vf-global-header__link-text--color,
+    $vf-link--hover-color: $vf-global-header-text--color
+  );
+
+  text-decoration: none;
 }
 
 .vf-global-header {
