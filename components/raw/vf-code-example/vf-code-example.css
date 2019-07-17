@@ -46,7 +46,17 @@
   font-family: "IBM Plex Mono", Monaco, Consolas, "Lucida Console", monospace;
   font-size: 14px;
   line-height: 1.57;
-  margin: 0 0 0 0;
+  margin: 0 0 16px 0;
+  margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  background: #f3f3f3;
+  border-radius: 4px;
+}
+
+.vf-content code,
+.vf-code-example {
+  font-size: inherit;
 }
 
 .vf-code-example {
@@ -56,8 +66,12 @@
 .vf-content pre,
 .vf-code-example__pre {
   border: 1px;
+  display: inline-block;
   min-width: 0;
   overflow: auto;
+  white-space: pre-wrap;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 /* github.com style (c) Vasily Polovnyov <vast@whiteants.net> */

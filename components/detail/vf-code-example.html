@@ -629,7 +629,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Mono"</span>, Monaco, Consolas, <span class="hljs-string">"Lucida Console"</span>, monospace;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#f3f3f3</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+}
+
+<span class="hljs-selector-class">.vf-content</span> <span class="hljs-selector-tag">code</span>,
+<span class="hljs-selector-class">.vf-code-example</span> {
+  <span class="hljs-attribute">font-size</span>: inherit;
 }
 
 <span class="hljs-selector-class">.vf-code-example</span> {
@@ -639,8 +649,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-content</span> <span class="hljs-selector-tag">pre</span>,
 <span class="hljs-selector-class">.vf-code-example__pre</span> {
   <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">display</span>: inline-block;
   <span class="hljs-attribute">min-width</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">overflow</span>: auto;
+  <span class="hljs-attribute">white-space</span>: pre-wrap;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">8px</span>;
 }
 
 <span class="hljs-comment">/* github.com style (c) Vasily Polovnyov &lt;vast@whiteants.net&gt; */</span>
@@ -744,7 +758,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-code-example/vf-code-example.css
         </li>
         <li class="vf-list__item">
-          Size: 2.7 KB
+          Size: 3 KB
         </li>
       </ul>
     </section>
@@ -765,7 +779,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-code-example__pre</span>,
 <span class="hljs-selector-class">.vf-code-example</span> {
   <span class="hljs-comment">// pre and code should always be monospace</span>
-  @<span class="hljs-keyword">include</span> set-type(body--s,<span class="hljs-variable">$vf-font-family--monospace</span>, <span class="hljs-variable">$custom-margin-bottom</span>: 0);
+  @<span class="hljs-keyword">include</span> set-type(body--s,<span class="hljs-variable">$vf-font-family--monospace</span>);
+
+  @<span class="hljs-keyword">include</span> padding--block(all,map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--xs));
+  <span class="hljs-attribute">background</span>: set-ui-color(vf-ui-color--grey);
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$vf-radius--xs</span>;
+}
+
+<span class="hljs-selector-class">.vf-content</span> <span class="hljs-selector-tag">code</span>,
+<span class="hljs-selector-class">.vf-code-example</span> {
+  <span class="hljs-attribute">font-size</span>: inherit;
 }
 
 <span class="hljs-selector-class">.vf-code-example</span> {
@@ -775,8 +798,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-content</span> <span class="hljs-selector-tag">pre</span>,
 <span class="hljs-selector-class">.vf-code-example__pre</span> {
   <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">display</span>: inline-block;
   <span class="hljs-attribute">min-width</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">overflow</span>: auto;
+  <span class="hljs-attribute">white-space</span>: pre-wrap;
+  @<span class="hljs-keyword">include</span> padding--inline(all,map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--s));
 }
 
 @<span class="hljs-keyword">if</span> <span class="hljs-variable">$vf-code-example-enable-hljs</span> == true {
@@ -873,7 +899,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-code-example/vf-code-example.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.1 KB
+          Size: 2.4 KB
         </li>
       </ul>
     </section>
