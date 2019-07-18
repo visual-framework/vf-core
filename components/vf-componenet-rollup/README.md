@@ -6,7 +6,15 @@ The `vf-componenet-rollup` compiles component Sass and JS into style.css and scr
 
 ## Install
 
-This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `vf-componenet-rollup` with this command.
+You'll likely want to configure this component to include or exclude Sass and JS files, we suggest cloning it to your local `./src/components`.
+
+Get an tarball of this component with:
+
+```
+yarn pack @visual-framework/vf-componenet-rollup
+```
+
+However for very generic VF projects, this component is also distributed with [npm][npm]. After [installing npm][install-npm], you can install `vf-componenet-rollup` with this command.
 
 ```
 $ yarn add --dev @visual-framework/vf-componenet-rollup
