@@ -1,26 +1,13 @@
 {% spaceless %}
 
-{# Set font-size class to be used #}
-{% if type == "extra-large" %}
-  {% set size = "xl" %}
-{% elseif type == "large" %}
-    {% set size = "l" %}
-{% elseif type == "regular" %}
-  {% set size = "r" %}
-{% elseif type == "small" %}
-  {% set size = "s" %}
-{% elseif type == "extra-small" %}
-  {% set size = "xs" %}
-{% endif %}
-
 <p
 {% if id %} id="{{-id-}}"{% endif %}
 
 class="vf-text--body
 
-{%- if type %} vf-text--body-{{size}}{% endif -%}
+{%- if type %} vf-text-body--{{type}}{% endif -%}
 
-{# You want a snowflake of a classname for something, here you  #}
+{# You want a snowflake of a classname for something, here you go #}
 {%- if override_class %} | {{override_class}}{% endif -%}
 ">
 

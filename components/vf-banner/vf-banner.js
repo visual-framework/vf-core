@@ -13,7 +13,7 @@
 //       This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-link" href="JavaScript:Void(0);">Terms Of Use</a>.
 //     </p>
 //
-//     <button class="vf-button vf-button--secondary">
+//     <button class="vf-button vf-text-button--secondary">
 //       {{vf-data-protection-banner__link}}
 //     </button>
 //   </div>
@@ -170,7 +170,7 @@ function vfBannerInsert(banner,bannerId,scope) {
   // if there is a vfJsBannerButtonText and banner is blocking or dismissible,
   // add a button so user can close the banner
   if (banner.vfJsBannerButtonText && (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible')) {
-    generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    generatedBannerHtml += '<button class="vf-button vf-text-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
   }
 
   generatedBannerHtml += '</div>';

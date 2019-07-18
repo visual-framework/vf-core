@@ -11,20 +11,6 @@
   {% set style_class = style %}
 {% endif %}
 
-{# Set font-size class to be used #}
-{% if type == "display" %}
-  {% set size = "xl" %}
-{% elseif type == "extra-large" %}
-  {% set size = "xl" %}
-{% elseif type == "large" %}
-  {% set size = "l" %}
-{% elseif type == "regular" %}
-  {% set size = "r" %}
-{% elseif type == "small" %}
-  {% set size = "s" %}
-{% endif %}
-
-
 <{{tags}}
 
 {# You're using an ID? Really?? That'll go here #}
@@ -32,11 +18,11 @@
 
 class="vf-text
 
-{%- if type %} vf-text--heading-{{size}}{% endif -%}
+{%- if type %} vf-text-heading--{{type}}{% endif -%}
 
 {%- if style_class %} vf-text--{{style_class}}{% endif -%}
 
-{# You want a snowflake of a classname for something, here you  #}
+{# You want a snowflake of a classname for something, here you go #}
 {%- if override_class %} | {{override_class}}{% endif -%}
 ">
 
