@@ -1,6 +1,6 @@
 # Visual Framework 2.0
 
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-core.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-core) ![Chat for support on Discord](https://discordapp.com/api/guilds/596668639004983296/widget.png?style=shield) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/EMBL/EMBL-Visual-Framework) 
+[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-core.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-core) ![Chat for support on Discord](https://discordapp.com/api/guilds/596668639004983296/widget.png?style=shield) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/EMBL/EMBL-Visual-Framework)
 
 ---
 
