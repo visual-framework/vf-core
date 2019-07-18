@@ -48,7 +48,6 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
-const nodeModuleImport = require('@node-sass/node-module-importer');
 const recursive = require('./tools/css-generator/recursive-readdir');
 
 // Linting things
@@ -97,8 +96,7 @@ const sassPaths = [
   componentPath + '/vf-core-components',
   // and finally any multi-components
   componentPath + '/vf-form',
-  componentPath + '/vf-core-components/vf-form',
-  path.resolve(__dirname, 'node_modules'),
+  componentPath + '/vf-core-components/vf-form'
 ];
 
 gulp.task('vf-css', function(done) {
@@ -106,7 +104,7 @@ gulp.task('vf-css', function(done) {
     // Import sass files
     // We'll check to see if the file exists before passing
     // it to sass for compilation
-    importer: [nodeModuleImport, function(url,prev,done) {
+    importer: [function(url,prev,done) {
       var truncatedUrl = url.split(/[/]+/).pop();
       var parentFile = prev.split(/[/]+/).pop();
 
