@@ -13,15 +13,15 @@
 
 {# Set font-size class to be used #}
 {% if type == "display" %}
-  {% set size = "xl" %}
+  {% set size = "1" %}
 {% elseif type == "extra-large" %}
-  {% set size = "xl" %}
+  {% set size = "1" %}
 {% elseif type == "large" %}
-  {% set size = "l" %}
+  {% set size = "3" %}
 {% elseif type == "regular" %}
-  {% set size = "r" %}
+  {% set size = "4" %}
 {% elseif type == "small" %}
-  {% set size = "s" %}
+  {% set size = "5" %}
 {% endif %}
 
 
@@ -32,11 +32,11 @@
 
 class="vf-text
 
-{%- if type %} vf-text--heading-{{size}}{% endif -%}
+{%- if type %} vf-text-heading--{{size}}{% endif -%}
 
 {%- if style_class %} vf-text--{{style_class}}{% endif -%}
 
-{# You want a snowflake of a classname for something, here you  #}
+{# You want a snowflake of a classname for something, here you go #}
 {%- if override_class %} | {{override_class}}{% endif -%}
 ">
 
