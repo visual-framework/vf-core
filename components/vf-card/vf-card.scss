@@ -18,6 +18,19 @@
   }
 }
 
+a.vf-card {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.vf-card__title {
+  color: set-ui-color(vf-ui-color--black);
+}
+
+.vf-card__text {
+  color: set-ui-color(vf-ui-color--black);
+}
+
 .vf-card--topic {
   background-color: $vf-card--topic-bg-color;
 
@@ -28,12 +41,12 @@
 
   &:hover {
     .vf-card__title {
-      padding-left: 32px;
+      padding-left: 36px;
       transition: all .1s linear;
     }
     .vf-card__text {
-      padding-left: 32px;
-      padding-right: 32px;
+      padding-left: 36px;
+      padding-right: 36px;
       transition: all .1s linear;
     }
   }
@@ -45,12 +58,14 @@
     display: inline-block;
     margin-bottom: 0;
     padding: map-get($vf-spacing-map, vf-spacing--md) map-get($vf-spacing-map, vf-spacing--lg);
+    text-decoration: none !important;
     text-transform: uppercase;
   }
 
   .vf-card__text {
     background-color: $vf-card--topic-bg-color;
     padding: map-get($vf-spacing-map, vf-spacing--md) map-get($vf-spacing-map, vf-spacing--lg);
+    text-decoration: none !important;
   }
 }
 
@@ -64,8 +79,8 @@
 
   &:hover {
     .vf-card__content {
-      padding-left: 34px;
-      padding-right: 34px;
+      padding-left: 36px;
+      padding-right: 36px;
       transition: all .1s linear;
     }
   }
@@ -91,6 +106,7 @@
 .vf-card__title {
   @include set-type(text-heading--3);
 
+  text-decoration: none;
   transition: all .1s linear;
 }
 

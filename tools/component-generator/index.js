@@ -2,7 +2,12 @@ var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var path = require('path');
-var config = require('../../package.json');
+var config = require(path.resolve('.','package.json'));
+
+config.vfConfig = config.vfConfig || [];
+vfName = config.vfConfig.vfName || "Visual Framework 2.0";
+vfNamespace = config.vfConfig.vfNamespace || "vf-";
+vfComponentPath = config.vfConfig.vfComponentPath || __dirname + '/components';
 
 module.exports = class extends Generator {
   prompting() {
@@ -26,11 +31,15 @@ module.exports = class extends Generator {
     this.log((
       chalk.white("This tool helps you develop new components for the Visual Framework \n") +
       chalk.white("Not sure which options to pick? See the guide at: \n") +
-      chalk.white("https://github.com/visual-framework/vf-core#creating-a-new-component")
+      chalk.white("https://visual-framework.github.io/vf-welcome/documentation/#components")
     ));
 
     var componentType = ['element', 'block', 'container', 'grid', 'boilerplate'];
-    var DepartmentType = ['VF Global', 'EMBL', 'EMBL-EBI'];
+    if (vfNamespace != 'vf-') {
+      var DepartmentType = [vfName, 'VF Global'];
+    } else {
+      var DepartmentType = [vfName];
+    }
 
     var prompts = [{
       type: 'list',
@@ -48,12 +57,12 @@ module.exports = class extends Generator {
       type: 'input',
       name: 'componentName',
       required: true,
-      message: 'What\'s the name of your component? (all lowercase, a hyphen instead of space, will be prefixed with `vf-`)',
+      message: 'What\'s the name of your component? (all lowercase, a hyphen instead of space, will be prefixed with your project\'s namespace.)',
       description: 'Component name'
     }, {
       type: 'confirm',
       name: 'npm',
-      message: 'Is it a npm package?',
+      message: 'Will this be published to npm?',
       default: true
     }];
 
@@ -65,26 +74,18 @@ module.exports = class extends Generator {
   writing() {
 
     switch (this.props.dept) {
+      case vfName:
+      var namespace = vfNamespace;
+      break;
       case "VF Global":
-      var path = "./components" + "/";
-      var namespace = config.vfConfig.vfNamespace;
-      break;
-      case "EMBL":
-      var path = "./components/EMBL" + "/";
-      var namespace = "embl-";
-      break;
-      case "EMBL-EBI":
-      var path = "./components/EMBL-EBI" + "/";
-      var namespace = "ebi-";
+      var namespace = "vf-";
       break;
     }
     var patternType = this.props.type;
-    var totalPath = path + namespace + this.props.componentName + "/";
+    var totalPath = vfComponentPath + '/' + namespace + this.props.componentName + "/";
     var fileName = namespace + this.props.componentName;
 
-
     var outputFile = fileName + '.njk';
-
     this.fs.copyTpl(
       this.templatePath('_component.njk'),
       this.destinationPath(totalPath + outputFile),
@@ -93,9 +94,7 @@ module.exports = class extends Generator {
       }
     );
 
-
-    var outputFile =  fileName + '.scss';
-
+    var outputFile = fileName + '.scss';
     this.fs.copyTpl(
       this.templatePath('_component.scss'),
       this.destinationPath(totalPath + outputFile),
@@ -104,8 +103,7 @@ module.exports = class extends Generator {
       }
     );
 
-    var outputFile =  fileName + '.variables.scss';
-
+    var outputFile = fileName + '.variables.scss';
     this.fs.copyTpl(
       this.templatePath('_component.variables.scss'),
       this.destinationPath(totalPath + outputFile),
@@ -114,8 +112,7 @@ module.exports = class extends Generator {
       }
     );
 
-    var outputFile =  fileName + '.js';
-
+    var outputFile = fileName + '.js';
     this.fs.copyTpl(
       this.templatePath('_component.js'),
       this.destinationPath(totalPath + outputFile),
@@ -125,7 +122,6 @@ module.exports = class extends Generator {
     );
 
     var outputFile = fileName + '.config.yml';
-
     this.fs.copyTpl(
       this.templatePath('_component.config.yml'),
       this.destinationPath(totalPath + outputFile),
