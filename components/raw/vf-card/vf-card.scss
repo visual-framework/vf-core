@@ -4,7 +4,7 @@
 @import 'vf-card.variables.scss';
 
 .vf-card {
-  @include margin( 0, map-get($vf-spacing-map, vf-spacing--r) );
+  @include margin( 0, map-get($vf-spacing-map, vf-spacing--md) );
 
   display: grid;
   grid-template-rows: 216px repeat(6, 36px);
@@ -52,19 +52,19 @@ a.vf-card {
   }
 
   .vf-card__title {
-    @include set-type(body--s);
+    @include set-type(text-body--5);
 
     background-color: $vf-card--topic-bg-color;
     display: inline-block;
     margin-bottom: 0;
-    padding: map-get($vf-spacing-map, vf-spacing--r) map-get($vf-spacing-map, vf-spacing--l);
+    padding: map-get($vf-spacing-map, vf-spacing--md) map-get($vf-spacing-map, vf-spacing--lg);
     text-decoration: none !important;
     text-transform: uppercase;
   }
 
   .vf-card__text {
     background-color: $vf-card--topic-bg-color;
-    padding: map-get($vf-spacing-map, vf-spacing--r) map-get($vf-spacing-map, vf-spacing--l);
+    padding: map-get($vf-spacing-map, vf-spacing--md) map-get($vf-spacing-map, vf-spacing--lg);
     text-decoration: none !important;
   }
 }
@@ -74,7 +74,7 @@ a.vf-card {
   .vf-card__content {
     background-color: $vf-card--navigation-bg-color;
     grid-row: 3 / -1;
-    padding: map-get($vf-spacing-map, vf-spacing--r) map-get($vf-spacing-map, vf-spacing--l);
+    padding: map-get($vf-spacing-map, vf-spacing--md) map-get($vf-spacing-map, vf-spacing--lg);
   }
 
   &:hover {
@@ -104,14 +104,14 @@ a.vf-card {
 }
 
 .vf-card__title {
-  @include set-type(heading--l-alt);
+  @include set-type(text-heading--3);
 
   text-decoration: none;
   transition: all .1s linear;
 }
 
 .vf-card__text {
-  @include set-type(body--l);
+  @include set-type(text-body--2);
 
   transition: all .1s linear;
 }

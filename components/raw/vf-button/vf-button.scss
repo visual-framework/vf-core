@@ -1,7 +1,7 @@
 // vf-button
 
 .vf-button {
-  @include set-type(button--r);
+  @include set-type(text-button--1);
 
   appearance: none;
   border-radius: 4px;
@@ -25,7 +25,7 @@
   }
 }
 
-.vf-button--secondary {
+.vf-text-button--secondary {
   @include button-link($vf-link--color: set-color(vf-color--green), $vf-link--hover-color: set-color(vf-color--green--dark));
 
   box-shadow: 0px 6px 0px 0px set-color(vf-color--green--dark);
@@ -55,7 +55,7 @@
     @include button-link--ghost;
   }
 
-  &.vf-button--secondary {
+  &.vf-text-button--secondary {
     @include button-link--ghost($vf-link--color: set-color(vf-color--green), $vf-link--hover-color: set-color(vf-color--green--dark));
   }
 
@@ -69,22 +69,22 @@
 }
 
 .vf-button--rounded {
-  border-radius: $vf-radius--r;
+  border-radius: $vf-radius--md;
 }
 
-.vf-button--s {
-  @include set-type(body--s);
+.vf-text-button--2 {
+  @include set-type(text-button--2);
 
   padding: 8px;
-  // @include padding(all, map-get($vf-spacing-map, vf-spacing--s));
+  // @include padding(all, map-get($vf-spacing-map, vf-spacing--sm));
 
-  &.vf-button--rounded {
+  &.vf-text-button--rounded {
     border-radius: 8px;
   }
 }
 
-.vf-button--l {
-  @include set-type(button--r);
+.vf-text-button--1 {
+  @include set-type(text-button--1);
 
   padding: 16px;
 }
