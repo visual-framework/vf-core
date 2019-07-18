@@ -14,10 +14,6 @@ $ yarn add --dev @visual-framework/vf-componenet-rollup
 
 ## Usage
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
-
-```
-@import "@visual-framework/vf-componenet-rollup/index.scss";
-```
+Unlike other components, you probably won't want to `@import` this. Instead the `vf-core` project will compile this into a style.css and scripts.js.
 
 _Make sure you import any requirements along with the modules._
