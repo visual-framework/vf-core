@@ -593,6 +593,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-body</span> {
+  <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
 }
@@ -604,8 +605,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.vf-body</span> {
     <span class="hljs-attribute">display</span>: grid;
     <span class="hljs-attribute">grid-template-columns</span>: <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto) [main-start] <span class="hljs-built_in">minmax</span>(288px, 76.5em) [main-end] <span class="hljs-built_in">minmax</span>(var(--page-grid-gap), auto);
-    <span class="hljs-attribute">margin</span>: unset;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">max-width</span>: unset;
+  }
+  <span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
   }
 }
 </pre>
@@ -655,6 +659,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-body</span> {
+  <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
 }
@@ -669,8 +674,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.vf-body</span> {
     <span class="hljs-attribute">display</span>: grid;
     grid-template-<span class="hljs-attribute">columns</span>: minmax(var(--page-grid-gap), auto) [main-start] minmax(<span class="hljs-number">288px</span>, <span class="hljs-number">76.5em</span>) [main-end] minmax(var(--page-grid-gap), auto);
-    <span class="hljs-attribute">margin</span>: unset;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">max-width</span>: unset;
+  }
+  
+  <span class="hljs-comment">// for the moment - we cannot rely on vf-body being applied to the body element so:</span>
+  <span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
   }
 }
 </pre>
@@ -688,7 +698,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-grid-page/vf-grid-page.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.1 KB
+          Size: 1.2 KB
         </li>
       </ul>
     </section>
