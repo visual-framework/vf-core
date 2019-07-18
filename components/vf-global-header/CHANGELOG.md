@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.0.38 (2019-07-08)
+
+
+### Bug Fixes
+
+* vf-global-header-dependencies ([e98d8b6](https://github.com/visual-framework/vf-core/commit/e98d8b6))
+
+
+
+
+
 ## 0.0.37 (2019-06-21)
 
 

@@ -39,7 +39,7 @@ const shell = require('gulp-shell');
 const rename = require('gulp-rename');
 const watch = require('gulp-watch');
 const ListStream = require('list-stream');
-const glob = require('glob');
+const fastglob = require('fast-glob');
 const replace = require('gulp-replace');
 const del = require('del');
 
@@ -48,7 +48,6 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
-const nodeModuleImport = require('@node-sass/node-module-importer');
 const recursive = require('./tools/css-generator/recursive-readdir');
 
 // Linting things
@@ -97,8 +96,7 @@ const sassPaths = [
   componentPath + '/vf-core-components',
   // and finally any multi-components
   componentPath + '/vf-form',
-  componentPath + '/vf-core-components/vf-form',
-  path.resolve(__dirname, 'node_modules'),
+  componentPath + '/vf-core-components/vf-form'
 ];
 
 gulp.task('vf-css', function(done) {
@@ -106,7 +104,7 @@ gulp.task('vf-css', function(done) {
     // Import sass files
     // We'll check to see if the file exists before passing
     // it to sass for compilation
-    importer: [nodeModuleImport, function(url,prev,done) {
+    importer: [function(url,prev,done) {
       var truncatedUrl = url.split(/[/]+/).pop();
       var parentFile = prev.split(/[/]+/).pop();
 
@@ -142,7 +140,7 @@ gulp.task('vf-css', function(done) {
   // only include the file if it exists.
   var availableComponents = {}; // track the components avaialble
   gulp
-    .src([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss'], {
+    .src(fastglob.sync([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss']), {
       allowEmpty: true,
       ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss',componentPath+'/vf-core-components/vf-core/components/**/*.scss']
     })

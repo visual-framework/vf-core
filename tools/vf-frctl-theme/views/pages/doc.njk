@@ -7,7 +7,9 @@
 {% if pathParam and not doc %}{{ throw(404, 'Page not found') }}{% endif %}
 
 {% set page = {
-    title: doc.title | default('Components overview') | default(frctl.get('project.title')) | default('Welcome to your component library')
+    title: doc.title | default('VF 2.0 Component library') | default(frctl.get('project.title')) | default('Welcome to your component library'),
+    lede: doc.lede | default('Browse all the components included in the <a href="https://github.com/visual-framework/vf-core" class="vf-link">Visual Framework 2.0 core</a>.'),
+    intro: doc.intro | default('Use this website to browse components, understand the consituent CSS, JS templates, and to install from npm.')
 } %}
 
 {% set status = status.tag(doc.status) %}
@@ -25,8 +27,6 @@
     {% else %}
     {{ contents }}
     {% endif %}
-{% else %}
-{% include 'partials/content/overview.njk' %}
 {% endif %}
 {% endblock %}
 </div>
