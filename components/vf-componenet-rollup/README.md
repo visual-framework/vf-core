@@ -1,4 +1,4 @@
-# vf-componenet-rollup Component
+# Componenet Rollup
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-componenet-rollup.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-componenet-rollup)
 
