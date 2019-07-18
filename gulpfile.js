@@ -39,7 +39,7 @@ const shell = require('gulp-shell');
 const rename = require('gulp-rename');
 const watch = require('gulp-watch');
 const ListStream = require('list-stream');
-const glob = require('glob');
+const fastglob = require('fast-glob');
 const replace = require('gulp-replace');
 const del = require('del');
 
@@ -142,7 +142,7 @@ gulp.task('vf-css', function(done) {
   // only include the file if it exists.
   var availableComponents = {}; // track the components avaialble
   gulp
-    .src([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss'], {
+    .src(fastglob.sync([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss']), {
       allowEmpty: true,
       ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss',componentPath+'/vf-core-components/vf-core/components/**/*.scss']
     })
