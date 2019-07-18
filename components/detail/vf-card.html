@@ -128,6 +128,16 @@ class="vf-logo--responsive">
 
               
                 
+                  <a class="vf-tabs__link" href="vf-card--as-link.html">
+                    As Link
+                  </a>
+                 
+               
+
+            
+
+              
+                
                   <a class="vf-tabs__link" href="vf-card--navigation-card.html">
                     Navigation Card
                   </a>
@@ -244,6 +254,21 @@ class="vf-logo--responsive">
         <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</pre>
+  
+<a id="vf-card--as-link-code" href="#vf-card--as-link-code">Anchor (todo: `vf-link--anchor` or such)</a>
+<pre class="vf-code-example__pre"><span class="hljs-comment">&lt;!-- As Link --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.emmbl.de"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-card vf-card--topic"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../assets/vf-card/assets/vf-card-example.png"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-card__image"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-card__content"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-card__title"</span>&gt;</span>
+      Title Block
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-card__text"</span>&gt;</span>
+      two lines of text
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 </pre>
   
 <a id="vf-card--navigation-card-code" href="#vf-card--navigation-card-code">Anchor (todo: `vf-link--anchor` or such)</a>
@@ -534,6 +559,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
 }
 
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.vf-card</span> {
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-class">.vf-card__title</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;
+}
+
+<span class="hljs-selector-class">.vf-card__text</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#000000</span>;
+}
+
 <span class="hljs-selector-class">.vf-card--topic</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffcd00</span>;
 }
@@ -544,14 +582,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-card--topic</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-class">.vf-card__title</span> {
-  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">32px</span>;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">36px</span>;
   <span class="hljs-attribute">-webkit-transition</span>: all .<span class="hljs-number">1s</span> linear;
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
 }
 
 <span class="hljs-selector-class">.vf-card--topic</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-class">.vf-card__text</span> {
-  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">32px</span>;
-  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">32px</span>;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">36px</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">36px</span>;
   <span class="hljs-attribute">-webkit-transition</span>: all .<span class="hljs-number">1s</span> linear;
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
 }
@@ -566,12 +604,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">display</span>: inline-block;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span> <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">text-decoration</span>: none <span class="hljs-meta">!important</span>;
   <span class="hljs-attribute">text-transform</span>: uppercase;
 }
 
 <span class="hljs-selector-class">.vf-card--topic</span> <span class="hljs-selector-class">.vf-card__text</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffcd00</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span> <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">text-decoration</span>: none <span class="hljs-meta">!important</span>;
 }
 
 <span class="hljs-selector-class">.vf-card--navigation</span> <span class="hljs-selector-class">.vf-card__content</span> {
@@ -581,8 +621,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-card--navigation</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-class">.vf-card__content</span> {
-  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">34px</span>;
-  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">34px</span>;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">36px</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">36px</span>;
   <span class="hljs-attribute">-webkit-transition</span>: all .<span class="hljs-number">1s</span> linear;
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
 }
@@ -610,6 +650,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.333</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
   <span class="hljs-attribute">-webkit-transition</span>: all .<span class="hljs-number">1s</span> linear;
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
 }
@@ -656,7 +697,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-card/vf-card.css
         </li>
         <li class="vf-list__item">
-          Size: 3.8 KB
+          Size: 4 KB
         </li>
       </ul>
     </section>
@@ -756,6 +797,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 }
 
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.vf-card</span> {
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-class">.vf-card__title</span> {
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
+}
+
+<span class="hljs-selector-class">.vf-card__text</span> {
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
+}
+
 <span class="hljs-selector-class">.vf-card--topic</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-card--topic-bg-color</span>;
 
@@ -766,12 +820,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   &amp;:hover {
     <span class="hljs-selector-class">.vf-card__title</span> {
-      <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">32px</span>;
+      <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">36px</span>;
       <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
     }
     <span class="hljs-selector-class">.vf-card__text</span> {
-      <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">32px</span>;
-      <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">32px</span>;
+      <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">36px</span>;
+      <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">36px</span>;
       <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
     }
   }
@@ -783,12 +837,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">display</span>: inline-block;
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--r) map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--l);
+    <span class="hljs-attribute">text-decoration</span>: none <span class="hljs-meta">!important</span>;
     <span class="hljs-attribute">text-transform</span>: uppercase;
   }
 
   <span class="hljs-selector-class">.vf-card__text</span> {
     <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-card--topic-bg-color</span>;
     <span class="hljs-attribute">padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--r) map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--l);
+    <span class="hljs-attribute">text-decoration</span>: none <span class="hljs-meta">!important</span>;
   }
 }
 
@@ -802,8 +858,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   &amp;:hover {
     <span class="hljs-selector-class">.vf-card__content</span> {
-      <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">34px</span>;
-      <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">34px</span>;
+      <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">36px</span>;
+      <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">36px</span>;
       <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
     }
   }
@@ -829,6 +885,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-card__title</span> {
   @<span class="hljs-keyword">include</span> set-type(heading--l-alt);
 
+  <span class="hljs-attribute">text-decoration</span>: none;
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
 }
 
@@ -856,7 +913,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-card/vf-card.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.9 KB
+          Size: 2.2 KB
         </li>
       </ul>
     </section>
