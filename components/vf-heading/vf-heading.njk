@@ -11,20 +11,6 @@
   {% set style_class = style %}
 {% endif %}
 
-{# Set font-size class to be used #}
-{% if type == "display" %}
-  {% set size = "1" %}
-{% elseif type == "extra-large" %}
-  {% set size = "1" %}
-{% elseif type == "large" %}
-  {% set size = "3" %}
-{% elseif type == "regular" %}
-  {% set size = "4" %}
-{% elseif type == "small" %}
-  {% set size = "5" %}
-{% endif %}
-
-
 <{{tags}}
 
 {# You're using an ID? Really?? That'll go here #}
@@ -32,7 +18,7 @@
 
 class="vf-text
 
-{%- if type %} vf-text-heading--{{size}}{% endif -%}
+{%- if type %} vf-text-heading--{{type}}{% endif -%}
 
 {%- if style_class %} vf-text--{{style_class}}{% endif -%}
 
