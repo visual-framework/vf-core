@@ -1,11 +1,18 @@
 ---
 name: New component request
 about: Need a new news list, gallery, search widget?
-
 ---
 
 Add a one sentence summary of what it is you need it to do.
 [An image gallery that shows one large image+caption, and thumbnails of more images. Clicking any image starts a slideshow]
+
+---
+
+Not sure? Confused?
+
+[Chat with us](https://discord.gg/XHAvkUX) and consult our [governance approach](https://visual-framework.github.io/vf-welcome/documentation/guidelines/governance/).
+
+---
 
 ## Standard questions
 
@@ -38,5 +45,8 @@ Add a one sentence summary of what it is you need it to do.
 
 - Does this component contain other components?
   [vf-credit, vf-caption]
+
+- Do you already have a component?
+  [If so, point us to the code!]
 
 ## Any further thoughts?
