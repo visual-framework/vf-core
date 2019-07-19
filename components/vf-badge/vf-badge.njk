@@ -1,4 +1,5 @@
 {# Determine type of element to use, if not explicitly set -#}
+{% spaceless %}
 
 {% if href %}
   {% set tags = 'a' %}
@@ -28,7 +29,7 @@ class="vf-badge
 {%- if style %}
   {% for styles in style %} vf-badge--{{styles}}{% endfor -%}
 {% endif -%}
-{# You want a snowflake of a classname for something, here you  #}
+{# You want a snowflake of a classname for something, here you go #}
 {%- if override_class %} | {{override_class}}{% endif -%}
 
 ">
@@ -36,3 +37,4 @@ class="vf-badge
    {{- html | safe if html else text -}}
 
 </{{tags}}>
+{% endspaceless %}

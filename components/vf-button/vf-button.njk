@@ -1,5 +1,6 @@
-{# Determine type of element to use, if not explicitly set -#}
+{% spaceless %}
 
+{# Determine type of element to use, if not explicitly set -#}
 {% if href %}
   {% set tags = 'a' %}
 {% else %}
@@ -21,12 +22,17 @@
 
 class="vf-button
 {#- This will list the them classname #}
+{# {% for class in theme_class %} vf-button--{{class}}{% endfor -%} #}
 {%- if theme_class %} vf-button--{{theme_class}}{% endif %}
 {# If you're styling the shape of the item, the classnames will render in this for loop #}
 {%- if style %}
   {% for styles in style %} vf-button--{{styles}}{% endfor -%}
 {% endif -%}
-{# You want a snowflake of a classname for something, here you  #}
+{# If you want a size #}
+{%- if size %}
+  vf-text-button--{{size}}
+{% endif -%}
+{# You want a snowflake of a classname for something, here you go #}
 {%- if override_class %} | {{override_class}}{% endif -%}
 
 ">
@@ -34,3 +40,4 @@ class="vf-button
 {{- html | safe if html else text -}}
 
 </{{tags}}>
+{% endspaceless %}

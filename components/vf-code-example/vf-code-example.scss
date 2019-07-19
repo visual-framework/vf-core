@@ -8,7 +8,16 @@ $vf-code-example-enable-hljs: true !default;
 .vf-code-example__pre,
 .vf-code-example {
   // pre and code should always be monospace
-  @include set-type(body--s,$vf-font-family--monospace, $custom-margin-bottom: 0);
+  @include set-type(text-body--5,$vf-font-family--monospace, $custom-margin-bottom: 0);
+  @include padding--block(all,map-get($vf-spacing-map, vf-spacing--xs));
+
+  background: set-ui-color(vf-ui-color--grey);
+  border-radius: $vf-radius--xs;
+}
+
+.vf-content code,
+.vf-code-example {
+  font-size: inherit;
 }
 
 .vf-code-example {
@@ -18,8 +27,11 @@ $vf-code-example-enable-hljs: true !default;
 .vf-content pre,
 .vf-code-example__pre {
   border: 1px;
+  display: inline-block;
   min-width: 0;
   overflow: auto;
+  white-space: pre-wrap;
+  @include padding--inline(all,map-get($vf-spacing-map, vf-spacing--s));
 }
 
 @if $vf-code-example-enable-hljs == true {
@@ -33,7 +45,7 @@ $vf-code-example-enable-hljs: true !default;
 
   .hljs-comment,
   .hljs-quote {
-    color: set-color(vf-color--grey--light);
+    color: set-color(vf-color--grey--lightest);
     font-style: italic; }
 
   .hljs-keyword,
@@ -86,7 +98,7 @@ $vf-code-example-enable-hljs: true !default;
     color: set-color(vf-color--blue); }
 
   .hljs-meta {
-    color: set-color(vf-color--grey--light);
+    color: set-color(vf-color--grey--lightest);
     font-weight: bold; }
 
   .hljs-deletion {

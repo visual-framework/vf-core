@@ -1,4 +1,16 @@
-<div
+{% if href %}
+  {% set tags = 'a' %}
+{% else %}
+  {% set tags = 'div' %}
+{% endif %}
+
+
+{# Decide upon which 'style' the badge has #}
+<{{tags}}
+{# If there's an href put it here #}
+{%- if tags == 'a' %}
+ href="{{ href if href else '#' }}"
+{%- endif %}
 
   {# You're using an ID? Really?? That'll go here #}
   {%- if id %} id="{{-id-}}"{% endif %}
@@ -7,7 +19,7 @@
   class="vf-card
   {%- if modifier %} {{modifier}}{% endif -%}
 
-  {# You want a snowflake of a classname for something, here you  #}
+  {# You want a snowflake of a classname for something, here you go #}
   {%- if override_class %} | {{override_class}}{% endif %}
 ">
   <img src="{{ image }}" alt="" class="vf-card__image">
@@ -19,4 +31,4 @@
       {{ text }}
     </p>
   </div>
-</div>
+</{{tags}}>

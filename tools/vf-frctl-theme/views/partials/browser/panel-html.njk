@@ -1,6 +1,6 @@
 {% import "macros/render.njk" as render %}
 {% if not ((entity.preview == '@preview--blocks') or (entity.preview == '@preview--elements')) %}
-<h3 class="vf-text vf-text--heading-r">Code example</h3>
+<h3 class="vf-text vf-text-heading--4">Code example</h3>
 <code class="Code Code--lang-html vf-code-example">
   {% if entity.isVariant or entity.variants().size == 1 %}
   <pre class="vf-code-example__pre">
@@ -20,5 +20,5 @@
   {% endfor %}
   {% endif %}
 </code>
-<hr class="vf-divider vf-u-margin__bottom-r vf-u-margin__top-r">
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
 {% endif %}

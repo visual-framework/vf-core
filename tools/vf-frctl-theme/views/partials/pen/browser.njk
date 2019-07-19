@@ -16,7 +16,8 @@
     </div>
 
     <!-- List all the components at the footer -->
-    {% if page.title != "Components overview" %}
+    {% if request.path != '/' %}
+      {# Only show component list on documentation homepage #}
       <div>
       {% include 'partials/browser/component-list.njk' %}
       </div>
