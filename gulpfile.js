@@ -43,15 +43,6 @@ const reload = global.browserSync.reload;
 require('require-dir')('./tools/gulp-tasks');
 
 // -----------------------------------------------------------------------------
-// Component Assets
-// -----------------------------------------------------------------------------
-gulp.task('vf-component-assets', function() {
-  return gulp
-    .src([componentPath + '/vf-core-components/**/assets/**/*', componentPath + '/**/assets/**/*'])
-    .pipe(gulp.dest(buildDestionation + '/assets'));
-});
-
-// -----------------------------------------------------------------------------
 // Fractal Tasks
 // -----------------------------------------------------------------------------
 
