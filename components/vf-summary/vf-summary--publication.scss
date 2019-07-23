@@ -6,7 +6,7 @@ $vf-summary__publication-color--text: vf-color--grey;
   margin-bottom: 48px;
 
   .vf-summary__author {
-    margin--bottom: 0px; // need to look at typographic margins again
+    margin-bottom: 0px; // need to look at typographic margins again
   }
 
   .vf-summary__source {
@@ -31,19 +31,19 @@ $vf-summary__publication-color--text: vf-color--grey;
 
 
   .vf-summary__text {
-    @include set-type($vf-summary__publication__text-typography);
+    // @include set-type(body--5);
 
     color: set-color($vf-summary__publication-color--text);
     margin-bottom: 0;
   }
 
   .vf-summary__text .vf-link {
-    @media (max-width: $vf-breakpoint--r - 1px) {
+    @media (max-width: $vf-breakpoint--md - 1px) {
       &:first-child {
         display: block;
       }
     }
-    @media (min-width: $vf-breakpoint--r) {
+    @media (min-width: $vf-breakpoint--md) {
       margin-left: 8px;
     }
   }
