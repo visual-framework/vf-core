@@ -71,6 +71,8 @@ const includePaths = require('rollup-plugin-includepaths');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 
+// Some Gulp tasks live in their own files, for the sake of clarity.
+require('require-dir')('./tools/gulp-tasks');
 
 // -----------------------------------------------------------------------------
 // Sass and CSS Tasks
