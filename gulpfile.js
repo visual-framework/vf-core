@@ -32,7 +32,6 @@ const buildDestionation = path.resolve('.', global.vfBuildDestination);
 
 const gulp = require('gulp');
 const shell = require('gulp-shell');
-const watch = require('gulp-watch');
 
 // todo we might be able to remove these
 // const replace = require('gulp-replace');
@@ -43,18 +42,6 @@ const reload = global.browserSync.reload;
 
 // Many Gulp tasks live in their own files, for the sake of clarity.
 require('require-dir')('./tools/gulp-tasks');
-
-
-// -----------------------------------------------------------------------------
-// Watch Tasks
-// -----------------------------------------------------------------------------
-
-gulp.task('vf-watch', function(done) {
-  gulp.watch(componentPath + '/**/*.scss', gulp.series('vf-css')).on('change', reload);
-  gulp.watch(componentPath + '/**/*.js', gulp.series('vf-scripts')).on('change', reload);
-  gulp.watch(componentPath + '/**/**/assets/*.svg', gulp.series('vf-svg','vf-component-assets')).on('change', reload);
-  gulp.watch([componentPath + '/**/**/assets/*', '!' + componentPath + '/**/**/assets/*.svg'], gulp.series('vf-component-assets')).on('change', reload);
-});
 
 // -----------------------------------------------------------------------------
 // Default Tasks
