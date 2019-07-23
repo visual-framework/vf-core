@@ -209,6 +209,16 @@ class="vf-logo--responsive">
                
 
             
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-summary--publication.html">
+                    Publication
+                  </a>
+                 
+               
+
+            
           </ul>
 
       </div>
@@ -255,6 +265,9 @@ class="vf-logo--responsive">
       <div class="component-library-notes">
       <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-summary"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-summary.svg" alt="npm version"></a></p>
 <h2 id="about">About</h2>
+<h3 id="publications-summary">Publications Summary</h3>
+<p>The <code>vf-summary--publication</code> can be nested inside a vf-box where it takes the vf-box colours.</p>
+<p>If the <code>vf-summary__author</code> list is truncated to a certain number of authors you will need to add vf-et-al to the <code>&lt;p&gt;</code> - <code>&lt;p class=&quot;vf-summary__author | vf-et-al&quot;&gt;</code> - for it to add et al to the end of the list.</p>
 <h2 id="installation-and-implementation">Installation and Implementation</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-summary</code> with this command.</p>
 <code><pre>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-summary</span></pre></code><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
@@ -475,6 +488,31 @@ class="vf-logo--responsive">
 <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
 </pre>
   
+<a id="vf-summary--publication-code" href="#vf-summary--publication-code">Anchor (todo: `vf-link--anchor` or such)</a>
+<pre class="vf-code-example__pre"><span class="hljs-comment">&lt;!-- Publication --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary vf-summary--publication"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__title"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__link"</span>&gt;</span>
+      Computer modeling in developmental biology: growing today, essential tomorrow.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__author"</span>&gt;</span>
+        Jimenez RC, Albar JP, Bhak J, Blatter MC, Blicher T, Brazas MD, Brooksbank C, Budd A, De Las Rivas J, Dreyer J, van Driel MA, Dunn MJ, Fernandes PL, van Gelder CW, Hermjakob H, Ioannidis V, Judge DP, Kahlem P, Korpelainen E, Kraus HJ, Loveland J, Mayer
+        C, McDowall J, Moran F, Mulder N, Nyronen T, Rother K, Salazar GA, Schneider R, Via A, Villaveces JM, Yu P, Schneider MV, Attwood TK, Corpas M.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__source"</span>&gt;</span>
+        The Journal of cell biology
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__date"</span>&gt;</span>2019<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__text"</span>&gt;</span>
+        144(23):4214-4225. doi: 10.1242/dev.151274.
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>Europe<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>PMC<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+</pre>
+  
   
 </code>
 <hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
@@ -540,6 +578,12 @@ class="vf-logo--responsive">
       
       <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--b50fcbeaee1c1e5b950716149d5c8faa">vf-summary--profile.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--b9952922dcf515d4f7ab3b31968e2dca">vf-summary--publication.scss</a>
       </li>
       
     
@@ -996,7 +1040,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 }
 
-<span class="hljs-selector-class">.vf-sumary--mobile</span> {
+<span class="hljs-selector-class">.vf-summary--mobile</span> {
   <span class="hljs-attribute">position</span>: relative;
 
   &amp;::after {
@@ -1066,6 +1110,99 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         </li>
         <li class="vf-list__item">
           Size: 2 KB
+        </li>
+      </ul>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--b9952922dcf515d4f7ab3b31968e2dca">
+      <div class="FileBrowser-itemPreview">
+        
+        <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+          <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-summary__publication variables</span>
+<span class="hljs-variable">$vf-summary__publication__text-typography</span>: body--s;
+<span class="hljs-variable">$vf-summary__publication-color--text</span>: vf-color--grey;
+
+<span class="hljs-selector-class">.vf-summary--publication</span> {
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
+
+  <span class="hljs-selector-class">.vf-summary__author</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0px</span>; <span class="hljs-comment">// need to look at typographic margins again</span>
+  }
+
+  <span class="hljs-selector-class">.vf-summary__source</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">8px</span>;
+
+    <span class="hljs-selector-class">.vf-summary__date</span> {
+      <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span>;
+      <span class="hljs-attribute">position</span>: relative;
+      &amp;::before,
+      &amp;::after {
+        <span class="hljs-attribute">position</span>: absolute;
+      }
+      &amp;::before {
+        <span class="hljs-attribute">content</span>: <span class="hljs-string">'('</span>;
+        <span class="hljs-attribute">left</span>: -<span class="hljs-number">4px</span>;
+      }
+      &amp;::after {
+        <span class="hljs-attribute">content</span>: <span class="hljs-string">')'</span>;
+      }
+    }
+  }
+
+
+  <span class="hljs-selector-class">.vf-summary__text</span> {
+    <span class="hljs-comment">// @include set-type(body--5);</span>
+
+    <span class="hljs-attribute">color</span>: set-color(<span class="hljs-variable">$vf-summary__publication-color--text</span>);
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-summary__text</span> <span class="hljs-selector-class">.vf-link</span> {
+    @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-variable">$vf-breakpoint--md</span> - 1px) {
+      &amp;:first-child {
+        <span class="hljs-attribute">display</span>: block;
+      }
+    }
+    @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--md</span>) {
+      <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
+    }
+  }
+
+  <span class="hljs-comment">// vf-summary--publication can also sit inside a vf-box - so we need to adjust some sizes</span>
+  <span class="hljs-selector-class">.vf-box</span> &amp; {
+
+    <span class="hljs-selector-class">.vf-summary__title</span> {
+      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">4px</span>;
+    }
+    <span class="hljs-selector-class">.vf-summary__author</span> {
+      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">4px</span>;
+    }
+  }
+
+  <span class="hljs-comment">// vf-summary--publication inside of a vf-box will have more than one item in the vf-box, so we need to add some vertical spacing for more than one publication item in a box</span>
+  <span class="hljs-selector-class">.vf-box</span> &amp;:not(:first-of-type) {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">12px</span>;
+  }
+}
+</pre>
+        </code>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-summary/vf-summary--publication.scss">/components/raw/vf-summary/vf-summary--publication.scss</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-summary/vf-summary--publication.scss
+        </li>
+        <li class="vf-list__item">
+          Size: 1.5 KB
         </li>
       </ul>
     </section>
@@ -1145,6 +1282,34 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
 }
 
+<span class="hljs-selector-class">.vf-box</span> <span class="hljs-selector-class">.vf-summary</span> <span class="hljs-selector-class">.vf-summary__title</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+}
+
+<span class="hljs-selector-class">.vf-box</span> <span class="hljs-selector-class">.vf-summary</span> <span class="hljs-selector-class">.vf-summary__link</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+}
+
+<span class="hljs-selector-class">.vf-box</span> <span class="hljs-selector-class">.vf-summary</span> <span class="hljs-selector-class">.vf-summary__date</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+}
+
+<span class="hljs-selector-class">.vf-box</span> <span class="hljs-selector-class">.vf-summary</span> <span class="hljs-selector-class">.vf-summary__text</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+}
+
+<span class="hljs-selector-class">.vf-box</span> <span class="hljs-selector-class">.vf-summary</span> <span class="hljs-selector-class">.vf-summary__source</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+}
+
+<span class="hljs-selector-class">.vf-box</span> <span class="hljs-selector-class">.vf-summary</span> <span class="hljs-selector-class">.vf-summary__author</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+}
+
+<span class="hljs-selector-class">.vf-box</span> <span class="hljs-selector-class">.vf-summary</span> <span class="hljs-selector-class">.vf-link</span> {
+  <span class="hljs-attribute">color</span>: inherit;
+}
+
 <span class="hljs-selector-class">.vf-summary__button</span> {
   <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">-webkit-appearance</span>: none;
@@ -1181,6 +1346,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__source</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+  <span class="hljs-attribute">font-style</span>: italic;
 }
 
 <span class="hljs-selector-class">.vf-summary__link</span> {
@@ -1233,6 +1408,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.333</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.vf-summary__author</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+  <span class="hljs-attribute">font-style</span>: italic;
 }
 
 <span class="hljs-selector-class">.vf-summary--article</span> <span class="hljs-selector-class">.vf-summary__date</span> {
@@ -1420,11 +1605,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">--vf-text-margin--bottom</span>: <span class="hljs-number">8px</span>;
 }
 
-<span class="hljs-selector-class">.vf-sumary--mobile</span> {
+<span class="hljs-selector-class">.vf-summary--mobile</span> {
   <span class="hljs-attribute">position</span>: relative;
 }
 
-<span class="hljs-selector-class">.vf-sumary--mobile</span><span class="hljs-selector-pseudo">::after</span> {
+<span class="hljs-selector-class">.vf-summary--mobile</span><span class="hljs-selector-pseudo">::after</span> {
   <span class="hljs-attribute">content</span>: <span class="hljs-string">'(mobile)'</span>;
   <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span>;
   <span class="hljs-attribute">position</span>: absolute;
@@ -1532,7 +1717,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-summary/vf-summary.css
         </li>
         <li class="vf-list__item">
-          Size: 9.2 KB
+          Size: 10.1 KB
         </li>
       </ul>
     </section>
@@ -1557,6 +1742,30 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
   }
 
+  <span class="hljs-comment">// vf-summary can also sit inside a vf-box - so we need to adjust some things to match</span>
+  <span class="hljs-selector-class">.vf-box</span> &amp; {
+    <span class="hljs-selector-class">.vf-summary__title</span> {
+      <span class="hljs-attribute">color</span>: inherit;
+    }
+    <span class="hljs-selector-class">.vf-summary__link</span> {
+      <span class="hljs-attribute">color</span>: inherit;
+    }
+    <span class="hljs-selector-class">.vf-summary__date</span> {
+      <span class="hljs-attribute">color</span>: inherit;
+    }
+    <span class="hljs-selector-class">.vf-summary__text</span> {
+      <span class="hljs-attribute">color</span>: inherit;
+    }
+    <span class="hljs-selector-class">.vf-summary__source</span> {
+      <span class="hljs-attribute">color</span>: inherit;
+    }
+    <span class="hljs-selector-class">.vf-summary__author</span> {
+      <span class="hljs-attribute">color</span>: inherit;
+    }
+    <span class="hljs-selector-class">.vf-link</span> {
+      <span class="hljs-attribute">color</span>: inherit;
+    }
+  }
 }
 
 <span class="hljs-selector-class">.vf-summary__button</span> {
@@ -1581,6 +1790,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__date-typography</span>);
 
   <span class="hljs-attribute">color</span>: set-color(<span class="hljs-variable">$vf-summary__date-color--text</span>);
+}
+
+<span class="hljs-selector-class">.vf-summary__source</span> {
+  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__date-typography</span>);
+
+  <span class="hljs-attribute">color</span>: set-color(<span class="hljs-variable">$vf-summary__date-color--text</span>);
+  <span class="hljs-attribute">font-style</span>: italic;
 }
 
 <span class="hljs-selector-class">.vf-summary__link</span> {
@@ -1608,6 +1824,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-summary__title</span> {
   @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__title-typography</span>);
 }
+
+<span class="hljs-selector-class">.vf-summary__author</span> {
+  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__author-typography</span>);
+
+  <span class="hljs-attribute">color</span>: set-color(<span class="hljs-variable">$vf-summary__author-color--text</span>);
+  <span class="hljs-attribute">font-style</span>: italic;
+}
 </pre>
         </code>
         
@@ -1623,7 +1846,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-summary/vf-summary.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.1 KB
+          Size: 1.9 KB
         </li>
       </ul>
     </section>
@@ -1658,6 +1881,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-variable">$vf-summary__date-typography</span>: text-body--<span class="hljs-number">5</span>;
 <span class="hljs-variable">$vf-summary__date-color--text</span>: vf-color--grey;
 
+<span class="hljs-comment">// vf-summary__author variables</span>
+<span class="hljs-variable">$vf-summary__author-typography</span>: text-body--<span class="hljs-number">5</span>;
+<span class="hljs-variable">$vf-summary__author-color--text</span>: vf-color--grey;
+
 <span class="hljs-comment">// vf-summary__category variables</span>
 <span class="hljs-variable">$vf-summary__category-typography</span>: text-body--<span class="hljs-number">5</span>;
 <span class="hljs-variable">$vf-summary__category-color--text</span>: vf-color--grey;
@@ -1691,6 +1918,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-variable">$vf-summary--news__category-margin-right</span>: <span class="hljs-number">1rem</span>;
 
 <span class="hljs-variable">$vf-summary--has-image-width</span>: <span class="hljs-number">50px</span>;
+
+
+<span class="hljs-variable">$vf-summary__publication__text-typography</span>: text-body--<span class="hljs-number">5</span>;
+<span class="hljs-variable">$vf-summary__publication-color--text</span>: vf-color--grey;
 </pre>
         </code>
         
@@ -1706,7 +1937,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-summary/vf-summary.variables.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.6 KB
+          Size: 1.8 KB
         </li>
       </ul>
     </section>
