@@ -7,6 +7,10 @@ const path = require('path');
 const componentPath = path.resolve('.', global.vfComponentPath);
 const buildDestionation = path.resolve('.', global.vfBuildDestination);
 
+// todo: we might be able to remove these packages
+// const concat = require('gulp-concat');
+// const uglify = require('gulp-uglify');
+
 // -----------------------------------------------------------------------------
 // Scripts Tasks
 // -----------------------------------------------------------------------------
