@@ -2,6 +2,12 @@
 
 ## About
 
+### Publications Summary
+
+The `vf-summary--publication` can be nested inside a vf-box where it takes the vf-box colours.
+
+If the `vf-summary__author` list is truncated to a certain number of authors you will need to add vf-et-al to the `<p>` - `<p class="vf-summary__author | vf-et-al">` - for it to add et al to the end of the list.
+
 ## Installation and Implementation
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-summary` with this command.
