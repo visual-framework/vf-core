@@ -171,6 +171,7 @@ gulp.task('vf-css', function(done) {
             return 'Problem at file: ' + error.message;
           })
         )
+        .pipe(autoprefixer(autoprefixerOptions))
         .pipe(browserSync.stream())
         .pipe(sourcemaps.write())
         .pipe(rename(
