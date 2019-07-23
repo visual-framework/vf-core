@@ -39,9 +39,6 @@ const replace = require('gulp-replace');
 global.browserSync = require('browser-sync').create();
 const reload = global.browserSync.reload;
 
-// Image things
-const svgmin = require('gulp-svgmin');
-
 // Many Gulp tasks live in their own files, for the sake of clarity.
 require('require-dir')('./tools/gulp-tasks');
 
@@ -52,16 +49,6 @@ gulp.task('vf-component-assets', function() {
   return gulp
     .src([componentPath + '/vf-core-components/**/assets/**/*', componentPath + '/**/assets/**/*'])
     .pipe(gulp.dest(buildDestionation + '/assets'));
-});
-
-// -----------------------------------------------------------------------------
-// Component Assets
-// -----------------------------------------------------------------------------
-gulp.task('svg', () => {
-  return gulp
-    .src(componentPath + '/**/*.svg')
-    .pipe(svgmin())
-    .pipe(gulp.dest(componentPath));
 });
 
 // -----------------------------------------------------------------------------
@@ -94,7 +81,7 @@ gulp.task('frctlBuild', function(done) {
 gulp.task('vf-watch', function(done) {
   gulp.watch(componentPath + '/**/*.scss', gulp.series('vf-css')).on('change', reload);
   gulp.watch(componentPath + '/**/*.js', gulp.series('vf-scripts')).on('change', reload);
-  gulp.watch(componentPath + '/**/**/assets/*.svg', gulp.series('svg','vf-component-assets')).on('change', reload);
+  gulp.watch(componentPath + '/**/**/assets/*.svg', gulp.series('vf-svg','vf-component-assets')).on('change', reload);
   gulp.watch([componentPath + '/**/**/assets/*', '!' + componentPath + '/**/**/assets/*.svg'], gulp.series('vf-component-assets')).on('change', reload);
 });
 
