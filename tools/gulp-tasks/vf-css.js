@@ -18,11 +18,6 @@ const rename = require('gulp-rename');
 // Linting things
 const gulpStylelint   = require('gulp-stylelint');
 
-// todo: we might be able to remove these
-// const postcss     = require('gulp-postcss');
-// const reporter    = require('postcss-reporter');
-// const syntax_scss     = require('postcss-scss');
-
 const path = require('path');
 const componentPath = path.resolve('.', global.vfComponentPath);
 const buildDestionation = path.resolve('.', global.vfBuildDestination);

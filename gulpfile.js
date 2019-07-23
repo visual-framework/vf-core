@@ -1,7 +1,5 @@
 'use strict';
 
-const fs = require('fs');
-
 // -----------------------------------------------------------------------------
 // Configuration
 // -----------------------------------------------------------------------------
@@ -15,6 +13,8 @@ const fs = require('fs');
 //   "vfThemePath": "@frctl/mandelbrot"
 // },
 // all settings are optional
+// todo: this could/should become a JS module
+const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('./package.json'));
 config.vfConfig = config.vfConfig || [];
 global.vfName = config.vfConfig.vfName || "Visual Framework 2.0";
@@ -31,10 +31,15 @@ const buildDestionation = path.resolve('.', global.vfBuildDestination);
 // -----------------------------------------------------------------------------
 
 const gulp = require('gulp');
-const shell = require('gulp-shell');
 
-// todo we might be able to remove these
+// todo we might be able to remove these package.json Dependencies,
+// they don't seem to be needed
 // const replace = require('gulp-replace');
+// const postcss     = require('gulp-postcss');
+// const reporter    = require('postcss-reporter');
+// const syntax_scss     = require('postcss-scss');
+// const concat = require('gulp-concat');
+// const uglify = require('gulp-uglify');
 
 // Local Server Stuff
 global.browserSync = require('browser-sync').create();
@@ -62,8 +67,4 @@ gulp.task('vf-build', gulp.series(
 
 gulp.task('vf-prepush-test', gulp.parallel(
   'vf-lint:scss-hard-fail', 'vf-css'
-));
-
-gulp.task('vf-component', shell.task(
-  ['yo ./tools/component-generator']
 ));
