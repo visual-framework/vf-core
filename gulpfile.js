@@ -33,7 +33,9 @@ const buildDestionation = path.resolve('.', global.vfBuildDestination);
 const gulp = require('gulp');
 const shell = require('gulp-shell');
 const watch = require('gulp-watch');
-const replace = require('gulp-replace');
+
+// todo we might be able to remove these
+// const replace = require('gulp-replace');
 
 // Local Server Stuff
 global.browserSync = require('browser-sync').create();
@@ -42,28 +44,6 @@ const reload = global.browserSync.reload;
 // Many Gulp tasks live in their own files, for the sake of clarity.
 require('require-dir')('./tools/gulp-tasks');
 
-// -----------------------------------------------------------------------------
-// Fractal Tasks
-// -----------------------------------------------------------------------------
-
-gulp.task('frctlStart', function(done) {
-  const fractal = require('./fractal.js').initialize('server',fractalReadyCallback);
-  function fractalReadyCallback() {
-    done();
-  }
-});
-
-gulp.task('frctlBuild', function(done) {
-  const fractal = require('./fractal.js').initialize('build',fractalReadyCallback);
-  function fractalReadyCallback() {
-    // Copy compiled css/js and other assets
-    gulp.src(buildDestionation + '/**/*')
-      .pipe(gulp.dest('./build'));
-      console.info('Copied `/temp/build-files` assets.');
-
-    done();
-  }
-});
 
 // -----------------------------------------------------------------------------
 // Watch Tasks
@@ -85,12 +65,12 @@ gulp.task('vf-scripts', gulp.series(
 ));
 
 gulp.task('vf-dev', gulp.series(
-  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'frctlStart', ['vf-lint:scss-soft-fail', 'vf-watch']
+  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'vf-fractal:start', ['vf-lint:scss-soft-fail', 'vf-watch']
 ));
 
 // Build as a static site for CI
 gulp.task('vf-build', gulp.series(
-  'vf-clean', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'frctlBuild'
+  'vf-clean', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'vf-fractal:build'
 ));
 
 gulp.task('vf-prepush-test', gulp.parallel(
