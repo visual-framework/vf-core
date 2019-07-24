@@ -1,5 +1,8 @@
 'use strict';
 
+const gulp = require('gulp');
+const path = require('path');
+
 // todo we might be able to remove these package.json Dependencies,
 // they don't seem to be needed
 // const replace = require('gulp-replace');
@@ -24,7 +27,6 @@
 // all settings are optional
 // todo: this could/should become a JS module
 const fs = require('fs');
-const path = require('path');
 const config = JSON.parse(fs.readFileSync('./package.json'));
 config.vfConfig = config.vfConfig || [];
 global.vfName = config.vfConfig.vfName || "Visual Framework 2.0";
@@ -34,12 +36,6 @@ global.vfBuildDestination = config.vfConfig.vfBuildDestination || __dirname + '/
 global.vfThemePath = config.vfConfig.vfThemePath || './tools/vf-frctl-theme';
 const componentPath = path.resolve('.', global.vfComponentPath);
 const buildDestionation = path.resolve('.', global.vfBuildDestination);
-
-// -----------------------------------------------------------------------------
-// Dependencies
-// -----------------------------------------------------------------------------
-
-const gulp = require('gulp');
 
 // Gulp tasks live in their own files, for the sake of clarity.
 // These are done as JS Modules as it makes passing paramaters simpler and avoids
