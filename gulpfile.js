@@ -43,16 +43,19 @@ const watch = require('gulp-watch');
 // const uglify = require('gulp-uglify');
 
 // Local Server Stuff
-global.browserSync = require('browser-sync').create();
+const browserSync = require('browser-sync').create();
+const reload = browserSync.reload;
 
 // Many Gulp tasks live in their own files, for the sake of clarity.
-require('./tools/gulp-tasks/vf-assets.js');
-require('./tools/gulp-tasks/vf-cleanup.js');
-require('./tools/gulp-tasks/vf-component.js');
-require('./tools/gulp-tasks/vf-css.js');
-require('./tools/gulp-tasks/vf-scripts.js');
-require('./tools/gulp-tasks/vf-fractal.js');
-require('./tools/gulp-tasks/vf-watch.js');
+// These are done as JS Modules as it makes passing paramaters simpler and avoids
+// needing workarounds invlolving global variables.
+require('./tools/gulp-tasks/vf-assets.js')(gulp, path, componentPath, buildDestionation);
+require('./tools/gulp-tasks/vf-cleanup.js')(gulp);
+require('./tools/gulp-tasks/vf-component.js')(gulp);
+require('./tools/gulp-tasks/vf-css.js')(gulp, path, componentPath, buildDestionation, browserSync);
+require('./tools/gulp-tasks/vf-scripts.js')(gulp, path, componentPath, buildDestionation);
+require('./tools/gulp-tasks/vf-fractal.js')(gulp, path, componentPath, buildDestionation);
+require('./tools/gulp-tasks/vf-watch.js')(gulp, path, componentPath, reload);
 
 // -----------------------------------------------------------------------------
 // Default Tasks
