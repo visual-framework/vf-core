@@ -1,5 +1,14 @@
 'use strict';
 
+// todo we might be able to remove these package.json Dependencies,
+// they don't seem to be needed
+// const replace = require('gulp-replace');
+// const postcss     = require('gulp-postcss');
+// const reporter    = require('postcss-reporter');
+// const syntax_scss     = require('postcss-scss');
+// const concat = require('gulp-concat');
+// const uglify = require('gulp-uglify');
+
 // -----------------------------------------------------------------------------
 // Configuration
 // -----------------------------------------------------------------------------
@@ -31,49 +40,9 @@ const buildDestionation = path.resolve('.', global.vfBuildDestination);
 // -----------------------------------------------------------------------------
 
 const gulp = require('gulp');
-const watch = require('gulp-watch');
 
-// todo we might be able to remove these package.json Dependencies,
-// they don't seem to be needed
-// const replace = require('gulp-replace');
-// const postcss     = require('gulp-postcss');
-// const reporter    = require('postcss-reporter');
-// const syntax_scss     = require('postcss-scss');
-// const concat = require('gulp-concat');
-// const uglify = require('gulp-uglify');
-
-// Local Server Stuff
-const browserSync = require('browser-sync').create();
-const reload = browserSync.reload;
-
-// Many Gulp tasks live in their own files, for the sake of clarity.
+// Gulp tasks live in their own files, for the sake of clarity.
 // These are done as JS Modules as it makes passing paramaters simpler and avoids
-// needing workarounds invlolving global variables.
-require('./tools/gulp-tasks/vf-assets.js')(gulp, path, componentPath, buildDestionation);
-require('./tools/gulp-tasks/vf-cleanup.js')(gulp);
-require('./tools/gulp-tasks/vf-component.js')(gulp);
-require('./tools/gulp-tasks/vf-css.js')(gulp, path, componentPath, buildDestionation, browserSync);
-require('./tools/gulp-tasks/vf-scripts.js')(gulp, path, componentPath, buildDestionation);
-require('./tools/gulp-tasks/vf-fractal.js')(gulp, path, componentPath, buildDestionation);
-require('./tools/gulp-tasks/vf-watch.js')(gulp, path, componentPath, reload);
-
-// -----------------------------------------------------------------------------
-// Default Tasks
-// -----------------------------------------------------------------------------
-
-gulp.task('vf-scripts', gulp.series(
-  'vf-scripts:es5', 'vf-scripts:modern'
-));
-
-gulp.task('vf-dev', gulp.series(
-  'vf-clean', 'vf-component-assets', ['vf-css', 'vf-scripts'], 'vf-fractal:start', ['vf-lint:scss-soft-fail', 'vf-watch']
-));
-
-// Build as a static site for CI
-gulp.task('vf-build', gulp.series(
-  'vf-clean', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'vf-fractal:build'
-));
-
-gulp.task('vf-prepush-test', gulp.parallel(
-  'vf-lint:scss-hard-fail', 'vf-css'
-));
+// needing workarounds invlolving global variables. It also allows more flexibile reusability
+// as an npm install
+require('./tools/gulp-tasks/_gulp_rollup.js')(gulp, path, componentPath, buildDestionation);

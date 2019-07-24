@@ -62,5 +62,9 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
       .pipe(gulp.dest(buildDestionation + '/scripts'));
   });
 
+  gulp.task('vf-scripts', gulp.series(
+    'vf-scripts:es5', 'vf-scripts:modern'
+  ));
+
   return gulp;
 };
