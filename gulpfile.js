@@ -24,14 +24,14 @@
 // all settings are optional
 // todo: this could/should become a JS module
 const fs = require('fs');
+const path = require('path');
 const config = JSON.parse(fs.readFileSync('./package.json'));
 config.vfConfig = config.vfConfig || [];
 global.vfName = config.vfConfig.vfName || "Visual Framework 2.0";
 global.vfNamespace = config.vfConfig.vfNamespace || "vf-";
-global.vfComponentPath = config.vfConfig.vfComponentPath || __dirname + '/components';
+global.vfComponentPath = config.vfConfig.vfComponentPath || path.resolve('.', __dirname + '/components');
 global.vfBuildDestination = config.vfConfig.vfBuildDestination || __dirname + '/temp/build-files';
 global.vfThemePath = config.vfConfig.vfThemePath || './tools/vf-frctl-theme';
-const path = require('path');
 const componentPath = path.resolve('.', global.vfComponentPath);
 const buildDestionation = path.resolve('.', global.vfBuildDestination);
 

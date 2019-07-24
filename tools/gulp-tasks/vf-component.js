@@ -10,12 +10,9 @@ module.exports = function(gulp, path) {
 
   const generatorPath = path.resolve(__dirname, '../../tools/component-generator');
 
-
   gulp.task('vf-component', shell.task(
     ['yo ' + generatorPath]
   ));
-
-
 
   return gulp;
 };

@@ -7,7 +7,7 @@ var config = require(path.resolve('.','package.json'));
 config.vfConfig = config.vfConfig || [];
 vfName = config.vfConfig.vfName || "Visual Framework 2.0";
 vfNamespace = config.vfConfig.vfNamespace || "vf-";
-vfComponentPath = config.vfConfig.vfComponentPath || __dirname + '/components';
+vfComponentPath = config.vfConfig.vfComponentPath || path.resolve(__dirname, '../../components');
 
 module.exports = class extends Generator {
   prompting() {
