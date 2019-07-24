@@ -1,8 +1,13 @@
 // vf-form__helper
 
 .vf-form__helper {
-  @include set-type(text-body--5);
-  @include margin--block(bottom, 4px);
+  @include set-type(text-body--5, $custom-margin-bottom: 0);
 
   color: set-color(vf-color--grey);
+
+  .vf-form__floatlabel & {
+    left: 24px;
+    position: relative;
+    top: 12px;
+  }
 }
