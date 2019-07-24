@@ -1,7 +1,7 @@
 const gulp   = require('gulp');
 const path = require('path');
-const watch = require('gulp-watch');
 const componentPath = path.resolve('.', global.vfComponentPath);
+const reload = global.browserSync.reload;
 
 // -----------------------------------------------------------------------------
 // Watch Tasks

@@ -31,6 +31,7 @@ const buildDestionation = path.resolve('.', global.vfBuildDestination);
 // -----------------------------------------------------------------------------
 
 const gulp = require('gulp');
+const watch = require('gulp-watch');
 
 // todo we might be able to remove these package.json Dependencies,
 // they don't seem to be needed
@@ -43,7 +44,6 @@ const gulp = require('gulp');
 
 // Local Server Stuff
 global.browserSync = require('browser-sync').create();
-const reload = global.browserSync.reload;
 
 // Many Gulp tasks live in their own files, for the sake of clarity.
 require('require-dir')('./tools/gulp-tasks');
