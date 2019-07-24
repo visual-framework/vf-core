@@ -561,10 +561,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"IBM Plex Sans"</span>, Helvetica, Arial, sans-serif;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-built_in">var</span>(--vf-text-margin--bottom, 16px) <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">4px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">color</span>: <span class="hljs-number">#707372</span>;
+}
+
+<span class="hljs-selector-class">.vf-form__floatlabel</span> <span class="hljs-selector-class">.vf-form__helper</span> {
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">12px</span>;
 }
 </pre>
         </code>
@@ -595,10 +599,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <pre class="vf-code-example__pre"><span class="hljs-comment">// vf-form__helper</span>
 
 <span class="hljs-selector-class">.vf-form__helper</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">5</span>);
-  @<span class="hljs-keyword">include</span> margin--block(bottom, 4px);
+  @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: 0);
 
   <span class="hljs-attribute">color</span>: set-color(vf-color--grey);
+
+  <span class="hljs-selector-class">.vf-form__floatlabel</span> &amp; {
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">24px</span>;
+    <span class="hljs-attribute">position</span>: relative;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">12px</span>;
+  }
 }
 </pre>
         </code>
@@ -615,7 +624,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-form/vf-form__helper/vf-form__helper.scss
         </li>
         <li class="vf-list__item">
-          Size: 152 Bytes
+          Size: 226 Bytes
         </li>
       </ul>
     </section>

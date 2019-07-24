@@ -43,10 +43,14 @@
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.57;
-  margin: 0 0 16px 0;
-  margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
-  margin: 0 0 4px 0;
+  margin: 0 0 0 0;
   color: #707372;
+}
+
+.vf-form__floatlabel .vf-form__helper {
+  left: 24px;
+  position: relative;
+  top: 12px;
 }
 
 .vf-form__input:not([type='file']) {
@@ -62,7 +66,7 @@
           box-sizing: border-box;
   color: #54585a;
   display: block;
-  padding: 12px;
+  padding: 12px 24px;
   width: 100%;
 }
 
@@ -83,6 +87,11 @@
   transition: all .2s ease-in-out;
   visibility: hidden;
   z-index: 1;
+}
+
+.vf-form__input {
+  position: relative;
+  top: 24px;
 }
 
 .vf-form__input .vf-form__wrap {
@@ -139,7 +148,7 @@
   color: #54585a;
 }
 
-.vf-form__input select.vf-form__select {
+.vf-form__input .vf-form__select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -148,28 +157,28 @@
   position: relative;
 }
 
-.vf-form__input select.vf-form__select::-ms-expand {
+.vf-form__input .vf-form__select::-ms-expand {
   display: none;
 }
 
-.vf-form__input .vf-form__is-active input.vf-form__input,
-.vf-form__input .vf-form__is-active select.vf-form__select,
-.vf-form__input .vf-form__is-active textarea.vf-form__textarea {
+.vf-form__input .vf-form__is-active .vf-form__input,
+.vf-form__input .vf-form__is-active .vf-form__select,
+.vf-form__input .vf-form__is-active .vf-form__textarea {
   background-color: #ffffff;
 }
 
-.vf-form__input .vf-form__has-focus input.vf-form__input,
-.vf-form__input .vf-form__has-focus select.vf-form__select,
-.vf-form__input .vf-form__has-focus textarea.vf-form__textarea {
+.vf-form__input .vf-form__has-focus .vf-form__input,
+.vf-form__input .vf-form__has-focus .vf-form__select,
+.vf-form__input .vf-form__has-focus .vf-form__textarea {
   background-color: #ffffff;
   border-color: #000000;
 }
 
-.vf-form__wrap .vf-form__input label.vf-form__label {
-  border-top-left-radius: 3px;
+.vf-form__wrap .vf-form__input .vf-form__label {
+  border-radius-top-left: 3px;
   color: #54585a;
   display: block;
-  left: 26px;
+  left: 24px;
   opacity: 0;
   position: absolute;
   top: -24px;
@@ -179,12 +188,12 @@
   z-index: 1;
 }
 
-.vf-form__input .vf-form__is-active label.vf-form__label {
+.vf-form__input .vf-form__is-active .vf-form__label {
   opacity: 1;
   visibility: visible;
 }
 
-.vf-form__input .vf-form__has-focus label.vf-form__label {
+.vf-form__input .vf-form__has-focus .vf-form__label {
   color: #000000;
 }
 
@@ -206,6 +215,18 @@
 
 .vf-form__input .vf-form__is-required.vf-form__is-active::before {
   opacity: 0;
+}
+
+/*
+* Default floatLabel theme.
+* modify it as you wish!
+*/
+.vf-form__item.vf-form__floatlabel {
+  position: relative;
+}
+
+.vf-form__floatlabel .vf-form__label {
+  position: absolute;
 }
 
 .vf-form__select {
@@ -248,6 +269,10 @@
 
 .vf-form__select option {
   font-weight: normal;
+}
+
+.vf-form__item.vf-form__item--checkbox {
+  margin-bottom: 16px;
 }
 
 .vf-form__checkbox {
@@ -348,11 +373,18 @@
 }
 
 .vf-form__textarea {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.71;
+  margin: 0 0 16px 0;
+  margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
   border: 3px solid #f3f3f3;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: block;
-  padding: 12px;
+  padding: 12px 22px;
+  position: relative;
+  top: 24px;
   width: 100%;
 }
 
@@ -380,6 +412,6 @@
   margin: 0 0 4px 0;
   color: #707372;
   display: block;
-  left: 26px;
+  left: 24px;
   position: relative;
 }
