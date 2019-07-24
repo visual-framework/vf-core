@@ -1,6 +1,4 @@
-// <%= componentName %>
-
-// Don't need JS? Then feel free to delete this file.
+// vf-form__float-labels
 
 /*
  * A note on the Visual Framework and JavaScript:
@@ -17,30 +15,21 @@
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
 
-// Uncomment this boilerplate
-// // if you need to import any other components' JS to use here
+// if you need to import any other components' JS to use here
 // import { vfOthercomponent } from 'vf-other-component/vf-other-component';
-//
-//  /**
-//   * The global function for this component
-//   * @example vfcomponentName(firstPassedVar)
-//   * @param {string} [firstPassedVar]  - An option to be passed
-//   */
-// function vfcomponentName(firstPassedVar) {
-//   firstPassedVar = firstPassedVar || 'defaultVal';
-//
-// }
-//
-// // If you need to invoke the component by default
-// vfcomponentName();
-//
-// // By default your component should be usable with js imports
-// export { vfcomponentName };
-//
-// // You should also import it at ./components/vf-core/scripts.js
-// // import { vfcomponentName } from '../components/raw/vf-component/vf-component.js';
-// // And, if needed, invoke it
-// // vfcomponentName();
+
+ /**
+  * The global function for this component
+  * @example vfcomponentName(firstPassedVar)
+  * @param {string} [firstPassedVar]  - An option to be passed
+  */
+function vfFormFloatLabels() {
+  // firstPassedVar = firstPassedVar || 'defaultVal';
+
+}
+
+// By default your component should be usable with js imports
+export { vfFormFloatLabels };
 
 
 function addFloatLabel(self) {
