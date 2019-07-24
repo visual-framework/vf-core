@@ -8,24 +8,25 @@ function addFloatLabel(self) {
   label.innerHTML = self.getAttribute("placeholder");
   setTimeout(function(){
     label.classList.add("float-label");
-  }, 10)
+  }, 10);
 }
+
 function floatLabelKeyUp(event) {
   var self = event.target;
   if(!self.dataset.inputOf && !!self.value) {
     addFloatLabel(self);
-  }
-  else {
+  } else {
     var label = document.querySelector("#" + self.dataset.inputOf);
-    if(!self.value && !!label) {
+    if (!self.value && !!label) {
       label.classList.remove("float-label");
       setTimeout(function(){
         label.parentNode.removeChild(label);
         delete self.dataset.inputOf;
-      }, 10)
+      }, 10);
     }
   }
 }
+
 function wrapElement(element) {
   var parent = element.parentNode;
   var sibling = element.nextElementSibling;
@@ -39,16 +40,17 @@ function wrapElement(element) {
     parent.insertBefore(div, sibling);
   }
 }
+
 var floatLabels = document.querySelectorAll(".floatLabel");
 var inputs = [].slice.call(floatLabels);
+
 for(var i in inputs) {
   wrapElement(inputs[i]);
   if(!!inputs[i].value) {
     addFloatLabel(inputs[i]);
   }
   inputs[i].addEventListener("keyup", floatLabelKeyUp);
-};
-
+}
 
 function checkEmail(str) {
   var errorElem =  document.getElementById('error');
@@ -64,7 +66,6 @@ function checkEmail(str) {
       elChild.innerHTML = '<div id="email-error" class="mt-b-form__message mt-b-form__message--inline-error"><p>Your email is incorrect</p></div>';
     }
 
-
     el.parentNode.appendChild(elChild);
 
   } else {
@@ -73,8 +74,7 @@ function checkEmail(str) {
   }
 }
 
-function checkForm()
-{
+function checkForm() {
   let canSubmit = true;
   let emailcheck = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const emailField = document.getElementById('username').value;
@@ -86,7 +86,7 @@ function checkForm()
     canSubmit = false;
   }
   if (canSubmit) {
-      document.forms["loginform"].querySelector('.mt-b-button__item').disabled = false;
+    document.forms["loginform"].querySelector('.mt-b-button__item').disabled = false;
   } else {
     document.forms["loginform"].querySelector('.mt-b-button__item').disabled = true;
   }
