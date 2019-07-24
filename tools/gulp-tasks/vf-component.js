@@ -5,12 +5,17 @@
  * This makes dependency management a bit cleaner
  */
 
-module.exports = function(gulp) {
+module.exports = function(gulp, path) {
   const shell = require('gulp-shell');
 
+  const generatorPath = path.resolve(__dirname, '../../tools/component-generator');
+
+
   gulp.task('vf-component', shell.task(
-    ['yo ./tools/component-generator']
+    ['yo ' + generatorPath]
   ));
+
+
 
   return gulp;
 };
