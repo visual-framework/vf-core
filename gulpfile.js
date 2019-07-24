@@ -46,7 +46,13 @@ const watch = require('gulp-watch');
 global.browserSync = require('browser-sync').create();
 
 // Many Gulp tasks live in their own files, for the sake of clarity.
-require('require-dir')('./tools/gulp-tasks');
+require('./tools/gulp-tasks/vf-assets.js');
+require('./tools/gulp-tasks/vf-cleanup.js');
+require('./tools/gulp-tasks/vf-component.js');
+require('./tools/gulp-tasks/vf-css.js');
+require('./tools/gulp-tasks/vf-scripts.js');
+require('./tools/gulp-tasks/vf-fractal.js');
+require('./tools/gulp-tasks/vf-watch.js');
 
 // -----------------------------------------------------------------------------
 // Default Tasks
