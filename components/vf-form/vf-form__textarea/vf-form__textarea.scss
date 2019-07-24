@@ -1,10 +1,14 @@
 // vf-form__textarea
 
 .vf-form__textarea {
+  @include set-type(text-body--3);
+
   border: 3px solid set-ui-color(vf-ui-color--grey);
   box-sizing: border-box;
   display: block;
-  padding: 12px;
+  padding: 12px 22px; // to make up for the border?
+  position: relative;
+  top: 24px;
   width: 100%;
 
   &:focus {
