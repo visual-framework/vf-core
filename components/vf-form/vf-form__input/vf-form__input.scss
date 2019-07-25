@@ -9,7 +9,7 @@
   box-sizing: border-box;
   color: set-color(vf-color--grey--dark);
   display: block;
-  padding: 12px;
+  padding: 12px 24px;
   width: 100%;
 
   &:focus,
@@ -21,7 +21,7 @@
 }
 
 .vf-form__wrap .vf-form__label {
-  border-radius-top-left: 3px;
+  border-top-left-radius: 3px;
   display: block;
   line-height: 1;
   opacity: 0;
@@ -31,9 +31,11 @@
   visibility: hidden;
   z-index: 1;
 }
-
+.vf-form__input {
+  position: relative;
+  top: 24px;
+}
 .vf-form__input .vf-form__wrap {
-  -moz-osx-font-smoothing: greyscale;
   -webkit-font-smoothing: antialiased;
   position: relative;
   text-rendering: optimizeLegibility;
@@ -64,37 +66,37 @@
   color: set-color(vf-color--grey--dark);
 }
 
-.vf-form__input select.vf-form__select {
+.vf-form__input .vf-form__select {
   appearance: none;
   color: set-color(vf-color--grey--dark);
   cursor: pointer;
   position: relative;
 }
 
-.vf-form__input select.vf-form__select::-ms-expand {
+.vf-form__input .vf-form__select::-ms-expand {
   display: none;
 }
 
-.vf-form__input .vf-form__is-active input.vf-form__input,
-.vf-form__input .vf-form__is-active select.vf-form__select,
-.vf-form__input .vf-form__is-active textarea.vf-form__textarea {
+.vf-form__input .vf-form__is-active .vf-form__input,
+.vf-form__input .vf-form__is-active .vf-form__select,
+.vf-form__input .vf-form__is-active .vf-form__textarea {
   background-color: set-ui-color(vf-ui-color--white);
   border-color: set-ui-color(vf-ui-grey);
   color: set-color(vf-grey-dark);
 }
 
-.vf-form__input .vf-form__has-focus input.vf-form__input,
-.vf-form__input .vf-form__has-focus select.vf-form__select,
-.vf-form__input .vf-form__has-focus textarea.vf-form__textarea {
+.vf-form__input .vf-form__has-focus .vf-form__input,
+.vf-form__input .vf-form__has-focus .vf-form__select,
+.vf-form__input .vf-form__has-focus .vf-form__textarea {
   background-color: set-ui-color(vf-ui-color--white);
   border-color: set-ui-color(vf-ui-color--black);
 }
 
-.vf-form__wrap .vf-form__input label.vf-form__label {
+.vf-form__wrap .vf-form__input .vf-form__label {
   border-radius-top-left: 3px;
   color: set-color(vf-color--grey--dark);
   display: block;
-  left: 26px;
+  left: 24px;
   opacity: 0;
   position: absolute;
   top: -24px;
@@ -103,12 +105,12 @@
   z-index: 1;
 }
 
-.vf-form__input .vf-form__is-active label.vf-form__label {
+.vf-form__input .vf-form__is-active .vf-form__label {
   opacity: 1;
   visibility: visible;
 }
 
-.vf-form__input .vf-form__has-focus label.vf-form__label {
+.vf-form__input .vf-form__has-focus .vf-form__label {
   color: set-ui-color(vf-ui-color--black);
 }
 
@@ -129,4 +131,18 @@
 
 .vf-form__input .vf-form__is-required.vf-form__is-active::before {
   opacity: 0;
+}
+
+/*
+* Default floatLabel theme.
+* modify it as you wish!
+*/
+
+.vf-form__item.vf-form__floatlabel {
+  position: relative;
+}
+.vf-form__floatlabel {
+  .vf-form__label {
+    position: absolute;
+  }
 }

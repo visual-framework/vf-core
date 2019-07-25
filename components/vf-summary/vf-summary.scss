@@ -12,6 +12,30 @@
     margin-bottom: 0;
   }
 
+  // vf-summary can also sit inside a vf-box - so we need to adjust some things to match
+  .vf-box & {
+    .vf-summary__title {
+      color: inherit;
+    }
+    .vf-summary__link {
+      color: inherit;
+    }
+    .vf-summary__date {
+      color: inherit;
+    }
+    .vf-summary__text {
+      color: inherit;
+    }
+    .vf-summary__source {
+      color: inherit;
+    }
+    .vf-summary__author {
+      color: inherit;
+    }
+    .vf-link {
+      color: inherit;
+    }
+  }
 }
 
 .vf-summary__button {
@@ -38,6 +62,13 @@
   color: set-color($vf-summary__date-color--text);
 }
 
+.vf-summary__source {
+  @include set-type($vf-summary__date-typography);
+
+  color: set-color($vf-summary__date-color--text);
+  font-style: italic;
+}
+
 .vf-summary__link {
   @include inline-link();
 
@@ -62,4 +93,11 @@
 
 .vf-summary__title {
   @include set-type($vf-summary__title-typography);
+}
+
+.vf-summary__author {
+  @include set-type($vf-summary__author-typography);
+
+  color: set-color($vf-summary__author-color--text);
+  font-style: italic;
 }
