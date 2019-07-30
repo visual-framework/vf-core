@@ -120,7 +120,6 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
             })
           )
           // .pipe(autoprefixer(autoprefixerOptions))
-          .pipe(envs.reset)
           .pipe(browserSync.stream())
           .pipe(sourcemaps.write())
           .pipe(rename(
