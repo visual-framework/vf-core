@@ -142,8 +142,8 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
   });
 
   // Sass Build-Time things
+  // Take the built styles.css and autoprefixer it, then runs cssnano and saves it with a .min.css suffix
   gulp.task('vf-css-build', function(done) {
-    // const SassOutput = SassOutput + 'styles.css';
     return gulp
       .src(SassOutput + '/styles.css')
       .pipe(autoprefixer(autoprefixerOptions))
