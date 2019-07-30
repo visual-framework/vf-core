@@ -31,8 +31,13 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
   ));
 
   // Build as a static site for CI
-  gulp.task('vf-build', gulp.series(
-    'vf-clean', 'vf-css-gen', 'vf-css', 'vf-component-assets', 'vf-scripts', 'vf-fractal:build'
+  gulp.task('vf-build',
+
+    gulp.series(
+      'vf-clean',
+      gulp.parallel ('vf-css-gen',
+        gulp.series('vf-css', 'vf-css-build', 'vf-component-assets', 'vf-scripts'),
+      'vf-fractal:build')
   ));
 
   gulp.task('vf-prepush-test', gulp.parallel(
