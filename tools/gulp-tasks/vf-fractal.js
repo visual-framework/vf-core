@@ -18,11 +18,6 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
   gulp.task('vf-fractal:build', function(done) {
     const fractal = require(fractalConfig).initialize('build',fractalReadyCallback);
     function fractalReadyCallback() {
-      // Copy compiled css/js and other assets
-      gulp.src(buildDestionation + '/**/*')
-        .pipe(gulp.dest('./build'));
-        console.info('Copied `/temp/build-files` assets.');
-
       done();
     }
   });
