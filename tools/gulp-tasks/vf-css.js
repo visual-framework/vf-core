@@ -119,7 +119,8 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
               return 'Problem at file: ' + error.message;
             })
           )
-          .pipe(autoprefixer(autoprefixerOptions))
+          // .pipe(autoprefixer(autoprefixerOptions))
+          .pipe(envs.reset)
           .pipe(browserSync.stream())
           .pipe(sourcemaps.write())
           .pipe(rename(
@@ -128,18 +129,36 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
             }
           ))
           .pipe(gulp.dest(SassOutput))
-          .pipe(cssnano())
-          .pipe(rename(
-            {
-              suffix: '.min'
-            }
-          ))
-          .pipe(gulp.dest(SassOutput))
+          // .pipe(cssnano())
+          // .pipe(rename(
+          //   {
+          //     suffix: '.min'
+          //   }
+          // ))
+          // .pipe(gulp.dest(SassOutput))
           .on('end', function() {
             done();
           });
       }
+  });
 
+  // Sass Build-Time things
+  gulp.task('vf-css-build', function(done) {
+    // const SassOutput = SassOutput + 'styles.css';
+    return gulp
+      .src(SassOutput + '/styles.css')
+      .pipe(autoprefixer(autoprefixerOptions))
+      .pipe(gulp.dest(SassOutput))
+      .pipe(cssnano())
+      .pipe(rename(
+        {
+          suffix: '.min'
+        }
+      ))
+      .pipe(gulp.dest(SassOutput))
+      .on('end', function() {
+        done();
+      });
   });
 
   // Sass Lint
