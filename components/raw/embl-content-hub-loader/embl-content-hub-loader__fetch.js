@@ -187,7 +187,7 @@ function emblContentHubFetch() {
     var dateRemainingList = document.querySelector('.'+emblContentHubGenerateID(position)).querySelectorAll('.date-days-remaining');
     var todayDate = new Date();
     if (dateRemainingList.length > 0) {
-      for (dateRemainingIndex = 0; dateRemainingIndex < dateRemainingList.length; dateRemainingIndex++) {
+      for (let dateRemainingIndex = 0; dateRemainingIndex < dateRemainingList.length; dateRemainingIndex++) {
         var dateValue = parseInt(dateRemainingList[dateRemainingIndex].getAttribute('data-datetime')) * 1000;
         dateValue = new Date(dateValue);
         var numberOfDiffDays = days_between(dateValue, todayDate);
