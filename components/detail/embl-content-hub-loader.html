@@ -415,7 +415,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-keyword">import</span> { vfBanner } <span class="hljs-keyword">from</span> <span class="hljs-string">'vf-banner/vf-banner'</span>;
 <span class="hljs-keyword">import</span> { vfTabs } <span class="hljs-keyword">from</span> <span class="hljs-string">'vf-tabs/vf-tabs'</span>;
-
+<span class="hljs-keyword">import</span> { emblConditionalEdit } <span class="hljs-keyword">from</span> <span class="hljs-string">'embl-conditional-edit/embl-conditional-edit'</span>;
 
 <span class="hljs-comment">/**
  * Fetch html links from content.embl.org
@@ -506,6 +506,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-comment">// Show the remote content</span>
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubGrabTheContent</span>(<span class="hljs-params">targetLink,position,exportedContent</span>) </span>{
+
+    <span class="hljs-keyword">if</span> (!exportedContent) {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'No content found for this import, exiting. The import may have already been preformed.'</span>, targetLink);
+      <span class="hljs-keyword">return</span>;
+    }
 
     <span class="hljs-comment">// pickup the "meat" of the exported content</span>
     exportedContent = exportedContent || targetLink.import.querySelector(<span class="hljs-string">'.vf-content-hub-html'</span>);
@@ -633,7 +638,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-content-hub-loader/embl-content-hub-loader__fetch.js
         </li>
         <li class="vf-list__item">
-          Size: 7.7 KB
+          Size: 7.9 KB
         </li>
       </ul>
     </section>

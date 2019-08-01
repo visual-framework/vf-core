@@ -297,17 +297,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * This will be dynamically run once emblContentHubSignalFinished is triggered.
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblConditionalEdit</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">const</span> emblConditionalEdit = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-embl-js-conditional-edit]'</span>);
-  <span class="hljs-keyword">if</span> (!emblConditionalEdit) {
+  <span class="hljs-keyword">const</span> emblConditionalEditItems = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'[data-embl-js-conditional-edit]'</span>);
+  <span class="hljs-keyword">if</span> (!emblConditionalEditItems) {
     <span class="hljs-comment">// exit: lists not found</span>
     <span class="hljs-keyword">return</span>;
   }
-  <span class="hljs-keyword">if</span> (emblConditionalEdit.length == <span class="hljs-number">0</span>) {
+  <span class="hljs-keyword">if</span> (emblConditionalEditItems.length == <span class="hljs-number">0</span>) {
     <span class="hljs-comment">// exit: lists not found</span>
     <span class="hljs-keyword">return</span>;
   }
 
-  <span class="hljs-built_in">Array</span>.prototype.forEach.call(emblConditionalEdit, (element, i) =&gt; {
+  <span class="hljs-built_in">Array</span>.prototype.forEach.call(emblConditionalEditItems, (element, i) =&gt; {
     emblConditionalEditDetectParam(location.href,element);
   });
 }
