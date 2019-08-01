@@ -562,10 +562,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 
   <span class="hljs-selector-class">.vf-summary__text</span> {
-    <span class="hljs-comment">// @include set-type(body--5);</span>
+    @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">5</span>);
 
     <span class="hljs-attribute">color</span>: set-color(<span class="hljs-variable">$vf-summary__publication-color--text</span>);
-    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>; <span class="hljs-comment">// this also gets zeroed by vf-summary &gt; *:last-child sometimes</span>
   }
 
   <span class="hljs-selector-class">.vf-summary__text</span> <span class="hljs-selector-class">.vf-link</span> {
