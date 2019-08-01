@@ -3,7 +3,7 @@
 
 import { vfBanner } from 'vf-banner/vf-banner';
 import { vfTabs } from 'vf-tabs/vf-tabs';
-
+import { emblConditionalEdit } from 'embl-conditional-edit/embl-conditional-edit';
 
 /**
  * Fetch html links from content.embl.org
@@ -94,6 +94,11 @@ function emblContentHubFetch() {
 
   // Show the remote content
   function emblContentHubGrabTheContent(targetLink,position,exportedContent) {
+
+    if (!exportedContent) {
+      console.log('No content found for this import, exiting. The import may have already been preformed.', targetLink);
+      return;
+    }
 
     // pickup the "meat" of the exported content
     exportedContent = exportedContent || targetLink.import.querySelector('.vf-content-hub-html');

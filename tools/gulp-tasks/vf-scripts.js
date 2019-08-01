@@ -10,6 +10,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
   const rollup = require('gulp-better-rollup');
   const includePaths = require('rollup-plugin-includepaths');
   const babel = require('gulp-babel');
+  const deleteLines = require('gulp-delete-lines');
 
   // Rollup all JS imports into CJS and babel them to ES5
   gulp.task('vf-scripts:es5', function() {
@@ -49,6 +50,13 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
       }))
       // inlining the sourcemap into the exported .js file
       // .pipe(sourcemaps.write())
+      // When components are requested but no found, rollupJS leaves them as a node-style
+      // `require()`, this trims those
+      .pipe(deleteLines({
+         'filters': [
+         /require\('/i
+         ]
+       }))
       .pipe(gulp.dest(buildDestionation + '/scripts'));
   });
 
