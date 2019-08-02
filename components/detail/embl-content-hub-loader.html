@@ -507,13 +507,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-comment">// Show the remote content</span>
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubGrabTheContent</span>(<span class="hljs-params">targetLink,position,exportedContent</span>) </span>{
 
+    <span class="hljs-comment">// pickup the "meat" of the exported content</span>
+    exportedContent = exportedContent || targetLink.import.querySelector(<span class="hljs-string">'.vf-content-hub-html'</span>);
+
+    <span class="hljs-comment">// make sure we have something</span>
     <span class="hljs-keyword">if</span> (!exportedContent) {
       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'No content found for this import, exiting. The import may have already been preformed.'</span>, targetLink);
       <span class="hljs-keyword">return</span>;
     }
-
-    <span class="hljs-comment">// pickup the "meat" of the exported content</span>
-    exportedContent = exportedContent || targetLink.import.querySelector(<span class="hljs-string">'.vf-content-hub-html'</span>);
 
     <span class="hljs-comment">// if there is just one child element and it is a div, use that</span>
     <span class="hljs-comment">// (this helps with css grid layout)</span>
@@ -638,7 +639,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-content-hub-loader/embl-content-hub-loader__fetch.js
         </li>
         <li class="vf-list__item">
-          Size: 7.9 KB
+          Size: 8 KB
         </li>
       </ul>
     </section>
