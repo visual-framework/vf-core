@@ -95,13 +95,14 @@ function emblContentHubFetch() {
   // Show the remote content
   function emblContentHubGrabTheContent(targetLink,position,exportedContent) {
 
+    // pickup the "meat" of the exported content
+    exportedContent = exportedContent || targetLink.import.querySelector('.vf-content-hub-html');
+
+    // make sure we have something
     if (!exportedContent) {
       console.log('No content found for this import, exiting. The import may have already been preformed.', targetLink);
       return;
     }
-
-    // pickup the "meat" of the exported content
-    exportedContent = exportedContent || targetLink.import.querySelector('.vf-content-hub-html');
 
     // if there is just one child element and it is a div, use that
     // (this helps with css grid layout)
