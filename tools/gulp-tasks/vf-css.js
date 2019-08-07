@@ -80,7 +80,6 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
       files.forEach(function(file, index, array) {
         // only process when a package.json is found
         if ((file.file.indexOf('package.json') > -1)) {
-          console.log(file.dir);
           return gulp.src(file.dir+'/package.json')
             .pipe(packageJsonToScss(file.dir))
             .pipe(source(file.file_path))
