@@ -77,7 +77,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
     }
 
     recursive(componentPath, ['*.css', '*.scss', '*.md', '*.njk'], function (err, files) {
-      files.forEach(function(file) {
+      files.forEach(function(file, index, array) {
         // only process when a package.json is found
         if ((file.file.indexOf('package.json') > -1)) {
           return fs.createReadStream(file.dir+'/package.json')
@@ -87,12 +87,13 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
             .pipe(gulp.dest(file.dir));
         } else {
           // do nothing
+        }
+
+        if (index + 1 == array.length) {
           done();
         }
       });
-    });
-    done();
-
+    })
   });
 
   gulp.task('vf-css:build', function(done) {
