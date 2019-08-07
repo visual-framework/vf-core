@@ -76,25 +76,16 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
       })
     }
 
-    // let trimToVersion = new Transform({
-    //     transform: (chunk, encoding, done) => {
-    //     }
-    // });
-
     recursive(componentPath, ['*.css', '*.scss', '*.md', '*.njk'], function (err, files) {
       files.forEach(function(file) {
         // only process when a package.json is found
         if ((file.file.indexOf('package.json') > -1)) {
           return fs.createReadStream(file.dir+'/package.json')
             .pipe(packageJsonToScss(file.dir))
-            // .pipe(jsonSass({
-            //   prefix: ' ',
-            // }))
             .pipe(source('package.json'))
             .pipe(rename('package.variables.scss'))
             .pipe(gulp.dest(file.dir));
         } else {
-          // console.log(file.file);
           // do nothing
           done();
         }
