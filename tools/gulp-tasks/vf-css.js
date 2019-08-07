@@ -60,9 +60,9 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
       return new Transform({
         objectMode: true,
         transform: (data, _, done) => {
-          location = 'components/' + location.split('components/')[1]
-          let name = JSON.parse(data.toString()).name;
-          let version = JSON.parse(data.toString()).version;
+          location = 'components/' + location.split('components/')[1];
+          let name = JSON.parse(data.contents.toString()).name;
+          let version = JSON.parse(data.contents.toString()).version;
 
           var output = `$componentInfo: (
              name: "` + name + `",
@@ -77,13 +77,13 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
     }
 
     recursive(componentPath, ['*.css', '*.scss', '*.md', '*.njk'], function (err, files) {
-
       files.forEach(function(file, index, array) {
         // only process when a package.json is found
         if ((file.file.indexOf('package.json') > -1)) {
-          return fs.createReadStream(file.dir+'/package.json')
+          console.log(file.dir);
+          return gulp.src(file.dir+'/package.json')
             .pipe(packageJsonToScss(file.dir))
-            .pipe(source('package.json'))
+            .pipe(source(file.file_path))
             .pipe(rename('package.variables.scss'))
             .pipe(gulp.dest(file.dir));
         } else {
@@ -91,11 +91,10 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
         }
 
         if (index + 1 == array.length) {
-          console.log('all done')
           done();
         }
       });
-    })
+    });
 
   });
 
