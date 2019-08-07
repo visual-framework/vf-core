@@ -112,7 +112,8 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
         // }
 
         // only intervene in index.scss rollups
-        if (parentFile == 'index.scss') {
+        // ignore `package.variables.scss` as it is dynamically made and gulp doesn't see it quickly enough
+        if (parentFile == 'index.scss' && url != 'package.variables.scss') {
           if (availableComponents[url]) {
             done(url);
           } else if (availableComponents['_'+truncatedUrl]) {
@@ -144,7 +145,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
       })
       .pipe(ListStream.obj(function (err, data) {
         if (err)
-          throw err
+          throw err;
         data.forEach(function (value, i) {
           // Keep only the file name
           var value = value.history[0].split(/[/]+/).pop();
@@ -163,7 +164,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
           .on(
             'error',
             notify.onError(function(error) {
-              process.emit('exit') // this fails precommit, but allows guld dev to work
+              process.emit('exit') // this fails precommit, but allows `gulp vf-dev` to work
               return 'Problem at file: ' + error.message;
             })
           )
