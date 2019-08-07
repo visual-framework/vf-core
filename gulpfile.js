@@ -34,6 +34,7 @@ global.vfNamespace = config.vfConfig.vfNamespace || "vf-";
 global.vfComponentPath = config.vfConfig.vfComponentPath || path.resolve('.', __dirname + '/components');
 global.vfBuildDestination = config.vfConfig.vfBuildDestination || __dirname + '/temp/build-files';
 global.vfThemePath = config.vfConfig.vfThemePath || './tools/vf-frctl-theme';
+global.vfVersion = config.version || 'not-specified';
 const componentPath = path.resolve('.', global.vfComponentPath);
 const buildDestionation = path.resolve('.', global.vfBuildDestination);
 

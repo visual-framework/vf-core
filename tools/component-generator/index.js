@@ -99,6 +99,7 @@ module.exports = class extends Generator {
       this.templatePath('_component.scss'),
       this.destinationPath(totalPath + outputFile),
       {
+        isNpmComponent: this.props.npm,
         componentName: fileName
       }
     );

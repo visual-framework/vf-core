@@ -1,3 +1,4 @@
+@import 'package.variables.scss';
 /*
  *
  * styles.css
@@ -6,6 +7,10 @@
  * or follow the guide at github.com/visual-framework/vf-core
  * to learn how to build custom and optimised CSS.
  *
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * VF Core version in use: #{map-get($componentInfo, 'vfCoreVersion')}
  */
 
 @import 'vf-global-custom-properties.scss';
@@ -51,6 +56,7 @@ html, button {
  * We put this first so it will have the least specificity
  */
 @import 'vf-content/vf-content.scss';
+@import 'vf-test/vf-test.scss';
 
 /* All Visual Framework grids */
 

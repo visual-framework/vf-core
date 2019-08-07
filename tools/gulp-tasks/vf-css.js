@@ -17,6 +17,8 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
   const recursive = require('../css-generator/recursive-readdir');
   const ListStream = require('list-stream');
   const notify = require('gulp-notify');
+  const source = require('vinyl-source-stream');
+  const fs = require('fs');
 
   // Linting things
   const gulpStylelint   = require('gulp-stylelint');
@@ -49,14 +51,67 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
     path.resolve('.',componentPath + '/vf-core-components/vf-form')
   ];
 
-  gulp.task('vf-css', function(done) {
+  // Lookup each component's package.json and make a package.scss
+  gulp.task('vf-css:package-info', function(done) {
+    const Transform = require('stream').Transform;
+
+    // Convert part of the package.json to a sass map
+    function packageJsonToScss(location) {
+      return new Transform({
+        objectMode: true,
+        transform: (data, _, done) => {
+          location = 'components/' + location.split('components/')[1]
+          let name = JSON.parse(data.toString()).name;
+          let version = JSON.parse(data.toString()).version;
+
+          var output = `$componentInfo: (
+             name: "` + name + `",
+             version: "` + version + `",
+             location: "` + location + `",
+             vfCoreVersion: "` + global.vfVersion + `"
+          );`
+
+          done(null, output);
+        }
+      })
+    }
+
+    // let trimToVersion = new Transform({
+    //     transform: (chunk, encoding, done) => {
+    //     }
+    // });
+
+    recursive(componentPath, ['*.css', '*.scss', '*.md', '*.njk'], function (err, files) {
+      files.forEach(function(file) {
+        // only process when a package.json is found
+        if ((file.file.indexOf('package.json') > -1)) {
+          return fs.createReadStream(file.dir+'/package.json')
+            .pipe(packageJsonToScss(file.dir))
+            // .pipe(jsonSass({
+            //   prefix: ' ',
+            // }))
+            .pipe(source('package.json'))
+            .pipe(rename('package.variables.scss'))
+            .pipe(gulp.dest(file.dir));
+        } else {
+          // console.log(file.file);
+          // do nothing
+          done();
+        }
+      });
+    });
+    done();
+
+  });
+
+  gulp.task('vf-css:build', function(done) {
     const sassOpts = {
       // Import sass files
       // We'll check to see if the file exists before passing
       // it to sass for compilation
       importer: [function(url,prev,done) {
-        var truncatedUrl = url.split(/[/]+/).pop();
-        var parentFile = prev.split(/[/]+/).pop();
+        let truncatedUrl = url.split(/[/]+/).pop();
+        let parentFile = prev.split(/[/]+/).pop();
 
         // If you do not want to interveen in certain file names
         // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
@@ -209,6 +264,10 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
     });
     done();
   });
+
+  gulp.task('vf-css', gulp.series(
+    'vf-css:package-info', 'vf-css:build'
+  ));
 
   return gulp;
 };
