@@ -77,6 +77,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
     }
 
     recursive(componentPath, ['*.css', '*.scss', '*.md', '*.njk'], function (err, files) {
+
       files.forEach(function(file, index, array) {
         // only process when a package.json is found
         if ((file.file.indexOf('package.json') > -1)) {
@@ -90,10 +91,12 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
         }
 
         if (index + 1 == array.length) {
+          console.log('all done')
           done();
         }
       });
     })
+
   });
 
   gulp.task('vf-css:build', function(done) {
@@ -190,7 +193,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
 
   // Sass Build-Time things
   // Take the built styles.css and autoprefixer it, then runs cssnano and saves it with a .min.css suffix
-  gulp.task('vf-css-build', function(done) {
+  gulp.task('vf-css:production', function(done) {
     return gulp
       .src(SassOutput + '/styles.css')
       .pipe(autoprefixer(autoprefixerOptions))
@@ -230,6 +233,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
 
   // -----------------------------------------------------------------------------
   // CSS Generator Tasks
+  // Generate per-compone .css files
   // -----------------------------------------------------------------------------
 
   var genCss = function (option) {
@@ -245,7 +249,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
       .pipe(gulp.dest(option.dir));
   };
 
-  gulp.task('vf-css-gen', function(done) {
+  gulp.task('vf-css:generate-component-css', function(done) {
     recursive(componentPath, ['*.css'], function (err, files) {
       files.forEach(function(file) {
         // only generate CSS for index.scss files, but not for the vf rollup

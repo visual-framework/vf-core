@@ -18,9 +18,10 @@ module.exports = function(gulp, buildDestionation) {
   gulp.task('vf-build',
     gulp.series(
       'vf-clean',
+      'vf-css:package-info',
       gulp.parallel (
-        'vf-css-gen',
-        gulp.series('vf-css', 'vf-css-build', 'vf-component-assets', 'vf-scripts'),
+        'vf-css:generate-component-css',
+        gulp.series('vf-css:build', 'vf-css:production', 'vf-component-assets', 'vf-scripts'),
         'vf-fractal:build'
       ),
       'vf-build:copy-assets'
