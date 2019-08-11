@@ -55,6 +55,11 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
       // We'll check to see if the file exists before passing
       // it to sass for compilation
       importer: [function(url,prev,done) {
+
+        // windows compatibility
+        url = url.replace(/\\/g, '/');
+        prev = prev.replace(/\\/g, '/');
+
         var truncatedUrl = url.split(/[/]+/).pop();
         var parentFile = prev.split(/[/]+/).pop();
 
@@ -99,7 +104,8 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
           throw err
         data.forEach(function (value, i) {
           // Keep only the file name
-          var value = value.history[0].split(/[/]+/).pop();
+          value = value.history[0].replace(/\\/g, '/'); // windows compatibility
+          value = value.split(/[/]+/).pop();
 
           availableComponents[value] = true;
         });
@@ -202,7 +208,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
     recursive(componentPath, ['*.css'], function (err, files) {
       files.forEach(function(file) {
         // only generate CSS for index.scss files, but not for the vf rollup
-        if ((file.file.indexOf('index.scss') > -1) && (file.file_path.indexOf('vf-componenet-rollup/index.scss') == -1)) {
+        if ((file.file.indexOf('index.scss') > -1) && (file.file_path.replace(/\\/g, '/').indexOf('vf-componenet-rollup/index.scss') == -1)) {
           genCss(file);
         }
       });
