@@ -18,7 +18,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   require(path.resolve('.', __dirname + '/vf-cleanup.js'))(gulp);
   require(path.resolve('.', __dirname + '/vf-component.js'))(gulp, path);
   require(path.resolve('.', __dirname + '/vf-css.js'))(gulp, path, componentPath, componentDirectories, buildDestionation, browserSync);
-  require(path.resolve('.', __dirname + '/vf-scripts.js'))(gulp, path, componentPath, buildDestionation);
+  require(path.resolve('.', __dirname + '/vf-scripts.js'))(gulp, path, componentPath, componentDirectories, buildDestionation);
   require(path.resolve('.', __dirname + '/vf-fractal.js'))(gulp, path, componentPath, buildDestionation);
   require(path.resolve('.', __dirname + '/vf-watch.js'))(gulp, path, componentPath, reload);
   require(path.resolve('.', __dirname + '/vf-build.js'))(gulp, buildDestionation);
