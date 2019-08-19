@@ -24,6 +24,7 @@ const path = require('path');
 //   "vfComponentDirectories": [
 //      "vf-core-components",
 //      "../node_modules/your-optional-collection-of-dependencies"
+//     NOTE: Don't forget to symlink: `cd components` `ln -s ../node_modules/your-optional-collection-of-dependencies`
 //    ],
 //   "vfBuildDestination": "./build",
 //   "vfThemePath": "@frctl/mandelbrot"
