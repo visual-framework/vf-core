@@ -29,7 +29,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   const rename = require('gulp-rename');
 
   // construct sas import paths, priority
-  const sassPaths = [];
+  var sassPaths = [];
   // take an array of sassTypes (paths), and componentPaths and add them to the sassPaths array
   function constructSassImportPaths(sassTypes, sassComponentDirectories) {
     for (let currentType = 0; currentType < sassTypes.length; currentType++) {
