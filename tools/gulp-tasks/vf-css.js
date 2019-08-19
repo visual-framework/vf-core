@@ -54,7 +54,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     'vf-sass-config/mixins'
   ], componentDirectories);
 
-  // then sass config
+  // then components
   constructSassImportPaths([
     ''
   ], componentDirectories);
