@@ -33,9 +33,9 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   // take an array of sassTypes (paths), and componentPaths and add them to the sassPaths array
   function constructSassImportPaths(sassTypes, sassComponentDirectories) {
     for (let currentType = 0; currentType < sassTypes.length; currentType++) {
-      sassPaths.push(path.resolve('.', componentPath, sassTypes[currentType]).replace(/\\/g, '/'););
+      sassPaths.push(path.resolve('.', componentPath, sassTypes[currentType]).replace(/\\/g, '/'));
       for (let directory = 0; directory < sassComponentDirectories.length; directory++) {
-        sassPaths.push(path.resolve('.', componentPath, sassComponentDirectories[directory] + '/' + sassTypes[currentType]).replace(/\\/g, '/'););
+        sassPaths.push(path.resolve('.', componentPath, sassComponentDirectories[directory] + '/' + sassTypes[currentType]).replace(/\\/g, '/'));
       }
     }
   }
