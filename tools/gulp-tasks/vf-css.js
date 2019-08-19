@@ -5,7 +5,7 @@
  * This makes dependency management a bit cleaner
  */
 
-module.exports = function(gulp, path, componentPath, buildDestionation, browserSync) {
+module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation, browserSync) {
   const fastglob = require('fast-glob');
 
   // Sass and CSS Stuff
@@ -28,28 +28,41 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
   // CSS Gen stuff
   const rename = require('gulp-rename');
 
-  const sassPaths = [
-    // Design tokens have first priority
-    path.resolve('.',componentPath + '/vf-design-tokens/dist/sass'),
-    path.resolve('.',componentPath + '/vf-design-tokens/dist/sass/custom-properties'),
-    path.resolve('.',componentPath + '/vf-design-tokens/dist/sass/maps'),
-    path.resolve('.',componentPath + '/vf-core-components/vf-design-tokens/dist/sass'),
-    path.resolve('.',componentPath + '/vf-core-components/vf-design-tokens/dist/sass/custom-properties'),
-    path.resolve('.',componentPath + '/vf-core-components/vf-design-tokens/dist/sass/maps'),
-    // then sass config
-    path.resolve('.',componentPath + '/vf-sass-config/variables'),
-    path.resolve('.',componentPath + '/vf-sass-config/functions'),
-    path.resolve('.',componentPath + '/vf-sass-config/mixins'),
-    path.resolve('.',componentPath + '/vf-core-components/vf-sass-config/variables'),
-    path.resolve('.',componentPath + '/vf-core-components/vf-sass-config/functions'),
-    path.resolve('.',componentPath + '/vf-core-components/vf-sass-config/mixins'),
-    // then components
-    path.resolve('.',componentPath),
-    path.resolve('.',componentPath + '/vf-core-components'),
-    // and finally any multi-components
-    path.resolve('.',componentPath + '/vf-form'),
-    path.resolve('.',componentPath + '/vf-core-components/vf-form')
-  ];
+  // construct sas import paths, priority
+  const sassPaths = [];
+  // take an array of sassTypes (paths), and componentPaths and add them to the sassPaths array
+  function constructSassImportPaths(sassTypes, sassComponentDirectories) {
+    for (let currentType = 0; currentType < sassTypes.length; currentType++) {
+      sassPaths.push(path.resolve('.', componentPath, sassTypes[currentType]));
+      for (let directory = 0; directory < sassComponentDirectories.length; directory++) {
+        sassPaths.push(path.resolve('.', componentPath, sassComponentDirectories[directory] + '/' + sassTypes[currentType]));
+      }
+    }
+  }
+
+  // Design tokens have first priority
+  constructSassImportPaths([
+    'vf-design-tokens/dist/sass',
+    'vf-design-tokens/dist/sass/custom-properties',
+    'vf-design-tokens/dist/sass/maps'
+  ], componentDirectories);
+
+  // then sass config
+  constructSassImportPaths([
+    'vf-sass-config/variables',
+    'vf-sass-config/functions',
+    'vf-sass-config/mixins'
+  ], componentDirectories);
+
+  // then sass config
+  constructSassImportPaths([
+    ''
+  ], componentDirectories);
+
+  // and finally any multi-components
+  constructSassImportPaths([
+    'vf-form'
+  ], componentDirectories);
 
   // Lookup each component's package.json and make a package.scss
   gulp.task('vf-css:package-info', function(done) {

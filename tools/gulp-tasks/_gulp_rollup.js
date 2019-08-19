@@ -4,7 +4,7 @@
  * A rollup function to import all tasks.
  */
 
-module.exports = function(gulp, path, componentPath, buildDestionation) {
+module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation) {
   const watch = require('gulp-watch');
 
   // Local Server Stuff
@@ -17,7 +17,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
   require(path.resolve('.', __dirname + '/vf-assets.js'))(gulp, path, componentPath, buildDestionation);
   require(path.resolve('.', __dirname + '/vf-cleanup.js'))(gulp);
   require(path.resolve('.', __dirname + '/vf-component.js'))(gulp, path);
-  require(path.resolve('.', __dirname + '/vf-css.js'))(gulp, path, componentPath, buildDestionation, browserSync);
+  require(path.resolve('.', __dirname + '/vf-css.js'))(gulp, path, componentPath, componentDirectories, buildDestionation, browserSync);
   require(path.resolve('.', __dirname + '/vf-scripts.js'))(gulp, path, componentPath, buildDestionation);
   require(path.resolve('.', __dirname + '/vf-fractal.js'))(gulp, path, componentPath, buildDestionation);
   require(path.resolve('.', __dirname + '/vf-watch.js'))(gulp, path, componentPath, reload);
