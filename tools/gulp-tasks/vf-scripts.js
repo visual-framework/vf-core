@@ -16,7 +16,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
 
   // Construct jsPaths to import from componentDirectories
   for (let directory = 0; directory < componentDirectories.length; directory++) {
-    jsPaths.push(path.resolve('.', componentPath, componentDirectories[directory]));
+    jsPaths.push(path.resolve('.', componentPath, componentDirectories[directory]).replace(/\\/g, '/'));
   }
 
   // add any multi-component paths
