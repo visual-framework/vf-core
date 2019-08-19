@@ -17,6 +17,8 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
   const recursive = require('../css-generator/recursive-readdir');
   const ListStream = require('list-stream');
   const notify = require('gulp-notify');
+  const source = require('vinyl-source-stream');
+  const fs = require('fs');
 
   // Linting things
   const gulpStylelint   = require('gulp-stylelint');
@@ -49,14 +51,60 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
     path.resolve('.',componentPath + '/vf-core-components/vf-form')
   ];
 
-  gulp.task('vf-css', function(done) {
+  // Lookup each component's package.json and make a package.scss
+  gulp.task('vf-css:package-info', function(done) {
+    const Transform = require('stream').Transform;
+
+    // Convert part of the package.json to a sass map
+    function packageJsonToScss(location) {
+      return new Transform({
+        objectMode: true,
+        transform: (data, _, done) => {
+          location = 'components/' + location.split('components/')[1];
+          let name = JSON.parse(data.contents.toString()).name;
+          let version = JSON.parse(data.contents.toString()).version;
+
+          var output = `$componentInfo: (
+             name: "` + name + `",
+             version: "` + version + `",
+             location: "` + location + `",
+             vfCoreVersion: "` + global.vfVersion + `"
+          );`
+
+          done(null, output);
+        }
+      })
+    }
+
+    recursive(componentPath, ['*.css', '*.scss', '*.md', '*.njk'], function (err, files) {
+      files.forEach(function(file, index, array) {
+        // only process when a package.json is found
+        if ((file.file.indexOf('package.json') > -1)) {
+          return gulp.src(file.dir+'/package.json')
+            .pipe(packageJsonToScss(file.dir))
+            .pipe(source(file.file_path))
+            .pipe(rename('package.variables.scss'))
+            .pipe(gulp.dest(file.dir));
+        } else {
+          // do nothing
+        }
+
+        if (index + 1 == array.length) {
+          done();
+        }
+      });
+    });
+
+  });
+
+  gulp.task('vf-css:build', function(done) {
     const sassOpts = {
       // Import sass files
       // We'll check to see if the file exists before passing
       // it to sass for compilation
       importer: [function(url,prev,done) {
-        var truncatedUrl = url.split(/[/]+/).pop();
-        var parentFile = prev.split(/[/]+/).pop();
+        let truncatedUrl = url.split(/[/]+/).pop();
+        let parentFile = prev.split(/[/]+/).pop();
 
         // If you do not want to interveen in certain file names
         // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
@@ -64,7 +112,8 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
         // }
 
         // only intervene in index.scss rollups
-        if (parentFile == 'index.scss') {
+        // ignore `package.variables.scss` as it is dynamically made and gulp doesn't see it quickly enough
+        if (parentFile == 'index.scss' && url != 'package.variables.scss') {
           if (availableComponents[url]) {
             done(url);
           } else if (availableComponents['_'+truncatedUrl]) {
@@ -96,7 +145,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
       })
       .pipe(ListStream.obj(function (err, data) {
         if (err)
-          throw err
+          throw err;
         data.forEach(function (value, i) {
           // Keep only the file name
           var value = value.history[0].split(/[/]+/).pop();
@@ -115,7 +164,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
           .on(
             'error',
             notify.onError(function(error) {
-              process.emit('exit') // this fails precommit, but allows guld dev to work
+              process.emit('exit') // this fails precommit, but allows `gulp vf-dev` to work
               return 'Problem at file: ' + error.message;
             })
           )
@@ -143,7 +192,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
 
   // Sass Build-Time things
   // Take the built styles.css and autoprefixer it, then runs cssnano and saves it with a .min.css suffix
-  gulp.task('vf-css-build', function(done) {
+  gulp.task('vf-css:production', function(done) {
     return gulp
       .src(SassOutput + '/styles.css')
       .pipe(autoprefixer(autoprefixerOptions))
@@ -183,6 +232,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
 
   // -----------------------------------------------------------------------------
   // CSS Generator Tasks
+  // Generate per-compone .css files
   // -----------------------------------------------------------------------------
 
   var genCss = function (option) {
@@ -198,7 +248,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
       .pipe(gulp.dest(option.dir));
   };
 
-  gulp.task('vf-css-gen', function(done) {
+  gulp.task('vf-css:generate-component-css', function(done) {
     recursive(componentPath, ['*.css'], function (err, files) {
       files.forEach(function(file) {
         // only generate CSS for index.scss files, but not for the vf rollup
@@ -209,6 +259,10 @@ module.exports = function(gulp, path, componentPath, buildDestionation, browserS
     });
     done();
   });
+
+  gulp.task('vf-css', gulp.series(
+    'vf-css:package-info', 'vf-css:build'
+  ));
 
   return gulp;
 };
