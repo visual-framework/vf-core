@@ -21,6 +21,11 @@ const path = require('path');
 //   "vfName": "My Component Library",
 //   "vfNameSpace": "myco-",
 //   "vfComponentPath": "./src/components",
+//   "vfComponentDirectories": [
+//      "vf-core-components",
+//      "../node_modules/your-optional-collection-of-dependencies"
+//     NOTE: Don't forget to symlink: `cd components` `ln -s ../node_modules/your-optional-collection-of-dependencies`
+//    ],
 //   "vfBuildDestination": "./build",
 //   "vfThemePath": "@frctl/mandelbrot"
 // },
@@ -36,6 +41,7 @@ global.vfBuildDestination = config.vfConfig.vfBuildDestination || __dirname + '/
 global.vfThemePath = config.vfConfig.vfThemePath || './tools/vf-frctl-theme';
 global.vfVersion = config.version || 'not-specified';
 const componentPath = path.resolve('.', global.vfComponentPath);
+const componentDirectories = config.vfConfig.vfComponentDirectories || ['vf-core-components'];
 const buildDestionation = path.resolve('.', global.vfBuildDestination);
 
 // Gulp tasks live in their own files, for the sake of clarity.
@@ -44,4 +50,4 @@ const buildDestionation = path.resolve('.', global.vfBuildDestination);
 // as an npm install
 // Not familiar with JS Modules? Don't fret, it can be a lot like wrappign code in a function; here's
 // a nice quick start: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#Exporting_module_features
-require('./tools/gulp-tasks/_gulp_rollup.js')(gulp, path, componentPath, buildDestionation);
+require('./tools/gulp-tasks/_gulp_rollup.js')(gulp, path, componentPath, componentDirectories, buildDestionation);
