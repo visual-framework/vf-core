@@ -33,9 +33,9 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   // take an array of sassTypes (paths), and componentPaths and add them to the sassPaths array
   function constructSassImportPaths(sassTypes, sassComponentDirectories) {
     for (let currentType = 0; currentType < sassTypes.length; currentType++) {
-      sassPaths.push(path.resolve('.', componentPath, sassTypes[currentType]));
+      sassPaths.push(path.resolve('.', componentPath, sassTypes[currentType]).replace(/\\/g, '/'));
       for (let directory = 0; directory < sassComponentDirectories.length; directory++) {
-        sassPaths.push(path.resolve('.', componentPath, sassComponentDirectories[directory] + '/' + sassTypes[currentType]));
+        sassPaths.push(path.resolve('.', componentPath, sassComponentDirectories[directory] + '/' + sassTypes[currentType]).replace(/\\/g, '/'));
       }
     }
   }
@@ -116,8 +116,13 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       // We'll check to see if the file exists before passing
       // it to sass for compilation
       importer: [function(url,prev,done) {
-        let truncatedUrl = url.split(/[/]+/).pop();
-        let parentFile = prev.split(/[/]+/).pop();
+
+        // windows compatibility
+        url = url.replace(/\\/g, '/');
+        prev = prev.replace(/\\/g, '/');
+
+        var truncatedUrl = url.split(/[/]+/).pop();
+        var parentFile = prev.split(/[/]+/).pop();
 
         // If you do not want to interveen in certain file names
         // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
@@ -161,7 +166,8 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
           throw err;
         data.forEach(function (value, i) {
           // Keep only the file name
-          var value = value.history[0].split(/[/]+/).pop();
+          value = value.history[0].replace(/\\/g, '/'); // windows compatibility
+          value = value.split(/[/]+/).pop();
 
           availableComponents[value] = true;
         });
@@ -265,7 +271,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     recursive(componentPath, ['*.css'], function (err, files) {
       files.forEach(function(file) {
         // only generate CSS for index.scss files, but not for the vf rollup
-        if ((file.file.indexOf('index.scss') > -1) && (file.file_path.indexOf('vf-componenet-rollup/index.scss') == -1)) {
+        if ((file.file.indexOf('index.scss') > -1) && (file.file_path.replace(/\\/g, '/').indexOf('vf-componenet-rollup/index.scss') == -1)) {
           genCss(file);
         }
       });

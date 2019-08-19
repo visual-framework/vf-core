@@ -40,9 +40,9 @@ global.vfComponentPath = config.vfConfig.vfComponentPath || path.resolve('.', __
 global.vfBuildDestination = config.vfConfig.vfBuildDestination || __dirname + '/temp/build-files';
 global.vfThemePath = config.vfConfig.vfThemePath || './tools/vf-frctl-theme';
 global.vfVersion = config.version || 'not-specified';
-const componentPath = path.resolve('.', global.vfComponentPath);
+const componentPath = path.resolve('.', global.vfComponentPath).replace(/\\/g, '/');
 const componentDirectories = config.vfConfig.vfComponentDirectories || ['vf-core-components'];
-const buildDestionation = path.resolve('.', global.vfBuildDestination);
+const buildDestionation = path.resolve('.', global.vfBuildDestination).replace(/\\/g, '/');
 
 // Gulp tasks live in their own files, for the sake of clarity.
 // These are done as JS Modules as it makes passing paramaters simpler and avoids
