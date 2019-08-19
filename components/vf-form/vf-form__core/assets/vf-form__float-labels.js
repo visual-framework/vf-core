@@ -14,12 +14,12 @@
  * This allows users who would prefer not to have this JS engange on an element
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
-
  /**
   * The global function for this component
   * @example vfcomponentName(firstPassedVar)
   * @param {string} [firstPassedVar]  - An option to be passed
   */
+
 function vfFormFloatLabels() {
 
   function addFloatLabel(self) {
