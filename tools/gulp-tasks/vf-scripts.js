@@ -5,22 +5,31 @@
  * This makes dependency management a bit cleaner
  */
 
-module.exports = function(gulp, path, componentPath, buildDestionation) {
+module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation) {
   const rename = require('gulp-rename');
   const rollup = require('gulp-better-rollup');
   const includePaths = require('rollup-plugin-includepaths');
   const babel = require('gulp-babel');
   const deleteLines = require('gulp-delete-lines');
 
+  var jsPaths = [componentPath];
+
+  // Construct jsPaths to import from componentDirectories
+  for (let directory = 0; directory < componentDirectories.length; directory++) {
+    jsPaths.push(path.resolve('.', componentPath, componentDirectories[directory]).replace(/\\/g, '/'));
+  }
+
+  // add any multi-component paths
+  // todo: this obviously doesn't support componentDirectories, but we need to
+  //       architect a better way of supporting nested sub-components,
+  //       perhaps it is `vf-form`'s responsibility to do a rollup for JS and CSS
+  jsPaths.push(componentPath + '/vf-form');
+
   // Rollup all JS imports into CJS and babel them to ES5
   gulp.task('vf-scripts:es5', function() {
     let includePathOptions = {
         include: {},
-        paths: [
-          componentPath,
-          componentPath + '/vf-core-components',
-          componentPath + '/vf-form',
-        ],
+        paths: jsPaths,
         external: ['vfTabs'],
         extensions: ['.js']
     };
