@@ -31,10 +31,10 @@ $vf-summary__publication-color--text: vf-color--grey;
 
 
   .vf-summary__text {
-    // @include set-type(body--5);
+    @include set-type(text-body--5);
 
     color: set-color($vf-summary__publication-color--text);
-    margin-bottom: 0;
+    margin-bottom: 0; // this also gets zeroed by vf-summary > *:last-child sometimes
   }
 
   .vf-summary__text .vf-link {

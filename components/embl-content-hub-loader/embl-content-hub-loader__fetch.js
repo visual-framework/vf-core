@@ -3,7 +3,7 @@
 
 import { vfBanner } from 'vf-banner/vf-banner';
 import { vfTabs } from 'vf-tabs/vf-tabs';
-
+import { emblConditionalEdit } from 'embl-conditional-edit/embl-conditional-edit';
 
 /**
  * Fetch html links from content.embl.org
@@ -98,6 +98,12 @@ function emblContentHubFetch() {
     // pickup the "meat" of the exported content
     exportedContent = exportedContent || targetLink.import.querySelector('.vf-content-hub-html');
 
+    // make sure we have something
+    if (!exportedContent) {
+      console.log('No content found for this import, exiting. The import may have already been preformed.', targetLink);
+      return;
+    }
+
     // if there is just one child element and it is a div, use that
     // (this helps with css grid layout)
     if (exportedContent.childElementCount === 1 &&
@@ -187,7 +193,7 @@ function emblContentHubFetch() {
     var dateRemainingList = document.querySelector('.'+emblContentHubGenerateID(position)).querySelectorAll('.date-days-remaining');
     var todayDate = new Date();
     if (dateRemainingList.length > 0) {
-      for (dateRemainingIndex = 0; dateRemainingIndex < dateRemainingList.length; dateRemainingIndex++) {
+      for (let dateRemainingIndex = 0; dateRemainingIndex < dateRemainingList.length; dateRemainingIndex++) {
         var dateValue = parseInt(dateRemainingList[dateRemainingIndex].getAttribute('data-datetime')) * 1000;
         dateValue = new Date(dateValue);
         var numberOfDiffDays = days_between(dateValue, todayDate);
