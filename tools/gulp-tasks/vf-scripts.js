@@ -30,7 +30,8 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     let includePathOptions = {
         include: {},
         paths: jsPaths,
-        external: ['vfTabs'],
+        // If you need to make any components cited as "external"
+        // external: ['vfTabs'],
         extensions: ['.js']
     };
 
@@ -39,6 +40,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       .pipe(rollup({
         // There is no `input` option as rollup integrates into the gulp pipeline
         treeshake: false,
+        // If you need to make any components cited as "external"
         // external: ['vfTabs','vfBanner'],
         plugins: [
           babel({
@@ -57,9 +59,9 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         // Rollups `sourcemap` option is unsupported. Use `gulp-sourcemaps` plugin instead
         format: 'cjs',
       }))
-      // inlining the sourcemap into the exported .js file
+      // If you wish to inline sourcemap into the exported .js file:
       // .pipe(sourcemaps.write())
-      // When components are requested but no found, rollupJS leaves them as a node-style
+      // When components are requested but not found, rollupJS leaves them as a node-style
       // `require()`, this trims those
       .pipe(deleteLines({
          'filters': [
