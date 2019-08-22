@@ -1901,8 +1901,10 @@ a.vf-card {
     display: none; }
   @media (min-width: 1024px) {
     .vf-header--inlay .vf-masthead__heading {
-      padding: 0 3.75rem; }
+      padding: 0 3rem; }
     .vf-header--inlay .vf-navigation--main {
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
       padding: 0 3rem; } }
 
 .vf-lede {
@@ -2149,7 +2151,10 @@ a.vf-card {
 .vf-navigation--main {
   background-color: #54585a;
   grid-column: main;
-  position: relative; }
+  margin: 0 auto;
+  max-width: 76.5em;
+  position: relative;
+  width: 100%; }
   .vf-navigation--main::before {
     background-color: inherit;
     content: '';
@@ -2170,7 +2175,8 @@ a.vf-card {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        height: 100%; } }
+        height: 100%;
+        margin-left: -1rem; } }
   .vf-navigation--main .vf-navigation__item {
     font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
     font-size: 19px;
@@ -2235,8 +2241,12 @@ a.vf-card {
   width: 100%; }
   .vf-navigation--additional::before {
     background-color: inherit;
+    border: 0px solid #707372;
+    border-width: 1px 0 1px 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     content: '';
-    height: 35px;
+    height: calc(100% + 1px);
     left: 50%;
     margin: 0 -50vw;
     position: absolute;
@@ -2255,6 +2265,7 @@ a.vf-card {
   .vf-navigation--additional .vf-navigation__link {
     border-bottom: none;
     text-decoration: underline;
+    color: #fafafa;
     text-decoration: none; }
     .vf-navigation--additional .vf-navigation__link:visited {
       color: #ffffff;

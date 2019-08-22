@@ -559,8 +559,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   &amp;::before {
     <span class="hljs-attribute">background-color</span>: inherit;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">0px</span> solid set-color(vf-color--grey);
+    <span class="hljs-attribute">border-width</span>: <span class="hljs-number">1px</span> <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">box-sizing</span>: border-box;
     <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">35px</span>; <span class="hljs-comment">// magic number</span>
+    <span class="hljs-attribute">height</span>: calc(<span class="hljs-number">100%</span> + <span class="hljs-number">1px</span>);
     <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> -<span class="hljs-number">50vw</span>;
     <span class="hljs-attribute">position</span>: absolute;
@@ -587,7 +590,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-selector-class">.vf-navigation__link</span> {
     @<span class="hljs-keyword">include</span> inline-link(
-      <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--off-white),
+      <span class="hljs-variable">$vf-link--color</span>: set-ui-color(vf-ui-color--off-white),
       <span class="hljs-variable">$vf-link--visited-color</span>: set-ui-color(vf-ui-color--white),
       <span class="hljs-variable">$vf-link--hover-color</span>: set-ui-color(vf-ui-color--white)
     );
@@ -611,7 +614,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-navigation/vf-navigation--additional.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.2 KB
+          Size: 1.3 KB
         </li>
       </ul>
     </section>
@@ -670,7 +673,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-navigation--main</span> {
   <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey--dark);
   grid-column: main;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
   <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 
   &amp;::before {
     <span class="hljs-attribute">background-color</span>: inherit;
@@ -686,10 +692,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-selector-class">.vf-navigation__list</span> {
     <span class="hljs-attribute">display</span>: block;
+
     @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
       <span class="hljs-attribute">align-items</span>: center;
       <span class="hljs-attribute">display</span>: flex;
       <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+      <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">1rem</span>;
     }
   }
 
