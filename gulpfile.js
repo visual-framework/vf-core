@@ -1,7 +1,6 @@
 'use strict';
 
 const gulp = require('gulp');
-const path = require('path');
 
 // -----------------------------------------------------------------------------
 // Configuration
@@ -23,6 +22,7 @@ const path = require('path');
 // all settings are optional
 // todo: this could/should become a JS module
 const fs = require('fs');
+const path = require('path');
 const config = JSON.parse(fs.readFileSync('./package.json'));
 config.vfConfig = config.vfConfig || [];
 global.vfName = config.vfConfig.vfName || "Visual Framework 2.0";
