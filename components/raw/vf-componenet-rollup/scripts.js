@@ -16,7 +16,7 @@ vfMastheadSetStyle();
 import { vfTabs } from 'vf-tabs/vf-tabs';
 vfTabs();
 
-import { vfFormFloatLabels } from 'vf-form/vf-form__core/assets/vf-form__float-labels.js';
+import { vfFormFloatLabels } from 'vf-form__core/assets/vf-form__float-labels.js';
 vfFormFloatLabels();
 
 // All EMBL JS
