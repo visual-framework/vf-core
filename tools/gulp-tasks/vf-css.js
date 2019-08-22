@@ -187,7 +187,6 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
               return 'Problem at file: ' + error.message;
             })
           )
-          // .pipe(autoprefixer(autoprefixerOptions))
           .pipe(browserSync.stream())
           .pipe(sourcemaps.write())
           .pipe(rename(
@@ -196,13 +195,6 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
             }
           ))
           .pipe(gulp.dest(SassOutput))
-          // .pipe(cssnano())
-          // .pipe(rename(
-          //   {
-          //     suffix: '.min'
-          //   }
-          // ))
-          // .pipe(gulp.dest(SassOutput))
           .on('end', function() {
             done();
           });
