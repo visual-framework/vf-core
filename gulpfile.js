@@ -3,15 +3,6 @@
 const gulp = require('gulp');
 const path = require('path');
 
-// todo we might be able to remove these package.json Dependencies,
-// they don't seem to be needed
-// const replace = require('gulp-replace');
-// const postcss     = require('gulp-postcss');
-// const reporter    = require('postcss-reporter');
-// const syntax_scss     = require('postcss-scss');
-// const concat = require('gulp-concat');
-// const uglify = require('gulp-uglify');
-
 // -----------------------------------------------------------------------------
 // Configuration
 // -----------------------------------------------------------------------------
@@ -48,6 +39,6 @@ const buildDestionation = path.resolve('.', global.vfBuildDestination).replace(/
 // These are done as JS Modules as it makes passing paramaters simpler and avoids
 // needing workarounds invlolving global variables. It also allows more flexibile reusability
 // as an npm install
-// Not familiar with JS Modules? Don't fret, it can be a lot like wrappign code in a function; here's
+// Not familiar with JS Modules? Don't fret, it can be a lot like wrapping code in a function; here's
 // a nice quick start: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#Exporting_module_features
 require('./tools/gulp-tasks/_gulp_rollup.js')(gulp, path, componentPath, componentDirectories, buildDestionation);
