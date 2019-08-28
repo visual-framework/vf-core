@@ -1,3 +1,5 @@
+# Tabs Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-tabs.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-tabs)
 
 ## About

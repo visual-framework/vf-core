@@ -1,3 +1,5 @@
+# Favicon Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-favicon.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-favicon)
 
 ## About

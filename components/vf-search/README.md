@@ -1,4 +1,4 @@
-# vf-search component
+# Search Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-search.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-search)
 

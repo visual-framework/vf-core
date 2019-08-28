@@ -1,3 +1,5 @@
+# Link Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-link.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-link)
 
 ## About

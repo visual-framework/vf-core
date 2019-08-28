@@ -1,3 +1,5 @@
+# Form Checkbox Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-form__checkbox.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-form__checkbox)
 
 ## About

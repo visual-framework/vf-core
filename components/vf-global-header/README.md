@@ -1,11 +1,8 @@
+# Global Header Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-global-header.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-global-header)
 
 ## About
-
-Note that most users should pull the markup for the header from the EMBL ContentHub with:
-```
-<link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=574&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
-```
 
 ## Installation and Implementation
 
