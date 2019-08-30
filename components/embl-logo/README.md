@@ -2,7 +2,7 @@
 
 ## About
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `embl-logo` with this command.
 

@@ -19,7 +19,7 @@
 {% set context = '@vf-heading--small' | componentContexts %}
 {% render '@vf-heading', {"type": context.type, "html": context.heading} %}
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-heading` with this command.
 

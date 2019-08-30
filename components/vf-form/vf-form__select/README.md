@@ -2,7 +2,7 @@
 
 ## About
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form__select` with this command.
 
