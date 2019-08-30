@@ -20,10 +20,6 @@ $vf-code-example-enable-hljs: true !default;
   font-size: inherit;
 }
 
-.vf-code-example {
-  display: grid;
-}
-
 .vf-content pre,
 .vf-code-example__pre {
   border: 1px;
@@ -32,6 +28,7 @@ $vf-code-example-enable-hljs: true !default;
   overflow: auto;
   white-space: pre-wrap;
   @include padding--inline(all,map-get($vf-spacing-map, vf-spacing--s));
+  display: grid;
 }
 
 @if $vf-code-example-enable-hljs == true {
