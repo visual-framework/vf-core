@@ -23,9 +23,12 @@ const path = require('path');
 // all settings are optional
 // todo: this could/should become a JS module
 const fs = require('fs');
+// Load your local project's package.json config
 const config = JSON.parse(fs.readFileSync('./package.json'));
+// Load the vf-core package.json config
 let vfCoreConfig;
 if (config.name === '@visual-framework/vf-core') {
+  // if being run from within the vf-core project, use the local package.json
   vfCoreConfig = JSON.parse(fs.readFileSync('./package.json'));
 } else {
   // load vfCoreConfig from node_modules
