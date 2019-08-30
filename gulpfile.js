@@ -24,7 +24,13 @@ const path = require('path');
 // todo: this could/should become a JS module
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('./package.json'));
-const vfCoreConfig = JSON.parse(fs.readFileSync(require.resolve('@visual-framework/vf-core/package.json')));
+let vfCoreConfig;
+if (config.name === '@visual-framework/vf-core') {
+  vfCoreConfig = JSON.parse(fs.readFileSync('./package.json'));
+} else {
+  // load vfCoreConfig from node_modules
+  vfCoreConfig = JSON.parse(fs.readFileSync(require.resolve('@visual-framework/vf-core/package.json')));
+}
 config.vfConfig = config.vfConfig || [];
 global.vfName = config.vfConfig.vfName || "Visual Framework 2.0";
 global.vfNamespace = config.vfConfig.vfNamespace || "vf-";
