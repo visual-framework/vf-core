@@ -4,7 +4,7 @@
 
 The `vf-divider` component creates a horizontal dividing line to help separate content into their own container chunks.
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-divider` with this command.
 
