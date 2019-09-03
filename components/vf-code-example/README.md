@@ -4,7 +4,9 @@
 
 ## About
 
-## Installation and Implementation
+If you're using the VF Nunjucks environment, you can utilise the `{% codeblock 'html' -%}{% endcodeblock %}` tag to assist generating pre-formatted content.
+
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-code-example` with this command.
 

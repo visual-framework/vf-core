@@ -8,7 +8,7 @@ Your meat-and-potatoes breadcrumbs. A max depth of no-more-than three items is r
 
 The "With Related" variant allows you to indicate related items.
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-breadcrumbs` with this command.
 

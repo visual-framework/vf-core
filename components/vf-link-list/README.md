@@ -16,7 +16,7 @@ It can make use of the `vf-badge` component `<span class="vf-badge">Example Tag<
 
 It can include meta information `<p class="vf-links__meta">Example Meta</p>`.
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-link-list` with this command.
 

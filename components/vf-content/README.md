@@ -23,7 +23,7 @@ html elements. Some components may also add specific support for `.vf-content`
 {% endmarkdown %}
 </div>
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-content` with this command.
 
