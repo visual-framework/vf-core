@@ -1,8 +1,7 @@
 <a href="{{href}}"
 {# You're using an ID? Really?? That'll go here #}
 {% if id %} id="{{-id-}}"{% endif %}
-class="vf-logo
-{%- if override_class %} | {{override_class}}{% endif -%}">
-  <img src="{{ image | path }}" alt="{{ _config.project.title }}">
-  <span class="vf-sr-only">{{sreen_reader_text}}</span>
+class="vf-logo {%- if override_class %} | {{override_class}}{% endif -%}">
+  <img class="vf-logo__image" src="{{ image }}" alt="{{ logo_text }}">
+  <span class="vf-logo__text{% if hidden_text %} vf-sr-only{% endif %}">{{logo_text}}</span>
 </a>
