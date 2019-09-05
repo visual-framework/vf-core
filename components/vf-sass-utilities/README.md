@@ -1,10 +1,10 @@
-# vf-sass-utilities component
+# Sass utilities component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-utilities.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-utilities)
 
 This is a (growing) collection of utility-case Sass.
 
-Note that this differs from `vf-utility-classes` as these are not isolated settings (top margin, hide from display, green colour) but rather express a useful behaviour, such as showing some content exclusively for screen readers. 
+Note that this differs from `vf-utility-classes` as these are not isolated settings (top margin, hide from display, green colour) but rather express a useful behaviour, such as showing some content exclusively for screen readers.
 
 ## Install
 
