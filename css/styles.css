@@ -749,6 +749,9 @@ a.vf-badge--primary:hover {
   text-decoration: underline; }
 
 .vf-logo {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #000000;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -756,43 +759,37 @@ a.vf-badge--primary:hover {
   height: 41px;
   text-decoration: none; }
 
-.vf-logo--responsive {
-  background-image: url("../assets/vf-logo/assets/logo-small.svg");
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.vf-logo__image {
+  --logo-spacing: 8px;
   height: 25px;
-  min-width: 70px; }
+  margin-right: 16px;
+  margin-right: var(--logo-spacing); }
+  @media (min-width: 500px) {
+    .vf-logo__image {
+      --logo-spacing: 12px;
+      height: 28px; } }
+  @media (min-width: 999px) {
+    .vf-logo__image {
+      --logo-spacing: 16px;
+      height: 30px; } }
 
-@media (min-width: 500px) {
-  .vf-logo--responsive {
-    background-image: url("../assets/vf-logo/assets/logo-medium.svg");
-    height: 28px; } }
-
-@media (min-width: 999px) {
-  .vf-logo--responsive {
-    background-image: url("../assets/vf-logo/assets/logo.svg");
-    height: 30px; } }
+.vf-logo__text {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.71;
+  margin: 0 0 0 0; }
 
 .embl-logo {
-  color: #000000;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 41px;
-  text-decoration: none; }
-
-.embl-logo--responsive {
   background-image: url("../assets/embl-logo/assets/logo-small.svg");
   background-repeat: no-repeat;
   background-size: auto 100%;
+  color: #000000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   height: 25px;
-  min-width: 70px; }
+  min-width: 70px;
+  text-decoration: none; }
 
 @media (min-width: 500px) {
   .embl-logo--responsive {

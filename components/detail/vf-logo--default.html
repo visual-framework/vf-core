@@ -41,8 +41,9 @@
     <div class="vf-global-header__inner">
       <a href="../../index.html"
 
-class="vf-logo--responsive">
-  <span class="vf-sr-only">Visual Framework 2.0</span>
+class="vf-logo">
+  <img class="vf-logo__image" src="../../assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
+  <span class="vf-logo__text">Visual Framework 2.0</span>
 </a>
 
 
@@ -120,8 +121,8 @@ class="vf-logo--responsive">
 
               
                 
-                  <a class="vf-tabs__link" href="vf-logo--responsive.html">
-                    Responsive
+                  <a class="vf-tabs__link" href="vf-logo--hidden-text.html">
+                    Hidden Text
                   </a>
                  
                
@@ -196,6 +197,13 @@ class="vf-logo--responsive">
     </li>
     
     
+    <li class="vf-list__item">
+        Referenced by 1 components:
+        
+          <a href="vf-global-header.html">@vf-global-header</a>
+        
+    </li>
+    
 </ul>
 
 
@@ -205,8 +213,8 @@ class="vf-logo--responsive">
 
   
   <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.embl.de"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-logo"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../assets/vf-logo/assets/logo.png"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Visual Framework 2.0"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>Visual Framework 2.0<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-logo__image"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../assets/vf-logo/assets/logo.svg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Visual Framework 2.0"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-logo__text"</span>&gt;</span>Visual Framework 2.0<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 </code></pre>
   
@@ -398,33 +406,36 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-logo</span>
 
 <span class="hljs-selector-class">.vf-logo</span> {
+  <span class="hljs-attribute">align-items</span>: center;
   <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">41px</span>;
   <span class="hljs-attribute">text-decoration</span>: none;
 }
 
+<span class="hljs-selector-class">.vf-logo__image</span> {
+  --logo-spacing: <span class="hljs-number">8px</span>;
 
-<span class="hljs-selector-class">.vf-logo--responsive</span> {
-  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">'../assets/vf-logo/assets/logo-small.svg'</span>);
-  <span class="hljs-attribute">background-repeat</span>: no-repeat;
-  <span class="hljs-attribute">background-size</span>: auto <span class="hljs-number">100%</span>;
-  <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;
-  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">70px</span>;
-}
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>; <span class="hljs-comment">// IE11 Fallback</span>
+  <span class="hljs-attribute">margin-right</span>: var(--logo-spacing);
 
-@<span class="hljs-keyword">media</span> (min-width: 500px) {
-  <span class="hljs-selector-class">.vf-logo--responsive</span> {
-    <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">'../assets/vf-logo/assets/logo-medium.svg'</span>);
+  @<span class="hljs-keyword">media</span> (min-width: 500px) {
+    --logo-spacing: <span class="hljs-number">12px</span>;
+
     <span class="hljs-attribute">height</span>: <span class="hljs-number">28px</span>;
   }
-}
-@<span class="hljs-keyword">media</span> (min-width: 999px) {
-  <span class="hljs-selector-class">.vf-logo--responsive</span> {
-    <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">'../assets/vf-logo/assets/logo.svg'</span>);
+
+  @<span class="hljs-keyword">media</span> (min-width: 999px) {
+    --logo-spacing: <span class="hljs-number">16px</span>;
+
     <span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;
   }
+
+}
+
+<span class="hljs-selector-class">.vf-logo__text</span> {
+  @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: 0);
 }
 </code>
         </pre>
@@ -441,7 +452,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-logo/vf-logo.scss
         </li>
         <li class="vf-list__item">
-          Size: 625 Bytes
+          Size: 528 Bytes
         </li>
       </ul>
     </section>

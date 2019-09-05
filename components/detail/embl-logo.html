@@ -41,8 +41,9 @@
     <div class="vf-global-header__inner">
       <a href="../../index.html"
 
-class="vf-logo--responsive">
-  <span class="vf-sr-only">Visual Framework 2.0</span>
+class="vf-logo">
+  <img class="vf-logo__image" src="../../assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
+  <span class="vf-logo__text">Visual Framework 2.0</span>
 </a>
 
 
@@ -209,14 +210,17 @@ class="vf-logo--responsive">
   
 <a id="embl-logo--default-code" href="#embl-logo--default-code">Anchor (todo: `vf-link--anchor` or such)</a>
 <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Default --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.embl.de"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-logo"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../assets/embl-logo/assets/logo.png"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"European Molecular Biology Laboratory Home"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-logo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"text"</span>&gt;</span>European Molecular Biology Laboratory Home<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 </code></pre>
   
 <a id="embl-logo--responsive-code" href="#embl-logo--responsive-code">Anchor (todo: `vf-link--anchor` or such)</a>
 <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Responsive --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-logo--responsive"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-logo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"text"</span>&gt;</span>European Molecular Biology Laboratory Home<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- '@embl-logo--responsive' is deprecated, please use render '@embl-logo' --&gt;</span>
 </code></pre>
   
   
@@ -277,6 +281,10 @@ class="vf-logo--responsive">
 
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
+
+<span class="hljs-section"># 1.0.0-alpha.5</span>
+<span class="hljs-bullet">
+- </span>@embl-logo--responsive is now deprecated, use @embl-logo instead
 </code>
         </pre>
         
@@ -292,7 +300,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-logo/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 166 Bytes
+          Size: 251 Bytes
         </li>
       </ul>
     </section>
@@ -306,19 +314,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// embl-logo</span>
 
 <span class="hljs-selector-class">.embl-logo</span> {
-  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
-  <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">41px</span>;
-  <span class="hljs-attribute">text-decoration</span>: none;
-}
-
-<span class="hljs-selector-class">.embl-logo--responsive</span> {
   <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">'../assets/embl-logo/assets/logo-small.svg'</span>);
   <span class="hljs-attribute">background-repeat</span>: no-repeat;
   <span class="hljs-attribute">background-size</span>: auto <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;
   <span class="hljs-attribute">min-width</span>: <span class="hljs-number">70px</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
 }
 
 @<span class="hljs-keyword">media</span> (min-width: 500px) {
@@ -348,7 +351,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-logo/embl-logo.scss
         </li>
         <li class="vf-list__item">
-          Size: 640 Bytes
+          Size: 579 Bytes
         </li>
       </ul>
     </section>
