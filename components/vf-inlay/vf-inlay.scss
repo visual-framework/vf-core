@@ -14,7 +14,11 @@
   /* stylelint-enable */
 
   &:last-of-type {
-    @include margin--block(bottom, $vf-inlay__spacing--bottom);
+    @include margin--block(bottom, $vf-inlay__spacing--bottom--narrow);
+
+    @media (min-width: 1024px) {
+      @include margin--block(bottom, $vf-inlay__spacing--bottom);
+    }
   }
 
   // overides vf-grid's natural inclination to be full width
