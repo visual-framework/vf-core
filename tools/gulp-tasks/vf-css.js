@@ -209,11 +209,6 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       .pipe(autoprefixer(autoprefixerOptions))
       .pipe(gulp.dest(SassOutput))
       .pipe(cssnano())
-      .pipe(rename(
-        {
-          suffix: '.min'
-        }
-      ))
       .pipe(gulp.dest(SassOutput))
       .on('end', function() {
         done();
