@@ -1,3 +1,5 @@
+# Navigation Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-navigation.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-navigation)
 
 ## About

@@ -1,4 +1,4 @@
-# vf-deprecated Component
+# Deprecated Demo Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-deprecated.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-deprecated)
 

@@ -1,4 +1,4 @@
-# vf-lede component
+# Lede Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-lede.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-lede)
 

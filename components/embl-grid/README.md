@@ -1,3 +1,5 @@
+# EMBL Grid Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fembl-grid.svg)](https://badge.fury.io/js/%40visual-framework%2Fembl-grid)
 
 ## About
@@ -24,7 +26,7 @@ _Make sure you import any requirements along with the modules._
 
 ## Usage
 
-The CSS classnames available should be used on their own on a Container or added to a Containers exisitng classname declaration in the HTML.
+The CSS classnames available should be used on their own on a Container or added to a Containers existing classname declaration in the HTML.
 
 A EMBL Layout should only be applied to Containers. For Blocks you should use the [Visual Framework Grid System]({{ '/docs/grids/grid-system' | path }}).
 

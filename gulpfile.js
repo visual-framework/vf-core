@@ -1,7 +1,6 @@
 'use strict';
 
 const gulp = require('gulp');
-const path = require('path');
 
 // -----------------------------------------------------------------------------
 // Configuration
@@ -23,7 +22,7 @@ const path = require('path');
 // all settings are optional
 // todo: this could/should become a JS module
 const fs = require('fs');
-// Load your local project's package.json config
+const path = require('path');
 const config = JSON.parse(fs.readFileSync('./package.json'));
 // Load the vf-core package.json config
 let vfCoreConfig;

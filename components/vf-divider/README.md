@@ -1,3 +1,5 @@
+# Divider Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-divider.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-divider)
 
 ## About

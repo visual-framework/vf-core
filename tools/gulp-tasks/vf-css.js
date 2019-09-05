@@ -89,7 +89,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       })
     }
 
-    recursive(componentPath, ['*.css', '*.scss', '*.md', '*.njk'], function (err, files) {
+    recursive(componentPath, ['*.css', '*.scss', '*.md', '*.njk', '_package.json'], function (err, files) {
       files.forEach(function(file, index, array) {
         // only process when a package.json is found
         if ((file.file.indexOf('package.json') > -1)) {

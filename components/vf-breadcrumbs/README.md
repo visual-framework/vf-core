@@ -1,3 +1,5 @@
+# Breadcrumbs Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-breadcrumbs.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-breadcrumbs)
 
 ## About

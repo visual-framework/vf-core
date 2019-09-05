@@ -1,3 +1,5 @@
+# EMBL Logo Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fembl-logo.svg)](https://badge.fury.io/js/%40visual-framework%2Fembl-logo)
 
 ## About

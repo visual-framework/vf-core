@@ -1,5 +1,7 @@
 # EMBL Breadcrumbs Lookup Component
 
+## About
+
 This requires and builds atop the `vf-breadcrumbs` and
 `embl-content-meta-properties` components for EMBL pages.
 

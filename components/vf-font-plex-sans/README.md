@@ -1,3 +1,5 @@
+# Font Plex Sans Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-font-plex-sans.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-font-plex-sans)
 
 ## About
