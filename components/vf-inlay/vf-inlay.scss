@@ -56,6 +56,16 @@
     [main-end]
     minmax(var(--page-grid-gap), 60px)
   ;
+  @media (max-width: 1023px) {
+    grid-template-columns:
+      var(--page-grid-gap)
+      [main-start]
+        minmax(auto, 100%)
+        minmax(auto, 22.125em)
+      [main-end]
+      var(--page-grid-gap)
+    ;
+  }
   /* stylelint-enable */
   padding-top: 36px;
 }
