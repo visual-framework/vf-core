@@ -11,30 +11,24 @@
 .vf-logo__image {
   --logo-spacing: 8px;
 
+  height: 25px;
   margin-right: 16px; // IE11 Fallback
   margin-right: var(--logo-spacing);
+
+  @media (min-width: 500px) {
+    --logo-spacing: 12px;
+
+    height: 28px;
+  }
+
+  @media (min-width: 999px) {
+    --logo-spacing: 16px;
+
+    height: 30px;
+  }
+
 }
 
 .vf-logo__text {
-  @include set-type(body--r, $custom-margin-bottom: 0);
-}
-
-
-.vf-logo--responsive {
-
-  .vf-logo__image {
-    height: 25px;
-
-    @media (min-width: 500px) {
-      --logo-spacing: 12px;
-
-      height: 28px;
-    }
-
-    @media (min-width: 999px) {
-      --logo-spacing: 16px;
-
-      height: 30px;
-    }
-  }
+  @include set-type(text-body--3, $custom-margin-bottom: 0);
 }
