@@ -34,7 +34,7 @@ module.exports = class extends Generator {
       chalk.white("https://visual-framework.github.io/vf-welcome/documentation/#components")
     ));
 
-    var componentType = ['element', 'block', 'container', 'grid', 'boilerplate'];
+    var componentType = ['element', 'block', 'container', 'grid', 'utility'];
     if (vfNamespace != 'vf-') {
       var DepartmentType = [vfName, 'VF Global'];
     } else {
