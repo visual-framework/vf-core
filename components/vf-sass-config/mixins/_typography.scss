@@ -1,4 +1,7 @@
-// mixin to generate correct font information when included into an element
+// Generate correct font information when included into an element
+// Recommended to use with typography and sizing maps
+// @include set-type(text-body--3, $global-font-family, $custom-margin-bottom: vf-spacing--lg)
+
 // $custom-margin-bottom: variable, auto, disable
 @mixin set-type($font-size, $global-font-family: $global-font-family, $custom-margin-bottom: auto) {
   @if $global-font-family != $vf-font-family--monospace {

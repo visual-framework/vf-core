@@ -1,11 +1,5 @@
-// @function choose-contrast-color($color) {
-//   @if (lightness($color) > 50) {
-//     @return #000000; // Lighter backgorund, return dark color
-//   } @else {
-//     @return #ffffff; // Darker background, return light color
-//   }
-// }
-
+// Intelligently pick if white or black should be used as a contrasting colour
+// Currently not used
 
 @mixin choose-contrast-color($n) {
   $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
@@ -19,3 +13,11 @@
     color: black;
   }
 }
+
+// @function choose-contrast-color($color) {
+//   @if (lightness($color) > 50) {
+//     @return #000000; // Lighter backgorund, return dark color
+//   } @else {
+//     @return #ffffff; // Darker background, return light color
+//   }
+// }
