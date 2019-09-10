@@ -10,7 +10,7 @@ The VF 2.0 enables consistency and portability, it is extensible, modular and ov
 
 **👋 Downloading or cloning this repo? 🛑**
 
-Most won't need to clone this repo. Do so if you only wish to develop the architecture of the Visual Framework core or contribute a global component, otherwise use one of the boilerpates or install a component directly[https://visual-framework.github.io/vf-welcome/].
+Most won't need to clone this repo. Do so if you only wish to develop the architecture of the Visual Framework core or contribute a global component, otherwise [use one of the boilerpates or install a component directly](https://visual-framework.github.io/vf-welcome/).
 
 ---
 
@@ -102,5 +102,3 @@ There are a few ways that we discuss and track ideas:
 ## 🚧 ✍ Developing, contributing
 
 <a id="get-started"></a> [See the contributing guide](https://visual-framework.github.io/vf-welcome/documentation/#getting-started)
-
-
