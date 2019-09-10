@@ -147,9 +147,6 @@ ${result
   `;
 });
 
-
-
-
 gulp.task('vf-tokens', gulp.parallel(
   'tokens:variables', 'tokens:json', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
 ));
