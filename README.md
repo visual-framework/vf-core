@@ -2,6 +2,10 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-core.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-core) ![Chat for support on Discord](https://discordapp.com/api/guilds/596668639004983296/widget.png?style=shield) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/EMBL/EMBL-Visual-Framework)
 
+The Visual Framework (VF) is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfere with your existing components that use Bootstrap, Angular, or something else.
+
+The VF 2.0 enables consistency and portability, it is extensible, modular and overridable; here to help and not get in the way.
+
 ---
 
 **👋 Downloading or cloning this repo? 🛑**
@@ -10,21 +14,13 @@ Most won't need to clone this repo. Do so if you only wish to develop the archit
 
 ---
 
-## 🎫 What is this?
-
-The Visual Framework (VF) is designed with the needs of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfere with your existing components that use Bootstrap, Angular, or something else.
-
-The VF 2.0 enables consistency and portability, it is extensible, modular and overridable; here to help and not get in the way.
-
 <img src="README/intro_image.jpg" alt="Image of columns representing a metaphor for the VF Core" />
 
-[Image by Clint on Flickr](https://www.flickr.com/photos/amberandclint/4086669134/in/photolist-7e8fmE-nGAs7L-5ANpRm-bbDtk2-8fW4a-eZi5N3-5RRtw5-3KvouK-6K6fLC-48S7Tv-m1BVz9-77ZEvU-58GPp8-6ygYZw-5ANs87-5ANp2Q-48S9K6-gr8bps-evst93-7Vyo1U-evpjTg-e1EWNm-dUwmxf-q4ZFUa-auYW6V-7fFJXo-bstDTF-euKd7K-e9LAh3-5zSVSn-evpkb8-dtp995-5k2ATs-aj5HWY-8jbFnQ-MGp6W-57mU2S-bAKj6C-djW5iW-HVYU44-buCcrw-e6JLkQ-djW4bp-7DHGCa-av2Auo-28gPqDR-ea68SD-48S8hT-btjZH8-48W95A/]
-
-*Much like an arch-based design of a cistern, the `vf-core` supports complex systems with a flexible space inside. Even if `vf-arch` wasn’t a very good name. (For those that didn’t guess it, this is a photo of the Basilica Cistern.)*
+*Much like an arch-based design of a cistern, the `vf-core` supports complex systems with a flexible space inside. Even if `vf-arch` wasn’t a very good name. (For those that didn’t guess it, this is a photo of the Basilica Cistern; [Image by Clint on Flickr](https://www.flickr.com/photos/amberandclint/4086669134/in/photolist-7e8fmE-nGAs7L-5ANpRm-bbDtk2-8fW4a-eZi5N3-5RRtw5-3KvouK-6K6fLC-48S7Tv-m1BVz9-77ZEvU-58GPp8-6ygYZw-5ANs87-5ANp2Q-48S9K6-gr8bps-evst93-7Vyo1U-evpjTg-e1EWNm-dUwmxf-q4ZFUa-auYW6V-7fFJXo-bstDTF-euKd7K-e9LAh3-5zSVSn-evpkb8-dtp995-5k2ATs-aj5HWY-8jbFnQ-MGp6W-57mU2S-bAKj6C-djW5iW-HVYU44-buCcrw-e6JLkQ-djW4bp-7DHGCa-av2Auo-28gPqDR-ea68SD-48S8hT-btjZH8-48W95A/))*
 
 # The Visual Framework Core: What it is and why it matters
 
-For the past year the [small](https://github.com/visual-framework/vf-core/people?affiliation=ALL) Visual Framework team continued developing more-compatible and sane-defaults tooling for life science websites[link to the background of the VF]; here I introduce the Visual Framework Core (VF Core).
+For the past year the [small](https://github.com/visual-framework/vf-core/people?affiliation=ALL) Visual Framework team continued developing more-compatible and sane-defaults tooling for life science websites; here I introduce the Visual Framework Core (VF Core).
 
 ---
 
@@ -50,18 +46,18 @@ For most developers it’s best to `npm install`* VF Core and connect it to VF c
 
 In late July we entered the beta phase for `vf-core`, and so we’re ready for others to begin making use of it — and here’s a few ways you might do so:
 
-- [Add VF components using npm](#link-to-vf-welcome) Status: RC
+- [Add VF components using npm](#link-to-vf-welcome) **Status: RC**<br/>
   Pull VF components directly into your existing tooling at `some-kind-of-sample-site`. This approach gets you a components Sass, JS, template and any other assets and lets you build what you need.
   -  `yarn add @visual-framework/vf-sass-config @visual-framework/vf-inlay`
-- [A pre-made boilerplate using VF components; `vf-eleventy](https://github.com/visual-framework/vf-eleventy) Status: BETA
+- [A pre-made boilerplate using VF components; `vf-eleventy`](https://github.com/visual-framework/vf-eleventy) **Status: BETA**<br/>
   Uses the performant [11ty](#link) as a static site generator to build sites with VF components. This approach pre-integrates the VF Core, giving you easy access to component assets and a rollup build process to generate compiled CSS and JS.
   -  `yarn create @visual-framework/vf-eleventy your-new-site-name`
-- [Build a design system using VF components `vf-demo-design-system`](https://github.com/visual-framework/vf-demo-design-system) Status: ALPHA
+- [Build a design system using VF components `vf-demo-design-system`](https://github.com/visual-framework/vf-demo-design-system) **Status: ALPHA**<br/>
   Extends`vf-eleventy`to document your design system, create+document components, patterns and boilerplates. You can also generate static CSS and JS assets for simple use elsewhere in vanilla HTML+CSS+JS pages.
   -  `yarn create @visual-framework/vf-eleventy your-new-site-name vf-demo-design-system`
-- WordPress theme Status: PRE-ALPHA PROOF OF CONCEPT
+- WordPress theme Status: **PRE-ALPHA PROOF OF CONCEPT**<br/>
   Build a WordPress site using VF components. We don’t have code that’s ready to share yer, but this is on our ideas and tools plans.
-- React boilerplate Status: PRE-ALPHA PROOF OF CONCEPT
+- React boilerplate Status: **PRE-ALPHA PROOF OF CONCEPT**<br/>
   A demonstration React-based project using VF components.
 
 ## FAQ
@@ -94,27 +90,23 @@ and use bootstrap too
 Efforts in the next few months will be extending and stabilising the above projects and further stabilising [`vf-core`](#link-to-beta.2-issues).
 
 --
-Mainter of an EMBL or EMBL-EBI service?
+
+### Mainter of an EMBL or EMBL-EBI service?
+
 To be written: sidebar on whatEMBL and EMBL-EBI devs can expect
+
 ---
-Have opinions, ideas, concerns or want to get involved? Drop us a note:
-Email
-Chat
-Issue queue
 
-
-
-
-## 🚧 ✍ Developing, contributing
-
-### How do I make my own theme or customise components?
-
-<a id="get-started"></a> [See the contributing guide](https://visual-framework.github.io/vf-welcome/documentation/#getting-started)
-
-### I have an idea or concern!
+## Have opinions, ideas, concerns or want to get involved? 
 
 There are a few ways that we discuss and track ideas:
 
 - ⁉ General: [Chat us](https://discord.gg/XHAvkUX) for general ideas and discussion
 - ⚙️ Technical: [GitHub issues here](https://github.com/visual-framework/vf-core/issues) for implementing deeply technical and specific issues, like the Sass build process, browser bugs
 - 🏢 E-mail: if you have a sweeping Big Idea™️, e-mail Ken Hawkins <ken.hawkins@embl.de>
+
+## 🚧 ✍ Developing, contributing
+
+<a id="get-started"></a> [See the contributing guide](https://visual-framework.github.io/vf-welcome/documentation/#getting-started)
+
+
