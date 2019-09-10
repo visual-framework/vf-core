@@ -46,23 +46,23 @@ For most developers it’s best to `npm install`* VF Core and connect it to VF c
 
 In late July we entered the beta phase for `vf-core`, and so we’re ready for others to begin making use of it — and here’s a few ways you might do so:
 
-- [Add VF components using npm](#link-to-vf-welcome) **Status: RC**<br/>
+- **Add VF components using npm** Status: RC<br/>
   Pull VF components directly into your existing tooling at `some-kind-of-sample-site`. This approach gets you a components Sass, JS, template and any other assets and lets you build what you need.
   -  `yarn add @visual-framework/vf-sass-config @visual-framework/vf-inlay`
-- [A pre-made boilerplate using VF components; `vf-eleventy`](https://github.com/visual-framework/vf-eleventy) **Status: BETA**<br/>
+- **A pre-made boilerplate using VF components** Status: BETA<br/>
   Uses the performant [11ty](#link) as a static site generator to build sites with VF components. This approach pre-integrates the VF Core, giving you easy access to component assets and a rollup build process to generate compiled CSS and JS.
-  -  `yarn create @visual-framework/vf-eleventy your-new-site-name`
-- [Build a design system using VF components `vf-demo-design-system`](https://github.com/visual-framework/vf-demo-design-system) **Status: ALPHA**<br/>
+  -  [`vf-eleventy`](https://github.com/visual-framework/vf-eleventy): `yarn create @visual-framework/vf-eleventy your-new-site-name`
+- **Build a design system using VF components** Status: ALPHA<br/>
   Extends`vf-eleventy`to document your design system, create+document components, patterns and boilerplates. You can also generate static CSS and JS assets for simple use elsewhere in vanilla HTML+CSS+JS pages.
-  -  `yarn create @visual-framework/vf-eleventy your-new-site-name vf-demo-design-system`
-- WordPress theme Status: **PRE-ALPHA PROOF OF CONCEPT**<br/>
+  -  [`vf-demo-design-system`](https://github.com/visual-framework/vf-demo-design-system): `yarn create @visual-framework/vf-eleventy your-new-site-name vf-demo-design-system`
+- **WordPress theme** Status: PRE-ALPHA PROOF OF CONCEPT<br/>
   Build a WordPress site using VF components. We don’t have code that’s ready to share yer, but this is on our ideas and tools plans.
-- React boilerplate Status: **PRE-ALPHA PROOF OF CONCEPT**<br/>
+- **React boilerplate** Status: PRE-ALPHA PROOF OF CONCEPT<br/>
   A demonstration React-based project using VF components.
 
 ## FAQ
 
-### Is VF Core a different type of Bootstrap?
+### Is VF Core just a Bootstrap with a different theme?
 
 No. VF Core is an architecture to build extensible components that contain CSS/Sass, JS, Nunjuck templates, and image assets. You could use the VF Core to make a Bootstrap-style framework.   
 
@@ -72,11 +72,11 @@ Yes, utilise the Visual Framework system with one of the above listed approaches
 
 ### Does it have a specific look and feel?
 
-No. It has a default … design tokens … more to come
+No. It has a default look out of the box, but it is fully customisable by altering the [Design Tokens](https://github.com/visual-framework/vf-core/tree/develop/components/vf-design-tokens/src).
 
 ### Is it really ready for use today?
 
-Yes. It’s stable enough that we are…. More to come
+Stable for your non-production development. We're in a beta phase and things are still subject to change, but there should be few breaking changes and we'll offer guidance on updating between betas. 
 
 ### Shouldn’t I just use Bootstrap or Solution X?
 
