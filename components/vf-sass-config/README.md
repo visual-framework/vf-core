@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-config.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-config)
 
-Mixins, functions and variables to power all `vf-core` components.
+Mixins, functions and variables to power all `vf-core` components. If you're using a Visual Framework component it's a near-certainty that you'll need this component.   
 
 Note: these utilise `vf-design-tokens`
 
