@@ -76,7 +76,7 @@ No. It has a default look out of the box, but it is fully customisable by alteri
 
 ### Is it really ready for use today?
 
-Stable for your non-production development. We're in a beta phase and things are still subject to change, but there should be few breaking changes and we'll offer guidance on updating between betas. 
+Stable for your non-production development. We're in a beta phase and things are still subject to change, but there should be few breaking changes and we'll offer guidance on updating between betas.
 
 ### Shouldn’t I just use Bootstrap or Solution X?
 
@@ -91,7 +91,7 @@ Efforts in the next few months will be extending and stabilising the above proje
 
 ---
 
-## Have opinions, ideas, concerns or want to get involved? 
+## Have opinions, ideas, concerns or want to get involved?
 
 There are a few ways that we discuss and track ideas:
 
@@ -101,4 +101,4 @@ There are a few ways that we discuss and track ideas:
 
 ## 🚧 ✍ Developing, contributing
 
-<a id="get-started"></a> [See the contributing guide](https://visual-framework.github.io/vf-welcome/documentation/#getting-started)
+<a id="get-started"></a> [See the contributing guide](https://visual-framework.github.io/vf-welcome/developing/#getting-started)
