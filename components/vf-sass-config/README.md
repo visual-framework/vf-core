@@ -14,7 +14,7 @@ Note: these utilise `vf-design-tokens`
 
 ### map-deep-get.scss
 
-`map-deep-get($map, $keys`
+`map-deep-get($map, $keys)`
 
 ### set-layer.scss
 
