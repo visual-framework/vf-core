@@ -10,7 +10,7 @@ The VF 2.0 enables consistency and portability, it is extensible, modular and ov
 
 **👋 Downloading or cloning this repo? 🛑**
 
-Most won't need to clone this repo. Do so if you only wish to develop the architecture of the Visual Framework core or contribute a global component, otherwise use one of the boilerpates or install a component directly[add links to vf-welcome sections].
+Most won't need to clone this repo. Do so if you only wish to develop the architecture of the Visual Framework core or contribute a global component, otherwise use one of the boilerpates or install a component directly[https://visual-framework.github.io/vf-welcome/].
 
 ---
 
@@ -88,12 +88,6 @@ and use bootstrap too
 ## What’s next
 
 Efforts in the next few months will be extending and stabilising the above projects and further stabilising [`vf-core`](#link-to-beta.2-issues).
-
---
-
-### Mainter of an EMBL or EMBL-EBI service?
-
-To be written: sidebar on whatEMBL and EMBL-EBI devs can expect
 
 ---
 
