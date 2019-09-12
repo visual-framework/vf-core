@@ -6,15 +6,9 @@ const path = require('path');
 // is not combinable with a `.yml` config file
 // https://fractal.build/guide/core-concepts/configuration-files.html#configuration-file-formats
 let fractalConfig = {
-	title: 'Reusable Design Tokens',
+  title: 'Reusable Design Tokens',
   label: 'Design Tokens',
-	status: 'beta',
-  variants: {
-    name: 'default',
-    context: {
-      hidden: "true" // as best i can tell this should hide the default, but it doesn't
-    }
-  }
+  status: 'beta'
 };
 
 // Only generate the tokens if the `/dist` assets have been generated
