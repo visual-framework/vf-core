@@ -50,6 +50,3 @@ There are a few ways that we discuss and track ideas:
 - ⚙️ Technical: [GitHub issues here](https://github.com/visual-framework/vf-core/issues) for implementing deeply technical and specific issues, like the Sass build process, browser bugs
 - 🏢 E-mail: if you have a sweeping Big Idea™️, e-mail Ken Hawkins <ken.hawkins@embl.de>
 
-## 🚧 ✍ Developing, contributing
-
-<a id="get-started"></a> [See the contributing guide](https://visual-framework.github.io/vf-welcome/developing/#getting-started)
