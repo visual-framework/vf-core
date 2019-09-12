@@ -1,0 +1,121 @@
+// vf-grid
+
+/* stylelint-disable order/order */
+.vf-grid {
+  display: flex;
+}
+.vf-grid > * {
+  flex: 1;
+  margin: 10px;
+}
+[class*='vf-grid__'] {
+  flex-wrap: wrap;
+}
+.vf-grid__col-2 > * {
+  flex: 0 0 calc(50% - 20px);
+}
+.vf-grid__col-3 > *{
+  flex: 0 0 calc(33.3333% - 20px);
+}
+.vf-grid__col-4 > * {
+  flex: 0 0 calc(25% - 20px);
+}
+.vf-grid__col-5 > * {
+  flex: 0 0 calc(16% - 20px);
+}
+.vf-grid__col-6 > * {
+  flex: 0 0 calc(16.666666667% - 20px);
+}
+@media (max-width: 1023px) {
+  .vf-grid {
+    flex-wrap: wrap;
+  }
+  .vf-grid > *{
+    flex: 0 0 calc(50% - 20px);
+  }
+}
+@supports (display: grid) {
+  .vf-grid {
+    display: grid;
+    grid-column: main;
+    grid-column-gap: var(--page-grid-gap);
+  }
+
+  @media (min-width: 840px) {
+    .vf-grid {
+      grid-auto-flow: column
+    }
+  }
+  @media (max-width: 1299px) {
+    .vf-grid {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .vf-grid > * {
+    margin: 0;
+  }
+
+  [class*='grid__'] {
+    grid-auto-flow: unset;
+  }
+
+  .vf-grid__col-1 > * + * {
+    border-top: 1px solid set-color(vf-color--grey);
+    padding-top: map-get($vf-spacing-map, vf-spacing-xxl);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .vf-grid__col-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+
+  @media (min-width: 768px) {
+    .vf-grid__col-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .vf-grid__col-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .vf-grid__col-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .vf-grid__col-5 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .vf-grid__col-6 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .vf-grid__col-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .vf-grid__col-5 {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .vf-grid__col-6 {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  // Grid Spans
+  .vf-grid__col--span-2 {
+    grid-column-end: span 2;
+  }
+  .vf-grid__col--span-3 {
+    grid-column-end: span 3;
+  }
+  .vf-grid__col--span-4 {
+    grid-column-end: span 4;
+  }
+  .vf-grid__col--span-5 {
+    grid-column-end: span 5;
+  }
+}
+/* stylelint-enable order/order */

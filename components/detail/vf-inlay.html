@@ -1,0 +1,5889 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="vf-no-js">
+<head>
+  <script>
+// Detect if JS is on and swap vf-no-js for vf-js on the html element
+(function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
+</script>
+
+  <title>Inlay component | Visual Framework 2.0</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png">
+<link rel="manifest" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest">
+<link rel="mask-icon" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+  
+  
+  <script>
+  window.frctl = {
+    env: 'static'
+  };
+  </script>
+  
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css" type="text/css">
+
+
+<link rel="stylesheet" href="../../themes/vf-frctl-theme/css/default.css?cachebust=0.0.1" type="text/css">
+
+
+</head>
+<body>
+
+
+<header class="vf-header">
+  <div class="vf-global-header">
+
+    <div class="vf-global-header__inner">
+      <a href="../../index.html"
+
+class="vf-logo">
+  <img class="vf-logo__image" src="../../assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
+  <span class="vf-logo__text">Visual Framework 2.0</span>
+</a>
+
+
+      <nav class="vf-navigation vf-navigation--global">
+        <ul class="vf-navigation__list | vf-list--inline">
+          <li class="vf-navigation__item">
+            <a href="https://visual-framework.github.io/vf-welcome/" class="vf-navigation__link">About the Visual Framework</a>
+          </li>
+          <li class="vf-navigation__item">
+            <a href="https://visual-framework.github.io/vf-welcome/developing" class="vf-navigation__link">Documentation</a>
+          </li>
+          <li class="vf-navigation__item">
+            <a href="https://discord.gg/XHAvkUX" class="vf-navigation__link">Help, chat</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+  </div>
+</header>
+
+
+<section class="Frame-body" data-role="body">
+  
+
+
+    
+    
+
+<div class="Pen" data-behaviour="pen" id="pen-b711c38649665155c7b8b6a9a2eb1177">
+
+  
+
+  <div class="vf-body">
+<header class="vf-grid vf-page-header | vf-u-padding--lg">
+  <h1 class="vf-page-header__heading | vf-text vf-text-heading-2 vf-text--has-tag">
+    Inlay
+    
+
+
+
+<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #E89300; border-color: #E89300;">beta</span>
+
+
+
+
+  </h1>
+</header>
+</div>
+
+
+  <div class="vf-body">
+  <div class="vf-grid">
+    <div>
+
+    
+    
+    
+    
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-b711c38649665155c7b8b6a9a2eb1177">
+      <div class="Preview-wrapper" data-role="resizer-disabled">
+        
+         <iframe
+            class="Preview-iframe"
+            data-role="window"
+            src="../preview/vf-inlay.html"
+            sandbox="allow-same-origin allow-scripts allow-forms"
+
+            marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
+            onload="resizeIframe(this)"
+          >
+        </iframe>
+        <div class="vf-body">
+          <div class="vf-grid">
+            <p class="vf-figure__caption">
+              Open the above preview in a new window:
+              <a href="../preview/vf-inlay.html"><span>With layout</span> Open</a>
+              <a href="../render/vf-inlay.html"><span>Component only</span> Open</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+  </div>
+
+
+  <div class="vf-body">
+  <div class="vf-grid vf-grid__col-1">
+
+    <div class="component-info">
+      
+      <div class="component-library-notes | vf-content">
+      <h1 id="inlay-component">Inlay Component</h1>
+<p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-inlay"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-inlay.svg" alt="npm version"></a></p>
+<h2 id="install">Install</h2>
+<p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>primer-buttons</code> with this command.</p>
+<pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-inlay</span></code></pre><h2 id="usage">Usage</h2>
+<p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-inlay/index.scss"</span>;</code></pre><p><em>Make sure you import any requirements along with the modules.</em></p>
+
+      </div>
+      
+
+      <div class="Pen-panel Pen-info" data-role="info">
+      <div class="">
+
+  
+  <h3 class="vf-text vf-text-heading--4">Component information</h3>
+<ul class="vf-list vf-list--unordered">
+    <li class="vf-list__item">
+        Handle: @vf-inlay
+    </li>
+    
+    <li class="vf-list__item">
+        Filesystem path: components/vf-inlay/vf-inlay.njk
+    </li>
+    
+    <li class="vf-list__item">
+      References (3):
+      
+        <a href="vf-summary--article.html">@vf-summary--article</a>, 
+      
+        <a href="vf-content.html">@vf-content</a>, 
+      
+        <a href="vf-box.html">@vf-box</a>
+      
+    </li>
+    
+    
+</ul>
+
+
+  
+
+<h3 class="vf-text vf-text-heading--4">Code example</h3>
+
+  
+  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-body"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-grid"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-text vf-text--r"</span>&gt;</span>
+                Use this for content that should be set within other content. The design on this page is not stylisitic, but structural.
+            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay vf-u-background-color-ui--off-white vf-u-text-color--grey--dark"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content--full-width"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary vf-summary--article"</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__title"</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__link"</span>&gt;</span>EMBL's top social media posts of 2017 and what we learned from them<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__meta"</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__author vf-summary__link"</span>&gt;</span>Laura Howes<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__date"</span>&gt;</span>06 February 2018<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__link"</span>&gt;</span>Leave Comment<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__text"</span>&gt;</span>I want to take a look back at my first full year as EMBL's social media manager. So what worked best over 2017 and what can I learn from this? My basic goals for VF’s social media are to build community and develop a shared
+                                understanding of who we as an organisation are. Consequently, I care about what resonates on the different social sites much more than driving traffic back to Visual Framework websites, although traffic is obviously a by-product.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content--main"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-content"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"embl-communications-strategy-2018-2020"</span>&gt;</span>EMBL communications strategy 2018-2020<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span>Cian O'Luanaigh, 2 July 2018 at 12:55 pm<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-content__standfirst"</span>&gt;</span>This <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>communications strategy<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> outlines EMBL’s vision, mission and goals. It is intended to support everyone who communicates on behalf of EMBL, within and outside of the organisation, in order to provide aligned
+                                messaging and help EMBL to achieve its goals. The strategy is supported by an operational plan for the Strategy and Communications team.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-content__standfirst"</span>&gt;</span>The plan reflects the priorities defined in the communications strategy and translates them into a set of deliverables and projects managed by the Strategy and Communications team. This documentation will be regularly reviewed
+                                and revised. Your feedback is welcome at any time: please contact EMBL’s Strategy and Communications team.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>This document was last revised 7 March 2018<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"section-1-embls-vision-and-mission"</span>&gt;</span>Section 1: EMBL’s vision and mission<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"embls-vision"</span>&gt;</span>EMBL’s vision<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Enabling scientists worldwide to discover the secrets of life<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"embls-mission"</span>&gt;</span>EMBL’s mission<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Uncovering the molecular basis of life through research<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Providing research infrastructure and services<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Training and inspiring the next generation of scientists<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Driving research, innovation and progress through technology development<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Interactions with industry and technology transfer<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Playing a leading role in the integration of life science research<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"further-examples-of-bullets"</span>&gt;</span>Further examples of bullets<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A bulleted item
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A nested bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A nested bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>A bulleted item<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>What is EMBL?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>EMBL is Europe’s flagship laboratory for the life sciences. We are an intergovernmental organisation established in 1974 and are supported by over 20 member states.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>EMBL performs fundamental research in molecular biology, studying the story of life. We offer services to the scientific community; train the next generation of scientists and strive to integrate the life sciences across Europe.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>We are international, innovative and interdisciplinary. We are more than 1600 people, from over 80 countries, operating across six sites in Barcelona (Spain), Cambridge (UK), Grenoble (France), Hamburg (Germany), Heidelberg
+                                (Germany), and Rome (Italy). Our scientists work in independent groups and conduct research and offer services in all areas of molecular biology.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Our research drives the development of new technology and methods in the life sciences. We work to transfer this knowledge for the benefit of society.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Section 2: EMBL’s goals<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Goal 1: Advancing society<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>The fundamental knowledge that we create, enable and share is immensely valuable to society. Life-science research and services help to address society’s grand challenges, from human health, agriculture, to the environment
+                                and beyond.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>Communications goals:<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Show the impact of our work in tackling society’s big challenges<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Goal 2: Enable excellent science to advance our understanding of life<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>We support scientists worldwide with infrastructure, services, technologies, training and platforms for exchange to carry out the best possible research. We are driven by curiosity about life, the most exciting story in the
+                                universe. We believe that advancing humankind’s understanding of life is a noble goal in itself.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>Communications goals:<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Develop and sustain support for EMBL from important stakeholders<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Attract the best scientists, engineers, technicians and support staff<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Inform scientists about training opportunities and services<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+                            <span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>We are a group of user experience specialists in an international scientific organisation<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Our aim is to help teams design services to meet the needs of their users<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>We believe in openness , transparency, working collaboratively and iteratively, continuously learning and sharing knowledge throughout the organisation<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">cite</span>&gt;</span>EMBl-EBI Web Development UX Team Mission<span class="hljs-tag">&lt;/<span class="hljs-name">cite</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-inlay__content--additional"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  
+
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+  <div class="vf-grid vf-grid__col-3">
+    <div class="vf-grid__col--span-3">
+      <hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+    </div>
+    <div class="vf-grid__col--span-3">
+      
+
+
+<h3 class="vf-text vf-text-heading--4">Resources and files</h3>
+
+<div class="vf-tabs">
+  <ul class="vf-tabs__list" data-vf-js-tabs>
+    <!--<li class="vf-tabs__item">Component files</li>-->
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--d57d735ddd546bfbbea1355c673ba6e4">CHANGELOG.md</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--bb0be499fbc02134ed5d9f66de6d4849">index.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--1397850151f1d8c3c22f364d15664f61">package.json</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--88bb37ea23d3b3a2f1b11589f6ea8f2e">vf-inlay.js</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--d9c75a6aa75f905b39c874df554d5ece">vf-inlay.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--1ea9b0723ee0171e5004ece7d3972e90">vf-inlay.variables.scss</a>
+      </li>
+      
+    
+  </ul>
+</div>
+
+<div class="vf-tabs-content" data-vf-js-tabs-content>
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--d57d735ddd546bfbbea1355c673ba6e4">
+      <div class="FileBrowser-itemPreview">
+        
+        <pre class="vf-code-example__pre">
+          <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
+
+All notable changes to this project will be documented in this file.
+See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
+
+<span class="hljs-section"># 0.1.0</span>
+
+<span class="hljs-section">### Added</span>
+<span class="hljs-bullet">- </span>added this
+<span class="hljs-bullet">- </span>added that
+
+<span class="hljs-section">### Changes</span>
+<span class="hljs-bullet">
+- </span>changed this
+<span class="hljs-bullet">- </span>changed that
+
+<span class="hljs-section">### Removed</span>
+<span class="hljs-bullet">
+- </span>deleted this
+<span class="hljs-bullet">- </span>deleted that
+</code>
+        </pre>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-inlay/CHANGELOG.md">/components/raw/vf-inlay/CHANGELOG.md</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-inlay/CHANGELOG.md
+        </li>
+        <li class="vf-list__item">
+          Size: 300 Bytes
+        </li>
+      </ul>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--bb0be499fbc02134ed5d9f66de6d4849">
+      <div class="FileBrowser-itemPreview">
+        
+        <pre class="vf-code-example__pre">
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
+
+<span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+
+<span class="hljs-comment">// component specific styles</span>
+
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-inlay.variables.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-inlay.scss'</span>;
+
+<span class="hljs-comment">// component variant styles</span>
+</code>
+        </pre>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-inlay/index.scss">/components/raw/vf-inlay/index.scss</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-inlay/index.scss
+        </li>
+        <li class="vf-list__item">
+          Size: 285 Bytes
+        </li>
+      </ul>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--1397850151f1d8c3c22f364d15664f61">
+      <div class="FileBrowser-itemPreview">
+        
+        <pre class="vf-code-example__pre">
+          <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">{
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0-beta.5"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/vf-inlay"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"vf-inlay component"</span>,
+  <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"https://visual-framework.github.io/vf-core"</span>,
+  <span class="hljs-attr">"author"</span>: <span class="hljs-string">"VF"</span>,
+  <span class="hljs-attr">"license"</span>: <span class="hljs-string">"Apache 2.0"</span>,
+  <span class="hljs-attr">"style"</span>: <span class="hljs-string">"vf-inlay.css"</span>,
+  <span class="hljs-attr">"sass"</span>: <span class="hljs-string">"index.scss"</span>,
+  <span class="hljs-attr">"main"</span>: <span class="hljs-string">"build/index.js"</span>,
+  <span class="hljs-attr">"test"</span>: <span class="hljs-string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,
+  <span class="hljs-attr">"publishConfig"</span>: {
+    <span class="hljs-attr">"access"</span>: <span class="hljs-string">"public"</span>
+  },
+  <span class="hljs-attr">"repo"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/tree/master/tree/master/components/vf-inlay"</span>,
+  <span class="hljs-attr">"bugs"</span>: {
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://github.com/visual-framework/vf-core/issues"</span>
+  },
+  <span class="hljs-attr">"keywords"</span>: [
+    <span class="hljs-string">"fractal"</span>,
+    <span class="hljs-string">"component"</span>
+  ],
+  <span class="hljs-attr">"gitHead"</span>: <span class="hljs-string">"7bb3e8605bb5e604a55e7480e8e0d7620cee1b7f"</span>
+}
+</code>
+        </pre>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-inlay/package.json">/components/raw/vf-inlay/package.json</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-inlay/package.json
+        </li>
+        <li class="vf-list__item">
+          Size: 692 Bytes
+        </li>
+      </ul>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--88bb37ea23d3b3a2f1b11589f6ea8f2e">
+      <div class="FileBrowser-itemPreview">
+        
+        <pre class="vf-code-example__pre">
+          <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-inlay</span>
+</code>
+        </pre>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-inlay/vf-inlay.js">/components/raw/vf-inlay/vf-inlay.js</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-inlay/vf-inlay.js
+        </li>
+        <li class="vf-list__item">
+          Size: 12 Bytes
+        </li>
+      </ul>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--d9c75a6aa75f905b39c874df554d5ece">
+      <div class="FileBrowser-itemPreview">
+        
+        <pre class="vf-code-example__pre">
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-inlay.variables.scss'</span>;
+
+<span class="hljs-selector-class">.vf-inlay</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-comment">/* stylelint-disable  declaration-colon-space-after, indentation */</span>
+  grid-template-<span class="hljs-attribute">columns</span>:
+    minmax(var(--page-grid-gap), auto)
+    [main-start]
+      minmax(auto, <span class="hljs-number">76.5em</span>)
+    [main-end]
+    minmax(var(--page-grid-gap), auto)
+  ;
+  <span class="hljs-comment">/* stylelint-enable */</span>
+
+  &amp;:last-of-type {
+    @<span class="hljs-keyword">include</span> margin--block(bottom, <span class="hljs-variable">$vf-inlay__spacing--bottom</span>);
+  }
+
+  <span class="hljs-comment">// overides vf-grid's natural inclination to be full width</span>
+  &amp; <span class="hljs-selector-class">.vf-grid</span> {
+    @<span class="hljs-keyword">media</span> (max-width: 1299px) {
+      grid-column: main;
+    }
+  }
+
+  @<span class="hljs-keyword">media</span> (min-width: 480px) {
+    <span class="hljs-comment">// grid-column: 2 / -2;</span>
+  }
+
+  @<span class="hljs-keyword">media</span> (min-width: 1024px) {
+    --page-grid-gap: <span class="hljs-number">36px</span>;
+  }
+}
+
+<span class="hljs-selector-class">.vf-inlay__content</span> {
+  <span class="hljs-attribute">display</span>: grid;
+  grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
+  <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
+  grid-template-<span class="hljs-attribute">columns</span>:
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+    [main-start]
+      minmax(auto, <span class="hljs-number">100%</span>)
+      minmax(auto, <span class="hljs-number">22.125em</span>)
+    [main-end]
+    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+  ;
+  <span class="hljs-comment">/* stylelint-enable */</span>
+  <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">36px</span>;
+}
+
+<span class="hljs-selector-class">.vf-inlay__content--full-width</span> {
+  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  @<span class="hljs-keyword">include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg));
+}
+
+<span class="hljs-selector-class">.vf-inlay__content--main</span> {
+  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+  <span class="hljs-attribute">padding-right</span>: var(--page-grid-gap);
+
+  @<span class="hljs-keyword">media</span> (min-width: 1100px) {
+    grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
+  }
+  @<span class="hljs-keyword">include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg));
+}
+
+<span class="hljs-selector-class">.vf-inlay__content--additional</span> {
+  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
+
+  @<span class="hljs-keyword">media</span> (min-width: 1100px) {
+    grid-column: <span class="hljs-number">3</span> / <span class="hljs-number">4</span>;
+  }
+}
+</code>
+        </pre>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-inlay/vf-inlay.scss">/components/raw/vf-inlay/vf-inlay.scss</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-inlay/vf-inlay.scss
+        </li>
+        <li class="vf-list__item">
+          Size: 1.6 KB
+        </li>
+      </ul>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--1ea9b0723ee0171e5004ece7d3972e90">
+      <div class="FileBrowser-itemPreview">
+        
+        <pre class="vf-code-example__pre">
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">
+<span class="hljs-comment">// vf-inlay Sass variables file.</span>
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+<span class="hljs-comment">// Default component variables</span>
+<span class="hljs-comment">// ------------------------------------------------------------</span>
+
+
+<span class="hljs-variable">$vf-inlay__spacing--bottom</span>: <span class="hljs-number">100px</span>;
+</code>
+        </pre>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-inlay/vf-inlay.variables.scss">/components/raw/vf-inlay/vf-inlay.variables.scss</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-inlay/vf-inlay.variables.scss
+        </li>
+        <li class="vf-list__item">
+          Size: 295 Bytes
+        </li>
+      </ul>
+    </section>
+    
+  
+</div>
+
+
+
+
+    </div>
+  </div>
+
+</div>
+
+      </div>
+    </div>
+
+    <!-- List all the components at the footer -->
+    
+      
+      <div>
+      
+<a id="components"></a>
+<h1 class="vf-text vf-text-heading--1 vf-text--invert">All the components </h1>
+
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      Grids
+      <a id="grid"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      Put stuff in columns.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-grid.html">Grid</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-grid-page.html">Page Grid</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="">Inlay</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      Elements
+      <a id="element"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      The micro elements of the component library.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-badge.html">Badges</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-blockquote.html">Blockquote</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-button.html">Button</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-componenet-rollup.html">Visual Framework Componet Rollup</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-divider.html">Divider</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-favicon.html">Favicon</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-figure.html">Figure</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-heading.html">Headings</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-link.html">Link</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-list.html">Lists</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-logo.html">Logo</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-no-js.html">No JS</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-text.html">Text</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      Blocks
+      <a id="block"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      Simple components like sections headers, galleries and so on.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-activity-list.html">Activity List</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-article-meta-information.html">Article Meta Information</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-box.html">Box</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-breadcrumbs.html">Breadcrumbs</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-card.html">Card</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-code-example.html">Code Example</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-discussion.html">Discussion</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-font-plex-mono.html">Plex Mono Font</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-font-plex-sans.html">Plex Sans Font</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-footer.html">Footer</a>
+        </p>
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-global-header.html">Global Header</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-lede.html">Lede</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-link-list.html">Links List</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-masthead.html">Masthead</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-navigation.html">Navigation</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-page-header.html">Page Header</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-pagination.html">Pagination</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-search.html">Search</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-section-header.html">Section Header</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-summary.html">Summary</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-tabs.html">Tabs</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-video.html">Video</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-video-teaser.html">Video Teaser</a>
+        </p>
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      Container
+      <a id="container"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      More complex components that sometimes have specific layout, like page intros, mastheads, news sections and so on.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-activity-group.html">Acivity List Group</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-banner.html">Banner</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+              <p class="vf-text">
+                <a class="vf-link--secondary" href="vf-form__core.html">Forms</a>
+              </p>
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-header.html">Site Header</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-intro.html">Intro</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-news-container.html">News Container</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-summary-container.html">Summary Container</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-video-container.html">Video Container</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      Boilerplates
+      <a id="boilerplate"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      Whole-page templates that are a collection of many components.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-boilerplate-page.html">VF Boilerplate</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      Utilities
+      <a id="utility"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      Utility classes to help where neeed.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-content.html">Content</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-design-tokens.html">Design Tokens</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-sass-config.html">Sass config</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-sass-utilities.html">Sass utilities</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-utility-classes.html">Utility classes</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      EMBL Grids
+      <a id="embl-grid"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      EMBLs way to put stuff in columns.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="embl-grid.html">EMBL Grid</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      EMBL Elements
+      <a id="embl-element"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      EMBLs micro elements of the component library.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="embl-conditional-edit.html">EMBL Conditional Edit</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="embl-logo.html">EMBL Logo</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      EMBL Blocks
+      <a id="embl-block"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      Simple components from EMBL like sections headers, galleries and so on.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="embl-breadcrumbs-lookup.html">EMBL Breadcrumbs</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="embl-content-meta-properties.html">EMBL Content meta properties</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      EMBL Containers
+      <a id="embl-container"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      More complex EMBL components that sometimes have specific layout, like page intros, mastheads, news sections and so on.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="embl-content-hub-loader.html">EMBL ContentHub Loader</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      EMBL Boilerplates
+      <a id="embl-boilerplate"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      Whole-page templates that are a collection of many components.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="embl-subsite-page.html">EMBL Subsite</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+
+<section class="vf-grid">
+  <section data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5">
+      Deprecated
+      <a id="deprecated"></a>
+    </h4>
+    <p class="vf-text--body vf-text-body--3">
+      These components are no longer maintained.
+    </p>
+  </section>
+  <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-deprecated.html">Deprecated pattern</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
+      
+  </section>
+</section>
+<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+
+
+      </div>
+    
+  </div>
+</div>
+
+
+  
+
+</div>
+
+
+</section>
+
+
+
+<!--<script src="../../themes/vf-frctl-theme/js/vf-frctl-theme.js?cachebust=0.0.1"></script>-->
+
+
+<script src="https://dev.assets.emblstatic.net/vf/develop/scripts/scripts.js"></script>
+
+
+<script>
+  var resizeIframeChecks = 0;
+  function resizeIframe(obj) {
+    var obj = obj || document.getElementsByClassName("Preview-iframe")[0];
+    var newHeight = obj.contentWindow.document.body.scrollHeight;
+    if (newHeight < 10) {
+      if (resizeIframeChecks < 2) {
+        // if less than 10px high, that's weird check again. maybe some JS is at play?
+        setTimeout(resizeIframe, 1000);
+        resizeIframeChecks ++;
+      }
+    } else {
+      obj.style.height = newHeight + 'px';
+    }
+  }
+</script>
+
+</body>
+</html>

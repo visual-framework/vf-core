@@ -1,0 +1,42 @@
+// vf-utility-classes
+.vf-u-background-color {
+  @include color-modifiers($attribute: 'background-color');
+}
+.vf-u-background-color-ui {
+  @include ui-color-modifiers($attribute: 'background-color');
+}
+
+.vf-u-border-color {
+  @include color-modifiers($attribute: 'border-color');
+}
+.vf-u-border-color-ui {
+  @include ui-color-modifiers($attribute: 'border-color');
+}
+
+.vf-u-margin {
+  @include spacing-modifiers(margin);
+}
+
+.vf-u-padding {
+  @include spacing-modifiers;
+}
+
+.vf-u-text-color {
+  @include color-modifiers;
+}
+.vf-u-text-color--ui {
+  @include ui-color-modifiers;
+}
+
+.vf-u-type {
+  @include type-modifiers;
+}
+
+// Sometimes content needs to escape a grid container, for example full-width content inside of `.vf-body`
+.vf-u-grid--reset {
+  grid-column: 1 / -1;
+}
+
+.vf-u-display-none {
+  display: none;
+}

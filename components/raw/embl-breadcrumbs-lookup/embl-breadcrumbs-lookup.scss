@@ -1,0 +1,27 @@
+// embl-breadcrumbs-lookup
+
+.embl-grid .embl-breadcrumbs-lookup:first-child {
+  // .embl-grid's frist-child property brings higher specificity
+  // it also has a margin bottom, so we don't need the .vf-breadcrumbs margin
+  grid-column: 1/-1;
+  margin-bottom: 0;
+}
+
+.embl-breadcrumbs-lookup--ghosting {
+  animation: embl-breadcrumbs-lookup-ghosting-animation 4s ease-in-out infinite alternate;
+  background: 50% top / 15% 60% linear-gradient(90deg, set-ui-color(vf-ui-color--grey--light) 0%, set-ui-color(vf-ui-color--grey) 30%, set-ui-color(vf-ui-color--grey) 50%, set-ui-color(vf-ui-color--grey--light) 100%);
+  display: block;
+  filter: blur(1rem);
+  height: 17px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  mask-border: url('../assets/embl-breadcrumbs-lookup/assets/embl-breadcrumbs-lookup-ghost.svg') stretch;
+  max-width: 60rem;
+  width: 100%;
+}
+
+@keyframes embl-breadcrumbs-lookup-ghosting-animation {
+  to {
+    background-position: 100%;
+  }
+}
