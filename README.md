@@ -1,8 +1,7 @@
----
 
 **👋 Downloading or cloning this repo? 🛑**
 
-Most won't need to clone this repo. Do so if you only wish to develop the architecture of the Visual Framework core or contribute a global component, otherwise [use one of the boilerplates or install a component directly](https://visual-framework.github.io/vf-welcome/).
+Most won't need to clone this repo. Do so if you only wish to [develop the architecture](https://visual-framework.github.io/vf-welcome/developing/) of the Visual Framework core or contribute a global component, otherwise [use one of the boilerplates or install a component directly](https://visual-framework.github.io/vf-welcome/). 
 
 ---
 
@@ -27,54 +26,19 @@ In short: The VF Core is a base to build systems.
 
 ## Making use of the VF Core
 
-The VF Core is a pre-assembled manufacturing line for your websites and design systems. It takes in Visual Framework components and gives compiled CSS, JS and templates.
-
-For most developers it’s best to `npm install`* VF Core and connect it to VF components or use a pre-rolled boilerplate. (* We actually recommend `yarn` for the Visual Framework, but `npm` is better known so we’ve used it for this article.)
-
-In late July we entered the beta phase for `vf-core`, and so we’re ready for others to begin making use of it — and here’s a few ways you might do so:
-
-- **Add VF components using npm** Status: RC<br/>
-  Pull VF components directly into your existing tooling at `some-kind-of-sample-site`. This approach gets you a components Sass, JS, template and any other assets and lets you build what you need.
-  -  `yarn add @visual-framework/vf-sass-config @visual-framework/vf-inlay`
-- **A pre-made boilerplate using VF components** Status: BETA<br/>
-  Uses the performant [11ty](#link) as a static site generator to build sites with VF components. This approach pre-integrates the VF Core, giving you easy access to component assets and a rollup build process to generate compiled CSS and JS.
-  -  [`vf-eleventy`](https://github.com/visual-framework/vf-eleventy): `yarn create @visual-framework/vf-eleventy your-new-site-name`
-- **Build a design system using VF components** Status: ALPHA<br/>
-  Extends`vf-eleventy`to document your design system, create+document components, patterns and boilerplates. You can also generate static CSS and JS assets for simple use elsewhere in vanilla HTML+CSS+JS pages.
-  -  [`vf-demo-design-system`](https://github.com/visual-framework/vf-demo-design-system): `yarn create @visual-framework/vf-eleventy your-new-site-name vf-demo-design-system`
-- **WordPress theme** Status: PRE-ALPHA PROOF OF CONCEPT<br/>
-  Build a WordPress site using VF components. We don’t have code that’s ready to share yer, but this is on our ideas and tools plans.
-- **React boilerplate** Status: PRE-ALPHA PROOF OF CONCEPT<br/>
-  A demonstration React-based project using VF components.
+[Here's a guide with the most common approaches](https://visual-framework.github.io/vf-welcome/building/).
 
 ## FAQ
 
-### Is VF Core just a Bootstrap with a different theme?
+[Here's a guide to the most common questions](https://visual-framework.github.io/vf-welcome/#faq).
 
-No. VF Core is an architecture to build extensible components that contain CSS/Sass, JS, Nunjuck templates, and image assets. You could use the VF Core to make a Bootstrap-style framework.   
+## Have a problem?
 
-### I’m a small research team, should I use VF Core?
+See the [troubleshooting guide](https://visual-framework.github.io/vf-welcome/troubleshooting).
 
-Yes, utilise the Visual Framework system with one of the above listed approaches.
+## Want to help develop?
 
-### Does it have a specific look and feel?
-
-No. It has a default look out of the box, but it is fully customisable by altering the [Design Tokens](https://github.com/visual-framework/vf-core/tree/develop/components/vf-design-tokens/src).
-
-### Is it really ready for use today?
-
-Stable for your non-production development. We're in a beta phase and things are still subject to change, but there should be few breaking changes and we'll offer guidance on updating between betas.
-
-### Shouldn’t I just use Bootstrap or Solution X?
-
-No, but yes … do both.
-
-This question is more about the general approach of the Visual Framework architecture, but the VF Core is designed to address common issues with component portability in the life science space …
-and use bootstrap too
-
-## What’s next
-
-Efforts in the next few months will be extending and stabilising the above projects and further stabilising [`vf-core`](#link-to-beta.2-issues).
+Great. See the [development guide](https://visual-framework.github.io/vf-welcome/developing/).
 
 ---
 
