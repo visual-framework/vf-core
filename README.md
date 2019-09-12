@@ -24,6 +24,18 @@ In short: The VF Core is a base to build systems.
 
 *Here’s that column metaphor translates as a schematic of relationships for VF Core.*
 
+The `vf-core` is built with:
+
+- [Fractal](https://fractal.build/) for component structure
+- Node and Gulp to build Sass; to:
+    - rollup JavaScript and handle assets
+    - allow custom components to be added to local projects
+- [Yeoman](https://yeoman.io/) to make custom components interactively 
+- [Yarn](https://yarnpkg.com/) to install components
+- [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) for component templates
+- [Lerna](https://lerna.js.org/) to publish components to npm as a [mono-repo](https://gomonorepo.org/)
+- Name-spacing for JavaScript and CSS; more on that in [the coding standards](https://visual-framework.github.io/vf-welcome/developing/#guidelines)
+
 ## Making use of the VF Core
 
 [Here's a guide with the most common approaches](https://visual-framework.github.io/vf-welcome/building/).
