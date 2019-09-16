@@ -248,7 +248,9 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         includePaths: sassPaths,
         outputStyle: 'expanded'
       })
-      .on('error', sass.logError))
+      .on('error', function(e){
+        console.log('Couldn\'t find a component dependency, the per-component CSS won\'t be generated for this', e.message);
+      }))
       .pipe(autoprefixer(autoprefixerOptions))
       .pipe(rename(file_name))
       .pipe(gulp.dest(option.dir));
