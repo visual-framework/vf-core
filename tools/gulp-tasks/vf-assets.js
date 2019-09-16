@@ -8,6 +8,9 @@
 module.exports = function(gulp, path, componentPath, buildDestionation) {
   const svgmin = require('gulp-svgmin');
 
+  // Utility task to minify SVGs
+  // After running you should check the quality differences of an SVG, and the
+  // filesize savings.
   gulp.task('vf-svg', () => {
     return gulp
       .src(componentPath + '/**/*.svg')
