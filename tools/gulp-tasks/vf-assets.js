@@ -15,11 +15,23 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
       .pipe(gulp.dest(componentPath));
   });
 
-  gulp.task('vf-component-assets', function() {
+  // make each component's `./assets` directory available
+  gulp.task('vf-component-assets:directory', function() {
     return gulp
       .src([componentPath + '/vf-core-components/**/assets/**/*', componentPath + '/**/assets/**/*'])
       .pipe(gulp.dest(buildDestionation + '/assets'));
   });
+
+  // make each component's `./vf-component.css` compiled CSS available
+  gulp.task('vf-component-assets:compiled-css', function() {
+    return gulp
+      .src([componentPath + '/vf-core-components/**/*.css', componentPath + '/**/*.css'])
+      .pipe(gulp.dest(buildDestionation + '/assets'));
+  });
+
+  gulp.task('vf-component-assets', gulp.parallel(
+    'vf-component-assets:directory', 'vf-component-assets:compiled-css'
+  ));
 
   return gulp;
 };
