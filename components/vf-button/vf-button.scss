@@ -10,22 +10,27 @@
   margin: 0;
   padding: 12px;
   text-decoration: none;
-  transition: .01s ease-in-out;
+  transition: all 100ms ease-in-out;
+
+  &:hover {
+    @include vf-slide-on-hover(4px, 'down');
+    transition: all 100ms ease-in-out;
+  }
 }
 
 .vf-button--primary {
-  @include button-link($vf-link--color, $vf-link--hover-color);
+  @include button-link();
 
   box-shadow: 0px 6px 0px 0px $vf-link--hover-color;
   margin-bottom: 6px; // because we're using box-shadow we need to 'create the space' again
 
   &:hover {
     box-shadow: 0px 2px 0px 0px $vf-link--hover-color;
-    @include vf-slide-on-hover(4px, 'down');
+
   }
 }
 
-.vf-text-button--secondary {
+.vf-button--secondary {
   @include button-link($vf-link--color: set-color(vf-color--green), $vf-link--hover-color: set-color(vf-color--green--dark));
 
   box-shadow: 0px 6px 0px 0px set-color(vf-color--green--dark);
@@ -33,7 +38,6 @@
 
   &:hover {
     box-shadow: 0px 2px 0px 0px set-color(vf-color--green--dark);
-    @include vf-slide-on-hover(4px, 'down');
   }
 }
 
@@ -45,7 +49,6 @@
 
   &:hover {
     box-shadow: 0px 2px 0px 0px set-color(vf-color--grey);
-    @include vf-slide-on-hover(4px, 'down');
   }
 }
 
@@ -55,12 +58,12 @@
     @include button-link--ghost;
   }
 
-  &.vf-text-button--secondary {
-    @include button-link--ghost($vf-link--color: set-color(vf-color--green), $vf-link--hover-color: set-color(vf-color--green--dark));
+  &.vf-button--secondary {
+    @include button-link--ghost( $vf-link--color: set-color(vf-color--green) );
   }
 
   &.vf-button--tertiary {
-    @include button-link--ghost($vf-link--color: set-color(vf-color--grey--dark), $vf-link--hover-color: set-color(vf-color--grey));
+    @include button-link--ghost( $vf-link--color: set-color(vf-color--grey--dark) );
   }
 }
 
@@ -72,19 +75,63 @@
   border-radius: $vf-radius--md;
 }
 
-.vf-text-button--2 {
+.vf-button--sm {
   @include set-type(text-button--2);
 
   padding: 8px;
   // @include padding(all, map-get($vf-spacing-map, vf-spacing--sm));
 
-  &.vf-text-button--rounded {
+  &.vf-button--rounded {
     border-radius: 8px;
   }
 }
 
-.vf-text-button--1 {
+.vf-button--lg {
   @include set-type(text-button--1);
 
   padding: 16px;
 }
+
+// Begin deprecated classes and styles
+html:not(.vf-disable-deprecated) {
+
+  // Deprecated in 1.0.0-beta.7
+  // Will be removed in vf-button v2.0
+  .vf-text-button--secondary {
+    @include button-link($vf-link--color: set-color(vf-color--green), $vf-link--hover-color: set-color(vf-color--green--dark));
+  
+    box-shadow: 0px 6px 0px 0px set-color(vf-color--green--dark);
+    margin-bottom: 6px; // because we're using box-shadow we need to 'create the space' again
+  
+    &:hover {
+      box-shadow: 0px 2px 0px 0px set-color(vf-color--green--dark);
+    }
+  }
+
+  // Deprecated in 1.0.0-beta.7
+  // Will be removed in vf-button v2.0
+  .vf--button--outline.vf-text--button--secondary {
+    @include button-link--ghost( $vf-link--color: set-color(vf-color--green) );
+  }
+
+  // Deprecated in 1.0.0-beta.7
+  // Will be removed in vf-button v2.0
+  .vf-text-button--2 {
+    @include set-type(text-button--2);
+    padding: 8px;
+  
+    &.vf-text-button--rounded {
+      border-radius: 8px;
+    }
+  }
+
+  // Deprecated in 1.0.0-beta.7
+  // Will be removed in vf-button v2.0
+  .vf-text-button--1 {
+    @include set-type(text-button--1);
+  
+    padding: 16px;
+  }
+  
+}
+// End deprecated
