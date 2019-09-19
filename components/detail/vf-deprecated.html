@@ -148,7 +148,7 @@ class="vf-logo">
 <p>This component demonstrates a deprecated component.</p>
 <ul>
 <li>See the contents of <code>vf-deprecated.config.yml</code></li>
-<li><a href="../../docs/contributing/deprecating-components">See the documentation</a>.</li>
+<li><a href="https://visual-framework.github.io/vf-welcome/developing/components/deprecating-components/">See the documentation</a>.</li>
 </ul>
 
       </div>
@@ -436,22 +436,19 @@ Initial demonstration.
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-deprecated</span>
 
-<span class="hljs-comment">// **Thinking about deleting this file?**</span>
-<span class="hljs-comment">// If your component needs no CSS/Sass, we still recommend leaving the</span>
-<span class="hljs-comment">// scss files in place. As this is primarily a CSS framework, it is better to</span>
-<span class="hljs-comment">// leave the empty files so you know a file wasn't accidently omitted.</span>
-<span class="hljs-comment">// If you don't have any Sass, you can trim this block down to:</span>
-<span class="hljs-comment">// "This page was intentionally left blank"</span>
-
 <span class="hljs-comment">// @import 'vf-deprecated.variables.scss';</span>
 
+<span class="hljs-comment">// Begin deprecated classes and styles</span>
 <span class="hljs-selector-tag">html</span>:not(<span class="hljs-selector-class">.vf-disable-deprecated</span>) {
 
+  <span class="hljs-comment">// Deprecated in 1.0.0-beta.7</span>
+  <span class="hljs-comment">// Will be removed in v2.0</span>
   <span class="hljs-selector-class">.vf-deprecated</span>::before {
     <span class="hljs-attribute">content</span>: <span class="hljs-string">'CSS `:before` content and custom rules that can be conditionally disabled with a parent `.vf-disable-deprecated` selector.'</span>;
   }
 
 }
+<span class="hljs-comment">// End deprecated </span>
 </code>
         </pre>
         
@@ -467,7 +464,7 @@ Initial demonstration.
           Filesystem path: components/vf-deprecated/vf-deprecated.scss
         </li>
         <li class="vf-list__item">
-          Size: 642 Bytes
+          Size: 390 Bytes
         </li>
       </ul>
     </section>

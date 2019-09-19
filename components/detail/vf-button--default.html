@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Button: Default component | Visual Framework 2.0</title>
+  <title>Button: Primary component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -81,7 +81,7 @@ class="vf-logo">
   <div class="vf-body">
 <header class="vf-grid vf-page-header | vf-u-padding--lg">
   <h1 class="vf-page-header__heading | vf-text vf-text-heading-2 vf-text--has-tag">
-    Button: Default
+    Button: Primary
     
 
 
@@ -113,18 +113,8 @@ class="vf-logo">
 
               
                 <a class="vf-tabs__link is-active" href="#is-active">
-                  Default
+                  Primary
                 </a>
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-button--primary.html">
-                    Primary
-                  </a>
-                 
                
 
             
@@ -296,7 +286,7 @@ class="vf-logo">
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-button "</span>&gt;</span>alpha<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-button vf-button--primary"</span>&gt;</span>a primary button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
   
 
@@ -356,7 +346,10 @@ class="vf-logo">
 
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
-</code>
+
+<span class="hljs-section"># 1.0.0-beta.7</span>
+<span class="hljs-bullet">
+- </span>Some vf-button classes have been deprecated. [<span class="hljs-string">#568</span>](<span class="hljs-link">https://github.com/visual-framework/vf-core/pull/568</span>)</code>
         </pre>
         
       </div>
@@ -371,7 +364,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-button/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 166 Bytes
+          Size: 290 Bytes
         </li>
       </ul>
     </section>
@@ -481,22 +474,27 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
   <span class="hljs-attribute">text-decoration</span>: none;
-  <span class="hljs-attribute">transition</span>: .<span class="hljs-number">01s</span> ease-in-out;
+  <span class="hljs-attribute">transition</span>: all <span class="hljs-number">100ms</span> ease-in-out;
+
+  &amp;:hover {
+    @<span class="hljs-keyword">include</span> vf-slide-on-hover(<span class="hljs-number">4px</span>, <span class="hljs-string">'down'</span>);
+    <span class="hljs-attribute">transition</span>: all <span class="hljs-number">100ms</span> ease-in-out;
+  }
 }
 
 <span class="hljs-selector-class">.vf-button--primary</span> {
-  @<span class="hljs-keyword">include</span> button-link(<span class="hljs-variable">$vf-link--color</span>, <span class="hljs-variable">$vf-link--hover-color</span>);
+  @<span class="hljs-keyword">include</span> button-link();
 
   <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">6px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-variable">$vf-link--hover-color</span>;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">6px</span>; <span class="hljs-comment">// because we're using box-shadow we need to 'create the space' again</span>
 
   &amp;:hover {
     <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">2px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-variable">$vf-link--hover-color</span>;
-    @<span class="hljs-keyword">include</span> vf-slide-on-hover(<span class="hljs-number">4px</span>, <span class="hljs-string">'down'</span>);
+
   }
 }
 
-<span class="hljs-selector-class">.vf-text-button--secondary</span> {
+<span class="hljs-selector-class">.vf-button--secondary</span> {
   @<span class="hljs-keyword">include</span> button-link(<span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--green), <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--green--dark));
 
   <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">6px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--green--dark);
@@ -504,7 +502,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   &amp;:hover {
     <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">2px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--green--dark);
-    @<span class="hljs-keyword">include</span> vf-slide-on-hover(<span class="hljs-number">4px</span>, <span class="hljs-string">'down'</span>);
   }
 }
 
@@ -516,7 +513,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   &amp;:hover {
     <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">2px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--grey);
-    @<span class="hljs-keyword">include</span> vf-slide-on-hover(<span class="hljs-number">4px</span>, <span class="hljs-string">'down'</span>);
   }
 }
 
@@ -526,12 +522,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     @<span class="hljs-keyword">include</span> button-link--ghost;
   }
 
-  &amp;<span class="hljs-selector-class">.vf-text-button--secondary</span> {
-    @<span class="hljs-keyword">include</span> button-link--ghost(<span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--green), <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--green--dark));
+  &amp;<span class="hljs-selector-class">.vf-button--secondary</span> {
+    @<span class="hljs-keyword">include</span> button-link--ghost( <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--green) );
   }
 
   &amp;<span class="hljs-selector-class">.vf-button--tertiary</span> {
-    @<span class="hljs-keyword">include</span> button-link--ghost(<span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--grey--dark), <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--grey));
+    @<span class="hljs-keyword">include</span> button-link--ghost( <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--grey--dark) );
   }
 }
 
@@ -543,23 +539,66 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$vf-radius--md</span>;
 }
 
-<span class="hljs-selector-class">.vf-text-button--2</span> {
+<span class="hljs-selector-class">.vf-button--sm</span> {
   @<span class="hljs-keyword">include</span> set-type(text-button--<span class="hljs-number">2</span>);
 
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span>;
   <span class="hljs-comment">// @include padding(all, map-get($vf-spacing-map, vf-spacing--sm));</span>
 
-  &amp;<span class="hljs-selector-class">.vf-text-button--rounded</span> {
+  &amp;<span class="hljs-selector-class">.vf-button--rounded</span> {
     <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
   }
 }
 
-<span class="hljs-selector-class">.vf-text-button--1</span> {
+<span class="hljs-selector-class">.vf-button--lg</span> {
   @<span class="hljs-keyword">include</span> set-type(text-button--<span class="hljs-number">1</span>);
 
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
 }
-</code>
+
+<span class="hljs-comment">// Begin deprecated classes and styles</span>
+<span class="hljs-selector-tag">html</span>:not(<span class="hljs-selector-class">.vf-disable-deprecated</span>) {
+
+  <span class="hljs-comment">// Deprecated in 1.0.0-beta.7</span>
+  <span class="hljs-comment">// Will be removed in vf-button v2.0</span>
+  <span class="hljs-selector-class">.vf-text-button--secondary</span> {
+    @<span class="hljs-keyword">include</span> button-link(<span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--green), <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--green--dark));
+  
+    <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">6px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--green--dark);
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">6px</span>; <span class="hljs-comment">// because we're using box-shadow we need to 'create the space' again</span>
+  
+    &amp;:hover {
+      <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">2px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--green--dark);
+    }
+  }
+
+  <span class="hljs-comment">// Deprecated in 1.0.0-beta.7</span>
+  <span class="hljs-comment">// Will be removed in vf-button v2.0</span>
+  <span class="hljs-selector-class">.vf--button--outline</span><span class="hljs-selector-class">.vf-text--button--secondary</span> {
+    @<span class="hljs-keyword">include</span> button-link--ghost( <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--green) );
+  }
+
+  <span class="hljs-comment">// Deprecated in 1.0.0-beta.7</span>
+  <span class="hljs-comment">// Will be removed in vf-button v2.0</span>
+  <span class="hljs-selector-class">.vf-text-button--2</span> {
+    @<span class="hljs-keyword">include</span> set-type(text-button--<span class="hljs-number">2</span>);
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span>;
+  
+    &amp;<span class="hljs-selector-class">.vf-text-button--rounded</span> {
+      <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
+    }
+  }
+
+  <span class="hljs-comment">// Deprecated in 1.0.0-beta.7</span>
+  <span class="hljs-comment">// Will be removed in vf-button v2.0</span>
+  <span class="hljs-selector-class">.vf-text-button--1</span> {
+    @<span class="hljs-keyword">include</span> set-type(text-button--<span class="hljs-number">1</span>);
+  
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
+  }
+  
+}
+<span class="hljs-comment">// End deprecated</span></code>
         </pre>
         
       </div>
@@ -574,7 +613,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-button/vf-button.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.3 KB
+          Size: 3.3 KB
         </li>
       </ul>
     </section>

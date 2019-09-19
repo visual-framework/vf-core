@@ -53,8 +53,30 @@
   margin: 0;
   padding: 12px;
   text-decoration: none;
-  -webkit-transition: .01s ease-in-out;
-  transition: .01s ease-in-out;
+  -webkit-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+}
+
+.vf-button:hover {
+  -webkit-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+}
+
+.vf-button:hover:hover {
+  position: relative;
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+}
+
+.vf-button:hover:hover:after {
+  content: '';
+  height: calc(100% + 4px + 2px);
+  left: -.05%;
+  position: absolute;
+  width: 101%;
+  z-index: -1;
+  bottom: 0;
+  top: calc(-4px - 2px);
 }
 
 .vf-button--primary {
@@ -81,24 +103,7 @@
           box-shadow: 0px 2px 0px 0px #003da5;
 }
 
-.vf-button--primary:hover:hover {
-  position: relative;
-  -webkit-transform: translateY(4px);
-          transform: translateY(4px);
-}
-
-.vf-button--primary:hover:hover:after {
-  content: '';
-  height: calc(100% + 4px + 2px);
-  left: -.05%;
-  position: absolute;
-  width: 101%;
-  z-index: -1;
-  bottom: 0;
-  top: calc(-4px - 2px);
-}
-
-.vf-text-button--secondary {
+.vf-button--secondary {
   background-color: #009f4d;
   border: 2px solid #009f4d;
   color: #ffffff;
@@ -107,36 +112,19 @@
   margin-bottom: 6px;
 }
 
-.vf-text-button--secondary:visited {
+.vf-button--secondary:visited {
   background-color: #54585a;
   border-color: #54585a;
 }
 
-.vf-text-button--secondary:hover {
+.vf-button--secondary:hover {
   background-color: #007a53;
   border-color: #007a53;
 }
 
-.vf-text-button--secondary:hover {
+.vf-button--secondary:hover {
   -webkit-box-shadow: 0px 2px 0px 0px #007a53;
           box-shadow: 0px 2px 0px 0px #007a53;
-}
-
-.vf-text-button--secondary:hover:hover {
-  position: relative;
-  -webkit-transform: translateY(4px);
-          transform: translateY(4px);
-}
-
-.vf-text-button--secondary:hover:hover:after {
-  content: '';
-  height: calc(100% + 4px + 2px);
-  left: -.05%;
-  position: absolute;
-  width: 101%;
-  z-index: -1;
-  bottom: 0;
-  top: calc(-4px - 2px);
 }
 
 .vf-button--tertiary {
@@ -163,23 +151,6 @@
           box-shadow: 0px 2px 0px 0px #707372;
 }
 
-.vf-button--tertiary:hover:hover {
-  position: relative;
-  -webkit-transform: translateY(4px);
-          transform: translateY(4px);
-}
-
-.vf-button--tertiary:hover:hover:after {
-  content: '';
-  height: calc(100% + 4px + 2px);
-  left: -.05%;
-  position: absolute;
-  width: 101%;
-  z-index: -1;
-  bottom: 0;
-  top: calc(-4px - 2px);
-}
-
 .vf-button--outline.vf-button--primary {
   background-color: #ffffff;
   color: #307fe2;
@@ -190,23 +161,13 @@
   color: #ffffff;
 }
 
-.vf-button--outline.vf-button--primary:hover {
-  background-color: #003da5;
-  color: #ffffff;
-}
-
-.vf-button--outline.vf-text-button--secondary {
+.vf-button--outline.vf-button--secondary {
   background-color: #ffffff;
   color: #009f4d;
 }
 
-.vf-button--outline.vf-text-button--secondary:visited {
+.vf-button--outline.vf-button--secondary:visited {
   background-color: #54585a;
-  color: #ffffff;
-}
-
-.vf-button--outline.vf-text-button--secondary:hover {
-  background-color: #007a53;
   color: #ffffff;
 }
 
@@ -220,11 +181,6 @@
   color: #ffffff;
 }
 
-.vf-button--outline.vf-button--tertiary:hover {
-  background-color: #707372;
-  color: #ffffff;
-}
-
 .vf-button--pill {
   border-radius: 500px;
 }
@@ -233,7 +189,7 @@
   border-radius: 16px;
 }
 
-.vf-text-button--2 {
+.vf-button--sm {
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -241,11 +197,65 @@
   padding: 8px;
 }
 
-.vf-text-button--2.vf-text-button--rounded {
+.vf-button--sm.vf-button--rounded {
   border-radius: 8px;
 }
 
-.vf-text-button--1 {
+.vf-button--lg {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 16px;
+}
+
+html:not(.vf-disable-deprecated) .vf-text-button--secondary {
+  background-color: #009f4d;
+  border: 2px solid #009f4d;
+  color: #ffffff;
+  -webkit-box-shadow: 0px 6px 0px 0px #007a53;
+          box-shadow: 0px 6px 0px 0px #007a53;
+  margin-bottom: 6px;
+}
+
+html:not(.vf-disable-deprecated) .vf-text-button--secondary:visited {
+  background-color: #54585a;
+  border-color: #54585a;
+}
+
+html:not(.vf-disable-deprecated) .vf-text-button--secondary:hover {
+  background-color: #007a53;
+  border-color: #007a53;
+}
+
+html:not(.vf-disable-deprecated) .vf-text-button--secondary:hover {
+  -webkit-box-shadow: 0px 2px 0px 0px #007a53;
+          box-shadow: 0px 2px 0px 0px #007a53;
+}
+
+html:not(.vf-disable-deprecated) .vf--button--outline.vf-text--button--secondary {
+  background-color: #ffffff;
+  color: #009f4d;
+}
+
+html:not(.vf-disable-deprecated) .vf--button--outline.vf-text--button--secondary:visited {
+  background-color: #54585a;
+  color: #ffffff;
+}
+
+html:not(.vf-disable-deprecated) .vf-text-button--2 {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 8px;
+}
+
+html:not(.vf-disable-deprecated) .vf-text-button--2.vf-text-button--rounded {
+  border-radius: 8px;
+}
+
+html:not(.vf-disable-deprecated) .vf-text-button--1 {
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
   font-size: 24px;
   font-weight: 700;
