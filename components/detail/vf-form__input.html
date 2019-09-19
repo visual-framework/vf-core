@@ -395,6 +395,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-form__input</span>
 
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-comment">// Debug information from component's `package.json`:</span>
+<span class="hljs-comment">// ---</span>
+<span class="hljs-comment">/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */</span>
+
 <span class="hljs-selector-class">.vf-form__input</span>:not(<span class="hljs-selector-attr">[type='file']</span>) {
   @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">3</span>);
 
@@ -556,7 +565,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-form/vf-form__input/vf-form__input.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.4 KB
+          Size: 3.7 KB
         </li>
       </ul>
     </section>

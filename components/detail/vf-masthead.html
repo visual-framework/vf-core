@@ -670,8 +670,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">// vf-masthead</span>
 
-<span class="hljs-selector-class">.vf-masthead</span> {
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-comment">// Debug information from component's `package.json`:</span>
+<span class="hljs-comment">// ---</span>
+<span class="hljs-comment">/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */</span>
 
+<span class="hljs-selector-class">.vf-masthead</span> {
   --vf-masthead__color--foreround-default: var(--vf-ui-color--white);
   --vf-masthead__color--<span class="hljs-attribute">background</span>-default: var(--vf-color--green);
 
@@ -693,13 +701,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 }
 
-
 <span class="hljs-selector-class">.vf-masthead__title</span> {
   <span class="hljs-attribute">align-self</span>: unset;
   <span class="hljs-attribute">display</span>: inline-flex;
   <span class="hljs-attribute">flex-direction</span>: column-reverse;
 }
-
 
 <span class="hljs-selector-class">.vf-masthead__heading</span> {
   @<span class="hljs-keyword">include</span> set-type(text-heading--<span class="hljs-number">1</span>, <span class="hljs-variable">$custom-margin-bottom</span>: 8px);
@@ -743,7 +749,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">text-decoration</span>: none;
   <span class="hljs-attribute">z-index</span>: set-layer(vf-z-index--masthead);
 }
-
 
 <span class="hljs-selector-class">.vf-masthead--with-title-block</span> {
 
@@ -848,7 +853,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-masthead/vf-masthead.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.8 KB
+          Size: 4.1 KB
         </li>
       </ul>
     </section>

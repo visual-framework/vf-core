@@ -389,11 +389,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-video-teaser</span>
 
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-comment">// Debug information from component's `package.json`:</span>
+<span class="hljs-comment">// ---</span>
+<span class="hljs-comment">/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */</span>
+
 <span class="hljs-selector-class">.vf-video-teaser__image</span> {
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
 }
-
 
 <span class="hljs-selector-class">.vf-video-teaser__title</span> {
   @<span class="hljs-keyword">include</span> set-type(text-heading--<span class="hljs-number">3</span>);
@@ -414,7 +422,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-video-teaser/vf-video-teaser.scss
         </li>
         <li class="vf-list__item">
-          Size: 179 Bytes
+          Size: 433 Bytes
         </li>
       </ul>
     </section>

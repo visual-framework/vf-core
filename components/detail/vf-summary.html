@@ -1203,9 +1203,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <div class="FileBrowser-itemPreview">
         
         <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary.variables.scss'</span>;
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-summary</span>
 
-<span class="hljs-comment">// vf-summary</span>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-comment">// Debug information from component's `package.json`:</span>
+<span class="hljs-comment">// ---</span>
+<span class="hljs-comment">/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */</span>
+
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary.variables.scss'</span>;
+
 <span class="hljs-selector-class">.vf-summary</span> {
   <span class="hljs-attribute">align-self</span>: start;
   <span class="hljs-attribute">display</span>: grid;
@@ -1319,7 +1329,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-summary/vf-summary.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.9 KB
+          Size: 2.1 KB
         </li>
       </ul>
     </section>
