@@ -52,15 +52,15 @@
   @include set-type(text-button--1);
 
   appearance: none;
-  background-color: #000;
+  background-color: set-ui-color(vf-ui-color--black);
   background-color: var(--vf-button-background-color, var(--default-bg-colour));
-  border: 4px solid #000;
+  border: 4px solid set-ui-color(vf-ui-color--black);
   border: 4px solid var(--vf-button-border-color, var(--default-bg-colour));
-  color: var(--vf-button-text-color, #fff);
+  color: var(--vf-button-text-color, set-ui-color(vf-ui-color--white));
   cursor: pointer;
   display: inline-block;
-  margin: 0 16px 16px 0;
   left: 6px;
+  margin: 0 16px 16px 0;
   outline: 0;
   padding: 12px 24px;
   position: relative;
@@ -72,11 +72,11 @@
   transition: all linear 50ms;
 
   &::before {
-    background-color: #000;
+    background-color: set-ui-color(vf-ui-color--black);
     background-color: var(--vf-button-shadow-background-color, var(--default-bg-colour-dark));
-    border: 4px solid #000;
+    border: 4px solid set-ui-color(vf-ui-color--black);
     border: 4px solid var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
-    content: "";
+    content: '';
     height: 100%;
     left: 0;
     position: absolute;
@@ -91,7 +91,7 @@
     &::after {
       background-color: var(--vf-button-border-color--visited, var(--default-button--visited-border) );
       bottom: -4px;
-      content: "";
+      content: '';
       height: 4px;
       left: -4px;
       position: absolute;
@@ -100,7 +100,7 @@
     }
     &:hover {
       &::after {
-        background-color: #307fe2;
+        background-color: var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
         transition: all linear 50ms;
       }
     }
@@ -109,14 +109,14 @@
   // Hover and Focus Styles
   &:focus,
   &:hover {
-    color: white;
+    color: set-ui-color(vf-ui-color--white);
     transform: translate(0) translateZ(1px);
     transition: all linear 50ms;
 
     &::before {
-      box-shadow: 2px 2px 4px rgba(black, 0.25);
-      transition: all linear 50ms;
+      box-shadow: 2px 2px 4px rgba(set-ui-color(vf-ui-color--black), .25);
       transform: translate(-2px, -2px) translateZ(-1px);
+      transition: all linear 50ms;
     }
   }
 
@@ -126,9 +126,9 @@
     transition: all linear 25ms;
 
     &::before {
-      box-shadow: 2px 2px 2px rgba(black, 0.125);
-      transition: all linear 25ms;
+      box-shadow: 2px 2px 2px rgba(set-ui-color(vf-ui-color--black), .125);
       transform: translate(-4px) translateY(-4px) translateZ(-1px);
+      transition: all linear 25ms;
     }
   }
 }
