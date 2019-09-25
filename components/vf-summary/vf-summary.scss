@@ -49,12 +49,88 @@
 }
 
 .vf-summary__button {
-  --vf-text-margin--bottom: 0;
+  @include set-type(text-button--1);
 
-  @include vf-button;
-  @include set-type($vf-summary__button-typography);
+  appearance: none;
+  background-color: #000;
+  background-color: var(--vf-button-background-color, var(--default-bg-colour));
+  border: 4px solid #000;
+  border: 4px solid var(--vf-button-border-color, var(--default-bg-colour));
+  color: var(--vf-button-text-color, #fff);
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 16px 16px 0;
+  left: 6px;
+  outline: 0;
+  padding: 12px 24px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  top: 6px;
+  transform: translate(-6px, -6px);
+  transform-style: preserve-3d;
+  transition: all linear 50ms;
 
-  margin-bottom: 0;
+  &::before {
+    background-color: #000;
+    background-color: var(--vf-button-shadow-background-color, var(--default-bg-colour-dark));
+    border: 4px solid #000;
+    border: 4px solid var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translate(4px, 4px) translateZ(-1px);
+    transition: all linear 50ms;
+    width: 100%;
+  }
+
+  // Visited Styles
+  &:visited {
+    &::after {
+      background-color: var(--vf-button-border-color--visited, var(--default-button--visited-border) );
+      bottom: -4px;
+      content: "";
+      height: 4px;
+      left: -4px;
+      position: absolute;
+      transition: all linear 50ms;
+      width: calc(100% + 8px);
+    }
+    &:hover {
+      &::after {
+        background-color: #307fe2;
+        transition: all linear 50ms;
+      }
+    }
+  }
+
+  // Hover and Focus Styles
+  &:focus,
+  &:hover {
+    color: white;
+    transform: translate(0) translateZ(1px);
+    transition: all linear 50ms;
+
+    &::before {
+      box-shadow: 2px 2px 4px rgba(black, 0.25);
+      transition: all linear 50ms;
+      transform: translate(-2px, -2px) translateZ(-1px);
+    }
+  }
+
+  // Active Styles
+  &:active {
+    transform: translateX(3px) translateY(3px) translateZ(1px);
+    transition: all linear 25ms;
+
+    &::before {
+      box-shadow: 2px 2px 2px rgba(black, 0.125);
+      transition: all linear 25ms;
+      transform: translate(-4px) translateY(-4px) translateZ(-1px);
+    }
+  }
 }
 
 .vf-summary__category {
