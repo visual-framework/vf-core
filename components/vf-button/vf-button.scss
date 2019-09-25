@@ -8,81 +8,150 @@
  * Version: #{map-get($componentInfo, 'version')}
  * Location: #{map-get($componentInfo, 'location')}
  */
+ // vf-button
+ :root {
+   --default-bg-colour: #707372;
+   --default-bg-colour-dark: #373a36;
+   --default-button--visited-border: #d0d0ce;
+ }
+ .vf-button {
+   @include set-type(text-button--1);
 
-.vf-button {
-  @include set-type(text-button--1);
+   appearance: none;
+   background-color: #000;
+   background-color: var(--vf-button-background-color, var(--default-bg-colour));
+   border: 4px solid #000;
+   border: 4px solid var(--vf-button-border-color, var(--default-bg-colour));
+   color: var(--vf-button-text-color, #fff);
+   cursor: pointer;
+   display: inline-block;
+   margin: 0 16px 16px 0;
+   left: 6px;
+   outline: 0;
+   padding: 12px 24px;
+   position: relative;
+   text-align: center;
+   text-decoration: none;
+   top: 6px;
+   transform: translate(-6px, -6px);
+   transform-style: preserve-3d;
+   transition: all linear 50ms;
 
-  appearance: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: inline-block;
-  margin: 0;
-  padding: 12px;
-  text-decoration: none;
-  transition: all 100ms ease-in-out;
+   &::before {
+     background-color: #000;
+     background-color: var(--vf-button-shadow-background-color, var(--default-bg-colour-dark));
+     border: 4px solid #000;
+     border: 4px solid var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
+     content: "";
+     height: 100%;
+     left: 0;
+     position: absolute;
+     top: 0;
+     transform: translate(4px, 4px) translateZ(-1px);
+     transition: all linear 50ms;
+     width: 100%;
+   }
 
-  &:hover {
-    @include vf-slide-on-hover(4px, 'down');
-    transition: all 100ms ease-in-out;
-  }
-}
+   // Visited Styles
+   &:visited {
+     &::after {
+       background-color: var(--vf-button-border-color--visited, var(--default-button--visited-border) );
+       bottom: -4px;
+       content: "";
+       height: 4px;
+       left: -4px;
+       position: absolute;
+       transition: all linear 50ms;
+       width: calc(100% + 8px);
+     }
+     &:hover {
+       &::after {
+         background-color: #307fe2;
+         transition: all linear 50ms;
+       }
+     }
+   }
 
-.vf-button--primary {
-  @include button-link();
+   // Hover and Focus Styles
+   &:focus,
+   &:hover {
+     color: white;
+     transform: translate(0) translateZ(1px);
+     transition: all linear 50ms;
 
-  box-shadow: 0px 6px 0px 0px $vf-link--hover-color;
-  margin-bottom: 6px; // because we're using box-shadow we need to 'create the space' again
+     &::before {
+       box-shadow: 2px 2px 4px rgba(black, 0.25);
+       transition: all linear 50ms;
+       transform: translate(-2px, -2px) translateZ(-1px);
+     }
+   }
 
-  &:hover {
-    box-shadow: 0px 2px 0px 0px $vf-link--hover-color;
+   // Active Styles
+   &:active {
+     transform: translateX(3px) translateY(3px) translateZ(1px);
+     transition: all linear 25ms;
 
-  }
-}
+     &::before {
+       box-shadow: 2px 2px 2px rgba(black, 0.125);
+       transition: all linear 25ms;
+       transform: translate(-4px) translateY(-4px) translateZ(-1px);
+     }
+   }
+ }
+ .vf-button--primary {
+   --vf-button-border-color: var(--vf-color--blue);
+   --vf-button-background-color: var(--vf-color--blue);
 
-.vf-button--secondary {
-  @include button-link($vf-link--color: set-color(vf-color--green), $vf-link--hover-color: set-color(vf-color--green--dark));
+   --vf-button-shadow-border-color: var(--vf-color--blue--dark);
+   --vf-button-shadow-background-color: var(--vf-color--blue--dark);
 
-  box-shadow: 0px 6px 0px 0px set-color(vf-color--green--dark);
-  margin-bottom: 6px; // because we're using box-shadow we need to 'create the space' again
+   --vf-button-border-color--visited: var(--vf-color--blue--light);
+ }
 
-  &:hover {
-    box-shadow: 0px 2px 0px 0px set-color(vf-color--green--dark);
-  }
-}
+ .vf-button--secondary {
+   --vf-button-border-color: var(--vf-color--green);
+   --vf-button-background-color: var(--vf-color--green);
 
-.vf-button--tertiary {
-  @include button-link($vf-link--color: set-color(vf-color--grey--dark), $vf-link--hover-color: set-color(vf-color--grey));
+   --vf-button-shadow-border-color: var(--vf-color--green--dark);
+   --vf-button-shadow-background-color: var(--vf-color--green--dark);
 
-  box-shadow: 0px 6px 0px 0px set-color(vf-color--grey);
-  margin-bottom: 6px; // because we're using box-shadow we need to 'create the space' again
+   --vf-button-border-color--visited: var(--vf-color--green--light);
+ }
 
-  &:hover {
-    box-shadow: 0px 2px 0px 0px set-color(vf-color--grey);
-  }
-}
+ .vf-button--tertiary {
+   --vf-button-border-color: var(--vf-color--grey);
+   --vf-button-background-color: var(--vf-color--grey);
 
-.vf-button--outline {
+   --vf-button-shadow-border-color: var(--vf-color--grey--dark);
+   --vf-button-shadow-background-color: var(--vf-color--grey--dark);
 
-  &.vf-button--primary {
-    @include button-link--ghost;
-  }
+   --vf-button-border-color--visited: var(--vf-color--grey--light);
+ }
 
-  &.vf-button--secondary {
-    @include button-link--ghost( $vf-link--color: set-color(vf-color--green) );
-  }
+ .vf-button--outline {
+   --vf-button-background-color: #fff;
+   color: var(--vf-button-border-color, var(--default-bg-colour) );
 
-  &.vf-button--tertiary {
-    @include button-link--ghost( $vf-link--color: set-color(vf-color--grey--dark) );
-  }
-}
+   &:hover {
+     color: var(--vf-button-border-color);
+   }
+ }
 
-.vf-button--pill {
-  border-radius: 500px;
-}
+ .vf-button--pill {
+   border-radius: 500px;
 
-.vf-button--rounded {
-  border-radius: $vf-radius--md;
-}
+   &::before {
+     border-radius: 500px;
+   }
+ }
+
+ .vf-button--rounded {
+   border-radius: $vf-radius--md;
+
+   &::before {
+     border-radius: $vf-radius--md;
+   }
+ }
 
 .vf-button--sm {
   @include set-type(text-button--2);
@@ -108,10 +177,10 @@ html:not(.vf-disable-deprecated) {
   // Will be removed in vf-button v2.0
   .vf-text-button--secondary {
     @include button-link($vf-link--color: set-color(vf-color--green), $vf-link--hover-color: set-color(vf-color--green--dark));
-  
+
     box-shadow: 0px 6px 0px 0px set-color(vf-color--green--dark);
     margin-bottom: 6px; // because we're using box-shadow we need to 'create the space' again
-  
+
     &:hover {
       box-shadow: 0px 2px 0px 0px set-color(vf-color--green--dark);
     }
@@ -128,7 +197,7 @@ html:not(.vf-disable-deprecated) {
   .vf-text-button--2 {
     @include set-type(text-button--2);
     padding: 8px;
-  
+
     &.vf-text-button--rounded {
       border-radius: 8px;
     }
@@ -138,9 +207,9 @@ html:not(.vf-disable-deprecated) {
   // Will be removed in vf-button v2.0
   .vf-text-button--1 {
     @include set-type(text-button--1);
-  
+
     padding: 16px;
   }
-  
+
 }
 // End deprecated
