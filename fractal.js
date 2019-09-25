@@ -144,6 +144,7 @@ module.exports = {
       });
     }
 
+    // If you want to build static html files
     if (mode == 'build') {
       fractal.set('project.environment.production', 'true');
       const builder = fractal.web.builder();
@@ -157,18 +158,18 @@ module.exports = {
         callback(fractal);
       });
     }
-    if (mode == 'VRT') {
-      fractal.set('project.environment.local', 'true');
-      const builder = fractal.web.builder();
-      builder.on('progress', (completed, total) =>
-        logger.update(`Exported ${completed} of ${total} items`, 'info')
-      );
-      builder.on('error', err => logger.error(err.message));
-      return builder.build().then(() => {
-        logger.success('Fractal build completed!');
 
+    // To build the fractal object in memory
+    if (mode == 'dataobject') {
+      fractal.set('project.environment.local', 'true');
+      const server = fractal.web.server();
+
+      server.start().then(function(){
+        console.log('The Fractal component data has been generated.')
         callback(fractal);
+        server.stop();
       });
+      
     }
   }
 }
