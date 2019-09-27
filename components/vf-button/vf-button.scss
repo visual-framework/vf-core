@@ -14,6 +14,7 @@
   --default-bg-colour-dark: set-color(vf-color--grey--darkest);
   --default-button--visited-border: set-color(vf-color--grey--lightest);
 }
+$button-hover-fix: -5px -5px rgba(0, 0, 0, 0);
 .vf-button {
   @include set-type(text-button--1);
 
@@ -22,6 +23,7 @@
   background-color: var(--vf-button-background-color, var(--default-bg-colour));
   border: 4px solid set-ui-color(vf-ui-color--black);
   border: 4px solid var(--vf-button-border-color, var(--default-bg-colour));
+  box-shadow: 8px 8px 0 var(--vf-button-shadow-background-color, var(--default-bg-colour-dark)), $button-hover-fix;
   color: var(--vf-button-text-color, set-ui-color(vf-ui-color--white));
   cursor: pointer;
   display: inline-block;
@@ -31,69 +33,75 @@
   position: relative;
   text-align: center;
   text-decoration: none;
-  transform: translate(0, 0);
-  transform-style: preserve-3d;
+  // transform: translate(0, 0);
+  // transform-style: preserve-3d;
   transition: all linear 50ms;
 
-  &::before {
-    background-color: set-ui-color(vf-ui-color--black);
-    background-color: var(--vf-button-shadow-background-color, var(--default-bg-colour-dark));
-    border: 4px solid set-ui-color(vf-ui-color--black);
-    border: 4px solid var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
-    content: '';
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    transform: translateX(4px) translateY(4px) translateZ(-1px);
-    transition: all linear 50ms;
-    width: 100%;
-  }
+  // &::before {
+  //   background-color: set-ui-color(vf-ui-color--black);
+  //   background-color: var(--vf-button-shadow-background-color, var(--default-bg-colour-dark));
+  //   border: 4px solid set-ui-color(vf-ui-color--black);
+  //   border: 4px solid var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
+  //   content: '';
+  //   height: 100%;
+  //   left: 0;
+  //   position: absolute;
+  //   top: 0;
+  //   transform: translateX(4px) translateY(4px) translateZ(-1px);
+  //   transition: all linear 50ms;
+  //   width: 100%;
+  // }
 
   // Visited Styles
-  &:visited {
-    &::after {
-      background-color: var(--vf-button-border-color--visited, var(--default-button--visited-border) );
-      bottom: -4px;
-      content: '';
-      height: 4px;
-      left: -4px;
-      position: absolute;
-      transition: all linear 50ms;
-      width: calc(100% + 8px);
-    }
-    &:hover {
-      &::after {
-        background-color: var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
-        transition: all linear 50ms;
-      }
-    }
-  }
+  // &:visited {
+  //   border-bottom-color: var(--vf-button-border-color--visited, var(--default-button--visited-border) );
+  //   // &::after {
+  //   //   background-color: var(--vf-button-border-color--visited, var(--default-button--visited-border) );
+  //   //   bottom: -4px;
+  //   //   content: '';
+  //   //   height: 4px;
+  //   //   left: -4px;
+  //   //   position: absolute;
+  //   //   transition: all linear 50ms;
+  //   //   width: calc(100% + 8px);
+  //   // }
+  //   // &:hover {
+  //   //   &::after {
+  //   //     background-color: var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
+  //   //     transition: all linear 50ms;
+  //   //   }
+  //   // }
+  //   &:hover {
+  //     border-bottom-color: var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
+  //   }
+  // }
 
   // Hover and Focus Styles
   &:focus,
   &:hover {
+    box-shadow: 4px 4px 0 var(--vf-button-shadow-background-color, var(--default-bg-colour-dark)), 2px 2px 4px rgba(set-ui-color(vf-ui-color--black), .25), $button-hover-fix;
     color: set-ui-color(vf-ui-color--white);
     transform: translate(4px, 4px) translateZ(1px);
-    transition: all linear 50ms;
+    // transition: all linear 50ms;
 
-    &::before {
-      box-shadow: 2px 2px 4px rgba(set-ui-color(vf-ui-color--black), .25);
-      transform: translateX(0) translateY(0) translateZ(-1px);
-      transition: all linear 50ms;
-    }
+    // &::before {
+    //   box-shadow: 2px 2px 4px rgba(set-ui-color(vf-ui-color--black), .25);
+    //   transform: translateX(0) translateY(0) translateZ(-1px);
+    //   transition: all linear 50ms;
+    // }
   }
 
   // Active Styles
   &:active {
+    box-shadow: 0px 0px 0 var(--vf-button-shadow-background-color, var(--default-bg-colour-dark)), 2px 2px 2px rgba(set-ui-color(vf-ui-color--black), .125), $button-hover-fix;
     transform: translate(8px, 8px) translateZ(1px);
-    transition: all linear 25ms;
+    // transition: all linear 25ms;
 
-    &::before {
-      box-shadow: 2px 2px 2px rgba(set-ui-color(vf-ui-color--black), .125);
-      transform: translateX(-4px) translateY(-4px) translateZ(-1px);
-      transition: all linear 25ms;
-    }
+    // &::before {
+    //   box-shadow: 2px 2px 2px rgba(set-ui-color(vf-ui-color--black), .125);
+    //   transform: translateX(-4px) translateY(-4px) translateZ(-1px);
+    //   transition: all linear 25ms;
+    // }
   }
 }
 
@@ -154,9 +162,9 @@ a.vf-button {
 .vf-button--rounded {
   border-radius: $vf-radius--md;
 
-  &::before {
-    border-radius: $vf-radius--md;
-  }
+  // &::before {
+  //   border-radius: $vf-radius--md;
+  // }
 }
 
 .vf-button--sm {
