@@ -519,84 +519,159 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
- * Component: #{map-get($componentInfo, 'name')}
- * Version: #{map-get($componentInfo, 'version')}
- * Location: #{map-get($componentInfo, 'location')}
- */</span>
-
+* Component: #{map-get($componentInfo, 'name')}
+* Version: #{map-get($componentInfo, 'version')}
+* Location: #{map-get($componentInfo, 'location')}
+*/</span>
+<span class="hljs-comment">// vf-button</span>
+:root {
+  --default-bg-colour: set-color(vf-color--grey);
+  --default-bg-colour-dark: set-color(vf-color--grey--darkest);
+  --default-<span class="hljs-selector-tag">button</span>--visited-<span class="hljs-attribute">border</span>: set-color(vf-color--grey--lightest);
+}
 <span class="hljs-selector-class">.vf-button</span> {
   @<span class="hljs-keyword">include</span> set-type(text-button--<span class="hljs-number">1</span>);
 
   appearance: none;
-  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--black);
+  <span class="hljs-attribute">background-color</span>: var(--vf-button-background-color, var(--default-bg-colour));
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">4px</span> solid set-ui-color(vf-ui-color--black);
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">4px</span> solid var(--vf-button-border-color, var(--default-bg-colour));
+  <span class="hljs-attribute">color</span>: var(--vf-button-text-color, set-ui-color(vf-ui-color--white));
   <span class="hljs-attribute">cursor</span>: pointer;
   <span class="hljs-attribute">display</span>: inline-block;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">16px</span> <span class="hljs-number">16px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">outline</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span> <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">position</span>: relative;
+  <span class="hljs-attribute">text-align</span>: center;
   <span class="hljs-attribute">text-decoration</span>: none;
-  <span class="hljs-attribute">transition</span>: all <span class="hljs-number">100ms</span> ease-in-out;
+  <span class="hljs-attribute">transform</span>: translate(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+  <span class="hljs-attribute">transform-style</span>: preserve-<span class="hljs-number">3</span>d;
+  <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">50ms</span>;
 
+  &amp;::before {
+    <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--black);
+    <span class="hljs-attribute">background-color</span>: var(--vf-button-shadow-background-color, var(--default-bg-colour-dark));
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">4px</span> solid set-ui-color(vf-ui-color--black);
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">4px</span> solid var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">transform</span>: translateX(<span class="hljs-number">4px</span>) translateY(<span class="hljs-number">4px</span>) translateZ(-<span class="hljs-number">1px</span>);
+    <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">50ms</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  }
+
+  <span class="hljs-comment">// Visited Styles</span>
+  &amp;:visited {
+    &amp;::after {
+      <span class="hljs-attribute">background-color</span>: var(--vf-button-border-color--visited, var(--default-button--visited-border) );
+      <span class="hljs-attribute">bottom</span>: -<span class="hljs-number">4px</span>;
+      <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+      <span class="hljs-attribute">height</span>: <span class="hljs-number">4px</span>;
+      <span class="hljs-attribute">left</span>: -<span class="hljs-number">4px</span>;
+      <span class="hljs-attribute">position</span>: absolute;
+      <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">50ms</span>;
+      <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100%</span> + <span class="hljs-number">8px</span>);
+    }
+    &amp;:hover {
+      &amp;::after {
+        <span class="hljs-attribute">background-color</span>: var(--vf-button-shadow-border-color, var(--default-bg-colour-dark));
+        <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">50ms</span>;
+      }
+    }
+  }
+
+  <span class="hljs-comment">// Hover and Focus Styles</span>
+  &amp;:focus,
   &amp;:hover {
-    @<span class="hljs-keyword">include</span> vf-slide-on-hover(<span class="hljs-number">4px</span>, <span class="hljs-string">'down'</span>);
-    <span class="hljs-attribute">transition</span>: all <span class="hljs-number">100ms</span> ease-in-out;
+    <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+    <span class="hljs-attribute">transform</span>: translate(<span class="hljs-number">4px</span>, <span class="hljs-number">4px</span>) translateZ(<span class="hljs-number">1px</span>);
+    <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">50ms</span>;
+
+    &amp;::before {
+      <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">4px</span> rgba(set-ui-color(vf-ui-color--black), .<span class="hljs-number">25</span>);
+      <span class="hljs-attribute">transform</span>: translateX(<span class="hljs-number">0</span>) translateY(<span class="hljs-number">0</span>) translateZ(-<span class="hljs-number">1px</span>);
+      <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">50ms</span>;
+    }
+  }
+
+  <span class="hljs-comment">// Active Styles</span>
+  &amp;:active {
+    <span class="hljs-attribute">transform</span>: translate(<span class="hljs-number">8px</span>, <span class="hljs-number">8px</span>) translateZ(<span class="hljs-number">1px</span>);
+    <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">25ms</span>;
+
+    &amp;::before {
+      <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> rgba(set-ui-color(vf-ui-color--black), .<span class="hljs-number">125</span>);
+      <span class="hljs-attribute">transform</span>: translateX(-<span class="hljs-number">4px</span>) translateY(-<span class="hljs-number">4px</span>) translateZ(-<span class="hljs-number">1px</span>);
+      <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">25ms</span>;
+    }
+  }
+}
+
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.vf-button</span> {
+  &amp;:hover,
+  &amp;:focus {
+    <span class="hljs-attribute">text-decoration</span>: none;
   }
 }
 
 <span class="hljs-selector-class">.vf-button--primary</span> {
-  @<span class="hljs-keyword">include</span> button-link();
+  --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">border-color</span>: var(--vf-color--blue);
+  --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">background-color</span>: var(--vf-color--blue);
 
-  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">6px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-variable">$vf-link--hover-color</span>;
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">6px</span>; <span class="hljs-comment">// because we're using box-shadow we need to 'create the space' again</span>
+  --vf-<span class="hljs-selector-tag">button</span>-shadow-<span class="hljs-attribute">border-color</span>: var(--vf-color--blue--dark);
+  --vf-<span class="hljs-selector-tag">button</span>-shadow-<span class="hljs-attribute">background-color</span>: var(--vf-color--blue--dark);
 
-  &amp;:hover {
-    <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">2px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-variable">$vf-link--hover-color</span>;
-
-  }
+  --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">border-color</span>--visited: var(--vf-color--blue--light);
 }
 
 <span class="hljs-selector-class">.vf-button--secondary</span> {
-  @<span class="hljs-keyword">include</span> button-link(<span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--green), <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--green--dark));
+  --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">border-color</span>: var(--vf-color--green);
+  --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">background-color</span>: var(--vf-color--green);
 
-  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">6px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--green--dark);
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">6px</span>; <span class="hljs-comment">// because we're using box-shadow we need to 'create the space' again</span>
+  --vf-<span class="hljs-selector-tag">button</span>-shadow-<span class="hljs-attribute">border-color</span>: var(--vf-color--green--dark);
+  --vf-<span class="hljs-selector-tag">button</span>-shadow-<span class="hljs-attribute">background-color</span>: var(--vf-color--green--dark);
 
-  &amp;:hover {
-    <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">2px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--green--dark);
-  }
+  --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">border-color</span>--visited: var(--vf-color--green--light);
 }
 
 <span class="hljs-selector-class">.vf-button--tertiary</span> {
-  @<span class="hljs-keyword">include</span> button-link(<span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--grey--dark), <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--grey));
+  --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">border-color</span>: var(--vf-color--grey);
+  --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">background-color</span>: var(--vf-color--grey);
 
-  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">6px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--grey);
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">6px</span>; <span class="hljs-comment">// because we're using box-shadow we need to 'create the space' again</span>
+  --vf-<span class="hljs-selector-tag">button</span>-shadow-<span class="hljs-attribute">border-color</span>: var(--vf-color--grey--dark);
+  --vf-<span class="hljs-selector-tag">button</span>-shadow-<span class="hljs-attribute">background-color</span>: var(--vf-color--grey--dark);
 
-  &amp;:hover {
-    <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">2px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--grey);
-  }
+  --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">border-color</span>--visited: var(--vf-color--grey--light);
 }
 
 <span class="hljs-selector-class">.vf-button--outline</span> {
+  --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">background-color</span>: #{set-ui-color(vf-ui-color--white)};
+  <span class="hljs-attribute">color</span>: var(--vf-button-border-color, var(--default-bg-colour) );
 
-  &amp;<span class="hljs-selector-class">.vf-button--primary</span> {
-    @<span class="hljs-keyword">include</span> button-link--ghost;
-  }
-
-  &amp;<span class="hljs-selector-class">.vf-button--secondary</span> {
-    @<span class="hljs-keyword">include</span> button-link--ghost( <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--green) );
-  }
-
-  &amp;<span class="hljs-selector-class">.vf-button--tertiary</span> {
-    @<span class="hljs-keyword">include</span> button-link--ghost( <span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--grey--dark) );
+  &amp;:hover {
+    <span class="hljs-attribute">color</span>: var(--vf-button-border-color);
   }
 }
 
 <span class="hljs-selector-class">.vf-button--pill</span> {
   <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">500px</span>;
+
+  &amp;::before {
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">500px</span>;
+  }
 }
 
 <span class="hljs-selector-class">.vf-button--rounded</span> {
   <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$vf-radius--md</span>;
+
+  &amp;::before {
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$vf-radius--md</span>;
+  }
 }
 
 <span class="hljs-selector-class">.vf-button--sm</span> {
@@ -623,10 +698,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-comment">// Will be removed in vf-button v2.0</span>
   <span class="hljs-selector-class">.vf-text-button--secondary</span> {
     @<span class="hljs-keyword">include</span> button-link(<span class="hljs-variable">$vf-link--color</span>: set-color(vf-color--green), <span class="hljs-variable">$vf-link--hover-color</span>: set-color(vf-color--green--dark));
-  
+
     <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">6px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--green--dark);
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">6px</span>; <span class="hljs-comment">// because we're using box-shadow we need to 'create the space' again</span>
-  
+
     &amp;:hover {
       <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">2px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> set-color(vf-color--green--dark);
     }
@@ -643,7 +718,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.vf-text-button--2</span> {
     @<span class="hljs-keyword">include</span> set-type(text-button--<span class="hljs-number">2</span>);
     <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span>;
-  
+
     &amp;<span class="hljs-selector-class">.vf-text-button--rounded</span> {
       <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;
     }
@@ -653,12 +728,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-comment">// Will be removed in vf-button v2.0</span>
   <span class="hljs-selector-class">.vf-text-button--1</span> {
     @<span class="hljs-keyword">include</span> set-type(text-button--<span class="hljs-number">1</span>);
-  
+
     <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
   }
-  
+
 }
-<span class="hljs-comment">// End deprecated</span></code>
+<span class="hljs-comment">// End deprecated</span>
+</code>
         </pre>
         
       </div>
@@ -673,7 +749,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-button/vf-button.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.5 KB
+          Size: 5.8 KB
         </li>
       </ul>
     </section>
