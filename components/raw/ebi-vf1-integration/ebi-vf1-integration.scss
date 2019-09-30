@@ -1,0 +1,132 @@
+// ebi-vf1-integration
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+
+/*
+ *
+ * Here lies a set of corrections that make components from VF1 look like VF2, in terms of colour
+ * and typography. So as not to have to make too many 'hacks' in VF2.0
+ *
+ */
+
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+@import 'ebi-vf1-integration.variables.scss';
+
+
+// this alters the typeface for the VF1.x header navigation to match Plex
+.ebi-vf1-integration,
+html body.ebi-vf1-integration {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p {
+    font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  }
+}
+
+// removes text-rendering: optimizeLegibility
+body.ebi-vf1-integration,
+.ebi-vf1-integration p {
+  -webkit-font-smoothing: unset !important;
+  text-rendering: initial;
+}
+
+.ebi-vf1-integration {
+
+  h1 {
+    color: unset;
+  }
+
+  // sneaks in a small change to make the EBI 'black bar' more VF2.0 with grey--darkest
+  .masthead-black-bar {
+    background-color: #373a36;
+  }
+
+  // this makes the EBI / VF1.x header, footer the same max-width of VF2.0
+  #masthead-black-bar .row,
+  #global-footer .row {
+    max-width: 76.5rem;
+  }
+
+  #global-nav,
+  #global-footer {
+    font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  }
+
+  // Drop the dotted underlines in favour of VF 2.0 underlines 
+  a {
+    border: unset;
+    text-decoration: underline;
+  }
+  
+  a:hover {
+    text-decoration: unset;
+  }  
+  
+  // EBI Global header and local masthead
+  #local-title a,
+  .masthead-black-bar .global-nav a, 
+  .masthead ul li a,
+  ul.menu.secondary-menu a, 
+  .secondary-menu ul.menu a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // vf 1.x utility class
+  .no-underline a, 
+  a.no-underline {
+     text-decoration: none;
+     border-bottom: none;
+  }
+
+  // specificity issue
+  .vf-button {
+    text-decoration: none;
+  }
+
+  .vf-button--primary,
+  .vf-button--secondary,
+  .vf-button--tertiary {
+    &:hover,
+    &:visited {
+      color: white;
+    }
+  }
+
+  // Makes the `vf-button` when used on an `a` element act correctly, but overidding some of the things in ebi-global.css
+  a.vf-button {
+    border: 4px solid set-ui-color(vf-ui-color--black) !important;
+    border: 4px solid var(--vf-button-border-color, var(--default-bg-colour)) !important;
+    box-sizing: content-box;
+    opacity: 1;
+  }
+  a.vf-button:hover {
+    opacity: 1;
+  }
+
+  // Fixes GDPR banner so it's more in keeping with the vf-core 2.0 styles.
+  #data-protection-banner {
+    background-color: #373a36 !important;
+  }
+  #data-protection-banner .row {
+    max-width: 76.5em;
+  }
+
+}
