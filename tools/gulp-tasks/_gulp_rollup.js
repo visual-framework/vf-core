@@ -21,8 +21,9 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   require(path.resolve('.', __dirname + '/vf-scripts.js'))(gulp, path, componentPath, componentDirectories, buildDestionation);
   require(path.resolve('.', __dirname + '/vf-fractal.js'))(gulp, path, componentPath, buildDestionation);
   require(path.resolve('.', __dirname + '/vf-watch.js'))(gulp, path, componentPath, reload);
+  require(path.resolve('.', __dirname + '/vf-templates-precompile.js'))(gulp, path, componentPath);
   require(path.resolve('.', __dirname + '/vf-build.js'))(gulp, buildDestionation);
-
+  
   // -----------------------------------------------------------------------------
   // Main tasks
   // -----------------------------------------------------------------------------

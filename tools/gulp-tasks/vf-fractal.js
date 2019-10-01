@@ -8,18 +8,30 @@
 module.exports = function(gulp, path, componentPath, buildDestionation) {
   const fractalConfig = path.resolve('.', 'fractal.js') ;
 
+  // start fractal in a desired mode, and await it to return the environment
+  let startFractal = function(mode) {
+    return new Promise(function(resolve, reject) {
+      require(fractalConfig).initialize(mode, fractalReadyCallback);
+  
+      function fractalReadyCallback(fractal) {
+        global.fractal = fractal; // "save" fractal so the templates and nunjucks environments are available 
+        resolve();
+      }
+    });
+  }
+
   gulp.task('vf-fractal:start', function(done) {
-    const fractal = require(fractalConfig).initialize('server',fractalReadyCallback);
-    function fractalReadyCallback() {
-      done();
-    }
+    startFractal('server').then(done);
   });
 
   gulp.task('vf-fractal:build', function(done) {
-    const fractal = require(fractalConfig).initialize('build',fractalReadyCallback);
-    function fractalReadyCallback() {
-      done();
-    }
+    global.vfOpenBrowser = false;
+    startFractal('build').then(done);
+  });
+
+  gulp.task('vf-fractal:dataobject', function(done) {
+    global.vfOpenBrowser = false;
+    startFractal('dataobject').then(done);
   });
 
   return gulp;
