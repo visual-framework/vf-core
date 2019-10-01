@@ -161,13 +161,14 @@ module.exports = {
 
     // To build the fractal object in memory
     if (mode == 'dataobject') {
-      fractal.set('project.environment.local', 'true');
+      fractal.set('project.environment.production', 'true');
       const server = fractal.web.server();
 
       server.start().then(function(){
-        console.log('The Fractal component data has been generated.')
+        console.log('The Fractal component data has been generated.');
         callback(fractal);
         server.stop();
+        fractal.unwatch(); // exit fractal
       });
       
     }
