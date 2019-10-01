@@ -22,11 +22,11 @@ module.exports = function(gulp, buildDestionation) {
       gulp.parallel (
         'vf-css:generate-component-css',
         gulp.series('vf-css:build', 'vf-css:production', 'vf-component-assets', 'vf-scripts'),
-        'vf-fractal:build'
+        'vf-fractal:build',
+        'vf-templates-precompile'
       ),
       'vf-build:copy-assets'
   ));
-
 
   return gulp;
 };
