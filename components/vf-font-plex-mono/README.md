@@ -4,6 +4,8 @@
 
 ## About
 
+Makes `IBM Plex Mono` font-family with a weight of 400 available to your Sass/CSS and other higher-level components.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-font-plex-mono` with this command.
