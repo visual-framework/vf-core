@@ -1,8 +1,92 @@
 title: Pagination
 label: Pagination
-status: alpha
-variants:
-  - name: default
-    hidden: true
+status: beta
+
 context:
   component-type: block
+
+  previous_text: Previous
+  previous_url: 'JavaScript:Void(0);'
+  next_text: Next
+  next_url: 'JavaScript:Void(0);'
+  jumpBack_text: -10
+  jumpBack_url: 'JavaScript:Void(0);'
+  jumpForward_text: +10
+  jumpForward_url: 'JavaScript:Void(0);'
+variants:
+  - name: default
+    context:
+      pagination__list:
+        - page_number: Previous
+          page_url: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--previous-page
+        - page_number: -10
+          page_url: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--jump-back
+        - page_number: 1
+          page_url: 'JavaScript:Void(0);'
+        - page_number: 2
+          page_url: 'JavaScript:Void(0);'
+        - page_number: ...
+        - page_number: 17
+          page_url: 'JavaScript:Void(0);'
+        - page_number: 18
+          item_modifier: vf-pagination__item--is-active
+        - page_number: 19
+          page_url: 'JavaScript:Void(0);'
+        - page_number: ...
+        - page_number: 91
+          page_url: 'JavaScript:Void(0);'
+        - page_number: 92
+          page_url: 'JavaScript:Void(0);'
+        - page_number: +10
+          page_url: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--jump-forward
+        - page_number: Next
+          page_url: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--next-page
+  - name: compact
+    context:
+      pagination__list:
+        - page_number: Previous
+          page_url: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--previous-page
+        - page_number: Next
+          page_url: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--next-page
+  - name: expanded
+    context:
+      pagination__list:
+        - page_number: First
+          page_url: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--jump-back
+        - page_number: ...
+        - page_number: 6
+          page_url: 'JavaScript:Void(0);'
+        - page_number: 7
+          page_url: 'JavaScript:Void(0);'
+        - page_number: 8
+          page_url: 'JavaScript:Void(0);'
+        - page_number: 9
+          item_modifier: vf-pagination__item--is-active
+        - page_number: 10
+          page_url: 'JavaScript:Void(0);'
+        - page_number: ...
+        - page_number: Last
+          page_url: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--jump-forward
+  - name: First Last
+    context:
+      pagination__list:
+        - page_number: First (1)
+          page_url: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--jump-back
+        - page_number: Previous (5)
+          page_url: 'JavaScript:Void(0);'
+        - page_number: 6
+          item_modifier: vf-pagination__item--is-active
+        - page_number: Next (7)
+          page_url: 'JavaScript:Void(0);'
+        - page_number: Last (88)
+          page_url: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--jump-forward

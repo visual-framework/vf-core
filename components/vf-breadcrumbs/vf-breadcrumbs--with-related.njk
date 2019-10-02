@@ -12,19 +12,15 @@
     {% endfor %}
   </ul>
 
+  {% if related %}
   <span class="vf-breadcrumbs__heading">Related:</span>
   <ul class="vf-breadcrumbs__list vf-breadcrumbs__list--related | vf-list vf-list--inline">
-
+    {% for item in related %}
     <li class="vf-breadcrumbs__item">
-      <a href="JavaScript:Void(0);" class="vf-breadcrumbs__link">Biscuits</a>
+      <a href="{{ item.url }}" class="vf-breadcrumbs__link">{{ item.text }}</a>
     </li>
-
-    <li class="vf-breadcrumbs__item">
-      <a href="JavaScript:Void(0);" class="vf-breadcrumbs__link">
-        Fruits For Cheese
-      </a>
-    </li>
-
+    {% endfor %}
   </ul>
+  {% endif %}
 
 </nav>
