@@ -2,9 +2,9 @@
   <ul class="vf-pagination__list">
     {% for item in pagination__list %}
     <li class="vf-pagination__item{% if item.item_modifier %} {{ item.item_modifier }}{% endif %}">
-      {% if item.page_url %}
+      {% if item.page_href %}
       <a
-      href="{{ item.page_url }}"
+      href="{{ item.page_href }}"
       class="vf-pagination__link">
         {{ item.page_number }}<span class="vf-sr-only"> page</span>
       </a>

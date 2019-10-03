@@ -2,7 +2,7 @@
   <div><!-- empty --></div>
   <div>
     <h1 class="vf-intro__heading {% if vf_intro_phase %}vf-intro__heading--has-tag{% endif %}
-">{{vf_intro_heading}} {% if vf_intro_phase %}<a href="{{ intro_heading_link }}" class="vf-badge vf-badge--primary vf-badge--phases">{{vf_intro_phase}}</a>{% endif %}</h1>
+">{{vf_intro_heading}} {% if vf_intro_phase %}<a href="{{ intro_heading_href }}" class="vf-badge vf-badge--primary vf-badge--phases">{{vf_intro_phase}}</a>{% endif %}</h1>
     {% render '@vf-lede', {"vf_lede_text": vf_intro_lede} %}
     {% asyncEach intro_text in vf_intro_text -%}
       <p class="vf-intro__text">{{intro_text}}</p>
