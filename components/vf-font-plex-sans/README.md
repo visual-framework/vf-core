@@ -4,6 +4,8 @@
 
 ## About
 
+Makes `IBM Plex Sans` font-family in various weights and italic available to your Sass/CSS and other higher-level components.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-font-plex-sans` with this command.
