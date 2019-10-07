@@ -14,7 +14,7 @@
       </div>
       <button class="vf-button vf-button--outline vf-button--primary | vf-discussion__reply">{{item.button_text}}</button>
       {% if item.secondary_button %}
-      <a href="#" class="vf-button vf-button--outline vf-button--tertiary | vf-discussion__action">{{item.secondary_button}}</a>
+      <a href="{{ item.vf_discussion_href }}" class="vf-button vf-button--outline vf-button--tertiary | vf-discussion__action">{{item.secondary_button}}</a>
       {% endif %}
 
       {% if item.nested %}
@@ -31,13 +31,13 @@
             </div>
             <button class="vf-button vf-button--outline vf-button--primary | vf-discussion__reply">{{item.button_text}}</button>
             {% if item.secondary_button %}
-            <a href="#" class="vf-button vf-button--outline vf-button--tertiary | vf-discussion__action">{{item.secondary_button}}</a>
+            <a href="{{ item.vf_discussion_href }}" class="vf-button vf-button--outline vf-button--tertiary | vf-discussion__action">{{item.secondary_button}}</a>
             {% endif %}
           </li>
           {% endfor %}
         </ol>
       {% endif %}
-      
+
     </li>
     {% endfor %}
 
