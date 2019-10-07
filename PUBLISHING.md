@@ -1,6 +1,6 @@
 # PUBLISHING
 
-A guide on how to do release of `vf-core` and components. The two are done independently.
+A reference guide on how to do releases of `vf-core` and components. The two are done independently.
 
 ## VF Core
 
@@ -50,5 +50,3 @@ While we do not add tags as part of the "release" for component, Lerna needs a n
 - `lerna ls --since af04cb2a` list all changed packages since a commit (sadly not combinable with lerna publish)
 - `lerna diff` all changes since last publish
 - `lerna changed` all packages changed
-
-
