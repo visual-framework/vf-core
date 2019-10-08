@@ -1,3 +1,17 @@
 <div class="vf-tree">
-  /* vf-tree template file */
+  <span class="vf-collapse vf-collapse--tree">
+    <svg width="13" height="13" xmlns="http://www.w3.org/2000/svg"><g stroke="#979797" stroke-width="1.6" fill="none" fill-rule="evenodd" stroke-linecap="square"><path d="M6.583 11.725L2 6.674M2 6.895l4.583-5.61"/><g><path d="M11.583 11.725L7 6.674M7 6.895l4.583-5.61"/></g></g></svg>
+  </span>
+  <ul class="vf-tree__list | vf-list">
+    {% for item in vf_tree_list %}
+    <li class="vf-tree__item">
+      <a href="{{ tree_example_href }}" class="vf-tree__link">{{ item.title }}</a>
+      {% if item.exapndable %}
+      <a href="{{ tree_example_href }}" class="vf-tree-expand">
+        <svg width="8" height="13" xmlns="http://www.w3.org/2000/svg"><g stroke="" stroke-width="1.6" fill="none" fill-rule="evenodd" stroke-linecap="square"><path d="M1.417 1.275L6 6.326M6 6.105l-4.583 5.61"/></g></svg>
+      </a>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
 </div>
