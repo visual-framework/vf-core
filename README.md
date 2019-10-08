@@ -61,4 +61,3 @@ There are a few ways that we discuss and track ideas:
 - ⁉ General: [Chat us](https://discord.gg/XHAvkUX) for general ideas and discussion
 - ⚙️ Technical: [GitHub issues here](https://github.com/visual-framework/vf-core/issues) for implementing deeply technical and specific issues, like the Sass build process, browser bugs
 - 🏢 E-mail: if you have a sweeping Big Idea™️, e-mail Ken Hawkins <ken.hawkins@embl.de>
-
