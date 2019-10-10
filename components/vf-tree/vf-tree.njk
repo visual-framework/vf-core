@@ -1,16 +1,71 @@
 <div class="vf-tree">
-  <span class="vf-collapse vf-collapse--tree">
-    <svg width="13" height="13" xmlns="http://www.w3.org/2000/svg"><g stroke="#979797" stroke-width="1.6" fill="none" fill-rule="evenodd" stroke-linecap="square"><path d="M6.583 11.725L2 6.674M2 6.895l4.583-5.61"/><g><path d="M11.583 11.725L7 6.674M7 6.895l4.583-5.61"/></g></g></svg>
+
+  <span class="vf-collapsable">
+
+    <button class="vf-button | vf-collapsable__button">
+
+      <svg width="13" height="13" xmlns="http://www.w3.org/2000/svg"><g stroke="" stroke-width="1.6" fill="none" fill-rule="evenodd" stroke-linecap="square"><path d="M6.583 11.725L2 6.674M2 6.895l4.583-5.61"/><g><path d="M11.583 11.725L7 6.674M7 6.895l4.583-5.61"/></g></g></svg>
+    </button>
+
   </span>
+
+
+
   <ul class="vf-tree__list | vf-list">
+
     {% for item in vf_tree_list %}
-    <li class="vf-tree__item">
+    <li class="vf-tree__item
+        {%- if item.currentParent == true %} vf-tree__item--selected{% endif -%}
+        {%- if item.expanded == true %} | vf-u-expanded{% endif -%}
+        ">
       <a href="{{ tree_example_href }}" class="vf-tree__link">{{ item.title }}</a>
+
       {% if item.exapndable %}
-      <a href="{{ tree_example_href }}" class="vf-tree-expand">
+      <button href="{{ tree_example_href }}" class="vf-button vf-tree__button">
         <svg width="8" height="13" xmlns="http://www.w3.org/2000/svg"><g stroke="" stroke-width="1.6" fill="none" fill-rule="evenodd" stroke-linecap="square"><path d="M1.417 1.275L6 6.326M6 6.105l-4.583 5.61"/></g></svg>
-      </a>
+      </button>
       {% endif %}
+        {% if item.sublist %}
+        <ul class="vf-tree__list vf-tree__list--additional vf-tree__list--secondary | vf-list">
+
+          {% for item in item.sublist %}
+          <li class="vf-tree__item
+              {%- if item.selected == true %} vf-tree__item--selected{% endif -%}
+              ">
+            <a href="{{ tree_example_href }}" class="vf-tree__link">{{ item.title }}</a>
+
+            {% if item.sublist %}
+              <ul class="vf-tree__list vf-tree__list--additional vf-tree__list--tertiary | vf-list">
+
+                {% for item in item.sublist %}
+                <li class="vf-tree__item
+                          {%- if item.selected == true %} vf-tree__item--selected{% endif %}
+                          ">
+                  <a href="{{ tree_example_href }}" class="vf-tree__link">{{ item.title }}</a>
+
+                  {% if item.sublist %}
+                    <ul class="vf-tree__list vf-tree__list--additional vf-tree__list--quaternary| vf-list">
+
+                      {% for item in item.sublist %}
+                      <li class="vf-tree__item
+                        {%- if item.current == true %} vf-tree__item--current{% endif -%}
+                        ">
+                        <a href="{{ tree_example_href }}" class="vf-tree__link">{{ item.title }}</a>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+
+                </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+
+        </ul>
+      {% endif %}
+
     </li>
     {% endfor %}
   </ul>
