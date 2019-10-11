@@ -14,12 +14,12 @@
         <svg width="8" height="13" xmlns="http://www.w3.org/2000/svg"><g stroke="" stroke-width="1.6" fill="none" fill-rule="evenodd" stroke-linecap="square"><path d="M1.417 1.275L6 6.326M6 6.105l-4.583 5.61"/></g></svg>
       </button>
       {% endif %}
-      {% if item.sublist %}
+      {% if item.sublist and item.expanded %}
       <ul class="vf-tree__list vf-tree__list--additional vf-tree__list--secondary | vf-list" aria-role="group">
         {% for item in item.sublist %}
         <li class="vf-tree__item{%- if item.currentChild == true %} vf-tree__item--selected{% endif -%}" aria-role="treeitem">
           <a href="{{ tree_example_href }}" class="vf-tree__link" {%- if item.currentChild == true %} aria-current="page"{% endif %}>{{ item.title }}</a>
-          {% if item.sublist %}
+          {% if item.sublist and item.expanded %}
           <ul class="vf-tree__list vf-tree__list--additional vf-tree__list--tertiary | vf-list" aria-role="treeitem">
             {% for item in item.sublist %}
             <li class="vf-tree__item
