@@ -1,3 +1,23 @@
+{% set vfTreeButton %}
+<button href="{{ tree_example_href }}" class="vf-button vf-tree__button">
+  <svg width="8" height="13" xmlns="http://www.w3.org/2000/svg"><g stroke="" stroke-width="1.6" fill="none" fill-rule="evenodd" stroke-linecap="square"><path d="M1.417 1.275L6 6.326M6 6.105l-4.583 5.61"/></g></svg>
+</button>
+{% endset %}
+
+{% macro vfTreeList(list, currentDepth=1) %}
+  <ul class="vf-tree__list {% if currentDepth > 1 %}vf-tree__list--additional{% endif %} vf-tree__list--{{ currentDepth }} | vf-list" aria-role="{% if currentDepth == 1 %}tree{% else %}group{% endif %}">
+  {% for item in list %}
+    <li class="vf-tree__item {%- if item.artiveTrail == true %} vf-tree__item--selected{% endif -%}{% if item.expanded == true %} | vf-tree__item--expanded{% endif -%}" aria-role="treeitem">
+      <a href="{{ tree_example_href }}" class="vf-tree__link" {%- if item.artiveTrail == true %} aria-current="page"{% endif %}>{{ item.title }}</a>
+      {% if item.sublist %}{{ vfTreeButton }}{% endif %}
+      {% if item.sublist and item.expanded %}
+        {{ vfTreeList(item.sublist, currentDepth+1) }}
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+{% endmacro %}
+
 <div class="vf-tree{% if expanded === false %} vf-tree--collapsed{% endif %}" {% if expanded === false %}data-vf-tree--collapsed="true"{% endif %}>
   <span class="vf-show-hide">
     <button class="vf-button | vf-show-hide__button">
@@ -6,44 +26,6 @@
   </span>
 
   <ul class="vf-tree__list | vf-list" aria-role="tree">
-    {% for item in vf_tree_list %}
-    <li class="vf-tree__item {%- if item.artiveTrail == true %} vf-tree__item--selected{% endif -%}{% if item.expanded == true %} | vf-tree__item--expanded"{% endif -%}" aria-role="treeitem">
-      <a href="{{ tree_example_href }}" class="vf-tree__link" {%- if item.artiveTrail == true %} aria-current="page"{% endif %}>{{ item.title }}</a>
-      {% if item.sublist %}
-      <button href="{{ tree_example_href }}" class="vf-button vf-tree__button">
-        <svg width="8" height="13" xmlns="http://www.w3.org/2000/svg"><g stroke="" stroke-width="1.6" fill="none" fill-rule="evenodd" stroke-linecap="square"><path d="M1.417 1.275L6 6.326M6 6.105l-4.583 5.61"/></g></svg>
-      </button>
-      {% endif %}
-      {% if item.sublist and item.expanded %}
-      <ul class="vf-tree__list vf-tree__list--additional vf-tree__list--secondary | vf-list" aria-role="group">
-        {% for item in item.sublist %}
-        <li class="vf-tree__item{%- if item.artiveTrail == true %} vf-tree__item--selected{% endif -%}" aria-role="treeitem">
-          <a href="{{ tree_example_href }}" class="vf-tree__link" {%- if item.artiveTrail == true %} aria-current="page"{% endif %}>{{ item.title }}</a>
-          {% if item.sublist and item.expanded %}
-          <ul class="vf-tree__list vf-tree__list--additional vf-tree__list--tertiary | vf-list" aria-role="treeitem">
-            {% for item in item.sublist %}
-            <li class="vf-tree__item
-            {%- if item.artiveTrail == true %} vf-tree__item--selected{% endif -%}" aria-role="treeitem">
-              <a href="{{ tree_example_href }}" class="vf-tree__link" {%- if item.artiveTrail == true %} aria-current="page"{% endif %}>{{ item.title }}</a>
-              {% if item.sublist %}
-              <ul class="vf-tree__list vf-tree__list--additional vf-tree__list--quaternary | vf-list" aria-role="treeitem">
-                {% for item in item.sublist %}
-                <li class="vf-tree__item
-                {%- if item.artiveTrail == true %} vf-tree__item--selected{% endif -%}" aria-role="treeitem"> <!-- quaternary item open -->
-                  <a href="{{ tree_example_href }}" class="vf-tree__link" {%- if item.artiveTrail == true %} aria-current="page"{% endif %}>{{ item.title }}</a>
-                </li>
-              {% endfor %}
-              </ul>
-            {% endif %}
-            </li>
-          {% endfor %}
-          </ul>
-        {% endif %}
-        </li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-    </li>
-  {% endfor %}
+    {{ vfTreeList(vf_tree_list) }}
   </ul>
 </div>
