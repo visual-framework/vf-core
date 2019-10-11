@@ -1,53 +1,51 @@
 // Generate correct font information when included into an element
 // Recommended to use with typography and sizing maps
-// @include set-type(text-body--3, $global-font-family, $custom-margin-bottom: vf-spacing--lg)
+// @include set-type(text-body--3, $font-family, $custom-margin-bottom: vf-spacing--lg)
 
 // $custom-margin-bottom: variable, auto, disable
-@mixin set-type($font-size, $global-font-family: $global-font-family, $custom-margin-bottom: auto) {
-  @if $global-font-family != $vf-font-family--monospace {
+@mixin set-type($font-size, $font-family: $global-font-family, $custom-margin-bottom: auto) {
+  
+  // Load the map from the design tokens
+  // Default onto sans-serif (we don't yet fully suppor Bring Your Own Typography with this mixin)
+  $map-font-family: $vf-font--sans-serif !default;
+  @if $font-family == $vf-font-family--monospace {
+    $map-font-family: $vf-fonts--monospace;
+  }
 
-    font-family: $global-font-family;
-    $map-font-family: $vf-font--sans-serif;
-    font-size: map-deep-get($map-font-family, $font-size, font-size);
+  // Set font family, size
+  font-family: $font-family;
+  font-size: map-deep-get($map-font-family, $font-size, font-size);
 
-    @if map-deep-get($map-font-family, $font-size, font-weight) == 400 {
-
-    }
-    @else {
+  // Set font weight
+  @if map-deep-get($map-font-family, $font-size, font-weight) == 400 {
+    // do nothing, 400 is the default, unless:
+    @if $vf-include-normalisations == true {
       font-weight: map-deep-get($map-font-family, $font-size, font-weight);
-    }
-    line-height: map-deep-get($map-font-family, $font-size, line-height);
-
-    @if $custom-margin-bottom == 'disable' {
-    }
-    @else if $custom-margin-bottom != 'auto' {
-      margin: 0 0 $custom-margin-bottom 0;
-      // margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
-    }
-    @else {
-      @if (str-index($font-size, 'body--')) {
-        margin: 0 0 $vf-text-margin--bottom 0;
-        margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
-      }
-      @else if (str-index($font-size, 'heading--')) {
-        // This approach would work if  we want a $vf-heading-margin--bottom, or something
-        margin: 0 0 $vf-text-margin--bottom 0;
-        margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
-      }
-    }
-
+    }    
   }
   @else {
-
-    font-family: $vf-font-family--monospace;
-    $map-font-family: $vf-fonts--monospace;
-    font-size: map-deep-get($map-font-family, $font-size, font-size);
-    @if map-deep-get($map-font-family, $font-size, font-weight) == 400 {
-
-    }
-    @else {
-      font-weight: map-deep-get($map-font-family, $font-size, font-weight);
-    }
-    line-height: map-deep-get($map-font-family, $font-size, line-height);
+    font-weight: map-deep-get($map-font-family, $font-size, font-weight);
   }
+  line-height: map-deep-get($map-font-family, $font-size, line-height);
+
+  // Set margins
+  @if $custom-margin-bottom == 'disable' {
+    // don't set any margin
+  }
+  @else if $custom-margin-bottom != 'auto' {
+    margin: 0 0 $custom-margin-bottom 0;
+    // margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+  }
+  @else {
+    @if (str-index($font-size, 'body--')) {
+      margin: 0 0 $vf-text-margin--bottom 0;
+      margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+    }
+    @else if (str-index($font-size, 'heading--')) {
+      // Placeholder code for when we want a distinct $vf-heading-margin--bottom
+      margin: 0 0 $vf-text-margin--bottom 0;
+      margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+    }
+  }
+
 }
