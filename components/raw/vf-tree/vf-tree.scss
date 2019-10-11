@@ -1,0 +1,165 @@
+// vf-tree
+
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+ /* stylelint-disable */
+@import 'vf-tree.variables.scss';
+
+.vf-tree {
+  background-color: $vf-tree-bg-color;
+  border: solid #E3E3E3 1px;
+  padding: 0;
+}
+
+.vf-tree--collapsed {
+  width: 29px;
+
+  .vf-tree__list {
+    display: none;
+  }
+  .vf-show-hide__button {
+    transform-origin: center;
+    transform: rotate(180deg);
+    &:hover {
+      transform-origin: center;
+      transform: rotate(180deg);
+    }
+  }
+
+  .vf-show-hide {
+    align-self: flex-start;
+  }
+}
+
+.vf-tree__list {
+  margin-bottom: 0;
+}
+
+.vf-tree__item {
+  padding: 4px 8px;
+  position: relative;
+
+  &:hover {
+    background-color: $vf-tree-bg-color--hover;
+  }
+}
+
+.vf-tree__button {
+  all: unset;
+  cursor: pointer;
+  float: right;
+  margin-left: auto;
+
+  svg {
+    stroke: $vf-tree-caret-color;
+  }
+
+  &:hover {
+    all: unset;
+    cursor: pointer;
+    float: right;
+    margin-left: auto;
+
+    svg {
+      stroke: set-ui-color(vf-ui-color--black);
+    }
+  }
+}
+
+.vf-tree__link {
+  @include set-type(text-body--5, $custom-margin-bottom: 0px);
+
+  color: black;
+  padding: 8px 0;
+  text-decoration: none;
+}
+
+.vf-tree__item--expanded {
+  background-color: #fff;
+  padding-bottom: 16px;
+
+  &:hover,
+  .vf-tree__link:hover,
+  .vf-tree__item:hover {
+    background-color: #fff;
+  }
+
+  .vf-tree__button {
+    transform-origin: center;
+    transform: rotate(90deg);
+  }
+}
+
+.vf-tree__item--selected {
+  & > .vf-tree__link:first-of-type {
+    @include set-type(text-body--4, $custom-margin-bottom: 0px);
+
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+}
+
+
+.vf-tree__list--additional {
+
+  .vf-tree__item {
+    margin-left: 16px;
+    position: relative;
+
+    &::before {
+      border-left: 1px solid $vf-tree-caret-color;
+      content: '';
+      height: 100%;
+      left: -8px;
+      position: absolute;
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+
+    &:hover > .vf-tree__link {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+
+// this should probably be it's own component at some point.
+
+
+.vf-show-hide {
+  display: flex;
+  padding: 0 8px;
+  .vf-tree & {
+    padding-top: 8px;
+  }
+}
+
+.vf-show-hide__button {
+  all: unset;
+  cursor: pointer;
+  margin-left: auto;
+
+  svg {
+    stroke: $vf-tree-caret-color;
+  }
+
+  &:hover {
+    all: unset;
+    cursor: pointer;
+    margin-left: auto;
+
+    svg {
+      stroke: set-ui-color(vf-ui-color--black);
+    }
+  }
+}
+ /* stylelint-enable */
