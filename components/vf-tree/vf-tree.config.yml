@@ -1,41 +1,128 @@
-title: vf-tree
-label: vf-tree
+title: Tree
+label: Tree
 status: alpha
 
 context:
   component-type: block
   tree_example_href: 'JavaScript:Void(0);'
-
-  vf_tree_list:
-    - title: Course Overview
-      exapndable: false
-    - title: What is bioinformatics?
-      exapndable: true
-    - title: The role of public databases
-      exapndable: true
-    - title: What makes a good bioinformatics database?
-      expanded: true
-      current-parent: true
-      exapndable: true
-      sublist:
-        - title: Primary and secondary databases
-        - title: Describing data consistently
-        - title: Minimum information standards
-        - title: Controlled vocabularies
+variants:
+  - name: default
+    label: closed
+    context:
+      collapsed: true
+      vf_tree_list:
+        - title: Course Overview
+          sublist: false
+        - title: What is bioinformatics?
+          sublist: true
+        - title: The role of public databases
+          sublist: true
+        - title: What makes a good bioinformatics database?
+          expanded: true
+          currentParent: true
           sublist:
-            - title: Non-heirarchial list
-              expanded: true
-              current-child: true
-            - title: Taxonomy
-            - title: Thesaurus
-            - title: Gene Ontology
-    - title: Tips on managing and sharing data?
-      exapndable: true
-    - title: Where do I submit my data?
-      exapndable: true
-    - title: Using ontologies to provide controlled vocabularies
-      exapndable: true
-    - title: Summary
-      exapndable: true
-    - title: Get help and support
-      exapndable: true
+            - title: Primary and secondary databases
+            - title: Describing data consistently
+            - title: Minimum information standards
+            - title: Controlled vocabularies
+              sublist:
+                - title: Non-heirarchial list
+                  currentChild: true
+                - title: Taxonomy
+                - title: Thesaurus
+                - title: Gene Ontology
+        - title: Tips on managing and sharing data?
+          sublist: true
+        - title: Where do I submit my data?
+          sublist: true
+        - title: Using ontologies to provide controlled vocabularies
+          sublist: true
+        - title: Summary
+          sublist: true
+        - title: Get help and support
+          sublist: true
+
+  - name: open
+    context:
+      vf_tree_list:
+        - title: Course Overview
+          sublist: false
+        - title: What is bioinformatics?
+          sublist: true
+        - title: The role of public databases
+          sublist: true
+        - title: What makes a good bioinformatics database?
+          sublist: true
+        - title: Tips on managing and sharing data?
+          sublist: true
+        - title: Where do I submit my data?
+          sublist: true
+        - title: Using ontologies to provide controlled vocabularies
+          sublist: true
+        - title: Summary
+          sublist: true
+        - title: Get help and support
+          sublist: true
+  - name: one level
+    label: open one level
+    context:
+      vf_tree_list:
+        - title: Course Overview
+          sublist: false
+        - title: What is bioinformatics?
+          sublist: true
+        - title: The role of public databases
+          sublist: true
+        - title: What makes a good bioinformatics database?
+          expanded: true
+          currentParent: true
+          sublist:
+            - title: Primary and secondary databases
+            - title: Describing data consistently
+            - title: Minimum information standards
+            - title: Controlled vocabularies
+        - title: Tips on managing and sharing data?
+          sublist: true
+        - title: Where do I submit my data?
+          sublist: true
+        - title: Using ontologies to provide controlled vocabularies
+          sublist: true
+        - title: Summary
+          sublist: true
+        - title: Get help and support
+          sublist: true
+  - name: two level
+    label: open two level
+    context:
+      vf_tree_list:
+        - title: Course Overview
+          sublist: false
+        - title: What is bioinformatics?
+          sublist: true
+        - title: The role of public databases
+          sublist: true
+        - title: What makes a good bioinformatics database?
+          expanded: true
+          currentParent: true
+          sublist:
+            - title: Primary and secondary databases
+            - title: Describing data consistently
+            - title: Minimum information standards
+            - title: Controlled vocabularies
+              sublist:
+                - title: Non-heirarchial list
+                  currentChild: true
+                  expanded: true
+                - title: Taxonomy
+                - title: Thesaurus
+                - title: Gene Ontology
+        - title: Tips on managing and sharing data?
+          sublist: true
+        - title: Where do I submit my data?
+          sublist: true
+        - title: Using ontologies to provide controlled vocabularies
+          sublist: true
+        - title: Summary
+          sublist: true
+        - title: Get help and support
+          sublist: true

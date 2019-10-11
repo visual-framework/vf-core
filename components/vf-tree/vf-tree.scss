@@ -1,13 +1,5 @@
 // vf-tree
 
-// **Thinking about deleting this file?**
-// If your component needs no CSS/Sass, we still recommend leaving the
-// scss files in place. As this is primarily a CSS framework, it is better to
-// leave the empty files so you know a file wasn't accidently omitted.
-// If you don't have any Sass, you can trim this block down to:
-// "This page was intentionally left blank"
-
-@import 'package.variables.scss';
 // Debug information from component's `package.json`:
 // ---
 /*!
@@ -20,8 +12,28 @@
 
 .vf-tree {
   background-color: $vf-tree-bg-color;
-  border-right: 1px solid #E3E3E3;
-  padding: 8px 0;
+  border: solid #E3E3E3 1px;
+  padding: 0;
+}
+
+.vf-tree--collapsed {
+  width: 29px;
+
+  .vf-tree__list {
+    display: none;
+  }
+  .vf-show-hide__button {
+    transform-origin: center;
+    transform: rotate(180deg);
+    &:hover {
+      transform-origin: center;
+      transform: rotate(180deg);
+    }
+  }
+
+  .vf-show-hide {
+    align-self: flex-start;
+  }
 }
 
 .vf-tree__list {
@@ -65,38 +77,31 @@
   color: black;
   padding: 8px 0;
   text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
-.vf-u-expanded {
+.vf-tree__item--expanded {
   background-color: #fff;
   padding-bottom: 16px;
 
-  &:hover {
+  &:hover,
+  .vf-tree__link:hover,
+  .vf-tree__item:hover {
     background-color: #fff;
   }
-  .vf-tree-expand {
-    expanded {
-      stroke: #000;
-    }
+
+  .vf-tree__button {
+    transform-origin: center;
+    transform: rotate(90deg);
   }
 }
-
-// this is the button that expands the tree menu list
-.vf-tree-expandable {
-  stroke: $vf-tree-caret-color;
-  &:hover {
-    stroke: #000;
-  }
-}
-
 
 .vf-tree__item--selected {
   & > .vf-tree__link:first-of-type {
     @include set-type(text-body--4, $custom-margin-bottom: 0px);
+
+    &:hover {
+      text-decoration: none !important;
+    }
   }
 }
 
@@ -106,15 +111,21 @@
   .vf-tree__item {
     margin-left: 16px;
     position: relative;
-    &:before {
+
+    &::before {
       border-left: 1px solid $vf-tree-caret-color;
       content: '';
       height: 100%;
       left: -8px;
       position: absolute;
     }
+
     &:last-of-type {
       padding-bottom: 0;
+    }
+
+    &:hover > .vf-tree__link {
+      text-decoration: underline;
     }
   }
 }
@@ -124,12 +135,15 @@
 // this should probably be it's own component at some point.
 
 
-.vf-collapsable {
+.vf-show-hide {
   display: flex;
   padding: 0 8px;
+  .vf-tree & {
+    padding-top: 8px;
+  }
 }
 
-.vf-collapsable__button {
+.vf-show-hide__button {
   all: unset;
   cursor: pointer;
   margin-left: auto;
