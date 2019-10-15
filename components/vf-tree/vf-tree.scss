@@ -11,17 +11,34 @@
 @import 'vf-tree.variables.scss';
 
 .vf-tree {
+  display: flex;
+  height: 100%;
+}
+
+.vf-tree__inner {
   background-color: $vf-tree-bg-color;
   border: solid #E3E3E3 1px;
   padding: 0;
+  transition: translateX ease-in 200ms;
+  width: 100%;
 }
 
 .vf-tree--collapsed {
-  width: 29px;
+  overflow: hidden;
+
+  .vf-tree__inner {
+    transform: translateX( calc(-100% + 30px) );
+    transition: translateX ease-in 200ms;
+  }
 
   .vf-tree__list {
-    display: none;
+    opacity: 0;
+    transition: opacity ease-in 150ms;
+    .vf-tree__button {
+      // display: none;
+    }
   }
+
   .vf-show-hide__button {
     transform-origin: center;
     transform: rotate(180deg);
@@ -38,6 +55,7 @@
 
 .vf-tree__list {
   margin-bottom: 0;
+  transition: opacity ease-in 150ms;
 }
 
 .vf-tree__item {
@@ -107,6 +125,11 @@
 
 
 .vf-tree__list--additional {
+  display: none;
+
+  .vf-tree__item--expanded & {
+    display: block;
+  }
 
   .vf-tree__item {
     margin-left: 16px;
