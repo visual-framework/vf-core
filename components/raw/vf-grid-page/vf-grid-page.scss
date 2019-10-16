@@ -24,13 +24,16 @@
 
 // Initial set up for browsers that do not support CSS grid layout
 html {
+  height: 100%;
   margin: 0 1.25em;
 }
 
 .vf-body {
   display: block;
+  height: 100%;
   margin: 0 auto;
   max-width: 76.5em;
+  min-height: 100%;
 }
 
 // If the browser does support grid it will get this
@@ -46,7 +49,7 @@ html {
     margin: 0;
     max-width: unset;
   }
-  
+
   // for the moment - we cannot rely on vf-body being applied to the body element so:
   body {
     margin: 0;
