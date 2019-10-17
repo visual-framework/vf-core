@@ -2,9 +2,8 @@
 
 {% block content %}
 
-<div class="vf-body">
 
-  <section class="vf-intro | vf-grid embl-grid--has-centered-content">
+  <section class="vf-intro | embl-grid embl-grid--has-centered-content">
     <div>
         <!-- empty -->
     </div>
@@ -18,7 +17,7 @@
       {% endif %}
     </div>
   </section>
-
+  {% if docContent %}
   <div class="vf-grid vf-grid__col-1">
     <div class="vf-content">
 
@@ -26,12 +25,12 @@
 
     </div>
   </div>
+  {% endif %}
 
   {% if request.path == '/' %}
   {# Only show component list on documentation homepage #}
     {% include 'partials/content/overview.njk' %}
   {% endif %}
 
-</div>
 
 {% endblock %}

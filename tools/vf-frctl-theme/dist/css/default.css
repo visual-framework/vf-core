@@ -1,10 +1,39 @@
 /* Edge cases just for the component library */
 /* Ensure the nested iframe preview of components is appropretly sized */
 .Pen-panel {
-  height: auto !important; }
-  .Pen-panel .Preview-iframe {
-    width: 100%; }
+  height: auto !important;
+}
+.Pen-panel .Preview-iframe {
+  width: 100%;
+}
 
 .Preview-iframe {
-  border: 1px solid #b3b3b3;
-  padding: 0; }
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-left: 0;
+  border-right: 0;
+  padding: 0;
+}
+.Frame-body {
+  grid-column: 2 / -2;
+}
+
+.Pen { grid-column: 1 / -1; }
+.Pen .vf-page-header__heading { grid-column: 2 / -2; }
+.Pen .component-info { grid-column: 2 / -2; }
+.Pen .vf-tabs { grid-column: 2 / -2; }
+.Preview { grid-column: 1 / -1; }
+.preview-component-list { grid-column: 2 / -2; }
+.Preview-wrapper .vf-figure__caption {
+  margin: 0 auto;
+  max-width: 87.5em;
+  padding: 0 16px;
+  width: 100%;
+}
+
+.Pen {
+
+  display: grid;
+  grid-template-columns: minmax(var(--page-grid-gap), auto) [main-start] minmax(288px, 76.5em) [main-end] minmax(var(--page-grid-gap), auto);
+  margin: 0;
+  max-width: unset;
+}
