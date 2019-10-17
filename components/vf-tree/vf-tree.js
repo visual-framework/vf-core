@@ -42,10 +42,6 @@ function vfTree(scope) {
     return;
   }
 
-  // The tree path switching function
-  // const activatePath = (newTab) => {
-  // };
-
   // Receive a target scope and toggle if it is active
   function vfTreeToggleActive(target) {
     let collpasedState = target.dataset['vfJsTree-Collapsed'];
@@ -63,9 +59,7 @@ function vfTree(scope) {
     }
 
     target.dataset['vfJsTree-Collapsed'] = collpasedState;
-
   }
-
 
   // Logic to show/hide whole tree
   function vfTreeButtonHandler(target) {
@@ -81,7 +75,6 @@ function vfTree(scope) {
       e.preventDefault();
       vfTreeToggleActive(target);
     });
-
   }
 
   // Logic to show/hide section of tree
@@ -100,9 +93,9 @@ function vfTree(scope) {
       e.preventDefault();
       vfTreeToggleActive(target);
     });
-
   }
 
+  // For each treelist section, invoke handlers
   Array.prototype.forEach.call(treelist, (treelistset, i) => {
     // if the treelistset scope has button, activate it
     vfTreeButtonHandler(treelistset);
