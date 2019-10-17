@@ -53,10 +53,12 @@ function vfTree(scope) {
     if (collpasedState === 'true') {
       collpasedState = false;
       target.classList.remove('vf-tree--collapsed');
+      target.classList.add('vf-tree__item--expanded');
       target.setAttribute("aria-expanded", true);
     } else {
       collpasedState = true;
       target.classList.add('vf-tree--collapsed');
+      target.classList.remove('vf-tree__item--expanded');
       target.setAttribute("aria-expanded", false);
     }
 
@@ -74,7 +76,7 @@ function vfTree(scope) {
       return;
     }
 
-    // Handle clicking of overall tree show/hide
+    // Handle clicking
     targetButton[0].addEventListener('click', e => {
       e.preventDefault();
       vfTreeToggleActive(target);
@@ -84,17 +86,30 @@ function vfTree(scope) {
 
   // Logic to show/hide section of tree
   function vfTreeSectionHandler(target) {
+    const targetSection = target.querySelectorAll('.vf-tree__button');
+    
+    if (targetSection.length == 0) {
+      // if no links found, nothing to do
+      return;
+    }
+
+    // Handle clicking
+    // Target [0], the closest item
+    targetSection[0].addEventListener('click', e => {
+      console.log(target)
+      e.preventDefault();
+      vfTreeToggleActive(target);
+    });
+
   }
 
   Array.prototype.forEach.call(treelist, (treelistset, i) => {
-
     // if the treelistset scope has button, activate it
     vfTreeButtonHandler(treelistset);
 
+    // Handle hide/show for tree sets
     vfTreeSectionHandler(treelistset);
-
   });
-  
 }
 
 // If you need to invoke the component by default
