@@ -65,9 +65,11 @@ function vfTree(scope) {
       if (collpasedState === 'true') {
         collpasedState = false;
         treelistset.classList.remove('vf-tree--collapsed');
+        treelistset.setAttribute("aria-expanded", true);
       } else {
         collpasedState = true;
         treelistset.classList.add('vf-tree--collapsed');
+        treelistset.setAttribute("aria-expanded", false);
       }
 
       treelistset.dataset['vfJsTree-Collapsed'] = collpasedState;
