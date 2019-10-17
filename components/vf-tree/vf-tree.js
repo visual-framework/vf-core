@@ -21,10 +21,63 @@
  /**
   * The global function for this component
   * @example vfTree(firstPassedVar)
-  * @param {string} [firstPassedVar]  - An option to be passed
+  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
   */
-function vfTree(firstPassedVar) {
-  firstPassedVar = firstPassedVar || 'defaultVal';
+function vfTree(scope) {
+  var scope = scope || document;
+
+  // Get relevant elements and collections
+  const treelist = scope.querySelectorAll('[data-vf-js-tree]');
+  // const panelsList = scope.querySelectorAll('[data-vf-js-tabs-content]');
+  // const panels = scope.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
+  // const tabs = scope.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
+  // if (!tablist || !panels || !tabs) {
+  if (!treelist ) {
+    // exit: either trees or tabbed content not found
+    return;
+  }
+  // if (tablist.length == 0 || panels.length == 0 || tabs.length == 0) {
+  if (treelist.length == 0 ) {
+    // exit: either trees or tabbed content not found
+    return;
+  }
+
+
+
+  // The tree path switching function
+  const activatePath = (newTab) => {
+  };
+
+  // Overall tree logic
+  Array.prototype.forEach.call(treelist, (treelistset, i) => {
+
+    const treelistsetButton = treelistset.querySelectorAll('[data-vf-js-tree--button]');
+    
+    if (treelistsetButton.length == 0) {
+      return;
+    }
+    
+    // Handle clicking of overall tree show/hide
+    treelistsetButton[0].addEventListener('click', e => {
+      e.preventDefault();
+
+      let currentState = treelistset.dataset['vfJsTree-Collapsed'];
+
+      if (currentState === 'true') {
+        currentState = false;
+        treelistset.classList.remove('vf-tree--collapsed');
+      } else {
+        currentState = true;
+        treelistset.classList.add('vf-tree--collapsed');
+      }
+
+      treelistset.dataset['vfJsTree-Collapsed'] = currentState;
+      console.log(treelistset.dataset['vfJsTree-Collapsed']);
+      // switchTab(e.currentTarget);
+    });
+
+  });
+  
 
 }
 
