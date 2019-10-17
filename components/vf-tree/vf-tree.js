@@ -61,7 +61,7 @@ function vfTree(scope) {
     target.dataset['vfJsTree-Collapsed'] = collpasedState;
   }
 
-  // Logic to show/hide whole tree
+  // Logic to show/hide section of tree
   function vfTreeButtonHandler(target) {
     const targetButton = target.querySelectorAll('[data-vf-js-tree--button]');
     
@@ -71,24 +71,8 @@ function vfTree(scope) {
     }
 
     // Handle clicking
+    // Target the closest item
     targetButton[0].addEventListener('click', e => {
-      e.preventDefault();
-      vfTreeToggleActive(target);
-    });
-  }
-
-  // Logic to show/hide section of tree
-  function vfTreeSectionHandler(target) {
-    const targetSection = target.querySelectorAll('.vf-tree__button');
-    
-    if (targetSection.length == 0) {
-      // if no links found, nothing to do
-      return;
-    }
-
-    // Handle clicking
-    // Target [0], the closest item
-    targetSection[0].addEventListener('click', e => {
       console.log(target)
       e.preventDefault();
       vfTreeToggleActive(target);
@@ -97,11 +81,8 @@ function vfTree(scope) {
 
   // For each treelist section, invoke handlers
   Array.prototype.forEach.call(treelist, (treelistset, i) => {
-    // if the treelistset scope has button, activate it
-    vfTreeButtonHandler(treelistset);
-
     // Handle hide/show for tree sets
-    vfTreeSectionHandler(treelistset);
+    vfTreeButtonHandler(treelistset);
   });
 }
 
