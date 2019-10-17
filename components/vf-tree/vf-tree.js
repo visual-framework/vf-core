@@ -63,6 +63,12 @@ function vfTree(scope) {
 
   // Logic to show/hide section of tree
   function vfTreeButtonHandler(target) {
+    // if want to only get the direct children matches
+    // this future proofs but also adds and edge case, so we won't use for now
+    // let targetButton = Array.prototype.filter.call(target.children, function (item) {
+    //   return item.matches('[data-vf-js-tree--button]');
+    // });
+
     const targetButton = target.querySelectorAll('[data-vf-js-tree--button]');
     
     if (targetButton.length == 0) {
