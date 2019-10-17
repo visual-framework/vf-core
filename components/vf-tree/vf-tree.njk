@@ -7,7 +7,7 @@
 {% macro vfTreeList(list, currentDepth=1) %}
   <ul class="vf-tree__list {% if currentDepth > 1 %}vf-tree__list--additional{% endif %} vf-tree__list--{{ currentDepth }} | vf-list" aria-role="{% if currentDepth == 1 %}tree{% else %}group{% endif %}">
   {% for item in list %}
-    <li class="vf-tree__item {%- if item.artiveTrail == true %} vf-tree__item--selected{% endif -%}{% if item.expanded == true %} | vf-tree__item--expanded{% endif -%}" {% if item.expanded == true %} data-vf-js-tree--collapsed="false"{% endif %} aria-role="treeitem">
+    <li class="vf-tree__item {%- if item.artiveTrail == true %} vf-tree__item--selected{% endif -%}{% if item.expanded == true %} | vf-tree__item--expanded{% endif -%}" {% if item.expanded == true %} data-vf-js-tree--collapsed="false"{% endif %} data-vf-js-tree aria-role="treeitem" aria-expanded="{{item.expanded}}>
       <a href="{{ tree_example_href }}" class="vf-tree__link" {%- if item.artiveTrail == true %} aria-current="page"{% endif %}>{{ item.title }}</a>
       {% if item.sublist %}{{ vfTreeButton }}{% endif %}
       {% if item.sublist and item.expanded %}

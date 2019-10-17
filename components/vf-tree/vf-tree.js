@@ -43,37 +43,55 @@ function vfTree(scope) {
   }
 
   // The tree path switching function
-  const activatePath = (newTab) => {
-  };
+  // const activatePath = (newTab) => {
+  // };
 
-  // Logoic to show/hide whole tree
-  Array.prototype.forEach.call(treelist, (treelistset, i) => {
+  // Receive a target scope and toggle if it is active
+  function vfTreeToggleActive(target) {
+    let collpasedState = target.dataset['vfJsTree-Collapsed'];
 
-    const treelistsetButton = treelistset.querySelectorAll('[data-vf-js-tree--button]');
+    if (collpasedState === 'true') {
+      collpasedState = false;
+      target.classList.remove('vf-tree--collapsed');
+      target.setAttribute("aria-expanded", true);
+    } else {
+      collpasedState = true;
+      target.classList.add('vf-tree--collapsed');
+      target.setAttribute("aria-expanded", false);
+    }
+
+    target.dataset['vfJsTree-Collapsed'] = collpasedState;
+
+  }
+
+
+  // Logic to show/hide whole tree
+  function vfTreeButtonHandler(target) {
+    const targetButton = target.querySelectorAll('[data-vf-js-tree--button]');
     
-    if (treelistsetButton.length == 0) {
+    if (targetButton.length == 0) {
       // if no tree buttons found, nothing to do
       return;
     }
-    
+
     // Handle clicking of overall tree show/hide
-    treelistsetButton[0].addEventListener('click', e => {
+    targetButton[0].addEventListener('click', e => {
       e.preventDefault();
-
-      let collpasedState = treelistset.dataset['vfJsTree-Collapsed'];
-
-      if (collpasedState === 'true') {
-        collpasedState = false;
-        treelistset.classList.remove('vf-tree--collapsed');
-        treelistset.setAttribute("aria-expanded", true);
-      } else {
-        collpasedState = true;
-        treelistset.classList.add('vf-tree--collapsed');
-        treelistset.setAttribute("aria-expanded", false);
-      }
-
-      treelistset.dataset['vfJsTree-Collapsed'] = collpasedState;
+      vfTreeToggleActive(target);
     });
+
+  }
+
+  // Logic to show/hide section of tree
+  function vfTreeSectionHandler(target) {
+  }
+
+  Array.prototype.forEach.call(treelist, (treelistset, i) => {
+
+    // if the treelistset scope has button, activate it
+    vfTreeButtonHandler(treelistset);
+
+    vfTreeSectionHandler(treelistset);
 
   });
   
