@@ -42,18 +42,17 @@ function vfTree(scope) {
     return;
   }
 
-
-
   // The tree path switching function
   const activatePath = (newTab) => {
   };
 
-  // Overall tree logic
+  // Logoic to show/hide whole tree
   Array.prototype.forEach.call(treelist, (treelistset, i) => {
 
     const treelistsetButton = treelistset.querySelectorAll('[data-vf-js-tree--button]');
     
     if (treelistsetButton.length == 0) {
+      // if no tree buttons found, nothing to do
       return;
     }
     
@@ -61,24 +60,21 @@ function vfTree(scope) {
     treelistsetButton[0].addEventListener('click', e => {
       e.preventDefault();
 
-      let currentState = treelistset.dataset['vfJsTree-Collapsed'];
+      let collpasedState = treelistset.dataset['vfJsTree-Collapsed'];
 
-      if (currentState === 'true') {
-        currentState = false;
+      if (collpasedState === 'true') {
+        collpasedState = false;
         treelistset.classList.remove('vf-tree--collapsed');
       } else {
-        currentState = true;
+        collpasedState = true;
         treelistset.classList.add('vf-tree--collapsed');
       }
 
-      treelistset.dataset['vfJsTree-Collapsed'] = currentState;
-      console.log(treelistset.dataset['vfJsTree-Collapsed']);
-      // switchTab(e.currentTarget);
+      treelistset.dataset['vfJsTree-Collapsed'] = collpasedState;
     });
 
   });
   
-
 }
 
 // If you need to invoke the component by default
