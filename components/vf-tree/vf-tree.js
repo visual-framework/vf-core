@@ -1,7 +1,5 @@
 // vf-tree
 
-// Don't need JS? Then feel free to delete this file.
-
 /*
  * A note on the Visual Framework and JavaScript:
  * The VF is primairly a CSS framework so we've included only a minimal amount
@@ -17,27 +15,86 @@
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
 
-// Uncomment this boilerplate
-// // if you need to import any other components' JS to use here
+// if you need to import any other components' JS to use here
 // import { vfOthercomponent } from 'vf-other-component/vf-other-component';
-//
-//  /**
-//   * The global function for this component
-//   * @example vfcomponentName(firstPassedVar)
-//   * @param {string} [firstPassedVar]  - An option to be passed
-//   */
-// function vfcomponentName(firstPassedVar) {
-//   firstPassedVar = firstPassedVar || 'defaultVal';
-//
-// }
-//
-// // If you need to invoke the component by default
+
+ /**
+  * The global function for this component
+  * @example vfTree(firstPassedVar)
+  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+  */
+function vfTree(scope) {
+  var scope = scope || document;
+
+  // Get relevant elements and collections
+  const treelist = scope.querySelectorAll('[data-vf-js-tree]');
+  // const panelsList = scope.querySelectorAll('[data-vf-js-tabs-content]');
+  // const panels = scope.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
+  // const tabs = scope.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
+  // if (!tablist || !panels || !tabs) {
+  if (!treelist ) {
+    // exit: either trees or tabbed content not found
+    return;
+  }
+  // if (tablist.length == 0 || panels.length == 0 || tabs.length == 0) {
+  if (treelist.length == 0 ) {
+    // exit: either trees or tabbed content not found
+    return;
+  }
+
+  // Receive a target scope and toggle if it is active
+  function vfTreeToggleActive(target) {
+    let collpasedState = target.dataset['vfJsTree-Collapsed'];
+
+    if (collpasedState === 'true') {
+      collpasedState = false;
+      target.classList.remove('vf-tree--collapsed');
+      target.classList.add('vf-tree__item--expanded');
+      target.setAttribute("aria-expanded", true);
+    } else {
+      collpasedState = true;
+      target.classList.add('vf-tree--collapsed');
+      target.classList.remove('vf-tree__item--expanded');
+      target.setAttribute("aria-expanded", false);
+    }
+
+    target.dataset['vfJsTree-Collapsed'] = collpasedState;
+  }
+
+  // Logic to show/hide section of tree
+  function vfTreeButtonHandler(target) {
+    // if want to only get the direct children matches
+    // this future proofs but also adds and edge case, so we won't use for now
+    // let targetButton = Array.prototype.filter.call(target.children, function (item) {
+    //   return item.matches('[data-vf-js-tree--button]');
+    // });
+
+    const targetButton = target.querySelectorAll('[data-vf-js-tree--button]');
+    
+    if (targetButton.length == 0) {
+      // if no tree buttons found, nothing to do
+      return;
+    }
+
+    // Handle clicking
+    // Target the closest item
+    targetButton[0].addEventListener('click', e => {
+      console.log(target)
+      e.preventDefault();
+      vfTreeToggleActive(target);
+    });
+  }
+
+  // For each treelist section, invoke handlers
+  Array.prototype.forEach.call(treelist, (treelistset, i) => {
+    // Handle hide/show for tree sets
+    vfTreeButtonHandler(treelistset);
+  });
+}
+
+// If you need to invoke the component by default
 // vfcomponentName();
-//
-// // By default your component should be usable with js imports
-// export { vfcomponentName };
-//
-// // You should also import it at ./components/vf-core/scripts.js
-// // import { vfcomponentName } from '../components/raw/vf-component/vf-component.js';
-// // And, if needed, invoke it
-// // vfcomponentName();
+
+// By default your component should be usable with js imports
+export { vfTree };
+
