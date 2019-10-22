@@ -8,7 +8,16 @@ const path = require('path');
 let fractalConfig = {
   title: 'Reusable Design Tokens',
   label: 'Design Tokens',
-  status: 'beta'
+  status: 'beta',
+  context: {
+    default: 'h1',
+  },
+  variants: [
+    {
+      name: 'h1',
+      hidden: 'true',
+    },
+  ],
 };
 
 // Only generate the tokens if the `/dist` assets have been generated
