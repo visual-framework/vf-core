@@ -9,12 +9,9 @@ let fractalConfig = {
   title: 'Reusable Design Tokens',
   label: 'Design Tokens',
   status: 'beta',
-  context: {
-    default: 'h1',
-  },
   variants: [
     {
-      name: 'h1',
+      name: 'default',
       hidden: 'true',
     },
   ],
