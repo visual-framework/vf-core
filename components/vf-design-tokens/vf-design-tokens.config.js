@@ -6,13 +6,13 @@ const path = require('path');
 // is not combinable with a `.yml` config file
 // https://fractal.build/guide/core-concepts/configuration-files.html#configuration-file-formats
 let fractalConfig = {
-  title: 'Reusable Design Tokens',
+  title: 'Design Tokens',
   label: 'Design Tokens',
   status: 'beta',
   variants: [
     {
       name: 'default',
-      hidden: 'true',
+      label: 'Welcome',
     },
   ],
 };
