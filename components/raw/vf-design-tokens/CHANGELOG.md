@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.0.0-beta.7
+
+* Revisises out of gamut colours on some devices+software combinations https://github.com/embl-communications/design-system/issues/20
+
 # 1.0.0-beta.6 (2019-09-16)
 
 
