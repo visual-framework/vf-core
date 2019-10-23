@@ -24,4 +24,4 @@ $ yarn add --dev @visual-framework/vf-componenet-rollup
 
 Unlike other components, you probably won't want to `@import` this. Instead the `vf-core` project will compile this into a style.css and scripts.js.
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._
