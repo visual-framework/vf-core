@@ -13,4 +13,4 @@ $ yarn add --dev @visual-framework/vf-favicon
 ```
 
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._
