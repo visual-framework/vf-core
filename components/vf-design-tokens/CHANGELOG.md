@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.0.0-beta.7 (2019-10-23)
+
+
+### Bug Fixes
+
+* sneak in gray-light colour  to tokens ([3c89541](https://github.com/visual-framework/vf-design-tokens/commit/3c89541))
+
+
+
+
+
 # 1.0.0-beta.7
 
 * Revisises out of gamut colours on some devices+software combinations https://github.com/embl-communications/design-system/issues/20
