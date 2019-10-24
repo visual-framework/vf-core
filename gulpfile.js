@@ -40,6 +40,10 @@ global.vfComponentPath = config.vfConfig.vfComponentPath || path.resolve('.', __
 global.vfBuildDestination = config.vfConfig.vfBuildDestination || __dirname + '/temp/build-files';
 global.vfThemePath = config.vfConfig.vfThemePath || './tools/vf-frctl-theme';
 global.vfVersion = vfCoreConfig.version || 'not-specified';
+global.vfBuildFractalMode = vfCoreConfig.vfConfig.vfBuildFractalMode || 'normal'; 
+  // in vf-build specifices to run fractal as 'normal' full build of static assets,
+  // 'dataobject' to render only to memory or
+  // 'none' to not build at all
 const componentPath = path.resolve('.', global.vfComponentPath).replace(/\\/g, '/');
 const componentDirectories = config.vfConfig.vfComponentDirectories || ['vf-core-components'];
 const buildDestionation = path.resolve('.', global.vfBuildDestination).replace(/\\/g, '/');
