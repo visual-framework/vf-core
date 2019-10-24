@@ -9,9 +9,9 @@ module.exports = function(gulp, buildDestionation) {
 
   // Copy compiled css/js and other assets
   gulp.task('vf-build:copy-assets', function() {
+    console.info('Copying `/temp/build-files` assets.');
     return gulp.src(buildDestionation + '/**/*')
       .pipe(gulp.dest('./build'));
-      console.info('Copied `/temp/build-files` assets.');
   });
 
   // Rollup all-in-one build as a static site for CI
