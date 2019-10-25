@@ -13,7 +13,5 @@ module.exports = function(gulp, path, componentPath, reload) {
       usePolling: true // uses fs.watchFile(), otherwise this gets stuck in a loop
     }, gulp.series('vf-templates-precompile'));
     gulp.watch([componentPath + '/**/**/assets/*'], gulp.series('vf-component-assets')).on('change', reload);
-
   });
-
 };
