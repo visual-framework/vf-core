@@ -17,6 +17,10 @@ const path = require('path');
  *    NOTE: Don't forget to symlink: `cd components` `ln -s ../node_modules/your-optional-collection-of-dependencies`
  *   ],
  *  "vfBuildDestination": "./build",
+ *  "vfBuildFractalMode": "normal",
+ *    NOTE : run fractal as 'normal' full build of static assets,
+ *           'dataobject' to render only to memory or
+ *           'none' to not build at all
  *  "vfThemePath": "@frctl/mandelbrot"
  *},
  */
@@ -39,12 +43,8 @@ global.vfNamespace = config.vfConfig.vfNamespace || "vf-";
 global.vfComponentPath = config.vfConfig.vfComponentPath || path.resolve('.', 'components');
 global.vfBuildDestination = config.vfConfig.vfBuildDestination || 'temp/build-files';
 global.vfThemePath = config.vfConfig.vfThemePath || './tools/vf-frctl-theme';
+global.vfBuildFractalMode = config.vfConfig.vfBuildFractalMode || 'normal'; 
 global.vfVersion = vfCoreConfig.version || 'not-specified';
-global.vfBuildFractalMode = vfCoreConfig.vfConfig.vfBuildFractalMode || 'normal'; 
-  // in vf-build specifices to run fractal as 'normal' full build of static assets,
-  // 'dataobject' to render only to memory or
-  // 'none' to not build at all
-
 const componentPath = path.resolve('.', global.vfComponentPath).replace(/\\/g, '/');
 const componentDirectories = config.vfConfig.vfComponentDirectories || ['vf-core-components'];
 const buildDestionation = path.resolve('.', global.vfBuildDestination).replace(/\\/g, '/'); 

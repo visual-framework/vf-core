@@ -26,9 +26,12 @@ module.exports = function(gulp, buildDestionation) {
       // don't invoke fractal at all
       gulpFractalBuildTask = 'vf-build:fractaldummybuild';
       break;
-      console.error('Fractal build mode not supplied.');
-    default:
     case 'normal':
+      // standard full build of all static html for components
+      gulpFractalBuildTask = 'vf-fractal:build';
+      break;
+    default:
+      console.warn(`Unrecognised vfBuildFractalMode option of ${global.vfBuildFractalMode}, proceeding with standard build.`)
       // standard full build of all static html for components
       gulpFractalBuildTask = 'vf-fractal:build';
       break;
