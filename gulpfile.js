@@ -16,12 +16,13 @@ const {componentPath, componentDirectories, buildDestionation} = require('./tool
 require('./tools/gulp-tasks/_gulp_rollup.js')(gulp, path, componentPath, componentDirectories, buildDestionation);
 
 
-// The below gulp taks are intended for use only by vf-core
+// The below gulp tasks are intended for use only by vf-core
 // ---
 
 // Copy prepared files for deployment
 // Intended for use directly by vf-core
 gulp.task('vf-core:deploy-move-build-files', function() {
+  // vf-core copy some assets into /temp as to de-conflict fractal asset writing
   console.info('Copying `/temp/build-files` assets.');
   return gulp.src(buildDestionation + '/**/*')
     .pipe(gulp.dest('./build')); // hard-coded as this is used only by vf-core directly
