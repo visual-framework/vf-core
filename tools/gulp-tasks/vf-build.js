@@ -7,13 +7,6 @@
 
 module.exports = function(gulp, buildDestionation) {
 
-  // Copy compiled css/js and other assets
-  gulp.task('vf-build:copy-assets', function() {
-    console.info('Copying `/temp/build-files` assets.');
-    return gulp.src(buildDestionation + '/**/*')
-      .pipe(gulp.dest('./build'));
-  });
-
   // Support for client projects using vf-build
   // but we need to see which Fractal build mode to invoke (or not at all, when it's not needed)
   let gulpFractalBuildTask;
@@ -39,7 +32,7 @@ module.exports = function(gulp, buildDestionation) {
     done();
   });
 
-  // Rollup all-in-one build as a static site for CI
+  // Rollup all-in-one build all VF tasks as static assets
   gulp.task('vf-build',
     gulp.series(
       'vf-clean',
@@ -48,8 +41,7 @@ module.exports = function(gulp, buildDestionation) {
         'vf-css:generate-component-css',
         gulp.series('vf-css:build', 'vf-css:production', 'vf-component-assets', 'vf-scripts'),
         gulp.series(gulpFractalBuildTask, 'vf-templates-precompile')
-      ),
-      'vf-build:copy-assets'
+      )
   ));
 
   return gulp;
