@@ -531,10 +531,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   --vf-button__color__background--default: var(--vf-color--grey);
   --vf-button__color__background--default-dark: var(--vf-color--grey--darkest);
   --vf-button__color__border--default-visited: var(--vf-color--grey--lightest);
-  
+
   @<span class="hljs-keyword">include</span> set-type(text-button--<span class="hljs-number">1</span>);
 
   appearance: none;
+  <span class="hljs-attribute">backface-visibility</span>: hidden;
   <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--black);
   <span class="hljs-attribute">background-color</span>: var(--vf-button-background-color, var(--vf-button__color__background--default));
   <span class="hljs-attribute">border</span>: <span class="hljs-number">4px</span> solid set-ui-color(vf-ui-color--black);
@@ -549,75 +550,25 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">position</span>: relative;
   <span class="hljs-attribute">text-align</span>: center;
   <span class="hljs-attribute">text-decoration</span>: none;
-  <span class="hljs-comment">// transform: translate(0, 0);</span>
-  <span class="hljs-comment">// transform-style: preserve-3d;</span>
-  <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">50ms</span>;
+  <span class="hljs-attribute">transform</span>: translate(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+  <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">125ms</span>; <span class="hljs-comment">// Ideally we want this to be 50ms but there's an issue in Webkit/Safari on box-shadow animations</span>
+                                <span class="hljs-comment">// additionally we can't do a pseude :before/:after as we need to support &lt;button&gt; elements</span>
+                                <span class="hljs-comment">// https://github.com/visual-framework/vf-core/pull/632</span>
 
-  <span class="hljs-comment">// &amp;::before {</span>
-  <span class="hljs-comment">//   background-color: set-ui-color(vf-ui-color--black);</span>
-  <span class="hljs-comment">//   background-color: var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark));</span>
-  <span class="hljs-comment">//   border: 4px solid set-ui-color(vf-ui-color--black);</span>
-  <span class="hljs-comment">//   border: 4px solid var(--vf-button-shadow-border-color, var(--vf-button__color__background--default-dark));</span>
-  <span class="hljs-comment">//   content: '';</span>
-  <span class="hljs-comment">//   height: 100%;</span>
-  <span class="hljs-comment">//   left: 0;</span>
-  <span class="hljs-comment">//   position: absolute;</span>
-  <span class="hljs-comment">//   top: 0;</span>
-  <span class="hljs-comment">//   transform: translateX(4px) translateY(4px) translateZ(-1px);</span>
-  <span class="hljs-comment">//   transition: all linear 50ms;</span>
-  <span class="hljs-comment">//   width: 100%;</span>
-  <span class="hljs-comment">// }</span>
-
-  <span class="hljs-comment">// Visited Styles</span>
-  <span class="hljs-comment">// &amp;:visited {</span>
-  <span class="hljs-comment">//   border-bottom-color: var(--vf-button-border-color--visited, var(--vf-button__color__border--default-visited) );</span>
-  <span class="hljs-comment">//   // &amp;::after {</span>
-  <span class="hljs-comment">//   //   background-color: var(--vf-button-border-color--visited, var(--vf-button__color__border--default-visited) );</span>
-  <span class="hljs-comment">//   //   bottom: -4px;</span>
-  <span class="hljs-comment">//   //   content: '';</span>
-  <span class="hljs-comment">//   //   height: 4px;</span>
-  <span class="hljs-comment">//   //   left: -4px;</span>
-  <span class="hljs-comment">//   //   position: absolute;</span>
-  <span class="hljs-comment">//   //   transition: all linear 50ms;</span>
-  <span class="hljs-comment">//   //   width: calc(100% + 8px);</span>
-  <span class="hljs-comment">//   // }</span>
-  <span class="hljs-comment">//   // &amp;:hover {</span>
-  <span class="hljs-comment">//   //   &amp;::after {</span>
-  <span class="hljs-comment">//   //     background-color: var(--vf-button-shadow-border-color, var(--vf-button__color__background--default-dark));</span>
-  <span class="hljs-comment">//   //     transition: all linear 50ms;</span>
-  <span class="hljs-comment">//   //   }</span>
-  <span class="hljs-comment">//   // }</span>
-  <span class="hljs-comment">//   &amp;:hover {</span>
-  <span class="hljs-comment">//     border-bottom-color: var(--vf-button-shadow-border-color, var(--vf-button__color__background--default-dark));</span>
-  <span class="hljs-comment">//   }</span>
-  <span class="hljs-comment">// }</span>
 
   <span class="hljs-comment">// Hover and Focus Styles</span>
   &amp;:focus,
   &amp;:hover {
     <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">4px</span> <span class="hljs-number">4px</span> <span class="hljs-number">0</span> var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">4px</span> rgba(set-ui-color(vf-ui-color--black), .<span class="hljs-number">25</span>), <span class="hljs-variable">$button-hover-fix</span>;
     <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
-    <span class="hljs-attribute">transform</span>: translate(<span class="hljs-number">4px</span>, <span class="hljs-number">4px</span>) translateZ(<span class="hljs-number">1px</span>);
-    <span class="hljs-comment">// transition: all linear 50ms;</span>
-
-    <span class="hljs-comment">// &amp;::before {</span>
-    <span class="hljs-comment">//   box-shadow: 2px 2px 4px rgba(set-ui-color(vf-ui-color--black), .25);</span>
-    <span class="hljs-comment">//   transform: translateX(0) translateY(0) translateZ(-1px);</span>
-    <span class="hljs-comment">//   transition: all linear 50ms;</span>
-    <span class="hljs-comment">// }</span>
+    <span class="hljs-attribute">transform</span>: translate(<span class="hljs-number">4px</span>, <span class="hljs-number">4px</span>);
+    <span class="hljs-attribute">transition</span>: all linear <span class="hljs-number">125ms</span>;
   }
 
   <span class="hljs-comment">// Active Styles</span>
   &amp;:active {
     <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0px</span> <span class="hljs-number">0px</span> <span class="hljs-number">0</span> var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> rgba(set-ui-color(vf-ui-color--black), .<span class="hljs-number">125</span>), <span class="hljs-variable">$button-hover-fix</span>;
     <span class="hljs-attribute">transform</span>: translate(<span class="hljs-number">8px</span>, <span class="hljs-number">8px</span>) translateZ(<span class="hljs-number">1px</span>);
-    <span class="hljs-comment">// transition: all linear 25ms;</span>
-
-    <span class="hljs-comment">// &amp;::before {</span>
-    <span class="hljs-comment">//   box-shadow: 2px 2px 2px rgba(set-ui-color(vf-ui-color--black), .125);</span>
-    <span class="hljs-comment">//   transform: translateX(-4px) translateY(-4px) translateZ(-1px);</span>
-    <span class="hljs-comment">//   transition: all linear 25ms;</span>
-    <span class="hljs-comment">// }</span>
   }
 }
 
@@ -677,10 +628,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-button--rounded</span> {
   <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">$vf-radius--md</span>;
-
-  <span class="hljs-comment">// &amp;::before {</span>
-  <span class="hljs-comment">//   border-radius: $vf-radius--md;</span>
-  <span class="hljs-comment">// }</span>
 }
 
 <span class="hljs-selector-class">.vf-button--sm</span> {
@@ -758,7 +705,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-button/vf-button.scss
         </li>
         <li class="vf-list__item">
-          Size: 7 KB
+          Size: 5.3 KB
         </li>
       </ul>
     </section>
