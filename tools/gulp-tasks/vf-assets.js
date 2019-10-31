@@ -32,8 +32,15 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
       .pipe(gulp.dest(buildDestionation + '/assets'));
   });
 
+  // make each component's `./*.js` files available
+  gulp.task('vf-component-assets:js', function() {
+    return gulp
+      .src([componentPath + '/vf-core-components/**/*.js', componentPath + '/**/*.js'])
+      .pipe(gulp.dest(buildDestionation + '/assets'));
+  });
+
   gulp.task('vf-component-assets', gulp.parallel(
-    'vf-component-assets:directory', 'vf-component-assets:compiled-css'
+    'vf-component-assets:directory', 'vf-component-assets:compiled-css', 'vf-component-assets:js'
   ));
 
   return gulp;
