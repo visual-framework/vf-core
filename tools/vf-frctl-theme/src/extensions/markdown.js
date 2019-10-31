@@ -1,6 +1,6 @@
 'use strict';
 
-const renderMarkdown   = require('marked');
+const renderMarkdown = require('marked');
 const nunjucks = require('nunjucks');
 
 // Add support for markdown blocks inside html
