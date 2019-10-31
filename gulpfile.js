@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
 
-// Pull in some optional configuration from the package.json file, a la:
+// Pull configuration from the package.json:
 const {componentPath, componentDirectories, buildDestionation} = require('./tools/vf-config');
 
 // Gulp tasks live in their own files, for the sake of clarity.
