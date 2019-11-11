@@ -50,6 +50,11 @@
   text-rendering: optimizeLegibility;
 }
 
+// Avoids an issue with FireFox applying an opacity value on placeholders
+// https://github.com/visual-framework/vf-core/issues/519#issuecomment-552398465
+.vf-form__input::placeholder {
+  opacity: 1;
+}
 
 .vf-form__input::placeholder,
 .vf-form__select::placeholder,
