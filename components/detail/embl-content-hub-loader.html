@@ -468,17 +468,9 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <span class="hljs-comment">// track time it takes for link to be shown</span>
       <span class="hljs-keyword">if</span> (emblContentHubShowTimers) { <span class="hljs-built_in">console</span>.time(<span class="hljs-string">'timer for import '</span> + linkPosition); }
 
-      <span class="hljs-comment">// if native, no need to wait</span>
-      <span class="hljs-keyword">if</span> (emblContentHubLinks[linkPosition].import !== <span class="hljs-literal">undefined</span>) {
-        emblContentHubGrabTheContent(emblContentHubLinks[linkPosition],linkPosition);
-        <span class="hljs-keyword">if</span> (linkPosition+<span class="hljs-number">1</span> == emblContentHubLinks.length) {
-          emblContentHubSignalFinished();
-        }
-      } <span class="hljs-keyword">else</span> {
-        <span class="hljs-comment">// await the import's loading</span>
-        emblContentHubAwaitLoading(emblContentHubLinks[linkPosition],linkPosition);
-      }
-
+      <span class="hljs-comment">// await the load of the html import from the polyfill </span>
+      <span class="hljs-comment">// note: we use polyfill in all cases; see https://github.com/visual-framework/vf-core/issues/508</span>
+      emblContentHubAwaitLoading(emblContentHubLinks[linkPosition],linkPosition);
     }());
   }
 
@@ -644,7 +636,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-content-hub-loader/embl-content-hub-loader__fetch.js
         </li>
         <li class="vf-list__item">
-          Size: 8 KB
+          Size: 7.8 KB
         </li>
       </ul>
     </section>
