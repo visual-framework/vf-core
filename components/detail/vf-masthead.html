@@ -555,6 +555,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-selector-class">.vf-header</span> <span class="hljs-selector-class">.vf-masthead</span> {
   grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+
+  @<span class="hljs-keyword">media</span> (max-width: 1023px) {
+    @<span class="hljs-keyword">include</span> padding--inline(all, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md));
+  }
 }
 
 <span class="hljs-selector-class">.embl-group-header__header</span> <span class="hljs-selector-class">.vf-masthead</span> {
@@ -575,7 +579,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-masthead/vf-masthead--supports.scss
         </li>
         <li class="vf-list__item">
-          Size: 119 Bytes
+          Size: 232 Bytes
         </li>
       </ul>
     </section>
@@ -698,6 +702,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+
+  @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-variable">$vf-breakpoint--sm</span>) {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1em</span>;
+  }
 }
 
 <span class="hljs-selector-class">.vf-masthead__title</span> {

@@ -1,4 +1,4 @@
-// vf-inlay 
+// vf-inlay
 
 @import 'package.variables.scss';
 // Debug information from component's `package.json`:
@@ -25,7 +25,11 @@
   /* stylelint-enable */
 
   &:last-of-type {
-    @include margin--block(bottom, $vf-inlay__spacing--bottom);
+    @include margin--block(bottom, $vf-inlay__spacing--bottom--narrow);
+
+    @media (min-width: 1024px) {
+      @include margin--block(bottom, $vf-inlay__spacing--bottom);
+    }
   }
 
   // overides vf-grid's natural inclination to be full width
@@ -49,15 +53,26 @@
   grid-column: 2 / 3;
   /* stylelint-disable declaration-colon-space-after, indentation */
   grid-template-columns:
-    minmax(var(--page-grid-gap), 60px)
+    minmax(var(--page-grid-gap), 1em)
     [main-start]
       minmax(auto, 100%)
       minmax(auto, 22.125em)
     [main-end]
-    minmax(var(--page-grid-gap), 60px)
+    minmax(var(--page-grid-gap), 1em)
   ;
-  /* stylelint-enable */
   padding-top: 36px;
+
+  @media (max-width: 1023px) {
+    grid-template-columns:
+      var(--page-grid-gap)
+      [main-start]
+        minmax(auto, 100%)
+        minmax(auto, 22.125em)
+      [main-end]
+      var(--page-grid-gap)
+    ;
+  }
+  /* stylelint-enable */
 }
 
 .vf-inlay__content--full-width {

@@ -552,12 +552,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-footer__legal</span> {
   <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
-  <span class="hljs-attribute">display</span>: grid;
-  grid-template-<span class="hljs-attribute">columns</span>: repeat(<span class="hljs-number">4</span>, max-content);
 
   <span class="hljs-selector-class">.vf-footer__legal-text</span>,
   <span class="hljs-selector-class">.vf-footer__link</span> {
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">12px</span>;
+  }
+
+  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
+    <span class="hljs-attribute">display</span>: grid;
+    grid-template-<span class="hljs-attribute">columns</span>: repeat(<span class="hljs-number">4</span>, max-content);
   }
 }
 
@@ -586,7 +589,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 
   <span class="hljs-selector-class">.vf-links</span> {
-    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
     <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">12px</span>;
   }
@@ -594,6 +596,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.vf-links__item</span> {
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
   }
+
+  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
+    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">4rem</span>;
+  }
+  
 }
 
 <span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-links__link</span> {
@@ -627,7 +634,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-footer/vf-footer.scss
         </li>
         <li class="vf-list__item">
-          Size: 2 KB
+          Size: 2.1 KB
         </li>
       </ul>
     </section>

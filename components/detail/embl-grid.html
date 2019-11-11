@@ -323,15 +323,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 
 <span class="hljs-selector-class">.embl-grid</span> {
-  <span class="hljs-attribute">display</span>: grid;
   grid-column: main;
-  grid-<span class="hljs-attribute">column-gap</span>: var(--page-grid-gap);
-  <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after */</span>
-  grid-template-<span class="hljs-attribute">columns</span>:
-    calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
-    repeat(auto-fit, minmax(<span class="hljs-number">288px</span>, <span class="hljs-number">1</span>fr))
-  ;
-  <span class="hljs-comment">/* stylelint-enable */</span>
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
 
   &amp; &gt; :first-child {
@@ -342,11 +334,23 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       grid-column: span <span class="hljs-number">1</span>;
     }
   }
+
   &amp; &gt; *:not(:first-child) {
     @<span class="hljs-keyword">media</span> (max-width: 845px) {
       grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
     }
   }
+  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--sm</span>) {
+    <span class="hljs-attribute">display</span>: grid;
+    grid-<span class="hljs-attribute">column-gap</span>: var(--page-grid-gap);
+    <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after */</span>
+    grid-template-<span class="hljs-attribute">columns</span>:
+      calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
+      repeat(auto-fit, minmax(<span class="hljs-number">288px</span>, <span class="hljs-number">1</span>fr))
+    ;
+    <span class="hljs-comment">/* stylelint-enable */</span>
+  }
+  
 }
 
 <span class="hljs-selector-class">.embl-grid--has-centered-content</span> {
@@ -455,7 +459,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-grid/embl-grid.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.9 KB
+          Size: 3 KB
         </li>
       </ul>
     </section>

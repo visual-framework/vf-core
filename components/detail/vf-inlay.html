@@ -532,7 +532,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <div class="FileBrowser-itemPreview">
         
         <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-inlay </span>
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-inlay</span>
 
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
@@ -559,7 +559,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-comment">/* stylelint-enable */</span>
 
   &amp;:last-of-type {
-    @<span class="hljs-keyword">include</span> margin--block(bottom, <span class="hljs-variable">$vf-inlay__spacing--bottom</span>);
+    @<span class="hljs-keyword">include</span> margin--block(bottom, <span class="hljs-variable">$vf-inlay__spacing--bottom--narrow</span>);
+
+    @<span class="hljs-keyword">media</span> (min-width: 1024px) {
+      @<span class="hljs-keyword">include</span> margin--block(bottom, <span class="hljs-variable">$vf-inlay__spacing--bottom</span>);
+    }
   }
 
   <span class="hljs-comment">// overides vf-grid's natural inclination to be full width</span>
@@ -583,15 +587,26 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
   <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after, indentation */</span>
   grid-template-<span class="hljs-attribute">columns</span>:
-    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+    minmax(var(--page-grid-gap), <span class="hljs-number">1em</span>)
     [main-start]
       minmax(auto, <span class="hljs-number">100%</span>)
       minmax(auto, <span class="hljs-number">22.125em</span>)
     [main-end]
-    minmax(var(--page-grid-gap), <span class="hljs-number">60px</span>)
+    minmax(var(--page-grid-gap), <span class="hljs-number">1em</span>)
   ;
-  <span class="hljs-comment">/* stylelint-enable */</span>
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">36px</span>;
+
+  @<span class="hljs-keyword">media</span> (max-width: 1023px) {
+    grid-template-<span class="hljs-attribute">columns</span>:
+      var(--page-grid-gap)
+      [main-start]
+        minmax(auto, <span class="hljs-number">100%</span>)
+        minmax(auto, <span class="hljs-number">22.125em</span>)
+      [main-end]
+      var(--page-grid-gap)
+    ;
+  }
+  <span class="hljs-comment">/* stylelint-enable */</span>
 }
 
 <span class="hljs-selector-class">.vf-inlay__content--full-width</span> {
@@ -631,7 +646,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-inlay/vf-inlay.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.8 KB
+          Size: 2.2 KB
         </li>
       </ul>
     </section>
@@ -650,7 +665,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-comment">// Default component variables</span>
 <span class="hljs-comment">// ------------------------------------------------------------</span>
 
-
+<span class="hljs-variable">$vf-inlay__spacing--bottom--narrow</span>: <span class="hljs-number">36px</span>;
 <span class="hljs-variable">$vf-inlay__spacing--bottom</span>: <span class="hljs-number">100px</span>;
 </code>
         </pre>
@@ -667,7 +682,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-inlay/vf-inlay.variables.scss
         </li>
         <li class="vf-list__item">
-          Size: 295 Bytes
+          Size: 336 Bytes
         </li>
       </ul>
     </section>

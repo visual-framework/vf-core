@@ -539,7 +539,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-selector-class">.vf-summary--news</span> {
 
   grid-<span class="hljs-attribute">column-gap</span>: <span class="hljs-number">0</span>;
-  grid-template-<span class="hljs-attribute">columns</span>: minmax(<span class="hljs-number">0</span>, auto) <span class="hljs-number">1</span>fr;
+  grid-row-gap: <span class="hljs-number">16px</span>;
   grid-template-rows: auto;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
 
@@ -581,6 +581,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     }
   }
 
+  @<span class="hljs-keyword">media</span> (min-width: 600px) {
+    grid-row-gap: unset;
+    grid-template-<span class="hljs-attribute">columns</span>: minmax(<span class="hljs-number">0</span>, auto) <span class="hljs-number">1</span>fr;
+  }
+
 }
 </code>
         </pre>
@@ -597,7 +602,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-summary/vf-summary--news.scss
         </li>
         <li class="vf-list__item">
-          Size: 897 Bytes
+          Size: 981 Bytes
         </li>
       </ul>
     </section>

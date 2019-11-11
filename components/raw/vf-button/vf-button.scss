@@ -19,6 +19,7 @@ $button-hover-fix: -5px -5px rgba(0, 0, 0, 0);
 
   @include set-type(text-button--1);
 
+  align-self: center;
   appearance: none;
   backface-visibility: hidden;
   background-color: set-ui-color(vf-ui-color--black);
@@ -36,9 +37,10 @@ $button-hover-fix: -5px -5px rgba(0, 0, 0, 0);
   text-align: center;
   text-decoration: none;
   transform: translate(0, 0);
-  transition: all linear 125ms; // Ideally we want this to be 50ms but there's an issue in Webkit/Safari on box-shadow animations
-                                // additionally we can't do a pseude :before/:after as we need to support <button> elements
-                                // https://github.com/visual-framework/vf-core/pull/632
+  transition: all linear 125ms;
+  // Ideally we want this to be 50ms but there's an issue in Webkit/Safari on box-shadow animations
+  // additionally we can't do a pseude :before/:after as we need to support <button> elements
+  // https://github.com/visual-framework/vf-core/pull/632
 
 
   // Hover and Focus Styles

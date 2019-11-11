@@ -73,14 +73,19 @@
 
 .vf-footer__legal {
   color: #ffffff;
-  display: grid;
-  grid-template-columns: repeat(4, -webkit-max-content);
-  grid-template-columns: repeat(4, max-content);
 }
 
 .vf-footer__legal .vf-footer__legal-text,
 .vf-footer__legal .vf-footer__link {
   padding-top: 12px;
+}
+
+@media (min-width: 1024px) {
+  .vf-footer__legal {
+    display: grid;
+    grid-template-columns: repeat(4, -webkit-max-content);
+    grid-template-columns: repeat(4, max-content);
+  }
 }
 
 .vf-footer__link {
@@ -123,13 +128,18 @@
 }
 
 .vf-footer__links-group .vf-links {
-  margin-bottom: 48px;
   padding-bottom: 0;
   padding-top: 12px;
 }
 
 .vf-footer__links-group .vf-links__item {
   margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  .vf-footer__links-group {
+    padding-bottom: 4rem;
+  }
 }
 
 .vf-footer .vf-links__link {
