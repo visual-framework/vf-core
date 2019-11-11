@@ -447,6 +447,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">text-rendering</span>: optimizeLegibility;
 }
 
+<span class="hljs-comment">// Avoids an issue with FireFox applying an opacity value on placeholders</span>
+<span class="hljs-comment">// https://github.com/visual-framework/vf-core/issues/519#issuecomment-552398465</span>
+<span class="hljs-selector-class">.vf-form__input</span>::placeholder {
+  opacity: <span class="hljs-number">1</span>;
+}
 
 <span class="hljs-selector-class">.vf-form__input</span>::placeholder,
 .vf-form__select::placeholder,
@@ -567,7 +572,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-form/vf-form__input/vf-form__input.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.7 KB
+          Size: 3.9 KB
         </li>
       </ul>
     </section>
