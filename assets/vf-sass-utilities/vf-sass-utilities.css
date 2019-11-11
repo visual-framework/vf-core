@@ -39,12 +39,15 @@
   --vf-ui-color--off-white: #fafafa;
 }
 
-/*!
- * Component: @visual-framework/vf-sass-utilities
- * Version: 1.0.0-beta.8
- * Location: components/vf-sass-utilities
- */
-.vf-js .vf-sr-only {
+html:not(.vf-disable-deprecated) {
+  /*!
+  * Component: @visual-framework/vf-sass-utilities
+  * Version: 1.0.0-beta.8
+  * Location: components/vf-sass-utilities
+  */
+}
+
+html:not(.vf-disable-deprecated) .vf-js .vf-sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -55,11 +58,11 @@
   border: 0;
 }
 
-.vf-et-al {
+html:not(.vf-disable-deprecated) .vf-et-al {
   position: relative;
 }
 
-.vf-et-al::after {
+html:not(.vf-disable-deprecated) .vf-et-al::after {
   color: inherit;
   content: 'et al.';
   font: inherit;
@@ -67,6 +70,6 @@
   right: 0;
 }
 
-.vf-no-wrap {
+html:not(.vf-disable-deprecated) .vf-no-wrap {
   white-space: nowrap;
 }
