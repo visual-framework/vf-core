@@ -51,17 +51,9 @@ function emblContentHubFetch() {
       // track time it takes for link to be shown
       if (emblContentHubShowTimers) { console.time('timer for import ' + linkPosition); }
 
-      // if native, no need to wait
-      if (emblContentHubLinks[linkPosition].import !== undefined) {
-        emblContentHubGrabTheContent(emblContentHubLinks[linkPosition],linkPosition);
-        if (linkPosition+1 == emblContentHubLinks.length) {
-          emblContentHubSignalFinished();
-        }
-      } else {
-        // await the import's loading
-        emblContentHubAwaitLoading(emblContentHubLinks[linkPosition],linkPosition);
-      }
-
+      // await the load of the html import from the polyfill 
+      // note: we use polyfill in all cases; see https://github.com/visual-framework/vf-core/issues/508
+      emblContentHubAwaitLoading(emblContentHubLinks[linkPosition],linkPosition);
     }());
   }
 
