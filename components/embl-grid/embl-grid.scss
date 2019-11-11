@@ -11,15 +11,7 @@
 
 
 .embl-grid {
-  display: grid;
   grid-column: main;
-  grid-column-gap: var(--page-grid-gap);
-  /* stylelint-disable declaration-colon-space-after */
-  grid-template-columns:
-    calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
-    repeat(auto-fit, minmax(288px, 1fr))
-  ;
-  /* stylelint-enable */
   margin-bottom: 48px;
 
   & > :first-child {
@@ -30,11 +22,23 @@
       grid-column: span 1;
     }
   }
+
   & > *:not(:first-child) {
     @media (max-width: 845px) {
       grid-column: 1 / -1;
     }
   }
+  @media (min-width: $vf-breakpoint--sm) {
+    display: grid;
+    grid-column-gap: var(--page-grid-gap);
+    /* stylelint-disable declaration-colon-space-after */
+    grid-template-columns:
+      calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
+      repeat(auto-fit, minmax(288px, 1fr))
+    ;
+    /* stylelint-enable */
+  }
+  
 }
 
 .embl-grid--has-centered-content {
