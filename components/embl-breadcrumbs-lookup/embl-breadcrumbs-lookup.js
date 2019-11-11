@@ -21,7 +21,7 @@ function emblBreadcrumbsLookup(metaProperties) {
   var emblBreadcrumbTarget = document.querySelectorAll('[data-embl-js-breadcrumbs-lookup]');
 
   if (emblBreadcrumbTarget.length === 0) {
-    console.warn('There is no `[data-embl-js-breadcrumbs-lookup]` in which to insert the breadcrumbs; exiting');
+    // console.warn('There is no `[data-embl-js-breadcrumbs-lookup]` in which to insert the breadcrumbs; exiting');
     return false;
   }
   if (emblBreadcrumbTarget.length > 1) {
