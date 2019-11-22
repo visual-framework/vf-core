@@ -1,0 +1,405 @@
+// ebi-header-footer--header
+
+// SITE-WIDE MASTHEAD LAYOUT AND SIZE
+// Generic rules for global and local mastheads
+
+// GLOBAL MASTHEAD
+#local-title a { border-bottom: none; }
+
+.masthead {
+  // underline links in the textual area of the local masthead
+  #local-title .columns {
+    a { border-bottom: 1px dotted $masthead-font-color; }
+    a.button,
+    a:hover { border-bottom: none; }
+  }
+}
+
+// Global menu styling
+nav ul#global-nav.menu li { border-right: none; display: inline-block; }
+
+// Disable masthead-black-bar search when told
+body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display: none; }
+
+// Mobile logo
+// @media screen and (max-width: 40em) {
+  // nav ul#global-nav.menu li.home { display: none; }
+  // nav ul#global-nav.menu li.home-mobile a {
+  //   display: block;
+  //   height: 50px;
+  //   width: 67px;
+  //   background-image: url("../images/logos/EMBL-EBI/EMBL_EBI_Logo_white.svg");
+  //   background-size: 64px 47px;
+  //   background-repeat: no-repeat;
+  //   margin-left: 6px;
+  // }
+// }
+// @media screen and (min-width: 40em) {
+//   nav ul#global-nav.menu li.home-mobile { display: none; }
+// }
+
+.masthead-black-bar {
+  background-color: $ebi-colour-dark;
+
+  > .row {
+    opacity: 0;
+
+    body.ebi-black-bar-loaded & {
+      opacity: 1;
+      opacity: unset; // show the blackbar contents after JS has strapped
+    }
+  }
+
+  &,
+  a,
+  a:hover {
+    color: white;
+  }
+
+  a:focus {
+    box-shadow: 0 0 2px color-pick-contrast($masthead-font-color, $ebi-colour-light $ebi-colour-dark, 30%);
+  }
+
+  .global-masthead-interactive-banner {
+    height: 0; overflow: hidden;
+    display: none;
+    background-color: #000;
+
+    &.active {
+      display: block;
+      height: auto; overflow: visible;
+    }
+  }
+
+  .search-bar {
+    .close-button:hover, .close-button:focus {
+      color: #fff;
+    }
+  }
+
+  .global-nav {
+    font-size: .9rem;
+
+    a,
+    a:hover {
+      color: white;
+      border-bottom: none;
+    }
+
+    li a:hover,
+    li a:active,
+    li a:focus,
+    li.active a,
+    li.active-trail a {
+      color: $ebi-colour-white;
+      border-bottom: none;
+      background-color: #000;
+      // margin-left: 3px;
+      // position: relative;
+      // top: -3px;
+    }
+    li.active a {
+      font-weight: 700;
+    }
+
+    li {
+      a:before {
+        font-family: 'EBI-Generic';
+        display: inline-block; // safari 9 & 10 fix
+        padding-right: .4rem;
+      }
+      // a:hover,
+      // a:active,
+      // a:focus {
+      //   background-color: #000;
+      // }
+    }
+
+    li.home,
+    li.services,
+    li.research,
+    li.training,
+    li.about,
+    li.embl,
+    li.ebi,
+    li.grenoble,
+    li.hamburg,
+    li.heidelberg,
+    li.hinxton,
+    li.rome,
+    li.barcelona {
+      float: right;
+
+      &.hover {
+        float: none;
+      }
+      &.active {
+        float: left;
+      }
+    }
+
+    li.embl,
+    // li.ebi,
+    li.grenoble,
+    li.hamburg,
+    li.heidelberg,
+    li.hinxton,
+    li.rome,
+    li.barcelona {
+      &.hover a:before {
+        content: "" !important;
+      }
+    }
+
+    li.where {
+      a:before {
+        content: '[';
+      }
+    }
+
+    // custom colour for Home
+    li.home,
+    li.ebi {
+      a:before {
+        content: 'H';
+      }
+      a:hover,
+      a:active,
+      a:focus {
+        // background-color: $ebi-colour-petrol;
+      }
+    }
+
+    // custom colour for Services
+    li.services {
+      a:before {
+        content: '(';
+      }
+      a:hover,
+      a:active,
+      a:focus {
+        // background-color: $ebi-colour-services;
+      }
+    }
+
+    // custom colour for Research
+    li.research {
+      a:before {
+        content: ')';
+      }
+      a:hover,
+      a:active,
+      a:focus {
+        // background-color: $ebi-colour-light-green;
+      }
+    }
+
+    // custom colour for Training
+    li.training {
+      a:before {
+        content: 't';
+      }
+      a:hover,
+      a:active,
+      a:focus {
+        // background-color: $ebi-colour-training;
+      }
+    }
+
+    // custom colour for about us
+    li.about {
+      a:before {
+        content: 'i';
+      }
+    }
+    li.about a:hover,
+    li.about a:active,
+    li.about a:focus,
+    li.about-us a:hover,
+    li.about-us a:active,
+    li.about-us a:focus {
+      // background-color: $ebi-colour-services;
+    }
+
+    // custom icon for search
+    li.search a:before {
+      font-family: 'EBI-Functional';
+      content: '1';
+      padding-right: 0;
+    }
+
+    li.search .dropdown-pane {
+      width: 100%;
+      left: 0;
+      background: $ebi-colour-dark;
+      border: none;
+      margin-top: -2px;
+      color: #fff;
+    }
+
+  }
+
+}
+
+.masthead-inner {
+  padding-top: 2.5rem;
+  color: #fff;
+}
+// END .masthead
+
+// Local masthead secondary links on mobile
+@media screen and (max-width: 39.9375em) {
+  .masthead ul.menu.dropdown.float-right > li:last-child {
+    margin-bottom: -50px;
+  }
+
+  .masthead-black-bar nav ul.menu {
+    text-align: right;
+
+    li { float: none; display: inline-block; }
+
+    // make icon bar smaller for mobile
+    > li > a > img,
+    > li > a:before {
+      display: block;
+      margin: 0 auto 0.25rem;
+      font-size: 16px;
+    }
+    > li > a {
+      text-align: center;
+      font-size: 10px;
+      padding: .6rem .35rem;
+    }
+  }
+}
+
+// LOCAL MASTHEAD
+#skip-to {
+  top: -5000px;
+  position: absolute;
+}
+
+// Local menu styling
+.masthead {
+  background-repeat: no-repeat;
+  background-position: 100% 82%;
+  background-size: cover;
+  background-color: $masthead-background;
+  // triangle svg background
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="147 248 60 248" xml:space="preserve"><polygon class="st0" fill="%23000" fill-opacity="0.05" points="147,363.6 259.3,363.6 259.3,428.4 203.2,460.9 147,428.4 "/></svg>');
+
+  a,
+  button {
+    // smooth transitions of header elements
+    transition: background-color 0.5s ease, opacity 0.5s ease;
+  }
+
+  h1,
+  h4,
+  p,
+  a, a:hover, a:focus, a:active, a:visited {
+    color: $masthead-font-color;
+  }
+  ul li a {
+    border-bottom: 0;
+  }
+  ul li.is-active a,
+  ul li a:hover,
+  nav ul li a.hover,
+  nav ul li a:hover {
+    background-color: rgba($ebi-colour-dark,.9);
+    color: color-pick-contrast($masthead-font-color, $ebi-colour-light $ebi-colour-dark, 30%);
+  }
+  nav ul li.active a,
+  nav ul li a:active,
+  ul li.active-trail a,
+  ul li.active a:visited,
+  ul li.active-trail a:visited {
+    background-color: color-pick-contrast($masthead-background, $ebi-colour-light $ebi-colour-dark, 30%);
+    color: $masthead-background;
+    border-bottom: 0;
+  }
+
+  nav { clear: both; }
+
+  nav ul.menu li { border-right: 1px solid $masthead-font-color; float: left;
+                    margin-left: 0; /* compliance compatibility */
+                                    }
+  nav ul.menu li:last-child,
+  nav ul.menu li.active { border-right: 0; }
+
+  nav ul.menu li.float-right { border-right: none; }
+}
+
+.masthead-inner nav i { line-height: .9em; font-size: .8em; margin-top: -3px; }
+
+div#local-title { margin-bottom: 1rem; }
+
+.masthead.meta-background-image {
+  background-position: 100% 100%;
+  background-size: initial;
+}
+
+// tweak sticky behaviour
+.masthead.sticky { width: 100%; position: static; -webkit-transform: none; transform: none; }
+.masthead.sticky.is-stuck { position: fixed; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+
+input#local-searchbox,
+#local-search [type="submit"] {
+  display: inline-block; margin: 0;
+  vertical-align: top; border-top: 0; border-right: 0; border-left: 0; box-shadow: none;
+}
+#local-search .input-group-button { vertical-align: top; }
+
+body.section-about .masthead {
+  background-color: $ebi-colour-petrol;
+}
+body.section-industry .masthead {
+  background-color: $ebi-colour-industry;
+}
+body.section-research {
+  .masthead {
+    background-color: $ebi-colour-light-green;
+  }
+  #local-title h1,
+  #local-title p,
+  #local-title a {
+    color: #FFF;
+  }
+}
+body.section-services .masthead {
+  background-color: $ebi-colour-services;
+}
+body.section-training .masthead {
+  background-color: $ebi-colour-training;
+}
+body.section-training #local-title  {
+  h1,
+  #local-title p,
+  #local-title a {
+    color: $ebi-colour-dark;
+  }
+}
+body.section-home .masthead {
+  background-color: $ebi-colour-petrol;
+}
+
+// tweak to foundation menu; hide submenu until rendered by JS
+ul.menu.dropdown ul.menu { display: none; }
+ul.menu.dropdown ul.menu.is-dropdown-submenu.js-dropdown-active { display:block; }
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after { border-color: #FFF transparent transparent; }
+
+// active sidebar items
+.menu > li > a.is-active,
+.menu > li > a.active { font-weight: bold; }
+
+// dropdown arrow
+body .dropdown.menu .has-submenu.is-down-arrow > a::after {
+  border-color: rgba(0,0,0,.4) transparent transparent;
+}
+body .dropdown.menu .has-submenu.is-right-arrow > a::after {
+  border-color: transparent transparent transparent rgba(0,0,0,.4);
+}
+body header nav .menu.dropdown > .has-submenu.is-down-arrow > a::after {
+  border-color: #fff transparent transparent;
+}
