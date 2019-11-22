@@ -9,7 +9,7 @@
 .masthead {
   // underline links in the textual area of the local masthead
   #local-title .columns {
-    a { border-bottom: 1px dotted $masthead-font-color; }
+    a { border-bottom: 1px dotted var(--vf-color--grey--darkest); }
     a.button,
     a:hover { border-bottom: none; }
   }
@@ -39,7 +39,7 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
 // }
 
 .masthead-black-bar {
-  background-color: $ebi-colour-dark;
+  background-color: var(--vf-color--grey--darkest);
 
   > .row {
     opacity: 0;
@@ -57,7 +57,7 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
   }
 
   a:focus {
-    box-shadow: 0 0 2px color-pick-contrast($masthead-font-color, $ebi-colour-light $ebi-colour-dark, 30%);
+    box-shadow: 0 0 2px var(--vf-color--grey--lightest)
   }
 
   .global-masthead-interactive-banner {
@@ -91,7 +91,7 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
     li a:focus,
     li.active a,
     li.active-trail a {
-      color: $ebi-colour-white;
+      color: var(--vf-color--grey--lightest);
       border-bottom: none;
       background-color: #000;
       // margin-left: 3px;
@@ -231,7 +231,7 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
     li.search .dropdown-pane {
       width: 100%;
       left: 0;
-      background: $ebi-colour-dark;
+      background: var(--vf-color--grey--darkest);
       border: none;
       margin-top: -2px;
       color: #fff;
@@ -284,7 +284,7 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
   background-repeat: no-repeat;
   background-position: 100% 82%;
   background-size: cover;
-  background-color: $masthead-background;
+  background-color: var(--vf-color--grey--darkest);
   // triangle svg background
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="147 248 60 248" xml:space="preserve"><polygon class="st0" fill="%23000" fill-opacity="0.05" points="147,363.6 259.3,363.6 259.3,428.4 203.2,460.9 147,428.4 "/></svg>');
 
@@ -298,7 +298,7 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
   h4,
   p,
   a, a:hover, a:focus, a:active, a:visited {
-    color: $masthead-font-color;
+    color: var(--vf-color--grey--darkest);
   }
   ul li a {
     border-bottom: 0;
@@ -307,22 +307,22 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
   ul li a:hover,
   nav ul li a.hover,
   nav ul li a:hover {
-    background-color: rgba($ebi-colour-dark,.9);
-    color: color-pick-contrast($masthead-font-color, $ebi-colour-light $ebi-colour-dark, 30%);
+    background-color: var(--vf-color--grey--darkest);
+    color: var(--vf-color--grey--lightest);
   }
-  nav ul li.active a,
-  nav ul li a:active,
-  ul li.active-trail a,
-  ul li.active a:visited,
-  ul li.active-trail a:visited {
-    background-color: color-pick-contrast($masthead-background, $ebi-colour-light $ebi-colour-dark, 30%);
-    color: $masthead-background;
-    border-bottom: 0;
-  }
+  // nav ul li.active a,
+  // nav ul li a:active,
+  // ul li.active-trail a,
+  // ul li.active a:visited,
+  // ul li.active-trail a:visited {
+  //   background-color: color-pick-contrast(var(--vf-color--grey--darkest), $ebi-colour-light --vf-color--grey--darkest, 30%);
+  //   color: var(--vf-color--grey--darkest);
+  //   border-bottom: 0;
+  // }
 
   nav { clear: both; }
 
-  nav ul.menu li { border-right: 1px solid $masthead-font-color; float: left;
+  nav ul.menu li { border-right: 1px solid var(--vf-color--grey--darkest); float: left;
                     margin-left: 0; /* compliance compatibility */
                                     }
   nav ul.menu li:last-child,
@@ -351,15 +351,15 @@ input#local-searchbox,
 }
 #local-search .input-group-button { vertical-align: top; }
 
-body.section-about .masthead {
-  background-color: $ebi-colour-petrol;
-}
-body.section-industry .masthead {
-  background-color: $ebi-colour-industry;
-}
+// body.section-about .masthead {
+//   background-color: $ebi-colour-petrol;
+// }
+// body.section-industry .masthead {
+//   background-color: $ebi-colour-industry;
+// }
 body.section-research {
   .masthead {
-    background-color: $ebi-colour-light-green;
+    // background-color: $ebi-colour-light-green;
   }
   #local-title h1,
   #local-title p,
@@ -368,20 +368,20 @@ body.section-research {
   }
 }
 body.section-services .masthead {
-  background-color: $ebi-colour-services;
+  // background-color: $ebi-colour-services;
 }
 body.section-training .masthead {
-  background-color: $ebi-colour-training;
+  // background-color: $ebi-colour-training;
 }
 body.section-training #local-title  {
   h1,
   #local-title p,
   #local-title a {
-    color: $ebi-colour-dark;
+    color: var(--vf-color--grey--darkest);
   }
 }
 body.section-home .masthead {
-  background-color: $ebi-colour-petrol;
+  // background-color: $ebi-colour-petrol;
 }
 
 // tweak to foundation menu; hide submenu until rendered by JS
