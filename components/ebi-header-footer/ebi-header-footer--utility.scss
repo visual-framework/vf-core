@@ -6,12 +6,10 @@
   text-align: right;
 }
 
-
 .block { display: block; }
 .clear { clear: both; }
 
 .small { font-size: 80%; line-height: inherit; }
-.nowrap { white-space: nowrap; }
 
 // hide
 .hidden, .hide { display: none !important; }
@@ -28,9 +26,7 @@ a.no-underline {
 
   a.underline,
   .underline {
-    border-bottom-width: 1px;
-    border-bottom-style: dotted;
-    border-bottom-color: inherit;
+    text-decoration: underline;
   }
 }
 .no-underline a:hover,
@@ -42,44 +38,6 @@ a.no-underline:hover {
     border-bottom-color: transparent;
   }
 }
-
-/* List ...... leaders */
-ul.leaders {
-  max-width: 40em;
-  padding: 0;
-  overflow-x: hidden;
-  list-style: none;
-
-  li:before {
-    float: left;
-    width: 0;
-    white-space: nowrap;
-    content:
-       ". . . . . . . . . . . . . . . . . . . . "
-       ". . . . . . . . . . . . . . . . . . . . "
-       ". . . . . . . . . . . . . . . . . . . . "
-       ". . . . . . . . . . . . . . . . . . . . ";
-  }
-
-  span:first-child {
-    padding-right: 0.33em;
-    background: white;
-  }
-  span + span {
-    float: right;
-    padding-left: 0.33em;
-    background: white;
-  }
-}
-
-// List: inline horizontal
-ul.inline li { display: inline-block; }
-// List: icon bullets
-li.icon-bullet { list-style-type: none; text-indent: -1.3em; }
-
-// Badge list
-ul li a.badge,
-ul li.badge { font-size: inherit; }
 
 // custom spacing
 .margin-top-none { margin-top: 0; }
@@ -137,9 +95,3 @@ ul li.badge { font-size: inherit; }
 .padding-bottom-medium { padding-bottom: .5rem; }
 .padding-bottom-large { padding-bottom: 1rem; }
 .padding-bottom-xlarge { padding-bottom: 2rem; }
-
-// Utility classes to size fonts
-// Issue: https://github.com/ebiwd/EBI-Framework/issues/113
-@for $i from 0 through 20 {
-  .size-#{$i*25} { font-size: 25%*$i; }
-}
