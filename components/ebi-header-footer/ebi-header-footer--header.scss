@@ -6,7 +6,10 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
 .ebi-header-footer.masthead-black-bar {
   background-color: var(--vf-color--grey--darkest);
 
-  nav ul#global-nav.menu li { display: inline-block; }
+  nav ul.menu li { 
+    display: inline-block; 
+    margin-bottom: 0;
+  }
 
   > .row {
     opacity: 0;
@@ -15,12 +18,6 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
       opacity: 1;
       opacity: unset; // show the blackbar contents after JS has strapped
     }
-  }
-
-  &,
-  a,
-  a:hover {
-    color: white;
   }
 
   a:focus {
@@ -45,7 +42,10 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
   }
 
   .global-nav {
-    font-size: .9rem;
+
+    li a {
+      color: #fff;
+    }
 
     a:hover,
     li a:hover,
