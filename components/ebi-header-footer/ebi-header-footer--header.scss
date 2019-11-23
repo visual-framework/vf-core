@@ -1,21 +1,12 @@
 // ebi-header-footer--header
 
-.masthead {
-  // underline links in the textual area of the local masthead
-  #local-title .columns {
-    a.button,
-    a:hover { border-bottom: none; }
-  }
-}
-
-// Global menu styling
-nav ul#global-nav.menu li { border-right: none; display: inline-block; }
-
 // Disable masthead-black-bar search when told
 body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display: none; }
 
-.masthead-black-bar {
+.ebi-header-footer.masthead-black-bar {
   background-color: var(--vf-color--grey--darkest);
+
+  nav ul#global-nav.menu li { display: inline-block; }
 
   > .row {
     opacity: 0;
@@ -78,23 +69,6 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
       }
     }
 
-    li.home,
-    li.services,
-    li.research,
-    li.training,
-    li.about,
-    li.embl,
-    li.ebi {
-      float: right;
-
-      &.hover {
-        float: none;
-      }
-      &.active {
-        float: left;
-      }
-    }
-
     li.where {
       a:before {
         content: '[';
@@ -136,7 +110,7 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
       }
     }
 
-    //  icon for search
+    // icon for search
     li.search a:before {
       font-family: 'EBI-Functional';
       content: '1';
