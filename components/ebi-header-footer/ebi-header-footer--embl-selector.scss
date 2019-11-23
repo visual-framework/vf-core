@@ -10,12 +10,14 @@
   }
 
   .embl-bar {
-    background-color: #eee;
-    color: #222;
+    background-color: var(--vf-ui-color--off-white);
+    color: var(--vf-color--grey--darkest);
     a {
-      color: #222;
+      color: var(--vf-color--grey--darkest);
     }
-    a:hover { border-bottom: 1px solid #fff; }
+    a:hover { 
+      border-bottom: 1px solid var(--vf-ui-color--white);
+    }
   }
 
   @media screen and (max-width: 39.9375em) {
@@ -38,7 +40,7 @@
       width: 0;
       height: 0;
       border: inset 4px;
-      border-color: #fff transparent transparent;
+      border-color: var(--vf-ui-color--white) transparent transparent;
       border-top-style: solid;
       position: absolute;
       top: 18px;
@@ -57,7 +59,7 @@
     }
 
     &.active {
-      background-color: #ddd;
+      background-color: var(--vf-ui-color--off-white);;
       padding-right: 1rem;
       .button,
       .button.hover,
