@@ -8,7 +8,7 @@
 
 The `vf-summary--publication` can be nested inside a vf-box where it takes the vf-box colours.
 
-If the `vf-summary__author` list is truncated to a certain number of authors you will need to add vf-et-al to the `<p>` - `<p class="vf-summary__author | vf-et-al">` - for it to add et al to the end of the list.
+If the `vf-summary__author` list is truncated to a certain number of authors you will need to add vf-u-text--et-al to the `<p>` - `<p class="vf-summary__author | vf-u-text--et-al">` - for it to add et al to the end of the list.
 
 ## Install
 
