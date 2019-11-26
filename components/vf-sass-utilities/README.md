@@ -1,7 +1,7 @@
 
 # Sass Utilities component
 
-<h2>This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="#"new</a> component.</h2>
+<h2>This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="https://www.npmjs.com/package/@visual-framework/vf-utility-classes">vf-utility-classes</a> component.</h2>
 
 The utility classes here have been moved to the `vf-utility-classes` component.
 
