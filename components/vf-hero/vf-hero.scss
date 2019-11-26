@@ -19,22 +19,17 @@
 @import 'vf-hero.variables.scss';
 
 .vf-hero {
-  position: relative;
   height: 348px; // needs to be exact height
+  position: relative;
 }
 
 
 
 .vf-hero__content {
-
   // only needed when text is centered
   padding: 1em;
   position: var(--sticky-position, absolute);
   width: calc(100% - 28%);
-
-  padding: unset;
-
-
 }
 
 .vf-hero__heading {
@@ -58,11 +53,7 @@
   --vf-hero-content-position--inline-start: 0;
   --vf-hero-content-position--block-end: 0;
 
-
-  --vf-hero-content-box-shadow:
-    2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
-    -2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
-    0 2px 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0));
+  --vf-hero-content-box-shadow: 2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)), -2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)), 0 2px 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0));
   --vf-hero-content-box-shadow: 0;
   --vf-hero__padding: 0;
 
@@ -80,54 +71,33 @@
 
 .vf-hero__content {
 
-  background-color: #fff;
-  background-color: rgba(
-    calc( (0 + var(--vf-hero-bg-color) ) * 255),
-    calc( (0 + var(--vf-hero-bg-color) ) * 255),
-    calc( (0 + var(--vf-hero-bg-color) ) * 255),
-    calc( (0 + var(--vf-hero-bg-color) ) * 100)
-  );
+  background-color: set-ui-color(vf-ui-color--white);
+  background-color: rgba(calc( (0 + var(--vf-hero-bg-color) ) * 255), calc( (0 + var(--vf-hero-bg-color) ) * 255), calc( (0 + var(--vf-hero-bg-color) ) * 255), calc( (0 + var(--vf-hero-bg-color) ) * 100));
+
+  bottom: -24%;
+  bottom: calc( (0 - var(--vf-hero-content-position--block-end) ) * 1% );
 
   // box-shadow: 2px 0 3px rgba(0, 0, 0, .1), -2px 0 3px rgba(0, 0, 0, .1), 0 2px 3px rgba(0, 0, 0, .1);
   box-shadow: var(--vf-hero-content-box-shadow);
 
-  bottom: -24%;
-  bottom: calc( (0 - var(--vf-hero-content-position--block-end) ) * 24% );
-
   left: 12%;
-  left: calc( (0 + var(--vf-hero-content-position--inline-start) ) * 12% );
+  left: calc( (0 + var(--vf-hero-content-position--inline-start) ) * 1% );
 
   padding: calc( (0 + var(--vf-hero__padding) ) * .1em );
 }
 
 
 .vf-hero__heading {
-  background-color: rgb(
-    calc( (0 + var(--vf-hero-heading-bg-color) ) * 255),
-    calc( (0 + var(--vf-hero-heading-bg-color) ) * 255),
-    calc( (0 + var(--vf-hero-heading-bg-color) ) * 255)
-  );
-  color: rgb(
-    calc( (0 + var(--vf-hero-heading-text-color) ) * 255),
-    calc( (0 + var(--vf-hero-heading-text-color) ) * 255),
-    calc( (0 + var(--vf-hero-heading-text-color) ) * 255)
-  );
+  background-color: rgb(calc( (0 + var(--vf-hero-heading-bg-color) ) * 255), calc( (0 + var(--vf-hero-heading-bg-color) ) * 255), calc( (0 + var(--vf-hero-heading-bg-color) ) * 255));
+  color: rgb(calc( (0 + var(--vf-hero-heading-text-color) ) * 255), calc( (0 + var(--vf-hero-heading-text-color) ) * 255), calc( (0 + var(--vf-hero-heading-text-color) ) * 255));
 }
 
 .vf-hero__text {
   --vf-hero-text-bg-color--default: calc( var(--vf-hero-text-bg-color) * 255);
 
-  background-color: rgb(
-      var(--vf-hero-text-bg-color--r, var(--vf-hero-text-bg-color--default)),
-      var(--vf-hero-text-bg-color--g, var(--vf-hero-text-bg-color--default)),
-      var(--vf-hero-text-bg-color--b, var(--vf-hero-text-bg-color--default))
-  );
+  background-color: rgb(var(--vf-hero-text-bg-color--r, var(--vf-hero-text-bg-color--default)), var(--vf-hero-text-bg-color--g, var(--vf-hero-text-bg-color--default)), var(--vf-hero-text-bg-color--b, var(--vf-hero-text-bg-color--default)));
 
-  color: rgb(
-    calc( (0 + var(--vf-hero-text-color) ) * 255),
-    calc( (0 + var(--vf-hero-text-color) ) * 255),
-    calc( (0 + var(--vf-hero-text-color) ) * 255)
-  );
+  color: rgb(calc( (0 + var(--vf-hero-text-color) ) * 255), calc( (0 + var(--vf-hero-text-color) ) * 255), calc( (0 + var(--vf-hero-text-color) ) * 255));
 }
 
 
@@ -145,30 +115,40 @@
   --vf-hero-text-color: 0;
 
   --vf-hero-content-position: 1;
-  --vf-hero-content-position--block-end: 1;
-  --vf-hero-content-position--inline-start: 1;
+  --vf-hero-content-position--block-end: 24;
+  --vf-hero-content-position--inline-start: 12;
   --vf-hero-content-shadow-alpha: 1;
 }
 
 .vf-hero--medium {
-  --vf-hero-text-bg-color--r: #{red(#18974c)};
-  --vf-hero-text-bg-color--g: #{green(#18974c)};
-  --vf-hero-text-bg-color--b: #{blue(#18974c)};
-
   --vf-hero-content-position: 1;
-  --vf-hero-content-position--block-end: 1;
+  --vf-hero-content-position--block-end: 24;
 
   --vf-hero-content-shadow-alpha: 1;
 }
 
 .vf-hero--hard {
-
+  // placeholder
 }
 
+
 .vf-hero--extreme {
-  --vf-hero-bg-color: 1;
 
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
   --sticky-position: relative;
+}
+
+.vf-hero-theme--primary {
+  --vf-hero-text-bg-color--r: #{red(#18974c)};
+  --vf-hero-text-bg-color--g: #{green(#18974c)};
+  --vf-hero-text-bg-color--b: #{blue(#18974c)};
+}
+
+.vf-hero-theme--secondary {
+  // placeholder
+}
+
+.vf-hero-theme--tertiary {
+  // placeholder
 }
