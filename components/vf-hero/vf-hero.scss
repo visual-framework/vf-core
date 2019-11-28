@@ -15,21 +15,20 @@
  * Version: #{map-get($componentInfo, 'version')}
  * Location: #{map-get($componentInfo, 'location')}
  */
-
+/* stylelint-disable */
 @import 'vf-hero.variables.scss';
 
 .vf-hero {
+  background-position: center;
   height: 348px; // needs to be exact height
   position: relative;
 }
-
-
 
 .vf-hero__content {
   // only needed when text is centered
   padding: 1em;
   position: var(--sticky-position, absolute);
-  width: calc(100% - 28%);
+  width: calc(100% - 24%);
 }
 
 .vf-hero__heading {
@@ -53,7 +52,11 @@
   --vf-hero-content-position--inline-start: 0;
   --vf-hero-content-position--block-end: 0;
 
-  --vf-hero-content-box-shadow: 2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)), -2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)), 0 2px 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0));
+  --vf-hero-content-box-shadow:
+    2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
+   -2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
+    0 2px 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0));
+
   --vf-hero-content-box-shadow: 0;
   --vf-hero__padding: 0;
 
@@ -66,13 +69,37 @@
 }
 
 .vf-hero {
-  margin-bottom: calc( (0 + var(--vf-hero-content-position) ) * 100px );
+  background-color: set-ui-color(vf-ui-color--white);
+  background-color: rgba(
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 100)
+  );
+
+  margin-bottom: calc( (0 + var(--vf-hero-content-position) ) * 1px );
+}
+
+.vf-hero--inlay {
+  background-color: set-ui-color(vf-ui-color--white);
+  background-color: rgba(
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 100)
+  );
+
+  grid-column: main;
 }
 
 .vf-hero__content {
-
   background-color: set-ui-color(vf-ui-color--white);
-  background-color: rgba(calc( (0 + var(--vf-hero-bg-color) ) * 255), calc( (0 + var(--vf-hero-bg-color) ) * 255), calc( (0 + var(--vf-hero-bg-color) ) * 255), calc( (0 + var(--vf-hero-bg-color) ) * 100));
+  background-color: rgba(
+    calc( (0 + var(--vf-hero__content-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero__content-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero__content-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero__content-bg-color) ) * 100)
+  );
 
   bottom: -24%;
   bottom: calc( (0 - var(--vf-hero-content-position--block-end) ) * 1% );
@@ -84,6 +111,8 @@
   left: calc( (0 + var(--vf-hero-content-position--inline-start) ) * 1% );
 
   padding: calc( (0 + var(--vf-hero__padding) ) * .1em );
+
+  z-index: 5150;
 }
 
 
@@ -102,53 +131,95 @@
 
 
 .vf-hero--easy {
+  --vf-hero__content-bg-color: 1;
   --vf-hero-bg-color: 1;
-
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
+  --sticky-position: relative;
+
+  height: auto;
+  padding-bottom: 48px;
+  padding-top: 48px;
+
+  .vf-hero__content {
+    grid-column-start: 2;
+    width: 100%;
+  }
+
+  .vf-summary {
+    align-self: center;
+    grid-column: 3 / span 1;
+    margin: 0;
+  }
+
+  @media (min-width: $vf-breakpoint--md) {
+    display: grid;
+    grid-template-columns: minmax(var(--page-grid-gap), 60px) [main-start] minmax(auto, 100%) minmax(auto, 22.125em) [main-end] minmax(var(--page-grid-gap), 60px);
+  }
 }
 
 .vf-hero--normal {
+  --vf-hero__content-bg-color: 1;
   --vf-hero-bg-color: 1;
 
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
 
-  --vf-hero-content-position: 1;
-  --vf-hero-content-position--block-end: 24;
-  --vf-hero-content-position--inline-start: 12;
+  --vf-hero-content-position: 100;
+  --vf-hero-content-position--block-end: 12;
+  --vf-hero-content-position--inline-start: 6;
   --vf-hero-content-shadow-alpha: 1;
+
+  @media (min-width: $vf-breakpoint--sm) {
+    --vf-hero-content-position--block-end: 24;
+    --vf-hero-content-position--inline-start: 12;
+  }
+
+  & > .vf-content {
+    width: calc(100% - (var(--vf-hero-content-position--inline-start) * 2%));
+  }
 }
 
 .vf-hero--medium {
-  --vf-hero-content-position: 1;
+  --vf-hero-bg-color: 1;
+  --vf-hero-content-position: 100;
   --vf-hero-content-position--block-end: 24;
 
   --vf-hero-content-shadow-alpha: 1;
 }
 
 .vf-hero--hard {
+  --vf-hero-bg-color: 1;
   // placeholder
 }
 
 
 .vf-hero--extreme {
-
+  --vf-hero-bg-color: 1;
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
   --sticky-position: relative;
 }
 
 .vf-hero-theme--primary {
-  --vf-hero-text-bg-color--r: #{red(#18974c)};
-  --vf-hero-text-bg-color--g: #{green(#18974c)};
-  --vf-hero-text-bg-color--b: #{blue(#18974c)};
+  --vf-hero-text-bg-color--r: #{red(set-color(vf-color--green))};
+  --vf-hero-text-bg-color--g: #{green(set-color(vf-color--green))};
+  --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--green))};
+
+  --vfhero-text-color: 1;
 }
 
 .vf-hero-theme--secondary {
-  // placeholder
+  --vf-hero-text-bg-color--r: #{red(set-color(vf-color--blue))};
+  --vf-hero-text-bg-color--g: #{green(set-color(vf-color--blue))};
+  --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--blue))};
+
+  --vfhero-text-color: 1;
 }
 
 .vf-hero-theme--tertiary {
   // placeholder
 }
+
+
+/* stylelint-enable */
