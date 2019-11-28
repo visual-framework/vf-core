@@ -2,6 +2,14 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-hero.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-hero)
 
+This component is early-alpha, it has a few known to-be-dones:
+
+- Responsive layout
+- Full variants
+- Full Nunjucks templates
+- Sass is early and subject to change
+- Image height currently must be 348px 
+
 ## Install
 
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `vf-hero` with this command.
