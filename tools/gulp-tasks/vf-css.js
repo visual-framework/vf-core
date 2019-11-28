@@ -20,6 +20,9 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   const source = require('vinyl-source-stream');
   const fs = require('fs');
 
+  // Build stuff
+  const chalk = require('chalk');
+
   // Linting things
   const gulpStylelint   = require('gulp-stylelint');
   const SassInput = componentPath + '/vf-componenet-rollup/index.scss';
@@ -140,8 +143,8 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
           } else if (availableComponents[truncatedUrl]) {
             done(url);
           } else {
-            let importWarning = `Couldn\'t find ${url} referenced in ${prev}`;
-            console.warn(importWarning);
+            let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expect, you might want to comment out the dependency.`;
+            console.warn(chalk.yellow(importWarning));
             done({ contents: `/* ${importWarning} */` });
           }
         } else {
@@ -249,7 +252,8 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         outputStyle: 'expanded'
       })
       .on('error', function(e){
-        console.log('Couldn\'t find a component dependency, the per-component CSS won\'t be generated for this', e.message);
+        let message = 'Couldn\'t find a component dependency, the per-component CSS won\'t be generated for this' + e.message;
+        console.log(chalk.yellow(message));
       }))
       .pipe(autoprefixer(autoprefixerOptions))
       .pipe(rename(file_name))
