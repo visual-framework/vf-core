@@ -1,0 +1,254 @@
+// vf-hero
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+/* stylelint-disable */
+@import 'vf-hero.variables.scss';
+
+.vf-hero {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 348px; // needs to be exact height
+  position: relative;
+
+  a {
+    color: set-ui-color(vf-ui-color--black);
+  }
+  a:focus,
+  a:hover,
+  a:visited {
+    color: set-ui-color(vf-ui-color--black);
+  }
+}
+
+.vf-hero__content {
+  // only needed when text is centered
+  padding: 1em;
+  position: var(--sticky-position, absolute);
+  width: calc(100% - 24%);
+}
+
+.vf-hero__heading {
+  @include set-type(text-heading--3);
+
+  // positions to the left
+  display: inline-block;
+  margin: 0;
+  padding: .5em;
+}
+
+.vf-hero__text {
+  @include set-type(text-body--2);
+  margin-bottom: 0;
+
+  padding: 1em .5em;
+}
+
+
+.vf-hero {
+  --vf-hero-content-position--inline-start: 0;
+  --vf-hero-content-position--block-end: 0;
+
+  --vf-hero-content-box-shadow:
+    2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
+   -2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
+    0 2px 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0));
+
+  --vf-hero-content-box-shadow: 0;
+  --vf-hero__padding: 0;
+
+  --vf-hero-content-shadow-alpha: .1;
+  --vf-hero-heading-bg-color: 1;
+  --vf-hero-heading-text-color: 0;
+
+  --vf-hero-text-bg-color: 0;
+  --vf-hero-text-color: 1;
+}
+
+.vf-hero {
+  background-color: set-ui-color(vf-ui-color--white);
+  background-color: rgba(
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 100)
+  );
+
+  margin-bottom: calc( (0 + var(--vf-hero-content-position) ) * 1px );
+}
+
+.vf-hero--inlay {
+  background-color: set-ui-color(vf-ui-color--white);
+  background-color: rgba(
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero-bg-color) ) * 100)
+  );
+
+  grid-column: main;
+}
+
+.vf-hero__content {
+  background-color: set-ui-color(vf-ui-color--white);
+  background-color: rgba(
+    calc( (0 + var(--vf-hero__content-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero__content-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero__content-bg-color) ) * 255),
+    calc( (0 + var(--vf-hero__content-bg-color) ) * 100)
+  );
+
+  bottom: -24%;
+  bottom: calc( (0 - var(--vf-hero-content-position--block-end) ) * 1% );
+
+  // box-shadow: 2px 0 3px rgba(0, 0, 0, .1), -2px 0 3px rgba(0, 0, 0, .1), 0 2px 3px rgba(0, 0, 0, .1);
+  box-shadow: var(--vf-hero-content-box-shadow);
+
+  left: 12%;
+  left: calc( (0 + var(--vf-hero-content-position--inline-start) ) * 1% );
+
+  padding: calc( (0 + var(--vf-hero__padding) ) * .1em );
+
+  z-index: 5150;
+}
+
+
+.vf-hero__heading {
+  background-color: rgb(calc( (0 + var(--vf-hero-heading-bg-color) ) * 255), calc( (0 + var(--vf-hero-heading-bg-color) ) * 255), calc( (0 + var(--vf-hero-heading-bg-color) ) * 255));
+  color: rgb(calc( (0 + var(--vf-hero-heading-text-color) ) * 255), calc( (0 + var(--vf-hero-heading-text-color) ) * 255), calc( (0 + var(--vf-hero-heading-text-color) ) * 255));
+}
+
+.vf-hero__text {
+  --vf-hero-text-bg-color--default: calc( var(--vf-hero-text-bg-color) * 255);
+
+  background-color: rgb(var(--vf-hero-text-bg-color--r, var(--vf-hero-text-bg-color--default)), var(--vf-hero-text-bg-color--g, var(--vf-hero-text-bg-color--default)), var(--vf-hero-text-bg-color--b, var(--vf-hero-text-bg-color--default)));
+
+  color: rgb(calc( (0 + var(--vf-hero-text-color) ) * 255), calc( (0 + var(--vf-hero-text-color) ) * 255), calc( (0 + var(--vf-hero-text-color) ) * 255));
+}
+
+
+.vf-hero--easy {
+  --vf-hero__content-bg-color: 1;
+  --vf-hero-bg-color: 1;
+  --vf-hero-text-bg-color: 1;
+  --vf-hero-text-color: 0;
+  --sticky-position: relative;
+
+  height: auto;
+  padding-bottom: 48px;
+  padding-top: 48px;
+
+  .vf-hero__content {
+    grid-column-start: 2;
+    width: 100%;
+  }
+
+  .vf-summary {
+    align-self: center;
+    grid-column: 3 / span 1;
+    margin: 0;
+  }
+
+  @media (min-width: $vf-breakpoint--md) {
+    display: grid;
+    grid-template-columns: minmax(var(--page-grid-gap), 60px) [main-start] minmax(auto, 100%) minmax(auto, 22.125em) [main-end] minmax(var(--page-grid-gap), 60px);
+  }
+}
+
+.vf-hero--normal {
+  --vf-hero__content-bg-color: 1;
+  --vf-hero-bg-color: 1;
+
+  --vf-hero-text-bg-color: 1;
+  --vf-hero-text-color: 0;
+
+  --vf-hero-content-position: 100;
+  --vf-hero-content-position--block-end: 12;
+  --vf-hero-content-position--inline-start: 6;
+  --vf-hero-content-shadow-alpha: 1;
+
+  @media (min-width: $vf-breakpoint--sm) {
+    --vf-hero-content-position--block-end: 24;
+    --vf-hero-content-position--inline-start: 12;
+  }
+
+  & > .vf-content {
+    width: calc(100% - (var(--vf-hero-content-position--inline-start) * 2%));
+  }
+}
+
+.vf-hero--medium {
+  --vf-hero-bg-color: 1;
+  --vf-hero-content-position: 100;
+  --vf-hero-content-position--block-end: 24;
+
+  --vf-hero-content-shadow-alpha: 1;
+}
+
+.vf-hero--hard {
+  --vf-hero-bg-color: 1;
+  // placeholder
+}
+
+
+.vf-hero--extreme {
+  --vf-hero-bg-color: 1;
+  --vf-hero-text-bg-color: 1;
+  --vf-hero-text-color: 0;
+  --sticky-position: relative;
+}
+
+.vf-hero-theme--primary {
+  --vf-hero-text-bg-color--r: #{red(set-color(vf-color--green))};
+  --vf-hero-text-bg-color--g: #{green(set-color(vf-color--green))};
+  --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--green))};
+
+  --vfhero-text-color: 1;
+  a {
+    color: white;
+  }
+  a:focus,
+  a:hover,
+  a:visited {
+    color: white;
+  }
+}
+
+.vf-hero-theme--secondary {
+  --vf-hero-text-bg-color--r: #{red(set-color(vf-color--blue))};
+  --vf-hero-text-bg-color--g: #{green(set-color(vf-color--blue))};
+  --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--blue))};
+
+  --vfhero-text-color: 1;
+  a {
+    color: set-ui-color(vf-ui-color--white);
+  }
+  a:focus,
+  a:hover,
+  a:visited {
+    color: set-ui-color(vf-ui-color--white);
+  }
+}
+
+.vf-hero-theme--tertiary {
+  // placeholder
+
+  a {
+    color: set-ui-color(vf-ui-color--white);
+  }
+  a:focus,
+  a:hover,
+  a:visited {
+    color: set-ui-color(vf-ui-color--white);
+  }
+}
+
+
+/* stylelint-enable */
