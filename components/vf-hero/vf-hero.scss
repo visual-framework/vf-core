@@ -72,8 +72,6 @@
     2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
    -2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
     0 2px 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0));
-
-  --vf-hero-content-box-shadow: 0;
   --vf-hero__padding: 0;
 
   --vf-hero-content-shadow-alpha: .1;
@@ -128,6 +126,7 @@
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
   --vf-hero-grid__row: 1fr;
+  --vf-hero-content-box-shadow: none;
 
   height: auto;
   padding-bottom: 48px;
@@ -159,8 +158,6 @@
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
 
-  --vf-hero-content-shadow-alpha: 1;
-
   & .vf-hero__content {
     grid-row: 2 / span 1;
     justify-self: center;
@@ -169,7 +166,7 @@
 
 .vf-hero--medium {
   --vf-hero-bg-color: 1;
-  --vf-hero-content-shadow-alpha: 1;
+  --vf-hero-content-box-shadow: none;
 
   & .vf-hero__content {
     grid-row: 2 / span 1;
@@ -180,6 +177,7 @@
 .vf-hero--hard {
   --vf-hero-bg-color: 1;
   --vf-hero-grid__row: 348px;
+  --vf-hero-content-box-shadow: none;
 
   & > .vf-hero__content {
     align-self: flex-end;
@@ -191,6 +189,7 @@
   --vf-hero-bg-color: 1;
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
+  --vf-hero-content-box-shadow: none;
 }
 
 .vf-hero-theme--primary {
