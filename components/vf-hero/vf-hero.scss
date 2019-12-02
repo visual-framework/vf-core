@@ -21,14 +21,13 @@
   );
   background-position: top center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 348px;
   grid-column: 1 / -1;
-  height: 348px; // needs to be exact height
-  margin-bottom: calc( (0 + var(--vf-hero-content-position) ) * 1px );
-  position: relative;
 
   display: grid;
   grid-template-columns: minmax(var(--page-grid-gap), auto) [hero-start] minmax(288px, 76.5em) [hero-end] minmax(var(--page-grid-gap), auto);
+  grid-template-rows: var(--vf-hero-grid__row, 260px) max-content;
+  margin-bottom: 2rem;
 
   a {
     color: set-ui-color(vf-ui-color--black);
@@ -47,7 +46,6 @@
 .vf-hero__content {
   // only needed when text is centered
   padding: 1em;
-  position: var(--sticky-position, absolute);
   width: calc(100% - 24%);
 }
 
@@ -69,8 +67,6 @@
 
 
 .vf-hero {
-  --vf-hero-content-position--inline-start: 0;
-  --vf-hero-content-position--block-end: 0;
 
   --vf-hero-content-box-shadow:
     2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
@@ -88,6 +84,11 @@
   --vf-hero-text-color: 1;
 }
 
+.vf-hero--inlay {
+  max-width: 76.5em;
+  margin: 0 auto;
+}
+
 .vf-hero__content {
   background-color: set-ui-color(vf-ui-color--white);
   background-color: rgba(
@@ -97,14 +98,9 @@
     calc( (0 + var(--vf-hero__content-bg-color) ) * 100)
   );
 
-  bottom: -24%;
-  bottom: calc( (0 - var(--vf-hero-content-position--block-end) ) * 1% );
 
   // box-shadow: 2px 0 3px rgba(0, 0, 0, .1), -2px 0 3px rgba(0, 0, 0, .1), 0 2px 3px rgba(0, 0, 0, .1);
   box-shadow: var(--vf-hero-content-box-shadow);
-
-  left: 12%;
-  left: calc( (0 + var(--vf-hero-content-position--inline-start) ) * 1% );
 
   padding: calc( (0 + var(--vf-hero__padding) ) * .1em );
 
@@ -131,7 +127,7 @@
   --vf-hero-bg-color: 1;
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
-  --sticky-position: relative;
+  --vf-hero-grid__row: 1fr;
 
   height: auto;
   padding-bottom: 48px;
@@ -163,32 +159,31 @@
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
 
-  --vf-hero-content-position: 100;
-  --vf-hero-content-position--block-end: 12;
-  --vf-hero-content-position--inline-start: 6;
   --vf-hero-content-shadow-alpha: 1;
 
-  @media (min-width: $vf-breakpoint--sm) {
-    --vf-hero-content-position--block-end: 24;
-    --vf-hero-content-position--inline-start: 12;
-  }
-
-  & > .vf-content {
-    width: calc(100% - (var(--vf-hero-content-position--inline-start) * 2%));
+  & .vf-hero__content {
+    grid-row: 2 / span 1;
+    justify-self: center;
   }
 }
 
 .vf-hero--medium {
   --vf-hero-bg-color: 1;
-  --vf-hero-content-position: 100;
-  --vf-hero-content-position--block-end: 24;
-
   --vf-hero-content-shadow-alpha: 1;
+
+  & .vf-hero__content {
+    grid-row: 2 / span 1;
+    justify-self: flex-start;
+  }
 }
 
 .vf-hero--hard {
   --vf-hero-bg-color: 1;
-  // placeholder
+  --vf-hero-grid__row: 348px;
+
+  & > .vf-hero__content {
+    align-self: flex-end;
+  }
 }
 
 
@@ -196,7 +191,6 @@
   --vf-hero-bg-color: 1;
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
-  --sticky-position: relative;
 }
 
 .vf-hero-theme--primary {
@@ -215,6 +209,7 @@
   }
 
   .vf-hero__lens {
+
     + .vf-hero__content .vf-hero__text {
       --vf-hero-text-bg-color--r: 0;
       --vf-hero-text-bg-color--g: 0;
@@ -228,6 +223,8 @@
 
   .vf-hero__lens {
     background-color: set-color(vf-color--green); // temporary hack
+    height: 100%;
+    max-height: 348px;
 
     path {
       fill: set-color(vf-color--green);
