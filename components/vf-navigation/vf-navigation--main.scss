@@ -178,3 +178,31 @@
 .vf-global-theme--secondary {
   --navigation--main--top-border-color: #{set-color(vf-color--blue)};
 }
+
+
+html.vf-global-layout--medium {
+  position: relative;
+
+  &::before {
+    background-color: set-ui-color(vf-ui-color--grey--light);
+    content: '';
+    height: 260px;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+
+html.vf-global-layout--hard {
+  position: relative;
+
+  &::before {
+    background-color: set-ui-color(vf-ui-color--grey--light);
+    content: '';
+    height: 480px;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+}
