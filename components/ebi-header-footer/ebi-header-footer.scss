@@ -27,6 +27,14 @@
   @import 'ebi-header-footer--layout.scss';
   @import 'ebi-header-footer--form.scss';
   @import 'ebi-header-footer--utility.scss';
+}
 
+.data-protection-banner a {
+  @include inline-link(
+    $vf-link--color: set-ui-color(vf-ui-color--white),
+    $vf-link--hover-color: set-ui-color(vf-ui-color--white),
+    $vf-link--visited-color: set-ui-color(vf-ui-color--white)
+  );
+  cursor: pointer; // data-protection-agree has no href and does no get a pointer by default in most browsers
 }
 
