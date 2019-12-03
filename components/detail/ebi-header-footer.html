@@ -619,6 +619,7 @@ Your content here.
   <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> <span class="hljs-selector-tag">li</span> { 
     <span class="hljs-attribute">display</span>: inline-block; 
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">float</span>: right;
   }
 
   &gt; <span class="hljs-selector-class">.row</span> {
@@ -739,7 +740,7 @@ Your content here.
 
   <span class="hljs-comment">// mobile</span>
   @<span class="hljs-keyword">media</span> screen and (max-width: 39.9375em) {
-    <span class="hljs-selector-class">.masthead-black-bar</span> <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> &gt; <span class="hljs-selector-tag">li</span> &gt; <span class="hljs-selector-tag">a</span> {
+    &amp;<span class="hljs-selector-class">.masthead-black-bar</span> <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> &gt; <span class="hljs-selector-tag">li</span> &gt; <span class="hljs-selector-tag">a</span> {
         <span class="hljs-attribute">text-align</span>: center;
         <span class="hljs-attribute">font-size</span>: <span class="hljs-number">10px</span>;
         <span class="hljs-attribute">padding</span>: .<span class="hljs-number">6rem</span> .<span class="hljs-number">35rem</span>;
@@ -747,8 +748,8 @@ Your content here.
   }
     
   @<span class="hljs-keyword">media</span> screen and (max-width: 39.9375em) {
-    <span class="hljs-selector-class">.masthead-black-bar</span> <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> &gt; <span class="hljs-selector-tag">li</span> &gt; <span class="hljs-selector-tag">a</span> &gt; <span class="hljs-selector-tag">img</span>, 
-    <span class="hljs-selector-class">.masthead-black-bar</span> <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> &gt; <span class="hljs-selector-tag">li</span> &gt; <span class="hljs-selector-tag">a</span>:before {
+    &amp;<span class="hljs-selector-class">.masthead-black-bar</span> <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> &gt; <span class="hljs-selector-tag">li</span> &gt; <span class="hljs-selector-tag">a</span> &gt; <span class="hljs-selector-tag">img</span>, 
+    &amp;<span class="hljs-selector-class">.masthead-black-bar</span> <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> &gt; <span class="hljs-selector-tag">li</span> &gt; <span class="hljs-selector-tag">a</span>:before {
         <span class="hljs-attribute">display</span>: block;
         <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto <span class="hljs-number">0.25rem</span>;
         <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
@@ -1122,7 +1123,15 @@ Your content here.
   @<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer--layout.scss'</span>;
   @<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer--form.scss'</span>;
   @<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer--utility.scss'</span>;
+}
 
+<span class="hljs-selector-class">.data-protection-banner</span> <span class="hljs-selector-tag">a</span> {
+  @<span class="hljs-keyword">include</span> inline-link(
+    <span class="hljs-variable">$vf-link--color</span>: set-ui-color(vf-ui-color--white),
+    <span class="hljs-variable">$vf-link--hover-color</span>: set-ui-color(vf-ui-color--white),
+    <span class="hljs-variable">$vf-link--visited-color</span>: set-ui-color(vf-ui-color--white)
+  );
+  <span class="hljs-attribute">cursor</span>: pointer; <span class="hljs-comment">// data-protection-agree has no href and does no get a pointer by default in most browsers</span>
 }
 
 </code>
@@ -1140,7 +1149,7 @@ Your content here.
           Filesystem path: components/ebi-header-footer/ebi-header-footer.scss
         </li>
         <li class="vf-list__item">
-          Size: 990 Bytes
+          Size: 1.3 KB
         </li>
       </ul>
     </section>
