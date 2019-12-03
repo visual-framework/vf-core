@@ -143,6 +143,16 @@ class="vf-logo">
                
 
             
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-utility-classes--width.html">
+                    Width
+                  </a>
+                 
+               
+
+            
           </ul>
 
       </div>
@@ -443,6 +453,12 @@ class="vf-logo">
       
       <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--1e1df61fd0b93ec3df8dfec90824251e">vf-u-text.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--9a4ef39bae674567a593d1f9d1d874b0">vf-u-width.scss</a>
       </li>
       
     
@@ -804,6 +820,68 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     
   
     
+    <section class="vf-tabs__section" id="vf-tabs__section--9a4ef39bae674567a593d1f9d1d874b0">
+      <div class="FileBrowser-itemPreview">
+        
+        <pre class="vf-code-example__pre">
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// Creates responsive sizes like:</span>
+<span class="hljs-comment">// .vf-width__10 { width: 10%; }</span>
+<span class="hljs-comment">// .vf-width__10--sm { width: 10%; }</span>
+
+@<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from 1 through 20 {
+  <span class="hljs-selector-class">.vf-u-width__</span>#{<span class="hljs-variable">$i</span> * 5} { <span class="hljs-attribute">width</span>: <span class="hljs-variable">$i</span> * <span class="hljs-number">5%</span>; }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--xs</span>) {
+  @<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from 1 through 20 {
+    <span class="hljs-selector-class">.vf-u-width__</span>#{<span class="hljs-variable">$i</span> * 5}--xs { <span class="hljs-attribute">width</span>: <span class="hljs-variable">$i</span> * <span class="hljs-number">5%</span>; }
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--sm</span>) {
+  @<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from 1 through 20 {
+    <span class="hljs-selector-class">.vf-u-width__</span>#{<span class="hljs-variable">$i</span> * 5}--sm { <span class="hljs-attribute">width</span>: <span class="hljs-variable">$i</span> * <span class="hljs-number">5%</span>; }
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--md</span>) {
+  @<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from 1 through 20 {
+    <span class="hljs-selector-class">.vf-u-width__</span>#{<span class="hljs-variable">$i</span> * 5}--md { <span class="hljs-attribute">width</span>: <span class="hljs-variable">$i</span> * <span class="hljs-number">5%</span>; }
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
+  @<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from 1 through 20 {
+    <span class="hljs-selector-class">.vf-u-width__</span>#{<span class="hljs-variable">$i</span> * 5}--lg { <span class="hljs-attribute">width</span>: <span class="hljs-variable">$i</span> * <span class="hljs-number">5%</span>; }
+  }
+}
+
+@<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--xl</span>) {
+  @<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from 1 through 20 {
+    <span class="hljs-selector-class">.vf-u-width__</span>#{<span class="hljs-variable">$i</span> * 5}--xl { <span class="hljs-attribute">width</span>: <span class="hljs-variable">$i</span> * <span class="hljs-number">5%</span>; }
+  }
+}</code>
+        </pre>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-utility-classes/vf-u-width.scss">/components/raw/vf-utility-classes/vf-u-width.scss</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-utility-classes/vf-u-width.scss
+        </li>
+        <li class="vf-list__item">
+          Size: 824 Bytes
+        </li>
+      </ul>
+    </section>
+    
+  
+    
     <section class="vf-tabs__section" id="vf-tabs__section--f152eb834c0a9532cbb29dde9a8cc26c">
       <div class="FileBrowser-itemPreview">
         
@@ -822,6 +900,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-u-float.scss'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-u-text.scss'</span>;
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-u-screen-reader.scss'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-u-width.scss'</span>;
 
 <span class="hljs-selector-class">.vf-u-background-color</span> {
   @<span class="hljs-keyword">include</span> color-modifiers(<span class="hljs-variable">$attribute</span>: <span class="hljs-string">'background-color'</span>);
