@@ -254,14 +254,7 @@ class="vf-logo">
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-     <span class="hljs-selector-pseudo">:root</span> {
-        <span class="hljs-comment">/* These CSS properties are theming variables. If used, add to your HTML
-     after the VF CSS for vf-masthead and before the HTML for vf-masthead. */</span>
-        <span class="hljs-attribute">--vf-masthead__bg-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'../../assets/vf-masthead/assets/group-bg_2d4155.png'</span>);
-    }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-vf-js-masthead</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: 'var(--vf-masthead__color--background', var(--vf-masthead__color--background-default)); color: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreground-default) );"</span>&gt;</span>
+  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-vf-js-masthead</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
@@ -271,7 +264,6 @@ class="vf-logo">
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-comment">&lt;!--/vf-masthead--&gt;</span>
 </code></pre>
   
 
@@ -575,7 +567,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <div class="FileBrowser-itemPreview">
         
         <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-variable">$vf-masthead__title-text--color</span>: set-ui-color(vf-ui-color--white);
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-variable">$vf-masthead__title-text--color</span>: set-color(vf-color--grey--darkest);
+<span class="hljs-variable">$vf-masthead__subtitle-text--color</span>: set-color(vf-color--grey);
 
 <span class="hljs-comment">// vf-masthead</span>
 
@@ -589,14 +582,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  */</span>
 
 <span class="hljs-selector-class">.vf-masthead</span> {
-  --vf-masthead__color--foreround-default: var(--vf-ui-color--white);
-  --vf-masthead__color--<span class="hljs-attribute">background</span>-default: var(--vf-color--green);
-
-  <span class="hljs-attribute">background-color</span>: set-color(vf-color--green);
-  <span class="hljs-attribute">background-image</span>: var( --vf-masthead__bg-image, none);
-  <span class="hljs-attribute">background-repeat</span>: no-repeat;
-  <span class="hljs-attribute">background-size</span>: cover;
-  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+  <span class="hljs-comment">// --vf-masthead__color--foreround-default: var(--vf-color--grey-darkest);</span>
+  <span class="hljs-comment">// --vf-masthead__color--background-default: var(--vf-color--green);</span>
+  <span class="hljs-comment">//</span>
+  <span class="hljs-comment">// background-color: set-color(vf-color--green);</span>
+  <span class="hljs-comment">// background-image: var( --vf-masthead__bg-image, none);</span>
+  <span class="hljs-comment">// background-repeat: no-repeat;</span>
+  <span class="hljs-comment">// background-size: cover;</span>
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
 
   @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">48px</span>;
@@ -623,7 +616,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-masthead__heading</span> {
   @<span class="hljs-keyword">include</span> set-type(text-heading--<span class="hljs-number">1</span>, <span class="hljs-variable">$custom-margin-bottom</span>: 8px);
 
-  <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default) );
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-masthead__title-text--color</span>;
   <span class="hljs-attribute">display</span>: flex;
   <span class="hljs-attribute">flex-direction</span>: column;
 }
@@ -631,15 +624,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-masthead__heading--additional</span> {
   @<span class="hljs-keyword">include</span> set-type(text-heading--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: 0);
 
-  <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default) );
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-masthead__subtitle-text--color</span>;
   <span class="hljs-attribute">position</span>: relative;
-  <span class="hljs-attribute">top</span>: -<span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">top</span>: -<span class="hljs-number">4px</span>;
 }
 
 <span class="hljs-selector-class">.vf-masthead__sub-heading</span> {
   @<span class="hljs-keyword">include</span> set-type(text-heading--<span class="hljs-number">5</span>);
 
-  <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default) );
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-masthead__subtitle-text--color</span>;
 }
 
 <span class="hljs-selector-class">.vf-masthead__heading__link</span> {
