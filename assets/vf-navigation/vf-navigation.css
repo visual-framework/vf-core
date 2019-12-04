@@ -163,114 +163,97 @@
   text-decoration: underline;
 }
 
-.vf-navigation--main {
-  background-color: #54585a;
-  grid-column: main;
-  margin: 0 auto;
-  max-width: 76.5em;
-  position: relative;
-  width: 100%;
-}
-
-.vf-navigation--main::before {
-  background-color: inherit;
-  content: '';
-  height: 100%;
-  left: 50%;
-  margin: 0 -50vw;
-  position: absolute;
-  right: 50%;
-  width: 100vw;
-  z-index: -1;
-}
-
 .vf-navigation--main .vf-navigation__list {
-  display: block;
-}
-
-@media (min-width: 1024px) {
-  .vf-navigation--main .vf-navigation__list {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    height: 100%;
-    margin-left: -1rem;
-  }
+  padding: .75rem;
 }
 
 .vf-navigation--main .vf-navigation__item {
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
-  font-size: 19px;
-  font-weight: 500;
-  line-height: 1.5;
-  margin: 0 0 16px 0;
-  margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
-  display: block;
-  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.57;
+  margin: 0 0 0 0;
 }
 
-.vf-navigation--main .vf-navigation__item.is-active {
-  background-color: #ffffff;
-}
-
-.vf-navigation--main .vf-navigation__item.is-active .vf-navigation__link {
-  color: #000000;
-}
-
-.vf-navigation--main .vf-navigation__item:hover {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #ffffff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-}
-
-.vf-navigation--main .vf-navigation__item:hover .vf-navigation__link {
-  color: #000000;
-  display: block;
-}
-
-@media (min-width: 1024px) {
-  .vf-navigation--main .vf-navigation__item {
-    padding: 4px calc(var(--page-grid-gap) / 2);
-  }
+.vf-navigation--main .vf-navigation__item:not(:first-child) {
+  margin-left: 2rem;
 }
 
 .vf-navigation--main .vf-navigation__link {
-  border-bottom: none;
-  text-decoration: underline;
-  color: #ffffff;
+  color: #a8a99e;
+  padding: .75rem 0;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
-.vf-navigation--main .vf-navigation__link:visited {
+.vf-navigation--main .vf-navigation__link:focus, .vf-navigation--main .vf-navigation__link:hover {
   color: #54585a;
-  border-bottom: none;
-  text-decoration: underline;
 }
 
-.vf-navigation--main .vf-navigation__link:hover {
-  color: #ffffff;
-  border-bottom: none;
-  text-decoration: underline;
+.vf-global-layout--normal .vf-navigation--main {
+  border: 1px solid #a8a99e;
+  border-bottom: 0;
 }
 
-.vf-navigation--main .vf-navigation__link:visited {
-  color: #ffffff;
+.vf-global-layout--medium .vf-navigation--main {
+  border: 1px solid #a8a99e;
+  border-bottom: 0;
 }
 
-@media (max-width: 1023px) {
-  .vf-navigation--main {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    padding: 0 1rem;
-  }
+.vf-global-layout--medium .vf-navigation--main .vf-navigation__list {
+  padding-bottom: 1.25rem;
+}
+
+.vf-global-layout--hard .vf-navigation--main {
+  border: 1px solid #a8a99e;
+  border-bottom: 0;
+}
+
+.vf-global-layout--hard .vf-navigation--main .vf-navigation__list {
+  padding-bottom: 1.25rem;
+  padding-top: calc(2px + .75em);
+}
+
+.vf-global-layout--hard .vf-navigation--main .vf-navigation__link:focus, .vf-global-layout--hard .vf-navigation--main .vf-navigation__link:hover {
+  border-top: 3px solid var(--navigation--main--top-border-color, #000000);
+}
+
+.vf-global-layout--extreme .vf-navigation--main {
+  border-bottom: 1px solid #a8a99e;
+}
+
+.vf-global-theme--primary {
+  --navigation--main--top-border-color: #18974c;
+}
+
+.vf-global-theme--secondary {
+  --navigation--main--top-border-color: #3b6fb6;
+}
+
+html.vf-global-layout--medium {
+  position: relative;
+}
+
+html.vf-global-layout--medium::before {
+  background-color: #d8d8d8;
+  content: '';
+  height: 260px;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+html.vf-global-layout--hard {
+  position: relative;
+}
+
+html.vf-global-layout--hard::before {
+  background-color: #d8d8d8;
+  content: '';
+  height: 480px;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
 }
 
 .vf-navigation--additional {
