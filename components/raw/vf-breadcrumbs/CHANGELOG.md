@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.0.0-beta.9 (2019-12-12)
+
+
+### Bug Fixes
+
+* embl-grid-and-breadcrumbs ([68676a6](https://github.com/visual-framework/vf-core/commit/68676a67fd9bd4ccd69237e7b3e6ed7bd4506a41))
+
+
+
+# 2.0.0-alpha.1 (2018-12-20)
+
+
+
+
+
 # 1.0.0-beta.8 (2019-10-23)
 
 
