@@ -8,7 +8,7 @@ const path = require('path');
 let fractalConfig = {
   title: 'Design Tokens',
   label: 'Design Tokens',
-  status: 'beta',
+  status: 'live',
   variants: [
     {
       name: 'default',
