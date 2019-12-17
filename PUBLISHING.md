@@ -28,7 +28,7 @@ See also: [Guide on updating a component versions](https://visual-framework.gith
 
 While we do not add tags as part of the "release" for component, Lerna needs a named tag to function.
 
-### Component release workflow
+### Component pre-release workflow
 
 1. See a list of changed packages
     - `lerna changed`
@@ -43,6 +43,16 @@ While we do not add tags as part of the "release" for component, Lerna needs a n
 1. push your changes to develop with commit message in a format of: `Component release 20190930-01`
 1. add a tag `git tag -a components.YYYYMMDD-01 -m 'Snapshot of components for lerna'`
 1. push the tag `git push origin --tags`
+
+### Component stable release workflow
+
+To release stable versions:
+
+- Check if there are any pending changes with `lerna changed`.
+- Any pending component components should be released as pre-releases (using the guide above). 
+- Release stable versions by:
+    1. Touching the respective component `READEME.md`
+    2. Following the "Component pre-release workflow" but dropping the `prerelease` option
 
 ### Appendix of useful Lerna commands
 
