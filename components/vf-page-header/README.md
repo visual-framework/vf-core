@@ -4,6 +4,8 @@
 
 ## About
 
+A simple combination of a heading and subheading for pages.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-page-header` with this command.

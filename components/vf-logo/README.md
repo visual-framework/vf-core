@@ -4,6 +4,8 @@
 
 ## About
 
+A simple component to add the Visual Framework logo to a page. You'll likely want to use this one as a template to add your own logo.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-logo` with this command.

@@ -10,8 +10,6 @@ Utility Classes provide the building blocks for layout and handle a range common
 - Utility Classes should clearly describe the job they do.
 - Utility Classes are to be namespaced with `vf-u-`
 
-
-
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-utility-classes` with this command.

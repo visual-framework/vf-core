@@ -4,6 +4,8 @@
 
 ## About
 
+An arrangement of `vf-summary` in a three-column container. 
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-summary-container` with this command.
