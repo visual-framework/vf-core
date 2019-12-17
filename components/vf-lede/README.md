@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-lede.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-lede)
 
+Use `vf-lede` for introductory text.
+
 ## Install
 
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `primer-buttons` with this command.

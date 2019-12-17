@@ -3,22 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# 1.0.0-alpha.8 (2019-10-23)
+# 1.0.0 (2019-12-17)
 
-**Note:** Version bump only for package @visual-framework/embl-logo
-
-
-
-
-
-# 1.0.0-alpha.7 (2019-09-30)
-
-**Note:** Version bump only for package @visual-framework/embl-logo
-
-
-
-
-
-# 1.0.0-alpha.5
-
-- @embl-logo--responsive is now deprecated, use @embl-logo instead
+* Initial stable release

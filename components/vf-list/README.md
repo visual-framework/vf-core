@@ -4,6 +4,8 @@
 
 ## About
 
+Classic html list `<li>` types: order, unordered, bulleted and inline. 
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-list` with this command.

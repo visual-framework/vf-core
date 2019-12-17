@@ -4,6 +4,8 @@
 
 ## About
 
+A text-oriented container, this combines the `embl-grid` layout with a heading and `vf-lede` text.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-intro` with this command.

@@ -4,6 +4,8 @@
 
 ## About
 
+Summaries in the form of text, headlines and often imagery for a range of types of content, including: articles, jobs, news and people profiles. 
+
 ### Publications Summary
 
 The `vf-summary--publication` can be nested inside a vf-box where it takes the vf-box colours.

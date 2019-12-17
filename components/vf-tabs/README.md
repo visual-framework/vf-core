@@ -4,6 +4,8 @@
 
 ## About
 
+The ever-useful tabs. This component works best with the included JS, but you can use the CSS styling on other tab sets, like Bootstrap tabs. 
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-tabs` with this command.
