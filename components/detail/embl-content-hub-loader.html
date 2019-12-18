@@ -258,6 +258,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-section"># 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
+
+
+<span class="hljs-section"># 1.0.1 (2019)</span>
+<span class="hljs-bullet">
+* </span>adds CSS for times when the <span class="hljs-code">`*-content-hub-html`</span> is a direct child of <span class="hljs-code">`vf-body`</span>.
 </code>
         </pre>
         
@@ -273,7 +278,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-content-hub-loader/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 214 Bytes
+          Size: 315 Bytes
         </li>
       </ul>
     </section>
@@ -338,7 +343,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 @<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-content-hub-loader.variables.scss'</span>;
 
-<span class="hljs-comment">// contentHub html caries an extra div that should be outside of the grid layout</span>
+<span class="hljs-comment">// contentHub html carries an extra div that should be outside of the grid layout</span>
 <span class="hljs-selector-class">.embl-grid</span> &gt; <span class="hljs-selector-class">.vf-content-hub-html</span>,
 <span class="hljs-selector-class">.embl-grid</span> &gt; <span class="hljs-selector-class">.embl-content-hub-html</span>,
 <span class="hljs-selector-class">.vf-grid</span> &gt; <span class="hljs-selector-class">.vf-content-hub-html</span>,
@@ -347,6 +352,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-comment">// @todo: this should probably just be .embl-content-hub-html, but that requires a</span>
   <span class="hljs-comment">//        disruptive change in the contenthub itself and will impact many systems.</span>
   <span class="hljs-comment">//        that change will require coordination</span>
+}
+<span class="hljs-comment">// contentHub html is sometimes placed as a direct child of `vf-body` which needs a</span>
+<span class="hljs-comment">// different grid-column ruleset.</span>
+<span class="hljs-selector-class">.vf-body</span> &gt; <span class="hljs-selector-class">.vf-content-hub-html</span>,
+<span class="hljs-selector-class">.vf-body</span> &gt; <span class="hljs-selector-class">.embl-content-hub-html</span> {
+  grid-column: main;
 }
 </code>
         </pre>
@@ -363,7 +374,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-content-hub-loader/embl-content-hub-loader.scss
         </li>
         <li class="vf-list__item">
-          Size: 801 Bytes
+          Size: 1 KB
         </li>
       </ul>
     </section>
