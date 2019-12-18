@@ -60,10 +60,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "lerna:prerelease:test": "lerna publish --no-git-tag-version --conventional-commits --no-push --skip-npm prerelease && git reset --hard",
-    "lerna:prerelease:publish": "lerna publish --no-git-tag-version --conventional-commits --no-push prerelease && git reset --hard && lerna publish --no-git-tag-version --conventional-commits --no-push --skip-npm --ignore-scripts prerelease",
-    "lerna:release:test": "lerna publish --no-git-tag-version --conventional-commits --no-push --skip-npm && git reset --hard",
-    "lerna:release:publish": "lerna publish --no-git-tag-version --conventional-commits --no-push && git reset --hard && lerna publish --no-git-tag-version --conventional-commits --no-push --skip-npm --ignore-scripts",
+    "lerna:prerelease:test": "lerna publish --no-git-tag-version --no-push --skip-npm prerelease && git reset --hard",
+    "lerna:prerelease:publish": "lerna publish --no-git-tag-version --no-push prerelease && git reset --hard && lerna publish --no-git-tag-version --no-push --skip-npm --ignore-scripts prerelease",
+    "lerna:release:test": "lerna publish --no-git-tag-version --no-push --skip-npm && git reset --hard",
+    "lerna:release:publish": "lerna publish --no-git-tag-version --no-push && git reset --hard && lerna publish --no-git-tag-version --no-push --skip-npm --ignore-scripts",
     "preversion": "gulp vf-core:prepare-deploy"
   },
   "repository": {
