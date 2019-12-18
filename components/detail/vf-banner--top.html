@@ -336,6 +336,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-section"># 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
+
+
+<span class="hljs-section"># 1.0.1</span>
+<span class="hljs-bullet">
+* </span>Removed default spacing of <span class="hljs-code">`vf-text`</span> components inside.
+<span class="hljs-bullet">* </span>Removes overriding variant CSS that removes padding, as it breaks the GDPR banner.
+<span class="hljs-bullet">* </span>The spacing inside the component is now dictated by the component.
+<span class="hljs-bullet">* </span>Adds a top and bottom margin for spacing of the <span class="hljs-code">`--phase`</span> variant.
 </code>
         </pre>
         
@@ -351,7 +359,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-banner/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 214 Bytes
+          Size: 506 Bytes
         </li>
       </ul>
     </section>
@@ -740,7 +748,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-banner</span> {
   <span class="hljs-attribute">box-sizing</span>: border-box;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
 
   <span class="hljs-selector-class">.vf-badge</span> {
     <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>;
@@ -786,8 +794,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-banner--notice</span> {
-  @<span class="hljs-keyword">include</span> padding--block(all, <span class="hljs-variable">$vf-notice-banner-padding</span>);
-
   <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-notice-banner-color--background</span>;
 
   <span class="hljs-selector-class">.vf-text</span> {
@@ -838,7 +844,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-banner/vf-banner.scss
         </li>
         <li class="vf-list__item">
-          Size: 2 KB
+          Size: 1.9 KB
         </li>
       </ul>
     </section>
