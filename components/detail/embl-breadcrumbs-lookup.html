@@ -414,8 +414,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">/**
  * Get the EMBL taxonomy json from the ContentHub
- * @example emblGetTaxonomy()
- * @param {string} [url] - URL to pull the taxonomy from
+ * <span class="hljs-doctag">@example </span>emblGetTaxonomy()
+ * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[url] - URL to pull the taxonomy from
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblGetTaxonomy</span>(<span class="hljs-params">url</span>) </span>{
   <span class="hljs-keyword">var</span> url = url || <span class="hljs-string">'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-ontology&amp;source=contenthub'</span>;
@@ -453,11 +453,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">/**
  * Receive a term and its context and create a breadcrumb
- * @example emblBreadcrumbAppend(breadcrumbTarget,term,facet,type)
- * @param {dom elements} [breadcrumbTarget]  - elements with data-embl-js-breadcrumbs-lookup
- * @param {string} [termName]  - the taxonomy item found, e.g. `Cancer`
- * @param {string} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
- * @param {string} [type]  - if this is a `primary` or `related` path
+ * <span class="hljs-doctag">@example </span>emblBreadcrumbAppend(breadcrumbTarget,term,facet,type)
+ * <span class="hljs-doctag">@param <span class="hljs-type">{dom elements}</span> </span>[breadcrumbTarget]  - elements with data-embl-js-breadcrumbs-lookup
+ * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[termName]  - the taxonomy item found, e.g. `Cancer`
+ * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[facet] - the facet of the taxonomy (`who`, `what` or `where`)
+ * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[type]  - if this is a `primary` or `related` path
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcrumbAppend</span>(<span class="hljs-params">breadcrumbTarget,termName,facet,type</span>) </span>{
   <span class="hljs-comment">// console.log('Processing breadcrumb for:', termName + ', ' + facet + ', ' + type);</span>
@@ -493,9 +493,9 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
    * todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless
    *       of it's who/what/where path, but maybe this will provide an interesting
    *       "odeur d'information"
-   * @example getBreadcrumbParentTerm(parents,context)
-   * @param {array} [parents]  - array of UUIDs
-   * @param {string} [facet] - who, what, where
+   * <span class="hljs-doctag">@example </span>getBreadcrumbParentTerm(parents,context)
+   * <span class="hljs-doctag">@param <span class="hljs-type">{array}</span> </span>[parents]  - array of UUIDs
+   * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[facet] - who, what, where
    */</span>
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getBreadcrumbParentTerm</span>(<span class="hljs-params">parents,facet</span>) </span>{
     <span class="hljs-comment">// var parentTodos = {</span>
@@ -554,9 +554,9 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-comment">/**
    * Generate HTML for a new breadcrumb
-   * @example formatBreadcrumb(term,breadcrumbUrl)
-   * @param {string} [termName]  - the taxonomy string of the item, e.g. `Cancer`
-   * @param {string} [breadcrumbUrl] - a fully formed URL, or 'null' to not make a link
+   * <span class="hljs-doctag">@example </span>formatBreadcrumb(term,breadcrumbUrl)
+   * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[termName]  - the taxonomy string of the item, e.g. `Cancer`
+   * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[breadcrumbUrl] - a fully formed URL, or 'null' to not make a link
    */</span>
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatBreadcrumb</span>(<span class="hljs-params">termName,breadcrumbUrl</span>) </span>{
     <span class="hljs-keyword">var</span> newBreadcrumb = <span class="hljs-string">'&lt;li class="vf-breadcrumbs__item"&gt;'</span>;
@@ -684,7 +684,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// embl-breadcrumbs-lookup</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -693,7 +693,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 
-<span class="hljs-selector-class">.embl-grid</span> <span class="hljs-selector-class">.embl-breadcrumbs-lookup</span>:first-child {
+<span class="hljs-selector-class">.embl-grid</span> <span class="hljs-selector-class">.embl-breadcrumbs-lookup</span><span class="hljs-selector-pseudo">:first-child</span> {
   <span class="hljs-comment">// .embl-grid's frist-child property brings higher specificity</span>
   <span class="hljs-comment">// it also has a margin bottom, so we don't need the .vf-breadcrumbs margin</span>
   grid-column: <span class="hljs-number">1</span>/-<span class="hljs-number">1</span>;
@@ -713,7 +713,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 }
 
-@keyframes embl-breadcrumbs-lookup-ghosting-animation {
+<span class="hljs-keyword">@keyframes</span> embl-breadcrumbs-lookup-ghosting-animation {
   to {
     <span class="hljs-attribute">background-position</span>: <span class="hljs-number">100%</span>;
   }
@@ -747,14 +747,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-breadcrumbs-lookup.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'embl-breadcrumbs-lookup.scss'</span>;
 </code>
         </pre>
         

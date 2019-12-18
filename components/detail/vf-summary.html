@@ -262,7 +262,7 @@ class="vf-logo">
 <h2 id="install">Install</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-summary</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-summary</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-summary/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-summary/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -620,24 +620,24 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-link/vf-link.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-link/vf-link.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-summary.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-summary.scss'</span>;
 
 <span class="hljs-comment">// component variant styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary--article.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary--job.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary--news.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary--profile.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary--has-image.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-summary--article.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-summary--job.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-summary--news.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-summary--profile.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-summary--has-image.scss'</span>;
 </code>
         </pre>
         
@@ -765,7 +765,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   grid-<span class="hljs-attribute">column-gap</span>: <span class="hljs-number">18px</span>;
   grid-template-<span class="hljs-attribute">columns</span>: minmax(<span class="hljs-variable">$vf-summary--has-image-width</span>, auto) <span class="hljs-number">1</span>fr;
   grid-template-rows: auto;
-  @<span class="hljs-keyword">include</span> margin--block(bottom, 48px);
+  <span class="hljs-keyword">@include</span> margin--block(bottom, <span class="hljs-number">48px</span>);
 
   <span class="hljs-selector-class">.vf-summary__image</span> {
     grid-column: <span class="hljs-number">1</span> / span <span class="hljs-number">1</span>;
@@ -912,7 +912,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     }
   }
 
-  @<span class="hljs-keyword">media</span> (min-width: 600px) {
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">600px</span>) {
     grid-row-gap: unset;
     grid-template-<span class="hljs-attribute">columns</span>: minmax(<span class="hljs-number">0</span>, auto) <span class="hljs-number">1</span>fr;
   }
@@ -973,10 +973,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-summary__link</span> {
-  @<span class="hljs-keyword">include</span> inline-link;
+  <span class="hljs-keyword">@include</span> inline-link;
 }
 <span class="hljs-selector-class">.vf-summary__link--secondary</span> {
-  @<span class="hljs-keyword">include</span> inline-link(<span class="hljs-variable">$vf-link---secondary-color</span>, <span class="hljs-variable">$vf-link---secondary-color--hover</span>, <span class="hljs-variable">$vf-link---secondary-color--visited</span>, <span class="hljs-variable">$vf-include-normalisations</span>: true);
+  <span class="hljs-keyword">@include</span> inline-link(<span class="hljs-variable">$vf-link---secondary-color</span>, <span class="hljs-variable">$vf-link---secondary-color--hover</span>, <span class="hljs-variable">$vf-link---secondary-color--visited</span>, <span class="hljs-variable">$vf-include-normalisations</span>: true);
 }
 
 <span class="hljs-selector-class">.vf-summary__image--avatar</span> {
@@ -987,14 +987,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-summary__email</span> {
   --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">24px</span>;
 
-  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__body-typography</span>);
+  <span class="hljs-keyword">@include</span> set-type(<span class="hljs-variable">$vf-summary__body-typography</span>);
 }
 
 
 <span class="hljs-selector-class">.vf-summary__phone</span> {
   --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 
-  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__body-typography</span>);
+  <span class="hljs-keyword">@include</span> set-type(<span class="hljs-variable">$vf-summary__body-typography</span>);
 
   &amp; + &amp; {
     --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">8px</span>;
@@ -1004,7 +1004,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-summary--mobile</span> {
   <span class="hljs-attribute">position</span>: relative;
 
-  &amp;::after {
+  &amp;<span class="hljs-selector-pseudo">::after</span> {
     <span class="hljs-attribute">content</span>: <span class="hljs-string">'(mobile)'</span>;
     <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span>;
     <span class="hljs-attribute">position</span>: absolute;
@@ -1013,7 +1013,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 
 <span class="hljs-selector-class">.vf-summary__uuid</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">5</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>);
   <span class="hljs-attribute">color</span>: set-color(color-grey-dark);
 }
 
@@ -1034,10 +1034,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">8px</span>;
   }
   <span class="hljs-selector-class">.vf-summary__text</span> {
-    @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">5</span>);
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>);
   }
   <span class="hljs-selector-class">.vf-summary__email</span> {
-    @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: 0);
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
   }
   <span class="hljs-selector-class">.vf-summary__image</span> {
     <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>;
@@ -1052,7 +1052,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">8px</span>;
   }
   <span class="hljs-selector-class">.vf-summary__title</span> {
-    @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">5</span>);
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>);
   }
 }
 </code>
@@ -1098,15 +1098,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-selector-class">.vf-summary__date</span> {
       <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span>;
       <span class="hljs-attribute">position</span>: relative;
-      &amp;::before,
-      &amp;::after {
+      &amp;<span class="hljs-selector-pseudo">::before</span>,
+      &amp;<span class="hljs-selector-pseudo">::after</span> {
         <span class="hljs-attribute">position</span>: absolute;
       }
-      &amp;::before {
+      &amp;<span class="hljs-selector-pseudo">::before</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">'('</span>;
         <span class="hljs-attribute">left</span>: -<span class="hljs-number">4px</span>;
       }
-      &amp;::after {
+      &amp;<span class="hljs-selector-pseudo">::after</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">')'</span>;
       }
     }
@@ -1114,19 +1114,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 
   <span class="hljs-selector-class">.vf-summary__text</span> {
-    @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">5</span>);
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>);
 
     <span class="hljs-attribute">color</span>: set-color(<span class="hljs-variable">$vf-summary__publication-color--text</span>);
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>; <span class="hljs-comment">// this also gets zeroed by vf-summary &gt; *:last-child sometimes</span>
   }
 
   <span class="hljs-selector-class">.vf-summary__text</span> <span class="hljs-selector-class">.vf-link</span> {
-    @<span class="hljs-keyword">media</span> (max-width: <span class="hljs-variable">$vf-breakpoint--md</span> - 1px) {
-      &amp;:first-child {
+    <span class="hljs-keyword">@media</span> (max-width: <span class="hljs-variable">$vf-breakpoint--md</span> - <span class="hljs-number">1px</span>) {
+      &amp;<span class="hljs-selector-pseudo">:first-child</span> {
         <span class="hljs-attribute">display</span>: block;
       }
     }
-    @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--md</span>) {
+    <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--md</span>) {
       <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
     }
   }
@@ -1144,7 +1144,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 
   <span class="hljs-comment">// vf-summary--publication inside of a vf-box will have more than one item in the vf-box, so we need to add some vertical spacing for more than one publication item in a box</span>
-  <span class="hljs-selector-class">.vf-box</span> &amp;:not(:first-of-type) {
+  <span class="hljs-selector-class">.vf-box</span> &amp;<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:first-of-type</span>) {
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">12px</span>;
   }
 }
@@ -1176,7 +1176,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-summary</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -1185,7 +1185,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-summary.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-summary.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-summary</span> {
   <span class="hljs-attribute">align-self</span>: start;
@@ -1194,7 +1194,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-variable">$vf-summary-margin-bottom</span>;
   <span class="hljs-attribute">position</span>: relative;
 
-  &amp; &gt; *:last-child {
+  &amp; &gt; *<span class="hljs-selector-pseudo">:last-child</span> {
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
   }
 
@@ -1227,27 +1227,27 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-summary__category</span> {
   --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 
-  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__category-typography</span>);
+  <span class="hljs-keyword">@include</span> set-type(<span class="hljs-variable">$vf-summary__category-typography</span>);
 
   <span class="hljs-attribute">color</span>: set-color(<span class="hljs-variable">$vf-summary__category-color--text</span>);
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
 }
 
 <span class="hljs-selector-class">.vf-summary__date</span> {
-  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__date-typography</span>);
+  <span class="hljs-keyword">@include</span> set-type(<span class="hljs-variable">$vf-summary__date-typography</span>);
 
   <span class="hljs-attribute">color</span>: set-color(<span class="hljs-variable">$vf-summary__date-color--text</span>);
 }
 
 <span class="hljs-selector-class">.vf-summary__source</span> {
-  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__date-typography</span>);
+  <span class="hljs-keyword">@include</span> set-type(<span class="hljs-variable">$vf-summary__date-typography</span>);
 
   <span class="hljs-attribute">color</span>: set-color(<span class="hljs-variable">$vf-summary__date-color--text</span>);
   <span class="hljs-attribute">font-style</span>: italic;
 }
 
 <span class="hljs-selector-class">.vf-summary__link</span> {
-  @<span class="hljs-keyword">include</span> inline-link();
+  <span class="hljs-keyword">@include</span> inline-link();
 }
 
 <span class="hljs-selector-class">.vf-summary__link--overlay</span> {
@@ -1259,19 +1259,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-summary__meta</span> {
-  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__meta-typography</span>);
+  <span class="hljs-keyword">@include</span> set-type(<span class="hljs-variable">$vf-summary__meta-typography</span>);
 }
 
 <span class="hljs-selector-class">.vf-summary__text</span> {
-  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__body-typography</span>);
+  <span class="hljs-keyword">@include</span> set-type(<span class="hljs-variable">$vf-summary__body-typography</span>);
 }
 
 <span class="hljs-selector-class">.vf-summary__title</span> {
-  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__title-typography</span>);
+  <span class="hljs-keyword">@include</span> set-type(<span class="hljs-variable">$vf-summary__title-typography</span>);
 }
 
 <span class="hljs-selector-class">.vf-summary__author</span> {
-  @<span class="hljs-keyword">include</span> set-type(<span class="hljs-variable">$vf-summary__author-typography</span>);
+  <span class="hljs-keyword">@include</span> set-type(<span class="hljs-variable">$vf-summary__author-typography</span>);
 
   <span class="hljs-attribute">color</span>: set-color(<span class="hljs-variable">$vf-summary__author-color--text</span>);
   <span class="hljs-attribute">font-style</span>: italic;
@@ -1302,7 +1302,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <div class="FileBrowser-itemPreview">
         
         <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-link/vf-link.variables.scss'</span>;
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-link/vf-link.variables.scss'</span>;
 
 <span class="hljs-comment">// vf-summmary Sass configuration file.</span>
 <span class="hljs-comment">// ------------------------------------------------------------</span>

@@ -174,7 +174,7 @@ class="vf-logo">
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-hero</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-hero</span></code></pre><h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-hero/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-hero/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -372,15 +372,15 @@ class="vf-logo">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-hero.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-hero.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-hero.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-hero.scss'</span>;
 
 <span class="hljs-comment">// component variant styles</span>
 <span class="hljs-comment">// @import 'vf-hero--variant.scss';</span>
@@ -530,7 +530,7 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-hero</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -539,7 +539,7 @@ class="vf-logo">
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 <span class="hljs-comment">/* stylelint-disable */</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-hero.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-hero.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-hero</span> {
   <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--white);
@@ -557,8 +557,8 @@ class="vf-logo">
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">2rem</span>;
   <span class="hljs-attribute">position</span>: relative;
 
-  &amp;:not(<span class="hljs-selector-class">.vf-hero--easy</span>) {
-    &amp;::before {
+  &amp;<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-hero--easy</span>) {
+    &amp;<span class="hljs-selector-pseudo">::before</span> {
       <span class="hljs-attribute">background-image</span>: var(--vf-hero-bg-image);
       <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
       grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
@@ -574,9 +574,9 @@ class="vf-logo">
   <span class="hljs-selector-tag">a</span> {
     <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
   }
-  <span class="hljs-selector-tag">a</span>:focus,
-  <span class="hljs-selector-tag">a</span>:hover,
-  <span class="hljs-selector-tag">a</span>:visited {
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:focus</span>,
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>,
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> {
     <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
   }
 
@@ -592,7 +592,7 @@ class="vf-logo">
 }
 
 <span class="hljs-selector-class">.vf-hero__heading</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-heading--<span class="hljs-number">3</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">3</span>);
 
   <span class="hljs-comment">// positions to the left</span>
   <span class="hljs-attribute">display</span>: inline-block;
@@ -601,7 +601,7 @@ class="vf-logo">
 }
 
 <span class="hljs-selector-class">.vf-hero__text</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">2</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>);
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
 
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">1em</span> .<span class="hljs-number">5em</span>;
@@ -687,7 +687,7 @@ class="vf-logo">
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
   }
 
-  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--md</span>) {
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--md</span>) {
     <span class="hljs-attribute">display</span>: grid;
     <span class="hljs-comment">// grid-template-columns: minmax(var(--page-grid-gap), 60px) [main-start] minmax(auto, 100%) minmax(auto, 22.125em) [main-end] minmax(var(--page-grid-gap), 60px);</span>
     grid-template-<span class="hljs-attribute">columns</span>: [main-start] minmax(auto,<span class="hljs-number">100%</span>) minmax(auto,<span class="hljs-number">22.125em</span>) [main-end];
@@ -747,9 +747,9 @@ class="vf-logo">
   <span class="hljs-selector-tag">a</span> {
     <span class="hljs-attribute">color</span>: white;
   }
-  <span class="hljs-selector-tag">a</span>:focus,
-  <span class="hljs-selector-tag">a</span>:hover,
-  <span class="hljs-selector-tag">a</span>:visited {
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:focus</span>,
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>,
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> {
     <span class="hljs-attribute">color</span>: white;
   }
 
@@ -788,9 +788,9 @@ class="vf-logo">
   <span class="hljs-selector-tag">a</span> {
     <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
   }
-  <span class="hljs-selector-tag">a</span>:focus,
-  <span class="hljs-selector-tag">a</span>:hover,
-  <span class="hljs-selector-tag">a</span>:visited {
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:focus</span>,
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>,
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> {
     <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
   }
 
@@ -823,9 +823,9 @@ class="vf-logo">
   <span class="hljs-selector-tag">a</span> {
     <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
   }
-  <span class="hljs-selector-tag">a</span>:focus,
-  <span class="hljs-selector-tag">a</span>:hover,
-  <span class="hljs-selector-tag">a</span>:visited {
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:focus</span>,
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>,
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span> {
     <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
   }
 }

@@ -229,7 +229,7 @@ class="vf-logo">
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>primer-buttons</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-banner</span></code></pre><h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-banner/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-banner/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -416,21 +416,21 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-banner.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-banner.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-banner.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-banner.scss'</span>;
 
 <span class="hljs-comment">// positional banners</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-banner--fixed.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-banner--fixed.scss'</span>;
 
 <span class="hljs-comment">// color/style banners</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-banner--phase.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-banner--phase.scss'</span>;
 </code>
         </pre>
         
@@ -614,8 +614,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">/**
  * Finds all vf-banner on a page and activates them
- * @param {object} [scope] - the html scope to process, optional, defaults to `document`
- * @example vfBanner(document.querySelectorAll('.vf-component__container')[0]);
+ * <span class="hljs-doctag">@param <span class="hljs-type">{object}</span> </span>[scope] - the html scope to process, optional, defaults to `document`
+ * <span class="hljs-doctag">@example </span>vfBanner(document.querySelectorAll('.vf-component__container')[0]);
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBanner</span>(<span class="hljs-params">scope</span>) </span>{
   <span class="hljs-keyword">var</span> scope = scope || <span class="hljs-built_in">document</span>;
@@ -659,10 +659,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">/**
  * Takes a banner object and creates the necesary html markup, js events, and inserts
- * @example vfBannerInsert()
- * @param {object} [banner]  -
- * @param {object} [scope] - the html scope to process, optional, defaults to `document`
- * @param {string} [bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
+ * <span class="hljs-doctag">@example </span>vfBannerInsert()
+ * <span class="hljs-doctag">@param <span class="hljs-type">{object}</span> </span>[banner]  -
+ * <span class="hljs-doctag">@param <span class="hljs-type">{object}</span> </span>[scope] - the html scope to process, optional, defaults to `document`
+ * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerInsert</span>(<span class="hljs-params">banner,bannerId,scope</span>) </span>{
   <span class="hljs-keyword">var</span> scope = scope || <span class="hljs-built_in">document</span>;
@@ -814,7 +814,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-banner</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -823,7 +823,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-banner.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-banner.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-banner</span> {
   <span class="hljs-attribute">box-sizing</span>: border-box;
@@ -851,17 +851,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">align-content</span>: center;
   <span class="hljs-attribute">align-items</span>: center;
 
-  @<span class="hljs-keyword">media</span> (max-width: 63.9375em) {
+  <span class="hljs-keyword">@media</span> (max-width: <span class="hljs-number">63.9375em</span>) {
     <span class="hljs-attribute">display</span>: block; <span class="hljs-comment">// overrideing the .emlb-grid code</span>
   }
 
-  @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
     grid-column: main;
   }
 }
 
 <span class="hljs-selector-class">.vf-banner__text</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">3</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>);
 }
 
 <span class="hljs-selector-class">.vf-banner--top</span> {
@@ -884,13 +884,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-banner-color--link</span>;
     }
 
-    @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
+    <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
       <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
     }
   }
 
   <span class="hljs-selector-class">.vf-button</span> {
-    @<span class="hljs-keyword">media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
+    <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
       <span class="hljs-attribute">align-self</span>: center;
       justify-self: end;
     }
@@ -898,13 +898,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-banner--blocking</span><span class="hljs-selector-class">.vf-banner--notice</span> {
-  @<span class="hljs-keyword">include</span> padding--block(all, <span class="hljs-variable">$vf-notice-banner-padding</span>);
+  <span class="hljs-keyword">@include</span> padding--block(all, <span class="hljs-variable">$vf-notice-banner-padding</span>);
 
   <span class="hljs-attribute">background-color</span>: rgba(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, .<span class="hljs-number">1</span>); <span class="hljs-comment">// to do: do we do an alpha mix in?</span>
 }
 
 <span class="hljs-selector-class">.vf-banner--blocking</span><span class="hljs-selector-class">.vf-banner--notice</span> <span class="hljs-selector-class">.vf-banner__content</span> {
-  @<span class="hljs-keyword">include</span> padding--block(all, <span class="hljs-variable">$vf-notice-banner-padding</span>);
+  <span class="hljs-keyword">@include</span> padding--block(all, <span class="hljs-variable">$vf-notice-banner-padding</span>);
 
   <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-notice-banner-color--background</span>;
 }

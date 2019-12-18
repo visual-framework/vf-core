@@ -140,7 +140,7 @@ class="vf-logo">
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>primer-buttons</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/embl-content-hub-loader</span></code></pre><h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/embl-content-hub-loader/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/embl-content-hub-loader/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -332,7 +332,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// embl-content-hub-loader</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -341,7 +341,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-content-hub-loader.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'embl-content-hub-loader.variables.scss'</span>;
 
 <span class="hljs-comment">// contentHub html carries an extra div that should be outside of the grid layout</span>
 <span class="hljs-selector-class">.embl-grid</span> &gt; <span class="hljs-selector-class">.vf-content-hub-html</span>,
@@ -349,7 +349,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-grid</span> &gt; <span class="hljs-selector-class">.vf-content-hub-html</span>,
 <span class="hljs-selector-class">.vf-grid</span> &gt; <span class="hljs-selector-class">.embl-content-hub-html</span> {
   grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-  <span class="hljs-comment">// @todo: this should probably just be .embl-content-hub-html, but that requires a</span>
+  <span class="hljs-comment">// @<span class="hljs-doctag">todo:</span> this should probably just be .embl-content-hub-html, but that requires a</span>
   <span class="hljs-comment">//        disruptive change in the contenthub itself and will impact many systems.</span>
   <span class="hljs-comment">//        that change will require coordination</span>
 }
@@ -734,7 +734,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 			isRoot = <span class="hljs-literal">true</span>;
 			rootContext = {
 				<span class="hljs-attr">alreadyImportedUrls</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(),		<span class="hljs-comment">// for deduplicating imports</span>
-				stylePromises: [],
+				<span class="hljs-attr">stylePromises</span>: [],
 				<span class="hljs-attr">scriptPromises</span>: [],
 				<span class="hljs-attr">progress</span>: (progressObject || {})	<span class="hljs-comment">// progress written to this object (loaded, total)</span>
 			};
@@ -813,15 +813,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-content-hub-loader.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'embl-content-hub-loader.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'embl-content-hub-loader.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'embl-content-hub-loader.scss'</span>;
 
 <span class="hljs-comment">// component variant styles</span>
 </code>

@@ -144,7 +144,7 @@ class="vf-logo">
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-tree</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-tree</span></code></pre><h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-tree/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-tree/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -435,15 +435,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-tree.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-tree.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-tree.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-tree.scss'</span>;
 
 <span class="hljs-comment">// component variant styles</span>
 <span class="hljs-comment">// @import 'vf-tree--variant.scss';</span>
@@ -544,8 +544,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
  <span class="hljs-comment">/**
   * The global function for this component
-  * @example vfTree(firstPassedVar)
-  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+  * <span class="hljs-doctag">@example </span>vfTree(firstPassedVar)
+  * <span class="hljs-doctag">@param <span class="hljs-type">{object}</span> </span>[scope] - the html scope to process, optional, defaults to `document`
   */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfTree</span>(<span class="hljs-params">scope</span>) </span>{
   <span class="hljs-keyword">var</span> scope = scope || <span class="hljs-built_in">document</span>;
@@ -650,7 +650,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-tree</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -659,7 +659,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
  <span class="hljs-comment">/* stylelint-disable */</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-tree.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-tree.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-tree</span> {
   <span class="hljs-attribute">display</span>: flex;
@@ -693,7 +693,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.vf-show-hide__button</span> {
     <span class="hljs-attribute">transform-origin</span>: center;
     <span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">180deg</span>);
-    &amp;:hover {
+    &amp;<span class="hljs-selector-pseudo">:hover</span> {
       <span class="hljs-attribute">transform-origin</span>: center;
       <span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">180deg</span>);
     }
@@ -713,7 +713,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">8px</span>;
   <span class="hljs-attribute">position</span>: relative;
 
-  &amp;:hover {
+  &amp;<span class="hljs-selector-pseudo">:hover</span> {
     <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-tree-bg-color--hover</span>;
   }
 }
@@ -729,7 +729,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     fill: <span class="hljs-variable">$vf-tree-caret-color</span>;
   }
 
-  &amp;:hover {
+  &amp;<span class="hljs-selector-pseudo">:hover</span> {
     all: unset;
     <span class="hljs-attribute">cursor</span>: pointer;
     <span class="hljs-attribute">float</span>: right;
@@ -742,7 +742,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-tree__link</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: 0px);
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0px</span>);
 
   <span class="hljs-attribute">color</span>: black;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">0</span>;
@@ -753,9 +753,9 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;
   <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">16px</span>;
 
-  &amp;:hover,
-  <span class="hljs-selector-class">.vf-tree__link</span>:hover,
-  <span class="hljs-selector-class">.vf-tree__item</span>:hover {
+  &amp;<span class="hljs-selector-pseudo">:hover</span>,
+  <span class="hljs-selector-class">.vf-tree__link</span><span class="hljs-selector-pseudo">:hover</span>,
+  <span class="hljs-selector-class">.vf-tree__item</span><span class="hljs-selector-pseudo">:hover</span> {
     <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;
   }
 
@@ -766,10 +766,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-tree__item--selected</span> {
-  &amp; &gt; <span class="hljs-selector-class">.vf-tree__link</span>:first-of-type {
-    @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">4</span>, <span class="hljs-variable">$custom-margin-bottom</span>: 0px);
+  &amp; &gt; <span class="hljs-selector-class">.vf-tree__link</span><span class="hljs-selector-pseudo">:first-of-type</span> {
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">4</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0px</span>);
 
-    &amp;:hover {
+    &amp;<span class="hljs-selector-pseudo">:hover</span> {
       <span class="hljs-attribute">text-decoration</span>: none <span class="hljs-meta">!important</span>;
     }
   }
@@ -787,7 +787,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">16px</span>;
     <span class="hljs-attribute">position</span>: relative;
 
-    &amp;::before {
+    &amp;<span class="hljs-selector-pseudo">::before</span> {
       <span class="hljs-attribute">border-left</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">$vf-tree-caret-color</span>;
       <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
       <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
@@ -795,11 +795,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <span class="hljs-attribute">position</span>: absolute;
     }
 
-    &amp;:last-of-type {
+    &amp;<span class="hljs-selector-pseudo">:last-of-type</span> {
       <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">0</span>;
     }
 
-    &amp;:hover &gt; <span class="hljs-selector-class">.vf-tree__link</span> {
+    &amp;<span class="hljs-selector-pseudo">:hover</span> &gt; <span class="hljs-selector-class">.vf-tree__link</span> {
       <span class="hljs-attribute">text-decoration</span>: underline;
     }
   }
@@ -828,7 +828,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     fill: <span class="hljs-variable">$vf-tree-caret-color</span>;
   }
 
-  &amp;:hover {
+  &amp;<span class="hljs-selector-pseudo">:hover</span> {
     all: unset;
     <span class="hljs-attribute">cursor</span>: pointer;
     <span class="hljs-attribute">margin-left</span>: auto;

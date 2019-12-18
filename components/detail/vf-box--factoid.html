@@ -176,7 +176,7 @@ class="vf-logo">
 <h2 id="install">Install</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-box</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-box</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-box/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-box/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -310,15 +310,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-box.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-box.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-box.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-box.scss'</span>;
 </code>
         </pre>
         
@@ -432,7 +432,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-box</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -441,7 +441,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-box.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-box.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-box</span> {
   <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey--dark);
@@ -453,17 +453,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 
   <span class="hljs-comment">// the last element within the component shouldn't have a bottom margin</span>
-  &amp; :last-child {
+  &amp; <span class="hljs-selector-pseudo">:last-child</span> {
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
   }
 }
 
 <span class="hljs-selector-class">.vf-box__heading</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-heading--<span class="hljs-number">4</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">4</span>);
 }
 
 <span class="hljs-selector-class">.vf-box__text</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">3</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>);
 }
 
 <span class="hljs-comment">// The CSS below is on notice</span>

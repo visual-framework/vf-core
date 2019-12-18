@@ -188,7 +188,7 @@ class="vf-logo">
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-card</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-card</span></code></pre><h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-card/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-card/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -329,15 +329,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-card.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-card.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-card.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-card.scss'</span>;
 
 <span class="hljs-comment">// component variant styles</span>
 <span class="hljs-comment">// @import 'vf-card--variant.scss';</span>
@@ -487,7 +487,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-card</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -496,17 +496,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-card.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-card.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-card</span> {
-  @<span class="hljs-keyword">include</span> margin( 0, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md) );
+  <span class="hljs-keyword">@include</span> margin( <span class="hljs-number">0</span>, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md) );
 
   <span class="hljs-attribute">display</span>: grid;
   grid-template-rows: <span class="hljs-number">216px</span> repeat(<span class="hljs-number">6</span>, <span class="hljs-number">36px</span>);
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
 
-  &amp;:hover {
+  &amp;<span class="hljs-selector-pseudo">:hover</span> {
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
@@ -533,7 +533,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     grid-row: <span class="hljs-number">2</span> / -<span class="hljs-number">1</span>;
   }
 
-  &amp;:hover {
+  &amp;<span class="hljs-selector-pseudo">:hover</span> {
     <span class="hljs-selector-class">.vf-card__title</span> {
       <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">36px</span>;
       <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
@@ -546,7 +546,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 
   <span class="hljs-selector-class">.vf-card__title</span> {
-    @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">5</span>);
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>);
 
     <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-card--topic-bg-color</span>;
     <span class="hljs-attribute">display</span>: inline-block;
@@ -571,7 +571,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md) map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg);
   }
 
-  &amp;:hover {
+  &amp;<span class="hljs-selector-pseudo">:hover</span> {
     <span class="hljs-selector-class">.vf-card__content</span> {
       <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">36px</span>;
       <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">36px</span>;
@@ -598,20 +598,20 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-card__title</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-heading--<span class="hljs-number">3</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">3</span>);
 
   <span class="hljs-attribute">text-decoration</span>: none;
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
 }
 
 <span class="hljs-selector-class">.vf-card__text</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">2</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>);
 
   <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">1s</span> linear;
 }
 
 <span class="hljs-selector-class">.vf-card__link</span> {
-  @<span class="hljs-keyword">include</span> inline-link;
+  <span class="hljs-keyword">@include</span> inline-link;
 }
 </code>
         </pre>

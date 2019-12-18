@@ -138,7 +138,7 @@ class="vf-logo">
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>primer-buttons</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-article-meta-information</span></code></pre><h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-article-meta-information/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-article-meta-information/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -299,14 +299,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-article-meta-information.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-article-meta-information.scss'</span>;
 </code>
         </pre>
         
@@ -412,7 +412,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-article-meta-information</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -477,19 +477,19 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <span class="hljs-attribute">color</span>: inherit;
       <span class="hljs-attribute">position</span>: relative;
     }
-    <span class="hljs-selector-class">.vf-link</span>:nth-last-child(n+2),
-    <span class="hljs-selector-class">.vf-link</span>:nth-last-child(n+2) ~ <span class="hljs-selector-class">.vf-link</span> {
+    <span class="hljs-selector-class">.vf-link</span><span class="hljs-selector-pseudo">:nth-last-child</span>(n+2),
+    <span class="hljs-selector-class">.vf-link</span><span class="hljs-selector-pseudo">:nth-last-child</span>(n+2) ~ <span class="hljs-selector-class">.vf-link</span> {
       <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">4px</span>;
 
-      &amp;::before {
+      &amp;<span class="hljs-selector-pseudo">::before</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">','</span>;
         <span class="hljs-attribute">position</span>: absolute;
         <span class="hljs-attribute">right</span>: -<span class="hljs-number">4px</span>;
       }
     }
 
-    <span class="hljs-selector-class">.vf-link</span>:last-of-type {
-      &amp;::before {
+    <span class="hljs-selector-class">.vf-link</span><span class="hljs-selector-pseudo">:last-of-type</span> {
+      &amp;<span class="hljs-selector-pseudo">::before</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span> <span class="hljs-meta">!important</span>;
       }
     }

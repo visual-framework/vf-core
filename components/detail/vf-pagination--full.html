@@ -196,7 +196,7 @@ class="vf-logo">
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>primer-buttons</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-pagination</span></code></pre><h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-pagination/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-pagination/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -452,18 +452,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-pagination.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-pagination.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-pagination.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-pagination.scss'</span>;
 
 <span class="hljs-comment">// component variant styles</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-pagination--full.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-pagination--full.scss'</span>;
 </code>
         </pre>
         
@@ -544,7 +544,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">flex</span>: <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">16px</span>;
   
-  &amp;:hover {
+  &amp;<span class="hljs-selector-pseudo">:hover</span> {
     <span class="hljs-attribute">background</span>: unset;
   }
 }
@@ -596,8 +596,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
  <span class="hljs-comment">/**
   * The global function for this component
-  * @example vfComponentName(firstPassedVar)
-  * @param {string} [firstPassedVar]  - An option to be passed
+  * <span class="hljs-doctag">@example </span>vfComponentName(firstPassedVar)
+  * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[firstPassedVar]  - An option to be passed
   */</span>
 <span class="hljs-comment">// function vfComponentName(firstPassedVar) {</span>
 <span class="hljs-comment">//   firstPassedVar = firstPassedVar || 'defaultVal';</span>
@@ -633,7 +633,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-pagination</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -642,7 +642,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-pagination.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-pagination.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-pagination__list</span> {
   <span class="hljs-attribute">display</span>: flex;
@@ -667,7 +667,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-pagination__label</span>,
 <span class="hljs-selector-class">.vf-pagination__link</span> {
-  @<span class="hljs-keyword">include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: 0);
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
 
   <span class="hljs-attribute">color</span>: set-color(vf-color--grey);
   <span class="hljs-attribute">display</span>: block;
@@ -675,7 +675,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">text-decoration</span>: none;
 }
 
-<span class="hljs-selector-class">.vf-pagination__link</span>:hover {
+<span class="hljs-selector-class">.vf-pagination__link</span><span class="hljs-selector-pseudo">:hover</span> {
   <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey);
   <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
 }

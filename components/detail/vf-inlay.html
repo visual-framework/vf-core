@@ -137,7 +137,7 @@ class="vf-logo">
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>primer-buttons</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-inlay</span></code></pre><h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/vf-inlay/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-inlay/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -418,15 +418,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-inlay.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-inlay.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-inlay.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-inlay.scss'</span>;
 
 <span class="hljs-comment">// component variant styles</span>
 </code>
@@ -534,7 +534,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-inlay</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -543,7 +543,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-inlay.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-inlay.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-inlay</span> {
   <span class="hljs-attribute">display</span>: grid;
@@ -558,26 +558,26 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   ;
   <span class="hljs-comment">/* stylelint-enable */</span>
 
-  &amp;:last-of-type {
-    @<span class="hljs-keyword">include</span> margin--block(bottom, <span class="hljs-variable">$vf-inlay__spacing--bottom--narrow</span>);
+  &amp;<span class="hljs-selector-pseudo">:last-of-type</span> {
+    <span class="hljs-keyword">@include</span> margin--block(bottom, <span class="hljs-variable">$vf-inlay__spacing--bottom--narrow</span>);
 
-    @<span class="hljs-keyword">media</span> (min-width: 1024px) {
-      @<span class="hljs-keyword">include</span> margin--block(bottom, <span class="hljs-variable">$vf-inlay__spacing--bottom</span>);
+    <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">1024px</span>) {
+      <span class="hljs-keyword">@include</span> margin--block(bottom, <span class="hljs-variable">$vf-inlay__spacing--bottom</span>);
     }
   }
 
   <span class="hljs-comment">// overides vf-grid's natural inclination to be full width</span>
   &amp; <span class="hljs-selector-class">.vf-grid</span> {
-    @<span class="hljs-keyword">media</span> (max-width: 1299px) {
+    <span class="hljs-keyword">@media</span> (max-width: <span class="hljs-number">1299px</span>) {
       grid-column: main;
     }
   }
 
-  @<span class="hljs-keyword">media</span> (min-width: 480px) {
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">480px</span>) {
     <span class="hljs-comment">// grid-column: 2 / -2;</span>
   }
 
-  @<span class="hljs-keyword">media</span> (min-width: 1024px) {
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">1024px</span>) {
     --page-grid-gap: <span class="hljs-number">36px</span>;
   }
 }
@@ -596,7 +596,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   ;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">36px</span>;
 
-  @<span class="hljs-keyword">media</span> (max-width: 1023px) {
+  <span class="hljs-keyword">@media</span> (max-width: <span class="hljs-number">1023px</span>) {
     grid-template-<span class="hljs-attribute">columns</span>:
       var(--page-grid-gap)
       [main-start]
@@ -611,23 +611,23 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-inlay__content--full-width</span> {
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
-  @<span class="hljs-keyword">include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg));
+  <span class="hljs-keyword">@include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg));
 }
 
 <span class="hljs-selector-class">.vf-inlay__content--main</span> {
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
   <span class="hljs-attribute">padding-right</span>: var(--page-grid-gap);
 
-  @<span class="hljs-keyword">media</span> (min-width: 1100px) {
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">1100px</span>) {
     grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
   }
-  @<span class="hljs-keyword">include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg));
+  <span class="hljs-keyword">@include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg));
 }
 
 <span class="hljs-selector-class">.vf-inlay__content--additional</span> {
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
 
-  @<span class="hljs-keyword">media</span> (min-width: 1100px) {
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">1100px</span>) {
     grid-column: <span class="hljs-number">3</span> / <span class="hljs-number">4</span>;
   }
 }

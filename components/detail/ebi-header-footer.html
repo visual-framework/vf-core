@@ -148,7 +148,7 @@ class="vf-logo">
 </ul>
 <h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code>@<span class="hljs-keyword">import</span> <span class="hljs-string">"@visual-framework/ebi-header-footer/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/ebi-header-footer/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -355,12 +355,12 @@ Your content here.
     <span class="hljs-selector-tag">a</span> {
       <span class="hljs-attribute">color</span>: var(--vf-color--grey--darkest);
     }
-    <span class="hljs-selector-tag">a</span>:hover { 
+    <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> { 
       <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid var(--vf-ui-color--white);
     }
   }
 
-  @<span class="hljs-keyword">media</span> screen and (max-width: 39.9375em) {
+  <span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (max-width: <span class="hljs-number">39.9375em</span>) {
     <span class="hljs-selector-class">.dropdown-pane</span><span class="hljs-selector-class">.embl-dropdown</span> {
       <span class="hljs-comment">// do not show embl-dropdown on small screens at all</span>
       <span class="hljs-attribute">display</span>: none;
@@ -371,10 +371,10 @@ Your content here.
 
   <span class="hljs-selector-class">.embl-selector</span> {
     <span class="hljs-selector-class">.button</span><span class="hljs-selector-class">.hover</span>,
-    <span class="hljs-selector-class">.button</span>:hover {
+    <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:hover</span> {
       <span class="hljs-attribute">background-color</span>: transparent;
     }
-    <span class="hljs-selector-class">.button</span><span class="hljs-selector-attr">[aria-expanded="false"]</span>::after {
+    <span class="hljs-selector-class">.button</span><span class="hljs-selector-attr">[aria-expanded="false"]</span><span class="hljs-selector-pseudo">::after</span> {
       <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
       <span class="hljs-attribute">display</span>: block;
       <span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>;
@@ -390,8 +390,8 @@ Your content here.
     &amp;<span class="hljs-selector-class">.embl-ebi</span> {
       <span class="hljs-selector-class">.button</span>,
       <span class="hljs-selector-class">.button</span><span class="hljs-selector-class">.hover</span>,
-      <span class="hljs-selector-class">.button</span>:focus,
-      <span class="hljs-selector-class">.button</span>:hover {
+      <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:focus</span>,
+      <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:hover</span> {
         <span class="hljs-attribute">background</span>: no-repeat <span class="hljs-number">4px</span> <span class="hljs-number">50%</span> url(<span class="hljs-string">"https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/EMBL_EBI_Logo_white.svg"</span>);
         <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">95px</span>;
         <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100px</span>;
@@ -403,8 +403,8 @@ Your content here.
       <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">1rem</span>;
       <span class="hljs-selector-class">.button</span>,
       <span class="hljs-selector-class">.button</span><span class="hljs-selector-class">.hover</span>,
-      <span class="hljs-selector-class">.button</span>:focus,
-      <span class="hljs-selector-class">.button</span>:hover {
+      <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:focus</span>,
+      <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:hover</span> {
         <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">"https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL/EMBL-black.svg"</span>);
       }
     }
@@ -412,18 +412,18 @@ Your content here.
     &amp;<span class="hljs-selector-class">.active</span><span class="hljs-selector-class">.embl-ebi</span> {
       <span class="hljs-selector-class">.button</span>,
       <span class="hljs-selector-class">.button</span><span class="hljs-selector-class">.hover</span>,
-      <span class="hljs-selector-class">.button</span>:focus,
-      <span class="hljs-selector-class">.button</span>:hover {
+      <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:focus</span>,
+      <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:hover</span> {
         <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">"https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/EMBL_EBI_Logo_black.svg"</span>);
       }
     }
   }
 
   <span class="hljs-comment">// begin to hide bits of dropdown toggle as screen shrinks</span>
-  @<span class="hljs-keyword">media</span> screen and (max-width: 53em) {
+  <span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (max-width: <span class="hljs-number">53em</span>) {
     <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.embl-selector</span> { <span class="hljs-attribute">padding-left</span>: .<span class="hljs-number">5rem</span>; }
     <span class="hljs-selector-class">.embl-selector</span> <span class="hljs-selector-class">.button</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">0px</span>; <span class="hljs-attribute">padding-right</span>:<span class="hljs-number">1rem</span>; <span class="hljs-attribute">overflow</span>: hidden; }
-    <span class="hljs-selector-class">.embl-selector</span> <span class="hljs-selector-class">.button</span>:after { <span class="hljs-attribute">display</span>: none; }
+    <span class="hljs-selector-class">.embl-selector</span> <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:after</span> { <span class="hljs-attribute">display</span>: none; }
     <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> { <span class="hljs-attribute">padding-right</span>: .<span class="hljs-number">35rem</span>; <span class="hljs-attribute">padding-left</span>: .<span class="hljs-number">35rem</span>;}
   }
 }
@@ -540,7 +540,7 @@ Your content here.
   <span class="hljs-attribute">width</span>: <span class="hljs-number">1%</span>;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
 }
-<span class="hljs-selector-class">.menu</span> <span class="hljs-selector-class">.active</span> &gt; <span class="hljs-selector-tag">a</span>, <span class="hljs-selector-class">.tag</span>, <span class="hljs-selector-class">.tabs-title</span> &gt; <span class="hljs-selector-tag">a</span>:hover, <span class="hljs-selector-class">.button</span>, <span class="hljs-selector-class">.button</span><span class="hljs-selector-class">.primary</span> {
+<span class="hljs-selector-class">.menu</span> <span class="hljs-selector-class">.active</span> &gt; <span class="hljs-selector-tag">a</span>, <span class="hljs-selector-class">.tag</span>, <span class="hljs-selector-class">.tabs-title</span> &gt; <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-class">.button</span>, <span class="hljs-selector-class">.button</span><span class="hljs-selector-class">.primary</span> {
   <span class="hljs-attribute">background-color</span>: rgb(<span class="hljs-number">0</span>,<span class="hljs-number">124</span>,<span class="hljs-number">130</span>);
 }
 
@@ -631,7 +631,7 @@ Your content here.
     }
   }
 
-  <span class="hljs-selector-tag">a</span>:focus {
+  <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:focus</span> {
     <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">2px</span> var(--vf-color--grey--lightest)
   }
 
@@ -647,7 +647,7 @@ Your content here.
   }
 
   <span class="hljs-selector-class">.search-bar</span> {
-    <span class="hljs-selector-class">.close-button</span>:hover, <span class="hljs-selector-class">.close-button</span>:focus {
+    <span class="hljs-selector-class">.close-button</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-class">.close-button</span><span class="hljs-selector-pseudo">:focus</span> {
       <span class="hljs-attribute">color</span>: var(--vf-ui-color--white);
     }
   }
@@ -658,10 +658,10 @@ Your content here.
       <span class="hljs-attribute">color</span>: var(--vf-ui-color--white);
     }
 
-    <span class="hljs-selector-tag">a</span>:hover,
-    <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span>:hover,
-    <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span>:active,
-    <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span>:focus,
+    <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>,
+    <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>,
+    <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span>,
+    <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:focus</span>,
     <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.active</span> <span class="hljs-selector-tag">a</span>,
     <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.active-trail</span> <span class="hljs-selector-tag">a</span> {
       <span class="hljs-attribute">color</span>: var(--vf-color--grey--darkest);
@@ -673,7 +673,7 @@ Your content here.
     }
 
     <span class="hljs-selector-tag">li</span> {
-      <span class="hljs-selector-tag">a</span>:before {
+      <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
         <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'EBI-Generic'</span>;
         <span class="hljs-attribute">display</span>: inline-block; <span class="hljs-comment">// safari 9 &amp; 10 fix</span>
         <span class="hljs-attribute">padding-right</span>: .<span class="hljs-number">4rem</span>;
@@ -681,7 +681,7 @@ Your content here.
     }
 
     <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.where</span> {
-      <span class="hljs-selector-tag">a</span>:before {
+      <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">'['</span>;
       }
     }
@@ -689,40 +689,40 @@ Your content here.
     <span class="hljs-comment">// icon for Home</span>
     <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.home</span>,
     <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.ebi</span> {
-      <span class="hljs-selector-tag">a</span>:before {
+      <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">'H'</span>;
       }
     }
 
     <span class="hljs-comment">// icon for Services</span>
     <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.services</span> {
-      <span class="hljs-selector-tag">a</span>:before {
+      <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">'('</span>;
       }
     }
 
     <span class="hljs-comment">// icon for Research</span>
     <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.research</span> {
-      <span class="hljs-selector-tag">a</span>:before {
+      <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">')'</span>;
       }
     }
 
     <span class="hljs-comment">// icon for Training</span>
     <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.training</span> {
-      <span class="hljs-selector-tag">a</span>:before {
+      <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">'t'</span>;
       }
     }
     <span class="hljs-comment">// icon for about us</span>
     <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.about</span> {
-      <span class="hljs-selector-tag">a</span>:before {
+      <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
         <span class="hljs-attribute">content</span>: <span class="hljs-string">'i'</span>;
       }
     }
 
     <span class="hljs-comment">// icon for search</span>
-    <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.search</span> <span class="hljs-selector-tag">a</span>:before {
+    <span class="hljs-selector-tag">li</span><span class="hljs-selector-class">.search</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
       <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'EBI-Functional'</span>;
       <span class="hljs-attribute">content</span>: <span class="hljs-string">'1'</span>;
       <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">0</span>;
@@ -739,7 +739,7 @@ Your content here.
   }
 
   <span class="hljs-comment">// mobile</span>
-  @<span class="hljs-keyword">media</span> screen and (max-width: 39.9375em) {
+  <span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (max-width: <span class="hljs-number">39.9375em</span>) {
     &amp;<span class="hljs-selector-class">.masthead-black-bar</span> <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> &gt; <span class="hljs-selector-tag">li</span> &gt; <span class="hljs-selector-tag">a</span> {
         <span class="hljs-attribute">text-align</span>: center;
         <span class="hljs-attribute">font-size</span>: <span class="hljs-number">10px</span>;
@@ -747,9 +747,9 @@ Your content here.
     }
   }
     
-  @<span class="hljs-keyword">media</span> screen and (max-width: 39.9375em) {
+  <span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (max-width: <span class="hljs-number">39.9375em</span>) {
     &amp;<span class="hljs-selector-class">.masthead-black-bar</span> <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> &gt; <span class="hljs-selector-tag">li</span> &gt; <span class="hljs-selector-tag">a</span> &gt; <span class="hljs-selector-tag">img</span>, 
-    &amp;<span class="hljs-selector-class">.masthead-black-bar</span> <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> &gt; <span class="hljs-selector-tag">li</span> &gt; <span class="hljs-selector-tag">a</span>:before {
+    &amp;<span class="hljs-selector-class">.masthead-black-bar</span> <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.menu</span> &gt; <span class="hljs-selector-tag">li</span> &gt; <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
         <span class="hljs-attribute">display</span>: block;
         <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto <span class="hljs-number">0.25rem</span>;
         <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
@@ -789,59 +789,59 @@ Your content here.
   <span class="hljs-attribute">margin-right</span>: auto;
   <span class="hljs-attribute">margin-left</span>: auto;
 }
-<span class="hljs-selector-class">.row</span>::before, <span class="hljs-selector-class">.row</span>::after {
+<span class="hljs-selector-class">.row</span><span class="hljs-selector-pseudo">::before</span>, <span class="hljs-selector-class">.row</span><span class="hljs-selector-pseudo">::after</span> {
   <span class="hljs-attribute">display</span>: table;
   <span class="hljs-attribute">content</span>: <span class="hljs-string">' '</span>;
 }
 
-@<span class="hljs-keyword">media</span> screen and (max-width: 0em), screen and (min-width: 40em) {
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (max-width: <span class="hljs-number">0em</span>), screen <span class="hljs-keyword">and</span> (min-width: <span class="hljs-number">40em</span>) {
 <span class="hljs-selector-class">.show-for-small-only</span> {
   <span class="hljs-attribute">display</span>: none <span class="hljs-meta">!important</span>; } }
 
-@<span class="hljs-keyword">media</span> screen and (max-width: 39.99875em) {
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (max-width: <span class="hljs-number">39.99875em</span>) {
 <span class="hljs-selector-class">.show-for-medium</span> {
   <span class="hljs-attribute">display</span>: none <span class="hljs-meta">!important</span>; } }
 
-@<span class="hljs-keyword">media</span> screen and (max-width: 39.99875em), screen and (min-width: 64em) {
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (max-width: <span class="hljs-number">39.99875em</span>), screen <span class="hljs-keyword">and</span> (min-width: <span class="hljs-number">64em</span>) {
 <span class="hljs-selector-class">.show-for-medium-only</span> {
   <span class="hljs-attribute">display</span>: none <span class="hljs-meta">!important</span>; } }
 
-@<span class="hljs-keyword">media</span> screen and (max-width: 63.99875em) {
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (max-width: <span class="hljs-number">63.99875em</span>) {
 <span class="hljs-selector-class">.show-for-large</span> {
   <span class="hljs-attribute">display</span>: none <span class="hljs-meta">!important</span>; } }
 
-@<span class="hljs-keyword">media</span> screen and (max-width: 63.99875em), screen and (min-width: 75em) {
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (max-width: <span class="hljs-number">63.99875em</span>), screen <span class="hljs-keyword">and</span> (min-width: <span class="hljs-number">75em</span>) {
 <span class="hljs-selector-class">.show-for-large-only</span> {
   <span class="hljs-attribute">display</span>: none <span class="hljs-meta">!important</span>; } }
 
-<span class="hljs-selector-class">.clearfix</span>::before, <span class="hljs-selector-class">.clearfix</span>::after {
+<span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">::before</span>, <span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">::after</span> {
 <span class="hljs-attribute">display</span>: table;
 <span class="hljs-attribute">content</span>: <span class="hljs-string">' '</span>; }
 
-<span class="hljs-selector-class">.clearfix</span>::after {
+<span class="hljs-selector-class">.clearfix</span><span class="hljs-selector-pseudo">::after</span> {
 <span class="hljs-attribute">clear</span>: both; }
 
 <span class="hljs-selector-class">.row</span> {
 <span class="hljs-attribute">max-width</span>: <span class="hljs-number">80rem</span>;
 <span class="hljs-attribute">margin-right</span>: auto;
 <span class="hljs-attribute">margin-left</span>: auto; }
-<span class="hljs-selector-class">.row</span>::before, <span class="hljs-selector-class">.row</span>::after {
+<span class="hljs-selector-class">.row</span><span class="hljs-selector-pseudo">::before</span>, <span class="hljs-selector-class">.row</span><span class="hljs-selector-pseudo">::after</span> {
   <span class="hljs-attribute">display</span>: table;
   <span class="hljs-attribute">content</span>: <span class="hljs-string">' '</span>; }
-<span class="hljs-selector-class">.row</span>::after {
+<span class="hljs-selector-class">.row</span><span class="hljs-selector-pseudo">::after</span> {
   <span class="hljs-attribute">clear</span>: both; }
 <span class="hljs-selector-class">.row</span> <span class="hljs-selector-class">.row</span> {
   <span class="hljs-attribute">margin-right</span>: -<span class="hljs-number">0.625rem</span>;
   <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">0.625rem</span>; }
-  @<span class="hljs-keyword">media</span> print, screen and (min-width: 40em) {
+  <span class="hljs-keyword">@media</span> print, screen <span class="hljs-keyword">and</span> (min-width: <span class="hljs-number">40em</span>) {
     <span class="hljs-selector-class">.row</span> <span class="hljs-selector-class">.row</span> {
       <span class="hljs-attribute">margin-right</span>: -<span class="hljs-number">0.9375rem</span>;
       <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">0.9375rem</span>; } }
-  @<span class="hljs-keyword">media</span> print, screen and (min-width: 64em) {
+  <span class="hljs-keyword">@media</span> print, screen <span class="hljs-keyword">and</span> (min-width: <span class="hljs-number">64em</span>) {
     <span class="hljs-selector-class">.row</span> <span class="hljs-selector-class">.row</span> {
       <span class="hljs-attribute">margin-right</span>: -<span class="hljs-number">0.9375rem</span>;
       <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">0.9375rem</span>; } }
-<span class="hljs-selector-class">.row</span>:not(<span class="hljs-selector-class">.expanded</span>) <span class="hljs-selector-class">.row</span> {
+<span class="hljs-selector-class">.row</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.expanded</span>) <span class="hljs-selector-class">.row</span> {
   <span class="hljs-attribute">max-width</span>: none; }
 
 <span class="hljs-selector-class">.column</span>, <span class="hljs-selector-class">.columns</span> {
@@ -851,16 +851,16 @@ Your content here.
 <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0.625rem</span>; 
 <span class="hljs-attribute">box-sizing</span>: border-box;
 }
-@<span class="hljs-keyword">media</span> print, screen and (min-width: 40em) {
+<span class="hljs-keyword">@media</span> print, screen <span class="hljs-keyword">and</span> (min-width: <span class="hljs-number">40em</span>) {
   <span class="hljs-selector-class">.column</span>, <span class="hljs-selector-class">.columns</span> {
     <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">0.9375rem</span>;
     <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0.9375rem</span>; } }
-<span class="hljs-selector-class">.column</span>, <span class="hljs-selector-class">.columns</span>, <span class="hljs-selector-class">.column</span>:last-child:not(:first-child), <span class="hljs-selector-class">.columns</span>:last-child:not(:first-child) {
+<span class="hljs-selector-class">.column</span>, <span class="hljs-selector-class">.columns</span>, <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:last-child</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:first-child</span>), <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:last-child</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:first-child</span>) {
   <span class="hljs-attribute">float</span>: left;
   <span class="hljs-attribute">clear</span>: none; }
-<span class="hljs-selector-class">.column</span>:last-child:not(:first-child), <span class="hljs-selector-class">.columns</span>:last-child:not(:first-child) {
+<span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:last-child</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:first-child</span>), <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:last-child</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:first-child</span>) {
   <span class="hljs-attribute">float</span>: right; }
-<span class="hljs-selector-class">.column</span><span class="hljs-selector-class">.end</span>:last-child:last-child, <span class="hljs-selector-class">.end</span><span class="hljs-selector-class">.columns</span>:last-child:last-child {
+<span class="hljs-selector-class">.column</span><span class="hljs-selector-class">.end</span><span class="hljs-selector-pseudo">:last-child</span><span class="hljs-selector-pseudo">:last-child</span>, <span class="hljs-selector-class">.end</span><span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:last-child</span><span class="hljs-selector-pseudo">:last-child</span> {
   <span class="hljs-attribute">float</span>: left; }
 
 <span class="hljs-selector-class">.column</span><span class="hljs-selector-class">.row</span><span class="hljs-selector-class">.row</span>, <span class="hljs-selector-class">.row</span><span class="hljs-selector-class">.row</span><span class="hljs-selector-class">.columns</span> {
@@ -872,7 +872,7 @@ Your content here.
 <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">0</span>;
 <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0</span>; }
 
-@<span class="hljs-keyword">media</span> print, screen and (min-width: 40em) {
+<span class="hljs-keyword">@media</span> print, screen <span class="hljs-keyword">and</span> (min-width: <span class="hljs-number">40em</span>) {
 <span class="hljs-selector-class">.medium-3</span> {
   <span class="hljs-attribute">width</span>: <span class="hljs-number">25%</span>; }
 <span class="hljs-selector-class">.medium-5</span> {
@@ -884,44 +884,44 @@ Your content here.
 <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.column</span>, <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.columns</span> {
   <span class="hljs-attribute">float</span>: left;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">50%</span>; }
-  <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.column</span>:nth-of-type(1n), <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.columns</span>:nth-of-type(1n) {
+  <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:nth-of-type</span>(1n), <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:nth-of-type</span>(1n) {
     <span class="hljs-attribute">clear</span>: none; }
-  <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.column</span>:nth-of-type(2n+1), <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.columns</span>:nth-of-type(2n+1) {
+  <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:nth-of-type</span>(2n+1), <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:nth-of-type</span>(2n+1) {
     <span class="hljs-attribute">clear</span>: both; }
-  <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.column</span>:last-child, <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.columns</span>:last-child {
+  <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:last-child</span>, <span class="hljs-selector-class">.medium-up-2</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:last-child</span> {
     <span class="hljs-attribute">float</span>: left; }
 <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.column</span>, <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.columns</span> {
   <span class="hljs-attribute">float</span>: left;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">33.33333%</span>; }
-  <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.column</span>:nth-of-type(1n), <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.columns</span>:nth-of-type(1n) {
+  <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:nth-of-type</span>(1n), <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:nth-of-type</span>(1n) {
     <span class="hljs-attribute">clear</span>: none; }
-  <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.column</span>:nth-of-type(3n+1), <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.columns</span>:nth-of-type(3n+1) {
+  <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:nth-of-type</span>(3n+1), <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:nth-of-type</span>(3n+1) {
     <span class="hljs-attribute">clear</span>: both; }
-  <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.column</span>:last-child, <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.columns</span>:last-child {
+  <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:last-child</span>, <span class="hljs-selector-class">.medium-up-3</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:last-child</span> {
     <span class="hljs-attribute">float</span>: left; }
 <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.column</span>, <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.columns</span> {
   <span class="hljs-attribute">float</span>: left;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">20%</span>; }
-  <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.column</span>:nth-of-type(1n), <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.columns</span>:nth-of-type(1n) {
+  <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:nth-of-type</span>(1n), <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:nth-of-type</span>(1n) {
     <span class="hljs-attribute">clear</span>: none; }
-  <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.column</span>:nth-of-type(5n+1), <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.columns</span>:nth-of-type(5n+1) {
+  <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:nth-of-type</span>(5n+1), <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:nth-of-type</span>(5n+1) {
     <span class="hljs-attribute">clear</span>: both; }
-  <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.column</span>:last-child, <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.columns</span>:last-child {
+  <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:last-child</span>, <span class="hljs-selector-class">.medium-up-5</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:last-child</span> {
     <span class="hljs-attribute">float</span>: left; }
  }
 
-@<span class="hljs-keyword">media</span> print, screen and (min-width: 64em) {
+<span class="hljs-keyword">@media</span> print, screen <span class="hljs-keyword">and</span> (min-width: <span class="hljs-number">64em</span>) {
 <span class="hljs-selector-class">.large-10</span> {
   <span class="hljs-attribute">width</span>: <span class="hljs-number">83.33333%</span>; }
 
 <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.column</span>, <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.columns</span> {
   <span class="hljs-attribute">float</span>: left;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">33.33333%</span>; }
-  <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.column</span>:nth-of-type(1n), <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.columns</span>:nth-of-type(1n) {
+  <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:nth-of-type</span>(1n), <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:nth-of-type</span>(1n) {
     <span class="hljs-attribute">clear</span>: none; }
-  <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.column</span>:nth-of-type(3n+1), <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.columns</span>:nth-of-type(3n+1) {
+  <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:nth-of-type</span>(3n+1), <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:nth-of-type</span>(3n+1) {
     <span class="hljs-attribute">clear</span>: both; }
-  <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.column</span>:last-child, <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.columns</span>:last-child {
+  <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:last-child</span>, <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:last-child</span> {
     <span class="hljs-attribute">float</span>: left; }
  }
 </code>
@@ -976,8 +976,8 @@ Your content here.
     <span class="hljs-attribute">text-decoration</span>: underline;
   }
 }
-<span class="hljs-selector-class">.no-underline</span> <span class="hljs-selector-tag">a</span>:hover,
-<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.no-underline</span>:hover {
+<span class="hljs-selector-class">.no-underline</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>,
+<span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.no-underline</span><span class="hljs-selector-pseudo">:hover</span> {
   <span class="hljs-selector-tag">a</span><span class="hljs-selector-class">.underline</span>,
   <span class="hljs-selector-class">.underline</span> {
     <span class="hljs-attribute">border-bottom-width</span>: <span class="hljs-number">0</span>;
@@ -1103,7 +1103,7 @@ Your content here.
 <span class="hljs-comment">// If you don't have any Sass, you can trim this block down to:</span>
 <span class="hljs-comment">// "This page was intentionally left blank"</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'package.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
 <span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
@@ -1112,21 +1112,21 @@ Your content here.
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer.variables.scss'</span>;
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer--header.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--header.scss'</span>;
 
 <span class="hljs-selector-class">.ebi-header-footer</span> {
-  @<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer--embl-selector.scss'</span>;
-  @<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer--footer.scss'</span>;
+  <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--embl-selector.scss'</span>;
+  <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--footer.scss'</span>;
   
-  @<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer--layout.scss'</span>;
-  @<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer--form.scss'</span>;
-  @<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer--utility.scss'</span>;
+  <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--layout.scss'</span>;
+  <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--form.scss'</span>;
+  <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--utility.scss'</span>;
 }
 
 <span class="hljs-selector-class">.data-protection-banner</span> <span class="hljs-selector-tag">a</span> {
-  @<span class="hljs-keyword">include</span> inline-link(
+  <span class="hljs-keyword">@include</span> inline-link(
     <span class="hljs-variable">$vf-link--color</span>: set-ui-color(vf-ui-color--white),
     <span class="hljs-variable">$vf-link--hover-color</span>: set-ui-color(vf-ui-color--white),
     <span class="hljs-variable">$vf-link--visited-color</span>: set-ui-color(vf-ui-color--white)
@@ -1196,15 +1196,15 @@ Your content here.
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// setup files required</span>
 
 <span class="hljs-comment">// sass-lint:disable clean-import-paths</span>
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-global-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-variables'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-functions'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'vf-mixins'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
 
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer.variables.scss'</span>;
-@<span class="hljs-keyword">import</span> <span class="hljs-string">'ebi-header-footer.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer.variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer.scss'</span>;
 
 <span class="hljs-comment">// component variant styles</span>
 <span class="hljs-comment">// @import 'ebi-header-footer--variant.scss';</span>
