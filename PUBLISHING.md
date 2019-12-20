@@ -9,13 +9,11 @@ and allows for the creation of CSS, JS and usable Nunjucks templates.
 
 See also: [Guide on versions in `vf-core`](https://visual-framework.github.io/vf-welcome/developing/guidelines/versioning/)
 
-1. Make a new branch
-    - `releases/vf-core-<newversions>`
+1. Select the `develop` branch
 1. Update the version 
     - https://docs.npmjs.com/cli/version
     - `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]` 
-1. Create a PR on GitHub
-1. Merge to develop (or master, once we go stable)
+1. PR `develop` to `master`
 1. Publish to npm
     - `npm publish`
 
@@ -30,6 +28,8 @@ While we do not add tags as part of the "release" for component, Lerna needs a n
 
 ### Component pre-release workflow
 
+1. select the `develop` branch
+1. PR changes to `master`
 1. see a list of changed packages
     - `lerna changed`
 1. test publish 
