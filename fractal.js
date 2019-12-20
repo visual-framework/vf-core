@@ -107,7 +107,7 @@ module.exports = {
     fractal.components.set('statuses', {
       /* status definitions here */
       alpha: {
-        label: "alhpa",
+        label: "alpha",
         description: "Do not implement.",
         color: "#DC0A28",
         text: "#FFFFFF"
