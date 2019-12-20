@@ -8,6 +8,7 @@ Tables are everywhere and we provide a variety of implementations depending on n
 - Striped: with striped rows
 - Borderless: no borders
 - Compact: tighter spacing
+- Data: typography and spacing considerations for data
 - Responsive:
    - Scroll: on overflow it will scroll left-to-right
    - Stack: on overflow stack cells

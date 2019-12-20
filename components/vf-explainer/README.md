@@ -4,7 +4,7 @@
 
 Life science websites love a bit of jargon and complicated concepts and "explainers" help for terms like: `ORCID`, `transcript isoform`, and `lymphoblastoid cell lines`.
 
-This will likely be similar to "[tooltips](https://www.appcues.com/blog/tooltips)".
+This will likely be similar to "[tooltips](https://www.appcues.com/blog/tooltips)" or "[foldable info tabs](https://www.ebi.ac.uk/style-lab/websites/patterns/foldable-info-tabs.html)".
 
 Conceptual code:
 

@@ -4,6 +4,10 @@
 
 ## About
 
+A way to quote and highlight text.
+
+The pullquote variant will be more decrative but has yet to be implemented.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-blockquote` with this command.
