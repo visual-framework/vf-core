@@ -6,7 +6,7 @@
 
 A way to quote and highlight text.
 
-The pullquote variant will be more decrative but has yet to be implemented.
+The pullquote variant will be a decorative variation but has yet to be implemented, it may take inspiration from the [VF 1.3 pullquote](https://www.ebi.ac.uk/style-lab/websites/patterns/pullquotes.html).
 
 ## Install
 
