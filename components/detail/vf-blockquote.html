@@ -99,6 +99,37 @@ class="vf-logo">
     
     
     
+        <div class="vf-tabs">
+          <ul class="vf-tabs__list">
+            <li class="vf-tabs__item">
+              This component has variants:
+            </li>
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-blockquote--default.html">
+                    Default
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-blockquote--pullquote.html">
+                    Pullquote
+                  </a>
+                 
+               
+
+            
+          </ul>
+
+      </div>
+
+    
 
 
 
@@ -134,6 +165,8 @@ class="vf-logo">
   <h1 id="blockquote-component">Blockquote Component</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-blockquote"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-blockquote.svg" alt="npm version"></a></p>
 <h2 id="about">About</h2>
+<p>A way to quote and highlight text.</p>
+<p>The pullquote variant will be a decorative variation but has yet to be implemented, it may take inspiration from the <a href="https://www.ebi.ac.uk/style-lab/websites/patterns/pullquotes.html">VF 1.3 pullquote</a>.</p>
 <h2 id="install">Install</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-blockquote</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-blockquote</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
@@ -165,9 +198,17 @@ class="vf-logo">
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-blockquote"</span>&gt;</span>“Look back to move forwards” is a well-known saying. Thus, I recently turned to VF’s archivist, Anne-Flore Laloë, who helped me to search VF’s amazing archive to learn how VF has depicted itself through the years. Maybe knowing more about our first visual
+  
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Default --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-blockquote"</span>&gt;</span>“Look back to move forwards” is a well-known saying. Thus, I recently turned to VF’s archivist, Anne-Flore Laloë, who helped me to search VF’s amazing archive to learn how VF has depicted itself through the years. Maybe knowing more about our first visual
     identity could help us better.“<span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
 </code></pre>
+  
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Pullquote --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-blockquote vf-blockquote--pullquote"</span>&gt;</span>“Look back to move forwards” is a well-known saying. Thus, I recently turned to VF’s archivist, Anne-Flore Laloë, who helped me to search VF’s amazing archive to learn how VF has depicted itself through the years. Maybe knowing more about our first visual
+    identity could help us better.“<span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+</code></pre>
+  
   
 
 
@@ -340,7 +381,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       <div class="FileBrowser-itemPreview">
         
         <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-blockquote</span>
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example">  <span class="hljs-comment">// vf-blockquote</span>
 
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
 <span class="hljs-comment">// Debug information from component's `package.json`:</span>
@@ -354,6 +395,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-blockquote</span> {
   <span class="hljs-keyword">@include</span> blockquote;
 }
+
+<span class="hljs-selector-class">.vf-blockquote--pullquote</span> {
+  <span class="hljs-attribute">position</span>: static;
+}
+
+<span class="hljs-selector-class">.vf-blockquote--pullquote</span><span class="hljs-selector-pseudo">:before</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">'This component variant has not yet been implement, see the README.md for more information.'</span>;
+  <span class="hljs-attribute">display</span>: block;
+}
+
 </code>
         </pre>
         
@@ -369,7 +420,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-blockquote/vf-blockquote.scss
         </li>
         <li class="vf-list__item">
-          Size: 315 Bytes
+          Size: 530 Bytes
         </li>
       </ul>
     </section>
@@ -410,6 +461,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
+        
       
 
         
@@ -839,6 +902,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
       
+
+        
+        
+
+        
+      
   </section>
 </section>
 <hr class="vf-divider">
@@ -1006,6 +1075,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-collapse.html">Collapse</a>
+        </p>
+        
+      
+
+        
+        
+
+        
       
 
         
@@ -1038,6 +1117,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-divider.html">Divider</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-explainer.html">Explainer</a>
         </p>
         
       
@@ -1225,6 +1314,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-no-js.html">No JS</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -1524,9 +1619,21 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-discussion.html">Discussion</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -1791,6 +1898,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-table.html">Table</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
           <a class="vf-link--secondary" href="vf-tabs.html">Tabs</a>
         </p>
         
@@ -1961,6 +2078,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-banner.html">Banner</a>
         </p>
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
+
         
       
 
@@ -2306,6 +2435,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-video-container.html">Video Container</a>
         </p>
@@ -2540,6 +2675,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
           
             
           
@@ -2559,6 +2706,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -2914,6 +3067,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-componenet-rollup.html">Visual Framework Componet Rollup</a>
         </p>
@@ -2943,6 +3102,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-design-tokens.html">Design Tokens</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -3143,6 +3308,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-config.html">Sass config</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -3444,6 +3615,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
           
             
           
@@ -3463,6 +3646,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -3890,6 +4079,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
           
             
           
@@ -3909,6 +4110,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -4332,6 +4539,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
           
             
           
@@ -4351,6 +4570,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -4770,6 +4995,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
           
             
           
@@ -4789,6 +5026,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5204,6 +5447,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
+
+        
+      
+
+        
+        
           
             
           
@@ -5223,6 +5478,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5586,9 +5847,21 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-deprecated.html">Deprecated pattern</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -5793,6 +6066,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-utilities.html">Sass utilities</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
