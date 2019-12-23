@@ -29,31 +29,17 @@ While we do not add tags as part of the "release" for component, Lerna needs a n
 ### Component pre-release workflow
 
 1. select the `develop` branch
-1. PR changes to `master`
+    - this should be at least as up to date as `master`
 1. see a list of changed packages
     - `lerna changed`
 1. test publish 
-    - `yarn run lerna:prerelease:test`
+    - `yarn run lerna:test`
 1. publish to npm
-    - `yarn run lerna:prerelease:publish`
+    - `yarn run lerna:publish`
 1. commit changes to the `develop` branch
     - commit message in a format of: `Component release YYYYMMDD-01`
 1. add a tag `git tag -a components.YYYYMMDD-01 -m 'Snapshot of components for lerna'`
 1. push the tag `git push origin --tags`
-
-### Component stable release workflow
-
-To release stable versions:
-
-- Check if there are any pending changes with `lerna changed`.
-- Any pending component components should be released as pre-releases (using the guide above). 
-- Release stable versions by:
-    1. Touching the respective component `README.md`
-    1. test publish 
-        - `yarn run lerna:release:test`
-    1. publish to npm
-        - `yarn run lerna:release:publish`
-    1. Following the commit naming and tags from the "pre-release workflow above"
 
 ### Appendix of useful Lerna commands
 
