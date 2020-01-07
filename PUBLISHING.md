@@ -14,7 +14,6 @@ See also: [Guide on versions in `vf-core`](https://visual-framework.github.io/vf
 1. update the version 
     - https://docs.npmjs.com/cli/version
     - `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]` 
-1. PR `develop` to `master`
 1. publish to npm
     - `npm publish`
 
