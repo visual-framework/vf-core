@@ -12,12 +12,13 @@
 @import 'vf-footer.variables.scss';
 
 .vf-footer {
-  background-color: set-color(vf-color--grey);
+  background-color: set-color(vf-color--grey--dark);
   border-top: 8px solid set-color(vf-color--green);
   padding-bottom: 60px;
   padding-top: 24px;
 
   .vf-links {
+    margin-bottom: 0;
     padding-left: 0;
     padding-right: 0;
   }
@@ -58,15 +59,20 @@
 
 .vf-footer__list--legal {
   grid-column: 1 / -1;
+
+  .vf-list__item:not(:last-of-type) {
+    margin-right: 24px;
+  }
 }
 
 .vf-footer__links-group {
   border: solid 0px set-color(vf-color--grey--lightest);
   border-width: 1px 0;
   margin-bottom: 12px;
+  padding-bottom: 24px;
 
   .vf-links__heading {
-    @include set-type(text-body--6);
+    @include set-type(text-body--6, $custom-margin-bottom: 8px);
 
     color: set-color(vf-color--grey--lightest);
     text-transform: uppercase;
@@ -77,14 +83,22 @@
     padding-top: 12px;
   }
 
-  .vf-links__item {
+  .vf-list:last-of-type {
     margin-bottom: 0;
+  }
+
+  .vf-list__item {
+    margin-bottom: 0;
+  }
+
+  .vf-list__link {
+    text-decoration: none;
   }
 
   @media (min-width: $vf-breakpoint--lg) {
     padding-bottom: 4rem;
   }
-  
+
 }
 
 .vf-footer .vf-links__link {
@@ -101,5 +115,24 @@
     $vf-link--hover-color: $vf-footer-link--hover-color,
     $vf-link--visited-color: $vf-footer-link--visited-color
   );
-  margin-right: 24px;
+  margin-right: 0;
+  text-decoration: none;
+}
+
+
+.vf-footer__legal {
+
+  .vf-footer__legal-text,
+  .vf-footer__link {
+    font-size: 14px;
+  }
+  .vf-footer__legal-text {
+    color: set-color(vf-color--grey--lightest);
+  }
+  .vf-footer__link {
+    text-decoration: none;
+  }
+  .vf-list {
+    font-size: 19px;
+  }
 }
