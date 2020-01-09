@@ -11,7 +11,26 @@
 
 .vf-section-header__heading {
   @include set-type(text-heading--3);
+
+  display: flex;
+  align-items: center;
   margin: 0;
+  & > svg {
+    fill: currentColor;
+    margin-left: 8px;
+    transition-duration: 150ms;
+    transition-property: transform;
+    transition-timing-function: linear;
+  }
+
+  &:hover {
+    & > svg {
+      transform: translateX(2px);
+      transition-duration: 150ms;
+      transition-property: transform;
+      transition-timing-function: linear;
+    }
+  }
 }
 
 
