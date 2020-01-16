@@ -45,12 +45,9 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         plugins: [
           babel({
             'presets': [
-              [
-                '@babel/preset-env',
-                {
-                  'targets': '> 0.25%, not dead, last 2 versions'
-                }
-              ]
+              {
+                'targets': '> 0.25%, not dead, last 2 versions'
+              }
             ]
           }),
           includePaths(includePathOptions)
