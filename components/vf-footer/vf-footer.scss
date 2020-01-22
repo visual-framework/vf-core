@@ -28,7 +28,7 @@
   @include set-type(text-body--3);
 
   color: set-ui-color(vf-ui-color--white);
-  max-width: 52em;
+  max-width: 45em;
 }
 
 .vf-footer__inner {
@@ -37,6 +37,25 @@
 
 .vf-footer__legal {
   color: set-ui-color(vf-ui-color--white);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  .vf-list {
+    width: 100%;
+  }
+
+  .vf-footer__legal-text,
+  .vf-footer__link {
+    font-size: 14px;
+  }
+  .vf-footer__legal-text {
+    color: set-color(vf-color--grey--lightest);
+  }
+  .vf-footer__link {
+    text-decoration: none;
+  }
+  .vf-list {
+    font-size: 19px;
+  }
+
 
   .vf-footer__legal-text,
   .vf-footer__link {
@@ -120,19 +139,24 @@
 }
 
 
-.vf-footer__legal {
+// IE 10/11 only fixes
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
 
-  .vf-footer__legal-text,
-  .vf-footer__link {
-    font-size: 14px;
-  }
-  .vf-footer__legal-text {
-    color: set-color(vf-color--grey--lightest);
-  }
-  .vf-footer__link {
-    text-decoration: none;
-  }
-  .vf-list {
-    font-size: 19px;
+  // This, more generally, addresses things that don't support css grid, but I think that for us means "IE"
+  // This also doesn't have any responsive support, but, again, not sure if that's important for IE?
+  @media (min-width: $vf-breakpoint--lg) {
+    .vf-footer {
+      width: 100vw;
+      min-width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+    }
+    .vf-footer__inner {
+      max-width: 76.5em;
+      margin: 0 auto;
+    }
   }
 }
