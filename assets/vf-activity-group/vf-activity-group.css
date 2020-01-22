@@ -127,12 +127,6 @@
   [class*='grid__'] {
     grid-auto-flow: unset;
   }
-  .vf-grid__col-1 > * + * {
-    border-top: 1px solid #707372;
-  }
-  .vf-grid__col-1 > * + *:last-of-type {
-    margin-bottom: 0;
-  }
   .vf-grid__col-1 {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -291,13 +285,17 @@
 
 .vf-activity__item > a {
   border-bottom: none;
-  text-decoration: underline;
+  text-decoration: none;
   color: #3b6fb6;
 }
 
 .vf-activity__item > a:visited {
-  color: #54585a;
+  color: #734595;
   border-bottom: none;
+}
+
+.vf-activity__item > a:visited:hover {
+  color: #734595;
   text-decoration: underline;
 }
 

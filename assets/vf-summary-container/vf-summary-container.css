@@ -249,12 +249,6 @@
   [class*='grid__'] {
     grid-auto-flow: unset;
   }
-  .vf-grid__col-1 > * + * {
-    border-top: 1px solid #707372;
-  }
-  .vf-grid__col-1 > * + *:last-of-type {
-    margin-bottom: 0;
-  }
   .vf-grid__col-1 {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -404,18 +398,22 @@
 
 .vf-summary__link {
   border-bottom: none;
-  text-decoration: underline;
+  text-decoration: none;
   color: #3b6fb6;
 }
 
 .vf-summary__link:visited {
-  color: #54585a;
+  color: #734595;
   border-bottom: none;
+}
+
+.vf-summary__link:visited:hover {
+  color: #734595;
   text-decoration: underline;
 }
 
 .vf-summary__link:hover {
-  color: #3b77ed;
+  color: #193f90;
   border-bottom: none;
   text-decoration: underline;
 }

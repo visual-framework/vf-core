@@ -501,12 +501,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-footer.variables.scss'</span>;
 
 <span class="hljs-selector-class">.vf-footer</span> {
-  <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey);
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey--dark);
   <span class="hljs-attribute">border-top</span>: <span class="hljs-number">8px</span> solid set-color(vf-color--green);
   <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">60px</span>;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">24px</span>;
 
   <span class="hljs-selector-class">.vf-links</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">0</span>;
   }
@@ -516,7 +517,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>);
 
   <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
-  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">52em</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">45em</span>;
 }
 
 <span class="hljs-selector-class">.vf-footer__inner</span> {
@@ -525,6 +526,25 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-footer__legal</span> {
   <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+  grid-template-<span class="hljs-attribute">columns</span>: repeat(auto-fill, minmax(<span class="hljs-number">300px</span>, <span class="hljs-number">1</span>fr));
+  <span class="hljs-selector-class">.vf-list</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-footer__legal-text</span>,
+  <span class="hljs-selector-class">.vf-footer__link</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  }
+  <span class="hljs-selector-class">.vf-footer__legal-text</span> {
+    <span class="hljs-attribute">color</span>: set-color(vf-color--grey--lightest);
+  }
+  <span class="hljs-selector-class">.vf-footer__link</span> {
+    <span class="hljs-attribute">text-decoration</span>: none;
+  }
+  <span class="hljs-selector-class">.vf-list</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">19px</span>;
+  }
+
 
   <span class="hljs-selector-class">.vf-footer__legal-text</span>,
   <span class="hljs-selector-class">.vf-footer__link</span> {
@@ -547,15 +567,20 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-footer__list--legal</span> {
   grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+
+  <span class="hljs-selector-class">.vf-list__item</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:last-of-type</span>) {
+    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">24px</span>;
+  }
 }
 
 <span class="hljs-selector-class">.vf-footer__links-group</span> {
   <span class="hljs-attribute">border</span>: solid <span class="hljs-number">0px</span> set-color(vf-color--grey--lightest);
   <span class="hljs-attribute">border-width</span>: <span class="hljs-number">1px</span> <span class="hljs-number">0</span>;
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">12px</span>;
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">24px</span>;
 
   <span class="hljs-selector-class">.vf-links__heading</span> {
-    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">6</span>);
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">6</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">8px</span>);
 
     <span class="hljs-attribute">color</span>: set-color(vf-color--grey--lightest);
     <span class="hljs-attribute">text-transform</span>: uppercase;
@@ -566,14 +591,22 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">12px</span>;
   }
 
-  <span class="hljs-selector-class">.vf-links__item</span> {
+  <span class="hljs-selector-class">.vf-list</span><span class="hljs-selector-pseudo">:last-of-type</span> {
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-list__item</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-list__link</span> {
+    <span class="hljs-attribute">text-decoration</span>: none;
   }
 
   <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
     <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">4rem</span>;
   }
-  
+
 }
 
 <span class="hljs-selector-class">.vf-footer</span> <span class="hljs-selector-class">.vf-links__link</span> {
@@ -590,7 +623,31 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-variable">$vf-link--hover-color</span>: <span class="hljs-variable">$vf-footer-link--hover-color</span>,
     <span class="hljs-variable">$vf-link--visited-color</span>: <span class="hljs-variable">$vf-footer-link--visited-color</span>
   );
-  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+
+<span class="hljs-comment">// IE 10/11 only fixes</span>
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (-ms-high-contrast: active), screen <span class="hljs-keyword">and</span> (-ms-high-contrast: none) {
+
+  <span class="hljs-comment">// This, more generally, addresses things that don't support css grid, but I think that for us means "IE"</span>
+  <span class="hljs-comment">// This also doesn't have any responsive support, but, again, not sure if that's important for IE?</span>
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
+    <span class="hljs-selector-class">.vf-footer</span> {
+      <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+      <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">50vw</span>;
+      <span class="hljs-attribute">margin-right</span>: -<span class="hljs-number">50vw</span>;
+      <span class="hljs-attribute">min-width</span>: <span class="hljs-number">100vw</span>;
+      <span class="hljs-attribute">position</span>: relative;
+      <span class="hljs-attribute">right</span>: <span class="hljs-number">50%</span>;
+      <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;
+    }
+    <span class="hljs-selector-class">.vf-footer__inner</span> {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+      <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
+    }
+  }
 }
 </code>
         </pre>
@@ -607,7 +664,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-footer/vf-footer.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.1 KB
+          Size: 3.4 KB
         </li>
       </ul>
     </section>
