@@ -1,8 +1,4 @@
-'use strict';
-
-// vf-banner
-
-
+'use strict'; // vf-banner
 // Turn the below code snippet into a banner
 // <div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
 // data-vf-js-banner
@@ -19,28 +15,32 @@
 //       {{vf-data-protection-banner__link}}
 //     </button>
 //   </div>
-  // </div>
+// </div>
 
 /**
  * Clear the cooke. This is mostly a development tool.
  */
-function vfBannerReset(vfBannerCookieNameAndVersion) {
-  vfBannerSetCookie(vfBannerCookieNameAndVersion,false);
-}
 
+function vfBannerReset(vfBannerCookieNameAndVersion) {
+  vfBannerSetCookie(vfBannerCookieNameAndVersion, false);
+}
 /**
  * Confirm a banner, initiate cookie logging
  */
-function vfBannerConfirm(banner,vfBannerCookieNameAndVersion) {
+
+
+function vfBannerConfirm(banner, vfBannerCookieNameAndVersion) {
   banner.classList += " vf-u-display-none";
+
   if (vfBannerCookieNameAndVersion !== 'null') {
-    vfBannerSetCookie(vfBannerCookieNameAndVersion,true);
+    vfBannerSetCookie(vfBannerCookieNameAndVersion, true);
   }
 }
-
 /**
  * Log a cookie
  */
+
+
 function vfBannerSetCookie(c_name, value, exdays) {
   // var value = value || 'true';
   var exdays = exdays || 90;
@@ -50,70 +50,66 @@ function vfBannerSetCookie(c_name, value, exdays) {
   c_value = escape(value) + (exdays === null ? "" : ";expires=" + exdate.toUTCString()) + ";domain=" + document.domain + ";path=/";
   document.cookie = c_name + "=" + c_value;
 }
-
 /**
  * See if a cookie has been set
  */
+
+
 function vfBannerGetCookie(c_name) {
   var i,
       x,
       y,
       ARRcookies = document.cookie.split(";");
+
   for (var i = 0; i < ARRcookies.length; i++) {
     x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
     y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
     x = x.replace(/^\s+|\s+$/g, "");
+
     if (x === c_name) {
       return unescape(y);
     }
   }
 }
-
 /**
  * Finds all vf-banner on a page and activates them
  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  * @example vfBanner(document.querySelectorAll('.vf-component__container')[0]);
  */
+
+
 function vfBanner(scope) {
   var scope = scope || document;
-  const bannerList = scope.querySelectorAll('[data-vf-js-banner]');
+  var bannerList = scope.querySelectorAll('[data-vf-js-banner]');
 
   if (!bannerList) {
     // exit: banners not found
     return;
   }
+
   if (bannerList.length == 0) {
     // exit: banner content not found
     return;
-  }
+  } // generate the banner component, js events
 
-  // generate the banner component, js events
-  Array.prototype.forEach.call(bannerList, (banner, i) => {
 
+  Array.prototype.forEach.call(bannerList, function (banner, i) {
     // map the JS data attributes to our object structure
     var bannerRemapped = JSON.parse(JSON.stringify(banner.dataset));
 
-    if (typeof(banner.dataset.vfJsBannerId) != "undefined") {
-      // don't reactivate an already processed banner
+    if (typeof banner.dataset.vfJsBannerId != "undefined") {// don't reactivate an already processed banner
     } else {
       bannerRemapped.vfJsBannerText = banner.querySelectorAll('[data-vf-js-banner-text]')[0].innerHTML;
+      var uniqueId = Math.round(Math.random() * 10000000); // set an id to target this banner
 
-      var uniqueId = Math.round(Math.random()*10000000);
+      banner.setAttribute('data-vf-js-banner-id', uniqueId); // preserve the classlist
 
-      // set an id to target this banner
-      banner.setAttribute('data-vf-js-banner-id',uniqueId);
+      bannerRemapped.classList = banner.querySelectorAll('[data-vf-js-banner-text]')[0].classList; // Make the banner come alive
 
-      // preserve the classlist
-      bannerRemapped.classList = banner.querySelectorAll('[data-vf-js-banner-text]')[0].classList;
-
-      // Make the banner come alive
-      vfBannerInsert(bannerRemapped,uniqueId);
+      vfBannerInsert(bannerRemapped, uniqueId);
     }
-
   });
-
 }
-
 /**
  * Takes a banner object and creates the necesary html markup, js events, and inserts
  * @example vfBannerInsert()
@@ -121,43 +117,40 @@ function vfBanner(scope) {
  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  * @param {string} [bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
  */
-function vfBannerInsert(banner,bannerId,scope) {
+
+
+function vfBannerInsert(banner, bannerId, scope) {
   var scope = scope || document;
-  var targetBanner = scope.querySelectorAll('[data-vf-js-banner-id="'+bannerId+'"]')[0];
+  var targetBanner = scope.querySelectorAll('[data-vf-js-banner-id="' + bannerId + '"]')[0];
+
   if (targetBanner == undefined) {
     return;
   }
 
-  var generatedBannerHtml = '<div class="'+banner.classList+'" data-vf-js-banner-text>';
+  var generatedBannerHtml = '<div class="' + banner.classList + '" data-vf-js-banner-text>';
+  generatedBannerHtml += banner.vfJsBannerText; // What type of banner?
 
-  generatedBannerHtml += banner.vfJsBannerText;
-
-  // What type of banner?
-  if (banner.vfJsBannerState === 'persistent') {
-    // nothing more to do for persistent, you can't close it
-
-  } else if (banner.vfJsBannerState === 'dismissible') {
-    // nothing more to do for dismissible
-
+  if (banner.vfJsBannerState === 'persistent') {// nothing more to do for persistent, you can't close it
+  } else if (banner.vfJsBannerState === 'dismissible') {// nothing more to do for dismissible
   } else if (banner.vfJsBannerState === 'blocking') {
-    console.warn('vf-banner: Note, the blocking implementation is not yet feature complete.');
-    // escape only works when blocking
+    console.warn('vf-banner: Note, the blocking implementation is not yet feature complete.'); // escape only works when blocking
+
     if (banner.vfJsBannerEscClose === 'y' || banner.vfJsBannerEscClose === 'Y') {
-      document.onkeydown = function(evt) {
+      document.onkeydown = function (evt) {
         evt = evt || window.event;
+
         if (evt.keyCode == 27) {
-          vfBannerConfirm(targetBanner,'null');
+          vfBannerConfirm(targetBanner, 'null');
         }
       };
     }
-  }
-
-  // Split passed links into buttons
+  } // Split passed links into buttons
   // <a href='#'>string1</a>\<a href='#'>string2</a>
+
+
   if (banner.vfJsBannerExtraButton) {
     var vfBannerExtraButtons = banner.vfJsBannerExtraButton.split('</a>');
-
-    vfBannerExtraButtons.forEach(function(button){
+    vfBannerExtraButtons.forEach(function (button) {
       if (button.length > 1) {
         button += '</a>';
         var newButton = document.createElement('button');
@@ -167,35 +160,33 @@ function vfBannerInsert(banner,bannerId,scope) {
         generatedBannerHtml += newButton.outerHTML;
       }
     });
-  }
-
-  // if there is a vfJsBannerButtonText and banner is blocking or dismissible,
+  } // if there is a vfJsBannerButtonText and banner is blocking or dismissible,
   // add a button so user can close the banner
+
+
   if (banner.vfJsBannerButtonText && (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible')) {
-    generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>' + banner.vfJsBannerButtonText + '</button>';
   }
 
-  generatedBannerHtml += '</div>';
+  generatedBannerHtml += '</div>'; // set the html of the banner
 
-  // set the html of the banner
-  targetBanner.innerHTML = generatedBannerHtml;
+  targetBanner.innerHTML = generatedBannerHtml; // prep for cookie
 
-  // prep for cookie
   var vfBannerCookieNameAndVersion = 'null';
+
   if (banner.vfJsBannerCookieName && banner.vfJsBannerCookieVersion) {
     vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + '_' + banner.vfJsBannerCookieVersion;
-  }
-
-  // utility to reset cookie when developing
+  } // utility to reset cookie when developing
   // console.warn('vf-banner: vfBannerReset cookie reset override is on.');
   // vfBannerReset(vfBannerCookieNameAndVersion);
-
   // if blocking or dismissible, allow the user to close it, store a cookie (if specified)
+
+
   if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
     // On click: close banner, pass any cooke name (or `null`)
     if (banner.vfJsBannerButtonText) {
-      targetBanner.addEventListener('click', function(){
-        vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
+      targetBanner.addEventListener('click', function () {
+        vfBannerConfirm(targetBanner, vfBannerCookieNameAndVersion);
       }, false);
     }
   }
@@ -204,23 +195,19 @@ function vfBannerInsert(banner,bannerId,scope) {
     // if banner has been previously accepted
     if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
       // banner has been accepted, close
-      targetBanner.classList += " vf-u-display-none";
-      // exit, nothng more to do
-      return;
-    }
+      targetBanner.classList += " vf-u-display-none"; // exit, nothng more to do
 
-    // if banner is marked as auto-accept, set as read
+      return;
+    } // if banner is marked as auto-accept, set as read
+
+
     if (banner.vfJsBannerAutoAccept == "true") {
       if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
-        vfBannerSetCookie(vfBannerCookieNameAndVersion,true);
+        vfBannerSetCookie(vfBannerCookieNameAndVersion, true);
       }
     }
-
   }
-
-}
-
-// By default this creates banners from HTML
+} // By default this creates banners from HTML
 // optionally you can programatically supply
 // Target HTML
 // `<div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
@@ -240,10 +227,7 @@ function vfBannerInsert(banner,bannerId,scope) {
 //   vfJsBannerAutoAccept: "true"
 // };
 // vfBannerInsert(programaticalBanner,'32423');
-
 // vf-masthead
-
-
 // The background image for the banner element are taken from the database.
 // The filename includes the hex code for the background colour of the image.
 // Then test if the 6 characters are a hex code and declare the background-color
@@ -252,157 +236,166 @@ function vfBannerInsert(banner,bannerId,scope) {
   * Function for making background color of banner from image file name
   * @example vfMastheadSetStyle()
   */
+
+
 function vfMastheadSetStyle() {
-  const vfMastheads = document.querySelectorAll('[data-vf-js-masthead]');
+  var vfMastheads = document.querySelectorAll('[data-vf-js-masthead]');
+
   if (vfMastheads[0]) {
-    let el = vfMastheads[0];
-    let bannerBG = getComputedStyle(el).getPropertyValue('--vf-masthead__bg-image');
-    let filename = bannerBG.substr(0, bannerBG.lastIndexOf('.')) || bannerBG;
-    let hexcode = filename.substr(filename.length - 6);
-    let bannerBGC = "#" + hexcode;
-    let regHex = /[0-9A-Fa-f]{6}/g;
-    let threshold = 130; // about half of 256. Lower threshold equals more dark text on dark background
-    let cBrightness = 255; // default to above the threshold
+    var el = vfMastheads[0];
+    var bannerBG = getComputedStyle(el).getPropertyValue('--vf-masthead__bg-image');
+    var filename = bannerBG.substr(0, bannerBG.lastIndexOf('.')) || bannerBG;
+    var hexcode = filename.substr(filename.length - 6);
+    var bannerBGC = "#" + hexcode;
+    var regHex = /[0-9A-Fa-f]{6}/g;
+    var threshold = 130; // about half of 256. Lower threshold equals more dark text on dark background
+
+    var cBrightness = 255; // default to above the threshold
 
     if (regHex.test(hexcode)) {
+      var cutHex = function cutHex(h) {
+        return h.charAt(0) == "#" ? h.substring(1, 7) : h;
+      };
+
+      var hexToR = function hexToR(h) {
+        return parseInt(cutHex(h).substring(0, 2), 16);
+      };
+
+      var hexToG = function hexToG(h) {
+        return parseInt(cutHex(h).substring(2, 4), 16);
+      };
+
+      var hexToB = function hexToB(h) {
+        return parseInt(cutHex(h).substring(4, 6), 16);
+      };
+
+      var getCorrectTextColor = function getCorrectTextColor(hex) {
+        var hRed = hexToR(hex);
+        var hGreen = hexToG(hex);
+        var hBlue = hexToB(hex);
+        return (hRed * 299 + hGreen * 587 + hBlue * 114) / 1000;
+      };
 
       if (!bannerBGC) return;
-
       bannerBGC = bannerBGC.trim();
-
-      function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
-      function hexToR(h) {return parseInt((cutHex(h)).substring(0,2),16)}
-      function hexToG(h) {return parseInt((cutHex(h)).substring(2,4),16)}
-      function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)}
-
-      function getCorrectTextColor(hex){
-        let hRed = hexToR(hex);
-        let hGreen = hexToG(hex);
-        let hBlue = hexToB(hex);
-        return ((hRed * 299) + (hGreen * 587) + (hBlue * 114)) / 1000;
-      }
-
       cBrightness = getCorrectTextColor(bannerBGC);
 
-      if (cBrightness > threshold){
+      if (cBrightness > threshold) {
         el.style.setProperty('--vf-masthead__color--foreground', "#000000");
       } else if (cBrightness < threshold) {
         el.style.setProperty('--vf-masthead__color--foreground', "#FFFFFF");
       }
     }
   }
-};
+}
 
-// vf-tabs
+; // vf-tabs
 
 /**
  * Finds all tabs on a page and activates them
  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  * @example vfTabs(document.querySelectorAll('.vf-component__container')[0]);
  */
+
 function vfTabs(scope) {
-  var scope = scope || document;
-  // Get relevant elements and collections
-  const tablist = scope.querySelectorAll('[data-vf-js-tabs]');
-  const panelsList = scope.querySelectorAll('[data-vf-js-tabs-content]');
-  const panels = scope.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
-  const tabs = scope.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
+  var scope = scope || document; // Get relevant elements and collections
+
+  var tablist = scope.querySelectorAll('[data-vf-js-tabs]');
+  var panelsList = scope.querySelectorAll('[data-vf-js-tabs-content]');
+  var panels = scope.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
+  var tabs = scope.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
+
   if (!tablist || !panels || !tabs) {
     // exit: either tabs or tabbed content not found
     return;
   }
+
   if (tablist.length == 0 || panels.length == 0 || tabs.length == 0) {
     // exit: either tabs or tabbed content not found
     return;
-  }
+  } // The tab switching function
 
-  // The tab switching function
-  const switchTab = (newTab) => {
 
+  var switchTab = function switchTab(newTab) {
     // get the parent ul of the clicked tab
-    let parentTabSet = newTab.closest(".vf-tabs__list");
-    let oldTab = parentTabSet.querySelector('[aria-selected]');
+    var parentTabSet = newTab.closest(".vf-tabs__list");
+    var oldTab = parentTabSet.querySelector('[aria-selected]');
+
     if (oldTab) {
       oldTab.removeAttribute('aria-selected');
       oldTab.setAttribute('tabindex', '-1');
       oldTab.classList.remove('is-active');
-      let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
+      var oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
       panels[oldIndex].hidden = true;
     }
 
-    newTab.focus();
-    // Make the active tab focusable by the user (Tab key)
-    newTab.removeAttribute('tabindex');
-    // Set the selected state
-    newTab.setAttribute('aria-selected', 'true');
-    newTab.classList.add('is-active');
-    // Get the indices of the new tab to find the correct
-    // tab panel to show
-    let index = Array.prototype.indexOf.call(tabs, newTab);
-    panels[index].hidden = false;
-  };
+    newTab.focus(); // Make the active tab focusable by the user (Tab key)
 
-  // Add semantics are remove user focusability for each tab
-  Array.prototype.forEach.call(tabs, (tab, i) => {
+    newTab.removeAttribute('tabindex'); // Set the selected state
+
+    newTab.setAttribute('aria-selected', 'true');
+    newTab.classList.add('is-active'); // Get the indices of the new tab to find the correct
+    // tab panel to show
+
+    var index = Array.prototype.indexOf.call(tabs, newTab);
+    panels[index].hidden = false;
+  }; // Add semantics are remove user focusability for each tab
+
+
+  Array.prototype.forEach.call(tabs, function (tab, i) {
     tab.setAttribute('role', 'tab');
     tab.setAttribute('id', 'tab' + (i + 1));
     tab.setAttribute('data-tabs__item', 'tab' + (i + 1));
     tab.setAttribute('tabindex', '-1');
-    tab.parentNode.setAttribute('role', 'presentation');
+    tab.parentNode.setAttribute('role', 'presentation'); // Reset any active tabs from a previous JS call
 
-    // Reset any active tabs from a previous JS call
     tab.removeAttribute('aria-selected');
     tab.setAttribute('tabindex', '-1');
-    tab.classList.remove('is-active');
+    tab.classList.remove('is-active'); // Handle clicking of tabs for mouse users
 
-    // Handle clicking of tabs for mouse users
-    tab.addEventListener('click', e => {
+    tab.addEventListener('click', function (e) {
       e.preventDefault();
       switchTab(e.currentTarget);
-    });
+    }); // Handle keydown events for keyboard users
 
-    // Handle keydown events for keyboard users
-    tab.addEventListener('keydown', e => {
+    tab.addEventListener('keydown', function (e) {
       // Get the index of the current tab in the tabs node list
-      let index = Array.prototype.indexOf.call(tabs, e.currentTarget);
-      // Work out which key the user is pressing and
+      var index = Array.prototype.indexOf.call(tabs, e.currentTarget); // Work out which key the user is pressing and
       // Calculate the new tab's index where appropriate
-      let dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
+
+      var dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
+
       if (dir !== null) {
-        e.preventDefault();
-        // If the down key is pressed, move focus to the open panel,
+        e.preventDefault(); // If the down key is pressed, move focus to the open panel,
         // otherwise switch to the adjacent tab
+
         dir === 'down' ? panels[i].focus() : tabs[dir] ? switchTab(tabs[dir]) : void 0;
       }
     });
-  });
+  }); // Add tab panel semantics and hide them all
 
-  // Add tab panel semantics and hide them all
-  Array.prototype.forEach.call(panels, (panel, i) => {
+  Array.prototype.forEach.call(panels, function (panel, i) {
     panel.setAttribute('role', 'tabpanel');
     panel.setAttribute('tabindex', '-1');
-    let id = panel.getAttribute('id');
+    var id = panel.getAttribute('id');
     panel.setAttribute('aria-labelledby', tabs[i].id);
     panel.hidden = true;
-  });
+  }); // Add the tablist role to the first <ul> in the .tabbed container
 
-  // Add the tablist role to the first <ul> in the .tabbed container
-  Array.prototype.forEach.call(tablist, (tablistset, i) => {
-    tablistset.setAttribute('role', 'tablist');
-    // Initially activate the first tab
-    let firstTab = tablistset.querySelectorAll('.vf-tabs__link')[0];
+  Array.prototype.forEach.call(tablist, function (tablistset, i) {
+    tablistset.setAttribute('role', 'tablist'); // Initially activate the first tab
+
+    var firstTab = tablistset.querySelectorAll('.vf-tabs__link')[0];
     firstTab.removeAttribute('tabindex');
     firstTab.setAttribute('aria-selected', 'true');
     firstTab.classList.add('is-active');
   });
-  Array.prototype.forEach.call(panelsList, (panel, i) => {
+  Array.prototype.forEach.call(panelsList, function (panel, i) {
     // Initially reveal the first tab panel
-    let firstPanel = panel.querySelectorAll('.vf-tabs__section')[0];
+    var firstPanel = panel.querySelectorAll('.vf-tabs__section')[0];
     firstPanel.hidden = false;
   });
-}
-
-// vf-tree
+} // vf-tree
 
 /*
  * A note on the Visual Framework and JavaScript:
@@ -418,37 +411,38 @@ function vfTabs(scope) {
  * This allows users who would prefer not to have this JS engange on an element
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
-
 // if you need to import any other components' JS to use here
 // import { vfOthercomponent } from 'vf-other-component/vf-other-component';
 
- /**
-  * The global function for this component
-  * @example vfTree(firstPassedVar)
-  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
-  */
-function vfTree(scope) {
-  var scope = scope || document;
+/**
+ * The global function for this component
+ * @example vfTree(firstPassedVar)
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+ */
 
-  // Get relevant elements and collections
-  const treelist = scope.querySelectorAll('[data-vf-js-tree]');
-  // const panelsList = scope.querySelectorAll('[data-vf-js-tabs-content]');
+
+function vfTree(scope) {
+  var scope = scope || document; // Get relevant elements and collections
+
+  var treelist = scope.querySelectorAll('[data-vf-js-tree]'); // const panelsList = scope.querySelectorAll('[data-vf-js-tabs-content]');
   // const panels = scope.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
   // const tabs = scope.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
   // if (!tablist || !panels || !tabs) {
-  if (!treelist ) {
-    // exit: either trees or tabbed content not found
-    return;
-  }
-  // if (tablist.length == 0 || panels.length == 0 || tabs.length == 0) {
-  if (treelist.length == 0 ) {
-    // exit: either trees or tabbed content not found
-    return;
-  }
 
-  // Receive a target scope and toggle if it is active
+  if (!treelist) {
+    // exit: either trees or tabbed content not found
+    return;
+  } // if (tablist.length == 0 || panels.length == 0 || tabs.length == 0) {
+
+
+  if (treelist.length == 0) {
+    // exit: either trees or tabbed content not found
+    return;
+  } // Receive a target scope and toggle if it is active
+
+
   function vfTreeToggleActive(target) {
-    let collpasedState = target.dataset['vfJsTree-Collapsed'];
+    var collpasedState = target.dataset['vfJsTree-Collapsed'];
 
     if (collpasedState === 'true') {
       collpasedState = false;
@@ -463,40 +457,37 @@ function vfTree(scope) {
     }
 
     target.dataset['vfJsTree-Collapsed'] = collpasedState;
-  }
+  } // Logic to show/hide section of tree
 
-  // Logic to show/hide section of tree
+
   function vfTreeButtonHandler(target) {
     // if want to only get the direct children matches
     // this future proofs but also adds and edge case, so we won't use for now
     // let targetButton = Array.prototype.filter.call(target.children, function (item) {
     //   return item.matches('[data-vf-js-tree--button]');
     // });
+    var targetButton = target.querySelectorAll('[data-vf-js-tree--button]');
 
-    const targetButton = target.querySelectorAll('[data-vf-js-tree--button]');
-    
     if (targetButton.length == 0) {
       // if no tree buttons found, nothing to do
       return;
-    }
-
-    // Handle clicking
+    } // Handle clicking
     // Target the closest item
-    targetButton[0].addEventListener('click', e => {
+
+
+    targetButton[0].addEventListener('click', function (e) {
       console.log(target);
       e.preventDefault();
       vfTreeToggleActive(target);
     });
-  }
+  } // For each treelist section, invoke handlers
 
-  // For each treelist section, invoke handlers
-  Array.prototype.forEach.call(treelist, (treelistset, i) => {
+
+  Array.prototype.forEach.call(treelist, function (treelistset, i) {
     // Handle hide/show for tree sets
     vfTreeButtonHandler(treelistset);
   });
-}
-
-// vf-form__float-labels
+} // vf-form__float-labels
 
 /*
  * A note on the Visual Framework and JavaScript:
@@ -513,13 +504,14 @@ function vfTree(scope) {
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
 
- /**
-  * The global function for this component
-  * @example vfcomponentName(firstPassedVar)
-  * @param {string} [firstPassedVar]  - An option to be passed
-  */
-function vfFormFloatLabels() {
+/**
+ * The global function for this component
+ * @example vfcomponentName(firstPassedVar)
+ * @param {string} [firstPassedVar]  - An option to be passed
+ */
 
+
+function vfFormFloatLabels() {
   function addFloatLabel(self) {
     var label = document.createElement('label');
     var id = 'label-' + new Date().getTime();
@@ -527,17 +519,20 @@ function vfFormFloatLabels() {
     self.dataset.inputOf = id;
     self.parentNode.insertBefore(label, self);
     label.innerHTML = self.getAttribute('placeholder'); // not namespaced as this is a HTML-native attribute
+
     label.classList.add('vf-form__label');
   }
 
   function floatLabelKeyUp(event) {
     var self = event.target;
-    if(!self.dataset.inputOf && !!self.value) {
+
+    if (!self.dataset.inputOf && !!self.value) {
       addFloatLabel(self);
     } else {
       var label = document.querySelector('#' + self.dataset.inputOf);
+
       if (!self.value && !!label) {
-        setTimeout(function(){
+        setTimeout(function () {
           label.parentNode.removeChild(label);
           delete self.dataset.inputOf;
         }, 10);
@@ -550,43 +545,44 @@ function vfFormFloatLabels() {
     var sibling = element.nextElementSibling;
     var div = document.createElement('div');
     div.appendChild(element);
-    if(!sibling) {
+
+    if (!sibling) {
       parent.appendChild(div);
-    }
-    else {
+    } else {
       parent.insertBefore(div, sibling);
     }
   }
 
-  let floatLabels = document.querySelectorAll('[data-vf-js-form-floatlabel]');
+  var floatLabels = document.querySelectorAll('[data-vf-js-form-floatlabel]');
   var inputs = [].slice.call(floatLabels);
 
-  for(var i in inputs) {
+  for (var i in inputs) {
     wrapElement(inputs[i]);
-    if(!!inputs[i].value) {
+
+    if (!!inputs[i].value) {
       addFloatLabel(inputs[i]);
     }
-    inputs[i].classList.add('vf-form__floatlabel');
-    // .vf-form__floatlabel
+
+    inputs[i].classList.add('vf-form__floatlabel'); // .vf-form__floatlabel
+
     inputs[i].addEventListener('keyup', floatLabelKeyUp);
   }
 
   function checkEmail(str) {
-    var errorElem =  document.getElementById('error');
-    // email regex
+    var errorElem = document.getElementById('error'); // email regex
+
     var re = /^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(!re.test(str)) {
-      if (document.getElementById('email-error')) {
-       // do nothing
+
+    if (!re.test(str)) {
+      if (document.getElementById('email-error')) {// do nothing
       } else {
         var el = document.getElementById('email-form'),
-        elChild = document.createElement('div'),
-        parent = elChild;
+            elChild = document.createElement('div'),
+            parent = elChild;
         elChild.innerHTML = '<div id="email-error" class="mt-b-form__message mt-b-form__message--inline-error"><p>Your email is incorrect</p></div>';
       }
 
       el.parentNode.appendChild(elChild);
-
     } else {
       var elem = document.getElementById('email-error');
       elem.parentNode.removeChild(elem);
@@ -594,351 +590,318 @@ function vfFormFloatLabels() {
   }
 
   function checkForm() {
-    let canSubmit = true;
-    let emailcheck = /^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const emailField = document.getElementById('username').value;
-    const passwordField = document.forms['loginform'].querySelector('.form__input--password').value;
-    if(!emailcheck.test(emailField)) {
+    var canSubmit = true;
+    var emailcheck = /^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var emailField = document.getElementById('username').value;
+    var passwordField = document.forms['loginform'].querySelector('.form__input--password').value;
+
+    if (!emailcheck.test(emailField)) {
       canSubmit = false;
     }
-    if(passwordField.length < 5) {
+
+    if (passwordField.length < 5) {
       canSubmit = false;
     }
+
     if (canSubmit) {
       document.forms['loginform'].querySelector('.mt-b-button__item').disabled = false;
     } else {
       document.forms['loginform'].querySelector('.mt-b-button__item').disabled = true;
     }
   }
-
-}
-
-// embl-content-hub-loader__html-imports
-
+} // embl-content-hub-loader__html-imports
 // A trimmed down version of
 // https://github.com/AshleyScirra/html-imports-polyfill/blob/master/htmlimports.js
 // mostly we dropped CSS and sub-imports
 
+
 function emblContentHubLoaderHtmlImports() {
-	// Map a script URL to its import document for GetImportDocument()
-	const scriptUrlToImportDoc = new Map();
+  // Map a script URL to its import document for GetImportDocument()
+  var scriptUrlToImportDoc = new Map();
 
-	function GetPathFromURL(url)
-	{
-		if (!url.length)
-			return url;		// empty string
+  function GetPathFromURL(url) {
+    if (!url.length) return url; // empty string
 
-		const lastCh = url.charAt(url.length - 1);
-		if (lastCh === "/" || lastCh === "\\")
-			return url;		// already a path terminated by slash
+    var lastCh = url.charAt(url.length - 1);
+    if (lastCh === "/" || lastCh === "\\") return url; // already a path terminated by slash
 
-		let last_slash = url.lastIndexOf("/");
+    var last_slash = url.lastIndexOf("/");
+    if (last_slash === -1) last_slash = url.lastIndexOf("\\");
+    if (last_slash === -1) return ""; // neither slash found, assume no path (e.g. "file.ext" returns "" as path)
 
-		if (last_slash === -1)
-			last_slash = url.lastIndexOf("\\");
+    return url.substr(0, last_slash + 1);
+  }
 
-		if (last_slash === -1)
-			return "";			// neither slash found, assume no path (e.g. "file.ext" returns "" as path)
+  ; // Determine base URL of document.
 
-		return url.substr(0, last_slash + 1);
-	};
+  var baseElem = document.querySelector("base");
+  var baseHref = baseElem && baseElem.hasAttribute("href") ? baseElem.getAttribute("href") : ""; // If there is a base href, ensure it is of the form 'path/' (not '/path', 'path' etc)
 
-	// Determine base URL of document.
-	const baseElem = document.querySelector("base");
-	let baseHref = ((baseElem && baseElem.hasAttribute("href")) ? baseElem.getAttribute("href") : "");
+  if (baseHref) {
+    if (baseHref.startsWith("/")) baseHref = baseHref.substr(1);
+    if (!baseHref.endsWith("/")) baseHref += "/";
+  }
 
-	// If there is a base href, ensure it is of the form 'path/' (not '/path', 'path' etc)
-	if (baseHref)
-	{
-		if (baseHref.startsWith("/"))
-			baseHref = baseHref.substr(1);
+  function GetBaseURL() {
+    return GetPathFromURL(location.origin + location.pathname) + baseHref;
+  }
 
-		if (!baseHref.endsWith("/"))
-			baseHref += "/";
-	}
+  ;
 
-	function GetBaseURL()
-	{
-		return GetPathFromURL(location.origin + location.pathname) + baseHref;
-	};
+  function FetchAs(url, responseType) {
+    return new Promise(function (resolve, reject) {
+      var xhr = new XMLHttpRequest();
 
-	function FetchAs(url, responseType)
-	{
-		return new Promise((resolve, reject) =>
-		{
-			const xhr = new XMLHttpRequest();
-			xhr.onload = (() =>
-			{
-				if (xhr.status >= 200 && xhr.status < 300)
-				{
-					resolve(xhr.response);
-				}
-				else
-				{
-					reject(new Error("Failed to fetch '" + url + "': " + xhr.status + " " + xhr.statusText));
-				}
-			});
-			xhr.onerror = reject;
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve(xhr.response);
+        } else {
+          reject(new Error("Failed to fetch '" + url + "': " + xhr.status + " " + xhr.statusText));
+        }
+      };
 
-			xhr.open("GET", url);
-			xhr.responseType = responseType;
-			xhr.send();
-		});
-	}
+      xhr.onerror = reject;
+      xhr.open("GET", url);
+      xhr.responseType = responseType;
+      xhr.send();
+    });
+  }
+
+  function _AddImport(url, preFetchedDoc, rootContext, progressObject) {
+    var isRoot = false; // The initial import creates a root context, which is passed along to all sub-imports.
+
+    if (!rootContext) {
+      isRoot = true;
+      rootContext = {
+        alreadyImportedUrls: new Set(),
+        // for deduplicating imports
+        stylePromises: [],
+        scriptPromises: [],
+        progress: progressObject || {} // progress written to this object (loaded, total)
+
+      };
+      rootContext.progress.loaded = 0;
+      rootContext.progress.total = 1; // add root import
+    } // Each import also tracks its own state with its own context.
 
 
-	function _AddImport(url, preFetchedDoc, rootContext, progressObject)
-	{
-		let isRoot = false;
+    var context = {
+      importDoc: null,
+      baseUrl: GetPathFromURL(url),
+      dependencies: []
+    }; // preFetchedDoc is passed for sub-imports which pre-fetch their documents as an optimisation. If it's not passed,
+    // fetch the URL to get the document.
 
-		// The initial import creates a root context, which is passed along to all sub-imports.
-		if (!rootContext)
-		{
-			isRoot = true;
-			rootContext = {
-				alreadyImportedUrls: new Set(),		// for deduplicating imports
-				stylePromises: [],
-				scriptPromises: [],
-				progress: (progressObject || {})	// progress written to this object (loaded, total)
-			};
+    var loadDocPromise;
+    if (preFetchedDoc) loadDocPromise = Promise.resolve(preFetchedDoc);else loadDocPromise = FetchAs(url, "document");
+    return loadDocPromise.then(function (doc) {
+      // HACK: in Edge, due to this bug: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/12458748/
+      // the fetched document URL is incorrect. doc.URL is also read-only so cannot directly be assigned. To work around this,
+      // calculate the correct URL and use Object.defineProperty to override the returned document URL.
+      Object.defineProperty(doc, "URL", {
+        value: new URL(url, GetBaseURL()).toString()
+      }); // we don't need the `body` wrapper, so return the first child
 
-			rootContext.progress.loaded = 0;
-			rootContext.progress.total = 1;			// add root import
-		}
+      return doc.body.firstChild;
+    });
+  }
 
-		// Each import also tracks its own state with its own context.
-		const context = {
-			importDoc: null,
-			baseUrl: GetPathFromURL(url),
-			dependencies: []
-		};
+  function AddImport(url, async, progressObject) {
+    // Note async attribute ignored (was only used for old native implementation).
+    return _AddImport(url, null, null, progressObject);
+  }
 
-		// preFetchedDoc is passed for sub-imports which pre-fetch their documents as an optimisation. If it's not passed,
-		// fetch the URL to get the document.
-		let loadDocPromise;
-
-		if (preFetchedDoc)
-			loadDocPromise = Promise.resolve(preFetchedDoc);
-		else
-			loadDocPromise = FetchAs(url, "document");
-
-		return loadDocPromise
-		.then(doc =>
-		{
-			// HACK: in Edge, due to this bug: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/12458748/
-			// the fetched document URL is incorrect. doc.URL is also read-only so cannot directly be assigned. To work around this,
-			// calculate the correct URL and use Object.defineProperty to override the returned document URL.
-			Object.defineProperty(doc, "URL", {
-				value: new URL(url, GetBaseURL()).toString()
-			});
-
-			// we don't need the `body` wrapper, so return the first child
-			return doc.body.firstChild;
-		})
-	}
-
-	function AddImport(url, async, progressObject)
-	{
-		// Note async attribute ignored (was only used for old native implementation).
-		return _AddImport(url, null, null, progressObject);
-	}
-
-	window["addImport"] = AddImport;
-}
-
-// embl-conditional-edit
+  window["addImport"] = AddImport;
+} // embl-conditional-edit
 
 /**
  * Invoke emblConditionalEditDetectParam scopped to objects where
  * data-embl-js-conditional-edit is present
  * This will be dynamically run once emblContentHubSignalFinished is triggered.
  */
+
+
 function emblConditionalEdit() {
-  const emblConditionalEditItems = document.querySelectorAll('[data-embl-js-conditional-edit]');
+  var emblConditionalEditItems = document.querySelectorAll('[data-embl-js-conditional-edit]');
+
   if (!emblConditionalEditItems) {
     // exit: lists not found
     return;
   }
+
   if (emblConditionalEditItems.length == 0) {
     // exit: lists not found
     return;
   }
 
-  Array.prototype.forEach.call(emblConditionalEditItems, (element, i) => {
-    emblConditionalEditDetectParam(location.href,element);
+  Array.prototype.forEach.call(emblConditionalEditItems, function (element, i) {
+    emblConditionalEditDetectParam(location.href, element);
   });
 }
-
 /**
  * Detects `?embl-conditional-edit=enabled` or `?embl-conditional-edit=1` or ?embl-conditional-edit=true`
  * and adds `.embl-coditional-edit__enabled` to display the edit links
  * @param {string} [url] - the url to check for an enabling param
  * @param {element} [element] - the scopped element to be processed
  */
-function emblConditionalEditDetectParam(url,element) {
+
+
+function emblConditionalEditDetectParam(url, element) {
   var captured = /embl-conditional-edit=([^&]+)/.exec(url);
+
   if (captured == null) {
     // value not found
-
     // also try against any parent iframe url
     if (window.self !== window.top) {
-      emblConditionalEditDetectParam(parent.window.location,element);
+      emblConditionalEditDetectParam(parent.window.location, element);
     }
 
     return;
   }
+
   captured = captured[1];
 
   if (captured == '1' || captured == 'enabled' || captured == 'true') {
     element.className += ' ' + 'embl-coditional-edit__enabled';
   }
-}
-
-// embl-content-hub-loader__fetch
+} // embl-content-hub-loader__fetch
 
 /**
  * Fetch html links from content.embl.org
  */
-function emblContentHubFetch() {
 
+
+function emblContentHubFetch() {
   // Some JS utilities
   // via https://stackoverflow.com/a/32135318
   Element.prototype.appendBefore = function (element) {
     element.parentNode.insertBefore(this, element);
-  },false;
+  }, false;
   Element.prototype.appendAfter = function (element) {
     element.parentNode.insertBefore(this, element.nextSibling);
-  },false;
-
-
+  }, false;
   /**
    * Get the number of days between two dates.
    */
+
   function days_between(date1, date2) {
     // The number of milliseconds in one day
-    var ONE_DAY = 1000 * 60 * 60 * 24;
+    var ONE_DAY = 1000 * 60 * 60 * 24; // Convert both dates to milliseconds
 
-    // Convert both dates to milliseconds
     var date1_ms = date1.getTime();
-    var date2_ms = date2.getTime();
+    var date2_ms = date2.getTime(); // Calculate the difference in milliseconds
 
-    // Calculate the difference in milliseconds
-    var difference_ms = Math.abs(date1_ms - date2_ms);
+    var difference_ms = Math.abs(date1_ms - date2_ms); // Convert back to days and return
 
-    // Convert back to days and return
-    return Math.round(difference_ms/ONE_DAY) + 1;
-  }
+    return Math.round(difference_ms / ONE_DAY) + 1;
+  } // A list of all the links
 
-  // A list of all the links
+
   var emblContentHubLinks = document.querySelectorAll('[data-embl-js-content-hub-loader]');
   var emblContentHubLinkLoadingProgress = {};
-  var emblContentHubShowTimers = false;
+  var emblContentHubShowTimers = false; // Handle the import of each element
 
-  // Handle the import of each element
   for (var i = 0; i < emblContentHubLinks.length; ++i) {
     (function () {
-      var linkPosition = i;
+      var linkPosition = i; // track time it takes for link to be shown
 
-      // track time it takes for link to be shown
-      if (emblContentHubShowTimers) { console.time('timer for import ' + linkPosition); }
-
-      // await the load of the html import from the polyfill 
+      if (emblContentHubShowTimers) {
+        console.time('timer for import ' + linkPosition);
+      } // await the load of the html import from the polyfill 
       // note: we use polyfill in all cases; see https://github.com/visual-framework/vf-core/issues/508
-      emblContentHubAwaitLoading(emblContentHubLinks[linkPosition],linkPosition);
-    }());
-  }
 
-  // Add a class to the body once the last item has been processed
+
+      emblContentHubAwaitLoading(emblContentHubLinks[linkPosition], linkPosition);
+    })();
+  } // Add a class to the body once the last item has been processed
+
+
   function emblContentHubSignalFinished() {
-    document.querySelectorAll('body')[0].classList.add('embl-content-hub-loaded');
+    document.querySelectorAll('body')[0].classList.add('embl-content-hub-loaded'); // if the JS to run embl-conditional-edit is present, run it now
 
-    // if the JS to run embl-conditional-edit is present, run it now
     if (typeof emblConditionalEdit === "function") {
       emblConditionalEdit();
     }
-  }
+  } // Dispatch load to the pollyfill
 
-  // Dispatch load to the pollyfill
-  function emblContentHubAwaitLoading(targetLink,position) {
+
+  function emblContentHubAwaitLoading(targetLink, position) {
     // Docs: https://github.com/AshleyScirra/html-imports-polyfill#usage
-    addImport(targetLink.href, null, emblContentHubLinkLoadingProgress).then(function(value) {
-      emblContentHubGrabTheContent(targetLink,position,value);
+    addImport(targetLink.href, null, emblContentHubLinkLoadingProgress).then(function (value) {
+      emblContentHubGrabTheContent(targetLink, position, value);
 
-      if (position+1 == emblContentHubLinks.length) {
+      if (position + 1 == emblContentHubLinks.length) {
         emblContentHubSignalFinished();
       }
     });
-  }
+  } // Generate a unique ID for the target element on the page
 
-  // Generate a unique ID for the target element on the page
+
   function emblContentHubGenerateID(position) {
     return 'contentDbItem' + ('0000' + position).slice(-5);
-  }
+  } // Show the remote content
 
-  // Show the remote content
-  function emblContentHubGrabTheContent(targetLink,position,exportedContent) {
 
+  function emblContentHubGrabTheContent(targetLink, position, exportedContent) {
     // pickup the "meat" of the exported content
-    exportedContent = exportedContent || targetLink.import.querySelector('.vf-content-hub-html');
+    exportedContent = exportedContent || targetLink.import.querySelector('.vf-content-hub-html'); // make sure we have something
 
-    // make sure we have something
     if (!exportedContent) {
       console.log('No content found for this import, exiting. The import may have already been preformed.', targetLink);
       return;
-    }
-
-    // if there is just one child element and it is a div, use that
+    } // if there is just one child element and it is a div, use that
     // (this helps with css grid layout)
-    if (exportedContent.childElementCount === 1 &&
-        exportedContent.firstElementChild.innerHTML.trimLeft().substr(0,4) === '<div'
-       ) {
+
+
+    if (exportedContent.childElementCount === 1 && exportedContent.firstElementChild.innerHTML.trimLeft().substr(0, 4) === '<div') {
       exportedContent = exportedContent.firstElementChild;
       exportedContent.classList.add('vf-content-hub-html');
       exportedContent.classList.add('vf-content-hub-html__derived-div');
     }
 
-    var contentID = emblContentHubGenerateID(position);
+    var contentID = emblContentHubGenerateID(position); // where does the content go?
 
-    // where does the content go?
     if (targetLink.dataset.target === 'self') {
       // if element already exists, remove it
       var oldElement = document.getElementById(contentID);
+
       if (oldElement) {
         oldElement.innerHTML = exportedContent.innerHTML;
       } else {
         // give content an ID
         exportedContent.setAttribute("id", contentID);
-        exportedContent.classList.add(contentID);
-        // just insert the new content
+        exportedContent.classList.add(contentID); // just insert the new content
+
         exportedContent.appendAfter(targetLink);
       } // end if oldElement
+
     } else {
-      var targetLocation = document.querySelector('.'+targetLink.dataset.target);
-      // exportedContent.appendAfter(targetLocation);
+      var targetLocation = document.querySelector('.' + targetLink.dataset.target); // exportedContent.appendAfter(targetLocation);
+
       targetLocation.classList.add(contentID);
       targetLocation.innerHTML = exportedContent.innerHTML;
+    } // display how long it took to load
+
+
+    if (emblContentHubShowTimers) {
+      console.timeEnd('timer for import ' + position);
     }
 
-    // display how long it took to load
-    if (emblContentHubShowTimers) { console.timeEnd('timer for import ' + position); }
+    emblContentHubAssignClasses(targetLink, position);
+    emblContentHubUpdateDatesFormat(position); // run JS for some components on content, if they exist
 
-    emblContentHubAssignClasses(targetLink,position);
-    emblContentHubUpdateDatesFormat(position);
-
-    // run JS for some components on content, if they exist
-    if (typeof(vfBanner) === 'function') {
+    if (typeof vfBanner === 'function') {
       vfBanner(targetLocation);
     }
-    if (typeof(vfTabs) === 'function') {
+
+    if (typeof vfTabs === 'function') {
       vfTabs(targetLocation);
-    }
-    // don't run breadcrumbs as part of contenthub, use case is different
+    } // don't run breadcrumbs as part of contenthub, use case is different
     // if (typeof(emblBreadcrumbs) === 'function') {
     //   emblBreadcrumbs(); // no scope for emblBreadcrumbs
     // }
-  }
 
-  // Enable class injection after loading contents
+  } // Enable class injection after loading contents
   // ... for all those edge cases
   // Background: https://gitlabci.ebi.ac.uk/emblorg/backlog/issues/82
   // Sample:
@@ -947,103 +910,96 @@ function emblContentHubFetch() {
   //        data-inject-class-target="ul"
   //        data-embl-js-content-hub-loader>
   //  This would make the ul a two-column grid.
-  function emblContentHubAssignClasses(targetLink,position) {
+
+
+  function emblContentHubAssignClasses(targetLink, position) {
     // var injectRequests = document.querySelectorAll('[data-inject-class][data-inject-class-target]');
     //
     // for (var i = 0; i < injectRequests.length; ++i) {
-
     var classesToInject = targetLink.getAttribute('data-inject-class');
     var targetSelectorToInject = targetLink.getAttribute('data-inject-class-target');
 
     if (classesToInject && targetSelectorToInject) {
       // Limit scope to the imported element
-      var targetElement = document.querySelector('.'+emblContentHubGenerateID(position)).querySelector(targetSelectorToInject);
+      var targetElement = document.querySelector('.' + emblContentHubGenerateID(position)).querySelector(targetSelectorToInject); // We can't inject space separated classes to we need to split it into arrays and add one by one.
 
-      // We can't inject space separated classes to we need to split it into arrays and add one by one.
       var classesToInject = classesToInject.split(' ');
 
       for (classNumber = 0; classNumber < classesToInject.length; classNumber++) {
         targetElement.classList.add(classesToInject[classNumber]);
       }
-
     }
   }
-
   /**
    * Update the format of close date.
    */
+
+
   function emblContentHubUpdateDatesFormat(position) {
-    var dateRemainingList = document.querySelector('.'+emblContentHubGenerateID(position)).querySelectorAll('.date-days-remaining');
+    var dateRemainingList = document.querySelector('.' + emblContentHubGenerateID(position)).querySelectorAll('.date-days-remaining');
     var todayDate = new Date();
+
     if (dateRemainingList.length > 0) {
-      for (let dateRemainingIndex = 0; dateRemainingIndex < dateRemainingList.length; dateRemainingIndex++) {
+      for (var dateRemainingIndex = 0; dateRemainingIndex < dateRemainingList.length; dateRemainingIndex++) {
         var dateValue = parseInt(dateRemainingList[dateRemainingIndex].getAttribute('data-datetime')) * 1000;
         dateValue = new Date(dateValue);
-        var numberOfDiffDays = days_between(dateValue, todayDate);
-        // Update to 'Closes in 6 Days.' format if number of days is less than 30 days.
+        var numberOfDiffDays = days_between(dateValue, todayDate); // Update to 'Closes in 6 Days.' format if number of days is less than 30 days.
+
         if (numberOfDiffDays < 30 && numberOfDiffDays > 1) {
-          dateRemainingList[dateRemainingIndex].innerHTML =  'Closes in ' + '<span>' + numberOfDiffDays + ' Days.</span>';
+          dateRemainingList[dateRemainingIndex].innerHTML = 'Closes in ' + '<span>' + numberOfDiffDays + ' Days.</span>';
         }
 
         if (numberOfDiffDays == 1) {
-          dateRemainingList[dateRemainingIndex].innerHTML =  'Closes in ' + '<span>' + numberOfDiffDays + ' Day.</span>';
+          dateRemainingList[dateRemainingIndex].innerHTML = 'Closes in ' + '<span>' + numberOfDiffDays + ' Day.</span>';
         }
       }
     }
   }
+} // embl-content-hub-loader
 
-}
-
-// embl-content-hub-loader
 
 function emblContentHub() {
-
   // 1. make sure we have imports or a pollyfill
-  emblContentHubLoaderHtmlImports();
+  emblContentHubLoaderHtmlImports(); // 2. import the content
 
-  // 2. import the content
   emblContentHubFetch();
-}
-
-// embl-content-meta-properties
-
+} // embl-content-meta-properties
 // In addition to being queried by other components' JS, this could
 // also add classes to a page to affect the overall look of a page.
-
 
 /**
  * Read metaProperties from page's metatags
  * @example emblContentMetaProperties_Read()
  */
+
+
 function emblContentMetaProperties_Read() {
-  var metaProperties = {};
-  // <!-- Content descriptors -->
+  var metaProperties = {}; // <!-- Content descriptors -->
   // <meta name="embl:who" content="{{ meta-who }}"> <!-- the people, groups and teams involved -->
   // <meta name="embl:what" content="{{ meta-what }}"> <!-- the activities covered -->
   // <meta name="embl:where" content="{{ meta-where }}"> <!-- at which EMBL sites the content applies -->
   // <meta name="embl:active" content="{{ meta-active }}"> <!-- which of the who/what/where is active -->
+
   metaProperties.who = metaProperties.who || document.querySelector("meta[name='embl:who']");
   metaProperties.what = metaProperties.what || document.querySelector("meta[name='embl:what']");
   metaProperties.where = metaProperties.where || document.querySelector("meta[name='embl:where']");
-  metaProperties.active = metaProperties.active || document.querySelector("meta[name='embl:active']");
-
-  // <!-- Content role -->
+  metaProperties.active = metaProperties.active || document.querySelector("meta[name='embl:active']"); // <!-- Content role -->
   // <meta name="embl:utility" content="-8"> <!-- if content is task and work based or if is meant to inspire -->
   // <meta name="embl:reach" content="-5"> <!-- if content is externally (public) or internally focused (those that work at EMBL) -->
-  metaProperties.utility = metaProperties.utility || document.querySelector("meta[name='embl:utility']");
-  metaProperties.reach = metaProperties.reach || document.querySelector("meta[name='embl:reach']");
 
-  // <!-- Page infromation -->
+  metaProperties.utility = metaProperties.utility || document.querySelector("meta[name='embl:utility']");
+  metaProperties.reach = metaProperties.reach || document.querySelector("meta[name='embl:reach']"); // <!-- Page infromation -->
   // <meta name="embl:maintainer" content="{{ meta-maintainer }}"> <!-- the contact person or group responsible for the page -->
   // <meta name="embl:last-review" content="{{ meta-last-review }}"> <!-- the last time the page was reviewed or updated -->
   // <meta name="embl:review-cycle" content="{{ meta-review-cycle }}"> <!-- how long in days before the page should be checked -->
   // <meta name="embl:expiry" content="{{ meta-expiry }}"> <!-- if there is a fixed point in time when the page is no longer relevant -->
+
   metaProperties.maintainer = metaProperties.maintainer || document.querySelector("meta[name='embl:maintainer']");
   metaProperties.lastReview = metaProperties.lastReview || document.querySelector("meta[name='embl:last-review']");
   metaProperties.reviewCycle = metaProperties.reviewCycle || document.querySelector("meta[name='embl:review-cycle']");
   metaProperties.expiry = metaProperties.expiry || document.querySelector("meta[name='embl:expiry']");
 
-  for(var key in metaProperties) {
+  for (var key in metaProperties) {
     if (metaProperties[key] != null && metaProperties[key].getAttribute("content").length != 0) {
       metaProperties[key] = metaProperties[key].getAttribute("content");
     } else {
@@ -1052,25 +1008,23 @@ function emblContentMetaProperties_Read() {
   }
 
   return metaProperties;
-}
-
-// embl-breadcrumbs-lookup
-
+} // embl-breadcrumbs-lookup
 // to hold the EMBL taxonomy
-var emblTaxonomy = {};
 
-// placeholders for our new breadcrumbs
+
+var emblTaxonomy = {}; // placeholders for our new breadcrumbs
+
 var emblBreadcrumbPrimary = document.createElement("ul");
-    emblBreadcrumbPrimary.classList.add('vf-breadcrumbs__list','vf-list','vf-list--inline');
+emblBreadcrumbPrimary.classList.add('vf-breadcrumbs__list', 'vf-list', 'vf-list--inline');
 var emblBreadcrumbRelated = document.createElement("ul");
-    emblBreadcrumbRelated.classList.add('vf-breadcrumbs__list','vf-breadcrumbs__list--related','vf-list','vf-list--inline');
-
+emblBreadcrumbRelated.classList.add('vf-breadcrumbs__list', 'vf-breadcrumbs__list--related', 'vf-list', 'vf-list--inline');
 /**
  * Take any appropriate actions depending on present metaTags
  * @example emblBreadcrumbsLookup()
  * @param {object} [metaProperties] - if you do not have meta tags on the page,
  *                                    you can explicitly pass options
  */
+
 function emblBreadcrumbsLookup(metaProperties) {
   var emblBreadcrumbTarget = document.querySelectorAll('[data-embl-js-breadcrumbs-lookup]');
 
@@ -1078,69 +1032,65 @@ function emblBreadcrumbsLookup(metaProperties) {
     // console.warn('There is no `[data-embl-js-breadcrumbs-lookup]` in which to insert the breadcrumbs; exiting');
     return false;
   }
+
   if (emblBreadcrumbTarget.length > 1) {
     console.warn('There is more than one `[data-embl-js-breadcrumbs-lookup]` in which to insert the breadcrumbs; continuing but only the first element will be updated.');
   }
 
-  var majorFacets = ['who','what','where'];
+  var majorFacets = ['who', 'what', 'where'];
 
   for (var i = 0; i < majorFacets.length; i++) {
     if (majorFacets[i] == metaProperties.active) {
-      emblBreadcrumbAppend(emblBreadcrumbTarget,metaProperties[majorFacets[i]],majorFacets[i],'primary');
+      emblBreadcrumbAppend(emblBreadcrumbTarget, metaProperties[majorFacets[i]], majorFacets[i], 'primary');
     } else {
       // do the related paths
-      emblBreadcrumbAppend(emblBreadcrumbTarget,metaProperties[majorFacets[i]],majorFacets[i],'related');
+      emblBreadcrumbAppend(emblBreadcrumbTarget, metaProperties[majorFacets[i]], majorFacets[i], 'related');
     }
-  }
+  } // make a 'related' label
 
-  // make a 'related' label
+
   var relatedLabel = document.createElement("span");
-      relatedLabel.innerHTML = 'Related:';
-      relatedLabel.classList.add('vf-breadcrumbs__heading');
+  relatedLabel.innerHTML = 'Related:';
+  relatedLabel.classList.add('vf-breadcrumbs__heading'); // now that we've processed all the meta properties, insert our rendered breadcrumbs
 
-  // now that we've processed all the meta properties, insert our rendered breadcrumbs
   emblBreadcrumbTarget[0].innerHTML = emblBreadcrumbPrimary.outerHTML + relatedLabel.outerHTML + emblBreadcrumbRelated.outerHTML;
 }
-
 /**
  * Get the EMBL taxonomy json from the ContentHub
  * @example emblGetTaxonomy()
  * @param {string} [url] - URL to pull the taxonomy from
  */
+
+
 function emblGetTaxonomy(url) {
   var url = url || 'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-ontology&source=contenthub';
-
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     // Do the usual XHR stuff
     var req = new XMLHttpRequest();
     req.open('GET', url);
 
-    req.onload = function() {
+    req.onload = function () {
       // This is called even on 404 etc
       // so check the status
       if (req.status == 200) {
         // Resolve the promise with the response text
         resolve(req.response);
-      }
-      else {
+      } else {
         // Otherwise reject with the status text
         // which will hopefully be a meaningful error
         reject(Error(req.statusText));
       }
-    };
+    }; // Handle network errors
 
-    // Handle network errors
-    req.onerror = function() {
+
+    req.onerror = function () {
       reject(Error("Error loading ontology"));
+    }; // Make the request
 
-    };
 
-    // Make the request
     req.send();
   });
-
 }
-
 /**
  * Receive a term and its context and create a breadcrumb
  * @example emblBreadcrumbAppend(breadcrumbTarget,term,facet,type)
@@ -1149,23 +1099,23 @@ function emblGetTaxonomy(url) {
  * @param {string} [facet] - the facet of the taxonomy (`who`, `what` or `where`)
  * @param {string} [type]  - if this is a `primary` or `related` path
  */
-function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
-  // console.log('Processing breadcrumb for:', termName + ', ' + facet + ', ' + type);
 
+
+function emblBreadcrumbAppend(breadcrumbTarget, termName, facet, type) {
+  // console.log('Processing breadcrumb for:', termName + ', ' + facet + ', ' + type);
   function getCurrentTerm(termName) {
     if (termName === 'EMBL') termName = 'All EMBL sites'; // hack as we're not using IDs
 
     var termObject;
+    Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), function (termId) {
+      var term = emblTaxonomy.terms[termId];
 
-    Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
-      let term = emblTaxonomy.terms[termId];
       if (term.name === termName) {
         termObject = term;
         return; //exit
       }
-    });
+    }); // we never want to return undefined
 
-    // we never want to return undefined
     if (termObject == undefined || termObject == null) {
       console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will use a simple unlinked term.');
       termObject = {};
@@ -1177,7 +1127,6 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
     return termObject;
   }
-
   /**
    * Take a term and get its parent term UUID
    * todo: this lookup is, perhaps, flawed as it gives us each ancestor, irregardless
@@ -1187,7 +1136,9 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
    * @param {array} [parents]  - array of UUIDs
    * @param {string} [facet] - who, what, where
    */
-  function getBreadcrumbParentTerm(parents,facet) {
+
+
+  function getBreadcrumbParentTerm(parents, facet) {
     // var parentTodos = {
     //   // 1: 'Respect the parent term context: who/what/where'
     //   // 2: 'scan the taxonomy and get any parent IDs',
@@ -1195,7 +1146,6 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     //   // 4: 'if parent was found, does the parent have a parent?'
     // };
     // console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
-
     if (parents == undefined || parents == null) {
       // no parent breadcrumb preset, exiting
       return;
@@ -1206,6 +1156,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
         console.warn('embl-js-breadcumbs-lookup: No matching parent found; Stopping parent lookup.');
         return;
       }
+
       activeParent.url = activeParent.url || '#no_url_specified';
 
       if (activeParent.name.indexOf(' root term') > 0) {
@@ -1215,14 +1166,13 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
       if (activeParent.primary == facet) {
         // only insert crumb if it respects the original term context: who/what/where
-        emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
-      }
+        emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display, activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+      } // get parents of parent
 
-      // get parents of parent
+
       if (activeParent.parents) {
-        getBreadcrumbParentTerm(activeParent.parents,facet);
+        getBreadcrumbParentTerm(activeParent.parents, facet);
       }
-
     }
 
     var activeParent;
@@ -1241,108 +1191,100 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
     return;
   }
-
   /**
    * Generate HTML for a new breadcrumb
    * @example formatBreadcrumb(term,breadcrumbUrl)
    * @param {string} [termName]  - the taxonomy string of the item, e.g. `Cancer`
    * @param {string} [breadcrumbUrl] - a fully formed URL, or 'null' to not make a link
    */
-  function formatBreadcrumb(termName,breadcrumbUrl) {
+
+
+  function formatBreadcrumb(termName, breadcrumbUrl) {
     var newBreadcrumb = '<li class="vf-breadcrumbs__item">';
+
     if (breadcrumbUrl && breadcrumbUrl !== 'null' && breadcrumbUrl !== '#no_url_specified') {
-      newBreadcrumb += '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + termName + '</a>';
+      newBreadcrumb += '<a href="' + breadcrumbUrl + '" class="vf-breadcrumbs__link">' + termName + '</a>';
     } else {
       newBreadcrumb += termName;
     }
-    newBreadcrumb += '</li>';
 
+    newBreadcrumb += '</li>';
     return newBreadcrumb;
   }
 
   var currentTerm = getCurrentTerm(termName);
   var breadcrumbId = currentTerm.uuid,
       breadcrumbUrl = currentTerm.url || '#addFunctionForBreadcrumbPatternForSimpleTerms',
-      breadcrumbParents = currentTerm.parents;
+      breadcrumbParents = currentTerm.parents; // narrow down to the first matching element
 
-  // narrow down to the first matching element
   breadcrumbTarget = breadcrumbTarget[0];
 
   if (type == 'primary') {
-
     // don't show path of breadcrumb if it is the current path
     if (new URL(breadcrumbUrl).pathname == window.location.pathname) {
       breadcrumbUrl = null;
-    }
+    } // add breadcrumb
 
-    // add breadcrumb
-    emblBreadcrumbPrimary.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl);
 
-    // fetch parents for primary path
+    emblBreadcrumbPrimary.innerHTML += formatBreadcrumb(currentTerm.name_display, breadcrumbUrl); // fetch parents for primary path
+
     getBreadcrumbParentTerm(breadcrumbParents, facet);
   } else if (type == 'related') {
     // add breadcrumb
-    emblBreadcrumbRelated.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl);
+    emblBreadcrumbRelated.innerHTML += formatBreadcrumb(currentTerm.name_display, breadcrumbUrl);
   }
-
 }
 
 function emblBreadcrumbs() {
   // We start the breadcrumbs by first getting the EMBL taxonomy.
   // todo: some sort of caching here, perhaps we write to local storage.
   // todo: abstract this out into its own `embl-taxonomy` component?
-  emblGetTaxonomy().then(function(response) {
-    emblTaxonomy = JSON.parse(response);
+  emblGetTaxonomy().then(function (response) {
+    emblTaxonomy = JSON.parse(response); // Preprocess the emblTaxonomy for some cleanup tasks
 
-    // Preprocess the emblTaxonomy for some cleanup tasks
-    Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
-      let term = emblTaxonomy.terms[termId];
-      // If `name_display` is not set, use the internal name
-      if (term.name_display === '') term.name_display = term.name;
-      // handle null URL
+    Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), function (termId) {
+      var term = emblTaxonomy.terms[termId]; // If `name_display` is not set, use the internal name
+
+      if (term.name_display === '') term.name_display = term.name; // handle null URL
+
       if (term.url === '') term.url = '#no_url_specified';
-    });
+    }); // Invoke embl-content-meta-properties function to pull tags from page
 
-    // Invoke embl-content-meta-properties function to pull tags from page
     emblBreadcrumbsLookup(emblContentMetaProperties_Read());
-
-  }, function(error) {
+  }, function (error) {
     console.warn("Failed to get EMBL ontology", error);
     var emblBreadcrumbTarget = document.querySelectorAll('[data-embl-js-breadcrumbs-lookup]');
+
     if (emblBreadcrumbTarget.length > 0) {
       emblBreadcrumbTarget[0].innerHTML = '<!-- Breadcrumbs failed to render due to network issue -->';
     }
   });
-}
-
-
-// Prepend polyfill for IE
+} // Prepend polyfill for IE
 // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/prepend()/prepend().md
+
+
 (function (arr) {
   arr.forEach(function (item) {
     if (item.hasOwnProperty('prepend')) {
       return;
     }
+
     Object.defineProperty(item, 'prepend', {
       configurable: true,
       enumerable: true,
       writable: true,
       value: function prepend() {
         var argArr = Array.prototype.slice.call(arguments),
-          docFrag = document.createDocumentFragment();
-
+            docFrag = document.createDocumentFragment();
         argArr.forEach(function (argItem) {
           var isNode = argItem instanceof Node;
           docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)));
         });
-
         this.insertBefore(docFrag, this.firstChild);
       }
     });
   });
-})([Element.prototype, Document.prototype, DocumentFragment.prototype]);
-
-// Run it on default
+})([Element.prototype, Document.prototype, DocumentFragment.prototype]); // Run it on default
 // emblBreadcrumbs();
 
 /*
@@ -1352,11 +1294,12 @@ function emblBreadcrumbs() {
  * Import this as a quick way to get *everything*,
  *
  */
+
+
 vfBanner();
 vfMastheadSetStyle();
 vfTabs();
 vfTree();
 vfFormFloatLabels();
 emblContentHub();
-emblBreadcrumbs();
-// No default invokation
+emblBreadcrumbs(); // No default invokation
