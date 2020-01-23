@@ -9,14 +9,12 @@ and allows for the creation of CSS, JS and usable Nunjucks templates.
 
 See also: [Guide on versions in `vf-core`](https://visual-framework.github.io/vf-welcome/developing/guidelines/versioning/)
 
-1. Make a new branch
-    - `releases/vf-core-<newversions>`
-1. Update the version 
+1. select the `develop` branch
+    - reminder: [we don't use `master`](https://github.com/visual-framework/vf-core/blob/master/README.md)
+1. update the version 
     - https://docs.npmjs.com/cli/version
     - `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]` 
-1. Create a PR on GitHub
-1. Merge to develop (or master, once we go stable)
-1. Publish to npm
+1. publish to npm
     - `npm publish`
 
 ## Components inside `vf-core`
@@ -26,33 +24,23 @@ to npm with [Lerna](https://github.com/lerna/lerna#about).
 
 See also: [Guide on updating a component versions](https://visual-framework.github.io/vf-welcome/developing/components/updating-a-component/)
 
-While we do not add tags as part of the "release" for component, Lerna needs a named tag to function.
-
 ### Component pre-release workflow
 
-1. See a list of changed packages
+1. select the `develop` branch
+    - reminder: [we don't use `master`](https://github.com/visual-framework/vf-core/blob/master/README.md)
+1. see a list of changed packages
     - `lerna changed`
-1. Test publish 
-    - `lerna publish --no-git-tag-version --conventional-commits --no-push --skip-npm prerelease `
-    - Afterward, reset your branch `git reset --hard`
-1. Then publish to npm
-    - `lerna publish --no-git-tag-version --conventional-commits --no-push prerelease`
-    - You'll probably have lost your local git changes, so: reset your branch `git reset --hard`
-    - `lerna publish --no-git-tag-version --conventional-commits --no-push --skip-npm prerelease`
-    - verify no tags added: `git tag`
-1. push your changes to develop with commit message in a format of: `Component release 20190930-01`
-1. add a tag `git tag -a components.YYYYMMDD-01 -m 'Snapshot of components for lerna'`
-1. push the tag `git push origin --tags`
-
-### Component stable release workflow
-
-To release stable versions:
-
-- Check if there are any pending changes with `lerna changed`.
-- Any pending component components should be released as pre-releases (using the guide above). 
-- Release stable versions by:
-    1. Touching the respective component `READEME.md`
-    2. Following the "Component pre-release workflow" but dropping the `prerelease` option
+1. test publish 
+    - `yarn run lerna:test`
+1. publish to npm
+    - `yarn run lerna:publish`
+1. commit changes to the `develop` branch
+    - commit message in a format of: `Component release YYYYMMDD-01`
+1. add a tag 
+    - `git tag -a components.YYYYMMDD-01 -m 'Snapshot of components for lerna'`
+    - Why like this? We do not add tags per individual component version, Lerna needs a named tag to see what has changed. This way we get one tag per release "bundle" avoiding tag spamming in the release history. 
+1. push the tag 
+    - `git push origin --tags`
 
 ### Appendix of useful Lerna commands
 
