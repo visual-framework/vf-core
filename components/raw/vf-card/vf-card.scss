@@ -13,11 +13,11 @@
 
 .vf-card {
   --card-text-color: var(--vf-card-theme-color--foreground, #{set-ui-color(vf-ui-color--black)});
-  --card-background-color: null;
+  --card-background-color: var(--vf-card-theme-color--background , #{set-ui-color(vf-ui-color--white)});
 
   background-color: var(--card-background-color);
   display: grid;
-  grid-template-rows: 216px repeat(6, 36px);
+  grid-template-rows: 216px 1fr;
   transition-duration: 250ms;
   transition-property: box-shadow;
   transition-timing-function: ease-in-out;
@@ -30,7 +30,7 @@
   }
 }
 
-a.vf-card {
+.vf-card--is-link {
   cursor: pointer;
   text-decoration: none;
 }
@@ -77,7 +77,7 @@ a.vf-card {
 
 .vf-card--normal {
   border-bottom: 8px solid set-ui-color(vf-ui-color--black);
-  border-bottom-color: var(--vf-card-theme-color--background, #{set-ui-color(vf-ui-color--black)});
+  border-bottom-color: var(--vf-card-theme-color--border, #{set-ui-color(vf-ui-color--black)});
 
   .vf-card__title {
     --card-text-color: #{set-color(vf-color--blue)};
@@ -118,22 +118,30 @@ a.vf-card {
 
 // vf-card themes
 
-.vf-card--primary {
+[class*='ary'].vf-card--normal {
+  --vf-card-theme-color--background: #{set-ui-color(vf-ui-color--white)};
+}
+
+.vf-card-theme--primary {
   --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
+  --vf-card-theme-color--border: #{set-color(vf-color--green)};
   --vf-card-theme-color--background: #{set-color(vf-color--green)};
 }
 
-.vf-card--secondary {
+.vf-card-theme--secondary {
   --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
+  --vf-card-theme-color--border: #{set-color(vf-color--blue)};
   --vf-card-theme-color--background: #{set-color(vf-color--blue)};
 }
 
-.vf-card--tertiary {
+.vf-card-theme--tertiary {
   --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
+  --vf-card-theme-color--border: #{set-color(vf-color--grey)};
   --vf-card-theme-color--background: #{set-color(vf-color--grey)};
 }
 
-.vf-card--quaternary {
+.vf-card-theme--quaternary {
   --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--black)};
+  --vf-card-theme-color--border: #{set-color(vf-color--yellow)};
   --vf-card-theme-color--background: #{set-color(vf-color--yellow)};
 }

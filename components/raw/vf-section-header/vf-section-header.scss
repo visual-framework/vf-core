@@ -10,7 +10,12 @@
  */
 
 .vf-section-header__heading {
-  @include set-type(text-heading--3, $custom-margin-bottom: 24px);
+  @include set-type(text-heading--3, $custom-margin-bottom: 0);
+
+  & + .vf-section-header__subheading,
+  & + .vf-section-header__content {
+    margin-top: 24px;
+  }
 }
 .vf-section-header__heading--is-link {
   color: set-color(vf-color--blue);
@@ -20,6 +25,7 @@
   .vf-section-header__icon {
     fill: currentColor;
     margin-left: 4px;
+    // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
     transform: translateY(4px);
     transition-duration: 125ms;
     transition-property: transformX;
@@ -35,5 +41,15 @@
 }
 
 .vf-section-header__subheading {
-  @include set-type(text-heading--3, $custom-margin-bottom: 0);
+  @include set-type(text-heading--4, $custom-margin-bottom: 0);
+}
+
+.vf-section-header__text {
+  @include set-type(text-body--2, $custom-margin-bottom: 8px);
+  .vf-section-header__heading + & {
+    margin-top: 24px;
+  }
+  .vf-section-header__subheading + & {
+    margin-top: 16px;
+  }
 }

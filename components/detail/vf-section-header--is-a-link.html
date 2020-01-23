@@ -144,6 +144,36 @@ class="vf-logo">
                
 
             
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-section-header--has-a-sub-heading-and-link-and-text.html">
+                    Has A Sub Heading And Link And Text
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-section-header--has-a-link-and-text.html">
+                    Has A Link And Text
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-section-header--has-text.html">
+                    Has Text
+                  </a>
+                 
+               
+
+            
           </ul>
 
       </div>
@@ -411,7 +441,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  */</span>
 
 <span class="hljs-selector-class">.vf-section-header__heading</span> {
-  <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">24px</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+
+  &amp; + <span class="hljs-selector-class">.vf-section-header__subheading</span>,
+  &amp; + <span class="hljs-selector-class">.vf-section-header__content</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
+  }
 }
 <span class="hljs-selector-class">.vf-section-header__heading--is-link</span> {
   <span class="hljs-attribute">color</span>: set-color(vf-color--blue);
@@ -421,6 +456,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.vf-section-header__icon</span> {
     fill: currentColor;
     <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span>;
+    <span class="hljs-comment">// @<span class="hljs-doctag">todo:</span> some sort of centralised and reusable docs, tokens, guidance on animations</span>
     <span class="hljs-attribute">transform</span>: translateY(<span class="hljs-number">4px</span>);
     <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">125ms</span>;
     <span class="hljs-attribute">transition-property</span>: transformX;
@@ -436,7 +472,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-section-header__subheading</span> {
-  <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">4</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+}
+
+<span class="hljs-selector-class">.vf-section-header__text</span> {
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">8px</span>);
+  <span class="hljs-selector-class">.vf-section-header__heading</span> + &amp; {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
+  }
+  <span class="hljs-selector-class">.vf-section-header__subheading</span> + &amp; {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">16px</span>;
+  }
 }
 </code>
         </pre>
@@ -453,7 +499,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-section-header/vf-section-header.scss
         </li>
         <li class="vf-list__item">
-          Size: 951 Bytes
+          Size: 1.4 KB
         </li>
       </ul>
     </section>
@@ -527,6 +573,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
       
 
         
@@ -1147,6 +1199,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-collapse.html">Collapse</a>
         </p>
@@ -1653,9 +1711,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
-        <p class="vf-text">
-          <a class="vf-link--secondary" href="vf-card.html">Card</a>
-        </p>
+      
+
+        
+        
+
         
       
 
@@ -2198,6 +2258,20 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
         
 
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-card.html">Card Container</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-card-container.html">Card Container</a>
+        </p>
         
       
 
@@ -2777,6 +2851,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -3036,6 +3116,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="ebi-vf1-integration.html">EBI-VF 1.x Compatibility Component</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -3733,6 +3819,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4042,6 +4134,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="embl-logo.html">EMBL Logo</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -4669,6 +4767,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4946,6 +5050,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="embl-content-hub-loader.html">EMBL ContentHub Loader</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -5589,6 +5699,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5833,6 +5949,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
       
 
         
