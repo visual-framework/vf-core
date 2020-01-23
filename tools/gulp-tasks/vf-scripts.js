@@ -43,16 +43,19 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         // If you need to make any components cited as "external"
         // external: ['vfTabs','vfBanner'],
         plugins: [
-          babel({
-            'presets': [
-              [
-                '@babel/preset-env',
-                {
-                  'targets': '> 0.25%, not dead, last 2 versions'
-                }
-              ]
-            ]
-          }),
+          // Gulp better rollup does not appear to be working with babe anymore
+          // as a workaround we run babel on the roll-d up JS
+          // @todo: investigate this further
+          // babel({
+          //   'presets': [
+          //     [
+          //       '@babel/preset-env',
+          //       {
+          //         'targets': '> 0.25%, not dead, last 2 versions'
+          //       }
+          //     ]
+          //   ]
+          // }),
           includePaths(includePathOptions)
         ]
       }, {
@@ -68,7 +71,18 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
          /require\('/i
          ]
        }))
-      .pipe(gulp.dest(buildDestionation + '/scripts'));
+       .pipe(babel({
+        'presets': [
+          [
+            '@babel/preset-env',
+            {
+              'targets': '> 0.25%, not dead, last 2 versions'
+            }
+          ]
+        ]
+      }))
+
+  .pipe(gulp.dest(buildDestionation + '/scripts'));
   });
 
 
