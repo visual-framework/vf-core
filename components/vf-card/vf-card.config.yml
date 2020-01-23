@@ -8,27 +8,54 @@ status: live
 context:
   component-type: block
   # custom-values: passed as {{custom-values}}
-
-  title: Title Block
-  text: two lines of text
-  image: ../../assets/vf-card/assets/vf-card-example.png
+  card:
+    card_title: Title Block
+    card_text: two lines of text
+    card_image: ../../assets/vf-card/assets/vf-card-example.png
 
 variants:
   - name: default
-    hidden: true
-  - name: topic-card
+    label: Easy
     context:
-      title: Title Block
-      text: two lines of text
-      modifier: vf-card--topic
+      card:
+        modifier: vf-card--easy
+        card_title: An Easy Card Title
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: normal
+    context:
+      card:
+        modifier: vf-card--normal
+        card_title: A Normal Card Title
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: medium
+    context:
+      card:
+        modifier: vf-card--medium
+        card_title: A Medium Card Title
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: hard
+    context:
+      card:
+        modifier: vf-card--hard
+        card.card_title: An Hard Card Title
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: extreme
+    hidden: true
+    context:
+      card:
+        modifier: vf-card--extreme
+        card_title: An Extreme Card Title
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: intense
+    hidden: true
+    context:
+      card:
+        modifier: vf-card--intense
+        card_title: An Intense Card Title
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
   - name: as-link
     context:
-      title: Title Block
-      text: two lines of text
-      card_href: https://www.emmbl.de
-      modifier: vf-card--topic
-  - name: navigation-card
-    context:
-      title: Title Block
-      text: two lines of text
-      modifier: vf-card--navigation
+      card:
+        card_title: A Card Is A Link Title
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+        card_href: https://www.emmbl.de

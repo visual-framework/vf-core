@@ -1,12 +1,12 @@
-<section class="vf-card-container">
+<section class="vf-card-container | vf-hook-locations">
+  <div class="vf-card-container__inner">
 
-  {% render '@vf-section-header'%}
+    {% include '@vf-section-header' %}
 
-  {% render '@vf-card--navigation-card' %}
-  {% render '@vf-card--navigation-card' %}
-  {% render '@vf-card--navigation-card' %}
-  {% render '@vf-card--navigation-card' %}
-  {% render '@vf-card--navigation-card' %}
-  {% render '@vf-card--navigation-card' %}
+    {% asyncEach card in vf_cards %}
+      {% include '@vf-card' %}
+    {% endeach %}
+
+  </div>
 
 </section>
