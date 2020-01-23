@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Logo: Responsive component | Visual Framework 2.0</title>
+  <title>Logo: Extreme With Hidden Text component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
@@ -74,12 +74,12 @@ class="vf-logo">
     
     
 
-<div class="Pen" data-behaviour="pen" id="pen-cf5b3cdba96196b77321f36867b02003">
+<div class="Pen" data-behaviour="pen" id="pen-92e86228bbfbf5c71de7ad401785c45f">
 
   
 
   <h1 class="vf-page-header__heading | vf-text vf-text-heading-2 vf-text--has-tag">
-  Logo: Responsive
+  Logo: Extreme With Hidden Text
   
 
 
@@ -118,9 +118,11 @@ class="vf-logo">
             
 
               
-                <a class="vf-tabs__link is-active" href="#is-active">
-                  Responsive
-                </a>
+                
+                  <a class="vf-tabs__link" href="vf-logo--extreme.html">
+                    Extreme
+                  </a>
+                 
                
 
             
@@ -131,6 +133,14 @@ class="vf-logo">
                     Hidden Text
                   </a>
                  
+               
+
+            
+
+              
+                <a class="vf-tabs__link is-active" href="#is-active">
+                  Extreme With Hidden Text
+                </a>
                
 
             
@@ -145,13 +155,13 @@ class="vf-logo">
 
 
 
-  <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-cf5b3cdba96196b77321f36867b02003">
+  <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-92e86228bbfbf5c71de7ad401785c45f">
       <div class="Preview-wrapper" data-role="resizer-disabled">
         
          <iframe
             class="Preview-iframe"
             data-role="window"
-            src="../preview/vf-logo--responsive.html"
+            src="../preview/vf-logo--extreme-with-hidden-text.html"
             sandbox="allow-same-origin allow-scripts allow-forms"
 
             marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
@@ -160,8 +170,8 @@ class="vf-logo">
         </iframe>
             <p class="vf-figure__caption">
               Open the above preview in a new window:
-              <a href="../preview/vf-logo--responsive.html"><span>With layout</span> Open</a>
-              <a href="../render/vf-logo--responsive.html"><span>Component only</span> Open</a>
+              <a href="../preview/vf-logo--extreme-with-hidden-text.html"><span>With layout</span> Open</a>
+              <a href="../render/vf-logo--extreme-with-hidden-text.html"><span>Component only</span> Open</a>
             </p>
 
       </div>
@@ -190,7 +200,7 @@ class="vf-logo">
   <h3 class="vf-text vf-text-heading--4">Component information</h3>
 <ul class="vf-list vf-list--unordered">
     <li class="vf-list__item">
-        Handle: @vf-logo--responsive
+        Handle: @vf-logo--extreme-with-hidden-text
     </li>
     
     <li class="vf-list__item">
@@ -206,11 +216,10 @@ class="vf-logo">
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.embl.de"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-logo"</span>&gt;</span>
+  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://www.embl.de"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-logo | vf-logo--extreme"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-logo__image"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../assets/vf-logo/assets/logo.svg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Visual Framework 2.0"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-logo__text"</span>&gt;</span>Visual Framework 2.0<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-logo__text vf-u-sr-only"</span>&gt;</span>Visual Framework 2.0<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- '@vf-logo--responsive' is deprecated, use '@vf-logo' --&gt;</span>
 </code></pre>
   
 
@@ -399,32 +408,37 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">align-items</span>: center;
   <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
   <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">41px</span>;
+  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">32px</span>;
   <span class="hljs-attribute">text-decoration</span>: none;
 }
 
 <span class="hljs-selector-class">.vf-logo__image</span> {
   --vf-logo-<span class="hljs-attribute">margin-right</span>: #{map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--sm)};
 
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">32px</span>;
   <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>; <span class="hljs-comment">// IE11 Fallback</span>
   <span class="hljs-attribute">margin-right</span>: var(--vf-logo-margin-right);
 
   <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">500px</span>) {
     --vf-logo-<span class="hljs-attribute">margin-right</span>: #{map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md)};
-
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">28px</span>;
   }
 
   <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">999px</span>) {
     --vf-logo-<span class="hljs-attribute">margin-right</span>: #{map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md)};
+  }
+}
 
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;
+<span class="hljs-selector-class">.vf-logo--extreme</span> {
+  <span class="hljs-selector-class">.vf-logo__image</span> {
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">11vw</span>;
+    <span class="hljs-attribute">max-height</span>: <span class="hljs-number">96px</span>;
+    <span class="hljs-attribute">min-height</span>: <span class="hljs-number">32px</span>;
   }
 }
 
 <span class="hljs-selector-class">.vf-logo__text</span> {
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+  <span class="hljs-attribute">align-self</span>: center;
 }
 </code>
         </pre>
@@ -441,7 +455,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-logo/vf-logo.scss
         </li>
         <li class="vf-list__item">
-          Size: 932 Bytes
+          Size: 1 KB
         </li>
       </ul>
     </section>

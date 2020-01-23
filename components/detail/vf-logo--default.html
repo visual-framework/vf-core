@@ -116,6 +116,10 @@ class="vf-logo">
             
 
               
+                
+                  <a class="vf-tabs__link" href="vf-logo--extreme.html">
+                    Extreme
+                  </a>
                  
                
 
@@ -125,6 +129,16 @@ class="vf-logo">
                 
                   <a class="vf-tabs__link" href="vf-logo--hidden-text.html">
                     Hidden Text
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-logo--extreme-with-hidden-text.html">
+                    Extreme With Hidden Text
                   </a>
                  
                
@@ -401,32 +415,37 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">align-items</span>: center;
   <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
   <span class="hljs-attribute">display</span>: flex;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">41px</span>;
+  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">32px</span>;
   <span class="hljs-attribute">text-decoration</span>: none;
 }
 
 <span class="hljs-selector-class">.vf-logo__image</span> {
   --vf-logo-<span class="hljs-attribute">margin-right</span>: #{map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--sm)};
 
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">32px</span>;
   <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>; <span class="hljs-comment">// IE11 Fallback</span>
   <span class="hljs-attribute">margin-right</span>: var(--vf-logo-margin-right);
 
   <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">500px</span>) {
     --vf-logo-<span class="hljs-attribute">margin-right</span>: #{map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md)};
-
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">28px</span>;
   }
 
   <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">999px</span>) {
     --vf-logo-<span class="hljs-attribute">margin-right</span>: #{map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md)};
+  }
+}
 
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;
+<span class="hljs-selector-class">.vf-logo--extreme</span> {
+  <span class="hljs-selector-class">.vf-logo__image</span> {
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">11vw</span>;
+    <span class="hljs-attribute">max-height</span>: <span class="hljs-number">96px</span>;
+    <span class="hljs-attribute">min-height</span>: <span class="hljs-number">32px</span>;
   }
 }
 
 <span class="hljs-selector-class">.vf-logo__text</span> {
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+  <span class="hljs-attribute">align-self</span>: center;
 }
 </code>
         </pre>
@@ -443,7 +462,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-logo/vf-logo.scss
         </li>
         <li class="vf-list__item">
-          Size: 932 Bytes
+          Size: 1 KB
         </li>
       </ul>
     </section>
