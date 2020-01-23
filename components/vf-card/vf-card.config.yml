@@ -1,61 +1,78 @@
 # The title shown on the component page
-title: Card
+title: Card Container
 # Label shown on index pages
-label: Card
-status: live
+label: Card Container
+status: alpha
+preview: '@preview--nogrid'
+collated: true
 # The template used from /components/_previews
-
+#
+# Per-variant options
+# variants:
+  # - name: default
+  #   hidden: true
 context:
-  component-type: block
+  component-type: container
+  modifier: vf-u-background-color--grey--lightest
+  section_title: Missions
+  href: www.test.com
+  # section__subheading: To promote molecular biology across Europe
+  vf_section__content:
+    - To promote molecular biology across Europe
+    - To create a centre of excellence for Europe's leading young molecular biologists
+  vf_cards:
+    - card_title: A Easy Card Title 1
+      card_href: http://www.hello.com
+      modifier: vf-card--easy
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+    - card_title: A Normal Card Title 1
+      card_href: http://www.hello.com
+      modifier: vf-card--normal
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+    - card_title: A Normal Card Title 1.5
+      card_href: http://www.hello.com
+      modifier: vf-card--normal vf-card-theme--primary
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+    - modifier: vf-card--normal vf-card-theme--secondary
+      card_title: A Normal Card Title 2
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+    - modifier: vf-card--normal vf-card-theme--tertiary
+      card_title: A Normal Card Title 3
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+    - modifier: vf-card--normal vf-card-theme--quaternary
+      card_title: A Normal Card Title 4
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+    - card_title: A Medium Card Title 1
+      card_href: http://www.hello.com
+      modifier: vf-card--medium
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+    - card_title: A Medium Card Title 1.5
+      card_href: http://www.hello.com
+      modifier: vf-card--medium vf-card-theme--primary
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+    - modifier: vf-card--medium vf-card-theme--secondary
+      card_title: A Medium Card Title 2
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+    - modifier: vf-card--medium vf-card-theme--tertiary
+      card_title: A Medium Card Title 3
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+    - modifier: vf-card--medium vf-card-theme--quaternary
+      card_title: A Medium Card Title 4
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
   # custom-values: passed as {{custom-values}}
-  card:
-    card_title: Title Block
-    card_text: two lines of text
-    card_image: ../../assets/vf-card/assets/vf-card-example.png
-
-variants:
-  - name: default
-    label: Easy
-    context:
-      card:
-        modifier: vf-card--easy
-        card_title: An Easy Card Title
-        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-  - name: normal
-    context:
-      card:
-        modifier: vf-card--normal
-        card_title: A Normal Card Title
-        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-  - name: medium
-    context:
-      card:
-        modifier: vf-card--medium
-        card_title: A Medium Card Title
-        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-  - name: hard
-    context:
-      card:
-        modifier: vf-card--hard
-        card.card_title: An Hard Card Title
-        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-  - name: extreme
-    hidden: true
-    context:
-      card:
-        modifier: vf-card--extreme
-        card_title: An Extreme Card Title
-        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-  - name: intense
-    hidden: true
-    context:
-      card:
-        modifier: vf-card--intense
-        card_title: An Intense Card Title
-        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-  - name: as-link
-    context:
-      card:
-        card_title: A Card Is A Link Title
-        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-        card_href: JavaScript:Void(0);
+  # title: Title text
+  # text: String of text
+  # image: ../../assets/vf-component-name/assets/vf-component-name.png
+  # - note on paths: be sure to prefix with `../../`
+  # - Why? https://github.com/visual-framework/vf-core/issues/364
