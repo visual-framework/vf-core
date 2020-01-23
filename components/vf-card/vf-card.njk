@@ -1,4 +1,4 @@
-{% if card_href %}
+{% if card.card_href %}
   {% set tags = 'a' %}
 {% else %}
   {% set tags = 'div' %}
@@ -9,26 +9,26 @@
 <{{tags}}
 {# If there's an href put it here #}
 {%- if tags == 'a' %}
- href="{{ card_href if card_href else '#' }}"
+ href="{{ card.card_href if card.card_href else '#' }}"
 {%- endif %}
 
   {# You're using an ID? Really?? That'll go here #}
-  {%- if id %} id="{{-id-}}"{% endif %}
+  {%- if card.id %} id="{{-card.id-}}"{% endif %}
 
   {# Here is where we are adding any modifier #}
   class="vf-card
-  {%- if modifier %} {{modifier}}{% endif -%}
+  {%- if card.modifier %} {{card.modifier}}{% endif -%}
 
   {# You want a snowflake of a classname for something, here you go #}
-  {%- if override_class %} | {{override_class}}{% endif %}
+  {%- if card.override_class %} | {{card.override_class}}{% endif %}
 ">
-  <img src="{{ card_image }}" alt="" class="vf-card__image">
+  <img src="{{ card.card_image }}" alt="" class="vf-card__image">
   <div class="vf-card__content">
     <h3 class="vf-card__title">
-      {{ card_title }}
+      {{ card.card_title }}
     </h3>
     <p class="vf-card__text">
-      {{ card_text }}
+      {{ card.card_text }}
     </p>
   </div>
 </{{tags}}>
