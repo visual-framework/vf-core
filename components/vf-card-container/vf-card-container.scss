@@ -1,0 +1,35 @@
+// vf-card-container
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+@import 'vf-card-container.variables.scss';
+
+.vf-card-container {
+  --vf-card-container__grid--size: 16rem;
+  display: grid;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--vf-card-container__grid--size), 1fr));
+  margin: 0 auto;
+  max-width: calc(76.5em + 24px);
+
+  .vf-section-header {
+    grid-column: 1 / -1;
+    margin-bottom: 16px;
+    margin-left: 16px;
+  }
+}
