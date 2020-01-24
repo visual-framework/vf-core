@@ -7,8 +7,6 @@
 module.exports = function(gulp, buildDestionation) {
   const del = require('del');
 
-  console.log(buildDestionation)
-
   gulp.task('vf-clean', function(){
     return del([buildDestionation, 'build', 'temp'], {force:true});
   });
