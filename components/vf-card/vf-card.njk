@@ -1,3 +1,8 @@
+{# if we're being passed "context" from a parent template, use it as "card" #}
+{%- if context %}
+  {% set card = context %}
+{% endif %}
+
 {% if card.card_href %}
   {% set tags = 'a' %}
 {% else %}
