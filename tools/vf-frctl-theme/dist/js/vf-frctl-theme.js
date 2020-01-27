@@ -7,8 +7,8 @@ function hashLinkPreviews() {
   var anchors = document.getElementsByTagName("a");
 
   for (var i = 0; i < anchors.length; i++) {
-    if (anchors[i].href.includes('//example.com')) {
-      anchors[i].href = anchors[i].href + "?hash=" + Math.floor(Math.random() * 100000000);
+    if (anchors[i].href.includes('javascript:void(0);')) {
+      anchors[i].href = "https://example.com?hash=" + Math.floor(Math.random() * 100000000);
     }
   } 
 }

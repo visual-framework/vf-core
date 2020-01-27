@@ -10,7 +10,7 @@
 // data-vf-js-banner-extra-button="<a href='#'>string1</a><a href='#'>string2</a>">
 //   <div class="vf-banner__content | vf-grid">
 //     <p class="vf-text vf-text--body-l">
-//       This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="https://example.com">Privacy Notice</a> and <a class="vf-link" href="https://example.com">Terms Of Use</a>.
+//       This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="javascript:void(0);">Privacy Notice</a> and <a class="vf-link" href="javascript:void(0);">Terms Of Use</a>.
 //     </p>
 //
 //     <button class="vf-button vf-button--secondary">
@@ -236,7 +236,7 @@ export { vfBanner };
 //   vfJsBannerCookieVersion: "0.1",
 //   vfJsBannerExtraButton: "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>",
 //   vfJsBannerId: "2352286",
-//   vfJsBannerText: '<p class="vf-text vf-text--body-l">This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="https://example.com">Privacy Notice</a> and <a class="vf-link" href="https://example.com">Terms Of Use</a>.</p>',
+//   vfJsBannerText: '<p class="vf-text vf-text--body-l">This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="javascript:void(0);">Privacy Notice</a> and <a class="vf-link" href="javascript:void(0);">Terms Of Use</a>.</p>',
 //   vfJsBannerState: "dismissible",
 //   vfJsBannerAutoAccept: "true"
 // };
