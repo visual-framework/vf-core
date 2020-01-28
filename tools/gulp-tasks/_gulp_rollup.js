@@ -15,7 +15,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   // These are done as JS Modules as it makes passing paramaters simpler and avoids
   // needing workarounds invlolving global variables.
   require(path.resolve('.', __dirname + '/vf-assets.js'))(gulp, path, componentPath, buildDestionation);
-  require(path.resolve('.', __dirname + '/vf-cleanup.js'))(gulp);
+  require(path.resolve('.', __dirname + '/vf-cleanup.js'))(gulp, buildDestionation);
   require(path.resolve('.', __dirname + '/vf-component.js'))(gulp, path);
   require(path.resolve('.', __dirname + '/vf-css.js'))(gulp, path, componentPath, componentDirectories, buildDestionation, browserSync);
   require(path.resolve('.', __dirname + '/vf-scripts.js'))(gulp, path, componentPath, componentDirectories, buildDestionation);

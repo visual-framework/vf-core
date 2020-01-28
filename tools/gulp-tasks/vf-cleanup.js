@@ -4,12 +4,11 @@
  * Expose vf-cleanup gulp task as a JS module
  * This makes dependency management a bit cleaner
  */
-
-module.exports = function(gulp) {
+module.exports = function(gulp, buildDestionation) {
   const del = require('del');
 
   gulp.task('vf-clean', function(){
-    return del(['build/**','temp/**'], {force:true});
+    return del([buildDestionation, 'build', 'temp'], {force:true});
   });
 
   return gulp;
