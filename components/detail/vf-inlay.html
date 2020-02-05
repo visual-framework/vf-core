@@ -608,6 +608,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     ;
   }
   <span class="hljs-comment">/* stylelint-enable */</span>
+
+  <span class="hljs-attribute">padding-bottom</span>: calc(var(--page-grid-gap)/<span class="hljs-number">2</span>);
 }
 
 <span class="hljs-selector-class">.vf-inlay__content--full-width</span> {
@@ -617,20 +619,29 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-inlay__content--main</span> {
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
-  <span class="hljs-attribute">padding-right</span>: var(--page-grid-gap);
 
-  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">1100px</span>) {
-    grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>;
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
+    <span class="hljs-attribute">padding-right</span>: calc(var(--page-grid-gap) / <span class="hljs-number">2</span>);
+    grid-column: <span class="hljs-number">2</span> / <span class="hljs-number">3</span>   
   }
-  <span class="hljs-keyword">@include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg));
+
+  @include margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg));
 }
 
 <span class="hljs-selector-class">.vf-inlay__content--additional</span> {
   grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
 
-  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">1100px</span>) {
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
     grid-column: <span class="hljs-number">3</span> / <span class="hljs-number">4</span>;
   }
+
+  <span class="hljs-comment">// at a small-medium breakpoint the sidebar should allow for 2 columns of content</span>
+  <span class="hljs-keyword">@media</span> (max-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) <span class="hljs-keyword">and</span> (min-width: <span class="hljs-variable">$vf-breakpoint--sm</span>) {
+    grid-template-<span class="hljs-attribute">columns</span>: repeat(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>fr);
+    <span class="hljs-attribute">display</span>: grid;
+    grid-<span class="hljs-attribute">column-gap</span>: var(--page-grid-gap);
+  }
+
 }
 </code>
         </pre>
@@ -647,7 +658,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-inlay/vf-inlay.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.2 KB
+          Size: 2.5 KB
         </li>
       </ul>
     </section>

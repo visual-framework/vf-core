@@ -73,6 +73,8 @@
     ;
   }
   /* stylelint-enable */
+
+  padding-bottom: calc(var(--page-grid-gap)/2);
 }
 
 .vf-inlay__content--full-width {
@@ -82,18 +84,27 @@
 
 .vf-inlay__content--main {
   grid-column: 2 / -2;
-  padding-right: var(--page-grid-gap);
 
-  @media (min-width: 1100px) {
-    grid-column: 2 / 3;
+  @media (min-width: $vf-breakpoint--lg) {
+    padding-right: calc(var(--page-grid-gap) / 2);
+    grid-column: 2 / 3   
   }
+
   @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--lg));
 }
 
 .vf-inlay__content--additional {
   grid-column: 2 / -2;
 
-  @media (min-width: 1100px) {
+  @media (min-width: $vf-breakpoint--lg) {
     grid-column: 3 / 4;
   }
+
+  // at a small-medium breakpoint the sidebar should allow for 2 columns of content
+  @media (max-width: $vf-breakpoint--lg) and (min-width: $vf-breakpoint--sm) {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-column-gap: var(--page-grid-gap);
+  }
+
 }
