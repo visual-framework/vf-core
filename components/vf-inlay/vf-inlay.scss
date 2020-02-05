@@ -60,6 +60,7 @@
     [main-end]
     minmax(var(--page-grid-gap), 1em)
   ;
+  padding-bottom: calc(var(--page-grid-gap)/2);
   padding-top: 36px;
 
   @media (max-width: 1023px) {
@@ -74,7 +75,6 @@
   }
   /* stylelint-enable */
 
-  padding-bottom: calc(var(--page-grid-gap)/2);
 }
 
 .vf-inlay__content--full-width {
@@ -86,8 +86,8 @@
   grid-column: 2 / -2;
 
   @media (min-width: $vf-breakpoint--lg) {
+    grid-column: 2 / 3;
     padding-right: calc(var(--page-grid-gap) / 2);
-    grid-column: 2 / 3   
   }
 
   @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--lg));
@@ -102,8 +102,8 @@
 
   // at a small-medium breakpoint the sidebar should allow for 2 columns of content
   @media (max-width: $vf-breakpoint--lg) and (min-width: $vf-breakpoint--sm) {
-    grid-template-columns: repeat(2, 1fr);
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
     grid-column-gap: var(--page-grid-gap);
   }
 
