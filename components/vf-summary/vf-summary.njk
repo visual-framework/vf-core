@@ -1,6 +1,46 @@
-<article class="vf-summary">
+<article class="vf-summary{% if variant_class %} {{variant_class}}{% endif %}{% if modifier_class %} {{modifier_class}}{% endif %}">
+  {% if summary__date %}
+  <span class="vf-summary__date">{{ summary__date }}</span>
+  {% endif %}
+  {% if image %}<img class="vf-summary__image{% if variant_class === "vf-summary--profile" %} vf-summary__image--avatar{% endif %}{% if variant_class === "vf-summary--media" %} vf-summary__image--thumbnail{% endif %}" src="{{image}}" alt="">{% endif %}
   <h3 class="vf-summary__title">
     <a href="{{ summary__href }}" class="vf-summary__link">{{ summary__title }}</a>
   </h3>
-  <p class="vf-summary__text">{{ summary__text }}</p>
+  {% if variant_class == 'vf-summary--article' %}
+  <div class="vf-summary__meta">
+    <a href="{{ summary__author_href }}" class="vf-summary__author vf-summary__link">{{ summary__author_text }}</a>
+    <p class="vf-summary__date">{{ summary_date }}</p>
+    <a href="{{ summary__comment_href }}" class="vf-summary__link">{{ summary__comment_text }}</a>
+  </div>
+  {% endif %}
+
+  <p class="vf-summary__text">
+    {% if summary__category %}
+    <span class="vf-summary__category">
+      {{ summary__category }}
+    </span>
+    {% endif %}
+    {{ summary__text }}
+  </p>
+  {% if email %}
+  <p class="vf-summary__email">
+    <a href="mailto:contact@persons.com" class="vf-summary__link vf-summary__link--secondary">{{email}}</a>
+  </p>
+  {% endif %}
+  {% if phone %}
+  <p class="vf-summary__phone">
+    <a href="{{ summary__href }}" class="vf-summary__link vf-summary__link--secondary">{{phone}}</a>
+  </p>
+  {% endif %}
+  {% if mobile %}
+  <p class="vf-summary__phone vf-vf-summary__phone--mobile">
+    <a href="{{ summary__href }}" class="vf-summary__link vf-summary__link--secondary">{{mobile}}</a>
+  </p>
+  {% endif %}
+  {% if uuid %}
+  <p class="vf-summary__uuid">
+    <span>ORCID:</span>
+    <a class="vf-summary__link--secondary" href="https://europepmc.org/authors/{{uuid}}">{{uuid}}</a>
+  </p>
+  {% endif %}
 </article>
