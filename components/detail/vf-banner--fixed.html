@@ -377,6 +377,10 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+<span class="hljs-section"># 1.0.2 </span>
+<span class="hljs-bullet">
+* </span>Links in text areas of banners regain an underline.
+
 <span class="hljs-section"># 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
@@ -403,7 +407,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-banner/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 506 Bytes
+          Size: 571 Bytes
         </li>
       </ul>
     </section>
@@ -835,6 +839,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 }
 
+<span class="hljs-comment">// all vf-text links should be underlined in banners</span>
+<span class="hljs-selector-class">.vf-banner</span> <span class="hljs-selector-attr">[class*='vf-text']</span> <span class="hljs-selector-class">.vf-link</span> {
+  <span class="hljs-attribute">text-decoration</span>: underline;
+}
+
 <span class="hljs-selector-class">.vf-banner--blocking</span> {
   <span class="hljs-attribute">display</span>: grid;
   grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
@@ -924,7 +933,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-banner/vf-banner.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.9 KB
+          Size: 2 KB
         </li>
       </ul>
     </section>

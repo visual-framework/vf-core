@@ -334,6 +334,10 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+<span class="hljs-section"># 1.0.1</span>
+<span class="hljs-bullet">
+* </span>Button colours corrected for browsers that don't support CSS custom properties (IE)
+
 <span class="hljs-section"># 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
@@ -352,7 +356,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-button/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 214 Bytes
+          Size: 310 Bytes
         </li>
       </ul>
     </section>
@@ -479,6 +483,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">border</span>: <span class="hljs-number">4px</span> solid set-ui-color(vf-ui-color--black);
   <span class="hljs-attribute">border</span>: <span class="hljs-number">4px</span> solid var(--vf-button-border-color, var(--vf-button__color__background--default));
   <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">8px</span> <span class="hljs-number">8px</span> <span class="hljs-number">0</span> var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), <span class="hljs-variable">$button-hover-fix</span>;
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white); <span class="hljs-comment">// fallback, IE</span>
   <span class="hljs-attribute">color</span>: var(--vf-button-text-color, set-ui-color(vf-ui-color--white));
   <span class="hljs-attribute">cursor</span>: pointer;
   <span class="hljs-attribute">display</span>: inline-block;
@@ -550,9 +555,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-button--outline</span> {
   --vf-<span class="hljs-selector-tag">button</span>-<span class="hljs-attribute">background-color</span>: #{set-ui-color(vf-ui-color--white)};
+  <span class="hljs-attribute">color</span>: set-color(vf-color--blue); <span class="hljs-comment">// fallback, IE</span>
   <span class="hljs-attribute">color</span>: var(--vf-button-border-color, var(--vf-button__color__background--default) );
 
   &amp;<span class="hljs-selector-pseudo">:hover</span> {
+    <span class="hljs-attribute">color</span>: set-color(vf-color--blue); <span class="hljs-comment">// fallback, IE</span>
     <span class="hljs-attribute">color</span>: var(--vf-button-border-color);
   }
 }
@@ -644,7 +651,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-button/vf-button.scss
         </li>
         <li class="vf-list__item">
-          Size: 5.2 KB
+          Size: 5.4 KB
         </li>
       </ul>
     </section>

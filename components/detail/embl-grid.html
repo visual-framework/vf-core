@@ -263,14 +263,15 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
-All notable changes to this project will be documented in this file.
-See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
+<span class="hljs-section">## 1.0.2</span>
+<span class="hljs-bullet">
+* </span><span class="hljs-code">`.embl-grid`</span> uses <span class="hljs-code">`[main-start]`</span> and <span class="hljs-code">`[main-end]`</span> for more reliable positioning of child grids
 
-<span class="hljs-section"># 1.0.1</span>
+<span class="hljs-section">## 1.0.1</span>
 <span class="hljs-bullet">
 * </span>Uses <span class="hljs-code">`--page-grid-gap`</span> custom property for sidebar gap; https://github.com/visual-framework/vf-core/pull/694
 
-<span class="hljs-section"># 1.0.0 (2019-12-17)</span>
+<span class="hljs-section">## 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
 </code>
@@ -288,7 +289,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-grid/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 335 Bytes
+          Size: 292 Bytes
         </li>
       </ul>
     </section>
@@ -333,9 +334,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">display</span>: grid;
     grid-<span class="hljs-attribute">column-gap</span>: var(--page-grid-gap);
     <span class="hljs-comment">/* stylelint-disable declaration-colon-space-after */</span>
-    grid-template-<span class="hljs-attribute">columns</span>:
-      calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
-      repeat(auto-fit, minmax(<span class="hljs-number">288px</span>, <span class="hljs-number">1</span>fr))
+    grid-template-<span class="hljs-attribute">columns</span>: 
+      calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser)) 
+      [main-start] 
+      repeat(auto-fit, minmax(<span class="hljs-number">288px</span>, <span class="hljs-number">1</span>fr)) 
+      [main-end]
     ;
     <span class="hljs-comment">/* stylelint-enable */</span>
   }

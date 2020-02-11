@@ -174,7 +174,7 @@ class="vf-logo">
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">footer</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-footer | vf-body"</span>&gt;</span>
+  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">footer</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-footer"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-footer__inner"</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-footer__notice"</span>&gt;</span>A description of a site or organisation and what its goals are.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-footer__links-group | vf-grid"</span>&gt;</span>
@@ -342,15 +342,18 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
-All notable changes to this project will be documented in this file.
-See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
+<span class="hljs-section">## 1.0.2 </span>
+<span class="hljs-bullet">
+* </span>Removes need for <span class="hljs-code">`.vf-body`</span> on <span class="hljs-code">`.vf-footer`</span>
+<span class="hljs-bullet">* </span>Refines layout spacing
+<span class="hljs-bullet">* </span>Allows for footer headers to be links
 
-<span class="hljs-section"># 1.0.1 (2020-01-24)</span>
+<span class="hljs-section">## 1.0.1 (2020-01-24)</span>
 <span class="hljs-bullet">
 * </span>Darkens background
 <span class="hljs-bullet">* </span>Updates layout
 
-<span class="hljs-section"># 1.0.0 (2019-12-17)</span>
+<span class="hljs-section">## 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
 </code>
@@ -368,7 +371,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-footer/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 275 Bytes
+          Size: 247 Bytes
         </li>
       </ul>
     </section>
@@ -508,6 +511,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-footer</span> {
   <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey--dark);
   <span class="hljs-attribute">border-top</span>: <span class="hljs-number">8px</span> solid set-color(vf-color--green);
+  grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">60px</span>;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">24px</span>;
 
@@ -527,10 +531,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-footer__inner</span> {
   grid-column: main;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
 }
 
 <span class="hljs-selector-class">.vf-footer__legal</span> {
   <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+  grid-<span class="hljs-attribute">column-gap</span>: var(--page-grid-gap);
   grid-template-<span class="hljs-attribute">columns</span>: repeat(auto-fill, minmax(<span class="hljs-number">300px</span>, <span class="hljs-number">1</span>fr));
   <span class="hljs-selector-class">.vf-list</span> {
     <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
@@ -589,7 +597,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
     <span class="hljs-attribute">color</span>: set-color(vf-color--grey--lightest);
     <span class="hljs-attribute">text-transform</span>: uppercase;
+  
+    <span class="hljs-selector-class">.vf-heading__link</span> {
+      <span class="hljs-keyword">@include</span> inline-link(
+        <span class="hljs-variable">$vf-link--color</span>: <span class="hljs-variable">$vf-footer-link--color</span>,
+        <span class="hljs-variable">$vf-link--hover-color</span>: <span class="hljs-variable">$vf-footer-link--hover-color</span>,
+        <span class="hljs-variable">$vf-link--visited-color</span>: <span class="hljs-variable">$vf-footer-link--visited-color</span>
+      );
+    }
   }
+
+  
 
   <span class="hljs-selector-class">.vf-links</span> {
     <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">0</span>;
@@ -669,7 +687,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-footer/vf-footer.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.4 KB
+          Size: 3.8 KB
         </li>
       </ul>
     </section>

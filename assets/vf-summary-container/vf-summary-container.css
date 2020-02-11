@@ -71,7 +71,7 @@
     display: grid;
     grid-column-gap: var(--page-grid-gap);
     /* stylelint-disable declaration-colon-space-after */
-    grid-template-columns: calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser)) repeat(auto-fit, minmax(288px, 1fr));
+    grid-template-columns: calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser)) [main-start] repeat(auto-fit, minmax(288px, 1fr)) [main-end];
     /* stylelint-enable */
   }
 }
@@ -340,7 +340,7 @@
 
 .vf-section-header__heading--is-link .vf-section-header__icon {
   fill: currentColor;
-  margin-left: 4px;
+  margin-left: 8px;
   -webkit-transform: translateY(4px);
           transform: translateY(4px);
   -webkit-transition-duration: 125ms;
