@@ -12,9 +12,45 @@ preview: '@preview--nogrid'
   #   hidden: true
 context:
   component-type: container
-
+  modifier_class: vf-hero--easy
   vf_hero_link: https://example.com/
-  vf_hero_text: The Hentze group combines biochemical and systems–level approaches to investigate the connections between gene expression and cell metabolism, and their roles in human disease.
+  vf_hero_text:
+    - The Hentze group combines biochemical and systems–level approaches to investigate the connections between gene expression and cell metabolism, and their roles in human disease.
   vf_hero_link_text: Learn more.
-
   vf_hero_heading: About the Hentze group
+  hero__bg: url('../../assets/vf-hero/assets/vf-intro-group.png');
+variants:
+  - name: default
+    hidden: true
+  - name: example
+    hidden: true
+  - name: easy
+    context:
+      modifier_class: vf-hero--easy
+  - name: normal
+    context:
+      modifier_class: vf-hero--normal
+  - name: medium
+    context:
+      modifier_class: vf-hero--medium
+  - name: hard
+    context:
+      modifier_class: vf-hero--hard
+  - name: extreme
+    context:
+      modifier_class: vf-hero--extreme
+  - name: intense
+    context:
+      vf_hero_summary_title: Europe wide, global impact, infinite curiosity.
+      vf_hero_href: https://www.embl.de/aboutus/general_information/mission/index.html
+      vf_hero_text: Learn more about EMBL’s contribution to society
+      modifier_class: vf-hero--intense
+  - name: primary
+    context:
+      modifier_class: vf-hero-theme--primary
+  - name: secondary
+    context:
+      modifier_class: vf-hero-theme--secondary
+  - name: tertiary
+    context:
+      modifier_class: vf-hero-theme--tertiary
