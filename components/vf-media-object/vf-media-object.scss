@@ -1,0 +1,56 @@
+// vf-media-object
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+* Component: #{map-get($componentInfo, 'name')}
+* Version: #{map-get($componentInfo, 'version')}
+* Location: #{map-get($componentInfo, 'location')}
+*/
+
+@import 'vf-media-object.variables.scss';
+
+.vf-media-object  {
+  --vf-media-object-grid: minmax(64px, auto) 1fr;
+  --vf-media-object-image-start: 1;
+  --vf-media-object-content-start: 2;
+  display: grid;
+  grid-column-gap: 1em;
+  grid-template-columns: var(--vf-media-object-grid);
+
+  &--reverse {
+    --vf-media-object-grid: 1fr minmax(64px, auto);
+    --vf-media-object-image-start: 2;
+    --vf-media-object-content-start: 1;
+  }
+}
+
+.vf-media-object__image {
+  align-self: flex-start;
+  grid-column-end: span 1;
+  grid-column-start: var(--vf-media-object-image-start);
+}
+
+.vf-media-object__content {
+  align-content: start;
+  display: grid;
+  grid-column-start: var(--vf-media-object-content-start);
+  grid-row-gap: .5em;
+  grid-row-start: 1;
+}
+
+.vf-media-object__title {
+  @include set-type(text-heading--3, $custom-margin-bottom: 0);
+}
+
+.vf-media-object__text {
+  @include set-type(text-body--2, $custom-margin-bottom: 0);
+}
