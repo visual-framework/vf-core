@@ -4,6 +4,48 @@
 
 ## About
 
+The `vf-box` container is an element to be used when ...
+
+### Options
+
+#### Is Link
+
+If you require the `vf-box` to link to a page you can do this by:
+
+- changing the `<div>` to an `<a href="">`.
+- adding `vf-box--is-link` to the classes being used.
+- if you are using `.njk` you only need to add a `box_href` to the data.
+
+#### Themes
+
+The `vf-box` component allows for global and component–level theming so that it is customisable to your needs.
+
+To make use of the component–level theming you will need to add a theme classname to the component.
+
+The theme classnames available are:
+
+- `vf-box-theme--primary`
+- `vf-box-theme--secondary`
+- `vf-box-theme--tertiary`
+- `vf-box-theme--quaternary`
+- `vf-box-theme--quinary`
+
+#### Design Variants
+
+ There are currently **no** design variants for this component.
+
+### Deprecated Variants
+
+Since `v1.1.0` the following components are considered depracted and should not be used in new projects:
+
+- `vf-box--inlay`
+- `vf-box--factoid`
+
+To update your existing usage of these variants to use the component–level theming you can swap:
+
+- `vf-box--inlay` for `vf-box-theme--quinary`
+- `vf-box--factoid` for `vf-box-theme--primary`
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-box` with this command.

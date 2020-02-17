@@ -1,16 +1,33 @@
-<div
+{% if box.deprecated_text %}<!-- {{ box.deprecated_text }} -->{% endif %}
 
-{# You're using an ID? Really?? That'll go here #}
-{%- if id %} id="{{-id-}}"{% endif %}
+{# if we're being passed "context" from a parent template, use it as "box" #}
+{%- if context %}
+  {% set box = context %}
+{% endif %}
 
-{# Here is where we are adding the vf-text--body modifier #}
-class="vf-box
-{%- if class %} {{class}}{% endif -%}
+{% if box.box_href %}
+  {% set tags = 'a' %}
+{% else %}
+  {% set tags = 'div' %}
+{% endif %}
+<{{tags}}
+{# If there's an href put it here #}
+{%- if tags == 'a' %}
+ href="{{ box.box_href if box.box_href else '#' }}"
+{%- endif %}
 
-{# You want a snowflake of a classname for something, here you go #}
-{%- if override_class %} | {{override_class}}{% endif -%}
+  {# You're using an ID? Really?? That'll go here #}
+  {%- if box.id %} id="{{-box.id-}}"{% endif %}
+
+  {# Here is where we are adding any modifier #}
+  class="vf-box
+  {%- if box.box_href %} vf-box--is-link{% endif %}
+  {%- if box.box_modifier %} {{box.box_modifier}}{% endif -%}
+
+  {# You want a snowflake of a classname for something, here you go #}
+  {%- if box.override_class %} | {{box.override_class}}{% endif %}
 
 ">
-  <h3 class="vf-box__heading">{{- heading -}}</h3>
-  <p class="vf-box__text">{{- text -}}</p>
-</div>
+  <h3 class="vf-box__heading">{{- box.box_heading -}}</h3>
+  <p class="vf-box__text">{{- box.box_text -}}</p>
+</{{tags}}>
