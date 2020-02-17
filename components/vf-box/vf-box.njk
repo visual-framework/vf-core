@@ -1,4 +1,4 @@
-{% if box.deprecated_text %}<!-- {{ box.deprecated_text }} -->{% endif %}
+{% if box.deprecated_text %}<!-- {{ box.deprecated_text }} -->{% endif -%}
 
 {# if we're being passed "context" from a parent template, use it as "box" #}
 {%- if context %}
@@ -21,12 +21,11 @@
 
   {# Here is where we are adding any modifier #}
   class="vf-box
-  {%- if box.box_href %} vf-box--is-link{% endif %}
+  {%- if box.box_href %} vf-box--is-link{% endif -%}
   {%- if box.box_modifier %} {{box.box_modifier}}{% endif -%}
 
   {# You want a snowflake of a classname for something, here you go #}
-  {%- if box.override_class %} | {{box.override_class}}{% endif %}
-
+  {%- if box.override_class %} | {{box.override_class}}{% endif -%}
 ">
   <h3 class="vf-box__heading">{{- box.box_heading -}}</h3>
   <p class="vf-box__text">{{- box.box_text -}}</p>
