@@ -14,11 +14,9 @@
 .vf-box {
   --box-text-color: var( --vf-box-theme-color--foreground, var(--vf-theme-color--foreground, #{set-ui-color(vf-ui-color--black)}));
   --box-background-color: var(--vf-box-theme-color--background, var(--vf-theme-color--background, #{set-ui-color(vf-ui-color--white)}));
-  --box-border-color: var(--vf-box-theme-color--border, var(--vf-theme-color--border, #{set-ui-color(vf-ui-color--white)}));
+
   background-color: set-ui-color(vf-ui-color--white);
   background-color: var(--box-background-color);
-  border-color: set-ui-color(vf-ui-color--white);
-  border-color: var(--box-border-color);
   box-sizing: border-box;
   color: set-ui-color(vf-ui-color--black);
   color: var(--box-text-color);
@@ -69,33 +67,40 @@
   padding: 32px;
 }
 
+.vf-box--normal {
+  border-bottom: 4px solid;
+
+  --box-text-color: var(--vf-box-theme-color--background, var(--vf-theme-color--background));
+  --box-background-color: #{set-ui-color(vf-ui-color--white)};
+}
+
+.vf-box--medium {
+  --box-text-color: var(--vf-box-theme-color--foreground, var(--vf-theme-color--foreground, #{set-ui-color(vf-ui-color--white)}));
+  --box-background-color: var(--vf-box-theme-color--background, var(--vf-theme-color--background, #{set-ui-color(vf-ui-color--black)}));
+}
+
 .vf-box-theme--primary {
   --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
-  --vf-box-theme-color--border: #{set-color(vf-color--green)};
   --vf-box-theme-color--background: #{set-color(vf-color--green)};
 }
 
 .vf-box-theme--secondary {
   --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
-  --vf-box-theme-color--border: #{set-color(vf-color--blue)};
   --vf-box-theme-color--background: #{set-color(vf-color--blue)};
 }
 
 .vf-box-theme--tertiary {
   --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
-  --vf-box-theme-color--border: #{set-color(vf-color--grey)};
   --vf-box-theme-color--background: #{set-color(vf-color--grey)};
 }
 
 .vf-box-theme--quaternary {
   --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--black)};
-  --vf-box-theme-color--border: #{set-color(vf-color--yellow)};
   --vf-box-theme-color--background: #{set-color(vf-color--yellow)};
 }
 
 .vf-box-theme--quinary {
   --vf-box-theme-color--background: #{set-ui-color(vf-ui-color--grey)};
-  --vf-box-theme-color--border: #{set-ui-color(vf-ui-color--grey)};
   --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--black)};
 }
 
