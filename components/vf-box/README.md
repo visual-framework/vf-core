@@ -20,8 +20,8 @@ If you require the `vf-box` to link to a page you can do this by:
 
 There are currently two Design variants available. To add the appropriate level of design you can add a component–level class:
 
+- `vf-box--easy`
 - `vf-box--normal`
-- `vf-box--medium`
 
 ### Themes
 
@@ -48,12 +48,12 @@ Since `v1.1.0` the following components are considered depracted and should not 
 
 To update your existing usage of these variants to use the component–level theming you can swap:
 
-- `vf-box--inlay` for `vf-box-theme--quinary`
-- `vf-box--factoid` for `vf-box-theme--primary`
+- `vf-box--inlay` for `vf-box--normal vf-box-theme--quinary`
+- `vf-box--factoid` for `vf-box--normail vf-box-theme--primary`
 
 ### Accessibility
 
-**Do not** use the themes `vf-box-theme--qauternary` or `vf-box-theme--quinary` with the design variant `vf-box--normal` as they do not conform to WCAG colour contrast ratio specifications.
+**Do not** use the themes `vf-box-theme--qauternary` or `vf-box-theme--quinary` with the design variant `vf-box--easy` as they do not conform to WCAG colour contrast ratio specifications.
 
 
 
