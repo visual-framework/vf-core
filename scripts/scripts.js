@@ -21,6 +21,8 @@
  * Clear the cooke. This is mostly a development tool.
  */
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function vfBannerReset(vfBannerCookieNameAndVersion) {
   vfBannerSetCookie(vfBannerCookieNameAndVersion, false);
 }
@@ -554,18 +556,29 @@ function vfFormFloatLabels() {
   }
 
   var floatLabels = document.querySelectorAll('[data-vf-js-form-floatlabel]');
+
+  if (floatLabels.length === 0) {
+    // console.warn('There are no `[data-vf-js-form-floatlabel]` to process; exiting');
+    return false;
+  }
+
   var inputs = [].slice.call(floatLabels);
 
-  for (var i in inputs) {
-    wrapElement(inputs[i]);
+  if (typeof inputs != "undefined") {
+    for (var i in inputs) {
+      if (_typeof(inputs[i]) == "object") {
+        // prevent execution on array functions
+        wrapElement(inputs[i]);
 
-    if (!!inputs[i].value) {
-      addFloatLabel(inputs[i]);
+        if (!!inputs[i].value) {
+          addFloatLabel(inputs[i]);
+        }
+
+        inputs[i].classList.add('vf-form__floatlabel'); // .vf-form__floatlabel
+
+        inputs[i].addEventListener('keyup', floatLabelKeyUp);
+      }
     }
-
-    inputs[i].classList.add('vf-form__floatlabel'); // .vf-form__floatlabel
-
-    inputs[i].addEventListener('keyup', floatLabelKeyUp);
   }
 
   function checkEmail(str) {
