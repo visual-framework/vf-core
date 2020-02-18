@@ -131,6 +131,58 @@ class="vf-logo">
 
               
                 
+                  <a class="vf-tabs__link" href="vf-box--easy.html">
+                    Easy
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-box--easy-(primary).html">
+                    Easy Primary
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-box--easy-(secondary).html">
+                    Easy Secondary
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-box--easy-(tertiary).html">
+                    Easy Tertiary
+                  </a>
+                 
+               
+
+            
+
+              
+                 
+               
+
+            
+
+              
+                 
+               
+
+            
+
+              
+                
                   <a class="vf-tabs__link" href="vf-box--normal.html">
                     Normal
                   </a>
@@ -170,21 +222,9 @@ class="vf-logo">
             
 
               
-                 
-               
-
-            
-
-              
-                 
-               
-
-            
-
-              
                 
-                  <a class="vf-tabs__link" href="vf-box--medium.html">
-                    Medium
+                  <a class="vf-tabs__link" href="vf-box--normal-(quaternary).html">
+                    Normal Quaternary
                   </a>
                  
                
@@ -193,48 +233,8 @@ class="vf-logo">
 
               
                 
-                  <a class="vf-tabs__link" href="vf-box--medium-(primary).html">
-                    Medium Primary
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-box--medium-(secondary).html">
-                    Medium Secondary
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-box--medium-(tertiary).html">
-                    Medium Tertiary
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-box--medium-(quaternary).html">
-                    Medium Quaternary
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-box--medium-(quinary).html">
-                    Medium Quinary
+                  <a class="vf-tabs__link" href="vf-box--normal-(quinary).html">
+                    Normal Quinary
                   </a>
                  
                
@@ -324,8 +324,8 @@ class="vf-logo">
 <h3 id="design-variants">Design Variants</h3>
 <p>There are currently two Design variants available. To add the appropriate level of design you can add a component–level class:</p>
 <ul>
+<li><code>vf-box--easy</code></li>
 <li><code>vf-box--normal</code></li>
-<li><code>vf-box--medium</code></li>
 </ul>
 <h3 id="themes">Themes</h3>
 <p><strong>note:</strong> you need a design variant set at the page (todo), container (todo), or component level to make use of the themes available to avoid any potential conflicts with code or unexpected results</p>
@@ -347,11 +347,11 @@ class="vf-logo">
 </ul>
 <p>To update your existing usage of these variants to use the component–level theming you can swap:</p>
 <ul>
-<li><code>vf-box--inlay</code> for <code>vf-box-theme--quinary</code></li>
-<li><code>vf-box--factoid</code> for <code>vf-box-theme--primary</code></li>
+<li><code>vf-box--inlay</code> for <code>vf-box--normal vf-box-theme--quinary</code></li>
+<li><code>vf-box--factoid</code> for <code>vf-box--normail vf-box-theme--primary</code></li>
 </ul>
 <h3 id="accessibility">Accessibility</h3>
-<p><strong>Do not</strong> use the themes <code>vf-box-theme--qauternary</code> or <code>vf-box-theme--quinary</code> with the design variant <code>vf-box--normal</code> as they do not conform to WCAG colour contrast ratio specifications.</p>
+<p><strong>Do not</strong> use the themes <code>vf-box-theme--qauternary</code> or <code>vf-box-theme--quinary</code> with the design variant <code>vf-box--easy</code> as they do not conform to WCAG colour contrast ratio specifications.</p>
 <h2 id="install">Install</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-box</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-box</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
@@ -458,6 +458,13 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+
+<span class="hljs-section">## 1.2.0</span>
+<span class="hljs-bullet">
+* </span>Removes <span class="hljs-code">`--medium`</span> variants
+<span class="hljs-bullet">* </span>Introduces <span class="hljs-code">`--very-easy`</span> variant
+<span class="hljs-bullet">* </span>Pulls all design variants back one.
+
 <span class="hljs-section">## 1.1.0</span>
 <span class="hljs-bullet">
 * </span>Deprecates <span class="hljs-code">`vf-box--inlay`</span> and <span class="hljs-code">`vf-box--factoid`</span>
@@ -466,7 +473,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-section">## 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
-
 </code>
         </pre>
         
@@ -482,7 +488,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-box/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 326 Bytes
+          Size: 440 Bytes
         </li>
       </ul>
     </section>
@@ -692,14 +698,14 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">32px</span>;
 }
 
-<span class="hljs-selector-class">.vf-box--normal</span> {
+<span class="hljs-selector-class">.vf-box--easy</span> {
   --box-text-<span class="hljs-attribute">color</span>: var(--vf-box-theme-color--background, var(--vf-theme-color--background));
   --box-<span class="hljs-attribute">background-color</span>: #{set-ui-color(vf-ui-color--white)};
 
   <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">4px</span> solid;
 }
 
-<span class="hljs-selector-class">.vf-box--medium</span> {
+<span class="hljs-selector-class">.vf-box--normal</span> {
   --box-text-<span class="hljs-attribute">color</span>: var(--vf-box-theme-color--foreground, var(--vf-theme-color--foreground, #{set-ui-color(vf-ui-color--white)}));
   --box-<span class="hljs-attribute">background-color</span>: var(--vf-box-theme-color--background, var(--vf-theme-color--background, #{set-ui-color(vf-ui-color--black)}));
 }

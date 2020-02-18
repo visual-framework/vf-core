@@ -117,8 +117,58 @@ class="vf-logo">
 
               
                 
+                  <a class="vf-tabs__link" href="vf-card--very-easy.html">
+                    Very Easy
+                  </a>
+                 
+               
+
+            
+
+              
+                
                   <a class="vf-tabs__link" href="vf-card--easy.html">
                     Easy
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-card--easy--primary.html">
+                    Easy (primary)
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-card--easy--secondary.html">
+                    Easy (secondary)
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-card--easy--tertiary.html">
+                    Easy (tertiary)
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-card--easy--quaternary.html">
+                    Easy (quaternary)
                   </a>
                  
                
@@ -137,7 +187,7 @@ class="vf-logo">
 
               
                 
-                  <a class="vf-tabs__link" href="vf-card--normal--primary.html">
+                  <a class="vf-tabs__link" href="vf-card--normal--primairy.html">
                     Normal (primary)
                   </a>
                  
@@ -169,56 +219,6 @@ class="vf-logo">
                 
                   <a class="vf-tabs__link" href="vf-card--normal--quaternary.html">
                     Normal (quaternary)
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-card--medium.html">
-                    Medium
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-card--medium--primairy.html">
-                    Medium (primary)
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-card--medium--secondary.html">
-                    Medium (secondary)
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-card--medium--tertiary.html">
-                    Medium (tertiary)
-                  </a>
-                 
-               
-
-            
-
-              
-                
-                  <a class="vf-tabs__link" href="vf-card--medium--quaternary.html">
-                    Medium (quaternary)
                   </a>
                  
                
@@ -378,6 +378,13 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+
+<span class="hljs-section">## 1.2.0</span>
+<span class="hljs-bullet">
+* </span>Removes <span class="hljs-code">`--medium`</span> variants
+<span class="hljs-bullet">* </span>Introduces <span class="hljs-code">`--very-easy`</span> variant
+<span class="hljs-bullet">* </span>Pulls all design variants back one.
+
 <span class="hljs-section">## 1.0.2 (2020-01-28)</span>
 <span class="hljs-bullet">
 * </span>Corrects YAML template usage and NJK template
@@ -404,7 +411,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-card/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 348 Bytes
+          Size: 463 Bytes
         </li>
       </ul>
     </section>
@@ -646,11 +653,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-comment">// vf-card levels of design</span>
-<span class="hljs-selector-class">.vf-card--easy</span> {
+<span class="hljs-selector-class">.vf-card--very-easy</span> {
   <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">8px</span> solid rgba(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>); <span class="hljs-comment">// fixes a grid layout glitch when used with variant volume's that have a bottom border</span>
 }
 
-<span class="hljs-selector-class">.vf-card--normal</span> {
+<span class="hljs-selector-class">.vf-card--easy</span> {
   <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">8px</span> solid set-ui-color(vf-ui-color--black);
   <span class="hljs-attribute">border-bottom-color</span>: var(--vf-card-theme-color--border, #{set-ui-color(vf-ui-color--black)});
 
@@ -662,7 +669,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 }
 
-<span class="hljs-selector-class">.vf-card--medium</span> {
+<span class="hljs-selector-class">.vf-card--normal</span> {
   --card-text-<span class="hljs-attribute">color</span>: var(--vf-card-theme-color--foreground, #{set-ui-color(vf-ui-color--white)});
   --card-<span class="hljs-attribute">background-color</span>: var(--vf-card-theme-color--background, #{set-ui-color(vf-ui-color--black)});
 }
@@ -693,7 +700,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-comment">// vf-card themes</span>
 
-<span class="hljs-selector-attr">[class*='ary']</span><span class="hljs-selector-class">.vf-card--normal</span> {
+<span class="hljs-selector-attr">[class*='ary']</span><span class="hljs-selector-class">.vf-card--easy</span> {
   --vf-card-theme-<span class="hljs-attribute">color</span>--<span class="hljs-attribute">background</span>: #{set-ui-color(vf-ui-color--white)};
 }
 
