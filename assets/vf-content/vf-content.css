@@ -1199,11 +1199,8 @@ html:not(.vf-disable-deprecated) .vf-text-button--1 {
 .vf-box {
   --box-text-color: var( --vf-box-theme-color--foreground, var(--vf-theme-color--foreground, #000000));
   --box-background-color: var(--vf-box-theme-color--background, var(--vf-theme-color--background, #ffffff));
-  --box-border-color: var(--vf-box-theme-color--border, var(--vf-theme-color--border, #ffffff));
   background-color: #ffffff;
   background-color: var(--box-background-color);
-  border-color: #ffffff;
-  border-color: var(--box-border-color);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #000000;
@@ -1273,33 +1270,39 @@ html:not(.vf-disable-deprecated) .vf-text-button--1 {
   padding: 32px;
 }
 
+.vf-box--normal {
+  --box-text-color: var(--vf-box-theme-color--background, var(--vf-theme-color--background));
+  --box-background-color: #ffffff;
+  border-bottom: 4px solid;
+}
+
+.vf-box--medium {
+  --box-text-color: var(--vf-box-theme-color--foreground, var(--vf-theme-color--foreground, #ffffff));
+  --box-background-color: var(--vf-box-theme-color--background, var(--vf-theme-color--background, #000000));
+}
+
 .vf-box-theme--primary {
   --vf-box-theme-color--foreground: #ffffff;
-  --vf-box-theme-color--border: #18974c;
   --vf-box-theme-color--background: #18974c;
 }
 
 .vf-box-theme--secondary {
   --vf-box-theme-color--foreground: #ffffff;
-  --vf-box-theme-color--border: #3b6fb6;
   --vf-box-theme-color--background: #3b6fb6;
 }
 
 .vf-box-theme--tertiary {
   --vf-box-theme-color--foreground: #ffffff;
-  --vf-box-theme-color--border: #707372;
   --vf-box-theme-color--background: #707372;
 }
 
 .vf-box-theme--quaternary {
   --vf-box-theme-color--foreground: #000000;
-  --vf-box-theme-color--border: #f4c61f;
   --vf-box-theme-color--background: #f4c61f;
 }
 
 .vf-box-theme--quinary {
   --vf-box-theme-color--background: #f3f3f3;
-  --vf-box-theme-color--border: #f3f3f3;
   --vf-box-theme-color--foreground: #000000;
 }
 
