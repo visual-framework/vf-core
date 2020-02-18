@@ -54,7 +54,7 @@ function emblBreadcrumbsLookup(metaProperties) {
  * @param {string} [url] - URL to pull the taxonomy from
  */
 function emblGetTaxonomy(url) {
-  var url = url || 'https://dev.beta.embl.org/api/v1/pattern.json?pattern=embl-ontology&source=contenthub';
+  var url = url || 'https://www.embl.org/api/v1/pattern.json?pattern=embl-ontology&source=contenthub';
 
   return new Promise(function(resolve, reject) {
     // Do the usual XHR stuff
