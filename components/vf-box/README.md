@@ -6,9 +6,9 @@
 
 The `vf-box` container is an element to be used when ...
 
-### Options
+## Options
 
-#### Is Link
+### Is Link
 
 If you require the `vf-box` to link to a page you can do this by:
 
@@ -16,7 +16,16 @@ If you require the `vf-box` to link to a page you can do this by:
 - adding `vf-box--is-link` to the classes being used.
 - if you are using `.njk` you only need to add a `box_href` to the data.
 
-#### Themes
+### Design Variants
+
+There are currently two Design variants available. To add the appropriate level of design you can add a component–level class:
+
+- `vf-box--normal`
+- `vf-box--medium`
+
+### Themes
+
+**note:** you need a design variant set at the page (todo), container (todo), or component level to make use of the themes available to avoid any potential conflicts with code or unexpected results
 
 The `vf-box` component allows for global and component–level theming so that it is customisable to your needs.
 
@@ -30,10 +39,6 @@ The theme classnames available are:
 - `vf-box-theme--quaternary`
 - `vf-box-theme--quinary`
 
-#### Design Variants
-
- There are currently **no** design variants for this component.
-
 ### Deprecated Variants
 
 Since `v1.1.0` the following components are considered depracted and should not be used in new projects:
@@ -45,6 +50,12 @@ To update your existing usage of these variants to use the component–level the
 
 - `vf-box--inlay` for `vf-box-theme--quinary`
 - `vf-box--factoid` for `vf-box-theme--primary`
+
+### Accessibility
+
+**Do not** use the themes `vf-box-theme--qauternary` or `vf-box-theme--quinary` with the design variant `vf-box--normal` as they do not conform to WCAG colour contrast ratio specifications.
+
+
 
 ## Install
 
