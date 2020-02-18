@@ -61,17 +61,26 @@ function vfFormFloatLabels() {
   }
 
   let floatLabels = document.querySelectorAll('[data-vf-js-form-floatlabel]');
+  if (floatLabels.length === 0) {
+    // console.warn('There are no `[data-vf-js-form-floatlabel]` to process; exiting');
+    return false;
+  }
+
   var inputs = [].slice.call(floatLabels);
 
-  for(var i in inputs) {
-    wrapElement(inputs[i]);
-    if(!!inputs[i].value) {
-      addFloatLabel(inputs[i]);
+  if (typeof inputs != "undefined") {  
+    for (var i in inputs) {
+      if (typeof inputs[i] == "object") { // prevent execution on array functions
+        wrapElement(inputs[i]);
+        if (!!inputs[i].value) {
+          addFloatLabel(inputs[i]);
+        }
+        inputs[i].classList.add('vf-form__floatlabel');
+        // .vf-form__floatlabel
+        inputs[i].addEventListener('keyup', floatLabelKeyUp); 
+      }
     }
-    inputs[i].classList.add('vf-form__floatlabel');
-    // .vf-form__floatlabel
-    inputs[i].addEventListener('keyup', floatLabelKeyUp);
-  }
+  }  
 
   function checkEmail(str) {
     var errorElem =  document.getElementById('error');
