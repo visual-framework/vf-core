@@ -118,7 +118,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
       termObject.name_display = termName;
       termObject.uuid = 'null';
       termObject.uuid = [];
-      termObject.url = '#addBreadcrumbPatternForSimpleTerms';
+      termObject.url = 'https://www.embl.org/search/#stq='+termName+'&origin=breadcrumbTermNotFound'; // if no link specified, do a search
     }
 
     return termObject;
@@ -208,7 +208,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
   var currentTerm = getCurrentTerm(termName);
   var breadcrumbId = currentTerm.uuid,
-      breadcrumbUrl = currentTerm.url || '#addFunctionForBreadcrumbPatternForSimpleTerms',
+      breadcrumbUrl = currentTerm.url || 'https://www.embl.org/search/#stq='+currentTerm.name+'&origin=breadcrumbTaxonomy', // if no link specified, do a search
       breadcrumbParents = currentTerm.parents;
 
   // narrow down to the first matching element
