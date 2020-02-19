@@ -207,14 +207,36 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
     var termObject;
 
-    Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
-      let term = emblTaxonomy.terms[termId];
-      if (term.name === termName) {
-        termObject = term;
-        return; //exit
-      }
-    });
+    // scan through all terms and find a match, if any
+    function scanTaxonomyForTerm(termName) {
+      // We prefer profiles
+      Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
+        let term = emblTaxonomy.terms[termId];
+        if (term.type == 'profile') {
+          if (term.name_display === termName) {
+            termObject = term;
+            return; //exit
+          }
+        }
+      }); 
 
+      // If no profile found, match any entry in taxonomy
+      if (typeof termObject === undefined) {
+        Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
+          let term = emblTaxonomy.terms[termId];
+          if (term.type != 'profile') { 
+            if (term.name_display === termName) {
+              termObject = term;
+              return; //exit
+            }
+          }
+        }); 
+      }
+    }
+
+    scanTaxonomyForTerm(termName);
+
+    // Validation and protection
     // we never want to return undefined
     if (termObject == undefined || termObject == null) {
       // console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will formulate a URL.');
