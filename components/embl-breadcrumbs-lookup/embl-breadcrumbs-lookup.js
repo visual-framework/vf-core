@@ -231,7 +231,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
       }); 
 
       // If no profile found, match any entry in taxonomy
-      if (typeof termObject === undefined) {
+      if (typeof termObject === 'undefined') {
         Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
           let term = emblTaxonomy.terms[termId];
           if (term.type != 'profile') { 
@@ -256,8 +256,14 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
       
       termObject = {};
 
-      // if we're linking to people
-      if (facet == 'who') {
+      
+      if (termName == "notSet") {
+        // if a term has not been passed
+        // No matches? Then don't show anything.
+        termName = '';
+
+      } else if (facet == 'who') {
+        // if we're linking to people generate a person URL
         termObject.url = 'https://www.embl.org/people/person/'+emblBreadcrumbRemoveDiacritics(termName).replace(/[\W_]+/g,' ').replace(/\s+/g, '-').toLowerCase();
       } else {
         termObject.url = 'https://www.embl.org/search/#stq='+termName+'&taxonomyFacet='+facet+'&origin=breadcrumbTermNotFound'; // if no link specified, do a search
@@ -342,6 +348,10 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
    * @param {string} [breadcrumbUrl] - a fully formed URL, or 'null' to not make a link
    */
   function formatBreadcrumb(termName,breadcrumbUrl) {
+    if (termName == '') {
+      // if no term, do nothing
+      return '';
+    }
     var newBreadcrumb = '<li class="vf-breadcrumbs__item">';
     if (breadcrumbUrl && breadcrumbUrl !== 'null' && breadcrumbUrl !== '#no_url_specified') {
       newBreadcrumb += '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + termName + '</a>';
