@@ -188,6 +188,10 @@ function emblBreadcrumbRemoveDiacritics(str) {
     str = str.replace(defaultDiacriticsRemovalMap[i].letters, defaultDiacriticsRemovalMap[i].base);
   }
 
+  // remove all commas, apostrophes, etc
+  // @todo, this should be done by an optional paramater
+  str = str.replace(/[^a-zA-Z0-9 ]/, ""); 
+
   return str;
 }
 
