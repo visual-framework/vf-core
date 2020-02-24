@@ -44,6 +44,12 @@ function emblBreadcrumbsLookup(metaProperties) {
       relatedLabel.innerHTML = 'Related:';
       relatedLabel.classList.add('vf-breadcrumbs__heading');
 
+  // If no related terms were found, hide the related label
+  // we only hide it as we could add related terms later
+  if (emblBreadcrumbRelated.childNodes.length == 0) {
+    relatedLabel.classList.add('vf-u-display-none');
+  }
+
   // now that we've processed all the meta properties, insert our rendered breadcrumbs
   emblBreadcrumbTarget[0].innerHTML = emblBreadcrumbPrimary.outerHTML + relatedLabel.outerHTML + emblBreadcrumbRelated.outerHTML;
 }
@@ -238,7 +244,10 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
       }
     }
 
-    scanTaxonomyForTerm(termName);
+    // don't scan for junk matches 
+    if (termName != 'notSet' && termName != '') {
+      scanTaxonomyForTerm(termName);
+    }
 
     // Validation and protection
     // we never want to return undefined
