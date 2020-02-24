@@ -137,6 +137,19 @@ class="vf-logo">
 <h2 id="about">About</h2>
 <p>Use this component to remotely load markup and content from the central EMBL ContentHub, this particular component allows reuse and distribution of content ranging articles to navigation elements (such as a global footer).</p>
 <p>Currently this is done as HTML imports (see the code example) + some JS. In the future other methods will be support (such as JSON).</p>
+<h3 id="supported-patterns">Supported patterns</h3>
+<p>See the <a href="https://content.embl.org/">introductory text on the contentHub</a>.</p>
+<h3 id="standard-html-import">Standard HTML import</h3>
+<p>Load a content and pattern through the contentHub:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=580&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span></code></pre><h3 id="options">Options</h3>
+<p>There are optional features specified by data attributes, looks like:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.embl.org/api/v1/pattern.html?source=contenthub&amp;pattern=embl-person-publications&amp;limit=100&amp;sort-field-value[changed]=DESC&amp;orcid=0000-0002-2524-5026&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"publications-block"</span> <span class="hljs-attr">data-embl-js-content-hub-loader-no-content</span>=<span class="hljs-string">"No publications were found."</span> <span class="hljs-attr">data-embl-js-content-hub-loader-no-content-hide</span>=<span class="hljs-string">".publications-container"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span></code></pre><p>Breakdown:</p>
+<ul>
+<li><code>data-target=&quot;publications-block&quot;</code>: pass the class of an element to insert text into</li>
+<li><code>data-embl-js-content-hub-loader-no-content=&quot;No publications were found.&quot;</code>: String to use if no results found, can also pass <code>true</code> to use default no match text</li>
+<li><code>data-embl-js-content-hub-loader-no-content-hide=&quot;.publications-container&quot;</code>: If no results, hide an element that matches this selector selector </li>
+<li><code>data-inject-class=&quot;vf-grid vf-grid__col-2&quot; data-inject-class-target=&quot;ul&quot;</code>: Inject class(es) to a an element inside the returned content</li>
+</ul>
 <h2 id="install">Install</h2>
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>primer-buttons</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/embl-content-hub-loader</span></code></pre><h2 id="usage">Usage</h2>
@@ -253,17 +266,18 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
-All notable changes to this project will be documented in this file.
-See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
+<span class="hljs-section">## 1.0.2 </span>
+<span class="hljs-bullet">
+* </span>adds features for when no content is returned. Supply "no content found" text or hide a region.
 
-<span class="hljs-section"># 1.0.0 (2019-12-17)</span>
+<span class="hljs-section">## 1.0.1 (2019)</span>
+<span class="hljs-bullet">
+* </span>adds CSS for times when the <span class="hljs-code">`*-content-hub-html`</span> is a direct child of <span class="hljs-code">`vf-body`</span>.
+
+<span class="hljs-section">## 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
 
-
-<span class="hljs-section"># 1.0.1 (2019)</span>
-<span class="hljs-bullet">
-* </span>adds CSS for times when the <span class="hljs-code">`*-content-hub-html`</span> is a direct child of <span class="hljs-code">`vf-body`</span>.
 </code>
         </pre>
         
@@ -279,7 +293,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-content-hub-loader/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 315 Bytes
+          Size: 274 Bytes
         </li>
       </ul>
     </section>
@@ -525,7 +539,34 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       exportedContent = exportedContent.firstElementChild;
       exportedContent.classList.add(<span class="hljs-string">'vf-content-hub-html'</span>);
       exportedContent.classList.add(<span class="hljs-string">'vf-content-hub-html__derived-div'</span>);
-    }
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (exportedContent.childNodes.length == <span class="hljs-number">3</span>) {
+      <span class="hljs-comment">// if there are three or fewer child nodes this is likely a no-results reply</span>
+      <span class="hljs-comment">// We'll still inject the content from the contentHub along with any passed "no matches" text</span>
+      <span class="hljs-keyword">var</span> noContentMessage = targetLink.getAttribute(<span class="hljs-string">'data-embl-js-content-hub-loader-no-content'</span>);
+
+      <span class="hljs-keyword">if</span> (noContentMessage == <span class="hljs-string">'true'</span>) {
+        <span class="hljs-comment">// use a default</span>
+        noContentMessage = <span class="hljs-string">'No content was found found for this query.'</span>;
+      } 
+
+      <span class="hljs-keyword">var</span> noContentMessageElement = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
+      noContentMessageElement.classList.add(<span class="hljs-string">'vf-text'</span>);
+      noContentMessageElement.classList.add(<span class="hljs-string">'embl-content-hub-html__no-content-found'</span>);
+      noContentMessageElement.innerHTML = noContentMessage;
+      exportedContent.appendChild(noContentMessageElement.firstChild);
+
+      <span class="hljs-comment">// if data-embl-js-content-hub-loader-no-content-hide is true or has a class, hide accordingly</span>
+      <span class="hljs-keyword">var</span> noContentHideBehavior = targetLink.getAttribute(<span class="hljs-string">'data-embl-js-content-hub-loader-no-content-hide'</span>);
+      <span class="hljs-keyword">if</span> (noContentHideBehavior) {
+        <span class="hljs-keyword">if</span> (noContentHideBehavior == <span class="hljs-string">'true'</span>) {
+          <span class="hljs-comment">// if true, just hide the response</span>
+          exportedContent.classList.add(<span class="hljs-string">'vf-u-display-none'</span>);
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-comment">// otherwise hide any element specified</span>
+          <span class="hljs-built_in">document</span>.querySelector(noContentHideBehavior).classList.add(<span class="hljs-string">'vf-u-display-none'</span>);
+        }
+      } <span class="hljs-comment">// END noContentHideBehavior</span>
+    } <span class="hljs-comment">// END exportedContent.childElementCount</span>
 
     <span class="hljs-keyword">var</span> contentID = emblContentHubGenerateID(position);
 
@@ -640,7 +681,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-content-hub-loader/embl-content-hub-loader__fetch.js
         </li>
         <li class="vf-list__item">
-          Size: 7.8 KB
+          Size: 9.2 KB
         </li>
       </ul>
     </section>

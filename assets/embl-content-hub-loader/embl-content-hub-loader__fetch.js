@@ -104,7 +104,34 @@ function emblContentHubFetch() {
       exportedContent = exportedContent.firstElementChild;
       exportedContent.classList.add('vf-content-hub-html');
       exportedContent.classList.add('vf-content-hub-html__derived-div');
-    }
+    } else if (exportedContent.childNodes.length == 3) {
+      // if there are three or fewer child nodes this is likely a no-results reply
+      // We'll still inject the content from the contentHub along with any passed "no matches" text
+      var noContentMessage = targetLink.getAttribute('data-embl-js-content-hub-loader-no-content');
+
+      if (noContentMessage == 'true') {
+        // use a default
+        noContentMessage = 'No content was found found for this query.';
+      } 
+
+      var noContentMessageElement = document.createElement('div');
+      noContentMessageElement.classList.add('vf-text');
+      noContentMessageElement.classList.add('embl-content-hub-html__no-content-found');
+      noContentMessageElement.innerHTML = noContentMessage;
+      exportedContent.appendChild(noContentMessageElement.firstChild);
+
+      // if data-embl-js-content-hub-loader-no-content-hide is true or has a class, hide accordingly
+      var noContentHideBehavior = targetLink.getAttribute('data-embl-js-content-hub-loader-no-content-hide');
+      if (noContentHideBehavior) {
+        if (noContentHideBehavior == 'true') {
+          // if true, just hide the response
+          exportedContent.classList.add('vf-u-display-none');
+        } else {
+          // otherwise hide any element specified
+          document.querySelector(noContentHideBehavior).classList.add('vf-u-display-none');
+        }
+      } // END noContentHideBehavior
+    } // END exportedContent.childElementCount
 
     var contentID = emblContentHubGenerateID(position);
 
