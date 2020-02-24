@@ -138,6 +138,11 @@ class="vf-logo">
 <code>embl-content-meta-properties</code> components for EMBL pages.</p>
 <p>This component reads meta properties and then performs a lookup to the EMBL contentHub.
 Returned are appropriate primary and secondary breadcrumbs.</p>
+<p>Notes:</p>
+<ul>
+<li>If a non-primairy breadcrumb value is “notSet”, a value will be inferred from the primairy breadcrumb’s respective who, what or where</li>
+<li>If no match is found a search is performed</li>
+</ul>
 
   </div>
   
@@ -263,10 +268,14 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
 <span class="hljs-section">## 1.0.0-beta.2 </span>
 <span class="hljs-bullet">
-- </span>If no match is found a search is performed
+- </span>Prefers "EMBL.org profile" matches to taxonomy entries
+<span class="hljs-bullet">- </span>If no related breadcrumbs are found, the label will be hidden
+<span class="hljs-bullet">- </span>Do not display "notSet" as a breadcrumb
+<span class="hljs-bullet">- </span>If a non-primairy breadcrumb value is "notSet", a value will be inferred from the primairy breadcrumb's respective who, what or where
+<span class="hljs-bullet">- </span>If no match is found a search is performed
 <span class="hljs-bullet">- </span>Handle non-26 character names (Spaßß =&gt; spass) for URLs
 <span class="hljs-bullet">- </span>If no match is found generate a "smart URL" for people
-<span class="hljs-bullet">- </span>Also switches to use the production contentHub
+<span class="hljs-bullet">- </span>Switches to use the production contentHub
 
 <span class="hljs-section">## 1.0.0-alpha.3 (2019-07-25)</span>
 <span class="hljs-bullet">
@@ -288,7 +297,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           Filesystem path: components/embl-breadcrumbs-lookup/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 636 Bytes
+          Size: 930 Bytes
         </li>
       </ul>
     </section>
@@ -311,6 +320,9 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
     emblBreadcrumbPrimary.classList.add(<span class="hljs-string">'vf-breadcrumbs__list'</span>,<span class="hljs-string">'vf-list'</span>,<span class="hljs-string">'vf-list--inline'</span>);
 <span class="hljs-keyword">var</span> emblBreadcrumbRelated = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"ul"</span>);
     emblBreadcrumbRelated.classList.add(<span class="hljs-string">'vf-breadcrumbs__list'</span>,<span class="hljs-string">'vf-breadcrumbs__list--related'</span>,<span class="hljs-string">'vf-list'</span>,<span class="hljs-string">'vf-list--inline'</span>);
+
+<span class="hljs-comment">// we store the primairy breadcrumb so it can be accessed by related crumbs, if needed</span>
+<span class="hljs-keyword">var</span> primaryBreadcrumb;
 
 <span class="hljs-comment">/**
  * Take any appropriate actions depending on present metaTags
@@ -344,6 +356,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
   <span class="hljs-keyword">var</span> relatedLabel = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"span"</span>);
       relatedLabel.innerHTML = <span class="hljs-string">'Related:'</span>;
       relatedLabel.classList.add(<span class="hljs-string">'vf-breadcrumbs__heading'</span>);
+
+  <span class="hljs-comment">// If no related terms were found, hide the related label</span>
+  <span class="hljs-comment">// we only hide it as we could add related terms later</span>
+  <span class="hljs-keyword">if</span> (emblBreadcrumbRelated.childNodes.length == <span class="hljs-number">0</span>) {
+    relatedLabel.classList.add(<span class="hljs-string">'vf-u-display-none'</span>);
+  }
 
   <span class="hljs-comment">// now that we've processed all the meta properties, insert our rendered breadcrumbs</span>
   emblBreadcrumbTarget[<span class="hljs-number">0</span>].innerHTML = emblBreadcrumbPrimary.outerHTML + relatedLabel.outerHTML + emblBreadcrumbRelated.outerHTML;
@@ -489,6 +507,10 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
     str = str.replace(defaultDiacriticsRemovalMap[i].letters, defaultDiacriticsRemovalMap[i].base);
   }
 
+  <span class="hljs-comment">// remove all commas, apostrophes, etc</span>
+  <span class="hljs-comment">// @todo, this should be done by an optional paramater</span>
+  str = str.replace(<span class="hljs-regexp">/[^a-zA-Z0-9 ]/</span>, <span class="hljs-string">""</span>); 
+
   <span class="hljs-keyword">return</span> str;
 }
 
@@ -504,28 +526,70 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
   <span class="hljs-comment">// console.log('Processing breadcrumb for:', termName + ', ' + facet + ', ' + type);</span>
 
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCurrentTerm</span>(<span class="hljs-params">termName</span>) </span>{
+    <span class="hljs-keyword">var</span> termObject; <span class="hljs-comment">// store the match</span>
     <span class="hljs-keyword">if</span> (termName === <span class="hljs-string">'EMBL'</span>) termName = <span class="hljs-string">'All EMBL sites'</span>; <span class="hljs-comment">// hack as we're not using IDs</span>
 
-    <span class="hljs-keyword">var</span> termObject;
-
-    <span class="hljs-built_in">Array</span>.prototype.forEach.call(<span class="hljs-built_in">Object</span>.keys(emblTaxonomy.terms), (termId) =&gt; {
-      <span class="hljs-keyword">let</span> term = emblTaxonomy.terms[termId];
-      <span class="hljs-keyword">if</span> (term.name === termName) {
-        termObject = term;
-        <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
+    <span class="hljs-comment">// if a term has not been passed, attempt to use the primary term's parent information</span>
+    <span class="hljs-comment">// @todo: add a flag to explicitly "dontLookup" or "doLookup"</span>
+    <span class="hljs-keyword">if</span> (termName == <span class="hljs-string">"notSet"</span>) {
+      <span class="hljs-keyword">if</span> (primaryBreadcrumb.parents[facet]) {
+        termName = primaryBreadcrumb.parents[facet];
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// No matches? Then don't show anything.</span>
+        termName = <span class="hljs-string">''</span>;
       }
-    });
+    } 
 
+    <span class="hljs-comment">// if using a `string/NameOfThing` value, not accordingly</span>
+    <span class="hljs-keyword">if</span> (termName.indexOf(<span class="hljs-string">'string/'</span>) &gt;= <span class="hljs-number">0</span>) {
+      <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">'embl-js-breadcumbs-lookup: using a passed string value to make breadcrumbs '</span> + termName);
+      termName = termName.replace(<span class="hljs-string">'string/'</span>,<span class="hljs-string">''</span>);
+    }
+
+    <span class="hljs-comment">// scan through all terms and find a match, if any</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scanTaxonomyForTerm</span>(<span class="hljs-params">termName</span>) </span>{
+      <span class="hljs-comment">// We prefer profiles</span>
+      <span class="hljs-built_in">Array</span>.prototype.forEach.call(<span class="hljs-built_in">Object</span>.keys(emblTaxonomy.terms), (termId) =&gt; {
+        <span class="hljs-keyword">let</span> term = emblTaxonomy.terms[termId];
+        <span class="hljs-keyword">if</span> (term.type == <span class="hljs-string">'profile'</span>) {
+          <span class="hljs-keyword">if</span> (term.name_display === termName) {
+            termObject = term;
+            <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
+          }
+        }
+      }); 
+
+      <span class="hljs-comment">// If no profile found, match any entry in taxonomy</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> termObject === <span class="hljs-string">'undefined'</span>) {
+        <span class="hljs-built_in">Array</span>.prototype.forEach.call(<span class="hljs-built_in">Object</span>.keys(emblTaxonomy.terms), (termId) =&gt; {
+          <span class="hljs-keyword">let</span> term = emblTaxonomy.terms[termId];
+          <span class="hljs-keyword">if</span> (term.type != <span class="hljs-string">'profile'</span>) { 
+            <span class="hljs-keyword">if</span> (term.name_display === termName) {
+              termObject = term;
+              <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
+            }
+          }
+        }); 
+      }
+    }
+
+    <span class="hljs-comment">// don't scan for junk matches </span>
+    <span class="hljs-keyword">if</span> (termName != <span class="hljs-string">'notSet'</span> &amp;&amp; termName != <span class="hljs-string">''</span>) {
+      scanTaxonomyForTerm(termName);
+    }
+
+    <span class="hljs-comment">// Validation and protection</span>
     <span class="hljs-comment">// we never want to return undefined</span>
     <span class="hljs-keyword">if</span> (termObject == <span class="hljs-literal">undefined</span> || termObject == <span class="hljs-literal">null</span>) {
       <span class="hljs-comment">// console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will formulate a URL.');</span>
       
       termObject = {};
 
-      <span class="hljs-comment">// if we're linking to people</span>
       <span class="hljs-keyword">if</span> (facet == <span class="hljs-string">'who'</span>) {
+        <span class="hljs-comment">// if we're linking to people generate a person URL</span>
         termObject.url = <span class="hljs-string">'https://www.embl.org/people/person/'</span>+emblBreadcrumbRemoveDiacritics(termName).replace(<span class="hljs-regexp">/[\W_]+/g</span>,<span class="hljs-string">' '</span>).replace(<span class="hljs-regexp">/\s+/g</span>, <span class="hljs-string">'-'</span>).toLowerCase();
       } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// otherwise try and search</span>
         termObject.url = <span class="hljs-string">'https://www.embl.org/search/#stq='</span>+termName+<span class="hljs-string">'&amp;taxonomyFacet='</span>+facet+<span class="hljs-string">'&amp;origin=breadcrumbTermNotFound'</span>; <span class="hljs-comment">// if no link specified, do a search</span>
       }
 
@@ -608,6 +672,10 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
    * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[breadcrumbUrl] - a fully formed URL, or 'null' to not make a link
    */</span>
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatBreadcrumb</span>(<span class="hljs-params">termName,breadcrumbUrl</span>) </span>{
+    <span class="hljs-keyword">if</span> (termName == <span class="hljs-string">''</span>) {
+      <span class="hljs-comment">// if no term, do nothing</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>;
+    }
     <span class="hljs-keyword">var</span> newBreadcrumb = <span class="hljs-string">'&lt;li class="vf-breadcrumbs__item"&gt;'</span>;
     <span class="hljs-keyword">if</span> (breadcrumbUrl &amp;&amp; breadcrumbUrl !== <span class="hljs-string">'null'</span> &amp;&amp; breadcrumbUrl !== <span class="hljs-string">'#no_url_specified'</span>) {
       newBreadcrumb += <span class="hljs-string">'&lt;a href="'</span>+breadcrumbUrl+<span class="hljs-string">'" class="vf-breadcrumbs__link"&gt;'</span> + termName + <span class="hljs-string">'&lt;/a&gt;'</span>;
@@ -633,6 +701,9 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
   breadcrumbTarget = breadcrumbTarget[<span class="hljs-number">0</span>];
 
   <span class="hljs-keyword">if</span> (type == <span class="hljs-string">'primary'</span>) {
+
+    <span class="hljs-comment">// save it</span>
+    primaryBreadcrumb = currentTerm;
 
     <span class="hljs-comment">// don't show path of breadcrumb if it is the current path</span>
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> URL(breadcrumbUrl).pathname == <span class="hljs-built_in">window</span>.location.pathname) {
@@ -725,7 +796,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           Filesystem path: components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.js
         </li>
         <li class="vf-list__item">
-          Size: 19.9 KB
+          Size: 22.1 KB
         </li>
       </ul>
     </section>

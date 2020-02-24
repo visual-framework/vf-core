@@ -2,10 +2,14 @@
 
 ## 1.0.0-beta.2 
 
+- Prefers "EMBL.org profile" matches to taxonomy entries
+- If no related breadcrumbs are found, the label will be hidden
+- Do not display "notSet" as a breadcrumb
+- If a non-primairy breadcrumb value is "notSet", a value will be inferred from the primairy breadcrumb's respective who, what or where
 - If no match is found a search is performed
 - Handle non-26 character names (Spaßß => spass) for URLs
 - If no match is found generate a "smart URL" for people
-- Also switches to use the production contentHub
+- Switches to use the production contentHub
 
 ## 1.0.0-alpha.3 (2019-07-25)
 

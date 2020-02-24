@@ -11,6 +11,9 @@ var emblBreadcrumbPrimary = document.createElement("ul");
 var emblBreadcrumbRelated = document.createElement("ul");
     emblBreadcrumbRelated.classList.add('vf-breadcrumbs__list','vf-breadcrumbs__list--related','vf-list','vf-list--inline');
 
+// we store the primairy breadcrumb so it can be accessed by related crumbs, if needed
+var primaryBreadcrumb;
+
 /**
  * Take any appropriate actions depending on present metaTags
  * @example emblBreadcrumbsLookup()
@@ -43,6 +46,12 @@ function emblBreadcrumbsLookup(metaProperties) {
   var relatedLabel = document.createElement("span");
       relatedLabel.innerHTML = 'Related:';
       relatedLabel.classList.add('vf-breadcrumbs__heading');
+
+  // If no related terms were found, hide the related label
+  // we only hide it as we could add related terms later
+  if (emblBreadcrumbRelated.childNodes.length == 0) {
+    relatedLabel.classList.add('vf-u-display-none');
+  }
 
   // now that we've processed all the meta properties, insert our rendered breadcrumbs
   emblBreadcrumbTarget[0].innerHTML = emblBreadcrumbPrimary.outerHTML + relatedLabel.outerHTML + emblBreadcrumbRelated.outerHTML;
@@ -188,6 +197,10 @@ function emblBreadcrumbRemoveDiacritics(str) {
     str = str.replace(defaultDiacriticsRemovalMap[i].letters, defaultDiacriticsRemovalMap[i].base);
   }
 
+  // remove all commas, apostrophes, etc
+  // @todo, this should be done by an optional paramater
+  str = str.replace(/[^a-zA-Z0-9 ]/, ""); 
+
   return str;
 }
 
@@ -203,28 +216,70 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
   // console.log('Processing breadcrumb for:', termName + ', ' + facet + ', ' + type);
 
   function getCurrentTerm(termName) {
+    var termObject; // store the match
     if (termName === 'EMBL') termName = 'All EMBL sites'; // hack as we're not using IDs
 
-    var termObject;
-
-    Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
-      let term = emblTaxonomy.terms[termId];
-      if (term.name === termName) {
-        termObject = term;
-        return; //exit
+    // if a term has not been passed, attempt to use the primary term's parent information
+    // @todo: add a flag to explicitly "dontLookup" or "doLookup"
+    if (termName == "notSet") {
+      if (primaryBreadcrumb.parents[facet]) {
+        termName = primaryBreadcrumb.parents[facet];
+      } else {
+        // No matches? Then don't show anything.
+        termName = '';
       }
-    });
+    } 
 
+    // if using a `string/NameOfThing` value, not accordingly
+    if (termName.indexOf('string/') >= 0) {
+      console.warn('embl-js-breadcumbs-lookup: using a passed string value to make breadcrumbs ' + termName);
+      termName = termName.replace('string/','');
+    }
+
+    // scan through all terms and find a match, if any
+    function scanTaxonomyForTerm(termName) {
+      // We prefer profiles
+      Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
+        let term = emblTaxonomy.terms[termId];
+        if (term.type == 'profile') {
+          if (term.name_display === termName) {
+            termObject = term;
+            return; //exit
+          }
+        }
+      }); 
+
+      // If no profile found, match any entry in taxonomy
+      if (typeof termObject === 'undefined') {
+        Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
+          let term = emblTaxonomy.terms[termId];
+          if (term.type != 'profile') { 
+            if (term.name_display === termName) {
+              termObject = term;
+              return; //exit
+            }
+          }
+        }); 
+      }
+    }
+
+    // don't scan for junk matches 
+    if (termName != 'notSet' && termName != '') {
+      scanTaxonomyForTerm(termName);
+    }
+
+    // Validation and protection
     // we never want to return undefined
     if (termObject == undefined || termObject == null) {
       // console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will formulate a URL.');
       
       termObject = {};
 
-      // if we're linking to people
       if (facet == 'who') {
+        // if we're linking to people generate a person URL
         termObject.url = 'https://www.embl.org/people/person/'+emblBreadcrumbRemoveDiacritics(termName).replace(/[\W_]+/g,' ').replace(/\s+/g, '-').toLowerCase();
       } else {
+        // otherwise try and search
         termObject.url = 'https://www.embl.org/search/#stq='+termName+'&taxonomyFacet='+facet+'&origin=breadcrumbTermNotFound'; // if no link specified, do a search
       }
 
@@ -307,6 +362,10 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
    * @param {string} [breadcrumbUrl] - a fully formed URL, or 'null' to not make a link
    */
   function formatBreadcrumb(termName,breadcrumbUrl) {
+    if (termName == '') {
+      // if no term, do nothing
+      return '';
+    }
     var newBreadcrumb = '<li class="vf-breadcrumbs__item">';
     if (breadcrumbUrl && breadcrumbUrl !== 'null' && breadcrumbUrl !== '#no_url_specified') {
       newBreadcrumb += '<a href="'+breadcrumbUrl+'" class="vf-breadcrumbs__link">' + termName + '</a>';
@@ -332,6 +391,9 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
   breadcrumbTarget = breadcrumbTarget[0];
 
   if (type == 'primary') {
+
+    // save it
+    primaryBreadcrumb = currentTerm;
 
     // don't show path of breadcrumb if it is the current path
     if (new URL(breadcrumbUrl).pathname == window.location.pathname) {
