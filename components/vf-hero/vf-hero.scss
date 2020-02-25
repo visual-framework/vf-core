@@ -19,6 +19,9 @@
     calc( (0 + var(--vf-hero-bg-color) ) * 255),
     calc( (0 + var(--vf-hero-bg-color) ) * 100)
   );
+  background-image: var(--vf-hero-bg-image);
+  background-position: top center;
+  background-repeat: no-repeat;
   grid-column: 1 / -1;
 
   display: grid;
@@ -26,20 +29,6 @@
   grid-template-rows: var(--vf-hero-grid__row, 260px) max-content;
   margin-bottom: 2rem;
   position: relative;
-
-  &:not(.vf-hero--easy):not(.vf-hero--intense) {
-    &::before {
-      background-image: var(--vf-hero-bg-image);
-      content: '';
-      grid-column: 1 / -1;
-      grid-row: 1 / span 1;
-      background-position: top center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 348px;
-      width: 100%;
-    }
-  }
 
   a {
     color: set-ui-color(vf-ui-color--black);
