@@ -14,7 +14,7 @@
 
   & + .vf-section-header__subheading,
   & + .vf-section-header__content {
-    margin-top: 24px;
+    @include margin--block(top, map-get($vf-spacing-map, vf-spacing--lg));
   }
 }
 .vf-section-header__heading--is-link {
@@ -50,9 +50,9 @@
   }
 
   .vf-section-header__heading + & {
-    margin-top: 24px;
+    @include margin--block(top, map-get($vf-spacing-map, vf-spacing--lg));
   }
   .vf-section-header__subheading + & {
-    margin-top: 16px;
+    @include margin--block(top, map-get($vf-spacing-map, vf-spacing--md));
   }
 }
