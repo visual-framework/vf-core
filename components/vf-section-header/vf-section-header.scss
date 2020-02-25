@@ -14,16 +14,18 @@
 
   & + .vf-section-header__subheading,
   & + .vf-section-header__content {
-    @include margin--block(top, map-get($vf-spacing-map, vf-spacing--lg));
+    margin-top: map-get($vf-spacing-map, vf-spacing--lg);
   }
 }
 .vf-section-header__heading--is-link {
   @include inline-link($vf-link--visited-color: map-get($vf-colors-map, vf-color--blue));
+  cursor: pointer;
+  display: block;
 
   .vf-section-header__icon {
     fill: currentColor;
-    margin-left: 8px;
-    transform: translateY(4px);
+    margin-left: map-get($vf-spacing-map, vf-spacing--sm);
+    transform: translateY(map-get($vf-spacing-map, vf-spacing--xs));
     // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
     transition-duration: 125ms;
     transition-property: transform;
@@ -33,7 +35,7 @@
   &:hover,
   &:focus {
     .vf-section-header__icon {
-      transform: translateX(4px) translateY(4px);
+      transform: translateX(map-get($vf-spacing-map, vf-spacing--xs)) translateY(map-get($vf-spacing-map, vf-spacing--xs));
     }
   }
 }
@@ -46,13 +48,19 @@
   @include set-type(text-body--2, $custom-margin-bottom: 8px);
 
   &:last-of-type {
-    margin-bottom: 0;
+    @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--0));
   }
 
   .vf-section-header__heading + & {
-    @include margin--block(top, map-get($vf-spacing-map, vf-spacing--lg));
+    margin-top: 24px;
   }
   .vf-section-header__subheading + & {
-    @include margin--block(top, map-get($vf-spacing-map, vf-spacing--md));
+    margin-top: 16px;
+  }
+  .vf-section-header__heading + & {
+    margin-top: map-get($vf-spacing-map, vf-spacing--lg);
+  }
+  .vf-section-header__subheading + & {
+    margin-top: map-get($vf-spacing-map, vf-spacing--md);
   }
 }
