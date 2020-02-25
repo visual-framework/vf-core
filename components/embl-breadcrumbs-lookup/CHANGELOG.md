@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.0-beta.3
+
+- Better handles non-entries for parent terms
+- Better handling of non-entry "none"
+- Handles when breadcrumb container is present but no primary term is set
+- Cleaner URL generation
+- Matches a terms internal names or display names as a last resort
+
 ## 1.0.0-beta.2 
 
 - Prefers "EMBL.org profile" matches to taxonomy entries
