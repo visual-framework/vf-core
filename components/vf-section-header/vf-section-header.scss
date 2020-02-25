@@ -18,18 +18,15 @@
   }
 }
 .vf-section-header__heading--is-link {
-  @include inline-link;
-  color: set-color(vf-color--blue);
-  cursor: pointer;
-  display: block;
+  @include inline-link($vf-link--visited-color: map-get($vf-colors-map, vf-color--blue));
 
   .vf-section-header__icon {
     fill: currentColor;
     margin-left: 8px;
-    // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
     transform: translateY(4px);
+    // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
     transition-duration: 125ms;
-    transition-property: transformX;
+    transition-property: transform;
     transition-timing-function: cubic-bezier(.45, .05, .55, .95);
   }
 
@@ -47,6 +44,11 @@
 
 .vf-section-header__text {
   @include set-type(text-body--2, $custom-margin-bottom: 8px);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
   .vf-section-header__heading + & {
     margin-top: 24px;
   }
