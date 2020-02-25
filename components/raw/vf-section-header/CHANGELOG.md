@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.1.0
+
+* adds ability for section header to have sub-heading and text.
+* :visited styles so they're blue.
+* removes cursor: pointer and display: block from --is-link.
+* moves transform out of todo.
+* fixes transition-property to animation works.
+* adds last-of-type to vf-section-header__text to remove any margin.
+
 ## 1.0.3
 
 * Increase spacing between header link and arrow icon
