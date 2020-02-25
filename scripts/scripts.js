@@ -1081,13 +1081,19 @@ function emblBreadcrumbsLookup(metaProperties) {
     console.warn('There is more than one `[data-embl-js-breadcrumbs-lookup]` in which to insert the breadcrumbs; continuing but only the first element will be updated.');
   }
 
-  var majorFacets = ['who', 'what', 'where'];
+  if (metaProperties.active == 'notSet') {
+    // @todo: we could infer the active breadcrumb if only one is passed
+    console.warn('There is no active EMBL breadcrumb specified, cannot proceed looking up breadcrumbs.');
+    return false;
+  }
+
+  var majorFacets = ['who', 'what', 'where']; // do the primairy breadcrumb first
+
+  emblBreadcrumbAppend(emblBreadcrumbTarget, metaProperties[metaProperties.active], metaProperties.active, 'primary'); // do the non-primairy meta terms
+  // @todo: we probably shouldn't do related if there is no primairy
 
   for (var i = 0; i < majorFacets.length; i++) {
-    if (majorFacets[i] == metaProperties.active) {
-      emblBreadcrumbAppend(emblBreadcrumbTarget, metaProperties[majorFacets[i]], majorFacets[i], 'primary');
-    } else {
-      // do the related paths
+    if (majorFacets[i] != metaProperties.active) {
       emblBreadcrumbAppend(emblBreadcrumbTarget, metaProperties[majorFacets[i]], majorFacets[i], 'related');
     }
   } // make a 'related' label
@@ -1451,7 +1457,36 @@ function emblBreadcrumbAppend(breadcrumbTarget, termName, facet, type) {
 
 
     function scanTaxonomyForTerm(termName) {
+      // @todo: prefer UUID matches first
       // We prefer profiles
+      Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), function (termId) {
+        var term = emblTaxonomy.terms[termId];
+
+        if (term.type == 'profile') {
+          if (term.name === termName) {
+            termObject = term;
+            return; //exit
+          }
+        }
+      }); // If no profile found, match other types of taxonomy entries
+
+      if (typeof termObject === 'undefined') {
+        Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), function (termId) {
+          var term = emblTaxonomy.terms[termId];
+
+          if (term.type != 'profile') {
+            if (term.name === termName) {
+              termObject = term;
+              return; //exit
+            }
+          }
+        });
+      } // If there's still no match, see if we can find a matching display name
+      // @todo: this is an easy win but creates messy matching, but maybe that's ok if you're not using UUID
+      // There's a risk of multiple "training" entries
+      // We prefer profiles
+
+
       Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), function (termId) {
         var term = emblTaxonomy.terms[termId];
 
@@ -1461,7 +1496,7 @@ function emblBreadcrumbAppend(breadcrumbTarget, termName, facet, type) {
             return; //exit
           }
         }
-      }); // If no profile found, match any entry in taxonomy
+      }); // If no profile found, match other types of taxonomy entries
 
       if (typeof termObject === 'undefined') {
         Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), function (termId) {
@@ -1478,7 +1513,7 @@ function emblBreadcrumbAppend(breadcrumbTarget, termName, facet, type) {
     } // don't scan for junk matches 
 
 
-    if (termName != 'notSet' && termName != '') {
+    if (termName != 'notSet' && termName != '' && termName != 'none') {
       scanTaxonomyForTerm(termName);
     } // Validation and protection
     // we never want to return undefined
@@ -1499,6 +1534,16 @@ function emblBreadcrumbAppend(breadcrumbTarget, termName, facet, type) {
       termObject.name_display = termName;
       termObject.uuid = 'null';
       termObject.uuid = [];
+    } else if (typeof termObject.url == 'undefined') {
+      // if entry was found but no link specified, generate a url for a search
+      var urlFacet = '';
+
+      if (termObject.primary != undefined) {
+        // prepare a search facet if available
+        urlFacet = '&taxonomyFacet=' + termObject.primary;
+      }
+
+      termObject.url = 'https://www.embl.org/search/#stq=' + termObject.name + urlFacet + '&origin=breadcrumbTaxonomy';
     }
 
     return termObject;
@@ -1576,7 +1621,7 @@ function emblBreadcrumbAppend(breadcrumbTarget, termName, facet, type) {
 
 
   function formatBreadcrumb(termName, breadcrumbUrl) {
-    if (termName == '') {
+    if (termName == '' || termName == 'none') {
       // if no term, do nothing
       return '';
     }
@@ -1593,18 +1638,10 @@ function emblBreadcrumbAppend(breadcrumbTarget, termName, facet, type) {
     return newBreadcrumb;
   }
 
-  var currentTerm = getCurrentTerm(termName); // prepare a search facet if available
-
-  var urlFacet = '';
-
-  if (currentTerm.primary != undefined) {
-    urlFacet = '&taxonomyFacet=' + currentTerm.primary;
-  }
-
+  var currentTerm = getCurrentTerm(termName);
   var breadcrumbId = currentTerm.uuid,
-      breadcrumbUrl = currentTerm.url || 'https://www.embl.org/search/#stq=' + currentTerm.name + urlFacet + '&origin=breadcrumbTaxonomy',
-      // if no link specified, do a search
-  breadcrumbParents = currentTerm.parents; // narrow down to the first matching element
+      breadcrumbUrl = currentTerm.url,
+      breadcrumbParents = currentTerm.parents; // narrow down to the first matching element
 
   breadcrumbTarget = breadcrumbTarget[0];
 
