@@ -458,29 +458,32 @@ class="vf-logo">
 
   &amp; + <span class="hljs-selector-class">.vf-section-header__subheading</span>,
   &amp; + <span class="hljs-selector-class">.vf-section-header__content</span> {
-    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
+    <span class="hljs-attribute">margin-top</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg);
   }
 }
 <span class="hljs-selector-class">.vf-section-header__heading--is-link</span> {
-  <span class="hljs-keyword">@include</span> inline-link;
-  <span class="hljs-attribute">color</span>: set-color(vf-color--blue);
+  <span class="hljs-keyword">@include</span> inline-link(<span class="hljs-variable">$vf-link--visited-color</span>: map-get(<span class="hljs-variable">$vf-colors-map</span>, vf-color--blue));
   <span class="hljs-attribute">cursor</span>: pointer;
   <span class="hljs-attribute">display</span>: block;
 
   <span class="hljs-selector-class">.vf-section-header__icon</span> {
     fill: currentColor;
-    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
+    <span class="hljs-attribute">margin-left</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--sm);
+    <span class="hljs-attribute">transform</span>: translateY(map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--xs));
     <span class="hljs-comment">// @<span class="hljs-doctag">todo:</span> some sort of centralised and reusable docs, tokens, guidance on animations</span>
-    <span class="hljs-attribute">transform</span>: translateY(<span class="hljs-number">4px</span>);
     <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">125ms</span>;
-    <span class="hljs-attribute">transition-property</span>: transformX;
+    <span class="hljs-attribute">transition-property</span>: transform;
     <span class="hljs-attribute">transition-timing-function</span>: cubic-bezier(.<span class="hljs-number">45</span>, .<span class="hljs-number">05</span>, .<span class="hljs-number">55</span>, .<span class="hljs-number">95</span>);
   }
 
   &amp;<span class="hljs-selector-pseudo">:hover</span>,
   &amp;<span class="hljs-selector-pseudo">:focus</span> {
     <span class="hljs-selector-class">.vf-section-header__icon</span> {
-      <span class="hljs-attribute">transform</span>: translateX(<span class="hljs-number">4px</span>) translateY(<span class="hljs-number">4px</span>);
+      <span class="hljs-attribute">transform</span>: translateX(map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--xs)) translateY(map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--xs));
+    }
+
+    &amp;<span class="hljs-selector-pseudo">:visited</span> {
+      <span class="hljs-attribute">color</span>: map-get(<span class="hljs-variable">$vf-colors-map</span>, vf-color--blue--dark);
     }
   }
 }
@@ -491,11 +494,22 @@ class="vf-logo">
 
 <span class="hljs-selector-class">.vf-section-header__text</span> {
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">8px</span>);
+
+  &amp;<span class="hljs-selector-pseudo">:last-of-type</span> {
+    <span class="hljs-keyword">@include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--<span class="hljs-number">0</span>));
+  }
+
   <span class="hljs-selector-class">.vf-section-header__heading</span> + &amp; {
     <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
   }
   <span class="hljs-selector-class">.vf-section-header__subheading</span> + &amp; {
     <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">16px</span>;
+  }
+  <span class="hljs-selector-class">.vf-section-header__heading</span> + &amp; {
+    <span class="hljs-attribute">margin-top</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg);
+  }
+  <span class="hljs-selector-class">.vf-section-header__subheading</span> + &amp; {
+    <span class="hljs-attribute">margin-top</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md);
   }
 }
 </code>
@@ -513,7 +527,7 @@ class="vf-logo">
           Filesystem path: components/vf-section-header/vf-section-header.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.4 KB
+          Size: 2 KB
         </li>
       </ul>
     </section>
