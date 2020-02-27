@@ -72,6 +72,10 @@ body.ebi-black-bar-loaded .ebi-header-footer.masthead-black-bar > .row {
           box-shadow: 0 0 2px var(--vf-color--grey--lightest);
 }
 
+.ebi-header-footer.masthead-black-bar .vf-content .global-masthead-interactive-banner p:not([class*='vf-']) {
+  font-size: 15px;
+}
+
 .ebi-header-footer.masthead-black-bar .global-masthead-interactive-banner {
   height: 0;
   overflow: hidden;
@@ -106,6 +110,10 @@ body.ebi-black-bar-loaded .ebi-header-footer.masthead-black-bar > .row {
 
 .ebi-header-footer.masthead-black-bar .global-nav li.active a {
   font-weight: 700;
+}
+
+.ebi-header-footer.masthead-black-bar .global-nav li {
+  font-size: 14.4px;
 }
 
 .ebi-header-footer.masthead-black-bar .global-nav li a:before {
@@ -171,6 +179,23 @@ body.ebi-black-bar-loaded .ebi-header-footer.masthead-black-bar > .row {
   }
 }
 
+.ebi-header-footer.local-footer {
+  border-top: 2px solid var(--vf-ui-color--off-white);
+}
+
+.ebi-header-footer.global-footer {
+  border-top: 5px solid var(--vf-ui-color--off-white);
+  padding-top: 1.5rem;
+}
+
+.ebi-header-footer.global-footer h4 {
+  display: inline !important;
+}
+
+.ebi-header-footer.global-footer p.address {
+  margin: 1.5em 0 5px 0;
+}
+
 .ebi-header-footer.masthead-black-bar li.embl-selector {
   border-left: 0.5px solid rgba(255, 255, 255, 0.5);
   padding-left: 1.5rem;
@@ -219,9 +244,10 @@ body.ebi-black-bar-loaded .ebi-header-footer.masthead-black-bar > .row {
 .ebi-header-footer.masthead-black-bar .embl-selector.embl-ebi .button.hover,
 .ebi-header-footer.masthead-black-bar .embl-selector.embl-ebi .button:focus,
 .ebi-header-footer.masthead-black-bar .embl-selector.embl-ebi .button:hover {
-  background: no-repeat 4px 50% url("https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/EMBL_EBI_Logo_white.svg");
+  background: no-repeat 5px 48% url(https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/EMBL_EBI_Logo_white.svg);
   padding-left: 95px;
-  background-size: 100px;
+  background-size: 90px;
+  max-height: 33px;
 }
 
 .ebi-header-footer.masthead-black-bar .embl-selector.active {
@@ -261,25 +287,8 @@ body.ebi-black-bar-loaded .ebi-header-footer.masthead-black-bar > .row {
   }
 }
 
-.ebi-header-footer .local-footer {
-  border-top: 2px solid var(--vf-ui-color--off-white);
-}
-
-.ebi-header-footer .global-footer {
-  border-top: 5px solid var(--vf-ui-color--off-white);
-  padding-top: 1.5rem;
-}
-
-.ebi-header-footer .global-footer h4 {
-  display: inline !important;
-}
-
-.ebi-header-footer .global-footer .address {
-  margin: 1.5em 0 5px 0;
-}
-
 .ebi-header-footer .row {
-  max-width: 76.5rem;
+  max-width: 76.5em;
   margin-right: auto;
   margin-left: auto;
 }
@@ -329,7 +338,7 @@ body.ebi-black-bar-loaded .ebi-header-footer.masthead-black-bar > .row {
 }
 
 .ebi-header-footer .row {
-  max-width: 80rem;
+  max-width: 76.5em;
   margin-right: auto;
   margin-left: auto;
 }
@@ -536,7 +545,7 @@ body.ebi-black-bar-loaded .ebi-header-footer.masthead-black-bar > .row {
   line-height: 1;
   text-decoration: none;
   display: block;
-  padding: 0.7rem 1rem;
+  padding: 0.6rem 1rem;
 }
 
 .ebi-header-footer .button {
@@ -651,25 +660,56 @@ body.ebi-black-bar-loaded .ebi-header-footer.masthead-black-bar > .row {
   padding-bottom: .5rem;
 }
 
+.data-protection-banner .row {
+  max-width: 76.5em;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .data-protection-banner .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.data-protection-banner .row .columns {
+  margin: 0 0.5rem 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .data-protection-banner .row .medium-8 {
+    -webkit-box-flex: 5;
+        -ms-flex: 5;
+            flex: 5;
+  }
+  .data-protection-banner .row .medium-4 {
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
+    text-align: right;
+  }
+}
+
 .data-protection-banner a {
   border-bottom: none;
   text-decoration: none;
-  color: #ffffff;
+  color: #a8d2ff;
   cursor: pointer;
 }
 
 .data-protection-banner a:visited {
-  color: #ffffff;
+  color: #cba3d8;
   border-bottom: none;
 }
 
 .data-protection-banner a:visited:hover {
-  color: #ffffff;
+  color: #cba3d8;
   text-decoration: underline;
 }
 
 .data-protection-banner a:hover {
-  color: #ffffff;
+  color: #a8d2ff;
   border-bottom: none;
   text-decoration: underline;
 }

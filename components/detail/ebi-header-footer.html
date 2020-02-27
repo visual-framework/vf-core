@@ -393,9 +393,10 @@ Your content here.
       <span class="hljs-selector-class">.button</span><span class="hljs-selector-class">.hover</span>,
       <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:focus</span>,
       <span class="hljs-selector-class">.button</span><span class="hljs-selector-pseudo">:hover</span> {
-        <span class="hljs-attribute">background</span>: no-repeat <span class="hljs-number">4px</span> <span class="hljs-number">50%</span> url(<span class="hljs-string">"https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/EMBL_EBI_Logo_white.svg"</span>);
+        <span class="hljs-attribute">background</span>: no-repeat <span class="hljs-number">5px</span> <span class="hljs-number">48%</span> url(https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.<span class="hljs-number">3</span>/images/logos/EMBL-EBI/EMBL_EBI_Logo_white.svg);
         <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">95px</span>;
-        <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100px</span>;
+        <span class="hljs-attribute">background-size</span>: <span class="hljs-number">90px</span>;
+        <span class="hljs-attribute">max-height</span>: <span class="hljs-number">33px</span>;
       }
     }
 
@@ -443,7 +444,7 @@ Your content here.
           Filesystem path: components/ebi-header-footer/ebi-header-footer--embl-selector.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.4 KB
+          Size: 2.5 KB
         </li>
       </ul>
     </section>
@@ -456,12 +457,12 @@ Your content here.
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// ebi-header-footer--footer</span>
 <span class="hljs-comment">// LOCAL FOOTER</span>
-<span class="hljs-selector-class">.local-footer</span> {
+<span class="hljs-selector-class">.ebi-header-footer</span><span class="hljs-selector-class">.local-footer</span> {
   <span class="hljs-attribute">border-top</span>: <span class="hljs-number">2px</span> solid var(--vf-ui-color--off-white);;
 }
 
 <span class="hljs-comment">// GLOBAL FOOTER</span>
-<span class="hljs-selector-class">.global-footer</span> {
+<span class="hljs-selector-class">.ebi-header-footer</span><span class="hljs-selector-class">.global-footer</span> {
   <span class="hljs-attribute">border-top</span>: <span class="hljs-number">5px</span> solid var(--vf-ui-color--off-white);;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">1.5rem</span>;
 
@@ -469,12 +470,10 @@ Your content here.
     <span class="hljs-attribute">display</span>: inline <span class="hljs-meta">!important</span>;
   }
 
-  <span class="hljs-selector-class">.address</span> {
+  <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.address</span> {
     <span class="hljs-attribute">margin</span>: <span class="hljs-number">1.5em</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">0</span>;
   }
-
 } 
-
 </code>
         </pre>
         
@@ -490,7 +489,7 @@ Your content here.
           Filesystem path: components/ebi-header-footer/ebi-header-footer--footer.scss
         </li>
         <li class="vf-list__item">
-          Size: 327 Bytes
+          Size: 362 Bytes
         </li>
       </ul>
     </section>
@@ -549,7 +548,7 @@ Your content here.
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span>;
   <span class="hljs-attribute">text-decoration</span>: none;
   <span class="hljs-attribute">display</span>: block;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.7rem</span> <span class="hljs-number">1rem</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.6rem</span> <span class="hljs-number">1rem</span>;
 }
 
 <span class="hljs-selector-class">.button</span> {
@@ -635,11 +634,17 @@ Your content here.
   <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:focus</span> {
     <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">2px</span> var(--vf-color--grey--lightest)
   }
-
-  .global-masthead-interactive-banner {
-    height: <span class="hljs-number">0</span>; <span class="hljs-attribute">overflow</span>: hidden;
+  
+  .vf-content .global-masthead-interactive-banner p:not([class*=<span class="hljs-string">'vf-'</span>]) {
+    font-size: <span class="hljs-number">15px</span>; <span class="hljs-comment">// embl dropdown p tags shouldn't have large text</span>
+  } 
+  
+  <span class="hljs-selector-class">.global-masthead-interactive-banner</span> {
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>; 
+    <span class="hljs-attribute">overflow</span>: hidden;
     <span class="hljs-attribute">display</span>: none;
     <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#000</span>;
+    
 
     &amp;<span class="hljs-selector-class">.active</span> {
       <span class="hljs-attribute">display</span>: block;
@@ -674,6 +679,8 @@ Your content here.
     }
 
     <span class="hljs-selector-tag">li</span> {
+      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14.4px</span>; <span class="hljs-comment">// to closely match existing height</span>
+
       <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:before</span> {
         <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'EBI-Generic'</span>;
         <span class="hljs-attribute">display</span>: inline-block; <span class="hljs-comment">// safari 9 &amp; 10 fix</span>
@@ -772,7 +779,7 @@ Your content here.
           Filesystem path: components/ebi-header-footer/ebi-header-footer--header.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.8 KB
+          Size: 3 KB
         </li>
       </ul>
     </section>
@@ -784,9 +791,8 @@ Your content here.
         
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// ebi-header-footer--footer</span>
-
 <span class="hljs-selector-class">.row</span> {
-  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5rem</span>;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-variable">$global-page-max-width</span>;
   <span class="hljs-attribute">margin-right</span>: auto;
   <span class="hljs-attribute">margin-left</span>: auto;
 }
@@ -823,7 +829,7 @@ Your content here.
 <span class="hljs-attribute">clear</span>: both; }
 
 <span class="hljs-selector-class">.row</span> {
-<span class="hljs-attribute">max-width</span>: <span class="hljs-number">80rem</span>;
+<span class="hljs-attribute">max-width</span>: <span class="hljs-variable">$global-page-max-width</span>;
 <span class="hljs-attribute">margin-right</span>: auto;
 <span class="hljs-attribute">margin-left</span>: auto; }
 <span class="hljs-selector-class">.row</span><span class="hljs-selector-pseudo">::before</span>, <span class="hljs-selector-class">.row</span><span class="hljs-selector-pseudo">::after</span> {
@@ -924,7 +930,7 @@ Your content here.
     <span class="hljs-attribute">clear</span>: both; }
   <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.column</span><span class="hljs-selector-pseudo">:last-child</span>, <span class="hljs-selector-class">.large-up-3</span> &gt; <span class="hljs-selector-class">.columns</span><span class="hljs-selector-pseudo">:last-child</span> {
     <span class="hljs-attribute">float</span>: left; }
- }
+}
 </code>
         </pre>
         
@@ -940,7 +946,7 @@ Your content here.
           Filesystem path: components/ebi-header-footer/ebi-header-footer--layout.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.9 KB
+          Size: 4 KB
         </li>
       </ul>
     </section>
@@ -1116,23 +1122,51 @@ Your content here.
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer.variables.scss'</span>;
 
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--header.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--footer.scss'</span>;
 
 <span class="hljs-selector-class">.ebi-header-footer</span> {
   <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--embl-selector.scss'</span>;
-  <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--footer.scss'</span>;
-  
   <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--layout.scss'</span>;
   <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--form.scss'</span>;
   <span class="hljs-keyword">@import</span> <span class="hljs-string">'ebi-header-footer--utility.scss'</span>;
 }
 
-<span class="hljs-selector-class">.data-protection-banner</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-keyword">@include</span> inline-link(
-    <span class="hljs-variable">$vf-link--color</span>: set-ui-color(vf-ui-color--white),
-    <span class="hljs-variable">$vf-link--hover-color</span>: set-ui-color(vf-ui-color--white),
-    <span class="hljs-variable">$vf-link--visited-color</span>: set-ui-color(vf-ui-color--white)
-  );
-  <span class="hljs-attribute">cursor</span>: pointer; <span class="hljs-comment">// data-protection-agree has no href and does no get a pointer by default in most browsers</span>
+<span class="hljs-selector-class">.data-protection-banner</span> {
+
+  <span class="hljs-attribute">background-color</span>: set-color(color-grey-darkest);
+
+  <span class="hljs-selector-class">.row</span> {
+    <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--sm</span>) {
+      <span class="hljs-attribute">display</span>: flex;
+    }
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-variable">$global-page-max-width</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+
+    <span class="hljs-selector-class">.columns</span> {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0.5rem</span> <span class="hljs-number">0.5rem</span>;
+    }
+
+    <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--sm</span>) {
+      <span class="hljs-selector-class">.medium-8</span> {
+        <span class="hljs-attribute">flex</span>: <span class="hljs-number">5</span>;
+      }
+      <span class="hljs-selector-class">.medium-4</span> {
+        <span class="hljs-attribute">flex</span>: <span class="hljs-number">2</span>;
+        <span class="hljs-attribute">text-align</span>: right;
+      }
+    }
+
+  }
+
+  <span class="hljs-selector-tag">a</span> {
+    <span class="hljs-keyword">@include</span> inline-link--dark-mode(
+      <span class="hljs-variable">$vf-link--color</span>: set-ui-color(vf-ui-color--white),
+      <span class="hljs-variable">$vf-link--hover-color</span>: set-ui-color(vf-ui-color--white),
+      <span class="hljs-variable">$vf-link--visited-color</span>: set-ui-color(vf-ui-color--white)
+    );
+    <span class="hljs-attribute">cursor</span>: pointer; <span class="hljs-comment">// data-protection-agree has no href and does no get a pointer by default in most browsers</span>
+  }
+  
 }
 
 </code>
@@ -1150,7 +1184,7 @@ Your content here.
           Filesystem path: components/ebi-header-footer/ebi-header-footer.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.3 KB
+          Size: 1.8 KB
         </li>
       </ul>
     </section>
