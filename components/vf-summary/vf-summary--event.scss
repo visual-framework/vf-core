@@ -47,17 +47,31 @@
   .vf-summary__text {
     margin-bottom: 0;
   }
+  .vf-summary__text + .vf-summary__text {
+    margin-top: 16px;
+  }
 
   .vf-summary__location {
     @include set-type(text-body--3, $custom-margin-bottom: 0);
 
     color: map-get($vf-colors-map, vf-color--grey);
+
+    & + .vf-summary__button {
+      margin-top: 16px;
+    }
+  }
+
+  .vf-summary__button {
+    width: max-content;
   }
 
 }
 
 .vf-summary--easy {
   border-bottom-color: var(--vf-summary-theme-color--background, map-get($vf-ui-colors-map, vf-ui-color--black));
+  box-sizing: border-box;
+  grid-template-rows: max-content 1fr auto auto;
+  height: 100%;
   padding-bottom: 112px;
 
   .vf-summary__title {
