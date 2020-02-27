@@ -19,22 +19,50 @@
 @import 'ebi-header-footer.variables.scss';
 
 @import 'ebi-header-footer--header.scss';
+@import 'ebi-header-footer--footer.scss';
 
 .ebi-header-footer {
   @import 'ebi-header-footer--embl-selector.scss';
-  @import 'ebi-header-footer--footer.scss';
-  
   @import 'ebi-header-footer--layout.scss';
   @import 'ebi-header-footer--form.scss';
   @import 'ebi-header-footer--utility.scss';
 }
 
-.data-protection-banner a {
-  @include inline-link--dark-mode(
-    $vf-link--color: set-ui-color(vf-ui-color--white),
-    $vf-link--hover-color: set-ui-color(vf-ui-color--white),
-    $vf-link--visited-color: set-ui-color(vf-ui-color--white)
-  );
-  cursor: pointer; // data-protection-agree has no href and does no get a pointer by default in most browsers
+.data-protection-banner {
+
+  background-color: #373a36 !important;
+ 
+  .row {
+    @media (min-width: $vf-breakpoint--sm) {
+      display: flex;
+    }
+    max-width: 76.5em;
+    margin: 0 auto;
+
+    .columns {
+      margin: 0 0.5rem 0.5rem;
+    }
+
+    @media (min-width: $vf-breakpoint--sm) {
+      .medium-8 {
+        flex: 5;
+      }
+      .medium-4 {
+        flex: 2;
+        text-align: right;
+      }
+    }
+
+  }
+
+  a {
+    @include inline-link--dark-mode(
+      $vf-link--color: set-ui-color(vf-ui-color--white),
+      $vf-link--hover-color: set-ui-color(vf-ui-color--white),
+      $vf-link--visited-color: set-ui-color(vf-ui-color--white)
+    );
+    cursor: pointer; // data-protection-agree has no href and does no get a pointer by default in most browsers
+  }
+  
 }
 
