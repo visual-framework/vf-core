@@ -24,11 +24,17 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
   a:focus {
     box-shadow: 0 0 2px var(--vf-color--grey--lightest)
   }
-
+  
+  .vf-content .global-masthead-interactive-banner p:not([class*='vf-']) {
+    font-size: 15px; // embl dropdown p tags shouldn't have large text
+  } 
+  
   .global-masthead-interactive-banner {
-    height: 0; overflow: hidden;
+    height: 0; 
+    overflow: hidden;
     display: none;
     background-color: #000;
+    
 
     &.active {
       display: block;
@@ -63,6 +69,8 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
     }
 
     li {
+      font-size: 14.4px; // to closely match existing height
+
       a:before {
         font-family: 'EBI-Generic';
         display: inline-block; // safari 9 & 10 fix
