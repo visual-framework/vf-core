@@ -167,6 +167,26 @@ class="vf-logo">
 
               
                 
+                  <a class="vf-tabs__link" href="vf-summary--event.html">
+                    Event
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-summary--event-easy.html">
+                    Event Easy
+                  </a>
+                 
+               
+
+            
+
+              
+                
                   <a class="vf-tabs__link" href="vf-summary--has-image.html">
                     Has Image
                   </a>
@@ -342,6 +362,12 @@ class="vf-logo">
       
       <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--00b327f84c53fa6808fa271a93be1048">vf-summary--article.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--487ac03f995f12d7d1b178cb376996bc">vf-summary--event.scss</a>
       </li>
       
     
@@ -568,6 +594,142 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         </li>
         <li class="vf-list__item">
           Size: 367 Bytes
+        </li>
+      </ul>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--487ac03f995f12d7d1b178cb376996bc">
+      <div class="FileBrowser-itemPreview">
+        
+        <pre class="vf-code-example__pre">
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-selector-class">.vf-summary--is-link</span> {
+  <span class="hljs-attribute">color</span>: map-get(<span class="hljs-variable">$vf-ui-colors-map</span>, vf-ui-color--black);
+  <span class="hljs-attribute">text-decoration</span>: none;
+  <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">250ms</span>;
+  <span class="hljs-attribute">transition-property</span>: box-shadow;
+  <span class="hljs-attribute">transition-timing-function</span>: ease-in-out;
+
+
+  <span class="hljs-selector-class">.vf-summary__icon</span> {
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">16px</span>;
+    fill: var(--vf-summary-theme-color--background, map-get(<span class="hljs-variable">$vf-ui-colors-map</span>, vf-ui-color--black));
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">16px</span>;
+    <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">250ms</span>;
+    <span class="hljs-attribute">transition-property</span>: transform;
+    <span class="hljs-attribute">transition-timing-function</span>: ease-in-out;
+  }
+
+  &amp;<span class="hljs-selector-pseudo">:hover</span> {
+    <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">4px</span> <span class="hljs-number">4px</span> rgba(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, .<span class="hljs-number">2</span>);
+    <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">250ms</span>;
+    <span class="hljs-attribute">transition-property</span>: box-shadow;
+    <span class="hljs-attribute">transition-timing-function</span>: ease-in-out;
+
+    <span class="hljs-selector-class">.vf-summary__icon</span> {
+      <span class="hljs-attribute">transform</span>: translateX(<span class="hljs-number">4px</span>);
+      <span class="hljs-attribute">transition-delay</span>: <span class="hljs-number">25ms</span>;
+      <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">250ms</span>;
+      <span class="hljs-attribute">transition-property</span>: transform;
+      <span class="hljs-attribute">transition-timing-function</span>: ease-in-out;
+    }
+  }
+}
+
+<span class="hljs-selector-class">.vf-summary--event</span> {
+  <span class="hljs-attribute">background-color</span>: map-get(<span class="hljs-variable">$vf-ui-colors-map</span>, vf-ui-color--white);
+  <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">12px</span> solid transparent;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">16px</span>;
+
+  <span class="hljs-selector-class">.vf-summary__date</span> {
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">4</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+
+    <span class="hljs-attribute">color</span>: map-get(<span class="hljs-variable">$vf-ui-colors-map</span>, vf-ui-color--black);
+    <span class="hljs-attribute">text-transform</span>: uppercase;
+  }
+
+  <span class="hljs-selector-class">.vf-summary__text</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+  }
+  <span class="hljs-selector-class">.vf-summary__text</span> + <span class="hljs-selector-class">.vf-summary__text</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">16px</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-summary__location</span> {
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+
+    <span class="hljs-attribute">color</span>: map-get(<span class="hljs-variable">$vf-colors-map</span>, vf-color--grey);
+
+    &amp; + <span class="hljs-selector-class">.vf-summary__button</span> {
+      <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">16px</span>;
+    }
+  }
+
+  <span class="hljs-selector-class">.vf-summary__button</span> {
+    <span class="hljs-attribute">width</span>: max-content;
+  }
+
+}
+
+<span class="hljs-selector-class">.vf-summary--easy</span> {
+  <span class="hljs-attribute">border-bottom-color</span>: var(--vf-summary-theme-color--background, map-get(<span class="hljs-variable">$vf-ui-colors-map</span>, vf-ui-color--black));
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+  grid-template-rows: max-content <span class="hljs-number">1</span>fr auto auto;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">112px</span>;
+
+  <span class="hljs-selector-class">.vf-summary__title</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">16px</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-summary__date</span> {
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">2px</span> solid map-get(<span class="hljs-variable">$vf-colors-map</span>, vf-color--grey);
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> -<span class="hljs-number">16px</span> <span class="hljs-number">16px</span> -<span class="hljs-number">16px</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;
+  }
+}
+
+<span class="hljs-selector-class">.vf-summary-theme--primary</span> {
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--foreground: #{set-ui-color(vf-ui-color--white)};
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--<span class="hljs-attribute">border</span>: #{set-color(vf-color--green)};
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--<span class="hljs-attribute">background</span>: #{set-color(vf-color--green)};
+}
+
+<span class="hljs-selector-class">.vf-summary-theme--secondary</span> {
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--foreground: #{set-ui-color(vf-ui-color--white)};
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--<span class="hljs-attribute">border</span>: #{set-color(vf-color--blue)};
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--<span class="hljs-attribute">background</span>: #{set-color(vf-color--blue)};
+}
+
+<span class="hljs-selector-class">.vf-summary-theme--tertiary</span> {
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--foreground: #{set-ui-color(vf-ui-color--white)};
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--<span class="hljs-attribute">border</span>: #{set-color(vf-color--grey)};
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--<span class="hljs-attribute">background</span>: #{set-color(vf-color--grey)};
+}
+
+<span class="hljs-selector-class">.vf-summary-theme--quaternary</span> {
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--foreground: #{set-ui-color(vf-ui-color--black)};
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--<span class="hljs-attribute">border</span>: #{set-color(vf-color--yellow)};
+  --vf-summary-theme-<span class="hljs-attribute">color</span>--<span class="hljs-attribute">background</span>: #{set-color(vf-color--yellow)};
+}
+</code>
+        </pre>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-summary/vf-summary--event.scss">/components/raw/vf-summary/vf-summary--event.scss</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-summary/vf-summary--event.scss
+        </li>
+        <li class="vf-list__item">
+          Size: 3.1 KB
         </li>
       </ul>
     </section>
