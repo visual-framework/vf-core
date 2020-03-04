@@ -1,5 +1,7 @@
+// Styling for inline links
+
 @mixin inline-link(
-  $vf-link--color: $vf-link--color,
+  $vf-link--color: map-get($vf-colors-map, vf-color--blue),
   $vf-link--hover-color: $vf-link--hover-color,
   $vf-link--visited-color: $vf-link--visited-color,
   $vf-include-normalisations: $vf-include-normalisations) {
@@ -7,7 +9,7 @@
   /// @todo Add documentation about how/when/where to expect, use $vf-include-normalisations
   @if $vf-include-normalisations == true {
     border-bottom: none;
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   color: $vf-link--color;
@@ -17,6 +19,10 @@
 
     @if $vf-include-normalisations == true {
       border-bottom: none;
+    }
+
+    &:hover {
+      color: $vf-link--visited-color;
       text-decoration: underline;
     }
   }
@@ -31,11 +37,49 @@
   }
 }
 
+@mixin inline-link--dark-mode(
+  $vf-link--color: map-get($vf-colors-map, vf-color--blue),
+  $vf-link--hover-color: $vf-link--hover-color,
+  $vf-link--visited-color: $vf-link--visited-color,
+  $vf-include-normalisations: $vf-include-normalisations) {
+
+  /// @todo Add documentation about how/when/where to expect, use $vf-include-normalisations
+  @if $vf-include-normalisations == true {
+    border-bottom: none;
+    text-decoration: none;
+  }
+
+  color: $vf-link--dark-mode--hover-color;
+
+  &:visited {
+    color: $vf-link--dark-mode--visited-color;
+
+    @if $vf-include-normalisations == true {
+      border-bottom: none;
+    }
+
+    &:hover {
+      color: $vf-link--dark-mode--visited-color;
+      text-decoration: underline;
+    }
+  }
+
+  &:hover {
+    color: $vf-link--dark-mode--hover-color;
+
+    @if $vf-include-normalisations == true {
+      border-bottom: none;
+      text-decoration: underline;
+    }
+  }
+}
+
 
 @mixin button-link(
   $vf-link--color: $vf-link--color,
   $vf-link--hover-color: $vf-link--hover-color,
-  $vf-link--visited-color: $vf-link--visited-color) {
+  $vf-link--visited-color: $vf-link--visited-color
+  ) {
 
   background-color: $vf-link--color;
   border: 2px solid $vf-link--color;
@@ -63,11 +107,6 @@
 
   &:visited {
     background-color: $vf-link--visited-color;
-    color: map-get($vf-ui-colors-map, vf-ui-color--white);
-  }
-
-  &:hover {
-    background-color: $vf-link--hover-color;
     color: map-get($vf-ui-colors-map, vf-ui-color--white);
   }
 }

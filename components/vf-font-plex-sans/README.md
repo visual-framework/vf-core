@@ -1,8 +1,12 @@
+# Font Plex Sans Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-font-plex-sans.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-font-plex-sans)
 
 ## About
 
-## Installation and Implementation
+Makes `IBM Plex Sans` font-family in various weights and italic available to your Sass/CSS and other higher-level components.
+
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-font-plex-sans` with this command.
 
@@ -16,4 +20,4 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-font-plex-sans/index.scss";
 ```
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._

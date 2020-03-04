@@ -1,20 +1,16 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## 1.0.2 
 
-# 0.1.0
+* Removes need for `.vf-body` on `.vf-footer`
+* Refines layout spacing
+* Allows for footer headers to be links
 
-### Added
-- added this
-- added that
+## 1.0.1 (2020-01-24)
 
-### Changes
+* Darkens background
+* Updates layout
 
-- changed this
-- changed that
+## 1.0.0 (2019-12-17)
 
-### Removed
-
-- deleted this
-- deleted that
+* Initial stable release

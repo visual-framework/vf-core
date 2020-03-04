@@ -17,9 +17,10 @@
     env: '{% if frctl.env.server %}server{% else %}static{% endif %}'
   };
   </script>
+  {% render '@vf-polyfill-js' %}
   {% include 'partials/stylesheets.njk' %}
 </head>
-<body>
+<body class="vf-body">
 {% block page %}{% endblock %}
 {% include 'partials/foot.njk' %}
 </body>

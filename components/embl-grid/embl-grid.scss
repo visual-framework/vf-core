@@ -1,13 +1,17 @@
+// embl-grid
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+
 .embl-grid {
-  display: grid;
   grid-column: main;
-  grid-column-gap: var(--page-grid-gap);
-  /* stylelint-disable declaration-colon-space-after */
-  grid-template-columns:
-    calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
-    repeat(auto-fit, minmax(288px, 1fr))
-  ;
-  /* stylelint-enable */
   margin-bottom: 48px;
 
   & > :first-child {
@@ -18,11 +22,25 @@
       grid-column: span 1;
     }
   }
+
   & > *:not(:first-child) {
     @media (max-width: 845px) {
       grid-column: 1 / -1;
     }
   }
+  @media (min-width: $vf-breakpoint--sm) {
+    display: grid;
+    grid-column-gap: var(--page-grid-gap);
+    /* stylelint-disable declaration-colon-space-after */
+    grid-template-columns: 
+      calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser)) 
+      [main-start] 
+      repeat(auto-fit, minmax(288px, 1fr)) 
+      [main-end]
+    ;
+    /* stylelint-enable */
+  }
+  
 }
 
 .embl-grid--has-centered-content {
@@ -66,7 +84,7 @@
       background-color: set-ui-color(vf-ui-color--grey--light);
       content: '';
       height: 100%;
-      left: -18px;
+      left: calc(var(--page-grid-gap) / -2);
       position: absolute;
       width: 1px;
     }

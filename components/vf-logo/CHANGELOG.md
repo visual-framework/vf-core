@@ -3,18 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# 0.1.0
+# 1.0.1 (2020-01-24)
 
-### Added
-- added this
-- added that
+* Tweaks height, adds larger "extreme" variant
 
-### Changes
+# 1.0.0 (2019-12-17)
 
-- changed this
-- changed that
-
-### Removed
-
-- deleted this
-- deleted that
+* Initial stable release

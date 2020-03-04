@@ -1,8 +1,8 @@
+# Masthead Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-masthead.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-masthead)
 
 ## About
-
-## Usage
 
 ### Background Colours
 
@@ -93,7 +93,7 @@ However, this can be overriden if needed using the Sass variables.
 
 <br>
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-masthead` with this command.
 
@@ -107,4 +107,4 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-masthead/index.scss";
 ```
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._

@@ -1,3 +1,5 @@
+# Link List Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-link-list.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-link-list)
 
 ## About
@@ -14,7 +16,7 @@ It can make use of the `vf-badge` component `<span class="vf-badge">Example Tag<
 
 It can include meta information `<p class="vf-links__meta">Example Meta</p>`.
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-link-list` with this command.
 
@@ -28,4 +30,4 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-link-list/index.scss";
 ```
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._

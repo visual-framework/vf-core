@@ -6,17 +6,17 @@
  * This will be dynamically run once emblContentHubSignalFinished is triggered.
  */
 function emblConditionalEdit() {
-  const emblConditionalEdit = document.querySelectorAll('[data-embl-js-conditional-edit]');
-  if (!emblConditionalEdit) {
+  const emblConditionalEditItems = document.querySelectorAll('[data-embl-js-conditional-edit]');
+  if (!emblConditionalEditItems) {
     // exit: lists not found
     return;
   }
-  if (emblConditionalEdit.length == 0) {
+  if (emblConditionalEditItems.length == 0) {
     // exit: lists not found
     return;
   }
 
-  Array.prototype.forEach.call(emblConditionalEdit, (element, i) => {
+  Array.prototype.forEach.call(emblConditionalEditItems, (element, i) => {
     emblConditionalEditDetectParam(location.href,element);
   });
 }

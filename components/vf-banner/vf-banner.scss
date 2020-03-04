@@ -1,14 +1,29 @@
+// vf-banner
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
 @import 'vf-banner.variables.scss';
 
 .vf-banner {
   box-sizing: border-box;
-  padding: 0 12px;
+  padding: 16px;
 
   .vf-badge {
     margin-right: 16px;
   }
 }
 
+// all vf-text links should be underlined in banners
+.vf-banner [class*='vf-text'] .vf-link {
+  text-decoration: underline;
+}
 
 .vf-banner--blocking {
   display: grid;
@@ -20,7 +35,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 5150;
+  z-index: set-layer(vf-z-index--banner);
 }
 
 .vf-banner__content {
@@ -49,8 +64,6 @@
 }
 
 .vf-banner--notice {
-  @include padding--block(all, $vf-notice-banner-padding);
-
   background-color: $vf-notice-banner-color--background;
 
   .vf-text {
@@ -74,7 +87,6 @@
     }
   }
 }
-
 
 .vf-banner--blocking.vf-banner--notice {
   @include padding--block(all, $vf-notice-banner-padding);

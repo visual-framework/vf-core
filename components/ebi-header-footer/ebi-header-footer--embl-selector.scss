@@ -1,0 +1,90 @@
+// ebi-header-footer--footer
+// Custom tag class for Foundation-based EBI framework
+
+/// Classses to theme the embl dropdown selector for the .masthead-black-bar
+
+&.masthead-black-bar {
+  li.embl-selector {
+    border-left: .5px solid rgba(255,255,255,.5);
+    padding-left: 1.5rem;
+  }
+
+  .embl-bar {
+    background-color: var(--vf-ui-color--off-white);
+    color: var(--vf-color--grey--darkest);
+    a {
+      color: var(--vf-color--grey--darkest);
+    }
+    a:hover { 
+      border-bottom: 1px solid var(--vf-ui-color--white);
+    }
+  }
+
+  @media screen and (max-width: 39.9375em) {
+    .dropdown-pane.embl-dropdown {
+      // do not show embl-dropdown on small screens at all
+      display: none;
+      width: 0 !important;
+      overflow: hidden;
+    }
+  }
+
+  .embl-selector {
+    .button.hover,
+    .button:hover {
+      background-color: transparent;
+    }
+    .button[aria-expanded="false"]::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border: inset 4px;
+      border-color: var(--vf-ui-color--white) transparent transparent;
+      border-top-style: solid;
+      position: absolute;
+      top: 18px;
+      margin-left: 55px;
+    }
+
+    &.embl-ebi {
+      .button,
+      .button.hover,
+      .button:focus,
+      .button:hover {
+        background: no-repeat 5px 48% url(https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/EMBL_EBI_Logo_white.svg);
+        padding-left: 95px;
+        background-size: 90px;
+        max-height: 33px;
+      }
+    }
+
+    &.active {
+      background-color: var(--vf-ui-color--off-white);;
+      padding-right: 1rem;
+      .button,
+      .button.hover,
+      .button:focus,
+      .button:hover {
+        background-image: url("https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL/EMBL-black.svg");
+      }
+    }
+
+    &.active.embl-ebi {
+      .button,
+      .button.hover,
+      .button:focus,
+      .button:hover {
+        background-image: url("https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/EMBL_EBI_Logo_black.svg");
+      }
+    }
+  }
+
+  // begin to hide bits of dropdown toggle as screen shrinks
+  @media screen and (max-width: 53em) {
+    li.embl-selector { padding-left: .5rem; }
+    .embl-selector .button { width: 0px; padding-right:1rem; overflow: hidden; }
+    .embl-selector .button:after { display: none; }
+    nav ul.menu li a { padding-right: .35rem; padding-left: .35rem;}
+  }
+}

@@ -1,9 +1,10 @@
 # Activity List Group component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-activity-group.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-activity-group)
 
 ## About
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-activity-group` with this command.
 
@@ -17,4 +18,4 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-activity-group/index.scss";
 ```
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._

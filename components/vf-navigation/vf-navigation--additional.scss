@@ -16,15 +16,18 @@
 
   &::before {
     background-color: inherit;
+    border: 0px solid set-color(vf-color--grey);
+    border-width: 1px 0 1px 0;
+    box-sizing: border-box;
     content: '';
-    height: 35px; // magic number
+    height: calc(100% + 1px);
     left: 50%;
     margin: 0 -50vw;
     position: absolute;
     right: 50%;
     top: 0;
     width: 100vw;
-    z-index: -1;
+    z-index: set-layer(vf-z-index--negative);
   }
 
   .vf-navigation__heading {
@@ -44,7 +47,7 @@
 
   .vf-navigation__link {
     @include inline-link(
-      $vf-link--color: set-color(vf-color--off-white),
+      $vf-link--color: set-ui-color(vf-ui-color--off-white),
       $vf-link--visited-color: set-ui-color(vf-ui-color--white),
       $vf-link--hover-color: set-ui-color(vf-ui-color--white)
     );

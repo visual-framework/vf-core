@@ -1,8 +1,14 @@
+# Blockquote Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-blockquote.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-blockquote)
 
 ## About
 
-## Installation and Implementation
+A way to quote and highlight text.
+
+The pullquote variant will be a decorative variation but has yet to be implemented, it may take inspiration from the [VF 1.3 pullquote](https://www.ebi.ac.uk/style-lab/websites/patterns/pullquotes.html).
+
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-blockquote` with this command.
 
@@ -16,4 +22,4 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-blockquote/index.scss";
 ```
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._

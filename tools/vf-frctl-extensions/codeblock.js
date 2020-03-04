@@ -38,7 +38,7 @@ module.exports = function(fractal){
           if(typeof txt == "undefined") return;
           txt = hljs.highlight(format, txt).value;
 
-          return `<code class="Code Code--lang-${format} vf-code-example"><pre class="vf-code-example__pre">${txt}</pre></code>`;
+          return `<pre class="vf-code-example__pre"><code class="Code Code--lang-${format} vf-code-example">${txt}</code></pre>`;
         };
 
     };

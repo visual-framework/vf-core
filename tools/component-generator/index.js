@@ -7,7 +7,7 @@ var config = require(path.resolve('.','package.json'));
 config.vfConfig = config.vfConfig || [];
 vfName = config.vfConfig.vfName || "Visual Framework 2.0";
 vfNamespace = config.vfConfig.vfNamespace || "vf-";
-vfComponentPath = config.vfConfig.vfComponentPath || __dirname + '/components';
+vfComponentPath = config.vfConfig.vfComponentPath || path.resolve(__dirname, '../../components');
 
 module.exports = class extends Generator {
   prompting() {
@@ -31,10 +31,10 @@ module.exports = class extends Generator {
     this.log((
       chalk.white("This tool helps you develop new components for the Visual Framework \n") +
       chalk.white("Not sure which options to pick? See the guide at: \n") +
-      chalk.white("https://visual-framework.github.io/vf-welcome/documentation/#components")
+      chalk.white("https://visual-framework.github.io/vf-welcome/developing/#components")
     ));
 
-    var componentType = ['element', 'block', 'container', 'grid', 'boilerplate'];
+    var componentType = ['element', 'block', 'container', 'grid', 'utility'];
     if (vfNamespace != 'vf-') {
       var DepartmentType = [vfName, 'VF Global'];
     } else {
@@ -99,6 +99,7 @@ module.exports = class extends Generator {
       this.templatePath('_component.scss'),
       this.destinationPath(totalPath + outputFile),
       {
+        isNpmComponent: this.props.npm,
         componentName: fileName
       }
     );

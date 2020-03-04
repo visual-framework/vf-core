@@ -3,16 +3,16 @@
 <h1 class="vf-text vf-text-heading--1 vf-text--invert">All the components </h1>
 
 {% macro componentByType(displayName='Grids', type='grid', description='') %}
-<section class="vf-grid">
-  <section data-description="label area" style="grid-column: 1 / -1;">
-    <h4 class="vf-text vf-text-heading--5">
+<section>
+  <header data-description="label area" style="grid-column: 1 / -1;">
+    <h4 class="vf-text vf-text-heading--5 | vf-u-margin--0">
       {{ displayName }}
       <a id="{{ type }}"></a>
     </h4>
     <p class="vf-text--body vf-text-body--3">
       {{ description }}
     </p>
-  </section>
+  </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
       {% asyncEach component in frctl.components %}
 
@@ -35,7 +35,7 @@
       {% endeach %}
   </section>
 </section>
-<hr class="vf-divider vf-u-margin__bottom--md vf-u-margin__top--md">
+<hr class="vf-divider">
 {% endmacro %}
 
 {{ componentByType('Grids', type='grid', description='Put stuff in columns.') }}
@@ -47,6 +47,8 @@
 {{ componentByType('Container', type='container', description='More complex components that sometimes have specific layout, like page intros, mastheads, news sections and so on.') }}
 
 {{ componentByType('Boilerplates', type='boilerplate', description='Whole-page templates that are a collection of many components.') }}
+
+{{ componentByType('Utilities', type='utility', description='Utility classes to help where neeed.') }}
 
 {{ componentByType('EMBL Grids', type='embl-grid', description='EMBLs way to put stuff in columns.') }}
 

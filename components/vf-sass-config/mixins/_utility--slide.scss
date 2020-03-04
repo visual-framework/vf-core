@@ -1,4 +1,6 @@
-// A non-jitter causing way to slide elements up/down on hover
+// A non-jitter causing way to slide elements up/down on hover.
+// @include vf-slide-on-hover($shift-distance, $direction:up);
+//
 // via https://codepen.io/csilverman/post/fixing-the-jitter-bug
 // Basic usage:
 //   .card {
@@ -27,7 +29,7 @@
       position: absolute;
       width: 101%;
 
-      z-index: -1;
+      z-index: set-layer(vf-z-index--negative);
 
       @if $direction == 'up' {
         bottom: -#{$shift-distance};

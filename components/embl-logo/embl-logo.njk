@@ -1,3 +1,4 @@
-<a href="http://www.embl.de" class="embl-logo">
-  <img src="{{ '../../assets/embl-logo/assets/logo.png' | path }}" alt="European Molecular Biology Laboratory Home">
+<a href="{{ logo_href }}" class="embl-logo{% if classname %} {{classname}}{% endif %}">
+  <span class="vf-u-sr-only" for="text">{{ logo_text}}</span>
 </a>
+{% if deprecated_text %}<!-- {{ deprecated_text }} -->{% endif %}

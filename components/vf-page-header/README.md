@@ -1,8 +1,12 @@
+# Page Header Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-page-header.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-page-header)
 
 ## About
 
-## Installation and Implementation
+A simple combination of a heading and subheading for pages.
+
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-page-header` with this command.
 
@@ -16,4 +20,4 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-page-header/index.scss";
 ```
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._

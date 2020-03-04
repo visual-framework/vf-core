@@ -3,16 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-### Added
-- added this
-- added that
+# 1.0.0 (2019-12-17)
 
-### Changes
-
-- changed this
-- changed that
-
-### Removed
-
-- deleted this
-- deleted that
+* Initial stable release

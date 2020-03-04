@@ -1,13 +1,25 @@
 // vf-footer
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
 @import 'vf-footer.variables.scss';
 
 .vf-footer {
-  background-color: set-color(vf-color--grey);
+  background-color: set-color(vf-color--grey--dark);
   border-top: 8px solid set-color(vf-color--green);
+  grid-column: 1 / -1;
   padding-bottom: 60px;
   padding-top: 24px;
 
   .vf-links {
+    margin-bottom: 0;
     padding-left: 0;
     padding-right: 0;
   }
@@ -17,72 +29,149 @@
   @include set-type(text-body--3);
 
   color: set-ui-color(vf-ui-color--white);
-  max-width: 52em;
+  max-width: 45em;
 }
 
 .vf-footer__inner {
   grid-column: main;
+  margin: 0 auto;
+  max-width: 76.5em;
+  padding: 0 1rem;
 }
 
 .vf-footer__legal {
   color: set-ui-color(vf-ui-color--white);
-  display: grid;
-  grid-template-columns: repeat(4, max-content);
+  grid-column-gap: var(--page-grid-gap);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  .vf-list {
+    width: 100%;
+  }
+
+  .vf-footer__legal-text,
+  .vf-footer__link {
+    font-size: 14px;
+  }
+  .vf-footer__legal-text {
+    color: set-color(vf-color--grey--lightest);
+  }
+  .vf-footer__link {
+    text-decoration: none;
+  }
+  .vf-list {
+    font-size: 19px;
+  }
+
 
   .vf-footer__legal-text,
   .vf-footer__link {
     padding-top: 12px;
   }
+
+  @media (min-width: $vf-breakpoint--lg) {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+  }
 }
 
 .vf-footer__link {
   @include inline-link(
-    $vf-link--color: set-ui-color(vf-ui-color--white),
-    $vf-link--hover-color: set-color(vf-color--grey--lightest),
-    $vf-link--visited-color: $vf-link--visited-color
+    $vf-link--color: $vf-footer-link--color,
+    $vf-link--hover-color: $vf-footer-link--hover-color,
+    $vf-link--visited-color: $vf-footer-link--visited-color
   );
 }
 
 .vf-footer__list--legal {
   grid-column: 1 / -1;
+
+  .vf-list__item:not(:last-of-type) {
+    margin-right: 24px;
+  }
 }
 
 .vf-footer__links-group {
   border: solid 0px set-color(vf-color--grey--lightest);
   border-width: 1px 0;
   margin-bottom: 12px;
+  padding-bottom: 24px;
 
   .vf-links__heading {
-    @include set-type(text-body--6);
+    @include set-type(text-body--6, $custom-margin-bottom: 8px);
 
     color: set-color(vf-color--grey--lightest);
     text-transform: uppercase;
+  
+    .vf-heading__link {
+      @include inline-link(
+        $vf-link--color: $vf-footer-link--color,
+        $vf-link--hover-color: $vf-footer-link--hover-color,
+        $vf-link--visited-color: $vf-footer-link--visited-color
+      );
+    }
   }
 
+  
+
   .vf-links {
-    margin-bottom: 48px;
     padding-bottom: 0;
     padding-top: 12px;
   }
 
-  .vf-links__item {
+  .vf-list:last-of-type {
     margin-bottom: 0;
   }
+
+  .vf-list__item {
+    margin-bottom: 0;
+  }
+
+  .vf-list__link {
+    text-decoration: none;
+  }
+
+  @media (min-width: $vf-breakpoint--lg) {
+    padding-bottom: 4rem;
+  }
+
 }
 
 .vf-footer .vf-links__link {
   @include inline-link(
-    $vf-link--color: set-ui-color(vf-ui-color--white),
-    $vf-link--hover-color: set-color(vf-color--grey--lightest),
-    $vf-link--visited-color: $vf-link--visited-color
+    $vf-link--color: $vf-footer-link--color,
+    $vf-link--hover-color: $vf-footer-link--hover-color,
+    $vf-link--visited-color: $vf-footer-link--visited-color
   );
 }
 
 .vf-footer .vf-list__link {
   @include inline-link(
-    $vf-link--color: set-ui-color(vf-ui-color--white),
-    $vf-link--hover-color: set-color(vf-color--grey--lightest),
-    $vf-link--visited-color: $vf-link--visited-color
+    $vf-link--color: $vf-footer-link--color,
+    $vf-link--hover-color: $vf-footer-link--hover-color,
+    $vf-link--visited-color: $vf-footer-link--visited-color
   );
-  margin-right: 24px;
+  margin-right: 0;
+  text-decoration: none;
+}
+
+
+// IE 10/11 only fixes
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+
+  // This, more generally, addresses things that don't support css grid, but I think that for us means "IE"
+  // This also doesn't have any responsive support, but, again, not sure if that's important for IE?
+  @media (min-width: $vf-breakpoint--lg) {
+    .vf-footer {
+      left: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      min-width: 100vw;
+      position: relative;
+      right: 50%;
+      width: 100vw;
+    }
+    .vf-footer__inner {
+      margin: 0 auto;
+      max-width: 76.5em;
+    }
+  }
 }

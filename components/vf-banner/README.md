@@ -1,4 +1,4 @@
-# vf-banner component
+# Banner Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-banner.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-banner)
 
@@ -54,4 +54,4 @@ The source files included are written in [Sass][sass] (`scss`) You can simply po
 @import "@visual-framework/vf-banner/index.scss";
 ```
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._

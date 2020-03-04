@@ -1,4 +1,4 @@
-# The Visual Framework Grid System
+# Grid Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-grid.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-grid)
 
@@ -12,7 +12,7 @@ You can define the number of columns with a modifier class.
 
 ***Do Not Use*** with any component that uses the `<table>` HTML element as this breaks built-in browser accessibility for screen readers etc.
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-grid` with this command.
 
@@ -26,7 +26,7 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-grid/index.scss";
 ```
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._
 
 
 <style>

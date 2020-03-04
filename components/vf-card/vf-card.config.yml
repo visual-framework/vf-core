@@ -3,32 +3,123 @@ title: Card
 # Label shown on index pages
 label: Card
 status: alpha
+# preview: '@preview--nogrid'
+collated: true
 # The template used from /components/_previews
-
+#
 context:
   component-type: block
-  # custom-values: passed as {{custom-values}}
-
-  title: Title Block
-  text: two lines of text
-  image: ../../assets/vf-card/assets/vf-card-example.png
-
+  # modifier: vf-u-background-color--grey--lightest
+# Per-variant options
 variants:
   - name: default
+    label: Default
     hidden: true
-  - name: topic-card
+  - name: very-easy
+    label: Very Easy
+    hidden: false
     context:
-      title: Title Block
-      text: two lines of text
-      modifier: vf-card--topic
-  - name: as-link
+      card:
+        card_title: A Easy Card Title 1
+        card_href: "JavaScript:Void(0);"
+        modifier: vf-card--very-easy
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: easy
+    label: Easy
+    hidden: false
     context:
-      title: Title Block
-      text: two lines of text
-      href: https://www.emmbl.de
-      modifier: vf-card--topic
-  - name: navigation-card
+      card:
+        card_title: A Easy Card Title 1
+        card_href: "JavaScript:Void(0);"
+        modifier: vf-card--easy
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: easy--primary
+    label: Easy (primary)
     context:
-      title: Title Block
-      text: two lines of text
-      modifier: vf-card--navigation
+      card:
+        card_title: Easy Card with primary accent
+        card_href: "JavaScript:Void(0);"
+        modifier: vf-card--easy vf-card-theme--primary
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: easy--secondary
+    label: Easy (secondary)
+    context:
+      card:
+        modifier: vf-card--easy vf-card-theme--secondary
+        card_title: A Easy Card with secondary accent
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: easy--tertiary
+    label: Easy (tertiary)
+    context:
+      card:
+        modifier: vf-card--easy vf-card-theme--tertiary
+        card_title: A Easy Card with tertiary accent
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: easy--quaternary
+    label: Easy (quaternary)
+    context:
+      card:
+        modifier: vf-card--easy vf-card-theme--quaternary
+        card_title: A Easy Card with quaternary accent
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: normal
+    label: Normal
+    context:
+      card:
+        card_title: A Normal Card
+        card_href: "JavaScript:Void(0);"
+        modifier: vf-card--normal
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: normal--primairy
+    label: Normal (primary)
+    context:
+      card:
+        card_title: A Normal Card with primairy accent
+        card_href: "JavaScript:Void(0);"
+        modifier: vf-card--normal vf-card-theme--primary
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: normal--secondary
+    label: Normal (secondary)
+    hidden: false
+    context:
+      card:
+        modifier: vf-card--normal vf-card-theme--secondary
+        card_title: A Normal Card with secondary accent
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: normal--tertiary
+    label: Normal (tertiary)
+    hidden: false
+    context:
+      card:
+        modifier: vf-card--normal vf-card-theme--tertiary
+        card_title: A Normal Card with tertiary accent
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: normal--quaternary
+    label: Normal (quaternary)
+    hidden: false
+    context:
+      card:
+        modifier: vf-card--normal vf-card-theme--quaternary
+        card_title: A Normal Card with quaternary accent
+        card_image: ../../assets/vf-card/assets/vf-card-example.png
+        card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  # section_title: Missions
+  # href: www.test. com
+  # section__subheading: To promote molecular biology across Europe
+  # card:
+  # custom-values: passed as {{custom-values}}
+  # title: Title text
+  # text: String of text
+  # image: ../../assets/vf-component-name/assets/vf-component-name.png
+  # - note on paths: be sure to prefix with `../../`
+  # - Why? https://github.com/visual-framework/vf-core/issues/364

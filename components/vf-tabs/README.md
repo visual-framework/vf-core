@@ -1,8 +1,12 @@
+# Tabs Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-tabs.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-tabs)
 
 ## About
 
-## Installation and Implementation
+The ever-useful tabs. This component works best with the included JS, but you can use the CSS styling on other tab sets, like Bootstrap tabs. 
+
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-tabs` with this command.
 
@@ -16,4 +20,4 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-tabs/index.scss";
 ```
 
-_Make sure you import any requirements along with the modules._
+_Make sure you import Sass requirements along with the modules._

@@ -8,10 +8,10 @@
   {% asyncEach menuitem in item %}
     {# {% if menuitem.isIndex == true %} #}
       <section class="embl-grid embl-grid--has-centered-content">
-        <div>
-          <h3 class="vf-text vf-text-heading--4">{{ menuitem.title }}</h3>
+        <div class="vf-section-header">
+          <h3 class="vf-section-header__heading">{{ menuitem.title }}</h3>
         </div>
-        <div class="vf-content">
+        <div class="vf-section-content | vf-content">
           <p class="vf-text--body vf-text-body--2">{{ menuitem.context.intro }}</p>
 
           {{ menuitem.content | markdown }}

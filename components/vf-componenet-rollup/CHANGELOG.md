@@ -3,18 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# 0.1.0
+# 1.0.2 (2020-01-24)
 
-### Added
-- added this
-- added that
+* Adds vf-card-container
 
-### Changes
+# 1.0.1 (2019-12-23)
 
-- changed this
-- changed that
+* Add vf-table, vf-explainer, vf-collapse
 
-### Removed
+# 1.0.0 (2019-12-17)
 
-- deleted this
-- deleted that
+* Initial stable release

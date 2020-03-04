@@ -1,5 +1,14 @@
 // vf-link
 
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
 .vf-link {
   @include inline-link;
 }
@@ -10,4 +19,18 @@
 
 .vf-link--hover {
   color: $vf-link--hover-color;
+}
+
+.vf-u-background-color--grey--dark {
+  .vf-link {
+    @include inline-link($vf-link--dark-mode--hover-color, $vf-link--dark-mode--hover-color, $vf-link--dark-mode--visited-color, $vf-include-normalisations: true);
+  }
+
+  .vf-link--visited {
+    color: $vf-link--dark-mode--visited-color;
+  }
+
+  .vf-link--hover {
+    color: $vf-link--dark-mode--hover-color;
+  }
 }

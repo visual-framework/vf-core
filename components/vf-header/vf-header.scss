@@ -1,5 +1,14 @@
 // vf-header
 
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
 .vf-header {
   background-position: top center;
   background-size: cover;
@@ -46,10 +55,12 @@
 
   @media (min-width: $vf-breakpoint--lg) {
     .vf-masthead__heading {
-      padding: 0 3.75rem; // this makes the header have the same spacing as the rest of the inlay
+      // padding: 0 3rem; // this makes the header have the same spacing as the rest of the inlay
+      padding: 0 1rem;
     }
-    .vf-navigation--main {
-      padding: 0 3rem; // this is so the first list item lines up
-    }
+    // .vf-navigation--main {
+    //   box-sizing: border-box;
+    //   padding: 0 3rem; // this is so the first list item lines up
+    // }
   }
 }

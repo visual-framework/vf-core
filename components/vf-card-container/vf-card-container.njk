@@ -1,0 +1,11 @@
+<section class="vf-card-container{% if modifier %} | {{modifier}}{% endif %}">
+  <div class="vf-card-container__inner">
+    {% include '@vf-section-header' %}
+
+    {% asyncEach card in vf_cards %}
+       {# prefix cardtype #}
+       {% set card_type = '@vf-card--'+card.card_type %}
+       {% render card_type, { 'context': card } %}
+    {% endeach %}
+  </div>
+</section>

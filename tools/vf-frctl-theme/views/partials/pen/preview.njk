@@ -1,6 +1,6 @@
-<div class="vf-body">
-  <div class="vf-grid">
-    <div>
+
+
+
 
     {% if entity.isComponent %}
     {% set variants = entity.variants() %}
@@ -33,13 +33,12 @@
       </div>
 
     {% endif %}
-    </div>
-  </div>
-</div>
+
+
+
 
 {% import "macros/render.njk" as render %}
 {% if (entity.preview == '@preview--blocks') or (entity.preview == '@preview--elements') -%}
-  <div class="vf-body"><div class="vf-grid">
   <div class="vf-component__container">
   <!-- @preview--blocks aren't done in iframes, this allows us a bit more flexibility and to test cross-contamination -->
   {% for item in variants %}
@@ -57,7 +56,6 @@
     {% endif %}
   {% endfor %}
   </div>
-  </div></div>
 {% else %}
   <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-{{ entity.id }}">
       <div class="Preview-wrapper" data-role="resizer-disabled">
@@ -75,15 +73,11 @@
           >
         </iframe>
         {%- endif %}
-        <div class="vf-body">
-          <div class="vf-grid">
             <p class="vf-figure__caption">
               Open the above preview in a new window:
               <a href="{{ path(frctl.theme.urlFromRoute('preview', { handle: entity.handle })) }}"><span>With layout</span> Open</a>
               <a href="{{ path(frctl.theme.urlFromRoute('render', { handle: entity.handle })) }}"><span>Component only</span> Open</a>
             </p>
-          </div>
-        </div>
 
       </div>
   </div>

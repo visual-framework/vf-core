@@ -1,97 +1,39 @@
 // vf-card
 
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
 
 @import 'vf-card.variables.scss';
 
 .vf-card {
-  @include margin( 0, map-get($vf-spacing-map, vf-spacing--md) );
+  --card-text-color: var(--vf-card-theme-color--foreground, #{set-ui-color(vf-ui-color--black)});
+  --card-background-color: var(--vf-card-theme-color--background , #{set-ui-color(vf-ui-color--white)});
 
+  background-color: var(--card-background-color);
   display: grid;
-  grid-template-rows: 216px repeat(6, 36px);
-  padding: 0 -16px;
-  transition: all .1s linear;
+  grid-template-rows: 216px 1fr;
+  transition-duration: 250ms;
+  transition-property: box-shadow;
+  transition-timing-function: ease-in-out;
 
   &:hover {
-    margin: 0;
-    padding: 0;
-    transition: all .1s linear;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
+    transition-duration: 250ms;
+    transition-property: box-shadow;
+    transition-timing-function: ease-in-out;
   }
 }
 
-a.vf-card {
+.vf-card--is-link {
   cursor: pointer;
   text-decoration: none;
 }
-
-.vf-card__title {
-  color: set-ui-color(vf-ui-color--black);
-}
-
-.vf-card__text {
-  color: set-ui-color(vf-ui-color--black);
-}
-
-.vf-card--topic {
-  background-color: $vf-card--topic-bg-color;
-
-  .vf-card__content {
-    grid-row: 2 / -1;
-    z-index: 101;
-  }
-
-  &:hover {
-    .vf-card__title {
-      padding-left: 36px;
-      transition: all .1s linear;
-    }
-    .vf-card__text {
-      padding-left: 36px;
-      padding-right: 36px;
-      transition: all .1s linear;
-    }
-  }
-
-  .vf-card__title {
-    @include set-type(text-body--5);
-
-    background-color: $vf-card--topic-bg-color;
-    display: inline-block;
-    margin-bottom: 0;
-    padding: map-get($vf-spacing-map, vf-spacing--md) map-get($vf-spacing-map, vf-spacing--lg);
-    text-decoration: none !important;
-    text-transform: uppercase;
-  }
-
-  .vf-card__text {
-    background-color: $vf-card--topic-bg-color;
-    padding: map-get($vf-spacing-map, vf-spacing--md) map-get($vf-spacing-map, vf-spacing--lg);
-    text-decoration: none !important;
-  }
-}
-
-.vf-card--navigation {
-
-  .vf-card__content {
-    background-color: $vf-card--navigation-bg-color;
-    grid-row: 3 / -1;
-    padding: map-get($vf-spacing-map, vf-spacing--md) map-get($vf-spacing-map, vf-spacing--lg);
-  }
-
-  &:hover {
-    .vf-card__content {
-      padding-left: 36px;
-      padding-right: 36px;
-      transition: all .1s linear;
-    }
-  }
-
-}
-
-.vf-card__content {
-  grid-column: 1 / -1;
-  transition: all .1s linear;
-}
-
 
 .vf-card__image {
   grid-column: 1 / -1;
@@ -100,22 +42,105 @@ a.vf-card {
   max-width: 100%;
   object-fit: cover;
   width: 100%;
+}
 
+.vf-card__content {
+  grid-column: 1 / -1;
+  padding: 16px 24px;
 }
 
 .vf-card__title {
   @include set-type(text-heading--3);
 
+  background-color: var(--card-background-color);
+  color: set-ui-color(vf-ui-color--black);
+  color: var( --card-text-color, #{set-ui-color(vf-ui-color--black)} );
   text-decoration: none;
-  transition: all .1s linear;
 }
 
 .vf-card__text {
   @include set-type(text-body--2);
 
-  transition: all .1s linear;
+  color: set-ui-color(vf-ui-color--black);
+  color: var( --card-text-color, #{set-ui-color(vf-ui-color--black)} );
 }
 
 .vf-card__link {
   @include inline-link;
+}
+
+// vf-card levels of design
+.vf-card--very-easy {
+  border-bottom: 8px solid rgba(0, 0, 0, 0); // fixes a grid layout glitch when used with variant volume's that have a bottom border
+}
+
+.vf-card--easy {
+  border-bottom: 8px solid set-ui-color(vf-ui-color--black);
+  border-bottom-color: var(--vf-card-theme-color--border, #{set-ui-color(vf-ui-color--black)});
+
+  .vf-card__title {
+    --card-text-color: #{set-color(vf-color--blue)};
+  }
+  .vf-card__text {
+    --card-text-color: #{set-ui-color(vf-ui-color--black)};
+  }
+}
+
+.vf-card--normal {
+  --card-text-color: var(--vf-card-theme-color--foreground, #{set-ui-color(vf-ui-color--white)});
+  --card-background-color: var(--vf-card-theme-color--background, #{set-ui-color(vf-ui-color--black)});
+}
+
+.vf-card--hard {
+  --card-text-color: var(--vf-card-theme-color--foreground, #{set-ui-color(vf-ui-color--white)});
+  --card-background-color: var(--vf-card-theme-color--background, #{set-ui-color(vf-ui-color--black)});
+
+  .vf-card__content {
+    grid-row: 2 / -1;
+  }
+
+  .vf-card__title {
+    @include set-type(text-body--5);
+
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: -24px;
+    margin-top: 2px; // because reasons
+    padding: 16px 24px;
+    text-transform: uppercase;
+  }
+
+  .vf-card__text {
+    padding-top: 16px;
+  }
+}
+
+// vf-card themes
+
+[class*='ary'].vf-card--easy {
+  --vf-card-theme-color--background: #{set-ui-color(vf-ui-color--white)};
+}
+
+.vf-card-theme--primary {
+  --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
+  --vf-card-theme-color--border: #{set-color(vf-color--green)};
+  --vf-card-theme-color--background: #{set-color(vf-color--green)};
+}
+
+.vf-card-theme--secondary {
+  --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
+  --vf-card-theme-color--border: #{set-color(vf-color--blue)};
+  --vf-card-theme-color--background: #{set-color(vf-color--blue)};
+}
+
+.vf-card-theme--tertiary {
+  --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
+  --vf-card-theme-color--border: #{set-color(vf-color--grey)};
+  --vf-card-theme-color--background: #{set-color(vf-color--grey)};
+}
+
+.vf-card-theme--quaternary {
+  --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--black)};
+  --vf-card-theme-color--border: #{set-color(vf-color--yellow)};
+  --vf-card-theme-color--background: #{set-color(vf-color--yellow)};
 }

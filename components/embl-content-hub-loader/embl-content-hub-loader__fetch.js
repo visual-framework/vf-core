@@ -3,7 +3,7 @@
 
 import { vfBanner } from 'vf-banner/vf-banner';
 import { vfTabs } from 'vf-tabs/vf-tabs';
-
+import { emblConditionalEdit } from 'embl-conditional-edit/embl-conditional-edit';
 
 /**
  * Fetch html links from content.embl.org
@@ -51,17 +51,9 @@ function emblContentHubFetch() {
       // track time it takes for link to be shown
       if (emblContentHubShowTimers) { console.time('timer for import ' + linkPosition); }
 
-      // if native, no need to wait
-      if (emblContentHubLinks[linkPosition].import !== undefined) {
-        emblContentHubGrabTheContent(emblContentHubLinks[linkPosition],linkPosition);
-        if (linkPosition+1 == emblContentHubLinks.length) {
-          emblContentHubSignalFinished();
-        }
-      } else {
-        // await the import's loading
-        emblContentHubAwaitLoading(emblContentHubLinks[linkPosition],linkPosition);
-      }
-
+      // await the load of the html import from the polyfill 
+      // note: we use polyfill in all cases; see https://github.com/visual-framework/vf-core/issues/508
+      emblContentHubAwaitLoading(emblContentHubLinks[linkPosition],linkPosition);
     }());
   }
 
@@ -98,6 +90,12 @@ function emblContentHubFetch() {
     // pickup the "meat" of the exported content
     exportedContent = exportedContent || targetLink.import.querySelector('.vf-content-hub-html');
 
+    // make sure we have something
+    if (!exportedContent) {
+      console.log('No content found for this import, exiting. The import may have already been preformed.', targetLink);
+      return;
+    }
+
     // if there is just one child element and it is a div, use that
     // (this helps with css grid layout)
     if (exportedContent.childElementCount === 1 &&
@@ -106,7 +104,34 @@ function emblContentHubFetch() {
       exportedContent = exportedContent.firstElementChild;
       exportedContent.classList.add('vf-content-hub-html');
       exportedContent.classList.add('vf-content-hub-html__derived-div');
-    }
+    } else if (exportedContent.childNodes.length == 3) {
+      // if there are three or fewer child nodes this is likely a no-results reply
+      // We'll still inject the content from the contentHub along with any passed "no matches" text
+      var noContentMessage = targetLink.getAttribute('data-embl-js-content-hub-loader-no-content');
+
+      if (noContentMessage == 'true') {
+        // use a default
+        noContentMessage = 'No content was found found for this query.';
+      } 
+
+      var noContentMessageElement = document.createElement('div');
+      noContentMessageElement.classList.add('vf-text');
+      noContentMessageElement.classList.add('embl-content-hub-html__no-content-found');
+      noContentMessageElement.innerHTML = noContentMessage;
+      exportedContent.appendChild(noContentMessageElement.firstChild);
+
+      // if data-embl-js-content-hub-loader-no-content-hide is true or has a class, hide accordingly
+      var noContentHideBehavior = targetLink.getAttribute('data-embl-js-content-hub-loader-no-content-hide');
+      if (noContentHideBehavior) {
+        if (noContentHideBehavior == 'true') {
+          // if true, just hide the response
+          exportedContent.classList.add('vf-u-display-none');
+        } else {
+          // otherwise hide any element specified
+          document.querySelector(noContentHideBehavior).classList.add('vf-u-display-none');
+        }
+      } // END noContentHideBehavior
+    } // END exportedContent.childElementCount
 
     var contentID = emblContentHubGenerateID(position);
 
@@ -187,7 +212,7 @@ function emblContentHubFetch() {
     var dateRemainingList = document.querySelector('.'+emblContentHubGenerateID(position)).querySelectorAll('.date-days-remaining');
     var todayDate = new Date();
     if (dateRemainingList.length > 0) {
-      for (dateRemainingIndex = 0; dateRemainingIndex < dateRemainingList.length; dateRemainingIndex++) {
+      for (let dateRemainingIndex = 0; dateRemainingIndex < dateRemainingList.length; dateRemainingIndex++) {
         var dateValue = parseInt(dateRemainingList[dateRemainingIndex].getAttribute('data-datetime')) * 1000;
         dateValue = new Date(dateValue);
         var numberOfDiffDays = days_between(dateValue, todayDate);
