@@ -28,6 +28,8 @@ import { vfBanner } from 'vf-banner/vf-banner';
 function emblNotifications(firstPassedVar) {
   firstPassedVar = firstPassedVar || 'defaultVal';
 
+  console.log('emblNotifications','Checking for notifcaitons.');
+
   // @todo
   // 1. Fetch json from contentHub
   // 2. If success
@@ -47,7 +49,7 @@ function emblNotifications(firstPassedVar) {
 export { emblNotifications };
 
 // Add this to your ./components/vf-component-rollup/scripts.js
-// import { vfEmblNotification } from '../components/raw/embl-notifications/embl-notifications.js';
+// import { emblNotifications } from '../components/raw/embl-notifications/embl-notifications.js';
 // And invoke it
 // emblNotifications();
 
