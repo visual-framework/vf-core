@@ -20,21 +20,20 @@
 // if you need to import any other components' JS to use here
 import { vfBanner } from 'vf-banner/vf-banner';
 
-
 /**
   * The global function for this component
-  * @example emblNotifications(firstPassedVar)
+  * @example emblNotificationsInject(notification)
   * @param {object} [notification] - An object to be show on a page
   */
- function emblNotificationsInjectAnnouncements(notification) {
+ function emblNotificationsInject(notification) {
 
-  console.log('emblNotifications', notification);
+  console.log('emblNotifications, showing:', notification);
     
 }
 
 /**
   * The global function for this component
-  * @example emblNotifications(firstPassedVar)
+  * @example emblNotifications(currentHost, currentPath)
   * @param {string} [currentHost] - a host url www.embl.org
   * @param {string} [currentPath] - a path /people/name
   */
@@ -47,7 +46,7 @@ function emblNotifications(currentHost, currentPath) {
   // don't treat `wwwdev` as distinct from `www`
   currentHost = currentHost.replace(/wwwdev/g, "www");
 
-  console.log('emblNotifications', 'Current url info: ' + currentHost + "," + currentPath);
+  console.log('emblNotifications, Current url info:', currentHost + "," + currentPath);
 
   // Process each message against the current URLs
   function matchNotification(message) {
@@ -57,9 +56,9 @@ function emblNotifications(currentHost, currentPath) {
     // don't try to much no path or '/'
     if (currentPath.length > 1) {
       // Is there an exact match
-      console.log('matching:', currentHost+currentPath);
-      // emblNotificationsInjectAnnouncements(messages[currentHost+currentPath]);
-      // emblNotificationsInjectAnnouncements(messages[currentHost+currentPath + '/']);
+      console.log('emblNotifications, matching:', currentHost+currentPath);
+      // emblNotificationsInject(messages[currentHost+currentPath]);
+      // emblNotificationsInject(messages[currentHost+currentPath + '/']);
 
       // Handle wildcard matches like `/about/*`
       var currentPathArray = currentPath.split('/');
@@ -77,18 +76,18 @@ function emblNotifications(currentHost, currentPath) {
 
       // console.log(pathsToMatch);
       for (var i = 0; i < pathsToMatch.length; i++) {
-        console.log('matching:', pathsToMatch[i]+'*');
+        console.log('emblNotifications, matching:', pathsToMatch[i]+'*');
         // we only match partial paths if they end in *
-        // emblNotificationsInjectAnnouncements(messages[pathsToMatch[i] + '*']);
-        // emblNotificationsInjectAnnouncements(messages[pathsToMatch[i] + '/*']);
+        // emblNotificationsInject(messages[pathsToMatch[i] + '*']);
+        // emblNotificationsInject(messages[pathsToMatch[i] + '/*']);
       }
     } else {
-      // no current path means we're on the root domain
+      // no current path means we're on a root domain
       // `https://www.ebi.ac.uk` should match `www.ebi.ac.uk` and `www.ebi.ac.uk/` and `www.ebi.ac.uk/*`
-      console.log('matching:', currentHost);
-      // emblNotificationsInjectAnnouncements(messages[currentHost]);
-      // emblNotificationsInjectAnnouncements(messages[currentHost + '/']);
-      // emblNotificationsInjectAnnouncements(messages[currentHost + '/*']);
+      console.log('emblNotifications, matching:', currentHost);
+      // emblNotificationsInject(messages[currentHost]);
+      // emblNotificationsInject(messages[currentHost + '/']);
+      // emblNotificationsInject(messages[currentHost + '/*']);
     }
   }
 
