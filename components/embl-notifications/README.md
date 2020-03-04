@@ -17,7 +17,7 @@ $ yarn add --dev @visual-framework/embl-notifications
 Add this to your `./components/vf-component-rollup/scripts.js`:
 
 ```js
-import { vfEmblNotification } from '../components/raw/embl-notifications/embl-notifications.js';
+import { vfEmblNotification } from 'embl-notifications/embl-notifications';
 emblNotifications(); // invoke it
 ```
 

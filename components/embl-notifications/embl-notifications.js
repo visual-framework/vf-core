@@ -32,6 +32,7 @@ function emblNotifications(firstPassedVar) {
 
   // @todo
   // 1. Fetch json from contentHub
+  //   - https://dev.content.embl.org/api/v1/notifications?_format=json
   // 2. If success
   //   - get current page url
   //   - compare to `notification_ulrs`
