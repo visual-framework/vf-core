@@ -20,5 +20,3 @@ Add this to your `./components/vf-component-rollup/scripts.js`:
 import { vfEmblNotification } from 'embl-notifications/embl-notifications';
 emblNotifications(); // invoke it
 ```
-
-

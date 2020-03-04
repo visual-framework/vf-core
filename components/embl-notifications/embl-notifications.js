@@ -20,7 +20,19 @@
 // if you need to import any other components' JS to use here
 import { vfBanner } from 'vf-banner/vf-banner';
 
- /**
+
+/**
+  * The global function for this component
+  * @example emblNotifications(firstPassedVar)
+  * @param {object} [notification] - An object to be show on a page
+  */
+ function emblNotificationsInjectAnnouncements(notification) {
+
+  console.log('emblNotifications', notification);
+    
+}
+
+/**
   * The global function for this component
   * @example emblNotifications(firstPassedVar)
   * @param {string} [firstPassedVar]  - An option to be passed
@@ -30,12 +42,61 @@ function emblNotifications(firstPassedVar) {
 
   console.log('emblNotifications','Checking for notifcaitons.');
 
-  // are there matching announcements for the current URL
+  // Find matching announcements for the current URL or path
   function detectAnnouncements(messages) {
-    console.log(messages);
+    console.log('emblNotifications', messages);
+
+
+    var currentHost = window.location.hostname,
+        currentPath = window.location.pathname;
+
+    // don't treat `wwwdev` as distinct from `www`
+    currentHost = currentHost.replace(/wwwdev/g, "www");
+
+    console.log('emblNotifications', 'Current url info: ' + currentHost + "," + currentPath);
+
+    // @todo for loop for each message
+
+    // if the page has a path, try to make matches
+    // don't try to much no path or '/'
+    if (currentPath.length > 1) {
+      // Is there an exact match
+      console.log('matching:', currentHost+currentPath);
+      // emblNotificationsInjectAnnouncements(messages[currentHost+currentPath]);
+      // emblNotificationsInjectAnnouncements(messages[currentHost+currentPath + '/']);
+
+      // Handle wildcard matches like `/about/*`
+      var currentPathArray = currentPath.split('/');
+
+      // construct a list of possible paths to match
+      // /style-lab/frag1/frag2 =
+      // - /style-lab/frag1/frag2
+      // - /style-lab/frag1
+      // - /style-lab
+      var pathsToMatch = [currentHost + currentPathArray[0]];
+      for (var i = 1; i < currentPathArray.length; i++) {
+        var tempPath = pathsToMatch[i - 1];
+        pathsToMatch.push(tempPath + '/' + currentPathArray[i]);
+      }
+
+      // console.log(pathsToMatch);
+      for (var i = 0; i < pathsToMatch.length; i++) {
+        console.log('matching:', pathsToMatch[i]+'*');
+        // we only match partial paths if they end in *
+        // emblNotificationsInjectAnnouncements(messages[pathsToMatch[i] + '*']);
+        // emblNotificationsInjectAnnouncements(messages[pathsToMatch[i] + '/*']);
+      }
+    } else {
+      // no current path means we're on the root domain
+      // `https://www.ebi.ac.uk` should match `www.ebi.ac.uk` and `www.ebi.ac.uk/` and `www.ebi.ac.uk/*`
+      console.log('matching:', currentHost);
+      // emblNotificationsInjectAnnouncements(messages[currentHost]);
+      // emblNotificationsInjectAnnouncements(messages[currentHost + '/']);
+      // emblNotificationsInjectAnnouncements(messages[currentHost + '/*']);
+    }
   }
 
-  // Fetch a file utility
+  // Utility to fetch a file, process the JSON
   function loadRemoteAnnouncements(file) {
     console.log('emblNotifications','Opening URL ' + file);
     if (window.XMLHttpRequest) {
@@ -68,10 +129,6 @@ function emblNotifications(firstPassedVar) {
   }
 
   // @todo
-  // 1. Fetch json from contentHub
-  //   - 
-  // 2. If success
-  //   - get current page url
   //   - compare to `notification_ulrs`
   //     We can steal code from the EBI VF https://github.com/ebiwd/EBI-Framework/blob/v1.3/js/ebi-global-includes/script/4_ebiFrameworkContent.js#L391-L475
   // 3. If matching URL
