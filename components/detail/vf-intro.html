@@ -397,6 +397,43 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 }
 
+<span class="hljs-comment">/*
+ * We are moving to the idea of not relying on .vf-body for centering.
+ * Until then we need to have this litte 'reset'
+ */</span>
+<span class="hljs-selector-class">.vf-body</span> <span class="hljs-selector-class">.vf-intro</span> {
+  <span class="hljs-attribute">box-sizing</span>: initial;
+  <span class="hljs-attribute">margin-left</span>: unset;
+  <span class="hljs-attribute">margin-right</span>: unset;
+  <span class="hljs-attribute">max-width</span>: unset;
+  <span class="hljs-attribute">padding-left</span>: unset;
+  <span class="hljs-attribute">padding-right</span>: unset;
+}
+
+<span class="hljs-selector-class">.vf-intro</span> {
+  --vf-intro-spacing: <span class="hljs-number">200px</span>;
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">display</span>: grid;
+  grid-column: main;
+  grid-template-rows: <span class="hljs-number">1</span>fr repeat(<span class="hljs-number">10</span>, min-content);
+  <span class="hljs-attribute">margin-left</span>: auto;
+  <span class="hljs-attribute">margin-right</span>: auto;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">78.5em</span>;
+  <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">1em</span>;
+  <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">1em</span>;
+}
+
+<span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
+  <span class="hljs-selector-class">.vf-intro</span> {
+    grid-<span class="hljs-attribute">column-gap</span>: var(--page-grid-gap);
+    grid-template-areas: <span class="hljs-string">'... header header'</span> <span class="hljs-string">'... ...    links'</span>;
+    grid-template-<span class="hljs-attribute">columns</span>: var(--embl-grid-module--prime) auto var(--embl-grid-module--prime);
+  }
+
+  <span class="hljs-selector-class">.vf-intro__heading</span> { grid-<span class="hljs-selector-tag">area</span>: header; }
+  <span class="hljs-selector-class">.vf-intro</span> <span class="hljs-selector-class">.vf-links</span> { grid-<span class="hljs-selector-tag">area</span>: links; grid-row-end: -<span class="hljs-number">1</span>; }
+}
+
 <span class="hljs-selector-class">.vf-intro__heading</span> {
   <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">1</span>);
   <span class="hljs-keyword">@include</span> margin--block(bottom, <span class="hljs-number">56px</span>);
@@ -448,7 +485,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-intro/vf-intro.scss
         </li>
         <li class="vf-list__item">
-          Size: 961 Bytes
+          Size: 1.9 KB
         </li>
       </ul>
     </section>
