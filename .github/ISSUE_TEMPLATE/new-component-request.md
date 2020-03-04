@@ -10,7 +10,7 @@ Add a one sentence summary of what it is you need it to do.
 
 Not sure? Confused?
 
-[Chat with us](https://discord.gg/XHAvkUX) and consult our [governance approach](https://visual-framework.github.io/vf-welcome/documentation/guidelines/governance/).
+[Chat with us](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ) and consult our [governance approach](https://visual-framework.github.io/vf-welcome/developing/guidelines/governance/).
 
 ---
 
