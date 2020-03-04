@@ -1,3 +1,5 @@
-# 1.0.0-alpha.1
+# Change Log
 
-- Initial release
+## 1.0.0-alpha.1
+
+* Initial release
