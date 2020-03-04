@@ -35,27 +35,23 @@ import { vfBanner } from 'vf-banner/vf-banner';
 /**
   * The global function for this component
   * @example emblNotifications(firstPassedVar)
-  * @param {string} [firstPassedVar]  - An option to be passed
+  * @param {string} [currentHost] - a host url www.embl.org
+  * @param {string} [currentPath] - a path /people/name
   */
-function emblNotifications(firstPassedVar) {
-  firstPassedVar = firstPassedVar || 'defaultVal';
+function emblNotifications(currentHost, currentPath) {
+  currentHost = currentHost || window.location.hostname;
+  currentPath = currentPath || window.location.pathname;
 
   console.log('emblNotifications','Checking for notifcaitons.');
 
-  // Find matching announcements for the current URL or path
-  function detectAnnouncements(messages) {
-    console.log('emblNotifications', messages);
+  // don't treat `wwwdev` as distinct from `www`
+  currentHost = currentHost.replace(/wwwdev/g, "www");
 
+  console.log('emblNotifications', 'Current url info: ' + currentHost + "," + currentPath);
 
-    var currentHost = window.location.hostname,
-        currentPath = window.location.pathname;
-
-    // don't treat `wwwdev` as distinct from `www`
-    currentHost = currentHost.replace(/wwwdev/g, "www");
-
-    console.log('emblNotifications', 'Current url info: ' + currentHost + "," + currentPath);
-
-    // @todo for loop for each message
+  // Process each message against the current URLs
+  function matchNotification(message) {
+    console.log(message);
 
     // if the page has a path, try to make matches
     // don't try to much no path or '/'
@@ -96,8 +92,18 @@ function emblNotifications(firstPassedVar) {
     }
   }
 
+  // Process each message
+  function processNotifications(messages) {
+    console.log('emblNotifications', messages);
+
+    // Process each message
+    for (let index = 0; index < messages.length; index++) {
+      matchNotification(messages[index]);     
+    }
+  }
+
   // Utility to fetch a file, process the JSON
-  function loadRemoteAnnouncements(file) {
+  function loadRemoteNotifications(file) {
     console.log('emblNotifications','Opening URL ' + file);
     if (window.XMLHttpRequest) {
       var xmlhttp = new XMLHttpRequest();
@@ -108,7 +114,7 @@ function emblNotifications(firstPassedVar) {
         if (xmlhttp.status === 200) {
           // eval(xmlhttp.responseText);
           // var m = m || ''; // make sure the message isn't null
-          detectAnnouncements(eval(xmlhttp.responseText));
+          processNotifications(eval(xmlhttp.responseText));
         } else {
           console.error(xmlhttp.statusText);
         }
@@ -122,10 +128,10 @@ function emblNotifications(firstPassedVar) {
 
   // If on dev, reference dev server
   if (window.location.hostname.indexOf('wwwdev.') === 0) {
-    loadRemoteAnnouncements('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
+    loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
   } else {
   // @todo update this to point to prod
-  loadRemoteAnnouncements('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
+  loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
   }
 
   // @todo
