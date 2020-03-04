@@ -30,9 +30,46 @@ function emblNotifications(firstPassedVar) {
 
   console.log('emblNotifications','Checking for notifcaitons.');
 
+  // are there matching announcements for the current URL
+  function detectAnnouncements(messages) {
+    console.log(messages);
+  }
+
+  // Fetch a file utility
+  function loadRemoteAnnouncements(file) {
+    console.log('emblNotifications','Opening URL ' + file);
+    if (window.XMLHttpRequest) {
+      var xmlhttp = new XMLHttpRequest();
+    }
+    xmlhttp.open("GET", file, true);
+    xmlhttp.onload = function (e) {
+      if (xmlhttp.readyState === 4) {
+        if (xmlhttp.status === 200) {
+          // eval(xmlhttp.responseText);
+          // var m = m || ''; // make sure the message isn't null
+          detectAnnouncements(eval(xmlhttp.responseText));
+        } else {
+          console.error(xmlhttp.statusText);
+        }
+      }
+    };
+    xmlhttp.onerror = function (e) {
+      console.error(xmlhttp.statusText);
+    };
+    xmlhttp.send(null);
+  }
+
+  // If on dev, reference dev server
+  if (window.location.hostname.indexOf('wwwdev.') === 0) {
+    loadRemoteAnnouncements('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
+  } else {
+  // @todo update this to point to prod
+  loadRemoteAnnouncements('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
+  }
+
   // @todo
   // 1. Fetch json from contentHub
-  //   - https://dev.content.embl.org/api/v1/notifications?_format=json
+  //   - 
   // 2. If success
   //   - get current page url
   //   - compare to `notification_ulrs`
@@ -43,6 +80,7 @@ function emblNotifications(firstPassedVar) {
 
   // Possible features not currently planned:
   // - Only show if a wrapping element has data-vf-js-embl-notifications`
+  // - Also load message from EBI https://ebi.emblstatic.net/announcements.js
 
 }
 
