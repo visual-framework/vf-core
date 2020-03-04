@@ -102,20 +102,21 @@
 
 
 .vf-links__list--easy {
+  
   .vf-links__heading {
     grid-column: 1 / -1;
   }
 
   .vf-links__list {
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
-    grid-column-gap: 40px;
-
     grid-column: 1 / -1;
+    grid-column-gap: 40px;
     grid-row-gap: 30px;
-    .vf-list__item {
-      margin-bottom: 0;
-    }
+    grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+  }
+
+  .vf-list__item {
+    margin-bottom: 0;
   }
 
   .vf-list__link {
@@ -126,8 +127,8 @@
   .vf-list__icon {
     fill: currentcolor;
     height: 1em;
-    width: 1em;
     margin-left: 6px;
     transform: translateY(3px);
+    width: 1em;
   }
 }
