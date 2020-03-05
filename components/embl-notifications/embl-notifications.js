@@ -18,7 +18,7 @@
  */
 
 // if you need to import any other components' JS to use here
-import { vfBanner } from 'vf-banner/vf-banner';
+// import { vfBanner } from 'vf-banner/vf-banner';
 
 /**
   * The global function for this component
@@ -26,6 +26,52 @@ import { vfBanner } from 'vf-banner/vf-banner';
   * @param {object} [message] - An object to be show on a page
   */
  function emblNotificationsInject(message) {
+  if (message.field_notification_position == 'fixed') {
+    // <div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice" data-vf-js-banner data-vf-js-banner-state="dismissible" data-vf-js-banner-button-text="NaN" data-vf-js-banner-cookie-name="NaN" data-vf-js-banner-cookie-version="NaN" data-vf-js-banner-extra-button="<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>"
+    //     data-vf-js-banner-auto-accept="false">
+    //     <div class="vf-banner__content | vf-grid" data-vf-js-banner-text>
+    //         <p class="vf-text vf-text-body--2">
+    //             This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-link"
+    //                 href="JavaScript:Void(0);">Terms Of Use</a>.
+    //         </p>
+    //     </div>
+    // </div>
+    
+  } else if (message.field_notification_position == 'inline') {
+    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
+    console.log(message.body)
+    let output = document.createElement('div');
+    output.classList.add('vf-banner', 'vf-banner--phase', 'vf-content');
+    output.innerHTML = `
+      <div class="vf-banner__content">
+        <p class="vf-text-body--3">${message.body}</p>
+      </div>`;
+  
+    // insert after `vf-header` or at after `vf-body`
+    // @todo: add support for where "inline" message should be shown
+    let target = document.getElementsByClassName('vf-header');
+    if (target.length > 0) {
+      target[0].parentNode.insertBefore(output, target[0].nextSibling);
+    } else {
+      // if no vf-header, show at vf-body
+      // @thought: we might instead make this show as "top"
+      let target = document.getElementsByClassName('vf-body');
+      if (target.length > 0) {
+        output.classList.add('vf-u-grid--reset');
+        target[0].prepend(output);
+      } // if still no success, we soft fail
+    }
+
+  } else if (message.field_notification_position == 'top') {
+
+    // <div class="vf-banner vf-banner--fixed vf-banner--top vf-banner--phase" data-vf-js-banner data-vf-js-banner-state="dismissible" data-vf-js-banner-button-text="Close notice">
+    //     <div class="vf-banner__content" data-vf-js-banner-text>
+    //         <span class="vf-badge vf-badge--primary">BETA</span>
+    //         <p class="vf-text-body--3">This is the new EMBL.org <a href="NaN" class="vf-link">Complete our quick survey</a> to help us make it better.</p>
+    //     </div>
+    // </div>
+    
+  }
 
   console.log('emblNotifications, showing:', message);
     
@@ -40,13 +86,11 @@ import { vfBanner } from 'vf-banner/vf-banner';
 function emblNotifications(currentHost, currentPath) {
   currentHost = currentHost || window.location.hostname;
   currentPath = currentPath || window.location.pathname;
-
-  // console.log('emblNotifications','Checking for notifcaitons.');
-
   // don't treat `wwwdev` as distinct from `www`
   currentHost = currentHost.replace(/wwwdev/g, "www");
 
-  console.log('emblNotifications, Current url info:', currentHost + "," + currentPath);
+  // console.log('emblNotifications','Checking for notifcaitons.');
+  // console.log('emblNotifications, Current url info:', currentHost + "," + currentPath);
 
   // Process each message against a URLs
   function matchNotification(message, targetUrl) {
@@ -105,7 +149,6 @@ function emblNotifications(currentHost, currentPath) {
         // console.log('emblNotifications: WILDCARD MATCH FOUND 🎉');
         return true;
       }
-
     }
     return false;
   }
@@ -178,7 +221,6 @@ function emblNotifications(currentHost, currentPath) {
   //   You can masquerade as another page or URL for adhoc use cases or testing:
   //   emblNotifications(currentHost = 'www.embl.org', currentPath = 'my/test/path`);
   //   emblNotifications('www.embl.org','/')
-
 }
 
 // By default your component should be usable with js imports
@@ -188,4 +230,3 @@ export { emblNotifications };
 // import { emblNotifications } from '../components/raw/embl-notifications/embl-notifications.js';
 // And invoke it
 // emblNotifications();
-
