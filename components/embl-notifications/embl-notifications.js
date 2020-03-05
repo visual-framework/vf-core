@@ -50,7 +50,6 @@ import { vfBanner } from 'vf-banner/vf-banner';
     let target = document.body.firstChild;
     target.parentNode.prepend(output);
     vfBanner();
-    
   } else if (message.field_notification_position == 'inline') {
     message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
     output.classList.add('vf-banner', 'vf-banner--phase', 'vf-content');
@@ -75,18 +74,30 @@ import { vfBanner } from 'vf-banner/vf-banner';
     }
 
   } else if (message.field_notification_position == 'top') {
+    console.log(message.body)
+    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
+    output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--top', 'vf-banner--phase');
+    output.dataset.vfJsBanner = true;
+    output.dataset.vfJsBannerState = message.field_notification_presentation;
+    output.dataset.vfJsBannerButtonText = "Close notice";
+    // These features are not yet supported by the notification content type in the EMBL contentHub
+    // output.dataset.vfJsBannerCookieName = "CookieName";
+    // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
+    // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
+    // output.dataset.vfJsBannerAutoAccept = false;
 
-    // <div class="vf-banner vf-banner--fixed vf-banner--top vf-banner--phase" data-vf-js-banner data-vf-js-banner-state="dismissible" data-vf-js-banner-button-text="Close notice">
-    //     <div class="vf-banner__content" data-vf-js-banner-text>
-    //         <span class="vf-badge vf-badge--primary">BETA</span>
-    //         <p class="vf-text-body--3">This is the new EMBL.org <a href="NaN" class="vf-link">Complete our quick survey</a> to help us make it better.</p>
-    //     </div>
-    // </div>
-    
+    // <h4 class="vf-text vf-text-heading--4"><a class="vf-link" href="${message.field_notification_link}">${message.title}</a></h4>
+    output.innerHTML = `
+      <div class="vf-banner__content" data-vf-js-banner-text>
+        <p class="vf-text vf-text-body--3">${message.body} <a class="vf-link" href="${message.field_notification_link}">Learn more</a></p>
+      </div>`;
+
+    let target = document.body.firstChild;
+    target.parentNode.prepend(output);
+    vfBanner();    
   }
 
   console.log('emblNotifications, showing:', message);
-    
 }
 
 /**

@@ -116,8 +116,8 @@ function vfBanner(scope) {
  * Takes a banner object and creates the necesary html markup, js events, and inserts
  * @example vfBannerInsert()
  * @param {object} [banner]  -
- * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  * @param {string} [bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  */
 function vfBannerInsert(banner,bannerId,scope) {
   var scope = scope || document;
