@@ -190,15 +190,15 @@ function vfBannerInsert(banner,bannerId,scope) {
 
   // if blocking or dismissible, allow the user to close it, store a cookie (if specified)
   if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
-    // On click: close banner, pass any cooke name (or `null`)
+    // On click: close banner, pass any cookie name (or `null`)
     if (banner.vfJsBannerButtonText) {
-      targetBanner.addEventListener('click', function(){
+      targetBanner.querySelectorAll('[data-vf-js-banner-close]')[0].addEventListener('click', function(){
         vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
       }, false);
     }
   }
 
-  if (vfBannerCookieNameAndVersion != "null") {
+  if (vfBannerCookieNameAndVersion != 'null') {
     // if banner has been previously accepted
     if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
       // banner has been accepted, close
@@ -208,16 +208,13 @@ function vfBannerInsert(banner,bannerId,scope) {
     }
 
     // if banner is marked as auto-accept, set as read
-    if (banner.vfJsBannerAutoAccept == "true") {
+    if (banner.vfJsBannerAutoAccept == 'true') {
       if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
         vfBannerSetCookie(vfBannerCookieNameAndVersion,true);
       }
     }
-
   }
-
 }
-
 
 export { vfBanner };
 
