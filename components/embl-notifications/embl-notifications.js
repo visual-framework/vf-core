@@ -53,63 +53,32 @@ function emblNotifications(currentHost, currentPath) {
     let matchFound = false;
 
     if (message.hasBeenShown == true) {
-      console.warn('emblNotifications', 'This message has already been displayed on the page.')
+      // console.warn('emblNotifications', 'This message has already been displayed on the page.')
       return;
     }
 
-    // console.log(message)
+    // console.log('emblNotifications, targetUrl:', targetUrl);
+    // console.log('emblNotifications, matching:', currentHost+currentPath);
 
-    console.log('emblNotifications, targetUrl:', targetUrl);
+    // Is there an exact match?
+    matchFound = compareUrls(currentHost+currentPath, targetUrl);
 
-    // if the page has a path, try to make matches
-    // don't try to much no path or '/'
-    if (currentPath.length > 1) {
-      console.log('emblNotifications, matching:', currentHost+currentPath);
-
-      // Is there an exact match?
-      matchFound = compareUrls(currentHost+currentPath, targetUrl);
-
-      if (matchFound) return; // bail if we have success
-
-      // Handle wildcard matches like `/about/*`
-      var currentPathArray = currentPath.split('/');
-
-      // construct a list of possible paths to match
-      // /style-lab/frag1/frag2 =
-      // - /style-lab/frag1/frag2
-      // - /style-lab/frag1
-      // - /style-lab
-      var pathsToMatch = [currentHost + currentPathArray[0]];
-      for (var i = 1; i < currentPathArray.length; i++) {
-        var tempPath = pathsToMatch[i - 1];
-        pathsToMatch.push(tempPath + '/' + currentPathArray[i]);
-      }
-
-      // console.log(pathsToMatch);
-      for (var i = 0; i < pathsToMatch.length; i++) {
-        // console.log('emblNotifications, matching:', pathsToMatch[i]+'*');
-        // we only match partial paths if they end in *
-        // emblNotificationsInject(messages[pathsToMatch[i] + '*']);
-        // emblNotificationsInject(messages[pathsToMatch[i] + '/*']);
-      }
-    } else {
-      // no current path means we're on a root domain
-      // `https://www.ebi.ac.uk` should match `www.ebi.ac.uk` and `www.ebi.ac.uk/` and `www.ebi.ac.uk/*`
-      // console.log('emblNotifications, matching:', currentHost);
-      // emblNotificationsInject(messages[currentHost]);
-      // emblNotificationsInject(messages[currentHost + '/']);
-      // emblNotificationsInject(messages[currentHost + '/*']);
+    // Handle wildcard matches like `/about/*`
+    if (targetUrl.slice(-1) == '*') {
+      matchFound = compareUrls(currentHost+currentPath, targetUrl, true);
     }
 
     // if a match has been made on the current url path, show the message 
     if (matchFound == true) {
+      console.log('emblNotifications: MATCH FOUND 🎉', targetUrl, currentHost, currentPath);
       message.hasBeenShown = true;
       emblNotificationsInject(message);
     }
   }
 
   // Handle string comparisons for URLs
-  function compareUrls(url1, url2) {
+  function compareUrls(url1, url2, isWildCard) {
+    isWildCard = isWildCard || false;
 
     // we ignore case
     // we could probably optimise by moving this higher in the logic, but it's more maintainable to have it here
@@ -124,13 +93,21 @@ function emblNotifications(currentHost, currentPath) {
     if (url1.slice(-1) == '/') url1 = url1.substring(0, url1.length - 1); 
     if (url2.slice(-1) == '/') url2 = url2.substring(0, url2.length - 1); 
 
-    console.log('emblNotifications, comparing:', url1 + "," + url2);
+    // console.log('emblNotifications, comparing:', url1 + "," + url2);
 
     if (url1 == url2) {
       return true;
-    } else {
-      return false;
+    } else if (isWildCard) {
+      // console.log('emblNotifications, wildcard comparison:', url1, url2)
+      if (url1.indexOf(url2) == 0) {
+        // only success if match found from beginning of string
+        // we only support wildcards on the right side
+        // console.log('emblNotifications: WILDCARD MATCH FOUND 🎉');
+        return true;
+      }
+
     }
+    return false;
   }
 
   // Process each message, and its URL fragmenets
@@ -188,20 +165,19 @@ function emblNotifications(currentHost, currentPath) {
   }
 
   // @todo
-  //   - compare to `notification_ulrs`
-  //     We can steal code from the EBI VF https://github.com/ebiwd/EBI-Framework/blob/v1.3/js/ebi-global-includes/script/4_ebiFrameworkContent.js#L391-L475
-  // 3. If matching URL
   //   - invoke vf-banner
   //   - using options from `notification_position` `notification_presentation` `body` `title` `notification_link`
 
   // Possible features not currently planned:
   // - Only show if a wrapping element has data-vf-js-embl-notifications`
   // - Also load message from EBI https://ebi.emblstatic.net/announcements.js
+  // - Use the vf-banner precompiled njk template to render output
 
   // @todo
-  // - set up and test matching against a passed URL
+  // - Document matching against a passed URL
   //   You can masquerade as another page or URL for adhoc use cases or testing:
   //   emblNotifications(currentHost = 'www.embl.org', currentPath = 'my/test/path`);
+  //   emblNotifications('www.embl.org','/')
 
 }
 
