@@ -18,7 +18,7 @@
  */
 
 // if you need to import any other components' JS to use here
-// import { vfBanner } from 'vf-banner/vf-banner';
+import { vfBanner } from 'vf-banner/vf-banner';
 
 /**
   * The global function for this component
@@ -26,21 +26,33 @@
   * @param {object} [message] - An object to be show on a page
   */
  function emblNotificationsInject(message) {
+  let output = document.createElement('div');
+
   if (message.field_notification_position == 'fixed') {
-    // <div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice" data-vf-js-banner data-vf-js-banner-state="dismissible" data-vf-js-banner-button-text="NaN" data-vf-js-banner-cookie-name="NaN" data-vf-js-banner-cookie-version="NaN" data-vf-js-banner-extra-button="<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>"
-    //     data-vf-js-banner-auto-accept="false">
-    //     <div class="vf-banner__content | vf-grid" data-vf-js-banner-text>
-    //         <p class="vf-text vf-text-body--2">
-    //             This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-link"
-    //                 href="JavaScript:Void(0);">Terms Of Use</a>.
-    //         </p>
-    //     </div>
-    // </div>
+    console.log(message.body)
+    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
+    output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
+    output.dataset.vfJsBanner = true;
+    output.dataset.vfJsBannerState = message.field_notification_presentation;
+    output.dataset.vfJsBannerButtonText = "Close notice";
+    // These features are not yet supported by the notification content type in the EMBL contentHub
+    // output.dataset.vfJsBannerCookieName = "CookieName";
+    // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
+    // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
+    // output.dataset.vfJsBannerAutoAccept = false;
+
+    // <h4 class="vf-text vf-text-heading--4"><a class="vf-link" href="${message.field_notification_link}">${message.title}</a></h4>
+    output.innerHTML = `
+      <div class="vf-banner__content | vf-grid" data-vf-js-banner-text>
+        <p class="vf-text vf-text-body--2">${message.body} <a class="vf-link" href="${message.field_notification_link}">Learn more</a></p>
+      </div>`;
+
+    let target = document.body.firstChild;
+    target.parentNode.prepend(output);
+    vfBanner();
     
   } else if (message.field_notification_position == 'inline') {
     message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
-    console.log(message.body)
-    let output = document.createElement('div');
     output.classList.add('vf-banner', 'vf-banner--phase', 'vf-content');
     output.innerHTML = `
       <div class="vf-banner__content">
@@ -201,10 +213,10 @@ function emblNotifications(currentHost, currentPath) {
   // Bootstrap the message fetching
   // If on dev, reference dev server
   if (window.location.hostname.indexOf('wwwdev.') === 0) {
-    loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
+    loadRemoteNotifications('https://www.embl.org/api/v1/notifications?_format=json&source=contenthub');
   } else {
     // @todo update this to point to prod
-    loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
+    loadRemoteNotifications('https://www.embl.org/api/v1/notifications?_format=json&source=contenthub');
   }
 
   // @todo
