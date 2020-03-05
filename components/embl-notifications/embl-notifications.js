@@ -23,11 +23,11 @@ import { vfBanner } from 'vf-banner/vf-banner';
 /**
   * The global function for this component
   * @example emblNotificationsInject(notification)
-  * @param {object} [notification] - An object to be show on a page
+  * @param {object} [message] - An object to be show on a page
   */
- function emblNotificationsInject(notification) {
+ function emblNotificationsInject(message) {
 
-  console.log('emblNotifications, showing:', notification);
+  console.log('emblNotifications, showing:', message);
     
 }
 
@@ -41,7 +41,7 @@ function emblNotifications(currentHost, currentPath) {
   currentHost = currentHost || window.location.hostname;
   currentPath = currentPath || window.location.pathname;
 
-  console.log('emblNotifications','Checking for notifcaitons.');
+  // console.log('emblNotifications','Checking for notifcaitons.');
 
   // don't treat `wwwdev` as distinct from `www`
   currentHost = currentHost.replace(/wwwdev/g, "www");
@@ -50,10 +50,14 @@ function emblNotifications(currentHost, currentPath) {
 
   // Process each message against a URLs
   function matchNotification(message, targetUrl) {
-    console.log('emblNotifications, matching:', currentHost+currentPath + " against " + targetUrl);
+    let matchFound = false;
 
-    // @todo 
-    // compare against each field_notification_urls
+    if (message.hasBeenShown == true) {
+      console.warn('emblNotifications', 'This message has already been displayed on the page.')
+      return;
+    }
+
+    console.log('emblNotifications, matching:', currentHost+currentPath + " against " + targetUrl);
 
     // if the page has a path, try to make matches
     // don't try to much no path or '/'
@@ -92,6 +96,12 @@ function emblNotifications(currentHost, currentPath) {
       // emblNotificationsInject(messages[currentHost + '/']);
       // emblNotificationsInject(messages[currentHost + '/*']);
     }
+
+    // if a match has been made on the current url path, show the message 
+    if (matchFound == true) {
+      message.hasBeenShown = true;
+      emblNotificationsInject(message);
+    }
   }
 
   // Process each message, and its url fragmenets
@@ -101,6 +111,10 @@ function emblNotifications(currentHost, currentPath) {
     // Process each message
     for (let index = 0; index < messages.length; index++) {
       let currentMessage = messages[index];
+
+      // track if a message has already been show on the page
+      // we want to be sure a message isn't accidently shown twice
+      currentMessage.hasBeenShown = false; 
 
       // Process the URLs for each path in a message
       let currentUrls = currentMessage.field_notification_urls.split(',');
@@ -113,7 +127,7 @@ function emblNotifications(currentHost, currentPath) {
 
   // Utility to fetch a file, process the JSON
   function loadRemoteNotifications(file) {
-    console.log('emblNotifications','Opening URL ' + file);
+    // console.log('emblNotifications','Opening URL :' + file);
     if (window.XMLHttpRequest) {
       var xmlhttp = new XMLHttpRequest();
     }
