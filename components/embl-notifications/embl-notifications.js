@@ -57,15 +57,19 @@ function emblNotifications(currentHost, currentPath) {
       return;
     }
 
-    console.log('emblNotifications, matching:', currentHost+currentPath + " against " + targetUrl);
+    // console.log(message)
+
+    console.log('emblNotifications, targetUrl:', targetUrl);
 
     // if the page has a path, try to make matches
     // don't try to much no path or '/'
     if (currentPath.length > 1) {
-      // Is there an exact match
-      // console.log('emblNotifications, matching:', currentHost+currentPath);
-      // emblNotificationsInject(messages[currentHost+currentPath]);
-      // emblNotificationsInject(messages[currentHost+currentPath + '/']);
+      console.log('emblNotifications, matching:', currentHost+currentPath);
+
+      // Is there an exact match?
+      matchFound = compareUrls(currentHost+currentPath, targetUrl);
+
+      if (matchFound) return; // bail if we have success
 
       // Handle wildcard matches like `/about/*`
       var currentPathArray = currentPath.split('/');
@@ -104,7 +108,32 @@ function emblNotifications(currentHost, currentPath) {
     }
   }
 
-  // Process each message, and its url fragmenets
+  // Handle string comparisons for URLs
+  function compareUrls(url1, url2) {
+
+    // we ignore case
+    // we could probably optimise by moving this higher in the logic, but it's more maintainable to have it here
+    url1 = url1.toLowerCase();
+    url2 = url2.toLowerCase();
+
+    // don't allow matches to end in `*`
+    if (url1.slice(-1) == '*') url1 = url1.substring(0, url1.length - 1); 
+    if (url2.slice(-1) == '*') url2 = url2.substring(0, url2.length - 1); 
+
+    // don't allow matches to end in `/`
+    if (url1.slice(-1) == '/') url1 = url1.substring(0, url1.length - 1); 
+    if (url2.slice(-1) == '/') url2 = url2.substring(0, url2.length - 1); 
+
+    console.log('emblNotifications, comparing:', url1 + "," + url2);
+
+    if (url1 == url2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // Process each message, and its URL fragmenets
   function processNotifications(messages) {
     // console.log('emblNotifications', messages);
 
