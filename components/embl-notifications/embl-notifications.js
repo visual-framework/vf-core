@@ -224,26 +224,12 @@ function emblNotifications(currentHost, currentPath) {
   // Bootstrap the message fetching
   // If on dev, reference dev server
   if (window.location.hostname.indexOf('wwwdev.') === 0) {
-    loadRemoteNotifications('https://www.embl.org/api/v1/notifications?_format=json&source=contenthub');
+    loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
+  if (window.location.hostname.indexOf('localhost') === 0) {
+    loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
   } else {
-    // @todo update this to point to prod
     loadRemoteNotifications('https://www.embl.org/api/v1/notifications?_format=json&source=contenthub');
   }
-
-  // @todo
-  //   - invoke vf-banner
-  //   - using options from `notification_position` `notification_presentation` `body` `title` `notification_link`
-
-  // Possible features not currently planned:
-  // - Only show if a wrapping element has data-vf-js-embl-notifications`
-  // - Also load message from EBI https://ebi.emblstatic.net/announcements.js
-  // - Use the vf-banner precompiled njk template to render output
-
-  // @todo
-  // - Document matching against a passed URL
-  //   You can masquerade as another page or URL for adhoc use cases or testing:
-  //   emblNotifications(currentHost = 'www.embl.org', currentPath = 'my/test/path`);
-  //   emblNotifications('www.embl.org','/')
 }
 
 // By default your component should be usable with js imports

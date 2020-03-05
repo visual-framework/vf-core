@@ -4,6 +4,13 @@
 
 Fetches notifications from the EMBL contentHub and will display them, if a matching URL is found.
 
+## Possible features not currently planned:
+
+- Only show if a wrapping element has `data-vf-js-embl-notifications`
+- Also load messages from EBI's folder https://ebi.emblstatic.net/announcements.js
+- Use the vf-banner precompiled njk template to render output
+- Test for better support on non-VF 2.0 sites
+
 ## Install
 
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `embl-notifications` with this command.
@@ -19,4 +26,11 @@ Add this to your `./components/vf-component-rollup/scripts.js`:
 ```js
 import { vfEmblNotification } from 'embl-notifications/embl-notifications';
 emblNotifications(); // invoke it
+```
+
+You can masquerade as another page or URL for adhoc use cases or testing:
+
+```js
+// emblNotifications(currentHost = 'www.embl.org', currentPath = 'my/test/path`);
+emblNotifications('www.embl.org','/')
 ```
