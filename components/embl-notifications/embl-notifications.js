@@ -48,15 +48,18 @@ function emblNotifications(currentHost, currentPath) {
 
   console.log('emblNotifications, Current url info:', currentHost + "," + currentPath);
 
-  // Process each message against the current URLs
-  function matchNotification(message) {
-    console.log(message);
+  // Process each message against a URLs
+  function matchNotification(message, targetUrl) {
+    console.log('emblNotifications, matching:', currentHost+currentPath + " against " + targetUrl);
+
+    // @todo 
+    // compare against each field_notification_urls
 
     // if the page has a path, try to make matches
     // don't try to much no path or '/'
     if (currentPath.length > 1) {
       // Is there an exact match
-      console.log('emblNotifications, matching:', currentHost+currentPath);
+      // console.log('emblNotifications, matching:', currentHost+currentPath);
       // emblNotificationsInject(messages[currentHost+currentPath]);
       // emblNotificationsInject(messages[currentHost+currentPath + '/']);
 
@@ -76,7 +79,7 @@ function emblNotifications(currentHost, currentPath) {
 
       // console.log(pathsToMatch);
       for (var i = 0; i < pathsToMatch.length; i++) {
-        console.log('emblNotifications, matching:', pathsToMatch[i]+'*');
+        // console.log('emblNotifications, matching:', pathsToMatch[i]+'*');
         // we only match partial paths if they end in *
         // emblNotificationsInject(messages[pathsToMatch[i] + '*']);
         // emblNotificationsInject(messages[pathsToMatch[i] + '/*']);
@@ -84,20 +87,27 @@ function emblNotifications(currentHost, currentPath) {
     } else {
       // no current path means we're on a root domain
       // `https://www.ebi.ac.uk` should match `www.ebi.ac.uk` and `www.ebi.ac.uk/` and `www.ebi.ac.uk/*`
-      console.log('emblNotifications, matching:', currentHost);
+      // console.log('emblNotifications, matching:', currentHost);
       // emblNotificationsInject(messages[currentHost]);
       // emblNotificationsInject(messages[currentHost + '/']);
       // emblNotificationsInject(messages[currentHost + '/*']);
     }
   }
 
-  // Process each message
+  // Process each message, and its url fragmenets
   function processNotifications(messages) {
-    console.log('emblNotifications', messages);
+    // console.log('emblNotifications', messages);
 
     // Process each message
     for (let index = 0; index < messages.length; index++) {
-      matchNotification(messages[index]);     
+      let currentMessage = messages[index];
+
+      // Process the URLs for each path in a message
+      let currentUrls = currentMessage.field_notification_urls.split(',');
+      for (let indexUrls = 0; indexUrls < currentUrls.length; indexUrls++) {
+        let url = currentUrls[indexUrls].trim();
+        matchNotification(currentMessage, url); // pass the notification and active url to compare       
+      }
     }
   }
 
@@ -125,12 +135,13 @@ function emblNotifications(currentHost, currentPath) {
     xmlhttp.send(null);
   }
 
+  // Bootstrap the message fetching
   // If on dev, reference dev server
   if (window.location.hostname.indexOf('wwwdev.') === 0) {
     loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
   } else {
-  // @todo update this to point to prod
-  loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
+    // @todo update this to point to prod
+    loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
   }
 
   // @todo
@@ -143,6 +154,11 @@ function emblNotifications(currentHost, currentPath) {
   // Possible features not currently planned:
   // - Only show if a wrapping element has data-vf-js-embl-notifications`
   // - Also load message from EBI https://ebi.emblstatic.net/announcements.js
+
+  // @todo
+  // - set up and test matching against a passed URL
+  //   You can masquerade as another page or URL for adhoc use cases or testing:
+  //   emblNotifications(currentHost = 'www.embl.org', currentPath = 'my/test/path`);
 
 }
 
