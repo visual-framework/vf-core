@@ -29,7 +29,6 @@ import { vfBanner } from 'vf-banner/vf-banner';
   let output = document.createElement('div');
 
   if (message.field_notification_position == 'fixed') {
-    console.log(message.body)
     message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
     output.dataset.vfJsBanner = true;
@@ -74,7 +73,6 @@ import { vfBanner } from 'vf-banner/vf-banner';
     }
 
   } else if (message.field_notification_position == 'top') {
-    console.log(message.body)
     message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--top', 'vf-banner--phase');
     output.dataset.vfJsBanner = true;
@@ -97,7 +95,7 @@ import { vfBanner } from 'vf-banner/vf-banner';
     vfBanner();    
   }
 
-  console.log('emblNotifications, showing:', message);
+  // console.log('emblNotifications, showing:', message);
 }
 
 /**
@@ -137,7 +135,7 @@ function emblNotifications(currentHost, currentPath) {
 
     // if a match has been made on the current url path, show the message 
     if (matchFound == true) {
-      console.log('emblNotifications: MATCH FOUND 🎉', targetUrl, currentHost, currentPath);
+      // console.log('emblNotifications: MATCH FOUND 🎉', targetUrl, currentHost, currentPath);
       message.hasBeenShown = true;
       emblNotificationsInject(message);
     }
@@ -225,7 +223,7 @@ function emblNotifications(currentHost, currentPath) {
   // If on dev, reference dev server
   if (window.location.hostname.indexOf('wwwdev.') === 0) {
     loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
-  if (window.location.hostname.indexOf('localhost') === 0) {
+  } else if (window.location.hostname.indexOf('localhost') === 0) {
     loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
   } else {
     loadRemoteNotifications('https://www.embl.org/api/v1/notifications?_format=json&source=contenthub');
