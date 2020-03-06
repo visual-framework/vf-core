@@ -666,8 +666,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * Takes a banner object and creates the necesary html markup, js events, and inserts
  * <span class="hljs-doctag">@example </span>vfBannerInsert()
  * <span class="hljs-doctag">@param <span class="hljs-type">{object}</span> </span>[banner]  -
- * <span class="hljs-doctag">@param <span class="hljs-type">{object}</span> </span>[scope] - the html scope to process, optional, defaults to `document`
  * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
+ * <span class="hljs-doctag">@param <span class="hljs-type">{object}</span> </span>[scope] - the html scope to process, optional, defaults to `document`
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerInsert</span>(<span class="hljs-params">banner,bannerId,scope</span>) </span>{
   <span class="hljs-keyword">var</span> scope = scope || <span class="hljs-built_in">document</span>;
@@ -740,15 +740,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-comment">// if blocking or dismissible, allow the user to close it, store a cookie (if specified)</span>
   <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span> || banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>) {
-    <span class="hljs-comment">// On click: close banner, pass any cooke name (or `null`)</span>
+    <span class="hljs-comment">// On click: close banner, pass any cookie name (or `null`)</span>
     <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonText) {
-      targetBanner.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+      targetBanner.querySelectorAll(<span class="hljs-string">'[data-vf-js-banner-close]'</span>)[<span class="hljs-number">0</span>].addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
         vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
       }, <span class="hljs-literal">false</span>);
     }
   }
 
-  <span class="hljs-keyword">if</span> (vfBannerCookieNameAndVersion != <span class="hljs-string">"null"</span>) {
+  <span class="hljs-keyword">if</span> (vfBannerCookieNameAndVersion != <span class="hljs-string">'null'</span>) {
     <span class="hljs-comment">// if banner has been previously accepted</span>
     <span class="hljs-keyword">if</span> (vfBannerGetCookie(vfBannerCookieNameAndVersion) === <span class="hljs-string">'true'</span>) {
       <span class="hljs-comment">// banner has been accepted, close</span>
@@ -758,16 +758,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     }
 
     <span class="hljs-comment">// if banner is marked as auto-accept, set as read</span>
-    <span class="hljs-keyword">if</span> (banner.vfJsBannerAutoAccept == <span class="hljs-string">"true"</span>) {
+    <span class="hljs-keyword">if</span> (banner.vfJsBannerAutoAccept == <span class="hljs-string">'true'</span>) {
       <span class="hljs-keyword">if</span> (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span> || banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>) {
         vfBannerSetCookie(vfBannerCookieNameAndVersion,<span class="hljs-literal">true</span>);
       }
     }
-
   }
-
 }
-
 
 <span class="hljs-keyword">export</span> { vfBanner };
 
@@ -1013,6 +1010,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
       
 
         
@@ -1573,6 +1576,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-badge.html">Badges</a>
         </p>
@@ -2009,6 +2018,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
       
 
         
@@ -2635,6 +2650,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-activity-group.html">Acivity List Group</a>
         </p>
@@ -3175,6 +3196,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-boilerplate-page.html">VF Boilerplate</a>
         </p>
@@ -3598,6 +3625,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
         
 
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="embl-notifications.html">EMBL Notifications</a>
+        </p>
         
       
 
@@ -4265,6 +4302,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4574,6 +4617,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="embl-logo.html">EMBL Logo</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -5213,6 +5262,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5490,6 +5545,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="embl-content-hub-loader.html">EMBL ContentHub Loader</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -6145,6 +6206,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -6389,6 +6456,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
       
 
         

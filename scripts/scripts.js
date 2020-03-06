@@ -116,8 +116,8 @@ function vfBanner(scope) {
  * Takes a banner object and creates the necesary html markup, js events, and inserts
  * @example vfBannerInsert()
  * @param {object} [banner]  -
- * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  * @param {string} [bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  */
 
 
@@ -185,15 +185,15 @@ function vfBannerInsert(banner, bannerId, scope) {
 
 
   if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
-    // On click: close banner, pass any cooke name (or `null`)
+    // On click: close banner, pass any cookie name (or `null`)
     if (banner.vfJsBannerButtonText) {
-      targetBanner.addEventListener('click', function () {
+      targetBanner.querySelectorAll('[data-vf-js-banner-close]')[0].addEventListener('click', function () {
         vfBannerConfirm(targetBanner, vfBannerCookieNameAndVersion);
       }, false);
     }
   }
 
-  if (vfBannerCookieNameAndVersion != "null") {
+  if (vfBannerCookieNameAndVersion != 'null') {
     // if banner has been previously accepted
     if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
       // banner has been accepted, close
@@ -203,7 +203,7 @@ function vfBannerInsert(banner, bannerId, scope) {
     } // if banner is marked as auto-accept, set as read
 
 
-    if (banner.vfJsBannerAutoAccept == "true") {
+    if (banner.vfJsBannerAutoAccept == 'true') {
       if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
         vfBannerSetCookie(vfBannerCookieNameAndVersion, true);
       }
@@ -1714,6 +1714,210 @@ function emblBreadcrumbs() {
   });
 })([Element.prototype, Document.prototype, DocumentFragment.prototype]); // Run it on default
 // emblBreadcrumbs();
+// embl-notifications
+
+/**
+  * The global function for this component
+  * @example emblNotificationsInject(notification)
+  * @param {object} [message] - An object to be show on a page
+  */
+
+
+function emblNotificationsInject(message) {
+  var output = document.createElement('div');
+
+  if (message.field_notification_position == 'fixed') {
+    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
+
+    output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
+    output.dataset.vfJsBanner = true;
+    output.dataset.vfJsBannerState = message.field_notification_presentation;
+    output.dataset.vfJsBannerButtonText = "Close notice"; // These features are not yet supported by the notification content type in the EMBL contentHub
+    // output.dataset.vfJsBannerCookieName = "CookieName";
+    // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
+    // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
+    // output.dataset.vfJsBannerAutoAccept = false;
+    // <h4 class="vf-text vf-text-heading--4"><a class="vf-link" href="${message.field_notification_link}">${message.title}</a></h4>
+
+    output.innerHTML = "\n      <div class=\"vf-banner__content | vf-grid\" data-vf-js-banner-text>\n        <p class=\"vf-text vf-text-body--2\">".concat(message.body, " <a class=\"vf-link\" href=\"").concat(message.field_notification_link, "\">Learn more</a></p>\n      </div>");
+    var target = document.body.firstChild;
+    target.parentNode.prepend(output);
+    vfBanner();
+  } else if (message.field_notification_position == 'inline') {
+    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
+
+    output.classList.add('vf-grid'); // we wrap in vf-grid for layout
+
+    output.innerHTML = "\n      <div class=\"vf-banner vf-banner--phase | vf-content\">\n        <div class=\"vf-banner__content\">\n          <p class=\"vf-text-body--3\">".concat(message.body, "</p>\n        </div>\n      </div>"); // insert after `vf-header` or at after `vf-body`
+    // @todo: add support for where "inline" message should be shown
+
+    var _target = document.getElementsByClassName('vf-header');
+
+    if (_target.length > 0) {
+      _target[0].parentNode.insertBefore(output, _target[0].nextSibling);
+    } else {
+      // if no vf-header, show at vf-body
+      // @thought: we might instead make this show as "top"
+      var _target2 = document.getElementsByClassName('vf-body');
+
+      if (_target2.length > 0) {
+        // output.classList.add('vf-u-grid--reset');
+        _target2[0].prepend(output);
+      } // if still no success, we soft fail
+
+    }
+  } else if (message.field_notification_position == 'top') {
+    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
+
+    output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--top', 'vf-banner--phase');
+    output.dataset.vfJsBanner = true;
+    output.dataset.vfJsBannerState = message.field_notification_presentation;
+    output.dataset.vfJsBannerButtonText = "Close notice"; // These features are not yet supported by the notification content type in the EMBL contentHub
+    // output.dataset.vfJsBannerCookieName = "CookieName";
+    // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
+    // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
+    // output.dataset.vfJsBannerAutoAccept = false;
+    // <h4 class="vf-text vf-text-heading--4"><a class="vf-link" href="${message.field_notification_link}">${message.title}</a></h4>
+
+    output.innerHTML = "\n      <div class=\"vf-banner__content\" data-vf-js-banner-text>\n        <p class=\"vf-text vf-text-body--3\">".concat(message.body, " <a class=\"vf-link\" href=\"").concat(message.field_notification_link, "\">Learn more</a></p>\n      </div>");
+    var _target3 = document.body.firstChild;
+
+    _target3.parentNode.prepend(output);
+
+    vfBanner();
+  } // console.log('emblNotifications, showing:', message);
+
+}
+/**
+  * The global function for this component
+  * @example emblNotifications(currentHost, currentPath)
+  * @param {string} [currentHost] - a host url www.embl.org
+  * @param {string} [currentPath] - a path /people/name
+  */
+
+
+function emblNotifications(currentHost, currentPath) {
+  currentHost = currentHost || window.location.hostname;
+  currentPath = currentPath || window.location.pathname; // don't treat `wwwdev` as distinct from `www`
+
+  currentHost = currentHost.replace(/wwwdev/g, "www"); // console.log('emblNotifications','Checking for notifcaitons.');
+  // console.log('emblNotifications, Current url info:', currentHost + "," + currentPath);
+  // Process each message against a URLs
+
+  function matchNotification(message, targetUrl) {
+    var matchFound = false;
+
+    if (message.hasBeenShown == true) {
+      // console.warn('emblNotifications', 'This message has already been displayed on the page.')
+      return;
+    } // console.log('emblNotifications, targetUrl:', targetUrl);
+    // console.log('emblNotifications, matching:', currentHost+currentPath);
+    // Is there an exact match?
+
+
+    matchFound = compareUrls(currentHost + currentPath, targetUrl); // Handle wildcard matches like `/about/*`
+
+    if (targetUrl.slice(-1) == '*') {
+      matchFound = compareUrls(currentHost + currentPath, targetUrl, true);
+    } // if a match has been made on the current url path, show the message 
+
+
+    if (matchFound == true) {
+      // console.log('emblNotifications: MATCH FOUND 🎉', targetUrl, currentHost, currentPath);
+      message.hasBeenShown = true;
+      emblNotificationsInject(message);
+    }
+  } // Handle string comparisons for URLs
+
+
+  function compareUrls(url1, url2, isWildCard) {
+    isWildCard = isWildCard || false; // we ignore case
+    // we could probably optimise by moving this higher in the logic, but it's more maintainable to have it here
+
+    url1 = url1.toLowerCase();
+    url2 = url2.toLowerCase(); // don't allow matches to end in `*`
+
+    if (url1.slice(-1) == '*') url1 = url1.substring(0, url1.length - 1);
+    if (url2.slice(-1) == '*') url2 = url2.substring(0, url2.length - 1); // don't allow matches to end in `/`
+
+    if (url1.slice(-1) == '/') url1 = url1.substring(0, url1.length - 1);
+    if (url2.slice(-1) == '/') url2 = url2.substring(0, url2.length - 1); // console.log('emblNotifications, comparing:', url1 + "," + url2);
+
+    if (url1 == url2) {
+      return true;
+    } else if (isWildCard) {
+      // console.log('emblNotifications, wildcard comparison:', url1, url2)
+      if (url1.indexOf(url2) == 0) {
+        // only success if match found from beginning of string
+        // we only support wildcards on the right side
+        // console.log('emblNotifications: WILDCARD MATCH FOUND 🎉');
+        return true;
+      }
+    }
+
+    return false;
+  } // Process each message, and its URL fragmenets
+
+
+  function processNotifications(messages) {
+    // console.log('emblNotifications', messages);
+    // Process each message
+    for (var index = 0; index < messages.length; index++) {
+      var currentMessage = messages[index]; // track if a message has already been show on the page
+      // we want to be sure a message isn't accidently shown twice
+
+      currentMessage.hasBeenShown = false; // Process the URLs for each path in a message
+
+      var currentUrls = currentMessage.field_notification_urls.split(',');
+
+      for (var indexUrls = 0; indexUrls < currentUrls.length; indexUrls++) {
+        var url = currentUrls[indexUrls].trim();
+        matchNotification(currentMessage, url); // pass the notification and active url to compare       
+      }
+    }
+  } // Utility to fetch a file, process the JSON
+
+
+  function loadRemoteNotifications(file) {
+    // console.log('emblNotifications','Opening URL :' + file);
+    if (window.XMLHttpRequest) {
+      var xmlhttp = new XMLHttpRequest();
+    }
+
+    xmlhttp.open("GET", file, true);
+
+    xmlhttp.onload = function (e) {
+      if (xmlhttp.readyState === 4) {
+        if (xmlhttp.status === 200) {
+          // eval(xmlhttp.responseText);
+          // var m = m || ''; // make sure the message isn't null
+          processNotifications(eval(xmlhttp.responseText));
+        } else {
+          console.error(xmlhttp.statusText);
+        }
+      }
+    };
+
+    xmlhttp.onerror = function (e) {
+      console.error(xmlhttp.statusText);
+    };
+
+    xmlhttp.send(null);
+  } // Bootstrap the message fetching
+  // If on dev, reference dev server
+
+
+  if (window.location.hostname.indexOf('wwwdev.') === 0) {
+    loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
+  } else if (window.location.hostname.indexOf('localhost') === 0) {
+    loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
+  } else {
+    loadRemoteNotifications('https://www.embl.org/api/v1/notifications?_format=json&source=contenthub');
+  }
+} // Add this to your ./components/vf-component-rollup/scripts.js
+// import { emblNotifications } from '../components/raw/embl-notifications/embl-notifications.js';
+// And invoke it
+// emblNotifications();
 
 /*
  *
@@ -1730,4 +1934,5 @@ vfTabs();
 vfTree();
 vfFormFloatLabels();
 emblContentHub();
-emblBreadcrumbs(); // No default invokation
+emblBreadcrumbs();
+emblNotifications(); // No default invokation

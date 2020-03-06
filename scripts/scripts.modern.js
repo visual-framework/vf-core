@@ -33,4 +33,8 @@ import { emblBreadcrumbs } from 'embl-breadcrumbs-lookup/embl-breadcrumbs-lookup
 emblBreadcrumbs();
 
 import { emblContentMetaProperties_Read } from 'embl-content-meta-properties/embl-content-meta-properties';
+
+import { emblNotifications } from 'embl-notifications/embl-notifications';
+emblNotifications();
+
 // No default invokation
