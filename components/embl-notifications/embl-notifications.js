@@ -51,10 +51,12 @@ import { vfBanner } from 'vf-banner/vf-banner';
     vfBanner();
   } else if (message.field_notification_position == 'inline') {
     message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
-    output.classList.add('vf-banner', 'vf-banner--phase', 'vf-content');
+    output.classList.add('vf-grid'); // we wrap in vf-grid for layout
     output.innerHTML = `
-      <div class="vf-banner__content">
-        <p class="vf-text-body--3">${message.body}</p>
+      <div class="vf-banner vf-banner--phase | vf-content">
+        <div class="vf-banner__content">
+          <p class="vf-text-body--3">${message.body}</p>
+        </div>
       </div>`;
   
     // insert after `vf-header` or at after `vf-body`
@@ -67,7 +69,7 @@ import { vfBanner } from 'vf-banner/vf-banner';
       // @thought: we might instead make this show as "top"
       let target = document.getElementsByClassName('vf-body');
       if (target.length > 0) {
-        output.classList.add('vf-u-grid--reset');
+        // output.classList.add('vf-u-grid--reset');
         target[0].prepend(output);
       } // if still no success, we soft fail
     }
