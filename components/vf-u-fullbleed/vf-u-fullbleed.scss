@@ -1,0 +1,45 @@
+// vf-ui-fullbleed
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+@import 'vf-u-fullbleed.variables.scss';
+
+/*
+ * 1. position: relative is needed for the pseudo element.
+ * 2. make the background colour inherit from classanmes in use.
+ * 3. make the pseudo element 100% of the element so we can see it.
+ * 4. push the pseudo element away from the left of the viewport.
+ * 5. If the component has vertical padding we need to make sure the pseudo element
+ *    is set to the top of the containing box.
+ * 6. make the pseudo element full-width.
+ * 7. put the pseudo element 'underneath' the element so it doesn't block.
+ */
+
+.vf-u-fullbleed {
+  position: relative; /* 1 */
+
+  &::before {
+    background-color: inherit; /* 2 */
+    content: '';
+    height: 100%; /* 3 */
+    margin-left: calc(50% - 50vw); /* 4 */
+    position: absolute;
+    top: 0; /* 5 */
+    width: 100vw; /* 6 */
+    z-index: -1; /* 7 */
+  }
+}
