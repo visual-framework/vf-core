@@ -15,7 +15,7 @@ Enable its use by:
 
 ### Option 1
 
-Use the global VF 2.0 CSS along side your existing VF 1.x CSS; see: https://dev.beta.embl.org/guidelines/design/patterns/
+Use the global VF 2.0 CSS along side your existing VF 1.x CSS; see: https://www.embl.org/guidelines/design/patterns/
 
 ### Option 2
 
