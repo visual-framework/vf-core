@@ -24,8 +24,8 @@ $ yarn add --dev @visual-framework/embl-notifications
 Add this to your `./components/vf-component-rollup/scripts.js`:
 
 ```js
-import { vfEmblNotification } from 'embl-notifications/embl-notifications';
-emblNotifications(); // invoke it
+import { emblNotifications } from 'embl-notifications/embl-notifications';
+emblNotifications(); // invoke embl notifications
 ```
 
 You can masquerade as another page or URL for adhoc use cases or testing:
