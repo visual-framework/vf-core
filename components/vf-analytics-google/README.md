@@ -1,4 +1,4 @@
-# vf-analytics-google Component
+# Google Analytics enhancements component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-analytics-google.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-analytics-google)
 
