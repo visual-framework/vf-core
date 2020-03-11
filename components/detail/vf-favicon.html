@@ -9,11 +9,11 @@
   <title>Favicon component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png">
-<link rel="manifest" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest">
-<link rel="mask-icon" href="https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-16x16.png">
+<link rel="manifest" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/site.webmanifest">
+<link rel="mask-icon" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
 
@@ -135,7 +135,25 @@ class="vf-logo">
   <h1 id="favicon-component">Favicon Component</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-favicon"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-favicon.svg" alt="npm version"></a></p>
 <h2 id="about">About</h2>
-<h2 id="install">Install</h2>
+<p>A template to specify favicons for your site:</p>
+<pre><code>{% render <span class="hljs-string">'@vf-favicon'</span>, {
+    apple_touch_icon: <span class="hljs-string">"../../assets/vf-favicon/assets/apple-touch-icon.png"</span>,
+    icon_32: <span class="hljs-string">"../../assets/vf-favicon/assets/favicon-32x32.png"</span>,
+    icon_16: <span class="hljs-string">"../../assets/vf-favicon/assets/favicon-16x16.png"</span>,
+    manifest: <span class="hljs-string">"../../assets/vf-favicon/assets/site.webmanifest"</span>,
+    icon_mask: <span class="hljs-string">"../../assets/vf-favicon/assets/safari-pinned-tab.svg"</span>,
+    color_mask: <span class="hljs-string">"<span class="hljs-subst">#ffffff</span>"</span>,
+    color_msapplication: <span class="hljs-string">"<span class="hljs-subst">#ffffff</span>"</span>,
+    color_theme: <span class="hljs-string">"<span class="hljs-subst">#ffffff</span>"</span>
+} %}
+</code></pre><p>Yields: </p>
+<pre><code>&lt;link <span class="hljs-attribute">rel</span>=<span class="hljs-string">"apple-touch-icon"</span> <span class="hljs-attribute">sizes</span>=<span class="hljs-string">"180x180"</span> <span class="hljs-attribute">href</span>=<span class="hljs-string">"../../assets/vf-favicon/assets/apple-touch-icon.png"</span>&gt;
+&lt;link <span class="hljs-attribute">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attribute">sizes</span>=<span class="hljs-string">"32x32"</span> <span class="hljs-attribute">href</span>=<span class="hljs-string">"../../assets/vf-favicon/assets/favicon-32x32.png"</span>&gt;
+&lt;link <span class="hljs-attribute">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attribute">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attribute">sizes</span>=<span class="hljs-string">"16x16"</span> <span class="hljs-attribute">href</span>=<span class="hljs-string">"../../assets/vf-favicon/assets/favicon-16x16.png"</span>&gt;
+&lt;link <span class="hljs-attribute">rel</span>=<span class="hljs-string">"manifest"</span> <span class="hljs-attribute">href</span>=<span class="hljs-string">"../../assets/vf-favicon/assets/site.webmanifest"</span>&gt;
+&lt;link <span class="hljs-attribute">rel</span>=<span class="hljs-string">"mask-icon"</span> <span class="hljs-attribute">href</span>=<span class="hljs-string">"../../assets/vf-favicon/assets/safari-pinned-tab.svg"</span> <span class="hljs-attribute">color</span>=<span class="hljs-string">"#ffffff"</span>&gt;
+&lt;meta <span class="hljs-attribute">name</span>=<span class="hljs-string">"msapplication-TileColor"</span> <span class="hljs-attribute">content</span>=<span class="hljs-string">"#ffffff"</span>&gt;
+&lt;meta <span class="hljs-attribute">name</span>=<span class="hljs-string">"theme-color"</span> <span class="hljs-attribute">content</span>=<span class="hljs-string">"#ffffff"</span>&gt;</code></pre><h2 id="install">Install</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-favicon</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-favicon</span></code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
@@ -176,11 +194,11 @@ class="vf-logo">
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"apple-touch-icon"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"180x180"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/apple-touch-icon.png"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"32x32"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-32x32.png"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"16x16"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/favicon-16x16.png"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"manifest"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/site.webmanifest"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"mask-icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/assets/vf-favicon/assets/safari-pinned-tab.svg"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#ffffff"</span>&gt;</span>
+  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"apple-touch-icon"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"180x180"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/apple-touch-icon.png"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"32x32"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-32x32.png"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"16x16"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-16x16.png"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"manifest"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/site.webmanifest"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"mask-icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/safari-pinned-tab.svg"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#ffffff"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"msapplication-TileColor"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#ffffff"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"theme-color"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#ffffff"</span>&gt;</span>
 </code></pre>
@@ -229,7 +247,12 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
-<span class="hljs-section"># 1.0.0 (2019-12-17)</span>
+<span class="hljs-section">## 1.0.1</span>
+<span class="hljs-bullet">
+* </span>Fixes default path of favicons
+<span class="hljs-bullet">* </span>Improves docs
+
+<span class="hljs-section">## 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
 </code>
@@ -247,7 +270,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-favicon/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 214 Bytes
+          Size: 275 Bytes
         </li>
       </ul>
     </section>
