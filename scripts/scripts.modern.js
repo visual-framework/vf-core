@@ -13,6 +13,9 @@ vfBanner();
 import { vfMastheadSetStyle } from 'vf-masthead/vf-masthead';
 vfMastheadSetStyle();
 
+import { vfGaIndicateLoaded } from 'vf-analytics-google/vf-analytics-google';
+vfGaIndicateLoaded(); 
+
 import { vfTabs } from 'vf-tabs/vf-tabs';
 vfTabs();
 
