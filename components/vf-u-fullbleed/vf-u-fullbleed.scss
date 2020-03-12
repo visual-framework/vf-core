@@ -19,38 +19,41 @@
 @import 'vf-u-fullbleed.variables.scss';
 
 /*
- * 1. position: relative is needed for the pseudo element.
- * 2. make the background colour inherit from classanmes in use.
- * 3. if we can a full bleed background inline with other content we need to reset
- *    the grid to fill all that space.
- * 4. make the pseudo element 100% of the element so we can see it.
- * 5. push the pseudo element away from the left of the viewport.
- * 6. If the component has vertical padding we need to make sure the pseudo element
- *    is set to the top of the containing box.
- * 7. make the pseudo element full-width.
- * 8. put the pseudo element 'underneath' the element so it doesn't block.
- * 9. Because Windows always shows scrollbars this technique creats a horizontal
- *    scroll bar, we need to apply position: relative; to a parent element.
-      Encapsulating this CSS rule inside the component means it would only be set
-      if the site includes this component and it's CSS.
+ *  1. we set the  variable for the @at-root directive here.
+ *  2. position: relative is needed for the pseudo element.
+ *  3. make the background colour inherit from classanmes in use.
+ *  4. if we can a full bleed background inline with other content we need to reset
+ *     the grid to fill all that space.
+ *  5. make the pseudo element 100% of the element so we can see it.
+ *  6. push the pseudo element away from the left of the viewport.
+ *  7. If the component has vertical padding we need to make sure the pseudo element
+ *     is set to the top of the containing box.
+ *  8. make the pseudo element full-width.
+ *  9. put the pseudo element 'underneath' the element so it doesn't block.
+ * 10. Because Windows always shows scrollbars this technique creats a horizontal
+ *     scroll bar, we need to apply position: relative; to a parent element.
+       Encapsulating this CSS rule inside the component means it would only be set
+       if the site includes this component and it's CSS.
  */
 
 .vf-u-fullbleed {
-  position: relative; /* 1 */
+  $vf-u-fullbleed-parent: body !default; /* 1 */
+
+  position: relative; /* 2 */
 
   &::before {
-    background-color: inherit; /* 2 */
+    background-color: inherit; /* 3 */
     content: '';
-    grid-column: 1 / -1; /* 3 */
-    height: 100%; /* 4 */
-    margin-left: calc(50% - 50vw); /* 5 */
+    grid-column: 1 / -1; /* 4 */
+    height: 100%; /* 5 */
+    margin-left: calc(50% - 50vw); /* 6 */
     position: absolute;
-    top: 0; /* 6 */
-    width: 100vw; /* 7 */
-    z-index: -1; /* 8 */
+    top: 0; /* 7 */
+    width: 100vw; /* 8 */
+    z-index: -1; /* 9 */
   }
 
-  @at-root body {
-    position: relative; /* 9 */
+  @at-root #{$vf-u-fullbleed-parent} {
+    position: relative; /* 10 */
   }
 }
