@@ -148,10 +148,13 @@ class="vf-logo">
   ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></code></pre><h3 id="notes">Notes:</h3>
 <p>Browsers running on Windows tend to have scrollbars always showing. There is a small bug with the <code>vw</code> unit where the calculations leading to <code>100vw</code> could create a horizontal scroll bar. To avoid this, without using JavaScript. We need to apply the CSS rule of <code>overflow-x: hidden;</code> to a parent element.</p>
-<p>As we are making all components their own installable package we have added the required CSS to this component rather than relying on additional packages. Making use of Sass <code>@at-root</code> directive:</p>
+<p>As we are making all components their own installable package we have added the required CSS to this component rather than relying on additional packages. Making use of Sass <code>@at-root</code> directive and defining what element to add the rule too. The variable used for this is <code>$vf-u-fullbleed-parent</code>. This is set to <code>body</code> as the default but can be overridden in your projects overriding Sass variables file (which needs to be near the top of the import file).</p>
 <pre><code><span class="hljs-selector-class">.vf-u-fullbleed</span> {
+  <span class="hljs-variable">$vf-u-fullbleed-parent</span>: body !defualt;
+
   ...
-  <span class="hljs-keyword">@at-root</span> body {
+
+  <span class="hljs-keyword">@at-root</span> #{<span class="hljs-variable">$vf-u-fullbleed-parent</span>} {
     <span class="hljs-attribute">position</span>: relative;
   }
 }</code></pre><p>This has been test with sites using VF1.x and no problems have been found. If you find an issue with this component being used alongside pages built with VF1.x please <a href="https://github.com/visual-framework/vf-core/issues/new?title=BUG%3A+vf-u-bleed&amp;assignees=sturobson">raise an issue</a>.</p>
@@ -449,58 +452,49 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-comment">// vf-ui-fullbleed</span>
 
-<span class="hljs-comment">// **Thinking about deleting this file?**</span>
-<span class="hljs-comment">// If your component needs no CSS/Sass, we still recommend leaving the</span>
-<span class="hljs-comment">// scss files in place. As this is primarily a CSS framework, it is better to</span>
-<span class="hljs-comment">// leave the empty files so you know a file wasn't accidently omitted.</span>
-<span class="hljs-comment">// If you don't have any Sass, you can trim this block down to:</span>
-<span class="hljs-comment">// "This page was intentionally left blank"</span>
-
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'package.variables.scss'</span>;
-<span class="hljs-comment">// Debug information from component's `package.json`:</span>
-<span class="hljs-comment">// ---</span>
 <span class="hljs-comment">/*!
  * Component: #{map-get($componentInfo, 'name')}
  * Version: #{map-get($componentInfo, 'version')}
  * Location: #{map-get($componentInfo, 'location')}
  */</span>
 
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-u-fullbleed.variables.scss'</span>;
-
 <span class="hljs-comment">/*
- * 1. position: relative is needed for the pseudo element.
- * 2. make the background colour inherit from classanmes in use.
- * 3. if we can a full bleed background inline with other content we need to reset
- *    the grid to fill all that space.
- * 4. make the pseudo element 100% of the element so we can see it.
- * 5. push the pseudo element away from the left of the viewport.
- * 6. If the component has vertical padding we need to make sure the pseudo element
- *    is set to the top of the containing box.
- * 7. make the pseudo element full-width.
- * 8. put the pseudo element 'underneath' the element so it doesn't block.
- * 9. Because Windows always shows scrollbars this technique creats a horizontal
- *    scroll bar, we need to apply position: relative; to a parent element.
-      Encapsulating this CSS rule inside the component means it would only be set
-      if the site includes this component and it's CSS.
+ *  1. we set the  variable for the @at-root directive here.
+ *  2. position: relative is needed for the pseudo element.
+ *  3. make the background colour inherit from classanmes in use.
+ *  4. if we can a full bleed background inline with other content we need to reset
+ *     the grid to fill all that space.
+ *  5. make the pseudo element 100% of the element so we can see it.
+ *  6. push the pseudo element away from the left of the viewport.
+ *  7. If the component has vertical padding we need to make sure the pseudo element
+ *     is set to the top of the containing box.
+ *  8. make the pseudo element full-width.
+ *  9. put the pseudo element 'underneath' the element so it doesn't block.
+ * 10. Because Windows always shows scrollbars this technique creats a horizontal
+ *     scroll bar, we need to apply position: relative; to a parent element.
+       Encapsulating this CSS rule inside the component means it would only be set
+       if the site includes this component and it's CSS.
  */</span>
 
 <span class="hljs-selector-class">.vf-u-fullbleed</span> {
-  <span class="hljs-attribute">position</span>: relative; <span class="hljs-comment">/* 1 */</span>
+  <span class="hljs-variable">$vf-u-fullbleed-parent</span>: body !default; <span class="hljs-comment">/* 1 */</span>
+
+  <span class="hljs-attribute">position</span>: relative; <span class="hljs-comment">/* 2 */</span>
 
   &amp;<span class="hljs-selector-pseudo">::before</span> {
-    <span class="hljs-attribute">background-color</span>: inherit; <span class="hljs-comment">/* 2 */</span>
+    <span class="hljs-attribute">background-color</span>: inherit; <span class="hljs-comment">/* 3 */</span>
     <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
-    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>; <span class="hljs-comment">/* 3 */</span>
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>; <span class="hljs-comment">/* 4 */</span>
-    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">50%</span> - <span class="hljs-number">50vw</span>); <span class="hljs-comment">/* 5 */</span>
+    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>; <span class="hljs-comment">/* 4 */</span>
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>; <span class="hljs-comment">/* 5 */</span>
+    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">50%</span> - <span class="hljs-number">50vw</span>); <span class="hljs-comment">/* 6 */</span>
     <span class="hljs-attribute">position</span>: absolute;
-    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>; <span class="hljs-comment">/* 6 */</span>
-    <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>; <span class="hljs-comment">/* 7 */</span>
-    <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">1</span>; <span class="hljs-comment">/* 8 */</span>
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>; <span class="hljs-comment">/* 7 */</span>
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>; <span class="hljs-comment">/* 8 */</span>
+    <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">1</span>; <span class="hljs-comment">/* 9 */</span>
   }
 
-  <span class="hljs-keyword">@at-root</span> body {
-    <span class="hljs-attribute">position</span>: relative; <span class="hljs-comment">/* 9 */</span>
+  <span class="hljs-keyword">@at-root</span> #{<span class="hljs-variable">$vf-u-fullbleed-parent</span>} {
+    <span class="hljs-attribute">position</span>: relative; <span class="hljs-comment">/* 10 */</span>
   }
 }
 </code>
@@ -518,7 +512,7 @@ class="vf-logo">
           Filesystem path: components/vf-u-fullbleed/vf-u-fullbleed.scss
         </li>
         <li class="vf-list__item">
-          Size: 2 KB
+          Size: 1.6 KB
         </li>
       </ul>
     </section>
