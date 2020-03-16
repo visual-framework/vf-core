@@ -26,12 +26,15 @@ For example:
 
 Browsers running on Windows tend to have scrollbars always showing. There is a small bug with the `vw` unit where the calculations leading to `100vw` could create a horizontal scroll bar. To avoid this, without using JavaScript. We need to apply the CSS rule of `overflow-x: hidden;` to a parent element.
 
-As we are making all components their own installable package we have added the required CSS to this component rather than relying on additional packages. Making use of Sass `@at-root` directive:
+As we are making all components their own installable package we have added the required CSS to this component rather than relying on additional packages. Making use of Sass `@at-root` directive and defining what element to add the rule too. The variable used for this is `$vf-u-fullbleed-parent`. This is set to `body` as the default but can be overridden in your projects overriding Sass variables file (which needs to be near the top of the import file).
 
 ```
 .vf-u-fullbleed {
+  $vf-u-fullbleed-parent: body !defualt;
+
   ...
-  @at-root body {
+  
+  @at-root #{$vf-u-fullbleed-parent} {
     position: relative;
   }
 }
