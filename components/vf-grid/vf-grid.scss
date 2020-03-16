@@ -55,8 +55,17 @@
       grid-auto-flow: column
     }
   }
+  // This rule seems to break things more than it fixes.
+  // @media (max-width: 1299px) {
+  //   .vf-grid {
+  //     grid-column: 1 / -1;
+  //   }
+  // }
+
+  // This is needed for when the vf-grid is nested inside an embl-grid, like the news
+  // home page.
   @media (max-width: 1299px) {
-    .vf-grid {
+    .embl-grid .vf-grid {
       grid-column: 1 / -1;
     }
   }
