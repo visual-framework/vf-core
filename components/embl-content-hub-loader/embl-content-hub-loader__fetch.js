@@ -66,7 +66,7 @@ function emblContentHubFetch() {
       emblConditionalEdit();
     }
     
-    // if the JS to run embl-conditional-edit is present, run it now
+    // if the JS to run embl-notifications is present, run it now
     if (typeof emblNotifications === "function") {
       emblNotifications();
     }
