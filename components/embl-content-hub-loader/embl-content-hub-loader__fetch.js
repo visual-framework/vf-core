@@ -1,9 +1,10 @@
 // embl-content-hub-loader__fetch
 
-
+// load optional dependencies
 import { vfBanner } from 'vf-banner/vf-banner';
 import { vfTabs } from 'vf-tabs/vf-tabs';
 import { emblConditionalEdit } from 'embl-conditional-edit/embl-conditional-edit';
+import { emblNotifications } from 'embl-notifications/embl-notifications';
 
 /**
  * Fetch html links from content.embl.org
@@ -18,7 +19,6 @@ function emblContentHubFetch() {
   Element.prototype.appendAfter = function (element) {
     element.parentNode.insertBefore(this, element.nextSibling);
   },false;
-
 
   /**
    * Get the number of days between two dates.
@@ -64,6 +64,11 @@ function emblContentHubFetch() {
     // if the JS to run embl-conditional-edit is present, run it now
     if (typeof emblConditionalEdit === "function") {
       emblConditionalEdit();
+    }
+    
+    // if the JS to run embl-conditional-edit is present, run it now
+    if (typeof emblNotifications === "function") {
+      emblNotifications();
     }
   }
 

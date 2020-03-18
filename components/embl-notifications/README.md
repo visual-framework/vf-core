@@ -25,7 +25,8 @@ Add this to your `./components/vf-component-rollup/scripts.js`:
 
 ```js
 import { emblNotifications } from 'embl-notifications/embl-notifications';
-emblNotifications(); // invoke embl notifications
+// if you use embl-content-hub-loader, it will automatically invoke emblNotifications
+// emblNotifications(); // invoke embl notifications
 ```
 
 You can masquerade as another page or URL for adhoc use cases or testing:
