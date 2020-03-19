@@ -139,6 +139,7 @@ class="vf-logo">
 <p>A Simple Grid is written to go from single column, to two column, to their respective column count depending on the size of the viewport.</p>
 <p>You can define the number of columns with a modifier class.</p>
 <p><strong><em>Do Not Use</em></strong> with any component that uses the <code>&lt;table&gt;</code> HTML element as this breaks built-in browser accessibility for screen readers etc.</p>
+<p>Currently (16/03/20) The <code>vf-grid</code> is expecting to be a parent of <code>vf-body</code>. It does, however, work inside <code>embl-grid</code> now as we have added CSS to make it respect the boundaries so that it doesn’t break. </p>
 <h2 id="install">Install</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-grid</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-grid</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
@@ -582,8 +583,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
       grid-<span class="hljs-attribute">auto</span>-flow: column
     }
   }
-  @media (max-width: <span class="hljs-number">1299px</span>) {
-    .vf-grid {
+  // This rule seems to break things more than it fixes.
+  // @media (max-width: <span class="hljs-number">1299px</span>) {
+  //   .vf-grid {
+  //     grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  <span class="hljs-comment">//   }</span>
+  <span class="hljs-comment">// }</span>
+
+  <span class="hljs-comment">// This is needed for when the vf-grid is nested inside an embl-grid, like the news</span>
+  <span class="hljs-comment">// home page.</span>
+  <span class="hljs-keyword">@media</span> (max-width: <span class="hljs-number">1299px</span>) {
+    <span class="hljs-selector-class">.embl-grid</span> <span class="hljs-selector-class">.vf-grid</span> {
       grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
     }
   }
@@ -670,7 +680,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-grid/vf-grid.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.5 KB
+          Size: 2.7 KB
         </li>
       </ul>
     </section>
