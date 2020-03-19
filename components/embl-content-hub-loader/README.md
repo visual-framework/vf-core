@@ -8,6 +8,15 @@ Use this component to remotely load markup and content from the central EMBL Con
 
 Currently this is done as HTML imports (see the code example) + some JS. In the future other methods will be support (such as JSON).
 
+### Integrations
+
+After loading from contentHub, this component will also invoke these functions on child content:
+
+- `vf-banner/vf-banner`
+- `vf-tabs/vf-tabs`
+- `embl-conditional-edit/embl-conditional-edit`
+- `embl-notifications/embl-notifications`
+
 ### Supported patterns 
 
 See the [introductory text on the contentHub](https://content.embl.org/).

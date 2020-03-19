@@ -1,35 +1,18 @@
 // embl-notifications
 
-// Don't need JS? Then feel free to delete this file.
-
-/*
- * A note on the Visual Framework and JavaScript:
- * The VF is primarily a CSS framework so we've included only a minimal amount
- * of JS in components and it's fully optional (just remove the JavaScript selectors
- * i.e. `data-vf-js-tabs`). So if you'd rather use Angular or Bootstrap for your
- * tabs, the Visual Framework won't get in the way.
- *
- * When querying the DOM for elements that should be acted on:
- * 🚫 Don't: const tabs = document.querySelectorAll('.vf-tabs');
- * ✅ Do:    const tabs = document.querySelectorAll('[data-vf-js-tabs]');
- *
- * This allows users who would prefer not to have this JS engange on an element
- * to drop `data-vf-js-component` and still maintain CSS styling.
- */
-
 // if you need to import any other components' JS to use here
 import { vfBanner } from 'vf-banner/vf-banner';
 
 /**
-  * The global function for this component
+  * After a notifications has been chosen, build it and insert into the document
   * @example emblNotificationsInject(notification)
   * @param {object} [message] - An object to be show on a page
   */
- function emblNotificationsInject(message) {
+function emblNotificationsInject(message) {
   let output = document.createElement('div');
 
   if (message.field_notification_position == 'fixed') {
-    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
+    message.body = message.body.replace(/<[/]?[p>]+>/g, ' '); // no <p> tags allowed in inline messages, preserve a space to not colide words
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
     output.dataset.vfJsBanner = true;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
@@ -61,6 +44,7 @@ import { vfBanner } from 'vf-banner/vf-banner';
   
     // insert after `vf-header` or at after `vf-body`
     // @todo: add support for where "inline" message should be shown
+    // @todo: don't rely on the presence of vf-header to show inline notification, maybe <div data-notifications-go-here>
     let target = document.getElementsByClassName('vf-header');
     if (target.length > 0) {
       target[0].parentNode.insertBefore(output, target[0].nextSibling);
@@ -102,6 +86,7 @@ import { vfBanner } from 'vf-banner/vf-banner';
 
 /**
   * The global function for this component
+  * Note: if you use embl-content-hub-loader, it will automatically invoke emblNotifications
   * @example emblNotifications(currentHost, currentPath)
   * @param {string} [currentHost] - a host url www.embl.org
   * @param {string} [currentPath] - a path /people/name
@@ -238,4 +223,5 @@ export { emblNotifications };
 // Add this to your ./components/vf-component-rollup/scripts.js
 // import { emblNotifications } from '../components/raw/embl-notifications/embl-notifications.js';
 // And invoke it
+// Note: if you use embl-content-hub-loader, it will automatically invoke emblNotifications
 // emblNotifications();
