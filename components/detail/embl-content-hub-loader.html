@@ -137,6 +137,14 @@ class="vf-logo">
 <h2 id="about">About</h2>
 <p>Use this component to remotely load markup and content from the central EMBL ContentHub, this particular component allows reuse and distribution of content ranging articles to navigation elements (such as a global footer).</p>
 <p>Currently this is done as HTML imports (see the code example) + some JS. In the future other methods will be support (such as JSON).</p>
+<h3 id="integrations">Integrations</h3>
+<p>After loading from contentHub, this component will also invoke these functions on child content:</p>
+<ul>
+<li><code>vf-banner/vf-banner</code></li>
+<li><code>vf-tabs/vf-tabs</code></li>
+<li><code>embl-conditional-edit/embl-conditional-edit</code></li>
+<li><code>embl-notifications/embl-notifications</code></li>
+</ul>
 <h3 id="supported-patterns">Supported patterns</h3>
 <p>See the <a href="https://content.embl.org/">introductory text on the contentHub</a>.</p>
 <h3 id="standard-html-import">Standard HTML import</h3>
@@ -435,10 +443,11 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example"><span class="hljs-comment">// embl-content-hub-loader__fetch</span>
 
-
+<span class="hljs-comment">// load optional dependencies</span>
 <span class="hljs-keyword">import</span> { vfBanner } <span class="hljs-keyword">from</span> <span class="hljs-string">'vf-banner/vf-banner'</span>;
 <span class="hljs-keyword">import</span> { vfTabs } <span class="hljs-keyword">from</span> <span class="hljs-string">'vf-tabs/vf-tabs'</span>;
 <span class="hljs-keyword">import</span> { emblConditionalEdit } <span class="hljs-keyword">from</span> <span class="hljs-string">'embl-conditional-edit/embl-conditional-edit'</span>;
+<span class="hljs-keyword">import</span> { emblNotifications } <span class="hljs-keyword">from</span> <span class="hljs-string">'embl-notifications/embl-notifications'</span>;
 
 <span class="hljs-comment">/**
  * Fetch html links from content.embl.org
@@ -453,7 +462,6 @@ class="vf-logo">
   Element.prototype.appendAfter = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">element</span>) </span>{
     element.parentNode.insertBefore(<span class="hljs-keyword">this</span>, element.nextSibling);
   },<span class="hljs-literal">false</span>;
-
 
   <span class="hljs-comment">/**
    * Get the number of days between two dates.
@@ -494,11 +502,17 @@ class="vf-logo">
 
   <span class="hljs-comment">// Add a class to the body once the last item has been processed</span>
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblContentHubSignalFinished</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// @todo, shouldn't require the body element</span>
     <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>].classList.add(<span class="hljs-string">'embl-content-hub-loaded'</span>);
 
     <span class="hljs-comment">// if the JS to run embl-conditional-edit is present, run it now</span>
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> emblConditionalEdit === <span class="hljs-string">"function"</span>) {
       emblConditionalEdit();
+    }
+    
+    <span class="hljs-comment">// if the JS to run embl-notifications is present, run it now</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> emblNotifications === <span class="hljs-string">"function"</span>) {
+      emblNotifications();
     }
   }
 
@@ -681,7 +695,7 @@ class="vf-logo">
           Filesystem path: components/embl-content-hub-loader/embl-content-hub-loader__fetch.js
         </li>
         <li class="vf-list__item">
-          Size: 9.2 KB
+          Size: 9.6 KB
         </li>
       </ul>
     </section>

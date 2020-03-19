@@ -172,7 +172,8 @@ class="vf-logo">
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/embl-notifications</span></code></pre><h2 id="usage">Usage</h2>
 <p>Add this to your <code>./components/vf-component-rollup/scripts.js</code>:</p>
 <pre><code class="language-js"><span class="hljs-keyword">import</span> { emblNotifications } <span class="hljs-keyword">from</span> <span class="hljs-string">'embl-notifications/embl-notifications'</span>;
-emblNotifications(); <span class="hljs-comment">// invoke embl notifications</span></code></pre><p>You can masquerade as another page or URL for adhoc use cases or testing:</p>
+<span class="hljs-comment">// if you use embl-content-hub-loader, it will automatically invoke emblNotifications</span>
+<span class="hljs-comment">// emblNotifications(); // invoke embl notifications</span></code></pre><p>You can masquerade as another page or URL for adhoc use cases or testing:</p>
 <pre><code class="language-js"><span class="hljs-comment">// emblNotifications(currentHost = 'www.embl.org', currentPath = 'my/test/path`);</span>
 emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="hljs-string">'/'</span>)</code></pre>
   </div>
@@ -201,20 +202,8 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-header"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-global-header"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-global-header__inner"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-logo"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation vf-navigation--global"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__list | vf-list--inline"</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-navigation__item"</span>&gt;</span>
-                        This vf-header demonstrates message positioning. You do not need to use this njk template on your site.
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- embl global header, loaded from contentHub to demonstrate cascade --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"import"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.embl.org/api/v1/pattern.html?filter-content-type=article&amp;filter-id=574&amp;pattern=node-body&amp;source=contenthub"</span> <span class="hljs-attr">data-target</span>=<span class="hljs-string">"self"</span> <span class="hljs-attr">data-embl-js-content-hub-loader</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"embl-notifications | vf-content"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Some content to demonstrate notification behaviour on long pages.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
@@ -343,36 +332,19 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-JavaScript FileBrowser-code vf-code-example"><span class="hljs-comment">// embl-notifications</span>
 
-<span class="hljs-comment">// Don't need JS? Then feel free to delete this file.</span>
-
-<span class="hljs-comment">/*
- * A note on the Visual Framework and JavaScript:
- * The VF is primarily a CSS framework so we've included only a minimal amount
- * of JS in components and it's fully optional (just remove the JavaScript selectors
- * i.e. `data-vf-js-tabs`). So if you'd rather use Angular or Bootstrap for your
- * tabs, the Visual Framework won't get in the way.
- *
- * When querying the DOM for elements that should be acted on:
- * 🚫 Don't: const tabs = document.querySelectorAll('.vf-tabs');
- * ✅ Do:    const tabs = document.querySelectorAll('[data-vf-js-tabs]');
- *
- * This allows users who would prefer not to have this JS engange on an element
- * to drop `data-vf-js-component` and still maintain CSS styling.
- */</span>
-
 <span class="hljs-comment">// if you need to import any other components' JS to use here</span>
 <span class="hljs-keyword">import</span> { vfBanner } <span class="hljs-keyword">from</span> <span class="hljs-string">'vf-banner/vf-banner'</span>;
 
 <span class="hljs-comment">/**
-  * The global function for this component
+  * After a notifications has been chosen, build it and insert into the document
   * @example emblNotificationsInject(notification)
   * @param {object} [message] - An object to be show on a page
   */</span>
- <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblNotificationsInject</span>(<span class="hljs-params">message</span>) </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblNotificationsInject</span>(<span class="hljs-params">message</span>) </span>{
   <span class="hljs-keyword">let</span> output = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
 
   <span class="hljs-keyword">if</span> (message.field_notification_position == <span class="hljs-string">'fixed'</span>) {
-    message.body = message.body.replace(<span class="hljs-regexp">/&lt;[/]?[p&gt;]+&gt;/g</span>, <span class="hljs-string">''</span>); <span class="hljs-comment">// no &lt;p&gt; tags allowed in inline messages</span>
+    message.body = message.body.replace(<span class="hljs-regexp">/&lt;[/]?[p&gt;]+&gt;/g</span>, <span class="hljs-string">' '</span>); <span class="hljs-comment">// no &lt;p&gt; tags allowed in inline messages, preserve a space to not colide words</span>
     output.classList.add(<span class="hljs-string">'vf-banner'</span>, <span class="hljs-string">'vf-banner--fixed'</span>, <span class="hljs-string">'vf-banner--bottom'</span>, <span class="hljs-string">'vf-banner--notice'</span>);
     output.dataset.vfJsBanner = <span class="hljs-literal">true</span>;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
@@ -404,6 +376,7 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
   
     <span class="hljs-comment">// insert after `vf-header` or at after `vf-body`</span>
     <span class="hljs-comment">// @todo: add support for where "inline" message should be shown</span>
+    <span class="hljs-comment">// @todo: don't rely on the presence of vf-header to show inline notification, maybe &lt;div data-notifications-go-here&gt;</span>
     <span class="hljs-keyword">let</span> target = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">'vf-header'</span>);
     <span class="hljs-keyword">if</span> (target.length &gt; <span class="hljs-number">0</span>) {
       target[<span class="hljs-number">0</span>].parentNode.insertBefore(output, target[<span class="hljs-number">0</span>].nextSibling);
@@ -445,6 +418,7 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
 
 <span class="hljs-comment">/**
   * The global function for this component
+  * Note: if you use embl-content-hub-loader, it will automatically invoke emblNotifications
   * <span class="hljs-doctag">@example </span>emblNotifications(currentHost, currentPath)
   * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[currentHost] - a host url www.embl.org
   * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[currentPath] - a path /people/name
@@ -581,6 +555,7 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
 <span class="hljs-comment">// Add this to your ./components/vf-component-rollup/scripts.js</span>
 <span class="hljs-comment">// import { emblNotifications } from '../components/raw/embl-notifications/embl-notifications.js';</span>
 <span class="hljs-comment">// And invoke it</span>
+<span class="hljs-comment">// Note: if you use embl-content-hub-loader, it will automatically invoke emblNotifications</span>
 <span class="hljs-comment">// emblNotifications();</span>
 </code>
         </pre>
@@ -597,7 +572,7 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
           Filesystem path: components/embl-notifications/embl-notifications.js
         </li>
         <li class="vf-list__item">
-          Size: 10.2 KB
+          Size: 9.8 KB
         </li>
       </ul>
     </section>
