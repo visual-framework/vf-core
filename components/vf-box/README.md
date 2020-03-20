@@ -6,6 +6,12 @@
 
 The `vf-box` container is an element to be used when ...
 
+## Usage
+
+A `vf-box` can be used in all grid systems and also inside of `vf-content`.
+
+For now `vf-box` is only designed to accept a heading and text (both have classes). The text node – `vf-box__text` can also accept a link which will inherit the text colour. 
+
 ## Options
 
 ### Is Link
