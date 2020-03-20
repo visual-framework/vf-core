@@ -51,6 +51,17 @@
 
 .vf-box__text {
   @include set-type(text-body--3);
+
+  // some times there's a link inside the text in old WP posts.
+  // the vf-box might also be inside of `vf-content`
+  .vf-content & a,
+  a {
+    color: currentColor;
+    text-decoration: underline;
+    &:hover {
+      color: currentColor;
+    }
+  }
 }
 
 // The CSS below is on notice

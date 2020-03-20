@@ -309,6 +309,9 @@ class="vf-logo">
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-box"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-box.svg" alt="npm version"></a></p>
 <h2 id="about">About</h2>
 <p>The <code>vf-box</code> container is an element to be used when …</p>
+<h2 id="usage">Usage</h2>
+<p>A <code>vf-box</code> can be used in all grid systems and also inside of <code>vf-content</code>.</p>
+<p>For now <code>vf-box</code> is only designed to accept a heading and text (both have classes). The text node – <code>vf-box__text</code> can also accept a link which will inherit the text colour. </p>
 <h2 id="options">Options</h2>
 <h3 id="is-link">Is Link</h3>
 <p>If you require the <code>vf-box</code> to link to a page you can do this by:</p>
@@ -625,6 +628,17 @@ class="vf-logo">
 
 <span class="hljs-selector-class">.vf-box__text</span> {
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>);
+
+  <span class="hljs-comment">// some times there's a link inside the text in old WP posts.</span>
+  <span class="hljs-comment">// the vf-box might also be inside of `vf-content`</span>
+  <span class="hljs-selector-class">.vf-content</span> &amp; <span class="hljs-selector-tag">a</span>,
+  <span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">color</span>: currentColor;
+    <span class="hljs-attribute">text-decoration</span>: underline;
+    &amp;<span class="hljs-selector-pseudo">:hover</span> {
+      <span class="hljs-attribute">color</span>: currentColor;
+    }
+  }
 }
 
 <span class="hljs-comment">// The CSS below is on notice</span>
@@ -702,7 +716,7 @@ class="vf-logo">
           Filesystem path: components/vf-box/vf-box.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.1 KB
+          Size: 3.3 KB
         </li>
       </ul>
     </section>
