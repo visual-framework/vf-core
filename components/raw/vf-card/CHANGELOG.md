@@ -1,10 +1,10 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## 1.0.4 (2020-03-20)
 
+* Flattens Nunjucks template variables for more portability https://github.com/visual-framework/vf-core/pull/805
 
-## 1.2.0
+## 1.0.3
 
 * Removes `--medium` variants
 * Introduces `--very-easy` variant
