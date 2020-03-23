@@ -258,6 +258,12 @@ html elements. Some components may also add specific support for <code>.vf-conte
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>We believe in openness , transparency, working collaboratively and iteratively, continuously learning and sharing knowledge throughout the organisation<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">cite</span>&gt;</span>EMBl-EBI Web Development UX Team Mission<span class="hljs-tag">&lt;/<span class="hljs-name">cite</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://news.embl.de/wp-content/uploads/2019/11/Anastasia-Vlasiuk.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Anastasia Vlasiuk in the lab"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>Anastasiia Vlasiuk, PhD student in the Asari group, recording the visual responses of an isolated retina. PHOTO: Marietta Schupp/EMBL<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
+
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
   
@@ -320,18 +326,20 @@ html elements. Some components may also add specific support for <code>.vf-conte
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
-All notable changes to this project will be documented in this file.
-See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
+<span class="hljs-section">## 1.0.8</span>
+<span class="hljs-bullet">
+* </span>Add support for cite, figcaption
+<span class="hljs-bullet">* </span>Improve spacing on blockquote
 
-<span class="hljs-section"># 1.0.3 (2020-01-24)</span>
+<span class="hljs-section">## 1.0.3 (2020-01-24)</span>
 <span class="hljs-bullet">
 * </span>Lerna version bump
 
-<span class="hljs-section"># 1.0.1 (2019-12-18)</span>
+<span class="hljs-section">## 1.0.1 (2019-12-18)</span>
 <span class="hljs-bullet">
 * </span>Lerna version bump
 
-<span class="hljs-section"># 1.0.0 (2019-12-17)</span>
+<span class="hljs-section">## 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
 </code>
@@ -349,7 +357,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-content/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 302 Bytes
+          Size: 230 Bytes
         </li>
       </ul>
     </section>
@@ -596,6 +604,18 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
   <span class="hljs-selector-tag">blockquote</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     <span class="hljs-keyword">@include</span> blockquote;
+
+    <span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:last-of-type</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
+      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+    }
+  }
+
+  <span class="hljs-selector-tag">figcaption</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>),
+  <span class="hljs-selector-tag">cite</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
+    <span class="hljs-comment">// matches @mixin figure, but that is not directly usable here as it requires css classes</span>
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>);
+    <span class="hljs-attribute">color</span>: map-get(<span class="hljs-variable">$vf-colors-map</span>, vf-color--grey);
+    <span class="hljs-attribute">font-style</span>: italic;
   }
 }
 
@@ -628,7 +648,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-content/vf-content.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.6 KB
+          Size: 2.9 KB
         </li>
       </ul>
     </section>
