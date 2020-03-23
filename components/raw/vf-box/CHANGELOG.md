@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.3
+
+* handle `a` elments inside the text in old WP posts.
+
 ## 1.0.2 (2020-03-20)
 
 * Flattens Nunjucks template variables for more portability https://github.com/visual-framework/vf-core/pull/805
