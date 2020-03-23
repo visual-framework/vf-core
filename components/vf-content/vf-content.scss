@@ -122,6 +122,18 @@
 
   blockquote:not([class*='vf-']) {
     @include blockquote;
+
+    p:last-of-type:not([class*='vf-']) {
+      margin-bottom: 0;
+    }
+  }
+
+  figcaption:not([class*='vf-']),
+  cite:not([class*='vf-']) {
+    // matches @mixin figure, but that is not directly usable here as it requires css classes
+    @include set-type(text-body--5);
+    color: map-get($vf-colors-map, vf-color--grey);
+    font-style: italic;
   }
 }
 
