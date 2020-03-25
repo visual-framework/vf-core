@@ -497,58 +497,47 @@ html elements. Some components may also add specific support for <code>.vf-conte
 <span class="hljs-selector-class">.vf-content</span> {
 
   <span class="hljs-selector-tag">h1</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
-    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">1</span>);
-
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">1</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
 
     + <span class="hljs-selector-tag">small</span> {
-      <span class="hljs-attribute">display</span>: block;
       <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">35px</span>;
       <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">22px</span>;
     }
   }
 
   <span class="hljs-selector-tag">h2</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
-    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">39px</span>);
 
-    <span class="hljs-attribute">display</span>: block;
-    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">39px</span>;
     <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">13px</span>;
   }
 
   <span class="hljs-selector-tag">h3</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
-    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">3</span>);
+    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">13px</span>);
 
-    <span class="hljs-attribute">display</span>: block;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">24px</span> <span class="hljs-number">0</span> <span class="hljs-number">13px</span> <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
   }
 
   <span class="hljs-selector-tag">h4</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
-    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">4</span>);
+    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">4</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">13px</span>);
 
-    <span class="hljs-attribute">display</span>: block;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">24px</span> <span class="hljs-number">0</span> <span class="hljs-number">13px</span>;
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
   }
 
   <span class="hljs-selector-tag">h5</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
-    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">5</span>);
+    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">13px</span>);
 
-    <span class="hljs-attribute">display</span>: block;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">24px</span> <span class="hljs-number">0</span> <span class="hljs-number">13px</span>;
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
   }
 
   <span class="hljs-selector-tag">h6</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
-    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">5</span>);
+    <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">13px</span>);
 
-    <span class="hljs-attribute">display</span>: block;
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">24px</span> <span class="hljs-number">0</span> <span class="hljs-number">13px</span>;
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
   }
 
   <span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
-    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>);
-
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">24px</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">24px</span>);
   }
 
   <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
@@ -617,6 +606,11 @@ html elements. Some components may also add specific support for <code>.vf-conte
     <span class="hljs-attribute">color</span>: map-get(<span class="hljs-variable">$vf-colors-map</span>, vf-color--grey);
     <span class="hljs-attribute">font-style</span>: italic;
   }
+
+  <span class="hljs-selector-class">.vf-video</span> {
+    <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Make a function for vf-spacing map</span>
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">32px</span>;
+  }
 }
 
 <span class="hljs-selector-class">.vf-content__standfirst</span> {
@@ -648,7 +642,7 @@ html elements. Some components may also add specific support for <code>.vf-conte
           Filesystem path: components/vf-content/vf-content.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.9 KB
+          Size: 3 KB
         </li>
       </ul>
     </section>
