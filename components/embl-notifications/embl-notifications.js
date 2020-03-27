@@ -11,6 +11,10 @@ import { vfBanner } from 'vf-banner/vf-banner';
 function emblNotificationsInject(message) {
   let output = document.createElement('div');
 
+  // @todo:
+  // - add vf-link to link
+  // - support custom button text
+  // - Learn more should be conditionally shown
   if (message.field_notification_position == 'fixed') {
     message.body = message.body.replace(/<[/]?[p>]+>/g, ' '); // no <p> tags allowed in inline messages, preserve a space to not colide words
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
