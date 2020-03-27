@@ -11,12 +11,14 @@ import { vfBanner } from 'vf-banner/vf-banner';
 function emblNotificationsInject(message) {
   let output = document.createElement('div');
 
+  // preperation
+  message.body = message.body.replace(/<[/]?[p>]+>/g, ' '); // no <p> tags allowed in inline messages, preserve a space to not colide words
+
   // @todo:
   // - add vf-link to link
   // - support custom button text
   // - Learn more should be conditionally shown
   if (message.field_notification_position == 'fixed') {
-    message.body = message.body.replace(/<[/]?[p>]+>/g, ' '); // no <p> tags allowed in inline messages, preserve a space to not colide words
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
     output.dataset.vfJsBanner = true;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
@@ -37,7 +39,6 @@ function emblNotificationsInject(message) {
     target.parentNode.prepend(output);
     vfBanner();
   } else if (message.field_notification_position == 'inline') {
-    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
     output.classList.add('vf-grid'); // we wrap in vf-grid for layout
     output.innerHTML = `
       <div class="vf-banner vf-banner--phase | vf-content">
@@ -63,7 +64,6 @@ function emblNotificationsInject(message) {
     }
 
   } else if (message.field_notification_position == 'top') {
-    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--top', 'vf-banner--phase');
     output.dataset.vfJsBanner = true;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
