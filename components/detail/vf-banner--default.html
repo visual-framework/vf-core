@@ -333,16 +333,20 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
-<span class="hljs-section"># 1.0.2 </span>
+<span class="hljs-section">## 1.0.4</span>
+<span class="hljs-bullet">
+* </span>Makes use of <span class="hljs-code">`vf-banner__text`</span>
+<span class="hljs-bullet">* </span>Use of <span class="hljs-code">`vf-text`</span> is deprecated
+
+<span class="hljs-section">## 1.0.2 </span>
 <span class="hljs-bullet">
 * </span>Links in text areas of banners regain an underline.
 
-<span class="hljs-section"># 1.0.0 (2019-12-17)</span>
+<span class="hljs-section">## 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
 
-
-<span class="hljs-section"># 1.0.1</span>
+<span class="hljs-section">## 1.0.1</span>
 <span class="hljs-bullet">
 * </span>Removed default spacing of <span class="hljs-code">`vf-text`</span> components inside.
 <span class="hljs-bullet">* </span>Removes overriding variant CSS that removes padding, as it breaks the GDPR banner.
@@ -363,7 +367,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-banner/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 571 Bytes
+          Size: 650 Bytes
         </li>
       </ul>
     </section>
@@ -788,8 +792,11 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-banner__text</span> {
-  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>);
-}
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+} 
+<span class="hljs-selector-class">.vf-banner__text--lg</span> {
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+} 
 
 <span class="hljs-selector-class">.vf-banner--top</span> {
   <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
@@ -802,7 +809,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-banner--notice</span> {
   <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-notice-banner-color--background</span>;
 
-  <span class="hljs-selector-class">.vf-text</span> {
+  <span class="hljs-selector-class">.vf-banner__text</span>,
+  <span class="hljs-selector-class">.vf-text</span> { <span class="hljs-comment">// as of 1.0.4 use of vf-text is not recommended and is subject to future removal</span>
     <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-notice-banner-color--text</span>;
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
     <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64em</span>;
@@ -850,7 +858,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-banner/vf-banner.scss
         </li>
         <li class="vf-list__item">
-          Size: 2 KB
+          Size: 2.2 KB
         </li>
       </ul>
     </section>

@@ -906,31 +906,41 @@ function emblConditionalEditDetectParam(url, element) {
 
 
 function emblNotificationsInject(message) {
-  var output = document.createElement('div');
+  var output = document.createElement('div'); // preperation
+
+  message.body = message.body.replace(/<[/]?[p>]+>/g, ' '); // no <p> tags allowed in inline messages, preserve a space to not colide words
+  // add vf-link to link
+
+  message.body = message.body.replace('<a href=', '<a class="vf-link" href='); // we might need a more clever regex, but this should also avoid links that aleady have a class
+  // Learn more link is conditionally shown
+
+  if (message.field_notification_link) {
+    message.body = "".concat(message.body, " <a class=\"vf-link\" href=\"").concat(message.field_notification_link, "\">Learn more</a>");
+  } // custom button text
+
+
+  message.field_notification_button_text = message.field_notification_button_text || 'Close notice'; // @todo:
+  // - cookie name, version
+  // - extra button text, link
 
   if (message.field_notification_position == 'fixed') {
-    message.body = message.body.replace(/<[/]?[p>]+>/g, ' '); // no <p> tags allowed in inline messages, preserve a space to not colide words
-
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
     output.dataset.vfJsBanner = true;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
-    output.dataset.vfJsBannerButtonText = "Close notice"; // These features are not yet supported by the notification content type in the EMBL contentHub
+    output.dataset.vfJsBannerButtonText = message.field_notification_button_text; // These features are not yet supported by the notification content type in the EMBL contentHub
     // output.dataset.vfJsBannerCookieName = "CookieName";
     // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
     // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
     // output.dataset.vfJsBannerAutoAccept = false;
-    // <h4 class="vf-text vf-text-heading--4"><a class="vf-link" href="${message.field_notification_link}">${message.title}</a></h4>
 
-    output.innerHTML = "\n      <div class=\"vf-banner__content | vf-grid\" data-vf-js-banner-text>\n        <p class=\"vf-text vf-text-body--2\">".concat(message.body, " <a class=\"vf-link\" href=\"").concat(message.field_notification_link, "\">Learn more</a></p>\n      </div>");
+    output.innerHTML = "\n      <div class=\"vf-banner__content | vf-grid\" data-vf-js-banner-text>\n        <p class=\"vf-text vf-text-body--2\">".concat(message.body, "</p>\n      </div>");
     var target = document.body.firstChild;
     target.parentNode.prepend(output);
     vfBanner();
   } else if (message.field_notification_position == 'inline') {
-    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
-
     output.classList.add('vf-grid'); // we wrap in vf-grid for layout
 
-    output.innerHTML = "\n      <div class=\"vf-banner vf-banner--phase | vf-content\">\n        <div class=\"vf-banner__content\">\n          <p class=\"vf-text-body--3\">".concat(message.body, "</p>\n        </div>\n      </div>"); // insert after `vf-header` or at after `vf-body`
+    output.innerHTML = "\n      <div class=\"vf-banner vf-banner--phase | vf-content\">\n        <div class=\"vf-banner__content\">\n          <p class=\"vf-banner__text\">".concat(message.body, "</p>\n        </div>\n      </div>"); // insert after `vf-header` or at after `vf-body`
     // @todo: add support for where "inline" message should be shown
     // @todo: don't rely on the presence of vf-header to show inline notification, maybe <div data-notifications-go-here>
 
@@ -950,19 +960,16 @@ function emblNotificationsInject(message) {
 
     }
   } else if (message.field_notification_position == 'top') {
-    message.body = message.body.replace(/<[/]?[p>]+>/g, ''); // no <p> tags allowed in inline messages
-
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--top', 'vf-banner--phase');
     output.dataset.vfJsBanner = true;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
-    output.dataset.vfJsBannerButtonText = "Close notice"; // These features are not yet supported by the notification content type in the EMBL contentHub
+    output.dataset.vfJsBannerButtonText = message.field_notification_button_text; // These features are not yet supported by the notification content type in the EMBL contentHub
     // output.dataset.vfJsBannerCookieName = "CookieName";
     // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
     // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
     // output.dataset.vfJsBannerAutoAccept = false;
-    // <h4 class="vf-text vf-text-heading--4"><a class="vf-link" href="${message.field_notification_link}">${message.title}</a></h4>
 
-    output.innerHTML = "\n      <div class=\"vf-banner__content\" data-vf-js-banner-text>\n        <p class=\"vf-text vf-text-body--3\">".concat(message.body, " <a class=\"vf-link\" href=\"").concat(message.field_notification_link, "\">Learn more</a></p>\n      </div>");
+    output.innerHTML = "\n      <div class=\"vf-banner__content\" data-vf-js-banner-text>\n        <p class=\"vf-banner__text\">".concat(message.body, "</p>\n      </div>");
     var _target3 = document.body.firstChild;
 
     _target3.parentNode.prepend(output);

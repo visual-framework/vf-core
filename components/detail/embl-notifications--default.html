@@ -274,6 +274,10 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.0-alpha.2</span>
+<span class="hljs-bullet">
+* </span>Improved formatting support and conditional logic https://github.com/visual-framework/vf-core/pull/817
+
 <span class="hljs-section">## 1.0.0-alpha.1 (2020-03-20)</span>
 <span class="hljs-bullet">
 * </span>Documentation and minor text formatting improvemetns
@@ -295,7 +299,7 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
           Filesystem path: components/embl-notifications/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 136 Bytes
+          Size: 260 Bytes
         </li>
       </ul>
     </section>
@@ -319,34 +323,44 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblNotificationsInject</span>(<span class="hljs-params">message</span>) </span>{
   <span class="hljs-keyword">let</span> output = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
 
+  <span class="hljs-comment">// preperation</span>
+  message.body = message.body.replace(<span class="hljs-regexp">/&lt;[/]?[p&gt;]+&gt;/g</span>, <span class="hljs-string">' '</span>); <span class="hljs-comment">// no &lt;p&gt; tags allowed in inline messages, preserve a space to not colide words</span>
+  <span class="hljs-comment">// add vf-link to link</span>
+  message.body = message.body.replace(<span class="hljs-string">'&lt;a href='</span>, <span class="hljs-string">'&lt;a class="vf-link" href='</span>); <span class="hljs-comment">// we might need a more clever regex, but this should also avoid links that aleady have a class</span>
+  <span class="hljs-comment">// Learn more link is conditionally shown</span>
+  <span class="hljs-keyword">if</span> (message.field_notification_link) {
+    message.body = <span class="hljs-string">`<span class="hljs-subst">${message.body}</span> &lt;a class="vf-link" href="<span class="hljs-subst">${message.field_notification_link}</span>"&gt;Learn more&lt;/a&gt;`</span>;
+  }
+  <span class="hljs-comment">// custom button text</span>
+  message.field_notification_button_text = message.field_notification_button_text || <span class="hljs-string">'Close notice'</span>;
+  
+  <span class="hljs-comment">// @todo:</span>
+  <span class="hljs-comment">// - cookie name, version</span>
+  <span class="hljs-comment">// - extra button text, link</span>
   <span class="hljs-keyword">if</span> (message.field_notification_position == <span class="hljs-string">'fixed'</span>) {
-    message.body = message.body.replace(<span class="hljs-regexp">/&lt;[/]?[p&gt;]+&gt;/g</span>, <span class="hljs-string">' '</span>); <span class="hljs-comment">// no &lt;p&gt; tags allowed in inline messages, preserve a space to not colide words</span>
     output.classList.add(<span class="hljs-string">'vf-banner'</span>, <span class="hljs-string">'vf-banner--fixed'</span>, <span class="hljs-string">'vf-banner--bottom'</span>, <span class="hljs-string">'vf-banner--notice'</span>);
     output.dataset.vfJsBanner = <span class="hljs-literal">true</span>;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
-    output.dataset.vfJsBannerButtonText = <span class="hljs-string">"Close notice"</span>;
+    output.dataset.vfJsBannerButtonText = message.field_notification_button_text;
     <span class="hljs-comment">// These features are not yet supported by the notification content type in the EMBL contentHub</span>
     <span class="hljs-comment">// output.dataset.vfJsBannerCookieName = "CookieName";</span>
     <span class="hljs-comment">// output.dataset.vfJsBannerCookieVersion = "CookieVersion";</span>
     <span class="hljs-comment">// output.dataset.vfJsBannerExtraButton = "&lt;a href='#'&gt;Optional button&lt;/a&gt;&lt;a target='_blank' href='#'&gt;New tab button&lt;/a&gt;";</span>
     <span class="hljs-comment">// output.dataset.vfJsBannerAutoAccept = false;</span>
-
-    <span class="hljs-comment">// &lt;h4 class="vf-text vf-text-heading--4"&gt;&lt;a class="vf-link" href="${message.field_notification_link}"&gt;${message.title}&lt;/a&gt;&lt;/h4&gt;</span>
     output.innerHTML = <span class="hljs-string">`
       &lt;div class="vf-banner__content | vf-grid" data-vf-js-banner-text&gt;
-        &lt;p class="vf-text vf-text-body--2"&gt;<span class="hljs-subst">${message.body}</span> &lt;a class="vf-link" href="<span class="hljs-subst">${message.field_notification_link}</span>"&gt;Learn more&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="vf-text vf-text-body--2"&gt;<span class="hljs-subst">${message.body}</span>&lt;/p&gt;
       &lt;/div&gt;`</span>;
 
     <span class="hljs-keyword">let</span> target = <span class="hljs-built_in">document</span>.body.firstChild;
     target.parentNode.prepend(output);
     vfBanner();
   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (message.field_notification_position == <span class="hljs-string">'inline'</span>) {
-    message.body = message.body.replace(<span class="hljs-regexp">/&lt;[/]?[p&gt;]+&gt;/g</span>, <span class="hljs-string">''</span>); <span class="hljs-comment">// no &lt;p&gt; tags allowed in inline messages</span>
     output.classList.add(<span class="hljs-string">'vf-grid'</span>); <span class="hljs-comment">// we wrap in vf-grid for layout</span>
     output.innerHTML = <span class="hljs-string">`
       &lt;div class="vf-banner vf-banner--phase | vf-content"&gt;
         &lt;div class="vf-banner__content"&gt;
-          &lt;p class="vf-text-body--3"&gt;<span class="hljs-subst">${message.body}</span>&lt;/p&gt;
+          &lt;p class="vf-banner__text"&gt;<span class="hljs-subst">${message.body}</span>&lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;`</span>;
   
@@ -367,21 +381,18 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
     }
 
   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (message.field_notification_position == <span class="hljs-string">'top'</span>) {
-    message.body = message.body.replace(<span class="hljs-regexp">/&lt;[/]?[p&gt;]+&gt;/g</span>, <span class="hljs-string">''</span>); <span class="hljs-comment">// no &lt;p&gt; tags allowed in inline messages</span>
     output.classList.add(<span class="hljs-string">'vf-banner'</span>, <span class="hljs-string">'vf-banner--fixed'</span>, <span class="hljs-string">'vf-banner--top'</span>, <span class="hljs-string">'vf-banner--phase'</span>);
     output.dataset.vfJsBanner = <span class="hljs-literal">true</span>;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
-    output.dataset.vfJsBannerButtonText = <span class="hljs-string">"Close notice"</span>;
+    output.dataset.vfJsBannerButtonText = message.field_notification_button_text;
     <span class="hljs-comment">// These features are not yet supported by the notification content type in the EMBL contentHub</span>
     <span class="hljs-comment">// output.dataset.vfJsBannerCookieName = "CookieName";</span>
     <span class="hljs-comment">// output.dataset.vfJsBannerCookieVersion = "CookieVersion";</span>
     <span class="hljs-comment">// output.dataset.vfJsBannerExtraButton = "&lt;a href='#'&gt;Optional button&lt;/a&gt;&lt;a target='_blank' href='#'&gt;New tab button&lt;/a&gt;";</span>
     <span class="hljs-comment">// output.dataset.vfJsBannerAutoAccept = false;</span>
-
-    <span class="hljs-comment">// &lt;h4 class="vf-text vf-text-heading--4"&gt;&lt;a class="vf-link" href="${message.field_notification_link}"&gt;${message.title}&lt;/a&gt;&lt;/h4&gt;</span>
     output.innerHTML = <span class="hljs-string">`
       &lt;div class="vf-banner__content" data-vf-js-banner-text&gt;
-        &lt;p class="vf-text vf-text-body--3"&gt;<span class="hljs-subst">${message.body}</span> &lt;a class="vf-link" href="<span class="hljs-subst">${message.field_notification_link}</span>"&gt;Learn more&lt;/a&gt;&lt;/p&gt;
+        &lt;p class="vf-banner__text"&gt;<span class="hljs-subst">${message.body}</span>&lt;/p&gt;
       &lt;/div&gt;`</span>;
 
     <span class="hljs-keyword">let</span> target = <span class="hljs-built_in">document</span>.body.firstChild;
@@ -548,7 +559,7 @@ emblNotifications(<span class="hljs-string">'www.embl.org'</span>,<span class="h
           Filesystem path: components/embl-notifications/embl-notifications.js
         </li>
         <li class="vf-list__item">
-          Size: 9.8 KB
+          Size: 9.9 KB
         </li>
       </ul>
     </section>
