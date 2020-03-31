@@ -10,7 +10,7 @@
  */
 
 .vf-form__input:not([type='file']) {
-  @include set-type(text-body--3);
+  @include set-type(text-body--3, $custom-margin-bottom: 4px);
 
   border-color: set-ui-color(vf-ui-color--grey);
   border-style: solid;
@@ -18,7 +18,7 @@
   box-sizing: border-box;
   color: set-color(vf-color--grey--dark);
   display: block;
-  padding: 12px 24px;
+  padding: 8px 12px;
   width: 100%;
 
   &:focus,
@@ -40,10 +40,7 @@
   visibility: hidden;
   z-index: set-layer(vf-z-index--form-label);
 }
-.vf-form__input {
-  position: relative;
-  top: 24px;
-}
+
 .vf-form__input .vf-form__wrap {
   -webkit-font-smoothing: antialiased;
   position: relative;
@@ -59,30 +56,30 @@
 .vf-form__input::placeholder,
 .vf-form__select::placeholder,
 .vf-form__textarea::placeholder {
-  color: set-color(vf-color--grey--dark);
+  color: set-color(vf-color--grey--light);
 }
 
 .vf-form__input::-moz-placeholder,
 .vf-form__select::-moz-placeholder,
 .vf-form__textarea::-moz-placeholder {
-  color: set-color(vf-color--grey--dark);
+  color: set-color(vf-color--grey--light);
 }
 
 .vf-form__input:-ms-input-placeholder,
 .vf-form__select:-ms-input-placeholder,
 .vf-form__textarea:-ms-input-placeholder {
-  color: set-color(vf-color--grey--dark);
+  color: set-color(vf-color--grey--light);
 }
 
 .vf-form__input::-webkit-input-placeholder,
 .vf-form__select::-webkit-input-placeholder,
 .vf-form__textarea::-webkit-input-placeholder {
-  color: set-color(vf-color--grey--dark);
+  color: set-color(vf-color--grey--light);
 }
 
 .vf-form__input .vf-form__select {
   appearance: none;
-  color: set-color(vf-color--grey--dark);
+  color: set-color(vf-color--grey--light);
   cursor: pointer;
   position: relative;
 }
@@ -145,4 +142,17 @@
 
 .vf-form__input .vf-form__is-required.vf-form__is-active::before {
   opacity: 0;
+}
+
+
+.vf-form__input:disabled {
+  background: set-ui-color(vf-ui-color--grey);
+  cursor: not-allowed;
+  
+  &::placeholder,
+  &::-moz-placeholder,
+  &::-ms-input-placeholder,
+  &::-webkit-input-placeholder {
+    color: set-color(vf-color--green);
+  }
 }
