@@ -13,11 +13,14 @@ function emblNotificationsInject(message) {
 
   // preperation
   message.body = message.body.replace(/<[/]?[p>]+>/g, ' '); // no <p> tags allowed in inline messages, preserve a space to not colide words
-
+  // add vf-link to link
+  message.body = message.body.replace('<a href=', '<a class="vf-link" href='); // we might need a more clever regex, but this should also avoid links that aleady have a class
+  // Learn more link is conditionally shown
+  if (message.field_notification_link) {
+    message.body = `${message.body} <a class="vf-link" href="${message.field_notification_link}">Learn more</a>`;
+  }
   // @todo:
-  // - add vf-link to link
   // - support custom button text
-  // - Learn more should be conditionally shown
   if (message.field_notification_position == 'fixed') {
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
     output.dataset.vfJsBanner = true;
@@ -28,11 +31,9 @@ function emblNotificationsInject(message) {
     // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
     // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
     // output.dataset.vfJsBannerAutoAccept = false;
-
-    // <h4 class="vf-text vf-text-heading--4"><a class="vf-link" href="${message.field_notification_link}">${message.title}</a></h4>
     output.innerHTML = `
       <div class="vf-banner__content | vf-grid" data-vf-js-banner-text>
-        <p class="vf-text vf-text-body--2">${message.body} <a class="vf-link" href="${message.field_notification_link}">Learn more</a></p>
+        <p class="vf-text vf-text-body--2">${message.body}</p>
       </div>`;
 
     let target = document.body.firstChild;
@@ -73,11 +74,9 @@ function emblNotificationsInject(message) {
     // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
     // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
     // output.dataset.vfJsBannerAutoAccept = false;
-
-    // <h4 class="vf-text vf-text-heading--4"><a class="vf-link" href="${message.field_notification_link}">${message.title}</a></h4>
     output.innerHTML = `
       <div class="vf-banner__content" data-vf-js-banner-text>
-        <p class="vf-text vf-text-body--3">${message.body} <a class="vf-link" href="${message.field_notification_link}">Learn more</a></p>
+        <p class="vf-text vf-text-body--3">${message.body}</p>
       </div>`;
 
     let target = document.body.firstChild;
