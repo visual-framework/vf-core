@@ -1,7 +1,5 @@
 # Change Log
 
-## 1.0.0-alpha.1
+## 1.0.0
 
-* added this
-* changed this
-* deleted that
+- initial commit of new legend component, that acts like `vf-form__label`.

@@ -3,8 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# 1.0.0-alpha.9 (2019-12-12)
+## 1.0.0
 
+- makes the example the 'warts and all' with all labels and helper text
+- removes some unrequired CSS.
+
+# 1.0.0-alpha.9 (2019-12-12)
 
 ### Reverts
 
