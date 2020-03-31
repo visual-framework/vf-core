@@ -20,7 +20,7 @@ function emblNotificationsInject(message) {
     message.body = `${message.body} <a class="vf-link" href="${message.field_notification_link}">Learn more</a>`;
   }
   // custom button text
-  message.buttonText = message.buttonText || 'Close notice';
+  message.field_notification_button_text = message.field_notification_button_text || 'Close notice';
   
   // @todo:
   // - cookie name, version
@@ -29,7 +29,7 @@ function emblNotificationsInject(message) {
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
     output.dataset.vfJsBanner = true;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
-    output.dataset.vfJsBannerButtonText = message.buttonText;
+    output.dataset.vfJsBannerButtonText = message.field_notification_button_text;
     // These features are not yet supported by the notification content type in the EMBL contentHub
     // output.dataset.vfJsBannerCookieName = "CookieName";
     // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
@@ -72,7 +72,7 @@ function emblNotificationsInject(message) {
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--top', 'vf-banner--phase');
     output.dataset.vfJsBanner = true;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
-    output.dataset.vfJsBannerButtonText = message.buttonText;
+    output.dataset.vfJsBannerButtonText = message.field_notification_button_text;
     // These features are not yet supported by the notification content type in the EMBL contentHub
     // output.dataset.vfJsBannerCookieName = "CookieName";
     // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
