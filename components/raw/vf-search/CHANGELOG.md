@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.0
+
+- removes `vf-u-sr-only` as no longer needed
+- changes alignment of button on inline search
+
 # 1.0.0-alpha.8 (2019-10-23)
 
 **Note:** Version bump only for package @visual-framework/vf-search

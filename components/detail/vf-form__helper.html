@@ -100,6 +100,29 @@ class="vf-logo">
     
     
     
+        <div class="vf-tabs">
+          <ul class="vf-tabs__list">
+            <li class="vf-tabs__item">
+              This component has variants:
+            </li>
+            
+
+              
+                 
+               
+
+            
+
+              
+                 
+               
+
+            
+          </ul>
+
+      </div>
+
+    
 
 
 
@@ -161,7 +184,7 @@ class="vf-logo">
     <li class="vf-list__item">
         Referenced by 1 components:
         
-          <a href="vf-form__core.html">@vf-form__core</a>
+          <a href="vf-form__core--example.html">@vf-form__core--example</a>
         
     </li>
     
@@ -173,8 +196,15 @@ class="vf-logo">
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-form__helper"</span>&gt;</span>Form helper text<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Default --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-form__helper"</span>&gt;</span>Form helper text<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre>
+  
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Error --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-form__helper vf-form__helper--error"</span>&gt;</span>You have done something wrong.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+  
   
 
 
@@ -232,13 +262,13 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+<span class="hljs-section">## 1.0.0</span>
+<span class="hljs-bullet">
+- </span>adds error helper text when form input is invalid
+
 <span class="hljs-section"># 1.0.0-alpha.8 (2019-10-23)</span>
 
 <span class="hljs-strong">**Note:**</span> Version bump only for package @visual-framework/vf-form__helper
-
-
-
-
 
 <span class="hljs-section"># 1.0.0-alpha.7 (2019-09-30)</span>
 
@@ -414,7 +444,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-form/vf-form__helper/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 654 Bytes
+          Size: 713 Bytes
         </li>
       </ul>
     </section>
@@ -526,12 +556,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
 
   <span class="hljs-attribute">color</span>: set-color(vf-color--grey);
+}
 
-  <span class="hljs-selector-class">.vf-form__floatlabel</span> &amp; {
-    <span class="hljs-attribute">left</span>: <span class="hljs-number">24px</span>;
-    <span class="hljs-attribute">position</span>: relative;
-    <span class="hljs-attribute">top</span>: <span class="hljs-number">12px</span>;
-  }
+
+<span class="hljs-selector-class">.vf-form__helper--error</span> {
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--red);
+  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">4px</span>;
 }
 </code>
         </pre>
@@ -548,7 +578,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-form/vf-form__helper/vf-form__helper.scss
         </li>
         <li class="vf-list__item">
-          Size: 481 Bytes
+          Size: 487 Bytes
         </li>
       </ul>
     </section>
@@ -821,6 +851,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+          
+            
+          
+            
           
             
           
@@ -1347,6 +1381,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+          
+            
+          
+            
           
             
           
@@ -1904,6 +1942,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+            
+          
+            
+          
         
 
         
@@ -1966,7 +2008,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         <p class="vf-text">
-          <a class="vf-link--secondary" href="vf-lede.html">live</a>
+          <a class="vf-link--secondary" href="vf-lede.html">Lede</a>
         </p>
         
       
@@ -2450,6 +2492,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
               <p class="vf-text">
                 <a class="vf-link--secondary" href="vf-form__core.html">Forms</a>
               </p>
+            
+          
+            
+          
             
           
             
@@ -2957,6 +3003,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+          
+            
+          
+            
           
             
           
@@ -3490,6 +3540,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+            
+          
+            
+          
         
 
         
@@ -3973,6 +4027,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+          
+            
+          
+            
           
             
           
@@ -4486,6 +4544,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+            
+          
+            
+          
         
 
         
@@ -4957,6 +5019,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+          
+            
+          
+            
           
             
           
@@ -5462,6 +5528,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+            
+          
+            
+          
         
 
         
@@ -5925,6 +5995,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+          
+            
+          
+            
           
             
           
@@ -6411,6 +6485,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+          
+            
+          
+            
           
             
           

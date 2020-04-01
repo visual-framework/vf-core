@@ -49,8 +49,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.71;
-  margin: 0 0 16px 0;
-  margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+  margin: 0 0 4px 0;
   border-color: #f3f3f3;
   border-style: solid;
   border-width: 3px;
@@ -58,7 +57,7 @@
           box-sizing: border-box;
   color: #54585a;
   display: block;
-  padding: 12px 24px;
+  padding: 8px 12px;
   width: 100%;
 }
 
@@ -79,11 +78,6 @@
   transition: all .2s ease-in-out;
   visibility: hidden;
   z-index: 1;
-}
-
-.vf-form__input {
-  position: relative;
-  top: 24px;
 }
 
 .vf-form__input .vf-form__wrap {
@@ -115,56 +109,56 @@
 .vf-form__input::-webkit-input-placeholder,
 .vf-form__select::-webkit-input-placeholder,
 .vf-form__textarea::-webkit-input-placeholder {
-  color: #54585a;
+  color: #a8a99e;
 }
 
 .vf-form__input::-moz-placeholder,
 .vf-form__select::-moz-placeholder,
 .vf-form__textarea::-moz-placeholder {
-  color: #54585a;
+  color: #a8a99e;
 }
 
 .vf-form__input:-ms-input-placeholder,
 .vf-form__select:-ms-input-placeholder,
 .vf-form__textarea:-ms-input-placeholder {
-  color: #54585a;
+  color: #a8a99e;
 }
 
 .vf-form__input::-ms-input-placeholder,
 .vf-form__select::-ms-input-placeholder,
 .vf-form__textarea::-ms-input-placeholder {
-  color: #54585a;
+  color: #a8a99e;
 }
 
 .vf-form__input::placeholder,
 .vf-form__select::placeholder,
 .vf-form__textarea::placeholder {
-  color: #54585a;
+  color: #a8a99e;
 }
 
 .vf-form__input::-moz-placeholder,
 .vf-form__select::-moz-placeholder,
 .vf-form__textarea::-moz-placeholder {
-  color: #54585a;
+  color: #a8a99e;
 }
 
 .vf-form__input:-ms-input-placeholder,
 .vf-form__select:-ms-input-placeholder,
 .vf-form__textarea:-ms-input-placeholder {
-  color: #54585a;
+  color: #a8a99e;
 }
 
 .vf-form__input::-webkit-input-placeholder,
 .vf-form__select::-webkit-input-placeholder,
 .vf-form__textarea::-webkit-input-placeholder {
-  color: #54585a;
+  color: #a8a99e;
 }
 
 .vf-form__input .vf-form__select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  color: #54585a;
+  color: #a8a99e;
   cursor: pointer;
   position: relative;
 }
@@ -229,14 +223,19 @@
   opacity: 0;
 }
 
-/*
-* Default floatLabel theme.
-* modify it as you wish!
-*/
-.vf-form__item.vf-form__floatlabel {
-  position: relative;
+.vf-form__input:disabled {
+  background: #f3f3f3;
+  cursor: not-allowed;
 }
 
-.vf-form__floatlabel .vf-form__label {
-  position: absolute;
+.vf-form__input:disabled::-moz-placeholder, .vf-form__input:disabled::-moz-placeholder, .vf-form__input:disabled::-ms-input-placeholder, .vf-form__input:disabled::-webkit-input-placeholder {
+  color: #18974c;
+}
+
+.vf-form__input:disabled::placeholder, .vf-form__input:disabled::-moz-placeholder, .vf-form__input:disabled::-ms-input-placeholder, .vf-form__input:disabled::-webkit-input-placeholder {
+  color: #18974c;
+}
+
+.vf-form__input:invalid {
+  border-color: #d32f2f;
 }
