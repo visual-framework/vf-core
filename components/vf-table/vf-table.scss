@@ -11,14 +11,96 @@
 // Debug information from component's `package.json`:
 // ---
 /*!
- * Component: #{map-get($componentInfo, 'name')}
- * Version: #{map-get($componentInfo, 'version')}
- * Location: #{map-get($componentInfo, 'location')}
- */
+* Component: #{map-get($componentInfo, 'name')}
+* Version: #{map-get($componentInfo, 'version')}
+* Location: #{map-get($componentInfo, 'location')}
+*/
 
 @import 'vf-table.variables.scss';
 
-.vf-table:before {
-  content: 'This component has not yet been implement, see the README.md for more information.';
-  display: block;
+
+.vf-table {
+  background-color: set-ui-color(vf-ui-color--white);
+  border-collapse: collapse;
+}
+
+.vf-table--fixed {
+  table-layout: fixed;
+}
+
+.vf-table__caption {
+  @include set-type(text-heading--4);
+
+  text-align: left;
+}
+
+.vf-table__header {
+  background-color: set-color(vf-color--grey--lightest);
+}
+
+.vf-table__heading {
+  @include set-type(text-heading--5, $custom-margin-bottom: 0);
+
+  padding: 8px 16px;
+  text-align: left;
+}
+
+.vf-table__cell {
+  @include set-type(text-body--3, $custom-margin-bottom: 0);
+  padding: 4px 16px;
+}
+
+.vf-table--tight {
+  .vf-table__heading {
+    padding: 4px 4px;
+  }
+  .vf-table__cell {
+    padding: 4px 4px;
+  }
+}
+
+.vf-table--loose {
+  .vf-table__heading {
+    padding: 16px 24px;
+  }
+  .vf-table__cell {
+    padding: 8px 24px;
+  }
+}
+
+.vf-table__cell--heading {
+  @include set-type(text-heading--5, $custom-margin-bottom: 0);
+
+  text-align: left;
+}
+
+.vf-table--striped {
+  .vf-table__body {
+    & .vf-table__row:nth-of-type(even) {
+      background-color: set-ui-color(vf-ui-color--grey);
+    }
+    & .vf-table__row:hover {
+      background-color: set-ui-color(vf-ui-color--yellow);
+    }
+  }
+}
+
+.vf-table--bordered {
+
+  border: 1px solid set-color(vf-color--grey);
+
+  .vf-table__heading {
+    border: 1px solid set-color(vf-color--grey);
+  }
+
+  .vf-table__cell {
+    border: 1px solid set-color(vf-color--grey);
+  }
+}
+
+
+.vf-table__body {
+  & .vf-table__row:hover {
+    background-color: set-ui-color(vf-ui-color--yellow);
+  }
 }

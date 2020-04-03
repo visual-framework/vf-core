@@ -1,3 +1,51 @@
-<div class="vf-table">
-  /* vf-table template file */
-</div>
+<table class="vf-table
+  {%- if table_variant %} {{table_variant}}{% endif -%}
+  {%- if tableLayoutFixed %} vf-table--fixed{% endif -%}
+">
+
+  {% if table_caption %}
+  <caption class="vf-table__caption">{{table_caption}}</caption>
+  {% endif %}
+
+  <thead class="vf-table__header">
+    {% if table_headings == null %}
+    please add headings to table
+    {% endif %}
+    <tr class="vf-table__row">
+      {% for cell in table_headings %}
+        <th class="vf-table__heading" scope="col"
+        {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
+        >{{cell.title}}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+
+  <tbody class="vf-table__body">
+    {%- for row in table_rows %}
+    {% if row %}
+    <tr class="vf-table__row">
+
+      {%- for cell in row %}
+
+        {%- if loop.first and firstCellIsHeader == true %}
+          <th class="vf-table__cell | vf-table__cell--heading" scope="row"
+          {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
+          {% if cell.rowspans %} rowspan="{{cell.rowspans}}"{% endif %}
+          >{{ cell.text }}</th>
+
+        {%- else -%}
+
+          <td class="vf-table__cell"
+          {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
+          {% if cell.rowspans %} rowspan="{{cell.rowspans}}"{% endif %}
+          >{{ cell.text }}</td>
+        {% endif -%}
+
+      {% endfor -%}
+
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+
+</table>
