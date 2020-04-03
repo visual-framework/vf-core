@@ -1,0 +1,43 @@
+.vf-banner--alert {
+  .vf-banner__content {
+    display: flex;
+  }
+  .vf-banner__text,
+  [class*='vf-text'] {
+    color: currentColor;
+  }
+}
+
+.vf-banner--success {
+  background-color: set-color(vf-color--green--light);
+  color: set-ui-color(vf-ui-color--black);
+}
+
+.vf-banner--alert {
+  background-color: set-color(vf-color--red);
+  color: set-ui-color(vf-ui-color--white);
+}
+
+
+.vf-banner--warning{
+  background-color: set-color(vf-color--orange);
+  color: set-ui-color(vf-ui-color--black);
+}
+
+
+.vf-banner__button {
+  margin-left: auto;
+
+  svg {
+    fill: currentColor;
+    height: 14px;
+    transform-origin: center center;
+    transition: transform 250ms linear;
+  }
+  &:hover {
+    svg {
+      transform: rotate(90deg);
+      transition: transform 125ms linear;
+    }
+  }
+}
