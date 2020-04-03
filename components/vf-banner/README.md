@@ -6,6 +6,7 @@
 
 - General notice `vf-banner vf-banner--notice`
 - In development services `vf-banner vf-banner--phase`
+- Info `vf-banner vf-banner--alert vf-banner--info` <small>This replaces `vf-banner--phase`</small>
 - Success `vf-banner vf-banner--alert vf-banner--success`
 - Alert `vf-banner vf-banner--alert vf-banner--alert`
 - Warning `vf-banner vf-banner--alert vf-banner--warning`
