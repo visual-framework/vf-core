@@ -11,6 +11,9 @@ import { vfBanner } from 'vf-banner/vf-banner';
 function emblNotificationsInject(message) {
   let output = document.createElement('div');
 
+  // @todo:
+  // - add support in contentHub for extra button text, link
+
   // preperation
   message.body = message.body.replace(/<[/]?[p>]+>/g, ' '); // no <p> tags allowed in inline messages, preserve a space to not colide words
   // add vf-link to link
@@ -21,20 +24,22 @@ function emblNotificationsInject(message) {
   }
   // custom button text
   message.field_notification_button_text = message.field_notification_button_text || 'Close notice';
+  // notification memory and cookie options
+  if (message.field_notification_cookie == "True") {
+    output.dataset.vfJsBannerCookieName = message.cookieName;
+    output.dataset.vfJsBannerCookieVersion = message.cookieVersion;  
+    if (message.field_notification_auto_accept == "True") {
+      output.dataset.vfJsBannerAutoAccept = true;
+    }
+  }
   
-  // @todo:
-  // - cookie name, version
-  // - extra button text, link
   if (message.field_notification_position == 'fixed') {
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
     output.dataset.vfJsBanner = true;
     output.dataset.vfJsBannerState = message.field_notification_presentation;
     output.dataset.vfJsBannerButtonText = message.field_notification_button_text;
     // These features are not yet supported by the notification content type in the EMBL contentHub
-    // output.dataset.vfJsBannerCookieName = "CookieName";
-    // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
     // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
-    // output.dataset.vfJsBannerAutoAccept = false;
     output.innerHTML = `
       <div class="vf-banner__content | vf-grid" data-vf-js-banner-text>
         <p class="vf-text vf-text-body--2">${message.body}</p>
@@ -74,10 +79,7 @@ function emblNotificationsInject(message) {
     output.dataset.vfJsBannerState = message.field_notification_presentation;
     output.dataset.vfJsBannerButtonText = message.field_notification_button_text;
     // These features are not yet supported by the notification content type in the EMBL contentHub
-    // output.dataset.vfJsBannerCookieName = "CookieName";
-    // output.dataset.vfJsBannerCookieVersion = "CookieVersion";
     // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
-    // output.dataset.vfJsBannerAutoAccept = false;
     output.innerHTML = `
       <div class="vf-banner__content" data-vf-js-banner-text>
         <p class="vf-banner__text">${message.body}</p>
