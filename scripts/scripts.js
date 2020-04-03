@@ -606,17 +606,6 @@ function vfTree(scope) {
     // Handle hide/show for tree sets
     vfTreeButtonHandler(treelistset);
   });
-} // vf-form__float-labels
-
-/**
-  * The global function for this component
-  * @example vfcomponentName(firstPassedVar)
-  * @param {string} [firstPassedVar]  - An option to be passed
-  */
-
-
-function vfFormFloatLabels() {
-  console.log('vfFormFloatLabels is no longer required as of 1.0.0-beta.4, you can remove it from your scripts.js');
 } // embl-content-hub-loader__html-imports
 // A trimmed down version of
 // https://github.com/AshleyScirra/html-imports-polyfill/blob/master/htmlimports.js
@@ -751,21 +740,25 @@ function emblConditionalEdit() {
  * and adds `.embl-coditional-edit__enabled` to display the edit links
  * @param {string} [url] - the url to check for an enabling param
  * @param {element} [element] - the scopped element to be processed
+ * @param {string} [referrer] - what part of the page is asking for a check, we pass this to avoid recursion
  */
 
 
-function emblConditionalEditDetectParam(url, element) {
+function emblConditionalEditDetectParam(url, element, referrer) {
   var captured = /embl-conditional-edit=([^&]+)/.exec(url);
 
-  if (captured == null) {
+  if (captured == null && referrer != 'iframe') {
     // value not found
     // also try against any parent iframe url
     if (window.self !== window.top) {
-      emblConditionalEditDetectParam(parent.window.location, element);
+      console.log(url, parent.window.location.href);
+      emblConditionalEditDetectParam(parent.window.location.href, element, 'iframe');
     }
 
     return;
   }
+
+  captured = captured || false; // avoid null
 
   captured = captured[1];
 
@@ -1947,7 +1940,6 @@ vfMastheadSetStyle();
 vfGaIndicateLoaded();
 vfTabs();
 vfTree();
-vfFormFloatLabels();
 emblContentHub();
 emblBreadcrumbs(); // emblNotifications();
 // No default invokation

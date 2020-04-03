@@ -248,6 +248,10 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+<span class="hljs-section"># 1.0.1</span>
+<span class="hljs-bullet">
+* </span>Bug: Avoid a recursion issue in embl-conditional-edit https://github.com/visual-framework/vf-core/pull/829
+
 <span class="hljs-section"># 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
@@ -266,7 +270,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-conditional-edit/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 214 Bytes
+          Size: 333 Bytes
         </li>
       </ul>
     </section>
@@ -305,19 +309,22 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  * and adds `.embl-coditional-edit__enabled` to display the edit links
  * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[url] - the url to check for an enabling param
  * <span class="hljs-doctag">@param <span class="hljs-type">{element}</span> </span>[element] - the scopped element to be processed
+ * <span class="hljs-doctag">@param <span class="hljs-type">{string}</span> </span>[referrer] - what part of the page is asking for a check, we pass this to avoid recursion
  */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblConditionalEditDetectParam</span>(<span class="hljs-params">url,element</span>) </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblConditionalEditDetectParam</span>(<span class="hljs-params">url,element,referrer</span>) </span>{
   <span class="hljs-keyword">var</span> captured = <span class="hljs-regexp">/embl-conditional-edit=([^&amp;]+)/</span>.exec(url);
-  <span class="hljs-keyword">if</span> (captured == <span class="hljs-literal">null</span>) {
+  <span class="hljs-keyword">if</span> (captured == <span class="hljs-literal">null</span> &amp;&amp; referrer != <span class="hljs-string">'iframe'</span>) {
     <span class="hljs-comment">// value not found</span>
 
     <span class="hljs-comment">// also try against any parent iframe url</span>
     <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.self !== <span class="hljs-built_in">window</span>.top) {
-      emblConditionalEditDetectParam(parent.window.location,element);
+      <span class="hljs-built_in">console</span>.log(url, parent.window.location.href)
+      emblConditionalEditDetectParam(parent.window.location.href,element,<span class="hljs-string">'iframe'</span>);
     }
 
     <span class="hljs-keyword">return</span>;
   }
+  captured = captured || <span class="hljs-literal">false</span>; <span class="hljs-comment">// avoid null</span>
   captured = captured[<span class="hljs-number">1</span>];
 
   <span class="hljs-keyword">if</span> (captured == <span class="hljs-string">'1'</span> || captured == <span class="hljs-string">'enabled'</span> || captured == <span class="hljs-string">'true'</span>) {
@@ -341,7 +348,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/embl-conditional-edit/embl-conditional-edit.js
         </li>
         <li class="vf-list__item">
-          Size: 1.5 KB
+          Size: 1.8 KB
         </li>
       </ul>
     </section>
