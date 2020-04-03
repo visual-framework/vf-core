@@ -5,7 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # 1.0.1
 
-* Bug: Avoid a recursion issue in embl-conditional-edit
+* Bug: Avoid a recursion issue in embl-conditional-edit https://github.com/visual-framework/vf-core/pull/829
 
 # 1.0.0 (2019-12-17)
 
