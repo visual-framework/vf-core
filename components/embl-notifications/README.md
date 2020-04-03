@@ -7,7 +7,7 @@ Fetches notifications from the EMBL contentHub and will display them, if a match
 ## Possible features not currently planned:
 
 - Only show if a wrapping element has `data-vf-js-embl-notifications`
-- Also load messages from EBI's folder https://ebi.emblstatic.net/announcements.js
+- Also load messages from EBI's existing announcement JS at https://ebi.emblstatic.net/announcements.js
 - Use the vf-banner precompiled njk template to render output
 - Test for better support on non-VF 2.0 sites
 
