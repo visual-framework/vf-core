@@ -6,9 +6,11 @@
 
 - General notice `vf-banner vf-banner--notice`
 - In development services `vf-banner vf-banner--phase`
-- Success (to come) `vf-banner vf-banner--success`
-- Alert (to come) `vf-banner vf-banner--alert`
-- Warning (to come) `vf-banner vf-banner--warning`
+- Success `vf-banner vf-banner--alert vf-banner--success`
+- Alert `vf-banner vf-banner--alert vf-banner--alert`
+- Warning `vf-banner vf-banner--alert vf-banner--warning`
+
+<strong>note:</strong> The `vf-banner--alert` variants include the option to dismiss the banner. This is currently a 'bring your own JavaScript' button.
 
 ## JS Documentation for `--modal` variant
 
