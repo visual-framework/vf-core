@@ -2,7 +2,7 @@
 
 ## 1.0.1
 
-- Solves bug in `vf-form__core`'s `package.json` missing component references: `vf-form__core/vf-form__core.scss` requires `__fieldset` and `__legend` but they are missing from the package.json
+- `vf-form__core/vf-form__core.scss` requires `__fieldset` and `__legend` but they are missing from the `package.json`
 
 ## 1.0.0
 
