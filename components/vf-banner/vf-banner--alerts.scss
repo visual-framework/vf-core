@@ -6,6 +6,12 @@
   [class*='vf-text'] {
     color: currentColor;
   }
+  a {
+    color: currentColor;
+    &:focus {
+      outline: 1px solid white;
+    }
+  }
 }
 
 .vf-banner--success {
@@ -31,24 +37,25 @@
 
 
 .vf-banner__button {
+  line-height: 1;
   margin-left: auto;
 
   svg {
     fill: currentColor;
     height: 14px;
     transform-origin: center center;
-    transition: transform 250ms linear;
+    transition: transform 125ms linear;
   }
-  &:focus,
+
   &:hover {
-    border: 0;
-    outline: 0;
 
     svg {
-      border: 0;
-      outline: 0;
       transform: rotate(90deg);
       transition: transform 125ms linear;
     }
+  }
+  
+  &:focus {
+    outline: 1px solid white;
   }
 }
