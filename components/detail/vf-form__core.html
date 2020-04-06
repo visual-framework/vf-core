@@ -406,6 +406,10 @@ Left intentionally blank, <span class="hljs-tag">&lt;<span class="hljs-name">a</
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.1</span>
+<span class="hljs-bullet">
+- </span><span class="hljs-code">`vf-form__core/vf-form__core.scss`</span> requires <span class="hljs-code">`__fieldset`</span> and <span class="hljs-code">`__legend`</span> but they are missing from the <span class="hljs-code">`package.json`</span>
+
 <span class="hljs-section">## 1.0.0</span>
 <span class="hljs-bullet">
 - </span>moves example to it's own template to allow for more labelling
@@ -425,7 +429,7 @@ Left intentionally blank, <span class="hljs-tag">&lt;<span class="hljs-name">a</
           Filesystem path: components/vf-form/vf-form__core/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 172 Bytes
+          Size: 302 Bytes
         </li>
       </ul>
     </section>
@@ -445,10 +449,10 @@ Left intentionally blank, <span class="hljs-tag">&lt;<span class="hljs-name">a</
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
 
 <span class="hljs-comment">// component specific styles</span>
-
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-form__helper/vf-form__helper.scss'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-form__input/vf-form__input.scss'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-form__legend/vf-form__legend.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-form__fieldset/vf-form__fieldset.scss'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-form__select/vf-form__select.scss'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-form__checkbox/vf-form__checkbox.scss'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-form__radio/vf-form__radio.scss'</span>;
@@ -470,7 +474,7 @@ Left intentionally blank, <span class="hljs-tag">&lt;<span class="hljs-name">a</
           Filesystem path: components/vf-form/vf-form__core/index.scss
         </li>
         <li class="vf-list__item">
-          Size: 626 Bytes
+          Size: 677 Bytes
         </li>
       </ul>
     </section>
@@ -505,10 +509,12 @@ Left intentionally blank, <span class="hljs-tag">&lt;<span class="hljs-name">a</
   <span class="hljs-attr">"gitHead"</span>: <span class="hljs-string">"02bba9ce4ec9b5cf77b52b02a7a34e08673af691"</span>,
   <span class="hljs-attr">"dependencies"</span>: {
     <span class="hljs-attr">"@visual-framework/vf-form__checkbox"</span>: <span class="hljs-string">"^1.0.0"</span>,
+    <span class="hljs-attr">"@visual-framework/vf-form__fieldset"</span>: <span class="hljs-string">"^1.0.0"</span>,
     <span class="hljs-attr">"@visual-framework/vf-form__helper"</span>: <span class="hljs-string">"^1.0.0"</span>,
     <span class="hljs-attr">"@visual-framework/vf-form__input"</span>: <span class="hljs-string">"^1.0.0"</span>,
     <span class="hljs-attr">"@visual-framework/vf-form__item"</span>: <span class="hljs-string">"^1.0.0"</span>,
     <span class="hljs-attr">"@visual-framework/vf-form__label"</span>: <span class="hljs-string">"^1.0.0"</span>,
+    <span class="hljs-attr">"@visual-framework/vf-form__legend"</span>: <span class="hljs-string">"^1.0.0"</span>,
     <span class="hljs-attr">"@visual-framework/vf-form__radio"</span>: <span class="hljs-string">"^1.0.0"</span>,
     <span class="hljs-attr">"@visual-framework/vf-form__select"</span>: <span class="hljs-string">"^1.0.0-alpha.9"</span>,
     <span class="hljs-attr">"@visual-framework/vf-form__textarea"</span>: <span class="hljs-string">"^1.0.0"</span>
@@ -529,7 +535,7 @@ Left intentionally blank, <span class="hljs-tag">&lt;<span class="hljs-name">a</
           Filesystem path: components/vf-form/vf-form__core/package.json
         </li>
         <li class="vf-list__item">
-          Size: 1.1 KB
+          Size: 1.2 KB
         </li>
       </ul>
     </section>
@@ -591,72 +597,55 @@ Left intentionally blank, <span class="hljs-tag">&lt;<span class="hljs-name">a</
 # yarn lockfile v1
 
 
-"@visual-framework/vf-form__checkbox@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__checkbox/-/vf-form__checkbox-1.0.0-alpha.1.tgz#bde5b080151cc0881e9f434b2396bb9317bebc3a"
-  integrity sha512-dnE8HrrZ/cf3kDa/ZnwyNsE/IAAsI5GQDrcC76X3HDqrDx/QUeP9Svb6msZvYG4v3WClUOFKTL49oVDo8GEhmQ==
-  dependencies:
-    "@visual-framework/vf-form__item" "^0.0.38"
-    "@visual-framework/vf-form__label" "^0.0.34"
+"@visual-framework/vf-form__checkbox@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__checkbox/-/vf-form__checkbox-1.0.0.tgz#a5bbef60c9312a353eb95725c42387465915ca80"
+  integrity sha512-eDhZMQ0wiyfp1Huj1wcCwZmcincef67stB4s0FYraiiNxV9xC5TlQitGf4OMhLhobkgh0u455iiQQWtQQO9CSw==
 
-"@visual-framework/vf-form__helper@^0.0.37":
-  version "0.0.37"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__helper/-/vf-form__helper-0.0.37.tgz#957c59e0cb889481503fc2b553331e26b639bd95"
-  integrity sha512-tTPVJ5DmN0RmyJmPk8YvSD+NKSJPyht2MjTe+h4I1AdyNir9PtZAYvsO1RjwiMM3kohbEr1uU4iecCLnau1LBw==
+"@visual-framework/vf-form__fieldset@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__fieldset/-/vf-form__fieldset-1.0.0.tgz#858360587a66206a0e5db69a979570405e4b0c20"
+  integrity sha512-dluRLkiH6ODpdYBcZxyoLr+kwmX5jq3t1uHh4C3GTl3FrCGMRKscV9ZdVODKz4y2EEAu0LUyq6BwI34K/ThSXA==
 
-"@visual-framework/vf-form__helper@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__helper/-/vf-form__helper-1.0.0-alpha.1.tgz#1d3605e67dd40175f2631158a03134262069d5c1"
-  integrity sha512-6DkqqJ2HJDtrUKmuwPdtXL2R/s2ULa7IAfjvHaTnj6U5INRk/3gOVF+zNSu7EhFLjwKXywIB6IUkI0HBl6vFwA==
+"@visual-framework/vf-form__helper@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__helper/-/vf-form__helper-1.0.0.tgz#84f0ff4efa64edfde145422d11ef9965243b5f05"
+  integrity sha512-siyvDtDmB1EKIqD4AZ2K757u0tvo+HF7gQSe76xe3lti2PxQbAn+lYh/kRREEUw3bSGmIj7ZebQXOEW1zB5RJA==
 
-"@visual-framework/vf-form__input@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__input/-/vf-form__input-1.0.0-alpha.1.tgz#6b343e69ea950dca253f21b5adc8d0d0dd7a1bc7"
-  integrity sha512-6bb/Z2z0UTiWAK2S52ja42xH/8Ztgc7Qa5dNHuJ3UP8BHAaBXFHXdC9dU9CIUYv+WEXEVGeSDG+pbHB1bDZRdg==
-  dependencies:
-    "@visual-framework/vf-form__item" "^0.0.38"
-    "@visual-framework/vf-form__label" "^0.0.34"
+"@visual-framework/vf-form__input@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__input/-/vf-form__input-1.0.0.tgz#01e93872127ef9eaeb4b98c5a5cb6b921056b030"
+  integrity sha512-7jVV2QrxzKCzXUcCHl5u8EbQOrYuSH9STqoCZRMLkmW1/mXS51/Jg3PFiRohRoIztpTjNe/NbE031rWaF39bmw==
 
-"@visual-framework/vf-form__item@^0.0.38":
-  version "0.0.38"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__item/-/vf-form__item-0.0.38.tgz#6966825b88af016bc60460884bb679250bb97758"
-  integrity sha512-ATPUM/Hvq+a736UYHT4jPzHvZjmgr41ei5SerRmUG1W4Qa8tbpRlqlzphPd/TF0eeG+PkUmqyVxos7CUbzpUSA==
-  dependencies:
-    "@visual-framework/vf-form__helper" "^0.0.37"
-    "@visual-framework/vf-form__label" "^0.0.34"
+"@visual-framework/vf-form__item@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__item/-/vf-form__item-1.0.0.tgz#5787e5e56d34f5d9a1081a475d0e8536d48a6c45"
+  integrity sha512-Z3+Dp+j+wi/BO1jGS3gHkaMUhSbxBXTP5VUfCa7X4J81pgUGlw6sohA9ARt8whuunPufLtVTRqpp1P7di7fPww==
 
-"@visual-framework/vf-form__item@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__item/-/vf-form__item-1.0.0-alpha.1.tgz#9ecd53183e65fbff876351e3a827462b0b48d962"
-  integrity sha512-d/Dnv7wx3MW1FMf7nowjrV/5raHcFKJvrdEP3yc/Hs/NcCIGISMuuOI3hLUhltdfLx5ULkYr5E30m43M1jDAvA==
-  dependencies:
-    "@visual-framework/vf-form__helper" "^0.0.37"
-    "@visual-framework/vf-form__label" "^0.0.34"
+"@visual-framework/vf-form__label@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__label/-/vf-form__label-1.0.0.tgz#df9af25955f530d985cc4d074359939282c01c73"
+  integrity sha512-MWL4zoivfyaGfhsCXAtQG7MwXuyqGx0L2JuihvdfZ+4ygVJvQa7TMDAl75LwVBuhixn3h+cjFf/f4d8Ji2LNUA==
 
-"@visual-framework/vf-form__label@^0.0.34":
-  version "0.0.34"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__label/-/vf-form__label-0.0.34.tgz#b3b996b477cfef4e8f9414abce5018e5a7c1353e"
-  integrity sha512-QdwSEptrdlqTLbX0/4gYU2yrBzPt6Ulke0hsnvl3KMG4l0tDU3/+mDS9FsboYxG57P3HxvC4moRuDNea/dXqJQ==
+"@visual-framework/vf-form__legend@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__legend/-/vf-form__legend-1.0.0.tgz#5ee665c09e956da12d96e6df13f5efd7fc4d989e"
+  integrity sha512-cj8hQwQw9WKUMjEXBrEefKRefY1JT3b2HY4bc3mfCuWPJlBQmcXVeDvuEzMwcAEohx52QbbckXWHTurYSkhp/Q==
 
-"@visual-framework/vf-form__label@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__label/-/vf-form__label-1.0.0-alpha.1.tgz#ac24c4288399435d53ea1f2efb2f5708a7923093"
-  integrity sha512-oUm4e4aObfnZmefzM2VMl3Go94e57U8tiKBGod561OZrtKLJXUR2Zh+E7JYtKACH4ZQYdB3ltHyp8YnRpjDF5Q==
+"@visual-framework/vf-form__radio@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__radio/-/vf-form__radio-1.0.0.tgz#46a7fc364acc5633a02b0f30824ffeb65f5ea3c8"
+  integrity sha512-v6Cv9m7aKWQN5jZHwKN+jmh78Bxcqli/Ow/luAgXx/rbi/DT9VGdOsKj9e7vFlUudQjoheEr0PEd4Sycfj+xEA==
 
-"@visual-framework/vf-form__radio@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__radio/-/vf-form__radio-1.0.0-alpha.1.tgz#2338e383dd0d76bf93d0c4d3d101dc29a16a2df3"
-  integrity sha512-CkzyY5r6rRiiCijt6HYHERnPjDJA8SUOIOu5ScAwnxxkbnvxiBa5PF2kFDG2JUAj6WwlDJEyb4J/y8ZWIFCdOg==
+"@visual-framework/vf-form__select@^1.0.0-alpha.9":
+  version "1.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__select/-/vf-form__select-1.0.0-alpha.9.tgz#f52517ae53cbbe4878eb3f3dd98dcb2d56167c0d"
+  integrity sha512-K6Z/ABO9oMXl0HIGDEm/gj/78RcJ15Rq2xDt0hvL5kX1hwnWXUqJR72+KZGfthVY2ysh4CNkv6rBh+mezYa0og==
 
-"@visual-framework/vf-form__select@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__select/-/vf-form__select-1.0.0-alpha.1.tgz#797c520c15de7f2255f33252af888ad9ea37cb6a"
-  integrity sha512-DsrDlXQYG3Ku+KaKvUUzj7cYQ9QiuTljvulQt+cWTaf66ivi/RwUUrb/Eh55fncGId1yO/bSY8vShxR0Ew30/g==
-
-"@visual-framework/vf-form__textarea@^1.0.0-alpha.1":
-  version "1.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__textarea/-/vf-form__textarea-1.0.0-alpha.1.tgz#c31a19f6f388d3a0c53f0a9d05bec7f1c436636a"
-  integrity sha512-8wps3NtDg16u1dTH7bVTouoO4kSeUPnhlMvCtLDeqEZNC2Z8+MAis/UwQbcp80O6WUQrmt8ZdiEy7AYjCxUN0A==
+"@visual-framework/vf-form__textarea@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@visual-framework/vf-form__textarea/-/vf-form__textarea-1.0.0.tgz#7509cfd9ea4bbff15496d6436797afdcf20ab5ae"
+  integrity sha512-biqH3Oe+Is/inXSchZK7YRjK2Ab3lu/HkPwbqWgQosUGGnqINACikh8WfMzS1vvMW0CKaQ6C3j/O+lVgUYvTng==
 </code>
         </pre>
         
@@ -672,7 +661,7 @@ Left intentionally blank, <span class="hljs-tag">&lt;<span class="hljs-name">a</
           Filesystem path: components/vf-form/vf-form__core/yarn.lock
         </li>
         <li class="vf-list__item">
-          Size: 4.2 KB
+          Size: 3.3 KB
         </li>
       </ul>
     </section>
