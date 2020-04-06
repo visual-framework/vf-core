@@ -145,3 +145,11 @@
     margin-bottom: 42px;
   }
 }
+
+
+[class*='dark'].vf-content,
+.vf-content > [class*='dark'] {
+  a:not([class*='vf-']) {
+    @include inline-link($vf-link--dark-mode--hover-color, $vf-link--dark-mode--hover-color, set-color(vf-color--purple--light),  $vf-include-normalisations: true);
+  }
+}
