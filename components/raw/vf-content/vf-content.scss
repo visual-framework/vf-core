@@ -57,17 +57,14 @@
   p:not([class*='vf-']) {
     @include set-type(text-body--2, $custom-margin-bottom: 24px);
   }
-
+  
+  .vf-link,
   a:not([class*='vf-']) {
-    @include inline-link;
-
-    &:visited {
-      color: $vf-link--visited-color;
-    }
-
-    &:hover {
-      color: $vf-link--hover-color;
-    }
+    @include inline-link(
+      $vf-link--hover-color: $vf-link--hover-color,
+      $vf-link--visited-color: set-color(vf-color--purple),
+      $vf-include-normalisations: true
+    );
   }
 
   small:not([class*='vf-']) {
@@ -143,5 +140,19 @@
 
   + small {
     margin-bottom: 42px;
+  }
+}
+
+
+[class*='--dark'].vf-content,
+.vf-content > [class*='dark'] {
+  .vf-link,
+  a:not([class*='vf-']) {
+    @include inline-link(
+      $vf-link--dark-mode--hover-color,
+      $vf-link--dark-mode--hover-color,
+      set-color(vf-color--purple--light),
+      $vf-include-normalisations: true
+    );
   }
 }
