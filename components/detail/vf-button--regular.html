@@ -467,7 +467,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-comment">// vf-button</span>
 
 <span class="hljs-variable">$button-hover-fix</span>: -<span class="hljs-number">5px</span> -<span class="hljs-number">5px</span> rgba(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
-<span class="hljs-selector-class">.vf-button</span> {
+<span class="hljs-selector-class">.vf-button</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-button--icon</span>) {
 
   --vf-button__color__background--default: var(--vf-color--grey);
   --vf-button__color__background--default-dark: var(--vf-color--grey--darkest);
@@ -593,6 +593,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
 }
 
+<span class="hljs-selector-class">.vf-button--icon</span> {
+  <span class="hljs-attribute">background</span>: none;
+  <span class="hljs-attribute">border</span>: none;
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">color</span>: currentColor;
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">outline</span>: none;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">4px</span> <span class="hljs-number">2px</span> <span class="hljs-number">4px</span>; <span class="hljs-comment">// 2px on the bottom because of EM box</span>
+}
+
+
 <span class="hljs-comment">// Begin deprecated classes and styles</span>
 <span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-disable-deprecated</span>) {
 
@@ -651,7 +662,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-button/vf-button.scss
         </li>
         <li class="vf-list__item">
-          Size: 5.4 KB
+          Size: 5.6 KB
         </li>
       </ul>
     </section>

@@ -11,7 +11,7 @@
 // vf-button
 
 $button-hover-fix: -5px -5px rgba(0, 0, 0, 0);
-.vf-button {
+.vf-button:not(.vf-button--icon) {
 
   --vf-button__color__background--default: var(--vf-color--grey);
   --vf-button__color__background--default-dark: var(--vf-color--grey--darkest);
@@ -136,6 +136,17 @@ a.vf-button {
 
   padding: 16px;
 }
+
+.vf-button--icon {
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  color: currentColor;
+  cursor: pointer;
+  outline: none;
+  padding: 4px 4px 2px 4px; // 2px on the bottom because of EM box
+}
+
 
 // Begin deprecated classes and styles
 html:not(.vf-disable-deprecated) {

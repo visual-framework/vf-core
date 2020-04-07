@@ -115,8 +115,8 @@ class="vf-logo">
 
               
                 
-                  <a class="vf-tabs__link" href="vf-banner--fixed.html">
-                    Fixed
+                  <a class="vf-tabs__link" href="vf-banner--info.html">
+                    Info
                   </a>
                  
                
@@ -125,8 +125,44 @@ class="vf-logo">
 
               
                 
-                  <a class="vf-tabs__link" href="vf-banner--inline.html">
-                    Inline
+                  <a class="vf-tabs__link" href="vf-banner--warning.html">
+                    Warning
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-banner--danger.html">
+                    Danger
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-banner--success.html">
+                    Success
+                  </a>
+                 
+               
+
+            
+
+              
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-banner--fixed.html">
+                    Fixed
                   </a>
                  
                
@@ -185,10 +221,12 @@ class="vf-logo">
 <ul>
 <li>General notice <code>vf-banner vf-banner--notice</code></li>
 <li>In development services <code>vf-banner vf-banner--phase</code></li>
-<li>Success (to come) <code>vf-banner vf-banner--success</code></li>
-<li>Alert (to come) <code>vf-banner vf-banner--alert</code></li>
-<li>Warning (to come) <code>vf-banner vf-banner--warning</code></li>
+<li>Info <code>vf-banner vf-banner--alert vf-banner--info</code> <small>This replaces <code>vf-banner--phase</code></small></li>
+<li>Success <code>vf-banner vf-banner--alert vf-banner--success</code></li>
+<li>Alert <code>vf-banner vf-banner--alert vf-banner--alert</code></li>
+<li>Warning <code>vf-banner vf-banner--alert vf-banner--warning</code></li>
 </ul>
+<p><strong>note:</strong> The <code>vf-banner--alert</code> variants include the option to dismiss the banner. This is currently a ‘bring your own JavaScript’ button.</p>
 <h2 id="js-documentation-for---modal-variant">JS Documentation for <code>--modal</code> variant</h2>
 <p>Like all JS-enabled components in the Visual Framework, if you wish to use the bundled JS, you need to include JS data attributes, here is an overview of what the options are for the <code>vf-banner--modal</code> variant.</p>
 <ul>
@@ -265,6 +303,59 @@ class="vf-logo">
 Intentionally blank.
 </code></pre>
   
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Info --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--alert vf-banner--info"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>Here is some very, <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>very<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> important information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-button vf-button--icon vf-button--dismiss | vf-banner__button"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 24 24"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>dismiss banner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Warning --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--alert vf-banner--warning"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>Easy now, easy does it.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-button vf-button--icon vf-button--dismiss | vf-banner__button"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 24 24"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>dismiss banner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Danger --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--alert vf-banner--danger"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>Oh dear, what have you done?<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-button vf-button--icon vf-button--dismiss | vf-banner__button"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-sr-only"</span>&gt;</span>dismiss<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 24 24"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>dismiss banner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Success --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--alert vf-banner--success"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>Congratulations! You have made something <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>awesome<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-button vf-button--icon vf-button--dismiss | vf-banner__button"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 24 24"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>dismiss banner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Inline --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--phase"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>This is a new web page. <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Complete our quick survey<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> to help us make it better.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  
 <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Fixed --&gt;</span>
 <span class="hljs-comment">&lt;!-- dismissible banner --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">data-vf-js-banner-cookie-name</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">data-vf-js-banner-cookie-version</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">data-vf-js-banner-extra-button</span>=<span class="hljs-string">"&lt;a href='#'&gt;Optional button&lt;/a&gt;&lt;a target='_blank' href='#'&gt;New tab button&lt;/a&gt;"</span>
@@ -311,14 +402,6 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 &gt;&lt;/div&gt; --&gt;</span>
 </code></pre>
   
-<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Inline --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--phase"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>This is a new web page. <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Complete our quick survey<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> to help us make it better.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-</code></pre>
-  
 <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Top --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--top vf-banner--phase"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"Close notice"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
@@ -361,6 +444,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
       
       <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--15b7989fffea4744523128036f00d34c">package.json</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--0ce9c20d775714bb735bbb15f311d35e">vf-banner--alerts.scss</a>
       </li>
       
     
@@ -544,6 +633,83 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         </li>
         <li class="vf-list__item">
           Size: 690 Bytes
+        </li>
+      </ul>
+    </section>
+    
+  
+    
+    <section class="vf-tabs__section" id="vf-tabs__section--0ce9c20d775714bb735bbb15f311d35e">
+      <div class="FileBrowser-itemPreview">
+        
+        <pre class="vf-code-example__pre">
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-selector-class">.vf-banner--alert</span> {
+  <span class="hljs-selector-class">.vf-banner__content</span> {
+    <span class="hljs-attribute">display</span>: flex;
+  }
+  <span class="hljs-selector-class">.vf-banner__text</span>,
+  <span class="hljs-selector-attr">[class*='vf-text']</span> {
+    <span class="hljs-attribute">color</span>: currentColor;
+  }
+  <span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">color</span>: currentColor;
+    &amp;<span class="hljs-selector-pseudo">:focus</span> {
+      <span class="hljs-attribute">outline</span>: <span class="hljs-number">1px</span> solid set-ui-color(vf-ui-color--white);
+    }
+  }
+}
+
+<span class="hljs-selector-class">.vf-banner--success</span> {
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color--green--light);
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
+}
+
+<span class="hljs-selector-class">.vf-banner--danger</span> {
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color--red);
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+}
+
+<span class="hljs-selector-class">.vf-banner--info</span> {
+  <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--yellow);
+  <span class="hljs-attribute">color</span>: set-color(vf-color--grey--dark);
+}
+
+
+<span class="hljs-selector-class">.vf-banner--warning</span>{
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color--orange);
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
+}
+
+
+<span class="hljs-selector-class">.vf-banner__button</span> {
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">margin-left</span>: auto;
+
+  svg {
+    fill: currentColor;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">14px</span>;
+  }
+
+  &amp;<span class="hljs-selector-pseudo">:focus</span> {
+    <span class="hljs-attribute">outline</span>: <span class="hljs-number">1px</span> solid currentColor;
+  }
+}
+</code>
+        </pre>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-banner/vf-banner--alerts.scss">/components/raw/vf-banner/vf-banner--alerts.scss</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-banner/vf-banner--alerts.scss
+        </li>
+        <li class="vf-list__item">
+          Size: 900 Bytes
         </li>
       </ul>
     </section>
@@ -1020,10 +1186,10 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
 <span class="hljs-selector-class">.vf-banner__text</span> {
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
-} 
+}
 <span class="hljs-selector-class">.vf-banner__text--lg</span> {
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
-} 
+}
 
 <span class="hljs-selector-class">.vf-banner--top</span> {
   <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;

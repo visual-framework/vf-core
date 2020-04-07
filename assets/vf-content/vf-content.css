@@ -873,7 +873,7 @@ a.vf-badge--primary:hover {
 * Version: 1.0.2
 * Location: components/vf-button
 */
-.vf-button {
+.vf-button:not(.vf-button--icon) {
   --vf-button__color__background--default: var(--vf-color--grey);
   --vf-button__color__background--default-dark: var(--vf-color--grey--darkest);
   --vf-button__color__border--default-visited: var(--vf-color--grey--lightest);
@@ -910,7 +910,7 @@ a.vf-badge--primary:hover {
   transition: all linear 125ms;
 }
 
-.vf-button:focus, .vf-button:hover {
+.vf-button:not(.vf-button--icon):focus, .vf-button:not(.vf-button--icon):hover {
   -webkit-box-shadow: 4px 4px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), 2px 2px 4px rgba(0, 0, 0, 0.25), -5px -5px rgba(0, 0, 0, 0);
           box-shadow: 4px 4px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), 2px 2px 4px rgba(0, 0, 0, 0.25), -5px -5px rgba(0, 0, 0, 0);
   color: #ffffff;
@@ -920,7 +920,7 @@ a.vf-badge--primary:hover {
   transition: all linear 125ms;
 }
 
-.vf-button:active {
+.vf-button:not(.vf-button--icon):active {
   -webkit-box-shadow: 0px 0px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), 2px 2px 2px rgba(0, 0, 0, 0.125), -5px -5px rgba(0, 0, 0, 0);
           box-shadow: 0px 0px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), 2px 2px 2px rgba(0, 0, 0, 0.125), -5px -5px rgba(0, 0, 0, 0);
   -webkit-transform: translate(8px, 8px) translateZ(1px);
@@ -996,6 +996,17 @@ a.vf-button:hover, a.vf-button:focus {
   font-weight: 700;
   line-height: 1;
   padding: 16px;
+}
+
+.vf-button--icon {
+  background: none;
+  border: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: currentColor;
+  cursor: pointer;
+  outline: none;
+  padding: 4px 4px 2px 4px;
 }
 
 html:not(.vf-disable-deprecated) .vf-text-button--secondary {
