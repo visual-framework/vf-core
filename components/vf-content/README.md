@@ -4,24 +4,15 @@
 
 ## About
 
-Use this container to get simple support for narrative content where it is not
-practical to assign classes, such as Markdown or WYSIWYG text.
+This container adds support for long form content where it may not be practical to assign classes, such as Markdown or WYSIWYG text.
+
+It also makes some adjustments for longer form text, such as vertical spacing and making visited links purple.
 
 This container adds basic support for `p`, `ul`, `hr`, `a` and other core
-html elements. Some components may also add specific support for `.vf-content`
+html elements.
 
-### Demonstration
+Some components may also add specific support for `.vf-content`
 
-<div class="vf-content">
-{{ "#### Sub-header" | marked }}
-
-{% markdown %}
-- list items
-- list items
-- list item [with a link](#)
-- list items
-{% endmarkdown %}
-</div>
 
 ## Install
 
