@@ -6,7 +6,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 2019-04-08
 
-Added a little specificity to the `.vf-show-hide__button` so that it didn't break. No changes except for when `vf-show-hide__button` is declased we now have `.vf-button.vf-show-hide__button`.
+Added a little specificity to the `.vf-show-hide__button`  and `vf-tree__button` so that it didn't break. No changes except for when `vf-show-hide__button` and `.vf-tree__button` are declared we now have `.vf-button.vf-show-hide__button` and `.vf-button.vf-tree__button`.
 
 ## 0.0.2-alpha.0 (2019-10-23)
 
