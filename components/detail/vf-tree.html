@@ -9,7 +9,8 @@
   <title>Tree component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/apple-touch-icon.png">
+  <link rel="shortcut icon" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-16x16.png">
 <link rel="manifest" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/site.webmanifest">
@@ -40,13 +41,15 @@
   <div class="vf-global-header">
 
     <div class="vf-global-header__inner">
-      <a href=""
+      
+      <a href="../../index.html"
 
 class="vf-logo">
-  <img class="vf-logo__image" src="../../assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
+  <img class="vf-logo__image" src="https://dev.assets.emblstatic.net/vf/develop/assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
   <span class="vf-logo__text">Visual Framework 2.0</span>
 </a>
 
+      
 
       <nav class="vf-navigation vf-navigation--global">
         <ul class="vf-navigation__list | vf-list--inline">
@@ -384,6 +387,11 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+
+<span class="hljs-section">## 2019-04-08</span>
+
+Added a little specificity to the <span class="hljs-code">`.vf-show-hide__button`</span>  and <span class="hljs-code">`vf-tree__button`</span> so that it didn't break. No changes except for when <span class="hljs-code">`vf-show-hide__button`</span> and <span class="hljs-code">`.vf-tree__button`</span> are declared we now have <span class="hljs-code">`.vf-button.vf-show-hide__button`</span> and <span class="hljs-code">`.vf-button.vf-tree__button`</span>.
+
 <span class="hljs-section">## 0.0.2-alpha.0 (2019-10-23)</span>
 
 <span class="hljs-strong">**Note:**</span> Version bump only for package @visual-framework/vf-tree
@@ -422,7 +430,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-tree/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 402 Bytes
+          Size: 691 Bytes
         </li>
       </ul>
     </section>
@@ -691,7 +699,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     }
   }
 
-  <span class="hljs-selector-class">.vf-show-hide__button</span> {
+  <span class="hljs-selector-class">.vf-button</span><span class="hljs-selector-class">.vf-show-hide__button</span> {
     <span class="hljs-attribute">transform-origin</span>: center;
     <span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">180deg</span>);
     &amp;<span class="hljs-selector-pseudo">:hover</span> {
@@ -719,7 +727,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 }
 
-<span class="hljs-selector-class">.vf-tree__button</span> {
+<span class="hljs-selector-class">.vf-button</span><span class="hljs-selector-class">.vf-tree__button</span> {
   all: unset;
   <span class="hljs-attribute">cursor</span>: pointer;
   <span class="hljs-attribute">float</span>: right;
@@ -760,7 +768,8 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;
   }
 
-  &gt; <span class="hljs-selector-class">.vf-tree__button</span> {
+  &gt; <span class="hljs-selector-class">.vf-tree__button</span>,
+  &amp;<span class="hljs-selector-pseudo">:hover</span> &gt; <span class="hljs-selector-class">.vf-tree__button</span> {
     <span class="hljs-attribute">transform-origin</span>: center;
     <span class="hljs-attribute">transform</span>: rotate(<span class="hljs-number">90deg</span>);
   }
@@ -819,7 +828,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   }
 }
 
-<span class="hljs-selector-class">.vf-show-hide__button</span> {
+<span class="hljs-selector-class">.vf-button</span><span class="hljs-selector-class">.vf-show-hide__button</span> {
   all: unset;
   <span class="hljs-attribute">cursor</span>: pointer;
   <span class="hljs-attribute">margin-left</span>: auto;
@@ -855,7 +864,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-tree/vf-tree.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.1 KB
+          Size: 3.2 KB
         </li>
       </ul>
     </section>
