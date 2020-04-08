@@ -1,10 +1,7 @@
 # Change Log
 
-## 1.0.2
-
-* missing a link to favicon.ico 
-* adds better defaults to the site.webmanifest
-* https://github.com/visual-framework/vf-core/pull/838
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## 1.0.1
 
