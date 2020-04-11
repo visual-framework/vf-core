@@ -497,18 +497,17 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 <span class="hljs-selector-class">.vf-global-header</span> {
   <span class="hljs-attribute">align-items</span>: center;
   <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$vf-global-header-background--color</span>;
-  <span class="hljs-attribute">border-bottom</span>: solid <span class="hljs-number">1px</span> set-color(vf-color--grey);
-  <span class="hljs-attribute">display</span>: grid;
+  <span class="hljs-attribute">box-sizing</span>: border-box;
   grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-  grid-template-<span class="hljs-attribute">columns</span>: minmax(var(--page-grid-gap), auto) minmax(auto, <span class="hljs-variable">$global-page-max-width</span>) minmax(var(--page-grid-gap), auto);
   <span class="hljs-attribute">height</span>: auto;
-  <span class="hljs-comment">// margin-bottom: 16px; removed because of group pages background - adding margin-top to breadcrumbs</span>
-  <span class="hljs-attribute">padding</span>: .<span class="hljs-number">5rem</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">78.5em</span>;
+  <span class="hljs-attribute">padding</span>: .<span class="hljs-number">5rem</span> <span class="hljs-number">1rem</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 }
 
 <span class="hljs-selector-class">.vf-global-header__inner</span> {
   <span class="hljs-attribute">display</span>: flex;
-  grid-column: <span class="hljs-number">2</span> / -<span class="hljs-number">2</span>;
 }
 
 <span class="hljs-selector-class">.vf-global-header__site-name</span> {
@@ -518,10 +517,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-global-header</span> {
+
   <span class="hljs-selector-attr">[class*='navigation']</span> {
     <span class="hljs-attribute">align-self</span>: center;
     <span class="hljs-attribute">margin-left</span>: auto;
   }
+
 }
 </code>
         </pre>
@@ -538,7 +539,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-global-header/vf-global-header.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.1 KB
+          Size: 899 Bytes
         </li>
       </ul>
     </section>
@@ -2547,7 +2548,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         <p class="vf-text">
-          <a class="vf-link--secondary" href="vf-header.html">Site Header</a>
+          <a class="vf-link--secondary" href="vf-header.html">Header</a>
         </p>
         
       

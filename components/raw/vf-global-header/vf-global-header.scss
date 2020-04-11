@@ -15,18 +15,17 @@ $vf-global-header__link-text--color: set-ui-color(vf-ui-color--black);
 .vf-global-header {
   align-items: center;
   background-color: $vf-global-header-background--color;
-  border-bottom: solid 1px set-color(vf-color--grey);
-  display: grid;
+  box-sizing: border-box;
   grid-column: 1 / -1;
-  grid-template-columns: minmax(var(--page-grid-gap), auto) minmax(auto, $global-page-max-width) minmax(var(--page-grid-gap), auto);
   height: auto;
-  // margin-bottom: 16px; removed because of group pages background - adding margin-top to breadcrumbs
-  padding: .5rem 0;
+  margin: 0 auto;
+  max-width: 78.5em;
+  padding: .5rem 1rem;
+  width: 100%;
 }
 
 .vf-global-header__inner {
   display: flex;
-  grid-column: 2 / -2;
 }
 
 .vf-global-header__site-name {
@@ -36,8 +35,10 @@ $vf-global-header__link-text--color: set-ui-color(vf-ui-color--black);
 }
 
 .vf-global-header {
+
   [class*='navigation'] {
     align-self: center;
     margin-left: auto;
   }
+
 }
