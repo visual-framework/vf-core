@@ -40,11 +40,100 @@
 }
 
 /*!
- * Component: @visual-framework/vf-table
- * Version: 0.0.2
- * Location: components/vf-table
- */
-.vf-table:before {
-  content: 'This component has not yet been implement, see the README.md for more information.';
-  display: block;
+* Component: @visual-framework/vf-table
+* Version: 0.0.2
+* Location: components/vf-table
+*/
+.vf-table {
+  background-color: #ffffff;
+  border-collapse: collapse;
+}
+
+.vf-table--fixed {
+  table-layout: fixed;
+}
+
+.vf-table__caption {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.29;
+  margin: 0 0 16px 0;
+  margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+  text-align: left;
+}
+
+.vf-table__header {
+  background-color: #d0d0ce;
+}
+
+.vf-table__header .vf-table__heading {
+  padding: 8px 16px;
+}
+
+.vf-table__heading {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0 0 0 0;
+  text-align: left;
+}
+
+.vf-table__cell {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.71;
+  margin: 0 0 0 0;
+  padding: 4px 16px;
+}
+
+.vf-table--tight .vf-table__heading {
+  padding: 4px 4px;
+}
+
+.vf-table--tight .vf-table__cell {
+  padding: 4px 4px;
+}
+
+.vf-table--loose .vf-table__heading {
+  padding: 16px 24px;
+}
+
+.vf-table--loose .vf-table__cell {
+  padding: 8px 24px;
+}
+
+.vf-table__row .vf-table__heading {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0 0 0 0;
+  text-align: left;
+}
+
+.vf-table--striped .vf-table__body .vf-table__row:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.vf-table--striped .vf-table__body .vf-table__row:hover {
+  background-color: #fffadc;
+}
+
+.vf-table--bordered {
+  border: 1px solid #707372;
+}
+
+.vf-table--bordered .vf-table__heading {
+  border: 1px solid #707372;
+}
+
+.vf-table--bordered .vf-table__cell {
+  border: 1px solid #707372;
+}
+
+.vf-table__body .vf-table__row:hover {
+  background-color: #fffadc;
 }

@@ -107,9 +107,11 @@
 
 @supports (display: grid) {
   .vf-grid {
+    -webkit-column-gap: var(--page-grid-gap);
+       -moz-column-gap: var(--page-grid-gap);
+            column-gap: var(--page-grid-gap);
     display: grid;
     grid-column: main;
-    grid-column-gap: var(--page-grid-gap);
   }
   @media (min-width: 840px) {
     .vf-grid {
@@ -188,8 +190,10 @@
 
 .vf-summary {
   align-self: start;
+  -webkit-column-gap: 16px;
+     -moz-column-gap: 16px;
+          column-gap: 16px;
   display: grid;
-  grid-column-gap: 16px;
   margin-bottom: 2rem;
   position: relative;
 }
@@ -328,7 +332,9 @@
 }
 
 .vf-summary--profile {
-  grid-column-gap: 16px;
+  -webkit-column-gap: 16px;
+     -moz-column-gap: 16px;
+          column-gap: 16px;
   grid-template-columns: minmax(0, var(--vf-icon--avatar-width)) 1fr;
   grid-template-rows: auto;
   margin-bottom: 48px;
