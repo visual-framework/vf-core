@@ -21,7 +21,7 @@ It can include meta information `<p class="vf-links__meta">Example Meta</p>`.
 ### Contextual Based Link Lists
 
 
-#### "On This Page"
+#### "On this page"
 
 If you want to provide a set of links that will anchor to sections on the page you should use:
 
@@ -31,12 +31,12 @@ note: You will need to add a corresponding `id` to the section you are linking t
 
 ```
 <div class="vf-links vf-links__list--easy">
-  <h3 class="vf-links__heading">On This Page</h3>
+  <h3 class="vf-links__heading">On this page</h3>
   <ul class="vf-links__list | vf-list">
     <li class="vf-list__item">
       <a class="vf-list__link" href="#Anchor-Text">
         Anchor Text
-        <svg class="vf-icon vf-icon__arrown--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"></path></svg>
+        <svg class="vf-icon vf-icon__arrow--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"></path></svg>
       </a>
     </li>
   </ul>
@@ -51,7 +51,7 @@ note: You will need to add a corresponding `id` to the section you are linking t
 </section>
 ```
 
-#### "In This Section"
+#### "In this section"
 
 If you want to include quick links as part of a section of content you can use:
 
@@ -59,7 +59,7 @@ If you want to include quick links as part of a section of content you can use:
 
 ```
 <div class="vf-links vf-links--tight vf-links__list--s vf-links__list--very-easy">
-  <h3 class="vf-links__heading">In This Section</h3>
+  <h3 class="vf-links__heading">In this section</h3>
   <ul class="vf-links__list vf-links__list--secondary | vf-list">
     <li class="vf-list__item">
       <a class="vf-list__link" href="#Anchor-Text">
