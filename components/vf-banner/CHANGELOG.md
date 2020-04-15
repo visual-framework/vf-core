@@ -1,7 +1,10 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## 1.0.5
+
+* Add alert `--alert` and `--warning` banners
+* Placeholder close button for interactiviy (bring your own JavaScript)
+* `vf-banner--phase` is on its way to deprecation, use `vf-banner--info` instead
 
 ## 1.0.4
 

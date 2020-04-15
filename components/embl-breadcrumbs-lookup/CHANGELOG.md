@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.0.0-beta.5
+
+- Njk template was loading demo `embl-content-meta-properties` that were only needed for an example
+  - https://github.com/visual-framework/vf-core/pull/838
+
 ## 1.0.0-beta.3
 
 - Better handles non-entries for parent terms
