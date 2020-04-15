@@ -23,6 +23,7 @@ try {
     fractalConfig.context = {
       'component-type': 'utility',
       colors: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-colors.ios.json')),
+      uiColors: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-ui-colors.ios.json')),
       spacing: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-spacing.ios.json')),
       typography: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-font--sans.ios.json'))
     };
@@ -31,6 +32,7 @@ try {
   fractalConfig.context = {
     'component-type': 'utility',
       colors: null,
+      uiColors: null,
       spacing: null,
       typography: null
   };
