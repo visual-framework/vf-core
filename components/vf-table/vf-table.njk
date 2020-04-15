@@ -12,11 +12,24 @@
     please add headings to table
     {% endif %}
     <tr class="vf-table__row">
+      {%- if interactive -%}
+        <th class="vf-table__heading" scope="col">
+          <input type="checkbox" id="select-all" class="vf-form__checkbox | vf-table__checkbox">
+          <label for="select-all" class="vf-form__label vf-table__label">
+            <span class="vf-u-sr-only">Select all rows</span>
+          </label>
+        </th>
+      {%- endif -%}
       {% for cell in table_headings %}
         <th class="vf-table__heading" scope="col"
         {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
         >{{cell.title}}</th>
       {% endfor %}
+      {%- if actions -%}
+        <th class="vf-table__heading vf-table__heading--actions">
+          Actions
+        </th>
+      {%- endif -%}
     </tr>
   </thead>
 
@@ -24,6 +37,17 @@
     {%- for row in table_rows %}
     {% if row %}
     <tr class="vf-table__row">
+
+      {%- if interactive -%}
+        <td class="vf-table__cell">
+            {% set count = count + 1 %}
+            <input type="checkbox" id="checkbox-{{count}}" class="vf-form__checkbox | vf-table__checkbox">
+            <label for="checkbox-{{count}}" class="vf-form__label vf-table__label">
+              <span class="vf-u-sr-only">Form Label</span>
+            </label>
+        </td>
+
+      {%- endif -%}
 
       {%- for cell in row %}
 
@@ -42,7 +66,12 @@
         {% endif -%}
 
       {% endfor -%}
-
+      {%- if actions -%}
+        <td class="vf-table__cell vf-table__cell--actions">
+          <a href="" class="vf-link">edit</a>
+          <a href="" class="vf-link">delete</a>
+        </td>
+      {%- endif -%}
     </tr>
     {% endif %}
     {% endfor %}

@@ -22,6 +22,19 @@ variants:
   - name: fixed header
     context:
       tableLayoutFixed: true
+  - name: interactive
+    context:
+      table_variant: "vf-table--interactive"
+      interactive: true
+  - name: actions
+    context:
+      table_variant: "vf-table--actions"
+      actions: true
+  - name: full
+    context:
+      table_variant: "vf-table--actions vf-table--interactive vf-table--striped"
+      interactive: true
+      actions: true
   # - name: data
   # - name: responsive-scroll
   # - name: responsive-stack
@@ -30,6 +43,8 @@ context:
   firstCellIsHeader: true
 
   table_caption: Hello Caption
+
+  count: 0
 
   table_headings:
     - title: Event
