@@ -1,15 +1,5 @@
-# 0.1.0
+# Change Log
 
-### Added
-- added this
-- added that
+## 1.0.0
 
-### Changes
-
-- changed this
-- changed that
-
-### Removed
-
-- deleted this
-- deleted that
+* Initial stable release
