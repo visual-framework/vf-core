@@ -2,18 +2,16 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-table.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-table)
 
-Tables are everywhere and we provide a variety of implementations depending on need:
+### CSS Class Reference
 
-- Generic: basic styling with no special functionality
-- Striped: with striped rows
-- Borderless: no borders
-- Compact: tighter spacing
-- Data: typography and spacing considerations for data
-- Responsive:
-   - Scroll: on overflow it will scroll left-to-right
-   - Stack: on overflow stack cells
-
-This is a draft component, it is not yet functional. Background on the implementation, goals and work plan [can be found in the issue](https://github.com/visual-framework/vf-core/issues/235). Inspiration may be drawn from [Bootstrap tables](https://getbootstrap.com/docs/4.4/content/tables/).
+| Class                | Applie To  | Result                                                                 |
+| -------------------- | ---------- | ---------------------------------------------------------------------- |
+| `vf-table`           | `table`    | Gives initial generic styling to the `table` element and it's children |
+| `vf-table--striped`  | `vf-table` | Adds striped rows to the relevant `tr` elements.                       |
+| `vf-table--bordered` | `vf-table` | adds a border around all elements                                      |
+| `vf-table--compact`  | `vf-table` | Reduces the padding on the heading and cells                           |
+| `vf-table--loose`    | `vf-table` | Increases the padding on the heading and cells                         |
+|                      |            |                                                                        |
 
 ## Install
 
