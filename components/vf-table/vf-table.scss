@@ -24,7 +24,7 @@
   border-collapse: collapse;
 
   .vf-button--icon,
-  &:visited
+  &:visited,
   &:hover,
   &:focus {
     color: set-color(vf-color--blue);
@@ -35,15 +35,17 @@
 .vf-table__heading {
   .vf-button--icon {
     align-items: center;
+    color: currentColor;
     display: flex;
     font-weight: 700;
-    color: currentColor;
+
     svg {
-      opacity: 0;
-      margin-left: 4px;
       height: 20px;
+      margin-left: 4px;
+      opacity: 0;
       padding: 2px;
     }
+
     &:hover {
       svg {
         opacity: 1;
@@ -160,7 +162,7 @@
   .vf-table__label {
     &::before {
       // TODO: sort this important out
-      border-color: black !important;
+      border-color: set-ui-color(vf-ui-color--black) !important;
     }
   }
 }
@@ -179,7 +181,7 @@
     &:first-child {
       margin-left: 0;
     }
-    &:visited
+    &:visited,
     &:hover,
     &:focus {
       color: set-color(vf-color--blue);
@@ -190,8 +192,8 @@
 
 
 .vf-table__footer {
-  border-top: 1px solid set-ui-color(vf-ui-color--black);
   background-color: set-color(vf-color--grey--lightest);
+  border-top: 1px solid set-ui-color(vf-ui-color--black);
 
   .vf-table__cell {
     padding: 8px 16px;
