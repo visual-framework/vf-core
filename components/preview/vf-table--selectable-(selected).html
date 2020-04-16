@@ -7,7 +7,7 @@
 // Detect if JS is on and swap vf-no-js for vf-js on the html element
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
-  <title>Table: Compact | Visual Framework 2.0</title>
+  <title>Table: Selectable Selected | Visual Framework 2.0</title>
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
@@ -45,11 +45,16 @@
 	</defs>
 </svg>
 
-<table class="vf-table vf-table--tight">
+<table class="vf-table">
 
 
   <thead class="vf-table__header">
-    <tr class="vf-table__row">        <th class="vf-table__heading" scope="col"
+    <tr class="vf-table__row"><th class="vf-table__heading" scope="col">
+          <input type="checkbox" id="select-all" class="vf-form__checkbox | vf-table__checkbox">
+          <label for="select-all" class="vf-form__label vf-table__label">
+            <span class="vf-u-sr-only">Select all rows</span>
+          </label>
+        </th>        <th class="vf-table__heading" scope="col"
       >        Event
       </th>
         <th class="vf-table__heading" scope="col"
@@ -65,7 +70,13 @@
   </thead>
 
   <tbody class="vf-table__body">    <tr class="vf-table__row
-"><td class="vf-table__cell"
+ vf-table__row--selected"><th class="vf-table__cell vf-table__cell--selectable" scope="row">
+            <input type="checkbox" id="checkbox-1" class="vf-form__checkbox | vf-table__checkbox"
+ checked>
+            <label for="checkbox-1" class="vf-form__label vf-table__label">
+              <span class="vf-u-sr-only">Form Label</span>
+            </label>
+        </th><td class="vf-table__cell"
             >dave</td>
 <td class="vf-table__cell"
             >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima accusamus a nostrum odit aliquid repudiandae architecto molestiae, dolores.</td>
@@ -75,7 +86,13 @@
             >London, U.K.</td>
 </tr>
     <tr class="vf-table__row
-"><td class="vf-table__cell"
+"><th class="vf-table__cell vf-table__cell--selectable" scope="row">
+            <input type="checkbox" id="checkbox-2" class="vf-form__checkbox | vf-table__checkbox"
+>
+            <label for="checkbox-2" class="vf-form__label vf-table__label">
+              <span class="vf-u-sr-only">Form Label</span>
+            </label>
+        </th><td class="vf-table__cell"
             >dave</td>
 <td class="vf-table__cell"
             >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio fugit illo officia dignissimos amet.</td>
@@ -85,7 +102,13 @@
             >London, U.K.</td>
 </tr>
     <tr class="vf-table__row
-"><td class="vf-table__cell"
+"><th class="vf-table__cell vf-table__cell--selectable" scope="row">
+            <input type="checkbox" id="checkbox-3" class="vf-form__checkbox | vf-table__checkbox"
+>
+            <label for="checkbox-3" class="vf-form__label vf-table__label">
+              <span class="vf-u-sr-only">Form Label</span>
+            </label>
+        </th><td class="vf-table__cell"
             >dave</td>
 <td class="vf-table__cell"
             >Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
@@ -96,6 +119,7 @@
 </tr>
   </tbody></table>
 
+<div class="vf-table__actions">  <button class="vf-button vf-button--sm vf-button--icon">edit</button>  <button class="vf-button vf-button--sm vf-button--icon">delete</button>  <button class="vf-button vf-button--sm vf-button--icon">download</button>  <button class="vf-button vf-button--sm vf-button--icon">cancel</button></div>
 
     </div>
   </div>

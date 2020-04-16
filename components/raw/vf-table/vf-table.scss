@@ -22,7 +22,38 @@
 .vf-table {
   background-color: set-ui-color(vf-ui-color--white);
   border-collapse: collapse;
+
+  .vf-button--icon,
+  &:visited,
+  &:hover,
+  &:focus {
+    color: set-color(vf-color--blue);
+    font-weight: 400;
+  }
 }
+
+.vf-table__heading {
+  .vf-button--icon {
+    align-items: center;
+    color: currentColor;
+    display: flex;
+    font-weight: 700;
+
+    svg {
+      height: 20px;
+      margin-left: 4px;
+      opacity: 0;
+      padding: 2px;
+    }
+
+    &:hover {
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+}
+
 
 .vf-table--fixed {
   table-layout: fixed;
@@ -49,8 +80,10 @@
 }
 
 .vf-table__cell {
-  @include set-type(text-body--3, $custom-margin-bottom: 0);
-  padding: 4px 16px;
+  @include set-type(text-body--2, $custom-margin-bottom: 0);
+
+  padding: 8px 16px;
+  vertical-align: top;
 }
 
 .vf-table--tight {
@@ -82,9 +115,6 @@
     & .vf-table__row:nth-of-type(even) {
       background-color: set-ui-color(vf-ui-color--grey--light);
     }
-    & .vf-table__row:hover {
-      background-color: set-ui-color(vf-ui-color--yellow);
-    }
   }
 }
 
@@ -103,7 +133,69 @@
 
 
 .vf-table__body {
-  & .vf-table__row:hover {
+  & .vf-table__row:not(.vf-table__row--selected):hover {
     background-color: set-ui-color(vf-ui-color--yellow);
+  }
+}
+
+.vf-table__label {
+  margin: 0;
+  text-align: center;
+}
+
+
+// Selectable
+
+.vf-table__cell--selectable {
+  // vertical-align: middle;
+}
+
+.vf-table__row--selected {
+  background-color: set-color(vf-color--blue);
+  color: set-ui-color(vf-ui-color--white);
+
+
+  .vf-button {
+    color: set-ui-color(vf-ui-color--white);
+  }
+
+  .vf-table__label {
+    &::before {
+      // TODO: sort this important out
+      border-color: set-ui-color(vf-ui-color--black) !important;
+    }
+  }
+}
+
+
+.vf-table__actions {
+  background-color: set-color(vf-color--blue);;
+  padding: 16px;
+
+  .vf-button {
+    @include set-type(text-body--2, $custom-margin-bottom: 0);
+
+    color: set-ui-color(vf-ui-color--white);
+    margin-left: 1em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+    &:visited,
+    &:hover,
+    &:focus {
+      color: set-color(vf-color--blue);
+      font-weight: 400;
+    }
+  }
+}
+
+
+.vf-table__footer {
+  background-color: set-color(vf-color--grey--lightest);
+  border-top: 1px solid set-ui-color(vf-ui-color--black);
+
+  .vf-table__cell {
+    padding: 8px 16px;
   }
 }

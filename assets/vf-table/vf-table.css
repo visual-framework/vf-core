@@ -49,6 +49,33 @@
   border-collapse: collapse;
 }
 
+.vf-table .vf-button--icon, .vf-table:visited, .vf-table:hover, .vf-table:focus {
+  color: #3b6fb6;
+  font-weight: 400;
+}
+
+.vf-table__heading .vf-button--icon {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: currentColor;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 700;
+}
+
+.vf-table__heading .vf-button--icon svg {
+  height: 20px;
+  margin-left: 4px;
+  opacity: 0;
+  padding: 2px;
+}
+
+.vf-table__heading .vf-button--icon:hover svg {
+  opacity: 1;
+}
+
 .vf-table--fixed {
   table-layout: fixed;
 }
@@ -82,11 +109,12 @@
 
 .vf-table__cell {
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 400;
-  line-height: 1.71;
+  line-height: 1.421;
   margin: 0 0 0 0;
-  padding: 4px 16px;
+  padding: 8px 16px;
+  vertical-align: top;
 }
 
 .vf-table--tight .vf-table__heading {
@@ -118,10 +146,6 @@
   background-color: #f3f3f3;
 }
 
-.vf-table--striped .vf-table__body .vf-table__row:hover {
-  background-color: #fffadc;
-}
-
 .vf-table--bordered {
   border: 1px solid #707372;
 }
@@ -134,6 +158,57 @@
   border: 1px solid #707372;
 }
 
-.vf-table__body .vf-table__row:hover {
+.vf-table__body .vf-table__row:not(.vf-table__row--selected):hover {
   background-color: #fffadc;
+}
+
+.vf-table__label {
+  margin: 0;
+  text-align: center;
+}
+
+.vf-table__row--selected {
+  background-color: #3b6fb6;
+  color: #ffffff;
+}
+
+.vf-table__row--selected .vf-button {
+  color: #ffffff;
+}
+
+.vf-table__row--selected .vf-table__label::before {
+  border-color: #000000 !important;
+}
+
+.vf-table__actions {
+  background-color: #3b6fb6;
+  padding: 16px;
+}
+
+.vf-table__actions .vf-button {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.421;
+  margin: 0 0 0 0;
+  color: #ffffff;
+  margin-left: 1em;
+}
+
+.vf-table__actions .vf-button:first-child {
+  margin-left: 0;
+}
+
+.vf-table__actions .vf-button:visited, .vf-table__actions .vf-button:hover, .vf-table__actions .vf-button:focus {
+  color: #3b6fb6;
+  font-weight: 400;
+}
+
+.vf-table__footer {
+  background-color: #d0d0ce;
+  border-top: 1px solid #000000;
+}
+
+.vf-table__footer .vf-table__cell {
+  padding: 8px 16px;
 }

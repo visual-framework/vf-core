@@ -160,8 +160,88 @@ class="vf-logo">
 
               
                 
+                  <a class="vf-tabs__link" href="vf-table--has-footer.html">
+                    Has Footer
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-table--has-caption.html">
+                    Has Caption
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-table--has-row-heading.html">
+                    Has Row Heading
+                  </a>
+                 
+               
+
+            
+
+              
+                
                   <a class="vf-tabs__link" href="vf-table--fixed-header.html">
                     Fixed Header
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-table--actions.html">
+                    Actions
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-table--sortable.html">
+                    Sortable
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-table--selectable.html">
+                    Selectable
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-table--selectable-(selected).html">
+                    Selectable Selected
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-table--kitchen-sink.html">
+                    Kitchen Sink
                   </a>
                  
                
@@ -206,20 +286,46 @@ class="vf-logo">
   <div class="component-library-notes | vf-content">
   <h1 id="vf-table-component">vf-table Component</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-table"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-table.svg" alt="npm version"></a></p>
-<p>Tables are everywhere and we provide a variety of implementations depending on need:</p>
-<ul>
-<li>Generic: basic styling with no special functionality</li>
-<li>Striped: with striped rows</li>
-<li>Borderless: no borders</li>
-<li>Compact: tighter spacing</li>
-<li>Data: typography and spacing considerations for data</li>
-<li>Responsive:<ul>
-<li>Scroll: on overflow it will scroll left-to-right</li>
-<li>Stack: on overflow stack cells</li>
-</ul>
-</li>
-</ul>
-<p>This is a draft component, it is not yet functional. Background on the implementation, goals and work plan <a href="https://github.com/visual-framework/vf-core/issues/235">can be found in the issue</a>. Inspiration may be drawn from <a href="https://getbootstrap.com/docs/4.4/content/tables/">Bootstrap tables</a>.</p>
+<h3 id="css-class-reference">CSS Class Reference</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Applie To</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>vf-table</code></td>
+<td><code>table</code></td>
+<td>Gives initial generic styling to the <code>table</code> element and it’s children</td>
+</tr>
+<tr>
+<td><code>vf-table--striped</code></td>
+<td><code>vf-table</code></td>
+<td>Adds striped rows to the relevant <code>tr</code> elements.</td>
+</tr>
+<tr>
+<td><code>vf-table--bordered</code></td>
+<td><code>vf-table</code></td>
+<td>adds a border around all elements</td>
+</tr>
+<tr>
+<td><code>vf-table--compact</code></td>
+<td><code>vf-table</code></td>
+<td>Reduces the padding on the heading and cells</td>
+</tr>
+<tr>
+<td><code>vf-table--loose</code></td>
+<td><code>vf-table</code></td>
+<td>Increases the padding on the heading and cells</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id="install">Install</h2>
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-table</code> with this command.</p>
 <pre><code><span class="hljs-symbol">$</span> yarn add --dev @visual-framework/vf-<span class="hljs-keyword">table</span></code></pre><h2 id="usage">Usage</h2>
@@ -252,40 +358,58 @@ class="vf-logo">
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table vf-table--bordered"</span>&gt;</span>
+  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-icon-sprite vf-icon-sprite--tables"</span> <span class="hljs-attr">display</span>=<span class="hljs-string">"none"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">defs</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">g</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vf-table-sortable--up"</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M17.485,5.062,12.707.284a1.031,1.031,0,0,0-1.415,0L6.515,5.062a1,1,0,0,0,.707,1.707H10.25a.25.25,0,0,1,.25.25V22.492a1.5,1.5,0,1,0,3,0V7.019a.249.249,0,0,1,.25-.25h3.028a1,1,0,0,0,.707-1.707Z"</span>/&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">g</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">g</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vf-table-sortable--down"</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M17.7,17.838a1,1,0,0,0-.924-.617H13.75a.249.249,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0V16.971a.25.25,0,0,1-.25.25H7.222a1,1,0,0,0-.707,1.707l4.777,4.778a1,1,0,0,0,1.415,0l4.778-4.778A1,1,0,0,0,17.7,17.838Z"</span>/&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">g</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">g</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vf-table-sortable"</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M9,19a1,1,0,0,0-.707,1.707l3,3a1,1,0,0,0,1.414,0l3-3A1,1,0,0,0,15,19H13.5a.25.25,0,0,1-.25-.25V5.249A.25.25,0,0,1,13.5,5H15a1,1,0,0,0,.707-1.707l-3-3a1,1,0,0,0-1.414,0l-3,3A1,1,0,0,0,9,5h1.5a.25.25,0,0,1,.25.25v13.5a.25.25,0,0,1-.25.25Z"</span>/&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">g</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">defs</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">caption</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__caption"</span>&gt;</span>Hello Caption<span class="hljs-tag">&lt;/<span class="hljs-name">caption</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table vf-table--bordered"</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">thead</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__header"</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__row"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>Event<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>Date<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>Type<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>Location<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span> Event
+            <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span> Date
+            <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span> Type
+            <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span> Location
+            <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__body"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__row"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell | vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"row"</span>&gt;</span>dave<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__row
+"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>dave<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima accusamus a nostrum odit aliquid repudiandae architecto molestiae, dolores.<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>roger<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>London, U.K.<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__row"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell | vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"row"</span>&gt;</span>dave<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__row
+"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>dave<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio fugit illo officia dignissimos amet.<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>roger<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>London, U.K.<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__row"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell | vf-table__heading"</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"row"</span>&gt;</span>dave<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__row
+"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>dave<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>roger<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-table__cell"</span>&gt;</span>London, U.K.<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
-
 <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
 </code></pre>
   
@@ -354,6 +478,10 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.0</span>
+<span class="hljs-bullet">
+* </span>Adds more table examples to the component
+
 <span class="hljs-section">## 1.0.0</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
@@ -372,7 +500,7 @@ class="vf-logo">
           Filesystem path: components/vf-table/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 49 Bytes
+          Size: 104 Bytes
         </li>
       </ul>
     </section>
@@ -566,7 +694,38 @@ class="vf-logo">
 <span class="hljs-selector-class">.vf-table</span> {
   <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--white);
   <span class="hljs-attribute">border-collapse</span>: collapse;
+
+  <span class="hljs-selector-class">.vf-button--icon</span>,
+  &amp;<span class="hljs-selector-pseudo">:visited</span>,
+  &amp;<span class="hljs-selector-pseudo">:hover</span>,
+  &amp;<span class="hljs-selector-pseudo">:focus</span> {
+    <span class="hljs-attribute">color</span>: set-color(vf-color--blue);
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>;
+  }
 }
+
+<span class="hljs-selector-class">.vf-table__heading</span> {
+  <span class="hljs-selector-class">.vf-button--icon</span> {
+    <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">color</span>: currentColor;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
+
+    svg {
+      <span class="hljs-attribute">height</span>: <span class="hljs-number">20px</span>;
+      <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span>;
+      <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">2px</span>;
+    }
+
+    &amp;<span class="hljs-selector-pseudo">:hover</span> {
+      svg {
+        <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
+      }
+    }
+  }
+}
+
 
 <span class="hljs-selector-class">.vf-table--fixed</span> {
   <span class="hljs-selector-tag">table</span>-layout: fixed;
@@ -593,8 +752,10 @@ class="vf-logo">
 }
 
 <span class="hljs-selector-class">.vf-table__cell</span> {
-  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">16px</span>;
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">vertical-align</span>: top;
 }
 
 <span class="hljs-selector-class">.vf-table--tight</span> {
@@ -626,9 +787,6 @@ class="vf-logo">
     &amp; <span class="hljs-selector-class">.vf-table__row</span><span class="hljs-selector-pseudo">:nth-of-type</span>(even) {
       <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--grey--light);
     }
-    &amp; <span class="hljs-selector-class">.vf-table__row</span><span class="hljs-selector-pseudo">:hover</span> {
-      <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--yellow);
-    }
   }
 }
 
@@ -647,8 +805,70 @@ class="vf-logo">
 
 
 <span class="hljs-selector-class">.vf-table__body</span> {
-  &amp; <span class="hljs-selector-class">.vf-table__row</span><span class="hljs-selector-pseudo">:hover</span> {
+  &amp; <span class="hljs-selector-class">.vf-table__row</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-table__row--selected</span>)<span class="hljs-selector-pseudo">:hover</span> {
     <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--yellow);
+  }
+}
+
+<span class="hljs-selector-class">.vf-table__label</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">text-align</span>: center;
+}
+
+
+<span class="hljs-comment">// Selectable</span>
+
+<span class="hljs-selector-class">.vf-table__cell--selectable</span> {
+  <span class="hljs-comment">// vertical-align: middle;</span>
+}
+
+<span class="hljs-selector-class">.vf-table__row--selected</span> {
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color--blue);
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+
+
+  <span class="hljs-selector-class">.vf-button</span> {
+    <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+  }
+
+  <span class="hljs-selector-class">.vf-table__label</span> {
+    &amp;<span class="hljs-selector-pseudo">::before</span> {
+      <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> sort this important out</span>
+      <span class="hljs-attribute">border-color</span>: set-ui-color(vf-ui-color--black) <span class="hljs-meta">!important</span>;
+    }
+  }
+}
+
+
+<span class="hljs-selector-class">.vf-table__actions</span> {
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color--blue);;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
+
+  <span class="hljs-selector-class">.vf-button</span> {
+    <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+
+    <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">1em</span>;
+
+    &amp;<span class="hljs-selector-pseudo">:first-child</span> {
+      <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">0</span>;
+    }
+    &amp;<span class="hljs-selector-pseudo">:visited</span>,
+    &amp;<span class="hljs-selector-pseudo">:hover</span>,
+    &amp;<span class="hljs-selector-pseudo">:focus</span> {
+      <span class="hljs-attribute">color</span>: set-color(vf-color--blue);
+      <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>;
+    }
+  }
+}
+
+
+<span class="hljs-selector-class">.vf-table__footer</span> {
+  <span class="hljs-attribute">background-color</span>: set-color(vf-color--grey--lightest);
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid set-ui-color(vf-ui-color--black);
+
+  <span class="hljs-selector-class">.vf-table__cell</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;
   }
 }
 </code>
@@ -666,7 +886,7 @@ class="vf-logo">
           Filesystem path: components/vf-table/vf-table.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.2 KB
+          Size: 3.6 KB
         </li>
       </ul>
     </section>
