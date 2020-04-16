@@ -9,27 +9,79 @@ variants:
     hidden: false
   - name: striped
     context:
-      table_variant: "vf-table--striped"
+      striped: true
   - name: bordered
     context:
-      table_variant: "vf-table--bordered"
+      bordered: true
   - name: compact
     context:
       table_variant: "vf-table--tight"
   - name: loose
     context:
       table_variant: "vf-table--loose"
+  - name: has footer
+    context:
+      table_footer:
+        - text: Hello
+          colspans: 3
+        - text: world
+          colspans: 1
+  - name: has caption
+    context:
+      table_caption: Hello Caption
+  - name: has row heading
+    context:
+      firstCellIsHeader: true
   - name: fixed header
     context:
       tableLayoutFixed: true
-  # - name: data
-  # - name: responsive-scroll
-  # - name: responsive-stack
+  - name: actions
+    context:
+      inline_actions:
+        - edit
+        - delete
+  - name: sortable
+    context:
+      sortable: true
+  - name: selectable
+    context:
+      selectable: true
+  - name: selectable (selected)
+    context:
+      selected: true
+      selectable: true
+      actions:
+        - edit
+        - delete
+        - download
+        - cancel
+  - name: kitchen sink
+    context:
+      table_caption: Hello Caption
+      firstCellIsHeader: true
+      striped: true
+      bordered: true
+      table_footer:
+        - text: Hello
+          colspans: 5
+        - text: world
+          colspans: 1
+      selected: true
+      sortable: true
+      selectable: true
+      inline_actions:
+        - edit
+        - delete
+      actions:
+        - edit
+        - delete
+        - download
+        - cancel
+
 context:
   component-type: block
-  firstCellIsHeader: true
 
-  table_caption: Hello Caption
+  count: 0
 
   table_headings:
     - title: Event
@@ -39,6 +91,7 @@ context:
 
   table_rows:
     -
+      - selected_row: true
       - text: dave
       - text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima accusamus a nostrum odit aliquid repudiandae architecto molestiae, dolores.
       - text: roger

@@ -1,5 +1,22 @@
+<svg class="vf-icon-sprite vf-icon-sprite--tables" display="none">
+	<defs>
+		<g id="vf-table-sortable--up">
+			<path xmlns="http://www.w3.org/2000/svg" d="M17.485,5.062,12.707.284a1.031,1.031,0,0,0-1.415,0L6.515,5.062a1,1,0,0,0,.707,1.707H10.25a.25.25,0,0,1,.25.25V22.492a1.5,1.5,0,1,0,3,0V7.019a.249.249,0,0,1,.25-.25h3.028a1,1,0,0,0,.707-1.707Z"/>
+		</g>
+		<g id="vf-table-sortable--down">
+			<path xmlns="http://www.w3.org/2000/svg" d="M17.7,17.838a1,1,0,0,0-.924-.617H13.75a.249.249,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0V16.971a.25.25,0,0,1-.25.25H7.222a1,1,0,0,0-.707,1.707l4.777,4.778a1,1,0,0,0,1.415,0l4.778-4.778A1,1,0,0,0,17.7,17.838Z"/>
+		</g>
+		<g id="vf-table-sortable">
+			<path xmlns="http://www.w3.org/2000/svg" d="M9,19a1,1,0,0,0-.707,1.707l3,3a1,1,0,0,0,1.414,0l3-3A1,1,0,0,0,15,19H13.5a.25.25,0,0,1-.25-.25V5.249A.25.25,0,0,1,13.5,5H15a1,1,0,0,0,.707-1.707l-3-3a1,1,0,0,0-1.414,0l-3,3A1,1,0,0,0,9,5h1.5a.25.25,0,0,1,.25.25v13.5a.25.25,0,0,1-.25.25Z"/>
+		</g>
+	</defs>
+</svg>
+
 <table class="vf-table
   {%- if table_variant %} {{table_variant}}{% endif -%}
+  {%- if striped %} vf-table--striped{% endif -%}
+  {%- if sortable %} vf-table--sortable{% endif -%}
+  {%- if bordered %} vf-table--bordered{% endif -%}
   {%- if tableLayoutFixed %} vf-table--fixed{% endif -%}
 ">
 
@@ -12,40 +29,119 @@
     please add headings to table
     {% endif %}
     <tr class="vf-table__row">
+      {%- if selectable -%}
+        <th class="vf-table__heading" scope="col">
+          <input type="checkbox" id="select-all" class="vf-form__checkbox | vf-table__checkbox">
+          <label for="select-all" class="vf-form__label vf-table__label">
+            <span class="vf-u-sr-only">Select all rows</span>
+          </label>
+        </th>
+      {%- endif -%}
       {% for cell in table_headings %}
         <th class="vf-table__heading" scope="col"
         {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
-        >{{cell.title}}</th>
+      >
+      {%- if sortable -%}
+        <button class="vf-button vf-button--sm vf-button--icon">
+          {{cell.title}}
+          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
+          	<use xlink:href="#vf-table-sortable"></use>
+          </svg>
+        </button>
+      {% else %}
+        {{cell.title}}
+      {% endif %}
+      </th>
       {% endfor %}
+      {%- if inline_actions -%}
+        <th class="vf-table__heading vf-table__heading--actions">
+          Actions
+        </th>
+      {%- endif -%}
     </tr>
   </thead>
 
   <tbody class="vf-table__body">
     {%- for row in table_rows %}
     {% if row %}
-    <tr class="vf-table__row">
+    <tr class="vf-table__row
+    {% if selected %}
+    {%- for cell in row %}
+      {%- if cell.selected_row %} vf-table__row--selected
+    {%- endif -%}
+    {%- endfor -%}
+    {%- endif -%}
+    ">
+
+      {%- if selectable -%}
+        <th class="vf-table__cell vf-table__cell--selectable" scope="row">
+            {% set count = count + 1 %}
+            <input type="checkbox" id="checkbox-{{count}}" class="vf-form__checkbox | vf-table__checkbox"
+            {% if selected %}
+            {%- for cell in row %}
+              {%- if cell.selected_row %} checked{%- endif -%}
+            {%- endfor -%}
+            {%- endif -%}
+            >
+            <label for="checkbox-{{count}}" class="vf-form__label vf-table__label">
+              <span class="vf-u-sr-only">Form Label</span>
+            </label>
+        </th>
+
+      {%- endif -%}
 
       {%- for cell in row %}
 
-        {%- if loop.first and firstCellIsHeader == true %}
-          <th class="vf-table__cell | vf-table__heading" scope="row"
-          {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
-          {% if cell.rowspans %} rowspan="{{cell.rowspans}}"{% endif %}
-          >{{ cell.text }}</th>
+        {%- if cell.selected_row %}
+        {% else %}
 
-        {%- else -%}
+          {%- if loop.first and firstCellIsHeader == true %}
+            <th class="vf-table__cell | vf-table__heading" scope="row"
+            {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
+            {% if cell.rowspans %} rowspan="{{cell.rowspans}}"{% endif %}
+            >{{ cell.text }}</th>
 
-          <td class="vf-table__cell"
-          {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
-          {% if cell.rowspans %} rowspan="{{cell.rowspans}}"{% endif %}
-          >{{ cell.text }}</td>
+          {%- else -%}
+
+            <td class="vf-table__cell"
+            {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
+            {% if cell.rowspans %} rowspan="{{cell.rowspans}}"{% endif %}
+            >{{ cell.text }}</td>
+          {% endif -%}
         {% endif -%}
-
       {% endfor -%}
-
+      {%- if inline_actions -%}
+        <td class="vf-table__cell vf-table__cell--actions">
+          {%- for action in inline_actions %}
+          <button class="vf-button vf-button--sm vf-button--icon">{{action}}</button>
+          {%- endfor -%}
+        </td>
+      {%- endif -%}
     </tr>
     {% endif %}
     {% endfor %}
   </tbody>
 
+  {%- if table_footer %}
+  <tfoot class="vf-table__footer">
+    <tr class="vf-table__row">
+      {% for cell in table_footer %}
+      <td class="vf-table__cell"
+      {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
+      {% if cell.rowspans %} rowspan="{{cell.rowspans}}"{% endif %}
+      >
+        {{cell.text}}
+      </td>
+      {% endfor %}
+    </tr>
+  </tfoot>
+  {%- endif -%}
 </table>
+
+{% if selected %}
+<div class="vf-table__actions">
+  {%- for action in actions %}
+  <button class="vf-button vf-button--sm vf-button--icon">{{action}}</button>
+  {%- endfor -%}
+</div>
+{% endif %}
