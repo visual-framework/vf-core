@@ -542,6 +542,10 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.1</span>
+<span class="hljs-bullet">
+* </span>Fixes hover issue that was making all buttons have blue text
+
 <span class="hljs-section">## 1.1.0</span>
 <span class="hljs-bullet">
 * </span>Adds more table examples to the component
@@ -564,7 +568,7 @@ class="vf-logo">
           Filesystem path: components/vf-table/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 104 Bytes
+          Size: 178 Bytes
         </li>
       </ul>
     </section>
@@ -758,14 +762,6 @@ class="vf-logo">
 <span class="hljs-selector-class">.vf-table</span> {
   <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--white);
   <span class="hljs-attribute">border-collapse</span>: collapse;
-
-  <span class="hljs-selector-class">.vf-button--icon</span>,
-  &amp;<span class="hljs-selector-pseudo">:visited</span>,
-  &amp;<span class="hljs-selector-pseudo">:hover</span>,
-  &amp;<span class="hljs-selector-pseudo">:focus</span> {
-    <span class="hljs-attribute">color</span>: set-color(vf-color--blue);
-    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>;
-  }
 }
 
 <span class="hljs-selector-class">.vf-table__heading</span> {
@@ -885,6 +881,18 @@ class="vf-logo">
 <span class="hljs-selector-class">.vf-table__cell--selectable</span> {
   <span class="hljs-comment">// vertical-align: middle;</span>
 }
+<span class="hljs-selector-class">.vf-table__cell--actions</span> {
+  <span class="hljs-selector-class">.vf-button--icon</span> {
+    <span class="hljs-attribute">color</span>: set-color(vf-color--blue);
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>;
+    &amp;<span class="hljs-selector-pseudo">:visited</span>,
+    &amp;<span class="hljs-selector-pseudo">:hover</span>,
+    &amp;<span class="hljs-selector-pseudo">:focus</span> {
+      <span class="hljs-attribute">color</span>: set-color(vf-color--blue);
+      <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>;
+    }
+  }
+}
 
 <span class="hljs-selector-class">.vf-table__row--selected</span> {
   <span class="hljs-attribute">background-color</span>: set-color(vf-color--blue);
@@ -893,6 +901,15 @@ class="vf-logo">
 
   <span class="hljs-selector-class">.vf-button</span> {
     <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+  }
+  <span class="hljs-selector-class">.vf-button--icon</span> {
+    <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>;
+    &amp;<span class="hljs-selector-pseudo">:visited</span>,
+    &amp;<span class="hljs-selector-pseudo">:hover</span>,
+    &amp;<span class="hljs-selector-pseudo">:focus</span> {
+      <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+    }
   }
 
   <span class="hljs-selector-class">.vf-table__label</span> {
@@ -912,6 +929,7 @@ class="vf-logo">
     <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
 
     <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>;
     <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">1em</span>;
 
     &amp;<span class="hljs-selector-pseudo">:first-child</span> {
@@ -920,8 +938,8 @@ class="vf-logo">
     &amp;<span class="hljs-selector-pseudo">:visited</span>,
     &amp;<span class="hljs-selector-pseudo">:hover</span>,
     &amp;<span class="hljs-selector-pseudo">:focus</span> {
-      <span class="hljs-attribute">color</span>: set-color(vf-color--blue);
-      <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">400</span>;
+      <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
+
     }
   }
 }
@@ -950,7 +968,7 @@ class="vf-logo">
           Filesystem path: components/vf-table/vf-table.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.6 KB
+          Size: 3.9 KB
         </li>
       </ul>
     </section>
