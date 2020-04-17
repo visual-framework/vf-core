@@ -22,14 +22,6 @@
 .vf-table {
   background-color: set-ui-color(vf-ui-color--white);
   border-collapse: collapse;
-
-  .vf-button--icon,
-  &:visited,
-  &:hover,
-  &:focus {
-    color: set-color(vf-color--blue);
-    font-weight: 400;
-  }
 }
 
 .vf-table__heading {
@@ -149,6 +141,18 @@
 .vf-table__cell--selectable {
   // vertical-align: middle;
 }
+.vf-table__cell--actions {
+  .vf-button--icon {
+    color: set-color(vf-color--blue);
+    font-weight: 400;
+    &:visited,
+    &:hover,
+    &:focus {
+      color: set-color(vf-color--blue);
+      font-weight: 400;
+    }
+  }
+}
 
 .vf-table__row--selected {
   background-color: set-color(vf-color--blue);
@@ -157,6 +161,15 @@
 
   .vf-button {
     color: set-ui-color(vf-ui-color--white);
+  }
+  .vf-button--icon {
+    color: set-ui-color(vf-ui-color--white);
+    font-weight: 400;
+    &:visited,
+    &:hover,
+    &:focus {
+      color: set-ui-color(vf-ui-color--white);
+    }
   }
 
   .vf-table__label {
@@ -176,6 +189,7 @@
     @include set-type(text-body--2, $custom-margin-bottom: 0);
 
     color: set-ui-color(vf-ui-color--white);
+    font-weight: 400;
     margin-left: 1em;
 
     &:first-child {
@@ -184,8 +198,8 @@
     &:visited,
     &:hover,
     &:focus {
-      color: set-color(vf-color--blue);
-      font-weight: 400;
+      color: set-ui-color(vf-ui-color--white);
+
     }
   }
 }
