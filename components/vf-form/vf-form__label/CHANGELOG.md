@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.0
+
+- changes the required asterick colour from red to blue, as red is more of an 'error' colour. 
+
 ## 1.0.0
 
 - adds a required asterick label (uses `<p>` tag).
