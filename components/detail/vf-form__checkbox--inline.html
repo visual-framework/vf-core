@@ -202,8 +202,8 @@ class="vf-logo">
 
   
   <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-form__item vf-form__item--checkbox vf-form__item--checkbox--inline"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"checkbox-01"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-form__checkbox"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"checkbox-01"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-form__label"</span>&gt;</span>Form Label<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"checkbox-inline-01"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-form__checkbox"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"checkbox-inline-01"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-form__label"</span>&gt;</span>Form Label<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
   
@@ -266,11 +266,15 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.0</span>
+<span class="hljs-bullet">
+- </span>the vf-form__checkbox is now used in more than forms so we have added some 'context' styling for when it is in a form.
+
+
 <span class="hljs-section">## 1.0.0</span>
 <span class="hljs-bullet">
 - </span>moves <span class="hljs-code">`vf-form__checkbox--inline`</span> into it's own .njk file.
 <span class="hljs-bullet">- </span>tidies up alignment of label and checkbox
-
 </code>
         </pre>
         
@@ -286,7 +290,7 @@ class="vf-logo">
           Filesystem path: components/vf-form/vf-form__checkbox/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 130 Bytes
+          Size: 262 Bytes
         </li>
       </ul>
     </section>
@@ -402,6 +406,19 @@ class="vf-logo">
 <span class="hljs-selector-class">.vf-form__item</span><span class="hljs-selector-class">.vf-form__item--checkbox</span> {
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
 }
+
+<span class="hljs-comment">// Because we want the checkbox to be used in various context. We need the context to define</span>
+<span class="hljs-comment">// Any layout things, and colours like below</span>
+<span class="hljs-selector-class">.vf-form__item--checkbox</span> {
+  <span class="hljs-selector-class">.vf-form__checkbox</span> {
+    + <span class="hljs-selector-class">.vf-form__label</span><span class="hljs-selector-pseudo">::before</span> {
+      <span class="hljs-attribute">border-color</span>: set-ui-color(vf-ui-color--grey--light);
+      <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">8px</span>;
+      <span class="hljs-attribute">top</span>: <span class="hljs-number">8px</span>;
+    }
+  }
+}
+
 <span class="hljs-selector-class">.vf-form__checkbox</span> {
   <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>; <span class="hljs-comment">// hide it</span>
   <span class="hljs-attribute">position</span>: absolute; <span class="hljs-comment">// take it out of document flow</span>
@@ -473,7 +490,7 @@ class="vf-logo">
           Filesystem path: components/vf-form/vf-form__checkbox/vf-form__checkbox.scss
         </li>
         <li class="vf-list__item">
-          Size: 2 KB
+          Size: 2.3 KB
         </li>
       </ul>
     </section>
