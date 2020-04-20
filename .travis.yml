@@ -22,9 +22,9 @@ percy:
     - PERCY_TARGET_BRANCH=develop
   script:
     - npx percy snapshot build/components/preview/
-  # on:
-  #   branch:
-  #     - develop
+  branches:
+    except:
+    - develop
 
 deploy:
   provider: pages
