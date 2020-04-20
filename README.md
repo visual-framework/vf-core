@@ -1,7 +1,9 @@
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/EMBL/EMBL-Visual-Framework)
+
 
 **👋 Downloading or cloning this repo? 🛑**
 
-Most won't need to clone this repo. Do so if you only wish to [develop the architecture](https://visual-framework.github.io/vf-welcome/developing/) of the Visual Framework core or contribute a global component, otherwise [use one of the boilerplates or install a component directly](https://visual-framework.github.io/vf-welcome/). 
+Most won't need to clone this repo. Do so if you only wish to [develop the architecture](https://visual-framework.github.io/vf-welcome/developing/) of the Visual Framework core or contribute a global component, otherwise [use one of the boilerplates or install a component directly](https://visual-framework.github.io/vf-welcome/).
 
 ---
 
@@ -30,7 +32,7 @@ The `vf-core` is built with:
 - Node and Gulp to build Sass; to:
     - rollup JavaScript and handle assets
     - allow custom components to be added to local projects
-- [Yeoman](https://yeoman.io/) to make custom components interactively 
+- [Yeoman](https://yeoman.io/) to make custom components interactively
 - [Yarn](https://yarnpkg.com/) to install components
 - [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) for component templates
 - [Lerna](https://lerna.js.org/) to publish components to npm as a [mono-repo](https://gomonorepo.org/)
