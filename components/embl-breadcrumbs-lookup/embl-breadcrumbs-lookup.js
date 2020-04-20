@@ -244,7 +244,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     }
 
     // scan through all terms and find a match, if any
-    function scanTaxonomyForTerm(termName) {
+    function emblBreadcumbLookup(termName) {
 
       // @todo: prefer UUID matches first
 
@@ -303,7 +303,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
     // don't scan for junk matches 
     if (termName != 'notSet' && termName != '' && termName != 'none') {
-      scanTaxonomyForTerm(termName);
+      emblBreadcumbLookup(termName);
     }
 
     // Validation and protection
