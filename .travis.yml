@@ -17,6 +17,7 @@ before_script:
 jobs:
   include:
     - stage: percy
+      skip-cleanup: true
       env:
         - PERCY_TARGET_BRANCH=develop
       script:
