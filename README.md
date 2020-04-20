@@ -1,5 +1,6 @@
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/EMBL/vf-core)
 
+
 **👋 Downloading or cloning this repo? 🛑**
 
 Most won't need to clone this repo. Do so if you only wish to [develop the architecture](https://visual-framework.github.io/vf-welcome/developing/) of the Visual Framework core or contribute a global component, otherwise [use one of the boilerplates or install a component directly](https://visual-framework.github.io/vf-welcome/).
