@@ -22,7 +22,7 @@ jobs:
         - PERCY_TARGET_BRANCH=develop
       script:
         - ls -la ./build/components/preview/*.html
-        - npx percy snapshot ./build/components/preview/
+        - npx percy snapshot ./build/components/preview/ --base-url "/visual-framework/"
       branches:
         except:
         - develop
