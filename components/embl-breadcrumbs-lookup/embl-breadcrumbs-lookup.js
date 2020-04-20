@@ -231,6 +231,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     if (termName == "notSet") {
       if (primaryBreadcrumb.parents[facet]) {
         termName = primaryBreadcrumb.parents[facet];
+        // we should really use emblBreadcumbLookup
       } else {
         // No matches? Then don't show anything.
         termName = '';
