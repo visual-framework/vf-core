@@ -26,6 +26,9 @@
 [class*='vf-grid__'] {
   flex-wrap: wrap;
 }
+// Originally the calculations in the flex declarations below were created using CSS calc
+// Unfortunately IE11 (which this flexbox grid is for) does not support calc inside of flex
+// So we've hard coded the percentage values. All other modern browsers get to use grid.
 .vf-grid__col-2 > * {
   flex: 0 0 49.18305%;
 }
