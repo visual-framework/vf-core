@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.1.1
+
+* SVG is a visual queue: adds aria-role="hidden" to the SVG in the component so screen readers don't announce it
+  https://github.com/visual-framework/vf-core/pull/873
+
 ## 1.1.0
 
 * adds ability for section header to have sub-heading and text.
