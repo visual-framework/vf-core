@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.6
+
+* Adds underline on links
+
 ## 1.0.5
 
 * Add alert `--alert` and `--warning` banners
