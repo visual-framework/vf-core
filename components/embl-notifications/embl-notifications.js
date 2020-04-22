@@ -53,7 +53,7 @@ function emblNotificationsInject(message) {
     output.innerHTML = `
       <div class="vf-banner vf-banner--phase | vf-content">
         <div class="vf-banner__content">
-          <p class="vf-banner__text">${message.body}</p>
+          <p class="vf-banner__text | vf-text">${message.body}</p>
         </div>
       </div>`;
   
@@ -82,7 +82,7 @@ function emblNotificationsInject(message) {
     // output.dataset.vfJsBannerExtraButton = "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>";
     output.innerHTML = `
       <div class="vf-banner__content" data-vf-js-banner-text>
-        <p class="vf-banner__text">${message.body}</p>
+        <p class="vf-banner__text | vf-text">${message.body}</p>
       </div>`;
 
     let target = document.body.firstChild;
