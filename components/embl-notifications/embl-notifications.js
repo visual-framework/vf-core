@@ -17,22 +17,22 @@ function emblNotificationsInject(message) {
   // preperation
   message.body = message.body.replace(/<[/]?[p>]+>/g, ' '); // no <p> tags allowed in inline messages, preserve a space to not colide words
   // add vf-link to link
-  message.body = message.body.replace('<a href=', '<a class="vf-link" href='); // we might need a more clever regex, but this should also avoid links that aleady have a class
+  message.body = message.body.replace('<a href=', '<a class="vf-banner__link" href='); // we might need a more clever regex, but this should also avoid links that aleady have a class
   // Learn more link is conditionally shown
   if (message.field_notification_link) {
-    message.body = `${message.body} <a class="vf-link" href="${message.field_notification_link}">Learn more</a>`;
+    message.body = `${message.body} <a class="vf-banner__link" href="${message.field_notification_link}">Learn more</a>`;
   }
   // custom button text
   message.field_notification_button_text = message.field_notification_button_text || 'Close notice';
   // notification memory and cookie options
   if (message.field_notification_cookie == "True") {
     output.dataset.vfJsBannerCookieName = message.cookieName;
-    output.dataset.vfJsBannerCookieVersion = message.cookieVersion;  
+    output.dataset.vfJsBannerCookieVersion = message.cookieVersion;
     if (message.field_notification_auto_accept == "True") {
       output.dataset.vfJsBannerAutoAccept = true;
     }
   }
-  
+
   if (message.field_notification_position == 'fixed') {
     output.classList.add('vf-banner', 'vf-banner--fixed', 'vf-banner--bottom', 'vf-banner--notice');
     output.dataset.vfJsBanner = true;
@@ -56,7 +56,7 @@ function emblNotificationsInject(message) {
           <p class="vf-banner__text">${message.body}</p>
         </div>
       </div>`;
-  
+
     // insert after `vf-header` or at after `vf-body`
     // @todo: add support for where "inline" message should be shown
     // @todo: don't rely on the presence of vf-header to show inline notification, maybe <div data-notifications-go-here>
@@ -87,7 +87,7 @@ function emblNotificationsInject(message) {
 
     let target = document.body.firstChild;
     target.parentNode.prepend(output);
-    vfBanner();    
+    vfBanner();
   }
 
   // console.log('emblNotifications, showing:', message);
@@ -129,7 +129,7 @@ function emblNotifications(currentHost, currentPath) {
       matchFound = compareUrls(currentHost+currentPath, targetUrl, true);
     }
 
-    // if a match has been made on the current url path, show the message 
+    // if a match has been made on the current url path, show the message
     if (matchFound == true) {
       // console.log('emblNotifications: MATCH FOUND 🎉', targetUrl, currentHost, currentPath);
       message.hasBeenShown = true;
@@ -147,12 +147,12 @@ function emblNotifications(currentHost, currentPath) {
     url2 = url2.toLowerCase();
 
     // don't allow matches to end in `*`
-    if (url1.slice(-1) == '*') url1 = url1.substring(0, url1.length - 1); 
-    if (url2.slice(-1) == '*') url2 = url2.substring(0, url2.length - 1); 
+    if (url1.slice(-1) == '*') url1 = url1.substring(0, url1.length - 1);
+    if (url2.slice(-1) == '*') url2 = url2.substring(0, url2.length - 1);
 
     // don't allow matches to end in `/`
-    if (url1.slice(-1) == '/') url1 = url1.substring(0, url1.length - 1); 
-    if (url2.slice(-1) == '/') url2 = url2.substring(0, url2.length - 1); 
+    if (url1.slice(-1) == '/') url1 = url1.substring(0, url1.length - 1);
+    if (url2.slice(-1) == '/') url2 = url2.substring(0, url2.length - 1);
 
     // console.log('emblNotifications, comparing:', url1 + "," + url2);
 
@@ -180,13 +180,13 @@ function emblNotifications(currentHost, currentPath) {
 
       // track if a message has already been show on the page
       // we want to be sure a message isn't accidently shown twice
-      currentMessage.hasBeenShown = false; 
+      currentMessage.hasBeenShown = false;
 
       // Process the URLs for each path in a message
       let currentUrls = currentMessage.field_notification_urls.split(',');
       for (let indexUrls = 0; indexUrls < currentUrls.length; indexUrls++) {
         let url = currentUrls[indexUrls].trim();
-        matchNotification(currentMessage, url); // pass the notification and active url to compare       
+        matchNotification(currentMessage, url); // pass the notification and active url to compare
       }
     }
   }

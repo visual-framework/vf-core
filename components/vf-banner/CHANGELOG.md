@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.0.6
+
+* Adds underline on links using `.vf-banner__link`
+* Resolves IE11 bug assigning classes
+
 ## 1.0.5
 
 * Add alert `--alert` and `--warning` banners
@@ -11,7 +16,7 @@
 * Makes use of `vf-banner__text`
 * Use of `vf-text` is deprecated
 
-## 1.0.2 
+## 1.0.2
 
 * Links in text areas of banners regain an underline.
 
