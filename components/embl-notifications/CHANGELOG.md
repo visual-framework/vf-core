@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.0-beta.1
+
+* Use `.vf-banner__link`
+
 ## 1.0.0-alpha.2
 
 * Improved formatting support and conditional logic https://github.com/visual-framework/vf-core/pull/817
