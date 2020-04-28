@@ -1,21 +1,13 @@
-👋 Hi component authour, you've read the docs, right?
-
-- [What's a component](https://visual-framework.github.io/vf-welcome/developing/components/what-is-a-component/)
-- [Updating, versioning a component](https://visual-framework.github.io/vf-welcome/developing/components/updating-a-component/)
-- [Sass and CSS guidelines](https://visual-framework.github.io/vf-welcome/developing/guidelines/css/)
-- [Themeing and variant guidance - TO COME](#tocome)
-- [JavaScript guidelines](https://visual-framework.github.io/vf-welcome/developing/guidelines/javascript/)
-- [Making your first Pull Request](https://visual-framework.github.io/vf-welcome/developing/getting-started/pull-requests/)
-- [More development guidance](https://visual-framework.github.io/vf-welcome/developing/)
-- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
-
----
-
 # vf-social-links Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-social-links.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-social-links)
 
 ## Usage
+
+### Variants Available
+
+- `vf-social-links--outline` this removes the background and gives a border around each icon square.
+- `dark-mode` if this is insdie a component that has `dark-mode` theeme then the colours swap.
 
 The dos and don'ts of using this component.
 
