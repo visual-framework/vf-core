@@ -1,0 +1,120 @@
+// vf-social-links
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+@import 'vf-social-links.variables.scss';
+
+
+.vf-social-links__heading {
+  @include set-type(text-heading--4);
+
+  color: set-ui-color(vf-ui-color--black);
+  text-transform: capitalize;
+}
+
+.vf-social-links__list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.vf-social-links__item {
+  background: set-ui-color(vf-ui-color--black);
+  margin-left: 12px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:hover {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+  }
+}
+
+.vf-social-links__link {
+  align-items: center;
+  display: flex;
+  padding: 10px;
+
+  &:focus {
+    outline: 3px solid var(--vf-color--blue);
+  }
+
+  .vf-icon--social {
+    fill: set-ui-color(vf-ui-color--white);
+  }
+}
+
+
+.vf-social-links--outline {
+
+  .vf-social-links__item {
+    background-color: transparent;;
+    border: 1px solid set-ui-color(vf-ui-color--black);
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: set-ui-color(vf-ui-color--black);
+
+      .vf-icon--social {
+        fill: set-ui-color(vf-ui-color--white);
+      }
+    }
+  }
+
+  .vf-icon--social {
+    fill: set-ui-color(vf-ui-color--black);
+  }
+}
+
+
+[class*='theme--dark'] {
+
+  .vf-social-links__heading {
+    color: set-ui-color(vf-ui-color--white);
+  }
+
+  .vf-social-links__item {
+    background-color: set-ui-color(vf-ui-color--white);
+  }
+
+  .vf-icon--social {
+    fill: set-ui-color(vf-ui-color--black);
+  }
+
+  .vf-social-links--outline {
+    .vf-social-links__item {
+      background-color: transparent;
+      border: 1px solid set-ui-color(vf-ui-color--white);
+      box-sizing: border-box;
+
+      &:hover {
+        border-color: set-ui-color(vf-ui-color--black);
+        box-shadow: none;
+        /* stylelint-disable */
+        .vf-icon--social {
+          fill: set-ui-color(vf-ui-color--black);
+        }
+        /* stylelint-enable */
+      }
+    }
+
+    .vf-icon--social {
+      fill: set-ui-color(vf-ui-color--white);
+    }
+  }
+}
