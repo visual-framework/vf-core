@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.1.1
+
+* adds a floated vf-figure example in the nunjucks file
+* adds CSS for margin spacing of vf-figure inside of vf-content
+
 ## 1.1.0
 
 * `vf-content` becomes less of a utility and a general purpose for long-form content
