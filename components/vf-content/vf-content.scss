@@ -113,6 +113,48 @@
       margin-bottom: 0;
     }
   }
+  
+  table:not([class*='vf-']) {
+    background-color: set-ui-color(vf-ui-color--white);
+    border-collapse: collapse;
+
+    caption {
+      @include set-type(text-heading--4);
+
+      text-align: left;
+    }
+
+    thead {
+      background-color: set-color(vf-color--grey--lightest);
+
+      th {
+        @include set-type(text-heading--5, $custom-margin-bottom: 0);
+
+        padding: 8px 16px;
+        text-align: left;
+      }
+    }
+
+    td {
+      @include set-type(text-body--2, $custom-margin-bottom: 0);
+
+      padding: 8px 16px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    tr:nth-of-type(even) {
+      background-color: set-ui-color(vf-ui-color--grey--light);
+    }
+    tfoot {
+      background-color: set-color(vf-color--grey--lightest);
+      border-top: 1px solid set-ui-color(vf-ui-color--black);
+
+      td {
+        padding: 8px 16px;
+      }
+    }
+  }
 
   figcaption:not([class*='vf-']),
   cite:not([class*='vf-']) {
@@ -135,7 +177,6 @@
     margin-bottom: 32px;
     margin-left: 32px;
   }
-
 }
 
 .vf-content__standfirst {
