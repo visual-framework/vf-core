@@ -17,7 +17,7 @@ Aspect Ratios available are 16x9 and 4x3.
 
 You can also set a max width for the `vf-emded`. If you do this in the nunjucks file with the key of `maxWidth:` the nunjucks template will output an inline style onto the `vf-embed`. You can add this however fits best your product (in the `:root`, in a stylesheet, etc).
 
-If you do not set a `maxWidth` value then the component is set to a maximum width of `100%``.
+If you do not set a `maxWidth` value then the component is set to a maximum width of `100%`.
 
 ## Install
 
