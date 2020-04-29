@@ -1,6 +1,3 @@
-$vf-masthead__title-text--color: set-color(vf-color--grey--darkest);
-$vf-masthead__subtitle-text--color: set-color(vf-color--grey);
-
 // vf-masthead
 
 @import 'package.variables.scss';
@@ -13,19 +10,41 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
  */
 
 .vf-masthead {
-  // --vf-masthead__color--foreround-default: var(--vf-color--grey-darkest);
-  // --vf-masthead__color--background-default: var(--vf-color--green);
-  //
-  // background-color: set-color(vf-color--green);
-  // background-image: var( --vf-masthead__bg-image, none);
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  color: set-ui-color(vf-ui-color--black);
-
-  // @media (min-width: $vf-breakpoint--lg) {
-  //   padding-top: 48px;
-  // }
+  background-color: set-ui-color(vf-ui-color--black);
+  background-color: var(--local-theme-bg-color, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
+  color: set-ui-color(vf-ui-color--white);
+  color: var(--local-theme-fg-color, var(--global-theme-fg-color, set-ui-color(vf-ui-color--white)));
+  padding-top: 24px;
+  padding-bottom: 36px;
 }
+
+
+// Variants
+
+.vf-masthead-theme--primary {
+  --local-theme-bg-color: #{set-color(vf-color--blue)};
+  --local-theme-fg-color: #{set-ui-color(vf-ui-color--white)};
+}
+
+.vf-masthead-theme--secondary {
+  --local-theme-bg-color: #{set-color(vf-color--green)};
+  --local-theme-fg-color: #{set-ui-color(vf-ui-color--white)};
+}
+
+.vf-masthead-theme--tertiary {
+  --local-theme-bg-color: #{set-color(vf-color--grey--dark)};
+  --local-theme-fg-color: #{set-ui-color(vf-ui-color--white)};
+}
+
+.vf-masthead--has-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &:not(.vf-masthead--with-title-block) .vf-masthead__title > * {
+    text-shadow: 2px 2px 0px set-ui-color(vf-ui-color--black);
+  }
+}
+
 
 .vf-masthead__inner {
   display: flex;
@@ -43,7 +62,6 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
 .vf-masthead__heading {
   @include set-type(text-heading--1, $custom-margin-bottom: 8px);
 
-  color: $vf-masthead__title-text--color;
   display: flex;
   flex-direction: column;
 }
@@ -51,20 +69,11 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
 .vf-masthead__heading--additional {
   @include set-type(text-heading--5, $custom-margin-bottom: 0);
 
-  color: $vf-masthead__subtitle-text--color;
   position: relative;
   top: -4px;
 }
 
-.vf-masthead__sub-heading {
-  @include set-type(text-heading--5);
-
-  color: $vf-masthead__subtitle-text--color;
-}
-
 .vf-masthead__heading__link {
-  @include inline-link($vf-masthead__title-text--color,$vf-masthead__title-text--color,$vf-masthead__title-text--color,$vf-masthead__title-text--color);
-
   color: inherit;
   text-decoration: none;
   z-index: set-layer(vf-z-index--masthead);
@@ -73,7 +82,6 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
 .vf-masthead__subheading {
   @include set-type(text-body--4, $custom-margin-bottom: 0);
 
-  color: $vf-masthead__title-text--color;
   text-transform: uppercase;
 }
 
@@ -83,17 +91,25 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
   z-index: set-layer(vf-z-index--masthead);
 }
 
+
+
+
 .vf-masthead--with-title-block {
+  display: flex;
+  padding-top: 60px;
+  padding-bottom: 0;
 
   .vf-masthead__title {
-    background-color: set-ui-color(vf-ui-color--black);
+    align-self: flex-end;
+    background-color: var(--local-theme-bg-color, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
+    color: var(--local-theme-fg-color, var(--global-theme-fg-color, set-ui-color(vf-ui-color--black)));
     display: inline-flex;
     padding-right: 16px;
     padding-top: 16px;
     position: relative;
 
     &::before {
-      background-color: set-ui-color(vf-ui-color--black);
+      background-color: var(--local-theme-bg-color, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
       content: '';
       display: inline-flex;
       flex-direction: column-reverse;
@@ -109,6 +125,12 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
     z-index: set-layer(vf-z-index--masthead);
   }
 }
+
+
+
+
+
+// This is code that should not be used
 
 .vf-masthead__form--search {
   align-self: flex-end;
