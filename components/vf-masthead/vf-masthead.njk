@@ -1,3 +1,8 @@
+<style>
+    .vf-masthead {
+      --vf-masthead__bg-image: url({{ mastheadImage }});
+    }
+</style>
 <div
   class="vf-masthead
   {%- if mastheadThemeVariant %}
@@ -10,7 +15,8 @@
   {{mastheadImageClass}}
   {% endif -%}"
   {% if mastheadImage %}
-  style="background-image: url({{ mastheadImage }})"
+  style="background-image: var(--vf-masthead__bg-image)"
+  data-vf-js-masthead
   {% endif %}
 >
   <div class="vf-masthead__inner">

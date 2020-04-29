@@ -42,10 +42,13 @@ function vfMastheadSetStyle() {
       cBrightness = getCorrectTextColor(bannerBGC);
 
       if (cBrightness > threshold){
-        el.style.setProperty('--vf-masthead__color--foreground', "#000000");
+        el.style.setProperty('--local-theme-fg-color', "#000000");
       } else if (cBrightness < threshold) {
-        el.style.setProperty('--vf-masthead__color--foreground', "#FFFFFF");
+        el.style.setProperty('--local-theme-fg-color', "#FFFFFF");
       }
+    }
+    else {
+      el.style.setProperty('--vf-masthead__bg-image', "none");
     }
   }
 };
