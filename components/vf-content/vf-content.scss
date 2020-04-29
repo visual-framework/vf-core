@@ -113,20 +113,7 @@
       margin-bottom: 0;
     }
   }
-
-  figcaption:not([class*='vf-']),
-  cite:not([class*='vf-']) {
-    // matches @mixin figure, but that is not directly usable here as it requires css classes
-    @include set-type(text-body--5);
-    color: map-get($vf-colors-map, vf-color--grey);
-    font-style: italic;
-  }
-
-  .vf-video {
-    // TODO: Make a function for vf-spacing map
-    margin-bottom: 32px;
-  }
-
+  
   table:not([class*='vf-']) {
     background-color: set-ui-color(vf-ui-color--white);
     border-collapse: collapse;
@@ -167,6 +154,28 @@
         padding: 8px 16px;
       }
     }
+  }
+
+  figcaption:not([class*='vf-']),
+  cite:not([class*='vf-']) {
+    // matches @mixin figure, but that is not directly usable here as it requires css classes
+    @include set-type(text-body--5);
+    color: map-get($vf-colors-map, vf-color--grey);
+    font-style: italic;
+  }
+
+  .vf-video {
+    // TODO: Make a function for vf-spacing map
+    margin-bottom: 32px;
+  }
+
+  .vf-figure--float-inline-start {
+    margin-bottom: 32px;
+    margin-right: 32px;
+  }
+  .vf-figure--float-inline-end {
+    margin-bottom: 32px;
+    margin-left: 32px;
   }
 }
 
