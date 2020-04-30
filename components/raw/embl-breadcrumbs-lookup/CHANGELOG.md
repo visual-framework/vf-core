@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.0.0-rc.1
+
+- embl-breadcrumbs-lookup inference uses wrong label
+  - https://github.com/visual-framework/vf-core/pull/867
+
 ## 1.0.0-beta.5
 
 - Njk template was loading demo `embl-content-meta-properties` that were only needed for an example
@@ -13,7 +18,7 @@
 - Cleaner URL generation
 - Matches a terms internal names or display names as a last resort
 
-## 1.0.0-beta.2 
+## 1.0.0-beta.2
 
 - Prefers "EMBL.org profile" matches to taxonomy entries
 - If no related breadcrumbs are found, the label will be hidden

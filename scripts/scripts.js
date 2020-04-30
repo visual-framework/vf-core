@@ -30,7 +30,7 @@ function vfBannerReset(vfBannerCookieNameAndVersion) {
 
 
 function vfBannerConfirm(banner, vfBannerCookieNameAndVersion) {
-  banner.classList += " vf-u-display-none";
+  banner.classList.add('vf-u-display-none');
 
   if (vfBannerCookieNameAndVersion !== 'null') {
     vfBannerSetCookie(vfBannerCookieNameAndVersion, true);
@@ -156,7 +156,7 @@ function vfBannerInsert(banner, bannerId, scope) {
         var newButton = document.createElement('button');
         newButton.innerHTML = button;
         newButton = newButton.firstChild;
-        newButton.classList = 'vf-button vf-button--primary';
+        newButton.classList.add('vf-button', 'vf-button--primary');
         generatedBannerHtml += newButton.outerHTML;
       }
     });
@@ -195,7 +195,7 @@ function vfBannerInsert(banner, bannerId, scope) {
     // if banner has been previously accepted
     if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
       // banner has been accepted, close
-      targetBanner.classList += " vf-u-display-none"; // exit, nothng more to do
+      targetBanner.classList.add('vf-u-display-none'); // exit, nothng more to do
 
       return;
     } // if banner is marked as auto-accept, set as read
@@ -782,11 +782,11 @@ function emblNotificationsInject(message) {
   message.body = message.body.replace(/<[/]?[p>]+>/g, ' '); // no <p> tags allowed in inline messages, preserve a space to not colide words
   // add vf-link to link
 
-  message.body = message.body.replace('<a href=', '<a class="vf-link" href='); // we might need a more clever regex, but this should also avoid links that aleady have a class
+  message.body = message.body.replace('<a href=', '<a class="vf-banner__link" href='); // we might need a more clever regex, but this should also avoid links that aleady have a class
   // Learn more link is conditionally shown
 
   if (message.field_notification_link) {
-    message.body = "".concat(message.body, " <a class=\"vf-link\" href=\"").concat(message.field_notification_link, "\">Learn more</a>");
+    message.body = "".concat(message.body, " <a class=\"vf-banner__link\" href=\"").concat(message.field_notification_link, "\">Learn more</a>");
   } // custom button text
 
 
@@ -882,7 +882,7 @@ function emblNotifications(currentHost, currentPath) {
 
     if (targetUrl.slice(-1) == '*') {
       matchFound = compareUrls(currentHost + currentPath, targetUrl, true);
-    } // if a match has been made on the current url path, show the message 
+    } // if a match has been made on the current url path, show the message
 
 
     if (matchFound == true) {
@@ -935,7 +935,7 @@ function emblNotifications(currentHost, currentPath) {
 
       for (var indexUrls = 0; indexUrls < currentUrls.length; indexUrls++) {
         var url = currentUrls[indexUrls].trim();
-        matchNotification(currentMessage, url); // pass the notification and active url to compare       
+        matchNotification(currentMessage, url); // pass the notification and active url to compare
       }
     }
   } // Utility to fetch a file, process the JSON
@@ -1274,11 +1274,25 @@ emblBreadcrumbRelated.classList.add('vf-breadcrumbs__list', 'vf-breadcrumbs__lis
 
 var primaryBreadcrumb;
 /**
+ * Look up a breadcrumb by its uuid and return the entry
+ * @example formatBreadcrumb(uuid)
+ * @param {string} [uuid]  - the uuid of a term
+ */
+
+function emblBreadcumbLookupByUuid(uuid) {
+  // console.log('emblBreadcumbLookupByUuid',uuid);
+  if (emblTaxonomy.terms[uuid]) {
+    // console.log('emblBreadcumbLookupByUuid',emblTaxonomy.terms[uuid]);
+    return emblTaxonomy.terms[uuid];
+  }
+}
+/**
  * Take any appropriate actions depending on present metaTags
  * @example emblBreadcrumbsLookup()
  * @param {object} [metaProperties] - if you do not have meta tags on the page,
  *                                    you can explicitly pass options
  */
+
 
 function emblBreadcrumbsLookup(metaProperties) {
   var emblBreadcrumbTarget = document.querySelectorAll('[data-embl-js-breadcrumbs-lookup]');
@@ -1651,12 +1665,12 @@ function emblBreadcrumbAppend(breadcrumbTarget, termName, facet, type) {
     // if a term has not been passed, attempt to use the primary term's parent information
     // @todo: add a flag to explicitly "dontLookup" or "doLookup"
 
-    if (termName == "notSet") {
+    if (termName == 'notSet') {
+      termName = ''; // we'll either find a positive termObject or not show anything
+      // console.log('here',primaryBreadcrumb.parents)
+
       if (primaryBreadcrumb.parents[facet]) {
         termName = primaryBreadcrumb.parents[facet];
-      } else {
-        // No matches? Then don't show anything.
-        termName = '';
       }
     } // if using a `string/NameOfThing` value, not accordingly
 
@@ -1667,9 +1681,16 @@ function emblBreadcrumbAppend(breadcrumbTarget, termName, facet, type) {
     } // scan through all terms and find a match, if any
 
 
-    function scanTaxonomyForTerm(termName) {
-      // @todo: prefer UUID matches first
-      // We prefer profiles
+    function emblBreadcumbLookup(termName) {
+      // @todo: if a UUID meta property is set, use that
+      // if it's UUID match we use that
+      termObject = emblBreadcumbLookupByUuid(termName);
+
+      if (typeof termObject != 'undefined') {
+        return; //exit
+      } // We prefer profiles
+
+
       Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), function (termId) {
         var term = emblTaxonomy.terms[termId];
 
@@ -1721,11 +1742,11 @@ function emblBreadcrumbAppend(breadcrumbTarget, termName, facet, type) {
           }
         });
       }
-    } // don't scan for junk matches 
+    } // don't scan for junk matches
 
 
     if (termName != 'notSet' && termName != '' && termName != 'none') {
-      scanTaxonomyForTerm(termName);
+      emblBreadcumbLookup(termName);
     } // Validation and protection
     // we never want to return undefined
 

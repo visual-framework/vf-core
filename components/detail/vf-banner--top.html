@@ -302,7 +302,7 @@ class="vf-logo">
   <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--top vf-banner--phase"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"Close notice"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-badge vf-badge--primary"</span>&gt;</span>BETA<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>This is the new EMBL.org <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>&gt;</span>Complete our quick survey<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> to help us make it better.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>This is the new EMBL.org <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__link"</span>&gt;</span>Complete our quick survey<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> to help us make it better.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
@@ -372,6 +372,11 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.6</span>
+<span class="hljs-bullet">
+* </span>Adds underline on links using <span class="hljs-code">`.vf-banner__link`</span>
+<span class="hljs-bullet">* </span>Resolves IE11 bug assigning classes
+
 <span class="hljs-section">## 1.0.5</span>
 <span class="hljs-bullet">
 * </span>Add alert <span class="hljs-code">`--alert`</span> and <span class="hljs-code">`--warning`</span> banners
@@ -383,7 +388,7 @@ class="vf-logo">
 * </span>Makes use of <span class="hljs-code">`vf-banner__text`</span>
 <span class="hljs-bullet">* </span>Use of <span class="hljs-code">`vf-text`</span> is deprecated
 
-<span class="hljs-section">## 1.0.2 </span>
+<span class="hljs-section">## 1.0.2</span>
 <span class="hljs-bullet">
 * </span>Links in text areas of banners regain an underline.
 
@@ -412,7 +417,7 @@ class="vf-logo">
           Filesystem path: components/vf-banner/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 707 Bytes
+          Size: 806 Bytes
         </li>
       </ul>
     </section>
@@ -468,7 +473,7 @@ class="vf-logo">
         
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">{
-  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.5"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.6"</span>,
   <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/vf-banner"</span>,
   <span class="hljs-attr">"description"</span>: <span class="hljs-string">"vf-banner component"</span>,
   <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"https://visual-framework.github.io/vf-core/"</span>,
@@ -549,7 +554,7 @@ class="vf-logo">
  * Confirm a banner, initiate cookie logging
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerConfirm</span>(<span class="hljs-params">banner,vfBannerCookieNameAndVersion</span>) </span>{
-  banner.classList += <span class="hljs-string">" vf-u-display-none"</span>;
+  banner.classList.add(<span class="hljs-string">'vf-u-display-none'</span>);
   <span class="hljs-keyword">if</span> (vfBannerCookieNameAndVersion !== <span class="hljs-string">'null'</span>) {
     vfBannerSetCookie(vfBannerCookieNameAndVersion,<span class="hljs-literal">true</span>);
   }
@@ -680,7 +685,7 @@ class="vf-logo">
         <span class="hljs-keyword">var</span> newButton = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
         newButton.innerHTML = button;
         newButton = newButton.firstChild;
-        newButton.classList = <span class="hljs-string">'vf-button vf-button--primary'</span>;
+        newButton.classList.add(<span class="hljs-string">'vf-button'</span>,<span class="hljs-string">'vf-button--primary'</span>);
         generatedBannerHtml += newButton.outerHTML;
       }
     });
@@ -721,7 +726,7 @@ class="vf-logo">
     <span class="hljs-comment">// if banner has been previously accepted</span>
     <span class="hljs-keyword">if</span> (vfBannerGetCookie(vfBannerCookieNameAndVersion) === <span class="hljs-string">'true'</span>) {
       <span class="hljs-comment">// banner has been accepted, close</span>
-      targetBanner.classList += <span class="hljs-string">" vf-u-display-none"</span>;
+      targetBanner.classList.add(<span class="hljs-string">'vf-u-display-none'</span>);
       <span class="hljs-comment">// exit, nothng more to do</span>
       <span class="hljs-keyword">return</span>;
     }
@@ -806,7 +811,8 @@ class="vf-logo">
 }
 
 <span class="hljs-comment">// all vf-text links should be underlined in banners</span>
-<span class="hljs-selector-class">.vf-banner</span> <span class="hljs-selector-attr">[class*='vf-text']</span> <span class="hljs-selector-class">.vf-link</span> {
+<span class="hljs-selector-class">.vf-banner__text</span> <span class="hljs-selector-class">.vf-banner__link</span>,
+<span class="hljs-selector-class">.vf-banner</span> <span class="hljs-selector-attr">[class*='vf-text']</span> <span class="hljs-selector-class">.vf-link</span> { <span class="hljs-comment">// as of 1.0.4 use of vf-text is not recommended and is subject to future removal</span>
   <span class="hljs-attribute">text-decoration</span>: underline;
 }
 
@@ -861,6 +867,7 @@ class="vf-logo">
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
     <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64em</span>;
 
+    &amp; <span class="hljs-selector-class">.vf-banner__link</span>,
     &amp; <span class="hljs-selector-class">.vf-link</span> {
       <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-banner-color--link</span>;
     }
@@ -904,7 +911,7 @@ class="vf-logo">
           Filesystem path: components/vf-banner/vf-banner.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.3 KB
+          Size: 2.4 KB
         </li>
       </ul>
     </section>
@@ -985,6 +992,12 @@ class="vf-logo">
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
       
 
         
@@ -1466,6 +1479,12 @@ class="vf-logo">
 
         
       
+
+        
+        
+
+        
+      
   </section>
 </section>
 <hr class="vf-divider">
@@ -1701,6 +1720,12 @@ class="vf-logo">
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-explainer.html">Explainer</a>
         </p>
@@ -1894,6 +1919,12 @@ class="vf-logo">
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-no-js.html">No JS</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -2251,6 +2282,16 @@ class="vf-logo">
         
 
         
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-embed.html">vf-embed</a>
+        </p>
+        
+      
+
+        
+        
+
+        
       
 
         
@@ -2493,6 +2534,16 @@ class="vf-logo">
         
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-section-header.html">Section Header</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-social-links.html">Social icons</a>
         </p>
         
       
@@ -2855,6 +2906,12 @@ class="vf-logo">
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -2996,6 +3053,12 @@ class="vf-logo">
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-news-container.html">News Container</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -3373,6 +3436,12 @@ class="vf-logo">
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -3396,6 +3465,12 @@ class="vf-logo">
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -3863,6 +3938,12 @@ class="vf-logo">
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-font-plex-mono.html">Plex Mono Font</a>
         </p>
@@ -4046,6 +4127,12 @@ class="vf-logo">
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-config.html">Sass config</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -4393,6 +4480,12 @@ class="vf-logo">
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4416,6 +4509,12 @@ class="vf-logo">
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -4891,6 +4990,12 @@ class="vf-logo">
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4914,6 +5019,12 @@ class="vf-logo">
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5385,6 +5496,12 @@ class="vf-logo">
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5408,6 +5525,12 @@ class="vf-logo">
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5875,6 +5998,12 @@ class="vf-logo">
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5898,6 +6027,12 @@ class="vf-logo">
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -6361,6 +6496,12 @@ class="vf-logo">
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -6384,6 +6525,12 @@ class="vf-logo">
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -6851,6 +6998,12 @@ class="vf-logo">
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -7012,6 +7165,12 @@ class="vf-logo">
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-utilities.html">Sass utilities</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 

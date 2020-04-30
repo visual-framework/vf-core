@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.5
+
+* Updates the z-index to separate any banner or hero from banner
+
 ## 1.0.4
 
 * Swaps `--vf-ui-color--grey` and `--vf-ui-color--grey--light` which had been inverted

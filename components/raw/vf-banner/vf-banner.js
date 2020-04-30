@@ -30,7 +30,7 @@ function vfBannerReset(vfBannerCookieNameAndVersion) {
  * Confirm a banner, initiate cookie logging
  */
 function vfBannerConfirm(banner,vfBannerCookieNameAndVersion) {
-  banner.classList += " vf-u-display-none";
+  banner.classList.add('vf-u-display-none');
   if (vfBannerCookieNameAndVersion !== 'null') {
     vfBannerSetCookie(vfBannerCookieNameAndVersion,true);
   }
@@ -161,7 +161,7 @@ function vfBannerInsert(banner,bannerId,scope) {
         var newButton = document.createElement('button');
         newButton.innerHTML = button;
         newButton = newButton.firstChild;
-        newButton.classList = 'vf-button vf-button--primary';
+        newButton.classList.add('vf-button','vf-button--primary');
         generatedBannerHtml += newButton.outerHTML;
       }
     });
@@ -202,7 +202,7 @@ function vfBannerInsert(banner,bannerId,scope) {
     // if banner has been previously accepted
     if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
       // banner has been accepted, close
-      targetBanner.classList += " vf-u-display-none";
+      targetBanner.classList.add('vf-u-display-none');
       // exit, nothng more to do
       return;
     }

@@ -88,7 +88,7 @@ gulp.task('tokens:maps', () =>
 );
 
 gulp.task('tokens:json', () =>
-  gulp.src(['./src/maps/*.yml', './src/typographic-scales/*.yml'])
+  gulp.src(['./src/maps/*.yml', './src/typographic-scales/*.yml', './src/variables/vf-breakpoints.yml'])
     .pipe(theoG({
       transform: { type: 'web', includeMeta: true },
       format: { type: 'ios.json' }

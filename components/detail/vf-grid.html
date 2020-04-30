@@ -412,6 +412,10 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+<span class="hljs-section"># 1.0.3 (2020-04-22)</span>
+<span class="hljs-bullet">
+* </span>fixes a bug with IE11 where we relied on the calc function inside the flex (which IE11 does not support) in the flexbox fallback grid defined columned classes (.vf-grid__col-2 &gt; * {...) etc).
+
 <span class="hljs-section"># 1.0.2 (2020-03-20)</span>
 <span class="hljs-bullet">
 * </span>fixes issue with vf-grid inside vf-body https://github.com/visual-framework/vf-core/pull/802
@@ -438,7 +442,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-grid/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 407 Bytes
+          Size: 624 Bytes
         </li>
       </ul>
     </section>
@@ -485,7 +489,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">{
-  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.3"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.4"</span>,
   <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/vf-grid"</span>,
   <span class="hljs-attr">"description"</span>: <span class="hljs-string">"vf-grid component"</span>,
   <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"https://visual-framework.github.io/vf-core/"</span>,
@@ -550,25 +554,34 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 <span class="hljs-selector-class">.vf-grid</span> &gt; * {
   <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span> <span class="hljs-number">10px</span> <span class="hljs-number">1.6339%</span>;
 }
+
+<span class="hljs-selector-class">.vf-grid</span> &gt; *<span class="hljs-selector-pseudo">:first-child</span> {
+  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">0</span>;
+}
+
+
 <span class="hljs-selector-attr">[class*='vf-grid__']</span> {
   <span class="hljs-attribute">flex-wrap</span>: wrap;
 }
+<span class="hljs-comment">// Originally the calculations in the flex declarations below were created using CSS calc</span>
+<span class="hljs-comment">// Unfortunately IE11 (which this flexbox grid is for) does not support calc inside of flex</span>
+<span class="hljs-comment">// So we've hard coded the percentage values. All other modern browsers get to use grid.</span>
 <span class="hljs-selector-class">.vf-grid__col-2</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> calc(<span class="hljs-number">50%</span> - <span class="hljs-number">20px</span>);
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">49.18305%</span>;
 }
 <span class="hljs-selector-class">.vf-grid__col-3</span> &gt; *{
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> calc(<span class="hljs-number">33.3333%</span> - <span class="hljs-number">20px</span>);
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">32.244066667%</span>;
 }
 <span class="hljs-selector-class">.vf-grid__col-4</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> calc(<span class="hljs-number">25%</span> - <span class="hljs-number">20px</span>);
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">23.774575%</span>;
 }
 <span class="hljs-selector-class">.vf-grid__col-5</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> calc(<span class="hljs-number">16%</span> - <span class="hljs-number">20px</span>);
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">18.69288%</span>;
 }
 <span class="hljs-selector-class">.vf-grid__col-6</span> &gt; * {
-  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> calc(<span class="hljs-number">16.666666667%</span> - <span class="hljs-number">20px</span>);
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">15.305083333%</span>;
 }
 <span class="hljs-keyword">@media</span> (max-width: <span class="hljs-number">1023px</span>) {
   <span class="hljs-selector-class">.vf-grid</span> {
@@ -687,7 +700,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-grid/vf-grid.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.7 KB
+          Size: 3 KB
         </li>
       </ul>
     </section>
@@ -728,6 +741,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
       
 
         
@@ -1209,6 +1228,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
       
+
+        
+        
+
+        
+      
   </section>
 </section>
 <hr class="vf-divider">
@@ -1444,6 +1469,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-explainer.html">Explainer</a>
         </p>
@@ -1637,6 +1668,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-no-js.html">No JS</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -1994,6 +2031,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-embed.html">vf-embed</a>
+        </p>
+        
+      
+
+        
+        
+
+        
       
 
         
@@ -2236,6 +2283,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-section-header.html">Section Header</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-social-links.html">Social icons</a>
         </p>
         
       
@@ -2598,6 +2655,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -2739,6 +2802,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-news-container.html">News Container</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -3116,6 +3185,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -3139,6 +3214,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -3606,6 +3687,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-font-plex-mono.html">Plex Mono Font</a>
         </p>
@@ -3789,6 +3876,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-config.html">Sass config</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -4136,6 +4229,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4159,6 +4258,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -4634,6 +4739,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4657,6 +4768,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5128,6 +5245,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5151,6 +5274,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5618,6 +5747,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5641,6 +5776,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -6104,6 +6245,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -6127,6 +6274,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -6594,6 +6747,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -6755,6 +6914,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-utilities.html">Sass utilities</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 

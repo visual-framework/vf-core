@@ -712,7 +712,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">{
-  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.2"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.2.0"</span>,
   <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/vf-navigation"</span>,
   <span class="hljs-attr">"description"</span>: <span class="hljs-string">"vf-navigation component"</span>,
   <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"https://visual-framework.github.io/vf-core/"</span>,
@@ -792,13 +792,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-selector-class">.vf-navigation__heading</span> {
     <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">6px</span>; <span class="hljs-comment">// magic number</span>
-    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
+    <span class="hljs-attribute">z-index</span>: set-layer(vf-z-index--pseudo-element-fix);
   }
 
   <span class="hljs-selector-class">.vf-navigation__list</span> {
     <span class="hljs-attribute">margin-left</span>: auto;
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">5px</span>; <span class="hljs-comment">// magic number</span>
-    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
+    <span class="hljs-attribute">z-index</span>: set-layer(vf-z-index--pseudo-element-fix);
   }
 
   <span class="hljs-selector-class">.vf-navigation__item</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-pseudo">:first-child</span>) {
@@ -832,7 +832,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-navigation/vf-navigation--additional.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.2 KB
+          Size: 1.3 KB
         </li>
       </ul>
     </section>
@@ -1082,7 +1082,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">height</span>: <span class="hljs-number">260px</span>;
     <span class="hljs-attribute">position</span>: absolute;
     <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-    <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">1</span>;
+    <span class="hljs-attribute">z-index</span>: set-layer(vf-z-index--negative);
   }
 }
 
@@ -1096,7 +1096,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     <span class="hljs-attribute">height</span>: <span class="hljs-number">480px</span>;
     <span class="hljs-attribute">position</span>: absolute;
     <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-    <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">1</span>;
+    <span class="hljs-attribute">z-index</span>: set-layer(vf-z-index--negative);
   }
 }
 </code>
@@ -1114,7 +1114,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-navigation/vf-navigation--main.scss
         </li>
         <li class="vf-list__item">
-          Size: 4.1 KB
+          Size: 4.2 KB
         </li>
       </ul>
     </section>
@@ -1265,6 +1265,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
       
 
         
@@ -1746,6 +1752,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
       
+
+        
+        
+
+        
+      
   </section>
 </section>
 <hr class="vf-divider">
@@ -1981,6 +1993,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-explainer.html">Explainer</a>
         </p>
@@ -2174,6 +2192,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-no-js.html">No JS</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -2531,6 +2555,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-embed.html">vf-embed</a>
+        </p>
+        
+      
+
+        
+        
+
+        
       
 
         
@@ -2773,6 +2807,16 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-section-header.html">Section Header</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-social-links.html">Social icons</a>
         </p>
         
       
@@ -3135,6 +3179,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -3276,6 +3326,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-news-container.html">News Container</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -3653,6 +3709,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -3676,6 +3738,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -4143,6 +4211,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-font-plex-mono.html">Plex Mono Font</a>
         </p>
@@ -4326,6 +4400,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-config.html">Sass config</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -4673,6 +4753,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4696,6 +4782,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5171,6 +5263,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5194,6 +5292,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5665,6 +5769,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5688,6 +5798,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -6155,6 +6271,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -6178,6 +6300,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -6641,6 +6769,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -6664,6 +6798,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -7131,6 +7271,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -7292,6 +7438,12 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-utilities.html">Sass utilities</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 

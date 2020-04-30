@@ -15,6 +15,19 @@ var emblBreadcrumbRelated = document.createElement("ul");
 var primaryBreadcrumb;
 
 /**
+ * Look up a breadcrumb by its uuid and return the entry
+ * @example formatBreadcrumb(uuid)
+ * @param {string} [uuid]  - the uuid of a term
+ */
+function emblBreadcumbLookupByUuid(uuid) {
+  // console.log('emblBreadcumbLookupByUuid',uuid);
+  if (emblTaxonomy.terms[uuid]) {
+    // console.log('emblBreadcumbLookupByUuid',emblTaxonomy.terms[uuid]);
+    return emblTaxonomy.terms[uuid];
+  }
+}
+
+/**
  * Take any appropriate actions depending on present metaTags
  * @example emblBreadcrumbsLookup()
  * @param {object} [metaProperties] - if you do not have meta tags on the page,
@@ -47,7 +60,7 @@ function emblBreadcrumbsLookup(metaProperties) {
     if (majorFacets[i] != metaProperties.active) {
       emblBreadcrumbAppend(emblBreadcrumbTarget,metaProperties[majorFacets[i]],majorFacets[i],'related');
     }
-  }  
+  }
 
   // make a 'related' label
   var relatedLabel = document.createElement("span");
@@ -206,7 +219,7 @@ function emblBreadcrumbRemoveDiacritics(str) {
 
   // remove all commas, apostrophes, etc
   // @todo, this should be done by an optional paramater
-  str = str.replace(/[^a-zA-Z0-9 ]/, ""); 
+  str = str.replace(/[^a-zA-Z0-9 ]/, "");
 
   return str;
 }
@@ -228,14 +241,13 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
     // if a term has not been passed, attempt to use the primary term's parent information
     // @todo: add a flag to explicitly "dontLookup" or "doLookup"
-    if (termName == "notSet") {
+    if (termName == 'notSet') {
+      termName = ''; // we'll either find a positive termObject or not show anything
+      // console.log('here',primaryBreadcrumb.parents)
       if (primaryBreadcrumb.parents[facet]) {
         termName = primaryBreadcrumb.parents[facet];
-      } else {
-        // No matches? Then don't show anything.
-        termName = '';
       }
-    } 
+    }
 
     // if using a `string/NameOfThing` value, not accordingly
     if (termName.indexOf('string/') >= 0) {
@@ -244,9 +256,14 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     }
 
     // scan through all terms and find a match, if any
-    function scanTaxonomyForTerm(termName) {
+    function emblBreadcumbLookup(termName) {
+      // @todo: if a UUID meta property is set, use that
 
-      // @todo: prefer UUID matches first
+      // if it's UUID match we use that
+      termObject = emblBreadcumbLookupByUuid(termName);
+      if (typeof(termObject) != 'undefined' ){
+        return; //exit
+      }
 
       // We prefer profiles
       Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
@@ -257,19 +274,19 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
             return; //exit
           }
         }
-      }); 
+      });
 
       // If no profile found, match other types of taxonomy entries
       if (typeof termObject === 'undefined') {
         Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
           let term = emblTaxonomy.terms[termId];
-          if (term.type != 'profile') { 
+          if (term.type != 'profile') {
             if (term.name === termName) {
               termObject = term;
               return; //exit
             }
           }
-        }); 
+        });
       }
 
       // If there's still no match, see if we can find a matching display name
@@ -285,32 +302,32 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
             return; //exit
           }
         }
-      }); 
+      });
 
       // If no profile found, match other types of taxonomy entries
       if (typeof termObject === 'undefined') {
         Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
           let term = emblTaxonomy.terms[termId];
-          if (term.type != 'profile') { 
+          if (term.type != 'profile') {
             if (term.name_display === termName) {
               termObject = term;
               return; //exit
             }
           }
-        }); 
+        });
       }
     }
 
-    // don't scan for junk matches 
+    // don't scan for junk matches
     if (termName != 'notSet' && termName != '' && termName != 'none') {
-      scanTaxonomyForTerm(termName);
+      emblBreadcumbLookup(termName);
     }
 
     // Validation and protection
     // we never want to return undefined
     if (termObject == undefined || termObject == null) {
       // console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will formulate a URL.');
-      
+
       termObject = {};
 
       if (facet == 'who') {
@@ -331,7 +348,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
         // prepare a search facet if available
         urlFacet = '&taxonomyFacet='+termObject.primary;
       }
-      termObject.url = 'https://www.embl.org/search/#stq='+termObject.name+urlFacet+'&origin=breadcrumbTaxonomy'; 
+      termObject.url = 'https://www.embl.org/search/#stq='+termObject.name+urlFacet+'&origin=breadcrumbTaxonomy';
     }
 
     return termObject;

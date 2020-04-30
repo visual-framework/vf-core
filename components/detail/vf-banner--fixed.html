@@ -304,7 +304,7 @@ class="vf-logo">
     <span class="hljs-attr">data-vf-js-banner-auto-accept</span>=<span class="hljs-string">"false"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content | vf-grid"</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text vf-banner__text--lg"</span>&gt;</span>
-            This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>Privacy Notice<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> and <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-link"</span>
+            This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>Privacy Notice<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> and <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__link"</span>
                 <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>Terms Of Use<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.
         <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -415,6 +415,11 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.6</span>
+<span class="hljs-bullet">
+* </span>Adds underline on links using <span class="hljs-code">`.vf-banner__link`</span>
+<span class="hljs-bullet">* </span>Resolves IE11 bug assigning classes
+
 <span class="hljs-section">## 1.0.5</span>
 <span class="hljs-bullet">
 * </span>Add alert <span class="hljs-code">`--alert`</span> and <span class="hljs-code">`--warning`</span> banners
@@ -426,7 +431,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 * </span>Makes use of <span class="hljs-code">`vf-banner__text`</span>
 <span class="hljs-bullet">* </span>Use of <span class="hljs-code">`vf-text`</span> is deprecated
 
-<span class="hljs-section">## 1.0.2 </span>
+<span class="hljs-section">## 1.0.2</span>
 <span class="hljs-bullet">
 * </span>Links in text areas of banners regain an underline.
 
@@ -455,7 +460,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
           Filesystem path: components/vf-banner/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 707 Bytes
+          Size: 806 Bytes
         </li>
       </ul>
     </section>
@@ -511,7 +516,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">{
-  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.5"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.6"</span>,
   <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/vf-banner"</span>,
   <span class="hljs-attr">"description"</span>: <span class="hljs-string">"vf-banner component"</span>,
   <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"https://visual-framework.github.io/vf-core/"</span>,
@@ -628,7 +633,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
  * Confirm a banner, initiate cookie logging
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">vfBannerConfirm</span>(<span class="hljs-params">banner,vfBannerCookieNameAndVersion</span>) </span>{
-  banner.classList += <span class="hljs-string">" vf-u-display-none"</span>;
+  banner.classList.add(<span class="hljs-string">'vf-u-display-none'</span>);
   <span class="hljs-keyword">if</span> (vfBannerCookieNameAndVersion !== <span class="hljs-string">'null'</span>) {
     vfBannerSetCookie(vfBannerCookieNameAndVersion,<span class="hljs-literal">true</span>);
   }
@@ -759,7 +764,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         <span class="hljs-keyword">var</span> newButton = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'button'</span>);
         newButton.innerHTML = button;
         newButton = newButton.firstChild;
-        newButton.classList = <span class="hljs-string">'vf-button vf-button--primary'</span>;
+        newButton.classList.add(<span class="hljs-string">'vf-button'</span>,<span class="hljs-string">'vf-button--primary'</span>);
         generatedBannerHtml += newButton.outerHTML;
       }
     });
@@ -800,7 +805,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
     <span class="hljs-comment">// if banner has been previously accepted</span>
     <span class="hljs-keyword">if</span> (vfBannerGetCookie(vfBannerCookieNameAndVersion) === <span class="hljs-string">'true'</span>) {
       <span class="hljs-comment">// banner has been accepted, close</span>
-      targetBanner.classList += <span class="hljs-string">" vf-u-display-none"</span>;
+      targetBanner.classList.add(<span class="hljs-string">'vf-u-display-none'</span>);
       <span class="hljs-comment">// exit, nothng more to do</span>
       <span class="hljs-keyword">return</span>;
     }
@@ -885,7 +890,8 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 }
 
 <span class="hljs-comment">// all vf-text links should be underlined in banners</span>
-<span class="hljs-selector-class">.vf-banner</span> <span class="hljs-selector-attr">[class*='vf-text']</span> <span class="hljs-selector-class">.vf-link</span> {
+<span class="hljs-selector-class">.vf-banner__text</span> <span class="hljs-selector-class">.vf-banner__link</span>,
+<span class="hljs-selector-class">.vf-banner</span> <span class="hljs-selector-attr">[class*='vf-text']</span> <span class="hljs-selector-class">.vf-link</span> { <span class="hljs-comment">// as of 1.0.4 use of vf-text is not recommended and is subject to future removal</span>
   <span class="hljs-attribute">text-decoration</span>: underline;
 }
 
@@ -940,6 +946,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
     <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64em</span>;
 
+    &amp; <span class="hljs-selector-class">.vf-banner__link</span>,
     &amp; <span class="hljs-selector-class">.vf-link</span> {
       <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-banner-color--link</span>;
     }
@@ -983,7 +990,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
           Filesystem path: components/vf-banner/vf-banner.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.3 KB
+          Size: 2.4 KB
         </li>
       </ul>
     </section>
@@ -1064,6 +1071,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
       
 
         
@@ -1545,6 +1558,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 
         
       
+
+        
+        
+
+        
+      
   </section>
 </section>
 <hr class="vf-divider">
@@ -1780,6 +1799,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-explainer.html">Explainer</a>
         </p>
@@ -1973,6 +1998,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-no-js.html">No JS</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -2330,6 +2361,16 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         
 
         
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-embed.html">vf-embed</a>
+        </p>
+        
+      
+
+        
+        
+
+        
       
 
         
@@ -2572,6 +2613,16 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-section-header.html">Section Header</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-social-links.html">Social icons</a>
         </p>
         
       
@@ -2934,6 +2985,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -3075,6 +3132,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-news-container.html">News Container</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -3452,6 +3515,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -3475,6 +3544,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -3942,6 +4017,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-font-plex-mono.html">Plex Mono Font</a>
         </p>
@@ -4125,6 +4206,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-config.html">Sass config</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -4472,6 +4559,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4495,6 +4588,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -4970,6 +5069,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4993,6 +5098,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5464,6 +5575,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5487,6 +5604,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5954,6 +6077,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5977,6 +6106,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -6440,6 +6575,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -6463,6 +6604,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -6930,6 +7077,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -7091,6 +7244,12 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-utilities.html">Sass utilities</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 

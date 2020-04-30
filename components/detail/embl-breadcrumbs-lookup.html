@@ -103,6 +103,37 @@ class="vf-logo">
     
     
     
+        <div class="vf-tabs">
+          <ul class="vf-tabs__list">
+            <li class="vf-tabs__item">
+              This component has variants:
+            </li>
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="embl-breadcrumbs-lookup--default.html">
+                    Default
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="embl-breadcrumbs-lookup--example.html">
+                    Example
+                  </a>
+                 
+               
+
+            
+          </ul>
+
+      </div>
+
+    
 
 
 
@@ -178,10 +209,45 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs embl-breadcrumbs-lookup"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Breadcrumb"</span> <span class="hljs-attr">data-embl-js-breadcrumbs-lookup</span>&gt;</span>
+  
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Default --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs embl-breadcrumbs-lookup"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Breadcrumb"</span> <span class="hljs-attr">data-embl-js-breadcrumbs-lookup</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list vf-list--inline | vf-breadcrumbs__list | embl-breadcrumbs-lookup--ghosting"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 </code></pre>
+  
+<pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Example --&gt;</span>
+<span class="hljs-comment">&lt;!-- Content descriptors --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:who"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- the people, groups and teams involved --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:where"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"EMBL Heidelberg"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- at which EMBL sites the content applies --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:what"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Cuylen Group"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- the activities covered --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:active"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"what"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- which of the who/what/where is active --&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Content role --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:utility"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-8"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- if content is task and work based or if is meant to inspire --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:reach"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-5"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- if content is externally (public) or internally focused (those that work at EMBL) --&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Page infromation --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:maintainer"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- the contact person or group responsible for the page --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:last-review"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"NaN"</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- the last time the page was reviewed or updated --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:review-cycle"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- how long in days before the page should be checked --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:expiry"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- if there is a fixed point in time when the page is no longer relevant --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-breadcrumbs embl-breadcrumbs-lookup"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Breadcrumb"</span> <span class="hljs-attr">data-embl-js-breadcrumbs-lookup</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list vf-list--inline | vf-breadcrumbs__list | embl-breadcrumbs-lookup--ghosting"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+</code></pre>
+  
   
 
 
@@ -242,6 +308,11 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.0-rc.1</span>
+<span class="hljs-bullet">
+- </span>embl-breadcrumbs-lookup inference uses wrong label
+<span class="hljs-bullet">  - </span>https://github.com/visual-framework/vf-core/pull/867
+
 <span class="hljs-section">## 1.0.0-beta.5</span>
 <span class="hljs-bullet">
 - </span>Njk template was loading demo <span class="hljs-code">`embl-content-meta-properties`</span> that were only needed for an example
@@ -255,7 +326,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 <span class="hljs-bullet">- </span>Cleaner URL generation
 <span class="hljs-bullet">- </span>Matches a terms internal names or display names as a last resort
 
-<span class="hljs-section">## 1.0.0-beta.2 </span>
+<span class="hljs-section">## 1.0.0-beta.2</span>
 <span class="hljs-bullet">
 - </span>Prefers "EMBL.org profile" matches to taxonomy entries
 <span class="hljs-bullet">- </span>If no related breadcrumbs are found, the label will be hidden
@@ -286,7 +357,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           Filesystem path: components/embl-breadcrumbs-lookup/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 1.4 KB
+          Size: 1.5 KB
         </li>
       </ul>
     </section>
@@ -314,9 +385,22 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 <span class="hljs-keyword">var</span> primaryBreadcrumb;
 
 <span class="hljs-comment">/**
+ * Look up a breadcrumb by its uuid and return the entry
+ * @example formatBreadcrumb(uuid)
+ * @param {string} [uuid]  - the uuid of a term
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcumbLookupByUuid</span>(<span class="hljs-params">uuid</span>) </span>{
+  <span class="hljs-comment">// console.log('emblBreadcumbLookupByUuid',uuid);</span>
+  <span class="hljs-keyword">if</span> (emblTaxonomy.terms[uuid]) {
+    <span class="hljs-comment">// console.log('emblBreadcumbLookupByUuid',emblTaxonomy.terms[uuid]);</span>
+    <span class="hljs-keyword">return</span> emblTaxonomy.terms[uuid];
+  }
+}
+
+<span class="hljs-comment">/**
  * Take any appropriate actions depending on present metaTags
- * @example emblBreadcrumbsLookup()
- * @param {object} [metaProperties] - if you do not have meta tags on the page,
+ * <span class="hljs-doctag">@example </span>emblBreadcrumbsLookup()
+ * <span class="hljs-doctag">@param <span class="hljs-type">{object}</span> </span>[metaProperties] - if you do not have meta tags on the page,
  *                                    you can explicitly pass options
  */</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcrumbsLookup</span>(<span class="hljs-params">metaProperties</span>) </span>{
@@ -346,7 +430,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
     <span class="hljs-keyword">if</span> (majorFacets[i] != metaProperties.active) {
       emblBreadcrumbAppend(emblBreadcrumbTarget,metaProperties[majorFacets[i]],majorFacets[i],<span class="hljs-string">'related'</span>);
     }
-  }  
+  }
 
   <span class="hljs-comment">// make a 'related' label</span>
   <span class="hljs-keyword">var</span> relatedLabel = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"span"</span>);
@@ -505,7 +589,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
   <span class="hljs-comment">// remove all commas, apostrophes, etc</span>
   <span class="hljs-comment">// @todo, this should be done by an optional paramater</span>
-  str = str.replace(<span class="hljs-regexp">/[^a-zA-Z0-9 ]/</span>, <span class="hljs-string">""</span>); 
+  str = str.replace(<span class="hljs-regexp">/[^a-zA-Z0-9 ]/</span>, <span class="hljs-string">""</span>);
 
   <span class="hljs-keyword">return</span> str;
 }
@@ -527,14 +611,13 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
     <span class="hljs-comment">// if a term has not been passed, attempt to use the primary term's parent information</span>
     <span class="hljs-comment">// @todo: add a flag to explicitly "dontLookup" or "doLookup"</span>
-    <span class="hljs-keyword">if</span> (termName == <span class="hljs-string">"notSet"</span>) {
+    <span class="hljs-keyword">if</span> (termName == <span class="hljs-string">'notSet'</span>) {
+      termName = <span class="hljs-string">''</span>; <span class="hljs-comment">// we'll either find a positive termObject or not show anything</span>
+      <span class="hljs-comment">// console.log('here',primaryBreadcrumb.parents)</span>
       <span class="hljs-keyword">if</span> (primaryBreadcrumb.parents[facet]) {
         termName = primaryBreadcrumb.parents[facet];
-      } <span class="hljs-keyword">else</span> {
-        <span class="hljs-comment">// No matches? Then don't show anything.</span>
-        termName = <span class="hljs-string">''</span>;
       }
-    } 
+    }
 
     <span class="hljs-comment">// if using a `string/NameOfThing` value, not accordingly</span>
     <span class="hljs-keyword">if</span> (termName.indexOf(<span class="hljs-string">'string/'</span>) &gt;= <span class="hljs-number">0</span>) {
@@ -543,9 +626,14 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
     }
 
     <span class="hljs-comment">// scan through all terms and find a match, if any</span>
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scanTaxonomyForTerm</span>(<span class="hljs-params">termName</span>) </span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">emblBreadcumbLookup</span>(<span class="hljs-params">termName</span>) </span>{
+      <span class="hljs-comment">// @todo: if a UUID meta property is set, use that</span>
 
-      <span class="hljs-comment">// @todo: prefer UUID matches first</span>
+      <span class="hljs-comment">// if it's UUID match we use that</span>
+      termObject = emblBreadcumbLookupByUuid(termName);
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span>(termObject) != <span class="hljs-string">'undefined'</span> ){
+        <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
+      }
 
       <span class="hljs-comment">// We prefer profiles</span>
       <span class="hljs-built_in">Array</span>.prototype.forEach.call(<span class="hljs-built_in">Object</span>.keys(emblTaxonomy.terms), (termId) =&gt; {
@@ -556,19 +644,19 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
             <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
           }
         }
-      }); 
+      });
 
       <span class="hljs-comment">// If no profile found, match other types of taxonomy entries</span>
       <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> termObject === <span class="hljs-string">'undefined'</span>) {
         <span class="hljs-built_in">Array</span>.prototype.forEach.call(<span class="hljs-built_in">Object</span>.keys(emblTaxonomy.terms), (termId) =&gt; {
           <span class="hljs-keyword">let</span> term = emblTaxonomy.terms[termId];
-          <span class="hljs-keyword">if</span> (term.type != <span class="hljs-string">'profile'</span>) { 
+          <span class="hljs-keyword">if</span> (term.type != <span class="hljs-string">'profile'</span>) {
             <span class="hljs-keyword">if</span> (term.name === termName) {
               termObject = term;
               <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
             }
           }
-        }); 
+        });
       }
 
       <span class="hljs-comment">// If there's still no match, see if we can find a matching display name</span>
@@ -584,32 +672,32 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
             <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
           }
         }
-      }); 
+      });
 
       <span class="hljs-comment">// If no profile found, match other types of taxonomy entries</span>
       <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> termObject === <span class="hljs-string">'undefined'</span>) {
         <span class="hljs-built_in">Array</span>.prototype.forEach.call(<span class="hljs-built_in">Object</span>.keys(emblTaxonomy.terms), (termId) =&gt; {
           <span class="hljs-keyword">let</span> term = emblTaxonomy.terms[termId];
-          <span class="hljs-keyword">if</span> (term.type != <span class="hljs-string">'profile'</span>) { 
+          <span class="hljs-keyword">if</span> (term.type != <span class="hljs-string">'profile'</span>) {
             <span class="hljs-keyword">if</span> (term.name_display === termName) {
               termObject = term;
               <span class="hljs-keyword">return</span>; <span class="hljs-comment">//exit</span>
             }
           }
-        }); 
+        });
       }
     }
 
-    <span class="hljs-comment">// don't scan for junk matches </span>
+    <span class="hljs-comment">// don't scan for junk matches</span>
     <span class="hljs-keyword">if</span> (termName != <span class="hljs-string">'notSet'</span> &amp;&amp; termName != <span class="hljs-string">''</span> &amp;&amp; termName != <span class="hljs-string">'none'</span>) {
-      scanTaxonomyForTerm(termName);
+      emblBreadcumbLookup(termName);
     }
 
     <span class="hljs-comment">// Validation and protection</span>
     <span class="hljs-comment">// we never want to return undefined</span>
     <span class="hljs-keyword">if</span> (termObject == <span class="hljs-literal">undefined</span> || termObject == <span class="hljs-literal">null</span>) {
       <span class="hljs-comment">// console.warn('embl-js-breadcumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will formulate a URL.');</span>
-      
+
       termObject = {};
 
       <span class="hljs-keyword">if</span> (facet == <span class="hljs-string">'who'</span>) {
@@ -630,7 +718,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         <span class="hljs-comment">// prepare a search facet if available</span>
         urlFacet = <span class="hljs-string">'&amp;taxonomyFacet='</span>+termObject.primary;
       }
-      termObject.url = <span class="hljs-string">'https://www.embl.org/search/#stq='</span>+termObject.name+urlFacet+<span class="hljs-string">'&amp;origin=breadcrumbTaxonomy'</span>; 
+      termObject.url = <span class="hljs-string">'https://www.embl.org/search/#stq='</span>+termObject.name+urlFacet+<span class="hljs-string">'&amp;origin=breadcrumbTaxonomy'</span>;
     }
 
     <span class="hljs-keyword">return</span> termObject;
@@ -826,7 +914,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           Filesystem path: components/embl-breadcrumbs-lookup/embl-breadcrumbs-lookup.js
         </li>
         <li class="vf-list__item">
-          Size: 23.7 KB
+          Size: 24.3 KB
         </li>
       </ul>
     </section>
@@ -937,7 +1025,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-JSON FileBrowser-code vf-code-example">{
-  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0-beta.5"</span>,
+  <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.0.0-rc.0"</span>,
   <span class="hljs-attr">"name"</span>: <span class="hljs-string">"@visual-framework/embl-breadcrumbs-lookup"</span>,
   <span class="hljs-attr">"description"</span>: <span class="hljs-string">"embl-breadcrumbs-lookup component"</span>,
   <span class="hljs-attr">"homepage"</span>: <span class="hljs-string">"http://www.embl.org/guidelines/visual-framework/dev-docs/"</span>,
@@ -974,7 +1062,7 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           Filesystem path: components/embl-breadcrumbs-lookup/package.json
         </li>
         <li class="vf-list__item">
-          Size: 746 Bytes
+          Size: 744 Bytes
         </li>
       </ul>
     </section>
@@ -1015,6 +1103,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
     </p>
   </header>
   <section data-description="component list" class="vf-grid vf-grid__col-4" style="grid-column: 1 / -1;">
+      
+
+        
+        
+
+        
       
 
         
@@ -1496,6 +1590,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
         
       
+
+        
+        
+
+        
+      
   </section>
 </section>
 <hr class="vf-divider">
@@ -1731,6 +1831,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-explainer.html">Explainer</a>
         </p>
@@ -1924,6 +2030,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-no-js.html">No JS</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -2281,6 +2393,16 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         
 
         
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-embed.html">vf-embed</a>
+        </p>
+        
+      
+
+        
+        
+
+        
       
 
         
@@ -2523,6 +2645,16 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-section-header.html">Section Header</a>
+        </p>
+        
+      
+
+        
+        
+
+        
+        <p class="vf-text">
+          <a class="vf-link--secondary" href="vf-social-links.html">Social icons</a>
         </p>
         
       
@@ -2885,6 +3017,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -3026,6 +3164,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-news-container.html">News Container</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -3403,6 +3547,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -3426,6 +3576,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -3893,6 +4049,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         
 
         
+      
+
+        
+        
+
+        
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-font-plex-mono.html">Plex Mono Font</a>
         </p>
@@ -4076,6 +4238,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-config.html">Sass config</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
@@ -4423,6 +4591,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4446,6 +4620,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -4921,6 +5101,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -4944,6 +5130,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5415,6 +5607,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5438,6 +5636,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -5905,6 +6109,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -5928,6 +6138,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -6391,6 +6607,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -6414,6 +6636,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
           
             
           
+        
+
+        
+      
+
+        
         
 
         
@@ -6881,6 +7109,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
 
         
         
+
+        
+      
+
+        
+        
           
             
           
@@ -7042,6 +7276,12 @@ Returned are appropriate primary and secondary breadcrumbs.</p>
         <p class="vf-text">
           <a class="vf-link--secondary" href="vf-sass-utilities.html">Sass utilities</a>
         </p>
+        
+      
+
+        
+        
+
         
       
 
