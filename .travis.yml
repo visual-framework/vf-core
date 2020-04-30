@@ -21,20 +21,24 @@ jobs:
         - PERCY_TARGET_BRANCH=develop
       script:
         - npx percy snapshot ./build/components/preview/ --base-url "/visual-framework/"
-      branches:
-        except:
-        - develop
-    - stage: deploy
-      provider: pages
-      skip-cleanup: true
-      github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-      wallace-token: $WALLACE_TOKEN
-      keep-history: true
-      target-branch: gh-pages
-      local-dir: build
       cache:
         paths:
           - node_modules
-      on:
-        branch:
-          - develop
+      branches:
+        except:
+        - develop
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  wallace-token: $WALLACE_TOKEN
+  keep-history: true
+  target-branch: gh-pages
+  local-dir: build
+  cache:
+    paths:
+      - node_modules
+  on:
+    branch:
+      - develop
