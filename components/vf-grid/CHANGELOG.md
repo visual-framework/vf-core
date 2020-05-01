@@ -1,11 +1,11 @@
 # Change Log
 
-## 1.0.4 (2020-05-01)
+## 1.0.5 (2020-05-01)
 
 * fixes a remaing bug with IE11 where we relied on the calc function
   * https://github.com/visual-framework/vf-core/pull/900
 
-## 1.0.3 (2020-04-22)
+## 1.0.4 (2020-04-22)
 
 * fixes a bug with IE11 where we relied on the calc function inside the flex (which IE11 does not support) in the flexbox fallback grid defined columned classes (.vf-grid__col-2 > * {...) etc).
   * https://github.com/visual-framework/vf-core/pull/882
