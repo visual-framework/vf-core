@@ -16,10 +16,10 @@
 .vf-figure__image {
   height: auto;
   max-width: 100%;
-  width: 100%;
+  width: var(--vf-figure__width, 100%);
 }
 
-.vf-figure--float {
+.vf-figure--align {
   display: table;
 
   .vf-figure__image {
@@ -33,10 +33,14 @@
   }
 }
 
-.vf-figure--float-inline-start {
+.vf-figure--align-inline-start {
   float: left;
 }
 
-.vf-figure--float-inline-end {
+.vf-figure--align-inline-end {
   float: right;
+}
+
+.vf-figure--align-centered {
+  margin: 0 auto;
 }
