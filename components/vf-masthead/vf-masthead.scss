@@ -11,9 +11,9 @@
 
 .vf-masthead {
   background-color: set-ui-color(vf-ui-color--black);
-  background-color: var(--local-theme-bg-color, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
+  background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
   color: set-ui-color(vf-ui-color--white);
-  color: var(--local-theme-fg-color, var(--global-theme-fg-color, set-ui-color(vf-ui-color--white)));
+  color: var(--vf-masthead__color--foreround-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--white)));
   padding-bottom: 36px;
   padding-top: 24px;
 }
@@ -21,18 +21,18 @@
 // Variants
 
 .vf-masthead-theme--primary {
-  --local-theme-bg-color: #{set-color(vf-color--blue)};
-  --local-theme-fg-color: #{set-ui-color(vf-ui-color--white)};
+  --vf-masthead__color--background-default: #{set-color(vf-color--blue)};
+  --vf-masthead__color--foreround-default: #{set-ui-color(vf-ui-color--white)};
 }
 
 .vf-masthead-theme--secondary {
-  --local-theme-bg-color: #{set-color(vf-color--green)};
-  --local-theme-fg-color: #{set-ui-color(vf-ui-color--white)};
+  --vf-masthead__color--background-default: #{set-color(vf-color--green)};
+  --vf-masthead__color--foreround-default: #{set-ui-color(vf-ui-color--white)};
 }
 
 .vf-masthead-theme--tertiary {
-  --local-theme-bg-color: #{set-color(vf-color--grey--dark)};
-  --local-theme-fg-color: #{set-ui-color(vf-ui-color--white)};
+  --vf-masthead__color--background-default: #{set-color(vf-color--grey--dark)};
+  --vf-masthead__color--foreround-default: #{set-ui-color(vf-ui-color--white)};
 }
 
 .vf-masthead--has-image {
@@ -99,15 +99,15 @@
 
   .vf-masthead__title {
     align-self: flex-end;
-    background-color: var(--local-theme-bg-color, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
-    color: var(--local-theme-fg-color, var(--global-theme-fg-color, set-ui-color(vf-ui-color--black)));
+    background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
+    color: var(--vf-masthead__color--foreround-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--black)));
     display: inline-flex;
     padding-right: 16px;
     padding-top: 16px;
     position: relative;
 
     &::before {
-      background-color: var(--local-theme-bg-color, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
+      background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
       content: '';
       display: inline-flex;
       flex-direction: column-reverse;
