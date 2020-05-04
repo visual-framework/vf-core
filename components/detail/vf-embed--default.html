@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>vf-embed: 16x9 component | Visual Framework 2.0</title>
+  <title>Embed: 16x9 component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="shortcut icon" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon.ico">
@@ -82,12 +82,12 @@ class="vf-logo">
   
 
   <h1 class="vf-page-header__heading | vf-text vf-text-heading-2 vf-text--has-tag">
-  vf-embed: 16x9
+  Embed: 16x9
   
 
 
 
-<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #DC0A28; border-color: #DC0A28;">alpha</span>
+<span class="vf-badge" style="margin-right: 8px; position: relative; top: 1px; background-color: #19993B; border-color: #19993B;">live</span>
 
 
 
@@ -130,8 +130,28 @@ class="vf-logo">
 
               
                 
-                  <a class="vf-tabs__link" href="vf-embed--16x9-max-width.html">
-                    16 X 9 Max Width
+                  <a class="vf-tabs__link" href="vf-embed--16x9-and-max-width.html">
+                    16 X 9 And Max Width
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-embed--custom.html">
+                    Custom
+                  </a>
+                 
+               
+
+            
+
+              
+                
+                  <a class="vf-tabs__link" href="vf-embed--custom-and-max-width.html">
+                    Custom And Max Width
                   </a>
                  
                
@@ -178,16 +198,40 @@ class="vf-logo">
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-embed"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-embed.svg" alt="npm version"></a></p>
 <h2 id="usage">Usage</h2>
 <p>The <code>vf-embed</code> component can currently give two different aspect ratios by adding a class variant. You can also define a max-width for the embed if needed.</p>
-<p>Aspect Ratios available are 16x9 and 4x3.</p>
-<h3 id="class-variants">Class Variants</h3>
+<h3 id="nunjucks-props">Nunjucks Props</h3>
+<p>To avoid any mistyping, forgetfulness, and to aid in future proofing the component. We are using ‘pseudo props’ in nunjucks to determine which CSS selectors to use. All props do nothing unless included in your data for the component.</p>
+<h4 id="props-available">Props available</h4>
+<ul>
+<li><code>vf_embed_max_width</code>: required a number and CSS unit to give <code>vf-embed</code> as maximum width. This number is applied to the CSS custom property <code>--vf-embed-max-width</code>.</li>
+<li><code>vf_embed_variant_16x9</code>: if set to true (<code>vf_embed_variant_16x9: true</code>) it will apply the class selector <code>vf-embed--16x9</code> to <code>vf-embed</code>.</li>
+<li><code>vf_embed_variant_4x3</code>: if set to true (<code>vf_embed_variant_4x3: true</code>) it will apply the class selector <code>vf-embed--4x3</code> to <code>vf-embed</code>.</li>
+<li><code>vf_embed_variant_custom</code>: if set to true (‘vf_embed_variant_custom: true’) it will apply the class selector <code>vf-embed--custom-ratio</code> to <code>vf-embed</code>. When this is applied the two CSS custom properties <code>--vf-embed-custom-ratio-x</code> and <code>--vf-embed-custom-ratio-y</code> can be used to define the X and Y ratio. </li>
+</ul>
+<h3 id="aspect-ratios">Aspect Ratios</h3>
+<p>Aspect Ratios available are 16x9 and 4x3 or one defined using CSS custom properties.</p>
+<h4 id="class-variants">Class Variants</h4>
 <ul>
 <li><code>vf-embed--16x9</code> for embedable content that is has an aspect ratio of 16x9.</li>
 <li><code>vf-embed--4x3</code> for embedable content that is has an aspect ratio of 4x3.</li>
+<li><code>vf-embed--custom-ratio</code> for embedable content that requires a unique aspect ratio.</li>
 </ul>
-<h3 id="max-width">Max Width</h3>
+<h4 id="custom-ratios">Custom Ratios</h4>
+<p>If you use <code>vf-embed--custom-ratio</code> you will need to set the X and Y ratio using CSS Custom Properties.</p>
+<p>The CSS Custom Properties available when using <code>vf-embed--custom-ratio</code> are:</p>
+<ul>
+<li><code>--vf-embed-custom-ratio-x</code> for the X value.</li>
+<li><code>--vf-embed-custom-ratio-y</code> for the Y value.</li>
+</ul>
+<p>For example. If you need an aspect ratio of 11x6 your HTML output could look like:</p>
+<pre><code>&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"vf-embed vf-embed--custom-ratio"</span> style=<span class="hljs-string">"--vf-embed-custom-ratio-x: 11; --vf-embed-custom-ratio-y: 6"</span>&gt;
+  <span class="xml"><span class="hljs-comment">&lt;!-- embedded content goes here --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre><h3 id="max-width">Max Width</h3>
 <p>You can also set a max width for the <code>vf-emded</code>. If you do this in the nunjucks file with the key of <code>maxWidth:</code> the nunjucks template will output an inline style onto the <code>vf-embed</code>. You can add this however fits best your product (in the <code>:root</code>, in a stylesheet, etc).</p>
-<p>If you do not set a <code>maxWidth</code> value then the component is set to a maximum width of <code>100%</code>.</p>
-<h2 id="install">Install</h2>
+<p>If you do not set a <code>--vf-embed-max-width</code> value then the component is set to a maximum width of <code>100%</code>.</p>
+<p>For example. If you need a <code>vf-embed</code> with the aspect ratio of 16x9 but with a maximum width of 400px your HTML out could look like:</p>
+<pre><code>&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"vf-embed vf-embed--16x9"</span> style=<span class="hljs-string">"--vf-embed-max-width: 400px"</span>&gt;
+  <span class="xml"><span class="hljs-comment">&lt;!-- embedded content goes here --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre><h2 id="install">Install</h2>
 <p>This repository is distributed with [npm][<a href="https://www.npmjs.com/%5D">https://www.npmjs.com/]</a>. After [installing npm][<a href="https://www.npmjs.com/get-npm%5D">https://www.npmjs.com/get-npm]</a> and <a href="https://classic.yarnpkg.com/en/docs/install">yarn</a>, you can install <code>vf-embed</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-embed</span></code></pre><h2 id="js">JS</h2>
 <p>If your component uses JS:</p>
@@ -232,9 +276,7 @@ vfcomponentName(); <span class="hljs-comment">// if needed, invoke it</span></co
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-embed vf-embed--16x9"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"560"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"315"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://www.youtube.com/embed/nGNvYjYQaaQ?rel=0"</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">allow</span>=<span class="hljs-string">"autoplay; encrypted-media"</span> <span class="hljs-attr">allowfullscreen</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-embed vf-embed--16x9"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">""</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://www.youtube.com/embed/nGNvYjYQaaQ?rel=0"</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">allow</span>=<span class="hljs-string">"autoplay; encrypted-media"</span> <span class="hljs-attr">allowfullscreen</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
   
 
@@ -302,6 +344,13 @@ vfcomponentName(); <span class="hljs-comment">// if needed, invoke it</span></co
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.0</span>
+<span class="hljs-bullet">
+- </span>component now allows for custom ratios.
+<span class="hljs-bullet">- </span>documentation is updated.
+<span class="hljs-bullet">- </span>defining variants is changed to use 'props' in nunjucks and yaml.
+<span class="hljs-bullet">- </span>adds demonstration variants for custom ratio, and custom ratio with a maximum width.
+
 <span class="hljs-section">## 1.0.0</span>
 <span class="hljs-bullet">
 - </span>inital commit of a new vf-embed component.
@@ -322,7 +371,7 @@ vfcomponentName(); <span class="hljs-comment">// if needed, invoke it</span></co
           Filesystem path: components/vf-embed/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 133 Bytes
+          Size: 369 Bytes
         </li>
       </ul>
     </section>
@@ -527,6 +576,10 @@ vfcomponentName(); <span class="hljs-comment">// if needed, invoke it</span></co
   &amp;--4x3 {
     <span class="hljs-attribute">padding-bottom</span>: calc(<span class="hljs-number">3</span> / <span class="hljs-number">4</span> * (<span class="hljs-number">100%</span> - (<span class="hljs-number">100%</span> - var(--vf-embed-max-width, <span class="hljs-number">100%</span>))));
   }
+
+  &amp;--custom-ratio {
+    <span class="hljs-attribute">padding-bottom</span>: calc( var(--vf-embed-custom-ratio-y) / var(--vf-embed-custom-ratio-x) * (<span class="hljs-number">100%</span> - (<span class="hljs-number">100%</span> - var(--vf-embed-max-width, <span class="hljs-number">100%</span>))))  
+  }
 }
 </code>
         </pre>
@@ -543,7 +596,7 @@ vfcomponentName(); <span class="hljs-comment">// if needed, invoke it</span></co
           Filesystem path: components/vf-embed/vf-embed.scss
         </li>
         <li class="vf-list__item">
-          Size: 687 Bytes
+          Size: 857 Bytes
         </li>
       </ul>
     </section>
@@ -1911,7 +1964,7 @@ vfcomponentName(); <span class="hljs-comment">// if needed, invoke it</span></co
 
         
         <p class="vf-text">
-          <a class="vf-link--secondary" href="vf-embed.html">vf-embed</a>
+          <a class="vf-link--secondary" href="vf-embed.html">Embed</a>
         </p>
         
       
