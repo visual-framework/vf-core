@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.1.0
+
+* Adds option to determine button theme using data attributes.
+* Allows for existing banners to still use the secondary theme.
+
 ## 1.0.6
 
 * Adds underline on links using `.vf-banner__link`

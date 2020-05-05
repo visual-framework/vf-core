@@ -170,7 +170,18 @@ function vfBannerInsert(banner,bannerId,scope) {
   // if there is a vfJsBannerButtonText and banner is blocking or dismissible,
   // add a button so user can close the banner
   if (banner.vfJsBannerButtonText && (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible')) {
-    generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    if (banner.vfJsBannerButtonTheme == 'primary') {
+      generatedBannerHtml += '<button class="vf-button vf-button--primary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    }
+    else if (banner.vfJsBannerButtonTheme == 'secondary') {
+      generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    }
+    else if (banner.vfJsBannerButtonTheme == 'tertiary') {
+      generatedBannerHtml += '<button class="vf-button vf-button--tertary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    }
+    else {
+      generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    }
   }
 
   generatedBannerHtml += '</div>';
