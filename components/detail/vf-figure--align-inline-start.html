@@ -6,7 +6,7 @@
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
 
-  <title>Visual Framework Figure: Float Inline End component | Visual Framework 2.0</title>
+  <title>Visual Framework Figure: Align Inline Start component | Visual Framework 2.0</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
   <link rel="shortcut icon" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon.ico">
@@ -77,12 +77,12 @@ class="vf-logo">
     
     
 
-<div class="Pen" data-behaviour="pen" id="pen-ed13758109888a10aebd02e75a72c2b4">
+<div class="Pen" data-behaviour="pen" id="pen-242c985d6fbdd5f480b4af825426ab29">
 
   
 
   <h1 class="vf-page-header__heading | vf-text vf-text-heading-2 vf-text--has-tag">
-  Visual Framework Figure: Float Inline End
+  Visual Framework Figure: Align Inline Start
   
 
 
@@ -121,9 +121,17 @@ class="vf-logo">
             
 
               
+                <a class="vf-tabs__link is-active" href="#is-active">
+                  Align Inline Start
+                </a>
+               
+
+            
+
+              
                 
-                  <a class="vf-tabs__link" href="vf-figure--float-inline-start.html">
-                    Float Inline Start
+                  <a class="vf-tabs__link" href="vf-figure--align-inline-end.html">
+                    Align Inline End
                   </a>
                  
                
@@ -131,9 +139,11 @@ class="vf-logo">
             
 
               
-                <a class="vf-tabs__link is-active" href="#is-active">
-                  Float Inline End
-                </a>
+                
+                  <a class="vf-tabs__link" href="vf-figure--align-centered.html">
+                    Align Centered
+                  </a>
+                 
                
 
             
@@ -148,13 +158,13 @@ class="vf-logo">
 
 
 
-  <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-ed13758109888a10aebd02e75a72c2b4">
+  <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-242c985d6fbdd5f480b4af825426ab29">
       <div class="Preview-wrapper" data-role="resizer-disabled">
         
          <iframe
             class="Preview-iframe"
             data-role="window"
-            src="../preview/vf-figure--float-inline-end.html"
+            src="../preview/vf-figure--align-inline-start.html"
             sandbox="allow-same-origin allow-scripts allow-forms"
 
             marginwidth="0" marginheight="0" frameborder="1" vspace="0" hspace="0" scrolling="yes"
@@ -163,8 +173,8 @@ class="vf-logo">
         </iframe>
             <p class="vf-figure__caption">
               Open the above preview in a new window:
-              <a href="../preview/vf-figure--float-inline-end.html"><span>With layout</span> Open</a>
-              <a href="../render/vf-figure--float-inline-end.html"><span>Component only</span> Open</a>
+              <a href="../preview/vf-figure--align-inline-start.html"><span>With layout</span> Open</a>
+              <a href="../render/vf-figure--align-inline-start.html"><span>Component only</span> Open</a>
             </p>
 
       </div>
@@ -176,7 +186,25 @@ class="vf-logo">
   <div class="component-library-notes | vf-content">
   <h1 id="figure-component">Figure Component</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-figure"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-figure.svg" alt="npm version"></a></p>
-<h2 id="about">About</h2>
+<h2 id="usage">Usage</h2>
+<p>The <code>vf-figure</code> componet defaults to give the image a maximum width of 100% so that it can be placed inside of a grid (like <code>vf-grid</code>) and fill the space of the grid item(s) that have been allocated by its parent.</p>
+<p>If you need to specify the width of the component you can use the CSS custom property <code>--vf-figure__width</code> which will override the width in the CSS.</p>
+<p>The <code>vf-figure</code> component also has some alignment class selectors available.</p>
+<h3 id="class-selectors">Class Selectors</h3>
+<ul>
+<li><code>vf-figure--align</code>: required to align the component depending on where it is needed. This class also changes the width of the image to <code>auto</code> but can still be overriden with <code>--vf-figure__width</code>. The class also changes the <code>display</code> to <code>display: table</code> so that we can confine the <code>figcaption</code> inside of the <code>figure</code> HTML element without any overflow.</li>
+<li><code>vf-figure--align-inline-start</code>: This class adds <code>float: left;</code>.</li>
+<li><code>vf-figure--align-inline-end</code>: This class adds <code>float: right;</code>.</li>
+<li><code>vf-figure--align-inline-centered</code>: This class adds <code>margin: 0 auto;</code>.</li>
+</ul>
+<h3 id="nunjucks-props">Nunjucks Props</h3>
+<p>To avoid any mistyping, forgetfulness, and to aid in future proofing the component. We are using ‘pseudo props’ in nunjucks to determine which CSS selectors to use. All props do nothing unless included in your data for the component.</p>
+<h4 id="props-available">Props available</h4>
+<ul>
+<li><code>vf_figure__align_inline_start</code>: if set to true (<code>vf_figure__align_inline_start: true</code>) it will apply the class selectors <code>vf-figure--align vf-figure--align-inline-start</code> to <code>vf-figure</code>.</li>
+<li><code>vf_figure__align_inline_end</code>: if set to true (<code>vf_figure__align_inline_end: true</code>) it will apply the class selectors <code>vf-figure--align vf-figure--align-inline-end</code> to <code>vf-figure</code>.</li>
+<li><code>vf_figure__align_inline_centered</code>: if set to true (<code>vf_figure__align_inline_centered: true</code>) it will apply the class selectors <code>vf-figure--align vf-figure--align-inline-centered</code> to <code>vf-figure</code>.</li>
+</ul>
 <h2 id="install">Install</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-figure</code> with this command.</p>
 <pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-figure</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
@@ -192,7 +220,7 @@ class="vf-logo">
   <h3 class="vf-text vf-text-heading--4">Component information</h3>
 <ul class="vf-list vf-list--unordered">
     <li class="vf-list__item">
-        Handle: @vf-figure--float-inline-end
+        Handle: @vf-figure--align-inline-start
     </li>
     
     <li class="vf-list__item">
@@ -208,9 +236,12 @@ class="vf-logo">
 <h3 class="vf-text vf-text-heading--4">Code example</h3>
 
   
-  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-figure | vf-figure--float vf-figure--float-inline-end"</span>&gt;</span>
+  <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-figure vf-figure--align vf-figure--align-inline-start"</span>&gt;</span>
+
     <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-figure__image"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../assets/vf-figure/assets/figure-example.png"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"hello alt text"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-figure__caption"</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quasi dolorem eos ratione voluptatum omnis, voluptates adipisci, soluta beatae quo, excepturi, quas id libero rem suscipit! Numquam repellendus consectetur, velit.<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-figure__caption"</span>&gt;</span>Version, 1982, Adenovirus with 217 dots<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+
 <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span>
 </code></pre>
   
@@ -267,6 +298,14 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.2.0</span>
+<span class="hljs-bullet">
+- </span>Changes structure of nunjuck to add the ability to make use of props.
+<span class="hljs-bullet">- </span>Changes class selector naming from <span class="hljs-code">`float`</span> to <span class="hljs-code">`align`</span>.
+<span class="hljs-bullet">- </span>Adds a <span class="hljs-code">`align-centered`</span> variant.
+<span class="hljs-bullet">- </span>Adds <span class="hljs-code">`--vf-figure__width`</span> as a CSS Custom Property that can be overriden.
+<span class="hljs-bullet">- </span>Adds some documentation
+
 <span class="hljs-section">## 1.1.0</span>
 <span class="hljs-bullet">
 * </span>Adds vf-figure--float (-inline-start and -inline-end) variants
@@ -289,7 +328,7 @@ class="vf-logo">
           Filesystem path: components/vf-figure/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 196 Bytes
+          Size: 473 Bytes
         </li>
       </ul>
     </section>
@@ -404,15 +443,15 @@ class="vf-logo">
 <span class="hljs-selector-class">.vf-figure__image</span> {
   <span class="hljs-attribute">height</span>: auto;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">width</span>: var(--vf-figure__width, <span class="hljs-number">100%</span>);
 }
 
-<span class="hljs-selector-class">.vf-figure--float</span> {
+<span class="hljs-selector-class">.vf-figure--align</span> {
   <span class="hljs-attribute">display</span>: table;
 
   <span class="hljs-selector-class">.vf-figure__image</span> {
     <span class="hljs-attribute">max-width</span>: unset;
-    <span class="hljs-attribute">width</span>: auto;
+    <span class="hljs-attribute">width</span>: var(--vf-figure__width, auto);
   }
 
   <span class="hljs-selector-class">.vf-figure__caption</span> {
@@ -421,12 +460,16 @@ class="vf-logo">
   }
 }
 
-<span class="hljs-selector-class">.vf-figure--float-inline-start</span> {
+<span class="hljs-selector-class">.vf-figure--align-inline-start</span> {
   <span class="hljs-attribute">float</span>: left;
 }
 
-<span class="hljs-selector-class">.vf-figure--float-inline-end</span> {
+<span class="hljs-selector-class">.vf-figure--align-inline-end</span> {
   <span class="hljs-attribute">float</span>: right;
+}
+
+<span class="hljs-selector-class">.vf-figure--align-centered</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
 }
 </code>
         </pre>
@@ -443,7 +486,7 @@ class="vf-logo">
           Filesystem path: components/vf-figure/vf-figure.scss
         </li>
         <li class="vf-list__item">
-          Size: 667 Bytes
+          Size: 767 Bytes
         </li>
       </ul>
     </section>

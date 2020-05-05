@@ -1116,29 +1116,33 @@ html:not(.vf-disable-deprecated) .vf-text-button--1 {
 .vf-figure__image {
   height: auto;
   max-width: 100%;
-  width: 100%;
+  width: var(--vf-figure__width, 100%);
 }
 
-.vf-figure--float {
+.vf-figure--align {
   display: table;
 }
 
-.vf-figure--float .vf-figure__image {
+.vf-figure--align .vf-figure__image {
   max-width: unset;
-  width: auto;
+  width: var(--vf-figure__width, auto);
 }
 
-.vf-figure--float .vf-figure__caption {
+.vf-figure--align .vf-figure__caption {
   caption-side: bottom;
   display: table-caption;
 }
 
-.vf-figure--float-inline-start {
+.vf-figure--align-inline-start {
   float: left;
 }
 
-.vf-figure--float-inline-end {
+.vf-figure--align-inline-end {
   float: right;
+}
+
+.vf-figure--align-centered {
+  margin: 0 auto;
 }
 
 /*!
