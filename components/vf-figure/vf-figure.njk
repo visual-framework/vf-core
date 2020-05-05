@@ -1,7 +1,19 @@
-<figure {# You're using an ID? Really?? That'll go here -#}
-{%- if id -%} id="{{-id-}}" {%- endif -%}
-class="vf-figure
-{%- if override_class %} | {{override_class}}{% endif -%}">
+<figure
+  {#- You're using an ID? Really?? That'll go here -#}
+  {%- if id -%} id="{{-id-}}" {%- endif %}
+
+  class="vf-figure
+  {%- if vf_figure__align_inline_start %} vf-figure--align vf-figure--align-inline-start{% endif -%}
+  {%- if vf_figure__align_inline_end %} vf-figure--align vf-figure--align-inline-end{% endif -%}
+  {%- if vf_figure__align_centered %} vf-figure--align vf-figure--align-centered{% endif -%}
+
+  {%- if override_class %} | {{override_class}}{% endif -%}"
+>
+
   <img class="vf-figure__image" src="{{imageUrl}}" alt="{{alttext}}">
-  <figcaption class="vf-figure__caption">{{- html | safe if html else text -}}</figcaption>
+
+  <figcaption class="vf-figure__caption">
+    {{- html | safe if html else text -}}
+  </figcaption>
+
 </figure>
