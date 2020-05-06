@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.1
+
+* Lerna Release bump
+
 ## 1.0.0
 
 * Removes --vf-masthead specifc colours
