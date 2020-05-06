@@ -7,7 +7,7 @@
 // Detect if JS is on and swap vf-no-js for vf-js on the html element
 (function(H){H.className=H.className.replace(/\bvf-no-js\b/,'vf-js')})(document.documentElement);
 </script>
-  <title>Masthead: With Title Block | Visual Framework 2.0</title>
+  <title>Masthead: With Background Image | Visual Framework 2.0</title>
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
@@ -26,12 +26,14 @@
 <body>
   <style>
     .vf-masthead {
-      --vf-masthead__bg-image: url();
+      --vf-masthead__bg-image: url(../../assets/vf-masthead/assets/group-bg_2d4155.png);
     }
 </style>
 <div
-  class="vf-masthead  vf-masthead--with-title-block
+  class="vf-masthead  vf-masthead--has-image
 "
+  style="background-image: var(--vf-masthead__bg-image)"
+  data-vf-js-masthead
 >
   <div class="vf-masthead__inner">
     <div class="vf-masthead__title">
