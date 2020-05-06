@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.2
+
+* replaces foreround with foreground 
+
 ## 1.0.1
 
 * Lerna Release bump
