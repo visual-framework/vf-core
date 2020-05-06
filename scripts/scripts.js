@@ -293,9 +293,9 @@ function vfMastheadSetStyle() {
         cBrightness = getCorrectTextColor(bannerBGC);
 
         if (cBrightness > threshold) {
-          el.style.setProperty('--vf-masthead__color--foreround-default', "#000000");
+          el.style.setProperty('--vf-masthead__color--foreground-default', "#000000");
         } else if (cBrightness < threshold) {
-          el.style.setProperty('--vf-masthead__color--foreround-default', "#FFFFFF");
+          el.style.setProperty('--vf-masthead__color--foreground-default', "#FFFFFF");
         }
       } else {
         el.style.setProperty('--vf-masthead__bg-image', "none");

@@ -375,6 +375,10 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.2</span>
+<span class="hljs-bullet">
+* </span>replaces foreround with foreground 
+
 <span class="hljs-section">## 1.0.1</span>
 <span class="hljs-bullet">
 * </span>Lerna Release bump
@@ -405,7 +409,7 @@ class="vf-logo">
           Filesystem path: components/vf-masthead/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 253 Bytes
+          Size: 302 Bytes
         </li>
       </ul>
     </section>
@@ -559,9 +563,9 @@ class="vf-logo">
         cBrightness = getCorrectTextColor(bannerBGC);
 
         <span class="hljs-keyword">if</span> (cBrightness &gt; threshold){
-          el.style.setProperty(<span class="hljs-string">'--vf-masthead__color--foreround-default'</span>, <span class="hljs-string">"#000000"</span>);
+          el.style.setProperty(<span class="hljs-string">'--vf-masthead__color--foreground-default'</span>, <span class="hljs-string">"#000000"</span>);
         } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cBrightness &lt; threshold) {
-          el.style.setProperty(<span class="hljs-string">'--vf-masthead__color--foreround-default'</span>, <span class="hljs-string">"#FFFFFF"</span>);
+          el.style.setProperty(<span class="hljs-string">'--vf-masthead__color--foreground-default'</span>, <span class="hljs-string">"#FFFFFF"</span>);
         }
       }
       <span class="hljs-keyword">else</span> {
@@ -613,7 +617,7 @@ class="vf-logo">
   <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--black);
   <span class="hljs-attribute">background-color</span>: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
   <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
-  <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreround-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--white)));
+  <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--white)));
   <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">36px</span>;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">24px</span>;
 }
@@ -622,17 +626,17 @@ class="vf-logo">
 
 <span class="hljs-selector-class">.vf-masthead-theme--primary</span> {
   --vf-masthead__color--<span class="hljs-attribute">background</span>-default: #{set-color(vf-color--blue)};
-  --vf-masthead__color--foreround-default: #{set-ui-color(vf-ui-color--white)};
+  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
 }
 
 <span class="hljs-selector-class">.vf-masthead-theme--secondary</span> {
   --vf-masthead__color--<span class="hljs-attribute">background</span>-default: #{set-color(vf-color--green)};
-  --vf-masthead__color--foreround-default: #{set-ui-color(vf-ui-color--white)};
+  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
 }
 
 <span class="hljs-selector-class">.vf-masthead-theme--tertiary</span> {
   --vf-masthead__color--<span class="hljs-attribute">background</span>-default: #{set-color(vf-color--grey--dark)};
-  --vf-masthead__color--foreround-default: #{set-ui-color(vf-ui-color--white)};
+  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
 }
 
 <span class="hljs-selector-class">.vf-masthead--has-image</span> {
@@ -700,7 +704,7 @@ class="vf-logo">
   <span class="hljs-selector-class">.vf-masthead__title</span> {
     <span class="hljs-attribute">align-self</span>: flex-end;
     <span class="hljs-attribute">background-color</span>: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
-    <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreround-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--black)));
+    <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--black)));
     <span class="hljs-attribute">display</span>: inline-flex;
     <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">16px</span>;
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">16px</span>;
