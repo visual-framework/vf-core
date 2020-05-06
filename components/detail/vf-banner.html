@@ -254,6 +254,12 @@ class="vf-logo">
 <li>data-vf-js-banner-button-text=”Accept and close”</li>
 </ul>
 </li>
+<li>Button theme:<ul>
+<li>Optional, leaving off will default to the secondary theme.</li>
+<li>primary, secondary, tertiay themes are available</li>
+<li>data-vf-js-banner-button-theme=”primary”</li>
+</ul>
+</li>
 <li>Cookies:<ul>
 <li>Both are optional, leaving either off will deactivate cookie storage</li>
 <li>data-vf-js-banner-cookie-name=<code>&quot;myServiceName&quot;</code></li>
@@ -406,7 +412,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
 </code></pre>
   
 <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Top --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--top vf-banner--phase"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"Close notice"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner vf-banner--fixed vf-banner--top vf-banner--phase"</span> <span class="hljs-attr">data-vf-js-banner</span> <span class="hljs-attr">data-vf-js-banner-state</span>=<span class="hljs-string">"dismissible"</span> <span class="hljs-attr">data-vf-js-banner-button-text</span>=<span class="hljs-string">"Close notice"</span> <span class="hljs-attr">data-vf-js-banner-button-theme</span>=<span class="hljs-string">"primary"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__content"</span> <span class="hljs-attr">data-vf-js-banner-text</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-badge vf-badge--primary"</span>&gt;</span>BETA<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>This is the new EMBL.org <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"NaN"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__link"</span>&gt;</span>Complete our quick survey<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> to help us make it better.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
@@ -504,6 +510,11 @@ data-vf-js-banner-cookie-version="NaN"&gt;
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.0</span>
+<span class="hljs-bullet">
+* </span>Adds option to determine button theme using data attributes.
+<span class="hljs-bullet">* </span>Allows for existing banners to still use the secondary theme.
+
 <span class="hljs-section">## 1.0.6</span>
 <span class="hljs-bullet">
 * </span>Adds underline on links using <span class="hljs-code">`.vf-banner__link`</span>
@@ -549,7 +560,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
           Filesystem path: components/vf-banner/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 806 Bytes
+          Size: 944 Bytes
         </li>
       </ul>
     </section>
@@ -1050,7 +1061,18 @@ data-vf-js-banner-cookie-version="NaN"&gt;
   <span class="hljs-comment">// if there is a vfJsBannerButtonText and banner is blocking or dismissible,</span>
   <span class="hljs-comment">// add a button so user can close the banner</span>
   <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonText &amp;&amp; (banner.vfJsBannerState === <span class="hljs-string">'blocking'</span> || banner.vfJsBannerState === <span class="hljs-string">'dismissible'</span>)) {
-    generatedBannerHtml += <span class="hljs-string">'&lt;button class="vf-button vf-button--secondary" data-vf-js-banner-close&gt;'</span>+banner.vfJsBannerButtonText+<span class="hljs-string">'&lt;/button&gt;'</span>;
+    <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonTheme == <span class="hljs-string">'primary'</span>) {
+      generatedBannerHtml += <span class="hljs-string">'&lt;button class="vf-button vf-button--primary" data-vf-js-banner-close&gt;'</span>+banner.vfJsBannerButtonText+<span class="hljs-string">'&lt;/button&gt;'</span>;
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonTheme == <span class="hljs-string">'secondary'</span>) {
+      generatedBannerHtml += <span class="hljs-string">'&lt;button class="vf-button vf-button--secondary" data-vf-js-banner-close&gt;'</span>+banner.vfJsBannerButtonText+<span class="hljs-string">'&lt;/button&gt;'</span>;
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (banner.vfJsBannerButtonTheme == <span class="hljs-string">'tertiary'</span>) {
+      generatedBannerHtml += <span class="hljs-string">'&lt;button class="vf-button vf-button--tertary" data-vf-js-banner-close&gt;'</span>+banner.vfJsBannerButtonText+<span class="hljs-string">'&lt;/button&gt;'</span>;
+    }
+    <span class="hljs-keyword">else</span> {
+      generatedBannerHtml += <span class="hljs-string">'&lt;button class="vf-button vf-button--secondary" data-vf-js-banner-close&gt;'</span>+banner.vfJsBannerButtonText+<span class="hljs-string">'&lt;/button&gt;'</span>;
+    }
   }
 
   generatedBannerHtml += <span class="hljs-string">'&lt;/div&gt;'</span>;
@@ -1133,7 +1155,7 @@ data-vf-js-banner-cookie-version="NaN"&gt;
           Filesystem path: components/vf-banner/vf-banner.js
         </li>
         <li class="vf-list__item">
-          Size: 8.7 KB
+          Size: 9.4 KB
         </li>
       </ul>
     </section>
