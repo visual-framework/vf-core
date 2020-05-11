@@ -616,10 +616,10 @@ class="vf-logo">
  */</span>
 
 <span class="hljs-selector-class">.vf-masthead</span> {
-  <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--black);
-  <span class="hljs-attribute">background-color</span>: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
-  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--white);
-  <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--white)));
+  <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--white);
+  <span class="hljs-attribute">background-color</span>: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
+  <span class="hljs-attribute">color</span>: set-ui-color(vf-ui-color--black);
+  <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--black)));
   <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">36px</span>;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">24px</span>;
 }
@@ -644,10 +644,6 @@ class="vf-logo">
 <span class="hljs-selector-class">.vf-masthead--has-image</span> {
   <span class="hljs-attribute">background-repeat</span>: no-repeat;
   <span class="hljs-attribute">background-size</span>: cover;
-
-  &amp;<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-masthead--with-title-block</span>) <span class="hljs-selector-class">.vf-masthead__title</span> &gt; * {
-    <span class="hljs-attribute">text-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">2px</span> <span class="hljs-number">0px</span> set-ui-color(vf-ui-color--black);
-  }
 }
 
 
@@ -705,15 +701,15 @@ class="vf-logo">
 
   <span class="hljs-selector-class">.vf-masthead__title</span> {
     <span class="hljs-attribute">align-self</span>: flex-end;
-    <span class="hljs-attribute">background-color</span>: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
-    <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--black)));
+    <span class="hljs-attribute">background-color</span>: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
+    <span class="hljs-attribute">color</span>: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--white)));
     <span class="hljs-attribute">display</span>: inline-flex;
     <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">16px</span>;
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">16px</span>;
     <span class="hljs-attribute">position</span>: relative;
 
     &amp;<span class="hljs-selector-pseudo">::before</span> {
-      <span class="hljs-attribute">background-color</span>: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
+      <span class="hljs-attribute">background-color</span>: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
       <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
       <span class="hljs-attribute">display</span>: inline-flex;
       <span class="hljs-attribute">flex-direction</span>: column-reverse;
@@ -810,7 +806,7 @@ class="vf-logo">
           Filesystem path: components/vf-masthead/vf-masthead.scss
         </li>
         <li class="vf-list__item">
-          Size: 4.7 KB
+          Size: 4.5 KB
         </li>
       </ul>
     </section>
