@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.2.0
+
+* Makes the alert style banner the default .njk
+* puts the style of alert banner as a prop from yaml/nunjucks
+* removes hardcoded variants of alert banners
+* fixes hover colour of `vf-banner__button`.
+
 ## 1.1.0
 
 * Adds option to determine button theme using data attributes.
