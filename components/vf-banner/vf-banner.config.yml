@@ -11,19 +11,29 @@ context:
   vf-banner--inline_href: 'JavaScript:Void(0);'
   alert_icon_text: dismiss
 variants:
-  - name: default
-    hidden: true
+
   - name: info
     context:
-      alert_message: Here is some very, <em>very</em> <a class="vf-banner__link" href="JavaScript:Void(0);">important information</a>
+      banner__info: true
+      banner__dismissable: true
+      banner__message: Here is some very, <em>very</em> <a class="vf-banner__link" href="JavaScript:Void(0);">important information</a>
   - name: warning
     context:
-      alert_message: Easy now, easy does it.
+      banner__warning: true
+      banner__dismissable: true
+      banner__message: Easy now, easy does it.
   - name: danger
     context:
-      alert_message: Oh dear, what have you done?
+      banner__danger: true
+      banner__dismissable: true
+      banner__message: Oh dear, what have you done?
   - name: success
     context:
-      alert_message: Congratulations! You have made something <a class="vf-banner__link" href="JavaScript:Void(0);">awesome</a>!
+      banner__success: true
+      banner__dismissable: true
+      banner__message: Congratulations! You have made something <a class="vf-banner__link" href="JavaScript:Void(0);">awesome</a>!
+
+  - name: default
+    hidden: true
   - name: inline
     hidden: true
