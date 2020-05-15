@@ -1,7 +1,11 @@
 .vf-header .vf-masthead {
-  @include padding--inline(all, map-get($vf-spacing-map, vf-spacing--md));
-  
+  @include padding--inline(all, map-get($vf-spacing-map, vf-spacing--sm));
+
   grid-column: 1 / -1;
+
+  @media (min-width: $vf-breakpoint--md) {
+    @include padding--inline(all, map-get($vf-spacing-map, vf-spacing--md));
+  }
 }
 
 .embl-group-header__header .vf-masthead {
