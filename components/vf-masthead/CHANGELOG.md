@@ -2,7 +2,11 @@
 
 ## 1.0.2
 
-* replaces foreround with foreground 
+* reduces vertical padding so both start and end are the same value
+
+## 1.0.2
+
+* replaces foreround with foreground
 
 ## 1.0.1
 
