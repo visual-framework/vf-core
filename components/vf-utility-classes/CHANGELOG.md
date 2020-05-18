@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.3
+
+* adds utility classes for grid row/columns spans and start positions
+
 ## 1.0.2
 
 * the one that removes a parent class for the screen reader only class #847
