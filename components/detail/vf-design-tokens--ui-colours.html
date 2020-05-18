@@ -651,7 +651,7 @@ gulp.task(<span class="hljs-string">'tokens:variables'</span>, () =&gt;
 );
 
 gulp.task(<span class="hljs-string">'tokens:maps'</span>, () =&gt;
-  gulp.src([<span class="hljs-string">'./src/maps/*.yml'</span>, <span class="hljs-string">'!./src/typographic-scales/*.yml'</span>])
+  gulp.src([<span class="hljs-string">'./src/maps/*.yml'</span>, <span class="hljs-string">'!./src/typographic-scales/*.yml'</span>, <span class="hljs-string">'./src/variables/vf-breakpoints.yml'</span>])
     .pipe(theoG({
       <span class="hljs-attr">transform</span>: { <span class="hljs-attr">type</span>: <span class="hljs-string">'web'</span> },
       <span class="hljs-attr">format</span>: { <span class="hljs-attr">type</span>: <span class="hljs-string">'map.scss'</span> }
@@ -737,7 +737,7 @@ gulp.task(<span class="hljs-string">'vf-tokens'</span>, gulp.parallel(
           Filesystem path: components/vf-design-tokens/gulpfile.js
         </li>
         <li class="vf-list__item">
-          Size: 4.3 KB
+          Size: 4.4 KB
         </li>
       </ul>
     </section>

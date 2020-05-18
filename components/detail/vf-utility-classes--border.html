@@ -150,6 +150,16 @@ class="vf-logo">
 
               
                 
+                  <a class="vf-tabs__link" href="vf-utility-classes--grid.html">
+                    Grid
+                  </a>
+                 
+               
+
+            
+
+              
+                
                   <a class="vf-tabs__link" href="vf-utility-classes--width.html">
                     Width
                   </a>
@@ -452,6 +462,12 @@ class="vf-logo">
     
       
       <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--af95c885b4461887e296101c6c2a0a4c">vf-u-grid.scss</a>
+      </li>
+      
+    
+      
+      <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--dc8e03a51836ba4bb2b9d19ee0e78e0e">vf-u-screen-reader.scss</a>
       </li>
       
@@ -486,6 +502,10 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.3</span>
+<span class="hljs-bullet">
+* </span>adds utility classes for grid row/columns spans and start positions
+
 <span class="hljs-section">## 1.0.2</span>
 <span class="hljs-bullet">
 * </span>the one that removes a parent class for the screen reader only class #847
@@ -513,7 +533,7 @@ class="vf-logo">
           Filesystem path: components/vf-utility-classes/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 255 Bytes
+          Size: 336 Bytes
         </li>
       </ul>
     </section>
@@ -716,6 +736,78 @@ class="vf-logo">
     
   
     
+    <section class="vf-tabs__section" id="vf-tabs__section--af95c885b4461887e296101c6c2a0a4c">
+      <div class="FileBrowser-itemPreview">
+        
+        <pre class="vf-code-example__pre">
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-variable">$grid-slug</span>: vf-u-grid__ !default;
+
+
+<span class="hljs-variable">$vf-breakpoints-map</span>: map-remove(<span class="hljs-variable">$vf-breakpoints-map</span>, <span class="hljs-string">'$vf-breakpoint--xs'</span>, <span class="hljs-string">'$vf-breakpoint--xl'</span>);
+
+<span class="hljs-keyword">@each</span> <span class="hljs-variable">$name</span>, <span class="hljs-variable">$size</span> in <span class="hljs-variable">$vf-breakpoints-map</span> {
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$size</span>) {
+
+    <span class="hljs-variable">$name</span>: str-replace(<span class="hljs-variable">$name</span>, <span class="hljs-number">16</span>);
+
+    <span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">1</span> through <span class="hljs-number">11</span> {
+      .#{<span class="hljs-variable">$grid-slug</span>}<span class="hljs-selector-tag">col</span>--start-#{<span class="hljs-variable">$i</span>}--#{<span class="hljs-variable">$name</span>} {
+        grid-column-start: <span class="hljs-variable">$i</span>;
+      }
+    }
+    <span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">2</span> through <span class="hljs-number">11</span> {
+      .#{<span class="hljs-variable">$grid-slug</span>}<span class="hljs-selector-tag">col</span>--end-#{<span class="hljs-variable">$i</span>}--#{<span class="hljs-variable">$name</span>} {
+        grid-column-end: <span class="hljs-variable">$i</span>;
+      }
+    }
+
+    <span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">1</span> through <span class="hljs-number">11</span> {
+      .#{<span class="hljs-variable">$grid-slug</span>}<span class="hljs-selector-tag">col</span>--<span class="hljs-selector-tag">span</span>-#{<span class="hljs-variable">$i</span>}--#{<span class="hljs-variable">$name</span>} {
+        grid-column-end: span <span class="hljs-variable">$i</span>;
+      }
+    }
+
+    <span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">1</span> through <span class="hljs-number">11</span> {
+      .#{<span class="hljs-variable">$grid-slug</span>}row--start-#{<span class="hljs-variable">$i</span>}--#{<span class="hljs-variable">$name</span>} {
+        grid-row-start: <span class="hljs-variable">$i</span>;
+      }
+    }
+    <span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">2</span> through <span class="hljs-number">11</span> {
+      .#{<span class="hljs-variable">$grid-slug</span>}row--end-#{<span class="hljs-variable">$i</span>}--#{<span class="hljs-variable">$name</span>} {
+        grid-row-end: <span class="hljs-variable">$i</span>;
+      }
+    }
+
+    <span class="hljs-keyword">@for</span> <span class="hljs-variable">$i</span> from <span class="hljs-number">1</span> through <span class="hljs-number">11</span> {
+      .#{<span class="hljs-variable">$grid-slug</span>}row--<span class="hljs-selector-tag">span</span>-#{<span class="hljs-variable">$i</span>}--#{<span class="hljs-variable">$name</span>} {
+        grid-row-end: span <span class="hljs-variable">$i</span>;
+      }
+    }
+
+  }
+};
+</code>
+        </pre>
+        
+      </div>
+
+      <h3 class="vf-text vf-text-heading--4">File information</h3>
+      <ul class="vf-list vf-list--unordered">
+        <li class="vf-list__item">
+          URL:
+          <a data-no-pjax href="../raw/vf-utility-classes/vf-u-grid.scss">/components/raw/vf-utility-classes/vf-u-grid.scss</a>
+        </li>
+        <li class="vf-list__item">
+          Filesystem path: components/vf-utility-classes/vf-u-grid.scss
+        </li>
+        <li class="vf-list__item">
+          Size: 1 KB
+        </li>
+      </ul>
+    </section>
+    
+  
+    
     <section class="vf-tabs__section" id="vf-tabs__section--dc8e03a51836ba4bb2b9d19ee0e78e0e">
       <div class="FileBrowser-itemPreview">
         
@@ -876,9 +968,11 @@ class="vf-logo">
  */</span>
 
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-u-float.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-u-grid.scss'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-u-text.scss'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-u-screen-reader.scss'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-u-width.scss'</span>;
+
 
 <span class="hljs-selector-class">.vf-u-background-color</span> {
   <span class="hljs-keyword">@include</span> color-modifiers(<span class="hljs-variable">$attribute</span>: <span class="hljs-string">'background-color'</span>);
