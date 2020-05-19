@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.1
+
+* removes left and right padding so we rely on the parent for horizontal spacing for better alignment
+
 ## 1.0.0
 
 * makes global header work on smaller screens
