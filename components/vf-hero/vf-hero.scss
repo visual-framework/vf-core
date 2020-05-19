@@ -12,6 +12,7 @@
 @import 'vf-hero.variables.scss';
 
 .vf-hero {
+
   background-color: set-ui-color(vf-ui-color--white);
   background-color: rgba(
     calc( (0 + var(--vf-hero-bg-color) ) * 255),
@@ -41,6 +42,16 @@
 
   .vf-hero__content {
     grid-column: 2 / span 1;
+  }
+
+
+  // This is so that vf-hero clings to the viewport boundaries until the viewport is massger
+  .vf-body > & {
+    margin: 0 -1rem 2rem;
+
+    @media (min-width: $vf-breakpoint--xl) {
+      margin: 0 0 2rem;
+    }
   }
 }
 
