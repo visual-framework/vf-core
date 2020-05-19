@@ -1,15 +1,3 @@
-# 0.1.0
+# 1.3.0
 
-### Added
-- added this
-- added that
-
-### Changes
-
-- changed this
-- changed that
-
-### Removed
-
-- deleted this
-- deleted that
+* The vf-hero component snaps to the viewport boundaries on smaller screens
