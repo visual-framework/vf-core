@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.1
+## 1.0.0
 
 * removes right padding on nested list items so arrows align properly.
 
