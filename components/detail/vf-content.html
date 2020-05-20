@@ -350,6 +350,10 @@ html elements.</p>
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.5</span>
+<span class="hljs-bullet">
+* </span>fixes an issue when content creators add the bold/strong tags to hedaing to make them bolder - when they shouldn't be.
+
 <span class="hljs-section">## 1.1.4</span>
 <span class="hljs-bullet">
 * </span>fixes support for vf-figure alignment options
@@ -397,7 +401,7 @@ html elements.</p>
           Filesystem path: components/vf-content/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 649 Bytes
+          Size: 781 Bytes
         </li>
       </ul>
     </section>
@@ -543,6 +547,11 @@ html elements.</p>
       <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">35px</span>;
       <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">22px</span>;
     }
+
+    <span class="hljs-selector-tag">b</span>,
+    <span class="hljs-selector-tag">strong</span> {
+      <span class="hljs-attribute">font-weight</span>: inherit;
+    }
   }
 
   <span class="hljs-selector-tag">h2</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
@@ -550,30 +559,55 @@ html elements.</p>
 
     <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0</span>;
     <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">13px</span>;
+
+    <span class="hljs-selector-tag">b</span>,
+    <span class="hljs-selector-tag">strong</span> {
+      <span class="hljs-attribute">font-weight</span>: inherit;
+    }
   }
 
   <span class="hljs-selector-tag">h3</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">13px</span>);
 
     <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
+
+    <span class="hljs-selector-tag">b</span>,
+    <span class="hljs-selector-tag">strong</span> {
+      <span class="hljs-attribute">font-weight</span>: inherit;
+    }
   }
 
   <span class="hljs-selector-tag">h4</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">4</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">13px</span>);
 
     <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
+
+    <span class="hljs-selector-tag">b</span>,
+    <span class="hljs-selector-tag">strong</span> {
+      <span class="hljs-attribute">font-weight</span>: inherit;
+    }
   }
 
   <span class="hljs-selector-tag">h5</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">13px</span>);
 
     <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
+
+    <span class="hljs-selector-tag">b</span>,
+    <span class="hljs-selector-tag">strong</span> {
+      <span class="hljs-attribute">font-weight</span>: inherit;
+    }
   }
 
   <span class="hljs-selector-tag">h6</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     <span class="hljs-keyword">@include</span> set-type(text-heading--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">13px</span>);
 
     <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">24px</span>;
+
+    <span class="hljs-selector-tag">b</span>,
+    <span class="hljs-selector-tag">strong</span> {
+      <span class="hljs-attribute">font-weight</span>: inherit;
+    }
   }
 
   <span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
@@ -635,7 +669,7 @@ html elements.</p>
       <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
     }
   }
-  
+
   <span class="hljs-selector-tag">table</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-attr">[class*='vf-']</span>) {
     <span class="hljs-attribute">background-color</span>: set-ui-color(vf-ui-color--white);
     <span class="hljs-attribute">border-collapse</span>: collapse;
@@ -744,7 +778,7 @@ html elements.</p>
           Filesystem path: components/vf-content/vf-content.scss
         </li>
         <li class="vf-list__item">
-          Size: 4.4 KB
+          Size: 4.7 KB
         </li>
       </ul>
     </section>
