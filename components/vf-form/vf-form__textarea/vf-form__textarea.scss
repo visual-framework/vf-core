@@ -12,7 +12,9 @@
 .vf-form__textarea {
   @include set-type(text-body--3);
 
-  border: 3px solid set-ui-color(vf-ui-color--grey);
+  appearance: none;
+  border: 3px solid set-ui-color(vf-ui-color--grey--light);
+  border-radius: 0;
   box-sizing: border-box;
   display: block;
   padding: 12px 22px; // to make up for the border?
@@ -20,6 +22,7 @@
   top: 24px;
   width: 100%;
 
+  &:hover,
   &:focus {
     border-color: set-color(vf-color--grey--dark);
     outline: 0;

@@ -14,29 +14,32 @@
 
   & + .vf-section-header__subheading,
   & + .vf-section-header__content {
-    margin-top: 24px;
+    margin-top: map-get($vf-spacing-map, vf-spacing--lg);
   }
 }
 .vf-section-header__heading--is-link {
-  @include inline-link;
-  color: set-color(vf-color--blue);
+  @include inline-link($vf-link--visited-color: map-get($vf-colors-map, vf-color--blue));
   cursor: pointer;
   display: block;
 
   .vf-section-header__icon {
     fill: currentColor;
-    margin-left: 4px;
+    margin-left: map-get($vf-spacing-map, vf-spacing--sm);
+    transform: translateY(map-get($vf-spacing-map, vf-spacing--xs));
     // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
-    transform: translateY(4px);
     transition-duration: 125ms;
-    transition-property: transformX;
+    transition-property: transform;
     transition-timing-function: cubic-bezier(.45, .05, .55, .95);
   }
 
   &:hover,
   &:focus {
     .vf-section-header__icon {
-      transform: translateX(4px) translateY(4px);
+      transform: translateX(map-get($vf-spacing-map, vf-spacing--xs)) translateY(map-get($vf-spacing-map, vf-spacing--xs));
+    }
+
+    &:visited {
+      color: map-get($vf-colors-map, vf-color--blue--dark);
     }
   }
 }
@@ -47,10 +50,21 @@
 
 .vf-section-header__text {
   @include set-type(text-body--2, $custom-margin-bottom: 8px);
+
+  &:last-of-type {
+    @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--0));
+  }
+
   .vf-section-header__heading + & {
     margin-top: 24px;
   }
   .vf-section-header__subheading + & {
     margin-top: 16px;
+  }
+  .vf-section-header__heading + & {
+    margin-top: map-get($vf-spacing-map, vf-spacing--lg);
+  }
+  .vf-section-header__subheading + & {
+    margin-top: map-get($vf-spacing-map, vf-spacing--md);
   }
 }

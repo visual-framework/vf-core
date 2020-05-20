@@ -2,24 +2,24 @@
 @import 'vf-link.variables.scss';
 
 .vf-link--secondary {
-  @include inline-link(set-color(vf-color--grey--dark), set-color(vf-color--grey--dark), set-color(vf-color--purple), $vf-include-normalisations: true);
+  @include inline-link(set-color(vf-color--grey--dark), set-color(vf-color--grey--dark), set-color(vf-color--grey--dark), $vf-include-normalisations: true);
 }
 
 .vf-link--secondary--visited {
-  color: set-color(vf-color--purple);
+  color: set-color(vf-color--grey--dark);
 }
 
 .vf-link--secondary--hover {
   color: set-color(vf-color--grey--dark);
 }
 
-.vf-u-background-color--grey--dark {
+[class*='--dark']  {
   .vf-link--secondary {
-    @include inline-link(set-ui-color(vf-ui-color--white), set-ui-color(vf-ui-color--white), $vf-link--dark-mode--visited-color, $vf-include-normalisations: true);
+    @include inline-link(set-ui-color(vf-ui-color--white), set-ui-color(vf-ui-color--white), set-ui-color(vf-ui-color--white), $vf-include-normalisations: true);
   }
 
   .vf-link--secondary--visited {
-    color: $vf-link--dark-mode--visited-color;
+    color: set-ui-color(vf-ui-color--white);
   }
 
   .vf-link--secondary--hover {

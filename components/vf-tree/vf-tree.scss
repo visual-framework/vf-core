@@ -40,7 +40,7 @@
     }
   }
 
-  .vf-show-hide__button {
+  .vf-button.vf-show-hide__button {
     transform-origin: center;
     transform: rotate(180deg);
     &:hover {
@@ -68,7 +68,7 @@
   }
 }
 
-.vf-tree__button {
+.vf-button.vf-tree__button {
   all: unset;
   cursor: pointer;
   float: right;
@@ -109,7 +109,8 @@
     background-color: #fff;
   }
 
-  > .vf-tree__button {
+  > .vf-tree__button,
+  &:hover > .vf-tree__button {
     transform-origin: center;
     transform: rotate(90deg);
   }
@@ -136,6 +137,7 @@
   .vf-tree__item {
     margin-left: 16px;
     position: relative;
+    padding-right: 0;
 
     &::before {
       border-left: 1px solid $vf-tree-caret-color;
@@ -168,7 +170,7 @@
   }
 }
 
-.vf-show-hide__button {
+.vf-button.vf-show-hide__button {
   all: unset;
   cursor: pointer;
   margin-left: auto;

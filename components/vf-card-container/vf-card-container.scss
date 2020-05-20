@@ -20,8 +20,8 @@
 
 .vf-card-container {
   grid-column: 1 / -1;
-  margin: 0 auto 3em auto;
-  padding: 0 1rem;
+  margin: 0 0 3rem 0;
+  padding: 0;
 }
 
 .vf-card-container__inner {
@@ -32,12 +32,13 @@
   padding: 2rem 0;
 
   @supports (display: grid) {
-    --vf-card-container__grid--size: 20rem;
+    --vf-card-container__grid--size: 18rem;
     display: grid;
-    grid-gap: 40px;
+    gap: 40px;
     grid-template-columns: repeat(auto-fit, minmax(var(--vf-card-container__grid--size), 1fr));
     margin: 0 auto;
-    max-width: calc(76.5em + 24px);
+    max-width: 76.5em;
+    padding: 0 1rem;
   }
 
   .vf-section-header {

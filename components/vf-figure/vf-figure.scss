@@ -15,5 +15,32 @@
 
 .vf-figure__image {
   height: auto;
-  width: 100%;
+  max-width: 100%;
+  width: var(--vf-figure__width, 100%);
+}
+
+.vf-figure--align {
+  display: table;
+
+  .vf-figure__image {
+    max-width: unset;
+    width: var(--vf-figure__width, auto);
+  }
+
+  .vf-figure__caption {
+    caption-side: bottom;
+    display: table-caption;
+  }
+}
+
+.vf-figure--align-inline-start {
+  float: left;
+}
+
+.vf-figure--align-inline-end {
+  float: right;
+}
+
+.vf-figure--align-centered {
+  margin: 0 auto;
 }

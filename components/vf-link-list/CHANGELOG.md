@@ -1,8 +1,19 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## 1.0.3
 
-# 1.0.0 (2019-12-17)
+* adds ability to drop in a `vf-badge` component after a link in `--has-images` variety
+
+## 1.0.2
+
+* Captilisation of `On this page` and `In this section`
+* Fix spelling of `vf-icon__arrow--down`
+
+## 1.0.1
+
+* Add `vf-links--tight`
+* Add `vf-links__list--easy`
+
+## 1.0.0 (2019-12-17)
 
 * Initial stable release

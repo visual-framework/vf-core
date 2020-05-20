@@ -6,34 +6,17 @@
 
 ### Background Colours
 
-By default, the background colour for the masthead is `vf-color--green`. To make this more adaptable for other teams and organisation the Visual Framework uses CSS Custom Properties in order to be able to switch this colour to something more in-keeping with the team wanting to use this component.
+By Default, the `vf-masthead` is white text on a black background except if it is the title block variant where the text will be black on a white background with an overall black background.
 
-The colour values are stored in two CSS custom properties. One for the background colour itself and the other for the text colour.
+This can be effected by either having a global theme class applied to a parent (usually on `body`) where the colours determined by the theme name will cascade into this component. The other way is to apply a component specific class that effects the colours.
 
-```css
-  --vf-masthead__color--foreround-default: var(--vf-ui-color--white);
-  --vf-masthead__color--background-default: var(--vf-color--green);
-```
+Theme Variants available are:
 
-This is set in the components Sass partial but is used in the components HTML inline.
+- `vf-masthead-theme--primary`
+- `vf-masthead-theme--secondary`
+- `vf-masthead-theme--tertiary`
 
-```html
-  <div class="vf-masthead" style="
-    background-color: var( --vf-masthead__color--background, var(--vf-masthead__color--background-default) );
-    color: var( --vf-masthead__color--foreground, var(--vf-masthead__color--foreround-default) );
-  ">
-```
-
-To override this the changes to `--vf-masthead__color--foreground-default` and `--vf-masthead__color--background-default` need to be applied either after the Sass partial is compiled in your build step or in the HTML on the page using `root`:
-
-```html
-<style>
-:root {
-  --vf-masthead__color--background: none;
-  --vf-masthead__color--foreground: #000000;
-}
-</style>
-```
+There is also a variant that allows for a background image - `vf-masthead--has-image` as well as a variant that allows for the text to be in a block of white (with the text being black) - `vf-masthead--with-title-block`.
 
 #### notes:
 
@@ -44,15 +27,7 @@ If you are overriding the background or foreground (text) colour make sure you a
 
 ---
 
-### Background Images
-
-If you wish to use an image instead of a colour for the background of your masthead you will need to define its location as a CSS Custom Property.
-
-```css
---vf-masthead__bg-image: url('path/to/background-image_00EF00.png');
-```
-
-#### Image Size
+#### Background Image Size
 
 The maximum dimensions for a background image is 1224px wide with a height of 150px. As more and more displays are what we term 'retina' they need to be twice the width and height to look crisp.
 
@@ -69,15 +44,18 @@ In creating the background images for mastheads each image filename needs to hav
 ```bash
 masthead-background-image--00EF00.png
 ```
+<br>
 
-The JavaScript looks for this hexidecimal colour code and mathematically works out the correct text colour to use. The CSS custom property `--vf-masthead__color--foreground` is then added as a style block after the `body` tag in the HTML page. It will also add the custom property `--vf-masthead__color--background: none` to remove the background colour.
+The JavaScript looks for this hexidecimal colour code and mathematically works out the correct text colour to use. The CSS custom property `--local-theme-fg-color` is then applied in the style tag of the component.
 
 ```html
 <style>
-:root {
-  --vf-masthead__color--background: none;
-  --vf-masthead__color--foreground: #00EF00;
-}
+<div
+  class="vf-masthead vf-masthead--has-image"
+  style="background-image: var(--vf-masthead__bg-image);
+         --local-theme-fg-color:#FFFFFF;"
+  data-vf-js-masthead=""
+>
 </style>
 ```
 

@@ -2,7 +2,11 @@
   <div class="vf-global-header">
 
     <div class="vf-global-header__inner">
-      {% render '@vf-logo', {href: path('/', request), logo_text: frctl.get('project.title'), image: '../../assets/vf-logo/assets/logo.svg' } %}
+      {% if frctl.env.server %}
+      {% render '@vf-logo', {logo_href: path('/', request), logo_text: frctl.get('project.title'), image: path('../../assets/vf-logo/assets/logo.svg',request) } %}
+      {% else %}
+      {% render '@vf-logo', {logo_href: path('/', request), logo_text: frctl.get('project.title'), image: 'https://dev.assets.emblstatic.net/vf/develop/assets/vf-logo/assets/logo.svg' } %}
+      {% endif %}
 
       <nav class="vf-navigation vf-navigation--global">
         <ul class="vf-navigation__list | vf-list--inline">

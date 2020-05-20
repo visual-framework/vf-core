@@ -66,22 +66,22 @@ body.ebi-vf1-integration,
     font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
   }
 
-  // Drop the dotted underlines in favour of VF 2.0 underlines 
+  // Drop the dotted underlines in favour of VF 2.0 underlines
   a {
     border: unset;
     text-decoration: underline;
   }
-  
+
   a:hover {
     text-decoration: unset;
     border-bottom-style: unset;
-  }  
-  
+  }
+
   // EBI Global header and local masthead
   #local-title a,
-  .masthead-black-bar .global-nav a, 
+  .masthead-black-bar .global-nav a,
   .masthead ul li a,
-  ul.menu.secondary-menu a, 
+  ul.menu.secondary-menu a,
   .secondary-menu ul.menu a {
     text-decoration: none;
 
@@ -91,7 +91,7 @@ body.ebi-vf1-integration,
   }
 
   // vf 1.x utility class
-  .no-underline a, 
+  .no-underline a,
   a.no-underline {
      text-decoration: none;
      border-bottom: none;
@@ -130,7 +130,7 @@ body.ebi-vf1-integration,
     max-width: 76.5em;
   }
 
-  // Fixes an issue with heigh and bacgkround colour for EBI 1.x 
+  // Fixes an issue with heigh and bacgkround colour for EBI 1.x
   .vf-form__input:not([type=file]) {
     height: unset;
     background: unset;
@@ -139,6 +139,11 @@ body.ebi-vf1-integration,
   .vf-form__input:not([type=file]):focus, .vf-form__input:not([type=file]):hover {
     border-width: unset;
     box-shadow: unset;
+  }
+
+  // vf-divider needs to be able go full width
+  hr.vf-divider {
+    max-width: unset;
   }
 
 }

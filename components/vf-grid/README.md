@@ -12,6 +12,8 @@ You can define the number of columns with a modifier class.
 
 ***Do Not Use*** with any component that uses the `<table>` HTML element as this breaks built-in browser accessibility for screen readers etc.
 
+Currently (16/03/20) The `vf-grid` is expecting to be a parent of `vf-body`. It does, however, work inside `embl-grid` now as we have added CSS to make it respect the boundaries so that it doesn't break. 
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-grid` with this command.

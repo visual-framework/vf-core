@@ -14,6 +14,7 @@
 .vf-footer {
   background-color: set-color(vf-color--grey--dark);
   border-top: 8px solid set-color(vf-color--green);
+  grid-column: 1 / -1;
   padding-bottom: 60px;
   padding-top: 24px;
 
@@ -33,10 +34,14 @@
 
 .vf-footer__inner {
   grid-column: main;
+  margin: 0 auto;
+  max-width: 76.5em;
+  padding: 0 1rem;
 }
 
 .vf-footer__legal {
   color: set-ui-color(vf-ui-color--white);
+  column-gap: var(--page-grid-gap);
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   .vf-list {
     width: 100%;
@@ -95,7 +100,17 @@
 
     color: set-color(vf-color--grey--lightest);
     text-transform: uppercase;
+  
+    .vf-heading__link {
+      @include inline-link(
+        $vf-link--color: $vf-footer-link--color,
+        $vf-link--hover-color: $vf-footer-link--hover-color,
+        $vf-link--visited-color: $vf-footer-link--visited-color
+      );
+    }
   }
+
+  
 
   .vf-links {
     padding-bottom: 0;

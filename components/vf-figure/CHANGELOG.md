@@ -1,16 +1,17 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## 1.2.0
 
-# 1.0.0-alpha.8 (2019-10-23)
+- Changes structure of nunjuck to add the ability to make use of props.
+- Changes class selector naming from `float` to `align`.
+- Adds a `align-centered` variant.
+- Adds `--vf-figure__width` as a CSS Custom Property that can be overriden.
+- Adds some documentation
 
-**Note:** Version bump only for package @visual-framework/vf-figure
+## 1.1.0
 
+* Adds vf-figure--float (-inline-start and -inline-end) variants
 
+## 1.0.0-beta.2
 
-
-
-# 1.0.0-alpha.7 (2019-09-30)
-
-**Note:** Version bump only for package @visual-framework/vf-figure
+* removes the `| path` from the njk template which made it non-usable outside of Fractal

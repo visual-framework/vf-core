@@ -30,7 +30,7 @@ function vfBannerReset(vfBannerCookieNameAndVersion) {
  * Confirm a banner, initiate cookie logging
  */
 function vfBannerConfirm(banner,vfBannerCookieNameAndVersion) {
-  banner.classList += " vf-u-display-none";
+  banner.classList.add('vf-u-display-none');
   if (vfBannerCookieNameAndVersion !== 'null') {
     vfBannerSetCookie(vfBannerCookieNameAndVersion,true);
   }
@@ -116,8 +116,8 @@ function vfBanner(scope) {
  * Takes a banner object and creates the necesary html markup, js events, and inserts
  * @example vfBannerInsert()
  * @param {object} [banner]  -
- * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  * @param {string} [bannerId] - the id of the target div, `data-vf-js-banner-id="1"`
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  */
 function vfBannerInsert(banner,bannerId,scope) {
   var scope = scope || document;
@@ -161,7 +161,7 @@ function vfBannerInsert(banner,bannerId,scope) {
         var newButton = document.createElement('button');
         newButton.innerHTML = button;
         newButton = newButton.firstChild;
-        newButton.classList = 'vf-button vf-button--primary';
+        newButton.classList.add('vf-button','vf-button--primary');
         generatedBannerHtml += newButton.outerHTML;
       }
     });
@@ -170,7 +170,18 @@ function vfBannerInsert(banner,bannerId,scope) {
   // if there is a vfJsBannerButtonText and banner is blocking or dismissible,
   // add a button so user can close the banner
   if (banner.vfJsBannerButtonText && (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible')) {
-    generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    if (banner.vfJsBannerButtonTheme == 'primary') {
+      generatedBannerHtml += '<button class="vf-button vf-button--primary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    }
+    else if (banner.vfJsBannerButtonTheme == 'secondary') {
+      generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    }
+    else if (banner.vfJsBannerButtonTheme == 'tertiary') {
+      generatedBannerHtml += '<button class="vf-button vf-button--tertary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    }
+    else {
+      generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    }
   }
 
   generatedBannerHtml += '</div>';
@@ -190,34 +201,31 @@ function vfBannerInsert(banner,bannerId,scope) {
 
   // if blocking or dismissible, allow the user to close it, store a cookie (if specified)
   if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
-    // On click: close banner, pass any cooke name (or `null`)
+    // On click: close banner, pass any cookie name (or `null`)
     if (banner.vfJsBannerButtonText) {
-      targetBanner.addEventListener('click', function(){
+      targetBanner.querySelectorAll('[data-vf-js-banner-close]')[0].addEventListener('click', function(){
         vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
       }, false);
     }
   }
 
-  if (vfBannerCookieNameAndVersion != "null") {
+  if (vfBannerCookieNameAndVersion != 'null') {
     // if banner has been previously accepted
     if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
       // banner has been accepted, close
-      targetBanner.classList += " vf-u-display-none";
+      targetBanner.classList.add('vf-u-display-none');
       // exit, nothng more to do
       return;
     }
 
     // if banner is marked as auto-accept, set as read
-    if (banner.vfJsBannerAutoAccept == "true") {
+    if (banner.vfJsBannerAutoAccept == 'true') {
       if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
         vfBannerSetCookie(vfBannerCookieNameAndVersion,true);
       }
     }
-
   }
-
 }
-
 
 export { vfBanner };
 
