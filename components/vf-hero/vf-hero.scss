@@ -146,7 +146,7 @@
 
   .vf-hero__content {
     // grid-column-start: 2;
-    grid-column: 1 / span 1;
+    grid-column: 1 / span 2;
     width: 100%;
   }
 
@@ -163,6 +163,10 @@
     grid-template-columns: [main-start] minmax(auto,100%) minmax(auto,22.125em) [main-end];
     margin: 0 auto;
     max-width: 76.5em;
+
+    .vf-hero__content {
+      grid-column-end: span 1;
+    }
   }
 }
 
@@ -206,6 +210,10 @@
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
   --vf-hero-content-box-shadow: none;
+  
+  .vf-hero__content {
+    grid-row: 2;
+  }
 }
 
 .vf-hero--intense {
