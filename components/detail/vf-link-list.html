@@ -630,6 +630,10 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.3</span>
+<span class="hljs-bullet">
+* </span>adds ability to drop in a <span class="hljs-code">`vf-badge`</span> component after a link in <span class="hljs-code">`--has-images`</span> variety
+
 <span class="hljs-section">## 1.0.2</span>
 <span class="hljs-bullet">
 * </span>Captilisation of <span class="hljs-code">`On this page`</span> and <span class="hljs-code">`In this section`</span>
@@ -658,7 +662,7 @@ class="vf-logo">
           Filesystem path: components/vf-link-list/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 234 Bytes
+          Size: 333 Bytes
         </li>
       </ul>
     </section>
@@ -783,18 +787,31 @@ class="vf-logo">
     <span class="hljs-keyword">@include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg));
 
     <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-wrap</span>: wrap;
+  }
+
+  <span class="hljs-selector-class">.vf-list__link</span> {
+    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">8px</span>;
   }
 
   <span class="hljs-selector-class">.vf-badge</span> {
-    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
+    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">8px</span>;
   }
 }
 
 <span class="hljs-selector-class">.vf-links__list--has-image</span> {
+
   <span class="hljs-selector-class">.vf-list__link</span> {
+    <span class="hljs-attribute">align-items</span>: center;
     <span class="hljs-attribute">column-gap</span>: <span class="hljs-number">8px</span>;
     <span class="hljs-attribute">display</span>: grid;
     grid-template-<span class="hljs-attribute">columns</span>: minmax(<span class="hljs-number">0</span>, <span class="hljs-number">32px</span>) auto;
+  }
+
+  <span class="hljs-selector-class">.vf-links__meta</span> {
+    <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">4px</span>;
+    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">8px</span>;
   }
 }
 
@@ -806,11 +823,11 @@ class="vf-logo">
 }
 
 <span class="hljs-selector-class">.vf-links__meta</span> {
-  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>);
+  <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">5</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
 
   <span class="hljs-attribute">color</span>: set-color(vf-color--grey--dark);
   <span class="hljs-attribute">display</span>: inline;
-  <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">4px</span>;
+  <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">4px</span>;
 }
 
 <span class="hljs-selector-class">.vf-links__list--secondary</span> {
@@ -912,7 +929,7 @@ class="vf-logo">
           Filesystem path: components/vf-link-list/vf-link-list.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.4 KB
+          Size: 2.6 KB
         </li>
       </ul>
     </section>
