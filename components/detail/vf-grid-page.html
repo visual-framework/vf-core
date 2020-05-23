@@ -255,6 +255,12 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+<span class="hljs-section"># 2.0.0</span>
+<span class="hljs-bullet">
+* </span>removes the CSS grid that generated a central column for content, now it's working across all browsers with less code.
+<span class="hljs-bullet">* </span>this makes vf-u-grid-reset redundant.
+<span class="hljs-bullet">* </span>you might need to add vf-u-fullbleed to certain containers
+
 <span class="hljs-section"># 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
@@ -273,7 +279,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-grid-page/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 214 Bytes
+          Size: 446 Bytes
         </li>
       </ul>
     </section>
@@ -392,35 +398,15 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
  *
  */</span>
 
-<span class="hljs-comment">// Initial set up for browsers that do not support CSS grid layout</span>
 <span class="hljs-selector-tag">html</span> {
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">1.25em</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 }
 
 <span class="hljs-selector-class">.vf-body</span> {
   <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
-}
-
-<span class="hljs-comment">// If the browser does support grid it will get this</span>
-<span class="hljs-keyword">@supports</span> (display: grid) {
-  <span class="hljs-comment">// first we need to unset some rulesets</span>
-  <span class="hljs-selector-tag">html</span> {
-    <span class="hljs-attribute">margin</span>: unset;
-  }
-
-  <span class="hljs-selector-class">.vf-body</span> {
-    <span class="hljs-attribute">display</span>: grid;
-    grid-template-<span class="hljs-attribute">columns</span>: minmax(var(--page-grid-gap), auto) [main-start] minmax(<span class="hljs-number">288px</span>, <span class="hljs-number">76.5em</span>) [main-end] minmax(var(--page-grid-gap), auto);
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">max-width</span>: unset;
-  }
-
-  <span class="hljs-comment">// for the moment - we cannot rely on vf-body being applied to the body element so:</span>
-  <span class="hljs-selector-tag">body</span> {
-    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-  }
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1em</span>;
 }
 </code>
         </pre>
@@ -437,7 +423,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-grid-page/vf-grid-page.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.5 KB
+          Size: 928 Bytes
         </li>
       </ul>
     </section>
