@@ -517,6 +517,30 @@ class="vf-logo">
   grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
   <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">60px</span>;
   <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">24px</span>;
+  <span class="hljs-attribute">position</span>: relative;
+
+  &amp;<span class="hljs-selector-pseudo">::before</span> {
+    <span class="hljs-attribute">background-color</span>: inherit;
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">50%</span> - <span class="hljs-number">50vw</span>);
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;
+    <span class="hljs-attribute">z-index</span>: set-layer(vf-z-index--negative);
+  }
+
+  &amp;<span class="hljs-selector-pseudo">::after</span> {
+    <span class="hljs-attribute">background-color</span>: set-color(vf-color--green);
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">8px</span>;
+    <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">50%</span> - <span class="hljs-number">50vw</span>);
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">top</span>: -<span class="hljs-number">8px</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;
+    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">5150</span>;
+  }
 
   <span class="hljs-selector-class">.vf-links</span> {
     <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
@@ -600,7 +624,7 @@ class="vf-logo">
 
     <span class="hljs-attribute">color</span>: set-color(vf-color--grey--lightest);
     <span class="hljs-attribute">text-transform</span>: uppercase;
-  
+
     <span class="hljs-selector-class">.vf-heading__link</span> {
       <span class="hljs-keyword">@include</span> inline-link(
         <span class="hljs-variable">$vf-link--color</span>: <span class="hljs-variable">$vf-footer-link--color</span>,
@@ -610,7 +634,7 @@ class="vf-logo">
     }
   }
 
-  
+
 
   <span class="hljs-selector-class">.vf-links</span> {
     <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">0</span>;
@@ -690,7 +714,7 @@ class="vf-logo">
           Filesystem path: components/vf-footer/vf-footer.scss
         </li>
         <li class="vf-list__item">
-          Size: 3.8 KB
+          Size: 4.2 KB
         </li>
       </ul>
     </section>

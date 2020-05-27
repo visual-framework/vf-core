@@ -50,6 +50,30 @@
   grid-column: 1 / -1;
   padding-bottom: 60px;
   padding-top: 24px;
+  position: relative;
+}
+
+.vf-footer::before {
+  background-color: inherit;
+  content: '';
+  grid-column: 1 / -1;
+  height: 100%;
+  margin-left: calc(50% - 50vw);
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
+}
+
+.vf-footer::after {
+  background-color: #18974c;
+  content: '';
+  height: 8px;
+  margin-left: calc(50% - 50vw);
+  position: absolute;
+  top: -8px;
+  width: 100vw;
+  z-index: 5150;
 }
 
 .vf-footer .vf-links {
