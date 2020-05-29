@@ -15,7 +15,7 @@
   box-sizing: border-box;
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: minmax(var(--page-grid-gap), auto) minmax(auto, $global-page-max-width) minmax(var(--page-grid-gap), auto);
+  width: 100%;
 }
 
 .vf-header {
@@ -51,16 +51,5 @@
     &::before {
       display: none;
     }
-  }
-
-  @media (min-width: $vf-breakpoint--lg) {
-    .vf-masthead__heading {
-      // padding: 0 3rem; // this makes the header have the same spacing as the rest of the inlay
-      padding: 0 1rem;
-    }
-    // .vf-navigation--main {
-    //   box-sizing: border-box;
-    //   padding: 0 3rem; // this is so the first list item lines up
-    // }
   }
 }

@@ -20,6 +20,12 @@
   }
 }
 
+// all vf-text links should be underlined in banners
+.vf-banner__text .vf-banner__link,
+.vf-banner [class*='vf-text'] .vf-link { // as of 1.0.4 use of vf-text is not recommended and is subject to future removal
+  text-decoration: underline;
+}
+
 .vf-banner--blocking {
   display: grid;
   grid-column: 1 / -1;
@@ -47,7 +53,10 @@
 }
 
 .vf-banner__text {
-  @include set-type(text-body--3);
+  @include set-type(text-body--3, $custom-margin-bottom: 0);
+}
+.vf-banner__text--lg {
+  @include set-type(text-body--2, $custom-margin-bottom: 0);
 }
 
 .vf-banner--top {
@@ -60,12 +69,15 @@
 
 .vf-banner--notice {
   background-color: $vf-notice-banner-color--background;
+  border-top: 1px solid $vf-notice-banner-color--border;
 
-  .vf-text {
+  .vf-banner__text,
+  .vf-text { // as of 1.0.4 use of vf-text is not recommended and is subject to future removal
     color: $vf-notice-banner-color--text;
     margin-bottom: 24px;
     max-width: 64em;
 
+    & .vf-banner__link,
     & .vf-link {
       color: $vf-banner-color--link;
     }

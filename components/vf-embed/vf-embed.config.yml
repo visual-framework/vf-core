@@ -1,0 +1,35 @@
+# The title shown on the component page
+title: Embed
+# Label shown on index pages
+label: Embed
+status: live
+context:
+  component-type: block
+  vf_embedded_content: '<iframe src="https://www.youtube.com/embed/nGNvYjYQaaQ?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
+variants:
+  - name: default
+    label: 16x9
+    context:
+      vf_embed_variant_16x9: true
+
+  - name: 4x3
+    context:
+      vf_embed_variant_4x3: true
+
+  - name: 16x9 and max-width
+    context:
+      vf_embed_variant_16x9: true
+      vf_embed_max_width: 480px
+
+  - name: custom
+    context:
+      vf_embed_variant_custom: true
+      vf_embed_custom_ratio_X: 7
+      vf_embed_custom_ratio_Y: 2
+
+  - name: custom and max-width
+    context:
+      vf_embed_max_width: 600px
+      vf_embed_variant_custom: true
+      vf_embed_custom_ratio_X: 11
+      vf_embed_custom_ratio_Y: 4

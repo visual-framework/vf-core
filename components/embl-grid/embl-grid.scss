@@ -29,16 +29,18 @@
     }
   }
   @media (min-width: $vf-breakpoint--sm) {
+    column-gap: var(--page-grid-gap);
     display: grid;
-    grid-column-gap: var(--page-grid-gap);
     /* stylelint-disable declaration-colon-space-after */
     grid-template-columns:
       calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
+      [main-start]
       repeat(auto-fit, minmax(288px, 1fr))
+      [main-end]
     ;
     /* stylelint-enable */
   }
-  
+
 }
 
 .embl-grid--has-centered-content {
@@ -79,7 +81,7 @@
       position: relative;
     }
     & > *:last-child::before {
-      background-color: set-ui-color(vf-ui-color--grey--light);
+      background-color: set-ui-color(vf-ui-color--grey);
       content: '';
       height: 100%;
       left: calc(var(--page-grid-gap) / -2);

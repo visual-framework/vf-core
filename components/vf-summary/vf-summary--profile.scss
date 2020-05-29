@@ -1,5 +1,5 @@
 .vf-summary--profile {
-  grid-column-gap: 16px;
+  column-gap: 16px;
   grid-template-columns: minmax( 0, var(--vf-icon--avatar-width) ) 1fr;
   grid-template-rows: auto;
   margin-bottom: 48px;
@@ -30,7 +30,7 @@
   @include inline-link;
 }
 .vf-summary__link--secondary {
-  @include inline-link($vf-link---secondary-color, $vf-link---secondary-color--hover, $vf-link---secondary-color--visited, $vf-include-normalisations: true);
+  @include inline-link(set-color(vf-color--grey--darkest), set-ui-color(vf-ui-color--black), set-color(vf-color--grey--darkest), $vf-include-normalisations: true);
 }
 
 .vf-summary__image--avatar {

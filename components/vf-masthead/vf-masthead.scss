@@ -1,6 +1,3 @@
-$vf-masthead__title-text--color: set-color(vf-color--grey--darkest);
-$vf-masthead__subtitle-text--color: set-color(vf-color--grey);
-
 // vf-masthead
 
 @import 'package.variables.scss';
@@ -13,29 +10,42 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
  */
 
 .vf-masthead {
-  // --vf-masthead__color--foreround-default: var(--vf-color--grey-darkest);
-  // --vf-masthead__color--background-default: var(--vf-color--green);
-  //
-  // background-color: set-color(vf-color--green);
-  // background-image: var( --vf-masthead__bg-image, none);
-  // background-repeat: no-repeat;
-  // background-size: cover;
+  background-color: set-ui-color(vf-ui-color--white);
+  background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
   color: set-ui-color(vf-ui-color--black);
-
-  // @media (min-width: $vf-breakpoint--lg) {
-  //   padding-top: 48px;
-  // }
+  color: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--black)));
+  padding-bottom: 1.5em;
+  padding-top: 1.5em;
 }
+
+// Variants
+
+.vf-masthead-theme--primary {
+  --vf-masthead__color--background-default: #{set-color(vf-color--blue)};
+  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
+}
+
+.vf-masthead-theme--secondary {
+  --vf-masthead__color--background-default: #{set-color(vf-color--green)};
+  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
+}
+
+.vf-masthead-theme--tertiary {
+  --vf-masthead__color--background-default: #{set-color(vf-color--grey--dark)};
+  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
+}
+
+.vf-masthead--has-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 .vf-masthead__inner {
   display: flex;
   margin: 0 auto;
   max-width: 76.5em;
   width: 100%;
-
-  @media (max-width: $vf-breakpoint--sm) {
-    padding: 1em;
-  }
 }
 
 .vf-masthead__title {
@@ -45,9 +55,8 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
 }
 
 .vf-masthead__heading {
-  @include set-type(text-heading--1, $custom-margin-bottom: 8px);
+  @include set-type(text-heading--1, $custom-margin-bottom: 0);
 
-  color: $vf-masthead__title-text--color;
   display: flex;
   flex-direction: column;
 }
@@ -55,20 +64,11 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
 .vf-masthead__heading--additional {
   @include set-type(text-heading--5, $custom-margin-bottom: 0);
 
-  color: $vf-masthead__subtitle-text--color;
   position: relative;
   top: -4px;
 }
 
-.vf-masthead__sub-heading {
-  @include set-type(text-heading--5);
-
-  color: $vf-masthead__subtitle-text--color;
-}
-
 .vf-masthead__heading__link {
-  @include inline-link($vf-masthead__title-text--color,$vf-masthead__title-text--color,$vf-masthead__title-text--color,$vf-masthead__title-text--color);
-
   color: inherit;
   text-decoration: none;
   z-index: set-layer(vf-z-index--masthead);
@@ -77,7 +77,6 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
 .vf-masthead__subheading {
   @include set-type(text-body--4, $custom-margin-bottom: 0);
 
-  color: $vf-masthead__title-text--color;
   text-transform: uppercase;
 }
 
@@ -87,17 +86,24 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
   z-index: set-layer(vf-z-index--masthead);
 }
 
+
+
 .vf-masthead--with-title-block {
+  display: flex;
+  padding-bottom: 0;
+  padding-top: 60px;
 
   .vf-masthead__title {
-    background-color: set-ui-color(vf-ui-color--black);
+    align-self: flex-end;
+    background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
+    color: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--white)));
     display: inline-flex;
     padding-right: 16px;
     padding-top: 16px;
     position: relative;
 
     &::before {
-      background-color: set-ui-color(vf-ui-color--black);
+      background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
       content: '';
       display: inline-flex;
       flex-direction: column-reverse;
@@ -113,6 +119,10 @@ $vf-masthead__subtitle-text--color: set-color(vf-color--grey);
     z-index: set-layer(vf-z-index--masthead);
   }
 }
+
+
+
+// This is code that should not be used
 
 .vf-masthead__form--search {
   align-self: flex-end;

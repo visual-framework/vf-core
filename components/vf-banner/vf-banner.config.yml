@@ -9,6 +9,31 @@ context:
   vf-data-protection-banner__text: I agree, dismiss this banner
   vf-data-protection-banner__link:
   vf-banner--inline_href: 'JavaScript:Void(0);'
+  alert_icon_text: dismiss
 variants:
+
+  - name: info
+    context:
+      banner__info: true
+      banner__dismissable: true
+      banner__message: Here is some very, <em>very</em> <a class="vf-banner__link" href="JavaScript:Void(0);">important information</a>
+  - name: warning
+    context:
+      banner__warning: true
+      banner__dismissable: true
+      banner__message: Easy now, easy does it.
+  - name: danger
+    context:
+      banner__danger: true
+      banner__dismissable: true
+      banner__message: Oh dear, what have you done?
+  - name: success
+    context:
+      banner__success: true
+      banner__dismissable: true
+      banner__message: Congratulations! You have made something <a class="vf-banner__link" href="JavaScript:Void(0);">awesome</a>!
+
   - name: default
+    hidden: true
+  - name: inline
     hidden: true

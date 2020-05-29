@@ -15,39 +15,48 @@
 }
 .vf-grid > * {
   flex: 1;
-  margin: 10px;
+  margin: 10px 0 10px 1.6339%;
 }
+
+.vf-grid > *:first-child {
+  margin-left: 0;
+}
+
+
 [class*='vf-grid__'] {
   flex-wrap: wrap;
 }
+// Originally the calculations in the flex declarations below were created using CSS calc
+// Unfortunately IE11 (which this flexbox grid is for) does not support calc inside of flex
+// So we've hard coded the percentage values. All other modern browsers get to use grid.
 .vf-grid__col-2 > * {
-  flex: 0 0 calc(50% - 20px);
+  flex: 0 0 49.18305%;
 }
 .vf-grid__col-3 > *{
-  flex: 0 0 calc(33.3333% - 20px);
+  flex: 0 0 32.244066667%;
 }
 .vf-grid__col-4 > * {
-  flex: 0 0 calc(25% - 20px);
+  flex: 0 0 23.774575%;
 }
 .vf-grid__col-5 > * {
-  flex: 0 0 calc(16% - 20px);
+  flex: 0 0 18.69288%;
 }
 .vf-grid__col-6 > * {
-  flex: 0 0 calc(16.666666667% - 20px);
+  flex: 0 0 15.305083333%;
 }
 @media (max-width: 1023px) {
   .vf-grid {
     flex-wrap: wrap;
   }
   .vf-grid > *{
-    flex: 0 0 calc(50% - 20px);
+    flex: 0 0 49.18305%;
   }
 }
 @supports (display: grid) {
   .vf-grid {
+    column-gap: var(--page-grid-gap);
     display: grid;
     grid-column: main;
-    grid-column-gap: var(--page-grid-gap);
   }
 
   @media (min-width: 840px) {
@@ -55,8 +64,17 @@
       grid-auto-flow: column
     }
   }
+  // This rule seems to break things more than it fixes.
+  // @media (max-width: 1299px) {
+  //   .vf-grid {
+  //     grid-column: 1 / -1;
+  //   }
+  // }
+
+  // This is needed for when the vf-grid is nested inside an embl-grid, like the news
+  // home page.
   @media (max-width: 1299px) {
-    .vf-grid {
+    .embl-grid .vf-grid {
       grid-column: 1 / -1;
     }
   }

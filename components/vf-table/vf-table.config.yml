@@ -3,23 +3,106 @@ title: Table
 # Label shown on index pages
 label: Table
 status: alpha
-# The template used from /components/_previews
-#
-# Per-variant options
+
 variants:
   - name: default
     hidden: false
   - name: striped
-  - name: borderless
+    context:
+      striped: true
+  - name: bordered
+    context:
+      bordered: true
   - name: compact
-  - name: data
-  - name: responsive-scroll
-  - name: responsive-stack
+    context:
+      table_variant: "vf-table--tight"
+  - name: loose
+    context:
+      table_variant: "vf-table--loose"
+  - name: has footer
+    context:
+      table_footer:
+        - text: Hello
+          colspans: 3
+        - text: world
+          colspans: 1
+  - name: has caption
+    context:
+      table_caption: Hello Caption
+  - name: has row heading
+    context:
+      firstCellIsHeader: true
+  - name: fixed header
+    context:
+      tableLayoutFixed: true
+  - name: actions
+    context:
+      inline_actions:
+        - edit
+        - delete
+  - name: sortable
+    context:
+      sortable: true
+  - name: selectable
+    context:
+      selectable: true
+  - name: selectable (selected)
+    context:
+      selected: true
+      selectable: true
+      actions:
+        - edit
+        - delete
+        - download
+        - cancel
+  - name: kitchen sink
+    context:
+      table_caption: Hello Caption
+      firstCellIsHeader: true
+      striped: true
+      bordered: true
+      table_footer:
+        - text: Hello
+          colspans: 5
+        - text: world
+          colspans: 1
+      selected: true
+      sortable: true
+      selectable: true
+      inline_actions:
+        - edit
+        - delete
+      actions:
+        - edit
+        - delete
+        - download
+        - cancel
+
 context:
   component-type: block
-  # custom-values: passed as {{custom-values}}
-  # title: Title text
-  # text: String of text
-  # image: ../../assets/vf-component-name/assets/vf-component-name.png
-  # - note on paths: be sure to prefix with `../../`
-  # - Why? https://github.com/visual-framework/vf-core/issues/364
+
+  count: 0
+
+  table_headings:
+    - title: Event
+    - title: Date
+    - title: Type
+    - title: Location
+
+  table_rows:
+    -
+      - selected_row: true
+      - text: dave
+      - text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima accusamus a nostrum odit aliquid repudiandae architecto molestiae, dolores.
+      - text: roger
+      - text: London, U.K.
+    -
+      - text: dave
+      - text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio fugit illo officia dignissimos amet.
+      - text: roger
+      - text: London, U.K.
+    -
+      - text: dave
+      - text: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      - text: roger
+      - text: London, U.K.

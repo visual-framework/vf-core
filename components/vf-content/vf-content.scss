@@ -15,70 +15,86 @@
 .vf-content {
 
   h1:not([class*='vf-']) {
-    @include set-type(text-heading--1);
-
-    margin: 0;
+    @include set-type(text-heading--1, $custom-margin-bottom: 0);
 
     + small {
-      display: block;
       margin-bottom: 35px;
       margin-top: 22px;
+    }
+
+    b,
+    strong {
+      font-weight: inherit;
     }
   }
 
   h2:not([class*='vf-']) {
-    @include set-type(text-heading--2);
+    @include set-type(text-heading--2, $custom-margin-bottom: 39px);
 
-    display: block;
-    margin-bottom: 39px;
     margin-top: 0;
     padding-top: 13px;
+
+    b,
+    strong {
+      font-weight: inherit;
+    }
   }
 
   h3:not([class*='vf-']) {
-    @include set-type(text-heading--3);
+    @include set-type(text-heading--3, $custom-margin-bottom: 13px);
 
-    display: block;
-    margin: 24px 0 13px 0;
+    margin-top: 24px;
+
+    b,
+    strong {
+      font-weight: inherit;
+    }
   }
 
   h4:not([class*='vf-']) {
-    @include set-type(text-heading--4);
+    @include set-type(text-heading--4, $custom-margin-bottom: 13px);
 
-    display: block;
-    margin: 24px 0 13px;
+    margin-top: 24px;
+
+    b,
+    strong {
+      font-weight: inherit;
+    }
   }
 
   h5:not([class*='vf-']) {
-    @include set-type(text-heading--5);
+    @include set-type(text-heading--5, $custom-margin-bottom: 13px);
 
-    display: block;
-    margin: 24px 0 13px;
+    margin-top: 24px;
+
+    b,
+    strong {
+      font-weight: inherit;
+    }
   }
 
   h6:not([class*='vf-']) {
-    @include set-type(text-heading--5);
+    @include set-type(text-heading--5, $custom-margin-bottom: 13px);
 
-    display: block;
-    margin: 24px 0 13px;
+    margin-top: 24px;
+
+    b,
+    strong {
+      font-weight: inherit;
+    }
   }
 
   p:not([class*='vf-']) {
-    @include set-type(text-body--2);
-
-    margin: 0 0 24px 0;
+    @include set-type(text-body--2, $custom-margin-bottom: 24px);
   }
 
+  .vf-link,
   a:not([class*='vf-']) {
-    @include inline-link;
-
-    &:visited {
-      color: $vf-link--visited-color;
-    }
-
-    &:hover {
-      color: $vf-link--hover-color;
-    }
+    @include inline-link(
+      $vf-link--hover-color: $vf-link--hover-color,
+      $vf-link--visited-color: set-color(vf-color--purple),
+      $vf-include-normalisations: true
+    );
   }
 
   small:not([class*='vf-']) {
@@ -122,6 +138,74 @@
 
   blockquote:not([class*='vf-']) {
     @include blockquote;
+
+    p:last-of-type:not([class*='vf-']) {
+      margin-bottom: 0;
+    }
+  }
+
+  table:not([class*='vf-']) {
+    background-color: set-ui-color(vf-ui-color--white);
+    border-collapse: collapse;
+
+    caption {
+      @include set-type(text-heading--4);
+
+      text-align: left;
+    }
+
+    thead {
+      background-color: set-color(vf-color--grey--lightest);
+
+      th {
+        @include set-type(text-heading--5, $custom-margin-bottom: 0);
+
+        padding: 8px 16px;
+        text-align: left;
+      }
+    }
+
+    td {
+      @include set-type(text-body--2, $custom-margin-bottom: 0);
+
+      padding: 8px 16px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    tr:nth-of-type(even) {
+      background-color: set-ui-color(vf-ui-color--grey--light);
+    }
+    tfoot {
+      background-color: set-color(vf-color--grey--lightest);
+      border-top: 1px solid set-ui-color(vf-ui-color--black);
+
+      td {
+        padding: 8px 16px;
+      }
+    }
+  }
+
+  figcaption:not([class*='vf-']),
+  cite:not([class*='vf-']) {
+    // matches @mixin figure, but that is not directly usable here as it requires css classes
+    @include set-type(text-body--5);
+    color: map-get($vf-colors-map, vf-color--grey);
+    font-style: italic;
+  }
+
+  .vf-video {
+    // TODO: Make a function for vf-spacing map
+    margin-bottom: 32px;
+  }
+
+  .vf-figure--align-inline-start {
+    margin-bottom: 32px;
+    margin-right: 32px;
+  }
+  .vf-figure--align-inline-end {
+    margin-bottom: 32px;
+    margin-left: 32px;
   }
 }
 
@@ -137,5 +221,19 @@
 
   + small {
     margin-bottom: 42px;
+  }
+}
+
+
+[class*='--dark'].vf-content,
+.vf-content > [class*='dark'] {
+  .vf-link,
+  a:not([class*='vf-']) {
+    @include inline-link(
+      $vf-link--dark-mode--hover-color,
+      $vf-link--dark-mode--hover-color,
+      set-color(vf-color--purple--light),
+      $vf-include-normalisations: true
+    );
   }
 }

@@ -1,15 +1,7 @@
-# 0.1.0
+# Change Log
 
-### Added
-- added this
-- added that
+## 1.0.0-alpha.1
 
-### Changes
-
-- changed this
-- changed that
-
-### Removed
-
-- deleted this
-- deleted that
+* added this
+* changed this
+* deleted that

@@ -1,44 +1,25 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## 1.0.2
 
-# 1.0.0-alpha.9 (2019-11-14)
+* reduces vertical padding so both start and end are the same value
 
-**Note:** Version bump only for package @visual-framework/vf-masthead
+## 1.0.2
 
+* replaces foreround with foreground
 
+## 1.0.1
 
+* Lerna Release bump
 
+## 1.0.0
 
-# 1.0.0-alpha.8 (2019-10-23)
+* Removes --vf-masthead specifc colours
+* Adds primary, secondary, tertiary themes
+* tidies up component to be one template
+* updates documentation
+* removed search
 
-**Note:** Version bump only for package @visual-framework/vf-masthead
+## 1.0.0-rc.2
 
-
-
-
-
-# 1.0.0-alpha.7 (2019-09-30)
-
-**Note:** Version bump only for package @visual-framework/vf-masthead
-
-
-
-
-
-# 0.1.0
-
-### Added
-- added this
-- added that
-
-### Changes
-
-- changed this
-- changed that
-
-### Removed
-
-- deleted this
-- deleted that
+* Simplify grid

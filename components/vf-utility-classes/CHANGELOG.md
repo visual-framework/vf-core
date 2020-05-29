@@ -1,12 +1,18 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## 1.0.3
 
-# 1.0.1 (2020-01-24)
+* adds utility classes for grid row/columns spans and start positions
+
+## 1.0.2
+
+* the one that removes a parent class for the screen reader only class #847
+  * https://github.com/visual-framework/vf-core/pull/847
+
+## 1.0.1 (2020-01-24)
 
 * Adds .vf-u-text--break
 
-# 1.0.0 (2019-12-17)
+## 1.0.0 (2019-12-17)
 
 * Initial stable release

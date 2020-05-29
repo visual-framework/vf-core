@@ -1,15 +1,5 @@
-# 0.1.0
+# Change Log
 
-### Added
-- added this
-- added that
+## 1.0.0-beta.2
 
-### Changes
-
-- changed this
-- changed that
-
-### Removed
-
-- deleted this
-- deleted that
+* Resolves changes in other VF components, spacing, links, etc. 

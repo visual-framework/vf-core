@@ -27,6 +27,7 @@ $button-hover-fix: -5px -5px rgba(0, 0, 0, 0);
   border: 4px solid set-ui-color(vf-ui-color--black);
   border: 4px solid var(--vf-button-border-color, var(--vf-button__color__background--default));
   box-shadow: 8px 8px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), $button-hover-fix;
+  color: set-ui-color(vf-ui-color--white); // fallback, IE
   color: var(--vf-button-text-color, set-ui-color(vf-ui-color--white));
   cursor: pointer;
   display: inline-block;
@@ -98,9 +99,12 @@ a.vf-button {
 
 .vf-button--outline {
   --vf-button-background-color: #{set-ui-color(vf-ui-color--white)};
+  color: set-color(vf-color--blue); // fallback, IE
   color: var(--vf-button-border-color, var(--vf-button__color__background--default) );
 
+  &:focus,
   &:hover {
+    color: set-color(vf-color--blue); // fallback, IE
     color: var(--vf-button-border-color);
   }
 }
@@ -133,6 +137,24 @@ a.vf-button {
 
   padding: 16px;
 }
+
+.vf-button--icon {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  color: currentColor;
+  cursor: pointer;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  transform: none;
+  &:focus,
+  &:hover {
+    box-shadow: none;
+    transform: none;
+  }
+}
+
 
 // Begin deprecated classes and styles
 html:not(.vf-disable-deprecated) {
