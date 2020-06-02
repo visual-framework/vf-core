@@ -27,7 +27,7 @@
   margin-bottom: 2rem;
   position: relative;
 
-  &:not(.vf-hero--easy) {
+  &:not(.vf-hero--very-easy) {
     &::before {
       background-image: var(--vf-hero-bg-image);
       content: '';
@@ -36,8 +36,9 @@
       background-position: top center;
       background-repeat: no-repeat;
       background-size: cover;
+      margin-left: calc(50% - 50vw);
       height: 348px;
-      width: 100%;
+      width: 100vw;
     }
   }
 
@@ -58,7 +59,7 @@
 .vf-hero__content {
   // only needed when text is centered
   padding: 1em;
-  width: calc(100% - 24%);
+  width: calc(100% - 33%);
 }
 
 .vf-hero__heading {
@@ -68,6 +69,19 @@
   display: inline-block;
   margin: 0;
   padding: .5em;
+}
+
+.vf-hero__subheading {
+
+  @include set-type(text-heading--4, $custom-margin-bottom: 0);
+
+  background-color: rgb(calc( (0 + var(--vf-hero-heading-bg-color) ) * 255), calc( (0 + var(--vf-hero-heading-bg-color) ) * 255), calc( (0 + var(--vf-hero-heading-bg-color) ) * 255));
+  box-sizing: border-box;
+  color: rgb(calc( (0 + var(--vf-hero-heading-text-color) ) * 255), calc( (0 + var(--vf-hero-heading-text-color) ) * 255), calc( (0 + var(--vf-hero-heading-text-color) ) * 255));
+  display: inline-block;
+  margin: 0 !important; // needed until we can safely remove `vf-summary__title` from markup
+  padding: .5em;
+  width: 100%;
 }
 
 .vf-hero__text {
@@ -203,10 +217,94 @@
 
 .vf-hero--extreme {
   --vf-hero-bg-color: 1;
+  --vf-hero-grid__row: 348px;
   --vf-hero-text-bg-color: 1;
   --vf-hero-text-color: 0;
   --vf-hero-content-box-shadow: none;
 }
+
+
+.vf-hero--intense {
+  --vf-hero__content-bg-color: 1;
+  --vf-hero-heading-text-color: 0;
+  --vf-hero-text-bg-color: 1;
+  --vf-hero-text-color: 0;
+  --vf-hero-content-box-shadow: none;
+  --vf-hero__padding: 20;
+
+  background-image: var(--vf-hero-bg-image);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-template-rows: auto;
+
+  padding: 80px 0 64px 0;
+
+  .vf-hero__content {
+    grid-row: 1;
+  }
+
+  .vf-hero__heading {
+    font-size: 36px;
+    padding: 0 0 1rem;
+  }
+
+  .vf-hero__subheading.vf-summary__title {
+    padding: 0 0 1rem;
+  }
+
+  .vf-hero__text {
+    font-weight: 500;
+    padding: 0;
+  }
+
+  .vf-hero__content {
+    box-sizing: border-box;
+    height: min-content;
+    width: 100%;
+  }
+
+  .vf-link {
+    color: set-color(vf-color--blue);
+    display: block;
+    text-decoration: none;
+
+    svg {
+      fill: currentColor;
+      align-self: center;
+      margin-left: 8px;
+      transform: translate(0, 4px);
+      transition-duration: 125ms;
+      transition-timing-function: cubic-bezier(.45,.05,.55,.95);
+    }
+
+    &:hover {
+      color: set-color(vf-color--blue);
+      text-decoration: underline;
+
+      svg {
+        transform: translate(2px, 4px);
+      }
+    }
+  }
+
+  @media (min-width: $vf-breakpoint--md) {
+    padding: 160px 0 128px 0;
+  }
+
+  @media (min-width: $vf-breakpoint--lg) {
+    .vf-hero__heading {
+      font-size: 48px;
+      font-weight: 600;
+    }
+  }
+  @media (min-width: $vf-breakpoint--xl) {
+    .vf-hero__content {
+      max-width: 60%;
+    }
+  }
+}
+
 
 .vf-hero-theme--primary {
   --vf-hero-text-bg-color--r: #{red(set-color(vf-color--green))};
