@@ -71,6 +71,19 @@
   padding: .5em;
 }
 
+.vf-hero__subheading {
+
+  @include set-type(text-heading--4, $custom-margin-bottom: 0);
+
+  background-color: rgb(calc( (0 + var(--vf-hero-heading-bg-color) ) * 255), calc( (0 + var(--vf-hero-heading-bg-color) ) * 255), calc( (0 + var(--vf-hero-heading-bg-color) ) * 255));
+  box-sizing: border-box;
+  color: rgb(calc( (0 + var(--vf-hero-heading-text-color) ) * 255), calc( (0 + var(--vf-hero-heading-text-color) ) * 255), calc( (0 + var(--vf-hero-heading-text-color) ) * 255));
+  display: inline-block;
+  margin: 0 !important; // needed until we can safely remove `vf-summary__title` from markup
+  padding: .5em;
+  width: 100%;
+}
+
 .vf-hero__text {
   @include set-type(text-body--2);
   margin-bottom: 0;
@@ -233,8 +246,11 @@
 
   .vf-hero__heading {
     font-size: 36px;
-    margin: 0 0 16px 0;
-    padding: 0;
+    padding: 0 0 1rem;
+  }
+
+  .vf-hero__subheading.vf-summary__title {
+    padding: 0 0 1rem;
   }
 
   .vf-hero__text {
