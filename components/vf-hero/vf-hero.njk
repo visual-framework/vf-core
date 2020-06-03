@@ -1,12 +1,19 @@
-<section class="vf-hero {{ modifier_class }}"{% if vf_hero_image %}style="--vf-hero-bg-image: {{vf_hero_image}}{% endif %}">
+<section
+  class="vf-hero {{ modifier_class }}"
+  style="
+  {% if vf_hero_image %}--vf-hero-bg-image: {{vf_hero_image}}{% endif %}
+  {% if hero__initial_row %} --vf-hero-grid__row: {{hero__initial_row}}{% endif %}"
+>
   <div class="vf-hero__content">
     {% if vf_hero_heading %} <h2 class="vf-hero__heading">{{ vf_hero_heading }}</h2>{% endif %}
-    {%- if (vf_hero_summary_title) or (vf_hero_subheading) %}
-      <p class="[ vf-summary__title ] vf-hero__subheading" role="doc-subtitle">{{ vf_hero_summary_title }}{{ vf_hero_subheading }}</p>
-    {% endif %}
+    {% if (vf_hero_summary_title) or (vf_hero_subheading) %}<p class="[ vf-summary__title ] vf-hero__subheading">{{ vf_hero_summary_title }}{{vf_hero_subheading}}</p>{% endif %}
     {% if vf_hero_href %}
     <p class="vf-hero__text">
+      {%- if vf_hero_href %}
       <a class="vf-link" href="{{ vf_hero_href }}">{{ vf_hero_text }}<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a>
+      {% else %}
+      {{ vf_hero_text }}
+      {% endif %}
     </p>
     {% else %}
     {% asyncEach hero_text in vf_hero_text -%}
@@ -18,7 +25,7 @@
   </div>
 
   {% if modifier_class === "vf-hero--intense" %}
-  <script defer="defer" src="{{ '../../assets/vf-hero/assets/jarallax.js'  | path }}"></script>
+  <script defer="defer" src="../../assets/vf-hero/assets/jarallax.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function(){
       jarallax(document.querySelectorAll('.vf-hero--intense'), {
@@ -26,5 +33,5 @@
       });
     });
   </script>
-{% endif %}
+  {% endif %}
 </section>

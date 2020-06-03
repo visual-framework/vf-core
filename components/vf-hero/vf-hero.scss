@@ -12,6 +12,9 @@
 @import 'vf-hero.variables.scss';
 
 .vf-hero {
+
+  --vf-hero-content-box-shadow: none;
+
   background-color: set-ui-color(vf-ui-color--white);
   background-color: rgba(
     calc( (0 + var(--vf-hero-bg-color) ) * 255),
@@ -23,7 +26,7 @@
 
   display: grid;
   grid-template-columns: minmax(var(--page-grid-gap), auto) [hero-start] minmax(288px, 76.5em) [hero-end] minmax(var(--page-grid-gap), auto);
-  grid-template-rows: var(--vf-hero-grid__row, 260px) max-content;
+  grid-template-rows: calc(var(--vf-hero-grid__row, var(--vf-hero-grid__row, 260px)) * var(--vf-hero-grid-row--multiplier, .6)) max-content;
   margin-bottom: 2rem;
   position: relative;
 
@@ -37,29 +40,36 @@
       background-repeat: no-repeat;
       background-size: cover;
       margin-left: calc(50% - 50vw);
-      height: 348px;
+      height: var(--vf-hero-grid__row, 320px);
       width: 100vw;
     }
   }
 
-  a {
-    color: set-ui-color(vf-ui-color--black);
-  }
-  a:focus,
-  a:hover,
-  a:visited {
-    color: set-ui-color(vf-ui-color--black);
-  }
+  .vf-link {
+    color: inherit;
+    display: inline-block;
 
-  .vf-hero__content {
-    grid-column: 2 / span 1;
+    svg {
+      fill: currentColor;
+      margin-left: .5rem;
+    }
+
+    &:focus,
+    &:hover,
+    &:visited {
+      color: inherit;
+
+      svg {
+        transform: translateX(.25rem);
+      }
+    }
   }
 }
 
 .vf-hero__content {
-  // only needed when text is centered
-  padding: 1em;
-  width: calc(100% - 33%);
+  grid-column: 2 / span 1;
+  max-width: 760px;
+  width: 100%;
 }
 
 .vf-hero__heading {
@@ -68,7 +78,7 @@
   // positions to the left
   display: inline-block;
   margin: 0;
-  padding: .5em;
+  padding: 1rem .5rem .5rem;
 }
 
 .vf-hero__subheading {
@@ -80,24 +90,19 @@
   color: rgb(calc( (0 + var(--vf-hero-heading-text-color) ) * 255), calc( (0 + var(--vf-hero-heading-text-color) ) * 255), calc( (0 + var(--vf-hero-heading-text-color) ) * 255));
   display: inline-block;
   margin: 0 !important; // needed until we can safely remove `vf-summary__title` from markup
-  padding: .5em;
+  padding: .5rem;
   width: 100%;
 }
 
 .vf-hero__text {
   @include set-type(text-body--2);
+  line-height: 2;
   margin-bottom: 0;
-
-  padding: 1em .5em;
+  padding: .5rem;
 }
 
 
 .vf-hero {
-
-  --vf-hero-content-box-shadow:
-    2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
-   -2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
-    0 2px 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0));
   --vf-hero__padding: 0;
 
   --vf-hero-content-shadow-alpha: .1;
@@ -181,6 +186,10 @@
 }
 
 .vf-hero--easy {
+  --vf-hero-content-box-shadow:
+    2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
+   -2px 0 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0)),
+    0 2px 3px rgba(0, 0, 0, var(--vf-hero-content-shadow-alpha, 0));
   --vf-hero__content-bg-color: 1;
   --vf-hero-bg-color: 1;
 
@@ -205,6 +214,7 @@
 
 .vf-hero--hard {
   --vf-hero-bg-color: 1;
+  --vf-hero-grid-row--multiplier: 1;
   --vf-hero-grid__row: 348px;
   --vf-hero-content-box-shadow: none;
 
@@ -249,7 +259,9 @@
     padding: 0 0 1rem;
   }
 
-  .vf-hero__subheading.vf-summary__title {
+  .vf-hero__subheading.vf-summary__title,
+  .vf-summary__title,
+  .vf-hero__subheading {
     padding: 0 0 1rem;
   }
 
@@ -261,11 +273,10 @@
   .vf-hero__content {
     box-sizing: border-box;
     height: min-content;
-    width: 100%;
   }
 
   .vf-link {
-    color: set-color(vf-color--blue);
+    color: inherit;
     display: block;
     text-decoration: none;
 
@@ -283,6 +294,7 @@
       text-decoration: underline;
 
       svg {
+        color: set-color(vf-color--blue) !important;
         transform: translate(2px, 4px);
       }
     }
@@ -298,11 +310,6 @@
       font-weight: 600;
     }
   }
-  @media (min-width: $vf-breakpoint--xl) {
-    .vf-hero__content {
-      max-width: 60%;
-    }
-  }
 }
 
 
@@ -312,9 +319,7 @@
   --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--green))};
 
   --vf-hero-text-color: 1;
-  a {
-    color: white;
-  }
+
   a:focus,
   a:hover,
   a:visited {
@@ -353,9 +358,7 @@
   --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--blue))};
 
   --vf-hero-text-color: 1;
-  a {
-    color: set-ui-color(vf-ui-color--white);
-  }
+
   a:focus,
   a:hover,
   a:visited {
@@ -388,9 +391,6 @@
 .vf-hero-theme--tertiary {
   // placeholder
 
-  a {
-    color: set-ui-color(vf-ui-color--white);
-  }
   a:focus,
   a:hover,
   a:visited {
