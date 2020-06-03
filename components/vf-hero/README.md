@@ -11,7 +11,7 @@ The `vf-hero` component is to be used as a visual queue and page header. The `vf
 
 `--vf-hero-bg-image` — this is for the url for the background image. It can either be added, inline if you're writing the HTML, using the `.yml` data source of `vf_hero_image`, or by other needs (a input or upload in WordPress, for example).
 
-`--vf-hero-grid__row` — This is used to represent the heigh of the image and helps calculate the position of the content, depending on the variant you have chosen.
+`--vf-hero-grid__row--initial` — This is used to represent the heigh of the image and helps calculate the position of the content, depending on the variant you have chosen.
 
 ## Install
 
