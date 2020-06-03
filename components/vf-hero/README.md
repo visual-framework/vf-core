@@ -2,13 +2,16 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-hero.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-hero)
 
-This component is early-alpha, it has a few known to-be-dones:
+## Usage
 
-- Responsive layout
-- Full variants
-- Full Nunjucks templates
-- Sass is early and subject to change
-- Image height currently must be 348px 
+The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a heading, sub-heading, and text content. The text content can also be a link which adds am arrow icon.
+
+
+### CSS Custom Properties
+
+`--vf-hero-bg-image` — this is for the url for the background image. It can either be added, inline if you're writing the HTML, using the `.yml` data source of `vf_hero_image`, or by other needs (a input or upload in WordPress, for example).
+
+`--vf-hero-grid__row--initial` — This is used to represent the heigh of the image and helps calculate the position of the content, depending on the variant you have chosen.
 
 ## Install
 

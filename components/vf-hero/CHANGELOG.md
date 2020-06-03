@@ -1,3 +1,12 @@
+# 1.4.0
+
+* Adds ability to specify height of the image.
+* Improves leading for text with link icon.
+* Gives content a max-width to remove need for Media Query.
+* Makes the positioning of the content depend upon the image height.
+* small update to documentation.
+
+
 # 1.3.1
 
 * reverts naming convention for background image reference to vf_hero_image.
