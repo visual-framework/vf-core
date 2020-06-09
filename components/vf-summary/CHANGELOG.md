@@ -3,9 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.0.3
+
+* fixes the size of avatars to be consistnet.
+* adds word-break: break-all for long emails.
+
 # 1.0.2
 
-* adds vf-summary--event, vf-summary--easy 
+* adds vf-summary--event, vf-summary--easy
 
 
 # 1.0.1 (2020-01-24)
