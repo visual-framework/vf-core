@@ -5,11 +5,13 @@
   margin-bottom: 48px;
 
   .vf-summary__image{
-    align-self: center;
+    align-self: start;
     grid-column: 1 / span 1;
     grid-row: 1 / span 6;
+    height: 100%;
     margin-right: 30px;
-    max-width: 170px;
+    max-height: var(--vf-icon--avatar-width);
+    max-width: var(--vf-icon--avatar-width);
     width: 100%;
   }
 
@@ -42,6 +44,7 @@
   --vf-text-margin--bottom: 24px;
 
   @include set-type($vf-summary__body-typography);
+  word-break: break-all;
 }
 
 

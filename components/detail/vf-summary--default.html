@@ -431,9 +431,14 @@ class="vf-logo">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+<span class="hljs-section"># 1.0.3</span>
+<span class="hljs-bullet">
+* </span>fixes the size of avatars to be consistnet.
+<span class="hljs-bullet">* </span>adds word-break: break-all for long emails.
+
 <span class="hljs-section"># 1.0.2</span>
 <span class="hljs-bullet">
-* </span>adds vf-summary--event, vf-summary--easy 
+* </span>adds vf-summary--event, vf-summary--easy
 
 
 <span class="hljs-section"># 1.0.1 (2020-01-24)</span>
@@ -458,7 +463,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-summary/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 327 Bytes
+          Size: 428 Bytes
         </li>
       </ul>
     </section>
@@ -939,11 +944,13 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">48px</span>;
 
   <span class="hljs-selector-class">.vf-summary__image</span>{
-    <span class="hljs-attribute">align-self</span>: center;
+    <span class="hljs-attribute">align-self</span>: start;
     grid-column: <span class="hljs-number">1</span> / span <span class="hljs-number">1</span>;
     grid-row: <span class="hljs-number">1</span> / span <span class="hljs-number">6</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
     <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">30px</span>;
-    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">170px</span>;
+    <span class="hljs-attribute">max-height</span>: var(--vf-icon--avatar-width);
+    <span class="hljs-attribute">max-width</span>: var(--vf-icon--avatar-width);
     <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
   }
 
@@ -976,6 +983,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
   --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">24px</span>;
 
   <span class="hljs-keyword">@include</span> set-type(<span class="hljs-variable">$vf-summary__body-typography</span>);
+  <span class="hljs-attribute">word-break</span>: break-all;
 }
 
 
@@ -1058,7 +1066,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-summary/vf-summary--profile.scss
         </li>
         <li class="vf-list__item">
-          Size: 2 KB
+          Size: 2.1 KB
         </li>
       </ul>
     </section>
@@ -1335,7 +1343,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
 }
 
 <span class="hljs-selector-class">.vf-summary--profile</span> {
-  --vf-<span class="hljs-attribute">icon</span>--avatar-<span class="hljs-attribute">width</span>: <span class="hljs-number">178px</span>;
+  --vf-<span class="hljs-attribute">icon</span>--avatar-<span class="hljs-attribute">width</span>: <span class="hljs-number">160px</span>;
 }
 
 <span class="hljs-comment">// ------------------------------------------------------------</span>

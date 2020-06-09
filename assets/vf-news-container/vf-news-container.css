@@ -189,7 +189,7 @@
 }
 
 .vf-summary--profile {
-  --vf-icon--avatar-width: 178px;
+  --vf-icon--avatar-width: 160px;
 }
 
 .vf-summary {
@@ -345,11 +345,13 @@
 }
 
 .vf-summary--profile .vf-summary__image {
-  align-self: center;
+  align-self: start;
   grid-column: 1 / span 1;
   grid-row: 1 / span 6;
+  height: 100%;
   margin-right: 30px;
-  max-width: 170px;
+  max-height: var(--vf-icon--avatar-width);
+  max-width: var(--vf-icon--avatar-width);
   width: 100%;
 }
 
@@ -420,6 +422,7 @@
   line-height: 1.421;
   margin: 0 0 16px 0;
   margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+  word-break: break-all;
 }
 
 .vf-summary__phone {
