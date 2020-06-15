@@ -283,8 +283,8 @@ class="vf-logo">
 <p>If the <code>vf-summary__author</code> list is truncated to a certain number of authors you will need to add vf-u-text–et-al to the <code>&lt;p&gt;</code> - <code>&lt;p class=&quot;vf-summary__author | vf-u-text--et-al&quot;&gt;</code> - for it to add et al to the end of the list.</p>
 <h2 id="install">Install</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-summary</code> with this command.</p>
-<pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-summary</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-summary/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code class="hljs">$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-summary</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<pre><code class="hljs"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-summary/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -314,15 +314,16 @@ class="vf-logo">
   
   <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary vf-summary--job"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__meta"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__link"</span>&gt;</span>Science Faculty<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> in
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__link"</span>&gt;</span>Science Faculty<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        in
         <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__link"</span>&gt;</span>Heidelberg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__title"</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__link"</span>&gt;</span>
-      Group Leader - Cell and Biophysics
-    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            Group Leader - Cell and Biophysics
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 
     <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
 
@@ -369,12 +370,6 @@ class="vf-logo">
       
       <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--fbf88c8594bd545a4480964bc38f5f11">package.json</a>
-      </li>
-      
-    
-      
-      <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--cc7b15cf3d9cda46aa17dcc360f0934e">vf-summary--job.scss</a>
       </li>
       
     
@@ -534,59 +529,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         </li>
         <li class="vf-list__item">
           Size: 665 Bytes
-        </li>
-      </ul>
-    </section>
-    
-  
-    
-    <section class="vf-tabs__section" id="vf-tabs__section--cc7b15cf3d9cda46aa17dcc360f0934e">
-      <div class="FileBrowser-itemPreview">
-        
-        <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-selector-class">.vf-summary--job</span> {
-
-  grid-template-<span class="hljs-attribute">columns</span>: auto <span class="hljs-number">1</span>fr;
-
-  <span class="hljs-selector-class">.vf-summary__date</span> {
-    <span class="hljs-attribute">align-self</span>: center;
-
-    <span class="hljs-selector-tag">span</span> {
-      <span class="hljs-attribute">color</span>: set-color(vf-color--red);
-    }
-  }
-
-  <span class="hljs-selector-class">.vf-summary__meta</span> {
-    --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">4px</span>;
-
-    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-  }
-
-  <span class="hljs-selector-class">.vf-summary__text</span> {
-    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-  }
-
-  <span class="hljs-selector-class">.vf-summary__title</span> {
-    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
-  }
-
-}
-</code>
-        </pre>
-        
-      </div>
-
-      <h3 class="vf-text vf-text-heading--4">File information</h3>
-      <ul class="vf-list vf-list--unordered">
-        <li class="vf-list__item">
-          URL:
-          <a data-no-pjax href="../raw/vf-summary/vf-summary--job.scss">/components/raw/vf-summary/vf-summary--job.scss</a>
-        </li>
-        <li class="vf-list__item">
-          Filesystem path: components/vf-summary/vf-summary--job.scss
-        </li>
-        <li class="vf-list__item">
-          Size: 359 Bytes
         </li>
       </ul>
     </section>

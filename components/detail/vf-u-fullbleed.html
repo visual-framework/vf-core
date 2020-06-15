@@ -147,12 +147,12 @@ class="vf-logo">
 <li>using a background colour utility class.</li>
 </ul>
 <p>For example:</p>
-<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-content | embl-grid embl-grid--has-centered-content | vf-u-fullbleed | vf-u-background-color--blue"</span>&gt;</span>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-content | embl-grid embl-grid--has-centered-content | vf-u-fullbleed | vf-u-background-color--blue"</span>&gt;</span>
   ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></code></pre><h3 id="notes">Notes:</h3>
 <p>Browsers running on Windows tend to have scrollbars always showing. There is a small bug with the <code>vw</code> unit where the calculations leading to <code>100vw</code> could create a horizontal scroll bar. To avoid this, without using JavaScript. We need to apply the CSS rule of <code>overflow-x: hidden;</code> to a parent element.</p>
 <p>As we are making all components their own installable package we have added the required CSS to this component rather than relying on additional packages. Making use of Sass <code>@at-root</code> directive and defining what element to add the rule too. The variable used for this is <code>$vf-u-fullbleed-parent</code>. This is set to <code>body</code> as the default but can be overridden in your projects overriding Sass variables file (which needs to be near the top of the import file).</p>
-<pre><code><span class="hljs-selector-class">.vf-u-fullbleed</span> {
+<pre><code class="hljs"><span class="hljs-selector-class">.vf-u-fullbleed</span> {
   <span class="hljs-variable">$vf-u-fullbleed-parent</span>: body !defualt;
 
   ...
@@ -163,9 +163,9 @@ class="vf-logo">
 }</code></pre><p>This has been test with sites using VF1.x and no problems have been found. If you find an issue with this component being used alongside pages built with VF1.x please <a href="https://github.com/visual-framework/vf-core/issues/new?title=BUG%3A+vf-u-bleed&amp;assignees=sturobson">raise an issue</a>.</p>
 <h2 id="install">Install</h2>
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-u-fullbleed</code> with this command.</p>
-<pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-u-fullbleed</span></code></pre><h2 id="usage">Usage</h2>
+<pre><code class="hljs">$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-u-fullbleed</span></code></pre><h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-u-fullbleed/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code class="hljs"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-u-fullbleed/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   

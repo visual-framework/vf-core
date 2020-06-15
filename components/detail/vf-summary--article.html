@@ -283,8 +283,8 @@ class="vf-logo">
 <p>If the <code>vf-summary__author</code> list is truncated to a certain number of authors you will need to add vf-u-text–et-al to the <code>&lt;p&gt;</code> - <code>&lt;p class=&quot;vf-summary__author | vf-u-text--et-al&quot;&gt;</code> - for it to add et al to the end of the list.</p>
 <h2 id="install">Install</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-summary</code> with this command.</p>
-<pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-summary</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-summary/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code class="hljs">$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-summary</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<pre><code class="hljs"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-summary/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -331,8 +331,7 @@ class="vf-logo">
         <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__link"</span>&gt;</span>Leave Comment<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__text"</span>&gt;</span>I want to take a look back at my first full year as EMBL's social media manager. So what worked best over 2017 and what can I learn from this? My basic goals for VF’s social media are to build community and develop a shared understanding of who we
-        as an organisation are. Consequently, I care about what resonates on the different social sites much more than driving traffic back to Visual Framework websites, although traffic is obviously a by-product.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-summary__text"</span>&gt;</span>I want to take a look back at my first full year as EMBL's social media manager. So what worked best over 2017 and what can I learn from this? My basic goals for VF’s social media are to build community and develop a shared understanding of who we as an organisation are. Consequently, I care about what resonates on the different social sites much more than driving traffic back to Visual Framework websites, although traffic is obviously a by-product.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span>
 </code></pre>
@@ -369,12 +368,6 @@ class="vf-logo">
       
       <li class="vf-tabs__item">
         <a class="vf-tabs__link" href="#vf-tabs__section--fbf88c8594bd545a4480964bc38f5f11">package.json</a>
-      </li>
-      
-    
-      
-      <li class="vf-tabs__item">
-        <a class="vf-tabs__link" href="#vf-tabs__section--00b327f84c53fa6808fa271a93be1048">vf-summary--article.scss</a>
       </li>
       
     
@@ -534,53 +527,6 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
         </li>
         <li class="vf-list__item">
           Size: 665 Bytes
-        </li>
-      </ul>
-    </section>
-    
-  
-    
-    <section class="vf-tabs__section" id="vf-tabs__section--00b327f84c53fa6808fa271a93be1048">
-      <div class="FileBrowser-itemPreview">
-        
-        <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-selector-class">.vf-summary--article</span> {
-
-  <span class="hljs-selector-class">.vf-summary__date</span> {
-    <span class="hljs-attribute">margin-left</span>: <span class="hljs-variable">$vf-summary--article__date-margin-left</span>;
-    <span class="hljs-attribute">margin-right</span>: <span class="hljs-variable">$vf-summary--article__date-margin-right</span>;
-    <span class="hljs-attribute">position</span>: relative;
-  }
-
-  <span class="hljs-selector-class">.vf-summary__meta</span> {
-    <span class="hljs-attribute">align-items</span>: center;
-    <span class="hljs-attribute">display</span>: flex;
-
-    &gt; * {
-      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
-    }
-  }
-
-  <span class="hljs-selector-class">.vf-summary__title</span> {
-    --vf-text-<span class="hljs-attribute">margin</span>--<span class="hljs-attribute">bottom</span>: <span class="hljs-number">4px</span>;
-  }
-}
-</code>
-        </pre>
-        
-      </div>
-
-      <h3 class="vf-text vf-text-heading--4">File information</h3>
-      <ul class="vf-list vf-list--unordered">
-        <li class="vf-list__item">
-          URL:
-          <a data-no-pjax href="../raw/vf-summary/vf-summary--article.scss">/components/raw/vf-summary/vf-summary--article.scss</a>
-        </li>
-        <li class="vf-list__item">
-          Filesystem path: components/vf-summary/vf-summary--article.scss
-        </li>
-        <li class="vf-list__item">
-          Size: 367 Bytes
         </li>
       </ul>
     </section>

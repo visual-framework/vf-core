@@ -225,26 +225,26 @@ class="vf-logo">
 <li><code>--vf-embed-custom-ratio-y</code> for the Y value.</li>
 </ul>
 <p>For example. If you need an aspect ratio of 11x6 your HTML output could look like:</p>
-<pre><code>&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"vf-embed vf-embed--custom-ratio"</span> style=<span class="hljs-string">"--vf-embed-custom-ratio-x: 11; --vf-embed-custom-ratio-y: 6"</span>&gt;
-  <span class="xml"><span class="hljs-comment">&lt;!-- embedded content goes here --&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre><h3 id="max-width">Max Width</h3>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-embed vf-embed--custom-ratio"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"--vf-embed-custom-ratio-x: 11; --vf-embed-custom-ratio-y: 6"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- embedded content goes here --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre><h3 id="max-width">Max Width</h3>
 <p>You can also set a max width for the <code>vf-emded</code>. If you do this in the nunjucks file with the key of <code>maxWidth:</code> the nunjucks template will output an inline style onto the <code>vf-embed</code>. You can add this however fits best your product (in the <code>:root</code>, in a stylesheet, etc).</p>
 <p>If you do not set a <code>--vf-embed-max-width</code> value then the component is set to a maximum width of <code>100%</code>.</p>
 <p>For example. If you need a <code>vf-embed</code> with the aspect ratio of 16x9 but with a maximum width of 400px your HTML out could look like:</p>
-<pre><code>&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"vf-embed vf-embed--16x9"</span> style=<span class="hljs-string">"--vf-embed-max-width: 400px"</span>&gt;
-  <span class="xml"><span class="hljs-comment">&lt;!-- embedded content goes here --&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre><h2 id="install">Install</h2>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-embed vf-embed--16x9"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"--vf-embed-max-width: 400px"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- embedded content goes here --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre><h2 id="install">Install</h2>
 <p>This repository is distributed with [npm][<a href="https://www.npmjs.com/%5D">https://www.npmjs.com/]</a>. After [installing npm][<a href="https://www.npmjs.com/get-npm%5D">https://www.npmjs.com/get-npm]</a> and <a href="https://classic.yarnpkg.com/en/docs/install">yarn</a>, you can install <code>vf-embed</code> with this command.</p>
-<pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-embed</span></code></pre><h2 id="js">JS</h2>
+<pre><code class="hljs">$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-embed</span></code></pre><h2 id="js">JS</h2>
 <p>If your component uses JS:</p>
 <p>You should import this component in <code>./components/vf-component-rollup/scripts.js</code> or your other JS process:</p>
-<pre><code class="language-js"><span class="hljs-keyword">import</span> { vfcomponentName } <span class="hljs-keyword">from</span> <span class="hljs-string">'vf-embed/vf-embed'</span>;
+<pre><code class="hljs language-js"><span class="hljs-keyword">import</span> { vfcomponentName } <span class="hljs-keyword">from</span> <span class="hljs-string">'vf-embed/vf-embed'</span>;
 <span class="hljs-comment">// Or import directly</span>
 <span class="hljs-comment">// import { vfcomponentName } from '../components/raw/vf-embed/vf-embed.js';</span>
 vfcomponentName(); <span class="hljs-comment">// if needed, invoke it</span></code></pre><h2 id="sasscss">Sass/CSS</h2>
 <p>If your component uses Sass:</p>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-embed/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code class="hljs"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-embed/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 <h2 id="help">Help</h2>
 <ul>
 <li><a href="https://visual-framework.github.io/vf-welcome/troubleshooting/">Read the Visual Framework troubleshooting</a></li>

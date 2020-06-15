@@ -170,8 +170,8 @@ class="vf-logo">
 </ol>
 <h2 id="installation-and-implementation">Installation and Implementation</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>embl-content-meta-properties</code> with this command.</p>
-<pre><code>$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/embl-content-meta-properties</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
-<pre><code><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/embl-grid/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<pre><code class="hljs">$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/embl-content-meta-properties</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<pre><code class="hljs"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/embl-grid/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 
   </div>
   
@@ -209,30 +209,20 @@ class="vf-logo">
 
   
   <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-comment">&lt;!-- Content descriptors --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:who"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"all"</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- the people, groups and teams involved --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:where"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"EMBL"</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- at which EMBL sites the content applies --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:what"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"services, websites"</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- the activities covered --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:active"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"what"</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- which of the who/what/where is active --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:who"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"all"</span>&gt;</span> <span class="hljs-comment">&lt;!-- the people, groups and teams involved --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:where"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"EMBL"</span>&gt;</span> <span class="hljs-comment">&lt;!-- at which EMBL sites the content applies --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:what"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"services, websites"</span>&gt;</span> <span class="hljs-comment">&lt;!-- the activities covered --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:active"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"what"</span>&gt;</span> <span class="hljs-comment">&lt;!-- which of the who/what/where is active --&gt;</span>
 
 <span class="hljs-comment">&lt;!-- Content role --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:utility"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-8"</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- if content is task and work based or if is meant to inspire --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:reach"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-5"</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- if content is externally (public) or internally focused (those that work at EMBL) --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:utility"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-8"</span>&gt;</span> <span class="hljs-comment">&lt;!-- if content is task and work based or if is meant to inspire --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:reach"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"-5"</span>&gt;</span> <span class="hljs-comment">&lt;!-- if content is externally (public) or internally focused (those that work at EMBL) --&gt;</span>
 
 <span class="hljs-comment">&lt;!-- Page infromation --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:maintainer"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Strategy and Communications"</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- the contact person or group responsible for the page --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:last-review"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"NaN"</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- the last time the page was reviewed or updated --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:review-cycle"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- how long in days before the page should be checked --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:expiry"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"2019-06-20"</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- if there is a fixed point in time when the page is no longer relevant --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:maintainer"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Strategy and Communications"</span>&gt;</span> <span class="hljs-comment">&lt;!-- the contact person or group responsible for the page --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:last-review"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"NaN"</span>&gt;</span> <span class="hljs-comment">&lt;!-- the last time the page was reviewed or updated --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:review-cycle"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span>&gt;</span> <span class="hljs-comment">&lt;!-- how long in days before the page should be checked --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"embl:expiry"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"2019-06-20"</span>&gt;</span> <span class="hljs-comment">&lt;!-- if there is a fixed point in time when the page is no longer relevant --&gt;</span>
 </code></pre>
   
 
