@@ -1,3 +1,7 @@
+# 1.4.2
+
+* fixes an issue with vf-hero--inlay and the background image width
+
 # 1.4.0
 
 * Adds ability to specify height of the image.
