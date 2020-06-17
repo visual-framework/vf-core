@@ -1,0 +1,101 @@
+{%- if context %}
+
+  {% set id = context.id %}
+  {% set modifiers = context.modifiers %}
+  {% set override_class = context.override_class %}
+
+  {% set theme = context.theme %}
+  {% set variant = context.variant %}
+
+  {% set profile__size = context.profile__size %}
+
+  {% set profile__image = context.profile__image %}
+  {% set profile__image_alt = context.profile__image_alt %}
+
+  {% set profile__href = context.profile__href %}
+  {% set profile__name = context.profile__name %}
+  {% set profile__text = context.profile__text %}
+  {% set profile__email_address = context.item.profile__email_address %}
+  {% set profile__email = context.item.profile__email %}
+  {% set profile__phone_number = context.item.profile__phone_number %}
+  {% set profile__phone = context.item.profile__phone %}
+  {% set profile__mobile_number = context.item.profile__mobile_number %}
+  {% set profile__mobile = context.item.profile__mobile %}
+  {% set profile__uuid_href = context.profile__uuid_href %}
+  {% set profile__uuid = context.profile__uuid %}
+
+{%- endif -%}
+
+<article
+  {%- if id %} id="{{-id-}}"{% endif %}
+
+  class="vf-profile
+
+  {%- if theme %} vf-profile-theme--{{theme}}{% endif -%}
+  {%- if variant %} vf-profile--{{variant}}{% endif -%}
+
+  {%- if profile__size %} vf-profile--{{profile__size}}{% endif -%}
+
+  {%- if modifier %} | {{modifier}}{% endif -%}
+  {%- if override_class %} | {{override_class}}{% endif -%}
+
+  {%- if block %} vf-profile--block{%- elseif inline %} vf-profile--inline{%- endif -%}
+  ">
+  {% if show_content == "all" %}
+  <img class="vf-profile__image" src="{{ profile__image }}" alt="{{ profile__image_alt }}">
+  {% endif %}
+
+  {% if show_content == "all" %}
+  <h3 class="vf-profile__title">
+    <a href="{{ profile__href }}" class="vf-profile__link">{{ profile__name }}</a>
+  </h3>
+  {% endif %}
+
+  {% if show_content == "all" %}
+  {% if profile__job_title %}
+  <p class="vf-profile__job-title">{{ profile__job_title }}</p>
+  {% endif %}
+  {% endif %}
+
+  {% if show_content == "all" %}
+  {% if profile__text %}
+  <p class="vf-profile__text">{{ profile__text }}</p>
+  {% endif %}
+  {% endif %}
+
+  {% if show_content == "all" %}
+  {% if profile__emails %}
+  {% for item in profile__emails %}
+  <p class="vf-profile__email {% if loop.last %}| vf-u-last-item {% endif %}">
+    <a href="{{ item.profile__email_address }}" class="vf-profile__link vf-profile__link--secondary">
+      {{- item.profile__email_address -}}
+    </a>
+  </p>
+  {% endfor %}
+  {% endif %}
+  {% endif %}
+
+  {% if show_content == "all" %}
+  {% if profile__phones %}
+  {% for item in profile__phones %}
+  <p class="vf-profile__phone{% if item.mobile == true %} vf-profile__phone--mobile{% endif %}{% if loop.last %} | vf-u-last-item {% endif %}">
+    <a href="{{ item.profile__phone_number }}" class="vf-profile__link vf-profile__link--secondary">
+      {{- item.profile__phone_number -}}
+    </a>
+  </p>
+  {% endfor %}
+  {% endif %}
+  {% endif %}
+
+  {% if show_content == "all" %}
+  {% if profile__uuid %}
+  <p class="vf-profile__uuid">
+    <span>ORCID:</span>
+    <a class="vf-profile__link vf-profile__link--secondary" href="https://europepmc.org/authors/{{ profile__uuid_href }}">
+      {{- profile__uuid -}}
+    </a>
+  </p>
+  {% endif %}
+  {% endif %}
+
+</article>
