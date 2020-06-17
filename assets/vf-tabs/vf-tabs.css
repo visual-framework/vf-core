@@ -45,26 +45,44 @@
  * Location: components/vf-tabs
  */
 .vf-tabs__list {
-  border-bottom: 1px solid #000000;
-  margin: 0;
-  padding: 0 0 0px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: -.5rem 0 0 0;
+  padding: 0 1rem 0 .5rem;
   position: relative;
 }
 
-.vf-tabs__item,
-.vf-tabs__link {
+.vf-tabs__list::before {
+  border-bottom: 1px solid #000000;
+  bottom: -1px;
+  content: '';
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1984;
+}
+
+.vf-tabs__item {
   display: inline-block;
+  margin-left: .5rem;
+  margin-top: .5rem;
   position: relative;
 }
 
 .vf-tabs__link {
   background: #d0d0ce;
-  border-color: transparent transparent #000000 transparent;
+  border-color: transparent;
   border-style: solid;
   border-width: 1px;
   color: #54585a;
+  display: block;
   outline: 0;
   padding: 12px 16px;
+  position: relative;
   text-decoration: none;
   top: 1px;
 }
@@ -75,46 +93,28 @@
 }
 
 .vf-tabs__link.is-active {
-  background: #fafafa;
+  background: #ffffff;
+  border-color: #000000;
   border-bottom-color: #ffffff;
   color: #000000;
+  font-weight: 500;
+  z-index: 1990;
 }
 
 .vf-tabs__section {
   padding: 8px 16px;
 }
 
-@media (max-width: 550px) {
-  .vf-tabs__list {
-    border-bottom: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    padding: 0;
-  }
-  .vf-tabs__item {
-    display: block;
-    -ms-flex-preferred-size: auto;
-        flex-basis: auto;
-    /* default value */
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
-    margin: 2px;
-    position: static;
-  }
-  .vf-tabs__link {
-    border-color: transparent;
-    display: block;
-    top: unset;
-  }
+@media (max-width: 767px) {
   .vf-tabs__link.is-active {
     border-color: #000000;
-    position: static;
   }
-  .vf-tabs__section {
-    padding: 8px;
-  }
+}
+
+.vf-tabs__item {
+  -ms-flex-preferred-size: min-content;
+      flex-basis: min-content;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
