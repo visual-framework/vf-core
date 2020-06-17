@@ -30,7 +30,8 @@
   margin-bottom: 2rem;
   position: relative;
 
-  &:not(.vf-hero--very-easy):not(.vf-hero--intense) {
+  // TODO: look to improve the CSS for excluding .vf-hero--inlay sizes
+  &:not(.vf-hero--very-easy):not(.vf-hero--intense):not(.vf-hero--inlay) {
     &::before {
       background-image: var(--vf-hero-bg-image);
       content: '';
@@ -113,9 +114,21 @@
   --vf-hero-text-color: 1;
 }
 
+
+// TODO: look to improve the CSS for excluding .vf-hero--inlay sizes
 .vf-hero--inlay {
   max-width: 76.5em;
   margin: 0 auto;
+  &::before {
+    background-image: var(--vf-hero-bg-image);
+    content: '';
+    grid-column: 1 / -1;
+    grid-row: 1 / span 1;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: var(--vf-hero-grid__row--initial, 320px);
+  }
 }
 
 .vf-hero__content {
