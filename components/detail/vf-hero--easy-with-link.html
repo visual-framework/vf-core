@@ -368,7 +368,11 @@ class="vf-logo">
       <div class="FileBrowser-itemPreview">
         
         <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># 1.4.0</span>
+          <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># 1.4.2</span>
+<span class="hljs-bullet">
+* </span>fixes an issue with vf-hero--inlay and the background image width
+
+<span class="hljs-section"># 1.4.0</span>
 <span class="hljs-bullet">
 * </span>Adds ability to specify height of the image.
 <span class="hljs-bullet">* </span>Improves leading for text with link icon.
@@ -409,7 +413,7 @@ class="vf-logo">
           Filesystem path: components/vf-hero/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 731 Bytes
+          Size: 809 Bytes
         </li>
       </ul>
     </section>
@@ -612,7 +616,8 @@ class="vf-logo">
   <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">2rem</span>;
   <span class="hljs-attribute">position</span>: relative;
 
-  &amp;<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-hero--very-easy</span>)<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-hero--intense</span>) {
+  <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> look to improve the CSS for excluding .vf-hero--inlay sizes</span>
+  &amp;<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-hero--very-easy</span>)<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-hero--intense</span>)<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-hero--inlay</span>) {
     &amp;<span class="hljs-selector-pseudo">::before</span> {
       <span class="hljs-attribute">background-image</span>: var(--vf-hero-bg-image);
       <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
@@ -695,9 +700,21 @@ class="vf-logo">
   --vf-hero-text-<span class="hljs-attribute">color</span>: <span class="hljs-number">1</span>;
 }
 
+
+<span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> look to improve the CSS for excluding .vf-hero--inlay sizes</span>
 <span class="hljs-selector-class">.vf-hero--inlay</span> {
   <span class="hljs-attribute">max-width</span>: <span class="hljs-number">76.5em</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+  &amp;<span class="hljs-selector-pseudo">::before</span> {
+    <span class="hljs-attribute">background-image</span>: var(--vf-hero-bg-image);
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+    grid-row: <span class="hljs-number">1</span> / span <span class="hljs-number">1</span>;
+    <span class="hljs-attribute">background-position</span>: top center;
+    <span class="hljs-attribute">background-repeat</span>: no-repeat;
+    <span class="hljs-attribute">background-size</span>: cover;
+    <span class="hljs-attribute">height</span>: var(--vf-hero-grid__row--initial, <span class="hljs-number">320px</span>);
+  }
 }
 
 <span class="hljs-selector-class">.vf-hero__content</span> {
@@ -1003,7 +1020,7 @@ class="vf-logo">
           Filesystem path: components/vf-hero/vf-hero.scss
         </li>
         <li class="vf-list__item">
-          Size: 9.7 KB
+          Size: 10.2 KB
         </li>
       </ul>
     </section>
