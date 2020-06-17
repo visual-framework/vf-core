@@ -1,11 +1,50 @@
-<section class="vf-card-container{% if modifier %} | {{modifier}}{% endif %}">
-  <div class="vf-card-container__inner">
-    {% include '@vf-section-header' %}
+<style>
+  .vf-container-theme--primary {
+    --vf-container-theme--foreground: var(--vf-ui-color--white);
+    --vf-container-theme--background: var(--vf-color--green);
+    --vf-container-theme-color--border: var(--vf-color--green);
+  }
+  .vf-container--easy .vf-card {
+    border-bottom: 8px solid black;
+    border-bottom-color:
+      var(--vf-container-theme-color--border, var(--vf-card-theme-color--border, black));
+  }
 
+  .vf-container--easy * .vf-card__title {
+    --card-text-color: blue;
+  }
+  .vf-container--easy * .vf-card__text {
+    --card-text-color: black;
+  }
+  [class*='ary'].vf-container--easy .vf-card * {
+    background-color: white !important;
+  }
+</style>
+
+<section class="vf-card-container
+  {% if context %}{% set theme = context.theme %}{% endif %}
+  {%- if theme %} vf-container-theme--{{theme}}{% endif -%}
+
+  {% if context %}{% set variant = context.variant %}{% endif %}
+  {%- if variant %} vf-container--{{variant}}{% endif %}
+
+  {% if context %}{% set modifier = context.modifier %}{% endif %}
+  {% if modifier %} | {{modifier}}{% endif -%}
+">
+
+  <div class="vf-card-container__inner">
+
+    {% if context %}{% set section_title = context.section_title %}{% endif %}
+    {% render '@vf-section-header', { section_title: section_title } %}
+
+    {% if context %}{% set vf_cards = context.vf_cards %}{% endif %}
     {% asyncEach card in vf_cards %}
-       {# prefix cardtype #}
-       {% set card_type = '@vf-card--'+card.card_type %}
-       {% render card_type, { 'context': card } %}
+      {% render '@vf-card', { context: card } %}
     {% endeach %}
   </div>
 </section>
+
+{% if context %}{% set divider = context.divider %}{% endif %}
+{% if divider == true %}
+<hr class="vf-divider" style="margin-bottom: 48px;"></hr>
+{% endif %}
