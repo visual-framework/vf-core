@@ -1,8 +1,9 @@
 <a href="{{logo_href}}"
-{# You're using an ID? Really?? That'll go here #}
 {% if id %} id="{{-id-}}"{% endif %}
-class="vf-logo {%- if override_class %} | {{override_class}}{% endif -%}">
+class="vf-logo{%- if logo_text %} | vf-logo--has-text{% endif -%}
+{%- if override_class %} | {{override_class}}{% endif -%}">
   <img class="vf-logo__image" src="{{ image }}" alt="{{ logo_text }}">
+  {% if logo_text %}
   <span class="vf-logo__text{% if hidden_text %} vf-u-sr-only{% endif %}">{{logo_text}}</span>
+  {% endif %}
 </a>
-{% if deprecated_text %}<!-- {{ deprecated_text }} -->{% endif %}
