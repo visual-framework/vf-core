@@ -57,22 +57,7 @@
 }
 
 .vf-logo__image {
-  --vf-logo-margin-right: 8px;
   height: 32px;
-  margin-right: 16px;
-  margin-right: var(--vf-logo-margin-right);
-}
-
-@media (min-width: 500px) {
-  .vf-logo__image {
-    --vf-logo-margin-right: 16px;
-  }
-}
-
-@media (min-width: 999px) {
-  .vf-logo__image {
-    --vf-logo-margin-right: 16px;
-  }
 }
 
 .vf-logo--extreme .vf-logo__image {
@@ -82,6 +67,7 @@
 }
 
 .vf-logo__text {
+  --vf-logo-margin-right: 8px;
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -89,4 +75,21 @@
   margin: 0 0 0 0;
   -ms-flex-item-align: center;
       align-self: center;
+}
+
+.vf-logo--has-text .vf-logo__text {
+  margin-left: 16px;
+  margin-left: var(--vf-logo-margin-right);
+}
+
+@media (min-width: 500px) {
+  .vf-logo--has-text .vf-logo__text {
+    --vf-logo-margin-right: 16px;
+  }
+}
+
+@media (min-width: 999px) {
+  .vf-logo--has-text .vf-logo__text {
+    --vf-logo-margin-right: 16px;
+  }
 }
