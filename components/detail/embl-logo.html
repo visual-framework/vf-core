@@ -43,7 +43,8 @@
     <div class="vf-global-header__inner">
       
       <a href="../../index.html"
-class="vf-logo | vf-logo--has-text">
+
+class="vf-logo">
   <img class="vf-logo__image" src="https://dev.assets.emblstatic.net/vf/develop/assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
   <span class="vf-logo__text">Visual Framework 2.0</span>
 </a>
@@ -281,10 +282,6 @@ class="vf-logo | vf-logo--has-text">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
-<span class="hljs-section">## 1.0.3</span>
-<span class="hljs-bullet">
-* </span>this removes the 'resize' for homepages as on devices sub 1024px the logo was a different size to every other page
-
 <span class="hljs-section">## 1.0.2</span>
 <span class="hljs-bullet">
 * </span>bug: logo did not show correctly inside flex-based containers like vf-global-header
@@ -311,7 +308,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/embl-logo/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 368 Bytes
+          Size: 240 Bytes
         </li>
       </ul>
     </section>
@@ -345,12 +342,12 @@ class="vf-logo | vf-logo--has-text">
 }
 
 <span class="hljs-selector-class">.embl-logo--extreme</span> {
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">32px</span>;
-  <span class="hljs-attribute">transition</span>: height <span class="hljs-number">400ms</span> ease-in;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">11vw</span>;
+  <span class="hljs-attribute">max-height</span>: <span class="hljs-number">96px</span>;
+  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">32px</span>;
 
-  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span> + <span class="hljs-number">1</span>) {
+  <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">768px</span>) {
     <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">'../assets/embl-logo/assets/logo.svg'</span>);
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">96px</span>;
   }
 }
 </code>
@@ -368,7 +365,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/embl-logo/embl-logo.scss
         </li>
         <li class="vf-list__item">
-          Size: 828 Bytes
+          Size: 797 Bytes
         </li>
       </ul>
     </section>
