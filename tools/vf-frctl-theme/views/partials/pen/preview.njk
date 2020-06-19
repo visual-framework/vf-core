@@ -9,21 +9,23 @@
     {% endif %}
     {% if variants.size > 1 and entity.preview != '@preview--blocks' and entity.preview != '@preview--elements' %}
         <div class="vf-tabs">
+          <p class="vf-text vf-text-body--4 vf-u-margin__bottom--sm vf-u-padding__left--lg">This component has variants:</p>
           <ul class="vf-tabs__list">
-            <li class="vf-tabs__item">
-              This component has variants:
-            </li>
             {% for variant in variants.items() %}
 
               {% if entity.handle == variant.handle %}
-                <a class="vf-tabs__link is-active" href="#is-active">
-                  {{ variant.label }}
-                </a>
+                <li class="vf-tabs__item">
+                  <a class="vf-tabs__link is-active" href="#is-active">
+                    {{ variant.label }}
+                  </a>
+                </li>
               {% else %}
                 {% if variant.isHidden == false %}
+                <li class="vf-tabs__item">
                   <a class="vf-tabs__link" href="{{ path(frctl.theme.urlFromRoute('component', { handle: variant.handle })) }}">
                     {{ variant.label }}
                   </a>
+                </li>
                 {% endif %} {# end variant.isHidden #}
               {% endif %} {# end entity.handle == variant.handle #}
 
