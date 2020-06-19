@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.0.2
+
+* makes content wrap with `flex-wrap`
+* makes use of `gap`
+* adds spacing for browsers not supporting `gap`
+* move `margin-left: auto` to the `vf-navigation--global` component (v1.2.3 of `vf-navigation`)
+
 ## 1.0.1
 
 * removes left and right padding so we rely on the parent for horizontal spacing for better alignment
