@@ -277,11 +277,15 @@ class="vf-logo">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.5</span>
+<span class="hljs-bullet">
+* </span>Fix detection of no response from the contentHub for <span class="hljs-code">`embl-js-content-hub-loader-no-content`</span> and <span class="hljs-code">`embl-js-content-hub-loader-no-content-hide`</span>
+
 <span class="hljs-section">## 1.0.4 (2020-03-20)</span>
 <span class="hljs-bullet">
 * </span>adds support to load embl-notifications component
 
-<span class="hljs-section">## 1.0.2 </span>
+<span class="hljs-section">## 1.0.2</span>
 <span class="hljs-bullet">
 * </span>adds features for when no content is returned. Supply "no content found" text or hide a region.
 
@@ -308,7 +312,7 @@ class="vf-logo">
           Filesystem path: components/embl-content-hub-loader/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 350 Bytes
+          Size: 504 Bytes
         </li>
       </ul>
     </section>
@@ -501,7 +505,7 @@ class="vf-logo">
       <span class="hljs-comment">// track time it takes for link to be shown</span>
       <span class="hljs-keyword">if</span> (emblContentHubShowTimers) { <span class="hljs-built_in">console</span>.time(<span class="hljs-string">'timer for import '</span> + linkPosition); }
 
-      <span class="hljs-comment">// await the load of the html import from the polyfill </span>
+      <span class="hljs-comment">// await the load of the html import from the polyfill</span>
       <span class="hljs-comment">// note: we use polyfill in all cases; see https://github.com/visual-framework/vf-core/issues/508</span>
       emblContentHubAwaitLoading(emblContentHubLinks[linkPosition],linkPosition);
     }());
@@ -516,7 +520,7 @@ class="vf-logo">
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> emblConditionalEdit === <span class="hljs-string">"function"</span>) {
       emblConditionalEdit();
     }
-    
+
     <span class="hljs-comment">// if the JS to run embl-notifications is present, run it now</span>
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> emblNotifications === <span class="hljs-string">"function"</span>) {
       emblNotifications();
@@ -560,7 +564,7 @@ class="vf-logo">
       exportedContent = exportedContent.firstElementChild;
       exportedContent.classList.add(<span class="hljs-string">'vf-content-hub-html'</span>);
       exportedContent.classList.add(<span class="hljs-string">'vf-content-hub-html__derived-div'</span>);
-    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (exportedContent.childNodes.length == <span class="hljs-number">3</span>) {
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (exportedContent.childNodes.length &lt;= <span class="hljs-number">3</span>) {
       <span class="hljs-comment">// if there are three or fewer child nodes this is likely a no-results reply</span>
       <span class="hljs-comment">// We'll still inject the content from the contentHub along with any passed "no matches" text</span>
       <span class="hljs-keyword">var</span> noContentMessage = targetLink.getAttribute(<span class="hljs-string">'data-embl-js-content-hub-loader-no-content'</span>);
@@ -568,7 +572,7 @@ class="vf-logo">
       <span class="hljs-keyword">if</span> (noContentMessage == <span class="hljs-string">'true'</span>) {
         <span class="hljs-comment">// use a default</span>
         noContentMessage = <span class="hljs-string">'No content was found found for this query.'</span>;
-      } 
+      }
 
       <span class="hljs-keyword">var</span> noContentMessageElement = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);
       noContentMessageElement.classList.add(<span class="hljs-string">'vf-text'</span>);
