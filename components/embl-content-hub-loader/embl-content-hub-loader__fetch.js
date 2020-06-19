@@ -51,7 +51,7 @@ function emblContentHubFetch() {
       // track time it takes for link to be shown
       if (emblContentHubShowTimers) { console.time('timer for import ' + linkPosition); }
 
-      // await the load of the html import from the polyfill 
+      // await the load of the html import from the polyfill
       // note: we use polyfill in all cases; see https://github.com/visual-framework/vf-core/issues/508
       emblContentHubAwaitLoading(emblContentHubLinks[linkPosition],linkPosition);
     }());
@@ -66,7 +66,7 @@ function emblContentHubFetch() {
     if (typeof emblConditionalEdit === "function") {
       emblConditionalEdit();
     }
-    
+
     // if the JS to run embl-notifications is present, run it now
     if (typeof emblNotifications === "function") {
       emblNotifications();
@@ -110,7 +110,7 @@ function emblContentHubFetch() {
       exportedContent = exportedContent.firstElementChild;
       exportedContent.classList.add('vf-content-hub-html');
       exportedContent.classList.add('vf-content-hub-html__derived-div');
-    } else if (exportedContent.childNodes.length == 3) {
+    } else if (exportedContent.childNodes.length <= 3) {
       // if there are three or fewer child nodes this is likely a no-results reply
       // We'll still inject the content from the contentHub along with any passed "no matches" text
       var noContentMessage = targetLink.getAttribute('data-embl-js-content-hub-loader-no-content');
@@ -118,7 +118,7 @@ function emblContentHubFetch() {
       if (noContentMessage == 'true') {
         // use a default
         noContentMessage = 'No content was found found for this query.';
-      } 
+      }
 
       var noContentMessageElement = document.createElement('div');
       noContentMessageElement.classList.add('vf-text');

@@ -24,18 +24,31 @@
     @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--lg));
 
     align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .vf-list__link {
+    margin-right: 8px;
   }
 
   .vf-badge {
-    margin-left: 8px;
+    margin-right: 8px;
   }
 }
 
 .vf-links__list--has-image {
+
   .vf-list__link {
+    align-items: center;
     column-gap: 8px;
     display: grid;
     grid-template-columns: minmax(0, 32px) auto;
+  }
+
+  .vf-links__meta {
+    margin-left: -4px;
+    margin-right: 8px;
   }
 }
 
@@ -47,11 +60,11 @@
 }
 
 .vf-links__meta {
-  @include set-type(text-body--5);
+  @include set-type(text-body--5, $custom-margin-bottom: 0);
 
   color: set-color(vf-color--grey--dark);
   display: inline;
-  margin-left: 4px;
+  margin-right: 4px;
 }
 
 .vf-links__list--secondary {

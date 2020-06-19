@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.3
+
+* adds ability to drop in a `vf-badge` component after a link in `--has-images` variety
+
 ## 1.0.2
 
 * Captilisation of `On this page` and `In this section`
