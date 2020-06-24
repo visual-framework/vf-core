@@ -15,13 +15,7 @@
   {% set override_class = context.override_class %}
 {% endif %}
 
-{% if card_href %}
-  {% set tags = 'a' %}
-{% else %}
-  {% set tags = 'div' %}
-{% endif %}
-
-<{{ tags }}
+<article
   {% if tags == 'a' %}href="{{ card_href if card_href else '#' }}"{%- endif -%}
   {%- if id %} id="{{-id-}}"{% endif %}
 
@@ -40,13 +34,20 @@
   {% endif %}
 
   <div class="vf-card__content">
-    <h3 class="vf-card__title">{{- card_title -}}</h3>
+
+    <h3 class="vf-card__title">
+    {%- if card_href %}<a class="vf-card__link" href="{{ card_href if card_href else '#' }}">{% endif -%}
+      {{ card_title }}
+    {%- if card_href %}</a>{% endif -%}
+    </h3>
+
     {% if card_subtitle %}
     <p class="vf-card__subtitle" role="doc-subtitle">{{- card_subtitle -}}</p>
     {% endif %}
+
     {% if card_text %}
     <p class="vf-card__text">{{- card_text -}}</p>
     {% endif %}
   </div>
 
-</{{tags}}>
+</article>
