@@ -32,7 +32,7 @@ Like all JS-enabled components in the Visual Framework, if you wish to use the b
   - data-vf-js-banner-button-text="Accept and close"
 - Button theme:
   - Optional, leaving off will default to the secondary theme.
-  - primary, secondary, tertiay themes are available
+  - primary, secondary, tertiary themes are available
   - data-vf-js-banner-button-theme="primary"
 - Cookies:
   - Both are optional, leaving either off will deactivate cookie storage
