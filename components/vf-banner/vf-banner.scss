@@ -43,17 +43,32 @@
   align-content: center;
   align-items: center;
 
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 78.5em;
+  padding: 0 1rem;
+
+  @supports (display: grid) {
+    box-sizing: unset;
+    margin: unset;
+    max-width: unset;
+    padding: unset;
+  }
+
   @media (max-width: 63.9375em) {
     display: block; // overrideing the .emlb-grid code
   }
 
   @media (min-width: $vf-breakpoint--lg) {
     grid-column: main;
+
   }
 }
 
 .vf-banner__text {
   @include set-type(text-body--3, $custom-margin-bottom: 0);
+
+  flex-grow: 4;
 }
 .vf-banner__text--lg {
   @include set-type(text-body--2, $custom-margin-bottom: 0);
