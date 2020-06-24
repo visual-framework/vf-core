@@ -18,16 +18,6 @@
   background-color: var(--card-background-color);
   display: grid;
   grid-template-rows: 216px 1fr;
-  transition-duration: 250ms;
-  transition-property: box-shadow;
-  transition-timing-function: ease-in-out;
-
-  &:hover {
-    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
-    transition-duration: 250ms;
-    transition-property: box-shadow;
-    transition-timing-function: ease-in-out;
-  }
 }
 
 .vf-card--is-link {
@@ -108,6 +98,33 @@
     margin-top: 2px; // because reasons
     padding: 16px 24px;
     text-transform: uppercase;
+
+    .vf-card__link {
+      color: currentColor;
+      text-decoration: none;
+
+      &::after {
+        bottom: 0;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition-duration: 300ms;
+        transition-property: box-shadow;
+        transition-timing-function: ease-in-out;
+        z-index: 512;
+      }
+
+      &:hover {
+        color: currentColor;
+        text-decoration: none;
+        &::after {
+          box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
+          transition-duration: 250ms;
+        }
+      }
+    }
   }
 
   .vf-card__text {
