@@ -21,11 +21,6 @@
   position: relative;
 }
 
-.vf-card--is-link {
-  cursor: pointer;
-  text-decoration: none;
-}
-
 .vf-card__image {
   grid-column: 1 / -1;
   grid-row: 1 / span 3;
@@ -54,7 +49,7 @@
 
     &::after {
       bottom: 0;
-      content: 'deee';
+      content: '';
       left: 0;
       position: absolute;
       right: 0;
@@ -87,6 +82,12 @@
 
   color: set-ui-color(vf-ui-color--black);
   color: var( --card-text-color, #{set-ui-color(vf-ui-color--black)} );
+
+  a,
+  .vf-card__link {
+    position: relative;
+    z-index: 1984;
+  }
 }
 
 .vf-card__link {
@@ -148,6 +149,12 @@
 
 [class*='ary'].vf-card--easy {
   --vf-card-theme-color--background: #{set-ui-color(vf-ui-color--white)};
+}
+[class*='ary'] {
+  .vf-card__text .vf-card__link {
+    color: inherit;
+    text-decoration: underline;
+  }
 }
 
 .vf-card-theme--primary {
