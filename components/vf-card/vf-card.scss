@@ -52,24 +52,24 @@
     text-decoration: none;
 
     &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
       bottom: 0;
-      z-index: 512;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
       transition-duration: 300ms;
       transition-property: box-shadow;
       transition-timing-function: ease-in-out;
+      z-index: 512;
     }
 
     &:hover {
       color: currentColor;
       text-decoration: none;
       &::after {
-        transition-duration: 250ms;
         box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
+        transition-duration: 250ms;
       }
     }
   }
