@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.2.1
+
+* Adds !default to all Sass variables for easier overrideing
+* gives the banner a better look in IE11
+
 ## 1.2.0
 
 * Makes the alert style banner the default .njk
