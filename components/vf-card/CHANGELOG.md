@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.0
+
+* replaces the logic to determine if a card is a link or not.
+* moves the link to the vf-card__title.
+* allows for links in text to still be clickable.
+
 ## 1.0.4 (2020-03-20)
 
 * Flattens Nunjucks template variables for more portability https://github.com/visual-framework/vf-core/pull/805
