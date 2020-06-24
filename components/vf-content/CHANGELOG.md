@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.6
+
+* Adds CSS to remove margin from a figure inside vf-content that has no `vf-figure` class.
+
 ## 1.1.5
 
 * fixes an issue when content creators add the bold/strong tags to hedaing to make them bolder - when they shouldn't be.
