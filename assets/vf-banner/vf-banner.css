@@ -78,6 +78,21 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 78.5em;
+  padding: 0 1rem;
+}
+
+@supports (display: grid) {
+  .vf-banner__content {
+    -webkit-box-sizing: unset;
+            box-sizing: unset;
+    margin: unset;
+    max-width: unset;
+    padding: unset;
+  }
 }
 
 @media (max-width: 63.9375em) {
@@ -98,6 +113,9 @@
   font-weight: 400;
   line-height: 1.71;
   margin: 0 0 0 0;
+  -webkit-box-flex: 4;
+      -ms-flex-positive: 4;
+          flex-grow: 4;
 }
 
 .vf-banner__text--lg {

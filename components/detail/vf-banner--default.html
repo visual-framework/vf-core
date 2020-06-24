@@ -391,6 +391,11 @@ class="vf-logo | vf-logo--has-text">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.2.1</span>
+<span class="hljs-bullet">
+* </span>Adds !default to all Sass variables for easier overrideing
+<span class="hljs-bullet">* </span>gives the banner a better look in IE11
+
 <span class="hljs-section">## 1.2.0</span>
 <span class="hljs-bullet">
 * </span>Makes the alert style banner the default .njk
@@ -448,7 +453,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-banner/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 1.2 KB
+          Size: 1.3 KB
         </li>
       </ul>
     </section>
@@ -875,17 +880,32 @@ class="vf-logo | vf-logo--has-text">
   <span class="hljs-attribute">align-content</span>: center;
   <span class="hljs-attribute">align-items</span>: center;
 
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">78.5em</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">1rem</span>;
+
+  <span class="hljs-keyword">@supports</span> (display: grid) {
+    <span class="hljs-attribute">box-sizing</span>: unset;
+    <span class="hljs-attribute">margin</span>: unset;
+    <span class="hljs-attribute">max-width</span>: unset;
+    <span class="hljs-attribute">padding</span>: unset;
+  }
+
   <span class="hljs-keyword">@media</span> (max-width: <span class="hljs-number">63.9375em</span>) {
     <span class="hljs-attribute">display</span>: block; <span class="hljs-comment">// overrideing the .emlb-grid code</span>
   }
 
   <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-variable">$vf-breakpoint--lg</span>) {
     grid-column: main;
+
   }
 }
 
 <span class="hljs-selector-class">.vf-banner__text</span> {
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
+
+  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">4</span>;
 }
 <span class="hljs-selector-class">.vf-banner__text--lg</span> {
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
@@ -953,7 +973,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-banner/vf-banner.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.4 KB
+          Size: 2.7 KB
         </li>
       </ul>
     </section>
@@ -964,18 +984,18 @@ class="vf-logo | vf-logo--has-text">
       <div class="FileBrowser-itemPreview">
         
         <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-variable">$vf-gdpr-banner-color--background</span>: set-color(vf-color--grey);
-<span class="hljs-variable">$vf-gdpr-banner-color--text</span>: set-ui-color(vf-ui-color--white);
-<span class="hljs-variable">$vf-gdpr-banner-padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md);
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-variable">$vf-gdpr-banner-color--background</span>: set-color(vf-color--grey) !default;
+<span class="hljs-variable">$vf-gdpr-banner-color--text</span>: set-ui-color(vf-ui-color--white) !default;
+<span class="hljs-variable">$vf-gdpr-banner-padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md) !default;
 
-<span class="hljs-variable">$vf-notice-banner-color--background</span>: set-color(vf-color--grey);
-<span class="hljs-variable">$vf-notice-banner-color--border</span>: set-color(vf-color--grey--darkest);
+<span class="hljs-variable">$vf-notice-banner-color--background</span>: set-color(vf-color--grey) !default;
+<span class="hljs-variable">$vf-notice-banner-color--border</span>: set-color(vf-color--grey--darkest) !default;
 
-<span class="hljs-variable">$vf-notice-banner-color--text</span>: set-ui-color(vf-ui-color--white);
-<span class="hljs-variable">$vf-notice-banner-padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md);
+<span class="hljs-variable">$vf-notice-banner-color--text</span>: set-ui-color(vf-ui-color--white) !default;
+<span class="hljs-variable">$vf-notice-banner-padding</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--md) !default;
 
-<span class="hljs-variable">$vf-phase-banner-color--background</span>: set-ui-color(vf-ui-color--yellow);
-<span class="hljs-variable">$vf-phase-banner-color--text</span>: set-color(vf-color--grey--dark);
+<span class="hljs-variable">$vf-phase-banner-color--background</span>: set-ui-color(vf-ui-color--yellow) !default;
+<span class="hljs-variable">$vf-phase-banner-color--text</span>: set-color(vf-color--grey--dark) !default;
 
 <span class="hljs-variable">$vf-banner-color--link</span>: inherit;
 </code>
@@ -993,7 +1013,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-banner/vf-banner.variables.scss
         </li>
         <li class="vf-list__item">
-          Size: 630 Bytes
+          Size: 711 Bytes
         </li>
       </ul>
     </section>
