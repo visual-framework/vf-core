@@ -23,7 +23,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   require(path.resolve('.', __dirname + '/vf-watch.js'))(gulp, path, componentPath, reload);
   require(path.resolve('.', __dirname + '/vf-templates-precompile.js'))(gulp, path, componentPath);
   require(path.resolve('.', __dirname + '/vf-build.js'))(gulp, buildDestionation);
-  
+
   // -----------------------------------------------------------------------------
   // Main tasks
   // -----------------------------------------------------------------------------
@@ -33,7 +33,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   ));
 
   gulp.task('vf-prepush-test', gulp.parallel(
-    'vf-lint:scss-hard-fail', 'vf-css'
+    'vf-lint:scss-softs-fail', 'vf-css'
   ));
 
   return gulp;
