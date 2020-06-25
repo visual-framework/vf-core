@@ -233,7 +233,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     return gulp
       .src(vfScssLintPaths)
       .pipe(gulpStylelint({
-        failAfterError: true,
+        failAfterError: false,
         reporters: [{formatter: 'string', console: true}]
       }));
   });
