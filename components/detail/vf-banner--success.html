@@ -222,6 +222,8 @@ class="vf-logo | vf-logo--has-text">
   <div class="component-library-notes | vf-content">
   <h1 id="banner-component">Banner Component</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-banner"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-banner.svg" alt="npm version"></a></p>
+<h2 id="usage-guidelines">Usage Guidelines</h2>
+<p>Informs visitors about important changes or persistent conditions. Use this component if you need to communicate to visitors in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header.</p>
 <h2 id="reflecting-status">Reflecting status</h2>
 <ul>
 <li>General notice <code>vf-banner vf-banner--notice</code></li>
@@ -231,8 +233,8 @@ class="vf-logo | vf-logo--has-text">
 <li>Alert <code>vf-banner vf-banner--alert vf-banner--alert</code></li>
 <li>Warning <code>vf-banner vf-banner--alert vf-banner--warning</code></li>
 </ul>
-<p><strong>note:</strong> The <code>vf-banner--alert</code> variants include the option to dismiss the banner. This is currently a ‘bring your own JavaScript’ button.</p>
-<h2 id="js-documentation-for---modal-variant">JS Documentation for <code>--modal</code> variant</h2>
+<p><strong>note:</strong> The <code>vf-banner--alert</code> variants include the option to dismiss the banner. This is currently a ‘bring your own JavaScript’ button. To include a close button in the markup you need to make sure you have the variable <code>banner__dismissable</code> set to <code>true</code>:</p>
+<pre><code class="hljs"><span class="hljs-attr">banner__dismissable:</span> <span class="hljs-literal">true</span></code></pre><h2 id="js-documentation-for---modal-variant">JS Documentation for <code>--modal</code> variant</h2>
 <p>Like all JS-enabled components in the Visual Framework, if you wish to use the bundled JS, you need to include JS data attributes, here is an overview of what the options are for the <code>vf-banner--modal</code> variant.</p>
 <ul>
 <li>Enable VF JS:<ul>
@@ -315,7 +317,7 @@ class="vf-logo | vf-logo--has-text">
 
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__text"</span>&gt;</span>Congratulations! You have made something <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-banner__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>awesome<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-button vf-button--icon vf-button--dismiss | vf-banner__button"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"close notification banner"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-button vf-button--icon vf-button--dismiss | vf-banner__button"</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 24 24"</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>dismiss banner<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"</span> /&gt;</span>
@@ -851,10 +853,15 @@ class="vf-logo | vf-logo--has-text">
 
 <span class="hljs-selector-class">.vf-banner</span> {
   <span class="hljs-attribute">box-sizing</span>: border-box;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
+  <span class="hljs-attribute">padding</span>: .<span class="hljs-number">75rem</span>;
 
   <span class="hljs-selector-class">.vf-badge</span> {
-    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">16px</span>;
+    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">1rem</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-content</span> ~ &amp;,
+  <span class="hljs-selector-class">.vf-inlay__content</span> ~ &amp; {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">1rem</span>;
   }
 }
 
@@ -907,6 +914,7 @@ class="vf-logo | vf-logo--has-text">
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">3</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
 
   <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">4</span>;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.2</span>;
 }
 <span class="hljs-selector-class">.vf-banner__text--lg</span> {
   <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>, <span class="hljs-variable">$custom-margin-bottom</span>: <span class="hljs-number">0</span>);
@@ -927,8 +935,8 @@ class="vf-logo | vf-logo--has-text">
   <span class="hljs-selector-class">.vf-banner__text</span>,
   <span class="hljs-selector-class">.vf-text</span> { <span class="hljs-comment">// as of 1.0.4 use of vf-text is not recommended and is subject to future removal</span>
     <span class="hljs-attribute">color</span>: <span class="hljs-variable">$vf-notice-banner-color--text</span>;
-    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">24px</span>;
-    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64em</span>;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">1.5rem</span>;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">64rem</span>;
 
     &amp; <span class="hljs-selector-class">.vf-banner__link</span>,
     &amp; <span class="hljs-selector-class">.vf-link</span> {
@@ -974,7 +982,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-banner/vf-banner.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.7 KB
+          Size: 2.8 KB
         </li>
       </ul>
     </section>
