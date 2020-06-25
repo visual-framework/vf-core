@@ -220,8 +220,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
 
   // Sass Lint
   // For stylelint config rules see .stylelinrc
-  const vfScssLintPaths = [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss', '!'+componentPath+'/vf-design-tokens/**/*.scss'];
-
+  const vfScssLintPaths = [componentPath+'/**/embl-*.scss', componentPath+'/**/vf-*.scss', '!'+componentPath+'/**/index.scss', '!assets/**/*.scss', '!'+componentPath+'/vf-design-tokens/dist/**/*.scss'];
   gulp.task('vf-lint:scss-soft-fail', function() {
     return gulp
       .src(vfScssLintPaths)
@@ -234,11 +233,10 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     return gulp
       .src(vfScssLintPaths)
       .pipe(gulpStylelint({
-        failAfterError: false,
+        failAfterError: true,
         reporters: [{formatter: 'string', console: true}]
       }));
   });
-
 
 
   // -----------------------------------------------------------------------------
