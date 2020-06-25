@@ -17,32 +17,17 @@
 
 ## Usage
 
-The dos and don'ts of using this component.
+This Package is to get your project up and running with the minimum Sass files and dependencies you may require.
 
 ## Install
 
-This repository is distributed with [npm][https://www.npmjs.com/]. After [installing npm][https://www.npmjs.com/get-npm] and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-sass-starter` with this command.
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-sass-starter` and its dependencies with this command.
 
 ```
-$ yarn add --dev @visual-framework/vf-sass-starter
+$ yarn add --dev @visual-framework/vf-sass-starter @visual-framework/vf-design-tokens @visual-framework/vf-font-plex-mono @visual-framework/vf-font-plex-sans @visual-framework/vf-sass-config @visual-framework/vf-sass-utilities @visual-framework/vf-utility-classes
 ```
 
-## JS
-
-If your component uses JS:
-
-You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
-
-```js
-import { vfcomponentName } from 'vf-sass-starter/vf-sass-starter';
-// Or import directly
-// import { vfcomponentName } from '../components/raw/vf-sass-starter/vf-sass-starter.js';
-vfcomponentName(); // if needed, invoke it
-```
-
-## Sass/CSS
-
-If your component uses Sass:
+## Sass
 
 The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
 
@@ -50,7 +35,25 @@ The source files included are written in [Sass][sass] (`scss`) You can simply po
 @import "@visual-framework/vf-sass-starter/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+The above `index.scss` file will import the Design Tokens, the Sass variables, mixins, functions to get you started as well as importing the CSS Utility Classes, the Utilities, and the Font CSS for IBM Plex Mono and IBM Plex Sans.
+
+If you do not require this you can create your own @imports removing what you want from this list:
+
+```
+// Import Sass Variables, Mixins, and Functions from @visual-framework/vf-sass-config
+@import 'vf-sass-config/index.scss';
+
+// Include all Utility Classes from @visual-framework/vf-utility-classes
+@import 'vf-sass-config/mixins/vf-utility-mixins.scss';
+@import 'vf-utility-classes/vf-utility-classes.scss';
+
+// Include all SCSS Utilities from @visual-framework/vf-sass-utilities
+@import 'vf-sass-utilities/vf-sass-utilities.scss';
+
+// Include the relevant IBM Plex typefaces
+@import 'vf-font-plex-mono/vf-font-plex-mono.scss';
+@import 'vf-font-plex-sans/vf-font-plex-sans.scss';
+```
 
 ## Help
 
