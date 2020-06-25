@@ -53,6 +53,7 @@
     "@babel/preset-env": "7.10.3",
     "@percy/script": "1.1.0",
     "browser-sync": "2.26.7",
+    "gulp-dart-sass": "^1.0.2",
     "gulp-sass-lint": "1.4.0",
     "gulp-theo": "2.0.1",
     "husky": "4.2.5",
@@ -61,11 +62,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "note:lerna": "for guidance see PUBLISHING.md", 
+    "note:lerna": "for guidance see PUBLISHING.md",
     "lerna:test": "lerna publish --no-git-tag-version --no-push --skip-npm --canary && git reset --hard",
-    "note:lerna:test": "we use the `--canary` flag to simplify testing, correct versions can be selected when running `lerna:publish`", 
+    "note:lerna:test": "we use the `--canary` flag to simplify testing, correct versions can be selected when running `lerna:publish`",
     "lerna:publish": "lerna publish --no-git-tag-version --no-push && git reset --hard && lerna publish --no-git-tag-version --no-push --skip-npm --ignore-scripts",
-    "note:lerna:publish": "it's a known issue that you need to supply the version twice, we're working a solution for this", 
+    "note:lerna:publish": "it's a known issue that you need to supply the version twice, we're working a solution for this",
     "prepublishOnly": "gulp vf-core:prepare-deploy"
   },
   "repository": {
