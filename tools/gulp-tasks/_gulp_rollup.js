@@ -33,7 +33,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   ));
 
   gulp.task('vf-prepush-test', gulp.parallel(
-    'vf-lint:scss-soft-fail', 'vf-css'
+    'vf-lint:scss-hard-fail', 'vf-css'
   ));
 
   return gulp;
