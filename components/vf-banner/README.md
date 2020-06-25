@@ -2,6 +2,14 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-banner.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-banner)
 
+## Usage Guidelines
+
+Informs visitors about important changes or persistent conditions. Use this component if you need to communicate to visitors in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header.
+
+### Exceptions
+
+The GDPR Banner, is the `--fixed` variant which needs to be 'sticky' to the bottom of the browser viewport
+
 ## Reflecting status
 
 - General notice `vf-banner vf-banner--notice`
@@ -11,7 +19,11 @@
 - Alert `vf-banner vf-banner--alert vf-banner--alert`
 - Warning `vf-banner vf-banner--alert vf-banner--warning`
 
-<strong>note:</strong> The `vf-banner--alert` variants include the option to dismiss the banner. This is currently a 'bring your own JavaScript' button.
+<strong>note:</strong> The `vf-banner--alert` variants include the option to dismiss the banner. This is currently a 'bring your own JavaScript' button. To include a close button in the markup you need to make sure you have the variable `banner__dismissable` set to `true`:
+
+```
+banner__dismissable: true
+```
 
 ## JS Documentation for `--modal` variant
 
