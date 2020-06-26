@@ -1,3 +1,7 @@
+# 1.4.3
+
+* replaces margin shorthand so it doesn't remove bottom margin when using `--inlay` modifier
+
 # 1.4.2
 
 * fixes an issue with vf-hero--inlay and the background image width
