@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.1
+
+* Adds missing global custom properties
+
 ## 1.1.0
 
 * Adds the relative paths to @import for files rather for when the index.scss is used in other projects
