@@ -1,50 +1,52 @@
-{# if we're being passed "context" from a parent template, use it as "card" #}
 {%- if context %}
-  {% set card = context %}
+  {% set card_href = context.card_href %}
+
+  {% set card_title = context.card_title %}
+  {% set card_subtitle = context.card_subtitle %}
+  {% set card_text = context.card_text %}
+  {% set card_image = context.card_image %}
+  {% set card_image__alt = context.card_image__alt %}
+
+  {% set theme = context.theme %}
+  {% set variant = context.variant %}
+
+  {% set id = context.id %}
+  {% set modifiers = context.modifiers %}
+  {% set override_class = context.override_class %}
 {% endif %}
 
-{%- if card %}
-  {% set card_href = card.card_href %}
-  {% set id = card.id %}
-  {% set modifier = card.modifier %}
-  {% set override_class = card.override_class %}
-  {% set card_image = card.card_image %}
-  {% set card_title = card.card_title %}
-  {% set card_text = card.card_text %}
-{% endif %}
-
-{% if card_href %}
-  {% set tags = 'a' %}
-{% else %}
-  {% set tags = 'div' %}
-{% endif %}
-
-
-{# Decide upon which 'style' the badge has #}
-<{{tags}}
-{# If there's an href put it here #}
-{%- if tags == 'a' %}
- href="{{ card_href if card_href else '#' }}"
-{%- endif %}
-
-  {# You're using an ID? Really?? That'll go here #}
+<article
+  {% if tags == 'a' %}href="{{ card_href if card_href else '#' }}"{%- endif -%}
   {%- if id %} id="{{-id-}}"{% endif %}
 
-  {# Here is where we are adding any modifier #}
   class="vf-card
-  {%- if card_href %} vf-card--is-link{% endif %}
-  {%- if modifier %} {{modifier}}{% endif -%}
 
-  {# You want a snowflake of a classname for something, here you go #}
+  {%- if theme %} vf-card-theme--{{theme}}{% endif -%}
+  {%- if variant %} vf-card--{{variant}}{% endif %}
+
+  {%- if modifier %} | {{modifier}}{% endif -%}
   {%- if override_class %} | {{override_class}}{% endif %}
 ">
-  <img src="{{ card_image }}" alt="" class="vf-card__image">
+
+  {% if card_image %}
+  <img src="{{ card_image }}" alt="{{ card_image__alt }}" class="vf-card__image">
+  {% endif %}
+
   <div class="vf-card__content">
+
     <h3 class="vf-card__title">
+    {%- if card_href %}<a class="vf-card__link" href="{{ card_href if card_href else '#' }}">{% endif -%}
       {{ card_title }}
+    {%- if card_href %}</a>{% endif -%}
     </h3>
-    <p class="vf-card__text">
-      {{ card_text }}
-    </p>
+
+    {% if card_subtitle %}
+    <p class="vf-card__subtitle" role="doc-subtitle">{{- card_subtitle -}}</p>
+    {% endif %}
+
+    {% if card_text %}
+    <p class="vf-card__text">{{- card_text -}}</p>
+    {% endif %}
   </div>
-</{{tags}}>
+
+</article>
