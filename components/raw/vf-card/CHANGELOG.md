@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.0.0
+
+* gives title option to have a link that fills 'card'
+* makes links in text have a higher z-index than the whole card link
+* fundamental .yml and .njk changes
+
+
 ## 1.0.4 (2020-03-20)
 
 * Flattens Nunjucks template variables for more portability https://github.com/visual-framework/vf-core/pull/805
