@@ -13,33 +13,7 @@
  * VF Core version in use: #{map-get($componentInfo, 'vfCoreVersion')}
  */
 
-@import 'vf-global-custom-properties.scss';
-
-@import 'vf-global-variables.scss';
-@import 'vf-border-radius.variables.scss';
-@import 'vf-breakpoints.variables.scss';
-@import 'vf-breakpoints.map.scss';
-@import 'vf-colors.map.scss';
-@import 'vf-ui-colors.map.scss';
-@import 'vf-font--monospace.scss';
-@import 'vf-font--sans.scss';
-@import 'vf-font-families.variables.scss';
-@import 'vf-links.variables.scss';
-@import 'vf-spacing.map.scss';
-@import 'vf-zindex.map.scss';
-
-@import 'vf-colors.custom-properties.scss';
-@import 'vf-ui-colors.custom-properties.scss';
-
-@import 'vf-functions.scss';
-@import 'vf-mixins.scss';
-
-
-@import 'vf-sass-utilities/vf-sass-utilities.scss';
-
-/* Visual Framework Utility Class Mixins */
-
-@import 'vf-utility-mixins.scss';
+@import 'vf-sass-config/index.scss';
 
 /* All Visual Framework Font components */
 @import 'vf-font-plex-mono/vf-font-plex-mono.scss';
@@ -177,8 +151,11 @@ html, button {
 
 @import 'vf-heading/vf-heading.scss';
 @import 'vf-text/vf-text.scss';
-@import 'vf-utility-classes/vf-utility-classes.scss';
 @import 'vf-u-fullbleed/vf-u-fullbleed.scss';
+
+/* Visual Framework Utility Class Mixins */
+@import 'vf-sass-config/mixins/vf-utility-mixins.scss';
+@import 'vf-utility-classes/vf-utility-classes.scss';
 
 // This is a demonstration of vf-core's ability to warn and proceed on missing
 // sass imports

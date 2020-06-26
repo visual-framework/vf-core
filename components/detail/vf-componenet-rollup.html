@@ -214,6 +214,11 @@ class="vf-logo | vf-logo--has-text">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.8</span>
+<span class="hljs-bullet">
+* </span>replaces all imports for Sass variables, mixins and functions with vf-sass-config
+<span class="hljs-bullet">* </span>moves utility classes mixins closer to where vf-utility classes are called
+
 <span class="hljs-section">## 1.0.7</span>
 <span class="hljs-bullet">
 * </span>add <span class="hljs-code">`'vf-banner/vf-banner--alerts.scss';`</span>
@@ -248,7 +253,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-componenet-rollup/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 302 Bytes
+          Size: 474 Bytes
         </li>
       </ul>
     </section>
@@ -274,33 +279,7 @@ class="vf-logo | vf-logo--has-text">
  * VF Core version in use: #{map-get($componentInfo, 'vfCoreVersion')}
  */</span>
 
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-custom-properties.scss'</span>;
-
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-border-radius.variables.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-breakpoints.variables.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-breakpoints.map.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-colors.map.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-ui-colors.map.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-font--monospace.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-font--sans.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-font-families.variables.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-links.variables.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-spacing.map.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-zindex.map.scss'</span>;
-
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-colors.custom-properties.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-ui-colors.custom-properties.scss'</span>;
-
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins.scss'</span>;
-
-
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-sass-utilities/vf-sass-utilities.scss'</span>;
-
-<span class="hljs-comment">/* Visual Framework Utility Class Mixins */</span>
-
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-utility-mixins.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-sass-config/index.scss'</span>;
 
 <span class="hljs-comment">/* All Visual Framework Font components */</span>
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-font-plex-mono/vf-font-plex-mono.scss'</span>;
@@ -438,8 +417,11 @@ class="vf-logo | vf-logo--has-text">
 
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-heading/vf-heading.scss'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-text/vf-text.scss'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-utility-classes/vf-utility-classes.scss'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-u-fullbleed/vf-u-fullbleed.scss'</span>;
+
+<span class="hljs-comment">/* Visual Framework Utility Class Mixins */</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-sass-config/mixins/vf-utility-mixins.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-utility-classes/vf-utility-classes.scss'</span>;
 
 <span class="hljs-comment">// This is a demonstration of vf-core's ability to warn and proceed on missing</span>
 <span class="hljs-comment">// sass imports</span>
@@ -462,7 +444,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-componenet-rollup/index.scss
         </li>
         <li class="vf-list__item">
-          Size: 6 KB
+          Size: 5.4 KB
         </li>
       </ul>
     </section>

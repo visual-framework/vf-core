@@ -309,6 +309,12 @@ deprecated component text, if normalisations should be included.</p>
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.0</span>
+<span class="hljs-bullet">
+* </span>Adds the relative paths to @import for files rather for when the index.scss is used in other projects
+<span class="hljs-bullet">* </span>Adds stylelint dis/enabled wrapper so it doesn't shout about design tokens
+<span class="hljs-bullet">* </span>Adds @visual-framework/vf-design-tokens as a dependency
+
 <span class="hljs-section">## 1.0.3</span>
 <span class="hljs-bullet">
 * </span>Breakpoint map was missing from vf-variables.scss
@@ -335,7 +341,7 @@ deprecated component text, if normalisations should be included.</p>
           Filesystem path: components/vf-sass-config/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 207 Bytes
+          Size: 457 Bytes
         </li>
       </ul>
     </section>
@@ -346,10 +352,10 @@ deprecated component text, if normalisations should be included.</p>
       <div class="FileBrowser-itemPreview">
         
         <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-functions'</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-mixins'</span>;
+          <code class="Code Code--lang-SCSS FileBrowser-code vf-code-example"><span class="hljs-keyword">@import</span> <span class="hljs-string">'variables/vf-global-variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'variables/vf-variables.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'functions/vf-functions.scss'</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">'mixins/vf-mixins.scss'</span>;
 </code>
         </pre>
         
@@ -365,7 +371,7 @@ deprecated component text, if normalisations should be included.</p>
           Filesystem path: components/vf-sass-config/index.scss
         </li>
         <li class="vf-list__item">
-          Size: 100 Bytes
+          Size: 157 Bytes
         </li>
       </ul>
     </section>
@@ -395,7 +401,10 @@ deprecated component text, if normalisations should be included.</p>
     <span class="hljs-string">"fractal"</span>,
     <span class="hljs-string">"component"</span>
   ],
-  <span class="hljs-attr">"gitHead"</span>: <span class="hljs-string">"7bb3e8605bb5e604a55e7480e8e0d7620cee1b7f"</span>
+  <span class="hljs-attr">"gitHead"</span>: <span class="hljs-string">"7bb3e8605bb5e604a55e7480e8e0d7620cee1b7f"</span>,
+  <span class="hljs-attr">"dependencies"</span>: {
+    <span class="hljs-attr">"@visual-framework/vf-design-tokens"</span>: <span class="hljs-string">"~1.0.0"</span>
+  }
 }
 </code>
         </pre>
@@ -412,7 +421,7 @@ deprecated component text, if normalisations should be included.</p>
           Filesystem path: components/vf-sass-config/package.json
         </li>
         <li class="vf-list__item">
-          Size: 569 Bytes
+          Size: 645 Bytes
         </li>
       </ul>
     </section>

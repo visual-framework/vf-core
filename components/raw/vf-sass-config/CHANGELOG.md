@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.0
+
+* Adds the relative paths to @import for files rather for when the index.scss is used in other projects
+* Adds stylelint dis/enabled wrapper so it doesn't shout about design tokens
+* Adds @visual-framework/vf-design-tokens as a dependency
+
 ## 1.0.3
 
 * Breakpoint map was missing from vf-variables.scss
