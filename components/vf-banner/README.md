@@ -6,10 +6,6 @@
 
 Informs visitors about important changes or persistent conditions. Use this component if you need to communicate to visitors in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header.
 
-### Exceptions
-
-The GDPR Banner, is the `--fixed` variant which needs to be 'sticky' to the bottom of the browser viewport
-
 ## Reflecting status
 
 - General notice `vf-banner vf-banner--notice`
