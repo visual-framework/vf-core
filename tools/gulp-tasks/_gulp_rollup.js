@@ -23,7 +23,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   require(path.resolve('.', __dirname + '/vf-watch.js'))(gulp, path, componentPath, reload);
   require(path.resolve('.', __dirname + '/vf-templates-precompile.js'))(gulp, path, componentPath);
   require(path.resolve('.', __dirname + '/vf-build.js'))(gulp, buildDestionation);
-  
+
   // -----------------------------------------------------------------------------
   // Main tasks
   // -----------------------------------------------------------------------------
