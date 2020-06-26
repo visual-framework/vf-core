@@ -1,4 +1,9 @@
-## 1.0.0-alpha.2 
+## 2.0.0
+
+* makes better use of using .yml for data rather than having to inline it in a `vf-card`
+* better default spacing
+
+## 1.0.0-alpha.2
 
 * Tweaks layout centring
 
