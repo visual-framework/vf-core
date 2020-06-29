@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css" type="text/css">
 
 
-<link rel="stylesheet" href="../../themes/vf-frctl-theme/css/default.css?cachebust=1.0.0-beta.0" type="text/css">
+<link rel="stylesheet" href="../../themes/vf-frctl-theme/css/default.css?cachebust=1.0.1" type="text/css">
 
 
 </head>
@@ -365,7 +365,11 @@ class="vf-logo | vf-logo--has-text">
       <div class="FileBrowser-itemPreview">
         
         <pre class="vf-code-example__pre">
-          <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># 1.4.3</span>
+          <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># 1.4.4</span>
+<span class="hljs-bullet">
+* </span>fixes issue with <span class="hljs-code">`--intense`</span> variant so parallax image is full width
+
+<span class="hljs-section"># 1.4.3</span>
 <span class="hljs-bullet">
 * </span>replaces margin shorthand so it doesn't remove bottom margin when using <span class="hljs-code">`--inlay`</span> modifier
 
@@ -414,7 +418,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-hero/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 912 Bytes
+          Size: 993 Bytes
         </li>
       </ul>
     </section>
@@ -758,8 +762,9 @@ class="vf-logo | vf-logo--has-text">
   <span class="hljs-attribute">background-repeat</span>: no-repeat;
   <span class="hljs-attribute">background-size</span>: cover;
   grid-template-rows: auto;
-
+  <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">50%</span> - <span class="hljs-number">50vw</span>);
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">80px</span> <span class="hljs-number">0</span> <span class="hljs-number">64px</span> <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;
 
   <span class="hljs-selector-class">.vf-hero__content</span> {
     grid-row: <span class="hljs-number">1</span>;
@@ -808,6 +813,10 @@ class="vf-logo | vf-logo--has-text">
         <span class="hljs-attribute">color</span>: set-color(vf-color--blue) <span class="hljs-meta">!important</span>;
         <span class="hljs-attribute">transform</span>: translate(<span class="hljs-number">2px</span>, <span class="hljs-number">4px</span>);
       }
+    }
+
+    &amp; ~ <span class="hljs-selector-attr">[id*='#jarallax-container']</span> &gt; <span class="hljs-selector-tag">div</span> {
+      <span class="hljs-attribute">left</span>: calc(<span class="hljs-number">50%</span> - <span class="hljs-number">50vw</span>);
     }
   }
 
@@ -932,7 +941,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-hero/vf-hero.scss
         </li>
         <li class="vf-list__item">
-          Size: 10.2 KB
+          Size: 10.3 KB
         </li>
       </ul>
     </section>
@@ -7434,7 +7443,7 @@ class="vf-logo | vf-logo--has-text">
 
 
 
-<!--<script src="../../themes/vf-frctl-theme/js/vf-frctl-theme.js?cachebust=1.0.0-beta.0"></script>-->
+<!--<script src="../../themes/vf-frctl-theme/js/vf-frctl-theme.js?cachebust=1.0.1"></script>-->
 
 
 <script src="https://dev.assets.emblstatic.net/vf/develop/scripts/scripts.js"></script>
