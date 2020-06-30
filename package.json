@@ -1,6 +1,6 @@
 {
   "name": "@visual-framework/vf-core",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Visual Framework 2.0",
   "main": "index.js",
   "vfConfig": {
@@ -61,11 +61,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "note:lerna": "for guidance see PUBLISHING.md", 
+    "note:lerna": "for guidance see PUBLISHING.md",
     "lerna:test": "lerna publish --no-git-tag-version --no-push --skip-npm --canary && git reset --hard",
-    "note:lerna:test": "we use the `--canary` flag to simplify testing, correct versions can be selected when running `lerna:publish`", 
+    "note:lerna:test": "we use the `--canary` flag to simplify testing, correct versions can be selected when running `lerna:publish`",
     "lerna:publish": "lerna publish --no-git-tag-version --no-push && git reset --hard && lerna publish --no-git-tag-version --no-push --skip-npm --ignore-scripts",
-    "note:lerna:publish": "it's a known issue that you need to supply the version twice, we're working a solution for this", 
+    "note:lerna:publish": "it's a known issue that you need to supply the version twice, we're working a solution for this",
     "prepublishOnly": "gulp vf-core:prepare-deploy"
   },
   "repository": {
