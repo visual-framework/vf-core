@@ -250,6 +250,10 @@ class="vf-logo | vf-logo--has-text">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.0</span>
+<span class="hljs-bullet">
+* </span>adds functionality that makes it possible to use background images in fullbleeds
+
 <span class="hljs-section">## 1.0.0</span>
 <span class="hljs-bullet">
 * </span>adds specific use case CSS for vf-footer
@@ -276,7 +280,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-u-fullbleed/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 251 Bytes
+          Size: 345 Bytes
         </li>
       </ul>
     </section>
@@ -386,10 +390,18 @@ class="vf-logo | vf-logo--has-text">
 <span class="hljs-selector-class">.vf-u-fullbleed</span> {
   <span class="hljs-variable">$vf-u-fullbleed-parent</span>: body !default; <span class="hljs-comment">/* 1 */</span>
 
+  <span class="hljs-attribute">background-position</span>: center center;
+  <span class="hljs-attribute">background-repeat</span>: no-repeat;
+  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span>;
+
   <span class="hljs-attribute">position</span>: relative; <span class="hljs-comment">/* 2 */</span>
 
   &amp;<span class="hljs-selector-pseudo">::before</span> {
     <span class="hljs-attribute">background-color</span>: inherit; <span class="hljs-comment">/* 3 */</span>
+    <span class="hljs-attribute">background-image</span>: inherit;
+    <span class="hljs-attribute">background-position</span>: inherit;
+    <span class="hljs-attribute">background-repeat</span>: inherit;
+    <span class="hljs-attribute">background-size</span>: cover;
     <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
     grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>; <span class="hljs-comment">/* 4 */</span>
     <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>; <span class="hljs-comment">/* 5 */</span>
@@ -419,7 +431,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-u-fullbleed/vf-u-fullbleed.scss
         </li>
         <li class="vf-list__item">
-          Size: 1.7 KB
+          Size: 1.9 KB
         </li>
       </ul>
     </section>
