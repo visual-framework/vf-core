@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.0.0
+
+* making a breaking change because of the HTML alterations
+
 ## 1.0.2
 
 * makes content wrap with `flex-wrap`
