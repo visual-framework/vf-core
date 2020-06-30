@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.0
+
+* adds functionality that makes it possible to use background images in fullbleeds
+
 ## 1.0.0
 
 * adds specific use case CSS for vf-footer
