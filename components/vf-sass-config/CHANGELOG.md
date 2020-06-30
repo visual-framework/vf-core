@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.2
+
+* changes filepaths so they're relative where needed
+
 ## 1.1.1
 
 * Adds missing global custom properties
