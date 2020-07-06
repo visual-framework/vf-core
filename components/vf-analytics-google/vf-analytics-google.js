@@ -206,7 +206,7 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
     // }
   }
 
-  // @todo Track file type (PDF, DOC, etc)
+
   // @todo Track the region of the link clicked (global nav, masthead, hero, main content, footer, etc)
   //       Get closest parent
   //       data-vf-google-anlaytics-region="main-content-area-OR-SOME-OTHER-NAME"
@@ -217,7 +217,25 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
   // Only if more than 100ms has past since last click.
   // Due to our structure, we fire multiple events, so we only send to GA the most specific event resolution
   if ((Date.now() - lastGaEventTime) > 150) {
+    // track link name and region
     ga && ga('send', 'event', 'UI', 'UI Element / ' + parentContainer, linkName);
+
+    // Track file type (PDF, DOC, etc) or if mailto
+    // adapted from https://www.blastanalytics.com/blog/how-to-track-downloads-in-google-analytics
+    var filetypes = /\.(zip|exe|pdf|doc*|xls*|ppt*|mp3)$/i;
+    var baseHref = '';
+    var href = actedOnItem.href;
+    if (href && href.match(/^mailto\:/i)) {
+      var mailLink = href.replace(/^mailto\:/i, '');
+      ga && ga('send', 'event', 'Email', 'Region / ' + parentContainer, mailLink);
+    }
+    if (href && href.match(filetypes)) {
+      var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
+      var filePath = href;
+      ga && ga('send', 'event', 'Download', 'Type / ' + extension + ' / ' + parentContainer, filePath);
+    }
+
+    // note that we've stored an event(s)
     lastGaEventTime = Date.now();
 
     // conditional logging
