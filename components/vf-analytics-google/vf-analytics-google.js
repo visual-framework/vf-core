@@ -206,12 +206,15 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
     // }
   }
 
-
-  // @todo Track the region of the link clicked (global nav, masthead, hero, main content, footer, etc)
-  //       Get closest parent
-  //       data-vf-google-anlaytics-region="main-content-area-OR-SOME-OTHER-NAME"
-
-  let parentContainer = 'ParentContainerNotYetSupported';
+  // Get closest parent container
+  // Track the region of the link clicked (global nav, masthead, hero, main content, footer, etc)
+  //data-vf-google-anlaytics-region="main-content-area-OR-SOME-OTHER-NAME"
+  let parentContainer = actedOnItem.closest("[data-vf-google-anlaytics-region]");
+  if (parentContainer) {
+    parentContainer = parentContainer.dataset.vfGoogleAnlayticsRegion;
+  } else {
+    parentContainer = 'No container specified';
+  }
 
   // send to GA
   // Only if more than 100ms has past since last click.
@@ -241,7 +244,7 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
     // conditional logging
     let conditionalLoggingCheck = document.querySelector('body');
     // debug: always turn on verbos analytics
-    conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
+    // conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
     if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
       console.log('%c Verbose analytics on ', 'color: #FFF; background: #111; font-size: .75rem;');
       console.log('clicked on: %o ',actedOnItem);
