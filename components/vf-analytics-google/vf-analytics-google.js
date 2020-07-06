@@ -24,6 +24,12 @@ function vfGaIndicateUnloaded() {
 }
 
 /**
+ * Track the last time an event was sent (don't double send)
+ * @param {Date} lastGaEventTime
+ */
+var lastGaEventTime = Date.now();
+
+/**
  * We poll the document until we find GA has loaded, or we've tried a few times.
  * Port of https://github.com/ebiwd/EBI-Framework/blob/v1.3/js/foundationExtendEBI.js#L4
  * @param {number} [numberOfGaChecksLimit=2]
@@ -62,7 +68,7 @@ function vfGaIndicateLoaded(numberOfGaChecksLimit,numberOfGaChecks,checkTimeout)
       }, 900); // give a second check if GA was slow to load
     }
   }
-  
+
 }
 
 /**
@@ -92,7 +98,7 @@ function vfGetMeta(metaName) {
  */
 function vfGaInit() {
 
-  // Need help 
+  // Need help
   // How to add dimension to your property
   // https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
   // https://support.google.com/analytics/answer/2709829?hl=en
@@ -101,7 +107,7 @@ function vfGaInit() {
   // @todo: add conditional
   ga('set', 'anonymizeIp', true);
 
-  // lookup metadata  <meta name="vf:page-type" content="category;pageTypeHere"> 
+  // lookup metadata  <meta name="vf:page-type" content="category;pageTypeHere">
   // Pass your GA dimension with a `;` divider
   var pageType = vfGetMeta('vf:page-type');
   if (pageType.length > 0) {
@@ -110,16 +116,120 @@ function vfGaInit() {
     var pageTypeName = toLog[0];
     ga('set', dimension, pageTypeName);
   }
-  
+
   // standard google analytics bootstrap
   // @todo: add conditional
   ga('send', 'pageview');
-  
+
   // If we want to send metrics in one go
   // ga('set', {
   //   'dimension5': 'custom dimension data'
   //   // 'metric5': 'custom metric data'
   // });
+
+  vfGaLinkTrackingInit();
+}
+
+/**
+ * Track page links as events
+ */
+function vfGaLinkTrackingInit() {
+  // jQuery("body.google-analytics-loaded .track-with-analytics-events a").on('mousedown', function(e) {
+  //   analyticsTrackInteraction(e.target,'Manually tracked area');
+  // });
+
+  document.body.onclick = function(e){
+    e = e || event;
+    var from = findParent('a',e.target || e.srcElement);
+    if (from){
+       /* it's a link, actions here */
+       console.log('click',from);
+       analyticsTrackInteraction(from);
+    }
+  }
+  //find first parent with tagName [tagname]
+  function findParent(tagname,el){
+    while (el){
+      if ((el.nodeName || el.tagName).toLowerCase()===tagname.toLowerCase()){
+        return el;
+      }
+      el = el.parentNode;
+    }
+    return null;
+  }
+}
+
+/**
+ * Utility method to get the last in an array
+ * @returns {var} the last item in the array
+ * @example linkName = actedOnItem.src.split('/').vfGaLinkLast();
+ */
+if (!Array.prototype.vfGaLinkLast){
+  Array.prototype.vfGaLinkLast = function(){
+    return this[this.length - 1];
+  };
+};
+
+/**
+ * Analytics tracking
+ * ---
+ * This code tracks the user's clicks in various parts of the site and logs them as GA events.<br/>
+ * Links in non-generic regions can be tracked by adding '.track-with-analytics-events' to a parent div. Careful with the scoping.
+ *
+ * Dev note:
+ * add class verbose-analytics to your body for a readout to console on clicks.
+ *
+ * @param {element} actedOnItem
+ * @param {string} customEventName Event action
+ * @example
+ * jQuery(".analytics-content-footer").on('mousedown', 'a, button', function(e) {
+ *   analyticsTrackInteraction(e.target,'Content footer');
+ * });
+ */
+function analyticsTrackInteraction(actedOnItem, customEventName) {
+  var customEventName = customEventName || []; // you can pass some custom text as a 3rd param
+  let linkName;
+
+  if (customEventName.length > 0) {
+    linkName = customEventName;
+  } else { // then derive a value
+    linkName = actedOnItem.innerText;
+    console.log('linkName',linkName);
+
+    // if there's no text, it's probably and image
+    if (linkName.length == 0 && actedOnItem.hasAttribute('src')) linkName = actedOnItem.src.split('/').vfGaLinkLast();
+    if (linkName.length == 0 && actedOnItem.value) linkName = actedOnItem.value;
+
+    // special things for gloabl search box
+    // if (parentContainer == 'Global search') {
+    //   linkName = 'query: ' + jQuery('#global-search input#query').value;
+    // }
+  }
+
+  // @todo Track file type (PDF, DOC, etc)
+  // @todo Track the region of the link clicked (global nav, masthead, hero, main content, footer, etc)
+  //       Get closest parent
+  //       data-vf-google-anlaytics-region="main-content-area-OR-SOME-OTHER-NAME"
+
+  let parentContainer = 'ParentContainerNotYetSupported';
+
+  // send to GA
+  // Only if more than 100ms has past since last click.
+  // Due to our structure, we fire multiple events, so we only send to GA the most specific event resolution
+  if ((Date.now() - lastGaEventTime) > 150) {
+    ga && ga('send', 'event', 'UI', 'UI Element / ' + parentContainer, linkName);
+    lastGaEventTime = Date.now();
+
+    // conditional logging
+    let conditionalLoggingCheck = document.querySelector('body');
+    // debug: always turn on verbos analytics
+    conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
+    if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
+      console.log('%c Verbose analytics on ', 'color: #FFF; background: #111; font-size: .75rem;');
+      console.log('clicked on: %o ',actedOnItem);
+      console.log('sent to GA: ', 'event ->', 'UI ->', 'UI Element / ' + parentContainer + ' ->', linkName, '; at: ',lastGaEventTime);
+    }
+  }
 }
 
 // You should also import it at ./components/vf-core/scripts.js
