@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.0.1
+
+* add support for backwards compatibility with .vf-global-header 1.x's vf-global-header__inner
+* will be removed in vf-global-header 3.0
+
 ## 2.0.0
 
 * making a breaking change because of the HTML alterations

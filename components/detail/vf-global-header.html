@@ -251,6 +251,11 @@ class="vf-logo | vf-logo--has-text">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 2.0.1</span>
+<span class="hljs-bullet">
+* </span>add support for backwards compatibility with .vf-global-header 1.x's vf-global-header__inner
+<span class="hljs-bullet">* </span>will be removed in vf-global-header 3.0
+
 <span class="hljs-section">## 2.0.0</span>
 <span class="hljs-bullet">
 * </span>making a breaking change because of the HTML alterations
@@ -293,7 +298,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-global-header/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 684 Bytes
+          Size: 832 Bytes
         </li>
       </ul>
     </section>
@@ -344,6 +349,20 @@ class="vf-logo | vf-logo--has-text">
     <span class="hljs-attribute">margin-right</span>: .<span class="hljs-number">5rem</span>;
   }
 }
+
+<span class="hljs-comment">// backwards compatibility with .vf-global-header 1.x vf-global-header__inner</span>
+<span class="hljs-comment">// will be removed in vf-global-header 3.0</span>
+<span class="hljs-selector-tag">html</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.vf-disable-deprecated</span>) {
+  <span class="hljs-selector-class">.vf-global-header__inner</span> {
+    <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-wrap</span>: wrap;
+    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+    <span class="hljs-attribute">padding</span>: .<span class="hljs-number">5rem</span> <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  }
+}
 </code>
         </pre>
         
@@ -359,7 +378,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-global-header/vf-global-header.scss
         </li>
         <li class="vf-list__item">
-          Size: 1 KB
+          Size: 1.4 KB
         </li>
       </ul>
     </section>
