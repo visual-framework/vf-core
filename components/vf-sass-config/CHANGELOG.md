@@ -1,8 +1,13 @@
 # Change Log
 
+## 1.1.3
+
+* Restores the ability to have local design tokens by not requiring a npm-installed vf-design-tokens.
+  * https://github.com/visual-framework/vf-core/pull/1009
+
 ## 1.1.2
 
-* changes filepaths so they're relative where needed
+* Changes filepaths so they're relative where needed
 
 ## 1.1.1
 
