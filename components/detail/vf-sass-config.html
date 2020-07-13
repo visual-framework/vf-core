@@ -131,7 +131,7 @@ class="vf-logo | vf-logo--has-text">
   <div class="component-library-notes | vf-content">
   <h1 id="sass-config-and-templates">Sass Config and templates</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-sass-config"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-sass-config.svg" alt="npm version"></a></p>
-<p>Mixins, functions and variables to power all <code>vf-core</code> components. If you’re using a Visual Framework component it’s a near-certainty that you’ll need this component.   </p>
+<p>Mixins, functions and variables to power all <code>vf-core</code> components. If you’re using a Visual Framework component it’s a near-certainty that you’ll need this component.</p>
 <p>Note: these utilise <code>vf-design-tokens</code></p>
 <h2 id="functions">Functions</h2>
 <h3 id="set-colorscss">set-color.scss</h3>
@@ -174,7 +174,7 @@ class="vf-logo | vf-logo--has-text">
 <p><code>button-link--ghost(
   $vf-link--color: $vf-link--color,
   $vf-link--hover-color: $vf-link--hover-color,
-  $vf-link--visited-color: $vf-link--visited-color);</code>  </p>
+  $vf-link--visited-color: $vf-link--visited-color);</code></p>
 <h3 id="listsscss">lists.scss</h3>
 <p>Styling for list types</p>
 <p><code>@include($classname: optional-classname-to-usm, $type: null, unordered, ordered or inline);</code></p>
@@ -225,8 +225,9 @@ deprecated component text, if normalisations should be included.</p>
 <h3 id="vf-variablesscss">vf-variables.scss</h3>
 <p>Rollup of global Sass variables.</p>
 <h2 id="install">Install</h2>
-<p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-sass-config</code> with this command.</p>
-<pre><code class="hljs">$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-sass-config</span></code></pre><h2 id="usage">Usage</h2>
+<p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-sass-config</code> and its dependencies with this command.</p>
+<pre><code class="hljs"><span class="hljs-variable">$ </span>yarn add --dev <span class="hljs-variable">@visual</span>-framework/vf-sass-config <span class="hljs-variable">@visual</span>-framework/vf-design-tokens</code></pre><p>You might also find the the <a href="https://visual-framework.github.io/vf-core/components/detail/vf-sass-starter.html">vf-sass-starter</a> a useful starting point for setting up a customised Sass build.</p>
+<h2 id="usage">Usage</h2>
 <p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
 <pre><code class="hljs"><span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-global-variables'</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">'vf-variables'</span>;
@@ -297,9 +298,14 @@ deprecated component text, if normalisations should be included.</p>
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.3</span>
+<span class="hljs-bullet">
+* </span>Restores the ability to have local design tokens by not requiring a npm-installed vf-design-tokens.
+<span class="hljs-bullet">  * </span>https://github.com/visual-framework/vf-core/pull/1009
+
 <span class="hljs-section">## 1.1.2</span>
 <span class="hljs-bullet">
-* </span>changes filepaths so they're relative where needed
+* </span>Changes filepaths so they're relative where needed
 
 <span class="hljs-section">## 1.1.1</span>
 <span class="hljs-bullet">
@@ -337,7 +343,7 @@ deprecated component text, if normalisations should be included.</p>
           Filesystem path: components/vf-sass-config/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 572 Bytes
+          Size: 743 Bytes
         </li>
       </ul>
     </section>
