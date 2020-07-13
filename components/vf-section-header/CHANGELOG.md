@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.0
+
+* Adds nunjucks if statement for adding context if component used as sub-component
+
 ## 1.1.1
 
 * SVG is a visual queue: adds aria-role="hidden" to the SVG in the component so screen readers don't announce it
