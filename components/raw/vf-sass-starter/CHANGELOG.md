@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.1
+
+* dependency bump
+
 ## 0.1.0
 
 * updates package.json to dependencies rather than devDependencies
