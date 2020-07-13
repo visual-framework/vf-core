@@ -1,4 +1,4 @@
-## 3.0.0
+## 3.0.0-alpha.1
 
 * makes `vf-section-header` work as a subcomponent.
 * changes async for a for loop.
