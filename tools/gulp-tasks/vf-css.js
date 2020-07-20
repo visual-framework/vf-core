@@ -10,6 +10,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
 
   // Sass and CSS Stuff
   const sass = require('gulp-sass');
+  sass.compiler = require('dart-sass');
   const autoprefixer = require('gulp-autoprefixer');
   const autoprefixerOptions = { overrideBrowserslist: ['last 2 versions', '> 5%', 'Firefox ESR'] };
   const cssnano = require('gulp-cssnano');
