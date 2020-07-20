@@ -1,3 +1,11 @@
+# 1.4.5
+
+* adds an if statement for contextual data if applicable 
+
+# 1.4.4
+
+* fixes issue with `--intense` variant so parallax image is full width
+
 # 1.4.3
 
 * replaces margin shorthand so it doesn't remove bottom margin when using `--inlay` modifier

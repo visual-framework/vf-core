@@ -16,6 +16,8 @@ See also: [Guide on versions in `vf-core`](https://visual-framework.github.io/vf
     - `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]`
 1. publish to npm
     - `npm publish`
+1. tag a release on GitHub
+    - https://github.com/visual-framework/vf-core/releases
 
 ## Components inside `vf-core`
 
