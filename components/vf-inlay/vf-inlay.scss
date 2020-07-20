@@ -16,11 +16,20 @@
   display: grid;
   grid-auto-rows: auto;
   grid-gap: 0 32px;
+  /*stylelint-disable*/
   grid-template-columns:
     [inlay--full-start]
       1fr
     [inlay--full-end]
   ;
+
+  &:last-of-type {
+    @include margin--block(bottom, $vf-inlay__spacing--bottom--narrow);
+
+    @media (min-width: 1024px) {
+      @include margin--block(bottom, $vf-inlay__spacing--bottom);
+    }
+  }
 
   @media (min-width: $vf-breakpoint--lg) {
     grid-row-gap: 32px;
@@ -32,14 +41,7 @@
       [inlay--sidebar-end inlay--full-end]
     ;
   }
-
-  &:last-of-type {
-    @include margin--block(bottom, $vf-inlay__spacing--bottom--narrow);
-
-    @media (min-width: 1024px) {
-      @include margin--block(bottom, $vf-inlay__spacing--bottom);
-    }
-  }
+  /*stylelint-enable*/
 }
 
 .vf-inlay__content {
@@ -49,6 +51,7 @@
     display: grid;
     grid-auto-rows: auto;
     grid-gap: 0 32px;
+    /*stylelint-disable*/
     grid-template-columns:
       [inlay--full-start]
         1fr
@@ -66,6 +69,7 @@
       ;
     }
   }
+  /*stylelint-enable*/
 }
 
 .vf-inlay__content--full-width {
