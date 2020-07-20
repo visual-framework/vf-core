@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-config.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-config)
 
-Mixins, functions and variables to power all `vf-core` components. If you're using a Visual Framework component it's a near-certainty that you'll need this component.   
+Mixins, functions and variables to power all `vf-core` components. If you're using a Visual Framework component it's a near-certainty that you'll need this component.
 
 Note: these utilise `vf-design-tokens`
 
@@ -38,29 +38,29 @@ Reusable styling for html blockquote elements.
 
 `@include blockquote;`
 
-### button.scss  
+### button.scss
 
 Reusable styling for button elements
 
 `@include vf-button;`
 
-### divider.scss   
+### divider.scss
 
 Reusable styling for divider elements and styling
 
 `@include vf-divider;`
 
-### figure.scss    
+### figure.scss
 
 Reusable styling for figures with optional caption styling
 
 `@include figure($has-caption: true);`
 
-### helpers.scss  
+### helpers.scss
 
 Nothing, yet.
 
-### links.scss     
+### links.scss
 
 Styling for links.
 
@@ -78,15 +78,15 @@ Styling for links.
 `button-link--ghost(
   $vf-link--color: $vf-link--color,
   $vf-link--hover-color: $vf-link--hover-color,
-  $vf-link--visited-color: $vf-link--visited-color);`  
+  $vf-link--visited-color: $vf-link--visited-color);`
 
-### lists.scss     
+### lists.scss
 
 Styling for list types
 
 `@include($classname: optional-classname-to-usm, $type: null, unordered, ordered or inline);`
 
-### margin.scss    
+### margin.scss
 
 Margin, recommended to use with sizing maps
 
@@ -96,7 +96,7 @@ Margin, recommended to use with sizing maps
 - `margin-all`: specify one value for left or right, left or right
 - `margin`: specify all or a value for each
 
-### padding.scss   
+### padding.scss
 
 Padding, recommended to use with sizing maps
 
@@ -166,11 +166,13 @@ Rollup of global Sass variables.
 
 ## Install
 
-This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `vf-sass-config` with this command.
+This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `vf-sass-config` and its dependencies with this command.
 
 ```
-$ yarn add --dev @visual-framework/vf-sass-config
+$ yarn add --dev @visual-framework/vf-sass-config @visual-framework/vf-design-tokens
 ```
+
+You might also find the the [vf-sass-starter](https://visual-framework.github.io/vf-core/components/detail/vf-sass-starter.html) a useful starting point for setting up a customised Sass build.
 
 ## Usage
 

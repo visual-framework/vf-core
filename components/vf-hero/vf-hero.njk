@@ -1,3 +1,25 @@
+{%- if context %}
+  {% set card_href = context.card_href %}
+  {% set vf_hero__initial_row = context.vf_hero__initial_row %}
+
+  {% set vf_hero_heading = context.vf_hero_heading %}
+  {% set vf_hero_summary_title = context.vf_hero_summary_title %}
+  {% set vf_hero_subheading = context.vf_hero_subheading %}
+  {% set vf_hero_image = context.vf_hero_image %}
+
+  {% set vf_hero_href = context.vf_hero_href %}
+  {% set vf_hero_text = context.vf_hero_text %}
+  {% set hero_text = context.hero_text %}
+
+  {% set theme = context.theme %}
+  {% set variant = context.variant %}
+
+  {% set id = context.id %}
+  {% set modifier_class = context.modifier_class %}
+  {% set override_class = context.override_class %}
+{% endif %}
+
+
 <section
   class="vf-hero {{ modifier_class }}"
   style="
@@ -12,20 +34,22 @@
       {%- if vf_hero_href %}
       <a class="vf-link" href="{{ vf_hero_href }}">{{ vf_hero_text }}<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a>
       {% else %}
-      {{ vf_hero_text }}
+      {{ vf_hero_text | safe }}
       {% endif %}
     </p>
     {% else %}
     {% asyncEach hero_text in vf_hero_text -%}
     <p class="vf-hero__text">
-      {{ hero_text }}
+      {{ hero_text | safe }}
     </p>
     {% endeach %}
     {% endif %}
   </div>
 
   {% if modifier_class === "vf-hero--intense" %}
-  <script defer="defer" src="../../assets/vf-hero/assets/jarallax.js"></script>
+  {# <script defer="defer" src="../assets/vf-hero/assets/jarallax.js"></script> #}
+  {# <script src="{{ '/assets/vf-hero/assets/jarallax.js' | path }}"></script> #}
+  <script src="../../assets/vf-hero/assets/jarallax.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function(){
       jarallax(document.querySelectorAll('.vf-hero--intense'), {

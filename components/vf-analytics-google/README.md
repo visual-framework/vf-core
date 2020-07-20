@@ -2,11 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-analytics-google.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-analytics-google)
 
-Supplementary behaviour (primarily JavaScript) to ease tracking with Google Analytics. 
+Supplementary behaviour (primarily JavaScript) to ease tracking with Google Analytics.
 
 ## Usage
 
-This component will grow over time with additional event tracking behaviours. 
+This component will grow over time with additional event tracking behaviours.
 
 ### Meta tags
 
@@ -20,6 +20,24 @@ How to add dimension to your property?
 
 - https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
 - https://support.google.com/analytics/answer/2709829?hl=en
+
+### Region tracking
+
+You can track the region of the page a link is in:
+
+```html
+<div data-vf-google-anlaytics-region="main-content-area-OR-SOME-OTHER-NAME">
+  <a href="//www.example.com">My link here</a>
+</div>
+```
+
+Notes:
+- region names should not be repeated on the same page
+- nested regions are currently not fully supported
+
+### Verbos logging
+
+`<body data-vf-google-analytics-verbose="true">`
 
 ### JavaScript
 
@@ -42,7 +60,7 @@ You should import this component in `./components/vf-component-rollup/scripts.js
 import { vfGaIndicateLoaded } from 'vf-analytics-google/vf-analytics-google';
 // Or import directly
 // import { vfGaIndicateLoaded } from '../components/raw/vf-analytics-google/vf-analytics-google.js';
-vfGaIndicateLoaded(); 
+vfGaIndicateLoaded();
 ```
 
 ### Sass/CSS installation

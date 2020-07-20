@@ -38,3 +38,17 @@ $vf-global-header__link-text--color: set-ui-color(vf-ui-color--black);
     margin-right: .5rem;
   }
 }
+
+// backwards compatibility with .vf-global-header 1.x vf-global-header__inner
+// will be removed in vf-global-header 3.0
+html:not(.vf-disable-deprecated) {
+  .vf-global-header__inner {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 1 / -1;
+    padding: .5rem 0;
+    width: 100%;
+  }
+}
