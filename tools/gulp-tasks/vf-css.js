@@ -31,41 +31,9 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   // CSS Gen stuff
   const rename = require('gulp-rename');
 
-  // construct sas import paths, priority
-  var sassPaths = [];
-  // take an array of sassTypes (paths), and componentPaths and add them to the sassPaths array
-  function constructSassImportPaths(sassTypes, sassComponentDirectories) {
-    for (let currentType = 0; currentType < sassTypes.length; currentType++) {
-      sassPaths.push(path.resolve('.', componentPath, sassTypes[currentType]).replace(/\\/g, '/'));
-      for (let directory = 0; directory < sassComponentDirectories.length; directory++) {
-        sassPaths.push(path.resolve('.', componentPath, sassComponentDirectories[directory] + '/' + sassTypes[currentType]).replace(/\\/g, '/'));
-      }
-    }
-  }
-
-  // Design tokens have first priority
-  constructSassImportPaths([
-    'vf-design-tokens/dist/sass',
-    'vf-design-tokens/dist/sass/custom-properties',
-    'vf-design-tokens/dist/sass/maps'
-  ], componentDirectories);
-
-  // then sass config
-  constructSassImportPaths([
-    'vf-sass-config/variables',
-    'vf-sass-config/functions',
-    'vf-sass-config/mixins'
-  ], componentDirectories);
-
-  // then components
-  constructSassImportPaths([
-    ''
-  ], componentDirectories);
-
-  // and finally any multi-components
-  constructSassImportPaths([
-    'vf-form'
-  ], componentDirectories);
+  // construct sass import paths
+  var sassPaths = fastglob.sync([componentPath+'/**','!'+componentPath+'/**/*.*'],{onlyFiles: false});
+  sassPaths.push(componentPath)
 
   // Lookup each component's package.json and make a package.scss
   gulp.task('vf-css:package-info', function(done) {
