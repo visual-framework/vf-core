@@ -9,8 +9,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   const fastglob = require('fast-glob');
 
   // Sass and CSS Stuff
-  const sass = require('gulp-sass');
-  sass.compiler = require('dart-sass');
+  const sass = require('sass');
   const autoprefixer = require('gulp-autoprefixer');
   const autoprefixerOptions = { overrideBrowserslist: ['last 2 versions', '> 5%', 'Firefox ESR'] };
   const cssnano = require('gulp-cssnano');
@@ -242,7 +241,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
 
   // -----------------------------------------------------------------------------
   // CSS Generator Tasks
-  // Generate per-compone .css files
+  // Generate per-component .css files
   // -----------------------------------------------------------------------------
 
   var genCss = function (option) {
