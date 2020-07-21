@@ -82,11 +82,16 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   });
 
   gulp.task('vf-css:build', function(done) {
-    const sassOpts = {
+    console.log(chalk.yellow('Visual Framework Sass generation is being done by:'));
+    console.log(chalk.yellow(sass.info));
+
+    // console.log(chalk.yellow('Looking in these locations'));
+    // console.log(chalk.yellow(sassPaths));
+
       // Import sass files
       // We'll check to see if the file exists before passing
       // it to sass for compilation
-      importer: [function(url,prev,done) {
+      const sassImporter = [function(url,prev,done) {
 
         // windows compatibility
         url = url.replace(/\\/g, '/');
@@ -94,6 +99,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
 
         var truncatedUrl = url.split(/[/]+/).pop();
         var parentFile = prev.split(/[/]+/).pop();
+        var underscoredFile = url.split(/[/]+/)[0]+'/_'+url.split(/[/]+/).pop(); // for mixins/vf-utility-mixins.scss -> mixins/_vf-utility-mixins.scss
 
         // If you do not want to interveen in certain file names
         // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
@@ -104,12 +110,10 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         // ignore `package.variables.scss` as it is dynamically made and gulp doesn't see it quickly enough
         if (parentFile == 'index.scss' && url != 'package.variables.scss') {
           if (availableComponents[url]) {
-            done(url);
-          } else if (availableComponents['_'+truncatedUrl]) {
+            done({file: url});
+          } else if (availableComponents[underscoredFile]) {
             // maybe it was an _filename.scss?
-            done(url);
-          } else if (availableComponents[truncatedUrl]) {
-            done(url);
+            done({file: underscoredFile});
           } else {
             let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expect, you might want to comment out the dependency.`;
             console.warn(chalk.yellow(importWarning));
@@ -118,10 +122,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         } else {
           return null;
         }
-
-      }],
-      includePaths: sassPaths
-    };
+      }];
 
     // Find all the component sass files available.
     // We'll pass this as a variable to our sass build so we can
@@ -142,6 +143,8 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     sass.render({
       // https://github.com/sass/node-sass
       file: SassInput,
+      importer: sassImporter,
+      sourceMap: true,
       outFile: SassOutput+'/styles.css',
       includePaths: sassPaths
       }, function(err, result){
@@ -197,12 +200,10 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       }));
   });
 
-
   // -----------------------------------------------------------------------------
   // CSS Generator Tasks
   // Generate per-component .css files
   // -----------------------------------------------------------------------------
-
   var genCss = function (option) {
     var file_name = path.basename(path.dirname(option.file_path)) + '.css';
     return gulp.src(option.file_path)
