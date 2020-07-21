@@ -96,9 +96,16 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         url = url.replace(/\\/g, '/');
         prev = prev.replace(/\\/g, '/');
 
-        var truncatedUrl = url.split(/[/]+/).pop();
+        function truncateFilePath(path) {
+          let pathArray = path.split(/[/]+/);
+          pathArray.shift();
+          return pathArray.join('/');
+        }
+
         var parentFile = prev.split(/[/]+/).pop();
         var underscoredFile = url.split(/[/]+/)[0]+'/_'+url.split(/[/]+/).pop(); // for mixins/vf-utility-mixins.scss -> mixins/_vf-utility-mixins.scss
+        var truncatedFile = truncateFilePath(url); // last resort matching, mostly for mixins
+        var underscoredTrucncatedFile = truncatedFile.split(/[/]+/)[0]+'/_'+truncatedFile.split(/[/]+/).pop(); // for mixins/vf-utility-mixins.scss -> mixins/_vf-utility-mixins.scss
 
         // If you do not want to interveen in certain file names
         // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
@@ -113,6 +120,10 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
           } else if (availableComponents[underscoredFile]) {
             // maybe it was an _filename.scss?
             done({file: underscoredFile});
+          } else if (availableComponents[truncatedFile]) {
+            done({file: truncatedFile});
+          } else if (availableComponents[underscoredTrucncatedFile]) {
+            done({file: underscoredTrucncatedFile});
           } else {
             let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expected, you might want to comment out the dependency.`;
             console.warn(chalk.yellow(importWarning));
@@ -138,6 +149,8 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       value = value.split(/[/]+/).slice(-2).join('/'); // make a list of paths like vf-table/vf-table.scss
       availableComponents[value] = true;
     }
+    // console.log('availableComponents',availableComponents)
+
     // generate the css
     sass.render({
       // https://github.com/sass/node-sass
