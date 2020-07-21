@@ -114,7 +114,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
             // maybe it was an _filename.scss?
             done({file: underscoredFile});
           } else {
-            let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expect, you might want to comment out the dependency.`;
+            let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expected, you might want to comment out the dependency.`;
             console.warn(chalk.yellow(importWarning));
             done({ contents: `/* ${importWarning} */` });
           }
