@@ -159,25 +159,18 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     // We'll pass this as a variable to our sass build so we can
     // only include the file if it exists.
     var availableComponents = {}; // track the components avaialble
-    gulp
-      .src(fastglob.sync([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss']), {
-        allowEmpty: true,
-        ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss',componentPath+'/vf-core-components/vf-core/components/**/*.scss']
-      })
-      .pipe(ListStream.obj(function (err, data) {
-        if (err)
-          throw err;
-        data.forEach(function (value, i) {
-          // Keep only the file name
-          value = value.history[0].replace(/\\/g, '/'); // windows compatibility
-          value = value.split(/[/]+/).pop();
 
-          availableComponents[value] = true;
-        });
-
-        runSassBuild();
-      }));
-
+    var sassFileList = fastglob.sync([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss'],
+      { ignore: [componentPath+'/vf-core-components/vf-core/components/**/*.scss'] }
+    );
+    // Keep only the directory + file name
+    for (let index = 0; index < sassFileList.length; index++) {
+      let value = sassFileList[index];
+      value = value.replace(/\\/g, '/'); // windows compatibility
+      value = value.split(/[/]+/).slice(-2).join('/'); // make a list of paths like vf-table/vf-table.scss
+      availableComponents[value] = true;
+    }
+    // generate the css
     sass.render({
       // https://github.com/sass/node-sass
       file: SassInput,
