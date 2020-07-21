@@ -150,7 +150,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       if (err) {
         console.log(chalk.yellow(err));
       }
-      if(!err){
+      if (!err){
         fs.mkdirSync(SassOutput, { recursive: true }); // make folder, if it doesn't exist
         fs.writeFile(SassOutput+'/styles.css', result.css, function(err){
           if(!err){
@@ -161,7 +161,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         });
       }
       done();
-    })
+    });
   });
 
   // Sass Build-Time things
@@ -204,18 +204,26 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   // -----------------------------------------------------------------------------
   var genCss = function (option) {
     var file_name = path.basename(path.dirname(option.file_path)) + '.css';
-    return gulp.src(option.file_path)
-      .pipe(sass({
-        includePaths: sassPaths,
-        outputStyle: 'expanded'
-      })
-      .on('error', function(e){
-        let message = 'Couldn\'t find a component dependency, the per-component CSS won\'t be generated for this' + e.message;
-        console.log(chalk.yellow(message));
-      }))
-      .pipe(autoprefixer(autoprefixerOptions))
-      .pipe(rename(file_name))
-      .pipe(gulp.dest(option.dir));
+    sass.render({
+      file: option.file_path,
+      includePaths: sassPaths,
+      outputStyle: 'expanded'
+    }, function(err, result) {
+      if (err) { console.log(chalk.yellow(err)); }
+      if (!err){
+        fs.mkdirSync(option.dir, { recursive: true }); // make folder, if it doesn't exist
+        fs.writeFile(option.dir+'/'+file_name, result.css, function(err) {
+          if (err) { console.log(chalk.yellow(err));
+          } else { //prefix
+            // @todo, using gulp one file at a time is weird, but autoprefixer doesn't seem to support passing single values well
+            gulp.src(option.dir+'/'+file_name)
+              .pipe(autoprefixer(autoprefixerOptions))
+              .pipe(gulp.dest(option.dir))
+          }
+        });
+      }
+      return;
+    })
   };
 
   gulp.task('vf-css:generate-component-css', function(done) {
