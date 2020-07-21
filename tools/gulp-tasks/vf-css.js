@@ -195,13 +195,28 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
           .pipe(rename(
             {
               basename: 'styles'
+    sass.render({
+      // https://github.com/sass/node-sass
+      file: SassInput,
+      outFile: SassOutput+'/styles.css',
+      includePaths: sassPaths
+      }, function(err, result){
+        if (err) {
+          console.log(chalk.yellow(err));
+        }
+        if(!err){
+          fs.mkdirSync(SassOutput, { recursive: true }); // make folder, if it doesn't exist
+          fs.writeFile(SassOutput+'/styles.css', result.css, function(err){
+            if(!err){
+              console.log('writing',SassOutput+'/styles.css')
+            } else {
+              console.log(chalk.yellow(err));
             }
-          ))
-          .pipe(gulp.dest(SassOutput))
-          .on('end', function() {
-            done();
           });
+        }
+        done();
       }
+    )
   });
 
   // Sass Build-Time things
