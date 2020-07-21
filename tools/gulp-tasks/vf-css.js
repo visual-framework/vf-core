@@ -178,23 +178,6 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         runSassBuild();
       }));
 
-      function runSassBuild() {
-        return gulp
-          .src(SassInput)
-          .pipe(sourcemaps.init())
-          .pipe(sass(sassOpts))
-          .on(
-            'error',
-            notify.onError(function(error) {
-              process.emit('exit') // this fails precommit, but allows `gulp vf-dev` to work
-              return 'Problem at file: ' + error.message;
-            })
-          )
-          .pipe(browserSync.stream())
-          .pipe(sourcemaps.write())
-          .pipe(rename(
-            {
-              basename: 'styles'
     sass.render({
       // https://github.com/sass/node-sass
       file: SassInput,
