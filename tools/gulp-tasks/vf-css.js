@@ -60,21 +60,25 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     }
 
     recursive(componentPath, ['*.css', '*.scss', '*.md', '*.njk', '_package.json'], function (err, files) {
+      // filter components where no package.json is found
       files.forEach(function(file, index, array) {
-        // only process when a package.json is found
-        if ((file.file.indexOf('package.json') > -1)) {
-          return gulp.src(file.dir+'/package.json')
-            .pipe(packageJsonToScss(file.dir))
-            .pipe(source(file.file_path))
-            .pipe(rename('package.variables.scss'))
-            .pipe(gulp.dest(file.dir));
-        } else {
-          // do nothing
+        if ((file.file.indexOf('package.json') < 0)) {
+          delete files[index];
         }
+      });
 
-        if (index + 1 == array.length) {
-          done();
-        }
+      var counter = 0;
+      // generate the component package.variables.scss
+      files.forEach(function(file, index, array) {
+        gulp.src(file.dir+'/package.json')
+          .pipe(packageJsonToScss(file.dir))
+          .pipe(source(file.file_path))
+          .pipe(rename('package.variables.scss'))
+          .pipe(gulp.dest(file.dir))
+          .on('end', function() {
+            counter++; // as we have empty items, we need to count and not use index
+            if (counter == Object.keys(array).length) { done(); }
+          });
       });
     });
 
