@@ -32,8 +32,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   const rename = require('gulp-rename');
 
   // construct sass import paths
-  var sassPaths = fastglob.sync([componentPath+'/**','!'+componentPath+'/**/*.*'],{onlyFiles: false});
-  sassPaths.push(componentPath)
+  var sassPaths = fastglob.sync([componentPath,componentPath+'/**','!'+componentPath+'/**/*.*'],{onlyFiles: false});
 
   // Lookup each component's package.json and make a package.scss
   gulp.task('vf-css:package-info', function(done) {
@@ -86,7 +85,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     console.log(chalk.yellow(sass.info));
 
     // console.log(chalk.yellow('Looking in these locations'));
-    // console.log(chalk.yellow(sassPaths));
+    // console.log(sassPaths);
 
       // Import sass files
       // We'll check to see if the file exists before passing
