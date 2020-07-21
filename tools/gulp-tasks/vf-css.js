@@ -167,7 +167,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         fs.mkdirSync(SassOutput, { recursive: true }); // make folder, if it doesn't exist
         fs.writeFile(SassOutput+'/styles.css', result.css, function(err){
           if(!err){
-            console.log('writing',SassOutput+'/styles.css')
+            // console.log('writing',SassOutput+'/styles.css')
           } else {
             console.log(chalk.yellow(err));
           }
