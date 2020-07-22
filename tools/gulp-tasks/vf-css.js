@@ -81,67 +81,65 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
           });
       });
     });
-
   });
 
   gulp.task('vf-css:build', function(done) {
-    console.log(chalk.yellow('Visual Framework Sass generation is being done by:'));
-    console.log(chalk.yellow(sass.info));
+    // console.log(chalk.yellow('Visual Framework Sass generation is being done by:'));
+    // console.log(chalk.yellow(sass.info));
 
-    // console.log(chalk.yellow('Looking in these locations'));
+    // console.log(chalk.yellow('Looking in these locations for components:'));
     // console.log(sassPaths);
 
-      // Import sass files
-      // We'll check to see if the file exists before passing
-      // it to sass for compilation
-      const sassImporter = [function(url,prev,done) {
+    // Import sass files
+    // We'll check to see if the file exists before passing
+    // it to sass for compilation
+    const sassImporter = [function(url,prev,done) {
 
-        // windows compatibility
-        url = url.replace(/\\/g, '/');
-        prev = prev.replace(/\\/g, '/');
+      // windows compatibility
+      url = url.replace(/\\/g, '/');
+      prev = prev.replace(/\\/g, '/');
 
-        function truncateFilePath(path) {
-          let pathArray = path.split(/[/]+/);
-          pathArray.shift();
-          return pathArray.join('/');
-        }
+      function truncateFilePath(path) {
+        let pathArray = path.split(/[/]+/);
+        pathArray.shift();
+        return pathArray.join('/');
+      }
 
-        var parentFile = prev.split(/[/]+/).pop();
-        var underscoredFile = url.split(/[/]+/)[0]+'/_'+url.split(/[/]+/).pop(); // for mixins/vf-utility-mixins.scss -> mixins/_vf-utility-mixins.scss
-        var truncatedFile = truncateFilePath(url); // last resort matching, mostly for mixins
-        var underscoredTrucncatedFile = truncatedFile.split(/[/]+/)[0]+'/_'+truncatedFile.split(/[/]+/).pop(); // for mixins/vf-utility-mixins.scss -> mixins/_vf-utility-mixins.scss
+      var parentFile = prev.split(/[/]+/).pop();
+      var underscoredFile = url.split(/[/]+/)[0]+'/_'+url.split(/[/]+/).pop(); // for mixins/vf-utility-mixins.scss -> mixins/_vf-utility-mixins.scss
+      var truncatedFile = truncateFilePath(url); // last resort matching, mostly for mixins
+      var underscoredTrucncatedFile = truncatedFile.split(/[/]+/)[0]+'/_'+truncatedFile.split(/[/]+/).pop(); // for mixins/vf-utility-mixins.scss -> mixins/_vf-utility-mixins.scss
 
-        // If you do not want to interveen in certain file names
-        // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
-        //   return null;
-        // }
+      // If you do not want to interveen in certain file names
+      // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
+      //   return null;
+      // }
 
-        // only intervene in index.scss rollups
-        // ignore `package.variables.scss` as it is dynamically made and gulp doesn't see it quickly enough
-        if (parentFile == 'index.scss' && url != 'package.variables.scss') {
-          if (availableComponents[url]) {
-            done({file: url});
-          } else if (availableComponents[underscoredFile]) {
-            // maybe it was an _filename.scss?
-            done({file: underscoredFile});
-          } else if (availableComponents[truncatedFile]) {
-            done({file: truncatedFile});
-          } else if (availableComponents[underscoredTrucncatedFile]) {
-            done({file: underscoredTrucncatedFile});
-          } else {
-            let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expected, you might want to comment out the dependency.`;
-            console.warn(chalk.yellow(importWarning));
-            done({ contents: `/* ${importWarning} */` });
-          }
+      // only intervene in index.scss rollups
+      // ignore `package.variables.scss` as it is dynamically made and gulp doesn't see it quickly enough
+      if (parentFile == 'index.scss' && url != 'package.variables.scss') {
+        if (availableComponents[url]) {
+          done({file: url});
+        } else if (availableComponents[underscoredFile]) {
+          // maybe it was an _filename.scss?
+          done({file: underscoredFile});
+        } else if (availableComponents[truncatedFile]) {
+          done({file: truncatedFile});
+        } else if (availableComponents[underscoredTrucncatedFile]) {
+          done({file: underscoredTrucncatedFile});
         } else {
-          return null;
+          let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expected, you might want to comment out the dependency.`;
+          console.warn(chalk.yellow(importWarning));
+          done({ contents: `/* ${importWarning} */` });
         }
-      }];
+      } else {
+        return null;
+      }
+    }];
 
     // Find all the component sass files available.
-    // We'll pass this as a variable to our sass build so we can
-    // only include the file if it exists.
-    var availableComponents = {}; // track the components avaialble
+    // so we only include the file if it exists.
+    var availableComponents = {};
 
     var sassFileList = fastglob.sync([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss'],
       { ignore: [componentPath+'/vf-core-components/vf-core/components/**/*.scss'] }
@@ -153,6 +151,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       value = value.split(/[/]+/).slice(-2).join('/'); // make a list of paths like vf-table/vf-table.scss
       availableComponents[value] = true;
     }
+    // console.log('These components were found');
     // console.log('availableComponents',availableComponents)
 
     // generate the css
