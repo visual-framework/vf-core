@@ -43,7 +43,7 @@
 /* stylelint-enable */
 /*!
  * Component: @visual-framework/ebi-header-footer
- * Version: 1.0.0-beta.2
+ * Version: 1.0.0
  * Location: components/ebi-header-footer
  */
 body.no-global-search .masthead-black-bar ul#global-nav.menu li.search {
@@ -179,6 +179,30 @@ body.ebi-black-bar-loaded .ebi-header-footer.masthead-black-bar > .row {
 .ebi-header-footer.masthead-black-bar .embl-bar {
   background-color: var(--vf-ui-color--off-white);
   color: var(--vf-color--grey--darkest);
+  position: relative;
+  /* 2 */
+}
+.ebi-header-footer.masthead-black-bar .embl-bar::before {
+  background-color: inherit;
+  /* 3 */
+  background-image: inherit;
+  background-position: inherit;
+  background-repeat: inherit;
+  background-size: cover;
+  content: "";
+  grid-column: 1/-1;
+  /* 4 */
+  height: 100%;
+  /* 5 */
+  margin-left: calc(50% - 50vw);
+  /* 6 */
+  position: absolute;
+  top: 0;
+  /* 7 */
+  width: 100vw;
+  /* 8 */
+  z-index: -1;
+  /* 9 */
 }
 .ebi-header-footer.masthead-black-bar .embl-bar a {
   color: var(--vf-color--grey--darkest);

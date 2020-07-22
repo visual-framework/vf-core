@@ -177,7 +177,7 @@ class="vf-logo | vf-logo--has-text">
   <pre class="vf-code-example__pre"><code class="Code Code--lang-html vf-code-example"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.assets.emblstatic.net/vf/develop/assets/ebi-header-footer/ebi-header-footer.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"all"</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://dev.ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"all"</span> /&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"masthead-black-bar"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"clearfix masthead-black-bar | ebi-header-footer vf-content"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"masthead-black-bar"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"clearfix masthead-black-bar | ebi-header-footer vf-content vf-u-fullbleed"</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
 
 Your content here.
@@ -285,9 +285,14 @@ Your content here.
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.0.0</span>
+<span class="hljs-bullet">
+* </span>EBI Header is once again fullbleed after changes in vf-grid-page 2.0.0
+
 <span class="hljs-section">## 1.0.0-beta.2</span>
 <span class="hljs-bullet">
-* </span>Resolves changes in other VF components, spacing, links, etc. </code>
+* </span>Resolves changes in other VF components, spacing, links, etc.
+</code>
         </pre>
         
       </div>
@@ -302,7 +307,7 @@ Your content here.
           Filesystem path: components/ebi-header-footer/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 95 Bytes
+          Size: 179 Bytes
         </li>
       </ul>
     </section>
@@ -327,10 +332,30 @@ Your content here.
   <span class="hljs-selector-class">.embl-bar</span> {
     <span class="hljs-attribute">background-color</span>: var(--vf-ui-color--off-white);
     <span class="hljs-attribute">color</span>: var(--vf-color--grey--darkest);
+    <span class="hljs-attribute">position</span>: relative; <span class="hljs-comment">/* 2 */</span>
+
+    <span class="hljs-comment">// a copy of vf-u-fullbleed code,</span>
+    <span class="hljs-comment">// but we duplicate it as we're not able to insert classes into the legacy html import</span>
+    &amp;<span class="hljs-selector-pseudo">::before</span> {
+      <span class="hljs-attribute">background-color</span>: inherit; <span class="hljs-comment">/* 3 */</span>
+      <span class="hljs-attribute">background-image</span>: inherit;
+      <span class="hljs-attribute">background-position</span>: inherit;
+      <span class="hljs-attribute">background-repeat</span>: inherit;
+      <span class="hljs-attribute">background-size</span>: cover;
+      <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+      grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>; <span class="hljs-comment">/* 4 */</span>
+      <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>; <span class="hljs-comment">/* 5 */</span>
+      <span class="hljs-attribute">margin-left</span>: calc(<span class="hljs-number">50%</span> - <span class="hljs-number">50vw</span>); <span class="hljs-comment">/* 6 */</span>
+      <span class="hljs-attribute">position</span>: absolute;
+      <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>; <span class="hljs-comment">/* 7 */</span>
+      <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>; <span class="hljs-comment">/* 8 */</span>
+      <span class="hljs-attribute">z-index</span>: set-layer(vf-z-index--negative); <span class="hljs-comment">/* 9 */</span>
+    }
+
     <span class="hljs-selector-tag">a</span> {
       <span class="hljs-attribute">color</span>: var(--vf-color--grey--darkest);
     }
-    <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> { 
+    <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {
       <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid var(--vf-ui-color--white);
     }
   }
@@ -418,7 +443,7 @@ Your content here.
           Filesystem path: components/ebi-header-footer/ebi-header-footer--embl-selector.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.5 KB
+          Size: 3.1 KB
         </li>
       </ul>
     </section>
