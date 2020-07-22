@@ -12,10 +12,30 @@
   .embl-bar {
     background-color: var(--vf-ui-color--off-white);
     color: var(--vf-color--grey--darkest);
+    position: relative; /* 2 */
+
+    // a copy of vf-u-fullbleed code,
+    // but we duplicate it as we're not able to insert classes into the legacy html import
+    &::before {
+      background-color: inherit; /* 3 */
+      background-image: inherit;
+      background-position: inherit;
+      background-repeat: inherit;
+      background-size: cover;
+      content: '';
+      grid-column: 1 / -1; /* 4 */
+      height: 100%; /* 5 */
+      margin-left: calc(50% - 50vw); /* 6 */
+      position: absolute;
+      top: 0; /* 7 */
+      width: 100vw; /* 8 */
+      z-index: set-layer(vf-z-index--negative); /* 9 */
+    }
+
     a {
       color: var(--vf-color--grey--darkest);
     }
-    a:hover { 
+    a:hover {
       border-bottom: 1px solid var(--vf-ui-color--white);
     }
   }
