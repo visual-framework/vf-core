@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.8
+## 1.1.0
 
 * replaces all imports for Sass variables, mixins and functions with vf-sass-config
 * moves utility classes mixins closer to where vf-utility classes are called
