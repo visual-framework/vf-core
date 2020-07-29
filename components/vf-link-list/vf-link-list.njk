@@ -1,3 +1,14 @@
+{% if context %}
+
+  {% set title = context.title %}
+  {% set list = context.list %}
+  {% set title = context.title %}
+  {% set component_modifier = context.component_modifier %}
+  {% set list_modifier = context.list_modifier %}
+
+{% endif %}
+
+
 <div class="vf-links {%- if component_modifier %} {{ component_modifier }}{% endif %}">
   <h3 class="vf-links__heading">{{ title }}</h3>
   <ul class="vf-links__list {%- if list_modifier %} vf-links__list--{{ list_modifier}}{% endif %} | vf-list">
