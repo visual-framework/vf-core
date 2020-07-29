@@ -1,11 +1,39 @@
+{% if context %}
+
+  {% set vf_intro_heading = context.vf_intro_heading %}
+
+  {% set vf_intro_phase = context.vf_intro_phase %}
+  {% set vf_intro_heading_href = context.vf_intro_heading_href %}
+
+  {% set vf_intro_lede = context.vf_intro_lede %}
+
+  {% set vf_intro_text = context.vf_intro_text %}
+  {% set intro_text = context.intro_text %}
+
+{% endif %}
+
 <section class="vf-intro | embl-grid embl-grid--has-centered-content">
   <div><!-- empty --></div>
   <div>
-    <h1 class="vf-intro__heading {% if vf_intro_phase %}vf-intro__heading--has-tag{% endif %}
-">{{vf_intro_heading}} {% if vf_intro_phase %}<a href="{{ intro_heading_href }}" class="vf-badge vf-badge--primary vf-badge--phases">{{vf_intro_phase}}</a>{% endif %}</h1>
-    {% render '@vf-lede', {"vf_lede_text": vf_intro_lede} %}
-    {% asyncEach intro_text in vf_intro_text -%}
-      <p class="vf-intro__text">{{intro_text}}</p>
-    {% endeach %}
+
+  <h1 class="vf-intro__heading {% if vf_intro_phase %}vf-intro__heading--has-tag{% endif %}">
+
+  {{- vf_intro_heading -}}
+  {%- if (vf_intro_phase) %}
+    {%- if (intro_heading_href) %}
+      <a href="{{- intro_heading_href -}}" class="vf-badge vf-badge--primary vf-badge--phases">{{- vf_intro_phase -}}</a>
+    {%- else -%}
+      <span class="vf-badge vf-badge--primary vf-badge--phases">{{- vf_intro_phase -}}</span>
+    {%- endif -%}
+  {%- endif -%}
+  
+  </h1>
+
+  {%- render '@vf-lede', {"vf_lede_text": vf_intro_lede} -%}
+
+  {%- asyncEach intro_text in vf_intro_text -%}
+    <p class="vf-intro__text">{{- intro_text | safe -}}</p>
+  {%- endeach -%}
+
   </div>
 </section>

@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.1.0
+
+* adds if statement to pass context data through to component
+* improves documentation
+
 ## 1.0.2
 
 * Simplify grid
