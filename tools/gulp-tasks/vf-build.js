@@ -6,7 +6,6 @@
  */
 
 module.exports = function(gulp, buildDestionation) {
-
   // Support for client projects using vf-build
   // but we need to see which Fractal build mode to invoke (or not at all, when it's not needed)
   let gulpFractalBuildTask;

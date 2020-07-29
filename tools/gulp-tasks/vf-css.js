@@ -9,8 +9,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   const fastglob = require('fast-glob');
 
   // Sass and CSS Stuff
-  const sass = require('gulp-sass');
-  sass.compiler = require('dart-sass');
+  const sass = require('sass');
   const autoprefixer = require('gulp-autoprefixer');
   const autoprefixerOptions = { overrideBrowserslist: ['last 2 versions', '> 5%', 'Firefox ESR'] };
   const cssnano = require('gulp-cssnano');
@@ -32,41 +31,8 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   // CSS Gen stuff
   const rename = require('gulp-rename');
 
-  // construct sas import paths, priority
-  var sassPaths = [];
-  // take an array of sassTypes (paths), and componentPaths and add them to the sassPaths array
-  function constructSassImportPaths(sassTypes, sassComponentDirectories) {
-    for (let currentType = 0; currentType < sassTypes.length; currentType++) {
-      sassPaths.push(path.resolve('.', componentPath, sassTypes[currentType]).replace(/\\/g, '/'));
-      for (let directory = 0; directory < sassComponentDirectories.length; directory++) {
-        sassPaths.push(path.resolve('.', componentPath, sassComponentDirectories[directory] + '/' + sassTypes[currentType]).replace(/\\/g, '/'));
-      }
-    }
-  }
-
-  // Design tokens have first priority
-  constructSassImportPaths([
-    'vf-design-tokens/dist/sass',
-    'vf-design-tokens/dist/sass/custom-properties',
-    'vf-design-tokens/dist/sass/maps'
-  ], componentDirectories);
-
-  // then sass config
-  constructSassImportPaths([
-    'vf-sass-config/variables',
-    'vf-sass-config/functions',
-    'vf-sass-config/mixins'
-  ], componentDirectories);
-
-  // then components
-  constructSassImportPaths([
-    ''
-  ], componentDirectories);
-
-  // and finally any multi-components
-  constructSassImportPaths([
-    'vf-form'
-  ], componentDirectories);
+  // construct sass import paths
+  var sassPaths = fastglob.sync([componentPath,componentPath+'/**','!'+componentPath+'/**/*.*'],{onlyFiles: false});
 
   // Lookup each component's package.json and make a package.scss
   gulp.task('vf-css:package-info', function(done) {
@@ -94,115 +60,124 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     }
 
     recursive(componentPath, ['*.css', '*.scss', '*.md', '*.njk', '_package.json'], function (err, files) {
+      // filter components where no package.json is found
       files.forEach(function(file, index, array) {
-        // only process when a package.json is found
-        if ((file.file.indexOf('package.json') > -1)) {
-          return gulp.src(file.dir+'/package.json')
-            .pipe(packageJsonToScss(file.dir))
-            .pipe(source(file.file_path))
-            .pipe(rename('package.variables.scss'))
-            .pipe(gulp.dest(file.dir));
-        } else {
-          // do nothing
-        }
-
-        if (index + 1 == array.length) {
-          done();
+        if ((file.file.indexOf('package.json') < 0)) {
+          delete files[index];
         }
       });
-    });
 
+      var counter = 0;
+      // generate the component package.variables.scss
+      files.forEach(function(file, index, array) {
+        gulp.src(file.dir+'/package.json')
+          .pipe(packageJsonToScss(file.dir))
+          .pipe(source(file.file_path))
+          .pipe(rename('package.variables.scss'))
+          .pipe(gulp.dest(file.dir))
+          .on('end', function() {
+            counter++; // as we have empty items, we need to count and not use index
+            if (counter == Object.keys(array).length) { done(); }
+          });
+      });
+    });
   });
 
   gulp.task('vf-css:build', function(done) {
-    const sassOpts = {
-      // Import sass files
-      // We'll check to see if the file exists before passing
-      // it to sass for compilation
-      importer: [function(url,prev,done) {
+    // console.log(chalk.yellow('Visual Framework Sass generation is being done by:'));
+    // console.log(chalk.yellow(sass.info));
 
-        // windows compatibility
-        url = url.replace(/\\/g, '/');
-        prev = prev.replace(/\\/g, '/');
+    // console.log(chalk.yellow('Looking in these locations for components:'));
+    // console.log(sassPaths);
 
-        var truncatedUrl = url.split(/[/]+/).pop();
-        var parentFile = prev.split(/[/]+/).pop();
+    // Import sass files
+    // We'll check to see if the file exists before passing
+    // it to sass for compilation
+    const sassImporter = [function(url,prev,done) {
 
-        // If you do not want to interveen in certain file names
-        // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
-        //   return null;
-        // }
+      // windows compatibility
+      url = url.replace(/\\/g, '/');
+      prev = prev.replace(/\\/g, '/');
 
-        // only intervene in index.scss rollups
-        // ignore `package.variables.scss` as it is dynamically made and gulp doesn't see it quickly enough
-        if (parentFile == 'index.scss' && url != 'package.variables.scss') {
-          if (availableComponents[url]) {
-            done(url);
-          } else if (availableComponents['_'+truncatedUrl]) {
-            // maybe it was an _filename.scss?
-            done(url);
-          } else if (availableComponents[truncatedUrl]) {
-            done(url);
-          } else {
-            let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expect, you might want to comment out the dependency.`;
-            console.warn(chalk.yellow(importWarning));
-            done({ contents: `/* ${importWarning} */` });
-          }
+      function truncateFilePath(path) {
+        let pathArray = path.split(/[/]+/);
+        pathArray.shift();
+        return pathArray.join('/');
+      }
+
+      var parentFile = prev.split(/[/]+/).pop();
+      var underscoredFile = url.split(/[/]+/)[0]+'/_'+url.split(/[/]+/).pop(); // for mixins/vf-utility-mixins.scss -> mixins/_vf-utility-mixins.scss
+      var truncatedFile = truncateFilePath(url); // last resort matching, mostly for mixins
+      var underscoredTrucncatedFile = truncatedFile.split(/[/]+/)[0]+'/_'+truncatedFile.split(/[/]+/).pop(); // for mixins/vf-utility-mixins.scss -> mixins/_vf-utility-mixins.scss
+
+      // If you do not want to interveen in certain file names
+      // if (parentFile == '_index.scss' || parentFile == '_vf-mixins.scss' || parentFile == 'vf-functions.scss') {
+      //   return null;
+      // }
+
+      // only intervene in index.scss rollups
+      // ignore `package.variables.scss` as it is dynamically made and gulp doesn't see it quickly enough
+      if (parentFile == 'index.scss' && url != 'package.variables.scss') {
+        if (availableComponents[url]) {
+          done({file: url});
+        } else if (availableComponents[underscoredFile]) {
+          // maybe it was an _filename.scss?
+          done({file: underscoredFile});
+        } else if (availableComponents[truncatedFile]) {
+          done({file: truncatedFile});
+        } else if (availableComponents[underscoredTrucncatedFile]) {
+          done({file: underscoredTrucncatedFile});
         } else {
-          return null;
+          let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expected, you might want to comment out the dependency.`;
+          console.warn(chalk.yellow(importWarning));
+          done({ contents: `/* ${importWarning} */` });
         }
-
-      }],
-      includePaths: sassPaths
-    };
+      } else {
+        return null;
+      }
+    }];
 
     // Find all the component sass files available.
-    // We'll pass this as a variable to our sass build so we can
-    // only include the file if it exists.
-    var availableComponents = {}; // track the components avaialble
-    gulp
-      .src(fastglob.sync([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss']), {
-        allowEmpty: true,
-        ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss',componentPath+'/vf-core-components/vf-core/components/**/*.scss']
-      })
-      .pipe(ListStream.obj(function (err, data) {
-        if (err)
-          throw err;
-        data.forEach(function (value, i) {
-          // Keep only the file name
-          value = value.history[0].replace(/\\/g, '/'); // windows compatibility
-          value = value.split(/[/]+/).pop();
+    // so we only include the file if it exists.
+    var availableComponents = {};
 
-          availableComponents[value] = true;
-        });
+    var sassFileList = fastglob.sync([componentPath+'/**/*.scss',componentPath+'/**/**/*.scss'],
+      { ignore: [componentPath+'/vf-core-components/vf-core/components/**/*.scss'] }
+    );
+    // Keep only the directory + file name
+    for (let index = 0; index < sassFileList.length; index++) {
+      let value = sassFileList[index];
+      value = value.replace(/\\/g, '/'); // windows compatibility
+      value = value.split(/[/]+/).slice(-2).join('/'); // make a list of paths like vf-table/vf-table.scss
+      availableComponents[value] = true;
+    }
+    // console.log('These components were found');
+    // console.log('availableComponents',availableComponents)
 
-        runSassBuild();
-      }));
-
-      function runSassBuild() {
-        return gulp
-          .src(SassInput)
-          .pipe(sourcemaps.init())
-          .pipe(sass(sassOpts))
-          .on(
-            'error',
-            notify.onError(function(error) {
-              process.emit('exit') // this fails precommit, but allows `gulp vf-dev` to work
-              return 'Problem at file: ' + error.message;
-            })
-          )
-          .pipe(browserSync.stream())
-          .pipe(sourcemaps.write())
-          .pipe(rename(
-            {
-              basename: 'styles'
-            }
-          ))
-          .pipe(gulp.dest(SassOutput))
-          .on('end', function() {
-            done();
-          });
+    // generate the css
+    sass.render({
+      // https://github.com/sass/node-sass
+      file: SassInput,
+      importer: sassImporter,
+      sourceMap: true,
+      outFile: SassOutput+'/styles.css',
+      includePaths: sassPaths
+    }, function(err, result) {
+      if (err) {
+        console.log(chalk.yellow(err));
       }
+      if (!err){
+        fs.mkdirSync(SassOutput, { recursive: true }); // make folder, if it doesn't exist
+        fs.writeFile(SassOutput+'/styles.css', result.css, function(err){
+          if(!err){
+            // console.log('writing',SassOutput+'/styles.css')
+          } else {
+            console.log(chalk.yellow(err));
+          }
+        });
+      }
+      done();
+    });
   });
 
   // Sass Build-Time things
@@ -239,26 +214,32 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       }));
   });
 
-
   // -----------------------------------------------------------------------------
   // CSS Generator Tasks
-  // Generate per-compone .css files
+  // Generate per-component .css files
   // -----------------------------------------------------------------------------
-
   var genCss = function (option) {
     var file_name = path.basename(path.dirname(option.file_path)) + '.css';
-    return gulp.src(option.file_path)
-      .pipe(sass({
-        includePaths: sassPaths,
-        outputStyle: 'expanded'
-      })
-      .on('error', function(e){
-        let message = 'Couldn\'t find a component dependency, the per-component CSS won\'t be generated for this' + e.message;
-        console.log(chalk.yellow(message));
-      }))
-      .pipe(autoprefixer(autoprefixerOptions))
-      .pipe(rename(file_name))
-      .pipe(gulp.dest(option.dir));
+    sass.render({
+      file: option.file_path,
+      includePaths: sassPaths,
+      outputStyle: 'expanded'
+    }, function(err, result) {
+      if (err) { console.log(chalk.yellow(err)); }
+      if (!err){
+        fs.mkdirSync(option.dir, { recursive: true }); // make folder, if it doesn't exist
+        fs.writeFile(option.dir+'/'+file_name, result.css, function(err) {
+          if (err) { console.log(chalk.yellow(err));
+          } else { //prefix
+            // @todo, using gulp one file at a time is weird, but autoprefixer doesn't seem to support passing single values well
+            gulp.src(option.dir+'/'+file_name)
+              .pipe(autoprefixer(autoprefixerOptions))
+              .pipe(gulp.dest(option.dir))
+          }
+        });
+      }
+      return;
+    })
   };
 
   gulp.task('vf-css:generate-component-css', function(done) {
