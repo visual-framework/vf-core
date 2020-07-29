@@ -305,7 +305,8 @@ class="vf-logo | vf-logo--has-text">
             <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-list__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>
                 A colour scheme for VF
             <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-badge"</span>&gt;</span>alpha<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-badge vf-badge--secondary"</span>&gt;</span>alpha<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-links__meta"</span>&gt;</span>Updated 14th February 2018<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
         <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
@@ -360,6 +361,11 @@ class="vf-logo | vf-logo--has-text">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.0</span>
+<span class="hljs-bullet">
+* </span>adds an if statement so context data can be passed through
+<span class="hljs-bullet">* </span>refactors have <span class="hljs-code">`vf-badge`</span> is used so that it can take context data rather than just render
+
 <span class="hljs-section">## 1.0.3</span>
 <span class="hljs-bullet">
 * </span>adds ability to drop in a <span class="hljs-code">`vf-badge`</span> component after a link in <span class="hljs-code">`--has-images`</span> variety
@@ -392,7 +398,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-link-list/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 333 Bytes
+          Size: 498 Bytes
         </li>
       </ul>
     </section>
@@ -427,10 +433,6 @@ class="vf-logo | vf-logo--has-text">
   <span class="hljs-selector-class">.vf-list__item</span> {
     <span class="hljs-keyword">@include</span> set-type(text-body--<span class="hljs-number">2</span>);
     <span class="hljs-keyword">@include</span> margin--block(bottom, map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--lg));
-
-    <span class="hljs-attribute">align-items</span>: center;
-    <span class="hljs-attribute">display</span>: flex;
-    <span class="hljs-attribute">flex-wrap</span>: wrap;
   }
 
   <span class="hljs-selector-class">.vf-list__link</span> {
@@ -536,7 +538,7 @@ class="vf-logo | vf-logo--has-text">
     <span class="hljs-attribute">display</span>: grid;
     grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
     grid-template-<span class="hljs-attribute">columns</span>: repeat( auto-fit, minmax(<span class="hljs-number">300px</span>, <span class="hljs-number">1</span>fr) );
-    row-gap: <span class="hljs-number">30px</span>;
+    row-gap: <span class="hljs-number">24px</span>;
   }
 
   <span class="hljs-selector-class">.vf-list__item</span> {
@@ -571,7 +573,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-link-list/vf-link-list.scss
         </li>
         <li class="vf-list__item">
-          Size: 2.6 KB
+          Size: 2.5 KB
         </li>
       </ul>
     </section>

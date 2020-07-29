@@ -260,13 +260,83 @@ class="vf-logo | vf-logo--has-text">
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-badge"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-badge.svg" alt="npm version"></a></p>
 <h2 id="about">About</h2>
 <p>The <code>vf-badge</code> component is used to label a page, part of a page, or a component. The <code>vf-badge</code> component can also be a link using <code>&lt;a class=&quot;vf-badge&quot; href=&quot;&quot;&gt;badge title&lt;/a&gt;</code>.</p>
-<h2 id="install">Install</h2>
-<p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-badge</code> with this command.</p>
-<pre><code class="hljs">$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-badge</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<h2 id="installation">Installation</h2>
+<p>This repository is distributed with <a href="https://www.npmjs.com/">npm</a>. After <a href="https://www.npmjs.com/get-npm">installing npm</a> and <a href="https://classic.yarnpkg.com/en/docs/install">yarn</a>, you can install <code>vf-profile</code> with this command.</p>
+<pre><code class="hljs">$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-badge</span></code></pre><h3 id="sasscss">Sass/CSS</h3>
+<p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
 <pre><code class="hljs"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-badge/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
 <h2 id="usage">Usage</h2>
-<p>If you are using the badge as a link, you must include the relevant url within the <code>href=&quot;&quot;</code> part of <code>&lt;a class=&quot;vf-badge&quot; href=&quot;&quot;&gt;badge title&lt;/a&gt;</code>, for example:</p>
-<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-badge vf-badge--phases vf-badge--primary"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>badge title<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
+<p>The <code>vf-badge</code> component is used to denote if a page, section, or link has a production state of <code>alpha</code>, <code>beta</code> or other information.</p>
+<h3 id="content">Content</h3>
+<p>The <code>vf-badge</code> accepts a single text item of content.</p>
+<table>
+<thead>
+<tr>
+<th>content type</th>
+<th>variable</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>text</td>
+<td><code>text</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="nunjucks-and-yml-options">Nunjucks and yml options</h3>
+<h4 id="nunjucks-and-yml-variables-available">Nunjucks and YML variables available</h4>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>options</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>text</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>badge_href</td>
+<td></td>
+<td>null</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>‘primary’, ‘secondary’, ‘tertiary’</td>
+<td></td>
+</tr>
+<tr>
+<td>style</td>
+<td>‘pill’, ‘rounded’, ‘square’, ‘outline’</td>
+<td></td>
+</tr>
+<tr>
+<td>override_class</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="component-specific-variants">Component Specific Variants</h4>
+<p>The <code>vf-badge</code> allows for two sets of variants</p>
+<h5 id="theme-variants">Theme Variants</h5>
+<p>There are three theme variants available for the component that are <strong>primary</strong>, <strong>secondary</strong>, and <strong>tertiary</strong>. To add a theme to the component you would need to add <code>theme: primary</code>, <code>theme: secondary</code>, or <code>theme: tertiary</code> to the <code>.yml</code> file.</p>
+<h5 id="design-variants">Design Variants</h5>
+<p>There are four design variants for the component. We have <code>square</code>, <code>pill</code>, and <code>rounded</code> as well as <code>outline</code>. The <code>outline</code> variant can be used along with another variant so the way we write this in code is a little different. To only have a rounded button we should write <code>[&quot;rounded&quot;]</code> but if we wanted to have a rounded button with the outline rather than filled colour we would have to write <code>[&quot;outline&quot;, &quot;rounded&quot;]</code>.</p>
+<h2 id="help">Help</h2>
+<ul>
+<li><a href="https://visual-framework.github.io/vf-welcome/troubleshooting/">Read the Visual Framework troubleshooting</a></li>
+<li><a href="https://github.com/visual-framework/vf-core/issues">Open a ticket</a></li>
+<li><a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ">Chat on Slack</a></li>
+</ul>
+
   </div>
   
 
@@ -355,6 +425,10 @@ class="vf-logo | vf-logo--has-text">
 All notable changes to this project will be documented in this file.
 See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-link">https://conventionalcommits.org</span>) for commit guidelines.
 
+<span class="hljs-section"># 1.1.0</span>
+<span class="hljs-bullet">
+* </span>adds if statement to allow for context data to pass through
+
 <span class="hljs-section"># 1.0.0 (2019-12-17)</span>
 <span class="hljs-bullet">
 * </span>Initial stable release
@@ -373,7 +447,7 @@ See [<span class="hljs-string">Conventional Commits</span>](<span class="hljs-li
           Filesystem path: components/vf-badge/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 214 Bytes
+          Size: 286 Bytes
         </li>
       </ul>
     </section>

@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.1.0
+
+* adds an if statement so context data can be passed through
+* refactors have `vf-badge` is used so that it can take context data rather than just render
+
 ## 1.0.3
 
 * adds ability to drop in a `vf-badge` component after a link in `--has-images` variety

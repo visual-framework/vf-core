@@ -115,6 +115,130 @@
 }
 
 /*!
+ * Component: @visual-framework/vf-badge
+ * Version: 1.0.1
+ * Location: components/vf-badge
+ */
+.vf-badge {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  border: 1px solid currentColor;
+  color: inherit;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.vf-badge--pill {
+  border-radius: 500px;
+}
+
+.vf-badge--rounded {
+  border-radius: 4px;
+}
+
+.vf-badge--square {
+  border: 0;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 12px;
+}
+
+.vf-badge--phases {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 12px 0 0;
+  min-width: 52px;
+}
+
+.vf-badge--primary {
+  background-color: #3b6fb6;
+  border-color: #3b6fb6;
+  color: #ffffff;
+  color: #ffffff;
+}
+.vf-badge--primary:visited {
+  color: #ffffff;
+}
+.vf-badge--primary:visited:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.vf-badge--primary:hover {
+  color: #ffffff;
+}
+
+a.vf-badge--primary:hover {
+  background-color: #193f90;
+  border-color: #193f90;
+}
+
+.vf-badge--secondary {
+  background-color: #18974c;
+  border-color: #18974c;
+  color: #ffffff;
+  color: #ffffff;
+}
+.vf-badge--secondary:visited {
+  color: #ffffff;
+}
+.vf-badge--secondary:visited:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.vf-badge--secondary:hover {
+  color: #ffffff;
+}
+
+.vf-badge--tertiary {
+  background-color: #54585a;
+  border-color: #54585a;
+  color: #ffffff;
+  color: #ffffff;
+}
+.vf-badge--tertiary:visited {
+  color: #ffffff;
+}
+.vf-badge--tertiary:visited:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.vf-badge--tertiary:hover {
+  color: #ffffff;
+}
+
+.vf-badge--outline {
+  background-color: transparent;
+  color: #3b6fb6;
+  color: #3b6fb6;
+}
+.vf-badge--outline:visited {
+  color: #3b6fb6;
+}
+.vf-badge--outline:visited:hover {
+  color: #3b6fb6;
+  text-decoration: underline;
+}
+.vf-badge--outline:hover {
+  color: #3b6fb6;
+}
+
+/*!
  * Component: @visual-framework/vf-link-list
  * Version: 1.0.3
  * Location: components/vf-link-list
@@ -136,14 +260,6 @@
   margin: 0 0 16px 0;
   margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
   margin: 0 0 20px 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
 }
 .vf-links__list .vf-list__link {
   margin-right: 8px;
@@ -251,7 +367,7 @@
   display: grid;
   grid-column: 1/-1;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  row-gap: 30px;
+  row-gap: 24px;
 }
 .vf-links__list--easy .vf-list__item {
   margin-bottom: 0;
