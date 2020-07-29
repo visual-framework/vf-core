@@ -16,7 +16,7 @@
   color: set-color(vf-color--grey--darkest);
   display: flex;
   flex-direction: column;
-  width: max-content;
+  width: 100%; // we might not need this
 }
 
 .vf-profile__image {
@@ -53,6 +53,10 @@
   @include set-type(text-body--2, $custom-margin-bottom: 0);
 
   line-height: 1.2;
+
+  .vf-profile__job-title + & {
+    margin-bottom: .25rem;
+  }
 }
 
 .vf-profile__email {
