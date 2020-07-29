@@ -131,12 +131,78 @@ class="vf-logo | vf-logo--has-text">
   <div class="component-library-notes | vf-content">
   <h1 id="intro-component">Intro Component</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-intro"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-intro.svg" alt="npm version"></a></p>
-<h2 id="about">About</h2>
-<p>A text-oriented container, this combines the <code>embl-grid</code> layout with a heading and <code>vf-lede</code> text.</p>
-<h2 id="install">Install</h2>
-<p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-intro</code> with this command.</p>
+<h2 id="installation">Installation</h2>
+<p>This repository is distributed with <a href="https://www.npmjs.com/">npm</a>. After <a href="https://www.npmjs.com/get-npm">installing npm</a> and <a href="https://classic.yarnpkg.com/en/docs/install">yarn</a>, you can install <code>vf-profile</code> with this command.</p>
 <pre><code class="hljs">$ yarn <span class="hljs-keyword">add</span><span class="bash"> --dev @visual-framework/vf-intro</span></code></pre><p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
 <pre><code class="hljs"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@visual-framework/vf-intro/index.scss"</span>;</code></pre><p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<h2 id="usage">Usage</h2>
+<p>The <code>vf-intro</code> component is to be used as the main title of a page or section where you need to include some additional text in a larger typeface. The <code>vf-hero</code> can take a heading, lede text, and paragraph(s) of text. It can also include a badge on the heading which can be a link.</p>
+<h3 id="use-in-vf-eleventy">Use in <code>vf-eleventy</code></h3>
+<p>To use this component in a <code>vf-eleventy</code> project you will need to set the context for the content to pass through from the nunjucks file associated yaml file and include it.</p>
+<p><code>&lcub;% set context == UniqueContextName %&rcub;
+<br>
+&lcub;% include containers.vf_intro %&rcub;
+</code></p>
+<p><strong>note:</strong> due to how nunjucks handles special characters we have remove the <code>@</code> at sign and need to replace the <code>-</code> hyphen used for an <code>_</code> underscore to <code>&amp;lcub;% include &amp;rcub;</code> a component or container. As shown above instead of writing something like <code>&amp;lcub;% include contaienrs.@vf-intro &amp;rcub;</code> we need to type <code>&amp;lcub;% include vf_intro &amp;rcub;</code></p>
+<p>You may wish to make use of some of your projects side specifc data or content. To do this you will need to set the relevant items of content before you <code>&lcub;% include ... %&rcub;</code> the component. Note: If you also declare this content in the <code>.yml</code> file it will take precedence over the inlined code.</p>
+<p>For example. If you wanted to make use of your projects <code>siteConfig</code> information. You can write out the inclusion of the component in you pages <code>.njk</code> file like so:</p>
+<p><code>&lcub;% set context == UniqueContextName %&rcub;
+<br>
+&lcub;% set vf_intro_heading == siteConfig.siteInformation.short_description %&rcub;
+<br>
+&lcub;% include containers.intro %&rcub;
+</code></p>
+<h3 id="content">Content</h3>
+<p>The <code>vf-intro</code> allows for a variet of text.</p>
+<table>
+<thead>
+<tr>
+<th>content type</th>
+<th>variable</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>text</td>
+<td><code>vf_intro_heading</code></td>
+<td></td>
+</tr>
+<tr>
+<td>text</td>
+<td><code>vf_intro_phase</code></td>
+<td></td>
+</tr>
+<tr>
+<td>url</td>
+<td><code>vf_intro_heading_href</code></td>
+<td></td>
+</tr>
+<tr>
+<td>text</td>
+<td><code>vf_intro_lede</code></td>
+<td></td>
+</tr>
+<tr>
+<td>group</td>
+<td><code>vf_intro_text</code></td>
+<td></td>
+</tr>
+<tr>
+<td>text</td>
+<td><code>intro_text</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><br/>The <code>vf-intro_phase</code>, <code>vf_intro_heading_href</code>, <code>vf_intro_lede</code>, <code>vf_intro_text</code>, and <code>intro_text</code> are all optional.</p>
+<p>To include <code>intro_text</code> you will have to nest and indent the content inside/underneath the <code>vf_intro_text</code> in the <code>.yml</code> file, like:</p>
+<pre><code class="hljs language-text">vf_intro_text:
+  - This is <span class="hljs-keyword">an</span> example <span class="hljs-keyword">of</span> intro <span class="hljs-keyword">text</span> <span class="hljs-keyword">paragraph</span>.
+  - This is <span class="hljs-keyword">an</span> example <span class="hljs-keyword">of</span> <span class="hljs-keyword">a</span> <span class="hljs-keyword">second</span> intro <span class="hljs-keyword">text</span> <span class="hljs-keyword">paragraph</span>.</code></pre><h2 id="help">Help</h2>
+<ul>
+<li><a href="https://visual-framework.github.io/vf-welcome/troubleshooting/">Read the Visual Framework troubleshooting</a></li>
+<li><a href="https://github.com/visual-framework/vf-core/issues">Open a ticket</a></li>
+<li><a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ">Chat on Slack</a></li>
+</ul>
 
   </div>
   
@@ -183,6 +249,7 @@ class="vf-logo | vf-logo--has-text">
         <span class="hljs-comment">&lt;!-- empty --&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+
         <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-intro__heading vf-intro__heading--has-tag"</span>&gt;</span>Cancer <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-badge vf-badge--primary vf-badge--phases"</span>&gt;</span>beta<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-lede"</span>&gt;</span>Cancer is a generic term for lots of different diseases in which cells divide many more times than usual. This abnormal growth can affect many cell types in almost any part of the body.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-intro__text"</span>&gt;</span>Cancer is a multi-stage process. Normal cells begin to divide abnormally, spreading beyond their normal boundaries, and abnormal tissue growth causes swellings called tumours to form. Tumours can be benign – with no harmful effect on the body – or malignant, invading healthy tissue and interfering with normal bodily functions.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
@@ -232,6 +299,11 @@ class="vf-logo | vf-logo--has-text">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.1.0</span>
+<span class="hljs-bullet">
+* </span>adds if statement to pass context data through to component
+<span class="hljs-bullet">* </span>improves documentation
+
 <span class="hljs-section">## 1.0.2</span>
 <span class="hljs-bullet">
 * </span>Simplify grid
@@ -254,7 +326,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: components/vf-intro/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 89 Bytes
+          Size: 187 Bytes
         </li>
       </ul>
     </section>
