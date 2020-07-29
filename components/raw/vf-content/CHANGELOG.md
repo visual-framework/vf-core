@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.1.5
+## 1.1.7
 
 * fixes an issue when content creators add the bold/strong tags to hedaing to make them bolder - when they shouldn't be.
 * adds a little more padding to ul and ol elements so they visually fit 'inside' of vf-content.
