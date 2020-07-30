@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.1
+
+* fixes issue where the SVG icon was not appearing with vf-links__list--easy
+
 ## 1.1.0
 
 * adds an if statement so context data can be passed through
