@@ -20,20 +20,26 @@
 
   {{- vf_intro_heading -}}
   {%- if (vf_intro_phase) %}
-    {%- if (intro_heading_href) %}
-      <a href="{{- intro_heading_href -}}" class="vf-badge vf-badge--primary vf-badge--phases">{{- vf_intro_phase -}}</a>
+    {%- if (vf_intro_heading_href) or (intro_heading_href) %}
+      <a href="{{- (vf_intro_heading_href) or (intro_heading_href) -}}" class="vf-badge vf-badge--primary vf-badge--phases">
+        {{- vf_intro_phase -}}
+      </a>
     {%- else -%}
       <span class="vf-badge vf-badge--primary vf-badge--phases">{{- vf_intro_phase -}}</span>
     {%- endif -%}
   {%- endif -%}
-  
+
   </h1>
 
-  {%- render '@vf-lede', {"vf_lede_text": vf_intro_lede} -%}
+  {% if vf_lede_text %}
+    {%- render '@vf-lede', {"vf_lede_text": vf_intro_lede} -%}
+  {% endif %}
 
-  {%- asyncEach intro_text in vf_intro_text -%}
-    <p class="vf-intro__text">{{- intro_text | safe -}}</p>
-  {%- endeach -%}
+  {% if vf_intro_text %}
+    {%- asyncEach intro_text in vf_intro_text -%}
+      <p class="vf-intro__text">{{- intro_text | safe -}}</p>
+    {%- endeach -%}
+  {% endif %}
 
   </div>
 </section>
