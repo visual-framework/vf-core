@@ -5,6 +5,8 @@
   {% set vf_intro_phase = context.vf_intro_phase %}
   {% set vf_intro_heading_href = context.vf_intro_heading_href %}
 
+  {% set vf_intro_badge = context.vf_intro_badge %}
+
   {% set vf_intro_lede = context.vf_intro_lede %}
 
   {% set vf_intro_text = context.vf_intro_text %}
@@ -16,22 +18,25 @@
   <div><!-- empty --></div>
   <div>
 
-  <h1 class="vf-intro__heading {% if vf_intro_phase %}vf-intro__heading--has-tag{% endif %}">
+  <h1 class="vf-intro__heading {% if (vf_intro_phase) or (vf_intro_badge) %}vf-intro__heading--has-tag{% endif %}">
 
   {{- vf_intro_heading -}}
+
   {%- if (vf_intro_phase) %}
-    {%- if (vf_intro_heading_href) or (intro_heading_href) %}
-      <a href="{{- (vf_intro_heading_href) or (intro_heading_href) -}}" class="vf-badge vf-badge--primary vf-badge--phases">
-        {{- vf_intro_phase -}}
-      </a>
+    {%- if (vf_intro_heading_href) %}
+      <a href="{{- intro_heading_href -}}" class="vf-badge vf-badge--primary vf-badge--phases">{{- vf_intro_phase -}}</a>
     {%- else -%}
       <span class="vf-badge vf-badge--primary vf-badge--phases">{{- vf_intro_phase -}}</span>
     {%- endif -%}
   {%- endif -%}
+  {% if vf_intro_badge %}
+    {% set badge = '@vf-badge' %}
+    {% render badge, { 'context': vf_intro_badge } %}
+  {% endif %}
 
   </h1>
 
-  {% if vf_lede_text %}
+  {% if vf_intro_lede %}
     {%- render '@vf-lede', {"vf_lede_text": vf_intro_lede} -%}
   {% endif %}
 
