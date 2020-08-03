@@ -5,7 +5,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # 1.1.0
 
-* Deprecated the `vf-summary--profile` component
+* Deprecated the `vf-summary--profile` component, you should now use `vf-profile`
 
 # 1.0.4
 
