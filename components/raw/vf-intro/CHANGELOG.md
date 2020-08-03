@@ -1,5 +1,12 @@
 # Change Log
 
+# 1.3.0
+
+* adds ability for `vf-badge` to be customised with it's variants
+* allows for fallbacks so older versions will still work
+* removes old way of doing `vf-badge` from demo code
+* makes `vf-lede` work.
+
 ## 1.2.0
 
 * wraps all content except heading in if statement
