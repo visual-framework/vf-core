@@ -22,6 +22,10 @@
 
   {{- vf_intro_heading -}}
 
+  {%- if (vf_intro_phase) and (vf_intro_badge) -%}
+  <h2 style="color: var(--vf-ui-color--red)">Please use the relevant <code>vf-badge</code> yaml only</h2>
+  {%- endif -%}
+
   {%- if (vf_intro_phase) %}
     {%- if (vf_intro_heading_href) %}
       <a href="{{- intro_heading_href -}}" class="vf-badge vf-badge--primary vf-badge--phases">{{- vf_intro_phase -}}</a>
@@ -29,14 +33,22 @@
       <span class="vf-badge vf-badge--primary vf-badge--phases">{{- vf_intro_phase -}}</span>
     {%- endif -%}
   {%- endif -%}
-  {% if vf_intro_badge %}
+  {%- if vf_intro_badge -%}
     {% set badge = '@vf-badge' %}
     {% render badge, { 'context': vf_intro_badge } %}
-  {% endif %}
+  {%- endif -%}
 
   </h1>
 
+
+  {%- if (vf_intro_lede) and (vf_lede_text) -%}
+  <h2 style="color: var(--vf-ui-color--red)">Please use the relevant <code>vf_intro_lede</code> yaml only</h2>
+  {%- endif -%}
   {% if vf_intro_lede %}
+    {%- render '@vf-lede', {"vf_lede_text": vf_intro_lede} -%}
+  {% endif %}
+
+  {% if vf_lede_text %}
     {%- render '@vf-lede', {"vf_lede_text": vf_intro_lede} -%}
   {% endif %}
 
