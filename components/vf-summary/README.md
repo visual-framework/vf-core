@@ -14,8 +14,6 @@ The `vf-summary--publication` can be nested inside a vf-box where it takes the v
 
 If the `vf-summary__author` list is truncated to a certain number of authors you will need to add vf-u-text--et-al to the `<p>` - `<p class="vf-summary__author | vf-u-text--et-al">` - for it to add et al to the end of the list.
 
-
-
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-summary` with this command.
