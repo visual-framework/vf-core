@@ -13,7 +13,7 @@ const {componentPath, componentDirectories, buildDestionation} = require('../vf-
 // as an npm install
 // Not familiar with JS Modules? Don't fret, it can be a lot like wrapping code in a function; here's
 // a nice quick start: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#Exporting_module_features
-require('../gulp-tasks/_gulp_rollup.js')(gulp, path, componentPath, componentDirectories, buildDestionation);
+require('./gulp-tasks/_gulp_rollup.js')(gulp, path, componentPath, componentDirectories, buildDestionation);
 
 
 // The below gulp tasks are intended for use only by vf-core
