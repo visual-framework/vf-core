@@ -15,6 +15,9 @@ module.exports = {
 
     /* Tell Fractal where the components will live */
     var vfComponentPath = global.vfComponentPath || __dirname + '/components';
+    // Possible needed fix to resolve path
+    // vfComponentPath = path.resolve('.',vfComponentPath);
+
     fractal.components.set('path', vfComponentPath);
 
     /* Tell Fractal where the documentation pages will live */
@@ -67,9 +70,9 @@ module.exports = {
       //   // global-name: global-val
       // },
       extensions: {
-        codeblock: require(__dirname + '/tools/vf-frctl-extensions/codeblock.js')(fractal),
-        spaceless: require(__dirname + '/tools/vf-frctl-extensions/spaceless.js')(fractal),
-        markdown:  require(__dirname + '/tools/vf-frctl-extensions/markdown.js')(fractal)
+        codeblock: require('../vf-frctl-extensions/codeblock.js')(fractal),
+        spaceless: require('../vf-frctl-extensions/spaceless.js')(fractal),
+        markdown:  require('../vf-frctl-extensions/markdown.js')(fractal)
       }
     });
 
