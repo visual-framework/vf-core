@@ -6,13 +6,13 @@
  */
 
 module.exports = function(gulp, path) {
-  // const shell = require('gulp-shell');
+  const shell = require('gulp-shell');
 
-  // const generatorPath = path.resolve(__dirname, '../../tools/vf-component-generator');
+  const generatorPath = path.resolve(__dirname, '../../tools/vf-component-generator');
 
-  // gulp.task('vf-component', shell.task(
-  //   ['yo ' + generatorPath]
-  // ));
+  gulp.task('vf-component', shell.task(
+    ['yo ' + generatorPath]
+  ));
 
   return gulp;
 };
