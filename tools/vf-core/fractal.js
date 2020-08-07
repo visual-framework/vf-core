@@ -97,7 +97,8 @@ module.exports = {
     var vfOpenBrowser = typeof global.vfOpenBrowser === "undefined" ? true : global.vfOpenBrowser;
     fractal.web.set('server.syncOptions', {
       watchOptions: {
-        ignored: path.join(__dirname, './components/**/*.scss'),
+        // @todo: this should use vfComponentPath
+        ignored: path.join(__dirname, '../../components/**/*.scss'),
       },
       open: vfOpenBrowser,
       browser: 'default',
