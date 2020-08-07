@@ -10,6 +10,7 @@ branches:
 before_script:
   - yarn install
   - yarn global add gulp-cli
+  - cd tools/vf-core
   - gulp vf-core:prepare-deploy
   - "curl https://www.projectwallace.com/webhooks/v1/imports?token=$WALLACE_TOKEN -fsS --retry 3 -X POST -H 'Content-Type: text/css' -d @build/css/styles.css"
 
@@ -35,7 +36,7 @@ deploy:
   wallace-token: $WALLACE_TOKEN
   keep-history: true
   target-branch: gh-pages
-  local-dir: build
+  local-dir: tools/vf-core/build
   cache:
     paths:
       - node_modules

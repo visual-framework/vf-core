@@ -3,12 +3,6 @@
   "version": "2.1.0",
   "description": "Visual Framework 2.0",
   "main": "index.js",
-  "vfConfig": {
-    "vfNamespace": "vf-",
-    "vfName": "Visual Framework 2.0",
-    "vfHomepage": "https://visual-framework.github.io/vf-core",
-    "vfBuildFractalMode": "normal"
-  },
   "dependencies": {
   },
   "private": true,
@@ -19,7 +13,7 @@
     "note:lerna:test": "we use the `--canary` flag to simplify testing, correct versions can be selected when running `lerna:publish`",
     "lerna:publish": "lerna publish --no-git-tag-version --no-push && git reset --hard && lerna publish --no-git-tag-version --no-push --skip-npm --ignore-scripts",
     "note:lerna:publish": "it's a known issue that you need to supply the version twice, we're working a solution for this",
-    "prepublishOnly": "gulp vf-core:prepare-deploy"
+    "prepublishOnly": "cd tools/vf-core && gulp vf-core:prepare-deploy"
   },
   "repository": {
     "type": "git",
@@ -40,7 +34,7 @@
   "license": "Apache-2.0",
   "husky": {
     "hooks": {
-      "pre-push": "gulp vf-prepush-test"
+      "pre-push": "cd tools/vf-core && gulp vf-prepush-test"
     }
   }
 }
