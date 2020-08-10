@@ -33,8 +33,9 @@ build:
   tags:
     - docker
   script:
-    - npm install
-    - npm install -g gulp-cli
+    - npm install -g yarn
+    - yarn global add gulp-cli
+    - yarn install
     - cd tools/vf-core
     - gulp vf-core:prepare-deploy
   artifacts:
