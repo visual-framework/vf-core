@@ -11,12 +11,12 @@ module.exports = function(gulp, path) {
 
   // start fractal in a desired mode, and await it to return the environment
   let startFractal = function(mode) {
-    return new Promise(function(resolve, ) {
-      const fractalConfig = path.resolve(__dirname, '../../fractal.js').replace(/\\/g, '/');
+    return new Promise(function(resolve) {
+      const fractalConfig = path.resolve('../vf-core/fractal.js').replace(/\\/g, '/');
       require(fractalConfig).initialize(mode, fractalReadyCallback);
 
       function fractalReadyCallback(fractal) {
-        global.fractal = fractal; // "save" fractal so the templates and nunjucks environments are available 
+        global.fractal = fractal; // "save" fractal so the templates and nunjucks environments are available
         resolve();
       }
     });

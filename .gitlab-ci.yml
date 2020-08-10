@@ -35,10 +35,11 @@ build:
   script:
     - npm install
     - npm install -g gulp-cli
+    - cd tools/vf-core
     - gulp vf-core:prepare-deploy
   artifacts:
     paths:
-      - build
+      - tools/vf-core/build
   cache:
     paths:
       - node_modules

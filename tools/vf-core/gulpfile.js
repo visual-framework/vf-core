@@ -5,7 +5,7 @@ const path = require('path');
 const gulp = require('gulp');
 
 // Pull configuration from the package.json:
-const {componentPath, componentDirectories, buildDestionation} = require('./tools/vf-config');
+const {componentPath, componentDirectories, buildDestionation} = require('../vf-config');
 
 // Gulp tasks live in their own files, for the sake of clarity.
 // These are done as JS Modules as it makes passing paramaters simpler and avoids
@@ -13,7 +13,7 @@ const {componentPath, componentDirectories, buildDestionation} = require('./tool
 // as an npm install
 // Not familiar with JS Modules? Don't fret, it can be a lot like wrapping code in a function; here's
 // a nice quick start: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#Exporting_module_features
-require('./tools/gulp-tasks/_gulp_rollup.js')(gulp, path, componentPath, componentDirectories, buildDestionation);
+require('./gulp-tasks/_gulp_rollup.js')(gulp, path, componentPath, componentDirectories, buildDestionation);
 
 
 // The below gulp tasks are intended for use only by vf-core
@@ -28,7 +28,7 @@ gulp.task('vf-core:deploy-move-build-files', function() {
     .pipe(gulp.dest('./build')); // hard-coded as this is used only by vf-core directly
 });
 
-// Runs vf-build and does an 
+// Runs vf-build and does an
 gulp.task('vf-core:prepare-deploy',
   gulp.series(
     'vf-build',
