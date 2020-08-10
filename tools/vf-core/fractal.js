@@ -70,9 +70,9 @@ module.exports = {
       //   // global-name: global-val
       // },
       extensions: {
-        codeblock: require('../vf-frctl-extensions/codeblock.js')(fractal),
-        spaceless: require('../vf-frctl-extensions/spaceless.js')(fractal),
-        markdown:  require('../vf-frctl-extensions/markdown.js')(fractal)
+        codeblock: require('@visual-framework/vf-frctl-extensions/codeblock.js')(fractal),
+        spaceless: require('@visual-framework/vf-frctl-extensions/spaceless.js')(fractal),
+        markdown:  require('@visual-framework/vf-frctl-extensions/markdown.js')(fractal)
       }
     });
 
