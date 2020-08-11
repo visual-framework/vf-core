@@ -302,6 +302,10 @@ class="vf-logo | vf-logo--has-text">
         <pre class="vf-code-example__pre">
           <code class="Code Code--lang-Markdown FileBrowser-code vf-code-example"><span class="hljs-section"># Change Log</span>
 
+<span class="hljs-section">## 1.2.1</span>
+<span class="hljs-bullet">
+* </span>makes the <span class="hljs-code">`--is-link`</span> variant use CSS grid so the arrow SVG icon is always to the top, right of the text.
+
 <span class="hljs-section">## 1.2.0</span>
 <span class="hljs-bullet">
 * </span>Adds nunjucks if statement for adding context if component used as sub-component
@@ -350,7 +354,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: ../../components/vf-section-header/CHANGELOG.md
         </li>
         <li class="vf-list__item">
-          Size: 847 Bytes
+          Size: 966 Bytes
         </li>
       </ul>
     </section>
@@ -382,12 +386,14 @@ class="vf-logo | vf-logo--has-text">
 }
 <span class="hljs-selector-class">.vf-section-header__heading--is-link</span> {
   <span class="hljs-keyword">@include</span> inline-link(<span class="hljs-variable">$vf-link--visited-color</span>: map-get(<span class="hljs-variable">$vf-colors-map</span>, vf-color--blue));
-  <span class="hljs-attribute">cursor</span>: pointer;
-  <span class="hljs-attribute">display</span>: block;
 
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">display</span>: grid;
+  grid-<span class="hljs-attribute">column-gap</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--sm);
+  grid-template-<span class="hljs-attribute">columns</span>: auto <span class="hljs-number">1</span>fr;
+  
   <span class="hljs-selector-class">.vf-section-header__icon</span> {
     fill: currentColor;
-    <span class="hljs-attribute">margin-left</span>: map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--sm);
     <span class="hljs-attribute">transform</span>: translateY(map-get(<span class="hljs-variable">$vf-spacing-map</span>, vf-spacing--xs));
     <span class="hljs-comment">// @<span class="hljs-doctag">todo:</span> some sort of centralised and reusable docs, tokens, guidance on animations</span>
     <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">125ms</span>;
