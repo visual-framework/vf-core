@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.1
+
+* makes the `--is-link` variant use CSS grid so the arrow SVG icon is always to the top, right of the text.
+
 ## 1.2.0
 
 * Adds nunjucks if statement for adding context if component used as sub-component
