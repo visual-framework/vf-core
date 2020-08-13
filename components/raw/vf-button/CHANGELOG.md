@@ -1,8 +1,13 @@
 # Change Log
 
+## 1.0.4
+
+* makes it work as an include as well as render
+* fixes bug with using the button aesthetic as a link
+
 ## 1.0.3
 
-* adds :focus styles to vf-button--outline 
+* adds :focus styles to vf-button--outline
   * https://github.com/visual-framework/vf-core/pull/857
 
 ## 1.0.1
