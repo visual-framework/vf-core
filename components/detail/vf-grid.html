@@ -492,11 +492,14 @@ class="vf-logo | vf-logo--has-text">
     <span class="hljs-attribute">flex</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">49.18305%</span>;
   }
 }
+
+
 <span class="hljs-keyword">@supports</span> (display: grid) {
   <span class="hljs-selector-class">.vf-grid</span> {
-    <span class="hljs-attribute">column-gap</span>: var(--page-grid-gap);
     <span class="hljs-attribute">display</span>: grid;
     grid-column: main;
+    grid-<span class="hljs-attribute">column-gap</span>: var(--page-grid-gap);
+    grid-row-gap: var(--page-row-gap, var(--page-grid-gap));
   }
 
   <span class="hljs-keyword">@media</span> (min-width: <span class="hljs-number">840px</span>) {
@@ -584,6 +587,31 @@ class="vf-logo | vf-logo--has-text">
   <span class="hljs-selector-class">.vf-grid__col--span-5</span> {
     grid-column-end: span <span class="hljs-number">5</span>;
   }
+  <span class="hljs-selector-class">.vf-grid__col--span-6</span> {
+    grid-column-end: span <span class="hljs-number">6</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__col--span-all</span> {
+    grid-column: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-grid__row--span-2</span> {
+    grid-row-end: span <span class="hljs-number">2</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__row--span-3</span> {
+    grid-row-end: span <span class="hljs-number">3</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__row--span-4</span> {
+    grid-row-end: span <span class="hljs-number">4</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__row--span-5</span> {
+    grid-row-end: span <span class="hljs-number">5</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__row--span-6</span> {
+    grid-row-end: span <span class="hljs-number">6</span>;
+  }
+  <span class="hljs-selector-class">.vf-grid__row--span-all</span> {
+    grid-row: <span class="hljs-number">1</span> / -<span class="hljs-number">1</span>;
+  }
 }
 <span class="hljs-comment">/* stylelint-enable order/order */</span>
 </code>
@@ -601,7 +629,7 @@ class="vf-logo | vf-logo--has-text">
           Filesystem path: ../../components/vf-grid/vf-grid.scss
         </li>
         <li class="vf-list__item">
-          Size: 3 KB
+          Size: 3.5 KB
         </li>
       </ul>
     </section>
