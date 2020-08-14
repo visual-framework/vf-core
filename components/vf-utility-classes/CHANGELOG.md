@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.0
+
+* adds utility classes for grid row and columns gaps
+
 ## 1.0.3
 
 * adds utility classes for grid row/columns spans and start positions

@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.0
+
+* adds grid row span utility classes
+
 ## 1.0.5 (2020-05-01)
 
 * fixes a remaing bug with IE11 where we relied on the calc function
