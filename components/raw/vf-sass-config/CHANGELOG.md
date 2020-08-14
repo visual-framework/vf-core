@@ -1,7 +1,8 @@
 # Change Log
 
-## 1.1.3
+## 1.2.0
 
+* creates mixin for grid column and row gap
 * Restores the ability to have local design tokens by not requiring a npm-installed vf-design-tokens.
   * https://github.com/visual-framework/vf-core/pull/1009
 

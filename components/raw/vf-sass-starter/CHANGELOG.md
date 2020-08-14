@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.2
+
+* dependency bump
+
 ## 0.1.1
 
 * dependency bump
