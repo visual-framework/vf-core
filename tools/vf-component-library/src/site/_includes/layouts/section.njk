@@ -1,0 +1,65 @@
+---
+layout: layouts/base.njk
+pageClass: posts
+templateEngineOverride: njk, md
+---
+
+{# Use this template for main sections of a site. #}
+<section class="vf-intro | embl-grid embl-grid--has-centered-content">
+  <div></div>
+  <div>
+    <h1 class="vf-intro__heading">{{title}}</h1>
+    <div class="vf-lede">{{subtitle | markdown | safe | replace("<p>", "<span class='vf-content'>") | replace("</p>", "</span>") }}</div>
+  </div>
+</section>
+
+<main class="vf-grid embl-grid--has-centered-content">
+  <div></div>
+  <div class="vf-content">
+
+{{ content | safe }}
+
+  </div>
+</main>
+
+{# See if a section has subposts. #}
+{# Unfortunately there's not a more elegent way to see how many posts there are with a data attribute without adding 11ty config overhead #}
+{% set sectionHasSubposts = false %}
+{%- for post in collections.posts %}
+{% if section == post.data.section %}
+{% set sectionHasSubposts = true %}
+{# {% break %} #}
+{# break is not yet implemented in nunjucks: https://github.com/mozilla/nunjucks/issues/296 #}
+{% endif %}
+{%- endfor %}
+
+{% if sectionHasSubposts and hideSubPosts != true %}
+<section class="vf-grid embl-grid--has-centered-content">
+  <div></div>
+  <div class="vf-content">
+
+## In this section
+
+  </div>
+</section>
+
+{%- for post in collections.posts %}
+{% if section == post.data.section %}
+{% set absolutePostUrl %}{{ metadata.id }}{{ post.url }}{% endset %}
+<section class="embl-grid embl-grid--has-centered-content">
+  <div class="vf-section-header">
+  </div>
+  <div class="vf-content">
+
+<h2>
+  <a href="{{ absolutePostUrl | url }}" class="vf-link">{{ post.data.title }}</a>
+</h2>
+
+{{ post.data.subtitle }}
+
+  </div>
+</section>
+{% endif %}
+{%- endfor %}
+
+{% endif %} {# END: {% if sectionHasSubposts %} #}

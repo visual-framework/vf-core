@@ -1,0 +1,67 @@
+---
+subtitle: No subtitle on the homepage.
+date: 2018-08-22 12:24:50
+layout: layouts/page.njk
+is_index: true
+---
+
+{% set homepageIntroText %}
+
+  {% markdown %}
+  Use this component-based design system.
+  {% endmarkdown %}
+
+{% endset %}
+
+{% render '@vf-intro', {"vf_intro_heading": siteConfig.siteInformation.title,
+  "vf_intro_lede": siteConfig.siteInformation.short_description,
+  "vf_intro_text": [
+    homepageIntroText | replace("<p>", "<span class='vf-content'>") | replace("</p>", "</span>")
+  ]
+} %}
+
+{# <section class="vf-intro | embl-grid embl-grid--has-centered-content">
+<div>
+  <!-- empty -->
+</div>
+<div>
+</div>
+</section> #}
+
+
+<section class="embl-grid embl-grid--has-centered-content">
+  <div>
+    <!-- empty -->
+  </div>
+  <div class="vf-content">
+  {% markdown %}
+
+  ## Longer install?
+
+  to come.
+
+  {% endmarkdown %}
+
+  </div>
+</section>
+
+<section class="embl-grid embl-grid--has-centered-content">
+  <div></div>
+  <div class="vf-content">
+    <h2 class="vf-text vf-text-heading--1 vf-text--invert">Sections</h2>
+    {# show all pages classes as sections #}
+    {# by default, 11ty sorts by `date` field #}
+    {%- for section in collections.sections  %}
+      {% if section.data.is_index == true %}
+        {% set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %}
+
+        {% markdown %}
+        ## [{{ section.data.title }}]({{ absolutePostUrl | url }})
+
+        {{ section.data.subtitle }}
+        {% endmarkdown %}
+
+      {% endif %}
+    {%- endfor %}
+  </div>
+</section>

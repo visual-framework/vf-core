@@ -1,0 +1,167 @@
+---
+layout: layouts/base.njk
+pageClass: components
+templateEngineOverride: njk
+---
+
+<div class="vf-grid">
+  <section class="vf-content component-library-notes">
+
+    {{ content | safe }}
+
+    {% set component = pagination.items[0] %}
+    {% set collectionComponents = component.items %}
+
+    {% set variants = component.variants.items %}
+
+    {% if component.notes %}
+      {{ component.notes | string | markdown | safe }}
+    {% else %}
+      {% markdown %}
+        # {{ component.title }}
+      {% endmarkdown %}
+    {% endif %}
+
+    <hr/>
+    <small>{% markdown %}
+      File system location: `components/{{ component.baseHandle }}`
+    {% endmarkdown %}</small>
+
+
+    {% if collectionComponents %}
+
+      {% render '@vf-heading--display', {
+        "type": "display",
+        "heading": "There are sub-components",
+        "style": "invert",
+        "tags": "h1"
+      } %}
+
+      <ul class="vf-list vf-list--unordered">
+        {%- for component in collectionComponents %}
+          {% if component.isHidden == false %}
+            <li class="vf-list__item"><a class="vf-link" href="{{ component.handle}}">{{ component.title }}</a> <code> {{ component.name }} </code></li>
+          {% endif %}
+        {% endfor -%}
+      </ul>
+
+    {% endif %}
+  </section>
+</div>
+
+{% if variants %}
+  <div class="vf-grid">
+    <section>
+      {% render '@vf-heading--display', {
+        "type": "display",
+        "heading": "Variants",
+        "style": "invert",
+        "tags": "h1"
+      } %}
+    </section>
+  </div>
+
+  {%- for variant in variants %}
+
+  <div class="vf-grid">
+    <section class="vf-content">
+
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: {{ variant.label }}
+          {% render '@vf-badge--primary', {
+            "style": [
+              "pill"
+            ],
+            "text": variant.status.label
+          } %}
+
+          {% render '@vf-badge--primary', {
+            "style": [
+              "pill"
+            ],
+            "text": variant.context['component-type']
+          } %}
+        </h3>
+
+        {% markdown %}
+
+        #### Nunjucks demo
+        {% endmarkdown %}
+
+        <pre><code>
+        {%- raw %}{% render '@{% endraw %}{{variant.handle}}', {{variant.context | dump(2)}} {% raw %}%}{% endraw %}
+        </code></pre>
+
+        {% markdown %}
+          #### Sample output
+        {% endmarkdown %}
+
+      </section>
+    </div>
+
+    {% if variant.context['component-type'] == 'grid' %}
+      <div class="vf-gridxx" style="grid-column: -1/1;">
+        {% render '@'+variant.handle, variant.context %}
+      </div>
+    {% else %}
+      <div class="vf-grid">
+        <section class="">
+          {% render '@'+variant.handle, variant.context %}
+        </section>
+      </div>
+    {% endif %}
+
+    <div class="vf-grid">
+      <section class="vf-content">
+
+        {% markdown %}
+          #### Sample output as HTML
+        {% endmarkdown %}
+
+        {# Show and escaped version of the html #}
+        <pre>
+          {%- render '@'+variant.handle, variant.context, false, { escape: false, beautify: true, highlight: true } %}
+        </pre>
+
+        {% markdown %}
+
+          ### Assets
+
+          - [Nunjucks template]({{ '/src/' + variant.viewPath.split('/src/')[1] | url }})
+          {%- for asset in variant.resources.assets %}
+            - [{{asset.base}}]({{asset.srcPath}})
+          {%- endfor %}
+
+        {% endmarkdown %}
+
+
+      </section>
+    </div>
+  {% endfor -%}
+{% endif %}
+
+<div class="vf-grid">
+  <section>
+    {% markdown %}
+
+      ## All components in this design system
+
+    {% endmarkdown %}
+
+    <ul class="vf-list vf-list--unordered">
+      {%- for item in fractalEnvironment.localComponents %}
+        <li class="vf-list__item vf-content"><a class="vf-link" href="../{{ item.handle}}">{{ item.title }}</a> <code> {{ item.name }} </code></li>
+      {% endfor -%}
+    </ul>
+  </section>
+</div>
+
+<div class="vf-grid">
+  <div class="footnote">
+    <p class="vf-text--body">
+      This page is part of the components section.
+    </p>
+  </div>
+</div>

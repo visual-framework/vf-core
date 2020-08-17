@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {# <style>{% include "css/app.css" %}</style> #}
+    {# <link rel="stylesheet" media="all" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css" /> #}
+    <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+    <link rel="stylesheet" media="all" href="{{ '/css/app.css' | url }}" />
+    <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
+  </head>
+  <body class="{{ bodyClass }} vf-body" >
+    <header class="vf-global-header">
+
+      <div class="vf-global-header__inner">
+
+        {% render '@vf-logo', {href:  'https://visual-framework.github.io/vf-welcome/' | url, sreen_reader_text: 'Visual Framework 2.0', image: siteConfig.siteInformation.url + 'assets/vf-logo/assets/logo.svg' } %}
+        {# <a href="{{ '/' | url }}" class="vf-link | vf-global-header__site-name">{{ siteConfig.siteInformation.title }}</a> #}
+
+        <nav class="vf-navigation vf-navigation--global">
+          <ul class="vf-navigation__list | vf-list--inline">
+            <li class="vf-navigation__item">
+              <a href="https://visual-framework.github.io/vf-welcome/" class="vf-navigation__link">About the Visual Framework</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="https://visual-framework.github.io/vf-welcome/documentation" class="vf-navigation__link">Documentation</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="https://discord.gg/XHAvkUX" class="vf-navigation__link">Help, chat</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
+    </header>
+    {% if page.url != '/' %}
+    {# don't show breadcrumb on homepage #}
+    <nav class="vf-breadcrumbs" aria-label="Breadcrumb">
+      <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+        <li class="vf-breadcrumbs__item">
+          <a href="{{ '/' | url }}" class="vf-breadcrumbs__link">{{siteConfig.siteInformation.title}}</a>
+        </li>
+        {# don't show section link on a section #}
+        {% if is_index != true %}
+          {# load section breadcrumbs from siteConfig.js #}
+          <li class="vf-breadcrumbs__item">
+            <a href="{{ siteConfig.sections[section].url | url }}" class="vf-breadcrumbs__link">{{ siteConfig.sections[section].title }}</a>
+          </li>
+        {% endif %}
+        <li class="vf-breadcrumbs__item">
+          {% if pagination.items[0].name %}
+            {{ pagination.items[0].name }}
+          {% else %}
+            {{ title }}
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
+    {% endif %}
+
+    {{ content | safe }}
+    {% include "footer.njk" %}
+  </body>
+</html>

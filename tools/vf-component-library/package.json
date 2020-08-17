@@ -6,6 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "vfConfig": {
+    "vfName": "Visual Framework component library",
+    "vfNamespace": "vf-",
+    "vfComponentPath": "../../components",
+    "vfBuildDestination": "./build",
+    "vfThemePath": "@frctl/mandelbrot"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/visual-framework/vf-core.git"
@@ -17,6 +24,9 @@
   ],
   "private": false,
   "dependencies": {
+    "@visual-framework/vf-core": "../vf-core",
+    "@visual-framework/vf-config": "../vf-config",
+    "@visual-framework/vf-extensions": "../vf-extensions",
     "@11ty/eleventy": "^0.11.0",
     "html-minifier": "^4.0.0",
     "list-stream": "^2.0.0",
