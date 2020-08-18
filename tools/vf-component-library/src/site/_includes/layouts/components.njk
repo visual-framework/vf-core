@@ -68,8 +68,6 @@ templateEngineOverride: njk
       </section>
 
       {%- for variant in variants %}
-
-
         <hr class="vf-divider" />
 
         <h3>
@@ -123,18 +121,20 @@ templateEngineOverride: njk
           {%- render '@'+variant.handle, variant.context, false, { escape: false, beautify: true, highlight: true } %}
         </pre>
 
-        {% markdown %}
-
-          ### Assets
-
-          - [Nunjucks template]({{ '/src/' + variant.viewPath.split('/src/')[1] | url }})
-          {%- for asset in variant.resources.assets %}
-            - [{{asset.base}}]({{asset.srcPath}})
-          {%- endfor %}
-
-        {% endmarkdown %}
-
       {% endfor -%}
+
+      {% markdown %}
+
+      ### Assets
+
+      - [Nunjucks template]({{ ('/assets/' + component.baseHandle + '/' + component.baseHandle + '.njk') | url }})
+      - [Config]({{ ('/assets/' + component.baseHandle + '/' + component.baseHandle + '.config.yml') | url }})
+
+      {%- for asset in component.resources.assets %}
+      - [{{asset.base}}]({{ ('/assets/' + asset.relPath ) | url }})
+      {%- endfor %}
+
+      {% endmarkdown %}
     {% endif %}
 
   </section>

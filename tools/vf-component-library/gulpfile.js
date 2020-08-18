@@ -17,7 +17,7 @@ gulp.task('watch', function() {
 // Let's build this sucker.
 gulp.task('build', gulp.series(
   'vf-clean',
-  gulp.parallel('vf-css','vf-scripts','vf-component-assets'),
+  gulp.parallel('vf-css','vf-scripts','vf-component-assets:everything'),
   'fractal:build',
   'fractal',
   'eleventy:init',
@@ -27,7 +27,7 @@ gulp.task('build', gulp.series(
 // Build and watch things during dev
 gulp.task('dev', gulp.series(
   'vf-clean',
-  gulp.parallel('vf-css','vf-scripts','vf-component-assets'),
+  gulp.parallel('vf-css','vf-scripts','vf-component-assets:everything'),
   'fractal:development',
   'fractal',
   'eleventy:init',
