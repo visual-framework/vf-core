@@ -3,21 +3,19 @@ layout: layouts/base.njk
 pageClass: components
 templateEngineOverride: njk
 ---
-
 <div class="embl-grid">
-
   <div class="vf-content">
-  <ul>
-  {%- for item in fractalEnvironment.localComponents %}
-    {%- if item.isHidden == false %}
-  <li><a class="vf-link" href="{{ '../' + item.handle | string | url }}">{{ item.title }}</a></li>
-    {% endif %}
-  {% endfor -%}
-  </ul>
+    <ul>
+      {%- for item in fractalEnvironment.localComponents -%}
+        {%- if item.isHidden == false -%}
+          <!-- Type: {{ item.variants.items[0].context['component-type'] }} -->
+          <li><a class="vf-link" href="{{ '../' + item.handle | string | url }}">{{ item.title }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
   </div>
 
   <section class="vf-content component-library-notes">
-
     {# for any content set in the page, this is most likely blank #}
     {{ content | safe }}
 
@@ -76,18 +74,18 @@ templateEngineOverride: njk
 
         <h3>
           Variant: {{ variant.label }}
-          {% render '@vf-badge--primary', {
+          {% render '@vf-badge--tertiary', {
             "style": [
-              "pill"
+              ""
             ],
             "text": variant.status.label
           } %}
 
-          {% render '@vf-badge--primary', {
+          {% render '@vf-badge--tertiary', {
             "style": [
-              "pill"
+              ""
             ],
-            "text": variant.context['component-type']
+            "text": "Type: " + variant.context['component-type']
           } %}
         </h3>
 
