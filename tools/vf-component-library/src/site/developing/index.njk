@@ -1,0 +1,112 @@
+---
+title: Developer documentation
+date: 2019-04-09 12:24:50
+tags:
+  - documentation
+layout: layouts/base.njk
+templateEngineOverride: njk, md
+---
+
+<br/><br/>
+{% render '@vf-intro', {"vf_intro_phase": "", "vf_intro_heading": title,
+  "vf_intro_lede": "Developing and contributing to the Visual Framework core.",
+  "vf_intro_text": [
+    "A guide to what you need to do, how you should write it and how to maintain <code>vf-core</code> components."
+  ]
+} %}
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div>
+
+  #### In the right place?
+
+</div>
+<div>
+
+   Need to just make a VF-powered site?
+
+  If you're not looking to develop the vf-core or add components for global use,
+  then you might be in the wrong place. If you want to make a site or design system that uses
+  Visual Framework components, then [check out the "Visual Framework building guide"]({{ '/building' | url }}).
+
+</div>
+<div>
+</div>
+</section>
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div>
+
+  #### Getting started <a id="getting-started"></a>
+
+</div>
+<div>
+
+If you'd like to contribute code, components or documentation to the Visual Framework 2.0,
+first of all: thanks!
+
+We welcome ideas, bug reports, opinions and pull requests. Telling the maintainers
+why you want or have done something is always very helpful.
+
+<ol>
+{%- for page in collections['getting started'] | sort(false, true, 'order') %}
+{%- if page.data.layout %}
+  <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
+{%- endif %}
+{%- endfor %}
+</ol>
+
+</div>
+</section>
+
+<section class="vf-content | embl-grid  embl-grid--has-centered-content">
+<div>
+
+  #### Making components <a id="components"></a>
+
+</div>
+<div>
+
+Once you've set up the VF Core locally or made a new design system, you'll want to
+extend it by creating components to add new charts, tables or other types of functionality.
+
+<ol>
+{%- for page in collections['contributing components'] | sort(false, true, 'order') %}
+{%- if page.data.layout %}
+  <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
+{%- endif %}
+{%- endfor %}
+</ol>
+
+</div>
+</section>
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div>
+
+  #### General guidelines, best practice <a id="guidelines"></a>
+
+</div>
+<div>
+
+Some important reading on conding standards, governance and who we're looking
+to assist with the Visual Framework Core.
+
+<ul>
+{%- for page in collections['guidelines'] | sort(false, true, 'url') %}
+{%- if page.data.layout %}
+  <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
+{%- endif %}
+{%- endfor %}
+</ul>
+
+</div>
+</section>
+
+{# <section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div></div>
+<div>
+
+
+</div>
+</section> #}
