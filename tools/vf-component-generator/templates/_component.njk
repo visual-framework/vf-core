@@ -1,3 +1,7 @@
+{% if context %}
+  {# {% set <%= componentName %> = context.<%= componentName %> %} #}
+{% endif %}
+
 <div class="<%= componentName %>">
   /* <%= componentName %> template file */
 </div>
@@ -9,5 +13,5 @@
   <span><!-- no image --></span>
   {% else %}
   {{ item.image }}
-{% endif %} 
+{% endif %}
 #}
