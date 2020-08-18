@@ -9,25 +9,31 @@ templateEngineOverride: njk, md
 ---
 
 <br/><br/>
-{% render '@vf-intro', {"vf_intro_phase": "", "vf_intro_heading": title,
+{% render '@vf-intro', {
+  "vf_intro_heading": title,
   "vf_intro_lede": subtitle,
   "vf_intro_text": [
     "Visual Framework components can be utilised in many ways, here are a few recommended approaches that will fit most use cases."
-  ]
+  ],
+  "vf_intro_badge": {
+    "style": [
+      "phases"
+    ],
+    "text": "alpha",
+    "theme": "primary",
+    "badge_href": "JavaScript:Void(0);"
+  }
 } %}
-
 
 <section class="vf-content | embl-grid embl-grid--has-centered-content">
 <div>
-
   {# empty #}
-
 </div>
 <div>
 
   ## Build static CSS, JS
 
-  Need help converting VF components to static CSS and JS to pair with your existing application or site? Use the `vf-build-boilerplate`. 
+  Need help converting VF components to static CSS and JS to pair with your existing application or site? Use the `vf-build-boilerplate`.
 
   It's also a good introduction into integrating VF components into an application.
 
@@ -74,17 +80,7 @@ templateEngineOverride: njk, md
 
   -  `yarn add @visual-framework/vf-sass-config @visual-framework/vf-inlay`
 
-
 </div>
 <div>
 </div>
 </section>
-
-
-{# <section class="vf-content | embl-grid embl-grid--has-centered-content">
-<div></div>
-<div>
-
-
-</div>
-</section> #}
