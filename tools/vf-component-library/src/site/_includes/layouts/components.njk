@@ -4,16 +4,28 @@ pageClass: components
 templateEngineOverride: njk
 ---
 
-<div class="vf-grid">
+<div class="embl-grid">
+
+  <div class="vf-content">
+  <ul>
+  {%- for item in fractalEnvironment.localComponents %}
+    {%- if item.isHidden == false %}
+  <li><a class="vf-link" href="{{ '../' + item.handle | string | url }}">{{ item.title }}</a></li>
+    {% endif %}
+  {% endfor -%}
+  </ul>
+  </div>
+
   <section class="vf-content component-library-notes">
 
+    {# for any content set in the page, this is most likely blank #}
     {{ content | safe }}
 
     {% set component = pagination.items[0] %}
     {% set collectionComponents = component.items %}
-
     {% set variants = component.variants.items %}
 
+    {# readme.md #}
     {% if component.notes %}
       {{ component.notes | string | markdown | safe }}
     {% else %}
@@ -23,13 +35,14 @@ templateEngineOverride: njk
     {% endif %}
 
     <hr/>
-    <small>{% markdown %}
+
+    {% markdown %}
       File system location: `components/{{ component.baseHandle }}`
-    {% endmarkdown %}</small>
+    {% endmarkdown %}
 
-
+    {# any sub-components, like vf-form #}
+    {# @todo, this is still not rendering correctly #}
     {% if collectionComponents %}
-
       {% render '@vf-heading--display', {
         "type": "display",
         "heading": "There are sub-components",
@@ -44,27 +57,20 @@ templateEngineOverride: njk
           {% endif %}
         {% endfor -%}
       </ul>
-
     {% endif %}
-  </section>
-</div>
 
-{% if variants %}
-  <div class="vf-grid">
-    <section>
-      {% render '@vf-heading--display', {
-        "type": "display",
-        "heading": "Variants",
-        "style": "invert",
-        "tags": "h1"
-      } %}
-    </section>
-  </div>
+    {% if variants %}
+      <section>
+        {% render '@vf-heading--display', {
+          "type": "display",
+          "heading": "Variants",
+          "style": "invert",
+          "tags": "h1"
+        } %}
+      </section>
 
-  {%- for variant in variants %}
+      {%- for variant in variants %}
 
-  <div class="vf-grid">
-    <section class="vf-content">
 
         <hr class="vf-divider" />
 
@@ -98,23 +104,17 @@ templateEngineOverride: njk
           #### Sample output
         {% endmarkdown %}
 
-      </section>
-    </div>
-
-    {% if variant.context['component-type'] == 'grid' %}
-      <div class="vf-gridxx" style="grid-column: -1/1;">
-        {% render '@'+variant.handle, variant.context %}
-      </div>
-    {% else %}
-      <div class="vf-grid">
-        <section class="">
-          {% render '@'+variant.handle, variant.context %}
-        </section>
-      </div>
-    {% endif %}
-
-    <div class="vf-grid">
-      <section class="vf-content">
+        {% if variant.context['component-type'] == 'grid' %}
+          <div class="vf-gridxx" style="grid-column: -1/1;">
+            {% render '@'+variant.handle, variant.context %}
+          </div>
+        {% else %}
+          <div class="vf-grid">
+            <section class="">
+              {% render '@'+variant.handle, variant.context %}
+            </section>
+          </div>
+        {% endif %}
 
         {% markdown %}
           #### Sample output as HTML
@@ -136,32 +136,9 @@ templateEngineOverride: njk
 
         {% endmarkdown %}
 
-
-      </section>
-    </div>
-  {% endfor -%}
-{% endif %}
-
-<div class="vf-grid">
-  <section>
-    {% markdown %}
-
-      ## All components in this design system
-
-    {% endmarkdown %}
-
-    <ul class="vf-list vf-list--unordered">
-      {%- for item in fractalEnvironment.localComponents %}
-        <li class="vf-list__item vf-content"><a class="vf-link" href="../{{ item.handle}}">{{ item.title }}</a> <code> {{ item.name }} </code></li>
       {% endfor -%}
-    </ul>
+    {% endif %}
+
   </section>
 </div>
 
-<div class="vf-grid">
-  <div class="footnote">
-    <p class="vf-text--body">
-      This page is part of the components section.
-    </p>
-  </div>
-</div>
