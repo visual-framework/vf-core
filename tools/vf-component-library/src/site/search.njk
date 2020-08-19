@@ -1,14 +1,11 @@
 ---
-permalink: search.json
+title: Search
+subtitle: Search documentation and guidance.
+date: 2018-08-22 12:24:50
+is_index: true
+layout: layouts/post.njk
 ---
-[
-{%- for page in collections.all -%}
-  {%- if page.data.layout %}
-  {
-    "url": "{{ page.url }}",
-    "title": "{{ page.data.title }}",
-    "index": "{{ page.templateContent | squash }}"
-  }{% if not loop.last %},{% endif %}
-  {%- endif -%}
-{%- endfor -%}
-]
+
+{% render '@vf-search-client-side--default', {
+  "component-type": "block"
+} %}

@@ -1,0 +1,27 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.js"></script>
+{# https://lunrjs.com/docs/index.html #}
+<script src="/vf-core/search_index.js"></script>
+
+<div class="vf-grid">
+  <form action="/vf-core//components/vf-search-client-side/" method="GET" class="vf-form | vf-search vf-search--inline">
+    <div class="vf-form__item | vf-search__item">
+      <input type="search" id="search" placeholder="Enter a search query" name="search_query" class="vf-form__input | vf-search__input" data-vf-search-client-side-input>
+    </div>
+    <button type="submit" class="vf-search__button | vf-button vf-button--primary">
+      Search
+    </button>
+  </form>
+</div>
+
+<div class="vf-search-client-side vf-grid | vf-content">
+  <div class="results-container" data-vf-search-client-side-results>
+    Loading...
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    vfSearchClientSide();
+  };
+</script>
+
