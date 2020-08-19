@@ -51,6 +51,15 @@
             <a href="{{ siteConfig.sections[section].url | url }}" class="vf-breadcrumbs__link">{{ siteConfig.sections[section].title }}</a>
           </li>
         {% endif %}
+        {# Handle child components #}
+        {% if pagination.items[0] %}
+          {% if pagination.items[0].name.split('__')[1] %}
+            <li class="vf-breadcrumbs__item">
+              <a href=".." class="vf-breadcrumbs__link">{{ pagination.items[0].name.split('__')[0] }}</a>
+            </li>
+          {% endif %}
+        {% endif %}
+        {# Standard page title #}
         <li class="vf-breadcrumbs__item">
           {% if pagination.items[0].name %}
             {{ pagination.items[0].name }}

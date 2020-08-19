@@ -9,7 +9,13 @@ pagination:
   data: fractalEnvironment.childComponents
   size: 1
 slug: "{{ pagination.items[0].name | slug }}"
-permalink: components/{{ pagination.items[0].name | slug }}/index.html
+permalink: components/{{ pagination.items[0].name.split('__')[0] }}/{{ pagination.items[0].name | slug }}/index.html
 ---
+
+{# For child components in things like vf-form #}
+
+{# <pre>
+{{ pagination.items[0] | dump(2)}}
+</pre> #}
 
 <!-- no special content -->
