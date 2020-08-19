@@ -50,9 +50,7 @@ templateEngineOverride: njk
 
       <ul class="vf-list vf-list--unordered">
         {%- for component in collectionComponents %}
-          {% if component.isHidden == false %}
-            <li class="vf-list__item"><a class="vf-link" href="{{ component.handle}}">{{ component.title }}</a> <code> {{ component.name }} </code></li>
-          {% endif %}
+          <li class="vf-list__item"><a class="vf-link" href="../{{ component.variants.items[0].alias }}">{{ component.variants.label }}</a> <code> {{ component.variants.items[0].alias }} </code></li>
         {% endfor -%}
       </ul>
     {% endif %}
