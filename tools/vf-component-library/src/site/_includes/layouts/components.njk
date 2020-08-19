@@ -5,11 +5,12 @@ templateEngineOverride: njk
 ---
 <div class="embl-grid">
   <div class="vf-content">
+    {#- all component list -#}
     <ul>
       {%- for item in fractalEnvironment.localComponents -%}
         {%- if item.isHidden == false -%}
           <!-- Type: {{ item.variants.items[0].context['component-type'] }} -->
-          <li><a class="vf-link" href="{{ '../' + item.handle | string | url }}">{{ item.title }}</a></li>
+          <li><a class="vf-link" href="{{ ('/components/' + item.handle) | string | url }}">{{ item.title }}</a></li>
         {%- endif -%}
       {%- endfor -%}
     </ul>
@@ -36,7 +37,6 @@ templateEngineOverride: njk
         {% endif %}
       {% endmarkdown %}
     {% endif %}
-
 
     {# any sub-components, like vf-form #}
     {# @todo, this is still not rendering correctly #}
@@ -149,4 +149,3 @@ templateEngineOverride: njk
 
   </section>
 </div>
-
