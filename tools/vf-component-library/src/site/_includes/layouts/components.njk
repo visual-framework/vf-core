@@ -29,24 +29,24 @@ templateEngineOverride: njk
     {% else %}
       {% markdown %}
         # {{ component.title }}
+        {% if collectionComponents %}
+
+        This is a parent collection of components.
+
+        {% endif %}
       {% endmarkdown %}
     {% endif %}
 
-    <hr/>
-
-    {% markdown %}
-      File system location: `components/{{ component.baseHandle }}`
-    {% endmarkdown %}
 
     {# any sub-components, like vf-form #}
     {# @todo, this is still not rendering correctly #}
     {% if collectionComponents %}
-      {% render '@vf-heading--display', {
+      {# {% render '@vf-heading--display', {
         "type": "display",
         "heading": "There are sub-components",
         "style": "invert",
         "tags": "h1"
-      } %}
+      } %} #}
 
       <ul class="vf-list vf-list--unordered">
         {%- for component in collectionComponents %}
@@ -134,6 +134,18 @@ templateEngineOverride: njk
 
       {% endmarkdown %}
     {% endif %}
+
+    {% markdown %}
+
+      ---
+
+      <br/>
+
+      <p class="vf-text-body vf-text-body--4">
+      File system location: <code>components/{{ component.baseHandle }}</code>
+      </p>
+
+    {% endmarkdown %}
 
   </section>
 </div>
