@@ -10,7 +10,8 @@ It has reusable componentised code, Gulp tasks, modules and config.
 in `./gulp-tasks/`
 
 - `gulp-build-search-index.js`: scans compiled html to make a JS object search index
-    - requires `yarn add strip-js striptags`
+    - requires `yarn add strip-js striptags node-html-parser`
+    - Elements wrapped with `class="vf-search-client-side--no-index"` will not be logged in the index
 - `_gulp_rollup.js`: require this bundle and get the files below
     - `gulp-eleventy.js`: specific to running Eleventy
     - `gulp-fractal.js`: specific to running Fractal

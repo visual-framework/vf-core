@@ -10,7 +10,7 @@
     <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
   </head>
   <body class="{{ bodyClass }} vf-body" >
-    <header class="vf-global-header">
+    <header class="vf-global-header | vf-search-client-side--no-index">
 
       <div class="vf-global-header__inner">
 
@@ -42,7 +42,7 @@
     </header>
     {% if page.url != '/' %}
     {# don't show breadcrumb on homepage #}
-    <nav class="vf-breadcrumbs" aria-label="Breadcrumb">
+    <nav class="vf-breadcrumbs | vf-search-client-side--no-index" aria-label="Breadcrumb">
       <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
         <li class="vf-breadcrumbs__item">
           <a href="{{ '/' | url }}" class="vf-breadcrumbs__link">{{siteConfig.siteInformation.title}}</a>
