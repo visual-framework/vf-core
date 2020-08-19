@@ -3,11 +3,12 @@
 /**
  * Scan the build directory and make a search index.
  * Usage:
- *  require('./node_modules/\@visual-framework/vf-extensions/gulp-tasks/vf-build-search-index.gulpfile.js')(gulp, path, buildDestionation);
+ *  require('./node_modules/\@visual-framework/vf-extensions/gulp-tasks/gulp-build-search-index.js')(gulp, path, buildDestionation);
  *  gulp.task('dev', gulp.series('vf-build-search-index'));
- * 
+ *
  * Results in a search index at:
- *  buildDestionation+'/search_index.js' 
+ *  buildDestionation+'/search_index.js'
+ * Requires `yarn add strip-js striptags`
  */
 module.exports = function(gulp, path, buildDestionation) {
 
@@ -38,7 +39,7 @@ module.exports = function(gulp, path, buildDestionation) {
           body = stripJs(striptags(body));
           body = body.replace(/&quot;/g, ' '); // remove white space
           body = body.replace(/class\=/g, ' '); // remove white space
-          
+
           body = body.replace(/<body.[\s\S]*?>(.[\s\S]*?)<\/body>/gi, '$1');
           body = body.replace(/\r?\n|\r/g, ' '); // remove white space
           body = body.replace(/    /g, ' '); // remove white space
@@ -51,7 +52,7 @@ module.exports = function(gulp, path, buildDestionation) {
 
       // prep file path
       let localFilePath = file.path.split(buildDestionation)[1];
-      
+
       output += '"url": "'+localFilePath+'"';
 
       // close the json entry
