@@ -1,13 +1,11 @@
-# Change Log
+### 1.1.1
 
-## 1.1.1
+- Fixes hover issue that was making all buttons have blue text
 
-* Fixes hover issue that was making all buttons have blue text
+### 1.1.0
 
-## 1.1.0
+- Adds more table examples to the component
 
-* Adds more table examples to the component
+### 1.0.0
 
-## 1.0.0
-
-* Initial stable release
+- Initial stable release
