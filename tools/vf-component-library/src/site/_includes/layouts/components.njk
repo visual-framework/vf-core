@@ -4,16 +4,23 @@ pageClass: components
 templateEngineOverride: njk
 ---
 <div class="embl-grid">
-  <div class="vf-content | vf-search-client-side--no-index">
+  <div class="vf-search-client-side--no-index">
     {#- all component list -#}
-    <ul>
-      {%- for item in fractalEnvironment.localComponents -%}
-        {%- if item.isHidden == false -%}
-          <!-- Type: {{ item.variants.items[0].context['component-type'] }} -->
-          <li><a class="vf-link" href="{{ ('/components/' + item.handle) | string | url }}">{{ item.title }}</a></li>
-        {%- endif -%}
-      {%- endfor -%}
-    </ul>
+    {% set componentList = [] %}
+    {%- for item in fractalEnvironment.localComponents -%}
+      {%- if item.isHidden == false -%}
+        {% set componentList = (componentList.push({ "text": item.title, "link_list_href": ('/components/' + item.handle) | string | url }),componentList) %}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {% render '@vf-link-list--tight', {
+      "component-type": "block",
+      "component_modifier": "vf-links--tight vf-links__list--s | vf-u-margin__top--md",
+      "title": "Components",
+      "list_modifier": "secondary",
+      "list":
+        componentList
+    } %}
   </div>
 
   <section class="vf-content component-library-notes">
