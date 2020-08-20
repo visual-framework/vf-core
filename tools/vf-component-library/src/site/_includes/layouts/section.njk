@@ -5,13 +5,14 @@ templateEngineOverride: njk, md
 ---
 
 {# Use this template for main sections of a site. #}
-<section class="vf-intro | embl-grid embl-grid--has-centered-content">
-  <div></div>
-  <div>
-    <h1 class="vf-intro__heading">{{title}}</h1>
-    <div class="vf-lede">{{subtitle | markdown | safe | replace("<p>", "<span class='vf-content'>") | replace("</p>", "</span>") }}</div>
-  </div>
-</section>
+{% render '@vf-intro', {
+  "vf_intro_heading": title,
+  "vf_intro_lede": subtitle,
+  "vf_intro_text": [
+    intro
+  ],
+  "vf_intro_badge": false
+} %}
 
 <main class="vf-grid embl-grid--has-centered-content">
   <div></div>
