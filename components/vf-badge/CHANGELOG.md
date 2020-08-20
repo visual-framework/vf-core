@@ -1,12 +1,7 @@
-# Change Log
+### 1.1.0
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+- adds if statement to allow for context data to pass through
 
-# 1.1.0
+### 1.0.0 (2019-12-17)
 
-* adds if statement to allow for context data to pass through
-
-# 1.0.0 (2019-12-17)
-
-* Initial stable release
+- Initial stable release
