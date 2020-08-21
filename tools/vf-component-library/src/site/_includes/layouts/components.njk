@@ -92,14 +92,19 @@ templateEngineOverride: njk
           } %}
         </h3>
 
-        {% markdown %}
 
+        {% if variant.context['component-type'] != "utility" %}
+        {# Utility variants have no practical njk templates #}
+
+        {% markdown %}
         #### Nunjucks demo
         {% endmarkdown %}
 
         <pre><code>
         {%- raw %}{% render '@{% endraw %}{{variant.handle}}', {{variant.context | dump(2)}} {% raw %}%}{% endraw %}
         </code></pre>
+
+        {% endif %}
 
         {% markdown %}
           #### Sample output
