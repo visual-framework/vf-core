@@ -39,6 +39,14 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
       .pipe(gulp.dest(buildDestionation + '/assets'));
   });
 
+  // copy all the files in a component
+  // note: you shouldn't use this in combination with the other vf-commponent-assets tasks (redundant)
+  gulp.task('vf-component-assets:everything', function() {
+    return gulp
+      .src([componentPath + '/vf-core-components/**/*.*', componentPath + '/**/*.*'])
+      .pipe(gulp.dest(buildDestionation + '/assets'));
+  });
+
   gulp.task('vf-component-assets', gulp.parallel(
     'vf-component-assets:directory', 'vf-component-assets:compiled-css', 'vf-component-assets:js'
   ));

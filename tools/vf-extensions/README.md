@@ -10,6 +10,8 @@ It has reusable componentised code, Gulp tasks, modules and config.
 in `./gulp-tasks/`
 
 - `gulp-build-search-index.js`: scans compiled html to make a JS object search index
+    - requires `yarn add strip-js striptags node-html-parser`
+    - Elements wrapped with `class="vf-search-client-side--no-index"` will not be logged in the index
 - `_gulp_rollup.js`: require this bundle and get the files below
     - `gulp-eleventy.js`: specific to running Eleventy
     - `gulp-fractal.js`: specific to running Fractal
@@ -21,7 +23,7 @@ in `/11ty`
 
 - `eleventy-cmd.js`: a fork of the default Eleventy cmd.js
 - `index.js`: reusable extensions/config for Eleventy and to load the below tags and filters
-    - `vfEleventyCommonPlugin.js`: Reusable config for sane defaults 
+    - `vfEleventyCommonPlugin.js`: Reusable config for sane defaults
 
 ### Nunjucks tags
 
@@ -45,7 +47,7 @@ in `./filters/`
 
 ### Assorted utilities
 
-In `./utils/` 
+In `./utils/`
 
 - `minify-html.js`: pass in html content and minify
 

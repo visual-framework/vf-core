@@ -1,7 +1,11 @@
-### 1.0.1
+### 2.2.2
 
-- adds an `interval` to each watch task to give the CPU a breather.
+* adds `gulp vf-component-assets:everything` task
 
-### 1.0.0
+### 2.2.1
 
-- Initial release to be used with vf-core 2.2.0
+* adds an `interval` to each watch task to give the CPU a breather
+
+### 2.2.0
+
+* Initial release as vf-core 2.2.0

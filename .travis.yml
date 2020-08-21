@@ -10,8 +10,13 @@ branches:
 before_script:
   - yarn install
   - yarn global add gulp-cli
-  - cd tools/vf-core
-  - gulp vf-core:prepare-deploy
+  # with the new 11ty based library, we shouldn't need these anymore most likely
+  # there will probably be changes needed for percy
+  # - cd tools/vf-core
+  # - gulp vf-core:prepare-deploy
+  # - cd ../..
+  - cd tools/vf-component-library
+  - gulp build
   - "curl https://www.projectwallace.com/webhooks/v1/imports?token=$WALLACE_TOKEN -fsS --retry 3 -X POST -H 'Content-Type: text/css' -d @build/css/styles.css"
 
 jobs:
@@ -36,7 +41,7 @@ deploy:
   wallace-token: $WALLACE_TOKEN
   keep-history: true
   target-branch: gh-pages
-  local-dir: tools/vf-core/build
+  local-dir: tools/vf-component-library/build
   cache:
     paths:
       - node_modules
