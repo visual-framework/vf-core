@@ -1,0 +1,18 @@
+{% spaceless %}
+
+<p
+{% if id %} id="{{-id-}}"{% endif %}
+
+class="vf-text-body
+
+{%- if type %} vf-text-body--{{type}}{% endif -%}
+
+{# You want a snowflake of a classname for something, here you go #}
+{%- if override_class %} | {{override_class}}{% endif -%}
+">
+
+{{- html | safe if html else text -}}
+
+</p>
+
+{% endspaceless %}

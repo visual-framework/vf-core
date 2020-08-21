@@ -1,0 +1,1272 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Visual Framework 2.0</title>
+  <subtitle>A front-end toolkit to quickly build better life science websites.</subtitle>
+  <link href="https://visual-framework.github.io/vf-welcome/feed.xml" rel="self"/>
+  <link href="https://visual-framework.github.io/vf-core/"/>
+  <updated>2020-03-18T12:24:50+00:00</updated>
+  <id>https://visual-framework.github.io/vf-welcome</id>
+  <author>
+    <name>Visual Framework system</name>
+    <email>ken.hawkins@embl.de</email>
+  </author>
+  
+  <entry>
+    <title>Boilerplate for a generic page</title>
+    <link href="https://visual-framework.github.io/vf-welcome/patterns/boilerplate-generic/"/>
+    <updated>2018-08-22T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/patterns/boilerplate-generic/</id>
+    <content type="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; class=&quot;vf-no-js&quot;&gt;
+&lt;head&gt;
+  &lt;script&gt;
+// Detect if JS is on and swap vf-no-js for vf-js on the html element
+(function(H){H.className=H.className.replace(/\bvf-no-js\b/,&#39;vf-js&#39;)})(document.documentElement);
+&lt;/script&gt;
+
+  &lt;title&gt;Boilerplate for a generic page | Visual Framework 2.0&lt;/title&gt;
+
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta content=&quot;width=device-width, initial-scale=1, minimum-scale=1&quot; name=&quot;viewport&quot;&gt;
+
+  &lt;link rel=&quot;shortcut icon&quot; href=&quot;https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon.ico&quot;&gt;
+&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;180x180&quot; href=&quot;https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/apple-touch-icon.png&quot;&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;32x32&quot; href=&quot;https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-32x32.png&quot;&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;16x16&quot; href=&quot;https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-16x16.png&quot;&gt;
+&lt;link rel=&quot;manifest&quot; href=&quot;https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/site.webmanifest&quot;&gt;
+&lt;link rel=&quot;mask-icon&quot; href=&quot;https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/safari-pinned-tab.svg&quot; color=&quot;#ffffff&quot;&gt;
+&lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#ffffff&quot;&gt;
+&lt;meta name=&quot;theme-color&quot; content=&quot;#ffffff&quot;&gt;
+
+  &lt;!-- Content descriptors --&gt;
+&lt;meta name=&quot;embl:who&quot; content=&quot;Group Jane&quot;&gt; &lt;!-- the people, groups and teams involved --&gt;
+&lt;meta name=&quot;embl:where&quot; content=&quot;Barcelona&quot;&gt; &lt;!-- at which EMBL sites the content applies --&gt;
+&lt;meta name=&quot;embl:what&quot; content=&quot;research&quot;&gt; &lt;!-- the activities covered --&gt;
+&lt;meta name=&quot;embl:active&quot; content=&quot;what&quot;&gt; &lt;!-- which of the who/what/where is active --&gt;
+
+&lt;!-- Content role --&gt;
+&lt;meta name=&quot;embl:utility&quot; content=&quot;-8&quot;&gt; &lt;!-- if content is task and work based or if is meant to inspire --&gt;
+&lt;meta name=&quot;embl:reach&quot; content=&quot;-5&quot;&gt; &lt;!-- if content is externally (public) or internally focused (those that work at EMBL) --&gt;
+
+&lt;!-- Page infromation --&gt;
+&lt;meta name=&quot;embl:maintainer&quot; content=&quot;Strategy and Communications&quot;&gt; &lt;!-- the contact person or group responsible for the page --&gt;
+&lt;meta name=&quot;embl:last-review&quot; content=&quot;NaN&quot;&gt; &lt;!-- the last time the page was reviewed or updated --&gt;
+&lt;meta name=&quot;embl:review-cycle&quot; content=&quot;&quot;&gt; &lt;!-- how long in days before the page should be checked --&gt;
+&lt;meta name=&quot;embl:expiry&quot; content=&quot;2019-06-20&quot;&gt; &lt;!-- if there is a fixed point in time when the page is no longer relevant --&gt;
+
+
+  &lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;https://visual-framework.github.io/vf-core/css/styles.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;https://visual-framework.github.io/vf-core/css/app.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header class=&quot;vf-header&quot;&gt;
+    &lt;header class=&quot;vf-global-header&quot;&gt;
+
+&lt;a href=&quot;http://www.embl.de/&quot; class=&quot;vf-logo | vf-logo--has-text&quot;&gt;
+  &lt;img class=&quot;vf-logo__image&quot; src=&quot;https://visual-framework.github.io/vf-welcome/assets/vf-logo/assets/logo.svg&quot; alt=&quot;Visual Framework 2.0&quot;&gt;
+  &lt;span class=&quot;vf-logo__text&quot;&gt;Visual Framework 2.0&lt;/span&gt;
+&lt;/a&gt;
+
+    &lt;p class=&quot;vf-global-header__site-name&quot;&gt;Visual Framework for Life Science websites&lt;/p&gt;
+
+&lt;nav class=&quot;vf-navigation vf-navigation--global&quot;&gt;
+  &lt;ul class=&quot;vf-navigation__list | vf-list--inline&quot;&gt;
+    &lt;li class=&quot;vf-navigation__item&quot;&gt;
+      &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-navigation__link&quot;&gt;services&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;vf-navigation__item&quot;&gt;
+      &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-navigation__link&quot;&gt;research&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;vf-navigation__item&quot;&gt;
+      &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-navigation__link&quot;&gt;training&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;vf-navigation__item&quot;&gt;
+      &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-navigation__link&quot;&gt;about us&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;/header&gt;
+
+  &lt;/header&gt;
+
+  &lt;!-- dismissible banner --&gt;
+  &lt;section class=&quot;vf-banner vf-banner--fixed vf-banner--bottom vf-banner--phase&quot; data-vf-js-banner=&quot;&quot; data-vf-js-banner-state=&quot;dismissible&quot; data-vf-js-banner-button-text=&quot;Close notice&quot;&gt;
+    &lt;div class=&quot;vf-banner__content&quot; data-vf-js-banner-text=&quot;&quot;&gt;
+      &lt;div&gt;
+        &lt;h3 class=&quot;vf-text vf-text-heading--4&quot;&gt;
+          Don&#39;t need to customise the EMBL Design Language for Websites?
+        &lt;/h3&gt;
+        &lt;p class=&quot;vf-banner__text&quot;&gt;Here&#39;s the core CSS and JS you need. Don&#39;t forget to &lt;a href=&quot;http://dev.beta.embl.org/guidelines/visual-framework/dev-docs/&quot; class=&quot;vf-link&quot;&gt;consult the component library&lt;/a&gt;.&lt;/p&gt;
+        &lt;pre class=&quot;vf-code-example__pre&quot;&gt;&lt;code class=&quot;Code Code--lang-html vf-code-example&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;https://dev.assets.emblstatic.net/vf/develop/css/styles.css&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&amp;quot;https://dev.assets.emblstatic.net/vf/develop/scripts/scripts.js&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+
+  &lt;div class=&quot;vf-body&quot;&gt;
+    
+&lt;section class=&quot;vf-intro | embl-grid embl-grid--has-centered-content&quot;&gt;
+  &lt;div&gt;&lt;!-- empty --&gt;&lt;/div&gt;
+  &lt;div&gt;
+
+  &lt;h1 class=&quot;vf-intro__heading vf-intro__heading--has-tag&quot;&gt;Cancer
+
+ &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-badge vf-badge--primary vf-badge--phases&quot;&gt;alpha&lt;/a&gt; &lt;/h1&gt;&lt;p class=&quot;vf-lede&quot;&gt;Cancer is a generic term for lots of different diseases in which cells divide many more times than usual. This abnormal growth can affect many cell types in almost any part of the body.&lt;/p&gt;
+
+
+&lt;p class=&quot;vf-intro__text&quot;&gt;Cancer is a multi-stage process. Normal cells begin to divide abnormally, spreading beyond their normal boundaries, and abnormal tissue growth causes swellings called tumours to form. Tumours can be benign – with no harmful effect on the body – or malignant, invading healthy tissue and interfering with normal bodily functions.&lt;/p&gt;&lt;p class=&quot;vf-intro__text&quot;&gt;There are more than 100 types of cancer and symptoms vary depending on the type. &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;Read more about Cancer&lt;/a&gt;.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+  &lt;/div&gt;
+
+  &lt;footer class=&quot;vf-footer&quot;&gt;
+  &lt;div class=&quot;vf-footer__inner&quot;&gt;
+    &lt;p class=&quot;vf-footer__notice&quot;&gt;A description of a site or organisation and what its goals are.&lt;/p&gt;
+    &lt;div class=&quot;vf-footer__links-group | vf-grid&quot;&gt;
+      &lt;div class=&quot;vf-links&quot;&gt;
+        &lt;h4 class=&quot;vf-links__heading&quot;&gt;Category&lt;/h4&gt;
+        &lt;ul class=&quot;vf-links__list | vf-list&quot;&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;A link&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Another link&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Third link&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;vf-links&quot;&gt;
+        &lt;h4 class=&quot;vf-links__heading&quot;&gt;Category&lt;/h4&gt;
+        &lt;ul class=&quot;vf-links__list | vf-list&quot;&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;vf-links&quot;&gt;
+        &lt;h4 class=&quot;vf-links__heading&quot;&gt;Category&lt;/h4&gt;
+        &lt;ul class=&quot;vf-links__list | vf-list&quot;&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;vf-links&quot;&gt;
+        &lt;h4 class=&quot;vf-links__heading&quot;&gt;Category&lt;/h4&gt;
+        &lt;ul class=&quot;vf-links__list | vf-list&quot;&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;vf-links&quot;&gt;
+        &lt;h4 class=&quot;vf-links__heading&quot;&gt;Category&lt;/h4&gt;
+        &lt;ul class=&quot;vf-links__list | vf-list&quot;&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;vf-list__item&quot;&gt;
+            &lt;a class=&quot;vf-list__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Entry&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+    &lt;section class=&quot;vf-footer__legal | vf-grid vf-grid__col-1&quot;&gt;
+      &lt;ul class=&quot;vf-footer__list vf-footer__list--legal | vf-list vf-list--inline&quot;&gt;
+        &lt;li class=&quot;vf-list__item&quot;&gt;
+          &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-list__link&quot;&gt;Entry&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;vf-list__item&quot;&gt;
+          &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-list__link&quot;&gt;Entry&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;vf-list__item&quot;&gt;
+          &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-list__link&quot;&gt;Entry&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p class=&quot;vf-footer__legal-text&quot;&gt;Copyright © Your Organisation.&lt;/p&gt;
+      &lt;p class=&quot;vf-footer__legal-text&quot;&gt;Maybe an address too, 5555, Somewhere, Earth.&lt;/p&gt;
+      &lt;p class=&quot;vf-footer__legal-text&quot;&gt;Tel: +49 00 000 000.&lt;/p&gt;
+      &lt;a class=&quot;vf-footer__link&quot; href=&quot;javascript:Void(0);&quot;&gt;Another entry&lt;/a&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+
+
+  
+
+  &lt;!-- This page was generated on Invalid DateTime --&gt;
+  &lt;script src=&quot;https://visual-framework.github.io/vf-core/scripts/scripts.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Navigation</title>
+    <link href="https://visual-framework.github.io/vf-welcome/patterns/navigation/"/>
+    <updated>2018-08-22T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/patterns/navigation/</id>
+    <content type="html">&lt;p&gt;Instead of nested menus, the Visual Framework is designed to facilitate structure and navigation through a series of stackable containers.&lt;/p&gt;
+&lt;p&gt;This simplifies the UX and makes reorganising pages simpler.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>What&#39;s a component</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/components/what-is-a-component/"/>
+    <updated>2019-04-09T12:24:49+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/components/what-is-a-component/</id>
+    <content type="html">&lt;h2&gt;What&#39;s in a component?&lt;/h2&gt;
+&lt;p&gt;A component is made up of these files:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CHANGELOG.md
+&lt;ul&gt;
+&lt;li&gt;Notable changes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;index.scss
+&lt;ul&gt;
+&lt;li&gt;Used to generate a standalone version of the component&#39;s CSS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;package.json
+&lt;ul&gt;
+&lt;li&gt;Version information and any npm required dependencies; you should avoid npm-requiring other VF components&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;README.md
+&lt;ul&gt;
+&lt;li&gt;Information on the role and how to use a component&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;vf-sample.config.yml
+&lt;ul&gt;
+&lt;li&gt;Configuration information about the compont, release status, type of component, variants&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;vf-sample.njk
+&lt;ul&gt;
+&lt;li&gt;A Nunjuck-based template&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;vf-sample.scss
+&lt;ul&gt;
+&lt;li&gt;Styling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;vf-sample.js
+&lt;ul&gt;
+&lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Some files will also be dynamically made at build time&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;package.variables.scss&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;Varaibles extratcted from pacakge.json that can be used in the Sass, such as a version number&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;vf-sample.precompiled.js&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;A compiled version of the Nunjucks template&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;vf-sample.css&lt;/em&gt;
+&lt;ul&gt;
+&lt;li&gt;Standoline CSS made from the index.scss&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Local components</title>
+    <link href="https://visual-framework.github.io/vf-welcome/components/preview/preview/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/components/preview/preview/</id>
+    <content type="html">&lt;!-- no special content --&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Local components</title>
+    <link href="https://visual-framework.github.io/vf-welcome/components/ebi-header-footer/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/components/ebi-header-footer/</id>
+    <content type="html">&lt;!-- no special content --&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>I&#39;m an update</title>
+    <link href="https://visual-framework.github.io/vf-welcome/demos/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/demos/</id>
+    <content type="html">&lt;p&gt;Sample integrations of the VF with other Frameworks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-welcome/demos/integration-pure&quot;&gt;&amp;quot;Pure&amp;quot; VF 2.0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-welcome/demos/integration-bootstrap&quot;&gt;Bootstrap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-welcome/demos/integration-vf1&quot;&gt;VF 2.0 + VF 1.x&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;React (coming soonish)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>I&#39;m an update</title>
+    <link href="https://visual-framework.github.io/vf-welcome/demos/integration-bootstrap/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/demos/integration-bootstrap/</id>
+    <content type="html">
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css&quot;&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-3.3.1.slim.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;div class=&quot;jumbotron&quot;&gt;
+  &lt;h1 class=&quot;display-4&quot;&gt;Hello, world!&lt;/h1&gt;
+  &lt;p class=&quot;lead&quot;&gt;This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.&lt;/p&gt;
+  &lt;hr class=&quot;my-4&quot;&gt;
+  &lt;p&gt;It uses utility classes for typography and spacing to space content out within the larger container.&lt;/p&gt;
+  &lt;a class=&quot;btn btn-primary btn-lg&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Learn more&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;a href=&quot;https://getbootstrap.com/docs/4.3/components/&quot; class=&quot;vf-link&quot;&gt;Lot&#39;s more Bootstrap components to try out here&lt;/a&gt;
+
+&lt;link rel=&quot;import&quot; href=&quot;https://dev.beta.embl.org/api/v1/pattern.html?pattern=vf-jobs-snippet&amp;filter-content-type=jobs&amp;filter-field-contains[field_jobs_description]=Cancer&amp;filter-field-date-after[field_jobs_expiration]=today&amp;limit=3&amp;source=contenthub&quot; data-target=&quot;self&quot; data-embl-js-content-hub-loader=&quot;&quot;&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>I&#39;m pure 2.0</title>
+    <link href="https://visual-framework.github.io/vf-welcome/demos/integration-pure/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/demos/integration-pure/</id>
+    <content type="html">
+&lt;link rel=&quot;import&quot; href=&quot;https://dev.beta.embl.org/api/v1/pattern.html?pattern=vf-jobs-snippet&amp;filter-content-type=jobs&amp;filter-field-contains[field_jobs_description]=Cancer&amp;filter-field-date-after[field_jobs_expiration]=today&amp;limit=3&amp;source=contenthub&quot; data-target=&quot;self&quot; data-embl-js-content-hub-loader=&quot;&quot;&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>I&#39;m an update</title>
+    <link href="https://visual-framework.github.io/vf-welcome/demos/integration-vf1/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/demos/integration-vf1/</id>
+    <content type="html">
+
+
+
+  &lt;!-- CSS: implied media=all --&gt;
+  &lt;!-- CSS concatenated and minified via ant build script--&gt;
+
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.css&quot; type=&quot;text/css&quot; media=&quot;all&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://dev.ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css&quot; type=&quot;text/css&quot; media=&quot;all&quot;&gt;
+
+  &lt;!-- Use this CSS file for any custom styling --&gt;
+  &lt;!--
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/custom.css&quot; type=&quot;text/css&quot; media=&quot;all&quot; /&gt;
+  --&gt;
+
+  &lt;!-- If you have a custom header image or colour --&gt;
+  &lt;!--
+  &lt;meta name=&quot;ebi:masthead-color&quot; content=&quot;#000&quot; /&gt;
+  &lt;meta name=&quot;ebi:masthead-image&quot; content=&quot;//www.ebi.ac.uk/web_guidelines/EBI-Framework/images/backgrounds/embl-ebi-background.jpg&quot; /&gt;
+  --&gt;
+
+  &lt;!-- you can replace this with theme-[projectname].css. See http://www.ebi.ac.uk/web/style/colour for details of how to do this --&gt;
+  &lt;!-- also inform ES so we can host your colour palette file --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/theme-embl-petrol.css&quot; type=&quot;text/css&quot; media=&quot;all&quot;&gt;
+  &lt;!-- end CSS--&gt;
+
+  &lt;header id=&quot;masthead-black-bar&quot; class=&quot;clearfix masthead-black-bar&quot;&gt;
+  &lt;/header&gt;
+  &lt;div id=&quot;content&quot;&gt;
+    &lt;div data-sticky-container=&quot;&quot;&gt;
+      &lt;header id=&quot;masthead&quot; class=&quot;masthead&quot; data-sticky=&quot;&quot; data-sticky-on=&quot;large&quot; data-top-anchor=&quot;content:top&quot; data-btm-anchor=&quot;content:bottom&quot;&gt;
+        &lt;div class=&quot;masthead-inner row&quot;&gt;
+          &lt;!-- local-title --&gt;
+          &lt;div class=&quot;columns medium-12&quot; id=&quot;local-title&quot;&gt;
+            &lt;h1&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-welcome/&quot; title=&quot;Back to [service-name] homepage&quot;&gt;EBI Framework&lt;/a&gt;&lt;/h1&gt;
+          &lt;/div&gt;
+          &lt;!-- /local-title --&gt;
+          &lt;!-- local-nav --&gt;
+          &lt;nav&gt;
+            &lt;ul id=&quot;local-nav&quot; class=&quot;dropdown menu float-left&quot; data-description=&quot;navigational&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-welcome/&quot;&gt;Overview&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a data-open=&quot;modal-download&quot;&gt;Download&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Support &lt;i class=&quot;icon icon-generic&quot; data-icon=&quot;x&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/nav&gt;
+          &lt;!-- /local-nav --&gt;
+        &lt;/div&gt;
+      &lt;/header&gt;
+    &lt;/div&gt;
+    &lt;!-- Suggested layout containers --&gt;
+    &lt;section id=&quot;main-content-area&quot; class=&quot;row&quot; role=&quot;main&quot;&gt;
+      &lt;!-- Your menu structure should make a breadcrumb redundant, but if a breadcrump is needed uncomment the below --&gt;
+      &lt;nav aria-label=&quot;You are here:&quot; role=&quot;navigation&quot;&gt;
+        &lt;ul class=&quot;breadcrumbs columns&quot;&gt;
+          &lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-welcome/&quot;&gt;EBI Framework&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-welcome/demos/&quot;&gt;Sample pages&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;
+            &lt;span class=&quot;show-for-sr&quot;&gt;Current: &lt;/span&gt; Blank boilerplate
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+
+      &lt;div class=&quot;columns&quot;&gt;
+        &lt;section&gt;
+          &lt;h2&gt;EBI Boilerplate + jobs widget&lt;/h2&gt;
+
+          &lt;p&gt;A quick port of https://www.ebi.ac.uk/style-lab/websites/sample-site/boilerplate/blank.html&lt;/p&gt;
+
+          &lt;p&gt;&lt;a href=&quot;https://www.ebi.ac.uk/style-lab/websites/patterns/&quot; class=&quot;vf-link&quot;&gt;Lot&#39;s more VF 1.x components to try out here&lt;/a&gt;.&lt;/p&gt;
+
+          &lt;link rel=&quot;import&quot; href=&quot;https://dev.beta.embl.org/api/v1/pattern.html?pattern=vf-jobs-snippet&amp;filter-content-type=jobs&amp;filter-field-contains[field_jobs_description]=Cancer&amp;filter-field-date-after[field_jobs_expiration]=today&amp;limit=3&amp;source=contenthub&quot; data-target=&quot;self&quot; data-embl-js-content-hub-loader=&quot;&quot;&gt;
+
+        &lt;/section&gt;
+      &lt;/div&gt;
+
+    &lt;/section&gt;
+    &lt;!-- Optional local footer (insert citation / project-specific copyright / etc here --&gt;
+    &lt;!--
+    &lt;footer id=&quot;local-footer&quot; class=&quot;local-footer&quot; role=&quot;local-footer&quot;&gt;
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;span class=&quot;reference&quot;&gt;How to reference this page: ...&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+    --&gt;
+    &lt;!-- End optional local footer --&gt;
+  &lt;/div&gt;
+  &lt;!-- End suggested layout containers / #content --&gt;
+
+  &lt;footer&gt;
+    &lt;div id=&quot;global-footer&quot; class=&quot;global-footer&quot;&gt;
+      &lt;nav id=&quot;global-nav-expanded&quot; class=&quot;global-nav-expanded row&quot;&gt;
+        &lt;!-- Footer will be automatically inserted by footer.js --&gt;
+      &lt;/nav&gt;
+      &lt;section id=&quot;ebi-footer-meta&quot; class=&quot;ebi-footer-meta row&quot;&gt;
+        &lt;!-- Footer meta will be automatically inserted by footer.js --&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+
+  &lt;!-- JavaScript --&gt;
+  &lt;!-- Grab Google CDN&#39;s jQuery, with a protocol relative URL; fall back to local if offline --&gt;
+  &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+  &lt;!--
+  &lt;script&gt;window.jQuery || document.write(&#39;&lt;script src=&quot;../js/libs/jquery-1.10.2.min.js&quot;&gt;&lt;\/script&gt;&#39;)&lt;/script&gt;
+  --&gt;
+
+  &lt;script defer=&quot;defer&quot; src=&quot;https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/js/script.js&quot;&gt;&lt;/script&gt;
+
+  &lt;!-- The Foundation theme JavaScript --&gt;
+  &lt;script src=&quot;https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/libraries/foundation-6/js/foundation.js&quot;&gt;&lt;/script&gt;
+  
+  &lt;script type=&quot;text/JavaScript&quot;&gt;$(document).foundation();&lt;/script&gt;
+  
+</content>
+  </entry>
+  
+  <entry>
+    <title>Creating a new component</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/components/creating-new-components/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/components/creating-new-components/</id>
+    <content type="html">
+1. Install Yeoman
+   - If you&#39;ve come this far and you don&#39;t have `yo`, you should be able to install it with `yarn global add yo@latest`
+   - If you get stuck, [see the official install guide](http://yeoman.io/codelab/setup.html)
+1. Create a new component
+   - Run `gulp vf-component` and answer the questions when prompted.
+       - **Type of component:** We use a variation of the atomic design methodology, [read about the differences here](http://bradfrost.com/blog/post/atomic-web-design/#atoms). We use: elements, blocks, and containers.
+           - an element would be a heading, or a button
+           - a block would be a teaser, or a search form
+           - a container would be a group of teasers
+       - **Name of component:** Go for something simple and obvious (todo: we need a guide/documentation on how we name things). Don&#39;t worry about namespacing and prefixing, the tooling will take care of this.
+       - **NPM package:** If you&#39;re making something interesting (probably not an &#39;element&#39;), then saying &#39;yes&#39; will allow the component to be shared as an optional part of the framework on NPM.
+    - Your customised template component will is in the `/components` directory.
+1. Add the `@import &#39;vf-your-component.scss&#39;;` to `/assets/scss/styles.scss`.
+1. Developing your component
+   - Edit your template files in the `/components/your-component-name` folder
+       - For further guidance on component configuration, [consult the comments in the component template files](https://github.com/visual-framework/vf-core/tree/develop/tools/component-generator/templates).
+   - Run `gulp vf-dev` to compile and preview the component
+1. Sharing you component back
+   - Publish it to npm; and/or
+   - If you think your component is useful to the global `vf-core` community, [make a Pull Request](https://github.com/visual-framework/vf-core/pulls) or [open an issue](https://github.com/visual-framework/vf-core/issues/new/choose) to discuss.
+
+ &lt;div class=&quot;vf-box&quot;&gt;
+ Tip: also consult the [guidelines](/vf-core/developing/guidelines) for the naming of things and coding standards.
+ &lt;/div&gt;
+
+ ## Language and spelling of documentation, code
+
+ The `vf-core` project is being led by EMBL where British English and we&#39;re aware that most code is American English (`colour` vs `color`); so:
+
+ - 📚🇬🇧 Documentation is written in British English 💂‍ `Rarely use centred text, always use colours`
+ - ⌨️🇺🇸 Code is written in American english 🧢 `$vf-main-color: green;`
+</content>
+  </entry>
+  
+  <entry>
+    <title>Deprecating components</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/components/deprecating-components/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/components/deprecating-components/</id>
+    <content type="html">
+Here&#39;s what we need to make sure we do:
+
+1. Developers can avoid installing and outdated componetn;
+1. Developers can know to stop using a componetn; and
+1. Components aren&#39;t removed so existing sites continue to function.
+
+## How to deprecate an entire component
+
+1. In the `component-name.config.yml` file add:
+    - `status: deprecated`
+    - `component-type: deprecated`
+    - `hidden: true`
+1. In the `component-name.scss` file wrap the sass with:
+    - `html:not(.vf-disable-deprecated) {`
+1. Update `README.md` with:
+    - why the component has been deprecated
+    - what component(s) developers should instead use
+    - Use this template: `&lt;h2&gt;This component has been &lt;span style=&quot;color: rgb(228, 0, 70);&quot;&gt;deprecated&lt;/span&gt;. Please use the &lt;a class=&quot;vf-link&quot; href=&quot;#&quot; new&lt;=&quot;&quot; a=&quot;&quot;&gt; component.&lt;/a&gt;&lt;/h2&gt; in the README.md file.`
+1. Publish on NPM:
+    - follow the guidelines to update the packages using Lerna(TODO). This would be a major release for the deprecated component, decide on other pattern version numbers as described in the documentation for publishing(TODO).
+1. Remove the component from `vf-core`
+1. Deprecate on npm:
+    - `npm deprecate @visual-framework/component &quot;no longer supported use the @visual-framework/component instead&quot;`
+
+## Need to deprecate just one variant of a component?
+
+1. Add a note to the `--variant.njk`
+    - Use this template: `&lt;h2&gt;This variant has been &lt;span style=&quot;color: rgb(228, 0, 70);&quot;&gt;deprecated&lt;/span&gt;. Please use the &lt;a class=&quot;vf-link&quot; href=&quot;#&quot; new&lt;=&quot;&quot; a=&quot;&quot;&gt; component.&lt;/a&gt;&lt;/h2&gt; in the README.md file.`
+1. Wrap the relevant Sass in `html:not(.vf-disable-deprecated) {`
+1. Hide the variant tab in `.config.yml`:
+```
+variants:
+  - name: deprecated-variant
+    hidden: true
+```
+
+See also: [example `vf-deprecated` component](https://github.com/visual-framework/vf-core/tree/develop/components/vf-deprecated)
+</content>
+  </entry>
+  
+  <entry>
+    <title>Updating, versioning a component</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/components/updating-a-component/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/components/updating-a-component/</id>
+    <content type="html">
+- `vf-core​@2.1.2` might use `vf-button​@1.0.1` and `vf-component-x​@8.2.1`
+- `vf-button@1.0.1` might require `vf-link@3.0.1` or newer
+
+As such components should specify if they only support specific versions of `vf-core` or require other specific versions of patterns.
+
+Other notes and tips on components:
+
+- should use a [semantic versioning](https://semver.org/) style of releases
+- must work with `vf-core v2.x`, but a component may specify a
+minimum required minor version of vf-core
+- may indicate any required versions of peer-components in your component&#39;s README.md.
+    - `vf-component-x`@`2.1.2` requires `vf-component-y`@`^8.1.0`
+- can live as part of the `vf-core` [monorepo](https://gomonorepo.org/)
+    - Interested in adding a component? [Get in touch](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ) or [make an issue](https://github.com/visual-framework/vf-core/issues/new/choose)
+- read more about [component versioning in this issue](https://github.com/visual-framework/vf-core/issues/119)
+
+&lt;span class=&quot;vf-badge vf-badge--tertiary&quot;&gt;Related&lt;/span&gt; [Notes on VF versioning](/vf-core/developing/guidelines/versioning).
+</content>
+  </entry>
+  
+  <entry>
+    <title>Code of conduct</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/getting-started/code-of-conduct/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/getting-started/code-of-conduct/</id>
+    <content type="html">
+We don&#39;t yet have a full policy but, in general: be nice, respectful
+and considerate. The maintainers will do the same.
+</content>
+  </entry>
+  
+  <entry>
+    <title>Naming things</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/getting-started/naming/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/getting-started/naming/</id>
+    <content type="html">
+## Type 1: Components
+
+Components are intended for re-use and should be named for what they are; that is:
+
+- vf-box (not &quot;vf-introduction&quot;)
+- [vf-button](/components/detail/vf-button--sizes) (not &quot;vf-call-to-action&quot;)
+- vf-grid (not &quot;vf-wide-layout&quot;)
+- vf-header (not &quot;vf-big-headline&quot;)
+- vf-form
+
+Why? This ensures that that a box will always be rectangular-ish pattern on pages,
+whereas an &quot;introduction&quot; may be a box today, but become simply large text after a redesign.
+
+### Components have
+
+- Lots of code
+    - Generally that CSS/Sass and some JS
+- An HTML code template (Nunjucks)
+- Documentation on how to use
+
+## Type 2: Patterns
+
+If your pattern is primarily intended to be used for particular websites or a brand,
+give it a name that is attached to the role it performs; that is:
+
+- vf-group-masthead
+- vf-registration-form
+- vf-start-page
+
+Why? Naming for the role the pattern does allows us to change the future visual structure,
+so a &quot;display headline&quot; today may have a black background, but tomorrow might have no background
+and be large and italic text.
+
+### Patterns have
+
+- Lots of code
+    - Generally that CSS/Sass and some JS
+- An HTML code template (Nunjucks)
+- Documentation on how to use
+
+
+For further guidance on the distinctions, see: [Patterns ≠ Components](https://medium.com/eightshapes-llc/patterns-components-2ce778cbe4e8)
+and UK.gov&#39;s information on [patterns](https://design-system.service.gov.uk/patterns) vs [components](https://design-system.service.gov.uk/components).
+</content>
+  </entry>
+  
+  <entry>
+    <title>Making your first Pull Request</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/getting-started/pull-requests/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/getting-started/pull-requests/</id>
+    <content type="html">
+To contribute code back, you&#39;ll need to make a PR ([Pull Request](https://help.github.com/en/articles/about-pull-requests)),
+as you won&#39;t have write access, GitHub will prompt you to fork the `vf-core` repository
+and then you&#39;ll be able to push your branch and open a pull request.
+
+## What?
+
+If you&#39;re thoroughly confused, here are a few helpful links:
+
+- [About branches](https://help.github.com/en/articles/about-branches)
+- [Making a fork and pull request](https://www.youtube.com/watch?v=rgbCcBNZcdQ) (video)
+
+
+## Branch naming conventions
+
+In general `type/brief-description-of-branch`, example: `component/advanced-search`,
+or `fix/grid-breaks-on-ios`
+
+Here are the most common `type`s:
+
+- `components/` when developing a new component;
+- `feature/` to be used when working on something that affects the whole system;
+- `fix/` to be used for ... fixes;
+- `hot-fix/` something very specific and usually urgent; and
+- `docs/` for anything to do with documentation, content or code.
+
+## Automated testing
+
+### On push
+
+When you push your branch to GitHub, [Husky](https://github.com/typicode/husky#husky)
+will run a pre-commit hook to help enforce Sass linting and ensure the code
+builds.
+
+### Visual differences
+
+To be confident that we can ammend components code if needed without breaking anything we need to test against the agreed look and interaction(s) of a component.
+
+We are making use of [Percy](https://percy.io/EMBL/EMBL-Visual-Framework) to do this, comparisons will be automatically generated before a pull request for a component is accepted.
+</content>
+  </entry>
+  
+  <entry>
+    <title>Structure of the Visual Framework core</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/getting-started/structure/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/getting-started/structure/</id>
+    <content type="html">
+## Design decisions and tokens
+
+The Visual Framework uses the [Design Token concept](https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421) to specify design (colour, spacing, type) as reusable JSON or YAML that are translated from `.yml` data into `.scss` using [Theo](https://github.com/salesforce-ux/theo#-theo).
+
+This Design Token abstraction [helps portability and integration](https://uxdesign.cc/design-tokens-for-dummies-8acebf010d71) with other technical systems.
+
+You can find the Design Tokens in `vf-core/components/vf-design-tokens`.
+
+## File structure
+
+
+
+The `vf-core` repo contains three types of files:
+
+1. Components that are located in `./components`
+2. Build scripts located in the root of the project (mainly)
+3. The web interface `./tools/vf-frctl-theme`
+
+
+## Detailed overview
+
+&lt;pre&gt;
+    ├── .editorconfig
+    ├── CHANGELOG.md
+    ├── CONTRIBUTING.md
+    ├── README.md
+    ├── components  (all the components you wish to use)
+    │   ├── _previews (templates for the web component browser)
+    │   ├── vf-activity-group
+    |   |   ...
+    │   └── vf-video-teaser
+    ├── docs (documentation files for the web interface)
+    ├── fractal.js (configuration for the web component library)
+    ├── gulpfile.js
+    ├── lerna.json
+    ├── package.json
+    ├── public (dynamic folder used for rendering of global CSS, JS, component assets)
+    └── tools
+        ├── component-generator (make new components)
+        ├── css-generator (build requirement)
+        └── vf-frctl-theme (web interface)
+&lt;/pre&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Sass and CSS guidelines</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/guidelines/css/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/guidelines/css/</id>
+    <content type="html">
+## CSS Naming conventions
+
+Components in the Visual Framework follow the BEM naming convention.
+
+```scss
+.component {
+}
+
+.component__item {
+}
+
+.component--alternative {
+}
+```
+
+## Namespacing
+
+We namespace all universal components with a prefix of `vf-`. This ensures that the component will not break an existing codebase.
+
+```css
+.vf-component {
+}
+```
+
+This allows the Visual Framework to also include team specific components that are owned by those teams.
+
+```css
+.embl-grid {
+}
+```
+
+## Design Patterns and Components
+
+The Visual Framework makes use of Atomic Design-style concepts to define components. Instead of using Atoms, Molecules, Organisms the Visual Framework uses the terms Elements, Blocks, and Containers.
+
+In code we do not include further prefixes for the Visual Frameworks version of Atomic Design. Instead we rely on other components to help determine what is an Element, a Block, or a Container.
+
+### Elements
+
+An Element: headings, lists, buttons, dividers, links, etc. are named after what they are semantically.
+
+```css
+.vf-text {
+}
+
+.vf-text-heading--3 {
+}
+```
+
+### Blocks
+
+A Block: headers, lists, etc. are a single purpose design component that is also named after what it does or where it would go as part of a document structure. It makes use of Elements in the HTML where needed.
+
+```css
+.vf-breadcrumbs {
+}
+
+.vf-page-header {
+}
+```
+
+In the HTML the Visual Framework makes use of `|` to separate Element classes from Block classes
+
+```html
+&lt;header class=&quot;vf-page-header&quot;&gt;
+  &lt;h1 class=&quot;vf-page-header__heading | vf-heading vf-heading--3&quot;&gt;Communications&lt;/h1&gt;
+  &lt;span class=&quot;vf-page-header__sub-heading | vf-heading vf-heading--4&quot;&gt;Blog&lt;/span&gt;
+&lt;/header&gt;
+```
+
+### Mixes
+
+When creating components you may find that a block you are wanting to use needs specific styling within it&#39;s parent. To do this we make use of BEM&#39;s mixes. Where not only do you include the relevant classnames for the block but add an additional class that includes the parent classname.
+
+For example, the page header has two text nodes:
+
+```html
+&lt;header class=&quot;vf-page-header&quot;&gt;
+  &lt;h1 class=&quot;vf-page-header__heading | vf-text vf-text--heading-3&quot;&gt;Communications&lt;/h1&gt;
+  &lt;span class=&quot;vf-page-header__sub-heading  | vf-text vf-text--heading-4&quot;&gt;Blog&lt;/span&gt;
+&lt;/header&gt;
+```
+
+The span needs to be a grey colour instead of the default black so we add a mix class to it. Instead of including the elements and relying on the parent class (`.vf-page-header`) to alter the styling, writing our HTML like this:
+
+```html
+&lt;header class=&quot;vf-page-header&quot;&gt;
+  &lt;h1 class=&quot;vf-text vf-text-heading--3&quot;&gt;Communications&lt;/h1&gt;
+  &lt;span class=&quot;vf-text vf-text-heading--4&quot;&gt;Blog&lt;/span&gt;
+&lt;/header&gt;
+```
+
+We add component specific mix classes to the `h1` and `span` to be able to style them:
+```html
+&lt;header class=&quot;vf-page-header&quot;&gt;
+  &lt;h1 class=&quot;vf-page-header__heading | vf-text vf-text-heading--3&quot;&gt;Communications&lt;/h1&gt;
+  &lt;span class=&quot;vf-page-header__sub-heading | vf-text vf-text-heading--4&quot;&gt;Blog&lt;/span&gt;
+&lt;/header&gt;
+```
+
+#### Notes
+
+It is good practice when creating a component to include a mix for any child element used. All mix classes should be written in the parents `.scss` file. So for the `vf-page-header` example we would write the required CSS in that component&#39;s `.scss` file rather than in the `vf-text.scss` file.
+
+---
+
+### Containers
+
+A Container is a horizontal slice of a page that contains Blocks and Elements. A Container is named after its purpose rather than an abstract concept.
+
+```html
+&lt;div class=&quot;vf-intro&quot;&gt;
+  &lt;h1 class=&quot;vf-intro__heading&quot;&gt;Cancer&lt;/h1&gt;
+  &lt;p class=&quot;vf-lede&quot;&gt;Cancer is a generic term for lots of different diseases in which cells divide many more times than usual. This abnormal growth can affect many cell types in almost any part of the body.&lt;/p&gt;
+  &lt;p class=&quot;vf-intro__text&quot;&gt;Cancer is a multi-stage process. Normal cells begin to divide abnormally, spreading beyond their normal boundaries, and abnormal tissue growth causes swellings called tumours to form. Tumours can be benign – with no harmful effect on the body – or malignant, invading healthy tissue and interfering with normal bodily functions.&lt;/p&gt;
+  &lt;p class=&quot;vf-intro__text&quot;&gt;There are more than 100 types of cancer and symptoms vary depending on the type. &lt;a href=&quot;javascript:Void(0);&quot;&gt;Read more about Cancer&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+```
+
+## How to write your Sass
+
+A core principle of the Visual Framework is simple integration into workflows. Accordingly, we use Sass in this project but keep it close to CSS structure so that it&#39;s easily understandable.
+
+### Nesting
+
+Sass allows [Nesting](http://www.sitepoint.com/sass-reference/selector-nesting/) of CSS. This is a very nice feature but can be over used and abused. To stop this getting out of hand you should only nest media queries, pseudo classes and where referencing the parent makes sense (things like .vf-no-js and modernizr classes).
+
+For example, in Sass:
+
+```
+a {
+  text-decoration: none;
+  &amp;:hover {
+    text-decoration: underline;
+  }
+  @media (min-width: 800px) {
+    font-weight: 700;
+  }
+  .vf-no-js &amp; {
+    color: blue;
+  }
+}
+```
+
+And the compiled CSS:
+
+```css
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+@media (min-width: 800px) {
+  a {
+    font-weight: 700;
+  }
+}
+.vf-no-js a {
+  color: blue;
+}
+```
+
+### Variables
+
+[Variables](http://www.sitepoint.com/sass-reference/variables/) in Sass allow you to reuse things like font stacks, colors and margins etc. Within the UI Pattern Library there is a file within the `global` folder called `_variables.scss` where these are defined.
+
+If you find yourself repeating a declaration in your CSS a few times it may be worth adding a new variable for this. Try to be as abstract as you can when naming it. For example rather than write `$tab-navigation-padding: 10px;` and `$tab-card-padding: 10px;` consider writing `$tab-padding` or `$padding-small;` so that it can be used elsewhere without confusion.
+
+### Mixins
+
+By default there are only a limited amount of mixins in the UI Pattern Library. They are more to make writing code easier than doing anything fancy. If you take a look at the `_mixin.scss` file that&#39;s in the `global` folder in the `scss` folder there is a mixin that will make writing media queries, responsive typography and placeholders&#39;s easier when using a component. As this UI Pattern Library can make it&#39;s way into various aspects of the company mixins should be kept to a minimum so that it is easy to understand what they do.
+
+### Working on a project
+
+When you&#39;re working on a project you may need to make notes for things to get back to, or things that are&#39;t done and could change. You should use Sass comments for this.
+
+If you have written some code that needs something fixed or added to then add a comment prefixed with `@todo`. Something l Rike this:
+
+```
+// @todo fix height issue
+```
+
+If you have written some code that may change as it maybe something that gets pushed back into the patter library or something that may change by design use `@maychange`. It would look something like this:
+
+```
+// @maychange this shade of blue may change in next design overhaul
+```
+
+Your code editor can help you find these when mopping up before a project goes live.
+
+
+## Related: Building your first Visual Framework page
+
+If you&#39;re looking for some hands-on help with Visual Framework syntax, [see this blog post on a quick start](https://work.allaboutken.com/posts/20191118-first-page-with-the-visual-framework.html) on how to work with Visual Framework 2.0 CSS, JS and structure your HTML.</content>
+  </entry>
+  
+  <entry>
+    <title>Governance of the Visual Framework</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/guidelines/governance/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/guidelines/governance/</id>
+    <content type="html">
+The Visual Framework 2.0 is an open source project meant for the wider life
+science community, so the maintainers aim to be transparent about what goes in
+`vf-core`, what doesn&#39;t and why decisions are made.
+
+The guiding spirit of the Visual Framework can be summed up as:
+
+&gt; Instead of a quick way to implement one look and feel,
+&gt; the Visual Framework is a way to quickly implement the look
+&gt; and feel needed for your content, data, users and organisation.
+
+[More background here](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/).
+
+## What goes in
+
+Code committed to `vf-core` should meet these measures:
+
+1. Not lock you into a particular brand look and feel
+2. Be useful to many organisations
+3. Be mindful of constraints and use cases common for life science content and data
+4. Be compatible with a variety of frontend solutions
+5. Be modular and extensible
+
+## Where ideas are proposed and discussed
+
+Ideas are typically [discussed on chat](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
+and [GitHub issues](https://github.com/visual-framework/vf-core/issues) and decisions
+are documented there.
+
+
+## What&#39;s in decision
+
+We aim to capture:
+
+- What was agreed
+- Why it was agreed
+- Forever-hold-your-peace
+
+## Who makes the decision
+
+In spirit, &quot;the community&quot; but in practice that falls to the maintainers and
+those asking for change.
+
+Who are the maintainers? Currently (as of April 2019) it&#39;s limited to EMBL and
+EMBL-EBI developers, but we aim to expand this into a consultative group after
+`beta.1` in late spring/summer 2019.
+
+## The decision process
+
+At a high level it [follows a flow like this diagram](https://coggle.it/diagram/V0hkiP976OIbGpy8/t/vanilla-pattern).
+</content>
+  </entry>
+  
+  <entry>
+    <title>JavaScript guidelines</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/guidelines/javascript/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/guidelines/javascript/</id>
+    <content type="html">
+## Just enough JavaScript
+
+The Visual Framework isn&#39;t intended as a general-purpose JavaScript solution, however we know it is helpful that a minimal amount of basic functionality is supported.
+
+All components are provided as functional solutions, so where JavaScript is required (such as [tabs](https://github.com/visual-framework/vf-core/tree/develop/components/vf-tabs)) there is a fully functional set of JavaScript bundled and available in:
+
+- [`vf-tabs.js`](https://github.com/visual-framework/vf-core/blob/develop/components/vf-tabs/vf-tabs.js) and
+- [`scripts.js`](https://github.com/visual-framework/vf-core/blob/gh-pages/scripts/scripts.js)
+
+## An opt-in philosophy
+
+But we know many users would prefer to use their own JavaScript tooling for all -- or some -- components on a case-by-case basis.
+
+Why? As [Adobe&#39;s Spectrum CSS puts it](https://github.com/adobe/spectrum-css#where-is-the-javascript):
+
+&gt; We have found that JavaScript is where a framework or library quickly becomes opinionated and stops being easy to use with or across other frameworks. To avoid this problem, Spectrum CSS avoids implementation details that require JavaScript.
+
+Likewise we don&#39;t require the use of the Visual Framework JavaScript, instead the behviour can be optionally invoke per-component with JavaScript data selectors.
+
+So to activate the Visual Framework JavaScript for `vf-tabs` we add `data-vf-js-tabs` and `data-vf-js-tabs-content`, like so:
+
+```html
+&lt;div class=&quot;vf-tabs&quot;&gt;
+  &lt;ul class=&quot;vf-tabs__list&quot; data-vf-js-tabs=&quot;&quot;&gt;
+    &lt;li class=&quot;vf-tabs__item&quot;&gt;
+      &lt;a class=&quot;vf-tabs__link&quot; href=&quot;#vf-tabs__section--10&quot;&gt;Second tab set&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;vf-tabs__item&quot;&gt;
+      &lt;a class=&quot;vf-tabs__link&quot; href=&quot;#vf-tabs__section--11&quot;&gt;Tab&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;vf-tabs-content&quot; data-vf-js-tabs-content=&quot;&quot;&gt;
+  &lt;section class=&quot;vf-tabs__section&quot; id=&quot;vf-tabs__section--10&quot;&gt;
+    &lt;h2&gt;Section 10&lt;/h2&gt;
+  &lt;/section&gt;
+  &lt;section class=&quot;vf-tabs__section&quot; id=&quot;vf-tabs__section--11&quot;&gt;
+    &lt;h2&gt;Section 11&lt;/h2&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+```
+
+Leaving these data selectors off will cause `vf-tabs.js` to simply ignore the tabs.
+
+### Naming
+
+The name of your selector should follow your component&#39;s name, plus an additional `-js-` prefix.
+
+So:
+- `vf-tabs` = `data-vf-js-tabs`
+- `vf-messages` = `data-vf-js-messages`
+- `mycompany-modal` = `data-mycompany-js-modal`
+</content>
+  </entry>
+  
+  <entry>
+    <title>User base and needs</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/guidelines/user-base/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/guidelines/user-base/</id>
+    <content type="html">
+The Visual Framework core (&#39;vf-core&#39;) is not intended for direct consumption into
+websites, rather it&#39;s a component library that should be installed as an npm and
+Sass dependency to build design systems.
+
+## Common needs
+
+For all supported audiences, we work to address shared needs:
+
+1. Reusable, structured CSS and JS
+1. CSS and JS that runs with and alongside other major tools (Foundation, Bootstrap and from the JS side Angular, React)
+1. A component library
+1. Sane defaults for new websites
+1. Make a &quot;look and feel&quot; more consistent
+1. Provide versioned upgrades
+1. Easily add your own patterns, tweak existing patterns
+1. No fixed look (doesn&#39;t have to look like any specific organisation, such as EMBL)
+
+## Audience types
+
+Our target audience sits in three layers:
+
+1. Maintainers of design systems for life science websites &lt;span class=&quot;vf-badge vf-badge--tertiary&quot;&gt;Primary&lt;/span&gt;
+    - needs:
+       - create a design system that utilises the `vf-core`
+       - add a vf-core component to an existing vf-core compatible system
+    - primary interface:
+       - npm
+       - online docs
+1. Lower-level developers
+    - needs: build a design system for orgs that work with life science info
+    - primary interface:
+         - docs
+         - code
+         - command line utils
+1. Those curious/learning/evaluating the Visual Framework
+    - needs: understand what vf-core is
+    - primary interface:
+      - the static site
+      - [vf-welcome site](https://github.com/visual-framework/vf-welcome)
+      - examples of organisations using `vf-core`
+
+What&#39;s not above: people building a site using generic VF-core CSS, JS and HTML
+components. That&#39;s currently not a use-case we encourage or see the need for beyond
+as a demonstrative design system.
+</content>
+  </entry>
+  
+  <entry>
+    <title>Versioning</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/guidelines/versioning/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/guidelines/versioning/</id>
+    <content type="html">
+The Visual Framework uses [semantic versioning](https://docs.npmjs.com/about-semantic-versioning) across all projects and packages. Here are some highlights of what this means:
+
+- All components are compatible with with `vf-core`, some components may require a minimum version of `vf-core`
+- If `vf-core` has a breaking change it will be updated a full version (`v2.0` → `v3.0`), and compnaents may also need to be updated
+- [Yarn](https://yarnpkg.com/lang/en/) is used for package management
+- Minimum versions of dependencies are specificed in project&#39;s `package.json`
+- Component also use semantic versioning
+    - Related: [Notes on component versioning](/vf-core/developing/components/updating-a-component/)
+- Components may also require minimum versions of other components
+
+Confused? Think of it like your computer&#39;s operating system, just because you update Windows 10 doesn&#39;t always mean your Firefox version needs to change.
+
+## Where to get the latest version
+
+Versions of `vf-core` and components are published to npm; [see the Visual Framework building guide](/vf-core/building/).
+
+## Release notes
+
+Release notes are published to [the GitHub releases tab](https://github.com/visual-framework/vf-core/releases).
+
+## Where&#39;s version 1 of `vf-core`?
+
+Where&#39;s version 1.x, you ask? That&#39;s the [EMBL-EBI specific Visual Framework](https://github.com/ebiwd/EBI-Framework) from where this concept [originated, and evolved](https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability/).
+
+## Test releases
+
+Testing releases will be identified in their tag, a la: `v2.0-alpha.1`, where `-alpha.1` is the tag. `-alpha`, `-beta` and `-rc` are tag suffixes.
+</content>
+  </entry>
+  
+  <entry>
+    <title>I&#39;m an update</title>
+    <link href="https://visual-framework.github.io/vf-welcome/posts/sample-post/"/>
+    <updated>2019-04-09T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/posts/sample-post/</id>
+    <content type="html">&lt;p&gt;I&#39;m some content.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <title>Setting up your development environment</title>
+    <link href="https://visual-framework.github.io/vf-welcome/developing/getting-started/setting-up/"/>
+    <updated>2020-03-18T12:24:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-welcome/developing/getting-started/setting-up/</id>
+    <content type="html">
+## Development tools
+
+First, see if you have the needed tools installed.
+
+1. Open a command line/terminal 
+    - how? [Mac](https://www.wikihow.com/Open-a-Terminal-Window-in-Mac), [Linux/Ubuntu](https://www.wikihow.com/Open-a-Terminal-Window-in-Ubuntu), [Windows 10](https://www.howtogeek.com/235101/10-ways-to-open-the-command-prompt-in-windows-10/), [VS Code integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
+1. Enter `node -v`
+1. Enter `yarn -v`
+
+If any of those steps return an error you need to install the corresponding
+software.
+
+- To install Node: go to the official [downloads page](https://nodejs.org/download/)
+- To install Yarn: Yarn require Node, [follow the install guide](https://yarnpkg.com/lang/en/docs/install/)
+
+## Development environment
+
+We have a recommended development environment for new developers:
+
+1. [Setup a GitHub.com account](https://github.com/join)
+1. Install the [GitHub Desktop git client](https://desktop.github.com/)
+1. For editing code, [install Visual Studio Code](https://code.visualstudio.com/#alt-downloads)
+    &lt;br&gt;We also recommended some extensions to improve you editing experience and speed:
+    - Setup VSCode to work with [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+    - Tidy up your code: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    - Fix spelling in your HTML, CSS and JS: [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+    - Get code highlight for `.njk` files: [Nunjucks syntax definition](https://marketplace.visualstudio.com/items?itemName=ronnidc.nunjucks)
+    - Get autocompletion for your CSS tags: [HTML CSS Support](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css)
+    - Standardised editor configuration: [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+
+&lt;div class=&quot;vf-box vf-box-theme-- vf-box- vf-box-theme--quinary&quot;&gt;
+&lt;h4 class=&quot; vf-box__heading&quot;&gt;Problems?&lt;/h4&gt;
+&lt;p class=&quot;vf-box__text&quot;&gt;See the &lt;a href=&quot;https://visual-framework.github.io/vf-welcome/developing/getting-started/setting-up/(/vf-core/troubleshooting)&quot; class=&quot;vf-link&quot;&gt;troubleshooting guide&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+## Developing the VF Core
+
+You only need to clone [`vf-core`](https://github.com/visual-framework/vf-core) if you wish to make a pull request to create, amend or delete core components, or modify the way Sass, JS or other assets are compiled.
+
+Here&#39;s how:
+
+1. Clone `vf-core`
+    - `git clone https://github.com/visual-framework/vf-core.git`
+1. Move to the directory
+    - `cd vf-core`
+1. You probably want the develop branch (or [your new feature branch](/vf-core/developing/getting-started/naming))
+    - `git checkout develop`
+1. Install [fractal](https://github.com/frctl/fractal) You might need to use `sudo`.
+    - `yarn global add @frctl/fractal`
+1. Download all the things
+    - `yarn install`
+1. Run a dev build and open in your browser
+    - `gulp vf-dev`
+
+### Developing on Windows?
+
+The Visual Framework is primairly developed on Mac and Linux environments, but it is
+also intended to be Windows 10 compatible.
+
+- We test and support Windows 10 using [`scoop`](https://scoop.sh/)
+- We don&#39;t test using Windows Subsytem for Linux, thought it should work fine or better than native Windows
+- Windows users will also want to consult the [troubleshooting on Windows](/vf-core/troubleshooting#windows)
+</content>
+  </entry>
+</feed>

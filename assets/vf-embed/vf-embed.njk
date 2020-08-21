@@ -1,0 +1,21 @@
+<div
+  class="vf-embed
+  {%- if vf_embed_variant_16x9 == true %} vf-embed--16x9{% endif -%}
+  {%- if vf_embed_variant_4x3 == true %} vf-embed--4x3{% endif -%}
+  {%- if vf_embed_variant_custom == true %} vf-embed--custom-ratio{% endif -%}
+  "
+
+  style="
+    {%- if vf_embed_max_width -%}
+    --vf-embed-max-width: {{vf_embed_max_width}};
+    {% endif -%}
+
+    {%- if vf_embed_variant_custom == true %}
+    --vf-embed-custom-ratio-x: {{vf_embed_custom_ratio_X}};
+    --vf-embed-custom-ratio-y: {{vf_embed_custom_ratio_Y}};
+    {%- endif -%}"
+>
+
+  {{- vf_embedded_content -}}
+
+</div>

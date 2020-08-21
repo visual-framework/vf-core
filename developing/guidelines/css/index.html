@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" media="all" href="/vf-core/css/styles.css" />
+    <link rel="stylesheet" media="all" href="/vf-core/css/app.css" />
+    <title>Sass and CSS guidelines | Visual Framework 2.0</title>
+  </head>
+  <body class=" vf-body" >
+    <header class="vf-global-header | vf-search-client-side--no-index">
+
+      <div class="vf-global-header__inner">
+        <a href="/vf-core/"
+class="vf-logo | vf-logo--has-text">
+  <img class="vf-logo__image" src="https://visual-framework.github.io/vf-core/assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
+  <span class="vf-logo__text">Visual Framework 2.0</span>
+</a>
+
+        <nav class="vf-navigation vf-navigation--global">
+          <ul class="vf-navigation__list | vf-list--inline">
+            <li class="vf-navigation__item">
+              <a href="/vf-core/" class="vf-navigation__link">About</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/components" class="vf-navigation__link">Components</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/developing" class="vf-navigation__link">Documentation</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/search" class="vf-navigation__link">Search</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link">Help, chat</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </header>
+    
+    
+    <nav class="vf-breadcrumbs | vf-search-client-side--no-index" aria-label="Breadcrumb">
+      <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+        <li class="vf-breadcrumbs__item">
+          <a href="/vf-core/" class="vf-breadcrumbs__link">Visual Framework 2.0</a>
+        </li>
+        
+        
+          
+          <li class="vf-breadcrumbs__item">
+            <a href="." class="vf-breadcrumbs__link"></a>
+          </li>
+        
+        
+        
+        
+        <li class="vf-breadcrumbs__item">
+          
+            Sass and CSS guidelines
+          
+        </li>
+      </ul>
+    </nav>
+    
+
+    <section class="vf-intro | embl-grid embl-grid--has-centered-content">
+  <div></div>
+  <div>
+    <h1 class="vf-intro__heading">Sass and CSS guidelines</h1>
+  </div>
+</section>
+<main class="vf-content | embl-grid embl-grid--has-centered-content">
+<div></div>
+<div>
+<h2>CSS Naming conventions</h2>
+<p>Components in the Visual Framework follow the BEM naming convention.</p>
+<pre><code class="language-scss">.component {
+}
+
+.component__item {
+}
+
+.component--alternative {
+}
+</code></pre>
+<h2>Namespacing</h2>
+<p>We namespace all universal components with a prefix of <code>vf-</code>. This ensures that the component will not break an existing codebase.</p>
+<pre><code class="language-css">.vf-component {
+}
+</code></pre>
+<p>This allows the Visual Framework to also include team specific components that are owned by those teams.</p>
+<pre><code class="language-css">.embl-grid {
+}
+</code></pre>
+<h2>Design Patterns and Components</h2>
+<p>The Visual Framework makes use of Atomic Design-style concepts to define components. Instead of using Atoms, Molecules, Organisms the Visual Framework uses the terms Elements, Blocks, and Containers.</p>
+<p>In code we do not include further prefixes for the Visual Frameworks version of Atomic Design. Instead we rely on other components to help determine what is an Element, a Block, or a Container.</p>
+<h3>Elements</h3>
+<p>An Element: headings, lists, buttons, dividers, links, etc. are named after what they are semantically.</p>
+<pre><code class="language-css">.vf-text {
+}
+
+.vf-text-heading--3 {
+}
+</code></pre>
+<h3>Blocks</h3>
+<p>A Block: headers, lists, etc. are a single purpose design component that is also named after what it does or where it would go as part of a document structure. It makes use of Elements in the HTML where needed.</p>
+<pre><code class="language-css">.vf-breadcrumbs {
+}
+
+.vf-page-header {
+}
+</code></pre>
+<p>In the HTML the Visual Framework makes use of <code>|</code> to separate Element classes from Block classes</p>
+<pre><code class="language-html">&lt;header class=&quot;vf-page-header&quot;&gt;
+  &lt;h1 class=&quot;vf-page-header__heading | vf-heading vf-heading--3&quot;&gt;Communications&lt;/h1&gt;
+  &lt;span class=&quot;vf-page-header__sub-heading | vf-heading vf-heading--4&quot;&gt;Blog&lt;/span&gt;
+&lt;/header&gt;
+</code></pre>
+<h3>Mixes</h3>
+<p>When creating components you may find that a block you are wanting to use needs specific styling within it's parent. To do this we make use of BEM's mixes. Where not only do you include the relevant classnames for the block but add an additional class that includes the parent classname.</p>
+<p>For example, the page header has two text nodes:</p>
+<pre><code class="language-html">&lt;header class=&quot;vf-page-header&quot;&gt;
+  &lt;h1 class=&quot;vf-page-header__heading | vf-text vf-text--heading-3&quot;&gt;Communications&lt;/h1&gt;
+  &lt;span class=&quot;vf-page-header__sub-heading  | vf-text vf-text--heading-4&quot;&gt;Blog&lt;/span&gt;
+&lt;/header&gt;
+</code></pre>
+<p>The span needs to be a grey colour instead of the default black so we add a mix class to it. Instead of including the elements and relying on the parent class (<code>.vf-page-header</code>) to alter the styling, writing our HTML like this:</p>
+<pre><code class="language-html">&lt;header class=&quot;vf-page-header&quot;&gt;
+  &lt;h1 class=&quot;vf-text vf-text-heading--3&quot;&gt;Communications&lt;/h1&gt;
+  &lt;span class=&quot;vf-text vf-text-heading--4&quot;&gt;Blog&lt;/span&gt;
+&lt;/header&gt;
+</code></pre>
+<p>We add component specific mix classes to the <code>h1</code> and <code>span</code> to be able to style them:</p>
+<pre><code class="language-html">&lt;header class=&quot;vf-page-header&quot;&gt;
+  &lt;h1 class=&quot;vf-page-header__heading | vf-text vf-text-heading--3&quot;&gt;Communications&lt;/h1&gt;
+  &lt;span class=&quot;vf-page-header__sub-heading | vf-text vf-text-heading--4&quot;&gt;Blog&lt;/span&gt;
+&lt;/header&gt;
+</code></pre>
+<h4>Notes</h4>
+<p>It is good practice when creating a component to include a mix for any child element used. All mix classes should be written in the parents <code>.scss</code> file. So for the <code>vf-page-header</code> example we would write the required CSS in that component's <code>.scss</code> file rather than in the <code>vf-text.scss</code> file.</p>
+<hr>
+<h3>Containers</h3>
+<p>A Container is a horizontal slice of a page that contains Blocks and Elements. A Container is named after its purpose rather than an abstract concept.</p>
+<pre><code class="language-html">&lt;div class=&quot;vf-intro&quot;&gt;
+  &lt;h1 class=&quot;vf-intro__heading&quot;&gt;Cancer&lt;/h1&gt;
+  &lt;p class=&quot;vf-lede&quot;&gt;Cancer is a generic term for lots of different diseases in which cells divide many more times than usual. This abnormal growth can affect many cell types in almost any part of the body.&lt;/p&gt;
+  &lt;p class=&quot;vf-intro__text&quot;&gt;Cancer is a multi-stage process. Normal cells begin to divide abnormally, spreading beyond their normal boundaries, and abnormal tissue growth causes swellings called tumours to form. Tumours can be benign – with no harmful effect on the body – or malignant, invading healthy tissue and interfering with normal bodily functions.&lt;/p&gt;
+  &lt;p class=&quot;vf-intro__text&quot;&gt;There are more than 100 types of cancer and symptoms vary depending on the type. &lt;a href=&quot;JavaScript:Void(0);&quot;&gt;Read more about Cancer&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h2>How to write your Sass</h2>
+<p>A core principle of the Visual Framework is simple integration into workflows. Accordingly, we use Sass in this project but keep it close to CSS structure so that it's easily understandable.</p>
+<h3>Nesting</h3>
+<p>Sass allows <a href="http://www.sitepoint.com/sass-reference/selector-nesting/">Nesting</a> of CSS. This is a very nice feature but can be over used and abused. To stop this getting out of hand you should only nest media queries, pseudo classes and where referencing the parent makes sense (things like .vf-no-js and modernizr classes).</p>
+<p>For example, in Sass:</p>
+<pre><code>a {
+  text-decoration: none;
+  &amp;:hover {
+    text-decoration: underline;
+  }
+  @media (min-width: 800px) {
+    font-weight: 700;
+  }
+  .vf-no-js &amp; {
+    color: blue;
+  }
+}
+</code></pre>
+<p>And the compiled CSS:</p>
+<pre><code class="language-css">a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+@media (min-width: 800px) {
+  a {
+    font-weight: 700;
+  }
+}
+.vf-no-js a {
+  color: blue;
+}
+</code></pre>
+<h3>Variables</h3>
+<p><a href="http://www.sitepoint.com/sass-reference/variables/">Variables</a> in Sass allow you to reuse things like font stacks, colors and margins etc. Within the UI Pattern Library there is a file within the <code>global</code> folder called <code>_variables.scss</code> where these are defined.</p>
+<p>If you find yourself repeating a declaration in your CSS a few times it may be worth adding a new variable for this. Try to be as abstract as you can when naming it. For example rather than write <code>$tab-navigation-padding: 10px;</code> and <code>$tab-card-padding: 10px;</code> consider writing <code>$tab-padding</code> or <code>$padding-small;</code> so that it can be used elsewhere without confusion.</p>
+<h3>Mixins</h3>
+<p>By default there are only a limited amount of mixins in the UI Pattern Library. They are more to make writing code easier than doing anything fancy. If you take a look at the <code>_mixin.scss</code> file that's in the <code>global</code> folder in the <code>scss</code> folder there is a mixin that will make writing media queries, responsive typography and placeholders's easier when using a component. As this UI Pattern Library can make it's way into various aspects of the company mixins should be kept to a minimum so that it is easy to understand what they do.</p>
+<h3>Working on a project</h3>
+<p>When you're working on a project you may need to make notes for things to get back to, or things that are't done and could change. You should use Sass comments for this.</p>
+<p>If you have written some code that needs something fixed or added to then add a comment prefixed with <code>@todo</code>. Something l Rike this:</p>
+<pre><code>// @todo fix height issue
+</code></pre>
+<p>If you have written some code that may change as it maybe something that gets pushed back into the patter library or something that may change by design use <code>@maychange</code>. It would look something like this:</p>
+<pre><code>// @maychange this shade of blue may change in next design overhaul
+</code></pre>
+<p>Your code editor can help you find these when mopping up before a project goes live.</p>
+<h2>Related: Building your first Visual Framework page</h2>
+<p>If you're looking for some hands-on help with Visual Framework syntax, <a href="https://work.allaboutken.com/posts/20191118-first-page-with-the-visual-framework.html">see this blog post on a quick start</a> on how to work with Visual Framework 2.0 CSS, JS and structure your HTML.
+<cite class="vf-cite">
+Last updated on <time datetime="Tue Apr 09 2019 12:24:50 GMT+0000 (Coordinated Universal Time)">Apr 9, 2019</time>
+</cite></p>
+</div>
+</main>
+<!-- layout: layouts/developing.njk -->
+
+    
+
+<!-- This page was generated on Invalid DateTime -->
+<script src="/vf-core/scripts/scripts.js"></script>
+
+  </body>
+</html>

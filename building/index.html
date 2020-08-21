@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" media="all" href="/vf-core/css/styles.css" />
+    <link rel="stylesheet" media="all" href="/vf-core/css/app.css" />
+    <title>Visual Framework building guide | Visual Framework 2.0</title>
+  </head>
+  <body class=" vf-body" >
+    <header class="vf-global-header | vf-search-client-side--no-index">
+
+      <div class="vf-global-header__inner">
+        <a href="/vf-core/"
+class="vf-logo | vf-logo--has-text">
+  <img class="vf-logo__image" src="https://visual-framework.github.io/vf-core/assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
+  <span class="vf-logo__text">Visual Framework 2.0</span>
+</a>
+
+        <nav class="vf-navigation vf-navigation--global">
+          <ul class="vf-navigation__list | vf-list--inline">
+            <li class="vf-navigation__item">
+              <a href="/vf-core/" class="vf-navigation__link">About</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/components" class="vf-navigation__link">Components</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/developing" class="vf-navigation__link">Documentation</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/search" class="vf-navigation__link">Search</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link">Help, chat</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </header>
+    
+    
+    <nav class="vf-breadcrumbs | vf-search-client-side--no-index" aria-label="Breadcrumb">
+      <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+        <li class="vf-breadcrumbs__item">
+          <a href="/vf-core/" class="vf-breadcrumbs__link">Visual Framework 2.0</a>
+        </li>
+        
+        
+        
+        
+        
+        <li class="vf-breadcrumbs__item">
+          
+            Visual Framework building guide
+          
+        </li>
+      </ul>
+    </nav>
+    
+
+    <section class="vf-intro | embl-grid embl-grid--has-centered-content">
+  <div><!-- empty --></div>
+  <div>
+  <h1 class="vf-intro__heading ">Visual Framework building guide</h1><p class="vf-lede">The when and how to making a project powered with Visual Framework components.</p>
+<p class="vf-intro__text">Visual Framework components can be utilised in many ways, here are a few recommended approaches that will fit most use cases.</p>
+  </div>
+</section>
+<main class="vf-grid embl-grid--has-centered-content">
+  <div></div>
+  <div class="vf-content">
+<h2>Build static CSS, JS</h2>
+<p>Need help converting VF components to static CSS and JS to pair with your existing application or site? Use the <code>vf-build-boilerplate</code>.</p>
+<p>It's also a good introduction into integrating VF components into an application.</p>
+<p><a href="https://github.com/visual-framework/vf-build-boilerplate"><code>vf-build-boilerplate</code></a></p>
+<ul>
+<li><code>yarn create @visual-framework/vf-project your-new-site-name vf-build-boilerplate</code></li>
+<li>add Visual Framework components with <code>yarn add @visual-framework/vf-component-name</code> or make a new component with <code>gulp vf-component</code></li>
+</ul>
+<h2>A pre-made boilerplate using VF components</h2>
+<p>Uses the performant <a href="https://www.11ty.io/">11ty</a> as a static site generator to build sites with VF components. This approach pre-integrates the VF Core, giving you easy access to component assets and a rollup build process to generate compiled CSS and JS.</p>
+<p><a href="https://github.com/visual-framework/vf-eleventy"><code>vf-eleventy</code> boilerplate</a></p>
+<ul>
+<li><code>yarn create @visual-framework/vf-project your-new-site-name</code></li>
+<li>add Visual Framework components with <code>yarn add @visual-framework/vf-component-name</code> or make a new component with <code>gulp vf-component</code></li>
+</ul>
+<h2>Build a design system using VF components</h2>
+<p>Extends<code>vf-eleventy</code>to document your design system, create+document components, patterns and boilerplates. You can also generate static CSS and JS assets for simple use elsewhere in vanilla HTML+CSS+JS pages.</p>
+<p><a href="https://github.com/visual-framework/vf-demo-design-system"><code>vf-demo-design-system</code> boilerplate</a></p>
+<ul>
+<li><code>yarn create @visual-framework/vf-project your-new-site-name vf-demo-design-system</code></li>
+<li>add Visual Framework components with <code>yarn add @visual-framework/vf-component-name</code> or make a new component with <code>gulp vf-component</code></li>
+</ul>
+<h2>WordPress theme</h2>
+<p>Build a WordPress site using VF components.</p>
+<ul>
+<li><code>Pre-alpha, link to come in autumn 2019</code></li>
+</ul>
+<h2>React boilerplate</h2>
+<p>A demonstration React-based project using VF components. Pre-alpha, link to come in autumn 2019.</p>
+<ul>
+<li><code>Pre-alpha, link to come in autumn 2019</code></li>
+</ul>
+<h2>Bare bones VF components</h2>
+<p>The most basic use of the Visual Framework components allows usage directly into your existing build environment. This approach gets you a components Sass, JS, template and any other assets and lets you build what you need.</p>
+<p>This approach is recommended for more advanced developers who are highly familar with Node and Sass.</p>
+<ul>
+<li><code>yarn add @visual-framework/vf-sass-config @visual-framework/vf-inlay</code></li>
+</ul>
+  </div>
+</main>
+
+    
+
+<!-- This page was generated on Invalid DateTime -->
+<script src="/vf-core/scripts/scripts.js"></script>
+
+  </body>
+</html>

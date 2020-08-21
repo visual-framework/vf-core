@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" media="all" href="/vf-core/css/styles.css" />
+    <link rel="stylesheet" media="all" href="/vf-core/css/app.css" />
+    <title>Deprecating components | Visual Framework 2.0</title>
+  </head>
+  <body class=" vf-body" >
+    <header class="vf-global-header | vf-search-client-side--no-index">
+
+      <div class="vf-global-header__inner">
+        <a href="/vf-core/"
+class="vf-logo | vf-logo--has-text">
+  <img class="vf-logo__image" src="https://visual-framework.github.io/vf-core/assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
+  <span class="vf-logo__text">Visual Framework 2.0</span>
+</a>
+
+        <nav class="vf-navigation vf-navigation--global">
+          <ul class="vf-navigation__list | vf-list--inline">
+            <li class="vf-navigation__item">
+              <a href="/vf-core/" class="vf-navigation__link">About</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/components" class="vf-navigation__link">Components</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/developing" class="vf-navigation__link">Documentation</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/search" class="vf-navigation__link">Search</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link">Help, chat</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </header>
+    
+    
+    <nav class="vf-breadcrumbs | vf-search-client-side--no-index" aria-label="Breadcrumb">
+      <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+        <li class="vf-breadcrumbs__item">
+          <a href="/vf-core/" class="vf-breadcrumbs__link">Visual Framework 2.0</a>
+        </li>
+        
+        
+          
+          <li class="vf-breadcrumbs__item">
+            <a href="." class="vf-breadcrumbs__link"></a>
+          </li>
+        
+        
+        
+        
+        <li class="vf-breadcrumbs__item">
+          
+            Deprecating components
+          
+        </li>
+      </ul>
+    </nav>
+    
+
+    <section class="vf-intro | embl-grid embl-grid--has-centered-content">
+  <div></div>
+  <div>
+    <h1 class="vf-intro__heading">Deprecating components</h1>
+<div class="vf-lede"><span class='vf-content'>Inevitably code will be replaced and improved, leaving components stale and or outdated.</span>
+</div>
+<div class="vf-intro__text"><span class='vf-content'>So we should tell developers to not use them.</span>
+</div>
+  </div>
+</section>
+<main class="vf-content | embl-grid embl-grid--has-centered-content">
+<div></div>
+<div>
+<p>Here's what we need to make sure we do:</p>
+<ol>
+<li>Developers can avoid installing and outdated componetn;</li>
+<li>Developers can know to stop using a componetn; and</li>
+<li>Components aren't removed so existing sites continue to function.</li>
+</ol>
+<h2>How to deprecate an entire component</h2>
+<ol>
+<li>In the <code>component-name.config.yml</code> file add:
+<ul>
+<li><code>status: deprecated</code></li>
+<li><code>component-type: deprecated</code></li>
+<li><code>hidden: true</code></li>
+</ul>
+</li>
+<li>In the <code>component-name.scss</code> file wrap the sass with:
+<ul>
+<li><code>html:not(.vf-disable-deprecated) {</code></li>
+</ul>
+</li>
+<li>Update <code>README.md</code> with:
+<ul>
+<li>why the component has been deprecated</li>
+<li>what component(s) developers should instead use</li>
+<li>Use this template: <code>&lt;h2&gt;This component has been &lt;span style=&quot;color: rgb(228, 0, 70);&quot;&gt;deprecated&lt;/span&gt;. Please use the &lt;a class=&quot;vf-link&quot; href=&quot;#&quot;new&lt;/a&gt; component.&lt;/h2&gt; in the README.md file.</code></li>
+</ul>
+</li>
+<li>Publish on NPM:
+<ul>
+<li>follow the guidelines to update the packages using Lerna(TODO). This would be a major release for the deprecated component, decide on other pattern version numbers as described in the documentation for publishing(TODO).</li>
+</ul>
+</li>
+<li>Remove the component from <code>vf-core</code></li>
+<li>Deprecate on npm:
+<ul>
+<li><code>npm deprecate @visual-framework/component &quot;no longer supported use the @visual-framework/component instead&quot;</code></li>
+</ul>
+</li>
+</ol>
+<h2>Need to deprecate just one variant of a component?</h2>
+<ol>
+<li>Add a note to the <code>--variant.njk</code>
+<ul>
+<li>Use this template: <code>&lt;h2&gt;This variant has been &lt;span style=&quot;color: rgb(228, 0, 70);&quot;&gt;deprecated&lt;/span&gt;. Please use the &lt;a class=&quot;vf-link&quot; href=&quot;#&quot;new&lt;/a&gt; component.&lt;/h2&gt; in the README.md file.</code></li>
+</ul>
+</li>
+<li>Wrap the relevant Sass in <code>html:not(.vf-disable-deprecated) {</code></li>
+<li>Hide the variant tab in <code>.config.yml</code>:</li>
+</ol>
+<pre><code>variants:
+  - name: deprecated-variant
+    hidden: true
+</code></pre>
+<p>See also: <a href="https://github.com/visual-framework/vf-core/tree/develop/components/vf-deprecated">example <code>vf-deprecated</code> component</a></p>
+  <cite class="vf-cite">
+    Last updated on <time datetime="Tue Apr 09 2019 12:24:50 GMT+0000 (Coordinated Universal Time)">Apr 9, 2019</time>
+  </cite>
+</div>
+</main>
+<!-- layout: layouts/developing.njk -->
+
+    
+
+<!-- This page was generated on Invalid DateTime -->
+<script src="/vf-core/scripts/scripts.js"></script>
+
+  </body>
+</html>

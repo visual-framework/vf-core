@@ -1,0 +1,22 @@
+<article class="vf-summary vf-summary--profile">
+  <img class="vf-summary__image vf-summary__image--avatar" src="{{image}}" alt="">
+  <h3 class="vf-summary__title">
+    <a href="{{ summary__href }}" class="vf-summary__link">{{name}}</a>
+  </h3>
+  <p class="vf-summary__text">{{text}}</p>
+  <p class="vf-summary__email">
+    <a href="mailto:contact@persons.com" class="vf-summary__link vf-summary__link--secondary">{{email}}</a>
+  </p>
+  <p class="vf-summary__phone">
+    <a href="{{ summary__href }}" class="vf-summary__link vf-summary__link--secondary">{{phone}}</a>
+  </p>
+  <p class="vf-summary__phone vf-vf-summary__phone--mobile">
+    <a href="{{ summary__href }}" class="vf-summary__link vf-summary__link--secondary">{{mobile}}</a>
+  </p>
+  {% if uuid %}
+  <p class="vf-summary__uuid">
+    <span>ORCID:</span>
+    <a class="vf-summary__link--secondary" href="https://europepmc.org/authors/{{uuid}}">{{uuid}}</a>
+  </p>
+  {% endif %}
+</article>

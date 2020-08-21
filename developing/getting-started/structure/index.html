@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" media="all" href="/vf-core/css/styles.css" />
+    <link rel="stylesheet" media="all" href="/vf-core/css/app.css" />
+    <title>Structure of the Visual Framework core | Visual Framework 2.0</title>
+  </head>
+  <body class=" vf-body" >
+    <header class="vf-global-header | vf-search-client-side--no-index">
+
+      <div class="vf-global-header__inner">
+        <a href="/vf-core/"
+class="vf-logo | vf-logo--has-text">
+  <img class="vf-logo__image" src="https://visual-framework.github.io/vf-core/assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
+  <span class="vf-logo__text">Visual Framework 2.0</span>
+</a>
+
+        <nav class="vf-navigation vf-navigation--global">
+          <ul class="vf-navigation__list | vf-list--inline">
+            <li class="vf-navigation__item">
+              <a href="/vf-core/" class="vf-navigation__link">About</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/components" class="vf-navigation__link">Components</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/developing" class="vf-navigation__link">Documentation</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/search" class="vf-navigation__link">Search</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link">Help, chat</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </header>
+    
+    
+    <nav class="vf-breadcrumbs | vf-search-client-side--no-index" aria-label="Breadcrumb">
+      <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+        <li class="vf-breadcrumbs__item">
+          <a href="/vf-core/" class="vf-breadcrumbs__link">Visual Framework 2.0</a>
+        </li>
+        
+        
+          
+          <li class="vf-breadcrumbs__item">
+            <a href="." class="vf-breadcrumbs__link"></a>
+          </li>
+        
+        
+        
+        
+        <li class="vf-breadcrumbs__item">
+          
+            Structure of the Visual Framework core
+          
+        </li>
+      </ul>
+    </nav>
+    
+
+    <section class="vf-intro | embl-grid embl-grid--has-centered-content">
+  <div></div>
+  <div>
+    <h1 class="vf-intro__heading">Structure of the Visual Framework core</h1>
+  </div>
+</section>
+<main class="vf-content | embl-grid embl-grid--has-centered-content">
+<div></div>
+<div>
+<h2>Design decisions and tokens</h2>
+<p>The Visual Framework uses the <a href="https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421">Design Token concept</a> to specify design (colour, spacing, type) as reusable JSON or YAML that are translated from <code>.yml</code> data into <code>.scss</code> using <a href="https://github.com/salesforce-ux/theo#-theo">Theo</a>.</p>
+<p>This Design Token abstraction <a href="https://uxdesign.cc/design-tokens-for-dummies-8acebf010d71">helps portability and integration</a> with other technical systems.</p>
+<p>You can find the Design Tokens in <code>vf-core/components/vf-design-tokens</code>.</p>
+<h2>File structure</h2>
+<p>The <code>vf-core</code> repo contains three types of files:</p>
+<ol>
+<li>Components that are located in <code>./components</code></li>
+<li>Build scripts located in the root of the project (mainly)</li>
+<li>The web interface <code>./tools/vf-frctl-theme</code></li>
+</ol>
+<h2>Detailed overview</h2>
+<pre>
+    ├── .editorconfig
+    ├── CHANGELOG.md
+    ├── CONTRIBUTING.md
+    ├── README.md
+    ├── components  (all the components you wish to use)
+    │   ├── _previews (templates for the web component browser)
+    │   ├── vf-activity-group
+    |   |   ...
+    │   └── vf-video-teaser
+    ├── docs (documentation files for the web interface)
+    ├── fractal.js (configuration for the web component library)
+    ├── gulpfile.js
+    ├── lerna.json
+    ├── package.json
+    ├── public (dynamic folder used for rendering of global CSS, JS, component assets)
+    └── tools
+        ├── component-generator (make new components)
+        ├── css-generator (build requirement)
+        └── vf-frctl-theme (web interface)
+</pre>
+  <cite class="vf-cite">
+    Last updated on <time datetime="Tue Apr 09 2019 12:24:50 GMT+0000 (Coordinated Universal Time)">Apr 9, 2019</time>
+  </cite>
+</div>
+</main>
+<!-- layout: layouts/developing.njk -->
+
+    
+
+<!-- This page was generated on Invalid DateTime -->
+<script src="/vf-core/scripts/scripts.js"></script>
+
+  </body>
+</html>

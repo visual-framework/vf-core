@@ -1,0 +1,18 @@
+// Reusable styling for figures with optional caption styling
+// @include figure($has-caption: true);
+
+@mixin figure($has-caption: true) {
+  margin: 0;
+  &__image {
+    @include margin--block(bottom, 21px);
+  }
+
+  @if $has-caption == true {
+    &__caption {
+      @include set-type(text-body--5);
+
+      color: map-get($vf-colors-map, vf-color--grey);
+      font-style: italic;
+    }
+  }
+}

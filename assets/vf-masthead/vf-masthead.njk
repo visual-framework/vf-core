@@ -1,0 +1,34 @@
+<style>
+    .vf-masthead {
+      --vf-masthead__bg-image: url({{ mastheadImage }});
+    }
+</style>
+<div
+  class="vf-masthead
+  {%- if mastheadThemeVariant %}
+  {{mastheadThemeVariant}}
+  {%- endif -%}
+  {% if hasTitleBlock %}
+  {{hasTitleBlock}}
+  {% endif -%}
+  {% if mastheadImageClass %}
+  {{mastheadImageClass}}
+  {% endif -%}"
+  {% if mastheadImage %}
+  style="background-image: var(--vf-masthead__bg-image)"
+  data-vf-js-masthead
+  {% endif %}
+>
+  <div class="vf-masthead__inner">
+    <div class="vf-masthead__title">
+      <h1 class="vf-masthead__heading">
+        <a href="{{ masthead_href }}" class="vf-masthead__heading__link">Strategy &amp; Communications</a>
+        <span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span>
+      </h1>
+      <h2 class="vf-masthead__subheading">
+        <span class="vf-masthead__location">VF Hamburg</span>
+        <span class="vf-masthead__group">Structural Biology</span>
+      </h2>
+    </div>
+  </div>
+</div>

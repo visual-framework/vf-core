@@ -1,0 +1,26 @@
+<nav class="vf-breadcrumbs" aria-label="Breadcrumb">
+
+  <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+    {% for breadcrumb in breadcrumbs %}
+    <li class="vf-breadcrumbs__item">
+      {% if breadcrumb.breadcrumb_href %}
+      <a href="{{ breadcrumb_href }}" class="vf-breadcrumbs__link">{{ breadcrumb.text }}</a>
+      {% else %}
+      {{ breadcrumb.text }}
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% if related %}
+  <span class="vf-breadcrumbs__heading">Related:</span>
+  <ul class="vf-breadcrumbs__list vf-breadcrumbs__list--related | vf-list vf-list--inline">
+    {% for item in related %}
+    <li class="vf-breadcrumbs__item">
+      <a href="{{ item.breadcrumb_href }}" class="vf-breadcrumbs__link">{{ item.text }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+</nav>

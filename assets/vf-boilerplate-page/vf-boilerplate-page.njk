@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="vf-no-js">
+<head>
+  {% render "@vf-no-js" %}
+  <title>{{ _target.title }} | {{ _config.project.title }}</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+
+  {% render "@vf-favicon" %}
+  {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "Barcelona", "meta_what": "research", "meta_active": "what"} %}
+
+  {% if _config.project.environment.local %}
+  <link rel="stylesheet" href="{{ '/css/styles.css' | path }}">
+  {% endif %}
+  {% if _config.project.environment.production %}
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css">
+  {% endif %}
+</head>
+<body>
+  <header class="vf-header">
+    {% render "@vf-global-header" %}
+  </header>
+
+  <!-- dismissible banner -->
+  <section class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--phase" data-vf-js-banner data-vf-js-banner-state="dismissible" data-vf-js-banner-button-text="Close notice">
+      <div class="vf-banner__content" data-vf-js-banner-text>
+        <div>
+          <h3 class="vf-text vf-text-heading--4">
+            Don't need to customise the EMBL Design Language for Websites?
+          </h3>
+          <p class="vf-banner__text">Here's the core CSS and JS you need. Don't forget to <a href="http://www.embl.org/guidelines/visual-framework/dev-docs/" class="vf-link">consult the component library</a>.</p>
+          {% codeblock 'html' -%}
+<link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css">
+<script src="https://dev.assets.emblstatic.net/vf/develop/scripts/scripts.js"></script>
+          {% endcodeblock %}
+        </div>
+      </div>
+  </section>
+
+
+  <div class="vf-body">
+    {% render "@vf-intro" %}
+  </div>
+
+  {% render "@vf-footer" %}
+
+  <script src="{{ '/scripts/scripts.js' | path }}"></script>
+</body>
+</html>

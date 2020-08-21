@@ -1,0 +1,34 @@
+<aside class="vf-article-meta-information">
+  <div class="vf-author | vf-article-meta-info__author">
+    <p class="vf-author__name">
+      <a class="vf-link" href="{{ meta__url }}">{{ author__name }}</a>
+    </p>
+   <a class="vf-author--avatar__link | vf-link" href="{{ meta__url }}">
+     <!-- wrapping the avatar in a link is optional -->
+     <img class="vf-author--avatar" src="{{ author__avatar }}" alt="FirstName Surname" />
+   </a>
+  </div>
+  <div class="vf-meta__details">
+    <p class="vf-meta__date">{{ meta__date }}</p>
+
+    <p class="vf-meta__topics">Topics:
+      {% for item in meta__topics %}
+      <a href="JavaScript:Void(0);" class="vf-link">{{ item }}</a>
+      {% endfor %}
+  </div>
+  <div class="vf-meta__comments">
+    <p class"vf-meta__text">Comments — <a href="JavaScript:Void(0);" class="vf-link">{{ meta__comment_count }}</a></p>
+  </div>
+  {% if meta__links %}
+  <div class="vf-links vf-links--tight vf-links__list--s">
+    <p class="vf-links__heading">{{meta__links_title}}</p>
+    <ul class="vf-links__list vf-links__list--secondary | vf-list">
+      {% for item in meta__links %}
+      <li class="vf-list__item">
+        <a class="vf-list__link" href="{{item.url}}">{{item.text}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</aside>

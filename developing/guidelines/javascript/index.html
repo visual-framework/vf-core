@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" media="all" href="/vf-core/css/styles.css" />
+    <link rel="stylesheet" media="all" href="/vf-core/css/app.css" />
+    <title>JavaScript guidelines | Visual Framework 2.0</title>
+  </head>
+  <body class=" vf-body" >
+    <header class="vf-global-header | vf-search-client-side--no-index">
+
+      <div class="vf-global-header__inner">
+        <a href="/vf-core/"
+class="vf-logo | vf-logo--has-text">
+  <img class="vf-logo__image" src="https://visual-framework.github.io/vf-core/assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
+  <span class="vf-logo__text">Visual Framework 2.0</span>
+</a>
+
+        <nav class="vf-navigation vf-navigation--global">
+          <ul class="vf-navigation__list | vf-list--inline">
+            <li class="vf-navigation__item">
+              <a href="/vf-core/" class="vf-navigation__link">About</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/components" class="vf-navigation__link">Components</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/developing" class="vf-navigation__link">Documentation</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/search" class="vf-navigation__link">Search</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link">Help, chat</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </header>
+    
+    
+    <nav class="vf-breadcrumbs | vf-search-client-side--no-index" aria-label="Breadcrumb">
+      <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+        <li class="vf-breadcrumbs__item">
+          <a href="/vf-core/" class="vf-breadcrumbs__link">Visual Framework 2.0</a>
+        </li>
+        
+        
+          
+          <li class="vf-breadcrumbs__item">
+            <a href="." class="vf-breadcrumbs__link"></a>
+          </li>
+        
+        
+        
+        
+        <li class="vf-breadcrumbs__item">
+          
+            JavaScript guidelines
+          
+        </li>
+      </ul>
+    </nav>
+    
+
+    <section class="vf-intro | embl-grid embl-grid--has-centered-content">
+  <div></div>
+  <div>
+    <h1 class="vf-intro__heading">JavaScript guidelines</h1>
+  </div>
+</section>
+<main class="vf-content | embl-grid embl-grid--has-centered-content">
+<div></div>
+<div>
+<h2>Just enough JavaScript</h2>
+<p>The Visual Framework isn't intended as a general-purpose JavaScript solution, however we know it is helpful that a minimal amount of basic functionality is supported.</p>
+<p>All components are provided as functional solutions, so where JavaScript is required (such as <a href="https://github.com/visual-framework/vf-core/tree/develop/components/vf-tabs">tabs</a>) there is a fully functional set of JavaScript bundled and available in:</p>
+<ul>
+<li><a href="https://github.com/visual-framework/vf-core/blob/develop/components/vf-tabs/vf-tabs.js"><code>vf-tabs.js</code></a> and</li>
+<li><a href="https://github.com/visual-framework/vf-core/blob/gh-pages/scripts/scripts.js"><code>scripts.js</code></a></li>
+</ul>
+<h2>An opt-in philosophy</h2>
+<p>But we know many users would prefer to use their own JavaScript tooling for all -- or some -- components on a case-by-case basis.</p>
+<p>Why? As <a href="https://github.com/adobe/spectrum-css#where-is-the-javascript">Adobe's Spectrum CSS puts it</a>:</p>
+<blockquote>
+<p>We have found that JavaScript is where a framework or library quickly becomes opinionated and stops being easy to use with or across other frameworks. To avoid this problem, Spectrum CSS avoids implementation details that require JavaScript.</p>
+</blockquote>
+<p>Likewise we don't require the use of the Visual Framework JavaScript, instead the behviour can be optionally invoke per-component with JavaScript data selectors.</p>
+<p>So to activate the Visual Framework JavaScript for <code>vf-tabs</code> we add <code>data-vf-js-tabs</code> and <code>data-vf-js-tabs-content</code>, like so:</p>
+<pre><code class="language-html">&lt;div class=&quot;vf-tabs&quot;&gt;
+  &lt;ul class=&quot;vf-tabs__list&quot; data-vf-js-tabs&gt;
+    &lt;li class=&quot;vf-tabs__item&quot;&gt;
+      &lt;a class=&quot;vf-tabs__link&quot; href=&quot;#vf-tabs__section--10&quot;&gt;Second tab set&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;vf-tabs__item&quot;&gt;
+      &lt;a class=&quot;vf-tabs__link&quot; href=&quot;#vf-tabs__section--11&quot;&gt;Tab&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;vf-tabs-content&quot; data-vf-js-tabs-content&gt;
+  &lt;section class=&quot;vf-tabs__section&quot; id=&quot;vf-tabs__section--10&quot;&gt;
+    &lt;h2&gt;Section 10&lt;/h2&gt;
+  &lt;/section&gt;
+  &lt;section class=&quot;vf-tabs__section&quot; id=&quot;vf-tabs__section--11&quot;&gt;
+    &lt;h2&gt;Section 11&lt;/h2&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Leaving these data selectors off will cause <code>vf-tabs.js</code> to simply ignore the tabs.</p>
+<h3>Naming</h3>
+<p>The name of your selector should follow your component's name, plus an additional <code>-js-</code> prefix.</p>
+<p>So:</p>
+<ul>
+<li>
+<p><code>vf-tabs</code> = <code>data-vf-js-tabs</code></p>
+</li>
+<li>
+<p><code>vf-messages</code> = <code>data-vf-js-messages</code></p>
+</li>
+<li>
+<p><code>mycompany-modal</code> = <code>data-mycompany-js-modal</code></p>
+<cite class="vf-cite">
+  Last updated on <time datetime="Tue Apr 09 2019 12:24:50 GMT+0000 (Coordinated Universal Time)">Apr 9, 2019</time>
+</cite>
+</li>
+</ul>
+</div>
+</main>
+<!-- layout: layouts/developing.njk -->
+
+    
+
+<!-- This page was generated on Invalid DateTime -->
+<script src="/vf-core/scripts/scripts.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<style>
+/* vf-swatches might one day be a component, but for now it's CSS we'll just use for the design token demonstration */
+.vf-swatches {
+  grid-row-gap: 32px;
+  margin: 48px 0;
+}
+.vf-swatch {
+  border: 1px solid #d0d0ce;
+  display: grid;
+  grid-template-rows: 160px 1fr;
+}
+
+.vf-swatch__details {
+  padding: 16px;
+  border-top: 1px solid #d0d0ce;
+}
+.vf-swatch:nth-of-type(6),
+.vf-swatch:nth-of-type(11) {
+  grid-column-start: 1;
+}
+.vf-swatch__colour {
+  /* margin: 16px;
+  height: calc(100% - 32px);
+  width: calc(100% - 32px); */
+  height: 100%;
+  width: 100%;
+}
+.vf-swatch__colour-name {
+  margin: 0 0 12px 0;
+}
+
+.vf-swatch__colour-hex,
+.vf-swatch__sass-variable,
+.vf-swatch__comment,
+.vf-swatch__css-property {
+  margin: 0 0 12px 0;
+}
+.vf-swatch__colour-hex {
+  text-transform: uppercase;
+}
+.vf-swatch__colour-hex,
+.vf-swatch__sass-variable,
+.vf-swatch__css-property {
+  font-family: monospace;
+  font-size: 1em;
+  align-items: start;
+}
+
+.vf-swatch__colour-hex,
+.vf-swatch__sass-variable,
+.vf-swatch__css-property {
+  font-family: 'IBM Plex Mono', Monaco, Consolas, 'Lucida Console', monospace;
+  font-size: 14px;
+}
+
+.vf-swatch__notes {
+  margin: 12px 0 0px 0;
+}
+
+.vf-swatch__notes,
+.vf-swatch__colour-name,
+.vf-swatch__meta {
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+}
+.vf-swatch__colour-name {
+  padding: 16px;
+}
+
+.vf-swatch__meta {
+  font-size: 16px;
+}
+
+.vf-swatch__details p {
+  margin-bottom: 16px;
+}
+.vf-swatch__details p:last-of-type {
+  margin-bottom: 0;
+}
+</style>
+
+
+<main class="vf-swatches | vf-grid vf-grid__col-3">
+{% for item in colors.properties %}
+
+
+<article class="vf-swatch">
+  <div class="vf-swatch__colour" style="background-color: {{ item.value}};">
+  </div>
+
+  <section class="vf-swatch__details">
+    <h3 class="vf-swatch__colour-name">{{ item.meta.friendlyName }}</h3>
+    <hr class="vf-divider">
+    <p>Colour code:</p>
+    <p class="vf-swatch__colour-hex">{{ item.value }}</p>
+    <p class="vf-swatch__colour-hex">{{ item.value | hextorgb }}</p>
+    {% if item.meta.sassVariable %}
+    <hr class="vf-divider">
+    <p>Sass:</p>
+      <p class="vf-swatch__sass-variable">${{ item.meta.sassVariable }}</p>
+      <p class="vf-swatch__sass-variable">map-get($vf-colors-map, {{ item.meta.sassVariable }})</p>
+    {% endif %}
+    {% if item.meta.CSSCustomProperty %}
+    <hr class="vf-divider">
+    <p>CSS custom property:</p>
+      <p class="vf-swatch__css-property">{{ item.meta.CSSCustomProperty }}</p>
+    {% endif %}
+    {% if item.meta.comment %}
+      <h4 class="vf-swatch__notes">notes:</h4>
+      <p class="vf-swatch__comment">
+        {{ item.meta.comment }}
+      </p>
+    {% endif %}
+  </section>
+</article>
+
+{% else %}
+
+<p>Something went wrong.</p>
+
+{% endfor %}
+</main>
