@@ -20,7 +20,7 @@ before_script:
   - gulp build
   - "curl https://www.projectwallace.com/webhooks/v1/imports?token=$WALLACE_TOKEN -fsS --retry 3 -X POST -H 'Content-Type: text/css' -d @build/css/styles.css"
   # gh-pages shouldn't try to compile the .md files
-  - cd build && touch .nojekyll
+  - cd build && touch .nojekyll && cd ..
 
 jobs:
   include:
@@ -29,7 +29,7 @@ jobs:
       env:
         - PERCY_TARGET_BRANCH=develop
       script:
-        - npx percy snapshot ./build/components/preview/ --base-url "/visual-framework/"
+        - npx percy snapshot ./build/components/ --base-url "/vf-core/"
       cache:
         paths:
           - node_modules
