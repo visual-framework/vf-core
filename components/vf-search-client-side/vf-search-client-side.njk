@@ -1,18 +1,34 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.js"></script>
-{# https://lunrjs.com/docs/index.html #}
-<script src="/vf-core/search_index.js"></script>
+{%- if context %}
+  {% set search_client_prompt = context.search_client_prompt %}
+  {% set search_client_action = context.search_client_action %}
+  {% set search_client_results = context.search_client_results %}
+  {% set search_client_button = context.search_client_button %}
+  {% set search_client_button_text = context.search_client_button_text %}
+  {% set search_client_script = context.search_client_script %}
+
+
+  {% set id = context.id %}
+  {% set modifiers = context.modifiers %}
+  {% set override_class = context.override_class %}
+{% endif -%}
 
 <div class="vf-grid">
-  <form action="/vf-core/components/vf-search-client-side/" method="GET" class="vf-form | vf-search vf-search--inline">
+  <form action="{{ search_client_action }}" method="GET" class="vf-form | vf-search vf-search--inline">
     <div class="vf-form__item | vf-search__item">
-      <input type="search" id="search" placeholder="Enter a search query" name="search_query" class="vf-form__input | vf-search__input" data-vf-search-client-side-input>
+      <input type="search" id="search" placeholder="{{ search_client_prompt }}" name="search_query" class="vf-form__input | vf-search__input" data-vf-search-client-side-input>
     </div>
+    {%- if search_client_button -%}
     <button type="submit" class="vf-search__button | vf-button vf-button--primary">
-      Search
+      {{ search_client_button_text }}
     </button>
+    {%- endif -%}
   </form>
 </div>
 
+{%- if search_client_results %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.js"></script>
+{#- https://lunrjs.com/docs/index.html -#}
+<script src="{{ search_client_script }}"></script>
 <div class="vf-search-client-side vf-grid | vf-content">
   <div class="results-container" data-vf-search-client-side-results>
     Loading...
@@ -24,4 +40,4 @@
     vfSearchClientSide();
   };
 </script>
-
+{% endif -%}
