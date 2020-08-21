@@ -1,3 +1,7 @@
+### 2.0.2
+
+- fixes layout issue so a logo will take the space it needs.
+
 ### 2.0.1
 
 - add support for backwards compatibility with .vf-global-header 1.x's vf-global-header__inner
