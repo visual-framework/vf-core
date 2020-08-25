@@ -1,3 +1,7 @@
+### 1.0.2
+
+* move vf-component-generator gulp tasks into this project
+
 ### 1.0.1
 
 - changes the changelog template

@@ -1,3 +1,7 @@
+### 2.2.3
+
+* move vf-component-generator gulp tasks into the vf-component-generator
+
 ### 2.2.2
 
 * adds `gulp vf-component-assets:everything` task

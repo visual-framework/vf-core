@@ -1,5 +1,4 @@
-[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/EMBL/EMBL-Visual-Framework)
-
+[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-core.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-core) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/EMBL/EMBL-Visual-Framework)
 
 **👋 Downloading or cloning this repo? 🛑**
 
