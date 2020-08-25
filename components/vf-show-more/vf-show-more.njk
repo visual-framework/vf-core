@@ -1,0 +1,51 @@
+{# Make sure any variables are listed inside the following if statement #}
+{% if context %}
+  {# {% set vf-show-more = context.vf-show-more %} #}
+{% endif %}
+
+{# You can do Nunjucks logic in your templates that references the .yml settings
+   What's Nunjucks: https://mozilla.github.io/nunjucks/templating.html #}
+{#
+{% if item.image == "blank" %}
+  <span><!-- no image --></span>
+  {% else %}
+  {{ item.image }}
+{% endif %}
+#}
+
+<section data-vf-show-more-target class="vf-show-more | vf-card-container">
+  <div class="vf-card-container__inner">
+    <div class="vf-section-header">
+      <h2 class="vf-section-header__heading">Topics</h2>
+    </div>
+
+    {% set items = [
+      { title: "foo", id: 1 },
+      { title: "foo", id: 2 },
+      { title: "foo", id: 3 },
+      { title: "foo", id: 4 },
+      { title: "foo", id: 5 },
+      { title: "foo", id: 6 },
+      { title: "foo", id: 7 },
+      { title: "foo", id: 8 },
+      { title: "foo", id: 9 },
+      { title: "foo", id: 10 },
+      { title: "foo", id: 11 },
+      { title: "foo", id: 12 }
+      ]
+    %}
+    {% for item in items %}
+        {% render '@vf-box--easy', {
+          "box": {
+            "box_href": "JavaScript:Void(0);",
+            "box_heading": item.title,
+            "box_text": "I'm item number " + item.id,
+            "box_modifier": "vf-box--easy vf-show-more--item"
+          }
+        } %}
+    {% endfor %}
+
+    <button class="vf-button vf-button--primary vf-button--sm | vf-show-more--button" data-vf-show-more-button>Show more</button>
+    <button class="vf-button vf-button--primary vf-button--sm | vf-show-more--button-less" data-vf-show-more-button-less>Show less</button>
+  </div>
+</section>
