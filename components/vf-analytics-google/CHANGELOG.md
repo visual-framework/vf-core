@@ -1,3 +1,12 @@
+### 1.0.0-rc.1
+
+- https://github.com/visual-framework/vf-core/issues/1059
+- extend scope to more than "a" tags
+- better detect areas where the event is fired
+- capture events that ignore "Click" events
+- captures more file types (txt,fasta)
+
+
 ### 1.0.0-alpha.1
 
 - https://github.com/visual-framework/vf-core/issues/963
