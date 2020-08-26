@@ -193,6 +193,12 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
   if (customEventName.length > 0) {
     linkName = customEventName;
   } else { // then derive a value
+
+    // Fix for when tags have undefined .innerText
+    if (typeof actedOnItem.innerText === 'undefined') {
+      actedOnItem.innerText = '';
+    }
+
     linkName = actedOnItem.innerText;
     console.log('linkName',linkName);
 
@@ -225,7 +231,7 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
 
     // Track file type (PDF, DOC, etc) or if mailto
     // adapted from https://www.blastanalytics.com/blog/how-to-track-downloads-in-google-analytics
-    var filetypes = /\.(zip|exe|pdf|doc*|xls*|ppt*|mp3)$/i;
+    var filetypes = /\.(zip|exe|pdf|doc*|xls*|ppt*|mp3|txt|fasta)$/i;
     var baseHref = '';
     var href = actedOnItem.href;
     if (href && href.match(/^mailto\:/i)) {
