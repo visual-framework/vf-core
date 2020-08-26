@@ -1,3 +1,7 @@
+### 1.1.0
+
+- Adds some basic layout (width) tokens
+
 ### 1.0.5
 
 - Updates the z-index to separate any banner or hero from banner

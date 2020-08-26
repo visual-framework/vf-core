@@ -11,17 +11,6 @@
  * Location: components/vf-componenet-rollup
  * VF Core version in use: 2.2.0-alpha.4
  */
-:root {
-  --page-grid-gap: 16px;
-  --embl-grid-module--prime: 200px;
-  --embl-grid-spacing-normaliser: 6px;
-}
-@media (min-width: 1200px) {
-  :root {
-    --page-grid-gap: 30px;
-  }
-}
-
 /* stylelint-disable */
 :root {
   --vf-color--green: #18974c;
@@ -65,6 +54,18 @@
 }
 
 /* stylelint-enable */
+:root {
+  --vf-body-width: 81.25em;
+  --page-grid-gap: 1em;
+  --embl-grid-module--prime: 200px;
+  --embl-grid-spacing-normaliser: 6px;
+}
+@media (min-width: 75em) {
+  :root {
+    --page-grid-gap: 2em;
+  }
+}
+
 /* All Visual Framework Font components */
 /*!
  * Component: @visual-framework/vf-font-plex-mono
@@ -194,7 +195,8 @@
   margin: 0 0 0 0;
 }
 
-html, button {
+html,
+button {
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
 }
 
@@ -503,6 +505,31 @@ html, button {
 
 /* All Visual Framework grids */
 /*!
+ * Component: @visual-framework/vf-body
+ * Version: 2.0.0
+ * Location: components/vf-body
+ */
+/* The Body
+ * -------------- // --------------
+ *
+ * All content except for a few design patterns are tied into a layout with a maximum
+ * width of 1300px. We center the `body` element to create a simple 3 column
+ * layout with the central grid set to a maximum of 81.25em (1300px).
+ *
+ */
+html {
+  margin: 0;
+}
+
+.vf-body {
+  display: block;
+  margin: 0 auto;
+  max-width: 81.25em;
+  max-width: var(--vf-body-width, 81.25em);
+  padding: 0 1em;
+}
+
+/*!
  * Component: @visual-framework/vf-grid
  * Version: 1.1.0
  * Location: components/vf-grid
@@ -743,34 +770,6 @@ html, button {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-/*!
- * Component: @visual-framework/vf-grid-page
- * Version: 2.0.0
- * Location: components/vf-grid-page
- */
-/* The Page Grid
- * -------------- // --------------
- *
- * All content except for a few design patterns are tied into a grid with a maximum
- * width of 1300px. We use CSS grid layout on the `body` element to set a simple
- * 3 column grid with the central grid set to a maximum of 81.25em (1300px).
- *
- * Because we are supporting IE11 we also need to include a similar page layout.
- * We initially set up the page layout without using CSS grid layout and make use
- * of `@supports` to invoke CSS grid layout on browsers that support it.
- *
- */
-html {
-  margin: 0;
-}
-
-.vf-body {
-  display: block;
-  margin: 0 auto;
-  max-width: 76.5em;
-  padding: 0 1em;
 }
 
 /*!
