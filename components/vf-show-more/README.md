@@ -6,7 +6,7 @@
 
 - `data-vf-js-show-more` The containing element, does not have to be a direct parent
 - `data-vf-js-show-more-pager-size=3` The number of items to show on first page load
-- `class="vf-show-more--item"` Items to be shown hidden (display done with CSS)
+- `class="vf-show-more__item"` Items to be shown hidden (display done with CSS)
 - `data-vf-js-show-more-button` The button to show more
 - `data-vf-js-show-more-button-less` The button to show less, optional
 
@@ -16,12 +16,12 @@ A condensed example.
 
 ```html
 <section data-vf-js-show-more data-vf-js-show-more-pager-size="3" class="vf-show-more">
-  <a href="#" class="vf-box | vf-show-more--item">
+  <a href="#" class="vf-box | vf-show-more__item">
     <p class="vf-box__text">I'm item number 1</p>
   </a>
 
-  <button class="vf-button | vf-show-more--button" data-vf-js-show-more-button>Show more</button>
-  <button class="vf-button | vf-show-more--button-less" data-vf-js-show-more-button-less>Show less</button>
+  <button class="vf-button | vf-show-more__button" data-vf-js-show-more-button>Show more</button>
+  <button class="vf-button | vf-show-more__button-less" data-vf-js-show-more-button-less>Show less</button>
 </section>
 ```
 
