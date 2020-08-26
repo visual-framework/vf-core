@@ -138,15 +138,21 @@ function vfGaLinkTrackingInit() {
   //   analyticsTrackInteraction(e.target,'Manually tracked area');
   // });
 
-  document.body.onclick = function(e){
-    e = e || event;
-    var from = findParent('a',e.target || e.srcElement);
-    if (from){
+  document.body.addEventListener("mousedown", function (evt) {
+    // send GA events if GA closest area is detected
+    let closestContainer = getClosestGa(evt.target, '[data-vf-google-anlaytics-region]');
+    if (closestContainer) {
+      analyticsTrackInteraction(evt.target);
+    } else {
+      var from = findParent('a',evt.target || evt.srcElement);
+      if (from) {
        /* it's a link, actions here */
-       console.log('click',from);
+       // console.log('clicked from findParent: ',from);
        analyticsTrackInteraction(from);
+      }
     }
-  }
+  }, false );
+
   //find first parent with tagName [tagname]
   function findParent(tagname,el){
     while (el){
@@ -158,6 +164,36 @@ function vfGaLinkTrackingInit() {
     return null;
   }
 }
+
+/*
+* Find closest element that has GA attribute
+* @returns {el} the closest element with GA attribute
+*/
+function getClosestGa(elem, selector) {
+
+  // Element.matches() polyfill
+	if (!Element.prototype.matches) {
+	    Element.prototype.matches =
+	        Element.prototype.matchesSelector ||
+	        Element.prototype.mozMatchesSelector ||
+	        Element.prototype.msMatchesSelector ||
+	        Element.prototype.oMatchesSelector ||
+	        Element.prototype.webkitMatchesSelector ||
+	        function(s) {
+	            var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+	                i = matches.length;
+	            while (--i >= 0 && matches.item(i) !== this) {}
+	            return i > -1;
+	        };
+	}
+
+	// Get the closest matching element
+	for ( ; elem && elem !== document; elem = elem.parentNode ) {
+		if ( elem.matches( selector ) ) return elem;
+	}
+	return null;
+
+};
 
 /**
  * Utility method to get the last in an array
