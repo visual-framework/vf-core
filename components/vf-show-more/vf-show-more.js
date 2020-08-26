@@ -3,7 +3,7 @@
 /**
  * Finds show more containers `data-vf-js-show-more`
  * Finds all "show" buttons on a page and activates them `data-vf-js-show-more-button`
- * Also find options "show less" buttons `data-vf-js-show-more-button-less`
+ * Also find options "show less" buttons `data-vf-js-show-more-button--less`
  * Receives number of items to show `data-vf-js-show-more-pager-size`
  * Will add an `.is-active` to the targetList, the display is left to the CSS
  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
@@ -13,7 +13,7 @@ function vfShowMore(scope) {
   var scope = scope || document;
   // Get relevant elements and collections
   var buttonList = scope.querySelectorAll('[data-vf-js-show-more-button]');
-  var buttonHideList = scope.querySelectorAll('[data-vf-js-show-more-button-less]');
+  var buttonHideList = scope.querySelectorAll('[data-vf-js-show-more-button--less]');
   var targetList = scope.querySelectorAll('[data-vf-js-show-more]');
   var pagerSize = scope.querySelectorAll('[data-vf-js-show-more-pager-size]');
   if (!buttonList || !targetList) {
