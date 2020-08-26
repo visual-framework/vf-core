@@ -24,7 +24,9 @@
 // Animation
 // Hiding CSS is added in JS
 .vf-show-more__item {
-  animation: scale-up-top .1s cubic-bezier(.39, .575, .565, 1) both;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: scale-up-top .1s cubic-bezier(.39, .575, .565, 1) both;
+  }
 }
 
 // Only "show more" button if not yet clicked
