@@ -33,11 +33,13 @@ function vfShowMore(scope) {
     // https://stackoverflow.com/questions/707565/how-do-you-add-css-with-javascript
     var sheet = document.createElement('style');
     sheet.classList.add('vf-show-more--dynamic-styling');
+
+    //@todo: this should be scoped to the parent element
     sheet.innerHTML = "/* Show/hide items beyond the specified ammount */ \n"
-    + ".vf-show-more .vf-show-more--item {\n"
+    + ".vf-show-more--item {\n"
     + "  display: none;\n"
     + "}\n"
-    + ".vf-show-more .vf-show-more--item:nth-child(-n+"+itemsToShow+") {\n"
+    + ".vf-show-more--item:nth-child(-n+"+itemsToShow+") {\n"
     + "  display: unset;\n"
     + "}\n"
     + ".vf-show-more.is-active .vf-show-more--item:nth-child(n+"+itemsToShow+") {\n"
