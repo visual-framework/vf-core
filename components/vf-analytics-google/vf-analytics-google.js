@@ -42,7 +42,7 @@ function vfGaIndicateLoaded(numberOfGaChecksLimit,numberOfGaChecks,checkTimeout)
   var el = document.querySelector('body');
 
   // debug
-  console.log('checking',numberOfGaChecks,numberOfGaChecksLimit)
+  // console.log('checking',numberOfGaChecks,numberOfGaChecksLimit)
 
   numberOfGaChecks++;
 
@@ -274,7 +274,7 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
     // conditional logging
     let conditionalLoggingCheck = document.querySelector('body');
     // debug: always turn on verbose analytics
-    conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
+    // conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
     if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
       console.log('%c Verbose analytics on ', 'color: #FFF; background: #111; font-size: .75rem;');
       console.log('clicked on: %o ',actedOnItem);
