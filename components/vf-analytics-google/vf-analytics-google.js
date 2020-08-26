@@ -172,20 +172,11 @@ function vfGaLinkTrackingInit() {
 function getClosestGa(elem, selector) {
 
   // Element.matches() polyfill
-	if (!Element.prototype.matches) {
-	    Element.prototype.matches =
-	        Element.prototype.matchesSelector ||
-	        Element.prototype.mozMatchesSelector ||
-	        Element.prototype.msMatchesSelector ||
-	        Element.prototype.oMatchesSelector ||
-	        Element.prototype.webkitMatchesSelector ||
-	        function(s) {
-	            var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-	                i = matches.length;
-	            while (--i >= 0 && matches.item(i) !== this) {}
-	            return i > -1;
-	        };
-	}
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
+  if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector ||
+                                Element.prototype.webkitMatchesSelector;
+  }
 
 	// Get the closest matching element
 	for ( ; elem && elem !== document; elem = elem.parentNode ) {
