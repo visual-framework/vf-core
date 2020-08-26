@@ -4,8 +4,6 @@
 
 ## Usage
 
-This is designed to work with client-side pre-loaded HTML.
-
 - `data-vf-js-show-more` The containing element, does not have to be a direct parent
 - `data-vf-js-show-more-pager-size=3` The number of items to show on first page load
 - `class="vf-show-more--item"` Items to be shown hidden (display done with CSS)
@@ -27,10 +25,10 @@ A condensed example.
 </section>
 ```
 
-
 ## Future development
 
 - Pager support
+- Currently designed to work with pre-loaded HTML. It should be possible to use it with lazy-loaded HTML with a few considerations.
 
 ## Install
 
