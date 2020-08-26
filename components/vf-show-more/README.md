@@ -4,7 +4,33 @@
 
 ## Usage
 
-The dos and don'ts of using this component.
+This is designed to work with client-side pre-loaded HTML.
+
+- `data-vf-js-show-more` The containing element, does not have to be a direct parent
+- `data-vf-js-show-more-pager-size=3` The number of items to show on first page load
+- `class="vf-show-more--item"` Items to be shown hidden (display done with CSS)
+- `data-vf-js-show-more-button` The button to show more
+- `data-vf-js-show-more-button-less` The button to show less, optional
+
+### An overview of the HTML strcuture
+
+A condensed example.
+
+```html
+<section data-vf-js-show-more data-vf-js-show-more-pager-size="3" class="vf-show-more">
+  <a href="#" class="vf-box | vf-show-more--item">
+    <p class="vf-box__text">I'm item number 1</p>
+  </a>
+
+  <button class="vf-button | vf-show-more--button" data-vf-js-show-more-button>Show more</button>
+  <button class="vf-button | vf-show-more--button-less" data-vf-js-show-more-button-less>Show less</button>
+</section>
+```
+
+
+## Future development
+
+- Pager support
 
 ## Install
 
@@ -15,8 +41,6 @@ $ yarn add --dev @visual-framework/vf-show-more
 ```
 
 ## JS
-
-If your component uses JS:
 
 You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 

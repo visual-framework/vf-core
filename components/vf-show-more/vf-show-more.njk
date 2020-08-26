@@ -13,12 +13,12 @@
 {% endif %}
 #}
 
-<section data-vf-show-more-target class="vf-show-more | vf-card-container">
-  <div class="vf-card-container__inner">
-    <div class="vf-section-header">
-      <h2 class="vf-section-header__heading">Topics</h2>
-    </div>
+<section data-vf-js-show-more data-vf-js-show-more-pager-size="3" class="vf-show-more">
+  {% render '@vf-section-header--default', {
+    "section_title": "Show more demo"
+  } %}
 
+  <div class="vf-grid vf-grid__col-3">
     {% set items = [
       { title: "foo", id: 1 },
       { title: "foo", id: 2 },
@@ -28,24 +28,21 @@
       { title: "foo", id: 6 },
       { title: "foo", id: 7 },
       { title: "foo", id: 8 },
-      { title: "foo", id: 9 },
-      { title: "foo", id: 10 },
-      { title: "foo", id: 11 },
-      { title: "foo", id: 12 }
+      { title: "foo", id: 9 }
       ]
     %}
     {% for item in items %}
-        {% render '@vf-box--easy', {
-          "box": {
-            "box_href": "JavaScript:Void(0);",
-            "box_heading": item.title,
-            "box_text": "I'm item number " + item.id,
-            "box_modifier": "vf-box--easy vf-show-more--item"
-          }
-        } %}
+      {% render '@vf-box--easy', {
+        "box": {
+          "box_href": "JavaScript:Void(0);",
+          "box_heading": item.title,
+          "box_text": "I'm item number " + item.id,
+          "box_modifier": "vf-box--easy vf-show-more--item"
+        }
+      } %}
     {% endfor %}
-
-    <button class="vf-button vf-button--primary vf-button--sm | vf-show-more--button" data-vf-show-more-button>Show more</button>
-    <button class="vf-button vf-button--primary vf-button--sm | vf-show-more--button-less" data-vf-show-more-button-less>Show less</button>
   </div>
+
+  <button class="vf-button vf-button--primary vf-button--sm | vf-show-more--button" data-vf-js-show-more-button>Show more</button>
+  <button class="vf-button vf-button--primary vf-button--sm | vf-show-more--button-less" data-vf-js-show-more-button-less>Show less</button>
 </section>

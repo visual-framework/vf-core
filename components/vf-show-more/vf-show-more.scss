@@ -21,19 +21,14 @@
 // You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
 // @import 'vf-show-more/vf-show-more.scss';
 
-// Show/hide topic cards beyond the 6th
-.vf-show-more .vf-show-more--item:nth-child(n+8) {
-  display: none;
-
+// Animation
+// Hiding CSS is added in JS
+.vf-show-more .vf-show-more--item {
   -webkit-animation: scale-up-top 0.1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   animation: scale-up-top 0.1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
-.vf-show-more.is-active .vf-show-more--item:nth-child(n+8) {
-  display: block; //fallback
-  display: unset;
-}
-
+// Only "show more" button if not yet clicked
 .vf-show-more.is-active .vf-show-more--button {
   display: none;
 }

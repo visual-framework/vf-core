@@ -1,8 +1,10 @@
 // vf-show-more
 
 /**
- * Finds all "show" buttons on a page and activates them
- * Also find options "show less" buttons
+ * Finds show more containers `data-vf-js-show-more`
+ * Finds all "show" buttons on a page and activates them `data-vf-js-show-more-button`
+ * Also find options "show less" buttons `data-vf-js-show-more-button-less`
+ * Receives number of items to show `data-vf-js-show-more-pager-size`
  * Will add an `.is-active` to the targetList, the display is left to the CSS
  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  * @example vfShowMore(document.querySelectorAll('.vf-component__container')[0]);
@@ -10,9 +12,10 @@
 function vfShowMore(scope) {
   var scope = scope || document;
   // Get relevant elements and collections
-  var buttonList = scope.querySelectorAll('[data-vf-show-more-button]');
-  var buttonHideList = scope.querySelectorAll('[data-vf-show-more-button-less]');
-  var targetList = scope.querySelectorAll('[data-vf-show-more-target]');
+  var buttonList = scope.querySelectorAll('[data-vf-js-show-more-button]');
+  var buttonHideList = scope.querySelectorAll('[data-vf-js-show-more-button-less]');
+  var targetList = scope.querySelectorAll('[data-vf-js-show-more]');
+  var pagerSize = scope.querySelectorAll('[data-vf-js-show-more-pager-size]');
   if (!buttonList || !targetList) {
     // exit: either buttons or target content not found
     return;
@@ -22,10 +25,33 @@ function vfShowMore(scope) {
     return;
   }
 
+  // initialise
+  targetList.forEach(targetContent => {
+    let itemsToShow = Math.round(targetContent.dataset.vfJsShowMorePagerSize);
+
+    // generate the appropriate style to show
+    // https://stackoverflow.com/questions/707565/how-do-you-add-css-with-javascript
+    var sheet = document.createElement('style');
+    sheet.classList.add('vf-show-more--dynamic-styling');
+    sheet.innerHTML = "/* Show/hide items beyond the specified ammount */ \n"
+    + ".vf-show-more .vf-show-more--item {\n"
+    + "  display: none;\n"
+    + "}\n"
+    + ".vf-show-more .vf-show-more--item:nth-child(-n+"+itemsToShow+") {\n"
+    + "  display: unset;\n"
+    + "}\n"
+    + ".vf-show-more.is-active .vf-show-more--item:nth-child(n+"+itemsToShow+") {\n"
+    + "  display: block; //fallback\n"
+    + "  display: unset;\n"
+    + "}\n";
+
+    targetContent.appendChild(sheet);
+  });
+
   // The showing function
   var showIt = function showIt(targetContent) {
     // get the parent ul of the clicked tab
-    targetContent = targetContent.closest('[data-vf-show-more-target]');
+    targetContent = targetContent.closest('[data-vf-js-show-more]');
 
     targetContent.focus();
     // Make the active tab focusable by the user (Tab key)
@@ -38,7 +64,7 @@ function vfShowMore(scope) {
   // The hiding function
   var hideIt = function hideIt(targetContent) {
     // get the parent ul of the clicked tab
-    targetContent = targetContent.closest('[data-vf-show-more-target]');
+    targetContent = targetContent.closest('[data-vf-js-show-more]');
 
     targetContent.focus();
     // Make the active tab focusable by the user (Tab key)
