@@ -1,6 +1,8 @@
 ### 1.0.0-rc.1
 
 * https://github.com/visual-framework/vf-core/issues/1059
+* fixes typo `data-vf-google-analytics-region` to `data-vf-google-anlaytics-region`
+  * 🚨 this may be breaking for some users of alpha.1
 * extend scope to more than "a" tags
 * better detect areas where the event is fired
 * capture events that ignore "Click" events

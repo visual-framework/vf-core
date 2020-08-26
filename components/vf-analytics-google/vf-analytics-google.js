@@ -42,7 +42,7 @@ function vfGaIndicateLoaded(numberOfGaChecksLimit,numberOfGaChecks,checkTimeout)
   var el = document.querySelector('body');
 
   // debug
-  // console.log('checking',numberOfGaChecks,numberOfGaChecksLimit)
+  console.log('checking',numberOfGaChecks,numberOfGaChecksLimit)
 
   numberOfGaChecks++;
 
@@ -140,7 +140,7 @@ function vfGaLinkTrackingInit() {
 
   document.body.addEventListener("mousedown", function (evt) {
     // send GA events if GA closest area is detected
-    let closestContainer = getClosestGa(evt.target, '[data-vf-google-anlaytics-region]');
+    let closestContainer = getClosestGa(evt.target, '[data-vf-google-analytics-region]');
     if (closestContainer) {
       analyticsTrackInteraction(evt.target);
     } else {
@@ -166,24 +166,21 @@ function vfGaLinkTrackingInit() {
 }
 
 /*
-* Find closest element that has GA attribute
-* @returns {el} the closest element with GA attribute
-*/
+ * Find closest element that has GA attribute
+ * @returns {el} the closest element with GA attribute
+ */
 function getClosestGa(elem, selector) {
-
   // Element.matches() polyfill
   // https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
   if (!Element.prototype.matches) {
-    Element.prototype.matches = Element.prototype.msMatchesSelector ||
-                                Element.prototype.webkitMatchesSelector;
+    Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
   }
 
 	// Get the closest matching element
 	for ( ; elem && elem !== document; elem = elem.parentNode ) {
 		if ( elem.matches( selector ) ) return elem;
-	}
+  }
 	return null;
-
 };
 
 /**
@@ -241,10 +238,10 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
 
   // Get closest parent container
   // Track the region of the link clicked (global nav, masthead, hero, main content, footer, etc)
-  //data-vf-google-anlaytics-region="main-content-area-OR-SOME-OTHER-NAME"
-  let parentContainer = actedOnItem.closest("[data-vf-google-anlaytics-region]");
+  //data-vf-google-analytics-region="main-content-area-OR-SOME-OTHER-NAME"
+  let parentContainer = actedOnItem.closest("[data-vf-google-analytics-region]");
   if (parentContainer) {
-    parentContainer = parentContainer.dataset.vfGoogleAnlayticsRegion;
+    parentContainer = parentContainer.dataset.vfGoogleAnalyticsRegion;
   } else {
     parentContainer = 'No container specified';
   }
@@ -276,8 +273,8 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
 
     // conditional logging
     let conditionalLoggingCheck = document.querySelector('body');
-    // debug: always turn on verbos analytics
-    // conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
+    // debug: always turn on verbose analytics
+    conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
     if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
       console.log('%c Verbose analytics on ', 'color: #FFF; background: #111; font-size: .75rem;');
       console.log('clicked on: %o ',actedOnItem);
