@@ -3,16 +3,6 @@
   {# {% set vf-show-more = context.vf-show-more %} #}
 {% endif %}
 
-{# You can do Nunjucks logic in your templates that references the .yml settings
-   What's Nunjucks: https://mozilla.github.io/nunjucks/templating.html #}
-{#
-{% if item.image == "blank" %}
-  <span><!-- no image --></span>
-  {% else %}
-  {{ item.image }}
-{% endif %}
-#}
-
 <section data-vf-js-show-more data-vf-js-show-more-pager-size="3" class="vf-show-more">
   {% render '@vf-section-header--default', {
     "section_title": "Show more demo"
@@ -37,12 +27,12 @@
           "box_href": "JavaScript:Void(0);",
           "box_heading": item.title,
           "box_text": "I'm item number " + item.id,
-          "box_modifier": "vf-box--easy vf-show-more--item"
+          "box_modifier": "vf-box--easy | vf-show-more__item"
         }
       } %}
     {% endfor %}
   </div>
 
-  <button class="vf-button vf-button--primary vf-button--sm | vf-show-more--button" data-vf-js-show-more-button>Show more</button>
-  <button class="vf-button vf-button--primary vf-button--sm | vf-show-more--button-less" data-vf-js-show-more-button-less>Show less</button>
+  <button class="vf-button vf-button--primary vf-button--sm | vf-show-more__button" data-vf-js-show-more-button>Show more</button>
+  <button class="vf-button vf-button--primary vf-button--sm | vf-show-more__button-less" data-vf-js-show-more-button-less>Show less</button>
 </section>
