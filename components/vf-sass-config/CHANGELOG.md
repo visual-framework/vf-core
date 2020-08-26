@@ -1,3 +1,8 @@
+### 1.3.0
+
+- adds a width css custom property for `vf-body` component.
+- reorganises the order variables are used.
+
 ### 1.2.0
 
 - creates mixin for grid column and row gap

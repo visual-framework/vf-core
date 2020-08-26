@@ -1,3 +1,7 @@
+### 3.0.0
+
+- Deprecated for `vf-body` component
+
 ### 2.0.0
 
 - removes the CSS grid that generated a central column for content, now it's working across all browsers with less code.
