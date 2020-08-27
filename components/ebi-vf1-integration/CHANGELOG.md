@@ -1,3 +1,7 @@
+### 1.0.2
+
+- updates max-width of component
+
 ### 1.0.1
 
 - vf-divider needs to be able go full width

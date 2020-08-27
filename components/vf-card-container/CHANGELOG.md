@@ -1,3 +1,7 @@
+### 3.0.1
+
+- updates max-width of component
+
 ### 3.0.0-alpha.1
 
 - makes `vf-section-header` work as a subcomponent.

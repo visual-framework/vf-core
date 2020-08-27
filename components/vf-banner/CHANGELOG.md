@@ -1,3 +1,7 @@
+### 1.2.2
+
+- updates max-width of component
+
 ### 1.2.1
 
 - Adds !default to all Sass variables for easier overrideing
