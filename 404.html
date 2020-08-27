@@ -42,41 +42,55 @@ class="vf-logo | vf-logo--has-text">
 
     </header>
     
-    
-    <nav class="vf-breadcrumbs | vf-search-client-side--no-index" aria-label="Breadcrumb">
-      <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
-        <li class="vf-breadcrumbs__item">
-          <a href="/vf-core/" class="vf-breadcrumbs__link">Visual Framework 2.0</a>
-        </li>
-        
-        
-          
-          <li class="vf-breadcrumbs__item">
-            <a href="." class="vf-breadcrumbs__link"></a>
-          </li>
-        
-        
-        
-        
-        <li class="vf-breadcrumbs__item">
-          
-            404
-          
-        </li>
-      </ul>
-    </nav>
-    
 
     
 <section class="vf-intro | embl-grid embl-grid--has-centered-content">
 <div><!-- empty --></div>
 <div>
-  <h1 class="vf-intro__heading vf-intro__heading--has-tag">404 <a href="#" class="vf-badge vf-badge--primary vf-badge--phases">beta</a></h1>
+  <h1 class="vf-intro__heading">404</h1>
   <p class="vf-lede">Unfortunately we couldn't find that page.</p>
 
-  
+  <p class="vf-intro__text">You can see search results for it below.</p>
 </div>
 </section>
+
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div><!-- empty --></div>
+<div class="">
+
+<div class="vf-grid">
+  <form action="/vf-core/search/" method="GET" class="vf-form | vf-search vf-search--inline">
+    <div class="vf-form__item | vf-search__item">
+      <input type="search" id="search" placeholder="Search components and documentation" name="search_query" class="vf-form__input | vf-search__input" data-vf-search-client-side-input>
+    </div><button type="submit" class="vf-search__button | vf-button vf-button--primary">
+      Search
+    </button></form>
+</div><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.js"></script><script src="/vf-core/search_index.js"></script>
+<div class="vf-search-client-side vf-grid | vf-content">
+  <div class="results-container" data-vf-search-client-side-results>
+    Loading...
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    vfSearchClientSide();
+  };
+</script>
+
+
+</div>
+</section>
+
+
+
+
+<script>
+  // pre-populate the search with the query string
+  var truncatedUrl = window.location.pathname.replace('/vf-core/','').replace('.html','').replace('components/detail/','').replace('/',' ');
+  document.getElementById('search').value = truncatedUrl;
+</script>
 
     
 
