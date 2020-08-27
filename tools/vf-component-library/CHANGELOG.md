@@ -1,3 +1,8 @@
+### 1.0.3
+
+* run `vf-component-assets:everything` on local dev
+* remove reference to removed `/css/app.css`
+
 ### 1.0.2
 
 * Add 404
