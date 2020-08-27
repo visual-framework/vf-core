@@ -1,5 +1,6 @@
 ---
 title: 404
+is_index: true
 subtitle: Tailored for life science websites
 date: 2018-08-22 12:24:50
 layout: layouts/base.njk
@@ -9,9 +10,34 @@ permalink: 404.html
 <section class="vf-intro | embl-grid embl-grid--has-centered-content">
 <div><!-- empty --></div>
 <div>
-  <h1 class="vf-intro__heading vf-intro__heading--has-tag">{{ title }} <a href="#" class="vf-badge vf-badge--primary vf-badge--phases">beta</a></h1>
+  <h1 class="vf-intro__heading">{{ title }}</h1>
   <p class="vf-lede">Unfortunately we couldn't find that page.</p>
 
-  {# <p class="vf-intro__text">The Visual Framework (VF) is designed with the <a href="https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability" class="vf-link">needs of life science websites and services</a>. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfere with your existing components that use Bootstrap, Angular, or something else.</p> #}
+  <p class="vf-intro__text">You can see search results for it below.</p>
 </div>
 </section>
+
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div><!-- empty --></div>
+<div class="">
+
+{% render '@vf-search-client-side--default', {
+  "search_client_prompt": "Search components and documentation",
+  "search_client_button": true,
+  "search_client_button_text": "Search",
+  "search_client_action": "/vf-core/search/",
+  "search_client_results": true
+} %}
+
+</div>
+</section>
+
+
+
+
+<script>
+  // pre-populate the search with the query string
+  var truncatedUrl = window.location.pathname.replace('/vf-core/','').replace('.html','').replace('components/detail/','').replace('/',' ');
+  document.getElementById('search').value = truncatedUrl;
+</script>
