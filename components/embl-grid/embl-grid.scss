@@ -11,12 +11,10 @@
 
 
 .embl-grid {
-  grid-column: main;
   margin-bottom: 48px;
 
   & > :first-child {
     grid-column: 1 / -1;
-    margin-right: var(--embl-grid-spacing-normaliser);
 
     @media (min-width: 846px) {
       grid-column: span 1;
@@ -28,30 +26,26 @@
       grid-column: 1 / -1;
     }
   }
+
   @media (min-width: $vf-breakpoint--sm) {
-    column-gap: var(--page-grid-gap);
-    display: grid;
-    /* stylelint-disable declaration-colon-space-after */
-    grid-template-columns:
-      calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
+    --embl-grid:
+      var(--embl-grid-module--prime)
       [main-start]
-      repeat(auto-fit, minmax(288px, 1fr))
-      [main-end]
-    ;
-    /* stylelint-enable */
+      repeat(auto-fit, minmax(18.75em, 1fr))
+      [main-end];
+
+    display: grid;
+    gap: var(--page-grid-gap);
+    grid-template-columns: var(--embl-grid);
   }
 
 }
 
 .embl-grid--has-centered-content {
-  --embl-grid-spacing-normaliser: 0; // removes margin from first child
-  --page-grid-gap: 0; //
 
   @media (min-width: $vf-breakpoint--lg) {
-    --page-grid-gap: 36px;
-
     /* stylelint-disable declaration-colon-space-after */
-    grid-template-columns:
+    --embl-grid:
       var(--embl-grid-module--prime)
       auto
       var(--embl-grid-module--prime)
@@ -62,21 +56,20 @@
 
 .embl-grid--has-sidebar {
 
-  & > *:nth-child(3n+2) {
-    grid-column: span 2;
-  }
-
   @media (max-width: 845px) {
     & > *:last-child {
       grid-column: 1 / -1;
     }
   }
-  @media (min-width: 846px) and (max-width: 1219px) {
+  @media (min-width: 846px) and (max-width: 1299px) {
     & > *:last-child {
       grid-column: 2 / -1;
     }
   }
-  @media (min-width: 1220px) {
+}
+
+.embl-grid-has-sidebar--hairline {
+  @media (min-width: 1300px) {
     & > *:last-child {
       position: relative;
     }
@@ -99,7 +92,7 @@
   /* stylelint-disable declaration-colon-space-after */
   grid-template-columns:
     minmax(1em, auto)
-    calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
+    var(--embl-grid-module--prime)
     minmax(288px, calc(76.5em - 206px))
     minmax(1em, auto)
   ;
