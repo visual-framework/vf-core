@@ -1,3 +1,7 @@
+### 1.0.5
+
+- updates max-width of component
+
 ### 1.0.4
 
 - The one where we make our CSS grid-gaps gaps

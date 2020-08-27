@@ -1,3 +1,7 @@
+### 1.0.3
+
+- updates max-width of component
+
 ### 1.0.2
 
 - Removes need for `.vf-body` on `.vf-footer`
