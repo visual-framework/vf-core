@@ -32,10 +32,7 @@ import { vfShowMore } from 'vf-show-more/vf-show-more';
 vfShowMore();
 
 import { vfLocationNearest } from 'vf-location-nearest/vf-location-nearest';
-let vfLocationNearestLocations = {
-  grenoble: "23, 23"
-}
-vfLocationNearest(vfLocationNearestLocations);
+// Not invoked by default
 
 // All EMBL JS
 import { emblContentHubLoaderHtmlImports } from 'embl-content-hub-loader/embl-content-hub-loader__html-imports';
