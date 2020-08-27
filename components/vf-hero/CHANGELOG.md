@@ -1,6 +1,10 @@
+### 1.4.6
+
+- updates max-width of component
+
 ### 1.4.5
 
-- adds an if statement for contextual data if applicable 
+- adds an if statement for contextual data if applicable
 
 ### 1.4.4
 
