@@ -17,30 +17,29 @@
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
 
-// Uncomment this boilerplate
 // // if you need to import any other components' JS to use here
 // import { vfOthercomponent } from 'vf-other-component/vf-other-component';
-//
-//  /**
-//   * The global function for this component
-//   * @example vfLocationNearest(firstPassedVar)
-//   * @param {string} [firstPassedVar]  - An option to be passed
-//   */
-// function vfLocationNearest(firstPassedVar) {
-//   firstPassedVar = firstPassedVar || 'defaultVal';
-//
-// }
-//
-// // If you need to invoke the component by default
-// vfcomponentName();
-//
-// // By default your component should be usable with js imports
-// export { vfLocationNearest };
-//
-// // You should also import it at ./components/vf-component-rollup/scripts.js
-// // import { vfLocationNearest } from 'vf-location-nearest/vf-location-nearest';
-// // Or import directly
-// // import { vfLocationNearest } from '../components/raw/vf-location-nearest/vf-location-nearest.js';
-// // And, if needed, invoke it
-// // vfLocationNearest();
+
+ /**
+  * The global function for this component
+  * @example vfLocationNearest(firstPassedVar)
+  * @param {string} [firstPassedVar]  - An option to be passed
+  */
+function vfLocationNearest(firstPassedVar) {
+  firstPassedVar = firstPassedVar || 'defaultVal';
+
+}
+
+// If you need to invoke the component by default
+// vfLocationNearest();
+
+// By default your component should be usable with js imports
+export { vfLocationNearest };
+
+// You should also import it at ./components/vf-component-rollup/scripts.js
+// import { vfLocationNearest } from 'vf-location-nearest/vf-location-nearest';
+// Or import directly
+// import { vfLocationNearest } from '../components/raw/vf-location-nearest/vf-location-nearest.js';
+// And, if needed, invoke it
+// vfLocationNearest();
 
