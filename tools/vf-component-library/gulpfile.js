@@ -34,6 +34,7 @@ gulp.task('dev', gulp.series(
   'vf-clean',
   gulp.parallel('vf-css','vf-scripts'),
   'vf-css:generate-component-css',
+  'vf-component-assets:everything',
   'fractal:development',
   'fractal',
   'eleventy:init',
