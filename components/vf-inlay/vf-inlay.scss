@@ -11,46 +11,12 @@
 
 @import 'vf-inlay.variables.scss';
 
-.vf-inlay {
-
-  display: grid;
-  grid-auto-rows: auto;
-  grid-gap: 0 32px;
-  /*stylelint-disable*/
-  grid-template-columns:
-    [inlay--full-start]
-      1fr
-    [inlay--full-end]
-  ;
-
-  &:last-of-type {
-    @include margin--block(bottom, $vf-inlay__spacing--bottom--narrow);
-
-    @media (min-width: 1024px) {
-      @include margin--block(bottom, $vf-inlay__spacing--bottom);
-    }
-  }
-
-  @media (min-width: $vf-breakpoint--lg) {
-    grid-row-gap: 32px;
-    grid-template-columns:
-      [inlay--full-start inlay--main-start]
-        1fr
-      [inlay--main-end inlay--sidebar-start]
-        minmax(auto, 21.25rem)
-      [inlay--sidebar-end inlay--full-end]
-    ;
-  }
-  /*stylelint-enable*/
-}
-
 .vf-inlay__content {
   grid-column: 1 / -1;
 
   .vf-inlay > & {
     display: grid;
-    grid-auto-rows: auto;
-    grid-gap: 0 32px;
+    grid-gap: var(--page-grid-gap);
     /*stylelint-disable*/
     grid-template-columns:
       [inlay--full-start]
@@ -59,12 +25,11 @@
     ;
 
     @media (min-width: $vf-breakpoint--lg) {
-      grid-row-gap: 32px;
       grid-template-columns:
         [inlay--full-start inlay--main-start]
           1fr
         [inlay--main-end inlay--sidebar-start]
-          minmax(auto, 21.25rem)
+          minmax(auto, var(--embl-grid-sidebar-width, 21.25rem)
         [inlay--sidebar-end inlay--full-end]
       ;
     }
