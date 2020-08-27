@@ -34,15 +34,39 @@ function vfLocationNearestIndicate(type) {
   }
 }
 
-
 /**
  * Use the browser location API to try to atuodetct location.
  */
 function vfLocationNearestDetect() {
-  console.log('vfLocationNearestDetect is to be implemented');
+  // console.log('vfLocationNearestDetect is to be implemented');
 
-  // if no match recturn false
-  return false;
+  // Via: https://developers.google.com/web/fundamentals/native-hardware/user-location#dont_keep_the_user_waiting_set_a_timeout
+  var startPos;
+  var geoOptions = {
+    enableHighAccuracy: false,
+    timeout: 10 * 1000
+  }
+
+  var geoSuccess = function(position) {
+    startPos = position;
+    console.log('success',startPos.coords)
+    return(startPos.coords);
+    // document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    // document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  var geoError = function(error) {
+    console.log('Error occurred. Error code: ' + error.code);
+    // error.code can be:
+    //   0: unknown error
+    //   1: permission denied
+    //   2: position unavailable (error response from location provider)
+    //   3: timed out
+    // if no match return false
+    return false;
+  };
+
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+
 }
 
 /**
