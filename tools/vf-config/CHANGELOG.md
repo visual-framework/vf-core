@@ -1,13 +1,11 @@
-# Change Log
+### 1.0.0-alpha.0
 
-## 1.0.0-alpha.0 (2020-01-28)
+- Version bump only for package @visual-framework/vf-config
 
-**Note:** Version bump only for package @visual-framework/vf-config
+### 0.0.3-alpha.0
 
-## 0.0.3-alpha.0 (2019-11-14)
+- Version bump only for package @visual-framework/vf-config
 
-**Note:** Version bump only for package @visual-framework/vf-config
+### 0.0.2-alpha.0
 
-## 0.0.2-alpha.0 (2019-10-28)
-
-**Note:** Initial release to be used with vf-core beta.5
+- Initial release to be used with vf-core beta.5

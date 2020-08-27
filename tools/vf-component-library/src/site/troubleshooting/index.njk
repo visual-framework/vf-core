@@ -1,0 +1,148 @@
+---
+title: Problems 🏚 😭
+subtitle: Troubleshooting tips for some frequent things that can go wrong.
+date: 2019-04-09 12:24:50
+tags:
+  - troubleshooting
+layout: layouts/base.njk
+templateEngineOverride: njk, md
+---
+
+<br/><br/>
+{% render '@vf-intro', {"vf_intro_phase": "", "vf_intro_heading": title,
+  "vf_intro_lede": subtitle,
+  "vf_intro_text": [
+    "Many problems are due to local develpment environment configuration, here's how to get your machine back on track."
+  ]
+} %}
+
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div>
+
+  {# empty #}
+
+</div>
+<div>
+
+Before filing a ticket or tossing your machine out the window, we've found most
+issues can be sorted by one of these.
+
+<hr/>
+
+### Run `yarn install`
+
+Your `node_modules` folder might not be up to date.
+
+<hr/>
+
+### Reset your project's build
+
+Sometimes a project's `node_modules` directory can become contaminated or out of sync:
+
+- remove the local build: `rm -rf node_modules`
+- you can also try rebuilding the lock file: `rm yarn.lock`
+- reinstall: `yarn install`
+
+<hr/>
+
+### Don't `npm install`
+
+Visual Framework systems work faster and are tested using `yarn install`. If you run 
+`npm install` you may encounter unexpected issues or node may become confused if you're 
+switching between `npm install` and `yarn install`.
+
+<hr/>
+
+### Use `gulp dev` and not `gulp vf-dev`
+
+If you're getting an error building your CSS or JS, make sure you're running the
+correct command. `gulp vf-dev` should only be invoked from the command line when
+developing `vf-core`, for other projects run `gulp dev`.
+
+<hr/>
+
+### Rollback your components or `vf-core` version
+
+You might have an incombatibility between component versions or `vf-core`. If
+you've recently updated, rollback version and re-run `gulp dev`. If that fixes
+issues, consult the component `CHANGELOG.md` files or read up on the [`vf-core`
+release notes](https://github.com/visual-framework/vf-core/releases).
+
+<hr/>
+
+### Make sure there are symlinks inside your component directory
+
+In your local component directory, you should have symlinks to where you keep
+your Yarn-installed components, such as `./src/components/vf-core-components` which
+points to `../../node_modules/@visual-framework/`. Sometimes these folders are manually
+deleted and not replaced by `git origin pull`, but `git reset --hard` will --
+you’ll want to save any local changes first.
+
+<hr/>
+
+### Git reset, hard
+
+Your local files might be out of sync, stash your local changes elsewhere and
+run `git reset --hard`.
+
+<hr/>
+
+## <a id="windows" href="#windows">Using Windows?</a>
+
+Windows has its own section of tips.
+
+### Use Windows Terminal Preview
+
+And within that we recommend using PowerShell. [Here's how to install Terminal](https://github.com/microsoft/terminal#microsoft-store).
+
+### Use Scoop for dependency management
+
+If you need to install, node, yarn and all the things, use [`scoop`](https://scoop.sh/).
+
+### Windows paths
+
+Windows need some extra love with path handling, this can usually be sorted
+within `node` and `gulp` by `let myFixedPath = myPath.replace(/\\/g, '/');`
+
+### Symlinks and Windows
+
+The Visual Framework utilises symlinks, these work fine on Windows but they will
+need to be initialised on your first git pull:
+
+1. Open PowerShell as an Administrator
+2. Delete the old symlink `rm .\src\components\vf-core-components`
+3. Recreate it `cmd /c mklink /D .\src\components\vf-core-components ..\..\node_modules\@visual-framework\`
+
+</div>
+<div>
+  {# empty #}
+</div>
+</section>
+
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div>
+  {# empty #}
+</div>
+<div>
+
+<hr class="vf-divider" />
+
+## Still stumped?
+
+[Make an issue](https://github.com/visual-framework/vf-core/issues) or [chat us](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+</div>
+<div>
+  {# empty #}
+</div>
+</section>
+
+{# <section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div></div>
+<div>
+
+
+</div>
+</section> #}

@@ -1,0 +1,10 @@
+{% if serverInfo.environment == "development" %}
+<div class="vf-grid">
+  <div class="vf-body--text">
+    <p><code class="vf-code-example__pre"> ⚠️ You're running the {{serverInfo.environment}} command; Page location {{ page.inputPath }} </code></p>
+  </div>
+</div>
+{% endif %}
+
+<!-- This page was generated on {{ site.buildTime | dateDisplay('LLL d, yyyy - HH:mm') }} -->
+<script src="{{ '/scripts/scripts.js' | url }}"></script>

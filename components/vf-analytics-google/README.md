@@ -35,7 +35,7 @@ Notes:
 - region names should not be repeated on the same page
 - nested regions are currently not fully supported
 
-### Verbos logging
+### Verbose logging
 
 `<body data-vf-google-analytics-verbose="true">`
 

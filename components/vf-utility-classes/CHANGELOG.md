@@ -1,18 +1,20 @@
-# Change Log
+### 1.1.0
 
-## 1.0.3
+- adds utility classes for grid row and columns gaps
 
-* adds utility classes for grid row/columns spans and start positions
+### 1.0.3
 
-## 1.0.2
+- adds utility classes for grid row/columns spans and start positions
 
-* the one that removes a parent class for the screen reader only class #847
-  * https://github.com/visual-framework/vf-core/pull/847
+### 1.0.2
 
-## 1.0.1 (2020-01-24)
+- the one that removes a parent class for the screen reader only class #847
+  - https://github.com/visual-framework/vf-core/pull/847
 
-* Adds .vf-u-text--break
+### 1.0.1
 
-## 1.0.0 (2019-12-17)
+- Adds .vf-u-text--break
 
-* Initial stable release
+### 1.0.0
+
+- Initial stable release

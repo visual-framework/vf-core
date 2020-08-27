@@ -1,9 +1,8 @@
-# Change Log
+### 1.0.0-rc.3
 
-## 1.0.0-rc.3
+- Simplifies grid by removing most of the grid.
 
-* Simplifies grid by removing most of the grid.
+### 1.0.0-rc.2
 
-## 1.0.0-rc.2
+- Improves support of `.vf-inlay__content--additional` at a medium breakpoints (shows in two columns)
 
-* Improves support of `.vf-inlay__content--additional` at a medium breakpoints (shows in two columns)

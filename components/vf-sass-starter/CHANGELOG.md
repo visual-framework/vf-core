@@ -1,14 +1,16 @@
-# Change Log
+### 0.1.2
 
-## 0.1.1
+- dependency bump
 
-* dependency bump
+### 0.1.1
 
-## 0.1.0
+- dependency bump
 
-* updates package.json to dependencies rather than devDependencies
-* updates relative paths of index.scss to target installed packages in node_modules
+### 0.1.0
 
-## 0.0.3
+- updates package.json to dependencies rather than devDependencies
+- updates relative paths of index.scss to target installed packages in node_modules
 
-Initial version
+### 0.0.3
+
+- Initial version

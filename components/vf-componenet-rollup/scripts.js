@@ -25,6 +25,12 @@ vfTree();
 // import { vfFormFloatLabels } from 'vf-form__core/assets/vf-form__float-labels.js';
 // vfFormFloatLabels();
 
+import { vfSearchClientSide } from 'vf-search-client-side/vf-search-client-side';
+// No default invokation
+
+import { vfShowMore } from 'vf-show-more/vf-show-more';
+vfShowMore();
+
 // All EMBL JS
 import { emblContentHubLoaderHtmlImports } from 'embl-content-hub-loader/embl-content-hub-loader__html-imports';
 import { emblContentHubFetch } from 'embl-content-hub-loader/embl-content-hub-loader__fetch';

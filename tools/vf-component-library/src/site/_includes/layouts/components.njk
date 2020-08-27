@@ -1,0 +1,163 @@
+---
+layout: layouts/base.njk
+pageClass: components
+templateEngineOverride: njk
+---
+<div class="embl-grid">
+  <div class="vf-search-client-side--no-index">
+    {#- all component list -#}
+    {% set componentList = [] %}
+    {%- for item in fractalEnvironment.localComponents -%}
+      {%- if item.isHidden == false -%}
+        {% set componentList = (componentList.push({ "text": item.title, "link_list_href": ('/components/' + item.handle) | string | url }),componentList) %}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {% render '@vf-link-list--tight', {
+      "component-type": "block",
+      "component_modifier": "vf-links--tight vf-links__list--s | vf-u-margin__top--md",
+      "title": "Components",
+      "list_modifier": "secondary",
+      "list":
+        componentList
+    } %}
+  </div>
+
+  <section class="vf-content component-library-notes">
+    {# for any content set in the page, this is most likely blank #}
+    {{ content | safe }}
+
+    {% set component = pagination.items[0] %}
+    {% set collectionComponents = component.items %}
+    {% set variants = component.variants.items %}
+
+    {# readme.md #}
+    {% if component.notes %}
+      {{ component.notes | string | markdown | safe }}
+    {% else %}
+      {% markdown %}
+        # {{ component.title }}
+        {% if collectionComponents %}
+
+        This is a parent collection of components.
+
+        {% endif %}
+      {% endmarkdown %}
+    {% endif %}
+
+    {# any sub-components, like vf-form #}
+    {# @todo, this is still not rendering correctly #}
+    {% if collectionComponents %}
+      {# {% render '@vf-heading--display', {
+        "type": "display",
+        "heading": "There are sub-components",
+        "style": "invert",
+        "tags": "h1"
+      } %} #}
+
+      <ul class="vf-list vf-list--unordered">
+        {%- for component in collectionComponents %}
+          <li class="vf-list__item"><a class="vf-link" href="{{ component.variants.items[0].alias }}">{{ component.variants.label }}</a> <code> {{ component.variants.items[0].alias }} </code></li>
+        {% endfor -%}
+      </ul>
+    {% endif %}
+
+    {% if variants %}
+      <section>
+        {% render '@vf-heading--display', {
+          "type": "display",
+          "heading": "Variants",
+          "style": "invert",
+          "tags": "h1"
+        } %}
+      </section>
+
+      {%- for variant in variants %}
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: {{ variant.label }}
+          {% render '@vf-badge--tertiary', {
+            "style": [
+              ""
+            ],
+            "text": variant.status.label
+          } %}
+
+          {% render '@vf-badge--tertiary', {
+            "style": [
+              ""
+            ],
+            "text": "Type: " + variant.context['component-type']
+          } %}
+        </h3>
+
+
+        {% if variant.context['component-type'] != "utility" %}
+        {# Utility variants have no practical njk templates #}
+
+        {% markdown %}
+        #### Nunjucks demo
+        {% endmarkdown %}
+
+        <pre><code>
+        {%- raw %}{% render '@{% endraw %}{{variant.handle}}', {{variant.context | dump(2)}} {% raw %}%}{% endraw %}
+        </code></pre>
+
+        {% endif %}
+
+        {% markdown %}
+          #### Sample output
+        {% endmarkdown %}
+
+        {% if variant.context['component-type'] == 'grid' %}
+          <div class="vf-gridxx" style="grid-column: -1/1;">
+            {% render '@'+variant.handle, variant.context %}
+          </div>
+        {% else %}
+          <div class="vf-grid">
+            <section class="">
+              {% render '@'+variant.handle, variant.context %}
+            </section>
+          </div>
+        {% endif %}
+
+        {% markdown %}
+          #### Sample output as HTML
+        {% endmarkdown %}
+
+        {# Show and escaped version of the html #}
+        <pre>
+          {%- render '@'+variant.handle, variant.context, false, { escape: false, beautify: true, highlight: true } %}
+        </pre>
+
+      {% endfor -%}
+
+      {% markdown %}
+
+      ### Assets
+
+      - [Nunjucks template]({{ ('/assets/' + component.baseHandle + '/' + component.baseHandle + '.njk') | url }})
+      - [Config]({{ ('/assets/' + component.baseHandle + '/' + component.baseHandle + '.config.yml') | url }})
+
+      {%- for asset in component.resources.assets %}
+      - [{{asset.base}}]({{ ('/assets/' + asset.relPath ) | url }})
+      {%- endfor %}
+
+      {% endmarkdown %}
+    {% endif %}
+
+    {% markdown %}
+
+      ---
+
+      <br/>
+
+      <p class="vf-text-body vf-text-body--4">
+      File system location: <code>components/{{ component.baseHandle }}</code>
+      </p>
+
+    {% endmarkdown %}
+
+  </section>
+</div>

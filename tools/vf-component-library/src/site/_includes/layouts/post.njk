@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+pageClass: posts
+templateEngineOverride: njk, md
+---
+
+{# Use this template for individual items of content. #}
+
+{# <p class="date">
+  Posted as an example, on <time datetime="{{ date }}">{{ date | dateDisplay }}</time>
+</p> #}
+
+<section class="vf-intro | embl-grid embl-grid--has-centered-content">
+  <div></div>
+  <div>
+    <h1 class="vf-intro__heading">{{title}}</h1>
+    {% if subtitle %}
+<div class="vf-lede">{{subtitle | markdown | safe | replace("<p>", "<span class='vf-content'>") | replace("</p>", "</span>") }}</div>
+    {% endif %}
+  </div>
+</section>
+
+
+<main class="embl-grid embl-grid--has-centered-content">
+<div></div>
+<div class="vf-content">
+  {{ content | safe }}
+</div>
+</main>
