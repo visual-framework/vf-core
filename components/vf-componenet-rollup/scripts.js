@@ -31,6 +31,9 @@ import { vfSearchClientSide } from 'vf-search-client-side/vf-search-client-side'
 import { vfShowMore } from 'vf-show-more/vf-show-more';
 vfShowMore();
 
+import { vfLocationNearest } from 'vf-location-nearest/vf-location-nearest';
+vfLocationNearest();
+
 // All EMBL JS
 import { emblContentHubLoaderHtmlImports } from 'embl-content-hub-loader/embl-content-hub-loader__html-imports';
 import { emblContentHubFetch } from 'embl-content-hub-loader/embl-content-hub-loader__fetch';
