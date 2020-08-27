@@ -20,14 +20,51 @@
 // // if you need to import any other components' JS to use here
 // import { vfOthercomponent } from 'vf-other-component/vf-other-component';
 
- /**
-  * The global function for this component
-  * @example vfLocationNearest(firstPassedVar)
-  * @param {string} [firstPassedVar]  - An option to be passed
-  */
-function vfLocationNearest(firstPassedVar) {
-  firstPassedVar = firstPassedVar || 'defaultVal';
+/**
+ * Utility method to invalidate prior check.
+  * @example vfLocationNearest('load')
+  * @param {string} [type] - 'load' or 'unload' to set or unset
+ */
+function vfLocationNearestIndicate(type) {
+  var el = document.querySelector('body');
+  if (type == 'unload') {
+    el.setAttribute('data-vf-location-nearest-loaded', 'false');
+  } else if (type == 'load') {
+    el.setAttribute('data-vf-location-nearest-loaded', 'true');
+  }
+}
 
+
+/**
+ * Use the browser location API to try to atuodetct location.
+ */
+function vfLocationNearestDetect() {
+  console.log('vfLocationNearestDetect is to be implemented');
+
+  // if no match recturn false
+  return false;
+}
+
+/**
+  * The global function for this component
+  * @example vfLocationNearest(locationsList)
+  * @param {object} [locationsList] - An object of locations
+  */
+function vfLocationNearest(locationsList) {
+  locationsList = locationsList || 'defaultVal';
+
+  console.log('vfLocationNearest',locationsList)
+
+  // unset any prior check
+  vfLocationNearestIndicate('unload');
+
+  // get the current users location
+  vfLocationNearestDetect();
+
+  // other stuff
+
+  // indicate we've loaded
+  vfLocationNearestIndicate('load');
 }
 
 // If you need to invoke the component by default
