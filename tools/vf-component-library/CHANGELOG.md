@@ -1,3 +1,8 @@
+### 1.0.2
+
+* Add 404
+* Fix component CSS generation
+
 ### 1.0.1
 
 * Also generate per-component CSS with `vf-css:generate-component-css`
