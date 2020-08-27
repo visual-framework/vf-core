@@ -440,17 +440,22 @@ function vfGaLinkTrackingInit() {
   // jQuery("body.google-analytics-loaded .track-with-analytics-events a").on('mousedown', function(e) {
   //   analyticsTrackInteraction(e.target,'Manually tracked area');
   // });
-  document.body.onclick = function (e) {
-    e = e || event;
-    var from = findParent('a', e.target || e.srcElement);
+  document.body.addEventListener("mousedown", function (evt) {
+    // send GA events if GA closest area is detected
+    var closestContainer = getClosestGa(evt.target, '[data-vf-google-analytics-region]');
 
-    if (from) {
-      /* it's a link, actions here */
-      console.log('click', from);
-      analyticsTrackInteraction(from);
+    if (closestContainer) {
+      analyticsTrackInteraction(evt.target);
+    } else {
+      var from = findParent('a', evt.target || evt.srcElement);
+
+      if (from) {
+        /* it's a link, actions here */
+        // console.log('clicked from findParent: ',from);
+        analyticsTrackInteraction(from);
+      }
     }
-  }; //find first parent with tagName [tagname]
-
+  }, false); //find first parent with tagName [tagname]
 
   function findParent(tagname, el) {
     while (el) {
@@ -464,12 +469,33 @@ function vfGaLinkTrackingInit() {
     return null;
   }
 }
+/*
+ * Find closest element that has GA attribute
+ * @returns {el} the closest element with GA attribute
+ */
+
+
+function getClosestGa(elem, selector) {
+  // Element.matches() polyfill
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
+  if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+  } // Get the closest matching element
+
+
+  for (; elem && elem !== document; elem = elem.parentNode) {
+    if (elem.matches(selector)) return elem;
+  }
+
+  return null;
+}
+
+;
 /**
  * Utility method to get the last in an array
  * @returns {var} the last item in the array
  * @example linkName = actedOnItem.src.split('/').vfGaLinkLast();
  */
-
 
 if (!Array.prototype.vfGaLinkLast) {
   Array.prototype.vfGaLinkLast = function () {
@@ -504,6 +530,11 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
     linkName = customEventName;
   } else {
     // then derive a value
+    // Fix for when tags have undefined .innerText
+    if (typeof actedOnItem.innerText === 'undefined') {
+      actedOnItem.innerText = '';
+    }
+
     linkName = actedOnItem.innerText;
     console.log('linkName', linkName); // if there's no text, it's probably and image
 
@@ -514,13 +545,13 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
     // }
   } // Get closest parent container
   // Track the region of the link clicked (global nav, masthead, hero, main content, footer, etc)
-  //data-vf-google-anlaytics-region="main-content-area-OR-SOME-OTHER-NAME"
+  //data-vf-google-analytics-region="main-content-area-OR-SOME-OTHER-NAME"
 
 
-  var parentContainer = actedOnItem.closest("[data-vf-google-anlaytics-region]");
+  var parentContainer = actedOnItem.closest("[data-vf-google-analytics-region]");
 
   if (parentContainer) {
-    parentContainer = parentContainer.dataset.vfGoogleAnlayticsRegion;
+    parentContainer = parentContainer.dataset.vfGoogleAnalyticsRegion;
   } else {
     parentContainer = 'No container specified';
   } // send to GA
@@ -533,7 +564,7 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
     ga && ga('send', 'event', 'UI', 'UI Element / ' + parentContainer, linkName); // Track file type (PDF, DOC, etc) or if mailto
     // adapted from https://www.blastanalytics.com/blog/how-to-track-downloads-in-google-analytics
 
-    var filetypes = /\.(zip|exe|pdf|doc*|xls*|ppt*|mp3)$/i;
+    var filetypes = /\.(zip|exe|pdf|doc*|xls*|ppt*|mp3|txt|fasta)$/i;
     var baseHref = '';
     var href = actedOnItem.href;
 
@@ -551,7 +582,7 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
 
     lastGaEventTime = Date.now(); // conditional logging
 
-    var conditionalLoggingCheck = document.querySelector('body'); // debug: always turn on verbos analytics
+    var conditionalLoggingCheck = document.querySelector('body'); // debug: always turn on verbose analytics
     // conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
 
     if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
