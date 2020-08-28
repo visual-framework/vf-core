@@ -81,24 +81,24 @@ function vfLocationNearestResolve(locationsList, userLocation) {
 
   if (userLocation == false) {
     console.warn('vfLocationNearest', 'No user location detected, will use default');
-    vfLocationNearestComplete(locationsList['default'],'default')
+    vfLocationNearestSave(locationsList['default'],'default')
   } else {
     // diameter matching
     console.warn('vfLocationNearest', 'diameter matching to be done');
     console.warn('vfLocationNearest', 'using default');
     // use default for now
-    vfLocationNearestComplete(locationsList['default'],'default')
+    vfLocationNearestSave(locationsList['default'],'default')
   }
 }
 
 /**
  * Receive a resolved location and assign it to the DOM
- * @example vfLocationNearestComplete(locationsList, userLocation)
+ * @example vfLocationNearestSave(locationsList, userLocation)
  * @param {object} [location] - An object of lat,lon + name
  * @param {string} [locationId] - The ID
  */
-function vfLocationNearestComplete(location, locationId) {
-  console.log('vfLocationNearestComplete location',location,locationId)
+function vfLocationNearestSave(location, locationId) {
+  console.log('vfLocationNearestSave location',location,locationId)
 
   // assign to the body
   var el = document.querySelector('body');
@@ -116,9 +116,11 @@ function vfLocationNearestComplete(location, locationId) {
   * @param {object} [locationsList] - An object of locations
   */
 function vfLocationNearest(locationsList) {
-  locationsList = locationsList || 'defaultVal';
-
-  console.log('vfLocationNearest locationsList',locationsList)
+  locationsList = locationsList || { default: {
+    name: "Heidelberg",
+    latlon: "49.4076, 8.6907"
+  }};
+  // console.log('vfLocationNearest locationsList',locationsList)
 
   // unset any prior check
   vfLocationNearestIndicate('unload');
