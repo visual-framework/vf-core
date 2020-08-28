@@ -121,7 +121,25 @@ function vfLocationNearestSave(location, locationId) {
  function vfLocationNearestOverridePopulate(locationsList, scope) {
   var scope = scope || document;
 
+  const locationWidget = scope.querySelectorAll('[data-vf-js-location-nearest-override-widget]');
+  if (!locationWidget) {
+    // exit: container not found
+    return;
+  }
+  if (locationWidget.length == 0) {
+    // exit: content not found
+    return;
+  }
+
+
   console.log('todo: populate a dropdown with options, seperate function')
+
+  // todo for each these
+  locationWidget[0].innerHTML = locationsList;
+
+  // observe for changes
+  vfLocationNearestOverrideActivate();
+
 }
 
 /**
@@ -132,13 +150,13 @@ function vfLocationNearestSave(location, locationId) {
 function vfLocationNearestOverrideActivate(scope) {
   var scope = scope || document;
 
-  const locationName = scope.querySelectorAll('[data-vf-js-location-nearest-override]');
+  const locationName = scope.querySelectorAll('[data-vf-js-location-nearest-override-widget]');
   if (!locationName) {
     // exit: container not found
     return;
   }
   if (locationName.length == 0) {
-    // exit: either tabs or tabbed content not found
+    // exit: content not found
     return;
   }
   console.log('todo: observchange')
@@ -208,6 +226,8 @@ function vfLocationNearestDomActions(scope) {
 
   // unset any prior check
   vfLocationNearestIndicate('unload');
+
+  vfLocationNearestOverridePopulate(locationsList);
 
   // get the current users location
   vfLocationNearestDetect(locationsList);
