@@ -1,3 +1,7 @@
+### 1.0.3
+
+- updates max-width of component
+
 ### 1.0.2
 
 - reduces vertical padding so both start and end are the same value

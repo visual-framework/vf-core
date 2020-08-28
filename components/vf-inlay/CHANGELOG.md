@@ -1,3 +1,7 @@
+### 1.0.0
+
+- updates max-width of component
+
 ### 1.0.0-rc.3
 
 - Simplifies grid by removing most of the grid.

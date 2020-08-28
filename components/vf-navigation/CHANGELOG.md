@@ -1,3 +1,7 @@
+### 1.2.4
+
+- updates max-width of component
+
 ### 1.2.3
 
 - adds `margin-left: auto` for when we want flexbox to push the navigation to the right
