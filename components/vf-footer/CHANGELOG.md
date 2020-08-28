@@ -1,16 +1,18 @@
-# Change Log
+### 1.0.3
 
-## 1.0.2 
+- updates max-width of component
 
-* Removes need for `.vf-body` on `.vf-footer`
-* Refines layout spacing
-* Allows for footer headers to be links
+### 1.0.2
 
-## 1.0.1 (2020-01-24)
+- Removes need for `.vf-body` on `.vf-footer`
+- Refines layout spacing
+- Allows for footer headers to be links
 
-* Darkens background
-* Updates layout
+### 1.0.1
 
-## 1.0.0 (2019-12-17)
+- Darkens background
+- Updates layout
 
-* Initial stable release
+### 1.0.0
+
+- Initial stable release

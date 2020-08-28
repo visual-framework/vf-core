@@ -1,25 +1,27 @@
-# Change Log
+### 1.0.3
 
-## 1.0.2
+- updates max-width of component
 
-* reduces vertical padding so both start and end are the same value
+### 1.0.2
 
-## 1.0.2
+- reduces vertical padding so both start and end are the same value
 
-* replaces foreround with foreground
+### 1.0.2
 
-## 1.0.1
+- replaces foreround with foreground
 
-* Lerna Release bump
+### 1.0.1
 
-## 1.0.0
+- Lerna Release bump
 
-* Removes --vf-masthead specifc colours
-* Adds primary, secondary, tertiary themes
-* tidies up component to be one template
-* updates documentation
-* removed search
+### 1.0.0
 
-## 1.0.0-rc.2
+- Removes --vf-masthead specifc colours
+- Adds primary, secondary, tertiary themes
+- tidies up component to be one template
+- updates documentation
+- removed search
 
-* Simplify grid
+### 1.0.0-rc.2
+
+- Simplify grid

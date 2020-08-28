@@ -1,0 +1,41 @@
+// vf-details
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+@import 'vf-details.variables.scss';
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-details/vf-details.scss';
+.vf-details {
+  @include padding(map-get($vf-spacing-map, vf-spacing--sm),map-get($vf-spacing-map, vf-spacing--sm),0,map-get($vf-spacing-map, vf-spacing--sm));
+}
+
+.vf-details--summary {
+  @include set-type(text-body--2);
+  @include margin(#{'-'+map-get($vf-spacing-map, vf-spacing--sm)},#{'-'+map-get($vf-spacing-map, vf-spacing--sm)},0,#{'-'+map-get($vf-spacing-map, vf-spacing--sm)});
+  @include padding(map-get($vf-spacing-map, vf-spacing--sm));
+}
+
+.vf-details[open] {
+  @include padding(map-get($vf-spacing-map, vf-spacing--sm));
+}
+
+.vf-details[open] .vf-details--summary {
+  --vf-details--border: var(--vf-details-theme-color--foreground, #{map-get($vf-ui-colors-map, vf-ui-color--grey)});
+  border-bottom: 1px solid var(--vf-details--border);
+  margin-bottom: map-get($vf-spacing-map, vf-spacing--sm);
+}

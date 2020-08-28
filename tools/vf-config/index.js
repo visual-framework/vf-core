@@ -43,11 +43,11 @@ global.vfNamespace = config.vfConfig.vfNamespace || "vf-";
 global.vfComponentPath = config.vfConfig.vfComponentPath || path.resolve('.', 'components');
 global.vfBuildDestination = config.vfConfig.vfBuildDestination || 'temp/build-files';
 global.vfThemePath = config.vfConfig.vfThemePath || './tools/vf-frctl-theme';
-global.vfBuildFractalMode = config.vfConfig.vfBuildFractalMode || 'normal'; 
+global.vfBuildFractalMode = config.vfConfig.vfBuildFractalMode || 'normal';
 global.vfVersion = vfCoreConfig.version || 'not-specified';
 const componentPath = path.resolve('.', global.vfComponentPath).replace(/\\/g, '/');
 const componentDirectories = config.vfConfig.vfComponentDirectories || ['vf-core-components'];
-const buildDestionation = path.resolve('.', global.vfBuildDestination).replace(/\\/g, '/'); 
+const buildDestionation = path.resolve('.', global.vfBuildDestination).replace(/\\/g, '/');
 
 module.exports = {
   componentPath,

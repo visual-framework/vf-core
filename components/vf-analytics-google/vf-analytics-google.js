@@ -138,15 +138,21 @@ function vfGaLinkTrackingInit() {
   //   analyticsTrackInteraction(e.target,'Manually tracked area');
   // });
 
-  document.body.onclick = function(e){
-    e = e || event;
-    var from = findParent('a',e.target || e.srcElement);
-    if (from){
+  document.body.addEventListener("mousedown", function (evt) {
+    // send GA events if GA closest area is detected
+    let closestContainer = getClosestGa(evt.target, '[data-vf-google-analytics-region]');
+    if (closestContainer) {
+      analyticsTrackInteraction(evt.target);
+    } else {
+      var from = findParent('a',evt.target || evt.srcElement);
+      if (from) {
        /* it's a link, actions here */
-       console.log('click',from);
+       // console.log('clicked from findParent: ',from);
        analyticsTrackInteraction(from);
+      }
     }
-  }
+  }, false );
+
   //find first parent with tagName [tagname]
   function findParent(tagname,el){
     while (el){
@@ -158,6 +164,24 @@ function vfGaLinkTrackingInit() {
     return null;
   }
 }
+
+/*
+ * Find closest element that has GA attribute
+ * @returns {el} the closest element with GA attribute
+ */
+function getClosestGa(elem, selector) {
+  // Element.matches() polyfill
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
+  if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+  }
+
+	// Get the closest matching element
+	for ( ; elem && elem !== document; elem = elem.parentNode ) {
+		if ( elem.matches( selector ) ) return elem;
+  }
+	return null;
+};
 
 /**
  * Utility method to get the last in an array
@@ -193,6 +217,12 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
   if (customEventName.length > 0) {
     linkName = customEventName;
   } else { // then derive a value
+
+    // Fix for when tags have undefined .innerText
+    if (typeof actedOnItem.innerText === 'undefined') {
+      actedOnItem.innerText = '';
+    }
+
     linkName = actedOnItem.innerText;
     console.log('linkName',linkName);
 
@@ -208,10 +238,10 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
 
   // Get closest parent container
   // Track the region of the link clicked (global nav, masthead, hero, main content, footer, etc)
-  //data-vf-google-anlaytics-region="main-content-area-OR-SOME-OTHER-NAME"
-  let parentContainer = actedOnItem.closest("[data-vf-google-anlaytics-region]");
+  //data-vf-google-analytics-region="main-content-area-OR-SOME-OTHER-NAME"
+  let parentContainer = actedOnItem.closest("[data-vf-google-analytics-region]");
   if (parentContainer) {
-    parentContainer = parentContainer.dataset.vfGoogleAnlayticsRegion;
+    parentContainer = parentContainer.dataset.vfGoogleAnalyticsRegion;
   } else {
     parentContainer = 'No container specified';
   }
@@ -225,7 +255,7 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
 
     // Track file type (PDF, DOC, etc) or if mailto
     // adapted from https://www.blastanalytics.com/blog/how-to-track-downloads-in-google-analytics
-    var filetypes = /\.(zip|exe|pdf|doc*|xls*|ppt*|mp3)$/i;
+    var filetypes = /\.(zip|exe|pdf|doc*|xls*|ppt*|mp3|txt|fasta)$/i;
     var baseHref = '';
     var href = actedOnItem.href;
     if (href && href.match(/^mailto\:/i)) {
@@ -243,7 +273,7 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
 
     // conditional logging
     let conditionalLoggingCheck = document.querySelector('body');
-    // debug: always turn on verbos analytics
+    // debug: always turn on verbose analytics
     // conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
     if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
       console.log('%c Verbose analytics on ', 'color: #FFF; background: #111; font-size: .75rem;');

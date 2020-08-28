@@ -10,8 +10,17 @@ branches:
 before_script:
   - yarn install
   - yarn global add gulp-cli
-  - gulp vf-core:prepare-deploy
+  # with the new 11ty based library, we shouldn't need these anymore most likely
+  # there will probably be changes needed for percy
+  # - cd tools/vf-core
+  # - gulp vf-core:prepare-deploy
+  # - cd ../..
+  - cd tools/vf-component-library
+  - yarn install
+  - gulp build
   - "curl https://www.projectwallace.com/webhooks/v1/imports?token=$WALLACE_TOKEN -fsS --retry 3 -X POST -H 'Content-Type: text/css' -d @build/css/styles.css"
+  # gh-pages shouldn't try to compile the .md files
+  - cd build && touch .nojekyll && cd ..
 
 jobs:
   include:
@@ -20,7 +29,7 @@ jobs:
       env:
         - PERCY_TARGET_BRANCH=develop
       script:
-        - npx percy snapshot ./build/components/preview/ --base-url "/visual-framework/"
+        - npx percy snapshot ./build/components/ --base-url "/vf-core/"
       cache:
         paths:
           - node_modules
@@ -35,7 +44,7 @@ deploy:
   wallace-token: $WALLACE_TOKEN
   keep-history: true
   target-branch: gh-pages
-  local-dir: build
+  local-dir: tools/vf-component-library/build
   cache:
     paths:
       - node_modules

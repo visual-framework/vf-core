@@ -1,0 +1,52 @@
+---
+title: Naming things
+subtitle: The Visual Framework uses a dual approach for the naming of things.
+intro: At the lower level there are **components** which are a type of "ingredient" used to assembl into the higher level **patterns** that are richer templates with usability guidance.
+date: 2019-04-09 12:24:50
+layout: layouts/developing.njk
+order: 4
+---
+
+## Type 1: Components
+
+Components are intended for re-use and should be named for what they are; that is:
+
+- vf-box (not "vf-introduction")
+- [vf-button](/components/detail/vf-button--sizes) (not "vf-call-to-action")
+- vf-grid (not "vf-wide-layout")
+- vf-header (not "vf-big-headline")
+- vf-form
+
+Why? This ensures that that a box will always be rectangular-ish pattern on pages,
+whereas an "introduction" may be a box today, but become simply large text after a redesign.
+
+### Components have
+
+- Lots of code
+    - Generally that CSS/Sass and some JS
+- An HTML code template (Nunjucks)
+- Documentation on how to use
+
+## Type 2: Patterns
+
+If your pattern is primarily intended to be used for particular websites or a brand,
+give it a name that is attached to the role it performs; that is:
+
+- vf-group-masthead
+- vf-registration-form
+- vf-start-page
+
+Why? Naming for the role the pattern does allows us to change the future visual structure,
+so a "display headline" today may have a black background, but tomorrow might have no background
+and be large and italic text.
+
+### Patterns have
+
+- Lots of code
+    - Generally that CSS/Sass and some JS
+- An HTML code template (Nunjucks)
+- Documentation on how to use
+
+
+For further guidance on the distinctions, see: [Patterns ≠ Components](https://medium.com/eightshapes-llc/patterns-components-2ce778cbe4e8)
+and UK.gov's information on [patterns](https://design-system.service.gov.uk/patterns) vs [components](https://design-system.service.gov.uk/components).
