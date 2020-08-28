@@ -6,7 +6,6 @@
 - removes weird margin that was used beforehand.
 - takes the hairline out of `--has-sidebar` and gives it it's own modifier class.
 
-
 ### 1.0.4
 
 - The one where we make our CSS grid-gaps gaps

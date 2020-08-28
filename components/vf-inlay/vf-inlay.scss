@@ -11,100 +11,53 @@
 
 @import 'vf-inlay.variables.scss';
 
-.vf-inlay {
-  display: grid;
-  grid-column: 1 / -1;
-  /* stylelint-disable  declaration-colon-space-after, indentation */
-  grid-template-columns:
-    minmax(var(--page-grid-gap), auto)
-    [main-start]
-      minmax(auto, 76.5em)
-    [main-end]
-    minmax(var(--page-grid-gap), auto)
-  ;
-  /* stylelint-enable */
-
-  &:last-of-type {
-    @include margin--block(bottom, $vf-inlay__spacing--bottom--narrow);
-
-    @media (min-width: 1024px) {
-      @include margin--block(bottom, $vf-inlay__spacing--bottom);
-    }
-  }
-
-  // overides vf-grid's natural inclination to be full width
-  & .vf-grid {
-    @media (max-width: 1299px) {
-      grid-column: main;
-    }
-  }
-
-  @media (min-width: 480px) {
-    // grid-column: 2 / -2;
-  }
-
-  @media (min-width: 1024px) {
-    --page-grid-gap: 36px;
-  }
-}
-
 .vf-inlay__content {
-  display: grid;
-  grid-column: 2 / 3;
-  /* stylelint-disable declaration-colon-space-after, indentation */
-  grid-template-columns:
-    minmax(var(--page-grid-gap), 1em)
-    [main-start]
-      minmax(auto, 100%)
-      minmax(auto, 22.125em)
-    [main-end]
-    minmax(var(--page-grid-gap), 1em)
-  ;
-  padding-bottom: calc(var(--page-grid-gap) / 2);
-  padding-top: 36px;
+  grid-column: 1 / -1;
 
-  @media (max-width: 1023px) {
+  .vf-inlay > & {
+    display: grid;
+    grid-gap: var(--page-grid-gap);
+    /*stylelint-disable*/
     grid-template-columns:
-      var(--page-grid-gap)
-      [main-start]
-        minmax(auto, 100%)
-        minmax(auto, 22.125em)
-      [main-end]
-      var(--page-grid-gap)
+      [inlay--full-start]
+        1fr
+      [inlay--full-end]
     ;
-  }
-  /* stylelint-enable */
 
+    @media (min-width: $vf-breakpoint--lg) {
+      grid-template-columns:
+        [inlay--full-start inlay--main-start]
+          1fr
+        [inlay--main-end inlay--sidebar-start]
+          minmax(auto, var(--embl-grid-sidebar-width, 21.25rem))
+        [inlay--sidebar-end inlay--full-end]
+      ;
+    }
+  }
+  /*stylelint-enable*/
 }
 
 .vf-inlay__content--full-width {
-  grid-column: 2 / -2;
-  @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--lg));
+  grid-area: inlay--full;
+  grid-row: span 1;
 }
 
 .vf-inlay__content--main {
-  grid-column: 2 / -2;
+  grid-area: inlay--full;
+  grid-row: span 1;
 
   @media (min-width: $vf-breakpoint--lg) {
-    grid-column: 2 / 3;
-    padding-right: calc(var(--page-grid-gap) / 2);
+    grid-area: inlay--main;
   }
 
-  @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--lg));
 }
 
 .vf-inlay__content--additional {
-  grid-column: 2 / -2;
+  grid-area: inlay--full;
+  grid-row: span 1;
 
   @media (min-width: $vf-breakpoint--lg) {
-    grid-column: 3 / 4;
-  }
-
-  // at a small-medium breakpoint the sidebar should allow for 2 columns of content
-  @media (max-width: $vf-breakpoint--lg) and (min-width: $vf-breakpoint--sm) {
-    column-gap: var(--page-grid-gap);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-area: inlay--sidebar;
   }
 
 }
