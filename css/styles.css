@@ -57,12 +57,12 @@
 :root {
   --vf-body-width: 81.25em;
   --page-grid-gap: 1em;
-  --embl-grid-module--prime: 200px;
-  --embl-grid-spacing-normaliser: 6px;
+  --embl-grid-module--prime: 238px;
+  --embl-grid-spacing-normaliser: 0px;
 }
 @media (min-width: 75em) {
   :root {
-    --page-grid-gap: 2em;
+    --page-grid-gap: 1.5em;
   }
 }
 
@@ -741,17 +741,15 @@ html {
 }
 
 /*!
- * Component: @visual-framework/embl-grid
- * Version: 1.0.4
- * Location: components/embl-grid
- */
+* Component: @visual-framework/embl-grid
+* Version: 1.0.4
+* Location: components/embl-grid
+*/
 .embl-grid {
-  grid-column: main;
   margin-bottom: 48px;
 }
 .embl-grid > :first-child {
   grid-column: 1/-1;
-  margin-right: var(--embl-grid-spacing-normaliser);
 }
 @media (min-width: 846px) {
   .embl-grid > :first-child {
@@ -765,86 +763,62 @@ html {
 }
 @media (min-width: 600px) {
   .embl-grid {
-    column-gap: var(--page-grid-gap);
-    display: grid;
     /* stylelint-disable declaration-colon-space-after */
-    grid-template-columns: calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser)) [main-start] repeat(auto-fit, minmax(18rem, 1fr)) [main-end];
-    /* stylelint-enable */
+    --embl-grid:
+      var(--embl-grid-module--prime)
+      [main-start]
+      1fr
+      [main-end];
+    display: grid;
+    gap: var(--page-grid-gap);
+    grid-template-columns: var(--vf-custom-grid-layout, var(--embl-grid));
   }
 }
 
-.embl-grid--has-centered-content {
-  --embl-grid-spacing-normaliser: 0;
-  --page-grid-gap: 0;
+.embl-grid--has-centered-content > *:last-child {
+  grid-column-start: 2;
 }
 @media (min-width: 1024px) {
   .embl-grid--has-centered-content {
-    --page-grid-gap: 36px;
-    /* stylelint-disable declaration-colon-space-after */
-    grid-template-columns: var(--embl-grid-module--prime) auto var(--embl-grid-module--prime);
-    /* stylelint-enable */
+    --embl-grid:
+      var(--embl-grid-module--prime)
+      auto
+      var(--embl-grid-module--prime);
+  }
+  .embl-grid--has-centered-content > *:last-child {
+    grid-column-start: unset;
   }
 }
 
-.embl-grid--has-sidebar > *:nth-child(3n+2) {
-  grid-column: span 2;
+.embl-grid--has-sidebar {
+  --embl-grid:
+    var(--embl-grid-module--prime)
+    [main-start]
+    1fr
+    [main-end]
+    minmax(21em, auto);
+  /* stylelint-enable */
 }
-@media (max-width: 845px) {
-  .embl-grid--has-sidebar > *:last-child {
-    grid-column: 1/-1;
+@media (min-width: 846px) and (max-width: 1299px) {
+  .embl-grid--has-sidebar > *:first-child {
+    grid-column: 1/2;
   }
-}
-@media (min-width: 846px) and (max-width: 1219px) {
-  .embl-grid--has-sidebar > *:last-child {
+  .embl-grid--has-sidebar > * {
     grid-column: 2/-1;
   }
 }
-@media (min-width: 1220px) {
-  .embl-grid--has-sidebar > *:last-child {
+
+@media (min-width: 1300px) {
+  .embl-grid-has-sidebar--hairline > *:last-child {
     position: relative;
   }
-  .embl-grid--has-sidebar > *:last-child::before {
+  .embl-grid-has-sidebar--hairline > *:last-child::before {
     background-color: #d8d8d8;
     content: "";
     height: 100%;
     left: calc(var(--page-grid-gap) / -2);
     position: absolute;
     width: 1px;
-  }
-}
-
-.embl-grid--alt {
-  --page-grid-gap: 0;
-  background-color: #000000;
-  color: #ffffff;
-  grid-column: 1/-1;
-  /* stylelint-disable declaration-colon-space-after */
-  grid-template-columns: minmax(1em, auto) calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser)) minmax(288px, calc($vf-layout--comfortable - 206px)) minmax(1em, auto);
-  /* stylelint-enable */
-  justify-content: center;
-  position: relative;
-  /* stylelint-disable order/properties-alphabetical-order, order/order  */
-  padding-top: 1.5rem;
-  /* stylelint-enable */
-}
-.embl-grid--alt > :first-child {
-  grid-column: 2/-2;
-}
-.embl-grid--alt > :last-child {
-  grid-column: 2/-2;
-}
-@media (min-width: 768px) {
-  .embl-grid--alt > :first-child {
-    grid-column: 2/span 1;
-  }
-  .embl-grid--alt > :last-child {
-    grid-column: 3;
-    margin-left: 16px;
-  }
-}
-@media (min-width: 1200px) {
-  .embl-grid--alt > :last-child {
-    margin-left: 30px;
   }
 }
 
