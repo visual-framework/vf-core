@@ -31,6 +31,7 @@ function vfLocationNearestIndicate(type) {
     el.setAttribute('data-vf-location-nearest-loaded', 'false');
   } else if (type == 'load') {
     el.setAttribute('data-vf-location-nearest-loaded', 'true');
+    vfLocationNearestDomActions();
   }
 }
 
@@ -104,7 +105,8 @@ function vfLocationNearestSave(location, locationId) {
   var el = document.querySelector('body');
   el.setAttribute('data-vf-location-nearest-location', locationId);
   el.setAttribute('data-vf-location-nearest-name', location.name);
-  el.setAttribute('data-vf-location-nearest-latlon', location.latlon);
+  // We shouldn't need this level of detail, ohter request should the `location`
+  // el.setAttribute('data-vf-location-nearest-latlon', location.latlon);
 
   // indicate we've loaded
   vfLocationNearestIndicate('load');
@@ -128,6 +130,21 @@ function vfLocationNearest(locationsList) {
   // get the current users location
   vfLocationNearestDetect(locationsList);
 }
+
+/**
+  * With attributes saved to the dom, we can take further action
+  * <body data-vf-location-nearest-loaded="true"
+  *   data-vf-location-nearest-location="default"
+  *   data-vf-location-nearest-name="Heidelberg"
+  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+  * @example vfTabs(document.vfLocationNearestDomActions('.vf-component__container')[0]);
+  */
+function vfLocationNearestDomActions(scope) {
+  var scope = scope || document;
+  // Get relevant elements and collections
+
+
+
 
 // If you need to invoke the component by default
 // vfLocationNearest();
