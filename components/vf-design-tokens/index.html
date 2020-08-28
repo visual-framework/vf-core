@@ -588,9 +588,9 @@ class="vf-logo | vf-logo--has-text">
 
         <h3>
           Variant: Welcome
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">live</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
 
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">Type: utility</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: utility</span> 
         </h3>
 
 
@@ -646,9 +646,9 @@ class="vf-logo | vf-logo--has-text">
 
         <h3>
           Variant: Breakpoints
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">live</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
 
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">Type: utility</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: utility</span> 
         </h3>
 
 
@@ -867,9 +867,9 @@ class="vf-logo | vf-logo--has-text">
 
         <h3>
           Variant: Colours
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">live</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
 
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">Type: utility</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: utility</span> 
         </h3>
 
 
@@ -1077,9 +1077,9 @@ class="vf-logo | vf-logo--has-text">
 
         <h3>
           Variant: Spacing
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">live</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
 
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">Type: utility</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: utility</span> 
         </h3>
 
 
@@ -1160,10 +1160,220 @@ class="vf-logo | vf-logo--has-text">
         <hr class="vf-divider" />
 
         <h3>
-          Variant: Typography
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">live</span> 
+          Variant: Themes
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
 
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">Type: utility</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: utility</span> 
+        </h3>
+
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-grid">
+            <section class="">
+              <style>
+/* vf-swatches might one day be a component, but for now it's CSS we'll just use for the design token demonstration */
+.vf-swatches {
+  grid-row-gap: 32px;
+  margin: 48px 0;
+}
+.vf-swatch {
+  border: 1px solid #d0d0ce;
+  display: grid;
+  grid-template-rows: 160px 1fr;
+}
+
+.vf-swatch__details {
+  padding: 16px;
+  border-top: 1px solid #d0d0ce;
+}
+.vf-swatch:nth-of-type(3),
+.vf-swatch:nth-of-type(5) {
+  grid-column-start: 1;
+}
+.vf-swatch__colour {
+  /* margin: 16px;
+  height: calc(100% - 32px);
+  width: calc(100% - 32px); */
+  height: 100%;
+  width: 100%;
+}
+.vf-swatch__colour-name {
+  margin: 0 0 12px 0;
+}
+
+.vf-swatch__colour-hex,
+.vf-swatch__sass-variable,
+.vf-swatch__comment,
+.vf-swatch__css-property {
+  margin: 0 0 12px 0;
+}
+.vf-swatch__colour-hex {
+  text-transform: uppercase;
+}
+.vf-swatch__colour-hex,
+.vf-swatch__sass-variable,
+.vf-swatch__css-property {
+  font-family: monospace;
+  font-size: 1em;
+  align-items: start;
+}
+
+.vf-swatch__colour-hex,
+.vf-swatch__sass-variable,
+.vf-swatch__css-property {
+  font-family: 'IBM Plex Mono', Monaco, Consolas, 'Lucida Console', monospace;
+  font-size: 14px;
+}
+
+.vf-swatch__notes {
+  margin: 12px 0 0px 0;
+}
+
+.vf-swatch__notes,
+.vf-swatch__colour-name,
+.vf-swatch__meta {
+  font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
+}
+.vf-swatch__colour-name {
+  padding: 16px;
+}
+
+.vf-swatch__meta {
+  font-size: 16px;
+}
+
+.vf-swatch__details p {
+  margin-bottom: 16px;
+}
+.vf-swatch__details p:last-of-type {
+  margin-bottom: 0;
+}
+</style>
+
+
+<main class="vf-swatches | vf-grid vf-grid__col-3">
+
+<p>Something went wrong.</p>
+
+</main>
+
+            </section>
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+  <span class="hljs-comment">/* vf-swatches might one day be a component, but for now it&#x27;s CSS we&#x27;ll just use for the design token demonstration */</span>
+  <span class="hljs-selector-class">.vf-swatches</span> {
+    <span class="hljs-attribute">grid-row-gap</span>: <span class="hljs-number">32px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">48px</span> <span class="hljs-number">0</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch</span> {
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#d0d0ce</span>;
+    <span class="hljs-attribute">display</span>: grid;
+    <span class="hljs-attribute">grid-template-rows</span>: <span class="hljs-number">160px</span> <span class="hljs-number">1</span>fr;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__details</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
+    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#d0d0ce</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch</span><span class="hljs-selector-pseudo">:nth-of-type(3)</span>,
+  <span class="hljs-selector-class">.vf-swatch</span><span class="hljs-selector-pseudo">:nth-of-type(5)</span> {
+    <span class="hljs-attribute">grid-column-start</span>: <span class="hljs-number">1</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__colour</span> {
+    <span class="hljs-comment">/* margin: 16px;
+  height: calc(100% - 32px);
+  width: calc(100% - 32px); */</span>
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__colour-name</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">12px</span> <span class="hljs-number">0</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__colour-hex</span>,
+  <span class="hljs-selector-class">.vf-swatch__sass-variable</span>,
+  <span class="hljs-selector-class">.vf-swatch__comment</span>,
+  <span class="hljs-selector-class">.vf-swatch__css-property</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">12px</span> <span class="hljs-number">0</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__colour-hex</span> {
+    <span class="hljs-attribute">text-transform</span>: uppercase;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__colour-hex</span>,
+  <span class="hljs-selector-class">.vf-swatch__sass-variable</span>,
+  <span class="hljs-selector-class">.vf-swatch__css-property</span> {
+    <span class="hljs-attribute">font-family</span>: monospace;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">align-items</span>: start;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__colour-hex</span>,
+  <span class="hljs-selector-class">.vf-swatch__sass-variable</span>,
+  <span class="hljs-selector-class">.vf-swatch__css-property</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;IBM Plex Mono&#x27;</span>, Monaco, Consolas, <span class="hljs-string">&#x27;Lucida Console&#x27;</span>, monospace;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__notes</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">12px</span> <span class="hljs-number">0</span> <span class="hljs-number">0px</span> <span class="hljs-number">0</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__notes</span>,
+  <span class="hljs-selector-class">.vf-swatch__colour-name</span>,
+  <span class="hljs-selector-class">.vf-swatch__meta</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&#x27;IBM Plex Sans&#x27;</span>, Helvetica, Arial, sans-serif;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__colour-name</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__meta</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__details</span> <span class="hljs-selector-tag">p</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">16px</span>;
+  }
+
+  <span class="hljs-selector-class">.vf-swatch__details</span> <span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:last-of-type</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+  }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-swatches | vf-grid vf-grid__col-3&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Something went wrong.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+        </pre>
+
+      
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: Typography
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: utility</span> 
         </h3>
 
 
@@ -1203,9 +1413,9 @@ class="vf-logo | vf-logo--has-text">
 
         <h3>
           Variant: Ui Colours
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">live</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
 
-           <span id="your-id" class="vf-badge vf-badge--tertiary vf-badge-- | your-extra-class">Type: utility</span> 
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: utility</span> 
         </h3>
 
 

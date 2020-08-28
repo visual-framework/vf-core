@@ -1,3 +1,7 @@
+### 1.1.0
+
+- makes theme variant naming and decisions consistent.
+
 ### 1.0.2
 
 - makes the `width: 100%` rather than `max-content` as some people have really long job titles

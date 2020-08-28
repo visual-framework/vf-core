@@ -1,0 +1,32 @@
+@mixin theme($theme, $border: null, $type: null) {
+  $vf-theme--: null;
+  $color: vf-theme--#{$theme};
+
+  background-color: theme($color);
+
+  @if $border == border {
+    $color: vf-theme--#{$theme};
+    border-color: theme($color);
+  }
+
+  @if $border == border--dark {
+    $color: vf-theme--#{$theme}--dark;
+    border-color: theme($color);
+  }
+
+
+  @if $type == swap {
+    $color: vf-theme--#{$theme};
+    color: theme($color);
+  }
+
+}
+
+@mixin theme-outline($theme) {
+  $vf-theme--: null;
+  $color: vf-theme--#{$theme};
+
+  background-color: transparent;
+  border-color: theme($color);
+  color: theme($color);
+}

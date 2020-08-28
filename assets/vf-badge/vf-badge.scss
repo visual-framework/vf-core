@@ -23,7 +23,7 @@ $vf-badge--outline-color--text: set-color(vf-color--blue) !default;
 
 $vf-badge--secondary-color--background: set-color(vf-color--green) !default;
 $vf-badge--secondary-color--border: set-color(vf-color--green) !default;
-$vf-badge--secondary-color--text: set-ui-color(vf-ui-color--white) !default;
+$vf-badge--secondary-color--text: set-ui-color(vf-ui-color--black) !default;
 
 $vf-badge--tertiary-color--background: set-color(vf-color--grey--dark) !default;
 $vf-badge--tertiary-color--border: set-color(vf-color--grey--dark) !default;
@@ -33,7 +33,7 @@ $vf-badge--tertiary-color--text: set-ui-color(vf-ui-color--white) !default;
 .vf-badge {
   @include set-type(text-button--2, $custom-margin-bottom: disable);
 
-  border: 1px solid currentColor;
+  border: 1px solid;
   color: inherit;
   display: inline-flex;
   letter-spacing: .05em;
@@ -68,38 +68,63 @@ $vf-badge--tertiary-color--text: set-ui-color(vf-ui-color--white) !default;
 }
 
 .vf-badge--primary {
-  background-color: $vf-badge--primary-color--background;
-  border-color: $vf-badge--primary-color--border;
+  @include theme(primary, border);
+
   color: $vf-badge--primary-color--text;
 
-  @include inline-link($vf-badge--primary-color--text,$vf-badge--primary-color--text,$vf-badge--primary-color--text, $vf-include-normalisations: false);
+  a.vf-badge & {
+    @include inline-link($vf-badge--secondary-color--text,$vf-badge--secondary-color--text,$vf-badge--secondary-color--text, $vf-include-normalisations: false);
+  }
 }
 
 a.vf-badge--primary:hover {
-  background-color: $vf-badge--primary--hover-color--background;
-  border-color: $vf-badge--primary--hover-color--border;
+  @include theme(primary--dark, border);
 }
 
 .vf-badge--secondary {
-  background-color: $vf-badge--secondary-color--background;
-  border-color: $vf-badge--secondary-color--border;
+  @include theme(secondary, border);
+
   color: $vf-badge--secondary-color--text;
 
-  @include inline-link($vf-badge--secondary-color--text,$vf-badge--secondary-color--text,$vf-badge--secondary-color--text, $vf-include-normalisations: false);
+  a.vf-badge & {
+    @include inline-link($vf-badge--secondary-color--text,$vf-badge--secondary-color--text,$vf-badge--secondary-color--text, $vf-include-normalisations: false);
+  }
+
 }
 
 .vf-badge--tertiary {
-  background-color: $vf-badge--tertiary-color--background;
-  border-color: $vf-badge--tertiary-color--border;
   color: $vf-badge--tertiary-color--text;
 
   @include inline-link($vf-badge--tertiary-color--text,$vf-badge--tertiary-color--text,$vf-badge--tertiary-color--text, $vf-include-normalisations: false);
-
+  @include theme(tertiary, border);
 }
 
 .vf-badge--outline {
-  background-color: $vf-badge--outline-color--background;
-  color: $vf-badge--outline-color--text;
+  &[class*='primary'] {
+    @include theme-outline(primary);
 
-  @include inline-link($vf-badge--outline-color--text,$vf-badge--outline-color--text, $vf-include-normalisations: false);
+    @at-root a#{&} {
+      &:hover {
+        @include theme-outline(primary--dark);
+      }
+    }
+  }
+  &[class*='secondary'] {
+    @include theme-outline(secondary);
+
+    @at-root a#{&} {
+      &:hover {
+        @include theme-outline(secondary--dark);
+      }
+    }
+  }
+  &[class*='tertiary'] {
+    @include theme-outline(tertiary);
+
+    @at-root a#{&} {
+      &:hover {
+        @include theme-outline(tertiary--dark);
+      }
+    }
+  }
 }
