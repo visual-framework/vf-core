@@ -144,6 +144,7 @@ function vfLocationNearestDomActions(scope) {
   // Get relevant elements and collections
 
 
+}
 
 
 // If you need to invoke the component by default
