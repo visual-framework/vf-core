@@ -121,7 +121,7 @@ function vfLocationNearestSave(location, locationId) {
  function vfLocationNearestOverridePopulate(locationsList, scope) {
   var scope = scope || document;
 
-  // todo: populate a dropdown with options, seperate function
+  console.log('todo: populate a dropdown with options, seperate function')
 }
 
 /**
@@ -132,7 +132,7 @@ function vfLocationNearestSave(location, locationId) {
 function vfLocationNearestOverrideActivate(scope) {
   var scope = scope || document;
 
-  // todo: observchange
+  console.log('todo: observchange')
 }
 
 /**
@@ -158,13 +158,16 @@ function vfLocationNearestDomActions(scope) {
       // exit: either tabs or tabbed content not found
       return;
     }
+    console.log('todo: push the active location to the dom')
   }
 
   // add is-active to any elements/components
   function activateElements() {
+    console.log('todo: add is-active to any elements/components')
   }
 
   assignName();
+  activateElements()
 }
 
 /**
