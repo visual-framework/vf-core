@@ -1,4 +1,4 @@
-### 1.1.0
+### 2.0.0
 
 - removes unused `--alt` version (use a utility class for background colour).
 - adds more space for content in initial (prime) column and sidebar column (if used).
