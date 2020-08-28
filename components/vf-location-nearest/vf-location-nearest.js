@@ -77,12 +77,37 @@ function vfLocationNearestDetect(locationsList) {
 function vfLocationNearestResolve(locationsList, userLocation) {
   console.log(locationsList, userLocation);
 
+  console.log('user at',userLocation.latitude + ", " + userLocation.longitude)
+
   if (userLocation == false) {
-    console.warn('vfLocationNearest', 'No user location detected, will use default')
+    console.warn('vfLocationNearest', 'No user location detected, will use default');
+    vfLocationNearestComplete(locationsList['default'],'default')
   } else {
     // diameter matching
-    console.warn('vfLocationNearest', 'diameter matching to be done')
+    console.warn('vfLocationNearest', 'diameter matching to be done');
+    console.warn('vfLocationNearest', 'using default');
+    // use default for now
+    vfLocationNearestComplete(locationsList['default'],'default')
   }
+}
+
+/**
+ * Receive a resolved location and assign it to the DOM
+ * @example vfLocationNearestComplete(locationsList, userLocation)
+ * @param {object} [location] - An object of lat,lon + name
+ * @param {string} [locationId] - The ID
+ */
+function vfLocationNearestComplete(location, locationId) {
+  console.log('vfLocationNearestComplete location',location,locationId)
+
+  // assign to the body
+  var el = document.querySelector('body');
+  el.setAttribute('data-vf-location-nearest-location', locationId);
+  el.setAttribute('data-vf-location-nearest-name', location.name);
+  el.setAttribute('data-vf-location-nearest-latlon', location.latlon);
+
+  // indicate we've loaded
+  vfLocationNearestIndicate('load');
 }
 
 /**
@@ -100,13 +125,6 @@ function vfLocationNearest(locationsList) {
 
   // get the current users location
   vfLocationNearestDetect(locationsList);
-  // let userLocation =
-  // console.log('userLocation',userLocation)
-
-  // other stuff
-
-  // indicate we've loaded
-  vfLocationNearestIndicate('load');
 }
 
 // If you need to invoke the component by default
