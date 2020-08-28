@@ -4,19 +4,17 @@
 // Debug information from component's `package.json`:
 // ---
 /*!
- * Component: #{map-get($componentInfo, 'name')}
- * Version: #{map-get($componentInfo, 'version')}
- * Location: #{map-get($componentInfo, 'location')}
- */
+* Component: #{map-get($componentInfo, 'name')}
+* Version: #{map-get($componentInfo, 'version')}
+* Location: #{map-get($componentInfo, 'location')}
+*/
 
 
 .embl-grid {
-  grid-column: main;
   margin-bottom: 48px;
 
   & > :first-child {
     grid-column: 1 / -1;
-    margin-right: var(--embl-grid-spacing-normaliser);
 
     @media (min-width: 846px) {
       grid-column: span 1;
@@ -28,55 +26,60 @@
       grid-column: 1 / -1;
     }
   }
+
   @media (min-width: $vf-breakpoint--sm) {
-    column-gap: var(--page-grid-gap);
-    display: grid;
     /* stylelint-disable declaration-colon-space-after */
-    grid-template-columns:
-      calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
+    --embl-grid:
+      var(--embl-grid-module--prime)
       [main-start]
-      repeat(auto-fit, minmax(18rem, 1fr))
-      [main-end]
-    ;
-    /* stylelint-enable */
+      1fr
+      [main-end];
+
+    display: grid;
+    gap: var(--page-grid-gap);
+    grid-template-columns: var(--vf-custom-grid-layout, var(--embl-grid));
   }
 
 }
 
 .embl-grid--has-centered-content {
-  --embl-grid-spacing-normaliser: 0; // removes margin from first child
-  --page-grid-gap: 0; //
+
+  & > *:last-child {
+    grid-column-start: 2;
+  }
 
   @media (min-width: $vf-breakpoint--lg) {
-    --page-grid-gap: 36px;
-
-    /* stylelint-disable declaration-colon-space-after */
-    grid-template-columns:
+    --embl-grid:
       var(--embl-grid-module--prime)
       auto
-      var(--embl-grid-module--prime)
-    ;
-    /* stylelint-enable */
+      var(--embl-grid-module--prime);
+    & > *:last-child {
+      grid-column-start: unset;
+    }
   }
 }
 
 .embl-grid--has-sidebar {
+  --embl-grid:
+    var(--embl-grid-module--prime)
+    [main-start]
+    1fr
+    [main-end]
+    minmax(21em, auto);
+  /* stylelint-enable */
 
-  & > *:nth-child(3n+2) {
-    grid-column: span 2;
-  }
-
-  @media (max-width: 845px) {
-    & > *:last-child {
-      grid-column: 1 / -1;
+  @media (min-width: 846px) and (max-width: 1299px) {
+    & > *:first-child {
+      grid-column: 1 / 2;
     }
-  }
-  @media (min-width: 846px) and (max-width: 1219px) {
-    & > *:last-child {
+    & > * {
       grid-column: 2 / -1;
     }
   }
-  @media (min-width: 1220px) {
+}
+
+.embl-grid-has-sidebar--hairline {
+  @media (min-width: 1300px) {
     & > *:last-child {
       position: relative;
     }
@@ -89,48 +92,4 @@
       width: 1px;
     }
   }
-}
-
-.embl-grid--alt {
-  --page-grid-gap: 0;
-  background-color: set-ui-color(vf-ui-color--black);
-  color: set-ui-color(vf-ui-color--white);
-  grid-column: 1 / -1;
-  /* stylelint-disable declaration-colon-space-after */
-  grid-template-columns:
-    minmax(1em, auto)
-    calc(var(--embl-grid-module--prime) + var(--embl-grid-spacing-normaliser))
-    minmax(288px, calc($vf-layout--comfortable - 206px))
-    minmax(1em, auto)
-  ;
-  /* stylelint-enable */
-  justify-content: center;
-  position: relative;
-
-  & > :first-child {
-    grid-column: 2 / -2;
-  }
-  & > :last-child {
-    grid-column: 2 / -2;
-  }
-
-  @media (min-width: $vf-breakpoint--md) {
-    & > :first-child {
-      grid-column: 2 / span 1;
-    }
-    & > :last-child {
-      grid-column: 3;
-      margin-left: 16px;
-    }
-  }
-  @media (min-width: 1200px) {
-    & > :last-child {
-      margin-left: 30px;
-    }
-  }
-
-  // HACK: put here for now
-  /* stylelint-disable order/properties-alphabetical-order, order/order  */
-  padding-top: 1.5rem;
-  /* stylelint-enable */
 }

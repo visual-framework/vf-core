@@ -1,3 +1,9 @@
+### 1.2.0
+
+- adds themed design tokens
+- creates theme variants documentation page
+- creates theme variant maps, sass variables, css custom properties
+
 ### 1.1.0
 
 - Adds some basic layout (width) tokens

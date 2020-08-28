@@ -1,6 +1,10 @@
-### 1.0.5
+### 2.0.0
 
-- updates max-width of component
+- removes unused `--alt` version (use a utility class for background colour).
+- adds more space for content in initial (prime) column and sidebar column (if used).
+- tidies up CSS by using css custom properties for variants.
+- removes weird margin that was used beforehand.
+- takes the hairline out of `--has-sidebar` and gives it it's own modifier class.
 
 ### 1.0.4
 

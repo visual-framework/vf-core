@@ -1,3 +1,7 @@
+### 1.1.0
+
+- makes theme variant naming and decisions consistent.
+
 ### 1.0.3
 
 - handle `a` elments inside the text in old WP posts.

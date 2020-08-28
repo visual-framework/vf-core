@@ -1,3 +1,7 @@
+### 1.1.0
+
+- makes theme variant naming and decisions consistent.
+
 ### 1.0.4
 
 - makes it work as an include as well as render

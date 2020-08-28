@@ -1,3 +1,8 @@
+### 2.2.4
+
+* bug: css nano aggressive grid optimizations #1073
+  * https://github.com/visual-framework/vf-core/pull/1073
+
 ### 2.2.3
 
 * move vf-component-generator gulp tasks into the vf-component-generator
