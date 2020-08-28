@@ -1,3 +1,7 @@
+### 1.5.0
+
+- makes theme variant naming and decisions consistent.
+
 ### 1.4.6
 
 - updates max-width of component
