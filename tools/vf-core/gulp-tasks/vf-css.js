@@ -187,7 +187,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       .src(SassOutput + '/styles.css')
       .pipe(autoprefixer(autoprefixerOptions))
       .pipe(gulp.dest(SassOutput))
-      .pipe(cssnano())
+      .pipe(cssnano({reduceIdents: {gridTemplate: false}}))
       .pipe(gulp.dest(SassOutput))
       .on('end', function() {
         done();
