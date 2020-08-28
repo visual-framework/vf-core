@@ -1,4 +1,4 @@
-### 1.0.3
+### 1.0.6
 
 - updates max-width of component
 
