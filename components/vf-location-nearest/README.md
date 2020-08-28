@@ -24,7 +24,41 @@ You should import this component in `./components/vf-component-rollup/scripts.js
 import { vfLocationNearest } from 'vf-location-nearest/vf-location-nearest';
 // Or import directly
 // import { vfLocationNearest } from '../components/raw/vf-location-nearest/vf-location-nearest.js';
-vfLocationNearest(); // if needed, invoke it
+
+// Configure an object of your locations to detect
+    let vfLocationNearestLocations = {
+      // supply a default in case of geodetect failures
+      default: {
+        name: "Heidelberg",
+        latlon: "49.40768, 8.69079" // lat then lon
+      },
+      barcelona: {
+        name: "Barcelona",
+        latlon: "0.40768, 0.69079"
+      },
+      grenoble: {
+        name: "Grenoble",
+        latlon: "45.16667, 5.71667"
+      },
+      hamburg: {
+        name: "Hamburg",
+        latlon: "53.57532, 10.01534"
+      },
+      heidelberg: {
+        name: "Heidelberg",
+        latlon: "49.40768, 8.69079"
+      },
+      hinxton: {
+        name: "EMBL-EBI Hinxton",
+        latlon: "0.40768, 0.69079"
+      },
+      rome: {
+        name: "Rome",
+        latlon: "0.40768, 0.69079"
+      }
+    }
+    // Bootstrap location detection
+    vfLocationNearest(vfLocationNearestLocations);
 ```
 
 ## Sass/CSS

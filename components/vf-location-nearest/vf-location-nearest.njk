@@ -9,7 +9,14 @@
 
 <script type="text/javascript">
   window.onload = function () {
+    // You should do this in your central JS as appropriate
+
+    // Configure an object of your locations to detect
     let vfLocationNearestLocations = {
+      default: {
+        name: "Heidelberg",
+        latlon: "49.40768, 8.69079"
+      },
       barcelona: {
         name: "Barcelona",
         latlon: "0.40768, 0.69079"
@@ -35,6 +42,7 @@
         latlon: "0.40768, 0.69079"
       }
     }
+    // Bootstrap location detection
     vfLocationNearest(vfLocationNearestLocations);
   };
 </script>

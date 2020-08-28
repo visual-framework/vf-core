@@ -36,10 +36,10 @@ function vfLocationNearestIndicate(type) {
 
 /**
  * Use the browser location API to try to atuodetct location.
+ * @example vfLocationNearestDetect(locationsList)
+ * @param {object} [locationsList] - An object of locations
  */
-function vfLocationNearestDetect() {
-  // console.log('vfLocationNearestDetect is to be implemented');
-
+function vfLocationNearestDetect(locationsList) {
   // Via: https://developers.google.com/web/fundamentals/native-hardware/user-location#dont_keep_the_user_waiting_set_a_timeout
   var startPos;
   var geoOptions = {
@@ -49,8 +49,7 @@ function vfLocationNearestDetect() {
 
   var geoSuccess = function(position) {
     startPos = position;
-    console.log('success',startPos.coords)
-    return(startPos.coords);
+    vfLocationNearestResolve(locationsList, startPos.coords);
     // document.getElementById('startLat').innerHTML = startPos.coords.latitude;
     // document.getElementById('startLon').innerHTML = startPos.coords.longitude;
   };
@@ -62,11 +61,28 @@ function vfLocationNearestDetect() {
     //   2: position unavailable (error response from location provider)
     //   3: timed out
     // if no match return false
-    return false;
+    vfLocationNearestResolve(locationsList, false);
   };
 
+  // Bootstrap browserapi
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+}
 
+/**
+ * Receive a location and process it against a user location if any.
+ * @example vfLocationNearestResolve(locationsList, userLocation)
+ * @param {object} [locationsList] - An object of locations
+ * @param {object} [userLocation] - An obhject with .latitude and .lognitude
+ */
+function vfLocationNearestResolve(locationsList, userLocation) {
+  console.log(locationsList, userLocation);
+
+  if (userLocation == false) {
+    console.warn('vfLocationNearest', 'No user location detected, will use default')
+  } else {
+    // diameter matching
+    console.warn('vfLocationNearest', 'diameter matching to be done')
+  }
 }
 
 /**
@@ -77,13 +93,15 @@ function vfLocationNearestDetect() {
 function vfLocationNearest(locationsList) {
   locationsList = locationsList || 'defaultVal';
 
-  console.log('vfLocationNearest',locationsList)
+  console.log('vfLocationNearest locationsList',locationsList)
 
   // unset any prior check
   vfLocationNearestIndicate('unload');
 
   // get the current users location
-  vfLocationNearestDetect();
+  vfLocationNearestDetect(locationsList);
+  // let userLocation =
+  // console.log('userLocation',userLocation)
 
   // other stuff
 
