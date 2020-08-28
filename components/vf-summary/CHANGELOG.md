@@ -1,3 +1,7 @@
+### 1.2.0
+
+- makes theme variant naming and decisions consistent.
+
 ### 1.1.0
 
 - Deprecated the `vf-summary--profile` component, you should now use `vf-profile`

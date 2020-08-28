@@ -1,3 +1,7 @@
+### 1.4.0
+
+- creates supporting Sass files for new theming design tokens to be used.
+
 ### 1.3.0
 
 - adds a width css custom property for `vf-body` component.

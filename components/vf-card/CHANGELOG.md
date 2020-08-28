@@ -1,3 +1,7 @@
+### 2.1.0
+
+- makes theme variant naming and decisions consistent.
+
 ### 2.0.0
 
 - gives title option to have a link that fills 'card'
