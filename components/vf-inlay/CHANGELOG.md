@@ -1,3 +1,9 @@
+### 1.1.0
+
+- Simplifies grid again
+- removes `--alt` version as it was unused and it's better to use a utility class for background colour
+- tidied up `.njk` file so it only shows one example.
+
 ### 1.0.0
 
 - updates max-width of component
@@ -9,4 +15,3 @@
 ### 1.0.0-rc.2
 
 - Improves support of `.vf-inlay__content--additional` at a medium breakpoints (shows in two columns)
-
