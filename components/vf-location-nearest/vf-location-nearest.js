@@ -113,11 +113,66 @@ function vfLocationNearestSave(location, locationId) {
 }
 
 /**
+  * Observe an element for changes to specify a manual location
+  * @param {object} [locationsList] - An object of locations
+  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+  * @example vfLocationNearestOverridePopulate(locationsList, document.vfLocationNearestDomActions('.vf-component__container')[0]);
+  */
+ function vfLocationNearestOverridePopulate(locationsList, scope) {
+  var scope = scope || document;
+
+  // todo: populate a dropdown with options, seperate function
+}
+
+/**
+  * Observe an element for changes to specify a manual location
+  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+  * @example vfLocationNearestOverrideActivate(locationsList, document.vfLocationNearestDomActions('.vf-component__container')[0]);
+  */
+function vfLocationNearestOverrideActivate(scope) {
+  var scope = scope || document;
+
+  // todo: observchange
+}
+
+/**
+  * With attributes saved to the dom, we can take further action
+  * <body data-vf-location-nearest-loaded="true"
+  *   data-vf-location-nearest-location="default"
+  *   data-vf-location-nearest-name="Heidelberg"
+  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+  * @example vfLocationNearestDomActions(document.vfLocationNearestDomActions('.vf-component__container')[0]);
+  */
+function vfLocationNearestDomActions(scope) {
+  var scope = scope || document;
+  // Get relevant elements and collections
+
+  // push the active location to the dom
+  function assignName() {
+    const locationName = scope.querySelectorAll('[data-vf-js-location-nearest-name]');
+    if (!locationName) {
+      // exit: container not found
+      return;
+    }
+    if (locationName.length == 0) {
+      // exit: either tabs or tabbed content not found
+      return;
+    }
+  }
+
+  // add is-active to any elements/components
+  function activateElements() {
+  }
+
+  assignName();
+}
+
+/**
   * The global function for this component
   * @example vfLocationNearest(locationsList)
   * @param {object} [locationsList] - An object of locations
   */
-function vfLocationNearest(locationsList) {
+ function vfLocationNearest(locationsList) {
   locationsList = locationsList || { default: {
     name: "Heidelberg",
     latlon: "49.4076, 8.6907"
@@ -129,23 +184,11 @@ function vfLocationNearest(locationsList) {
 
   // get the current users location
   vfLocationNearestDetect(locationsList);
+
+  // enable a manual override widget
+  vfLocationNearestOverridePopulate(locationsList, scope);
+  vfLocationNearestOverrideActivate(locationsList);
 }
-
-/**
-  * With attributes saved to the dom, we can take further action
-  * <body data-vf-location-nearest-loaded="true"
-  *   data-vf-location-nearest-location="default"
-  *   data-vf-location-nearest-name="Heidelberg"
-  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
-  * @example vfTabs(document.vfLocationNearestDomActions('.vf-component__container')[0]);
-  */
-function vfLocationNearestDomActions(scope) {
-  var scope = scope || document;
-  // Get relevant elements and collections
-
-
-}
-
 
 // If you need to invoke the component by default
 // vfLocationNearest();
