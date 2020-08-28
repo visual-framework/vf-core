@@ -19,12 +19,14 @@
 }
 .vf-section-header__heading--is-link {
   @include inline-link($vf-link--visited-color: map-get($vf-colors-map, vf-color--blue));
-  cursor: pointer;
-  display: block;
 
+  cursor: pointer;
+  display: grid;
+  grid-column-gap: map-get($vf-spacing-map, vf-spacing--sm);
+  grid-template-columns: auto 1fr;
+  
   .vf-section-header__icon {
     fill: currentColor;
-    margin-left: map-get($vf-spacing-map, vf-spacing--sm);
     transform: translateY(map-get($vf-spacing-map, vf-spacing--xs));
     // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
     transition-duration: 125ms;

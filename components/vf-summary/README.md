@@ -4,7 +4,9 @@
 
 ## About
 
-Summaries in the form of text, headlines and often imagery for a range of types of content, including: articles, jobs, news and people profiles. 
+Summaries in the form of text, headlines and often imagery for a range of types of content, including: articles, jobs, news and people profiles.
+
+<h3>The <code>vf-summary--profile</code> component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="/components/detail/vf-profile"><code>vf-profile</code></a> component.</h3> 
 
 ### Publications Summary
 

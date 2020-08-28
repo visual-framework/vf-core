@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {# <link rel="stylesheet" media="all" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css" /> #}
+    <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+    <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
+  </head>
+  <body class="{{ bodyClass }} vf-body" >
+    <header class="vf-global-header | vf-search-client-side--no-index">
+
+      <div class="vf-global-header__inner">
+        {% render '@vf-logo', {logo_href:  '/' | url, sreen_reader_text: 'Visual Framework 2.0', image: siteConfig.siteInformation.url + 'assets/vf-logo/assets/logo.svg' } %}
+        <nav class="vf-navigation vf-navigation--global">
+          <ul class="vf-navigation__list | vf-list--inline">
+            <li class="vf-navigation__item">
+              <a href="{{ '/' | url }}" class="vf-navigation__link">About</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="{{ '/components' | url }}" class="vf-navigation__link">Components</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="{{ '/developing' | url }}" class="vf-navigation__link">Documentation</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="{{ '/search' | url }}" class="vf-navigation__link">Search</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link">Help, chat</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </header>
+    {% if page.url != '/' and page.url != '/404.html' %}
+    {# don't show breadcrumb on homepage #}
+    <nav class="vf-breadcrumbs | vf-search-client-side--no-index" aria-label="Breadcrumb">
+      <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+        <li class="vf-breadcrumbs__item">
+          <a href="{{ '/' | url }}" class="vf-breadcrumbs__link">{{siteConfig.siteInformation.title}}</a>
+        </li>
+        {# don't show section link on a section #}
+        {% if is_index != true %}
+          {# load section breadcrumbs from siteConfig.js #}
+          <li class="vf-breadcrumbs__item">
+            <a href="{{ siteConfig.sections[section].url | url }}" class="vf-breadcrumbs__link">{{ siteConfig.sections[section].title }}</a>
+          </li>
+        {% endif %}
+        {# Handle child components #}
+        {% if pagination.items[0] %}
+          {% if pagination.items[0].name.split('__')[1] %}
+            <li class="vf-breadcrumbs__item">
+              <a href=".." class="vf-breadcrumbs__link">{{ pagination.items[0].name.split('__')[0] }}</a>
+            </li>
+          {% endif %}
+        {% endif %}
+        {# Standard page title #}
+        <li class="vf-breadcrumbs__item">
+          {% if pagination.items[0].name %}
+            {{ pagination.items[0].name }}
+          {% else %}
+            {{ title }}
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
+    {% endif %}
+
+    {{ content | safe }}
+    {% include "footer.njk" %}
+  </body>
+</html>

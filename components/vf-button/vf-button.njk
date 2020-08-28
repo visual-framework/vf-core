@@ -1,7 +1,21 @@
+{% if context %}
+
+  {% set button_href = context.button_href %}
+  {% set theme = context.theme %}
+  {% set id = context.id %}
+  {% set text = context.text %}
+  {% set style = context.style %}
+  {% set size = context.size %}
+  {% set override_class = context.override_class %}
+  {% set html = context.html %}
+  {% set text = context.text %}
+
+{% endif %}
+
 {% spaceless %}
 
 {# Determine type of element to use, if not explicitly set -#}
-{% if href %}
+{% if (button_href) or (href) %}
   {% set tags = 'a' %}
 {% else %}
   {% set tags = 'button' %}
@@ -15,7 +29,7 @@
 <{{tags}}
 {# If there's an href put it here #}
 {%- if tags == 'a' %}
- href="{{ button_href if button_href else '#' }}"
+ href="{{ (button_href) or (href) }}"
 {%- endif %}
 {# You're using an ID? Really?? That'll go here #}
 {% if id %} id="{{-id-}}"{% endif %}

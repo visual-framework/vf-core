@@ -1,23 +1,14 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 1.0.0
+### 1.0.0
 
 - repositions the input and it's label so they're more horizontally in line.
 
-# 1.0.0-alpha.8 (2019-10-23)
+### 1.0.0-alpha.8
 
-**Note:** Version bump only for package @visual-framework/vf-form__radio
+- Version bump only for package @visual-framework/vf-form__radio
 
+### 1.0.0-alpha.7
 
-
-
-
-# 1.0.0-alpha.7 (2019-09-30)
-
-**Note:** Version bump only for package @visual-framework/vf-form__radio
+- Version bump only for package @visual-framework/vf-form__radio
 
 
 

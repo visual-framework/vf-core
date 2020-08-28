@@ -1,22 +1,26 @@
-## 3.0.0-alpha.1
+### 3.0.1
 
-* makes `vf-section-header` work as a subcomponent.
-* changes async for a for loop.
-* adds contextual data changes if context is passed.
+- updates max-width of component
 
-## 2.0.0
+### 3.0.0-alpha.1
 
-* makes better use of using .yml for data rather than having to inline it in a `vf-card`
-* better default spacing
+- makes `vf-section-header` work as a subcomponent.
+- changes async for a for loop.
+- adds contextual data changes if context is passed.
 
-## 1.0.0-alpha.2
+### 2.0.0
 
-* Tweaks layout centring
+- makes better use of using .yml for data rather than having to inline it in a `vf-card`
+- better default spacing
 
-## 1.0.0-alpha.1 (2020-01-28)
+### 1.0.0-alpha.2
 
-* Corrects YAML template usage
+- Tweaks layout centring
 
-## 1.0.0-alpha.0 (2020-01-24)
+### 1.0.0-alpha.1 (2020-01-28)
 
-* Initial release
+- Corrects YAML template usage
+
+### 1.0.0-alpha.0 (2020-01-24)
+
+- Initial release

@@ -1,6 +1,4 @@
-# Change Log
-
-## 0.0.1 (28/04/20)
+### 0.0.1
 
 - initial component release
-- includes outline variant, and dark/light mode options 
+- includes outline variant, and dark/light mode options

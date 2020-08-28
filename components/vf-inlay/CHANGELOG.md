@@ -1,9 +1,12 @@
-# Change Log
+### 1.0.0
 
-## 1.0.0-rc.3
+- updates max-width of component
 
-* Simplifies grid by removing most of the grid.
+### 1.0.0-rc.3
 
-## 1.0.0-rc.2
+- Simplifies grid by removing most of the grid.
 
-* Improves support of `.vf-inlay__content--additional` at a medium breakpoints (shows in two columns)
+### 1.0.0-rc.2
+
+- Improves support of `.vf-inlay__content--additional` at a medium breakpoints (shows in two columns)
+

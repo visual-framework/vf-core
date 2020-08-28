@@ -1,0 +1,21 @@
+{# Make sure any variables are listed inside the following if statement #}
+{% if context %}
+  {% set details_open = context.details_open %}
+  {% set details_summary = context.details_open %}
+  {% set details_content = context.details_open %}
+{% endif %}
+
+<details class="vf-details" {%- if details_open %} open{% endif %}>
+    <summary class="vf-details--summary">{{ details_summary }}</summary>
+    {{ details_content }}
+</details>
+
+{# You can do Nunjucks logic in your templates that references the .yml settings
+   What's Nunjucks: https://mozilla.github.io/nunjucks/templating.html #}
+{#
+{% if item.image == "blank" %}
+  <span><!-- no image --></span>
+  {% else %}
+  {{ item.image }}
+{% endif %}
+#}

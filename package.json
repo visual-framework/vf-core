@@ -1,63 +1,16 @@
 {
-  "name": "@visual-framework/vf-core",
-  "version": "2.0.1",
+  "name": "@visual-framework/vf-core-repo",
+  "version": "2.2.0-alpha.0",
   "description": "Visual Framework 2.0",
   "main": "index.js",
-  "vfConfig": {
-    "vfNamespace": "vf-",
-    "vfName": "Visual Framework 2.0",
-    "vfHomepage": "https://visual-framework.github.io/vf-core",
-    "vfBuildFractalMode": "normal"
-  },
-  "dependencies": {
-    "@babel/preset-env": "7.10.4",
-    "@frctl/fractal": "^1.2.1",
-    "@frctl/nunjucks": "^2.0.1",
-    "chalk": "^4.0.0",
-    "del": "^5.0.0",
-    "fast-glob": "^3.1.0",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-babel": "^8.0.0",
-    "gulp-better-rollup": "^4.0.1",
-    "gulp-compile-handlebars": "^0.6.1",
-    "gulp-cssnano": "^2.1.3",
-    "gulp-delete-lines": "^0.0.7",
-    "gulp-notify": "^3.2.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-replace-path": "^0.4.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-shell": "^0.8.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-stylelint": "^13.0.0",
-    "gulp-svgmin": "^3.0.0",
-    "gulp-watch": "^5.0.1",
-    "highlight.js": "^10.0.0",
-    "install": "^0.13.0",
-    "list-stream": "^2.0.0",
-    "marked": "^1.0.0",
-    "npm": "^6.12.1",
-    "rollup": "^2.0.0",
-    "rollup-plugin-includepaths": "^0.2.3",
-    "stylelint": "^13.0.0",
-    "stylelint-order": "^4.0.0",
-    "stylelint-scss": "^3.12.0",
-    "theo": "^8.1.4",
-    "vinyl-source-stream": "^2.0.0",
-    "yeoman-generator": "^4.2.0",
-    "yosay": "^2.0.2"
-  },
-  "private": false,
+  "dependencies": {},
+  "private": true,
   "devDependencies": {
-    "@babel/core": "7.10.4",
-    "@babel/preset-env": "7.10.4",
-    "@percy/script": "1.1.0",
-    "browser-sync": "2.26.7",
-    "gulp-sass-lint": "1.4.0",
-    "gulp-theo": "2.0.1",
-    "husky": "4.2.5",
-    "percy": "0.27.0",
-    "prettier-stylelint": "0.4.2"
+    "@visual-framework/vf-core": "./tools/vf-core",
+    "@visual-framework/vf-component-generator": "./tools/vf-component-generator",
+    "@visual-framework/vf-component-initialization": "./tools/vf-component-initialization",
+    "@visual-framework/vf-frctl-extensions": "./tools/vf-frctl-extensions",
+    "@visual-framework/vf-sass-compilation": "./tools/vf-sass-compilation"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
@@ -66,7 +19,7 @@
     "note:lerna:test": "we use the `--canary` flag to simplify testing, correct versions can be selected when running `lerna:publish`",
     "lerna:publish": "lerna publish --no-git-tag-version --no-push && git reset --hard && lerna publish --no-git-tag-version --no-push --skip-npm --ignore-scripts",
     "note:lerna:publish": "it's a known issue that you need to supply the version twice, we're working a solution for this",
-    "prepublishOnly": "gulp vf-core:prepare-deploy"
+    "prepublishOnly": "cd tools/vf-core && gulp vf-core:prepare-deploy"
   },
   "repository": {
     "type": "git",
@@ -87,7 +40,7 @@
   "license": "Apache-2.0",
   "husky": {
     "hooks": {
-      "pre-push": "gulp vf-prepush-test"
+      "pre-push": "cd tools/vf-core && gulp vf-prepush-test"
     }
   }
 }

@@ -1,18 +1,20 @@
-# Change Log
+### 1.0.5
 
-## 1.0.4
+- updates max-width of component
 
-* The one where we make our CSS grid-gaps gaps
-  * https://github.com/visual-framework/vf-core/pull/843
+### 1.0.4
 
-## 1.0.2
+- The one where we make our CSS grid-gaps gaps
+  - https://github.com/visual-framework/vf-core/pull/843
 
-* `.embl-grid` uses `[main-start]` and `[main-end]` for more reliable positioning of child grids
+### 1.0.2
 
-## 1.0.1
+- `.embl-grid` uses `[main-start]` and `[main-end]` for more reliable positioning of child grids
 
-* Uses `--page-grid-gap` custom property for sidebar gap; https://github.com/visual-framework/vf-core/pull/694
+### 1.0.1
 
-## 1.0.0 (2019-12-17)
+- Uses `--page-grid-gap` custom property for sidebar gap; https://github.com/visual-framework/vf-core/pull/694
 
-* Initial stable release
+### 1.0.0 (2019-12-17)
+
+- Initial stable release

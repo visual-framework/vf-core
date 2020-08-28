@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-grid-page.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-grid-page)
 
-## About
+<h2>This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="https://www.npmjs.com/package/@visual-framework/vf-body">new `vf-body` component</a>.</h2>
 
 ## Install
 
