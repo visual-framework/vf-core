@@ -132,6 +132,15 @@ function vfLocationNearestSave(location, locationId) {
 function vfLocationNearestOverrideActivate(scope) {
   var scope = scope || document;
 
+  const locationName = scope.querySelectorAll('[data-vf-js-location-nearest-override]');
+  if (!locationName) {
+    // exit: container not found
+    return;
+  }
+  if (locationName.length == 0) {
+    // exit: either tabs or tabbed content not found
+    return;
+  }
   console.log('todo: observchange')
 }
 
@@ -145,25 +154,40 @@ function vfLocationNearestOverrideActivate(scope) {
   */
 function vfLocationNearestDomActions(scope) {
   var scope = scope || document;
-  // Get relevant elements and collections
+
+  // Get items from dom
+  var el = document.querySelector('body');
+  var locationId = el.getAttribute('data-vf-location-nearest-location');
+  var locationName = el.getAttribute('data-vf-location-nearest-name');
 
   // push the active location to the dom
   function assignName() {
-    const locationName = scope.querySelectorAll('[data-vf-js-location-nearest-name]');
-    if (!locationName) {
+    const locationNameHolder = scope.querySelectorAll('[data-vf-js-location-nearest-name]');
+    if (!locationNameHolder) {
       // exit: container not found
       return;
     }
-    if (locationName.length == 0) {
-      // exit: either tabs or tabbed content not found
+    if (locationNameHolder.length == 0) {
+      // exit: content not found
       return;
     }
-    console.log('todo: push the active location to the dom')
+    // console.log('assignName','pushing the active location to the dom')
+    locationNameHolder[0].innerHTML = locationName;
   }
 
   // add is-active to any elements/components
   function activateElements() {
-    console.log('todo: add is-active to any elements/components')
+    const locationActivationTargets = scope.querySelectorAll('[data-vf-js-location-nearest-activation-target]');
+    if (!locationActivationTargets) {
+      // exit: container not found
+      return;
+    }
+    if (locationActivationTargets.length == 0) {
+      // exit: content not found
+      return;
+    }
+
+    console.log('todo: add is-active to any elements/components with ' + locationId)
   }
 
   assignName();
