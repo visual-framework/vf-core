@@ -189,8 +189,8 @@ function vfLocationNearestDomActions(scope) {
   vfLocationNearestDetect(locationsList);
 
   // enable a manual override widget
-  vfLocationNearestOverridePopulate(locationsList, scope);
-  vfLocationNearestOverrideActivate(locationsList);
+  vfLocationNearestOverridePopulate(locationsList);
+  vfLocationNearestOverrideActivate();
 }
 
 // If you need to invoke the component by default
