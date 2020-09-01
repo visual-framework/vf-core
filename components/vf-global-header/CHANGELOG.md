@@ -1,7 +1,8 @@
-### 2.1.0
+### 3.0.0
 
 - updates max-width of component
 - adds 'context' for the logo
+- removes `text` as you can make use of including text with the `vf-logo`
 
 ### 2.0.2
 
