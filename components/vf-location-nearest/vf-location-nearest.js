@@ -114,6 +114,7 @@ function vfLocationNearestSave(location, locationId) {
 
 /**
   * Observe an element for changes to specify a manual location
+  * This may support a "type" but for now it's only a select list
   * @param {object} [locationsList] - An object of locations
   * @param {object} [scope] - the html scope to process, optional, defaults to `document`
   * @example vfLocationNearestOverridePopulate(locationsList, document.vfLocationNearestDomActions('.vf-component__container')[0]);
@@ -132,14 +133,20 @@ function vfLocationNearestSave(location, locationId) {
   }
 
 
-  console.log('todo: populate a dropdown with options, seperate function')
+  let widget = '<label class="vf-form__label" for="vf-form__select"></label>'+
+               '<select class="vf-form__select" id="vf-form__select">';
 
-  // todo for each these
-  locationWidget[0].innerHTML = locationsList;
+  // Create the markup for a dropdown
+  for (const key in locationsList) {
+    if (locationsList.hasOwnProperty(key)) {
+      const element = locationsList[key];
+      widget = widget + `<option value="${key}">${locationsList[key].name}</option>`
+    }
+  }
+  widget = widget + `</select>`;
 
-  // observe for changes
-  vfLocationNearestOverrideActivate();
-
+  // assign values to widget
+  locationWidget[0].innerHTML = widget;
 }
 
 /**
@@ -160,6 +167,9 @@ function vfLocationNearestOverrideActivate(scope) {
     return;
   }
   console.log('todo: observchange')
+
+  // onchange:
+  // vfLocationNearestSave(locationsList['nameofcity'],'nameofcity')
 }
 
 /**
@@ -227,13 +237,13 @@ function vfLocationNearestDomActions(scope) {
   // unset any prior check
   vfLocationNearestIndicate('unload');
 
+  // Insert a widget of selectable locations
   vfLocationNearestOverridePopulate(locationsList);
 
   // get the current users location
   vfLocationNearestDetect(locationsList);
 
   // enable a manual override widget
-  vfLocationNearestOverridePopulate(locationsList);
   vfLocationNearestOverrideActivate();
 }
 
