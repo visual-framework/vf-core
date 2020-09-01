@@ -85,8 +85,7 @@ function vfLocationNearestResolve(locationsList, userLocation) {
     vfLocationNearestSave(locationsList['default'].name,'default')
   } else {
     // diameter matching
-    console.warn('vfLocationNearest', 'diameter matching to be done');
-    console.warn('vfLocationNearest', 'using default');
+    console.warn('vfLocationNearest', 'Loacation detected but diameter matching to be done; using default');
     // use default for now
     vfLocationNearestSave(locationsList['default'].name,'default')
   }
@@ -99,7 +98,7 @@ function vfLocationNearestResolve(locationsList, userLocation) {
  * @param {string} [locationId] - The ID
  */
 function vfLocationNearestSave(locationName, locationId) {
-  console.log('vfLocationNearestSave location',locationName,locationId)
+  // console.log('vfLocationNearestSave location',locationName,locationId)
 
   // assign to the body
   var el = document.querySelector('body');
@@ -168,7 +167,7 @@ function vfLocationNearestOverrideActivate(scope) {
   overrideElement[0].addEventListener('change', function(e) {
     let activeItem = e.target;
     // console.log('You selected: ', activeItem.options[activeItem.target.selectedIndex].text);
-    vfLocationNearestSave(activeItem.options[activeItem.selectedIndex].text, activeItem.value)
+    vfLocationNearestSave(activeItem.options[activeItem.selectedIndex].text, activeItem.value);
   });
 }
 
@@ -203,8 +202,10 @@ function vfLocationNearestDomActions(scope) {
     locationNameHolder[0].innerHTML = locationName;
   }
 
-  // add is-active to any elements/components
+  // add is-active to any elements/components through simple click simulation
   function activateElements() {
+    console.log('todo: add is-active to any elements/components with ' + locationId)
+
     const locationActivationTargets = scope.querySelectorAll('[data-vf-js-location-nearest-activation-target]');
     if (!locationActivationTargets) {
       // exit: container not found
@@ -215,7 +216,14 @@ function vfLocationNearestDomActions(scope) {
       return;
     }
 
-    console.log('todo: add is-active to any elements/components with ' + locationId)
+    locationActivationTargets.forEach(element => {
+      console.log(element.getAttribute('data-vf-js-location-nearest-activation-target'));
+      if (element.getAttribute('data-vf-js-location-nearest-activation-target') == locationId) {
+        element.click();
+      }
+    });
+
+
   }
 
   assignName();
