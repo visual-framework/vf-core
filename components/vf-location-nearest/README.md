@@ -44,6 +44,14 @@ let vfLocationNearestLocations = {
 vfLocationNearest(vfLocationNearestLocations);
 ```
 
+### JS Data attributes
+
+All are optional
+
+- `data-vf-js-location-nearest-name` element will receive the name of the current location
+- `data-vf-js-location-nearest-override-widget` element will be populated with an override widget (vf-form select list)
+- `data-vf-js-location-nearest-activation-target="{locationId}"` will receive clicks on location change. This is a simple method to activate diverse elements.
+
 ## Sass/CSS
 
 If your component uses Sass:

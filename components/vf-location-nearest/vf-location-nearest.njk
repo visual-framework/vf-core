@@ -6,14 +6,21 @@
 <div class="vf-location-nearest | vf-content">
   /* This is a demo only, to use this utility component follow the README.md to graft onto your UI */
 
-  <div data-vf-js-location-nearest-override-widget>
-  widget to be here
-  </div>
+  {% markdown %}
 
-  <h3>Your detected city is: <span data-vf-js-location-nearest-name><em>loading</em></span></h3>
+  ### Detected location
 
+  Your detected city is: <span data-vf-js-location-nearest-name><em>loading</em></span>
 
-  <p>Elements tagged with `data-vf-js-location-nearest-activation-target="{locationId}"` will receive clicks on location change. This is a simple method to activate diverse elements</p>
+  ### Available locations
+
+  <div data-vf-js-location-nearest-override-widget><em>loading</em></div>
+
+  ### Element activation
+
+  Elements tagged with `data-vf-js-location-nearest-activation-target="{locationId}"` will receive clicks on location change. This is a simple method to activate diverse elements.
+
+  {% endmarkdown %}
 
   <div class="vf-tabs">
     <ul class="vf-tabs__list" data-vf-js-tabs>

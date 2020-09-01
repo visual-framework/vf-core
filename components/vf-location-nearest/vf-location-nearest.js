@@ -202,10 +202,8 @@ function vfLocationNearestDomActions(scope) {
     locationNameHolder[0].innerHTML = locationName;
   }
 
-  // add is-active to any elements/components through simple click simulation
+  // simple activation of any elements/components through simple click simulation
   function activateElements() {
-    console.log('todo: add is-active to any elements/components with ' + locationId)
-
     const locationActivationTargets = scope.querySelectorAll('[data-vf-js-location-nearest-activation-target]');
     if (!locationActivationTargets) {
       // exit: container not found
@@ -217,13 +215,11 @@ function vfLocationNearestDomActions(scope) {
     }
 
     locationActivationTargets.forEach(element => {
-      console.log(element.getAttribute('data-vf-js-location-nearest-activation-target'));
+      // console.log(element.getAttribute('data-vf-js-location-nearest-activation-target'));
       if (element.getAttribute('data-vf-js-location-nearest-activation-target') == locationId) {
         element.click();
       }
     });
-
-
   }
 
   assignName();
