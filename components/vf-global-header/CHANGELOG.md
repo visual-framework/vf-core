@@ -1,3 +1,8 @@
+### 2.1.0
+
+- updates max-width of component
+- adds 'context' for the logo
+
 ### 2.0.2
 
 - fixes layout issue so a logo will take the space it needs.
