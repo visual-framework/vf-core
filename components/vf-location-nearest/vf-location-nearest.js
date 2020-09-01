@@ -45,7 +45,7 @@ function vfLocationNearestDetect(locationsList) {
   var startPos;
   var geoOptions = {
     enableHighAccuracy: false,
-    timeout: 10 * 1000
+    timeout: 4 * 1000
   }
 
   var geoSuccess = function(position) {
@@ -82,31 +82,29 @@ function vfLocationNearestResolve(locationsList, userLocation) {
 
   if (userLocation == false) {
     console.warn('vfLocationNearest', 'No user location detected, will use default');
-    vfLocationNearestSave(locationsList['default'],'default')
+    vfLocationNearestSave(locationsList['default'].name,'default')
   } else {
     // diameter matching
     console.warn('vfLocationNearest', 'diameter matching to be done');
     console.warn('vfLocationNearest', 'using default');
     // use default for now
-    vfLocationNearestSave(locationsList['default'],'default')
+    vfLocationNearestSave(locationsList['default'].name,'default')
   }
 }
 
 /**
  * Receive a resolved location and assign it to the DOM
  * @example vfLocationNearestSave(locationsList, userLocation)
- * @param {object} [location] - An object of lat,lon + name
+ * @param {object} [locationName] - A user-facing string
  * @param {string} [locationId] - The ID
  */
-function vfLocationNearestSave(location, locationId) {
-  console.log('vfLocationNearestSave location',location,locationId)
+function vfLocationNearestSave(locationName, locationId) {
+  console.log('vfLocationNearestSave location',locationName,locationId)
 
   // assign to the body
   var el = document.querySelector('body');
   el.setAttribute('data-vf-location-nearest-location', locationId);
-  el.setAttribute('data-vf-location-nearest-name', location.name);
-  // We shouldn't need this level of detail, ohter request should the `location`
-  // el.setAttribute('data-vf-location-nearest-latlon', location.latlon);
+  el.setAttribute('data-vf-location-nearest-name', locationName);
 
   // indicate we've loaded
   vfLocationNearestIndicate('load');
@@ -157,19 +155,21 @@ function vfLocationNearestSave(location, locationId) {
 function vfLocationNearestOverrideActivate(scope) {
   var scope = scope || document;
 
-  const locationName = scope.querySelectorAll('[data-vf-js-location-nearest-override-widget]');
-  if (!locationName) {
+  const overrideElement = scope.querySelectorAll('[data-vf-js-location-nearest-override-widget]');
+  if (!overrideElement) {
     // exit: container not found
     return;
   }
-  if (locationName.length == 0) {
+  if (overrideElement.length == 0) {
     // exit: content not found
     return;
   }
-  console.log('todo: observchange')
 
-  // onchange:
-  // vfLocationNearestSave(locationsList['nameofcity'],'nameofcity')
+  overrideElement[0].addEventListener('change', function(e) {
+    let activeItem = e.target;
+    // console.log('You selected: ', activeItem.options[activeItem.target.selectedIndex].text);
+    vfLocationNearestSave(activeItem.options[activeItem.selectedIndex].text, activeItem.value)
+  });
 }
 
 /**
