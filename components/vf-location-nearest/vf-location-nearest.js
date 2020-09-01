@@ -1,25 +1,5 @@
 // vf-location-nearest
 
-// Don't need JS? Then feel free to delete this file.
-
-/*
- * A note on the Visual Framework and JavaScript:
- * The VF is primarily a CSS framework so we've included only a minimal amount
- * of JS in components and it's fully optional (just remove the JavaScript selectors
- * i.e. `data-vf-js-tabs`). So if you'd rather use Angular or Bootstrap for your
- * tabs, the Visual Framework won't get in the way.
- *
- * When querying the DOM for elements that should be acted on:
- * 🚫 Don't: const tabs = document.querySelectorAll('.vf-tabs');
- * ✅ Do:    const tabs = document.querySelectorAll('[data-vf-js-tabs]');
- *
- * This allows users who would prefer not to have this JS engange on an element
- * to drop `data-vf-js-component` and still maintain CSS styling.
- */
-
-// // if you need to import any other components' JS to use here
-// import { vfOthercomponent } from 'vf-other-component/vf-other-component';
-
 /**
  * Utility method to invalidate prior check.
   * @example vfLocationNearest('load')
@@ -51,8 +31,6 @@ function vfLocationNearestDetect(locationsList) {
   var geoSuccess = function(position) {
     startPos = position;
     vfLocationNearestResolve(locationsList, startPos.coords);
-    // document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-    // document.getElementById('startLon').innerHTML = startPos.coords.longitude;
   };
   var geoError = function(error) {
     console.log('Error occurred. Error code: ' + error.code);
@@ -76,8 +54,7 @@ function vfLocationNearestDetect(locationsList) {
  * @param {object} [userLocation] - An obhject with .latitude and .lognitude
  */
 function vfLocationNearestResolve(locationsList, userLocation) {
-  console.log(locationsList, userLocation);
-
+  // console.log(locationsList, userLocation);
   console.log('user at',userLocation.latitude + ", " + userLocation.longitude)
 
   if (userLocation == false) {
@@ -128,7 +105,6 @@ function vfLocationNearestSave(locationName, locationId) {
     // exit: content not found
     return;
   }
-
 
   let widget = '<label class="vf-form__label" for="vf-form__select"></label>'+
                '<select class="vf-form__select" id="vf-form__select">';
@@ -263,4 +239,3 @@ export { vfLocationNearest };
 // import { vfLocationNearest } from '../components/raw/vf-location-nearest/vf-location-nearest.js';
 // And, if needed, invoke it
 // vfLocationNearest();
-
