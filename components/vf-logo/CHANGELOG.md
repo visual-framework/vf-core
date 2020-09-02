@@ -1,3 +1,7 @@
+### 1.2.0
+
+- adds 'context' for the logo
+
 ### 1.1.0
 
 - adds if statement for if there is text or not so no HTML is printed if not

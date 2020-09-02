@@ -1,3 +1,7 @@
+### 1.0.2
+
+- adds 'context' for the logo
+
 ### 1.0.1
 
 - Makes use of 'full width' which is useful for componets using `vf-u-fullbleed` or similar.

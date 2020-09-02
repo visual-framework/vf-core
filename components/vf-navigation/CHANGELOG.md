@@ -1,3 +1,7 @@
+### 1.2.5
+
+- updates max-width of component variants
+
 ### 1.2.4
 
 - updates max-width of component

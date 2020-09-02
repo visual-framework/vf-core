@@ -1,3 +1,10 @@
+{% if context %}
+  {% set logo_href = context.logo_href %}
+  {% set image = context.image %}
+  {% set logo_text = context.logo_text %}
+  {% set hidden_text = context.hidden_text %}
+{% endif %}
+
 <a href="{{logo_href}}"
 {% if id %} id="{{-id-}}"{% endif %}
 class="vf-logo{%- if logo_text %} | vf-logo--has-text{% endif -%}

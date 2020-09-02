@@ -1,8 +1,11 @@
+{% if context %}
+  {% set global_logo = context.global_logo %}
+{% endif %}
+
+
 <header class="vf-global-header">
 
-    {% render '@vf-logo' %}
-
-    <p class="vf-global-header__site-name">{{ text }}</p>
+    {% render '@vf-logo', { 'context': global_logo } %}
 
     {% render '@vf-navigation--global' %}
 
