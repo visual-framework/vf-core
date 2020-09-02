@@ -8,6 +8,13 @@ From a list of lat and long, this will use the browser geolcation API to select 
 
 This component is purely JavaScript and relies on other components to provide UI and to consume the detected region.
 
+This is an early version, some future improvements to be considered:
+
+- Callback to observe detected locations to be used in other components
+- Allowing "or" matches for content `data-vf-js-location-nearest-activation-target="locationOne, locationTwo"`
+- Enabling the default while we wait for geodetection
+- "Saving" a user's location when using the override
+
 ## Install
 
 This repository is distributed with [npm][https://www.npmjs.com/]. After [installing npm][https://www.npmjs.com/get-npm] and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-location-nearest` with this command.
