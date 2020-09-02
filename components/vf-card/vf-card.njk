@@ -1,4 +1,4 @@
-{%- if context %}
+{%- if context -%}
   {% set card_href = context.card_href %}
 
   {% set card_title = context.card_title %}
@@ -13,7 +13,7 @@
   {% set id = context.id %}
   {% set modifiers = context.modifiers %}
   {% set override_class = context.override_class %}
-{% endif %}
+{%- endif -%}
 
 <article
   {% if tags == 'a' %}href="{{ card_href if card_href else '#' }}"{%- endif -%}
@@ -25,28 +25,28 @@
   {%- if variant %} vf-card--{{variant}}{% endif %}
 
   {%- if modifier %} | {{modifier}}{% endif -%}
-  {%- if override_class %} | {{override_class}}{% endif %}
+  {%- if override_class %} | {{override_class}}{% endif -%}
 ">
 
-  {% if card_image %}
+  {% if card_image -%}
   <img src="{{ card_image }}" alt="{{ card_image__alt }}" class="vf-card__image">
-  {% endif %}
+  {%- endif %}
 
   <div class="vf-card__content">
 
-    <h3 class="vf-card__title">
+    {%- if card_title %}<h3 class="vf-card__title">{%- endif %}
     {%- if card_href %}<a class="vf-card__link" href="{{ card_href if card_href else '#' }}">{% endif -%}
       {{ card_title }}
     {%- if card_href %}</a>{% endif -%}
-    </h3>
+    {%- if card_title %}</h3>{%- endif %}
 
-    {% if card_subtitle %}
+    {% if card_subtitle -%}
     <p class="vf-card__subtitle" role="doc-subtitle">{{- card_subtitle -}}</p>
-    {% endif %}
+    {%- endif %}
 
-    {% if card_text %}
+    {% if card_text -%}
     <p class="vf-card__text">{{- card_text -}}</p>
-    {% endif %}
+    {%- endif %}
   </div>
 
 </article>
