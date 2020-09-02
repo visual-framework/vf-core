@@ -34,11 +34,11 @@
 
   <div class="vf-card__content">
 
-    {%- if card_title %}<h3 class="vf-card__title">{%- endif %}
+    <{%- if card_title %}h3{% else %}span{%- endif %} class="vf-card__title">
     {%- if card_href %}<a class="vf-card__link" href="{{ card_href if card_href else '#' }}">{% endif -%}
       {{ card_title }}
     {%- if card_href %}</a>{% endif -%}
-    {%- if card_title %}</h3>{%- endif %}
+    {%- if card_title %}</h3>{% else %}</span>{%- endif %}
 
     {% if card_subtitle -%}
     <p class="vf-card__subtitle" role="doc-subtitle">{{- card_subtitle -}}</p>
