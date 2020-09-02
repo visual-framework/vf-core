@@ -13,7 +13,7 @@
 
 .vf-banner {
   box-sizing: border-box;
-  padding: .75rem;
+  padding: .75rem 0;
 
   .vf-badge {
     margin-right: 1rem;
@@ -53,11 +53,14 @@
   max-width: $vf-layout--comfortable;
   padding: 0 1rem;
 
+  .vf-u-fullbleed & {
+    padding: 0;
+  }
+
   @supports (display: grid) {
     box-sizing: unset;
     margin: unset;
     max-width: unset;
-    padding: unset;
   }
 
   @media (max-width: 63.9375em) {

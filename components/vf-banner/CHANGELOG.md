@@ -1,3 +1,9 @@
+### 1.4.0
+
+- removes inline padding on `vf-banner` class
+- replaces inline padding on `vf-banner__content` class
+- removes inline padding from `vf-banner__content` if parent has `vf-u-fullbleed` class
+
 ### 1.2.3
 
 - updates max-width of component
