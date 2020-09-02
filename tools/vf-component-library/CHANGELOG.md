@@ -1,3 +1,8 @@
+### 1.0.4
+
+* uses vf-favicon
+* adds meta attributes
+
 ### 1.0.3
 
 * run `vf-component-assets:everything` on local dev
