@@ -32,7 +32,7 @@
     --embl-grid:
       var(--embl-grid-module--prime)
       [main-start]
-      1fr
+      repeat(auto-fit, minmax(200px, 1fr))
       [main-end];
 
     display: grid;
@@ -63,9 +63,9 @@
   --embl-grid:
     var(--embl-grid-module--prime)
     [main-start]
-    1fr
+    auto
     [main-end]
-    minmax(21em, auto);
+    minmax(21em, 1fr);
   /* stylelint-enable */
 
   @media (min-width: 846px) and (max-width: 1299px) {
