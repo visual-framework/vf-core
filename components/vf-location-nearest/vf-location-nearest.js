@@ -33,7 +33,7 @@ function vfLocationNearestDetect(locationsList) {
     vfLocationNearestResolve(locationsList, startPos.coords);
   };
   var geoError = function(error) {
-    console.log('Error occurred. Error code: ' + error.code);
+    console.warn('vfLocationNearest', 'Geolocation error code: ' + error.code);
     // error.code can be:
     //   0: unknown error
     //   1: permission denied
@@ -57,14 +57,56 @@ function vfLocationNearestResolve(locationsList, userLocation) {
   // console.log(locationsList, userLocation);
   console.log('user at',userLocation.latitude + ", " + userLocation.longitude)
 
+  // Determing which location is closest using circles
+  // https://stackoverflow.com/questions/21279559/geolocation-closest-locationlat-long-from-my-position/21297385#21297385
+  function calculateNearestCity(latitude, longitude) {
+
+    // Convert Degress to Radians
+    function Deg2Rad(deg) {
+      return deg * Math.PI / 180;
+    }
+    function PythagorasEquirectangular(lat1, lon1, lat2, lon2) {
+      lat1 = Deg2Rad(lat1);
+      lat2 = Deg2Rad(lat2);
+      lon1 = Deg2Rad(lon1);
+      lon2 = Deg2Rad(lon2);
+      var R = 6371; // km
+      var x = (lon2 - lon1) * Math.cos((lat1 + lat2) / 2);
+      var y = (lat2 - lat1);
+      var d = Math.sqrt(x * x + y * y) * R;
+      return d;
+    }
+
+    var minDif = 99999;
+    var closest = locationsList.default;
+
+    // loop through each location, matching a close city then the next closest and so on
+    for (const key in locationsList) {
+      if (locationsList.hasOwnProperty(key)) {
+        if (key != 'default') {
+          const evalutedLocation = locationsList[key];
+          var dif = PythagorasEquirectangular(latitude, longitude, evalutedLocation.latlon.split(', ')[0], evalutedLocation.latlon.split(', ')[1]);
+          if (dif < minDif) {
+            closest = evalutedLocation;
+            closest.id = key;
+            minDif = dif;
+          }
+        }
+      }
+    }
+
+    return closest;
+  }
+
+
   if (userLocation == false) {
+    // if no match, use the default location
     console.warn('vfLocationNearest', 'No user location detected, will use default');
-    vfLocationNearestSave(locationsList['default'].name,'default')
+    vfLocationNearestSave(locationsList['default'].name, 'default')
   } else {
-    // diameter matching
-    console.warn('vfLocationNearest', 'Loacation detected but diameter matching to be done; using default');
-    // use default for now
-    vfLocationNearestSave(locationsList['default'].name,'default')
+    // geo diameter matching
+    let closestCity  = calculateNearestCity(userLocation.latitude, userLocation.longitude);
+    vfLocationNearestSave(closestCity.name, closestCity.id)
   }
 }
 
