@@ -1,3 +1,7 @@
+### 1.2.1
+
+- dependency bump
+
 ### 1.2.0
 
 - adds themed design tokens

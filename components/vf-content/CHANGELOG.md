@@ -1,3 +1,7 @@
+### 1.1.9
+
+- dependency bump
+
 ### 1.1.7
 
 - fixes an issue when content creators add the bold/strong tags to hedaing to make them bolder - when they shouldn't be.
