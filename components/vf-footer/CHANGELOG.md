@@ -1,3 +1,7 @@
+### 1.1.0
+
+- removes inline padding as it's defunct when using the `vf-body` component.
+
 ### 1.0.6
 
 - dependency bump
