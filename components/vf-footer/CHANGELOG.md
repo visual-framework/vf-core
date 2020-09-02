@@ -1,3 +1,7 @@
+### 1.0.6
+
+- dependency bump
+
 ### 1.0.3
 
 - updates max-width of component
