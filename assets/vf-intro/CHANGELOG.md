@@ -1,3 +1,7 @@
+### 1.3.1
+
+- updates max-width of component
+
 ### 1.3.0
 
 - adds ability for `vf-badge` to be customised with it's variants
