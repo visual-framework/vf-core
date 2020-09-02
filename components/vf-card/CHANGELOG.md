@@ -1,3 +1,8 @@
+### 2.1.1
+
+- adds alt text to examples
+- conditional display of `card_title`
+
 ### 2.1.0
 
 - makes theme variant naming and decisions consistent.
