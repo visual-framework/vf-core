@@ -2435,11 +2435,15 @@ html:not(.vf-disable-deprecated) .vf-box--factoid .vf-box__heading {
   .vf-card-container__inner {
     --vf-card-container__grid--size: 18rem;
     display: grid;
-    gap: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(var(--vf-card-container__grid--size), 1fr));
+    gap: var(--page-grid-gap);
+    grid-template-columns: repeat(auto-fit, minmax(var(--vf-card-container__grid--size--overide, var(--vf-card-container__grid--size)), 1fr));
     margin: 0 auto;
     max-width: 81.25em;
-    padding: 0 1rem;
+  }
+  @media (min-width: 600px) {
+    .vf-card-container__inner {
+      --vf-card-container__grid--size: 20rem;
+    }
   }
 }
 .vf-card-container__inner .vf-section-header {

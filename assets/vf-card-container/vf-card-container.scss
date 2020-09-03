@@ -33,11 +33,14 @@
   @supports (display: grid) {
     --vf-card-container__grid--size: 18rem;
     display: grid;
-    gap: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(var(--vf-card-container__grid--size), 1fr));
+    gap: var(--page-grid-gap);
+    grid-template-columns: repeat(auto-fit, minmax(var(--vf-card-container__grid--size--overide, var(--vf-card-container__grid--size)), 1fr));
     margin: 0 auto;
     max-width: $vf-layout--comfortable;
-    padding: 0 1rem;
+
+    @media (min-width: $vf-breakpoint--sm) {
+      --vf-card-container__grid--size: 20rem;
+    }
   }
 
   .vf-section-header {

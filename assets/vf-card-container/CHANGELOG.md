@@ -1,3 +1,9 @@
+### 3.0.2
+
+- update card sizes to make 3 columns
+- adds `--vf-card-container__grid--size--overide` CSS custom property in CSS
+- adds `--vf-card-container__grid--size--overide` as .yml option
+
 ### 3.0.1
 
 - updates max-width of component
