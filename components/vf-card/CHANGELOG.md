@@ -1,3 +1,8 @@
+### 2.1.2
+
+- fixes issue with `vf-card__image` height in safari.
+- adds `object-position: center` for image.
+
 ### 2.1.1
 
 - adds alt text to examples
