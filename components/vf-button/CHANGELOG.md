@@ -1,3 +1,7 @@
+### 1.1.1
+
+- removes the `:hover` text color rule so that it doesn't to white on hover.
+
 ### 1.1.0
 
 - makes theme variant naming and decisions consistent.
