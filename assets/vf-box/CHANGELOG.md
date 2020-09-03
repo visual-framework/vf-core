@@ -1,3 +1,7 @@
+### 1.1.1
+
+- fixes issue with links in `vf-box__text` being visited and purple.
+
 ### 1.1.0
 
 - makes theme variant naming and decisions consistent.
