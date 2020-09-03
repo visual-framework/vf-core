@@ -5170,6 +5170,7 @@ html:not(.vf-disable-deprecated) .vf-global-header__inner {
 
 .vf-intro {
   --vf-intro-spacing: 200px;
+  --page-grid-gap: 0 1em;
   box-sizing: border-box;
   display: grid;
   grid-column: main;
@@ -5183,7 +5184,7 @@ html:not(.vf-disable-deprecated) .vf-global-header__inner {
 
 @media (min-width: 1024px) {
   .vf-intro {
-    column-gap: var(--page-grid-gap);
+    --page-grid-gap: 0 1.5em;
     grid-template-areas: "... header header" "... ...    links";
     grid-template-columns: var(--embl-grid-module--prime) auto var(--embl-grid-module--prime);
   }
