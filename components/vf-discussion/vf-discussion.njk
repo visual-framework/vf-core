@@ -5,7 +5,7 @@
     {% for item in discussions %}
     <li class="vf-discussion__item">
       <div class="vf-discussion__meta">
-        <img class="vf-discussion__author-avatar" src="{{item.imageUrl | path  }}" alt="">
+        <img class="vf-discussion__author-avatar" src="{{item.imageUrl | path  }}" alt="" loading="lazy">
         <cite class="vf-discussion__author">{{item.name}}</cite><span> says:</span>
         <p class="vf-discussion__date">{{item.date}}</p>
       </div>
@@ -22,7 +22,7 @@
           {% for item in item.nested %}
           <li class="vf-discussion__item">
             <div class="vf-discussion__meta">
-              <img class="vf-discussion__author-avatar" src="{{item.imageUrl | path  }}" alt="">
+              <img class="vf-discussion__author-avatar" src="{{item.imageUrl | path  }}" alt="" loading="lazy">
               <cite class="vf-discussion__author">{{item.name}}</cite><span> says:</span>
               <p class="vf-discussion__date">{{item.date}}</p>
             </div>
