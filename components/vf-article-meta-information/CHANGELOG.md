@@ -1,3 +1,7 @@
+### 1.1.0
+
+- adds loading="lazy" to the img element for better performance
+
 ### 1.0.1
 
 - removes word-spacing: 100vw so names wrap
