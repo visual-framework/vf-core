@@ -2,6 +2,7 @@
 
 - fixes issue with `vf-card__image` height in safari.
 - adds `object-position: center` for image.
+- adds loading="lazy" to the img element for better performance
 
 ### 2.1.1
 

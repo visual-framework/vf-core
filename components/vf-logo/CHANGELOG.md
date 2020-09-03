@@ -1,3 +1,7 @@
+### 1.3.0
+
+- adds loading="eager" to the img element for better performance
+
 ### 1.2.0
 
 - adds 'context' for the logo
