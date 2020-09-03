@@ -1,3 +1,7 @@
+### 1.3.2
+
+- resets the custom property used for `gap` in `embl-grid` so it only worries about the column gap.
+
 ### 1.3.1
 
 - updates max-width of component

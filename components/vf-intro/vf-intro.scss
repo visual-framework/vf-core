@@ -35,6 +35,7 @@
 
 .vf-intro {
   --vf-intro-spacing: 200px;
+  --page-grid-gap: 0 1em;
   box-sizing: border-box;
   display: grid;
   grid-column: main;
@@ -48,7 +49,7 @@
 
 @media (min-width: $vf-breakpoint--lg) {
   .vf-intro {
-    column-gap: var(--page-grid-gap);
+    --page-grid-gap: 0 1.5em;
     grid-template-areas: '... header header' '... ...    links';
     grid-template-columns: var(--embl-grid-module--prime) auto var(--embl-grid-module--prime);
   }
