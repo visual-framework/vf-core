@@ -1,3 +1,7 @@
+### 1.3.0
+
+- adds loading="lazy" to the img element for better performance
+
 ### 1.2.0
 
 - Changes structure of nunjuck to add the ability to make use of props.

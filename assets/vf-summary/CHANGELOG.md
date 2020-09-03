@@ -1,3 +1,7 @@
+### 1.3.0
+
+- adds loading="lazy" to the img element for better performance
+
 ### 1.2.0
 
 - makes theme variant naming and decisions consistent.
