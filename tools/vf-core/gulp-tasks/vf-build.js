@@ -40,8 +40,7 @@ module.exports = function(gulp, buildDestionation) {
       'vf-clean',
       'vf-css:package-info',
       gulp.parallel (
-        'vf-css:generate-component-css',
-        gulp.series('vf-css:build', 'vf-css:production', 'vf-component-assets', 'vf-scripts'),
+        gulp.series('vf-css:generate-component-css', 'vf-css:build', 'vf-css:production', 'vf-component-assets', 'vf-scripts'),
         gulp.series(gulpFractalBuildTask, 'vf-templates-precompile')
       )
   ));
