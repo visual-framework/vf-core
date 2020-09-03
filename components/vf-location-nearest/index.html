@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" media="all" href="/vf-core/css/styles.css" />
+    <title>vf-location-nearest | Visual Framework 2.0</title>
+    <link rel="shortcut icon" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-16x16.png">
+<link rel="manifest" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/site.webmanifest">
+<link rel="mask-icon" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/safari-pinned-tab.svg" color="#ffffff">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+    <!-- Descriptive meta -->
+    <meta name="title" content="Local components">
+    <meta name="author" content="EMBL">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://visual-framework.github.io/vf-core//components/vf-location-nearest/">
+    <meta property="og:title" content="Local components">
+    <meta property="og:description" content="">
+    
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="og:url" content="https://visual-framework.github.io/vf-core//components/vf-location-nearest/">
+    <meta property="twitter:title" content="Local components">
+    <meta property="twitter:description" content="">
+    
+  </head>
+  <body class=" vf-body" >
+    <header class="vf-global-header | vf-search-client-side--no-index">
+
+      <div class="vf-global-header__inner">
+        
+<a href="/vf-core/"
+class="vf-logo | vf-logo--has-text">
+  <img class="vf-logo__image" src="https://visual-framework.github.io/vf-core/assets/vf-logo/assets/logo.svg" alt="Visual Framework 2.0">
+  <span class="vf-logo__text">Visual Framework 2.0</span>
+</a>
+
+        <nav class="vf-navigation vf-navigation--global">
+          <ul class="vf-navigation__list | vf-list--inline">
+            <li class="vf-navigation__item">
+              <a href="/vf-core/" class="vf-navigation__link">About</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/components" class="vf-navigation__link">Components</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/developing" class="vf-navigation__link">Documentation</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="/vf-core/search" class="vf-navigation__link">Search</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link">Help, chat</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </header>
+    
+    
+    <nav class="vf-breadcrumbs | vf-search-client-side--no-index" aria-label="Breadcrumb">
+      <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+        <li class="vf-breadcrumbs__item">
+          <a href="/vf-core/" class="vf-breadcrumbs__link">Visual Framework 2.0</a>
+        </li>
+        
+        
+          
+          <li class="vf-breadcrumbs__item">
+            <a href="/vf-core/components" class="vf-breadcrumbs__link">Components</a>
+          </li>
+        
+        
+        
+          
+        
+        
+        <li class="vf-breadcrumbs__item">
+          
+            vf-location-nearest
+          
+        </li>
+      </ul>
+    </nav>
+    
+
+    <div class="embl-grid">
+  <div class="vf-search-client-side--no-index">
+
+<div class="vf-links vf-links--tight vf-links__list--s | vf-u-margin__top--md">
+  <h3 class="vf-links__heading">Components</h3>
+  <ul class="vf-links__list vf-links__list--secondary | vf-list">
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/ebi-header-footer">
+        EBI Header and Footer
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/ebi-vf1-integration">
+        Compatibility with EBI-VF 1.x Component
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/embl-breadcrumbs-lookup">
+        EMBL Breadcrumbs lookup
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/embl-conditional-edit">
+        EMBL Conditional Edit Links component
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/embl-content-hub-loader">
+        EMBL ContentHub Loader component
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/embl-content-meta-properties">
+        EMBL Content meta properties
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/embl-favicon">
+        EMBL Favicon
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/embl-grid">
+        EMBL Grid
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/embl-logo">
+        EMBL Logo
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/embl-notifications">
+        EMBL Notifications
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-activity-group">
+        Acivity List Group
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-activity-list">
+        Activity List
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-analytics-google">
+        Google Analytics enhancements
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-article-meta-information">
+        Article Meta Information
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-badge">
+        Badges
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-banner">
+        Banner
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-blockquote">
+        Visual Framework Blockquote
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-body">
+        Body
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-boilerplate-page">
+        VF Boilerplate page
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-box">
+        Box
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-breadcrumbs">
+        Breadcrumbs
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-button">
+        Button
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-card">
+        Card
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-card-container">
+        Card Container
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-code-example">
+        Code Example
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-collapse">
+        Collapse
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-componenet-rollup">
+        Visual Framework Componet Rollup
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-content">
+        Content
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-deprecated">
+        Demonstration deprecated pattern
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-design-tokens">
+        Design Tokens
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-details">
+        Details
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-discussion">
+        Discussion
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-divider">
+        Visual Framework Divider
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-embed">
+        Embed
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-explainer">
+        Explainer
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-favicon">
+        Favicon
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-figure">
+        Visual Framework Figure
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-font-plex-mono">
+        Plex Mono Font
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-font-plex-sans">
+        Plex Sans Font
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-footer">
+        Footer
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-form">
+        Vf Form
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-global-header">
+        Global Header
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-grid">
+        Grid
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-grid-page">
+        Page Grid
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-header">
+        Header
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-heading">
+        Visual Framework Headings
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-hero">
+        Hero
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-inlay">
+        Inlay
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-intro">
+        Intro
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-lede">
+        Lede
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-link">
+        Visual Framework Link
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-link-list">
+        Links List
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-list">
+        Visual Framework Lists
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-location-nearest">
+        Nearest location
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-logo">
+        Logo
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-masthead">
+        Masthead
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-navigation">
+        Navigation
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-news-container">
+        News Container
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-no-js">
+        No JS detection
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-page-header">
+        Page Header
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-pagination">
+        Pagination
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-polyfill-js">
+        JavaScript Polyfill
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-profile">
+        Profile
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-sass-config">
+        Sass config and templates
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-sass-starter">
+        Sass Starter
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-search">
+        Search
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-search-client-side">
+        vf-search-client-side
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-section-header">
+        Section Header
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-show-more">
+        Show more
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-social-links">
+        Social icons
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-summary">
+        Summary
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-summary-container">
+        Summary Container
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-table">
+        Table
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-tabs">
+        Tabs
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-text">
+        Visual Framework Text
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-tree">
+        Tree
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-u-fullbleed">
+        Full Bleed
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-utility-classes">
+        Utility Classes
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-video">
+        Video
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-video-container">
+        Video Container
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-video-teaser">
+        Video Teaser
+      </a>
+
+    </li>
+  </ul>
+</div>
+
+  </div>
+
+  <section class="vf-content component-library-notes">
+    
+    <!-- no special content -->
+
+
+    
+    
+    
+
+    
+    
+      <h1>Nearest location component</h1>
+<p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-location-nearest"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-location-nearest.svg" alt="npm version"></a></p>
+<h2>Usage</h2>
+<p>From a list of lat and long, this will use the browser geolcation API to select the nearest. It also provides a manual selection fallback and override.</p>
+<p>This component is purely JavaScript and relies on other components to provide UI and to consume the detected region.</p>
+<p>This is an early version, some future improvements to be considered:</p>
+<ul>
+<li>Callback to observe detected locations to be used in other components</li>
+<li>Allowing &quot;or&quot; matches for content <code>data-vf-js-location-nearest-activation-target=&quot;locationOne, locationTwo&quot;</code></li>
+<li>Enabling the default while we wait for geodetection</li>
+<li>&quot;Saving&quot; a user's location when using the override</li>
+</ul>
+<h2>Install</h2>
+<p>This repository is distributed with [npm][https://www.npmjs.com/]. After [installing npm][https://www.npmjs.com/get-npm] and <a href="https://classic.yarnpkg.com/en/docs/install">yarn</a>, you can install <code>vf-location-nearest</code> with this command.</p>
+<pre><code>$ yarn add --dev @visual-framework/vf-location-nearest
+</code></pre>
+<h2>JS</h2>
+<p>You should import this component in <code>./components/vf-component-rollup/scripts.js</code> or your other JS process:</p>
+<pre><code class="language-js">import { vfLocationNearest } from 'vf-location-nearest/vf-location-nearest';
+// Or import directly
+// import { vfLocationNearest } from '../components/raw/vf-location-nearest/vf-location-nearest.js';
+
+// Configure an object of your locations to detect
+// You should do this in your central JS (scripts.js) as appropriate
+let vfLocationNearestLocations = {
+  // supply a default in case of geodetect failures
+  default: {
+    name: &quot;Heidelberg&quot;,
+    latlon: &quot;49.40768, 8.69079&quot; // lat then lon
+  },
+  barcelona: {
+    name: &quot;Barcelona&quot;,
+    latlon: &quot;0.40768, 0.69079&quot;
+  },
+  ...
+  }
+}
+// Bootstrap location detection
+vfLocationNearest(vfLocationNearestLocations);
+</code></pre>
+<h3>JS Data attributes</h3>
+<p>All are optional</p>
+<ul>
+<li><code>data-vf-js-location-nearest-name</code> element will receive the name of the current location</li>
+<li><code>data-vf-js-location-nearest-override-widget</code> element will be populated with an override widget (vf-form select list)</li>
+<li><code>data-vf-js-location-nearest-activation-target=&quot;{locationId}&quot;</code> will receive clicks on location change. This is a simple method to activate diverse elements.</li>
+</ul>
+<h2>Sass/CSS</h2>
+<p>If your component uses Sass:</p>
+<p>The source files included are written in [Sass][sass] (<code>scss</code>) You can simply point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<pre><code>@import &quot;@visual-framework/vf-location-nearest/index.scss&quot;;
+</code></pre>
+<p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<h2>Help</h2>
+<ul>
+<li><a href="https://visual-framework.github.io/vf-welcome/troubleshooting/">Read the Visual Framework troubleshooting</a></li>
+<li><a href="https://github.com/visual-framework/vf-core/issues">Open a ticket</a></li>
+<li><a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ">Chat on Slack</a></li>
+</ul>
+
+    
+
+    
+    
+    
+
+    
+      <section>
+         <h1 class="vf-text vf-text-heading--display vf-text--invert">Variants</h1> 
+      </section>
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: Default
+           <span class="vf-badge vf-badge--tertiary vf-badge--">alpha</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: utility</span> 
+        </h3>
+
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-grid">
+            <section class="">
+              
+
+<div class="vf-location-nearest | vf-content">
+  /* This is a demo only, to use this utility component follow the README.md to graft onto your UI */
+
+<h3 id="detected-location">Detected location</h3>
+<p>Your detected city is: <span data-vf-js-location-nearest-name><em>loading</em></span></p>
+<h3 id="available-locations">Available locations</h3>
+<div data-vf-js-location-nearest-override-widget><em>loading</em></div>
+
+<h3 id="element-activation">Element activation</h3>
+<p>Elements tagged with <code>data-vf-js-location-nearest-activation-target=&quot;{locationId}&quot;</code> will receive clicks on location change. This is a simple method to activate diverse elements.</p>
+
+  <div class="vf-tabs">
+    <ul class="vf-tabs__list" data-vf-js-tabs>
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--1" data-vf-js-location-nearest-activation-target="default">Default</a>
+      </li>
+      <li class="vf-tabs__item">
+        <a class="vf-tabs__link" href="#vf-tabs__section--2" data-vf-js-location-nearest-activation-target="grenoble">Grenoble</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="vf-tabs-content" data-vf-js-tabs-content>
+    <section class="vf-tabs__section" id="vf-tabs__section--1">
+<p>A sample <code>data-vf-js-location-nearest-activation-target=&#39;default&#39;</code> activation target</p>
+    </section>
+    <section class="vf-tabs__section" id="vf-tabs__section--2">
+<p>A sample <code>data-vf-js-location-nearest-activation-target=&#39;grenoble&#39;</code> activation target</p>
+    </section>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    // You should do this in your central JS (scripts.js) as appropriate
+
+    // Configure an object of your locations to detect
+    let vfLocationNearestLocations = {
+      default: {
+        name: "Heidelberg (default)",
+        latlon: "49.40768, 8.69079"
+      },
+      barcelona: {
+        name: "Barcelona",
+        latlon: "41.38879, 2.15899"
+      },
+      grenoble: {
+        name: "Grenoble",
+        latlon: "45.16667, 5.71667"
+      },
+      hamburg: {
+        name: "Hamburg",
+        latlon: "53.57532, 10.01534"
+      },
+      heidelberg: {
+        name: "Heidelberg",
+        latlon: "49.40768, 8.69079"
+      },
+      hinxton: {
+        name: "EMBL-EBI Hinxton",
+        latlon: "52.2, 0.11667"
+      },
+      rome: {
+        name: "Rome",
+        latlon: "41.89193, 12.51133"
+      }
+    }
+    // Bootstrap location detection
+    vfLocationNearest(vfLocationNearestLocations);
+  };
+</script>
+
+            </section>
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-location-nearest | vf-content&quot;</span>&gt;</span>
+  /* This is a demo only, to use this utility component follow the README.md to graft onto your UI */
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;detected-location&quot;</span>&gt;</span>Detected location<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Your detected city is: <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-vf-js-location-nearest-name</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>loading<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;available-locations&quot;</span>&gt;</span>Available locations<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-vf-js-location-nearest-override-widget</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>loading<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;element-activation&quot;</span>&gt;</span>Element activation<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Elements tagged with <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>data-vf-js-location-nearest-activation-target=<span class="hljs-symbol">&amp;quot;</span>{locationId}<span class="hljs-symbol">&amp;quot;</span><span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> will receive clicks on location change. This is a simple method to activate diverse elements.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-tabs&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-tabs__list&quot;</span> <span class="hljs-attr">data-vf-js-tabs</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-tabs__item&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-tabs__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#vf-tabs__section--1&quot;</span> <span class="hljs-attr">data-vf-js-location-nearest-activation-target</span>=<span class="hljs-string">&quot;default&quot;</span>&gt;</span>Default<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-tabs__item&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-tabs__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#vf-tabs__section--2&quot;</span> <span class="hljs-attr">data-vf-js-location-nearest-activation-target</span>=<span class="hljs-string">&quot;grenoble&quot;</span>&gt;</span>Grenoble<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-tabs-content&quot;</span> <span class="hljs-attr">data-vf-js-tabs-content</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-tabs__section&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;vf-tabs__section--1&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>A sample <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>data-vf-js-location-nearest-activation-target=<span class="hljs-symbol">&amp;#39;</span>default<span class="hljs-symbol">&amp;#39;</span><span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> activation target<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-tabs__section&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;vf-tabs__section--2&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>A sample <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>data-vf-js-location-nearest-activation-target=<span class="hljs-symbol">&amp;#39;</span>grenoble<span class="hljs-symbol">&amp;#39;</span><span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span> activation target<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript">
+  <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// You should do this in your central JS (scripts.js) as appropriate</span>
+
+    <span class="hljs-comment">// Configure an object of your locations to detect</span>
+    <span class="hljs-keyword">let</span> vfLocationNearestLocations = {
+      <span class="hljs-attr">default</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Heidelberg (default)&quot;</span>,
+        <span class="hljs-attr">latlon</span>: <span class="hljs-string">&quot;49.40768, 8.69079&quot;</span>
+      },
+      <span class="hljs-attr">barcelona</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Barcelona&quot;</span>,
+        <span class="hljs-attr">latlon</span>: <span class="hljs-string">&quot;41.38879, 2.15899&quot;</span>
+      },
+      <span class="hljs-attr">grenoble</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Grenoble&quot;</span>,
+        <span class="hljs-attr">latlon</span>: <span class="hljs-string">&quot;45.16667, 5.71667&quot;</span>
+      },
+      <span class="hljs-attr">hamburg</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Hamburg&quot;</span>,
+        <span class="hljs-attr">latlon</span>: <span class="hljs-string">&quot;53.57532, 10.01534&quot;</span>
+      },
+      <span class="hljs-attr">heidelberg</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Heidelberg&quot;</span>,
+        <span class="hljs-attr">latlon</span>: <span class="hljs-string">&quot;49.40768, 8.69079&quot;</span>
+      },
+      <span class="hljs-attr">hinxton</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;EMBL-EBI Hinxton&quot;</span>,
+        <span class="hljs-attr">latlon</span>: <span class="hljs-string">&quot;52.2, 0.11667&quot;</span>
+      },
+      <span class="hljs-attr">rome</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Rome&quot;</span>,
+        <span class="hljs-attr">latlon</span>: <span class="hljs-string">&quot;41.89193, 12.51133&quot;</span>
+      }
+    }
+    <span class="hljs-comment">// Bootstrap location detection</span>
+    vfLocationNearest(vfLocationNearestLocations);
+  };
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+        </pre>
+
+      <h3>Assets</h3>
+<ul>
+<li><a href="/vf-core/assets/vf-location-nearest/vf-location-nearest.njk">Nunjucks template</a></li>
+<li><a href="/vf-core/assets/vf-location-nearest/vf-location-nearest.config.yml">Config</a></li>
+<li><a href="/vf-core/assets/vf-location-nearest/CHANGELOG.md">CHANGELOG.md</a></li>
+<li><a href="/vf-core/assets/vf-location-nearest/vf-location-nearest.css">vf-location-nearest.css</a></li>
+<li><a href="/vf-core/assets/vf-location-nearest/vf-location-nearest.js">vf-location-nearest.js</a></li>
+<li><a href="/vf-core/assets/vf-location-nearest/vf-location-nearest.scss">vf-location-nearest.scss</a></li>
+<li><a href="/vf-core/assets/vf-location-nearest/vf-location-nearest.variables.scss">vf-location-nearest.variables.scss</a></li>
+</ul>
+
+    
+
+    <hr>
+<br/>
+<p class="vf-text-body vf-text-body--4">
+File system location: <code>components/vf-location-nearest</code>
+</p>
+
+
+  </section>
+</div>
+
+    
+
+<!-- This page was generated on Invalid DateTime -->
+<script src="/vf-core/scripts/scripts.js"></script>
+
+  </body>
+</html>
