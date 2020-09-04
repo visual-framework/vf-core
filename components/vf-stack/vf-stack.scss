@@ -1,0 +1,47 @@
+// vf-stack
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+@import 'vf-stack.variables.scss';
+
+/*
+ *
+ * vf-stack
+ * heavily inspired by: https://every-layout.dev/layouts/stack/
+ *
+ * 1. removes bottom margin for any child of the vf-stack component.
+ * 2. default for when browsers don't support CSS custom properties.
+ * 3. removes top margin for any child of the vf-stack component.
+ *
+ * notes:
+ * a: We are using `!important` here because some components have
+ *    margin set that we need to overide.
+ * b: We can probably remove the custom property when all components
+ *    have been purged of margin-bottom too.
+ *
+ */
+
+[class^='vf-stack'] > * {
+  margin-bottom: 0 !important; /* [1] */
+  margin-top: 1em !important; /* [2] */
+  margin-top: var(--vf-stack-margin--custom, var(--vf-stack-margin, 1em)) !important; /* [3] */
+}
+
+.vf-stack--medium > * + * {
+  --vf-stack-margin: 1.5rem;
+}
+
+.vf-stack--small > * + * {
+  --vf-stack-margin: 1rem;
+}
+
+.vf-stack--medium > * + * {
+  --vf-stack-margin: 2rem;
+}
