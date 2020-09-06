@@ -231,7 +231,7 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
     if (linkName.length == 0 && actedOnItem.value) linkName = actedOnItem.value;
 
     // is there an inner image?
-    if (actedOnItem.getElementsByTagName('img')) {
+    if (linkName.length == 0 && actedOnItem.getElementsByTagName('img')) {
       if (actedOnItem.getElementsByTagName('img')[0]) {
         if (actedOnItem.getElementsByTagName('img')[0].hasAttribute('src')) {
           linkName = actedOnItem.src.split('/').vfGaLinkLast();
