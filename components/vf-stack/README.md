@@ -6,7 +6,9 @@
 
 This can be used to set the flow of child components. Some (and soon all) `vf-core` components will come without any margin spacing (this is to avoid adding margins where it is not needed).
 
-You can add the `vf-stack` class name to existing containers or containers you create yourself in your codebase.
+You can add the `vf-stack` class name to existing containers (like `vf-content`) or containers you create yourself in your codebase.
+
+Note: `vf-grid` (1.0.0) and `embl-grid` (2.0.1) now automaticaly add gaps to their child elements as needed. So you should not use `vf-stack` alongside these.
 
 
 ## Install
@@ -21,7 +23,7 @@ $ yarn add --dev @visual-framework/vf-stack
 
 If your component uses Sass:
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The source files included are written in [Sass](https://sass-lang.com/) (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
 @import "@visual-framework/vf-stack/index.scss";
@@ -36,11 +38,20 @@ We use CSS custom properties to control this vertical rhythm.
 
 | variant name | description                                        |
 | ------------ | -------------------------------------------------- |
-| small        | gives the vertical rhythm equal spacing of `1em`   |
-| medium       | gives the vertical rhythm equal spacing of `1.5em` |
-| large        | gives the vertical rhythm equal spacing of `2em`   |
+| sm           | gives the vertical rhythm equal spacing of `1em`   |
+| md           | gives the vertical rhythm equal spacing of `1.5em` |
+| lg           | gives the vertical rhythm equal spacing of `2em`   |
+
 
 As we are using CSS custom properties we can also use a custom value by creating the custom property `--vf-stack-margin--custom` either in your stylesheet, or in your HTML.
+
+```
+<div class="vf-stack vf-stack--custom" style="--vf-stack-margin--custom: 3em;">
+  <div class="vf-box vf-box--normal vf-box-theme--primary">...</div>
+  <div class="vf-box vf-box--normal vf-box-theme--primary">...</div>
+  <div class="vf-box vf-box--normal vf-box-theme--primary">...</div>
+</div>
+```  
 
 ## Help
 
