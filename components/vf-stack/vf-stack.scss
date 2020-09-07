@@ -30,18 +30,21 @@
 
 [class^='vf-stack'] > * {
   margin-bottom: 0 !important; /* [1] */
-  margin-top: 1em !important; /* [2] */
+  margin-top: 0 !important; /* [2] */
+}
+
+.vf-stack > * + * {
   margin-top: var(--vf-stack-margin--custom, var(--vf-stack-margin, 1em)) !important; /* [3] */
 }
 
-.vf-stack--medium > * + * {
-  --vf-stack-margin: 1.5rem;
-}
-
-.vf-stack--small > * + * {
+.vf-stack--sm > * + * {
   --vf-stack-margin: 1rem;
 }
 
-.vf-stack--medium > * + * {
+.vf-stack--md > * + * {
+  --vf-stack-margin: 1.5rem;
+}
+
+.vf-stack--lg > * + * {
   --vf-stack-margin: 2rem;
 }
