@@ -34,7 +34,7 @@ _Make sure you import Sass requirements along with the modules._
 
 ## Variants
 
-We use CSS custom properties to control this vertical rhythm.
+We use CSS custom properties to control this vertical rhythm. For browsers that do not support CSS custom properties (IE 11) we provide a default value of `1rem` so that child components get some spacing. This value is overriden by browsers that understand CSS custom properties.
 
 | variant name | description                                        |
 | ------------ | -------------------------------------------------- |
