@@ -38,9 +38,9 @@ We use CSS custom properties to control this vertical rhythm.
 
 | variant name | description                                        |
 | ------------ | -------------------------------------------------- |
-| sm           | gives the vertical rhythm equal spacing of `1em`   |
-| md           | gives the vertical rhythm equal spacing of `1.5em` |
-| lg           | gives the vertical rhythm equal spacing of `2em`   |
+| sm           | gives the vertical rhythm equal spacing of `1rem`   |
+| md           | gives the vertical rhythm equal spacing of `1.5rem` |
+| lg           | gives the vertical rhythm equal spacing of `2rem`   |
 
 
 As we are using CSS custom properties we can also use a custom value by creating the custom property `--vf-stack-margin--custom` either in your stylesheet, or in your HTML.
