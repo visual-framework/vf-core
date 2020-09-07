@@ -1776,6 +1776,11 @@ function emblContentHubFetch() {
 
       emblContentHubAwaitLoading(emblContentHubLinks[linkPosition], linkPosition);
     })();
+  } // If nothing to import
+
+
+  if (emblContentHubLinks.length == 0) {
+    emblContentHubSignalFinished();
   } // Add a class to the body once the last item has been processed
 
 
