@@ -1,3 +1,7 @@
+### 1.0.0-rc.2
+
+* more robust fallback handling of image-based links
+
 ### 1.0.0-rc.1
 
 * https://github.com/visual-framework/vf-core/issues/1059
