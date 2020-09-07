@@ -14,14 +14,14 @@ templateEngineOverride: njk, md
   "vf_intro_badge": false
 } %}
 
-<main class="vf-grid embl-grid--has-centered-content">
+{%- if content | length > 1 -%}
+<main class="embl-grid embl-grid--has-centered-content">
   <div></div>
   <div class="vf-content">
-
 {{ content | safe }}
-
   </div>
 </main>
+{%- endif %}
 
 {# See if a section has subposts. #}
 {# Unfortunately there's not a more elegent way to see how many posts there are with a data attribute without adding 11ty config overhead #}
@@ -35,22 +35,15 @@ templateEngineOverride: njk, md
 {%- endfor %}
 
 {% if sectionHasSubposts and hideSubPosts != true %}
-<section class="vf-grid embl-grid--has-centered-content">
+<section class="embl-grid embl-grid--has-centered-content">
   <div></div>
   <div class="vf-content">
 
 ## In this section
 
-  </div>
-</section>
-
 {%- for post in collections.posts %}
 {% if section == post.data.section %}
 {% set absolutePostUrl %}{{ metadata.id }}{{ post.url }}{% endset %}
-<section class="embl-grid embl-grid--has-centered-content">
-  <div class="vf-section-header">
-  </div>
-  <div class="vf-content">
 
 <h2>
   <a href="{{ absolutePostUrl | url }}" class="vf-link">{{ post.data.title }}</a>
@@ -58,9 +51,10 @@ templateEngineOverride: njk, md
 
 {{ post.data.subtitle }}
 
-  </div>
-</section>
 {% endif %}
 {%- endfor %}
+
+  </div>
+</section>
 
 {% endif %} {# END: {% if sectionHasSubposts %} #}
