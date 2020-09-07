@@ -705,6 +705,53 @@ html {
 }
 /* stylelint-enable order/order */
 /*!
+ * Component: @visual-framework/vf-stack
+ * Version: 1.0.0-alpha.0
+ * Location: components/vf-stack
+ */
+/*
+ *
+ * vf-stack
+ * heavily inspired by: https://every-layout.dev/layouts/stack/
+ *
+ * 1. removes bottom margin for any child of the vf-stack component.
+ * 2. default for when browsers don't support CSS custom properties.
+ * 3. removes top margin for any child of the vf-stack component.
+ *
+ * notes:
+ * a: We are using `!important` here because some components have
+ *    margin set that we need to overide.
+ * b: We can probably remove the custom property when all components
+ *    have been purged of margin-bottom too.
+ *
+ */
+[class^=vf-stack] > * {
+  margin-bottom: 0 !important;
+  /* [1] */
+  margin-top: 0 !important;
+  /* [2] */
+}
+
+.vf-stack > * + * {
+  margin-top: 1rem;
+  /* IE Fallback */
+  margin-top: var(--vf-stack-margin--custom, var(--vf-stack-margin, 1rem)) !important;
+  /* [3] */
+}
+
+.vf-stack--sm > * + * {
+  --vf-stack-margin: 1rem;
+}
+
+.vf-stack--md > * + * {
+  --vf-stack-margin: 1.5rem;
+}
+
+.vf-stack--lg > * + * {
+  --vf-stack-margin: 2rem;
+}
+
+/*!
  * Component: @visual-framework/vf-inlay
  * Version: 1.0.1
  * Location: components/vf-inlay

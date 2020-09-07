@@ -1,0 +1,11 @@
+<div
+class="vf-stack{% if size %} vf-stack--{{size}}{%- endif -%}{% if modifier -%} {{modifier}}{%- endif -%}"
+{% if custom_spacing_property %}
+  style="--vf-stack-margin--custom: {{custom_spacing_property}};"
+{%- endif -%}
+>
+  {% render '@vf-box--normal-(primary)' %}
+  {% render '@vf-box--normal-(primary)' %}
+  {% render '@vf-box--normal-(primary)' %}
+</div>
+<br>
