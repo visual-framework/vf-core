@@ -224,11 +224,23 @@ function analyticsTrackInteraction(actedOnItem, customEventName) {
     }
 
     linkName = actedOnItem.innerText;
-    console.log('linkName',linkName);
+    // console.log('linkName',linkName);
 
     // if there's no text, it's probably and image
     if (linkName.length == 0 && actedOnItem.hasAttribute('src')) linkName = actedOnItem.src.split('/').vfGaLinkLast();
     if (linkName.length == 0 && actedOnItem.value) linkName = actedOnItem.value;
+
+    // is there an inner image?
+    if (linkName.length == 0 && actedOnItem.getElementsByTagName('img')) {
+      if (actedOnItem.getElementsByTagName('img')[0]) {
+        if (actedOnItem.getElementsByTagName('img')[0].hasAttribute('src')) {
+          linkName = actedOnItem.src.split('/').vfGaLinkLast();
+        }
+      }
+    }
+
+    // fallback to an href value
+    if (linkName.length == 0 && actedOnItem.href) linkName = actedOnItem.href;
 
     // special things for gloabl search box
     // if (parentContainer == 'Global search') {
