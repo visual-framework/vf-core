@@ -14,6 +14,6 @@
 
 - removes left and right padding so we rely on the parent for horizontal spacing for better alignment
 
-### 1.0.0 (2019-12-17)
+### 1.0.0
 
 - Initial stable release
