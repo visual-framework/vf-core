@@ -1,3 +1,7 @@
+### 1.1.0
+
+- makes vf-search.njk a real template
+
 ### 1.0.0
 
 - removes `vf-u-sr-only` as no longer needed
