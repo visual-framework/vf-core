@@ -1,3 +1,7 @@
+### 1.3.0
+
+- adds z-index values for `vf-box` component
+
 ### 1.2.1
 
 - dependency bump

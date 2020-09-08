@@ -2075,7 +2075,6 @@ html:not(.vf-disable-deprecated) .vf-text-button--1 {
   color: #000000;
   color: var(--box-text-color);
   display: block;
-  margin-bottom: 24px;
   padding: 24px 16px;
   width: 100%;
 }
@@ -2105,6 +2104,23 @@ html:not(.vf-disable-deprecated) .vf-text-button--1 {
   margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
 }
 
+.vf-box__link {
+  color: currentColor;
+  text-decoration: none;
+}
+.vf-box__link::after {
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition-duration: 300ms;
+  transition-property: box-shadow;
+  transition-timing-function: ease-in-out;
+  z-index: 512;
+}
+
 .vf-box__text {
   font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -2116,7 +2132,9 @@ html:not(.vf-disable-deprecated) .vf-text-button--1 {
 .vf-content .vf-box__text a,
 .vf-box__text a {
   color: currentColor;
+  position: relative;
   text-decoration: underline;
+  z-index: 1984;
 }
 .vf-content .vf-box__text a:visited, .vf-content .vf-box__text a:hover, .vf-content .vf-box__text a:focus,
 .vf-box__text a:visited,
@@ -2181,22 +2199,6 @@ html:not(.vf-disable-deprecated) .vf-text-button--1 {
   background-color: transparent;
   border-style: solid;
   border-width: 2px;
-}
-
-html:not(.vf-disable-deprecated) .vf-box--inlay {
-  background-color: #f3f3f3;
-  border-color: #f3f3f3;
-  color: #000000;
-}
-
-html:not(.vf-disable-deprecated) .vf-box--factoid {
-  background-color: #18974c;
-  border-color: #18974c;
-}
-html:not(.vf-disable-deprecated) .vf-box--factoid,
-html:not(.vf-disable-deprecated) .vf-box--factoid .vf-box__text,
-html:not(.vf-disable-deprecated) .vf-box--factoid .vf-box__heading {
-  color: #ffffff;
 }
 
 /*!

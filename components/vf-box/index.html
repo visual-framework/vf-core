@@ -614,17 +614,21 @@ class="vf-logo | vf-logo--has-text">
       <h1>Box Component</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-box"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-box.svg" alt="npm version"></a></p>
 <h2>About</h2>
-<p>The <code>vf-box</code> container is an element to be used when ...</p>
+<p>The <code>vf-box</code> layout container can add spacing, a background color, a border, and text colours to an area of content.</p>
 <h2>Usage</h2>
-<p>A <code>vf-box</code> can be used in all grid systems and also inside of <code>vf-content</code>.</p>
+<p>A <code>vf-box</code> can be used in all layout components (<code>vf-grid</code>, <code>vf-stack</code>, <code>embl-grid</code>) and also inside of <code>vf-content</code>.</p>
 <p>For now <code>vf-box</code> is only designed to accept a heading and text (both have classes). The text node – <code>vf-box__text</code> can also accept a link which will inherit the text colour.</p>
 <h2>Options</h2>
 <h3>Is Link</h3>
 <p>If you require the <code>vf-box</code> to link to a page you can do this by:</p>
+<p>Using <code>.njk</code> and <code>.yml</code> for content:</p>
 <ul>
-<li>changing the <code>&lt;div&gt;</code> to an <code>&lt;a href=&quot;&quot;&gt;</code>.</li>
-<li>adding <code>vf-box--is-link</code> to the classes being used.</li>
 <li>if you are using <code>.njk</code> you only need to add a <code>box_href</code> to the data.</li>
+</ul>
+<p>Authoring in HTML:</p>
+<ul>
+<li>adding <code>vf-box--is-link</code> to the classes being used <code>&lt;div class=&quot;vf-box vf-box--is-link&quot;&gt;...&lt;/div&gt;</code>.</li>
+<li>adding the link inside of the title <code>&lt;h3 class=&quot;vf-box__title&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;vf-box__link&quot;&gt;A title&lt;/a&gt;&lt;/h3&gt;</code>.</li>
 </ul>
 <h3>Design Variants</h3>
 <p>There are currently two Design variants available. To add the appropriate level of design you can add a component–level class:</p>
@@ -643,17 +647,6 @@ class="vf-logo | vf-logo--has-text">
 <li><code>vf-box-theme--tertiary</code></li>
 <li><code>vf-box-theme--quaternary</code></li>
 <li><code>vf-box-theme--quinary</code></li>
-</ul>
-<h3>Deprecated Variants</h3>
-<p>Since <code>v1.1.0</code> the following components are considered depracted and should not be used in new projects:</p>
-<ul>
-<li><code>vf-box--inlay</code></li>
-<li><code>vf-box--factoid</code></li>
-</ul>
-<p>To update your existing usage of these variants to use the component–level theming you can swap:</p>
-<ul>
-<li><code>vf-box--inlay</code> for <code>vf-box--normal vf-box-theme--quinary</code></li>
-<li><code>vf-box--factoid</code> for <code>vf-box--normail vf-box-theme--primary</code></li>
 </ul>
 <h3>Accessibility</h3>
 <p><strong>Do not</strong> use the themes <code>vf-box-theme--qauternary</code> or <code>vf-box-theme--quinary</code> with the design variant <code>vf-box--easy</code> as they do not conform to WCAG colour contrast ratio specifications.</p>
@@ -693,12 +686,7 @@ class="vf-logo | vf-logo--has-text">
 
 
         <pre><code>{% render '@vf-box--default', {
-  &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_href&quot;: &quot;JavaScript:Void(0);&quot;,
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;
-  }
+  &quot;component-type&quot;: &quot;block&quot;
 } %}
         </code></pre>
 
@@ -711,14 +699,12 @@ class="vf-logo | vf-logo--has-text">
           <div class="vf-grid">
             <section class="">
               
-<a
- href="JavaScript:Void(0);"
-  
-  
-  class="vf-box vf-box--is-link">
-  <h3 class="vf-box__heading">Did You Know?</h3>
-  <p class="vf-box__text">This is some more content that would be in the box.</p>
-</a>
+<div
+  class="vf-box">
+
+  <h3 class="vf-box__heading"></h3>
+  <p class="vf-box__text"></p>
+</div>
 
             </section>
           </div>
@@ -728,70 +714,11 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;JavaScript:Void(0);&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--is-link&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        </pre>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box&quot;</span>&gt;</span>
 
-      
-        <hr class="vf-divider" />
-
-        <h3>
-          Variant: Is A Link
-           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
-
-           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: block</span> 
-        </h3>
-
-
-        
-        
-
-        <h4>Nunjucks demo</h4>
-
-
-        <pre><code>{% render '@vf-box--is-a-link', {
-  &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_href&quot;: &quot;JavaScript:Void(0);&quot;,
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--is-link&quot;
-  }
-} %}
-        </code></pre>
-
-        
-
-        <h4>Sample output</h4>
-
-
-        
-          <div class="vf-grid">
-            <section class="">
-              
-<a
- href="JavaScript:Void(0);"
-  
-  
-  class="vf-box vf-box--is-link vf-box--is-link">
-  <h3 class="vf-box__heading">Did You Know?</h3>
-  <p class="vf-box__text">This is some more content that would be in the box.</p>
-</a>
-
-            </section>
-          </div>
-        
-
-        <h4>Sample output as HTML</h4>
-
-
-        
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;JavaScript:Void(0);&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--is-link vf-box--is-link&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
 
       
@@ -813,11 +740,9 @@ class="vf-logo | vf-logo--has-text">
 
         <pre><code>{% render '@vf-box--very-easy', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--very-easy&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;box_modifier&quot;: &quot;vf-box--very-easy&quot;
 } %}
         </code></pre>
 
@@ -831,11 +756,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
-
-  
-  
   class="vf-box vf-box--very-easy">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -848,7 +771,8 @@ class="vf-logo | vf-logo--has-text">
 
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--very-easy&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -872,12 +796,9 @@ class="vf-logo | vf-logo--has-text">
 
         <pre><code>{% render '@vf-box--easy', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_href&quot;: &quot;JavaScript:Void(0);&quot;,
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--easy&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;variant&quot;: &quot;easy&quot;
 } %}
         </code></pre>
 
@@ -890,14 +811,12 @@ class="vf-logo | vf-logo--has-text">
           <div class="vf-grid">
             <section class="">
               
-<a
- href="JavaScript:Void(0);"
-  
-  
-  class="vf-box vf-box--is-link vf-box--easy">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+<div
+  class="vf-box vf-box--easy">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
-</a>
+</div>
 
             </section>
           </div>
@@ -907,10 +826,11 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;JavaScript:Void(0);&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--is-link vf-box--easy&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--easy&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
 
       
@@ -930,13 +850,12 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--easy-(primary)', {
+        <pre><code>{% render '@vf-box--easy-primary', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--easy vf-box-theme--primary&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;primary&quot;,
+  &quot;variant&quot;: &quot;easy&quot;
 } %}
         </code></pre>
 
@@ -950,11 +869,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
+  class="vf-box vf-box-theme--primary vf-box--easy">
 
-  
-  
-  class="vf-box vf-box--easy vf-box-theme--primary">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -966,8 +883,9 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--easy vf-box-theme--primary&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--easy&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -989,13 +907,12 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--easy-(secondary)', {
+        <pre><code>{% render '@vf-box--easy-secondary', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--easy vf-box-theme--secondary&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;secondary&quot;,
+  &quot;variant&quot;: &quot;easy&quot;
 } %}
         </code></pre>
 
@@ -1009,11 +926,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
+  class="vf-box vf-box-theme--secondary vf-box--easy">
 
-  
-  
-  class="vf-box vf-box--easy vf-box-theme--secondary">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1025,8 +940,9 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--easy vf-box-theme--secondary&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--secondary vf-box--easy&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1048,13 +964,12 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--easy-(tertiary)', {
+        <pre><code>{% render '@vf-box--easy-tertiary', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--easy vf-box-theme--tertiary&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;tertiary&quot;,
+  &quot;variant&quot;: &quot;easy&quot;
 } %}
         </code></pre>
 
@@ -1068,11 +983,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
+  class="vf-box vf-box-theme--tertiary vf-box--easy">
 
-  
-  
-  class="vf-box vf-box--easy vf-box-theme--tertiary">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1084,8 +997,9 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--easy vf-box-theme--tertiary&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--tertiary vf-box--easy&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1107,13 +1021,12 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--easy-(quaternary)', {
+        <pre><code>{% render '@vf-box--easy-quaternary', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--easy vf-box-theme--quaternary&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;quaternary&quot;,
+  &quot;variant&quot;: &quot;easy&quot;
 } %}
         </code></pre>
 
@@ -1127,11 +1040,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
+  class="vf-box vf-box-theme--quaternary vf-box--easy">
 
-  
-  
-  class="vf-box vf-box--easy vf-box-theme--quaternary">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1143,8 +1054,9 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--easy vf-box-theme--quaternary&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--quaternary vf-box--easy&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1166,14 +1078,12 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--easy-(quinary)', {
+        <pre><code>{% render '@vf-box--easy-quinary', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_href&quot;: &quot;JavaScript:Void(0);&quot;,
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--easy vf-box-theme--quinary&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;quinary&quot;,
+  &quot;variant&quot;: &quot;easy&quot;
 } %}
         </code></pre>
 
@@ -1186,14 +1096,12 @@ class="vf-logo | vf-logo--has-text">
           <div class="vf-grid">
             <section class="">
               
-<a
- href="JavaScript:Void(0);"
-  
-  
-  class="vf-box vf-box--is-link vf-box--easy vf-box-theme--quinary">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+<div
+  class="vf-box vf-box-theme--quinary vf-box--easy">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
-</a>
+</div>
 
             </section>
           </div>
@@ -1203,10 +1111,11 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;JavaScript:Void(0);&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--is-link vf-box--easy vf-box-theme--quinary&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--quinary vf-box--easy&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
 
       
@@ -1228,11 +1137,9 @@ class="vf-logo | vf-logo--has-text">
 
         <pre><code>{% render '@vf-box--normal', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--normal&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;variant&quot;: &quot;normal&quot;
 } %}
         </code></pre>
 
@@ -1246,11 +1153,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
-
-  
-  
   class="vf-box vf-box--normal">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1263,7 +1168,8 @@ class="vf-logo | vf-logo--has-text">
 
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--normal&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1285,13 +1191,12 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--normal-(primary)', {
+        <pre><code>{% render '@vf-box--normal-primary', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--normal vf-box-theme--primary&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;primary&quot;,
+  &quot;variant&quot;: &quot;normal&quot;
 } %}
         </code></pre>
 
@@ -1305,11 +1210,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
+  class="vf-box vf-box-theme--primary vf-box--normal">
 
-  
-  
-  class="vf-box vf-box--normal vf-box-theme--primary">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1321,8 +1224,9 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--normal vf-box-theme--primary&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1344,14 +1248,12 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--normal-(secondary)', {
+        <pre><code>{% render '@vf-box--normal-secondary', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_href&quot;: &quot;JavaScript:Void(0);&quot;,
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--normal vf-box-theme--secondary&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;secondary&quot;,
+  &quot;variant&quot;: &quot;normal&quot;
 } %}
         </code></pre>
 
@@ -1364,14 +1266,12 @@ class="vf-logo | vf-logo--has-text">
           <div class="vf-grid">
             <section class="">
               
-<a
- href="JavaScript:Void(0);"
-  
-  
-  class="vf-box vf-box--is-link vf-box--normal vf-box-theme--secondary">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+<div
+  class="vf-box vf-box-theme--secondary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
-</a>
+</div>
 
             </section>
           </div>
@@ -1381,10 +1281,11 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;JavaScript:Void(0);&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--is-link vf-box--normal vf-box-theme--secondary&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--secondary vf-box--normal&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
 
       
@@ -1404,13 +1305,12 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--normal-(tertiary)', {
+        <pre><code>{% render '@vf-box--normal-tertiary', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--normal vf-box-theme--tertiary&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;tertiary&quot;,
+  &quot;variant&quot;: &quot;normal&quot;
 } %}
         </code></pre>
 
@@ -1424,11 +1324,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
+  class="vf-box vf-box-theme--tertiary vf-box--normal">
 
-  
-  
-  class="vf-box vf-box--normal vf-box-theme--tertiary">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1440,8 +1338,9 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--normal vf-box-theme--tertiary&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--tertiary vf-box--normal&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1463,13 +1362,12 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--normal-(quaternary)', {
+        <pre><code>{% render '@vf-box--normal-quaternary', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--normal vf-box-theme--quaternary&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;quaternary&quot;,
+  &quot;variant&quot;: &quot;normal&quot;
 } %}
         </code></pre>
 
@@ -1483,11 +1381,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
+  class="vf-box vf-box-theme--quaternary vf-box--normal">
 
-  
-  
-  class="vf-box vf-box--normal vf-box-theme--quaternary">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1499,8 +1395,9 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--normal vf-box-theme--quaternary&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--quaternary vf-box--normal&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1522,13 +1419,12 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--normal-(quinary)', {
+        <pre><code>{% render '@vf-box--normal-quinary', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--normal vf-box-theme--quinary&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;quinary&quot;,
+  &quot;variant&quot;: &quot;normal&quot;
 } %}
         </code></pre>
 
@@ -1542,11 +1438,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
+  class="vf-box vf-box-theme--quinary vf-box--normal">
 
-  
-  
-  class="vf-box vf-box--normal vf-box-theme--quinary">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1558,8 +1452,9 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--normal vf-box-theme--quinary&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--quinary vf-box--normal&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1583,11 +1478,9 @@ class="vf-logo | vf-logo--has-text">
 
         <pre><code>{% render '@vf-box--hard', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--hard&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;variant&quot;: &quot;hard&quot;
 } %}
         </code></pre>
 
@@ -1601,11 +1494,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
-
-  
-  
   class="vf-box vf-box--hard">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1618,7 +1509,8 @@ class="vf-logo | vf-logo--has-text">
 
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--hard&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1642,11 +1534,9 @@ class="vf-logo | vf-logo--has-text">
 
         <pre><code>{% render '@vf-box--extreme', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--extreme&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;variant&quot;: &quot;extreme&quot;
 } %}
         </code></pre>
 
@@ -1660,11 +1550,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
-
-  
-  
   class="vf-box vf-box--extreme">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1677,7 +1565,8 @@ class="vf-logo | vf-logo--has-text">
 
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--extreme&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1701,11 +1590,9 @@ class="vf-logo | vf-logo--has-text">
 
         <pre><code>{% render '@vf-box--intense', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--intense&quot;
-  }
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;variant&quot;: &quot;intense&quot;
 } %}
         </code></pre>
 
@@ -1719,11 +1606,9 @@ class="vf-logo | vf-logo--has-text">
             <section class="">
               
 <div
-
-  
-  
   class="vf-box vf-box--intense">
-  <h3 class="vf-box__heading">Did You Know?</h3>
+
+  <h3 class="vf-box__heading">Did you know?</h3>
   <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
@@ -1736,7 +1621,8 @@ class="vf-logo | vf-logo--has-text">
 
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--intense&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
@@ -1745,7 +1631,7 @@ class="vf-logo | vf-logo--has-text">
         <hr class="vf-divider" />
 
         <h3>
-          Variant: Factoid
+          Variant: Easy Primary Is A Link
            <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
 
            <span class="vf-badge vf-badge--tertiary vf-badge--">Type: block</span> 
@@ -1758,14 +1644,13 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--factoid', {
+        <pre><code>{% render '@vf-box--easy-primary-is-a-link', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;Did You Know?&quot;,
-    &quot;box_text&quot;: &quot;Invasive cancer is the leading cause of death in the developed world and the second leading in the developing world.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--factoid&quot;,
-    &quot;deprecated_text&quot;: &quot;vf-box--factoid is now deprecated, please use `vf-box--theme--primary`&quot;
-  }
+  &quot;box_href&quot;: &quot;JavaScript:Void(0);&quot;,
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;primary&quot;,
+  &quot;variant&quot;: &quot;easy&quot;
 } %}
         </code></pre>
 
@@ -1778,13 +1663,11 @@ class="vf-logo | vf-logo--has-text">
           <div class="vf-grid">
             <section class="">
               
-<!-- vf-box--factoid is now deprecated, please use `vf-box--theme--primary` --><div
+<div
+  class="vf-box vf-box--is-link vf-box-theme--primary vf-box--easy">
 
-  
-  
-  class="vf-box vf-box--factoid">
-  <h3 class="vf-box__heading">Did You Know?</h3>
-  <p class="vf-box__text">Invasive cancer is the leading cause of death in the developed world and the second leading in the developing world.</p>
+  <h3 class="vf-box__heading"><a class="vf-box__link" href="JavaScript:Void(0);">Did you know?</a></h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
             </section>
@@ -1795,10 +1678,10 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-comment">&lt;!-- vf-box--factoid is now deprecated, please use `vf-box--theme--primary` --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--factoid&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did You Know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>Invasive cancer is the leading cause of death in the developed world and the second leading in the developing world.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--is-link vf-box-theme--primary vf-box--easy&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;JavaScript:Void(0);&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
 
@@ -1806,7 +1689,7 @@ class="vf-logo | vf-logo--has-text">
         <hr class="vf-divider" />
 
         <h3>
-          Variant: Inlay
+          Variant: Normal Primary Is A Link
            <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
 
            <span class="vf-badge vf-badge--tertiary vf-badge--">Type: block</span> 
@@ -1819,14 +1702,13 @@ class="vf-logo | vf-logo--has-text">
         <h4>Nunjucks demo</h4>
 
 
-        <pre><code>{% render '@vf-box--inlay', {
+        <pre><code>{% render '@vf-box--normal-primary-is-a-link', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;box&quot;: {
-    &quot;box_heading&quot;: &quot;About the Häring Group&quot;,
-    &quot;box_text&quot;: &quot;The Sharpe group brings together an interdisciplinary team of biologists, physicists and computer scientists to build a multi-scale computer simulation of a paradigm of organogenesis – mammalian limb development.&quot;,
-    &quot;box_modifier&quot;: &quot;vf-box--inlay&quot;,
-    &quot;deprecated_text&quot;: &quot;vf-box--inlay is now deprecated, please use `vf-box--theme--quaternary`&quot;
-  }
+  &quot;box_href&quot;: &quot;JavaScript:Void(0);&quot;,
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more content that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;primary&quot;,
+  &quot;variant&quot;: &quot;normal&quot;
 } %}
         </code></pre>
 
@@ -1839,13 +1721,11 @@ class="vf-logo | vf-logo--has-text">
           <div class="vf-grid">
             <section class="">
               
-<!-- vf-box--inlay is now deprecated, please use `vf-box--theme--quaternary` --><div
+<div
+  class="vf-box vf-box--is-link vf-box-theme--primary vf-box--normal">
 
-  
-  
-  class="vf-box vf-box--inlay">
-  <h3 class="vf-box__heading">About the Häring Group</h3>
-  <p class="vf-box__text">The Sharpe group brings together an interdisciplinary team of biologists, physicists and computer scientists to build a multi-scale computer simulation of a paradigm of organogenesis – mammalian limb development.</p>
+  <h3 class="vf-box__heading"><a class="vf-box__link" href="JavaScript:Void(0);">Did you know?</a></h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
 </div>
 
             </section>
@@ -1856,10 +1736,68 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-comment">&lt;!-- vf-box--inlay is now deprecated, please use `vf-box--theme--quaternary` --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--inlay&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>About the Häring Group<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>The Sharpe group brings together an interdisciplinary team of biologists, physicists and computer scientists to build a multi-scale computer simulation of a paradigm of organogenesis – mammalian limb development.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--is-link vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;JavaScript:Void(0);&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </pre>
+
+      
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: Normal Primary Is A Link Inner Text Link
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: block</span> 
+        </h3>
+
+
+        
+        
+
+        <h4>Nunjucks demo</h4>
+
+
+        <pre><code>{% render '@vf-box--normal-primary-is-a-link-inner-text-link', {
+  &quot;component-type&quot;: &quot;block&quot;,
+  &quot;box_href&quot;: &quot;JavaScript:Void(0);&quot;,
+  &quot;box_heading&quot;: &quot;Did you know?&quot;,
+  &quot;box_text&quot;: &quot;This is some more &lt;a href=\&quot;https://www.emblg.org\&quot;&gt;content with a link&lt;/a&gt; that would be in the box.&quot;,
+  &quot;theme&quot;: &quot;primary&quot;,
+  &quot;variant&quot;: &quot;normal&quot;
+} %}
+        </code></pre>
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-grid">
+            <section class="">
+              
+<div
+  class="vf-box vf-box--is-link vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading"><a class="vf-box__link" href="JavaScript:Void(0);">Did you know?</a></h3>
+  <p class="vf-box__text">This is some more <a href="https://www.emblg.org">content with a link</a> that would be in the box.</p>
+</div>
+
+            </section>
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box--is-link vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__link&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;JavaScript:Void(0);&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://www.emblg.org&quot;</span>&gt;</span>content with a link<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
 
@@ -1868,8 +1806,6 @@ class="vf-logo | vf-logo--has-text">
 <li><a href="/vf-core/assets/vf-box/vf-box.njk">Nunjucks template</a></li>
 <li><a href="/vf-core/assets/vf-box/vf-box.config.yml">Config</a></li>
 <li><a href="/vf-core/assets/vf-box/CHANGELOG.md">CHANGELOG.md</a></li>
-<li><a href="/vf-core/assets/vf-box/vf-box--factoid.scss">vf-box--factoid.scss</a></li>
-<li><a href="/vf-core/assets/vf-box/vf-box--inlay.scss">vf-box--inlay.scss</a></li>
 <li><a href="/vf-core/assets/vf-box/vf-box.css">vf-box.css</a></li>
 <li><a href="/vf-core/assets/vf-box/vf-box.scss">vf-box.scss</a></li>
 <li><a href="/vf-core/assets/vf-box/vf-box.variables.scss">vf-box.variables.scss</a></li>

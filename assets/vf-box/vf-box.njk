@@ -1,43 +1,32 @@
-{# if we're being passed "context" from a parent template, use it as "box" #}
 {%- if context %}
-  {% set box = context %}
+  {% set deprecated_text = context.deprecated_text %}
+  {% set box_href = context.box_href %}
+  {% set id = context.id %}
+  {% set variant = context.variant %}
+  {% set theme = context.theme %}
+  {% set box_modifier = context.box_modifier %}
+  {% set override_class = context.override_class %}
+  {% set box_heading = context.box_heading %}
+  {% set box_text = context.box_text %}
 {% endif %}
 
-{%- if box %}
-  {% set deprecated_text = box.deprecated_text %}
-  {% set box_href = box.box_href %}
-  {% set id = box.id %}
-  {% set box_modifier = box.box_modifier %}
-  {% set override_class = box.override_class %}
-  {% set box_heading = box.box_heading %}
-  {% set box_text = box.box_text %}
-  {% set box_text = box.box_text %}
-{% endif %}
-
-{% if box.deprecated_text %}<!-- {{ box.deprecated_text }} -->{% endif -%}
-
-{% if box_href %}
-  {% set tags = 'a' %}
-{% else %}
-  {% set tags = 'div' %}
-{% endif %}
-<{{tags}}
-{# If there's an href put it here #}
-{%- if tags == 'a' %}
- href="{{ box_href if box_href else '#' }}"
-{%- endif %}
-
-  {# You're using an ID? Really?? That'll go here #}
+<div
   {%- if id %} id="{{-id-}}"{% endif %}
 
-  {# Here is where we are adding any modifier #}
   class="vf-box
   {%- if box_href %} vf-box--is-link{% endif -%}
-  {%- if box_modifier %} {{box_modifier}}{% endif -%}
 
-  {# You want a snowflake of a classname for something, here you go #}
+  {%- if theme %} vf-box-theme--{{theme}}{% endif -%}
+  {%- if variant %} vf-box--{{variant}}{% endif -%}
+
+  {%- if box_modifier %} {{box_modifier}}{% endif -%}
   {%- if override_class %} | {{override_class}}{% endif -%}
 ">
-  <h3 class="vf-box__heading">{{- box_heading -}}</h3>
+
+  <h3 class="vf-box__heading">
+    {%- if box_href %}<a class="vf-box__link" href="{{ box_href if box_href else '#' }}">{% endif -%}
+    {{- box_heading -}}
+    {%- if box_href %}</a>{%- endif -%}
+  </h3>
   <p class="vf-box__text">{{- box_text -}}</p>
-</{{tags}}>
+</div>
