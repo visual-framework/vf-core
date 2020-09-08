@@ -1,11 +1,12 @@
 ---
-title: Example integration
-subtitle: An example pages that doesn't use the Visual Framework as the main visual tool.
+title: Integrating with existing sites and CSS, JS
+subtitle: An example that doesn't use the Visual Framework as the main visual tool.
 section: patterns
 date: 2018-08-22 12:24:50
 tags: posts
 layout: layouts/boilerplate.njk
 ---
+<!-- you can find more examples at https://github.com/visual-framework/vf-sample-integrations -->
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
@@ -23,17 +24,13 @@ layout: layouts/boilerplate.njk
     uniprot.namespace = 'uniprot';
     uniprot.releasedate = '2019_01';
   </script>
-  <meta content="0B002D36E9BAD5BA205A5DCAC3FD9E08" name="msvalidate.01" />
-  <meta content="nositelinkssearchbox" name="google" />
 </head>
-
 <body xmlns:up="http://purl.uniprot.org/core/" class="namespace-homepage" typeof="schema:WebPage"><span
     id="evidenceToolTip" style="display:none">&#xd;
     &lt;p>An evidence describes the source of an annotation, e.g. an experiment that has been published in the
     scientific literature, an orthologous protein, a record from another database, etc.&lt;/p>&#xd;
     &lt;p>&lt;a href="https://www.uniprot.org/manual/evidences">More...&lt;/a>&lt;/p>&#xd;
   </span>
-  <p style="display:none"><a accesskey="2" href="#content">Skip Header</a></p>
   <div id="masthead-container">
     <div class="masthead" id="local-masthead">
       <div id="local-title"><a id="logo" accesskey="1" href="https://www.uniprot.org/"><img alt=""
@@ -316,25 +313,19 @@ layout: layouts/boilerplate.njk
               src="https://www.uniprot.org/images/youtube.png" /></a></span></h3>
       <ul>
         <li>
-          <p><a data-icon="1" class="icon icon-functional" id="textSearch" href="">Text search</a><br />Our basic text
-            search allows you to search all the resources available</p>
+          <p><a data-icon="1" class="icon icon-functional" id="textSearch" href="">Text search</a><br />Our basic text search allows you to search all the resources available</p>
         </li>
         <li>
-          <p><a data-icon="t" class="icon icon-functional" href="https://www.uniprot.org/blast">BLAST</a><br />Find
-            regions of similarity between your sequences</p>
+          <p><a data-icon="t" class="icon icon-functional" href="https://www.uniprot.org/blast">BLAST</a><br />Find regions of similarity between your sequences</p>
         </li>
         <li>
-          <p><a data-icon="i" class="icon icon-functional" href="https://www.uniprot.org/align">Sequence
-              alignments</a><br />Align two or more protein sequences using the Clustal Omega program</p>
+          <p><a data-icon="i" class="icon icon-functional" href="https://www.uniprot.org/align">Sequence alignments</a><br />Align two or more protein sequences using the Clustal Omega program</p>
         </li>
         <li>
-          <p><a data-icon="_" class="icon icon-functional" href="https://www.uniprot.org/uploadlists">Retrieve/ID
-              mapping</a><br />Batch search with UniProt IDs or convert them to another type of database ID (or vice
-            versa)</p>
+          <p><a data-icon="_" class="icon icon-functional" href="https://www.uniprot.org/uploadlists">Retrieve/ID mapping</a><br />Batch search with UniProt IDs or convert them to another type of database ID (or vice versa)</p>
         </li>
         <li>
-          <p><a data-icon="_" class="icon icon-functional" href="https://www.uniprot.org/peptidesearch">Peptide
-              search</a><br />Find sequences that exactly match a query peptide sequence</p>
+          <p><a data-icon="_" class="icon icon-functional" href="https://www.uniprot.org/peptidesearch">Peptide search</a><br />Find sequences that exactly match a query peptide sequence</p>
         </li>
       </ul>
     </section>
@@ -342,32 +333,23 @@ layout: layouts/boilerplate.njk
       <h3>UniProt data</h3>
       <ul>
         <li id="hp-download">
-          <p><a data-icon="=" class="icon icon-functional" href="https://www.uniprot.org/downloads">Download latest
-              release</a><br />Get the
-            UniProt data
+          <p><a data-icon="=" class="icon icon-functional" href="https://www.uniprot.org/downloads">Download latest release</a><br />Get the UniProt data
           </p>
         </li>
         <li>
-          <p><a data-icon="z" class="icon icon-functional" id="hp-statistics"
-              href="https://www.uniprot.org/statistics/?sort=published">Statistics</a><br />View Swiss-Prot and TrEMBL
-            statistics
+          <p><a data-icon="z" class="icon icon-functional" id="hp-statistics" href="https://www.uniprot.org/statistics/?sort=published">Statistics</a><br />View Swiss-Prot and TrEMBL statistics
           </p>
         </li>
         <li>
-          <p><a data-icon="4" class="icon icon-functional" id="hp-changes"
-              href="https://www.uniprot.org/help/publications">How to cite us</a><br />The UniProt Consortium
+          <p><a data-icon="4" class="icon icon-functional" id="hp-changes" href="https://www.uniprot.org/help/publications">How to cite us</a><br />The UniProt Consortium
           </p>
         </li>
         <li>
-          <p><a data-icon="D" class="icon icon-functional" href="https://www.uniprot.org/help/submissions">Submit your
-              data</a><br />Submit your
-            sequences and annotation updates
+          <p><a data-icon="D" class="icon icon-functional" href="https://www.uniprot.org/help/submissions">Submit your data</a><br />Submit your sequences and annotation updates
           </p>
         </li>
         <li>
-          <p><a data-icon="D" class="icon icon-static"
-              href="https://www.uniprot.org/help/programmatic_access">Programmatic access</a><br />Query UniProt data
-            using APIs providing REST, SPARQL and Java services
+          <p><a data-icon="D" class="icon icon-static" href="https://www.uniprot.org/help/programmatic_access">Programmatic access</a><br />Query UniProt data using APIs providing REST, SPARQL and Java services
           </p>
         </li>
       </ul>
@@ -391,9 +373,7 @@ layout: layouts/boilerplate.njk
     }
   ]
 } %}
-
       <!-- END: VF 2.0 sample -->
-
     </section>
   </main>
   <footer id="page-footer">
@@ -455,10 +435,7 @@ layout: layouts/boilerplate.njk
             class="sib" property="schema:url"></a></span></div>
     </section>
   </footer>
-  <div id="elixir-ribbon"><a href="https://www.elixir-europe.org/platforms/data/core-data-resources"><img height="64px"
-        width="64px" id="elixer-cdr-logo" src="https://www.uniprot.org/images/elixir-cdr.gif" />
-      <h5><span class="elixir-banner-name">UniProt is an ELIXIR core data resource</span></h5>
-    </a></div>
+  <div id="elixir-ribbon"><a href="https://www.elixir-europe.org/platforms/data/core-data-resources"><img height="64px" width="64px" id="elixer-cdr-logo" src="https://www.uniprot.org/images/elixir-cdr.gif" /> <h5><span class="elixir-banner-name">UniProt is an ELIXIR core data resource</span></h5></a></div>
   <script src="https://www.uniprot.org/scripts/tippy.all.min.js" type="text/javascript"></script>
   <script type="text/javascript">
     (function () {
@@ -469,9 +446,6 @@ layout: layouts/boilerplate.njk
       }
       uniprot.appendFn(_scripts);
     })();
-
-  </script>
-  <script type="text/javascript">
     uniprot.appendFn(["home-bundle.js"]);
   </script>
 
@@ -497,7 +471,5 @@ layout: layouts/boilerplate.njk
   <link rel="stylesheet" media="all" href="https://assets.emblstatic.net/vf/v2.2.0/css/styles.css">
 
   <!-- END: VF 2.0 sample -->
-
 </body>
-
 </html>
