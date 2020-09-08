@@ -20,13 +20,14 @@ layout: layouts/boilerplate.njk
 
   <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
 </head>
-<body>
-  <div class="vf-body">
-    <link rel="import" href="https://www.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=574&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+<body class="vf-body">
+  <header class="vf-header">
+    {% render "@vf-global-header" %}
+  </header>
 
-    {% render "@vf-intro" %}
+  {% render "@vf-intro" %}
 
-  </div>
+  {% render "@vf-footer" %}
 
   {% include "./notice-boilerplate.njk" %}
 
