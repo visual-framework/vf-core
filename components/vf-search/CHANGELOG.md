@@ -1,3 +1,7 @@
+### 1.1.1
+
+- adds support for default search value
+
 ### 1.1.0
 
 - makes vf-search.njk a real template
