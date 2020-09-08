@@ -4,13 +4,13 @@
 
 ## About
 
-The `vf-box` container is an element to be used when ...
+The `vf-box` layout container can add spacing, a background color, a border, and text colours to an area of content.
 
 ## Usage
 
-A `vf-box` can be used in all grid systems and also inside of `vf-content`.
+A `vf-box` can be used in all layout components (`vf-grid`, `vf-stack`, `embl-grid`) and also inside of `vf-content`.
 
-For now `vf-box` is only designed to accept a heading and text (both have classes). The text node – `vf-box__text` can also accept a link which will inherit the text colour. 
+For now `vf-box` is only designed to accept a heading and text (both have classes). The text node – `vf-box__text` can also accept a link which will inherit the text colour.
 
 ## Options
 
@@ -18,9 +18,13 @@ For now `vf-box` is only designed to accept a heading and text (both have classe
 
 If you require the `vf-box` to link to a page you can do this by:
 
-- changing the `<div>` to an `<a href="">`.
-- adding `vf-box--is-link` to the classes being used.
+Using `.njk` and `.yml` for content:
 - if you are using `.njk` you only need to add a `box_href` to the data.
+
+Authoring in HTML:
+- adding `vf-box--is-link` to the classes being used `<div class="vf-box vf-box--is-link">...</div>`.
+- adding the link inside of the title `<h3 class="vf-box__title"><a href="#" class="vf-box__link">A title</a></h3>`.
+
 
 ### Design Variants
 
@@ -44,18 +48,6 @@ The theme classnames available are:
 - `vf-box-theme--tertiary`
 - `vf-box-theme--quaternary`
 - `vf-box-theme--quinary`
-
-### Deprecated Variants
-
-Since `v1.1.0` the following components are considered depracted and should not be used in new projects:
-
-- `vf-box--inlay`
-- `vf-box--factoid`
-
-To update your existing usage of these variants to use the component–level theming you can swap:
-
-- `vf-box--inlay` for `vf-box--normal vf-box-theme--quinary`
-- `vf-box--factoid` for `vf-box--normail vf-box-theme--primary`
 
 ### Accessibility
 

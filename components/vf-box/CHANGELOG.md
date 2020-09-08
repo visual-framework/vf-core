@@ -1,3 +1,15 @@
+### 2.0.0
+
+- removed bottom margin from component. You should now make use of `vf-stack` in a parent element to create vertical spacing between multiple components.
+- made the `vf-box__title` the link rather than the whole component, using ::after pseudo element so the whole of `vf-box` is clickable.
+- added some more examples (easy primay with link, normal primary with link, normal primary with link with text link).
+- removed 'default' component `.yml` data.
+- removed `box` from `.yml` and `.njk` for setting context as it was an additional step.
+- adds `variant` and `theme` options to replace `vf-box__modifier` (`vf-box__modifier` will be removed in `v3,0`).
+- removes previously deprecated variants `vf-box--inlay` and `vf-box--factoid`.
+
+
+
 ### 1.1.1
 
 - fixes issue with links in `vf-box__text` being visited and purple.
