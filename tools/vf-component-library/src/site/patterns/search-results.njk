@@ -1,0 +1,35 @@
+---
+title: Boilerplate for search results
+subtitle: Use this boilerplate pattern for generic pages.
+section: patterns
+date: 2018-08-22 12:24:50
+tags: posts
+layout: layouts/boilerplate.njk
+---
+<!DOCTYPE html>
+<html lang="en" class="vf-no-js">
+<head>
+  {% render "@vf-no-js" %}
+  <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+
+  {% render "@vf-favicon" %}
+  {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "Barcelona", "meta_what": "research", "meta_active": "what"} %}
+
+  <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+</head>
+<body>
+  <div class="vf-body">
+    <link rel="import" href="https://www.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=574&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+
+    {% render "@vf-intro" %}
+
+  </div>
+
+  {% include "./notice-boilerplate.njk" %}
+
+  {% include "footer.njk" %}
+</body>
+</html>

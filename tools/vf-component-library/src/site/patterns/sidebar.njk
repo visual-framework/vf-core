@@ -1,0 +1,53 @@
+---
+title: Boilerplate with sidebar
+subtitle: Use this boilerplate pattern for generic pages.
+section: patterns
+date: 2018-08-22 12:24:50
+tags: posts
+layout: layouts/boilerplate.njk
+---
+<!DOCTYPE html>
+<html lang="en" class="vf-no-js">
+<head>
+  {% render "@vf-no-js" %}
+  <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+
+  {% render "@vf-favicon" %}
+  {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "Barcelona", "meta_what": "research", "meta_active": "what"} %}
+
+  <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+</head>
+<body>
+  <div class="vf-body">
+    <link rel="import" href="https://www.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=574&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+
+    {% render "@vf-intro" %}
+
+    <section class="embl-grid embl-grid--has-sidebar">
+
+      {% render '@vf-section-header', {"section_title":"Latest Press Releases"} %}
+
+      <div class="vf-content">
+      {% markdown %}
+      Long narrow sidebars suffer from usability issues, fortunately the VF utilises a container-based approach which allows for better "chunking" of information and sidebars that only stretch for the length of a portion of a page, which we'll demonstrate here.
+      {% endmarkdown %}
+      </div>
+
+      <div class="">
+
+      </div>
+
+    </section>
+
+
+  </div>
+
+  {% include "./notice-boilerplate.njk" %}
+
+  {% include "footer.njk" %}
+
+</body>
+</html>
