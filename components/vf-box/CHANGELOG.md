@@ -1,3 +1,7 @@
+### 2.0.1
+
+- adds `| safe` to `vf-box__text` variable so that HTML can be parsed through.
+
 ### 2.0.0
 
 - removed bottom margin from component. You should now make use of `vf-stack` in a parent element to create vertical spacing between multiple components.
