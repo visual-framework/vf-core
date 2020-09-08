@@ -21,7 +21,6 @@
   color: set-ui-color(vf-ui-color--black);
   color: var(--box-text-color);
   display: block;
-  margin-bottom: $vf-box-outer-spacing;
   padding: 24px 16px;
   width: 100%;
 
@@ -49,6 +48,24 @@
   @include set-type(text-heading--4);
 }
 
+.vf-box__link {
+  color: currentColor;
+  text-decoration: none;
+
+  &::after {
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 300ms;
+    transition-property: box-shadow;
+    transition-timing-function: ease-in-out;
+    z-index: 512;
+  }
+}
+
 .vf-box__text {
   @include set-type(text-body--3);
 
@@ -57,7 +74,9 @@
   .vf-content & a,
   a {
     color: currentColor;
+    position: relative;
     text-decoration: underline;
+    z-index: 1984;
     &:visited,
     &:hover,
     &:focus {
