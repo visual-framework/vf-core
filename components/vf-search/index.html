@@ -651,8 +651,12 @@ class="vf-logo | vf-logo--has-text">
 
         <pre><code>{% render '@vf-search--default', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;label&quot;: &quot;Search&quot;,
-  &quot;button&quot;: &quot;Search&quot;
+  &quot;variant&quot;: &quot;default&quot;,
+  &quot;search_action&quot;: &quot;#&quot;,
+  &quot;search_button&quot;: &quot;Search&quot;,
+  &quot;search_label&quot;: &quot;Search&quot;,
+  &quot;search_placeholder&quot;: &quot;Enter your search terms&quot;,
+  &quot;search_id&quot;: &quot;searchitem&quot;
 } %}
         </code></pre>
 
@@ -664,10 +668,11 @@ class="vf-logo | vf-logo--has-text">
         
           <div class="vf-grid">
             <section class="">
-              <form action="" class="vf-form | vf-search">
+              varianthere: default
+<form action="#"  class="vf-form | vf-search">
   <div class="vf-form__item | vf-search__item">
-    <label class="vf-form__label vf-u-sr-only | vf-search__label" for="text">Search</label>
-    <input type="text" id="text" class="vf-form__input | vf-search__input">
+    <label class="vf-form__label vf-u-sr-only | vf-search__label" for="searchitem">Search</label>
+    <input type="search" placeholder="Enter your search terms" id="searchitem" class="vf-form__input | vf-search__input">
   </div>
   <button type="submit" class="vf-search__button | vf-button vf-button--primary"> Search</button>
 </form>
@@ -680,10 +685,11 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form | vf-search&quot;</span>&gt;</span>
+        <pre>varianthere: default
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form | vf-search&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__item | vf-search__item&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__label vf-u-sr-only | vf-search__label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>Search<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__input | vf-search__input&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__label vf-u-sr-only | vf-search__label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;searchitem&quot;</span>&gt;</span>Search<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter your search terms&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;searchitem&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__input | vf-search__input&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-search__button | vf-button vf-button--primary&quot;</span>&gt;</span> Search<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
@@ -708,8 +714,12 @@ class="vf-logo | vf-logo--has-text">
 
         <pre><code>{% render '@vf-search--inline', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;label&quot;: &quot;Search&quot;,
-  &quot;button&quot;: &quot;Search&quot;
+  &quot;variant&quot;: &quot;inline&quot;,
+  &quot;search_action&quot;: &quot;#&quot;,
+  &quot;search_button&quot;: &quot;Search&quot;,
+  &quot;search_label&quot;: &quot;Inline search&quot;,
+  &quot;search_placeholder&quot;: &quot;Enter your search terms&quot;,
+  &quot;search_id&quot;: &quot;inlinesearchitem&quot;
 } %}
         </code></pre>
 
@@ -721,12 +731,13 @@ class="vf-logo | vf-logo--has-text">
         
           <div class="vf-grid">
             <section class="">
-              <form action="" class="vf-form | vf-search vf-search--inline">
+              varianthere: inline
+<form action="#"  class="vf-form | vf-search vf-search--inline">
   <div class="vf-form__item | vf-search__item">
-    <label class="vf-form__label vf-u-sr-only | vf-search__label" for="text">Search</label>
-    <input type="text" id="text" class="vf-form__input | vf-search__input">
+    <label class="vf-form__label vf-u-sr-only | vf-search__label" for="inlinesearchitem">Inline search</label>
+    <input type="search" placeholder="Enter your search terms" id="inlinesearchitem" class="vf-form__input | vf-search__input">
   </div>
-  <button type="submit" class="vf-search__button | vf-button vf-button--primary">Search</button>
+  <button type="submit" class="vf-search__button | vf-button vf-button--primary"> Search</button>
 </form>
 
             </section>
@@ -737,12 +748,13 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form | vf-search vf-search--inline&quot;</span>&gt;</span>
+        <pre>varianthere: inline
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form | vf-search vf-search--inline&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__item | vf-search__item&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__label vf-u-sr-only | vf-search__label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>Search<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__input | vf-search__input&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__label vf-u-sr-only | vf-search__label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;inlinesearchitem&quot;</span>&gt;</span>Inline search<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter your search terms&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;inlinesearchitem&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__input | vf-search__input&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-search__button | vf-button vf-button--primary&quot;</span>&gt;</span>Search<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-search__button | vf-button vf-button--primary&quot;</span>&gt;</span> Search<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
         </pre>
 
