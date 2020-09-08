@@ -26,7 +26,19 @@ layout: layouts/boilerplate.njk
   </header>
   {% include "./templates/breadcrumbs-boilerplate.njk" %}
 
-  {% render "@vf-intro" %}
+  <section class="vf-grid">
+    <div>
+      {% render '@vf-search--inline', {
+        "component-type": "block",
+        "variant": "inline",
+        "search_action": "#",
+        "search_button": "Search",
+        "search_label": "Inline search",
+        "search_placeholder": "Enter your search terms",
+        "search_id": "inlinesearchitem"
+      } %}
+    </div>
+  </section>
 
   {% render "@vf-footer" %}
   {% include "./templates/notice-boilerplate.njk" %}
