@@ -1,0 +1,263 @@
+---
+title: Example service
+subtitle: An example scientific service that blends VF 2.0 components and bespoke code.
+section: patterns
+date: 2018-08-22 12:24:50
+tags: posts
+layout: layouts/boilerplate.njk
+---
+<!DOCTYPE html>
+<html lang="en" class="vf-no-js">
+<head>
+  {% render "@vf-no-js" %}
+  <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+
+  {% render "@vf-favicon" %}
+  {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "Barcelona", "meta_what": "research", "meta_active": "what"} %}
+
+  <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+</head>
+<body class="vf-body">
+  <header class="vf-header">
+    {% render "@vf-global-header" %}
+  </header>
+  {% include "./templates/breadcrumbs-boilerplate.njk" %}
+
+  {# https://visual-framework.github.io/vf-core/components/vf-masthead/ #}
+  <style>
+    .vf-masthead.vf-u-fullbleed::before {
+      z-index: unset; /* bug? */
+    }
+    .vf-masthead {
+      --vf-masthead__bg-image: url(https://visual-framework.github.io/vf-core/assets/vf-masthead/assets/group-bg_2d4155.png);
+    }
+  </style>
+  <div class="vf-masthead vf-masthead--with-title-block vf-masthead--has-image vf-u-fullbleed" style="background-image: var(--vf-masthead__bg-image)" data-vf-js-masthead>
+  <div class="vf-masthead__inner">
+  <div class="vf-masthead__title">
+  <h1 class="vf-masthead__heading">
+  <a href="JavaScript:Void(0);" class="vf-masthead__heading__link">
+  Name of Service
+  </a>
+  <span class="vf-masthead__heading--additional">
+  Open data resources of code, functions and things of data
+  </span>
+  </h1>
+  <h2 class="vf-masthead__subheading">
+  <span class="vf-masthead__location">
+  Categorisation (Optional)
+  </span>
+  </h2>
+  </div>
+  </div>
+  </div>
+
+
+  {# {% render '@vf-navigation--main', {
+    "navigation": [
+      {
+        "text": "Home",
+        "navigation_href": "JavaScript:Void(0);"
+      },
+      {
+        "text": "Search",
+        "navigation_href": "JavaScript:Void(0);"
+      },
+      {
+        "text": "Browse",
+        "navigation_href": "JavaScript:Void(0);"
+      },
+      {
+        "text": "Results",
+        "navigation_href": "JavaScript:Void(0);"
+      },
+      {
+        "text": "Download",
+        "navigation_href": "JavaScript:Void(0);"
+      },
+      {
+        "text": "Help",
+        "navigation_href": "JavaScript:Void(0);"
+      },
+      {
+        "text": "About",
+        "navigation_href": "JavaScript:Void(0);"
+      }
+    ],
+    "classModifier": "main"
+  } %} #}
+
+
+  {# <section class="vf-grid">
+    <div>
+
+    </div>
+  </section> #}
+
+  {% render '@vf-banner--info', {
+    "alert_icon_text": "dismiss",
+    "banner__info": true,
+    "banner__dismissable": false,
+    "banner__message": "This is a starting point for services that demonstrates an overall feel and how to structure the homepage navigation. Individual service design will vary greately depending on the needs addressed."
+  } %}
+
+
+  <section class="embl-grid embl-grid--has-centered-content | vf-u-padding__top--xxl vf-u-margin__top--xl">
+    <div><!-- empty --></div>
+    <div class="vf-u-border-color-ui--grey--light vf-box vf-box--r">
+      {% render '@vf-search', {
+        "variant": "inline",
+        "search_action": "JavaScript:Void(0);",
+        "search_button": "Search",
+        "search_label": "Inline search",
+        "search_placeholder": "Search the service",
+        "search_id": "inlinesearchitem",
+        "search_value_default": ""
+      } %}
+      <p class="vf-text-body--5">
+        We also offer an <a href="JavaScript:Void(0);" class="vf-link">advanced search</a> | Example searches: <a href="JavaScript:Void(0);" class="vf-link">Example</a>, <a href="JavaScript:Void(0);" class="vf-link">Example</a>, <a href="JavaScript:Void(0);" class="vf-link">Example</a>
+      </p>
+
+    </div>
+  </section>
+
+  <section class="vf-grid vf-grid__col-3 | vf-u-padding__top--sm vf-u-margin__bottom--xxl">
+    <div class="vf-grid__col--span-2">
+      <div class="vf-grid vf-grid__col-2">
+        {% render '@vf-section-header--has-a-link-and-text', {
+          "section_title": "Browse",
+          "href": "JavaScript:Void(0);",
+          "vf_section__content": [
+            "On the homepage, don't use a strip of navigation."
+          ]
+        } %}
+
+        {% render '@vf-section-header--has-a-link-and-text', {
+          "section_title": "Results",
+          "href": "JavaScript:Void(0);",
+          "vf_section__content": [
+            "It's more user friendly to put the navigation into sqaures like these."
+          ]
+        } %}
+
+        {% render '@vf-section-header--has-a-link-and-text', {
+          "section_title": "Download",
+          "href": "JavaScript:Void(0);",
+          "vf_section__content": [
+            "It allows users to explore the content."
+          ]
+        } %}
+
+        {% render '@vf-section-header--has-a-link-and-text', {
+          "section_title": "Help",
+          "href": "JavaScript:Void(0);",
+          "vf_section__content": [
+            "And also read about what to expect in each section"
+          ]
+        } %}
+      </div>
+    </div>
+
+    <div>
+      {% render '@vf-summary--regular', {
+        "summary__title": "About this service",
+        "summary__text": "A thing provides functional analysis of proteins by classifying them into families and predicting domains and important sites.",
+        "summary__href": "JavaScript:Void(0);",
+        "size": "r"
+      } %}
+      {# <p class="vf-text-body vf-text-body--3">
+        To classify proteins in this way, InterPro uses predictive models, known as signatures, provided by several different databases (referred to as member databases) that make up the InterPro consortium. We combine protein signatures from these member databases into a single searchable resource, capitalising on their individual strengths to produce a powerful integrated database and diagnostic tool.
+      </p> #}
+
+      {# {% render '@vf-box--normal-quaternary', {
+        "box_heading": "Side item",
+        "box_text": "This is some more content that would be in the box.",
+        "theme": "quaternary",
+        "variant": "normal"
+      } %} #}
+    </div>
+  </section>
+
+  <hr class="vf-divider" />
+
+  <section class="embl-grid |  vf-u-margin__top--xxl">
+    {%- render '@vf-section-header--default', {
+      "section_title": "In the spotlight"
+    } -%}
+    <section class="vf-grid vf-grid__col-1">
+      {% render '@vf-tabs--default', {
+        "component-type": "block",
+        "tabs": [
+          {
+            "tab_title": "Search by sequence",
+            "tab_number": 1,
+            "tab_heading": "",
+            "tab_content": "This could be text information, or a nested form. Or you might not want tabs at all, use the code needed for your service. You can also include non-Visual Framework JS and CSS, as the VF won't break your other code."
+          },
+          {
+            "tab_title": "Search by text",
+            "tab_number": 2,
+            "tab_heading": "",
+            "tab_content": "Nullam at diam nec arcu suscipit auctor non a erat. Sed et magna semper, eleifend magna non, facilisis nisl. Proin et est et lorem dictum finibus ut nec turpis. Aenean nisi tortor, euismod a mauris a, mattis scelerisque tortor. Sed dolor risus, varius a nibh id, condimentum lacinia est. In lacinia cursus odio a aliquam. Curabitur tortor magna, laoreet ut rhoncus at, sodales consequat tellus."
+          },
+          {
+            "tab_title": "Search by Domain Architecture",
+            "tab_number": 3,
+            "tab_heading": "",
+            "tab_content": "Phasellus ac tristique orci. Nulla maximus <a class=\"vf-link\" href=\"#\">justo nec dignissim consequat</a>. Sed vehicula diam sit amet mi efficitur vehicula in in nisl. Aliquam erat volutpat. Suspendisse lorem turpis, accumsan consequat consectetur gravida, <a class=\"vf-link\" href=\"#\">pellentesque ac ante</a>. Aliquam in commodo ligula, sit amet mollis neque. Vestibulum at facilisis massa."
+          }
+        ]
+      } %}
+    </section>
+  </section>
+
+
+  <section class="vf-grid">
+  </section>
+
+  <section class="embl-grid">
+    {%- render '@vf-section-header--default', {
+      "section_title": "In the spotlight"
+    } -%}
+    <section class="vf-grid vf-grid__col-3">
+      {% render '@vf-card--normal--tertiary', {
+        "component-type": "block",
+        "theme": "tertiary",
+        "variant": "normal",
+        "card_title": "A Normal Card with tertiary accent",
+        "card_image": "/vf-core/assets/vf-card/assets/vf-card-example.png",
+        "card_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?",
+        "card_image__alt": "Image alt text"
+      } %}
+
+      {% render '@vf-card--normal--tertiary', {
+        "component-type": "block",
+        "theme": "tertiary",
+        "variant": "normal",
+        "card_title": "A Normal Card with tertiary accent",
+        "card_image": "/vf-core/assets/vf-card/assets/vf-card-example.png",
+        "card_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?",
+        "card_image__alt": "Image alt text"
+      } %}
+
+      {% render '@vf-card--normal--tertiary', {
+        "component-type": "block",
+        "theme": "tertiary",
+        "variant": "normal",
+        "card_title": "A Normal Card with tertiary accent",
+        "card_image": "/vf-core/assets/vf-card/assets/vf-card-example.png",
+        "card_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?",
+        "card_image__alt": "Image alt text"
+      } %}
+    </section>
+  </section>
+
+
+  {% render "@vf-footer" %}
+  {% include "./templates/notice-boilerplate.njk" %}
+  {% include "footer.njk" %}
+</body>
+</html>

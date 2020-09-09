@@ -1,6 +1,7 @@
 ---
-title: Boilerplate for a generic page
-subtitle: Use this boilerplate pattern for generic content-focused pages.
+title: Boilerplate with sidebar
+subtitle: Use this boilerplate pattern for generic pages.
+intro: Long narrow sidebars suffer from usability issues, fortunately the VF utilises a container-based approach which allows for better "chunking" of information and sidebars that only stretch for the length of a portion of a page, which we'll demonstrate here.
 section: patterns
 date: 2018-08-22 12:24:50
 tags: posts
@@ -26,9 +27,22 @@ layout: layouts/boilerplate.njk
   </header>
   {% include "./templates/breadcrumbs-boilerplate.njk" %}
 
-  {% render "@vf-intro" %}
+  {% render '@vf-intro', {
+    "vf_intro_heading": title,
+    "vf_intro_lede": subtitle,
+    "vf_intro_text": [
+      intro
+    ],
+    "vf_intro_badge": {
+      "style": [ "phases" ],
+      "text": "beta",
+      "theme": "primary",
+      "badge_href": "JavaScript:Void(0);"
+    }
+  } %}
 
-  <section class="embl-grid embl-grid--has-centered-content">
+  <section class="embl-grid embl-grid--has-sidebar">
+
     <div>
       <!-- you can include section headers too -->
       <!--
@@ -38,9 +52,20 @@ layout: layouts/boilerplate.njk
       -->
     </div>
 
-    <div>
+    <div class="vf-content">
       {% render '@vf-content' %}
     </div>
+
+    <div class="">
+      {% render '@vf-box', {
+        "box": {
+          "box_heading": "Did You Know?",
+          "box_text": "Here's a sidebar specific to a conainer.",
+          "box_modifier": "vf-box--normal vf-box-theme--primary"
+        }
+      } %}
+    </div>
+
   </section>
 
   {% render "@vf-footer" %}

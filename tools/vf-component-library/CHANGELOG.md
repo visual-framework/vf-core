@@ -1,3 +1,8 @@
+### 1.0.6
+
+- begin to make more pattern/boilerplate guidance
+- minor templating updates
+
 ### 1.0.5
 
 - dependency bump
