@@ -1,6 +1,12 @@
+### 2.0.2
+
+- fixes bug with `-link` variant by adding position relative to `vf-box`
+- adds `| safe` to `vf-box__text` variable so that HTML can be parsed through.
+
 ### 2.0.1
 
 - margin reset on `.vf-box :last-child` now has more specificity as `.vf-box > :last-child`
+
 
 ### 2.0.0
 
