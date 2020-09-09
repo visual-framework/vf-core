@@ -1,3 +1,7 @@
+### 1.2.2
+
+- dependency bump
+
 ### 1.2.0
 
 - adds loading="lazy" to the img element for better performance
