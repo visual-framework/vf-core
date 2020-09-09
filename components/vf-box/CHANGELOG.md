@@ -1,3 +1,7 @@
+### 2.0.1
+
+- margin reset on `.vf-box :last-child` now has more specificity as `.vf-box > :last-child`
+
 ### 2.0.0
 
 - removed bottom margin from component. You should now make use of `vf-stack` in a parent element to create vertical spacing between multiple components.
@@ -7,8 +11,6 @@
 - removed `box` from `.yml` and `.njk` for setting context as it was an additional step.
 - adds `variant` and `theme` options to replace `vf-box__modifier` (`vf-box__modifier` will be removed in `v3,0`).
 - removes previously deprecated variants `vf-box--inlay` and `vf-box--factoid`.
-
-
 
 ### 1.1.1
 
