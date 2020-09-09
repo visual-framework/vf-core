@@ -1,3 +1,7 @@
+### 2.0.2
+
+- fixes bug with `-link` variant by adding position relative to `vf-box`
+
 ### 2.0.1
 
 - adds `| safe` to `vf-box__text` variable so that HTML can be parsed through.
