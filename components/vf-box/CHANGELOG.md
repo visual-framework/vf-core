@@ -1,10 +1,12 @@
 ### 2.0.2
 
 - fixes bug with `-link` variant by adding position relative to `vf-box`
+- adds `| safe` to `vf-box__text` variable so that HTML can be parsed through.
 
 ### 2.0.1
 
-- adds `| safe` to `vf-box__text` variable so that HTML can be parsed through.
+- margin reset on `.vf-box :last-child` now has more specificity as `.vf-box > :last-child`
+
 
 ### 2.0.0
 
@@ -15,8 +17,6 @@
 - removed `box` from `.yml` and `.njk` for setting context as it was an additional step.
 - adds `variant` and `theme` options to replace `vf-box__modifier` (`vf-box__modifier` will be removed in `v3,0`).
 - removes previously deprecated variants `vf-box--inlay` and `vf-box--factoid`.
-
-
 
 ### 1.1.1
 
