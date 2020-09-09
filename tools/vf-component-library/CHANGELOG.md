@@ -1,3 +1,7 @@
+### 1.0.7
+
+- adds updates blog
+
 ### 1.0.6
 
 - begin to make more pattern/boilerplate guidance
