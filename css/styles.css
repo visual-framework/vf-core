@@ -4743,13 +4743,14 @@ html:not(.vf-disable-deprecated) .vf-summary--profile-s .vf-summary__title {
 
 .vf-summary--has-image {
   column-gap: 18px;
+  grid-template-areas: "image text" "image text" "image text";
   grid-template-columns: minmax(50px, auto) 1fr;
-  grid-template-rows: auto;
   margin: 0 0 48px 0;
 }
+.vf-summary--has-image > .vf-summary__link, .vf-summary--has-image > .vf-summary__image {
+  grid-area: image;
+}
 .vf-summary--has-image .vf-summary__image {
-  grid-column: 1/span 1;
-  grid-row: 1/span 4;
   width: 180px;
 }
 .vf-summary--has-image .vf-summary__image--thumbnail {
@@ -4759,7 +4760,6 @@ html:not(.vf-disable-deprecated) .vf-summary--profile-s .vf-summary__title {
   grid-column: 2/-1;
 }
 .vf-summary--has-image .vf-summary__text {
-  align-items: center;
   display: block;
   grid-column: 2/-1;
 }
