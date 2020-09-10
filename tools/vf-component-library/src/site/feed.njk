@@ -19,7 +19,7 @@ metadata:
     <name>{{ siteConfig.author }}</name>
     <email>{{ siteConfig.email }}</email>
   </author>
-  {%- for post in collections.posts %}
+  {%- for post in collections.posts | reverse %}
   {% set absolutePostUrl %}{{ metadata.id }}{{ post.url }}{% endset %}
   <entry>
     <title>{{ post.data.title }}</title>

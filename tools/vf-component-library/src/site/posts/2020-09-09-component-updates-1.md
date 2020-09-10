@@ -1,6 +1,6 @@
 ---
 title: 2020-09-09 Component update
-subtitle: Minor compoent updates and bug fixes.
+subtitle: Minor component updates and bug fixes.
 date: 2020-09-09 12:24:50
 tags:
   - posts
