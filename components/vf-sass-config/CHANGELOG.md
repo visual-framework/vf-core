@@ -1,3 +1,7 @@
+### 1.4.2
+
+- updates the `$global-page-max-width` variable so that it's consistent with the page width across components - set to `81.25rem`.
+
 ### 1.4.0
 
 - creates supporting Sass files for new theming design tokens to be used.
