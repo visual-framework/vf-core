@@ -1,12 +1,12 @@
 # PUBLISHING
 
-A reference guide on how to do releases of `vf-core` and components. See also: [Guide on versions in `vf-core`](https://visual-framework.github.io/vf-welcome/developing/guidelines/versioning/)
+A reference guide on how to do releases of `vf-core` and components. See also: [Guide on versions in `vf-core`](https://visual-framework.github.io/vf-core/developing/guidelines/versioning/)
 
 
 Components and the `vf-core` build process are contained in a [monorepo](https://gomonorepo.org) inside of the `vf-core`
 project. They are published to npm with [Lerna](https://github.com/lerna/lerna#about).
 
-See also: [Guide on updating a component versions](https://visual-framework.github.io/vf-welcome/developing/components/updating-a-component/)
+See also: [Guide on updating a component versions](https://visual-framework.github.io/vf-core/developing/components/updating-a-component/)
 
 ## Component pre-release workflow
 

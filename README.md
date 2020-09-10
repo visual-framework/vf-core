@@ -3,7 +3,7 @@
 
 **👋 Downloading or cloning this repo? 🛑**
 
-Most won't need to clone this repo. Do so if you only wish to [develop the architecture](https://visual-framework.github.io/vf-welcome/developing/) of the Visual Framework core or contribute a global component, otherwise [use one of the boilerplates or install a component directly](https://visual-framework.github.io/vf-core/).
+Most won't need to clone this repo. Do so if you only wish to [develop the architecture](https://visual-framework.github.io/vf-core/developing/) of the Visual Framework core or contribute a global component, otherwise [use one of the boilerplates or install a component directly](https://visual-framework.github.io/vf-core/).
 
 ---
 
@@ -36,23 +36,23 @@ The `vf-core` is built with:
 - [Yarn](https://yarnpkg.com/) to install components
 - [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) for component templates
 - [Lerna](https://lerna.js.org/) to publish components to npm as a [mono-repo](https://gomonorepo.org/)
-- Name-spacing for JavaScript and CSS; more on that in [the coding standards](https://visual-framework.github.io/vf-welcome/developing/#guidelines)
+- Name-spacing for JavaScript and CSS; more on that in [the coding standards](https://visual-framework.github.io/vf-core/developing/#guidelines)
 
 ## Making use of the VF Core
 
-[Here's a guide with the most common approaches](https://visual-framework.github.io/vf-welcome/building/).
+[Here's a guide with the most common approaches](https://visual-framework.github.io/vf-core/building/).
 
 ## FAQ
 
-[Here's a guide to the most common questions](https://visual-framework.github.io/vf-welcome/#faq).
+[Here's a guide to the most common questions](https://visual-framework.github.io/vf-core/#faq).
 
 ## Have a problem?
 
-See the [troubleshooting guide](https://visual-framework.github.io/vf-welcome/troubleshooting).
+See the [troubleshooting guide](https://visual-framework.github.io/vf-core/troubleshooting).
 
 ## Want to help develop?
 
-Great. See the [development guide](https://visual-framework.github.io/vf-welcome/developing/).
+Great. See the [development guide](https://visual-framework.github.io/vf-core/developing/).
 
 ---
 
