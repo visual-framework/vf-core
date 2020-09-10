@@ -1,3 +1,8 @@
+### 2.0.2
+
+- changes breakpoint for sidebar to be a sidebar from 1024px
+- makes the sidebar smaller until it hits 1300px
+
 ### 2.0.1
 
 - fixes issue where `embl-grid` didn't allow for more 'main content' items.

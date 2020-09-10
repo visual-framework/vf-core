@@ -68,7 +68,7 @@
     minmax(21em, 1fr);
   /* stylelint-enable */
 
-  @media (min-width: 846px) and (max-width: 1299px) {
+  @media (min-width: 846px) and (max-width: 1023px) {
     & > *:first-child {
       grid-column: 1 / 2;
     }
@@ -76,10 +76,18 @@
       grid-column: 2 / -1;
     }
   }
+  @media (min-width: 1024px) and (max-width: 1299px) {
+    --embl-grid:
+      var(--embl-grid-module--prime)
+      [main-start]
+      auto
+      [main-end]
+      minmax(18em, 1fr);
+  }
 }
 
 .embl-grid-has-sidebar--hairline {
-  @media (min-width: 1300px) {
+  @media (min-width: $vf-breakpoint--lg) {
     & > *:last-child {
       position: relative;
     }
