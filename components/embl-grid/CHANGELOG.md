@@ -1,4 +1,4 @@
-### 2.0.2
+### 2.0.3
 
 - changes breakpoint for sidebar to be a sidebar from 1024px
 - makes the sidebar smaller until it hits 1300px

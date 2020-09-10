@@ -1,4 +1,4 @@
-### 1.4.1
+### 1.4.2
 
 - updates the `$global-page-max-width` variable so that it's consistent with the page width across components - set to `81.25rem`.
 
