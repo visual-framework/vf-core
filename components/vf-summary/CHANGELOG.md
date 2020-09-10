@@ -1,3 +1,7 @@
+### 1.3.1
+
+- adds 'grid-template-areas' CSS for `--has-image` variant so you can use it with a `-thumbnail` class.
+
 ### 1.3.0
 
 - adds loading="lazy" to the img element for better performance
