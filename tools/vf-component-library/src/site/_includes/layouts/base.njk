@@ -31,6 +31,9 @@
     {% if meta.image -%}
     <meta property="twitter:image" content="{{ twitter.description or meta.image }}">
     {%- endif %}
+
+    <!-- Feed -->
+    <link href="https://visual-framework.github.io/vf-core/feed.xml" type="application/rss+xml" rel="alternate" title="Visual Framework 2.0 Updates">
   </head>
   <body class="{{ bodyClass }} vf-body" >
     <header class="vf-global-header | vf-search-client-side--no-index">
@@ -66,12 +69,21 @@
         <li class="vf-breadcrumbs__item">
           <a href="{{ '/' | url }}" class="vf-breadcrumbs__link">{{siteConfig.siteInformation.title}}</a>
         </li>
-        {# don't show section link on a section #}
+        {% if tags %}
+          {% if 'changelog' in tags %}
+            <li class="vf-breadcrumbs__item">
+              <a href="{{ '/updates' | url }}" class="vf-breadcrumbs__link">Updates</a>
+            </li>
+          {% endif %}
+        {% endif %}
         {% if is_index != true %}
-          {# load section breadcrumbs from siteConfig.js #}
-          <li class="vf-breadcrumbs__item">
-            <a href="{{ siteConfig.sections[section].url | url }}" class="vf-breadcrumbs__link">{{ siteConfig.sections[section].title }}</a>
-          </li>
+          {% if section %}
+            {# don't show section link on a section #}
+            {# load section breadcrumbs from siteConfig.js #}
+            <li class="vf-breadcrumbs__item">
+              <a href="{{ siteConfig.sections[section].url | url }}" class="vf-breadcrumbs__link">{{ siteConfig.sections[section].title }}</a>
+            </li>
+          {% endif %}
         {% endif %}
         {# Handle child components #}
         {% if pagination.items[0] %}
