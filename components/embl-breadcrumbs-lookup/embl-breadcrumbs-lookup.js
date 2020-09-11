@@ -362,8 +362,9 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
    * @example getBreadcrumbParentTerm(parents,context)
    * @param {array} [parents]  - array of UUIDs
    * @param {string} [facet] - who, what, where
+   * @param {object} [lastParent] - term object to prevent recursion, optional
    */
-  function getBreadcrumbParentTerm(parents,facet) {
+  function getBreadcrumbParentTerm(parents,facet,lastParent) {
     // var parentTodos = {
     //   // 1: 'Respect the parent term context: who/what/where'
     //   // 2: 'scan the taxonomy and get any parent IDs',
@@ -371,6 +372,8 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     //   // 4: 'if parent was found, does the parent have a parent?'
     // };
     // console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
+
+    var lastParent = lastParent || {}; // track last insertion to prevent recursion
 
     if (parents == undefined || parents == null) {
       // no parent breadcrumb preset, exiting
@@ -391,14 +394,23 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 
       if (activeParent.primary == facet) {
         // only insert crumb if it respects the original term context: who/what/where
-        emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+        if (activeParent.uuid != lastParent.uuid) {
+          // no recursive output
+          emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+        }
       }
 
       // get parents of parent
       if (activeParent.parents) {
-        getBreadcrumbParentTerm(activeParent.parents,facet);
+        if (activeParent.uuid != lastParent.uuid) {
+          lastParent = activeParent;
+          getBreadcrumbParentTerm(activeParent.parents,facet,lastParent);
+        } else {
+          console.log('embl-js-breadcumbs-lookup', 'Recursion in parent lookup. Check the EMBL.org Profile. Aborting lookup.');
+          console.log('embl-js-breadcumbs-lookup', 'activeParent', activeParent);
+          console.log('embl-js-breadcumbs-lookup', 'lastParent', lastParent);
+        }
       }
-
     }
 
     var activeParent;
@@ -410,6 +422,8 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     } else {
       // otherwise lookup each parent
       parents.forEach(function (parentId) {
+        // recursive test
+        // parentId = '0c79d36e-ed33-482d-a396-15a0b2bc4540';
         activeParent = emblTaxonomy.terms[parentId];
         insertParent(activeParent);
       });
