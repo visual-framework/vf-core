@@ -1,3 +1,8 @@
+### 2.0.4
+
+- fixes issue with `auto` and `1fr` doing the opposite with the sidebar.
+
+
 ### 2.0.3
 
 - changes breakpoint for sidebar to be a sidebar from 1024px
