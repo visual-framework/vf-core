@@ -27,6 +27,8 @@ We're using git to echo all the changes between the last releases with this git 
 
 It dumps the changes into a time-stamped Markdown file which our [Eleventy-based component library](https://github.com/visual-framework/vf-core/tree/develop/tools/vf-component-library) turns into [a blog post](https://github.com/visual-framework/vf-core/blob/develop/tools/vf-component-library/src/site/updates.njk).
 
+We run this as an aliased command: `yarn run releasenotes`
+
 The file then needs some manual massaging which we plan to further automate in the future:
 
 - Insert templated frontmatter
