@@ -1,3 +1,7 @@
+### 1.0.0
+
+- prevent recursive breadcrumb lookup: it can occur for the EMBL taxonomy to have recursive parents, this present direct recursion
+
 ### 1.0.0-rc.1
 
 - embl-breadcrumbs-lookup inference uses wrong label
