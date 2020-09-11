@@ -23,7 +23,7 @@ We've also revised our [publishing procedure](https://github.com/visual-framewor
 
 We're using git to echo all the changes between the last releases with this git command:
 
-`git show -U --raw $(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1  --max-count=1))..$(git describe --abbrev=0 --tags $(git rev-list --tags  --max-count=1)) --raw --output=tools/vf-component-library/src/site/posts/$(date +%F)-component-updates.md -- **/CHANGELOG.md`
+`git show -U --raw $(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1  --max-count=1))..$(git describe --abbrev=0 --tags $(git rev-list --tags  --max-count=1)) --raw --output=tools/vf-component-library/src/site/updates/$(date +%F)-component-updates.md -- **/CHANGELOG.md`
 
 It dumps the changes into a time-stamped Markdown file which our [Eleventy-based component library](https://github.com/visual-framework/vf-core/tree/develop/tools/vf-component-library) turns into [a blog post](https://github.com/visual-framework/vf-core/blob/develop/tools/vf-component-library/src/site/updates.njk).
 
@@ -47,4 +47,4 @@ The file then needs some manual massaging which we plan to further automate in t
 
 This command would output all CHANGELOG.md changes since the most recent tag:
 
-`git show -U --raw $(git describe --tags --abbrev=0 @^)..@ --raw --output=tools/vf-component-library/src/site/posts/$(date +%F).md -- **/CHANGELOG.md`
+`git show -U --raw $(git describe --tags --abbrev=0 @^)..@ --raw --output=tools/vf-component-library/src/site/updates/$(date +%F).md -- **/CHANGELOG.md`

@@ -38,7 +38,7 @@ A reference guide on how to do releases of the VF [monorepo](https://gomonorepo.
 
 1. generate an update
     - `yarn run releasenotes`
-    - format and review the newly made file at `tools/vf-component-library/src/site/posts`
+    - format and review the newly made file at `tools/vf-component-library/src/site/updates`
 1. commit and push changes to the `develop` branch
 1. add release notes to the tag and link to the new blog post
     - https://github.com/visual-framework/vf-core/releases
