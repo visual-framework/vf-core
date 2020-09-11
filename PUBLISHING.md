@@ -42,7 +42,7 @@ A reference guide on how to do releases of the VF [monorepo](https://gomonorepo.
 1. commit and push changes to the `develop` branch
 1. add release notes to the tag and link to the new blog post
     - https://github.com/visual-framework/vf-core/releases
-    - https://https://visual-framework.github.io/vf-core/vf-core/updates/
+    - https://visual-framework.github.io/vf-core/updates/
 
 ## Appendix of useful Lerna commands
 
