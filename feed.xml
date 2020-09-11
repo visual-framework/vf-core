@@ -27,7 +27,7 @@
 &lt;/ul&gt;
 &lt;h2&gt;How we&#39;re (partly) automating blog updates&lt;/h2&gt;
 &lt;p&gt;We&#39;re using git to echo all the changes between the last releases with this git command:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git show -U --raw $(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1  --max-count=1))..$(git describe --abbrev=0 --tags $(git rev-list --tags  --max-count=1)) --raw --output=tools/vf-component-library/src/site/posts/$(date +%F)-component-updates.md -- **/CHANGELOG.md&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git show -U --raw $(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1  --max-count=1))..$(git describe --abbrev=0 --tags $(git rev-list --tags  --max-count=1)) --raw --output=tools/vf-component-library/src/site/updates/$(date +%F)-component-updates.md -- **/CHANGELOG.md&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;It dumps the changes into a time-stamped Markdown file which our &lt;a href=&quot;https://github.com/visual-framework/vf-core/tree/develop/tools/vf-component-library&quot;&gt;Eleventy-based component library&lt;/a&gt; turns into &lt;a href=&quot;https://github.com/visual-framework/vf-core/blob/develop/tools/vf-component-library/src/site/updates.njk&quot;&gt;a blog post&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;We run this as an aliased command: &lt;code&gt;yarn run releasenotes&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The file then needs some manual massaging which we plan to further automate in the future:&lt;/p&gt;
@@ -44,7 +44,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Another useful command&lt;/h2&gt;
 &lt;p&gt;This command would output all CHANGELOG.md changes since the most recent tag:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git show -U --raw $(git describe --tags --abbrev=0 @^)..@ --raw --output=tools/vf-component-library/src/site/posts/$(date +%F).md -- **/CHANGELOG.md&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git show -U --raw $(git describe --tags --abbrev=0 @^)..@ --raw --output=tools/vf-component-library/src/site/updates/$(date +%F).md -- **/CHANGELOG.md&lt;/code&gt;&lt;/p&gt;
 </content>
   </entry>
   
