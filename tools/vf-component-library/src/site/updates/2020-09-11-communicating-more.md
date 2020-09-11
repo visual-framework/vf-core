@@ -1,14 +1,14 @@
 ---
 title: Automating our update notifications
-subtitle: The Visual Framework 2.0 is maturing and we're working to do a better job communicating release notes.
-date: 2020-09-09 11:24:50
+subtitle: The Visual Framework 2.0 is maturing and we're working to do a better job communicating changes and individual component release notes.
+date: 2020-09-11 11:24:50
 tags:
   - posts
   - changelog
 layout: layouts/post.njk
 ---
 
-Here on our blog you can now expect to find what's new in each release of components.
+Here on [this blog]({{ '/updates' | url }}) you can now expect to find what's new in each release of components.
 
 How we've automated it.
 

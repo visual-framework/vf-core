@@ -1,5 +1,5 @@
 ---
-title: 2020-09-09 Component update
+title: Component updates
 subtitle: Minor component updates and bug fixes.
 date: 2020-09-09 12:24:50
 tags:
