@@ -35,7 +35,7 @@ The `vf-core` is built with:
 - [Yeoman](https://yeoman.io/) to make custom components interactively
 - [Yarn](https://yarnpkg.com/) to install components
 - [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) for component templates
-- [Lerna](https://lerna.js.org/) to publish components to npm as a [mono-repo](https://gomonorepo.org/)
+- [Lerna](https://lerna.js.org/) to publish components to npm as a [mono-repo](https://www.toptal.com/front-end/guide-to-monorepos/)
 - Name-spacing for JavaScript and CSS; more on that in [the coding standards](https://visual-framework.github.io/vf-core/developing/#guidelines)
 
 ## Making use of the VF Core
