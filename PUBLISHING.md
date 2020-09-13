@@ -1,6 +1,6 @@
 # PUBLISHING
 
-A reference guide on how to do releases of the VF [monorepo](https://gomonorepo.org)'s tools and components.
+A reference guide on how to do releases of the VF [monorepo](https://www.toptal.com/front-end/guide-to-monorepos)'s tools and components.
 
 ## Notes
 
