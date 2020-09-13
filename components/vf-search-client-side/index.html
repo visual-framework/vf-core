@@ -630,26 +630,47 @@ class="vf-logo | vf-logo--has-text">
   ]
 };
 </code></pre>
-<h2>Building a search index</h2>
-<p>To generate that JS file, if you're using a vf-eleventy based site, you may also want to make use of the <code>vf-extensions</code>'s <code>gulp-build-search-index.js</code>:</p>
-<blockquote>
-<p><code>require('./node_modules/\@visual-framework/vf-extensions/utils/gulp-build-search-index.js')(gulp, path, buildDestionation);</code></p>
-</blockquote>
-<p>And you should build that search index after updating your html pages, a la:</p>
-<pre><code>  // build search index after search page is compiled
-  gulp.watch(['./build/search/index.html'], gulp.parallel('vf-build-search-index'));
-</code></pre>
-<h2>Using search</h2>
-<ul>
-<li>You can pass a query to the search page with <code>?search_query=myQuery</code></li>
-<li>The search will live update as the user enters text</li>
-</ul>
-<h2>To do</h2>
+<h2>Warning: Early alpha, lot's of &quot;to do&quot;s</h2>
 <p>This is an early alpha. More customisation options need to be added, such as:</p>
 <ul>
 <li>passing search paramaters (boost score) to the JS</li>
 <li>customising the output format</li>
 <li>NJK template has hardcoded paths for vf-core</li>
+</ul>
+<h2>Building a search index</h2>
+<h3>1. Index making code</h3>
+<p>To generate that JS file, if you're using a vf-eleventy based site, you may also want to make use of the <code>vf-extensions</code>'s <code>gulp-build-search-index.js</code>:</p>
+<blockquote>
+<p><code>require('./node_modules/\@visual-framework/vf-extensions/utils/gulp-build-search-index.js')(gulp, path, buildDestionation);</code></p>
+</blockquote>
+<h3>2. Dependencies</h3>
+<p>If you use that JS you'll also need some npm dependencies:</p>
+<p><code>yarn add strip-js striptags node-html-parser</code></p>
+<h3>3. Tell gulp to make the index</h3>
+<p>And you should build that search index after updating your html pages, a la:</p>
+<pre><code>  // build search index after search page is compiled
+  gulp.watch(['./build/search/index.html'], gulp.parallel('vf-build-search-index'));
+
+  // And for your `build` task
+  gulp.task('build', gulp.series(
+    ...
+    'eleventy:build',
+    'vf-build-search-index',
+    ...
+  ));
+
+  // And for your `dev` task
+  gulp.task('dev', gulp.series(
+    ...
+    'eleventy:build',
+    'vf-build-search-index',
+    ...
+  ));
+</code></pre>
+<h2>Using search</h2>
+<ul>
+<li>You can pass a query to the search page with <code>?search_query=myQuery</code></li>
+<li>The search will live update as the user enters text</li>
 </ul>
 <h2>Install</h2>
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-search-client-side</code> with this command.</p>
@@ -693,7 +714,7 @@ class="vf-logo | vf-logo--has-text">
   &quot;search_client_button&quot;: true,
   &quot;search_client_button_text&quot;: &quot;Search&quot;,
   &quot;search_client_action&quot;: &quot;/vf-core/components/vf-search-client-side/&quot;,
-  &quot;search_client_script&quot;: &quot;/vf-core/search_index.js&quot;,
+  &quot;search_client_script&quot;: &quot;/search_index.js&quot;,
   &quot;search_client_results&quot;: true
 } %}
         </code></pre>
@@ -713,7 +734,7 @@ class="vf-logo | vf-logo--has-text">
     </div><button type="submit" class="vf-search__button | vf-button vf-button--primary">
       Search
     </button></form>
-</div><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.js"></script><script src="/vf-core/search_index.js"></script>
+</div><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.js"></script><script src="/search_index.js"></script>
 <div class="vf-search-client-side vf-grid | vf-content">
   <div class="results-container" data-vf-search-client-side-results>
     Loading...
@@ -744,7 +765,7 @@ class="vf-logo | vf-logo--has-text">
   <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/vf-core/search_index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/search_index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-search-client-side vf-grid | vf-content&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;results-container&quot;</span> <span class="hljs-attr">data-vf-search-client-side-results</span>&gt;</span>
     Loading...

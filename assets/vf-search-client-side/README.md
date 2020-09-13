@@ -15,31 +15,57 @@ let searchIndex = {
 };
 ```
 
-## Building a search index
-
-To generate that JS file, if you're using a vf-eleventy based site, you may also want to make use of the `vf-extensions`'s `gulp-build-search-index.js`:
-
-> `require('./node_modules/\@visual-framework/vf-extensions/utils/gulp-build-search-index.js')(gulp, path, buildDestionation);`
-
-And you should build that search index after updating your html pages, a la:
-
-```
-  // build search index after search page is compiled
-  gulp.watch(['./build/search/index.html'], gulp.parallel('vf-build-search-index'));
-```
-
-## Using search
-
-- You can pass a query to the search page with `?search_query=myQuery`
-- The search will live update as the user enters text
-
-## To do
+## Warning: Early alpha, lot's of "to do"s
 
 This is an early alpha. More customisation options need to be added, such as:
 
 - passing search paramaters (boost score) to the JS
 - customising the output format
 - NJK template has hardcoded paths for vf-core
+
+## Building a search index
+
+### 1. Index making code
+
+To generate that JS file, if you're using a vf-eleventy based site, you may also want to make use of the `vf-extensions`'s `gulp-build-search-index.js`:
+
+> `require('./node_modules/\@visual-framework/vf-extensions/utils/gulp-build-search-index.js')(gulp, path, buildDestionation);`
+
+### 2. Dependencies
+
+If you use that JS you'll also need some npm dependencies:
+
+`yarn add strip-js striptags node-html-parser`
+
+### 3. Tell gulp to make the index
+
+And you should build that search index after updating your html pages, a la:
+
+```
+  // build search index after search page is compiled
+  gulp.watch(['./build/search/index.html'], gulp.parallel('vf-build-search-index'));
+
+  // And for your `build` task
+  gulp.task('build', gulp.series(
+    ...
+    'eleventy:build',
+    'vf-build-search-index',
+    ...
+  ));
+
+  // And for your `dev` task
+  gulp.task('dev', gulp.series(
+    ...
+    'eleventy:build',
+    'vf-build-search-index',
+    ...
+  ));
+```
+
+## Using search
+
+- You can pass a query to the search page with `?search_query=myQuery`
+- The search will live update as the user enters text
 
 ## Install
 
