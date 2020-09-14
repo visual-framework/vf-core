@@ -1672,10 +1672,10 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
     &lt;div&gt;
        &lt;h2 class=&quot;vf-text vf-text-heading--2 vf-text--invert&quot;&gt;Search results&lt;/h2&gt; 
       &lt;p class=&quot;vf-text-body vf-text-body--4&quot;&gt;
-        Showing 10 results from a total of 128 (page 1 of 13). You can also use the &lt;a href=&quot;#&quot; class=&quot;vf-link&quot;&gt;advanced search&lt;/a&gt;.
+        Showing 10 results from a total of 128 (page 1 of 13). You can also use the &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-link&quot;&gt;advanced search&lt;/a&gt;.
       &lt;/p&gt;
 
-      &lt;form action=&quot;#&quot; class=&quot;vf-form | vf-search vf-search--inline&quot;&gt;
+      &lt;form action=&quot;javascript:Void(0);&quot; class=&quot;vf-form | vf-search vf-search--inline&quot;&gt;
   &lt;div class=&quot;vf-form__item | vf-search__item&quot;&gt;
     &lt;label class=&quot;vf-form__label vf-u-sr-only | vf-search__label&quot; for=&quot;inlinesearchitem&quot;&gt;Inline search&lt;/label&gt;
     &lt;input type=&quot;search&quot; placeholder=&quot;Enter your search terms&quot; id=&quot;inlinesearchitem&quot; value=&quot;the current search query&quot; class=&quot;vf-form__input | vf-search__input&quot;&gt;
@@ -1688,6 +1688,18 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
 
   &lt;section class=&quot;vf-grid vf-grid__col-4&quot;&gt;
     &lt;div&gt;
+
+      &lt;div class=&quot;vf-banner vf-banner--alert vf-banner--info&quot;&gt;
+
+  &lt;div class=&quot;vf-banner__content&quot;&gt;
+
+    &lt;p class=&quot;vf-banner__text&quot;&gt;The facet layout is yet to be made mobile friendly.&lt;/p&gt;
+
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+
 
       &lt;fieldset class=&quot;vf-form__fieldset&quot;&gt;
         &lt;div class=&quot;vf-form__item&quot;&gt;
@@ -1777,39 +1789,93 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
 
 
       
-      
-        &lt;article class=&quot;vf-summary&quot;&gt;
-  &lt;h3 class=&quot;vf-summary__title&quot;&gt;
-    &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-summary__link&quot;&gt;Search result item&lt;/a&gt;
-  &lt;/h3&gt;
-  &lt;p class=&quot;vf-summary__text&quot;&gt;Search result description - is a group of diseases involving abnormal cell growth with the potential to invade or spread to other parts of the body.&lt;/p&gt;
-&lt;/article&gt;
+      &lt;article class=&quot;vf-summary vf-summary--event&quot;&gt;
+        &lt;p class=&quot;vf-summary__date&quot;&gt;
+          {summary__secondary-label}
+          &lt;span class=&quot;vf-summary__meta&quot;&gt;
+          {summary__secondary-information}
+          &lt;/span&gt;
+        &lt;/p&gt;
+        &lt;h3 class=&quot;vf-summary__title&quot;&gt;
+          &lt;a href=&quot;###&quot; class=&quot;vf-summary__link&quot;&gt;
+            {summary__title}
+          &lt;/a&gt;
+        &lt;/h3&gt;
+        &lt;p class=&quot;vf-summary__text&quot;&gt;
+          {summary__text} These are a few examples of text-based results that follow the same structure but with varying types of content.
+        &lt;/p&gt;
+        &lt;section class=&quot;vf-summary__text&quot;&gt;
+          &lt;p class=&quot;vf-summary__location&quot;&gt;
+            {summary__tertiary-information}
+          &lt;/p&gt;
+        &lt;/section&gt;
+      &lt;/article&gt;
 
-      
-        &lt;article class=&quot;vf-summary&quot;&gt;
-  &lt;h3 class=&quot;vf-summary__title&quot;&gt;
-    &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-summary__link&quot;&gt;Search result item&lt;/a&gt;
-  &lt;/h3&gt;
-  &lt;p class=&quot;vf-summary__text&quot;&gt;Search result description - is a group of diseases involving abnormal cell growth with the potential to invade or spread to other parts of the body.&lt;/p&gt;
-&lt;/article&gt;
 
-      
-        &lt;article class=&quot;vf-summary&quot;&gt;
-  &lt;h3 class=&quot;vf-summary__title&quot;&gt;
-    &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-summary__link&quot;&gt;Search result item&lt;/a&gt;
-  &lt;/h3&gt;
-  &lt;p class=&quot;vf-summary__text&quot;&gt;Search result description - is a group of diseases involving abnormal cell growth with the potential to invade or spread to other parts of the body.&lt;/p&gt;
-&lt;/article&gt;
+      &lt;article class=&quot;vf-summary vf-summary--event&quot;&gt;
+        &lt;p class=&quot;vf-summary__date&quot;&gt;
+          04 September
+          
+        &lt;/p&gt;
+        &lt;h3 class=&quot;vf-summary__title&quot;&gt;
+          &lt;a href=&quot;###&quot; class=&quot;vf-summary__link&quot;&gt;
+            Executive Masters in Management of Research Infrastructures
+          &lt;/a&gt;
+        &lt;/h3&gt;
+        &lt;p class=&quot;vf-summary__text&quot;&gt;
+          This Masters development programme is aimed at current Research Infrastructures managers and leaders who wish to develop the competencies required to meet the needs of Research Infrastructures in the planning, construction and operation phases.
+        &lt;/p&gt;
+        &lt;section class=&quot;vf-summary__text&quot;&gt;
+          &lt;p class=&quot;vf-summary__location&quot;&gt;
+            EMBO Workshop, Heidelberg
+          &lt;/p&gt;
+        &lt;/section&gt;
+      &lt;/article&gt;
 
-      
-        &lt;article class=&quot;vf-summary&quot;&gt;
-  &lt;h3 class=&quot;vf-summary__title&quot;&gt;
-    &lt;a href=&quot;javascript:Void(0);&quot; class=&quot;vf-summary__link&quot;&gt;Search result item&lt;/a&gt;
-  &lt;/h3&gt;
-  &lt;p class=&quot;vf-summary__text&quot;&gt;Search result description - is a group of diseases involving abnormal cell growth with the potential to invade or spread to other parts of the body.&lt;/p&gt;
-&lt;/article&gt;
+      &lt;article class=&quot;vf-summary vf-summary--event &quot;&gt;
+        &lt;p class=&quot;vf-summary__date&quot;&gt;
+          &lt;span class=&quot;vf-summary__meta&quot;&gt;
+          Source: &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;UniProtKB (ID: KR171_HUMAN)&lt;/a&gt;
+          &lt;/span&gt;
+        &lt;/p&gt;
+        &lt;h3 class=&quot;vf-summary__title&quot;&gt;
+          &lt;a href=&quot;###&quot; class=&quot;vf-summary__link&quot;&gt;
+            Q9BYP8 (KR171_HUMAN)
+          &lt;/a&gt;
+        &lt;/h3&gt;
+        &lt;p class=&quot;vf-summary__text&quot;&gt;
+          Keratin-associated protein 17-1. Homo sapiens(Reviewed).
+        &lt;/p&gt;
+        &lt;section class=&quot;vf-summary__text&quot;&gt;
+          
+          &lt;p class=&quot;vf-summary__location&quot;&gt;
+            Cross References: &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;Protein expression data&lt;/a&gt; (18), &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;Bioactive molecules&lt;/a&gt; (15), &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;Nucleotide sequences&lt;/a&gt; (6), &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;show more&lt;/a&gt;
+          &lt;/p&gt;
+          &lt;p class=&quot;vf-summary__location&quot;&gt;
+            Formats: &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;FASTA format&lt;/a&gt;, &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;Feature Viewer&lt;/a&gt;, &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;Interpro Matches&lt;/a&gt;, &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;show more&lt;/a&gt;
+          &lt;/p&gt;
+        &lt;/section&gt;
+      &lt;/article&gt;
 
-      
+      &lt;article class=&quot;vf-summary vf-summary--event&quot;&gt;
+        &lt;p class=&quot;vf-summary__date&quot;&gt;
+          Online tutorial
+          
+        &lt;/p&gt;
+        &lt;h3 class=&quot;vf-summary__title&quot;&gt;
+          &lt;a href=&quot;###&quot; class=&quot;vf-summary__link&quot;&gt;
+            Functional genomics I: Introduction and designing experiments
+          &lt;/a&gt;
+        &lt;/h3&gt;
+        &lt;p class=&quot;vf-summary__text&quot;&gt;
+          This online course will give you an introduction to functional genomics. We will introduce you to different types of functional genomics studies and discuss best practices when designing your own ...
+        &lt;/p&gt;
+        &lt;section class=&quot;vf-summary__text&quot;&gt;
+          &lt;p class=&quot;vf-summary__location&quot;&gt;
+            &lt;a class=&quot;vf-link&quot; href=&quot;javascript:Void(0);&quot;&gt;More results for this online tutorial&lt;/a&gt;
+          &lt;/p&gt;
+        &lt;/section&gt;
+      &lt;/article&gt;
 
       &lt;nav class=&quot;vf-pagination&quot; aria-label=&quot;Pagination&quot;&gt;
   &lt;ul class=&quot;vf-pagination__list&quot;&gt;
