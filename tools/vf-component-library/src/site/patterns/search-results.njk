@@ -53,6 +53,13 @@ layout: layouts/boilerplate.njk
   <section class="vf-grid vf-grid__col-4">
     <div>
 
+      {% render '@vf-banner--info', {
+        "alert_icon_text": "dismiss",
+        "banner__info": true,
+        "banner__dismissable": false,
+        "banner__message": "Your results go here in whatever format is most suitable: list, table, tiled images... etc. Here we have used summaries."
+      } %}
+
       <fieldset class="vf-form__fieldset">
         <div class="vf-form__item">
         <label for="text" class="vf-form__label">Facets</label>
