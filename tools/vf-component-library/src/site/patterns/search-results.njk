@@ -35,12 +35,12 @@ layout: layouts/boilerplate.njk
         "tags": "h2"
       } %}
       <p class="vf-text-body vf-text-body--4">
-        Showing 10 results from a total of 128 (page 1 of 13). You can also use the <a href="#" class="vf-link">advanced search</a>.
+        Showing 10 results from a total of 128 (page 1 of 13). You can also use the <a href="JavaScript:Void(0);" class="vf-link">advanced search</a>.
       </p>
 
       {% render '@vf-search', {
         "variant": "inline",
-        "search_action": "#",
+        "search_action": "JavaScript:Void(0);",
         "search_button": "Search",
         "search_label": "Inline search",
         "search_placeholder": "Enter your search terms",
@@ -52,6 +52,13 @@ layout: layouts/boilerplate.njk
 
   <section class="vf-grid vf-grid__col-4">
     <div>
+
+      {% render '@vf-banner--info', {
+        "alert_icon_text": "dismiss",
+        "banner__info": true,
+        "banner__dismissable": false,
+        "banner__message": "The facet layout is yet to be made mobile friendly."
+      } %}
 
       <fieldset class="vf-form__fieldset">
         <div class="vf-form__item">
@@ -94,13 +101,99 @@ layout: layouts/boilerplate.njk
       } %}
 
       {# Results #}
-      {% for item in [1,2,3,4] %}
-        {% render '@vf-summary--default', {
-          "summary__title": "Search result item",
-          "summary__text": "Search result description - is a group of diseases involving abnormal cell growth with the potential to invade or spread to other parts of the body.",
-          "summary__href": "JavaScript:Void(0);"
-        } %}
-      {% endfor %}
+      <article class="vf-summary vf-summary--event">
+        <p class="vf-summary__date">
+          {summary__secondary-label}
+          <span class="vf-summary__meta">
+          {summary__secondary-information}
+          </span>
+        </p>
+        <h3 class="vf-summary__title">
+          <a href="###" class="vf-summary__link">
+            {summary__title}
+          </a>
+        </h3>
+        <p class="vf-summary__text">
+          {summary__text} These are a few examples of text-based results that follow the same structure but with varying types of content.
+        </p>
+        <section class="vf-summary__text">
+          <p class="vf-summary__location">
+            {summary__tertiary-information}
+          </p>
+        </section>
+      </article>
+
+
+      <article class="vf-summary vf-summary--event">
+        <p class="vf-summary__date">
+          04 September
+          {# <span class="vf-summary__meta">
+          dddd
+          </span> #}
+        </p>
+        <h3 class="vf-summary__title">
+          <a href="###" class="vf-summary__link">
+            Executive Masters in Management of Research Infrastructures
+          </a>
+        </h3>
+        <p class="vf-summary__text">
+          This Masters development programme is aimed at current Research Infrastructures managers and leaders who wish to develop the competencies required to meet the needs of Research Infrastructures in the planning, construction and operation phases.
+        </p>
+        <section class="vf-summary__text">
+          <p class="vf-summary__location">
+            EMBO Workshop, Heidelberg
+          </p>
+        </section>
+      </article>
+
+      <article class="vf-summary vf-summary--event ">
+        <p class="vf-summary__date">
+          <span class="vf-summary__meta">
+          Source: <a class="vf-link" href="JavaScript:Void(0);">UniProtKB (ID: KR171_HUMAN)</a>
+          </span>
+        </p>
+        <h3 class="vf-summary__title">
+          <a href="###" class="vf-summary__link">
+            Q9BYP8 (KR171_HUMAN)
+          </a>
+        </h3>
+        <p class="vf-summary__text">
+          Keratin-associated protein 17-1. Homo sapiens(Reviewed).
+        </p>
+        <section class="vf-summary__text">
+          {# <p class="vf-summary__location">
+            Source: <a class="vf-link" href="JavaScript:Void(0);">UniProtKB (ID: KR171_HUMAN)</a>
+          </p> #}
+          <p class="vf-summary__location">
+            Cross References: <a class="vf-link" href="JavaScript:Void(0);">Protein expression data</a> (18), <a class="vf-link" href="JavaScript:Void(0);">Bioactive molecules</a> (15), <a class="vf-link" href="JavaScript:Void(0);">Nucleotide sequences</a> (6), <a class="vf-link" href="JavaScript:Void(0);">show more</a>
+          </p>
+          <p class="vf-summary__location">
+            Formats: <a class="vf-link" href="JavaScript:Void(0);">FASTA format</a>, <a class="vf-link" href="JavaScript:Void(0);">Feature Viewer</a>, <a class="vf-link" href="JavaScript:Void(0);">Interpro Matches</a>, <a class="vf-link" href="JavaScript:Void(0);">show more</a>
+          </p>
+        </section>
+      </article>
+
+      <article class="vf-summary vf-summary--event">
+        <p class="vf-summary__date">
+          Online tutorial
+          {# <span class="vf-summary__meta">
+          dddd
+          </span> #}
+        </p>
+        <h3 class="vf-summary__title">
+          <a href="###" class="vf-summary__link">
+            Functional genomics I: Introduction and designing experiments
+          </a>
+        </h3>
+        <p class="vf-summary__text">
+          This online course will give you an introduction to functional genomics. We will introduce you to different types of functional genomics studies and discuss best practices when designing your own ...
+        </p>
+        <section class="vf-summary__text">
+          <p class="vf-summary__location">
+            <a class="vf-link" href="JavaScript:Void(0);">More results for this online tutorial</a>
+          </p>
+        </section>
+      </article>
 
       {% render '@vf-pagination--default', {
         "previous_text": "Previous",
