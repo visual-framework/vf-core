@@ -192,8 +192,9 @@ if (!Array.prototype.vfGaLinkLast){
 
 // Catch any use cases that may have been existing
 // To be removed in 2.0.0
-function analyticsTrackInteraction() {
-  console.warn('vfGa','As of 1.0.0-rc.3 analyticsTrackInteraction() is now namespaced as vfGaTrackInteraction()');
+function analyticsTrackInteraction(actedOnItem, customEventName) {
+  console.warn('vfGa','As of 1.0.0-rc.3 analyticsTrackInteraction() is now vfGaTrackInteraction(). You function call is being proxied. You should update your code.');
+  vfGaTrackInteraction(actedOnItem, customEventName);
 }
 
 /**
