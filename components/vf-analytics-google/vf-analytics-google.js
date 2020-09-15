@@ -138,13 +138,13 @@ function vfGaLinkTrackingInit() {
     // send GA events if GA closest area is detected
     let closestContainer = getClosestGa(evt.target, '[data-vf-google-analytics-region]');
     if (closestContainer) {
-      analyticsTrackInteraction(evt.target);
+      vfGaTrackInteraction(evt.target);
     } else {
       var from = findParent('a',evt.target || evt.srcElement);
       if (from) {
        /* it's a link, actions here */
        // console.log('clicked from findParent: ',from);
-       analyticsTrackInteraction(from);
+       vfGaTrackInteraction(from);
       }
     }
   }, false );
@@ -190,10 +190,16 @@ if (!Array.prototype.vfGaLinkLast){
   };
 };
 
+// Catch any use cases that may have been existing
+// To be removed in 2.0.0
+function analyticsTrackInteraction() {
+  console.warn('vfGa','As of 1.0.0-rc.3 analyticsTrackInteraction() is now namespaced as vfGaTrackInteraction()');
+}
+
 /**
  * Analytics tracking
  * ---
- * This code tracks the user's clicks in various parts of the site and logs them as GA events.<br/>
+ * This code tracks the user's clicks in various parts of the site and logs them as GA events.
  *
  * Dev note:
  * add class verbose-analytics to your body for a readout to console on clicks.
@@ -202,10 +208,10 @@ if (!Array.prototype.vfGaLinkLast){
  * @param {string} customEventName Event action
  * @example
  * jQuery(".analytics-content-footer").on('mousedown', 'a, button', function(e) {
- *   analyticsTrackInteraction(e.target,'Content footer');
+ *   vfGaTrackInteraction(e.target,'Content footer');
  * });
  */
-function analyticsTrackInteraction(actedOnItem, customEventName) {
+function vfGaTrackInteraction(actedOnItem, customEventName) {
   var customEventName = customEventName || []; // you can pass some custom text as a 3rd param
   let linkName;
 
