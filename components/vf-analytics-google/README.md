@@ -26,7 +26,7 @@ How to add dimension to your property?
 You can track the region of the page a link is in:
 
 ```html
-<div data-vf-google-anlaytics-region="main-content-area-OR-SOME-OTHER-NAME">
+<div data-vf-google-analytics-region="main-content-area-OR-SOME-OTHER-NAME">
   <a href="//www.example.com">My link here</a>
 </div>
 ```

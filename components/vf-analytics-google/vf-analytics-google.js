@@ -134,10 +134,6 @@ function vfGaInit() {
  * Track page links as events
  */
 function vfGaLinkTrackingInit() {
-  // jQuery("body.google-analytics-loaded .track-with-analytics-events a").on('mousedown', function(e) {
-  //   analyticsTrackInteraction(e.target,'Manually tracked area');
-  // });
-
   document.body.addEventListener("mousedown", function (evt) {
     // send GA events if GA closest area is detected
     let closestContainer = getClosestGa(evt.target, '[data-vf-google-analytics-region]');
@@ -198,7 +194,6 @@ if (!Array.prototype.vfGaLinkLast){
  * Analytics tracking
  * ---
  * This code tracks the user's clicks in various parts of the site and logs them as GA events.<br/>
- * Links in non-generic regions can be tracked by adding '.track-with-analytics-events' to a parent div. Careful with the scoping.
  *
  * Dev note:
  * add class verbose-analytics to your body for a readout to console on clicks.
