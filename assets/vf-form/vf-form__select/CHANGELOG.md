@@ -1,10 +1,10 @@
+### 1.0.1
+
+- adds `webkit-appearance: none;` as needed for Safari browsers as autoprefixer is not doing this.
+
 ### 1.0.0-alpha.8
 
 - Version bump only for package @visual-framework/vf-form__select
-
-
-
-
 
 ### 1.0.0-alpha.7
 
