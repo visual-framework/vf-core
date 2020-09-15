@@ -1,3 +1,7 @@
+### 1.1.2
+
+- adds `webkit-appearance: none;` as needed for Safari browsers as autoprefixer is not doing this.
+
 ### 1.1.1
 
 - removes the `:hover` text color rule so that it doesn't to white on hover.

@@ -1,3 +1,7 @@
+### 1.0.1
+
+- adds `webkit-appearance: none;` as needed for Safari browsers as autoprefixer is not doing this.
+
 ### 1.0.0
 
 - removes `vf-u-sr-only` as not needed with removal of floatLabel.js
