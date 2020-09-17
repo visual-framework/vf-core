@@ -1,3 +1,7 @@
+### 1.2.0
+
+- adds a CSS custom property for when a component with `vf-u-fullbleed` needs inline margins.
+
 ### 1.1.0
 
 - adds functionality that makes it possible to use background images in fullbleeds
