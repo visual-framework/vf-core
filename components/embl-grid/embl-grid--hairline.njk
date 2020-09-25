@@ -1,0 +1,12 @@
+<div class="embl-grid
+  {%- if embl_grid__type == "centered" %} embl-grid--has-centered-content
+  {%- elif embl_grid__type == "sidebar" %} embl-grid--has-sidebar{%- endif -%}
+  {%- if embl_grid__hairline %} embl-grid-has-sidebar--hairline{%- endif -%}
+  {%- if embl_grid__modifier %} | {{embl_grid__modifier}}{%- endif -%}
+">
+  {% render '@vf-section-header' %}
+  <div class="vf-content">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus fugiat delectus dolore molestias rerum? Dolores doloribus impedit quasi provident odit perferendis vitae incidunt, mollitia repellendus a alias necessitatibus, molestiae! Nesciunt.</p>
+  </div>
+  {% render '@vf-box--normal-primary' %}
+</div>

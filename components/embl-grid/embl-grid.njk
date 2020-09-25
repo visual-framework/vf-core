@@ -1,33 +1,15 @@
-<div class="vf-body">
-  <div class="embl-grid">
-    <div></div>
-    <div></div>
-  </div>
-  <div class="embl-grid embl-grid--has-sidebar">
-    <div></div>
-    <div>
-      <p style="color: var(--vf-ui-color--white);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum autem hic accusamus suscipit id, et dolorum officiis, cum possimus, enim amet. Officiis sunt eum cum qui, impedit, magni quasi esse.</p>
-    </div>
-    <div></div>
-  </div>
-  <div class="embl-grid embl-grid--has-sidebar embl-grid-has-sidebar--hairline">
-    <div></div>
-    <div>
-      <p style="color: var(--vf-ui-color--white);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum autem hic accusamus suscipit id, et dolorum officiis, cum possimus, enim amet. Officiis sunt eum cum qui, impedit, magni quasi esse.</p>
-    </div>
-    <div></div>
-  </div>
-  <div class="embl-grid embl-grid--has-centered-content">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-</div>
+{% if context %}
+  {% set embl_grid__type = context.embl_grid__type %}
+  {% set embl_grid__hairline = context.embl_grid__hairline %}
+  {% set embl_grid__modifier = context.embl_grid__modifier %}
+{% endif %}
 
-<style>
-.embl-grid > div {
-  /* For illustrative use on component demo page */
-  background-color: var(--vf-color--blue);
-  min-height: 5em;
-}
-</style>
+<div class="embl-grid
+  {%- if embl_grid__type == "centered" %} embl-grid--has-centered-content
+  {%- elif embl_grid__type == "sidebar" %} embl-grid--has-sidebar{%- endif -%}
+  {%- if embl_grid__hairline %} embl-grid-has-sidebar--hairline{%- endif -%}
+  {%- if embl_grid__modifier %} | {{embl_grid__modifier}}{%- endif -%}
+">
+  {% block embl_grid__content %}
+  {% endblock %}
+</div>
