@@ -1,3 +1,9 @@
+{% if context %}
+  {% set embl_grid__type = context.embl_grid__type %}
+  {% set embl_grid__hairline = context.embl_grid__hairline %}
+  {% set embl_grid__modifier = context.embl_grid__modifier %}
+{% endif %}
+
 <div class="embl-grid
   {%- if embl_grid__type == "centered" %} embl-grid--has-centered-content
   {%- elif embl_grid__type == "sidebar" %} embl-grid--has-sidebar{%- endif -%}
