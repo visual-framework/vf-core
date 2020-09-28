@@ -1,4 +1,14 @@
-<div class="vf-grid{%- if vf_grid__columns %} vf-grid__col-{{vf-grid__columns}}{%- endif -%}">
+{% if context %}
+  {% set vf_grid__columns = context.vf_grid__columns %}
+  {% set modifier = context.modifier %}
+{% endif %}
+
+<div class="vf-grid
+  {%- if vf_grid__columns %} vf-grid__col-{{vf_grid__columns}}{%- endif -%}
+  {%- if modifier %} vf-grid__col-{{modifier}}{%- endif -%}
+">
+
   {% block vf_grid__content %}
   {% endblock %}
+  
 </div>
