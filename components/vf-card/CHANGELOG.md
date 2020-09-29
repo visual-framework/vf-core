@@ -1,3 +1,8 @@
+### 2.2.0
+
+- adds a slight box shadow to all card variants to denote that it's something on the page, not 'of the page'.
+- updates the hover box shadow so that it fits with the new box shadow on all cards.
+
 ### 2.1.2
 
 - fixes issue with `vf-card__image` height in safari.

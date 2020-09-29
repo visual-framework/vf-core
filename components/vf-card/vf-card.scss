@@ -16,6 +16,8 @@
   --card-background-color: var(--vf-card-theme-color--background , #{set-ui-color(vf-ui-color--white)});
 
   background-color: var(--card-background-color);
+  /* border: 1px solid var(--vf-card-theme-color--border, var(--card-border-color, #{set-color(vf-grey--lightest)})); */
+  box-shadow: 0 .125rem .25rem rgba(set-color(vf-color--grey--dark), .5);
   display: grid;
   grid-template-rows: 288px 1fr;
   position: relative;
@@ -65,8 +67,7 @@
       color: currentColor;
       text-decoration: none;
       &::after {
-        box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
-        transition-duration: 250ms;
+        box-shadow: 0 0 .125rem .125rem rgba(set-color(vf-color--grey), .75);
       }
     }
   }
