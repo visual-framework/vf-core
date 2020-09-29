@@ -290,9 +290,11 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
     // debug: always turn on verbose analytics
     // conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
     if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
-      console.log('%c Verbose analytics on ', 'color: #FFF; background: #111; font-size: .75rem;');
-      console.log('clicked on: %o ',actedOnItem);
-      console.log('sent to GA: ', 'event ->', 'UI ->', 'UI Element / ' + parentContainer + ' ->', linkName, '; at: ',lastGaEventTime);
+      if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose == 'true')  {
+        console.log('%c Verbose analytics on ', 'color: #FFF; background: #111; font-size: .75rem;');
+        console.log('clicked on: %o ',actedOnItem);
+        console.log('sent to GA: ', 'event ->', 'UI ->', 'UI Element / ' + parentContainer + ' ->', linkName, '; at: ',lastGaEventTime);
+      }
     }
   }
 }
