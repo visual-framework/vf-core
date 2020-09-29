@@ -1,3 +1,9 @@
+### 1.0.0-rc.3
+
+* documentation cleanup
+* `analyticsTrackInteraction()` is now namespaced as `vfGaTrackInteraction()`
+* `vfGaTrackInteraction()` now documented for direct usage
+
 ### 1.0.0-rc.2
 
 * more robust fallback handling of image-based links

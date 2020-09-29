@@ -635,7 +635,7 @@ class="vf-logo | vf-logo--has-text">
 </ul>
 <h3>Region tracking</h3>
 <p>You can track the region of the page a link is in:</p>
-<pre><code class="language-html">&lt;div data-vf-google-anlaytics-region=&quot;main-content-area-OR-SOME-OTHER-NAME&quot;&gt;
+<pre><code class="language-html">&lt;div data-vf-google-analytics-region=&quot;main-content-area-OR-SOME-OTHER-NAME&quot;&gt;
   &lt;a href=&quot;//www.example.com&quot;&gt;My link here&lt;/a&gt;
 &lt;/div&gt;
 </code></pre>
@@ -650,7 +650,22 @@ class="vf-logo | vf-logo--has-text">
 <ul>
 <li><code>vfGaIndicateLoaded()</code> Awaits and checks to see if Google Analytics client side JS has loaded. If it does, sets <code>&lt;body data-vf-google-analytics-loaded='true'&gt;</code></li>
 <li><code>vfGaIndicateUnloaded</code> Utility method to invalidate prior GA check <code>&lt;body data-vf-google-analytics-loaded='false'&gt;</code></li>
+<li><code>vfGaTrackInteraction()</code> can be used to directly track events if you wish to use your own event handler</li>
 </ul>
+<pre><code class="language-js">/**
+ * This code tracks the user's clicks in various parts of the site and logs them as GA events.
+ *
+ * Dev note:
+ * add class verbose-analytics to your body for a readout to console on clicks.
+ *
+ * @param {element} actedOnItem
+ * @param {string} customEventName Event action
+ * @example
+ * jQuery(&quot;.analytics-content-footer&quot;).on('mousedown', 'a, button', function(e) {
+ *   vfGaTrackInteraction(e.target,'Content footer');
+ * });
+ * /
+</code></pre>
 <h2>Install</h2>
 <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-analytics-google</code> with this command.</p>
 <pre><code>$ yarn add --dev @visual-framework/vf-analytics-google

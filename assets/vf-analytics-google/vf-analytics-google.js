@@ -134,21 +134,17 @@ function vfGaInit() {
  * Track page links as events
  */
 function vfGaLinkTrackingInit() {
-  // jQuery("body.google-analytics-loaded .track-with-analytics-events a").on('mousedown', function(e) {
-  //   analyticsTrackInteraction(e.target,'Manually tracked area');
-  // });
-
   document.body.addEventListener("mousedown", function (evt) {
     // send GA events if GA closest area is detected
     let closestContainer = getClosestGa(evt.target, '[data-vf-google-analytics-region]');
     if (closestContainer) {
-      analyticsTrackInteraction(evt.target);
+      vfGaTrackInteraction(evt.target);
     } else {
       var from = findParent('a',evt.target || evt.srcElement);
       if (from) {
        /* it's a link, actions here */
        // console.log('clicked from findParent: ',from);
-       analyticsTrackInteraction(from);
+       vfGaTrackInteraction(from);
       }
     }
   }, false );
@@ -194,11 +190,17 @@ if (!Array.prototype.vfGaLinkLast){
   };
 };
 
+// Catch any use cases that may have been existing
+// To be removed in 2.0.0
+function analyticsTrackInteraction(actedOnItem, customEventName) {
+  console.warn('vfGa','As of 1.0.0-rc.3 analyticsTrackInteraction() is now vfGaTrackInteraction(). You function call is being proxied. You should update your code.');
+  vfGaTrackInteraction(actedOnItem, customEventName);
+}
+
 /**
  * Analytics tracking
  * ---
- * This code tracks the user's clicks in various parts of the site and logs them as GA events.<br/>
- * Links in non-generic regions can be tracked by adding '.track-with-analytics-events' to a parent div. Careful with the scoping.
+ * This code tracks the user's clicks in various parts of the site and logs them as GA events.
  *
  * Dev note:
  * add class verbose-analytics to your body for a readout to console on clicks.
@@ -207,10 +209,10 @@ if (!Array.prototype.vfGaLinkLast){
  * @param {string} customEventName Event action
  * @example
  * jQuery(".analytics-content-footer").on('mousedown', 'a, button', function(e) {
- *   analyticsTrackInteraction(e.target,'Content footer');
+ *   vfGaTrackInteraction(e.target,'Content footer');
  * });
  */
-function analyticsTrackInteraction(actedOnItem, customEventName) {
+function vfGaTrackInteraction(actedOnItem, customEventName) {
   var customEventName = customEventName || []; // you can pass some custom text as a 3rd param
   let linkName;
 
