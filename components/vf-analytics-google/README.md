@@ -26,7 +26,7 @@ How to add dimension to your property?
 You can track the region of the page a link is in:
 
 ```html
-<div data-vf-google-anlaytics-region="main-content-area-OR-SOME-OTHER-NAME">
+<div data-vf-google-analytics-region="main-content-area-OR-SOME-OTHER-NAME">
   <a href="//www.example.com">My link here</a>
 </div>
 ```
@@ -43,6 +43,22 @@ Notes:
 
 - `vfGaIndicateLoaded()` Awaits and checks to see if Google Analytics client side JS has loaded. If it does, sets `<body data-vf-google-analytics-loaded='true'>`
 - `vfGaIndicateUnloaded` Utility method to invalidate prior GA check `<body data-vf-google-analytics-loaded='false'>`
+- `vfGaTrackInteraction()` can be used to directly track events if you wish to use your own event handler
+```js
+/**
+ * This code tracks the user's clicks in various parts of the site and logs them as GA events.
+ *
+ * Dev note:
+ * add class verbose-analytics to your body for a readout to console on clicks.
+ *
+ * @param {element} actedOnItem
+ * @param {string} customEventName Event action
+ * @example
+ * jQuery(".analytics-content-footer").on('mousedown', 'a, button', function(e) {
+ *   vfGaTrackInteraction(e.target,'Content footer');
+ * });
+ * /
+```
 
 ## Install
 
