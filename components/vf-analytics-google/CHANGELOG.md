@@ -3,6 +3,8 @@
 * documentation cleanup
 * `analyticsTrackInteraction()` is now namespaced as `vfGaTrackInteraction()`
 * `vfGaTrackInteraction()` now documented for direct usage
+* Fix console verbose logging: if set to any value it would pass
+  * https://github.com/visual-framework/vf-core/issues/1131
 
 ### 1.0.0-rc.2
 
