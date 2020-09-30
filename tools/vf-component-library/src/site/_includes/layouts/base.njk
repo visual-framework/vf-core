@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {# <link rel="stylesheet" media="all" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css" /> #}
+    {% if serverInfo.environment == "development" -%}
     <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+    {%- else -%}
+    <link rel="stylesheet" href="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
+    {%- endif %}
     <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
     {% render '@vf-favicon' %}
     <!-- Descriptive meta -->

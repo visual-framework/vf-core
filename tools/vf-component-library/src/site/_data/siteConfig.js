@@ -1,3 +1,5 @@
+const { DateTime } = require('luxon');
+
 // Some various reusable configuration
 module.exports = {
   siteInformation: {
@@ -7,6 +9,8 @@ module.exports = {
     author: "Visual Framework system",
     email: "ken.hawkins@embl.de",
   },
+  buildTime: DateTime.fromISO(new Date().toISOString()),
+  vfVersion: global.vfVersion,
   sections: {
     guidelines: {
       url: '/guidelines',
