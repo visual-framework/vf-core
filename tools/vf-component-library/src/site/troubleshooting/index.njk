@@ -5,30 +5,35 @@ date: 2019-04-09 12:24:50
 tags:
   - troubleshooting
 layout: layouts/base.njk
-templateEngineOverride: njk, md
+templateEngineOverride: njk
 ---
 
-<br/><br/>
-{% render '@vf-intro', {"vf_intro_phase": "", "vf_intro_heading": title,
+{% render '@vf-intro', {
+  "component-type": "container",
+  "vf_intro_heading": title,
   "vf_intro_lede": subtitle,
   "vf_intro_text": [
-    "Many problems are due to local develpment environment configuration, here's how to get your machine back on track."
-  ]
+    "Many problems are due to local develpment environment configuration, here's how to get your development back on track.",
+    "Before filing a ticket or tossing your machine out the window, we've found most issues can be sorted by one of these."
+  ],
+  "vf_intro_badge": {
+    "style": [
+      "phases"
+    ],
+    "text": "beta",
+    "theme": "primary",
+    "badge_href": "JavaScript:Void(0);"
+  }
 } %}
 
-
 <section class="vf-content | embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "Common commands and tricks",
+  "id": "tips"
+} %}
 <div>
 
-  {# empty #}
-
-</div>
-<div>
-
-Before filing a ticket or tossing your machine out the window, we've found most
-issues can be sorted by one of these.
-
-<hr/>
+{% markdown %}
 
 ### Run `yarn install`
 
@@ -48,8 +53,8 @@ Sometimes a project's `node_modules` directory can become contaminated or out of
 
 ### Don't `npm install`
 
-Visual Framework systems work faster and are tested using `yarn install`. If you run 
-`npm install` you may encounter unexpected issues or node may become confused if you're 
+Visual Framework systems work faster and are tested using `yarn install`. If you run
+`npm install` you may encounter unexpected issues or node may become confused if you're
 switching between `npm install` and `yarn install`.
 
 <hr/>
@@ -86,11 +91,22 @@ you’ll want to save any local changes first.
 Your local files might be out of sync, stash your local changes elsewhere and
 run `git reset --hard`.
 
-<hr/>
+{% endmarkdown %}
 
-## <a id="windows" href="#windows">Using Windows?</a>
+</div>
+</section>
 
-Windows has its own section of tips.
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "Windows",
+  "id": "windows",
+  "vf_section__content": [
+    "Windows has its own unique needs and section of tips."
+  ]
+} %}
+<div>
+
+{% markdown %}
 
 ### Use Windows Terminal Preview
 
@@ -114,24 +130,24 @@ need to be initialised on your first git pull:
 2. Delete the old symlink `rm .\src\components\vf-core-components`
 3. Recreate it `cmd /c mklink /D .\src\components\vf-core-components ..\..\node_modules\@visual-framework\`
 
-</div>
-<div>
-  {# empty #}
+{% endmarkdown %}
+
 </div>
 </section>
 
 
 <section class="vf-content | embl-grid embl-grid--has-centered-content">
-<div>
-  {# empty #}
-</div>
+{% render '@vf-section-header', {
+  "section_title": "Still stumped?",
+  "id": "help"
+} %}
 <div>
 
-<hr class="vf-divider" />
-
-## Still stumped?
+{% markdown %}
 
 [Make an issue](https://github.com/visual-framework/vf-core/issues) or [chat us](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+{% endmarkdown %}
 
 </div>
 <div>
