@@ -25,12 +25,39 @@ function vfBannerReset(vfBannerCookieNameAndVersion) {
   vfBannerSetCookie(vfBannerCookieNameAndVersion, false);
 }
 /**
+ * Dismiss a banner
+ */
+
+
+function vfBannerClose(targetBanner) {
+  // remove padding added to not cover up content
+  if (targetBanner.classList.contains("vf-banner--fixed")) {
+    var height = targetBanner.offsetHeight || 0;
+
+    if (targetBanner.classList.contains("vf-banner--top")) {
+      var pagePadding = document.body.style.paddingTop.replace(/\D/g, '') || 0;
+      pagePadding = pagePadding - height;
+      document.body.style.paddingTop = pagePadding + 'px';
+    }
+
+    if (targetBanner.classList.contains("vf-banner--bottom")) {
+      var pagePadding = document.body.style.paddingBottom.replace(/\D/g, '') || 0;
+      console.log(pagePadding, height);
+      pagePadding = pagePadding - height;
+      document.body.style.paddingBottom = pagePadding + 'px';
+    }
+  } // dismiss banner
+
+
+  targetBanner.classList.add('vf-u-display-none');
+}
+/**
  * Confirm a banner, initiate cookie logging
  */
 
 
 function vfBannerConfirm(banner, vfBannerCookieNameAndVersion) {
-  banner.classList.add('vf-u-display-none');
+  vfBannerClose(banner);
 
   if (vfBannerCookieNameAndVersion !== 'null') {
     vfBannerSetCookie(vfBannerCookieNameAndVersion, true);
@@ -197,13 +224,30 @@ function vfBannerInsert(banner, bannerId, scope) {
         vfBannerConfirm(targetBanner, vfBannerCookieNameAndVersion);
       }, false);
     }
+  } // add appropriate padding to the page to not cover up content
+
+
+  if (targetBanner.classList.contains("vf-banner--fixed")) {
+    var height = targetBanner.offsetHeight || 0;
+
+    if (targetBanner.classList.contains("vf-banner--top")) {
+      var pagePadding = document.body.style.paddingTop.replace(/\D/g, '') || 0;
+      pagePadding = pagePadding + height;
+      document.body.style.paddingTop = pagePadding + 'px';
+    }
+
+    if (targetBanner.classList.contains("vf-banner--bottom")) {
+      var pagePadding = document.body.style.paddingBottom.replace(/\D/g, '') || 0;
+      pagePadding = pagePadding + height;
+      document.body.style.paddingBottom = pagePadding + 'px';
+    }
   }
 
   if (vfBannerCookieNameAndVersion != 'null') {
     // if banner has been previously accepted
     if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
       // banner has been accepted, close
-      targetBanner.classList.add('vf-u-display-none'); // exit, nothng more to do
+      vfBannerClose(targetBanner); // exit, nothng more to do
 
       return;
     } // if banner is marked as auto-accept, set as read
