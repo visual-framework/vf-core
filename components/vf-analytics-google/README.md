@@ -4,9 +4,17 @@
 
 Supplementary behaviour (primarily JavaScript) to ease tracking with Google Analytics.
 
+This component will grow over time with additional event tracking behaviours.
+
 ## Usage
 
-This component will grow over time with additional event tracking behaviours.
+### User actions
+
+This component tracks three types of user engagement as actions in Google Analytics:
+
+1. General clicks in the browser as "UI" category
+2. Downloads of files as "Downloads" `zip|exe|pdf|doc*|xls*|ppt*|mp3|txt|fasta`
+3. Emails links as "Email" `mailto:`
 
 ### Meta tags
 
