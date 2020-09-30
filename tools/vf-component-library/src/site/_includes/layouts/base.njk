@@ -8,6 +8,12 @@
     {%- else -%}
     <link rel="stylesheet" href="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
     {%- endif %}
+    <!--
+      Want to build a site with the Visual Framework?
+      ---
+      You can copy the CSS and JS you find here, but for the best experience see the building guide:
+      https://visual-framework.github.io/vf-core/building/
+    -->
     <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
     {% render '@vf-favicon' %}
     <!-- Descriptive meta -->
@@ -24,7 +30,7 @@
     <meta property="og:description" content="{{ facebook.description or meta.description or subtitle }}">
     {% if meta.image -%}
     <meta property="og:image" content="{{ facebook.description or meta.image }}">
-    {%- endif %}
+    {%- endif -%}
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -33,7 +39,7 @@
     <meta property="twitter:description" content="{{ twitter.description or meta.description or subtitle }}">
     {% if meta.image -%}
     <meta property="twitter:image" content="{{ twitter.description or meta.image }}">
-    {%- endif %}
+    {%- endif -%}
 
     <!-- Feed -->
     <link href="https://visual-framework.github.io/vf-core/feed.xml" type="application/rss+xml" rel="alternate" title="Visual Framework 2.0 Updates">
