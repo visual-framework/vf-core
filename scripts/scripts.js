@@ -628,27 +628,46 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
 
     if (href && href.match(/^mailto\:/i)) {
       var mailLink = href.replace(/^mailto\:/i, '');
-      ga && ga('send', 'event', 'Email', 'Region / ' + parentContainer, mailLink);
+      ga && ga('send', 'event', 'Email', 'Region / ' + parentContainer, mailLink); // Log email event
+
+      vfGaLogMessage("Email", "Region / " + parentContainer, mailLink, lastGaEventTime, actedOnItem);
     }
 
     if (href && href.match(filetypes)) {
       var extension = /[.]/.exec(href) ? /[^.]+$/.exec(href) : undefined;
       var filePath = href;
-      ga && ga('send', 'event', 'Download', 'Type / ' + extension + ' / ' + parentContainer, filePath);
+      ga && ga('send', 'event', 'Download', 'Type / ' + extension + ' / ' + parentContainer, filePath); // Log Download event
+
+      vfGaLogMessage("Download", "Type / " + extension + " / " + parentContainer, filePath, lastGaEventTime, actedOnItem);
     } // note that we've stored an event(s)
 
 
-    lastGaEventTime = Date.now(); // conditional logging
+    lastGaEventTime = Date.now(); // Default log the event.
 
-    var conditionalLoggingCheck = document.querySelector('body'); // debug: always turn on verbose analytics
-    // conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
+    vfGaLogMessage("UI", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
+  }
+}
+/**
+ * Helper function to log debug console messages.
+ *
+ * @param {string} eventCategory
+ * @param {string} eventAction
+ * @param {string} eventLabel
+ * @param {string} lastGaEventTime
+ * @param {element} actedOnItem
+ */
 
-    if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
-      if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose == 'true') {
-        console.log('%c Verbose analytics on ', 'color: #FFF; background: #111; font-size: .75rem;');
-        console.log('clicked on: %o ', actedOnItem);
-        console.log('sent to GA: ', 'event ->', 'UI ->', 'UI Element / ' + parentContainer + ' ->', linkName, '; at: ', lastGaEventTime);
-      }
+
+function vfGaLogMessage(eventCategory, eventAction, eventLabel, lastGaEventTime, actedOnItem) {
+  // conditional logging
+  var conditionalLoggingCheck = document.querySelector("body"); // debug: always turn on verbose analytics
+  // conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
+
+  if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
+    if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose == "true") {
+      console.log("%c Verbose analytics on ", "color: #FFF; background: #111; font-size: .75rem;");
+      console.log("clicked on: %o ", actedOnItem);
+      console.log("sent to GA: ", "event ->", eventCategory + " ->", eventAction + " ->", eventLabel, "; at: ", lastGaEventTime);
     }
   }
 } // vf-tabs
