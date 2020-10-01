@@ -1,3 +1,7 @@
+### 1.2.2
+
+- adds `id` for anchor support
+
 ### 1.2.1
 
 - makes the `--is-link` variant use CSS grid so the arrow SVG icon is always to the top, right of the text.
