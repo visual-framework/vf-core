@@ -12,6 +12,10 @@ module.exports = {
   buildTime: DateTime.fromISO(new Date().toISOString()),
   vfVersion: global.vfVersion,
   sections: {
+    about: {
+      url: '/about',
+      title: 'About'
+    },
     guidelines: {
       url: '/guidelines',
       title: 'Guidelines'

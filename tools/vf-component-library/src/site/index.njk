@@ -40,109 +40,12 @@ The when and how to making a project powered with Visual Framework components. [
 
 
 
-
-<section class="vf-content | embl-grid embl-grid--has-centered-content">
-<div><!-- empty --></div><div class="vf-box vf-box-theme--quinary">
-
-{% markdown %}
-
-## Guide: [Building a VF-powered system]({{ '/building' | url }})
-
-The when and how to making a project powered with Visual Framework components. [See the building guide]({{ '/building' | url }}).
-
-{% endmarkdown %}
-
-</div>
-</section>
-
-<section class="vf-content | embl-grid embl-grid--has-centered-content">
-<div></div>
-<div>
-
-{% markdown %}
-
-## {{ subtitle }}
-
-<!-- This content is styled using the .vf-content component, intended for use
-     where the application of classnames is difficult, such as Markdown text
-     or WYSIWYG editors -->
-
-The Visual Framework address three major needs:
-
-1. **Clarity**<br/>
-the VF is highly customisable, but out of the box it has a highly usable look that builds in solid UX principles to increase comprehension and decrease [cognitive load](https://www.google.com/search?q=cognitive+load+software+usability). Just because the scientific material is challenging, it doesn't mean using the website [needs to be](https://theoutline.com/post/2954/user-interface-designers-are-horrified-by-hawaii-s-missile-alert-system).
-
-1. **Compatibility**<br/>
-the VF won't break your other framework's CSS or JS, so bring Bootstrap, Foundation, React or Angular. With the VF  components (and brand design) can be shared between sites without cross-contaminating other functionality. We achieve this by a [CSS Modules-style](https://github.com/css-modules/css-modules) approach:
-
-    CSS: styling on HTML elements and only use namespaced classes, that is:
-      - Nope: `.button {}` or `button {}` or `div.button {}`
-      - Like this `.vf-button {}`
-
-    JavaScript: Use ours or bring your own
-
-    We've included only a minimal amount of JS in components and it's fully optional (just remove [the JavaScript selectors](https://github.com/visual-framework/vf-core/issues/115#issuecomment-455524131)). If you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way, just remove `data-vf-js-tabs` from your markup.
-
-1. **Componentisation**<br/>
-  Use only the portions you need.
-
-    Use `vf-core` to build your CSS, JS dynamically based on the components you need, or bring your own build system.
-
-{% endmarkdown %}
-
-</div>
-</section>
-
 <section class="embl-grid embl-grid--has-centered-content">
-<div class="vf-section-header">
-  <h2 class="vf-section-header__heading">FAQ</h2>
-</div>
-<div class="vf-content">
-
-<a name="faq"></a>
-
-{% markdown %}
-
-### Is VF Core just a Bootstrap with a different theme?
-
-No. VF Core is an architecture to build extensible components that contain CSS/Sass, JS, Nunjuck templates, and image assets. You could use the VF Core to make a Bootstrap-style framework.
-
-### I’m a small research team, should I use VF Core?
-
-Yes, utilise the Visual Framework system with one of the above listed approaches.
-
-### Does it have a specific look and feel?
-
-No. It has a default look out of the box, but it is fully customisable by altering the [Design Tokens](/vf-core/components/vf-design-tokens/).
-
-### Is it really ready for use today?
-
-[Yes!](https://www.covid19dataportal.org/)
-
-### Shouldn’t I just use Bootstrap or Solution X?
-
-No, but yes … do both, if you need to.
-
-This question involve the Visual Framework's architecture which addresses common issues with code sharing and compatibility with life science webistes. This projecft allows you to share Visual Framework components without disrupting your freedom to choose Bootstrap, Foundation, jQuery, React or another framework for the rest of your site.
-
-### What components are available?
-
-Many common component for tabs, boxes, links and so on [are available in the component library]({{ '/components' | url }}).
-
-
-### Help!
-
-Have a problem? See the [Troubleshooting guide]({{ '/troubleshooting' | url }}) or [chat the community on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
-
-{% endmarkdown %}
-
-</div>
-</section>
-
-<section class="embl-grid embl-grid--has-centered-content">
-  <div></div>
+  {% render '@vf-section-header', {
+    "section_title": "Sections",
+    "id": "sections"
+  } %}
   <div class="vf-content">
-    <h2 class="vf-text vf-text-heading--1 vf-text--invert">Sections</h2>
     {# show all pages classes as sections #}
     {# by default, 11ty sorts by `date` field #}
     {%- for section in collections.sections  %}
