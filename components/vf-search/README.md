@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-search.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-search)
 
+- You can enable `autofocus` on the search element, but should only do so if most users intend to search on the page
+
 ## Install
 
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `primer-buttons` with this command.

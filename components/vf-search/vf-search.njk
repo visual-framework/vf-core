@@ -2,6 +2,7 @@
   {% set search_label = context.search_label %}
   {% set search_button = context.search_button %}
   {% set search_placeholder = context.search_placeholder %}
+  {% set search_autofocus = context.search_autofocus %}
   {% set search_action = context.search_action %}
   {% set search_id = context.search_id %}
   {% set search_value_default = context.search_value_default %}
@@ -19,7 +20,7 @@
   class="vf-form | vf-search{% if variant == 'inline' %} vf-search--inline{% endif %} {%- if override_class %} | {{override_class}}{% endif -%}">
   <div class="vf-form__item | vf-search__item">
     <label class="vf-form__label vf-u-sr-only | vf-search__label" for="{{ search_id }}">{{ search_label }}</label>
-    <input type="search" placeholder="{{ search_placeholder }}" id="{{ search_id }}" {% if search_value_default %} value="{{ search_value_default }}"{% endif %} class="vf-form__input | vf-search__input">
+    <input type="search" placeholder="{{ search_placeholder }}" id="{{ search_id }}" {% if search_value_default %} value="{{ search_value_default }}"{% endif %} class="vf-form__input | vf-search__input"{%- if search_autofocus %} autofocus{%- endif %}>
   </div>
   <button type="submit" class="vf-search__button | vf-button vf-button--primary"> {{ search_button }}</button>
 </form>

@@ -1,3 +1,7 @@
+### 1.1.2
+
+- adds support for `autofocus` on search input
+
 ### 1.1.1
 
 - adds support for default search value
