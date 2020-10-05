@@ -1,30 +1,55 @@
 ---
-title: The Visual Framework
-subtitle: Tailored for life science websites
+title: The Visual Framework for life science websites
+subtitle: With a focus on compatibility, portability and sane UX defaults
 date: 2018-08-22 12:24:50
 layout: layouts/base.njk
 ---
+
+<style>
+/* hack until we have a hero image from design */
+.vf-hero.vf-hero--intense {
+  background-image: #fff;
+  padding: 1rem 0;
+}
+.vf-hero__content  {
+  --vf-hero__padding: 0;
+}
+</style>
+{# We'd probably go with "easy", but it looks a bit wrong at the moment; https://github.com/visual-framework/vf-core/issues/1146 #}
+{# {% render '@vf-hero--easy-with-link', {
+  "component-type": "container",
+  "modifier_class": "vf-hero--easy",
+  "vf_hero_subheading": "Begining with guidance for tables, graphs, data-heavy typography, the VF goes beyond to get you started on the right path in a way that won't interfere, regardless if you use Bootstrap, Angular, or something else.",
+  "vf_hero_text": [
+    "Learn more about the Visual Framework"
+  ],
+  "vf_hero_heading": title,
+  "vf_hero__initial_row": "184px;",
+  "vf_hero_image": "",
+  "vf_hero_href": "about"
+} %} #}
 
 
 {% render '@vf-hero--intense', {
   "modifier_class": "vf-hero--intense",
   "vf_hero_subheading": "",
-  "vf_hero_text": "Learn more about the Visual Framework",
-  "vf_hero_link_text": "Learn more.",
-  "vf_hero_heading": title,
-  "vf_hero__initial_row": "384px;",
-  "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');",
-  "vf_hero_summary_title": siteConfig.siteInformation.short_description,
-  "vf_hero_href": "about"
+  "vf_hero_heading": "The Visual Framework<br/> for life science websites",
+  "vf_hero__initial_row": "184px;",
+  "vf_hero_text": [
+    "Learn more about the Visual Framework"
+  ],
+  "vf_hero_href": "about",
+  "vf_hero_image": "",
+  "vf_hero_summary_title": "Begining with guidance for tables, graphs, data-heavy typography, the VF goes beyond to get you started on the right path in a way that won't interfere, regardless if you use Bootstrap, Angular, or something else."
 } %}
 
-<section class="vf-grid embl-grid--has-centered-content">
+{# <section class="vf-grid embl-grid--has-centered-content">
 <div>
   <p class="vf-intro__text">
   The Visual Framework (VF) is designed with the <a href="https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability" class="vf-link">needs</a> of life science websites and services. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfere with your existing components that use Bootstrap, Angular, or something else.
   </p>
 </div>
-</section>
+</section> #}
 
 {# Search #}
 <section class="vf-content | embl-grid embl-grid--has-centered-content">
@@ -71,7 +96,7 @@ The when and how to making a project powered with Visual Framework components. [
 
     <br/>
 
-    You can also [use our templates](building) to quickly generate a Bootstrap project via npm.
+    You can also [use our templates](building) to quickly generate a project via npm.
 
     {% endmarkdown %}
 
@@ -114,27 +139,38 @@ The when and how to making a project powered with Visual Framework components. [
 
 <hr class="vf-divider" />
 
-
 {# Sections #}
-<section class="embl-grid embl-grid--has-centered-content">
+ {# vf-u-background-color--grey--lightest #}
+<section class="vf-card-container | vf-u-fullbleed">
+  <div class="vf-card-container__inner">
   {% render '@vf-section-header', {
     "section_title": "Sections",
     "id": "sections"
   } %}
-  <div class="vf-content">
-    {# show all pages classes as sections #}
-    {# by default, 11ty sorts by `date` field #}
-    {%- for section in collections.sections  %}
-      {% if section.data.is_index == true %}
-        {% set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %}
 
-        {% markdown %}
-        ## [{{ section.data.title }}]({{ absolutePostUrl | url }})
+  <style>
+  .vf-card {
+    /* would be nice if this was a custom property */
+    grid-template-rows: 188px 1fr;
+  }
+  </style>
 
-        {{ section.data.subtitle }}
-        {% endmarkdown %}
-
-      {% endif %}
-    {%- endfor %}
+  {#- show all pages classes as sections -#}
+  {#- by default, 11ty sorts by `date` field -#}
+  {%- for section in collections.sections  %}
+    {% if section.data.is_index == true %}
+      {# Eventually these might have unique images, not sure yet #}
+      {%- set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %}
+      {%- render '@vf-card', {
+        "theme": "tertiary",
+        "variant": "easy",
+        "card_title": section.data.title,
+        "card_href": absolutePostUrl | url,
+        "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png",
+        "card_text": section.data.subtitle,
+        "card_image__alt": section.data.title
+      } %}
+    {% endif %}
+  {%- endfor %}
   </div>
 </section>
