@@ -66,6 +66,7 @@ And you should build that search index after updating your html pages, a la:
 
 - You can pass a query to the search page with `?search_query=myQuery`
 - The search will live update as the user enters text
+- You can enable `autofocus` on the search element, but should only do so if most users intend to search on the page
 
 ## Install
 
