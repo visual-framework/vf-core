@@ -15,28 +15,6 @@ layout: layouts/base.njk
   "vf_intro_badge": false
 } %}
 
-{# Search #}
-<section class="vf-content | embl-grid embl-grid--has-centered-content | vf-u-fullbleed vf-u-background-color--grey--lightest | vf-u-padding__top--xxl vf-u-padding__bottom--xl">
-<div><!-- empty --></div>
-<div class="">
-  {% render '@vf-section-header', {
-    "section_title": "Search components, documentation and more",
-    "id": "search",
-    "vf_section__content": [
-      " "
-    ]
-  } %}
-
-  {% render '@vf-search-client-side--default', {
-    "search_client_prompt": "Search components and documentation",
-    "search_client_autofocus": true,
-    "search_client_button": true,
-    "search_client_button_text": "Search",
-    "search_client_action": "/vf-core/search/",
-    "search_client_results": false
-  } %}
-</div>
-</section>
 
 {# Installation #}
 <section class="embl-grid embl-grid--has-centered-content">
@@ -102,6 +80,28 @@ layout: layouts/base.njk
 </section>
 
 
+{# Search #}
+<section class="vf-content | embl-grid embl-grid--has-centered-content | vf-u-fullbleed vf-u-background-color--grey--lightest | vf-u-padding__top--xxl vf-u-padding__bottom--xl">
+<div><!-- empty --></div>
+<div class="">
+  {% render '@vf-section-header', {
+    "section_title": "Search components, documentation and more",
+    "id": "search",
+    "vf_section__content": [
+      " "
+    ]
+  } %}
+
+  {% render '@vf-search-client-side--default', {
+    "search_client_prompt": "Search components and documentation",
+    "search_client_autofocus": false,
+    "search_client_button": true,
+    "search_client_button_text": "Search",
+    "search_client_action": "/vf-core/search/",
+    "search_client_results": false
+  } %}
+</div>
+</section>
 
 {# Sections #}
  {# vf-u-background-color--grey--lightest #}
