@@ -1,3 +1,8 @@
+### 1.0.0-rc.4
+
+* improve `vfGaLogMessage()` to note type of event being tracked
+  * https://github.com/visual-framework/vf-core/pull/1141
+
 ### 1.0.0-rc.3
 
 * documentation cleanup
