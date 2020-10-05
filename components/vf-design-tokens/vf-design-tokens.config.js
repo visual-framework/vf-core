@@ -14,20 +14,23 @@ let fractalConfig = {
       name: 'default',
       label: 'Welcome',
     },
-  ],
+  ]
 };
 
 // Only generate the tokens if the `/dist` assets have been generated
 try {
-  if (path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-colors.ios.json')) {
+  // Get the config from the project using the VF
+  const config = require(path.resolve('.','package.json'));
+  // https://nodejs.dev/learn/the-nodejs-path-module#pathnormalize
+  if (path.normalize(config.vfConfig.vfComponentPath+'/vf-design-tokens/dist/json/vf-colors.ios.json')) {
     fractalConfig.context = {
       'component-type': 'utility',
-      breakpoints: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-breakpoints.ios.json')),
-      colors: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-colors.ios.json')),
-      themes: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-themes.ios.json')),
-      uiColors: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-ui-colors.ios.json')),
-      spacing: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-spacing.ios.json')),
-      typography: require(path.join(process.cwd(), 'components/vf-design-tokens/dist/json/vf-font--sans.ios.json'))
+      breakpoints: require(path.normalize(config.vfConfig.vfComponentPath+'/vf-design-tokens/dist/json/vf-breakpoints.ios.json')),
+      colors: require(path.normalize(config.vfConfig.vfComponentPath+'/vf-design-tokens/dist/json/vf-colors.ios.json')),
+      themes: require(path.normalize(config.vfConfig.vfComponentPath+'/vf-design-tokens/dist/json/vf-themes.ios.json')),
+      uiColors: require(path.normalize(config.vfConfig.vfComponentPath+'/vf-design-tokens/dist/json/vf-ui-colors.ios.json')),
+      spacing: require(path.normalize(config.vfConfig.vfComponentPath+'/vf-design-tokens/dist/json/vf-spacing.ios.json')),
+      typography: require(path.normalize(config.vfConfig.vfComponentPath+'/vf-design-tokens/dist/json/vf-font--sans.ios.json'))
     };
   }
 } catch(err) {
