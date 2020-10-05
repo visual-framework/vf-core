@@ -30,7 +30,7 @@ layout: layouts/base.njk
 } %} #}
 
 
-{% render '@vf-hero--intense', {
+{# {% render '@vf-hero--intense', {
   "modifier_class": "vf-hero--intense",
   "vf_hero_subheading": "",
   "vf_hero_heading": "The Visual Framework<br/> for life science websites",
@@ -41,7 +41,42 @@ layout: layouts/base.njk
   "vf_hero_href": "about",
   "vf_hero_image": "",
   "vf_hero_summary_title": "Begining with guidance for tables, graphs, data-heavy typography, the VF goes beyond to get you started on the right path in a way that won't interfere, regardless if you use Bootstrap, Angular, or something else."
+} %} #}
+
+
+{% render '@vf-intro', {
+  "vf_intro_heading": "The Visual Framework<br/> for life science websites",
+  "vf_intro_lede": "Begining with guidance for tables, graphs, data-heavy typography, the VF goes beyond to get you started on the right path in a way that won't interfere, regardless if you use Bootstrap, Angular, or something else.",
+  "vf_intro_text": [
+    '<a href="about" class="vf-button vf-button--primary vf-button--outline">Learn more</a>'
+  ],
+  "vf_intro_badge": false
 } %}
+
+{# Search #}
+<section class="vf-content | embl-grid embl-grid--has-centered-content | vf-u-fullbleed vf-u-background-color--grey--lightest | vf-u-padding__top--xxl vf-u-padding__bottom--xl">
+<div><!-- empty --></div>
+<div class="">
+  {% render '@vf-section-header', {
+    "section_title": "Search components, documentation and more",
+    "id": "search",
+    "vf_section__content": [
+      " "
+    ]
+  } %}
+
+  {% render '@vf-search-client-side--default', {
+    "search_client_prompt": "Search components and documentation",
+    "search_client_button": true,
+    "search_client_button_text": "Search",
+    "search_client_action": "/vf-core/search/",
+    "search_client_results": false
+  } %}
+
+</div>
+</section>
+
+
 
 {# <section class="vf-grid embl-grid--has-centered-content">
 <div>
@@ -51,28 +86,6 @@ layout: layouts/base.njk
 </div>
 </section> #}
 
-{# Search #}
-<section class="vf-content | embl-grid embl-grid--has-centered-content">
-<div><!-- empty --></div>
-<div class="">
-{# {% markdown %}
-
-## Guide: [Building a VF-powered system]({{ '/building' | url }})
-
-The when and how to making a project powered with Visual Framework components. [See the building guide]({{ '/building' | url }}).
-
-{% endmarkdown %} #}
-
-{% render '@vf-search-client-side--default', {
-  "search_client_prompt": "Search components and documentation",
-  "search_client_button": true,
-  "search_client_button_text": "Search",
-  "search_client_action": "/vf-core/search/",
-  "search_client_results": false
-} %}
-
-</div>
-</section>
 
 {# Installation #}
 <section class="embl-grid embl-grid--has-centered-content">
@@ -137,7 +150,7 @@ The when and how to making a project powered with Visual Framework components. [
   </div>
 </section>
 
-<hr class="vf-divider" />
+
 
 {# Sections #}
  {# vf-u-background-color--grey--lightest #}
