@@ -621,7 +621,12 @@ class="vf-logo | vf-logo--has-text">
     
       <h1>EMBL Notifications component</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fembl-notifications"><img src="https://badge.fury.io/js/%40visual-framework%2Fembl-notifications.svg" alt="npm version"></a></p>
-<p>Fetches notifications from the EMBL contentHub and will display them, if a matching URL is found.</p>
+<p>Fetches notifications from the EMBL contentHub URL of https://www.embl.org/api/v1/notifications?_format=json&amp;source=contenthub and will display them, if a matching URL is found.</p>
+<p>It will also check a backup URL for cases of major outages.</p>
+<ul>
+<li>Fallback URL: https://embl-communications.github.io/embl-notifcations-fallback/notifications.js</li>
+<li>Fallabck repo: https://github.com/embl-communications/embl-notifcations-fallback</li>
+</ul>
 <h2>Possible features not currently planned:</h2>
 <ul>
 <li>Only show if a wrapping element has <code>data-vf-js-embl-notifications</code></li>

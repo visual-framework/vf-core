@@ -1789,7 +1789,10 @@ function emblNotifications(currentHost, currentPath) {
     loadRemoteNotifications('https://wwwdev.embl.org/api/v1/notifications?_format=json&source=contenthub');
   } else {
     loadRemoteNotifications('https://www.embl.org/api/v1/notifications?_format=json&source=contenthub');
-  }
+  } // Check fallback notifications
+
+
+  loadRemoteNotifications('https://embl-communications.github.io/embl-notifcations-fallback/notifications.js');
 } // Add this to your ./components/vf-component-rollup/scripts.js
 // import { emblNotifications } from '../components/raw/embl-notifications/embl-notifications.js';
 // And invoke it
