@@ -224,6 +224,9 @@ function emblNotifications(currentHost, currentPath) {
   } else {
     loadRemoteNotifications('https://www.embl.org/api/v1/notifications?_format=json&source=contenthub');
   }
+
+  // Check fallback notifications
+  loadRemoteNotifications('https://embl-communications.github.io/embl-notifcations-fallback/notifications.js');
 }
 
 // By default your component should be usable with js imports

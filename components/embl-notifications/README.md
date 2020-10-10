@@ -2,7 +2,12 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fembl-notifications.svg)](https://badge.fury.io/js/%40visual-framework%2Fembl-notifications)
 
-Fetches notifications from the EMBL contentHub and will display them, if a matching URL is found.
+Fetches notifications from the EMBL contentHub URL of https://www.embl.org/api/v1/notifications?_format=json&source=contenthub and will display them, if a matching URL is found.
+
+It will also check a backup URL for cases of major outages.
+
+- Fallback URL: https://embl-communications.github.io/embl-notifcations-fallback/notifications.js
+- Fallabck repo: https://github.com/embl-communications/embl-notifcations-fallback
 
 ## Possible features not currently planned:
 
