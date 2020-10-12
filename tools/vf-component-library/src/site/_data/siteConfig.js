@@ -10,7 +10,8 @@ module.exports = {
     email: "ken.hawkins@embl.de",
   },
   buildTime: DateTime.fromISO(new Date().toISOString()),
-  vfVersion: global.vfVersion,
+  // vfVersion: global.vfVersion,
+  vfVersion: 'v2.2.9',
   sections: {
     about: {
       url: '/about',
