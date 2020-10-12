@@ -10,7 +10,7 @@
       You can copy the CSS and JS you find here, but for the best experience see the building guide:
       https://visual-framework.github.io/vf-core/building/
     -->
-    <title>Creating a new component | The Visual Framework 2.0</title>
+    <title>About the Visual Framework | The Visual Framework 2.0</title>
     <link rel="shortcut icon" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-32x32.png">
@@ -21,22 +21,22 @@
 <meta name="theme-color" content="#ffffff">
 
     <!-- Descriptive meta -->
-    <meta name="title" content="Creating a new component">
+    <meta name="title" content="About the Visual Framework">
     <meta name="author" content="EMBL">
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="">
-    <meta name="description" content="This codebase includes a folder and file creation tool.">
+    <meta name="description" content="Tailored for life science websites.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://visual-framework.github.io/vf-core//developing/components/creating-new-components/">
-    <meta property="og:title" content="Creating a new component">
-    <meta property="og:description" content="This codebase includes a folder and file creation tool.">
+    <meta property="og:url" content="https://visual-framework.github.io/vf-core//about/">
+    <meta property="og:title" content="About the Visual Framework">
+    <meta property="og:description" content="Tailored for life science websites.">
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="og:url" content="https://visual-framework.github.io/vf-core//developing/components/creating-new-components/">
-    <meta property="twitter:title" content="Creating a new component">
-    <meta property="twitter:description" content="This codebase includes a folder and file creation tool.">
+    <meta property="og:url" content="https://visual-framework.github.io/vf-core//about/">
+    <meta property="twitter:title" content="About the Visual Framework">
+    <meta property="twitter:description" content="Tailored for life science websites.">
     <!-- Feed -->
     <link href="https://visual-framework.github.io/vf-core/feed.xml" type="application/rss+xml" rel="alternate" title="Visual Framework 2.0 Updates">
   </head>
@@ -84,91 +84,72 @@ class="vf-logo | vf-logo--has-text">
           
         
         
-          
-        
         
         
         
         <li class="vf-breadcrumbs__item">
           
-            Creating a new component
+            About the Visual Framework
           
         </li>
       </ul>
     </nav>
     
 
-    <section class="vf-intro | embl-grid embl-grid--has-centered-content">
-  <div></div>
+    
+
+
+<section class="vf-intro | embl-grid embl-grid--has-centered-content">
+  <div><!-- empty --></div>
   <div>
-    <h1 class="vf-intro__heading">Creating a new component</h1>
-<div class="vf-lede"><span class='vf-content'>This codebase includes a folder and file creation tool.</span>
-</div>
-<div class="vf-intro__text"><span class='vf-content'>It allows you to quickly create all the required files to make a component -- it gives you the option to create am element, block, or container.</span>
-</div>
+
+  <h1 class="vf-intro__heading ">About the Visual Framework</h1>
+
+<p class="vf-intro__text">The Visual Framework (VF) is designed with the <a href="https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability" class="vf-link">needs of life science websites and services</a>. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that will not interfere with your existing components that use Bootstrap, Angular, or something else.</p>
   </div>
 </section>
-<main class="vf-content | embl-grid embl-grid--has-centered-content">
+
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
 <div></div>
 <div>
+
+
+<h2>Tailored for life science websites.</h2>
+<!-- This content is styled using the .vf-content component, intended for use
+   where the application of classnames is difficult, such as Markdown text
+   or WYSIWYG editors -->
+<p>The Visual Framework address three major needs:</p>
 <ol>
-<li>Install Yeoman
-<ul>
-<li>If you've come this far and you don't have <code>yo</code>, you should be able to install it with <code>yarn global add yo@latest</code></li>
-<li>If you get stuck, <a href="http://yeoman.io/codelab/setup.html">see the official install guide</a></li>
-</ul>
+<li>
+<p><strong>Clarity</strong><br/>
+the VF is highly customisable, but out of the box it has a highly usable look that builds in solid UX principles to increase comprehension and decrease <a href="https://www.google.com/search?q=cognitive+load+software+usability">cognitive load</a>. Just because the scientific material is challenging, it doesn't mean using the website <a href="https://theoutline.com/post/2954/user-interface-designers-are-horrified-by-hawaii-s-missile-alert-system">needs to be</a>.</p>
 </li>
-<li>Create a new component
-<ul>
-<li>Run <a href="https://www.npmjs.com/package/@visual-framework/vf-component-generator"><code>vf-component-generator</code></a> and answer the questions when prompted.
-<ul>
-<li><strong>Type of component:</strong> We use a variation of the atomic design methodology, <a href="http://bradfrost.com/blog/post/atomic-web-design/#atoms">read about the differences here</a>. We use: elements, blocks, and containers.
-<ul>
-<li>an element would be a heading, or a button</li>
-<li>a block would be a teaser, or a search form</li>
-<li>a container would be a group of teasers</li>
-</ul>
-</li>
-<li><strong>Name of component:</strong> Go for something simple and obvious (todo: we need a guide/documentation on how we name things). Don't worry about namespacing and prefixing, the tooling will take care of this.</li>
-<li><strong>NPM package:</strong> If you're making something interesting (probably not an 'element'), then saying 'yes' will allow the component to be shared as an optional part of the framework on NPM.</li>
-</ul>
-</li>
-<li>Your customised template component will is in the <code>/components</code> directory.</li>
-</ul>
-</li>
-<li>Add the <code>@import 'vf-your-component.scss';</code> to <code>/assets/scss/styles.scss</code>.</li>
-<li>Developing your component
-<ul>
-<li>Edit your template files in the <code>/components/your-component-name</code> folder
-<ul>
-<li>For further guidance on component configuration, <a href="https://github.com/visual-framework/vf-core/tree/develop/tools/component-generator/templates">consult the comments in the component template files</a>.</li>
-</ul>
-</li>
-<li>Run <code>gulp vf-dev</code> to compile and preview the component</li>
-</ul>
-</li>
-<li>Sharing you component back
-<ul>
-<li>Publish it to npm; and/or</li>
-<li>If you think your component is useful to the global <code>vf-core</code> community, <a href="https://github.com/visual-framework/vf-core/pulls">make a Pull Request</a> or <a href="https://github.com/visual-framework/vf-core/issues/new/choose">open an issue</a> to discuss.</li>
-</ul>
+<li>
+<p><strong>Compatibility</strong><br/>
+the VF won't break your other framework's CSS or JS, so bring Bootstrap, Foundation, React or Angular. With the VF  components (and brand design) can be shared between sites without cross-contaminating other functionality. We achieve this by a <a href="https://github.com/css-modules/css-modules">CSS Modules-style</a> approach:</p>
 </li>
 </ol>
- <div class="vf-box">
- Tip: also consult the [guidelines](/vf-core/developing/guidelines) for the naming of things and coding standards.
- </div>
-<h2>Language and spelling of documentation, code</h2>
-<p>The <code>vf-core</code> project is being led by EMBL where British English and we're aware that most code is American English (<code>colour</code> vs <code>color</code>); so:</p>
+<p><strong>CSS</strong>: styling on HTML elements and only use namespaced classes, that is:</p>
 <ul>
-<li>📚🇬🇧 Documentation is written in British English 💂‍ <code>Rarely use centred text, always use colours</code></li>
-<li>⌨️🇺🇸 Code is written in American english 🧢 <code>$vf-main-color: green;</code></li>
+<li>
+<p>Not this: <code>.button {}</code> or <code>button {}</code> or <code>div.button {}</code></p>
+</li>
+<li>
+<p>Like this: <code>.vf-button {}</code></p>
+<p><strong>JavaScript</strong>: Use ours or bring your own</p>
+<p>We include only minimal JS in components and it's fully optional (just remove <a href="https://github.com/visual-framework/vf-core/issues/115#issuecomment-455524131">the JavaScript selectors</a>). If you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way, just remove <code>data-vf-js-tabs</code> from your markup.</p>
+</li>
 </ul>
-  <cite class="vf-cite">
-    Last updated on <time datetime="Tue Apr 09 2019 12:24:50 GMT+0000 (Coordinated Universal Time)">9 Apr 2019</time>
-  </cite>
+<ol start="3">
+<li><strong>Componentisation</strong><br/>
+Use only the portions you need.<br/><br/>
+Use <code>vf-core</code> to build your CSS, JS dynamically based on the components you need, or bring your own build system.</li>
+</ol>
+
+
 </div>
-</main>
-<!-- layout: layouts/developing.njk -->
+</section>
 
     <footer class="vf-footer">
   <div class="vf-footer__inner">
