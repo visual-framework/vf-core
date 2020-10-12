@@ -3,8 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {# <link rel="stylesheet" media="all" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css" /> #}
+    {% if serverInfo.environment == "development" -%}
     <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+    {%- else -%}
+    <link rel="stylesheet" href="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
+    {%- endif %}
+    <!--
+      Want to build a site with the Visual Framework?
+      ---
+      You can copy the CSS and JS you find here, but for the best experience see the building guide:
+      https://visual-framework.github.io/vf-core/building/
+    -->
     <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
     {% render '@vf-favicon' %}
     <!-- Descriptive meta -->
@@ -21,7 +30,7 @@
     <meta property="og:description" content="{{ facebook.description or meta.description or subtitle }}">
     {% if meta.image -%}
     <meta property="og:image" content="{{ facebook.description or meta.image }}">
-    {%- endif %}
+    {%- endif -%}
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
@@ -30,7 +39,7 @@
     <meta property="twitter:description" content="{{ twitter.description or meta.description or subtitle }}">
     {% if meta.image -%}
     <meta property="twitter:image" content="{{ twitter.description or meta.image }}">
-    {%- endif %}
+    {%- endif -%}
 
     <!-- Feed -->
     <link href="https://visual-framework.github.io/vf-core/feed.xml" type="application/rss+xml" rel="alternate" title="Visual Framework 2.0 Updates">
@@ -39,7 +48,7 @@
     <header class="vf-global-header | vf-search-client-side--no-index">
 
       <div class="vf-global-header__inner">
-        {% render '@vf-logo', {logo_href:  '/' | url, sreen_reader_text: 'Visual Framework 2.0', image: siteConfig.siteInformation.url + 'assets/vf-logo/assets/logo.svg' } %}
+        {% render '@vf-logo', {logo_href:  '/' | url, sreen_reader_text: 'Visual Framework 2.0', image: siteConfig.siteInformation.url + 'assets/vf-logo/assets/logo.svg', "hidden_text": true } %}
         <nav class="vf-navigation vf-navigation--global">
           <ul class="vf-navigation__list | vf-list--inline">
             <li class="vf-navigation__item">
