@@ -1,3 +1,8 @@
+### 1.0.0
+
+- Check a backup URL for cases of major outages: https://embl-communications.github.io/embl-notifcations-fallback/notifications.js
+  - https://github.com/visual-framework/vf-core/issues/1150
+
 ### 1.0.0-beta.1
 
 - Use `.vf-banner__link`
