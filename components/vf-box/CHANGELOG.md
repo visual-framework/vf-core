@@ -1,3 +1,7 @@
+### 2.1.0
+
+- updates spacing design tokens
+
 ### 2.0.2
 
 - fixes bug with `-link` variant by adding position relative to `vf-box`
