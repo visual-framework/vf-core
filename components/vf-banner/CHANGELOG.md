@@ -1,3 +1,7 @@
+### 1.6.0
+
+- updates spacing design tokens
+
 ### 1.5.0
 
 - centralises logic to "close" a banner
