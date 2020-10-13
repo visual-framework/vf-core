@@ -1,3 +1,7 @@
+### 1.2.0
+
+- updates spacing design tokens
+
 ### 1.1.0
 
 - makes theme variant naming and decisions consistent.
