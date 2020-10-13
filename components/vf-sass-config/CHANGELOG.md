@@ -1,3 +1,7 @@
+### 1.5.0
+
+- replaces spacing design tokens.
+
 ### 1.4.3
 
 - adds `webkit-appearance: none;` as needed for Safari browsers as autoprefixer is not doing this.
