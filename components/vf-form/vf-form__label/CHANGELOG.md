@@ -1,3 +1,7 @@
+### 1.2.0
+
+- updates spacing design tokens
+
 ### 1.1.0
 
 - changes the required asterick colour from red to blue, as red is more of an 'error' colour.
