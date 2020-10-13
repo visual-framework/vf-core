@@ -1,3 +1,7 @@
+### 1.2.0
+
+- updates spacing design tokens
+
 ### 1.1.1
 
 - fixes issue where the SVG icon was not appearing with vf-links__list--easy
