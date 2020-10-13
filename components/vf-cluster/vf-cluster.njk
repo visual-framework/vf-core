@@ -4,7 +4,9 @@
   {% set cluster_custom_alignment = context.cluster_custom_alignment %}
 {% endif %}
 
-<div class="vf-cluster"
+<div class="vf-cluster
+  {%- if cluster__spacing %} vf-cluster--{{cluster__spacing}}{%- endif -%}"
+  
   {%- if cluster_custom_alignment or cluster_custom_spacing or cluster_child_width %} style="
     {%- if cluster_custom_alignment %}--vf-cluster-alignment: {{cluster_custom_alignment}};{% endif -%}
     {%- if cluster_custom_spacing %} --vf-cluster-margin: {{cluster_custom_spacing}};{% endif -%}
