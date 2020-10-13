@@ -1,3 +1,7 @@
+### 1.4.0
+
+- updates spacing design tokens
+
 ### 1.3.0
 
 - adds loading="eager" to the img element for better performance
