@@ -1,6 +1,12 @@
+# 1.5.0
+
+* makes the padding on `--intense` standardised to our spacing units
+* reduces height of all other variants
+* currently this is the 'maximum space' the component will get to allow it's content to be readable.
+
 # 1.4.5
 
-* adds an if statement for contextual data if applicable 
+* adds an if statement for contextual data if applicable
 
 # 1.4.4
 
