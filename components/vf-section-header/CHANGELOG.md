@@ -1,3 +1,7 @@
+### 1.3.0
+
+- updates spacing design tokens
+
 ### 1.2.2
 
 - adds `id` for anchor support
