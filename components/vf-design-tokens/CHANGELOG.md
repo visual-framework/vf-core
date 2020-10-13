@@ -1,3 +1,7 @@
+### 2.0.0
+
+- updates all spacing variables to use numbers for sizing. 
+
 ### 1.3.1
 
 - fix display of design token component documentation
