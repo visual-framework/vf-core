@@ -1,3 +1,7 @@
+### 2.0.0
+
+- all utility classes that make use of spacing tokens now use numerical naming.
+
 ### 1.1.0
 
 - adds utility classes for grid row and columns gaps
