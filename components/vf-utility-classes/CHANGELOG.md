@@ -1,6 +1,7 @@
 ### 2.0.0
 
 - all utility classes that make use of spacing tokens now use numerical naming.
+- updates documentation pages, as needed.
 
 ### 1.1.0
 
