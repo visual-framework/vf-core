@@ -1,8 +1,11 @@
-# Change Log
+### 1.2.0
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+- makes theme variant naming and decisions consistent.
 
-# 1.0.0 (2019-12-17)
+### 1.1.0
 
-* Initial stable release
+- adds if statement to allow for context data to pass through
+
+### 1.0.0 (2019-12-17)
+
+- Initial stable release

@@ -25,7 +25,7 @@
   grid-column: 1 / -1;
 
   display: grid;
-  grid-template-columns: minmax(var(--page-grid-gap), auto) [hero-start] minmax(288px, 76.5em) [hero-end] minmax(var(--page-grid-gap), auto);
+  grid-template-columns: minmax(var(--page-grid-gap), auto) [hero-start] minmax(288px, $vf-layout--comfortable)) [hero-end] minmax(var(--page-grid-gap), auto);
   grid-template-rows: calc(var(--vf-hero-grid__row--initial, var(--vf-hero-grid__row--initial, 260px)) * var(--vf-hero-grid-row--multiplier, .4)) max-content;
   margin-bottom: 2rem;
   position: relative;
@@ -119,7 +119,7 @@
 .vf-hero--inlay {
   margin-left: auto;
   margin-right: auto;
-  max-width: 76.5em;
+  max-width: $vf-layout--comfortable;
 
   &::before {
     background-image: var(--vf-hero-bg-image);
@@ -195,7 +195,7 @@
     // grid-template-columns: minmax(var(--page-grid-gap), 60px) [main-start] minmax(auto, 100%) minmax(auto, 22.125em) [main-end] minmax(var(--page-grid-gap), 60px);
     grid-template-columns: [main-start] minmax(auto,100%) minmax(auto,22.125em) [main-end];
     margin: 0 auto;
-    max-width: 76.5em;
+    max-width: $vf-layout--comfortable;
   }
   @media (min-width: 75em) {
     padding: 48px 0;
@@ -336,9 +336,9 @@
 
 
 .vf-hero-theme--primary {
-  --vf-hero-text-bg-color--r: #{red(set-color(vf-color--green))};
-  --vf-hero-text-bg-color--g: #{green(set-color(vf-color--green))};
-  --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--green))};
+  --vf-hero-text-bg-color--r: #{red(set-color(vf-color--blue))};
+  --vf-hero-text-bg-color--g: #{green(set-color(vf-color--blue))};
+  --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--blue))};
 
   --vf-hero-text-color: 1;
 
@@ -375,11 +375,11 @@
 }
 
 .vf-hero-theme--secondary {
-  --vf-hero-text-bg-color--r: #{red(set-color(vf-color--blue))};
-  --vf-hero-text-bg-color--g: #{green(set-color(vf-color--blue))};
-  --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--blue))};
+  --vf-hero-text-bg-color--r: #{red(set-color(vf-color--green))};
+  --vf-hero-text-bg-color--g: #{green(set-color(vf-color--green))};
+  --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--green))};
 
-  --vf-hero-text-color: 1;
+  --vf-hero-text-color: 0;
 
   a:focus,
   a:hover,
@@ -411,7 +411,9 @@
 }
 
 .vf-hero-theme--tertiary {
-  // placeholder
+  --vf-hero-text-bg-color--r: #{red(set-color(vf-color--grey--dark))};
+  --vf-hero-text-bg-color--g: #{green(set-color(vf-color--grey--dark))};
+  --vf-hero-text-bg-color--b: #{blue(set-color(vf-color--grey--dark))};
 
   a:focus,
   a:hover,

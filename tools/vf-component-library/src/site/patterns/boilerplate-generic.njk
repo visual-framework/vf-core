@@ -1,0 +1,50 @@
+---
+title: Boilerplate for a generic page
+subtitle: Use this boilerplate pattern for generic content-focused pages.
+section: patterns
+date: 2018-08-22 12:24:50
+tags: posts
+layout: layouts/boilerplate.njk
+---
+<!DOCTYPE html>
+<html lang="en" class="vf-no-js">
+<head>
+  {% render "@vf-no-js" %}
+  <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+
+  {% render "@vf-favicon" %}
+  {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "Barcelona", "meta_what": "research", "meta_active": "what"} %}
+
+  <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+</head>
+<body class="vf-body">
+  <header class="vf-header">
+    {% render "@vf-global-header" %}
+  </header>
+  {% include "./templates/breadcrumbs-boilerplate.njk" %}
+
+  {% render "@vf-intro" %}
+
+  <section class="embl-grid embl-grid--has-centered-content">
+    <div>
+      <!-- you can include section headers too -->
+      <!--
+      {%- render '@vf-section-header--default', {
+        "section_title": "A longer content area"
+      } -%}
+      -->
+    </div>
+
+    <div>
+      {% render '@vf-content' %}
+    </div>
+  </section>
+
+  {% render "@vf-footer" %}
+  {% include "./templates/notice-boilerplate.njk" %}
+  {% include "footer.njk" %}
+</body>
+</html>

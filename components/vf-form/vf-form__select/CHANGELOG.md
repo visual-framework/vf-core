@@ -1,19 +1,14 @@
-# Change Log
+### 1.0.1
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+- adds `webkit-appearance: none;` as needed for Safari browsers as autoprefixer is not doing this.
 
-# 1.0.0-alpha.8 (2019-10-23)
+### 1.0.0-alpha.8
 
-**Note:** Version bump only for package @visual-framework/vf-form__select
+- Version bump only for package @visual-framework/vf-form__select
 
+### 1.0.0-alpha.7
 
-
-
-
-# 1.0.0-alpha.7 (2019-09-30)
-
-**Note:** Version bump only for package @visual-framework/vf-form__select
+- Version bump only for package @visual-framework/vf-form__select
 
 
 

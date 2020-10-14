@@ -5,14 +5,33 @@ label: Search
 status: beta
 collated: true
 # The template used from /components/_previews
-# 
+#
 # Per-variant options
-# variants:
-  # - name: default
-  #   hidden: true
+variants:
+  - name: default
+    label: Default
+    hidden: false
+    context:
+      variant: default
+      search_action: '#'
+      search_autofocus: false
+      search_button: Search
+      search_label: Search
+      search_placeholder: Enter your search terms
+      search_id: searchitem
+      search_value_default: ''
+  - name: inline
+    label: Inline
+    hidden: false
+    context:
+      variant: inline
+      search_action: '#'
+      search_autofocus: false
+      search_button: Search
+      search_label: Inline search
+      search_placeholder: Enter your search terms
+      search_id: inlinesearchitem
+      search_value_default: ''
 context:
   component-type: block
   # custom-values: passed as {{custom-values}}
-
-  label: Search
-  button: Search

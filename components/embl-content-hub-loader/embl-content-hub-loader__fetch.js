@@ -57,6 +57,11 @@ function emblContentHubFetch() {
     }());
   }
 
+  // If nothing to import
+  if (emblContentHubLinks.length == 0) {
+    emblContentHubSignalFinished();
+  }
+
   // Add a class to the body once the last item has been processed
   function emblContentHubSignalFinished() {
     // @todo, shouldn't require the body element

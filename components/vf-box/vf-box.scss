@@ -21,17 +21,17 @@
   color: set-ui-color(vf-ui-color--black);
   color: var(--box-text-color);
   display: block;
-  margin-bottom: $vf-box-outer-spacing;
   padding: 24px 16px;
   width: 100%;
 
   // the last element within the component shouldn't have a bottom margin
-  & :last-child {
+  & > :last-child {
     margin-bottom: 0;
   }
 }
 
 .vf-box--is-link {
+  position: relative;
   text-decoration: none;
   transition-duration: 250ms;
   transition-property: box-shadow;
@@ -49,6 +49,24 @@
   @include set-type(text-heading--4);
 }
 
+.vf-box__link {
+  color: currentColor;
+  text-decoration: none;
+
+  &::after {
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 300ms;
+    transition-property: box-shadow;
+    transition-timing-function: ease-in-out;
+    z-index: set-layer(vf-z-index--box-link);
+  }
+}
+
 .vf-box__text {
   @include set-type(text-body--3);
 
@@ -57,8 +75,12 @@
   .vf-content & a,
   a {
     color: currentColor;
+    position: relative;
     text-decoration: underline;
-    &:hover {
+    z-index: set-layer(vf-z-index--box-text-link);
+    &:visited,
+    &:hover,
+    &:focus {
       color: currentColor;
     }
   }
@@ -92,26 +114,26 @@
 
 .vf-box-theme--primary {
   --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
-  --vf-box-theme-color--background: #{set-color(vf-color--green)};
+  --vf-box-theme-color--background: #{theme(vf-theme--primary)};
 }
 
 .vf-box-theme--secondary {
-  --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
-  --vf-box-theme-color--background: #{set-color(vf-color--blue)};
+  --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--black)};
+  --vf-box-theme-color--background: #{theme(vf-theme--secondary)};
 }
 
 .vf-box-theme--tertiary {
   --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
-  --vf-box-theme-color--background: #{set-color(vf-color--grey)};
+  --vf-box-theme-color--background: #{theme(vf-theme--tertiary)};
 }
 
 .vf-box-theme--quaternary {
   --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--black)};
-  --vf-box-theme-color--background: #{set-color(vf-color--yellow)};
+  --vf-box-theme-color--background: #{theme(vf-theme--quaternary)};
 }
 
 .vf-box-theme--quinary {
-  --vf-box-theme-color--background: #{set-ui-color(vf-ui-color--grey--light)};
+  --vf-box-theme-color--background: #{theme(vf-theme--quinary)};
   --vf-box-theme-color--foreground: #{set-ui-color(vf-ui-color--black)};
 }
 

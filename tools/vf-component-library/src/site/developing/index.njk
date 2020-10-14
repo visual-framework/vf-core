@@ -1,0 +1,64 @@
+---
+is_index: true
+title: Developing `vf-core`
+subtitle: Developing and contributing to the Visual Framework core.
+intro: A guide to what you need to do, how you should write it and how to maintain <code>vf-core</code> components.
+date: 2019-04-09 12:24:50
+section: developing
+tags:
+  - documentation
+  - sections
+layout: layouts/section.njk
+templateEngineOverride: njk, md
+---
+
+
+#### In the right place?
+
+Need to just make a VF-powered site?
+
+If you're not looking to develop the vf-core or add components for global use,
+then you might be in the wrong place. If you want to make a site or design system that uses
+Visual Framework components, then [check out the "Visual Framework building guide"]({{ '/building' | url }}).
+
+#### Getting started <a id="getting-started"></a>
+
+If you'd like to contribute code, components or documentation to the Visual Framework 2.0,
+first of all: thanks!
+
+We welcome ideas, bug reports, opinions and pull requests. Telling the maintainers
+why you want or have done something is always very helpful.
+
+<ol>
+{%- for page in collections['getting started'] | sort(false, true, 'order') %}
+{%- if page.data.layout %}
+  <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
+{%- endif %}
+{%- endfor %}
+</ol>
+
+#### Making components <a id="components"></a>
+
+Once you've set up the VF Core locally or made a new design system, you'll want to
+extend it by creating components to add new charts, tables or other types of functionality.
+
+<ol>
+{%- for page in collections['contributing components'] | sort(false, true, 'order') %}
+{%- if page.data.layout %}
+  <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
+{%- endif %}
+{%- endfor %}
+</ol>
+
+#### General guidelines, best practice <a id="guidelines"></a>
+
+Some important reading on conding standards, governance and who we're looking
+to assist with the Visual Framework Core.
+
+<ul>
+{%- for page in collections['guidelines'] | sort(false, true, 'url') %}
+{%- if page.data.layout %}
+  <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
+{%- endif %}
+{%- endfor %}
+</ul>

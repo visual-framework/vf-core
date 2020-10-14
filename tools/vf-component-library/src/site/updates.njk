@@ -1,0 +1,42 @@
+---
+title: Updates
+subtitle: What's new, different and improved
+date: 2018-08-22 12:24:50
+layout: layouts/base.njk
+---
+
+<section class="vf-intro | embl-grid embl-grid--has-centered-content">
+<div><!-- empty --></div>
+<div>
+  <h1 class="vf-intro__heading">{{ title }}</h1>
+  <p class="vf-lede">{{ subtitle | safe }}</p>
+  <p class="vf-intro__text">The Visual Framework 2.0 is maturing and we're working to do a better job communicating changes and individual component release notes. On the <a class="vf-link" href="{{ '/updates' | url }}">updates blog</a> you can now expect to find what's new in each release of components.</p>
+  <p class="vf-intro__text">You can also subscribe to <a class="vf-link" href="{{ '/feed.xml' | url }}">the RSS feed</a>.</p>
+</div>
+</section>
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div><!-- empty --></div>
+<div class="vf-content">
+
+
+{%- for post in collections.changelog  | reverse %}
+
+<article class="vf-summary vf-summary--article">
+  <h3 class="vf-summary__title">
+    <a href="{{ post.url | url }}" class="vf-summary__link">{{ post.date | dateDisplay }}: {{ post.data.title }}</a>
+  </h3>
+  {# <div class="vf-summary__meta">
+    left spacing artifact when no author
+    <p class="vf-summary__date">{{ post.date | dateDisplay }}</p>
+  </div> #}
+  {# <p class="vf-text-body--5 | vf-u-margin__bottom--sm">{{ date | dateDisplay }}</p> #}
+  <p class="vf-summary__text">
+    {{ post.data.subtitle }}
+  </p>
+</article>
+
+{% endfor %}
+
+</div>
+</section>

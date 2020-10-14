@@ -1,0 +1,26 @@
+---
+title: Updating, versioning a component
+subtitle: "Like the Visual Framework 2.0, components follow [semantic versioning](https://semver.org/) by increasing their full version number every time they have breaking changes."
+intro: "However the version number of components its not tied to the version number of the Visual Framework's `vf-core`; that is:"
+date: 2019-04-09 12:24:50
+layout: layouts/developing.njk
+order: 2
+---
+
+- `vf-core​@2.1.2` might use `vf-button​@1.0.1` and `vf-component-x​@8.2.1`
+- `vf-button@1.0.1` might require `vf-link@3.0.1` or newer
+
+As such components should specify if they only support specific versions of `vf-core` or require other specific versions of patterns.
+
+Other notes and tips on components:
+
+- should use a [semantic versioning](https://semver.org/) style of releases
+- must work with `vf-core v2.x`, but a component may specify a
+minimum required minor version of vf-core
+- may indicate any required versions of peer-components in your component's README.md.
+    - `vf-component-x`@`2.1.2` requires `vf-component-y`@`^8.1.0`
+- can live as part of the `vf-core` [monorepo](https://www.toptal.com/front-end/guide-to-monorepos/)
+    - Interested in adding a component? [Get in touch](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ) or [make an issue](https://github.com/visual-framework/vf-core/issues/new/choose)
+- read more about [component versioning in this issue](https://github.com/visual-framework/vf-core/issues/119)
+
+<span class="vf-badge vf-badge--tertiary">Related</span> [Notes on VF versioning]({{ '/developing/guidelines/versioning' | url }}).

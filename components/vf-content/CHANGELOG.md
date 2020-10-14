@@ -1,39 +1,49 @@
-# Change Log
+### 1.2.2
 
-## 1.1.5
+- dependency bump
 
-* fixes an issue when content creators add the bold/strong tags to hedaing to make them bolder - when they shouldn't be.
-* adds a little more padding to ul and ol elements so they visually fit 'inside' of vf-content.
+### 1.2.0
 
-## 1.1.4
+- adds loading="lazy" to the img element for better performance
 
-* fixes support for vf-figure alignment options
+### 1.1.9
 
-## 1.1.1
+- dependency bump
 
-* adds a floated vf-figure example in the nunjucks file
-* adds CSS for margin spacing of vf-figure inside of vf-content
-* adds table styles to match default vf-table with striped rows.
+### 1.1.7
 
-## 1.1.0
+- fixes an issue when content creators add the bold/strong tags to hedaing to make them bolder - when they shouldn't be.
+- adds a little more padding to ul and ol elements so they visually fit 'inside' of vf-content.
 
-* `vf-content` becomes less of a utility and a general purpose for long-form content
-* Standardise links colours
-* Add intial support for `--dark` links
+### 1.1.4
 
-## 1.0.8
+- fixes support for vf-figure alignment options
 
-* Add support for cite, figcaption
-* Improve spacing on blockquote
+### 1.1.1
 
-## 1.0.3 (2020-01-24)
+- adds a floated vf-figure example in the nunjucks file
+- adds CSS for margin spacing of vf-figure inside of vf-content
+- adds table styles to match default vf-table with striped rows.
 
-* Lerna version bump
+### 1.1.0
 
-## 1.0.1 (2019-12-18)
+- `vf-content` becomes less of a utility and a general purpose for long-form content
+- Standardise links colours
+- Add intial support for `--dark` links
 
-* Lerna version bump
+### 1.0.8
 
-## 1.0.0 (2019-12-17)
+- Add support for cite, figcaption
+- Improve spacing on blockquote
 
-* Initial stable release
+### 1.0.3
+
+- Lerna version bump
+
+### 1.0.1
+
+- Lerna version bump
+
+### 1.0.0
+
+- Initial stable release

@@ -1,23 +1,44 @@
-# Change Log
+### 1.3.1
 
-## 1.0.5
+- fix display of design token component documentation
+  - https://github.com/visual-framework/vf-core/pull/1134
 
-* Updates the z-index to separate any banner or hero from banner
+### 1.3.0
 
-## 1.0.4
+- adds z-index values for `vf-box` component
 
-* Swaps `--vf-ui-color--grey` and `--vf-ui-color--grey--light` which had been inverted
-* `vf-link--visited-color` now defaults to grey, visited purple states are now overrides and default for long-form `vf-content`
+### 1.2.1
 
-## 1.0.2 (2020-01-24)
+- dependency bump
 
-* Improves visited link colour
-* Adds inverted colours for use atop dark backgrounds
+### 1.2.0
 
-## 1.0.1 (2019-12-18)
+- adds themed design tokens
+- creates theme variants documentation page
+- creates theme variant maps, sass variables, css custom properties
 
-* Update npm dependencies
+### 1.1.0
 
-## 1.0.0 (2019-12-17)
+- Adds some basic layout (width) tokens
 
-* Initial stable release
+### 1.0.5
+
+- Updates the z-index to separate any banner or hero from banner
+
+### 1.0.4
+
+- Swaps `--vf-ui-color--grey` and `--vf-ui-color--grey--light` which had been inverted
+- `vf-link--visited-color` now defaults to grey, visited purple states are now overrides and default for long-form `vf-content`
+
+### 1.0.2 (2020-01-24)
+
+- Improves visited link colour
+- Adds inverted colours for use atop dark backgrounds
+
+### 1.0.1 (2019-12-18)
+
+- Update npm dependencies
+
+### 1.0.0 (2019-12-17)
+
+- Initial stable release

@@ -1,0 +1,43 @@
+---
+title: 404
+is_index: true
+subtitle: Unfortunately we couldn't find that page
+date: 2018-08-22 12:24:50
+layout: layouts/base.njk
+permalink: 404.html
+---
+
+<section class="vf-intro | embl-grid embl-grid--has-centered-content">
+<div><!-- empty --></div>
+<div>
+  <h1 class="vf-intro__heading">{{ title }}</h1>
+  <p class="vf-lede">{{subtitle}}.</p>
+
+  <p class="vf-intro__text">You can see search results for it below.</p>
+</div>
+</section>
+
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+<div><!-- empty --></div>
+<div class="">
+
+{% render '@vf-search-client-side--default', {
+  "search_client_prompt": "Search components and documentation",
+  "search_client_button": true,
+  "search_client_button_text": "Search",
+  "search_client_action": "/vf-core/search/",
+  "search_client_results": true
+} %}
+
+</div>
+</section>
+
+
+
+
+<script>
+  // pre-populate the search with the query string
+  var truncatedUrl = window.location.pathname.replace('/vf-core/','').replace('.html','').replace('components/detail/','').replace('/',' ');
+  document.getElementById('search').value = truncatedUrl;
+</script>

@@ -1,41 +1,24 @@
-# Change Log
+### 1.1.2
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+- adds support for `autofocus` on search input
 
-## 1.0.0
+### 1.1.1
+
+- adds support for default search value
+
+### 1.1.0
+
+- makes vf-search.njk a real template
+
+### 1.0.0
 
 - removes `vf-u-sr-only` as no longer needed
 - changes alignment of button on inline search
 
-# 1.0.0-alpha.8 (2019-10-23)
+### 1.0.0-alpha.8
 
-**Note:** Version bump only for package @visual-framework/vf-search
+- Version bump only for package @visual-framework/vf-search
 
+### 1.0.0-alpha.7
 
-
-
-
-# 1.0.0-alpha.7 (2019-09-30)
-
-**Note:** Version bump only for package @visual-framework/vf-search
-
-
-
-
-
-# 0.1.0
-
-### Added
-- added this
-- added that
-
-### Changes
-
-- changed this
-- changed that
-
-### Removed
-
-- deleted this
-- deleted that
+- Version bump only for package @visual-framework/vf-search

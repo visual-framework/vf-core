@@ -1,0 +1,70 @@
+---
+title: Setting up your development environment
+subtitle: To develop the Visual Framework your will need some free software.
+date: 2020-03-18 12:24:50
+layout: layouts/developing.njk
+order: 3
+---
+
+## Development tools
+
+First, see if you have the needed tools installed.
+
+1. Open a command line/terminal 
+    - how? [Mac](https://www.wikihow.com/Open-a-Terminal-Window-in-Mac), [Linux/Ubuntu](https://www.wikihow.com/Open-a-Terminal-Window-in-Ubuntu), [Windows 10](https://www.howtogeek.com/235101/10-ways-to-open-the-command-prompt-in-windows-10/), [VS Code integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
+1. Enter `node -v`
+1. Enter `yarn -v`
+
+If any of those steps return an error you need to install the corresponding
+software.
+
+- To install Node: go to the official [downloads page](https://nodejs.org/download/)
+- To install Yarn: Yarn require Node, [follow the install guide](https://yarnpkg.com/lang/en/docs/install/)
+
+## Development environment
+
+We have a recommended development environment for new developers:
+
+1. [Setup a GitHub.com account](https://github.com/join)
+1. Install the [GitHub Desktop git client](https://desktop.github.com/)
+1. For editing code, [install Visual Studio Code](https://code.visualstudio.com/#alt-downloads)
+    <br/>We also recommended some extensions to improve you editing experience and speed:
+    - Setup VSCode to work with [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+    - Tidy up your code: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    - Fix spelling in your HTML, CSS and JS: [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+    - Get code highlight for `.njk` files: [Nunjucks syntax definition](https://marketplace.visualstudio.com/items?itemName=ronnidc.nunjucks)
+    - Get autocompletion for your CSS tags: [HTML CSS Support](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css)
+    - Standardised editor configuration: [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+
+<div class="vf-box vf-box-theme-- vf-box- vf-box-theme--quinary">
+<h4 class=" vf-box__heading">Problems?</h4>
+<p class="vf-box__text">See the <a href="({{ '/troubleshooting' | url}})" class="vf-link">troubleshooting guide</a>.</p>
+</div>
+
+## Developing the VF Core
+
+You only need to clone [`vf-core`](https://github.com/visual-framework/vf-core) if you wish to make a pull request to create, amend or delete core components, or modify the way Sass, JS or other assets are compiled.
+
+Here's how:
+
+1. Clone `vf-core`
+    - `git clone https://github.com/visual-framework/vf-core.git`
+1. Move to the directory
+    - `cd vf-core`
+1. You probably want the develop branch (or [your new feature branch]({{ '/developing/getting-started/naming' | url }}))
+    - `git checkout develop`
+1. Install [fractal](https://github.com/frctl/fractal) You might need to use `sudo`.
+    - `yarn global add @frctl/fractal`
+1. Download all the things
+    - `yarn install`
+1. Run a dev build and open in your browser
+    - `gulp vf-dev`
+
+### Developing on Windows?
+
+The Visual Framework is primairly developed on Mac and Linux environments, but it is
+also intended to be Windows 10 compatible.
+
+- We test and support Windows 10 using [`scoop`](https://scoop.sh/)
+- We don't test using Windows Subsytem for Linux, thought it should work fine or better than native Windows
+- Windows users will also want to consult the [troubleshooting on Windows]({{ '/troubleshooting#windows' | url}})

@@ -1,0 +1,32 @@
+---
+permalink: feed.xml
+metadata:
+  filename: feed.xml
+  path: feed/feed.xml
+  url: https://visual-framework.github.io/vf-core/feed.xml
+  id: https://visual-framework.github.io/vf-core
+---
+<?xml version="1.0" encoding="utf-8"?>
+{% set siteConfig = siteConfig.siteInformation %}
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ siteConfig.title }}</title>
+  <subtitle>{{ siteConfig.short_description }}</subtitle>
+  <link href="{{ metadata.url }}" rel="self"/>
+  <link href="{{ siteConfig.url }}"/>
+  <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
+  <id>{{ metadata.id }}</id>
+  <author>
+    <name>{{ siteConfig.author }}</name>
+    <email>{{ siteConfig.email }}</email>
+  </author>
+  {%- for post in collections.posts | reverse %}
+  {% set absolutePostUrl %}{{ metadata.id }}{{ post.url }}{% endset %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}"/>
+    <updated>{{ post.date | rssDate }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+  </entry>
+  {%- endfor %}
+</feed>

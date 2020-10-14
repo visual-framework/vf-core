@@ -1,34 +1,42 @@
-# Change Log
+### 3.0.0
 
-## 2.0.1
+- updates max-width of component
+- adds 'context' for the logo
+- removes `text` as you can make use of including text with the `vf-logo`
 
-* add support for backwards compatibility with .vf-global-header 1.x's vf-global-header__inner
-* will be removed in vf-global-header 3.0
+### 2.0.2
 
-## 2.0.0
+- fixes layout issue so a logo will take the space it needs.
 
-* making a breaking change because of the HTML alterations
+### 2.0.1
 
-## 1.0.2
+- add support for backwards compatibility with .vf-global-header 1.x's vf-global-header__inner
+- will be removed in vf-global-header 3.0
 
-* makes content wrap with `flex-wrap`
-* makes use of `gap`
-* adds spacing for browsers not supporting `gap`
-* move `margin-left: auto` to the `vf-navigation--global` component (v1.2.3 of `vf-navigation`)
+### 2.0.0
 
-## 1.0.1
+- making a breaking change because of the HTML alterations
 
-* removes left and right padding so we rely on the parent for horizontal spacing for better alignment
+### 1.0.2
 
-## 1.0.0
+- makes content wrap with `flex-wrap`
+- makes use of `gap`
+- adds spacing for browsers not supporting `gap`
+- move `margin-left: auto` to the `vf-navigation--global` component (v1.2.3 of `vf-navigation`)
 
-* makes global header work on smaller screens
-* makes the layout wrap until 1024px
+### 1.0.1
 
-## 1.0.0-rc.2
+- removes left and right padding so we rely on the parent for horizontal spacing for better alignment
 
-* Removes bottom underline
+### 1.0.0
 
-## 1.0.0-alpha.3 (2019-07-25)
+- makes global header work on smaller screens
+- makes the layout wrap until 1024px
 
-* vf-global-header-dependencies ([e98d8b6](https://github.com/visual-framework/vf-core/commit/e98d8b6))
+### 1.0.0-rc.2
+
+- Removes bottom underline
+
+### 1.0.0-alpha.3
+
+- vf-global-header-dependencies ([e98d8b6](https://github.com/visual-framework/vf-core/commit/e98d8b6))

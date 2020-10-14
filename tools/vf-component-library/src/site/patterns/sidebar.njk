@@ -1,0 +1,75 @@
+---
+title: Boilerplate with sidebar
+subtitle: Use this boilerplate pattern for generic pages.
+intro: Long narrow sidebars suffer from usability issues, fortunately the VF utilises a container-based approach which allows for better "chunking" of information and sidebars that only stretch for the length of a portion of a page, which we'll demonstrate here.
+section: patterns
+date: 2018-08-22 12:24:50
+tags: posts
+layout: layouts/boilerplate.njk
+---
+<!DOCTYPE html>
+<html lang="en" class="vf-no-js">
+<head>
+  {% render "@vf-no-js" %}
+  <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+
+  {% render "@vf-favicon" %}
+  {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "Barcelona", "meta_what": "research", "meta_active": "what"} %}
+
+  <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+</head>
+<body class="vf-body">
+  <header class="vf-header">
+    {% render "@vf-global-header" %}
+  </header>
+  {% include "./templates/breadcrumbs-boilerplate.njk" %}
+
+  {% render '@vf-intro', {
+    "vf_intro_heading": title,
+    "vf_intro_lede": subtitle,
+    "vf_intro_text": [
+      intro
+    ],
+    "vf_intro_badge": {
+      "style": [ "phases" ],
+      "text": "beta",
+      "theme": "primary",
+      "badge_href": "JavaScript:Void(0);"
+    }
+  } %}
+
+  <section class="embl-grid embl-grid--has-sidebar">
+
+    <div>
+      <!-- you can include section headers too -->
+      <!--
+      {%- render '@vf-section-header--default', {
+        "section_title": "A longer content area"
+      } -%}
+      -->
+    </div>
+
+    <div class="vf-content">
+      {% render '@vf-content' %}
+    </div>
+
+    <div class="">
+      {% render '@vf-box', {
+        "box": {
+          "box_heading": "Did You Know?",
+          "box_text": "Here's a sidebar specific to a conainer.",
+          "box_modifier": "vf-box--normal vf-box-theme--primary"
+        }
+      } %}
+    </div>
+
+  </section>
+
+  {% render "@vf-footer" %}
+  {% include "./templates/notice-boilerplate.njk" %}
+  {% include "footer.njk" %}
+</body>
+</html>

@@ -42,7 +42,7 @@
   {%- if layout == block %} vf-profile--block{%- else %} vf-profile--inline{%- endif -%}
   ">
   {% if hide_profile__image == true %}{% else %}
-  <img class="vf-profile__image" src="{{ profile__image }}" alt="{{ profile__image_alt }}">
+  <img class="vf-profile__image" src="{{ profile__image }}" alt="{{ profile__image_alt }}" loading="lazy">
   {% endif %}
 
   {% if hide_profile__title == true %}{% else %}
@@ -71,7 +71,7 @@
     {% if hide_profile__emails == true %}{% else %}
       {% for item in profile__emails %}
         <p class="vf-profile__email {% if loop.last %}| vf-u-last-item {% endif %}">
-          <a href="{{ item.profile__email_address }}" class="vf-profile__link vf-profile__link--secondary">
+          <a href="mailto:{{- item.profile__email_address -}}" class="vf-profile__link vf-profile__link--secondary">
             {{- item.profile__email_address -}}
           </a>
         </p>
@@ -83,7 +83,7 @@
     {% if hide_profile__phones == true %}{% else %}
       {% for item in profile__phones %}
         <p class="vf-profile__phone{% if item.mobile == true %} vf-profile__phone--mobile{% endif %}{% if loop.last %} | vf-u-last-item {% endif %}">
-          <a href="{{ item.profile__phone_number }}" class="vf-profile__link vf-profile__link--secondary">
+          <a href="tel:{{- item.profile__phone_number -}}" class="vf-profile__link vf-profile__link--secondary">
             {{- item.profile__phone_number -}}
           </a>
         </p>

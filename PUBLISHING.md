@@ -1,32 +1,16 @@
 # PUBLISHING
 
-A reference guide on how to do releases of `vf-core` and components. The two are done independently.
+A reference guide on how to do releases of the VF [monorepo](https://www.toptal.com/front-end/guide-to-monorepos)'s tools and components.
 
-## VF Core
+## Notes
 
-This is the parent project. It is the engine that assembles the VF components into a system
-and allows for the creation of CSS, JS and usable Nunjucks templates.
+- We publish to npm with [Lerna](https://github.com/lerna/lerna#about)
+- [Versions in `vf-core`](https://visual-framework.github.io/vf-core/developing/guidelines/versioning/)
+- [Updating component versions](https://visual-framework.github.io/vf-core/developing/components/updating-a-component/)
 
-See also: [Guide on versions in `vf-core`](https://visual-framework.github.io/vf-welcome/developing/guidelines/versioning/)
+## Release workflow
 
-1. select the `develop` branch
-    - reminder: [we don't use `master`](https://github.com/visual-framework/vf-core/blob/master/README.md)
-1. update the version
-    - https://docs.npmjs.com/cli/version
-    - `npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]`
-1. publish to npm
-    - `npm publish`
-1. tag a release on GitHub
-    - https://github.com/visual-framework/vf-core/releases
-
-## Components inside `vf-core`
-
-Components are contained in a [monorepo](https://gomonorepo.org) inside of the `vf-core` project. They are published
-to npm with [Lerna](https://github.com/lerna/lerna#about).
-
-See also: [Guide on updating a component versions](https://visual-framework.github.io/vf-welcome/developing/components/updating-a-component/)
-
-### Component pre-release workflow
+### 1. Component pre-release workflow
 
 1. select the `develop` branch
     - reminder: [we don't use `master`](https://github.com/visual-framework/vf-core/blob/master/README.md)
@@ -34,17 +18,33 @@ See also: [Guide on updating a component versions](https://visual-framework.gith
     - `lerna changed`
 1. test publish
     - `yarn run lerna:test`
+
+### 2. Component release workflow
+
 1. publish to npm
     - `yarn run lerna:publish`
 1. commit and push changes to the `develop` branch
     - commit message in a format of: `Component release YYYYMMDD-01`
 1. add a tag
-    - `git tag -a components.YYYYMMDD-01 -m 'Snapshot of components for lerna'`
-    - Why like this? We do not add tags per individual component version, Lerna needs a named tag to see what has changed. This way we get one tag per release "bundle" avoiding tag spamming in the release history.
+    - see last tag `git describe --abbrev=0 --tags`
+    - add a semantic versioned tag `git tag -a v2.2.X -m 'Release of precompiled CSS, JS, assets'`
+    - Why like this?
+       - We do not add tags per individual component version, Lerna needs a named tag to see what has changed. This way we get one tag per release "bundle" avoiding tag spamming in the release history.
+       - Trigger a deploy to the CDN (i.e. `v2.2.0`) https://assets.emblstatic.net/vf/v2.1.0/css/styles.css
 1. push the tag
     - `git push origin --tags`
 
-### Appendix of useful Lerna commands
+### 3. Component post-release workflow
+
+1. generate an update
+    - `yarn run releasenotes`
+    - format and review the newly made file at `tools/vf-component-library/src/site/updates`
+1. commit and push changes to the `develop` branch
+1. add release notes to the tag and link to the new blog post
+    - https://github.com/visual-framework/vf-core/releases
+    - https://visual-framework.github.io/vf-core/updates/
+
+## Appendix of useful Lerna commands
 
 - `lerna ls` list all packages known to lerna
 - `lerna ls --since af04cb2a` list all changed packages since a commit (sadly not combinable with lerna publish)

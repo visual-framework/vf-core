@@ -1,11 +1,17 @@
+{% if context %}
+
+{% set modifier = context.modifier %}
+{% set vf_cards = context.vf_cards %}
+{% set container_section__header = context.container_section__header %}
+{% set cardtype = context.variant %}
+
+{% endif %}
+
 <section class="vf-card-container{% if modifier %} | {{modifier}}{% endif %}">
   <div class="vf-card-container__inner">
-    {% include '@vf-section-header' %}
-
-    {% asyncEach card in vf_cards %}
-       {# prefix cardtype #}
-       {% set card_type = '@vf-card--'+card.card_type %}
-       {% render card_type, { 'context': card } %}
-    {% endeach %}
+    {% render '@vf-section-header', { 'context': container_section__header } %}
+    {% for card in vf_cards %}
+       {% render '@vf-card', { 'context': card } %}
+    {% endfor %}
   </div>
 </section>

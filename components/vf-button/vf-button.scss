@@ -20,7 +20,10 @@ $button-hover-fix: -5px -5px rgba(0, 0, 0, 0);
   @include set-type(text-button--1);
 
   align-self: center;
+  /* stylelint-disable */
+  -webkit-appearance: none;
   appearance: none;
+  /* stylelint-enable */
   backface-visibility: hidden;
   background-color: set-ui-color(vf-ui-color--black);
   background-color: var(--vf-button-background-color, var(--vf-button__color__background--default));
@@ -48,7 +51,6 @@ $button-hover-fix: -5px -5px rgba(0, 0, 0, 0);
   &:focus,
   &:hover {
     box-shadow: 4px 4px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), 2px 2px 4px rgba(set-ui-color(vf-ui-color--black), .25), $button-hover-fix;
-    color: set-ui-color(vf-ui-color--white);
     transform: translate(4px, 4px);
     transition: all linear 125ms;
   }
@@ -80,6 +82,8 @@ a.vf-button {
 .vf-button--secondary {
   --vf-button-border-color: var(--vf-color--green);
   --vf-button-background-color: var(--vf-color--green);
+
+  --vf-button-text-color: var(--vf-ui-color--black);
 
   --vf-button-shadow-border-color: var(--vf-color--green--dark);
   --vf-button-shadow-background-color: var(--vf-color--green--dark);

@@ -1,18 +1,21 @@
-# Change Log
+### 1.0.0
 
-## 1.0.0-beta.1
+- Check a backup URL for cases of major outages: https://embl-communications.github.io/embl-notifcations-fallback/notifications.js
+  - https://github.com/visual-framework/vf-core/issues/1150
 
-* Use `.vf-banner__link`
+### 1.0.0-beta.1
 
-## 1.0.0-alpha.2
+- Use `.vf-banner__link`
 
-* Improved formatting support and conditional logic https://github.com/visual-framework/vf-core/pull/817
-* Notification cookies and memory options
+### 1.0.0-alpha.2
 
-## 1.0.0-alpha.1 (2020-03-20)
+- Improved formatting support and conditional logic https://github.com/visual-framework/vf-core/pull/817
+- Notification cookies and memory options
 
-* Documentation and minor text formatting improvemetns
+### 1.0.0-alpha.1 (2020-03-20)
 
-## 1.0.0-alpha.0
+- Documentation and minor text formatting improvemetns
 
-* Initial release
+### 1.0.0-alpha.0
+
+- Initial release

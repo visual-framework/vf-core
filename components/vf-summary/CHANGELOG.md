@@ -1,26 +1,36 @@
-# Change Log
+### 1.3.1
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+- adds 'grid-template-areas' CSS for `--has-image` variant so you can use it with a `-thumbnail` class.
 
-# 1.0.4
+### 1.3.0
 
-* A fix for Chrome as it displays avatar defaults as a squished circle. Replaces 100% to auto within heigh rule.
+- adds loading="lazy" to the img element for better performance
 
-# 1.0.3
+### 1.2.0
 
-* fixes the size of avatars to be consistnet.
-* adds word-break: break-all for long emails.
+- makes theme variant naming and decisions consistent.
 
-# 1.0.2
+### 1.1.0
 
-* adds vf-summary--event, vf-summary--easy
+- Deprecated the `vf-summary--profile` component, you should now use `vf-profile`
 
+### 1.0.4
 
-# 1.0.1 (2020-01-24)
+- A fix for Chrome as it displays avatar defaults as a squished circle. Replaces 100% to auto within heigh rule.
 
-* Job summary uses link as outline
+### 1.0.3
 
-# 1.0.0 (2019-12-17)
+- fixes the size of avatars to be consistnet.
+- adds word-break: break-all for long emails.
 
-* Initial stable release
+### 1.0.2
+
+- adds vf-summary--event, vf-summary--easy
+
+### 1.0.1
+
+- Job summary uses link as outline
+
+### 1.0.0
+
+- Initial stable release

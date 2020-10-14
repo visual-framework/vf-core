@@ -1,0 +1,475 @@
+---
+title: Integrating with existing sites and CSS, JS
+subtitle: An example that doesn't use the Visual Framework as the main visual tool.
+section: patterns
+date: 2018-08-22 12:24:50
+tags: posts
+layout: layouts/boilerplate.njk
+---
+<!-- you can find more examples at https://github.com/visual-framework/vf-sample-integrations -->
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>UniProt</title>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link href="https://www.uniprot.org/" rel="home" />
+  <link href="https://creativecommons.org/licenses/by/4.0/" rel="license" />
+  <link type="image/vnd.microsoft.icon" href="https://www.uniprot.org/favicon.ico" rel="shortcut icon" />
+  <link href="https://www.uniprot.org/uniprot.min.css2019_01" type="text/css" rel="stylesheet" />
+  <script src="https://www.uniprot.org/scripts/frontier/d3/d3.v3.min.js" type="text/javascript"></script>
+  <script src="https://www.uniprot.org/js-compr.js2019_01" type="text/javascript"></script>
+  <script type="text/javascript">
+    uniprot.namespace = 'uniprot';
+    uniprot.releasedate = '2019_01';
+  </script>
+</head>
+<body xmlns:up="http://purl.uniprot.org/core/" class="namespace-homepage" typeof="schema:WebPage"><span
+    id="evidenceToolTip" style="display:none">&#xd;
+    &lt;p>An evidence describes the source of an annotation, e.g. an experiment that has been published in the
+    scientific literature, an orthologous protein, a record from another database, etc.&lt;/p>&#xd;
+    &lt;p>&lt;a href="https://www.uniprot.org/manual/evidences">More...&lt;/a>&lt;/p>&#xd;
+  </span>
+  <div id="masthead-container">
+    <div class="masthead" id="local-masthead">
+      <div id="local-title"><a id="logo" accesskey="1" href="https://www.uniprot.org/"><img alt=""
+            src="https://www.uniprot.org/images/logos/Logo_medium.png" title="UniProt home" /></a></div>
+      <div class="namespace-uniprot" id="local-search">
+        <form method="get" action="/uniprot" id="search-form">
+          <div id="namespace-background">
+            <div class="searchBoxIndicator" style="display:none" id="searchBoxIndicator1"> </div>
+            <div onclick="location.href=&apos;/help/text-search&apos;;" class="searchBoxIndicator" style="display:none"
+              id="searchBoxIndicator2"> </div>
+            <div onclick="location.href=&apos;/help/advanced_search &apos;;" class="searchBoxIndicator"
+              style="display:none" id="searchBoxIndicator3"> </div><a class="namespace-select" id="select-namespace"
+              onclick="return false;" href=""><span class="caret_white" id="selected-namespace">UniProtKB</span></a>
+            <ul style="display:none" class="select-namespace-options"><a href="#" class="closeBox"
+                id="closeNamespaceOptions">x</a>
+              <li>
+                <ul>
+                  <li class="fixedHeight_namespaces">
+                    <h3 class="namespace_uniprot"><a class="namespace-option uniprot" href="#"
+                        id="uniprot">UniProtKB</a></h3>
+                    <p>Protein knowledgebase</p>
+                  </li>
+                  <li class="fixedHeight_namespaces">
+                    <h3 class="namespace_uniparc"><a class="namespace-option uniparc" href="#" id="uniparc">UniParc</a>
+                    </h3>
+                    <p>Sequence archive</p>
+                  </li>
+                  <li class="fixedHeight_namespaces">
+                    <h3 class="namespace_help"><a class="namespace-option help" href="#" id="help">Help</a></h3>
+                    <p>Help pages, FAQs, UniProtKB manual, documents, news archive and Biocuration projects.</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <ul>
+                  <li class="fixedHeight_namespaces">
+                    <h3 class="namespace_uniref"><a class="namespace-option uniref" href="#" id="uniref">UniRef</a></h3>
+                    <p>Sequence clusters</p>
+                  </li>
+                  <li class="fixedHeight_namespaces">
+                    <h3 class="namespace_proteomes"><a class="namespace-option proteomes" href="#"
+                        id="proteomes">Proteomes</a></h3>
+                    <p>Protein sets from fully sequenced genomes</p>
+                  </li>
+                  <li class="fixedHeight_namespaces">
+                    <h3 class="namespace_unirule">Annotation systems</h3>
+                    <p class="supportingLeadingText">Systems used to automatically annotate proteins with high accuracy:
+                    </p>
+                    <ul class="supportingDataOptions">
+                      <li><a class="namespace-option supporting" href="#" id="unirule">UniRule (Expertly curated
+                          rules)</a></li>
+                      <li><a class="namespace-option supporting" href="#" id="saas">SAAS (System generated rules)</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <ul>
+                  <li class="fixedHeight_namespaces">
+                    <h3 class="supporting"><span>Supporting data</span></h3>
+                    <p class="supportingLeadingText">Select one of the options below to target your search:</p>
+                    <ul class="supportingDataOptions">
+                      <li><a class="namespace-option supporting" href="#" id="citations">Literature citations</a></li>
+                      <li><a class="namespace-option supporting" href="#" id="taxonomy">Taxonomy</a></li>
+                      <li><a class="namespace-option supporting" href="#" id="keywords">Keywords</a></li>
+                      <li><a class="namespace-option supporting" href="#" id="locations">Subcellular locations</a></li>
+                      <li><a class="namespace-option supporting" href="#" id="database">Cross-referenced databases</a>
+                      </li>
+                      <li><a class="namespace-option supporting" href="#" id="diseases">Human diseases</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul><input value="" id="topQuery" type="hidden" />
+            <div id="queryContainer"><input autocomplete="off" autofocus="autofocus" id="query" value="" accesskey="4"
+                name="query" type="search" /></div><a class="caret_grey" href="#"
+              id="advanced-search-toggle">Advanced</a><input value="score" name="sort" type="hidden" /><a
+              id="search-button" title="Search" data-icon="1" class="icon icon-functional button">Search</a>
+            <div style="display:none" class="advSearch" id="query-builder-container"><a href="#" class="closeBox"
+                id="closeAdvanceSearch">x</a>
+              <div id="advanced-search"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="nav">
+        <ul id="local-nav">
+          <li class="mobileHomeLink"><a href="https://www.uniprot.org/">Home</a></li>
+          <li class="first"><a class="tooltipped" title="Find regions of local similarity between sequences"
+              href="https://www.uniprot.org/blast" id="top-blast-link">BLAST</a></li>
+          <li><a class="tooltipped" title="Align two or more protein sequences with the Clustal Omega program"
+              href="https://www.uniprot.org/align" accesskey="9" id="top-align-link">Align</a></li>
+          <li class="last"><a class="tooltipped"
+              title="Submit a list of identifiers to retrieve the corresponding UniProt entries, or to map them from or to an external database"
+              rel="help" href="https://www.uniprot.org/uploadlists" id="upload-lists-nav">Retrieve/ID mapping</a></li>
+          <li class="last"><a class="tooltipped"
+              title="Submit a list of peptides to find UniProt sequences containing them" rel="help"
+              href="https://www.uniprot.org/peptidesearch" id="peptidesearch-lists-nav">Peptide search</a></li>
+          <li class="functional last"><a accesskey="9" href="https://www.uniprot.org/contact" id="contact">Contact</a>
+          </li>
+          <li class="functional"><a rel="help" href="https://www.uniprot.org/help/" id="help">Help</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="warn" id="browserwarning">You are using a version of browser that may not display all the features of this
+    website. Please consider upgrading <a href="https://www.uniprot.org/help/browser_support">your browser</a>.</div>
+  <main class="homepage" property="schema:mainEntity" resource="" typeof="" id="content">
+    <section id="page-header">
+      <div id="top-right-actions">
+        <div style="display:none" id="basket"><a href="#" data-icon="b"
+            class="closed basket-empty icon icon-static caret_white button" id="basket-list">Basket <span
+              style="display:none" id="basket-count">0</span></a></div>
+        <div style="z-index: 3;display:none" id="basket-contents">
+          <div id="closeBasket"><span class="basketText">(max 400 entries)</span><a class="closeBox" href="#">x</a>
+          </div>
+          <div id="emptyBasketContent">
+            <h3><span class="context-help tooltipped-click">
+                Your basket is currently empty. <sup> i</sup><span style="display:none"><span class="toolTipContent">
+                    &lt;p>When browsing through different UniProt proteins, you can use the ‘basket’ to save them, so
+                    that you can back to find or analyse them later.&lt;p>&lt;a href='/help/basket'
+                    target='_top'>More...&lt;/a>&lt;/p></span></span></span></h3>
+            <p>Select item(s) and click on "Add to basket" to create your own collection here<br /> (400 entries
+              max)<br /></p>
+            <div id="emptyBasketContentHelp"></div>
+          </div>
+          <div style="display:none" id="loadingBasketContent"></div>
+          <div id="filledBasketContents">
+            <ul id="basketTabs" class="tabs">
+              <li><a id="uniprotBasketTab" class="uniprot tab basketTab">UniProtKB (<span
+                    class="uniprot-basket-count">0</span>)</a></li>
+              <li><a id="unirefBasketTab" class="uniref tab basketTab">UniRef (<span
+                    class="uniref-basket-count">0</span>)</a></li>
+              <li><a id="uniparcBasketTab" class="uniparc tab basketTab">UniParc (<span
+                    class="uniparc-basket-count">0</span>)</a></li>
+            </ul>
+            <div class="tabsContent" style="display: none" id="basket-uniprot"></div>
+            <div class="tabsContent" style="display: none" id="basket-uniref"></div>
+            <div class="tabsContent" style="display: none" id="basket-uniparc"></div>
+          </div>
+          <div id="basket-actions">
+            <ul class="action-buttons-grouped">
+              <li><a title="Select two or more entries and click here to align them" data-icon="i"
+                  class="button icon icon-functional align disabled" href="#" id="basket-align-button">Align</a></li>
+              <li><a data-icon="t" title="Select an entry and click here to run a BLAST search on it"
+                  class="button icon-functional icon blast disabled" href="#" id="basket-blast-button">BLAST</a></li>
+              <li><a title="Map ids to other databases" class="button icon-functional disabled"
+                  id="basket-map-button">Map Ids</a></li>
+              <li><a data-icon="=" title="Download results" class="button icon icon-functional download disabled"
+                  href="#" id="basket-download-button">Download</a></li>
+              <li style="float: right;"><a title="Full View" class="button fullView disabled"
+                  id="basket-view-button">Full View</a></li>
+              <li style="float: right;"><a title="Remove Selected entries" class="button remove disabled"
+                  id="basket-remove-button">Remove</a></li>
+              <li style="float: right"><a title="Clear basket" class="button clear disabled"
+                  id="basket-clear-button">Clear</a></li>
+            </ul>
+          </div>
+        </div>
+        <form action="/align/" method="post" id="basket-alignForm"><input value="no" name="landingPage"
+            type="hidden" /><input value="clustalo" name="program" type="hidden" /><input value="yes" name="redirect"
+            type="hidden" /><input value="" name="alignQuery" id="basket-alignQuery" type="hidden" /></form>
+        <form action="/blast/" method="post" id="basket-blastForm"><input value="yes" name="redirect"
+            type="hidden" /><input value="no" name="landingPage" type="hidden" /><input value="uniprotkb" name="dataset"
+            type="hidden" /><input value="10" name="threshold" type="hidden" /><input value="" name="matrix"
+            type="hidden" /><input value="false" name="filter" type="hidden" /><input value="true" name="gapped"
+            type="hidden" /><input value="250" name="numal" type="hidden" /><input value="" id="basket-blastQuery"
+            name="blastQuery" type="hidden" /></form>
+        <form action="" method="post" id="basket-downloadForm"><input value="" name="query" type="hidden" /></form>
+      </div>
+    </section>
+    <div id="mission-statement">
+      The mission of <a href="https://www.uniprot.org/help/about">UniProt</a> is to provide
+      the scientific community with a comprehensive, high-quality and
+      freely accessible resource of protein sequence and functional
+      information.
+    </div>
+    <nav id="browse-nav-container"><a id="uniprot-browse">
+        <div class="uniprot-browse-box">
+          <h3>UniProtKB</h3>
+          <div class="uniprot-browse-shortdesc">UniProt Knowledgebase</div>
+        </div>
+        <div id="inner-browse-container">
+          <div style="z-index:10" class="uniprot-browse-box-inner" id="swissprot-browse">
+            <h5>Swiss-Prot (559,077)</h5><span data-icon="s" class="icon-uniprot reviewed-icon">Manually annotated and
+              reviewed.</span>
+            <div class="browse-description">Records with information extracted from literature and curator-evaluated
+              computational analysis.</div>
+          </div>
+          <div style="z-index:10" class="uniprot-browse-box-inner" id="trembl-browse">
+            <h5>TrEMBL (139,694,261)</h5><span data-icon="t" class="icon-uniprot unreviewed-icon">Automatically
+              annotated and not reviewed.</span>
+            <div class="browse-description">Records that await full manual annotation.</div>
+          </div>
+        </div>
+      </a><a href="https://www.uniprot.org/uniref" class="browse-box" id="uniref-browse">
+        <h3>UniRef</h3>
+        <div class="browse-shortdesc">Sequence clusters</div>
+        <div class="browse-icon body-icon-conceptual">y</div>
+        <div class="browse-description">The UniProt Reference Clusters (UniRef) provide clustered sets of sequences from
+          the UniProt Knowledgebase (including isoforms) and selected UniParc records.</div>
+      </a><a href="https://www.uniprot.org/uniparc" class="browse-box" id="uniparc-browse">
+        <h3>UniParc</h3>
+        <div class="browse-shortdesc">Sequence archive</div>
+        <div class="browse-icon body-icon-generic">D</div>
+        <div class="browse-description">UniParc is a comprehensive and non-redundant database that contains most of the
+          publicly available protein sequences in the world.</div>
+      </a><a href="https://www.uniprot.org/proteomes" class="browse-box" id="proteomes-browse">
+        <h3>Proteomes</h3>
+        <div class="browse-icon body-icon-species">FHL</div>
+        <div class="browse-description">A proteome is the set of proteins thought to be expressed by an organism.
+          UniProt provides proteomes for species with completely sequenced genomes.</div>
+      </a>
+      <div class="" id="supporting-data-browse">
+        <h3>Supporting data</h3>
+      </div>
+      <div id="supporting-data"><a href="https://www.uniprot.org/citations" class="supporting-browse-box">
+          Literature citations
+          <div class="browse-icon body-icon-conceptual">l</div></a><a href="https://www.uniprot.org/taxonomy"
+          class="supporting-browse-box">
+          Taxonomy
+          <div class="browse-icon body-icon-functional">h</div></a><a href="https://www.uniprot.org/locations"
+          class="supporting-browse-box">
+          Subcellular locations
+          <div class="browse-icon body-icon-uniprot">c</div></a><a href="https://www.uniprot.org/database"
+          class="supporting-browse-box">
+          Cross-ref. databases
+          <div class="browse-icon body-icon-uniprot">x</div></a><a href="https://www.uniprot.org/diseases"
+          class="supporting-browse-box">
+          Diseases
+          <div class="browse-icon body-icon-conceptual">d</div></a><a href="https://www.uniprot.org/keywords"
+          class="supporting-browse-box">
+          Keywords
+          <div class="browse-icon body-icon-functional">0</div></a></div>
+    </nav>
+    <section class="shortcuts transparent" id="news-container">
+      <div id="news">
+        <h3 class="pane-title"><a href="https://www.uniprot.org/news/?sort=created" class="newsTitle">News</a><a
+            class="icon-right socialmedia lastshortcut icon_rss" title="News Feed" target="_blank"
+            href="https://www.uniprot.org/news/?format=rss&amp;sort=created" /><a
+            class="icon-right socialmedia icon_facebook" title="Facebook Logo" target="_blank"
+            href="https://www.facebook.com/uniprot.org" /><a class="icon-right socialmedia icon_twitter" title="Twitter"
+            target="_blank" href="https://twitter.com/uniprot" /><a class="icon-right socialmedia icon_blog"
+            title="Blog" target="_blank" href="https://insideuniprot.blogspot.com" /></h3>
+        <div id="newsection">
+          <ul>
+            <li>
+              <p><a href="https://www.uniprot.org/changes">Forthcoming changes</a><br />Planned changes for UniProt</p>
+            </li>
+            <li>
+              <p><a href="https://www.uniprot.org/news/2019/01/16/release">UniProt release 2019_01</a><br />
+                Engaging and disengaging: CRISPR rings | Cross-references to jPOST
+              </p>
+            </li>
+            <li>
+              <p><a href="https://www.uniprot.org/news/2018/12/05/release">UniProt release 2018_11</a><br />
+                Enhanced enzyme annotation in UniProtKB using Rhea – integrating biology and chemistry
+              </p>
+            </li>
+            <li>
+              <p><a href="https://www.uniprot.org/news/2018/11/07/release">UniProt release 2018_10</a><br />
+                You’re not coming in!
+              </p>
+            </li>
+            <li>
+              <p><a href="https://www.uniprot.org/news/2018/10/10/release">UniProt release 2018_09</a><br />
+                Tubulin code: a long sought-after player identified
+              </p>
+            </li>
+          </ul>
+        </div><br clear="all" /><a href="https://www.uniprot.org/news?sort=created" data-icon=";"
+          class="icon icon-generic newsArchiveLink">News archive</a>
+      </div>
+    </section>
+    <section id="getting_started">
+      <h3>Getting started <span style="float:right;"><a target="_blank"
+            href="https://www.youtube.com/user/uniprotvideos"
+            title="Open our video channel on YouTube to see all our help videos"><img
+              src="https://www.uniprot.org/images/youtube.png" /></a></span></h3>
+      <ul>
+        <li>
+          <p><a data-icon="1" class="icon icon-functional" id="textSearch" href="">Text search</a><br />Our basic text search allows you to search all the resources available</p>
+        </li>
+        <li>
+          <p><a data-icon="t" class="icon icon-functional" href="https://www.uniprot.org/blast">BLAST</a><br />Find regions of similarity between your sequences</p>
+        </li>
+        <li>
+          <p><a data-icon="i" class="icon icon-functional" href="https://www.uniprot.org/align">Sequence alignments</a><br />Align two or more protein sequences using the Clustal Omega program</p>
+        </li>
+        <li>
+          <p><a data-icon="_" class="icon icon-functional" href="https://www.uniprot.org/uploadlists">Retrieve/ID mapping</a><br />Batch search with UniProt IDs or convert them to another type of database ID (or vice versa)</p>
+        </li>
+        <li>
+          <p><a data-icon="_" class="icon icon-functional" href="https://www.uniprot.org/peptidesearch">Peptide search</a><br />Find sequences that exactly match a query peptide sequence</p>
+        </li>
+      </ul>
+    </section>
+    <section id="latest_release">
+      <h3>UniProt data</h3>
+      <ul>
+        <li id="hp-download">
+          <p><a data-icon="=" class="icon icon-functional" href="https://www.uniprot.org/downloads">Download latest release</a><br />Get the UniProt data
+          </p>
+        </li>
+        <li>
+          <p><a data-icon="z" class="icon icon-functional" id="hp-statistics" href="https://www.uniprot.org/statistics/?sort=published">Statistics</a><br />View Swiss-Prot and TrEMBL statistics
+          </p>
+        </li>
+        <li>
+          <p><a data-icon="4" class="icon icon-functional" id="hp-changes" href="https://www.uniprot.org/help/publications">How to cite us</a><br />The UniProt Consortium
+          </p>
+        </li>
+        <li>
+          <p><a data-icon="D" class="icon icon-functional" href="https://www.uniprot.org/help/submissions">Submit your data</a><br />Submit your sequences and annotation updates
+          </p>
+        </li>
+        <li>
+          <p><a data-icon="D" class="icon icon-static" href="https://www.uniprot.org/help/programmatic_access">Programmatic access</a><br />Query UniProt data using APIs providing REST, SPARQL and Java services
+          </p>
+        </li>
+      </ul>
+    </section>
+    <section id="spotlight">
+      <!-- BEGIN: VF 2.0 sample -->
+{% render '@vf-tabs--default', {
+  "component-type": "block",
+  "tabs": [
+    {
+      "tab_title": "VF 2.0 tabs",
+      "tab_number": 1,
+      "tab_heading": "",
+      "tab_content": "Here we show how we can add a VF2.0 component without breaking the parent site's CSS cascade or JS."
+    },
+    {
+      "tab_title": "Another tab",
+      "tab_number": 2,
+      "tab_heading": "Section 2",
+      "tab_content": "Nullam at diam nec arcu suscipit auctor non a erat. Sed et magna semper, eleifend magna non, facilisis nisl. Proin et est et lorem dictum finibus ut nec turpis. Aenean nisi tortor, euismod a mauris a, mattis scelerisque tortor. Sed dolor risus, varius a nibh id, condimentum lacinia est. In lacinia cursus odio a aliquam. Curabitur tortor magna, laoreet ut rhoncus at, sodales consequat tellus."
+    }
+  ]
+} %}
+      <!-- END: VF 2.0 sample -->
+    </section>
+  </main>
+  <footer id="page-footer">
+    <section>
+      <h5>Tools</h5>
+      <ul>
+        <li><a href="https://www.uniprot.org/blast">BLAST</a></li>
+        <li><a href="https://www.uniprot.org/align">Align</a></li>
+        <li><a href="https://www.uniprot.org/uploadlists">Retrieve/ID mapping</a></li>
+        <li><a href="https://www.uniprot.org/peptidesearch">Peptide search</a></li>
+      </ul>
+    </section>
+    <section>
+      <h5>Core data</h5>
+      <ul>
+        <li><a href="https://www.uniprot.org/uniprot">Protein knowledgebase (UniProtKB)</a></li>
+        <li><a href="https://www.uniprot.org/uniref">Sequence clusters (UniRef)</a></li>
+        <li><a href="https://www.uniprot.org/uniparc">Sequence archive (UniParc)</a></li>
+        <li><a href="https://www.uniprot.org/proteomes">Proteomes</a></li>
+      </ul>
+    </section>
+    <section>
+      <h5>Supporting data</h5>
+      <ul>
+        <li><a href="https://www.uniprot.org/citations">Literature citations</a></li>
+        <li><a href="https://www.uniprot.org/taxonomy">Taxonomy</a></li>
+        <li><a href="https://www.uniprot.org/keywords">Keywords</a></li>
+        <li><a href="https://www.uniprot.org/locations">Subcellular locations</a></li>
+        <li><a href="https://www.uniprot.org/database">Cross-referenced databases</a></li>
+        <li><a href="https://www.uniprot.org/diseases">Diseases</a></li>
+      </ul>
+    </section>
+    <section>
+      <h5>Information</h5>
+      <ul>
+        <li><a href="https://www.uniprot.org/help/about">About UniProt</a></li>
+        <li><a href="https://www.uniprot.org/help">Help</a></li>
+        <li><a href="https://www.uniprot.org/help/?fil=section:faq">FAQ</a></li>
+        <li><a href="https://www.uniprot.org/help/?fil=section:manual">UniProtKB manual</a></li>
+        <li><a href="https://www.uniprot.org/help/technical">Technical corner</a></li>
+        <li><a href="https://www.uniprot.org/help/?query=*&amp;fil=section:biocuration">Expert biocuration</a></li>
+      </ul>
+    </section>
+    <section class="small">
+      <div class="uniprotlogo"><img src="https://www.uniprot.org/images/logos/uniprot-rgb-optimized.svg" /></div>
+      <span>&copy; 2002 &ndash;
+        <span property="schema:copyrightYear">2019</span>
+        <a accesskey="9" href="https://www.uniprot.org/help/about">UniProt Consortium</a> | <a
+          href="https://www.uniprot.org/help/license">License &amp; Disclaimer</a> | <a
+          href="https://www.uniprot.org/help/privacy">Privacy Notice</a></span>
+      <div resource="/help/about#UniProt" id="logos" typeof="schema:NGO" property="schema:creator"><span
+          resource="/help/about#EBI" typeof="schema:Organization" property="schema:member"><span class="hidden"
+            property="schema:name">European Bioinformatics Institute</span><a href="https://www.ebi.ac.uk/" class="ebi"
+            property="schema:url"></a></span><span resource="/help/about#PIR" typeof="schema:Organization"
+          property="schema:member"><span class="hidden" property="schema:name">Protein Information Resource</span><a
+            href="http://pir.georgetown.edu/" class="pir" property="schema:url"></a></span><span
+          resource="/help/about#SIB" typeof="schema:Organization" property="schema:member"><span class="hidden"
+            property="schema:name">SIB Swiss Institute of Bioinformatics</span><a href="https://www.sib.swiss/"
+            class="sib" property="schema:url"></a></span></div>
+    </section>
+  </footer>
+  <div id="elixir-ribbon"><a href="https://www.elixir-europe.org/platforms/data/core-data-resources"><img height="64px" width="64px" id="elixer-cdr-logo" src="https://www.uniprot.org/images/elixir-cdr.gif" /> <h5><span class="elixir-banner-name">UniProt is an ELIXIR core data resource</span></h5></a></div>
+  <script src="https://www.uniprot.org/scripts/tippy.all.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    (function () {
+      uniprot.isInternal = false;
+      var _scripts = ["common-bundle.js"];
+      if ("ie" === directory) {
+        _scripts.push("node-bundle.js");
+      }
+      uniprot.appendFn(_scripts);
+    })();
+    uniprot.appendFn(["home-bundle.js"]);
+  </script>
+
+  <!-- BEGIN: VF 2.0 sample -->
+  <!-- Data protection banner -->
+  <link rel="import"
+    href="https://www.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=581&pattern=node-body&amp;source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+  {# <link rel="stylesheet" media="all" href="https://dev.assets.emblstatic.net/vf/v2.0.0-alpha.5/components/raw/vf-banner/vf-banner.css"> #}
+
+  <!-- Big note to show to visitors that this uses VF 2.0 -->
+  <div class="vf-banner vf-banner--fixed vf-banner--top vf-banner--phase"
+  data-vf-js-banner
+  data-vf-js-banner-state="dismissible"
+  data-vf-js-banner-button-text="Close"
+  data-vf-js-banner-button-theme="primary">
+    <div class="vf-banner__content" data-vf-js-banner-text>
+      <p class="vf-banner__text">Here we show how we can add VF2.0 components without breaking the parent site's CSS cascade or JS. Note also the VF 2.0 tabs in the bottom right.</p>
+    </div>
+  </div>
+
+  <!-- VF 2.0 CSS, JS -->
+  <script src="https://dev.assets.emblstatic.net/vf/v2.0.0-alpha.5/scripts/scripts.js"></script>
+  <link rel="stylesheet" media="all" href="https://assets.emblstatic.net/vf/v2.2.0/css/styles.css">
+
+  <!-- END: VF 2.0 sample -->
+</body>
+</html>

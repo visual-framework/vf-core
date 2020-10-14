@@ -13,7 +13,7 @@
 
 .vf-banner {
   box-sizing: border-box;
-  padding: .75rem;
+  padding: .75rem 0;
 
   .vf-badge {
     margin-right: 1rem;
@@ -34,7 +34,7 @@
 .vf-banner--blocking {
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: minmax(var(--page-grid-gap), auto) [main-start] minmax(288px, 76.5em) [main-end] minmax(var(--page-grid-gap), auto);
+  grid-template-columns: minmax(var(--page-grid-gap), auto) [main-start] minmax(288px, $vf-layout--comfortable) [main-end] minmax(var(--page-grid-gap), auto);
   height: 100%;
   left: 0;
   padding: 0;
@@ -50,14 +50,19 @@
 
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 78.5em;
+  max-width: $vf-layout--comfortable;
   padding: 0 1rem;
+
+  // If the vf-banner also has a vf-u-fullbleed class we remove the padding from the vf-banner__content class.
+  // This makes any content in the vf-banner line up with the maximum width as defined with the vf-body class.
+  .vf-u-fullbleed & {
+    padding: 0;
+  }
 
   @supports (display: grid) {
     box-sizing: unset;
     margin: unset;
     max-width: unset;
-    padding: unset;
   }
 
   @media (max-width: 63.9375em) {

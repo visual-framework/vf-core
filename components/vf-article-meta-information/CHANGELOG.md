@@ -1,9 +1,11 @@
-# Change Log
+### 1.1.0
 
-## 1.0.1
+- adds loading="lazy" to the img element for better performance
 
-* removes word-spacing: 100vw so names wrap
+### 1.0.1
 
-## 1.0.0-beta.3
+- removes word-spacing: 100vw so names wrap
 
-* Capitalisation of `On this page`
+### 1.0.0-beta.3
+
+- Capitalisation of `On this page`

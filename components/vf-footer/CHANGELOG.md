@@ -1,16 +1,26 @@
-# Change Log
+### 1.1.0
 
-## 1.0.2 
+- removes inline padding as it's defunct when using the `vf-body` component.
 
-* Removes need for `.vf-body` on `.vf-footer`
-* Refines layout spacing
-* Allows for footer headers to be links
+### 1.0.6
 
-## 1.0.1 (2020-01-24)
+- dependency bump
 
-* Darkens background
-* Updates layout
+### 1.0.3
 
-## 1.0.0 (2019-12-17)
+- updates max-width of component
 
-* Initial stable release
+### 1.0.2
+
+- Removes need for `.vf-body` on `.vf-footer`
+- Refines layout spacing
+- Allows for footer headers to be links
+
+### 1.0.1
+
+- Darkens background
+- Updates layout
+
+### 1.0.0
+
+- Initial stable release

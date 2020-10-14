@@ -1,25 +1,28 @@
-# Change Log
+### 1.2.5
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+- updates max-width of component variants
 
-## 1.2.3
+### 1.2.4
 
-* adds `margin-left: auto` for when we want flexbox to push the navigation to the right
-* swaps `margin-right` for `margin-left` for spacing
-* removes duplicate `text-decoration`
+- updates max-width of component
 
-## 1.2.1
+### 1.2.3
 
-* makes navigation wrap on mobile
-* adjusts spacing values to match
+- adds `margin-left: auto` for when we want flexbox to push the navigation to the right
+- swaps `margin-right` for `margin-left` for spacing
+- removes duplicate `text-decoration`
 
-## 1.2.0
+### 1.2.1
 
-* Removes `--medium` variants
-* Introduces `--very-easy` variant
-* Pulls all design variants back one.
+- makes navigation wrap on mobile
+- adjusts spacing values to match
 
-# 1.0.0 (2019-12-17)
+### 1.2.0
 
-* Initial stable release
+- Removes `--medium` variants
+- Introduces `--very-easy` variant
+- Pulls all design variants back one.
+
+### 1.0.0
+
+- Initial stable release
