@@ -2,6 +2,7 @@
 
 - all utility classes that make use of spacing tokens now use numerical naming.
 - updates documentation pages, as needed.
+- requires `v2.0.0` of the `vf-design-tokens` package or newer.
 
 ### 1.1.0
 
