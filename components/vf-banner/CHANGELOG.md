@@ -2,6 +2,7 @@
 
 - updates spacing design tokens
 - requires `v2.0.0` of the `vf-design-tokens` package or newer.
+- removes leftover `console.log`
 
 ### 1.5.0
 

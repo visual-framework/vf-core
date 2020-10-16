@@ -41,9 +41,28 @@ Notes:
 
 ### JavaScript
 
-- `vfGaIndicateLoaded()` Awaits and checks to see if Google Analytics client side JS has loaded. If it does, sets `<body data-vf-google-analytics-loaded='true'>`
-- `vfGaIndicateUnloaded` Utility method to invalidate prior GA check `<body data-vf-google-analytics-loaded='false'>`
-- `vfGaTrackInteraction()` can be used to directly track events if you wish to use your own event handler
+#### `vfGaIndicateLoaded()`
+
+Awaits and checks to see if Google Analytics client side JS has loaded. If it does, sets `<body data-vf-google-analytics-loaded='true'>`
+  - `vfGaIndicateLoaded()` now accepts the options object `vfGaTrackOptions` with property `vfGaTrackPageLoad`. `vfGaTrackOptions.vfGaTrackPageLoad` default to true. If you set to false, the function will _not_ track the initial page view. Useful if you track the initial page view with JavaScript in your HTML.
+
+Example:
+
+```js
+let vfGaTrackOptions = {
+  vfGaTrackPageLoad: true
+};
+vfGaIndicateLoaded(vfGaTrackOptions);
+```
+
+#### `vfGaIndicateUnloaded`
+
+Utility method to invalidate prior GA check `<body data-vf-google-analytics-loaded='false'>`
+
+#### `vfGaTrackInteraction()`
+
+Can be used to directly track events if you wish to use your own event handler.
+
 ```js
 /**
  * This code tracks the user's clicks in various parts of the site and logs them as GA events.
@@ -73,10 +92,13 @@ $ yarn add --dev @visual-framework/vf-analytics-google
 You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 
 ```js
+let vfGaTrackOptions = {
+  vfGaTrackPageLoad: true
+};
 import { vfGaIndicateLoaded } from 'vf-analytics-google/vf-analytics-google';
 // Or import directly
 // import { vfGaIndicateLoaded } from '../components/raw/vf-analytics-google/vf-analytics-google.js';
-vfGaIndicateLoaded();
+vfGaIndicateLoaded(vfGaTrackOptions);
 ```
 
 ### Sass/CSS installation

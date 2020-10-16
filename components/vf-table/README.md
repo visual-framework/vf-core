@@ -4,7 +4,7 @@
 
 ### CSS Class Reference
 
-| Class                | Applie To  | Result                                                                 |
+| Class                | Applies To | Result                                                                 |
 | -------------------- | ---------- | ---------------------------------------------------------------------- |
 | `vf-table`           | `table`    | Gives initial generic styling to the `table` element and it's children |
 | `vf-table--striped`  | `vf-table` | Adds striped rows to the relevant `tr` elements.                       |

@@ -32,10 +32,19 @@ var lastGaEventTime = Date.now();
 /**
  * We poll the document until we find GA has loaded, or we've tried a few times.
  * Port of https://github.com/ebiwd/EBI-Framework/blob/v1.3/js/foundationExtendEBI.js#L4
+ * @param {object} [vfGaTrackOptions]
+ * @param {binary} [vfGaTrackOptions.vfGaTrackPageLoad=true] If true, the function will track the initial page view. Set this to false if you track the page view in your HTML.
  * @param {number} [numberOfGaChecksLimit=2]
  * @param {number} [checkTimeout=900]
+ * @example
+ * let vfGaTrackOptions = {
+ *  vfGaTrackPageLoad: true
+ * };
+ * vfGaIndicateLoaded(vfGaTrackOptions);
  */
-function vfGaIndicateLoaded(numberOfGaChecksLimit,numberOfGaChecks,checkTimeout) {
+function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout) {
+  var vfGaTrackOptions = vfGaTrackOptions || {};
+  if (vfGaTrackOptions.vfGaTrackPageLoad == null) vfGaTrackOptions.vfGaTrackPageLoad = true;
   var numberOfGaChecks = numberOfGaChecks || 0;
   var numberOfGaChecksLimit = numberOfGaChecksLimit || 5;
   var checkTimeout = checkTimeout || 900;
@@ -53,18 +62,18 @@ function vfGaIndicateLoaded(numberOfGaChecksLimit,numberOfGaChecks,checkTimeout)
 
     if (ga && ga.loaded) {
       el.setAttribute('data-vf-google-analytics-loaded', 'true');
-      vfGaInit();
+      vfGaInit(vfGaTrackOptions);
     } else {
       if (numberOfGaChecks <= numberOfGaChecksLimit) {
         setTimeout(function () {
-          vfGaIndicateLoaded(numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
+          vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
         }, 900); // give a second check if GA was slow to load
       }
     }
   } catch (err) {
     if (numberOfGaChecks <= numberOfGaChecksLimit) {
       setTimeout(function () {
-        vfGaIndicateLoaded(numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
+        vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
       }, 900); // give a second check if GA was slow to load
     }
   }
@@ -95,8 +104,12 @@ function vfGetMeta(metaName) {
 
 /**
  * Hooks into common analytics tracking
+ * @param {object} [vfGaTrackOptions]
+ * @param {binary} [vfGaTrackOptions.vfGaTrackPageLoad=true] If true, the function will track the initial page view. Set this to false if you track the page view in your HTML.
  */
-function vfGaInit() {
+function vfGaInit(vfGaTrackOptions) {
+  var vfGaTrackOptions = vfGaTrackOptions || {};
+  if (vfGaTrackOptions.vfGaTrackPageLoad == null) vfGaTrackOptions.vfGaTrackPageLoad = true;
 
   // Need help
   // How to add dimension to your property
@@ -118,8 +131,9 @@ function vfGaInit() {
   }
 
   // standard google analytics bootstrap
-  // @todo: add conditional
-  ga('send', 'pageview');
+  if (vfGaTrackOptions.vfGaTrackPageLoad) {
+    ga('send', 'pageview');
+  }
 
   // If we want to send metrics in one go
   // ga('set', {
