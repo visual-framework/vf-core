@@ -44,7 +44,7 @@ var lastGaEventTime = Date.now();
  */
 function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout) {
   var vfGaTrackOptions = vfGaTrackOptions || {};
-  vfGaTrackOptions.vfGaTrackPageLoad = vfGaTrackOptions.vfGaTrackPageLoad || true;
+  if (vfGaTrackOptions.vfGaTrackPageLoad == null) vfGaTrackOptions.vfGaTrackPageLoad = true;
   var numberOfGaChecks = numberOfGaChecks || 0;
   var numberOfGaChecksLimit = numberOfGaChecksLimit || 5;
   var checkTimeout = checkTimeout || 900;
@@ -109,7 +109,7 @@ function vfGetMeta(metaName) {
  */
 function vfGaInit(vfGaTrackOptions) {
   var vfGaTrackOptions = vfGaTrackOptions || {};
-  vfGaTrackOptions.vfGaTrackPageLoad = vfGaTrackOptions.vfGaTrackPageLoad || true;
+  if (vfGaTrackOptions.vfGaTrackPageLoad == null) vfGaTrackOptions.vfGaTrackPageLoad = true;
 
   // Need help
   // How to add dimension to your property
@@ -131,7 +131,7 @@ function vfGaInit(vfGaTrackOptions) {
   }
 
   // standard google analytics bootstrap
-  if (vfGaTrackPageLoad) {
+  if (vfGaTrackOptions.vfGaTrackPageLoad) {
     ga('send', 'pageview');
   }
 
