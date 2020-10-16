@@ -90,7 +90,7 @@ Styling for list types
 
 Margin, recommended to use with sizing maps
 
-`@include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--lg));`
+`@include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--500));`
 
 - `margin-block`: specify one value for bottom and top, top or bottom
 - `margin-all`: specify one value for left or right, left or right
@@ -100,7 +100,7 @@ Margin, recommended to use with sizing maps
 
 Padding, recommended to use with sizing maps
 
-`@include padding--block(bottom, map-get($vf-spacing-map, vf-spacing--lg));`
+`@include padding--block(bottom, map-get($vf-spacing-map, vf-spacing--500));`
 
 - `padding-block`: specify one value for bottom and top, top or bottom
 - `padding-all`: specify one value for left or right, left or right
@@ -116,7 +116,7 @@ Padding, recommended to use with sizing maps
 Generate correct font information when included into an element.
 Recommended to use with typography and sizing maps
 
-`@include set-type(text-body--3, $global-font-family, $custom-margin-bottom: vf-spacing--lg)`
+`@include set-type(text-body--3, $global-font-family, $custom-margin-bottom: vf-spacing--500)`
 
 ### utility--color.scss
 
