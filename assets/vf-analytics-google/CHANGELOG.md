@@ -1,3 +1,7 @@
+### 1.0.0-rc.5
+
+* `vfGaIndicateLoaded()` now accepts the options object `vfGaTrackOptions` with property `vfGaTrackPageLoad`. `vfGaTrackOptions.vfGaTrackPageLoad` default to true. If you set to false, the function will _not_ track the initial page view. Useful if you track the initial page view with JavaScript in your HTML.
+
 ### 1.0.0-rc.4
 
 * improve `vfGaLogMessage()` to note type of event being tracked

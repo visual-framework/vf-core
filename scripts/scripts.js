@@ -42,7 +42,6 @@ function vfBannerClose(targetBanner) {
 
     if (targetBanner.classList.contains("vf-banner--bottom")) {
       var pagePadding = document.body.style.paddingBottom.replace(/\D/g, '') || 0;
-      console.log(pagePadding, height);
       pagePadding = pagePadding - height;
       document.body.style.paddingBottom = pagePadding + 'px';
     }
@@ -383,11 +382,20 @@ var lastGaEventTime = Date.now();
 /**
  * We poll the document until we find GA has loaded, or we've tried a few times.
  * Port of https://github.com/ebiwd/EBI-Framework/blob/v1.3/js/foundationExtendEBI.js#L4
+ * @param {object} [vfGaTrackOptions]
+ * @param {binary} [vfGaTrackOptions.vfGaTrackPageLoad=true] If true, the function will track the initial page view. Set this to false if you track the page view in your HTML.
  * @param {number} [numberOfGaChecksLimit=2]
  * @param {number} [checkTimeout=900]
+ * @example
+ * let vfGaTrackOptions = {
+ *  vfGaTrackPageLoad: true
+ * };
+ * vfGaIndicateLoaded(vfGaTrackOptions);
  */
 
-function vfGaIndicateLoaded(numberOfGaChecksLimit, numberOfGaChecks, checkTimeout) {
+function vfGaIndicateLoaded(vfGaTrackOptions, numberOfGaChecksLimit, numberOfGaChecks, checkTimeout) {
+  var vfGaTrackOptions = vfGaTrackOptions || {};
+  if (vfGaTrackOptions.vfGaTrackPageLoad == null) vfGaTrackOptions.vfGaTrackPageLoad = true;
   var numberOfGaChecks = numberOfGaChecks || 0;
   var numberOfGaChecksLimit = numberOfGaChecksLimit || 5;
   var checkTimeout = checkTimeout || 900;
@@ -402,18 +410,18 @@ function vfGaIndicateLoaded(numberOfGaChecksLimit, numberOfGaChecks, checkTimeou
 
     if (ga && ga.loaded) {
       el.setAttribute('data-vf-google-analytics-loaded', 'true');
-      vfGaInit();
+      vfGaInit(vfGaTrackOptions);
     } else {
       if (numberOfGaChecks <= numberOfGaChecksLimit) {
         setTimeout(function () {
-          vfGaIndicateLoaded(numberOfGaChecksLimit, numberOfGaChecks, checkTimeout);
+          vfGaIndicateLoaded(vfGaTrackOptions, numberOfGaChecksLimit, numberOfGaChecks, checkTimeout);
         }, 900); // give a second check if GA was slow to load
       }
     }
   } catch (err) {
     if (numberOfGaChecks <= numberOfGaChecksLimit) {
       setTimeout(function () {
-        vfGaIndicateLoaded(numberOfGaChecksLimit, numberOfGaChecks, checkTimeout);
+        vfGaIndicateLoaded(vfGaTrackOptions, numberOfGaChecksLimit, numberOfGaChecks, checkTimeout);
       }, 900); // give a second check if GA was slow to load
     }
   }
@@ -443,16 +451,20 @@ function vfGetMeta(metaName) {
 }
 /**
  * Hooks into common analytics tracking
+ * @param {object} [vfGaTrackOptions]
+ * @param {binary} [vfGaTrackOptions.vfGaTrackPageLoad=true] If true, the function will track the initial page view. Set this to false if you track the page view in your HTML.
  */
 
 
-function vfGaInit() {
-  // Need help
+function vfGaInit(vfGaTrackOptions) {
+  var vfGaTrackOptions = vfGaTrackOptions || {};
+  if (vfGaTrackOptions.vfGaTrackPageLoad == null) vfGaTrackOptions.vfGaTrackPageLoad = true; // Need help
   // How to add dimension to your property
   // https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
   // https://support.google.com/analytics/answer/2709829?hl=en
   // standard google analytics bootstrap
   // @todo: add conditional
+
   ga('set', 'anonymizeIp', true); // lookup metadata  <meta name="vf:page-type" content="category;pageTypeHere">
   // Pass your GA dimension with a `;` divider
 
@@ -464,14 +476,16 @@ function vfGaInit() {
     var pageTypeName = toLog[0];
     ga('set', dimension, pageTypeName);
   } // standard google analytics bootstrap
-  // @todo: add conditional
 
 
-  ga('send', 'pageview'); // If we want to send metrics in one go
+  if (vfGaTrackOptions.vfGaTrackPageLoad) {
+    ga('send', 'pageview');
+  } // If we want to send metrics in one go
   // ga('set', {
   //   'dimension5': 'custom dimension data'
   //   // 'metric5': 'custom metric data'
   // });
+
 
   vfGaLinkTrackingInit();
 }
@@ -2794,7 +2808,10 @@ function emblBreadcrumbs() {
 
 vfBanner();
 vfMastheadSetStyle();
-vfGaIndicateLoaded();
+var vfGaTrackOptions = {
+  vfGaTrackPageLoad: true
+};
+vfGaIndicateLoaded(vfGaTrackOptions);
 vfTabs();
 vfTree();
 vfShowMore();

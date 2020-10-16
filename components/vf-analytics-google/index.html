@@ -648,11 +648,21 @@ class="vf-logo | vf-logo--has-text">
 <h3>Verbose logging</h3>
 <p><code>&lt;body data-vf-google-analytics-verbose=&quot;true&quot;&gt;</code></p>
 <h3>JavaScript</h3>
+<h4><code>vfGaIndicateLoaded()</code></h4>
+<p>Awaits and checks to see if Google Analytics client side JS has loaded. If it does, sets <code>&lt;body data-vf-google-analytics-loaded='true'&gt;</code></p>
 <ul>
-<li><code>vfGaIndicateLoaded()</code> Awaits and checks to see if Google Analytics client side JS has loaded. If it does, sets <code>&lt;body data-vf-google-analytics-loaded='true'&gt;</code></li>
-<li><code>vfGaIndicateUnloaded</code> Utility method to invalidate prior GA check <code>&lt;body data-vf-google-analytics-loaded='false'&gt;</code></li>
-<li><code>vfGaTrackInteraction()</code> can be used to directly track events if you wish to use your own event handler</li>
+<li><code>vfGaIndicateLoaded()</code> now accepts the options object <code>vfGaTrackOptions</code> with property <code>vfGaTrackPageLoad</code>. <code>vfGaTrackOptions.vfGaTrackPageLoad</code> default to true. If you set to false, the function will <em>not</em> track the initial page view. Useful if you track the initial page view with JavaScript in your HTML.</li>
 </ul>
+<p>Example:</p>
+<pre><code class="language-js">let vfGaTrackOptions = {
+  vfGaTrackPageLoad: true
+};
+vfGaIndicateLoaded(vfGaTrackOptions);
+</code></pre>
+<h4><code>vfGaIndicateUnloaded</code></h4>
+<p>Utility method to invalidate prior GA check <code>&lt;body data-vf-google-analytics-loaded='false'&gt;</code></p>
+<h4><code>vfGaTrackInteraction()</code></h4>
+<p>Can be used to directly track events if you wish to use your own event handler.</p>
 <pre><code class="language-js">/**
  * This code tracks the user's clicks in various parts of the site and logs them as GA events.
  *
@@ -673,10 +683,13 @@ class="vf-logo | vf-logo--has-text">
 </code></pre>
 <h3>Javascript installation</h3>
 <p>You should import this component in <code>./components/vf-component-rollup/scripts.js</code> or your other JS process:</p>
-<pre><code class="language-js">import { vfGaIndicateLoaded } from 'vf-analytics-google/vf-analytics-google';
+<pre><code class="language-js">let vfGaTrackOptions = {
+  vfGaTrackPageLoad: true
+};
+import { vfGaIndicateLoaded } from 'vf-analytics-google/vf-analytics-google';
 // Or import directly
 // import { vfGaIndicateLoaded } from '../components/raw/vf-analytics-google/vf-analytics-google.js';
-vfGaIndicateLoaded();
+vfGaIndicateLoaded(vfGaTrackOptions);
 </code></pre>
 <h3>Sass/CSS installation</h3>
 <ul>
@@ -823,7 +836,7 @@ File system location: <code>components/vf-analytics-google</code>
 
 
 
-<!-- This page was generated on 2020-10-13T10:31:23.346+00:00 -->
+<!-- This page was generated on 2020-10-16T09:13:29.133+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.2.9/scripts/scripts.js"></script>
   </body>
 </html>
