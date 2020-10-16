@@ -55,7 +55,7 @@ Awaits and checks to see if Google Analytics client side JS has loaded. If it do
   - As of February 2020 Google Analytics no longer tracks the network name of visitors
   - A 3rd party tool enables this, follow the setup guide at https://ipmeta.io/instructions
     - note there is no need to load https://ipmeta.io/plugin.js, this component includes it for you
-  - After configuring your property in Google Analtyics, add the configuration below
+  - After configuring your property in Google Analytics, add the configuration below
 
 Example:
 
