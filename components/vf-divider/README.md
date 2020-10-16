@@ -4,7 +4,7 @@
 
 ## About
 
-The `vf-divider` component creates a horizontal dividing line to help separate content into their own container chunks.
+The `vf-divider` component creates a horizontal dividing rule that can help separate containers of content or content inside of their containers.
 
 ## Install
 
@@ -24,4 +24,24 @@ _Make sure you import Sass requirements along with the modules._
 
 ## Usage
 
-The `vf-divider` does not have to be implemented inside it's own grid container and should rely on the parent `vf-body` to fill the width of the page.
+The `vf-divider` component will be the width of if's container. So inside of `<body>` of your page it will be a maximum of 1300px.
+
+```
+<body class="vf-body">
+  <hr class="vf-divider">
+</body>
+```
+
+If you wish to have your `vf-divider` fit the whole width of the screen you can add the `vf-u-fullbleed` utility class along side it:
+
+```
+<hr class="vf-divider | vf-u-fullbleed">
+```
+
+This fills the width of the viewport but gives a inline (left and right) margin.
+
+You can customise the inline (left and right) margin if you wish by using the CSS custom property `--context-margin--inline` on the element:
+
+```
+<hr class="vf-divider | vf-u-fullbleed" style="--context-margin--inline: 2rem;">
+```
