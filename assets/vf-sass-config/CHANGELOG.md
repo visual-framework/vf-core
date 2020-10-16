@@ -1,3 +1,7 @@
+### 2.1.0
+
+- replaces spacing design tokens.
+
 ### 2.0.0
 
 - removes the inline margin from the component.
