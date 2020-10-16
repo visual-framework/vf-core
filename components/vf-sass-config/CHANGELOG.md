@@ -1,6 +1,12 @@
-### 1.5.0
+### 2.1.0
 
 - replaces spacing design tokens.
+
+### 2.0.0
+
+- removes the inline margin from the component.
+- adds the block end margin an creates a Sass variable for `$margin--block-end`.
+- adds `width: 100%;` as it was defaulting to `width: auto;`.
 
 ### 1.4.3
 
