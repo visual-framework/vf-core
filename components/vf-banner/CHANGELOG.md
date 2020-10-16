@@ -1,3 +1,7 @@
+### 1.5.1
+
+- removes leftover `console.log`
+
 ### 1.5.0
 
 - centralises logic to "close" a banner
