@@ -1,3 +1,9 @@
+### 2.0.0
+
+- removes the inline margin from the component.
+- adds the block end margin an creates a Sass variable for `$margin--block-end`.
+- adds `width: 100%;` as it was defaulting to `width: auto;`.
+
 ### 1.4.3
 
 - adds `webkit-appearance: none;` as needed for Safari browsers as autoprefixer is not doing this.

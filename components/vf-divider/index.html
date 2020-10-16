@@ -623,7 +623,7 @@ class="vf-logo | vf-logo--has-text">
       <h1>Divider Component</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-divider"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-divider.svg" alt="npm version"></a></p>
 <h2>About</h2>
-<p>The <code>vf-divider</code> component creates a horizontal dividing line to help separate content into their own container chunks.</p>
+<p>The <code>vf-divider</code> component creates a horizontal dividing rule that can help separate containers of content or content inside of their containers.</p>
 <h2>Install</h2>
 <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-divider</code> with this command.</p>
 <pre><code>$ yarn add --dev @visual-framework/vf-divider
@@ -633,7 +633,18 @@ class="vf-logo | vf-logo--has-text">
 </code></pre>
 <p><em>Make sure you import Sass requirements along with the modules.</em></p>
 <h2>Usage</h2>
-<p>The <code>vf-divider</code> does not have to be implemented inside it's own grid container and should rely on the parent <code>vf-body</code> to fill the width of the page.</p>
+<p>The <code>vf-divider</code> component will be the width of if's container. So inside of <code>&lt;body&gt;</code> of your page it will be a maximum of 1300px.</p>
+<pre><code>&lt;body class=&quot;vf-body&quot;&gt;
+  &lt;hr class=&quot;vf-divider&quot;&gt;
+&lt;/body&gt;
+</code></pre>
+<p>If you wish to have your <code>vf-divider</code> fit the whole width of the screen you can add the <code>vf-u-fullbleed</code> utility class along side it:</p>
+<pre><code>&lt;hr class=&quot;vf-divider | vf-u-fullbleed&quot;&gt;
+</code></pre>
+<p>This fills the width of the viewport but gives a inline (left and right) margin.</p>
+<p>You can customise the inline (left and right) margin if you wish by using the CSS custom property <code>--context-margin--inline</code> on the element:</p>
+<pre><code>&lt;hr class=&quot;vf-divider | vf-u-fullbleed&quot; style=&quot;--context-margin--inline: 2rem;&quot;&gt;
+</code></pre>
 
     
 
@@ -674,9 +685,8 @@ class="vf-logo | vf-logo--has-text">
         
           <div class="vf-grid">
             <section class="">
-              <hr
-
-
+              
+<hr
 class="vf-divider">
 
             </section>
@@ -688,6 +698,99 @@ class="vf-divider">
 
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-divider&quot;</span>&gt;</span>
+        </pre>
+
+      
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: Fullbleed
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: element</span> 
+        </h3>
+
+
+        
+        
+
+        <h4>Nunjucks demo</h4>
+
+
+        <pre><code>{% render '@vf-divider--fullbleed', {
+  &quot;component-type&quot;: &quot;element&quot;,
+  &quot;override_class&quot;: &quot;vf-u-fullbleed&quot;
+} %}
+        </code></pre>
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-grid">
+            <section class="">
+              
+<hr
+class="vf-divider | vf-u-fullbleed">
+
+            </section>
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-divider | vf-u-fullbleed&quot;</span>&gt;</span>
+        </pre>
+
+      
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: Fullbleed Custom
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: element</span> 
+        </h3>
+
+
+        
+        
+
+        <h4>Nunjucks demo</h4>
+
+
+        <pre><code>{% render '@vf-divider--fullbleed-custom', {
+  &quot;component-type&quot;: &quot;element&quot;,
+  &quot;override_class&quot;: &quot;vf-u-fullbleed&quot;,
+  &quot;context_margin__inline&quot;: &quot;3rem&quot;
+} %}
+        </code></pre>
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-grid">
+            <section class="">
+              
+<hr
+class="vf-divider | vf-u-fullbleed" style="--context-margin--inline: 3rem;">
+
+            </section>
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-divider | vf-u-fullbleed&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;--context-margin--inline: 3rem;&quot;</span>&gt;</span>
         </pre>
 
       <h3>Assets</h3>
@@ -781,7 +884,7 @@ File system location: <code>components/vf-divider</code>
 
 
 
-<!-- This page was generated on 2020-10-16T09:13:29.133+00:00 -->
+<!-- This page was generated on 2020-10-16T12:53:11.108+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.2.9/scripts/scripts.js"></script>
   </body>
 </html>
