@@ -18,7 +18,8 @@ before_script:
   - cd tools/vf-component-library
   - yarn install
   - gulp build
-  - "curl https://www.projectwallace.com/webhooks/v1/imports?token=$WALLACE_TOKEN -fsS --retry 3 -X POST -H 'Content-Type: text/css' -d @build/css/styles.css"
+  # Disabled Wallace as its been failing with `curl: (22) The requested URL returned error: 412 Precondition Failed`
+  # - "curl https://www.projectwallace.com/webhooks/v1/imports?token=$WALLACE_TOKEN -fsS --retry 3 -X POST -H 'Content-Type: text/css' -d @build/css/styles.css"
   # gh-pages shouldn't try to compile the .md files
   - cd build && touch .nojekyll && cd ..
 
