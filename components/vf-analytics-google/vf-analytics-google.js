@@ -138,6 +138,7 @@ function vfGaInit(vfGaTrackOptions) {
   // If you want to track the network of visitors be sure to
   // - follow the setup guide at https://ipmeta.io/instructions
   // - view the directions in README.md
+  // note: this feature may be broken out as a seperate dependency if the code size needs to grow further
   if (vfGaTrackOptions.vfGaTrackNetwork != null) {
     // a copy of https://ipmeta.io/plugin.js
     // included here to simplify usage and reduce external requests
