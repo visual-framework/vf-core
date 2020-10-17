@@ -1,9 +1,14 @@
 // Reusable styling for divider elements and styling
 // @include vf-divider;
 
-@mixin divider() {
+@mixin divider($margin--block-end: 1.5rem, $margin--inline: 1rem) {
+  // This custom property is set up ready for you to use if you are using it with
+  // vf-u-fullbleed.
+  --context-margin--inline: #{$margin--inline};
+
   background-color: set-ui-color(vf-ui-color--grey);
-  margin: 0 map-get($vf-spacing-map, vf-spacing--sm);
-  height: 1px;
   border: none;
+  height: 1px;
+  margin-block: 0 var(--vf-divider-margin--block-end, $margin--block-end);
+  width: 100%;
 }
