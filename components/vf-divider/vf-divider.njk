@@ -1,6 +1,10 @@
+{% if context %}
+  {% set id = context.id %}
+  {% set override_class = context.override_class %}
+{% endif %}
+
 <hr
-{# You're using an ID? Really?? That'll go here #}
 {% if id %} id="{{-id-}}"{% endif %}
-{# Here is where we are adding the vf-text--body modifier #}
 class="vf-divider
-{%- if override_class %} | {{override_class}}{% endif -%}">
+{%- if override_class %} | {{override_class}}{% endif -%}"
+{%- if context_margin__inline %} style="--context-margin--inline: {{context_margin__inline}};"{% endif -%}>
