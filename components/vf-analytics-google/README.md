@@ -21,9 +21,9 @@ How to add dimension to your property?
 - https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
 - https://support.google.com/analytics/answer/2709829?hl=en
 
-### Region tracking
+### Page region tracking
 
-You can track the region of the page a link is in:
+You can track the region of the page where an event occurs:
 
 ```html
 <div data-vf-google-analytics-region="main-content-area-OR-SOME-OTHER-NAME">
@@ -41,9 +41,25 @@ Notes:
 
 ### JavaScript
 
-#### vfGaIndicateLoaded()
+You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 
-Awaits and checks to see if Google Analytics client side JS has loaded. If it does, sets `<body data-vf-google-analytics-loaded='true'>`
+```js
+import { vfGaIndicateLoaded } from 'vf-analytics-google/vf-analytics-google';
+// Or import directly
+// import { vfGaIndicateLoaded } from '../components/raw/vf-analytics-google/vf-analytics-google.js';
+
+let vfGaTrackOptions = {
+  vfGaTrackPageLoad: true,
+  vfGaTrackNetwork: {
+    serviceProvider: 'dimension2',
+    networkDomain: 'dimension3',
+    networkType: 'dimension4'
+  }
+};
+vfGaIndicateLoaded(vfGaTrackOptions);
+```
+
+`vfGaIndicateLoaded()` is the primary function and awaits and checks to see if Google Analytics client side JS has loaded. If it does, sets `<body data-vf-google-analytics-loaded='true'>`
 
 #### Options
 
@@ -56,20 +72,6 @@ Awaits and checks to see if Google Analytics client side JS has loaded. If it do
   - A 3rd party tool enables this, follow the setup guide at https://ipmeta.io/instructions
     - note there is no need to load https://ipmeta.io/plugin.js, this component includes it for you
   - After configuring your property in Google Analytics, add the configuration below
-
-Example:
-
-```js
-let vfGaTrackOptions = {
-  vfGaTrackPageLoad: true,
-  vfGaTrackNetwork: {
-    serviceProvider: 'dimension2',
-    networkDomain: 'dimension3',
-    networkType: 'dimension4'
-  }
-};
-vfGaIndicateLoaded(vfGaTrackOptions);
-```
 
 #### vfGaIndicateUnloaded()
 
@@ -101,20 +103,6 @@ This repository is distributed with [npm][npm]. After [installing npm][install-n
 
 ```
 $ yarn add --dev @visual-framework/vf-analytics-google
-```
-
-### Javascript installation
-
-You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
-
-```js
-let vfGaTrackOptions = {
-  vfGaTrackPageLoad: true
-};
-import { vfGaIndicateLoaded } from 'vf-analytics-google/vf-analytics-google';
-// Or import directly
-// import { vfGaIndicateLoaded } from '../components/raw/vf-analytics-google/vf-analytics-google.js';
-vfGaIndicateLoaded(vfGaTrackOptions);
 ```
 
 ### Sass/CSS installation
