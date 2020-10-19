@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     es6: true,
-    node: true
+    node: true,
+    browser: true
   },
   extends: "eslint:recommended",
   parserOptions: {
@@ -13,5 +14,6 @@ module.exports = {
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "always"]
+
   }
 };
