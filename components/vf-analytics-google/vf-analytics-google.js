@@ -352,30 +352,46 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
   // Due to our structure, we fire multiple events, so we only send to GA the most specific event resolution
   if ((Date.now() - lastGaEventTime) > 150) {
     // track link name and region
-    ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
+
+    // note that we've stored an event(s)
+    lastGaEventTime = Date.now();
+
+    // What type of element? `a` `button` etc.
+    var elementType = "none";
+    if (actedOnItem.tagName) {
+      elementType = actedOnItem.tagName.toLowerCase();
+    }
 
     // Track file type (PDF, DOC, etc) or if mailto
     // adapted from https://www.blastanalytics.com/blog/how-to-track-downloads-in-google-analytics
     var filetypes = /\.(zip|exe|pdf|doc*|xls*|ppt*|mp3|txt|fasta)$/i;
     var href = actedOnItem.href;
+
+    // log emails and downloads to seperate event "buckets"
     if (href && href.match(/^mailto\:/i)) {
+      // email click
       var mailLink = href.replace(/^mailto\:/i, "");
       ga && ga("send", "event", "Email", "Region / " + parentContainer, mailLink);
-      // Log email event
       vfGaLogMessage("Email", "Region / " + parentContainer, mailLink, lastGaEventTime, actedOnItem);
-    }
-    if (href && href.match(filetypes)) {
+    } else if (href && href.match(filetypes)) {
+      // download event
       var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
       var filePath = href;
       ga && ga("send", "event", "Download", "Type / " + extension + " / " + parentContainer, filePath);
-      // Log Download event
       vfGaLogMessage("Download", "Type / " + extension + " / " + parentContainer, filePath, lastGaEventTime, actedOnItem);
     }
 
-    // note that we've stored an event(s)
-    lastGaEventTime = Date.now();
-    // Default log the event.
-    vfGaLogMessage("UI", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
+    // is it a form interaction or something with text?
+    let formElementTypes = ["label", "input", "select", "textarea"];
+    if (formElementTypes.indexOf(elementType) > -1) {
+      // form element
+      ga && ga("send", "event", "UI", "UI Element / " + parentContainer, elementType + " " + linkName);
+      vfGaLogMessage("UI", "UI Element / " + parentContainer, elementType + " " + linkName, lastGaEventTime, actedOnItem);
+    } else {
+      // generic catch all
+      ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
+      vfGaLogMessage("UI", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
+    }
   }
 }
 
