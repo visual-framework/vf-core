@@ -1,3 +1,8 @@
+### 1.0.3
+
+* adds `buildTimeStamp` from `componentInfo` to Sass template
+  * https://github.com/visual-framework/vf-core/issues/974
+
 ### 1.0.2
 
 * move vf-component-generator gulp tasks into this project
