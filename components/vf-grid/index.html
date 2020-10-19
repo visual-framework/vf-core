@@ -257,6 +257,12 @@ class="vf-logo | vf-logo--has-text">
 
     </li>
     <li class="vf-list__item">
+      <a class="vf-list__link" href="/vf-core/components/vf-cluster">
+        Cluster
+      </a>
+
+    </li>
+    <li class="vf-list__item">
       <a class="vf-list__link" href="/vf-core/components/vf-code-example">
         Code Example
       </a>
@@ -786,63 +792,11 @@ class="vf-logo | vf-logo--has-text">
 
         
           <div class="vf-gridxx" style="grid-column: -1/1;">
-            <div class="vf-body">
-  <div class="vf-grid">
-    <div></div>
-  </div>
+            
+<div class="vf-grid">
 
-  <div class="vf-grid">
-    <div>auto layout</div>
-    <div>auto layout</div>
-    <div>auto layout</div>
-    <div>auto layout</div>
-    <div>auto layout</div>
-  </div>
-
-  <div class="vf-grid | vf-grid__col-2">
-    <div>vf-grid__col-2</div>
-    <div></div>
-  </div>
-
-  <div class="vf-grid | vf-grid__col-3">
-    <div>vf-grid__col-3</div>
-    <div></div>
-    <div></div>
-  </div>
-
-  <div class="vf-grid | vf-grid__col-4">
-    <div>vf-grid__col-4</div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-
-  <div class="vf-grid | vf-grid__col-5">
-    <div>vf-grid__col-5</div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-
-  <div class="vf-grid | vf-grid__col-6">
-    <div>vf-grid__col-6</div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+  
 </div>
-
-<style>
-.vf-grid > div {
-  /* For illustrative use on component demo page */
-  background-color: rgb(41, 141, 211);
-  min-height: 5em;
-  margin-bottom: 1em;
-}
-</style>
 
           </div>
         
@@ -851,63 +805,845 @@ class="vf-logo | vf-logo--has-text">
 
 
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-body&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid&quot;</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </pre>
+
+      
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: Auto Layout
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: grid</span> 
+        </h3>
+
+
+        
+        
+
+        <h4>Nunjucks demo</h4>
+
+
+        <pre><code>{% render '@vf-grid--auto', {
+  &quot;component-type&quot;: &quot;grid&quot;
+} %}
+        </code></pre>
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-gridxx" style="grid-column: -1/1;">
+            <div class="vf-grid">
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+</div>
+
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>auto layout<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>auto layout<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>auto layout<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>auto layout<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>auto layout<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid | vf-grid__col-2&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>vf-grid__col-2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid | vf-grid__col-3&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>vf-grid__col-3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid | vf-grid__col-4&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>vf-grid__col-4<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid | vf-grid__col-5&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>vf-grid__col-5<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid | vf-grid__col-6&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>vf-grid__col-6<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </pre>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-  <span class="hljs-selector-class">.vf-grid</span>&gt;<span class="hljs-selector-tag">div</span> {
-    <span class="hljs-comment">/* For illustrative use on component demo page */</span>
-    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">41</span>, <span class="hljs-number">141</span>, <span class="hljs-number">211</span>);
-    <span class="hljs-attribute">min-height</span>: <span class="hljs-number">5em</span>;
-    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">1em</span>;
-  }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+      
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: 2 Columns
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: grid</span> 
+        </h3>
+
+
+        
+        
+
+        <h4>Nunjucks demo</h4>
+
+
+        <pre><code>{% render '@vf-grid--col-2', {
+  &quot;component-type&quot;: &quot;grid&quot;,
+  &quot;vf_grid__columns&quot;: 2
+} %}
+        </code></pre>
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-gridxx" style="grid-column: -1/1;">
+            <div class="vf-grid vf-grid__col-2">
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+</div>
+
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid vf-grid__col-2&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </pre>
+
+      
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: 3 Columns
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: grid</span> 
+        </h3>
+
+
+        
+        
+
+        <h4>Nunjucks demo</h4>
+
+
+        <pre><code>{% render '@vf-grid--col-3', {
+  &quot;component-type&quot;: &quot;grid&quot;,
+  &quot;vf_grid__columns&quot;: 3
+} %}
+        </code></pre>
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-gridxx" style="grid-column: -1/1;">
+            <div class="vf-grid vf-grid__col-3">
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+</div>
+
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid vf-grid__col-3&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </pre>
+
+      
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: 4 Columns
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: grid</span> 
+        </h3>
+
+
+        
+        
+
+        <h4>Nunjucks demo</h4>
+
+
+        <pre><code>{% render '@vf-grid--col-4', {
+  &quot;component-type&quot;: &quot;grid&quot;,
+  &quot;vf_grid__columns&quot;: 4
+} %}
+        </code></pre>
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-gridxx" style="grid-column: -1/1;">
+            <div class="vf-grid vf-grid__col-4">
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+</div>
+
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid vf-grid__col-4&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </pre>
+
+      
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: 5 Columns
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: grid</span> 
+        </h3>
+
+
+        
+        
+
+        <h4>Nunjucks demo</h4>
+
+
+        <pre><code>{% render '@vf-grid--col-5', {
+  &quot;component-type&quot;: &quot;grid&quot;,
+  &quot;vf_grid__columns&quot;: 5
+} %}
+        </code></pre>
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-gridxx" style="grid-column: -1/1;">
+            <div class="vf-grid vf-grid__col-5">
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+</div>
+
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid vf-grid__col-5&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        </pre>
+
+      
+        <hr class="vf-divider" />
+
+        <h3>
+          Variant: 6 Columns
+           <span class="vf-badge vf-badge--tertiary vf-badge--">live</span> 
+
+           <span class="vf-badge vf-badge--tertiary vf-badge--">Type: grid</span> 
+        </h3>
+
+
+        
+        
+
+        <h4>Nunjucks demo</h4>
+
+
+        <pre><code>{% render '@vf-grid--col-6', {
+  &quot;component-type&quot;: &quot;grid&quot;,
+  &quot;vf_grid__columns&quot;: 6
+} %}
+        </code></pre>
+
+        
+
+        <h4>Sample output</h4>
+
+
+        
+          <div class="vf-gridxx" style="grid-column: -1/1;">
+            <div class="vf-grid vf-grid__col-6">
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+
+<div
+  class="vf-box vf-box-theme--primary vf-box--normal">
+
+  <h3 class="vf-box__heading">Did you know?</h3>
+  <p class="vf-box__text">This is some more content that would be in the box.</p>
+</div>
+</div>
+
+          </div>
+        
+
+        <h4>Sample output as HTML</h4>
+
+
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-grid vf-grid__col-6&quot;</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box vf-box-theme--primary vf-box--normal&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__heading&quot;</span>&gt;</span>Did you know?<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-box__text&quot;</span>&gt;</span>This is some more content that would be in the box.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
 
       <h3>Assets</h3>
@@ -1001,7 +1737,7 @@ File system location: <code>components/vf-grid</code>
 
 
 
-<!-- This page was generated on 2020-10-19T14:56:47.274+00:00 -->
+<!-- This page was generated on 2020-10-19T14:57:30.137+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.2.9/scripts/scripts.js"></script>
   </body>
 </html>
