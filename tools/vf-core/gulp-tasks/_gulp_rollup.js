@@ -29,11 +29,11 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   // -----------------------------------------------------------------------------
 
   gulp.task('vf-dev', gulp.series(
-    'vf-clean', ['vf-css', 'vf-scripts'], 'vf-component-assets', 'vf-fractal:start', ['vf-lint:scss-soft-fail', 'vf-templates-precompile', 'vf-watch']
+    'vf-clean', ['vf-css', 'vf-scripts'], 'vf-component-assets', 'vf-fractal:start', ['vf-lint:scss-soft-fail', 'vf-lint:js-soft-fail', 'vf-templates-precompile', 'vf-watch']
   ));
 
   gulp.task('vf-prepush-test', gulp.parallel(
-    'vf-lint:scss-hard-fail', 'vf-css'
+    'vf-lint:js-soft-fail', 'vf-lint:scss-hard-fail', 'vf-css'
   ));
 
   return gulp;
