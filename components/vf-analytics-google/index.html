@@ -623,8 +623,25 @@ class="vf-logo | vf-logo--has-text">
       <h1>Google Analytics enhancements component</h1>
 <p><a href="https://badge.fury.io/js/%40visual-framework%2Fvf-analytics-google"><img src="https://badge.fury.io/js/%40visual-framework%2Fvf-analytics-google.svg" alt="npm version"></a></p>
 <p>Supplementary behaviour (primarily JavaScript) to ease tracking with Google Analytics.</p>
-<h2>Usage</h2>
 <p>This component will grow over time with additional event tracking behaviours.</p>
+<h2>Usage</h2>
+<h3>User actions</h3>
+<p>This component tracks three types of user engagement as actions in Google Analytics:</p>
+<ol>
+<li>General clicks in the browser as &quot;UI&quot; category</li>
+</ol>
+<ul>
+<li>standard elements like <code>a</code> <code>button</code> <code>details</code></li>
+<li>form elements like <code>input</code> <code>select</code> <code>textarea</code> <code>label</code></li>
+</ul>
+<ol start="2">
+<li>Downloads of files as &quot;Downloads&quot; <code>zip|exe|pdf|doc*|xls*|ppt*|mp3|txt|fasta</code></li>
+<li>Emails links as &quot;Email&quot; <code>mailto:</code></li>
+</ol>
+<p>Explicit labels can be provided with data attributes:</p>
+<ul>
+<li><code>data-vf-analytics-label=&quot;A special label&quot;</code></li>
+</ul>
 <h3>Meta tags</h3>
 <p>Track dimensions:</p>
 <pre><code class="language-html">&lt;meta name=&quot;vf:page-type&quot; content=&quot;category;pageTypeHere&quot;&gt;
@@ -741,7 +758,14 @@ vfGaIndicateLoaded(vfGaTrackOptions);
             <section class="">
               <div class="vf-analytics-google">
   /* vf-analytics-google template file */
-  /* this may eventually suppport templates for metatags or other code snippets */
+
+  <h3>Example of form tracking attributes</h3>
+  <input type="radio" name="radio-button-group" id="radio-2" class="vf-form__radio">
+  <label for="radio-2" class="vf-form__label" data-vf-analytics-label="A special form option">Form Label</label>
+
+  <input type="radio" name="radio-button-group" id="radio-3" class="vf-form__radio">
+  <label for="radio-3" class="vf-form__label" data-vf-analytics-label="I am also a special label">Form Label</label>
+
 </div>
 
             </section>
@@ -754,7 +778,14 @@ vfGaIndicateLoaded(vfGaTrackOptions);
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-analytics-google&quot;</span>&gt;</span>
   /* vf-analytics-google template file */
-  /* this may eventually suppport templates for metatags or other code snippets */
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Example of form tracking attributes<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-button-group&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radio-2&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__radio&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;radio-2&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__label&quot;</span> <span class="hljs-attr">data-vf-analytics-label</span>=<span class="hljs-string">&quot;A special form option&quot;</span>&gt;</span>Form Label<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;radio-button-group&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;radio-3&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__radio&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;radio-3&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;vf-form__label&quot;</span> <span class="hljs-attr">data-vf-analytics-label</span>=<span class="hljs-string">&quot;I am also a special label&quot;</span>&gt;</span>Form Label<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
         </pre>
 
@@ -851,7 +882,7 @@ File system location: <code>components/vf-analytics-google</code>
 
 
 
-<!-- This page was generated on 2020-10-19T09:44:53.038+00:00 -->
+<!-- This page was generated on 2020-10-19T13:13:40.397+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.2.9/scripts/scripts.js"></script>
   </body>
 </html>
