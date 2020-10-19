@@ -18,6 +18,10 @@ This component tracks three types of user engagement as actions in Google Analyt
 2. Downloads of files as "Downloads" `zip|exe|pdf|doc*|xls*|ppt*|mp3|txt|fasta`
 3. Emails links as "Email" `mailto:`
 
+Explicit labels can be provided with data attributes:
+
+- `data-vf-analytics-label="A special label"`
+
 ### Meta tags
 
 Track dimensions:

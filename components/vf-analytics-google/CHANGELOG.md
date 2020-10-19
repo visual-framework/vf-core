@@ -2,6 +2,7 @@
 
 * Track form element interactions
   * https://github.com/visual-framework/vf-core/issues/1161
+* Explicit labels can be provided with data attributes: `data-vf-analytics-label="A special label"`
 * Code linting
 * Avoid logging clicks on non-interactive elements (white space, standard text)
 * Reduce likelihood of logging multiple events

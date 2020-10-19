@@ -331,6 +331,10 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
     // fallback to an href value
     if (linkName.length == 0 && actedOnItem.href) linkName = actedOnItem.href;
 
+    if (actedOnItem.dataset.vfAnalyticsLabel) {
+      linkName = actedOnItem.dataset.vfAnalyticsLabel;
+    }
+
     // special things for gloabl search box
     // if (parentContainer == 'Global search') {
     //   linkName = 'query: ' + jQuery('#global-search input#query').value;
@@ -384,9 +388,36 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
     // is it a form interaction or something with text?
     let formElementTypes = ["label", "input", "select", "textarea"];
     if (formElementTypes.indexOf(elementType) > -1) {
-      // form element
-      ga && ga("send", "event", "UI", "UI Element / " + parentContainer, elementType + " " + linkName);
-      vfGaLogMessage("UI", "UI Element / " + parentContainer, elementType + " " + linkName, lastGaEventTime, actedOnItem);
+      // create a label for form elements
+
+      // derive a form label
+      linkName = "";
+
+      // If an explicit label has been provided, use that
+      // <label for="radio-3" class="vf-form__label" data-vf-google-analytics-label="A special form option">Form Label</label>
+      if (actedOnItem.dataset.vfAnalyticsLabel) {
+        linkName = actedOnItem.dataset.vfAnalyticsLabel;
+      } else {
+        linkName = elementType + ": ";
+        if (actedOnItem.getAttribute("name")) {
+          // if element has a "name"
+          linkName = actedOnItem.getAttribute("name");
+        } else if (actedOnItem.getAttribute("for")) {
+          // if element has a "for"
+          linkName = actedOnItem.getAttribute("for");
+        } else {
+          // get the text of a label
+          linkName = actedOnItem.textContent;
+        }
+      }
+
+      // track a selected value
+      if (elementType == "select") {
+        linkName = linkName + ", " + actedOnItem.value;
+      }
+
+      ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
+      vfGaLogMessage("UI", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
     } else {
       // generic catch all
       ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
