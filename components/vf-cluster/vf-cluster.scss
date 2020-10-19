@@ -1,0 +1,42 @@
+// vf-cluster
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+@import 'vf-cluster.variables.scss';
+
+.vf-cluster {
+  --vf-cluster-margin: var(--vf-cluster-margin--override, var(--page-grid-gap, 1rem));
+  overflow: hidden;
+}
+
+.vf-cluster > * {
+  align-items: var(--vf-cluster-alignment, center);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: calc(var(--vf-cluster-margin) / 2 * -1) !important;
+}
+
+.vf-cluster > * > * {
+  flex: var(--vf-cluster__item--flex);
+  margin: calc(var(--vf-cluster-margin) / 2) !important;
+}
+
+.vf-cluster--sm > * > * {
+  --vf-cluster-margin: 1rem;
+}
+
+.vf-cluster--md > * > * {
+  --vf-cluster-margin: 1.5rem;
+}
+
+.vf-cluster--lg > * > * {
+  --vf-cluster-margin: 2rem;
+}
