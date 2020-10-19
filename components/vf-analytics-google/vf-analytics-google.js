@@ -198,53 +198,69 @@ function vfGaInit(vfGaTrackOptions) {
 }
 
 /**
- * Track page links as events
+ * Track clicks as events
  */
 function vfGaLinkTrackingInit() {
   document.body.addEventListener("mousedown", function (evt) {
-    // send GA events if GA closest area is detected
-    let closestContainer = getClosestGa(evt.target, "[data-vf-google-analytics-region]");
-    if (closestContainer) {
-      vfGaTrackInteraction(evt.target);
-    } else {
-      var from = findParent("a",evt.target || evt.srcElement);
-      if (from) {
-       /* it's a link, actions here */
-       // console.log('clicked from findParent: ',from);
-        vfGaTrackInteraction(from);
+
+    // Debug event type clicked
+    // console.log(evt.target.tagName, evt.target);
+
+    // we only track clicks on interactive elements (links, buttons, forms)
+    if (evt.target) {
+      if (evt.target.tagName) {
+        let clickedElementTag = evt.target.tagName.toLowerCase();
+        let actionElements = ["a", "button", "label", "input", "select", "textarea", "details"];
+        if (actionElements.indexOf(clickedElementTag) > -1) {
+          vfGaTrackInteraction(evt.target);
+          return;
+        }
       }
+    }
+
+    // sometimes a `span` or `img` element is wrapped in an `a` element
+    var from = findParent("a", evt.target || evt.srcElement);
+    if (from) {
+      // console.log('clicked from findParent: ',from);
+      vfGaTrackInteraction(from);
+      return;
+    }
+    // similarly for a `details` element
+    from = findParent("detail", evt.target || evt.srcElement);
+    if (from) {
+      // console.log('clicked from findParent: ',from);
+      vfGaTrackInteraction(from);
+      return;
     }
   }, false );
 
   //find first parent with tagName [tagname]
   function findParent(tagname,el){
     while (el){
-      if ((el.nodeName || el.tagName).toLowerCase()===tagname.toLowerCase()){
-        return el;
-      }
+      if ((el.nodeName || el.tagName).toLowerCase()===tagname.toLowerCase()){return el;}
       el = el.parentNode;
     }
     return null;
   }
 }
 
-/*
- * Find closest element that has GA attribute
- * @returns {el} the closest element with GA attribute
- */
-function getClosestGa(elem, selector) {
-  // Element.matches() polyfill
-  // https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
-  if (!Element.prototype.matches) {
-    Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-  }
+// /*
+//  * Find closest element that has GA attribute
+//  * @returns {el} the closest element with GA attribute
+//  */
+// function getClosestGa(elem, selector) {
+//   // Element.matches() polyfill
+//   // https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
+//   if (!Element.prototype.matches) {
+//     Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+//   }
 
-	// Get the closest matching element
-  for ( ; elem && elem !== document; elem = elem.parentNode ) {
-    if ( elem.matches( selector ) ) return elem;
-  }
-  return null;
-}
+// 	// Get the closest matching element
+//   for ( ; elem && elem !== document; elem = elem.parentNode ) {
+//     if ( elem.matches( selector ) ) return elem;
+//   }
+//   return null;
+// }
 
 /**
  * Utility method to get the last in an array
@@ -259,7 +275,6 @@ if (!Array.prototype.vfGaLinkLast){
 
 // Catch any use cases that may have been existing
 // To be removed in 2.0.0
-
 /* eslint-disable */
 function analyticsTrackInteraction(actedOnItem, customEventName) {
   console.warn("vfGa","As of 1.0.0-rc.3 analyticsTrackInteraction() is now vfGaTrackInteraction(). You function call is being proxied. You should update your code.");

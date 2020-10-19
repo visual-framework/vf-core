@@ -1,8 +1,10 @@
 ### 1.0.0-rc.6
 
-* Track form interactions
+* Track form element interactions
   * https://github.com/visual-framework/vf-core/issues/1161
-* code linting
+* Code linting
+* Avoid logging clicks on non-interactive elements (white space, standard text)
+* Reduce likelihood of logging multiple events
 * `vfGaIndicateLoaded()` now accepts the options object `vfGaTrackOptions`
 * with property `vfGaTrackPageLoad`. `vfGaTrackOptions.vfGaTrackPageLoad` defaults to true. If you set to false, the function will _not_ track the initial page view. Useful if you track the initial page view with JavaScript in your HTML.
   * https://github.com/visual-framework/vf-core/issues/1116
