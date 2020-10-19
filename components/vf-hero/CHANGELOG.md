@@ -1,4 +1,11 @@
+### 1.7.0
+
+- makes the padding on `--intense` standardised to our spacing units
+- reduces height of all other variants
+- currently this is the 'maximum space' the component will get to allow it's content to be readable.
+
 ### 1.6.0
+
 
 - adds loading="lazy" to the img element for better performance
 

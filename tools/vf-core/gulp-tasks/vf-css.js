@@ -51,7 +51,8 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
              name: "` + name + `",
              version: "` + version + `",
              location: "` + location + `",
-             vfCoreVersion: "` + global.vfVersion + `"
+             vfCoreVersion: "` + global.vfVersion + `",
+             buildTimeStamp: "` + new Date().toUTCString() + `"
           );`
 
           done(null, output);

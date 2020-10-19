@@ -41,7 +41,6 @@ function vfBannerClose(targetBanner) {
     }
     if (targetBanner.classList.contains("vf-banner--bottom")) {
       var pagePadding = document.body.style.paddingBottom.replace(/\D/g,'') || 0;
-      console.log(pagePadding, height)
       pagePadding = pagePadding - height;
       document.body.style.paddingBottom = pagePadding+'px';
     }

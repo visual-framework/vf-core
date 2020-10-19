@@ -1,3 +1,12 @@
+### 2.0.0
+
+- updates all spacing variables to use numbers for sizing. 
+
+### 1.3.1
+
+- fix display of design token component documentation
+  - https://github.com/visual-framework/vf-core/pull/1134
+
 ### 1.3.0
 
 - adds z-index values for `vf-box` component
