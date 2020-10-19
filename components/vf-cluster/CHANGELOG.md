@@ -1,3 +1,3 @@
-### 1.0.0-alpha.1
+### 0.0.1
 
-- Adds example if statement for setting context
+- Initital launch of the component. It is useable but the documentation needs refining.
