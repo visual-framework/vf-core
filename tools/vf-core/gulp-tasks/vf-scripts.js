@@ -6,7 +6,6 @@
  */
 
 module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation) {
-  const {src, task} = require('gulp');
   const rename = require('gulp-rename');
   const rollup = require('gulp-better-rollup');
   const includePaths = require('rollup-plugin-includepaths');
@@ -101,7 +100,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   // For config see .eslintrc.js
   const vfJsLintPaths = [componentPath+'/**/embl-*.js', componentPath+'/**/vf-*.js', '!assets/**/*.js',  '!'+componentPath+'/**/*.precompiled.js'];
   gulp.task('vf-lint:js-soft-fail', function() {
-    return src(vfJsLintPaths)
+    return gulp.src(vfJsLintPaths)
       // eslint() attaches the lint output to the "eslint" property
       // of the file object so it can be used by other modules.
       .pipe(eslint())
@@ -111,7 +110,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   });
 
   gulp.task('vf-lint:js-hard-fail', function() {
-    return src(vfJsLintPaths)
+    return gulp.src(vfJsLintPaths)
       .pipe(eslint())
       .pipe(eslint.format())
       .pipe(eslint.failAfterError());
