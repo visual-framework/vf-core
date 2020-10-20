@@ -1,28 +1,23 @@
-<main class="vf-swatches | vf-grid vf-grid__col-2">
-
+<main class="vf-grid vf-grid__col-3">
 {% for item in typography.properties %}
 
-<article class="vf-swatch">
-  <div class="vf-swatch__colour">
-    <h3 class="vf-swatch__colour-name">
-      {{ item.meta.friendlyName }}
-    </h3>
+<article class="vf-card">
+  <div style="padding: 16px;">
+    <p style="font-size: {{ item.value.fontSize }}; font-weight: {{ item.value.fontWeight }}; line-height: {{ item.value.lineHeight }}">{{ item.meta.pangram }}</p>
   </div>
 
-  <section class="vf-swatch__details">
-    <p style="font-size: {{ item.value.fontSize }}; font-weight: {{ item.value.fontWeight }}; line-height: {{ item.value.lineHeight }}">{{ item.meta.pangram }}</p>
+  <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
+    <h3>{{ item.meta.friendlyName }}</h3>
+    <hr class="vf-divider">
+    <p><span>Font Size: </span><code>{{ item.value.fontSize }}</code></p>
+    <p><span>Font Weight: </span><code>{{ item.value.fontWeight }}</code></p>
+    <p><span>Ling Height: </span><code>{{ item.value.lineHeight}}</code></p>
+    <hr class="vf-divider">
+    <p>Sass:</p>
+    <code>@mixin set-type(`{{ item.meta.sassMap }}`)</code>
   </section>
-  <ul class="">
-    <li><span>Font Size: </span>{{ item.value.fontSize }}</li>
-    <li><span>Font Weight: </span>{{ item.value.fontWeight }}</li>
-    <li><span>Ling Height: </span>{{ item.value.lineHeight}}</li>
-  </ul>
-  {% markdown %}
-  {% endmarkdown %}
-  <ul>
-    <li><span>Sass: </span><code>@mixin set-type(`{{ item.meta.sassMap }}`)</code></li>
-  </ul>
 </article>
+
 {% else %}
 
 <p>Something went wrong.</p>

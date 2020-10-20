@@ -13,6 +13,7 @@ let fractalConfig = {
     {
       name: 'default',
       label: 'Welcome',
+      hidden: 'true',
     },
   ]
 };
