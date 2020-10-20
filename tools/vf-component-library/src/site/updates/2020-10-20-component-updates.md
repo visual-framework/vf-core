@@ -21,14 +21,14 @@ layout: layouts/post.njk
 {# endmacros #}
 
 
-<div class="vf-box vf-box-theme--quaternary vf-box--normal">
+<div class="vf-box vf-box-theme--tertiary vf-box--easy">
 <h3 class="vf-box__heading">
 This releases {{version}} to the CDN
 </h3>
 <div class="vf-box__text">
 
-- [https://assets.emblstatic.net/vf/v{{version}}/css/styles.css](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css)
-- [https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
 
 As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
 
