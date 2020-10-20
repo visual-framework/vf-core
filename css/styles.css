@@ -10,7 +10,7 @@
  * Version: 1.2.1
  * Location: components/vf-componenet-rollup
  * VF Core version in use: 2.2.8
- * Build time: Tue, 20 Oct 2020 15:45:50 GMT
+ * Build time: Tue, 20 Oct 2020 15:46:11 GMT
  */
 /* stylelint-disable */
 :root {
@@ -5285,7 +5285,8 @@ html:not(.vf-disable-deprecated) .vf-global-header__inner {
  * Location: components/vf-intro
  */
 .vf-intro {
-  margin: 0 0 110px 0;
+  margin-bottom: 1rem;
+  margin-bottom: var(--vf-intro-spacing, 1rem);
 }
 .vf-intro > * {
   grid-column: 2/span 1;
@@ -5294,36 +5295,14 @@ html:not(.vf-disable-deprecated) .vf-global-header__inner {
   margin-bottom: 2rem;
 }
 
-/*
- * We are moving to the idea of not relying on .vf-body for centering.
- * Until then we need to have this litte 'reset'
- */
-.vf-body .vf-intro {
-  box-sizing: initial;
-  margin-left: unset;
-  margin-right: unset;
-  max-width: unset;
-  padding-left: unset;
-  padding-right: unset;
-}
-
 .vf-intro {
-  --vf-intro-spacing: 200px;
-  --page-grid-gap: 0 1em;
-  box-sizing: border-box;
-  display: grid;
-  grid-column: main;
-  grid-template-rows: 1fr repeat(10, min-content);
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 81.25em;
-  padding-left: 1em;
-  padding-right: 1em;
+  --vf-intro-spacing: 3rem;
 }
 
 @media (min-width: 1024px) {
   .vf-intro {
-    --page-grid-gap: 0 1.5em;
+    display: grid;
+    grid-column: 1/-1 !important;
     grid-template-areas: "... header header" "... ...    links";
     grid-template-columns: var(--embl-grid-module--prime) auto var(--embl-grid-module--prime);
   }
@@ -5342,9 +5321,25 @@ html:not(.vf-disable-deprecated) .vf-global-header__inner {
   font-size: 42px;
   font-weight: 700;
   line-height: 1.547;
-  margin: 0 0 16px 0;
-  margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
-  margin: 0 0 56px 0;
+  margin: 0 0 0 0;
+  line-height: 1.25;
+}
+.vf-intro__heading + .vf-lede {
+  --vf-stack-margin--custom: 2rem;
+}
+.vf-intro__heading + .vf-intro__subheading {
+  --vf-stack-margin--custom: 0;
+}
+
+.vf-intro__subheading {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.333;
+  margin: 0 0 0 0;
+}
+.vf-intro__subheading + * {
+  --vf-stack-margin--custom: 2rem;
 }
 
 .vf-intro__heading--has-tag {
