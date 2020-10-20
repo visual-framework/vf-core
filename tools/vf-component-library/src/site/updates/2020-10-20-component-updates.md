@@ -1,7 +1,7 @@
 ---
 title: 2.3.0 Component updates
 subtitle: Revamped spacing methods, imrpoved analytics tracking, JS linting and many fixes and tweaks.
-date: 2020-10-20 10:10:50
+date: 2020-10-20 13:10:50
 version: 2.3.0
 tags:
   - posts
