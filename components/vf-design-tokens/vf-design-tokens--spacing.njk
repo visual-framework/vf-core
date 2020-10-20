@@ -5,23 +5,23 @@
     <div style="height: {{ item.value }}; width: {{ item.value }}; background: #009f4d;"></div>
   </div>
   <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
-    <h3>{{ item.meta.friendlyName }}</h3>
+    <h3 class="vf-card__title">{{ item.meta.friendlyName }}</h3>
     <hr class="vf-divider">
-    <p>Value:</p>
-    <p>{{ item.value }}</p>
+    <p class="vf-card__text">Value:</p>
+    <p class="vf-card__text"><code>{{ item.value }}</code></p>
     {% if item.meta.sassVariable %}
     <hr class="vf-divider">
-    <p>Sass:</p>
-      <p>{{ item.meta.sassVariable }}</p>
+    <p class="vf-card__text">Sass:</p>
+      <p class="vf-card__text"><code>{{ item.meta.sassVariable }}</code></p>
     {% endif %}
     {% if item.meta.CSSCustomProperty %}
     <hr class="vf-divider">
-    <p>CSS custom property:</p>
-      <p>{{ item.meta.CSSCustomProperty }}</p>
+    <p class="vf-card__text">CSS custom property:</p>
+      <p class="vf-card__text"><code>{{ item.meta.CSSCustomProperty }}</code></p>
     {% endif %}
     {% if item.meta.comment %}
       <h4>notes:</h4>
-      <p>
+      <p class="vf-card__text">
         {{ item.meta.comment }}
       </p>
     {% endif %}

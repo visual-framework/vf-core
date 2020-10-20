@@ -9,14 +9,14 @@
 
 
   <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
-    <h3>{{ item.meta.friendlyName }}</h3>
+    <h3 class="vf-card__title">{{ item.meta.friendlyName }}</h3>
     <hr class="vf-divider">
-    <p>Sass:</p>
-      <p>{{ item.meta.sassVariable }}</p>
+    <p class="vf-card__text">Sass:</p>
+      <p class="vf-card__text"><code>{{ item.meta.sassVariable }}</code></p>
     {% if item.meta.comment %}
     <hr class="vf-divider">
       <h4>notes:</h4>
-      <p>
+      <p class="vf-card__text">
         {{ item.meta.comment }}
       </p>
     {% endif %}
