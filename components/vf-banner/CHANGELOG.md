@@ -1,3 +1,15 @@
+### 1.6.0
+
+- updates spacing design tokens
+- requires `v2.0.0` of the `vf-design-tokens` package or newer.
+- removes leftover `console.log`
+
+### 1.5.0
+
+- centralises logic to "close" a banner
+- adds padding to the document to accomodate a fixed-position banner so it won't hide content
+  - https://github.com/visual-framework/vf-core/issues/1119
+
 ### 1.4.0
 
 - removes inline padding on `vf-banner` class

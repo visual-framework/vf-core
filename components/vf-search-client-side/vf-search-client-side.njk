@@ -2,6 +2,7 @@
   {% set search_client_prompt = context.search_client_prompt %}
   {% set search_client_action = context.search_client_action %}
   {% set search_client_results = context.search_client_results %}
+  {% set search_client_autofocus = context.search_client_autofocus %}
   {% set search_client_button = context.search_client_button %}
   {% set search_client_button_text = context.search_client_button_text %}
   {% set search_client_script = context.search_client_script %}
@@ -15,7 +16,7 @@
 <div class="vf-grid">
   <form action="{{ search_client_action }}" method="GET" class="vf-form | vf-search vf-search--inline">
     <div class="vf-form__item | vf-search__item">
-      <input type="search" id="search" placeholder="{{ search_client_prompt }}" name="search_query" class="vf-form__input | vf-search__input" data-vf-search-client-side-input>
+      <input type="search" id="search" placeholder="{{ search_client_prompt }}" name="search_query" class="vf-form__input | vf-search__input" {%- if search_client_autofocus %} autofocus{%- endif %} data-vf-search-client-side-input>
     </div>
     {%- if search_client_button -%}
     <button type="submit" class="vf-search__button | vf-button vf-button--primary">

@@ -1,0 +1,18 @@
+{% if context %}
+  {% set stack__spacing = context.stack__spacing %}
+  {% set stack__modifier = context.stack__modifier %}
+  {% set stack__spacing__custom = context.stack__spacing__custom %}
+  {% set custom_spacing_property = context.custom_spacing_property %}
+{% endif %}
+
+<div class="vf-stack
+  {%- if stack__spacing %} vf-stack--{{stack__spacing}}{%- endif -%}
+  {%- if stack__modifier -%} {{stack__modifier}}{%- endif -%}"
+  {%- if stack__spacing__custom or custom_spacing_property %} style="--vf-stack-margin--custom: {{stack__spacing__custom or custom_spacing_property}};"{%- endif -%}
+>
+
+  {% render '@vf-box--normal-primary' %}
+  {% render '@vf-box--normal-primary' %}
+  {% render '@vf-box--normal-primary' %}
+
+</div>

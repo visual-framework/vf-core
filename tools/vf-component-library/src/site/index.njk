@@ -1,163 +1,145 @@
 ---
-title: The Visual Framework
-subtitle: Tailored for life science websites
+title: The Visual Framework for life science websites
+subtitle: With a focus on compatibility, portability and sane UX defaults
 date: 2018-08-22 12:24:50
 layout: layouts/base.njk
 ---
 
-<section class="vf-intro | embl-grid embl-grid--has-centered-content">
-<div><!-- empty --></div>
-<div>
-  <h1 class="vf-intro__heading vf-intro__heading--has-tag">{{ title }} <a href="#" class="vf-badge vf-badge--primary vf-badge--phases">beta</a></h1>
-  <p class="vf-lede">{{ siteConfig.siteInformation.short_description | safe }}</p>
-
-  <p class="vf-intro__text">The Visual Framework (VF) is designed with the <a href="https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability" class="vf-link">needs of life science websites and services</a>. It goes beyond guidance for tables, graphs, data-heavy typography and focuses on being sane defaults and implements its CSS in a way that won't interfere with your existing components that use Bootstrap, Angular, or something else.</p>
-
-</div>
-</section>
-
-
-<section class="vf-content | embl-grid embl-grid--has-centered-content">
-<div><!-- empty --></div>
-<div class="">
-
-{# {% markdown %}
-
-## Guide: [Building a VF-powered system]({{ '/building' | url }})
-
-The when and how to making a project powered with Visual Framework components. [See the building guide]({{ '/building' | url }}).
-
-{% endmarkdown %} #}
-
-{% render '@vf-search-client-side--default', {
-  "search_client_prompt": "Search components and documentation",
-  "search_client_button": true,
-  "search_client_button_text": "Search",
-  "search_client_action": "/vf-core/search/",
-  "search_client_results": false
+{# Intro #}
+{% render '@vf-intro', {
+  "vf_intro_heading": "The Visual Framework",
+  "vf_intro_lede": "Good defaults for life science websites, plus compatibility with existing CSS and JS. Bring your Bootsrap, Angular or vanilla CSS code base.",
+  "vf_intro_text": [
+    '<a href="about" class="vf-button vf-button--primary vf-button--outline">Learn more</a>'
+  ],
+  "vf_intro_badge": false
 } %}
 
+
+{# Search #}
+<section class="vf-content | embl-grid embl-grid--has-centered-content | vf-u-fullbleed vf-u-background-color--grey--lightest | vf-u-padding__top--1200 vf-u-padding__bottom--800">
+<div><!-- empty --></div>
+<div class="">
+  {% render '@vf-section-header', {
+    "section_title": "Search components, documentation and more",
+    "id": "search",
+    "vf_section__content": [
+      " "
+    ]
+  } %}
+
+  {% render '@vf-search-client-side--default', {
+    "search_client_prompt": "Search components and documentation",
+    "search_client_autofocus": false,
+    "search_client_button": true,
+    "search_client_button_text": "Search",
+    "search_client_action": "/vf-core/search/",
+    "search_client_results": false
+  } %}
 </div>
 </section>
 
 
-
-
-<section class="vf-content | embl-grid embl-grid--has-centered-content">
-<div><!-- empty --></div><div class="vf-box vf-box--inlay">
-
-{% markdown %}
-
-## Guide: [Building a VF-powered system]({{ '/building' | url }})
-
-The when and how to making a project powered with Visual Framework components. [See the building guide]({{ '/building' | url }}).
-
-{% endmarkdown %}
-
-</div>
-</section>
-
-<section class="vf-content | embl-grid embl-grid--has-centered-content">
-<div></div>
-<div>
-
-{% markdown %}
-
-## {{ subtitle }}
-
-<!-- This content is styled using the .vf-content component, intended for use
-     where the application of classnames is difficult, such as Markdown text
-     or WYSIWYG editors -->
-
-The Visual Framework address three major needs:
-
-1. **Clarity**<br/>
-the VF is highly customisable, but out of the box it has a highly usable look that builds in solid UX principles to increase comprehension and decrease [cognitive load](https://www.google.com/search?q=cognitive+load+software+usability). Just because the scientific material is challenging, it doesn't mean using the website [needs to be](https://theoutline.com/post/2954/user-interface-designers-are-horrified-by-hawaii-s-missile-alert-system).
-
-1. **Compatibility**<br/>
-the VF won't break your other framework's CSS or JS, so bring Bootstrap, Foundation, React or Angular. With the VF  components (and brand design) can be shared between sites without cross-contaminating other functionality. We achieve this by a [CSS Modules-style](https://github.com/css-modules/css-modules) approach:
-
-    CSS: styling on HTML elements and only use namespaced classes, that is:
-      - Nope: `.button {}` or `button {}` or `div.button {}`
-      - Like this `.vf-button {}`
-
-    JavaScript: Use ours or bring your own
-
-    We've included only a minimal amount of JS in components and it's fully optional (just remove [the JavaScript selectors](https://github.com/visual-framework/vf-core/issues/115#issuecomment-455524131)). If you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way, just remove `data-vf-js-tabs` from your markup.
-
-1. **Componentisation**<br/>
-  Use only the portions you need.
-
-    Use `vf-core` to build your CSS, JS dynamically based on the components you need, or bring your own build system.
-
-{% endmarkdown %}
-
-</div>
-</section>
-
+{# Installation #}
 <section class="embl-grid embl-grid--has-centered-content">
-<div class="vf-section-header">
-  <h2 class="vf-section-header__heading">FAQ</h2>
-</div>
-<div class="vf-content">
-
-<a name="faq"></a>
-
-{% markdown %}
-
-### Is VF Core just a Bootstrap with a different theme?
-
-No. VF Core is an architecture to build extensible components that contain CSS/Sass, JS, Nunjuck templates, and image assets. You could use the VF Core to make a Bootstrap-style framework.
-
-### I’m a small research team, should I use VF Core?
-
-Yes, utilise the Visual Framework system with one of the above listed approaches.
-
-### Does it have a specific look and feel?
-
-No. It has a default look out of the box, but it is fully customisable by altering the [Design Tokens](https://github.com/visual-framework/vf-core/tree/develop/components/vf-design-tokens/src).
-
-### Is it really ready for use today?
-
-[Yes!](https://www.covid19dataportal.org/)
-
-### Shouldn’t I just use Bootstrap or Solution X?
-
-No, but yes … do both, if you need to.
-
-This question involve the Visual Framework's architecture which addresses common issues with code sharing and compatibility with life science webistes. This projecft allows you to share Visual Framework components without disrupting your freedom to choose Bootstrap, Foundation, jQuery, React or another framework for the rest of your site.
-
-### What components are available?
-
-Many common component for tabs, boxes, links and so on [are available]({{ '/components' | url }}).
-
-
-### Help!
-
-Have a problem? See the [Troubleshooting guide]({{ '/troubleshooting' | url }}) or [chat the community on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
-
-{% endmarkdown %}
-
-</div>
-</section>
-
-<section class="embl-grid embl-grid--has-centered-content">
-  <div></div>
+  {% render '@vf-section-header', {
+    "section_title": "Install, build",
+    "id": "install",
+    "vf_section__content": [
+      "Install the source Sass and JavaScript files via yarn"
+    ]
+  } %}
   <div class="vf-content">
-    <h2 class="vf-text vf-text-heading--1 vf-text--invert">Sections</h2>
-    {# show all pages classes as sections #}
-    {# by default, 11ty sorts by `date` field #}
-    {%- for section in collections.sections  %}
-      {% if section.data.is_index == true %}
-        {% set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %}
 
-        {% markdown %}
-        ## [{{ section.data.title }}]({{ absolutePostUrl | url }})
+    {% markdown %}
 
-        {{ section.data.subtitle }}
-        {% endmarkdown %}
+    {% codeblock 'bash' -%}
+    # Bare bones components
+    yarn add @visual-framework/vf-sass-config @visual-framework/vf-inlay
 
-      {% endif %}
-    {%- endfor %}
+    # Or a boilerplate that will build your CSS and JS
+    yarn create @visual-framework/vf-project your-new-site-name vf-build-boilerplate
+
+    # Or a full 11ty-based site
+    yarn create @visual-framework/vf-project your-new-site-name
+
+    {%- endcodeblock %}
+
+    <br/>
+
+    [Learn more about these templates and other options](building)
+
+    {% endmarkdown %}
+
+  </div>
+</section>
+
+<hr class="vf-divider" />
+
+{# Installation #}
+<section class="embl-grid embl-grid--has-centered-content">
+  {% render '@vf-section-header', {
+    "section_title": "Prebuilt CDN",
+    "id": "cdn",
+    "vf_section__content": [
+      "When you only need to include compiled CSS or JS, you can use the CDN."
+    ]
+  } %}
+  <div class="vf-content">
+
+    {% markdown %}
+    See it in action with our simple starter template, or browse the examples to jumpstart your next project.
+
+    {% codeblock 'html' -%}
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
+    <!-- JS -->
+    <script src="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/scripts/scripts.js"></script>
+    {%- endcodeblock %}
+
+    <br/>
+
+    - Latest release: `{{ siteConfig.vfVersion }}` [See more releases](updates).
+    - [Explore the components](components)
+    - [View the HTML boilerplate templates](patterns)
+
+    {% endmarkdown %}
+
+  </div>
+</section>
+
+{# Sections #}
+ {# vf-u-background-color--grey--lightest #}
+<section class="vf-card-container | vf-u-fullbleed">
+  <div class="vf-card-container__inner">
+  {% render '@vf-section-header', {
+    "section_title": "Sections",
+    "id": "sections"
+  } %}
+
+  <style>
+  .vf-card {
+    /* would be nice if this was a custom property */
+    grid-template-rows: 188px 1fr;
+  }
+  </style>
+
+  {#- show all pages classes as sections -#}
+  {#- by default, 11ty sorts by `date` field -#}
+  {%- for section in collections.sections  %}
+    {% if section.data.is_index == true %}
+      {# Eventually these might have unique images, not sure yet #}
+      {%- set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %}
+      {%- render '@vf-card', {
+        "theme": "tertiary",
+        "variant": "easy",
+        "card_title": section.data.title,
+        "card_href": absolutePostUrl | url,
+        "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png",
+        "card_text": section.data.subtitle,
+        "card_image__alt": section.data.title
+      } %}
+    {% endif %}
+  {%- endfor %}
   </div>
 </section>

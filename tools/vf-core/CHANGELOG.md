@@ -1,3 +1,14 @@
+### 2.2.8
+
+- adds ESLint task and config
+  - https://github.com/visual-framework/vf-core/issues/1143
+- adds `buildTimeStamp` to `componentInfo` component sass map
+  - https://github.com/visual-framework/vf-core/issues/974
+
+### 2.2.7
+
+- dependency bump
+
 ### 2.2.6
 
 - dependency bump

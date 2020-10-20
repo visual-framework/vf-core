@@ -1,3 +1,7 @@
+### 2.1.0
+
+- makes the layout something that can now use 'extends' within nunjucks
+
 ### 2.0.4
 
 - fixes issue with `auto` and `1fr` doing the opposite with the sidebar.

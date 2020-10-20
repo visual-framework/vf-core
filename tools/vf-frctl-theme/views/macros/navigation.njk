@@ -13,7 +13,7 @@
     {% for item in items %}
         {% if item.isCollection or (item.isComponent and not item.isCollated and item.variants().filter('isHidden', false).size > 1) %}
         <li class="Tree-item Tree-collection Tree-depth-{{ depth }}" data-behaviour="collection" id="tree-{{ root.name }}-collection-{{ item.handle }}">
-            <h4 class="vf-heading vf-u-type__text-heading--5 vf-u-margin--0 vf-u-margin__bottom--md vf-text--has-tag Tree-collectionLabel" data-role="toggle">
+            <h4 class="vf-heading vf-u-type__text-heading--5 vf-u-margin--0 vf-u-margin__bottom--400 vf-text--has-tag Tree-collectionLabel" data-role="toggle">
                 <span>{{ item.label }}</span>
                 {% if item.isComponent and item.variants().size > 1 %}
                   {% if item.status %}{{ status.unlabelled(item.status) }}{% endif %}

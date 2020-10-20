@@ -1,3 +1,7 @@
+### 1.3.0
+
+- makes the layout something that can now use 'extends' within nunjucks
+
 ### 1.1.0
 
 - adds grid row span utility classes
