@@ -1,3 +1,10 @@
+### 1.4.0
+
+- adds the option to have a nicer styled 'sub-heading'.
+- introduces the use of `vf-stack` to layout out the vertical stacking of the content.
+- use `--vf-stack-margin--custom` to align things as required.
+- removes use of `embl-grid` and lets `vf-intro` roll it's own.
+
 ### 1.3.2
 
 - resets the custom property used for `gap` in `embl-grid` so it only worries about the column gap.
