@@ -39,9 +39,8 @@ As a reminder, the rollup CSS and JS are compilations of many independently vers
 
 {{ notes('vf-design-tokens', '2.0.0', 'e7e09d66c3f4d6e2d2fe0624abf02301073121ca') }}
 
-- updates all spacing variables to use numbers for sizing.
+This release updates all spacing variables to use numbers for sizing. [You can learn more about change in this post]({{ '/updates/2020-10-20-a-better-space' | url }}).
 
-_(A detailed migration update will be published shortly and link to from here.)_
 
 The following components have also been updated and now require `vf-design-tokens` 2.0.0.
 
