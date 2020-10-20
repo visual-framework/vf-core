@@ -1,4 +1,4 @@
-### 1.2.0
+### 1.3.0
 
 - makes the layout something that can now use 'extends' within nunjucks
 
