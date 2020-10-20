@@ -1,6 +1,10 @@
+### 2.1.0
+
+- update documentation pages for all design tokens used to make use of updated CSS.
+
 ### 2.0.0
 
-- updates all spacing variables to use numbers for sizing. 
+- updates all spacing variables to use numbers for sizing.
 
 ### 1.3.1
 
