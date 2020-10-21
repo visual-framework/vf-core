@@ -5,12 +5,231 @@
   <subtitle>A front-end toolkit to quickly build better life science websites.</subtitle>
   <link href="https://visual-framework.github.io/vf-core/feed.xml" rel="self"/>
   <link href="https://visual-framework.github.io/vf-core/"/>
-  <updated>2020-10-12T09:10:50+00:00</updated>
+  <updated>2020-10-20T15:10:50+00:00</updated>
   <id>https://visual-framework.github.io/vf-core</id>
   <author>
     <name>Visual Framework system</name>
     <email>ken.hawkins@embl.de</email>
   </author>
+  
+  <entry>
+    <title>Giving the Visual Framework better space</title>
+    <link href="https://visual-framework.github.io/vf-core/updates/2020-10-20-a-better-space/"/>
+    <updated>2020-10-20T15:10:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-core/updates/2020-10-20-a-better-space/</id>
+    <content type="html">
+This is a breaking change, so we have given this a ‘major bump’ in the [npm package](https://www.npmjs.com/package/@visual-framework/vf-design-tokens) to `v2.0.0`.
+
+
+&lt;div class=&quot;vf-box vf-box--easy&quot;&gt;
+
+  &lt;h3 class=&quot;vf-box__heading&quot;&gt;tl;dr?&lt;/h3&gt;
+  &lt;p class=&quot;vf-box__text&quot;&gt;&lt;code&gt;vf-u-margin__bottom--xs&lt;/code&gt; is now &lt;code&gt;vf-u-margin__bottom--100&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;br&gt;
+
+Where we were using [’t-shirt’ sizes](https://www.drupal.org/files/issues/2019-05-01/Bootstrap-4--v--Bootstrap-3.png) to define a naming convention it stifled our ability to create newer spacing tokens. How do decide what to call the value that’s between ‘medium’ and ‘large’? We didn’t think `vf-spacing—bigger-than-medium-but-smaller-than-large` would work out so well.
+
+Now we use an incremental number to determine the spacing tokens.
+
+As we are moving closer to a more unified, consistent system of layout and spacing with multiples of `4px` we start with `4px` (or `.125em`) equally `50`.
+
+This way we can easily expand the spacing tokens as needed.
+
+These changes:
+
+- have already [been made in components](/vf-core/updates/2020-10-20-component-updates) that made use of the original spacing design tokens so if you update your components to the latest version - you will get these updates ‘for free’.
+- also effects the naming of the utility classes that some are using in their sites and products. You will need to update those CSS classes accordingly to benefit from these changes.
+
+Below is a table of what the tokens were, and what they are now so you can ‘find and replace’ as needed in your projects.
+
+
+| old class         | new class         | value (in `rem`) |
+|-------------------|-------------------|------------------|
+| .vf-u-margin—0    | .vf-u-margin—0    | 0rem             |
+| .vf-u-margin—xxs  | .vf-u-margin—50   | .125rem          |
+| .vf-u-margin—xs   | .vf-u-margin—100  | .25rem           |
+| .vf-u-margin—sm   | .vf-u-margin—200  | .5rem            |
+| .vf-u-margin—md   | .vf-u-margin—400  | 1rem             |
+| .vf-u-margin—lg   | .vf-u-margin—500  | 1.25rem          |
+| .vf-u-margin—xl   | .vf-u-margin—600  | 1.5rem           |
+| .vf-u-margin—xxl  | .vf-u-margin—800  | 2rem             |
+| .vf-u-margin—xxxl | .vf-u-margin—1200 | 3rem             |
+
+&lt;br&gt;
+
+This also highlights the (so far, unwritten) rule that utility classes should be a last resort, and not an often used technique (we are trying to move components forward so they can accept things that might need to be ‘customised’ for your requirement).
+</content>
+  </entry>
+  
+  <entry>
+    <title>2.3.0 Component updates</title>
+    <link href="https://visual-framework.github.io/vf-core/updates/2020-10-20-component-updates/"/>
+    <updated>2020-10-20T13:10:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-core/updates/2020-10-20-component-updates/</id>
+    <content type="html">&lt;div class=&quot;vf-box vf-box-theme--tertiary vf-box--easy&quot;&gt;
+&lt;h3 class=&quot;vf-box__heading&quot;&gt;
+This releases 2.3.0 to the CDN
+&lt;/h3&gt;
+&lt;div class=&quot;vf-box__text&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://assets.emblstatic.net/vf/v2.3.0/css/styles.css&quot;&gt;&lt;code&gt;https://assets.emblstatic.net/vf/v2.3.0/css/styles.css&lt;/code&gt;&lt;/a&gt; &lt;br&gt;
+&lt;a href=&quot;https://assets.emblstatic.net/vf/v2.3.0/scripts/scripts.js&quot;&gt;&lt;code&gt;https://assets.emblstatic.net/vf/v2.3.0/scripts/scripts.js&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, &lt;a href=&quot;https://visual-framework.github.io/vf-core/building&quot;&gt;you can find a guide here&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Components with breaking changes&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-design-tokens/&quot;&gt;vf-design-tokens&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.0.0&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/e7e09d66c3f4d6e2d2fe0624abf02301073121ca&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This release updates all spacing variables to use numbers for sizing. &lt;a href=&quot;https://visual-framework.github.io/vf-core/updates/2020-10-20-a-better-space&quot;&gt;You can learn more about change in this post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The following components have also been updated and now require &lt;code&gt;vf-design-tokens&lt;/code&gt; 2.0.0.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-banner/&quot;&gt;vf-banner&lt;/a&gt; 1.6.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-box/&quot;&gt;vf-box&lt;/a&gt; 2.1.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-button/&quot;&gt;vf-button&lt;/a&gt; 1.2.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-code-example/&quot;&gt;vf-code-example&lt;/a&gt; 1.1.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-content/&quot;&gt;vf-content&lt;/a&gt; 1.3.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-details/&quot;&gt;vf-details&lt;/a&gt; 1.1.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-form__fieldset/&quot;&gt;vf-form__fieldset&lt;/a&gt; 1.1.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-form__label/&quot;&gt;vf-form__label&lt;/a&gt; 1.2.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-form__legend/&quot;&gt;vf-form__legend&lt;/a&gt; 1.1.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-link-list/&quot;&gt;vf-link-list&lt;/a&gt; 1.2.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-logo/&quot;&gt;vf-logo&lt;/a&gt; 1.4.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-masthead/&quot;&gt;vf-masthead&lt;/a&gt; 1.2.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-page-header/&quot;&gt;vf-page-header&lt;/a&gt; 1.1.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-sass-config/&quot;&gt;vf-sass-config&lt;/a&gt; 2.1.0&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-section-header/&quot;&gt;vf-section-header&lt;/a&gt; 1.3.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-utility-classes/&quot;&gt;vf-utility-classes&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.0.0&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/e7e09d66c3f4d6e2d2fe0624abf02301073121ca&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;all utility classes that make use of spacing tokens now use numerical naming.&lt;/li&gt;
+&lt;li&gt;updates documentation pages, as needed.&lt;/li&gt;
+&lt;li&gt;requires &lt;code&gt;v2.0.0&lt;/code&gt; of the &lt;code&gt;vf-design-tokens&lt;/code&gt; package or newer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-divider/&quot;&gt;vf-divider&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.0.0&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/5633dab3799e320e51e23b786eadf25ffe2723e2&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;removes the &lt;code&gt;grid-column: 1 / -1;&lt;/code&gt; rule&lt;/li&gt;
+&lt;li&gt;moves the margin into the &lt;code&gt;@mixin&lt;/code&gt; available in &lt;code&gt;vf-sass-config&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;adds &lt;code&gt;--vf-divider--margin-block-end&lt;/code&gt; custom property to allow the overriding the block end margin as needed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-sass-config/&quot;&gt;vf-sass-config&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.0.0&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/5633dab3799e320e51e23b786eadf25ffe2723e2&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;removes the inline margin from the component.&lt;/li&gt;
+&lt;li&gt;adds the block end margin an creates a Sass variable for &lt;code&gt;$margin--block-end&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;adds &lt;code&gt;width: 100%;&lt;/code&gt; as it was defaulting to &lt;code&gt;width: auto;&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;New components&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-cluster/&quot;&gt;vf-cluster&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;0.0.1&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/a1ba072647a89f61ce093e1db0ebabb004816882&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Initital launch of the component. It is useable but the documentation needs refining.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Major new features&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-stack/&quot;&gt;vf-stack&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.2.0&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/a1ba072647a89f61ce093e1db0ebabb004816882&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;now uses Nunjucks &#39;blocks&#39; so we can use this layout more programatically.&lt;/li&gt;
+&lt;li&gt;hides the defauly Nunjcuks file as it renders what looks like a blank page (because it&#39;s waiting for the block content).&lt;/li&gt;
+&lt;li&gt;creates separate Nunjucks files to display variants in Fractal.&lt;/li&gt;
+&lt;li&gt;updates naming conventions of variables available.
+&lt;ul&gt;
+&lt;li&gt;introduces &lt;code&gt;stack__spacing__custom&lt;/code&gt; which will replace &lt;code&gt;custom_spacing_property&lt;/code&gt; in the &lt;code&gt;2.0.0&lt;/code&gt; component release.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-analytics-google/&quot;&gt;vf-analytics-google&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.0.0-rc.6&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/41817a91dbb81a60bf4ea2bb72a9c082544c695c&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Track form element interactions
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/issues/1161&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Explicit labels can be provided with data attributes: &lt;code&gt;data-vf-analytics-label=&amp;quot;A special label&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Code linting&lt;/li&gt;
+&lt;li&gt;Avoid logging clicks on non-interactive elements (white space, standard text)&lt;/li&gt;
+&lt;li&gt;Reduce likelihood of logging multiple events&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vfGaIndicateLoaded()&lt;/code&gt; now accepts the options object &lt;code&gt;vfGaTrackOptions&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;with property &lt;code&gt;vfGaTrackPageLoad&lt;/code&gt;. &lt;code&gt;vfGaTrackOptions.vfGaTrackPageLoad&lt;/code&gt; defaults to true. If you set to false, the function will &lt;em&gt;not&lt;/em&gt; track the initial page view. Useful if you track the initial page view with JavaScript in your HTML.
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/issues/1116&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Track the users network: &lt;code&gt;vfGaTrackOptions.vfGaTrackNetwork&lt;/code&gt;. As of February 2020 Google Analytics no longer tracks the network name of visitors. A 3rd party tool enables this, follow the setup guide at https://ipmeta.io/instructions (note there is no need to load https://ipmeta.io/plugin.js, this component includes it for you)
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/issues/968&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;analyticsTrackInteraction()&lt;/code&gt; is now namespaced&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-core/&quot;&gt;vf-core&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.2.7&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/2c06958d69ea3664e9426952b6550e7fa7d24646&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;adds ESLint task and config
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/issues/1143&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;adds &lt;code&gt;buildTimeStamp&lt;/code&gt; to &lt;code&gt;componentInfo&lt;/code&gt; component sass map
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/issues/974&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-hero/&quot;&gt;vf-hero&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.7.0&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/b3a7f4398fc1d9ec83291ddda72f78196a6408ee&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;makes the padding on &lt;code&gt;--intense&lt;/code&gt; standardised to our spacing units&lt;/li&gt;
+&lt;li&gt;reduces height of all other variants&lt;/li&gt;
+&lt;li&gt;currently this is the &#39;maximum space&#39; the component will get to allow it&#39;s content to be readable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Bug fixes&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-component-initialization/&quot;&gt;vf-component-initialization&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.0.1&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/bc7aae5f4d394bb907d39e4adfb471da248de474&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Pin dependencies to avoid issue with Fractal bootstrap
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/pull/1170&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-banner/&quot;&gt;vf-banner&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.5.1&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/dd4cd070ef0a2eb0b368132629defbe0ee95c0dc&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;removes leftover &lt;code&gt;console.log&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Minor updates&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-grid/&quot;&gt;vf-grid&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.3.0&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/a1ba072647a89f61ce093e1db0ebabb004816882&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;makes the layout something that can now use &#39;extends&#39; within nunjucks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/embl-grid/&quot;&gt;embl-grid&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.1.0&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/a1ba072647a89f61ce093e1db0ebabb004816882&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;makes the layout something that can now use &#39;extends&#39; within nunjucks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-sass-compilation/&quot;&gt;vf-sass-compilation&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.0.2&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/2c06958d69ea3664e9426952b6550e7fa7d24646&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;adds ESLint task and config
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/issues/1143&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-componenet-rollup/&quot;&gt;vf-componenet-rollup&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.2.1&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/2b719c9b3fa1f8ab0fe59bfb28076a6d79575596&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;adds &lt;code&gt;buildTimeStamp&lt;/code&gt; from &lt;code&gt;componentInfo&lt;/code&gt; to Sass template
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/issues/974&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-componenet-generator/&quot;&gt;vf-componenet-generator&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.0.3&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/2b719c9b3fa1f8ab0fe59bfb28076a6d79575596&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;adds &lt;code&gt;buildTimeStamp&lt;/code&gt; from &lt;code&gt;componentInfo&lt;/code&gt; to Sass template
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/issues/974&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-u-fullbleed/&quot;&gt;vf-u-fullbleed&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.2.0&lt;/span&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/5633dab3799e320e51e23b786eadf25ffe2723e2&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;adds a CSS custom property for when a component with &lt;code&gt;vf-u-fullbleed&lt;/code&gt; needs inline margins.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   
   <entry>
     <title>2.2.9 Component updates</title>
@@ -1707,7 +1926,7 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
 
 
 
-&lt;!-- This page was generated on 2020-10-20T15:46:28.554+00:00 --&gt;
+&lt;!-- This page was generated on 2020-10-21T07:28:39.347+00:00 --&gt;
 &lt;script src=&quot;https://assets.emblstatic.net/vf/v2.2.9/scripts/scripts.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -2262,7 +2481,7 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
 
 
 
-&lt;!-- This page was generated on 2020-10-20T15:46:28.554+00:00 --&gt;
+&lt;!-- This page was generated on 2020-10-21T07:28:39.347+00:00 --&gt;
 &lt;script src=&quot;https://assets.emblstatic.net/vf/v2.2.9/scripts/scripts.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -2729,7 +2948,7 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
 
 
 
-&lt;!-- This page was generated on 2020-10-20T15:46:28.554+00:00 --&gt;
+&lt;!-- This page was generated on 2020-10-21T07:28:39.347+00:00 --&gt;
 &lt;script src=&quot;https://assets.emblstatic.net/vf/v2.2.9/scripts/scripts.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -3573,7 +3792,7 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
 
 
 
-&lt;!-- This page was generated on 2020-10-20T15:46:28.554+00:00 --&gt;
+&lt;!-- This page was generated on 2020-10-21T07:28:39.347+00:00 --&gt;
 &lt;script src=&quot;https://assets.emblstatic.net/vf/v2.2.9/scripts/scripts.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
