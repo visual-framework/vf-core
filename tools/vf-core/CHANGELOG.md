@@ -1,3 +1,7 @@
+### 2.2.9
+
+- fix: avoid build failure on missing .eslintrc.js config in child projects
+
 ### 2.2.8
 
 - adds ESLint task and config
