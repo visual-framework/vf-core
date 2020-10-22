@@ -10,6 +10,39 @@ hideSubPosts: true
 ---
 
 
+<main class="vf-grid vf-grid__col-3">
+{% for item in spacing.properties %}
+<article class="vf-card">
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <div style="height: {{ item.value }}; width: {{ item.value }}; background: #009f4d;"></div>
+  </div>
+  <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
+  <h3 class="vf-card__title">{{ item.meta.friendlyName }}</h3>
+  <hr class="vf-divider">
+  <p class="vf-card__text">Value:</p>
+  <p class="vf-card__text"><code>{{ item.value }}</code></p>
+  {% if item.meta.sassVariable %}
+  <hr class="vf-divider">
+  <p class="vf-card__text">Sass:</p>
+    <p class="vf-card__text"><code>{{ item.meta.sassVariable }}</code></p>
+  {% endif %}
+  {% if item.meta.CSSCustomProperty %}
+  <hr class="vf-divider">
+  <p class="vf-card__text">CSS custom property:</p>
+    <p class="vf-card__text"><code>{{ item.meta.CSSCustomProperty }}</code></p>
+  {% endif %}
+  {% if item.meta.comment %}
+    <h4>notes:</h4>
+    <p class="vf-card__text">
+      {{ item.meta.comment }}
+    </p>
+  {% endif %}
+  </section>
+</article>
 
+{% else %}
 
-{%- render '@vf-design-tokens--spacing' -%}
+<p>Something went wrong.</p>
+
+{% endfor %}
+</main>

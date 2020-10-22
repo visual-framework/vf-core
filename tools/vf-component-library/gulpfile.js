@@ -1,5 +1,10 @@
 const path = require('path');
 const gulp = require('gulp');
+const rename = require('gulp-rename');
+const del = require('del');
+const merge = require('gulp-merge-json');
+const dave = require("gulp-json-tree");
+var jsonConcat = require('gulp-json-concat');
 
 // Pull in optional configuration from the package.json file, a la:
 const {componentPath, componentDirectories, buildDestionation} = require('@visual-framework/vf-config');
@@ -42,3 +47,33 @@ gulp.task('dev', gulp.series(
   'vf-build-search-index',
   gulp.parallel('watch','vf-watch')
 ));
+
+gulp.task('copy', function() {
+    gulp.src('../../components/vf-design-tokens/dist/json/*.ios.json')
+    .pipe(rename (function(path) {
+      path.basename = path.basename.replace('vf-', '');
+      path.basename = path.basename.replace('.ios', '');
+      path.basename = path.basename.replace('font-', 'font');
+      path.basename = path.basename.replace('-', '');
+      path.basename = path.basename.replace('--', '');
+      path.basename = path.basename.replace('colors', 'colours');
+      return path.dirname + path.basename
+    }))
+    .pipe(gulp.dest('src/site/design-tokens/'));
+});
+
+
+gulp.task('jsonConcat', function() {
+gulp.src('src/site/design-tokens/*.json')
+  .pipe(jsonConcat('design-tokens.11tydata.json',function(data){
+    return new Buffer(JSON.stringify(data));
+  }))
+  .pipe(gulp.dest('src/site/design-tokens/'));
+});
+
+gulp.task('deleteJson', function() {
+  return del([
+    'src/site/design-tokens/*.json',
+    '!src/site/design-tokens/design-tokens.11tydata.json'
+  ]);
+});
