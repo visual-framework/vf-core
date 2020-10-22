@@ -1,3 +1,10 @@
+### 3.0.0
+
+- We're moving the documentation to the `vf-component-library`.
+- removes all `.njk` documentation files.
+- hides from Fractal.
+- removes any other files no longer needed.
+
 ### 2.1.0
 
 - update documentation pages for all design tokens used to make use of updated CSS.
