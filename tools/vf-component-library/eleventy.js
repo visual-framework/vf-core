@@ -29,6 +29,36 @@ module.exports = function(config) {
     }).toFormat(format);
   });
 
+  // Split filter support
+  // {{ 'string words' | split(' ' ) }}
+  config.addFilter("split", (string, divider = " ") => {
+    return string.split(divider);
+  });
+
+  // Get the text between two strings
+  // If either string cannot be found, will return "false"
+  // {{ 'now the words i want then' | stringBetween('now','then') }}
+  config.addFilter("stringBetween", (string, begin = " ", end = " ") => {
+    // console.log(end)
+    // console.log(string.length);
+    // console.log(string.lastIndexOf(begin));
+    // console.log(string.lastIndexOf(end));
+    // console.log('---');
+    if (string.lastIndexOf(begin) < 0) {
+      return false;
+    }
+    if (string.lastIndexOf(end) < 0) {
+      return false;
+    }
+    let halfTrucnated = string.substring(string.lastIndexOf(begin), string.length);
+    halfTrucnated = halfTrucnated.replace(begin, ""); // remove the original match character
+    return halfTrucnated.substring(
+      0,
+      halfTrucnated.indexOf(end)
+    );
+  });
+
+
   // Shortcodes
   // https://www.11ty.io/docs/shortcodes/
   // -----

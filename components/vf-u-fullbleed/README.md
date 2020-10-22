@@ -6,6 +6,8 @@
 
 This utility class allows you to make a container take the full width of the viewport available but keep the content set to the maximum width of the grid.
 
+## Usage
+
 As we should be relying on `vf-grid`, `embl-grid`, or a container to make sure the content is centered with a maximum width of `76.5em` we use the `::before` pseudo element to allow the background colour to 'bleed out' and fill any space avaiable.
 
 For this to work you need to make sure that the parent element you place the class `.vf-u-fullbleed` has to have a background colour.
@@ -33,14 +35,14 @@ As we are making all components their own installable package we have added the 
   $vf-u-fullbleed-parent: body !defualt;
 
   ...
-  
+
   @at-root #{$vf-u-fullbleed-parent} {
     position: relative;
   }
 }
 ```
 
-This has been test with sites using VF1.x and no problems have been found. If you find an issue with this component being used alongside pages built with VF1.x please [raise an issue](https://github.com/visual-framework/vf-core/issues/new?title=BUG%3A+vf-u-bleed&assignees=sturobson).
+This has been test with sites using VF 1.x and no problems have been found. If you find an issue with this component being used alongside pages built with VF1.x please [raise an issue](https://github.com/visual-framework/vf-core/issues/new?title=BUG%3A+vf-u-bleed&assignees=sturobson).
 
 ## Install
 
@@ -50,7 +52,7 @@ This repository is distributed with [npm][npm]. After [installing npm][install-n
 $ yarn add --dev @visual-framework/vf-u-fullbleed
 ```
 
-## Usage
+## Sass/CSS
 
 The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
 
@@ -59,3 +61,4 @@ The source files included are written in [Sass][sass] (`scss`) You can simply po
 ```
 
 _Make sure you import Sass requirements along with the modules._
+
