@@ -10,9 +10,10 @@ image: node:12.19.0
 
 variables:
   # project specific variables can be defined here
-  VM_DEV: wp-np2-10
-  VM_PROD: wp-p1m-12 wp-p1m-13 wp-p2m-12 wp-p2m-13
-  VM_PATH: /var/www/drupal/beta.embl.org.guidelines.visual-framework.dev-docs
+  VM_DEV: "$EBI8_DEV_VMS"
+  VM_PROD: "$EBI8_PROD_VMS"
+  VM_PATH_STABLE: /var/www/drupal/stable.visual-framework.dev # tags
+  VM_PATH_LATEST: /var/www/drupal/latest.visual-framework.dev # develop
   SSH_OWNER_ID: wd_drupl
   SSH_APACHE_ID: w3_wd01
   S3_BUCKET_DEV: origin.dev.vf.assets.emblstatic.net
@@ -55,7 +56,7 @@ deploy-dev:
     - add-ssh-key ${SSH_OWNER_ID} "${SSH_OWNER_KEY}" ${SSH_APACHE_ID} "${SSH_APACHE_KEY}"
     - add-search-domain ebi.ac.uk
   script:
-    - for VM in ${VM_DEV}; do rsync -acv --delete-after tools/vf-core/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH}/; done;
+    - for VM in ${VM_DEV}; do rsync -acv --delete-after tools/vf-core/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH_LATEST}/; done;
   only:
     # only match on develop branch, or specific tag patterns
     - develop
@@ -71,7 +72,7 @@ deploy-prod:
     - add-ssh-key ${SSH_OWNER_ID} "${SSH_OWNER_KEY}" ${SSH_APACHE_ID} "${SSH_APACHE_KEY}"
     - add-search-domain ebi.ac.uk
   script:
-    - for VM in ${VM_PROD}; do rsync -acv --delete-after tools/vf-core/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH}/; done;
+    - for VM in ${VM_PROD}; do rsync -acv --delete-after tools/vf-core/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH_STABLE}/; done;
   only:
     # only match on specific tag patterns
     - /^v\d+\.\d+\.\d+$/
