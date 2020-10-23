@@ -1,3 +1,8 @@
+### 2.2.9
+
+- fix: avoid build failure on missing .eslintrc.js config in child projects
+  - https://github.com/visual-framework/vf-core/pull/1178
+
 ### 2.2.8
 
 - adds ESLint task and config

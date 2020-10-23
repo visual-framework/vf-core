@@ -1,3 +1,7 @@
+### 1.0.12
+
+- design token documenation now lives in the component libary
+
 ### 1.0.7
 
 - adds updates blog
