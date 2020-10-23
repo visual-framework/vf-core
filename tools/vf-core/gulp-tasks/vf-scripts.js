@@ -101,9 +101,12 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   const vfJsLintPaths = [componentPath+'/**/embl-*.js', componentPath+'/**/vf-*.js', '!assets/**/*.js',  '!'+componentPath+'/**/*.precompiled.js'];
   gulp.task('vf-lint:js-soft-fail', function() {
     return gulp.src(vfJsLintPaths)
-      // eslint() attaches the lint output to the "eslint" property
-      // of the file object so it can be used by other modules.
-      .pipe(eslint())
+      // a minimal rule set if .eslintrc.js is missing (avoid build break)
+      .pipe(eslint({
+        "rules":{
+          indent: ["error", 2]
+        }
+      }))
       // eslint.format() outputs the lint results to the console.
       // Alternatively use eslint.formatEach() (see Docs).
       .pipe(eslint.format());
@@ -111,7 +114,12 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
 
   gulp.task('vf-lint:js-hard-fail', function() {
     return gulp.src(vfJsLintPaths)
-      .pipe(eslint())
+      // a minimal rule set if .eslintrc.js is missing (avoid build break)
+      .pipe(eslint({
+        "rules":{
+          indent: ["error", 2]
+        }
+      }))
       .pipe(eslint.format())
       .pipe(eslint.failAfterError());
   });
