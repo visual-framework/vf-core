@@ -1,6 +1,7 @@
 ### 3.0.0
 
-- We're moving the documentation to the `vf-component-library`.
+- We're moving the documentation to the `vf-component-library`
+  - https://visual-framework.github.io/vf-core/design-tokens/
 - removes all `.njk` documentation files.
 - hides from Fractal.
 - removes any other files no longer needed.
