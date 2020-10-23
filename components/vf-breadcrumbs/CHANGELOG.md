@@ -1,3 +1,8 @@
+### 1.0.5
+
+- removes the bottom margin
+- increases the top margin
+
 ### 1.0.4
 
 - fix: links in the with-related variant weren't coming through as the parent object wasn't mapped
