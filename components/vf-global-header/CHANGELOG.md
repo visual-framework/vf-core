@@ -1,3 +1,8 @@
+### 3.0.1
+
+- removes padding.
+- adds top margin for layout.
+
 ### 3.0.0
 
 - updates max-width of component
