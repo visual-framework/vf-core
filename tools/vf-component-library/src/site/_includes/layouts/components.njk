@@ -6,9 +6,13 @@ templateEngineOverride: njk
 <div class="embl-grid">
   <div class="vf-search-client-side--no-index">
     {#- all component list -#}
+    {% set types = ['grid', 'element', 'block', 'container', 'utility'] %}
+
+    {%- for type in types %}
+
     {% set componentList = [] %}
     {%- for item in fractalEnvironment.localComponents -%}
-      {%- if item.isHidden == false -%}
+      {%- if item.isHidden == false and (item.variants.items[0].context['component-type'] == type or item.variants.items[0].context['component-type'] == 'embl-' + type) -%}
         {% set componentList = (componentList.push({ "text": item.title, "link_list_href": ('/components/' + item.handle) | string | url }),componentList) %}
       {%- endif -%}
     {%- endfor -%}
@@ -16,11 +20,17 @@ templateEngineOverride: njk
     {% render '@vf-link-list--tight', {
       "component-type": "block",
       "component_modifier": "vf-links--tight vf-links__list--s | vf-u-margin__top--500",
-      "title": "Components",
+      "title": type | title,
       "list_modifier": "secondary",
       "list":
         componentList
     } %}
+
+
+    {% endfor -%}
+
+
+
   </div>
 
   <section class="vf-content component-library-notes">
@@ -54,7 +64,6 @@ templateEngineOverride: njk
         "style": "invert",
         "tags": "h1"
       } %} #}
-
       <ul class="vf-list vf-list--unordered">
         {%- for component in collectionComponents %}
           <li class="vf-list__item"><a class="vf-link" href="{{ component.variants.items[0].alias }}">{{ component.variants.label }}</a> <code> {{ component.variants.items[0].alias }} </code></li>
