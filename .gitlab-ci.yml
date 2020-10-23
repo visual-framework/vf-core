@@ -56,7 +56,7 @@ deploy-dev:
     - add-ssh-key ${SSH_OWNER_ID} "${SSH_OWNER_KEY}" ${SSH_APACHE_ID} "${SSH_APACHE_KEY}"
     - add-search-domain ebi.ac.uk
   script:
-    - for VM in ${VM_DEV}; do rsync -acv --delete-after tools/vf-core/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH_LATEST}/; done;
+    - for VM in ${VM_PROD}; do rsync -acv --delete-after tools/vf-core/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH_LATEST}/; done;
   only:
     # only match on develop branch, or specific tag patterns
     - develop
