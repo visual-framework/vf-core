@@ -11,26 +11,39 @@ templateEngineOverride: njk
   <nav class="vf-tree vf-search-client-side--no-index">
     <div class="vf-tree__inner | vf-u-padding--200">
       {#- all component list -#}
-      {# we're half-implement vf-tree for now until we can ... things #}
-      {% set types = ['grid', 'element', 'block', 'container', 'utility'] %}
+      {#- we're half-implement vf-tree for now until we can ... things -#}
+      {%- set types = ['grid', 'element', 'block', 'container', 'utility'] -%}
 
-      {%- for type in types %}
+      {%- for type in types -%}
 
-      {% set componentList = [] %}
+      {%- set componentList = [] -%}
       {%- for item in fractalEnvironment.localComponents -%}
+
+        {# Normal "flat" components #}
         {%- if item.isHidden == false and (item.variants.items[0].context['component-type'] == type or item.variants.items[0].context['component-type'] == 'embl-' + type) -%}
           {% set componentList = (componentList.push({ "text": item.title, "link_list_href": ('/components/' + item.handle) | string | url }),componentList) %}
         {%- endif -%}
+
+        {# Handle component collections #}
+        {%- if item.isCollection == true %}
+          {%- for collection in item.items %}
+            {% if collection.isHidden == false and (collection.variants.items[0].context['component-type'] == type or collection.variants.items[0].context['component-type'] == 'embl-' + type) %}
+              {# <pre>{{ item | dump(2)}}</pre> #}
+              {% set componentList = (componentList.push({ "text": collection.title, "link_list_href": ('/components/' + item.handle + '/' + collection.handle) | string | url }),componentList) %}
+            {%- endif %}
+          {%- endfor %}
+        {%- endif %}
+
       {%- endfor -%}
 
-      {% render '@vf-link-list--tight', {
+      {%- render '@vf-link-list--tight', {
         "component-type": "block",
         "component_modifier": "vf-links--tight vf-links__list--s",
         "title": type | title,
         "list_modifier": "secondary",
         "list":
           componentList
-      } %}
+      } -%}
 
       {% endfor -%}
     </div>
