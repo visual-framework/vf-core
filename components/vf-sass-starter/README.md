@@ -2,21 +2,13 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-starter.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-starter)
 
-## Usage
+## About
 
 This Package is to get your project up and running with the minimum Sass files and dependencies you may require.
 
-## Install
+## Usage
 
-This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-sass-starter` and its dependencies with this command.
-
-```
-$ yarn add --dev @visual-framework/vf-sass-starter @visual-framework/vf-design-tokens @visual-framework/vf-font-plex-mono @visual-framework/vf-font-plex-sans @visual-framework/vf-sass-config @visual-framework/vf-sass-utilities @visual-framework/vf-utility-classes
-```
-
-## Sass
-
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The source files included are written in [Sass][sass] (`scss`) Point your sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
 @import "@visual-framework/vf-sass-starter/index.scss";
@@ -40,6 +32,14 @@ If you do not require this you can create your own @imports removing what you wa
 // Include the relevant IBM Plex typefaces
 @import 'vf-font-plex-mono/vf-font-plex-mono.scss';
 @import 'vf-font-plex-sans/vf-font-plex-sans.scss';
+```
+
+## Install
+
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-sass-starter` and its dependencies with this command.
+
+```
+$ yarn add --dev @visual-framework/vf-sass-starter @visual-framework/vf-design-tokens @visual-framework/vf-font-plex-mono @visual-framework/vf-font-plex-sans @visual-framework/vf-sass-config @visual-framework/vf-sass-utilities @visual-framework/vf-utility-classes
 ```
 
 ## Help

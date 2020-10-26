@@ -20,7 +20,6 @@ It can include meta information `<p class="vf-links__meta">Example Meta</p>`.
 
 ### Contextual Based Link Lists
 
-
 #### "On this page"
 
 If you want to provide a set of links that will anchor to sections on the page you should use:
@@ -57,7 +56,7 @@ If you want to include quick links as part of a section of content you can use:
 
 ##### Link List
 
-```
+```html
 <div class="vf-links vf-links--tight vf-links__list--s vf-links__list--very-easy">
   <h3 class="vf-links__heading">In this section</h3>
   <ul class="vf-links__list vf-links__list--secondary | vf-list">
@@ -72,7 +71,7 @@ If you want to include quick links as part of a section of content you can use:
 
 ##### Linked Text In Section
 
-```
+```html
 <section class="vf-component">
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores dolore eveniet sed totam deleniti, ipsum dolorum cupiditate, aut error quae beatae nemo esse pariatur repellendus illo dicta doloribus alias ipsa.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, ut aut eveniet consectetur rem. Sapiente quis optio cupiditate molestias debitis quisquam ab in. Voluptates, expedita modi aliquam, sint tempore magnam.</p>

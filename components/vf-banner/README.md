@@ -51,8 +51,6 @@ Like all JS-enabled components in the Visual Framework, if you wish to use the b
 - Message:
   - data-vf-js-banner-modal-text: the `.innerHTML` of this element will be used as the markup for the message itself
 
-
-
 ## Install
 
 This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `primer-buttons` with this command.
@@ -70,3 +68,9 @@ The source files included are written in [Sass][sass] (`scss`) You can simply po
 ```
 
 _Make sure you import Sass requirements along with the modules._
+
+## Help
+
+- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
+- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

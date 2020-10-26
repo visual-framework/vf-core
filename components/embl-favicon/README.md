@@ -4,13 +4,12 @@
 
 Note: There is no Sass for this component.
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `embl-favicon` with this command.
 
 ```
 $ yarn add --dev @visual-framework/embl-favicon
 ```
-
 
 _Make sure you import Sass requirements along with the modules._

@@ -7,7 +7,7 @@ The `vf-cluster` is a layout component that can be used when we need to give var
 The main use case for `vf-cluster` is to be mainly used when something the available grid systems are too 'rigid' because of the different widths of the content.
 
 
-## Installation
+## Install
 
 This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-cluster` with this command.
 

@@ -6,7 +6,7 @@
 
 The `vf-badge` component is used to denote if a page, section, or link has a production state of `alpha`, `beta` or other information.
 
-## Installation
+## Install
 
 This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.
 
@@ -63,9 +63,7 @@ There are three theme variants available for the component that are **primary**,
 
 There are four design variants for the component. We have `square`, `pill`, and `rounded` as well as `outline`. The `outline` variant can be used along with another variant so the way we write this in code is a little different. To only have a rounded button we should write `["rounded"]` but if we wanted to have a rounded button with the outline rather than filled colour we would have to write `["outline", "rounded"]`.
 
-
 ## Help
-
 
 - [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
 - [Open a ticket](https://github.com/visual-framework/vf-core/issues)

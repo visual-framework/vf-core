@@ -30,13 +30,15 @@ These tags should be placed in your `<head>`.
 2. Will be programatically queried by other patterns to offer contextually-appropriate content and navigation
 3. Can affect the look and feel of content
 
-## Installation and Implementation
+## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `embl-content-meta-properties` with this command.
 
 ```
 $ yarn add --dev @visual-framework/embl-content-meta-properties
 ```
+
+### Sass/CSS
 
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 
