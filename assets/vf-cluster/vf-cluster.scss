@@ -12,7 +12,7 @@
 @import 'vf-cluster.variables.scss';
 
 .vf-cluster {
-  --vf-cluster-margin: var(--vf-cluster-margin--override, var(--page-grid-gap, 1rem));
+  --vf-cluster-margin: var(--vf-cluster-margin--override, #{map-get($vf-spacing-map, vf-spacing--400)});
   overflow: hidden;
 }
 
@@ -26,17 +26,18 @@
 
 .vf-cluster > * > * {
   flex: var(--vf-cluster__item--flex);
-  margin: calc(var(--vf-cluster-margin) / 2) !important;
+  margin: #{map-get($vf-spacing-map, vf-spacing--400)};
+  margin: calc( var(--vf-cluster-margin) / 2) !important;
 }
 
-.vf-cluster--sm > * > * {
-  --vf-cluster-margin: 1rem;
+.vf-cluster--400 > * > * {
+  --vf-cluster-margin: #{map-get($vf-spacing-map, vf-spacing--400)};
 }
 
-.vf-cluster--md > * > * {
-  --vf-cluster-margin: 1.5rem;
+.vf-cluster--600 > * > * {
+  --vf-cluster-margin: #{map-get($vf-spacing-map, vf-spacing--600)};
 }
 
-.vf-cluster--lg > * > * {
-  --vf-cluster-margin: 2rem;
+.vf-cluster--800 > * > * {
+  --vf-cluster-margin: #{map-get($vf-spacing-map, vf-spacing--800)};
 }

@@ -1,3 +1,7 @@
+### 2.0.0
+
+- replaces all spacing / sizing values with new tokens naming convention
+
 ### 1.2.0
 
 - now uses Nunjucks 'blocks' so we can use this layout more programatically.

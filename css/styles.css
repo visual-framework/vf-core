@@ -10,7 +10,7 @@
  * Version: 1.2.1
  * Location: components/vf-componenet-rollup
  * VF Core version in use: 2.2.8
- * Build time: Mon, 26 Oct 2020 13:15:08 GMT
+ * Build time: Mon, 26 Oct 2020 15:18:49 GMT
  */
 /* stylelint-disable */
 :root {
@@ -713,7 +713,7 @@ html {
  * Location: components/vf-cluster
  */
 .vf-cluster {
-  --vf-cluster-margin: var(--vf-cluster-margin--override, var(--page-grid-gap, 1rem));
+  --vf-cluster-margin: var(--vf-cluster-margin--override, 1rem);
   overflow: hidden;
 }
 
@@ -727,18 +727,19 @@ html {
 
 .vf-cluster > * > * {
   flex: var(--vf-cluster__item--flex);
-  margin: calc(var(--vf-cluster-margin) / 2) !important;
+  margin: 1rem;
+  margin: calc( var(--vf-cluster-margin) / 2) !important;
 }
 
-.vf-cluster--sm > * > * {
+.vf-cluster--400 > * > * {
   --vf-cluster-margin: 1rem;
 }
 
-.vf-cluster--md > * > * {
+.vf-cluster--600 > * > * {
   --vf-cluster-margin: 1.5rem;
 }
 
-.vf-cluster--lg > * > * {
+.vf-cluster--800 > * > * {
   --vf-cluster-margin: 2rem;
 }
 
@@ -777,15 +778,15 @@ html {
   /* [3] */
 }
 
-.vf-stack--sm > * + * {
+.vf-stack--400 > * + * {
   --vf-stack-margin: 1rem;
 }
 
-.vf-stack--md > * + * {
+.vf-stack--600 > * + * {
   --vf-stack-margin: 1.5rem;
 }
 
-.vf-stack--lg > * + * {
+.vf-stack--800 > * + * {
   --vf-stack-margin: 2rem;
 }
 
@@ -2149,13 +2150,15 @@ html:not(.vf-disable-deprecated) .vf-text-button--1 {
 .vf-box {
   --box-text-color: var( --vf-box-theme-color--foreground, var(--vf-theme-color--foreground, #000000));
   --box-background-color: var(--vf-box-theme-color--background, var(--vf-theme-color--background, #ffffff));
+  --vf-box-padding: var(--vf-box-padding--override, 1rem);
   background-color: #ffffff;
   background-color: var(--box-background-color);
   box-sizing: border-box;
   color: #000000;
   color: var(--box-text-color);
   display: block;
-  padding: 24px 16px;
+  padding: 1rem;
+  padding: var(--vf-box-padding);
   width: 100%;
 }
 .vf-box > :last-child {
@@ -2224,16 +2227,16 @@ html:not(.vf-disable-deprecated) .vf-text-button--1 {
   color: currentColor;
 }
 
-.vf-box--s {
-  padding: 16px;
+.vf-box--400 {
+  --vf-box-padding: 1rem;
 }
 
-.vf-box--r {
-  padding: 24px;
+.vf-box--600 {
+  --vf-box-padding: 1.5rem;
 }
 
-.vf-box--l {
-  padding: 32px;
+.vf-box--800 {
+  --vf-box-padding: 2rem;
 }
 
 .vf-box--easy {

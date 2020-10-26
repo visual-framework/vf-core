@@ -14,6 +14,7 @@
 .vf-box {
   --box-text-color: var( --vf-box-theme-color--foreground, var(--vf-theme-color--foreground, #{set-ui-color(vf-ui-color--black)}));
   --box-background-color: var(--vf-box-theme-color--background, var(--vf-theme-color--background, #{set-ui-color(vf-ui-color--white)}));
+  --vf-box-padding: var(--vf-box-padding--override, #{map-get($vf-spacing-map, vf-spacing--400)});
 
   background-color: set-ui-color(vf-ui-color--white);
   background-color: var(--box-background-color);
@@ -21,7 +22,8 @@
   color: set-ui-color(vf-ui-color--black);
   color: var(--box-text-color);
   display: block;
-  padding: 24px 16px;
+  padding: 1rem;
+  padding: var(--vf-box-padding);
   width: 100%;
 
   // the last element within the component shouldn't have a bottom margin
@@ -86,18 +88,17 @@
   }
 }
 
-// The CSS below is on notice
 
-.vf-box--s {
-  padding: 16px;
+.vf-box--400 {
+  --vf-box-padding: #{map-get($vf-spacing-map, vf-spacing--400)};
 }
 
-.vf-box--r {
-  padding: 24px;
+.vf-box--600 {
+  --vf-box-padding: #{map-get($vf-spacing-map, vf-spacing--600)};
 }
 
-.vf-box--l {
-  padding: 32px;
+.vf-box--800 {
+  --vf-box-padding: #{map-get($vf-spacing-map, vf-spacing--800)};
 }
 
 .vf-box--easy {
