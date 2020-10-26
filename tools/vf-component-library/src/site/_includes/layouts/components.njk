@@ -126,6 +126,29 @@ templateEngineOverride: njk
             "tags": "h2"
           } %}
         </section>
+
+        {# Variant table of contents #}
+        {%- set variantList = [] -%}
+        {%- for variant in variants %}
+          {% if variant.isHidden == false%}
+            {% set variantList = (variantList.push({
+              "text": variant.title,
+              "link_list_href": '#' + variant.handle
+            }), variantList)
+            %}
+          {% endif %}
+        {% endfor %}
+
+        {% render '@vf-link-list', {
+          "component_modifier": "vf-links__list--easy",
+          "title": "",
+          "svg": true,
+          "list":
+            variantList
+        } %}
+
+        <hr class="vf-divider vf-u-margin__top--1200 vf-u-margin__bottom--1200" />
+
       {% endif %}
 
       {%- for variant in variants %}
@@ -133,16 +156,18 @@ templateEngineOverride: njk
         {% if variant.isHidden == false%}
           {% if variants | length > 1 %}
             {# If more than 1 variant type, show variant specific details #}
-            <h3>
-              Variant: {{ variant.label }}
-            </h3>
+
+            {% render '@vf-section-header--is-a-link', {
+              "section_title": "Variant example: " + variant.label,
+              "id": variant.handle,
+              "href": "#" + variant.handle
+            } %}
           {% endif %}
 
-          <article class="vf-stack vf-stack--lg"
+          <article class="vf-stack vf-stack--lg vf-u-margin__bottom--1200"
                    style="clear: both; /* insurance against strange components */"
           >
 
-            <h4>Example</h4>
             {% if component.baseHandle == 'vf-u-fullbleed' %}
               {# these get a fake iframe #}
               <article class="vf-box vf-box--outline" style="
