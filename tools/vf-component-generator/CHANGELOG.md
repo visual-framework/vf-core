@@ -1,5 +1,9 @@
 ### 1.0.3
 
+* improve README template
+
+### 1.0.3
+
 * adds `buildTimeStamp` from `componentInfo` to Sass template
   * https://github.com/visual-framework/vf-core/issues/974
 

@@ -11,13 +11,17 @@
 
 ---
 
-# <%= componentName %> Component
+# <%= componentName %> component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2F<%= componentName %>.svg)](https://badge.fury.io/js/%40visual-framework%2F<%= componentName %>)
 
+## About
+
+[A one-sentance introduction to your project]
+
 ## Usage
 
-The dos and don'ts of using this component.
+[The dos and don'ts of using this component. Can be many paragraphs and subheadings.]
 
 ## Install
 
@@ -27,9 +31,9 @@ This repository is distributed with [npm][https://www.npmjs.com/]. After [instal
 $ yarn add --dev @visual-framework/<%= componentName %>
 ```
 
-## JS
+### JS
 
-If your component uses JS:
+[If your component uses JS]
 
 You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 
@@ -40,17 +44,17 @@ import { vfcomponentName } from '<%= componentName %>/<%= componentName %>';
 vfcomponentName(); // if needed, invoke it
 ```
 
-## Sass/CSS
+### Sass/CSS
 
-If your component uses Sass:
+[If your component uses Sass]
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
 @import "@visual-framework/<%= componentName %>/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 

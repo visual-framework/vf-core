@@ -1,3 +1,7 @@
+### 1.2.1
+
+* README cleanup
+
 ### 1.2.0
 
 - makes theme variant naming and decisions consistent.
