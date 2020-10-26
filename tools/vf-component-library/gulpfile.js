@@ -10,9 +10,6 @@ require('@visual-framework/vf-extensions/gulp-tasks/_gulp_rollup.js')(gulp, path
 // search indexing
 require('@visual-framework/vf-extensions/gulp-tasks/gulp-build-search-index.js')(gulp, path, buildDestionation);
 
-// Design token documentation
-require(path.resolve(".", __dirname + "/gulp-tasks/tokens.js"))(gulp, componentPath);
-
 // Watch folders for changess
 gulp.task('watch', function() {
   // left for convience for local watch additions
@@ -22,7 +19,7 @@ gulp.task('watch', function() {
 // Let's build this sucker.
 gulp.task('build', gulp.series(
   'vf-clean',
-  gulp.parallel('vf-css','vf-scripts','tokens'),
+  gulp.parallel('vf-css','vf-scripts'),
   'vf-css:generate-component-css',
   'vf-component-assets:everything',
   'fractal:build',
@@ -35,7 +32,7 @@ gulp.task('build', gulp.series(
 // Build and watch things during dev
 gulp.task('dev', gulp.series(
   'vf-clean',
-  gulp.parallel('vf-css','vf-scripts','tokens'),
+  gulp.parallel('vf-css','vf-scripts'),
   'vf-css:generate-component-css',
   'vf-component-assets:everything',
   'fractal:development',
