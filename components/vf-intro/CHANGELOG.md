@@ -1,3 +1,7 @@
+### 1.4.1
+
+- added `column-gap` as this was missed.
+
 ### 1.4.0
 
 - adds the option to have a nicer styled 'sub-heading'.
