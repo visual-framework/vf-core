@@ -3,6 +3,10 @@ layout: layouts/base.njk
 pageClass: components
 templateEngineOverride: njk
 ---
+{% set component = pagination.items[0] %}
+{% set collectionComponents = component.items %}
+{% set variants = component.variants.items %}
+
 <div class="embl-grid">
   <nav class="vf-tree vf-search-client-side--no-index">
     <div class="vf-tree__inner | vf-u-padding--200">
@@ -36,17 +40,16 @@ templateEngineOverride: njk
     {# for any content set in the page, this is most likely blank #}
     {{ content | safe }}
 
-    {% set component = pagination.items[0] %}
-    {% set collectionComponents = component.items %}
-    {% set variants = component.variants.items %}
-
     <h1>
       {{ component.title }}
       <span class="vf-text-body--4">
         {# {{component.baseHandle}} #}
-        <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/components/{{component.baseHandle}}"><img src="https://img.shields.io/badge/github-{{component.baseHandle | replace("-","--")}}-blue" alt="github location" /></a>
-        <a class="vf-link" href="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}"><img src="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}.svg" alt="npm version"></a>
-        {# <a  href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">npm</a> #}
+        {% if collectionComponents %}
+        {% else %}
+          <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/components/{{component.baseHandle}}"><img src="https://img.shields.io/badge/github-{{component.baseHandle | replace("-","--")}}-blue" alt="github location" /></a>
+          <a class="vf-link" href="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}"><img src="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}.svg" alt="npm version"></a>
+          {# <a  href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">npm</a> #}
+        {% endif %}
       </span>
     </h1>
 
@@ -56,29 +59,26 @@ templateEngineOverride: njk
     {% if component.notes %}
       {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
       {% set readmeAbout = component.notes | string | stringBetween("## About", "\n## ") %}
-      {% set readmeInstallation = component.notes | string | stringBetween("## Installation", "\n## ") %}
-
+      {% set readmeInstallation = component.notes | string | stringBetween("## Install", "\n## ") %}
 
       {% if readmeAbout %}{{ readmeAbout | markdown | safe }}{% endif %}
 
-      <h2>Usage</h2>
-
-      {% if readmeUsage %}{{ readmeUsage | markdown | safe }}{% endif %}
-
-      {% if readmeInstallation %}
-      <details class="vf-details vf-box vf-box--outline">
-        <summary class="vf-details--summary">Installation info</summary>
-        {{ readmeInstallation | replace("## Installation", "") | markdown | safe }}
-      </details>
+      {% if readmeUsage %}
+        <h2>Usage</h2>
+        {{ readmeUsage | markdown | safe }}
       {% endif %}
 
+      {% if readmeInstallation %}
+      <details class="vf-details">
+        <summary class="vf-details--summary">Installation info</summary>
+        {{ readmeInstallation | replace("## Install", "") | markdown | safe }}
+      </details>
+      {% endif %}
 
     {% else %}
       {% markdown %}
         {% if collectionComponents %}
-
-        This is a parent collection of components.
-
+        <p>This is a collection of components.</p>
         {% endif %}
       {% endmarkdown %}
     {% endif %}
@@ -94,7 +94,10 @@ templateEngineOverride: njk
       } %} #}
       <ul class="vf-list vf-list--unordered">
         {%- for component in collectionComponents %}
-          <li class="vf-list__item"><a class="vf-link" href="{{ component.variants.items[0].alias }}">{{ component.variants.label }}</a> <code> {{ component.variants.items[0].alias }} </code></li>
+          {% if  component.variants.isHidden ==  false %}
+            <li class="vf-list__item"><a class="vf-link" href="{{ component.variants.items[0].alias }}">{{ component.variants.title }}</a> <code> {{ component.variants.items[0].alias }} </code></li>
+            {#- <pre>{{ component.variants | dump(2)}}</pre> -#}
+          {% endif -%}
         {% endfor -%}
       </ul>
     {% endif %}
@@ -182,17 +185,20 @@ templateEngineOverride: njk
       {% endmarkdown %}
     {% endif %}
 
-    {% markdown %}
+    {% if collectionComponents %}
+    {% else %}
+      {% markdown %}
 
-      ---
+        ---
 
-      <br/>
+        <br/>
 
-      <p class="vf-text-body vf-text-body--4">
-      File system location: <code>components/{{ component.baseHandle }}</code>
-      </p>
+        <p class="vf-text-body vf-text-body--4">
+        File system location: <code>components/{{ component.baseHandle }}</code>
+        </p>
 
-    {% endmarkdown %}
+      {% endmarkdown %}
+    {% endif %}
 
   </section>
 </div>
