@@ -34,18 +34,18 @@
 }
 
 .vf-stack > * + * {
-  margin-top: 1rem; /* IE Fallback */
-  margin-top: var(--vf-stack-margin--custom, var(--vf-stack-margin, 1rem)) !important; /* [3] */
+  margin-top: #{map-get($vf-spacing-map, vf-spacing--400)}; /* IE Fallback */
+  margin-top: var(--vf-stack-margin--custom, var(--vf-stack-margin, #{map-get($vf-spacing-map, vf-spacing--400)})) !important; /* [3] */
 }
 
-.vf-stack--sm > * + * {
-  --vf-stack-margin: 1rem;
+.vf-stack--400 > * + * {
+  --vf-stack-margin: #{map-get($vf-spacing-map, vf-spacing--400)};
 }
 
-.vf-stack--md > * + * {
-  --vf-stack-margin: 1.5rem;
+.vf-stack--600 > * + * {
+  --vf-stack-margin: #{map-get($vf-spacing-map, vf-spacing--600)};
 }
 
-.vf-stack--lg > * + * {
-  --vf-stack-margin: 2rem;
+.vf-stack--800 > * + * {
+  --vf-stack-margin: #{map-get($vf-spacing-map, vf-spacing--800)};
 }
