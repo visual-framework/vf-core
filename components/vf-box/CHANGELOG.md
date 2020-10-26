@@ -1,3 +1,7 @@
+### 2.2.0
+
+- adds internal padding option back
+  
 ### 2.1.0
 
 - updates spacing design tokens
