@@ -1,3 +1,7 @@
+### 1.2.1
+
+* cleanup README
+
 ### 1.2.0
 
 - adds a CSS custom property for when a component with `vf-u-fullbleed` needs inline margins.

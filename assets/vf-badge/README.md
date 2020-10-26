@@ -4,7 +4,7 @@
 
 ## About
 
-The `vf-badge` component is used to label a page, part of a page, or a component. The `vf-badge` component can also be a link using `<a class="vf-badge" href="">badge title</a>`.
+The `vf-badge` component is used to denote if a page, section, or link has a production state of `alpha`, `beta` or other information.
 
 ## Installation
 
@@ -27,16 +27,15 @@ _Make sure you import Sass requirements along with the modules._
 
 ## Usage
 
-The `vf-badge` component is used to denote if a page, section, or link has a production state of `alpha`, `beta` or other information.
-
-### Content
-
 The `vf-badge` accepts a single text item of content.
 
 | content type | variable | description |
 | ------------ | -------- | ----------- |
 | text         | `text`   |             |
 
+### Links
+
+The `vf-badge` component can also be a link using `<a class="vf-badge" href="">badge title</a>`.
 
 ### Nunjucks and yml options
 
