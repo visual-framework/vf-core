@@ -17,7 +17,7 @@
 //       {{vf-data-protection-banner__link}}
 //     </button>
 //   </div>
-  // </div>
+// </div>
 
 /**
  * Clear the cooke. This is mostly a development tool.
@@ -35,19 +35,19 @@ function vfBannerClose(targetBanner) {
   if (targetBanner.classList.contains("vf-banner--fixed")) {
     var height = targetBanner.offsetHeight || 0;
     if (targetBanner.classList.contains("vf-banner--top")) {
-      var pagePadding = document.body.style.paddingTop.replace(/\D/g,'') || 0;
+      var pagePadding = document.body.style.paddingTop.replace(/\D/g,"") || 0;
       pagePadding = pagePadding - height;
-      document.body.style.paddingTop = pagePadding+'px';
+      document.body.style.paddingTop = pagePadding+"px";
     }
     if (targetBanner.classList.contains("vf-banner--bottom")) {
-      var pagePadding = document.body.style.paddingBottom.replace(/\D/g,'') || 0;
+      var pagePadding = document.body.style.paddingBottom.replace(/\D/g,"") || 0;
       pagePadding = pagePadding - height;
-      document.body.style.paddingBottom = pagePadding+'px';
+      document.body.style.paddingBottom = pagePadding+"px";
     }
   }
 
   // dismiss banner
-  targetBanner.classList.add('vf-u-display-none');
+  targetBanner.classList.add("vf-u-display-none");
 }
 
 /**
@@ -55,7 +55,7 @@ function vfBannerClose(targetBanner) {
  */
 function vfBannerConfirm(banner,vfBannerCookieNameAndVersion) {
   vfBannerClose(banner);
-  if (vfBannerCookieNameAndVersion !== 'null') {
+  if (vfBannerCookieNameAndVersion !== "null") {
     vfBannerSetCookie(vfBannerCookieNameAndVersion,true);
   }
 }
@@ -78,9 +78,9 @@ function vfBannerSetCookie(c_name, value, exdays) {
  */
 function vfBannerGetCookie(c_name) {
   var i,
-      x,
-      y,
-      ARRcookies = document.cookie.split(";");
+    x,
+    y,
+    ARRcookies = document.cookie.split(";");
   for (var i = 0; i < ARRcookies.length; i++) {
     x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
     y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
@@ -98,7 +98,7 @@ function vfBannerGetCookie(c_name) {
  */
 function vfBanner(scope) {
   var scope = scope || document;
-  const bannerList = scope.querySelectorAll('[data-vf-js-banner]');
+  const bannerList = scope.querySelectorAll("[data-vf-js-banner]");
 
   if (!bannerList) {
     // exit: banners not found
@@ -118,15 +118,15 @@ function vfBanner(scope) {
     if (typeof(banner.dataset.vfJsBannerId) != "undefined") {
       // don't reactivate an already processed banner
     } else {
-      bannerRemapped.vfJsBannerText = banner.querySelectorAll('[data-vf-js-banner-text]')[0].innerHTML;
+      bannerRemapped.vfJsBannerText = banner.querySelectorAll("[data-vf-js-banner-text]")[0].innerHTML;
 
       var uniqueId = Math.round(Math.random()*10000000);
 
       // set an id to target this banner
-      banner.setAttribute('data-vf-js-banner-id',uniqueId);
+      banner.setAttribute("data-vf-js-banner-id",uniqueId);
 
       // preserve the classlist
-      bannerRemapped.classList = banner.querySelectorAll('[data-vf-js-banner-text]')[0].classList;
+      bannerRemapped.classList = banner.querySelectorAll("[data-vf-js-banner-text]")[0].classList;
 
       // Make the banner come alive
       vfBannerInsert(bannerRemapped,uniqueId);
@@ -145,30 +145,30 @@ function vfBanner(scope) {
  */
 function vfBannerInsert(banner,bannerId,scope) {
   var scope = scope || document;
-  var targetBanner = scope.querySelectorAll('[data-vf-js-banner-id="'+bannerId+'"]')[0];
+  var targetBanner = scope.querySelectorAll("[data-vf-js-banner-id=\""+bannerId+"\"]")[0];
   if (targetBanner == undefined) {
     return;
   }
 
-  var generatedBannerHtml = '<div class="'+banner.classList+'" data-vf-js-banner-text>';
+  var generatedBannerHtml = "<div class=\""+banner.classList+"\" data-vf-js-banner-text>";
 
   generatedBannerHtml += banner.vfJsBannerText;
 
   // What type of banner?
-  if (banner.vfJsBannerState === 'persistent') {
+  if (banner.vfJsBannerState === "persistent") {
     // nothing more to do for persistent, you can't close it
 
-  } else if (banner.vfJsBannerState === 'dismissible') {
+  } else if (banner.vfJsBannerState === "dismissible") {
     // nothing more to do for dismissible
 
-  } else if (banner.vfJsBannerState === 'blocking') {
-    console.warn('vf-banner: Note, the blocking implementation is not yet feature complete.');
+  } else if (banner.vfJsBannerState === "blocking") {
+    console.warn("vf-banner: Note, the blocking implementation is not yet feature complete.");
     // escape only works when blocking
-    if (banner.vfJsBannerEscClose === 'y' || banner.vfJsBannerEscClose === 'Y') {
+    if (banner.vfJsBannerEscClose === "y" || banner.vfJsBannerEscClose === "Y") {
       document.onkeydown = function(evt) {
         evt = evt || window.event;
         if (evt.keyCode == 27) {
-          vfBannerConfirm(targetBanner,'null');
+          vfBannerConfirm(targetBanner,"null");
         }
       };
     }
@@ -177,15 +177,15 @@ function vfBannerInsert(banner,bannerId,scope) {
   // Split passed links into buttons
   // <a href='#'>string1</a>\<a href='#'>string2</a>
   if (banner.vfJsBannerExtraButton) {
-    var vfBannerExtraButtons = banner.vfJsBannerExtraButton.split('</a>');
+    var vfBannerExtraButtons = banner.vfJsBannerExtraButton.split("</a>");
 
     vfBannerExtraButtons.forEach(function(button){
       if (button.length > 1) {
-        button += '</a>';
-        var newButton = document.createElement('button');
+        button += "</a>";
+        var newButton = document.createElement("button");
         newButton.innerHTML = button;
         newButton = newButton.firstChild;
-        newButton.classList.add('vf-button','vf-button--primary');
+        newButton.classList.add("vf-button","vf-button--primary");
         generatedBannerHtml += newButton.outerHTML;
       }
     });
@@ -193,30 +193,30 @@ function vfBannerInsert(banner,bannerId,scope) {
 
   // if there is a vfJsBannerButtonText and banner is blocking or dismissible,
   // add a button so user can close the banner
-  if (banner.vfJsBannerButtonText && (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible')) {
-    if (banner.vfJsBannerButtonTheme == 'primary') {
-      generatedBannerHtml += '<button class="vf-button vf-button--primary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+  if (banner.vfJsBannerButtonText && (banner.vfJsBannerState === "blocking" || banner.vfJsBannerState === "dismissible")) {
+    if (banner.vfJsBannerButtonTheme == "primary") {
+      generatedBannerHtml += "<button class=\"vf-button vf-button--primary\" data-vf-js-banner-close>"+banner.vfJsBannerButtonText+"</button>";
     }
-    else if (banner.vfJsBannerButtonTheme == 'secondary') {
-      generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    else if (banner.vfJsBannerButtonTheme == "secondary") {
+      generatedBannerHtml += "<button class=\"vf-button vf-button--secondary\" data-vf-js-banner-close>"+banner.vfJsBannerButtonText+"</button>";
     }
-    else if (banner.vfJsBannerButtonTheme == 'tertiary') {
-      generatedBannerHtml += '<button class="vf-button vf-button--tertary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+    else if (banner.vfJsBannerButtonTheme == "tertiary") {
+      generatedBannerHtml += "<button class=\"vf-button vf-button--tertary\" data-vf-js-banner-close>"+banner.vfJsBannerButtonText+"</button>";
     }
     else {
-      generatedBannerHtml += '<button class="vf-button vf-button--secondary" data-vf-js-banner-close>'+banner.vfJsBannerButtonText+'</button>';
+      generatedBannerHtml += "<button class=\"vf-button vf-button--secondary\" data-vf-js-banner-close>"+banner.vfJsBannerButtonText+"</button>";
     }
   }
 
-  generatedBannerHtml += '</div>';
+  generatedBannerHtml += "</div>";
 
   // set the html of the banner
   targetBanner.innerHTML = generatedBannerHtml;
 
   // prep for cookie
-  var vfBannerCookieNameAndVersion = 'null';
+  var vfBannerCookieNameAndVersion = "null";
   if (banner.vfJsBannerCookieName && banner.vfJsBannerCookieVersion) {
-    vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + '_' + banner.vfJsBannerCookieVersion;
+    vfBannerCookieNameAndVersion = banner.vfJsBannerCookieName + "_" + banner.vfJsBannerCookieVersion;
   }
 
   // utility to reset cookie when developing
@@ -224,10 +224,10 @@ function vfBannerInsert(banner,bannerId,scope) {
   // vfBannerReset(vfBannerCookieNameAndVersion);
 
   // if blocking or dismissible, allow the user to close it, store a cookie (if specified)
-  if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
+  if (banner.vfJsBannerState === "blocking" || banner.vfJsBannerState === "dismissible") {
     // On click: close banner, pass any cookie name (or `null`)
     if (banner.vfJsBannerButtonText) {
-      targetBanner.querySelectorAll('[data-vf-js-banner-close]')[0].addEventListener('click', function(){
+      targetBanner.querySelectorAll("[data-vf-js-banner-close]")[0].addEventListener("click", function(){
         vfBannerConfirm(targetBanner,vfBannerCookieNameAndVersion);
       }, false);
     }
@@ -237,20 +237,20 @@ function vfBannerInsert(banner,bannerId,scope) {
   if (targetBanner.classList.contains("vf-banner--fixed")) {
     var height = targetBanner.offsetHeight || 0;
     if (targetBanner.classList.contains("vf-banner--top")) {
-      var pagePadding = document.body.style.paddingTop.replace(/\D/g,'') || 0;
+      var pagePadding = document.body.style.paddingTop.replace(/\D/g,"") || 0;
       pagePadding = pagePadding + height;
-      document.body.style.paddingTop = pagePadding+'px';
+      document.body.style.paddingTop = pagePadding+"px";
     }
     if (targetBanner.classList.contains("vf-banner--bottom")) {
-      var pagePadding = document.body.style.paddingBottom.replace(/\D/g,'') || 0;
+      var pagePadding = document.body.style.paddingBottom.replace(/\D/g,"") || 0;
       pagePadding = pagePadding + height;
-      document.body.style.paddingBottom = pagePadding+'px';
+      document.body.style.paddingBottom = pagePadding+"px";
     }
   }
 
-  if (vfBannerCookieNameAndVersion != 'null') {
+  if (vfBannerCookieNameAndVersion != "null") {
     // if banner has been previously accepted
-    if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === 'true') {
+    if (vfBannerGetCookie(vfBannerCookieNameAndVersion) === "true") {
       // banner has been accepted, close
       vfBannerClose(targetBanner);
       // exit, nothng more to do
@@ -258,8 +258,8 @@ function vfBannerInsert(banner,bannerId,scope) {
     }
 
     // if banner is marked as auto-accept, set as read
-    if (banner.vfJsBannerAutoAccept == 'true') {
-      if (banner.vfJsBannerState === 'blocking' || banner.vfJsBannerState === 'dismissible') {
+    if (banner.vfJsBannerAutoAccept == "true") {
+      if (banner.vfJsBannerState === "blocking" || banner.vfJsBannerState === "dismissible") {
         vfBannerSetCookie(vfBannerCookieNameAndVersion,true);
       }
     }

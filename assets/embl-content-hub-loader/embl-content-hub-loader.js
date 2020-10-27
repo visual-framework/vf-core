@@ -1,7 +1,7 @@
 // embl-content-hub-loader
 
-import { emblContentHubLoaderHtmlImports } from 'embl-content-hub-loader/embl-content-hub-loader__html-imports';
-import { emblContentHubFetch } from 'embl-content-hub-loader/embl-content-hub-loader__fetch';
+import { emblContentHubLoaderHtmlImports } from "embl-content-hub-loader/embl-content-hub-loader__html-imports";
+import { emblContentHubFetch } from "embl-content-hub-loader/embl-content-hub-loader__fetch";
 
 function emblContentHub() {
 

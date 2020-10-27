@@ -12,10 +12,10 @@
 function vfShowMore(scope) {
   var scope = scope || document;
   // Get relevant elements and collections
-  var buttonList = scope.querySelectorAll('[data-vf-js-show-more-button]');
-  var buttonHideList = scope.querySelectorAll('[data-vf-js-show-more-button--less]');
-  var targetList = scope.querySelectorAll('[data-vf-js-show-more]');
-  var pagerSize = scope.querySelectorAll('[data-vf-js-show-more-pager-size]');
+  var buttonList = scope.querySelectorAll("[data-vf-js-show-more-button]");
+  var buttonHideList = scope.querySelectorAll("[data-vf-js-show-more-button--less]");
+  var targetList = scope.querySelectorAll("[data-vf-js-show-more]");
+  var pagerSize = scope.querySelectorAll("[data-vf-js-show-more-pager-size]");
   if (!buttonList || !targetList) {
     // exit: either buttons or target content not found
     return;
@@ -31,8 +31,8 @@ function vfShowMore(scope) {
 
     // generate the appropriate style to show
     // https://stackoverflow.com/questions/707565/how-do-you-add-css-with-javascript
-    var sheet = document.createElement('style');
-    sheet.classList.add('vf-show-more__dynamic-styling');
+    var sheet = document.createElement("style");
+    sheet.classList.add("vf-show-more__dynamic-styling");
     sheet.innerHTML = "/* Show/hide items beyond the specified ammount */ \n"
     + ".vf-show-more .vf-show-more__item {\n"
     + "  display: none;\n"
@@ -51,38 +51,38 @@ function vfShowMore(scope) {
   // The showing function
   var showIt = function showIt(targetContent) {
     // get the parent ul of the clicked tab
-    targetContent = targetContent.closest('[data-vf-js-show-more]');
+    targetContent = targetContent.closest("[data-vf-js-show-more]");
 
     targetContent.focus();
     // Make the active tab focusable by the user (Tab key)
-    targetContent.removeAttribute('tabindex');
+    targetContent.removeAttribute("tabindex");
     // Set the selected state
-    targetContent.setAttribute('aria-selected', 'true');
-    targetContent.classList.add('is-active');
-  }
+    targetContent.setAttribute("aria-selected", "true");
+    targetContent.classList.add("is-active");
+  };
 
   // The hiding function
   var hideIt = function hideIt(targetContent) {
     // get the parent ul of the clicked tab
-    targetContent = targetContent.closest('[data-vf-js-show-more]');
+    targetContent = targetContent.closest("[data-vf-js-show-more]");
 
     targetContent.focus();
     // Make the active tab focusable by the user (Tab key)
-    targetContent.removeAttribute('tabindex');
+    targetContent.removeAttribute("tabindex");
     // Set the selected state
-    targetContent.setAttribute('aria-selected', 'false');
-    targetContent.classList.remove('is-active');
-  }
+    targetContent.setAttribute("aria-selected", "false");
+    targetContent.classList.remove("is-active");
+  };
 
   // Add semantics
   Array.prototype.forEach.call(buttonList, function (button, i) {
-    button.parentNode.setAttribute('role', 'presentation');
+    button.parentNode.setAttribute("role", "presentation");
 
     // Reset any active tabs from a previous JS call
-    button.classList.remove('is-active');
+    button.classList.remove("is-active");
 
     // Handle clicking of show more for mouse users
-    button.addEventListener('click', function (e) {
+    button.addEventListener("click", function (e) {
       e.preventDefault();
       showIt(e.currentTarget);
     });
@@ -108,13 +108,13 @@ function vfShowMore(scope) {
   if (buttonHideList) {
     if (buttonHideList.length != 0) {
       Array.prototype.forEach.call(buttonHideList, function (button, i) {
-        button.parentNode.setAttribute('role', 'presentation');
+        button.parentNode.setAttribute("role", "presentation");
 
         // Reset any active tabs from a previous JS call
-        button.classList.remove('is-active');
+        button.classList.remove("is-active");
 
         // Handle clicking of hide/show less for mouse users
-        button.addEventListener('click', function (e) {
+        button.addEventListener("click", function (e) {
           e.preventDefault();
           hideIt(e.currentTarget);
         });
