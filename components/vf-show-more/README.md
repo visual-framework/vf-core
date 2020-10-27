@@ -4,6 +4,8 @@
 
 ## About
 
+Allow a user to show more or less of a card or list with a button (client side).
+
 ## Usage
 
 - `data-vf-js-show-more` The containing element, does not have to be a direct parent
@@ -11,6 +13,8 @@
 - `class="vf-show-more__item"` Items to be shown hidden (display done with CSS)
 - `data-vf-js-show-more-button` The button to show more
 - `data-vf-js-show-more-button--less` The button to show less, optional
+
+Note: currently only one set of "show more" is supported per page
 
 ### An overview of the HTML strcuture
 
