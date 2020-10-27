@@ -4,9 +4,9 @@
 // is not combinable with a `.yml` config file
 // https://fractal.build/guide/core-concepts/configuration-files.html#configuration-file-formats
 let fractalConfig = {
-  title: 'Design Tokens',
-  status: 'live',
-  hidden: 'true',
+  title: "Design Tokens",
+  status: "live",
+  hidden: "true",
 };
 
 // export the config to fractal

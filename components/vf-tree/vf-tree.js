@@ -18,7 +18,7 @@
 // if you need to import any other components' JS to use here
 // import { vfOthercomponent } from 'vf-other-component/vf-other-component';
 
- /**
+/**
   * The global function for this component
   * @example vfTree(firstPassedVar)
   * @param {object} [scope] - the html scope to process, optional, defaults to `document`
@@ -27,7 +27,7 @@ function vfTree(scope) {
   var scope = scope || document;
 
   // Get relevant elements and collections
-  const treelist = scope.querySelectorAll('[data-vf-js-tree]');
+  const treelist = scope.querySelectorAll("[data-vf-js-tree]");
   // const panelsList = scope.querySelectorAll('[data-vf-js-tabs-content]');
   // const panels = scope.querySelectorAll('[data-vf-js-tabs-content] [id^="vf-tabs__section"]');
   // const tabs = scope.querySelectorAll('[data-vf-js-tabs] .vf-tabs__link');
@@ -44,21 +44,21 @@ function vfTree(scope) {
 
   // Receive a target scope and toggle if it is active
   function vfTreeToggleActive(target) {
-    let collpasedState = target.dataset['vfJsTree-Collapsed'];
+    let collpasedState = target.dataset["vfJsTree-Collapsed"];
 
-    if (collpasedState === 'true') {
+    if (collpasedState === "true") {
       collpasedState = false;
-      target.classList.remove('vf-tree--collapsed');
-      target.classList.add('vf-tree__item--expanded');
+      target.classList.remove("vf-tree--collapsed");
+      target.classList.add("vf-tree__item--expanded");
       target.setAttribute("aria-expanded", true);
     } else {
       collpasedState = true;
-      target.classList.add('vf-tree--collapsed');
-      target.classList.remove('vf-tree__item--expanded');
+      target.classList.add("vf-tree--collapsed");
+      target.classList.remove("vf-tree__item--expanded");
       target.setAttribute("aria-expanded", false);
     }
 
-    target.dataset['vfJsTree-Collapsed'] = collpasedState;
+    target.dataset["vfJsTree-Collapsed"] = collpasedState;
   }
 
   // Logic to show/hide section of tree
@@ -69,7 +69,7 @@ function vfTree(scope) {
     //   return item.matches('[data-vf-js-tree--button]');
     // });
 
-    const targetButton = target.querySelectorAll('[data-vf-js-tree--button]');
+    const targetButton = target.querySelectorAll("[data-vf-js-tree--button]");
     
     if (targetButton.length == 0) {
       // if no tree buttons found, nothing to do
@@ -78,8 +78,8 @@ function vfTree(scope) {
 
     // Handle clicking
     // Target the closest item
-    targetButton[0].addEventListener('click', e => {
-      console.log(target)
+    targetButton[0].addEventListener("click", e => {
+      console.log(target);
       e.preventDefault();
       vfTreeToggleActive(target);
     });
