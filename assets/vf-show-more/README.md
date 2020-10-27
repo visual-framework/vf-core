@@ -1,6 +1,10 @@
-# vf-show-more Component
+# Show More component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-show-more.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-show-more)
+
+## About
+
+Allow a user to show more or less of a card or list with a button (client side).
 
 ## Usage
 
@@ -9,6 +13,8 @@
 - `class="vf-show-more__item"` Items to be shown hidden (display done with CSS)
 - `data-vf-js-show-more-button` The button to show more
 - `data-vf-js-show-more-button--less` The button to show less, optional
+
+Note: currently only one set of "show more" is supported per page
 
 ### An overview of the HTML strcuture
 
@@ -25,7 +31,7 @@ A condensed example.
 </section>
 ```
 
-## Future development
+### Future development
 
 - Pager support
 - Currently designed to work with pre-loaded HTML. It should be possible to use it with lazy-loaded HTML with a few considerations.
@@ -38,7 +44,7 @@ This repository is distributed with [npm][https://www.npmjs.com/]. After [instal
 $ yarn add --dev @visual-framework/vf-show-more
 ```
 
-## JS
+### JS
 
 You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 
@@ -49,17 +55,17 @@ import { vfcomponentName } from 'vf-show-more/vf-show-more';
 vfcomponentName(); // if needed, invoke it
 ```
 
-## Sass/CSS
+### Sass/CSS
 
 If your component uses Sass:
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
 @import "@visual-framework/vf-show-more/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 

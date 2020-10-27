@@ -721,11 +721,27 @@ class="vf-logo | vf-logo--has-text">
       
       
 
-      
+      <p>This Package is to get your project up and running with the minimum Sass files and dependencies you may require.</p>
+
 
       
         <h2>Usage</h2>
-        <p>This Package is to get your project up and running with the minimum Sass files and dependencies you may require.</p>
+        <p>This component's <code>index.scss</code> file will import the Design Tokens, the Sass variables, mixins, functions to get you started as well as importing the CSS Utility Classes, the Utilities, and the Font CSS for IBM Plex Mono and IBM Plex Sans.</p>
+<p>If you do not require this you can create your own @imports removing what you want from this list:</p>
+<pre><code>// Import Sass Variables, Mixins, and Functions from @visual-framework/vf-sass-config
+@import 'vf-sass-config/index.scss';
+
+// Include all Utility Classes from @visual-framework/vf-utility-classes
+@import 'vf-sass-config/mixins/vf-utility-mixins.scss';
+@import 'vf-utility-classes/vf-utility-classes.scss';
+
+// Include all SCSS Utilities from @visual-framework/vf-sass-utilities
+@import 'vf-sass-utilities/vf-sass-utilities.scss';
+
+// Include the relevant IBM Plex typefaces
+@import 'vf-font-plex-mono/vf-font-plex-mono.scss';
+@import 'vf-font-plex-sans/vf-font-plex-sans.scss';
+</code></pre>
 
       
 
@@ -735,6 +751,11 @@ class="vf-logo | vf-logo--has-text">
         <p>This repository is distributed with <a href="https://www.npmjs.com/">npm</a>. After <a href="https://www.npmjs.com/get-npm">installing npm</a> and <a href="https://classic.yarnpkg.com/en/docs/install">yarn</a>, you can install <code>vf-sass-starter</code> and its dependencies with this command.</p>
 <pre><code>$ yarn add --dev @visual-framework/vf-sass-starter @visual-framework/vf-design-tokens @visual-framework/vf-font-plex-mono @visual-framework/vf-font-plex-sans @visual-framework/vf-sass-config @visual-framework/vf-sass-utilities @visual-framework/vf-utility-classes
 </code></pre>
+<h3>Sass/CSS</h3>
+<p>The style files included are written in <a href="https://sass-lang.com/">Sass</a>. If you're using a VF-core project, you can import it like this:</p>
+<pre><code>@import &quot;@visual-framework/vf-sass-starter/index.scss&quot;;
+</code></pre>
+<p>Make sure you import Sass requirements along with the modules. You can use a <a href="https://visual-framework.github.io/vf-core/building/">project boilerplate</a> or the <a href="https://visual-framework.github.io/vf-core/components/vf-sass-starter/"><code>vf-sass-starter</code></a></p>
 
       </details>
       
@@ -868,7 +889,7 @@ File system location: <code>components/vf-sass-starter</code>
 
 
 
-<!-- This page was generated on 2020-10-27T15:24:45.794+00:00 -->
+<!-- This page was generated on 2020-10-27T15:43:49.719+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>

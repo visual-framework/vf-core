@@ -4,12 +4,14 @@
 
 Fetches notifications from the EMBL contentHub URL of https://www.embl.org/api/v1/notifications?_format=json&source=contenthub and will display them, if a matching URL is found.
 
-It will also check a backup URL for cases of major outages.
+## Usage
+
+This will also check a backup URL for cases of major outages.
 
 - Fallback URL: https://embl-communications.github.io/embl-notifcations-fallback/notifications.js
 - Fallabck repo: https://github.com/embl-communications/embl-notifcations-fallback
 
-## Possible features not currently planned:
+### Possible features not currently planned:
 
 - Only show if a wrapping element has `data-vf-js-embl-notifications`
 - Also load messages from EBI's existing announcement JS at https://ebi.emblstatic.net/announcements.js
@@ -18,13 +20,13 @@ It will also check a backup URL for cases of major outages.
 
 ## Install
 
-This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `embl-notifications` with this command.
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `embl-notifications` with this command.
 
 ```
 $ yarn add --dev @visual-framework/embl-notifications
 ```
 
-## Usage
+### Sass/CSS
 
 Add this to your `./components/vf-component-rollup/scripts.js`:
 
@@ -40,3 +42,9 @@ You can masquerade as another page or URL for adhoc use cases or testing:
 // emblNotifications(currentHost = 'www.embl.org', currentPath = 'my/test/path`);
 emblNotifications('www.embl.org','/')
 ```
+
+## Help
+
+- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
+- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

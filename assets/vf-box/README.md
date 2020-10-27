@@ -1,4 +1,4 @@
-# Box Component
+# Box component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-box.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-box)
 
@@ -12,9 +12,7 @@ A `vf-box` can be used in all layout components (`vf-grid`, `vf-stack`, `embl-gr
 
 For now `vf-box` is only designed to accept a heading and text (both have classes). The text node – `vf-box__text` can also accept a link which will inherit the text colour.
 
-## Options
-
-### Is Link
+### Is Link option
 
 If you require the `vf-box` to link to a page you can do this by:
 
@@ -24,7 +22,6 @@ Using `.njk` and `.yml` for content:
 Authoring in HTML:
 - adding `vf-box--is-link` to the classes being used `<div class="vf-box vf-box--is-link">...</div>`.
 - adding the link inside of the title `<h3 class="vf-box__title"><a href="#" class="vf-box__link">A title</a></h3>`.
-
 
 ### Design Variants
 
@@ -53,8 +50,6 @@ The theme classnames available are:
 
 **Do not** use the themes `vf-box-theme--qauternary` or `vf-box-theme--quinary` with the design variant `vf-box--easy` as they do not conform to WCAG colour contrast ratio specifications.
 
-
-
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-box` with this command.
@@ -63,10 +58,18 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 $ yarn add --dev @visual-framework/vf-box
 ```
 
+### Sass/CSS
+
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
 @import "@visual-framework/vf-box/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+
+## Help
+
+- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
+- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

@@ -721,7 +721,8 @@ class="vf-logo | vf-logo--has-text">
       
       
 
-      
+      <p>Allow a user to show more or less of a card or list with a button (client side).</p>
+
 
       
         <h2>Usage</h2>
@@ -732,6 +733,7 @@ class="vf-logo | vf-logo--has-text">
 <li><code>data-vf-js-show-more-button</code> The button to show more</li>
 <li><code>data-vf-js-show-more-button--less</code> The button to show less, optional</li>
 </ul>
+<p>Note: currently only one set of &quot;show more&quot; is supported per page</p>
 <h3>An overview of the HTML strcuture</h3>
 <p>A condensed example.</p>
 <pre><code class="language-html">&lt;section data-vf-js-show-more data-vf-js-show-more-pager-size=&quot;3&quot; class=&quot;vf-show-more&quot;&gt;
@@ -743,6 +745,11 @@ class="vf-logo | vf-logo--has-text">
   &lt;button class=&quot;vf-button | vf-show-more__button--less&quot; data-vf-js-show-more-button--less&gt;Show less&lt;/button&gt;
 &lt;/section&gt;
 </code></pre>
+<h3>Future development</h3>
+<ul>
+<li>Pager support</li>
+<li>Currently designed to work with pre-loaded HTML. It should be possible to use it with lazy-loaded HTML with a few considerations.</li>
+</ul>
 
       
 
@@ -752,6 +759,19 @@ class="vf-logo | vf-logo--has-text">
         <p>This repository is distributed with [npm][https://www.npmjs.com/]. After [installing npm][https://www.npmjs.com/get-npm] and <a href="https://classic.yarnpkg.com/en/docs/install">yarn</a>, you can install <code>vf-show-more</code> with this command.</p>
 <pre><code>$ yarn add --dev @visual-framework/vf-show-more
 </code></pre>
+<h3>JS</h3>
+<p>You should import this component in <code>./components/vf-component-rollup/scripts.js</code> or your other JS process:</p>
+<pre><code class="language-js">import { vfcomponentName } from 'vf-show-more/vf-show-more';
+// Or import directly
+// import { vfcomponentName } from '../components/raw/vf-show-more/vf-show-more.js';
+vfcomponentName(); // if needed, invoke it
+</code></pre>
+<h3>Sass/CSS</h3>
+<p>If your component uses Sass:</p>
+<p>The style files included are written in <a href="https://sass-lang.com/">Sass</a>. If you're using a VF-core project, you can import it like this:</p>
+<pre><code>@import &quot;@visual-framework/vf-show-more/index.scss&quot;;
+</code></pre>
+<p>Make sure you import Sass requirements along with the modules. You can use a <a href="https://visual-framework.github.io/vf-core/building/">project boilerplate</a> or the <a href="https://visual-framework.github.io/vf-core/components/vf-sass-starter/"><code>vf-sass-starter</code></a></p>
 
       </details>
       
@@ -785,66 +805,66 @@ class="vf-logo | vf-logo--has-text">
   <div class="vf-grid vf-grid__col-3">
 
 <div
-  class="vf-box">
+  class="vf-box vf-box--easy | vf-show-more__item">
 
-  <h3 class="vf-box__heading"></h3>
-  <p class="vf-box__text"></p>
+  <h3 class="vf-box__heading">foo</h3>
+  <p class="vf-box__text">I'm item number 1</p>
 </div>
 
 <div
-  class="vf-box">
+  class="vf-box vf-box--easy | vf-show-more__item">
 
-  <h3 class="vf-box__heading"></h3>
-  <p class="vf-box__text"></p>
+  <h3 class="vf-box__heading">foo</h3>
+  <p class="vf-box__text">I'm item number 2</p>
 </div>
 
 <div
-  class="vf-box">
+  class="vf-box vf-box--easy | vf-show-more__item">
 
-  <h3 class="vf-box__heading"></h3>
-  <p class="vf-box__text"></p>
+  <h3 class="vf-box__heading">foo</h3>
+  <p class="vf-box__text">I'm item number 3</p>
 </div>
 
 <div
-  class="vf-box">
+  class="vf-box vf-box--easy | vf-show-more__item">
 
-  <h3 class="vf-box__heading"></h3>
-  <p class="vf-box__text"></p>
+  <h3 class="vf-box__heading">foo</h3>
+  <p class="vf-box__text">I'm item number 4</p>
 </div>
 
 <div
-  class="vf-box">
+  class="vf-box vf-box--easy | vf-show-more__item">
 
-  <h3 class="vf-box__heading"></h3>
-  <p class="vf-box__text"></p>
+  <h3 class="vf-box__heading">foo</h3>
+  <p class="vf-box__text">I'm item number 5</p>
 </div>
 
 <div
-  class="vf-box">
+  class="vf-box vf-box--easy | vf-show-more__item">
 
-  <h3 class="vf-box__heading"></h3>
-  <p class="vf-box__text"></p>
+  <h3 class="vf-box__heading">foo</h3>
+  <p class="vf-box__text">I'm item number 6</p>
 </div>
 
 <div
-  class="vf-box">
+  class="vf-box vf-box--easy | vf-show-more__item">
 
-  <h3 class="vf-box__heading"></h3>
-  <p class="vf-box__text"></p>
+  <h3 class="vf-box__heading">foo</h3>
+  <p class="vf-box__text">I'm item number 7</p>
 </div>
 
 <div
-  class="vf-box">
+  class="vf-box vf-box--easy | vf-show-more__item">
 
-  <h3 class="vf-box__heading"></h3>
-  <p class="vf-box__text"></p>
+  <h3 class="vf-box__heading">foo</h3>
+  <p class="vf-box__text">I'm item number 8</p>
 </div>
 
 <div
-  class="vf-box">
+  class="vf-box vf-box--easy | vf-show-more__item">
 
-  <h3 class="vf-box__heading"></h3>
-  <p class="vf-box__text"></p>
+  <h3 class="vf-box__heading">foo</h3>
+  <p class="vf-box__text">I'm item number 9</p>
 </div>
   </div>
 
@@ -867,58 +887,58 @@ class="vf-logo | vf-logo--has-text">
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-grid vf-grid__col-3"</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box vf-box--easy | vf-show-more__item"</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span>I'm item number 1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box vf-box--easy | vf-show-more__item"</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span>I'm item number 2<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box vf-box--easy | vf-show-more__item"</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span>I'm item number 3<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box vf-box--easy | vf-show-more__item"</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span>I'm item number 4<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box vf-box--easy | vf-show-more__item"</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span>I'm item number 5<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box vf-box--easy | vf-show-more__item"</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span>I'm item number 6<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box vf-box--easy | vf-show-more__item"</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span>I'm item number 7<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box vf-box--easy | vf-show-more__item"</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span>I'm item number 8<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box vf-box--easy | vf-show-more__item"</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__heading"</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-box__text"</span>&gt;</span>I'm item number 9<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
@@ -1025,7 +1045,7 @@ File system location: <code>components/vf-show-more</code>
 
 
 
-<!-- This page was generated on 2020-10-27T15:24:45.794+00:00 -->
+<!-- This page was generated on 2020-10-27T15:43:49.719+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>

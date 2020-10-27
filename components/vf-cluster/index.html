@@ -721,22 +721,113 @@ class="vf-logo | vf-logo--has-text">
       
       
 
+      <p>The <code>vf-cluster</code> is a layout component that can be used when we need to give various content items (of indeterment sizes) an equaly spaced layout on the page that can respond to the browsers viewport width.</p>
+
+
       
+        <h2>Usage</h2>
+        <p>The main use case for <code>vf-cluster</code> is to be mainly used when something the available grid systems are too 'rigid' because of the different widths of the content.</p>
+<h3>Integration</h3>
+<h4>Eleventy</h4>
+<p>To use the <code>vf-cluster</code> component we make use of the <code>@extends</code> directive from <a href="https://mozilla.github.io/nunjucks/templating.html#extends">Nunjucks</a> to 'wrap' around the content we want this layout component to render.</p>
+<h5>Requirements</h5>
+<p>To use the <code>vf-cluster</code> component you must be using <a href="https://github.com/visual-framework/vf-eleventy/releases/tag/v2.0.0-alpha.18">vX.X.X</a> of <code>vf-eleventy</code>.</p>
+<h5>Code</h5>
+<p>In the <code>.njk</code> file you are wanting to use the <code>vf-cluster</code> you must include the following code to 'extend' the file with the <code>vf-cluster</code> component.</p>
+<p>{% raw %}</p>
+<pre><code class="language-html">{% extends layout.cluster %}
+</code></pre>
+<p>{% endraw %}</p>
+<br/>
+<p>You will then need to create a 'block' to put the relevant content inside so that it renders within the <code>vf-cluster</code> layout when rendered.
+<br/></p>
+<p>{% raw %}</p>
+<pre><code class="language-html">{% block cluster_content %}
+...
+{% endblock %}
+</code></pre>
+<p>{% endraw %}</p>
+<br/>
+<p>To make use of <code>.yml</code> to render the <code>vf-cluster</code> to the variant you wish to use, you will have to 'set' the context in the <code>.njk</code> file.
+<br/></p>
+<p>{% raw %}</p>
+<pre><code class="language-html">{% set context = cluster1 %}
+</code></pre>
+<p>{% endraw %}</p>
+<p><small>note: <code>cluster1</code> is an example, please pick your own semantic, readable context names</small>
+<br>
+With these set you can then add the relevant content as needed.</p>
+<h4>WordPress</h4>
+<h5>Requirements</h5>
+<p>To use the <code>vf-cluster</code> component you must be using <a href="https://github.com/visual-framework/vf-wp/releases/tag/v1.0.0-beta.24">vX.X.X</a> of <code>vf-wp</code>.</p>
+<h3>Variants</h3>
+<p>There are four spacing variants and three alignment variants available for this component as well as an option to define the width of the <code>vf-cluster</code>s children.</p>
+<table>
+<thead>
+<tr>
+<th>custom property</th>
+<th>options</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spacing</td>
+<td>small, medium, large</td>
+<td>none</td>
+</tr>
+<tr>
+<td>alignment</td>
+<td>start, center, end</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h4>Spacing Variants</h4>
+<p>There are three spacing variants that determina the inline and block spacing between items of content inside of <code>vf-cluster</code>.</p>
+<h4>Alignment Variants</h4>
+<p>This variant determines where the child components align in the vertical space available. When setting this in your <code>.yml</code> file it will add the relevant CSS value as the inline CSS custom property <code>-vf-cluster-alignment</code>.</p>
+<h3>CSS Custom Properties</h3>
+<table>
+<thead>
+<tr>
+<th>custom property</th>
+<th>options</th>
+<th>example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--vf-cluster-alignment</td>
+<td>could be used for a different vertical alignment value</td>
+<td><code>baseline</code></td>
+</tr>
+<tr>
+<td>--vf-cluster-margin</td>
+<td>can take a CSS size value to overide the defualt</td>
+<td><code>31px</code></td>
+</tr>
+<tr>
+<td>--vf-cluster__item--flex</td>
+<td>can take a CSS flex value to determine the child widths</td>
+<td><code>210px 1 0</code></td>
+</tr>
+</tbody>
+</table>
 
       
 
       
       <details class="vf-details">
         <summary class="vf-details--summary">Installation info</summary>
-        <p>ation</p>
-<p>This repository is distributed with <a href="https://www.npmjs.com/">npm</a>. After <a href="https://www.npmjs.com/get-npm">installing npm</a> and <a href="https://classic.yarnpkg.com/en/docs/install">yarn</a>, you can install <code>vf-cluster</code> with this command.</p>
+        <p>This repository is distributed with <a href="https://www.npmjs.com/">npm</a>. After <a href="https://www.npmjs.com/get-npm">installing npm</a> and <a href="https://classic.yarnpkg.com/en/docs/install">yarn</a>, you can install <code>vf-cluster</code> with this command.</p>
 <pre><code>$ yarn add --dev @visual-framework/vf-cluster
 </code></pre>
 <h3>Sass/CSS</h3>
 <p>The source files included are written in <code>scss</code> syntax of <a href="https://sass-lang.com/">Sass</a>. You can point your sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
 <pre><code>@import &quot;@visual-framework/vf-cluster/index.scss&quot;;
 </code></pre>
-<p><em>Make sure you import Sass requirements along with the modules.</em></p>
+<p>Make sure you import Sass requirements along with the modules. You can use a <a href="https://visual-framework.github.io/vf-core/building/">project boilerplate</a> or the <a href="https://visual-framework.github.io/vf-core/components/vf-sass-starter/"><code>vf-sass-starter</code></a></p>
 
       </details>
       
@@ -1844,7 +1935,7 @@ File system location: <code>components/vf-cluster</code>
 
 
 
-<!-- This page was generated on 2020-10-27T15:24:45.794+00:00 -->
+<!-- This page was generated on 2020-10-27T15:43:49.719+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>

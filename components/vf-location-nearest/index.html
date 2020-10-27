@@ -721,18 +721,49 @@ class="vf-logo | vf-logo--has-text">
       
       
 
-      
+      <p>From a list of lat and long, this will use the browser geolcation API to select the nearest. It also provides a manual selection fallback and override.</p>
+
 
       
         <h2>Usage</h2>
-        <p>From a list of lat and long, this will use the browser geolcation API to select the nearest. It also provides a manual selection fallback and override.</p>
-<p>This component is purely JavaScript and relies on other components to provide UI and to consume the detected region.</p>
+        <p>This component is purely JavaScript and relies on other components to provide UI and to consume the detected region.</p>
 <p>This is an early version, some future improvements to be considered:</p>
 <ul>
 <li>Callback to observe detected locations to be used in other components</li>
 <li>Allowing &quot;or&quot; matches for content <code>data-vf-js-location-nearest-activation-target=&quot;locationOne, locationTwo&quot;</code></li>
 <li>Enabling the default while we wait for geodetection</li>
 <li>&quot;Saving&quot; a user's location when using the override</li>
+</ul>
+<h3>JS</h3>
+<p>You should import this component in <code>./components/vf-component-rollup/scripts.js</code> or your other JS process:</p>
+<pre><code class="language-js">import { vfLocationNearest } from 'vf-location-nearest/vf-location-nearest';
+// Or import directly
+// import { vfLocationNearest } from '../components/raw/vf-location-nearest/vf-location-nearest.js';
+
+// Configure an object of your locations to detect
+// You should do this in your central JS (scripts.js) as appropriate
+let vfLocationNearestLocations = {
+  // supply a default in case of geodetect failures
+  default: {
+    name: &quot;Heidelberg&quot;,
+    latlon: &quot;49.40768, 8.69079&quot; // lat then lon
+  },
+  barcelona: {
+    name: &quot;Barcelona&quot;,
+    latlon: &quot;0.40768, 0.69079&quot;
+  },
+  ...
+  }
+}
+// Bootstrap location detection
+vfLocationNearest(vfLocationNearestLocations);
+</code></pre>
+<h3>JS Data attributes</h3>
+<p>All are optional</p>
+<ul>
+<li><code>data-vf-js-location-nearest-name</code> element will receive the name of the current location</li>
+<li><code>data-vf-js-location-nearest-override-widget</code> element will be populated with an override widget (vf-form select list)</li>
+<li><code>data-vf-js-location-nearest-activation-target=&quot;{locationId}&quot;</code> will receive clicks on location change. This is a simple method to activate diverse elements.</li>
 </ul>
 
       
@@ -1021,7 +1052,7 @@ File system location: <code>components/vf-location-nearest</code>
 
 
 
-<!-- This page was generated on 2020-10-27T15:24:45.794+00:00 -->
+<!-- This page was generated on 2020-10-27T15:43:49.719+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>

@@ -721,10 +721,42 @@ class="vf-logo | vf-logo--has-text">
       
       
 
+      <h2>This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="https://www.npmjs.com/package/@visual-framework/vf-body">new `vf-body` component</a>.</h2>
+
+
       
+        <h2>Usage</h2>
+        <p>To start with the page has a simple 3 column grid. The second grid item has a maximum width of 1300 pixels. The two outer grid columns fill the rest of the space to create a centred layout.</p>
+<p>The code for this layout is for the <code>&lt;body class=&quot;vf-body&quot;&gt;</code> tag so that the direct children inherit the grid columns.</p>
+<h5>CSS</h5>
+<pre><code class="language-css">.vf-body {
+  display: grid;
+  grid-template-columns:
+    [full-start]
+      minmax(1.25em, 1fr)
+      [main-start]
+        minmax(0, 81.25em) // 1300px
+      [main-end]
+      minmax(1.25em, 1fr)
+    [full-end];
+}
+</code></pre>
 
       
 
+      
+      <details class="vf-details">
+        <summary class="vf-details--summary">Installation info</summary>
+        <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-grid-page</code> with this command.</p>
+<pre><code>$ yarn add --dev @visual-framework/vf-grid-page
+</code></pre>
+<h3>Sass/CSS</h3>
+<p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<pre><code>@import &quot;@visual-framework/vf-grid-page/index.scss&quot;;
+</code></pre>
+<p>Make sure you import Sass requirements along with the modules. You can use a <a href="https://visual-framework.github.io/vf-core/building/">project boilerplate</a> or the <a href="https://visual-framework.github.io/vf-core/components/vf-sass-starter/"><code>vf-sass-starter</code></a></p>
+
+      </details>
       
 
     
@@ -895,7 +927,7 @@ File system location: <code>components/vf-grid-page</code>
 
 
 
-<!-- This page was generated on 2020-10-27T15:24:45.794+00:00 -->
+<!-- This page was generated on 2020-10-27T15:43:49.719+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>

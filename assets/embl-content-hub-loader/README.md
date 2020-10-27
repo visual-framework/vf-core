@@ -6,6 +6,8 @@
 
 Use this component to remotely load markup and content from the central EMBL ContentHub, this particular component allows reuse and distribution of content ranging articles to navigation elements (such as a global footer).
 
+## Usage
+
 Currently this is done as HTML imports (see the code example) + some JS. In the future other methods will be support (such as JSON).
 
 ### Integrations
@@ -17,7 +19,7 @@ After loading from contentHub, this component will also invoke these functions o
 - `embl-conditional-edit/embl-conditional-edit`
 - `embl-notifications/embl-notifications`
 
-### Supported patterns 
+### Supported patterns
 
 See the [introductory text on the contentHub](https://content.embl.org/).
 
@@ -41,24 +43,29 @@ Breakdown:
 
 - `data-target="publications-block"`: pass the class of an element to insert text into
 - `data-embl-js-content-hub-loader-no-content="No publications were found."`: String to use if no results found, can also pass `true` to use default no match text
-- `data-embl-js-content-hub-loader-no-content-hide=".publications-container"`: If no results, hide an element that matches this selector selector 
+- `data-embl-js-content-hub-loader-no-content-hide=".publications-container"`: If no results, hide an element that matches this selector selector
 - `data-inject-class="vf-grid vf-grid__col-2" data-inject-class-target="ul"`: Inject class(es) to a an element inside the returned content
-
 
 ## Install
 
-This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `primer-buttons` with this command.
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `primer-buttons` with this command.
 
 ```
 $ yarn add --dev @visual-framework/embl-content-hub-loader
 ```
 
-## Usage
+### Sass/CSS
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
 @import "@visual-framework/embl-content-hub-loader/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+
+## Help
+
+- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
+- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

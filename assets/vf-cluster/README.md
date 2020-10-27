@@ -1,31 +1,14 @@
-# The Cluster Layout Component
+# The Cluster Layout component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-cluster.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-cluster)
 
+## About
+
 The `vf-cluster` is a layout component that can be used when we need to give various content items (of indeterment sizes) an equaly spaced layout on the page that can respond to the browsers viewport width.
 
+## Usage
+
 The main use case for `vf-cluster` is to be mainly used when something the available grid systems are too 'rigid' because of the different widths of the content.
-
-
-## Installation
-
-This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-cluster` with this command.
-
-```
-$ yarn add --dev @visual-framework/vf-cluster
-```
-
-### Sass/CSS
-
-The source files included are written in `scss` syntax of [Sass](https://sass-lang.com/). You can point your sass `include-path` at your `node_modules` directory and import it like this.
-
-```
-@import "@visual-framework/vf-cluster/index.scss";
-```
-
-_Make sure you import Sass requirements along with the modules._
-
-## Development
 
 ### Integration
 
@@ -82,8 +65,6 @@ With these set you can then add the relevant content as needed.
 
 To use the `vf-cluster` component you must be using [vX.X.X](https://github.com/visual-framework/vf-wp/releases/tag/v1.0.0-beta.24) of `vf-wp`.
 
-
-
 ### Variants
 
 There are four spacing variants and three alignment variants available for this component as well as an option to define the width of the `vf-cluster`s children.
@@ -109,6 +90,23 @@ This variant determines where the child components align in the vertical space a
 | --vf-cluster-margin      | can take a CSS size value to overide the defualt        | `31px`      |
 | --vf-cluster__item--flex | can take a CSS flex value to determine the child widths | `210px 1 0` |
 
+## Install
+
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-cluster` with this command.
+
+```
+$ yarn add --dev @visual-framework/vf-cluster
+```
+
+### Sass/CSS
+
+The source files included are written in `scss` syntax of [Sass](https://sass-lang.com/). You can point your sass `include-path` at your `node_modules` directory and import it like this.
+
+```
+@import "@visual-framework/vf-cluster/index.scss";
+```
+
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 
 ## Help

@@ -724,12 +724,37 @@ class="vf-logo | vf-logo--has-text">
       
 
       
+        <h2>Usage</h2>
+        <p>This will also check a backup URL for cases of major outages.</p>
+<ul>
+<li>Fallback URL: https://embl-communications.github.io/embl-notifcations-fallback/notifications.js</li>
+<li>Fallabck repo: https://github.com/embl-communications/embl-notifcations-fallback</li>
+</ul>
+<h3>Possible features not currently planned:</h3>
+<ul>
+<li>Only show if a wrapping element has <code>data-vf-js-embl-notifications</code></li>
+<li>Also load messages from EBI's existing announcement JS at https://ebi.emblstatic.net/announcements.js</li>
+<li>Use the vf-banner precompiled njk template to render output</li>
+<li>Test for better support on non-VF 2.0 sites</li>
+</ul>
+
+      
 
       
       <details class="vf-details">
         <summary class="vf-details--summary">Installation info</summary>
-        <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>embl-notifications</code> with this command.</p>
+        <p>This repository is distributed with <a href="https://www.npmjs.com/">npm</a>. After <a href="https://nodejs.org/">installing npm</a>, you can install <code>embl-notifications</code> with this command.</p>
 <pre><code>$ yarn add --dev @visual-framework/embl-notifications
+</code></pre>
+<h3>Sass/CSS</h3>
+<p>Add this to your <code>./components/vf-component-rollup/scripts.js</code>:</p>
+<pre><code class="language-js">import { emblNotifications } from 'embl-notifications/embl-notifications';
+// if you use embl-content-hub-loader, it will automatically invoke emblNotifications
+// emblNotifications(); // invoke embl notifications
+</code></pre>
+<p>You can masquerade as another page or URL for adhoc use cases or testing:</p>
+<pre><code class="language-js">// emblNotifications(currentHost = 'www.embl.org', currentPath = 'my/test/path`);
+emblNotifications('www.embl.org','/')
 </code></pre>
 
       </details>
@@ -946,7 +971,7 @@ File system location: <code>components/embl-notifications</code>
 
 
 
-<!-- This page was generated on 2020-10-27T15:24:45.794+00:00 -->
+<!-- This page was generated on 2020-10-27T15:43:49.719+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>

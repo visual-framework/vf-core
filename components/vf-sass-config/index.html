@@ -721,17 +721,113 @@ class="vf-logo | vf-logo--has-text">
       
       
 
+      <p>Mixins, functions and variables to power all <code>vf-core</code> components. If you're using a Visual Framework component it's a near-certainty that you'll need this component.</p>
+
+
       
+        <h2>Usage</h2>
+        <p>Note: these utilise <code>vf-design-tokens</code></p>
+<h3>Functions</h3>
+<h3>set-color.scss</h3>
+<p><code>set-color($color-name)</code></p>
+<h3>map-deep-get.scss</h3>
+<p><code>map-deep-get($map, $keys)</code></p>
+<h3>set-layer.scss</h3>
+<p><code>set-layer($layer)</code></p>
+<h3>string-replace.scss</h3>
+<p><code>str-replace($name, $number)</code></p>
+<p>Slice off the first amount($number) of characters from the $name value passed. Primarily used to replace the start of variables for the utility class generation.</p>
+<h3>vf-functions.scss</h3>
+<p>Rollup of all functions.</p>
+<hr>
+<h3>Mixins</h3>
+<h3>blockquote.scss</h3>
+<p>Reusable styling for html blockquote elements.</p>
+<p><code>@include blockquote;</code></p>
+<h3>button.scss</h3>
+<p>Reusable styling for button elements</p>
+<p><code>@include vf-button;</code></p>
+<h3>divider.scss</h3>
+<p>Reusable styling for divider elements and styling</p>
+<p><code>@include vf-divider;</code></p>
+<h3>figure.scss</h3>
+<p>Reusable styling for figures with optional caption styling</p>
+<p><code>@include figure($has-caption: true);</code></p>
+<h3>helpers.scss</h3>
+<p>Nothing, yet.</p>
+<h3>links.scss</h3>
+<p>Styling for links.</p>
+<p><code>@include inline-link(   $vf-link--color: $vf-link--color,   $vf-link--hover-color: $vf-link--hover-color,   $vf-link--visited-color: $vf-link--visited-color,   $vf-include-normalisations: $vf-include-normalisations);</code></p>
+<p><code>@include button-link(   $vf-link--color: $vf-link--color,   $vf-link--hover-color: $vf-link--hover-color,   $vf-link--visited-color: $vf-link--visited-color);</code></p>
+<p><code>button-link--ghost(   $vf-link--color: $vf-link--color,   $vf-link--hover-color: $vf-link--hover-color,   $vf-link--visited-color: $vf-link--visited-color);</code></p>
+<h3>lists.scss</h3>
+<p>Styling for list types</p>
+<p><code>@include($classname: optional-classname-to-usm, $type: null, unordered, ordered or inline);</code></p>
+<h3>margin.scss</h3>
+<p>Margin, recommended to use with sizing maps</p>
+<p><code>@include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--500));</code></p>
+<ul>
+<li><code>margin-block</code>: specify one value for bottom and top, top or bottom</li>
+<li><code>margin-all</code>: specify one value for left or right, left or right</li>
+<li><code>margin</code>: specify all or a value for each</li>
+</ul>
+<h3>padding.scss</h3>
+<p>Padding, recommended to use with sizing maps</p>
+<p><code>@include padding--block(bottom, map-get($vf-spacing-map, vf-spacing--500));</code></p>
+<ul>
+<li><code>padding-block</code>: specify one value for bottom and top, top or bottom</li>
+<li><code>padding-all</code>: specify one value for left or right, left or right</li>
+<li><code>padding</code>: specify all or a value for each</li>
+</ul>
+<h3>text-color.scss</h3>
+<p><strong>Currently not used</strong>. Intelligently pick if white or black should be used as a contrasting colour</p>
+<h3>typography.scss</h3>
+<p>Generate correct font information when included into an element.
+Recommended to use with typography and sizing maps</p>
+<p><code>@include set-type(text-body--3, $global-font-family, $custom-margin-bottom: vf-spacing--500)</code></p>
+<h3>utility--color.scss</h3>
+<p>Generate lists of values in design token maps. Intended for use by the <code>vf-utility-classes</code> component</p>
+<h3>utility--slide.scss</h3>
+<p>A non-jitter causing way to slide elements up/down on hover.</p>
+<p><code>@include vf-slide-on-hover($shift-distance, $direction:up);</code></p>
+<h3>utility--spacing.scss</h3>
+<p>Generate lists of values in design token maps. Intended for use by the <code>vf-utility-classes</code> component</p>
+<h3>utility--typography.scss</h3>
+<p>Generate lists of values in design token maps. Intended for use by the <code>vf-utility-classes</code> component</p>
+<h3>vf-mixins.scss</h3>
+<p>Rollup of all mixins.</p>
+<h3>vf-utility-mixins.scss</h3>
+<p>Rollup of all utility mixins.</p>
+<h3>vf-disabled.scss</h3>
+<p>For disable link elements, actions
+@include vf-disabled($vf-link--disabled-color);</p>
+<hr>
+<h3>Variables</h3>
+<h3>vf-global-custom-properties.scss</h3>
+<p>Native CSS properties, currently limited to document spacing.</p>
+<h3>vf-global-variables.scss</h3>
+<p>Global Sass variable defaults for the high-level page look of typography, page width,
+deprecated component text, if normalisations should be included.</p>
+<h3>vf-variables.scss</h3>
+<p>Rollup of global Sass variables.</p>
 
       
 
       
       <details class="vf-details">
         <summary class="vf-details--summary">Installation info</summary>
-        <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-sass-config</code> and its dependencies with this command.</p>
+        <p>This repository is distributed with <a href="https://www.npmjs.com/">npm</a>. After <a href="https://nodejs.org/">installing npm</a>, you can install <code>vf-sass-config</code> and its dependencies with this command.</p>
 <pre><code>$ yarn add --dev @visual-framework/vf-sass-config @visual-framework/vf-design-tokens
 </code></pre>
 <p>You might also find the the <a href="https://visual-framework.github.io/vf-core/components/detail/vf-sass-starter.html">vf-sass-starter</a> a useful starting point for setting up a customised Sass build.</p>
+<h3>Sass/CSS</h3>
+<p>The style files included are written in <a href="https://sass-lang.com/">Sass</a>. If you're using a VF-core project, you can import it like this:</p>
+<pre><code>@import 'vf-global-variables';
+@import 'vf-variables';
+@import 'vf-functions';
+@import 'vf-mixins';
+</code></pre>
+<p>Make sure you import Sass requirements along with the modules. You can use a <a href="https://visual-framework.github.io/vf-core/building/">project boilerplate</a> or the <a href="https://visual-framework.github.io/vf-core/components/vf-sass-starter/"><code>vf-sass-starter</code></a></p>
 
       </details>
       
@@ -865,7 +961,7 @@ File system location: <code>components/vf-sass-config</code>
 
 
 
-<!-- This page was generated on 2020-10-27T15:24:45.794+00:00 -->
+<!-- This page was generated on 2020-10-27T15:43:49.719+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>

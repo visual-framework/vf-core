@@ -1,4 +1,4 @@
-# Link List Component
+# Link List component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-link-list.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-link-list)
 
@@ -6,7 +6,9 @@
 
 The Links List component is a robust list group that can be used in a variety of grid layouts.
 
-It can have a title `<h3 class="vf-links__heading">Example Title</h3>`.
+## Usage
+
+The Links List can have a title `<h3 class="vf-links__heading">Example Title</h3>`.
 
 In each list item you can have:
 
@@ -19,7 +21,6 @@ It can make use of the `vf-badge` component `<span class="vf-badge">Example Tag<
 It can include meta information `<p class="vf-links__meta">Example Meta</p>`.
 
 ### Contextual Based Link Lists
-
 
 #### "On this page"
 
@@ -57,7 +58,7 @@ If you want to include quick links as part of a section of content you can use:
 
 ##### Link List
 
-```
+```html
 <div class="vf-links vf-links--tight vf-links__list--s vf-links__list--very-easy">
   <h3 class="vf-links__heading">In this section</h3>
   <ul class="vf-links__list vf-links__list--secondary | vf-list">
@@ -72,7 +73,7 @@ If you want to include quick links as part of a section of content you can use:
 
 ##### Linked Text In Section
 
-```
+```html
 <section class="vf-component">
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores dolore eveniet sed totam deleniti, ipsum dolorum cupiditate, aut error quae beatae nemo esse pariatur repellendus illo dicta doloribus alias ipsa.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, ut aut eveniet consectetur rem. Sapiente quis optio cupiditate molestias debitis quisquam ab in. Voluptates, expedita modi aliquam, sint tempore magnam.</p>
@@ -80,7 +81,6 @@ If you want to include quick links as part of a section of content you can use:
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur fuga eveniet ducimus, dolorem sit itaque sequi nisi praesentium consequatur, temporibus tempore rem illo laboriosam libero repudiandae neque labore suscipit expedita.</p>
 </section>
 ```
-
 
 ## Install
 
@@ -90,10 +90,18 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 $ yarn add --dev @visual-framework/vf-link-list
 ```
 
+### Sass/CSS
+
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
 @import "@visual-framework/vf-link-list/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+
+## Help
+
+- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
+- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

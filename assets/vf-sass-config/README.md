@@ -2,11 +2,15 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-config.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-config)
 
+## About
+
 Mixins, functions and variables to power all `vf-core` components. If you're using a Visual Framework component it's a near-certainty that you'll need this component.
+
+## Usage
 
 Note: these utilise `vf-design-tokens`
 
-## Functions
+### Functions
 
 ### set-color.scss
 
@@ -30,7 +34,9 @@ Slice off the first amount($number) of characters from the $name value passed. P
 
 Rollup of all functions.
 
-## Mixins
+---
+
+### Mixins
 
 ### blockquote.scss
 
@@ -106,7 +112,6 @@ Padding, recommended to use with sizing maps
 - `padding-all`: specify one value for left or right, left or right
 - `padding`: specify all or a value for each
 
-
 ### text-color.scss
 
 **Currently not used**. Intelligently pick if white or black should be used as a contrasting colour
@@ -149,7 +154,9 @@ Rollup of all utility mixins.
 For disable link elements, actions
 @include vf-disabled($vf-link--disabled-color);
 
-## Variables
+---
+
+### Variables
 
 ### vf-global-custom-properties.scss
 
@@ -166,7 +173,7 @@ Rollup of global Sass variables.
 
 ## Install
 
-This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `vf-sass-config` and its dependencies with this command.
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `vf-sass-config` and its dependencies with this command.
 
 ```
 $ yarn add --dev @visual-framework/vf-sass-config @visual-framework/vf-design-tokens
@@ -174,9 +181,9 @@ $ yarn add --dev @visual-framework/vf-sass-config @visual-framework/vf-design-to
 
 You might also find the the [vf-sass-starter](https://visual-framework.github.io/vf-core/components/detail/vf-sass-starter.html) a useful starting point for setting up a customised Sass build.
 
-## Usage
+### Sass/CSS
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
 @import 'vf-global-variables';
@@ -185,4 +192,10 @@ The source files included are written in [Sass][sass] (`scss`) You can simply po
 @import 'vf-mixins';
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+
+## Help
+
+- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
+- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

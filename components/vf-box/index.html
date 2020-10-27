@@ -728,9 +728,53 @@ class="vf-logo | vf-logo--has-text">
         <h2>Usage</h2>
         <p>A <code>vf-box</code> can be used in all layout components (<code>vf-grid</code>, <code>vf-stack</code>, <code>embl-grid</code>) and also inside of <code>vf-content</code>.</p>
 <p>For now <code>vf-box</code> is only designed to accept a heading and text (both have classes). The text node – <code>vf-box__text</code> can also accept a link which will inherit the text colour.</p>
+<h3>Is Link option</h3>
+<p>If you require the <code>vf-box</code> to link to a page you can do this by:</p>
+<p>Using <code>.njk</code> and <code>.yml</code> for content:</p>
+<ul>
+<li>if you are using <code>.njk</code> you only need to add a <code>box_href</code> to the data.</li>
+</ul>
+<p>Authoring in HTML:</p>
+<ul>
+<li>adding <code>vf-box--is-link</code> to the classes being used <code>&lt;div class=&quot;vf-box vf-box--is-link&quot;&gt;...&lt;/div&gt;</code>.</li>
+<li>adding the link inside of the title <code>&lt;h3 class=&quot;vf-box__title&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;vf-box__link&quot;&gt;A title&lt;/a&gt;&lt;/h3&gt;</code>.</li>
+</ul>
+<h3>Design Variants</h3>
+<p>There are currently two Design variants available. To add the appropriate level of design you can add a component–level class:</p>
+<ul>
+<li><code>vf-box--easy</code></li>
+<li><code>vf-box--normal</code></li>
+</ul>
+<h3>Themes</h3>
+<p><strong>note:</strong> you need a design variant set at the page (todo), container (todo), or component level to make use of the themes available to avoid any potential conflicts with code or unexpected results</p>
+<p>The <code>vf-box</code> component allows for global and component–level theming so that it is customisable to your needs.</p>
+<p>To make use of the component–level theming you will need to add a theme classname to the component.</p>
+<p>The theme classnames available are:</p>
+<ul>
+<li><code>vf-box-theme--primary</code></li>
+<li><code>vf-box-theme--secondary</code></li>
+<li><code>vf-box-theme--tertiary</code></li>
+<li><code>vf-box-theme--quaternary</code></li>
+<li><code>vf-box-theme--quinary</code></li>
+</ul>
+<h3>Accessibility</h3>
+<p><strong>Do not</strong> use the themes <code>vf-box-theme--qauternary</code> or <code>vf-box-theme--quinary</code> with the design variant <code>vf-box--easy</code> as they do not conform to WCAG colour contrast ratio specifications.</p>
 
       
 
+      
+      <details class="vf-details">
+        <summary class="vf-details--summary">Installation info</summary>
+        <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-box</code> with this command.</p>
+<pre><code>$ yarn add --dev @visual-framework/vf-box
+</code></pre>
+<h3>Sass/CSS</h3>
+<p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<pre><code>@import &quot;@visual-framework/vf-box/index.scss&quot;;
+</code></pre>
+<p>Make sure you import Sass requirements along with the modules. You can use a <a href="https://visual-framework.github.io/vf-core/building/">project boilerplate</a> or the <a href="https://visual-framework.github.io/vf-core/components/vf-sass-starter/"><code>vf-sass-starter</code></a></p>
+
+      </details>
       
 
     
@@ -1940,7 +1984,7 @@ File system location: <code>components/vf-box</code>
 
 
 
-<!-- This page was generated on 2020-10-27T15:24:45.794+00:00 -->
+<!-- This page was generated on 2020-10-27T15:43:49.719+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>

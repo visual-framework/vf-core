@@ -1,19 +1,12 @@
-# vf-profile Component
+# Profile component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-profile.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-profile)
 
-## Installation
-
-This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.
-
-```
-$ yarn add --dev @visual-framework/vf-profile
-```
-
-
-## Usage
+## About
 
 The `vf-profile` component is to be used to display a persons details in small, compact display. This can be used on pages that display several team members and it can be used on a group home page to show the group leader.
+
+## Usage
 
 ### Content
 
@@ -34,9 +27,7 @@ The `vf-profile` allows for a variety of content related to a person.
 | text         | `profile__uuid`      |             |
 | url          | `profile__uuid_href` |             |
 
-
 All content is optional
-
 
 #### Hiding Content Items
 
@@ -60,9 +51,6 @@ To hide a content item you will need to use <code>&lcub;% set %&rcub;</code> in 
 &lcub;% set hide_profile__emails == true %&rcub; <br>
 &lcub;% include vf-profile %&rcub;
 </code>
-
-
-
 
 ### Nunjucks and yml options
 
@@ -96,18 +84,23 @@ There are two theme variants available for the component that are **primary**, a
 
 There are two design variants available for the component, either **very-easy** ot **easy**. To add a design variant for `vf-profile` defaults to `vf-profile--very-easy` and using nunjucks we add the class automatically. To change this to **easy** you would need to add this line `variant: eady` to the `.yml` file.
 
+## Install
 
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.
 
+```
+$ yarn add --dev @visual-framework/vf-profile
+```
 
-#### Sass/CSS
+### Sass/CSS
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
 @import "@visual-framework/vf-profile/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 

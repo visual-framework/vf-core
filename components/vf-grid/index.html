@@ -722,14 +722,141 @@ class="vf-logo | vf-logo--has-text">
       
 
       <p>As we cannot guarantee the Blocks within the a Micro Grid and make use of the child combinator <code>&gt;</code> and the universal selector <code>*</code> to target them.</p>
-<p>A Simple Grid is written to go from single column, to two column, to their respective column count depending on the size of the viewport.</p>
-<p>You can define the number of columns with a modifier class.</p>
-<p><em><strong>Do Not Use</strong></em> with any component that uses the <code>&lt;table&gt;</code> HTML element as this breaks built-in browser accessibility for screen readers etc.</p>
-<p>Currently (16/03/20) The <code>vf-grid</code> is expecting to be a parent of <code>vf-body</code>. It does, however, work inside <code>embl-grid</code> now as we have added CSS to make it respect the boundaries so that it doesn't break.</p>
 
 
       
+        <h2>Usage</h2>
+        <p>A Simple Grid is written to go from single column, to two column, to their respective column count depending on the size of the viewport.</p>
+<p>You can define the number of columns with a modifier class.</p>
+<p><em><strong>Do Not Use</strong></em> with any component that uses the <code>&lt;table&gt;</code> HTML element as this breaks built-in browser accessibility for screen readers etc.</p>
+<p>Currently (16/03/20) The <code>vf-grid</code> is expecting to be a parent of <code>vf-body</code>. It does, however, work inside <code>embl-grid</code> now as we have added CSS to make it respect the boundaries so that it doesn't break.</p>
+<style>
+.component-library-notes .vf-grid > * {
+  background-color: rgb(141, 191, 226)
+}
+</style>
+<h3>Visual Framework Grid (auto layout)</h3>
+<h6>HTML</h6>
+<pre><code class="language-html">&lt;div class=&quot;vf-grid&quot;&gt; ... &lt;/div&gt;
+</code></pre>
+<h6>Example</h6>
+  <div class="vf-grid">
+    <p>1</p>
+  </div>
+  <div class="vf-grid">
+    <p>1</p>
+    <p>2</p>
+  </div>
+  <div class="vf-grid">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+  </div>
+  <div class="vf-grid">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+  </div>
+  <div class="vf-grid">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+  </div>
+  <div class="vf-grid">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+  </div>
+<h3>Visual Framework Grid (defined columns)</h3>
+<p>If you have Blocks that need to be laid out on both X and Y axis you will need to add the <code>modifier</code> classes.</p>
+<h6>HTML</h6>
+<pre><code class="language-html">&lt;div class=&quot;vf-grid vf-grid__col-2&quot;&gt; ... &lt;/div&gt;
+</code></pre>
+<h6>Example</h6>
+  <div class="vf-grid vf-grid__col-2">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+  </div>
+<h6>HTML</h6>
+<pre><code class="language-html">&lt;div class=&quot;vf-grid vf-grid__col-3&quot;&gt; ... &lt;/div&gt;
+</code></pre>
+<h6>Example</h6>
+  <div class="vf-grid vf-grid__col-3">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+  </div>
+<h6>HTML</h6>
+<pre><code class="language-html">&lt;div class=&quot;vf-grid vf-grid__col-4&quot;&gt; ... &lt;/div&gt;
+</code></pre>
+<h6>Example</h6>
+  <div class="vf-grid vf-grid__col-4">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+  </div>
+<h6>HTML</h6>
+<pre><code class="language-html">&lt;div class=&quot;vf-grid vf-grid__col-5&quot;&gt; ... &lt;/div&gt;
+</code></pre>
+<h6>Example</h6>
+  <div class="vf-grid vf-grid__col-5">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+  </div>
+<h6>HTML</h6>
+<pre><code class="language-html">&lt;div class=&quot;vf-grid vf-grid__col-6&quot;&gt; ... &lt;/div&gt;
+</code></pre>
+<h6>Example</h6>
+  <div class="vf-grid vf-grid__col-6">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>6</p>
+    <p>7</p>
+    <p>8</p>
+    <p>9</p>
+    <p>10</p>
+    <p>11</p>
+    <p>12</p>
+  </div>
 
+      
+
+      
+      <details class="vf-details">
+        <summary class="vf-details--summary">Installation info</summary>
+        <p>This component is distributed with npm. After <a href="https://www.npmjs.com/get-npm">installing npm</a>, you can install the <code>vf-grid</code> with this command.</p>
+<pre><code>$ yarn add --dev @visual-framework/vf-grid
+</code></pre>
+<h3>Sass/CSS</h3>
+<p>The source files included are written in <a href="http://sass-lang.com">Sass</a>(<code>scss</code>). You can point your Sass <code>include-path</code> at your <code>node_modules</code> directory and import it like this.</p>
+<pre><code>@import &quot;@visual-framework/vf-grid/index.scss&quot;;
+</code></pre>
+<p>Make sure you import Sass requirements along with the modules. You can use a <a href="https://visual-framework.github.io/vf-core/building/">project boilerplate</a> or the <a href="https://visual-framework.github.io/vf-core/components/vf-sass-starter/"><code>vf-sass-starter</code></a></p>
+
+      </details>
       
 
     
@@ -1717,7 +1844,7 @@ File system location: <code>components/vf-grid</code>
 
 
 
-<!-- This page was generated on 2020-10-27T15:24:45.794+00:00 -->
+<!-- This page was generated on 2020-10-27T15:43:49.719+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>

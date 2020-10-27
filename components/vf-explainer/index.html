@@ -721,16 +721,35 @@ class="vf-logo | vf-logo--has-text">
       
       
 
+      <p>Life science websites love a bit of jargon and complicated concepts and &quot;explainers&quot; help for terms like: <code>ORCID</code>, <code>transcript isoform</code>, and <code>lymphoblastoid cell lines</code>.</p>
+
+
       
+        <h2>Usage</h2>
+        <p>This will likely be similar to &quot;<a href="https://www.appcues.com/blog/tooltips">tooltips</a>&quot; or &quot;<a href="https://www.ebi.ac.uk/style-lab/websites/patterns/foldable-info-tabs.html">foldable info tabs</a>&quot;.</p>
+<p>Conceptual code:</p>
+<pre><code class="language-html">&lt;span aria-describedby=&quot;whatis-orcid&quot;&gt;ORCID&lt;/span&gt;
+
+&lt;div id=&quot;whatis-orcid&quot; class=&quot;vf-explainer&quot;&gt;
+ &lt;dfn class=&quot;vf-explainer--dfn&quot;&gt;ORCID&lt;/dfn&gt; is a unique identifier for researchers to distinguish themselves, and make it easier to find specific work;
+ &lt;a href=&quot;https://orcid.org&quot; target=&quot;_blank&quot; class=&quot;vf-explainer__link&quot;&gt;learn more&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+<p>This is a draft component, it is not yet functional. Background on the implementation, goals and work plan <a href="https://github.com/visual-framework/vf-core/issues/314">can be found in the issue</a>.</p>
 
       
 
       
       <details class="vf-details">
         <summary class="vf-details--summary">Installation info</summary>
-        <p>This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install <code>vf-explainer</code> with this command.</p>
+        <p>This repository is distributed with <a href="https://www.npmjs.com/">npm</a>. After <a href="https://nodejs.org/">installing npm</a>, you can install <code>vf-explainer</code> with this command.</p>
 <pre><code>$ yarn add --dev @visual-framework/vf-explainer
 </code></pre>
+<h3>Sass/CSS</h3>
+<p>The style files included are written in <a href="https://sass-lang.com/">Sass</a>. If you're using a VF-core project, you can import it like this:</p>
+<pre><code>@import &quot;@visual-framework/vf-explainer/index.scss&quot;;
+</code></pre>
+<p>Make sure you import Sass requirements along with the modules. You can use a <a href="https://visual-framework.github.io/vf-core/building/">project boilerplate</a> or the <a href="https://visual-framework.github.io/vf-core/components/vf-sass-starter/"><code>vf-sass-starter</code></a></p>
 
       </details>
       
@@ -880,7 +899,7 @@ File system location: <code>components/vf-explainer</code>
 
 
 
-<!-- This page was generated on 2020-10-27T15:24:45.794+00:00 -->
+<!-- This page was generated on 2020-10-27T15:43:49.719+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>
