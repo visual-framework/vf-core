@@ -113,7 +113,7 @@ Can be used to directly track events if you wish to use your own event handler.
 
 ## Install
 
-This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `vf-analytics-google` with this command.
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `vf-analytics-google` with this command.
 
 ```
 $ yarn add --dev @visual-framework/vf-analytics-google
@@ -122,3 +122,9 @@ $ yarn add --dev @visual-framework/vf-analytics-google
 ### Sass/CSS installation
 
 - There is currently no Sass/css needed for this component.
+
+## Help
+
+- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
+- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

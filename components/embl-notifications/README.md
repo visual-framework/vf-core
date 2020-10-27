@@ -18,7 +18,7 @@ It will also check a backup URL for cases of major outages.
 
 ## Install
 
-This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `embl-notifications` with this command.
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `embl-notifications` with this command.
 
 ```
 $ yarn add --dev @visual-framework/embl-notifications
@@ -40,3 +40,9 @@ You can masquerade as another page or URL for adhoc use cases or testing:
 // emblNotifications(currentHost = 'www.embl.org', currentPath = 'my/test/path`);
 emblNotifications('www.embl.org','/')
 ```
+
+## Help
+
+- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
+- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

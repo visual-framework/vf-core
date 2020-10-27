@@ -6,7 +6,7 @@ This provides support for using the EBI header and footer from the EBI VF 1.3. I
 
 ## Install
 
-This repository is distributed with [npm][npm]. After [installing npm][install-npm], you can install `ebi-header-footer` with this command.
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `ebi-header-footer` with this command.
 
 ```
 $ yarn add --dev @visual-framework/ebi-header-footer
@@ -19,15 +19,21 @@ This component is not included in the default `vf-component-rollup` and will not
 ## Roadmap
 
 - Version 1: Uses the existing `//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/js/script.js` to load the HTML for the header and footer. As such the component will use mostly legacy CSS from the existing v1.3 EBI VF.
-- Version 2: Rewrite the EBI header and footer in v2.0 HTML and pull from the contentHub, then we can drop the legacy CSS and use "pure" v2.0 CSS. 
+- Version 2: Rewrite the EBI header and footer in v2.0 HTML and pull from the contentHub, then we can drop the legacy CSS and use "pure" v2.0 CSS.
     - We can't yet do this as v1.3 is still the stable and supported solution for EBI sites, we will need to move a majority of sites to VF 2.0 before we can drop `v1.3/js/script.js`
 
 ## Usage
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
 @import "@visual-framework/ebi-header-footer/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+
+## Help
+
+- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
+- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

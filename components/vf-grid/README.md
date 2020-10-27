@@ -12,7 +12,7 @@ You can define the number of columns with a modifier class.
 
 ***Do Not Use*** with any component that uses the `<table>` HTML element as this breaks built-in browser accessibility for screen readers etc.
 
-Currently (16/03/20) The `vf-grid` is expecting to be a parent of `vf-body`. It does, however, work inside `embl-grid` now as we have added CSS to make it respect the boundaries so that it doesn't break. 
+Currently (16/03/20) The `vf-grid` is expecting to be a parent of `vf-body`. It does, however, work inside `embl-grid` now as we have added CSS to make it respect the boundaries so that it doesn't break.
 
 ## Install
 
@@ -28,7 +28,7 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-grid/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 
 <style>
@@ -183,3 +183,9 @@ If you have Blocks that need to be laid out on both X and Y axis you will need t
     <p>11</p>
     <p>12</p>
   </div>
+
+## Help
+
+- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
+- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

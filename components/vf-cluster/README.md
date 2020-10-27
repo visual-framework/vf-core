@@ -23,7 +23,7 @@ The source files included are written in `scss` syntax of [Sass](https://sass-la
 @import "@visual-framework/vf-cluster/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Development
 
@@ -82,8 +82,6 @@ With these set you can then add the relevant content as needed.
 
 To use the `vf-cluster` component you must be using [vX.X.X](https://github.com/visual-framework/vf-wp/releases/tag/v1.0.0-beta.24) of `vf-wp`.
 
-
-
 ### Variants
 
 There are four spacing variants and three alignment variants available for this component as well as an option to define the width of the `vf-cluster`s children.
@@ -108,8 +106,6 @@ This variant determines where the child components align in the vertical space a
 | --vf-cluster-alignment   | could be used for a different vertical alignment value  | `baseline`  |
 | --vf-cluster-margin      | can take a CSS size value to overide the defualt        | `31px`      |
 | --vf-cluster__item--flex | can take a CSS flex value to determine the child widths | `210px 1 0` |
-
-
 
 ## Help
 

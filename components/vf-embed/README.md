@@ -17,7 +17,7 @@ To avoid any mistyping, forgetfulness, and to aid in future proofing the compone
 - `vf_embed_max_width`: required a number and CSS unit to give `vf-embed` as maximum width. This number is applied to the CSS custom property `--vf-embed-max-width`.
 - `vf_embed_variant_16x9`: if set to true (`vf_embed_variant_16x9: true`) it will apply the class selector `vf-embed--16x9` to `vf-embed`.
 - `vf_embed_variant_4x3`: if set to true (`vf_embed_variant_4x3: true`) it will apply the class selector `vf-embed--4x3` to `vf-embed`.
-- `vf_embed_variant_custom`: if set to true ('vf_embed_variant_custom: true') it will apply the class selector `vf-embed--custom-ratio` to `vf-embed`. When this is applied the two CSS custom properties `--vf-embed-custom-ratio-x` and `--vf-embed-custom-ratio-y` can be used to define the X and Y ratio. 
+- `vf_embed_variant_custom`: if set to true ('vf_embed_variant_custom: true') it will apply the class selector `vf-embed--custom-ratio` to `vf-embed`. When this is applied the two CSS custom properties `--vf-embed-custom-ratio-x` and `--vf-embed-custom-ratio-y` can be used to define the X and Y ratio.
 
 
 ### Aspect Ratios
@@ -87,13 +87,13 @@ vfcomponentName(); // if needed, invoke it
 
 If your component uses Sass:
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
 @import "@visual-framework/vf-embed/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 
