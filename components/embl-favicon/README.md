@@ -2,6 +2,10 @@
 
 ## About
 
+Add the EMBL favicon to your project.
+
+## Usage
+
 Note: There is no Sass for this component.
 
 ## Install
@@ -11,6 +15,8 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 ```
 $ yarn add --dev @visual-framework/embl-favicon
 ```
+
+### Sass/CSS
 
 Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 

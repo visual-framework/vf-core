@@ -6,6 +6,8 @@
 
 Use this component to remotely load markup and content from the central EMBL ContentHub, this particular component allows reuse and distribution of content ranging articles to navigation elements (such as a global footer).
 
+## Usage
+
 Currently this is done as HTML imports (see the code example) + some JS. In the future other methods will be support (such as JSON).
 
 ### Integrations
@@ -44,7 +46,6 @@ Breakdown:
 - `data-embl-js-content-hub-loader-no-content-hide=".publications-container"`: If no results, hide an element that matches this selector selector
 - `data-inject-class="vf-grid vf-grid__col-2" data-inject-class-target="ul"`: Inject class(es) to a an element inside the returned content
 
-
 ## Install
 
 This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `primer-buttons` with this command.
@@ -53,7 +54,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/embl-content-hub-loader
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

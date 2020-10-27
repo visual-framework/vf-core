@@ -1,27 +1,12 @@
 # Intro Component
+
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-intro.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-intro)
 
-## Install
-
-This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.
-
-```
-$ yarn add --dev @visual-framework/vf-intro
-```
-
-### Sass/CSS
-
-The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
-
-```
-@import "@visual-framework/vf-intro/index.scss";
-```
-
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
-
-## Usage
+## About
 
 The `vf-intro` component is to be used as the main title of a page or section where you need to include some additional text in a larger typeface. The `vf-hero` can take a heading, lede text, and paragraph(s) of text. It can also include a badge on the heading which can be a link.
+
+## Usage
 
 ### Use in `vf-eleventy`
 
@@ -45,7 +30,6 @@ For example. If you wanted to make use of your projects `siteConfig` information
 &lcub;% include containers.intro %&rcub;
 </code>
 
-
 ### Content
 
 The `vf-intro` allows for a variet of text.
@@ -68,6 +52,23 @@ vf_intro_text:
   - This is an example of intro text paragraph.
   - This is an example of a second intro text paragraph.
 ```
+## Install
+
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.
+
+```
+$ yarn add --dev @visual-framework/vf-intro
+```
+
+### Sass/CSS
+
+The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
+
+```
+@import "@visual-framework/vf-intro/index.scss";
+```
+
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 

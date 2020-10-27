@@ -10,7 +10,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-inlay
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

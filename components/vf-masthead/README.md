@@ -4,6 +4,8 @@
 
 ## About
 
+## Usage
+
 ### Background Colours
 
 By Default, the `vf-masthead` is white text on a black background except if it is the title block variant where the text will be black on a white background with an overall black background.
@@ -76,6 +78,8 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 ```
 $ yarn add --dev @visual-framework/vf-masthead
 ```
+
+### Sass/CSS
 
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 

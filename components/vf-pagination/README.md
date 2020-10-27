@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-pagination.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-pagination)
 
+## About
+
 ## Install
 
 This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `primer-buttons` with this command.
@@ -10,7 +12,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-pagination
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

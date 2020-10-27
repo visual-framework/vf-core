@@ -2,11 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-banner.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-banner)
 
-## Usage Guidelines
+## About
 
 Informs visitors about important changes or persistent conditions. Use this component if you need to communicate to visitors in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header.
 
-## Reflecting status
+## Usage
 
 - General notice `vf-banner vf-banner--notice`
 - In development services `vf-banner vf-banner--phase`
@@ -21,7 +21,7 @@ Informs visitors about important changes or persistent conditions. Use this comp
 banner__dismissable: true
 ```
 
-## JS Documentation for `--modal` variant
+### JS Documentation for `--modal` variant
 
 Like all JS-enabled components in the Visual Framework, if you wish to use the bundled JS, you need to include JS data attributes, here is an overview of what the options are for the `vf-banner--modal` variant.
 
@@ -59,7 +59,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-banner
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

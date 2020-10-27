@@ -2,9 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-analytics-google.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-analytics-google)
 
-Supplementary behaviour (primarily JavaScript) to ease tracking with Google Analytics.
+## About
 
-This component will grow over time with additional event tracking behaviours.
+Supplementary behaviour (primarily JavaScript) to ease tracking with Google Analytics.
 
 ## Usage
 
@@ -119,7 +119,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-analytics-google
 ```
 
-### Sass/CSS installation
+### Sass/CSS
 
 - There is currently no Sass/css needed for this component.
 

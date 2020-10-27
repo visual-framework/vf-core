@@ -4,14 +4,6 @@
 
 This provides support for using the EBI header and footer from the EBI VF 1.3. It provides the minimum ammount of legacy CSS to make the header and footer work while avoiding conflicts with other 2.0 styles.
 
-## Install
-
-This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `ebi-header-footer` with this command.
-
-```
-$ yarn add --dev @visual-framework/ebi-header-footer
-```
-
 ### Note
 
 This component is not included in the default `vf-component-rollup` and will not be found in the default `styles.css`. You can add it to your local build or use `https://dev.assets.emblstatic.net/vf/develop/assets/ebi-header-footer/ebi-header-footer.css`
@@ -22,7 +14,15 @@ This component is not included in the default `vf-component-rollup` and will not
 - Version 2: Rewrite the EBI header and footer in v2.0 HTML and pull from the contentHub, then we can drop the legacy CSS and use "pure" v2.0 CSS.
     - We can't yet do this as v1.3 is still the stable and supported solution for EBI sites, we will need to move a majority of sites to VF 2.0 before we can drop `v1.3/js/script.js`
 
-## Usage
+## Install
+
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `ebi-header-footer` with this command.
+
+```
+$ yarn add --dev @visual-framework/ebi-header-footer
+```
+
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

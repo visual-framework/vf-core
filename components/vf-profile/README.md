@@ -2,27 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-profile.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-profile)
 
-## Install
-
-This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.
-
-```
-$ yarn add --dev @visual-framework/vf-profile
-```
-
-#### Sass/CSS
-
-The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
-
-```
-@import "@visual-framework/vf-profile/index.scss";
-```
-
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
-
-## Usage
+## About
 
 The `vf-profile` component is to be used to display a persons details in small, compact display. This can be used on pages that display several team members and it can be used on a group home page to show the group leader.
+
+## Usage
 
 ### Content
 
@@ -101,6 +85,24 @@ There are two theme variants available for the component that are **primary**, a
 #### Design Variants
 
 There are two design variants available for the component, either **very-easy** ot **easy**. To add a design variant for `vf-profile` defaults to `vf-profile--very-easy` and using nunjucks we add the class automatically. To change this to **easy** you would need to add this line `variant: eady` to the `.yml` file.
+
+## Install
+
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.
+
+```
+$ yarn add --dev @visual-framework/vf-profile
+```
+
+### Sass/CSS
+
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
+
+```
+@import "@visual-framework/vf-profile/index.scss";
+```
+
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 

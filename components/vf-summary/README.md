@@ -8,6 +8,8 @@ Summaries in the form of text, headlines and often imagery for a range of types 
 
 <h3>The <code>vf-summary--profile</code> component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="/components/detail/vf-profile"><code>vf-profile</code></a> component.</h3>
 
+## Usage
+
 ### Publications Summary
 
 The `vf-summary--publication` can be nested inside a vf-box where it takes the vf-box colours.
@@ -21,6 +23,8 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 ```
 $ yarn add --dev @visual-framework/vf-summary
 ```
+
+### Sass/CSS
 
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 

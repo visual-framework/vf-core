@@ -45,7 +45,7 @@ This repository is distributed with [npm][https://www.npmjs.com/]. After [instal
 $ yarn add --dev @visual-framework/vf-social-links
 ```
 
-## JS
+### JS
 
 If your component uses JS:
 
@@ -58,7 +58,7 @@ import { vfcomponentName } from 'vf-social-links/vf-social-links';
 vfcomponentName(); // if needed, invoke it
 ```
 
-## Sass/CSS
+### Sass/CSS
 
 If your component uses Sass:
 

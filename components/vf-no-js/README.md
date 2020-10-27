@@ -1,6 +1,10 @@
 # No JS Component
 
+## About
+
 Include this snippet directly in your `<head>` along with adding class `.vf-no-js` to your `<html>` (`<html class="vf-no-js">`).
+
+## Usage
 
 If JS is enabled in a user's browser, `.vf-no-js` will be swapped to `.vf-js`.
 

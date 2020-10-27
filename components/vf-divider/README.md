@@ -6,22 +6,6 @@
 
 The `vf-divider` component creates a horizontal dividing rule that can help separate containers of content or content inside of their containers.
 
-## Install
-
-This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-divider` with this command.
-
-```
-$ yarn add --dev @visual-framework/vf-divider
-```
-
-The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
-
-```
-@import "@visual-framework/vf-divider/index.scss";
-```
-
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
-
 ## Usage
 
 The `vf-divider` component will be the width of if's container. So inside of `<body>` of your page it will be a maximum of 1300px.
@@ -45,6 +29,24 @@ You can customise the inline (left and right) margin if you wish by using the CS
 ```
 <hr class="vf-divider | vf-u-fullbleed" style="--context-margin--inline: 2rem;">
 ```
+
+## Install
+
+This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-divider` with this command.
+
+```
+$ yarn add --dev @visual-framework/vf-divider
+```
+
+### Sass/CSS
+
+The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
+
+```
+@import "@visual-framework/vf-divider/index.scss";
+```
+
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 

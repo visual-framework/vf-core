@@ -1,8 +1,12 @@
-# VF JavaScript Polyfill Component
+# JavaScript Polyfill Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-polyfill-js.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-polyfill-js)
 
+## About
+
 This polyfills older browsers JS with things commonly needed in Visual Framework JavaScript (support for [`promises`](https://caniuse.com/#search=promises) is a common need), this is also a general utility template to provide polyfill JS when most commonly needed.
+
+## Usage
 
 This components attempts to gracefully serve the JS to only the browsers that need it by using the [`nomodule` attribute in script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#Attributes); as MDN web docs puts it: "in effect, this can be used to serve fallback scripts to older browsers that do not support modular JavaScript code".
 
@@ -16,7 +20,7 @@ This is is what it looks like:
 
 In effect, this provides better support to Internet Explorer and very old versions of Chrome, FireFox and Safari.
 
-## Future plans
+### Future plans
 
 In the future we may support passing parameters to the NJK template to load various mixes of polyfills.
 
@@ -28,7 +32,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-polyfill-js
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

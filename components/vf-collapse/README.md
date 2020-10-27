@@ -1,8 +1,12 @@
-# vf-collapse Component
+# Collapse Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-collapse.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-collapse)
 
-Collapse and expand components are useful in a variety of utilitarian situations to show and hide information
+## About
+
+Collapse and expand components are useful in a variety of utilitarian situations to show and hide information.
+
+## Usage
 
 - These will likely be similar in functionality to the [Bootstrap collapse component](https://getbootstrap.com/docs/4.1/components/collapse/)
 - We may use the `<detail>` element
@@ -17,7 +21,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-collapse
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

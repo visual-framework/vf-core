@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-grid-page.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-grid-page)
 
+## About
+
 <h2>This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="https://www.npmjs.com/package/@visual-framework/vf-body">new `vf-body` component</a>.</h2>
 
 ## Install
@@ -12,6 +14,8 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 $ yarn add --dev @visual-framework/vf-grid-page
 ```
 
+### Sass/CSS
+
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
@@ -20,6 +24,7 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 
 Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
+## Usage
 
 To start with the page has a simple 3 column grid. The second grid item has a maximum width of 1300 pixels. The two outer grid columns fill the rest of the space to create a centred layout.
 

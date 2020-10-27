@@ -1,8 +1,12 @@
-# vf-explainer Component
+# Explainer Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-explainer.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-explainer)
 
+## About
+
 Life science websites love a bit of jargon and complicated concepts and "explainers" help for terms like: `ORCID`, `transcript isoform`, and `lymphoblastoid cell lines`.
+
+## Usage
 
 This will likely be similar to "[tooltips](https://www.appcues.com/blog/tooltips)" or "[foldable info tabs](https://www.ebi.ac.uk/style-lab/websites/patterns/foldable-info-tabs.html)".
 
@@ -27,7 +31,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-explainer
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

@@ -1,6 +1,8 @@
-# vf-show-more Component
+# Show More Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-show-more.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-show-more)
+
+## About
 
 ## Usage
 
@@ -25,7 +27,7 @@ A condensed example.
 </section>
 ```
 
-## Future development
+### Future development
 
 - Pager support
 - Currently designed to work with pre-loaded HTML. It should be possible to use it with lazy-loaded HTML with a few considerations.
@@ -38,7 +40,7 @@ This repository is distributed with [npm][https://www.npmjs.com/]. After [instal
 $ yarn add --dev @visual-framework/vf-show-more
 ```
 
-## JS
+### JS
 
 You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 
@@ -49,7 +51,7 @@ import { vfcomponentName } from 'vf-show-more/vf-show-more';
 vfcomponentName(); // if needed, invoke it
 ```
 
-## Sass/CSS
+### Sass/CSS
 
 If your component uses Sass:
 

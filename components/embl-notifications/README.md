@@ -4,12 +4,14 @@
 
 Fetches notifications from the EMBL contentHub URL of https://www.embl.org/api/v1/notifications?_format=json&source=contenthub and will display them, if a matching URL is found.
 
-It will also check a backup URL for cases of major outages.
+## Usage
+
+This will also check a backup URL for cases of major outages.
 
 - Fallback URL: https://embl-communications.github.io/embl-notifcations-fallback/notifications.js
 - Fallabck repo: https://github.com/embl-communications/embl-notifcations-fallback
 
-## Possible features not currently planned:
+### Possible features not currently planned:
 
 - Only show if a wrapping element has `data-vf-js-embl-notifications`
 - Also load messages from EBI's existing announcement JS at https://ebi.emblstatic.net/announcements.js
@@ -24,7 +26,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/embl-notifications
 ```
 
-## Usage
+### Sass/CSS
 
 Add this to your `./components/vf-component-rollup/scripts.js`:
 

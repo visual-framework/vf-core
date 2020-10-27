@@ -2,9 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Febi-vf1-integration.svg)](https://badge.fury.io/js/%40visual-framework%2Febi-vf1-integration)
 
-## todo: add this to vf-core components as we'll want to use this in many places
+## About
 
 This adds fixes, compatibility and workarounds for sites that use the EBI VF versions 1.1, 1.2 or 1.3.
+
+## Usage
 
 Enable its use by:
 
@@ -33,7 +35,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/ebi-vf1-integration
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

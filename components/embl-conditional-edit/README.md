@@ -6,6 +6,8 @@
 
 Edit and configuration buttons often point to separate domain where the login stat of a user cannot be known, so this is a simple JavaScript method to enable links that point to edit and configuration pages.
 
+## Usage
+
 Currently supported methods:
 - URL param: `?embl-conditional-edit=enabled` or `?embl-conditional-edit=1`
 - CSS cascaded: `embl-coditional-edit__enabled .embl-conditional-edit { display: unset; }`
@@ -20,7 +22,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/embl-conditional-edit
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

@@ -1,10 +1,14 @@
-# vf-search-client-side Component
+# Client-side Search Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-search-client-side.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-search-client-side)
 
+## About
+
 This uses Lunr.js to perform a client-side search of a site's content. This is recommended only for sites with a limited number of pages.
 
-It consumes a `.js` file with an object of pages, a la:
+## Usage
+
+This consumes a `.js` file with an object of pages, a la:
 
 ```
 let searchIndex = {
@@ -15,7 +19,7 @@ let searchIndex = {
 };
 ```
 
-## Warning: Early alpha, lot's of "to do"s
+### Warning: Early alpha, lot's of "to do"s
 
 This is an early alpha. More customisation options need to be added, such as:
 
@@ -23,21 +27,21 @@ This is an early alpha. More customisation options need to be added, such as:
 - customising the output format
 - NJK template has hardcoded paths for vf-core
 
-## Building a search index
+### Building a search index
 
-### 1. Index making code
+1. Index making code
 
 To generate that JS file, if you're using a vf-eleventy based site, you may also want to make use of the `vf-extensions`'s `gulp-build-search-index.js`:
 
 > `require('./node_modules/\@visual-framework/vf-extensions/utils/gulp-build-search-index.js')(gulp, path, buildDestionation);`
 
-### 2. Dependencies
+2. Dependencies
 
 If you use that JS you'll also need some npm dependencies:
 
 `yarn add strip-js striptags node-html-parser`
 
-### 3. Tell gulp to make the index
+3. Tell gulp to make the index
 
 And you should build that search index after updating your html pages, a la:
 
@@ -62,7 +66,7 @@ And you should build that search index after updating your html pages, a la:
   ));
 ```
 
-## Using search
+### Using search
 
 - You can pass a query to the search page with `?search_query=myQuery`
 - The search will live update as the user enters text
@@ -76,7 +80,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-search-client-side
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

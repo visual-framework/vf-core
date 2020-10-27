@@ -1,13 +1,17 @@
 
 # Sass Utilities component
 
+[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-utilities.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-utilities)
+
+## About
+
 <h2>This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="https://www.npmjs.com/package/@visual-framework/vf-utility-classes">vf-utility-classes</a> component.</h2>
 
 The utility classes here have been moved to the `vf-utility-classes` component.
 
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-utilities.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-utilities)
+## Usage
 
-This is a (growing) collection of utility-case Sass.
+This is a collection of utility-case Sass.
 
 Note that this differs from `vf-utility-classes` as these are not isolated settings (top margin, hide from display, green colour) but rather express a useful behaviour, such as showing some content exclusively for screen readers.
 
@@ -19,7 +23,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-sass-utilities
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

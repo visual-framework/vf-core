@@ -6,7 +6,9 @@
 
 The Links List component is a robust list group that can be used in a variety of grid layouts.
 
-It can have a title `<h3 class="vf-links__heading">Example Title</h3>`.
+## Usage
+
+The Links List can have a title `<h3 class="vf-links__heading">Example Title</h3>`.
 
 In each list item you can have:
 
@@ -80,7 +82,6 @@ If you want to include quick links as part of a section of content you can use:
 </section>
 ```
 
-
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-link-list` with this command.
@@ -88,6 +89,8 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 ```
 $ yarn add --dev @visual-framework/vf-link-list
 ```
+
+### Sass/CSS
 
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 

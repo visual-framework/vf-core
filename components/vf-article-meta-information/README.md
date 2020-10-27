@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-article-meta-information.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-article-meta-information)
 
+## About
+
 Use this alongside articles, news items and blog posts.
 
 ## Install
@@ -12,7 +14,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-article-meta-information
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

@@ -2,10 +2,11 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-hero.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-hero)
 
-## Usage
+## About
 
 The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a heading, sub-heading, and text content. The text content can also be a link which adds am arrow icon.
 
+## Usage
 
 ### CSS Custom Properties
 
@@ -21,7 +22,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-hero
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

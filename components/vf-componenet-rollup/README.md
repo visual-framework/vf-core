@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-componenet-rollup.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-componenet-rollup)
 
+## About
+
 The `vf-componenet-rollup` compiles component Sass and JS into style.css and scripts.js files, retrospectively.
 
 ## Install
@@ -20,7 +22,7 @@ However for very generic VF projects, this component is also distributed with [n
 $ yarn add --dev @visual-framework/vf-componenet-rollup
 ```
 
-## Usage
+### Sass/CSS
 
 Unlike other components, you probably won't want to `@import` this. Instead the `vf-core` project will compile this into a style.css and scripts.js.
 

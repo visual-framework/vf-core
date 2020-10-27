@@ -1,4 +1,4 @@
-# vf-details Component
+# Details Component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-details.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-details)
 
@@ -16,13 +16,11 @@ This repository is distributed with [npm][https://www.npmjs.com/]. After [instal
 $ yarn add --dev @visual-framework/vf-details
 ```
 
-## JS
+### JS
 
 This component does not use JS.
 
-## Sass/CSS
-
-If your component uses Sass:
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

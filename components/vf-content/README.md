@@ -6,6 +6,8 @@
 
 This container adds support for long form content where it may not be practical to assign classes, such as Markdown or WYSIWYG text.
 
+## Usage
+
 It also makes some adjustments for longer form text, such as vertical spacing and making visited links purple.
 
 This container adds basic support for `p`, `ul`, `hr`, `a` and other core
@@ -20,6 +22,8 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 ```
 $ yarn add --dev @visual-framework/vf-content
 ```
+
+### Sass/CSS
 
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 

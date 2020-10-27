@@ -2,6 +2,10 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-search.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-search)
 
+## About
+
+## Usage
+
 - You can enable `autofocus` on the search element, but should only do so if most users intend to search on the page
 
 ## Install
@@ -12,7 +16,7 @@ This repository is distributed with [npm](https://www.npmjs.com/). After [instal
 $ yarn add --dev @visual-framework/vf-search
 ```
 
-## Usage
+### Sass/CSS
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 

@@ -6,6 +6,8 @@
 
 A way to quote and highlight text.
 
+## Usage
+
 The pullquote variant will be a decorative variation but has yet to be implemented, it may take inspiration from the [VF 1.3 pullquote](https://www.ebi.ac.uk/style-lab/websites/patterns/pullquotes.html).
 
 ## Install
@@ -15,6 +17,8 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 ```
 $ yarn add --dev @visual-framework/vf-blockquote
 ```
+
+### Sass/CSS
 
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 

@@ -6,6 +6,8 @@
 
 As we cannot guarantee the Blocks within the a Micro Grid and make use of the child combinator `>` and the universal selector `*` to target them.
 
+## Usage
+
 A Simple Grid is written to go from single column, to two column, to their respective column count depending on the size of the viewport.
 
 You can define the number of columns with a modifier class.
@@ -14,33 +16,13 @@ You can define the number of columns with a modifier class.
 
 Currently (16/03/20) The `vf-grid` is expecting to be a parent of `vf-body`. It does, however, work inside `embl-grid` now as we have added CSS to make it respect the boundaries so that it doesn't break.
 
-## Install
-
-This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-grid` with this command.
-
-```
-$ yarn add --dev @visual-framework/vf-grid
-```
-
-The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
-
-```
-@import "@visual-framework/vf-grid/index.scss";
-```
-
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
-
-
 <style>
 .component-library-notes .vf-grid > * {
   background-color: rgb(141, 191, 226)
 }
 </style>
 
-
-
 ### Visual Framework Grid (auto layout)
-
 
 ###### HTML
 ```html
@@ -113,8 +95,6 @@ If you have Blocks that need to be laid out on both X and Y axis you will need t
     <p>6</p>
   </div>
 
-
-
 ###### HTML
 ```html
 <div class="vf-grid vf-grid__col-3"> ... </div>
@@ -183,6 +163,24 @@ If you have Blocks that need to be laid out on both X and Y axis you will need t
     <p>11</p>
     <p>12</p>
   </div>
+
+## Install
+
+This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-grid` with this command.
+
+```
+$ yarn add --dev @visual-framework/vf-grid
+```
+
+### Sass/CSS
+
+The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
+
+```
+@import "@visual-framework/vf-grid/index.scss";
+```
+
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 

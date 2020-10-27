@@ -1,10 +1,10 @@
 # Footer Component
 
-A container for links, copyright and other common content at the bottom of webpages.
-
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-footer.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-footer)
 
 ## About
+
+A container for links, copyright and other common content at the bottom of webpages.
 
 ## Install
 

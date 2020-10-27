@@ -6,6 +6,8 @@
 
 Utility Classes provide the building blocks for layout and handle a range common use cases that help us avoid writing custom styles. When we need to add some margin or padding, rather than adding a new selector specific to that use case, we can use utilities. This helps us reduce the number of unique property-value pairs, and helps us keep more consistent styles across the site.
 
+## Usage
+
 - Utility Classes are designed to do one job well and one job only, are immutable, and on occasion are an acceptable approach to overriding component styles.
 - Utility Classes should clearly describe the job they do.
 - Utility Classes are to be namespaced with `vf-u-`
@@ -17,6 +19,8 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 ```
 $ yarn add --dev @visual-framework/vf-utility-classes
 ```
+
+### Sass/CSS
 
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 

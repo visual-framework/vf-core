@@ -33,10 +33,6 @@ Use the component `vf-form__fieldset` when there is a relationship betweent form
 
 The first HTML element that needs to be inside of `<fieldset class="vf-form__fieldset">` needs to be a `legend` - `<legend class="vf-form__legend">Describing the group</legend>`
 
----
-
-More documentation is to follow.
-
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form` with this command.
@@ -44,6 +40,8 @@ This component is distributed with npm. After [installing npm](https://www.npmjs
 ```
 $ yarn add --dev @visual-framework/vf-form
 ```
+
+### Sass/CSS
 
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 

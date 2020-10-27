@@ -6,25 +6,6 @@
 
 The `vf-badge` component is used to denote if a page, section, or link has a production state of `alpha`, `beta` or other information.
 
-## Install
-
-This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.
-
-```
-$ yarn add --dev @visual-framework/vf-badge
-```
-
-### Sass/CSS
-
-The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
-
-```
-@import "@visual-framework/vf-badge/index.scss";
-```
-
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
-
-
 ## Usage
 
 The `vf-badge` accepts a single text item of content.
@@ -62,6 +43,25 @@ There are three theme variants available for the component that are **primary**,
 ##### Design Variants
 
 There are four design variants for the component. We have `square`, `pill`, and `rounded` as well as `outline`. The `outline` variant can be used along with another variant so the way we write this in code is a little different. To only have a rounded button we should write `["rounded"]` but if we wanted to have a rounded button with the outline rather than filled colour we would have to write `["outline", "rounded"]`.
+
+## Install
+
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.
+
+```
+$ yarn add --dev @visual-framework/vf-badge
+```
+
+### Sass/CSS
+
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
+
+```
+@import "@visual-framework/vf-badge/index.scss";
+```
+
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+
 
 ## Help
 
