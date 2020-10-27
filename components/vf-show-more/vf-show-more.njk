@@ -22,13 +22,11 @@
       ]
     %}
     {% for item in items %}
-      {% render '@vf-box--easy', {
-        "box": {
-          "box_href": "JavaScript:Void(0);",
-          "box_heading": item.title,
-          "box_text": "I'm item number " + item.id,
-          "box_modifier": "vf-box--easy | vf-show-more__item"
-        }
+      {% render '@vf-box', {
+        "box_heading": item.title,
+        "box_text": "I'm item number " + item.id,
+        "variant": "easy",
+        "override_class":  "vf-show-more__item"
       } %}
     {% endfor %}
   </div>

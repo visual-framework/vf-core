@@ -1,10 +1,12 @@
-# Nearest location component
+# Nearest Location component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-location-nearest.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-location-nearest)
 
-## Usage
+## About
 
 From a list of lat and long, this will use the browser geolcation API to select the nearest. It also provides a manual selection fallback and override.
+
+## Usage
 
 This component is purely JavaScript and relies on other components to provide UI and to consume the detected region.
 
@@ -15,15 +17,7 @@ This is an early version, some future improvements to be considered:
 - Enabling the default while we wait for geodetection
 - "Saving" a user's location when using the override
 
-## Install
-
-This repository is distributed with [npm][https://www.npmjs.com/]. After [installing npm][https://www.npmjs.com/get-npm] and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-location-nearest` with this command.
-
-```
-$ yarn add --dev @visual-framework/vf-location-nearest
-```
-
-## JS
+### JS
 
 You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 
@@ -59,17 +53,13 @@ All are optional
 - `data-vf-js-location-nearest-override-widget` element will be populated with an override widget (vf-form select list)
 - `data-vf-js-location-nearest-activation-target="{locationId}"` will receive clicks on location change. This is a simple method to activate diverse elements.
 
-## Sass/CSS
+## Install
 
-If your component uses Sass:
-
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+This repository is distributed with [npm][https://www.npmjs.com/]. After [installing npm][https://www.npmjs.com/get-npm] and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-location-nearest` with this command.
 
 ```
-@import "@visual-framework/vf-location-nearest/index.scss";
+$ yarn add --dev @visual-framework/vf-location-nearest
 ```
-
-_Make sure you import Sass requirements along with the modules._
 
 ## Help
 

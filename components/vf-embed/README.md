@@ -1,11 +1,12 @@
-# vf-embed Component
+# Embed component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-embed.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-embed)
 
-## Usage
+## About
 
 The `vf-embed` component can currently give two different aspect ratios by adding a class variant. You can also define a max-width for the embed if needed.
 
+## Usage
 
 ### Nunjucks Props
 
@@ -13,12 +14,10 @@ To avoid any mistyping, forgetfulness, and to aid in future proofing the compone
 
 #### Props available
 
-
 - `vf_embed_max_width`: required a number and CSS unit to give `vf-embed` as maximum width. This number is applied to the CSS custom property `--vf-embed-max-width`.
 - `vf_embed_variant_16x9`: if set to true (`vf_embed_variant_16x9: true`) it will apply the class selector `vf-embed--16x9` to `vf-embed`.
 - `vf_embed_variant_4x3`: if set to true (`vf_embed_variant_4x3: true`) it will apply the class selector `vf-embed--4x3` to `vf-embed`.
-- `vf_embed_variant_custom`: if set to true ('vf_embed_variant_custom: true') it will apply the class selector `vf-embed--custom-ratio` to `vf-embed`. When this is applied the two CSS custom properties `--vf-embed-custom-ratio-x` and `--vf-embed-custom-ratio-y` can be used to define the X and Y ratio. 
-
+- `vf_embed_variant_custom`: if set to true ('vf_embed_variant_custom: true') it will apply the class selector `vf-embed--custom-ratio` to `vf-embed`. When this is applied the two CSS custom properties `--vf-embed-custom-ratio-x` and `--vf-embed-custom-ratio-y` can be used to define the X and Y ratio.
 
 ### Aspect Ratios
 
@@ -29,7 +28,6 @@ Aspect Ratios available are 16x9 and 4x3 or one defined using CSS custom propert
 - `vf-embed--16x9` for embedable content that is has an aspect ratio of 16x9.
 - `vf-embed--4x3` for embedable content that is has an aspect ratio of 4x3.
 - `vf-embed--custom-ratio` for embedable content that requires a unique aspect ratio.
-
 
 #### Custom Ratios
 
@@ -70,9 +68,7 @@ This repository is distributed with [npm][https://www.npmjs.com/]. After [instal
 $ yarn add --dev @visual-framework/vf-embed
 ```
 
-## JS
-
-If your component uses JS:
+### JS
 
 You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 
@@ -83,17 +79,17 @@ import { vfcomponentName } from 'vf-embed/vf-embed';
 vfcomponentName(); // if needed, invoke it
 ```
 
-## Sass/CSS
+### Sass/CSS
 
 If your component uses Sass:
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
 @import "@visual-framework/vf-embed/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 

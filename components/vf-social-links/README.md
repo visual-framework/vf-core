@@ -1,4 +1,4 @@
-# vf-social-links Component
+# Social Links component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-social-links.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-social-links)
 
@@ -35,7 +35,7 @@ You will need to make sure the SVG code below is added somewhere in your HTML (p
 </svg>
 ```
 
-This is in leiu of an icon system for you to pull things in automatically. 
+This is in leiu of an icon system for you to pull things in automatically.
 
 ## Install
 
@@ -45,7 +45,7 @@ This repository is distributed with [npm][https://www.npmjs.com/]. After [instal
 $ yarn add --dev @visual-framework/vf-social-links
 ```
 
-## JS
+### JS
 
 If your component uses JS:
 
@@ -58,17 +58,17 @@ import { vfcomponentName } from 'vf-social-links/vf-social-links';
 vfcomponentName(); // if needed, invoke it
 ```
 
-## Sass/CSS
+### Sass/CSS
 
 If your component uses Sass:
 
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
 @import "@visual-framework/vf-social-links/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 

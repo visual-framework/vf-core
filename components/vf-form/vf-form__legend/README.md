@@ -1,4 +1,4 @@
-# Form Legend Component
+# Form Legend component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-form__legend.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-form__legend)
 
@@ -14,30 +14,15 @@ This repository is distributed with [npm][https://www.npmjs.com/]. After [instal
 $ yarn add --dev @visual-framework/vf-form__legend
 ```
 
-## JS
-
-If your component uses JS:
-
-You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
-
-```js
-import { vfcomponentName } from 'vf-form__legend/vf-form__legend';
-// Or import directly
-// import { vfcomponentName } from '../components/raw/vf-form__legend/vf-form__legend.js';
-vfcomponentName(); // if needed, invoke it
-```
-
 ## Sass/CSS
 
-If your component uses Sass:
-
-The source files included are written in [Sass][sass] (`scss`) You can simply point your sass `include-path` at your `node_modules` directory and import it like this.
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
 @import "@visual-framework/vf-form__legend/index.scss";
 ```
 
-_Make sure you import Sass requirements along with the modules._
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
 
 ## Help
 
