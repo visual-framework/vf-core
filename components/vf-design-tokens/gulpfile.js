@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-const gulp = require('gulp');
-const path = require('path');
-const theoG = require('gulp-theo');
-const rename = require('gulp-rename');
-const theo = require('theo');
-const componentPath = path.resolve(__dirname, 'src' );
+const gulp = require("gulp");
+const path = require("path");
+const theoG = require("gulp-theo");
+const rename = require("gulp-rename");
+const theo = require("theo");
+const componentPath = path.resolve(__dirname, "src" );
 
 // -----------------------------------------------------------------------------
 // Design Token Tasks
@@ -57,61 +57,61 @@ ${theoSourceTokenLocation}
 
 // Register design tokens to be processed by Theo
 
-gulp.task('tokens:typographic-scale', () =>
-  gulp.src('./src/typographic-scales/*.yml')
+gulp.task("tokens:typographic-scale", () =>
+  gulp.src("./src/typographic-scales/*.yml")
     .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'typography-map' }
+      transform: { type: "web" },
+      format: { type: "typography-map" }
     }))
     .pipe(rename(function (path) {
       path.extname = ".scss";
     }))
-    .pipe(gulp.dest('./dist/sass'))
+    .pipe(gulp.dest("./dist/sass"))
 );
 
-gulp.task('tokens:variables', () =>
-  gulp.src('./src/variables/*.yml')
+gulp.task("tokens:variables", () =>
+  gulp.src("./src/variables/*.yml")
     .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'variables.scss' }
+      transform: { type: "web" },
+      format: { type: "variables.scss" }
     }))
-    .pipe(gulp.dest('./dist/sass'))
+    .pipe(gulp.dest("./dist/sass"))
 );
 
-gulp.task('tokens:maps', () =>
-  gulp.src(['./src/maps/*.yml', '!./src/typographic-scales/*.yml', './src/variables/vf-breakpoints.yml'])
+gulp.task("tokens:maps", () =>
+  gulp.src(["./src/maps/*.yml", "!./src/typographic-scales/*.yml", "./src/variables/vf-breakpoints.yml"])
     .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'map.scss' }
+      transform: { type: "web" },
+      format: { type: "map.scss" }
     }))
-    .pipe(gulp.dest('./dist/sass/maps'))
+    .pipe(gulp.dest("./dist/sass/maps"))
 );
 
-gulp.task('tokens:json', () =>
-  gulp.src(['./src/maps/*.yml', './src/typographic-scales/*.yml', './src/variables/vf-breakpoints.yml'])
+gulp.task("tokens:json", () =>
+  gulp.src(["./src/maps/*.yml", "./src/typographic-scales/*.yml", "./src/variables/vf-breakpoints.yml"])
     .pipe(theoG({
-      transform: { type: 'web', includeMeta: true },
-      format: { type: 'ios.json' }
+      transform: { type: "web", includeMeta: true },
+      format: { type: "ios.json" }
     }))
-    .pipe(gulp.dest('./dist/json'))
+    .pipe(gulp.dest("./dist/json"))
 );
 
-gulp.task('tokens2:json', () =>
-  gulp.src(['./src/typographic-scales/*.yml'])
+gulp.task("tokens2:json", () =>
+  gulp.src(["./src/typographic-scales/*.yml"])
     .pipe(theoG({
-      transform: { type: 'web', includeMeta: true },
-      format: { type: 'typography-map-json' }
+      transform: { type: "web", includeMeta: true },
+      format: { type: "typography-map-json" }
     }))
-    .pipe(gulp.dest('./dist/json'))
+    .pipe(gulp.dest("./dist/json"))
 );
 
-gulp.task('tokens:props', () =>
-  gulp.src(['./src/maps/*.yml'])
+gulp.task("tokens:props", () =>
+  gulp.src(["./src/maps/*.yml"])
     .pipe(theoG({
-      transform: { type: 'web' },
-      format: { type: 'custom-properties.scss' }
+      transform: { type: "web" },
+      format: { type: "custom-properties.scss" }
     }))
-    .pipe(gulp.dest('./dist/sass/custom-properties'))
+    .pipe(gulp.dest("./dist/sass/custom-properties"))
 );
 
 theo.registerTransform("web", ["color/hex"]);
@@ -123,30 +123,30 @@ theo.registerFormat( "custom-properties.scss",`${theoGeneratedPropertiesTemplate
 
 // The Theo typography token processor is a bit more complex
 // and uses a custom format as a function
-theo.registerFormat('typography-map', result => {
+theo.registerFormat("typography-map", result => {
   let { category, type } = result
-    .get('props')
+    .get("props")
     .first()
     .toJS();
   return `${theoGeneratedFileWarning}
-// Source: ${path.basename(result.getIn(['meta', 'file']))}
+// Source: ${path.basename(result.getIn(["meta", "file"]))}
 $vf-${category}--${type}: (
 ${result
-  .get('props')
-  .map(
-  prop => `
+    .get("props")
+    .map(
+      prop => `
   '${prop.get("name")}': (
     'font-size': ${prop.getIn(["value", "fontSize"])},
     'font-weight': ${prop.getIn(["value", "fontWeight"])},
     'line-height': ${prop.getIn(["value", "lineHeight"])}
   ),`
-  )
-  .sort()
-  .join('\n')}
+    )
+    .sort()
+    .join("\n")}
 );
   `;
 });
 
-gulp.task('vf-tokens', gulp.parallel(
-  'tokens:variables', 'tokens:json', 'tokens:typographic-scale', 'tokens:maps', 'tokens:props'
+gulp.task("vf-tokens", gulp.parallel(
+  "tokens:variables", "tokens:json", "tokens:typographic-scale", "tokens:maps", "tokens:props"
 ));

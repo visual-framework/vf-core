@@ -6,11 +6,11 @@
   * @param {string} [type] - 'load' or 'unload' to set or unset
  */
 function vfLocationNearestIndicate(type) {
-  var el = document.querySelector('body');
-  if (type == 'unload') {
-    el.setAttribute('data-vf-location-nearest-loaded', 'false');
-  } else if (type == 'load') {
-    el.setAttribute('data-vf-location-nearest-loaded', 'true');
+  var el = document.querySelector("body");
+  if (type == "unload") {
+    el.setAttribute("data-vf-location-nearest-loaded", "false");
+  } else if (type == "load") {
+    el.setAttribute("data-vf-location-nearest-loaded", "true");
     vfLocationNearestDomActions();
   }
 }
@@ -26,14 +26,14 @@ function vfLocationNearestDetect(locationsList) {
   var geoOptions = {
     enableHighAccuracy: false,
     timeout: 4 * 1000
-  }
+  };
 
   var geoSuccess = function(position) {
     startPos = position;
     vfLocationNearestResolve(locationsList, startPos.coords);
   };
   var geoError = function(error) {
-    console.warn('vfLocationNearest', 'Geolocation error code: ' + error.code);
+    console.warn("vfLocationNearest", "Geolocation error code: " + error.code);
     // error.code can be:
     //   0: unknown error
     //   1: permission denied
@@ -55,7 +55,7 @@ function vfLocationNearestDetect(locationsList) {
  */
 function vfLocationNearestResolve(locationsList, userLocation) {
   // console.log(locationsList, userLocation);
-  console.log('user at',userLocation.latitude + ", " + userLocation.longitude)
+  console.log("user at",userLocation.latitude + ", " + userLocation.longitude);
 
   // Determing which location is closest using circles
   // https://stackoverflow.com/questions/21279559/geolocation-closest-locationlat-long-from-my-position/21297385#21297385
@@ -83,9 +83,9 @@ function vfLocationNearestResolve(locationsList, userLocation) {
     // loop through each location, matching a close city then the next closest and so on
     for (const key in locationsList) {
       if (locationsList.hasOwnProperty(key)) {
-        if (key != 'default') {
+        if (key != "default") {
           const evalutedLocation = locationsList[key];
-          var dif = PythagorasEquirectangular(latitude, longitude, evalutedLocation.latlon.split(', ')[0], evalutedLocation.latlon.split(', ')[1]);
+          var dif = PythagorasEquirectangular(latitude, longitude, evalutedLocation.latlon.split(", ")[0], evalutedLocation.latlon.split(", ")[1]);
           if (dif < minDif) {
             closest = evalutedLocation;
             closest.id = key;
@@ -101,12 +101,12 @@ function vfLocationNearestResolve(locationsList, userLocation) {
 
   if (userLocation == false) {
     // if no match, use the default location
-    console.warn('vfLocationNearest', 'No user location detected, will use default');
-    vfLocationNearestSave(locationsList['default'].name, 'default')
+    console.warn("vfLocationNearest", "No user location detected, will use default");
+    vfLocationNearestSave(locationsList["default"].name, "default");
   } else {
     // geo diameter matching
     let closestCity  = calculateNearestCity(userLocation.latitude, userLocation.longitude);
-    vfLocationNearestSave(closestCity.name, closestCity.id)
+    vfLocationNearestSave(closestCity.name, closestCity.id);
   }
 }
 
@@ -120,12 +120,12 @@ function vfLocationNearestSave(locationName, locationId) {
   // console.log('vfLocationNearestSave location',locationName,locationId)
 
   // assign to the body
-  var el = document.querySelector('body');
-  el.setAttribute('data-vf-location-nearest-location', locationId);
-  el.setAttribute('data-vf-location-nearest-name', locationName);
+  var el = document.querySelector("body");
+  el.setAttribute("data-vf-location-nearest-location", locationId);
+  el.setAttribute("data-vf-location-nearest-name", locationName);
 
   // indicate we've loaded
-  vfLocationNearestIndicate('load');
+  vfLocationNearestIndicate("load");
 }
 
 /**
@@ -135,10 +135,10 @@ function vfLocationNearestSave(locationName, locationId) {
   * @param {object} [scope] - the html scope to process, optional, defaults to `document`
   * @example vfLocationNearestOverridePopulate(locationsList, document.vfLocationNearestDomActions('.vf-component__container')[0]);
   */
- function vfLocationNearestOverridePopulate(locationsList, scope) {
+function vfLocationNearestOverridePopulate(locationsList, scope) {
   var scope = scope || document;
 
-  const locationWidget = scope.querySelectorAll('[data-vf-js-location-nearest-override-widget]');
+  const locationWidget = scope.querySelectorAll("[data-vf-js-location-nearest-override-widget]");
   if (!locationWidget) {
     // exit: container not found
     return;
@@ -148,17 +148,17 @@ function vfLocationNearestSave(locationName, locationId) {
     return;
   }
 
-  let widget = '<label class="vf-form__label" for="vf-form__select"></label>'+
-               '<select class="vf-form__select" id="vf-form__select">';
+  let widget = "<label class=\"vf-form__label\" for=\"vf-form__select\"></label>"+
+               "<select class=\"vf-form__select\" id=\"vf-form__select\">";
 
   // Create the markup for a dropdown
   for (const key in locationsList) {
     if (locationsList.hasOwnProperty(key)) {
       const element = locationsList[key];
-      widget = widget + `<option value="${key}">${locationsList[key].name}</option>`
+      widget = widget + `<option value="${key}">${locationsList[key].name}</option>`;
     }
   }
-  widget = widget + `</select>`;
+  widget = widget + "</select>";
 
   // assign values to widget
   locationWidget[0].innerHTML = widget;
@@ -172,7 +172,7 @@ function vfLocationNearestSave(locationName, locationId) {
 function vfLocationNearestOverrideActivate(scope) {
   var scope = scope || document;
 
-  const overrideElement = scope.querySelectorAll('[data-vf-js-location-nearest-override-widget]');
+  const overrideElement = scope.querySelectorAll("[data-vf-js-location-nearest-override-widget]");
   if (!overrideElement) {
     // exit: container not found
     return;
@@ -182,7 +182,7 @@ function vfLocationNearestOverrideActivate(scope) {
     return;
   }
 
-  overrideElement[0].addEventListener('change', function(e) {
+  overrideElement[0].addEventListener("change", function(e) {
     let activeItem = e.target;
     // console.log('You selected: ', activeItem.options[activeItem.target.selectedIndex].text);
     vfLocationNearestSave(activeItem.options[activeItem.selectedIndex].text, activeItem.value);
@@ -201,13 +201,13 @@ function vfLocationNearestDomActions(scope) {
   var scope = scope || document;
 
   // Get items from dom
-  var el = document.querySelector('body');
-  var locationId = el.getAttribute('data-vf-location-nearest-location');
-  var locationName = el.getAttribute('data-vf-location-nearest-name');
+  var el = document.querySelector("body");
+  var locationId = el.getAttribute("data-vf-location-nearest-location");
+  var locationName = el.getAttribute("data-vf-location-nearest-name");
 
   // push the active location to the dom
   function assignName() {
-    const locationNameHolder = scope.querySelectorAll('[data-vf-js-location-nearest-name]');
+    const locationNameHolder = scope.querySelectorAll("[data-vf-js-location-nearest-name]");
     if (!locationNameHolder) {
       // exit: container not found
       return;
@@ -222,7 +222,7 @@ function vfLocationNearestDomActions(scope) {
 
   // simple activation of any elements/components through simple click simulation
   function activateElements() {
-    const locationActivationTargets = scope.querySelectorAll('[data-vf-js-location-nearest-activation-target]');
+    const locationActivationTargets = scope.querySelectorAll("[data-vf-js-location-nearest-activation-target]");
     if (!locationActivationTargets) {
       // exit: container not found
       return;
@@ -234,14 +234,14 @@ function vfLocationNearestDomActions(scope) {
 
     locationActivationTargets.forEach(element => {
       // console.log(element.getAttribute('data-vf-js-location-nearest-activation-target'));
-      if (element.getAttribute('data-vf-js-location-nearest-activation-target') == locationId) {
+      if (element.getAttribute("data-vf-js-location-nearest-activation-target") == locationId) {
         element.click();
       }
     });
   }
 
   assignName();
-  activateElements()
+  activateElements();
 }
 
 /**
@@ -249,7 +249,7 @@ function vfLocationNearestDomActions(scope) {
   * @example vfLocationNearest(locationsList)
   * @param {object} [locationsList] - An object of locations
   */
- function vfLocationNearest(locationsList) {
+function vfLocationNearest(locationsList) {
   locationsList = locationsList || { default: {
     name: "Heidelberg",
     latlon: "49.4076, 8.6907"
@@ -257,7 +257,7 @@ function vfLocationNearestDomActions(scope) {
   // console.log('vfLocationNearest locationsList',locationsList)
 
   // unset any prior check
-  vfLocationNearestIndicate('unload');
+  vfLocationNearestIndicate("unload");
 
   // Insert a widget of selectable locations
   vfLocationNearestOverridePopulate(locationsList);

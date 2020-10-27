@@ -7,49 +7,49 @@
  */
 
 // All VF JS
-import { vfBanner } from 'vf-banner/vf-banner';
+import { vfBanner } from "vf-banner/vf-banner";
 vfBanner();
 
-import { vfMastheadSetStyle } from 'vf-masthead/vf-masthead';
+import { vfMastheadSetStyle } from "vf-masthead/vf-masthead";
 vfMastheadSetStyle();
 
-import { vfGaIndicateLoaded } from 'vf-analytics-google/vf-analytics-google';
+import { vfGaIndicateLoaded } from "vf-analytics-google/vf-analytics-google";
 let vfGaTrackOptions = {
   vfGaTrackPageLoad: true
 };
 vfGaIndicateLoaded(vfGaTrackOptions);
 
-import { vfTabs } from 'vf-tabs/vf-tabs';
+import { vfTabs } from "vf-tabs/vf-tabs";
 vfTabs();
 
-import { vfTree } from 'vf-tree/vf-tree';
+import { vfTree } from "vf-tree/vf-tree";
 vfTree();
 
 // import { vfFormFloatLabels } from 'vf-form__core/assets/vf-form__float-labels.js';
 // vfFormFloatLabels();
 
-import { vfSearchClientSide } from 'vf-search-client-side/vf-search-client-side';
+import { vfSearchClientSide } from "vf-search-client-side/vf-search-client-side";
 // No default invokation
 
-import { vfShowMore } from 'vf-show-more/vf-show-more';
+import { vfShowMore } from "vf-show-more/vf-show-more";
 vfShowMore();
 
-import { vfLocationNearest } from 'vf-location-nearest/vf-location-nearest';
+import { vfLocationNearest } from "vf-location-nearest/vf-location-nearest";
 // Not invoked by default
 
 // All EMBL JS
-import { emblContentHubLoaderHtmlImports } from 'embl-content-hub-loader/embl-content-hub-loader__html-imports';
-import { emblContentHubFetch } from 'embl-content-hub-loader/embl-content-hub-loader__fetch';
-import { emblContentHub } from 'embl-content-hub-loader/embl-content-hub-loader';
-import { emblConditionalEdit } from 'embl-conditional-edit/embl-conditional-edit';
+import { emblContentHubLoaderHtmlImports } from "embl-content-hub-loader/embl-content-hub-loader__html-imports";
+import { emblContentHubFetch } from "embl-content-hub-loader/embl-content-hub-loader__fetch";
+import { emblContentHub } from "embl-content-hub-loader/embl-content-hub-loader";
+import { emblConditionalEdit } from "embl-conditional-edit/embl-conditional-edit";
 emblContentHub();
 
-import { emblBreadcrumbs } from 'embl-breadcrumbs-lookup/embl-breadcrumbs-lookup';
+import { emblBreadcrumbs } from "embl-breadcrumbs-lookup/embl-breadcrumbs-lookup";
 emblBreadcrumbs();
 
-import { emblContentMetaProperties_Read } from 'embl-content-meta-properties/embl-content-meta-properties';
+import { emblContentMetaProperties_Read } from "embl-content-meta-properties/embl-content-meta-properties";
 
-import { emblNotifications } from 'embl-notifications/embl-notifications';
+import { emblNotifications } from "embl-notifications/embl-notifications";
 // emblNotifications();
 
 // No default invokation

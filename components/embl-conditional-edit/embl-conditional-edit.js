@@ -6,7 +6,7 @@
  * This will be dynamically run once emblContentHubSignalFinished is triggered.
  */
 function emblConditionalEdit() {
-  const emblConditionalEditItems = document.querySelectorAll('[data-embl-js-conditional-edit]');
+  const emblConditionalEditItems = document.querySelectorAll("[data-embl-js-conditional-edit]");
   if (!emblConditionalEditItems) {
     // exit: lists not found
     return;
@@ -30,13 +30,13 @@ function emblConditionalEdit() {
  */
 function emblConditionalEditDetectParam(url,element,referrer) {
   var captured = /embl-conditional-edit=([^&]+)/.exec(url);
-  if (captured == null && referrer != 'iframe') {
+  if (captured == null && referrer != "iframe") {
     // value not found
 
     // also try against any parent iframe url
     if (window.self !== window.top) {
-      console.log(url, parent.window.location.href)
-      emblConditionalEditDetectParam(parent.window.location.href,element,'iframe');
+      console.log(url, parent.window.location.href);
+      emblConditionalEditDetectParam(parent.window.location.href,element,"iframe");
     }
 
     return;
@@ -44,8 +44,8 @@ function emblConditionalEditDetectParam(url,element,referrer) {
   captured = captured || false; // avoid null
   captured = captured[1];
 
-  if (captured == '1' || captured == 'enabled' || captured == 'true') {
-    element.className += ' ' + 'embl-coditional-edit__enabled';
+  if (captured == "1" || captured == "enabled" || captured == "true") {
+    element.className += " " + "embl-coditional-edit__enabled";
   }
 }
 

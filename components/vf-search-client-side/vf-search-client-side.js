@@ -13,10 +13,10 @@
  * @param {string} [firstPassedVar]  - An option to be passed
  */
 function vfSearchClientSide(firstPassedVar) {
-  firstPassedVar = firstPassedVar || 'defaultVal';
+  firstPassedVar = firstPassedVar || "defaultVal";
   var searchTerm;
-  const searchQueryInput = document.querySelectorAll('[data-vf-search-client-side-input]'); // where we put the query
-  const searchResultsContainer = document.querySelectorAll('[data-vf-search-client-side-results]'); // where we put the search results
+  const searchQueryInput = document.querySelectorAll("[data-vf-search-client-side-input]"); // where we put the query
+  const searchResultsContainer = document.querySelectorAll("[data-vf-search-client-side-results]"); // where we put the search results
 
   // some tips
   // https://lunrjs.com/guides/customising.html
@@ -28,15 +28,15 @@ function vfSearchClientSide(firstPassedVar) {
     var pipelineFunction = function (token) {
       var tokenStr = token.toString();
       // if there are no hyphens then skip this logic
-      if (tokenStr.indexOf('-') < 0) return token;
+      if (tokenStr.indexOf("-") < 0) return token;
 
 
       // split the token by hyphens, returning a clone of the original token with the split
       // e.g. 'anti-virus' -> 'anti', 'virus'
-      var tokens = tokenStr.split('-').map(function (s) {
+      var tokens = tokenStr.split("-").map(function (s) {
         return token.clone(function () {
-          return s
-        })
+          return s;
+        });
       });
 
       // var tokens = [];
@@ -52,7 +52,7 @@ function vfSearchClientSide(firstPassedVar) {
       return tokens;
     };
 
-    lunr.Pipeline.registerFunction(pipelineFunction, 'customPipelineWithoutHypens');
+    lunr.Pipeline.registerFunction(pipelineFunction, "customPipelineWithoutHypens");
     builder.pipeline.before(lunr.stemmer, pipelineFunction);
     builder.searchPipeline.before(lunr.stemmer, pipelineFunction);
 
@@ -63,14 +63,14 @@ function vfSearchClientSide(firstPassedVar) {
     this.tokenizer.separator = /[\s]+/;
     this.use(customPipelineWithoutHypens);
 
-    this.field('title', {
+    this.field("title", {
       boost: 100
     });
-    this.field('text', {
+    this.field("text", {
       boost: 0.1
     });
-    this.field('url');
-    this.metadataWhitelist = ['position']
+    this.field("url");
+    this.metadataWhitelist = ["position"];
 
     searchIndex.pages.forEach(function (page) {
       this.add(page);
@@ -86,7 +86,7 @@ function vfSearchClientSide(firstPassedVar) {
       if (pair[0] === variable) {
         var temp = decodeURIComponent(pair[1].replace(/\+/g, "%20"));
         temp = temp.replace(/(<([^>]+)>)/ig, ""); // "strip tags"
-        console.log('Fonud query', temp);
+        console.log("Fonud query", temp);
         return temp;
       }
     }
@@ -98,7 +98,7 @@ function vfSearchClientSide(firstPassedVar) {
   // set the input box to the search query
   if (typeof searchTerm !== "undefined") {
     searchQueryInput[0].value = searchTerm;
-  };
+  }
 
   // get searchbox query string
   function getValueFromSearchBox() {
@@ -108,29 +108,29 @@ function vfSearchClientSide(firstPassedVar) {
 
   // watch search box for changes
   let searchQueryInputTimeout;
-  searchQueryInput[0].addEventListener('keypress', function(){
+  searchQueryInput[0].addEventListener("keypress", function(){
     if(searchQueryInputTimeout) {
       clearTimeout(searchQueryInputTimeout);
       searchQueryInputTimeout = null;
     }
 
-    searchQueryInputTimeout = setTimeout(getValueFromSearchBox, 600)
+    searchQueryInputTimeout = setTimeout(getValueFromSearchBox, 600);
   });
 
   function renderResults() {
     // strip out searches for `vf-` as it's a junk term
-    let searchTermTrimmed = searchTerm.replace('vf-', '')
+    let searchTermTrimmed = searchTerm.replace("vf-", "");
 
     // run the search
     let results = idx.search(searchTermTrimmed);
 
     if (results.length === 0) {
-      searchResultsContainer[0].innerHTML = 'No results found';
+      searchResultsContainer[0].innerHTML = "No results found";
 
       return false;
     }
 
-    console.log('searchTermTrimmed',searchTermTrimmed)
+    console.log("searchTermTrimmed",searchTermTrimmed);
 
     // map the search hits to the search pages
     let resultPages = results.map(function (match) {
@@ -138,16 +138,16 @@ function vfSearchClientSide(firstPassedVar) {
     });
 
     // generate the HTML markup for the results
-    let renderedResults = '';
+    let renderedResults = "";
 
     // if search term, generate output
-    if (searchTermTrimmed != '') {
+    if (searchTermTrimmed != "") {
       resultPages.forEach(element => {
         if (typeof element !== "undefined") {
-          element.text = element.text || '';
+          element.text = element.text || "";
           renderedResults += "<a class='result' href='../" + element.url + "?q=" + searchTerm + "'><h3>" + element.title + "</h3></a>";
           renderedResults += "<p class='snippet'>" + element.text.substring(0, 200) + "</p>";
-          renderedResults += '<p><code>' + element.url + '</code></p>';
+          renderedResults += "<p><code>" + element.url + "</code></p>";
         }
       });
     } else {

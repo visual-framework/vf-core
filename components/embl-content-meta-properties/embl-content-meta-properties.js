@@ -40,7 +40,7 @@ function emblContentMetaProperties_Read() {
     if (metaProperties[key] != null && metaProperties[key].getAttribute("content").length != 0) {
       metaProperties[key] = metaProperties[key].getAttribute("content");
     } else {
-      metaProperties[key] = 'notSet';
+      metaProperties[key] = "notSet";
     }
   }
 
