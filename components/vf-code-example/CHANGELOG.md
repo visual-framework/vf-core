@@ -1,4 +1,4 @@
-### 1.1.0
+### 1.2.0
 
 * correct display of `vf-content pre` and `vf-code-example__pre` to:
   * not line break every element

@@ -10,7 +10,7 @@ layout: layouts/base.njk
 <div>
   <h1 class="vf-intro__heading">{{ title }}</h1>
   <p class="vf-lede">{{ subtitle | safe }}</p>
-  <p class="vf-intro__text">The Visual Framework 2.0 is maturing and we're working to do a better job communicating changes and individual component release notes. On the <a class="vf-link" href="{{ '/updates' | url }}">updates blog</a> you can now expect to find what's new in each release of components.</p>
+  <p class="vf-intro__text">Here on the <a class="vf-link" href="{{ '/updates' | url }}">updates blog</a> you can now expect to find what's new in each release of the Visual Framework 2.0 components.</p>
   <p class="vf-intro__text">You can also subscribe to <a class="vf-link" href="{{ '/feed.xml' | url }}">the RSS feed</a>.</p>
 </div>
 </section>
@@ -32,7 +32,7 @@ layout: layouts/base.njk
   </div> #}
   {# <p class="vf-text-body--5 | vf-u-margin__bottom--200">{{ date | dateDisplay }}</p> #}
   <p class="vf-summary__text">
-    {{ post.data.subtitle }}
+    {{ post.data.subtitle | markdown | safe | replace("<p>", "<span class='vf-content'>") | replace("</p>", "</span>") }}
   </p>
 </article>
 
