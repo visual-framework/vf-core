@@ -1,4 +1,4 @@
-# Table Component
+# Table component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-table.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-table)
 

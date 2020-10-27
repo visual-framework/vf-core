@@ -1,4 +1,4 @@
-# Discussion Component
+# Discussion component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-discussion.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-discussion)
 

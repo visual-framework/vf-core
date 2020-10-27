@@ -1,4 +1,4 @@
-# Form Select Component
+# Form Select component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-form__select.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-form__select)
 

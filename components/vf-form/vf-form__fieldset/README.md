@@ -1,4 +1,4 @@
-# Form Fieldset Component
+# Form Fieldset component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-form__fieldset.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-form__fieldset)
 

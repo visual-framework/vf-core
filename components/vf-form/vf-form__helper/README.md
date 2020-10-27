@@ -1,4 +1,4 @@
-# Form Helper Component
+# Form Helper component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-form__helper.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-form__helper)
 

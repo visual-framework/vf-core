@@ -1,4 +1,4 @@
-# Video Container Component
+# Video Container component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%vf-video-container.svg)](https://badge.fury.io/js/%40visual-framework%vf-video-container)
 

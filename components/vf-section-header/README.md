@@ -1,4 +1,4 @@
-# Section Header Component
+# Section Header component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-section-header.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-section-header)
 

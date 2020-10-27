@@ -1,4 +1,4 @@
-# vf-tree Component
+# Tree component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-tree.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-tree)
 

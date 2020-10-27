@@ -1,4 +1,4 @@
-# vf-profile Component
+# Profile component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-profile.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-profile)
 
@@ -27,9 +27,7 @@ The `vf-profile` allows for a variety of content related to a person.
 | text         | `profile__uuid`      |             |
 | url          | `profile__uuid_href` |             |
 
-
 All content is optional
-
 
 #### Hiding Content Items
 

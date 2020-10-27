@@ -1,4 +1,4 @@
-# EMBL Breadcrumbs Lookup Component
+# EMBL Breadcrumbs Lookup component
 
 ## About
 

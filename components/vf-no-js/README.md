@@ -1,4 +1,4 @@
-# No JS Component
+# No JS component
 
 ## About
 

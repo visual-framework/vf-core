@@ -1,4 +1,4 @@
-# Font Plex Mono Component
+# Font Plex Mono component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-font-plex-mono.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-font-plex-mono)
 

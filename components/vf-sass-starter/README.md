@@ -1,4 +1,4 @@
-# Sass starter utility
+# Sass Starter Utility component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-starter.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-sass-starter)
 

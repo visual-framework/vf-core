@@ -1,4 +1,4 @@
-# Explainer Component
+# Explainer component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-explainer.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-explainer)
 

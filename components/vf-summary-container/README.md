@@ -1,4 +1,4 @@
-# Summary Container Component
+# Summary Container component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-summary-container.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-summary-container)
 

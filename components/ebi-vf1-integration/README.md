@@ -1,4 +1,4 @@
-# Compatibility with EBI-VF 1.x Component
+# Compatibility with EBI-VF 1.x component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Febi-vf1-integration.svg)](https://badge.fury.io/js/%40visual-framework%2Febi-vf1-integration)
 

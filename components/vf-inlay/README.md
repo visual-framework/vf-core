@@ -1,4 +1,4 @@
-# Inlay Component
+# Inlay component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-inlay.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-inlay)
 

@@ -1,4 +1,4 @@
-# Figure Component
+# Figure component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-figure.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-figure)
 

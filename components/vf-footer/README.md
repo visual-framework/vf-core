@@ -1,4 +1,4 @@
-# Footer Component
+# Footer component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-footer.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-footer)
 

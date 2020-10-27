@@ -1,4 +1,4 @@
-# vf-hero Component
+# Hero component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-hero.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-hero)
 

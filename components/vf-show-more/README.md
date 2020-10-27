@@ -1,4 +1,4 @@
-# Show More Component
+# Show More component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-show-more.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-show-more)
 

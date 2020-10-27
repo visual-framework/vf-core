@@ -1,4 +1,4 @@
-# Intro Component
+# Intro component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-intro.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-intro)
 

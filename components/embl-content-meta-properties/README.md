@@ -1,4 +1,4 @@
-# EMBL Content Meta Properties
+# EMBL Content Meta Properties component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%embl-content-meta-properties.svg)](https://badge.fury.io/js/%40visual-framework%embl-content-meta-properties)
 

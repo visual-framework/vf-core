@@ -1,4 +1,4 @@
-# EBI Header and Footer Component
+# EBI Header and Footer component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Febi-header-footer.svg)](https://badge.fury.io/js/%40visual-framework%2Febi-header-footer)
 

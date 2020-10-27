@@ -1,4 +1,4 @@
-# Boilerplate Page Component
+# Boilerplate Page component
 
 ## About
 

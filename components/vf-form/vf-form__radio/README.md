@@ -1,4 +1,4 @@
-# Form Radio Component
+# Form Radio component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-form__radio.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-form__radio)
 

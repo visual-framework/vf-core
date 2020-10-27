@@ -1,4 +1,4 @@
-# Content Area Component
+# Content Area  component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-content.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-content)
 

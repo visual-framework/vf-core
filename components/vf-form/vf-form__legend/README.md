@@ -1,4 +1,4 @@
-# Form Legend Component
+# Form Legend component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-form__legend.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-form__legend)
 

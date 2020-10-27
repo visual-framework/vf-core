@@ -1,4 +1,4 @@
-# Utility Classes
+# Utility Classes component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-utility-classes.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-utility-classes)
 

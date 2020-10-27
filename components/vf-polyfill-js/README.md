@@ -1,4 +1,4 @@
-# JavaScript Polyfill Component
+# JavaScript Polyfill component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-polyfill-js.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-polyfill-js)
 
