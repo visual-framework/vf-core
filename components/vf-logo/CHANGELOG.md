@@ -1,26 +1,26 @@
 ### 1.4.0
 
-- updates spacing design tokens
-- requires `v2.0.0` of the `vf-design-tokens` package or newer.
+* updates spacing design tokens
+* requires `v2.0.0` of the `vf-design-tokens` package or newer
 
 ### 1.3.0
 
-- adds loading="eager" to the img element for better performance
+* adds loading="eager" to the img element for better performance
 
 ### 1.2.0
 
-- adds 'context' for the logo
+* adds 'context' for the logo
 
 ### 1.1.0
 
-- adds if statement for if there is text or not so no HTML is printed if not
-- adds class if logo text is provided
-- changes what is making space between logo and text to it being the text item.
+* adds if statement for if there is text or not so no HTML is printed if not
+* adds class if logo text is provided
+* changes what is making space between logo and text to it being the text item
 
 ### 1.0.1
 
-- Tweaks height, adds larger "extreme" variant
+* Tweaks height, adds larger "extreme" variant
 
 ### 1.0.0
 
-- Initial stable release
+* Initial stable release
