@@ -1,24 +1,24 @@
 ### 1.1.2
 
-- adds support for `autofocus` on search input
+* adds support for `autofocus` on search input
 
 ### 1.1.1
 
-- adds support for default search value
+* adds support for default search value
 
 ### 1.1.0
 
-- makes vf-search.njk a real template
+* makes vf-search.njk a real template
 
 ### 1.0.0
 
-- removes `vf-u-sr-only` as no longer needed
-- changes alignment of button on inline search
+* removes `vf-u-sr-only` as no longer needed
+* changes alignment of button on inline search
 
 ### 1.0.0-alpha.8
 
-- Version bump only for package @visual-framework/vf-search
+* Version bump only for package @visual-framework/vf-search
 
 ### 1.0.0-alpha.7
 
-- Version bump only for package @visual-framework/vf-search
+* Version bump only for package @visual-framework/vf-search
