@@ -6,7 +6,14 @@
   <ul class="vf-navigation__list | vf-list--inline">
     {% for item in navigation %}
     <li class="vf-navigation__item">
-      <a href="{{ item.navigation_href }}" class="vf-navigation__link">{{ item.text }}</a>
+      <a
+      href="{{ item.navigation_href }}"
+      class="vf-navigation__link"
+      {% if item.currentPage %} aria-current="page"{%- endif -%}>
+
+      {{- item.text -}}
+
+      </a>
     </li>
     {% endfor %}
   </ul>
