@@ -5,17 +5,14 @@
 </style>
 <div
   class="vf-masthead
-  {%- if mastheadThemeVariant %}
-  {{mastheadThemeVariant}}
-  {%- endif -%}
-  {% if hasTitleBlock %}
-  {{hasTitleBlock}}
-  {% endif -%}
-  {% if mastheadImageClass %}
-  {{mastheadImageClass}}
-  {% endif %}
-   | vf-u-fullbleed
-  "
+  {%- if Primary %} vf-masthead-theme--primary{%- endif -%}
+  {%- if Secondary %} vf-masthead-theme--secondary{%- endif -%}
+  {%- if Tertiary %} vf-masthead-theme--tertiary{%- endif -%}
+
+  {% if hasTitleBlock %} vf-masthead--with-title-block{% endif %}
+  {%- if mastheadImageClass %} vf-masthead--has-image{% endif %}
+  | vf-u-fullbleed"
+
   {% if mastheadImage %}
   style="background-image: var(--vf-masthead__bg-image)"
   data-vf-js-masthead
