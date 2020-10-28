@@ -27,11 +27,9 @@ function vfMastheadSetStyle() {
   if (vfMastheads[0]) {
     let el = vfMastheads[0];
     let bannerBG = getComputedStyle(el).getPropertyValue("--vf-masthead__bg-image");
-    const regex = /\\/gi; // avoid escaped syntax like "bg_2d4155\.png"
+    let regex = /\\/gi; // avoid escaped syntax like "bg_2d4155\.png"
     bannerBG = bannerBG.replaceAll(regex,"");
-    console.log(bannerBG)
     let filename = bannerBG.substr(0, bannerBG.lastIndexOf(".")) || bannerBG;
-    console.log(filename)
     let hexcode = filename.substr(filename.length - 6);
     let bannerBGC = "#" + hexcode;
     let regHex = /[0-9A-Fa-f]{6}/g;
