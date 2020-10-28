@@ -1,3 +1,7 @@
+### 1.4.2
+
+* bug: don't style a.vf-* elements within .vf-intro__text
+
 ### 1.4.1
 
 * added `column-gap` as this was missed
