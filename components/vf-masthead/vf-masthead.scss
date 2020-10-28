@@ -16,6 +16,10 @@
   color: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--black)));
   padding-bottom: 1.5em;
   padding-top: 1.5em;
+  position: relative;
+   &::before {
+    z-index: 1 !important;
+  }
 }
 
 // Variants
@@ -52,6 +56,7 @@
   align-self: unset;
   display: inline-flex;
   flex-direction: column-reverse;
+  z-index: 1; // set so that all the text is 'on top'
 }
 
 .vf-masthead__heading {
@@ -91,16 +96,17 @@
 .vf-masthead--with-title-block {
   display: flex;
   padding-bottom: 0;
-  padding-top: 60px;
+  padding-top: 64px;
 
   .vf-masthead__title {
     align-self: flex-end;
     background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
     color: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--white)));
     display: inline-flex;
-    padding-right: 16px;
-    padding-top: 16px;
+    padding: 24px;
+    padding-left: 0;
     position: relative;
+    z-index: 2;
 
     &::before {
       background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
@@ -109,13 +115,19 @@
       flex-direction: column-reverse;
       grid-auto-columns: max-content;
       height: 100%;
-      padding-left: 16px;
+      margin-left: calc(50% - calc(50vw - var(--context-margin--inline, 0px)));
       position: absolute;
-      transform: translateX(-50%);
-      width: 50vw;
+      top: 0;
+      width: calc(50vw - (var(--context-margin--inline, 0px) * 2));
     }
   }
   .vf-masthead__subheading {
     z-index: set-layer(vf-z-index--masthead);
   }
 }
+
+  [class*=with-title-block][class*=theme] {
+    .vf-masthead__title {
+      --vf-masthead__color--background-default: black;
+    }
+  }
