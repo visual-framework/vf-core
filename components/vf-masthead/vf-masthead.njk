@@ -1,8 +1,4 @@
-<style>
-    .vf-masthead {
-      --vf-masthead__bg-image: url({{ mastheadImage }});
-    }
-</style>
+{% spaceless %}
 <div
   class="vf-masthead
   {%- if Primary %} vf-masthead-theme--primary{%- endif -%}
@@ -12,11 +8,11 @@
   {% if hasTitleBlock %} vf-masthead--with-title-block{% endif %}
   {%- if mastheadImageClass %} vf-masthead--has-image{% endif %}
   | vf-u-fullbleed"
-
-  {% if mastheadImage %}
-  style="background-image: var(--vf-masthead__bg-image)"
-  data-vf-js-masthead
-  {% endif %}
+  {% if mastheadImage -%}
+  style="
+    --vf-masthead__bg-image: url({{ mastheadImage }});
+    background-image: var(--vf-masthead__bg-image)" data-vf-js-masthead
+  {%- endif -%}
 >
   <div class="vf-masthead__inner">
     <div class="vf-masthead__title">
@@ -31,3 +27,4 @@
     </div>
   </div>
 </div>
+{% endspaceless %}
