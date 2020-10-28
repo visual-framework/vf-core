@@ -53,8 +53,10 @@ function vfMastheadSetStyle() {
 
         if (cBrightness > threshold){
           el.style.setProperty("--vf-masthead__color--foreground-default", "#000000");
+          el.style.setProperty("--vf-masthead__color--background-default", "#FFFFFF");
         } else if (cBrightness < threshold) {
           el.style.setProperty("--vf-masthead__color--foreground-default", "#FFFFFF");
+          el.style.setProperty("--vf-masthead__color--background-default", "#000000");
         }
       }
       else {
