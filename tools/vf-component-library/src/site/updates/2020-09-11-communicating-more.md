@@ -17,7 +17,7 @@ We've also revised our [publishing procedure](https://github.com/visual-framewor
 
 - [Join the VF Slack group](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
 - Use a CI tool like [Dependabot](https://dependabot.com/) to get automatic pull requests
-- [Follow the RSS feed](http://localhost:3003/vf-core/feed.xml)
+- [Follow the RSS feed]({{ 'feed.xml' | url }})
 
 ## How we're (partly) automating blog updates
 
