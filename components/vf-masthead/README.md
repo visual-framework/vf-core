@@ -4,13 +4,23 @@
 
 ## About
 
+The `vf-masthead` (masthead) is a full-width container that can take a text, theme colour, an image, and create a 'block' for the text to lay atop.
+
 ## Usage
+
+The `vf-masthead` component can be used on the home page of group sites to help inform the visitor of the groups name, location, and additional information.
+
+| ✅ Do's                                 | 🚫 Do Not's                                 |
+| --------------------------------------- | ------------------------------------------ |
+| Use this on the homepage of group sites | On every subsquent page                    |
+| Use the title block with a theme colour | Use a title block, theme colour, and image |
+
 
 ### Background Colours
 
-By Default, the `vf-masthead` is white text on a black background except if it is the title block variant where the text will be black on a white background with an overall black background.
+By Default, the `vf-masthead` is black text on a light grey background except if it is the title block variant where the text will be white on a black background with an overall light grey background.
 
-This can be effected by either having a global theme class applied to a parent (usually on `body`) where the colours determined by the theme name will cascade into this component. The other way is to apply a component specific class that effects the colours.
+This can be effected by either having a component specific class that effects the colours.
 
 Theme Variants available are:
 
@@ -41,14 +51,16 @@ When using a background image we have to determine the best text colour to meet 
 
 We do this using JavaScript and the background image filename.
 
-In creating the background images for mastheads each image filename needs to have it's most dominate colour added as a hexadecimal code.
+In choosing the image for masthead the image filename needs to have it's most dominate colour added as a hexadecimal code.
 
 ```bash
 masthead-background-image--00EF00.png
 ```
 <br>
 
-The JavaScript looks for this hexidecimal colour code and mathematically works out the correct text colour to use. The CSS custom property `--local-theme-fg-color` is then applied in the style tag of the component.
+To find the dominant colour in the background image you can use a colour picker in graphics software to find the hex code.
+
+This then allows the code to look for this hexidecimal colour code and mathematically works out the correct text colour to use. The CSS custom property `--local-theme-fg-color` is then applied in the style tag of the component.
 
 ```html
 <style>
@@ -56,7 +68,7 @@ The JavaScript looks for this hexidecimal colour code and mathematically works o
   class="vf-masthead vf-masthead--has-image"
   style="background-image: var(--vf-masthead__bg-image);
          --local-theme-fg-color:#FFFFFF;"
-  data-vf-js-masthead=""
+  data-vf-js-masthead
 >
 </style>
 ```
