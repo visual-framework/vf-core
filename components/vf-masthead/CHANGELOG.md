@@ -1,3 +1,11 @@
+### 2.0.0
+
+* updates how `njk` and `yml` variables are named and work.
+* tidied up how JavaScript decides on text colour from image.
+* renamed `h2` classnames so they're not so specific to its content.
+* removes redundant form search CSS
+* updated documentation
+
 ### 1.2.0
 
 * updates spacing design tokens
