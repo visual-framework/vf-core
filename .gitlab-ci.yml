@@ -37,13 +37,18 @@ build:
     - yarn global add gulp-cli
     - yarn install
     - cd tools/vf-core
-    - gulp vf-core:prepare-deploy
+    - gulp vf-core:prepare-deploy # to do: verify if bin/deploy-aws can use the vf-component-library build, if so we can drop this
+    - cd ../vf-component-library
+    - yarn install
+    - gulp build
   artifacts:
     paths:
       - tools/vf-core/build
+      - tools/vf-component-library/build
   cache:
     paths:
       - node_modules
+      - tools/vf-component-library/node_modules
   except:
     - /^.visual-framework\/.*$/
 
@@ -56,7 +61,7 @@ deploy-dev:
     - add-ssh-key ${SSH_OWNER_ID} "${SSH_OWNER_KEY}" ${SSH_APACHE_ID} "${SSH_APACHE_KEY}"
     - add-search-domain ebi.ac.uk
   script:
-    - for VM in ${VM_PROD}; do rsync -acv --delete-after tools/vf-core/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH_LATEST}/; done;
+    - for VM in ${VM_PROD}; do rsync -acv --delete-after tools/vf-component-library/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH_LATEST}/; done;
   only:
     # only match on develop branch, or specific tag patterns
     - develop
@@ -72,7 +77,7 @@ deploy-prod:
     - add-ssh-key ${SSH_OWNER_ID} "${SSH_OWNER_KEY}" ${SSH_APACHE_ID} "${SSH_APACHE_KEY}"
     - add-search-domain ebi.ac.uk
   script:
-    - for VM in ${VM_PROD}; do rsync -acv --delete-after tools/vf-core/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH_STABLE}/; done;
+    - for VM in ${VM_PROD}; do rsync -acv --delete-after tools/vf-component-library/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH_STABLE}/; done;
   only:
     # only match on specific tag patterns
     - /^v\d+\.\d+\.\d+$/
