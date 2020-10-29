@@ -57,7 +57,7 @@ function vfMastheadSetStyle() {
           el.style.setProperty("--vf-masthead__color--background-default", "#000000");
         }
       } else {
-        // el.style.setProperty("--vf-masthead__bg-image", "unset");
+        el.style.setProperty("--vf-masthead__bg-image", "unset");
       }
     }
   }

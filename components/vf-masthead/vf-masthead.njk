@@ -1,12 +1,11 @@
 {% spaceless %}
 <div
   class="vf-masthead
-  {%- if Primary %} vf-masthead-theme--primary{%- endif -%}
-  {%- if Secondary %} vf-masthead-theme--secondary{%- endif -%}
-  {%- if Tertiary %} vf-masthead-theme--tertiary{%- endif -%}
+  {%- if mastheadTheme %} vf-masthead-theme--{{mastheadTheme}}{%- endif -%}
 
   {% if hasTitleBlock %} vf-masthead--with-title-block{% endif %}
-  {%- if mastheadImageClass %} vf-masthead--has-image{% endif %}
+
+  {%- if mastheadImage %} vf-masthead--has-image{% endif %}
   | vf-u-fullbleed"
   {% if mastheadImage -%}
   style="
