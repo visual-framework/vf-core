@@ -1,10 +1,10 @@
 ### 2.0.0
 
-* increases font size for `--main`.
-* removes all variants of `--main`.
-* adds `vf-cluster` to the component for responsive layout
-* adds `aria-current="page"` rule and CSS to denote the current page.
-* adds `:hover` to links.
+* updates how `njk` and `yml` variables are named and work.
+* tidied up how JavaScript decides on text colour from image.
+* renamed `h2` classnames so they're not so specific to its content.
+* removes redundant form search CSS
+* updated documentation
 
 ### 1.2.0
 
