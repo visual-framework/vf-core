@@ -1,3 +1,7 @@
+### 1.0.0-rc.7
+
+* Add label to the list of ancestors to look for
+
 ### 1.0.0-rc.6
 
 * Track form element interactions

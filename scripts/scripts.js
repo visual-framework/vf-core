@@ -752,24 +752,19 @@ function vfGaLinkTrackingInit() {
           return;
         }
       }
-    } // sometimes a `span` or `img` element is wrapped in an `a` element
+    } // In the case that elements such as `span` are wrapped in action elements (e.g. `a`),
+    // we need to find the latter and supply them for tracking
 
 
-    var from = findParent("a", evt.target || evt.srcElement);
+    var ancestors = ["a", "details", "label"];
 
-    if (from) {
-      // console.log('clicked from findParent: ',from);
-      vfGaTrackInteraction(from);
-      return;
-    } // similarly for a `details` element
+    for (var i = 0; i < ancestors.length; i++) {
+      var from = findParent(ancestors[i], evt.target || evt.srcElement);
 
-
-    from = findParent("detail", evt.target || evt.srcElement);
-
-    if (from) {
-      // console.log('clicked from findParent: ',from);
-      vfGaTrackInteraction(from);
-      return;
+      if (from) {
+        vfGaTrackInteraction(from);
+        return;
+      }
     }
   }, false); //find first parent with tagName [tagname]
 
