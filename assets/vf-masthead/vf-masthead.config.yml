@@ -7,28 +7,39 @@ context:
   component-type: block
 
   masthead_href: 'JavaScript:Void(0);'
+  masthead_heading: Strategy & Communications
+  masthead_heading_additional: Chromosome structure and dynamics
+  masthead_subheading:
+    - masthead_subheading_text: <a href="JavaScript:Void(0);">VF Hamburg</a>
+    - masthead_subheading_text: Structural Biology
 
 variants:
   - name: default
   - name: primary
     context:
-      mastheadThemeVariant: vf-masthead-theme--primary
+      mastheadTheme: primary
   - name: secondary
     context:
-      mastheadThemeVariant: vf-masthead-theme--secondary
+      mastheadTheme: secondary
   - name: tertiary
     context:
-      mastheadThemeVariant: vf-masthead-theme--tertiary
-  - name: with background image
-    context:
-      mastheadImageClass: vf-masthead--has-image
-      mastheadImage: "../../assets/vf-masthead/assets/group-bg_2d4155.png"
-  - name: with title block
-    context:
-      hasTitleBlock: vf-masthead--with-title-block
+      mastheadTheme: tertiary
 
-  - name: kitchen sink
+  - name: title block
     context:
-      mastheadImageClass: vf-masthead--has-image
-      mastheadImage: "../../assets/vf-masthead/assets/group-bg_2d4155.png"
-      hasTitleBlock: vf-masthead--with-title-block
+      hasTitleBlock: true
+
+  - name: title block (primary)
+    context:
+      hasTitleBlock: true
+      mastheadTheme: primary
+
+  - name: image
+    context:
+      mastheadImage: "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg"
+
+  - name: title block and image
+    context:
+      mastheadImage: "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg"
+      hasTitleBlock: true
+

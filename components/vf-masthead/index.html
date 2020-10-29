@@ -721,13 +721,33 @@ class="vf-logo | vf-logo--has-text">
       
       
 
-      
+      <p>The <code>vf-masthead</code> (masthead) is a full-width container that can take a text, theme colour, an image, and create a 'block' for the text to lay atop.</p>
+
 
       
         <h2>Usage</h2>
-        <h3>Background Colours</h3>
-<p>By Default, the <code>vf-masthead</code> is white text on a black background except if it is the title block variant where the text will be black on a white background with an overall black background.</p>
-<p>This can be effected by either having a global theme class applied to a parent (usually on <code>body</code>) where the colours determined by the theme name will cascade into this component. The other way is to apply a component specific class that effects the colours.</p>
+        <p>The <code>vf-masthead</code> component can be used on the home page of group sites to help inform the visitor of the groups name, location, and additional information.</p>
+<table>
+<thead>
+<tr>
+<th>✅ Do's</th>
+<th>🚫 Do Not's</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use this on the homepage of group sites</td>
+<td>On every subsquent page</td>
+</tr>
+<tr>
+<td>Use the title block with a theme colour</td>
+<td>Use a title block, theme colour, and image</td>
+</tr>
+</tbody>
+</table>
+<h3>Background Colours</h3>
+<p>By Default, the <code>vf-masthead</code> is black text on a light grey background except if it is the title block variant where the text will be white on a black background with an overall light grey background.</p>
+<p>This can be effected by either having a component specific class that effects the colours.</p>
 <p>Theme Variants available are:</p>
 <ul>
 <li><code>vf-masthead-theme--primary</code></li>
@@ -748,17 +768,18 @@ class="vf-logo | vf-logo--has-text">
 <h4>Text Colour</h4>
 <p>When using a background image we have to determine the best text colour to meet the contrast ratio from our accessibility guidelines.</p>
 <p>We do this using JavaScript and the background image filename.</p>
-<p>In creating the background images for mastheads each image filename needs to have it's most dominate colour added as a hexadecimal code.</p>
+<p>In choosing the image for masthead the image filename needs to have it's most dominate colour added as a hexadecimal code.</p>
 <pre><code class="language-bash">masthead-background-image--00EF00.png
 </code></pre>
 <br>
-<p>The JavaScript looks for this hexidecimal colour code and mathematically works out the correct text colour to use. The CSS custom property <code>--local-theme-fg-color</code> is then applied in the style tag of the component.</p>
+<p>To find the dominant colour in the background image you can use a colour picker in graphics software to find the hex code.</p>
+<p>This then allows the code to look for this hexidecimal colour code and mathematically works out the correct text colour to use. The CSS custom property <code>--local-theme-fg-color</code> is then applied in the style tag of the component.</p>
 <pre><code class="language-html">&lt;style&gt;
 &lt;div
   class=&quot;vf-masthead vf-masthead--has-image&quot;
   style=&quot;background-image: var(--vf-masthead__bg-image);
          --local-theme-fg-color:#FFFFFF;&quot;
-  data-vf-js-masthead=&quot;&quot;
+  data-vf-js-masthead
 &gt;
 &lt;/style&gt;
 </code></pre>
@@ -827,6 +848,10 @@ class="vf-logo | vf-logo--has-text">
             
           
         
+          
+            
+          
+        
 
         
 
@@ -862,22 +887,29 @@ class="vf-logo | vf-logo--has-text">
 
     </li>
     <li class="vf-list__item">
-      <a class="vf-list__link" href="#vf-masthead--with-background-image">
-        Masthead: With Background Image
+      <a class="vf-list__link" href="#vf-masthead--title-block">
+        Masthead: Title Block
         <svg class="vf-icon vf-icon__arrow--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-button-down</title><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"/></svg>
       </a>
 
     </li>
     <li class="vf-list__item">
-      <a class="vf-list__link" href="#vf-masthead--with-title-block">
-        Masthead: With Title Block
+      <a class="vf-list__link" href="#vf-masthead--title-block-(primary)">
+        Masthead: Title Block Primary
         <svg class="vf-icon vf-icon__arrow--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-button-down</title><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"/></svg>
       </a>
 
     </li>
     <li class="vf-list__item">
-      <a class="vf-list__link" href="#vf-masthead--kitchen-sink">
-        Masthead: Kitchen Sink
+      <a class="vf-list__link" href="#vf-masthead--image">
+        Masthead: Image
+        <svg class="vf-icon vf-icon__arrow--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-button-down</title><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"/></svg>
+      </a>
+
+    </li>
+    <li class="vf-list__item">
+      <a class="vf-list__link" href="#vf-masthead--title-block-and-image">
+        Masthead: Title Block And Image
         <svg class="vf-icon vf-icon__arrow--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-button-down</title><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"/></svg>
       </a>
 
@@ -907,28 +939,7 @@ class="vf-logo | vf-logo--has-text">
                    style="background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
               >
                 
-                <style>
-    .vf-masthead {
-      --vf-masthead__bg-image: url();
-    }
-</style>
-<div
-  class="vf-masthead"
->
-  <div class="vf-masthead__inner">
-    <div class="vf-masthead__title">
-      <h1 class="vf-masthead__heading">
-        <a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy &amp; Communications</a>
-        <span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span>
-      </h1>
-      <h2 class="vf-masthead__subheading">
-        <span class="vf-masthead__location">VF Hamburg</span>
-        <span class="vf-masthead__group">Structural Biology</span>
-      </h2>
-    </div>
-  </div>
-</div>
-
+                <div class="vf-masthead | vf-u-fullbleed" ><div class="vf-masthead__title"><h1 class="vf-masthead__heading"><a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy & Communications</a><span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span></h1><h2 class="vf-masthead__subheading"><span class="vf-masthead__subheading__text"><a href="JavaScript:Void(0);">VF Hamburg</a></span><span class="vf-masthead__subheading__text">Structural Biology</span></h2></div></div> 
               </div>
             
 
@@ -938,7 +949,17 @@ class="vf-logo | vf-logo--has-text">
                 <summary class="vf-details--summary">Nunjucks syntax</summary>
                 <pre><code>{% render '@vf-masthead--default', {
   &quot;component-type&quot;: &quot;block&quot;,
-  &quot;masthead_href&quot;: &quot;JavaScript:Void(0);&quot;
+  &quot;masthead_href&quot;: &quot;JavaScript:Void(0);&quot;,
+  &quot;masthead_heading&quot;: &quot;Strategy &amp; Communications&quot;,
+  &quot;masthead_heading_additional&quot;: &quot;Chromosome structure and dynamics&quot;,
+  &quot;masthead_subheading&quot;: [
+    {
+      &quot;masthead_subheading_text&quot;: &quot;&lt;a href=\&quot;JavaScript:Void(0);\&quot;&gt;VF Hamburg&lt;/a&gt;&quot;
+    },
+    {
+      &quot;masthead_subheading_text&quot;: &quot;Structural Biology&quot;
+    }
+  ]
 } %}
                 </code></pre>
               </details>
@@ -947,23 +968,10 @@ class="vf-logo | vf-logo--has-text">
             
             <details class="vf-details vf-box vf-box--outline">
               <summary class="vf-details--summary">HTML</summary>
-              <pre><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-  <span class="hljs-selector-class">.vf-masthead</span> {
-    <span class="hljs-attribute">--vf-masthead__bg-image</span>: <span class="hljs-built_in">url</span>();
-  }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy <span class="hljs-symbol">&amp;amp;</span> Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__location"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__group"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead | vf-u-fullbleed"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy &amp; Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
               </pre>
@@ -990,28 +998,7 @@ class="vf-logo | vf-logo--has-text">
                    style="background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
               >
                 
-                <style>
-    .vf-masthead {
-      --vf-masthead__bg-image: url();
-    }
-</style>
-<div
-  class="vf-masthead  vf-masthead-theme--primary"
->
-  <div class="vf-masthead__inner">
-    <div class="vf-masthead__title">
-      <h1 class="vf-masthead__heading">
-        <a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy &amp; Communications</a>
-        <span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span>
-      </h1>
-      <h2 class="vf-masthead__subheading">
-        <span class="vf-masthead__location">VF Hamburg</span>
-        <span class="vf-masthead__group">Structural Biology</span>
-      </h2>
-    </div>
-  </div>
-</div>
-
+                <div class="vf-masthead vf-masthead-theme--primary | vf-u-fullbleed" ><div class="vf-masthead__title"><h1 class="vf-masthead__heading"><a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy & Communications</a><span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span></h1><h2 class="vf-masthead__subheading"><span class="vf-masthead__subheading__text"><a href="JavaScript:Void(0);">VF Hamburg</a></span><span class="vf-masthead__subheading__text">Structural Biology</span></h2></div></div> 
               </div>
             
 
@@ -1022,7 +1009,17 @@ class="vf-logo | vf-logo--has-text">
                 <pre><code>{% render '@vf-masthead--primary', {
   &quot;component-type&quot;: &quot;block&quot;,
   &quot;masthead_href&quot;: &quot;JavaScript:Void(0);&quot;,
-  &quot;mastheadThemeVariant&quot;: &quot;vf-masthead-theme--primary&quot;
+  &quot;masthead_heading&quot;: &quot;Strategy &amp; Communications&quot;,
+  &quot;masthead_heading_additional&quot;: &quot;Chromosome structure and dynamics&quot;,
+  &quot;masthead_subheading&quot;: [
+    {
+      &quot;masthead_subheading_text&quot;: &quot;&lt;a href=\&quot;JavaScript:Void(0);\&quot;&gt;VF Hamburg&lt;/a&gt;&quot;
+    },
+    {
+      &quot;masthead_subheading_text&quot;: &quot;Structural Biology&quot;
+    }
+  ],
+  &quot;mastheadTheme&quot;: &quot;primary&quot;
 } %}
                 </code></pre>
               </details>
@@ -1031,23 +1028,10 @@ class="vf-logo | vf-logo--has-text">
             
             <details class="vf-details vf-box vf-box--outline">
               <summary class="vf-details--summary">HTML</summary>
-              <pre><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-  <span class="hljs-selector-class">.vf-masthead</span> {
-    <span class="hljs-attribute">--vf-masthead__bg-image</span>: <span class="hljs-built_in">url</span>();
-  }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead  vf-masthead-theme--primary"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy <span class="hljs-symbol">&amp;amp;</span> Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__location"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__group"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead vf-masthead-theme--primary | vf-u-fullbleed"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy &amp; Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
               </pre>
@@ -1074,28 +1058,7 @@ class="vf-logo | vf-logo--has-text">
                    style="background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
               >
                 
-                <style>
-    .vf-masthead {
-      --vf-masthead__bg-image: url();
-    }
-</style>
-<div
-  class="vf-masthead  vf-masthead-theme--secondary"
->
-  <div class="vf-masthead__inner">
-    <div class="vf-masthead__title">
-      <h1 class="vf-masthead__heading">
-        <a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy &amp; Communications</a>
-        <span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span>
-      </h1>
-      <h2 class="vf-masthead__subheading">
-        <span class="vf-masthead__location">VF Hamburg</span>
-        <span class="vf-masthead__group">Structural Biology</span>
-      </h2>
-    </div>
-  </div>
-</div>
-
+                <div class="vf-masthead vf-masthead-theme--secondary | vf-u-fullbleed" ><div class="vf-masthead__title"><h1 class="vf-masthead__heading"><a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy & Communications</a><span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span></h1><h2 class="vf-masthead__subheading"><span class="vf-masthead__subheading__text"><a href="JavaScript:Void(0);">VF Hamburg</a></span><span class="vf-masthead__subheading__text">Structural Biology</span></h2></div></div> 
               </div>
             
 
@@ -1106,7 +1069,17 @@ class="vf-logo | vf-logo--has-text">
                 <pre><code>{% render '@vf-masthead--secondary', {
   &quot;component-type&quot;: &quot;block&quot;,
   &quot;masthead_href&quot;: &quot;JavaScript:Void(0);&quot;,
-  &quot;mastheadThemeVariant&quot;: &quot;vf-masthead-theme--secondary&quot;
+  &quot;masthead_heading&quot;: &quot;Strategy &amp; Communications&quot;,
+  &quot;masthead_heading_additional&quot;: &quot;Chromosome structure and dynamics&quot;,
+  &quot;masthead_subheading&quot;: [
+    {
+      &quot;masthead_subheading_text&quot;: &quot;&lt;a href=\&quot;JavaScript:Void(0);\&quot;&gt;VF Hamburg&lt;/a&gt;&quot;
+    },
+    {
+      &quot;masthead_subheading_text&quot;: &quot;Structural Biology&quot;
+    }
+  ],
+  &quot;mastheadTheme&quot;: &quot;secondary&quot;
 } %}
                 </code></pre>
               </details>
@@ -1115,23 +1088,10 @@ class="vf-logo | vf-logo--has-text">
             
             <details class="vf-details vf-box vf-box--outline">
               <summary class="vf-details--summary">HTML</summary>
-              <pre><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-  <span class="hljs-selector-class">.vf-masthead</span> {
-    <span class="hljs-attribute">--vf-masthead__bg-image</span>: <span class="hljs-built_in">url</span>();
-  }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead  vf-masthead-theme--secondary"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy <span class="hljs-symbol">&amp;amp;</span> Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__location"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__group"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead vf-masthead-theme--secondary | vf-u-fullbleed"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy &amp; Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
               </pre>
@@ -1158,28 +1118,7 @@ class="vf-logo | vf-logo--has-text">
                    style="background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
               >
                 
-                <style>
-    .vf-masthead {
-      --vf-masthead__bg-image: url();
-    }
-</style>
-<div
-  class="vf-masthead  vf-masthead-theme--tertiary"
->
-  <div class="vf-masthead__inner">
-    <div class="vf-masthead__title">
-      <h1 class="vf-masthead__heading">
-        <a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy &amp; Communications</a>
-        <span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span>
-      </h1>
-      <h2 class="vf-masthead__subheading">
-        <span class="vf-masthead__location">VF Hamburg</span>
-        <span class="vf-masthead__group">Structural Biology</span>
-      </h2>
-    </div>
-  </div>
-</div>
-
+                <div class="vf-masthead vf-masthead-theme--tertiary | vf-u-fullbleed" ><div class="vf-masthead__title"><h1 class="vf-masthead__heading"><a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy & Communications</a><span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span></h1><h2 class="vf-masthead__subheading"><span class="vf-masthead__subheading__text"><a href="JavaScript:Void(0);">VF Hamburg</a></span><span class="vf-masthead__subheading__text">Structural Biology</span></h2></div></div> 
               </div>
             
 
@@ -1190,7 +1129,17 @@ class="vf-logo | vf-logo--has-text">
                 <pre><code>{% render '@vf-masthead--tertiary', {
   &quot;component-type&quot;: &quot;block&quot;,
   &quot;masthead_href&quot;: &quot;JavaScript:Void(0);&quot;,
-  &quot;mastheadThemeVariant&quot;: &quot;vf-masthead-theme--tertiary&quot;
+  &quot;masthead_heading&quot;: &quot;Strategy &amp; Communications&quot;,
+  &quot;masthead_heading_additional&quot;: &quot;Chromosome structure and dynamics&quot;,
+  &quot;masthead_subheading&quot;: [
+    {
+      &quot;masthead_subheading_text&quot;: &quot;&lt;a href=\&quot;JavaScript:Void(0);\&quot;&gt;VF Hamburg&lt;/a&gt;&quot;
+    },
+    {
+      &quot;masthead_subheading_text&quot;: &quot;Structural Biology&quot;
+    }
+  ],
+  &quot;mastheadTheme&quot;: &quot;tertiary&quot;
 } %}
                 </code></pre>
               </details>
@@ -1199,23 +1148,10 @@ class="vf-logo | vf-logo--has-text">
             
             <details class="vf-details vf-box vf-box--outline">
               <summary class="vf-details--summary">HTML</summary>
-              <pre><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-  <span class="hljs-selector-class">.vf-masthead</span> {
-    <span class="hljs-attribute">--vf-masthead__bg-image</span>: <span class="hljs-built_in">url</span>();
-  }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead  vf-masthead-theme--tertiary"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy <span class="hljs-symbol">&amp;amp;</span> Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__location"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__group"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead vf-masthead-theme--tertiary | vf-u-fullbleed"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy &amp; Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
               </pre>
@@ -1230,7 +1166,7 @@ class="vf-logo | vf-logo--has-text">
             
 
             
- <div class="vf-section-header"><a class="vf-section-header__heading vf-section-header__heading--is-link" href="#vf-masthead--with-background-image" id="vf-masthead--with-background-image"} > Variant example: With Background Image <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a></div> 
+ <div class="vf-section-header"><a class="vf-section-header__heading vf-section-header__heading--is-link" href="#vf-masthead--title-block" id="vf-masthead--title-block"} > Variant example: Title Block <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a></div> 
           
 
           <article class="vf-stack vf-stack--lg vf-u-margin__bottom--1200"
@@ -1242,31 +1178,7 @@ class="vf-logo | vf-logo--has-text">
                    style="background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
               >
                 
-                <style>
-    .vf-masthead {
-      --vf-masthead__bg-image: url(../../assets/vf-masthead/assets/group-bg_2d4155.png);
-    }
-</style>
-<div
-  class="vf-masthead  vf-masthead--has-image
-"
-  style="background-image: var(--vf-masthead__bg-image)"
-  data-vf-js-masthead
->
-  <div class="vf-masthead__inner">
-    <div class="vf-masthead__title">
-      <h1 class="vf-masthead__heading">
-        <a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy &amp; Communications</a>
-        <span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span>
-      </h1>
-      <h2 class="vf-masthead__subheading">
-        <span class="vf-masthead__location">VF Hamburg</span>
-        <span class="vf-masthead__group">Structural Biology</span>
-      </h2>
-    </div>
-  </div>
-</div>
-
+                <div class="vf-masthead vf-masthead--with-title-block | vf-u-fullbleed" ><div class="vf-masthead__title"><h1 class="vf-masthead__heading"><a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy & Communications</a><span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span></h1><h2 class="vf-masthead__subheading"><span class="vf-masthead__subheading__text"><a href="JavaScript:Void(0);">VF Hamburg</a></span><span class="vf-masthead__subheading__text">Structural Biology</span></h2></div></div> 
               </div>
             
 
@@ -1274,11 +1186,20 @@ class="vf-logo | vf-logo--has-text">
               
               <details class="vf-details vf-box vf-box--outline">
                 <summary class="vf-details--summary">Nunjucks syntax</summary>
-                <pre><code>{% render '@vf-masthead--with-background-image', {
+                <pre><code>{% render '@vf-masthead--title-block', {
   &quot;component-type&quot;: &quot;block&quot;,
   &quot;masthead_href&quot;: &quot;JavaScript:Void(0);&quot;,
-  &quot;mastheadImageClass&quot;: &quot;vf-masthead--has-image&quot;,
-  &quot;mastheadImage&quot;: &quot;../../assets/vf-masthead/assets/group-bg_2d4155.png&quot;
+  &quot;masthead_heading&quot;: &quot;Strategy &amp; Communications&quot;,
+  &quot;masthead_heading_additional&quot;: &quot;Chromosome structure and dynamics&quot;,
+  &quot;masthead_subheading&quot;: [
+    {
+      &quot;masthead_subheading_text&quot;: &quot;&lt;a href=\&quot;JavaScript:Void(0);\&quot;&gt;VF Hamburg&lt;/a&gt;&quot;
+    },
+    {
+      &quot;masthead_subheading_text&quot;: &quot;Structural Biology&quot;
+    }
+  ],
+  &quot;hasTitleBlock&quot;: true
 } %}
                 </code></pre>
               </details>
@@ -1287,24 +1208,10 @@ class="vf-logo | vf-logo--has-text">
             
             <details class="vf-details vf-box vf-box--outline">
               <summary class="vf-details--summary">HTML</summary>
-              <pre><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-  <span class="hljs-selector-class">.vf-masthead</span> {
-    <span class="hljs-attribute">--vf-masthead__bg-image</span>: <span class="hljs-built_in">url</span>(../../assets/vf-masthead/assets/group-bg_2d4155.png);
-  }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead  vf-masthead--has-image
-"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-image: var(--vf-masthead__bg-image)"</span> <span class="hljs-attr">data-vf-js-masthead</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy <span class="hljs-symbol">&amp;amp;</span> Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__location"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__group"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead vf-masthead--with-title-block | vf-u-fullbleed"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy &amp; Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
               </pre>
@@ -1319,7 +1226,7 @@ class="vf-logo | vf-logo--has-text">
             
 
             
- <div class="vf-section-header"><a class="vf-section-header__heading vf-section-header__heading--is-link" href="#vf-masthead--with-title-block" id="vf-masthead--with-title-block"} > Variant example: With Title Block <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a></div> 
+ <div class="vf-section-header"><a class="vf-section-header__heading vf-section-header__heading--is-link" href="#vf-masthead--title-block-(primary)" id="vf-masthead--title-block-(primary)"} > Variant example: Title Block Primary <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a></div> 
           
 
           <article class="vf-stack vf-stack--lg vf-u-margin__bottom--1200"
@@ -1331,29 +1238,7 @@ class="vf-logo | vf-logo--has-text">
                    style="background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
               >
                 
-                <style>
-    .vf-masthead {
-      --vf-masthead__bg-image: url();
-    }
-</style>
-<div
-  class="vf-masthead  vf-masthead--with-title-block
-"
->
-  <div class="vf-masthead__inner">
-    <div class="vf-masthead__title">
-      <h1 class="vf-masthead__heading">
-        <a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy &amp; Communications</a>
-        <span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span>
-      </h1>
-      <h2 class="vf-masthead__subheading">
-        <span class="vf-masthead__location">VF Hamburg</span>
-        <span class="vf-masthead__group">Structural Biology</span>
-      </h2>
-    </div>
-  </div>
-</div>
-
+                <div class="vf-masthead vf-masthead-theme--primary vf-masthead--with-title-block | vf-u-fullbleed" ><div class="vf-masthead__title"><h1 class="vf-masthead__heading"><a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy & Communications</a><span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span></h1><h2 class="vf-masthead__subheading"><span class="vf-masthead__subheading__text"><a href="JavaScript:Void(0);">VF Hamburg</a></span><span class="vf-masthead__subheading__text">Structural Biology</span></h2></div></div> 
               </div>
             
 
@@ -1361,10 +1246,21 @@ class="vf-logo | vf-logo--has-text">
               
               <details class="vf-details vf-box vf-box--outline">
                 <summary class="vf-details--summary">Nunjucks syntax</summary>
-                <pre><code>{% render '@vf-masthead--with-title-block', {
+                <pre><code>{% render '@vf-masthead--title-block-(primary)', {
   &quot;component-type&quot;: &quot;block&quot;,
   &quot;masthead_href&quot;: &quot;JavaScript:Void(0);&quot;,
-  &quot;hasTitleBlock&quot;: &quot;vf-masthead--with-title-block&quot;
+  &quot;masthead_heading&quot;: &quot;Strategy &amp; Communications&quot;,
+  &quot;masthead_heading_additional&quot;: &quot;Chromosome structure and dynamics&quot;,
+  &quot;masthead_subheading&quot;: [
+    {
+      &quot;masthead_subheading_text&quot;: &quot;&lt;a href=\&quot;JavaScript:Void(0);\&quot;&gt;VF Hamburg&lt;/a&gt;&quot;
+    },
+    {
+      &quot;masthead_subheading_text&quot;: &quot;Structural Biology&quot;
+    }
+  ],
+  &quot;hasTitleBlock&quot;: true,
+  &quot;mastheadTheme&quot;: &quot;primary&quot;
 } %}
                 </code></pre>
               </details>
@@ -1373,24 +1269,10 @@ class="vf-logo | vf-logo--has-text">
             
             <details class="vf-details vf-box vf-box--outline">
               <summary class="vf-details--summary">HTML</summary>
-              <pre><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-  <span class="hljs-selector-class">.vf-masthead</span> {
-    <span class="hljs-attribute">--vf-masthead__bg-image</span>: <span class="hljs-built_in">url</span>();
-  }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead  vf-masthead--with-title-block
-"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy <span class="hljs-symbol">&amp;amp;</span> Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__location"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__group"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead vf-masthead-theme--primary vf-masthead--with-title-block | vf-u-fullbleed"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy &amp; Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
               </pre>
@@ -1405,7 +1287,7 @@ class="vf-logo | vf-logo--has-text">
             
 
             
- <div class="vf-section-header"><a class="vf-section-header__heading vf-section-header__heading--is-link" href="#vf-masthead--kitchen-sink" id="vf-masthead--kitchen-sink"} > Variant example: Kitchen Sink <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a></div> 
+ <div class="vf-section-header"><a class="vf-section-header__heading vf-section-header__heading--is-link" href="#vf-masthead--image" id="vf-masthead--image"} > Variant example: Image <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a></div> 
           
 
           <article class="vf-stack vf-stack--lg vf-u-margin__bottom--1200"
@@ -1417,32 +1299,7 @@ class="vf-logo | vf-logo--has-text">
                    style="background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
               >
                 
-                <style>
-    .vf-masthead {
-      --vf-masthead__bg-image: url(../../assets/vf-masthead/assets/group-bg_2d4155.png);
-    }
-</style>
-<div
-  class="vf-masthead  vf-masthead--with-title-block
-  vf-masthead--has-image
-"
-  style="background-image: var(--vf-masthead__bg-image)"
-  data-vf-js-masthead
->
-  <div class="vf-masthead__inner">
-    <div class="vf-masthead__title">
-      <h1 class="vf-masthead__heading">
-        <a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy &amp; Communications</a>
-        <span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span>
-      </h1>
-      <h2 class="vf-masthead__subheading">
-        <span class="vf-masthead__location">VF Hamburg</span>
-        <span class="vf-masthead__group">Structural Biology</span>
-      </h2>
-    </div>
-  </div>
-</div>
-
+                <div class="vf-masthead vf-masthead--has-image | vf-u-fullbleed" style=" --vf-masthead__bg-image: url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg); background-image: var(--vf-masthead__bg-image)" data-vf-js-masthead><div class="vf-masthead__title"><h1 class="vf-masthead__heading"><a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy & Communications</a><span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span></h1><h2 class="vf-masthead__subheading"><span class="vf-masthead__subheading__text"><a href="JavaScript:Void(0);">VF Hamburg</a></span><span class="vf-masthead__subheading__text">Structural Biology</span></h2></div></div> 
               </div>
             
 
@@ -1450,12 +1307,20 @@ class="vf-logo | vf-logo--has-text">
               
               <details class="vf-details vf-box vf-box--outline">
                 <summary class="vf-details--summary">Nunjucks syntax</summary>
-                <pre><code>{% render '@vf-masthead--kitchen-sink', {
+                <pre><code>{% render '@vf-masthead--image', {
   &quot;component-type&quot;: &quot;block&quot;,
   &quot;masthead_href&quot;: &quot;JavaScript:Void(0);&quot;,
-  &quot;mastheadImageClass&quot;: &quot;vf-masthead--has-image&quot;,
-  &quot;mastheadImage&quot;: &quot;../../assets/vf-masthead/assets/group-bg_2d4155.png&quot;,
-  &quot;hasTitleBlock&quot;: &quot;vf-masthead--with-title-block&quot;
+  &quot;masthead_heading&quot;: &quot;Strategy &amp; Communications&quot;,
+  &quot;masthead_heading_additional&quot;: &quot;Chromosome structure and dynamics&quot;,
+  &quot;masthead_subheading&quot;: [
+    {
+      &quot;masthead_subheading_text&quot;: &quot;&lt;a href=\&quot;JavaScript:Void(0);\&quot;&gt;VF Hamburg&lt;/a&gt;&quot;
+    },
+    {
+      &quot;masthead_subheading_text&quot;: &quot;Structural Biology&quot;
+    }
+  ],
+  &quot;mastheadImage&quot;: &quot;https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg&quot;
 } %}
                 </code></pre>
               </details>
@@ -1464,25 +1329,71 @@ class="vf-logo | vf-logo--has-text">
             
             <details class="vf-details vf-box vf-box--outline">
               <summary class="vf-details--summary">HTML</summary>
-              <pre><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-  <span class="hljs-selector-class">.vf-masthead</span> {
-    <span class="hljs-attribute">--vf-masthead__bg-image</span>: <span class="hljs-built_in">url</span>(../../assets/vf-masthead/assets/group-bg_2d4155.png);
-  }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead  vf-masthead--with-title-block
-  vf-masthead--has-image
-"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-image: var(--vf-masthead__bg-image)"</span> <span class="hljs-attr">data-vf-js-masthead</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__inner"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy <span class="hljs-symbol">&amp;amp;</span> Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__location"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__group"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead vf-masthead--has-image | vf-u-fullbleed"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">" --vf-masthead__bg-image: url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg); background-image: var(--vf-masthead__bg-image)"</span> <span class="hljs-attr">data-vf-js-masthead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy &amp; Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+              </pre>
+            </details>
+          </article>
+        
+
+      
+
+        
+          
+            
+
+            
+ <div class="vf-section-header"><a class="vf-section-header__heading vf-section-header__heading--is-link" href="#vf-masthead--title-block-and-image" id="vf-masthead--title-block-and-image"} > Variant example: Title Block And Image <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a></div> 
+          
+
+          <article class="vf-stack vf-stack--lg vf-u-margin__bottom--1200"
+                   style="clear: both; /* insurance against strange components */"
+          >
+
+            
+              <div class="vf-box"
+                   style="background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
+              >
+                
+                <div class="vf-masthead vf-masthead--with-title-block vf-masthead--has-image | vf-u-fullbleed" style=" --vf-masthead__bg-image: url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg); background-image: var(--vf-masthead__bg-image)" data-vf-js-masthead><div class="vf-masthead__title"><h1 class="vf-masthead__heading"><a href="JavaScript:Void(0);" class="vf-masthead__heading__link">Strategy & Communications</a><span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span></h1><h2 class="vf-masthead__subheading"><span class="vf-masthead__subheading__text"><a href="JavaScript:Void(0);">VF Hamburg</a></span><span class="vf-masthead__subheading__text">Structural Biology</span></h2></div></div> 
+              </div>
+            
+
+            
+              
+              <details class="vf-details vf-box vf-box--outline">
+                <summary class="vf-details--summary">Nunjucks syntax</summary>
+                <pre><code>{% render '@vf-masthead--title-block-and-image', {
+  &quot;component-type&quot;: &quot;block&quot;,
+  &quot;masthead_href&quot;: &quot;JavaScript:Void(0);&quot;,
+  &quot;masthead_heading&quot;: &quot;Strategy &amp; Communications&quot;,
+  &quot;masthead_heading_additional&quot;: &quot;Chromosome structure and dynamics&quot;,
+  &quot;masthead_subheading&quot;: [
+    {
+      &quot;masthead_subheading_text&quot;: &quot;&lt;a href=\&quot;JavaScript:Void(0);\&quot;&gt;VF Hamburg&lt;/a&gt;&quot;
+    },
+    {
+      &quot;masthead_subheading_text&quot;: &quot;Structural Biology&quot;
+    }
+  ],
+  &quot;mastheadImage&quot;: &quot;https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg&quot;,
+  &quot;hasTitleBlock&quot;: true
+} %}
+                </code></pre>
+              </details>
+            
+
+            
+            <details class="vf-details vf-box vf-box--outline">
+              <summary class="vf-details--summary">HTML</summary>
+              <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead vf-masthead--with-title-block vf-masthead--has-image | vf-u-fullbleed"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">" --vf-masthead__bg-image: url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg); background-image: var(--vf-masthead__bg-image)"</span> <span class="hljs-attr">data-vf-js-masthead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__title"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading__link"</span>&gt;</span>Strategy &amp; Communications<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__heading--additional"</span>&gt;</span>Chromosome structure and dynamics<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"JavaScript:Void(0);"</span>&gt;</span>VF Hamburg<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vf-masthead__subheading__text"</span>&gt;</span>Structural Biology<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
               </pre>
@@ -1495,7 +1406,6 @@ class="vf-logo | vf-logo--has-text">
 <li><a href="/vf-core/assets/vf-masthead/vf-masthead.njk">Nunjucks template</a></li>
 <li><a href="/vf-core/assets/vf-masthead/vf-masthead.config.yml">Config</a></li>
 <li><a href="/vf-core/assets/vf-masthead/CHANGELOG.md">CHANGELOG.md</a></li>
-<li><a href="/vf-core/assets/vf-masthead/vf-masthead--supports.scss">vf-masthead--supports.scss</a></li>
 <li><a href="/vf-core/assets/vf-masthead/vf-masthead.css">vf-masthead.css</a></li>
 <li><a href="/vf-core/assets/vf-masthead/vf-masthead.js">vf-masthead.js</a></li>
 <li><a href="/vf-core/assets/vf-masthead/vf-masthead.scss">vf-masthead.scss</a></li>
@@ -1585,7 +1495,7 @@ File system location: <code>components/vf-masthead</code>
 
 
 
-<!-- This page was generated on 2020-10-29T16:53:36.887+00:00 -->
+<!-- This page was generated on 2020-10-29T17:23:42.792+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1/scripts/scripts.js"></script>
   </body>
 </html>
