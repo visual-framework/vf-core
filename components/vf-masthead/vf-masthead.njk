@@ -13,17 +13,20 @@
     background-image: var(--vf-masthead__bg-image)" data-vf-js-masthead
   {%- endif -%}
 >
-  <div class="vf-masthead__inner">
     <div class="vf-masthead__title">
       <h1 class="vf-masthead__heading">
-        <a href="{{ masthead_href }}" class="vf-masthead__heading__link">Strategy &amp; Communications</a>
-        <span class="vf-masthead__heading--additional">Chromosome structure and dynamics</span>
+        <a href="{{ masthead_href }}" class="vf-masthead__heading__link">{{ masthead_heading }}</a>
+        {%- if masthead_heading_additional -%}
+        <span class="vf-masthead__heading--additional">{{ masthead_heading_additional }}</span>
+        {%- endif -%}
       </h1>
+      {%- if masthead_subheading -%}
       <h2 class="vf-masthead__subheading">
-        <span class="vf-masthead__location">VF Hamburg</span>
-        <span class="vf-masthead__group">Structural Biology</span>
+      {% for item in masthead_subheading %}
+        <span class="vf-masthead__subheading__text">{{ item.masthead_subheading_text }}</span>
+      {% endfor %}
       </h2>
+      {%- endif -%}
     </div>
-  </div>
 </div>
 {% endspaceless %}

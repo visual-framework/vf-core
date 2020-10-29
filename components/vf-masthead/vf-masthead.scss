@@ -10,50 +10,24 @@
  */
 
 .vf-masthead {
-  background-color: set-ui-color(vf-ui-color--white);
-  background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--white)));
+  background-color: set-color(vf-color--grey--lightest);
+  background-color: var(--vf-masthead__color--background-default, set-color(vf-color--grey--lightest));
   color: set-ui-color(vf-ui-color--black);
-  color: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--black)));
-  padding-bottom: 1.5em;
-  padding-top: 1.5em;
-  position: relative;
+  color: var(--vf-masthead__color--foreground-default, set-ui-color(vf-ui-color--black));
+  display: flex;
+  padding: map-get($vf-spacing-map, vf-spacing--800) 0;
+  // removed because we're using `vf-u-fullbleed` now.
+  // position: relative;
    &::before {
-    z-index: 1 !important;
+    // this overrides the z-index that is used in `vf-u-fullbleed` as it didn't work
+    z-index: set-layer(vf-z-index--masthead) !important;
   }
 }
 
-// Variants
-
-.vf-masthead-theme--primary {
-  --vf-masthead__color--background-default: #{set-color(vf-color--blue)};
-  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
-}
-
-.vf-masthead-theme--secondary {
-  --vf-masthead__color--background-default: #{set-color(vf-color--green)};
-  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--black)};
-}
-
-.vf-masthead-theme--tertiary {
-  --vf-masthead__color--background-default: #{set-color(vf-color--grey--dark)};
-  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
-}
-
-.vf-masthead--has-image {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
-.vf-masthead__inner {
-  display: flex;
-}
-
 .vf-masthead__title {
-  align-self: unset;
   display: inline-flex;
   flex-direction: column-reverse;
-  z-index: 1; // set so that all the text is 'on top'
+  z-index: set-layer(vf-z-index--masthead); // set so that all the text is 'on top'
 }
 
 .vf-masthead__heading {
@@ -83,18 +57,42 @@
   text-transform: uppercase;
 }
 
-.vf-masthead__subheading a {
-  color: inherit;
-  text-decoration: none;
-  z-index: set-layer(vf-z-index--masthead);
+.vf-masthead__subheading__text {
+  margin-right: map-get($vf-spacing-map, vf-spacing--200);
+  a {
+    color: inherit;
+    text-decoration: none;
+    z-index: set-layer(vf-z-index--masthead);
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
 }
 
+// Variants
 
+// Theming Variants
+.vf-masthead-theme--primary {
+  --vf-masthead__color--background-default: #{set-color(vf-color--blue)};
+  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
+}
 
+.vf-masthead-theme--secondary {
+  --vf-masthead__color--background-default: #{set-color(vf-color--green)};
+  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--black)};
+}
+
+.vf-masthead-theme--tertiary {
+  --vf-masthead__color--background-default: #{set-color(vf-color--grey--dark)};
+  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
+}
+
+// Style Variants
 .vf-masthead--with-title-block {
   display: flex;
-  padding-bottom: 0;
-  padding-top: 64px;
+  padding: map-get($vf-spacing-map, vf-spacing--1200) 0 0;
 
   .vf-masthead__title {
     align-self: flex-end;
@@ -104,14 +102,11 @@
     padding: 24px;
     padding-left: 0;
     position: relative;
-    z-index: 2;
+    z-index: set-layer(vf-z-index--masthead);
 
     &::before {
       background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
       content: '';
-      display: inline-flex;
-      flex-direction: column-reverse;
-      grid-auto-columns: max-content;
       height: 100%;
       margin-left: calc(50% - calc(50vw - var(--context-margin--inline, 0px)));
       position: absolute;
@@ -124,8 +119,8 @@
   }
 }
 
-  [class*=with-title-block][class*=theme] {
-    .vf-masthead__title {
-      --vf-masthead__color--background-default: black;
-    }
+[class*=with-title-block][class*=theme] {
+  .vf-masthead__title {
+    --vf-masthead__color--background-default: black;
   }
+}
