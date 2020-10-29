@@ -223,7 +223,7 @@ function vfGaLinkTrackingInit() {
     var ancestors = ["a", "details", "label"];
 
     for (var i = 0; i < ancestors.length; i++) {
-      var from = findParent(ancestor[i], evt.target || evt.srcElement);
+      var from = findParent(ancestors[i], evt.target || evt.srcElement);
 
       if (from) {
         vfGaTrackInteraction(from);
