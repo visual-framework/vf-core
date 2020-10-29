@@ -1,14 +1,19 @@
-{% if global_layout %} <div class="vf-global-layout--{{ global_layout}}{% if global_theme %} vf-global-theme--{{ global_theme}}{% endif %}">{% endif %}
-<nav class="vf-navigation {%- if classModifier %} vf-navigation--{{ classModifier }}{% endif %}">
+<nav class="vf-navigation {%- if classModifier %} vf-navigation--{{ classModifier }}{% endif %} | vf-cluster">
   {% if heading %}
   <h3 class="vf-navigation__heading">{{ heading }}</h3>
   {% endif %}
-  <ul class="vf-navigation__list | vf-list--inline">
+  <ul class="vf-navigation__list | vf-list--inline | vf-cluster__inner">
     {% for item in navigation %}
     <li class="vf-navigation__item">
-      <a href="{{ item.navigation_href }}" class="vf-navigation__link">{{ item.text }}</a>
+      <a
+      href="{{ item.navigation_href }}"
+      class="vf-navigation__link"
+      {% if item.currentPage %} aria-current="page"{%- endif -%}>
+
+      {{- item.text -}}
+
+      </a>
     </li>
     {% endfor %}
   </ul>
 </nav>
-{% if global_layout %}</div>{% endif %}
