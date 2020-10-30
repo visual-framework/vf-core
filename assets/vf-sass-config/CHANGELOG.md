@@ -1,3 +1,8 @@
+### 2.2.0
+
+* updates `--page-grid-gap` for larger viewports to `2rem` instead of `1.5rem`.
+* updates the `embl-grid` small column size from `238px` to `16rem`.
+
 ### 2.1.0
 
 * replaces spacing design tokens
