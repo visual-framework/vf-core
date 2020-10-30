@@ -1,3 +1,7 @@
+### 1.6.1
+
+* removes CSS for 'inlayed' design as no longer in use
+
 ### 1.6.0
 
 * updates spacing design tokens

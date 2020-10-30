@@ -1,3 +1,7 @@
+### 1.7.1
+
+* removes CSS for 'inlayed' design as no longer in use
+
 ### 1.7.0
 
 * makes the padding on `--intense` standardised to our spacing units
