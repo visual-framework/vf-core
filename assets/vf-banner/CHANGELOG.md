@@ -1,3 +1,8 @@
+### 1.6.1
+
+* removes CSS for 'inlayed' design as no longer in use
+  * https://github.com/visual-framework/vf-core/pull/1204
+
 ### 1.6.0
 
 * updates spacing design tokens
