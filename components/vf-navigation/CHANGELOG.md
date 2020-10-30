@@ -1,3 +1,10 @@
+### 2.1.0
+
+* fixes a bug with the `--additional` variant.
+* introduces `njk`/`yml` variable look up to determine classnames to use:
+  * adds `vf-cluster` only to `--main` variant.
+  * replaces `--additional` CSS for full bleed background with `vf-u-fullbleed` class.
+
 ### 2.0.0
 
 * increases font size for `--main`.
