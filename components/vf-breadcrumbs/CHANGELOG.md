@@ -1,3 +1,9 @@
+### 2.0.0
+
+* adds `aria-current="location"` to be used for the last item in `vf-breadcrumbs`
+* replaces CSS to style `aria-current="location"` and not `:last-of-type`.
+* adds text-shadow to `aria-current="location"` to show text a little bolder.
+
 ### 1.0.5
 
 * removes the bottom margin
