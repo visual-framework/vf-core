@@ -1,4 +1,8 @@
-<nav class="vf-navigation {%- if classModifier %} vf-navigation--{{ classModifier }}{% endif %} | vf-cluster">
+<nav class="vf-navigation
+  {%- if classModifier %} vf-navigation--{{ classModifier }}{% endif -%}
+  {%- if classModifier == 'main' %} | vf-cluster{%- endif -%}
+  {%- if classModifier == 'additional' %} | vf-u-fullbleed{%- endif -%}
+  ">
   {% if heading %}
   <h3 class="vf-navigation__heading">{{ heading }}</h3>
   {% endif %}
