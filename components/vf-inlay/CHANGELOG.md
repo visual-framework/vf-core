@@ -1,6 +1,7 @@
 ### 2.0.0
 
 * Deprecated for `vf-grid` or `embl-grid` layouts and classnames.
+  * https://github.com/visual-framework/vf-core/pull/1204
 
 ### 1.0.0
 
