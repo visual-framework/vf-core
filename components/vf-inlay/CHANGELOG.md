@@ -1,3 +1,7 @@
+### 2.0.0
+
+* Deprecated for `vf-grid` or `embl-grid` layouts and classnames.
+
 ### 1.0.0
 
 * Simplifies grid again
