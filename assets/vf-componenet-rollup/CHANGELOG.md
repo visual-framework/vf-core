@@ -1,4 +1,4 @@
-### 1.2.1
+### 1.2.3
 
 * adds `buildTimeStamp` from `componentInfo` to Sass template
   * https://github.com/visual-framework/vf-core/issues/974
