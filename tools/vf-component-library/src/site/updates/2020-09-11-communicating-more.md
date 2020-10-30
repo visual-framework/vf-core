@@ -36,7 +36,7 @@ The file then needs some manual massaging which we plan to further automate in t
 
 ```
 
-### [vf-summary](https://visual-framework.github.io/vf-core/components/vf-summary/) 1.3.1
+### [vf-summary](https://stable.visual-framework.dev/components/vf-summary/) 1.3.1
 
     commit [999f4cf9671afab790735150dd21c2040c3968b3](https://github.com/visual-framework/vf-core/commit/999f4cf9671afab790735150dd21c2040c3968b3)
 

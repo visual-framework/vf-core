@@ -5,8 +5,8 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 ## Notes
 
 - We publish to npm with [Lerna](https://github.com/lerna/lerna#about)
-- [Versions in `vf-core`](https://visual-framework.github.io/vf-core/developing/guidelines/versioning/)
-- [Updating component versions](https://visual-framework.github.io/vf-core/developing/components/updating-a-component/)
+- [Versions in `vf-core`](https://stable.visual-framework.dev/developing/guidelines/versioning/)
+- [Updating component versions](https://stable.visual-framework.dev/developing/components/updating-a-component/)
 
 ## Release workflow
 
@@ -24,13 +24,13 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 1. publish to npm
     - `yarn run lerna:publish`
 1. commit and push changes to the `develop` branch
-    - commit message in a format of: `Component release YYYYMMDD-01`
+    - commit message in a format of: `Component release 20201029-01`
 1. add a tag
     - see last tag `git describe --abbrev=0 --tags`
-    - add a semantic versioned tag `git tag -a v2.3.X -m 'Release of precompiled CSS, JS, assets'`
+    - add a semantic versioned tag `git tag -a v2.3.1-rc.2 -m 'Release of precompiled CSS, JS, assets'`
     - Why like this?
        - We do not add tags per individual component version, Lerna needs a named tag to see what has changed. This way we get one tag per release "bundle" avoiding tag spamming in the release history.
-       - Trigger a deploy to the CDN (i.e. `v2.3.0`) https://assets.emblstatic.net/vf/v2.3.0/css/styles.css
+       - Trigger a deploy to the CDN (i.e. `v2.3.1-rc.1`) https://assets.emblstatic.net/vf/v2.3.0/css/styles.css
 1. push the tag
     - `git push origin --tags`
 
@@ -42,7 +42,7 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 1. commit and push changes to the `develop` branch
 1. add release notes to the tag and link to the new blog post
     - https://github.com/visual-framework/vf-core/releases
-    - https://visual-framework.github.io/vf-core/updates/
+    - https://stable.visual-framework.dev/updates/
 
 ## Appendix of useful Lerna commands
 
