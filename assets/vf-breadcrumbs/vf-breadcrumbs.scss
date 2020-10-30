@@ -37,13 +37,16 @@
   position: relative;
 
 
-  &:not(:last-of-type) {
+  &:not([aria-current]) {
     &::after {
       color: $vf-breadcrumbs__item-chevron--color;
       content: '>';
       display: inline-block;
       margin-left: 3px;
     }
+  }
+  &[aria-current] {
+    text-shadow: 1px 0 0;
   }
 }
 

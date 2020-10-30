@@ -10,7 +10,7 @@
  * Version: 1.2.2
  * Location: components/vf-componenet-rollup
  * VF Core version in use: 2.2.9
- * Build time: Fri, 30 Oct 2020 15:23:20 GMT
+ * Build time: Fri, 30 Oct 2020 15:59:25 GMT
  */
 /* stylelint-disable */
 :root {
@@ -2273,11 +2273,14 @@ html:not(.vf-disable-deprecated) .vf-text-button--1 {
   margin-right: 3px;
   position: relative;
 }
-.vf-breadcrumbs__item:not(:last-of-type)::after {
+.vf-breadcrumbs__item:not([aria-current])::after {
   color: #707372;
   content: ">";
   display: inline-block;
   margin-left: 3px;
+}
+.vf-breadcrumbs__item[aria-current] {
+  text-shadow: 1px 0 0;
 }
 
 .vf-breadcrumbs__heading {
