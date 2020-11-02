@@ -1,3 +1,10 @@
+### 1.1.0
+
+* removes some unneeded CSS.
+* makes the maximum height 3rem (48px).
+* makes the logo responsive.
+* deprecates `--extreme`.
+
 ### 1.0.5
 
 * makes a reduction in size for the logos `--extreme` version from 96px to 48px

@@ -10,7 +10,7 @@
  * Version: 1.2.2
  * Location: components/vf-componenet-rollup
  * VF Core version in use: 2.2.9
- * Build time: Fri, 30 Oct 2020 16:39:45 GMT
+ * Build time: Mon, 02 Nov 2020 09:27:39 GMT
  */
 /* stylelint-disable */
 :root {
@@ -1194,11 +1194,10 @@ a.vf-badge--outline[class*=tertiary]:hover {
 .vf-logo__image {
   height: 32px;
 }
-
-.vf-logo--extreme .vf-logo__image {
-  height: 11vw;
-  max-height: 96px;
-  min-height: 32px;
+@media (min-width: 1025px) {
+  .vf-logo__image {
+    height: 48px;
+  }
 }
 
 .vf-logo__text {
@@ -1259,22 +1258,15 @@ a.vf-badge--outline[class*=tertiary]:hover {
 .embl-logo {
   background-image: url("../assets/embl-logo/assets/logo-medium.svg");
   background-repeat: no-repeat;
-  background-size: auto 100%;
-  color: #000000;
   display: flex;
   flex: 1;
-  height: 32px;
+  height: 2rem;
   text-decoration: none;
 }
-
-.embl-logo--extreme {
-  height: 32px;
-  transition: height 400ms ease-in;
-}
 @media (min-width: 1025px) {
-  .embl-logo--extreme {
+  .embl-logo {
     background-image: url("../assets/embl-logo/assets/logo.svg");
-    height: 48px;
+    height: 3rem;
   }
 }
 
