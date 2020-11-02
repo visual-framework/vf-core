@@ -1,0 +1,86 @@
+---
+title: Roadamp
+subtitle: Major projects and features planned for the next period of time.
+date: 2020-11-02 12:24:50
+is_index: false
+section: about
+order: 3
+tags:
+  - about
+  - sections
+layout: layouts/base.njk
+---
+
+{% macro milestone(name='milestoneName', id='') %}
+<h3><a href="https://github.com/visual-framework/vf-core/milestone/{{id}}">{{name}}</a></h3>
+{% endmacro %}
+
+{% render '@vf-intro', {
+  "vf_intro_heading": title,
+  "vf_intro_lede": subtitle,
+  "vf_intro_subheading": "",
+  "vf_intro_text": [
+    'This is a snapshot of work planned in the Visualf Framework <a href="https://github.com/visual-framework/vf-core/milestones">project milestones</a>.',
+    'If you have a mjor idea not represented here, <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ">discuss it on Slack</a> or <a href="https://github.com/visual-framework/vf-core/issues">raise an issue</a>.'
+  ],
+  "vf_intro_badge": false
+} %}
+
+<section class="embl-grid embl-grid--has-centered-content">
+{# {% render '@vf-section-header', {
+  "section_title": "Key considerations",
+  "id": "considerations",
+  "vf_section__content": ""
+} %} #}
+<div></div>
+<div class="vf-content">
+
+{% markdown %}
+
+## By the end of 2020
+
+{{ milestone('Search pattern/boilerplate','17') }}
+
+There are many ways to implement a "search" page and section. What is the most common and standardisable?
+
+## By end of March 2021
+
+{{ milestone('Create a training programme for developers','21') }}
+
+How to get started with the VF common scenarios specific use cases.
+
+{{ milestone('Create a desktop component library','20') }}
+
+That is: port the Sketch component library to Figma and update it to match changes.
+
+{{ milestone('Legacy browser support','16') }}
+
+Supporting older browsers (those without CSS grid and custom properties/variables) is a non-trivial task that needs constant monitoring and support.
+
+## By end of June 2021
+
+{{ milestone('Component long tail','19') }}
+
+There are several low-priority components that still need to be implemented, such as:  data tables, definition lists, table of contents.
+
+{{ milestone('Forms on mobile','18') }}
+
+Establish and implement how to best handle long section of form options on mobile.
+
+## When we have time
+
+{{ milestone('Optimising the component library build efficiency','22') }}
+
+Currently, the component library relies on Fractal, this is helpful in many ways but also limits some options. In principle, we could solely rely on 11ty for our component library but there are performance questions.
+
+- part of the reason 11ty is so slow is because of how it relates to fractal
+- it could be possible to optimise the order in which fractal builds new page, so even if 11ty has to build all the pages, it could at least build the page you need first
+- to not to rebuild for CSS changes
+
+{% endmarkdown %}
+
+
+
+</div>
+</section>
+
