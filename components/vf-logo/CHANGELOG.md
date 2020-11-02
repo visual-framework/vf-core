@@ -1,3 +1,9 @@
+### 1.5.0
+
+* removes some unneeded CSS.
+* deprecates `--extrene` variation.
+* makes the maximum height of the logo 3rem (48px).
+
 ### 1.4.0
 
 * updates spacing design tokens
