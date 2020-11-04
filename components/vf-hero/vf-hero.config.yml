@@ -12,7 +12,6 @@ preview: '@preview--nogrid'
   #   hidden: true
 context:
   component-type: container
-  modifier_class: vf-hero--easy
 
   vf_hero_subheading: an example of some ancillary text
   vf_hero_text:
@@ -23,41 +22,78 @@ context:
   vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
 variants:
   - name: default
-    hidden: true
-  - name: example
-    hidden: true
-  - name: very easy
     context:
-      modifier_class: vf-hero--very-easy
-  - name: easy
+      spacing: 1200
+      centered: true
+      offset: true
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: offset
     context:
-      modifier_class: vf-hero--easy
-  - name: easy with link
+      offset: true
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: centered
     context:
-      modifier_class: vf-hero--easy
-      vf_hero_href: 'JavaScript:Void(0);'
-  - name: normal
+      centered: true
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: flush
     context:
-      modifier_class: vf-hero--normal
-  - name: hard
+      flush: true
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: centered offset
     context:
-      modifier_class: vf-hero--hard
-  - name: extreme
-    hidden: true
+      offset: true
+      centered: true
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: centered flush
     context:
-      modifier_class: vf-hero--extreme
-  - name: intense
+      flush: true
+      centered: true
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: spacing (800)
     context:
-      vf_hero_summary_title: Europe wide, global impact, infinite curiosity.
-      vf_hero_href: https://www.embl.de/aboutus/general_information/mission/index.html
-      vf_hero_text: Learn more about EMBL’s contribution to society
-      modifier_class: vf-hero--intense
+      spacing: 800
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: spacing (1200)
+    context:
+      spacing: 1200
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: spacing (1600)
+    context:
+      spacing: 1600
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: inline link
+    context:
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+      vf_hero_text: Learn more.
+      vf_hero_href: JavaScript:Void(0);
   - name: primary
     context:
-      modifier_class: vf-hero-theme--primary
+      theme: primary
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
   - name: secondary
     context:
-      modifier_class: vf-hero-theme--secondary
+      theme: secondary
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
   - name: tertiary
     context:
-      modifier_class: vf-hero-theme--tertiary
+      theme: tertiary
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: alt
+    context:
+      alt: true
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: alt primary
+    context:
+      alt: true
+      theme: primary
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: alt secondary
+    context:
+      alt: true
+      theme: secondary
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+  - name: alt tertiary
+    context:
+      alt: true
+      theme: tertiary
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');

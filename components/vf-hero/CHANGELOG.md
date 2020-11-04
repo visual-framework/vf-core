@@ -1,3 +1,7 @@
+### 2.0.0
+
+* deprecates the `--intense` variant.
+
 ### 1.7.1
 
 * removes CSS for 'inlayed' design as no longer in use
