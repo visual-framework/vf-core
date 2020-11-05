@@ -10,7 +10,7 @@
       You can copy the CSS and JS you find here, but for the best experience see the building guide:
       https://visual-framework.github.io/vf-core/building/
     -->
-    <title>Structure of the Visual Framework core | The Visual Framework 2.0</title>
+    <title>Roadamp | The Visual Framework 2.0</title>
     <link rel="shortcut icon" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dev.assets.emblstatic.net/vf/develop/assets/vf-favicon/assets/favicon-32x32.png">
@@ -21,22 +21,22 @@
 <meta name="theme-color" content="#ffffff">
 
     <!-- Descriptive meta -->
-    <meta name="title" content="Structure of the Visual Framework core">
+    <meta name="title" content="Roadamp">
     <meta name="author" content="EMBL">
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="description" content="Major projects and features planned for the next period of time.">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://visual-framework.github.io/vf-core//developing/getting-started/structure/">
-    <meta property="og:title" content="Structure of the Visual Framework core">
-    <meta property="og:description" content="">
+    <meta property="og:url" content="https://visual-framework.github.io/vf-core//about/roadmap/">
+    <meta property="og:title" content="Roadamp">
+    <meta property="og:description" content="Major projects and features planned for the next period of time.">
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="og:url" content="https://visual-framework.github.io/vf-core//developing/getting-started/structure/">
-    <meta property="twitter:title" content="Structure of the Visual Framework core">
-    <meta property="twitter:description" content="">
+    <meta property="og:url" content="https://visual-framework.github.io/vf-core//about/roadmap/">
+    <meta property="twitter:title" content="Roadamp">
+    <meta property="twitter:description" content="Major projects and features planned for the next period of time.">
     <!-- Feed -->
     <link href="https://visual-framework.github.io/vf-core/feed.xml" type="application/rss+xml" rel="alternate" title="Visual Framework 2.0 Updates">
   </head>
@@ -85,13 +85,19 @@ class="vf-logo | vf-logo--has-text">
         
         
           
+            
+            
+            <li class="vf-breadcrumbs__item">
+              <a href="/vf-core/about" class="vf-breadcrumbs__link">About</a>
+            </li>
+          
         
         
         
         
         <li class="vf-breadcrumbs__item">
           
-            Structure of the Visual Framework core
+            Roadamp
           
         </li>
       </ul>
@@ -100,55 +106,95 @@ class="vf-logo | vf-logo--has-text">
 
     
     
+          
+          
+          
+          
 
-    <section class="vf-intro | embl-grid embl-grid--has-centered-content">
-  <div></div>
-  <div>
-    <h1 class="vf-intro__heading">Structure of the Visual Framework core</h1>
+      <nav class="vf-navigation vf-navigation--main | vf-cluster">
+  <ul class="vf-navigation__list | vf-list--inline | vf-cluster__inner">
+    <li class="vf-navigation__item">
+      <a
+      href="/vf-core/about/"
+      class="vf-navigation__link"
+>About the Visual Framework</a>
+    </li>
+    <li class="vf-navigation__item">
+      <a
+      href="/vf-core/about/consultation/"
+      class="vf-navigation__link"
+>Consultation process</a>
+    </li>
+    <li class="vf-navigation__item">
+      <a
+      href="/vf-core/about/roadmap/"
+      class="vf-navigation__link"
+ aria-current="page">Roadamp</a>
+    </li>
+    <li class="vf-navigation__item">
+      <a
+      href="/vf-core/about/faq/"
+      class="vf-navigation__link"
+>FAQ</a>
+    </li>
+  </ul>
+</nav>
+
+
+    
+
+
+<section class="vf-intro">
+
+  <div><!-- empty --></div>
+
+  <div class="vf-stack">
+
+  <h1 class="vf-intro__heading ">Roadamp</h1>
+<p class="vf-lede">Major projects and features planned for the next period of time.</p>
+
+
+<p class="vf-intro__text">This is a snapshot of work planned in the Visualf Framework <a href="https://github.com/visual-framework/vf-core/milestones">project milestones</a>.</p><p class="vf-intro__text">If you have a mjor idea not represented here, <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ">discuss it on Slack</a> or <a href="https://github.com/visual-framework/vf-core/issues">raise an issue</a>.</p>
   </div>
 </section>
-<main class="vf-content | embl-grid embl-grid--has-centered-content">
+
+
+<section class="embl-grid embl-grid--has-centered-content">
+
 <div></div>
-<div>
-<h2>Design decisions and tokens</h2>
-<p>The Visual Framework uses the <a href="https://medium.com/eightshapes-llc/tokens-in-design-systems-25dd82d58421">Design Token concept</a> to specify design (colour, spacing, type) as reusable JSON or YAML that are translated from <code>.yml</code> data into <code>.scss</code> using <a href="https://github.com/salesforce-ux/theo#-theo">Theo</a>.</p>
-<p>This Design Token abstraction <a href="https://uxdesign.cc/design-tokens-for-dummies-8acebf010d71">helps portability and integration</a> with other technical systems.</p>
-<p>You can find the Design Tokens in <code>vf-core/components/vf-design-tokens</code>.</p>
-<h2>File structure</h2>
-<p>The <code>vf-core</code> repo contains three types of files:</p>
-<ol>
-<li>Components that are located in <code>./components</code></li>
-<li>Build scripts located in the root of the project (mainly)</li>
-<li>The web interface <code>./tools/vf-frctl-theme</code></li>
-</ol>
-<h2>Detailed overview</h2>
-<pre>
-    ├── .editorconfig
-    ├── CHANGELOG.md
-    ├── CONTRIBUTING.md
-    ├── README.md
-    ├── components  (all the components you wish to use)
-    │   ├── _previews (templates for the web component browser)
-    │   ├── vf-activity-group
-    |   |   ...
-    │   └── vf-video-teaser
-    ├── docs (documentation files for the web interface)
-    ├── fractal.js (configuration for the web component library)
-    ├── gulpfile.js
-    ├── lerna.json
-    ├── package.json
-    ├── public (dynamic folder used for rendering of global CSS, JS, component assets)
-    └── tools
-        ├── component-generator (make new components)
-        ├── css-generator (build requirement)
-        └── vf-frctl-theme (web interface)
-</pre>
-  <cite class="vf-cite">
-    Last updated on <time datetime="Tue Apr 09 2019 12:24:50 GMT+0000 (Coordinated Universal Time)">9 Apr 2019</time>
-  </cite>
+<div class="vf-content">
+
+<h2>By the end of 2020</h2>
+<h3><a href="https://github.com/visual-framework/vf-core/milestone/17">Search pattern/boilerplate</a></h3>
+<p>There are many ways to implement a &quot;search&quot; page and section. What is the most common and standardisable?</p>
+<h2>By end of March 2021</h2>
+<h3><a href="https://github.com/visual-framework/vf-core/milestone/21">Create a training programme for developers</a></h3>
+<p>How to get started with the VF common scenarios specific use cases.</p>
+<h3><a href="https://github.com/visual-framework/vf-core/milestone/20">Create a desktop component library</a></h3>
+<p>That is: port the Sketch component library to Figma and update it to match changes.</p>
+<h3><a href="https://github.com/visual-framework/vf-core/milestone/16">Legacy browser support</a></h3>
+<p>Supporting older browsers (those without CSS grid and custom properties/variables) is a non-trivial task that needs constant monitoring and support.</p>
+<h2>By end of June 2021</h2>
+<h3><a href="https://github.com/visual-framework/vf-core/milestone/19">Component long tail</a></h3>
+<p>There are several low-priority components that still need to be implemented, such as:  data tables, definition lists, table of contents.</p>
+<h3><a href="https://github.com/visual-framework/vf-core/milestone/18">Forms on mobile</a></h3>
+<p>Establish and implement how to best handle long section of form options on mobile.</p>
+<h3><a href="https://github.com/visual-framework/vf-core/milestone/23">Explore internal and functional components and patterns</a></h3>
+<p>Most of the components and patterns in the VF 2.0 have been designed with the corporate EMBL websites in mind. Among the founding ideas was to have variants based on a two-dimensional axis (internal vs external, and functional vs inspirational). How would we deliver and document these? Is it the correct idea?</p>
+<h2>When we have time</h2>
+<h3><a href="https://github.com/visual-framework/vf-core/milestone/22">Optimising the component library build efficiency</a></h3>
+<p>Currently, the component library relies on Fractal, this is helpful in many ways but also limits some options. In principle, we could solely rely on 11ty for our component library but there are performance questions.</p>
+<ul>
+<li>part of the reason 11ty is so slow is because of how it relates to fractal</li>
+<li>it could be possible to optimise the order in which fractal builds new page, so even if 11ty has to build all the pages, it could at least build the page you need first</li>
+<li>to not to rebuild for CSS changes</li>
+</ul>
+<h3><a href="https://github.com/visual-framework/vf-core/milestone/24">contentHub metrics and editing</a></h3>
+<p>The contentHub allows us to pull content into any VF-powered page, however we can do more here: how to track where content is used? how to better support editing?</p>
+
+
 </div>
-</main>
-<!-- layout: layouts/developing.njk -->
+</section>
 
     <footer class="vf-footer">
   <div class="vf-footer__inner">
@@ -220,7 +266,7 @@ class="vf-logo | vf-logo--has-text">
 
 
 
-<!-- This page was generated on 2020-11-05T12:34:14.940+00:00 -->
+<!-- This page was generated on 2020-11-05T12:34:13.991+00:00 -->
 <script src="https://assets.emblstatic.net/vf/v2.3.1-rc.1/scripts/scripts.js"></script>
   </body>
 </html>
