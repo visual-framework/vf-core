@@ -1,3 +1,7 @@
+### 2.2.1
+
+* fixes a hover issue if the card has a link and is the `--easy` variant.
+
 ### 2.2.0
 
 * adds a slight box shadow to all card variants to denote that it's something on the page, not 'of the page'
