@@ -111,6 +111,13 @@
   .vf-card__text {
     --card-text-color: #{set-ui-color(vf-ui-color--black)};
   }
+
+  // fixes bug on hover of link and easy variant #1215
+  .vf-card__link {
+    &::after {
+      height: calc(100% + 8px);
+    }
+  }
 }
 
 .vf-card--normal {
