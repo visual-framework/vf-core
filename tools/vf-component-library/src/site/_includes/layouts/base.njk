@@ -114,6 +114,33 @@
     </nav>
     {% endif %}
 
+    {# Render sub nav for sections #}
+    {% if section %}
+      {%- set navigationList = [] -%}
+      {%- for entry in collections[section] %}
+        {%- if entry.data.layout %}
+          {%- set isCurrent = false -%}
+          {%- if entry.url == page.url %}
+            {%- set isCurrent = true -%}
+          {%- endif %}
+          {% set navigationList = (navigationList.push({
+            "text": entry.data.title,
+            "order": entry.data.order,
+            "navigation_href": entry.url | url,
+            "currentPage": isCurrent
+          }),navigationList) %}
+        {%- endif %}
+      {%- endfor -%}
+
+      {# Order by page order #}
+      {%- set navigationList = navigationList | sort(false, true, 'order') %}
+
+      {% render '@vf-navigation', {
+        "classModifier": "main",
+        "navigation": navigationList
+      } %}
+    {%- endif %}
+
     {{ content | safe }}
     {% include "footer.njk" %}
   </body>
