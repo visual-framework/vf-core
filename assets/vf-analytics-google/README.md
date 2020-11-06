@@ -17,6 +17,7 @@ This component tracks three types of user engagement as actions in Google Analyt
   - form elements like `input` `select` `textarea` `label`
 2. Downloads of files as "Downloads" `zip|exe|pdf|doc*|xls*|ppt*|mp3|txt|fasta`
 3. Emails links as "Email" `mailto:`
+4. External links as "External links"
 
 Explicit labels can be provided with data attributes:
 
