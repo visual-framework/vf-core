@@ -5,12 +5,133 @@
   <subtitle>A front-end toolkit to quickly build better life science websites.</subtitle>
   <link href="https://visual-framework.github.io/vf-core/feed.xml" rel="self"/>
   <link href="https://visual-framework.github.io/vf-core/"/>
-  <updated>2020-10-29T18:00:50+00:00</updated>
+  <updated>2020-11-06T16:00:50+00:00</updated>
   <id>https://visual-framework.github.io/vf-core</id>
   <author>
     <name>Visual Framework system</name>
     <email>ken.hawkins@embl.de</email>
   </author>
+  
+  <entry>
+    <title>2.3.2 Component updates</title>
+    <link href="https://visual-framework.github.io/vf-core/updates/2020-11-06-component-updates/"/>
+    <updated>2020-11-06T16:00:50+00:00</updated>
+    <id>https://visual-framework.github.io/vf-core/updates/2020-11-06-component-updates/</id>
+    <content type="html">&lt;div class=&quot;vf-box vf-box-theme--tertiary vf-box--easy&quot;&gt;
+&lt;h3 class=&quot;vf-box__heading&quot;&gt;
+This releases 2.3.2 to the CDN
+&lt;/h3&gt;
+&lt;div class=&quot;vf-box__text&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://assets.emblstatic.net/vf/v2.3.2/css/styles.css&quot;&gt;&lt;code&gt;https://assets.emblstatic.net/vf/v2.3.2/css/styles.css&lt;/code&gt;&lt;/a&gt; &lt;br&gt;
+&lt;a href=&quot;https://assets.emblstatic.net/vf/v2.3.2/scripts/scripts.js&quot;&gt;&lt;code&gt;https://assets.emblstatic.net/vf/v2.3.2/scripts/scripts.js&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, &lt;a href=&quot;https://visual-framework.github.io/vf-core/building&quot;&gt;you can find a guide here&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This minor update releases more minor component updates that focus on improving visual consistency, eliminating bugs, optimising codes and adding minor features.&lt;/p&gt;
+&lt;h2&gt;New features&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-google-analytics/&quot;&gt;vf-google-analytics&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.0.0&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-google-analytics/v/1.0.0&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/28b02cf799a1a9b563eeccaf7178927241a37ae7&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Stable release&lt;/li&gt;
+&lt;li&gt;Use the more robust &amp;quot;beacon&amp;quot; logging, when available
+&lt;ul&gt;
+&lt;li&gt;https://developers.google.com/analytics/devguides/collection/analyticsjs/sending-hits&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Feature: track outbound/external links
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/issues/1210&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-link-list/&quot;&gt;vf-link-list&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.3.0&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-link-list/v/1.3.0&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/72e1bc5ef2c6a264bea9ac3e5caf8960ee2c0570&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;makes the &lt;code&gt;vf-links__heading&lt;/code&gt; optional.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-breadcrumbs/&quot;&gt;vf-breadcrumbs&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.0.0&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-breadcrumbs/v/2.0.0&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/214848e63cb449d0341bffa7eea8d07bee882dda&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;adds &lt;code&gt;aria-current=&amp;quot;location&amp;quot;&lt;/code&gt; to be used for the last item in &lt;code&gt;vf-breadcrumbs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;replaces CSS to style &lt;code&gt;aria-current=&amp;quot;location&amp;quot;&lt;/code&gt; and not &lt;code&gt;:last-of-type&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;adds text-shadow to &lt;code&gt;aria-current=&amp;quot;location&amp;quot;&lt;/code&gt; to show text a little bolder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-sass-config/&quot;&gt;vf-sass-config&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.2.0&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-sass-config/v/2.2.0&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/4e7cada4ca7b91c88dcc30ab2d03810b2f5e3198&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;updates &lt;code&gt;--page-grid-gap&lt;/code&gt; for larger viewports to &lt;code&gt;2rem&lt;/code&gt; instead of &lt;code&gt;1.5rem&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;updates the &lt;code&gt;embl-grid&lt;/code&gt; small column size from &lt;code&gt;238px&lt;/code&gt; to &lt;code&gt;16rem&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-navigation/&quot;&gt;vf-navigation&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.1.0&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-navigation/v/2.1.0&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/ac75e1b0ebd426a021f98baa48b11d627360fcfc&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;fixes a bug with the &lt;code&gt;--additional&lt;/code&gt; variant.&lt;/li&gt;
+&lt;li&gt;introduces &lt;code&gt;njk&lt;/code&gt;/&lt;code&gt;yml&lt;/code&gt; variable look up to determine classnames to use:
+&lt;ul&gt;
+&lt;li&gt;adds &lt;code&gt;vf-cluster&lt;/code&gt; only to &lt;code&gt;--main&lt;/code&gt; variant.&lt;/li&gt;
+&lt;li&gt;replaces &lt;code&gt;--additional&lt;/code&gt; CSS for full bleed background with &lt;code&gt;vf-u-fullbleed&lt;/code&gt; class.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Deprecation&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-inlay/&quot;&gt;vf-inlay&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.0.0&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-inlay/v/2.0.0&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/8d47b787638c3a1798c77118d1e7601955aa5ff5&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Deprecated for &lt;code&gt;vf-grid&lt;/code&gt; or &lt;code&gt;embl-grid&lt;/code&gt; layouts and classnames.
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/pull/1204&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Bug fixes&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-card/&quot;&gt;vf-card&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.2.1&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-card/v/2.2.1&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/456dc6b7b13e0a89d02c7373a37b1a05a757b0dd&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;fixes a hover issue if the card has a link and is the &lt;code&gt;--easy&lt;/code&gt; variant.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-cluster/&quot;&gt;vf-cluster&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.0.1&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-cluster/v/1.0.1&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/bfad2833663103de15d4414702250faab4bc819c&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;fixes a bug where we overspecified the spacing custom property which affected left alignment of &lt;code&gt;--600&lt;/code&gt; and &lt;code&gt;--800&lt;/code&gt; variants.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-sass-config/&quot;&gt;vf-sass-config&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;2.2.1&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-sass-config/v/2.2.1&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/0d3be66c76fa3738389614bfb8c02ab5b5054e8c&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;fixes bug where &lt;code&gt;--page-grid-gap&lt;/code&gt; wasn&#39;t getting it&#39;s correct spacing unit because the Sass &lt;code&gt;map-get&lt;/code&gt; was not interpolated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-hero/&quot;&gt;vf-hero&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.7.1&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-hero/v/1.7.1&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/8d47b787638c3a1798c77118d1e7601955aa5ff5&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;removes CSS for &#39;inlayed&#39; design as no longer in use
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/pull/1204&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-banner/&quot;&gt;vf-banner&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.6.1&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-banner/v/1.6.1&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/8d47b787638c3a1798c77118d1e7601955aa5ff5&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;removes CSS for &#39;inlayed&#39; design as no longer in use
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/pull/1204&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-header/&quot;&gt;vf-header&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.0.4&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-header/v/1.0.4&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/8d47b787638c3a1798c77118d1e7601955aa5ff5&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;removes CSS for &#39;inlayed&#39; design as no longer in use
+&lt;ul&gt;
+&lt;li&gt;https://github.com/visual-framework/vf-core/pull/1204&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-sass-starter/&quot;&gt;vf-sass-starter&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;0.1.12&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-sass-starter/v/0.1.12&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/08a1eb84898ff9375239b3893cf50a8e3ca92d40&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;dependency bump&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/embl-logo/&quot;&gt;embl-logo&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.1.0&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/embl-logo/v/1.1.0&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/e737529a04c99846f5b15544152567aaecbd6064&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;removes some unneeded CSS.&lt;/li&gt;
+&lt;li&gt;makes the maximum height 3rem (48px).&lt;/li&gt;
+&lt;li&gt;makes the logo responsive.&lt;/li&gt;
+&lt;li&gt;deprecates &lt;code&gt;--extreme&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&quot;https://visual-framework.github.io/vf-core/components/vf-logo/&quot;&gt;vf-logo&lt;/a&gt; &lt;span class=&quot;vf-badge&quot;&gt;1.5.0&lt;/span&gt; &lt;a href=&quot;https://www.npmjs.com/package/@visual-framework/vf-logo/v/1.5.0&quot; class=&quot;vf-badge&quot;&gt;npm&lt;/a&gt; &lt;a href=&quot;https://github.com/visual-framework/vf-core/commit/e737529a04c99846f5b15544152567aaecbd6064&quot; class=&quot;vf-badge&quot;&gt;git diff&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;removes some unneeded CSS.&lt;/li&gt;
+&lt;li&gt;deprecates &lt;code&gt;--extreme&lt;/code&gt; variation.&lt;/li&gt;
+&lt;li&gt;makes the maximum height of the logo 3rem (48px).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   
   <entry>
     <title>2.3.1 RC.1 Component updates</title>
@@ -1952,8 +2073,8 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
         Building something with the EMBL Design Language for Websites?
       &lt;/h3&gt;
       &lt;p class=&quot;vf-banner__text&quot;&gt;Here&#39;s the core CSS and JS you need. Don&#39;t forget to &lt;a href=&quot;https://visual-framework.github.io/vf-core/&quot; class=&quot;vf-banner__link&quot;&gt;review the documentation&lt;/a&gt; and &lt;a href=&quot;https://visual-framework.github.io/vf-core/patterns&quot; class=&quot;vf-banner__link&quot;&gt;see more boilerplates and patterns&lt;/a&gt;.&lt;/p&gt;
-      &lt;pre class=&quot;vf-code-example__pre&quot;&gt;&lt;code class=&quot;Code Code--lang-html vf-code-example&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.1-rc.1/css/styles.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.1-rc.1/scripts/scripts.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;pre class=&quot;vf-code-example__pre&quot;&gt;&lt;code class=&quot;Code Code--lang-html vf-code-example&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.2/css/styles.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.2/scripts/scripts.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -2015,7 +2136,7 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
     &lt;/section&gt;
     &lt;section class=&quot;vf-footer__legal&quot;&gt;
       &lt;span class=&quot;vf-footer__legal-text&quot;&gt;
-        Latest release: &lt;code&gt;v2.3.1-rc.1&lt;/code&gt; &lt;a href=&quot;https://visual-framework.github.io/vf-core/updates&quot; class=&quot;vf-footer__link&quot;&gt;See more releases&lt;/a&gt;
+        Latest release: &lt;code&gt;v2.3.2&lt;/code&gt; &lt;a href=&quot;https://visual-framework.github.io/vf-core/updates&quot; class=&quot;vf-footer__link&quot;&gt;See more releases&lt;/a&gt;
       &lt;/span&gt;
       &lt;span class=&quot;vf-footer__legal-text&quot;&gt;
         Code license is Apache 2.0
@@ -2028,8 +2149,8 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
 
 
 
-&lt;!-- This page was generated on 2020-11-06T14:56:54.924+00:00 --&gt;
-&lt;script src=&quot;https://assets.emblstatic.net/vf/v2.3.1-rc.1/scripts/scripts.js&quot;&gt;&lt;/script&gt;
+&lt;!-- This page was generated on 2020-11-06T15:18:12.966+00:00 --&gt;
+&lt;script src=&quot;https://assets.emblstatic.net/vf/v2.3.2/scripts/scripts.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </content>
@@ -2513,8 +2634,8 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
         Building something with the EMBL Design Language for Websites?
       &lt;/h3&gt;
       &lt;p class=&quot;vf-banner__text&quot;&gt;Here&#39;s the core CSS and JS you need. Don&#39;t forget to &lt;a href=&quot;https://visual-framework.github.io/vf-core/&quot; class=&quot;vf-banner__link&quot;&gt;review the documentation&lt;/a&gt; and &lt;a href=&quot;https://visual-framework.github.io/vf-core/patterns&quot; class=&quot;vf-banner__link&quot;&gt;see more boilerplates and patterns&lt;/a&gt;.&lt;/p&gt;
-      &lt;pre class=&quot;vf-code-example__pre&quot;&gt;&lt;code class=&quot;Code Code--lang-html vf-code-example&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.1-rc.1/css/styles.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.1-rc.1/scripts/scripts.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;pre class=&quot;vf-code-example__pre&quot;&gt;&lt;code class=&quot;Code Code--lang-html vf-code-example&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.2/css/styles.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.2/scripts/scripts.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -2576,7 +2697,7 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
     &lt;/section&gt;
     &lt;section class=&quot;vf-footer__legal&quot;&gt;
       &lt;span class=&quot;vf-footer__legal-text&quot;&gt;
-        Latest release: &lt;code&gt;v2.3.1-rc.1&lt;/code&gt; &lt;a href=&quot;https://visual-framework.github.io/vf-core/updates&quot; class=&quot;vf-footer__link&quot;&gt;See more releases&lt;/a&gt;
+        Latest release: &lt;code&gt;v2.3.2&lt;/code&gt; &lt;a href=&quot;https://visual-framework.github.io/vf-core/updates&quot; class=&quot;vf-footer__link&quot;&gt;See more releases&lt;/a&gt;
       &lt;/span&gt;
       &lt;span class=&quot;vf-footer__legal-text&quot;&gt;
         Code license is Apache 2.0
@@ -2589,8 +2710,8 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
 
 
 
-&lt;!-- This page was generated on 2020-11-06T14:56:54.924+00:00 --&gt;
-&lt;script src=&quot;https://assets.emblstatic.net/vf/v2.3.1-rc.1/scripts/scripts.js&quot;&gt;&lt;/script&gt;
+&lt;!-- This page was generated on 2020-11-06T15:18:12.965+00:00 --&gt;
+&lt;script src=&quot;https://assets.emblstatic.net/vf/v2.3.2/scripts/scripts.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </content>
@@ -2986,8 +3107,8 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
         Building something with the EMBL Design Language for Websites?
       &lt;/h3&gt;
       &lt;p class=&quot;vf-banner__text&quot;&gt;Here&#39;s the core CSS and JS you need. Don&#39;t forget to &lt;a href=&quot;https://visual-framework.github.io/vf-core/&quot; class=&quot;vf-banner__link&quot;&gt;review the documentation&lt;/a&gt; and &lt;a href=&quot;https://visual-framework.github.io/vf-core/patterns&quot; class=&quot;vf-banner__link&quot;&gt;see more boilerplates and patterns&lt;/a&gt;.&lt;/p&gt;
-      &lt;pre class=&quot;vf-code-example__pre&quot;&gt;&lt;code class=&quot;Code Code--lang-html vf-code-example&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.1-rc.1/css/styles.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.1-rc.1/scripts/scripts.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;pre class=&quot;vf-code-example__pre&quot;&gt;&lt;code class=&quot;Code Code--lang-html vf-code-example&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.2/css/styles.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.2/scripts/scripts.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -3049,7 +3170,7 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
     &lt;/section&gt;
     &lt;section class=&quot;vf-footer__legal&quot;&gt;
       &lt;span class=&quot;vf-footer__legal-text&quot;&gt;
-        Latest release: &lt;code&gt;v2.3.1-rc.1&lt;/code&gt; &lt;a href=&quot;https://visual-framework.github.io/vf-core/updates&quot; class=&quot;vf-footer__link&quot;&gt;See more releases&lt;/a&gt;
+        Latest release: &lt;code&gt;v2.3.2&lt;/code&gt; &lt;a href=&quot;https://visual-framework.github.io/vf-core/updates&quot; class=&quot;vf-footer__link&quot;&gt;See more releases&lt;/a&gt;
       &lt;/span&gt;
       &lt;span class=&quot;vf-footer__legal-text&quot;&gt;
         Code license is Apache 2.0
@@ -3062,8 +3183,8 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
 
 
 
-&lt;!-- This page was generated on 2020-11-06T14:56:54.923+00:00 --&gt;
-&lt;script src=&quot;https://assets.emblstatic.net/vf/v2.3.1-rc.1/scripts/scripts.js&quot;&gt;&lt;/script&gt;
+&lt;!-- This page was generated on 2020-11-06T15:18:12.965+00:00 --&gt;
+&lt;script src=&quot;https://assets.emblstatic.net/vf/v2.3.2/scripts/scripts.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </content>
@@ -3836,8 +3957,8 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
         Building something with the EMBL Design Language for Websites?
       &lt;/h3&gt;
       &lt;p class=&quot;vf-banner__text&quot;&gt;Here&#39;s the core CSS and JS you need. Don&#39;t forget to &lt;a href=&quot;https://visual-framework.github.io/vf-core/&quot; class=&quot;vf-banner__link&quot;&gt;review the documentation&lt;/a&gt; and &lt;a href=&quot;https://visual-framework.github.io/vf-core/patterns&quot; class=&quot;vf-banner__link&quot;&gt;see more boilerplates and patterns&lt;/a&gt;.&lt;/p&gt;
-      &lt;pre class=&quot;vf-code-example__pre&quot;&gt;&lt;code class=&quot;Code Code--lang-html vf-code-example&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.1-rc.1/css/styles.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.1-rc.1/scripts/scripts.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;pre class=&quot;vf-code-example__pre&quot;&gt;&lt;code class=&quot;Code Code--lang-html vf-code-example&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.2/css/styles.css&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;https://dev.assets.emblstatic.net/vf/v2.3.2/scripts/scripts.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -3899,7 +4020,7 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
     &lt;/section&gt;
     &lt;section class=&quot;vf-footer__legal&quot;&gt;
       &lt;span class=&quot;vf-footer__legal-text&quot;&gt;
-        Latest release: &lt;code&gt;v2.3.1-rc.1&lt;/code&gt; &lt;a href=&quot;https://visual-framework.github.io/vf-core/updates&quot; class=&quot;vf-footer__link&quot;&gt;See more releases&lt;/a&gt;
+        Latest release: &lt;code&gt;v2.3.2&lt;/code&gt; &lt;a href=&quot;https://visual-framework.github.io/vf-core/updates&quot; class=&quot;vf-footer__link&quot;&gt;See more releases&lt;/a&gt;
       &lt;/span&gt;
       &lt;span class=&quot;vf-footer__legal-text&quot;&gt;
         Code license is Apache 2.0
@@ -3912,8 +4033,8 @@ See also: [example `vf-deprecated` component](https://github.com/visual-framewor
 
 
 
-&lt;!-- This page was generated on 2020-11-06T14:56:54.922+00:00 --&gt;
-&lt;script src=&quot;https://assets.emblstatic.net/vf/v2.3.1-rc.1/scripts/scripts.js&quot;&gt;&lt;/script&gt;
+&lt;!-- This page was generated on 2020-11-06T15:18:12.963+00:00 --&gt;
+&lt;script src=&quot;https://assets.emblstatic.net/vf/v2.3.2/scripts/scripts.js&quot;&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </content>
