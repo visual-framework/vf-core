@@ -1,3 +1,7 @@
+### 1.2.1
+
+* updates `title` and/or `label` to remove 'Visual Framework ' for consistency
+
 ### 1.2.0
 
 * updates spacing design tokens

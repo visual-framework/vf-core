@@ -1,3 +1,7 @@
+### 2.0.1
+
+* updates `title` and/or `label` to remove 'Visual Framework ' for consistency
+
 ### 2.0.0
 
 * removes the `grid-column: 1 / -1;` rule

@@ -1,3 +1,7 @@
+### 1.3.1
+
+* updates `title` and/or `label` to remove 'Visual Framework ' for consistency
+
 ### 1.3.0
 
 * adds loading="lazy" to the img element for better performance

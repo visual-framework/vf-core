@@ -1,3 +1,7 @@
+### 1.2.4
+
+* updates `title` and/or `label` to remove 'Visual Framework ' for consistency
+
 ### 1.2.3
 
 * adds `buildTimeStamp` from `componentInfo` to Sass template
