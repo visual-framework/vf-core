@@ -133,6 +133,10 @@ function vfGaInit(vfGaTrackOptions) {
   // @todo: add conditional
   ga("set", "anonymizeIp", true);
 
+  // Use the more robust "beacon" logging, when available
+  // https://developers.google.com/analytics/devguides/collection/analyticsjs/sending-hits
+  ga("set", "transport", "beacon");
+
   // lookup metadata  <meta name="vf:page-type" content="category;pageTypeHere">
   // Pass your GA dimension with a `;` divider
   var pageType = vfGetMeta("vf:page-type");
@@ -381,6 +385,16 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       var filePath = href;
       ga && ga("send", "event", "Download", "Type / " + extension + " / " + parentContainer, filePath);
       vfGaLogMessage("Download", "Type / " + extension + " / " + parentContainer, filePath, lastGaEventTime, actedOnItem);
+    }
+
+    // If link and is external, log it as an external link
+    if (href && href.match(/^\w+:\/\//i)) {
+      // create a new URL from link
+      let newDestination = new URL(href, window.location);
+      if (newDestination.hostname != window.location.hostname) {
+        ga && ga("send", "event", "External links", "External link / " + linkName + " / " + parentContainer, href);
+        vfGaLogMessage("External links", "External link / " + linkName + " / " + parentContainer, href, lastGaEventTime, actedOnItem);
+      }
     }
 
     // is it a form interaction or something with text?
