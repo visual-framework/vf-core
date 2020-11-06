@@ -1,3 +1,7 @@
+### 3.1.0
+
+* adds `--1600` (`4rem`) spacing token.
+
 ### 3.0.0
 
 * We're moving the documentation to the `vf-component-library`
