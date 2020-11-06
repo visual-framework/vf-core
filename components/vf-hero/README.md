@@ -4,15 +4,13 @@
 
 ## About
 
-The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a heading, sub-heading, and text content. The text content can also be a link which adds am arrow icon.
+The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a heading, sub-heading, and text content. The text (`vf-hero__text`) content can also be a 'call to action' link which adds am arrow icon.
 
 ## Usage
 
 ### CSS Custom Properties
 
 `--vf-hero-bg-image` — this is for the url for the background image. It can either be added, inline if you're writing the HTML, using the `.yml` data source of `vf_hero_image`, or by other needs (a input or upload in WordPress, for example).
-
-`--vf-hero-grid__row--initial` — This is used to represent the heigh of the image and helps calculate the position of the content, depending on the variant you have chosen.
 
 ## Install
 
