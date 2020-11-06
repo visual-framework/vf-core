@@ -1,3 +1,7 @@
+### 1.3.0
+
+* makes the `vf-links__heading` optional.
+
 ### 1.2.0
 
 * updates spacing design tokens
