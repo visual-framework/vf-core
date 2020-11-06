@@ -35,7 +35,7 @@ As a reminder, the rollup CSS and JS are compilations of many independently vers
 </div>
 </div>
 
-This minor update releases more minor component updates that focus on improving visual consistency, eliminating bugs, optimising codes and adding minor features.
+This minor update releases more minor component updates that focus on improving visual consistency, eliminating bugs, optimisations and adding minor features.
 
 ## New features
 
