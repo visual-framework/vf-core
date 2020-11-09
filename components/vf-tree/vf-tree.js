@@ -24,7 +24,9 @@
   * @param {object} [scope] - the html scope to process, optional, defaults to `document`
   */
 function vfTree(scope) {
+  /* eslint-disable no-redeclare */
   var scope = scope || document;
+  /* eslint-enable no-redeclare */
 
   // Get relevant elements and collections
   const treelist = scope.querySelectorAll("[data-vf-js-tree]");
@@ -70,7 +72,7 @@ function vfTree(scope) {
     // });
 
     const targetButton = target.querySelectorAll("[data-vf-js-tree--button]");
-    
+
     if (targetButton.length == 0) {
       // if no tree buttons found, nothing to do
       return;
@@ -86,7 +88,7 @@ function vfTree(scope) {
   }
 
   // For each treelist section, invoke handlers
-  Array.prototype.forEach.call(treelist, (treelistset, i) => {
+  Array.prototype.forEach.call(treelist, (treelistset) => {
     // Handle hide/show for tree sets
     vfTreeButtonHandler(treelistset);
   });

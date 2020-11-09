@@ -374,6 +374,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
     var href = actedOnItem.href;
 
     // log emails and downloads to seperate event "buckets"
+    /* eslint-disable no-useless-escape */
     if (href && href.match(/^mailto\:/i)) {
       // email click
       var mailLink = href.replace(/^mailto\:/i, "");
@@ -386,6 +387,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       ga && ga("send", "event", "Download", "Type / " + extension + " / " + parentContainer, filePath);
       vfGaLogMessage("Download", "Type / " + extension + " / " + parentContainer, filePath, lastGaEventTime, actedOnItem);
     }
+    /* eslint-enable no-useless-escape */
 
     // If link and is external, log it as an external link
     if (href && href.match(/^\w+:\/\//i)) {

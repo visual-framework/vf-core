@@ -1,3 +1,7 @@
+### 1.1.2
+
+* JS linting
+
 ### 1.1.1
 
 * fixes the space a tab takes to 'max-content'

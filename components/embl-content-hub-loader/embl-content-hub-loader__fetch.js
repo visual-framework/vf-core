@@ -80,6 +80,7 @@ function emblContentHubFetch() {
 
   // Dispatch load to the pollyfill
   function emblContentHubAwaitLoading(targetLink,position) {
+    /* global addImport */
     // Docs: https://github.com/AshleyScirra/html-imports-polyfill#usage
     addImport(targetLink.href, null, emblContentHubLinkLoadingProgress).then(function(value) {
       emblContentHubGrabTheContent(targetLink,position,value);
@@ -207,9 +208,9 @@ function emblContentHubFetch() {
       var targetElement = document.querySelector("."+emblContentHubGenerateID(position)).querySelector(targetSelectorToInject);
 
       // We can't inject space separated classes to we need to split it into arrays and add one by one.
-      var classesToInject = classesToInject.split(" ");
+      classesToInject = classesToInject.split(" ");
 
-      for (classNumber = 0; classNumber < classesToInject.length; classNumber++) {
+      for (var classNumber = 0; classNumber < classesToInject.length; classNumber++) {
         targetElement.classList.add(classesToInject[classNumber]);
       }
 

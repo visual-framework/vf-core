@@ -198,7 +198,7 @@ function emblNotifications(currentHost, currentPath) {
       var xmlhttp = new XMLHttpRequest();
     }
     xmlhttp.open("GET", file, true);
-    xmlhttp.onload = function (e) {
+    xmlhttp.onload = function() {
       if (xmlhttp.readyState === 4) {
         if (xmlhttp.status === 200) {
           // eval(xmlhttp.responseText);
@@ -209,7 +209,7 @@ function emblNotifications(currentHost, currentPath) {
         }
       }
     };
-    xmlhttp.onerror = function (e) {
+    xmlhttp.onerror = function() {
       console.error(xmlhttp.statusText);
     };
     xmlhttp.send(null);
