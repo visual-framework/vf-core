@@ -1,3 +1,8 @@
+### 1.1.0
+
+* Updates to Fractal 1.5.0 (for our use this is mostly minor bug fixes)
+  * https://github.com/visual-framework/vf-core/pull/1183
+
 ### 1.0.1
 
 * Pin dependencies to avoid issue with Fractal bootstrap
