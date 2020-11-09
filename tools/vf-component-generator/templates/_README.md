@@ -1,12 +1,12 @@
 👋 Hi component authour, you've read the docs, right?
 
-- [What's a component](https://visual-framework.github.io/vf-welcome/developing/components/what-is-a-component/)
-- [Updating, versioning a component](https://visual-framework.github.io/vf-welcome/developing/components/updating-a-component/)
-- [Sass and CSS guidelines](https://visual-framework.github.io/vf-welcome/developing/guidelines/css/)
+- [What's a component](https://stable.visual-framework.dev/developing/components/what-is-a-component/)
+- [Updating, versioning a component](https://stable.visual-framework.dev/developing/components/updating-a-component/)
+- [Sass and CSS guidelines](https://stable.visual-framework.dev/developing/guidelines/css/)
 - [Themeing and variant guidance - TO COME](#tocome)
-- [JavaScript guidelines](https://visual-framework.github.io/vf-welcome/developing/guidelines/javascript/)
-- [Making your first Pull Request](https://visual-framework.github.io/vf-welcome/developing/getting-started/pull-requests/)
-- [More development guidance](https://visual-framework.github.io/vf-welcome/developing/)
+- [JavaScript guidelines](https://stable.visual-framework.dev/developing/guidelines/javascript/)
+- [Making your first Pull Request](https://stable.visual-framework.dev/developing/getting-started/pull-requests/)
+- [More development guidance](https://stable.visual-framework.dev/developing/)
 - [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
 
 ---
@@ -54,10 +54,10 @@ The style files included are written in [Sass](https://sass-lang.com/). If you'r
 @import "@visual-framework/<%= componentName %>/index.scss";
 ```
 
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)
 
 ## Help
 
-- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)
 - [Open a ticket](https://github.com/visual-framework/vf-core/issues)
 - [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

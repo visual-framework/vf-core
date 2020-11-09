@@ -22,7 +22,7 @@ This releases {{version}} to the CDN:
 {% set componentVersion = "XXX" %}
 {% set commitId = "aba7c129360008218543d96d67d7da78c7f77e34" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -35,7 +35,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 {% set componentVersion = "1.0.0" %}
 {% set commitId = "aba7c129360008218543d96d67d7da78c7f77e34" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -48,7 +48,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 {% set componentVersion = "1.0.0-alpha.3" %}
 {% set commitId = "57bffc9240dfcb3833c270f95e464a43dd1dcfc4" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -62,7 +62,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 {% set componentVersion = "1.1.2" %}
 {% set commitId = "57bffc9240dfcb3833c270f95e464a43dd1dcfc4" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -76,7 +76,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 {% set componentVersion = "1.3.1" %}
 {% set commitId = "22d11e4d2cd6267fa30af98125ad7dbb227b4464" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
