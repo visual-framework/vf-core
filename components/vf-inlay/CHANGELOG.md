@@ -1,3 +1,8 @@
+### 2.0.1
+
+* Bug: fixes typos in Sass introduced in 2.0.0
+  * https://github.com/visual-framework/vf-core/pull/1221
+
 ### 2.0.0
 
 * Deprecated for `vf-grid` or `embl-grid` layouts and classnames.
