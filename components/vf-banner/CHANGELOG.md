@@ -1,3 +1,7 @@
+### 1.6.2
+
+* JS linting
+
 ### 1.6.1
 
 * removes CSS for 'inlayed' design as no longer in use

@@ -1,3 +1,7 @@
+### 1.0.0
+
+* JS linting
+
 ### 1.0.0-alpha.3
 
 * adds support for `autofocus` on search input

@@ -10,12 +10,17 @@
  * @example vfShowMore(document.querySelectorAll('.vf-component__container')[0]);
  */
 function vfShowMore(scope) {
+  /* eslint-disable no-redeclare */
   var scope = scope || document;
+  /* eslint-enable no-redeclare */
   // Get relevant elements and collections
   var buttonList = scope.querySelectorAll("[data-vf-js-show-more-button]");
   var buttonHideList = scope.querySelectorAll("[data-vf-js-show-more-button--less]");
   var targetList = scope.querySelectorAll("[data-vf-js-show-more]");
   var pagerSize = scope.querySelectorAll("[data-vf-js-show-more-pager-size]");
+  if (pagerSize) {
+    console.warn("vfShowMore","Your pager size of " + pagerSize + " was received but this option is currently not supported.");
+  }
   if (!buttonList || !targetList) {
     // exit: either buttons or target content not found
     return;
@@ -75,7 +80,7 @@ function vfShowMore(scope) {
   };
 
   // Add semantics
-  Array.prototype.forEach.call(buttonList, function (button, i) {
+  Array.prototype.forEach.call(buttonList, function (button) {
     button.parentNode.setAttribute("role", "presentation");
 
     // Reset any active tabs from a previous JS call
@@ -107,7 +112,7 @@ function vfShowMore(scope) {
 
   if (buttonHideList) {
     if (buttonHideList.length != 0) {
-      Array.prototype.forEach.call(buttonHideList, function (button, i) {
+      Array.prototype.forEach.call(buttonHideList, function (button) {
         button.parentNode.setAttribute("role", "presentation");
 
         // Reset any active tabs from a previous JS call

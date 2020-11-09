@@ -1,3 +1,7 @@
+### 1.0.1
+
+* JS linting
+
 ### 1.0.0
 
 * Stable release

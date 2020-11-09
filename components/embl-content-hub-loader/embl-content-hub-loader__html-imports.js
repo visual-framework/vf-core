@@ -6,7 +6,7 @@
 
 function emblContentHubLoaderHtmlImports() {
   // Map a script URL to its import document for GetImportDocument()
-  const scriptUrlToImportDoc = new Map();
+  // const scriptUrlToImportDoc = new Map();
 
   function GetPathFromURL(url)
   {
@@ -74,7 +74,9 @@ function emblContentHubLoaderHtmlImports() {
 
   function _AddImport(url, preFetchedDoc, rootContext, progressObject)
   {
+    /* eslint-disable no-unused-vars */
     let isRoot = false;
+    /* eslint-enable no-unused-vars */
 
     // The initial import creates a root context, which is passed along to all sub-imports.
     if (!rootContext)
@@ -92,11 +94,13 @@ function emblContentHubLoaderHtmlImports() {
     }
 
     // Each import also tracks its own state with its own context.
+    /* eslint-disable no-unused-vars */
     const context = {
       importDoc: null,
       baseUrl: GetPathFromURL(url),
       dependencies: []
     };
+    /* eslint-enable no-unused-vars */
 
     // preFetchedDoc is passed for sub-imports which pre-fetch their documents as an optimisation. If it's not passed,
     // fetch the URL to get the document.

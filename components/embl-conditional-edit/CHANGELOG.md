@@ -1,3 +1,7 @@
+### 1.0.3
+
+* JS linting
+
 ### 1.0.2
 
 * embl-breadcrumb-lookup.njk was loading demo embl-content-meta-properties that were only needed for an example,

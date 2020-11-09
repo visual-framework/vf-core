@@ -6,7 +6,9 @@
  * @example vfTabs(document.querySelectorAll('.vf-component__container')[0]);
  */
 function vfTabs(scope) {
+  /* eslint-disable no-redeclare */
   var scope = scope || document;
+  /* eslint-enable no-redeclare */
   // Get relevant elements and collections
   const tablist = scope.querySelectorAll("[data-vf-js-tabs]");
   const panelsList = scope.querySelectorAll("[data-vf-js-tabs-content]");
@@ -86,13 +88,13 @@ function vfTabs(scope) {
   Array.prototype.forEach.call(panels, (panel, i) => {
     panel.setAttribute("role", "tabpanel");
     panel.setAttribute("tabindex", "-1");
-    let id = panel.getAttribute("id");
+    // let id = panel.getAttribute("id");
     panel.setAttribute("aria-labelledby", tabs[i].id);
     panel.hidden = true;
   });
 
   // Add the tablist role to the first <ul> in the .tabbed container
-  Array.prototype.forEach.call(tablist, (tablistset, i) => {
+  Array.prototype.forEach.call(tablist, (tablistset) => {
     tablistset.setAttribute("role", "tablist");
     // Initially activate the first tab
     let firstTab = tablistset.querySelectorAll(".vf-tabs__link")[0];
@@ -100,7 +102,7 @@ function vfTabs(scope) {
     firstTab.setAttribute("aria-selected", "true");
     firstTab.classList.add("is-active");
   });
-  Array.prototype.forEach.call(panelsList, (panel, i) => {
+  Array.prototype.forEach.call(panelsList, (panel) => {
     // Initially reveal the first tab panel
     let firstPanel = panel.querySelectorAll(".vf-tabs__section")[0];
     firstPanel.hidden = false;

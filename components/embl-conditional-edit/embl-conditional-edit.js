@@ -16,7 +16,7 @@ function emblConditionalEdit() {
     return;
   }
 
-  Array.prototype.forEach.call(emblConditionalEditItems, (element, i) => {
+  Array.prototype.forEach.call(emblConditionalEditItems, (element) => {
     emblConditionalEditDetectParam(location.href,element);
   });
 }
