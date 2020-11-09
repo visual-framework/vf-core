@@ -4,7 +4,7 @@ The homepage, welcome and onboarding site for the Visual Framework 2.0 and its c
 
 ## What's the Visual Framework?
 
-[Head to the webpage!](https://visual-framework.github.io/vf-core)
+[Head to the webpage!](https://stable.visual-framework.dev)
 
 ## Local development
 

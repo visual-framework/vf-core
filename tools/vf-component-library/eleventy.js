@@ -115,7 +115,7 @@ module.exports = function(config) {
     htmlTemplateEngine : ["njk", "md"],
     markdownTemplateEngine : "njk",
     passthroughFileCopy: true,
-    pathPrefix: "/vf-core/" // if your site is deployed to a sub-url, otherwise comment out
+    pathPrefix: "/" // if your site is deployed to a sub-url, otherwise comment out
   };
 
 };

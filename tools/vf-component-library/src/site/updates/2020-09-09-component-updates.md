@@ -8,7 +8,7 @@ tags:
 layout: layouts/post.njk
 ---
 
-### [vf-content](https://visual-framework.github.io/vf-core/components/vf-content/) 1.2.2
+### [vf-content](https://stable.visual-framework.dev/components/vf-content/) 1.2.2
 
 commit [ce06ca359f3cad01c5db46e4e04c67c5cf71fcb0](https://github.com/visual-framework/vf-core/commit/ce06ca359f3cad01c5db46e4e04c67c5cf71fcb0)
 
@@ -25,7 +25,7 @@ commit [8590c2ad02f26328d489228a4f6f39a11aebb913](https://github.com/visual-fram
 - minor templating updates
 ```
 
-### [vf-search](https://visual-framework.github.io/vf-core/components/vf-search/) 1.2.2
+### [vf-search](https://stable.visual-framework.dev/components/vf-search/) 1.2.2
 
 commit [ac13156044ea6101e8f947a905aede597757e346](https://github.com/visual-framework/vf-core/commit/ac13156044ea6101e8f947a905aede597757e346)
 
@@ -33,7 +33,7 @@ commit [ac13156044ea6101e8f947a905aede597757e346](https://github.com/visual-fram
 - adds support for default search value
 ```
 
-### [vf-box](https://visual-framework.github.io/vf-core/components/vf-box/) 2.0.2 and 2.0.1
+### [vf-box](https://stable.visual-framework.dev/components/vf-box/) 2.0.2 and 2.0.1
 
 commit [8074046d63b28d4e2031d8dfdaca9e78c9a27f60](https://github.com/visual-framework/vf-core/commit/8074046d63b28d4e2031d8dfdaca9e78c9a27f60)
 

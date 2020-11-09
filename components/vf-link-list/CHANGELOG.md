@@ -1,6 +1,10 @@
-### 1.2.1
+### 1.3.1
 
 * updates `title` and/or `label` to remove 'Visual Framework ' for consistency
+
+### 1.3.0
+
+* makes the `vf-links__heading` optional.
 
 ### 1.2.0
 

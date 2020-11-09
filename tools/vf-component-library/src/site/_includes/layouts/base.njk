@@ -12,7 +12,7 @@
       Want to build a site with the Visual Framework?
       ---
       You can copy the CSS and JS you find here, but for the best experience see the building guide:
-      https://visual-framework.github.io/vf-core/building/
+      https://stable.visual-framework.dev/building/
     -->
     <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
     {% render '@vf-favicon' %}
@@ -42,7 +42,7 @@
     {%- endif -%}
 
     <!-- Feed -->
-    <link href="https://visual-framework.github.io/vf-core/feed.xml" type="application/rss+xml" rel="alternate" title="Visual Framework 2.0 Updates">
+    <link href="https://stable.visual-framework.dev/feed.xml" type="application/rss+xml" rel="alternate" title="Visual Framework 2.0 Updates">
   </head>
   <body class="{{ bodyClass }} vf-body" >
     <header class="vf-global-header | vf-search-client-side--no-index">
@@ -103,7 +103,7 @@
           {% endif %}
         {% endif %}
         {# Standard page title #}
-        <li class="vf-breadcrumbs__item">
+        <li class="vf-breadcrumbs__item" aria-current="location">
           {% if pagination.items[0].name %}
             {{ pagination.items[0].name }}
           {% else %}
