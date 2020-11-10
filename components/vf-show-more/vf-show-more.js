@@ -18,7 +18,7 @@ function vfShowMore(scope) {
   var buttonHideList = scope.querySelectorAll("[data-vf-js-show-more-button--less]");
   var targetList = scope.querySelectorAll("[data-vf-js-show-more]");
   var pagerSize = scope.querySelectorAll("[data-vf-js-show-more-pager-size]");
-  if (pagerSize) {
+  if (pagerSize.length > 0) {
     console.warn("vfShowMore","Your pager size of " + pagerSize + " was received but this option is currently not supported.");
   }
   if (!buttonList || !targetList) {
