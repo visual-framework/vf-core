@@ -242,15 +242,15 @@ function vfBannerInsert(banner,bannerId,scope) {
 
   // add appropriate padding to the page to not cover up content
   if (targetBanner.classList.contains("vf-banner--fixed")) {
-    var height = targetBanner.offsetHeight || 0;
+    var height = Number(targetBanner.offsetHeight || 0);
     var pagePadding;
     if (targetBanner.classList.contains("vf-banner--top")) {
-      pagePadding = document.body.style.paddingTop.replace(/\D/g,"") || 0;
+      pagePadding = Number(document.body.style.paddingTop.replace(/\D/g,"") || 0);
       pagePadding = pagePadding + height;
       document.body.style.paddingTop = pagePadding+"px";
     }
     if (targetBanner.classList.contains("vf-banner--bottom")) {
-      pagePadding = document.body.style.paddingBottom.replace(/\D/g,"") || 0;
+      pagePadding = Number(document.body.style.paddingBottom.replace(/\D/g,"") || 0);
       pagePadding = pagePadding + height;
       document.body.style.paddingBottom = pagePadding+"px";
     }
