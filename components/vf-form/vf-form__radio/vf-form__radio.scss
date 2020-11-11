@@ -16,6 +16,7 @@
   & + .vf-form__label {
     color: set-color(vf-color--grey--dark);
     cursor: pointer;
+    display: flex;
     padding: 0;
     position: relative;
   }
@@ -23,20 +24,21 @@
   // Box.
   & + .vf-form__label::before {
     background: set-ui-color(vf-ui-color--white);
-    border: 3px solid set-ui-color(vf-ui-color--grey--light);
+    border: 2px solid set-color(vf-color--grey);
     border-radius: 50%;
     content: '';
     display: inline-block;
     height: 16px;
     margin-right: 8px;
     position: relative;
-    top: 4px;
     width: 16px;
   }
 
   // Box hover
   &:hover + .vf-form__label::before {
+    background: set-color(vf-color--blue--light);
     border-color: set-color(vf-color--grey--dark);
+    box-shadow: inset 0 0 0 2px set-ui-color(vf-ui-color--white);
   }
 
   // Box focus
@@ -47,7 +49,8 @@
   // Box checked
   &:checked + .vf-form__label::before {
     background: set-color(vf-color--blue);
-    border-color: set-color(vf-color--blue);
+    box-shadow: inset 0 0 0 2px set-ui-color(vf-ui-color--white);
+    // border-color: set-color(vf-color--blue);
   }
 
   // Disabled state .vf-form__label.
