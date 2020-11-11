@@ -1,3 +1,7 @@
+### 1.6.3
+
+* Bug: For fixed banners, avoid interpretting numbers as strings and blowing out the page padding
+
 ### 1.6.2
 
 * JS linting
