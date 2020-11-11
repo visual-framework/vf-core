@@ -18,24 +18,34 @@ layout: layouts/boilerplate.njk
   {% render "@vf-favicon" %}
   {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "Barcelona", "meta_what": "research", "meta_active": "what"} %}
 
+  {% if serverInfo.environment == "development" -%}
   <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+  {%- else -%}
+  <link rel="stylesheet" href="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
+  {%- endif %}
+  <!--
+    Want to build a site with the Visual Framework?
+    ---
+    You can copy the CSS and JS you find here, but for the best experience see the building guide:
+    https://stable.visual-framework.dev/building/
+  -->
 </head>
-<body class="vf-body">
+<body class="vf-body vf-stack">
   <header class="vf-header">
     {% render "@vf-global-header" %}
   </header>
   {% include "./templates/breadcrumbs-boilerplate.njk" %}
 
-  <section class="vf-grid">
+  <section class="embl-grid | vf-u-fullbleed vf-u-background-color-ui--grey--light vf-stack">
+    <div></div>
     <div>
-      {% render '@vf-heading--display', {
-        "heading": "Search results",
-        "style": "invert",
-        "type": 2,
-        "tags": "h2"
+      {% render '@vf-heading', {
+        "heading": "Search pattern results",
+        "type": 1,
+        "tags": "h1"
       } %}
-      <p class="vf-text-body vf-text-body--4">
-        Showing 10 results from a total of 128 (page 1 of 13). You can also use the <a href="JavaScript:Void(0);" class="vf-link">advanced search</a>.
+      <p class="vf-text-body">
+      This is an example that can be
       </p>
 
       {% render '@vf-search', {
@@ -45,14 +55,25 @@ layout: layouts/boilerplate.njk
         "search_label": "Inline search",
         "search_placeholder": "Enter your search terms",
         "search_id": "inlinesearchitem",
-        "search_value_default": "the current search query"
+        "search_value_default": "the current search query",
+        "search_description": 'Here are some tips on how your can search.<br/>Examples: <a href="JavaScript:Void(0);" class="vf-link">Cheese</a>, <a href="JavaScript:Void(0);" class="vf-link">Brie</a>. You can also use the <a href="JavaScript:Void(0);" class="vf-link">advanced search</a>.'
       } %}
     </div>
   </section>
 
-  <section class="vf-grid vf-grid__col-4">
-    <div>
+  {# Notes
 
+  * a vf-grid vf-grid--search would be useful so it could collapse better on mobile and favour a correct left-hand width
+  * What's the best way to do paging, are icons helpful here?
+    * https://design.homeoffice.gov.uk/components/pagination
+    * https://github.com/uswds/uswds/issues/959
+    * https://github.com/alphagov/govuk-design-system-backlog/issues/77
+    * pagination might be an entirely separate discussion
+  * buttons for forms (no shadow)
+  #}
+
+  <section class="embl-grid">
+    <div>
       <div class="vf-show-hide vf-show-hide--hidden" data-vf-js-show-hide data-vf-js-show-hide-hidden>
       {% render '@vf-banner--info', {
         "alert_icon_text": "dismiss",
@@ -69,7 +90,7 @@ layout: layouts/boilerplate.njk
           <div class="vf-form__item--checkbox vf-form__item--checkbox--inline">
           <input type="checkbox" id="checkbox-inline-{{item}}" class="vf-form__checkbox">
           <label for="checkbox-inline-{{item}}" class="vf-form__label">
-          Form Label
+          Type of item ({{  [1,2,23,4,8,19] | random }})
           </label>
           </div>
         {% endfor %}
@@ -91,7 +112,20 @@ layout: layouts/boilerplate.njk
       </fieldset>
 
     </div>
-    <div class="vf-grid__col--span-3">
+    <div class="vf-stack">
+      <nav class="vf-breadcrumbs | vf-u-margin__top--0" aria-label="Breadcrumb">
+        <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
+          <li class="vf-breadcrumbs__item">
+            Showing 10 results from a total of 128 in
+          </li>
+          <li class="vf-breadcrumbs__item">
+            <a href="JavaScript:Void(0);" class="vf-breadcrumbs__link">Parent facet</a>
+          </li>
+          <li class="vf-breadcrumbs__item" aria-current="location">
+            Active facet
+          </li>
+        </ul>
+      </nav>
 
       <div class="vf-show-hide vf-show-hide--hidden" data-vf-js-show-hide data-vf-js-show-hide-hidden>
       {% render '@vf-banner--info', {
@@ -102,8 +136,8 @@ layout: layouts/boilerplate.njk
       } %}
       </div>
 
-      {# Results #}
-      <article class="vf-summary vf-summary--event">
+      {% set searchResultGeneric %}
+      <article class="vf-summary">
         <p class="vf-summary__date">
           {summary__secondary-label}
           <span class="vf-summary__meta">
@@ -118,15 +152,14 @@ layout: layouts/boilerplate.njk
         <p class="vf-summary__text">
           {summary__text} These are a few examples of text-based results that follow the same structure but with varying types of content.
         </p>
-        <section class="vf-summary__text">
-          <p class="vf-summary__location">
-            {summary__tertiary-information}
-          </p>
-        </section>
+        <p class="vf-summary__text | vf-u-type__text-body--5">
+          {summary__tertiary-information}
+        </p>
       </article>
+      {% endset %}
 
-
-      <article class="vf-summary vf-summary--event">
+      {% set searchResultTraining %}
+      <article class="vf-summary">
         <p class="vf-summary__date">
           04 September
           {# <span class="vf-summary__meta">
@@ -141,14 +174,36 @@ layout: layouts/boilerplate.njk
         <p class="vf-summary__text">
           This Masters development programme is aimed at current Research Infrastructures managers and leaders who wish to develop the competencies required to meet the needs of Research Infrastructures in the planning, construction and operation phases.
         </p>
+        <p class="vf-summary__text | vf-u-type__text-body--5">
+          EMBO Workshop, Heidelberg
+        </p>
+      </article>
+
+      <article class="vf-summary">
+        <p class="vf-summary__date">
+          Online tutorial
+          {# <span class="vf-summary__meta">
+          dddd
+          </span> #}
+        </p>
+        <h3 class="vf-summary__title">
+          <a href="###" class="vf-summary__link">
+            Functional genomics I: Introduction and designing experiments
+          </a>
+        </h3>
+        <p class="vf-summary__text">
+          This online course will give you an introduction to functional genomics. We will introduce you to different types of functional genomics studies and discuss best practices when designing your own ...
+        </p>
         <section class="vf-summary__text">
-          <p class="vf-summary__location">
-            EMBO Workshop, Heidelberg
+          <p class="vf-summary__location | vf-u-type__text-body--5">
+            <a class="vf-link" href="JavaScript:Void(0);">More results for this online tutorial</a>
           </p>
         </section>
       </article>
+      {% endset %}
 
-      <article class="vf-summary vf-summary--event ">
+      {% set searchResultScientific %}
+      <article class="vf-summary">
         <p class="vf-summary__date">
           <span class="vf-summary__meta">
           Source: <a class="vf-link" href="JavaScript:Void(0);">UniProtKB (ID: KR171_HUMAN)</a>
@@ -166,38 +221,104 @@ layout: layouts/boilerplate.njk
           {# <p class="vf-summary__location">
             Source: <a class="vf-link" href="JavaScript:Void(0);">UniProtKB (ID: KR171_HUMAN)</a>
           </p> #}
-          <p class="vf-summary__location">
+          <p class="vf-summary__location | vf-u-type__text-body--5">
             Cross References: <a class="vf-link" href="JavaScript:Void(0);">Protein expression data</a> (18), <a class="vf-link" href="JavaScript:Void(0);">Bioactive molecules</a> (15), <a class="vf-link" href="JavaScript:Void(0);">Nucleotide sequences</a> (6), <a class="vf-link" href="JavaScript:Void(0);">show more</a>
-          </p>
-          <p class="vf-summary__location">
+            <br/>
             Formats: <a class="vf-link" href="JavaScript:Void(0);">FASTA format</a>, <a class="vf-link" href="JavaScript:Void(0);">Feature Viewer</a>, <a class="vf-link" href="JavaScript:Void(0);">Interpro Matches</a>, <a class="vf-link" href="JavaScript:Void(0);">show more</a>
           </p>
         </section>
       </article>
+      {% endset %}
 
-      <article class="vf-summary vf-summary--event">
-        <p class="vf-summary__date">
-          Online tutorial
-          {# <span class="vf-summary__meta">
-          dddd
-          </span> #}
+      {% set searchResultJob %}
+
+      <article class="vf-summary vf-summary--job">
+        <p class="vf-summary__meta">
+          Staff Member in EMBL-EBI Hinxton
         </p>
+
         <h3 class="vf-summary__title">
-          <a href="###" class="vf-summary__link">
-            Functional genomics I: Introduction and designing experiments
-          </a>
+          <a href="/jobs/position/EBI01735" class="vf-summary__link">Bioinformatician</a>
         </h3>
-        <p class="vf-summary__text">
-          This online course will give you an introduction to functional genomics. We will introduce you to different types of functional genomics studies and discuss best practices when designing your own ...
-        </p>
-        <section class="vf-summary__text">
-          <p class="vf-summary__location">
-            <a class="vf-link" href="JavaScript:Void(0);">More results for this online tutorial</a>
-          </p>
-        </section>
-      </article>
 
-      {% render '@vf-pagination--default', {
+        <p class="vf-summary__text">The Open Targets (OT) project aims to systematically identify and prioritise drug targets by combining genetic, clinical and functional genomics data. It is a shared initiative between the European...</p>
+        <a href="/jobs/position/EBI01735" class="vf-summary__button | vf-button vf-button--primary vf-button--outline vf-button--sm">Learn more</a>
+        <p class="vf-summary__date">Closes 22 December 2020</p>
+      </article>
+      {% endset %}
+
+      {% set searchResultContent %}
+      {% endset %}
+
+      {% set searchResultTabular %}
+      {% endset %}
+
+
+      {# Results #}
+      <div class="vf-tabs">
+        <ul class="vf-tabs__list" data-vf-js-tabs>
+          <li class="vf-tabs__item">
+            <a class="vf-tabs__link" href="#vf-tabs__section--1">Generic</a>
+          </li>
+          <li class="vf-tabs__item">
+            <a class="vf-tabs__link" href="#vf-tabs__section--2">Training</a>
+          </li>
+          <li class="vf-tabs__item">
+            <a class="vf-tabs__link" href="#vf-tabs__section--3">Scientific</a>
+          </li>
+          <li class="vf-tabs__item">
+            <a class="vf-tabs__link" href="#vf-tabs__section--4">Jobs</a>
+          </li>
+          <li class="vf-tabs__item">
+            <a class="vf-tabs__link" href="#vf-tabs__section--5">Content</a>
+          </li>
+          <li class="vf-tabs__item">
+            <a class="vf-tabs__link" href="#vf-tabs__section--6">Tabular</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="vf-tabs-content" data-vf-js-tabs-content>
+        <section class="vf-tabs__section" id="vf-tabs__section--1">
+          {{ searchResultGeneric | safe }}
+          {{ searchResultGeneric | safe }}
+          {{ searchResultGeneric | safe }}
+          {{ searchResultGeneric | safe }}
+          {{ searchResultGeneric | safe }}
+          {{ searchResultGeneric | safe }}
+        </section>
+        <section class="vf-tabs__section" id="vf-tabs__section--2">
+          {{ searchResultTraining | safe }}
+          {{ searchResultTraining | safe }}
+        </section>
+        <section class="vf-tabs__section" id="vf-tabs__section--3">
+          {{ searchResultScientific | safe }}
+          {{ searchResultScientific | safe }}
+          {{ searchResultScientific | safe }}
+          {{ searchResultScientific | safe }}
+          {{ searchResultScientific | safe }}
+          {{ searchResultScientific | safe }}
+        </section>
+        <section class="vf-tabs__section" id="vf-tabs__section--4">
+          {{ searchResultJob | safe }}
+          {{ searchResultJob | safe }}
+          {{ searchResultJob | safe }}
+          {{ searchResultJob | safe }}
+          {{ searchResultJob | safe }}
+        </section>
+        <section class="vf-tabs__section" id="vf-tabs__section--5">
+          {{ searchResultContent | safe }}
+          {{ searchResultContent | safe }}
+          {{ searchResultContent | safe }}
+          {{ searchResultContent | safe }}
+          {{ searchResultContent | safe }}
+        </section>
+        <section class="vf-tabs__section" id="vf-tabs__section--6">
+          {{ searchResultTabular | safe }}
+        </section>
+      </div>
+
+      {# {% render '@vf-pagination--default', {
         "previous_text": "Previous",
         "previous_url": "JavaScript:Void(0);",
         "next_text": "Next",
@@ -237,7 +358,50 @@ layout: layouts/boilerplate.njk
             "item_modifier": "vf-pagination__item--next-page"
           }
         ]
-      } %}
+      } %} #}
+
+      <nav class="vf-pagination" aria-label="Pagination">
+        <ul class="vf-pagination__list">
+
+          <li class="vf-pagination__item vf-pagination__item--pages-per">
+            <div class="vf-form__item--inline">
+              <label class="vf-form__label" for="vf-form__select">Results per page</label>
+
+              <select class="vf-form__select" id="vf-form__select">
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+              </select>
+            </div>
+          </li>
+          <li class="vf-pagination__item">
+            <span class="vf-u-sr-only">Result </span> 1 - 10 of 1,345
+          </li>
+          <li class="vf-pagination__item vf-pagination__item--jump-back">
+            <a href="JavaScript:Void(0);" class="vf-pagination__link">
+              << <span class="vf-u-sr-only">First set</span>
+            </a>
+          </li>
+          <li class="vf-pagination__item vf-pagination__item--previous-page">
+            <a href="JavaScript:Void(0);" class="vf-pagination__link">
+              < Previous <span class="vf-u-sr-only">set</span>
+            </a>
+          </li>
+          <li class="vf-pagination__item vf-pagination__item--next-page">
+            <a href="JavaScript:Void(0);" class="vf-pagination__link">
+              Next > <span class="vf-u-sr-only">set</span>
+            </a>
+          </li>
+          <li class="vf-pagination__item vf-pagination__item--jump-forward">
+            <a href="JavaScript:Void(0);" class="vf-pagination__link">
+              >> <span class="vf-u-sr-only">Last set</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
 
       <div class="vf-show-hide vf-show-hide--hidden" data-vf-js-show-hide data-vf-js-show-hide-hidden>
       {% render '@vf-banner--info', {
@@ -257,5 +421,20 @@ layout: layouts/boilerplate.njk
   /* vf-show-hide still needs to be implemented */
   .vf-show-hide--hidden { display: none; }
   </style>
+
+  {% if serverInfo.environment == "development" %}
+  <div class="vf-grid">
+    <div class="vf-body--text">
+      <p><code class="vf-code-example__pre"> ⚠️ You're running the {{serverInfo.environment}} command; Page location {{ page.inputPath }} </code></p>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- This page was generated on {{ siteConfig.buildTime }} -->
+  {% if serverInfo.environment == "development" -%}
+    <script src="{{ '/scripts/scripts.js' | url }}"></script>
+  {%- else -%}
+    <script src="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/scripts/scripts.js"></script>
+  {%- endif -%}
 </body>
 </html>

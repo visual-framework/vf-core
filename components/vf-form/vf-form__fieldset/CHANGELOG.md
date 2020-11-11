@@ -1,3 +1,7 @@
+### 1.1.1
+
+* style fieldset label as a heading 5
+
 ### 1.1.0
 
 * updates spacing design tokens

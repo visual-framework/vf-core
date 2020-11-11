@@ -11,15 +11,35 @@
 
 @import 'vf-search.variables.scss';
 
+
+// embl-grid
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+* Component: #{map-get($componentInfo, 'name')}
+* Version: #{map-get($componentInfo, 'version')}
+* Location: #{map-get($componentInfo, 'location')}
+*/
+
 .vf-search--inline {
   display: flex;
+  flex-wrap: wrap;
 
   .vf-search__item {
     flex-grow: 1;
+    max-width: $vf-breakpoint--sm;
   }
 
   .vf-search__button {
+    margin-bottom: 0;
     margin-left: 16px;
     top: -12px;
+  }
+
+  .vf-search__description {
+    @include set-type(text-body--3);
+    flex-basis: 100%;
   }
 }

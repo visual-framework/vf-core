@@ -1,3 +1,7 @@
+### 1.2.1
+
+* reduce size of form labels to body text 3
+
 ### 1.2.0
 
 * updates spacing design tokens

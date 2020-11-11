@@ -1,3 +1,7 @@
+### 1.0.1
+
+* refine spacing on inline select elements
+
 ### 1.0.0
 
 * makes the example the 'warts and all' with all labels and helper text

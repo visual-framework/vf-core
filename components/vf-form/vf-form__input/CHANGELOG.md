@@ -1,3 +1,7 @@
+### 1.1.1
+
+* improve stroke colour on input fields (darker, thinner)
+
 ### 1.1.0
 
 * adds `type="search"` form input

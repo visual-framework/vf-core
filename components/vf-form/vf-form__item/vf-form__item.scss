@@ -10,11 +10,16 @@
  */
 
 .vf-form__item {
-  margin-bottom: 32px;
+  @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--200));
 }
 
 .vf-form__item--inline {
+  .vf-form__select,
   .vf-form__label {
     display: inline-block;
+  }
+  .vf-form__select {
+    width: auto;
+    @include padding(map-get($vf-spacing-map, vf-spacing--200),map-get($vf-spacing-map, vf-spacing--800),map-get($vf-spacing-map, vf-spacing--200),map-get($vf-spacing-map, vf-spacing--500));
   }
 }

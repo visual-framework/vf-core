@@ -1,3 +1,7 @@
+### 1.0.2
+
+* improve horizontal layout of radio with flexbox
+
 ### 1.0.0
 
 * repositions the input and it's label so they're more horizontally in line

@@ -13,16 +13,15 @@
 
 .vf-pagination__list {
   display: flex;
-  justify-content: space-between;
   list-style-type: none;
-  padding-left: 0;
+  justify-content: flex-end
 }
 .vf-pagination__item {
-  align-self: flex-end;
-  flex: 1 1 0;
+  align-self: baseline;
+  // flex: 1 1 0;
   text-align: center;
+  @include padding--inline(all,map-get($vf-spacing-map, vf-spacing--200));
 }
-
 
 .vf-pagination__item--is-active {
   background-color: set-color(vf-color--grey);
