@@ -1,3 +1,15 @@
+### 1.0.2
+
+* Improves link name detection
+  * `data-vf-analytics-label` supersedes any derived value calculation
+  * image alt text support
+* Bug: Issue when tracking image interactions
+  * https://github.com/visual-framework/vf-core/issues/887
+
+### 1.0.1
+
+* JS linting
+
 ### 1.0.0
 
 * Stable release

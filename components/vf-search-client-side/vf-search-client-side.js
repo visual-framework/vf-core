@@ -7,13 +7,14 @@
 // if you need to import any other components' JS to use here
 // import { vfOthercomponent } from 'vf-other-component/vf-other-component';
 
+/* global lunr */
+/* global searchIndex */
+
 /**
  * The global function for this component
- * @example vfcomponentName(firstPassedVar)
- * @param {string} [firstPassedVar]  - An option to be passed
+ * @example vfcomponentName()
  */
-function vfSearchClientSide(firstPassedVar) {
-  firstPassedVar = firstPassedVar || "defaultVal";
+function vfSearchClientSide() {
   var searchTerm;
   const searchQueryInput = document.querySelectorAll("[data-vf-search-client-side-input]"); // where we put the query
   const searchResultsContainer = document.querySelectorAll("[data-vf-search-client-side-results]"); // where we put the search results

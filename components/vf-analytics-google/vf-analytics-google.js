@@ -2,7 +2,7 @@
 
 /*
  * A note on the Visual Framework and JavaScript:
- * The VF is primairly a CSS framework so we've included only a minimal amount
+ * The VF is primarily a CSS framework so we've included only a minimal amount
  * of JS in components and it's fully optional (just remove the JavaScript selectors
  * i.e. `data-vf-js-tabs`). So if you'd rather use Angular or Bootstrap for your
  * tabs, the Visual Framework won't get in the way.
@@ -11,12 +11,12 @@
  * 🚫 Don't: const tabs = document.querySelectorAll('.vf-tabs');
  * ✅ Do:    const tabs = document.querySelectorAll('[data-vf-js-tabs]');
  *
- * This allows users who would prefer not to have this JS engange on an element
+ * This allows users who would prefer not to have this JS engage on an element
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
 
 
-// Decaclare `ga` as a global for eslint
+// Declare `ga` as a global for eslint
 /* global ga */
 
 /**
@@ -88,7 +88,6 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
       }, 900); // give a second check if GA was slow to load
     }
   }
-
 }
 
 /**
@@ -307,7 +306,11 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
 
   if (customEventName.length > 0) {
     linkName = customEventName;
-  } else { // then derive a value
+  } else if (actedOnItem.dataset.vfAnalyticsLabel) {
+    // if an explicit label, use that
+    linkName = actedOnItem.dataset.vfAnalyticsLabel;
+  } else {
+    // otherwise derive a value
 
     // Fix for when tags have undefined .innerText
     if (typeof actedOnItem.innerText === "undefined") {
@@ -324,18 +327,17 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
     // is there an inner image?
     if (linkName.length == 0 && actedOnItem.getElementsByTagName("img")) {
       if (actedOnItem.getElementsByTagName("img")[0]) {
-        if (actedOnItem.getElementsByTagName("img")[0].hasAttribute("src")) {
-          linkName = actedOnItem.src.split("/").vfGaLinkLast();
+        // if alt text, use that
+        if (actedOnItem.getElementsByTagName("img")[0].hasAttribute("alt")) {
+          linkName = actedOnItem.getElementsByTagName("img")[0].alt;
+        } else if (actedOnItem.getElementsByTagName("img")[0].hasAttribute("src")) {
+          linkName = actedOnItem.getElementsByTagName("img")[0].src.split("/").vfGaLinkLast();
         }
       }
     }
 
     // fallback to an href value
     if (linkName.length == 0 && actedOnItem.href) linkName = actedOnItem.href;
-
-    if (actedOnItem.dataset.vfAnalyticsLabel) {
-      linkName = actedOnItem.dataset.vfAnalyticsLabel;
-    }
 
     // special things for gloabl search box
     // if (parentContainer == 'Global search') {
@@ -374,6 +376,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
     var href = actedOnItem.href;
 
     // log emails and downloads to seperate event "buckets"
+    /* eslint-disable no-useless-escape */
     if (href && href.match(/^mailto\:/i)) {
       // email click
       var mailLink = href.replace(/^mailto\:/i, "");
@@ -386,6 +389,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       ga && ga("send", "event", "Download", "Type / " + extension + " / " + parentContainer, filePath);
       vfGaLogMessage("Download", "Type / " + extension + " / " + parentContainer, filePath, lastGaEventTime, actedOnItem);
     }
+    /* eslint-enable no-useless-escape */
 
     // If link and is external, log it as an external link
     if (href && href.match(/^\w+:\/\//i)) {
@@ -451,7 +455,7 @@ function vfGaLogMessage(eventCategory, eventAction, eventLabel, lastGaEventTime,
   // conditional logging
   let conditionalLoggingCheck = document.querySelector("body");
   // debug: always turn on verbose analytics
-  // conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
+  // conditionalLoggingCheck.setAttribute("data-vf-google-analytics-verbose", "true");
   if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
     if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose == "true") {
       /* eslint-disable */
