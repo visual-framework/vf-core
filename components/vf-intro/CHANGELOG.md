@@ -1,3 +1,7 @@
+### 1.4.2
+
+* bug: don't apply styling to `a` elements that have a `.vf-*` class
+
 ### 1.4.1
 
 * added `column-gap` as this was missed
