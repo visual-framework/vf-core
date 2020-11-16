@@ -18,7 +18,7 @@
 
 // Declare `ga` as a global for eslint
 /* global ga */
-function ga() {};
+
 /**
  * Utility method to invalidate prior GA check.
  */
@@ -66,32 +66,28 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
 
   numberOfGaChecks++;
 
-  vfGaInit(vfGaTrackOptions);
+  // If successful we set `data-vf-google-analytics-loaded` on the `body` to true.
+  try {
+    // unset our check
+    vfGaIndicateUnloaded();
 
-
-  // // If successful we set `data-vf-google-analytics-loaded` on the `body` to true.
-  // try {
-  //   // unset our check
-  //   vfGaIndicateUnloaded();
-
-  //   if (ga && ga.loaded) {
-  //     el.setAttribute("data-vf-google-analytics-loaded", "true");
-  //     vfGaInit(vfGaTrackOptions);
-  //   } else {
-  //     if (numberOfGaChecks <= numberOfGaChecksLimit) {
-  //       setTimeout(function () {
-  //         vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
-  //       }, 900); // give a second check if GA was slow to load
-  //     }
-  //   }
-  // } catch (err) {
-  //   if (numberOfGaChecks <= numberOfGaChecksLimit) {
-  //     setTimeout(function () {
-  //       vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
-  //     }, 900); // give a second check if GA was slow to load
-  //   }
-  // }
-
+    if (ga && ga.loaded) {
+      el.setAttribute("data-vf-google-analytics-loaded", "true");
+      vfGaInit(vfGaTrackOptions);
+    } else {
+      if (numberOfGaChecks <= numberOfGaChecksLimit) {
+        setTimeout(function () {
+          vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
+        }, 900); // give a second check if GA was slow to load
+      }
+    }
+  } catch (err) {
+    if (numberOfGaChecks <= numberOfGaChecksLimit) {
+      setTimeout(function () {
+        vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
+      }, 900); // give a second check if GA was slow to load
+    }
+  }
 }
 
 /**
@@ -459,7 +455,7 @@ function vfGaLogMessage(eventCategory, eventAction, eventLabel, lastGaEventTime,
   // conditional logging
   let conditionalLoggingCheck = document.querySelector("body");
   // debug: always turn on verbose analytics
-  conditionalLoggingCheck.setAttribute('data-vf-google-analytics-verbose', 'true');
+  // conditionalLoggingCheck.setAttribute("data-vf-google-analytics-verbose", "true");
   if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
     if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose == "true") {
       /* eslint-disable */
