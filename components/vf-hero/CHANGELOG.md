@@ -1,6 +1,7 @@
 ### 1.8.0
 
-* removes the JavaScript for the `--intense` version.
+* removes the JavaScript for the `--intense` version due to an issue in Safari 14 and iOS
+  * https://github.com/visual-framework/vf-core/pull/1241
 
 ### 1.7.1
 
