@@ -1,3 +1,7 @@
+### 1.8.0
+
+* removes the JavaScript for the `--intense` version.
+
 ### 1.7.1
 
 * removes CSS for 'inlayed' design as no longer in use
