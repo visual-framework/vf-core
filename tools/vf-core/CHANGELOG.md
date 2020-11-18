@@ -1,6 +1,7 @@
 ### 2.2.12
 
 * bug: issue where the compiled css location would be incorrectly output in some scenarios
+  * https://github.com/visual-framework/vf-core/pull/1245
 
 ### 2.2.9
 
