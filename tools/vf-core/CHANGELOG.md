@@ -1,3 +1,7 @@
+### 2.2.12
+
+* bug: issue where the compiled css location would be incorrectly output in some scenarios
+
 ### 2.2.9
 
 - fix: avoid build failure on missing .eslintrc.js config in child projects

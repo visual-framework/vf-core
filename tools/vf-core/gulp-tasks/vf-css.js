@@ -43,10 +43,9 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       return new Transform({
         objectMode: true,
         transform: (data, _, done) => {
-          location = 'components/' + location.split('components/')[1];
+          location = 'components/' + location.split(/-components\/(.+)/)[1];
           let name = JSON.parse(data.contents.toString()).name;
           let version = JSON.parse(data.contents.toString()).version;
-
           var output = `$componentInfo: (
              name: "` + name + `",
              version: "` + version + `",
@@ -54,7 +53,6 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
              vfCoreVersion: "` + global.vfVersion + `",
              buildTimeStamp: "` + new Date().toUTCString() + `"
           );`
-
           done(null, output);
         }
       })
