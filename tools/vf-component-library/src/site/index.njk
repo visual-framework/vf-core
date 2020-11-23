@@ -17,6 +17,9 @@ layout: layouts/base.njk
       <a href="/components" class="vf-navigation__link">Components</a>
     </li>
     <li class="vf-navigation__item">
+      <a href="/patterns" class="vf-navigation__link">Examples</a>
+    </li>
+    <li class="vf-navigation__item">
       <a href="/about/faq" class="vf-navigation__link">FAQ</a>
     </li>
     <li class="vf-navigation__item">
@@ -25,9 +28,9 @@ layout: layouts/base.njk
     <li class="vf-navigation__item">
       <a href="/building" class="vf-navigation__link">Building</a>
     </li>
-    <li class="vf-navigation__item">
+    {# <li class="vf-navigation__item">
       <a href="/developing" class="vf-navigation__link">Developing</a>
-    </li>
+    </li> #}
   </ul>
 </nav>
 
@@ -47,47 +50,65 @@ layout: layouts/base.njk
 {# Installation #}
 <section class="embl-grid embl-grid--has-centered-content">
   {% render '@vf-section-header', {
-    "section_title": "Install, build",
+    "section_title": "Starter packages",
     "id": "install",
     "vf_section__content": [
-      "Install the source Sass and JavaScript files via yarn"
+      "Use an npm starter package for new projects or to graft existing code."
+    ]
+  } %}
+  <div class="vf-content">
+    {% markdown %}
+
+    Build components into CSS and JS with <a href="https://github.com/visual-framework/vf-build-boilerplate">vf-build-boilerplate</a>:
+
+    <pre class="vf-code-example vf-code-example__pre">
+    yarn create <a href="https://github.com/visual-framework/create-vf-project">@visual-framework/vf-project</a> your-new-site-name <a href="https://github.com/visual-framework/vf-build-boilerplate">vf-build-boilerplate</a>
+    </pre>
+
+    <br/>
+
+    A full static site generator based off 11ty with <a href="https://github.com/visual-framework/vf-eleventy">vf-eleventy</a>:
+
+    <pre class="vf-code-example vf-code-example__pre">
+    yarn create <a href="https://github.com/visual-framework/create-vf-project">@visual-framework/vf-project</a> your-new-site-name <a href="https://github.com/visual-framework/vf-eleventy">vf-eleventy</a>
+    </pre>
+    <br/>
+
+    [More about the above and further options](building)
+    {% endmarkdown %}
+  </div>
+</section>
+
+<section class="embl-grid embl-grid--has-centered-content">
+  {% render '@vf-section-header', {
+    "section_title": "Pick and choose",
+    "id": "pick",
+    "vf_section__content": [
+      "Install the source Sass and JavaScript files via yarn to an existing project"
     ]
   } %}
   <div class="vf-content">
 
     {% markdown %}
-
-    <pre class="vf-code-example vf-code-example__pre">
-    # <a href="/building/">Use a starter package</a>
-
-    ## Build components into CSS and JS
-    yarn create <a href="https://github.com/visual-framework/create-vf-project">@visual-framework/vf-project</a> your-new-site-name vf-build-boilerplate
-
-    ## A full static site generator based off 11ty
-    yarn create <a href="https://github.com/visual-framework/vf-eleventy">@visual-framework/vf-project</a> your-new-site-name
-    </pre>
-
-    ### Or: add VF components to an existing project
-
     {% codeblock 'bash' -%}
     # 1. Add the Sass starter and any components
 
-    yarn add @visual-framework/vf-sass-config @visual-framework/vf-sass-starter @visual-framework/vf-content
+    yarn add @visual-framework/vf-sass-config @visual-framework/vf-sass-starter @visual-framework/vf-content @visual-framework/vf-analytics-google
 
     # 2. Import it in your Sass
 
     @import 'node_modules/@visual-framework/vf-sass-starter/index.scss';
     @import 'node_modules/@visual-framework/vf-content/vf-content.scss';
 
-    # 3. Import an JS modules
+    # 3. Import JS modules
 
-    import { vfGaTrackInteraction } from '@visual-framework/vf-analytics-google/vf-analytics-google.js';
+    import { vfGaTrackInteraction } from 'node_modules/@visual-framework/vf-analytics-google/vf-analytics-google.js';
 
     {%- endcodeblock %}
 
     <br/>
 
-    [Learn more about these templates and other options](building)
+    [Browse all available components](components)
 
     {% endmarkdown %}
 
@@ -100,20 +121,21 @@ layout: layouts/base.njk
     "section_title": "Prebuilt CDN",
     "id": "cdn",
     "vf_section__content": [
-      "If you just need pre-compiled CSS and JS, you can use the CDN."
+      "Get a kitchen sink of pre-compiled CSS and JS from the CDN."
     ]
   } %}
   <div class="vf-content">
 
     {% markdown %}
-    [See examples in our HTML boilerplates](/patterns) for quick starts.
-
     {% codeblock 'html' -%}
     <!-- CSS only -->
     <link rel="stylesheet" href="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
     <!-- JS -->
     <script src="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/scripts/scripts.js"></script>
     {%- endcodeblock %}
+    <br/>
+
+    [See examples in our HTML boilerplates](/patterns) for quick starts and layouts.
 
     {% endmarkdown %}
   </div>
@@ -137,7 +159,7 @@ layout: layouts/base.njk
 
   {#- show all pages classes as sections -#}
   {#- by default, 11ty sorts by `date` field -#}
-  {%- for section in collections.sections  %}
+  {%- for section in collections.sections | reverse %}
     {% if section.data.is_index == true %}
       {# Eventually these might have unique images, not sure yet #}
       {%- set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %}
