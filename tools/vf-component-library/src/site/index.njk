@@ -17,6 +17,9 @@ layout: layouts/base.njk
       <a href="/components" class="vf-navigation__link">Components</a>
     </li>
     <li class="vf-navigation__item">
+      <a href="/patterns" class="vf-navigation__link">Examples</a>
+    </li>
+    <li class="vf-navigation__item">
       <a href="/about/faq" class="vf-navigation__link">FAQ</a>
     </li>
     <li class="vf-navigation__item">
@@ -25,9 +28,9 @@ layout: layouts/base.njk
     <li class="vf-navigation__item">
       <a href="/building" class="vf-navigation__link">Building</a>
     </li>
-    <li class="vf-navigation__item">
+    {# <li class="vf-navigation__item">
       <a href="/developing" class="vf-navigation__link">Developing</a>
-    </li>
+    </li> #}
   </ul>
 </nav>
 
@@ -55,16 +58,23 @@ layout: layouts/base.njk
   } %}
   <div class="vf-content">
     {% markdown %}
-    <pre class="vf-code-example vf-code-example__pre">
-    ## Build components into CSS and JS with <a href="https://github.com/visual-framework/vf-build-boilerplate">vf-build-boilerplate</a>
-    yarn create <a href="https://github.com/visual-framework/create-vf-project">@visual-framework/vf-project</a> your-new-site-name <a href="https://github.com/visual-framework/vf-build-boilerplate">vf-build-boilerplate</a>
 
-    ## A full static site generator based off 11ty with <a href="https://github.com/visual-framework/vf-eleventy">vf-eleventy</a>
+    Build components into CSS and JS with <a href="https://github.com/visual-framework/vf-build-boilerplate">vf-build-boilerplate</a>:
+
+    <pre class="vf-code-example vf-code-example__pre">
+    yarn create <a href="https://github.com/visual-framework/create-vf-project">@visual-framework/vf-project</a> your-new-site-name <a href="https://github.com/visual-framework/vf-build-boilerplate">vf-build-boilerplate</a>
+    </pre>
+
+    <br/>
+
+    A full static site generator based off 11ty with <a href="https://github.com/visual-framework/vf-eleventy">vf-eleventy</a>:
+
+    <pre class="vf-code-example vf-code-example__pre">
     yarn create <a href="https://github.com/visual-framework/create-vf-project">@visual-framework/vf-project</a> your-new-site-name <a href="https://github.com/visual-framework/vf-eleventy">vf-eleventy</a>
     </pre>
     <br/>
 
-    [Learn more about these templates and other options](building)
+    [More about the above and further options](building)
     {% endmarkdown %}
   </div>
 </section>
@@ -83,7 +93,7 @@ layout: layouts/base.njk
     {% codeblock 'bash' -%}
     # 1. Add the Sass starter and any components
 
-    yarn add @visual-framework/vf-sass-config @visual-framework/vf-sass-starter @visual-framework/vf-content
+    yarn add @visual-framework/vf-sass-config @visual-framework/vf-sass-starter @visual-framework/vf-content @visual-framework/vf-analytics-google
 
     # 2. Import it in your Sass
 
@@ -149,7 +159,7 @@ layout: layouts/base.njk
 
   {#- show all pages classes as sections -#}
   {#- by default, 11ty sorts by `date` field -#}
-  {%- for section in collections.sections  %}
+  {%- for section in collections.sections | reverse %}
     {% if section.data.is_index == true %}
       {# Eventually these might have unique images, not sure yet #}
       {%- set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %}
