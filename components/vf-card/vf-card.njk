@@ -32,7 +32,7 @@
   <img src="{{ card_image }}" alt="{{ card_image__alt }}" class="vf-card__image" loading="lazy">
   {%- endif %}
 
-  <div class="vf-card__content">
+  <div class="vf-card__content | vf-stack vf-stack--400">
 
     <{%- if card_title %}h3{% else %}span{%- endif %} class="vf-card__title">
     {%- if card_href %}<a class="vf-card__link" href="{{ card_href if card_href else '#' }}">{% endif -%}

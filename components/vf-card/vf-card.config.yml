@@ -4,7 +4,6 @@ title: Card
 label: Card
 status: alpha
 # preview: '@preview--nogrid'
-collated: true
 # The template used from /components/_previews
 #
 context:
@@ -13,11 +12,76 @@ context:
 # Per-variant options
 variants:
   - name: default
-    label: Default
-    hidden: true
+    label: default
+    context:
+      card_title: A Default Card Title
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_image__alt: Image alt text
+  - name: Default with Link
+    label: Default with Link
+    hidden: false
+    context:
+      card_title: A Default With Link Card Title
+      card_href: "JavaScript:Void(0);"
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_image__alt: Image alt text
+
+  - name: Bordered
+    label: Bordered
+    hidden: false
+    context:
+      card_title: A Bordered Card Title
+      variant: bordered
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_image__alt: Image alt text
+  - name: Bordered with Link
+    label: Bordered with Link
+    hidden: false
+    context:
+      card_title: A Bordered With Link Card Title
+      variant: bordered
+      card_href: "JavaScript:Void(0);"
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_image__alt: Image alt text
+
+  - name: Striped
+    label: Striped
+    hidden: false
+    context:
+      card_title: A Striped Card Title
+      variant: striped
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_image__alt: Image alt text
+  - name: striped-link
+    label: Striped with link
+    context:
+      card_title: A Striped Card Title with Link
+      variant: striped
+      card_href: "JavaScript:Void(0);"
+      card_image: ../../assets/vf-card/assets/vf-card-example.png
+      card_text: Lorem ipsum dolor sit amet, <a class="vf-card__link" href="JavaScript:Void(0);">consectetur</a> adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_image__alt: Image alt text
+
+
+
+
+
+
+
+
+
+
+
+
+
   - name: very-easy
     label: Very Easy
-    hidden: false
+    hidden: true
     context:
       card_title: A Easy Card Title 1
       variant: very-easy
@@ -26,7 +90,7 @@ variants:
       card_image__alt: Image alt text
   - name: easy
     label: Easy
-    hidden: false
+    hidden: true
     context:
       card_title: A Easy Card Title 2
       variant: easy
@@ -35,6 +99,7 @@ variants:
       card_image__alt: Image alt text
   - name: easy--primary
     label: Easy (primary)
+    hidden: true
     context:
       card_title: Easy Card with primary accent
       theme: primary
@@ -44,6 +109,7 @@ variants:
       card_image__alt: Image alt text
   - name: easy--secondary
     label: Easy (secondary)
+    hidden: true
     context:
       theme: secondary
       variant: easy
@@ -53,6 +119,7 @@ variants:
       card_image__alt: Image alt text
   - name: easy--tertiary
     label: Easy (tertiary)
+    hidden: true
     context:
       theme: tertiary
       variant: easy
@@ -62,6 +129,7 @@ variants:
       card_image__alt: Image alt text
   - name: easy--quaternary
     label: Easy (quaternary)
+    hidden: true
     context:
       theme: quaternary
       variant: easy
@@ -71,6 +139,7 @@ variants:
       card_image__alt: Image alt text
   - name: normal
     label: Normal
+    hidden: true
     context:
       card_title: A Normal Card
       variant: normal
@@ -79,6 +148,7 @@ variants:
       card_image__alt: Image alt text
   - name: normal--primary
     label: Normal (primary)
+    hidden: true
     context:
       card_title: A Normal Card with primary accent
       theme: primary
@@ -88,7 +158,7 @@ variants:
       card_image__alt: Image alt text
   - name: normal--secondary
     label: Normal (secondary)
-    hidden: false
+    hidden: true
     context:
       theme: secondary
       variant: normal
@@ -98,7 +168,7 @@ variants:
       card_image__alt: Image alt text
   - name: normal--tertiary
     label: Normal (tertiary)
-    hidden: false
+    hidden: true
     context:
       theme: tertiary
       variant: normal
@@ -108,7 +178,7 @@ variants:
       card_image__alt: Image alt text
   - name: normal--quaternary
     label: Normal (quaternary)
-    hidden: false
+    hidden: true
     context:
       theme: quaternary
       variant: normal
@@ -118,6 +188,7 @@ variants:
       card_image__alt: Image alt text
   - name: normal--primary--with-link
     label: Normal (primary) link
+    hidden: true
     context:
       card_title: A Normal Primary Card with Link
       theme: primary
