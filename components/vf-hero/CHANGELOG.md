@@ -1,3 +1,7 @@
+### 3.0.0
+
+
+
 ### 2.0.0
 
 * deprecates the `--intense` variant.

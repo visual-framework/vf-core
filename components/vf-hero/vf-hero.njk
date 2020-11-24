@@ -14,24 +14,31 @@
 <section
   class="vf-hero
   {{ modifier_class }}
-  {% if alt %} vf-hero--alt{% endif %}
-  {%- if theme %}
-   vf-hero-theme--{{theme}}
-  {% endif %}
-  {%- if content_theme %}
-  vf-hero__hero-theme-content--{{content_theme}}
-  {% endif %}
+
+  {%- if striped %} vf-hero--striped{% endif %}
+
+  {%- if inverted %} vf-hero--inverted{% endif %}
+
+  {%- if theme %} vf-hero-theme--{{theme}}{% endif %}
+
   {% if flush %} vf-hero--flush{% endif %}
+
   {% if offset %} vf-hero--offset{% endif %}
+
   {% if block %} vf-hero--block{% endif %}
+
   {% if centered %} vf-hero--centered{% endif %}
+
   {% if spacing %} vf-hero--{{spacing}}{% endif %}
    | vf-u-fullbleed"
+
   style="
-  {% if vf_hero_image %}--vf-hero-bg-image: {{vf_hero_image}}{% endif %}"
->
+  {% if vf_hero_image %}--vf-hero-bg-image: {{vf_hero_image}}{% endif %}
+  {% if vf_hero_image_size %}--vf-hero-bg-image-size: {{vf_hero_image_size}}{% endif %}
+  ">
   {% if deprecated_text %}<!-- {{ deprecated_text }} -->{% endif %}
-  <div class="vf-hero__content | vf-stack vf-stack--400">
+  <div class="vf-hero__content
+    | vf-stack vf-stack--400 ">
     {% if vf_hero_heading %}
     <h2 class="vf-hero__heading">
       {{ vf_hero_heading }}
