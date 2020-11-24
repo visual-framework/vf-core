@@ -1,6 +1,6 @@
 ---
 title: 2.3.3-rc.3 Component updates
-subtitle: Minor component updates and bug fixes
+subtitle: Minor updates and bug fixes
 date: 2020-11-16 15:33:50
 version: 2.3.3-rc.3
 tags:

@@ -1,13 +1,18 @@
 ---
-title: 2.3.3-rc.1 Component updates
+title: 2.3.3 Component updates
 subtitle: Minor updates and bug fixes
-date: 2020-11-09 12:33:50
-version: 2.3.3-rc.1
+date: 2020-11-24 08:33:50
+version: 2.3.3
 tags:
   - posts
   - changelog
 layout: layouts/post.njk
 ---
+
+<br/>This minor update brings bug fixes, and a few minor features. It also incorporates improvements from the 2.3.3 release candidates, all of which reflect minor improvements.
+
+- [2.3.3-rc.3 Component updates]({{ '/updates/2020-11-16-component-updates' | url }})
+- [2.3.3-rc.1 Component updates]({{ '/updates/2020-11-09-component-updates' | url }})
 
 {# macros #}
 {% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
@@ -35,16 +40,21 @@ As a reminder, the rollup CSS and JS are compilations of many independently vers
 </div>
 </div>
 
-This minor update brings bug fixes and dependency updates.
+## Minor features
+
+{{ notes("vf-analytics-google", "1.0.3", "af8a35dd794aa9eea72c47ca3b783628611db299") }}
+
+* Add the vfGaTrackInteraction function to the exported members of vf-analytics-google.
+  * https://github.com/visual-framework/vf-core/issues/1248
+
+{{ notes("vf-hero", "1.8.0", "33dd9b0c8f9ddf643804b0f5d3d960c6c640d06a") }}
+
+* removes the JavaScript for the `--intense` version due to an issue in Safari 14 and iOS
+  * https://github.com/visual-framework/vf-core/pull/1241
 
 ## Bug fixes
 
-{{ notes('vf-inlay', '2.0.1', 'f9f91eaaa64c20f8dfa4e2b6ffc2b5dab5c99c40') }}
+{{ notes("vf-core", "2.2.12", "bbf00234d6d776233fa70bd28692abbbb0ac7446") }}
 
-* Bug: fixes typos in Sass introduced in 2.0.0
-  * https://github.com/visual-framework/vf-core/pull/1221
-
-{{ notes('vf-component-initialization', '1.1.0', 'ec611413e0b632633e19e12bb70ef8c6b13a593f') }}
-
-* Updates to Fractal 1.5.0 (for our use this is mostly minor bug fixes)
-  * https://github.com/visual-framework/vf-core/pull/1183
+* bug: issue where the compiled css location would be incorrectly output in some scenarios
+  * https://github.com/visual-framework/vf-core/pull/1245

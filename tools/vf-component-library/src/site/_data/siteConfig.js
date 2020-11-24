@@ -11,7 +11,7 @@ module.exports = {
   },
   buildTime: DateTime.fromISO(new Date().toISOString()),
   // vfVersion: global.vfVersion,
-  vfVersion: "v2.3.3-rc.3",
+  vfVersion: "v2.3.3",
   sections: {
     about: {
       url: "/about",
