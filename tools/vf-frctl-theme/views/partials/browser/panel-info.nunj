@@ -1,0 +1,68 @@
+<div class="Browser-panel" data-role="tab-panel" id="browser-{{ entity.id }}-panel-info">
+    <ul class="Meta">
+        <li class="Meta-item">
+            <strong class="Meta-key">{{ frctl.theme.get('labels.components.handle') }}:</strong>
+            <span class="Meta-value">@{{ entity.handle }}</span>
+        </li>
+        {% if entity.tags.length > 1 %}
+        <li class="Meta-item">
+            <strong class="Meta-key">{{ frctl.theme.get('labels.components.tags') }}:</strong>
+            <span class="Meta-value">
+                {% for tag in entity.tags %}
+                    <span>{% if tag %}{{ tag }}</span>{% if not loop.last %}, {% endif %}{% endif %}
+                {% endfor %}
+            </span>
+        </li>
+        {% endif %}
+        {% if entity.isComponent %}
+        {% set variants = entity.variants().filter('isHidden', false) %}
+        {% else %}
+        {% set variants = entity.parent.variants().filter('isHidden', false) %}
+        {% endif %}
+        {% if variants.size > 1 %}
+        <li class="Meta-item">
+            <strong class="Meta-key">{{ frctl.theme.get('labels.components.variants') }} <em class="Meta-count">({{ variants.size }})</em>:</strong>
+            <span class="Meta-value Meta-value--linkList">
+            {% for variant in variants.items() %}
+                <a href="{{ path(frctl.theme.urlFromRoute('component', { handle: variant.handle })) }}">
+                    <span>{{ variant.label }}</span>
+                </a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            </span>
+        </li>
+        {% endif %}
+        <li class="Meta-item">
+            <strong class="Meta-key">{{ frctl.theme.get('labels.components.preview.label') }}:</strong>
+            <span class="Meta-value">
+                <ul>
+                    <li><a data-no-pjax href="{{ path(frctl.theme.urlFromRoute('preview', { handle: entity.handle })) }}"><span>{{ frctl.theme.get('labels.components.preview.withLayout') }}</span> {% include "icons/open-in-browser.svg" %}</a></li>
+                    <li><a data-no-pjax href="{{ path(frctl.theme.urlFromRoute('render', { handle: entity.handle })) }}"><span>{{ frctl.theme.get('labels.components.preview.componentOnly') }}</span> {% include "icons/open-in-browser.svg" %}</a></li>
+                </ul>
+            </span>
+        </li>
+        <li class="Meta-item">
+            <strong class="Meta-key">{{ frctl.theme.get('labels.components.path') }}:</strong>
+            <span class="Meta-value">{{ entity.viewPath | componentPath }}</span>
+        </li>
+        {% if entity.references.length %}
+        <li class="Meta-item">
+            <strong class="Meta-key">{{ frctl.theme.get('labels.components.references') }} <em class="Meta-count">({{ entity.references.length }})</em>:</strong>
+            <span class="Meta-value Meta-value--linkList">
+            {% for ref in entity.references %}
+                <a href="{{ path(frctl.theme.urlFromRoute('component', { handle: ref.handle })) }}">@<span>{{ ref.handle }}</span></a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            </span>
+        </li class="Meta-item">
+        {% endif %}
+        {% if entity.referencedBy.length %}
+        <li class="Meta-item">
+            <strong class="Meta-key">{{ frctl.theme.get('labels.components.referenced') }} <em class="Meta-count">({{ entity.referencedBy.length }})</em>:</strong>
+            <span class="Meta-value Meta-value--linkList">
+            {% for ref in entity.referencedBy %}
+                <a href="{{ path(frctl.theme.urlFromRoute('component', { handle: ref.handle })) }}">@<span>{{ ref.handle }}</span></a>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+            </span>
+        </li>
+        {% endif %}
+    </ul>
+</div>

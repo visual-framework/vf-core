@@ -1,0 +1,52 @@
+{% import "macros/status.nunj" as status %}
+
+<p>You can browse the component library using the navigation on the left.</p>
+
+<h3>Component statuses</h3>
+<p>Components and their variants have been given statuses reflecting their state of completion. The available statuses are listed below.</p>
+<table>
+<tr>
+    <th>Label</th>
+    <th>Description</th>
+</tr>
+{% for handle, st in frctl.get('components.statuses') %}
+<tr>
+    <td>{{ status.tag(st) }}</td>
+    <td>{{ st.description }}</td>
+</tr>
+{% endfor %}
+</table>
+
+
+{% import "macros/status.nunj" as status %}
+
+{# Docs inside the component library should be thin,
+   instead they should be on a centralised documentation site.
+   https://github.com/visual-framework/vf-core/issues/447#issuecomment-507190595
+   Rather linking to pages we make a container-ized list of the docs (the best nav is no nav) #}
+{% asyncEach item in frctl.docs %}
+  {% asyncEach menuitem in item %}
+    {# {% if menuitem.isIndex == true %} #}
+      <section class="embl-grid embl-grid--has-centered-content">
+        <div class="vf-section-header">
+          <h3 class="vf-section-header__heading">{{ menuitem.title }}</h3>
+        </div>
+        <div class="vf-section-content | vf-content">
+          <p class="vf-text--body vf-text-body--2">{{ menuitem.context.intro }}</p>
+
+          {{ menuitem.content | markdown }}
+          {# <li class="vf-navigation__item {% if doc.path == menuitem.path %}is-active{% endif %}">
+            <a href="{{ path( (menuitem | url), request ) }}" class="vf-navigation__link">{{ menuitem.title }}</a>
+          </li> #}
+          {# <hr class="vf-divider" /> #}
+        </div>
+      </section>
+    {# {% endif %} #}
+  {% endeach %}
+{% endeach %}
+
+<div class="vf-grid vf-grid__col-1">
+  <div class="">
+    {% include 'partials/browser/component-list.nunj' %}
+  </div>
+</div>

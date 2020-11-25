@@ -4,7 +4,7 @@
 
 ### 1.0.1
 
-- Makes use of 'full width' which is useful for componets using `vf-u-fullbleed` or similar
+- Makes use of 'full width' which is useful for componets using `vf-u-fullbleed` or similar.
 
 ### 1.0.0
 

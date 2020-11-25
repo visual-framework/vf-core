@@ -1,0 +1,57 @@
+{% extends "layouts/pjax.nunj" if request.isPjax else "layouts/frame.nunj" %}
+
+{% block content %}
+
+<div class="Document">
+
+    <div class="Document-header">
+      {% block docHeader %}
+      {# <h1 class="Document-title">{{ page.title }}</h1>
+      {% if status %}{{ status }}{% endif %} #}
+
+
+      <section class="vf-intro | embl-grid embl-grid--has-centered-content">
+        <div>
+            <!-- empty -->
+        </div>
+        <div>
+          <h1 class="vf-intro__heading vf-intro__heading--has-tag">{{ page.title }} <a href="" class="vf-badge vf-badge--primary vf-badge--phases">{% if status.length >= 3 %}{{ status.val }}{% else %}alpha{% endif %}</a></h1>
+          {% if page.lede %}
+            <p class="vf-lede">{{ page.lede }}</p>
+          {% endif %}
+          {% if page.intro %}
+            <p class="vf-intro__text">{{ page.intro }}</p>
+          {% endif %}
+        </div>
+      </section>
+      {% endblock %}
+
+
+    </div>
+
+    <div class="Document-content">
+
+    <div class="vf-grid vf-grid__col-1">
+      <div class="vf-content">
+
+        {% block docContent %}{% endblock %}
+
+      </div>
+    </div>
+
+    {% if request.path == '/' %}
+    {# Only show component list on documentation homepage #}
+      {% include 'partials/content/overview.nunj' %}
+    {% endif %}
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

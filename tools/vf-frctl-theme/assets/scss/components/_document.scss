@@ -1,0 +1,23 @@
+.Document {
+    padding: 1.5rem 2rem;
+
+    @include mq($until: nav-collapse) {
+        padding: 1.25rem 1rem;
+    }
+}
+
+.Document-header {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid $color-frame-border;
+    padding-bottom: 0.5rem;
+
+    .Status {
+        @include margin-inline(start, auto);
+    }
+}
+
+.Document-title {
+    @include font(title);
+}
