@@ -30,36 +30,27 @@ function vfShowMore(scope) {
     return;
   }
 
-  // initialise
+  // initialize
   targetList.forEach(targetContent => {
     let itemsToShow = Math.round(targetContent.dataset.vfJsShowMorePagerSize);
+    let itemsAvailable = targetContent.querySelectorAll('.vf-show-more__item');
 
-    // generate the appropriate style to show
-    // https://stackoverflow.com/questions/707565/how-do-you-add-css-with-javascript
-    var sheet = document.createElement("style");
-    sheet.classList.add("vf-show-more__dynamic-styling");
-    sheet.innerHTML = "/* Show/hide items beyond the specified ammount */ \n"
-    + ".vf-show-more .vf-show-more__item {\n"
-    + "  display: none;\n"
-    + "}\n"
-    + ".vf-show-more .vf-show-more__item:nth-child(-n+"+itemsToShow+") {\n"
-    + "  display: unset;\n"
-    + "}\n"
-    + ".vf-show-more.is-active .vf-show-more__item:nth-child(n+"+itemsToShow+") {\n"
-    + "  display: block; //fallback\n"
-    + "  display: unset;\n"
-    + "}\n";
-
-    targetContent.appendChild(sheet);
+    for (let index = 0; index < itemsAvailable.length; index++) {
+      const element = itemsAvailable[index];
+      if (index >= itemsToShow) {
+        element.classList.add('vf-show-more__item-overflow');
+        console.log(element)
+      }
+    }
   });
 
   // The showing function
   var showIt = function showIt(targetContent) {
-    // get the parent ul of the clicked tab
+    // get the parent of the clicked item
     targetContent = targetContent.closest("[data-vf-js-show-more]");
 
     targetContent.focus();
-    // Make the active tab focusable by the user (Tab key)
+    // Make the active item focusable by the user (Tab key)
     targetContent.removeAttribute("tabindex");
     // Set the selected state
     targetContent.setAttribute("aria-selected", "true");
@@ -68,11 +59,11 @@ function vfShowMore(scope) {
 
   // The hiding function
   var hideIt = function hideIt(targetContent) {
-    // get the parent ul of the clicked tab
+    // get the parent of the clicked item
     targetContent = targetContent.closest("[data-vf-js-show-more]");
 
     targetContent.focus();
-    // Make the active tab focusable by the user (Tab key)
+    // Make the active item focusable by the user (Tab key)
     targetContent.removeAttribute("tabindex");
     // Set the selected state
     targetContent.setAttribute("aria-selected", "false");
@@ -83,7 +74,7 @@ function vfShowMore(scope) {
   Array.prototype.forEach.call(buttonList, function (button) {
     button.parentNode.setAttribute("role", "presentation");
 
-    // Reset any active tabs from a previous JS call
+    // Reset any active items from a previous JS call
     button.classList.remove("is-active");
 
     // Handle clicking of show more for mouse users
@@ -115,7 +106,7 @@ function vfShowMore(scope) {
       Array.prototype.forEach.call(buttonHideList, function (button) {
         button.parentNode.setAttribute("role", "presentation");
 
-        // Reset any active tabs from a previous JS call
+        // Reset any active items from a previous JS call
         button.classList.remove("is-active");
 
         // Handle clicking of hide/show less for mouse users

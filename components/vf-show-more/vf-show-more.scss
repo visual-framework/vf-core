@@ -3,7 +3,7 @@
 // **Thinking about deleting this file?**
 // If your component needs no CSS/Sass, we still recommend leaving the
 // scss files in place. As this is primarily a CSS framework, it is better to
-// leave the empty files so you know a file wasn't accidently omitted.
+// leave the empty files so you know a file wasn't accidentally omitted.
 // If you don't have any Sass, you can trim this block down to:
 // "This page was intentionally left blank"
 
@@ -18,7 +18,7 @@
 
 @import 'vf-show-more.variables.scss';
 
-// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// You need to add this Sass file to ./components/vf-component-rollup/index.scss
 // @import 'vf-show-more/vf-show-more.scss';
 
 // Animation
@@ -34,7 +34,16 @@
   display: none;
 }
 
-// hide the button if there's no JS.
+// hide overflow items by default
+// vf-show-more__item-overflow is dynamically added by JS to items greater than the desired amount
+.vf-show-more .vf-show-more__item-overflow {
+  display: none;
+}
+.vf-show-more.is-active .vf-show-more__item-overflow {
+  display: unset;
+}
+
+// hide the show more button if there's no JS.
 .vf-no-js .vf-show-more__button {
   display: none !important;
 }
