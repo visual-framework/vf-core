@@ -2,7 +2,7 @@
 
 * introduces a `space` Sass function to save the keystrokes.
   * instead of typeing `map-get($vf-spacing-map, vf-spacing--400)` you can write `spacing(400)` for the same result.
-  * I've added this terse naming of the function for `set-color` and `set-ui-color` to be something like `color(green)` instead of `set-color(vf-color--green)`. The old way still works.
+* I've added this terse naming of the function for `set-color` and `set-ui-color` to be something like `color(green)` instead of `set-color(vf-color--green)`. The old way still works.
 
 ### 2.2.1
 
