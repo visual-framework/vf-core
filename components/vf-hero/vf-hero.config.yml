@@ -3,61 +3,174 @@ title: Hero
 # Label shown on index pages
 label: Hero
 status: alpha
-preview: '@preview--nogrid'
+preview: "@preview--nogrid"
 # The template used from /components/_previews
 #
 # Per-variant options
 # variants:
-  # - name: default
-  #   hidden: true
+# - name: default
+#   hidden: true
 context:
   component-type: container
-  modifier_class: vf-hero--easy
 
   vf_hero_subheading: an example of some ancillary text
   vf_hero_text:
-    - The Hentze group combines biochemical and systems–level approaches to investigate the connections between gene expression and cell metabolism, and their roles in human disease.
+    - The Hentze group combines biochemical and <a href="JavaScript:Void(0);">systems–level approaches</a> to investigate the connections between <a href="JavaScript:Void(0);">gene expression</a> and <a href="JavaScript:Void(0);">cell metabolism</a>, and their roles in human disease.
   vf_hero_link_text: Learn more.
   vf_hero_heading: About the Hentze group!
-  vf_hero__initial_row: 16em;
-  vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
 variants:
   - name: default
+    hidden: false
+    context:
+      spacing: 1200
+      newTheme: primary
+      vf_hero_image_size: auto 28.5rem
+  - name: default with inline link
+    hidden: false
+    context:
+      newTheme: primary
+      spacing: 1200
+      vf_hero_text: Learn more.
+      vf_hero_href: JavaScript:Void(0);
+  - name: default with image
+    hidden: false
+    context:
+      newTheme: primary
+      spacing: 1200
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+
+  - name: default with image and inline link
+    hidden: false
+    context:
+      newTheme: primary
+      spacing: 1200
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+      vf_hero_text: Learn more.
+      vf_hero_href: JavaScript:Void(0);
+  - name: default block
+    hidden: false
+    context:
+      vf_hero_heading: <a href="JavaScript:Void(0);">Strategy & Communications</a>
+      vf_hero_subheading: Chromosome structure and dynamics
+      vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
+      vf_hero_image_size: auto 28.5rem
+      spacing: 800
+      newTheme: primary
+      block: true
+      vf_hero_text: null
+  - name: block with image
+    hidden: false
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+      spacing: 800
+      newTheme: primary
+      block: true
+      vf_hero_text: null
+
+  - name: inverted
     hidden: true
-  - name: example
-    hidden: true
-  - name: very easy
     context:
-      modifier_class: vf-hero--very-easy
-  - name: easy
-    context:
-      modifier_class: vf-hero--easy
-  - name: easy with link
-    context:
-      modifier_class: vf-hero--easy
-      vf_hero_href: 'JavaScript:Void(0);'
-  - name: normal
-    context:
-      modifier_class: vf-hero--normal
-  - name: hard
-    context:
-      modifier_class: vf-hero--hard
-  - name: extreme
+      spacing: 1200
+      inverted: true
+      newTheme: primary
+  - name: offset
     hidden: true
     context:
-      modifier_class: vf-hero--extreme
-  - name: intense
+      offset: true
+  - name: centered
+    hidden: true
     context:
-      vf_hero_summary_title: Europe wide, global impact, infinite curiosity.
-      vf_hero_href: https://www.embl.de/aboutus/general_information/mission/index.html
-      vf_hero_text: Learn more about EMBL’s contribution to society
-      modifier_class: vf-hero--intense
+      centered: true
+  - name: flush
+    hidden: true
+    context:
+      flush: true
+  - name: centered offset
+    hidden: true
+    context:
+      offset: true
+      centered: true
+  - name: centered flush
+    hidden: true
+    context:
+      flush: true
+      centered: true
+  - name: spacing (800)
+    hidden: true
+    context:
+      spacing: 800
+  - name: spacing (1200)
+    hidden: true
+    context:
+      spacing: 1200
+  - name: spacing (1600)
+    hidden: true
+    context:
+      spacing: 1600
   - name: primary
+    hidden: true
     context:
-      modifier_class: vf-hero-theme--primary
+      newTheme: primary
   - name: secondary
+    hidden: true
     context:
-      modifier_class: vf-hero-theme--secondary
+      newTheme: secondary
   - name: tertiary
+    hidden: true
     context:
-      modifier_class: vf-hero-theme--tertiary
+      newTheme: tertiary
+  - name: striped
+    hidden: true
+    context:
+      striped: true
+  - name: striped - inverted
+    hidden: true
+    context:
+      striped: true
+
+  - name: flush - block
+    hidden: true
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
+      block: true
+      flush: true
+      vf_hero_text: null
+  - name: block - inverted
+    hidden: true
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
+      newTheme: primary
+      inverted: true
+      block: true
+      vf_hero_text: null
+
+  - name: block - striped
+    hidden: true
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      striped: true
+      block: true
+  - name: block - striped - inverted
+    hidden: true
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      inverted: true
+      striped: true
+      block: true
+  - name: block - striped - flush
+    hidden: true
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      striped: true
+      block: true
+      flush: true
