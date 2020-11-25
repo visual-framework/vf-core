@@ -12,48 +12,68 @@
 //     yourCallBack();
 //   });
 
-const chalk = require("chalk"); // node 4+
+const chalk = require("chalk"); // node 8+
+const debug = require("debug")("Eleventy:cmd");
 
 if (process.env.DEBUG) {
   require("time-require");
 }
-
 const EleventyErrorHandler = require("@11ty/eleventy/src/EleventyErrorHandler");
 
-const argv = require("minimist")(process.argv.slice(2));
-const Eleventy = require("@11ty/eleventy");
-const EleventyCommandCheck = require("@11ty/eleventy/src/EleventyCommandCheck");
-let elev = new Eleventy(argv.input, argv.output);
-
-try {
-  process.on("unhandledRejection", (error, promise) => {
-    EleventyErrorHandler.error(promise, "Unhandled rejection in promise");
-  });
-  process.on("uncaughtException", e => {
-    EleventyErrorHandler.fatal(e, "Uncaught exception");
-  });
-  process.on("rejectionHandled", promise => {
-    EleventyErrorHandler.warn(
-      promise,
-      "A promise rejection was handled asynchronously"
+const EleventyCommandCheckError = require("@11ty/eleventy/src/EleventyCommandCheckError");
+const argv = require("minimist")(process.argv.slice(2), {
+  string: ["input", "output", "formats", "config", "pathprefix", "port"],
+  boolean: [
+    "build", // vf specific
+    "dev", // vf specific
+    "quiet",
+    "version",
+    "watch",
+    "dryrun",
+    "help",
+    "serve",
+    "passthroughall",
+    "incremental",
+  ],
+  default: {
+    quiet: null,
+  },
+  unknown: function (unknownArgument) {
+    throw new EleventyCommandCheckError(
+      `We don’t know what '${unknownArgument}' is. Use --help to see the list of supported commands.`
     );
-  });
+  },
+});
+debug("command: eleventy ", argv.toString());
+const Eleventy = require("@11ty/eleventy/src/Eleventy");
 
-  let cmdCheck = new EleventyCommandCheck(argv);
-  cmdCheck.hasUnknownArguments();
+process.on("unhandledRejection", (error, promise) => {
+  EleventyErrorHandler.error(
+    error,
+    `Unhandled rejection in promise (${promise})`
+  );
+});
+process.on("uncaughtException", (error) => {
+  EleventyErrorHandler.fatal(error, "Uncaught exception");
+});
+process.on("rejectionHandled", (promise) => {
+  EleventyErrorHandler.warn(
+    promise,
+    "A promise rejection was handled asynchronously"
+  );
+});
 
-  elev.setConfigPathOverride(argv.config);
-  elev.setPathPrefix(argv.pathprefix);
-  elev.setDryRun(argv.dryrun);
-  elev.setPassthroughAll(argv.passthroughall);
-  elev.setFormats(argv.formats);
+let elev = new Eleventy(argv.input, argv.output, {
+  // --quiet and --quiet=true both resolve to true
+  quietMode: argv.quiet,
+});
 
-  let isVerbose = process.env.DEBUG ? false : !argv.quiet;
-  elev.setIsVerbose('*');
-
-} catch (e) {
-  EleventyErrorHandler.fatal(e, "Eleventy fatal error");
-}
+elev.setConfigPathOverride(argv.config);
+elev.setPathPrefix(argv.pathprefix);
+elev.setDryRun(argv.dryrun);
+elev.setIncrementalBuild(argv.incremental);
+elev.setPassthroughAll(argv.passthroughall);
+elev.setFormats(argv.formats);
 
 elev
   .init()
@@ -63,8 +83,10 @@ elev
     } else if (argv.help) {
       console.log(elev.getHelp());
     } else if (argv.serve) {
+      elev.watch();
       // Serve is instead run by the parent JS
     } else if (argv.watch) {
+      elev.watch();
       // Watch is instead run by the parent JS
     } else {
       // No default
