@@ -1,3 +1,7 @@
+### 1.0.1
+
+* JS linting
+
 ### 1.0.0
 
 * removes right padding on nested list items so arrows align properly

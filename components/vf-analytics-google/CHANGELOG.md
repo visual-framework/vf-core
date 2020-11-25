@@ -1,6 +1,35 @@
-### 1.0.0-rc.7
+### 1.0.3
+
+* Add the vfGaTrackInteraction function to the exported members of vf-analytics-google.
+  * https://github.com/visual-framework/vf-core/issues/1248
+
+### 1.0.2
+
+* Improves link name detection
+  * `data-vf-analytics-label` supersedes any derived value calculation
+  * image alt text support
+* Bug: Issue when tracking image interactions
+  * https://github.com/visual-framework/vf-core/issues/887
+
+### 1.0.1
+
+* JS linting
+
+### 1.0.0
+
+* Stable release
+* Use the more robust "beacon" logging, when available
+  * https://developers.google.com/analytics/devguides/collection/analyticsjs/sending-hits
+* Feature: track outbound/external links
+  * https://github.com/visual-framework/vf-core/issues/1210
+
+### 1.0.0-rc.8
 
 * Add label to the list of ancestors to look for
+
+### 1.0.0-rc.7
+
+* Version bump only
 
 ### 1.0.0-rc.6
 

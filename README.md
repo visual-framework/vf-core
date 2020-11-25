@@ -3,7 +3,7 @@
 
 **👋 Downloading or cloning this repo? 🛑**
 
-Most won't need to clone this repo. Do so if you only wish to [develop the architecture](https://visual-framework.github.io/vf-core/developing/) of the Visual Framework core or contribute a global component, otherwise [use one of the boilerplates or install a component directly](https://visual-framework.github.io/vf-core/).
+Most won't need to clone this repo. Do so if you only wish to [develop the architecture](https://stable.visual-framework.dev/developing/) of the Visual Framework core or contribute a global component, otherwise [use one of the boilerplates or install a component directly](https://stable.visual-framework.dev/).
 
 ---
 
@@ -11,7 +11,7 @@ Most won't need to clone this repo. Do so if you only wish to [develop the archi
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-core.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-core) [![Chat for support on Slack](https://img.shields.io/static/v1?label=chat&message=Slack&color=blue)](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/EMBL/EMBL-Visual-Framework)
 
-If you’re new to the Visual Framework system for life science websites: think of it as a Bootstrap but made for flexibility. The Visual Framework is highly modular for compatibility allowing for non-breaking use alongside other frameworks, like Bootstrap. So you can use components made elsewhere without breaking your site. [Learn more about the Visual Framework system here](https://visual-framework.github.io/vf-core/).
+If you’re new to the Visual Framework system for life science websites: think of it as a Bootstrap but made for flexibility. The Visual Framework is highly modular for compatibility allowing for non-breaking use alongside other frameworks, like Bootstrap. So you can use components made elsewhere without breaking your site. [Learn more about the Visual Framework system here](https://stable.visual-framework.dev/).
 
 This repo, for the "VF Core", is one part of that effort and — as the name suggests — is at the heart of all Visual Framework-based tools. The VF Core allows for extendable components and builds CSS, JS and other image-style assets.
 
@@ -36,23 +36,23 @@ The `vf-core` is built with:
 - [Yarn](https://yarnpkg.com/) to install components
 - [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) for component templates
 - [Lerna](https://lerna.js.org/) to publish components to npm as a [mono-repo](https://www.toptal.com/front-end/guide-to-monorepos/)
-- Name-spacing for JavaScript and CSS; more on that in [the coding standards](https://visual-framework.github.io/vf-core/developing/#guidelines)
+- Name-spacing for JavaScript and CSS; more on that in [the coding standards](https://stable.visual-framework.dev/developing/#guidelines)
 
 ## Making use of the VF Core
 
-[Here's a guide with the most common approaches](https://visual-framework.github.io/vf-core/building/).
+[Here's a guide with the most common approaches](https://stable.visual-framework.dev/building/).
 
 ## FAQ
 
-[Here's a guide to the most common questions](https://visual-framework.github.io/vf-core/#faq).
+[Here's a guide to the most common questions](https://stable.visual-framework.dev/#faq).
 
 ## Have a problem?
 
-See the [troubleshooting guide](https://visual-framework.github.io/vf-core/troubleshooting).
+See the [troubleshooting guide](https://stable.visual-framework.dev/troubleshooting).
 
 ## Want to help develop?
 
-Great. See the [development guide](https://visual-framework.github.io/vf-core/developing/).
+Great. See the [development guide](https://stable.visual-framework.dev/developing/).
 
 ---
 

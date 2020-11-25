@@ -31,7 +31,7 @@ module.exports = class extends Generator {
     this.log((
       chalk.white("This tool helps you develop new components for the Visual Framework \n") +
       chalk.white("Not sure which options to pick? See the guide at: \n") +
-      chalk.white("https://visual-framework.github.io/vf-welcome/developing/#components")
+      chalk.white("https://stable.visual-framework.dev/developing/#components")
     ));
 
     var componentType = ['element', 'block', 'container', 'layout', 'utility'];

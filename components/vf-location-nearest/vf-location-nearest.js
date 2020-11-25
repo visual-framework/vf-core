@@ -82,7 +82,9 @@ function vfLocationNearestResolve(locationsList, userLocation) {
 
     // loop through each location, matching a close city then the next closest and so on
     for (const key in locationsList) {
+      /* eslint-disable no-prototype-builtins */
       if (locationsList.hasOwnProperty(key)) {
+      /* eslint-enable no-prototype-builtins */
         if (key != "default") {
           const evalutedLocation = locationsList[key];
           var dif = PythagorasEquirectangular(latitude, longitude, evalutedLocation.latlon.split(", ")[0], evalutedLocation.latlon.split(", ")[1]);
@@ -136,7 +138,9 @@ function vfLocationNearestSave(locationName, locationId) {
   * @example vfLocationNearestOverridePopulate(locationsList, document.vfLocationNearestDomActions('.vf-component__container')[0]);
   */
 function vfLocationNearestOverridePopulate(locationsList, scope) {
+  /* eslint-disable no-redeclare */
   var scope = scope || document;
+  /* eslint-enable no-redeclare */
 
   const locationWidget = scope.querySelectorAll("[data-vf-js-location-nearest-override-widget]");
   if (!locationWidget) {
@@ -153,8 +157,10 @@ function vfLocationNearestOverridePopulate(locationsList, scope) {
 
   // Create the markup for a dropdown
   for (const key in locationsList) {
+    /* eslint-disable no-prototype-builtins */
     if (locationsList.hasOwnProperty(key)) {
-      const element = locationsList[key];
+    /* eslint-enable no-prototype-builtins */
+      // const element = locationsList[key];
       widget = widget + `<option value="${key}">${locationsList[key].name}</option>`;
     }
   }
@@ -170,7 +176,9 @@ function vfLocationNearestOverridePopulate(locationsList, scope) {
   * @example vfLocationNearestOverrideActivate(locationsList, document.vfLocationNearestDomActions('.vf-component__container')[0]);
   */
 function vfLocationNearestOverrideActivate(scope) {
+  /* eslint-disable no-redeclare */
   var scope = scope || document;
+  /* eslint-enable no-redeclare */
 
   const overrideElement = scope.querySelectorAll("[data-vf-js-location-nearest-override-widget]");
   if (!overrideElement) {
@@ -198,7 +206,9 @@ function vfLocationNearestOverrideActivate(scope) {
   * @example vfLocationNearestDomActions(document.vfLocationNearestDomActions('.vf-component__container')[0]);
   */
 function vfLocationNearestDomActions(scope) {
+  /* eslint-disable no-redeclare */
   var scope = scope || document;
+  /* eslint-enable no-redeclare */
 
   // Get items from dom
   var el = document.querySelector("body");

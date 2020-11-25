@@ -60,5 +60,5 @@ The style files included are written in [Sass](https://sass-lang.com/). If you'r
 @import "@visual-framework/vf-u-fullbleed/index.scss";
 ```
 
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)
 

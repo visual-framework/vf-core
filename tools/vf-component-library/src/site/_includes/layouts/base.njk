@@ -12,7 +12,7 @@
       Want to build a site with the Visual Framework?
       ---
       You can copy the CSS and JS you find here, but for the best experience see the building guide:
-      https://visual-framework.github.io/vf-core/building/
+      https://stable.visual-framework.dev/building/
     -->
     <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
     {% render '@vf-favicon' %}
@@ -42,7 +42,7 @@
     {%- endif -%}
 
     <!-- Feed -->
-    <link href="https://visual-framework.github.io/vf-core/feed.xml" type="application/rss+xml" rel="alternate" title="Visual Framework 2.0 Updates">
+    <link href="https://stable.visual-framework.dev/feed.xml" type="application/rss+xml" rel="alternate" title="Visual Framework 2.0 Updates">
   </head>
   <body class="{{ bodyClass }} vf-body" >
     <header class="vf-global-header | vf-search-client-side--no-index">
@@ -51,7 +51,7 @@
         {% render '@vf-logo', {logo_href:  '/' | url, sreen_reader_text: 'Visual Framework 2.0', image: siteConfig.siteInformation.url + 'assets/vf-logo/assets/logo.svg', "hidden_text": true } %}
         <nav class="vf-navigation vf-navigation--global">
           <ul class="vf-navigation__list | vf-list--inline">
-            <li class="vf-navigation__item">
+            {# <li class="vf-navigation__item">
               <a href="{{ '/about' | url }}" class="vf-navigation__link">About</a>
             </li>
             <li class="vf-navigation__item">
@@ -59,25 +59,33 @@
             </li>
             <li class="vf-navigation__item">
               <a href="{{ '/patterns' | url }}" class="vf-navigation__link">Examples</a>
-            </li>
+            </li> #}
             <li class="vf-navigation__item">
               <a href="{{ '/search' | url }}" class="vf-navigation__link">Search</a>
             </li>
             <li class="vf-navigation__item">
-              <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link">Help, chat</a>
+              <a href="https://github.com/visual-framework/vf-core" class="vf-navigation__link">GitHub</a>
+            </li>
+            <li class="vf-navigation__item">
+              <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link">Slack</a>
             </li>
           </ul>
         </nav>
       </div>
-
     </header>
+
+    {# Global navigation #}
+    {% if page.url == '/' %}
+      {% include "navigation.njk" %}
+    {% endif %}
+
     {% if page.url != '/' and page.url != '/404.html' %}
     {# don't show breadcrumb on homepage #}
     <nav class="vf-breadcrumbs | vf-search-client-side--no-index" aria-label="Breadcrumb">
       <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
-        <li class="vf-breadcrumbs__item">
+        {# <li class="vf-breadcrumbs__item">
           <a href="{{ '/' | url }}" class="vf-breadcrumbs__link">{{siteConfig.siteInformation.title}}</a>
-        </li>
+        </li> #}
         {% if tags %}
           {% if 'changelog' in tags %}
             <li class="vf-breadcrumbs__item">
@@ -103,7 +111,7 @@
           {% endif %}
         {% endif %}
         {# Standard page title #}
-        <li class="vf-breadcrumbs__item">
+        <li class="vf-breadcrumbs__item" aria-current="location">
           {% if pagination.items[0].name %}
             {{ pagination.items[0].name }}
           {% else %}
@@ -113,6 +121,33 @@
       </ul>
     </nav>
     {% endif %}
+
+    {# Render sub nav for sections #}
+    {% if section %}
+      {%- set navigationList = [] -%}
+      {%- for entry in collections[section] %}
+        {%- if entry.data.layout %}
+          {%- set isCurrent = false -%}
+          {%- if entry.url == page.url %}
+            {%- set isCurrent = true -%}
+          {%- endif %}
+          {% set navigationList = (navigationList.push({
+            "text": entry.data.title,
+            "order": entry.data.order,
+            "navigation_href": entry.url | url,
+            "currentPage": isCurrent
+          }),navigationList) %}
+        {%- endif %}
+      {%- endfor -%}
+
+      {# Order by page order #}
+      {%- set navigationList = navigationList | sort(false, true, 'order') %}
+
+      {% render '@vf-navigation', {
+        "classModifier": "main",
+        "navigation": navigationList
+      } %}
+    {%- endif %}
 
     {{ content | safe }}
     {% include "footer.njk" %}
