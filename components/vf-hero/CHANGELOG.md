@@ -1,4 +1,4 @@
-### 3.0.0
+### 2.0.0
 
 * introduces new naming convention for design variants.
   * `--inverted`: that inverts the foreground and background colours
@@ -13,7 +13,7 @@
 * reduces visible options of the new `vf-hero`.
 * older versions (v2) degrade gracefully to the default variant.
 
-### 2.0.0
+### 1.8.0
 
 * deprecates the `--intense` variant.
 
