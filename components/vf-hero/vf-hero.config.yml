@@ -3,13 +3,13 @@ title: Hero
 # Label shown on index pages
 label: Hero
 status: alpha
-preview: '@preview--nogrid'
+preview: "@preview--nogrid"
 # The template used from /components/_previews
 #
 # Per-variant options
 # variants:
-  # - name: default
-  #   hidden: true
+# - name: default
+#
 context:
   component-type: container
 
@@ -20,134 +20,157 @@ context:
   vf_hero_heading: About the Hentze group!
 variants:
   - name: default
+    hidden: false
     context:
       spacing: 1200
-      theme: secondary
+      newTheme: primary
       vf_hero_image_size: auto 28.5rem
   - name: default with inline link
+    hidden: false
     context:
-      theme: secondary
+      newTheme: primary
       spacing: 1200
       vf_hero_text: Learn more.
       vf_hero_href: JavaScript:Void(0);
-  # - name: inverted
-  #   context:
-  #     spacing: 1200
-  #     inverted: true
-  #     theme: secondary
-  # - name: offset
-  #   context:
-  #     offset: true
-  # - name: centered
-  #   context:
-  #     centered: true
-  # - name: flush
-  #   context:
-  #     flush: true
-  # - name: centered offset
-  #   context:
-  #     offset: true
-  #     centered: true
-  # - name: centered flush
-  #   context:
-  #     flush: true
-  #     centered: true
-  # - name: spacing (800)
-  #   context:
-  #     spacing: 800
-  # - name: spacing (1200)
-  #   context:
-  #     spacing: 1200
-  # - name: spacing (1600)
-  #   context:
-  #     spacing: 1600
   - name: default with image
+    hidden: false
     context:
-      theme: secondary
+      newTheme: primary
       spacing: 1200
       vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
 
   - name: default with image and inline link
+    hidden: false
     context:
-      theme: secondary
+      newTheme: primary
       spacing: 1200
       vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
       vf_hero_text: Learn more.
       vf_hero_href: JavaScript:Void(0);
-  # - name: primary
-  #   context:
-  #     theme: primary
-  # - name: secondary
-  #   context:
-  #     theme: secondary
-  # - name: tertiary
-  #   context:
-  #     theme: tertiary
-  # - name: striped
-  #   context:
-  #     striped: true
-
-  # - name: striped - inverted
-  #   context:
-  #     striped: true
-
-  # - name: flush - block
-  #   context:
-  #     vf_hero_heading: Strategy & Communications
-  #     vf_hero_subheading: Chromosome structure and dynamics
-  #     vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
-  #     block: true
-  #     flush: true
-  #     vf_hero_text: null
   - name: default block
+    hidden: false
     context:
       vf_hero_heading: <a href="JavaScript:Void(0);">Strategy & Communications</a>
       vf_hero_subheading: Chromosome structure and dynamics
       vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
       vf_hero_image_size: auto 28.5rem
       spacing: 800
-      theme: secondary
+      newTheme: primary
+      block: true
+      vf_hero_text: null
+  - name: block with image
+    hidden: false
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+      spacing: 800
+      newTheme: primary
       block: true
       vf_hero_text: null
 
-  # - name: block with image
-  #   context:
-  #     vf_hero_heading: Strategy & Communications
-  #     vf_hero_subheading: Chromosome structure and dynamics
-  #     vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
-  #     vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
-  #     spacing: 800
-  #     theme: secondary
-  #     block: true
-  #     vf_hero_text: null
+  - name: inverted
 
-  # - name: block - inverted
-  #   context:
-  #     vf_hero_heading: Strategy & Communications
-  #     vf_hero_subheading: Chromosome structure and dynamics
-  #     vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
-  #     theme: secondary
-  #     inverted: true
-  #     block: true
-  #     vf_hero_text: null
+    context:
+      spacing: 1200
+      inverted: true
+      newTheme: primary
+  - name: offset
 
-  # - name: block - striped
-  #   context:
-  #     vf_hero_heading: Strategy & Communications
-  #     vf_hero_subheading: Chromosome structure and dynamics
-  #     striped: true
-  #     block: true
-  # - name: block - striped - inverted
-  #   context:
-  #     vf_hero_heading: Strategy & Communications
-  #     vf_hero_subheading: Chromosome structure and dynamics
-  #     inverted: true
-  #     striped: true
-  #     block: true
-  # - name: block - striped - flush
-  #   context:
-  #     vf_hero_heading: Strategy & Communications
-  #     vf_hero_subheading: Chromosome structure and dynamics
-  #     striped: true
-  #     block: true
-  #     flush: true
+    context:
+      offset: true
+  - name: centered
+
+    context:
+      centered: true
+  - name: flush
+
+    context:
+      flush: true
+  - name: centered offset
+
+    context:
+      offset: true
+      centered: true
+  - name: centered flush
+
+    context:
+      flush: true
+      centered: true
+  - name: spacing (800)
+
+    context:
+      spacing: 800
+  - name: spacing (1200)
+
+    context:
+      spacing: 1200
+  - name: spacing (1600)
+
+    context:
+      spacing: 1600
+  - name: primary
+
+    context:
+      newTheme: primary
+  - name: secondary
+
+    context:
+      newTheme: secondary
+  - name: tertiary
+
+    context:
+      newTheme: tertiary
+  - name: striped
+
+    context:
+      striped: true
+  - name: striped - inverted
+
+    context:
+      striped: true
+
+  - name: flush - block
+
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
+      block: true
+      flush: true
+      vf_hero_text: null
+  - name: block - inverted
+
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      vf_hero_heading_additional: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
+      newTheme: primary
+      inverted: true
+      block: true
+      vf_hero_text: null
+
+  - name: block - striped
+
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      striped: true
+      block: true
+  - name: block - striped - inverted
+
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      inverted: true
+      striped: true
+      block: true
+  - name: block - striped - flush
+
+    context:
+      vf_hero_heading: Strategy & Communications
+      vf_hero_subheading: Chromosome structure and dynamics
+      striped: true
+      block: true
+      flush: true

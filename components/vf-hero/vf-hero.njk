@@ -21,6 +21,8 @@
 
   {%- if theme %} vf-hero-theme--{{theme}}{% endif %}
 
+  {%- if newTheme %} vf-hero--{{newTheme}}{% endif %}
+
   {% if flush %} vf-hero--flush{% endif %}
 
   {% if offset %} vf-hero--offset{% endif %}
@@ -35,10 +37,11 @@
   style="
   {% if vf_hero_image %}--vf-hero-bg-image: {{vf_hero_image}}{% endif %}
   {% if vf_hero_image_size %}--vf-hero-bg-image-size: {{vf_hero_image_size}}{% endif %}
+
+  {% if vf_hero__initial_row %} --vf-hero-grid__row--initial: {{vf_hero__initial_row}}{% endif %}
   ">
   {% if deprecated_text %}<!-- {{ deprecated_text }} -->{% endif %}
-  <div class="vf-hero__content
-    | vf-stack vf-stack--400 ">
+  <div class="vf-hero__content | vf-stack vf-stack--400 ">
     {% if vf_hero_heading %}
     <h2 class="vf-hero__heading">
       {{ vf_hero_heading }}
@@ -63,17 +66,4 @@
     </p>
     {% endif %}
   </div>
-
-  {% if modifier_class === "vf-hero--intense" %}
-  {# <script defer="defer" src="../assets/vf-hero/assets/jarallax.js"></script> #}
-  {# <script src="{{ '/assets/vf-hero/assets/jarallax.js' | path }}"></script> #}
-  <script src="../../assets/vf-hero/assets/jarallax.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function(){
-      jarallax(document.querySelectorAll('.vf-hero--intense'), {
-        speed: 1.25
-      });
-    });
-  </script>
-  {% endif %}
 </section>
