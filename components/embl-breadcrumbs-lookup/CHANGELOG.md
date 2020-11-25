@@ -1,3 +1,7 @@
+### 1.0.2
+
+* adds aria role detection of current page
+
 ### 1.0.1
 
 * JS linting
