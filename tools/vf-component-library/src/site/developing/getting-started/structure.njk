@@ -27,9 +27,8 @@ You can find the Design Tokens in `vf-core/components/vf-design-tokens`.
 The `vf-core` repo contains three types of files:
 
 1. Components that are located in `./components`
-2. Build scripts located in the root of the project (mainly)
-3. The web interface `./tools/vf-frctl-theme`
-
+2. Build scripts located in the `.tools/` of the project (mainly)
+3. The public web interface `./tools/vf-component-library`
 
 ## Detailed overview
 
@@ -44,13 +43,17 @@ The `vf-core` repo contains three types of files:
     |   |   ...
     │   └── vf-video-teaser
     ├── docs (documentation files for the web interface)
-    ├── fractal.js (configuration for the web component library)
-    ├── gulpfile.js
     ├── lerna.json
     ├── package.json
     ├── public (dynamic folder used for rendering of global CSS, JS, component assets)
     └── tools
-        ├── component-generator (make new components)
-        ├── css-generator (build requirement)
-        └── vf-frctl-theme (web interface)
+        ├── vf-component-generator (make new components)
+        ├── vf-component-initilization (collect components from the file system)
+        ├── vf-component-library (web interface)
+        ├── vf-core (the central build process)
+        |   ├── gulpfile.js
+        |   └── fractal.js (configuration for the web component library)
+        ├── vf-frctl-extensions (extensions useful when manipulating Fractal-specific data)
+        ├── vf-extensions (reusable utilities for VF projects)
+        └── vf-sass-compilation (compile invites)
 </pre>
