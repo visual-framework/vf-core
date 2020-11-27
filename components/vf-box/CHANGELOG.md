@@ -1,3 +1,8 @@
+### 2.3.0
+
+* updates font size for title/heading
+* makes sure the text is black inside the `--easy` variant.
+
 ### 2.2.0
 
 * adds internal padding option back
