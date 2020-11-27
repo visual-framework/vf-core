@@ -42,7 +42,9 @@
   <div class="vf-hero__content | vf-stack vf-stack--400 ">
     {% if vf_hero_heading %}
     <h2 class="vf-hero__heading">
+      {% if vf_hero_heading_href %}<a class="vf-hero__heading_link" href="{{vf_hero_heading_href}}">{% endif %}
       {{ vf_hero_heading }}
+      {% if vf_hero_heading_href %}</a>{% endif %}
       {%- if vf_hero_heading_additional -%}
         <span class="vf-hero__heading--additional">{{ vf_hero_heading_additional }}</span>
       {%- endif -%}
