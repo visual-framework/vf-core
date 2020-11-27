@@ -36,7 +36,7 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 
 1. commit and push changes to the `develop` branch
     - commit message in a format of: `Component release 2020MMDD-01`
-1. add a tag
+1. add a tag"
     - see last tag `git describe --abbrev=0 --tags`
     - add a semantic versioned tag `git tag -a v2.3.X -m 'Release of precompiled CSS, JS, assets'`
     - Why like this?
