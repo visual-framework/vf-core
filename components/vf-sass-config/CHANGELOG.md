@@ -1,3 +1,7 @@
+### 2.3.1
+
+* fixes bug in --page-grid-gap printing Sass function in CSS
+
 ### 2.3.0
 
 * introduces a `space` Sass function to save the keystrokes.
