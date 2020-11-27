@@ -1,3 +1,7 @@
+### 2.3.1
+
+* issue with margin-bottom still in place when using `vf-stack` with `vf-card__content`.
+
 ### 2.3.0
 
 * adds new `--bordered` and `--striped` design variants.
