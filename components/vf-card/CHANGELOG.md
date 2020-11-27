@@ -7,7 +7,7 @@
 * adds new `--bordered` and `--striped` design variants.
 * added `vf-stack` to the `vf-card__content` element to determine spacing.
 * allows for the lack of `vf-stack` for older components.
-* started the deprecation of the 'Mortal Kombat' variants, initally by hiding them in vf-core.
+* started the deprecation of the 'Mortal Kombat' variants, initially by hiding them in vf-core.
 * introduced `newTheme` so the 'Mortal Kombat' variants can live side-by-side with news versions for now.
   * the `newTheme` moves us back to the 'primary' being the embl green, the secondary the embl blue, etc.
   * we now remove the `-theme` part of the css class moving forward as it's cleaner, easier to read, and states the same thing without it.
