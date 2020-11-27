@@ -8,6 +8,8 @@ The `vf-hero` component is to be used as a visual queue and page header. The `vf
 
 ## Usage
 
+This component should not be used inside of `vf-content`.
+
 Currently there are now two use cases for the `vf-hero` component:
 
 

@@ -1,3 +1,8 @@
+### 2.0.1
+
+* adds the option to add an url to `vf-hero__heading` with nunjucks/yaml.
+  * gives the element a classname.
+
 ### 2.0.0
 
 * introduces new naming convention for design variants.
