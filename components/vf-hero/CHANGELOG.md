@@ -1,3 +1,7 @@
+### 2.0.2
+
+* adds a width of `max-content` to the `__content` part of the component so short titles don't look silly.
+
 ### 2.0.1
 
 * adds the option to add an url to `vf-hero__heading` with nunjucks/yaml.
