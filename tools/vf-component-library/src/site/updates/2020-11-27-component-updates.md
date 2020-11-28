@@ -1,7 +1,7 @@
 ---
 title: Recent releases, 2.4.0 CSS, JS rollup release
 subtitle: New versions of vf-card, vf-hero and minor updates and bug fixes
-date: 2020-11-24 08:33:50
+date: 2020-11-27 18:33:50
 version: 2.4.0
 tags:
   - posts
