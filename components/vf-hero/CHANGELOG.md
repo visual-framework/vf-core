@@ -1,3 +1,9 @@
+### 2.0.3
+
+* adds the context options so the component can be used in 11ty with content seperation.
+* changes `max-content` to `fit-content` so the `__content` element adapts to smaller viewports.
+* removes left padding from `--block` variant as it 'looked weird'.
+
 ### 2.0.2
 
 * adds a width of `max-content` to the `__content` part of the component so short titles don't look silly.
