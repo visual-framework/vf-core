@@ -1,3 +1,7 @@
+### 2.0.4
+
+* fixes missing context rule for `hero__text` and `hero__heading--additional`.
+
 ### 2.0.3
 
 * adds the context options so the component can be used in 11ty with content seperation.
