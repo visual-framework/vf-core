@@ -1,3 +1,7 @@
+### 1.4.3
+
+* Move the example content into a default variant to stop it printing out when using `{% render .. %}`.
+
 ### 1.4.2
 
 * bug: don't apply styling to `a` elements that have a `.vf-*` class
