@@ -13,13 +13,21 @@
 
 .vf-search--inline {
   display: flex;
+  flex-wrap: wrap;
 
   .vf-search__item {
     flex-grow: 1;
+    max-width: $vf-breakpoint--sm;
   }
 
   .vf-search__button {
+    margin-bottom: 0;
     margin-left: 16px;
     top: -12px;
+  }
+
+  .vf-search__description {
+    @include set-type(text-body--3);
+    flex-basis: 100%;
   }
 }
