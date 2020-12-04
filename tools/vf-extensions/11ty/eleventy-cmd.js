@@ -39,9 +39,10 @@ const argv = require("minimist")(process.argv.slice(2), {
     quiet: null,
   },
   unknown: function (unknownArgument) {
-    throw new EleventyCommandCheckError(
-      `We don’t know what '${unknownArgument}' is. Use --help to see the list of supported commands.`
-    );
+    if (unknownArgument != 'build' && unknownArgument != 'dev')
+      throw new EleventyCommandCheckError(
+        `We don’t know what '${unknownArgument}' is. Use --help to see the list of supported commands.`
+      );
   },
 });
 debug("command: eleventy ", argv.toString());
