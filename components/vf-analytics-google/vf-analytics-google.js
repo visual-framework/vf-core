@@ -473,4 +473,4 @@ function vfGaLogMessage(eventCategory, eventAction, eventLabel, lastGaEventTime,
 // vfGaIndicateLoaded();
 
 // By default your component should be usable with js imports
-export { vfGaIndicateLoaded };
+export { vfGaIndicateLoaded, vfGaTrackInteraction };

@@ -1,20 +1,25 @@
 ---
-title: Problems 🏚 😭
+title: Troubleshooting
 subtitle: Troubleshooting tips for some frequent things that can go wrong.
 date: 2019-04-09 12:24:50
+order: 5
+is_index: false
+section: about
 tags:
+  - about
   - troubleshooting
+  - sections
 layout: layouts/base.njk
 templateEngineOverride: njk
 ---
 
 {% render '@vf-intro', {
   "component-type": "container",
-  "vf_intro_heading": title,
+  "vf_intro_heading": title + " 🏚 😭",
   "vf_intro_lede": subtitle,
   "vf_intro_subheading": "",
   "vf_intro_text": [
-    "Many problems are due to local develpment environment configuration, here's how to get your development back on track.",
+    "Many problems are due to local development environment configuration, here's how to get your development back on track.",
     "Before creating a ticket or tossing your machine out the window, we've found most issues can be sorted by one of the below commands and tips."
   ],
   "vf_intro_badge": {
@@ -70,7 +75,7 @@ developing `vf-core`, for other projects run `gulp dev`.
 
 ### Rollback your components or `vf-core` version
 
-You might have an incombatibility between component versions or `vf-core`. If
+You might have an incompatibility between component versions or `vf-core`. If
 you've recently updated, rollback version and re-run `gulp dev`. If that fixes
 issues, consult the component `CHANGELOG.md` files or read up on the [`vf-core`
 release notes](https://github.com/visual-framework/vf-core/releases).
@@ -91,6 +96,15 @@ you’ll want to save any local changes first.
 
 Your local files might be out of sync, stash your local changes elsewhere and
 run `git reset --hard`.
+
+<hr/>
+
+### Git reset, harder 🚨
+
+If you're at a loss, you can discard all untracked files and non-committed edits
+with `git clean -fxd`.
+
+This will remove many things including `node_modules`, so you'll need to run `yarn install`.
 
 {% endmarkdown %}
 

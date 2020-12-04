@@ -1,4 +1,15 @@
-## 1.0.13
+### 1.0.18
+
+* dependency bump
+
+### 1.0.17
+
+* dependency bump
+### 1.0.16
+
+* dependency bump
+
+### 1.0.13
 
 * dependency bump
 * adds roamap and consultation docs

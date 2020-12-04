@@ -1,3 +1,7 @@
+### 1.2.2
+
+* adds fallbacks for CSS that relied on CSS custom properties
+
 ### 1.2.1
 
 * cleanup README

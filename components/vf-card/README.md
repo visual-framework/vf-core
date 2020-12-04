@@ -6,6 +6,8 @@
 
 There are currently two types of card component that can be used for your projects. Each card component requires the additional modifier class to be added into either your `.yml` file or directly into the HTML.
 
+__Do Not__ have more than one variant of the `vf-card` in a container.
+
 ## Install
 
 This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `vf-card` with this command.

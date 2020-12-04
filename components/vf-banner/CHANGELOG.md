@@ -1,3 +1,7 @@
+### 1.7.0
+
+* Banner dismiss button now defaults to `vf-button--primary` (if a specific button variant has been requested by `vfJsBannerButtonTheme`, it will still be used)
+
 ### 1.6.3
 
 * Bug: For fixed banners, avoid interpretting numbers as strings and blowing out the page padding

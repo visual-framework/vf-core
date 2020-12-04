@@ -1,3 +1,7 @@
+### 2.0.1
+
+* removes `>` from related crumbs
+
 ### 2.0.0
 
 * adds `aria-current="location"` to be used for the last item in `vf-breadcrumbs`

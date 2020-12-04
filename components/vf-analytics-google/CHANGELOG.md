@@ -1,3 +1,8 @@
+### 1.0.3
+
+* Add the vfGaTrackInteraction function to the exported members of vf-analytics-google.
+  * https://github.com/visual-framework/vf-core/issues/1248
+
 ### 1.0.2
 
 * Improves link name detection
