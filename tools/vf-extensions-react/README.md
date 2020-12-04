@@ -10,6 +10,8 @@ This is an early alpha.
 
 ## Usage
 
+Import your desired component:  `import { VfLogo } from './vf-components/vf-extensions-react/vf-extensions-react.jsx';` and then invok
+
 ### Supported components
 
 - vf-logo: `<VfLogo title="test" VfLogoPath={VfLogoPath} />`
