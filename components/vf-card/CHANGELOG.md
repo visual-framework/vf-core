@@ -1,3 +1,8 @@
+### 2.3.2 
+
+* adds prototype react template
+  * https://github.com/visual-framework/vf-core/pull/1278
+
 ### 2.3.1
 
 * issue with margin-bottom still in place when using `vf-stack` with `vf-card__content`.

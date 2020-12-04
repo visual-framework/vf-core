@@ -4,17 +4,18 @@
 
 ## About
 
-This project supports React sites using Visual Framework components, like [vf-react](https://github.com/visual-framework/vf-react) It has reusable componentised code, Gulp tasks, modules and config.
+**This is an early alpha and subject to radical change or removal.**
 
-This is an early alpha.
+This project supports React sites using Visual Framework components, like [vf-react](https://github.com/visual-framework/vf-react) It has reusable componentised code and config.
+
 
 ## Usage
 
-Import your desired component:  `import { VfLogo } from './vf-components/vf-extensions-react/vf-extensions-react.jsx';` and then invok
+Import your desired component:  `import { VfCard } from "@visual-framework/vf-card/vf-card.react.js";` and then invoke
 
 ### Supported components
 
-- vf-logo: `<VfLogo title="test" VfLogoPath={VfLogoPath} />`
+- vf-card: `<VfCard card_title="test" variant="striped" newTheme="primary" card_image="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg" card_text="im some text" card_image__alt="people"></VfCard>`
 - more to come
 
 ## Install
