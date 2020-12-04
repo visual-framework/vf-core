@@ -8,10 +8,9 @@
 
 This project supports React sites using Visual Framework components, like [vf-react](https://github.com/visual-framework/vf-react) It has reusable componentised code and config.
 
-
 ## Usage
 
-Import your desired component:  `import { VfCard } from "@visual-framework/vf-card/vf-card.react.js";` and then invoke
+Import your desired component: `import { VfCard } from "@visual-framework/vf-card/vf-card.react.js";` and then invoke
 
 ### Supported components
 

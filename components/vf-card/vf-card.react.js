@@ -3,8 +3,8 @@
 // We use vanilla JS templates for react for compaitbility with create react app
 // ---
 import React from 'react';
-import vfNunjucks from './assets/nunjucks-slim.js';
-import VfCardTemplate from "raw-loader!.//vf-card.precompiled.js"; // https://webpack.js.org/loaders/raw-loader/
+import vfNunjucks from '@visual-framework/vf-extensions-react/assets/nunjucks-slim.js';
+import VfCardTemplate from "raw-loader!./vf-card.precompiled.js"; // https://webpack.js.org/loaders/raw-loader/
 eval(VfCardTemplate); // we use eval as we specifically want to run a known template
 
 // any JS actions needed on component insertion
