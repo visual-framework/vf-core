@@ -188,12 +188,21 @@ templateEngineOverride: njk
             {% endif %}
 
             {% if variant.context['component-type'] != "utility" and variant.context['component-type'] != "grid" and variant.context['component-type'] != "embl-grid" %}
-              {# Utility and grid variants have no practical njk templates #}
+              {# Utility and grid variants have no practical njk or react templates #}
               <details class="vf-details vf-box vf-box--outline">
                 <summary class="vf-details--summary">Nunjucks syntax</summary>
                 <pre><code>
                 {%- raw %}{% render '@{% endraw %}{{variant.handle}}', {{variant.context | dump(2)}} {% raw %}%}{% endraw %}
                 </code></pre>
+              </details>
+
+              <details class="vf-details vf-box vf-box--outline">
+                <summary class="vf-details--summary">React syntax</summary>
+                <pre><code>
+import {{ component.baseHandle | camelize(true) }}Template from "raw-loader!./{{component.baseHandle}}.precompiled.js";
+{{ '<' | escape }}{{ component.baseHandle | camelize(true) }} paramater="value" />
+                </code></pre>
+                <br/><p>For indivdual paramater names and options, see the Nunjucks syntax example. <a href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-extensions-react/README.md">Also be sure to follow the React setup guide</a>.</p>
               </details>
             {% endif %}
 
