@@ -1,4 +1,4 @@
-// vf-card.jsx for React
+// vf-card for React
 // See vf-extensions-react for usage guidance
 // We use vanilla JS templates for react for compatibility with create react app
 // ---
