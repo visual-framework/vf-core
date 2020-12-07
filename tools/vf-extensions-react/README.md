@@ -10,12 +10,18 @@ This project supports React sites using Visual Framework components, like [vf-re
 
 ## Usage
 
-Import your desired component: `import { VfCard } from "@visual-framework/vf-card/vf-card.react.js";` and then invoke
+1. Install this npm package (see Install section)
+2. Install and import your desired component: 
+    - `import { VfCard } from "@visual-framework/vf-card/vf-card.react.js";` and then invoke
+3. Use your desirec component 
+    - `<VfCard card_title="test" variant="striped" newTheme="primary" card_image="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg" card_text="im some text" card_image__alt="people"></VfCard>`
 
 ### Supported components
 
-- vf-card: `<VfCard card_title="test" variant="striped" newTheme="primary" card_image="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg" card_text="im some text" card_image__alt="people"></VfCard>`
-- more to come
+React support is in its early stages and only a few components have support. (PRs are welcome)
+
+- vf-card
+- vf-button
 
 ## Install
 
