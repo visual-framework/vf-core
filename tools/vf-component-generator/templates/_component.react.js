@@ -4,11 +4,11 @@
 // ---
 import React from 'react';
 import vfNunjucks from '@visual-framework/vf-extensions-react/assets/nunjucks-slim.js';
-import <%= componentNameJs %>Template from "raw-loader!./<%= componentName %>.precompiled.js"; // https://webpack.js.org/loaders/raw-loader/
-eval(<%= componentNameJs %>Template); // we use eval as we specifically want to run a known template
+import <%= componentNameReact %>Template from "raw-loader!./<%= componentName %>.precompiled.js"; // https://webpack.js.org/loaders/raw-loader/
+eval(<%= componentNameReact %>Template); // we use eval as we specifically want to run a known template
 
 // any JS actions needed on component insertion
-class <%= componentNameJs %>Callback extends React.Component {
+class <%= componentNameReact %>Callback extends React.Component {
   componentDidMount() {
     console.log('any JS actions needed')
   }
@@ -18,7 +18,7 @@ class <%= componentNameJs %>Callback extends React.Component {
   }
 }
 
-const <%= componentNameJs %> = React.memo(({
+const <%= componentNameReact %> = React.memo(({
   variant, newTheme, card_image, card_text, card_image__alt, card_title 
   }) => {
     // our HTML is handled by nunjucks, this should not receive user input
@@ -31,9 +31,9 @@ const <%= componentNameJs %> = React.memo(({
           })
         }
       }),
-      React.createElement(<%= componentNameJs %>Callback, null)
+      React.createElement(<%= componentNameReact %>Callback, null)
     );
   }
 ); 
 
-export { <%= componentNameJs %> };
+export { <%= componentNameReact %> };
