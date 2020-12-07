@@ -18,7 +18,7 @@
 
 ### 2.0.1
 
-* fixes issue where `embl-grid` didn't allow for more 'main content' items
+* fixes issue where ` d` didn't allow for more 'main content' items
 * fixes issue where `embl-grid--has-sidebar` had it's auto and 1fr backwards
 
 ### 2.0.0
