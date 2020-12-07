@@ -1,3 +1,7 @@
+### 2.2.0
+
+* removes the default bottom margin from the grid.
+
 ### 2.1.0
 
 * makes the layout something that can now use 'extends' within nunjucks
