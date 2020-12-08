@@ -1,3 +1,9 @@
+### 1.1.0
+
+* adds _component.react.js template
+  * https://github.com/visual-framework/vf-core/pull/1278
+* updates _component.js to prepoulate vfComponentName() camel case syntax
+
 ### 1.0.3
 
 * improve README template

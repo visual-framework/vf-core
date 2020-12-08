@@ -29,6 +29,18 @@ module.exports = function(config) {
     }).toFormat(format);
   });
 
+  // camelcase
+  // {{ 'string words' | camelize(true) }}
+  config.addFilter("camelize", (str, upperCaseFirst = false) => {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+      if (upperCaseFirst) { 
+        return word.toUpperCase();
+      } else {
+        return index === 0 ? word.toLowerCase() : word.toUpperCase();
+      }
+    }).replace(/\s+/g, '').replace('-', '');
+  });
+
   // Split filter support
   // {{ 'string words' | split(' ' ) }}
   config.addFilter("split", (string, divider = " ") => {
