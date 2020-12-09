@@ -3,6 +3,7 @@
 // We use vanilla JS templates for react for compatibility with create react app
 // ---
 import React from "react";
+import Fragment from "react-dom-fragment";
 import vfNunjucks from "@visual-framework/vf-extensions-react/assets/nunjucks-slim.js";
 import VfCardTemplate from "raw-loader!./vf-card.precompiled.js"; // https://webpack.js.org/loaders/raw-loader/
 eval(VfCardTemplate); // we use eval as we specifically want to run a known template
@@ -14,7 +15,7 @@ class VfCardCallback extends React.Component {
   }
 
   render() {
-    return React.createElement("div", null);
+    return React.createElement(React.Fragment, null);
   }
 }
 
@@ -22,8 +23,8 @@ const VfCard = React.memo(({
   variant, newTheme, card_image, card_text, card_image__alt, card_title
 }) => {
   // our HTML is handled by nunjucks, this should not receive user input
-  return React.createElement("div", null,
-    React.createElement("div", {
+  return React.createElement(React.Fragment, null,
+    React.createElement(Fragment, {
       dangerouslySetInnerHTML: {
         // our HTML is handled by nunjucks, this should not receive user input
         __html: vfNunjucks.render("vf-card", {
