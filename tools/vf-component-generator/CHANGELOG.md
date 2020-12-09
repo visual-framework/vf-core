@@ -1,3 +1,8 @@
+### 1.1.1
+
+* Use react-dom-fragment to return HTML fragments.
+  * https://github.com/visual-framework/vf-core/pull/1291
+
 ### 1.1.0
 
 * adds _component.react.js template
