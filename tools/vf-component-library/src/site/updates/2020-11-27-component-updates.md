@@ -33,7 +33,7 @@ This releases {{version}} to the CDN
 
 As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
 
-{#- don't forget to add the latest version to /Users/khawkins/Documents/GitHub/vf-core/tools/vf-component-library/src/site/_data/siteConfig.js -#}
+{#- don't forget to add the latest version to ./tools/vf-component-library/src/site/_data/siteConfig.js -#}
 
 </div>
 </article><br/>
