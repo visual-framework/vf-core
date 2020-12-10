@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Precompile vf-core Nunjucks templates
