@@ -8,6 +8,8 @@
 
 This project supports React sites using Visual Framework components, like [vf-react](https://github.com/visual-framework/vf-react) It has reusable componentised code and config.
 
+Note: most VF Nunjucks extensions are supported, but we're still exploring 
+
 ## Usage
 
 1. Install this npm package (see Install section)

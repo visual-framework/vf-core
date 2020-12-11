@@ -1,4 +1,4 @@
-// todo: add this to a vf-core tool along with a `raw-loader` dependency
+// we primarily use in React, so no need to use its linting
 /* eslint-disable */
 /*! Browser bundle of nunjucks 3.2.2 (slim, only works with precompiled templates) */
 (function webpackUniversalModuleDefinition(root, factory) {

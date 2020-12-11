@@ -1,3 +1,8 @@
+### 2.3.3
+
+* React: Use react-dom-fragment to return HTML fragments.
+  * https://github.com/visual-framework/vf-core/pull/1291
+
 ### 2.3.2 
 
 * adds prototype react template

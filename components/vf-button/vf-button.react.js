@@ -3,9 +3,10 @@
 // We use vanilla JS templates for react for compatibility with create react app
 // ---
 import React from "react";
-import vfNunjucks from "@visual-framework/vf-extensions-react/assets/nunjucks-slim.js";
-import VfButtonTemplate from "raw-loader!./vf-button.precompiled.js"; // https://webpack.js.org/loaders/raw-loader/
-eval(VfButtonTemplate); // we use eval as we specifically want to run a known template
+import Fragment from "react-dom-fragment";
+// eslint-disable-next-line no-unused-vars
+import VfButtonTemplate from "./vf-button.precompiled.js";  // import templates before the nunjucks env
+import { vfNunjucksEnv } from "@visual-framework/vf-extensions-react/vf-extensions-react.js";
 
 // any JS actions needed on component insertion
 class VfButtonCallback extends React.Component {
@@ -14,7 +15,7 @@ class VfButtonCallback extends React.Component {
   }
 
   render() {
-    return React.createElement("div", null);
+    return React.createElement(React.Fragment, null);
   }
 }
 
@@ -22,11 +23,11 @@ const VfButton = React.memo(({
   text, button_href, theme
 }) => {
   // our HTML is handled by nunjucks, this should not receive user input
-  return React.createElement("div", null,
-    React.createElement("div", {
+  return React.createElement(React.Fragment, null,
+    React.createElement(Fragment, {
       dangerouslySetInnerHTML: {
         // our HTML is handled by nunjucks, this should not receive user input
-        __html: vfNunjucks.render("vf-button", {
+        __html: vfNunjucksEnv.render("vf-button", {
           text: text, button_href: button_href, theme: theme
         })
       }
