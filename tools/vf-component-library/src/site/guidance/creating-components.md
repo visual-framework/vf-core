@@ -21,7 +21,7 @@ Tip: also consult the [guidelines]({{ '/guidance/components-and-patterns' | url 
    - Run [`vf-component-generator`](https://www.npmjs.com/package/@visual-framework/vf-component-generator) and answer the questions when prompted.
        - **Type of component:** [See component guidance]({{ '/guidance/components-and-patterns' | url }})
        - **Name of component:** [See component naming guidance]({{ '/guidance/components-and-patterns' | url }})
-       - **NPM package:** If you're making something interesting (probably not an 'element'), then saying 'yes' will allow the component to be shared as an optional part of the framework on NPM.
+       - **npm package:** If you're making something interesting (probably not an 'element'), then saying 'yes' will allow the component to be shared as an optional part of the framework on npm.
     - Your customised template component will be in the `/components` directory.
 1. Add the `@import 'vf-your-component.scss';` to `/assets/scss/styles.scss`.
 1. Developing your component
