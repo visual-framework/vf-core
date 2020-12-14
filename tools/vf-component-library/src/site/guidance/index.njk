@@ -1,28 +1,17 @@
 ---
-title: Guidance
-subtitle: Not a component, nor a reusable recipe, here you will find guidance on what and why.
+is_index: true
+hideSubPosts: true
+title: Guidance and principles
+subtitle: Here you will find guidance on what, why and how.
+intro: This is a collection of how-tos and best practice when building for the Visual Framework and its users.
 date: 2020-12-14 18:24:50
 section: building
 order: 5
 tags:
   - building
   - sections
-layout: layouts/base.njk
+layout: layouts/section.njk
 ---
-
-<section class="vf-intro | embl-grid embl-grid--has-centered-content">
-<div><!-- empty --></div>
-<div>
-  <h1 class="vf-intro__heading">{{ title }}</h1>
-  <p class="vf-lede">{{ subtitle | safe }}</p>
-  {# <p class="vf-intro__text">Here on the <a class="vf-link" href="{{ '/updates' | url }}">updates blog</a> you can now expect to find what's new in each release of the Visual Framework 2.0 components.</p> #}
-  {# <p class="vf-intro__text">You can also subscribe to <a class="vf-link" href="{{ '/feed.xml' | url }}">the RSS feed</a>.</p> #}
-</div>
-</section>
-
-<section class="vf-content | embl-grid embl-grid--has-centered-content">
-<div><!-- empty --></div>
-<div class="vf-content">
 
 {%- for post in collections.guidance  | reverse %}
 
@@ -41,6 +30,3 @@ layout: layouts/base.njk
 </article>
 
 {% endfor %}
-
-</div>
-</section>
