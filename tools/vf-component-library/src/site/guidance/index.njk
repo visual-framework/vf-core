@@ -1,7 +1,7 @@
 ---
 title: Guidance
-subtitle: What's new, different and improved
-date: 2020-09-09 12:24:50
+subtitle: Not a component, nor a reusable recipe, here you will find guidance on what and why.
+date: 2020-12-14 18:24:50
 section: building
 order: 5
 tags:
@@ -25,11 +25,11 @@ layout: layouts/base.njk
 <div class="vf-content">
 
 
-{%- for post in collections.changelog  | reverse %}
+{%- for post in collections.guidance  | reverse %}
 
 <article class="vf-summary vf-summary--article">
   <h3 class="vf-summary__title">
-    <a href="{{ post.url | url }}" class="vf-summary__link">{{ post.date | dateDisplay }}: {{ post.data.title }}</a>
+    <a href="{{ post.url | url }}" class="vf-summary__link">{{ post.data.title }}</a>
   </h3>
   {# <div class="vf-summary__meta">
     left spacing artifact when no author
