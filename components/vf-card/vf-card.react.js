@@ -22,7 +22,6 @@ class VfCardCallback extends React.Component {
 const VfCard = React.memo(({
   variant, newTheme, card_image, card_text, card_image__alt, card_title
 }) => {
-  // our HTML is handled by nunjucks, this should not receive user input
   return React.createElement(React.Fragment, null,
     React.createElement(Fragment, {
       dangerouslySetInnerHTML: {
