@@ -6,15 +6,15 @@
 
 **This is an early alpha and subject to radical change or removal.**
 
-This project supports React sites using Visual Framework components, like [vf-react](https://github.com/visual-framework/vf-react) It has reusable componentised code and config.
+This project supports React sites using Visual Framework components, like [vf-react](https://github.com/visual-framework/vf-react). It has reusable componentised code and config.
 
-Note: most VF Nunjucks extensions are supported, but we're still exploring
+Note: most VF Nunjucks extensions are supported in principle, but we're still exploring
 
 ## Usage
 
 1. Install this npm package (see Install section)
 2. Install and import your desired component:
-    - `import { VfCard } from "@visual-framework/vf-card/vf-card.react.js";` and then invoke
+    - `import { VfCard } from "@visual-framework/vf-card/vf-card.react.js";`
 3. Use your desired component
     - `<VfCard card_title="test" variant="striped" newTheme="primary" card_image="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg" card_text="im some text" card_image__alt="people"></VfCard>`
 
