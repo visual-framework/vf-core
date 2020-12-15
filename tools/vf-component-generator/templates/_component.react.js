@@ -20,21 +20,20 @@ class <%= componentNameReact %>Callback extends React.Component {
 }
 
 const <%= componentNameReact %> = React.memo(({
-  variant, newTheme, card_image, card_text, card_image__alt, card_title 
+  variant, newTheme, card_image, card_text, card_image__alt, card_title
   }) => {
-    // our HTML is handled by nunjucks, this should not receive user input
     return React.createElement(React.Fragment, null,
       React.createElement(Fragment, {
           dangerouslySetInnerHTML: {
           // our HTML is handled by nunjucks, this should not receive user input
           __html: vfNunjucksEnv.render('<%= componentName %>', {
-            variant: variant, newTheme: newTheme, card_image: card_image, card_text: card_text, card_image__alt: card_image__alt, card_title: card_title 
+            variant: variant, newTheme: newTheme, card_image: card_image, card_text: card_text, card_image__alt: card_image__alt, card_title: card_title
           })
         }
       }),
       React.createElement(<%= componentNameReact %>Callback, null)
     );
   }
-); 
+);
 
 export { <%= componentNameReact %> };

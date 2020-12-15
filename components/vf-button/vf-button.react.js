@@ -22,7 +22,6 @@ class VfButtonCallback extends React.Component {
 const VfButton = React.memo(({
   text, button_href, theme
 }) => {
-  // our HTML is handled by nunjucks, this should not receive user input
   return React.createElement(React.Fragment, null,
     React.createElement(Fragment, {
       dangerouslySetInnerHTML: {

@@ -4,7 +4,7 @@ const { DateTime } = require("luxon");
 module.exports = {
   siteInformation: {
     title: "The Visual Framework 2.0",
-    short_description: "A front-end toolkit to quickly build better life science websites.",
+    short_description: "A front-end toolkit to quickly and collaboratively build better life science websites.",
     url: "https://stable.visual-framework.dev/",
     author: "Visual Framework system",
     email: "ken.hawkins@embl.de",
