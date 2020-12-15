@@ -1,3 +1,8 @@
+### 1.1.2
+
+* Add changelog style guidance.
+  * https://github.com/visual-framework/vf-core/issues/1286
+
 ### 1.1.1
 
 * Use react-dom-fragment to return HTML fragments.
@@ -5,28 +10,28 @@
 
 ### 1.1.0
 
-* adds _component.react.js template
+* Add _component.react.js template.
   * https://github.com/visual-framework/vf-core/pull/1278
-* updates _component.js to prepoulate vfComponentName() camel case syntax
+* Update _component.js to prepoulate vfComponentName() camel case syntax.
 
 ### 1.0.3
 
-* improve README template
+* Improve README template.
 
 ### 1.0.3
 
-* adds `buildTimeStamp` from `componentInfo` to Sass template
+* Add `buildTimeStamp` from `componentInfo` to Sass template.
   * https://github.com/visual-framework/vf-core/issues/974
 
 ### 1.0.2
 
-* move vf-component-generator gulp tasks into this project
+* Move vf-component-generator gulp tasks into this project.
 
 ### 1.0.1
 
-- changes the changelog template
-- adds context snippet to nunjucks template
+* Change the changelog template.
+* Add context snippet to nunjucks template.
 
 ### 1.0.0
 
-* Initial release to be used with vf-core 2.2
+* Initial release to be used with vf-core 2.2.

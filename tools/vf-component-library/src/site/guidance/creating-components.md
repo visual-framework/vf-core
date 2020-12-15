@@ -22,7 +22,16 @@ Tip: also consult the [guidelines]({{ '/guidance/components-and-patterns' | url 
        - **Type of component:** [See component guidance]({{ '/guidance/components-and-patterns' | url }})
        - **Name of component:** [See component naming guidance]({{ '/guidance/components-and-patterns' | url }})
        - **npm package:** If you're making something interesting (probably not an 'element'), then saying 'yes' will allow the component to be shared as an optional part of the framework on npm.
-    - Your customised template component will be in the `/components` directory.
+    - Your customised template component will:
+       - be in the `/components` directory.
+       - [contain a number of pre-generated files]({{'/guidance/components-and-patterns/' | url}}).
+1. Maintain a `CHANGELOG.md`
+    - Add a line of what is new in your component.
+    - Use sentence styling.
+    - Keep your notes, short and punchy.
+    - End your sentences with periods.
+      - https://github.com/visual-framework/vf-core/issues/1286
+    - Link to any related issues or discussions, such as the above.
 1. Add the `@import 'vf-your-component.scss';` to `/assets/scss/styles.scss`.
 1. Developing your component
    - Edit your template files in the `/components/your-component-name` folder
@@ -31,4 +40,3 @@ Tip: also consult the [guidelines]({{ '/guidance/components-and-patterns' | url 
 1. Sharing you component back
    - Publish it to npm; and/or
    - If you think your component is useful to the global `vf-core` community, [make a Pull Request](https://github.com/visual-framework/vf-core/pulls) or [open an issue](https://github.com/visual-framework/vf-core/issues/new/choose) to discuss.
-
