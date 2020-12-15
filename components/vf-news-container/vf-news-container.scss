@@ -9,3 +9,24 @@
  * Location: #{map-get($componentInfo, 'location')}
  */
 
+
+.vf-news-container--featured {
+  .vf-summary {
+    grid-template-columns: none;
+  }
+
+  .vf-summary > .vf-summary__date {
+    grid-row: 7;
+  }
+
+  .vf-summary > .vf-summary__image {
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 600px) {
+     .vf-summary {
+      grid-row-gap: 0;
+    }
+  }
+}
