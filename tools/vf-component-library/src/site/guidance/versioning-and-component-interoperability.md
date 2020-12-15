@@ -47,7 +47,7 @@ Other notes and tips on components:
 
 ## Release notes
 
-Release notes are published to [the Updates blog]({{ '/updates' | url }}).
+Release notes are published to [the Updates blog]({{ '/updates' | url }}) and include notes from the associated `CHANGELOG.md` files in the release.
 
 ## Where's version 1 of `vf-core`?
 
