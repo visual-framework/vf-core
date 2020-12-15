@@ -1,3 +1,7 @@
+### 1.4.1
+
+* Fix image URL in vf-summary--news-has-image.
+
 ### 1.4.0
 
 * makes the title of summary a little larger
