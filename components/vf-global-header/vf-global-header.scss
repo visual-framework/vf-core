@@ -18,12 +18,8 @@ $vf-global-header__link-text--color: set-ui-color(vf-ui-color--black);
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem;
-  grid-column: 1 / -1;
-  height: auto;
-  margin: .5rem auto 0 auto;
-  max-width: $vf-layout--comfortable;
-  width: 100%;
+  gap: space(200);
+  margin-top: space(200);
 
   & > [class*='logo'] {
     flex: 1; // necessary for when a logo is inside flex-based containers like vf-global-header
@@ -42,16 +38,12 @@ $vf-global-header__link-text--color: set-ui-color(vf-ui-color--black);
   }
 }
 
-// backwards compatibility with .vf-global-header 1.x vf-global-header__inner
-// will be removed in vf-global-header 3.0
-html:not(.vf-disable-deprecated) {
-  .vf-global-header__inner {
-    align-items: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
-    grid-column: 1 / -1;
-    padding: .5rem 0;
-    width: 100%;
-  }
+// Currently the GDPR banner stays in the DOM rather than getting destroyed.
+// Because of this it becomes the first item in the `vf-stack` so the next item,
+// the vf-global-header, has a top margin of 1rem.
+// This fixes that:
+// Note: we duplicate the top margin that's already on line 22.
+
+.vf-banner + div {
+  --vf-stack-margin--custom: space(200);
 }
