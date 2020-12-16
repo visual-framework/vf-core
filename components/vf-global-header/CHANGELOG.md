@@ -1,3 +1,9 @@
+### 3.1.0
+
+* updates to expect `vf-stack` on the body.
+* removes the backwords compatability as we're at v3.x.
+* tidies up and removes some unrequired CSS.
+
 ### 3.0.1
 
 * removes padding
