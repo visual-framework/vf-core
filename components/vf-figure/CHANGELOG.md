@@ -1,4 +1,4 @@
-### 1.4.0
+### 2.0.0
 
 * Removed `width: 100%` from the `.vf-figure__image` class.
 * Added `display: block` to the `.vf-figure__image` class.
