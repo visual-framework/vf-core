@@ -1,3 +1,8 @@
+### 2.2.15
+
+* Remove gulp-cssnano and use builtin dart sass minification.
+  * https://github.com/visual-framework/vf-core/pull/1305
+
 ### 2.2.13
 
 - dependency bump
