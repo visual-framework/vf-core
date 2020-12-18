@@ -1,3 +1,8 @@
+### 1.4.3
+
+* Resolve issue of missing import in index.scss
+  * https://github.com/visual-framework/vf-core/pull/1306
+
 ### 1.4.2
 
 * bug: don't apply styling to `a` elements that have a `.vf-*` class
