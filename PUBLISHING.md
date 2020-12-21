@@ -22,7 +22,7 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 ### 2. Component release
 
 1. publish to npm
-    - `yarn run lerna:publish` 
+    - `yarn run lerna:publish`
 
 ### 3. Communications
 
