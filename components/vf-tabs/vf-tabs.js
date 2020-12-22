@@ -62,7 +62,7 @@ function vfTabs(scope) {
 
   // Add semantics are remove user focusability for each tab
   Array.prototype.forEach.call(tabs, (tab, i) => {
-    const tabId = tab.href.split('#')[1]; // calculate an ID based off the tab href (todo: add support for a vf-js-tab-id, and if set use that)
+    const tabId = tab.href.split('#')[1]; // calculate an ID based off the tab href (todo: add support for a data-vf-js-tab-id, and if set use that)
     tab.setAttribute("role", "tab");
     tab.setAttribute("id", tabId);
     tab.setAttribute("data-tabs__item", tabId);
