@@ -178,7 +178,7 @@ function emblContentHubFetch() {
     // we would use `typeof(vfBanner)` but if the function is not present it becomes aliased as `vfBanner.vfBanner`,
     // so this `try` method is more reliable
     try {
-      targetLocation(targetLocation);
+      vfBanner(targetLocation);
     } catch (error) {
       console.warn("emblContentHubLoader", "vfBanner not found, any contentHub banner-based content will not correctly render.");
     }
