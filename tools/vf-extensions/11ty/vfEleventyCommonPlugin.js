@@ -8,6 +8,7 @@ module.exports = function(config) {
   fractal.components.on("updated", function(source, eventData) {
     // don't do anything if it's css or js file thats updated as these are handled by vf-watch
     if (source.path.indexOf(".js") > 0 ||
+        source.path.indexOf(".css") > 0 ||
         source.path.indexOf(".scss") > 0)
     {
       return;
