@@ -13,10 +13,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   const autoprefixer = require('gulp-autoprefixer');
   const autoprefixerOptions = { overrideBrowserslist: ['last 2 versions', '> 5%', 'Firefox ESR'] };
   const cssnano = require('gulp-cssnano');
-  const sourcemaps = require('gulp-sourcemaps');
   const recursive = require('../css-generator/recursive-readdir');
-  const ListStream = require('list-stream');
-  const notify = require('gulp-notify');
   const source = require('vinyl-source-stream');
   const fs = require('fs');
 

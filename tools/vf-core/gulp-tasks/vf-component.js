@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Expose vf-component gulp task as a JS module
