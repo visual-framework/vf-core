@@ -174,11 +174,18 @@ function emblContentHubFetch() {
     emblContentHubUpdateDatesFormat(position);
 
     // run JS for some components on content, if they exist
-    if (typeof(vfBanner) === "function") {
+    // note: why do we use "try" here?
+    // we would use `typeof(vfBanner)` but if the function is not present it becomes aliased as `vfBanner.vfBanner`,
+    // so this `try` method is more reliable
+    try {
       vfBanner(targetLocation);
+    } catch (error) {
+      console.warn("emblContentHubLoader", "vfBanner not found, any contentHub banner-based content will not correctly render.");
     }
-    if (typeof(vfTabs) === "function") {
+    try {
       vfTabs(targetLocation);
+    } catch (error) {
+      console.warn("emblContentHubLoader", "vfTabs not found, any contentHub tabs-based content will not correctly render.");
     }
     // don't run breadcrumbs as part of contenthub, use case is different
     // if (typeof(emblBreadcrumbs) === 'function') {
