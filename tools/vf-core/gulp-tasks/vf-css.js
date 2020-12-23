@@ -125,7 +125,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         } else if (availableComponents[underscoredTrucncatedFile]) {
           done({file: underscoredTrucncatedFile});
         } else {
-          let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expected, you might want to comment out the dependency.`;
+          let importWarning = `Notice: Couldn't find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expected, you might want to comment out the dependency.`;
           console.warn(chalk.yellow(importWarning));
           done({ contents: `/* ${importWarning} */` });
         }
@@ -218,9 +218,8 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     var file_name = path.basename(path.dirname(option.file_path)) + '.css';
     sass.render({
       file: option.file_path,
-      outputStyle: "compressed",
       includePaths: sassPaths,
-      outputStyle: 'expanded'
+      outputStyle: "expanded"
     }, function(err, result) {
       if (err) { console.log(chalk.yellow(err)); }
       if (!err){
@@ -231,7 +230,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
             // @todo, using gulp one file at a time is weird, but autoprefixer doesn't seem to support passing single values well
             gulp.src(option.dir+'/'+file_name)
               .pipe(autoprefixer(autoprefixerOptions))
-              .pipe(gulp.dest(option.dir))
+              .pipe(gulp.dest(option.dir));
           }
         });
       }
