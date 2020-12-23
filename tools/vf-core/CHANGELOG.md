@@ -2,6 +2,7 @@
 
 * Remove gulp-cssnano and use builtin dart sass minification.
   * https://github.com/visual-framework/vf-core/pull/1305
+* Write generated CSS sourcemap to output directory.
 
 ### 2.2.13
 

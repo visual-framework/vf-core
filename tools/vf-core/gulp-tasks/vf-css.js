@@ -173,6 +173,13 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
             console.log(chalk.yellow(err));
           }
         });
+        fs.writeFile(SassOutput+'/styles.css.map', result.map, function(err){
+          if(!err){
+            // console.log('writing',SassOutput+'/styles.css.map')
+          } else {
+            console.log(chalk.yellow(err));
+          }
+        });
       }
       done();
     });
