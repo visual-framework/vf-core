@@ -4,7 +4,6 @@
  * Expose vf-css gulp tasks as a JS module
  * This makes dependency management a bit cleaner
  */
-
 module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation, browserSync) {
   const fastglob = require('fast-glob');
 
@@ -12,7 +11,6 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
   const sass = require('sass');
   const autoprefixer = require('gulp-autoprefixer');
   const autoprefixerOptions = { overrideBrowserslist: ['last 2 versions', '> 5%', 'Firefox ESR'] };
-  const cssnano = require('gulp-cssnano');
   const sourcemaps = require('gulp-sourcemaps');
   const recursive = require('../css-generator/recursive-readdir');
   const ListStream = require('list-stream');
@@ -127,7 +125,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         } else if (availableComponents[underscoredTrucncatedFile]) {
           done({file: underscoredTrucncatedFile});
         } else {
-          let importWarning = `Notice: Couldn\'t find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expected, you might want to comment out the dependency.`;
+          let importWarning = `Notice: Couldn't find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expected, you might want to comment out the dependency.`;
           console.warn(chalk.yellow(importWarning));
           done({ contents: `/* ${importWarning} */` });
         }
@@ -158,6 +156,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       // https://github.com/sass/node-sass
       file: SassInput,
       importer: sassImporter,
+      outputStyle: "compressed",
       sourceMap: true,
       outFile: SassOutput+'/styles.css',
       includePaths: sassPaths
@@ -174,19 +173,24 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
             console.log(chalk.yellow(err));
           }
         });
+        fs.writeFile(SassOutput+'/styles.css.map', result.map, function(err){
+          if(!err){
+            // console.log('writing',SassOutput+'/styles.css.map')
+          } else {
+            console.log(chalk.yellow(err));
+          }
+        });
       }
       done();
     });
   });
 
   // Sass Build-Time things
-  // Take the built styles.css and autoprefixer it, then runs cssnano and saves it with a .min.css suffix
+  // Take the built styles.css and autoprefixer it
   gulp.task('vf-css:production', function(done) {
     return gulp
       .src(SassOutput + '/styles.css')
       .pipe(autoprefixer(autoprefixerOptions))
-      .pipe(gulp.dest(SassOutput))
-      .pipe(cssnano({reduceIdents: {gridTemplate: false}}))
       .pipe(gulp.dest(SassOutput))
       .on('end', function() {
         done();
@@ -222,7 +226,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
     sass.render({
       file: option.file_path,
       includePaths: sassPaths,
-      outputStyle: 'expanded'
+      outputStyle: "expanded"
     }, function(err, result) {
       if (err) { console.log(chalk.yellow(err)); }
       if (!err){
@@ -233,7 +237,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
             // @todo, using gulp one file at a time is weird, but autoprefixer doesn't seem to support passing single values well
             gulp.src(option.dir+'/'+file_name)
               .pipe(autoprefixer(autoprefixerOptions))
-              .pipe(gulp.dest(option.dir))
+              .pipe(gulp.dest(option.dir));
           }
         });
       }
