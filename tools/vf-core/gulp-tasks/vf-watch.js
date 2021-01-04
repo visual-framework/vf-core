@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Expose vf-watch gulp task as a JS module

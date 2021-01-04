@@ -2,6 +2,8 @@
 
 * Remove gulp-cssnano and use builtin dart sass minification.
   * https://github.com/visual-framework/vf-core/pull/1305
+* Removes unused `gulp-notify` and `gulp-sourcemaps` dependencies.
+  * https://github.com/visual-framework/vf-core/pull/1311
 
 ### 1.0.2
 
