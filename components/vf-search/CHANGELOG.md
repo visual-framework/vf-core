@@ -1,3 +1,8 @@
+### 1.2.0
+
+* don't allow inline search to get too large
+* add field for search description
+
 ### 1.1.2
 
 * adds support for `autofocus` on search input

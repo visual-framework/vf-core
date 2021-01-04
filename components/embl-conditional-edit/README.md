@@ -16,7 +16,7 @@ Note: this method is not about hiding the a URL from a user being able to see th
 
 ## Install
 
-This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `primer-buttons` with this command.
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install with this command.
 
 ```
 $ yarn add --dev @visual-framework/embl-conditional-edit

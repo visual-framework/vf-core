@@ -3,6 +3,7 @@
   {% set search_button = context.search_button %}
   {% set search_placeholder = context.search_placeholder %}
   {% set search_autofocus = context.search_autofocus %}
+  {% set search_description = context.search_description %}
   {% set search_action = context.search_action %}
   {% set search_id = context.search_id %}
   {% set search_value_default = context.search_value_default %}
@@ -23,4 +24,5 @@
     <input type="search" placeholder="{{ search_placeholder }}" id="{{ search_id }}" {% if search_value_default %} value="{{ search_value_default }}"{% endif %} class="vf-form__input | vf-search__input"{%- if search_autofocus %} autofocus{%- endif %}>
   </div>
   <button type="submit" class="vf-search__button | vf-button vf-button--primary"> {{ search_button }}</button>
+  {% if search_description %}<p class="vf-search__description">{{ search_description}}</p>{% endif %}
 </form>

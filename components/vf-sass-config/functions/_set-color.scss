@@ -7,3 +7,14 @@
 @function set-ui-color($color-name) {
   @return map-get($vf-ui-colors-map, $color-name);
 }
+
+
+@function color($color-name) {
+  $value: "vf-color--" + $color-name;
+  @return map-get($vf-colors-map, $value);
+}
+
+@function ui-color($color-name) {
+  $value: "vf-ui-color--" + $color-name;
+  @return map-get($vf-ui-colors-map, $value);
+}
