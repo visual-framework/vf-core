@@ -4,7 +4,13 @@
 
 ## About
 
-The ever-useful tabs. This component works best with the included JS, but you can use the CSS styling on other tab sets, like Bootstrap tabs.
+The ever-useful tabs. This component works best with the included JS, but you can use the CSS styling on other tab implementations, like Bootstrap tabs.
+
+## Usage
+
+These tabs have been made with accessibility in mind, however tabs should be avoided where content structure avoids the need to use tabs.
+
+Nested tabs are also possible, as demonstrated in the example, however this provides further usability challenges and should be strongly avoided.
 
 ## Install
 

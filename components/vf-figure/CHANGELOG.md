@@ -1,3 +1,9 @@
+### 2.0.0
+
+* Removed `width: 100%` from the `.vf-figure__image` class.
+* Added `display: block` to the `.vf-figure__image` class.
+* Removed CSS for the width when the `vf-figure` is using floats.
+
 ### 1.3.0
 
 * adds loading="lazy" to the img element for better performance

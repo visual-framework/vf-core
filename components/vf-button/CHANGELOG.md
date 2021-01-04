@@ -1,3 +1,13 @@
+### 1.3.1
+
+* React: Use react-dom-fragment to return HTML fragments.
+  * https://github.com/visual-framework/vf-core/pull/1291
+
+### 1.3.0
+
+* adds react support
+  * https://github.com/visual-framework/vf-core/pull/1278
+
 ### 1.2.0
 
 * updates spacing design tokens

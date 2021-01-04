@@ -1,3 +1,9 @@
+### 2.2.0
+
+* removes bottom margin for `--main`.
+* replaces padding with margin for `--main`.
+* duplicates the top margin for `--main` because sometimes it's out of the `vf-stack` flow.
+
 ### 2.1.0
 
 * fixes a bug with the `--additional` variant.

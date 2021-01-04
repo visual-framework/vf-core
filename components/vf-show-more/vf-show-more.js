@@ -33,13 +33,13 @@ function vfShowMore(scope) {
   // initialize
   targetList.forEach(targetContent => {
     let itemsToShow = Math.round(targetContent.dataset.vfJsShowMorePagerSize);
-    let itemsAvailable = targetContent.querySelectorAll('.vf-show-more__item');
+    let itemsAvailable = targetContent.querySelectorAll(".vf-show-more__item");
 
     for (let index = 0; index < itemsAvailable.length; index++) {
       const element = itemsAvailable[index];
       if (index >= itemsToShow) {
-        element.classList.add('vf-show-more__item-overflow');
-        console.log(element)
+        element.classList.add("vf-show-more__item-overflow");
+        // console.log(element);
       }
     }
   });

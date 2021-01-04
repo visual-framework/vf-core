@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // const resolve = require('path').resolve
 

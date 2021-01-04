@@ -33,8 +33,14 @@ function vfTabs(scope) {
       oldTab.removeAttribute("aria-selected");
       oldTab.setAttribute("tabindex", "-1");
       oldTab.classList.remove("is-active");
-      let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
-      panels[oldIndex].hidden = true;
+
+      for (let item = 0; item < panels.length; item++) {
+        const panel = panels[item];
+        if (panel.id === oldTab.id){
+          panel.hidden = true;
+          break;
+        }
+      }
     }
 
     newTab.focus();
@@ -45,15 +51,21 @@ function vfTabs(scope) {
     newTab.classList.add("is-active");
     // Get the indices of the new tab to find the correct
     // tab panel to show
-    let index = Array.prototype.indexOf.call(tabs, newTab);
-    panels[index].hidden = false;
+    for (let item = 0; item < panels.length; item++) {
+      const panel = panels[item];
+      if (panel.id === newTab.id){
+        panel.hidden = false;
+        break;
+      }
+    }
   };
 
   // Add semantics are remove user focusability for each tab
   Array.prototype.forEach.call(tabs, (tab, i) => {
+    const tabId = tab.href.split("#")[1]; // calculate an ID based off the tab href (todo: add support for a data-vf-js-tab-id, and if set use that)
     tab.setAttribute("role", "tab");
-    tab.setAttribute("id", "tab" + (i + 1));
-    tab.setAttribute("data-tabs__item", "tab" + (i + 1));
+    tab.setAttribute("id", tabId);
+    tab.setAttribute("data-tabs__item", tabId);
     tab.setAttribute("tabindex", "-1");
     tab.parentNode.setAttribute("role", "presentation");
 
@@ -85,11 +97,11 @@ function vfTabs(scope) {
   });
 
   // Add tab panel semantics and hide them all
-  Array.prototype.forEach.call(panels, (panel, i) => {
+  Array.prototype.forEach.call(panels, (panel) => {
     panel.setAttribute("role", "tabpanel");
     panel.setAttribute("tabindex", "-1");
     // let id = panel.getAttribute("id");
-    panel.setAttribute("aria-labelledby", tabs[i].id);
+    panel.setAttribute("aria-labelledby", panel.id);
     panel.hidden = true;
   });
 

@@ -10,9 +10,9 @@ require('@visual-framework/vf-extensions/gulp-tasks/_gulp_rollup.js')(gulp, path
 // search indexing
 require('@visual-framework/vf-extensions/gulp-tasks/gulp-build-search-index.js')(gulp, path, buildDestionation);
 
-// Watch folders for changess
+// Watch folders for changes
 gulp.task('watch', function() {
-  // left for convience for local watch additions
+  // left for convenience for local watch additions
   gulp.watch(['./build/css/styles.css'], gulp.series('eleventy:reload'));
 });
 
