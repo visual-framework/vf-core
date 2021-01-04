@@ -39,7 +39,7 @@ function vfShowMore(scope) {
       const element = itemsAvailable[index];
       if (index >= itemsToShow) {
         element.classList.add("vf-show-more__item-overflow");
-        console.log(element);
+        // console.log(element);
       }
     }
   });
