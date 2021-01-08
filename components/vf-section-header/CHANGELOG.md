@@ -2,6 +2,7 @@
 
 * Removes an extra `}` in the Nunjucks template that was corrupting the html.
 * Better handle whitespace.
+* https://github.com/visual-framework/vf-core/pull/1317
 
 ### 1.3.1
 
