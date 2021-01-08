@@ -1,3 +1,8 @@
+### 1.3.2
+
+* Removes an extra `}` in the Nunjucks template that was corrupting the html.
+* Better handle whitespace.
+
 ### 1.3.1
 
 * Resolve issue of missing import in index.scss
