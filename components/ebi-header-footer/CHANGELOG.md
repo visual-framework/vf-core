@@ -3,6 +3,7 @@
 * Adds distinct footer, header templates as the header currently has more legacy dependencies.
 * Uses the new 2.0 look and feel footer.
 * Uses contentHub to load templates.
+* https://github.com/visual-framework/vf-core/pull/1316
 
 ### 1.0.1
 
