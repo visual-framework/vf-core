@@ -1,10 +1,10 @@
-# EBI Header and Footer component
+# EMBL-EBI Header and Footer component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Febi-header-footer.svg)](https://badge.fury.io/js/%40visual-framework%2Febi-header-footer)
 
 ## About
 
-This provides support for using the EBI header and footer from the EBI VF 1.3. It provides the minimum amount of legacy CSS to make the header and footer work while avoiding conflicts with other 2.0 styles.
+This provides support for using the EMBL-EBI header and footer from the EMBL-EBI VF 1.3. It provides the minimum amount of legacy CSS to make the header and footer work while avoiding conflicts with other 2.0 styles.
 
 ### Note
 
