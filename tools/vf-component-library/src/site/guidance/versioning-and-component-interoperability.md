@@ -6,6 +6,7 @@ section: building
 tags:
   - posts
   - guidance
+  - components
 layout: layouts/section.njk
 templateEngineOverride: njk, md
 ---
