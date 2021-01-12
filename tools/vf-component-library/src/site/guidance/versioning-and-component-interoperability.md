@@ -7,6 +7,7 @@ tags:
   - posts
   - guidance
 layout: layouts/section.njk
+templateEngineOverride: njk, md
 ---
 
 While it may seem odd at first, not all components are on the same major version. You'll find that you might use `vf-button@1.2.3` with `vf-card@2.2.2`.
@@ -56,3 +57,7 @@ Where's version 1.x, you ask? That's the [EMBL-EBI specific Visual Framework](ht
 ## Test releases
 
 Testing releases will be identified in their tag, a la: `v2.0-alpha.1`, where `-alpha.1` is the tag. `-alpha`, `-beta` and `-rc` are tag suffixes.
+
+<hr/>
+
+{% include "component-docs.njk" %}
