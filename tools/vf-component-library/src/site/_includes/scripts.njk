@@ -1,0 +1,6 @@
+<!-- This page was generated on {{ siteConfig.buildTime }} -->
+{% if serverInfo.environment == "development" -%}
+  <script src="{{ '/scripts/scripts.js' | url }}"></script>
+{%- else -%}
+  <script src="https://{{ siteConfig.vfVersionPrefix }}assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/scripts/scripts.js"></script>
+{%- endif -%}

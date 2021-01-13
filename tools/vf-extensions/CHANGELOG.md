@@ -1,11 +1,11 @@
 # Change Log
 
-## 1.0.0-rc.2
+## 1.0.0-rc.1
 
 * Support Eleventy beta.1 there are changes in how its build process works
   * https://github.com/visual-framework/vf-core/pull/1257
 
-## 1.0.0-rc.1
+## 1.0.0-rc.0
 
 * Improve Eleventy-Fractal integration to avoid unnecessary Eleventy rebuilds on Sass and JS updates.
   * https://github.com/visual-framework/vf-core/pull/1309

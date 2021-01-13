@@ -1,3 +1,9 @@
+### 1.4.4
+
+* Fixes a missing vf_intro_subheading vf-intro.njk's context.
+* Fixes README.md invalid example syntax.
+* https://github.com/visual-framework/vf-core/pull/1326
+
 ### 1.4.3
 
 * Resolve issue of missing import in index.scss

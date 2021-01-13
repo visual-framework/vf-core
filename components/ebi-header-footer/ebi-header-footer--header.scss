@@ -4,10 +4,11 @@
 body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display: none; }
 
 .ebi-header-footer.masthead-black-bar {
+  --vf-stack-margin--custom: 0; // black bar needs to always sit at the top of the screen
   background-color: var(--vf-color--grey--darkest);
 
-  nav ul.menu li { 
-    display: inline-block; 
+  nav ul.menu li {
+    display: inline-block;
     margin-bottom: 0;
     float: right;
   }
@@ -24,17 +25,17 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
   a:focus {
     box-shadow: 0 0 2px var(--vf-color--grey--lightest)
   }
-  
+
   .vf-content .global-masthead-interactive-banner p:not([class*='vf-']) {
     font-size: 15px; // embl dropdown p tags shouldn't have large text
-  } 
-  
+  }
+
   .global-masthead-interactive-banner {
-    height: 0; 
+    height: 0;
     overflow: hidden;
     display: none;
     background-color: #000;
-    
+
 
     &.active {
       display: block;
@@ -144,9 +145,9 @@ body.no-global-search .masthead-black-bar ul#global-nav.menu li.search { display
         padding: .6rem .35rem;
     }
   }
-    
+
   @media screen and (max-width: 39.9375em) {
-    &.masthead-black-bar nav ul.menu > li > a > img, 
+    &.masthead-black-bar nav ul.menu > li > a > img,
     &.masthead-black-bar nav ul.menu > li > a:before {
         display: block;
         margin: 0 auto 0.25rem;
