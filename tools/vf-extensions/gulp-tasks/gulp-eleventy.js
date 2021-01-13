@@ -17,7 +17,7 @@ module.exports = function(gulp) {
     done();
   });
 
-  // Run elevent for local development
+  // Run eleventy for local development
   gulp.task('eleventy:develop', function(done) {
     process.argv.push('--serve');
     process.env.ELEVENTY_ENV = 'development';

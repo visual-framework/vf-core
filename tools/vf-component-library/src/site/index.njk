@@ -5,35 +5,6 @@ date: 2018-08-22 12:24:50
 layout: layouts/base.njk
 ---
 
-<nav class="vf-navigation vf-navigation--main | vf-cluster">
-  <ul class="vf-navigation__list | vf-list--inline | vf-cluster__inner">
-    {# <li class="vf-navigation__item">
-      <a href="JavaScript:Void(0);" class="vf-navigation__link" aria-current="page">Home</a>
-    </li> #}
-    <li class="vf-navigation__item">
-      <a href="/about" class="vf-navigation__link">About</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="/components" class="vf-navigation__link">Components</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="/patterns" class="vf-navigation__link">Examples</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="/about/faq" class="vf-navigation__link">FAQ</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="/troubleshooting" class="vf-navigation__link">Troubleshooting</a>
-    </li>
-    <li class="vf-navigation__item">
-      <a href="/building" class="vf-navigation__link">Building</a>
-    </li>
-    {# <li class="vf-navigation__item">
-      <a href="/developing" class="vf-navigation__link">Developing</a>
-    </li> #}
-  </ul>
-</nav>
-
 <section class="embl-grid embl-grid--has-centered-content | vf-u-fullbleed vf-u-background-color--grey--lightest | vf-u-padding__top--800">
 {# Intro #}
 {% render '@vf-intro', {
@@ -41,7 +12,7 @@ layout: layouts/base.njk
   "vf_intro_lede": "Good defaults for life science websites, plus compatibility with existing CSS and JS. Bring your Bootsrap, Angular or vanilla CSS code base.",
   "vf_intro_subheading": "",
   "vf_intro_text": [
-    '<a href="about" class="vf-button vf-button--primary vf-button--outline">Learn more</a> or <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ">get help</a>'
+    '<a href="about" class="vf-button vf-button--primary vf-button--outline">Learn more</a> or <a href="guidance/discussing-the-vf/">get help</a>'
   ],
   "vf_intro_badge": false
 } %}
@@ -129,9 +100,9 @@ layout: layouts/base.njk
     {% markdown %}
     {% codeblock 'html' -%}
     <!-- CSS only -->
-    <link rel="stylesheet" href="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
+    <link rel="stylesheet" href="https://{{ siteConfig.vfVersionPrefix }}assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
     <!-- JS -->
-    <script src="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/scripts/scripts.js"></script>
+    <script src="https://{{ siteConfig.vfVersionPrefix }}assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/scripts/scripts.js"></script>
     {%- endcodeblock %}
     <br/>
 

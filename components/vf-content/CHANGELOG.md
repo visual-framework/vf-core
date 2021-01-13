@@ -1,3 +1,7 @@
+### 1.3.2
+
+* dependency bump
+
 ### 1.3.0
 
 * updates spacing design tokens

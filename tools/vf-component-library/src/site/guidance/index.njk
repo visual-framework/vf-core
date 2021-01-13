@@ -1,0 +1,32 @@
+---
+is_index: true
+hideSubPosts: true
+title: Guidance and principles
+subtitle: Here you will find guidance on what, why and how.
+intro: This is a collection of how-tos and best practice when building for the Visual Framework and its users.
+date: 2020-12-14 18:24:50
+section: building
+order: 5
+tags:
+  - building
+  - sections
+layout: layouts/section.njk
+---
+
+{%- for post in collections.guidance  | reverse %}
+
+<article class="vf-summary vf-summary--article">
+  <h3 class="vf-summary__title">
+    <a href="{{ post.url | url }}" class="vf-summary__link">{{ post.data.title }}</a>
+  </h3>
+  {# <div class="vf-summary__meta">
+    left spacing artifact when no author
+    <p class="vf-summary__date">{{ post.date | dateDisplay }}</p>
+  </div> #}
+  {# <p class="vf-text-body--5 | vf-u-margin__bottom--200">{{ date | dateDisplay }}</p> #}
+  <p class="vf-summary__text">
+    {{ post.data.subtitle | markdown | safe | replace("<p>", "<span class='vf-content'>") | replace("</p>", "</span>") }}
+  </p>
+</article>
+
+{% endfor %}

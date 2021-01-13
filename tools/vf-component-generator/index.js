@@ -9,6 +9,17 @@ vfName = config.vfConfig.vfName || "Visual Framework 2.0";
 vfNamespace = config.vfConfig.vfNamespace || "vf-";
 vfComponentPath = config.vfConfig.vfComponentPath || path.resolve(__dirname, '../../components');
 
+function camelize(str,upperCaseFirst) {
+  var upperCaseFirst = upperCaseFirst || false;
+  return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+    if (upperCaseFirst) { 
+      return word.toUpperCase();
+    } else {
+      return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    }
+  }).replace(/\s+/g, '').replace('-', '');
+}
+
 module.exports = class extends Generator {
   prompting() {
     this.log((
@@ -118,6 +129,17 @@ module.exports = class extends Generator {
       this.templatePath('_component.js'),
       this.destinationPath(totalPath + outputFile),
       {
+        componentNameJs: camelize(fileName), // JS friendly name
+        componentName: fileName
+      }
+    );
+
+    var outputFile = fileName + '.react.js';
+    this.fs.copyTpl(
+      this.templatePath('_component.react.js'),
+      this.destinationPath(totalPath + outputFile),
+      {
+        componentNameReact: camelize(fileName, true), // React JS friendly name
         componentName: fileName
       }
     );

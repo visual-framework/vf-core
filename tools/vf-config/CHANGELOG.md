@@ -1,3 +1,7 @@
+### 1.0.1-alpha.0
+
+- Version bump only for package @visual-framework/vf-config
+
 ### 1.0.0-alpha.0
 
 - Version bump only for package @visual-framework/vf-config

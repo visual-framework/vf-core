@@ -1,3 +1,13 @@
+### 1.4.1
+
+* Fix image URL in vf-summary--news-has-image.
+
+### 1.4.0
+
+* makes the title of summary a little larger
+* reduces margin a little on news
+* removes the padding from events
+
 ### 1.3.1
 
 * adds 'grid-template-areas' CSS for `--has-image` variant so you can use it with a `-thumbnail` class
