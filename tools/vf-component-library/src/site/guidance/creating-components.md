@@ -7,7 +7,9 @@ section: building
 tags:
   - posts
   - guidance
+  - components
 layout: layouts/section.njk
+templateEngineOverride: njk, md
 ---
 
 Tip: also consult the [guidelines]({{ '/guidance/components-and-patterns' | url }}) for the naming of things and coding standards.
@@ -40,3 +42,7 @@ Tip: also consult the [guidelines]({{ '/guidance/components-and-patterns' | url 
 1. Sharing you component back
    - Publish it to npm; and/or
    - If you think your component is useful to the global `vf-core` community, [make a Pull Request](https://github.com/visual-framework/vf-core/pulls) or [open an issue](https://github.com/visual-framework/vf-core/issues/new/choose) to discuss.
+
+<hr/>
+
+{% include "component-docs.njk" %}

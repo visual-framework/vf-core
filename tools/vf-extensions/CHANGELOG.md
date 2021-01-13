@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.0-rc.1
+## 1.0.0-rc.0
 
 * Improve Eleventy-Fractal integration to avoid unnecessary Eleventy rebuilds on Sass and JS updates.
   * https://github.com/visual-framework/vf-core/pull/1309

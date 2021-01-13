@@ -7,7 +7,9 @@ section: building
 tags:
   - posts
   - guidance
+  - components
 layout: layouts/section.njk
+templateEngineOverride: njk, md
 ---
 
 ## Type 1: Components
@@ -76,3 +78,7 @@ and be large and italic text.
 ## Learn more
 
 For further guidance on the distinctions, see: [Patterns ≠ Components](https://medium.com/eightshapes-llc/patterns-components-2ce778cbe4e8) and UK.gov's information on [patterns](https://design-system.service.gov.uk/patterns) vs [components](https://design-system.service.gov.uk/components).
+
+<hr/>
+
+{% include "component-docs.njk" %}
