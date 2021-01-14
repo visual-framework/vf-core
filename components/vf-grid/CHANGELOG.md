@@ -1,4 +1,4 @@
-### 1.3.0
+### 1.4.0
 
 * fixes flexbox fallback grid when there are items on two or more rows
 * fixes widths on flexbox fallback grid.
