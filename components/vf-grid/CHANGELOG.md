@@ -1,5 +1,10 @@
 ### 1.3.0
 
+* fixes flexbox fallback grid when there are items on two or more rows
+* fixes widths on flexbox fallback grid.
+
+### 1.3.0
+
 * makes the layout something that can now use 'extends' within nunjucks
 
 ### 1.1.0
