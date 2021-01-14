@@ -1,11 +1,13 @@
 ---
 is_index: true
-title: Developing `vf-core`
-subtitle: Developing and contributing to the Visual Framework core.
-intro: A guide to what you need to do, how you should write it and how to maintain <code>vf-core</code> components.
+title: Contributing
+subtitle: Developing and contributing to the Visual Framework Core and its components.
+intro: A guide to what you need to do, how you should write it and how to maintain <code class="vf-code-example">vf-core</code> components.
 date: 2019-04-09 12:24:50
 section: developing
+order: 1
 tags:
+  - developing
   - documentation
   - sections
 layout: layouts/section.njk
@@ -14,10 +16,7 @@ templateEngineOverride: njk, md
 
 #### In the right place?
 
-Need to just make a VF-powered site?
-
-If you're not looking to develop the vf-core or add components for global use,
-then you might be in the wrong place. If you want to make a site or design system that uses
+Need to just make a VF-powered site? If you want to make a site or design system that uses
 Visual Framework components, then [check out the "Visual Framework building guide"]({{ '/building' | url }}).
 
 #### Getting started <a id="getting-started"></a>
@@ -41,23 +40,8 @@ why you want or have done something is always very helpful.
 Once you've set up the VF Core locally or made a new design system, you'll want to
 extend it by creating components to add new charts, tables or other types of functionality.
 
-<ol>
-{%- for page in collections['contributing components'] | sort(false, true, 'order') %}
-{%- if page.data.layout %}
-  <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
-{%- endif %}
-{%- endfor %}
-</ol>
+[See the Guidance section]({{ '/guidance' | url }})
 
 #### General guidelines, best practice <a id="guidelines"></a>
 
-Some important reading on conding standards, governance and who we're looking
-to assist with the Visual Framework Core.
-
-<ul>
-{%- for page in collections['guidelines'] | sort(false, true, 'url') %}
-{%- if page.data.layout %}
-  <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
-{%- endif %}
-{%- endfor %}
-</ul>
+[See the Guidance section]({{ '/guidance' | url }})

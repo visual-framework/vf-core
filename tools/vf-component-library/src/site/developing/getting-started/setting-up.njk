@@ -1,9 +1,15 @@
 ---
-title: Setting up your development environment
+title: Getting started
+subheading: Setting up your development environment.
 subtitle: To develop the Visual Framework your will need some free software.
 date: 2020-03-18 12:24:50
-layout: layouts/developing.njk
+layout: layouts/section.njk
+section: developing
 order: 3
+tags:
+  - getting started
+  - developing
+  - documentation
 ---
 
 ## Development tools
@@ -18,7 +24,7 @@ First, see if you have the needed tools installed.
 If any of those steps return an error you need to install the corresponding
 software.
 
-- To install Node: go to the official [downloads page](https://nodejs.org/download/)
+- To install Node: go to the official [downloads page](https://nodejs.org/)
 - To install Yarn: Yarn require Node, [follow the install guide](https://yarnpkg.com/lang/en/docs/install/)
 
 ## Development environment
@@ -29,7 +35,6 @@ We have a recommended development environment for new developers:
 1. Install the [GitHub Desktop git client](https://desktop.github.com/)
 1. For editing code, [install Visual Studio Code](https://code.visualstudio.com/#alt-downloads)
     <br/>We also recommended some extensions to improve you editing experience and speed:
-    - Setup VSCode to work with [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
     - Tidy up your code: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
     - Fix spelling in your HTML, CSS and JS: [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
     - JS liniting: [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
@@ -54,8 +59,8 @@ Here's how:
     - `cd vf-core`
 1. You probably want the develop branch (or [your new feature branch]({{ '/developing/getting-started/naming' | url }}))
     - `git checkout develop`
-1. Install [fractal](https://github.com/frctl/fractal) You might need to use `sudo`.
-    - `yarn global add @frctl/fractal`
+1. Go into the Visual Framework main project
+    - `cd tools/vf-core`
 1. Download all the things
     - `yarn install`
 1. Run a dev build and open in your browser

@@ -1,0 +1,123 @@
+---
+title: Boilerplate for a generic EMBL-EBI page
+subtitle: Use this boilerplate pattern for generic content-focused pages at EMBL-EBI.
+section: patterns
+date: 2018-08-22 12:24:50
+tags: posts
+layout: layouts/boilerplate.njk
+---
+<!DOCTYPE html>
+<html lang="en" class="vf-no-js">
+<head>
+  <!-- See the VF No JS docs: https://stable.visual-framework.dev/components/vf-no-js/ -->
+  {% render "@vf-no-js" %}
+  <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+
+  <!-- See the VF Favicon docs: https://stable.visual-framework.dev/components/vf-favicon/ -->
+  {% render "@vf-favicon" %}
+  <!-- See the embl-content-meta-properties docs: https://stable.visual-framework.dev/components/embl-content-meta-properties/ -->
+  {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "EMBL-EBI", "meta_what": "research", "meta_active": "what"} %}
+
+  {% if serverInfo.environment == "development" -%}
+  <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+  {%- else -%}
+  <link rel="stylesheet" href="https://{{ siteConfig.vfVersionPrefix }}assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
+  {%- endif %}
+  <!--
+    Want to build a site with the Visual Framework?
+    ---
+    You can copy the CSS and JS you find here, but for the best experience see the building guide:
+    https://stable.visual-framework.dev/building/
+  -->
+</head>
+<body class="vf-body vf-stack">
+  <!-- See the EBI Header Footer docs: https://stable.visual-framework.dev/components/ebi-header-footer -->
+  {% render "@ebi-header-footer--header" %}
+
+  <!-- See the VF Breadcrumbs docs: https://stable.visual-framework.dev/components/embl-breadcrumbs-lookup/ -->
+  {% include "./templates/breadcrumbs-boilerplate.njk" %}
+
+  <!-- See the VF Masthead docs: https://stable.visual-framework.dev/components/vf-masthead/ -->
+  {% render '@vf-masthead', {
+    "component-type": "block",
+    "masthead_href": "JavaScript:Void(0);",
+    "masthead_heading": "Career profiles and life at EMBL-EBI",
+    "masthead_heading_additional": "Outstanding technical infrastructure and a flexible working style",
+    "masthead_subheading": [
+      {
+        "masthead_subheading_text": "<a href=\"//www.ebi.ac.uk/about\">About EMBL-EBI</a>"
+      }
+    ],
+    "mastheadImage": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg",
+    "hasTitleBlock": true
+  } %}
+
+  <!-- See the VF Navigation docs: https://stable.visual-framework.dev/components/vf-navigation/ -->
+  {% render '@vf-navigation--main' %}
+
+  <!-- See the VF Intro docs: https://stable.visual-framework.dev/components/vf-intro/ -->
+  {% set context = {
+    "vf_intro_heading": title,
+    "vf_intro_badge": false,
+    "vf_intro_subheading": "",
+    "vf_intro_lede": subtitle,
+    "vf_intro_text": [
+      "With outstanding technical infrastructure and a flexible working style, EMBL-EBI is a medium-sized organisation with a small-company feel. Located on the beautifully landscaped Wellcome Genome Campus, our staff enjoy a vibrant, interdisciplinary working environment just 12 miles from central Cambridge. The campus offers a free commuter bus service, a library, on-site nursery and subsidised gym and restaurants.",
+      "As part of EMBL, we recruit internationally and offer competitive salary and benefits, including help for those moving far from home. Our staff benefit from a supportive environment, with scientific training, world-class seminars and many opportunities to move between projects and learn on the job. We also offer general training to help our staff build skills for personal development."
+    ]
+  }
+  -%}
+  {% include containers.intro %}
+
+  <!-- See the EMBL Grid docs: https://stable.visual-framework.dev/components/embl-grid/ -->
+  <section class="embl-grid embl-grid--has-centered-content">
+    <div>
+      <!-- See the VF Section header docs: https://stable.visual-framework.dev/components/vf-section-header/ -->
+      <!-- you can include section headers too -->
+      {% set context = {
+        "section_title": "Source code",
+        "href": "",
+        "id": "source",
+        "vf_section__content": [
+          ""
+        ]
+        }
+      %}
+      {% include blocks.section_header %}
+    </div>
+  <!-- See the VF Content docs: https://stable.visual-framework.dev/components/vf-content/ -->
+    <div class="vf-content">
+      <p>If you're building a page with Nunjucks or VF Eleventy, <a href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-component-library/src/site/patterns/boilerplate-generic-embl-ebi.njk" class="vf-link">you can see the Nunjucks template for this page here.</a></p>
+    </div>
+  </section>
+
+  <!-- this page to be built with further example content over time, the idea is to show https://www.ebi.ac.uk/about/jobs/career-profiles as a "pure" 2.0 version-->
+  {# <section class="embl-grid embl-grid--has-centered-content">
+    <div>
+      <!-- you can include section headers too -->
+
+      {% set context = {
+        "section_title": "Career profiles",
+        "href": "JavaScript:Void(0);",
+        "id": "section-link-text",
+        "vf_section__content": [
+          "We've interviewed members of our staff to give you an idea of what it's like to work in different parts of our organisation. You can find our more at our autumn Open Days, and hear from our experts on Twitter and Facebook."
+        ]
+        }
+      %}
+      {% include blocks.section_header %}
+    </div>
+
+    <div>
+    </div>
+  </section> #}
+
+  {% render "@ebi-header-footer--footer" %}
+
+  {# {% include "./templates/notice-boilerplate.njk" %} #}
+  {% include "scripts.njk" %}
+</body>
+</html>

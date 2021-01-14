@@ -164,6 +164,25 @@ If you have Blocks that need to be laid out on both X and Y axis you will need t
     <p>12</p>
   </div>
 
+### Visual Framework grid column spans
+
+You can span multiple columns. There are also [responsive grid spans](https://stable.visual-framework.dev/components/vf-utility-classes/#vf-utility-classes--grid).
+
+###### HTML
+```html
+<p class="vf-grid__col--span-2">2</p>
+```
+###### Example
+
+  <div class="vf-grid vf-grid__col-6">
+    <span>1</span>
+    <span class="vf-grid__col--span-2">2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+  </div>
+
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-grid` with this command.
@@ -180,10 +199,10 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-grid/index.scss";
 ```
 
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)
 
 ## Help
 
-- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)
 - [Open a ticket](https://github.com/visual-framework/vf-core/issues)
 - [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

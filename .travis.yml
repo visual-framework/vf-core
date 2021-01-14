@@ -30,7 +30,7 @@ jobs:
       env:
         - PERCY_TARGET_BRANCH=develop
       script:
-        - npx percy snapshot ./build/components/ --base-url "/vf-core/"
+        - npx percy snapshot ./build/components/ --base-url "/"
       cache:
         paths:
           - node_modules
@@ -38,17 +38,17 @@ jobs:
         except:
         - develop
 
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  wallace-token: $WALLACE_TOKEN
-  keep-history: true
-  target-branch: gh-pages
-  local-dir: tools/vf-component-library/build
-  cache:
-    paths:
-      - node_modules
-  on:
-    branch:
-      - develop
+# deploy:
+#   provider: pages
+#   skip-cleanup: true
+#   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+#   wallace-token: $WALLACE_TOKEN
+#   keep-history: true
+#   target-branch: gh-pages
+#   local-dir: tools/vf-component-library/build
+#   cache:
+#     paths:
+#       - node_modules
+#   on:
+#     branch:
+#       - develop

@@ -1,7 +1,11 @@
+### 3.1.0
+
+* adds `--1600` (`4rem`) spacing token.
+
 ### 3.0.0
 
 * We're moving the documentation to the `vf-component-library`
-  - https://visual-framework.github.io/vf-core/design-tokens/
+  - https://stable.visual-framework.dev/design-tokens/
 * removes all `.njk` documentation files
 * hides from Fractal
 * removes any other files no longer needed

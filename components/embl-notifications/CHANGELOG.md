@@ -1,3 +1,7 @@
+### 1.0.1
+
+* JS linting
+
 ### 1.0.0
 
 * Check a backup URL for cases of major outages: https://embl-communications.github.io/embl-notifcations-fallback/notifications.js

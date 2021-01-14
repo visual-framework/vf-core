@@ -6,7 +6,9 @@
  * @example vfTabs(document.querySelectorAll('.vf-component__container')[0]);
  */
 function vfTabs(scope) {
+  /* eslint-disable no-redeclare */
   var scope = scope || document;
+  /* eslint-enable no-redeclare */
   // Get relevant elements and collections
   const tablist = scope.querySelectorAll("[data-vf-js-tabs]");
   const panelsList = scope.querySelectorAll("[data-vf-js-tabs-content]");
@@ -31,8 +33,14 @@ function vfTabs(scope) {
       oldTab.removeAttribute("aria-selected");
       oldTab.setAttribute("tabindex", "-1");
       oldTab.classList.remove("is-active");
-      let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
-      panels[oldIndex].hidden = true;
+
+      for (let item = 0; item < panels.length; item++) {
+        const panel = panels[item];
+        if (panel.id === oldTab.id){
+          panel.hidden = true;
+          break;
+        }
+      }
     }
 
     newTab.focus();
@@ -43,15 +51,21 @@ function vfTabs(scope) {
     newTab.classList.add("is-active");
     // Get the indices of the new tab to find the correct
     // tab panel to show
-    let index = Array.prototype.indexOf.call(tabs, newTab);
-    panels[index].hidden = false;
+    for (let item = 0; item < panels.length; item++) {
+      const panel = panels[item];
+      if (panel.id === newTab.id){
+        panel.hidden = false;
+        break;
+      }
+    }
   };
 
   // Add semantics are remove user focusability for each tab
   Array.prototype.forEach.call(tabs, (tab, i) => {
+    const tabId = tab.href.split("#")[1]; // calculate an ID based off the tab href (todo: add support for a data-vf-js-tab-id, and if set use that)
     tab.setAttribute("role", "tab");
-    tab.setAttribute("id", "tab" + (i + 1));
-    tab.setAttribute("data-tabs__item", "tab" + (i + 1));
+    tab.setAttribute("id", tabId);
+    tab.setAttribute("data-tabs__item", tabId);
     tab.setAttribute("tabindex", "-1");
     tab.parentNode.setAttribute("role", "presentation");
 
@@ -83,16 +97,16 @@ function vfTabs(scope) {
   });
 
   // Add tab panel semantics and hide them all
-  Array.prototype.forEach.call(panels, (panel, i) => {
+  Array.prototype.forEach.call(panels, (panel) => {
     panel.setAttribute("role", "tabpanel");
     panel.setAttribute("tabindex", "-1");
-    let id = panel.getAttribute("id");
-    panel.setAttribute("aria-labelledby", tabs[i].id);
+    // let id = panel.getAttribute("id");
+    panel.setAttribute("aria-labelledby", panel.id);
     panel.hidden = true;
   });
 
   // Add the tablist role to the first <ul> in the .tabbed container
-  Array.prototype.forEach.call(tablist, (tablistset, i) => {
+  Array.prototype.forEach.call(tablist, (tablistset) => {
     tablistset.setAttribute("role", "tablist");
     // Initially activate the first tab
     let firstTab = tablistset.querySelectorAll(".vf-tabs__link")[0];
@@ -100,7 +114,7 @@ function vfTabs(scope) {
     firstTab.setAttribute("aria-selected", "true");
     firstTab.classList.add("is-active");
   });
-  Array.prototype.forEach.call(panelsList, (panel, i) => {
+  Array.prototype.forEach.call(panelsList, (panel) => {
     // Initially reveal the first tab panel
     let firstPanel = panel.querySelectorAll(".vf-tabs__section")[0];
     firstPanel.hidden = false;

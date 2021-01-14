@@ -4,7 +4,13 @@
 
 ## About
 
-The ever-useful tabs. This component works best with the included JS, but you can use the CSS styling on other tab sets, like Bootstrap tabs.
+The ever-useful tabs. This component works best with the included JS, but you can use the CSS styling on other tab implementations, like Bootstrap tabs.
+
+## Usage
+
+These tabs have been made with accessibility in mind, however tabs should be avoided where content structure avoids the need to use tabs.
+
+Nested tabs are also possible, as demonstrated in the example, however this provides further usability challenges and should be strongly avoided.
 
 ## Install
 
@@ -22,10 +28,10 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-tabs/index.scss";
 ```
 
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)
 
 ## Help
 
-- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)
 - [Open a ticket](https://github.com/visual-framework/vf-core/issues)
 - [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

@@ -12,11 +12,11 @@ layout: layouts/post.njk
 {# macros #}
 {% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
 
 {% endmacro %}
 
-{% macro componentLink(component='vf-xxx') %}[{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/){% endmacro %}
+{% macro componentLink(component='vf-xxx') %}[{{component}}](https://stable.visual-framework.dev/components/{{component}}/){% endmacro %}
 {# endmacros #}
 
 <div class="vf-box vf-box-theme--tertiary vf-box--easy">
@@ -30,7 +30,7 @@ This releases {{version}} to the CDN
 
 As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
 
-{#- don't forget to add the latest version to /Users/khawkins/Documents/GitHub/vf-core/tools/vf-component-library/src/site/_data/siteConfig.js -#}
+{#- don't forget to add the latest version to ./tools/vf-component-library/src/site/_data/siteConfig.js -#}
 
 </div>
 </div>
@@ -51,7 +51,7 @@ As a reminder, the rollup CSS and JS are compilations of many independently vers
 {{ notes('vf-design-tokens', '3.0.0', 'ea7ebdcdb3aa3bb1ba649e1e1b11a96f36a3e3b4') }}
 
 * We're moving the documentation to the `vf-component-library`
-    * https://visual-framework.github.io/vf-core/design-tokens/
+    * https://stable.visual-framework.dev/design-tokens/
 * removes all `.njk` documentation files
 * hides from Fractal
 * removes any other files no longer needed

@@ -1,3 +1,11 @@
+### 1.0.2
+
+* adds aria role detection of current page
+
+### 1.0.1
+
+* JS linting
+
 ### 1.0.0
 
 * prevent recursive breadcrumb lookup: it can occur for the EMBL taxonomy to have recursive parents, this present direct recursion

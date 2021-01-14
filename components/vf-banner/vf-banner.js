@@ -1,6 +1,5 @@
 // vf-banner
 
-
 // Turn the below code snippet into a banner
 // <div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
 // data-vf-js-banner
@@ -22,9 +21,11 @@
 /**
  * Clear the cooke. This is mostly a development tool.
  */
+/* eslint-disable no-unused-vars */
 function vfBannerReset(vfBannerCookieNameAndVersion) {
   vfBannerSetCookie(vfBannerCookieNameAndVersion,false);
 }
+/* eslint-enable no-unused-vars */
 
 /**
  * Dismiss a banner
@@ -34,13 +35,14 @@ function vfBannerClose(targetBanner) {
   // remove padding added to not cover up content
   if (targetBanner.classList.contains("vf-banner--fixed")) {
     var height = targetBanner.offsetHeight || 0;
+    var pagePadding;
     if (targetBanner.classList.contains("vf-banner--top")) {
-      var pagePadding = document.body.style.paddingTop.replace(/\D/g,"") || 0;
+      pagePadding = document.body.style.paddingTop.replace(/\D/g,"") || 0;
       pagePadding = pagePadding - height;
       document.body.style.paddingTop = pagePadding+"px";
     }
     if (targetBanner.classList.contains("vf-banner--bottom")) {
-      var pagePadding = document.body.style.paddingBottom.replace(/\D/g,"") || 0;
+      pagePadding = document.body.style.paddingBottom.replace(/\D/g,"") || 0;
       pagePadding = pagePadding - height;
       document.body.style.paddingBottom = pagePadding+"px";
     }
@@ -65,7 +67,9 @@ function vfBannerConfirm(banner,vfBannerCookieNameAndVersion) {
  */
 function vfBannerSetCookie(c_name, value, exdays) {
   // var value = value || 'true';
+  /* eslint-disable no-redeclare */
   var exdays = exdays || 90;
+  /* eslint-enable no-redeclare */
   var exdate = new Date();
   var c_value;
   exdate.setDate(exdate.getDate() + exdays);
@@ -77,9 +81,7 @@ function vfBannerSetCookie(c_name, value, exdays) {
  * See if a cookie has been set
  */
 function vfBannerGetCookie(c_name) {
-  var i,
-    x,
-    y,
+  var x, y,
     ARRcookies = document.cookie.split(";");
   for (var i = 0; i < ARRcookies.length; i++) {
     x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
@@ -97,7 +99,9 @@ function vfBannerGetCookie(c_name) {
  * @example vfBanner(document.querySelectorAll('.vf-component__container')[0]);
  */
 function vfBanner(scope) {
+  /* eslint-disable no-redeclare */
   var scope = scope || document;
+  /* eslint-enable no-redeclare */
   const bannerList = scope.querySelectorAll("[data-vf-js-banner]");
 
   if (!bannerList) {
@@ -110,7 +114,7 @@ function vfBanner(scope) {
   }
 
   // generate the banner component, js events
-  Array.prototype.forEach.call(bannerList, (banner, i) => {
+  Array.prototype.forEach.call(bannerList, (banner) => {
 
     // map the JS data attributes to our object structure
     var bannerRemapped = JSON.parse(JSON.stringify(banner.dataset));
@@ -144,7 +148,9 @@ function vfBanner(scope) {
  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
  */
 function vfBannerInsert(banner,bannerId,scope) {
+  /* eslint-disable no-redeclare */
   var scope = scope || document;
+  /* eslint-enable no-redeclare */
   var targetBanner = scope.querySelectorAll("[data-vf-js-banner-id=\""+bannerId+"\"]")[0];
   if (targetBanner == undefined) {
     return;
@@ -204,7 +210,8 @@ function vfBannerInsert(banner,bannerId,scope) {
       generatedBannerHtml += "<button class=\"vf-button vf-button--tertary\" data-vf-js-banner-close>"+banner.vfJsBannerButtonText+"</button>";
     }
     else {
-      generatedBannerHtml += "<button class=\"vf-button vf-button--secondary\" data-vf-js-banner-close>"+banner.vfJsBannerButtonText+"</button>";
+      // default
+      generatedBannerHtml += "<button class=\"vf-button vf-button--primary\" data-vf-js-banner-close>"+banner.vfJsBannerButtonText+"</button>";
     }
   }
 
@@ -235,14 +242,15 @@ function vfBannerInsert(banner,bannerId,scope) {
 
   // add appropriate padding to the page to not cover up content
   if (targetBanner.classList.contains("vf-banner--fixed")) {
-    var height = targetBanner.offsetHeight || 0;
+    var height = Number(targetBanner.offsetHeight || 0);
+    var pagePadding;
     if (targetBanner.classList.contains("vf-banner--top")) {
-      var pagePadding = document.body.style.paddingTop.replace(/\D/g,"") || 0;
+      pagePadding = Number(document.body.style.paddingTop.replace(/\D/g,"") || 0);
       pagePadding = pagePadding + height;
       document.body.style.paddingTop = pagePadding+"px";
     }
     if (targetBanner.classList.contains("vf-banner--bottom")) {
-      var pagePadding = document.body.style.paddingBottom.replace(/\D/g,"") || 0;
+      pagePadding = Number(document.body.style.paddingBottom.replace(/\D/g,"") || 0);
       pagePadding = pagePadding + height;
       document.body.style.paddingBottom = pagePadding+"px";
     }

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Expose vf-scripts gulp task as a JS module
@@ -60,10 +60,11 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
           includePaths(includePathOptions)
         ]
       }, {
-        // Rollups `sourcemap` option is unsupported. Use `gulp-sourcemaps` plugin instead
         format: 'cjs',
       }))
       // If you wish to inline sourcemap into the exported .js file:
+      // Rollups `sourcemap` option is unsupported. Use `gulp-sourcemaps` plugin instead
+      // const sourcemaps = require('gulp-sourcemaps');
       // .pipe(sourcemaps.write())
       // When components are requested but not found, rollupJS leaves them as a node-style
       // `require()`, this trims those

@@ -8,7 +8,7 @@ tags:
 layout: layouts/post.njk
 ---
 
-### [vf-summary](https://visual-framework.github.io/vf-core/components/vf-summary/) 1.3.1
+### [vf-summary](https://stable.visual-framework.dev/components/vf-summary/) 1.3.1
 
 commit [999f4cf9671afab790735150dd21c2040c3968b3](https://github.com/visual-framework/vf-core/commit/999f4cf9671afab790735150dd21c2040c3968b3)
 
@@ -16,7 +16,7 @@ commit [999f4cf9671afab790735150dd21c2040c3968b3](https://github.com/visual-fram
 - adds 'grid-template-areas' CSS for `--has-image` variant so you can use it with a `-thumbnail` class.
 ```
 
-### [embl-grid](https://visual-framework.github.io/vf-core/components/embl-grid/) 2.0.2
+### [embl-grid](https://stable.visual-framework.dev/components/embl-grid/) 2.0.2
 
 commit [797068ad8d3f0232e9b9cf85c5cfca7f2ef3405f](https://github.com/visual-framework/vf-core/commit/797068ad8d3f0232e9b9cf85c5cfca7f2ef3405f)
 
@@ -25,7 +25,7 @@ commit [797068ad8d3f0232e9b9cf85c5cfca7f2ef3405f](https://github.com/visual-fram
 - makes the sidebar smaller until it hits 1300px
 ```
 
-### [vf-sass-config](https://visual-framework.github.io/vf-core/components/vf-sass-config/) 1.4.1
+### [vf-sass-config](https://stable.visual-framework.dev/components/vf-sass-config/) 1.4.1
 
 commit [59d9a30f76b0effe7e649e3f578c4df4a939072a](https://github.com/visual-framework/vf-core/commit/59d9a30f76b0effe7e649e3f578c4df4a939072a)
 
@@ -37,7 +37,7 @@ commit [59d9a30f76b0effe7e649e3f578c4df4a939072a](https://github.com/visual-fram
 
 commit [3447c6e18ea7ea7fd638ad4ccd5b30e0cc9fc874](https://github.com/visual-framework/vf-core/commit/3447c6e18ea7ea7fd638ad4ccd5b30e0cc9fc874)
 
-- [vf-content](https://visual-framework.github.io/vf-core/components/embl-grid/) 2.0.3
+- [vf-content](https://stable.visual-framework.dev/components/embl-grid/) 2.0.3
 - [vf-sass-config](https://visual-framework.github.io/vf-sass-config/components/embl-grid/) 1.4.2
 - [vf-sass-starter](https://visual-framework.github.io/vf-sass-starter/components/embl-grid/) 0.1.7
 - [vf-vf-stack](https://visual-framework.github.io/vf-vf-stack/components/embl-grid/) 1.1.1

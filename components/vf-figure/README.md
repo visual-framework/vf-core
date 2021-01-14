@@ -4,17 +4,15 @@
 
 ## About
 
-The `vf-figure` componet defaults to give the image a maximum width of 100% so that it can be placed inside of a grid (like `vf-grid`) and fill the space of the grid item(s) that have been allocated by its parent.
+The `vf-figure` component can be used to display and caption diagrams, illustrations, photos, etc. This is to be used as a 'single' item of content that if it was removed from the page or have its position moved in the DOM it would not affect the pages other content.
 
 ## Usage
 
-If you need to specify the width of the component you can use the CSS custom property `--vf-figure__width` which will override the width in the CSS.
-
-The `vf-figure` component also has some alignment class selectors available.
+The `vf-figure` component can be used within any existing Visual Framework layout component. The size of the `vf-figure` is dictated by the size of the image rather and responds to the browser viewport if the viewport is smaller. The `vf-figure` component also has some alignment class selectors available which can float or centre the component in and around the other content on the page.
 
 ### Class Selectors
 
-- `vf-figure--align`: required to align the component depending on where it is needed. This class also changes the width of the image to `auto` but can still be overriden with `--vf-figure__width`. The class also changes the `display` to `display: table` so that we can confine the `figcaption` inside of the `figure` HTML element without any overflow.
+- `vf-figure--align`: required to align the component depending on where it is needed. The class also changes the `display` to `display: table` so that we can confine the `figcaption` inside of the `figure` HTML element without any overflow.
 - `vf-figure--align-inline-start`: This class adds `float: left;`.
 - `vf-figure--align-inline-end`: This class adds `float: right;`.
 - `vf-figure--align-inline-centered`: This class adds `margin: 0 auto;`.
@@ -45,10 +43,10 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 @import "@visual-framework/vf-figure/index.scss";
 ```
 
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://visual-framework.github.io/vf-core/building/) or the [`vf-sass-starter`](https://visual-framework.github.io/vf-core/components/vf-sass-starter/)
+Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)
 
 ## Help
 
-- [Read the Visual Framework troubleshooting](https://visual-framework.github.io/vf-welcome/troubleshooting/)
+- [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)
 - [Open a ticket](https://github.com/visual-framework/vf-core/issues)
 - [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)

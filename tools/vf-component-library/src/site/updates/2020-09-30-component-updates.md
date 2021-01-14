@@ -20,7 +20,7 @@ This releases {{version}} to the CDN:
 {% set componentVersion = "1.5.0" %}
 {% set commitId = "5f4f29e0b5566dbbcc73ff28d99e4f430a14e926" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -34,7 +34,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 
 
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -49,7 +49,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 {% set componentVersion = "2.2.0" %}
 {% set commitId = "788277969ff44528842d85147f5b1e1c05326b9b" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -63,7 +63,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 {% set componentVersion = "1.1.0" %}
 {% set commitId = "af8e0a1461033a5ad7a6a7cb673914da2315ba82" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -77,7 +77,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 {% set componentVersion = "1.1.1" %}
 {% set commitId = "fb54a3462a003219f00859c9c8a111a4edce997c" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -90,7 +90,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 {% set componentVersion = "1.0.1" %}
 {% set commitId = "fb54a3462a003219f00859c9c8a111a4edce997c" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -103,7 +103,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 {% set componentVersion = "1.0.1" %}
 {% set commitId = "fb54a3462a003219f00859c9c8a111a4edce997c" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 
@@ -116,7 +116,7 @@ commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commi
 {% set componentVersion = "1.0.0-alpha.2" %}
 {% set commitId = "dd4ab4a1073999340eb445877a5f5af9b6903745" %}
 
-### [{{component}}](https://visual-framework.github.io/vf-core/components/{{component}}/) {{componentVersion}}
+### [{{component}}](https://stable.visual-framework.dev/components/{{component}}/) {{componentVersion}}
 
 commit [{{commitId}}](https://github.com/visual-framework/vf-core/commit/{{commitId}})
 

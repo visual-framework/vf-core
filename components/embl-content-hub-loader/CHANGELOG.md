@@ -1,3 +1,12 @@
+### 1.0.8
+
+* Fix a bug when vfBanner or vfTabs are not present
+  * https://github.com/visual-framework/vf-core/issues/809
+
+### 1.0.7
+
+* JS linting
+
 ### 1.0.6
 
 * invoke `emblContentHubSignalFinished()` even in cases where there was nothing to load

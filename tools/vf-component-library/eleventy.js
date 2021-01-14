@@ -29,6 +29,18 @@ module.exports = function(config) {
     }).toFormat(format);
   });
 
+  // camelcase
+  // {{ 'string words' | camelize(true) }}
+  config.addFilter("camelize", (str, upperCaseFirst = false) => {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+      if (upperCaseFirst) { 
+        return word.toUpperCase();
+      } else {
+        return index === 0 ? word.toLowerCase() : word.toUpperCase();
+      }
+    }).replace(/\s+/g, '').replace('-', '');
+  });
+
   // Split filter support
   // {{ 'string words' | split(' ' ) }}
   config.addFilter("split", (string, divider = " ") => {
@@ -115,7 +127,7 @@ module.exports = function(config) {
     htmlTemplateEngine : ["njk", "md"],
     markdownTemplateEngine : "njk",
     passthroughFileCopy: true,
-    pathPrefix: "/vf-core/" // if your site is deployed to a sub-url, otherwise comment out
+    pathPrefix: "/" // if your site is deployed to a sub-url, otherwise comment out
   };
 
 };

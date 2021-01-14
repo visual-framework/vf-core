@@ -16,7 +16,7 @@ var primaryBreadcrumb;
 
 /**
  * Look up a breadcrumb by its uuid and return the entry
- * @example formatBreadcrumb(uuid)
+ * @example emblBreadcumbLookupByUuid(uuid)
  * @param {string} [uuid]  - the uuid of a term
  */
 function emblBreadcumbLookupByUuid(uuid) {
@@ -83,7 +83,9 @@ function emblBreadcrumbsLookup(metaProperties) {
  * @param {string} [url] - URL to pull the taxonomy from
  */
 function emblGetTaxonomy(url) {
+  /* eslint-disable no-redeclare */
   var url = url || "https://www.embl.org/api/v1/pattern.json?pattern=embl-ontology&source=contenthub";
+  /* eslint-disable no-redeclare */
 
   return new Promise(function(resolve, reject) {
     // Do the usual XHR stuff
@@ -373,7 +375,9 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     // };
     // console.log('Todos for getBreadcrumbParentTerm():',parentTodos);
 
+    /* eslint-disable no-redeclare */
     var lastParent = lastParent || {}; // track last insertion to prevent recursion
+    /* eslint-enable no-redeclare */
 
     if (parents == undefined || parents == null) {
       // no parent breadcrumb preset, exiting
@@ -396,7 +400,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
         // only insert crumb if it respects the original term context: who/what/where
         if (activeParent.uuid != lastParent.uuid) {
           // no recursive output
-          emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url) + emblBreadcrumbPrimary.innerHTML;
+          emblBreadcrumbPrimary.innerHTML = formatBreadcrumb(activeParent.name_display,activeParent.url,false) + emblBreadcrumbPrimary.innerHTML;
         }
       }
 
@@ -437,13 +441,20 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
    * @example formatBreadcrumb(term,breadcrumbUrl)
    * @param {string} [termName]  - the taxonomy string of the item, e.g. `Cancer`
    * @param {string} [breadcrumbUrl] - a fully formed URL, or 'null' to not make a link
+   * @param {boolean} [current] - if the breadcrumb is the current page
    */
-  function formatBreadcrumb(termName,breadcrumbUrl) {
+  function formatBreadcrumb(termName,breadcrumbUrl,current) {
     if (termName == "" || termName == "none") {
       // if no term, do nothing
       return "";
     }
-    var newBreadcrumb = "<li class=\"vf-breadcrumbs__item\">";
+
+    if (current) {
+      current = " aria-current=\"location\"";
+    }
+
+
+    var newBreadcrumb = "<li class=\"vf-breadcrumbs__item\""+current+">";
     if (breadcrumbUrl && breadcrumbUrl !== "null" && breadcrumbUrl !== "#no_url_specified") {
       newBreadcrumb += "<a href=\""+breadcrumbUrl+"\" class=\"vf-breadcrumbs__link\">" + termName + "</a>";
     } else {
@@ -455,9 +466,12 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
   }
 
   var currentTerm = getCurrentTerm(termName);
+  /* eslint-disable no-unused-vars */
   var breadcrumbId = currentTerm.uuid,
     breadcrumbUrl = currentTerm.url,
-    breadcrumbParents = currentTerm.parents;
+    breadcrumbParents = currentTerm.parents,
+    breadcrumbCurrent = false;
+  /* eslint-enable no-unused-vars */
 
   // narrow down to the first matching element
   breadcrumbTarget = breadcrumbTarget[0];
@@ -472,14 +486,17 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
       breadcrumbUrl = null;
     }
 
+    // in this context the active page is always "current"
+    breadcrumbCurrent = true;
+
     // add breadcrumb
-    emblBreadcrumbPrimary.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl);
+    emblBreadcrumbPrimary.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl,breadcrumbCurrent);
 
     // fetch parents for primary path
     getBreadcrumbParentTerm(breadcrumbParents, facet);
   } else if (type == "related") {
     // add breadcrumb
-    emblBreadcrumbRelated.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl);
+    emblBreadcrumbRelated.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl,breadcrumbCurrent);
   }
 
 }
@@ -517,9 +534,11 @@ function emblBreadcrumbs() {
 // Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/prepend()/prepend().md
 (function (arr) {
   arr.forEach(function (item) {
+    /* eslint-disable no-prototype-builtins */
     if (item.hasOwnProperty("prepend")) {
       return;
     }
+    /* eslint-enable no-prototype-builtins */
     Object.defineProperty(item, "prepend", {
       configurable: true,
       enumerable: true,

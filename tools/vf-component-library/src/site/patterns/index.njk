@@ -1,12 +1,29 @@
 ---
 is_index: true
-title: Patterns and boilerplates
+title: Examples and patterns
 subtitle: More than components, this is how you should do things.
 intro: Where components offer technical implementations, patterns and boilerplates show how things should come together to facilitate tasks and goals.
-section: patterns
-tags: sections
+section: building
+tags:
+  - building
+  - sections
 date: 2019-07-22 12:24:50
 layout: layouts/section.njk
 ---
 
 If you're looking for guidance on how to integrate a different technical approach like React or a custom Sass build, [see the building guide]({{ '/building' | url }}).
+
+## Patterns
+
+{%- for post in collections.posts %}
+{% if 'patterns' == post.data.section %}
+{% set absolutePostUrl %}{{ metadata.id }}{{ post.url }}{% endset %}
+
+<h2>
+  <a href="{{ absolutePostUrl | url }}" class="vf-link">{{ post.data.title }}</a>
+</h2>
+
+{{ post.data.subtitle }}
+
+{% endif %}
+{%- endfor %}
