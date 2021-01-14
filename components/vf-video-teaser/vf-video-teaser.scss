@@ -12,12 +12,39 @@
 .vf-video-teaser__image {
   display: block;
   height: auto;
-  margin-bottom: 16px;
   max-width: 100%;
   width: 100%;
 }
 
 .vf-video-teaser__title {
-  @include set-type(text-heading--3);
-  margin: 0 0 16px 0;
+  @include set-type(text-heading--3, $custom-margin-bottom: 0);
+}
+
+.vf-video-teaser__link {
+  @include set-type(text-body--2, $custom-margin-bottom: 0);
+
+  display: inline-block;
+
+  &::after {
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 512;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+.vf-video-teaser__item {
+  position: relative;
+}
+
+.vf-video-teaser__item:not(:first-of-type) {
+  --vf-stack-margin--custom: 2rem;
 }
