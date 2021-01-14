@@ -1,3 +1,9 @@
+### 2.0.0
+
+* adds inline example and related CSS.
+* changes hover/focus interaction
+
+
 ### 1.0.0
 
 * repositions the input and it's label so they're more horizontally in line

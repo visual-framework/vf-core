@@ -1,3 +1,8 @@
+### 2.0.0
+
+* makes the font size larger
+* changes the red to use the red from the EMBL palette.
+
 ### 1.0.0
 
 * adds error helper text when form input is invalid

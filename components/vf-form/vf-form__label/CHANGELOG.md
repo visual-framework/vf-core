@@ -1,3 +1,8 @@
+### 2.0.0
+
+* changes required SVG fill color to red.
+* makes the required SVG half the relative size of the text.
+
 ### 1.2.0
 
 * updates spacing design tokens

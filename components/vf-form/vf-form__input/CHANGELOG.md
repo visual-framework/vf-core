@@ -1,3 +1,9 @@
+### 2.0.0
+
+* changes styling of the inputs
+* changes order of form helpers, error messages, etc.
+* updates example .njk to use stack
+
 ### 1.1.0
 
 * adds `type="search"` form input

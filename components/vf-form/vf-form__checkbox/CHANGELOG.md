@@ -1,3 +1,8 @@
+### 2.0.0
+
+* changes hover/focus interaction
+* adds inline example
+
 ### 1.1.0
 
 * the vf-form__checkbox is now used in more than forms so we have added some 'context' styling for when it is in a form

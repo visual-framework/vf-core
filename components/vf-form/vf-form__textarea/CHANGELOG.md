@@ -1,3 +1,8 @@
+### 2.0.0
+
+* adds vf-stack in example code.
+* changes some of the styling to match inputs
+
 ### 1.0.1
 
 * adds `webkit-appearance: none;` as needed for Safari browsers as autoprefixer is not doing this

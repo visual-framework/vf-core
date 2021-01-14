@@ -1,3 +1,8 @@
+### 2.0.0
+
+* changes order of form helpers, error messages, etc.
+* updates CSS to use the stack
+
 ### 1.0.0
 
 * makes the example the 'warts and all' with all labels and helper text

@@ -1,3 +1,8 @@
+### 1.1.0
+
+* updates example to use stack
+* includes example of inline radions
+
 ### 1.0.1
 
 * `vf-form__core/vf-form__core.scss` requires `__fieldset` and `__legend` but they are missing from the `package.json`
