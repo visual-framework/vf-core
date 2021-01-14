@@ -1,3 +1,10 @@
+### 2.0.0
+
+* Changes styling of the inputs.
+* Changes order of form helpers, error messages, etc.
+* Updates example .njk to use stack.
+* https://github.com/visual-framework/vf-core/pull/1228/
+
 ### 1.1.0
 
 * adds `type="search"` form input

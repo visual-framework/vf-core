@@ -1,3 +1,9 @@
+### 2.0.0
+
+* Changes styling of the inputs.
+* Updates CSS to use vf-stack.
+* https://github.com/visual-framework/vf-core/pull/1228/
+
 ### 1.0.0
 
 * makes the example the 'warts and all' with all labels and helper text

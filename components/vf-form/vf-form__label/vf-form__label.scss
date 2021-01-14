@@ -10,19 +10,19 @@
  */
 
 .vf-form__label {
-  @include set-type(text-body--2, $custom-margin-bottom: map-get($vf-spacing-map, vf-spacing--200));
+  @include set-type(text-body--2, $custom-margin-bottom: 0);
 
   color: set-color(vf-ui-color--black);
-  display: block;
 }
 
 
 .vf-form__label--required {
-  float: right;
-  margin-bottom: 0;
+  position: relative;
+  top: -.5rem;
+
   .vf-icon svg {
-    fill: set-color(vf-color--blue);
-    height: 12px;
-    width: 16px;
+    fill: set-color(vf-color--red);
+    height: .5em;
+    width: .5em;
   }
 }
