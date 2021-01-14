@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 /**
- * Precompile vf-core Nunjucks templates
+ * Precompiled vf-core Nunjucks templates
  */
 
 module.exports = function(gulp, path, componentPath) {
@@ -10,7 +10,7 @@ module.exports = function(gulp, path, componentPath) {
   const fs = require('fs');
   const nunjucks = require('nunjucks');
   const fastglob = require('fast-glob');
-  
+
   // Precompile vf-core Nunjucks templates
   // Requires that the fractal environment be initialised first
   gulp.task('vf-templates-precompile', function(done) {
@@ -18,7 +18,7 @@ module.exports = function(gulp, path, componentPath) {
     const componentList = fastglob.sync([componentPath+'/**/*.njk',componentPath+'/**/**/*.njk'], {
       allowEmpty: true,
       objectMode: true
-      // absolute: false 
+      // absolute: false
       // ignore: [componentPath+'/**/index.scss',componentPath+'/**/**/index.scss',componentPath+'/vf-core-components/vf-core/components/**/*.scss']
     });
 
@@ -26,7 +26,7 @@ module.exports = function(gulp, path, componentPath) {
     if (typeof global.fractal === 'undefined') {
       console.log(chalk.red('The Fractal environment has not been initialised. Exiting the gulp task and proceeding.'));
       return done();
-    } 
+    }
 
     // Grab the Nunjucks environment from fractal
     const env = global.fractal.components._engine._engine;
@@ -68,11 +68,11 @@ module.exports = function(gulp, path, componentPath) {
 
   });
 
-  // A standalong command to start fractal and build the templates
+  // A standalone command to start fractal and build the templates
   gulp.task('vf-templates-precompile:test', gulp.series(
     'vf-fractal:dataobject', 'vf-templates-precompile'
   ));
-  
+
   return gulp;
 };
 

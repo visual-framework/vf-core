@@ -1,0 +1,13 @@
+{% macro conditionalComponentLink(url='xxx', title='yyy', current=page.url) -%}
+{%- if page.url != url -%}
+- <a href="{{ url | url }}" class="vf-link">{{title}}</a>
+{% endif -%}
+{%- endmacro %}
+
+## See also
+
+{{ conditionalComponentLink('/components/','Component list') -}}
+{{ conditionalComponentLink('/guidance/components-and-patterns/','About components and patterns') -}}
+{{ conditionalComponentLink('/guidance/creating-components/','Creating new components') -}}
+{{ conditionalComponentLink('/guidance/versioning-and-component-interoperability/','Component versioning interoperability') -}}
+

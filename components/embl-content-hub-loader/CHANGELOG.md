@@ -1,3 +1,8 @@
+### 1.0.8
+
+* Fix a bug when vfBanner or vfTabs are not present
+  * https://github.com/visual-framework/vf-core/issues/809
+
 ### 1.0.7
 
 * JS linting

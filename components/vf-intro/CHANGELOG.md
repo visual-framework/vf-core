@@ -1,6 +1,18 @@
-### 1.4.3
+### 1.4.5
 
 * Move the example content into a default variant to stop it printing out when using `{% render .. %}`.
+
+### 1.4.4
+
+* Fixes a missing vf_intro_subheading vf-intro.njk's context.
+* Fixes README.md invalid example syntax.
+* https://github.com/visual-framework/vf-core/pull/1326
+
+### 1.4.3
+
+* Resolve issue of missing import in index.scss
+  * https://github.com/visual-framework/vf-core/pull/1306
+
 
 ### 1.4.2
 

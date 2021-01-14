@@ -1,3 +1,7 @@
+### 2.0.5
+
+* adds a `flex` property to the SVG so that it's always visible and doesn't get cut off.
+
 ### 2.0.4
 
 * fixes missing context rule for `hero__text` and `hero__heading--additional`.

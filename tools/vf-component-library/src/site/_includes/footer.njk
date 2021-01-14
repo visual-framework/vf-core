@@ -1,6 +1,7 @@
 <footer class="vf-footer | vf-search-client-side--no-index">
   <div class="vf-footer__inner">
-    <p class="vf-footer__notice">A toolkit to quickly build better life science websites.</p>
+    <p class="vf-footer__notice">The Visual Framework is a toolkit to quickly and collaboratively build better life science websites.</p>
+    <p class="vf-footer__notice">It is open source and used on dozens of life science websites and maintained by a community of front end developers, UX specialists and designers. <a class="vf-footer__link" href="{{ "/guidance/discussing-the-vf" | url }}">Get involved</a>.</p>
     <div class="vf-footer__links-group | vf-grid vf-grid__col-5">
       <div class="vf-links">
         <ul class="vf-links__list | vf-list">
@@ -30,6 +31,9 @@
             <a class="vf-list__link" href="{{ '/patterns' | url }}">Patterns and examples</a>
           </li>
           <li class="vf-list__item">
+            <a class="vf-list__link" href="{{ '/guidance' | url }}">Guidance and principles</a>
+          </li>
+          <li class="vf-list__item">
             <a class="vf-list__link" href="{{ '/troubleshooting' | url }}">Troubleshooting</a>
           </li>
         </ul>
@@ -43,16 +47,7 @@
             <a class="vf-list__link" href="{{ '/developing/getting-started/setting-up' | url }}">Setting up</a>
           </li>
           <li class="vf-list__item">
-            <a class="vf-list__link" href="{{ '/developing/components/creating-new-components' | url }}">Creating a component</a>
-          </li>
-          <li class="vf-list__item">
-            <a class="vf-list__link" href="{{ '/developing/guidelines/user-base' | url }}">User base</a>
-          </li>
-          <li class="vf-list__item">
-            <a class="vf-list__link" href="{{ '/developing/guidelines/css' | url }}">Sass and CSS</a>
-          </li>
-          <li class="vf-list__item">
-            <a class="vf-list__link" href="{{ '/developing/guidelines/javascript' | url }}">JavaScript</a>
+            <a class="vf-list__link" href="{{ '/developing/getting-started/code-of-conduct' | url }}">Code of conduct</a>
           </li>
           <li class="vf-list__item">
             <a class="vf-list__link" href="{{ '/developing/getting-started/pull-requests' | url }}">Making a Pull Request</a>
@@ -121,9 +116,4 @@
 </div>
 {% endif %}
 
-<!-- This page was generated on {{ siteConfig.buildTime }} -->
-{% if serverInfo.environment == "development" -%}
-  <script src="{{ '/scripts/scripts.js' | url }}"></script>
-{%- else -%}
-  <script src="https://{{ siteConfig.vfVersionPrefix }}assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/scripts/scripts.js"></script>
-{%- endif -%}
+{% include "scripts.njk" %}

@@ -164,6 +164,25 @@ If you have Blocks that need to be laid out on both X and Y axis you will need t
     <p>12</p>
   </div>
 
+### Visual Framework grid column spans
+
+You can span multiple columns. There are also [responsive grid spans](https://stable.visual-framework.dev/components/vf-utility-classes/#vf-utility-classes--grid).
+
+###### HTML
+```html
+<p class="vf-grid__col--span-2">2</p>
+```
+###### Example
+
+  <div class="vf-grid vf-grid__col-6">
+    <span>1</span>
+    <span class="vf-grid__col--span-2">2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+  </div>
+
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-grid` with this command.

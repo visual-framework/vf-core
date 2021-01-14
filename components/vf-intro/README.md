@@ -12,27 +12,27 @@ The `vf-intro` component is to be used as the main title of a page or section wh
 
 To use this component in a `vf-eleventy` project you will need to set the context for the content to pass through from the nunjucks file associated yaml file and include it.
 
-<code>&lcub;% set context == UniqueContextName %&rcub;
+<code>&lcub;% set context = UniqueContextName %&rcub;
 <br>
 &lcub;% include containers.vf_intro %&rcub;
 </code>
 
-**note:** due to how nunjucks handles special characters we have remove the `@` at sign and need to replace the `-` hyphen used for an `_` underscore to `&lcub;% include &rcub;` a component or container. As shown above instead of writing something like `&lcub;% include contaienrs.@vf-intro &rcub;` we need to type `&lcub;% include vf_intro &rcub;`
+**note:** due to how nunjucks handles special characters we have remove the `@` at sign and need to replace the `-` hyphen used for an `_` underscore to `{ include }` a component or container. As shown above instead of writing something like `{ include containers.@vf-intro }` we need to type `{ include containers.intro }`
 
-You may wish to make use of some of your projects side specifc data or content. To do this you will need to set the relevant items of content before you <code>&lcub;% include ... %&rcub;</code> the component. Note: If you also declare this content in the `.yml` file it will take precedence over the inlined code.
+You may wish to make use of some of your projects side specific data or content. To do this you will need to set the relevant items of content before you <code>&lcub;% include ... %&rcub;</code> the component. Note: If you also declare this content in the `.yml` file it will take precedence over the inlined code.
 
 For example. If you wanted to make use of your projects `siteConfig` information. You can write out the inclusion of the component in you pages `.njk` file like so:
 
-<code>&lcub;% set context == UniqueContextName %&rcub;
+<code>&lcub;% set context = UniqueContextName %&rcub;
 <br>
-&lcub;% set vf_intro_heading == siteConfig.siteInformation.short_description %&rcub;
+&lcub;% set vf_intro_heading = siteConfig.siteInformation.short_description %&rcub;
 <br>
 &lcub;% include containers.intro %&rcub;
 </code>
 
 ### Content
 
-The `vf-intro` allows for a variet of text.
+The `vf-intro` allows for a variety of text.
 
 | content type | variable                | description |
 | ------------ | ----------------------- | ----------- |
@@ -54,7 +54,7 @@ vf_intro_text:
 ```
 ## Install
 
-This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install with this command.
 
 ```
 $ yarn add --dev @visual-framework/vf-intro
