@@ -1,7 +1,8 @@
 ### 2.0.0
 
-* changes hover/focus interaction
-* adds inline example
+* Changes hover/focus interaction.
+* Adds inline example.
+* https://github.com/visual-framework/vf-core/pull/1228/
 
 ### 1.1.0
 

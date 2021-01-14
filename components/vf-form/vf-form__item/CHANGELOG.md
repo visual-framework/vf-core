@@ -1,7 +1,8 @@
 ### 2.0.0
 
-* changes order of form helpers, error messages, etc.
-* updates CSS to use the stack
+* Changes styling of the inputs.
+* Updates CSS to use vf-stack.
+* https://github.com/visual-framework/vf-core/pull/1228/
 
 ### 1.0.0
 

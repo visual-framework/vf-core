@@ -1,7 +1,8 @@
 ### 2.0.0
 
-* adds vf-stack in example code.
-* changes some of the styling to match inputs
+* Adds vf-stack in example code.
+* Changes some of the styling to match inputs.
+* https://github.com/visual-framework/vf-core/pull/1228/
 
 ### 1.0.1
 

@@ -1,7 +1,8 @@
 ### 2.0.0
 
-* changes required SVG fill color to red.
-* makes the required SVG half the relative size of the text.
+* Changes required SVG fill color to red.
+* Makes the required SVG half the relative size of the text.
+* https://github.com/visual-framework/vf-core/pull/1228/
 
 ### 1.2.0
 

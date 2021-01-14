@@ -1,7 +1,8 @@
 ### 1.1.0
 
-* updates example to use stack
-* includes example of inline radions
+* Updates example to use stack.
+* Includes example of inline radios.
+* https://github.com/visual-framework/vf-core/pull/1228/
 
 ### 1.0.1
 

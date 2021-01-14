@@ -1,8 +1,9 @@
 ### 2.0.0
 
-* changes styling of the inputs
-* changes order of form helpers, error messages, etc.
-* updates example .njk to use stack
+* Changes styling of the inputs.
+* Changes order of form helpers, error messages, etc.
+* Updates example .njk to use stack.
+* https://github.com/visual-framework/vf-core/pull/1228/
 
 ### 1.1.0
 
