@@ -43,6 +43,7 @@
     display: inline-block;
     height: 16px;
     position: relative;
+    top: 2px; // need to look at a better way to do this that keeps the semantics of a label
     width: 16px;
   }
 
@@ -89,6 +90,13 @@
     background: set-color(vf-color--grey);
     box-shadow: none;
   }
-
   // Checkmark. Could be replaced with an image
 }
+
+  .vf-form__item--checkbox--inline {
+    display: inline-flex;
+
+    &:not(:first-of-type) {
+      margin-left: 1rem;
+    }
+  }

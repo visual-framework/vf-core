@@ -31,6 +31,7 @@
     height: 16px;
     margin-right: 8px;
     position: relative;
+    top: 2px; // need to look at a better way to do this that keeps the semantics of a label
     width: 16px;
   }
 
@@ -77,3 +78,12 @@
     box-shadow: none;
   }
 }
+
+
+ .vf-form__item--radio--inline {
+    display: inline-flex;
+
+    & *:not(:first-of-type) {
+      margin-left: 1rem;
+    }
+  }
