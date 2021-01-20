@@ -1,3 +1,7 @@
+### 2.4.0
+
+* updates the `$global-page-max-width` variable so that it's consistent with the page width across components - set to `80rem`
+
 ### 2.3.1
 
 * fixes bug in --page-grid-gap printing Sass function in CSS
