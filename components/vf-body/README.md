@@ -12,11 +12,11 @@ The Body component can be used to create a centered layout to add your content. 
 
 ```css
 .vf-body {
-  --vf-body-width: 81.25em;
+  --vf-body-width: 80em;
   display: block;
   margin: 0 auto;
-  max-width: 81.25em;
-  max-width: var(--vf-body-width, 81.25em);
+  max-width: 80em;
+  max-width: var(--vf-body-width, 80em);
   padding: 0 1em;
 }
 ```

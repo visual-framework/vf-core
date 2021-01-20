@@ -1,3 +1,7 @@
+### 3.2.0
+
+* reduces the maximum layout width token
+
 ### 3.1.0
 
 * adds `--1600` (`4rem`) spacing token.
