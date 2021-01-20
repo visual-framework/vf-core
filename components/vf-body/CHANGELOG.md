@@ -1,4 +1,4 @@
-### 1.2.0
+### 1.1.0
 
 * Makes the max-width a factor of 16px.
 * adds box-sizing so that the padding doesn't effect the max-width.
