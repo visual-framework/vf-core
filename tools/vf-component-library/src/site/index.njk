@@ -132,7 +132,7 @@ layout: layouts/base.njk
   {#- show all pages classes as sections -#}
   {#- by default, 11ty sorts by `date` field -#}
   {%- for section in collections.sections | reverse %}
-    {% if section.data.is_index == true %}
+    {% if section.data.promoted == true %}
       {# Eventually these might have unique images, not sure yet #}
       {%- set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %}
       {%- render '@vf-card', {
