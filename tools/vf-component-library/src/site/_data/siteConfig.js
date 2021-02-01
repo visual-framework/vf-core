@@ -22,6 +22,10 @@ module.exports = {
       url: "/about",
       title: "About"
     },
+    building: {
+      url: "/building",
+      title: "Building"
+    },
     designtokens: {
       url: "/design-tokens",
       title: "Design tokens"
