@@ -1,6 +1,6 @@
 ### 1.4.5
 
-* Move the example content into a default variant to stop it printing out when using `{% render .. %}`.
+* Move the example content into a default variant to stop it printing out when using `render ..`.
 
 ### 1.4.4
 
