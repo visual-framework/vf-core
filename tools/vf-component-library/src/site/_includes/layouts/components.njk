@@ -245,12 +245,10 @@ import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{
       {% markdown %}
       <div class="vf-stack vf-stack--custom" style="--vf-stack-margin--custom: .5rem;">
       <h3>Changelog</h3>
-      {% set readmeChangelog = 'changelog.md' | string | stringBetween("###", "\n### ") %}
-      {# {{ readmeChangelog | markdown | safe }} #}
       <details class="vf-details" id="changelog">
         <summary class="vf-details--summary">Changelog</summary>
 
-        {# {% include 'changelog.md' %} #}
+        {% include 'changelog.md' %}
       </details>
       </div>
       {% endmarkdown %}
