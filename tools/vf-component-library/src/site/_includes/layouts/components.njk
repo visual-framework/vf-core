@@ -8,7 +8,7 @@ templateEngineOverride: njk
 {% set variants = component.variants.items %}
 
 <div class="embl-grid">
-  <nav class="vf-tree vf-search-client-side--no-index">
+  <nav class="vf-tree vf-search-client-side--no-index" style="z-index: 5150;">
     <div class="vf-tree__inner | vf-u-padding--200">
       {#- all component list -#}
       {#- we're half-implement vf-tree for now until we can ... things -#}
@@ -73,13 +73,12 @@ templateEngineOverride: njk
     </div>
   </nav>
 
-  <section class="vf-content component-library-notes">
+  <section class="vf-content component-library-notes | vf-stack vf-stack--400">
     {# for any content set in the page, this is most likely blank #}
     {{ content | safe }}
 
     <h1>
       {{ component.title }}
-      <span class="vf-text-body--4">
         {# {{component.baseHandle}} #}
         {% if collectionComponents %}
         {% else %}
@@ -87,37 +86,15 @@ templateEngineOverride: njk
           <a class="vf-link" href="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}"><img src="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}.svg" alt="npm version"></a>
           {# <a  href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">npm</a> #}
         {% endif %}
-      </span>
+
     </h1>
 
     {# <pre>{{ component | dump(2)}}</pre> #}
 
     {# readme.md #}
     {% if component.notes %}
-      {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
       {% set readmeAbout = component.notes | string | stringBetween("## About", "\n## ") %}
-      {% set readmeInstallation = component.notes | string | stringBetween("## Install", "\n## ") %}
-
       {% if readmeAbout %}{{ readmeAbout | markdown | safe }}{% endif %}
-
-      {% if readmeUsage %}
-        <h2>Usage</h2>
-        {{ readmeUsage | markdown | safe }}
-      {% endif %}
-
-      {% if readmeInstallation %}
-      <details class="vf-details">
-        <summary class="vf-details--summary">Installation info</summary>
-        {{ readmeInstallation | replace("## Install", "") | markdown | safe }}
-      </details>
-      {% endif %}
-
-    {% else %}
-      {% markdown %}
-        {% if collectionComponents %}
-        <p>This is a collection of components.</p>
-        {% endif %}
-      {% endmarkdown %}
     {% endif %}
 
     {# any sub-components, like vf-form #}
@@ -146,6 +123,7 @@ templateEngineOverride: njk
           {% render '@vf-heading--display', {
             "type": 1,
             "heading": "Variants",
+            "id": "variants",
             "style": "invert",
             "tags": "h2"
           } %}
@@ -245,6 +223,47 @@ import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{
       {% endfor -%}
 
       {% markdown %}
+
+      {% if component.notes %}
+      {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
+      {% set readmeInstallation = component.notes | string | stringBetween("## Install", "\n## ") %}
+
+
+      {% if readmeUsage %}
+        <h2 id="usage">Usage</h2>
+        {{ readmeUsage | markdown | safe }}
+      {% endif %}
+
+      {% if readmeInstallation %}
+      <details class="vf-details">
+        <summary class="vf-details--summary" id="installation">Installation info</summary>
+        {{ readmeInstallation | replace("## Install", "") | markdown | safe }}
+      </details>
+      {% endif %}
+
+      {% if 'changelog.md'|length %}
+      {% markdown %}
+      <div class="vf-stack vf-stack--custom" style="--vf-stack-margin--custom: .5rem;">
+      <h3>Changelog</h3>
+      {% set readmeChangelog = 'changelog.md' | string | stringBetween("###", "\n### ") %}
+      {# {{ readmeChangelog | markdown | safe }} #}
+      <details class="vf-details" id="changelog">
+        <summary class="vf-details--summary">Changelog</summary>
+
+        {% include 'changelog.md' %}
+      </details>
+      </div>
+      {% endmarkdown %}
+
+      {% endif %}
+
+    {% else %}
+      {% markdown %}
+        {% if collectionComponents %}
+        <p>This is a collection of components.</p>
+        {% endif %}
+      {% endmarkdown %}
+    {% endif %}
 
       ### Assets
 
