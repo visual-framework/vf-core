@@ -21,6 +21,11 @@
   display: grid;
   grid-template-rows: 288px 1fr;
   position: relative;
+
+  .vf-button {
+    position: relative;
+    z-index: 1984;
+  }
 }
 
 .vf-card__image {
@@ -71,6 +76,7 @@
         box-shadow: 0 0 .125rem .125rem rgba(set-color(vf-color--grey), .75);
       }
     }
+
   }
 
   .vf-card__link:hover,
@@ -146,7 +152,8 @@
 // - we are removing the `-theme-` part of the classname now.
 // - we are also moving towards more holistic theming with design.
 
-.vf-card--primary {
+.vf-card--primary
+.vf-card--brand {
   --vf-card-bg-color: #{set-color(vf-color--green)};
   --vf-card-text-color: #{set-ui-color(vf-ui-color--white)};
   --vf-card-border-color: #{set-color(vf-color--green)};
@@ -196,11 +203,13 @@
 
 // vf-card levels of design
 html:not(.vf-disable-deprecated) {
+  @warn "This variant has been deprecated";
   .vf-card--very-easy {
     border-bottom: 8px solid rgba(0, 0, 0, 0); // fixes a grid layout glitch when used with variant volume's that have a bottom border
   }
 
   .vf-card--easy {
+    @warn "This variant has been deprecated";
     border-bottom: 8px solid set-ui-color(vf-ui-color--black);
     border-bottom-color: var(--vf-card-theme-color--border, #{set-ui-color(vf-ui-color--black)});
 
