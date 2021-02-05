@@ -133,7 +133,7 @@
 
 .vf-card__subheading {
   @include set-type(text-heading--5, $custom-margin-bottom: 0);
-  --vf-stack-margin--custom: space(100);
+  --vf-stack-margin--custom: #{space(100)};
 }
 
 .vf-card__text {
@@ -242,6 +242,11 @@
       color: inherit;
       text-decoration: underline;
     }
+  }
+
+  .vf-card__title + .vf-card__text,
+  .vf-card__heading + .vf-card__text {
+    --vf-stack-margin--custom: #{space(400)};
   }
 }
 
