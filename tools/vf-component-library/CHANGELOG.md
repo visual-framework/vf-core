@@ -1,3 +1,6 @@
+### 1.0.23
+
+* small change to cards on homepage
 ### 1.0.18
 
 * dependency bump
