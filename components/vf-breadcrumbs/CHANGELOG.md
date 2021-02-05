@@ -1,3 +1,7 @@
+### 2.0.2
+
+* adds a little more documentation
+
 ### 2.0.1
 
 * removes `>` from related crumbs
