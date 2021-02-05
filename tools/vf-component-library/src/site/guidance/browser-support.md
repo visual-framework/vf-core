@@ -11,8 +11,6 @@ layout: layouts/section.njk
 
 For browser support, aim for content and functionality to be unobstructed on browsers released within the last five years and have JavaScript enabled; this is represents virtually all users of the EMBL sites (in excess of 99.9%).
 
-As a guiding rule, test for compatibility on any browser or device that represents more than 2% usage.
-
 As intended by the CSS specification, not all browsers, devices, or users render content to look exactly the same. Our aim is to create an accessible and visually consistent design across a broad range of clients, not pixel-perfect designs. Further, we build atop the basic functionality, adding progressive-enhancement features to newer classes of browsers and devices.
 
 ## Proactive and reactive support
