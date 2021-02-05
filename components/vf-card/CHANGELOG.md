@@ -1,9 +1,18 @@
+### 2.4.0
+
+* creates option to for a subheading
+* creates option for a card with no image
+* adds a svg icon similar to `vf-section-header` when the heading has a link
+* adds documentation
+* adds more examples for the variants available depending on the content
+* hides all variants that should not be used.
+
 ### 2.3.3
 
 * React: Use react-dom-fragment to return HTML fragments.
   * https://github.com/visual-framework/vf-core/pull/1291
 
-### 2.3.2 
+### 2.3.2
 
 * adds prototype react template
   * https://github.com/visual-framework/vf-core/pull/1278
