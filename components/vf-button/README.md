@@ -25,6 +25,7 @@ As a general rule, the `vf-button` should be left aligned on the page and when u
 ### When Not To Use
 
 If using the `vf-button` as a link do not use it to link to content on the same page. This is where something like the <a href="/components/vf-link-list/#vf-link-list--easy">`vf-link-list`</a> component should be used.
+
 ### Label
 
 The button text should be short and clear. Depending on the action of the button it should use agreed microcopy<sup>*</sup>.
