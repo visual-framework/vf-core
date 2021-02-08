@@ -45,7 +45,7 @@ layout: layouts/boilerplate.njk
         "tags": "h1"
       } %}
       <p class="vf-text-body">
-      This is an example that can be
+      If you need a description about the service or context of the search.
       </p>
 
       {% render '@vf-search', {
@@ -56,7 +56,7 @@ layout: layouts/boilerplate.njk
         "search_placeholder": "Enter your search terms",
         "search_id": "inlinesearchitem",
         "search_value_default": "the current search query",
-        "search_description": 'Here are some tips on how your can search.<br/>Examples: <a href="JavaScript:Void(0);" class="vf-link">Cheese</a>, <a href="JavaScript:Void(0);" class="vf-link">Brie</a>. You can also use the <a href="JavaScript:Void(0);" class="vf-link">advanced search</a>.'
+        "search_description": 'Related or examples: <a href="JavaScript:Void(0);" class="vf-link">Cheese</a>, <a href="JavaScript:Void(0);" class="vf-link">Brie</a>. You can also use the <a href="JavaScript:Void(0);" class="vf-link">advanced search</a>.'
       } %}
     </div>
   </section>
@@ -73,7 +73,11 @@ layout: layouts/boilerplate.njk
   #}
 
   <section class="embl-grid">
-    <div>
+    <div class="">
+      <p class="vf-text-body vf-text-body--4">
+        Showing 10 results from a total of 1 280
+      <p>
+
       <div class="vf-show-hide vf-show-hide--hidden" data-vf-js-show-hide data-vf-js-show-hide-hidden>
       {% render '@vf-banner--info', {
         "alert_icon_text": "dismiss",
@@ -85,12 +89,12 @@ layout: layouts/boilerplate.njk
 
       <fieldset class="vf-form__fieldset">
         <label for="text" class="vf-form__label">Facets</label>
-        <section class="vf-form__item">
+        <section class="vf-form__item vf-stack vf-stack--400">
         {% for item in [1,2,3,4] %}
           <div class="vf-form__item--checkbox vf-form__item--checkbox--inline">
           <input type="checkbox" id="checkbox-inline-{{item}}" class="vf-form__checkbox">
           <label for="checkbox-inline-{{item}}" class="vf-form__label">
-          Type of item ({{  [1,2,23,4,8,19] | random }})
+          Type of item ({{ [1,2,23,4,8,19] | random }})
           </label>
           </div>
         {% endfor %}
@@ -99,7 +103,7 @@ layout: layouts/boilerplate.njk
 
       <fieldset class="vf-form__fieldset">
         <label for="text" class="vf-form__label">Binary</label>
-        <section class="vf-form__item">
+        <section class="vf-form__item vf-stack">
         {% for item in [1,2,3,4] %}
           <div class="vf-form__item--radio">
           <input type="radio" name="radio-button-group" id="radio-{{item}}" class="vf-form__radio">
@@ -112,21 +116,8 @@ layout: layouts/boilerplate.njk
       </fieldset>
 
     </div>
-    <div class="vf-stack">
-      <nav class="vf-breadcrumbs | vf-u-margin__top--0" aria-label="Breadcrumb">
-        <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
-          <li class="vf-breadcrumbs__item">
-            Showing 10 results from a total of 128 in
-          </li>
-          <li class="vf-breadcrumbs__item">
-            <a href="JavaScript:Void(0);" class="vf-breadcrumbs__link">Parent facet</a>
-          </li>
-          <li class="vf-breadcrumbs__item" aria-current="location">
-            Active facet
-          </li>
-        </ul>
-      </nav>
 
+    <div class="vf-stack">
       <div class="vf-show-hide vf-show-hide--hidden" data-vf-js-show-hide data-vf-js-show-hide-hidden>
       {% render '@vf-banner--info', {
         "alert_icon_text": "dismiss",
@@ -231,7 +222,6 @@ layout: layouts/boilerplate.njk
       {% endset %}
 
       {% set searchResultJob %}
-
       <article class="vf-summary vf-summary--job">
         <p class="vf-summary__meta">
           Staff Member in EMBL-EBI Hinxton
@@ -248,11 +238,19 @@ layout: layouts/boilerplate.njk
       {% endset %}
 
       {% set searchResultContent %}
+      <article class="vf-summary vf-summary--news">
+        <span class="vf-summary__date">22 June 2018</span>
+        <img class="vf-summary__image" src="../../assets/vf-summary/assets/vf-summary--news-has-image.jpg" alt="News image alt" loading="lazy">
+        <h3 class="vf-summary__title">
+          <a href="JavaScript:Void(0);" class="vf-summary__link">
+            What is Cancer?
+          </a>
+        </h3>
+        <p class="vf-summary__text">
+          Combinations of cancer drugs can be quickly and cheaply tested using a novel microfluidic device.
+        </p>
+      </article>
       {% endset %}
-
-      {% set searchResultTabular %}
-      {% endset %}
-
 
       {# Results #}
       <div class="vf-tabs">
@@ -310,11 +308,83 @@ layout: layouts/boilerplate.njk
           {{ searchResultContent | safe }}
           {{ searchResultContent | safe }}
           {{ searchResultContent | safe }}
-          {{ searchResultContent | safe }}
-          {{ searchResultContent | safe }}
         </section>
         <section class="vf-tabs__section" id="vf-tabs__section--6">
-          {{ searchResultTabular | safe }}
+          {% render '@vf-table', {
+            "component-type": "block",
+            "count": 0,
+            "table_headings": [
+              {
+                "title": "Event"
+              },
+              {
+                "title": "Date"
+              },
+              {
+                "title": "Type"
+              },
+              {
+                "title": "Location"
+              }
+            ],
+            "table_rows": [
+              [
+                {
+                  "selected_row": true
+                },
+                {
+                  "text": "dave"
+                },
+                {
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima accusamus a nostrum odit aliquid repudiandae architecto molestiae, dolores."
+                },
+                {
+                  "text": "roger"
+                },
+                {
+                  "text": "London, U.K."
+                }
+              ],
+              [
+                {
+                  "text": "dave"
+                },
+                {
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio fugit illo officia dignissimos amet."
+                },
+                {
+                  "text": "roger"
+                },
+                {
+                  "text": "London, U.K."
+                }
+              ],
+              [
+                {
+                  "text": "dave"
+                },
+                {
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                },
+                {
+                  "text": "roger"
+                },
+                {
+                  "text": "London, U.K."
+                }
+              ]
+            ],
+            "table_footer": [
+              {
+                "text": "Hello",
+                "colspans": 3
+              },
+              {
+                "text": "world",
+                "colspans": 1
+              }
+            ]
+          } %}
         </section>
       </div>
 
@@ -419,7 +489,7 @@ layout: layouts/boilerplate.njk
 
   <style>
   /* vf-show-hide still needs to be implemented */
-  .vf-show-hide--hidden { display: none; }
+  {# .vf-show-hide--hidden { display: none; } #}
   </style>
 
   {% if serverInfo.environment == "development" %}
