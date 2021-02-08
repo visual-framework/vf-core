@@ -4,9 +4,35 @@
 
 ## About
 
+The `vf-card` component is an element that is used to provide a summary of content on a single subject which can link to a larger resource or page.
+
+
+## Usage
+
 There are currently two types of card component that can be used for your projects. Each card component requires the additional modifier class to be added into either your `.yml` file or directly into the HTML.
 
-__Do Not__ have more than one variant of the `vf-card` in a container.
+The cards are available in two styled varieties: `bordered` and `striped`. To avoid visual confusion it is recommended to use one variant in a container.
+
+As the `striped` variant makes use of the brand colour it is recommended not to use this when displayed in a container that has a background colour.
+
+A `striped` card must always have a heading (`vf-card__heading`).
+
+### Layout
+
+The `vf-card` should look like it's around the same size as card from an average set of playing cards.
+
+### Content
+
+The `vf-card` can take a variety optional of content:
+
+| Content type | `.njk` / `.yml` variable | CSS class             | Description |
+| ------------ | ------------------------ | --------------------- | ----------- |
+| image        | `card_image`             | `vf-card__image`      |             |
+| alt text     | `card_image__alt`        |                       |             |
+| heading      | `card_heading`           | `vf-card__heading`    |             |
+| link         | `card_href`              | `vf-card__link`       |             |
+| subheading   | `card_subheading`        | `vf-card__subheading` |             |
+| text         | `card_text`              | `vf-card__text`       |             |
 
 ## Install
 
