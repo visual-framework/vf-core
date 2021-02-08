@@ -1,8 +1,8 @@
 ---
+is_index: true
 title: About the Visual Framework
 subtitle: Tailored for life science websites.
 date: 2018-08-22 12:24:50
-is_index: true
 section: about
 order: 1
 tags:
@@ -33,27 +33,22 @@ layout: layouts/base.njk
      where the application of classnames is difficult, such as Markdown text
      or WYSIWYG editors -->
 
-The Visual Framework address three major needs:
+**Clarity** through a default and look suitable to life science websites. It builds atop solid UX principles to increase comprehension and decrease [cognitive load](https://www.google.com/search?q=cognitive+load+software+usability). Just because the scientific material is challenging, it doesn't mean using the website [needs to be](https://theoutline.com/post/2954/user-interface-designers-are-horrified-by-hawaii-s-missile-alert-system).
 
-1. **Clarity**<br/>
-the VF is highly customisable, but out of the box it has a highly usable look that builds in solid UX principles to increase comprehension and decrease [cognitive load](https://www.google.com/search?q=cognitive+load+software+usability). Just because the scientific material is challenging, it doesn't mean using the website [needs to be](https://theoutline.com/post/2954/user-interface-designers-are-horrified-by-hawaii-s-missile-alert-system).
+**Flexibility** to be fully theme-able, replaceable and adaptable to any aesthetic or functional needs.
 
-2. **Compatibility**<br/>
-the VF won't break your other framework's CSS or JS, so bring Bootstrap, Foundation, React or Angular. With the VF  components (and brand design) can be shared between sites without cross-contaminating other functionality. We achieve this by a [CSS Modules-style](https://github.com/css-modules/css-modules) approach:
+**Compatibility** as the VF won't break your other framework's CSS or JS, so bring Bootstrap, Foundation, React or Angular. With the VF  components (and brand design) can be shared between sites without cross-contaminating other functionality. We achieve this by a [CSS Modules-style](https://github.com/css-modules/css-modules) approach:
 
-    **CSS**: styling on HTML elements and only use namespaced classes, that is:
+  - CSS: styling on HTML elements and only use namespaced classes, that is:
+    - Not this: `.button {}` or `button {}` or `div.button {}`
+    - Like this: `.vf-button {}`
+  - JavaScript: Use ours or bring your own. We use minimal JS in components and it's fully optional (just remove [the JavaScript selectors](https://github.com/visual-framework/vf-core/issues/115#issuecomment-455524131)). If you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way, just remove `data-vf-js-tabs` from your markup.
 
-  - Not this: `.button {}` or `button {}` or `div.button {}`
-  - Like this: `.vf-button {}`
+**Componentisation** to use only the portions you need. Use `vf-core` to build your CSS, JS dynamically based on the components you need, or bring your own build system or components.
 
-    **JavaScript**: Use ours or bring your own
+[Learn how to do all this on the getting started page]({{ '/building/' | url }})
 
-    We include only minimal JS in components and it's fully optional (just remove [the JavaScript selectors](https://github.com/visual-framework/vf-core/issues/115#issuecomment-455524131)). If you'd rather use Angular or Bootstrap for your tabs, the Visual Framework won't get in the way, just remove `data-vf-js-tabs` from your markup.
-
-3. **Componentisation**<br/>
-  Use only the portions you need.<br/><br/>
-  Use `vf-core` to build your CSS, JS dynamically based on the components you need, or bring your own build system.
-
+---
 
 ### Principles
 
@@ -63,10 +58,9 @@ the VF won't break your other framework's CSS or JS, so bring Bootstrap, Foundat
 4. Be compatible with a variety of frontend solutions
 5. Be modular and extensible
 
-We achieve this through [a consultation process]({{ '/about/consultation/' | url }}).
+We ensure we remain true to these through [a consultation process]({{ '/about/consultation/' | url }}).
 
 {% endmarkdown %}
 
 </div>
 </section>
-

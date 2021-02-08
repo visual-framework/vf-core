@@ -1,3 +1,9 @@
+### 1.4.0
+
+* changes value of SVG to use `em`s so it scales with the typeface size.
+* makes the hover effect consistent with new `vf-card`s
+* makes the positioning match the baseline of the text
+
 ### 1.3.2
 
 * Removes an extra `}` in the Nunjucks template that was corrupting the html.

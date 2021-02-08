@@ -1,6 +1,8 @@
-### 1.0.1
+### 2.0.0
 
-* refine spacing on inline select elements
+* Changes styling of the inputs.
+* Updates CSS to use vf-stack.
+* https://github.com/visual-framework/vf-core/pull/1228/
 
 ### 1.0.0
 

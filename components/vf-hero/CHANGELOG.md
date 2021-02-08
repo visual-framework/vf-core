@@ -1,3 +1,7 @@
+### 2.0.6
+
+* fixed an issue where `vf_hero_href` had no context option for use in `vf-11ty`.
+
 ### 2.0.5
 
 * adds a `flex` property to the SVG so that it's always visible and doesn't get cut off.

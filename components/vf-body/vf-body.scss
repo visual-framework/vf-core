@@ -14,7 +14,7 @@
  *
  * All content except for a few design patterns are tied into a layout with a maximum
  * width of 1300px. We center the `body` element to create a simple 3 column
- * layout with the central grid set to a maximum of 81.25em (1300px).
+ * layout with the central grid set to a maximum of 80em (1300px).
  *
  */
 
@@ -23,9 +23,16 @@ html {
 }
 
 .vf-body {
+  box-sizing: border-box;
   display: block;
   margin: 0 auto;
-  max-width: 81.25em;
+  max-width: 80em;
   max-width: var(--vf-body-width, #{$vf-layout--comfortable});
   padding: 0 1em;
+
+  // there are times where developers add a `vf-body` inside a `vf-body` this line
+  // of code will fix that if needed.
+  & + & {
+    padding: 0;
+  }
 }

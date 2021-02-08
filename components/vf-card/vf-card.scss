@@ -19,7 +19,7 @@
   /* border: 1px solid var(--vf-card-theme-color--border, var(--card-border-color, #{set-color(vf-grey--lightest)})); */
   box-shadow: 0 .125rem .25rem rgba(set-color(vf-color--grey--dark), .5);
   display: grid;
-  grid-template-rows: 288px 1fr;
+  grid-template-rows: minmax(1fr, 288px) 1fr;
   position: relative;
 }
 
@@ -36,10 +36,48 @@
 .vf-card__content {
   grid-column: 1 / -1;
   padding: map-get($vf-spacing-map, vf-spacing--400);
+
+  .vf-button {
+    position: relative;
+    z-index: 1984;
+  }
+
+  .vf-list {
+    margin-bottom: 0;
+
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .vf-content {
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+    a {
+      text-decoration: none;
+
+      &:hover {
+        color: color(blue--dark);
+        text-decoration: underline;
+        text-decoration-thickness: 2px !important;
+      }
+    }
+  }
 }
 
-.vf-card__title {
-  @include set-type(text-heading--3);
+.vf-card__heading__icon {
+    fill: currentColor;
+    transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
+    // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
+    transition-duration: 125ms;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(.45, .05, .55, .95);
+}
+
+.vf-card__title,
+.vf-card__heading {
+  @include set-type(text-heading--3, $custom-margin-bottom: 0);
+  line-height: 1.333;
 
   // font-weight: 700;
 
@@ -49,7 +87,10 @@
   text-decoration: none;
 
   .vf-card__link {
-    color: inherit;
+    display: grid;
+    color: color(blue);
+    grid-column-gap: space(100);
+    grid-template-columns: auto 1fr;
     text-decoration: none;
 
     &::after {
@@ -59,25 +100,40 @@
       position: absolute;
       right: 0;
       top: 0;
-      transition-duration: 300ms;
+      transition-duration: 125ms;
       transition-property: box-shadow;
       transition-timing-function: ease-in-out;
       z-index: 512;
     }
 
     &:hover {
-      text-decoration: none;
+      text-decoration: underline;
+      text-decoration-thickness: 2px !important;
+      text-underline-offset: 4px;
       &::after {
         box-shadow: 0 0 .125rem .125rem rgba(set-color(vf-color--grey), .75);
       }
     }
+
   }
 
-  .vf-card__link:hover,
-  .vf-card__link:visited,
-  .vf-card__link:visited:hover {
-    color: currentColor;
+  .vf-card__link:hover .vf-card__heading__icon,
+  .vf-card__link:focus .vf-card__heading__icon  {
+    transform: translateX(map-get($vf-spacing-map, vf-spacing--200));
   }
+
+
+  .vf-card__link:visited,
+  .vf-card__link:visited:hover,
+  .vf-card__link:hover,
+  .vf-card__link:focus {
+    color: var(--vf-color--blue--dark);
+  }
+}
+
+.vf-card__subheading {
+  @include set-type(text-heading--5, $custom-margin-bottom: 0);
+  --vf-stack-margin--custom: #{space(100)};
 }
 
 .vf-card__text {
@@ -85,10 +141,19 @@
 
   color: set-ui-color(vf-ui-color--white);
   color: var( --card-text-color, #{set-ui-color(vf-ui-color--white)} );
-  a,
-  .vf-card__link {
+
+  .vf-card__link,
+  a {
     position: relative;
     z-index: 1984;
+    color: color(blue);
+    text-decoration: none;
+
+    &:hover {
+      color: color(blue--dark);
+      text-decoration: underline;
+      text-decoration-thickness: 2px !important;
+    }
   }
 }
 
@@ -118,13 +183,49 @@
   background-color: set-color(vf-color--green--dark);
   background-color: var(--vf-card--striped-bg-color, #{set-color(vf-color--green--dark)});
 
-  .vf-card__title {
+  .vf-card__content {
+    padding-bottom: 0;
+
+    & > *:last-child:not(.vf-card__link) {
+      padding-bottom: 1rem;
+    }
+
+    .vf-list,
+    .vf-content * {
+      color: ui-color(white);
+      a {
+        color: inherit;
+        position: relative;
+        text-decoration: underline;
+        z-index: 1984;
+      }
+    }
+  }
+
+  .vf-card__title,
+  .vf-card__heading {
     background-color: set-color(vf-color--green);
     background-color: var(--vf-card-bg-color, #{set-color(vf-color--green)});
     color: set-ui-color(vf-ui-color--white);
     margin: map-get($vf-spacing-map, vf-spacing--400) * -1;
     margin-bottom: map-get($vf-spacing-map, vf-spacing--200) * -1;
     padding: map-get($vf-spacing-map, vf-spacing--400);
+    padding-bottom: map-get($vf-spacing-map, vf-spacing--200);
+
+    .vf-card__link {
+      color: currentColor;
+    }
+  }
+
+  .vf-card__subheading {
+    color: set-ui-color(vf-ui-color--white);
+    background-color: set-color(vf-color--green);
+    background-color: var(--vf-card-bg-color, #{set-color(vf-color--green)});
+    margin: map-get($vf-spacing-map, vf-spacing--400) * -1;
+    margin-bottom: 0;
+    margin-top: -.5rem !important;
+    padding: map-get($vf-spacing-map, vf-spacing--400);
+    padding-top: 0;
     padding-bottom: map-get($vf-spacing-map, vf-spacing--200);
   }
 
@@ -133,8 +234,19 @@
 
     &:first-of-type {
       --vf-stack-margin--custom: 0;
-      padding-top: map-get($vf-spacing-map, vf-spacing--400);
+      // padding-top: map-get($vf-spacing-map, vf-spacing--400);
     }
+
+    .vf-card__link,
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+
+  .vf-card__title + .vf-card__text,
+  .vf-card__heading + .vf-card__text {
+    --vf-stack-margin--custom: #{space(400)};
   }
 }
 
@@ -146,7 +258,8 @@
 // - we are removing the `-theme-` part of the classname now.
 // - we are also moving towards more holistic theming with design.
 
-.vf-card--primary {
+.vf-card--primary
+.vf-card--brand {
   --vf-card-bg-color: #{set-color(vf-color--green)};
   --vf-card-text-color: #{set-ui-color(vf-ui-color--white)};
   --vf-card-border-color: #{set-color(vf-color--green)};
@@ -176,6 +289,7 @@
 // the existing `margin-bottom` to the `__title` and __text` components.
 .vf-card__content.vf-stack {
   .vf-card__title,
+  .vf-card__heading,
   .vf-card__text {
     margin-bottom: 0;
   }
@@ -188,7 +302,7 @@
 
 
 // --------------------------------------------------------------------------------
-// Old Code Below -- To be deleted and removed in v3.0.0
+// TODO: To be deleted and removed in v3.0.0
 // --------------------------------------------------------------------------------
 
 // note: some of this CSS 'overides' CSS in the newer cards -- but only by replacing
@@ -196,26 +310,22 @@
 
 // vf-card levels of design
 html:not(.vf-disable-deprecated) {
+  @warn "This variant has been deprecated";
   .vf-card--very-easy {
     border-bottom: 8px solid rgba(0, 0, 0, 0); // fixes a grid layout glitch when used with variant volume's that have a bottom border
   }
 
   .vf-card--easy {
+    @warn "This variant has been deprecated";
     border-bottom: 8px solid set-ui-color(vf-ui-color--black);
     border-bottom-color: var(--vf-card-theme-color--border, #{set-ui-color(vf-ui-color--black)});
 
-    .vf-card__title {
+    .vf-card__title,
+    .vf-card__heading {
       --card-text-color: #{set-color(vf-color--blue)};
     }
     .vf-card__text {
       --card-text-color: #{set-ui-color(vf-ui-color--black)};
-    }
-
-    // fixes bug on hover of link and easy variant #1215
-    .vf-card__link {
-      &::after {
-        height: calc(100% + 8px);
-      }
     }
   }
 
@@ -232,7 +342,8 @@ html:not(.vf-disable-deprecated) {
       grid-row: 2 / -1;
     }
 
-    .vf-card__title {
+    .vf-card__title,
+    .vf-card__heading {
       @include set-type(text-body--5);
 
       display: inline-block;
@@ -245,20 +356,15 @@ html:not(.vf-disable-deprecated) {
 
     .vf-card__text {
       padding-top: 16px;
-
-      .vf-card__link {
-        position: relative;
-        z-index: 1984;
-      }
     }
   }
 
   // vf-card themes
 
-  [class*='ary'].vf-card--easy {
+  [class*='vf-card-theme'].vf-card--easy {
     --vf-card-theme-color--background: #{set-ui-color(vf-ui-color--white)};
   }
-  [class*='ary'] {
+  [class*='vf-card-theme'] {
     .vf-card__text .vf-card__link {
       color: inherit;
       text-decoration: underline;

@@ -1,6 +1,8 @@
-### 1.2.1
+### 2.0.0
 
-* reduce size of form labels to body text 3
+* Changes required SVG fill color to red.
+* Makes the required SVG half the relative size of the text.
+* https://github.com/visual-framework/vf-core/pull/1228/
 
 ### 1.2.0
 

@@ -9,14 +9,14 @@
  * Location: #{map-get($componentInfo, 'location')}
  */
 
-.vf-form__item {
-  @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--200));
+.vf-form__item > * {
+  --vf-stack-margin--custom: #{map-get($vf-spacing-map, vf-spacing--100)};
 }
 
 .vf-form__item--inline {
   .vf-form__select,
   .vf-form__label {
-    display: inline-block;
+    display: inline-flex;
   }
   .vf-form__select {
     width: auto;
