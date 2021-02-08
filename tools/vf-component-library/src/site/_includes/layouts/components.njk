@@ -198,9 +198,9 @@ templateEngineOverride: njk
 
 Depending on your environment you'll want to use `render` or `include`. As a rule of thumb: server-side use `include`, precompiled browser use `render`. If you're using [vf-eleventy](https://github.com/visual-framework/vf-eleventy) you should use `include`.
 
-### Using include
+### Using `include`
 
-You'll need to pass a context object from your code or Yaml file, as well as the path to the Nunjucks template. Include is an abstraction of Nunjucks' render, and provides some additional portability.
+You'll need to pass a context object from your code or Yaml file ([exampe](https://github.com/visual-framework/vf-eleventy/blob/master/src/site/index.yml)), as well as the path to the Nunjucks template. Nunjucks' `include` is an abstraction of `render` and provides some additional portability.
 
 {# Ideally we could also show the Yaml format here, but that will require additional parsing of the passed `variant.context`. Not impossible, but an additional task #}
       {% endmarkdown %}
@@ -222,9 +222,9 @@ You'll need to pass a context object from your code or Yaml file, as well as the
       {% markdown %}
 
 
-### Using render
+### Using `render`
 
-This approach is best for bare-bones Nunjucks environments, such as precompiled templates where `include` might not be available.
+This approach is best for bare-bones Nunjucks environments, such as precompiled templates with the Nunjucks slim runtime where `include` is not be available.
 
       {% endmarkdown %}
 
