@@ -5,14 +5,16 @@ context:
   component-type: element
 variants:
   - name: default
-    label: Primary
+    hidden: true
+  - name: Primary
     context:
       text: a primary button
       theme: primary
-  - name: secondary
+  - name: Secondary
     context:
-      text: a secondary button
-      theme: secondary
+      text: an outline style
+      theme: primary
+      style: ["outline"]
   - name: tertiary
     context:
       text: a tertiary button
@@ -22,32 +24,39 @@ variants:
       text: a small button
       theme: primary
       size: sm
-  - name: regular
-    context:
-      text: a regular button
-      theme: primary
-  - name: large
-    context:
-      text: a large button
-      theme: primary
-      size: lg
-  - name: pill
-    context:
-      text: a pill style
-      theme: primary
-      style: ["pill"]
-  - name: rounded
-    context:
-      text: a rounded style
-      theme: primary
-      style: ["rounded"]
-  - name: outline
-    context:
-      text: an outline style
-      theme: primary
-      style: ["outline"]
   - name: link
     context:
       text: a link variant
       button_href: "JavaScript:Void(0);"
       theme: primary
+
+  # TODO: get rid of these on the next major release
+  - name: regular
+    hidden: true
+    context:
+      text: a regular button
+      theme: primary
+  - name: large
+    hidden: true
+    context:
+      text: a large button
+      theme: primary
+      size: lg
+  - name: pill
+    hidden: true
+    context:
+      text: a pill style
+      theme: primary
+      style: ["pill"]
+  - name: rounded
+    hidden: true
+    context:
+      text: a rounded style
+      theme: primary
+      style: ["rounded"]
+  - name: outline
+    hidden: true
+    context:
+      text: an outline style
+      theme: primary
+      style: ["outline"]
