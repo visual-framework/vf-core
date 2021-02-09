@@ -104,6 +104,30 @@ gulp.task("tokens:json", () =>
     .pipe(gulp.dest("./dist/json"))
 );
 
+gulp.task("components:json", () =>
+  gulp.src([
+    "./src/components/vf-button.yml"
+  ])
+    .pipe(theoG({
+      transform: { type: "web", includeMeta: true },
+      format: { type: "ios.json" }
+    }))
+    .pipe(gulp.dest("./dist/components/"))
+);
+
+gulp.task("components:maps", () =>
+  gulp.src(["./src/components/*.yml"])
+    .pipe(theoG({
+      transform: { type: "web" },
+      format: { type: "scss" }
+    }))
+    .pipe(rename(function (path) {
+      path.dirname += "/" + path.basename;
+      path.extname = ".tokens.scss";
+    }))
+    .pipe(gulp.dest("../../components/"))
+);
+
 gulp.task("tokens2:json", () =>
   gulp.src(["./src/typographic-scales/*.yml"])
     .pipe(theoG({
@@ -138,6 +162,7 @@ theo.registerTransform("web", ["color/hex"]);
 theo.registerFormat( "variables.scss",`${theoGeneratedSassTemplate}`);
 theo.registerFormat( "map.scss",`${theoGeneratedMapTemplate}`);
 theo.registerFormat( "custom-properties.scss",`${theoGeneratedPropertiesTemplate}`);
+theo.registerFormat( "scss", `${theoGeneratedMapTemplate}`);
 
 // The Theo typography token processor is a bit more complex
 // and uses a custom format as a function
@@ -166,5 +191,5 @@ ${result
 });
 
 gulp.task("vf-tokens", gulp.parallel(
-  "tokens:variables", "tokens:json", "tokens:typographic-scale", "tokens:maps", "tokens:props"
+  "tokens:variables", "tokens:json", "components:json", "components:maps", "tokens:typographic-scale", "tokens:maps", "tokens:props"
 ));
