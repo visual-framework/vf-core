@@ -228,10 +228,22 @@ import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{
       {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
       {% set readmeInstallation = component.notes | string | stringBetween("## Install", "\n## ") %}
 
-
       {% if readmeUsage %}
         <h2 id="usage">Usage</h2>
         {{ readmeUsage | markdown | safe }}
+
+        {% set tokenTitle %}components.{{component.title | lower }}.properties{% endset %}
+        <p>{{ helpers.getTokens}}</p>
+        {% for item in tokenTitle %}
+          <div class="vf-grid vf-grid__col-2">
+            <div>
+              <h4 style="margin: 0;">{{ item.meta.friendlyName }}</h4>
+              <p style="margin: 8px 0 0 0;">${{ item.meta.sassVariable }}</p>
+            </div>
+            <div style="border: 1px solid black; width: 400px; height: 100px; background-color: {{ item.value }}">
+            </div>
+          </div>
+        {% endfor %}
       {% endif %}
 
       {% if readmeInstallation %}
