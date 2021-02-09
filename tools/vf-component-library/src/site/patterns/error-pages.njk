@@ -4,38 +4,8 @@ subtitle: Use these boilerplate pattern for 404, 403, 500 and other common pages
 section: patterns
 date: 2021-02-09 12:24:50
 tags: posts
-layout: layouts/boilerplate.njk
+layout: layouts/base.njk
 ---
-<!DOCTYPE html>
-<html lang="en" class="vf-no-js">
-<head>
-  {% render "@vf-no-js" %}
-  <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
-
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
-
-  {% render "@vf-favicon" %}
-  {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "Barcelona", "meta_what": "research", "meta_active": "what"} %}
-
-  {% if serverInfo.environment == "development" -%}
-  <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
-  {%- else -%}
-  <link rel="stylesheet" href="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
-  {%- endif %}
-  <!--
-    Want to build a site with the Visual Framework?
-    ---
-    You can copy the CSS and JS you find here, but for the best experience see the building guide:
-    https://stable.visual-framework.dev/building/
-  -->
-</head>
-<body class="vf-body vf-stack">
-  <header class="vf-header">
-    {% render "@vf-global-header" %}
-  </header>
-  {# {% include "./templates/breadcrumbs-boilerplate.njk" %} #}
-
 
 {% render '@vf-intro', {
   "vf_intro_badge": false,
@@ -157,26 +127,3 @@ layout: layouts/boilerplate.njk
     <a class="vf-button vf-button--primary" href="https://www-db.embl.de/EMBLPersonGroup-PersonPicture/MailForm/?recipient=websupport">Contact web support</a>
   </div>
 </section>
-
-
-
-
-  {% render "@vf-footer" %}
-  {# {% include "./templates/notice-boilerplate.njk" %} #}
-
-  {% if serverInfo.environment == "development" %}
-  <div class="vf-grid">
-    <div class="vf-body--text">
-      <p><code class="vf-code-example__pre"> ⚠️ You're running the {{serverInfo.environment}} command; Page location {{ page.inputPath }} </code></p>
-    </div>
-  </div>
-  {% endif %}
-
-  <!-- This page was generated on {{ siteConfig.buildTime }} -->
-  {% if serverInfo.environment == "development" -%}
-    <script src="{{ '/scripts/scripts.js' | url }}"></script>
-  {%- else -%}
-    <script src="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/scripts/scripts.js"></script>
-  {%- endif -%}
-</body>
-</html>
