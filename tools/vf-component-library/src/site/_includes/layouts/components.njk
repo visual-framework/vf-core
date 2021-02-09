@@ -232,9 +232,14 @@ import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{
         <h2 id="usage">Usage</h2>
         {{ readmeUsage | markdown | safe }}
 
+        {% set fileName = component.title %}
+        {% set thing = "components." %}
+        {% set thingg = ".properties" %}
+        {% set thinggg %}{{thing}}{{fileName | lower}}{{thingg}}{% endset %}
         {% set tokenTitle %}components.{{component.title | lower }}.properties{% endset %}
-        <p>{{ helpers.getTokens}}</p>
         {% for item in tokenTitle %}
+        <p>{{ helpers.getTokenFile(content) }}</p>
+        <p>{{thinggg}}</p>
           <div class="vf-grid vf-grid__col-2">
             <div>
               <h4 style="margin: 0;">{{ item.meta.friendlyName }}</h4>
