@@ -32,6 +32,8 @@ The button text should be short and clear. Depending on the action of the button
 
 <sup>*</sup>to be done.
 
+### Sass
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-button` with this command.
