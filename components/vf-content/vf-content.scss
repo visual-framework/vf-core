@@ -31,8 +31,7 @@
   h2:not([class*='vf-']) {
     @include set-type(text-heading--2, $custom-margin-bottom: 39px);
 
-    margin-top: 0;
-    padding-top: 13px;
+    margin-top: 13px;
 
     b,
     strong {
@@ -82,6 +81,11 @@
     strong {
       font-weight: inherit;
     }
+  }
+
+  // remove the top margin from first items becasue some times the first item is an h3
+  & > :first-child {
+    margin-top: 0 !important;
   }
 
   p:not([class*='vf-']) {
