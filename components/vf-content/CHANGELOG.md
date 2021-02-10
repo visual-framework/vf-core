@@ -1,3 +1,7 @@
+### 1.4.0
+
+* adds top margin override for first item inside of `vf-content`
+
 ### 1.3.2
 
 * dependency bump
