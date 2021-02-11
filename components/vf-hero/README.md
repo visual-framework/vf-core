@@ -4,42 +4,43 @@
 
 ## About
 
-The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a heading, sub-heading, and text content. The text (`vf-hero__text`) content can also be a 'call to action' link which adds am arrow icon.
+The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a kicker, heading, sub-heading, and text content. The text content (`vf-hero__text`) can also be a 'call to action' link which adds the arrow icon.
 
 ## Usage
 
-This component should not be used inside of `vf-content`.
-
-
+By default the `vf-hero` makes use of the roundels bacground image. To keep the raw struture of the HTML and CSS the same this is applied using a CSS custom property. IE 11 will get the background colour still, but no image. This is progressive enhancement.
 
 The `vf-hero` can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`).
+### Content
 
-By default the `vf-hero` makes use of the roundels bacground image. To keep the raw struture of the HTML and CSS the same this is applied using a CSS custom property. IE 11 will get the background colour still, but no image. This is progressive enhancement.
+- `vf-hero__kicker`:
+- `vf-hero__heading`:
+- `vf-hero__subheading`:
+
+
 
 The basic HTML structure is:
 
 ```
-<section class="vf-hero vf-hero--primary vf-hero--1200 | vf-u-fullbleed" style="--vf-hero--bg-image-size: auto 28.5rem">
+<section class="vf-hero | vf-u-fullbleed">
 
-  <div class="vf-hero__content | vf-stack vf-stack--400 ">
+  <div class="vf-hero__content | vf-box | vf-stack vf-stack--400 ">
 
-    <h2 class="vf-hero__heading">
-      About the Hentze group!
-    </h2>
+    <p class="vf-hero__kicker">Structural Biology</p>
+
+    <h2 class="vf-hero__heading">About the Hentze group!</h2>
 
     <p class="vf-hero__subheading">an example of some ancillary text</p>
 
-    <p class="vf-hero__text">The Hentze group combines biochemical and <a href="JavaScript:Void(0);">systems–level approaches</a> to investigate the connections between <a href="JavaScript:Void(0);">gene expression</a> and <a href="JavaScript:Void(0);">cell metabolism</a>, and their roles in human disease.</p>
+    <p class="vf-hero__text">The Hentze group combines biochemical and <a href="#">systems–level approaches</a> to investigate the connections between <a href="#">gene expression</a> and <a href="#">cell metabolism</a>, and their roles in human disease.</p>
 
   </div>
 
 </section>
 ```
 
----
 
 
-As the group sites variant of the `vf-hero` is used to announce the group name and some short additional information, it does not allow for the inclusion of the `vf-hero__text` element.
 
 ### CSS Custom Properties
 
