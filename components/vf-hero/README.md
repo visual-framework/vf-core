@@ -10,18 +10,13 @@ The `vf-hero` component is to be used as a visual queue and page header. The `vf
 
 This component should not be used inside of `vf-content`.
 
-Currently there are now two use cases for the `vf-hero` component:
 
 
-### Landing Pages
+The `vf-hero` can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`).
 
-For landing pages like the home page, or a location page can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`).
+By default the `vf-hero` makes use of the roundels bacground image. To keep the raw struture of the HTML and CSS the same this is applied using a CSS custom property. IE 11 will get the background colour still, but no image. This is progressive enhancement.
 
-The `vf-hero` for landing pgaes make use of the classes `vf-hero--primary` and `vf-hero--1200` to standardise the layout through out embl.org.
-
-By default the `vf-hero` for landing pages make use of the roundels bacground image. To keep the raw struture of the HTML and CSS the same this is applied using a CSS custom property. IE 11 will get the background colour still, but no image. This is progressive enhancement.
-
-The basic HTML structure for landing pages is:
+The basic HTML structure is:
 
 ```
 <section class="vf-hero vf-hero--primary vf-hero--1200 | vf-u-fullbleed" style="--vf-hero--bg-image-size: auto 28.5rem">
@@ -42,52 +37,6 @@ The basic HTML structure for landing pages is:
 ```
 
 ---
-### Group Sites
-
-For group sites that exist like a sub-site or microsite as part of embl.org they are afforded their own specific `vf-hero`.
-
-The `vf-hero` for group sites make use of the classes `vf-hero--primary`, `vf-hero--block`, and `vf-hero--800` to standardise the layout through out embl.org.
-
-By default the `vf-hero` for group sites make use of the roundels background image. To keep the raw struture of the HTML and CSS the same this is applied using a CSS custom property. IE 11 will get the background colour still, but no image. This is progressive enhancement.
-
-If group leaders wish to, they can include some additional content to the heading such as their group location, and if it's part of a bigger group with the HTML structure:
-
-```
-<h2 class="vf-hero__heading">
-  Strategy & Communications
-  <span class="vf-hero__heading--additional">
-    <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
-  </span>
-</h2>
-```
-
-<br>
-
-The basic HTML structure for the group site `vf-hero` is:
-
-
-```
-<section class="vf-hero vf-hero--primary vf-hero--block vf-hero--800 | vf-u-fullbleed" style="--vf-hero--bg-image-size: auto 28.5rem">
-
-  <div class="vf-hero__content | vf-stack vf-stack--400 ">
-
-    <h2 class="vf-hero__heading">
-
-      <a href="JavaScript:Void(0);">
-      Strategy &amp; Communications
-      </a>
-
-      <span class="vf-hero__heading--additional"><a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology</span>
-
-    </h2>
-
-    <p class="vf-hero__subheading">Chromosome structure and dynamics</p>
-
-  </div>
-
-</section>
-```
-
 
 
 As the group sites variant of the `vf-hero` is used to announce the group name and some short additional information, it does not allow for the inclusion of the `vf-hero__text` element.

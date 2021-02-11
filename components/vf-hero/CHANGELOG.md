@@ -1,3 +1,7 @@
+### 3.0.0
+
+* removes all design variants
+
 ### 2.0.6
 
 * fixed an issue where `vf_hero_href` had no context option for use in `vf-11ty`.
