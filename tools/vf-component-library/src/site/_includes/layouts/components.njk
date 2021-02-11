@@ -237,8 +237,9 @@ import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{
         {% set thingg = ".properties" %}
         {% set thinggg %}{{thing}}{{fileName | lower}}{{thingg}}{% endset %}
         {% set tokenTitle %}components.{{component.title | lower }}.properties{% endset %}
+        {% set componentName %}{{ component.baseHandle | replace('vf-', '')}}{% endset %}
         <!-- I want the button here to be whatever the page title is (for now, this might need it's own front matter) -->
-        {% for item in components.button.properties %}
+        {% for item in components[componentName].properties %}
         <!-- used as an example to show that part of the data JS thing works -->
         <p>{{ helpers.getTokenFile(content) }}</p>
           <div class="vf-grid vf-grid__col-2">
