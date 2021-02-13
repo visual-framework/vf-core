@@ -4,41 +4,42 @@
 
 ## About
 
-The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a kicker, heading, sub-heading, and text content. The text content (`vf-hero__text`) can also be a 'call to action' link which adds the arrow icon.
+The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a kicker, heading, sub-heading, text content, and a 'call to action' link as needed.
 
 ## Usage
 
 By default the `vf-hero` makes use of the roundels bacground image. To keep the raw struture of the HTML and CSS the same this is applied using a CSS custom property. IE 11 will get the background colour still, but no image. This is progressive enhancement.
 
 The `vf-hero` can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`).
+
+### Guidelines
+
+| ✅ Dos | ❌ Don'ts                                                                             |
+| ----- | ------------------------------------------------------------------------------------ |
+| USe a | Don't use a custom background image, unless it has been provided by the Design Team. |
+
+
+
 ### Content
+| Content name | Usage                                                                          | `.yml` key           |
+| ------------ | ------------------------------------------------------------------------------ | -------------------- |
+| Heading      |                                                                                | `vf_hero_heading`    |
+| Subheading   |                                                                                | `vf_hero_subheading` |
+| Kicker       | Optional content that helps define the context of overall content of the page. | `vf_hero_kicker`     |
+| Text         |                                                                                | `vf_hero_text`       |
+| Link Text    |                                                                                | `vf_hero_link_text`  |
+| Link HREF    |                                                                                | `vf_hero_link_href`  |
 
-- `vf-hero__kicker`:
-- `vf-hero__heading`:
-- `vf-hero__subheading`:
 
 
-
-The basic HTML structure is:
-
-```
-<section class="vf-hero | vf-u-fullbleed">
-
-  <div class="vf-hero__content | vf-box | vf-stack vf-stack--400 ">
-
-    <p class="vf-hero__kicker">Structural Biology</p>
-
-    <h2 class="vf-hero__heading">About the Hentze group!</h2>
-
-    <p class="vf-hero__subheading">an example of some ancillary text</p>
-
-    <p class="vf-hero__text">The Hentze group combines biochemical and <a href="#">systems–level approaches</a> to investigate the connections between <a href="#">gene expression</a> and <a href="#">cell metabolism</a>, and their roles in human disease.</p>
-
-  </div>
-
-</section>
-```
-
+| Content name | `.yml` key           | CSS classname         |
+| ------------ | -------------------- | --------------------- |
+| Kicker       | `vf_hero_kicker`     | `vf-hero__kicker`     |
+| Heading      | `vf_hero_heading`    | `vf-hero__heading`    |
+| Subheading   | `vf_hero_subheading` | `vf-hero__subheading` |
+| Text         | `vf_hero_text`       | `vf-hero__text`       |
+| Link Text    | `vf_hero_link_text`  | `vf-hero__link`       |
+| Link HREF    | `vf_hero_link_href`  | n/a                   |
 
 
 
