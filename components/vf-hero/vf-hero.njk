@@ -17,14 +17,9 @@
 
 
 <section
-  class="vf-hero
-  {{ modifier_class }}
+  class="vf-hero{% if spacing %} vf-hero--{{spacing}}{% endif %} | vf-u-fullbleed {%- if modifier_class %} {{ modifier_class }}{% endif %}"
 
-  {% if spacing %} vf-hero--{{spacing}}{% endif %}
-   | vf-u-fullbleed"
-
-  style="
-  {% if vf_hero_image %}--vf-hero--bg-image: {{vf_hero_image}}{% endif %}
+  style="{% if vf_hero_image %}--vf-hero--bg-image: {{vf_hero_image}}{% endif %}
   {% if vf_hero_image_size %}--vf-hero--bg-image-size: {{vf_hero_image_size}}{% endif %}
   ">
 
