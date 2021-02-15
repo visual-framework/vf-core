@@ -19,10 +19,54 @@ In the future we hope to offer Sketch and Photoshop colour palettes.
 
 If you required a different format (LESS, iOS, Android). Please get in touch.
 
+## What are Design Tokens?
+
 > Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. We use them in place of hard-coded values (such as hex values for color or pixel values for spacing) in order to maintain a scalable and consistent visual system for UI development.
 
 > — Salesforce, Lightning Design System.
 
+<br>
+
+<div class="vf-video">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/q5qIowMyVt8?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+## How EMBL uses Design Tokens
+
+### Base Design Tokens
+
+These are the generic values for things
+
+### Design Decision Design Tokens
+
+Where we have decided where to use what token and what purpose.
+
+### Component Design Tokens
+
+Where the design decisions have filtered into specific component decisions.
+
+These are exported into the components folder and are suffixed - `.tokens.scss`.
+
+These can be both Sass variables and CSS Custom Properties.
+
+## Naming Design Tokens
+
+We use a BEM style syntax when composing Design Tokens where we use our Design System prefix of `vf-` followed by:
+
+1. Component
+<small>eg: button, card, hero, list</small>
+
+2. Category
+<small>eg: backgroudn, shadow, border</small>
+
+4. Variant
+<small>eg: primary, secondary, interactive</small>
+
+4. State
+<small>eg: hover, visited, focus</small>
+
+
 ## Building
 
 To update these run `gulp vf-tokens` from `./components/vf-design-tokens`.
+ww
