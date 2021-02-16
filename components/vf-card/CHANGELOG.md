@@ -1,3 +1,8 @@
+### 2.4.1
+
+* fixes issue with `vf-card__image` height in Safari
+* updates documentation to replace 'title' with 'heading' so it matches CSS classname.
+
 ### 2.4.0
 
 * creates option to for a subheading

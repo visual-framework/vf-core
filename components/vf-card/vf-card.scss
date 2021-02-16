@@ -24,10 +24,9 @@
 }
 
 .vf-card__image {
+  aspect-ratio: 6 / 4;
   grid-column: 1 / -1;
   grid-row: 1;
-  height: 100%;
-  max-width: 100%;
   object-fit: cover;
   object-position: center;
   width: 100%;
@@ -66,29 +65,27 @@
 }
 
 .vf-card__heading__icon {
-    fill: currentColor;
-    transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
-    // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
-    transition-duration: 125ms;
-    transition-property: transform;
-    transition-timing-function: cubic-bezier(.45, .05, .55, .95);
+  fill: currentColor;
+  transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
+  // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
+  transition-duration: 125ms;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(.45, .05, .55, .95);
 }
 
 .vf-card__title,
 .vf-card__heading {
   @include set-type(text-heading--3, $custom-margin-bottom: 0);
-  line-height: 1.333;
-
-  // font-weight: 700;
 
   background-color: var(--card-background-color);
   color: set-ui-color(vf-ui-color--black);
   color: var( --card-text-color, #{set-ui-color(vf-ui-color--black)} );
+  line-height: 1.333;
   text-decoration: none;
 
   .vf-card__link {
-    display: grid;
     color: color(blue);
+    display: grid;
     grid-column-gap: space(100);
     grid-template-columns: auto 1fr;
     text-decoration: none;
@@ -132,8 +129,9 @@
 }
 
 .vf-card__subheading {
-  @include set-type(text-heading--5, $custom-margin-bottom: 0);
   --vf-stack-margin--custom: #{space(100)};
+
+  @include set-type(text-heading--5, $custom-margin-bottom: 0);
 }
 
 .vf-card__text {
