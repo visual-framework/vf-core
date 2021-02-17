@@ -2,18 +2,28 @@
 
   {% set vf_hero_image = context.vf_hero_image %}
 
-  {% set vf_hero_heading = context.vf_hero_heading %}
   {% set vf_hero_kicker = context.vf_hero_kicker %}
+  {% set vf_hero_heading = context.vf_hero_heading %}
   {% set vf_hero_subheading = context.vf_hero_subheading %}
+
   {% set vf_hero_text = context.vf_hero_text %}
-  {% set vf_hero_href = context.vf_hero_href %}
+
+  {% set vf_hero_link_text = context.vf_hero_link_text %}
+  {% set vf_hero_link_href = context.vf_hero_link_href %}
 
   {% set spacing = context.spacing %}
 
   {% set id = context.id %}
   {% set modifier_class = context.modifier_class %}
   {% set override_class = context.override_class %}
-{% endif %}
+
+  {# So we don't break usage suddenly, we're adding this snippet to change heading_addional to kicker #}
+  {% set vf_hero_heading_additional = context.vf_hero_heading_additional %}
+  {% if context.vf_hero_heading_additional %}
+    {% set vf_hero_kicker = context.vf_hero_heading_additional %}
+  {% endif %}
+
+{% endif -%}
 
 
 <section
