@@ -1,0 +1,129 @@
+---
+title: Boilerplate error pages
+subtitle: Use these boilerplate pattern for 404, 403, 500 and other common pages.
+section: patterns
+date: 2021-02-09 12:24:50
+tags: posts
+layout: layouts/base.njk
+---
+
+{% render '@vf-intro', {
+  "vf_intro_badge": false,
+  "vf_intro_heading": title,
+  "vf_intro_subheading": "",
+  "vf_intro_lede": subtitle,
+  "vf_intro_text": [
+    "Use the relevant section from below for you error page."
+  ]
+} %}
+
+<div class="embl-grid">
+  <div>
+    {# {% render '@vf-section-header', {
+      "section_title": "On this page",
+      "id": "onthispage"
+    } %} #}
+  </div>
+  <div>
+  {% render '@vf-link-list', {
+    "component-type": "block",
+    "component_modifier": "vf-links__list--easy",
+    "title": "On this page",
+    "svg": true,
+    "list": [
+      {
+        "text": "404",
+        "link_list_href": "#404"
+      },
+      {
+        "text": "503",
+        "link_list_href": "#503"
+      },
+      {
+        "text": "500",
+        "link_list_href": "#500"
+      }
+    ]
+  } %}
+  </div>
+</div>
+
+
+<hr class="vf-divider" />
+
+{% render '@vf-intro', {
+  "id": "404",
+  "vf_intro_badge": false,
+  "vf_intro_heading": "Error: 404",
+  "vf_intro_subheading": "",
+  "vf_intro_lede": "We’re sorry - we can’t find the page or file you requested.",
+  "vf_intro_text": [
+    "It may have been removed, had its name changed, or be temporarily unavailable.",
+    "You might try <a href='https://www.embl.org/search'>searching for it</a>."
+  ]
+} %}
+
+
+<section class="embl-grid embl-grid--has-centered-content">
+  <div></div>
+  <div>
+  <form action="https://embl.org/search#add-your-endpoint" method="GET" class="vf-form | vf-search vf-search--inline">
+    <div class="vf-form__item | vf-search__item">
+      <label class="vf-form__label vf-u-sr-only | vf-search__label" for="text">Search</label>
+      <input type="text" id="text" name="searchQuery" class="vf-form__input | vf-search__input st-default-search-input" placeholder="Search {the name of the site}" />
+    </div>
+    <button type="submit" class="vf-search__button | vf-button vf-button--primary">Search</button>
+  </form>
+  </div>
+</section>
+
+<section class="embl-grid">
+  <div></div>
+  <div class="vf-content">
+    <h3>Need assistance?</h3>
+    <a class="vf-button vf-button--primary" href="https://www-db.embl.de/EMBLPersonGroup-PersonPicture/MailForm/?recipient=websupport">Contact web support</a>
+  </div>
+</section>
+
+<hr class="vf-divider" />
+
+{% render '@vf-intro', {
+  "id": "403",
+  "vf_intro_badge": false,
+  "vf_intro_heading": "Error: 403",
+  "vf_intro_subheading": "",
+  "vf_intro_lede": "You do not have permission to access the page requested.",
+  "vf_intro_text": [
+    "You may need to login, or ask the page owner for access details."
+  ]
+} %}
+
+<section class="embl-grid">
+  <div></div>
+  <div class="vf-content">
+    <h3>Need assistance?</h3>
+    <a class="vf-button vf-button--primary" href="https://www-db.embl.de/EMBLPersonGroup-PersonPicture/MailForm/?recipient=websupport">Contact web support</a>
+  </div>
+</section>
+
+<hr class="vf-divider" />
+
+{% render '@vf-intro', {
+  "id": "500",
+  "vf_intro_badge": false,
+  "vf_intro_heading": "Error: 500",
+  "vf_intro_subheading": "",
+  "vf_intro_lede": "There was a technical error.",
+  "vf_intro_text": [
+    "Something has gone wrong with our web server when attempting to make this page.",
+    "This problem means that the service you are trying to access is currently unavailable. Please try again later."
+  ]
+} %}
+
+<section class="embl-grid">
+  <div></div>
+  <div class="vf-content">
+    <h3>Need assistance?</h3>
+    <a class="vf-button vf-button--primary" href="https://www-db.embl.de/EMBLPersonGroup-PersonPicture/MailForm/?recipient=websupport">Contact web support</a>
+  </div>
+</section>

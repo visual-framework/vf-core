@@ -1,3 +1,7 @@
+### 1.4.6
+
+* Add support for anchor `id` attribute.
+
 ### 1.4.5
 
 * Move the example content into a default variant to stop it printing out when using `render ..`.
