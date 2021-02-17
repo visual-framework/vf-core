@@ -1,3 +1,7 @@
+### 2.0.1
+
+* improve horizontal layout of radio with flexbox
+
 ### 2.0.0
 
 * Changes hover/focus interaction.

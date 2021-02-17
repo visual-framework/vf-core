@@ -1,3 +1,7 @@
+### 2.0.1
+
+* Add support for vf-form__select as inline element.
+
 ### 2.0.0
 
 * Changes styling of the inputs.
