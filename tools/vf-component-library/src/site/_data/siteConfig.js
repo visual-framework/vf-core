@@ -42,6 +42,10 @@ module.exports = {
       url: "/patterns",
       title: "Patterns"
     },
+    designkit: {
+      url: "/design-kit",
+      title: "Design kit"
+    },
     styles: {
       url: "/styles",
       title: "Styles"
