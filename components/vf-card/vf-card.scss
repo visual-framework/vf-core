@@ -19,12 +19,12 @@
   /* border: 1px solid var(--vf-card-theme-color--border, var(--card-border-color, #{set-color(vf-grey--lightest)})); */
   box-shadow: 0 .125rem .25rem rgba(set-color(vf-color--grey--dark), .5);
   display: grid;
-  grid-template-rows: minmax(1fr, 288px) 1fr;
+  grid-template-rows: minmax(var(--vf-card__grid-height--row-1, 288px), auto) 1fr;
   position: relative;
 }
 
 .vf-card__image {
-  aspect-ratio: 6 / 4;
+  aspect-ratio: 8 / 4;
   grid-column: 1 / -1;
   grid-row: 1;
   object-fit: cover;
