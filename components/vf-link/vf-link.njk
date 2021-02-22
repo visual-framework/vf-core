@@ -1,42 +1,15 @@
 {% spaceless %}
 
-{# We need to know if links should be disabled #}
-{% set disabled = false %}
-
 <a
-{# Using an ID? Really?? That goes here #}
 {%- if id %} id="{{-id-}}"{% endif -%}
 
-{# Gotta have a link #}
 href="{{-link_href-}}"
 
-{# Have a target like _blank? That goes here #}
 {%- if target %} target="_{{-target-}}"{% endif -%}
 
-{# Here is where we are adding the vf-text--body modifier #}
-class="vf-link
+class="vf-link{%- if override_class %} | {{override_class}}{% endif -%}"
 
-{% if theme %}vf-link--{{ theme -}}{% endif %}
-
-{# If you're styling the shape of the item, the classnames will render in this for loop #}
-{%- if style -%}
-  {% for styles in style %}
-    {# Link is disabled? #}
-    {%- if styles == "disabled" %}
-      vf-link--{{styles-}}
-      {% set disabled = true %}
-    {%- else %}
-      vf-link--{% if theme %}{{theme}}--{% endif %}{{styles-}}
-    {% endif %}
-  {% endfor -%}
-{% endif -%}
-
-{# You want a snowflake of a classname for something, here you go  #}
-{%- if override_class %} | {{override_class}}{% endif -%}
-"
-
-{# Link is disabled?  #}
-{%- if disabled %} disabled{% endif -%}
+{%- if disabled -%}disabled{%- endif %}
 >
 
 {{- html | safe if html else text -}}
