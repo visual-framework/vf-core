@@ -1,3 +1,7 @@
+### 1.4.2
+
+* Removes the import for `vf-links.variables.scss` as it is not needed.
+
 ### 1.4.1
 
 * Fix image URL in vf-summary--news-has-image.
