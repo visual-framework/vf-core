@@ -1,3 +1,7 @@
+### 1.4.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.4.0
 
 * fixes flexbox fallback grid when there are items on two or more rows

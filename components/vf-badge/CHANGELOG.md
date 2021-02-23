@@ -1,3 +1,7 @@
+### 1.2.2
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.2.1
 
 * README cleanup

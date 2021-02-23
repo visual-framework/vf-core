@@ -1,3 +1,7 @@
+### 2.3.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 2.3.0
 
 * updates font size for title/heading

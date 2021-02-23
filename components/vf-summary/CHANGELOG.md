@@ -1,3 +1,6 @@
+### 1.4.2
+
+* changes any `set-` style functions to cleaner version
 ### 1.4.1
 
 * Fix image URL in vf-summary--news-has-image.

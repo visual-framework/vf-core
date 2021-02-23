@@ -14,7 +14,7 @@
   position: absolute; // take it out of document flow
 
   & + .vf-form__label {
-    color: set-color(vf-color--grey--dark);
+    color: color(grey--dark);
     cursor: pointer;
     display: flex;
     padding: 0;
@@ -23,8 +23,8 @@
 
   // Box.
   & + .vf-form__label::before {
-    background: set-ui-color(vf-ui-color--white);
-    border: 2px solid set-color(vf-color--grey);
+    background: ui-color(white);
+    border: 2px solid color(grey);
     border-radius: 50%;
     content: '';
     display: inline-block;
@@ -37,44 +37,44 @@
 
   // Box hover
   &:hover + .vf-form__label::before {
-    border-color: set-color(vf-color--grey--dark);
-    box-shadow: 0 0 4px set-color(vf-color--blue);
+    border-color: color(grey--dark);
+    box-shadow: 0 0 4px color(blue);
 
     @supports (filter: drop-shadow(0 0 .25rem blue)) {
       background-color: transparent;
       box-shadow: 0;
-      filter: drop-shadow(0 0 4px set-color(vf-color--blue--light))
+      filter: drop-shadow(0 0 4px color(blue--light))
     }
   }
 
   // Box focus
   &:focus + .vf-form__label::before {
-    border-color: set-color(vf-color--grey--dark);
-    box-shadow: 0 0 4px set-color(vf-color--blue);
+    border-color: color(grey--dark);
+    box-shadow: 0 0 4px color(blue);
 
     @supports (filter: drop-shadow(0 0 .25rem blue)) {
       background-color: transparent;
       box-shadow: 0;
-      filter: drop-shadow(0 0 4px set-color(vf-color--blue--light))
+      filter: drop-shadow(0 0 4px color(blue--light))
     }
   }
 
   // Box checked
   &:checked + .vf-form__label::before {
-    background: set-color(vf-color--blue);
-    box-shadow: inset 0 0 0 2px set-ui-color(vf-ui-color--white);
-    // border-color: set-color(vf-color--blue);
+    background: color(blue);
+    box-shadow: inset 0 0 0 2px ui-color(white);
+    // border-color: color(blue);
   }
 
   // Disabled state .vf-form__label.
   &:disabled + .vf-form__label {
-    color: set-color(vf-color--grey--dark);
+    color: color(grey--dark);
     cursor: auto;
   }
 
   // Disabled box.
   &:disabled + .vf-form__label::before {
-    background: set-color(vf-color--grey);
+    background: color(grey);
     box-shadow: none;
   }
 }

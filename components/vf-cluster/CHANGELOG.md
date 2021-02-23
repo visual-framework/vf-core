@@ -1,3 +1,7 @@
+### 1.0.2
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.0.1
 
 * fixes a bug where we overspecified the spacing custom property which affected left alignment of `--600` and `--800` variants.
