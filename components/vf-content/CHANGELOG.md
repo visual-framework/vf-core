@@ -1,3 +1,7 @@
+### 1.4.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.4.0
 
 * adds top margin override for first item inside of `vf-content`

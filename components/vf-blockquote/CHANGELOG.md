@@ -1,3 +1,7 @@
+### 1.1.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.1.0
 
 * removes `--pullquote` variant as it was never properly finalised and implemented.

@@ -1,3 +1,7 @@
+### 1.0.4
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.0.3
 
 * Improves default link colours

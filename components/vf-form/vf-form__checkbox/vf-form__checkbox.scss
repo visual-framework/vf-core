@@ -18,7 +18,7 @@
 .vf-form__item--checkbox {
   .vf-form__checkbox {
     + .vf-form__label::before {
-      // border-color: set-ui-color(vf-ui-color--grey--light);
+      // border-color: ui-color(grey--light);
       margin-right: 8px;
     }
   }
@@ -29,7 +29,7 @@
   position: absolute; // take it out of document flow
 
   + .vf-form__label {
-    color: set-color(vf-color--grey--dark);
+    color: color(grey--dark);
     cursor: pointer;
     padding: 0;
     position: relative;
@@ -37,8 +37,8 @@
 
   // Box.
   + .vf-form__label::before {
-    background-color: set-ui-color(vf-ui-color--white);
-    border: 2px solid set-color(vf-color--grey);
+    background-color: ui-color(white);
+    border: 2px solid color(grey);
     content: '';
     display: inline-block;
     height: 16px;
@@ -49,25 +49,25 @@
 
   // Box hover
   &:hover + .vf-form__label:before {
-    border-color: set-color(vf-color--grey--dark);
-    box-shadow: 0 0 4px set-color(vf-color--blue);
+    border-color: color(grey--dark);
+    box-shadow: 0 0 4px color(blue);
 
     @supports (filter: drop-shadow(0 0 .25rem blue)) {
       background-color: transparent;
       box-shadow: 0;
-      filter: drop-shadow(0 0 4px set-color(vf-color--blue--light))
+      filter: drop-shadow(0 0 4px color(blue--light))
     }
   }
 
   // Box focus
   &:focus + .vf-form__label:before {
-    border-color: set-color(vf-color--grey--dark);
-    box-shadow: 0 0 4px set-color(vf-color--blue);
+    border-color: color(grey--dark);
+    box-shadow: 0 0 4px color(blue);
 
     @supports (filter: drop-shadow(0 0 .25rem blue)) {
       background-color: transparent;
       box-shadow: 0;
-      filter: drop-shadow(0 0 4px set-color(vf-color--blue--light))
+      filter: drop-shadow(0 0 4px color(blue--light))
     }
   }
 
@@ -81,13 +81,13 @@
 
   // Disabled state .vf-form__label.
   &:disabled + .vf-form__label {
-    color: set-color(vf-color--grey--dark);
+    color: color(grey--dark);
     cursor: auto;
   }
 
   // Disabled box.
   &:disabled + .vf-form__label:before {
-    background: set-color(vf-color--grey);
+    background: color(grey);
     box-shadow: none;
   }
   // Checkmark. Could be replaced with an image

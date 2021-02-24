@@ -4,99 +4,45 @@
 
 ## About
 
-The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a heading, sub-heading, and text content. The text (`vf-hero__text`) content can also be a 'call to action' link which adds am arrow icon.
+The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a kicker, heading, sub-heading, text content, and a 'call to action' link as needed.
 
 ## Usage
 
-This component should not be used inside of `vf-content`.
+By default the `vf-hero` makes use of the roundels bacground image. To keep the raw struture of the HTML and CSS the same this is applied using a CSS custom property.
 
-Currently there are now two use cases for the `vf-hero` component:
+The `vf-hero` can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`).
 
-
-### Landing Pages
-
-For landing pages like the home page, or a location page can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`).
-
-The `vf-hero` for landing pgaes make use of the classes `vf-hero--primary` and `vf-hero--1200` to standardise the layout through out embl.org.
-
-By default the `vf-hero` for landing pages make use of the roundels bacground image. To keep the raw struture of the HTML and CSS the same this is applied using a CSS custom property. IE 11 will get the background colour still, but no image. This is progressive enhancement.
-
-The basic HTML structure for landing pages is:
-
-```
-<section class="vf-hero vf-hero--primary vf-hero--1200 | vf-u-fullbleed" style="--vf-hero--bg-image-size: auto 28.5rem">
-
-  <div class="vf-hero__content | vf-stack vf-stack--400 ">
-
-    <h2 class="vf-hero__heading">
-      About the Hentze group!
-    </h2>
-
-    <p class="vf-hero__subheading">an example of some ancillary text</p>
-
-    <p class="vf-hero__text">The Hentze group combines biochemical and <a href="JavaScript:Void(0);">systems–level approaches</a> to investigate the connections between <a href="JavaScript:Void(0);">gene expression</a> and <a href="JavaScript:Void(0);">cell metabolism</a>, and their roles in human disease.</p>
-
-  </div>
-
-</section>
-```
-
----
-### Group Sites
-
-For group sites that exist like a sub-site or microsite as part of embl.org they are afforded their own specific `vf-hero`.
-
-The `vf-hero` for group sites make use of the classes `vf-hero--primary`, `vf-hero--block`, and `vf-hero--800` to standardise the layout through out embl.org.
-
-By default the `vf-hero` for group sites make use of the roundels background image. To keep the raw struture of the HTML and CSS the same this is applied using a CSS custom property. IE 11 will get the background colour still, but no image. This is progressive enhancement.
-
-If group leaders wish to, they can include some additional content to the heading such as their group location, and if it's part of a bigger group with the HTML structure:
-
-```
-<h2 class="vf-hero__heading">
-  Strategy & Communications
-  <span class="vf-hero__heading--additional">
-    <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
-  </span>
-</h2>
-```
-
-<br>
-
-The basic HTML structure for the group site `vf-hero` is:
-
-
-```
-<section class="vf-hero vf-hero--primary vf-hero--block vf-hero--800 | vf-u-fullbleed" style="--vf-hero--bg-image-size: auto 28.5rem">
-
-  <div class="vf-hero__content | vf-stack vf-stack--400 ">
-
-    <h2 class="vf-hero__heading">
-
-      <a href="JavaScript:Void(0);">
-      Strategy &amp; Communications
-      </a>
-
-      <span class="vf-hero__heading--additional"><a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology</span>
-
-    </h2>
-
-    <p class="vf-hero__subheading">Chromosome structure and dynamics</p>
-
-  </div>
-
-</section>
-```
+IE 11 will get the background colour and the roundels image, it will not paint a different background image if added. This is progressive enhancement.
+### Content
+| Content name | Usage                                                                          | `.yml` key           |
+| ------------ | ------------------------------------------------------------------------------ | -------------------- |
+| Heading      | To be used for the heading of the page.                                                                               | `vf_hero_heading`    |
+| Heading HREF | To be used as a 'return to home' link for the micro site. | `vf_hero_heading_href` |
+| Subheading   | Optional content to be used along with the Heading for a terse explainer.                                                                               | `vf_hero_subheading` |
+| Kicker       | Optional content that helps define the context of overall content of the page. | `vf_hero_kicker`     |
+| Text         | Optional content that can help explain the page content in a brief paragraph.                                                                               | `vf_hero_text`       |
+| Link Text    | The text for the hero 'call to action' link. Only works if there is associated Link HREF.                                                                                | `vf_hero_link_text`  |
+| Link HREF    |  The url that the Link Text would be pointing to and opens in the same browser tab. This only works if there is associated Link Text                                                                              | `vf_hero_link_href`  |
 
 
 
-As the group sites variant of the `vf-hero` is used to announce the group name and some short additional information, it does not allow for the inclusion of the `vf-hero__text` element.
+| Content name | `.yml` key           | CSS classname         |
+| ------------ | -------------------- | --------------------- |
+| Kicker       | `vf_hero_kicker`     | `vf-hero__kicker`     |
+| Heading      | `vf_hero_heading`    | `vf-hero__heading`    |
+| Heading HREF | `vf_hero_heading_href`    | `vf-hero__heading_link`    |
+| Subheading   | `vf_hero_subheading` | `vf-hero__subheading` |
+| Text         | `vf_hero_text`       | `vf-hero__text`       |
+| Link Text    | `vf_hero_link_text`  | `vf-hero__link`       |
+| Link HREF    | `vf_hero_link_href`  | n/a                   |
+
+
 
 ### CSS Custom Properties
 
 `--vf-hero--bg-image` — this is for the url for the background image. It can either be added, inline if you're writing the HTML, using the `.yml` data source of `vf_hero_image`, or by other needs (a input or upload in WordPress, for example).
 
-`---vf-hero--bg-image-size` — this is to determine the sizing of the background image. As group sites are using the roundel image it needs specific dimensions so that it works. These dimensions are `auto 28.5rem`. We use a fallback here as background images in `vf-hero` should be full bleed by default so the fall back in the CSS is for cover — `var(---vf-hero--bg-image-size, cover)`. For
+`---vf-hero--bg-image-size` — this is to determine the sizing of the background image. As group sites are using the roundel image it needs specific dimensions so that it works. These dimensions are `auto 28.5rem`. We use a fallback here as background images in `vf-hero` should be full bleed by default so the fall back in the CSS is for cover — `var(---vf-hero--bg-image-size, cover)`.
 
 ## Install
 

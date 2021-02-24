@@ -1,3 +1,19 @@
+### 3.1.0
+
+* adds link styles to the `vf-hero__heading`
+* updated the documentation to include the `vf-hero__heading_link` details.
+
+### 3.0.1
+
+* changes any `set-` style functions to cleaner version
+
+### 3.0.0
+
+* removes all design variants.
+* replaces `vf-hero__heading__additional` with `vf-hero__kicker`.
+* makes the call to action link a separate entity as there would be a conflict with `vf-hero__text`.
+* adds a little more documentation.
+
 ### 2.0.6
 
 * fixed an issue where `vf_hero_href` had no context option for use in `vf-11ty`.
