@@ -1,3 +1,7 @@
+### 2.0.2
+
+* changes any `set-` style functions to cleaner version
+
 ### 2.0.1
 
 * Use VF 1.4 JS to load the HTML for the global header.

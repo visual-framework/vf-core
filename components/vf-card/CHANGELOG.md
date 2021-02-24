@@ -1,3 +1,7 @@
+### 2.4.2
+
+* changes any `set-` style functions to cleaner version
+
 ### 2.4.1
 
 * fixes issue with `vf-card__image` height in Safari

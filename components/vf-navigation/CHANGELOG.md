@@ -1,3 +1,7 @@
+### 2.2.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 2.2.0
 
 * removes bottom margin for `--main`.

@@ -1,3 +1,7 @@
+### 3.0.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 3.0.0
 
 * removes all design variants.
