@@ -1,3 +1,7 @@
+### 2.0.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 2.0.0
 
 * Adds vf-stack in example code.

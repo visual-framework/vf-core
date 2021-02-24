@@ -1,3 +1,7 @@
+### 2.1.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 2.1.0
 
 * makes the layout something that can now use 'extends' within nunjucks

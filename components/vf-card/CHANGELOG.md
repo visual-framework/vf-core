@@ -1,5 +1,6 @@
 ### 2.5.0
 
+* changes any `set-` style functions to cleaner version
 * fixes issue with `vf-card__image` height in Safari.
 * removes `grid-template-rows` as it's difficult to define now cards do not have to have images.
 * adds a `--vf-card__image--aspect-ratio` CSS custom property to help with the initial image height.

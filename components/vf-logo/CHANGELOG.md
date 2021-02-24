@@ -1,3 +1,7 @@
+### 1.5.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.5.0
 
 * removes some unneeded CSS.

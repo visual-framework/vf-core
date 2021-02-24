@@ -1,3 +1,7 @@
+### 1.2.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.2.0
 
 * Restructures that link between tabs from a sequential relationship to an explicit relationship based off the tab href and panel id.

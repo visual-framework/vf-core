@@ -30,7 +30,17 @@
 
 .data-protection-banner {
 
-  background-color: set-color(color-grey-darkest);
+  background-color: color(
+
+
+
+
+
+
+
+
+
+  grey-darkest);
 
   .row {
     @media (min-width: $vf-breakpoint--sm) {
@@ -57,12 +67,12 @@
 
   a {
     @include inline-link--dark-mode(
-      $vf-link--color: set-ui-color(vf-ui-color--white),
-      $vf-link--hover-color: set-ui-color(vf-ui-color--white),
-      $vf-link--visited-color: set-ui-color(vf-ui-color--white)
+      $vf-link--color: ui-color(white),
+      $vf-link--hover-color: ui-color(white),
+      $vf-link--visited-color: ui-color(white)
     );
     cursor: pointer; // data-protection-agree has no href and does no get a pointer by default in most browsers
   }
-  
+
 }
 
