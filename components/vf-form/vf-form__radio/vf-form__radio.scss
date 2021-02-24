@@ -28,36 +28,35 @@
     border-radius: 50%;
     content: '';
     display: inline-block;
-    height: 16px;
+    height: 1rem;
     margin-right: 8px;
     position: relative;
     top: 2px; // need to look at a better way to do this that keeps the semantics of a label
-    width: 16px;
+    width: 1rem;
   }
 
   // Radio Button hover
   &:hover + .vf-form__label::before,
   &:focus + .vf-form__label::before {
     border-color: color(grey--dark);
-    box-shadow: 0 0 0 .0625rem color(grey--dark);
+    box-shadow: 0 0 0 .125rem color(grey--dark);
   }
 
   // Radio Button checked
   &:checked + .vf-form__label::before {
     background: color(blue);
-    box-shadow: inset 0 0 0 2px ui-color(white);
-    // border-color: color(blue);
+    border-color: color(blue);
   }
 
   // Disabled state .vf-form__label.
   &:disabled + .vf-form__label {
     color: color(grey--dark);
-    cursor: auto;
+    cursor: not-allowed;
   }
 
   // Disabled box.
   &:disabled + .vf-form__label::before {
-    background: color(grey);
+    background: color(grey--lightest);
     box-shadow: none;
   }
 }
