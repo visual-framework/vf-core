@@ -1,3 +1,8 @@
+### 3.1.0
+
+* adds link styles to the `vf-hero__heading`
+* updated the documentation to include the `vf-hero__heading_link` details.
+
 ### 3.0.1
 
 * changes any `set-` style functions to cleaner version
