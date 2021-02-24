@@ -1,3 +1,7 @@
+### 2.0.1
+
+* changes font size so it matches other form components
+
 ### 2.0.0
 
 * Adds vf-stack in example code.
