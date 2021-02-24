@@ -13,24 +13,11 @@
   @include inline-link;
 }
 
-.vf-link--visited {
-  color: $vf-link--visited-color;
+[disabled] {
+  cursor: not-allowed;
+  pointer-events: all !important;
 }
 
-.vf-link--hover {
-  color: $vf-link--hover-color;
-}
-
-[class*='--dark']  {
-  .vf-link {
-    @include inline-link($vf-link--dark-mode--hover-color, $vf-link--dark-mode--hover-color, $vf-link--dark-mode--visited-color, $vf-include-normalisations: true);
-  }
-
-  .vf-link--visited {
-    color: $vf-link--dark-mode--visited-color;
-  }
-
-  .vf-link--hover {
-    color: $vf-link--dark-mode--hover-color;
-  }
-}
+// examples only
+.vf-link--visited { color: $vf-link--visited-color !important; }
+.vf-link--hover { color: $vf-link--hover-color !important }

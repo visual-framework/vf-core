@@ -1,5 +1,6 @@
 ### 1.4.1
 
+* Removes the 'dark mode' CSS for links - as it's not implemented.
 * changes any `set-` style functions to cleaner version
 
 ### 1.4.0
