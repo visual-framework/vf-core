@@ -10,7 +10,7 @@ tags:
 layout: layouts/section.njk
 ---
 
-## Read more and click here <a id="read-more"></a>
+### Read more and click here <a id="read-more"></a>
 
 It's common to see phrases like "read more" and "click here" at the end of a section or container. These typically provide sub-optimal user experiences and lower conversion rates. It's better to add links within the content itself.
 
@@ -22,7 +22,7 @@ It's common to see phrases like "read more" and "click here" at the end of a sec
 
 The issue of "read more" links [has come up several times within VF discussions](https://github.com/visual-framework/vf-core/issues/1287) and we've found that reducing redundant links is both better for user experience and saves on page size.
 
-## Decorative icons vs illustrations <a id="icons"></a>
+### Decorative icons vs illustrations <a id="icons"></a>
 
 Icons are very popular within the Visual Framework v1 as they provided a convenient and easy way to decorate content. However they come at a cost in performance and, more importantly, clarity.
 
@@ -34,7 +34,7 @@ Nielsen Norman Group has [further guidance on the usability and best practices w
 
 The Visual Framework is planning [a more robust approach for decorative iconography later in 2021](https://github.com/visual-framework/vf-core/discussions/1388).
 
-## Opening content in new tabs <a id="tabs"></a>
+### Opening content in new tabs <a id="tabs"></a>
 
 The web allows for links to target a new tab or window when opening. The [recommended default (and what most users want)](https://www.nngroup.com/articles/new-browser-windows-and-tabs/) is to _not_ open in a new browser tab.
 
@@ -44,7 +44,7 @@ Example: you might open a link in a new windows if a user is filling in a long f
 
 If you do open links in new tabs, you should try to label it as such: [I'm an example (opens in a new tab)](#)
 
-## White space <a id="white-space"></a>
+### White space <a id="white-space"></a>
 
 The Visual Framework is not just about providing "generic" good defaults, we consider what would be good defaults for users navigating the usually complex topics on life science websites. A major priority is to make site as easy-to-use as possible and that often means reducing their [cognitive load](https://www.invisionapp.com/design-defined/cognitive-load/).
 
