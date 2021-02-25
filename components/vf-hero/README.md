@@ -17,6 +17,7 @@ IE 11 will get the background colour and the roundels image, it will not paint a
 | Content name | Usage                                                                          | `.yml` key           |
 | ------------ | ------------------------------------------------------------------------------ | -------------------- |
 | Heading      | To be used for the heading of the page.                                                                               | `vf_hero_heading`    |
+| Heading HREF | To be used as a 'return to home' link for the micro site. | `vf_hero_heading_href` |
 | Subheading   | Optional content to be used along with the Heading for a terse explainer.                                                                               | `vf_hero_subheading` |
 | Kicker       | Optional content that helps define the context of overall content of the page. | `vf_hero_kicker`     |
 | Text         | Optional content that can help explain the page content in a brief paragraph.                                                                               | `vf_hero_text`       |
@@ -29,6 +30,7 @@ IE 11 will get the background colour and the roundels image, it will not paint a
 | ------------ | -------------------- | --------------------- |
 | Kicker       | `vf_hero_kicker`     | `vf-hero__kicker`     |
 | Heading      | `vf_hero_heading`    | `vf-hero__heading`    |
+| Heading HREF | `vf_hero_heading_href`    | `vf-hero__heading_link`    |
 | Subheading   | `vf_hero_subheading` | `vf-hero__subheading` |
 | Text         | `vf_hero_text`       | `vf-hero__text`       |
 | Link Text    | `vf_hero_link_text`  | `vf-hero__link`       |

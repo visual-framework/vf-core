@@ -1,3 +1,7 @@
+### 1.1.2
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.1.1
 
 * Fixes hover issue that was making all buttons have blue text

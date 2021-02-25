@@ -1,3 +1,7 @@
+### 1.3.4
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.3.1
 
 * Resolve issue of missing import in index.scss

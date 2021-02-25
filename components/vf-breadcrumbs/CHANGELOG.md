@@ -1,3 +1,7 @@
+### 2.0.3
+
+* changes any `set-` style functions to cleaner version
+
 ### 2.0.2
 
 * adds a little more documentation

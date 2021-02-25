@@ -25,14 +25,23 @@ The `vf-card` should look like it's around the same size as card from an average
 
 The `vf-card` can take a variety optional of content:
 
-| Content type | `.njk` / `.yml` variable | CSS class             | Description |
-| ------------ | ------------------------ | --------------------- | ----------- |
-| image        | `card_image`             | `vf-card__image`      |             |
-| alt text     | `card_image__alt`        |                       |             |
-| heading      | `card_heading`           | `vf-card__heading`    |             |
-| link         | `card_href`              | `vf-card__link`       |             |
-| subheading   | `card_subheading`        | `vf-card__subheading` |             |
-| text         | `card_text`              | `vf-card__text`       |             |
+| Content type | `.njk` / `.yml` variable   | CSS class             | Description |
+| ------------ | -------------------------- | --------------------- | ----------- |
+| image        | `card_image`               | `vf-card__image`      |             |
+| alt text     | `card_image__alt`          |                       |             |
+| apect ratio  | `card_custom_aspect_ratio` |                       |             |
+| heading      | `card_heading`             | `vf-card__heading`    |             |
+| link         | `card_href`                | `vf-card__link`       |             |
+| subheading   | `card_subheading`          | `vf-card__subheading` |             |
+| text         | `card_text`                | `vf-card__text`       |             |
+
+### CSS Custom Properties
+
+For browsers that support the CSS [`aspect-ratio`](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio) property we provide the option to stipulate the images aspect ratio in a card using a CSS custom property. By default, if no CSS custom property is set, the aspect ratio is `8 / 4`. This can be set on the individual cards using the nunjucks 'key' in the `.yml` or with the `&#x7B;&#x25;&#x20; render &#x20;&#x25;&#x7D;` api using the variable `card_custom_aspect_ratio`.
+
+```
+--vf-card__image--aspect-ratio: 16 / 9;
+```
 
 ## Install
 

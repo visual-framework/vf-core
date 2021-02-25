@@ -1,3 +1,7 @@
+### 1.7.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.7.0
 
 * Banner dismiss button now defaults to `vf-button--primary` (if a specific button variant has been requested by `vfJsBannerButtonTheme`, it will still be used)

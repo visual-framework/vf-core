@@ -1,3 +1,7 @@
+### 3.3.0
+
+* removes unused link colours
+
 ### 3.2.0
 
 * reduces the maximum layout width token

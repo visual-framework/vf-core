@@ -96,7 +96,7 @@
   a:not([class*='vf-']) {
     @include inline-link(
       $vf-link--hover-color: $vf-link--hover-color,
-      $vf-link--visited-color: set-color(vf-color--purple),
+      $vf-link--visited-color: color(purple),
       $vf-include-normalisations: true
     );
   }
@@ -151,7 +151,7 @@
   }
 
   table:not([class*='vf-']) {
-    background-color: set-ui-color(vf-ui-color--white);
+    background-color: ui-color(white);
     border-collapse: collapse;
 
     caption {
@@ -161,7 +161,7 @@
     }
 
     thead {
-      background-color: set-color(vf-color--grey--lightest);
+      background-color: color(grey--lightest);
 
       th {
         @include set-type(text-heading--5, $custom-margin-bottom: 0);
@@ -180,11 +180,11 @@
     }
 
     tr:nth-of-type(even) {
-      background-color: set-ui-color(vf-ui-color--grey--light);
+      background-color: ui-color(grey--light);
     }
     tfoot {
-      background-color: set-color(vf-color--grey--lightest);
-      border-top: 1px solid set-ui-color(vf-ui-color--black);
+      background-color: color(grey--lightest);
+      border-top: 1px solid ui-color(black);
 
       td {
         padding: 8px 16px;
@@ -227,19 +227,5 @@
 
   + small {
     margin-bottom: 42px;
-  }
-}
-
-
-[class*='--dark'].vf-content,
-.vf-content > [class*='dark'] {
-  .vf-link,
-  a:not([class*='vf-']) {
-    @include inline-link(
-      $vf-link--dark-mode--hover-color,
-      $vf-link--dark-mode--hover-color,
-      set-color(vf-color--purple--light),
-      $vf-include-normalisations: true
-    );
   }
 }
