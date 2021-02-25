@@ -1,3 +1,7 @@
+### 2.5.1
+
+* fixes issue with HTML Entities and the README when running fractal.
+
 ### 2.5.0
 
 * changes any `set-` style functions to cleaner version
