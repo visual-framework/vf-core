@@ -1,0 +1,28 @@
+{% if context %}
+
+  {% set container_grid = context.container_grid %}
+  {% set container_background = context.container_background %}
+  {% set container_spacing = context.container_spacing %}
+
+{% endif %}
+
+<style>
+.vf-u-bg-neutral--100 { background-color: #F3F3F3 !important; }
+.vf-container--about { padding-left: 0; padding-right: 0; }
+</style>
+
+<div class="
+  vf-container vf-container--about
+  vf-box vf-box--800
+  embl-grid embl-grid--has-centered-content
+  vf-u-fullbleed vf-u-bg-neutral--100
+  vf-u-margin__top--1200
+">
+
+  {% render '@vf-section-header' %}
+
+  <div class="vf-content">
+    <p>The 74 research groups at EMBL are organised into nine units spanning six European sites.</p>
+  </div>
+
+</div>
