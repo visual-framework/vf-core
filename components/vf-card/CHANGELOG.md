@@ -1,3 +1,7 @@
+### 2.5.2
+
+* adds `align-items: start;` to the card so all child align when in a card container.
+
 ### 2.5.1
 
 * fixes issue with HTML Entities and the README when running fractal.
