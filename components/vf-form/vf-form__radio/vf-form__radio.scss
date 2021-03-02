@@ -52,6 +52,7 @@
   &:disabled + .vf-form__label {
     color: color(grey);
     cursor: not-allowed;
+
   }
 
   // Disabled box.
@@ -61,11 +62,6 @@
   }
 }
 
-
-.vf-form__radio--inline {
-  display: inline-flex;
-
-  & *:not(:first-of-type) {
-    margin-left: 1rem;
-  }
+.vf-form__radio--invalid + .vf-form__label::before {
+  border-color: color(red);
 }

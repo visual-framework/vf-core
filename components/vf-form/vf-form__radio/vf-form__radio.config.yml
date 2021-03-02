@@ -3,3 +3,74 @@ label: Radio
 
 context:
   component-type: form
+
+variants:
+  - name: default
+    context:
+      required: true
+      radio_label:
+        form__label: "By selecting this radio you agree you like pizza."
+        form__label_for: commit-to-newsletters
+  - name: stacked
+    label: Stacked Group Example
+    context:
+      radio_name: peter
+      item_01:
+        radio_label:
+          form__label: Apples
+          form__label_for: 01
+      item_02:
+        radio_label:
+          form__label: Bananas
+          form__label_for: 02
+      item_03:
+        radio_label:
+          form__label: Mangos
+          form__label_for: 03
+      item_04:
+        radio_label:
+          form__label: Oranges
+          form__label_for: 04
+      item_05:
+        radio_label:
+          form__label: Pears
+          form__label_for: 05
+        disabled: true
+      item_06:
+        radio_label:
+          form__label: Strawberries
+          form__label_for: 06
+          required: true
+        invalid: true
+  - name: clustered
+    label: Clustered Group Example
+    context:
+      radio_name: peter
+      inline: true
+      item_01:
+        radio_label:
+          form__label: Apples
+          form__label_for: 01
+      item_02:
+        radio_label:
+          form__label: Bananas
+          form__label_for: 02
+      item_03:
+        radio_label:
+          form__label: Mangos
+          form__label_for: 03
+      item_04:
+        radio_label:
+          form__label: Oranges
+          form__label_for: 04
+      item_05:
+        radio_label:
+          form__label: Pears
+          form__label_for: 05
+        disabled: true
+      item_06:
+        radio_label:
+          form__label: Strawberries
+          form__label_for: 06
+          required: true
+        invalid: true
