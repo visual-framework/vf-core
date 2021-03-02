@@ -1,1 +1,5 @@
-<legend class="vf-form__legend">This is a form legend</legend>
+{% if context %}
+  {% set legend__text = context.legend__text %}
+{% endif %}
+
+<legend class="vf-form__legend">{{ legend__text }}</legend>
