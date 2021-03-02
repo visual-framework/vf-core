@@ -22,7 +22,7 @@
 // @import 'vf-form__fieldset/vf-form__fieldset.scss';
 .vf-form__fieldset {
   border: 0;
-  margin-bottom: map-get($vf-spacing-map, vf-spacing--500);
+  overflow: visible; // this is because of how `vf-cluster` might cut off the hover effect
   padding: 0;
   > .vf-form__label {
     @include set-type(text-heading--5, $custom-margin-bottom: map-get($vf-spacing-map, vf-spacing--200));
