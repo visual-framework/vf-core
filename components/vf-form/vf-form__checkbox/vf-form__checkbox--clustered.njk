@@ -1,5 +1,8 @@
-<fieldset class="vf-form__fieldset{% if inline %} | vf-cluster vf-cluster--400{% else %} | vf-stack vf-stack--400{% endif %}">
+<fieldset class="vf-form__fieldset | vf-stack vf-stack--400">
 
+  {%- render '@vf-form__legend', { 'context': checkbox_legend } -%}
+
+  {% if inline %}<div class="vf-cluster vf-cluster--400">{% endif %}
   {% if inline %}<div class="vf-cluster__inner">{% endif %}
 
   {% set context = item_01 %}
@@ -15,6 +18,7 @@
   {% set context = item_06 %}
   {% include '@vf-form__checkbox' %}
 
+  {% if inline %}</div>{% endif %}
   {% if inline %}</div>{% endif %}
 </fieldset>
 
