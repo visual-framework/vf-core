@@ -16,10 +16,10 @@
   -webkit-appearance: none;
   appearance: none;
   /* stylelint-enable */
-  border: 2px solid set-color(vf-color--grey);
+  border: 2px solid color(grey);
   border-radius: 0;
   box-sizing: border-box;
-  color: set-ui-color(vf-ui-color--black);
+  color: ui-color(black);
   display: block;
   padding: map-get($vf-spacing-map, vf-spacing--200);
   position: relative;
@@ -29,7 +29,7 @@
   &:hover {
     border-color: color(grey--dark);
     box-shadow: 0 0 0 .0625rem color(grey--dark);
-    color: set-ui-color(vf-ui-color--black);
+    color: ui-color(black);
     outline: 0;
   }
 }
@@ -61,25 +61,25 @@
 .vf-form__input::placeholder,
 .vf-form__select::placeholder,
 .vf-form__textarea::placeholder {
-  color: set-color(vf-color--grey--light);
+  color: color(grey--light);
 }
 
 .vf-form__input::-moz-placeholder,
 .vf-form__select::-moz-placeholder,
 .vf-form__textarea::-moz-placeholder {
-  color: set-color(vf-color--grey--light);
+  color: color(grey--light);
 }
 
 .vf-form__input:-ms-input-placeholder,
 .vf-form__select:-ms-input-placeholder,
 .vf-form__textarea:-ms-input-placeholder {
-  color: set-color(vf-color--grey--light);
+  color: color(grey--light);
 }
 
 .vf-form__input::-webkit-input-placeholder,
 .vf-form__select::-webkit-input-placeholder,
 .vf-form__textarea::-webkit-input-placeholder {
-  color: set-color(vf-color--grey--light);
+  color: color(grey--light);
 }
 
 .vf-form__input .vf-form__select {
@@ -87,7 +87,7 @@
   ---webkit-appearance: none;
   appearance: none;
   /* stylelint-enable */
-  color: set-color(vf-color--grey--light);
+  color: color(grey--light);
   cursor: pointer;
   position: relative;
 }
@@ -99,21 +99,21 @@
 .vf-form__input .vf-form__is-active .vf-form__input,
 .vf-form__input .vf-form__is-active .vf-form__select,
 .vf-form__input .vf-form__is-active .vf-form__textarea {
-  background-color: set-ui-color(vf-ui-color--white);
-  border-color: set-ui-color(vf-ui-grey);
-  color: set-color(vf-grey-dark);
+  background-color: ui-color(white);
+  border-color: ui-color(grey);
+  color: color(grey--dark);
 }
 
 .vf-form__input .vf-form__has-focus .vf-form__input,
 .vf-form__input .vf-form__has-focus .vf-form__select,
 .vf-form__input .vf-form__has-focus .vf-form__textarea {
-  background-color: set-ui-color(vf-ui-color--white);
-  border-color: set-ui-color(vf-ui-color--black);
+  background-color: ui-color(white);
+  border-color: ui-color(black);
 }
 
 .vf-form__wrap .vf-form__input .vf-form__label {
   border-radius-top-left: 3px;
-  color: set-color(vf-color--grey--dark);
+  color: color(grey--dark);
   display: block;
   left: 24px;
   opacity: 0;
@@ -130,11 +130,11 @@
 }
 
 .vf-form__input .vf-form__has-focus .vf-form__label {
-  color: set-ui-color(vf-ui-color--black);
+  color: ui-color(black);
 }
 
 .vf-form__input .vf-form__is-required::before {
-  color: set-ui-color(vf-ui-color--red);
+  color: color(red);
   content: '*';
   display: block;
   font-size: 16px;
@@ -154,20 +154,21 @@
 
 
 .vf-form__input:disabled {
-  background: set-color(vf-color--grey--lightest);
+  background-color: color(grey--lightest);
+  border-color: color(grey);
   cursor: not-allowed;
-  opacity: .6;
+
 
   &::placeholder,
   &::-moz-placeholder,
   &::-ms-input-placeholder,
   &::-webkit-input-placeholder {
-    color: set-color(vf-color--green);
+    color: color(green);
   }
 }
 
 .vf-form__input:invalid {
-  border-color: set-ui-color(vf-ui-color--red);
+  border-color: ui-color(red);
 }
 
 /* stylelint-disable */
