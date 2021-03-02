@@ -1,22 +1,12 @@
-<div class="vf-form__item vf-form__item--checkbox">
-  <input type="checkbox" id="checkbox-01" class="vf-form__checkbox">
-  <label for="checkbox-01" class="vf-form__label">Form Label</label>
-</div>
-<div class="vf-form__item vf-form__item--checkbox">
-  <input type="checkbox" id="checkbox-02" class="vf-form__checkbox">
-  <label for="checkbox-02" class="vf-form__label">Form Label</label>
+{% if context %}
+  {% set checkbox_label = context.checkbox_label %}
+
+  {% set disabled = context.disabled %}
+  {% set invalid = context.invalid %}
+{% endif %}
+
+<div class="vf-form__item{% if inline %} vf-form__checkbox--inline{% endif %} | vf-form__item--checkbox">
+  <input type="checkbox" id="{{ checkbox_label.form__label_for }}" class="vf-form__checkbox{% if invalid %} vf-form__checkbox--invalid{% endif %}" {% if disabled %}disabled{% endif %}>
+  {%- render '@vf-form__label', { 'context': checkbox_label } -%}
 </div>
 
-<div class="vf-form__item vf-form__item--checkbox">
-  <input type="checkbox" id="checkbox-03" class="vf-form__checkbox">
-  <label for="checkbox-03" class="vf-form__label">Form Label</label>
-</div>
-<div class="vf-form__item vf-form__item--checkbox">
-  <input type="checkbox" id="checkbox-04" class="vf-form__checkbox">
-  <label for="checkbox-04" class="vf-form__label">Form Label</label>
-</div>
-
-<div class="vf-form__item vf-form__item--checkbox">
-  <input type="checkbox" id="checkbox-05" class="vf-form__checkbox" disabled>
-  <label for="checkbox-05" class="vf-form__label">Form Label</label>
-</div>

@@ -3,3 +3,74 @@ label: Checkbox
 
 context:
   component-type: form
+
+variants:
+  - name: default
+    context:
+      required: true
+      checkbox_label:
+        form__label: "By selecting this checkbox you agree you like pizza."
+        form__label_for: commit-to-newsletters
+
+  - name: stacked
+    label: Stacked Group Example
+    context:
+      item_01:
+        checkbox_label:
+          form__label: Apples
+          form__label_for: 01
+      item_02:
+        checkbox_label:
+          form__label: Bananas
+          form__label_for: 02
+      item_03:
+        checkbox_label:
+          form__label: Mangos
+          form__label_for: 03
+      item_04:
+        checkbox_label:
+          form__label: Oranges
+          form__label_for: 04
+      item_05:
+        checkbox_label:
+          form__label: Pears
+          form__label_for: 05
+        disabled: true
+      item_06:
+        checkbox_label:
+          form__label: Strawberries
+          form__label_for: 06
+          required: true
+        invalid: true
+
+  - name: clustered
+    label: Clustered Group Example
+    context:
+      inline: true
+      item_01:
+        checkbox_label:
+          form__label: Walking
+          form__label_for: 01
+      item_02:
+        checkbox_label:
+          form__label: Bike
+          form__label_for: 02
+      item_03:
+        checkbox_label:
+          form__label: Car
+          form__label_for: 03
+      item_04:
+        checkbox_label:
+          form__label: Bus
+          form__label_for: 04
+      item_05:
+        checkbox_label:
+          form__label: Train
+          form__label_for: 05
+        disabled: true
+      item_06:
+        checkbox_label:
+          form__label: Airplane
+          form__label_for: 06
+          required: true
+        invalid: true
