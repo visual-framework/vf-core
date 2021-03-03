@@ -1,3 +1,9 @@
+### 0.0.3
+
+* Update readme with refined approach to VF-React support.
+  * https://github.com/visual-framework/vf-core/issues/1401
+* Fix npm version badge.
+
 ### 0.0.2
 
 * Use react-dom-fragment to return HTML fragments.
