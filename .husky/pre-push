@@ -1,0 +1,7 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+. "$(dirname "$0")/common.sh"
+
+echo "[Husky Prepush]"
+cd tools/vf-core
+yarn run gulp vf-prepush-test
