@@ -1,3 +1,6 @@
+### 1.0.1
+
+* fixes CSS to match stylelint rules
 ### 1.0.0
 
 * JS linting
