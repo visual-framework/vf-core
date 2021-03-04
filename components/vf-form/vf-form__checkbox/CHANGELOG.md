@@ -1,3 +1,6 @@
+### 2.0.2
+
+* fixes CSS to match stylelint rules
 ### 2.0.1
 
 * changes any `set-` style functions to cleaner version
