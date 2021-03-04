@@ -72,7 +72,7 @@ export { VfCard };
 
 This approach should not be used when:
 
-- when many items would appear on a page (vf-text, vf-table)
+- when a component contains large number of child components (vf-table may contain large number of inner components). This may cause whole subtree to be re-rendered frequently.
 - when an item is interactive (vf-form elements)
 
 In the above cases it is better to create a "pure" Reactive `.jsx` component template. This allows react to remain efficient, to handle state and do "react magic".
