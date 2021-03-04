@@ -1,3 +1,6 @@
+### 2.5.3
+
+* fixes CSS to match stylelint rules
 ### 2.5.2
 
 * adds `align-items: start;` to the card so all child align when in a card container.
