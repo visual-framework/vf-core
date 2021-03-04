@@ -18,7 +18,7 @@
   padding: map-get($vf-spacing-map, vf-spacing--800) 0;
   // removed because we're using `vf-u-fullbleed` now.
   // position: relative;
-   &::before {
+  &::before {
     // this overrides the z-index that is used in `vf-u-fullbleed` as it didn't work
     z-index: set-layer(vf-z-index--masthead) !important;
   }
@@ -119,8 +119,8 @@
   }
 }
 
-[class*=with-title-block][class*=theme] {
+[class*='with-title-block'][class*='theme'] {
   .vf-masthead__title {
-    --vf-masthead__color--background-default: black;
+    --vf-masthead__color--background-default: set-ui-color(vf-ui-color--black);
   }
 }
