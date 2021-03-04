@@ -72,13 +72,14 @@ export { VfCard };
 
 This approach should not be used when:
 
-- when a component contains large number of child components (vf-table may contain large number of inner components). This may cause whole subtree to be re-rendered frequently.
+- when a component contains large number of child components (vf-table, vf-grid)
 - when an item is interactive (vf-form elements)
 
 In the above cases it is better to create a "pure" Reactive `.jsx` component template. This allows react to remain efficient, to handle state and do "react magic".
 
-You can see an example of a pur react template — [coming soon](https://github.com/visual-framework/vf-core/issues/1402)
+As an illustration: vf-table is likely to contain a large number of inner components, using the Nunjucks wrapper would result in many re-renders of the subtree.
 
+You can see an example of a pure react template — [coming soon](https://github.com/visual-framework/vf-core/issues/1402)
 
 ## Install
 
