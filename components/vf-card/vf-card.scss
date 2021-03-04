@@ -30,7 +30,7 @@
   object-position: center;
   width: 100%;
 
-  @supports(aspect-ratio: 1 / 1) {
+  @supports (aspect-ratio: 1 / 1) {
     aspect-ratio: var(--vf-card__image--aspect-ratio, 8 / 4);
     min-height: unset;
   }
@@ -146,10 +146,10 @@
 
   .vf-card__link,
   a {
-    position: relative;
-    z-index: 1984;
     color: color(blue);
+    position: relative;
     text-decoration: none;
+    z-index: 1984;
 
     &:hover {
       color: color(blue--dark);
@@ -220,15 +220,15 @@
   }
 
   .vf-card__subheading {
-    color: ui-color(white);
     background-color: color(green);
     background-color: var(--vf-card-bg-color, #{color(green)});
+    color: ui-color(white);
     margin: map-get($vf-spacing-map, vf-spacing--400) * -1;
     margin-bottom: 0;
     margin-top: -.5rem !important;
     padding: map-get($vf-spacing-map, vf-spacing--400);
-    padding-top: 0;
     padding-bottom: map-get($vf-spacing-map, vf-spacing--200);
+    padding-top: 0;
   }
 
   .vf-card__text {
@@ -260,7 +260,7 @@
 // - we are removing the `-theme-` part of the classname now.
 // - we are also moving towards more holistic theming with design.
 
-.vf-card--primary
+.vf-card--primary,
 .vf-card--brand {
   --vf-card-bg-color: #{color(green)};
   --vf-card-text-color: #{ui-color(white)};
@@ -299,10 +299,6 @@
 
 
 
-
-
-
-
 // --------------------------------------------------------------------------------
 // TODO: To be deleted and removed in v3.0.0
 // --------------------------------------------------------------------------------
@@ -312,13 +308,13 @@
 
 // vf-card levels of design
 html:not(.vf-disable-deprecated) {
-  @warn "This variant has been deprecated";
+  @warn 'This variant has been deprecated';
   .vf-card--very-easy {
     border-bottom: 8px solid rgba(0, 0, 0, 0); // fixes a grid layout glitch when used with variant volume's that have a bottom border
   }
 
   .vf-card--easy {
-    @warn "This variant has been deprecated";
+    @warn 'This variant has been deprecated';
     border-bottom: 8px solid ui-color(black);
     border-bottom-color: var(--vf-card-theme-color--border, #{ui-color(black)});
 

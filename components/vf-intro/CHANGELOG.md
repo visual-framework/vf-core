@@ -1,3 +1,7 @@
+### 1.4.7
+
+* fixes CSS to match stylelint rules
+
 ### 1.4.6
 
 * Add support for anchor `id` attribute.

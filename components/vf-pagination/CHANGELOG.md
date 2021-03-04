@@ -1,3 +1,7 @@
+### 1.0.3-rc.2
+
+* fixes CSS to match stylelint rules
+
 ### 1.0.1-rc.2
 
 * changes any `set-` style functions to cleaner version
