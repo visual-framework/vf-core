@@ -1,3 +1,7 @@
+### 1.2.4
+
+* removes `vf-masthead`.
+
 ### 1.2.3
 
 * adds `buildTimeStamp` from `componentInfo` to Sass template
