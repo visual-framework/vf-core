@@ -1,3 +1,6 @@
+### 2.1.0
+
+* adds an search input for when the search field is interactive showing 'live results'.g
 ### 2.0.1
 
 * changes any `set-` style functions to cleaner version
