@@ -4,6 +4,15 @@
 
 ## About
 
+
+## Usage
+
+All form items need to include a label (using `<label class="vf-fprm__label"></label>`).
+
+These should be as short as possible. If you need to include more details use helper text (using `<p class="vf-form__helper"></p>`).
+
+If your input is required use the component `<p class="vf-form__label vf-form__label--required">...</p>`.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form__label` with this command.

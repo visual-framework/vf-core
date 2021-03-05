@@ -4,6 +4,13 @@
 
 ## About
 
+## Usage
+
+Use these when you need short answers to questions in your form. If you need the user to write more longer pieces of text then make use of `<textarea class="vf-form__textarea"></textarea>`.
+
+Make sure your text inputs have the relevant labels (using `<label class="vf-form__label"></label>`) and helper text (using `<p class="vf-form__helper"></p>`).
+
+If your input is `required` there is also CSS used to style the input box when it is not completed. Make use of the label available if the form is sent to the server for validation (using `<p class="vf-form__label vf-form__label--required">...</p>`).
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form__input` with this command.
