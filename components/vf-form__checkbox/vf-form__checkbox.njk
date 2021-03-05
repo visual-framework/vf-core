@@ -1,11 +1,14 @@
 {% if context %}
   {% set checkbox_label = context.checkbox_label %}
+  {% set checkbox_group = context.checkbox_group %}
+  {% set checkbox_value = context.checkbox_value %}
 
   {% set disabled = context.disabled %}
   {% set invalid = context.invalid %}
 {% endif %}
 
 <div class="vf-form__item{% if inline %} vf-form__checkbox--inline{% endif %} | vf-form__item--checkbox">
-  <input type="checkbox" id="{{ checkbox_label.form__label_for }}" class="vf-form__checkbox{% if invalid %} vf-form__checkbox--invalid{% endif %}" {% if disabled %}disabled{% endif %}>
+  <input type="checkbox" name="{{checkbox_group}}" value="{{checkbox_value}}" id="{{ checkbox_label.form__label_for }}" class="vf-form__checkbox{% if invalid %} vf-form__checkbox--invalid{% endif %}" {% if disabled %}disabled{% endif %}>
+
   {%- render '@vf-form__label', { 'context': checkbox_label } -%}
 </div>
