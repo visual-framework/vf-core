@@ -1,11 +1,13 @@
 {% if context %}
   {% set radio_label = context.radio_label %}
+  {% set radio_value = context.radio_value %}
+  {% set radio_name = context.radio_name %}
 
   {% set disabled = context.disabled %}
   {% set invalid = context.invalid %}
 {% endif %}
 
 <div class="vf-form__item{% if inline %} vf-form__radio--inline{% endif %} | vf-form__item--radio">
-  <input type="radio" name="{{ radio_name }}" id="{{ radio_label.form__label_for }}" class="vf-form__radio{% if invalid %} vf-form__radio--invalid{% endif %}" {% if disabled %}disabled{% endif %}>
+  <input type="radio" name="{{ radio_name }}" value="{{ radio_value }}" id="{{ radio_label.form__label_for }}" class="vf-form__radio{% if invalid %} vf-form__radio--invalid{% endif %}" {% if disabled %}disabled{% endif %}>
   {%- render '@vf-form__label', { 'context': radio_label } -%}
 </div>
