@@ -1,3 +1,8 @@
+### 1.1.0
+
+* changes the `vf-intro` so it's a white background, removes the padding.
+* changes the links in `vf-intro` to be the 'correct' buttons.
+
 ### 1.0.23
 
 * small change to cards on homepage
