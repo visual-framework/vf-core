@@ -1,3 +1,8 @@
+### 2.0.0
+
+* adds a div around the form content.
+* makes changes to the CSS for `--inline` variant so it's responsive to the parent width.
+
 ### 1.2.0
 
 * don't allow inline search to get too large
