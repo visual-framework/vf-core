@@ -1,6 +1,7 @@
 ### 2.0.3
 
-* fixes CSS to match stylelint rules
+* Fixes CSS to match stylelint rules.
+  * https://github.com/visual-framework/vf-core/pull/1405
 
 ### 2.0.2
 

@@ -1,6 +1,8 @@
 ### 1.1.2
 
-* fixes CSS to match stylelint rules
+* Fixes CSS to match stylelint rules.
+  * https://github.com/visual-framework/vf-core/pull/1405
+
 ### 1.1.1
 
 * changes any `set-` style functions to cleaner version

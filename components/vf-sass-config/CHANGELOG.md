@@ -2,6 +2,7 @@
 
 * changes any `set-` style functions to cleaner version
 * fixes issue now link color disabled no longer exists
+
 ### 2.4.0
 
 * updates the `$global-page-max-width` variable so that it's consistent with the page width across components - set to `80rem`
