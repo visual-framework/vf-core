@@ -1,1 +1,6 @@
-<p class="vf-form__helper">Form helper text</p>
+{% if context %}
+  {% set helper_text = context.helper_text %}
+  {% set error = context.error %}
+{% endif %}
+
+<p class="vf-form__helper{%- if error == true %} vf-form__helper--error{%- endif -%}">{{ helper_text }}</p>

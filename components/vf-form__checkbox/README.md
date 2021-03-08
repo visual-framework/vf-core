@@ -4,18 +4,19 @@
 
 ## About
 
-Checkboxes can be used when a site visitor to select one or more options in a form.
+An input that shows the site visitor if the option is selected or not.
 
 ## Usage
+
+Checkboxes can be used when a site visitor to select one or more options from a list in a form.
+
 
 
 ### When to use the checkbox
 
 ### When not to use the checkbox
 
-Do not use the `vf-checkbox` when you need a site visitor to only pick one option from the available selection.
-
-For this use case you should use the <a href="vf-form__radio/">vf-radio button</a> component.
+Do not use the `vf-checkbox` when you need a site visitor to only pick one option from the available selection. For this use case you should use the <a href="vf-form__radio/">vf-radio button</a> component.
 
 ### Implementation
 
