@@ -26,7 +26,7 @@ $ yarn add --dev @visual-framework/vf-form
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
-@import "@visual-framework/form /form .scss";
+@import "@visual-framework/vf-form/vf-form.scss";
 ```
 
 Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)
