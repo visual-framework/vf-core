@@ -74,8 +74,15 @@
   &:disabled + .vf-form__label {
     color: color(grey);
     cursor: not-allowed;
+
   }
 
+  // Disabled box.
+  &:disabled + .vf-form__label::before {
+    background-color: color(grey--lightest);
+    border-color: color(grey);
+    box-shadow: none;
+  }
   // Checkmark. Could be replaced with an image
 }
 .vf-form__checkbox--invalid + .vf-form__label::before {
