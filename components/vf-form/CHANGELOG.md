@@ -6,7 +6,7 @@
 
 ### 1.0.1
 
-* `vf-form__core/vf-form__core.scss` requires `__fieldset` and `__legend` but they are missing from the `package.json`
+* `form /form .scss` requires `__fieldset` and `__legend` but they are missing from the `package.json`
 
 ### 1.0.0
 
