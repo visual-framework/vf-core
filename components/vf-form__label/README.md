@@ -4,6 +4,7 @@
 
 ## About
 
+The `vf-form__label` represents a related caption for a form item.
 
 ## Usage
 
@@ -12,6 +13,8 @@ All form items need to include a label (using `<label class="vf-fprm__label"></l
 These should be as short as possible. If you need to include more details use helper text (using `<p class="vf-form__helper"></p>`).
 
 If your input is required use the component `<p class="vf-form__label vf-form__label--required">...</p>`.
+
+A `vf-form__input` that is used for search does not require a `vf-form__label` but must include descrtiptive `placeholder` text on the input.
 
 ## Install
 

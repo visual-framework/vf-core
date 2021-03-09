@@ -4,6 +4,21 @@
 
 ## About
 
+Let site visitors pick one option from a list of options in a 'drop down'.
+
+## Usage
+
+The `vf-form__select` allows a site visitor to pick an available option from a group of options.
+
+The options inside of a `vf-form__select` should be in alpabetical order.
+
+### When to use
+
+You should try to use the `vf-form__select` as a last resort for giving site visitors a choice to pick one thing from a group of things. If possible you should use a group `vf-form__radio` inputs.
+
+### When not to use
+
+If the list of options is relatively small you should use a group of `vf-form_radio` inputs.
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form__select` with this command.

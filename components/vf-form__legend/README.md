@@ -4,7 +4,9 @@
 
 ## Usage
 
-The dos and don'ts of using this component.
+The `vf-form__legend` should only be used in a `vf-form__fieldset` and must be the first item in the fieldset.
+
+A `vf-form__legend` is used to describe a group of inputs in a `vf-form`. They should be used for groups of `vf-form__checkbox`s and `vf-form__radio`s but can be used with any related groups inside a `vf-form__fieldset`.
 
 ## Install
 

@@ -4,6 +4,30 @@
 
 ## About
 
+An input that that allows the site visitor to select only one option in a group.
+
+## Usage
+
+The `vf-form__radio` can be used when a site visitor has a choice of options but can only pick one.
+
+### When to use
+
+Use a group of `vf-form__radio` when you have a set of options for the site visitor but you only want them to be able to pick one.
+
+### When not to use
+
+Do not use the `vf-form__radio` when you only want the site visitor to pick one option from the options. For this use case you should only used the <a href="vf-form__radio/">vf-radio button</a> component.
+
+### Implementation
+
+A `vf-form__radio` must be accompanied by a `vf-form__label` inside a `vf-form__item` with the `vf-form__item--radii` variant.
+
+You can also use the `vf-form__helper` to add some more descriptive, explanitory text under the `vf-form__label`. See the examples for the correct markup.
+
+The `.vf-form__radio` needs to grouped into a `vf-form__fieldset` and using the `vf-form__label` to help the site visitor understand what they are choosing for.
+
+Generally the `vf-form__fieldset` will use the `vf-stack` layout component to stack the `vf-form__radio` on top of each other. You can set these to be inline by using the `vf-cluster` layout component as well. See the examples for the correct markup.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form__radio` with this command.

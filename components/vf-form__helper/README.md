@@ -3,11 +3,13 @@
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-form__helper.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-form__helper)
 
 ## About
+
+The `vf-form__helper` can be used to add more descriptive, explanatory text to help guide the site visitor.
 ## Usage
 
 If you need to include more descriptive explanations of what the input requires make use of the component `<span class="vf-form__helper"></span>` where you can add more text.
 
-If your form is has any type of validation (either on the client or server) you can make use of `vf-form__helper--error` to help with inputs that do not have the correct content.
+If your form has any type of validation (either on the client or server) you can make use of `vf-form__helper--error` to help with inputs that do not have the correct content.
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form__helper` with this command.

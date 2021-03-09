@@ -8,7 +8,7 @@ The `vf-form__fieldset` is used to group a set related form inputs.
 
 ## Usage
 
-Use the `vf-form__fieldset` component to display a relationship between multiple form inputs. You can also need use a `vf-form__fieldset` inside of another `vf-fieldsetform__`, this would be good to group multiple `vf-form__checkbox` inputs and allow for a `vf-form__legend` to give the inputs a heading or question. To make it more obvious what we are asking the site visitor to fill out and why, it is recommened to use a `vf-form__legend` within each `vf_form__fieldset`.
+Use the `vf-form__fieldset` component to display a relationship between multiple form inputs. You can also need use a `vf-form__fieldset` inside of another `vf-form__fieldset`, this would be good to group multiple `vf-form__checkbox` inputs and allow for a `vf-form__legend` to give the inputs a heading or question. To make it more obvious what we are asking the site visitor to fill out and why, it is recommened to use a `vf-form__legend` within each `vf_form__fieldset`.
 
 ## Install
 

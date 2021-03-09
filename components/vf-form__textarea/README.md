@@ -4,6 +4,16 @@
 
 ## About
 
+The `vf-form__textarea` allows a site visitor to enter text on multiple lines.
+
+## Usage
+
+Use the `vf-form__textare` when you want the site visitor to enter text on multiple lines or when the information they need to input is not short.
+
+If you are wanting the site visitor to answer multiple questions inside a `vf-form__textarea` it is better to split these question up and use multiple `vf-form__input`s.
+
+The `vf-from__textarea` must be accompanied by a descriptive `vf-form__label`.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form__textarea` with this command.
