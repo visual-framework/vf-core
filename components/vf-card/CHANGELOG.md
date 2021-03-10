@@ -1,6 +1,8 @@
 ### 2.5.2
 
 * adds `align-items: start;` to the card so all child align when in a card container.
+* Fixes CSS to match stylelint rules.
+  * https://github.com/visual-framework/vf-core/pull/1405
 
 ### 2.5.1
 
