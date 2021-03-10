@@ -1,3 +1,6 @@
+### 1.5.0
+
+* moves the button to be a part of the forms
 ### 1.4.1
 
 * changes any `set-` style functions to cleaner version

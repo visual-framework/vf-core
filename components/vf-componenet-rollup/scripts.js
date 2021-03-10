@@ -25,7 +25,7 @@ vfTabs();
 import { vfTree } from "vf-tree/vf-tree";
 vfTree();
 
-// import { vfFormFloatLabels } from 'vf-form__core/assets/vf-form__float-labels.js';
+// import { vfFormFloatLabels } from 'form /assets/vf-form__float-labels.js';
 // vfFormFloatLabels();
 
 import { vfSearchClientSide } from "vf-search-client-side/vf-search-client-side";
