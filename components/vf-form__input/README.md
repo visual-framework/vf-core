@@ -23,6 +23,10 @@ Use the `vf-form__input--filter` with a `type` attribute of `search` for an inte
 ### When not to use
 
 Use these when you need short answers to questions in your form. If you need the user to write more longer pieces of text then make use of `<textarea class="vf-form__textarea"></textarea>`.
+#### `vf-form__input--filter`:
+
+* This variant is only to be used when there is some sort of autocomplete / typeahead filtering needed when searching.
+* This is not to be used in place of the normal input and button because it's more 'visually appealing'.
 ## Implementation
 
 The `vf-form__input` allow the site visitor to enter text data in a structured format.
