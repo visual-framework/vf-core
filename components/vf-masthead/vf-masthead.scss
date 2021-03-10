@@ -1,0 +1,126 @@
+// vf-masthead
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+.vf-masthead {
+  background-color: color(grey--lightest);
+  background-color: var(--vf-masthead__color--background-default, color(grey--lightest));
+  color: ui-color(black);
+  color: var(--vf-masthead__color--foreground-default, ui-color(black));
+  display: flex;
+  padding: map-get($vf-spacing-map, vf-spacing--800) 0;
+  // removed because we're using `vf-u-fullbleed` now.
+  // position: relative;
+  &::before {
+    // this overrides the z-index that is used in `vf-u-fullbleed` as it didn't work
+    z-index: set-layer(vf-z-index--masthead) !important;
+  }
+}
+
+.vf-masthead__title {
+  display: inline-flex;
+  flex-direction: column-reverse;
+  z-index: set-layer(vf-z-index--masthead); // set so that all the text is 'on top'
+}
+
+.vf-masthead__heading {
+  @include set-type(text-heading--1, $custom-margin-bottom: 0);
+
+  display: flex;
+  flex-direction: column;
+  word-break: break-word;
+}
+
+.vf-masthead__heading--additional {
+  @include set-type(text-heading--5, $custom-margin-bottom: 0);
+
+  position: relative;
+  top: -4px;
+}
+
+.vf-masthead__heading__link {
+  color: inherit;
+  text-decoration: none;
+  z-index: set-layer(vf-z-index--masthead);
+}
+
+.vf-masthead__subheading {
+  @include set-type(text-body--4, $custom-margin-bottom: 0);
+
+  text-transform: uppercase;
+}
+
+.vf-masthead__subheading__text {
+  margin-right: map-get($vf-spacing-map, vf-spacing--200);
+  a {
+    color: inherit;
+    text-decoration: none;
+    z-index: set-layer(vf-z-index--masthead);
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Variants
+
+// Theming Variants
+.vf-masthead-theme--primary {
+  --vf-masthead__color--background-default: #{color(blue)};
+  --vf-masthead__color--foreground-default: #{ui-color(white)};
+}
+
+.vf-masthead-theme--secondary {
+  --vf-masthead__color--background-default: #{color(green)};
+  --vf-masthead__color--foreground-default: #{ui-color(black)};
+}
+
+.vf-masthead-theme--tertiary {
+  --vf-masthead__color--background-default: #{color(grey--dark)};
+  --vf-masthead__color--foreground-default: #{ui-color(white)};
+}
+
+// Style Variants
+.vf-masthead--with-title-block {
+  display: flex;
+  padding: map-get($vf-spacing-map, vf-spacing--1200) 0 0;
+
+  .vf-masthead__title {
+    align-self: flex-end;
+    background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, ui-color(black)));
+    color: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, ui-color(white)));
+    display: inline-flex;
+    padding: 24px;
+    padding-left: 0;
+    position: relative;
+    z-index: set-layer(vf-z-index--masthead);
+
+    &::before {
+      background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, ui-color(black)));
+      content: '';
+      height: 100%;
+      margin-left: calc(50% - calc(50vw - var(--context-margin--inline, 0px)));
+      position: absolute;
+      top: 0;
+      width: calc(50vw - (var(--context-margin--inline, 0px) * 2));
+    }
+  }
+  .vf-masthead__subheading {
+    z-index: set-layer(vf-z-index--masthead);
+  }
+}
+
+[class*='with-title-block'][class*='theme'] {
+  .vf-masthead__title {
+    --vf-masthead__color--background-default: set-ui-color(vf-ui-color--black);
+  }
+}
