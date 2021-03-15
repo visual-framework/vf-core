@@ -19,6 +19,7 @@ You should try to use the `vf-form__select` as a last resort for giving site vis
 ### When not to use
 
 If the list of options is relatively small you should use a group of `vf-form_radio` inputs.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form__select` with this command.
