@@ -1,6 +1,7 @@
 ### 1.2.0
 
-* adds the form options as their own set of components in the list
+* Adds the form options as their own set of components in the list.
+  * https://github.com/visual-framework/vf-core/pull/1390/files
 
 ### 1.1.0
 
