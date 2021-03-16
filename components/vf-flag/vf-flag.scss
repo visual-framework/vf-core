@@ -1,0 +1,49 @@
+// vf-flag
+
+@import 'package.variables.scss';
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-flag/vf-flag.scss';
+
+.vf-flag{
+  display:t able;
+  width: auto;
+}
+
+.vf-flag__object {
+  display: table-cell;
+  padding-right: 16px;
+
+  > * {
+    display: block;
+  }
+
+  .vf-flag--top & {
+    vertical-align: top;
+  }
+
+  .vf-flag--middle & {
+    vertical-align: middle;
+  }
+
+  .vf-flag--bottom & {
+    vertical-align: bottom;
+  }
+
+  .vf-flag--reversed & {
+    padding-right: 0;
+    padding-left: 16px;
+  }
+}
+
+.vf-flag__body{
+  display: table-cell;
+  width: 100%;
+}
