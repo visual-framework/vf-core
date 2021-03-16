@@ -1,3 +1,7 @@
+### 2.1.0
+
+* adds more options: `200`,`500`,`1200`, and `1600` vertical spaces.
+
 ### 2.0.1
 
 * changes any `set-` style functions to cleaner version
