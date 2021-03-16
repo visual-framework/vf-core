@@ -6,27 +6,40 @@ context:
   component-type: layout
 
 variants:
+  - name: default
+    hidden: true
+  - name: example
+    label: Examples
+    hidden: true
   - name: top
     context:
+      spacing: 400
+      top: true
+  - name: top reversed
+    context:
+      spacing: 400
+      reversed: true
       top: true
   - name: middle
     context:
+      spacing: 400
+      middle: true
+  - name: middle reversed
+    context:
+      spacing: 400
+      reversed: true
       middle: true
   - name: bottom
     context:
+      spacing: 400
+      bottom: true
+  - name: bottom reversed
+    context:
+      spacing: 400
+      reversed: true
       bottom: true
   - name: reversed
+    hidden: true
     context:
+      spacing: 400
       reversed: true
-  - name: reversed top
-    context:
-      reversed: true
-      top: true
-  - name: reversed middle
-    context:
-      reversed: true
-      middle: true
-  - name: reversed bottom
-    context:
-      reversed: true
-      bottom: true
