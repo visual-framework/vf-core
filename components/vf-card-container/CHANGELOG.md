@@ -1,3 +1,7 @@
+### 3.1.2
+
+* Updates example to use content of different lengths.
+
 ### 3.1.1
 
 * fixes issue in README that made fractal fail to load the container example.
