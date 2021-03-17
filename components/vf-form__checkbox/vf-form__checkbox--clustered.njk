@@ -1,0 +1,34 @@
+{% if context %}
+  {% set checkbox_label = context.checkbox_label %}
+  {% set checkbox_group = context.checkbox_group %}
+  {% set checkbox_value = context.checkbox_value %}
+
+  {% set disabled = context.disabled %}
+  {% set invalid = context.invalid %}
+{% endif %}
+
+<fieldset class="vf-form__fieldset | vf-stack vf-stack--400">
+
+  {%- render '@vf-form__legend', { 'context': checkbox_legend } -%}
+
+  {%- if inline %}<div class="vf-cluster vf-cluster--400">{% endif -%}
+  {%- if inline %}<div class="vf-cluster__inner">{% endif -%}
+
+  {% set context = item_01 %}
+  {% include '@vf-form__checkbox' %}
+  {% set context = item_02 %}
+  {% include '@vf-form__checkbox' %}
+  {% set context = item_03 %}
+  {% include '@vf-form__checkbox' %}
+  {% set context = item_04 %}
+  {% include '@vf-form__checkbox' %}
+  {% set context = item_05 %}
+  {% include '@vf-form__checkbox' %}
+  {% set context = item_06 %}
+  {% include '@vf-form__checkbox' %}
+
+  {% if inline %}</div>{% endif %}
+  {% if inline %}</div>{% endif %}
+</fieldset>
+
+

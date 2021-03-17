@@ -1,3 +1,8 @@
+### 1.2.0
+
+* Adds the form options as their own set of components in the list.
+  * https://github.com/visual-framework/vf-core/pull/1390/files
+
 ### 1.1.0
 
 * changes the `vf-intro` so it's a white background, removes the padding.

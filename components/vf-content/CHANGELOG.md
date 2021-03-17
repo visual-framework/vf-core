@@ -1,3 +1,7 @@
+### 1.5.0
+
+* changes the dev dependencies to match their new names and versions
+
 ### 1.4.1
 
 * Removes the 'dark mode' CSS for links - as it's not implemented.

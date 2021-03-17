@@ -1,0 +1,18 @@
+{% if context %}
+  {% set text_label = context.text_label %}
+  {% set text_value = context.text_value %}
+  {% set text_name = context.text_name %}
+
+  {% set disabled = context.disabled %}
+  {% set invalid = context.invalid %}
+{% endif %}
+
+<div class="vf-form__item">
+  {%- render '@vf-form__label', { 'context': text_label } -%}
+
+  <textarea class="vf-form__textarea" id="{{ text_label.form__label_for }}" name="{{ text_area_name }}"
+
+  {%- if text_area_rows %} rows="{{ text_area_rows }}"{%- endif -%}
+  {%- if text_area_cols %} cols="{{ text_area_cols }}"{%- endif -%}
+  ></textarea>
+</div>
