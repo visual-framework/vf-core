@@ -4,7 +4,7 @@
 
 ## About
 
-The `vf-form` manages a group of form inputs and interactive controls to collect data that can be sent to a server.
+The `vf-form` manages a group of form inputs and interactive controls to collect data that can be sent to a server. The `vf-form` is the wrapping component for all form elements.
 
 ## Usage
 
@@ -15,7 +15,7 @@ The `vf-form` makes use of the `vf-stack` layout component to evenly distrubute 
 
 ## Install
 
-This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form` with this command.
+This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form` with this command. This will install all form items that work within a `vf-form` too.
 
 ```
 $ yarn add --dev @visual-framework/vf-form
