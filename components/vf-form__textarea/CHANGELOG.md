@@ -1,4 +1,4 @@
-### 3.0.0
+### 3.0.0-alpha.1
 
 * reworks the inputs to make more use of nunjucks
 * restyles the inputs to match latest design direction

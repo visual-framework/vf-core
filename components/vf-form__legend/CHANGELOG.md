@@ -1,4 +1,4 @@
-### 2.0.0
+### 2.0.0-alpha.1
 
 * reworks the legend to make more use of nunjucks
 * restyles the legend to match latest design direction

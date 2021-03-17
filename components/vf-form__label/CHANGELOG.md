@@ -1,3 +1,7 @@
+### 3.0.0-alpha.1
+
+* style updates for latest vf-form refactor
+
 ### 2.0.1
 
 * changes any `set-` style functions to cleaner version
