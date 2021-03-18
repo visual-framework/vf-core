@@ -4,7 +4,7 @@
 
 ## About
 
-The `vf-flag` layout componnt is for when you need an image, icon, or other media and text next to each other.
+The `vf-flag` layout component is for when you need an image, icon, or other media and text next to each other.
 
 ## Usage
 
@@ -18,13 +18,12 @@ The `vf-flag` allows you to determine the vertical alignment of the media and bo
 
 As the layout component is relatively new there are now specific guidelines for when to use or not use the variants of this layout. Simply _be consistent_.
 
-
 | variant name | description                                                           |
 | ------------ | --------------------------------------------------------------------- |
 | top          | aligns the media item and body to the top of the layout               |
 | middle       | aligns the media item and body to the middle of the layout            |
 | bottom       | aligns the media item and body to the bottom of the layout            |
-| reversed     | switchs the inline spacing *                                          |
+| reversed     | switches the inline spacing *                                          |
 | 200          | defines the spacing between the media item and body item as `.5rem`   |
 | 400          | defines the spacing between the media item and body item as `1rem`    |
 | 500          | defines the spacing between the media item and body item as `1.25rem` |
@@ -42,22 +41,7 @@ This repository is distributed with [npm][https://www.npmjs.com/]. After [instal
 $ yarn add --dev @visual-framework/vf-flag
 ```
 
-### JS
-
-[If your component uses JS]
-
-You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
-
-```js
-import { vfcomponentName } from 'vf-flag/vf-flag';
-// Or import directly
-// import { vfcomponentName } from '../components/raw/vf-flag/vf-flag.js';
-vfcomponentName(); // if needed, invoke it
-```
-
 ### Sass/CSS
-
-[If your component uses Sass]
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
