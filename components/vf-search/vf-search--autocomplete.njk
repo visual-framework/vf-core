@@ -1,0 +1,58 @@
+{%- if context -%}
+  {% set search_label = context.search_label %}
+  {% set search_button = context.search_button %}
+  {% set search_placeholder = context.search_placeholder %}
+  {% set search_autofocus = context.search_autofocus %}
+  {% set search_description = context.search_description %}
+  {% set search_action = context.search_action %}
+  {% set search_id = context.search_id %}
+  {% set search_value_default = context.search_value_default %}
+
+  {% set theme = context.theme %}
+  {% set variant = context.variant %}
+
+  {% set id = context.id %}
+  {% set modifiers = context.modifiers %}
+  {% set override_class = context.override_class %}
+{%- endif -%}
+
+<form action="{{ search_action }}"
+
+  {%- if id %} id="{{-id-}}"{% endif %}
+
+  class="vf-u-fullbeed | vf-sidebar vf-sidebar--at-start | vf-form | vf-search vf-search--autocomplete{%- if override_class %} | {{override_class}}{% endif -%}">
+
+  <div class="vf-sidebar__inner">
+
+    <div class="vf-form__item">
+
+      <label class="vf-form__label vf-u-sr-only | vf-search__label" for="{{ search_id }}">{{ search_label }}</label>
+
+      <div>
+
+        <input type="search"
+              placeholder="{{ search_placeholder }}"
+              id="{{ search_id }}"
+              {%- if search_value_default %} value="{{ search_value_default }}"{% endif %}
+              class="vf-form__input"
+              {%- if search_autofocus %} autofocus{%- endif %}>
+
+
+        <ul class="vf-list | vf-search__results-list | vf-stack vf-stack--custom">
+          <li class="vf-list__item">abcdef ghijklm nopqr styuv</li>
+          <li class="vf-list__item">abcdef ghijklm nopqr styuv</li>
+          <li class="vf-list__item">abcdef ghijklm nopqr styuv</li>
+          <li class="vf-list__item">abcdef ghijklm nopqr styuv</li>
+          <li class="vf-list__item">abcdef ghijklm nopqr styuv</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <button type="submit" class="vf-search__button | vf-button vf-button--primary">{{- search_button -}}</button>
+
+    {% if search_description %}<p class="vf-form__helper">{{ search_description}}</p>{% endif %}
+  </div>
+
+</form>
