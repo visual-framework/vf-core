@@ -1,0 +1,30 @@
+{# Make sure any variables are listed inside the following if statement #}
+{% if context %}
+  {# {% set vf-sidebar = context.vf-sidebar %} #}
+{% endif %}
+
+<div class="vf-sidebar
+            {%- if sidebar_main == "left" %} vf-sidebar--start
+            {%- elseif sidebar_main == "right" %} vf-sidebar--end
+            {%- endif -%}
+            ">
+  <div class="vf-sidebar__inner">
+    {%- if sidebar_main == "right" %}
+    <div>
+      <h1>Hello boys</h1>
+    </div>
+    {%- endif -%}
+    <div>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, eum dolorem accusamus omnis ratione ex quidem, ducimus ab explicabo maxime animi ullam numquam nihil dignissimos quam vero. Recusandae, nihil nam?</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nesciunt distinctio animi earum sint, cupiditate labore voluptate a pariatur maxime beatae dolor odit ducimus saepe? Laboriosam voluptatum delectus natus corporis.</p>
+    </div>
+
+    {%- if sidebar_main == "left" %}
+    <div>
+      <h1>Hello boys</h1>
+    </div>
+    {%- endif -%}
+
+  </div>
+
+</div>

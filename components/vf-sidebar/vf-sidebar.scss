@@ -1,0 +1,42 @@
+// vf-sidebar
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+@import 'vf-sidebar.variables.scss';
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-sidebar/vf-sidebar.scss';
+.vf-sidebar {
+  overflow: hidden;
+}
+
+.vf-sidebar > * {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(var(--vf-sidebar-spacing, #{space(400)}) / 2 * -1);
+}
+
+.vf-sidebar > * > * {
+  margin: calc(var(--vf-sidebar-spacing, #{space(400)}) / 2);
+  flex-grow: 1;
+}
+
+.vf-sidebar--start > * > :first-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: calc(var(--vf-sidebar-width, 50%) - var(--vf-sidebar-spacing, #{space(400)}) );
+}
+
+.vf-sidebar--end > * > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: calc(var(--vf-sidebar-width, 50%) - var(--vf-sidebar-spacing, #{space(400)}) );
+}
