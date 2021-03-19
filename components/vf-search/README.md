@@ -4,11 +4,17 @@
 
 ## About
 
-
+The `vf-search` components display two distinct option on how to create search.
 
 ## Usage
 
-**note:** Version `2.0.0` of the `vf-search--inline` has no maximum width and will fill the space of it's parent. Because of this it is recommended to make sure the component is not too wide by wrapping it in the `embl-grid` with the `--centered-content` variant. If you wish to use ths `vf-search--inline` with `vf-grid` you will need to make use the `vf-search--inline` component also has an appropraite `.vf-u-grid__col--span` class.
+### Generic Search
+
+To be used when searching pages, this container should sit below the `vf-hero` and related `vf-navigation` (where applicable).
+
+###
+
+**note:** Version `2.0.0` of the `vf-search` has no maximum width and will fill the space of it's parent. Because of this it is recommended to make sure the component is not too wide by wrapping it in the `embl-grid` with the `--centered-content` variant. If you wish to use ths `vf-search` with `vf-grid` you will need to make use the `vf-search` component also has an appropraite `.vf-u-grid__col--span` class.
 
 - You can enable `autofocus` on the search element, but should only do so if most users intend to search on the page.
 
