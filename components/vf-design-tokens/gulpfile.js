@@ -90,6 +90,7 @@ gulp.task("tokens:maps", () =>
 gulp.task("tokens:json", () =>
   gulp.src([
     "./src/maps/vf-colors.yml",
+    "./src/maps/vf-color__neutral.yml",
     "./src/maps/vf-spacing.yml",
     "./src/maps/vf-themes.yml",
     "./src/maps/vf-ui-colors.yml",
