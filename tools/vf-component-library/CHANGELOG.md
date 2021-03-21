@@ -1,3 +1,7 @@
+### 1.3.0
+
+* adds neutral colour tokens
+
 ### 1.2.0
 
 * Adds the form options as their own set of components in the list.
