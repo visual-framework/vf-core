@@ -109,11 +109,15 @@ body.ebi-vf1-integration,
     &:visited {
       color: white;
     }
+    &.vf-button--outline:hover,
+    &.vf-button--outline:visited {
+      color: var(--vf-button-border-color,var(--vf-button__color__background--default));
+    }
   }
 
-  // Makes the `vf-button` when used on an `a` element act correctly, but overidding some of the things in ebi-global.css
+  // Makes the `vf-button` when used on an `a` element act correctly, but overriding some of the things in ebi-global.css
   a.vf-button {
-    border: 4px solid set-ui-color(vf-ui-color--black) !important;
+    border: 4px solid ui-color(black) !important;
     border: 4px solid var(--vf-button-border-color, var(--default-bg-colour)) !important;
     box-sizing: content-box;
     opacity: 1;
@@ -130,7 +134,7 @@ body.ebi-vf1-integration,
     max-width: $vf-layout--comfortable;
   }
 
-  // Fixes an issue with heigh and bacgkround colour for EBI 1.x
+  // Fixes an issue with heigh and background colour for EBI 1.x
   .vf-form__input:not([type=file]) {
     height: unset;
     background: unset;

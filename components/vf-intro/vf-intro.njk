@@ -1,4 +1,5 @@
-{% if context %}
+{%- if context %}
+  {% set id = context.id %}
 
   {% set vf_intro_heading = context.vf_intro_heading %}
 
@@ -12,10 +13,10 @@
 
   {% set vf_intro_text = context.vf_intro_text %}
   {% set intro_text = context.intro_text %}
-
-{% endif %}
+{% endif -%}
 <section class="vf-intro"
   {%- if intro_stack_spacing %} style="--vf-intro-spacing: {{intro_stack_spacing}}"{%- endif -%}
+  {%- if id %} id="{{id}}"{% endif -%}
 >
 
   <div><!-- empty --></div>

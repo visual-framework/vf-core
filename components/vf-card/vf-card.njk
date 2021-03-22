@@ -2,10 +2,13 @@
   {% set card_href = context.card_href %}
 
   {% set card_title = context.card_title %}
+  {% set card_heading = context.card_heading %}
   {% set card_subtitle = context.card_subtitle %}
+  {% set card_subheading = context.card_subheading %}
   {% set card_text = context.card_text %}
   {% set card_image = context.card_image %}
   {% set card_image__alt = context.card_image__alt %}
+  {% set card_custom_aspect_ratio = context.card_custom_aspect_ratio %}
 
   {% set theme = context.theme %}
   {% set newTheme = context.newTheme %}
@@ -23,12 +26,17 @@
   class="vf-card
 
   {%- if theme %} vf-card-theme--{{theme}}{% endif -%}
-  {%- if newTheme %} vf-card--{{newTheme}}{% endif -%}
+  {%- if newTheme %}
+  {%- if newTheme == 'primary' %} vf-card--brand{%- else %}vf-card--{{newTheme}}{% endif -%}
+  {%- endif -%}
   {%- if variant %} vf-card--{{variant}}{% endif %}
 
   {%- if modifier %} | {{modifier}}{% endif -%}
-  {%- if override_class %} | {{override_class}}{% endif -%}
-">
+  {%- if override_class %} | {{override_class}}{% endif -%}"
+  {% if card_custom_aspect_ratio %}
+  style="--vf-card__image--aspect-ratio: {{card_custom_aspect_ratio}};"
+  {% endif %}
+  >
 
   {% if card_image -%}
   <img src="{{ card_image }}" alt="{{ card_image__alt }}" class="vf-card__image" loading="lazy">
@@ -36,11 +44,23 @@
 
   <div class="vf-card__content | vf-stack vf-stack--400">
 
-    <{%- if card_title %}h3{% else %}span{%- endif %} class="vf-card__title">
-    {%- if card_href %}<a class="vf-card__link" href="{{ card_href if card_href else '#' }}">{% endif -%}
-      {{ card_title }}
+    {%- if (card_title) or (card_heading) -%}
+    <h3 class="vf-card__heading">
+
+    {%- if card_href %}<a class="vf-card__link" href="{{ card_href }}">{% endif -%}
+      {{ (card_title) or (card_heading) }}
+
+      {%- if card_href %}
+        <svg aria-hidden="true" class="vf-card__heading__icon | vf-icon vf-icon-arrow--inline-end" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="currentColor" fill-rule="nonzero"></path></svg>
+      {% endif -%}
+
     {%- if card_href %}</a>{% endif -%}
-    {%- if card_title %}</h3>{% else %}</span>{%- endif %}
+
+    </h3>{%- endif -%}
+
+    {%- if card_subheading -%}
+    <p class="vf-card__subheading">{{ card_subheading }}</p>
+    {%- endif -%}
 
     {% if card_subtitle -%}
     <p class="vf-card__subtitle" role="doc-subtitle">{{- card_subtitle -}}</p>
@@ -49,5 +69,6 @@
     {% if card_text -%}
     <p class="vf-card__text">{{- card_text -}}</p>
     {%- endif %}
+
   </div>
 </article>

@@ -1,3 +1,16 @@
+### 1.4.7
+
+* Fixes CSS to match stylelint rules.
+  * https://github.com/visual-framework/vf-core/pull/1405
+
+### 1.4.6
+
+* Add support for anchor `id` attribute.
+
+### 1.4.5
+
+* Move the example content into a default variant to stop it printing out when using `render ..`.
+
 ### 1.4.4
 
 * Fixes a missing vf_intro_subheading vf-intro.njk's context.
@@ -8,6 +21,7 @@
 
 * Resolve issue of missing import in index.scss
   * https://github.com/visual-framework/vf-core/pull/1306
+
 
 ### 1.4.2
 

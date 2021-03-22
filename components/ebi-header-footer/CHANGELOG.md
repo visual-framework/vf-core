@@ -1,3 +1,12 @@
+### 2.0.2
+
+* changes any `set-` style functions to cleaner version
+
+### 2.0.1
+
+* Use VF 1.4 JS to load the HTML for the global header.
+* Add documentation and example on disabling the 1.4 data protection banner, as you should use the 2.0 data protection banner from the contentHub.
+
 ### 2.0.0
 
 * Adds distinct footer, header templates as the header currently has more legacy dependencies.

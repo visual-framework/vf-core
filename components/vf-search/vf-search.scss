@@ -11,23 +11,46 @@
 
 @import 'vf-search.variables.scss';
 
+
+// embl-grid
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+* Component: #{map-get($componentInfo, 'name')}
+* Version: #{map-get($componentInfo, 'version')}
+* Location: #{map-get($componentInfo, 'location')}
+*/
+
 .vf-search--inline {
-  display: flex;
-  flex-wrap: wrap;
+  --vf-sidebar-spacing: #{space(400)};
+  --vf-sidebar--width: 60%;
 
-  .vf-search__item {
-    flex-grow: 1;
-    max-width: $vf-breakpoint--sm;
-  }
-
-  .vf-search__button {
-    margin-bottom: 0;
-    margin-left: 16px;
-    top: -12px;
-  }
-
-  .vf-search__description {
-    @include set-type(text-body--3);
+  .vf-form__helper {
     flex-basis: 100%;
   }
+
 }
+
+.vf-search--inline > * {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -.5rem;
+  margin: calc(var(--vf-sidebar-spacing) / 2 * -1);
+}
+
+.vf-search--inline > * > * {
+  flex-grow: 1;
+  margin: .5rem;
+  margin: calc(var(--vf-sidebar-spacing) / 2);
+}
+
+.vf-search--inline > * > :first-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: calc(60% - 1rem);
+  min-width: calc(var(--vf-sidebar--width) - var(--vf-sidebar-spacing));
+}
+

@@ -22,12 +22,12 @@
 
   cursor: pointer;
   display: grid;
-  grid-column-gap: map-get($vf-spacing-map, vf-spacing--200);
+  grid-column-gap: space(100);
   grid-template-columns: auto 1fr;
-  
+
   .vf-section-header__icon {
     fill: currentColor;
-    transform: translateY(map-get($vf-spacing-map, vf-spacing--100));
+    transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
     // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
     transition-duration: 125ms;
     transition-property: transform;
@@ -37,7 +37,7 @@
   &:hover,
   &:focus {
     .vf-section-header__icon {
-      transform: translateX(map-get($vf-spacing-map, vf-spacing--100)) translateY(map-get($vf-spacing-map, vf-spacing--100));
+      transform: translateX(map-get($vf-spacing-map, vf-spacing--200));
     }
 
     &:visited {

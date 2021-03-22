@@ -1,3 +1,7 @@
+### 1.2.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.2.0
 
 * correct display of `vf-content pre` and `vf-code-example__pre` to:

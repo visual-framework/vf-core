@@ -1,3 +1,12 @@
+### 1.4.1
+
+* changes any `set-` style functions to cleaner version
+
+### 1.4.0
+
+* Removes variants that are not to be used from the examples available.
+* Adds usage documentation.
+
 ### 1.3.1
 
 * React: Use react-dom-fragment to return HTML fragments.

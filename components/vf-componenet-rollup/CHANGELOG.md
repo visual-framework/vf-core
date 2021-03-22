@@ -1,3 +1,7 @@
+### 1.5.0
+
+* changes the vf-form Sass that is imported
+
 ### 1.2.3
 
 * adds `buildTimeStamp` from `componentInfo` to Sass template

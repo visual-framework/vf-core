@@ -88,7 +88,15 @@ gulp.task("tokens:maps", () =>
 );
 
 gulp.task("tokens:json", () =>
-  gulp.src(["./src/maps/*.yml", "./src/typographic-scales/*.yml", "./src/variables/vf-breakpoints.yml"])
+  gulp.src([
+    "./src/maps/vf-colors.yml",
+    "./src/maps/vf-spacing.yml",
+    "./src/maps/vf-themes.yml",
+    "./src/maps/vf-ui-colors.yml",
+    "./src/maps/vf-zindex.yml",
+    "./src/typographic-scales/*.yml",
+    "./src/variables/vf-breakpoints.yml"
+  ])
     .pipe(theoG({
       transform: { type: "web", includeMeta: true },
       format: { type: "ios.json" }
@@ -106,7 +114,17 @@ gulp.task("tokens2:json", () =>
 );
 
 gulp.task("tokens:props", () =>
-  gulp.src(["./src/maps/*.yml"])
+  gulp.src([
+    "./src/maps/vf-colors.yml",
+    "./src/maps/vf-spacing.yml",
+    "./src/maps/vf-themes.yml",
+    "./src/maps/vf-ui-colors.yml",
+    "./src/maps/vf-zindex.yml",
+    "!./src/maps/vf-color__background.yml",
+    "!./src/maps/vf-color__brand.yml",
+    "!./src/maps/vf-color__buttons.yml",
+    "!./src/maps/vf-color__text.yml",
+  ])
     .pipe(theoG({
       transform: { type: "web" },
       format: { type: "custom-properties.scss" }

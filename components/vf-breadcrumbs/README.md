@@ -4,11 +4,17 @@
 
 ## About
 
-Your meat-and-potatoes breadcrumbs. A max depth of no-more-than three items is recommended.
+The `vf-breadcrumb` component is a navigational item that can identify to the site visitor their location on the website. They are a visual representation of the site's heirachy.
 
 ## Usage
 
-The "With Related" variant allows you to indicate related items.
+The `vf-breadcrumb` component should follow the `vf-global-header` in the page layout.
+
+It should list no more than three items, including the current page. Each link in the component is separated by a `>` chevron. The page you are on should display an 'active' state in the breadcrumbs which is bold with no underline.
+
+### Related breadcrumbs
+
+The "Related" variant allows you to indicate related items as additional navigation to the page the site visitor is on. They should be placed inside the `vf-breadcrumbs` `<nav>` element and be a seperate unordered list.
 
 ## Install
 

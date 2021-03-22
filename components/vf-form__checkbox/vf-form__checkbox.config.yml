@@ -1,0 +1,113 @@
+title: Checkbox
+label: Checkbox
+
+context:
+  component-type: form
+  checkbox_legend:
+    legend__text: Pick your favourite(s).
+
+variants:
+  - name: default
+    context:
+      required: true
+      checkbox_label:
+        form__label: "By selecting this checkbox you agree you like pizza."
+        form__label_for: commit-to-newsletters
+      checkbox_group: agreement
+      checkbox_value: pizza-agreement
+
+  - name: stacked
+    label: Stacked Group Example
+    context:
+      item_01:
+        checkbox_value: apples
+        checkbox_group: fruits
+        checkbox_label:
+          form__label: Apples
+          form__label_for: fruit_01
+      item_02:
+        checkbox_value: bums
+        checkbox_group: fruits
+        checkbox_label:
+          form__label: Bananas
+          form__label_for: fruit_02
+        checkbox_helper:
+          helper_text: "Some text to help with things"
+      item_03:
+        checkbox_value: mangos
+        checkbox_group: fruits
+        checkbox_label:
+          form__label: Mangos
+          form__label_for: fruit_03
+      item_04:
+        checkbox_value: oranges
+        checkbox_group: fruits
+        checkbox_label:
+          form__label: Oranges
+          form__label_for: fruit_04
+      item_05:
+        checkbox_value: pears
+        checkbox_group: fruits
+        checkbox_label:
+          form__label: Pears
+          form__label_for: fruit_05
+        disabled: true
+      item_06:
+        checkbox_value: strawberries
+        checkbox_group: fruits
+        checkbox_label:
+          form__label: Strawberries
+          form__label_for: fruit_06
+          required: true
+        invalid: true
+        checkbox_helper:
+          error: true
+          helper_text: "You didn't pick Strawberries?"
+
+  - name: clustered
+    label: Clustered Group Example
+    context:
+      inline: true
+      item_01:
+        checkbox_value: walking
+        checkbox_group: travel
+        checkbox_label:
+          form__label: Walking
+          form__label_for: travel_01
+        checkbox_helper:
+          helper_text: "Some text to help with things"
+      item_02:
+        checkbox_value: bike
+        checkbox_group: travel
+        checkbox_label:
+          form__label: Bike
+          form__label_for: travel_02
+      item_03:
+        checkbox_value: car
+        checkbox_group: travel
+        checkbox_label:
+          form__label: Car
+          form__label_for: travel_03
+      item_04:
+        checkbox_value: bus
+        checkbox_group: travel
+        checkbox_label:
+          form__label: Bus
+          form__label_for: travel_04
+      item_05:
+        checkbox_value: train
+        checkbox_group: travel
+        checkbox_label:
+          form__label: Train
+          form__label_for: travel_05
+        disabled: true
+      item_06:
+        required: true
+        checkbox_value: airplane
+        checkbox_group: travel
+        checkbox_label:
+          form__label: Airplane
+          form__label_for: travel_06
+          required: true
+        invalid: true
+

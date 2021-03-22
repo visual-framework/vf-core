@@ -1,5 +1,14 @@
-<div class="vf-video-teaser">
-  <h3 class="vf-video-teaser__title">{{ vf_video_teaser__title }}</h3>
-  <a href="{{ video_href }}"><img class="vf-video-teaser__image" src="{{ '../../assets/vf-video-teaser/assets/video-teaser.png' | path }}" alt="" loading="lazy"></a>
-  <a href="{{ video_href }}" class="vf-video-teaser__link vf-link">{{ vf_video_teaser__link }}</a>
+<div class="vf-video-teaser | vf-stack vf-stack--400">
+
+  {% if vf_video_teaser__title -%}
+    <h3 class="vf-video-teaser__title">{{ vf_video_teaser__title }}</h3>
+  {%- endif %}
+
+  {% for item in teasers %}
+  <article class="vf-video-teaser__item | vf-stack vf-stack--400">
+    <img class="vf-video-teaser__image" src="{{ item.vf_video_teaser__poster }}" alt="{{ item.vf_video_teaser_alt_text }}" loading="lazy">
+    <a href="{{ item.video_href }}" class="vf-video-teaser__link vf-link">{{ item.vf_video_teaser__link }}</a>
+  </article>
+  {% endfor %}
+
 </div>

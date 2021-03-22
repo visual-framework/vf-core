@@ -1,3 +1,12 @@
+### 1.1.2
+
+* Fixes CSS to match stylelint rules.
+  * https://github.com/visual-framework/vf-core/pull/1405
+
+### 1.1.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.1.0
 
 * component now allows for custom ratios

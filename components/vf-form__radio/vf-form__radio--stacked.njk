@@ -1,0 +1,23 @@
+<fieldset class="vf-form__fieldset{% if inline %} | vf-cluster vf-cluster--400{% else %} | vf-stack vf-stack--400{% endif %}">
+
+  {%- render '@vf-form__legend', { 'context': radio_legend } -%}
+
+  {% if inline %}<div class="vf-cluster__inner">{% endif %}
+
+  {% set context = item_01 %}
+  {% include '@vf-form__radio' %}
+  {% set context = item_02 %}
+  {% include '@vf-form__radio' %}
+  {% set context = item_03 %}
+  {% include '@vf-form__radio' %}
+  {% set context = item_04 %}
+  {% include '@vf-form__radio' %}
+  {% set context = item_05 %}
+  {% include '@vf-form__radio' %}
+  {% set context = item_06 %}
+  {% include '@vf-form__radio' %}
+
+  {% if inline %}</div>{% endif %}
+</fieldset>
+
+

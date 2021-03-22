@@ -1,3 +1,16 @@
+### 3.1.2
+
+* Updates example to use content of different lengths.
+
+### 3.1.1
+
+* fixes issue in README that made fractal fail to load the container example.
+
+### 3.1.0
+
+* adds ability to define the `aspect-ratio` of the `vf-card` child components
+* moves the `default` context data in the `.yml` file to a `variant` to allow easier use of `{% include %}`.
+
 ### 3.0.2
 
 * update card sizes to make 3 columns

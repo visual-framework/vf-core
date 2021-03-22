@@ -1,9 +1,45 @@
+### 2.5.4
+
+* adds `word-break: break-word;` to text so the text won't exceed the box model.
+
+### 2.5.3
+
+* Corrects fix in 2.5.2 by using `align-content: start;`.
+  * https://github.com/visual-framework/vf-core/issues/1395#issuecomment-801232527
+
+### 2.5.2
+
+* adds `align-items: start;` to the card so all child align when in a card container.
+* Fixes CSS to match stylelint rules.
+  * https://github.com/visual-framework/vf-core/pull/1405
+
+### 2.5.1
+
+* fixes issue with HTML Entities and the README when running fractal.
+
+### 2.5.0
+
+* changes any `set-` style functions to cleaner version
+* fixes issue with `vf-card__image` height in Safari.
+* removes `grid-template-rows` as it's difficult to define now cards do not have to have images.
+* adds a `--vf-card__image--aspect-ratio` CSS custom property to help with the initial image height.
+* updates documentation to replace 'title' with 'heading' so it matches CSS classname.
+
+### 2.4.0
+
+* creates option to for a subheading
+* creates option for a card with no image
+* adds a svg icon similar to `vf-section-header` when the heading has a link
+* adds documentation
+* adds more examples for the variants available depending on the content
+* hides all variants that should not be used.
+
 ### 2.3.3
 
 * React: Use react-dom-fragment to return HTML fragments.
   * https://github.com/visual-framework/vf-core/pull/1291
 
-### 2.3.2 
+### 2.3.2
 
 * adds prototype react template
   * https://github.com/visual-framework/vf-core/pull/1278

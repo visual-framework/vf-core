@@ -7,7 +7,7 @@
   .vf-navigation__item {
 
     [aria-current] {
-      color: set-ui-color(vf-ui-color--black);
+      color: ui-color(black);
       text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layour shift
     }
   }
@@ -15,13 +15,13 @@
   .vf-navigation__link {
     @include set-type(text-body--2, $custom-margin-bottom: 0);
 
-    color: set-color(vf-color--grey--dark);
+    color: color(grey--dark);
     text-decoration: none;
 
     &:focus,
     &:hover {
-      color: set-ui-color(vf-ui-color--black);
       border-bottom: 1px solid currentColor;
+      color: ui-color(black);
     }
   }
 }

@@ -7,14 +7,13 @@
   {% set search_client_button_text = context.search_client_button_text %}
   {% set search_client_script = context.search_client_script %}
 
-
   {% set id = context.id %}
   {% set modifiers = context.modifiers %}
   {% set override_class = context.override_class %}
 {% endif -%}
 
-<div class="vf-grid">
-  <form action="{{ search_client_action }}" method="GET" class="vf-form | vf-search vf-search--inline">
+<form action="{{ search_client_action }}" method="GET" class="vf-form | vf-search vf-search--inline">
+  <div class="vf-container__inner">
     <div class="vf-form__item | vf-search__item">
       <input type="search" id="search" placeholder="{{ search_client_prompt }}" name="search_query" class="vf-form__input | vf-search__input" {%- if search_client_autofocus %} autofocus{%- endif %} data-vf-search-client-side-input>
     </div>
@@ -23,8 +22,8 @@
       {{ search_client_button_text }}
     </button>
     {%- endif -%}
-  </form>
-</div>
+  </div>
+</form>
 
 {%- if search_client_results %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.8/lunr.js"></script>

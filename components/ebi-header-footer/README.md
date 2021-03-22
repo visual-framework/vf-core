@@ -12,6 +12,7 @@ This provides support for using the EMBL-EBI header and footer from the EMBL-EBI
 - This requires VF 2.0 footer CSS and other styles.
 - If you do not currently have VF 2.0 CSS and JS as part of your project, [you can use the CDN JS](https://stable.visual-framework.dev/#cdn).
 - This uses the existing `//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/js/script.js` to load the HTML for the header.
+- The EBI VF 1.x will also included a data protection banner, to disable this with 1.4 you can an included an element with `data-protection-message-disable="true"`
 
 ## Install
 

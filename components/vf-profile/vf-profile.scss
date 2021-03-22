@@ -13,14 +13,14 @@
 
 .vf-profile {
   align-items: center;
-  color: set-color(vf-color--grey--darkest);
+  color: color(grey--darkest);
   display: flex;
   flex-direction: column;
   width: 100%; // we might not need this
 }
 
 .vf-profile__image {
-  border: 1px solid set-color(vf-color--grey--lightest);
+  border: 1px solid color(grey--lightest);
   border-radius: 50%;
   box-sizing: border-box;
   max-height: var(--vf-profile-avatar--size, 160px);
@@ -32,7 +32,7 @@
 .vf-profile__title {
   @include set-type(text-heading--3, $custom-margin-bottom: 0);
 
-  color: set-color(vf-color--blue);
+  color: color(blue);
 }
 
 .vf-profile__job-title {
@@ -149,17 +149,17 @@
 // themes
 
 .vf-profile-theme--primary {
-  --vf-profile__border--color: #{set-color(vf-color--blue)};
+  --vf-profile__border--color: #{color(blue)};
 
   .vf-profile__title {
-    color: set-color(vf-color--blue);
+    color: color(blue);
   }
 }
 
 .vf-profile-theme--secondary {
-  --vf-profile__border--color: #{set-color(vf-color--green)};
+  --vf-profile__border--color: #{color(green)};
 
   .vf-profile__title {
-    color: set-color(vf-color--green);
+    color: color(green);
   }
 }

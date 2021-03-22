@@ -1,0 +1,25 @@
+// vf-form__item
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+.vf-form__item > * {
+  --vf-stack-margin--custom: #{map-get($vf-spacing-map, vf-spacing--100)};
+}
+
+.vf-form__item--inline {
+  .vf-form__select,
+  .vf-form__label {
+    display: inline-flex;
+  }
+  .vf-form__select {
+    width: auto;
+    @include padding(map-get($vf-spacing-map, vf-spacing--200),map-get($vf-spacing-map, vf-spacing--800),map-get($vf-spacing-map, vf-spacing--200),map-get($vf-spacing-map, vf-spacing--500));
+  }
+}

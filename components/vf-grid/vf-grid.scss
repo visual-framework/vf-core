@@ -15,7 +15,7 @@
 }
 .vf-grid > * {
   flex: 1;
-  margin: 10px 0 10px 1.6339%;
+  margin: 0 0 1rem 1.2292328%;
 }
 
 .vf-grid > *:first-child {
@@ -30,20 +30,56 @@
 // Unfortunately IE11 (which this flexbox grid is for) does not support calc inside of flex
 // So we've hard coded the percentage values. All other modern browsers get to use grid.
 .vf-grid__col-2 > * {
-  flex: 0 0 49.18305%;
+  flex: 0 0 49.3853836%;
+  max-width: 49.3853836%;
+
+  &:nth-of-type(3n) {
+    margin-left: 0;
+  }
 }
+
 .vf-grid__col-3 > *{
-  flex: 0 0 32.244066667%;
+  flex: 0 0 32.513844467%;
+  max-width: 32.513844467%;
+
+  &:nth-of-type(4n) {
+    margin-left: 0;
+  }
 }
+
 .vf-grid__col-4 > * {
-  flex: 0 0 23.774575%;
+  // 0.9219246
+  flex: 0 0 24.0780754%;
+  max-width: 24.0780754%;
+
+
+  &:nth-of-type(5n) {
+    margin-left: 0;
+  }
 }
+
 .vf-grid__col-5 > * {
-  flex: 0 0 18.69288%;
+  // 0.98338624
+  flex: 0 0 19.01661376%;
+  max-width: 19.01661376%;
+
+
+  &:nth-of-type(6n) {
+    margin-left: 0;
+  }
 }
+
 .vf-grid__col-6 > * {
-  flex: 0 0 15.305083333%;
+  // 1.024360667
+  flex: 0 0 15.642306333%;
+  max-width: 15.642306333%;
+
+
+  &:nth-of-type(7n) {
+    margin-left: 0;
+  }
 }
+
 @media (max-width: 1023px) {
   .vf-grid {
     flex-wrap: wrap;
@@ -84,6 +120,7 @@
 
   .vf-grid > * {
     margin: 0;
+    max-width: unset;
   }
 
   [class*='grid__'] {
@@ -91,7 +128,7 @@
   }
 
   // .vf-grid__col-1 > * + * {
-  //   border-top: 1px solid set-color(vf-color--grey);
+  //   border-top: 1px solid color(grey);
   //   padding-top: map-get($vf-spacing-map, vf-spacing-xxl);
   //
   //   &:last-of-type {

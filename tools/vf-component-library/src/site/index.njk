@@ -5,18 +5,35 @@ date: 2018-08-22 12:24:50
 layout: layouts/base.njk
 ---
 
-<section class="embl-grid embl-grid--has-centered-content | vf-u-fullbleed vf-u-background-color--grey--lightest | vf-u-padding__top--800">
+<section class="embl-grid embl-grid--has-centered-content">
 {# Intro #}
 {% render '@vf-intro', {
   "vf_intro_heading": "The Visual Framework",
-  "vf_intro_lede": "Good defaults for life science websites, plus compatibility with existing CSS and JS. Bring your Bootsrap, Angular or vanilla CSS code base.",
+  "vf_intro_lede": "Good defaults for life science websites, plus compatibility with existing CSS and JS. ",
   "vf_intro_subheading": "",
   "vf_intro_text": [
-    '<a href="about" class="vf-button vf-button--primary vf-button--outline">Learn more</a> or <a href="guidance/discussing-the-vf/">get help</a>'
+    'Bring your Bootstrap, React or vanilla code base. The VF will not break your existing code.',
+    '<a href="about" class="vf-link">Learn more</a>, <a href="/building" class="vf-link">build something</a> or <a class="vf-link" href="guidance/discussing-the-vf/">get help</a>.'
   ],
   "vf_intro_badge": false
 } %}
 </section>
+
+    {# '<a href="about" class="vf-button vf-button--primary">Learn more</a> or <a class="vf-button vf-button--primary vf-button--outline" href="guidance/discussing-the-vf/">Get help</a>' #}
+
+<section class="embl-grid embl-grid--has-centered-content">
+<div></div>
+{% render '@vf-search-client-side--default', {
+  "search_client_prompt": "Search components and documentation",
+  "search_client_button": true,
+  "search_client_button_text": "Search",
+  "search_client_action": "/search/",
+  "search_client_results": false
+} %}
+<div></div>
+</section>
+
+{% render '@vf-divider' %}
 
 {# Installation #}
 <section class="embl-grid embl-grid--has-centered-content">
@@ -63,7 +80,7 @@ layout: layouts/base.njk
 
     {% markdown %}
     {% codeblock 'bash' -%}
-    # 1. Add the Sass starter and any components
+    # 1. Add the Sass config, starter and any components
 
     yarn add @visual-framework/vf-sass-config @visual-framework/vf-sass-starter @visual-framework/vf-content @visual-framework/vf-analytics-google
 
@@ -113,6 +130,8 @@ layout: layouts/base.njk
   </div>
 </section>
 
+{% render '@vf-divider' %}
+
 {# Sections #}
  {# vf-u-background-color--grey--lightest #}
 <section class="vf-card-container | vf-u-fullbleed">
@@ -123,21 +142,20 @@ layout: layouts/base.njk
   } %}
 
   <style>
-  .vf-card {
-    /* would be nice if this was a custom property */
-    grid-template-rows: 188px 1fr;
+  .vf-card__image {
+    --vf-card__image--aspect-ratio: 8/4;
   }
   </style>
 
   {#- show all pages classes as sections -#}
   {#- by default, 11ty sorts by `date` field -#}
   {%- for section in collections.sections | reverse %}
-    {% if section.data.is_index == true %}
+    {% if section.data.promoted == true %}
       {# Eventually these might have unique images, not sure yet #}
       {%- set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %}
       {%- render '@vf-card', {
-        "theme": "tertiary",
-        "variant": "easy",
+        "newTheme": "primary",
+        "variant": "bordered",
         "card_title": section.data.title,
         "card_href": absolutePostUrl | url,
         "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png",

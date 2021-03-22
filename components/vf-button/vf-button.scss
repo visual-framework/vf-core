@@ -25,13 +25,13 @@ $button-hover-fix: -5px -5px rgba(0, 0, 0, 0);
   appearance: none;
   /* stylelint-enable */
   backface-visibility: hidden;
-  background-color: set-ui-color(vf-ui-color--black);
+  background-color: ui-color(black);
   background-color: var(--vf-button-background-color, var(--vf-button__color__background--default));
-  border: 4px solid set-ui-color(vf-ui-color--black);
+  border: 4px solid ui-color(black);
   border: 4px solid var(--vf-button-border-color, var(--vf-button__color__background--default));
   box-shadow: 8px 8px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), $button-hover-fix;
-  color: set-ui-color(vf-ui-color--white); // fallback, IE
-  color: var(--vf-button-text-color, set-ui-color(vf-ui-color--white));
+  color: ui-color(white); // fallback, IE
+  color: var(--vf-button-text-color, ui-color(white));
   cursor: pointer;
   display: inline-block;
   margin: 0 16px 16px 0;
@@ -50,14 +50,14 @@ $button-hover-fix: -5px -5px rgba(0, 0, 0, 0);
   // Hover and Focus Styles
   &:focus,
   &:hover {
-    box-shadow: 4px 4px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), 2px 2px 4px rgba(set-ui-color(vf-ui-color--black), .25), $button-hover-fix;
+    box-shadow: 4px 4px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), 2px 2px 4px rgba(ui-color(black), .25), $button-hover-fix;
     transform: translate(4px, 4px);
     transition: all linear 125ms;
   }
 
   // Active Styles
   &:active {
-    box-shadow: 0px 0px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), 2px 2px 2px rgba(set-ui-color(vf-ui-color--black), .125), $button-hover-fix;
+    box-shadow: 0px 0px 0 var(--vf-button-shadow-background-color, var(--vf-button__color__background--default-dark)), 2px 2px 2px rgba(ui-color(black), .125), $button-hover-fix;
     transform: translate(8px, 8px) translateZ(1px);
   }
 }
@@ -102,13 +102,13 @@ a.vf-button {
 }
 
 .vf-button--outline {
-  --vf-button-background-color: #{set-ui-color(vf-ui-color--white)};
-  color: set-color(vf-color--blue); // fallback, IE
+  --vf-button-background-color: #{ui-color(white)};
+  color: color(blue); // fallback, IE
   color: var(--vf-button-border-color, var(--vf-button__color__background--default) );
 
   &:focus,
   &:hover {
-    color: set-color(vf-color--blue); // fallback, IE
+    color: color(blue); // fallback, IE
     color: var(--vf-button-border-color);
   }
 }
@@ -166,20 +166,20 @@ html:not(.vf-disable-deprecated) {
   // Deprecated in 1.0.0-beta.7
   // Will be removed in vf-button v2.0
   .vf-text-button--secondary {
-    @include button-link($vf-link--color: set-color(vf-color--green), $vf-link--hover-color: set-color(vf-color--green--dark));
+    @include button-link($vf-link--color: color(green), $vf-link--hover-color: color(green--dark));
 
-    box-shadow: 0px 6px 0px 0px set-color(vf-color--green--dark);
+    box-shadow: 0px 6px 0px 0px color(green--dark);
     margin-bottom: 6px; // because we're using box-shadow we need to 'create the space' again
 
     &:hover {
-      box-shadow: 0px 2px 0px 0px set-color(vf-color--green--dark);
+      box-shadow: 0px 2px 0px 0px color(green--dark);
     }
   }
 
   // Deprecated in 1.0.0-beta.7
   // Will be removed in vf-button v2.0
   .vf-button--outline.vf-text--button--secondary {
-    @include button-link--ghost( $vf-link--color: set-color(vf-color--green) );
+    @include button-link--ghost( $vf-link--color: color(green) );
   }
 
   // Deprecated in 1.0.0-beta.7

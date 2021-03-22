@@ -8,109 +8,142 @@ status: alpha
 #
 context:
   component-type: block
+
   # modifier: vf-u-background-color--grey--lightest
 # Per-variant options
 variants:
   - name: default
-    label: default
-    context:
-      card_title: A Default Card Title
-      card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-      card_image__alt: Image alt text
-  - name: Default with Link
-    label: Default with Link
-    hidden: false
-    context:
-      card_title: A Default With Link Card Title
-      card_href: "JavaScript:Void(0);"
-      card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-      card_image__alt: Image alt text
+    hidden: true
 
+  # Bordered Variants
+  # -----------------
+  - name: Bordered Headings
+    context:
+      card_heading: A Bordered Card Heading
+      card_subheading: With sub–heading
+      variant: bordered
+      newTheme: primary
+  - name: Bordered Headings with Link
+    context:
+      card_heading: A Bordered Card Heading
+      card_href: "JavaScript:Void(0);"
+      card_text: Lorem ipsum dolor sit amet, consectetur <a href="JavaScript:Void(0);" class="vf-card__link">adipisicing elit</a>. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      variant: bordered
+      newTheme: primary
   - name: Bordered
-    label: Bordered
-    hidden: false
     context:
-      card_title: A Bordered Card Title
+      card_heading: A Bordered Card Heading
+      card_subheading: With sub–heading
+      variant: bordered
+      newTheme: primary
+      card_text: Lorem ipsum dolor sit amet, consectetur <a href="JavaScript:Void(0);" class="vf-card__link">adipisicing elit</a>. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: Bordered with Link
+    context:
+      card_heading: A Bordered Card Heading
+      card_subheading: With sub–heading
+      variant: bordered
+      newTheme: primary
+      card_href: "JavaScript:Void(0);"
+      card_text: Lorem ipsum dolor sit amet, consectetur <a href="JavaScript:Void(0);" class="vf-card__link">adipisicing elit</a>. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: Bordered with Image
+    context:
+      card_heading: A Bordered Card Heading
+      card_subheading: With sub–heading
       variant: bordered
       newTheme: primary
       card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_text: Lorem ipsum dolor sit amet, consectetur <a href="JavaScript:Void(0);" class="vf-card__link">adipisicing elit</a>. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
       card_image__alt: Image alt text
-  - name: Bordered Secondary
-    label: Bordered / Secondary
-    hidden: true
+  - name: Bordered with Image and Link
     context:
-      card_title: A Bordered Card Title
-      variant: bordered
-      newTheme: secondary
-      card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-      card_image__alt: Image alt text
-  - name: Bordered Tertiary
-    label: Bordered / Tertiary
-    hidden: true
-    context:
-      card_title: A Bordered Card Title
-      variant: bordered
-      newTheme: tertiary
-      card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-      card_image__alt: Image alt text
-  - name: Bordered with Link
-    label: Bordered with Link
-    hidden: false
-    context:
-      card_title: A Bordered With Link Card Title
+      card_heading: A Bordered Card Heading
+      card_subheading: With sub–heading
       variant: bordered
       newTheme: primary
       card_href: "JavaScript:Void(0);"
       card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_text: Lorem ipsum dolor sit amet, consectetur <a href="JavaScript:Void(0);" class="vf-card__link">adipisicing elit</a>. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_image__alt: Image alt text
+  - name: Bordered with Image and no Heading
+    context:
+      variant: bordered
+      newTheme: primary
+      card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
+      card_text: Lorem ipsum dolor sit amet, consectetur <a href="JavaScript:Void(0);" class="vf-card__link">adipisicing elit</a>. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
       card_image__alt: Image alt text
 
-  - name: Striped
-    label: Striped
-    hidden: false
+  # Striped Variants
+  # ----------------
+  - name: Striped only Headings
     context:
-      card_title: A Striped Card Title
+      card_heading: A Striped Card Heading
+      card_subheading: With sub–heading
+      variant: striped
+      newTheme: primary
+  - name: Striped only linked Headings
+    context:
+      card_heading: A Striped Card Heading
+      card_href: "JavaScript:Void(0);"
+      card_subheading: With sub–heading
+      variant: striped
+      newTheme: primary
+  - name: Striped
+    context:
+      card_heading: A Striped Card Heading
+      card_subheading: With sub–heading
+      variant: striped
+      newTheme: primary
+      card_text: Lorem ipsum dolor sit amet, consectetur <a href="JavaScript:Void(0);" class="vf-card__link">adipisicing elit</a>. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+  - name: Striped with Link
+    context:
+      card_heading: A Striped Card Heading
+      variant: striped
+      newTheme: primary
+      card_href: "JavaScript:Void(0);"
+      card_text: Lorem ipsum dolor sit amet, consectetur <a href="JavaScript:Void(0);" class="vf-card__link">adipisicing elit</a>. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+
+  - name: Striped with Image
+    context:
+      card_heading: A Striped Card Heading
+      card_subheading: With sub–heading
       variant: striped
       newTheme: primary
       card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_text: Lorem ipsum dolor sit amet, consectetur <a href="JavaScript:Void(0);" class="vf-card__link">adipisicing elit</a>. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
       card_image__alt: Image alt text
-  - name: Striped Secondary
-    label: Striped / Secondary
-    hidden: true
+  - name: Striped with Image and Link
     context:
-      card_title: A Striped Card Title
-      variant: striped
-      newTheme: secondary
-      card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-      card_image__alt: Image alt text
-  - name: Striped Tertiary
-    label: Striped / Tertiary
-    hidden: true
-    context:
-      card_title: A Striped Card Title
-      variant: striped
-      newTheme: tertiary
-      card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-      card_image__alt: Image alt text
-  - name: striped-link
-    label: Striped with link
-    hidden: false
-    context:
-      card_title: A Striped Card Title with Link
+      card_heading: A Striped Card Heading
+      card_subheading: With sub–heading
       variant: striped
       newTheme: primary
       card_href: "JavaScript:Void(0);"
       card_image: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg
-      card_text: Lorem ipsum dolor sit amet, <a class="vf-card__link" href="JavaScript:Void(0);">consectetur</a> adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+      card_text: Lorem ipsum dolor sit amet, consectetur <a href="JavaScript:Void(0);" class="vf-card__link">adipisicing elit</a>. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
       card_image__alt: Image alt text
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # ----------------------------------------
+  # TODO: Remove these when moving to v3.0.0
+  # ----------------------------------------
 
   - name: very-easy
     label: Very Easy

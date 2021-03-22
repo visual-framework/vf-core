@@ -1,3 +1,12 @@
+### 2.0.0
+
+* removes secondary link colours, as this is more often defined by the parent component.
+* removes the 'dark mode' styles as these are not being used.
+
+### 1.0.4
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.0.3
 
 * Improves default link colours
