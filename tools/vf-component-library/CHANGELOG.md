@@ -1,5 +1,6 @@
 ### 1.1.0
 
+* adds neutral colour tokens
 * Adds the form options as their own set of components in the list.
   * https://github.com/visual-framework/vf-core/pull/1390/files
 * Updates to use 11ty 0.12.1
