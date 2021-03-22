@@ -36,14 +36,14 @@ layout: layouts/base.njk
     <hr class="vf-divider">
     <p class="vf-card__text">Value:</p>
     <p class="vf-card__text"><code>{{ item.value }}</code></p>
+    <hr class="vf-divider">
     {% if item.meta.sassVariable %}
-      <hr class="vf-divider">
       <p class="vf-card__text">Sass Variable:</p>
       <p class="vf-card__text"><code>${{ item.meta.sassVariable }}</code></p>
-      {% if item.meta.sassMap %}
-        <p class="vf-card__text">Sass Function:</p>
-        <p class="vf-card__text"><code>color({{ item.meta.sassMap }})</code></p>
-      {% endif %}
+    {% endif %}
+    {% if item.meta.sassMap %}
+      <p class="vf-card__text">Sass Function:</p>
+      <p class="vf-card__text"><code>color({{ item.meta.sassMap }})</code></p>
     {% endif %}
     {% if item.meta.CSSCustomProperty %}
       <hr class="vf-divider">
@@ -87,14 +87,14 @@ layout: layouts/base.njk
     <hr class="vf-divider">
     <p class="vf-card__text">Value: </p>
     <p class="vf-card__text"><code>{{ item.value }}</code></p>
+    <hr class="vf-divider">
     {% if item.meta.sassVariable %}
-      <hr class="vf-divider">
       <p class="vf-card__text">Sass Variable:</p>
       <p class="vf-card__text"><code>${{ item.meta.sassVariable }}</code></p>
-      {% if item.meta.sassMap %}
+    {% endif %}
+        {% if item.meta.sassMap %}
       <p class="vf-card__text">Sass Function:</p>
       <p class="vf-card__text"><code>ui-color({{ item.meta.sassMap }})</code></p>
-    {% endif %}
     {% endif %}
     {% if item.meta.CSSCustomProperty %}
       <hr class="vf-divider">
