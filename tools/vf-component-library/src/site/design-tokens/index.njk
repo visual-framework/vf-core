@@ -35,19 +35,28 @@ If you required a different format (LESS, iOS, Android). Please get in touch.
 
 ### Base Design Tokens
 
-These are the generic values for things
+These are the generic Design Tokens for global key and value pairs for colour, spacing, typography, etc.
 
-### Design Decision Design Tokens
+They tend not to be used as they're codified as we should rely on Design decisions to determine when to use what Design Token value for what purpose and need.<sup>1</sup>
 
-Where we have decided where to use what token and what purpose.
+### Design Decision Design Tokens <span class="vf-badge vf-badge--primary">alpha</span>
 
-### Component Design Tokens <span class="vf-badge vf-badge--primary">beta</span>
+This category of Design Tokens is where we have chosen how certain Design Tokens should be used.
+
+These Design Tokens can be use in projects where Component Design Tokens do not exist and must match the semantic use that should be defined in the codified Design Token.<sup>1</sup>
+<small>eg. If the Design Token is `vf-background--primary` it should not be used for anythign other than a background.</small>
+
+### Component Design Tokens <span class="vf-badge vf-badge--primary">alpha</span>
 
 Where the design decisions have filtered into specific component decisions.
 
 These are exported into the components folder and are suffixed - `.tokens.scss`.
 
 These can be both Sass variables and CSS Custom Properties.
+
+They are named so that their usage in a component should be self evident as it will follow the 'Naming Design Tokens' described below.
+
+---
 
 ## Naming Design Tokens
 
@@ -70,3 +79,5 @@ We use a BEM style syntax when composing Design Tokens where we use our Design S
 
 To update these run `gulp vf-tokens` from `./components/vf-design-tokens`.
 ww
+
+<sup>1</sup> This is actively being working on and your current implementation of Design Tokens in your projects might need updating.

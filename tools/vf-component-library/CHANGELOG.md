@@ -1,3 +1,7 @@
+### 1.1.1
+
+* updates Design Tokens homepage.
+
 ### 1.1.0
 
 * adds neutral colour tokens
