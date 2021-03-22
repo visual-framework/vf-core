@@ -24,26 +24,26 @@ layout: layouts/base.njk
     <hr class="vf-divider">
     <p class="vf-card__text">Value:</p>
     <p class="vf-card__text"><code>{{ item.value }}</code></p>
-    {# <p class="vf-card__text"><code>{{ item.value }}</code></p> #}
-  {% if item.meta.sassVariable %}
-  <hr class="vf-divider">
-  <p class="vf-card__text">Sass:</p>
-    <p class="vf-card__text"><code>${{ item.meta.sassVariable }}</code></p>
-  {% endif %}
-  {% if item.meta.sassMap %}
-    <p class="vf-card__text"><code>{{ item.meta.sassMap }}</code></p>
-  {% endif %}
-  {% if item.meta.CSSCustomProperty %}
-  <hr class="vf-divider">
-  <p class="vf-card__text">CSS custom property:</p>
-    <p class="vf-card__text"><code>{{ item.meta.CSSCustomProperty }}</code></p>
-  {% endif %}
-  {% if item.meta.comment %}
-    <h4>notes:</h4>
-    <p class="vf-card__text">
-      {{ item.meta.comment }}
-    </p>
-  {% endif %}
+    {% if item.meta.sassVariable %}
+      <hr class="vf-divider">
+      <p class="vf-card__text">Sass Variable:</p>
+      <p class="vf-card__text"><code>${{ item.meta.sassVariable }}</code></p>
+    {% endif %}
+    {% if item.meta.sassMap %}
+      <p class="vf-card__text">Sass Function:</p>
+      <p class="vf-card__text"><code>{{ item.meta.sassMap }}</code></p>
+    {% endif %}
+    {% if item.meta.CSSCustomProperty %}
+      <hr class="vf-divider">
+      <p class="vf-card__text">CSS:</p>
+      <p class="vf-card__text"><code>{{ item.meta.CSSCustomProperty }}</code></p>
+    {% endif %}
+    {% if item.meta.comment %}
+      <h4>notes:</h4>
+      <p class="vf-card__text">
+        {{ item.meta.comment }}
+      </p>
+    {% endif %}
   </section>
 </article>
 
