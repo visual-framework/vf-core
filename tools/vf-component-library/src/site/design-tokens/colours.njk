@@ -46,17 +46,20 @@ layout: layouts/base.njk
         {{ item.meta.comment }}
       </p>
     {% endif %}
-    {% if item.meta.Deprecated == true %}
-      <div class="vf-banner vf-banner--alert vf-banner--danger">
-        <div class="vf-banner__content">
-          <p class="vf-banner__text">This Design Token has been <strong>deprecated</strong>.</p>
-        </div>
-      </div>
-        {% if item.meta.DeprecatedAlt %}
-        <p class="vf-card__text">{{ item.meta.DeprecatedAlt }}</p>
-        {% endif %}
-      {% endif %}
   </section>
+
+  {% if item.meta.Deprecated == true %}
+    <div class="vf-banner vf-banner--alert vf-banner--danger">
+      <div class="vf-banner__content">
+        <p class="vf-banner__text">This Design Token has been <strong>deprecated</strong>.</p>
+      </div>
+    </div>
+    {% if item.meta.DeprecatedAlt %}
+    <div style="padding: .5rem 1rem;">
+      <p class="vf-card__text">{{ item.meta.DeprecatedAlt | safe }}</p>
+    </div>
+    {% endif %}
+  {% endif %}
 
 </article>
 
@@ -69,7 +72,7 @@ layout: layouts/base.njk
 
 
 <article class="vf-card">
-  <div style="background-color: {{ item.value}};"></div>
+  <div style="background-color: {{ item.value}}; height: 300px; width: 100%;"></div>
 
   <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
     <h3>{{ item.meta.friendlyName }}</h3>
@@ -88,16 +91,6 @@ layout: layouts/base.njk
   <p class="vf-card__text">CSS custom property:</p>
     <p class="vf-card__text"><code>{{ item.meta.CSSCustomProperty }}</code></p>
   {% endif %}
-  {% if item.meta.Deprecated == true %}
-      <div class="vf-banner vf-banner--alert vf-banner--danger">
-        <div class="vf-banner__content">
-          <p class="vf-banner__text">This Design Token has been <strong>deprecated</strong>.</p>
-        </div>
-      </div>
-        {% if item.meta.DeprecatedAlt %}
-        <p class="vf-card__text">{{ item.meta.DeprecatedAlt }}</p>
-        {% endif %}
-      {% endif %}
   {% if item.meta.comment %}
     <h4>notes:</h4>
     <p class="vf-card__text">
@@ -105,6 +98,18 @@ layout: layouts/base.njk
     </p>
   {% endif %}
   </section>
+    {% if item.meta.Deprecated == true %}
+    <div class="vf-banner vf-banner--alert vf-banner--danger">
+      <div class="vf-banner__content">
+        <p class="vf-banner__text">This Design Token has been <strong>deprecated</strong>.</p>
+      </div>
+    </div>
+    {% if item.meta.DeprecatedAlt %}
+    <div style="padding: .5rem 1rem;">
+      <p class="vf-card__text">{{ item.meta.DeprecatedAlt | safe }}</p>
+    </div>
+    {% endif %}
+  {% endif %}
 </article>
 
 {% else %}
