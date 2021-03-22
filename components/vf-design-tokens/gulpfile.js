@@ -116,6 +116,7 @@ gulp.task("tokens2:json", () =>
 
 gulp.task("tokens:props", () =>
   gulp.src([
+    "./src/maps/vf-color__neutral.yml",
     "./src/maps/vf-colors.yml",
     "./src/maps/vf-spacing.yml",
     "./src/maps/vf-themes.yml",
