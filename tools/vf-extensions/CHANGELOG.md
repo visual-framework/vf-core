@@ -2,8 +2,9 @@
 
 ## 1.0.0-rc.1
 
-* Support Eleventy beta.1 there are changes in how its build process works
+* Support Eleventy 0.12.1 changes in how its build process works
   * https://github.com/visual-framework/vf-core/pull/1257
+  * https://github.com/11ty/eleventy/releases/tag/v0.12.1
 
 ## 1.0.0-rc.0
 
