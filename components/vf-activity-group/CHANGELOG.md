@@ -1,3 +1,7 @@
+### 1.0.0-alpha.10
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.0.0-alpha.9
 
 * Resolve issue of missing import in index.scss

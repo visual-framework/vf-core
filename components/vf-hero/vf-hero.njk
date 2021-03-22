@@ -2,81 +2,64 @@
 
   {% set vf_hero_image = context.vf_hero_image %}
 
+  {% set vf_hero_kicker = context.vf_hero_kicker %}
   {% set vf_hero_heading = context.vf_hero_heading %}
-  {% set vf_hero_heading_additional = context.vf_hero_heading_additional %}
   {% set vf_hero_subheading = context.vf_hero_subheading %}
-  {% set vf_hero_text = context.vf_hero_text %}
-  {% set vf_hero_href = context.vf_hero_href %}
 
-  {% set striped = context.striped %}
-  {% set inverted = context.inverted %}
-  {% set theme = context.theme %}
-  {% set newTheme = context.newTheme %}
-  {% set flush = context.flush %}
-  {% set offset = context.offset %}
-  {% set block = context.block %}
-  {% set centered = context.centered %}
+  {% set vf_hero_text = context.vf_hero_text %}
+
+  {% set vf_hero_link_text = context.vf_hero_link_text %}
+  {% set vf_hero_link_href = context.vf_hero_link_href %}
+
   {% set spacing = context.spacing %}
 
   {% set id = context.id %}
   {% set modifier_class = context.modifier_class %}
   {% set override_class = context.override_class %}
-{% endif %}
+
+  {# So we don't break usage suddenly, we're adding this snippet to change heading_addional to kicker #}
+  {% set vf_hero_heading_additional = context.vf_hero_heading_additional %}
+  {% if context.vf_hero_heading_additional %}
+    {% set vf_hero_kicker = context.vf_hero_heading_additional %}
+  {% endif %}
+
+{% endif -%}
 
 
 <section
-  class="vf-hero
-  {{ modifier_class }}
+  class="vf-hero{% if spacing %} vf-hero--{{spacing}}{% endif %} | vf-u-fullbleed {%- if modifier_class %} {{ modifier_class }}{% endif %}"
 
-  {%- if striped %} vf-hero--striped{% endif %}
-
-  {%- if inverted %} vf-hero--inverted{% endif %}
-
-  {%- if theme %} vf-hero-theme--{{theme}}{% endif %}
-
-  {%- if newTheme %} vf-hero--{{newTheme}}{% endif %}
-
-  {% if flush %} vf-hero--flush{% endif %}
-
-  {% if offset %} vf-hero--offset{% endif %}
-
-  {% if block %} vf-hero--block{% endif %}
-
-  {% if centered %} vf-hero--centered{% endif %}
-
-  {% if spacing %} vf-hero--{{spacing}}{% endif %}
-   | vf-u-fullbleed"
-
-  style="
-  {% if vf_hero_image %}--vf-hero--bg-image: {{vf_hero_image}}{% endif %}
+  style="{% if vf_hero_image %}--vf-hero--bg-image: {{vf_hero_image}}{% endif %}
   {% if vf_hero_image_size %}--vf-hero--bg-image-size: {{vf_hero_image_size}}{% endif %}
   ">
-  {% if deprecated_text %}<!-- {{ deprecated_text }} -->{% endif %}
-  <div class="vf-hero__content | vf-stack vf-stack--400 ">
+
+  <div class="vf-hero__content | vf-box | vf-stack vf-stack--400 ">
+    {%- if vf_hero_kicker -%}
+      <p class="vf-hero__kicker">{{ vf_hero_kicker }}</p>
+    {%- endif -%}
+
     {% if vf_hero_heading %}
     <h2 class="vf-hero__heading">
       {% if vf_hero_heading_href %}<a class="vf-hero__heading_link" href="{{vf_hero_heading_href}}">{% endif %}
       {{ vf_hero_heading }}
       {% if vf_hero_heading_href %}</a>{% endif %}
-      {%- if vf_hero_heading_additional -%}
-        <span class="vf-hero__heading--additional">{{ vf_hero_heading_additional }}</span>
-      {%- endif -%}
     </h2>
     {% endif %}
+
     {% if vf_hero_subheading %}<p class="vf-hero__subheading">{{vf_hero_subheading}}</p>{% endif %}
+
     {%- if vf_hero_text %}
     <p class="vf-hero__text">
-      {%- if vf_hero_href %}
-      <a class="vf-hero__link | vf-link" href="{{ vf_hero_href }}">
-      {{- vf_hero_text -}}
+      {% asyncEach hero_text in vf_hero_text -%}
+        {{ hero_text | safe }}
+      {% endeach %}
+    </p>
+    {% endif %}
+    {%- if (vf_hero_link_href) and (vf_hero_link_text) %}
+      <a class="vf-hero__link" href="{{ vf_hero_link_href }}">
+      {{- vf_hero_link_text -}}
       <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg>
       </a>
-      {% else %}
-      {% asyncEach hero_text in vf_hero_text -%}
-      {{ hero_text | safe }}
-      {% endeach %}
-      {% endif %}
-    </p>
     {% endif %}
   </div>
 </section>

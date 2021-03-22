@@ -13,30 +13,37 @@ collated: true
   #   hidden: true
 context:
   component-type: container
-  modifier: vf-u-background-color--grey--lightest vf-u-fullbleed
-  container_section__header:
-    section_title: Missions
-    href: "JavaScript:Void(0);"
-    vf_section__content:
-      - To promote molecular biology across Europe
-      - To create a centre of excellence for Europe's leading young molecular biologists
-  vf_cards:
-    -
-      card_title: One card
-      card_href: "JavaScript:Void(0);"
-      variant: easy
-      card_image: ../../assets/vf-card/assets/vf-card-example.png
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-    -
-      card_title: A card here
-      card_href: "JavaScript:Void(0);"
-      variant: normal
-      card_image: ../../assets/vf-card/assets/vf-card-example.png
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
-    -
-      card_title: Another card
-      card_href: "JavaScript:Void(0);"
-      theme: primary
-      variant: normal
-      card_image: ../../assets/vf-card/assets/vf-card-example.png
-      card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+
+variants:
+  - name: default
+    context:
+      modifier: vf-u-background-color--grey--lightest vf-u-fullbleed
+      cards_aspect_ratio: 16 / 9
+      container_section__header:
+        section_title: Missions
+        href: "JavaScript:Void(0);"
+        vf_section__content:
+          - To promote molecular biology across Europe
+          - To create a centre of excellence for Europe's leading young molecular biologists
+      vf_cards:
+        -
+          variant: bordered
+          newTheme: primary
+          card_title: One card
+          card_href: "JavaScript:Void(0);"
+          card_image: ../../assets/vf-card/assets/vf-card-example.png
+          card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos? Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?
+        -
+          variant: bordered
+          newTheme: primary
+          card_title: A card here
+          card_href: "JavaScript:Void(0);"
+          card_image: ../../assets/vf-card/assets/vf-card-example.png
+          card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        -
+          variant: bordered
+          newTheme: primary
+          card_title: Another card
+          card_href: "JavaScript:Void(0);"
+          card_image: ../../assets/vf-card/assets/vf-card-example.png
+          card_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?

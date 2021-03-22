@@ -12,25 +12,28 @@
 @import 'vf-card.variables.scss';
 
 .vf-card {
-  --card-text-color: var(--vf-card-theme-color--foreground, #{set-ui-color(vf-ui-color--black)});
-  --card-background-color: var(--vf-card-theme-color--background , #{set-ui-color(vf-ui-color--white)});
+  --card-text-color: var(--vf-card-theme-color--foreground, #{ui-color(black)});
+  --card-background-color: var(--vf-card-theme-color--background , #{ui-color(white)});
 
+  align-content: start;
   background-color: var(--card-background-color);
   /* border: 1px solid var(--vf-card-theme-color--border, var(--card-border-color, #{set-color(vf-grey--lightest)})); */
-  box-shadow: 0 .125rem .25rem rgba(set-color(vf-color--grey--dark), .5);
+  box-shadow: 0 .125rem .25rem rgba(color(grey--dark), .5);
   display: grid;
-  grid-template-rows: minmax(1fr, 288px) 1fr;
   position: relative;
 }
 
 .vf-card__image {
-  grid-column: 1 / -1;
-  grid-row: 1;
-  height: 100%;
-  max-width: 100%;
+  height: auto;
+  min-height: 16rem; // This provides a fallback for when aspec-ratio is not supported
   object-fit: cover;
   object-position: center;
   width: 100%;
+
+  @supports (aspect-ratio: 1 / 1) {
+    aspect-ratio: var(--vf-card__image--aspect-ratio, 8 / 4);
+    min-height: unset;
+  }
 }
 
 .vf-card__content {
@@ -66,29 +69,28 @@
 }
 
 .vf-card__heading__icon {
-    fill: currentColor;
-    transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
-    // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
-    transition-duration: 125ms;
-    transition-property: transform;
-    transition-timing-function: cubic-bezier(.45, .05, .55, .95);
+  fill: currentColor;
+  transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
+  // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
+  transition-duration: 125ms;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(.45, .05, .55, .95);
 }
 
 .vf-card__title,
 .vf-card__heading {
   @include set-type(text-heading--3, $custom-margin-bottom: 0);
-  line-height: 1.333;
-
-  // font-weight: 700;
 
   background-color: var(--card-background-color);
-  color: set-ui-color(vf-ui-color--black);
-  color: var( --card-text-color, #{set-ui-color(vf-ui-color--black)} );
+  color: ui-color(black);
+  color: var( --card-text-color, #{ui-color(black)} );
+  line-height: 1.333;
   text-decoration: none;
+  word-break: break-word;
 
   .vf-card__link {
-    display: grid;
     color: color(blue);
+    display: grid;
     grid-column-gap: space(100);
     grid-template-columns: auto 1fr;
     text-decoration: none;
@@ -111,7 +113,7 @@
       text-decoration-thickness: 2px !important;
       text-underline-offset: 4px;
       &::after {
-        box-shadow: 0 0 .125rem .125rem rgba(set-color(vf-color--grey), .75);
+        box-shadow: 0 0 .125rem .125rem rgba(color(grey), .75);
       }
     }
 
@@ -132,22 +134,26 @@
 }
 
 .vf-card__subheading {
-  @include set-type(text-heading--5, $custom-margin-bottom: 0);
   --vf-stack-margin--custom: #{space(100)};
+
+  @include set-type(text-heading--5, $custom-margin-bottom: 0);
+
+  word-break: break-word;
 }
 
 .vf-card__text {
   @include set-type(text-body--2, $custom-margin-bottom: 0);
 
-  color: set-ui-color(vf-ui-color--white);
-  color: var( --card-text-color, #{set-ui-color(vf-ui-color--white)} );
+  color: ui-color(white);
+  color: var( --card-text-color, #{ui-color(white)} );
+  word-break: break-word;
 
   .vf-card__link,
   a {
-    position: relative;
-    z-index: 1984;
     color: color(blue);
+    position: relative;
     text-decoration: none;
+    z-index: 1984;
 
     &:hover {
       color: color(blue--dark);
@@ -165,8 +171,8 @@
 // --------------------------------------------------------------------------------
 
 .vf-card--bordered {
-  border-bottom: 8px solid set-color(vf-color--green);
-  border-bottom-color: var(--vf-card-border-color, #{set-color(vf-color--green)});
+  border-bottom: 8px solid color(green);
+  border-bottom-color: var(--vf-card-border-color, #{color(green)});
 
   // fixes bug on hover of link and easy variant #1215
   .vf-card__link {
@@ -180,8 +186,8 @@
 // --------------------------------------------------------------------------------
 
 .vf-card--striped {
-  background-color: set-color(vf-color--green--dark);
-  background-color: var(--vf-card--striped-bg-color, #{set-color(vf-color--green--dark)});
+  background-color: color(green--dark);
+  background-color: var(--vf-card--striped-bg-color, #{color(green--dark)});
 
   .vf-card__content {
     padding-bottom: 0;
@@ -204,9 +210,9 @@
 
   .vf-card__title,
   .vf-card__heading {
-    background-color: set-color(vf-color--green);
-    background-color: var(--vf-card-bg-color, #{set-color(vf-color--green)});
-    color: set-ui-color(vf-ui-color--white);
+    background-color: color(green);
+    background-color: var(--vf-card-bg-color, #{color(green)});
+    color: ui-color(white);
     margin: map-get($vf-spacing-map, vf-spacing--400) * -1;
     margin-bottom: map-get($vf-spacing-map, vf-spacing--200) * -1;
     padding: map-get($vf-spacing-map, vf-spacing--400);
@@ -218,19 +224,19 @@
   }
 
   .vf-card__subheading {
-    color: set-ui-color(vf-ui-color--white);
-    background-color: set-color(vf-color--green);
-    background-color: var(--vf-card-bg-color, #{set-color(vf-color--green)});
+    background-color: color(green);
+    background-color: var(--vf-card-bg-color, #{color(green)});
+    color: ui-color(white);
     margin: map-get($vf-spacing-map, vf-spacing--400) * -1;
     margin-bottom: 0;
     margin-top: -.5rem !important;
     padding: map-get($vf-spacing-map, vf-spacing--400);
-    padding-top: 0;
     padding-bottom: map-get($vf-spacing-map, vf-spacing--200);
+    padding-top: 0;
   }
 
   .vf-card__text {
-    color: set-ui-color(vf-ui-color--white);
+    color: ui-color(white);
 
     &:first-of-type {
       --vf-stack-margin--custom: 0;
@@ -258,27 +264,27 @@
 // - we are removing the `-theme-` part of the classname now.
 // - we are also moving towards more holistic theming with design.
 
-.vf-card--primary
+.vf-card--primary,
 .vf-card--brand {
-  --vf-card-bg-color: #{set-color(vf-color--green)};
-  --vf-card-text-color: #{set-ui-color(vf-ui-color--white)};
-  --vf-card-border-color: #{set-color(vf-color--green)};
-  --vf-card--striped-bg-color: #{set-color(vf-color--green--dark)};
-  --vf-card--striped-text-color: #{set-ui-color(vf-ui-color--white)};
+  --vf-card-bg-color: #{color(green)};
+  --vf-card-text-color: #{ui-color(white)};
+  --vf-card-border-color: #{color(green)};
+  --vf-card--striped-bg-color: #{color(green--dark)};
+  --vf-card--striped-text-color: #{ui-color(white)};
 }
 .vf-card--secondary {
-  --vf-card-bg-color: #{set-color(vf-color--blue)};
-  --vf-card-text-color: #{set-ui-color(vf-ui-color--white)};
-  --vf-card-border-color: #{set-color(vf-color--blue)};
-  --vf-card--striped-bg-color: #{set-color(vf-color--blue--dark)};
-  --vf-card--striped-text-color: #{set-ui-color(vf-ui-color--white)};
+  --vf-card-bg-color: #{color(blue)};
+  --vf-card-text-color: #{ui-color(white)};
+  --vf-card-border-color: #{color(blue)};
+  --vf-card--striped-bg-color: #{color(blue--dark)};
+  --vf-card--striped-text-color: #{ui-color(white)};
 }
 .vf-card--tertiary {
-  --vf-card-bg-color: #{set-color(vf-color--grey)};
-  --vf-card-text-color: #{set-ui-color(vf-ui-color--white)};
-  --vf-card-border-color: #{set-color(vf-color--grey)};
-  --vf-card--striped-bg-color: #{set-color(vf-color--grey--dark)};
-  --vf-card--striped-text-color: #{set-ui-color(vf-ui-color--white)};
+  --vf-card-bg-color: #{color(grey)};
+  --vf-card-text-color: #{ui-color(white)};
+  --vf-card-border-color: #{color(grey)};
+  --vf-card--striped-bg-color: #{color(grey--dark)};
+  --vf-card--striped-text-color: #{ui-color(white)};
 }
 
 // --------------------------------------------------------------------------------
@@ -295,48 +301,42 @@
   }
 }
 
-
-
-
-
-
-
 // --------------------------------------------------------------------------------
 // TODO: To be deleted and removed in v3.0.0
 // --------------------------------------------------------------------------------
 
-// note: some of this CSS 'overides' CSS in the newer cards -- but only by replacing
+// note: some of this CSS 'overrides' CSS in the newer cards -- but only by replacing
 // like for like.
 
 // vf-card levels of design
 html:not(.vf-disable-deprecated) {
-  @warn "This variant has been deprecated";
+  @warn 'This variant has been deprecated';
   .vf-card--very-easy {
     border-bottom: 8px solid rgba(0, 0, 0, 0); // fixes a grid layout glitch when used with variant volume's that have a bottom border
   }
 
   .vf-card--easy {
-    @warn "This variant has been deprecated";
-    border-bottom: 8px solid set-ui-color(vf-ui-color--black);
-    border-bottom-color: var(--vf-card-theme-color--border, #{set-ui-color(vf-ui-color--black)});
+    @warn 'This variant has been deprecated';
+    border-bottom: 8px solid ui-color(black);
+    border-bottom-color: var(--vf-card-theme-color--border, #{ui-color(black)});
 
     .vf-card__title,
     .vf-card__heading {
-      --card-text-color: #{set-color(vf-color--blue)};
+      --card-text-color: #{color(blue)};
     }
     .vf-card__text {
-      --card-text-color: #{set-ui-color(vf-ui-color--black)};
+      --card-text-color: #{ui-color(black)};
     }
   }
 
   .vf-card--normal {
-    --card-text-color: var(--vf-card-theme-color--foreground, #{set-ui-color(vf-ui-color--white)});
-    --card-background-color: var(--vf-card-theme-color--background, #{set-ui-color(vf-ui-color--black)});
+    --card-text-color: var(--vf-card-theme-color--foreground, #{ui-color(white)});
+    --card-background-color: var(--vf-card-theme-color--background, #{ui-color(black)});
   }
 
   .vf-card--hard {
-    --card-text-color: var(--vf-card-theme-color--foreground, #{set-ui-color(vf-ui-color--white)});
-    --card-background-color: var(--vf-card-theme-color--background, #{set-ui-color(vf-ui-color--black)});
+    --card-text-color: var(--vf-card-theme-color--foreground, #{ui-color(white)});
+    --card-background-color: var(--vf-card-theme-color--background, #{ui-color(black)});
 
     .vf-card__content {
       grid-row: 2 / -1;
@@ -362,7 +362,7 @@ html:not(.vf-disable-deprecated) {
   // vf-card themes
 
   [class*='vf-card-theme'].vf-card--easy {
-    --vf-card-theme-color--background: #{set-ui-color(vf-ui-color--white)};
+    --vf-card-theme-color--background: #{ui-color(white)};
   }
   [class*='vf-card-theme'] {
     .vf-card__text .vf-card__link {
@@ -372,26 +372,26 @@ html:not(.vf-disable-deprecated) {
   }
 
   .vf-card-theme--primary {
-    --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
-    --vf-card-theme-color--border: #{set-color(vf-color--blue)};
-    --vf-card-theme-color--background: #{set-color(vf-color--blue)};
+    --vf-card-theme-color--foreground: #{ui-color(white)};
+    --vf-card-theme-color--border: #{color(blue)};
+    --vf-card-theme-color--background: #{color(blue)};
   }
 
   .vf-card-theme--secondary {
-    --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--black)};
-    --vf-card-theme-color--border: #{set-color(vf-color--green)};
-    --vf-card-theme-color--background: #{set-color(vf-color--green)};
+    --vf-card-theme-color--foreground: #{ui-color(black)};
+    --vf-card-theme-color--border: #{color(green)};
+    --vf-card-theme-color--background: #{color(green)};
   }
 
   .vf-card-theme--tertiary {
-    --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--white)};
-    --vf-card-theme-color--border: #{set-color(vf-color--grey--dark)};
-    --vf-card-theme-color--background: #{set-color(vf-color--grey--dark)};
+    --vf-card-theme-color--foreground: #{ui-color(white)};
+    --vf-card-theme-color--border: #{color(grey--dark)};
+    --vf-card-theme-color--background: #{color(grey--dark)};
   }
 
   .vf-card-theme--quaternary {
-    --vf-card-theme-color--foreground: #{set-ui-color(vf-ui-color--black)};
-    --vf-card-theme-color--border: #{set-color(vf-color--yellow)};
-    --vf-card-theme-color--background: #{set-color(vf-color--yellow)};
+    --vf-card-theme-color--foreground: #{ui-color(black)};
+    --vf-card-theme-color--border: #{color(yellow)};
+    --vf-card-theme-color--background: #{color(yellow)};
   }
 }

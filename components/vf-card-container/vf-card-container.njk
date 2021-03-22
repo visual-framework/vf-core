@@ -4,10 +4,14 @@
 {% set vf_cards = context.vf_cards %}
 {% set container_section__header = context.container_section__header %}
 {% set cardtype = context.variant %}
+{% set cards_aspect_ratio = context.cards_aspect_ratio %}
 
 {% endif %}
 
-<section class="vf-card-container{% if modifier %} | {{modifier}}{% endif %}">
+<section
+  class="vf-card-container{% if modifier %} | {{modifier}}{% endif %}"
+  style="--vf-card__image--aspect-ratio: {{cards_aspect_ratio}};"
+>
   <div class="vf-card-container__inner">
     {% render '@vf-section-header', { 'context': container_section__header } %}
     {% for card in vf_cards %}

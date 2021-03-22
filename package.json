@@ -13,7 +13,8 @@
     "lerna:publish": "lerna publish --no-git-tag-version --no-push && git reset --hard && lerna publish --no-git-tag-version --no-push --skip-npm --ignore-scripts",
     "note:lerna:publish": "it's a known issue that you need to supply the version twice, we're working a solution for this",
     "releasenotes": "git show -U0 --raw $(git describe --abbrev=0 --tags $(git rev-list --tags --skip=0 --max-count=1))..HEAD --pretty=format:'%n {{ notes(\"COMPONENTNAME\", \"VERSIONHERE\", \"%H\") }} %n \"commit\": \"%H\",%n  \"abbreviated_commit\": \"%h\",%n  \"subject\": \"%s\",%n  \"sanitized_subject_line\": \"%f\",%n  \"author\": {%n    \"name\": \"%aN\",%n    \"email\": \"%aE\",%n    \"date\": \"%aD\"%n  },%n' --output=tools/vf-component-library/src/site/updates/$(date +%F)-component-updates.md -- **/CHANGELOG.md",
-    "prepublishOnly": "cd tools/vf-core && gulp vf-core:prepare-deploy"
+    "prepublishOnly": "cd tools/vf-core && gulp vf-core:prepare-deploy",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -32,9 +33,7 @@
   ],
   "author": "Stuart Robson <stu@alwaystwisted.com> (http://www.alwaystwisted.com/)",
   "license": "Apache-2.0",
-  "husky": {
-    "hooks": {
-      "pre-push": "cd tools/vf-core && gulp vf-prepush-test"
-    }
+  "devDependencies": {
+    "husky": "5.2.0"
   }
 }

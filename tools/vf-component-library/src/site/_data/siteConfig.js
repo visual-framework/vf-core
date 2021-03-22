@@ -15,7 +15,7 @@ module.exports = {
   vfVersion: "develop",
   vfVersionPrefix: "dev.",
   // use this when tagging a release
-  // vfVersion: "v2.4.6",
+  // vfVersion: "v2.4.8",
   // vfVersionPrefix: "",
   sections: {
     about: {
@@ -41,6 +41,10 @@ module.exports = {
     patterns: {
       url: "/patterns",
       title: "Patterns"
+    },
+    designkit: {
+      url: "/design-kit",
+      title: "Design kit"
     },
     styles: {
       url: "/styles",

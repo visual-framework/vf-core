@@ -1,3 +1,16 @@
+### 1.1.0
+
+* adds neutral colour tokens
+* Adds the form options as their own set of components in the list.
+  * https://github.com/visual-framework/vf-core/pull/1390/files
+* Updates to use 11ty 0.12.1
+  * https://github.com/visual-framework/vf-core/pull/1435
+
+### 1.0.24
+
+* changes the `vf-intro` so it's a white background, removes the padding.
+* changes the links in `vf-intro` to be the 'correct' buttons.
+
 ### 1.0.23
 
 * small change to cards on homepage

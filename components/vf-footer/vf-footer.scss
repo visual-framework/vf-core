@@ -12,8 +12,8 @@
 @import 'vf-footer.variables.scss';
 
 .vf-footer {
-  background-color: set-color(vf-color--grey--dark);
-  border-top: 8px solid set-color(vf-color--green);
+  background-color: color(grey--dark);
+  border-top: 8px solid color(green);
   grid-column: 1 / -1;
   padding-bottom: 60px;
   padding-top: 24px;
@@ -32,7 +32,7 @@
   }
 
   &::after {
-    background-color: set-color(vf-color--green);
+    background-color: color(green);
     content: '';
     height: 8px;
     margin-left: calc(50% - 50vw);
@@ -52,7 +52,7 @@
 .vf-footer__notice {
   @include set-type(text-body--3);
 
-  color: set-ui-color(vf-ui-color--white);
+  color: ui-color(white);
   max-width: 45em;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .vf-footer__legal {
-  color: set-ui-color(vf-ui-color--white);
+  color: ui-color(white);
   column-gap: var(--page-grid-gap);
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   .vf-list {
@@ -76,7 +76,7 @@
     font-size: 14px;
   }
   .vf-footer__legal-text {
-    color: set-color(vf-color--grey--lightest);
+    color: color(grey--lightest);
   }
   .vf-footer__link {
     text-decoration: none;
@@ -114,7 +114,7 @@
 }
 
 .vf-footer__links-group {
-  border: solid 0px set-color(vf-color--grey--lightest);
+  border: solid 0px color(grey--lightest);
   border-width: 1px 0;
   margin-bottom: 12px;
   padding-bottom: 24px;
@@ -122,7 +122,7 @@
   .vf-links__heading {
     @include set-type(text-body--6, $custom-margin-bottom: 8px);
 
-    color: set-color(vf-color--grey--lightest);
+    color: color(grey--lightest);
     text-transform: uppercase;
 
     .vf-heading__link {

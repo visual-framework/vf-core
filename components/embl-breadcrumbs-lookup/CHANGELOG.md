@@ -1,3 +1,7 @@
+### 1.0.3
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.0.2
 
 * adds aria role detection of current page

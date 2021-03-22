@@ -1,3 +1,12 @@
+### 1.4.7
+
+* Fixes CSS to match stylelint rules.
+  * https://github.com/visual-framework/vf-core/pull/1405
+
+### 1.4.6
+
+* Add support for anchor `id` attribute.
+
 ### 1.4.5
 
 * Move the example content into a default variant to stop it printing out when using `render ..`.

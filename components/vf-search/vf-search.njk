@@ -15,14 +15,24 @@
   {% set modifiers = context.modifiers %}
   {% set override_class = context.override_class %}
 {%- endif -%}
+
 <form action="{{ search_action }}"
   {#- You're using an ID? Really?? That'll go here -#}
   {% if id %} id="{{-id-}}"{% endif %}
   class="vf-form | vf-search{% if variant == 'inline' %} vf-search--inline{% endif %} {%- if override_class %} | {{override_class}}{% endif -%}">
-  <div class="vf-form__item | vf-search__item">
-    <label class="vf-form__label vf-u-sr-only | vf-search__label" for="{{ search_id }}">{{ search_label }}</label>
-    <input type="search" placeholder="{{ search_placeholder }}" id="{{ search_id }}" {% if search_value_default %} value="{{ search_value_default }}"{% endif %} class="vf-form__input | vf-search__input"{%- if search_autofocus %} autofocus{%- endif %}>
+
+  <div class="vf-container__inner">
+
+    <div class="vf-form__item | vf-search__item">
+
+      <label class="vf-form__label vf-u-sr-only | vf-search__label" for="{{ search_id }}">{{ search_label }}</label>
+      <input type="search" placeholder="{{ search_placeholder }}" id="{{ search_id }}" {% if search_value_default %} value="{{ search_value_default }}"{% endif %} class="vf-form__input | vf-search__input"{%- if search_autofocus %} autofocus{%- endif %}>
+    </div>
+
+    <button type="submit" class="vf-search__button | vf-button vf-button--primary"> {{ search_button }}</button>
+
+    {% if search_description %}<p class="vf-form__helper">{{ search_description}}</p>{% endif %}
   </div>
-  <button type="submit" class="vf-search__button | vf-button vf-button--primary"> {{ search_button }}</button>
-  {% if search_description %}<p class="vf-search__description">{{ search_description}}</p>{% endif %}
+
 </form>
+

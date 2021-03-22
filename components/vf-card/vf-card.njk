@@ -8,6 +8,7 @@
   {% set card_text = context.card_text %}
   {% set card_image = context.card_image %}
   {% set card_image__alt = context.card_image__alt %}
+  {% set card_custom_aspect_ratio = context.card_custom_aspect_ratio %}
 
   {% set theme = context.theme %}
   {% set newTheme = context.newTheme %}
@@ -31,8 +32,11 @@
   {%- if variant %} vf-card--{{variant}}{% endif %}
 
   {%- if modifier %} | {{modifier}}{% endif -%}
-  {%- if override_class %} | {{override_class}}{% endif -%}
-">
+  {%- if override_class %} | {{override_class}}{% endif -%}"
+  {% if card_custom_aspect_ratio %}
+  style="--vf-card__image--aspect-ratio: {{card_custom_aspect_ratio}};"
+  {% endif %}
+  >
 
   {% if card_image -%}
   <img src="{{ card_image }}" alt="{{ card_image__alt }}" class="vf-card__image" loading="lazy">

@@ -10,15 +10,15 @@
  */
 
 .vf-masthead {
-  background-color: set-color(vf-color--grey--lightest);
-  background-color: var(--vf-masthead__color--background-default, set-color(vf-color--grey--lightest));
-  color: set-ui-color(vf-ui-color--black);
-  color: var(--vf-masthead__color--foreground-default, set-ui-color(vf-ui-color--black));
+  background-color: color(grey--lightest);
+  background-color: var(--vf-masthead__color--background-default, color(grey--lightest));
+  color: ui-color(black);
+  color: var(--vf-masthead__color--foreground-default, ui-color(black));
   display: flex;
   padding: map-get($vf-spacing-map, vf-spacing--800) 0;
   // removed because we're using `vf-u-fullbleed` now.
   // position: relative;
-   &::before {
+  &::before {
     // this overrides the z-index that is used in `vf-u-fullbleed` as it didn't work
     z-index: set-layer(vf-z-index--masthead) !important;
   }
@@ -75,18 +75,18 @@
 
 // Theming Variants
 .vf-masthead-theme--primary {
-  --vf-masthead__color--background-default: #{set-color(vf-color--blue)};
-  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
+  --vf-masthead__color--background-default: #{color(blue)};
+  --vf-masthead__color--foreground-default: #{ui-color(white)};
 }
 
 .vf-masthead-theme--secondary {
-  --vf-masthead__color--background-default: #{set-color(vf-color--green)};
-  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--black)};
+  --vf-masthead__color--background-default: #{color(green)};
+  --vf-masthead__color--foreground-default: #{ui-color(black)};
 }
 
 .vf-masthead-theme--tertiary {
-  --vf-masthead__color--background-default: #{set-color(vf-color--grey--dark)};
-  --vf-masthead__color--foreground-default: #{set-ui-color(vf-ui-color--white)};
+  --vf-masthead__color--background-default: #{color(grey--dark)};
+  --vf-masthead__color--foreground-default: #{ui-color(white)};
 }
 
 // Style Variants
@@ -96,8 +96,8 @@
 
   .vf-masthead__title {
     align-self: flex-end;
-    background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
-    color: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, set-ui-color(vf-ui-color--white)));
+    background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, ui-color(black)));
+    color: var(--vf-masthead__color--foreground-default, var(--global-theme-fg-color, ui-color(white)));
     display: inline-flex;
     padding: 24px;
     padding-left: 0;
@@ -105,7 +105,7 @@
     z-index: set-layer(vf-z-index--masthead);
 
     &::before {
-      background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, set-ui-color(vf-ui-color--black)));
+      background-color: var(--vf-masthead__color--background-default, var(--global-theme-bg-color, ui-color(black)));
       content: '';
       height: 100%;
       margin-left: calc(50% - calc(50vw - var(--context-margin--inline, 0px)));
@@ -119,8 +119,8 @@
   }
 }
 
-[class*=with-title-block][class*=theme] {
+[class*='with-title-block'][class*='theme'] {
   .vf-masthead__title {
-    --vf-masthead__color--background-default: black;
+    --vf-masthead__color--background-default: set-ui-color(vf-ui-color--black);
   }
 }

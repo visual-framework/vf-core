@@ -1,0 +1,26 @@
+{% if context %}
+  {% set top = context.top %}
+  {% set middle = context.middle %}
+  {% set bottom = context.bottom %}
+  {% set reversed = context.reversed %}
+  {% set spacing = context.spacing %}
+{% endif %}
+
+<div class="vf-flag
+            {%- if top %} vf-flag--top{% endif -%}
+            {%- if middle %} vf-flag--middle{% endif -%}
+            {%- if bottom %} vf-flag--bottom{% endif -%}
+            {%- if reversed %} vf-flag--reversed{% endif -%}
+            {%- if spacing %} vf-flag--{{spacing}}{% endif -%}
+">
+
+  <div class="vf-flag__media">
+    {% block vf_flag__media %}{% endblock %}
+  </div>
+
+  <div class="vf-flag__body">
+    {% block vf_flag__body %}{% endblock %}
+  </div>
+
+</div>
+

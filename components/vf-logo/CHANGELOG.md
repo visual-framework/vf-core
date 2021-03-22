@@ -1,3 +1,8 @@
+### 1.5.1
+
+* Makes logo larger only when using extreme variant.
+* changes any `set-` style functions to cleaner version
+
 ### 1.5.0
 
 * removes some unneeded CSS.

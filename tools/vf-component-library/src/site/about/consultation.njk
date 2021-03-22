@@ -93,16 +93,16 @@ We aim to produce consistency and clear guidance on best practice. We also want 
 <section class="embl-grid embl-grid--has-centered-content">
 {% render '@vf-section-header', {
   "section_title": "The decision process",
-  "id": "decsisions",
+  "id": "decisions",
   "vf_section__content": ""
 } %}
 <div class="vf-content">
 
 {% markdown %}
 
-1. Meetings on video call with agenda
-      - Meet quarterly (potentially monthly, if needed)
-      - Discuss changes that have already occured, and new requests
+1. Quarterly virtual meetings
+      - Agenda-driven discussions
+      - Discuss changes that have already occurred, and new requests
       - Establish goals, priorities for next period of time
 1. Decisions stored in the VF documentation
       - What was agreed
@@ -115,18 +115,56 @@ At a high level it [follows this flow diagram](https://coggle.it/diagram/V0hkiP9
 
 ### Who
 
-- VF core maintainers (Ken, Stu)
-- EMBL Communications (notably Digital and Design)
-- EMBL-EBI Web Development and UX
-- Nominated service representatives (and those interested)
+- VF core maintainers
+- EMBL Communications' Digital and Design teams
+- EMBL-EBI Web Development, UX and Communications teams
+- Nominated service representatives
   - Relationship with EMBL-EBI Web Guidelines Committee
 - The requestor(s) of a new component or change
 
-#### What if...
+### When
 
-My idea gets rejected? The agreed implemention doesn't cover my needs?
+In addition to the quarterly consultation, we meet on regular basis in three channels:
 
-Even if your need can't be acconomidated in the global VF repositiory, You can still [create and use a custom component in your local project]({{ '/building' | url }}). You can also share that component on npm for others to use.
+- Design consultation, every other Monday
+- UX consultation, every other Tuesday
+- Technical consultation, monthly on the first Thursday
+
+These form initial discussion and debate on new ideas before they are further tested and actioned on the GitHub issue queue.
+
+{% endmarkdown %}
+
+</div>
+</section>
+
+<section class="embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "How to propose",
+  "id": "propose",
+  "vf_section__content": ""
+} %}
+<div class="vf-content">
+
+{% markdown %}
+
+If you have an idea you'd like to suggest, the best places to begin are:
+
+- [raise the topic on Slack](https://visual-framework.slack.com/join/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ#/)
+- [create a conversation on GitHub](https://github.com/visual-framework/vf-core/discussions/)
+- If you have a more formal request, you can email it to ken.hawkins [at] embl.de.
+
+In any case we'll help you convert it to an actionable proposal for the correct group of consultation.
+
+### What if my idea gets rejected?
+
+The agreed implementation doesn't cover my needs?
+
+Even if your need can't be accommodated:
+
+- the Visual Framework accommodate customisation at the edge (in Sass or JavaScript) or core changes (by bringing your own build process or design tokens)
+- you can [create and use a custom component in your local project]({{ '/building' | url }}) and share the component on npm for others to use
+
+The Visual Framework allows "local rule". You won't be blocked from adding and overriding components.
 
 {% endmarkdown %}
 </div>

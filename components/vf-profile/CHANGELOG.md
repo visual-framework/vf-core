@@ -1,3 +1,7 @@
+### 1.2.1
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.2.0
 
 * adds loading="lazy" to the img element for better performance

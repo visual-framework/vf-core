@@ -12,7 +12,7 @@ templateEngineOverride: njk
     <div class="vf-tree__inner | vf-u-padding--200">
       {#- all component list -#}
       {#- we're half-implement vf-tree for now until we can ... things -#}
-      {%- set types = ['layout', 'element', 'block', 'container', 'utility'] -%}
+      {%- set types = ['layout', 'element', 'block', 'form', 'container', 'utility'] -%}
 
       {%- for type in types -%}
 
@@ -193,9 +193,47 @@ templateEngineOverride: njk
               {# Utility and grid variants have no practical njk or react templates #}
               <details class="vf-details vf-box vf-box--outline">
                 <summary class="vf-details--summary">Nunjucks syntax</summary>
+
+      {% markdown %}
+
+Depending on your environment you'll want to use `render` or `include`. As a rule of thumb: server-side use `include`, precompiled browser use `render`. If you're using [vf-eleventy](https://github.com/visual-framework/vf-eleventy) you should use `include`.
+
+### Using `include`
+
+You'll need to pass a context object from your code or Yaml file ([exampe](https://github.com/visual-framework/vf-eleventy/blob/master/src/site/index.yml)), as well as the path to the Nunjucks template. Nunjucks' `include` is an abstraction of `render` and provides some additional portability.
+
+{# Ideally we could also show the Yaml format here, but that will require additional parsing of the passed `variant.context`. Not impossible, but an additional task #}
+      {% endmarkdown %}
+
+                <pre><code>
+{%- raw %}
+{% set context fromYourYamlFile %}
+- or -
+{% set context = {% endraw %}
+  {{-variant.context | dump(2)}}
+{% raw %} %}
+{% include "../path_to/{% endraw %}{{variant.baseHandle}}/{{variant.baseHandle}}.njk{%- raw %}" %}{% endraw %}
+                </code></pre>
+
+                {# <pre><code>
+                {{-variant.context | dump(2)}}
+                </code></pre> #}
+
+      {% markdown %}
+
+
+### Using `render`
+
+This approach is best for bare-bones Nunjucks environments, such as precompiled templates with the Nunjucks slim runtime where `include` is not be available.
+
+      {% endmarkdown %}
+
+
                 <pre><code>
                 {%- raw %}{% render '@{% endraw %}{{variant.baseHandle}}', {{variant.context | dump(2)}} {% raw %}%}{% endraw %}
                 </code></pre>
+
+
               </details>
 
               {% if component.baseHandle == "vf-card" or component.baseHandle == "vf-button" %}
@@ -203,9 +241,9 @@ templateEngineOverride: njk
                 <summary class="vf-details--summary">React syntax (pre-alpha)</summary>
                 <pre><code>
 import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{{component.baseHandle}}/{{component.baseHandle}}.react.js";
-{{ '<' | escape }}{{ component.baseHandle | camelize(true) }} paramater="value" />
+{{ '<' | escape }}{{ component.baseHandle | camelize(true) }} parameter="value" />
                 </code></pre>
-                <br/><p>For indivdual paramater names and options, see the Nunjucks syntax example. <a href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-extensions-react/README.md">Also follow the React setup guide</a>. Note: React support is in its early pre-alpha stage and not all component are yet supported.</p>
+                <br/><p>For individual parameter names and options, see the Nunjucks syntax example. <a href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-extensions-react/README.md">Also follow the React setup guide</a>. Note: React support is in its early pre-alpha stage and not all component are yet supported.</p>
               </details>
               {% endif %}
             {% endif %}
@@ -227,7 +265,6 @@ import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{
       {% if component.notes %}
       {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
       {% set readmeInstallation = component.notes | string | stringBetween("## Install", "\n## ") %}
-
 
       {% if readmeUsage %}
         <h2 id="usage">Usage</h2>

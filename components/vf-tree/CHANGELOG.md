@@ -1,3 +1,7 @@
+### 1.0.2
+
+* changes any `set-` style functions to cleaner version
+
 ### 1.0.1
 
 * JS linting
