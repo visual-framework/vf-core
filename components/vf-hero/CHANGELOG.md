@@ -1,3 +1,9 @@
+### 3.2.0
+
+* adds thinner `vf-hero--400` variant.
+* fixes `vf-hero__content vf-box` sizing padding calculaton for `vf-hero--800` variant.
+* makes the maximum width of the `vf-hero__content` wider, but make smaller widths `max-content`.
+
 ### 3.1.0
 
 * adds link styles to the `vf-hero__heading`
