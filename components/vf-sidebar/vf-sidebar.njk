@@ -1,15 +1,22 @@
 {# Make sure any variables are listed inside the following if statement #}
 {% if context %}
-  {# {% set vf-sidebar = context.vf-sidebar %} #}
+  {% set sidebar_position = context.sidebar_position %}
+  {% set sidebar_spacing = context.sidebar_spacing %}
+  {% set sidebar__main_content_width = context.sidebar__main_content_width %}
 {% endif %}
 
 <div class="vf-sidebar
-            {%- if sidebar_main == "left" %} vf-sidebar--start
-            {%- elseif sidebar_main == "right" %} vf-sidebar--end
+            {%- if (sidebar_position == "left") or (sidebar_position == "start") %} vf-sidebar--start
+            {%- elseif (sidebar_position == "right") or (sidebar_position == "end") %} vf-sidebar--end
             {%- endif -%}
-            ">
+            {%- if sidebar_spacing %} vf-sidebar--{{sidebar_spacing}}{% endif -%}
+            "
+      {%- if sidebar__main_content_width %}
+      style="--vf-sidebar-width: {{sidebar__main_content_width}};"
+      {%- endif -%}
+>
   <div class="vf-sidebar__inner">
-    {%- if sidebar_main == "right" %}
+    {%- if (sidebar_position == "left") or (sidebar_position == "start") %}
     <div>
       <h1>Hello boys</h1>
     </div>
@@ -19,7 +26,7 @@
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nesciunt distinctio animi earum sint, cupiditate labore voluptate a pariatur maxime beatae dolor odit ducimus saepe? Laboriosam voluptatum delectus natus corporis.</p>
     </div>
 
-    {%- if sidebar_main == "left" %}
+    {%- if (sidebar_position == "right") or (sidebar_position == "end") %}
     <div>
       <h1>Hello boys</h1>
     </div>
