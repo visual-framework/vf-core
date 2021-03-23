@@ -34,13 +34,10 @@ By default the width of the main content is set at `50%` but can be changed with
 | sidebar__position           | left                    | use when the smallest width content (sidebar) is on the left or at the start                                                                                              |
 | sidebar__position           | start                   | use when the smallest width content (sidebar) is on the start or at the left                                                                                              |
 | sidebar__position           | right                   | use when the smallest width content (sidebar) is on the right or at the end                                                                                               |
-| sidebar__position           | end                     | use when the smallest width content (sidebar) is on the end or at the right                                                                                               |
-| sidebar__spacing            | 200                     | gives the space of .5rem between the two child elements                                                                                                                   |
+| sidebar__position           | end                     | use when the smallest width content (sidebar) is on the end or at the right                                                                                               ||
 | sidebar__spacing            | 400                     | gives the space of 1rem between the two child elements                                                                                                                    |
 | sidebar__spacing            | 600                     | gives the space of 1.5rem between the two child elements                                                                                                                  |
 | sidebar__spacing            | 800                     | gives the space of 2rem between the two child elements                                                                                                                    |
-| sidebar__spacing            | 1200                    | gives the space of 3rem between the two child elements                                                                                                                    |
-| sidebar__spacing            | 1600                    | gives the space of 4rem between the two child elements                                                                                                                    |
 | sidebar__main_content_width | Nn%                     | sets the CSS custom property `--vf-sidebar-main-width` on the `vf-sibebar` parent which sets the maximum space the larger width content needs to be before switching from an inline layout to a block layout. This is set in the CSS as 50% by default |
 
 ## Install
