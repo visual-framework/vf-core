@@ -1,3 +1,8 @@
+### 3.4.0
+
+* introduces neutral colours stack Design Tokens.
+* adds deprecation notices to relevant Design Tokens, to be remove in next major version release.
+
 ### 3.3.0
 
 * removes unused link colours

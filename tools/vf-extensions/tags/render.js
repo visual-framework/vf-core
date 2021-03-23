@@ -61,7 +61,7 @@ module.exports = function (nunjucksEngine,fractal) {
               }
               if (highlight) {
                 const hljs = require('highlight.js');
-                html = hljs.highlight(codetype, html).value;
+                html = hljs.highlight(html, {language: codetype, ignoreIllegals: true }).value;
               }
               if (escape) {
                 // escaped by default, so just don't pass a safe string
