@@ -16,7 +16,19 @@ The 'Flag Object', originally created by [Harry Roberts](https://csswizardry.com
 
 The `vf-flag` allows you to determine the vertical alignment of the media and body.
 
-As the layout component is relatively new there are now specific guidelines for when to use or not use the variants of this layout. Simply _be consistent_.
+As the layout component is relatively new there are no specific guidelines for when to use or not use the variants of this layout. Simply _be consistent_.
+
+Even though the `vf-flag` layout has a default spacing design token applied as a CSS custom property fallback it is good practice in the system to use and decalre the spacing CSS class name in your project. Also, you should define the vertical variant too.
+
+
+✅ `<div class="vf-flag vf-flag--middle vf-flag--400">...</div>`
+
+❌ `<div class="vf-flag">...</div>`
+
+❌ `<div class="vf-flag vf-flag--400">...</div>`
+
+❌ `<div class="vf-flag vf-flag--middle">...</div>`
+
 
 | variant name | description                                                           |
 | ------------ | --------------------------------------------------------------------- |
@@ -24,13 +36,9 @@ As the layout component is relatively new there are now specific guidelines for 
 | middle       | aligns the media item and body to the middle of the layout            |
 | bottom       | aligns the media item and body to the bottom of the layout            |
 | reversed     | switches the inline spacing *                                          |
-| 200          | defines the spacing between the media item and body item as `.5rem`   |
 | 400          | defines the spacing between the media item and body item as `1rem`    |
-| 500          | defines the spacing between the media item and body item as `1.25rem` |
 | 600          | defines the spacing between the media item and body item as `1.5rem`  |
 | 800          | defines the spacing between the media item and body item as `2rem`    |
-| 1200         | defines the spacing between the media item and body item as `3rem`    |
-| 1600         | defines the spacing between the media item and body item as `4rem`    |
 
 <sup>*</sup> The content for this variant needs to be switched so the media item follows the body
 ## Install
