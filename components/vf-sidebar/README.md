@@ -12,6 +12,14 @@ You can apply the `vf-sidebar` layout when you have two columns of content with 
 
 By default the width of the main content is set at `50%` but can be changed with the CSS custom property `--vf-sidebar-main-width` which, if using nunjucks can be changed with the yaml key `sidebar__main_content_width`.
 
+Even thought the `vf-sidebar` layout has a default spacing design token applied as a CSS custom property fallback it is good practice in the system to use and decalre the spacing CSS class name in your project.
+
+
+✅ `<div class="vf-sidebar vf-sidebar--400">...</div>`
+
+❌ `<div class="vf-sidebar">...</div>`
+
+
 ### Class Names
 
 | Class Name          | description                                                                                                       | usage                                                                   |
@@ -26,7 +34,7 @@ By default the width of the main content is set at `50%` but can be changed with
 | CSS Custom Property     | Description                                                                                                                |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | --vf-sidebar-main-width | can be used inline on the parent to determine when the layout changes. It sets a minimum width on the larger child element |
-| --vf-sidebar-spacing    | sets the spacing between the two child elements. This is set using a class name `vf-sidebar--Nn`                           |
+| --vf-sidebar-spacing    | sets the spacing between the gitwo child elements. This is set using a class name `vf-sidebar--Nn`                           |
 
 ### Nunjucks and Yaml Key/Value Pairs
 | `nunjucjs`/`yaml` key       | `nunjucjs`/`yaml` value | description                                                                                                                                                               |
