@@ -89,6 +89,27 @@ templateEngineOverride: njk
 
     </h1>
 
+    {% if component.variants.items[0].status.label == "alpha" %}
+      <div class="vf-banner vf-banner--alert vf-banner--danger">
+        <div class="vf-banner__content"><p class="vf-banner__text">This component is in early development and <strong>may not be ready for use</strong> and is <strong>subject to change</strong>.</p></div>
+      </div>
+    {% endif %}
+    {% if component.variants.items[0].status.label == "beta" %}
+      <div class="vf-banner vf-banner--alert vf-banner--warning">
+        <div class="vf-banner__content"><p class="vf-banner__text">This component is ready to be used but is still in active development.</p></div>
+      </div>
+    {% endif %}
+    {% if component.variants.items[0].status.label == "deprecated" %}
+      <div class="vf-banner vf-banner--alert vf-banner--danger">
+        <div class="vf-banner__content"><p class="vf-banner__text">This component has been deprecated, and it is strongly recommned that <strong>not to be used</strong>.</p></div>
+      </div>
+    {% endif %}
+    {% if component.variants.items[0].status.label == "live" %}
+      <div class="vf-banner vf-banner--alert vf-banner--success">
+        <div class="vf-banner__content"><p class="vf-banner__text">This component is ready for use.</p></div>
+      </div>
+    {% endif %}
+
     {# <pre>{{ component | dump(2)}}</pre> #}
 
     {# readme.md #}
