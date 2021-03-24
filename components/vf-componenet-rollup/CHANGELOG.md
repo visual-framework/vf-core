@@ -1,4 +1,4 @@
-### 1.5.0
+### 1.3.0
 
 * changes the vf-form Sass that is imported
 

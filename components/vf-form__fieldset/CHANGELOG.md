@@ -1,4 +1,4 @@
-### 2.0.0-alpha.1
+### 2.0.0-alpha.0
 
 * Moves the `fieldset` outside of `vf-form` folder.
 * Allows the templating of the fieldset
