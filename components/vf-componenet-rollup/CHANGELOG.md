@@ -1,3 +1,7 @@
+### 1.3.1
+
+* adds deprecation comment for `vf-masthead`.
+
 ### 1.3.0
 
 * changes the vf-form Sass that is imported
