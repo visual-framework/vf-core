@@ -1,6 +1,6 @@
 ### 1.2.4
 
-* removes `vf-masthead`.
+* adds deprecation comment for `vf-masthead`.
 
 ### 1.2.3
 
