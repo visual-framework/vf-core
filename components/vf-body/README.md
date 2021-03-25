@@ -8,11 +8,14 @@ The Body component can be used to create a centered layout to add your content. 
 
 ## Usage
 
+The `vf-body` layout should be added to the `body` element in your mark up and therefore should only be added once.
+
+This layout component sets a maximum width to the 'page' and centers it. The maximum width of the page is set as a default to `80em` or `1280px` but can be changed using the CSS custom property `--vf-body-width` if needed. As the web is, by default, a fluid medium the `vf-body` needs to give some inline spacing when the browswer viewport is smaller than `1280px` like on a tablet or mobile device. This is made possible using `padding: 0 1em` which is the same as `padding-left: 1em; padding-right: 1em`.
+
 ### CSS
 
 ```css
 .vf-body {
-  --vf-body-width: 80em;
   display: block;
   margin: 0 auto;
   max-width: 80em;

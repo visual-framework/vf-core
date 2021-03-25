@@ -1,6 +1,7 @@
 ### 1.2.0
 
 * removes `box-sizing: border-box;`
+* adds a little more to the documentation.
 
 ### 1.1.0
 
