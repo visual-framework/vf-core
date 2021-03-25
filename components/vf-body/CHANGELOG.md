@@ -1,3 +1,7 @@
+### 1.2.0
+
+* removes `box-sizing: border-box;`
+
 ### 1.1.0
 
 * Makes the max-width a factor of 16px.
