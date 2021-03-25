@@ -1,36 +1,32 @@
-html:not(.vf-disable-deprecated) {
+{% spaceless %}
+<div
+  class="vf-masthead
+  {%- if mastheadTheme %} vf-masthead-theme--{{mastheadTheme}}{%- endif -%}
 
-  {% spaceless %}
-  <div
-    class="vf-masthead
-    {%- if mastheadTheme %} vf-masthead-theme--{{mastheadTheme}}{%- endif -%}
+  {% if hasTitleBlock %} vf-masthead--with-title-block{% endif %}
 
-    {% if hasTitleBlock %} vf-masthead--with-title-block{% endif %}
-
-    {%- if mastheadImage %} vf-masthead--has-image{% endif %}
-    | vf-u-fullbleed"
-    {% if mastheadImage -%}
-    style="
-      --vf-masthead__bg-image: url({{ mastheadImage }});
-      background-image: var(--vf-masthead__bg-image)" data-vf-js-masthead
-    {%- endif -%}
-  >
-      <div class="vf-masthead__title">
-        <h1 class="vf-masthead__heading">
-          <a href="{{ masthead_href }}" class="vf-masthead__heading__link">{{ masthead_heading }}</a>
-          {%- if masthead_heading_additional -%}
-          <span class="vf-masthead__heading--additional">{{ masthead_heading_additional }}</span>
-          {%- endif -%}
-        </h1>
-        {%- if masthead_subheading -%}
-        <h2 class="vf-masthead__subheading">
-        {% for item in masthead_subheading %}
-          <span class="vf-masthead__subheading__text">{{ item.masthead_subheading_text }}</span>
-        {% endfor %}
-        </h2>
+  {%- if mastheadImage %} vf-masthead--has-image{% endif %}
+  | vf-u-fullbleed"
+  {% if mastheadImage -%}
+  style="
+    --vf-masthead__bg-image: url({{ mastheadImage }});
+    background-image: var(--vf-masthead__bg-image)" data-vf-js-masthead
+  {%- endif -%}
+>
+    <div class="vf-masthead__title">
+      <h1 class="vf-masthead__heading">
+        <a href="{{ masthead_href }}" class="vf-masthead__heading__link">{{ masthead_heading }}</a>
+        {%- if masthead_heading_additional -%}
+        <span class="vf-masthead__heading--additional">{{ masthead_heading_additional }}</span>
         {%- endif -%}
-      </div>
-  </div>
-  {% endspaceless %}
-
-}
+      </h1>
+      {%- if masthead_subheading -%}
+      <h2 class="vf-masthead__subheading">
+      {% for item in masthead_subheading %}
+        <span class="vf-masthead__subheading__text">{{ item.masthead_subheading_text }}</span>
+      {% endfor %}
+      </h2>
+      {%- endif -%}
+    </div>
+</div>
+{% endspaceless %}
