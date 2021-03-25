@@ -1,0 +1,223 @@
+---
+title: Announcing rollup release 2.4.9
+subtitle: Forms, UX, optimisations and what's next.
+date: 2021-03-24 19:26:29
+version: 2.4.9
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+{% markdown %}
+
+In the month of March we've been busy with usability optimisations — particularly on major visual and functional improvements to the form elements — and other new components, fixes and improvements. Read on for more.
+
+{% endmarkdown %}
+
+{% set context = {
+  "component-type": "block",
+  "component_modifier": "vf-links__list--easy",
+  "title": "On this page",
+  "svg": true,
+  "list": [
+
+    {
+      "text": "Uncategorisable",
+      "link_list_href": "#uncategorisable"
+    },
+    {
+      "text": "Form updates",
+      "link_list_href": "#forms"
+    },
+    {
+      "text": "Component library improvements",
+      "link_list_href": "#library"
+    },
+    {
+      "text": "New flag layout component",
+      "link_list_href": "#flag"
+    },
+    {
+      "text": "Enhancements and fixes",
+      "link_list_href": "#enchantments"
+    },
+    {
+      "text": "Chores",
+      "link_list_href": "#chores"
+    }
+  ]
+}
+%}
+{% include blocks.links_list %}
+
+{# macros ---> #}
+{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+
+#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
+
+{% endmacro %}
+
+{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+<!-- Tools don't have pages in the component library -->
+
+#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
+
+{% endmacro %}
+
+{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
+{# endmacros ---/ #}
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+## Uncategorisable updates <a href="#forms" id="uncategorisable"></a>
+
+- Work continues on [a Figma-based design kit](/design-kit) and we [consult on a standard level of accessibility](https://github.com/visual-framework/vf-core/issues/1443) (A vs AA vs AAA). More on both of these in the coming weeks.
+- On 12 April we'll hold our next quarterly Visual Framework consultation with our broad user base and determine priorities for the next three months. We'll do an update on the outcomes and [update our roadmap](/about/roadmap/).
+
+## The one that updates the forms <a href="#forms" id="forms"></a>
+
+The [`vf-form` components](/components/vf-form/) have received major version increments and new alpha releases.
+
+Here's a visual before and after, and below you can read a detailed comparison.
+
+<div class="vf-grid">
+<div>
+
+#### Forms in 2.4.9
+
+<p class="codepen" data-height="565" data-theme-id="light" data-default-tab="result" data-user="khawkins98" data-slug-hash="JjEdgbO" style="height: 565px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="vf-form 2.4.9">
+  <span>See the Pen <a href="https://codepen.io/khawkins98/pen/JjEdgbO">
+  vf-form 2.4.9</a> by Ken Hawkins (<a href="https://codepen.io/khawkins98">@khawkins98</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+</div>
+
+<div>
+
+#### Forms in 2.4.8
+
+<p class="codepen" data-height="565" data-theme-id="light" data-default-tab="result" data-user="khawkins98" data-slug-hash="MWJwNpj" style="height: 565px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="vf-form 2.4.8">
+  <span>See the Pen <a href="https://codepen.io/khawkins98/pen/MWJwNpj">
+  vf-form 2.4.8</a> by Ken Hawkins (<a href="https://codepen.io/khawkins98">@khawkins98</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+</div>
+</div>
+
+Here's a detailed list of the changes visible above, and changes you're not seeing.
+
+#### Style
+
+* We have gone through all the form elements to make sure there is consistency in colour, typography and spacing.
+* We have increased the hover and focus styles to inform the site visitor that they are inside a form input.
+* We have removed placeholder text as a default. Placeholders are usually badly used in place of a label. As all the form inputs require a label using a placeholder brings ‘noise’ that is not needed.
+* This is for every form input except for search. As the Search pattern is relatively well known and the button used ofter refers to the function we allow an HTML placeholder to be used to help define where in the site you are searching.
+* Changes the red to match the system. The agreed EMBL colour system includes tints and shades of red but before this release the form error states had a different tone of red. This update now matches the larger colour system.
+
+#### Code
+
+* Split out the form elements so they all have their own folders rather than a sub-directory of vf-form__core
+* Removed vf-form__core as it is redundant.
+* Created vf-form as the standalone code for a form.
+* Added the vf-stack layout for the vf-form and vf-form__fieldset so labels, helper text, error messages, and inputs are nicely laid out vertically.
+* Added the vf-cluster for when you need to have a set of radio buttons or checkboxes inline.
+* Added more ‘nunjucks’ so you can create forms without needed to write out all of the HTML.
+* Updated the CSS for the necessary style changes.
+
+#### Documentation
+
+* Added usage guidelines to each form element
+* Created code and visual examples of possible permutations of form elements.
+* Added ‘do’ and ‘do not’ use guidelines where appropriate.
+* Split the vf-form out so each form element has it’s own page.
+
+## Improvements to the component library <a href="#forms" id="library"></a>
+
+* adds 'status banners' for components in the documentation page.
+* updates Design Tokens homepage.
+  * adds neutral colour tokens
+* Updates to use 11ty 0.12.1
+* https://github.com/visual-framework/vf-core/pull/1435
+* Adds the form options as their own set of components in the list.
+* https://github.com/visual-framework/vf-core/pull/1390/files
+
+
+## New flag layout component <a href="#forms" id="flag"></a>
+
+{{ notes("vf-flag", "1.0.0-alpha.1", "7f8c68bba5a08f0d5d3d494d5537d728812402d5") }}
+
+* introduces the flag layout component.
+* adds all variants that match positions and spacing.g
+* makes use of nunjucks blocks from the start.
+
+## Enhancements and fixes <a href="#forms" id="enhancements"></a>
+
+{{ notes("vf-hero", "3.2.0", "f1f806b5562c9704787f98fbf157b48bbf7b17c0") }}
+
+* adds thinner `vf-hero--400` variant.
+* fixes `vf-hero__content vf-box` sizing padding calculation for `vf-hero--800` variant.
+* makes the maximum width of the `vf-hero__content` wider, but make smaller widths `max-content`.
+
+{{ notes("vf-design-tokens", "3.4.0", "f767f3a9e86741d58a9b1eb2f13be803596ff1ef") }}
+
+* introduces neutral colours stack Design Tokens.
+* adds deprecation notices to relevant Design Tokens, to be remove in next major version release.
+
+{{ notes("vf-stack", "2.1.0", "e315a49906bfc742d804158071e7b2894a8fcbda") }}
+
+* adds more options: `200`,`500`,`1200`, and `1600` vertical spaces.
+
+{{ notes("vf-search", "2.0.0", "818e4681c0cb341566737c612cc940914109a529") }}
+
+* adds a div around the form content.
+* makes changes to the CSS for `--inline` variant so it's responsive to the parent width.
+
+## Chores <a href="#forms" id="chores"></a>
+
+{{ notesTool("vf-sass-config", "2.5.0", "f767f3a9e86741d58a9b1eb2f13be803596ff1ef") }}
+
+* adds neutral colour tokens function `neutral(Nn)`
+
+{{ notes("vf-card", "2.5.3", "bb1e5bafbf22ecd39214c98a83bc95805928497b") }}
+
+* Corrects fix in 2.5.2 by using `align-content: start;`.
+  * https://github.com/visual-framework/vf-core/issues/1395#issuecomment-801232527
+
+{{ notes("vf-card", "2.5.4", "63535a057c213e0685428c2472c18e1a02597fad") }}
+
+* adds `word-break: break-word;` to text so the text won't exceed the box model.
+
+{{ notesTool("vf-frctl-extensions", "1.0.1", "0925481ea013188db901c1626c1fccfeac30240d") }}
+
+* Updates highlightjs syntax of codeblock tag
+  * https://github.com/visual-framework/vf-core/pull/1435
+  * https://github.com/highlightjs/highlight.js/issues/2277
+
+{{ notes("vf-search-client-side", "1.0.2", "685b98003d83abebfdb33a1590d05ed721ce1cda") }}
+
+* Updates to match v2.0.0 of vf-search--inline
+
+{{ notes("vf-card-container", "3.1.2", "bb1e5bafbf22ecd39214c98a83bc95805928497b") }}
+
+* Updates example to use content of different lengths.
+
+{% endmarkdown %}

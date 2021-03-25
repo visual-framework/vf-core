@@ -38,6 +38,8 @@ If you are using a `vf-form__input` with the `type` attribute as `search` you do
 If your input is `required` there is also CSS used to style the input box when it is not completed. Make use of the label available if the form is sent to the server for validation (using `<p class="vf-form__label vf-form__label--required">...</p>`).
 
 Group your `vf-form__input`s using a `vf-form__fieldset` with a relevant lable if appropriate.
+
+Due to how browsers handle the `reqiured` attribute in HTML, a form that has this attribute but is empty often becomes automatically `invalid`. To stop this but have the ability to show that a form field is 'invalid' we can use the modifier class `vf-form__input--is-invalid`.
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-form__input` with this command.

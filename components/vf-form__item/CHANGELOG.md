@@ -1,4 +1,4 @@
-### 3.0.0-alpha.1
+### 3.0.0-alpha.0
 
 * reworks the input wrapper to make more use of nunjucks
 * restyles the input wrapper to match latest design direction

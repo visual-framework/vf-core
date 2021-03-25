@@ -1,3 +1,7 @@
+### 3.0.0
+
+* removes all the things for the `vf-masthead`.
+* adds placeholder in the README.md to point to `vf-hero`.
 ### 2.0.2
 
 * Fixes CSS to match stylelint rules.

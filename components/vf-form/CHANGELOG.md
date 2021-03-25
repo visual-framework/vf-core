@@ -1,4 +1,4 @@
-### 2.0.0-alpha.1
+### 2.0.0-alpha.0
 
 * removes `vf-form__core` as a thing and shows example of how to make a form.
 

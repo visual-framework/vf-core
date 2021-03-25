@@ -1,3 +1,7 @@
+### 2.1.1
+
+* adds usage guideline for inlcude the default `vf-stack` and the size variant.
+
 ### 2.1.0
 
 * adds more options: `200`,`500`,`1200`, and `1600` vertical spaces.

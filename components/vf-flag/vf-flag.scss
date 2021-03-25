@@ -1,0 +1,82 @@
+// vf-flag
+
+@import 'package.variables.scss';
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-flag/vf-flag.scss';
+
+.vf-flag{
+  display: table;
+  width: auto;
+}
+
+.vf-flag__media {
+  display: table-cell;
+  padding-right: space(400);
+  padding-right: var(--vf-flag--spacing, #{space(400)});
+
+  > * {
+    display: block;
+  }
+}
+
+.vf-flag__body {
+  display: table-cell;
+  width: 100%;
+}
+
+.vf-flag__body,
+.vf-flag__media {
+  .vf-flag--top & {
+    vertical-align: top;
+  }
+
+  .vf-flag--middle & {
+    vertical-align: middle;
+  }
+
+  .vf-flag--bottom & {
+    vertical-align: bottom;
+  }
+
+  .vf-flag--reversed & {
+    padding-left: space(400);
+    padding-left: var(--vf-flag--spacing, #{space(400)});
+    padding-right: 0 !important;
+  }
+}
+
+.vf-flag--200 {
+  --vf-flag--spacing: #{space(200)};
+}
+
+.vf-flag--400 {
+  --vf-flag--spacing: #{space(400)};
+}
+
+.vf-flag--500 {
+  --vf-flag--spacing: #{space(500)};
+}
+
+.vf-flag--600 {
+  --vf-flag--spacing: #{space(600)};
+}
+
+.vf-flag--800 {
+  --vf-flag--spacing: #{space(800)};
+}
+
+.vf-flag--1200 {
+  --vf-flag--spacing: #{space(1200)};
+}
+
+.vf-flag--1600 {
+  --vf-flag--spacing: #{space(1600)};
+}

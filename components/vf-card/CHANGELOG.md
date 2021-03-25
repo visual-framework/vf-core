@@ -1,3 +1,7 @@
+### 2.5.4
+
+* adds `word-break: break-word;` to text so the text won't exceed the box model.
+
 ### 2.5.3
 
 * Corrects fix in 2.5.2 by using `align-content: start;`.

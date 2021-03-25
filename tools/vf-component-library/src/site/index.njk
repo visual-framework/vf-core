@@ -9,15 +9,31 @@ layout: layouts/base.njk
 {# Intro #}
 {% render '@vf-intro', {
   "vf_intro_heading": "The Visual Framework",
-  "vf_intro_lede": "Good defaults for life science websites, plus compatibility with existing CSS and JS. Bring your Bootstrap, React or vanilla code base.",
+  "vf_intro_lede": "Good defaults for life science websites, plus compatibility with existing CSS and JS. ",
   "vf_intro_subheading": "",
   "vf_intro_text": [
-    '<a href="about" class="vf-button vf-button--primary">Learn more</a> or <a class="vf-button vf-button--primary vf-button--outline" href="guidance/discussing-the-vf/">Get help</a>'
+    'Bring your Bootstrap, React or vanilla code base. The VF will not break your existing code.',
+    '<a href="about" class="vf-link">Learn more</a>, <a href="/building" class="vf-link">build something</a> or <a class="vf-link" href="guidance/discussing-the-vf/">get help</a>.'
   ],
   "vf_intro_badge": false
 } %}
-
 </section>
+
+    {# '<a href="about" class="vf-button vf-button--primary">Learn more</a> or <a class="vf-button vf-button--primary vf-button--outline" href="guidance/discussing-the-vf/">Get help</a>' #}
+
+<section class="embl-grid embl-grid--has-centered-content">
+<div></div>
+{% render '@vf-search-client-side--default', {
+  "search_client_prompt": "Search components and documentation",
+  "search_client_button": true,
+  "search_client_button_text": "Search",
+  "search_client_action": "/search/",
+  "search_client_results": false
+} %}
+<div></div>
+</section>
+
+{% render '@vf-divider' %}
 
 {# Installation #}
 <section class="embl-grid embl-grid--has-centered-content">
@@ -113,6 +129,8 @@ layout: layouts/base.njk
     {% endmarkdown %}
   </div>
 </section>
+
+{% render '@vf-divider' %}
 
 {# Sections #}
  {# vf-u-background-color--grey--lightest #}

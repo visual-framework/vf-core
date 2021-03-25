@@ -1,3 +1,7 @@
+### 1.0.2
+
+* Updates to match v2.0.0 of vf-search--inline
+
 ### 1.0.1
 
 * Fixes CSS to match stylelint rules.
