@@ -1,0 +1,37 @@
+{# Make sure any variables are listed inside the following if statement #}
+{% if context %}
+  {% set sidebar_position = context.sidebar_position %}
+  {% set sidebar_spacing = context.sidebar_spacing %}
+  {% set sidebar__main_content_width = context.sidebar__main_content_width %}
+{% endif %}
+
+<div class="vf-sidebar
+            {%- if (sidebar_position == "left") or (sidebar_position == "start") %} vf-sidebar--start
+            {%- elseif (sidebar_position == "right") or (sidebar_position == "end") %} vf-sidebar--end
+            {%- endif -%}
+            {%- if sidebar_spacing %} vf-sidebar--{{sidebar_spacing}}{% endif -%}
+            "
+      {%- if sidebar__main_content_width %}
+      style="--vf-sidebar-main-width: {{sidebar__main_content_width}};"
+      {%- endif -%}
+>
+  <div class="vf-sidebar__inner">
+    {%- if (sidebar_position == "left") or (sidebar_position == "start") %}
+    <div>
+      <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/CABANA_group02438.jpg?&width=300" alt="A couple sat on a sofa looking at a laptop">
+    </div>
+    {%- endif -%}
+    <div>
+      <p class="vf-u-type__text-body--2 vf-u-margin--0">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, eum dolorem accusamus omnis ratione ex quidem, ducimus ab explicabo maxime animi ullam numquam nihil dignissimos quam vero. Recusandae, nihil nam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nesciunt distinctio animi earum sint, cupiditate labore voluptate a pariatur maxime beatae dolor odit ducimus saepe? Laboriosam voluptatum delectus natus corporis.</p>
+
+    </div>
+
+    {%- if (sidebar_position == "right") or (sidebar_position == "end") %}
+    <div>
+      <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/CABANA_group02438.jpg?&width=300" alt="A couple sat on a sofa looking at a laptop">
+    </div>
+    {%- endif -%}
+
+  </div>
+
+</div>

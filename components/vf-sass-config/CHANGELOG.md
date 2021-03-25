@@ -1,3 +1,6 @@
+### 2.5.0
+
+* adds neutral colour tokens function `neutral(Nn)`
 ### 2.4.1
 
 * changes any `set-` style functions to cleaner version

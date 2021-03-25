@@ -35,7 +35,7 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 ### 4. Post-release
 
 1. commit and push changes to the `develop` branch
-    - commit message in a format of: `Component release 20200305-01`
+    - commit message in a format of: `Component release 20200324-01`
 1. add a tag"
     - see last tag `git describe --abbrev=0 --tags`
     - add a semantic versioned tag `git tag -a v2.4.8 -m 'Release of precompiled CSS, JS, assets'`

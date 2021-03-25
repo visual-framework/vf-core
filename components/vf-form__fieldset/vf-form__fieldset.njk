@@ -1,0 +1,17 @@
+{% if context %}
+  {% set fieldset_legend = context.fieldset_legend %}
+  {% set fieldset__error = context.fieldset__error %}
+{% endif %}
+
+<fieldset class="vf-form__fieldset{% if inline %} | vf-cluster vf-cluster--400{% else %} | vf-stack vf-stack--400{% endif %}">
+  {%- if fieldset_legend -%}
+  {%- render '@vf-form__legend', { 'context': fieldset_legend } -%}
+  {%- endif -%}
+  {%- if fieldset__error -%}
+  {% render '@vf-form__helper', { 'context': fieldset__error } %}
+  {% endif %}
+
+  {%- if inline %}<div class="vf-cluster__inner">{% endif -%}
+
+  {%- if inline %}</div>{% endif -%}
+</fieldset>

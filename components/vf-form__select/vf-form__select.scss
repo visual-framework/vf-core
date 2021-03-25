@@ -1,0 +1,53 @@
+// vf-form__select
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ */
+
+.vf-form__select {
+  @include set-type(text-body--2);
+
+  /* stylelint-disable */
+  --webkit-appearance: none;
+  appearance: none;
+  /* stylelint-enable */
+  background-color: set-ui-color(vf-ui-color--white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cpath d='M70 110.236a17.332 17.332 0 01-12.306-5.096L2.884 47.502A10.502 10.502 0 1118.116 33.04l49.35 51.968a3.486 3.486 0 005.068 0l49.35-51.968a10.502 10.502 0 1115.232 14.462L82.6 105a17.766 17.766 0 01-12.6 5.236z' fill='%23707372'/%3E%3C/svg%3E");
+  background-position: right 1rem top 50%, 0 0;
+  background-repeat: no-repeat, repeat;
+  background-size: 1.125em;
+  border: 2px solid set-color(vf-color--grey);
+  border-radius: 0;
+  box-sizing: border-box;
+  color: color(grey--dark);
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  padding: map-get($vf-spacing-map, vf-spacing--200);
+  width: 100%;
+
+  &:focus,
+  &:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cpath d='M70 110.236a17.332 17.332 0 01-12.306-5.096L2.884 47.502A10.502 10.502 0 1118.116 33.04l49.35 51.968a3.486 3.486 0 005.068 0l49.35-51.968a10.502 10.502 0 1115.232 14.462L82.6 105a17.766 17.766 0 01-12.6 5.236z' fill='%2354585A'/%3E%3C/svg%3E");
+    border-color: color(grey--dark);
+    box-shadow: 0 0 0 .0625rem color(grey--dark);
+    color: set-ui-color(vf-ui-color--black);
+    outline: 0;
+  }
+
+}
+
+.vf-form__select::-ms-expand {
+  display: none;
+}
+
+
+
+.vf-form__select option {
+  font-weight: normal;
+}
