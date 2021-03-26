@@ -9,22 +9,77 @@ context:
 variants:
   - name: default
     label: Search
-    hidden: false
+    hidden: true
+
+  - name: responsive
+    label: Responsive Search
     context:
-      variant: default
+      responsive: true
       search_action: '#'
       search_autofocus: false
       search_button: Search
       search_label: Search
       search_placeholder: Enter your search terms
-      search_description: 'Here are some tips on how your can search. Examples: <a href="JavaScript:Void(0);" class="vf-link">Cheese</a>, <a href="JavaScript:Void(0);" class="vf-link">Brie</a>. You can also use the <a href="JavaScript:Void(0);" class="vf-link">advanced search</a>.'
       search_id: searchitem
       search_value_default: ''
-  - name: autocomplete
-    label: Autocomplete Results
-    hidden: false
+
+  - name: responsive results
+    label: Responsive with Results
     context:
-      variant: default`
+      results: true
+      responsive: true
+      search_action: '#'
+      search_autofocus: false
+      search_button: Search
+      search_label: Search
+      search_placeholder: Enter your search terms
+      search_id: searchitem
+      search_value_default: ''
+
+  - name: mini
+    label: Mini Search
+    context:
+      mini: true
+      search_action: '#'
+      search_autofocus: false
+      search_button: Search
+      search_label: Search
+      search_placeholder: Enter your search terms
+      search_id: searchitem
+      search_value_default: ''
+
+  - name: mini results
+    label: Mini with Results
+    context:
+      mini: true
+      results: true
+      search_action: '#'
+      search_autofocus: false
+      search_button: Search
+      search_label: Search
+      search_placeholder: Enter your search terms
+      search_id: searchitem
+      search_value_default: ''
+
+  - name: container
+    label: Search Container
+    context:
+      responsive: true
+      search__background: "#F3F3F3"
+      search_action: '#'
+      search_autofocus: false
+      search_button: Search
+      search_label: Search
+      search_placeholder: Enter your search terms
+      search_id: searchitem
+      search_value_default: ''
+
+  - name: container results
+    label: Search Container with Results
+    context:
+      responsive: true
+      results: true
+      search__background: "#F3F3F3"
       search_action: '#'
       search_autofocus: false
       search_button: Search

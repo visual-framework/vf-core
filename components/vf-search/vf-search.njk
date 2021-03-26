@@ -16,30 +16,73 @@
   {% set override_class = context.override_class %}
 {%- endif -%}
 
-<form action="{{ search_action }}"
+{%- if search__background %}
+<div class="vf-container vf-container--search | vf-u-fullbleed"
+    {%- if search__background %}
+    style="--vf-container--search__background-color: {{ search__background }};"
+    {%- endif -%}
+>
+{% endif %}
 
-  {%- if id %} id="{{-id-}}"{% endif %}
+  <form action="{{ search_action }}"
 
-  class="vf-u-fullbleed | vf-sidebar vf-sidebar--at-start | vf-form | vf-search {%- if override_class %} | {{override_class}}{% endif -%}">
+    {%- if id %} id="{{-id-}}"{% endif %}
 
-  <div class="vf-sidebar__inner">
+    class="vf-form vf-form--search
+          {%- if responsive %} vf-form--search--responsive{%- endif %}
+          {%- if mini %} vf-form--search--mini{%- endif %} | vf-sidebar vf-sidebar--end"
+  >
+    <div class="vf-sidebar__inner">
 
-    <div class="vf-form__item">
+      <div class="vf-form__item">
 
-      <label class="vf-form__label vf-u-sr-only | vf-search__label" for="{{ search_id }}">{{ search_label }}</label>
-      <input type="search"
-             placeholder="{{ search_placeholder }}"
-             id="{{ search_id }}"
-             {%- if search_value_default %} value="{{ search_value_default }}"{% endif %}
-             class="vf-form__input"
-             {%- if search_autofocus %} autofocus{%- endif %}>
+        <label class="vf-form__label vf-u-sr-only | vf-search__label" for="{{ search_id }}">{{ search_label }}</label>
+        <input type="search"
+              placeholder="{{ search_placeholder }}"
+              id="{{ search_id }}"
+              {%- if search_value_default %} value="{{ search_value_default }}"{% endif %}
+              class="vf-form__input"
+              {%- if search_autofocus %} autofocus{%- endif %}
+              {%- if results %}aria-owns="vf-form--search__results-list"{% endif %}
+        >
+          {%- if results %}
+          <ul
+            id="vf-form--search__results-list"
+            class="vf-list | vf-form--search__results-list | vf-stack vf-stack--custom"
+            aria-labelledby="{{ search_id }}"
+          >
+            <li id="vf-form--search__results-list--01" class="vf-list__item" role="option">
+            abcdef ghijklm nopqr styuv
+            </li>
+            <li id="vf-form--search__results-list--02" class="vf-list__item" role="option">
+            abcdef ghijklm nopqr styuv
+            </li>
+            <li id="vf-form--search__results-list--03" class="vf-list__item" role="option">
+            abcdef ghijklm nopqr styuv
+            </li>
+            <li id="vf-form--search__results-list--04" class="vf-list__item" role="option">
+            abcdef ghijklm nopqr styuv
+            </li>
+            <li id="vf-form--search__results-list--05" class="vf-list__item" role="option">
+            abcdef ghijklm nopqr styuv
+            </li>
+          </ul>
+          {% endif %}
+      </div>
+
+      <button type="submit" class="vf-search__button | vf-button vf-button--primary">
+        <span class="vf-button__text{% if mini %} | vf-u-sr-only{% endif %}">{{- search_button -}}</span>
+
+        {% if (responsive == true) or (mini == true) %}
+        <svg class="vf-icon vf-icon--search-btn | vf-button__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 140 140" width="140" height="140"><g transform="matrix(5.833333333333333,0,0,5.833333333333333,0,0)"><path d="M23.414,20.591l-4.645-4.645a10.256,10.256,0,1,0-2.828,2.829l4.645,4.644a2.025,2.025,0,0,0,2.828,0A2,2,0,0,0,23.414,20.591ZM10.25,3.005A7.25,7.25,0,1,1,3,10.255,7.258,7.258,0,0,1,10.25,3.005Z" fill="#FFFFFF" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"></path></g></svg>
+        {% endif %}
+
+      </button>
+      {% if search_description %}<p class="vf-form__helper">{{ search_description}}</p>{% endif %}
     </div>
 
-    <button type="submit" class="vf-search__button | vf-button vf-button--primary">{{- search_button -}}</button>
+  </form>
 
-    {% if search_description %}<p class="vf-form__helper">{{ search_description}}</p>{% endif %}
-
-  </div>
-
-</form>
-
+{%- if search__background %}
+</div>
+{% endif %}
