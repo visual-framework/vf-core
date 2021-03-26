@@ -10,8 +10,10 @@
 import { vfBanner } from "vf-banner/vf-banner";
 vfBanner();
 
-import { vfMastheadSetStyle } from "vf-masthead/vf-masthead";
-vfMastheadSetStyle();
+// VF Masthead has been deprecated
+// https://github.com/visual-framework/vf-core/pull/1406/
+// import { vfMastheadSetStyle } from "vf-masthead/vf-masthead";
+// vfMastheadSetStyle();
 
 import { vfGaIndicateLoaded } from "vf-analytics-google/vf-analytics-google";
 let vfGaTrackOptions = {

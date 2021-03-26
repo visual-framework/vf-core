@@ -1,3 +1,7 @@
+### 1.5.1
+
+* Fixes a bug with a non-existent @visual-framework/form was required.
+
 ### 1.5.0
 
 * changes the dev dependencies to match their new names and versions
