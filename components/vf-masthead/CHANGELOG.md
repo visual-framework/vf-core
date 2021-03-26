@@ -1,7 +1,13 @@
+### 3.0.1
+
+* Reinstates stub JS so existing vf-scripts.js files won't fail.
+  * https://github.com/visual-framework/vf-core/issues/1453
+
 ### 3.0.0
 
 * removes all the things for the `vf-masthead`.
 * adds placeholder in the README.md to point to `vf-hero`.
+
 ### 2.0.2
 
 * Fixes CSS to match stylelint rules.
