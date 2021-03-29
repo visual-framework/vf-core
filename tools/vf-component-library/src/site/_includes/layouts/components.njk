@@ -86,24 +86,23 @@ templateEngineOverride: njk
           <a class="vf-link" href="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}"><img src="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}.svg" alt="npm version"></a>
           {# <a  href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">npm</a> #}
         {% endif %}
-
     </h1>
 
-    {% if component.variants.items[0].status.label == "alpha" %}
+    {% if component.variants.items[0].status.label == "alpha" -%}
       <div class="vf-banner vf-banner--alert vf-banner--danger">
-        <div class="vf-banner__content"><p class="vf-banner__text">This component is in early development and <strong>may not be ready for use</strong> and is <strong>subject to change</strong>.</p></div>
+        <div class="vf-banner__content"><p class="vf-banner__text">This component version is in early development and <strong>may not be ready for use</strong> and is <strong>subject to change</strong>.</p></div>
       </div>
-    {% endif %}
-    {% if component.variants.items[0].status.label == "beta" %}
+    {%- endif %}
+    {% if component.variants.items[0].status.label == "beta" -%}
       <div class="vf-banner vf-banner--alert vf-banner--warning">
-        <div class="vf-banner__content"><p class="vf-banner__text">This component is ready to be used but is still in active development.</p></div>
+        <div class="vf-banner__content"><p class="vf-banner__text">This component version is ready to be used but is still in active development.</p></div>
       </div>
-    {% endif %}
-    {% if component.variants.items[0].status.label == "deprecated" %}
+    {%- endif %}
+    {% if component.variants.items[0].status.label == "deprecated" -%}
       <div class="vf-banner vf-banner--alert vf-banner--danger">
-        <div class="vf-banner__content"><p class="vf-banner__text">This component has been deprecated, and it is strongly recommned that <strong>not to be used</strong>.</p></div>
+        <div class="vf-banner__content"><p class="vf-banner__text">This component has been deprecated, and it is strongly recommended that <strong>not to be used</strong>. Read below for advice on how to migrate.</p></div>
       </div>
-    {% endif %}
+    {%- endif %}
 
     {# <pre>{{ component | dump(2)}}</pre> #}
 
@@ -166,7 +165,6 @@ templateEngineOverride: njk
         } %}
 
         <hr class="vf-divider vf-u-margin__top--1200 vf-u-margin__bottom--1200" />
-
       {% endif %}
 
       {%- for variant in variants %}
@@ -185,7 +183,6 @@ templateEngineOverride: njk
           <article class="vf-stack vf-stack--lg vf-u-margin__bottom--1200"
                    style="clear: both; /* insurance against strange components */"
           >
-
             {% if component.baseHandle == 'vf-u-fullbleed' %}
               {# these get a fake iframe #}
               <article class="vf-box vf-box--outline" style="
