@@ -1,3 +1,7 @@
+### 2.5.1
+
+* adds neutral colours in the custom variables import file
+
 ### 2.5.0
 
 * adds neutral colour tokens function `neutral(Nn)`

@@ -1,3 +1,9 @@
+### 3.0.0-alpha.0
+
+* updates to code and documentation based on consultation and decisions made.
+* introduces the 'container' version
+* notes that the 'mini' version should not be implemented.
+
 ### 2.0.0
 
 * adds a div around the form content.
