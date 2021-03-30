@@ -1,3 +1,9 @@
+### 3.2.1
+
+* Resolves a Nunjucks bug on `vf_hero_text` from a yaml file under certain contexts.
+* Allows vf_hero_heading_href to be passed in yaml.
+* Gobbles much of the whitespace.
+
 ### 3.2.0
 
 * adds thinner `vf-hero--400` variant.
