@@ -1,3 +1,8 @@
+### 2.5.2
+
+* Fix key name in `vf-color--neutral` lookup.
+  * https://github.com/visual-framework/vf-core/pull/1460
+
 ### 2.5.1
 
 * adds neutral colours in the custom variables import file
