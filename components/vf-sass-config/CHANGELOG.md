@@ -1,3 +1,7 @@
+### 2.5.2
+
+* Fix key name in `vf-color--neutral` lookup.
+
 ### 2.5.1
 
 * adds neutral colours in the custom variables import file
