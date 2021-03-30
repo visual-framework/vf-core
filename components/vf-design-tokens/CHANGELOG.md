@@ -1,3 +1,7 @@
+### 3.4.1
+
+* Adds a gulp command vf-design-tokens alias for developers who easily forget.
+
 ### 3.4.0
 
 * introduces neutral colours stack Design Tokens.
