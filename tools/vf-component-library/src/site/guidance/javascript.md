@@ -30,6 +30,7 @@ Likewise we don't require the use of the Visual Framework JavaScript, instead th
 So to activate the Visual Framework JavaScript for `vf-tabs` we add `data-vf-js-tabs` and `data-vf-js-tabs-content`, like so:
 
 <pre>
+{% markdown %}
 
 ```html
 <div class="vf-tabs">
@@ -52,7 +53,7 @@ So to activate the Visual Framework JavaScript for `vf-tabs` we add `data-vf-js-
   </section>
 </div>
 ```
-
+{% endmarkdown %}
 </pre>
 
 <br/>
