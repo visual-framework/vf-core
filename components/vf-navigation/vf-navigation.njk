@@ -1,12 +1,10 @@
 <nav class="vf-navigation
   {%- if classModifier %} vf-navigation--{{ classModifier }}{% endif -%}
-  {%- if classModifier == 'main' %} | vf-cluster{%- endif -%}
-  {%- if classModifier == 'additional' %} | vf-u-fullbleed{%- endif -%}
-  ">
+  {%- if classModifier == 'additional' %} | vf-u-fullbleed{% else %} | vf-cluster{%- endif -%}">
   {% if heading %}
   <h3 class="vf-navigation__heading">{{ heading }}</h3>
   {% endif %}
-  <ul class="vf-navigation__list | vf-list--inline | vf-cluster__inner">
+  <ul class="vf-navigation__list | vf-list | vf-cluster__inner">
     {% for item in navigation %}
     <li class="vf-navigation__item">
       <a
