@@ -1,3 +1,9 @@
+{%- if context -%}
+  {% set classModifier = context.classModifier %}
+  {% set heading = context.heading %}
+  {% set navigation = context.navigation %}
+{%- endif -%}
+
 <nav class="vf-navigation
   {%- if classModifier %} vf-navigation--{{ classModifier }}{% endif -%}
   {%- if classModifier == 'additional' %} | vf-u-fullbleed{% else %} | vf-cluster{%- endif -%}">
