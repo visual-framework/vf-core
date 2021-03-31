@@ -1,4 +1,4 @@
-### 3.0.0
+### 3.0.0-beta.0
 
 * deprecated the `--aditional` variant.
 * removes `--main` and `--global` Sass files, incoroprating them into the base stylesheet.
