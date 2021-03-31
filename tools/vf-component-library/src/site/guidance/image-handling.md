@@ -7,6 +7,7 @@ tags:
   - posts
   - guidance
 layout: layouts/section.njk
+templateEngineOverride: njk, md
 ---
 
 <br/>

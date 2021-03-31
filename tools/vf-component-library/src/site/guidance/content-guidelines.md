@@ -8,6 +8,7 @@ tags:
   - posts
   - guidance
 layout: layouts/section.njk
+templateEngineOverride: njk, md
 ---
 
 ### Read more and click here <a id="read-more"></a>

@@ -8,6 +8,7 @@ tags:
   - posts
   - guidance
 layout: layouts/section.njk
+templateEngineOverride: njk, md
 ---
 
 The `vf-core` project is being led by [EMBL](//www.embl.org) where British English is used, we're also aware that most code is American English (`colour` vs `color`); so:
