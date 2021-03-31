@@ -1,3 +1,7 @@
+### 1.7.2
+
+* adds deprecation notices around the `--phase` variant.
+
 ### 1.7.1
 
 * changes any `set-` style functions to cleaner version

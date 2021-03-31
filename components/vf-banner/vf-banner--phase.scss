@@ -1,28 +1,30 @@
-.vf-banner--phase {
-  background-color: $vf-phase-banner-color--background;
+html:not(.vf-disable-deprecated) {
+  @warn 'This variant has been deprecated, please use the --notice variant of `vf-banner';
 
-  margin: 16px 0;
+  .vf-banner--phase {
+    background-color: $vf-phase-banner-color--background;
 
-  .vf-banner__text,
-  [class*='vf-text'] { // as of 1.0.4 use of vf-text is not recommended and is subject to future removal
-    color: $vf-phase-banner-color--text;
-    margin: 0; // makes the text have no margin so the parent component defines the spacing
+    margin: 16px 0;
 
-    & .vf-banner__link,
-    & .vf-link {
-      color: $vf-banner-color--link;
+    .vf-banner__text,
+    [class*='vf-text'] { // as of 1.0.4 use of vf-text is not recommended and is subject to future removal
+      color: $vf-phase-banner-color--text;
+      margin: 0; // makes the text have no margin so the parent component defines the spacing
+
+      & .vf-banner__link,
+      & .vf-link {
+        color: $vf-banner-color--link;
+      }
+    }
+
+    .vf-banner__content {
+      display: flex;
+    }
+
+    .vf-button {
+      @media (min-width: $vf-breakpoint--lg) {
+        margin-left: auto;
+      }
     }
   }
-
-  .vf-banner__content {
-    display: flex;
-  }
-
-  .vf-button {
-    @media (min-width: $vf-breakpoint--lg) {
-      margin-left: auto;
-    }
-  }
-
-
 }
