@@ -1,3 +1,11 @@
+### 3.0.0-beta.0
+
+* deprecated the `--aditional` variant.
+* removes `--main` and `--global` Sass files, incoroprating them into the base stylesheet.
+* tidies up quite a bit of CSS.
+* makes use of `vf-cluster` for layout in the markup.
+* adds some documentation.
+
 ### 2.2.2
 
 * Fixes CSS to match stylelint rules.

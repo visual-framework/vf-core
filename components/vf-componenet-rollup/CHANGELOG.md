@@ -1,3 +1,7 @@
+## 1.4.0
+
+* removes navigation variants as they're now part of base Sass file.
+
 ### 1.3.1
 
 * Adds deprecation comment for `vf-masthead`.
