@@ -7,6 +7,7 @@ tags:
   - posts
   - guidance
 layout: layouts/section.njk
+templateEngineOverride: njk, md
 ---
 
 The Visual Framework isn't intended as a general-purpose JavaScript solution, however we know it is helpful that a minimal amount of basic functionality is supported.
