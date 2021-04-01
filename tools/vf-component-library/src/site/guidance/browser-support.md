@@ -7,6 +7,7 @@ tags:
   - posts
   - guidance
 layout: layouts/section.njk
+templateEngineOverride: njk, md
 ---
 
 For browser support, aim for content and functionality to be unobstructed on browsers released within the last five years and have JavaScript enabled; this is represents virtually all users of the EMBL sites (in excess of 99.9%).
