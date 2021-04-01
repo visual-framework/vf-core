@@ -1,3 +1,8 @@
+### 1.1.2
+
+* Implements updated vf-search markup.
+* Changes a few pages on how it works with nunjucks and markdown.
+
 ### 1.1.0
 
 * updates Design Tokens homepage.
