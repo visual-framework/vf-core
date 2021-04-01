@@ -1,4 +1,4 @@
-### 3.0.0-alpha.0
+### 2.0.0-alpha.0
 
 * Updates to replace v2.0.0 of vf-search--inline with `vf-form--search vf-form--search--responsive`
 ### 1.0.2
