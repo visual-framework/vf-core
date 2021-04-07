@@ -1,6 +1,7 @@
 ### 1.0.9
 
 * Improve JS module import support.
+  * https://github.com/visual-framework/vf-core/pull/1476/
 
 ### 1.0.8
 
