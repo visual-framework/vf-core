@@ -1,3 +1,7 @@
+### 2.5.3
+
+* Adds `mixins/vf-utility-mixins.scss` to index.scss
+
 ### 2.5.2
 
 * Fix key name in `vf-color--neutral` lookup.
