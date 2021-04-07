@@ -1,7 +1,3 @@
-### 1.0.4
-
-* Improve JS module import support.
-
 ### 1.0.3
 
 * changes any `set-` style functions to cleaner version

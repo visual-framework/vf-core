@@ -1,7 +1,3 @@
-### 1.0.2
-
-* Improve JS module import support.
-
 ### 1.0.1
 
 * JS linting

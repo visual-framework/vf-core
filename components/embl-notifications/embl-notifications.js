@@ -1,11 +1,7 @@
 // embl-notifications
 
 // if you need to import any other components' JS to use here
-try {
-  import { vfBanner } from "vf-banner/vf-banner";
-} catch (e) {
-  import { vfBanner } from "../vf-banner/vf-banner";
-}
+import { vfBanner } from "vf-banner/vf-banner";
 
 /**
   * After a notifications has been chosen, build it and insert into the document

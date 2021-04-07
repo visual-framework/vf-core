@@ -1,7 +1,3 @@
-### 1.0.9
-
-* Improve JS module import support.
-
 ### 1.0.8
 
 * Fix a bug when vfBanner or vfTabs are not present
