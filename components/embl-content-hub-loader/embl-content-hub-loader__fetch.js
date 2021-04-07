@@ -1,10 +1,26 @@
 // embl-content-hub-loader__fetch
 
 // load optional dependencies
-import { vfBanner } from "vf-banner/vf-banner";
-import { vfTabs } from "vf-tabs/vf-tabs";
-import { emblConditionalEdit } from "embl-conditional-edit/embl-conditional-edit";
-import { emblNotifications } from "embl-notifications/embl-notifications";
+try {
+  import { vfBanner } from "vf-banner/vf-banner";
+} catch (e) {
+  import { vfBanner } from "../vf-banner/vf-banner";
+}
+try {
+  import { vfTabs } from "vf-tabs/vf-tabs";
+} catch (e) {
+  import { vfTabs } from "../vf-tabs/vf-tabs";
+}
+try {
+  import { emblConditionalEdit } from "embl-conditional-edit/embl-conditional-edit";
+} catch (e) {
+  import { emblConditionalEdit } from "../embl-conditional-edit/embl-conditional-edit";
+}
+try {
+  import { emblNotifications } from "embl-notifications/embl-notifications";
+} catch (e) {
+  import { emblNotifications } from "../embl-notifications/embl-notifications";
+}
 
 /**
  * Fetch html links from content.embl.org
