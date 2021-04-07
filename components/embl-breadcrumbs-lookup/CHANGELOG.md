@@ -1,3 +1,8 @@
+### 1.0.4
+
+* Improve JS module import support.
+  * https://github.com/visual-framework/vf-core/pull/1476/
+
 ### 1.0.3
 
 * changes any `set-` style functions to cleaner version

@@ -1,6 +1,5 @@
 // embl-breadcrumbs-lookup
-
-import { emblContentMetaProperties_Read } from "embl-content-meta-properties/embl-content-meta-properties";
+import { emblContentMetaProperties_Read } from "../embl-content-meta-properties/embl-content-meta-properties";
 
 // to hold the EMBL taxonomy
 var emblTaxonomy = {};

@@ -1,7 +1,7 @@
 // embl-notifications
 
 // if you need to import any other components' JS to use here
-import { vfBanner } from "vf-banner/vf-banner";
+import { vfBanner } from "../vf-banner/vf-banner";
 
 /**
   * After a notifications has been chosen, build it and insert into the document
@@ -14,10 +14,10 @@ function emblNotificationsInject(message) {
   // @todo:
   // - add support in contentHub for extra button text, link
 
-  // preperation
-  message.body = message.body.replace(/<[/]?[p>]+>/g, " "); // no <p> tags allowed in inline messages, preserve a space to not colide words
+  // preparation
+  message.body = message.body.replace(/<[/]?[p>]+>/g, " "); // no <p> tags allowed in inline messages, preserve a space to not collide words
   // add vf-link to link
-  message.body = message.body.replace("<a href=", "<a class=\"vf-banner__link\" href="); // we might need a more clever regex, but this should also avoid links that aleady have a class
+  message.body = message.body.replace("<a href=", "<a class=\"vf-banner__link\" href="); // we might need a more clever regex, but this should also avoid links that already have a class
   // Learn more link is conditionally shown
   if (message.field_notification_link) {
     message.body = `${message.body} <a class="vf-banner__link" href="${message.field_notification_link}">Learn more</a>`;

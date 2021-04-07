@@ -1,3 +1,7 @@
+### 1.1.3
+
+* For JS module imports, use a relative path, as this improves support in some scenarios.
+
 ### 1.1.2
 
 * Add changelog style guidance.
