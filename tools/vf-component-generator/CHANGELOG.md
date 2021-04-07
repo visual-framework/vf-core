@@ -1,6 +1,6 @@
 ### 1.1.3
 
-* For JS module imports, also try a relative path, as this improves support in some scenarios
+* For JS module imports, use a relative path, as this improves support in some scenarios.
 
 ### 1.1.2
 

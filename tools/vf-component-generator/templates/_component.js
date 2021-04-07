@@ -19,13 +19,7 @@
 
 // Uncomment this boilerplate
 // // if you need to import any other components' JS to use here
-// import { vfOthercomponent } from 'vf-other-component/vf-other-component';
-// try {
-//   import { vfOthercomponent } from "vf-other-component/vf-other-component";
-// } catch (e) {
-//   // Also try a relative path, as this improves support in some scenarios
-//   import { vfOthercomponent } from "../vf-other-component/vf-other-component";
-// }
+// import { vfOthercomponent } from vfImportPrefix + '../vf-other-component/vf-other-component';
 //
 //  /**
 //   * The global function for this component
