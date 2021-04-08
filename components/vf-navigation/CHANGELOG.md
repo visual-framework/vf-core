@@ -1,6 +1,8 @@
 ### 3.0.0-beta.1
 
 * Re-release of 3.0.0-beta.0 to fix garbled version number.
+* Fixes a broken Sass file reference.
+  * https://github.com/visual-framework/vf-core/issues/1469
 
 ### 3.0.0-beta.0
 
