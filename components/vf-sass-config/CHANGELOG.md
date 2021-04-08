@@ -1,6 +1,8 @@
 ### 2.5.3
 
 * Adds `mixins/vf-utility-mixins.scss` to index.scss
+* Fixes a broken variable reference.
+  * https://github.com/visual-framework/vf-core/issues/1469
 
 ### 2.5.2
 

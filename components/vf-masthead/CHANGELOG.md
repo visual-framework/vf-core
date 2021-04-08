@@ -2,6 +2,7 @@
 
 * Reinstates stub JS so existing vf-scripts.js files won't fail.
   * https://github.com/visual-framework/vf-core/issues/1453
+* JS linting.
 
 ### 3.0.0
 
