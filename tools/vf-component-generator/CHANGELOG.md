@@ -1,3 +1,7 @@
+### 1.1.4
+
+* Add accessibility section to README.md template.
+
 ### 1.1.3
 
 * For JS module imports, use a relative path, as this improves support in some scenarios.
