@@ -20,36 +20,11 @@
 
 
 .vf-table {
-  background-color: ui-color(white);
+  background-color: neutral(0);
   border-collapse: collapse;
 }
 
-.vf-table__heading {
-  .vf-button--icon {
-    align-items: center;
-    color: currentColor;
-    display: flex;
-    font-weight: 700;
 
-    svg {
-      height: 20px;
-      margin-left: 4px;
-      opacity: 0;
-      padding: 2px;
-    }
-
-    &:hover {
-      svg {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-
-.vf-table--fixed {
-  table-layout: fixed;
-}
 
 .vf-table__caption {
   @include set-type(text-heading--4);
@@ -59,17 +34,29 @@
 
 .vf-table__header {
   background-color: color(grey--lightest);
-
-  .vf-table__heading {
-    padding: 8px 16px;
-  }
 }
 
 .vf-table__heading {
+
   @include set-type(text-heading--5, $custom-margin-bottom: 0);
 
+  padding: 8px 16px;
   text-align: left;
+
+  .vf-button--icon {
+    align-items: center;
+    color: currentColor;
+    display: flex;
+    font-weight: 700;
+
+    svg {
+      height: 20px;
+      margin-left: 4px;
+      padding: 2px;
+    }
+  }
 }
+
 
 .vf-table__cell {
   @include set-type(text-body--2, $custom-margin-bottom: 0);
@@ -78,23 +65,14 @@
   vertical-align: top;
 }
 
-.vf-table--tight {
-  .vf-table__heading {
-    padding: 4px 4px;
-  }
-  .vf-table__cell {
-    padding: 4px 4px;
+.vf-table__row:nth-of-type(even) {
+  background-color: ui-color(grey--light);
+
+  .vf-table--no-strpe  & {
+    background-color: neutral(0);
   }
 }
 
-.vf-table--loose {
-  .vf-table__heading {
-    padding: 16px 24px;
-  }
-  .vf-table__cell {
-    padding: 8px 24px;
-  }
-}
 
 .vf-table__row .vf-table__heading {
   @include set-type(text-heading--5, $custom-margin-bottom: 0);
@@ -102,26 +80,6 @@
   text-align: left;
 }
 
-.vf-table--striped {
-  .vf-table__body {
-    & .vf-table__row:nth-of-type(even) {
-      background-color: ui-color(grey--light);
-    }
-  }
-}
-
-.vf-table--bordered {
-
-  border: 1px solid color(grey);
-
-  .vf-table__heading {
-    border: 1px solid color(grey);
-  }
-
-  .vf-table__cell {
-    border: 1px solid color(grey);
-  }
-}
 
 
 .vf-table__body {
@@ -135,12 +93,12 @@
   text-align: center;
 }
 
+.vf-table__footer {
+  background-color: color(grey--lightest);
+}
 
 // Selectable
 
-.vf-table__cell--selectable {
-  // vertical-align: middle;
-}
 .vf-table__cell--actions {
   .vf-button--icon {
     color: color(blue);
@@ -180,6 +138,7 @@
   }
 }
 
+// Table Actions
 
 .vf-table__actions {
   background-color: color(blue);;
@@ -204,12 +163,51 @@
   }
 }
 
+// Deprecated Variants 04-13-21
+html:not(.vf-disable-deprecated) {
+  .vf-table--bordered {
+    @warn 'This variant has been deprecated';
+    border: 1px solid color(grey);
+    .vf-table__heading {
+      border: 1px solid color(grey);
+    }
+    .vf-table__cell {
+      border: 1px solid color(grey);
+    }
+  }
 
-.vf-table__footer {
-  background-color: color(grey--lightest);
-  border-top: 1px solid ui-color(black);
+  .vf-table--striped {
+    @warn 'This variant has been deprecated and is now the default styling';
+    .vf-table__body {
+      & .vf-table__row:nth-of-type(even) {
+        background-color: ui-color(grey--light);
+      }
+    }
+  }
 
-  .vf-table__cell {
-    padding: 8px 16px;
+  .vf-table--tight {
+    @warn 'This variant has been deprecated';
+    .vf-table__heading {
+      padding: 4px 4px;
+    }
+    .vf-table__cell {
+      padding: 4px 4px;
+    }
+  }
+
+  .vf-table--loose {
+    @warn 'This variant has been deprecated';
+    .vf-table__heading {
+      padding: 16px 24px;
+    }
+    .vf-table__cell {
+      padding: 8px 24px;
+    }
+  }
+
+  .vf-table--fixed {
+    @warn 'This variant has been deprecated';
+    table-layout: fixed;
   }
 }
+
