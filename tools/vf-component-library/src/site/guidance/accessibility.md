@@ -20,13 +20,13 @@ It can seem easy to believe that users with an impairment are rare, but [they ar
 - 7% of working age adults have a severe dexterity difficulty,
 - ... there are also common hearing and learning disabilities.
 
-So when we think about making a quality website, we should focus beyond technical performance metrics, bugs and good looks. The standard of quality also includes the sometime imperceptible usability issues.
+So when we think about making a quality website, we should focus beyond technical performance metrics, bugs and good looks. The standard of quality also includes the sometimes imperceptible usability issues.
 
-For Visual Framework sites we recommend the WCAG 2.1 AA level. This is both the legal level [required by the European Union](https://www.deque.com/blog/eu-web-accessibility-compliance-and-legislation/) (and other national governments) and it is a level that should impose a reasonable amount of effort on develop and design; the Digital Accessibility Centre [summarizes](https://digitalaccessibilitycentre.org/index.php/blog/20-diary/187-the-icing-on-the-cake-the-difference-between-aa-and-aaa-compliance): “AA is accepted as a very good commitment to accessibility”.
+For Visual Framework sites we recommend the WCAG 2.1 AA accesibility level. This is both the legal level [required by the European Union](https://www.deque.com/blog/eu-web-accessibility-compliance-and-legislation/) (and other national governments) and it is a level that should impose a reasonable amount of effort on develop and design. [As the Digital Accessibility Centre summarizes](https://digitalaccessibilitycentre.org/index.php/blog/20-diary/187-the-icing-on-the-cake-the-difference-between-aa-and-aaa-compliance): “AA is accepted as a very good commitment to accessibility”.
 
 ### Sidebar: what-a-cag? <a id="sidebar"></a>
 
-Read at all on web accessibility and you'll see: "[WCAG](https://www.w3.org/TR/WCAG20/)", "AA" and "AAA". The Web Content Accessibility Guidelines [is set of widely recognised recommendations](https://tetralogical.com/articles/wcag-primer/) for making websites and apps accessible to people with disabilities.
+Read at all on web accessibility and you'll see: "WCAG", "AA" and "AAA". [The Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG20/) is set of widely recognised recommendations for making websites and apps accessible to people with disabilities. [The WCAG primer](https://tetralogical.com/articles/wcag-primer/) explains these guidelines and how to use them.
 
 ## An accessible start <a id="start"></a>
 
@@ -40,18 +40,19 @@ This is not a topic we can fully cover in 1000 words, so how can you get started
 
 - [WAVE](https://wave.webaim.org/report#/http://stable.visual-framework.dev/), the Web Accessibility Evaluation Tool, is a free service and [browser extension](https://wave.webaim.org/extension/) to find common errors.
 - [Accessibility Insights](https://accessibilityinsights.io/en/) is a desktop, mobile integration and browser extension from Microsoft.
+- [Set up a screen reader](https://www.codecademy.com/articles/how-to-setup-screen-reader) and use it to test your site.
 
-You can find many more at [The Accessibility Project](https://www.a11yproject.com/resources/#tools).
+You can find many more tools at [The Accessibility Project](https://www.a11yproject.com/resources/#tools).
 
-Automated online tools and browser extensions can help immensely, but they are not everything. We need also spend time familiarising ourselves with the challenges and techniques.
+Automated online tools and browser extensions can help immensely, but they are not everything. We need also to spend time familiarising ourselves with the challenges and techniques.
 
 ### Checklist
 
-In addition to lots of good advice, The Accessibility Project [has a comprehensive checklist](https://www.a11yproject.com/checklist/).
+In addition to lots of good advice, The Accessibility Project [has a comprehensive checklist](https://www.a11yproject.com/checklist/). This checklist uses WCAG as a reference point and can help you check your WCAG compliance. Although the checklist cannot guarantee that your site is accessible, addressing the issues called out in this checklist will help improve the experience for everyone who uses your site.
 
 ### Real humans
 
-When working with your UX colleagues (or doing your own UX planning and testing) spend time trying to recruit testers and participants who have impairments. Or turn on your screen reader
+When working with your UX colleagues (or doing your own UX planning and testing) spend time trying to recruit testers and participants who have impairments.
 
 ## In conclusion ... <a id="conclusion"></a>
 
