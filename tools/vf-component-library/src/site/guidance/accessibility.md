@@ -26,7 +26,7 @@ For Visual Framework sites we recommend the WCAG 2.1 AA level. This is both the 
 
 ### Sidebar: what-a-cag? <a id="sidebar"></a>
 
-Read at all on web accessibility and you'll see: "[WCAG](https://www.w3.org/TR/WCAG20/)", "AA" and "AAA". The The Web Content Accessibility Guidelines [is set of widely recognised recommendations](https://tetralogical.com/articles/wcag-primer/) for making websites and apps accessible to people with disabilities.
+Read at all on web accessibility and you'll see: "[WCAG](https://www.w3.org/TR/WCAG20/)", "AA" and "AAA". The Web Content Accessibility Guidelines [is set of widely recognised recommendations](https://tetralogical.com/articles/wcag-primer/) for making websites and apps accessible to people with disabilities.
 
 ## An accessible start <a id="start"></a>
 
@@ -64,3 +64,5 @@ And remember it's about more than colour: Often discussed is the AA and AAA acce
 ## Related <a id="related"></a>
 
 - [Gov.uk: Understanding accessibility requirements for public sector bodies](https://www.gov.uk/guidance/accessibility-requirements-for-public-sector-websites-and-apps)
+
+- [Gov.uk: Dos and don'ts on designing for accessibility](https://accessibility.blog.gov.uk/2016/09/02/dos-and-donts-on-designing-for-accessibility/)
