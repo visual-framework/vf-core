@@ -1,6 +1,7 @@
 ### 3.2.2
 
 * Allows html (for links) in vf-hero__subheading (and a few other fields) when using the Nunjucks template.
+  * https://github.com/visual-framework/vf-core/pull/1485
 
 ### 3.2.1
 
