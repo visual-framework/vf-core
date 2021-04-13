@@ -1,0 +1,44 @@
+// vf-back-to-top
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+@import 'vf-back-to-top.variables.scss';
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-back-to-top/vf-back-to-top.scss';
+.vf-back-to-top .vf-button {
+
+  // background-image: url('./assets/streamline-icon-arrow-up.svg');
+  background-image: url('../assets/vf-back-to-top/assets/streamline-icon-arrow-up.svg');
+  background-size: cover;
+  // You can utilise CSS custom properites
+  // --thing-text-color: var(--vf-back-to-top-theme-color--foreground, #{set-ui-color(vf-ui-color--black)});
+
+  // The are many mixins:
+  // https://stable.visual-framework.dev/components/detail/vf-sass-config.html
+  // @include set-type(text-body--2);
+
+  // You can also use the design tokens
+  // https://stable.visual-framework.dev/components/detail/vf-design-tokens.html
+  // --otherthing-color: var(--vf-back-to-top-theme-color--foreground, #{map-get($vf-colors-map, vf-color--green--darkest)});
+  // color: var(--otherthing-color);
+}
+
+button {
+  background-color: red;
+}
