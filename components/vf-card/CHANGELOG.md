@@ -1,3 +1,7 @@
+### 2.5.5
+
+* corrects colouring of visited link in heading on striped variant.
+
 ### 2.5.4
 
 * adds `word-break: break-word;` to text so the text won't exceed the box model.
