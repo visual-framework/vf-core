@@ -1,4 +1,4 @@
-### 1.2.0
+### 1.2.0-rc.0
 
 * makes the `--striped` variant the default styling.
 * deprecates `--striped`, `--bordered`, `--tight`, `--loose` variants.

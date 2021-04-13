@@ -24,9 +24,7 @@
   border-collapse: collapse;
 }
 
-.vf-table--fixed {
-  table-layout: fixed;
-}
+
 
 .vf-table__caption {
   @include set-type(text-heading--4);
@@ -42,6 +40,7 @@
 
   @include set-type(text-heading--5, $custom-margin-bottom: 0);
 
+  padding: 8px 16px;
   text-align: left;
 
   .vf-button--icon {
@@ -49,7 +48,6 @@
     color: currentColor;
     display: flex;
     font-weight: 700;
-    padding: 8px 16px;
 
     svg {
       height: 20px;
@@ -69,7 +67,12 @@
 
 .vf-table__row:nth-of-type(even) {
   background-color: ui-color(grey--light);
+
+  .vf-table--no-strpe  & {
+    background-color: neutral(0);
+  }
 }
+
 
 .vf-table__row .vf-table__heading {
   @include set-type(text-heading--5, $custom-margin-bottom: 0);
@@ -160,8 +163,6 @@
   }
 }
 
-
-
 // Deprecated Variants 04-13-21
 html:not(.vf-disable-deprecated) {
   .vf-table--bordered {
@@ -203,4 +204,10 @@ html:not(.vf-disable-deprecated) {
       padding: 8px 24px;
     }
   }
+
+  .vf-table--fixed {
+    @warn 'This variant has been deprecated';
+    table-layout: fixed;
+  }
 }
+
