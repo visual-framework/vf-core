@@ -13,7 +13,7 @@ templateEngineOverride: njk, md
 
 ## Reality <a id="reality"></a>
 
-It can seem easy to believe that users with an impalement are rare, but [they are common](https://www.powermapper.com/blog/website-accessibility-disability-statistics/):
+It can seem easy to believe that users with an impairment are rare, but [they are common](https://www.powermapper.com/blog/website-accessibility-disability-statistics/):
 
 - Dyslexia is measured between 20% to 35%,
 - A form of color blindness is 8% of men,
@@ -51,7 +51,7 @@ In addition to lots of good advice, The Accessibility Project [has a comprehensi
 
 ### Real humans
 
-When working with your UX colleagues (or doing your own UX planning and testing) spend time trying to recruit testers and participants who have impalements. Or turn on your screen reader
+When working with your UX colleagues (or doing your own UX planning and testing) spend time trying to recruit testers and participants who have impairments. Or turn on your screen reader
 
 ## In conclusion ... <a id="conclusion"></a>
 
