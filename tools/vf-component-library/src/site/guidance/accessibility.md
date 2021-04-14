@@ -13,14 +13,9 @@ templateEngineOverride: njk, md
 
 ## Reality <a id="reality"></a>
 
-It can seem easy to believe that users with an impairment are rare, but [they are common](https://www.powermapper.com/blog/website-accessibility-disability-statistics/):
+People vary in their ability to see, hear, read text and use the mouse. For example, at least [1 in 5 people in the UK have a long term illness, impairment or disability](https://www.gov.uk/guidance/accessibility-requirements-for-public-sector-websites-and-apps#understanding-accessibility) that may make it harder for them to use a website. Many more have a temporary disability.
 
-- Dyslexia is measured between 20% to 35%,
-- A form of color blindness is 8% of men,
-- 7% of working age adults have a severe dexterity difficulty,
-- ... there are also common hearing and learning disabilities.
-
-So when we think about making a quality website, we should focus beyond technical performance metrics, bugs and good looks. The standard of quality also includes the sometimes imperceptible usability issues.
+So when we think about making a quality website, we should focus beyond technical performance metrics, bugs and good looks. The standard of quality should also include usability and accessibility so that the site can be used by as many people as possible.
 
 For Visual Framework sites we recommend the WCAG 2.1 AA accesibility level. This is both the legal level [required by the European Union](https://www.deque.com/blog/eu-web-accessibility-compliance-and-legislation/) (and other national governments) and it is a level that should impose a reasonable amount of effort on develop and design. [As the Digital Accessibility Centre summarizes](https://digitalaccessibilitycentre.org/index.php/blog/20-diary/187-the-icing-on-the-cake-the-difference-between-aa-and-aaa-compliance): “AA is accepted as a very good commitment to accessibility”.
 
@@ -44,7 +39,7 @@ This is not a topic we can fully cover in 1000 words, so how can you get started
 
 You can find many more tools at [The Accessibility Project](https://www.a11yproject.com/resources/#tools).
 
-Automated online tools and browser extensions can help immensely, but they are not everything. We need also to spend time familiarising ourselves with the challenges and techniques.
+Automated online tools and browser extensions can help immensely, but they are not everything. We need also to spend time familiarising ourselves with the challenges and techniques, read on for more ideas and approaches. 
 
 ### Checklist
 
