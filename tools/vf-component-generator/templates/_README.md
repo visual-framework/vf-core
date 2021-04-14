@@ -1,7 +1,7 @@
-👋 Hi component authour, you've read the docs, right?
+👋 Hi component author, you've read the docs, right?
 
 - [What's a component](https://stable.visual-framework.dev/developing/components/what-is-a-component/)
-- [Updating, versioning a component](https://stable.visual-framework.dev/developing/components/updating-a-component/)
+- [Updating, versioning a component](https://stable.visual-framework.dev/guidance/versioning-and-component-interoperability/)
 - [Sass and CSS guidelines](https://stable.visual-framework.dev/developing/guidelines/css/)
 - [Theming and variant guidance - TO COME](#tocome)
 - [JavaScript guidelines](https://stable.visual-framework.dev/developing/guidelines/javascript/)

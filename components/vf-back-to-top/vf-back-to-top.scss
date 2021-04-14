@@ -7,7 +7,7 @@
 // If you don't have any Sass, you can trim this block down to:
 // "This page was intentionally left blank"
 
-@import 'package.variables.scss';
+@import "package.variables.scss";
 // Debug information from component's `package.json`:
 // ---
 /*!
@@ -17,15 +17,13 @@
  * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
  */
 
-@import 'vf-back-to-top.variables.scss';
+@import "vf-back-to-top.variables.scss";
 
 // You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
 // @import 'vf-back-to-top/vf-back-to-top.scss';
-.vf-back-to-top .vf-button {
+.vf-back-to-top {
 
-  // background-image: url('./assets/streamline-icon-arrow-up.svg');
-  background-image: url('../assets/vf-back-to-top/assets/streamline-icon-arrow-up.svg');
-  background-size: cover;
+  display: inline;
   // You can utilise CSS custom properites
   // --thing-text-color: var(--vf-back-to-top-theme-color--foreground, #{set-ui-color(vf-ui-color--black)});
 
@@ -39,6 +37,14 @@
   // color: var(--otherthing-color);
 }
 
-button {
-  background-color: red;
+.vf-back-top--floating {
+  position: absolute;
+  top: 100vh;
+  right: 0.25rem;
+}
+
+.vf-back-top--floating .vf-button{
+  position: fixed;
+  position: sticky;
+  top: calc(100vh - 5rem); // may be able to avoid wrapper styles
 }

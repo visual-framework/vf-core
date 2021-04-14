@@ -21,19 +21,28 @@
 // // if you need to import any other components' JS to use here
 // import { vfOthercomponent } from 'vf-other-component/vf-other-component';
 //
-//  /**
-//   * The global function for this component
-//   * @example vfBack-To-Top(firstPassedVar)
-//   * @param {string} [firstPassedVar]  - An option to be passed
-//   */
-// function vfBack-To-Top(firstPassedVar) {
-//   firstPassedVar = firstPassedVar || 'defaultVal';
-//
-// }
-//
-// // If you need to invoke the component by default
-// vfBack-To-Top();
-//
+ /**
+  * JS scroll to top functionality
+  * @example vfBack-To-Top(firstPassedVar)
+  * @param {string} [firstPassedVar]  - An option to be passed
+  */
+export function vfBackToTop() {
+
+  console.log("in scroll to id");
+
+  const links = document.querySelectorAll(".vf-back-to-top");
+  for(let link of links){
+    link.addEventListener('click', (event) => {
+      /* Get required element from data attribute or assume body */
+      const scrollToId = event.target.dataset.vfJsBackToTop;
+      /* Get the element with given id or body if no id provided */
+      const targetElement = scrollToId ? document.getElementById(scrollToId) : document.body;
+      /* Scroll to the element */
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    })
+  }
+}
+
 // // By default your component should be usable with js imports
 // export { vfBack-To-Top };
 //
@@ -43,4 +52,3 @@
 // // import { vfBack-To-Top } from '../components/raw/vf-back-to-top/vf-back-to-top.js';
 // // And, if needed, invoke it
 // // vfBack-To-Top();
-

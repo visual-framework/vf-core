@@ -55,3 +55,6 @@ import { emblNotifications } from "embl-notifications/embl-notifications";
 // emblNotifications();
 
 // No default invokation
+
+import { vfBackToTop } from "vf-back-to-top/vf-back-to-top.js";
+vfBackToTop();

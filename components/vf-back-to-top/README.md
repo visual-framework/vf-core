@@ -1,4 +1,4 @@
-# vf-back-to-top component
+# Back to top component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-back-to-top.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-back-to-top)
 
@@ -6,12 +6,13 @@
 
 ## About
 
-This component appears on page (usually on right bottom) once user scrolls down to x% of the page height.
+This component appears on page (usually on right bottom) once user scrolls down to 100% of the page height.
 It allows users to click on a button labelled "Back to top" or similar, and take user to top of page.
 
 ## Usage
 
-[The dos and don'ts of using this component. Can be many paragraphs and subheadings.]
+Its recommended that use floating variant of this component, which appears at the bottom right of page.
+If you need an inline variant, only use on link - multiple "back to top" links are [not usable](https://www.nngroup.com/articles/back-to-top).
 
 ## Install
 
@@ -23,20 +24,16 @@ $ yarn add --dev @visual-framework/vf-back-to-top
 
 ### JS
 
-[If your component uses JS]
-
 You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 
 ```js
-import { vfcomponentName } from 'vf-back-to-top/vf-back-to-top';
+import { vfBackToTop } from 'vf-back-to-top/vf-back-to-top';
 // Or import directly
 // import { vfcomponentName } from '../components/raw/vf-back-to-top/vf-back-to-top.js';
-vfcomponentName(); // if needed, invoke it
+vfBackToTop(); // invoke it
 ```
 
 ### Sass/CSS
-
-[If your component uses Sass]
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
