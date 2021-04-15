@@ -6,12 +6,12 @@
 
 ## About
 
-This component appears on page (usually on right bottom) once user scrolls down to 100% of the page height.
-It allows users to click on a button labelled "Back to top" or similar, and take user to top of page.
-
+Takes user to top of the current page or to the target element.
+Floating variant of this component appears at right bottom of page once user scrolls down to 100% of the page height.
+Inline variant can be placed anywhere, see usage for details and recommendation.
 ## Usage
 
-Its recommended that use floating variant of this component, which appears at the bottom right of page.
+Floating variant is recommended for this component, which appears floating at the bottom right of page.
 If you need an inline variant, only use on link - multiple "back to top" links are [not usable](https://www.nngroup.com/articles/back-to-top).
 
 ## Install
@@ -29,7 +29,7 @@ You should import this component in `./components/vf-component-rollup/scripts.js
 ```js
 import { vfBackToTop } from 'vf-back-to-top/vf-back-to-top';
 // Or import directly
-// import { vfcomponentName } from '../components/raw/vf-back-to-top/vf-back-to-top.js';
+// import { vfBackToTop } from '../components/raw/vf-back-to-top/vf-back-to-top.js';
 vfBackToTop(); // invoke it
 ```
 
