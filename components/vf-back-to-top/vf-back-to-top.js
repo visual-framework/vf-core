@@ -8,9 +8,13 @@
 export function vfBackToTop() {
 
   // add click handler on ALL of the "Back to top" links on page
-  const links = document.querySelectorAll(".vf-back-to-top");
+  const links = document.querySelectorAll("[data-vf-js-back-to-top]");
   for (let link of links) {
     link.addEventListener("click", (event) => {
+
+      // if target element has href defined, prevent it from navigating. Href is a non-js fallback
+      event.preventDefault();
+
       // we get scroll target if from data param of element
       const scrollToId = event.target.dataset.scrollToId;
       // Get the element with given id or body if no id provided
@@ -26,7 +30,7 @@ export function vfBackToTop() {
   window.addEventListener("DOMContentLoaded", () => {
 
     //only handle first floating element, ignore additional elements
-    const floatingElement = document.querySelector(".vf-back-top--floating");
+    const floatingElement = document.querySelector("[data-vf-js-back-to-top-floating]");
 
     //hide initially
     setVisible(floatingElement, false);

@@ -2,17 +2,17 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-back-to-top.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-back-to-top)
 
-"Back to top" visual framework component
-
 ## About
 
 Takes user to top of the current page or to the target element.
-Floating variant of this component appears at right bottom of page once user scrolls down to 100% of the page height.
-Inline variant can be placed anywhere, see usage for details and recommendation.
+
 ## Usage
 
-Floating variant is recommended for this component, which appears floating at the bottom right of page.
-If you need an inline variant, only use on link - multiple "back to top" links are [not usable](https://www.nngroup.com/articles/back-to-top).
+#### Floating variant
+Floating variant is recommended for this component, which appears floating at the bottom right of page. It appears at right bottom of page once user scrolls down to 100% of the page height.
+
+#### Inline variant
+Inline variant can be placed anywhere. Only use on Inline component instance - multiple "back to top" links are [not usable](https://www.nngroup.com/articles/back-to-top).
 
 ## Install
 

@@ -28,7 +28,11 @@ export function VFBackToTop({
     };
   }, [type]);
 
-  const handleOnClick = () => {
+  const handleOnClick = (event) => {
+
+    // if target element has href defined, prevent it from navigating. Href is a non-js fallback
+    event.preventDefault();
+
     // Get the element with given id or body if no id provided
     const targetElement = scrollToId
       ? document.getElementById(scrollToId)
@@ -42,14 +46,15 @@ export function VFBackToTop({
   return (
     <div className={`vf-back-to-top vf-back-top--${type}`}>
       {visible && (
-        <button
+        <a
+          href={scrollToId}
           onClick={handleOnClick}
           className="vf-button vf-button--primary vf-button--sm"
           aria-label=" Back to top "
         >
           <span className="vf-button__text | vf-u-sr-only">Back to top</span>
           <Icon /> {text}
-        </button>
+        </a>
       )}
     </div>
   );
