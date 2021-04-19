@@ -4,15 +4,19 @@
 
 ## About
 
-Takes user to top of the current page or to the target element.
+An anchor or JavaScript button to scroll the  user to top of the current page, or to a target element.
 
 ## Usage
 
-#### Floating variant
-Floating variant is recommended for this component, which appears floating at the bottom right of page. It appears at right bottom of page once user scrolls down to 100% of the page height.
+Only use on component per page, multiple "back to top" links are [not recommended](https://www.nngroup.com/articles/back-to-top).
 
-#### Inline variant
-Inline variant can be placed anywhere. Only use on Inline component instance - multiple "back to top" links are [not usable](https://www.nngroup.com/articles/back-to-top).
+### Inline variant
+
+The inline variant can be used without JavaScript and placed at the bottom of content or the page.
+
+### Floating variant
+
+Te floating variant is recommended for this component, which appears floating at the bottom right of page. It will appear once the user has scrolled down to 100% of the page height. This requires JavaScript to function.
 
 ## Install
 
