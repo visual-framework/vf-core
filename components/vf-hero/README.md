@@ -4,6 +4,7 @@
 
 ## About
 
+this is really cool
 The `vf-hero` component is to be used as a visual queue and page header. The `vf-hero` can take a kicker, heading, sub-heading, text content, and a 'call to action' link as needed.
 
 ## Usage
@@ -13,6 +14,7 @@ By default the `vf-hero` makes use of the roundels bacground image. To keep the 
 The `vf-hero` can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`).
 
 IE 11 will get the background colour and the roundels image, it will not paint a different background image if added. This is progressive enhancement.
+
 ### Content
 | Content name | Usage                                                                          | `.yml` key           |
 | ------------ | ------------------------------------------------------------------------------ | -------------------- |
