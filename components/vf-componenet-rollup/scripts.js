@@ -49,6 +49,9 @@ emblContentHub();
 import { emblBreadcrumbs } from "embl-breadcrumbs-lookup/embl-breadcrumbs-lookup";
 emblBreadcrumbs();
 
+import { vfBackToTop } from "vf-back-to-top/vf-back-to-top.js";
+vfBackToTop();
+
 import { emblContentMetaProperties_Read } from "embl-content-meta-properties/embl-content-meta-properties";
 
 import { emblNotifications } from "embl-notifications/embl-notifications";
