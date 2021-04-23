@@ -1,3 +1,7 @@
+### 3.3.3.
+
+* fixes width issue on mobile introduced when making the hero content a little wider.
+
 ### 3.2.2
 
 * Allows html (for links) in vf-hero__subheading (and a few other fields) when using the Nunjucks template.
