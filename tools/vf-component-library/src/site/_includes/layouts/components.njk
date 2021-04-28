@@ -186,11 +186,10 @@ templateEngineOverride: njk
       {% endif %}
     {% endif %}
 
-
     {% if component.notes %}
       {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
       {% if readmeUsage %}
-       <section class="vf-u-margin__top--800">
+        <section class="vf-u-margin__top--800">
           {% render '@vf-heading--display', {
             "type": 1,
             "heading": "Usage",
@@ -202,13 +201,11 @@ templateEngineOverride: njk
         {{ readmeUsage | markdown | safe }}
       {% endif %}
     {% endif %}
+
     {# ---- #}
 
-
     {% if variants %}
-
       {%- for variant in variants %}
-
         {% if variant.isHidden == false%}
           {% if variants | length > 1 %}
             {# If more than 1 variant type, show variant specific details #}
