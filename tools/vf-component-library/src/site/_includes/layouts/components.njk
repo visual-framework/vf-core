@@ -129,8 +129,12 @@ templateEngineOverride: njk
     {# readme.md #}
     {% if component.notes %}
       {% set readmeAbout = component.notes | string | stringBetween("## About", "\n## ") %}
-      {% if readmeAbout %}{{ readmeAbout | markdown | safe }}{% endif %}
+      <p class="vf-lede">
+      {% if readmeAbout %}{{ readmeAbout | markdown | safe | striptags }}{% endif %}
+      </p>
     {% endif %}
+
+    <hr class="vf-divider" />
 
     {# any sub-components, like vf-form #}
     {# @todo, this is still not rendering correctly #}
@@ -179,6 +183,8 @@ templateEngineOverride: njk
 
       {% endif %}
     {% endif %}
+
+    <hr class="vf-divider" />
 
     {% if component.notes %}
       {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
