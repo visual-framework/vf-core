@@ -77,32 +77,52 @@ templateEngineOverride: njk
     {# for any content set in the page, this is most likely blank #}
     {{ content | safe }}
 
-    <h1>
-      {{ component.title }}
-        {# {{component.baseHandle}} #}
-        {% if collectionComponents %}
-        {% else %}
-          <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/components/{{component.baseHandle}}"><img src="https://img.shields.io/badge/github-{{component.baseHandle | replace("-","--")}}-blue" alt="github location" /></a>
-          <a class="vf-link" href="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}"><img src="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}.svg" alt="npm version"></a>
-          {# <a  href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">npm</a> #}
-        {% endif %}
-    </h1>
-
     {% if component.variants.items[0].status.label == "alpha" -%}
       <div class="vf-banner vf-banner--alert vf-banner--danger">
-        <div class="vf-banner__content"><p class="vf-banner__text">This component version is in early development and <strong>may not be ready for use</strong> and is <strong>subject to change</strong>.</p></div>
+        <div class="vf-banner__content">
+        {% set context = {
+          "text": "alpha",
+          "theme": "tertiary"
+          } %}
+        {% include "vf-core-components/vf-badge/vf-badge.njk" %}
+        <p class="vf-banner__text">
+        This version is in early development and is subject to change and therefore <strong>not ready for wide use</strong>. There may be other <a class="vf-banner__link" href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">stable versions available</a>.
+        </p></div>
       </div>
     {%- endif %}
     {% if component.variants.items[0].status.label == "beta" -%}
       <div class="vf-banner vf-banner--alert vf-banner--warning">
-        <div class="vf-banner__content"><p class="vf-banner__text">This component version is ready to be used but is still in active development.</p></div>
+        <div class="vf-banner__content"><p class="vf-banner__text">
+        {% set context = {
+          "text": "beta",
+          "theme": "tertiary"
+          } %}
+        {% include "vf-core-components/vf-badge/vf-badge.njk" %}
+        This component version is ready to be used but is still in active development.</p></div>
       </div>
     {%- endif %}
     {% if component.variants.items[0].status.label == "deprecated" -%}
       <div class="vf-banner vf-banner--alert vf-banner--danger">
-        <div class="vf-banner__content"><p class="vf-banner__text">This component has been deprecated, and it is strongly recommended that <strong>not to be used</strong>. Read below for advice on how to migrate.</p></div>
+        <div class="vf-banner__content"><p class="vf-banner__text">
+        {% set context = {
+          "text": "deprecated",
+          "theme": "tertiary"
+          } %}
+        {% include "vf-core-components/vf-badge/vf-badge.njk" %}
+        It is strongly recommended that this <strong>not to be used</strong>. Read below for advice on how to migrate.</p></div>
       </div>
     {%- endif %}
+
+    <h1>
+      {{ component.title }}
+      {# {{component.baseHandle}} #}
+      {% if collectionComponents %}
+      {% else %}
+        <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/components/{{component.baseHandle}}"><img src="https://img.shields.io/badge/github-{{component.baseHandle | replace("-","--")}}-blue" alt="github location" /></a>
+        <a class="vf-link" href="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}"><img src="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}.svg" alt="npm version"></a>
+        {# <a  href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">npm</a> #}
+      {% endif %}
+    </h1>
 
     {# <pre>{{ component | dump(2)}}</pre> #}
 
@@ -131,19 +151,12 @@ templateEngineOverride: njk
       </ul>
     {% endif %}
 
+    {# Table of contents #}
+
     {% if variants %}
       {% if variants | length > 1 %}
         {# If more than 1 variant type, show a heading #}
-        <section class="vf-u-margin__top--800">
-          {% render '@vf-heading--display', {
-            "type": 1,
-            "heading": "Variants",
-            "id": "variants",
-            "style": "invert",
-            "tags": "h2"
-          } %}
-        </section>
-
+        <h3 id="variants">Variants</h3>
         {# Variant table of contents #}
         {%- set variantList = [] -%}
         {%- for variant in variants %}
@@ -164,8 +177,28 @@ templateEngineOverride: njk
             variantList
         } %}
 
-        <hr class="vf-divider vf-u-margin__top--1200 vf-u-margin__bottom--1200" />
       {% endif %}
+    {% endif %}
+
+    {% if component.notes %}
+      {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
+      {% if readmeUsage %}
+       <section class="vf-u-margin__top--800">
+          {% render '@vf-heading--display', {
+            "type": 1,
+            "heading": "Usage",
+            "id": "usage",
+            "style": "invert",
+            "tags": "h2"
+          } %}
+        </section>
+        {{ readmeUsage | markdown | safe }}
+      {% endif %}
+    {% endif %}
+    {# ---- #}
+
+
+    {% if variants %}
 
       {%- for variant in variants %}
 
@@ -272,13 +305,7 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
       {% markdown %}
 
       {% if component.notes %}
-      {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
       {% set readmeInstallation = component.notes | string | stringBetween("## Install", "\n## ") %}
-
-      {% if readmeUsage %}
-        <h2 id="usage">Usage</h2>
-        {{ readmeUsage | markdown | safe }}
-      {% endif %}
 
       {% if readmeInstallation %}
       <details class="vf-details">
@@ -287,7 +314,7 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
       </details>
       {% endif %}
 
-      {% if 'CHANGELOG.md'|length %}
+      {% if 'CHANGELOG.md' | length %}
       {% markdown %}
       <div class="vf-stack vf-stack--custom" style="--vf-stack-margin--custom: .5rem;">
       <h3>Changelog</h3>
@@ -298,7 +325,6 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
       </details>
       </div>
       {% endmarkdown %}
-
       {% endif %}
 
     {% else %}
