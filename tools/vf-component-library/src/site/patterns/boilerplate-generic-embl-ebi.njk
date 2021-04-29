@@ -1,6 +1,6 @@
 ---
-title: Generic page at EMBL-EBI
-subtitle: Use this boilerplate pattern for generic content-focused pages at EMBL-EBI.
+title: Content page (with the EMBL-EBI header, footer)
+subtitle: Content-focused pages with the EMBL-EBI header and footer.
 section: patterns
 date: 2018-08-22 12:24:50
 tags: posts
@@ -17,7 +17,7 @@ layout: layouts/boilerplate.njk
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
 
   <!-- See the VF Favicon docs: https://stable.visual-framework.dev/components/vf-favicon/ -->
-  {% render "@vf-favicon" %}
+  {% render "@embl-favicon" %}
   <!-- See the embl-content-meta-properties docs: https://stable.visual-framework.dev/components/embl-content-meta-properties/ -->
   {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "EMBL-EBI", "meta_what": "research", "meta_active": "what"} %}
 
@@ -40,19 +40,16 @@ layout: layouts/boilerplate.njk
   <!-- See the VF Breadcrumbs docs: https://stable.visual-framework.dev/components/embl-breadcrumbs-lookup/ -->
   {% include "./templates/breadcrumbs-boilerplate.njk" %}
 
-
-
   <!-- See the VF Hero docs: https://stable.visual-framework.dev/components/vf-hero/ -->
   {% set context = {
     "vf_hero_kicker": "<a href=\"//www.ebi.ac.uk/about\">About EMBL-EBI</a> | Structural Biology",
     "spacing": 400,
-    "vf_hero_heading": title,
-    "vf_hero_subheading": subtitle + "Career profiles and life at EMBL-EBI",
+    "vf_hero_heading": "Sample content page",
+    "vf_hero_subheading": subtitle,
     "vf_hero_text": [
-      "Outstanding technical infrastructure and a flexible working style."
     ],
-    "vf_hero_link_text": "See more Visual Framework patterns",
-    "vf_hero_link_href": "/components",
+    "vf_hero_link_text": "",
+    "vf_hero_link_href": "",
     "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EBI_webbanner_test_V3.jpg');"
   }
   %}
