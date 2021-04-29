@@ -1,3 +1,7 @@
+### 2.0.3
+
+* Directly load CSS for global header to prevent flashes of non-styled elements.
+
 ### 2.0.2
 
 * changes any `set-` style functions to cleaner version
