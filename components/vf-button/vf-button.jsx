@@ -15,6 +15,7 @@ function VfButton({
   id,
   style,
   size,
+  outline = false,
   override_class = "",
   ...rest
 }) {
@@ -25,6 +26,7 @@ function VfButton({
   const classNames = VfClassNormalize(
     "vf-button",
     theme && `vf-button--${theme}`,
+    outline && 'vf-button--outline',
     size && `vf-button--${size}`,
     style && [style].flat().map((item) => `vf-button--${item}`),
     override_class
