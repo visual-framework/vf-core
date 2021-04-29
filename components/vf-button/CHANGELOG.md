@@ -1,3 +1,8 @@
+### 1.4.2
+
+* Added react implementation of button
+  * https://github.com/visual-framework/vf-core/pull/1416
+  * (Experimental) React documentation: https://visual-framework.github.io/vf-react/#/components-showcase
 ### 1.4.1
 
 * changes any `set-` style functions to cleaner version
