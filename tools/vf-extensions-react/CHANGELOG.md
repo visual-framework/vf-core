@@ -1,9 +1,3 @@
-### 0.0.4
-
-* Added Button react component.
-  * https://github.com/visual-framework/vf-core/pull/1416
-* Added vf-react project showcase page that enables experimental component playground.
-
 ### 0.0.3
 
 * Update readme with refined approach to VF-React support.
