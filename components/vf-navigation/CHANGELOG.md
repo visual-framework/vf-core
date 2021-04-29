@@ -1,3 +1,22 @@
+### 3.0.0-beta.1
+
+* Re-release of 3.0.0-beta.0 to fix garbled version number.
+* Fixes a broken Sass file reference.
+  * https://github.com/visual-framework/vf-core/issues/1469
+
+### 3.0.0-beta.0
+
+* deprecated the `--additional` variant.
+* removes `--main` and `--global` Sass files, incorporating them into the base stylesheet.
+* tidies up quite a bit of CSS.
+* makes use of `vf-cluster` for layout in the markup.
+* adds some documentation.
+
+### 2.2.2
+
+* Fixes CSS to match stylelint rules.
+  * https://github.com/visual-framework/vf-core/pull/1405
+
 ### 2.2.1
 
 * changes any `set-` style functions to cleaner version

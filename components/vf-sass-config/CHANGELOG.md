@@ -1,7 +1,26 @@
+### 2.5.3
+
+* Adds `mixins/vf-utility-mixins.scss` to index.scss
+* Fixes a broken variable reference.
+  * https://github.com/visual-framework/vf-core/issues/1469
+
+### 2.5.2
+
+* Fix key name in `vf-color--neutral` lookup.
+  * https://github.com/visual-framework/vf-core/pull/1460
+
+### 2.5.1
+
+* adds neutral colours in the custom variables import file
+
+### 2.5.0
+
+* adds neutral colour tokens function `neutral(Nn)`
 ### 2.4.1
 
 * changes any `set-` style functions to cleaner version
 * fixes issue now link color disabled no longer exists
+
 ### 2.4.0
 
 * updates the `$global-page-max-width` variable so that it's consistent with the page width across components - set to `80rem`

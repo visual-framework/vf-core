@@ -7,6 +7,7 @@ tags:
   - posts
   - guidance
 layout: layouts/section.njk
+templateEngineOverride: njk, md
 ---
 
 The Visual Framework core ('vf-core') is not intended for direct consumption into

@@ -90,6 +90,7 @@ gulp.task("tokens:maps", () =>
 gulp.task("tokens:json", () =>
   gulp.src([
     "./src/maps/vf-colors.yml",
+    "./src/maps/vf-color__neutral.yml",
     "./src/maps/vf-spacing.yml",
     "./src/maps/vf-themes.yml",
     "./src/maps/vf-ui-colors.yml",
@@ -115,6 +116,7 @@ gulp.task("tokens2:json", () =>
 
 gulp.task("tokens:props", () =>
   gulp.src([
+    "./src/maps/vf-color__neutral.yml",
     "./src/maps/vf-colors.yml",
     "./src/maps/vf-spacing.yml",
     "./src/maps/vf-themes.yml",
@@ -165,6 +167,16 @@ ${result
   `;
 });
 
+gulp.task("tokens:command-help", function (done) {
+  console.warn("vf-design-tokens","You're probably looking for the `gulp vf-tokens` command.");
+  done();
+});
+
 gulp.task("vf-tokens", gulp.parallel(
   "tokens:variables", "tokens:json", "tokens:typographic-scale", "tokens:maps", "tokens:props"
+));
+
+// an alias for developers who easily forget
+gulp.task("vf-design-tokens", gulp.parallel(
+  'tokens:command-help'
 ));

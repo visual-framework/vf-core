@@ -20,10 +20,19 @@ We use CSS custom properties to control this vertical rhythm. For browsers that 
 
 | variant name | description                                        |
 | ------------ | -------------------------------------------------- |
-| sm           | gives the vertical rhythm equal spacing of `1rem`   |
-| md           | gives the vertical rhythm equal spacing of `1.5rem` |
-| lg           | gives the vertical rhythm equal spacing of `2rem`   |
+| 200           | gives the vertical rhythm equal spacing of `.5rem`   |
+| 400           | gives the vertical rhythm equal spacing of `1rem` |
+| 500          | gives the vertical rhythm equal spacing of `1.25rem`   |
+| 600          | gives the vertical rhythm equal spacing of `1.5rem`   |
+| 800          | gives the vertical rhythm equal spacing of `2rem`   |
+| 1200          | gives the vertical rhythm equal spacing of `3rem`   |
+| 1600          | gives the vertical rhythm equal spacing of `4rem`   |
 
+Even though the `vf-stack` layout has a default spacing design token applied as a CSS custom property fallback it is good practice in the system to declare the `vf-stack` spacing class name in your projects.
+
+❌ `<div class="vf-stack">...</div>`
+
+✅ `<div class="vf-stack vf-stack--400">...</div>`
 
 As we are using CSS custom properties we can also use a custom value by creating the custom property `--vf-stack-margin--custom` either in your stylesheet, or in your HTML.
 

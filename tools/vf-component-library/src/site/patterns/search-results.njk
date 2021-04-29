@@ -1,5 +1,5 @@
 ---
-title: Boilerplate for search results
+title: Search results
 subtitle: Use this boilerplate pattern for generic pages.
 section: patterns
 date: 2018-08-22 12:24:50
@@ -21,7 +21,7 @@ layout: layouts/boilerplate.njk
   {% if serverInfo.environment == "development" -%}
   <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
   {%- else -%}
-  <link rel="stylesheet" href="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
+  <link rel="stylesheet" href="https://{{ siteConfig.vfVersionPrefix }}assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
   {%- endif %}
   <!--
     Want to build a site with the Visual Framework?

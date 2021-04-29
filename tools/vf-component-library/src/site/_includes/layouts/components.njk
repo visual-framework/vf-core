@@ -12,7 +12,7 @@ templateEngineOverride: njk
     <div class="vf-tree__inner | vf-u-padding--200">
       {#- all component list -#}
       {#- we're half-implement vf-tree for now until we can ... things -#}
-      {%- set types = ['layout', 'element', 'block', 'container', 'utility'] -%}
+      {%- set types = ['layout', 'element', 'block', 'form', 'container', 'utility'] -%}
 
       {%- for type in types -%}
 
@@ -77,16 +77,51 @@ templateEngineOverride: njk
     {# for any content set in the page, this is most likely blank #}
     {{ content | safe }}
 
+    {% if component.variants.items[0].status.label == "alpha" -%}
+      <div class="vf-banner vf-banner--alert vf-banner--danger">
+        <div class="vf-banner__content">
+        {% set context = {
+          "text": "alpha",
+          "theme": "tertiary"
+          } %}
+        {% include "vf-core-components/vf-badge/vf-badge.njk" %}
+        <p class="vf-banner__text">
+        This version is in early development and is subject to change and therefore <strong>not ready for wide use</strong>. There may be other <a class="vf-banner__link" href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">stable versions available</a>.
+        </p></div>
+      </div>
+    {%- endif %}
+    {% if component.variants.items[0].status.label == "beta" -%}
+      <div class="vf-banner vf-banner--alert vf-banner--warning">
+        <div class="vf-banner__content"><p class="vf-banner__text">
+        {% set context = {
+          "text": "beta",
+          "theme": "tertiary"
+          } %}
+        {% include "vf-core-components/vf-badge/vf-badge.njk" %}
+        This component version is ready to be used but is still in active development.</p></div>
+      </div>
+    {%- endif %}
+    {% if component.variants.items[0].status.label == "deprecated" -%}
+      <div class="vf-banner vf-banner--alert vf-banner--danger">
+        <div class="vf-banner__content"><p class="vf-banner__text">
+        {% set context = {
+          "text": "deprecated",
+          "theme": "tertiary"
+          } %}
+        {% include "vf-core-components/vf-badge/vf-badge.njk" %}
+        It is strongly recommended that this <strong>not to be used</strong>. Read below for advice on how to migrate.</p></div>
+      </div>
+    {%- endif %}
+
     <h1>
       {{ component.title }}
-        {# {{component.baseHandle}} #}
-        {% if collectionComponents %}
-        {% else %}
-          <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/components/{{component.baseHandle}}"><img src="https://img.shields.io/badge/github-{{component.baseHandle | replace("-","--")}}-blue" alt="github location" /></a>
-          <a class="vf-link" href="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}"><img src="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}.svg" alt="npm version"></a>
-          {# <a  href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">npm</a> #}
-        {% endif %}
-
+      {# {{component.baseHandle}} #}
+      {% if collectionComponents %}
+      {% else %}
+        <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/components/{{component.baseHandle}}"><img src="https://img.shields.io/badge/github-{{component.baseHandle | replace("-","--")}}-blue" alt="github location" /></a>
+        <a class="vf-link" href="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}"><img src="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}.svg" alt="npm version"></a>
+        {# <a  href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">npm</a> #}
+      {% endif %}
     </h1>
 
     {# <pre>{{ component | dump(2)}}</pre> #}
@@ -94,8 +129,12 @@ templateEngineOverride: njk
     {# readme.md #}
     {% if component.notes %}
       {% set readmeAbout = component.notes | string | stringBetween("## About", "\n## ") %}
-      {% if readmeAbout %}{{ readmeAbout | markdown | safe }}{% endif %}
+      <p class="vf-lede">
+      {% if readmeAbout %}{{ readmeAbout | markdown | safe | striptags }}{% endif %}
+      </p>
     {% endif %}
+
+    <hr class="vf-divider" />
 
     {# any sub-components, like vf-form #}
     {# @todo, this is still not rendering correctly #}
@@ -116,19 +155,12 @@ templateEngineOverride: njk
       </ul>
     {% endif %}
 
+    {# Table of contents #}
+
     {% if variants %}
       {% if variants | length > 1 %}
         {# If more than 1 variant type, show a heading #}
-        <section class="vf-u-margin__top--800">
-          {% render '@vf-heading--display', {
-            "type": 1,
-            "heading": "Variants",
-            "id": "variants",
-            "style": "invert",
-            "tags": "h2"
-          } %}
-        </section>
-
+        <h3 id="variants">Variants</h3>
         {# Variant table of contents #}
         {%- set variantList = [] -%}
         {%- for variant in variants %}
@@ -149,12 +181,31 @@ templateEngineOverride: njk
             variantList
         } %}
 
-        <hr class="vf-divider vf-u-margin__top--1200 vf-u-margin__bottom--1200" />
+        <hr class="vf-divider" />
 
       {% endif %}
+    {% endif %}
 
+    {% if component.notes %}
+      {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
+      {% if readmeUsage %}
+        <section class="vf-u-margin__top--800">
+          {% render '@vf-heading--display', {
+            "type": 1,
+            "heading": "Usage",
+            "id": "usage",
+            "style": "invert",
+            "tags": "h2"
+          } %}
+        </section>
+        {{ readmeUsage | markdown | safe }}
+      {% endif %}
+    {% endif %}
+
+    {# ---- #}
+
+    {% if variants %}
       {%- for variant in variants %}
-
         {% if variant.isHidden == false%}
           {% if variants | length > 1 %}
             {# If more than 1 variant type, show variant specific details #}
@@ -169,7 +220,6 @@ templateEngineOverride: njk
           <article class="vf-stack vf-stack--lg vf-u-margin__bottom--1200"
                    style="clear: both; /* insurance against strange components */"
           >
-
             {% if component.baseHandle == 'vf-u-fullbleed' %}
               {# these get a fake iframe #}
               <article class="vf-box vf-box--outline" style="
@@ -182,7 +232,7 @@ templateEngineOverride: njk
 
             {% else %}
               <div class="vf-box"
-                   style="background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
+                   style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
               >
                 {# When you want a box with a slight shadow #}
                 {% render '@'+variant.handle, variant.context %}
@@ -200,7 +250,7 @@ Depending on your environment you'll want to use `render` or `include`. As a rul
 
 ### Using `include`
 
-You'll need to pass a context object from your code or Yaml file ([exampe](https://github.com/visual-framework/vf-eleventy/blob/master/src/site/index.yml)), as well as the path to the Nunjucks template. Nunjucks' `include` is an abstraction of `render` and provides some additional portability.
+You'll need to pass a context object from your code or Yaml file ([example](https://github.com/visual-framework/vf-eleventy/blob/master/src/site/index.yml)), as well as the path to the Nunjucks template. Nunjucks' `include` is an abstraction of `render` and provides some additional portability.
 
 {# Ideally we could also show the Yaml format here, but that will require additional parsing of the passed `variant.context`. Not impossible, but an additional task #}
       {% endmarkdown %}
@@ -218,30 +268,26 @@ You'll need to pass a context object from your code or Yaml file ([exampe](https
                 {# <pre><code>
                 {{-variant.context | dump(2)}}
                 </code></pre> #}
-
       {% markdown %}
-
 
 ### Using `render`
 
 This approach is best for bare-bones Nunjucks environments, such as precompiled templates with the Nunjucks slim runtime where `include` is not be available.
 
       {% endmarkdown %}
-
-
                 <pre><code>
                 {%- raw %}{% render '@{% endraw %}{{variant.baseHandle}}', {{variant.context | dump(2)}} {% raw %}%}{% endraw %}
                 </code></pre>
-
-
               </details>
-
-              {% if component.baseHandle == "vf-card" or component.baseHandle == "vf-button" %}
+              {% set reactComponents = "vf-card, vf-button, vf-back-to-top" %}
+              {% if component.baseHandle in reactComponents %}
               <details class="vf-details vf-box vf-box--outline">
                 <summary class="vf-details--summary">React syntax (pre-alpha)</summary>
                 <pre><code>
-import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{{component.baseHandle}}/{{component.baseHandle}}.react.js";
-{{ '<' | escape }}{{ component.baseHandle | camelize(true) }} parameter="value" />
+import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "@visual-framework/{{component.baseHandle}}/{{component.baseHandle}}.react.js";
+// or
+import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "@visual-framework/{{component.baseHandle}}/{{component.baseHandle}}.jsx";
+{{ '<' | escape }}{{ component.baseHandle | camelize(true) | replace("-", "") }} parameter="value" />
                 </code></pre>
                 <br/><p>For individual parameter names and options, see the Nunjucks syntax example. <a href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-extensions-react/README.md">Also follow the React setup guide</a>. Note: React support is in its early pre-alpha stage and not all component are yet supported.</p>
               </details>
@@ -263,13 +309,7 @@ import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{
       {% markdown %}
 
       {% if component.notes %}
-      {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
       {% set readmeInstallation = component.notes | string | stringBetween("## Install", "\n## ") %}
-
-      {% if readmeUsage %}
-        <h2 id="usage">Usage</h2>
-        {{ readmeUsage | markdown | safe }}
-      {% endif %}
 
       {% if readmeInstallation %}
       <details class="vf-details">
@@ -278,7 +318,7 @@ import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{
       </details>
       {% endif %}
 
-      {% if 'CHANGELOG.md'|length %}
+      {% if 'CHANGELOG.md' | length %}
       {% markdown %}
       <div class="vf-stack vf-stack--custom" style="--vf-stack-margin--custom: .5rem;">
       <h3>Changelog</h3>
@@ -289,7 +329,6 @@ import { {{ component.baseHandle | camelize(true) }} } from "@visual-framework/{
       </details>
       </div>
       {% endmarkdown %}
-
       {% endif %}
 
     {% else %}

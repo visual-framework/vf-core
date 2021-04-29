@@ -1,6 +1,21 @@
+### 2.5.5
+
+* corrects colouring of visited link in heading on striped variant.
+
+### 2.5.4
+
+* adds `word-break: break-word;` to text so the text won't exceed the box model.
+
+### 2.5.3
+
+* Corrects fix in 2.5.2 by using `align-content: start;`.
+  * https://github.com/visual-framework/vf-core/issues/1395#issuecomment-801232527
+
 ### 2.5.2
 
 * adds `align-items: start;` to the card so all child align when in a card container.
+* Fixes CSS to match stylelint rules.
+  * https://github.com/visual-framework/vf-core/pull/1405
 
 ### 2.5.1
 

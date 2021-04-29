@@ -4,6 +4,21 @@
 
 ## About
 
+The `vf-navigation` component is a horizontal lise of links to key pages of the website.
+
+## Usage
+
+### Global Navigation
+
+This variant of the `vf-navigation` is to be used as part of the `vf-global-header` to give a few 'quick links' that will be on every page.
+
+### Main Navigation
+
+This variant of the `vf-navigation` can be used to link to sections of the site, or part of the site the parent section.
+
+This is typically placde below the `vf-hero` component but can be also found below the `vf-global-header`.
+
+There should be only one use of `vf-navigation--main` on a page.
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-navigation` with this command.

@@ -1,10 +1,10 @@
 // embl-content-hub-loader__fetch
 
 // load optional dependencies
-import { vfBanner } from "vf-banner/vf-banner";
-import { vfTabs } from "vf-tabs/vf-tabs";
-import { emblConditionalEdit } from "embl-conditional-edit/embl-conditional-edit";
-import { emblNotifications } from "embl-notifications/embl-notifications";
+import { vfBanner } from "../vf-banner/vf-banner";
+import { vfTabs } from "../vf-tabs/vf-tabs";
+import { emblConditionalEdit } from "../embl-conditional-edit/embl-conditional-edit";
+import { emblNotifications } from "../embl-notifications/embl-notifications";
 
 /**
  * Fetch html links from content.embl.org

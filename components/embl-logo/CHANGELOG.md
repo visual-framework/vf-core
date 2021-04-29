@@ -1,3 +1,7 @@
+## 1.2.0
+
+* hides the `--extreme` variant.
+
 ### 1.1.0
 
 * removes some unneeded CSS.

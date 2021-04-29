@@ -1,3 +1,25 @@
+### 3.2.3.
+
+* fixes width issue on mobile introduced when making the hero content a little wider.
+
+### 3.2.2
+
+* Allows html (for links) in vf-hero__subheading (and a few other fields) when using the Nunjucks template.
+  * https://github.com/visual-framework/vf-core/pull/1485
+
+### 3.2.1
+
+* Resolves a Nunjucks bug on `vf_hero_text` from a yaml file under certain contexts.
+  * https://github.com/visual-framework/vf-core/pull/1462
+* Allows vf_hero_heading_href to be passed in yaml.
+* Gobbles much of the whitespace.
+
+### 3.2.0
+
+* adds thinner `vf-hero--400` variant.
+* fixes `vf-hero__content vf-box` sizing padding calculaton for `vf-hero--800` variant.
+* makes the maximum width of the `vf-hero__content` wider, but make smaller widths `max-content`.
+
 ### 3.1.0
 
 * adds link styles to the `vf-hero__heading`

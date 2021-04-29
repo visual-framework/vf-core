@@ -8,9 +8,9 @@ section: designtokens
 tags:
   - sections
   - designtokens
-templateEngineOverride: njk
 layout: layouts/section.njk
 hideSubPosts: false
+templateEngineOverride: njk, md
 ---
 
 The Design Tokens used within `vf-core` are generated from several `.yml` files. These are then compiled into various Sass files as needed.
@@ -19,10 +19,63 @@ In the future we hope to offer Sketch and Photoshop colour palettes.
 
 If you required a different format (LESS, iOS, Android). Please get in touch.
 
+## What are Design Tokens?
+
 > Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. We use them in place of hard-coded values (such as hex values for color or pixel values for spacing) in order to maintain a scalable and consistent visual system for UI development.
 
 > — Salesforce, Lightning Design System.
 
+<br>
+
+<div class="vf-video">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/q5qIowMyVt8?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+## How EMBL uses Design Tokens
+
+### Base Design Tokens
+
+These are the generic Design Tokens for global key and value pairs for colour, spacing, typography, etc.
+
+They tend not to be used as they're codified as we should rely on Design decisions to determine when to use what Design Token value for what purpose and need.<sup>1</sup>
+
+### Design Decision Design Tokens <span class="vf-badge vf-badge--primary">alpha</span>
+
+This category of Design Tokens is where we have chosen how certain Design Tokens should be used.
+
+These Design Tokens can be use in projects where Component Design Tokens do not exist and must match the semantic use that should be defined in the codified Design Token.<sup>1</sup>
+<small>eg. If the Design Token is `vf-background--primary` it should not be used for anythign other than a background.</small>
+
+### Component Design Tokens <span class="vf-badge vf-badge--primary">alpha</span>
+
+Where the design decisions have filtered into specific component decisions.
+
+These are exported into the components folder and are suffixed - `.tokens.scss`.
+
+These can be both Sass variables and CSS Custom Properties.
+
+They are named so that their usage in a component should be self evident as it will follow the 'Naming Design Tokens' described below.
+
+---
+
+## Naming Design Tokens
+
+We use a BEM style syntax when composing Design Tokens where we use our Design System prefix of `vf-` followed by:
+
+1. Component
+<small>eg: button, card, hero, list</small>
+
+2. Category
+<small>eg: backgroudn, shadow, border</small>
+
+4. Variant
+<small>eg: primary, secondary, interactive</small>
+
+4. State
+<small>eg: hover, visited, focus</small>
+
 ## Building
 
 To update these run `gulp vf-tokens` from `./components/vf-design-tokens`.
+
+<sup>1</sup> This is actively being working on and your current implementation of Design Tokens in your projects might need updating.

@@ -1,3 +1,15 @@
+### 2.0.0-alpha.0
+
+* Updates to replace v2.0.0 of vf-search--inline with `vf-form--search vf-form--search--responsive`
+### 1.0.2
+
+* Updates to match v2.0.0 of vf-search--inline
+
+### 1.0.1
+
+* Fixes CSS to match stylelint rules.
+  * https://github.com/visual-framework/vf-core/pull/1405
+
 ### 1.0.0
 
 * JS linting

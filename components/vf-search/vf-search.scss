@@ -23,23 +23,112 @@
 * Location: #{map-get($componentInfo, 'location')}
 */
 
-.vf-search--inline {
-  display: flex;
-  flex-wrap: wrap;
+.vf-form--search {
 
-  .vf-search__item {
-    flex-grow: 1;
-    max-width: $vf-breakpoint--sm;
+  .vf-button {
+    align-self: start;
+    margin: calc(#{space(400)} / 2);
+    margin: calc(var(--vf-sidebar--spacing, #{space(400)}) / 2);
   }
 
-  .vf-search__button {
-    margin-bottom: 0;
-    margin-left: 16px;
-    top: -12px;
+  .vf-button__icon {
+    height: 1em;
+    width: 1em;
+    fill: white;
   }
 
-  .vf-search__description {
-    @include set-type(text-body--3);
+}
+
+.vf-form--search.vf-sidebar {
+  --vf-sidebar-spacing: #{space(400)};
+  --vf-sidebar-main-width: 60%;
+
+  overflow: visible;
+
+  .vf-form__item {
+    position: relative;
+  }
+
+  .vf-form__helper {
+    margin-left: calc(var(--vf-sidebar-spacing) / 2);
     flex-basis: 100%;
   }
+  > * {
+    align-items: center;
+  }
+}
+
+
+
+.vf-form--search--responsive {
+
+  @media (max-width: $vf-breakpoint--sm - 1) {
+    .vf-button {
+      margin-left: space(0);
+      padding: 0.5rem;
+    }
+
+    .vf-button__text {
+      border: 0;
+      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(50%);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+      word-wrap: normal !important;
+    }
+  }
+
+  @media (min-width: $vf-breakpoint--sm) {
+    .vf-button__icon {
+      display: none;
+    }
+  }
+}
+
+.vf-form--search--mini {
+  .vf-button {
+    margin-left: space(0);
+    padding: 0.5rem;
+  }
+}
+
+
+.vf-form--search__results-list {
+  --vf-stack-margin--custom: 0;
+  background-color: neutral(0);
+  border: 2px solid color(grey);
+  border-top: 0;
+  position: absolute;
+  width: calc(100% - 4px);
+  z-index: 5150;
+
+  .vf-list__item {
+    margin: 0;
+    padding: 12px 8px;
+
+    &:hover {
+      background-color: color(blue--light);
+      cursor: pointer;
+    }
+  }
+
+  .vf-form__input:focus + & {
+    border-color: color(grey--dark);
+    box-shadow: 0 0 0 .0625rem color(grey--dark);
+  }
+}
+
+.vf-container--search {
+  --vf-container__background-color: var(--vf-container--search__background-color);
+  --vf-container__padding: #{space(800)} 0;
+
+  //  This should be part of the as yet (26/03/21) created generic `vf-container` container.
+  background-color: neutral(0);
+  background-color: var(--vf-container__background-color, #{neutral(0)});
+  padding: 1rem 0;
+  padding: var(--vf-container__padding, 1rem 0);
 }

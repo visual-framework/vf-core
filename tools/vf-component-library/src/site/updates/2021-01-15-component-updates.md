@@ -23,7 +23,7 @@ In this set of updates you'll find that vf-form has improved UX, vf-grid works b
 {% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
 <!-- Tools don't have pages in the component library -->
 
-### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
+### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
 
 {% endmacro %}
 
