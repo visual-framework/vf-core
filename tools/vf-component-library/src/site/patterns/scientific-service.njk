@@ -26,35 +26,21 @@ layout: layouts/boilerplate.njk
   </header>
   {% include "./templates/breadcrumbs-boilerplate.njk" %}
 
-  {# https://stable.visual-framework.dev/components/vf-masthead/ #}
-  <style>
-    .vf-masthead.vf-u-fullbleed::before {
-      z-index: unset; /* bug? */
-    }
-    .vf-masthead {
-      --vf-masthead__bg-image: url(https://stable.visual-framework.dev/assets/vf-masthead/assets/group-bg_2d4155.png);
-    }
-  </style>
-  <div class="vf-masthead vf-masthead--with-title-block vf-masthead--has-image vf-u-fullbleed" style="background-image: var(--vf-masthead__bg-image)" data-vf-js-masthead>
-  <div class="vf-masthead__inner">
-  <div class="vf-masthead__title">
-  <h1 class="vf-masthead__heading">
-  <a href="JavaScript:Void(0);" class="vf-masthead__heading__link">
-  Name of Service
-  </a>
-  <span class="vf-masthead__heading--additional">
-  Open data resources of code, functions and things of data
-  </span>
-  </h1>
-  <h2 class="vf-masthead__subheading">
-  <span class="vf-masthead__location">
-  Categorisation (Optional)
-  </span>
-  </h2>
-  </div>
-  </div>
-  </div>
-
+  <!-- See the VF Hero docs: https://stable.visual-framework.dev/components/vf-hero/ -->
+  {% set context = {
+    "vf_hero_kicker": "<a href=\"//www.ebi.ac.uk/about\">Categorisation (Optional)</a> | Structural Biology",
+    "spacing": 400,
+    "vf_hero_heading": "Name of Service",
+    "vf_hero_subheading": "Open data resources of code, functions and things of data",
+    "vf_hero_text": [
+      "Outstanding technical infrastructure and a flexible working style."
+    ],
+    "vf_hero_link_text": "See more Visual Framework patterns",
+    "vf_hero_link_href": "/components",
+    "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EBI_webbanner_test_V3.jpg');"
+  }
+  %}
+  {% include "vf-core-components/vf-hero/vf-hero.njk" %}
 
   {# {% render '@vf-navigation--main', {
     "navigation": [
