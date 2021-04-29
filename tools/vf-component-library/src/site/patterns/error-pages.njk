@@ -1,7 +1,7 @@
 ---
 title: Error pages
 subtitle: Use these boilerplate pattern for 404, 403, 500 and other common pages.
-section: patterns
+section: components
 date: 2021-02-09 12:24:50
 tags: posts
 layout: layouts/base.njk
@@ -67,15 +67,19 @@ layout: layouts/base.njk
 <section class="embl-grid embl-grid--has-centered-content">
   <div></div>
   <div>
-  <form action="https://embl.org/search#add-your-endpoint" method="GET" class="vf-form | vf-search vf-search--inline">
-    <div class="vf-form__item | vf-search__item">
-      <label class="vf-form__label vf-u-sr-only | vf-search__label" for="text">Search</label>
-      <input type="text" id="text" name="searchQuery" class="vf-form__input | vf-search__input st-default-search-input" placeholder="Search {the name of the site}" />
-    </div>
-    <button type="submit" class="vf-search__button | vf-button vf-button--primary">Search</button>
-  </form>
+  {% render '@vf-search', {
+    "responsive": true,
+    "search_action": "#",
+    "search_autofocus": false,
+    "search_button": "Search",
+    "search_label": "Search",
+    "search_placeholder": "Search {the name of the site}",
+    "search_id": "searchitem",
+    "search_value_default": ""
+  } %}
   </div>
 </section>
+
 
 <section class="embl-grid">
   <div></div>

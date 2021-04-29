@@ -1,3 +1,8 @@
+### 1.5.2
+
+* Remove author information from example, as we have a dedicated vf-article-meta-information component.
+* Fix blockquote bottom margin.
+
 ### 1.5.1
 
 * Fixes a bug with a non-existent @visual-framework/form was required.
