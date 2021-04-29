@@ -1,0 +1,21 @@
+  <!-- See the EMBL Grid docs: https://stable.visual-framework.dev/components/embl-grid/ -->
+  <section class="embl-grid embl-grid--has-centered-content">
+    <div>
+      <!-- See the VF Section header docs: https://stable.visual-framework.dev/components/vf-section-header/ -->
+      <!-- you can include section headers too -->
+      {% set context = {
+        "section_title": "Source code",
+        "href": "",
+        "id": "source",
+        "vf_section__content": [
+          ""
+        ]
+        }
+      %}
+      {% include blocks.section_header %}
+    </div>
+    <!-- See the VF Content docs: https://stable.visual-framework.dev/components/vf-content/ -->
+    <div class="vf-content">
+      <p>You can see <a href="{{ "https://github.com/visual-framework/vf-core/blob/develop/tools/vf-component-library/" + page.inputPath | url }}" class="vf-link">the Nunjucks template for this page</a>. This is particularly helpful if you're building a page with Nunjucks or <a href="https://github.com/visual-framework/vf-eleventy">vf-eleventy</a>.</p>
+    </div>
+  </section>

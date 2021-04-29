@@ -40,20 +40,23 @@ layout: layouts/boilerplate.njk
   <!-- See the VF Breadcrumbs docs: https://stable.visual-framework.dev/components/embl-breadcrumbs-lookup/ -->
   {% include "./templates/breadcrumbs-boilerplate.njk" %}
 
-  <!-- See the VF Masthead docs: https://stable.visual-framework.dev/components/vf-masthead/ -->
-  {% render '@vf-masthead', {
-    "component-type": "block",
-    "masthead_href": "JavaScript:Void(0);",
-    "masthead_heading": "Career profiles and life at EMBL-EBI",
-    "masthead_heading_additional": "Outstanding technical infrastructure and a flexible working style",
-    "masthead_subheading": [
-      {
-        "masthead_subheading_text": "<a href=\"//www.ebi.ac.uk/about\">About EMBL-EBI</a>"
-      }
+
+
+  <!-- See the VF Hero docs: https://stable.visual-framework.dev/components/vf-hero/ -->
+  {% set context = {
+    "vf_hero_kicker": "<a href=\"//www.ebi.ac.uk/about\">About EMBL-EBI</a> | Structural Biology",
+    "spacing": 400,
+    "vf_hero_heading": title,
+    "vf_hero_subheading": subtitle + "Career profiles and life at EMBL-EBI",
+    "vf_hero_text": [
+      "Outstanding technical infrastructure and a flexible working style."
     ],
-    "mastheadImage": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg",
-    "hasTitleBlock": true
-  } %}
+    "vf_hero_link_text": "See more Visual Framework patterns",
+    "vf_hero_link_href": "/components",
+    "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg');"
+  }
+  %}
+  {% include "vf-core-components/vf-hero/vf-hero.njk" %}
 
   <!-- See the VF Navigation docs: https://stable.visual-framework.dev/components/vf-navigation/ -->
   {% render '@vf-navigation--main' %}
@@ -72,27 +75,7 @@ layout: layouts/boilerplate.njk
   -%}
   {% include containers.intro %}
 
-  <!-- See the EMBL Grid docs: https://stable.visual-framework.dev/components/embl-grid/ -->
-  <section class="embl-grid embl-grid--has-centered-content">
-    <div>
-      <!-- See the VF Section header docs: https://stable.visual-framework.dev/components/vf-section-header/ -->
-      <!-- you can include section headers too -->
-      {% set context = {
-        "section_title": "Source code",
-        "href": "",
-        "id": "source",
-        "vf_section__content": [
-          ""
-        ]
-        }
-      %}
-      {% include blocks.section_header %}
-    </div>
-  <!-- See the VF Content docs: https://stable.visual-framework.dev/components/vf-content/ -->
-    <div class="vf-content">
-      <p>If you're building a page with Nunjucks or VF Eleventy, <a href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-component-library/src/site/patterns/boilerplate-generic-embl-ebi.njk" class="vf-link">you can see the Nunjucks template for this page here.</a></p>
-    </div>
-  </section>
+  {% include "./templates/source-link-boilerplate.njk" %}
 
   <!-- this page to be built with further example content over time, the idea is to show https://www.ebi.ac.uk/about/jobs/career-profiles as a "pure" 2.0 version-->
   {# <section class="embl-grid embl-grid--has-centered-content">
