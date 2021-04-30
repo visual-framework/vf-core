@@ -119,6 +119,11 @@
     @include set-type(text-heading--5, $custom-margin-bottom: 0);
   }
 
+
+  .vf-profile__job-title {
+    @include set-type(text-heading--5, $custom-margin-bottom: .25rem);
+  }
+
   .vf-profile__email.vf-u-last-item {
     margin-bottom: 0;
   }
@@ -132,34 +137,44 @@
   .vf-profile__title {
     @include set-type(text-heading--4, $custom-margin-bottom: 0);
   }
+
+  .vf-profile__job-title {
+    @include set-type(text-heading--4, $custom-margin-bottom: .25rem);
+  }
 }
 
 .vf-profile--large {
   --vf-profile-avatar--size: 160px;
 }
 
-// variants
 
-.vf-profile--easy {
-  border-bottom: 8px solid var(--vf-profile__border--color);
-  padding-bottom: 8px;
-}
+html:not(.vf-disable-deprecated) {
+  // variants
 
-
-// themes
-
-.vf-profile-theme--primary {
-  --vf-profile__border--color: #{color(blue)};
-
-  .vf-profile__title {
-    color: color(blue);
+  .vf-profile--easy {
+    @warn 'This variant has been deprecated';
+    border-bottom: 8px solid var(--vf-profile__border--color);
+    padding-bottom: 8px;
   }
-}
 
-.vf-profile-theme--secondary {
-  --vf-profile__border--color: #{color(green)};
 
-  .vf-profile__title {
-    color: color(green);
+  // themes
+
+  .vf-profile-theme--primary {
+    @warn 'This variant has been deprecated';
+    --vf-profile__border--color: #{color(blue)};
+
+    .vf-profile__title {
+      color: color(blue);
+    }
+  }
+
+  .vf-profile-theme--secondary {
+    @warn 'This variant has been deprecated';
+    --vf-profile__border--color: #{color(green)};
+
+    .vf-profile__title {
+      color: color(green);
+    }
   }
 }

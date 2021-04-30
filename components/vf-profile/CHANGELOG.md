@@ -1,3 +1,9 @@
+### 1.3.0
+
+* deprecates the Mortal Kombat variants.
+* deprecates the theming.
+* makes regular and small font sizes more consistent.
+
 ### 1.2.1
 
 * changes any `set-` style functions to cleaner version

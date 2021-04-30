@@ -8,9 +8,10 @@ variants:
   - name: default
     hidden: true
 
-  - name: block
+  - name: block small
     context:
       profile__image: https://content.embl.org//sites/default/files/styles/medium/public/persons/CP-60025009?itok=PBOnHEa_
+      size: small
       profile__name: Annika Corinna Grandison
       profile__name_href: http://www.whitehouse.com
       profile__job_title: Engagement Team Lead
@@ -24,10 +25,9 @@ variants:
       profile__uuid_href: JavaScript:Void(0);
       profile__uuid: 0000 - 1234 - 4326 - XX03
 
-  - name: block small
+  - name: block regular
     context:
       profile__image: https://content.embl.org//sites/default/files/styles/medium/public/persons/CP-60025009?itok=PBOnHEa_
-      size: small
       profile__name: Annika Corinna Grandison
       profile__name_href: http://www.whitehouse.com
       profile__job_title: Engagement Team Lead
@@ -58,7 +58,16 @@ variants:
       profile__uuid_href: JavaScript:Void(0);
       profile__uuid: 0000 - 1234 - 4326 - XX03
 
-  - name: inline
+  - name: inline - small
+    context:
+      layout: true
+      size: small
+      profile__image: https://content.embl.org//sites/default/files/styles/medium/public/persons/CP-60025009?itok=PBOnHEa_
+      profile__name: Annika Corinna Grandison
+      profile__phones:
+        - profile__phone_number: +49 6221 387-8443
+
+  - name: inline regular
     context:
       layout: true
       profile__image: https://content.embl.org//sites/default/files/styles/medium/public/persons/CP-60025009?itok=PBOnHEa_
@@ -75,15 +84,6 @@ variants:
       profile__uuid_href: JavaScript:Void(0);
       profile__uuid: 0000 - 1234 - 4326 - XX03
 
-
-  - name: inline - small
-    context:
-      layout: true
-      size: small
-      profile__image: https://content.embl.org//sites/default/files/styles/medium/public/persons/CP-60025009?itok=PBOnHEa_
-      profile__name: Annika Corinna Grandison
-      profile__phones:
-        - profile__phone_number: +49 6221 387-8443
   - name: inline - large
     context:
       layout: true
@@ -99,6 +99,8 @@ variants:
       profile__uuid: 0000 - 1234 - 4326 - XX03
 
   - name: inline - easy
+    hidden: true
+    status: deprecated
     context:
       layout: true
       variant: easy
@@ -119,6 +121,8 @@ variants:
 
 
   - name: inline - easy - primary
+    hidden: true
+    status: deprecated
     context:
       layout: true
       theme: primary
@@ -139,6 +143,8 @@ variants:
       profile__uuid: 0000 - 1234 - 4326 - XX03
 
   - name: inline - primary
+    hidden: true
+    status: deprecated
     context:
       layout: true
       theme: primary
@@ -158,6 +164,8 @@ variants:
       profile__uuid: 0000 - 1234 - 4326 - XX03
 
   - name: inline - easy - secondary
+    hidden: true
+    status: deprecated
     context:
       layout: true
       theme: secondary
@@ -179,6 +187,8 @@ variants:
 
 
   - name: inline - secondary
+    hidden: true
+    status: deprecated
     context:
       layout: true
       theme: secondary
