@@ -36,7 +36,7 @@ layout: layouts/boilerplate.njk
   </header>
   {% include "./templates/breadcrumbs-boilerplate.njk" %}
 
-  <section class="embl-grid | vf-u-fullbleed vf-u-background-color-ui--grey--light vf-stack">
+  <section class="embl-grid embl-grid--has-centered-content | vf-stack vf-stack--400">
     <div></div>
     <div>
       {% render '@vf-heading', {
@@ -56,7 +56,7 @@ layout: layouts/boilerplate.njk
         "search_placeholder": "Enter your search terms",
         "search_id": "inlinesearchitem",
         "search_value_default": "the current search query",
-        "search_description": 'Related or examples: <a href="JavaScript:Void(0);" class="vf-link">Cheese</a>, <a href="JavaScript:Void(0);" class="vf-link">Brie</a>. You can also use the <a href="JavaScript:Void(0);" class="vf-link">advanced search</a>.'
+        "search_description": 'Related or examples: <a href="JavaScript:Void(0);" class="vf-link">Cheese</a>, <a href="JavaScript:Void(0);" class="vf-link">Brie</a>.'
       } %}
     </div>
   </section>
@@ -73,7 +73,7 @@ layout: layouts/boilerplate.njk
   #}
 
   <section class="embl-grid">
-    <div class="">
+    <div class="vf-stack vf-stack--400">
       <p class="vf-text-body vf-text-body--4">
         Showing 10 results from a total of 1 280
       <p>
@@ -87,34 +87,14 @@ layout: layouts/boilerplate.njk
       } %}
       </div>
 
-      <fieldset class="vf-form__fieldset">
-        <label for="text" class="vf-form__label">Facets</label>
-        <section class="vf-form__item vf-stack vf-stack--400">
-        {% for item in [1,2,3,4] %}
-          <div class="vf-form__item--checkbox vf-form__item--checkbox--inline">
-          <input type="checkbox" id="checkbox-inline-{{item}}" class="vf-form__checkbox">
-          <label for="checkbox-inline-{{item}}" class="vf-form__label">
-          Type of item ({{ [1,2,23,4,8,19] | random }})
-          </label>
-          </div>
-        {% endfor %}
-        </section>
-      </fieldset>
+      {% render "@vf-form__checkbox--stacked" %}
+      {% render "@vf-form__radio--stacked" %}
 
-      <fieldset class="vf-form__fieldset">
-        <label for="text" class="vf-form__label">Binary</label>
-        <section class="vf-form__item vf-stack">
-        {% for item in [1,2,3,4] %}
-          <div class="vf-form__item--radio">
-          <input type="radio" name="radio-button-group" id="radio-{{item}}" class="vf-form__radio">
-          <label for="radio-{{item}}" class="vf-form__label">
-          Form Label
-          </label>
-          </div>
-        {% endfor %}
-        </section>
-      </fieldset>
-
+      {% render '@vf-button', {
+        "text": "Update search",
+        "theme": "primary",
+        "size": "sm"
+      } %}
     </div>
 
     <div class="vf-stack">
@@ -123,7 +103,7 @@ layout: layouts/boilerplate.njk
         "alert_icon_text": "dismiss",
         "banner__info": true,
         "banner__dismissable": false,
-        "banner__message": "Your results go here in whatever format is most suitable: list, table, tiled images... etc. Here we have used summaries."
+        "banner__message": "Your results go here in whatever format is most suitable: list, table, tiled images... etc. Here we have used summaries. You should be mindful about the line length of your results."
       } %}
       </div>
 
@@ -483,6 +463,10 @@ layout: layouts/boilerplate.njk
       </div>
     </div>
   </section>
+
+  <hr class="vf-divider" />
+
+  {% include "./templates/source-link-boilerplate.njk" %}
 
   {% render "@vf-footer" %}
   {# {% include "./templates/notice-boilerplate.njk" %} #}

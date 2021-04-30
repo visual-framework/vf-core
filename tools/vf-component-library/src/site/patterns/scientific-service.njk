@@ -1,6 +1,6 @@
 ---
-title: Scientific service
-subtitle: An example scientific service that blends VF 2.0 components and bespoke code.
+title: Online scientific resource
+subtitle: An example landing page for an online scientific service such as a bioinformatics database, tool or similar.
 section: patterns
 date: 2018-08-22 12:24:50
 tags: posts
@@ -26,76 +26,24 @@ layout: layouts/boilerplate.njk
   </header>
   {% include "./templates/breadcrumbs-boilerplate.njk" %}
 
-  {# https://stable.visual-framework.dev/components/vf-masthead/ #}
-  <style>
-    .vf-masthead.vf-u-fullbleed::before {
-      z-index: unset; /* bug? */
-    }
-    .vf-masthead {
-      --vf-masthead__bg-image: url(https://stable.visual-framework.dev/assets/vf-masthead/assets/group-bg_2d4155.png);
-    }
-  </style>
-  <div class="vf-masthead vf-masthead--with-title-block vf-masthead--has-image vf-u-fullbleed" style="background-image: var(--vf-masthead__bg-image)" data-vf-js-masthead>
-  <div class="vf-masthead__inner">
-  <div class="vf-masthead__title">
-  <h1 class="vf-masthead__heading">
-  <a href="JavaScript:Void(0);" class="vf-masthead__heading__link">
-  Name of Service
-  </a>
-  <span class="vf-masthead__heading--additional">
-  Open data resources of code, functions and things of data
-  </span>
-  </h1>
-  <h2 class="vf-masthead__subheading">
-  <span class="vf-masthead__location">
-  Categorisation (Optional)
-  </span>
-  </h2>
-  </div>
-  </div>
-  </div>
-
-
-  {# {% render '@vf-navigation--main', {
-    "navigation": [
-      {
-        "text": "Home",
-        "navigation_href": "JavaScript:Void(0);"
-      },
-      {
-        "text": "Search",
-        "navigation_href": "JavaScript:Void(0);"
-      },
-      {
-        "text": "Browse",
-        "navigation_href": "JavaScript:Void(0);"
-      },
-      {
-        "text": "Results",
-        "navigation_href": "JavaScript:Void(0);"
-      },
-      {
-        "text": "Download",
-        "navigation_href": "JavaScript:Void(0);"
-      },
-      {
-        "text": "Help",
-        "navigation_href": "JavaScript:Void(0);"
-      },
-      {
-        "text": "About",
-        "navigation_href": "JavaScript:Void(0);"
-      }
+  <!-- See the VF Hero docs: https://stable.visual-framework.dev/components/vf-hero/ -->
+  {% set context = {
+    "vf_hero_kicker": "<a href=\"//www.ebi.ac.uk/about\">Categorisation (Optional)</a> | Structural Biology",
+    "spacing": 400,
+    "vf_hero_heading": title,
+    "vf_hero_subheading": "Open data resources of code, functions and things of data",
+    "vf_hero_text": [
+      subtitle
     ],
-    "classModifier": "main"
-  } %} #}
+    "vf_hero_link_text": "See more Visual Framework patterns",
+    "vf_hero_link_href": "/components",
+    "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EBI_webbanner_test_V3.jpg');"
+  }
+  %}
+  {% include "vf-core-components/vf-hero/vf-hero.njk" %}
 
-
-  {# <section class="vf-grid">
-    <div>
-
-    </div>
-  </section> #}
+  <!-- See the VF Navigation docs: https://stable.visual-framework.dev/components/vf-navigation/ -->
+  {% render '@vf-navigation--main' %}
 
   {% render '@vf-banner--info', {
     "alert_icon_text": "dismiss",
@@ -103,7 +51,6 @@ layout: layouts/boilerplate.njk
     "banner__dismissable": false,
     "banner__message": "This is a starting point for services that demonstrates an overall feel and how to structure the homepage navigation. Individual service design will vary greately depending on the needs addressed."
   } %}
-
 
   <section class="embl-grid embl-grid--has-centered-content | vf-u-padding__top--1200 vf-u-margin__top--800">
     <div><!-- empty --></div>
@@ -162,11 +109,12 @@ layout: layouts/boilerplate.njk
     </div>
 
     <div>
-      {% render '@vf-summary--regular', {
-        "summary__title": "About this service",
-        "summary__text": "A thing provides functional analysis of proteins by classifying them into families and predicting domains and important sites.",
-        "summary__href": "JavaScript:Void(0);",
-        "size": "r"
+      {% render '@vf-section-header--has-a-link-and-text', {
+        "section_title": "About this service",
+        "href": "JavaScript:Void(0);",
+        "vf_section__content": [
+          "A thing provides functional analysis of proteins by classifying them into families and predicting domains and important sites."
+        ]
       } %}
       {# <p class="vf-text-body vf-text-body--3">
         To classify proteins in this way, InterPro uses predictive models, known as signatures, provided by several different databases (referred to as member databases) that make up the InterPro consortium. We combine protein signatures from these member databases into a single searchable resource, capitalising on their individual strengths to produce a powerful integrated database and diagnostic tool.
@@ -183,30 +131,30 @@ layout: layouts/boilerplate.njk
 
   <hr class="vf-divider" />
 
-  <section class="embl-grid |  vf-u-margin__top--1200">
+  <section class="embl-grid | vf-u-margin__top--1200">
     {%- render '@vf-section-header--default', {
       "section_title": "In the spotlight"
     } -%}
-    <section class="vf-grid vf-grid__col-1">
+    <section class="vf-grid vf-grid__col-1 | vf-content">
       {% render '@vf-tabs--default', {
         "component-type": "block",
         "tabs": [
           {
             "tab_title": "Search by sequence",
             "tab_number": 1,
-            "tab_heading": "",
+            "tab_heading": false,
             "tab_content": "This could be text information, or a nested form. Or you might not want tabs at all, use the code needed for your service. You can also include non-Visual Framework JS and CSS, as the VF won't break your other code."
           },
           {
             "tab_title": "Search by text",
             "tab_number": 2,
-            "tab_heading": "",
+            "tab_heading": false,
             "tab_content": "Nullam at diam nec arcu suscipit auctor non a erat. Sed et magna semper, eleifend magna non, facilisis nisl. Proin et est et lorem dictum finibus ut nec turpis. Aenean nisi tortor, euismod a mauris a, mattis scelerisque tortor. Sed dolor risus, varius a nibh id, condimentum lacinia est. In lacinia cursus odio a aliquam. Curabitur tortor magna, laoreet ut rhoncus at, sodales consequat tellus."
           },
           {
             "tab_title": "Search by Domain Architecture",
             "tab_number": 3,
-            "tab_heading": "",
+            "tab_heading": false,
             "tab_content": "Phasellus ac tristique orci. Nulla maximus <a class=\"vf-link\" href=\"#\">justo nec dignissim consequat</a>. Sed vehicula diam sit amet mi efficitur vehicula in in nisl. Aliquam erat volutpat. Suspendisse lorem turpis, accumsan consequat consectetur gravida, <a class=\"vf-link\" href=\"#\">pellentesque ac ante</a>. Aliquam in commodo ligula, sit amet mollis neque. Vestibulum at facilisis massa."
           }
         ]
@@ -214,50 +162,52 @@ layout: layouts/boilerplate.njk
     </section>
   </section>
 
+  <!-- See the VF Card container docs: https://stable.visual-framework.dev/components/vf-card-container/ -->
+  {% set context = {
+    "modifier": "vf-u-background-color--grey--lightest vf-u-fullbleed",
+    "cards_aspect_ratio": "16 / 9",
+    "container_section__header": {
+      "section_title": "Missions",
+      "href": "JavaScript:Void(0);",
+      "vf_section__content": [
+        "To promote molecular biology across Europe",
+        "To create a centre of excellence for Europe's leading young molecular biologists"
+      ]
+    },
+    "vf_cards": [
+      {
+        "variant": "bordered",
+        "newTheme": "primary",
+        "card_title": "One card",
+        "card_href": "JavaScript:Void(0);",
+        "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg",
+        "card_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos? Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?"
+      },
+      {
+        "variant": "bordered",
+        "newTheme": "primary",
+        "card_title": "A card here",
+        "card_href": "JavaScript:Void(0);",
+        "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg",
+        "card_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+      },
+      {
+        "variant": "bordered",
+        "newTheme": "primary",
+        "card_title": "Another card",
+        "card_href": "JavaScript:Void(0);",
+        "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg",
+        "card_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?"
+      }
+    ]
+  }
+  %}
+  {% include "vf-core-components/vf-card-container/vf-card-container.njk" %}
 
-  <section class="vf-grid">
-  </section>
-
-  <section class="embl-grid">
-    {%- render '@vf-section-header--default', {
-      "section_title": "In the spotlight"
-    } -%}
-    <section class="vf-grid vf-grid__col-3">
-      {% render '@vf-card--normal--tertiary', {
-        "component-type": "block",
-        "theme": "tertiary",
-        "variant": "normal",
-        "card_title": "A Normal Card with tertiary accent",
-        "card_image": "/assets/vf-card/assets/vf-card-example.png",
-        "card_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?",
-        "card_image__alt": "Image alt text"
-      } %}
-
-      {% render '@vf-card--normal--tertiary', {
-        "component-type": "block",
-        "theme": "tertiary",
-        "variant": "normal",
-        "card_title": "A Normal Card with tertiary accent",
-        "card_image": "/assets/vf-card/assets/vf-card-example.png",
-        "card_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?",
-        "card_image__alt": "Image alt text"
-      } %}
-
-      {% render '@vf-card--normal--tertiary', {
-        "component-type": "block",
-        "theme": "tertiary",
-        "variant": "normal",
-        "card_title": "A Normal Card with tertiary accent",
-        "card_image": "/assets/vf-card/assets/vf-card-example.png",
-        "card_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?",
-        "card_image__alt": "Image alt text"
-      } %}
-    </section>
-  </section>
-
+  {% include "./templates/source-link-boilerplate.njk" %}
 
   {% render "@vf-footer" %}
   {% include "./templates/notice-boilerplate.njk" %}
-  {% include "footer.njk" %}
+  {% include "scripts.njk" %}
 </body>
 </html>

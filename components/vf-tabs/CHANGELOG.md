@@ -1,3 +1,7 @@
+### 1.2.2
+
+* Conditional support of tab_heading in vf-tabs.njk template.
+
 ### 1.2.1
 
 * changes any `set-` style functions to cleaner version

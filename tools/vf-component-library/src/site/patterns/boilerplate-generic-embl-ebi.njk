@@ -1,6 +1,6 @@
 ---
-title: Generic page at EMBL-EBI
-subtitle: Use this boilerplate pattern for generic content-focused pages at EMBL-EBI.
+title: Content page (with the EMBL-EBI header, footer)
+subtitle: Content-focused pages with the EMBL-EBI header and footer.
 section: patterns
 date: 2018-08-22 12:24:50
 tags: posts
@@ -17,7 +17,7 @@ layout: layouts/boilerplate.njk
   <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
 
   <!-- See the VF Favicon docs: https://stable.visual-framework.dev/components/vf-favicon/ -->
-  {% render "@vf-favicon" %}
+  {% render "@embl-favicon" %}
   <!-- See the embl-content-meta-properties docs: https://stable.visual-framework.dev/components/embl-content-meta-properties/ -->
   {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "EMBL-EBI", "meta_what": "research", "meta_active": "what"} %}
 
@@ -40,80 +40,153 @@ layout: layouts/boilerplate.njk
   <!-- See the VF Breadcrumbs docs: https://stable.visual-framework.dev/components/embl-breadcrumbs-lookup/ -->
   {% include "./templates/breadcrumbs-boilerplate.njk" %}
 
-  <!-- See the VF Masthead docs: https://stable.visual-framework.dev/components/vf-masthead/ -->
-  {% render '@vf-masthead', {
-    "component-type": "block",
-    "masthead_href": "JavaScript:Void(0);",
-    "masthead_heading": "Career profiles and life at EMBL-EBI",
-    "masthead_heading_additional": "Outstanding technical infrastructure and a flexible working style",
-    "masthead_subheading": [
-      {
-        "masthead_subheading_text": "<a href=\"//www.ebi.ac.uk/about\">About EMBL-EBI</a>"
-      }
+  <!-- See the VF Hero docs: https://stable.visual-framework.dev/components/vf-hero/ -->
+  {% set context = {
+    "vf_hero_kicker": "<a href=\"//www.ebi.ac.uk/about\">About EMBL-EBI</a> | Structural Biology",
+    "spacing": 400,
+    "vf_hero_heading": "Sample content page",
+    "vf_hero_subheading": subtitle,
+    "vf_hero_text": [
     ],
-    "mastheadImage": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/VF_Masthead_Example_52ACEA.jpg",
-    "hasTitleBlock": true
-  } %}
+    "vf_hero_link_text": "",
+    "vf_hero_link_href": "",
+    "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EBI_webbanner_test_V3.jpg');"
+  }
+  %}
+  {% include "vf-core-components/vf-hero/vf-hero.njk" %}
 
   <!-- See the VF Navigation docs: https://stable.visual-framework.dev/components/vf-navigation/ -->
   {% render '@vf-navigation--main' %}
 
   <!-- See the VF Intro docs: https://stable.visual-framework.dev/components/vf-intro/ -->
   {% set context = {
-    "vf_intro_heading": title,
+    "vf_intro_heading": "Further information about a topic",
     "vf_intro_badge": false,
     "vf_intro_subheading": "",
-    "vf_intro_lede": subtitle,
+    "vf_intro_lede": "At EMBL-EBI we have a diverse, multidisciplinary team of over 850 people from 78 countries.",
     "vf_intro_text": [
-      "With outstanding technical infrastructure and a flexible working style, EMBL-EBI is a medium-sized organisation with a small-company feel. Located on the beautifully landscaped Wellcome Genome Campus, our staff enjoy a vibrant, interdisciplinary working environment just 12 miles from central Cambridge. The campus offers a free commuter bus service, a library, on-site nursery and subsidised gym and restaurants.",
-      "As part of EMBL, we recruit internationally and offer competitive salary and benefits, including help for those moving far from home. Our staff benefit from a supportive environment, with scientific training, world-class seminars and many opportunities to move between projects and learn on the job. We also offer general training to help our staff build skills for personal development."
     ]
   }
   -%}
   {% include containers.intro %}
 
-  <!-- See the EMBL Grid docs: https://stable.visual-framework.dev/components/embl-grid/ -->
-  <section class="embl-grid embl-grid--has-centered-content">
-    <div>
-      <!-- See the VF Section header docs: https://stable.visual-framework.dev/components/vf-section-header/ -->
-      <!-- you can include section headers too -->
-      {% set context = {
-        "section_title": "Source code",
-        "href": "",
-        "id": "source",
-        "vf_section__content": [
-          ""
-        ]
-        }
-      %}
-      {% include blocks.section_header %}
-    </div>
-  <!-- See the VF Content docs: https://stable.visual-framework.dev/components/vf-content/ -->
-    <div class="vf-content">
-      <p>If you're building a page with Nunjucks or VF Eleventy, <a href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-component-library/src/site/patterns/boilerplate-generic-embl-ebi.njk" class="vf-link">you can see the Nunjucks template for this page here.</a></p>
+  <!-- Navigation -->
+  <section class="embl-grid">
+    <h3 class="vf-links__heading">On this page</h3>
+    <div class="vf-links vf-links__list--easy">
+      <ul class="vf-links__list | vf-list">
+        <li class="vf-list__item">
+          <a class="vf-list__link" href="#application">
+            Application
+            <svg class="vf-icon vf-icon__arrown--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"></path></svg>
+          </a>
+        </li>
+        <li class="vf-list__item">
+          <a class="vf-list__link" href="#interviews">
+            Interviews
+            <svg class="vf-icon vf-icon__arrown--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"></path></svg>
+          </a>
+        </li>
+        <li class="vf-list__item">
+          <a class="vf-list__link" href="#onboarding">
+            Onboarding
+            <svg class="vf-icon vf-icon__arrown--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"></path></svg>
+          </a>
+        </li>
+        <li class="vf-list__item">
+          <a class="vf-list__link" href="#remote">
+            Remote working
+            <svg class="vf-icon vf-icon__arrown--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"></path></svg>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 
-  <!-- this page to be built with further example content over time, the idea is to show https://www.ebi.ac.uk/about/jobs/career-profiles as a "pure" 2.0 version-->
-  {# <section class="embl-grid embl-grid--has-centered-content">
-    <div>
-      <!-- you can include section headers too -->
-
-      {% set context = {
-        "section_title": "Career profiles",
-        "href": "JavaScript:Void(0);",
-        "id": "section-link-text",
-        "vf_section__content": [
-          "We've interviewed members of our staff to give you an idea of what it's like to work in different parts of our organisation. You can find our more at our autumn Open Days, and hear from our experts on Twitter and Facebook."
-        ]
-        }
-      %}
-      {% include blocks.section_header %}
+  <div class="embl-grid embl-grid--has-centered-content">
+    <div class="vf-section-header">
+      <h2 class="vf-section-header__heading">
+      In a nutshell
+      </h2>
     </div>
-
     <div>
+      <div class="vf-embed vf-embed--custom-ratio" style="--vf-embed-max-width: 100%;
+      --vf-embed-custom-ratio-x: 640;
+      --vf-embed-custom-ratio-y: 360;"><iframe src="https://www.youtube.com/embed/cABhbUHsKIk" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" width="640" height="360" frameborder="0"></iframe></div>
     </div>
-  </section> #}
+    <div class="vf-content">
+      <p>We value your skills, wherever you may come from and we offer a generous benefits package to support you.</p>
+    </div>
+  </div>
+
+  <!-- Application -->
+  <section class="embl-grid embl-grid--has-centered-content">
+    <div class="vf-section-header">
+      <h3 class="vf-section-header__heading" id="application">Application</h3>
+    </div>
+    <div class="vf-content">
+      <p class="vf-intro__text">We are delighted that you are keen to join us. Our application process remains the same:</p>
+      <ol>
+        <li>Find the role you want to apply for on our <a href="/about/jobs" class="vf-link">Jobs page</a>.</li>
+        <li>Upload your CV and cover letter.</li>
+        <li>A qualified panel will assess your application.</li>
+        <li>We will contact you with the outcome within 2-4 weeks after the vacancy has closed.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Interviews -->
+  <section class="embl-grid embl-grid--has-centered-content">
+    <div class="vf-section-header">
+      <h3 class="vf-section-header__heading" id="interviews">Interviews</h3>
+    </div>
+    <div class="vf-content">
+      <p class="vf-intro__text">
+        During this time, we will only be conducting online job interviews. As part of the process, you will speak to your potential Group or Team leader and you will also have the chance to have an informal catch up with your prospective colleagues for a personal insight into what it's like to work in our incredible teams.
+      </p>
+    </div>
+  </section>
+
+  <!-- Onboarding -->
+  <section class="embl-grid embl-grid--has-centered-content">
+    <div class="vf-section-header">
+      <h3 class="vf-section-header__heading" id="onboarding">Onboarding</h3>
+    </div>
+    <div class="vf-content">
+      <p class="vf-intro__text">
+        Over the past year, we have successfully onboarded many new employees into the EMBL-EBI family. All our new starters are set up with the resources, hardware and digital capability to work from home – wherever this may be!
+      </p>
+      <p class="vf-intro__text">
+        If you are currently located overseas, you have the option of starting employment in your home country until restrictions ease.  We make every effort to accommodate individual circumstances and your Recruitment Officer will be able to guide you through the process every step of the way.
+      </p>
+    </div>
+    <figure class="vf-figure ">
+      <img class="vf-figure__image" src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/ebi-working-from-home.png?force_format=jpg" alt="Recruitment and work continues from home">
+      <figcaption class="vf-figure__caption">Recruitment and work continues from home. Photo: EMBL-EBI</figcaption>
+    </figure>
+  </section>
+
+  <!-- Remote working & our social side -->
+  <section class="embl-grid embl-grid--has-centered-content">
+    <div class="vf-section-header">
+      <h3 class="vf-section-header__heading" id="remote">Remote working &amp; our social side</h3>
+    </div>
+    <div class="vf-content">
+      <p class="vf-intro__text">
+        In order to stay connected and help you feel part of our vibrant team, we offer access to a multitude of activities while working remotely. Some of our most popular sessions have included a virtual MasterChef, fitness classes, boardgames and of course, regular Town Halls with our Directors.
+      </p>
+      <p class="vf-intro__text">
+        If you have any questions, please email the Recruitment team on <a href="mailto:recruitment@ebi.ac.uk" class="vf-link">recruitment@ebi.ac.uk</a>
+      </p>
+
+      <br>
+      <p><a href="/about/jobs/" class="vf-button vf-button--primary vf-button--sm">View current openings at EMBL-EBI</a></p>
+    </div>
+  </section>
+
+  <hr class="vf-divider" />
+
+  {% include "./templates/source-link-boilerplate.njk" %}
 
   {% render "@ebi-header-footer--footer" %}
 
