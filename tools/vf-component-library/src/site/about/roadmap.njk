@@ -26,38 +26,89 @@ layout: layouts/base.njk
   "vf_intro_badge": false
 } %}
 
+
 <section class="embl-grid embl-grid--has-centered-content">
-{# {% render '@vf-section-header', {
-  "section_title": "Key considerations",
-  "id": "considerations",
+  {% render '@vf-section-header', {
+    "section_title": "On this page",
+    "id": "toc",
+    "vf_section__content": ""
+  } %}
+  <div>
+{% set context = {
+  "component_modifier": "vf-links__list--easy",
+  "title": "",
+  "svg": true,
+  "list": [
+    {
+      "text": "July 2021",
+      "link_list_href": "#july"
+    },
+    {
+      "text": "October 2021",
+      "link_list_href": "#october"
+    },
+    {
+      "text": "Non-fixed",
+      "link_list_href": "#nonfixed"
+    },
+    {
+      "text": "Complete",
+      "link_list_href": "#complete"
+    }
+  ]
+}
+ %}
+{% include "vf-core-components/vf-link-list/vf-link-list.njk" %}
+</div>
+</section>
+
+
+<section class="embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "By end of July 2021",
+  "id": "#july",
   "vf_section__content": ""
-} %} #}
-<div></div>
+} %}
 <div class="vf-content">
 
 {% markdown %}
 
-## By the end of 2020
+{{ milestone('Tables tooling and best practice','26') }}
+
+Tables are broadly used across scientific content and applications. What does a good one look like, and how does it behave? Tooling and foundational guidance.
+
+{{ milestone('Foundational responsive design tooling and best practice','27') }}
+
+We have quite a few rough edges on mobile, it’s time to sort them. These go beyond simple “collapse on mobile” and involve more complex questions like “how do filter facets behave?”
+
+{{ milestone('Design documentation, alignment: Usage of icons, illustrations','28') }}
+
+What is the distinction? Can we document when each should be used? We need technical tooling.
 
 {{ milestone('A selection of example pages and boilerplates','17') }}
 
-There are many ways to implement a "search" page and section. What is the most common and standardisable? What about for a research group? A user's profile page?
+There are many ways to implement a "search" page and section. What is the most common and standardizable? What about for a research group? A user's profile page?
 
-## By end of March 2021
+{% endmarkdown %}
+
+</div>
+</section>
+
+<section class="embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "By end of October 2021",
+  "id": "#october",
+  "vf_section__content": ""
+} %}
+<div class="vf-content">
+
+{% markdown %}
+
+## By end of October 2021
 
 {{ milestone('Create a training programme for developers','21') }}
 
 How to get started with the VF common scenarios specific use cases.
-
-{{ milestone('Create a desktop component library','20') }}
-
-That is: port the Sketch component library to Figma and update it to match changes.
-
-{{ milestone('Legacy browser support','16') }}
-
-Supporting older browsers (those without CSS grid and custom properties/variables) is a non-trivial task that needs constant monitoring and support.
-
-## By end of June 2021
 
 {{ milestone('Component long tail','19') }}
 
@@ -71,13 +122,23 @@ Establish and implement how to best handle long section of form options on mobil
 
 Most of the components and patterns in the VF 2.0 have been designed with the corporate EMBL websites in mind. Among the founding ideas was to have variants based on a two-dimensional axis (internal vs external, and functional vs inspirational). How would we deliver and document these? Is it the correct idea?
 
-{{ milestone('Introduce a type scale','25') }}
+{% endmarkdown %}
 
-The VF typography and spacing continues to be refined, however we're still lacking an explicit type scale.
+</div>
+</section>
 
-## No fixed date
+<section class="embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "No fixed date",
+  "id": "#nonfixed",
+  "vf_section__content": [
+    "Important features and milestones in need of scheduling, typically due to a lack of capacity to deliver.",
+    "Code contributions and input are welcome."
+  ]
+} %}
+<div class="vf-content">
 
-These features and milestones are liking prioritisation, either due to a lack of major interest or team capacity to deliver. Code contributions and input are welcome.
+{% markdown %}
 
 {{ milestone('Optimising the component library build efficiency','22') }}
 
@@ -98,4 +159,29 @@ While the Visual Framework does not require specific tooling, we know two of the
 {% endmarkdown %}
 
 </div>
+</section>
+
+<section class="embl-grid embl-grid--has-centered-content">
+  {% render '@vf-section-header', {
+    "section_title": "Complete",
+    "id": "complete",
+    "vf_section__content": ""
+  } %}
+  <div class="vf-content">
+    {% markdown %}
+
+    {{ milestone('Create a desktop component library','20') }}
+
+    That is: port the Sketch component library to Figma and update it to match changes.
+
+    {{ milestone('Legacy browser support','16') }}
+
+    Supporting older browsers (those without CSS grid and custom properties/variables) is a non-trivial task that needs constant monitoring and support.
+
+    {{ milestone('Introduce a type scale','25') }}
+
+    The VF typography and spacing continues to be refined, however we're still lacking an explicit type scale.
+
+    {% endmarkdown %}
+  </div>
 </section>
