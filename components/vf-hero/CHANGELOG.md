@@ -1,6 +1,7 @@
-### 3.2.3.
+### 3.2.3
 
-* fixes width issue on mobile introduced when making the hero content a little wider.
+* Fixes width issue on mobile introduced when making the hero content a little wider.
+* Removes unused `vf-intro-group.png` sample hero image.
 
 ### 3.2.2
 
