@@ -41,6 +41,11 @@ module.exports = {
       url: "/patterns",
       title: "Patterns"
     },
+    components: {
+      url: "/components",
+      title: "Components and patterns",
+      summary: "Building block components and pattern-level example boilerplates."
+    },
     designkit: {
       url: "/design-kit",
       title: "Design kit",
