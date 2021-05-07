@@ -5,23 +5,34 @@ date: 2018-08-22 12:24:50
 layout: layouts/base.njk
 ---
 
-
-{# Intro #}
-{% render '@vf-intro', {
-  "vf_intro_heading": "The Visual Framework",
-  "vf_intro_lede": "Good defaults for life science websites, plus compatibility with existing CSS and JS. ",
-  "vf_intro_subheading": "",
-  "vf_intro_text": [
-    'Bring your Bootstrap, React or vanilla code base. The VF will not break your existing code.',
+{% set context = {
+  "spacing": 400,
+  "vf_hero_heading": "The Visual Framework",
+  "vf_hero_heading_href": "/about",
+  "vf_hero_subheading": "Good defaults and technical flexibility for life science websites",
+  "vf_hero_text": [
+    "With compatibility with existing CSS and JS, you can bring your Bootstrap, React or vanilla code base. The VF will not break your existing code.",
     '<a href="about" class="vf-link">Learn more</a>, <a href="/building" class="vf-link">build something</a> or <a class="vf-link" href="guidance/discussing-the-vf/">get help</a>.'
   ],
-  "vf_intro_badge": false
+  "vf_hero_link_text": false,
+  "vf_hero_link_href": "/about",
+  "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');",
+  "vf_hero_image_size": "auto 28.5rem"
+}
+%}
+{% include "vf-core-components/vf-hero/vf-hero.njk" %}
+
+{# Global navigation #}
+{% include "navigation.njk" %}
+
+<section class="embl-grid embl-grid--has-centered-content | vf-u-padding__top--1200 vf-u-margin__top--800">
+{% render '@vf-section-header', {
+  "section_title": "Search",
+  "id": "search",
+  "vf_section__content": [
+  ]
 } %}
-
-    {# '<a href="about" class="vf-button vf-button--primary">Learn more</a> or <a class="vf-button vf-button--primary vf-button--outline" href="guidance/discussing-the-vf/">Get help</a>' #}
-
-<section class="embl-grid embl-grid--has-centered-content">
-<div></div>
+{# "The project offers dozens of components, patterns and diverse usability guidance." #}
 {% render '@vf-search-client-side--default', {
   "search_client_prompt": "Search components and documentation",
   "search_client_button": true,
