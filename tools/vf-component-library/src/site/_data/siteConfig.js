@@ -20,12 +20,12 @@ module.exports = {
   sections: {
     about: {
       url: "/about",
-      title: "About",
+      title: "About the Visual Framework",
       summary: "A toolkit for better life science websites."
     },
     building: {
       url: "/building",
-      title: "Building",
+      title: "Building a site",
       summary: "How to make a project with Visual Framework components."
     },
     designtokens: {
