@@ -34,12 +34,18 @@ $vf-badge--tertiary-color--text: ui-color(white) !default;
   @include set-type(text-button--2, $custom-margin-bottom: disable);
 
   border: 1px solid;
-  color: inherit;
+  // color: inherit;
   display: inline-flex;
   letter-spacing: .05em;
   padding: 4px 8px;
   text-decoration: none;
   text-transform: uppercase;
+
+  color: $vf-badge--tertiary-color--text;
+
+  @include inline-link($vf-badge--tertiary-color--text,$vf-badge--tertiary-color--text,$vf-badge--tertiary-color--text, $vf-include-normalisations: false);
+
+  @include theme(tertiary, border);
 }
 
 .vf-badge--primary {
@@ -57,54 +63,29 @@ a.vf-badge--primary:hover {
 }
 
 
+
+.vf-badge--outline {
+
+  @include theme-outline(tertiary);
+
+  @at-root a#{&} {
+    &:hover {
+      @include theme-outline(tertiary--dark);
+    }
+  }
+
+  &[class*='primary'] {
+    @include theme-outline(primary);
+
+    @at-root a#{&} {
+      &:hover {
+        @include theme-outline(primary--dark);
+      }
+    }
+  }
+}
+
 html:not(.vf-disable-deprecated) {
-  .vf-badge--secondary {
-    @include theme(secondary, border);
-
-    color: $vf-badge--secondary-color--text;
-
-    a.vf-badge & {
-      @include inline-link($vf-badge--secondary-color--text,$vf-badge--secondary-color--text,$vf-badge--secondary-color--text, $vf-include-normalisations: false);
-    }
-
-  }
-
-  .vf-badge--tertiary {
-    color: $vf-badge--tertiary-color--text;
-
-    @include inline-link($vf-badge--tertiary-color--text,$vf-badge--tertiary-color--text,$vf-badge--tertiary-color--text, $vf-include-normalisations: false);
-    @include theme(tertiary, border);
-  }
-
-  .vf-badge--outline {
-    &[class*='primary'] {
-      @include theme-outline(primary);
-
-      @at-root a#{&} {
-        &:hover {
-          @include theme-outline(primary--dark);
-        }
-      }
-    }
-    &[class*='secondary'] {
-      @include theme-outline(secondary);
-
-      @at-root a#{&} {
-        &:hover {
-          @include theme-outline(secondary--dark);
-        }
-      }
-    }
-    &[class*='tertiary'] {
-      @include theme-outline(tertiary);
-
-      @at-root a#{&} {
-        &:hover {
-          @include theme-outline(tertiary--dark);
-        }
-      }
-    }
-  }
 
   .vf-badge--pill {
     border-radius: $vf-radius--pill;
@@ -129,5 +110,44 @@ html:not(.vf-disable-deprecated) {
     justify-content: center;
     margin: 0 12px 0 0;
     min-width: 52px;
+  }
+
+  .vf-badge--secondary {
+    @include theme(secondary, border);
+
+    color: $vf-badge--secondary-color--text;
+
+    a.vf-badge & {
+      @include inline-link($vf-badge--secondary-color--text,$vf-badge--secondary-color--text,$vf-badge--secondary-color--text, $vf-include-normalisations: false);
+    }
+
+  }
+
+  .vf-badge--tertiary {
+    color: $vf-badge--tertiary-color--text;
+
+    @include inline-link($vf-badge--tertiary-color--text,$vf-badge--tertiary-color--text,$vf-badge--tertiary-color--text, $vf-include-normalisations: false);
+    @include theme(tertiary, border);
+  }
+
+  .vf-badge--outline {
+    &[class*='secondary'] {
+      @include theme-outline(secondary);
+
+      @at-root a#{&} {
+        &:hover {
+          @include theme-outline(secondary--dark);
+        }
+      }
+    }
+    &[class*='tertiary'] {
+      @include theme-outline(tertiary);
+
+      @at-root a#{&} {
+        &:hover {
+          @include theme-outline(tertiary--dark);
+        }
+      }
+    }
   }
 }
