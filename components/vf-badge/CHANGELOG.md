@@ -1,3 +1,8 @@
+### 1.3.0
+
+* deprecates secondary and tertiary variants
+* makes the default the grey (tertiary) colour
+
 ### 1.2.2
 
 * changes any `set-` style functions to cleaner version
