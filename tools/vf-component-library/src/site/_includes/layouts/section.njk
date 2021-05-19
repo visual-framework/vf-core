@@ -27,7 +27,7 @@ templateEngineOverride: njk
 {# See if a section has subposts. #}
 {# Unfortunately there's not a more elegant way to see how many posts there are with a data attribute without adding 11ty config overhead #}
 {% set sectionHasSubposts = false %}
-{%- for post in collections.posts %}
+{%- for post in collections.posts | sort(false, true, 'data.title') %}
 {% if section == post.data.section %}
 {% set sectionHasSubposts = true %}
 {# {% break %} #}
@@ -36,32 +36,30 @@ templateEngineOverride: njk
 {%- endfor %}
 
 {% if sectionHasSubposts and hideSubPosts != true %}
-<hr class="vf-divider" />
-<section class="embl-grid embl-grid--has-centered-content">
-  <div></div>
-  <div class="vf-content">
 
-<h2>In this section</h2>
-
-<div class="vf-grid vf-grid__col-2">
-  {%- for post in collections.posts %}
-    {% if section == post.data.section %}
-    {% set absolutePostUrl %}{{ metadata.id }}{{ post.url }}{% endset %}
-    <article class="vf-card vf-card--brand vf-card--bordered">
-      <div class="vf-card__content | vf-stack vf-stack--400">
-        <h3 class="vf-card__heading">
-          <a class="vf-card__link" href="{{ absolutePostUrl | url }}">{{ post.data.title }} <svg aria-hidden="true" class="vf-card__heading__icon | vf-icon vf-icon-arrow--inline-end" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="currentColor" fill-rule="nonzero"></path></svg>
-          </a>
-        </h3>
-      </div>
-    </article>
-
-    <p>{{ post.data.subtitle }}</p>
-
-    {% endif %}
-  {%- endfor %}
-</div>
-
+<section class="vf-card-container | vf-u-background-color--grey--lightest vf-u-fullbleed" style="--vf-card__image--aspect-ratio: 16 / 9;">
+  <div class="vf-card-container__inner">
+    {% render '@vf-section-header', {
+      "section_title": "Also in this section",
+      "id": "inthissection",
+      "vf_section__content": [
+        'More from the <a href="' + siteConfig.sections[section].url + '">' + siteConfig.sections[section].title + '</a> section'
+      ]
+    } %}
+    {%- for post in collections.posts | sort(false, true, 'data.title') %}
+      {% if section == post.data.section %}
+      {% set absolutePostUrl %}{{ metadata.id }}{{ post.url }}{% endset %}
+      <article class="vf-card vf-card--brand vf-card--bordered | vf-content">
+        <div class="vf-card__content | vf-stack vf-stack--400">
+          <h3 class="vf-card__heading">
+            <a class="vf-card__link" href="{{ absolutePostUrl | url }}">{{ post.data.title }} <svg aria-hidden="true" class="vf-card__heading__icon | vf-icon vf-icon-arrow--inline-end" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="currentColor" fill-rule="nonzero"></path></svg>
+            </a>
+          </h3>
+          <p>{{ post.data.subtitle }}</p>
+        </div>
+      </article>
+      {% endif %}
+    {%- endfor %}
   </div>
 </section>
 

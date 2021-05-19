@@ -39,7 +39,8 @@ module.exports = {
     },
     patterns: {
       url: "/patterns",
-      title: "Patterns"
+      title: "Patterns",
+      summary: "Pattern-level example boilerplates."
     },
     components: {
       url: "/components",

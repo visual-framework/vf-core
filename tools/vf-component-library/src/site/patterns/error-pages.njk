@@ -1,7 +1,7 @@
 ---
 title: Error pages
-subtitle: Use these boilerplate pattern for 404, 403, 500 and other common pages.
-section: components
+subtitle: Use these boilerplate patterns for JavaScript, 404, 403, 500 and other common pages.
+section: patterns
 date: 2021-02-09 12:24:50
 tags: posts
 layout: layouts/base.njk
@@ -32,6 +32,10 @@ layout: layouts/base.njk
     "svg": true,
     "list": [
       {
+        "text": "JavaScript failure",
+        "link_list_href": "#javascript"
+      },
+      {
         "text": "404",
         "link_list_href": "#404"
       },
@@ -48,6 +52,19 @@ layout: layouts/base.njk
   </div>
 </div>
 
+<hr class="vf-divider" />
+
+{% render '@vf-intro', {
+  "id": "javascript",
+  "vf_intro_badge": false,
+  "vf_intro_heading": "Error: JavaScript failure",
+  "vf_intro_subheading": "",
+  "vf_intro_lede": "JavaScript is required for this webpage or site.",
+  "vf_intro_text": [
+    "It seems you either have JavaScript turned off, there was a network failure, or you have a legacy browser.",
+    "A refresh of the page will hopefully fix the issue, or you might check if <a href='https://enable-javascript.com'>JavaScript is enabled on your browser</a>. You can also <a href='#'>contact web support for this site</a>."
+  ]
+} %}
 
 <hr class="vf-divider" />
 
