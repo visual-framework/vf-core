@@ -138,9 +138,11 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     // @todo: add a flag to explicitly "dontLookup" or "doLookup"
     if (termName == "notSet") {
       termName = ""; // we'll either find a positive termObject or not show anything
-      // console.log('here',primaryBreadcrumb.parents)
-      if (primaryBreadcrumb.parents[facet]) {
-        termName = primaryBreadcrumb.parents[facet];
+      // console.log('here',primaryBreadcrumb)
+      if (primaryBreadcrumb.parents) {
+        if (primaryBreadcrumb.parents[facet]) {
+          termName = primaryBreadcrumb.parents[facet];
+        }
       }
     }
 

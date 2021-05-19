@@ -12,11 +12,11 @@ Returned are appropriate primary and secondary breadcrumbs.
 
 Notes:
 
-- If a non-primairy breadcrumb value is "notSet", a value will be inferred from the primairy breadcrumb's respective who, what or where
+- If a non-primary breadcrumb value is "notSet", a value will be inferred from the primary breadcrumb's respective who, what or where
 - Matching is performed on internal names first, display names second.
     - UUID matching is still to be implemented
 - If no URL for a term is found a search link will be generated
-- If no primairy facet is provided, no breadcrumbs will be generated
+- If no primary facet is provided, no breadcrumbs will be generated
 
 ## Help
 

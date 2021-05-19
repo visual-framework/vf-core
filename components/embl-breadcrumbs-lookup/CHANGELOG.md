@@ -2,7 +2,7 @@
 
 * Remove diacritics for name processing into people page URLs.
 * Correct "breadcumbs" typos.
-* Begin to extract embl ontology fetching into a reusable component.
+* Finish conversion of emblGetTaxonomy into a standalone function and export it.
 
 ### 1.0.4
 
