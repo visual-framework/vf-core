@@ -53,6 +53,10 @@
 .vf-section-header__text {
   @include set-type(text-body--2, $custom-margin-bottom: 8px);
 
+  a, .vf-link {
+    @include inline-link;
+  }
+
   &:last-of-type {
     @include margin--block(bottom, map-get($vf-spacing-map, vf-spacing--0));
   }
