@@ -1,3 +1,9 @@
+### 1.1.0
+
+* Remove diacritics for name processing into people page URLs.
+* Correct "breadcumbs" typos.
+* Begin to extract embl ontology fetching into a reusable component.
+
 ### 1.0.4
 
 * Improve JS module import support.
