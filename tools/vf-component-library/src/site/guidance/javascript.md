@@ -1,5 +1,5 @@
 ---
-title: JavaScript guidelines
+title: JavaScript and Visual Framework components
 subtitle: We use "just enough" JavaScript in the Visual Framework.
 date: 2020-12-11 19:33:50
 section: building
