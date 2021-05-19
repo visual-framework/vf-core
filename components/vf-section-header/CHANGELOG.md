@@ -1,3 +1,7 @@
+### 1.5.0
+
+* makes if possible to use HTML in the section header text.
+
 ### 1.4.0
 
 * changes value of SVG to use `em`s so it scales with the typeface size.
