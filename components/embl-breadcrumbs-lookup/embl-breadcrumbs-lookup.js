@@ -396,7 +396,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 function emblBreadcrumbs() {
   // We start the breadcrumbs by first getting the EMBL taxonomy.
   emblGetTaxonomy().then(function() {
-    console.log('emblTaxonomy', emblTaxonomy);
+    // console.log('emblTaxonomy', emblTaxonomy);
 
     // Preprocess the emblTaxonomy for some cleanup tasks
     Array.prototype.forEach.call(Object.keys(emblTaxonomy.terms), (termId) => {
