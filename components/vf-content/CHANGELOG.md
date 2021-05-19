@@ -1,3 +1,7 @@
+### 1.5.4
+
+* dependency bump
+
 ### 1.5.2
 
 * Remove author information from example, as we have a dedicated vf-article-meta-information component.
