@@ -1,3 +1,7 @@
+### 1.0.4
+
+* Fix an issue on ipmeta.io tracking in `riskCheck` function where `input` is undefined.
+
 ### 1.0.3
 
 * Add the vfGaTrackInteraction function to the exported members of vf-analytics-google.
