@@ -1,3 +1,9 @@
+### 1.1.0
+
+* Remove diacritics for name processing into people page URLs.
+* Correct "breadcumbs" typos.
+* Finish conversion of emblGetTaxonomy into a standalone function and export it.
+
 ### 1.0.4
 
 * Improve JS module import support.
