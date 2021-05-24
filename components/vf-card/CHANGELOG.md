@@ -1,3 +1,8 @@
+### 2.5.6
+
+* Fixes issue with modifiers
+  * https://github.com/visual-framework/vf-core/issues/1523
+
 ### 2.5.5
 
 * corrects colouring of visited link in heading on striped variant.
