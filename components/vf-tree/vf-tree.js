@@ -44,11 +44,12 @@ function vfTree(scope) {
     return;
   }
 
+  // Get screen-reader only text from root tree node data attributes
+  const treeNodeOpenText = treelist[0].dataset.vfJsButtonHiddenOpenText;
+  const treeNodeCloseText = treelist[0].dataset.vfJsButtonHiddenCloseText;
   // Receive a target scope and toggle if it is active
   function vfTreeToggleActive(target) {
     let collpasedState = target.dataset["vfJsTree-Collapsed"];
-
-
 
     if (collpasedState === "true") {
       collpasedState = false;
@@ -60,8 +61,10 @@ function vfTree(scope) {
       target.classList.add("vf-tree--collapsed");
       target.classList.remove("vf-tree__item--expanded");
       target.setAttribute("aria-expanded", false);
-
     }
+
+    // set screen reader text based on tree state
+    target.querySelector("[data-vf-js-tree-button-hidden-text]").innerText = collpasedState ? treeNodeOpenText : treeNodeCloseText;
 
     target.dataset["vfJsTree-Collapsed"] = collpasedState;
   }
@@ -103,4 +106,3 @@ function vfTree(scope) {
 
 // By default your component should be usable with js imports
 export { vfTree };
-

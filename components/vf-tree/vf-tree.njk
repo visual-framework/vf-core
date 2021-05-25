@@ -1,7 +1,7 @@
 {% set vfTreeButton %}
 <button class="vf-button vf-tree__button" {% if item.expanded == true %}aria-expanded="true"{% endif %} data-vf-js-tree--button>
-  <p class="vf-u-sr-only">
-    {{ button_hidden_text }}
+  <p data-vf-js-tree-button-hidden-text class="vf-u-sr-only">
+    {{ button_hidden_open_text }}
   </p>
   <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5,12a2.3,2.3,0,0,1-.78,1.729L7.568,23.54a1.847,1.847,0,0,1-2.439-2.773l9.752-8.579a.25.25,0,0,0,0-.376L5.129,3.233A1.847,1.847,0,0,1,7.568.46l11.148,9.808A2.31,2.31,0,0,1,19.5,12Z"/></svg>
 </button>
@@ -20,7 +20,7 @@
   </ul>
 {% endmacro %}
 
-<div class="vf-tree{% if expanded === false %} vf-tree--collapsed{% endif %}" data-vf-js-tree {% if expanded === false %}data-vf-js-tree--collapsed="true"{% endif %} aria-expanded="{{expanded}}">
+<div class="vf-tree{% if expanded === false %} vf-tree--collapsed{% endif %}" data-vf-js-tree {% if expanded === false %}data-vf-js-tree--collapsed="true"{% endif %} aria-expanded="{{expanded}}" data-vf-js-button-hidden-open-text="{{ button_hidden_open_text }}" data-vf-js-button-hidden-close-text="{{ button_hidden_close_text }}">
   <div class="vf-tree__inner">
 
     {{ vfTreeList(vf_tree_list) }}
