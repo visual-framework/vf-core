@@ -8,29 +8,45 @@ Buttons are clickable elements that trigger an action. They can communicate call
 
 ## Usage
 
-The `vf-button` component can be used with forms on a page but can also be used as a prominent 'call to action' link that goes to another page with more information.
+The `vf-button` component can be used with forms on a page and as a prominent 'call to action' link that goes to another page.
 
 ### When To Use
 
-A site visitor generally would expect a button to submit data or take action, and if used as a link to navigate to another page.
+A button can be used to submit data or take action and as a link to navigate to another page.
 
-Each form on a page should only have one primary button, any remaining buttons should use the secondary (outline primary) button.
+Use the primary button for the principal call to action on a page or form. Avoid having multiple primary buttons on the same page or form.
 
-As the `vf-button` is relatively large to add to its visual dominence, depending on the context you may wish to use the `vf-button--small` variant.
+Use secondary buttons for secondary calls to action. Pages with too many prominent calls to action [make it hard for users to know what to do next](https://design-system.service.gov.uk/components/button/). Before adding lots of secondary buttons, try to simplify the page or break the content down across multiple pages.
+
+Tertiary buttons can be used for less prominent actions. Consider using a link instead of a button to send users to another page, if this action is not very important.
+
+As the `vf-button` is relatively large, depending on the context, you may wish to use the `vf-button--small` variant instead.
 
 #### Alignment
 
-As a general rule, the `vf-button` should be left aligned on the page and when used inside as part of a larger component. When used in conjuction with a single form input, like a search input, the `vf-button` needs to be inline with the input and to the right of it. When a `vf-button` is used in a banner it needs to follow the content and be right aligned.
+As a general rule, the `vf-button` should be left aligned on the page and when used inside a larger component. 
+
+When used in conjuction with a single form input, as in [the vf-search component](https://stable.visual-framework.dev/components/vf-search/), the `vf-button` needs to be inline with the input and to the right of it.
+
+When a `vf-button` is used in a banner (e.g. to accept cookies) it needs to follow the content and be right aligned.
 
 ### When Not To Use
 
-If using the `vf-button` as a link do not use it to link to content on the same page. This is where something like the <a href="/components/vf-link-list/#vf-link-list--easy">`vf-link-list`</a> component should be used.
+If using the `vf-button` as a link do not use it to link to content on the same page. Use the <a href="/components/vf-link-list/#vf-link-list--easy">`vf-link-list`</a> component instead.
 
 ### Label
 
-The button text should be short and clear. Depending on the action of the button it should use agreed microcopy<sup>*</sup>.
+Write button text in [sentence case](https://blog.prototypr.io/sentence-case-or-title-case-5bd581f05d88), describing the action it performs. For example:
+- ‘Apply now’ to apply for a job.
+- ‘Create account’ to create an account.
+- ‘Sign in’ to an account that a user has already created.
+- ‘Save and continue’ when pressing the button will save the information that the user has entered.
 
-<sup>*</sup>to be done.
+Try to keep the text on the button short and clear.
+
+### Related documentation
+
+The guidelines on buttons in [the GOV.UK Design System](https://design-system.service.gov.uk/components/button/) and [the Carbon Design System](https://www.carbondesignsystem.com/components/button/usage/) include additional advice on when and how to use buttons.
 
 ## Install
 
