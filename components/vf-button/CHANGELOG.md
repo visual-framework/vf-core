@@ -1,3 +1,5 @@
+### 1.4.4
+* Added `link` theme button variant. This variant is similar to link style.
 ### 1.4.3
 
 * Added react implementation of button

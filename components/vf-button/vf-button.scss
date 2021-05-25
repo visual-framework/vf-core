@@ -101,6 +101,30 @@ a.vf-button {
   --vf-button-border-color--visited: var(--vf-color--grey--light);
 }
 
+.vf-button--link {
+
+  @include set-type(text-button--2);
+
+  padding: 8px;
+
+  --vf-button-border-color: transparent;
+  --vf-button-background-color: transparent;
+
+  --vf-button-shadow-border-color: transparent;
+  --vf-button-shadow-background-color: transparent;
+
+  --vf-button-border-color--visited: transparent;
+  --vf-button-text-color: var(--vf-color--blue);
+  box-shadow: none;
+
+  &:hover, &:focus, &:active {
+    transform: none;
+    transition: none;
+    box-shadow: none;
+  }
+  // @include inline-link;
+}
+
 .vf-button--outline {
   --vf-button-background-color: #{ui-color(white)};
   color: color(blue); // fallback, IE
