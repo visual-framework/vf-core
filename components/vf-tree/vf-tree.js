@@ -48,6 +48,8 @@ function vfTree(scope) {
   function vfTreeToggleActive(target) {
     let collpasedState = target.dataset["vfJsTree-Collapsed"];
 
+
+
     if (collpasedState === "true") {
       collpasedState = false;
       target.classList.remove("vf-tree--collapsed");
@@ -58,6 +60,7 @@ function vfTree(scope) {
       target.classList.add("vf-tree--collapsed");
       target.classList.remove("vf-tree__item--expanded");
       target.setAttribute("aria-expanded", false);
+
     }
 
     target.dataset["vfJsTree-Collapsed"] = collpasedState;
@@ -84,6 +87,7 @@ function vfTree(scope) {
       console.log(target);
       e.preventDefault();
       vfTreeToggleActive(target);
+
     });
   }
 
