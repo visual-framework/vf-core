@@ -1,3 +1,7 @@
+### 1.2.0
+
+* removes any margins to allow `vf-stack` to dictate spacing.
+
 ### 1.1.1
 
 * changes any `set-` style functions to cleaner version
