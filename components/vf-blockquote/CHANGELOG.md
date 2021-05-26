@@ -1,3 +1,9 @@
+### 1.2.0
+
+* adds context `if` statement to make it useable in vf-11ty.
+* adds `cite` element.
+* adds `vf-stack`.
+
 ### 1.1.1
 
 * changes any `set-` style functions to cleaner version
