@@ -1,3 +1,8 @@
+### 2.0.0-alpha.1
+
+* removes deprecated code
+* turns the primary, secondary, tertiary into actual things - rather than aliases.
+
 ### 1.4.4
 * Added `link` theme button variant. This variant is similar to link style.
 ### 1.4.3

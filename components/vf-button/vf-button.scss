@@ -80,15 +80,17 @@ a.vf-button {
 }
 
 .vf-button--secondary {
-  --vf-button-border-color: var(--vf-color--green);
-  --vf-button-background-color: var(--vf-color--green);
+  --vf-button-background-color: #{ui-color(white)};
+  --vf-button-border-color: var(--vf-color--blue);
+  --vf-button-text-color: var(--vf-color--blue);
 
-  --vf-button-text-color: var(--vf-ui-color--black);
+  --vf-button-shadow-border-color: var(--vf-color--blue--dark);
+  --vf-button-shadow-background-color: var(--vf-color--blue--dark);
 
-  --vf-button-shadow-border-color: var(--vf-color--green--dark);
-  --vf-button-shadow-background-color: var(--vf-color--green--dark);
-
-  --vf-button-border-color--visited: var(--vf-color--green--light);
+  &:focus,
+  &:hover {
+    --vf-button-border-color: var(--vf-color--blue);
+  }
 }
 
 .vf-button--tertiary {
@@ -125,29 +127,6 @@ a.vf-button {
   // @include inline-link;
 }
 
-.vf-button--outline {
-  --vf-button-background-color: #{ui-color(white)};
-  color: color(blue); // fallback, IE
-  color: var(--vf-button-border-color, var(--vf-button__color__background--default) );
-
-  &:focus,
-  &:hover {
-    color: color(blue); // fallback, IE
-    color: var(--vf-button-border-color);
-  }
-}
-
-.vf-button--pill {
-  border-radius: 500px;
-
-  &::before {
-    border-radius: 500px;
-  }
-}
-
-.vf-button--rounded {
-  border-radius: $vf-radius--md;
-}
 
 .vf-button--sm {
   @include set-type(text-button--2);
@@ -158,12 +137,6 @@ a.vf-button {
   &.vf-button--rounded {
     border-radius: 8px;
   }
-}
-
-.vf-button--lg {
-  @include set-type(text-button--1);
-
-  padding: 16px;
 }
 
 .vf-button--icon {
@@ -183,47 +156,3 @@ a.vf-button {
   }
 }
 
-
-// Begin deprecated classes and styles
-html:not(.vf-disable-deprecated) {
-
-  // Deprecated in 1.0.0-beta.7
-  // Will be removed in vf-button v2.0
-  .vf-text-button--secondary {
-    @include button-link($vf-link--color: color(green), $vf-link--hover-color: color(green--dark));
-
-    box-shadow: 0px 6px 0px 0px color(green--dark);
-    margin-bottom: 6px; // because we're using box-shadow we need to 'create the space' again
-
-    &:hover {
-      box-shadow: 0px 2px 0px 0px color(green--dark);
-    }
-  }
-
-  // Deprecated in 1.0.0-beta.7
-  // Will be removed in vf-button v2.0
-  .vf-button--outline.vf-text--button--secondary {
-    @include button-link--ghost( $vf-link--color: color(green) );
-  }
-
-  // Deprecated in 1.0.0-beta.7
-  // Will be removed in vf-button v2.0
-  .vf-text-button--2 {
-    @include set-type(text-button--2);
-    padding: 8px;
-
-    &.vf-text-button--rounded {
-      border-radius: 8px;
-    }
-  }
-
-  // Deprecated in 1.0.0-beta.7
-  // Will be removed in vf-button v2.0
-  .vf-text-button--1 {
-    @include set-type(text-button--1);
-
-    padding: 16px;
-  }
-
-}
-// End deprecated
