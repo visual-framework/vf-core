@@ -20,9 +20,6 @@ variants:
         - page_number: Previous
           page_href: 'JavaScript:Void(0);'
           item_modifier: vf-pagination__item--previous-page
-        - page_number: -10
-          page_href: 'JavaScript:Void(0);'
-          item_modifier: vf-pagination__item--jump-back
         - page_number: 1
           page_href: 'JavaScript:Void(0);'
         - page_number: 2
@@ -39,13 +36,11 @@ variants:
           page_href: 'JavaScript:Void(0);'
         - page_number: 92
           page_href: 'JavaScript:Void(0);'
-        - page_number: +10
-          page_href: 'JavaScript:Void(0);'
-          item_modifier: vf-pagination__item--jump-forward
         - page_number: Next
           page_href: 'JavaScript:Void(0);'
           item_modifier: vf-pagination__item--next-page
   - name: compact
+    hidden: true
     context:
       pagination__list:
         - page_number: Previous
@@ -55,6 +50,7 @@ variants:
           page_href: 'JavaScript:Void(0);'
           item_modifier: vf-pagination__item--next-page
   - name: expanded
+    hidden: true
     context:
       pagination__list:
         - page_number: First
@@ -76,6 +72,7 @@ variants:
           page_href: 'JavaScript:Void(0);'
           item_modifier: vf-pagination__item--jump-forward
   - name: First Last
+    hidden: true
     context:
       pagination__list:
         - page_number: First (1)
@@ -90,3 +87,5 @@ variants:
         - page_number: Last (88)
           page_href: 'JavaScript:Void(0);'
           item_modifier: vf-pagination__item--jump-forward
+  - name: full
+    hidden: true
