@@ -9,27 +9,15 @@
  * Location: #{map-get($componentInfo, 'location')}
  */
 
-$vf-tabs__link-text--color: color(grey--dark) !default;
-$vf-tabs__link-text--color-hover: ui-color(white) !default;
-$vf-tabs__link-background--color: color(grey--lightest) !default;
-$vf-tabs__link-background--hover: color(grey--dark) !default;
-$vf-tabs__list-border--color: ui-color(black) !default;
-
-$vf-tabs__link--active-text--color: ui-color(black);
-$vf-tabs__link--active-background--color: ui-color(white);
-
-$vf-tabs__list--active-border--color: ui-color(white);
-
 .vf-tabs__list {
   display: inline-flex;
   flex-wrap: wrap;
-  margin: -.5rem 0 0 0;
-  padding: 0 1rem 0 .5rem;
+  padding: 0;
   position: relative;
 
   &::before {
-    border-bottom: 1px solid $vf-tabs__list-border--color;
-    bottom: -1px;
+    border-bottom: 2px solid neutral(900);
+    bottom: 0;
     content: '';
     height: 1px;
     left: 0;
@@ -41,48 +29,44 @@ $vf-tabs__list--active-border--color: ui-color(white);
 
 .vf-tabs__item {
   display: inline-block;
-  margin-left: .5rem;
   margin-top: .5rem;
   position: relative;
 }
 
 .vf-tabs__link {
-  background: $vf-tabs__link-background--color;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 1px;
-  color: $vf-tabs__link-text--color;
+  @include set-type(text-body--2, $custom-margin-bottom: 0);
+
+  border-bottom-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  color: neutral(700);
   display: block;
   outline: 0;
-  padding: 12px 16px;
+  padding: 8px 16px;
   position: relative;
   text-decoration: none;
-  top: 1px;
 
-  &:hover {
-    background-color: $vf-tabs__link-background--hover;
-    color: $vf-tabs__link-text--color-hover;
+  &:hover,
+  &:focus {
+    border-bottom-color: neutral(700);
+    color: neutral(900);
+    z-index: 5150;
   }
 }
 
 .vf-tabs__link.is-active {
-  background: $vf-tabs__link--active-background--color;
-  border-color: $vf-tabs__list-border--color;
-  border-bottom-color: $vf-tabs__list--active-border--color;
-  color: $vf-tabs__link--active-text--color;
-  font-weight: 500;
-  z-index: 1990;
+  border-bottom-color: color(blue);
+  color: color(blue);
+  text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layour shift
+  z-index: 5150;
+
+  &:hover {
+    color: color(blue--dark);
+  }
 }
 
 .vf-tabs__section {
   padding: 8px 16px;
-}
-
-
-@media (max-width: $vf-breakpoint--md - 1px) {
-  .vf-tabs__link.is-active {
-    border-color: $vf-tabs__list-border--color;
-  }
 }
 
 .vf-tabs__item {

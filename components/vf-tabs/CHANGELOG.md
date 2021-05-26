@@ -1,3 +1,7 @@
+### 2.0.0-rc.1
+
+* updates the styling to match the design direction.
+
 ### 1.2.2
 
 * Conditional support of tab_heading in vf-tabs.njk template.
