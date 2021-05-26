@@ -19,6 +19,7 @@ $vf-global-header__link-text--color: ui-color(black);
   display: flex;
   flex-wrap: wrap;
   gap: space(200);
+  margin-top: space(200);
 
   & > [class*='logo'] {
     flex: 1; // necessary for when a logo is inside flex-based containers like vf-global-header
@@ -35,4 +36,22 @@ $vf-global-header__link-text--color: ui-color(black);
     margin-left: .5rem;
     margin-right: .5rem;
   }
+}
+
+// Currently the GDPR banner stays in the DOM rather than getting destroyed.
+// Because of this it becomes the first item in the `vf-stack` so the next item,
+// the vf-global-header, has a top margin of 1rem.
+// This fixes that:
+// Note: we duplicate the top margin that's already on line 22.
+
+// These are for static html pages
+link {
+  --vf-stack-margin--custom: 0;
+}
+link > div {
+  --vf-stack-margin--custom: 0;
+}
+// This is for the WP build
+.vf-banner + div {
+  --vf-stack-margin--custom: space(200);
 }

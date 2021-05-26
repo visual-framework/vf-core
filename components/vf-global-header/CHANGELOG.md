@@ -1,6 +1,6 @@
 ### 1.2.0
 
-* removes any margins to allow `vf-stack` to dictate spacing.
+* adds overrides for more permutations of where the vf-global header lives
 
 ### 1.1.1
 
