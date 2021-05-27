@@ -1,20 +1,18 @@
+
+
 <article class="vf-summary vf-summary--publication">
   <h3 class="vf-summary__title">
     <a href="{{ summary__href }}" class="vf-summary__link">
-      Computer modeling in developmental biology: growing today, essential tomorrow.
+      {{summary__title}}
     </a>
   </h3>
-  <p class="vf-summary__author">
-    Jimenez RC, Albar JP, Bhak J, Blatter MC, Blicher T, Brazas MD, Brooksbank C, Budd A, De Las Rivas J, Dreyer J, van Driel MA, Dunn MJ, Fernandes PL, van Gelder CW, Hermjakob H, Ioannidis V, Judge DP, Kahlem P, Korpelainen E, Kraus HJ, Loveland J, Mayer C, McDowall J, Moran F, Mulder N, Nyronen T, Rother K, Salazar GA, Schneider R, Via A, Villaveces JM, Yu P, Schneider MV, Attwood TK, Corpas M.
-  </p>
+  <p class="vf-summary__author">{{ summary__author | safe }}</p>
   <p class="vf-summary__source">
-    The Journal of cell biology
-    <span class="vf-summary__date">2019</span>
+    {{summary__source | safe}}
+    <span class="vf-summary__date">{{summary__date}}</span>
   </p>
 
   <p class="vf-summary__text">
-    144(23):4214-4225. doi: 10.1242/dev.151274.
-    <a class="vf-link" href="{{ summary__href }}">Europe</a>
-    <a class="vf-link" href="{{ summary__href }}">PMC</a>
+    {{summary__text | safe }}
   </p>
 </article>

@@ -1,10 +1,19 @@
+{%- if context %}
+  {% set summary__href = context.summary__href %}
+  {% set summary__title = context.summary__title %}
+  {% set summary__text = context.summary__text %}
+  {% set summary__event_type = context.summary__event_type %}
+  {% set summary__location = context.summary__location %}
+{%- endif %}
+  {% set summary__date = summary__date %}
+
 <article class="vf-summary vf-summary--event">
-  <p class="vf-summary__date">04 September</p>
+  <p class="vf-summary__date">{{summary__date}}</p>
   <h3 class="vf-summary__title">
-    <a href="###" class="vf-summary__link">Executive Masters in Management of Research Infrastructures</a>
+    <a href="{{summary__href}}" class="vf-summary__link">{{summary__title}}</a>
   </h3>
-  <p class="vf-summary__text">This Masters development programme is aimed at current Research Infrastructures managers and leaders who wish to develop the competencies required to meet the needs of Research Infrastructures in the planning, construction and operation phases.</p>
-  <p class="vf-summary__text">EMBO Workshop</p>
-  <p class="vf-summary__location">Heidelberg</p>
+  <p class="vf-summary__text">{{summary__text}}</p>
+  <p class="vf-summary__text">{{summary__event_type}}</p>
+  <p class="vf-summary__location">{{summary__location}}</p>
 
 </article>

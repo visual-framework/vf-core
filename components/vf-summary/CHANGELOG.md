@@ -1,3 +1,7 @@
+### 1.5.0
+
+* adds individual context yml/njk code per file.
+
 ### 1.4.2
 
 * Removes the import for `vf-links.variables.scss` as it is not needed.

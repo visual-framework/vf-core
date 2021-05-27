@@ -1,3 +1,9 @@
+{%- if context %}
+  {% set summary__href = context.summary__href %}
+  {% set summary__title = context.summary__title %}
+  {% set summary__text = context.summary__text %}
+{%- endif %}
+
 <article class="vf-summary">
   <h3 class="vf-summary__title">
     <a href="{{ summary__href }}" class="vf-summary__link">{{ summary__title }}</a>
