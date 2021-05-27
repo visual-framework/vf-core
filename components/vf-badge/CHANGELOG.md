@@ -3,6 +3,12 @@
 * deprecates secondary and tertiary variants
 * makes the default the grey (tertiary) colour
 
+#### Mirgation Instructions
+
+* If you were using the "Outline Primary" variant you should use the "Secondary" variant now.
+  * This replaces the classes of `vf-badge--primary` and `vf-badge--outline` with `vf-badge--secondary`.
+* IF you were using the "Default" variant you should use the "Tertiary" variant now.
+  * This adds the class `vf-badge--tertiary`.
 ### 1.2.2
 
 * changes any `set-` style functions to cleaner version
