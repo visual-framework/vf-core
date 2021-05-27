@@ -1,4 +1,4 @@
-### 1.8gst.0
+### 1.8.0
 
 * adds overrides for more permutations of where the vf-global header lives
 
