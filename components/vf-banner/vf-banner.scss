@@ -131,3 +131,12 @@
 
   background-color: $vf-notice-banner-color--background;
 }
+
+
+// CSS to target the GDPR banner when it's hidden but making vf-stack think it
+// should add top margin to the next element
+
+// This is for the WP build
+.vf-banner + div {
+  --vf-stack-margin--custom: space(200);
+}

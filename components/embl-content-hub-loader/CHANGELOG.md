@@ -1,3 +1,7 @@
+### 1.1.0
+
+* adds overrides for more permutations of where the vf-global header lives
+
 ### 1.0.9
 
 * Improve JS module import support.
