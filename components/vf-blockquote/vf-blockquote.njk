@@ -6,10 +6,8 @@
 {% endif %}
 
 <blockquote{% if id %} id="{{-id-}}"{% endif %} class="vf-blockquote{%- if override_class %} | {{override_class}}{% endif %} | vf-stack vf-stack--400">
-  {% if blockquote_text %}
-    <p class="vf-blockquote__text">{{- blockquote_text | safe -}}</p>
-  {% else %}
-    {{- html | safe if html else text -}}
+  {% if (blockquote_text) or (html) or (text) %}
+    <p class="vf-blockquote__text">{{- (html) or (blockquote_text) | safe if (html) or (blockquote_text) else text -}}</p>
   {% endif %}
 
   {% if blockquote_citation %}
