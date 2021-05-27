@@ -1,7 +1,3 @@
-### 1.2.0
-
-* adds overrides for more permutations of where the vf-global header lives
-
 ### 1.1.1
 
 * changes any `set-` style functions to cleaner version

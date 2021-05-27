@@ -1,3 +1,7 @@
+### 1.8gst.0
+
+* adds overrides for more permutations of where the vf-global header lives
+
 ### 1.7.2
 
 * adds deprecation notices around the `--phase` variant.
