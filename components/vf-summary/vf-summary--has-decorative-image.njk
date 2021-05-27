@@ -1,0 +1,29 @@
+{%- if context %}
+  {% set summary__href = context.summary__href %}
+  {% set summary__title = context.summary__title %}
+  {% set summary__text = context.summary__text %}
+  {% set summary__image = context.summary__image %}
+  {% set summary__image_alt = context.summary__image_alt %}
+  {% set summary__date = context.summary__date %}
+  {% set summary__category = context.summary__category %}
+{%- endif %}
+
+<article class="vf-summary vf-summary--news">
+  <span class="vf-summary__date">{{summary__date}}</span>
+  <img class="vf-summary__image" src="{{summary__image}}" alt="{% if summary__image_alt == "decorative" %}{% else %}{{summary__image_alt}}{% endif %}"
+  {% if summary__image_alt == "decorative" %}role="presentation"{% endif %}
+  loading="lazy">
+  <h3 class="vf-summary__title">
+    <a href="{{ summary__href }}" class="vf-summary__link">
+      {{ summary__title }}
+    </a>
+  </h3>
+  <p class="vf-summary__text">
+    {% if summary__category %}
+    <span class="vf-summary__category">
+      {{summary__category}}
+    </span>
+    {% endif %}
+    {{summary__text}}
+  </p>
+</article>
