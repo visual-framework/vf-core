@@ -42,10 +42,12 @@
         {% if cell.colspans %} colspan="{{cell.colspans}}"{% endif %}
       >
       {%- if sortable -%}
-        <button class="vf-button vf-button--sm vf-button--icon">
+        <button class="vf-button vf-button--sm vf-button--icon vf-table__button vf-table__button--sortable">
           {{cell.title}}
-          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
-          	<use xlink:href="#vf-table-sortable"></use>
+          <svg width="12" height="22" xmlns="http://www.w3.org/2000/svg">
+            {# These IDs are for demonstation purposes only really -- pick something better #}
+            <path id="vf-table--sortable-top-arrow"d="M6 0l6 10H0z"/>
+            <path id="vf-table--sortable-bottom-arrow" d="M6 22L0 12h12z"/>
           </svg>
         </button>
       {% else %}

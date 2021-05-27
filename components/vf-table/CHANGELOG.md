@@ -1,3 +1,7 @@
+### 1.2.0-rc.1
+
+* restyles the arrows on sortable tables
+
 ### 1.2.0-rc.0
 
 * makes the `--striped` variant the default styling.

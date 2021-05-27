@@ -1,3 +1,8 @@
+### 1.1.7
+
+* Fixed issue of overlapping menu on VF components site
+  * https://github.com/visual-framework/vf-core/issues/1518
+
 ### 1.1.6
 
 * dependency bump

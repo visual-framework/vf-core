@@ -1,3 +1,9 @@
+### 2.0.0-rc.1
+
+* Updates the styling to match the design direction.
+* This is a no-code-change update. It has been marked as visually breaking due to the major design change.
+  * https://github.com/visual-framework/vf-core/pull/1551
+
 ### 1.2.2
 
 * Conditional support of tab_heading in vf-tabs.njk template.

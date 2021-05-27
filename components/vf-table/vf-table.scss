@@ -33,7 +33,7 @@
 }
 
 .vf-table__header {
-  background-color: color(grey--lightest);
+  border-bottom: 2px solid color(grey--lightest);
 }
 
 .vf-table__heading {
@@ -42,18 +42,48 @@
 
   padding: 8px 16px;
   text-align: left;
+}
 
-  .vf-button--icon {
-    align-items: center;
-    color: currentColor;
-    display: flex;
-    font-weight: 700;
+.vf-table__button--sortable {
+  align-items: center;
+  color: currentColor;
+  display: flex;
+  font-weight: 700;
 
+  svg {
+    fill: #d0d0ce;
+    height: 22px;
+    margin-left: 4px;
+    padding: 2px;
+  }
+
+  &:hover {
     svg {
-      height: 20px;
-      margin-left: 4px;
-      padding: 2px;
+      fill: #54585A;
     }
+  }
+}
+
+
+// Something like this for the UI changes when the sortable is clicked
+// But go with whatever the JS tool you're using suggests
+// Although - try and keep `vf-table__button` in there somewhere
+
+.vf-table__button--sorted-bottom {
+  #vf-table--sortable-top-arrow {
+    fill: #54585A;
+  }
+  #vf-table--sortable-bottom-arrow {
+    opacity: 0;
+  }
+}
+
+.vf-table__button--sorted-top {
+  #vf-table--sortable-top-arrow {
+    opacity: 0;
+  }
+  #vf-table--sortable-bottom-arrow {
+    fill: #54585A;
   }
 }
 
