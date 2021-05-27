@@ -17,8 +17,7 @@
 }
 
 .vf-tree__inner {
-  background-color: $vf-tree-bg-color;
-  border: solid #E3E3E3 1px;
+  background-color: #FFF;
   padding: 0;
   transition: translateX ease-in 200ms;
   width: 100%;
@@ -26,168 +25,122 @@
 
 .vf-tree--collapsed {
   overflow: hidden;
-
-  .vf-tree__inner {
-    transform: translateX( calc(-100% + 30px) );
-    transition: translateX ease-in 200ms;
-  }
-
-  .vf-tree__list {
-    opacity: 0;
-    transition: opacity ease-in 150ms;
-    .vf-tree__button {
-      // display: none;
-    }
-  }
-
-  .vf-button.vf-show-hide__button {
-    transform-origin: center;
-    transform: rotate(180deg);
-    &:hover {
-      transform-origin: center;
-      transform: rotate(180deg);
-    }
-  }
-
-  .vf-show-hide {
-    align-self: flex-start;
-  }
 }
 
-.vf-tree__list {
-  margin-bottom: 0;
-  transition: opacity ease-in 150ms;
-}
 
-.vf-tree__item {
-  padding: 4px 8px;
-  position: relative;
-
-  &:hover {
-    background-color: $vf-tree-bg-color--hover;
+.vf-tree__inner > .vf-tree__list > .vf-tree__item {
+  border-bottom: 1px solid #000;
+  &:last-of-type {
+    border-bottom: 0;
   }
 }
 
 .vf-button.vf-tree__button {
   all: unset;
   cursor: pointer;
-  float: right;
   margin-left: auto;
 
+
   svg {
-    width: 16px;
     fill: $vf-tree-caret-color;
+    width: 16px;
+    transform-origin: center;
+  transform: rotate(-90deg);
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     all: unset;
     cursor: pointer;
-    float: right;
     margin-left: auto;
+    position: relative;
+    z-index: 5150;
 
     svg {
-      fill: ui-color(black);
+      fill: ui-color(black) !important;
+
+    transform-origin: center;
+    transform: rotate(-90deg);
     }
   }
 }
 
 .vf-tree__link {
-  @include set-type(text-body--5, $custom-margin-bottom: 0px);
-
+  box-sizing: border-box;
+  display: inline-flex;
   color: black;
-  padding: 8px 0;
+  margin-bottom: 0;
+  padding: 8px;
+  position: relative;
   text-decoration: none;
-}
-
-.vf-tree__item--expanded {
-  background-color: #fff;
-  padding-bottom: 16px;
+  width: 100%;
 
   &:hover,
-  .vf-tree__link:hover,
-  .vf-tree__item:hover {
-    background-color: #fff;
-  }
-
-  > .vf-tree__button,
-  &:hover > .vf-tree__button {
-    transform-origin: center;
-    transform: rotate(90deg);
+  &:focus {
+    text-decoration: underline;
   }
 }
 
 .vf-tree__item--selected {
-  & > .vf-tree__link:first-of-type {
-    @include set-type(text-body--4, $custom-margin-bottom: 0px);
+  background-color: #D1E3F6;
 
-    &:hover {
-      text-decoration: none !important;
+  & > .vf-tree__link {
+    font-weight: 700;
+    .vf-tree__button svg {
+      fill: #000;
     }
   }
+
+
+
+  .vf-tree__list {
+    background-color: white;
+    position: relative;
+    z-index: 5150;
+  }
+}
+
+.vf-tree__item--expanded {
+
+  > .vf-tree__link .vf-tree__button,
+  &:hover > .vf-tree__button {
+    svg { transform: rotate(90deg); }
+  }
+}
+
+.vf-tree__list {
+  margin: 0;
 }
 
 
 .vf-tree__list--additional {
   display: none;
+  padding: 0 8px;
+
+  .vf-tree__item {
+    margin: 0 -8px;
+    padding: 0 8px;
+  }
+
+  .vf-tree__link {
+    padding-right: 0;
+  }
+
+  & & {
+    margin: 0 -8px;
+    padding: 0 16px;
+
+    // .vf-tree__link {
+    //   padding-right: 0;
+    // }
+
+    .vf-tree__item {
+      margin: 0 -16px;
+      padding: 0 16px;
+    }
+  }
 
   .vf-tree__item--expanded > &  {
     display: block;
   }
-
-  .vf-tree__item {
-    margin-left: 16px;
-    position: relative;
-    padding-right: 0;
-
-    &::before {
-      border-left: 1px solid $vf-tree-caret-color;
-      content: '';
-      height: 100%;
-      left: -8px;
-      position: absolute;
-    }
-
-    &:last-of-type {
-      padding-bottom: 0;
-    }
-
-    &:hover > .vf-tree__link {
-      text-decoration: underline;
-    }
-  }
 }
-
-
-
-// this should probably be it's own component at some point.
-
-
-.vf-show-hide {
-  display: flex;
-  padding: 0 8px;
-  .vf-tree & {
-    padding-top: 8px;
-  }
-}
-
-.vf-button.vf-show-hide__button {
-  all: unset;
-  cursor: pointer;
-  margin-left: auto;
-
-  svg {
-    width: 16px;
-    fill: $vf-tree-caret-color;
-  }
-
-  &:hover {
-    all: unset;
-    cursor: pointer;
-    margin-left: auto;
-
-    svg {
-      fill: ui-color(black);
-    }
-  }
-}
- /* stylelint-enable */
