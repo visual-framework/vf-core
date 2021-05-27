@@ -1,3 +1,9 @@
+### 2.0.0
+
+* makes the badges match the naming convention of the `vf-button`.
+* makes the badges match the styling of the `vf-button`.
+* removes any old deprecated variants and tidies up the code.
+
 ### 1.3.0
 
 * deprecates secondary and tertiary variants
