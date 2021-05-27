@@ -1,3 +1,8 @@
+### 1.1.0-rc.2
+
+* reduces the amount of variants to 'start again'.
+* centres the default variant
+
 ### 1.0.1
 
 * Fixes CSS to match stylelint rules.
