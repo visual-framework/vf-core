@@ -1,3 +1,7 @@
+### 2.0.1
+
+* Correct "secondry" typo.
+
 ### 2.0.0
 
 * makes the badges match the naming convention of the `vf-button`.
