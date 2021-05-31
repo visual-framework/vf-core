@@ -1,4 +1,4 @@
-### 2.0.0-alpha.1
+### 2.0.0-alpha.0
 
 * makes it cleaner.
 * changes how selected and expanded are styled.

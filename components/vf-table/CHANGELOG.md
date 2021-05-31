@@ -1,8 +1,8 @@
-### 1.2.0-rc.1
+### 1.2.0-rc.2
 
 * restyles the arrows on sortable tables
 
-### 1.2.0-rc.0
+### 1.2.0-rc.1
 
 * makes the `--striped` variant the default styling.
 * deprecates `--striped`, `--bordered`, `--tight`, `--loose` variants.

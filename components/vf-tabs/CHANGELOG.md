@@ -1,4 +1,4 @@
-### 2.0.0-rc.1
+### 2.0.0
 
 * Updates the styling to match the design direction.
 * This is a no-code-change update. It has been marked as visually breaking due to the major design change.
