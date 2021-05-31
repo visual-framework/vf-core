@@ -1,6 +1,6 @@
 /*
  *
- * scripts.css
+ * scripts.js
  * The Visual Framework kitchen sink of JavaScript.
  * Import this as a quick way to get *everything*,
  *
