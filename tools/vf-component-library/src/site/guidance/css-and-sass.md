@@ -41,7 +41,7 @@ This allows the Visual Framework to also include team specific components that a
 }
 ```
 
-## Design Patterns and Components
+## Design patterns and components
 
 The Visual Framework makes use of Atomic Design-style concepts to define components. Instead of using Atoms, Molecules, Organisms the Visual Framework uses the terms Elements, Blocks, and Containers.
 
@@ -110,11 +110,9 @@ We add component specific mix classes to the `h1` and `span` to be able to style
 </header>
 ```
 
-#### Notes
+#### Mixins for child elements
 
 It is good practice when creating a component to include a mix for any child element used. All mix classes should be written in the parents `.scss` file. So for the `vf-page-header` example we would write the required CSS in that component's `.scss` file rather than in the `vf-text.scss` file.
-
----
 
 ### Containers
 
@@ -129,7 +127,7 @@ A Container is a horizontal slice of a page that contains Blocks and Elements. A
 </div>
 ```
 
-## How to write your Sass
+## Writing Sass
 
 A core principle of the Visual Framework is simple integration into workflows. Accordingly, we use Sass in this project but keep it close to CSS structure so that it's easily understandable.
 
@@ -139,7 +137,7 @@ Sass allows [Nesting](http://www.sitepoint.com/sass-reference/selector-nesting/)
 
 For example, in Sass:
 
-```
+```css
 a {
   text-decoration: none;
   &:hover {
@@ -181,13 +179,13 @@ If you find yourself repeating a declaration in your CSS a few times it may be w
 
 ### Mixins
 
-By default there are only a limited amount of mixins in the UI Pattern Library. They are more to make writing code easier than doing anything fancy. If you take a look at the `_mixin.scss` file that's in the `global` folder in the `scss` folder there is a mixin that will make writing media queries, responsive typography and placeholders's easier when using a component. As this UI Pattern Library can make it's way into various aspects of the company mixins should be kept to a minimum so that it is easy to understand what they do.
+By default there are only a limited amount of mixins in the UI Pattern Library. They are more to make writing code easier than doing anything fancy. If you take a look at the `_mixin.scss` file that's in the `global` folder in the `scss` folder there is a mixin that will make writing media queries, responsive typography and placeholders easier when using a component. As this UI Pattern Library can make it's way into various aspects of the company mixins should be kept to a minimum so that it is easy to understand what they do.
 
 ### Working on a project
 
-When you're working on a project you may need to make notes for things to get back to, or things that are't done and could change. You should use Sass comments for this.
+When you're working on a project you may need to make notes for things to get back to, or things that aren't done and could change. You should use Sass comments for this.
 
-If you have written some code that needs something fixed or added to then add a comment prefixed with `@todo`. Something l Rike this:
+If you have written some code that needs something fixed or added to then add a comment prefixed with `@todo`. Something like this:
 
 ```
 // @todo fix height issue
@@ -201,7 +199,3 @@ If you have written some code that may change as it maybe something that gets pu
 
 Your code editor can help you find these when mopping up before a project goes live.
 
-
-## Related: Building your first Visual Framework page
-
-If you're looking for some hands-on help with Visual Framework syntax, [see this blog post on a quick start](https://work.allaboutken.com/posts/20191118-first-page-with-the-visual-framework.html) on how to work with Visual Framework 2.0 CSS, JS and structure your HTML.
