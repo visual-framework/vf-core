@@ -19,19 +19,20 @@
 }
 .vf-section-header__heading--is-link {
   @include inline-link($vf-link--visited-color: map-get($vf-colors-map, vf-color--blue));
-
+  align-items: center;
   cursor: pointer;
-  display: grid;
-  grid-column-gap: space(100);
-  grid-template-columns: auto 1fr;
+  display: flex;
 
   .vf-section-header__icon {
     fill: currentColor;
+    height: 1.1em; // to ensure optical vertical centering
+    padding-left: map-get($vf-spacing-map, vf-spacing--100);
     transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
     // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
     transition-duration: 125ms;
     transition-property: transform;
     transition-timing-function: cubic-bezier(.45, .05, .55, .95);
+    width: 1em;
   }
 
   &:hover,
