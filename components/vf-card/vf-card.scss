@@ -70,11 +70,14 @@
 
 .vf-card__heading__icon {
   fill: currentColor;
+  height: 1.1em; // to ensure optical vertical centering
+  padding-left: map-get($vf-spacing-map, vf-spacing--100);
   transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
   // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
   transition-duration: 125ms;
   transition-property: transform;
   transition-timing-function: cubic-bezier(.45, .05, .55, .95);
+  width: 1em;
 }
 
 .vf-card__title,
@@ -89,10 +92,12 @@
   word-break: break-word;
 
   .vf-card__link {
+    align-items: center;
     color: color(blue);
-    display: grid;
-    grid-column-gap: space(100);
-    grid-template-columns: auto 1fr;
+    display: flex;
+
+    // grid-column-gap: space(100);
+    // grid-template-columns: auto 1fr;
     text-decoration: none;
 
     &::after {
@@ -116,7 +121,6 @@
         box-shadow: 0 0 .125rem .125rem rgba(color(grey), .75);
       }
     }
-
   }
 
   .vf-card__link:hover .vf-card__heading__icon,
