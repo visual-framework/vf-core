@@ -1,6 +1,7 @@
 ### 2.5.7
 
 * Fixes the vertical centering of the svg arrow on vf-card titles. Also aligns better with the Figma design kit.
+  * https://github.com/visual-framework/vf-core/pull/1562
 
 ### 2.5.6
 

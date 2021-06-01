@@ -35,10 +35,10 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 ### 4. Post-release
 
 1. commit and push changes to the `develop` branch
-    - commit message in a format of: `Component release 20200330-01`
+    - commit message in a format of: `Component release 20210531-01`
 1. add a tag"
     - see last tag `git describe --abbrev=0 --tags`
-    - add a semantic versioned tag `git tag -a v2.4.10 -m 'Release of precompiled CSS, JS, assets'`
+    - add a semantic versioned tag `git tag -a v2.5.0-beta.1 -m 'Release of precompiled CSS, JS, assets'`
     - Why like this?
        - We do not add tags per individual component version, Lerna needs a named tag to see what has changed. This way we get one tag per release "bundle" avoiding tag spamming in the release history.
        - Trigger a deploy to the CDN (i.e. `v2.4.5-rc.1`) https://assets.emblstatic.net/vf/v2.4.10/css/styles.css
