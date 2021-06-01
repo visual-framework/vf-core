@@ -1,5 +1,5 @@
 ---
-title: Component versioning interoperability
+title: "Components: versioning interoperability"
 subtitle: Each Visual Framework component carries its own semantic versioning.
 date: 2020-12-11 19:33:50
 section: building
