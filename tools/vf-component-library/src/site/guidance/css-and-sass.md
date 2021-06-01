@@ -171,11 +171,22 @@ a:hover {
 }
 ```
 
-### Variables
+### Variables (Sass)
 
 [Variables](http://www.sitepoint.com/sass-reference/variables/) in Sass allow you to reuse things like font stacks, colors and margins etc. Within the UI Pattern Library there is a file within the `global` folder called `_variables.scss` where these are defined.
 
 If you find yourself repeating a declaration in your CSS a few times it may be worth adding a new variable for this. Try to be as abstract as you can when naming it. For example rather than write `$tab-navigation-padding: 10px;` and `$tab-card-padding: 10px;` consider writing `$tab-padding` or `$padding-small;` so that it can be used elsewhere without confusion.
+
+### Custom properties (CSS "variables")
+
+The VF also makes use of CSS custom properties for two types of use cases:
+
+1. Consuming design tokens:
+    - `background-color: var(--vf-color--grey--darkest);`
+2. Component-level theme inheritance:
+    - `--vf-container__background-color: var(--vf-container--search__background-color);`
+3. Exposing customisation to users, such as a background image:
+    - `background-image: var(--vf-hero--bg-image, url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/roundels.png'));`
 
 ### Mixins
 
@@ -198,4 +209,3 @@ If you have written some code that may change as it maybe something that gets pu
 ```
 
 Your code editor can help you find these when mopping up before a project goes live.
-
