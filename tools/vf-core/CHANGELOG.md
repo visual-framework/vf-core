@@ -1,3 +1,11 @@
+### 2.2.27
+
+* Require node 12 or greater. Node 10 is now out of support and many dependencies no longer work.
+
+### 2.2.26
+
+* dependency bump
+
 ### 2.2.25
 
 * dependency bump
