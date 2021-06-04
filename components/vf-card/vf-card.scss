@@ -70,14 +70,12 @@
 
 .vf-card__heading__icon {
   fill: currentColor;
-  height: 1.3em; // to ensure optical vertical centering
-  padding-left: map-get($vf-spacing-map, vf-spacing--100);
+  padding-top: 0.1em; // to compensate for ascender, this value should be fairly consistent across most type families
   transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
   // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
   transition-duration: 125ms;
   transition-property: transform;
   transition-timing-function: cubic-bezier(.45, .05, .55, .95);
-  width: 1em;
 }
 
 .vf-card__title,
@@ -92,9 +90,10 @@
   word-break: break-word;
 
   .vf-card__link {
-    align-items: center;
     color: color(blue);
-    display: flex;
+    display: grid;
+    grid-column-gap: space(100);
+    grid-template-columns: auto 1fr;
     text-decoration: none;
 
     &::after {
