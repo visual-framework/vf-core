@@ -1,10 +1,10 @@
-# Compatibility with EBI-VF 1.x component
+# Compatibility with EBI-VF 1.x components
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Febi-vf1-integration.svg)](https://badge.fury.io/js/%40visual-framework%2Febi-vf1-integration)
 
 ## About
 
-This adds fixes, compatibility and workarounds for sites that use the EBI VF versions 1.1, 1.2 or 1.3.
+Fixes, compatibility and workarounds for sites that use the EBI VF versions 1.1, 1.2, 1.3 or 1.4.
 
 ## Usage
 
@@ -17,14 +17,14 @@ Enable its use by:
 
 ### Option 1
 
-Use the global VF 2.0 CSS along side your existing VF 1.x CSS; see: https://www.embl.org/guidelines/design/patterns/
+Use the global VF 2.0 CSS along side your existing VF 1.x CSS; see: https://stable.visual-framework.dev/
 
 ### Option 2
 
 If you don't want to include all the VF 2.0 CSS, add only the compatibility CSS:
 
 ```
-https://dev.assets.emblstatic.net/embl-design-system/develop/assets/ebi-vf1-integration/ebi-vf1-integration.css
+https://assets.emblstatic.net/vf/v2.4.15/assets/ebi-vf1-integration/ebi-vf1-integration.css
 ```
 
 ### Option 3

@@ -1,6 +1,11 @@
+### 1.0.7
+
+* Minor tweaks to docs.
+
 ### 1.0.6
 
 * changes any `set-` style functions to cleaner version
+
 ### 1.0.5
 
 * Handle text color on vf-button--outline.
