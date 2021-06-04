@@ -1,3 +1,8 @@
+### 1.5.6
+
+* Adds support for responsive `img` and `figure` elements
+  * https://github.com/visual-framework/vf-core/issues/1412
+
 ### 1.5.4
 
 * dependency bump
