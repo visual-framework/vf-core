@@ -1,3 +1,10 @@
+### 1.9.0
+
+* Correct an issue in naming of Yaml keys that resulted in null values.
+  * `vf-data-protection-banner__text` -> `banner__text`
+  * `vf-data-protection-banner__link` -> `banner__link`
+  * `vf-banner--inline_href` -> `banner__inline_href`
+
 ### 1.8.0
 
 * adds overrides for more permutations of where the vf-global header lives
