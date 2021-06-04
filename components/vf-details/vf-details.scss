@@ -28,6 +28,12 @@
   @include set-type(text-body--2);
   @include margin(#{'-'+map-get($vf-spacing-map, vf-spacing--200)},#{'-'+map-get($vf-spacing-map, vf-spacing--200)},0,#{'-'+map-get($vf-spacing-map, vf-spacing--200)});
   @include padding(map-get($vf-spacing-map, vf-spacing--200));
+  @include inline-link($vf-link--visited-color: map-get($vf-colors-map, vf-color--blue));
+  cursor: pointer;
+}
+
+.vf-details--summary > * {
+  display: inline; // keep any child elements on the same line
 }
 
 .vf-details[open] {

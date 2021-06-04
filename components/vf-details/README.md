@@ -2,11 +2,14 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-details.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-details)
 
+## About
+
+Use this interactive accordion-link component in places where information is optional.
+
 ## Usage
 
-This component makes use of the [HTML `details` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#attr-open). Use it in places where information is optional.
-
-You can add the `open` attribute to toggle the default state (`<details class="vf-details" open>`).
+- This component makes use of the [HTML `details` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#attr-open).
+- To toggle the default state, the `open` attribute: `<details class="vf-details" open>`.
 
 ## Install
 
@@ -22,7 +25,7 @@ This component does not use JS.
 
 ### Sass/CSS
 
-The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
+The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
 @import "@visual-framework/vf-details/index.scss";
