@@ -207,7 +207,7 @@ function vfBannerInsert(banner,bannerId,scope) {
       generatedBannerHtml += "<button class=\"vf-button vf-button--secondary\" data-vf-js-banner-close>"+banner.vfJsBannerButtonText+"</button>";
     }
     else if (banner.vfJsBannerButtonTheme == "tertiary") {
-      generatedBannerHtml += "<button class=\"vf-button vf-button--tertary\" data-vf-js-banner-close>"+banner.vfJsBannerButtonText+"</button>";
+      generatedBannerHtml += "<button class=\"vf-button vf-button--tertiary\" data-vf-js-banner-close>"+banner.vfJsBannerButtonText+"</button>";
     }
     else {
       // default

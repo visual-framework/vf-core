@@ -1,5 +1,6 @@
 ### 1.9.0
 
+* Correct "tertary" typo in "vf-button--tertiary".
 * Correct an issue in naming of Yaml keys that resulted in null values.
   * `vf-data-protection-banner__text` -> `banner__text`
   * `vf-data-protection-banner__link` -> `banner__link`
