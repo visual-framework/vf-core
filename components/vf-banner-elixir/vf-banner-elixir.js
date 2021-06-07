@@ -15,30 +15,44 @@
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
 
-// Uncomment this boilerplate
-// // if you need to import any other components' JS to use here
+// if you need to import any other components' JS to use here
 // import { vfOthercomponent } from vfImportPrefix + '../vf-other-component/vf-other-component';
-//
-//  /**
-//   * The global function for this component
-//   * @example vfBanner-Elixir(firstPassedVar)
-//   * @param {string} [firstPassedVar]  - An option to be passed
-//   */
-// function vfBannerElixir(firstPassedVar) {
-//   firstPassedVar = firstPassedVar || 'defaultVal';
-//
-// }
-//
-// // If you need to invoke the component by default
+
+ /**
+  * The global function for this component
+  * @example vfBanner-Elixir(scope)
+ * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+  */
+function vfBannerElixir(scope) {
+  /* eslint-disable no-redeclare */
+  var scope = scope || document;
+  /* eslint-enable no-redeclare */
+  const elixirBanner = scope.querySelectorAll("[data-vf-js-banner-elixir]");
+  if (!elixirBanner) {
+    // exit: banners not found
+    return;
+  }
+  if (elixirBanner.length == 0) {
+    // exit: banner content not found
+    return;
+  }
+  if (elixirBanner.length > 1) {
+    console.warn('vf-banner-elixir','More than one ELIXIR banner found, only the first will be processed.')
+    return;
+  }
+
+}
+
+// If you need to invoke the component by default
 // vfBannerElixir();
-//
-// // By default your component should be usable with js imports
-// export { vfBannerElixir };
-//
-// // You should also import it at ./components/vf-component-rollup/scripts.js
-// // import { vfBannerElixir } from 'vf-banner-elixir/vf-banner-elixir';
-// // Or import directly
-// // import { vfBannerElixir } from '../components/raw/vf-banner-elixir/vf-banner-elixir.js';
-// // And, if needed, invoke it
-// // vfBannerElixir();
+
+// By default your component should be usable with js imports
+export { vfBannerElixir };
+
+// You should also import it at ./components/vf-component-rollup/scripts.js
+// import { vfBannerElixir } from 'vf-banner-elixir/vf-banner-elixir';
+// Or import directly
+// import { vfBannerElixir } from '../components/raw/vf-banner-elixir/vf-banner-elixir.js';
+// And, if needed, invoke it
+// vfBannerElixir();
 
