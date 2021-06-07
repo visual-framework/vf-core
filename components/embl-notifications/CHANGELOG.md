@@ -1,3 +1,7 @@
+### 1.1.0
+
+* Capture all links without `vf-banner__link` class.
+
 ### 1.0.2
 
 * Improve JS module import support.

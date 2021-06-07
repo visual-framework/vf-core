@@ -3,7 +3,7 @@
 // **Thinking about deleting this file?**
 // If your component needs no CSS/Sass, we still recommend leaving the
 // scss files in place. As this is primarily a CSS framework, it is better to
-// leave the empty files so you know a file wasn't accidently omitted.
+// leave the empty files so you know a file wasn't accidentally omitted.
 // If you don't have any Sass, you can trim this block down to:
 // "This page was intentionally left blank"
 
@@ -26,7 +26,6 @@
 
 @import 'ebi-vf1-integration.variables.scss';
 
-
 // this alters the typeface for the VF1.x header navigation to match Plex
 .ebi-vf1-integration,
 html body.ebi-vf1-integration {
@@ -45,7 +44,6 @@ body.ebi-vf1-integration,
 }
 
 .ebi-vf1-integration {
-
   h1 {
     color: unset;
   }
@@ -58,7 +56,7 @@ body.ebi-vf1-integration,
   // this makes the EBI / VF1.x header, footer the same max-width of VF2.0
   #masthead-black-bar .row,
   #global-footer .row {
-    max-width: 76.5rem;
+    max-width: 80em;
   }
 
   #global-nav,
@@ -150,4 +148,10 @@ body.ebi-vf1-integration,
     max-width: unset;
   }
 
+  // vf-hero uses a text-decoration-thickness
+  .vf-hero__heading_link:visited,
+  .vf-hero__heading_link:hover,
+  .vf-hero__heading_link:focus {
+    border-bottom-style: none;
+  }
 }
