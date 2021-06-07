@@ -41,6 +41,36 @@ function vfBannerElixir(scope) {
     return;
   }
 
+
+  let logo = elixirBanner[0].dataset.vfJsBannerElixirLogo;
+  let name = elixirBanner[0].dataset.vfJsBannerElixirName;
+  let description = elixirBanner[0].dataset.vfJsBannerElixirDescription;
+  let link = elixirBanner[0].dataset.vfJsBannerElixirLink;
+
+  if (!logo) {
+    logo = "https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/images/logos/assorted/elixir_kitemark-60px.png";
+  }
+  if (logo == "CDR" || logo == "cdr") {
+    logo == "https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/images/logos/ELIXIR/elixir-cdr.gif";
+  }
+  if (!name) {
+    name = "This service";
+  }
+  if (!description) {
+    description = "This is part of the ELIXIR distributed infrastructure for life-science information.";
+  }
+  if (!link) {
+    link = "http://www.elixir-europe.org";
+  }
+
+
+  elixirBanner[0].innerHTML = "<h4 class='vf-banner__text--lg'>" + name + " is part of the ELIXIR infrastructure</h4>";
+  elixirBanner[0].innerHTML += "<p class='vf-banner__text'>" + description + "</p>";
+  elixirBanner[0].innerHTML += "<a href='"+ link +"' class='vf-banner__text'>link</a>";
+  elixirBanner[0].innerHTML += "<p class='vf-banner__text'>logo: " + logo + "</p>";
+
+
+
 }
 
 // If you need to invoke the component by default

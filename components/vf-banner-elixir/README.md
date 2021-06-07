@@ -15,13 +15,13 @@ This is an early version that is largely a port of [the VF 1.3 ELIXIR Banner](ht
 
 ### Options
 
-- `data-vf-js-banner-elixir-logo="optional"`
+- `data-vf-js-banner-elixir-logo=""` (optional)
     - this value is optional, the banner will default to use the ELIXIR kitemark. Passing `CDR` will use the [ELIXIR Core Data Resource mark](https://elixir-europe.org/platforms/data/core-data-resources).
-- `data-vf-js-banner-elixir-name="Your Service Name"`
+- `data-vf-js-banner-elixir-name="Your Service Name"` (optional)
     - " is part of the ELIXIR infrastructure" will be appended
-- `data-vf-js-banner-elixir-description="text here"`
+- `data-vf-js-banner-elixir-description="text here"` (optional)
     - set the text in the small line of text to explain your relationship with ELIXIR
-- `data-vf-js-banner-elixir-link="https://url"`
+- `data-vf-js-banner-elixir-link="https://url"` (optional)
     - by default the banner will point to a page at www.elixir-europe.org. If you would prefer to link to a custom page explaining your relationship with ELXIR, add the full URL here
 
 The development and future direction of this component can be [discussed in issue #1572](https://github.com/visual-framework/vf-core/issues/1572). While breaking changes are anticipated they are currently not expected.
