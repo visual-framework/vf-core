@@ -31,7 +31,7 @@ This component targets WCAG 2.1 AA accessibility. Below you can find additional 
 
 - Add any do's and do nots
 
-You can also read about [the Visual Framework's approach to accessibility](stable.visual-framework.dev/guidance/accessibility/).
+You can also read about [the Visual Framework's approach to accessibility](https://stable.visual-framework.dev/guidance/accessibility/).
 
 ## Install
 
@@ -61,7 +61,7 @@ vfComponentName(); // if needed, invoke it
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
-@import "@visual-framework/<%= componentName %>/index.scss";
+@import "@visual-framework/<%= componentName %>/<%= componentName %>.scss";
 ```
 
 Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)
