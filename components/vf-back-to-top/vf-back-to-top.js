@@ -32,6 +32,11 @@ export function vfBackToTop() {
     //only handle first floating element, ignore additional elements
     const floatingElement = document.querySelector("[data-vf-js-back-to-top-floating]");
 
+    if (!floatingElement) {
+      //exit, no floating button element found
+      return;
+    }
+
     //hide initially
     setVisible(floatingElement, false);
 

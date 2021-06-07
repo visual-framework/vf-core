@@ -4,15 +4,18 @@
 
 ## About
 
-This provides support for using the EMBL-EBI header and footer from the EMBL-EBI VF 1.3. It provides the minimum amount of legacy CSS to make the header and footer work while avoiding conflicts with other 2.0 styles.
+Support for using the EMBL-EBI header and footer from the EMBL-EBI VF 1.3.
 
-### Note
+## Usage
+
+This component provides the minimum amount of legacy CSS to make the header and footer work while avoiding conflicts with other 2.0 styles.
 
 - This component requires the EMBL contentHub loader, which is included in most EMBL VF builds.
 - This requires VF 2.0 footer CSS and other styles.
 - If you do not currently have VF 2.0 CSS and JS as part of your project, [you can use the CDN JS](https://stable.visual-framework.dev/#cdn).
 - This uses the existing `//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/js/script.js` to load the HTML for the header.
 - The EBI VF 1.x will also included a data protection banner, to disable this with 1.4 you can an included an element with `data-protection-message-disable="true"`
+  - This will be inserted by default when using the `ebi-header-footer--footer` template.
 
 ## Install
 

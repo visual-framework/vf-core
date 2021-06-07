@@ -1,6 +1,13 @@
+### 1.0.7
+
+* Minor tweaks to docs.
+* Update max-width to match vf-body.
+* Fix a clash with vf-hero that uses text-decoration-thickness.
+
 ### 1.0.6
 
 * changes any `set-` style functions to cleaner version
+
 ### 1.0.5
 
 * Handle text color on vf-button--outline.
