@@ -37,7 +37,7 @@ function vfBannerElixir(scope) {
     return;
   }
   if (elixirBanner.length > 1) {
-    console.warn('vf-banner-elixir','More than one ELIXIR banner found, only the first will be processed.')
+    console.warn("vf-banner-elixir","More than one ELIXIR banner found, only the first will be processed.");
     return;
   }
 
