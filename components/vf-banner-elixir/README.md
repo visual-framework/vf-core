@@ -8,9 +8,19 @@ This should be placed in the footer of sites that are part of the ELIXIR network
 
 ## Usage
 
-This is an early version that is largely a port of [the VF 1.3 ELIXIR Banner](https://www.ebi.ac.uk/style-lab/websites/patterns/banner-elixir.html). While breaking changes are anticipated they are currently not expected.
+This is an early version that is largely a port of [the VF 1.3 ELIXIR Banner](https://www.ebi.ac.uk/style-lab/websites/patterns/banner-elixir.html) with some notable changes:
 
-The development and future direction of this component can be [discussed in issue #1572](https://github.com/visual-framework/vf-core/issues/1572).
+- The data option prefixes have changed to match VF 2 practice `data-name` is now `data-vf-banner-elixir-name`, and similarly for the other options.
+- The multiple background colour options (green, orange, blue) have been dropped as they were poorly used and often presented colour-contrast accessibility issues.
+-
+
+
+
+
+
+The development and future direction of this component can be [discussed in issue #1572](https://github.com/visual-framework/vf-core/issues/1572). While breaking changes are anticipated they are currently not expected.
+
+This component leverage's vf-banner's Sass/CSS, so it should also be installed.
 
 ### Accessibility
 
@@ -24,10 +34,10 @@ You can also read about [the Visual Framework's approach to accessibility](stabl
 
 ## Install
 
-This repository is distributed with [npm][https://www.npmjs.com/]. After [installing npm][https://www.npmjs.com/get-npm] and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-banner-elixir` with this command.
+This repository is distributed with [npm][https://www.npmjs.com/]. After [installing npm][https://www.npmjs.com/get-npm] and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-banner-elixir` and the supporting `vf-banner` with this command.
 
 ```
-$ yarn add --dev @visual-framework/vf-banner-elixir
+$ yarn add --dev @visual-framework/vf-banner-elixir @visual-framework/vf-banner
 ```
 
 ### JS
@@ -46,7 +56,8 @@ vfBannerElixir(); // if needed, invoke it
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
-@import "@visual-framework/vf-banner-elixir/index.scss";
+@import 'vf-banner/vf-banner.scss';
+@import "@visual-framework/vf-banner-elixir/vf-banner-elixir.scss";
 ```
 
 Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)

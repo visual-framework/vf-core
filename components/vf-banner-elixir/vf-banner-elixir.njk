@@ -1,18 +1,18 @@
-{# Make sure any variables are listed inside the following if statement #}
-{% if context %}
-  {# {% set vf-banner-elixir = context.vf-banner-elixir %} #}
-{% endif %}
+{#- Make sure any variables are listed inside the following if statement -#}
+{%- if context %}
+  {% set logo = context.logo %}
+  {% set name = context.name %}
+  {% set description = context.description %}
+  {% set link = context.link %}
+{% endif -%}
 
-<div class="vf-banner-elixir">
-  /* vf-banner-elixir template file */
+<div class="vf-banner-elixir vf-banner
+  {%- if banner__info == true %} {% endif -%}
+  ">
+  <div class="vf-banner__content">
+    <p class="vf-banner__text">{{logo}}</p>
+    <p class="vf-banner__text">{{name}}</p>
+    <p class="vf-banner__text">{{description}}</p>
+    <p class="vf-banner__text">{{link}}</p>
+  </div>
 </div>
-
-{# You can do Nunjucks logic in your templates that references the .yml settings
-   What's Nunjucks: https://mozilla.github.io/nunjucks/templating.html #}
-{#
-{% if item.image == "blank" %}
-  <span><!-- no image --></span>
-  {% else %}
-  {{ item.image }}
-{% endif %}
-#}
