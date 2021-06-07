@@ -1,20 +1,5 @@
 // vf-banner-elixir
 
-/*
- * A note on the Visual Framework and JavaScript:
- * The VF is primarily a CSS framework so we've included only a minimal amount
- * of JS in components and it's fully optional (just remove the JavaScript selectors
- * i.e. `data-vf-js-tabs`). So if you'd rather use Angular or Bootstrap for your
- * tabs, the Visual Framework won't get in the way.
- *
- * When querying the DOM for elements that should be acted on:
- * 🚫 Don't: const tabs = document.querySelectorAll('.vf-tabs');
- * ✅ Do:    const tabs = document.querySelectorAll('[data-vf-js-tabs]');
- *
- * This allows users who would prefer not to have this JS engage on an element
- * to drop `data-vf-js-component` and still maintain CSS styling.
- */
-
 // if you need to import any other components' JS to use here
 // import { vfOthercomponent } from vfImportPrefix + '../vf-other-component/vf-other-component';
 
@@ -41,14 +26,13 @@ function vfBannerElixir(scope) {
     return;
   }
 
-
   let logo = elixirBanner[0].dataset.vfJsBannerElixirLogo;
   let name = elixirBanner[0].dataset.vfJsBannerElixirName;
   let description = elixirBanner[0].dataset.vfJsBannerElixirDescription;
   let link = elixirBanner[0].dataset.vfJsBannerElixirLink;
 
   if (!logo) {
-    logo = "https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/images/logos/assorted/elixir_kitemark-60px.png";
+    logo = "https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.2/images/logos/assorted/elixir_kitemark-60px.png";
   }
   if (logo == "CDR" || logo == "cdr") {
     logo == "https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/images/logos/ELIXIR/elixir-cdr.gif";
@@ -59,18 +43,21 @@ function vfBannerElixir(scope) {
   if (!description) {
     description = "This is part of the ELIXIR distributed infrastructure for life-science information.";
   }
-  if (!link) {
+  if (!link || link == "default") {
     link = "http://www.elixir-europe.org";
   }
 
-
-  elixirBanner[0].innerHTML = "<h4 class='vf-banner__text--lg'>" + name + " is part of the ELIXIR infrastructure</h4>";
-  elixirBanner[0].innerHTML += "<p class='vf-banner__text'>" + description + "</p>";
-  elixirBanner[0].innerHTML += "<a href='"+ link +"' class='vf-banner__text'>link</a>";
-  elixirBanner[0].innerHTML += "<p class='vf-banner__text'>logo: " + logo + "</p>";
-
-
-
+  elixirBanner[0].innerHTML = `
+    <div class="vf-flag vf-flag--middle vf-flag--400">
+      <div class="vf-flag__media">
+        <a href="${link}" class="vf-banner__link"><img src="${logo}" alt="ELIXIR Logo"></a>
+      </div>
+      <div class="vf-flag__body">
+        <h4 class='vf-banner__text--lg'><a href="${link}" class="vf-link">${name} is part of the ELIXIR infrastructure</a></h4>
+        <p class="vf-banner__text">${description}</p>
+      </div>
+    </div>
+  `;
 }
 
 // If you need to invoke the component by default
