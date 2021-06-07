@@ -20,17 +20,13 @@ This is an early version that is largely a port of [the VF 1.3 ELIXIR Banner](ht
 
 The development and future direction of this component can be [discussed in issue #1572](https://github.com/visual-framework/vf-core/issues/1572). While breaking changes are anticipated they are currently not expected.
 
-This component leverage's vf-banner's Sass/CSS, so it should also be installed.
+This component leverages the Sass/CSS of `vf-banner`, so it should also be installed.
 
 ### Accessibility
 
-[Add a note if the accessibility of this component has been validated.]
+This component targets WCAG 2.1 AA accessibility.
 
-This component targets WCAG 2.1 AA accessibility. Below you can find additional notes on accessibility best practice with this component:
-
-- Add any do's and do nots
-
-You can also read about [the Visual Framework's approach to accessibility](stable.visual-framework.dev/guidance/accessibility/).
+You can also read about [the Visual Framework's approach to accessibility](https://stable.visual-framework.dev/guidance/accessibility/).
 
 ## Install
 
