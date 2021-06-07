@@ -31,7 +31,7 @@ This component targets WCAG 2.1 AA accessibility. Below you can find additional 
 
 - Add any do's and do nots
 
-You can also read about [the Visual Framework's approach to accessibility](stable.visual-framework.dev/guidance/accessibility/).
+You can also read about [the Visual Framework's approach to accessibility](https://stable.visual-framework.dev/guidance/accessibility/).
 
 ## Install
 
