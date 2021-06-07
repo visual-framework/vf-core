@@ -1,3 +1,8 @@
+### 1.1.5
+
+* Fix a bug in `camelize` function that only replaced first `-`.
+* In `README.md` template, reference the component `vfName.scss` file and not `index.scss`
+
 ### 1.1.4
 
 * Add accessibility section to README.md template.
