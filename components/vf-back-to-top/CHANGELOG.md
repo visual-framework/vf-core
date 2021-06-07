@@ -1,5 +1,6 @@
 ### 1.0.0-alpha.2
-* fixed a null reference error
+
+* Fixed a null reference error.
   * [Tracking issue](https://github.com/visual-framework/vf-core/issues/1567)
 
 ### 1.0.0-alpha.1
