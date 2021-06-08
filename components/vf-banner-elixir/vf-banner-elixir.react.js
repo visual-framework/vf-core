@@ -5,11 +5,11 @@
 import React from "react";
 import Fragment from "react-dom-fragment";
 // eslint-disable-next-line no-unused-vars
-import VfBanner-ElixirTemplate from "./vf-banner-elixir.precompiled.js"; // import templates before the nunjucks env
+import VfBannerElixirTemplate from "./vf-banner-elixir.precompiled.js"; // import templates before the nunjucks env
 import { vfNunjucksEnv } from "@visual-framework/vf-extensions-react/vf-extensions-react.js";
 
 // any JS actions needed on component insertion
-class VfBanner-ElixirCallback extends React.Component {
+class VfBannerElixirCallback extends React.Component {
   componentDidMount() {
     console.log('any JS actions needed')
   }
@@ -19,7 +19,7 @@ class VfBanner-ElixirCallback extends React.Component {
   }
 }
 
-const VfBanner-Elixir = React.memo(({
+const VfBannerElixir = React.memo(({
   variant, newTheme, card_image, card_text, card_image__alt, card_title
   }) => {
     return React.createElement(React.Fragment, null,
@@ -31,9 +31,9 @@ const VfBanner-Elixir = React.memo(({
           })
         }
       }),
-      React.createElement(VfBanner-ElixirCallback, null)
+      React.createElement(VfBannerElixirCallback, null)
     );
   }
 );
 
-export { VfBanner-Elixir };
+export { VfBannerElixir };
