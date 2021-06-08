@@ -3,20 +3,16 @@
 // if you need to import any other components' JS to use here
 // import { vfOthercomponent } from vfImportPrefix + '../vf-other-component/vf-other-component';
 
- /**
+/**
   * The global function for this component
   * @example vfBanner-Elixir(scope)
- * @param {object} [scope] - the html scope to process, optional, defaults to `document`
+  * @param {object} [scope] - the html scope to process, optional, defaults to `document`
   */
 function vfBannerElixir(scope) {
   /* eslint-disable no-redeclare */
   var scope = scope || document;
   /* eslint-enable no-redeclare */
   const elixirBanner = scope.querySelectorAll("[data-vf-js-banner-elixir]");
-  if (!elixirBanner) {
-    // exit: banners not found
-    return;
-  }
   if (elixirBanner.length == 0) {
     // exit: banner content not found
     return;
