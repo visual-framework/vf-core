@@ -24,7 +24,6 @@
   <div class="vf-stack">
 
   <h1 class="vf-intro__heading {% if (vf_intro_phase) or (vf_intro_badge) %}vf-intro__heading--has-tag{% endif %}">
-
   {{- vf_intro_heading -}}
 
   {%- if (vf_intro_phase) and (vf_intro_badge) -%}
@@ -33,16 +32,15 @@
 
   {%- if (vf_intro_phase) %}
     {%- if (vf_intro_heading_href) %}
-      <a href="{{- intro_heading_href -}}" class="vf-badge vf-badge--primary vf-badge--phases">{{- vf_intro_phase -}}</a>
+      <a href="{{- intro_heading_href -}}" class="vf-badge vf-badge--primary">{{- vf_intro_phase -}}</a>
     {%- else -%}
-      <span class="vf-badge vf-badge--primary vf-badge--phases">{{- vf_intro_phase -}};</span>
+      <span class="vf-badge vf-badge--primary">{{- vf_intro_phase -}};</span>
     {%- endif -%}
   {%- endif -%}
   {%- if vf_intro_badge -%}
     {% set badge = '@vf-badge' %}
     {% render badge, { 'context': vf_intro_badge } %}
   {%- endif -%}
-
   </h1>
 
 
