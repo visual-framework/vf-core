@@ -61,20 +61,19 @@
 }
 
 .vf-intro__heading--has-tag {
-  align-items: center;
   display: flex;
 
   .vf-badge {
-    margin-left: .5rem;
+    margin-top: map-get($vf-spacing-map, vf-spacing--200); // compensate for the ascender height
   }
 
   @media (min-width: $vf-breakpoint--lg) {
-    left: -83px;
     position: relative;
 
     .vf-badge {
-      margin-left: 0;
-      order: -1;
+      margin-right: map-get($vf-spacing-map, vf-spacing--400);
+      position: absolute;
+      right: 100%;
     }
   }
 }
