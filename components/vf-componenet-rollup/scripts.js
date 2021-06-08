@@ -10,6 +10,9 @@
 import { vfBanner } from "vf-banner/vf-banner";
 vfBanner();
 
+import { vfBannerElixir } from "vf-banner-elixir/vf-banner-elixir";
+vfBannerElixir();
+
 // VF Masthead has been deprecated
 // https://github.com/visual-framework/vf-core/pull/1406/
 // import { vfMastheadSetStyle } from "vf-masthead/vf-masthead";

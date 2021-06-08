@@ -1,0 +1,22 @@
+{#- Make sure any variables are listed inside the following if statement -#}
+{%- if context %}
+  {% set logo = context.logo %}
+  {% set name = context.name %}
+  {% set description = context.description %}
+  {% set link = context.link %}
+{% endif -%}
+
+<div class="vf-banner-elixir vf-banner"
+  data-vf-js-banner-elixir
+  data-vf-js-banner-elixir-logo="{%- if logo == "CDR" %}CDR{% endif -%}"
+  data-vf-js-banner-elixir-name="{%- if name %}{{name}}{% endif -%}"
+  data-vf-js-banner-elixir-description="{%- if description %}{{description}}{% endif -%}"
+  data-vf-js-banner-elixir-link="{%- if link %}{{link}}{% endif -%}"
+  >
+  <div class="vf-banner__content">
+    <p class="vf-banner__text">{{logo}}</p>
+    <p class="vf-banner__text">{{name}}</p>
+    <p class="vf-banner__text">{{description}}</p>
+    <p class="vf-banner__text">{{link}}</p>
+  </div>
+</div>
