@@ -3,6 +3,7 @@
 * Remove `vf-badge--phases` after upstream removal in vf-badge@2.0.0
   * https://github.com/visual-framework/vf-core/pull/1546
 * Improve placement of `.vf-intro__heading--has-tag .vf-badge` to facilitate assorted widths and multiline headings
+  * https://github.com/visual-framework/vf-core/pull/1579
 
 ### 1.4.7
 
