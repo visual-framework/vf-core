@@ -1,3 +1,7 @@
+### 2.0.1
+
+* Bug: Add missing `@import 'vf-global-variables';` to generate standalone `vf-tabs.css`.
+
 ### 2.0.0
 
 * Updates the styling to match the design direction.
