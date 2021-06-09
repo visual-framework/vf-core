@@ -136,7 +136,7 @@
     {%- endif %}
 
     {# Render sub nav for sections #}
-    {% if section %}
+    {% if section and (hideSectionNavigation != true) %}
       {%- set navigationList = [] -%}
       {%- for entry in collections[section] %}
         {%- if entry.data.layout %}

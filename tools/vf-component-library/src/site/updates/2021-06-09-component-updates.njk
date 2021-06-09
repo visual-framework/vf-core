@@ -1,0 +1,162 @@
+---
+title: Rollup release 2.5.0-beta.2
+subtitle: As we move forward towards a more visually and technically consistent 2.5.0 rollup release, beta 2 brings 16 component updates with bug fixes and minor improvements.
+date: 2021-06-09 16:20:29
+version: 2.5.0-beta.2
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{% markdown %}
+
+In addition to a number of minor fixes, this rollup release introduces a first alpha version of the ELIXIR banner for the VF 2.
+
+Read on for more.
+
+{% endmarkdown %}
+
+{% set context = {
+  "component_modifier": "vf-links__list--easy",
+  "title": "On this page",
+  "svg": true,
+  "list": [
+    {
+      "text": "New component",
+      "link_list_href": "#new"
+    },
+    {
+      "text": "Notable improvements",
+      "link_list_href": "#improvements"
+    },
+    {
+      "text": "Bug fixes",
+      "link_list_href": "#bugs"
+    }
+  ]
+}
+%}
+{% include blocks.links_list %}
+
+
+{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+
+#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+<!-- Tools don't have pages in the component library -->
+
+#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
+{# endmacros ---/ #}
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+### New <a href="#new" id="new"></a>
+
+{{ notes("vf-banner-elixir", "1.0.0-alpha.1", "295b9a57bcb766092866748b1d1ab95a07e840ba") }}
+
+* Initial version of the ELIXIR banner for services.
+  * https://github.com/visual-framework/vf-core/issues/1572
+
+### Notable improvements <a href="#improvements" id="improvements"></a>
+
+{{ notes("vf-content", "1.5.6", "9786b2d11c983731fc55836b404e78b674ad1448") }}
+
+* Adds support for responsive `img` and `figure` elements
+  * https://github.com/visual-framework/vf-core/issues/1412
+
+{{ notes("vf-details", "1.2.0", "38af6b034934efb5dcaea09d34342747b8253bfe") }}
+
+* Fixes the missing "about" in the readme.
+* Shows "pointer" on hover.
+* uses interactive blue colour.
+* Shows summary child elements as inline.
+* https://github.com/visual-framework/vf-core/issues/1417
+
+{{ notes("vf-card", "2.5.7", "1525ccb6b91b18a0d4fc3daab811829405aa97a9") }}
+
+* Fixes the vertical centering of the svg arrow on vf-card titles. Also aligns better with the Figma design kit.
+  * https://github.com/visual-framework/vf-core/pull/1562
+
+{{ notes("vf-section-header", "1.5.1", "1525ccb6b91b18a0d4fc3daab811829405aa97a9") }}
+
+* Fixes the vertical centering of the svg arrow on vf-section-header. Also aligns better with the Figma design kit.
+  * https://github.com/visual-framework/vf-core/pull/1562
+
+
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+{{ notes("vf-intro", "1.5.0", "9a07918f28349ce5754068d39850d7c75622d09d") }}
+
+* Remove `vf-badge--phases` after upstream removal in vf-badge@2.0.0
+  * https://github.com/visual-framework/vf-core/pull/1546
+* Improve placement of `.vf-intro__heading--has-tag .vf-badge` to facilitate assorted widths and multiline headings
+  * https://github.com/visual-framework/vf-core/pull/1579
+
+{{ notes("vf-flag", "1.0.0-alpha.2", "74c2cb6b0c3546ab5a23fa526c164b2bff701b42") }}
+
+* Handle image widths: as vf-flag uses a table layout, this does not mix well with `vf-content img` and max-width 100%.
+
+{{ notes("vf-back-to-top", "1.0.0-alpha.2", "61d3dbdca4dc60afc7f602a5a21e6f6f3167f632") }}
+
+* Fixed a null reference error.
+  * [Tracking issue](https://github.com/visual-framework/vf-core/issues/1567)
+
+{{ notesTool("vf-component-generator", "1.1.5", "5ea9b9cc49f4620479ebd7ae83031af003976022") }}
+
+* Fix a bug in `camelize` function that only replaced first `-`.
+* In `README.md` template, reference the component `vfName.scss` file and not `index.scss`
+
+{{ notes("ebi-header-footer", "2.1.0", "8453f1f132ce9a246eb0349aef01a823e8e503d7") }}
+
+* Fix readme for proper display in component library docs.
+* For ebi-header-footer--footer.njk add context `disable_ebi_1x_cookie_banner` to disable EBI 1.x cookie banner (defaults to true).
+
+{{ notes("embl-notifications", "1.1.0", "9531fe762392a0b885906fa6a6500d759d6596b0") }}
+
+* Capture all links without `vf-banner__link` class.
+
+{{ notes("vf-banner", "1.9.0", "9531fe762392a0b885906fa6a6500d759d6596b0") }}
+
+* Correct "tertary" typo in "vf-button--tertiary".
+* Correct an issue in naming of Yaml keys that resulted in null values.
+  * `vf-data-protection-banner__text` -> `banner__text`
+  * `vf-data-protection-banner__link` -> `banner__link`
+  * `vf-banner--inline_href` -> `banner__inline_href`
+
+{{ notes("ebi-vf1-integration", "1.0.7", "dd6c5e64c78a6594b9b60c63a59ddb5d862d3ba4") }}
+
+* Update max-width to match vf-body.
+* Fix a clash with vf-hero that uses text-decoration-thickness.
+
+{{ notesTool("vf-core", "2.2.27", "f00ed69327bf97eb9d3974caf36c9d58a1f61e0a") }}
+
+* Require node 12 or greater. Node 10 is now out of support and many dependencies no longer work.
+
+{% endmarkdown %}
