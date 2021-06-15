@@ -10,57 +10,13 @@ tags:
 layout: layouts/base.njk
 ---
 
+{% set type %}typography{% endset %}
 <h1 class="vf-intro__heading">{{ title }}</h1>
 
-<main class="vf-grid vf-grid__col-3">
-{% for item in tokens.typographySans.properties %}
-
-<article class="vf-card">
-  <div style="padding: 16px;">
-    <p style="font-size: {{ item.value.fontSize }}; font-weight: {{ item.value.fontWeight }}; line-height: {{ item.value.lineHeight }}">{{ item.meta.pangram }}</p>
-  </div>
-
-  <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
-    <h3 class="vf-card__title">{{ item.meta.friendlyName }}</h3>
-    <hr class="vf-divider">
-    <p class="vf-card__text"><span>Font Size: </span><code>{{ item.value.fontSize }}</code></p>
-    <p class="vf-card__text"><span>Font Weight: </span><code>{{ item.value.fontWeight }}</code></p>
-    <p class="vf-card__text"><span>Ling Height: </span><code>{{ item.value.lineHeight}}</code></p>
-    <hr class="vf-divider">
-    <p class="vf-card__text">Sass:</p>
-    <code>@mixin set-type(`{{ item.meta.sassMap }}`)</code>
-  </section>
-</article>
-
-{% else %}
-
-<p>Something went wrong.</p>
-
-{% endfor %}
-
-{% for item in tokens.typographyMono.properties %}
-
-<article class="vf-card">
-  <div style="padding: 16px;">
-    <p style="font-size: {{ item.value.fontSize }}; font-weight: {{ item.value.fontWeight }}; line-height: {{ item.value.lineHeight }}">{{ item.meta.pangram }}</p>
-  </div>
-
-  <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
-    <h3 class="vf-card__title">{{ item.meta.friendlyName }}</h3>
-    <hr class="vf-divider">
-    <p class="vf-card__text"><span>Font Size: </span><code>{{ item.value.fontSize }}</code></p>
-    <p class="vf-card__text"><span>Font Weight: </span><code>{{ item.value.fontWeight }}</code></p>
-    <p class="vf-card__text"><span>Ling Height: </span><code>{{ item.value.lineHeight}}</code></p>
-    <hr class="vf-divider">
-    <p class="vf-card__text">Sass:</p>
-    <code>@mixin set-type(`{{ item.meta.sassMap }}`)</code>
-  </section>
-</article>
-
-{% else %}
-
-<p>Something went wrong.</p>
-
-{% endfor %}
+<main class="vf-grid vf-grid__col-2">
+  {% for item in tokens.typographySans.properties %}
+    {% include "./token-card.njk" %}
+  {% else %}
+    <p>Something went wrong.</p>
+  {% endfor %}
 </main>
-s

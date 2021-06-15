@@ -10,36 +10,13 @@ tags:
 layout: layouts/base.njk
 ---
 
+{% set type %}breakpoints{% endset %}
 <h1 class="vf-intro__heading">{{ title }}</h1>
 
 <main class="vf-grid vf-grid__col-3">
-{% for item in tokens.breakpoints.properties %}
-
-
-<article class="vf-card">
-  <div style="display: flex; justify-content: center; align-items: center;">
-    <p class="">{{ item.value }}</p>
-  </div>
-
-
-  <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
-  <h3 class="vf-card__title">{{ item.meta.friendlyName }}</h3>
-  <hr class="vf-divider">
-  <p class="vf-card__text">Sass:</p>
-    <p class="vf-card__text"><code>{{ item.meta.sassVariable }}</code></p>
-  {% if item.meta.comment %}
-  <hr class="vf-divider">
-    <h4>notes:</h4>
-    <p class="vf-card__text">
-      {{ item.meta.comment }}
-    </p>
-  {% endif %}
-  </section>
-</article>
-
-{% else %}
-
-<p>Something went wrong.</p>
-
-{% endfor %}
+  {% for item in tokens.breakpoints.properties %}
+    {% include "./token-card.njk" %}
+  {% else %}
+    <p>Something went wrong.</p>
+  {% endfor %}
 </main>

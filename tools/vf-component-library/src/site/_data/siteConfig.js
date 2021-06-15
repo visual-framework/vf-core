@@ -30,7 +30,8 @@ module.exports = {
     },
     designtokens: {
       url: "/design-tokens",
-      title: "Design tokens"
+      title: "Design tokens",
+      summary: "The colour, typography, spacing, and other stylistic decisions as design tokens for consumption."
     },
     developing: {
       url: "/developing",

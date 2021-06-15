@@ -10,109 +10,18 @@ tags:
 layout: layouts/base.njk
 ---
 
+{% set type %}color{% endset %}
 <h1 class="vf-intro__heading">{{ title }}</h1>
 
 <main class="vf-grid vf-grid__col-3">
-
-{% for item in tokens.colours.properties %}
-
-<article class="vf-card">
-  {% if item.meta.Deprecated == true %}
-    <div class="vf-banner vf-banner--alert vf-banner--danger">
-      <div class="vf-banner__content">
-        <p class="vf-banner__text">This Design Token has been <strong>deprecated</strong>.</p>
-      </div>
-    </div>
-    {% if item.meta.DeprecatedText %}
-      <div style="padding: .5rem 1rem;">
-        <p class="vf-card__text">{{ item.meta.DeprecatedText | safe }}</p>
-      </div>
-    {% endif %}
-  {% endif %}
-  <div style="background-color: {{ item.value}}; height: 300px; width: 100%;"></div>
-
-  <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
-    <h3>{{ item.meta.friendlyName }}</h3>
-    <hr class="vf-divider">
-    <p class="vf-card__text">Value:</p>
-    <p class="vf-card__text"><code>{{ item.value }}</code></p>
-    <hr class="vf-divider">
-    {% if item.meta.sassVariable %}
-      <p class="vf-card__text">Sass Variable:</p>
-      <p class="vf-card__text"><code>${{ item.meta.sassVariable }}</code></p>
-    {% endif %}
-    {% if item.meta.sassMap %}
-      <p class="vf-card__text">Sass Function:</p>
-      <p class="vf-card__text"><code>color({{ item.meta.sassMap }})</code></p>
-    {% endif %}
-    {% if item.meta.CSSCustomProperty %}
-      <hr class="vf-divider">
-      <p class="vf-card__text">CSS custom property:</p>
-      <p class="vf-card__text"><code>{{ item.meta.CSSCustomProperty }}</code></p>
-    {% endif %}
-    {% if item.meta.comment %}
-      <h4>notes:</h4>
-      <p class="vf-card__text">
-        {{ item.meta.comment }}
-      </p>
-    {% endif %}
-  </section>
-</article>
-
-{% else %}
-
-<p>Something went wrong.</p>
-
-{% endfor %}
-{% for item in tokens.uiColors.properties %}
-
-
-<article class="vf-card">
-  {% if item.meta.Deprecated == true %}
-    <div class="vf-banner vf-banner--alert vf-banner--danger">
-      <div class="vf-banner__content">
-        <p class="vf-banner__text">This Design Token has been <strong>deprecated</strong>.</p>
-      </div>
-    </div>
-    {% if item.meta.DeprecatedText %}
-      <div style="padding: .5rem 1rem;">
-        <p class="vf-card__text">{{ item.meta.DeprecatedText | safe }}</p>
-      </div>
-    {% endif %}
-  {% endif %}
-  <div style="background-color: {{ item.value}}; height: 300px; width: 100%;"></div>
-
-  <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
-    <h3>{{ item.meta.friendlyName }}</h3>
-    <hr class="vf-divider">
-    <p class="vf-card__text">Value: </p>
-    <p class="vf-card__text"><code>{{ item.value }}</code></p>
-    <hr class="vf-divider">
-    {% if item.meta.sassVariable %}
-      <p class="vf-card__text">Sass Variable:</p>
-      <p class="vf-card__text"><code>${{ item.meta.sassVariable }}</code></p>
-    {% endif %}
-        {% if item.meta.sassMap %}
-      <p class="vf-card__text">Sass Function:</p>
-      <p class="vf-card__text"><code>ui-color({{ item.meta.sassMap }})</code></p>
-    {% endif %}
-    {% if item.meta.CSSCustomProperty %}
-      <hr class="vf-divider">
-      <p class="vf-card__text">CSS custom property:</p>
-      <p class="vf-card__text"><code>{{ item.meta.CSSCustomProperty }}</code></p>
-    {% endif %}
-    {% if item.meta.comment %}
-      <h4>notes:</h4>
-      <p class="vf-card__text">
-        {{ item.meta.comment }}
-      </p>
-    {% endif %}
-  </section>
-</article>
-
-{% else %}
-
-<p>Something went wrong.</p>
-
-{% endfor %}
+  {% for item in tokens.colours.properties %}
+    {% include "./token-card.njk" %}
+  {% else %}
+    <p>Something went wrong.</p>
+  {% endfor %}
+  {% for item in tokens.uiColors.properties %}
+    {% include "./token-card.njk" %}
+  {% else %}
+    <p>Something went wrong.</p>
+  {% endfor %}
 </main>

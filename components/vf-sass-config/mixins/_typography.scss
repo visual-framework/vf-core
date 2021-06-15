@@ -4,9 +4,9 @@
 
 // $custom-margin-bottom: variable, auto, disable
 @mixin set-type($font-size, $font-family: $global-font-family, $custom-margin-bottom: auto) {
-  
+
   // Load the map from the design tokens
-  // Default onto sans-serif (we don't yet fully suppor Bring Your Own Typography with this mixin)
+  // Default onto sans-serif (we don't yet fully support Bring Your Own Typography with this mixin)
   $map-font-family: $vf-font--sans-serif !default;
   @if $font-family == $vf-font-family--monospace {
     $map-font-family: $vf-fonts--monospace;
@@ -21,7 +21,7 @@
     // do nothing, 400 is the default, unless:
     @if $vf-include-normalisations == true {
       font-weight: map-deep-get($map-font-family, $font-size, font-weight);
-    }    
+    }
   }
   @else {
     font-weight: map-deep-get($map-font-family, $font-size, font-weight);

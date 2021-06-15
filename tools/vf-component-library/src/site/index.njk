@@ -51,15 +51,9 @@ layout: layouts/base.njk
     "id": "sections"
   } %}
 
-  <style>
-  .vf-card__image {
-    --vf-card__image--aspect-ratio: 8/4;
-  }
-  </style>
-
   {#- show all pages classes as sections -#}
   {#- by default, 11ty sorts by `date` field -#}
-  {%- for section in collections.sections | reverse %}
+  {%- for section in collections.sections | sort(false, true, 'data.title') %}
     {% if section.data.promoted == true %}
       {# Eventually these might have unique images, not sure yet #}
       {%- set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %}
