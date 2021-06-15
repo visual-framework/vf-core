@@ -1,4 +1,4 @@
-### 1.5.6
+### 1.5.7
 
 * Darken and increase figure text size
   * https://github.com/visual-framework/vf-core/issues/1582
