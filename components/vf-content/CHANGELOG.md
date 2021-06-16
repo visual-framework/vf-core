@@ -1,3 +1,8 @@
+### 1.6.0
+
+* Use vf-spacing tokens for heading margins.
+* Reduce bottom margin on headings to be more consistent with overall typography, design kit.
+
 ### 1.5.6
 
 * Adds support for responsive `img` and `figure` elements

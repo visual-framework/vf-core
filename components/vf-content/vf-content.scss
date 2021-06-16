@@ -29,9 +29,8 @@
   }
 
   h2:not([class*='vf-']) {
-    @include set-type(text-heading--2, $custom-margin-bottom: 39px);
-
-    margin-top: 13px;
+    // @include set-type(text-heading--2, $custom-margin-bottom: map-get($vf-spacing-map, vf-spacing--400));
+    @include set-type(text-heading--2);
 
     b,
     strong {
@@ -40,9 +39,7 @@
   }
 
   h3:not([class*='vf-']) {
-    @include set-type(text-heading--3, $custom-margin-bottom: 13px);
-
-    margin-top: 24px;
+    @include set-type(text-heading--3);
 
     b,
     strong {
@@ -51,9 +48,7 @@
   }
 
   h4:not([class*='vf-']) {
-    @include set-type(text-heading--4, $custom-margin-bottom: 13px);
-
-    margin-top: 24px;
+    @include set-type(text-heading--4);
 
     b,
     strong {
@@ -62,9 +57,7 @@
   }
 
   h5:not([class*='vf-']) {
-    @include set-type(text-heading--5, $custom-margin-bottom: 13px);
-
-    margin-top: 24px;
+    @include set-type(text-heading--5);
 
     b,
     strong {
@@ -73,9 +66,7 @@
   }
 
   h6:not([class*='vf-']) {
-    @include set-type(text-heading--5, $custom-margin-bottom: 13px);
-
-    margin-top: 24px;
+    @include set-type(text-heading--5);
 
     b,
     strong {
@@ -83,7 +74,7 @@
     }
   }
 
-  // remove the top margin from first items becasue some times the first item is an h3
+  // remove the top margin from first items because some times the first item is an h3
   & > :first-child {
     margin-top: 0 !important;
   }
@@ -231,7 +222,7 @@
   margin-top: 0;
 
   + .vf-content__standfirst {
-    margin-bottom: 24px;
+    margin-bottom: map-get($vf-spacing-map, vf-spacing--400);
   }
 
   + small {

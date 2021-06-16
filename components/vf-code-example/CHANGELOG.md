@@ -1,3 +1,7 @@
+### 1.2.2
+
+* Add a bottom margin to `.vf-code-example__pre`
+
 ### 1.2.1
 
 * changes any `set-` style functions to cleaner version
