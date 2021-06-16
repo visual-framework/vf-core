@@ -190,9 +190,8 @@
   figcaption:not([class*='vf-']),
   cite:not([class*='vf-']) {
     // matches @mixin figure, but that is not directly usable here as it requires css classes
-    @include set-type(text-body--5);
-    color: map-get($vf-colors-map, vf-color--grey);
-    font-style: italic;
+    @include set-type(text-body--3);
+    color: color(grey--dark);
   }
 
   .vf-video {
@@ -200,8 +199,23 @@
     margin-bottom: 32px;
   }
 
+  // the use cases of `vf-content figure` is slightly different that .vf-figure
+  // as we need to account for a lack of being able to specify left/right positioning
+  // https://github.com/visual-framework/vf-core/issues/1583
   figure:not([class*='vf-']) {
-    margin: 0;
+    display: table;
+    margin: auto;
+
+    img:not([class*='vf-']) {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+
+    figcaption:not([class*='vf-']) {
+      caption-side: bottom;
+      display: table-caption;
+    }
   }
 
   .vf-figure--align-inline-start {

@@ -2,7 +2,11 @@
 
 * Use vf-spacing tokens for heading margins.
 * Reduce bottom margin on headings to be more consistent with overall typography, design kit.
-* https://github.com/visual-framework/vf-core/pull/1589
+  * https://github.com/visual-framework/vf-core/pull/1589
+* Darken and increase figure text size
+  * https://github.com/visual-framework/vf-core/issues/1582
+* Figures take a responsive and centered layout, which is most typical.
+  * https://github.com/visual-framework/vf-core/issues/1583
 
 ### 1.5.6
 

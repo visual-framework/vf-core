@@ -1,3 +1,8 @@
+### 2.5.4
+
+* Darken and increase figure text size
+  * https://github.com/visual-framework/vf-core/issues/1582
+
 ### 2.5.3
 
 * Adds `mixins/vf-utility-mixins.scss` to index.scss
