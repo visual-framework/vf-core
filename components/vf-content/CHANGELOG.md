@@ -1,3 +1,10 @@
+### 1.5.7
+
+* Darken and increase figure text size
+  * https://github.com/visual-framework/vf-core/issues/1582
+* Figures take a responsive and centered layout, which is most typical.
+  * https://github.com/visual-framework/vf-core/issues/1583
+
 ### 1.5.6
 
 * Adds support for responsive `img` and `figure` elements
