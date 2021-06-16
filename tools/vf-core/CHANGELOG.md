@@ -1,6 +1,7 @@
 ### 2.2.28
 
 * Pin `marked` dependency to 2.0.7, as 2.1.0 breaks support in node 12.
+  * https://github.com/visual-framework/vf-core/pull/1590
 
 ### 2.2.27
 
