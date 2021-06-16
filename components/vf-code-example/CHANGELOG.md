@@ -1,6 +1,7 @@
 ### 1.2.2
 
 * Add a bottom margin to `.vf-code-example__pre`
+* https://github.com/visual-framework/vf-core/pull/1589
 
 ### 1.2.1
 

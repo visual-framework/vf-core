@@ -2,6 +2,7 @@
 
 * Use vf-spacing tokens for heading margins.
 * Reduce bottom margin on headings to be more consistent with overall typography, design kit.
+* https://github.com/visual-framework/vf-core/pull/1589
 
 ### 1.5.6
 
