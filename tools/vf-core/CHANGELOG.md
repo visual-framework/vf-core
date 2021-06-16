@@ -1,3 +1,7 @@
+### 2.2.28
+
+* Pin `marked` dependency to 2.0.7, as 2.1.0 breaks support in node 12.
+
 ### 2.2.27
 
 * Require node 12 or greater. Node 10 is now out of support and many dependencies no longer work.
