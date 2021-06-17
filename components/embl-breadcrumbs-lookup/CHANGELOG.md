@@ -1,3 +1,8 @@
+### 1.1.1
+
+* Fix: Breadcrumbs repeat if init method is repeatedly called on same page.
+  * https://github.com/visual-framework/vf-core/issues/1593
+
 ### 1.1.0
 
 * Remove diacritics for name processing into people page URLs.
