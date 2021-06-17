@@ -396,6 +396,11 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
 }
 
 function emblBreadcrumbs() {
+
+  //clear existing breadcrumbs
+  emblBreadcrumbPrimary.innerText = "";
+  emblBreadcrumbRelated.innerText = "";
+
   // We start the breadcrumbs by first getting the EMBL taxonomy.
   emblGetTaxonomy().then(function() {
     // console.log('emblTaxonomy', emblTaxonomy);
