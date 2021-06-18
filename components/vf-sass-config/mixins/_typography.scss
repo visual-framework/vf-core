@@ -3,7 +3,7 @@
 // @include set-type(text-body--3, $font-family, $custom-margin-bottom: vf-spacing--500)
 
 // $custom-margin-bottom: variable, auto, disable
-@mixin set-type($font-size, $font-family: $global-font-family, $custom-margin-bottom: auto) {
+@mixin set-type($font-size, $font-family: $global-font-family, $custom-margin-bottom: auto, $color: primary) {
 
   // Load the map from the design tokens
   // Default onto sans-serif (we don't yet fully support Bring Your Own Typography with this mixin)
@@ -13,6 +13,7 @@
   }
 
   // Set font family, size
+  color: text-color($color);
   font-family: $font-family;
   font-size: map-deep-get($map-font-family, $font-size, font-size);
 

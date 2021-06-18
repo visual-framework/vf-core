@@ -96,7 +96,11 @@ gulp.task("tokens:json", () =>
     "./src/maps/vf-ui-colors.yml",
     "./src/maps/vf-zindex.yml",
     "./src/typographic-scales/*.yml",
-    "./src/variables/vf-breakpoints.yml"
+    "./src/variables/vf-breakpoints.yml",
+    "./src/maps/vf-color__background.yml",
+    "./src/maps/vf-color__brand.yml",
+    "./src/maps/vf-color__buttons.yml",
+    "./src/maps/vf-color__text.yml",
   ])
     .pipe(theoG({
       transform: { type: "web", includeMeta: true },
@@ -122,10 +126,10 @@ gulp.task("tokens:props", () =>
     "./src/maps/vf-themes.yml",
     "./src/maps/vf-ui-colors.yml",
     "./src/maps/vf-zindex.yml",
-    "!./src/maps/vf-color__background.yml",
-    "!./src/maps/vf-color__brand.yml",
-    "!./src/maps/vf-color__buttons.yml",
-    "!./src/maps/vf-color__text.yml",
+    "./src/maps/vf-color__background.yml",
+    "./src/maps/vf-color__brand.yml",
+    "./src/maps/vf-color__buttons.yml",
+    "./src/maps/vf-color__text.yml",
   ])
     .pipe(theoG({
       transform: { type: "web" },

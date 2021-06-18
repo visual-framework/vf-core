@@ -5,11 +5,11 @@ title: Design tokens
 subtitle: The colour, typography, spacing, and other stylistic decisions as design tokens for consumption.
 date: 2018-10-16 12:24:50
 section: building
+order: 4
 tags:
   - sections
   - building
   - designtokens
-order: 4
 layout: layouts/base.njk
 hideSubPosts: false
 templateEngineOverride: njk
@@ -25,33 +25,25 @@ templateEngineOverride: njk
   "vf_intro_badge": false
 } %}
 
-<section class="vf-content | embl-grid embl-grid--has-centered-content">
-{% render '@vf-section-header', {
-  "section_title": "What are design tokens?",
-  "id": "what",
-  "vf_section__content": [
-  ]
-} %}
-<div>
+  <section class="vf-content | embl-grid embl-grid--has-centered-content">
+  {% render '@vf-section-header', {
+    "section_title": "What are design tokens?",
+    "id": "what",
+    "vf_section__content": [
+    ]
+  } %}
+  <div>
+    {% markdown %}
+    > Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. We use them in place of hard-coded values (such as hex values for color or pixel values for spacing) in order to maintain a scalable and consistent visual system for UI development.
+    >
+    > _[Salesforce, Lightning Design System](https://www.lightningdesignsystem.com/design-tokens/)_
+    {% endmarkdown %}
+  </div>
 
-{% markdown %}
-
-> Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. We use them in place of hard-coded values (such as hex values for color or pixel values for spacing) in order to maintain a scalable and consistent visual system for UI development.
->
-> _[Salesforce, Lightning Design System](https://www.lightningdesignsystem.com/design-tokens/)_
-{% endmarkdown %}
-
-</div>
-<aside>
-
-<figure>
-<div class="vf-video">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/q5qIowMyVt8?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-<figcaption>Jina Anne explains the role of design tokens.</figcaption>
-<figure>
-
-</aside>
+  <figure>
+    <iframe src="https://www.youtube.com/embed/q5qIowMyVt8?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <figcaption>Jina Anne explains the role of design tokens.</figcaption>
+  </figure>
 </section>
 
 {# Sections #}

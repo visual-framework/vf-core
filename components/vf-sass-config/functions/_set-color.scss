@@ -13,6 +13,36 @@
   @return map-get($vf-colors-map, $value);
 }
 
+@function text-color($color-name) {
+  $value: "vf-color__text--" + $color-name;
+  @return map-get($vf-color__text-map, $value);
+}
+
+@function link-color($color-name) {
+  @if $color-name == 'default' {
+    $value: "vf-color__link";
+  }
+  @else {
+    $value: "vf-color__link--" + $color-name;
+  }
+  @return map-get($vf-color__text-map, $value);
+}
+
+@function button-color($color-name) {
+  $value: "vf-color__button__" + $color-name;
+  @return map-get($vf-color__buttons-map, $value);
+}
+
+@function brand-color($color-name) {
+  @if $color-name == 'default' {
+    $value: "vf-color__brand";
+  }
+  @else {
+    $value: "vf-color__brand" + $color-name;
+  }
+  @return map-get($vf-color__brand-map, $value);
+}
+
 @function ui-color($color-name) {
   $value: "vf-ui-color--" + $color-name;
   @return map-get($vf-ui-colors-map, $value);

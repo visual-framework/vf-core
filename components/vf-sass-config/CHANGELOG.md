@@ -1,3 +1,12 @@
+### 2.6.0
+
+* Changes mixin `set-type` to use the primary colour (off black) by default
+* Adds functions and imports for:
+  * `vf-color__text.custom-properties.scss`
+  * `vf-color__buttons.custom-properties.scss`
+  * `vf-color__brand.custom-properties.scss`
+* Prepare to deprecate `vf-themes.custom-properties.scss`
+
 ### 2.5.4
 
 * Darken and increase figure text size
