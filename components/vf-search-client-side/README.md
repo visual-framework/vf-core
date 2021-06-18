@@ -23,7 +23,7 @@ let searchIndex = {
 
 This is an early alpha. More customisation options need to be added, such as:
 
-- passing search paramaters (boost score) to the JS
+- passing search parameters (boost score) to the JS
 - customising the output format
 - NJK template has hardcoded paths for vf-core
 
