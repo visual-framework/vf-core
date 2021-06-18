@@ -4,7 +4,7 @@ promoted: true
 hideSubPosts: true
 title: Design kit
 subtitle: Use Figma software to design and collaborate on ideas without using code.
-intro: Here you'll learn about how to use the Figma library, where it is and how to stay posted on updates.
+intro: The Visual Framework's team is actively developing a design kit that can be used by non-technical persons to create mockups and layouts.
 date: 2020-12-14 18:24:50
 section: building
 order: 5
@@ -12,14 +12,56 @@ tags:
   - building
   - designkit
   - sections
-layout: layouts/section.njk
-templateEngineOverride: njk, md
+layout: layouts/base.njk
+templateEngineOverride: njk
 ---
 
-The Visual Framework's Figma-based design kit is in early development, watch this space for updates.
+{% render '@vf-intro', {
+  "vf_intro_heading": title,
+  "vf_intro_lede": subtitle,
+  "vf_intro_subheading": "",
+  "vf_intro_text": [
+    intro
+  ],
+  "vf_intro_badge": false
+} %}
 
-For more updates:
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "Early access",
+  "id": "preview",
+  "vf_section__content": [
+  ]
+} %}
+<div class="vf-content">
 
-- [Slack group](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
-- [Updates blog](/updates)
-- [RSS Feed](/feed.xml)
+{% markdown %}
+
+The design kit uses [Figma](https://www.figma.com/), which requires no installation and can be used from the web.
+
+<a href="https://www.figma.com/file/3bkXbDDIFkIH8fMEdbCGvY/Design-Library?node-id=373%3A2" class="vf-button vf-button--primary">View the kit</a>
+
+{% endmarkdown %}
+
+</div>
+</section>
+
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "Feedback, support",
+  "id": "help",
+  "vf_section__content": [
+  ]
+} %}
+<div class="vf-content">
+
+{% markdown %}
+
+If you have trouble, questions or suggestions: [chat with us on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
+
+{% endmarkdown %}
+
+</div>
+</section>
+
