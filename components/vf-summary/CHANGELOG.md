@@ -1,3 +1,8 @@
+### 1.5.1
+
+* Documentation: clarity on using card vs summary components.
+  * https://github.com/visual-framework/vf-core/issues/1592
+
 ### 1.5.0
 
 * adds individual context yml/njk code per file.
