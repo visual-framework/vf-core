@@ -4,8 +4,7 @@
 
 ## About
 
-The `vf-card` component is an element that is used to provide a summary of content on a single subject which can link to a larger resource or page.
-
+Use the `vf-card` component to feature categories of content.
 
 ## Usage
 
@@ -16,6 +15,16 @@ The cards are available in two styled varieties: `bordered` and `striped`. To av
 As the `striped` variant makes use of the brand colour it is recommended not to use this when displayed in a container that has a background colour.
 
 A `striped` card must always have a heading (`vf-card__heading`).
+
+### Should I use a Card or Summary or Hero?
+
+The `vf-card` is one of the most popular ways to feature content, however it is not always the best way.
+
+As a general rule:
+
+- use `vf-card` to feature a range of different categories (to display event types)
+- use `vf-summary` for a list of the same type of content (a list of upcoming events)
+- use `vf-hero` to indicate a singular theme of content for a page
 
 ### Layout
 
@@ -29,7 +38,7 @@ The `vf-card` can take a variety optional of content:
 | ------------ | -------------------------- | --------------------- | ----------- |
 | image        | `card_image`               | `vf-card__image`      |             |
 | alt text     | `card_image__alt`          |                       |             |
-| apect ratio  | `card_custom_aspect_ratio` |                       |             |
+| aspect ratio | `card_custom_aspect_ratio` |                       |             |
 | heading      | `card_heading`             | `vf-card__heading`    |             |
 | link         | `card_href`                | `vf-card__link`       |             |
 | subheading   | `card_subheading`          | `vf-card__subheading` |             |

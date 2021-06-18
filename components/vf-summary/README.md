@@ -4,19 +4,21 @@
 
 ## About
 
-Summaries in the form of text, headlines and often imagery for a range of types of content, including: articles, jobs, news and people profiles.
-
-<h3>The <code>vf-summary--profile</code> component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="/components/detail/vf-profile"><code>vf-profile</code></a> component.</h3>
+Summaries in the form of text, headlines and often imagery for a list of like content, including: articles, jobs, news and people profiles.
 
 ## Usage
 
-### Publications Summary
+### Publications summary
 
 The `vf-summary--publication` can be nested inside a vf-box where it takes the vf-box colours.
 
-If the `vf-summary__author` list is truncated to a certain number of authors you will need to add vf-u-text--et-al to the `<p>` - `<p class="vf-summary__author | vf-u-text--et-al">` - for it to add et al to the end of the list.
+If the `vf-summary__author` list is truncated to a certain number of authors you will need to add vf-u-text--et-al to the `<p>` - `<p class="vf-summary__author | vf-u-text--et-al">` - for it to add "et al" to the end of the list.
 
-At times you might want to use an image for purely decorative reasons. For example an abstract graphic to go alongside the text then you should label, if using nunjcuks and yaml, `summary__image_alt: decorative`. This will make sure the image `alt` text is empty (`alt=""`) and add `role="presentation"` to the `img` element.
+At times you might want to use an image for purely decorative reasons. For example an abstract graphic to go alongside the text then you should label, if using nunjucks and yaml, `summary__image_alt: decorative`. This will make sure the image `alt` text is empty (`alt=""`) and add `role="presentation"` to the `img` element.
+
+### Profile summary
+
+The <code>vf-summary--profile</code> variant has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="/components/detail/vf-profile"><code>vf-profile</code></a> component.
 
 ## Install
 

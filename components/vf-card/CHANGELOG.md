@@ -1,3 +1,8 @@
+### 2.5.8
+
+* Documentation: clarity on using card vs summary components.
+  * https://github.com/visual-framework/vf-core/issues/1592
+
 ### 2.5.7
 
 * Fixes the vertical centering of the svg arrow on vf-card titles. Also aligns better with the Figma design kit.
