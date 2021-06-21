@@ -1,6 +1,7 @@
 ### 2.5.9
 
 * Bug: correct a missing space in Nunjucks template.
+  * https://github.com/visual-framework/vf-core/pull/1603
 
 ### 2.5.8
 
