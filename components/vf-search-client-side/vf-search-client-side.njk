@@ -7,6 +7,7 @@
   {% set search_client_button_text = context.search_client_button_text %}
   {% set search_client_script = context.search_client_script %}
   {% set search_client_id = context.search_client_id %}
+  {% set search_client_destination_prefix = context.search_client_destination_prefix %}
 
   {% set id = context.id %}
   {% set modifiers = context.modifiers %}
@@ -17,7 +18,7 @@
   <div class="vf-sidebar__inner">
     <div class="vf-form__item | vf-search__item">
       <label class="vf-form__label vf-u-sr-only | vf-search__label" for="{{ search_client_id }}">{{ search_label }}</label>
-      <input type="search" id="search" placeholder="{{ search_client_prompt }}" name="{{ search_client_id }}" class="vf-search__input | vf-form__input" {%- if search_client_autofocus %} autofocus{%- endif %} data-vf-search-client-side-input>
+      <input type="search" id="search" placeholder="{{ search_client_prompt }}" name="{{ search_client_id }}" class="vf-search__input | vf-form__input" {%- if search_client_autofocus %} autofocus{%- endif %} data-vf-search-client-side-input data-vf-search-client-side-destination-prefix="{{search_client_destination_prefix}}">
     </div>
     {%- if search_client_button -%}
     <button type="submit" class="vf-search__button | vf-button vf-button--primary">

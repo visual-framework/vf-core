@@ -19,6 +19,8 @@ let searchIndex = {
 };
 ```
 
+Specify any required prefix to your search URL with `data-vf-search-client-side-destination-prefix="https://myprefix"`.
+
 ### Warning: Early alpha, lot's of "to do"s
 
 This is an early alpha. More customisation options need to be added, such as:

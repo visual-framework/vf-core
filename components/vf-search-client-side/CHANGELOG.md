@@ -1,3 +1,8 @@
+### 2.0.0-alpha.2
+
+* Add customisable URL prefix `search_client_destination_prefix`.
+* Cleans up typos.
+
 ### 2.0.0-alpha.1
 
 * Accessibility: add `search_client_id` to configure `label` `for` and `input` `name` attributes.

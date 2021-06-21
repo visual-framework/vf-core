@@ -1,9 +1,5 @@
 // vf-search-client-side
 
-// To do before this is useuful in vf-core:
-// - pass along ooptional words to strip
-// - make it more general purpose and extensible
-
 // if you need to import any other components' JS to use here
 // import { vfOthercomponent } from 'vf-other-component/vf-other-component';
 
@@ -23,9 +19,9 @@ function vfSearchClientSide() {
   // https://lunrjs.com/guides/customising.html
   // https://davidwalsh.name/adding-search-to-your-site-with-javascript
 
-  // this lunr pipeline disregards hypens by breaking up words
-  // It's particuarly good if users might type `vf-tabs` or `tabs` to find `vf-tabs`
-  var customPipelineWithoutHypens = function (builder) {
+  // this lunr pipeline disregards hyphens by breaking up words
+  // It's particularly good if users might type `vf-tabs` or `tabs` to find `vf-tabs`
+  var customPipelineWithoutHyphens = function (builder) {
     var pipelineFunction = function (token) {
       var tokenStr = token.toString();
       // if there are no hyphens then skip this logic
@@ -53,16 +49,15 @@ function vfSearchClientSide() {
       return tokens;
     };
 
-    lunr.Pipeline.registerFunction(pipelineFunction, "customPipelineWithoutHypens");
+    lunr.Pipeline.registerFunction(pipelineFunction, "customPipelineWithoutHyphens");
     builder.pipeline.before(lunr.stemmer, pipelineFunction);
     builder.searchPipeline.before(lunr.stemmer, pipelineFunction);
-
   };
 
   // set up lunr search index
   var idx = lunr(function () {
     this.tokenizer.separator = /[\s]+/;
-    this.use(customPipelineWithoutHypens);
+    this.use(customPipelineWithoutHyphens);
 
     this.field("title", {
       boost: 100
@@ -87,7 +82,7 @@ function vfSearchClientSide() {
       if (pair[0] === variable) {
         var temp = decodeURIComponent(pair[1].replace(/\+/g, "%20"));
         temp = temp.replace(/(<([^>]+)>)/ig, ""); // "strip tags"
-        console.log("Fonud query", temp);
+        // console.log("Found query", temp);
         return temp;
       }
     }
@@ -101,7 +96,7 @@ function vfSearchClientSide() {
     searchQueryInput[0].value = searchTerm;
   }
 
-  // get searchbox query string
+  // get search box query string
   function getValueFromSearchBox() {
     searchTerm = searchQueryInput[0].value.replace(/(<([^>]+)>)/ig, ""); // "strip tags"
     renderResults();
@@ -131,7 +126,9 @@ function vfSearchClientSide() {
       return false;
     }
 
-    console.log("searchTermTrimmed",searchTermTrimmed);
+    let searchDestinationPrefix = searchQueryInput[0].dataset.vfSearchClientSideDestinationPrefix;
+
+    // console.log("searchTermTrimmed", searchTermTrimmed);
 
     // map the search hits to the search pages
     let resultPages = results.map(function (match) {
@@ -146,7 +143,7 @@ function vfSearchClientSide() {
       resultPages.forEach(element => {
         if (typeof element !== "undefined") {
           element.text = element.text || "";
-          renderedResults += "<a class='result' href='../" + element.url + "?q=" + searchTerm + "'><h3>" + element.title + "</h3></a>";
+          renderedResults += "<a class='result' href='" + searchDestinationPrefix + element.url + "?q=" + searchTerm + "'><h3>" + element.title + "</h3></a>";
           renderedResults += "<p class='snippet'>" + element.text.substring(0, 200) + "</p>";
           renderedResults += "<p><code>" + element.url + "</code></p>";
         }
@@ -155,17 +152,15 @@ function vfSearchClientSide() {
       // renderedResults = "<p class='snippet'>Enter a search query.</p>";
     }
 
-    // put the reuslts on the page
+    // put the results on the page
     searchResultsContainer[0].innerHTML = renderedResults;
   }
 
-  // default invokation
+  // default invocation
   getValueFromSearchBox();
 }
 
-export {
-  vfSearchClientSide
-};
+export { vfSearchClientSide };
 
 // You should import this js file at ./components/vf-core/scripts.js
 // import { vfcomponentName } from '../components/raw/vf-component/vf-component.js';
