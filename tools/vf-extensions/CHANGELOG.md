@@ -1,6 +1,7 @@
 ### 1.0.0
 
 * Bug: in `gulp-build-search-index` ensure `body` is a string for `striptags`.
+  * https://github.com/visual-framework/vf-core/pull/1601
 
 ### 1.0.0-rc.1
 
