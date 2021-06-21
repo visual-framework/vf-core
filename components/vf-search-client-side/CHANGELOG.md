@@ -2,6 +2,7 @@
 
 * Add customisable URL prefix `search_client_destination_prefix`.
 * Cleans up typos.
+  * https://github.com/visual-framework/vf-core/pull/1602
 
 ### 2.0.0-alpha.1
 
