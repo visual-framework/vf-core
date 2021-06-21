@@ -1,3 +1,7 @@
+### 2.5.9
+
+* Bug: correct a missing space in Nunjucks template.
+
 ### 2.5.8
 
 * Documentation: clarity on using card vs summary components.
