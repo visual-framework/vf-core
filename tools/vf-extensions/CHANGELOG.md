@@ -1,3 +1,7 @@
+### 1.0.0
+
+* Bug: in `gulp-build-search-index` ensure `body` is a string for `striptags`.
+
 ### 1.0.0-rc.1
 
 * Updates highlightjs syntax of render and codeblock tags
