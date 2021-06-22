@@ -1,6 +1,5 @@
 ### 3.5.0
 
-* Use revised primary and secondary text colours.
 * Generate json for theme colours.
 * Display theme colours in component library.
 * Deprecates old primary, secondary, tertiary themes in favour of vf-color__brand and interactive, text colours.
