@@ -4,20 +4,13 @@
 
 ## About
 
-This uses Lunr.js to perform a client-side search of a site's content. This is recommended only for sites with a limited number of pages.
+This uses Lunr.js to perform a client-side search of a site's content.
 
 ## Usage
 
-This consumes a `.js` file with an object of pages, a la:
+This approach is recommended only for sites with a limited number of pages (around 500 or fewer), otherwise the client side search index can become many megabytes in size.
 
-```
-let searchIndex = {
-  "pages": [
-    {"id":"0", "title": "Page title", "text": "Body text of page goes here", "tags": "", "url": "/index.html"},
-    ...
-  ]
-};
-```
+If your site is in a subdirectory or has other requirements, you specify any required prefix to your search URL with `data-vf-search-client-side-destination-prefix="https://myprefix"`.
 
 ### Warning: Early alpha, lot's of "to do"s
 
@@ -27,9 +20,22 @@ This is an early alpha. More customisation options need to be added, such as:
 - customising the output format
 - NJK template has hardcoded paths for vf-core
 
-### Building a search index
+### Supplying a search index
 
-1. Index making code
+This consumes a `.js` file with a `searchIndex` object of pages, a la:
+
+```json
+let searchIndex = {
+  "pages": [
+    {"id":"0", "title": "Page title", "text": "Body text of page goes here", "tags": "", "url": "/index.html"},
+    ...
+  ]
+};
+```
+
+To make this index, you can utilise the ability of [`vf-extension` to generate a search index](https://github.com/visual-framework/vf-core/blob/develop/tools/vf-extensions/gulp-tasks/gulp-build-search-index.js).
+
+1. Making an index
 
 To generate that JS file, if you're using a vf-eleventy based site, you may also want to make use of the `vf-extensions`'s `gulp-build-search-index.js`:
 
