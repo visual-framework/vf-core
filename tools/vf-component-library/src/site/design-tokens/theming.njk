@@ -1,6 +1,6 @@
 ---
-title: Theming
-date: 2018-10-19 12:24:50
+title: Theme colours
+date: 2021-06-22 12:24:50
 section: designtokens
 templateEngineOverride: njk
 tags:
@@ -17,49 +17,65 @@ layout: layouts/base.njk
 <h3>Brand</h3>
 </div>
 {# <pre>{{ tokens.themeBrand.properties | dump(2 )}}</pre> #}
-<main class="vf-grid vf-grid__col-3">
+<section class="vf-grid vf-grid__col-3">
   {% set type %}color{% endset %}
   {% for item in tokens.themeBrand.properties %}
     {% include "./token-card.njk" %}
   {% else %}
     <p>Something went wrong.</p>
   {% endfor %}
-</main>
+</section>
 
 <div class="vf-content">
-<h3>Text</h3>
+<h3>Text and interactive links</h3>
 </div>
 {# <pre>{{ tokens.themeText.properties | dump(2 )}}</pre> #}
-<main class="vf-grid vf-grid__col-3">
+<section class="vf-grid vf-grid__col-3">
   {% set type %}color{% endset %}
   {% for item in tokens.themeText.properties %}
     {% include "./token-card.njk" %}
   {% else %}
     <p>Something went wrong.</p>
   {% endfor %}
-</main>
+</section>
 
 <div class="vf-content">
 <h3>Buttons</h3>
 </div>
 {# <pre>{{ tokens.themeButtons.properties | dump(2 )}}</pre> #}
-<main class="vf-grid vf-grid__col-3">
+<section class="vf-grid vf-grid__col-3">
   {% set type %}color{% endset %}
   {% for item in tokens.themeButtons.properties %}
     {% include "./token-card.njk" %}
   {% else %}
     <p>Something went wrong.</p>
   {% endfor %}
-</main>
+</section>
 
 <div class="vf-content">
-<h3>Deprecated</h3>
+<h3>UI and neutral colours</h3>
 </div>
-<main class="vf-grid vf-grid__col-3">
-  {% for item in tokens.theming.properties %}
+<section class="vf-grid vf-grid__col-3">
+  {% for item in tokens.neutral_colours.properties %}
     {% include "./token-card.njk" %}
   {% else %}
     <p>Something went wrong.</p>
   {% endfor %}
-</main>
+  {% for item in tokens.uiColors.properties %}
+    {% include "./token-card.njk" %}
+  {% else %}
+    <p>Something went wrong.</p>
+  {% endfor %}
+</section>
 
+
+<div class="vf-content">
+<h3>Decorative brand colour palette</h3>
+</div>
+<section class="vf-grid vf-grid__col-3">
+  {% for item in tokens.colors.properties %}
+    {% include "./token-card.njk" %}
+  {% else %}
+    <p>Something went wrong.</p>
+  {% endfor %}
+</section>

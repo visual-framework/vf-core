@@ -1,4 +1,5 @@
-{% block tokenCard %}
+{%- block tokenCard -%}
+{%- if item.meta.Deprecated != true or showDeprecated %}
 <article class="vf-card">
   {% if type == "color" -%}
     <div style="background-color: {{ item.value}}; height: 300px; width: 100%;"></div>
@@ -55,4 +56,5 @@
     {% endif %}
   </section>
 </article>
-{% endblock %}
+{% endif -%}
+{%- endblock -%}
