@@ -1,6 +1,6 @@
 ---
-title: Theming
-date: 2018-10-19 12:24:50
+title: Theme colours
+date: 2021-06-22 12:24:50
 section: designtokens
 templateEngineOverride: njk
 tags:
@@ -13,10 +13,80 @@ layout: layouts/base.njk
 {% set type %}color{% endset %}
 <h1 class="vf-intro__heading">{{ title }}</h1>
 
-<main class="vf-grid vf-grid__col-3">
-  {% for item in tokens.theming.properties %}
-    {% include "./token-card.njk" %}
-  {% else %}
-    <p>Something went wrong.</p>
-  {% endfor %}
-</main>
+{# <pre>{{ tokens.themeBrand.properties | dump(2 )}}</pre> #}
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Brand",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-color__brand.map.scss",
+    "id": "brand"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.themeBrand.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
+</section>
+
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Text and interactive",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-color__text.map.scss",
+    "id": "text"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.themeText.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
+</section>
+
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Buttons",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-color__buttons.map.scss",
+    "id": "Buttons"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.themeButtons.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
+</section>
+
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "UI and neutral colours",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-ui-colors.map.scss",
+    "id": "ui"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.uiColors.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
+</section>
+
+
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Decorative brand colour palette",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-colors.map.scss",
+    "id": "decorative"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.colors.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
+</section>
+

@@ -138,7 +138,7 @@
     {# Render sub nav for sections #}
     {% if section and (hideSectionNavigation != true) %}
       {%- set navigationList = [] -%}
-      {%- for entry in collections[section] %}
+      {%- for entry in collections[section] | sort(false, true, 'data.order') %}
         {%- if entry.data.layout %}
           {%- set isCurrent = false -%}
           {%- if entry.url == page.url %}
@@ -152,9 +152,6 @@
           }),navigationList) %}
         {%- endif %}
       {%- endfor -%}
-
-      {# Order by page order #}
-      {%- set navigationList = navigationList | sort(false, true, 'order') %}
 
       {% render '@vf-navigation', {
         "classModifier": "main",

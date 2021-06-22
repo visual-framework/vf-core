@@ -1,6 +1,6 @@
 ---
-title: Typography
-date: 2018-10-19 12:24:50
+title: Type sizes
+date: 2021-06-22 12:24:50
 section: designtokens
 templateEngineOverride: njk
 tags:
@@ -11,12 +11,20 @@ layout: layouts/base.njk
 ---
 
 {% set type %}typography{% endset %}
-<h1 class="vf-intro__heading">{{ title }}</h1>
+{% render '@vf-section-header', {
+  "section_title": "Typography",
+  "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/vf-font--sans.scss",
+  "id": "brand"
+} %}
 
-<main class="vf-grid vf-grid__col-2">
+{# <pre>{{ tokens.themeBrand.properties | dump(2 )}}</pre> #}
+{# <section class="embl-grid"> #}
+<article class="vf-grid vf-grid__col-2">
   {% for item in tokens.typographySans.properties %}
     {% include "./token-card.njk" %}
   {% else %}
     <p>Something went wrong.</p>
   {% endfor %}
-</main>
+</article>
+{# </section> #}
+
