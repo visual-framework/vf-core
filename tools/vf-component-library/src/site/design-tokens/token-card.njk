@@ -2,7 +2,7 @@
 {%- if item.meta.Deprecated != true or showDeprecated %}
 <article class="vf-card">
   {% if type == "color" -%}
-    <div style="background-color: {{ item.value}}; height: 300px; width: 100%;"></div>
+    <div style="background-color: {{ item.value}}; height: 200px; width: 100%;"></div>
   {%- elseif type == "typography" -%}
     <div style="padding: 16px;">
       <p style="font-size: {{ item.value.fontSize }}; font-weight: {{ item.value.fontWeight }}; line-height: {{ item.value.lineHeight }}">{{ item.meta.pangram }}</p>
@@ -25,28 +25,28 @@
     <h3>{{ item.meta.friendlyName }}</h3>
     <hr class="vf-divider">
     {%- if type == "typography" -%}
-    <p class="vf-card__text"><span>Font Size: </span><code>{{ item.value.fontSize }}</code></p>
-    <p class="vf-card__text"><span>Font Weight: </span><code>{{ item.value.fontWeight }}</code></p>
-    <p class="vf-card__text"><span>Line Height: </span><code>{{ item.value.lineHeight}}</code></p>
+    <p class="vf-card__text"><span>Font Size: </span><code class="vf-code-example">{{ item.value.fontSize }}</code></p>
+    <p class="vf-card__text"><span>Font Weight: </span><code class="vf-code-example">{{ item.value.fontWeight }}</code></p>
+    <p class="vf-card__text"><span>Line Height: </span><code class="vf-code-example">{{ item.value.lineHeight}}</code></p>
     {% else %}
-    <p class="vf-card__text">Value:</p>
-    <p class="vf-card__text"><code>{{ item.value }}</code></p>
+    <p class="vf-card__text">Value:
+      <code class="vf-code-example">{{ item.value }}</code></p>
     {% endif %}
 
     <hr class="vf-divider">
     {% if item.meta.sassVariable %}
-      <p class="vf-card__text">Sass Variable:</p>
-      <p class="vf-card__text"><code>${{ item.meta.sassVariable }}</code></p>
+      <p class="vf-card__text">Sass Variable:
+        <code class="vf-code-example">${{ item.meta.sassVariable }}</code></p>
     {% endif %}
 
     {% if item.meta.sassMap %}
-      <p class="vf-card__text">Sass Function:</p>
-      <p class="vf-card__text"><code>color({{ item.meta.sassMap }})</code></p>
+      <p class="vf-card__text">Sass Function:
+        <code class="vf-code-example">color({{ item.meta.sassMap }})</code></p>
     {% endif %}
     {% if item.meta.CSSCustomProperty %}
       <hr class="vf-divider">
-      <p class="vf-card__text">CSS custom property:</p>
-      <p class="vf-card__text"><code>{{ item.meta.CSSCustomProperty }}</code></p>
+      <p class="vf-card__text">CSS custom property:
+        <code class="vf-code-example">{{ item.meta.CSSCustomProperty }}</code></p>
     {% endif %}
     {% if item.meta.comment %}
       <h4>notes:</h4>

@@ -13,69 +13,80 @@ layout: layouts/base.njk
 {% set type %}color{% endset %}
 <h1 class="vf-intro__heading">{{ title }}</h1>
 
-<div class="vf-content">
-<h3>Brand</h3>
-</div>
 {# <pre>{{ tokens.themeBrand.properties | dump(2 )}}</pre> #}
-<section class="vf-grid vf-grid__col-3">
-  {% set type %}color{% endset %}
-  {% for item in tokens.themeBrand.properties %}
-    {% include "./token-card.njk" %}
-  {% else %}
-    <p>Something went wrong.</p>
-  {% endfor %}
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Brand",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-color__brand.map.scss",
+    "id": "brand"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.themeBrand.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
 </section>
 
-<div class="vf-content">
-<h3>Text and interactive links</h3>
-</div>
-{# <pre>{{ tokens.themeText.properties | dump(2 )}}</pre> #}
-<section class="vf-grid vf-grid__col-3">
-  {% set type %}color{% endset %}
-  {% for item in tokens.themeText.properties %}
-    {% include "./token-card.njk" %}
-  {% else %}
-    <p>Something went wrong.</p>
-  {% endfor %}
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Text and interactive",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-color__text.map.scss",
+    "id": "text"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.themeText.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
 </section>
 
-<div class="vf-content">
-<h3>Buttons</h3>
-</div>
-{# <pre>{{ tokens.themeButtons.properties | dump(2 )}}</pre> #}
-<section class="vf-grid vf-grid__col-3">
-  {% set type %}color{% endset %}
-  {% for item in tokens.themeButtons.properties %}
-    {% include "./token-card.njk" %}
-  {% else %}
-    <p>Something went wrong.</p>
-  {% endfor %}
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Buttons",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-color__buttons.map.scss",
+    "id": "Buttons"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.themeButtons.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
 </section>
 
-<div class="vf-content">
-<h3>UI and neutral colours</h3>
-</div>
-<section class="vf-grid vf-grid__col-3">
-  {% for item in tokens.neutral_colours.properties %}
-    {% include "./token-card.njk" %}
-  {% else %}
-    <p>Something went wrong.</p>
-  {% endfor %}
-  {% for item in tokens.uiColors.properties %}
-    {% include "./token-card.njk" %}
-  {% else %}
-    <p>Something went wrong.</p>
-  {% endfor %}
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "UI and neutral colours",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-ui-colors.map.scss",
+    "id": "ui"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.uiColors.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
 </section>
 
 
-<div class="vf-content">
-<h3>Decorative brand colour palette</h3>
-</div>
-<section class="vf-grid vf-grid__col-3">
-  {% for item in tokens.colors.properties %}
-    {% include "./token-card.njk" %}
-  {% else %}
-    <p>Something went wrong.</p>
-  {% endfor %}
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Decorative brand colour palette",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-colors.map.scss",
+    "id": "decorative"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.colors.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
 </section>
+
