@@ -3,6 +3,7 @@
 * Generate json for theme colours.
 * Display theme colours in component library.
 * Deprecates old primary, secondary, tertiary themes in favour of vf-color__brand and interactive, text colours.
+* Remove extraneous `$` prefix in spacing sass variable token (this only affected a double `$$` in generated documentation).
 
 ### 3.4.1
 
