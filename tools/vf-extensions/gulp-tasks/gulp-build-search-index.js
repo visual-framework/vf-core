@@ -47,20 +47,15 @@ module.exports = function(gulp, path, buildDestionation) {
             a.set_content('');
           })
           body = new String(bodyHtml);
-
-
-
-          body = stripJs(striptags(body));
+          body = stripJs(striptags(body.toString()));
           body = body.replace(/&quot;/g, ' '); // remove white space
           body = body.replace(/class\=/g, ' '); // remove white space
-
           body = body.replace(/<body.[\s\S]*?>(.[\s\S]*?)<\/body>/gi, '$1');
           body = body.replace(/\r?\n|\r/g, ' '); // remove white space
           body = body.replace(/    /g, ' '); // remove white space
           body = body.replace(/   /g, ' '); // remove white space
           body = body.replace(/  /g, ' '); // remove white space
           body = body.replace(/"/g, '\''); // remove double quotes
-
 
       output += endOfLine + '{"id":"'+counter+'", "title": "'+title+'", "text": "'+body+'", "tags": "", ';
       counter = counter + 1;
