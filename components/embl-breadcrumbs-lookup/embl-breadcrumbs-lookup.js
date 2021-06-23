@@ -348,7 +348,6 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
       current = " aria-current=\"location\"";
     }
 
-
     var newBreadcrumb = "<li class=\"vf-breadcrumbs__item\""+current+">";
     if (breadcrumbUrl && breadcrumbUrl !== "null" && breadcrumbUrl !== "#no_url_specified") {
       newBreadcrumb += "<a href=\""+breadcrumbUrl+"\" class=\"vf-breadcrumbs__link\">" + termName + "</a>";
@@ -375,13 +374,19 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
     // save it
     primaryBreadcrumb = currentTerm;
 
-    // don't show path of breadcrumb if it is the current path
-    if (new URL(breadcrumbUrl).pathname == window.location.pathname) {
-      breadcrumbUrl = null;
+    var breadcrumbPath = new URL(breadcrumbUrl).pathname;
+    var breadcrumbPathPrefix = ""; // if a crumb does or does not end in a "/" account for that
+    if (breadcrumbPath.slice(-1) == "/") {
+      breadcrumbPathPrefix == breadcrumbPath.slice(0, -1);
+    } else {
+      breadcrumbPathPrefix = breadcrumbPath + "/";
     }
 
-    // in this context the active page is always "current"
-    breadcrumbCurrent = true;
+    // check if the current breadcrumb is the current url
+    if (breadcrumbPath == window.location.pathname || breadcrumbPathPrefix == window.location.pathname) {
+      breadcrumbUrl = null;
+      breadcrumbCurrent = true;
+    }
 
     // add breadcrumb
     emblBreadcrumbPrimary.innerHTML += formatBreadcrumb(currentTerm.name_display,breadcrumbUrl,breadcrumbCurrent);
