@@ -1,3 +1,10 @@
+### 1.2.0
+
+* Improve breadcrumb behaviour to correctly show the active page.
+* More robust detection of current url by trying with and without a trailing `/`
+* If the active facet (breadcrumb) is the current url, don't link it
+  * https://github.com/visual-framework/vf-core/issues/1604
+
 ### 1.1.1
 
 * Fix: Breadcrumbs repeat if init method is repeatedly called on same page.

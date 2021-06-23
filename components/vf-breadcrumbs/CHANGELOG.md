@@ -1,3 +1,7 @@
+### 2.0.4
+
+* Bug: Final breadcrumb should never be linked.
+
 ### 2.0.3
 
 * changes any `set-` style functions to cleaner version

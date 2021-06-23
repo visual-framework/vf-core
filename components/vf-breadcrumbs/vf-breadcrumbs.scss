@@ -36,13 +36,17 @@
   margin-right: 3px;
   position: relative;
 
-
   &:not([aria-current]) {
     &::after {
       color: $vf-breadcrumbs__item-chevron--color;
       content: '>';
       display: inline-block;
       margin-left: 3px;
+    }
+  }
+  &:last-of-type {
+    &::after {
+      content: '';
     }
   }
   &[aria-current] {
