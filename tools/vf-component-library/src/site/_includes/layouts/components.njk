@@ -124,6 +124,12 @@ templateEngineOverride: njk
       {% endif %}
     </h1>
 
+    {% if component.handle == "vf-design-tokens" %}
+      {% markdown %}
+      [View the design token docs](/design-tokens/)
+      {% endmarkdown %}
+    {% endif %}
+
     {# <pre>{{ component | dump(2)}}</pre> #}
 
     {# readme.md #}

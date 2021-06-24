@@ -71,6 +71,11 @@ layout: layouts/base.njk
     {% else %}
       <p>Something went wrong.</p>
     {% endfor %}
+    {% for item in tokens.neutral_colours.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
   </article>
 </section>
 

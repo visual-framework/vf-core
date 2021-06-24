@@ -6,7 +6,7 @@
 let fractalConfig = {
   title: "Design Tokens",
   status: "live",
-  hidden: "true",
+  hidden: "true"
 };
 
 // export the config to fractal
