@@ -1,5 +1,5 @@
 ---
-title: Spacing
+title: Spacing and sizing
 date: 2018-10-19 12:24:50
 section: designtokens
 templateEngineOverride: njk
@@ -12,12 +12,34 @@ layout: layouts/base.njk
 
 <h1 class="vf-intro__heading">{{ title }}</h1>
 
-{% set type %}spacing{% endset %}
-<main class="vf-grid vf-grid__col-3">
-  {% for item in tokens.spacing.properties %}
-    {% include "./token-card.njk" %}
-  {% else %}
-    <p>Something went wrong.</p>
-  {% endfor %}
-</main>
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Spacing",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/custom-properties/vf-spacing.custom-properties.scss",
+    "id": "spacing"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% set type %}spacing{% endset %}
+    {% for item in tokens.spacing.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
+</section>
 
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Breakpoint widths",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-breakpoints.map.scss",
+    "id": "breakpoints"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% set type %}breakpoints{% endset %}
+    {% for item in tokens.breakpoints.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
+</section>
