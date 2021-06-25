@@ -1,3 +1,8 @@
+### 3.6.0
+
+* Accessibility: Set primary text to off-black.
+  * https://github.com/visual-framework/vf-core/issues/1587
+
 ### 3.5.0
 
 * Generate json for theme colours.

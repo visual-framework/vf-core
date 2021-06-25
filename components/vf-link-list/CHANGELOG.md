@@ -1,3 +1,8 @@
+### 1.3.5
+
+* Use design tokens for colors, by using mixins for `text-color`  and `link-color`.
+  * https://github.com/visual-framework/vf-core/pull/1606
+
 ### 1.3.4
 
 * changes any `set-` style functions to cleaner version

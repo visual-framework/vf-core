@@ -58,7 +58,7 @@
 .vf-links__meta {
   @include set-type(text-body--5, $custom-margin-bottom: 0);
 
-  color: color(grey--dark);
+  color: text-color(secondary);
   display: inline;
   margin-right: 4px;
 }
@@ -67,16 +67,16 @@
 
   .vf-list__link {
     @include inline-link(
-      $vf-link--color: color(grey),
-      $vf-link--visited-color: color(grey),
-      $vf-link--hover-color: color(grey--dark)
+      $vf-link--color: text-color(secondary),
+      $vf-link--visited-color: text-color(secondary),
+      $vf-link--hover-color: link-color(hover)
     );
 
     text-decoration: none;
   }
 
   .vf-list__meta {
-    color: color(grey--dark);
+    color: text-color(secondary);
     position: relative;
 
     &::before {
@@ -89,9 +89,7 @@
   }
 }
 
-
 .vf-links--tight {
-
   .vf-links__heading {
     @include set-type(text-heading--5);
   }
@@ -102,12 +100,10 @@
 }
 
 .vf-links__list--s {
-
   .vf-list__item {
     @include set-type(text-body--5, $custom-margin-bottom: 8px);
   }
 }
-
 
 .vf-links__list--very-easy .vf-links__list {
   list-style-position: outside;
