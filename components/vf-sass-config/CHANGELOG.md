@@ -2,6 +2,7 @@
 
 * Improve reliability of mixin for `link-color` and `brand-color` when using the default color.
 * Mixin for `inline-link` now uses `link-color` mixin.
+* Mixin for `set-type` now sets a colour depending on font sizes (opt-out by passing `$color: ignore`).
 * https://github.com/visual-framework/vf-core/pull/1606
 
 ### 2.6.0

@@ -1,9 +1,11 @@
 // Generate correct font information when included into an element
 // Recommended to use with typography and sizing maps
-// @include set-type(text-body--3, $font-family, $custom-margin-bottom: vf-spacing--500)
+// @include set-type(text-body--3, $font-family, $custom-margin-bottom: vf-spacing--500, $color: primary)
+// A type color will be automatically assigned according to the font size.
+// This can be turned off by passing `$color: ignore`
 
 // $custom-margin-bottom: variable, auto, disable
-@mixin set-type($font-size, $font-family: $global-font-family, $custom-margin-bottom: auto, $color: primary) {
+@mixin set-type($font-size, $font-family: $global-font-family, $custom-margin-bottom: auto, $color: null) {
 
   // Load the map from the design tokens
   // Default onto sans-serif (we don't yet fully support Bring Your Own Typography with this mixin)
@@ -13,9 +15,48 @@
   }
 
   // Set font family, size
-  color: text-color($color);
   font-family: $font-family;
   font-size: map-deep-get($map-font-family, $font-size, font-size);
+
+  @if $color != ignore {
+    // do not set a color
+  }
+  @if $color != null {
+    color: text-color($color);
+  }
+  @else if $font-size == text-heading--1 {
+    color: text-color(primary);
+  }
+  @else if $font-size == text-heading--2 {
+    color: text-color(primary);
+  }
+  @else if $font-size == text-heading--3 {
+    color: text-color(secondary);
+  }
+  @else if $font-size == text-heading--4 {
+    color: text-color(secondary);
+  }
+  @else if $font-size == text-heading--5 {
+    color: text-color(secondary);
+  }
+  @else if $font-size == text-body--1 {
+    color: text-color(primary);
+  }
+  @else if $font-size == text-body--2 {
+    color: text-color(secondary);
+  }
+  @else if $font-size == text-body--3 {
+    color: text-color(secondary);
+  }
+  @else if $font-size == text-body--4 {
+    color: text-color(secondary);
+  }
+  @else if $font-size == text-body--5 {
+    color: text-color(secondary);
+  }
+  @else if $font-size == text-body--5 {
+    color: text-color(secondary);
+  }
 
   // Set font weight
   @if map-deep-get($map-font-family, $font-size, font-weight) == 400 {
