@@ -56,9 +56,8 @@
 }
 
 .vf-links__meta {
-  @include set-type(text-body--5, $custom-margin-bottom: 0);
+  @include set-type(text-body--5, $custom-margin-bottom: 0, $color: text-color(primary));
 
-  color: text-color(secondary);
   display: inline;
   margin-right: 4px;
 }
@@ -67,8 +66,8 @@
 
   .vf-list__link {
     @include inline-link(
-      $vf-link--color: text-color(secondary),
-      $vf-link--visited-color: text-color(secondary),
+      $vf-link--color: text-color(primary),
+      $vf-link--visited-color: text-color(primary),
       $vf-link--hover-color: link-color(hover)
     );
 
