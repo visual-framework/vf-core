@@ -1,3 +1,9 @@
+### 1.3.0
+
+* Darken comment colour.
+* Use neutral colours from tokens.
+* https://github.com/visual-framework/vf-core/pull/1606
+
 ### 1.2.2
 
 * Add a bottom margin to `vf-code-example__pre`
