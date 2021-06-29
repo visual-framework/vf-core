@@ -1,5 +1,6 @@
-### 2.5.10
+### 2.6.0
 
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
 * Use design tokens for text colours.
   * https://github.com/visual-framework/vf-core/pull/1606
 

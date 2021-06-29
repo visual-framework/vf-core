@@ -1,3 +1,10 @@
+### 1.2.0
+
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
+* Specify the footer link colours.
+  * https://github.com/visual-framework/vf-core/pull/1606
+
+
 ### 1.1.1
 
 * changes any `set-` style functions to cleaner version

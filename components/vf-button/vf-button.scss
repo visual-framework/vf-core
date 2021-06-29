@@ -17,7 +17,7 @@ $button-hover-fix: -5px -5px rgba(0, 0, 0, 0);
   --vf-button__color__background--default-dark: var(--vf-color--grey--darkest);
   --vf-button__color__border--default-visited: var(--vf-color--grey--lightest);
 
-  @include set-type(text-button--1);
+  @include set-type(text-button--1, $color: ignore);
 
   align-self: center;
   /* stylelint-disable */
@@ -114,7 +114,7 @@ a.vf-button {
   --vf-button-border-color--visited: transparent;
   --vf-button-text-color: var(--vf-color--blue);
 
-  @include set-type(text-button--2);
+  @include set-type(text-button--2, $color: ignore);
 
   box-shadow: none;
   padding: 8px;
@@ -131,7 +131,7 @@ a.vf-button {
 
 
 .vf-button--sm {
-  @include set-type(text-button--2);
+  @include set-type(text-button--2, $color: ignore);
 
   padding: 8px;
   // @include padding(all, map-get($vf-spacing-map, vf-spacing--200));

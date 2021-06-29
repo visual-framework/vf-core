@@ -1,5 +1,6 @@
-### 1.3.5
+### 1.4.0
 
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
 * Use design tokens for colors, by using mixins for `text-color`  and `link-color`.
   * https://github.com/visual-framework/vf-core/pull/1606
 
