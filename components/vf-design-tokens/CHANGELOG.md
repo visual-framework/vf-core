@@ -2,6 +2,7 @@
 
 * Accessibility: Set primary text to off-black.
 * Developer tools: add `sassFunction` and `sassMap` information to token meta information.
+* Reduce `text-body--1` to 28px (was 32px) in size based on design input and feedback.
 * https://github.com/visual-framework/vf-core/issues/1587
 
 ### 3.5.0
