@@ -31,27 +31,14 @@
 
 .vf-profile__title {
   @include set-type(text-heading--3, $custom-margin-bottom: 0);
-
-  color: color(blue);
 }
 
 .vf-profile__job-title {
   @include set-type(text-heading--4, $custom-margin-bottom: .25rem);
 }
 
-.vf-profile__link {
-  color: inherit;
-  text-decoration: none;
-
-  &:hover,
-  &:focus {
-    text-decoration: underline;
-  }
-}
-
 .vf-profile__text {
   @include set-type(text-body--2, $custom-margin-bottom: 0);
-
   line-height: 1.2;
 
   .vf-profile__job-title + & {
@@ -63,11 +50,8 @@
   @include set-type(text-body--3, $custom-margin-bottom: 0);
 
   line-height: 1.2;
+  margin-bottom: space(200);
   word-break: break-all;
-
-  &.vf-u-last-item {
-    margin-bottom: .75rem;
-  }
 }
 
 .vf-profile__phone {
@@ -75,21 +59,21 @@
 
   line-height: 1.2;
   word-break: break-all;
-
-  &.vf-u-last-item {
-    margin-bottom: .5rem;
-  }
 }
 
 .vf-profile__uuid {
   @include set-type(text-body--4, $custom-margin-bottom: 0);
 
   line-height: 1;
+  margin-top: space(200);
   word-break: break-all;
 }
 
-// Layout
+.vf-profile__link {
+  @include inline-link();
+}
 
+// Layout
 .vf-profile--inline {
   @media (min-width: $vf-breakpoint--xs) {
     display: grid;
@@ -109,7 +93,6 @@
 }
 
 // Sizes
-
 .vf-profile--small {
   --vf-profile-avatar--size: 64px;
 
@@ -147,10 +130,8 @@
   --vf-profile-avatar--size: 160px;
 }
 
-
 html:not(.vf-disable-deprecated) {
   // variants
-
   .vf-profile--easy {
     @warn 'This variant has been deprecated';
     border-bottom: 8px solid var(--vf-profile__border--color);
@@ -159,7 +140,6 @@ html:not(.vf-disable-deprecated) {
 
 
   // themes
-
   .vf-profile-theme--primary {
     @warn 'This variant has been deprecated';
     --vf-profile__border--color: #{color(blue)};
