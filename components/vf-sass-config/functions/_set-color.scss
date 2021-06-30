@@ -18,11 +18,9 @@
   @return map-get($vf-color__text-map, $value);
 }
 
-@function link-color($color-name) {
-  @if $color-name == 'default' {
-    $value: "vf-color__link";
-  }
-  @else {
+@function link-color($color-name: default) {
+  $value: "vf-color__link";
+  @if $color-name != default {
     $value: "vf-color__link--" + $color-name;
   }
   @return map-get($vf-color__text-map, $value);
@@ -33,12 +31,10 @@
   @return map-get($vf-color__buttons-map, $value);
 }
 
-@function brand-color($color-name) {
-  @if $color-name == 'default' {
-    $value: "vf-color__brand";
-  }
-  @else {
-    $value: "vf-color__brand" + $color-name;
+@function brand-color($color-name: default) {
+  $value: "vf-color__brand";
+  @if $color-name != default {
+    $value: "vf-color__brand--" + $color-name;
   }
   @return map-get($vf-color__brand-map, $value);
 }

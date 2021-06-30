@@ -12,7 +12,7 @@
 @import 'vf-card.variables.scss';
 
 .vf-card {
-  --card-text-color: var(--vf-card-theme-color--foreground, #{ui-color(black)});
+  --card-text-color: var(--vf-card-theme-color--foreground, #{text-color(primary)});
   --card-background-color: var(--vf-card-theme-color--background , #{ui-color(white)});
 
   align-content: start;
@@ -25,7 +25,7 @@
 
 .vf-card__image {
   height: auto;
-  min-height: 16rem; // This provides a fallback for when aspec-ratio is not supported
+  min-height: 16rem; // This provides a fallback for when aspect-ratio is not supported
   object-fit: cover;
   object-position: center;
   width: 100%;
@@ -80,11 +80,11 @@
 
 .vf-card__title,
 .vf-card__heading {
-  @include set-type(text-heading--3, $custom-margin-bottom: 0);
+  @include set-type(text-heading--3, $custom-margin-bottom: 0, $color: ignore);
 
   background-color: var(--card-background-color);
-  color: ui-color(black);
-  color: var( --card-text-color, #{ui-color(black)} );
+  color: text-color(primary);
+  color: var( --card-text-color, #{text-color(primary)} );
   line-height: 1.333;
   text-decoration: none;
   word-break: break-word;
@@ -136,13 +136,13 @@
 .vf-card__subheading {
   --vf-stack-margin--custom: #{space(100)};
 
-  @include set-type(text-heading--5, $custom-margin-bottom: 0);
+  @include set-type(text-heading--5, $custom-margin-bottom: 0, $color: ignore);
 
   word-break: break-word;
 }
 
 .vf-card__text {
-  @include set-type(text-body--2, $custom-margin-bottom: 0);
+  @include set-type(text-body--2, $custom-margin-bottom: 0, $color: ignore);
 
   color: ui-color(white);
   color: var( --card-text-color, #{ui-color(white)} );
@@ -347,7 +347,7 @@ html:not(.vf-disable-deprecated) {
 
     .vf-card__title,
     .vf-card__heading {
-      @include set-type(text-body--5);
+      @include set-type(text-body--5, $color: ignore);
 
       display: inline-block;
       margin-bottom: 0;

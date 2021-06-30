@@ -1,3 +1,9 @@
+### 2.0.0-alpha.1
+
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
+* Ensure no colour is et with revised `set-type` mixin.
+  * https://github.com/visual-framework/vf-core/pull/1606
+
 ### 2.0.0-alpha.0
 
 * removes deprecated code

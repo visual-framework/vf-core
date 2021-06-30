@@ -35,13 +35,13 @@
 
     <hr class="vf-divider">
     {% if item.meta.sassVariable %}
-      <p class="vf-card__text">Sass Variable:
+      <p class="vf-card__text">Sass variable:
         <code class="vf-code-example">${{ item.meta.sassVariable }}</code></p>
     {% endif %}
 
     {% if item.meta.sassMap %}
-      <p class="vf-card__text">Sass Function:
-        <code class="vf-code-example">color({{ item.meta.sassMap }})</code></p>
+      <p class="vf-card__text">Sass function:
+        <code class="vf-code-example">{{item.meta.sassFunction}}({{ item.meta.sassMap }})</code></p>
     {% endif %}
     {% if item.meta.CSSCustomProperty %}
       <hr class="vf-divider">

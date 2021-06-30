@@ -1,3 +1,9 @@
+### 2.6.0
+
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
+* Use design tokens for text colours.
+  * https://github.com/visual-framework/vf-core/pull/1606
+
 ### 2.5.9
 
 * Bug: correct a missing space in Nunjucks template.
