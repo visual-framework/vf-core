@@ -1,3 +1,8 @@
+### 1.4.0
+
+* Links of `.vf-profile__link` use `inline-link` mixin.
+* Remove need for `.vf-u-last-item` on last phone number.
+
 ### 1.3.0
 
 * deprecates the Mortal Kombat variants.
