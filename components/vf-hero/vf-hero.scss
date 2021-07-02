@@ -18,9 +18,9 @@
   background-image: var(--vf-hero--bg-image, url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/roundels.png'));
 
   margin-bottom: map-get($vf-spacing-map, vf-spacing--800);
-  margin-bottom: var(--vf-hero--spacing, #{map-get($vf-spacing-map, vf-spacing--800)});
+  margin-bottom: var(--vf-hero--spacing, #{map-get($vf-spacing-map, vf-spacing--1200)});
   padding: map-get($vf-spacing-map, vf-spacing--800) 0;
-  padding: var(--vf-hero--spacing, #{map-get($vf-spacing-map, vf-spacing--800)}) 0;
+  padding: var(--vf-hero--spacing, #{map-get($vf-spacing-map, vf-spacing--1200)}) 0;
 }
 
 .vf-hero.vf-u-fullbleed::before {
@@ -159,6 +159,7 @@
   }
 }
 
+// This variant is supported, but hidden and currently not recommended (subject to change)
 .vf-hero--1600 {
   --vf-hero--spacing: #{space(1600)};
   & > .vf-box {
