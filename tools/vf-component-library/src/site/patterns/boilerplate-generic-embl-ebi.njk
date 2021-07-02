@@ -184,7 +184,15 @@ layout: layouts/boilerplate.njk
     </div>
   </section>
 
-  <hr class="vf-divider" />
+  <!-- https://stable.visual-framework.dev/components/vf-banner-elixir/ -->
+  <section class="vf-u-fullbleed | vf-u-background-color-ui--grey--light">
+    {% render '@vf-banner-elixir', {
+      "logo": "default",
+      "name": "Service Name",
+      "description": "A short description about this service's role and function",
+      "link": "default"
+    } %}
+  </section>
 
   {% include "./templates/source-link-boilerplate.njk" %}
 
