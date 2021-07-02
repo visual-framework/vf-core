@@ -1,3 +1,9 @@
+### 3.3.0
+
+* Updates the default hero spacing to be equivalent to 1200 (was: 800). This better matches the actual default usage in practice and is based off design feedback for consistency.
+* Hides 1600 variant that has gone unused.
+* Readme updated to note that most uses will want a background image at 3000 by 1000 pixels.
+
 ### 3.2.3
 
 * Fixes width issue on mobile introduced when making the hero content a little wider.
