@@ -1,3 +1,8 @@
+### 1.1.11
+
+* Add ELIXIR banner to example EMBL-EBI page.
+  * https://stable.visual-framework.dev/patterns/boilerplate-generic-embl-ebi/
+
 ### 1.1.7
 
 * Fixed issue of overlapping menu on VF components site
