@@ -3,6 +3,7 @@
 * Updates the default hero spacing to be equivalent to 1200 (was: 800). This better matches the actual default usage in practice and is based off design feedback for consistency.
 * Hides 1600 variant that has gone unused.
 * Readme updated to note that most uses will want a background image at 3000 by 1000 pixels.
+* https://github.com/visual-framework/vf-core/pull/1614
 
 ### 3.2.3
 
