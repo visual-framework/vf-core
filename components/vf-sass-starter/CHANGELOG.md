@@ -1,3 +1,7 @@
+### 0.1.23
+
+* Dependency bump.
+
 ### 0.1.19
 
 * dependency bump

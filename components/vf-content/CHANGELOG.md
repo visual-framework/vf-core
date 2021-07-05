@@ -1,3 +1,7 @@
+### 1.6.1
+
+* Dependency bumps.
+
 ### 1.6.0
 
 * Use vf-spacing tokens for heading margins.

@@ -1,3 +1,7 @@
+### 2.2.30
+
+* Dependency bump.
+
 ### 2.2.28
 
 * Critical: pins `marked` dependency to 2.0.7, as 2.1.0 breaks support in node 12.
