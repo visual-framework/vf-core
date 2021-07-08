@@ -17,7 +17,7 @@ People vary in their ability to see, hear, read text and use the mouse. For exam
 
 So when we think about making a quality website, we should focus beyond technical performance metrics, bugs and good looks. The standard of quality should also include usability and accessibility so that the site can be used by as many people as possible.
 
-For Visual Framework sites we recommend the WCAG 2.1 AA accesibility level. This is both the legal level [required by the European Union](https://www.deque.com/blog/eu-web-accessibility-compliance-and-legislation/) (and other national governments) and it is a level that should impose a reasonable amount of effort on develop and design. [As the Digital Accessibility Centre summarizes](https://digitalaccessibilitycentre.org/index.php/blog/20-diary/187-the-icing-on-the-cake-the-difference-between-aa-and-aaa-compliance): “AA is accepted as a very good commitment to accessibility”.
+For Visual Framework sites we recommend the WCAG 2.1 AA accessibility level. This is both the legal level [required by the European Union](https://www.deque.com/blog/eu-web-accessibility-compliance-and-legislation/) (and other national governments) and it is a level that should impose a reasonable amount of effort on develop and design. [As the Digital Accessibility Centre summarizes](https://digitalaccessibilitycentre.org/index.php/blog/20-diary/187-the-icing-on-the-cake-the-difference-between-aa-and-aaa-compliance): “AA is accepted as a very good commitment to accessibility”.
 
 ### Sidebar: what-a-cag? <a id="sidebar"></a>
 
