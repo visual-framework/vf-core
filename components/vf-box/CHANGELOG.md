@@ -1,3 +1,8 @@
+### 2.3.2
+
+* Don't set vf-box typography colours via revised set-type function.
+  * https://github.com/visual-framework/vf-core/issues/1619
+
 ### 2.3.1
 
 * changes any `set-` style functions to cleaner version
