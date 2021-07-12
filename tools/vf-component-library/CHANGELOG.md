@@ -1,3 +1,7 @@
+### 1.1.12
+
+* Update milestones and roadmap.
+
 ### 1.1.11
 
 * Add ELIXIR banner to example EMBL-EBI page.
