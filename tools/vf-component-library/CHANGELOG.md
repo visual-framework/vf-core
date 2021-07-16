@@ -16,6 +16,7 @@
 ### 1.1.6
 
 * dependency bump
+
 ### 1.1.2
 
 * Implements updated vf-search markup.
