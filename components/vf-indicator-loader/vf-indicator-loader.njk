@@ -1,0 +1,18 @@
+{# Make sure any variables are listed inside the following if statement #}
+{% if context %}
+  {% set container = context.container %}
+{% endif %}
+
+{% if container == true %}
+  <!-- this HTML is for container if enabled -->
+  <div class="vf-box">
+      <div class="vf-indicator-loader--spinner__container">
+{% endif %}
+
+        <div class="vf-indicator-loader--spinner__circle"></div>
+
+{% if example == true %}
+  <!-- this HTML is for container if enabled -->
+  </div>
+</div>
+{% endif %}

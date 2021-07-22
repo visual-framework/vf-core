@@ -1,0 +1,51 @@
+// vf-indicator-loader
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+@import 'vf-indicator-loader.variables.scss';
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+
+.vf-indicator-loader--spinner__circle {
+  width: 32px;
+  height: 32px;
+  color: $vf-indicator-loader--border-color;
+  position: relative;
+  display: inline-block;
+  border: 4px solid;
+  border-radius: 50%;
+  border-right-color: $vf-indicator-loader--border-color-highlight;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.vf-indicator-loader--spinner__container {
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
