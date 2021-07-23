@@ -1,3 +1,7 @@
+### 2.6.1
+
+* Added react version of component
+
 ### 2.6.0
 
 * Requires at least `@visual-framework@vf-sass-config@2.6.1`.
