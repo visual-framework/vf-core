@@ -1,3 +1,7 @@
+### 2.3.3
+
+* Repeat release of 2.3.2 for dependency linkage.
+
 ### 2.3.2
 
 * Don't set vf-box typography colours via revised set-type function.
