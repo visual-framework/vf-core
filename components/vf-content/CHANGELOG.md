@@ -1,3 +1,7 @@
+### 1.6.2
+
+* Dependency bumps.
+
 ### 1.6.1
 
 * Dependency bumps.
