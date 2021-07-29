@@ -1,6 +1,7 @@
 ### 2.6.1
 
-* Added react version of component
+* Added react version of component.
+  * https://github.com/visual-framework/vf-core/pull/1632
 
 ### 2.6.0
 
