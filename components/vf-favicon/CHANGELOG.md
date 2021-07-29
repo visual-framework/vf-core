@@ -1,3 +1,7 @@
+### 1.0.3
+
+* Point favicon urls to 2.5.0 stable release.
+
 ### 1.0.2
 
 * missing a link to favicon.ico
