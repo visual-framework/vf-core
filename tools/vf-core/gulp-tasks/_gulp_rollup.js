@@ -5,8 +5,6 @@
  */
 
 module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation) {
-  const watch = require('gulp-watch');
-
   // Local Server Stuff
   const browserSync = require('browser-sync').create();
   const reload = browserSync.reload;
