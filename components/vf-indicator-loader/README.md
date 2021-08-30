@@ -4,14 +4,15 @@
 
 ## About
 
-An anchor or JavaScript button to scroll the  user to top of the current page, or to a target element.
+Use these when content or a page is still in the progress of being loaded.
 
 ## Usage
 
-Recommended reading: https://www.nngroup.com/articles/progress-indicators/
+- Spinner variant: This indicator should be reserved for actions that take between 2-10 seconds.
+- Progress variant: [To come](https://github.com/visual-framework/vf-core/issues/1332)
+- Skeleton variant: [To come](https://github.com/visual-framework/vf-core/issues/1332)
 
-### Spinner variant:
-This indicator should be reserved for actions that take between 2-10 seconds.
+[Recommended reading related reading](https://www.nngroup.com/articles/progress-indicators/) on usage of loader elements. Less is better.
 
 ## Install
 
