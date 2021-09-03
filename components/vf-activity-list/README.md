@@ -4,7 +4,7 @@
 
 ## About
 
-<h2>This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>.
+This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>.
 
 ## Usage
 
