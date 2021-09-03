@@ -36,7 +36,7 @@ module.exports = function(fractal){
           // let format = format || 'html'; // if format is not set, use "html"
           let txt = body();
           if(typeof txt == "undefined") return;
-          txt = hljs.highlight(format, txt).value;
+          txt = hljs.highlight(txt, {language: format, ignoreIllegals: true }).value;
 
           return `<pre class="vf-code-example__pre"><code class="Code Code--lang-${format} vf-code-example">${txt}</code></pre>`;
         };

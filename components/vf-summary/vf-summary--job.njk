@@ -1,24 +1,29 @@
+{%- if context %}
+  {% set summary__href = context.summary__href %}
+  {% set summary__title = context.summary__title %}
+  {% set summary__text = context.summary__text %}
+  {% set summary__meta = context.summary__meta %}
+  {% set summary__date = context.summary__date %}
+  {% set summary__date_meta = context.summary__date_meta %}
+{%- endif %}
+
 <article class="vf-summary vf-summary--job">
-  <p class="vf-summary__meta">
-    <a href="{{ summary__href }}" class="vf-summary__link">Science Faculty</a>
-     in
-    <a href="{{ summary__href }}" class="vf-summary__link">Heidelberg</a>
-  </p>
+  <p class="vf-summary__meta">{{summary__meta | safe }}</p>
 
   <h3 class="vf-summary__title">
 
     <a href="{{ summary__href }}" class="vf-summary__link">
-      Group Leader - Cell and Biophysics
+      {{summary__title}}
     </a>
 
   </h3>
 
-  <p class="vf-summary__text">
-    We are seeking to recruit outstanding group leaders who wish to carry out cutting-edge molecular cell biology research and/or technology development.
-  </p>
+  <p class="vf-summary__text">{{summary__text}}</p>
 
-  <a href="{{ summary__href }}" class="vf-summary__button | vf-button vf-button--primary vf-button--outline">Apply Now</a>
-
-  <p class="vf-summary__date"><span>Closes in 8 days.</span> Posted 11th August 2018</p>
+  <p class="vf-summary__date">
+    {%- if summary__date_meta %}
+    <span>{{summary__date_meta}}</span>
+    {% endif %}
+    Posted {{summary__date}}</p>
 
 </article>

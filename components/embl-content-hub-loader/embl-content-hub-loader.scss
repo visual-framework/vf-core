@@ -27,3 +27,14 @@
 .vf-body > .embl-content-hub-html {
   grid-column: main;
 }
+
+// This is to target the links that load things like the global header
+.vf-stack link[data-embl-js-content-hub-loader] {
+  --vf-stack-margin--custom: 0;
+}
+
+// targets anything that's loaded from content hub
+// as nine times out of ten - it's ok.
+.vf-content-hub-html {
+  --vf-stack-margin--custom: 0;
+}

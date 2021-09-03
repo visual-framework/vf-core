@@ -1,3 +1,17 @@
+### 1.1.5
+
+* Fix a bug in `camelize` function that only replaced first `-`.
+* In `README.md` template, reference the component `vfName.scss` file and not `index.scss`
+
+### 1.1.4
+
+* Add accessibility section to README.md template.
+
+### 1.1.3
+
+* For JS module imports, use a relative path, as this improves support in some scenarios.
+  * https://github.com/visual-framework/vf-core/pull/1476/
+
 ### 1.1.2
 
 * Add changelog style guidance.

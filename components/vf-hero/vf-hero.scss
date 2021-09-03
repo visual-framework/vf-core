@@ -18,9 +18,9 @@
   background-image: var(--vf-hero--bg-image, url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/roundels.png'));
 
   margin-bottom: map-get($vf-spacing-map, vf-spacing--800);
-  margin-bottom: var(--vf-hero--spacing, #{map-get($vf-spacing-map, vf-spacing--800)});
+  margin-bottom: var(--vf-hero--spacing, #{map-get($vf-spacing-map, vf-spacing--1200)});
   padding: map-get($vf-spacing-map, vf-spacing--800) 0;
-  padding: var(--vf-hero--spacing, #{map-get($vf-spacing-map, vf-spacing--800)}) 0;
+  padding: var(--vf-hero--spacing, #{map-get($vf-spacing-map, vf-spacing--1200)}) 0;
 }
 
 .vf-hero.vf-u-fullbleed::before {
@@ -36,9 +36,10 @@
     2px 0 3px rgba(0, 0, 0, .1),
     -2px 0 3px rgba(0, 0, 0, .1),
     0 2px 3px rgba(0, 0, 0, .1);
-  max-width: 60ch;
   position: relative;
   z-index: set-layer(vf-z-index--hero);
+  max-width: max-content;
+  width: auto;
 }
 
 .vf-hero__kicker {
@@ -61,6 +62,7 @@
 
   line-height: 1.25;
   word-break: break-word;
+  max-width: 30ch;
 }
 
 .vf-hero__heading_link {
@@ -78,10 +80,14 @@
   @include set-type(text-heading--4, $custom-margin-bottom: 0);
 
   --vf-stack-margin--custom: 0;
+
+  max-width: 50ch;
 }
 
 .vf-hero__text {
   @include set-type(text-body--2, $custom-margin-bottom: 0);
+
+  max-width: 60ch;
 
   a {
     border-bottom: none;
@@ -131,10 +137,18 @@
 
 // sizes
 // ----------------------------------------------------------------------
+
+.vf-hero--400 {
+  --vf-hero--spacing: #{space(400)};
+  & > .vf-box {
+    --vf-box-padding: var(--vf-hero--spacing);
+  }
+}
+
 .vf-hero--800 {
   --vf-hero--spacing: #{space(800)};
   & > .vf-box {
-    --vf-box-padding: calc(var(--vf-hero--spacing / 2));
+    --vf-box-padding: calc(var(--vf-hero--spacing) / 2);
   }
 }
 
@@ -145,6 +159,7 @@
   }
 }
 
+// This variant is supported, but hidden and currently not recommended (subject to change)
 .vf-hero--1600 {
   --vf-hero--spacing: #{space(1600)};
   & > .vf-box {

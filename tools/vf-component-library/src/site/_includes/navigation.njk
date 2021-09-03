@@ -1,13 +1,9 @@
 {%- set activeStyle = 'aria-current="page"' -%}
 <nav class="vf-navigation vf-navigation--main | vf-cluster">
-  <ul class="vf-navigation__list | vf-list--inline | vf-cluster__inner">
+  <ul class="vf-navigation__list | vf-list | vf-cluster__inner">
     <li class="vf-navigation__item">
       {% set navUrl = '/about/' %}
       <a href="{{ navUrl | url }}" class="vf-navigation__link" {% if page.url == navUrl %}{{ activeStyle | safe }}{% endif -%}>About</a>
-    </li>
-    <li class="vf-navigation__item">
-      {% set navUrl = '/design-principles/' %}
-      <a href="{{ navUrl | url }}" class="vf-navigation__link" {% if page.url == navUrl %}{{ activeStyle | safe }}{% endif -%}>Design Principles</a>
     </li>
     <li class="vf-navigation__item">
       {% set navUrl = '/building/' %}
@@ -15,11 +11,7 @@
     </li>
     <li class="vf-navigation__item">
       {% set navUrl = '/components/' %}
-      <a href="{{ navUrl | url }}" class="vf-navigation__link" {% if page.url == navUrl %}{{ activeStyle | safe }}{% endif -%}>Components</a>
-    </li>
-    <li class="vf-navigation__item">
-      {% set navUrl = '/patterns/' %}
-      <a href="{{ navUrl | url }}" class="vf-navigation__link" {% if page.url == navUrl %}{{ activeStyle | safe }}{% endif -%}>Examples</a>
+      <a href="{{ navUrl | url }}" class="vf-navigation__link" {% if page.url == navUrl %}{{ activeStyle | safe }}{% endif -%}>Components and patterns</a>
     </li>
     {# <li class="vf-navigation__item">
       {% set navUrl = '/troubleshooting/' %}

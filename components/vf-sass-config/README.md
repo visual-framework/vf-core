@@ -121,7 +121,9 @@ Padding, recommended to use with sizing maps
 Generate correct font information when included into an element.
 Recommended to use with typography and sizing maps
 
-`@include set-type(text-body--3, $global-font-family, $custom-margin-bottom: vf-spacing--500)`
+`@include set-type(text-body--3, $global-font-family, $custom-margin-bottom: vf-spacing--500, $color: secondary)`
+
+Color setting can be turned off by passing `$color: ignore`.
 
 ### utility--color.scss
 

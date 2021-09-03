@@ -1,3 +1,18 @@
+### 2.0.1
+
+* Bug: Add missing `@import 'vf-global-variables';` to generate standalone `vf-tabs.css`.
+  * https://github.com/visual-framework/vf-core/pull/1581
+
+### 2.0.0
+
+* Updates the styling to match the design direction.
+* This is a no-code-change update. It has been marked as visually breaking due to the major design change.
+  * https://github.com/visual-framework/vf-core/pull/1551
+
+### 1.2.2
+
+* Conditional support of tab_heading in vf-tabs.njk template.
+
 ### 1.2.1
 
 * changes any `set-` style functions to cleaner version

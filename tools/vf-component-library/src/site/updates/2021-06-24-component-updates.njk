@@ -1,0 +1,128 @@
+---
+title: Rollup release 2.5.0-beta.4
+subtitle: Beta 4 brings bug fixes and incorporates functional design tokens as we move forward towards a more visually and technically consistent 2.5.0 rollup release.
+date: 2021-06-24 15:20:29
+version: 2.5.0-beta.4
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{% markdown %}
+
+The presentation of [design token information](/design-tokens) has been improved, grouping the range of tokens into sizing, typography and thematic colours. You'll be able to more easily access the values and Sass maps.
+
+You'll also find improvements to `vf-breadcrumbs` and more flexibility with `vf-search-client-side`.
+
+For our next beta, we aim to [improve the colour of typography](https://github.com/visual-framework/vf-core/issues/1587) by moving to an off-black. We'll also begin to focus on [improving navigation patterns](https://github.com/visual-framework/vf-core/discussions/1560), including [the footer](https://github.com/visual-framework/vf-core/discussions/1529). With those done we hope to release rollup 2.5.0 in July.
+
+Read on for more.
+
+{% endmarkdown %}
+
+{% set context = {
+  "component_modifier": "vf-links__list--easy",
+  "title": "On this page",
+  "svg": true,
+  "list": [
+    {
+      "text": "Notable improvements",
+      "link_list_href": "#improvements"
+    },
+    {
+      "text": "Bug fixes",
+      "link_list_href": "#bugs"
+    }
+  ]
+}
+%}
+{% include blocks.links_list %}
+
+
+{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+
+#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+<!-- Tools don't have pages in the component library -->
+
+#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
+{# endmacros ---/ #}
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+<br/>
+
+### Notable improvements <a href="#improvements" id="improvements"></a>
+
+{{ notes("vf-design-tokens", "3.5.0", "639699b5834d274ca3086e21e06c7deb1c48bd80") }}
+
+* Generate json for theme colours.
+* Display theme colours in component library.
+* Deprecates old primary, secondary, tertiary themes in favour of vf-color__brand and interactive, text colours.
+* Remove extraneous `$` prefix in spacing sass variable token (this only affected a double `$$` in generated documentation).
+
+{{ notes("vf-sass-config", "2.6.0", "639699b5834d274ca3086e21e06c7deb1c48bd80") }}
+
+* Changes mixin `set-type` to use the primary colour (off black) by default
+* Adds functions and imports for:
+    * `vf-color__text.custom-properties.scss`
+    * `vf-color__buttons.custom-properties.scss`
+    * `vf-color__brand.custom-properties.scss`
+* Prepare to deprecate `vf-themes.custom-properties.scss`
+
+{{ notes("vf-search-client-side", "2.0.0-alpha.2", "b78b8574a742c969c1690e1e4be3b1645d835a4e") }}
+
+* Add customisable URL prefix `search_client_destination_prefix`.
+* Cleans up typos.
+    * https://github.com/visual-framework/vf-core/pull/1602
+
+{{ notes("embl-breadcrumbs-lookup", "1.2.0", "801a48274de5b760be643a94e4455ddef7d500d5") }}
+
+* Improve breadcrumb behaviour to correctly show the active page.
+* More robust detection of current url by trying with and without a trailing `/`
+* If the active facet (breadcrumb) is the current url, don't link it
+    * https://github.com/visual-framework/vf-core/issues/1604
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+{{ notes("vf-breadcrumbs", "2.0.4", "801a48274de5b760be643a94e4455ddef7d500d5") }}
+
+* Bug: Final breadcrumb should never have an arrow.
+
+{{ notes("vf-card", "2.5.9", "79864faac3caf07d955c64ca65d15a86873e26a1") }}
+
+* Bug: correct a missing space in Nunjucks template.
+    * https://github.com/visual-framework/vf-core/pull/1603
+
+{{ notesTool("vf-extensions", "1.0.0", "dcb2124114609404c1fd4a076198d01fada81e07") }}
+
+* Bug: in `gulp-build-search-index` ensure `body` is a string for `striptags`.
+    * https://github.com/visual-framework/vf-core/pull/1601
+
+{% endmarkdown %}

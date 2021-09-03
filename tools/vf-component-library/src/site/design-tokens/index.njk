@@ -1,28 +1,185 @@
 ---
 is_index: true
 promoted: true
-title: Design Tokens
+title: Design tokens
 subtitle: The colour, typography, spacing, and other stylistic decisions as design tokens for consumption.
 date: 2018-10-16 12:24:50
-section: designtokens
+section: building
+order: 4
 tags:
   - sections
+  - building
   - designtokens
-templateEngineOverride: njk
-layout: layouts/section.njk
+layout: layouts/base.njk
 hideSubPosts: false
+templateEngineOverride: njk
 ---
 
-The Design Tokens used within `vf-core` are generated from several `.yml` files. These are then compiled into various Sass files as needed.
+{% render '@vf-intro', {
+  "vf_intro_heading": title,
+  "vf_intro_lede": subtitle,
+  "vf_intro_subheading": "",
+  "vf_intro_text": [
+    ''
+  ],
+  "vf_intro_badge": false
+} %}
+
+  <section class="vf-content | embl-grid embl-grid--has-centered-content">
+  {% render '@vf-section-header', {
+    "section_title": "What are design tokens?",
+    "id": "what",
+    "vf_section__content": [
+    ]
+  } %}
+  <div>
+    {% markdown %}
+    > Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. We use them in place of hard-coded values (such as hex values for color or pixel values for spacing) in order to maintain a scalable and consistent visual system for UI development.
+    >
+    > _[Salesforce, Lightning Design System](https://www.lightningdesignsystem.com/design-tokens/)_
+    {% endmarkdown %}
+  </div>
+
+  <figure>
+    <iframe src="https://www.youtube.com/embed/q5qIowMyVt8?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <figcaption>Jina Anne explains the role of design tokens.</figcaption>
+  </figure>
+</section>
+
+{# Sections #}
+<section class="vf-card-container | vf-u-fullbleed vf-u-background-color--grey--lightest">
+  <div class="vf-card-container__inner">
+  {% render '@vf-section-header', {
+    "section_title": "Design token types",
+    "id": "tokens"
+  } %}
+
+  {#- show all pages classes as sections -#}
+  {#- by default, 11ty sorts by `date` field -#}
+  {%- for entry in collections['designtokens'] | sort(false, true, 'data.title') %}
+    {% if entry.data.promoted != true %}
+      {# Eventually these might have unique images, not sure yet #}
+      {%- set absolutePostUrl %}{{ metadata.id }}{{ entry.url }}{% endset %}
+      {%- render '@vf-card', {
+        "newTheme": "primary",
+        "variant": "bordered",
+        "card_title": entry.data.title,
+        "card_href": absolutePostUrl | url,
+        "card_text": entry.data.subtitle,
+        "card_image__alt": entry.data.title
+      } %}
+        {# "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png", #}
+    {% endif %}
+  {%- endfor %}
+  </div>
+</section>
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "How the VF uses design tokens",
+  "id": "how",
+  "vf_section__content": [
+  ]
+} %}
+<div>
+
+{% markdown %}
+
+The design tokens are generated from several Yaml files. These are then compiled into various Sass files as needed.
+
+### Base design tokens
+
+These are the generic design tokens for global key and value pairs for colour, spacing, typography, etc.
+
+They tend not to be used as they're codified as we should rely on Design decisions to determine when to use what Design Token value for what purpose and need.
+
+### Design decision design tokens
+
+This category of design tokens is where we have chosen how certain design tokens should be used.
+
+These design tokens can be use in projects where component design tokens do not exist and must match the semantic use that should be defined in the codified Design Token.
+
+eg. If the design token is `vf-background--primary` it should not be used for anything other than a background.
+
+This is actively being working on and your current implementation of design tokens in your projects might need updating.
+
+
+### Component design tokens
+
+Where the design decisions have filtered into specific component decisions.
+
+These are exported into the components folder and are suffixed - `.tokens.scss`.
+
+These can be both Sass variables and CSS custom properties.
+
+They are named so that their usage in a component should be self evident as it will follow the 'Naming design tokens' described below.
+
+{% endmarkdown %}
+
+</div>
+</section>
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "Naming design tokens",
+  "id": "naming",
+  "vf_section__content": [
+  ]
+} %}
+<div>
+
+{% markdown %}
+
+We use a BEM style syntax when composing design tokens where we use our Design System prefix of `vf-`:
+
+1. `vf-component`: button, card, hero, list and so on
+
+2. `vf-category`: background, shadow, border and so on
+
+3. `vf-variant`: primary, secondary, interactive and so on
+
+4. `vf-state`: hover, visited, focus and so on
+
+{% endmarkdown %}
+
+</div>
+</section>
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "Building",
+  "id": "building",
+  "vf_section__content": [
+  ]
+} %}
+<div>
+
+{% markdown %}
+
+To update these run `gulp vf-tokens` from `./components/vf-design-tokens`.
+
+{% endmarkdown %}
+
+</div>
+</section>
+
+<section class="vf-content | embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "Future plans",
+  "id": "future",
+  "vf_section__content": [
+  ]
+} %}
+<div>
+
+{% markdown %}
 
 In the future we hope to offer Sketch and Photoshop colour palettes.
 
 If you required a different format (LESS, iOS, Android). Please get in touch.
 
-> Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. We use them in place of hard-coded values (such as hex values for color or pixel values for spacing) in order to maintain a scalable and consistent visual system for UI development.
+{% endmarkdown %}
 
-> — Salesforce, Lightning Design System.
+</div>
+</section>
 
-## Building
-
-To update these run `gulp vf-tokens` from `./components/vf-design-tokens`.

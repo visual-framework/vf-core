@@ -1,3 +1,11 @@
+### 1.1.13
+
+* Dependency bump.
+
+### 1.1.9
+
+* dependency bump
+
 ### 1.1.0
 
 * Remove gulp-cssnano and use builtin dart sass minification.

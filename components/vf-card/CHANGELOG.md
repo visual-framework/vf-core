@@ -1,3 +1,33 @@
+### 2.6.0
+
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
+* Use design tokens for text colours.
+  * https://github.com/visual-framework/vf-core/pull/1606
+
+### 2.5.9
+
+* Bug: correct a missing space in Nunjucks template.
+  * https://github.com/visual-framework/vf-core/pull/1603
+
+### 2.5.8
+
+* Documentation: clarity on using card vs summary components.
+  * https://github.com/visual-framework/vf-core/issues/1592
+
+### 2.5.7
+
+* Fixes the vertical centering of the svg arrow on vf-card titles. Also aligns better with the Figma design kit.
+  * https://github.com/visual-framework/vf-core/pull/1562
+
+### 2.5.6
+
+* Fixes issue with modifiers
+  * https://github.com/visual-framework/vf-core/issues/1523
+
+### 2.5.5
+
+* corrects colouring of visited link in heading on striped variant.
+
 ### 2.5.4
 
 * adds `word-break: break-word;` to text so the text won't exceed the box model.

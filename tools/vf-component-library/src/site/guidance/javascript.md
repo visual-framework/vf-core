@@ -1,5 +1,5 @@
 ---
-title: JavaScript guidelines
+title: JavaScript and Visual Framework components
 subtitle: We use "just enough" JavaScript in the Visual Framework.
 date: 2020-12-11 19:33:50
 section: building
@@ -7,6 +7,7 @@ tags:
   - posts
   - guidance
 layout: layouts/section.njk
+templateEngineOverride: njk, md
 ---
 
 The Visual Framework isn't intended as a general-purpose JavaScript solution, however we know it is helpful that a minimal amount of basic functionality is supported.
@@ -29,6 +30,7 @@ Likewise we don't require the use of the Visual Framework JavaScript, instead th
 So to activate the Visual Framework JavaScript for `vf-tabs` we add `data-vf-js-tabs` and `data-vf-js-tabs-content`, like so:
 
 <pre>
+{% markdown %}
 
 ```html
 <div class="vf-tabs">
@@ -51,7 +53,7 @@ So to activate the Visual Framework JavaScript for `vf-tabs` we add `data-vf-js-
   </section>
 </div>
 ```
-
+{% endmarkdown %}
 </pre>
 
 <br/>

@@ -1,15 +1,17 @@
 {% set vfTreeButton %}
-<button href="{{ tree_example_href }}" class="vf-button vf-tree__button" data-vf-js-tree--button>
-  <svg id="Bold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>arrow-right-1</title><path d="M19.5,12a2.3,2.3,0,0,1-.78,1.729L7.568,23.54a1.847,1.847,0,0,1-2.439-2.773l9.752-8.579a.25.25,0,0,0,0-.376L5.129,3.233A1.847,1.847,0,0,1,7.568.46l11.148,9.808A2.31,2.31,0,0,1,19.5,12Z"/></svg>
+<button class="vf-button vf-tree__button" {% if item.expanded == true %}aria-expanded="true"{% endif %} data-vf-js-tree--button>
+  <p data-vf-js-tree-button-hidden-text class="vf-u-sr-only">
+    {{ button_hidden_open_text }}
+  </p>
+  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5,12a2.3,2.3,0,0,1-.78,1.729L7.568,23.54a1.847,1.847,0,0,1-2.439-2.773l9.752-8.579a.25.25,0,0,0,0-.376L5.129,3.233A1.847,1.847,0,0,1,7.568.46l11.148,9.808A2.31,2.31,0,0,1,19.5,12Z"/></svg>
 </button>
 {% endset %}
 
 {% macro vfTreeList(list, currentDepth=1) %}
   <ul class="vf-tree__list {% if currentDepth > 1 %}vf-tree__list--additional{% endif %} vf-tree__list--{{ currentDepth }} | vf-list" aria-role="{% if currentDepth == 1 %}tree{% else %}group{% endif %}">
   {% for item in list %}
-    <li class="vf-tree__item {%- if item.artiveTrail == true %} vf-tree__item--selected{% endif -%}{% if item.expanded == true %} | vf-tree__item--expanded{% endif -%}" data-vf-js-tree--collapsed="{{ not item.expanded }}" data-vf-js-tree aria-role="treeitem" aria-expanded="{{item.expanded}}">
-      <a href="{{ tree_example_href }}" class="vf-tree__link" {%- if item.artiveTrail == true %} aria-current="page"{% endif %}>{{ item.title }}</a>
-      {% if item.sublist %}{{ vfTreeButton }}{% endif %}
+    <li class="vf-tree__item {%- if item.selected == true %} vf-tree__item--selected{% endif -%}{% if item.expanded == true %} | vf-tree__item--expanded{% endif -%}" data-vf-js-tree--collapsed="{{ not item.expanded }}" data-vf-js-tree aria-role="treeitem" aria-expanded="{{item.expanded}}">
+      <a href="{{ tree_example_href }}" class="vf-tree__link" {%- if item.artiveTrail == true %} aria-current="page"{% endif %}>{{ item.title }} {% if item.sublist %}{{ vfTreeButton }}{% endif %}</a>
       {% if item.sublist %}
         {{ vfTreeList(item.sublist, currentDepth+1) }}
       {% endif %}
@@ -18,16 +20,10 @@
   </ul>
 {% endmacro %}
 
-<div class="vf-tree{% if expanded === false %} vf-tree--collapsed{% endif %}" data-vf-js-tree {% if expanded === false %}data-vf-js-tree--collapsed="true"{% endif %} aria-expanded="{{expanded}}">
+<div class="vf-tree{% if expanded === false %} vf-tree--collapsed{% endif %}" data-vf-js-tree {% if expanded === false %}data-vf-js-tree--collapsed="true"{% endif %} aria-expanded="{{expanded}}" data-vf-js-button-hidden-open-text="{{ button_hidden_open_text }}" data-vf-js-button-hidden-close-text="{{ button_hidden_close_text }}">
   <div class="vf-tree__inner">
-    <span class="vf-show-hide">
-      <button class="vf-button | vf-show-hide__button" data-vf-js-tree--button>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>navigation-left-2</title><path d="M11.751,23.739a1.44,1.44,0,0,0,.36-2L5.528,12.272a.48.48,0,0,1,0-.549L12.111,2.26A1.44,1.44,0,0,0,9.746.616L3.164,10.079a3.372,3.372,0,0,0,0,3.837l6.582,9.463A1.44,1.44,0,0,0,11.751,23.739Z"/><path d="M16.473.89,9.889,10.353a2.892,2.892,0,0,0,0,3.289l6.584,9.464a.961.961,0,0,0,.788.411h3.213a.96.96,0,0,0,.788-1.508l-6.583-9.463a.965.965,0,0,1,0-1.1l6.583-9.464A.96.96,0,0,0,20.474.478H17.261A.96.96,0,0,0,16.473.89Z"/></svg>
-      </button>
-    </span>
 
-    <ul class="vf-tree__list | vf-list" aria-role="tree">
-      {{ vfTreeList(vf_tree_list) }}
-    </ul>
+    {{ vfTreeList(vf_tree_list) }}
+
   </div>
 </div>

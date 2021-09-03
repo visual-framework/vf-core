@@ -1,5 +1,6 @@
 ---
-title: Making your first Pull Request
+title: Making a Pull Request
+subtitle: To contribute code back, you'll need to make a PR (Pull Request).
 date: 2019-04-09 12:24:50
 layout: layouts/section.njk
 section: developing
@@ -8,21 +9,20 @@ tags:
   - getting started
   - developing
   - documentation
+templateEngineOverride: njk, md
 ---
 
-To contribute code back, you'll need to make a PR ([Pull Request](https://help.github.com/en/articles/about-pull-requests)),
-as you won't have write access, GitHub will prompt you to fork the `vf-core` repository
-and then you'll be able to push your branch and open a pull request.
+GitHub will prompt you to fork the `vf-core` repository and then you'll be able to push your branch and open a [pull request](https://help.github.com/en/articles/about-pull-requests).
 
-## What?
+To do this you'll need to have "forked" a file, either with the GitHub web editor, or clone the `vf-core` repository and make changes locally; here's a helpful video:
 
-If you're thoroughly confused, here are a few helpful links:
+<div class="vf-video">
+  <iframe width="560" height="315" title="YouTube video player" src="https://www.youtube.com/embed/rgbCcBNZcdQ?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
-- [About branches](https://help.github.com/en/articles/about-branches)
-- [Making a fork and pull request](https://www.youtube.com/watch?v=rgbCcBNZcdQ) (video)
+<a href="https://github.com/visual-framework/vf-core/compare" class="vf-button vf-button--primary">Create a VF Pull Request</a>
 
-
-## Branch naming conventions
+### Branch naming conventions
 
 In general `type/brief-description-of-branch`, example: `component/advanced-search`,
 or `fix/grid-breaks-on-ios`
@@ -35,16 +35,16 @@ Here are the most common `type`s:
 - `hot-fix/` something very specific and usually urgent; and
 - `docs/` for anything to do with documentation, content or code.
 
-## Automated testing
-
-### On push
+### Automated testing
 
 When you push your branch to GitHub, [Husky](https://github.com/typicode/husky#husky)
 will run a pre-commit hook to help enforce Sass linting and ensure the code
 builds.
 
-### Visual differences
+There are also automated test that will run against the GitHub Pull Request.
 
-To be confident that we can ammend components code if needed without breaking anything we need to test against the agreed look and interaction(s) of a component.
+{# ### Visual differences
 
-We are making use of [Percy](https://percy.io/EMBL/EMBL-Visual-Framework) to do this, comparisons will be automatically generated before a pull request for a component is accepted.
+To be confident that we can amend components code if needed without breaking anything we need to test against the agreed look and interaction(s) of a component.
+
+We are making use of [Percy](https://percy.io/EMBL/EMBL-Visual-Framework) to do this, comparisons will be automatically generated before a pull request for a component is accepted. #}

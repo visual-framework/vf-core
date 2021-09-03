@@ -1,9 +1,9 @@
-👋 Hi component authour, you've read the docs, right?
+👋 Hi component author, you've read the docs, right?
 
 - [What's a component](https://stable.visual-framework.dev/developing/components/what-is-a-component/)
-- [Updating, versioning a component](https://stable.visual-framework.dev/developing/components/updating-a-component/)
+- [Updating, versioning a component](https://stable.visual-framework.dev/guidance/versioning-and-component-interoperability/)
 - [Sass and CSS guidelines](https://stable.visual-framework.dev/developing/guidelines/css/)
-- [Themeing and variant guidance - TO COME](#tocome)
+- [Theming and variant guidance - TO COME](#tocome)
 - [JavaScript guidelines](https://stable.visual-framework.dev/developing/guidelines/javascript/)
 - [Making your first Pull Request](https://stable.visual-framework.dev/developing/getting-started/pull-requests/)
 - [More development guidance](https://stable.visual-framework.dev/developing/)
@@ -17,11 +17,21 @@
 
 ## About
 
-[A one-sentance introduction to your project]
+[A one-sentence introduction to your project]
 
 ## Usage
 
 [The dos and don'ts of using this component. Can be many paragraphs and subheadings.]
+
+### Accessibility
+
+[Add a note if the accessibility of this component has been validated.]
+
+This component targets WCAG 2.1 AA accessibility. Below you can find additional notes on accessibility best practice with this component:
+
+- Add any do's and do nots
+
+You can also read about [the Visual Framework's approach to accessibility](https://stable.visual-framework.dev/guidance/accessibility/).
 
 ## Install
 
@@ -38,10 +48,10 @@ $ yarn add --dev @visual-framework/<%= componentName %>
 You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 
 ```js
-import { vfcomponentName } from '<%= componentName %>/<%= componentName %>';
+import { vfComponentName } from '<%= componentName %>/<%= componentName %>';
 // Or import directly
-// import { vfcomponentName } from '../components/raw/<%= componentName %>/<%= componentName %>.js';
-vfcomponentName(); // if needed, invoke it
+// import { vfComponentName } from '../components/raw/<%= componentName %>/<%= componentName %>.js';
+vfComponentName(); // if needed, invoke it
 ```
 
 ### Sass/CSS
@@ -51,7 +61,7 @@ vfcomponentName(); // if needed, invoke it
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
 ```
-@import "@visual-framework/<%= componentName %>/index.scss";
+@import "@visual-framework/<%= componentName %>/<%= componentName %>.scss";
 ```
 
 Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)

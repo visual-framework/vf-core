@@ -1,0 +1,38 @@
+{% if context %}
+  {% set top = context.top %}
+  {% set middle = context.middle %}
+  {% set bottom = context.bottom %}
+  {% set reversed = context.reversed %}
+  {% set spacing = context.spacing %}
+  {% set example = context.example %}
+{% endif %}
+
+
+
+<div class="vf-flag
+            {%- if top %} vf-flag--top{% endif -%}
+            {%- if middle %} vf-flag--middle{% endif -%}
+            {%- if bottom %} vf-flag--bottom{% endif -%}
+            {%- if reversed %} vf-flag--reversed{% endif -%}
+            {%- if spacing %} vf-flag--{{spacing}}{% endif -%}
+">
+
+  <div class="vf-flag__body">
+    {% block vf_flag__body %}{% endblock %}
+    {% if example == true %}
+      <!-- this HTML is for example use only -->
+      <p class="vf-u-type__text-body--2 vf-u-margin--0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus esse accusamus quos cupiditate, totam dolorem aspernatur quia repellendus, veniam error, aliquid ut. Odio tempora maiores suscipit libero ea dolore quidem!</p>
+    {% endif %}
+  </div>
+
+  <div class="vf-flag__media">
+    {% block vf_flag__media %}{% endblock %}
+    {% if example == true %}
+      <!-- this HTML is for example use only -->
+      <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/CABANA_group02438.jpg?&width=300" alt="A couple sat on a sofa looking at a laptop">
+
+    {% endif %}
+  </div>
+
+</div>
+

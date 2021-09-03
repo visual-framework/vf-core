@@ -1,3 +1,24 @@
+### 2.2.30
+
+* Dependency bump.
+
+### 2.2.28
+
+* Critical: pins `marked` dependency to 2.0.7, as 2.1.0 breaks support in node 12.
+  * https://github.com/visual-framework/vf-core/pull/1590
+
+### 2.2.27
+
+* Require node 12 or greater. Node 10 is now out of support and many dependencies no longer work.
+
+### 2.2.26
+
+* dependency bump
+
+### 2.2.25
+
+* dependency bump
+
 ### 2.2.15
 
 * Remove gulp-cssnano and use builtin dart sass minification.

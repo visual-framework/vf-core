@@ -1,3 +1,25 @@
+### 2.0.1
+
+* Correct "secondry" typo.
+
+### 2.0.0
+
+* makes the badges match the naming convention of the `vf-button`.
+* makes the badges match the styling of the `vf-button`.
+* removes any old deprecated variants and tidies up the code.
+
+#### Migration Instructions
+
+* If you were using the "Outline Primary" variant you should use the "Secondary" variant now.
+  * This replaces the classes of `vf-badge--primary` and `vf-badge--outline` with `vf-badge--secondary`.
+* IF you were using the "Default" variant you should use the "Tertiary" variant now.
+  * This adds the class `vf-badge--tertiary`.
+
+### 1.3.0
+
+* deprecates secondary and tertiary variants
+* makes the default the grey (tertiary) colour
+
 ### 1.2.2
 
 * changes any `set-` style functions to cleaner version

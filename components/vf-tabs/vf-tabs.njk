@@ -11,7 +11,7 @@
 <div class="vf-tabs-content" data-vf-js-tabs-content>
   {% for item in tabs %}
   <section class="vf-tabs__section" id="vf-tabs__section--{{item.tab_number}}">
-    <h2>{{item.tab_heading}}</h2>
+    {% if item.tab_heading %}<h2>{{item.tab_heading}}</h2>{% endif %}
     <p>{{item.tab_content}}</p>
   </section>
   {% endfor %}

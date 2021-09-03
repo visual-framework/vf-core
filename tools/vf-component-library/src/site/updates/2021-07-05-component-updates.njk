@@ -1,0 +1,155 @@
+---
+title: Rollup release 2.5.0-beta.5
+subtitle: Beta 5 focused on more fully integrating typography design tokens as we create a more visually and technically consistent 2.5.0 rollup release.
+date: 2021-07-05 15:20:29
+version: 2.5.0-beta.5
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{% markdown %}
+
+The usage of [design token information](/design-tokens) has been improved with many components now fully using the token for typography colours. Additionally, we have improved the accessibility of the main text colour to be an off-black. Previously it was an [over-contrasted solid `#000` black](https://github.com/visual-framework/vf-core/issues/1587#issuecomment-866668118).
+
+We've also made small fixes and documentation improvements to `vf-hero`, the ELIXIR banner and the `vf-profile`.
+
+For our next beta we aim to continue documentation polish and some [foundational work on navigation patterns](https://github.com/visual-framework/vf-core/discussions/1299) during a sprint the week of 19 July. With those done we hope to release rollup 2.5.0 by mid-August.
+
+Read on for more.
+
+{% endmarkdown %}
+
+{% set context = {
+  "component_modifier": "vf-links__list--easy",
+  "title": "On this page",
+  "svg": true,
+  "list": [
+    {
+      "text": "Refinements",
+      "link_list_href": "#refinements"
+    },
+    {
+      "text": "Notable improvements",
+      "link_list_href": "#improvements"
+    },
+    {
+      "text": "Bug fixes",
+      "link_list_href": "#bugs"
+    }
+  ]
+}
+%}
+{% include blocks.links_list %}
+
+
+{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+
+#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+<!-- Tools don't have pages in the component library -->
+
+#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
+{# endmacros ---/ #}
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+<br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ notes("vf-profile", "1.4.0", "ca59487b2f78fd230f8b8154c157f58462e7d160") }}
+
+* Links of `.vf-profile__link` use `inline-link` mixin.
+* Remove need for `.vf-u-last-item` on last phone number.
+* https://github.com/visual-framework/vf-core/pull/1612
+
+{{ notesTool("vf-component-library", "1.1.11", "2804ab9d5f9f76665501d2a223ef2f6e249690b5") }}
+
+* Add ELIXIR banner to example EMBL-EBI page.
+  *  https://stable.visual-framework.dev/patterns/boilerplate-generic-embl-ebi/
+  *  https://github.com/visual-framework/vf-core/pull/1615
+
+{{ notes("vf-hero", "3.3.0", "5abb0f74a4da6598819df8611009be7d9f04f431") }}
+
+* Updates the default hero spacing to be equivalent to 1200 (was: 800). This better matches the actual default usage in practice and is based off design feedback for consistency.
+* Hides 1600 variant that has gone unused.
+* Readme updated to note that most uses will want a background image at 3000 by 1000 pixels.
+* https://github.com/visual-framework/vf-core/pull/1614
+
+### Notable improvements <a href="#improvements" id="improvements"></a>
+
+{{ notes("vf-design-tokens", "3.6.0", "615c394ce73e5c5d3a1504fd15c940603278ac07") }}
+
+* Accessibility: Set primary text to off-black.
+* Developer tools: add `sassFunction` and `sassMap` information to token meta information.
+* Reduce `text-body--1` to 28px (was 32px) in size based on design input and feedback.
+* https://github.com/visual-framework/vf-core/issues/1587
+
+{{ notes("vf-card", "2.6.0", "615c394ce73e5c5d3a1504fd15c940603278ac07") }}
+
+* Use design tokens for text colours.
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
+  *  https://github.com/visual-framework/vf-core/pull/1606
+
+{{ notes("vf-code-example", "1.3.0", "615c394ce73e5c5d3a1504fd15c940603278ac07") }}
+
+* Darken comment colour.
+* Use neutral colours from tokens.
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`
+* https://github.com/visual-framework/vf-core/pull/1606
+
+{{ notes("vf-link-list", "1.4.0", "615c394ce73e5c5d3a1504fd15c940603278ac07") }}
+
+* Use design tokens for colors, by using mixins for `text-color`  and `link-color`.
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
+  *  https://github.com/visual-framework/vf-core/pull/1606
+
+{{ notes("vf-sass-config", "2.6.1", "615c394ce73e5c5d3a1504fd15c940603278ac07") }}
+
+* Improve reliability of mixin for `link-color` and `brand-color` when using the default color.
+* Mixin for `inline-link` now uses `link-color` mixin.
+* Mixin for `set-type` now sets a colour depending on font sizes (opt-out by passing `$color: ignore`).
+* https://github.com/visual-framework/vf-core/pull/1606
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+{{ notes("vf-button", "2.0.0-alpha.1", "615c394ce73e5c5d3a1504fd15c940603278ac07") }}
+
+* Ensure no colour is set with revised `set-type` mixin.
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
+  *  https://github.com/visual-framework/vf-core/pull/1606
+
+{{ notes("vf-footer", "1.2.0", "615c394ce73e5c5d3a1504fd15c940603278ac07") }}
+
+* Specify the footer link colours.
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
+  *  https://github.com/visual-framework/vf-core/pull/1606
+
+{% endmarkdown %}

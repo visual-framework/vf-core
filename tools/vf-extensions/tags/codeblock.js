@@ -4,7 +4,6 @@ const hljs = require('highlight.js');
 
 // Return a block of syntax as code with style formatting
 // uses: https://highlightjs.org/
-
 // Sample:
 // {% codeblock 'html' -%}
 //   <link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css">
@@ -12,7 +11,6 @@ const hljs = require('highlight.js');
 // {% endcodeblock %}
 
 module.exports = function(nunjucksEngine,fractal){
-
     function codeblockExtension() {
 
         this.tags = ['codeblock'];
@@ -36,13 +34,11 @@ module.exports = function(nunjucksEngine,fractal){
           // let format = format || 'html'; // if format is not set, use "html"
           let txt = body();
           if(typeof txt == "undefined") return;
-          txt = hljs.highlight(format, txt).value;
+          txt = hljs.highlight(txt, {language: format, ignoreIllegals: true }).value;
 
           return new nunjucksEngine.runtime.SafeString(`<pre class="vf-code-example__pre"><code class="Code Code--lang-${format} vf-code-example">${txt}</code></pre>`);
         };
 
     };
-
     return new codeblockExtension();
-
 };

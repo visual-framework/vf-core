@@ -1,3 +1,12 @@
+### 2.1.0
+
+* Fix readme for proper display in component library docs.
+* For ebi-header-footer--footer.njk add context `disable_ebi_1x_cookie_banner` to disable EBI 1.x cookie banner (defaults to true).
+
+### 2.0.3
+
+* Directly load CSS for global header to prevent flashes of non-styled elements.
+
 ### 2.0.2
 
 * changes any `set-` style functions to cleaner version

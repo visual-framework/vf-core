@@ -1,4 +1,4 @@
-### 3.0.0-alpha.1
+### 3.0.0-alpha.0
 
 * style updates for latest vf-form refactor
 

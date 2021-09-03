@@ -1,3 +1,33 @@
+### 3.3.0
+
+* Updates the default hero spacing to be equivalent to 1200 (was: 800). This better matches the actual default usage in practice and is based off design feedback for consistency.
+* Hides 1600 variant that has gone unused.
+* Readme updated to note that most uses will want a background image at 3000 by 1000 pixels.
+* https://github.com/visual-framework/vf-core/pull/1614
+
+### 3.2.3
+
+* Fixes width issue on mobile introduced when making the hero content a little wider.
+* Removes unused `vf-intro-group.png` sample hero image.
+
+### 3.2.2
+
+* Allows html (for links) in vf-hero__subheading (and a few other fields) when using the Nunjucks template.
+  * https://github.com/visual-framework/vf-core/pull/1485
+
+### 3.2.1
+
+* Resolves a Nunjucks bug on `vf_hero_text` from a yaml file under certain contexts.
+  * https://github.com/visual-framework/vf-core/pull/1462
+* Allows vf_hero_heading_href to be passed in yaml.
+* Gobbles much of the whitespace.
+
+### 3.2.0
+
+* adds thinner `vf-hero--400` variant.
+* fixes `vf-hero__content vf-box` sizing padding calculaton for `vf-hero--800` variant.
+* makes the maximum width of the `vf-hero__content` wider, but make smaller widths `max-content`.
+
 ### 3.1.0
 
 * adds link styles to the `vf-hero__heading`

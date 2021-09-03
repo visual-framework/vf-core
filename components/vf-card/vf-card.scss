@@ -12,7 +12,7 @@
 @import 'vf-card.variables.scss';
 
 .vf-card {
-  --card-text-color: var(--vf-card-theme-color--foreground, #{ui-color(black)});
+  --card-text-color: var(--vf-card-theme-color--foreground, #{text-color(primary)});
   --card-background-color: var(--vf-card-theme-color--background , #{ui-color(white)});
 
   align-content: start;
@@ -25,7 +25,7 @@
 
 .vf-card__image {
   height: auto;
-  min-height: 16rem; // This provides a fallback for when aspec-ratio is not supported
+  min-height: 16rem; // This provides a fallback for when aspect-ratio is not supported
   object-fit: cover;
   object-position: center;
   width: 100%;
@@ -70,6 +70,7 @@
 
 .vf-card__heading__icon {
   fill: currentColor;
+  padding-top: 0.1em; // to compensate for ascender, this value should be fairly consistent across most type families
   transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
   // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
   transition-duration: 125ms;
@@ -79,11 +80,11 @@
 
 .vf-card__title,
 .vf-card__heading {
-  @include set-type(text-heading--3, $custom-margin-bottom: 0);
+  @include set-type(text-heading--3, $custom-margin-bottom: 0, $color: ignore);
 
   background-color: var(--card-background-color);
-  color: ui-color(black);
-  color: var( --card-text-color, #{ui-color(black)} );
+  color: text-color(primary);
+  color: var( --card-text-color, #{text-color(primary)} );
   line-height: 1.333;
   text-decoration: none;
   word-break: break-word;
@@ -116,7 +117,6 @@
         box-shadow: 0 0 .125rem .125rem rgba(color(grey), .75);
       }
     }
-
   }
 
   .vf-card__link:hover .vf-card__heading__icon,
@@ -136,13 +136,13 @@
 .vf-card__subheading {
   --vf-stack-margin--custom: #{space(100)};
 
-  @include set-type(text-heading--5, $custom-margin-bottom: 0);
+  @include set-type(text-heading--5, $custom-margin-bottom: 0, $color: ignore);
 
   word-break: break-word;
 }
 
 .vf-card__text {
-  @include set-type(text-body--2, $custom-margin-bottom: 0);
+  @include set-type(text-body--2, $custom-margin-bottom: 0, $color: ignore);
 
   color: ui-color(white);
   color: var( --card-text-color, #{ui-color(white)} );
@@ -220,6 +220,9 @@
 
     .vf-card__link {
       color: currentColor;
+      &:hover {
+        color: currentColor;
+      }
     }
   }
 
@@ -344,7 +347,7 @@ html:not(.vf-disable-deprecated) {
 
     .vf-card__title,
     .vf-card__heading {
-      @include set-type(text-body--5);
+      @include set-type(text-body--5, $color: ignore);
 
       display: inline-block;
       margin-bottom: 0;

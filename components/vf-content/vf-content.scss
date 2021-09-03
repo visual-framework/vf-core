@@ -29,9 +29,7 @@
   }
 
   h2:not([class*='vf-']) {
-    @include set-type(text-heading--2, $custom-margin-bottom: 39px);
-
-    margin-top: 13px;
+    @include set-type(text-heading--2);
 
     b,
     strong {
@@ -40,9 +38,7 @@
   }
 
   h3:not([class*='vf-']) {
-    @include set-type(text-heading--3, $custom-margin-bottom: 13px);
-
-    margin-top: 24px;
+    @include set-type(text-heading--3);
 
     b,
     strong {
@@ -51,9 +47,7 @@
   }
 
   h4:not([class*='vf-']) {
-    @include set-type(text-heading--4, $custom-margin-bottom: 13px);
-
-    margin-top: 24px;
+    @include set-type(text-heading--4);
 
     b,
     strong {
@@ -62,9 +56,7 @@
   }
 
   h5:not([class*='vf-']) {
-    @include set-type(text-heading--5, $custom-margin-bottom: 13px);
-
-    margin-top: 24px;
+    @include set-type(text-heading--5);
 
     b,
     strong {
@@ -73,9 +65,7 @@
   }
 
   h6:not([class*='vf-']) {
-    @include set-type(text-heading--5, $custom-margin-bottom: 13px);
-
-    margin-top: 24px;
+    @include set-type(text-heading--5);
 
     b,
     strong {
@@ -83,13 +73,13 @@
     }
   }
 
-  // remove the top margin from first items becasue some times the first item is an h3
+  // remove the top margin from first items because some times the first item is an h3
   & > :first-child {
     margin-top: 0 !important;
   }
 
   p:not([class*='vf-']) {
-    @include set-type(text-body--2, $custom-margin-bottom: 24px);
+    @include set-type(text-body--2, $custom-margin-bottom: map-get($vf-spacing-map, vf-spacing--400));
   }
 
   .vf-link,
@@ -132,6 +122,11 @@
     margin-bottom: map-get($vf-spacing-map, vf-spacing--400);
   }
 
+  img:not([class*='vf-']) {
+    height: auto;
+    max-width: 100%;
+  }
+
   hr:not([class*='vf-']) {
     @include divider;
   }
@@ -143,7 +138,7 @@
   }
 
   blockquote:not([class*='vf-']) {
-    @include blockquote;
+    @include blockquote('vf-spacing--400');
 
     p:last-of-type:not([class*='vf-']) {
       margin-bottom: 0;
@@ -195,14 +190,32 @@
   figcaption:not([class*='vf-']),
   cite:not([class*='vf-']) {
     // matches @mixin figure, but that is not directly usable here as it requires css classes
-    @include set-type(text-body--5);
-    color: map-get($vf-colors-map, vf-color--grey);
-    font-style: italic;
+    @include set-type(text-body--3);
+    color: color(grey--dark);
   }
 
   .vf-video {
     // TODO: Make a function for vf-spacing map
     margin-bottom: 32px;
+  }
+
+  // the use cases of `vf-content figure` is slightly different that .vf-figure
+  // as we need to account for a lack of being able to specify left/right positioning
+  // https://github.com/visual-framework/vf-core/issues/1583
+  figure:not([class*='vf-']) {
+    display: table;
+    margin: auto;
+
+    img:not([class*='vf-']) {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+
+    figcaption:not([class*='vf-']) {
+      caption-side: bottom;
+      display: table-caption;
+    }
   }
 
   .vf-figure--align-inline-start {
@@ -222,7 +235,7 @@
   margin-top: 0;
 
   + .vf-content__standfirst {
-    margin-bottom: 24px;
+    margin-bottom: map-get($vf-spacing-map, vf-spacing--400);
   }
 
   + small {

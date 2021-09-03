@@ -1,3 +1,14 @@
+### 1.2.0-rc.2
+
+* restyles the arrows on sortable tables
+
+### 1.2.0-rc.1
+
+* makes the `--striped` variant the default styling.
+* deprecates `--striped`, `--bordered`, `--tight`, `--loose` variants.
+* tidies up CSS ordering of rulesets to match more the component.
+* makes the `--sortable` icons on by default before a bigger refactor.
+
 ### 1.1.2
 
 * changes any `set-` style functions to cleaner version

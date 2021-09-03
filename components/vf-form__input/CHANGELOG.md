@@ -1,5 +1,9 @@
 ### 3.0.0-alpha.1
 
+* changes out the CSS for `invalid` as an actual class `vf-form__input--invalid`.
+
+### 3.0.0-alpha.0
+
 * reworks the inputs to make more use of nunjucks
 * restyles the inputs to match latest design direction
 * adds better documentation

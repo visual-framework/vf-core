@@ -1,6 +1,6 @@
 /*
  *
- * scripts.css
+ * scripts.js
  * The Visual Framework kitchen sink of JavaScript.
  * Import this as a quick way to get *everything*,
  *
@@ -10,8 +10,13 @@
 import { vfBanner } from "vf-banner/vf-banner";
 vfBanner();
 
-import { vfMastheadSetStyle } from "vf-masthead/vf-masthead";
-vfMastheadSetStyle();
+import { vfBannerElixir } from "vf-banner-elixir/vf-banner-elixir";
+vfBannerElixir();
+
+// VF Masthead has been deprecated
+// https://github.com/visual-framework/vf-core/pull/1406/
+// import { vfMastheadSetStyle } from "vf-masthead/vf-masthead";
+// vfMastheadSetStyle();
 
 import { vfGaIndicateLoaded } from "vf-analytics-google/vf-analytics-google";
 let vfGaTrackOptions = {
@@ -46,6 +51,9 @@ emblContentHub();
 
 import { emblBreadcrumbs } from "embl-breadcrumbs-lookup/embl-breadcrumbs-lookup";
 emblBreadcrumbs();
+
+import { vfBackToTop } from "vf-back-to-top/vf-back-to-top.js";
+vfBackToTop();
 
 import { emblContentMetaProperties_Read } from "embl-content-meta-properties/embl-content-meta-properties";
 

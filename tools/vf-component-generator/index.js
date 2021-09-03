@@ -12,12 +12,12 @@ vfComponentPath = config.vfConfig.vfComponentPath || path.resolve(__dirname, '..
 function camelize(str,upperCaseFirst) {
   var upperCaseFirst = upperCaseFirst || false;
   return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
-    if (upperCaseFirst) { 
+    if (upperCaseFirst) {
       return word.toUpperCase();
     } else {
       return index === 0 ? word.toLowerCase() : word.toUpperCase();
     }
-  }).replace(/\s+/g, '').replace('-', '');
+  }).replace(/\s+/g, '').replace(/-/g, '');
 }
 
 module.exports = class extends Generator {

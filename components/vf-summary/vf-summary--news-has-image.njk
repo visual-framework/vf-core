@@ -1,12 +1,27 @@
+{%- if context %}
+  {% set summary__href = context.summary__href %}
+  {% set summary__title = context.summary__title %}
+  {% set summary__text = context.summary__text %}
+  {% set summary__image = context.summary__image %}
+  {% set summary__image_alt = context.summary__image_alt %}
+  {% set summary__date = context.summary__date %}
+  {% set summary__category = context.summary__category %}
+{%- endif %}
+
 <article class="vf-summary vf-summary--news">
-  <span class="vf-summary__date">22 June 2018</span>
-  <img class="vf-summary__image" src="../../assets/vf-summary/assets/vf-summary--news-has-image.jpg" alt="News image alt" loading="lazy">
+  <span class="vf-summary__date">{{summary__date}}</span>
+  <img class="vf-summary__image" src="{{summary__image}}" alt="{{summary__image_alt}}" loading="lazy">
   <h3 class="vf-summary__title">
     <a href="{{ summary__href }}" class="vf-summary__link">
       {{ summary__title }}
     </a>
   </h3>
   <p class="vf-summary__text">
-    Combinations of cancer drugs can be quickly and cheaply tested using a novel microfluidic device.
+    {% if summary__category %}
+    <span class="vf-summary__category">
+      {{summary__category}}
+    </span>
+    {% endif %}
+    {{summary__text}}
   </p>
 </article>

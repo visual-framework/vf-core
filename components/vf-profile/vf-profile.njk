@@ -32,7 +32,7 @@
   class="vf-profile
 
   {%- if theme %} vf-profile-theme--{{theme}}{% endif -%}
-  {%- if variant %} vf-profile--{{variant}}{% else %} vf-profile--very-easy{% endif -%}
+  {%- if variant %} vf-profile--{{variant}}{% endif -%}
 
   {%- if size %} vf-profile--{{size}}{% else %} vf-profile--medium{% endif -%}
 
@@ -70,7 +70,7 @@
   {% if profile__emails %}
     {% if hide_profile__emails == true %}{% else %}
       {% for item in profile__emails %}
-        <p class="vf-profile__email {% if loop.last %}| vf-u-last-item {% endif %}">
+        <p class="vf-profile__email">
           <a href="mailto:{{- item.profile__email_address -}}" class="vf-profile__link vf-profile__link--secondary">
             {{- item.profile__email_address -}}
           </a>

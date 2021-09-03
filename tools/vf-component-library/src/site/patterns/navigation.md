@@ -1,7 +1,7 @@
 ---
-title: Navigation
+title: Navigation example
 subtitle: The Visual Framework favours a container-based navigation system.
-section: patterns
+section: deprecated
 date: 2018-08-22 12:24:50
 tags: posts
 layout: layouts/post.njk

@@ -1,3 +1,28 @@
+### 2.0.0-alpha.1
+
+* Requires at least `@visual-framework@vf-sass-config@2.6.1`.
+* Ensure no colour is et with revised `set-type` mixin.
+  * https://github.com/visual-framework/vf-core/pull/1606
+
+### 2.0.0-alpha.0
+
+* removes deprecated code
+* turns the primary, secondary, tertiary into actual things - rather than aliases.
+
+#### Migration Instructions
+
+* If you were using the "Outline Primary" variant you should use the "Secondary" variant now.
+  * This replaces the classes of vf-button--primary and vf-button--outline with vf-badge--secondary.
+
+### 1.4.4
+* Added `link` theme button variant. This variant is similar to link style.
+
+### 1.4.3
+
+* Added react implementation of button
+  * https://github.com/visual-framework/vf-core/pull/1416
+  * (Experimental) React documentation: https://visual-framework.github.io/vf-react/#/components-showcase
+
 ### 1.4.1
 
 * changes any `set-` style functions to cleaner version

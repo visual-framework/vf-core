@@ -34,7 +34,7 @@
 
   {%- if vf_section__content -%}
     {%- asyncEach section__content in vf_section__content -%}
-      <p class="vf-section-header__text">{{section__content}}</p>
+      <p class="vf-section-header__text">{{section__content | safe }}</p>
     {%- endeach -%}
   {%- endif -%}
 </div>

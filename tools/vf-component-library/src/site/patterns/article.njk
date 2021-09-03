@@ -1,0 +1,207 @@
+---
+title: Article example pattern (with EMBL header, footer)
+subtitle: An example long-form article.
+section: patterns
+date: 2021-04-29 12:24:50
+tags: posts
+layout: layouts/boilerplate.njk
+---
+<!DOCTYPE html>
+<html lang="en" class="vf-no-js">
+<head>
+  {% render "@vf-no-js" %}
+  <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+
+  <!-- Link to EMBL.org news rss -->
+  <link href="https://www.embl.org/news/feed/" type="application/rss+xml" rel="alternate" title="EMBL News">
+
+  {% render "@embl-favicon" %}
+  {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "Barcelona", "meta_what": "research", "meta_active": "what"} %}
+
+  {% if serverInfo.environment == "development" -%}
+  <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
+  {%- else -%}
+  <link rel="stylesheet" href="https://{{ siteConfig.vfVersionPrefix }}assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
+  {%- endif %}
+  <!--
+    Want to build a site with the Visual Framework?
+    ---
+    You can copy the CSS and JS you find here, but for the best experience see the building guide:
+    https://stable.visual-framework.dev/building/
+  -->
+</head>
+<body class="vf-body vf-stack">
+  <!-- embl global header -->
+  <link rel="import" href="https://www.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=108434&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+
+  {% include "./templates/breadcrumbs-boilerplate.njk" %}
+
+  {% set context = {
+    "id": "intro",
+    "vf_intro_heading": "Article example pattern",
+    "vf_intro_badge": {
+      "style": [
+        "phases"
+      ],
+      "text": "beta",
+      "theme": "primary",
+      "badge_href": "JavaScript:Void(0);"
+    },
+    "vf_intro_subheading": "I'm a nice subheading",
+    "vf_intro_lede": "EMBL’s future directions will be driven by the goal of understanding life in the context of its environment.",
+    "vf_intro_text": [
+      "We now have the tools and technologies to explore these processes, allowing us to understand life in its natural context from the level of molecules to whole ecosystems."
+    ]
+  }
+  %}
+  {% include "vf-core-components/vf-intro/vf-intro.njk" %}
+
+  <section class="embl-grid embl-grid--has-centered-content">
+    <div>
+      {% render '@vf-article-meta-information', {
+        "author__name": "First-Name Surname",
+        "author__avatar": "https://avatars3.githubusercontent.com/u/925197?s=88&v=4",
+        "meta__topics": [
+          "cancer",
+          "history"
+        ],
+        "meta__date": "14th February 2019",
+        "meta__comment_count": 61,
+        "meta__links_title": "On this page",
+        "meta__links": [
+          {
+            "text": "heading link 1",
+            "url": "JavaScript:Void(0);"
+          },
+          {
+            "text": "heading link 2",
+            "url": "JavaScript:Void(0);"
+          },
+          {
+            "text": "heading link 3",
+            "url": "JavaScript:Void(0);"
+          },
+          {
+            "text": "heading link 4",
+            "url": "JavaScript:Void(0);"
+          }
+        ],
+        "meta__url": "JavaScript:Void(0);"
+      } %}
+    </div>
+
+    <div class="vf-content">
+    {% markdown %}
+    *Lorem markdownum* ostendens valeant. Salmacis timendi: dabat sit factorum
+    poscit, vacuas vultus haud etiamnum vomit victorem. Et mortes odoro, adfixa iram
+    tradere dixit, anilia pondere quia genusque flectitque torvo.
+
+    Refer abit credar, est subiecit oblita. Agros te nomen et infelix incerto,
+    superare torsit.
+
+    ### Aeolis bellum
+
+    Olim vocabula, tangit, nec quid quam gravis. Novit unde signum!
+
+    > Parte ad deam culmine sensi, profuit annum. Sermone atque attonitus vidit
+    > *centum ferventibus sitientes* alimenta sicut tutela. Militis horrescere en
+    > *reverti*, mandentemque *petita omnes visaque* volant an Peloro, quo et *puer
+    > non*, mox longe. Ius *suo passu roboris*, pater domos *patris* instar curru
+    > est concubitus vitta latitantem ossa calido!
+
+    [Facto iussit](http://index-hylen.net/) mora, terrigenis optaris forte
+    consuetaque illa? Et unam in favet, eversae fides somniferis; in Peleu. Curru
+    hunc imperiumque ipsum; tantum sic. Agendum et audax.
+    {% endmarkdown %}
+    </div>
+  </section>
+
+  <section class="embl-grid embl-grid--has-centered-content">
+    <div>
+      {%- render '@vf-section-header--default', {
+        "section_title": "You can include section headers too"
+      } -%}
+    </div>
+
+    <div class="vf-content">
+    {% markdown %}
+
+    Ossa *sanguine*. Non ne damnatque adfatur hospitibus rursus, vimina, hominis, et
+    exterrita caligine. *Est* vidit aliquis missos gaudia miserabilis [quid nescit
+    gratia](http://inguina.net/) dixit nocuit cum vulnifico pulmone vixque
+    ambitiosus. Pater procul operique; parvo pennisque: solis fungi; nati nodosaque
+    et igitur, subiti cura. Possim flammas, terris ubi ima male sacra mater caput
+    dulci virginis moenia **virescere** ferit est *praeruptam aspicis* conditor.
+
+    Iustos nodosaque hanc Colchi, vult germanam eritque, res per prodigiosa *in
+    facit*. Et agreste Parnasos tegit terrae Ampycidesque ventis fuisset sanguine ex
+    *colla* digitis miserabilis suasque innumeris ululatuque plus.
+
+    - Culpatque fuit
+    - Facite et aper oris quod ignavis
+    - Et reclinis properantibus mente insculpunt quinos heros
+
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Event</th>
+          <th scope="col">Date</th>
+          <th scope="col">Type</th>
+          <th scope="col">Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>dave</td>
+          <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima accusamus a nostrum odit aliquid repudiandae architecto molestiae, dolores.</td>
+          <td>roger</td>
+          <td>London, U.K.</td>
+        </tr>
+        <tr>
+          <td>dave</td>
+          <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio fugit illo officia dignissimos amet.</td>
+          <td>roger</td>
+          <td>London, U.K.</td>
+        </tr>
+        <tr>
+          <td>dave</td>
+          <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+          <td>roger</td>
+          <td>London, U.K.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    Iuvene ad virtute et mansit, consilioque potentem ignea. Gemmata quereretur
+    recubare arae omen Orithyia Saeculaque mores scelus; penna quod aut opaca
+    animaeque ventos hausitque recens matri? Est in ingentem utile auctor latratibus
+    sperata non sua, vultusque vestes, me sororis Iovis, [ore
+    tanta](http://www.tumultus.net/nervo.aspx). Corpora de volat mecumque hederae,
+    Iunonis coeptis, non animi et cornua invita cunasque caecisque.
+    {% endmarkdown %}
+    </div>
+    {% set context = {
+      "text": "Version, 1982, Adenovirus with 217 dots.",
+      "alttext": "hello alt text",
+      "imageUrl": "../../assets/vf-figure/assets/figure-example.png"
+    }
+    %}
+    {% render '@vf-figure', context %}
+    {# vf-figure needs template updates to work with include #}
+    {% include "vf-core-components/vf-figure/vf-figure.njk" %}
+  </section>
+
+  <hr class="vf-divider" />
+
+  {% include "./templates/source-link-boilerplate.njk" %}
+
+  <!-- embl global footer -->
+  <link rel="import" href="https://www.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=108436&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+
+  {% include "./templates/notice-boilerplate.njk" %}
+  {% include "scripts.njk" %}
+</body>
+</html>

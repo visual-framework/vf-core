@@ -22,27 +22,15 @@ The `vf-badge` component can also be a link using `<a class="vf-badge" href="">b
 
 #### Nunjucks and YML variables available
 
-| variable       | options                                | default |
-| -------------- | -------------------------------------- | ------- |
-| text           |                                        |         |
-| badge_href     |                                        | null    |
-| theme          | 'primary', 'secondary', 'tertiary'     |         |
-| style          | 'pill', 'rounded', 'square', 'outline' |         |
-| override_class |                                        |         |
-| id             |                                        |         |
+| variable       | options   | default |
+| -------------- | --------- | ------- |
+| text           |           |         |
+| badge_href     |           | null    |
+| theme          | 'primary' |         |
+| style          | 'outline' |         |
+| override_class |           |         |
+| id             |           |         |
 
-
-#### Component Specific Variants
-
-The `vf-badge` allows for two sets of variants
-
-##### Theme Variants
-
-There are three theme variants available for the component that are **primary**, **secondary**, and **tertiary**. To add a theme to the component you would need to add `theme: primary`, `theme: secondary`, or `theme: tertiary` to the `.yml` file.
-
-##### Design Variants
-
-There are four design variants for the component. We have `square`, `pill`, and `rounded` as well as `outline`. The `outline` variant can be used along with another variant so the way we write this in code is a little different. To only have a rounded button we should write `["rounded"]` but if we wanted to have a rounded button with the outline rather than filled colour we would have to write `["outline", "rounded"]`.
 
 ## Install
 

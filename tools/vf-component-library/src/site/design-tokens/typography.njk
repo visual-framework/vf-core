@@ -1,6 +1,6 @@
 ---
-title: Typography
-date: 2018-10-19 12:24:50
+title: Type sizes
+date: 2021-06-22 12:24:50
 section: designtokens
 templateEngineOverride: njk
 tags:
@@ -10,57 +10,21 @@ tags:
 layout: layouts/base.njk
 ---
 
-<h1 class="vf-intro__heading">{{ title }}</h1>
+{% set type %}typography{% endset %}
+{% render '@vf-section-header', {
+  "section_title": "Typography",
+  "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/vf-font--sans.scss",
+  "id": "brand"
+} %}
 
-<main class="vf-grid vf-grid__col-3">
-{% for item in tokens.typographySans.properties %}
-
-<article class="vf-card">
-  <div style="padding: 16px;">
-    <p style="font-size: {{ item.value.fontSize }}; font-weight: {{ item.value.fontWeight }}; line-height: {{ item.value.lineHeight }}">{{ item.meta.pangram }}</p>
-  </div>
-
-  <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
-    <h3 class="vf-card__title">{{ item.meta.friendlyName }}</h3>
-    <hr class="vf-divider">
-    <p class="vf-card__text"><span>Font Size: </span><code>{{ item.value.fontSize }}</code></p>
-    <p class="vf-card__text"><span>Font Weight: </span><code>{{ item.value.fontWeight }}</code></p>
-    <p class="vf-card__text"><span>Ling Height: </span><code>{{ item.value.lineHeight}}</code></p>
-    <hr class="vf-divider">
-    <p class="vf-card__text">Sass:</p>
-    <code>@mixin set-type(`{{ item.meta.sassMap }}`)</code>
-  </section>
+{# <pre>{{ tokens.themeBrand.properties | dump(2 )}}</pre> #}
+{# <section class="embl-grid"> #}
+<article class="vf-grid vf-grid__col-2">
+  {% for item in tokens.typographySans.properties %}
+    {% include "./token-card.njk" %}
+  {% else %}
+    <p>Something went wrong.</p>
+  {% endfor %}
 </article>
+{# </section> #}
 
-{% else %}
-
-<p>Something went wrong.</p>
-
-{% endfor %}
-
-{% for item in tokens.typographyMono.properties %}
-
-<article class="vf-card">
-  <div style="padding: 16px;">
-    <p style="font-size: {{ item.value.fontSize }}; font-weight: {{ item.value.fontWeight }}; line-height: {{ item.value.lineHeight }}">{{ item.meta.pangram }}</p>
-  </div>
-
-  <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
-    <h3 class="vf-card__title">{{ item.meta.friendlyName }}</h3>
-    <hr class="vf-divider">
-    <p class="vf-card__text"><span>Font Size: </span><code>{{ item.value.fontSize }}</code></p>
-    <p class="vf-card__text"><span>Font Weight: </span><code>{{ item.value.fontWeight }}</code></p>
-    <p class="vf-card__text"><span>Ling Height: </span><code>{{ item.value.lineHeight}}</code></p>
-    <hr class="vf-divider">
-    <p class="vf-card__text">Sass:</p>
-    <code>@mixin set-type(`{{ item.meta.sassMap }}`)</code>
-  </section>
-</article>
-
-{% else %}
-
-<p>Something went wrong.</p>
-
-{% endfor %}
-</main>
-s

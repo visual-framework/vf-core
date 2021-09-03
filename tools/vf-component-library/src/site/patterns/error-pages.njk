@@ -1,6 +1,6 @@
 ---
-title: Boilerplate error pages
-subtitle: Use these boilerplate pattern for 404, 403, 500 and other common pages.
+title: Error pages
+subtitle: Use these boilerplate patterns for JavaScript, 404, 403, 500 and other common pages.
 section: patterns
 date: 2021-02-09 12:24:50
 tags: posts
@@ -32,6 +32,10 @@ layout: layouts/base.njk
     "svg": true,
     "list": [
       {
+        "text": "JavaScript failure",
+        "link_list_href": "#javascript"
+      },
+      {
         "text": "404",
         "link_list_href": "#404"
       },
@@ -48,6 +52,19 @@ layout: layouts/base.njk
   </div>
 </div>
 
+<hr class="vf-divider" />
+
+{% render '@vf-intro', {
+  "id": "javascript",
+  "vf_intro_badge": false,
+  "vf_intro_heading": "Error: JavaScript failure",
+  "vf_intro_subheading": "",
+  "vf_intro_lede": "JavaScript is required for this webpage or site.",
+  "vf_intro_text": [
+    "It seems you either have JavaScript turned off, there was a network failure, or you have a legacy browser.",
+    "A refresh of the page will hopefully fix the issue, or you might check if <a href='https://enable-javascript.com'>JavaScript is enabled on your browser</a>. You can also <a href='#'>contact web support for this site</a>."
+  ]
+} %}
 
 <hr class="vf-divider" />
 
@@ -67,15 +84,19 @@ layout: layouts/base.njk
 <section class="embl-grid embl-grid--has-centered-content">
   <div></div>
   <div>
-  <form action="https://embl.org/search#add-your-endpoint" method="GET" class="vf-form | vf-search vf-search--inline">
-    <div class="vf-form__item | vf-search__item">
-      <label class="vf-form__label vf-u-sr-only | vf-search__label" for="text">Search</label>
-      <input type="text" id="text" name="searchQuery" class="vf-form__input | vf-search__input st-default-search-input" placeholder="Search {the name of the site}" />
-    </div>
-    <button type="submit" class="vf-search__button | vf-button vf-button--primary">Search</button>
-  </form>
+  {% render '@vf-search', {
+    "responsive": true,
+    "search_action": "#",
+    "search_autofocus": false,
+    "search_button": "Search",
+    "search_label": "Search",
+    "search_placeholder": "Search {the name of the site}",
+    "search_id": "searchitem",
+    "search_value_default": ""
+  } %}
   </div>
 </section>
+
 
 <section class="embl-grid">
   <div></div>
@@ -127,3 +148,7 @@ layout: layouts/base.njk
     <a class="vf-button vf-button--primary" href="https://www-db.embl.de/EMBLPersonGroup-PersonPicture/MailForm/?recipient=websupport">Contact web support</a>
   </div>
 </section>
+
+<hr class="vf-divider" />
+
+{% include "./templates/source-link-boilerplate.njk" %}

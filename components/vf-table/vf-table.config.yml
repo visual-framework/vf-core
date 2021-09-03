@@ -6,19 +6,7 @@ status: alpha
 
 variants:
   - name: default
-    hidden: false
-  - name: striped
-    context:
-      striped: true
-  - name: bordered
-    context:
-      bordered: true
-  - name: compact
-    context:
-      table_variant: "vf-table--tight"
-  - name: loose
-    context:
-      table_variant: "vf-table--loose"
+
   - name: has footer
     context:
       table_footer:
@@ -32,9 +20,6 @@ variants:
   - name: has row heading
     context:
       firstCellIsHeader: true
-  - name: fixed header
-    context:
-      tableLayoutFixed: true
   - name: actions
     context:
       inline_actions:
@@ -55,7 +40,37 @@ variants:
         - delete
         - download
         - cancel
+
+
+
+  - name: striped
+    hidden: true
+    status: deprecated
+    context:
+      striped: true
+  - name: bordered
+    hidden: true
+    status: deprecated
+    context:
+      bordered: true
+  - name: fixed header
+    hidden: true
+    status: deprecated
+    context:
+      tableLayoutFixed: true
+  - name: compact
+    hidden: true
+    status: deprecated
+    context:
+      table_variant: "vf-table--tight"
+  - name: loose
+    hidden: true
+    status: deprecated
+    context:
+      table_variant: "vf-table--loose"
   - name: kitchen sink
+    hidden: true
+    status: deprecated
     context:
       table_caption: Hello Caption
       firstCellIsHeader: true
@@ -86,6 +101,7 @@ context:
   table_headings:
     - title: Event
     - title: Date
+      sorted: top
     - title: Type
     - title: Location
 

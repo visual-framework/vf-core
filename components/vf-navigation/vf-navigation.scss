@@ -11,12 +11,37 @@
 
 @import 'vf-navigation.variables.scss';
 
-.vf-navigation__list {
-  display: flex;
-  flex-direction: row;
 
+.vf-navigation__item {
+  [aria-current='page'] {
+    color: neutral(900);
+    text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layour shift
+  }
 }
 
-.vf-navigation__heading {
-  margin: 0;
+.vf-navigation__link {
+  @include inline-link(
+    $vf-link--color: neutral(700),
+    $vf-link--visited-color: neutral(700),
+    $vf-link--hover-color: neutral(900)
+  );
+
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.vf-navigation--main {
+  .vf-navigation__link {
+    @include set-type(text-body--2, $custom-margin-bottom: 0);
+  }
+}
+
+.vf-navigation--global {
+  // This is needed as part of the global header.
+  // It tells the navigation to go to the end of the available space.
+  @media (min-width: $vf-breakpoint--lg) {
+    margin-left: auto;
+  }
 }

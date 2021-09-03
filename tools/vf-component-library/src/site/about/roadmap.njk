@@ -21,63 +21,122 @@ layout: layouts/base.njk
   "vf_intro_subheading": "",
   "vf_intro_text": [
     'This is a snapshot of work planned in the Visual Framework <a href="https://github.com/visual-framework/vf-core/milestones">project milestones</a>. These are in addition to <a href="https://github.com/visual-framework/vf-core/issues">ongoing</a> feature development and support.',
-    'If you have a mjor idea not represented here, <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ">discuss it on Slack</a> or <a href="https://github.com/visual-framework/vf-core/issues">raise an issue</a>.'
+    'If you have a major idea not represented here, <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ">discuss it on Slack</a> or <a href="https://github.com/visual-framework/vf-core/issues">raise an issue</a>.'
   ],
   "vf_intro_badge": false
 } %}
 
 <section class="embl-grid embl-grid--has-centered-content">
-{# {% render '@vf-section-header', {
-  "section_title": "Key considerations",
-  "id": "considerations",
+  {% render '@vf-section-header', {
+    "section_title": "On this page",
+    "id": "toc",
+    "vf_section__content": ""
+  } %}
+  <div>
+{% set context = {
+  "component_modifier": "vf-links__list--easy",
+  "title": "",
+  "svg": true,
+  "list": [
+    {
+      "text": "October 2021",
+      "link_list_href": "#october"
+    },
+    {
+      "text": "January 2022",
+      "link_list_href": "#july"
+    },
+    {
+      "text": "Non-fixed",
+      "link_list_href": "#nonfixed"
+    },
+    {
+      "text": "Complete",
+      "link_list_href": "#complete"
+    }
+  ]
+}
+ %}
+{% include "vf-core-components/vf-link-list/vf-link-list.njk" %}
+</div>
+</section>
+
+
+<section class="embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "By end of October 2021",
+  "id": "#october",
   "vf_section__content": ""
-} %} #}
-<div></div>
+} %}
 <div class="vf-content">
 
 {% markdown %}
 
-## By the end of 2020
+{{ milestone('Navigation','29') }}
 
-{{ milestone('A selection of example pages and boilerplates','17') }}
+With EMBL.org fully live and EBI.ac.uk moving to the VF 2, we have a better understanding of the diversity of deep navigation required.
 
-There are many ways to implement a "search" page and section. What is the most common and standardisable? What about for a research group? A user's profile page?
+We plan to revise and mature the VF’s assorted navigation components, including both page-to-page and within the page navigation. A sprint is planned for the week of 19 July.
 
-## By end of March 2021
+{{ milestone('Showcase VF adoption, usage','31') }}
+
+As of June, EMBL.org is now the primary EMBL web presence and shows a diversity of VF use cases. This is in addition to the EBI Training website, further the EMBL-EBI website is approved to migrate to the VF 2 throughout 2021. In addition to the COVID-19 Data Portal, the new Science in School website is in the early stages of a custom VF implementation.
+
+We aim to make a “Showcase” on the VF website to assist users in seeing the variety of ways the VF can be used.
+
+{{ milestone('Standardise component examples','30') }}
+
+The past months have brought a renewed focus on the best way to use the VF’s technical tooling. In addition to the guidance and boilerplates, the VF’s UX, design and technical community have been contributing to documentation (such as that for the vf-button and vf-search).
+
+Additionally, we now realise that many VF component variants are actually examples (such as those for vf-hero or vf-table) and we can better help users by making explicit examples in the component library.
+
+{% endmarkdown %}
+
+</div>
+</section>
+
+<section class="embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "By end of January 2022",
+  "id": "#january",
+  "vf_section__content": ""
+} %}
+<div class="vf-content">
+
+{% markdown %}
+
+{{ milestone('Improved responsive design tooling and best practice','27') }}
+
+We have quite a few rough edges on mobile, it’s time to sort them. These go beyond simple “collapse on mobile” and involve more complex questions like “how do filter facets behave?”
 
 {{ milestone('Create a training programme for developers','21') }}
 
 How to get started with the VF common scenarios specific use cases.
-
-{{ milestone('Create a desktop component library','20') }}
-
-That is: port the Sketch component library to Figma and update it to match changes.
-
-{{ milestone('Legacy browser support','16') }}
-
-Supporting older browsers (those without CSS grid and custom properties/variables) is a non-trivial task that needs constant monitoring and support.
-
-## By end of June 2021
-
 {{ milestone('Component long tail','19') }}
 
 There are several low-priority components that still need to be implemented, such as:  data tables, definition lists, table of contents.
-
-{{ milestone('Forms on mobile','18') }}
-
-Establish and implement how to best handle long section of form options on mobile.
 
 {{ milestone('Explore internal and functional components and patterns','23') }}
 
 Most of the components and patterns in the VF 2.0 have been designed with the corporate EMBL websites in mind. Among the founding ideas was to have variants based on a two-dimensional axis (internal vs external, and functional vs inspirational). How would we deliver and document these? Is it the correct idea?
 
-{{ milestone('Introduce a type scale','25') }}
+{% endmarkdown %}
 
-The VF typography and spacing continues to be refined, however we're still lacking an explicit type scale.
+</div>
+</section>
 
-## No fixed date
+<section class="embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "No fixed date",
+  "id": "#nonfixed",
+  "vf_section__content": [
+    "Important features and milestones in need of scheduling, typically due to a lack of capacity to deliver.",
+    "Code contributions and input are welcome."
+  ]
+} %}
+<div class="vf-content">
 
-These features and milestones are liking prioritisation, either due to a lack of major interest or team capacity to deliver. Code contributions and input are welcome.
+{% markdown %}
 
 {{ milestone('Optimising the component library build efficiency','22') }}
 
@@ -98,4 +157,43 @@ While the Visual Framework does not require specific tooling, we know two of the
 {% endmarkdown %}
 
 </div>
+</section>
+
+<section class="embl-grid embl-grid--has-centered-content">
+  {% render '@vf-section-header', {
+    "section_title": "Complete",
+    "id": "complete",
+    "vf_section__content": ""
+  } %}
+  <div class="vf-content">
+    {% markdown %}
+
+    ### July 2021
+
+    {{ milestone('A selection of example pages and boilerplates','17') }}
+    There are many ways to implement a "search" page and section. What is the most common and standardizable? What about for a research group? A user's profile page?
+
+    {{ milestone('Design documentation, alignment: Usage of icons, illustrations','28') }}
+    What is the distinction? Can we document when each should be used? We need technical tooling.
+
+    {{ milestone('Tables tooling and best practice','26') }}
+    Tables are broadly used across scientific content and applications. What does a good one look like, and how does it behave? Tooling and foundational guidance.
+
+    ### Earlier in 2021
+
+    {{ milestone('Create a desktop component library','20') }}
+
+    That is: port the Sketch component library to Figma and update it to match changes.
+
+    {{ milestone('Legacy browser support','16') }}
+
+    Supporting older browsers (those without CSS grid and custom properties/variables) is a non-trivial task that needs constant monitoring and support.
+
+    {{ milestone('Introduce a type scale','25') }}
+
+    The VF typography and spacing continues to be refined, however we're still lacking an explicit type scale.
+
+
+    {% endmarkdown %}
+  </div>
 </section>

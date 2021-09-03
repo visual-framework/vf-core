@@ -1,0 +1,96 @@
+---
+title: Rollup release 2.5.0
+subtitle: We're excited to release rollup version 2.5.0. It's our first stable rollup in two months and brings a level of maturation of existing components.
+date: 2021-07-29 15:20:29
+version: 2.5.0
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{% markdown %}
+
+To arrive at 2.5.0 we hade five beta releases, and the stable release incorporates the many changes found in those:
+
+- 5 Jul 2021: [Rollup release 2.5.0-beta.5](/updates/2021-07-05-component-updates/)
+    - More fully integrates typography design tokens as we create a more visually and technically consistent 2.5.0 rollup release.
+- 24 Jun 2021: [Rollup release 2.5.0-beta.4](/updates/2021-06-24-component-updates/)
+    - Incorporates functional design tokens as we move forward towards a more visually and technically consistent 2.5.0 rollup release.
+- 21 Jun 2021: [Rollup release 2.5.0-beta.3](/updates/2021-06-21-component-updates/)
+    - Improvements to documentation and accessibility as we move forward towards a more visually and technically consistent 2.5.0 rollup release.
+- 9 Jun 2021: [Rollup release 2.5.0-beta.2](/updates/2021-06-09-component-updates/)
+    - 16 component updates with bug fixes and minor improvements.
+- 31 May 2021: [Rollup release 2.5.0-beta.1](/updates/2021-05-31-component-updates/)
+    - Introduced a number of small but syntax breaking changes for vf-button, vf-badge and a revised vf-tree. As well a visually refreshed vf-tabs.
+
+Specific to this release are only a few minor bug fixes (you can read about those below).
+
+This is the culmination of a many months effort across the core VF teams and contributions from across EMBL and collaborators.
+
+We're of course not stopping here and our recent quarterly consultation has [refreshed our roadmap](/about/roadmap/), which will bring improvements to component docs, a showcase of VF uses and improvements to navigation.
+
+We're particularly excited about the navigation work and have already completed a first research and design sprint. We hope to share the outcomes and some examples soon after the summer holidays.
+
+As always, you can [join the conversation on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+{% endmarkdown %}
+
+{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+
+#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+<!-- Tools don't have pages in the component library -->
+
+#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
+{# endmacros ---/ #}
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+<br/>
+
+{{ notes("embl-favicon", "1.0.3", "ff7b0c32258b2b412657109c3c78d8b0ff1a3469") }}
+
+* Point favicon urls to 2.5.0 stable release.
+
+{{ notes("vf-favicon", "1.0.3", "ff7b0c32258b2b412657109c3c78d8b0ff1a3469") }}
+
+* Point favicon urls to 2.5.0 stable release.
+
+{{ notes("vf-box", "2.3.2", "977c2204cc76bb6913c4280ef618ecd2499cf733") }}
+
+* Don't set vf-box typography colours via revised set-type function.
+  * https://github.com/visual-framework/vf-core/issues/1619
+
+
+
+{% endmarkdown %}
+
+
+=======
+

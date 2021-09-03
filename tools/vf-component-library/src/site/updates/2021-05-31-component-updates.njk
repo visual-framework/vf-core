@@ -1,0 +1,167 @@
+---
+title: Rollup release 2.5.0-beta.1
+subtitle: We're testing version 2.5 that will introduce more visual polish and increased consistency in naming and visual conventions to align with the forthcoming VF Design Kit.
+date: 2021-05-31 12:20:29
+version: 2.5.0-beta.1
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{% markdown %}
+
+In addition to a number of minor fixes, this rollup release introduces a number of small but syntax breaking changes for `vf-button`, `vf-badge` and a revised `vf-tree`.
+
+You'll also find a visually refreshed `vf-tabs` along with many bug fixes and minor improvements to this component library interface.
+
+Read on for more.
+
+{% endmarkdown %}
+
+{% set context = {
+  "component_modifier": "vf-links__list--easy",
+  "title": "On this page",
+  "svg": true,
+  "list": [
+    {
+      "text": "Major features",
+      "link_list_href": "#features"
+    },
+    {
+      "text": "Notable improvements",
+      "link_list_href": "#improvements"
+    },
+    {
+      "text": "Bug fixes",
+      "link_list_href": "#bugs"
+    }
+  ]
+}
+%}
+{% include blocks.links_list %}
+
+
+{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+
+#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+<!-- Tools don't have pages in the component library -->
+
+#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
+{# endmacros ---/ #}
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+### Features <a href="#features" id="features"></a>
+
+{{ notes("vf-badge", "2.0.0", "a09ce2060533e2203135f03ed05d4609a07469c0") }}
+
+* Makes the badges match the naming convention of the `vf-button`.
+* Makes the badges match the styling of the `vf-button`.
+* Removes any old deprecated variants and tidies up the code.
+* Migration instructions:
+    * If you were using the "Outline Primary" variant you should use the "Secondary" variant now. This replaces the classes of `vf-badge--primary` and `vf-badge--outline` with `vf-badge--secondary`.
+    * If you were using the "Default" variant you should use the "Tertiary" variant now. This adds the class `vf-badge--tertiary`.
+
+{{ notes("vf-button", "2.0.0-alpha.0", "2473b235ae098d50e97ba0cc54ca8617e6a1116d") }}
+
+* Removes deprecated code.
+* Turns the primary, secondary, tertiary into actual things - rather than aliases.
+* Migration instructions:
+    * If you were using the "Outline Primary" variant you should use the "Secondary" variant now. This replaces the classes of vf-button--primary and vf-button--outline with vf-badge--secondary.
+
+{{ notes("vf-tabs", "2.0.0", "d56ee3ae5624e08bdb3fba2c7b7a29c245245a25") }}
+
+* Updates the styling to match the design direction.
+* This is a no-code-change update. It has been marked as visually breaking due to the major design change.
+  * https://github.com/visual-framework/vf-core/pull/1551
+
+{{ notes("vf-tree", "2.0.0-alpha.0", "9e9ffc175ed18e7b3b9ecdd68a5954e3abf0bf92") }}
+
+* makes it cleaner.
+* changes how selected and expanded are styled.
+* makes the text link full width.
+* still allows for the button icon to show/hide.
+
+### Notable improvements <a href="#improvements" id="improvements"></a>
+
+{{ notes("vf-blockquote", "1.2.0", "ab352e732a5203c6ee0875a41ae4209de50b2857") }}
+
+* adds context `if` statement to make it useable in vf-11ty.
+* adds `cite` element.
+* adds `vf-stack`.
+* kept `{{- html | safe if html else text -}}` so it shouldn't break
+
+{{ notes("vf-pagination", "1.1.0", "09d7d9b9a0f82dca773f65ff1dbfa68a88b8fec3") }}
+
+* reduces the amount of variants to 'start again'.
+* centres the default variant
+
+{{ notes("vf-summary", "1.5.0", "5b4e8c6e994d86219af7c4d1a2935991cf452eec") }}
+
+* Adds individual context yml/njk code per file.
+
+{{ notes("vf-button", "1.4.4", "fa2ddbd4028583af07e63fd2b9ad6444f1067914") }}
+
+* Added `link` theme button variant. This variant is similar to link style.
+
+### Bug fixes and optimisations <a href="#bugs" id="bugs"></a>
+
+{{ notes("vf-badge", "2.0.1", "a09ce2060533e2203135f03ed05d4609a07469c0") }}
+
+* Correct "secondry" typo.
+
+{{ notes("embl-content-hub-loader", "1.1.0", "d48aaa09d738221d583c082a8c7a42fcd4ff503a") }}
+
+* Adds overrides for more permutations of where the vf-global header lives.
+
+{{ notes("vf-banner", "1.8.0", "d48aaa09d738221d583c082a8c7a42fcd4ff503a") }}
+
+* Adds overrides for more permutations of where the vf-global header lives
+
+{{ notes("vf-table", " 1.2.0-rc.1", "0d13a3ca61224a7e2c251325a26978fcb318e516") }}
+
+* restyles the arrows on sortable tables
+
+{{ notes("vf-card", "2.5.6", "cdde72676c01f6ab84ad647e2dff2e1f361eab9e") }}
+
+* Fixes issue with modifiers
+    * https://github.com/visual-framework/vf-core/issues/1523
+
+{{ notes("embl-breadcrumbs-lookup", "1.1.0", "64fdcc130ee319c42cb0130758b5214df53dd95f") }}
+
+* Remove diacritics for name processing into people page URLs.
+* Correct "breadcumbs" typos.
+* Finish conversion of emblGetTaxonomy into a standalone function and export it.
+
+{{ notes("vf-analytics-google", "1.0.4", "dcd342f915aef184b382820ea484ab495a5e1737") }}
+
+* Fix an issue on ipmeta.io tracking in `riskCheck` function where `input` is undefined.
+
+{% endmarkdown %}

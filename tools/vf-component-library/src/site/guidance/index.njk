@@ -12,22 +12,16 @@ tags:
   - building
   - sections
 layout: layouts/section.njk
+templateEngineOverride: njk
 ---
 
-{%- for post in collections.guidance  | reverse %}
-
+{%- for post in collections.guidance | sort(false, true, 'data.title') %}
 <article class="vf-summary vf-summary--article">
   <h3 class="vf-summary__title">
     <a href="{{ post.url | url }}" class="vf-summary__link">{{ post.data.title }}</a>
   </h3>
-  {# <div class="vf-summary__meta">
-    left spacing artifact when no author
-    <p class="vf-summary__date">{{ post.date | dateDisplay }}</p>
-  </div> #}
-  {# <p class="vf-text-body--5 | vf-u-margin__bottom--200">{{ date | dateDisplay }}</p> #}
   <p class="vf-summary__text">
     {{ post.data.subtitle | markdown | safe | replace("<p>", "<span class='vf-content'>") | replace("</p>", "</span>") }}
   </p>
 </article>
-
 {% endfor %}

@@ -90,12 +90,17 @@ gulp.task("tokens:maps", () =>
 gulp.task("tokens:json", () =>
   gulp.src([
     "./src/maps/vf-colors.yml",
+    "./src/maps/vf-color__neutral.yml",
     "./src/maps/vf-spacing.yml",
     "./src/maps/vf-themes.yml",
     "./src/maps/vf-ui-colors.yml",
     "./src/maps/vf-zindex.yml",
     "./src/typographic-scales/*.yml",
-    "./src/variables/vf-breakpoints.yml"
+    "./src/variables/vf-breakpoints.yml",
+    "./src/maps/vf-color__background.yml",
+    "./src/maps/vf-color__brand.yml",
+    "./src/maps/vf-color__buttons.yml",
+    "./src/maps/vf-color__text.yml",
   ])
     .pipe(theoG({
       transform: { type: "web", includeMeta: true },
@@ -115,15 +120,16 @@ gulp.task("tokens2:json", () =>
 
 gulp.task("tokens:props", () =>
   gulp.src([
+    "./src/maps/vf-color__neutral.yml",
     "./src/maps/vf-colors.yml",
     "./src/maps/vf-spacing.yml",
     "./src/maps/vf-themes.yml",
     "./src/maps/vf-ui-colors.yml",
     "./src/maps/vf-zindex.yml",
-    "!./src/maps/vf-color__background.yml",
-    "!./src/maps/vf-color__brand.yml",
-    "!./src/maps/vf-color__buttons.yml",
-    "!./src/maps/vf-color__text.yml",
+    "./src/maps/vf-color__background.yml",
+    "./src/maps/vf-color__brand.yml",
+    "./src/maps/vf-color__buttons.yml",
+    "./src/maps/vf-color__text.yml",
   ])
     .pipe(theoG({
       transform: { type: "web" },
@@ -165,6 +171,16 @@ ${result
   `;
 });
 
+gulp.task("tokens:command-help", function (done) {
+  console.warn("vf-design-tokens","You're probably looking for the `gulp vf-tokens` command.");
+  done();
+});
+
 gulp.task("vf-tokens", gulp.parallel(
   "tokens:variables", "tokens:json", "tokens:typographic-scale", "tokens:maps", "tokens:props"
+));
+
+// an alias for developers who easily forget
+gulp.task("vf-design-tokens", gulp.parallel(
+  'tokens:command-help'
 ));

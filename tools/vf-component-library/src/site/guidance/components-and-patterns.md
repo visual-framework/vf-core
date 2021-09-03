@@ -1,5 +1,5 @@
 ---
-title: About components and patterns
+title: Components are part of patterns
 subtitle: Think of components as lego blocks you can use to build the look and content of your sites. Think of patterns as assembled packages of behaviour.
 intro: At the lower level there are components which are a type of "ingredient" used to assemble into the higher level patterns with richer templates with usability guidance.
 date: 2020-12-11 19:33:50

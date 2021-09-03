@@ -22,6 +22,11 @@
   padding-right: space(400);
   padding-right: var(--vf-flag--spacing, #{space(400)});
 
+  img:not([class*='vf-']) {
+    // as vf-flag uses a table layout, this does not mix well with `vf-content img` and max-width 100%
+    max-width: max-content;
+  }
+
   > * {
     display: block;
   }

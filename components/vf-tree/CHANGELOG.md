@@ -1,3 +1,10 @@
+### 2.0.0-alpha.0
+
+* makes it cleaner.
+* changes how selected and expanded are styled.
+* makes the text link full width.
+* still allows for the button icon to show/hide.
+
 ### 1.0.2
 
 * changes any `set-` style functions to cleaner version

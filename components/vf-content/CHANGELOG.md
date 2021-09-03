@@ -1,3 +1,39 @@
+### 1.6.2
+
+* Dependency bumps.
+
+### 1.6.1
+
+* Dependency bumps.
+
+### 1.6.0
+
+* Use vf-spacing tokens for heading margins.
+* Reduce bottom margin on headings to be more consistent with overall typography, design kit.
+  * https://github.com/visual-framework/vf-core/pull/1589
+* Darken and increase figure text size
+  * https://github.com/visual-framework/vf-core/issues/1582
+* Figures take a responsive and centered layout, which is most typical.
+  * https://github.com/visual-framework/vf-core/issues/1583
+
+### 1.5.6
+
+* Adds support for responsive `img` and `figure` elements
+  * https://github.com/visual-framework/vf-core/issues/1412
+
+### 1.5.4
+
+* dependency bump
+
+### 1.5.2
+
+* Remove author information from example, as we have a dedicated vf-article-meta-information component.
+* Fix blockquote bottom margin.
+
+### 1.5.1
+
+* Fixes a bug with a non-existent @visual-framework/form was required.
+
 ### 1.5.0
 
 * changes the dev dependencies to match their new names and versions

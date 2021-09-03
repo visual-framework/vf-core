@@ -1,3 +1,26 @@
+### 3.6.0
+
+* Accessibility: Set primary text to off-black.
+* Developer tools: add `sassFunction` and `sassMap` information to token meta information.
+* Reduce `text-body--1` to 28px (was 32px) in size based on design input and feedback.
+* https://github.com/visual-framework/vf-core/issues/1587
+
+### 3.5.0
+
+* Generate json for theme colours.
+* Display theme colours in component library.
+* Deprecates old primary, secondary, tertiary themes in favour of vf-color__brand and interactive, text colours.
+* Remove extraneous `$` prefix in spacing sass variable token (this only affected a double `$$` in generated documentation).
+
+### 3.4.1
+
+* Adds a gulp command vf-design-tokens alias for developers who easily forget.
+
+### 3.4.0
+
+* introduces neutral colours stack Design Tokens.
+* adds deprecation notices to relevant Design Tokens, to be remove in next major version release.
+
 ### 3.3.0
 
 * removes unused link colours

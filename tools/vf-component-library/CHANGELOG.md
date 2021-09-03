@@ -1,9 +1,38 @@
-### 1.2.0
+### 1.1.12
 
-* Adds the form options as their own set of components in the list.
-  * https://github.com/visual-framework/vf-core/pull/1390/files
+* Update milestones and roadmap.
+
+### 1.1.11
+
+* Add ELIXIR banner to example EMBL-EBI page.
+  * https://stable.visual-framework.dev/patterns/boilerplate-generic-embl-ebi/
+  * https://github.com/visual-framework/vf-core/pull/1615
+
+### 1.1.7
+
+* Fixed issue of overlapping menu on VF components site
+  * https://github.com/visual-framework/vf-core/issues/1518
+
+### 1.1.6
+
+* dependency bump
+
+### 1.1.2
+
+* Implements updated vf-search markup.
+* Changes a few pages on how it works with nunjucks and markdown.
 
 ### 1.1.0
+
+* updates Design Tokens homepage.
+* adds neutral colour tokens
+* adds 'status banners' for components in the documentation page.
+* Adds the form options as their own set of components in the list.
+  * https://github.com/visual-framework/vf-core/pull/1390/files
+* Updates to use 11ty 0.12.1
+  * https://github.com/visual-framework/vf-core/pull/1435
+
+### 1.0.24
 
 * changes the `vf-intro` so it's a white background, removes the padding.
 * changes the links in `vf-intro` to be the 'correct' buttons.

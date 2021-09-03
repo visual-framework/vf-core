@@ -46,10 +46,10 @@
   </head>
   <body class="{{ bodyClass }} vf-body vf-stack" >
     <header class="vf-global-header | vf-search-client-side--no-index">
-      {% render '@vf-logo', {logo_href:  '/' | url, logo_text: 'Visual Framework 2.0', image: siteConfig.siteInformation.url + 'assets/vf-logo/assets/logo.svg', "hidden_text": true } %}
-      <nav class="vf-navigation vf-navigation--global">
-        <ul class="vf-navigation__list | vf-list--inline">
-          {# <li class="vf-navigation__item">
+      {% render '@vf-logo', {logo_href:  '/' | url, logo_text: 'Visual Framework', image: siteConfig.siteInformation.url + 'assets/vf-logo/assets/logo.svg', "hidden_text": false } %}
+      <nav class="vf-navigation vf-navigation--global | vf-cluster">
+        <ul class="vf-navigation__list | vf-list | vf-cluster__inner">
+          {#- <li class="vf-navigation__item">
             <a href="{{ '/about' | url }}" class="vf-navigation__link">About</a>
           </li>
           <li class="vf-navigation__item">
@@ -57,7 +57,7 @@
           </li>
           <li class="vf-navigation__item">
             <a href="{{ '/patterns' | url }}" class="vf-navigation__link">Examples</a>
-          </li> #}
+          </li> -#}
           <li class="vf-navigation__item">
             <a href="{{ '/search' | url }}" class="vf-navigation__link">Search</a>
           </li>
@@ -70,11 +70,6 @@
         </ul>
       </nav>
     </header>
-
-    {# Global navigation #}
-    {% if page.url == '/' %}
-      {% include "navigation.njk" %}
-    {% endif %}
 
     {% if page.url != '/' and page.url != '/404.html' and is_index != true %}
     {# don't show breadcrumb on homepage #}
@@ -117,10 +112,33 @@
     </nav>
     {% endif %}
 
+    {# Hero for sections #}
+    {% if section -%}
+      {# <style>
+        .vf-hero.vf-component-library--hero {
+          --vf-hero--bg-image:
+            url("https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/roundels.png"),
+            url("https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/20201202_hero_emblorg_homepage-zoom-out.jpg")
+        }
+      </style> #}
+      {%- set context = {
+        "spacing": 400,
+        "vf_hero_heading": siteConfig.sections[section].title,
+        "vf_hero_heading_href": siteConfig.sections[section].url,
+        "vf_hero_text": [
+          siteConfig.sections[section].summary
+        ],
+        "vf_hero_image_size": "auto 28.5rem"
+      }
+      -%}
+        {# "modifier_class": "vf-component-library--hero", #}
+      {%- include "vf-core-components/vf-hero/vf-hero.njk" -%}
+    {%- endif %}
+
     {# Render sub nav for sections #}
-    {% if section %}
+    {% if section and (hideSectionNavigation != true) %}
       {%- set navigationList = [] -%}
-      {%- for entry in collections[section] %}
+      {%- for entry in collections[section] | sort(false, true, 'data.order') %}
         {%- if entry.data.layout %}
           {%- set isCurrent = false -%}
           {%- if entry.url == page.url %}
@@ -135,9 +153,6 @@
         {%- endif %}
       {%- endfor -%}
 
-      {# Order by page order #}
-      {%- set navigationList = navigationList | sort(false, true, 'order') %}
-
       {% render '@vf-navigation', {
         "classModifier": "main",
         "navigation": navigationList
@@ -148,7 +163,7 @@
 
     <p class="vf-text vf-text-body--3">
       Find an issue on this page?
-      <a class="vf-link" href="{{ "https://github.com/visual-framework/vf-core/edit/develop/tools/vf-component-library/" + page.inputPath | url }}">Propose a change</a> or <a href="{{ "/guidance/discussing-the-vf" | url }}" class="vf-link">discuss it</a>.
+      <a class="vf-link" href="{{ "https://github.com/visual-framework/vf-core/blob/develop/tools/vf-component-library/" + page.inputPath | url }}">Propose a change</a> or <a href="{{ "/guidance/discussing-the-vf" | url }}" class="vf-link">discuss it</a>.
     </p>
     {% include "footer.njk" %}
   </body>

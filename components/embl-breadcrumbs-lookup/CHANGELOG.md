@@ -1,3 +1,26 @@
+### 1.2.0
+
+* Improve breadcrumb behaviour to correctly show the active page.
+* More robust detection of current url by trying with and without a trailing `/`
+* If the active facet (breadcrumb) is the current url, don't link it
+  * https://github.com/visual-framework/vf-core/issues/1604
+
+### 1.1.1
+
+* Fix: Breadcrumbs repeat if init method is repeatedly called on same page.
+  * https://github.com/visual-framework/vf-core/issues/1593
+
+### 1.1.0
+
+* Remove diacritics for name processing into people page URLs.
+* Correct "breadcumbs" typos.
+* Finish conversion of emblGetTaxonomy into a standalone function and export it.
+
+### 1.0.4
+
+* Improve JS module import support.
+  * https://github.com/visual-framework/vf-core/pull/1476/
+
 ### 1.0.3
 
 * changes any `set-` style functions to cleaner version

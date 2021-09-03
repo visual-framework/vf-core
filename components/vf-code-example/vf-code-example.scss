@@ -18,10 +18,10 @@ $vf-code-example-enable-hljs: true !default;
 .vf-code-example__pre,
 .vf-code-example {
   // pre and code should always be monospace
-  @include set-type(text-body--1,$vf-font-family--monospace, $custom-margin-bottom: 0);
+  @include set-type(text-body--1,$vf-font-family--monospace, $custom-margin-bottom: 0, $color: secondary);
   @include padding--block(all,map-get($vf-spacing-map, vf-spacing--100));
 
-  background: ui-color(grey--light);
+  background: neutral(100);
   border-radius: $vf-radius--xs;
 }
 
@@ -34,6 +34,7 @@ $vf-code-example-enable-hljs: true !default;
 .vf-code-example__pre {
   border: 1px;
   display: block;
+  margin-bottom: map-get($vf-spacing-map, vf-spacing--400);
   min-width: 0;
   overflow: auto;
   white-space: pre-wrap;
@@ -43,7 +44,7 @@ $vf-code-example-enable-hljs: true !default;
 @if $vf-code-example-enable-hljs == true {
   /* github.com style (c) Vasily Polovnyov <vast@whiteants.net> */
   .hljs {
-    background: ui-color(grey--light);
+    background: neutral(100);
     color: ui-color(black);
     display: block;
     overflow-x: auto;
@@ -51,13 +52,13 @@ $vf-code-example-enable-hljs: true !default;
 
   .hljs-comment,
   .hljs-quote {
-    color: color(grey);
+    color: text-color(primary);
     font-style: italic; }
 
   .hljs-keyword,
   .hljs-selector-tag,
   .hljs-subst {
-    color: ui-color(black);
+    color: text-color(secondary);
     font-weight: bold; }
 
   .hljs-number,
@@ -65,7 +66,7 @@ $vf-code-example-enable-hljs: true !default;
   .hljs-variable,
   .hljs-template-variable,
   .hljs-tag .hljs-attr {
-    color: color(blue---dark); }
+    color: color(blue--dark); }
 
   .hljs-string,
   .hljs-doctag {
