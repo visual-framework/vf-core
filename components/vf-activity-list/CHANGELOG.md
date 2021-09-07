@@ -1,3 +1,8 @@
+### 1.0.0-alpha.11
+
+* Deprecated as the component never saw wide adoption and neither the technical tooling nor use case was ever proven.
+  * https://github.com/visual-framework/vf-core/pull/1650
+
 ### 1.0.0-alpha.9
 
 * changes any `set-` style functions to cleaner version

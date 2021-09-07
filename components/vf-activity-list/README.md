@@ -4,6 +4,10 @@
 
 ## About
 
+This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>.
+
+## Usage
+
 An activity list.
 
 ## Install
