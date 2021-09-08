@@ -1,6 +1,7 @@
 ## 1.4.3
 
 * Removes the unused vf-header component.
+  * https://github.com/visual-framework/vf-core/pull/1656
 
 ## 1.4.0
 

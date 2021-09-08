@@ -7,6 +7,7 @@
 * Therefore it is being deprecated.
     * No migration guidance is supplied as it is not used in production.
     * It is also being removed from the default rollup Sass/CSS.
+* https://github.com/visual-framework/vf-core/pull/1656
 
 ### 1.0.4
 
