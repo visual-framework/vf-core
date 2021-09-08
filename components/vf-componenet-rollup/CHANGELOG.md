@@ -1,3 +1,7 @@
+## 1.4.3
+
+* Removes the unused vf-header component.
+
 ## 1.4.0
 
 * removes navigation variants as they're now part of base Sass file.
