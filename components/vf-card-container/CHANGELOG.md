@@ -1,3 +1,7 @@
+### 3.1.3
+
+* Fix README formatting.
+
 ### 3.1.2
 
 * Updates example to use content of different lengths.
