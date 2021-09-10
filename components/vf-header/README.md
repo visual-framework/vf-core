@@ -4,6 +4,8 @@
 
 ## About
 
+This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. No alternative is provided and the pattern should not be used.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-header` with this command.
