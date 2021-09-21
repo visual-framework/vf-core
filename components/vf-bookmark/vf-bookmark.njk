@@ -1,0 +1,55 @@
+{# Make sure any variables are listed inside the following if statement #}
+{% if context %}
+  {% set label_inactive = context.label_inactive %}
+  {% set label_active = context.label_active %}
+  {% set modifier = context.modifier %}
+  {% set is_active = context.is_active %}
+  {% set icon = context.icon %}
+{% endif %}
+
+{# heart #}
+{%- set heart -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" height="140" width="140">
+<g transform="matrix(10,0,0,10,0,0)"><path d="M7,12.45l-5.52-5c-3-3,1.41-8.76,5.52-4.1,4.11-4.66,8.5,1.12,5.52,4.1Z" style="fill: none;stroke: #000000;stroke-linecap: round;stroke-linejoin: round"></path></g></svg>
+{%- endset -%}
+
+{# star #}
+{%- set star -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" height="140" width="140">
+<g transform="matrix(10,0,0,10,0,0)"><path d="M7.49,1.09,9.08,4.3a.51.51,0,0,0,.41.3L13,5.12a.54.54,0,0,1,.3.93L10.77,8.56a.53.53,0,0,0-.16.48l.61,3.53a.55.55,0,0,1-.8.58L7.26,11.48a.59.59,0,0,0-.52,0L3.58,13.15a.55.55,0,0,1-.8-.58L3.39,9a.53.53,0,0,0-.16-.48L.67,6.05A.54.54,0,0,1,1,5.12L4.51,4.6a.51.51,0,0,0,.41-.3L6.51,1.09A.54.54,0,0,1,7.49,1.09Z" style="fill: none;stroke: #000000;stroke-linecap: round;stroke-linejoin: round"></path></g></svg>
+{%- endset -%}
+
+<div class="vf-bookmark
+{% if is_active -%}
+vf-bookmark--active
+{%- endif %}
+vf-bookmark--{{ modifier }}
+|
+{% if modifier == "button" -%}
+vf-button vf-button--secondary
+{%- elseif modifier == "inline" -%}
+{%- endif %}
+">
+  {% if icon == "heart" -%}
+  <span class="vf-bookmark--icon-{{icon}}">{{ heart }}</span>
+  {%- elseif icon == "star" -%}
+  <span class="vf-bookmark--icon-{{icon}}">{{ star }}</span>
+  {%- endif %}
+  {% if is_active -%}
+    {{ label_active }}
+  {%- else -%}
+    {{ label_inactive }}
+  {%- endif %}
+</div>
+
+{# You can do Nunjucks logic in your templates that references the .yml settings
+   What's Nunjucks: https://mozilla.github.io/nunjucks/templating.html #}
+{#
+{% if item.image == "blank" %}
+  <span><!-- no image --></span>
+  {% else %}
+  {{ item.image }}
+{% endif %}
+#}
+
+
