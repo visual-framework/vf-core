@@ -4,13 +4,35 @@
 
 ## About
 
-Indicates if an item has been bookmarked on a list of favourites or similar.
+Indicates if an item has been bookmarked to a list of favourites or similar.
 
 ## Usage
 
 This component shows if a piece of content has been selected by a user as a favourite using a text label and icon.
 
 No JavaScript functionality is provided and it is expected that the state handling will be done on a case-by-case basis on the project application.
+
+### Active state
+
+The active state of the icon is managed by adding the class `vf-bookmark--active`. This class should be added by your framework or sever-side code.
+
+### Options
+
+The component can be configured with a number of options.
+
+- `bookmark_href`: defaults to `JavaScript:Void(0);`
+    - Any url that may be required.
+- `label_inactive`: defaults to `Bookmark`
+- `label_active`: defaults to `Bookmarked`
+- `is_active`: defaults to `true`
+    - `true` or `false`
+    - sets `vf-bookmark--active` CSS class
+    - determines the appropriate `label_inactive` or `label_active`
+- `modifier`: defaults to `inline`
+    - `inline` or `button`
+- `icon`: defaults to `star`
+    - `star` or `heart` (a bookmark icon may be added in the future)
+
 
 ### Accessibility
 

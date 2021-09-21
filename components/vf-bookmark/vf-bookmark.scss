@@ -21,7 +21,7 @@
 
 // You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
 // @import 'vf-bookmark/vf-bookmark.scss';
-.vf-bookmark {
+// .vf-bookmark {
   // You can utilise CSS custom properites
   // --thing-text-color: var(--vf-bookmark-theme-color--foreground, #{set-ui-color(vf-ui-color--black)});
 
@@ -33,4 +33,39 @@
   // https://stable.visual-framework.dev/components/detail/vf-design-tokens.html
   // --otherthing-color: var(--vf-bookmark-theme-color--foreground, #{map-get($vf-colors-map, vf-color--green--darkest)});
   // color: var(--otherthing-color);
+// }
+
+.vf-bookmark--icon {
+  // align-items: center;
+  // border-bottom: none;
+  color: ui-color(white);
+  stroke: color(blue);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  // display: inline-flex;
+  // text-decoration: none;
+
+  // fill: none;stroke: #000000;
+
+  svg {
+    fill: currentColor;
+    margin-right: .5rem;
+    vertical-align: sub;
+    // flex: 1 0 auto;
+    // margin-left: map-get($vf-spacing-map, vf-spacing--200);
+  }
+}
+
+.vf-bookmark--active .vf-bookmark--icon {
+  color: color(blue);
+  stroke: none;
+}
+
+.vf-bookmark--icon-heart svg {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+.vf-bookmark--icon-star svg {
+  height: 1.25rem;
+  width: 1.25rem;
 }
