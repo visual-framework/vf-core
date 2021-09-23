@@ -6,15 +6,14 @@ layout: layouts/base.njk
 ---
 
 {% set context = {
-  "spacing": 400,
+  "spacing": 800,
   "vf_hero_heading": "The Visual Framework",
   "vf_hero_heading_href": "/about",
   "vf_hero_subheading": "Good defaults and technical flexibility for life science websites",
   "vf_hero_text": [
-    "With compatibility with existing CSS and JS, you can bring your Bootstrap, React or vanilla code base. The VF will not break your existing code.",
-    '<a href="about" class="vf-link">Learn more</a>, <a href="/building" class="vf-link">build something</a> or <a class="vf-link" href="guidance/discussing-the-vf/">get help</a>.'
+    "With compatibility with existing CSS and JS, you can bring your Bootstrap, React or vanilla code base. The VF will not break your existing code."
   ],
-  "vf_hero_link_text": false,
+  "vf_hero_link_text": "About the VF",
   "vf_hero_link_href": "/about",
   "vf_hero_image_size": "auto 28.5rem"
 }
@@ -23,9 +22,9 @@ layout: layouts/base.njk
 {% include "vf-core-components/vf-hero/vf-hero.njk" %}
 
 {# Global navigation #}
-{% include "navigation.njk" %}
+{# {% include "navigation.njk" %} #}
 
-<section class="embl-grid embl-grid--has-centered-content | vf-u-padding__top--1200 vf-u-margin__top--800">
+<section class="embl-grid embl-grid--has-centered-content">
 {% render '@vf-section-header', {
   "section_title": "Search",
   "id": "search",

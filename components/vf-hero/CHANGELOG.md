@@ -1,3 +1,7 @@
+### 3.3.1
+
+* Reduces vf-hero bottom margin.
+
 ### 3.3.0
 
 * Updates the default hero spacing to be equivalent to 1200 (was: 800). This better matches the actual default usage in practice and is based off design feedback for consistency.
