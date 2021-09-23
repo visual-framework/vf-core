@@ -4,9 +4,13 @@
 
 ## About
 
-A three-column container for `vf-card`.
+A multi-column container for `vf-card`.
 
 ## Usage
+
+### Columns
+
+The containier defaults to three columns (the recommended number of image-based cards per row). However if text-only cards are being used, a 4-column variant is supported `cards_per_row: 4` which appends CSS class `vf-card-container__col-4`.
 
 ### CSS Custom Properties
 

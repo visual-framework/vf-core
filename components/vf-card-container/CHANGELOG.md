@@ -1,6 +1,9 @@
 ### 3.1.3
 
 * Fix README formatting.
+* Halves vertical spacing between `vf-section-header` and vf-cards.
+* Refines container vertical by using `--page-grid-gap)`.
+* Adds 4 column card support for when cards have no imagery.
 
 ### 3.1.2
 
