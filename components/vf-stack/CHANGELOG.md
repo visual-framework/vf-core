@@ -1,10 +1,11 @@
 ### 2.1.2
 
 * vf-stack no longer applies between a `vf-hero` and `vf-u-fullbleed`.
+* Gives more margin-top to `vf-u-fullbleed` after most items.
 
 ### 2.1.1
 
-* adds usage guideline for inlcude the default `vf-stack` and the size variant.
+* adds usage guideline for include the default `vf-stack` and the size variant.
 
 ### 2.1.0
 
@@ -20,8 +21,8 @@
 
 ### 1.2.0
 
-* now uses Nunjucks 'blocks' so we can use this layout more programatically
-* hides the defauly Nunjcuks file as it renders what looks like a blank page (because it's waiting for the block content)
+* now uses Nunjucks 'blocks' so we can use this layout more programmatically
+* hides the default Nunjucks file as it renders what looks like a blank page (because it's waiting for the block content)
 * creates separate Nunjucks files to display variants in Fractal
 * updates naming conventions of variables available
   * introduces `stack__spacing__custom` which will replace `custom_spacing_property` in the `2.0.0` component release

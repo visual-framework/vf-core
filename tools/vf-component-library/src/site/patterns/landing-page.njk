@@ -50,13 +50,11 @@ layout: layouts/boilerplate.njk
 
   {% set context = {
     "vf_hero_kicker": "",
-    "spacing": 400,
+    "spacing": 800,
     "vf_hero_heading": title,
     "vf_hero_subheading": subtitle,
-    "vf_hero_text": [
-      "It is good to have a 20 to 40 words summary of the activity or action to be driven about the example pattern."
-    ],
-    "vf_hero_link_text": "Call to action",
+    "vf_hero_text": false,
+    "vf_hero_link_text": "Optional call to action link",
     "vf_hero_link_href": "/components",
     "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');"
   }
@@ -113,17 +111,32 @@ layout: layouts/boilerplate.njk
 
   {% render "@vf-news-container--featured" %}
 
-  <section class="embl-grid embl-grid--has-centered-content">
-    <div>
-      {%- render '@vf-section-header--default', {
-        "section_title": "You can include section headers too"
-      } -%}
-    </div>
+  <hr class="vf-divider">
 
-    <div>
-      {% render '@vf-content' %}
-    </div>
-  </section>
+  {% render '@vf-section-header', {
+    "section_title": "Some additional things you might like",
+    "id": "additional",
+    "vf_section__content": ""
+  } %}
+
+  <div class="vf-grid vf-grid__col-3">
+  {% set context = {
+    "component-type": "block",
+    "card_heading": "A Striped Card Heading",
+    "card_subheading": "With sub–heading",
+    "variant": "striped",
+    "newTheme": "primary",
+    "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg",
+    "card_text": "Lorem ipsum dolor sit amet, consectetur. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?",
+    "card_image__alt": "Image alt text"
+  }
+  %}
+  {% include "vf-core-components/vf-card/vf-card.njk" %}
+  {% include "vf-core-components/vf-card/vf-card.njk" %}
+  {% include "vf-core-components/vf-card/vf-card.njk" %}
+  </div>
+
+  {% render "@vf-card-container" %}
 
   {% include "./templates/source-link-boilerplate.njk" %}
 

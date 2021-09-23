@@ -66,6 +66,11 @@
   --vf-stack-margin: #{map-get($vf-spacing-map, vf-spacing--1600)};
 }
 
+// vf-u-fullbleed should get more spacing after most items
+.vf-stack > * + .vf-u-fullbleed {
+  margin-top: #{map-get($vf-spacing-map, vf-spacing--1200)} !important;
+}
+
 // vf-stack should not apply between a hero and vf-u-fullbleed
 .vf-stack > .vf-hero + .vf-u-fullbleed {
   margin-top: unset !important;
