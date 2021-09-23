@@ -1,6 +1,7 @@
 ### 3.3.1
 
 * Reduces vf-hero bottom margin.
+* Makes vf-hero bottom margin "smarter" by no applying when the following element uses `vf-u-fullwidth` or `vf-navigation`. In these cases vf-stack is sufficient.
 
 ### 3.3.0
 

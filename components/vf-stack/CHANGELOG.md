@@ -1,3 +1,7 @@
+### 2.1.2
+
+* vf-stack no longer applies between a `vf-hero` and `vf-u-fullbleed`.
+
 ### 2.1.1
 
 * adds usage guideline for inlcude the default `vf-stack` and the size variant.
