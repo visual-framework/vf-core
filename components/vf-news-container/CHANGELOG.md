@@ -1,3 +1,7 @@
+### 1.1.0
+
+* Standardizes the featured news variant as 4 columns.
+
 ### 1.0.0
 
 * Fixes CSS to match stylelint rules.

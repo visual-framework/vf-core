@@ -1,3 +1,8 @@
+### 1.6.0
+
+* Removes support for styling of `vf-summary` inside of `vf-box`. (this is no longer encouraged)
+* Adds support for conditional display of `vf-summary__text`.
+
 ### 1.5.1
 
 * Documentation: clarity on using card vs summary components.
