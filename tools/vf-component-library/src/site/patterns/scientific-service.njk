@@ -1,6 +1,6 @@
 ---
-title: Online scientific resource
-subtitle: An example landing page for an online scientific service such as a bioinformatics database, tool or similar.
+title: Scientific resource landing page
+subtitle: Example landing page for an online scientific service such as a bioinformatics database, tool or similar where search is key.
 section: patterns
 date: 2018-08-22 12:24:50
 tags: posts
@@ -27,7 +27,7 @@ layout: layouts/boilerplate.njk
   {% include "./templates/breadcrumbs-boilerplate.njk" %}
 
   <!-- See the VF Hero docs: https://stable.visual-framework.dev/components/vf-hero/ -->
-  {% set context = {
+  {# {% set context = {
     "vf_hero_kicker": "<a href=\"//www.ebi.ac.uk/about\">Categorisation (Optional)</a> | Structural Biology",
     "spacing": 400,
     "vf_hero_heading": title,
@@ -40,10 +40,7 @@ layout: layouts/boilerplate.njk
     "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EBI_webbanner_test_V3.jpg');"
   }
   %}
-  {% include "vf-core-components/vf-hero/vf-hero.njk" %}
-
-  <!-- See the VF Navigation docs: https://stable.visual-framework.dev/components/vf-navigation/ -->
-  {% render '@vf-navigation--main' %}
+  {% include "vf-core-components/vf-hero/vf-hero.njk" %} #}
 
   {% render '@vf-banner--info', {
     "alert_icon_text": "dismiss",
@@ -52,7 +49,66 @@ layout: layouts/boilerplate.njk
     "banner__message": "This is a starting point for services that demonstrates an overall feel and how to structure the homepage navigation. Individual service design will vary greately depending on the needs addressed."
   } %}
 
-  <section class="embl-grid embl-grid--has-centered-content | vf-u-padding__top--1200 vf-u-margin__top--800">
+  <!-- prototype hero + search -->
+  <section class="vf-hero vf-hero--400 | vf-u-fullbleed"
+    style="--vf-hero--bg-image: url(&#39;https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EBI_webbanner_test_V3.jpg&#39;);">
+    <div class="vf-hero__content | vf-box | vf-stack vf-stack--400"><p class="vf-hero__kicker"><a href="//www.ebi.ac.uk/about">Categorisation (Optional)</a> | Structural Biology</p>
+      <h2 class="vf-hero__heading">Online scientific resource</h2>
+      <p class="vf-hero__subheading">Open data resources of code, functions and things of data</p>
+
+      <hr class="vf-divider">
+
+      <form action="#" class="vf-form vf-form--search vf-form--search--mini | vf-sidebar vf-sidebar--end">
+        <div class="vf-sidebar__inner">
+
+          <div class="vf-form__item">
+
+            <label class="vf-form__label vf-u-sr-only | vf-search__label" for="searchitem">Search</label>
+            <input type="search" placeholder="Search the service" id="searchitem" class="vf-form__input">
+          </div>
+
+          <div class="vf-form__item">
+
+            {# <label class="vf-form__label" for="vf-form__select">Choose a pet:</label> #}
+
+            <select class="vf-form__select" id="vf-form__select">
+              <option value="cat">Cat</option>
+              <option value="hamster">Hamster</option>
+              <option value="parrot">Parrot</option>
+              <option value="dog" selected>Dog</option>
+              <option value="spider">Spider</option>
+              <option value="goldfish">Goldfish</option>
+            </select>
+
+          </div>
+
+          <button type="submit" class="vf-search__button | vf-button vf-button--primary">
+            <span class="vf-button__text | vf-u-sr-only">Search</span>
+
+            <svg class="vf-icon vf-icon--search-btn | vf-button__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 140 140" width="140" height="140">
+              <g transform="matrix(5.833333333333333,0,0,5.833333333333333,0,0)">
+                <path d="M23.414,20.591l-4.645-4.645a10.256,10.256,0,1,0-2.828,2.829l4.645,4.644a2.025,2.025,0,0,0,2.828,0A2,2,0,0,0,23.414,20.591ZM10.25,3.005A7.25,7.25,0,1,1,3,10.255,7.258,7.258,0,0,1,10.25,3.005Z" fill="#FFFFFF" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"></path>
+              </g>
+            </svg>
+
+          </button>
+        </div>
+
+      </form>
+      {# <p class="vf-hero__text">An example landing page for an online scientific service such as a bioinformatics database, tool or similar.</p> #}
+      <p class="vf-text-body--5">
+        We also offer an <a href="JavaScript:Void(0);" class="vf-link">advanced search</a> | Example searches: <a href="JavaScript:Void(0);" class="vf-link">Example</a>, <a href="JavaScript:Void(0);" class="vf-link">Example</a>, <a href="JavaScript:Void(0);" class="vf-link">Example</a>
+      </p>
+
+      {# <a class="vf-hero__link" href="/components">See more Visual Framework patterns<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a> #}
+    </div>
+  </section>
+
+  {# <!-- See the VF Navigation docs: https://stable.visual-framework.dev/components/vf-navigation/ --> #}
+  {# {% render '@vf-navigation--main' %} #}
+
+
+  {# <section class="embl-grid embl-grid--has-centered-content | vf-u-padding__top--1200 vf-u-margin__top--800">
     <div><!-- empty --></div>
     <div class="vf-u-border-color-ui--grey--light vf-box vf-box--r">
       {% render '@vf-search', {
@@ -69,9 +125,9 @@ layout: layouts/boilerplate.njk
       </p>
 
     </div>
-  </section>
+  </section> #}
 
-  <section class="vf-grid vf-grid__col-3 | vf-u-padding__top--200 vf-u-margin__bottom--1200">
+  <section class="vf-grid vf-grid__col-3 | vf-card-container | vf-u-fullbleed vf-u-background-color-ui--grey--light">
     <div class="vf-grid__col--span-2">
       <div class="vf-grid vf-grid__col-2">
         {% render '@vf-section-header--has-a-link-and-text', {
@@ -129,7 +185,7 @@ layout: layouts/boilerplate.njk
     </div>
   </section>
 
-  <hr class="vf-divider" />
+  {# <hr class="vf-divider" /> #}
 
   <section class="embl-grid | vf-u-margin__top--1200">
     {%- render '@vf-section-header--default', {
