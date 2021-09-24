@@ -33,16 +33,11 @@ The component can be configured with a number of options.
 - `icon`: defaults to `star`
     - `star` or `heart` (a bookmark icon may be added in the future)
 
-
 ### Accessibility
 
-[Add a note if the accessibility of this component has been validated.]
+This component targets WCAG 2.1 AA accessibility.
 
-This component targets WCAG 2.1 AA accessibility. Below you can find additional notes on accessibility best practice with this component:
-
-- Add any do's and do nots
-
-You can also read about [the Visual Framework's approach to accessibility](https://stable.visual-framework.dev/guidance/accessibility/).
+Note that the SVG icons use `aria-hidden="true"` as to be ignored by screen readers.
 
 ## Install
 
