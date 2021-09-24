@@ -1,3 +1,7 @@
+### 3.0.0-alpha.1
+
+* Refine spacing when more than 1 inline `vf-form__item`.
+
 ### 3.0.0-alpha.0
 
 * updates to code and documentation based on consultation and decisions made.

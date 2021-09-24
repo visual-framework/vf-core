@@ -49,14 +49,19 @@ layout: layouts/boilerplate.njk
     "banner__message": "This is a starting point for services that demonstrates an overall feel and how to structure the homepage navigation. Individual service design will vary greately depending on the needs addressed."
   } %}
 
+  <style>
+  /* vf-hero wih search is still a prototype concept */
+  .vf-hero--search .vf-hero__content {
+    min-width: 60%;
+  }
+  </style>
+
   <!-- prototype hero + search -->
-  <section class="vf-hero vf-hero--400 | vf-u-fullbleed"
+  <section class="vf-hero vf-hero--800 vf-hero--search | vf-u-fullbleed"
     style="--vf-hero--bg-image: url(&#39;https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EBI_webbanner_test_V3.jpg&#39;);">
     <div class="vf-hero__content | vf-box | vf-stack vf-stack--400"><p class="vf-hero__kicker"><a href="//www.ebi.ac.uk/about">Categorisation (Optional)</a> | Structural Biology</p>
       <h2 class="vf-hero__heading">Online scientific resource</h2>
       <p class="vf-hero__subheading">Open data resources of code, functions and things of data</p>
-
-      <hr class="vf-divider">
 
       <form action="#" class="vf-form vf-form--search vf-form--search--mini | vf-sidebar vf-sidebar--end">
         <div class="vf-sidebar__inner">
@@ -97,7 +102,9 @@ layout: layouts/boilerplate.njk
       </form>
       {# <p class="vf-hero__text">An example landing page for an online scientific service such as a bioinformatics database, tool or similar.</p> #}
       <p class="vf-text-body--5">
-        We also offer an <a href="JavaScript:Void(0);" class="vf-link">advanced search</a> | Example searches: <a href="JavaScript:Void(0);" class="vf-link">Example</a>, <a href="JavaScript:Void(0);" class="vf-link">Example</a>, <a href="JavaScript:Void(0);" class="vf-link">Example</a>
+        Example searches: <a href="JavaScript:Void(0);" class="vf-link">Example</a>, <a href="JavaScript:Void(0);" class="vf-link">Example</a>, <a href="JavaScript:Void(0);" class="vf-link">Example</a>
+        |
+        <a href="JavaScript:Void(0);" class="vf-link">advanced search</a>
       </p>
 
       {# <a class="vf-hero__link" href="/components">See more Visual Framework patterns<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg></a> #}
@@ -130,48 +137,55 @@ layout: layouts/boilerplate.njk
   <section class="vf-grid vf-grid__col-3 | vf-card-container | vf-u-fullbleed vf-u-background-color-ui--grey--light">
     <div class="vf-grid__col--span-2">
       <div class="vf-grid vf-grid__col-2">
-        {% render '@vf-section-header--has-a-link-and-text', {
-          "section_title": "Browse",
-          "href": "JavaScript:Void(0);",
-          "vf_section__content": [
-            "On the homepage, don't use a strip of navigation."
-          ]
+        {%- render '@vf-card', {
+          "newTheme": "primary",
+          "variant": "bordered",
+          "card_title": "Browse",
+          "card_href": "JavaScript:Void(0);",
+          "card_text": "On the homepage, don't use a strip of navigation",
+          "card_image__alt": ""
         } %}
 
-        {% render '@vf-section-header--has-a-link-and-text', {
-          "section_title": "Results",
-          "href": "JavaScript:Void(0);",
-          "vf_section__content": [
-            "It's more user friendly to put the navigation into sqaures like these."
-          ]
+        {%- render '@vf-card', {
+          "newTheme": "primary",
+          "variant": "bordered",
+          "card_title": "Results",
+          "card_href": "JavaScript:Void(0);",
+          "card_text": "It's more user friendly to put the navigation into squares like these",
+          "card_image__alt": ""
         } %}
 
-        {% render '@vf-section-header--has-a-link-and-text', {
-          "section_title": "Download",
-          "href": "JavaScript:Void(0);",
-          "vf_section__content": [
-            "It allows users to explore the content."
-          ]
+        {%- render '@vf-card', {
+          "newTheme": "primary",
+          "variant": "bordered",
+          "card_title": "Download",
+          "card_href": "JavaScript:Void(0);",
+          "card_text": "It allows users to explore the content",
+          "card_image__alt": ""
         } %}
 
-        {% render '@vf-section-header--has-a-link-and-text', {
-          "section_title": "Help",
-          "href": "JavaScript:Void(0);",
-          "vf_section__content": [
-            "And also read about what to expect in each section"
-          ]
+        {%- render '@vf-card', {
+          "newTheme": "primary",
+          "variant": "bordered",
+          "card_title": "Help",
+          "card_href": "JavaScript:Void(0);",
+          "card_text": "And also read about what to expect in each section",
+          "card_image__alt": ""
         } %}
+
       </div>
     </div>
 
     <div>
-      {% render '@vf-section-header--has-a-link-and-text', {
-        "section_title": "About this service",
-        "href": "JavaScript:Void(0);",
-        "vf_section__content": [
-          "A thing provides functional analysis of proteins by classifying them into families and predicting domains and important sites."
-        ]
+      {%- render '@vf-card', {
+        "newTheme": "primary",
+        "variant": "striped",
+        "card_title": "About this service",
+        "card_href": "JavaScript:Void(0);",
+        "card_text": "A thing provides functional analysis of proteins by classifying them into families and predicting domains and important sites.",
+        "card_image__alt": ""
       } %}
+
       {# <p class="vf-text-body vf-text-body--3">
         To classify proteins in this way, InterPro uses predictive models, known as signatures, provided by several different databases (referred to as member databases) that make up the InterPro consortium. We combine protein signatures from these member databases into a single searchable resource, capitalising on their individual strengths to produce a powerful integrated database and diagnostic tool.
       </p> #}
