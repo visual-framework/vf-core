@@ -121,16 +121,17 @@ function emblContentHubFetch() {
       // We'll still inject the content from the contentHub along with any passed "no matches" text
       var noContentMessage = targetLink.getAttribute("data-embl-js-content-hub-loader-no-content");
 
-      if (noContentMessage == "true") {
-        // use a default
-        noContentMessage = "No content was found found for this query.";
+      if (noContentMessage !== "null") {
+        if (noContentMessage == "true") {
+          // use a default
+          noContentMessage = "No content was found found for this query.";
+        }
+        var noContentMessageElement = document.createElement("div");
+        noContentMessageElement.classList.add("vf-text");
+        noContentMessageElement.classList.add("embl-content-hub-html__no-content-found");
+        noContentMessageElement.innerHTML = noContentMessage;
+        exportedContent.appendChild(noContentMessageElement.firstChild);
       }
-
-      var noContentMessageElement = document.createElement("div");
-      noContentMessageElement.classList.add("vf-text");
-      noContentMessageElement.classList.add("embl-content-hub-html__no-content-found");
-      noContentMessageElement.innerHTML = noContentMessage;
-      exportedContent.appendChild(noContentMessageElement.firstChild);
 
       // if data-embl-js-content-hub-loader-no-content-hide is true or has a class, hide accordingly
       var noContentHideBehavior = targetLink.getAttribute("data-embl-js-content-hub-loader-no-content-hide");
