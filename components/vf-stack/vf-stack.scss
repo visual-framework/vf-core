@@ -22,7 +22,7 @@
  *
  * notes:
  * a: We are using `!important` here because some components have
- *    margin set that we need to overide.
+ *    margin set that we need to override.
  * b: We can probably remove the custom property when all components
  *    have been purged of margin-bottom too.
  *
@@ -64,4 +64,14 @@
 
 .vf-stack--1600 > * + * {
   --vf-stack-margin: #{map-get($vf-spacing-map, vf-spacing--1600)};
+}
+
+// vf-u-fullbleed should get more spacing after most items
+.vf-stack > :not(.vf-hero) + .vf-u-fullbleed:not(.vf-hero):not(.ebi-header-footer) {
+  margin-top: #{map-get($vf-spacing-map, vf-spacing--1200)} !important;
+}
+
+// vf-stack should not apply between a hero and vf-u-fullbleed
+.vf-stack > .vf-hero + .vf-u-fullbleed {
+  margin-top: unset !important;
 }

@@ -1,3 +1,8 @@
+### 3.3.1
+
+* Reduces vf-hero bottom margin.
+* Makes vf-hero bottom margin "smarter" by no applying when the following element uses `vf-u-fullwidth` or `vf-navigation`. In these cases vf-stack is sufficient.
+
 ### 3.3.0
 
 * Updates the default hero spacing to be equivalent to 1200 (was: 800). This better matches the actual default usage in practice and is based off design feedback for consistency.
