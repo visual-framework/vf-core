@@ -1,3 +1,7 @@
+### 2.4.0
+
+* Deprecates `vf-box`. Most use cases should now use the `vf-card` component. A new layout-specific `vf-box` may be made in the future.
+
 ### 2.3.3
 
 * Repeat release of 2.3.2 for dependency linkage.

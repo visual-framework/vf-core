@@ -1,3 +1,7 @@
+### 1.9.1
+
+* `--inline` variant Nunjucks template file cleanup.
+
 ### 1.9.0
 
 * Correct "tertary" typo in "vf-button--tertiary".
