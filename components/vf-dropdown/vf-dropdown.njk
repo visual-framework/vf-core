@@ -1,0 +1,25 @@
+{# Make sure any variables are listed inside the following if statement #}
+
+<div class="vf-dropdown" data-vf-js-dropdown style="width:{{width}}">
+  <div class="vf-dropdown__label-container">
+    <div class="vf-dropdown__label" style="text-align: {{labelAlign}}">{{label}}</div>
+    <div>
+      <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16" width="16">
+
+        <g transform="matrix(0.6666666666666666,0,0,0.6666666666666666,0,0)">
+          <path d="M12,19.5a2.34,2.34,0,0,1-1.73-.78L.46,7.57A1.85,1.85,0,1,1,3.23,5.13l8.58,9.75a.25.25,0,0,0,.38,0l8.58-9.75a1.85,1.85,0,1,1,2.77,2.44L13.73,18.72A2.34,2.34,0,0,1,12,19.5Z" style="fill: #000000"></path>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div class="vf-dropdown__menu-container">
+    <div class="vf-dropdown-overlay"></div>
+    <div class="vf-dropdown__menu">
+      {% for item in menuItems %}
+        <div class="vf-dropdown__menu-item">
+          <a class="vf-dropdown__menu-item-link" href="{{item.link_href}}">{{item.text}}</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

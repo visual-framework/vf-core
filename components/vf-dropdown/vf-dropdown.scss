@@ -1,0 +1,81 @@
+// vf-dropdown
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import "package.variables.scss";
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+@import "vf-dropdown.variables.scss";
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-dropdown/vf-dropdown.scss';
+
+.vf-dropdown {
+  display: inline-block;
+  .vf-dropdown__label-container {
+    padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 8050;
+    position: relative;
+    .vf-dropdown__label {
+      flex: 1;
+      text-align: right;
+      margin-right: 0.8rem 1.5rem;
+    }
+  }
+  .vf-dropdown__menu-container {
+    display: none;
+
+    .vf-dropdown__menu {
+      border-top: 1px solid #eee;
+      position: relative;
+      z-index: 8050;
+      box-shadow: 0px 3px 6px 1px #ddd;
+      padding: 0.5rem 0;
+
+      .vf-dropdown__menu-item {
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+
+        .vf-dropdown__menu-item-link {
+          text-decoration: none;
+          color: var(--vf-dropdown--item-color);
+        }
+        &:hover {
+          background-color: #CDE3F8;
+        }
+
+        &.active {
+          font-weight: 600;
+        }
+      }
+    }
+    .vf-dropdown-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 8000;
+    }
+  }
+
+  &.menu-opened .arrow-icon {
+    transform: rotate(180deg);
+  }
+}
