@@ -1,0 +1,8 @@
+{# Make sure any variables are listed inside the following if statement #}
+<div class="vf-progress-indicator" style="width: {% if width %} {{width}} {% else %} 100% {% endif %}">
+  <div class="vf-progress-indicator__mark" style="width: {{progressPercent}}%"></div>
+  {% if helperText %}
+  <div class="vf-progress-indicator__helper-text"> some helper text
+  {% endif %}
+  </div>
+</div>

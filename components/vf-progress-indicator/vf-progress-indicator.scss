@@ -1,0 +1,40 @@
+// vf-progress-indicator
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import "package.variables.scss";
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+@import "vf-progress-indicator.variables.scss";
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-progress-indicator/vf-progress-indicator.scss';
+.vf-progress-indicator {
+  width: 100%;
+  height: 0.5rem;
+  margin-top: 1rem;
+  background-color: #e4e4e4;
+  .vf-progress-indicator__mark {
+
+    height: 100%;
+    background-color: #18974c;
+    border-left: 1.5px solid #18974C;
+  }
+  .vf-progress-indicator__helper-text {
+    margin-top: 0.5rem;
+    font-size: small;
+    text-align: right;
+  }
+}
