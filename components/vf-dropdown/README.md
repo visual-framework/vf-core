@@ -5,9 +5,10 @@
 ## About
 
 A dropdown component that can be used in navigation menus.
-Supports click trigger to open. User can select menu item or click outside menu to close it. When menu is open, outside clicks will be captured by menu.
 
 ## Usage
+
+Supports click trigger to open. User can select menu item or click outside menu to close it. When menu is open, outside clicks will be captured by menu.
 
 Currently, usage intended with navigation menu.
 
