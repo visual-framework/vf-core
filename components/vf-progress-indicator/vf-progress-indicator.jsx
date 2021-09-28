@@ -1,8 +1,8 @@
-// vf-back-to-top for React
+// vf-progress-indicator for React
 // See vf-extensions-react for usage guidance
 
 import React from "react";
-import "./vf-back-to-top.scss";
+import "./vf-progress-indicator.scss";
 
 export function VFProgressIndicator({ helperText = "", progressPercent = 0 }) {
   return (
