@@ -4,6 +4,6 @@
 import React, { useEffect, useState } from "react";
 import "./vf-dropdown.scss";
 
-export function VFBackToTop({}) {
+export function VFDropdown({}) {
   return <div className={`vf-dropdown`}>To Be Implemented</div>;
 }
