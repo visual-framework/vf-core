@@ -1,5 +1,10 @@
-{# Make sure any variables are listed inside the following if statement #}
-
+{%- if context %}
+  {% set width = context.width %}
+  {% set labelAlign = context.labelAlign %}
+  {% set label = context.label %}
+  {% set id = context.id %}
+  {% set menuItems = context.menuItems %}
+{%- endif -%}
 <div class="vf-dropdown" data-vf-js-dropdown style="width:{{width}}">
   <div class="vf-dropdown__label-container">
     <div class="vf-dropdown__label" style="text-align: {{labelAlign}}">{{label}}</div>
