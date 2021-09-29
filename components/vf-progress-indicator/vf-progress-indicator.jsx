@@ -8,14 +8,14 @@ export function VFProgressIndicator({ helperText = "", progressPercent = 0 }) {
   return (
     <div
       class="vf-progress-indicator"
-      style={{"width": width || '100%'}}
+      style={{"--vf-progress-indicator__width": width || '100%'}}
     >
       <div
         class="vf-progress-indicator__mark"
-        style={{"width": progressPercent+"%"}}
+        style={{"--vf-progress-indicator__percent": progressPercent+"%"}}
       ></div>
       {helperText && (
-        <div class="vf-progress-indicator__helper-text">{helperText}</div>
+        <p class="vf-progress-indicator__helper-text">{helperText}</p>
       )}
     </div>
   );
