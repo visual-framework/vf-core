@@ -4,9 +4,11 @@
 
 ## About
 
-The `vf-box` layout container can add spacing, a background color, a border, and text colours to an area of content.
+This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="https://stable.visual-framework.dev/components/vf-card">vf-card</a> component. A new layout-specific `vf-box` may be made in the future.
 
 ## Usage
+
+The `vf-box` layout container can add spacing, a background color, a border, and text colours to an area of content.
 
 A `vf-box` can be used in all layout components (`vf-grid`, `vf-stack`, `embl-grid`) and also inside of `vf-content`.
 
