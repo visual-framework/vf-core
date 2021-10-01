@@ -1,4 +1,4 @@
-### 2.6.0
+### 2.6.1
 
 * Resolves an accessibility issue with contrast for the striped card subheading variant.
   * https://github.com/visual-framework/vf-core/issues/1657

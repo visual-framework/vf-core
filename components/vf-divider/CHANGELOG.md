@@ -1,3 +1,7 @@
+### 2.0.1
+
+* Minor README.md update to correct usage of `vf-stack`.
+
 ### 2.0.0
 
 * removes the `grid-column: 1 / -1;` rule

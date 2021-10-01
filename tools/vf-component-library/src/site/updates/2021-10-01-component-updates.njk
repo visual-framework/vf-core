@@ -1,0 +1,481 @@
+---
+title: Rollup release 2.5.1
+subtitle: We're excited to release rollup version 2.5.1. It brings a number of new components, documentation cleanups and deprecates old and unused code.
+date: 2021-10-01 10:10:29
+version: 2.5.1
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{% markdown %}
+
+RELEASE NOTES HERE
+
+As always, you can [join the conversation on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+{% endmarkdown %}
+
+{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+
+#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+<!-- Tools don't have pages in the component library -->
+
+#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
+{# endmacros ---/ #}
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+<br/>
+
+{{ notes("vf-banner", "1.9.1", "ad90662b87148957d29dda623fc3f5335bb0d96f") }}
+
+* `--inline` variant Nunjucks template file cleanup.
+
+{{ notes("vf-box", "2.4.0", "ad90662b87148957d29dda623fc3f5335bb0d96f") }}
+
+* Deprecates `vf-box`. Most use cases should now use the `vf-card` component. A new layout-specific `vf-box` may be made in the future.
+
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "65cbf595d19da8f6d41f62c11da550c41c36acdb") }}
+ "commit": "65cbf595d19da8f6d41f62c11da550c41c36acdb",
+  "abbreviated_commit": "65cbf595d",
+  "subject": "bug: content-hub-notifications (#1675)",
+  "sanitized_subject_line": "bug-content-hub-notifications-1675",
+  "author": {
+    "name": "Ken Hawkins",
+    "email": "khawkins98@gmail.com",
+    "date": "Fri, 1 Oct 2021 07:42:30 +0200"
+  },
+
+:100755 100755 595a8d459 fb95b71a9 M	components/embl-content-hub-loader/CHANGELOG.md
+:100755 100755 2157c76f6 c33df9d2f M	components/embl-notifications/CHANGELOG.md
+
+diff --git a/components/embl-content-hub-loader/CHANGELOG.md b/components/embl-content-hub-loader/CHANGELOG.md
+index 595a8d459..fb95b71a9 100755
+--- a/components/embl-content-hub-loader/CHANGELOG.md
++++ b/components/embl-content-hub-loader/CHANGELOG.md
+@@ -0,0 +1,4 @@
++### 1.1.1
++
+* Avoid a null variable issue when contentHub returns no results.
++
+diff --git a/components/embl-notifications/CHANGELOG.md b/components/embl-notifications/CHANGELOG.md
+index 2157c76f6..c33df9d2f 100755
+--- a/components/embl-notifications/CHANGELOG.md
++++ b/components/embl-notifications/CHANGELOG.md
+@@ -0,0 +1,5 @@
++### 1.1.1
++
+* Remove use of long deprecated `vf-banner--phase` variant and replace with `vf-banner--alert vf-banner--info`.
+* Adds `vf-u-margin__top--400` to handle cases of nested output where `vf-stack` may not reach.
++
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "7e6f2ace2d60abd26b9d7355631fb5ae03f8a12e") }}
+ "commit": "7e6f2ace2d60abd26b9d7355631fb5ae03f8a12e",
+  "abbreviated_commit": "7e6f2ace2",
+  "subject": "bug: section-header links should still be h2 (#1685)",
+  "sanitized_subject_line": "bug-section-header-links-should-still-be-h2-1685",
+  "author": {
+    "name": "Ken Hawkins",
+    "email": "khawkins98@gmail.com",
+    "date": "Wed, 29 Sep 2021 20:38:04 +0200"
+  },
+
+:100755 100755 8223718be 4a80d40a5 M	components/vf-section-header/CHANGELOG.md
+
+diff --git a/components/vf-section-header/CHANGELOG.md b/components/vf-section-header/CHANGELOG.md
+index 8223718be..4a80d40a5 100755
+--- a/components/vf-section-header/CHANGELOG.md
++++ b/components/vf-section-header/CHANGELOG.md
+@@ -0,0 +1,6 @@
++### 1.5.2
++
+* Accessibility: When section header is a link, it should still be wrapped an `h2`
+  * https://github.com/visual-framework/vf-core/issues/1683
+* Whitespace control
++
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "aad7b7ac8c75a3ecf4adf1788d7da5051a83f8d7") }}
+ "commit": "aad7b7ac8c75a3ecf4adf1788d7da5051a83f8d7",
+  "abbreviated_commit": "aad7b7ac8",
+  "subject": "Initial commit for progress indicator (#1682)",
+  "sanitized_subject_line": "Initial-commit-for-progress-indicator-1682",
+  "author": {
+    "name": "Nitin Jadhav",
+    "email": "nitinjadhav@gmail.com",
+    "date": "Tue, 28 Sep 2021 19:24:37 +0530"
+  },
+
+:000000 100644 000000000 78554b2ba A	components/vf-progress-indicator/CHANGELOG.md
+
+diff --git a/components/vf-progress-indicator/CHANGELOG.md b/components/vf-progress-indicator/CHANGELOG.md
+new file mode 100644
+index 000000000..78554b2ba
+--- /dev/null
++++ b/components/vf-progress-indicator/CHANGELOG.md
+@@ -0,0 +1,4 @@
++### 1.0.0-alpha.1
++
+* Basic implementation of vf-progress-indicator
+* [Tracking discussion](https://github.com/visual-framework/vf-core/discussions/1648)
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "4db92db5a905a2833a7778d525ca4deb74d2e7bb") }}
+ "commit": "4db92db5a905a2833a7778d525ca4deb74d2e7bb",
+  "abbreviated_commit": "4db92db5a",
+  "subject": "Component: vf-dropdown (#1679)",
+  "sanitized_subject_line": "Component-vf-dropdown-1679",
+  "author": {
+    "name": "Nitin Jadhav",
+    "email": "nitinjadhav@gmail.com",
+    "date": "Tue, 28 Sep 2021 19:22:09 +0530"
+  },
+
+:000000 100644 000000000 8e7bf88f8 A	components/vf-dropdown/CHANGELOG.md
+
+diff --git a/components/vf-dropdown/CHANGELOG.md b/components/vf-dropdown/CHANGELOG.md
+new file mode 100644
+index 000000000..8e7bf88f8
+--- /dev/null
++++ b/components/vf-dropdown/CHANGELOG.md
+@@ -0,0 +1,4 @@
++### 1.0.0-alpha.1
++
+* Basic implementation of vf-dropdown component
+* [Tracking issue](https://github.com/visual-framework/vf-core/discussions/1299)
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "4fbffd6e837b74f14b43378f00893e191837223b") }}
+ "commit": "4fbffd6e837b74f14b43378f00893e191837223b",
+  "abbreviated_commit": "4fbffd6e8",
+  "subject": "Accesibility: vf-card striped variant subheading contrast (#1658)",
+  "sanitized_subject_line": "Accesibility-vf-card-striped-variant-subheading-contrast-1658",
+  "author": {
+    "name": "Ken Hawkins",
+    "email": "khawkins98@gmail.com",
+    "date": "Mon, 27 Sep 2021 15:36:05 +0200"
+  },
+
+:100755 100755 2b12445b3 d85763c94 M	components/vf-card/CHANGELOG.md
+
+diff --git a/components/vf-card/CHANGELOG.md b/components/vf-card/CHANGELOG.md
+index 2b12445b3..d85763c94 100755
+--- a/components/vf-card/CHANGELOG.md
++++ b/components/vf-card/CHANGELOG.md
+@@ -2,0 +3,5 @@
+* Resolves an accessibility issue with contrast for the striped card subheading variant.
+  * https://github.com/visual-framework/vf-core/issues/1657
++
++### 2.6.0
++
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "6578df441fc1493805dd1cdce70f99ff39c73560") }}
+ "commit": "6578df441fc1493805dd1cdce70f99ff39c73560",
+  "abbreviated_commit": "6578df441",
+  "subject": "draft home page and card improvements (#1674)",
+  "sanitized_subject_line": "draft-home-page-and-card-improvements-1674",
+  "author": {
+    "name": "Ken Hawkins",
+    "email": "khawkins98@gmail.com",
+    "date": "Mon, 27 Sep 2021 11:08:43 +0200"
+  },
+
+:100755 100755 c0a54191c ea66cc0ee M	components/vf-card-container/CHANGELOG.md
+:100755 100755 1043d848b 2d7b86783 M	components/vf-hero/CHANGELOG.md
+:100755 100755 c52b41d44 ad898744b M	components/vf-news-container/CHANGELOG.md
+:100755 100755 4b684a74e 152ce81bd M	components/vf-search/CHANGELOG.md
+:100755 100755 161fdf772 adef329fa M	components/vf-stack/CHANGELOG.md
+:100755 100755 48579a816 4644b9b3b M	components/vf-summary/CHANGELOG.md
+
+diff --git a/components/vf-card-container/CHANGELOG.md b/components/vf-card-container/CHANGELOG.md
+index c0a54191c..ea66cc0ee 100755
+--- a/components/vf-card-container/CHANGELOG.md
++++ b/components/vf-card-container/CHANGELOG.md
+@@ -1 +1 @@
+-### 3.1.3
++### 3.2.0
+@@ -3,0 +4,3 @@
+* Halves vertical spacing between `vf-section-header` and vf-cards.
+* Refines container vertical by using `--page-grid-gap)`.
+* Adds 4 column card support for when cards have no imagery.
+diff --git a/components/vf-hero/CHANGELOG.md b/components/vf-hero/CHANGELOG.md
+index 1043d848b..2d7b86783 100755
+--- a/components/vf-hero/CHANGELOG.md
++++ b/components/vf-hero/CHANGELOG.md
+@@ -0,0 +1,5 @@
++### 3.3.1
++
+* Reduces vf-hero bottom margin.
+* Makes vf-hero bottom margin "smarter" by no applying when the following element uses `vf-u-fullwidth` or `vf-navigation`. In these cases vf-stack is sufficient.
++
+diff --git a/components/vf-news-container/CHANGELOG.md b/components/vf-news-container/CHANGELOG.md
+index c52b41d44..ad898744b 100755
+--- a/components/vf-news-container/CHANGELOG.md
++++ b/components/vf-news-container/CHANGELOG.md
+@@ -0,0 +1,4 @@
++### 1.1.0
++
+* Standardizes the featured news variant as 4 columns.
++
+diff --git a/components/vf-search/CHANGELOG.md b/components/vf-search/CHANGELOG.md
+index 4b684a74e..152ce81bd 100755
+--- a/components/vf-search/CHANGELOG.md
++++ b/components/vf-search/CHANGELOG.md
+@@ -0,0 +1,4 @@
++### 3.0.0-alpha.1
++
+* Refine spacing when more than 1 inline `vf-form__item`.
++
+diff --git a/components/vf-stack/CHANGELOG.md b/components/vf-stack/CHANGELOG.md
+index 161fdf772..adef329fa 100755
+--- a/components/vf-stack/CHANGELOG.md
++++ b/components/vf-stack/CHANGELOG.md
+@@ -0,0 +1,5 @@
++### 2.1.2
++
+* vf-stack no longer applies between a `vf-hero` and `vf-u-fullbleed`.
+* Gives more margin-top to `vf-u-fullbleed` after most items.
++
+@@ -3 +8 @@
+-* adds usage guideline for inlcude the default `vf-stack` and the size variant.
+* adds usage guideline for include the default `vf-stack` and the size variant.
+@@ -19,2 +24,2 @@
+-* now uses Nunjucks 'blocks' so we can use this layout more programatically
+-* hides the defauly Nunjcuks file as it renders what looks like a blank page (because it's waiting for the block content)
+* now uses Nunjucks 'blocks' so we can use this layout more programmatically
+* hides the default Nunjucks file as it renders what looks like a blank page (because it's waiting for the block content)
+diff --git a/components/vf-summary/CHANGELOG.md b/components/vf-summary/CHANGELOG.md
+index 48579a816..4644b9b3b 100755
+--- a/components/vf-summary/CHANGELOG.md
++++ b/components/vf-summary/CHANGELOG.md
+@@ -0,0 +1,5 @@
++### 1.6.0
++
+* Removes support for styling of `vf-summary` inside of `vf-box`. (this is no longer encouraged)
+* Adds support for conditional display of `vf-summary__text`.
++
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "d6e8380b1a77e54296b5529d47bc86773247e440") }}
+ "commit": "d6e8380b1a77e54296b5529d47bc86773247e440",
+  "abbreviated_commit": "d6e8380b1",
+  "subject": "Component: vf-bookmark (#1672)",
+  "sanitized_subject_line": "Component-vf-bookmark-1672",
+  "author": {
+    "name": "Ken Hawkins",
+    "email": "khawkins98@gmail.com",
+    "date": "Fri, 24 Sep 2021 19:35:36 +0200"
+  },
+
+:000000 100755 000000000 cbe526c0e A	components/vf-bookmark/CHANGELOG.md
+
+diff --git a/components/vf-bookmark/CHANGELOG.md b/components/vf-bookmark/CHANGELOG.md
+new file mode 100755
+index 000000000..cbe526c0e
+--- /dev/null
++++ b/components/vf-bookmark/CHANGELOG.md
+@@ -0,0 +1,4 @@
++### 1.0.0-alpha.1
++
+* Creates an initial version of vf-bookmark.
+  * https://github.com/visual-framework/vf-core/discussions/1654
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "a035dab03c373eb362475ca231ed10b75510f586") }}
+ "commit": "a035dab03c373eb362475ca231ed10b75510f586",
+  "abbreviated_commit": "a035dab03",
+  "subject": "Feature: vf-button angular support (#1666)",
+  "sanitized_subject_line": "Feature-vf-button-angular-support-1666",
+  "author": {
+    "name": "Ken Hawkins",
+    "email": "khawkins98@gmail.com",
+    "date": "Wed, 15 Sep 2021 11:14:11 +0200"
+  },
+
+:100644 100644 464ef207f 354cad227 M	components/vf-button/CHANGELOG.md
+
+diff --git a/components/vf-button/CHANGELOG.md b/components/vf-button/CHANGELOG.md
+index 464ef207f..354cad227 100644
+--- a/components/vf-button/CHANGELOG.md
++++ b/components/vf-button/CHANGELOG.md
+@@ -0,0 +1,4 @@
++### 2.0.0-alpha.2
++
+* Adds experimental angular support. See README.md for more.
++
+@@ -4 +8 @@
+-* Ensure no colour is et with revised `set-type` mixin.
+* Ensure no colour is set with revised `set-type` mixin.
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "b0b6af03959b3fd81bc05c92b8a5231e64a9c084") }}
+ "commit": "b0b6af03959b3fd81bc05c92b8a5231e64a9c084",
+  "abbreviated_commit": "b0b6af039",
+  "subject": "chore: vf-card-container formatting (#1660)",
+  "sanitized_subject_line": "chore-vf-card-container-formatting-1660",
+  "author": {
+    "name": "Ken Hawkins",
+    "email": "khawkins98@gmail.com",
+    "date": "Mon, 13 Sep 2021 19:04:39 +0200"
+  },
+
+:100755 100755 23ecef21c c0a54191c M	components/vf-card-container/CHANGELOG.md
+
+diff --git a/components/vf-card-container/CHANGELOG.md b/components/vf-card-container/CHANGELOG.md
+index 23ecef21c..c0a54191c 100755
+--- a/components/vf-card-container/CHANGELOG.md
++++ b/components/vf-card-container/CHANGELOG.md
+@@ -0,0 +1,4 @@
++### 3.1.3
++
+* Fix README formatting.
++
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "94e50cdff3c65a884fdce82bc3f3c13b56ae512f") }}
+ "commit": "94e50cdff3c65a884fdce82bc3f3c13b56ae512f",
+  "abbreviated_commit": "94e50cdff",
+  "subject": "Deprecate: vf-link-list (#1655)",
+  "sanitized_subject_line": "Deprecate-vf-link-list-1655",
+  "author": {
+    "name": "Ken Hawkins",
+    "email": "khawkins98@gmail.com",
+    "date": "Fri, 10 Sep 2021 10:28:28 +0200"
+  },
+
+:100755 100755 e0ae815c7 5d0400eb5 M	components/vf-link-list/CHANGELOG.md
+
+diff --git a/components/vf-link-list/CHANGELOG.md b/components/vf-link-list/CHANGELOG.md
+index e0ae815c7..5d0400eb5 100755
+--- a/components/vf-link-list/CHANGELOG.md
++++ b/components/vf-link-list/CHANGELOG.md
+@@ -0,0 +1,15 @@
++### 1.5.0
++
++This deprecates vf-link-list as many components are either widely unused or only seldom used — for the components that aren't yet used much we also have major revisions coming and we wish to discourage use of components that are about to be overhauled.
++
+* Links List Default: use vf-list + vf-heading
+* Links List no heading: use vf-list
+* Links List Tight: use vf-list  (we may add a vf-list--tight variant subject to demand)
+* Links List Very Easy: see above
+* Links List Easy: to be overhauled as vf-navigation--on-page
+* Links List Has Images: use vf-summary--has-image or vf-flag--middle
++
++Additionally there has been a confusion between when to use vf-list and vf-link-list that we're want to address.
++
++https://github.com/visual-framework/vf-core/issues/1649
++
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "653dd33a626f2132ee3145ed9037da45910984b5") }}
+ "commit": "653dd33a626f2132ee3145ed9037da45910984b5",
+  "abbreviated_commit": "653dd33a6",
+  "subject": "Deprecate: vf-header (#1656)",
+  "sanitized_subject_line": "Deprecate-vf-header-1656",
+  "author": {
+    "name": "Ken Hawkins",
+    "email": "khawkins98@gmail.com",
+    "date": "Fri, 10 Sep 2021 10:28:09 +0200"
+  },
+
+:100755 100755 569017bfc 957d16090 M	components/vf-componenet-rollup/CHANGELOG.md
+:100755 100755 b8d9caa16 7a24698bf M	components/vf-header/CHANGELOG.md
+
+diff --git a/components/vf-componenet-rollup/CHANGELOG.md b/components/vf-componenet-rollup/CHANGELOG.md
+index 569017bfc..957d16090 100755
+--- a/components/vf-componenet-rollup/CHANGELOG.md
++++ b/components/vf-componenet-rollup/CHANGELOG.md
+@@ -0,0 +1,5 @@
++## 1.4.3
++
+* Removes the unused vf-header component.
+  * https://github.com/visual-framework/vf-core/pull/1656
++
+diff --git a/components/vf-header/CHANGELOG.md b/components/vf-header/CHANGELOG.md
+index b8d9caa16..7a24698bf 100755
+--- a/components/vf-header/CHANGELOG.md
++++ b/components/vf-header/CHANGELOG.md
+@@ -0,0 +1,11 @@
++### 1.1.0
++
+* vf-header was an early concept on how we might accommodate multi-layers of branding ... but:
+    * It was never successfully used in production
+    * Is out of date technically and visually
+    * Has questionable IA/UX merritt in the current context
+* Therefore it is being deprecated.
+    * No migration guidance is supplied as it is not used in production.
+    * It is also being removed from the default rollup Sass/CSS.
+* https://github.com/visual-framework/vf-core/pull/1656
++
+
+
+ {{ notes("COMPONENTNAME", "VERSIONHERE", "6105538bac4fc14b919f042d3d9016cbf21bed84") }}
+ "commit": "6105538bac4fc14b919f042d3d9016cbf21bed84",
+  "abbreviated_commit": "6105538ba",
+  "subject": "deprecate: vf-activity-list and vf-activity-group (#1650)",
+  "sanitized_subject_line": "deprecate-vf-activity-list-and-vf-activity-group-1650",
+  "author": {
+    "name": "Ken Hawkins",
+    "email": "khawkins98@gmail.com",
+    "date": "Tue, 7 Sep 2021 15:53:34 +0200"
+  },
+
+:100755 100755 ca83e6284 402820941 M	components/vf-activity-group/CHANGELOG.md
+:100755 100755 7daa07908 965893fcc M	components/vf-activity-list/CHANGELOG.md
+
+diff --git a/components/vf-activity-group/CHANGELOG.md b/components/vf-activity-group/CHANGELOG.md
+index ca83e6284..402820941 100755
+--- a/components/vf-activity-group/CHANGELOG.md
++++ b/components/vf-activity-group/CHANGELOG.md
+@@ -0,0 +1,5 @@
++### 1.0.0-alpha.12
++
+* Deprecated as the component never saw wide adoption and neither the technical tooling nor use case was ever proven.
+  * https://github.com/visual-framework/vf-core/pull/1650
++
+diff --git a/components/vf-activity-list/CHANGELOG.md b/components/vf-activity-list/CHANGELOG.md
+index 7daa07908..965893fcc 100755
+--- a/components/vf-activity-list/CHANGELOG.md
++++ b/components/vf-activity-list/CHANGELOG.md
+@@ -0,0 +1,5 @@
+
+### 1.0.0-alpha.11
+* Deprecated as the component never saw wide adoption and neither the technical tooling nor use case was ever proven.
+  * https://github.com/visual-framework/vf-core/pull/1650
+
+
+
+
+{% endmarkdown %}
