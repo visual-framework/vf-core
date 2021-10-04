@@ -17,31 +17,10 @@ templateEngineOverride: njk
 
 <article class="embl-grid embl-grid--has-centered-content">
   {% render '@vf-section-header', {
-    "section_title": "Working on an existing VF project?",
-    "id": "components",
-    "vf_section__content": [
-      ""
-    ]
-  } %}
-  <div class="vf-content">
-    {% markdown %}
-    If you already have VF CSS and JS available to your project, follow the documentation and guidance on components and patterns.
-
-    - [Find buttons, tabs, cards and more in the components](/components)
-    - [Example pages, boilerplates and patterns](/patterns) for quick starts and layouts
-    - [A blog post on how to work make your first VF 2 page](https://allaboutken.com/posts/20191118-first-page-with-the-visual-framework.html)
-
-    {% endmarkdown %}
-  </div>
-</article>
-
-
-<article class="embl-grid embl-grid--has-centered-content">
-  {% render '@vf-section-header', {
-    "section_title": "Option 1",
+    "section_title": "CSS and JS from a CDN",
     "id": "option-1",
     "section__subheading": [
-      "CSS and JS from a CDN"
+      "Option 1"
     ]
   } %}
   <div class="vf-content">
@@ -61,10 +40,10 @@ templateEngineOverride: njk
 
 <article class="embl-grid embl-grid--has-centered-content">
   {% render '@vf-section-header', {
-    "section_title": "Option 2",
+    "section_title": "Install from npm",
     "id": "option-2",
     "section__subheading": [
-      "Install from npm"
+      "Option 2"
     ]
   } %}
   <div class="vf-content">
@@ -98,84 +77,121 @@ templateEngineOverride: njk
 
 <article class="embl-grid embl-grid--has-centered-content">
   {% render '@vf-section-header', {
-    "section_title": "Option 3",
+    "section_title": "Starter packages",
     "id": "option-3",
     "section__subheading": [
-      "Starter packages"
+      "Option 3"
     ]
   } %}
   <div class="vf-content">
     {% markdown %}
     If you still need to setup your development environment and code editor, [follow our development getting started guide]({{ "/developing/getting-started/setting-up" | url }}).
-
-    ### Compile CSS, JS
-
-    Need help converting VF components to static CSS and JS to pair with your existing application or site? Use the `vf-build-boilerplate`.
-
-    It's also a good introduction into integrating VF components into an application.
-
-    [`vf-build-boilerplate`](https://github.com/visual-framework/vf-build-boilerplate)
-
-    - `yarn create @visual-framework/vf-project your-new-site-name vf-build-boilerplate`
-    - add Visual Framework components with `yarn add @visual-framework/vf-component-name` or make a new component with [`vf-component-generator`](https://www.npmjs.com/package/@visual-framework/vf-component-generator)
-
-    ### A static site generator
-
-    Uses the preformat [11ty](https://www.11ty.io/) as a static site generator to build sites with VF components. This approach pre-integrates the VF Core, giving you easy access to component assets and a rollup build process to generate compiled CSS and JS.
-
-    [`vf-eleventy` boilerplate](https://github.com/visual-framework/vf-eleventy)
-
-    - `yarn create @visual-framework/vf-project your-new-site-name`
-    - add Visual Framework components with `yarn add @visual-framework/vf-component-name` or make a new component with [`vf-component-generator`](https://www.npmjs.com/package/@visual-framework/vf-component-generator)
-
-    ### A design system
-
-    Extends`vf-eleventy`to document your design system, create+document components, patterns and boilerplates. You can also generate static CSS and JS assets for simple use elsewhere in vanilla HTML+CSS+JS pages.
-
-    [`vf-demo-design-system` boilerplate](https://github.com/visual-framework/vf-demo-design-system)
-
-    - `yarn create @visual-framework/vf-project your-new-site-name vf-demo-design-system`
-    - add Visual Framework components with `yarn add @visual-framework/vf-component-name` or make a new component with [`vf-component-generator`](https://www.npmjs.com/package/@visual-framework/vf-component-generator)
-
-    ### WordPress theme and plugins
-
-    Build a WordPress site using VF components.
-
-    - `Pre-alpha, no link yet`
-    - Register your interest ken.hawkins@embl.de
-
-    ### React boilerplate
-
-    A demonstration React-based project using VF components.
-
-    - `Pre-alpha, no link yet`
-    - Register your interest ken.hawkins@embl.de
-
-    Can't find what you need? [Ask for help on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
-
-
     {% endmarkdown %}
 
-    {% codeblock 'bash' -%}
+    <details class="vf-details">
+      <summary class="vf-details--summary">Compile CSS, JS</summary>
 
-    # 1. Add the Sass config, starter and any components
+      {% markdown %}
 
-    yarn add @visual-framework/vf-sass-config
-    yarn add @visual-framework/vf-sass-starter
-    yarn add @visual-framework/vf-content
-    yarn add @visual-framework/vf-analytics-google
+      Need help converting VF components to static CSS and JS to pair with your existing application or site? Use the `vf-build-boilerplate`.
 
-    # 2. Import it in your Sass
+      It's also a good introduction into integrating VF components into an application.
 
-    @import 'node_modules/@visual-framework/vf-sass-starter/index.scss';
-    @import 'node_modules/@visual-framework/vf-content/vf-content.scss';
+      [`vf-build-boilerplate`](https://github.com/visual-framework/vf-build-boilerplate)
 
-    # 3. Import JS modules
+      - `yarn create @visual-framework/vf-project your-new-site-name vf-build-boilerplate`
+      - add Visual Framework components with `yarn add @visual-framework/vf-component-name` or make a new component with [`vf-component-generator`](https://www.npmjs.com/package/@visual-framework/vf-component-generator)
 
-    import { vfGaTrackInteraction } from 'node_modules/@visual-framework/vf-analytics-google/vf-analytics-google.js';
+      {% endmarkdown %}
 
-    {%- endcodeblock %}
+    </details>
+
+    <details class="vf-details">
+      <summary class="vf-details--summary">A static site generator</summary>
+
+      {% markdown %}
+
+      Uses the preformat [11ty](https://www.11ty.io/) as a static site generator to build sites with VF components. This approach pre-integrates the VF Core, giving you easy access to component assets and a rollup build process to generate compiled CSS and JS.
+
+      [`vf-eleventy` boilerplate](https://github.com/visual-framework/vf-eleventy)
+
+      - `yarn create @visual-framework/vf-project your-new-site-name`
+      - add Visual Framework components with `yarn add @visual-framework/vf-component-name` or make a new component with [`vf-component-generator`](https://www.npmjs.com/package/@visual-framework/vf-component-generator)
+
+      {% endmarkdown %}
+
+    </details>
+
+    <details class="vf-details">
+      <summary class="vf-details--summary">A design system</summary>
+
+      {% markdown %}
+
+      Extends`vf-eleventy`to document your design system, create+document components, patterns and boilerplates. You can also generate static CSS and JS assets for simple use elsewhere in vanilla HTML+CSS+JS pages.
+
+      [`vf-demo-design-system` boilerplate](https://github.com/visual-framework/vf-demo-design-system)
+
+      - `yarn create @visual-framework/vf-project your-new-site-name vf-demo-design-system`
+      - add Visual Framework components with `yarn add @visual-framework/vf-component-name` or make a new component with [`vf-component-generator`](https://www.npmjs.com/package/@visual-framework/vf-component-generator)
+
+      {% endmarkdown %}
+    </details>
+
+    <details class="vf-details">
+      <summary class="vf-details--summary">WordPress theme and plugins</summary>
+      {% markdown %}
+
+      Build a WordPress site using VF components.
+
+      - `Pre-alpha, no link yet`
+      - Register your interest ken.hawkins@embl.de
+
+      {% endmarkdown %}
+    </details>
+
+
+
+    <details class="vf-details">
+      <summary class="vf-details--summary">React boilerplate</summary>
+
+      {% markdown %}
+
+      A demonstration React-based project using VF components.
+
+      - `Pre-alpha, no link yet`
+      - Register your interest ken.hawkins@embl.de
+
+      Can't find what you need? [Ask for help on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
+
+      {% endmarkdown %}
+    </details>
+
+
+
+
+
+
   </div>
 </article>
 
 {% include "navigation-in-this-section.njk" %}
+
+<article class="embl-grid embl-grid--has-centered-content">
+  {% render '@vf-section-header', {
+    "section_title": "Working on an existing VF project?",
+    "id": "components",
+    "vf_section__content": [
+      ""
+    ]
+  } %}
+  <div class="vf-content">
+    {% markdown %}
+    If you already have VF CSS and JS available to your project, follow the documentation and guidance on components and patterns.
+
+    - [Find buttons, tabs, cards and more in the components](/components)
+    - [Example pages, boilerplates and patterns](/patterns) for quick starts and layouts
+    - [A blog post on how to work make your first VF 2 page](https://allaboutken.com/posts/20191118-first-page-with-the-visual-framework.html)
+
+    {% endmarkdown %}
+  </div>
+</article>
