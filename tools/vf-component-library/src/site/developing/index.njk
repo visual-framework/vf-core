@@ -12,8 +12,13 @@ tags:
   - documentation
   - sections
 layout: layouts/section.njk
-templateEngineOverride: njk, md
+templateEngineOverride: njk
 ---
+
+<main class="vf-grid vf-grid__col-3">
+  <article class="vf-grid__col--span-2 | vf-content ">
+
+{% markdown %}
 
 #### In the right place?
 
@@ -28,15 +33,15 @@ first of all: thanks!
 We welcome ideas, bug reports, opinions and pull requests. Telling the maintainers
 why you want or have done something is always very helpful.
 
-<ol>
-{%- for page in collections['getting started'] | sort(false, true, 'order') %}
-{%- if page.data.layout %}
-  <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
-{%- endif %}
-{%- endfor %}
-  <li><a href="{{ "/guidance/creating-components" | url }}">Create a component</a></li>
-</ol>
-
-#### General guidelines, best practice <a id="guidelines"></a>
+#### General guidelines, best practice? <a id="guidelines"></a>
 
 [See the Guidance section]({{ '/guidance' | url }})
+
+{% endmarkdown %}
+
+  </article>
+  <div></div>
+</main>
+
+{% include "navigation-in-this-section.njk" %}
+

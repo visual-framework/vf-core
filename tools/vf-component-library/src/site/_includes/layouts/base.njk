@@ -133,13 +133,11 @@
       -%}
         {# "modifier_class": "vf-component-library--hero", #}
       {%- include "vf-core-components/vf-hero/vf-hero.njk" -%}
-    {%- endif %}
-
-    {# Render sub nav for sections #}
-    {% if section and (hideSectionNavigation != true) %}
+    {% elseif section and (hideSectionNavigation != true) %}
+      {# Render sub nav for sections #}
       {%- set navigationList = [] -%}
       {%- for entry in collections[section] | sort(false, true, 'data.order') %}
-        {%- if entry.data.layout %}
+        {%- if entry.data.layout and  (entry.data.is_index != true) %}
           {%- set isCurrent = false -%}
           {%- if entry.url == page.url %}
             {%- set isCurrent = true -%}

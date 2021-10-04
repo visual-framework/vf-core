@@ -3,28 +3,17 @@ is_index: true
 promoted: true
 hideSubPosts: false
 title: Building a site
-subtitle: The when and how to making a project powered with Visual Framework components.
-intro: Visual Framework components can be utilised in many ways, here are a few recommended approaches that will fit most use cases.
+subtitle: Visual Framework components can be utilised in many ways, here are a few recommended approaches that will fit most use cases.
+intro: ""
 date: 2019-04-09 12:24:50
 section: building
 order: 1
 tags:
   - building
   - sections
-layout: layouts/base.njk
+layout: layouts/section.njk
 templateEngineOverride: njk
 ---
-
-{% render '@vf-intro', {
-  "vf_intro_heading": title,
-  "vf_intro_lede": subtitle,
-  "vf_intro_text": [
-    intro
-  ],
-  "vf_intro_subheading": subheading,
-  "vf_intro_badge": false
-} %}
-
 
 <article class="embl-grid embl-grid--has-centered-content">
   {% render '@vf-section-header', {
@@ -188,3 +177,5 @@ templateEngineOverride: njk
     {%- endcodeblock %}
   </div>
 </article>
+
+{% include "navigation-in-this-section.njk" %}

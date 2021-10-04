@@ -21,37 +21,22 @@ module.exports = {
     about: {
       url: "/about",
       title: "About the Visual Framework",
-      summary: "A toolkit for better life science websites."
+      summary: "A toolkit tailored for better life science websites."
     },
     building: {
       url: "/building",
       title: "Building a site",
       summary: "How to make a project with Visual Framework components."
     },
-    designtokens: {
-      url: "/design-tokens",
-      title: "Design tokens",
-      summary: "The colour, typography, spacing, and other stylistic decisions as design tokens for consumption."
-    },
     developing: {
       url: "/developing",
-      title: "Developing",
-      summary: "Contributing code and guidance to the Visual Framework."
-    },
-    patterns: {
-      url: "/patterns",
-      title: "Patterns",
-      summary: "Pattern-level example boilerplates."
+      title: "Contributing",
+      summary: "Developing and contributing code and guidance to the Visual Framework."
     },
     components: {
       url: "/components",
       title: "Components and patterns",
       summary: "Building block components and pattern-level example boilerplates."
-    },
-    designkit: {
-      url: "/design-kit",
-      title: "Design kit",
-      summary: "Design and collaborate on ideas without code."
     }
   }
 };

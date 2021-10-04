@@ -1,34 +1,41 @@
 ---
 is_index: true
 title: About the Visual Framework
-subtitle: Tailored for life science websites.
+subtitle: A toolkit tailored for better life science websites.
 date: 2018-08-22 12:24:50
 section: about
 order: 1
 tags:
   - about
   - sections
-layout: layouts/base.njk
+layout: layouts/section.njk
 ---
 
-{% render '@vf-intro', {
-  "vf_intro_heading": subtitle,
-  "vf_intro_lede": "The Visual Framework is designed with robust technical flexibility and goes beyond guidance for tables, graphs, data-heavy typography and focuses on bringing sane defaults.",
-  "vf_intro_subheading": "",
-  "vf_intro_text": [
-    'The tooling implements its CSS and JS in a way that will not interfere with your existing components that use Bootstrap, Angular, or something else.',
-    'Above all, the VF is designed with the <a href="https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability" class="vf-link">needs of life science websites and services</a>. '
-  ],
-  "vf_intro_badge": false
-} %}
-
-<section class="vf-content | embl-grid embl-grid--has-centered-content">
-<div></div>
-<div>
+<main class="vf-grid vf-grid__col-3">
+  <article class="vf-grid__col--span-2 | vf-content ">
 
 {% markdown %}
 
-### Principles
+The Visual Framework is designed with robust technical flexibility and goes beyond guidance for tables, graphs, data-heavy typography and focuses on bringing sane defaults.
+
+The tooling implements its CSS and JS in a way that will not interfere with your existing components that use Bootstrap, Angular, or something else.
+
+Above all, the VF is designed with the <a href="https://blogs.embl.org/communications/2018/09/12/faster-scientific-websites-through-reusability" class="vf-link">needs of life science websites and services</a>.
+
+{% endmarkdown %}
+
+  </article>
+  <div></div>
+</main>
+
+{% include "navigation-in-this-section.njk" %}
+
+<main class="vf-grid vf-grid__col-3">
+  <article class="vf-grid__col--span-2 | vf-content ">
+
+{% markdown %}
+
+## Principles
 
 <!-- This content is styled using the .vf-content component, intended for use
      where the application of classnames is difficult, such as Markdown text
@@ -49,9 +56,10 @@ layout: layouts/base.njk
 
 We ensure we remain true to these through [a consultation process]({{ '/about/consultation/' | url }}).
 
-<a href="/building" class="vf-button vf-button--primary">Get started</a>
+<a href="/building" class="vf-button vf-button--primary">Get building started</a>
 
 {% endmarkdown %}
 
-</div>
-</section>
+  </article>
+  <div></div>
+</main>
