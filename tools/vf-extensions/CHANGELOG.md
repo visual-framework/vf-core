@@ -1,3 +1,7 @@
+### 1.0.1
+
+* Dependency update.
+
 ### 1.0.0
 
 * Bug: in `gulp-build-search-index` ensure `body` is a string for `striptags`.

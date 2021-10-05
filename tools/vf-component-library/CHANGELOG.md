@@ -1,3 +1,8 @@
+### 1.1.13
+
+* Documentation updates
+* New release
+
 ### 1.1.12
 
 * Update milestones and roadmap.

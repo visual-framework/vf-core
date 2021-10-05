@@ -1,0 +1,25 @@
+{# In this section #}
+<section class="vf-card-container | vf-u-fullbleed vf-u-background-color--grey--lightest">
+  <div class="vf-card-container__inner">
+  {% render '@vf-section-header', {
+    "section_title": "In this section",
+    "id": "sections"
+  } %}
+
+  {%- for entry in collections[section] | sort(false, true, 'data.order') %}
+    {% if entry.url | url != page.url | url %}
+      {# Eventually these might have unique images, not sure yet #}
+      {# {%- set absolutePostUrl %}{{ metadata.id }}{{ section.url }}{% endset %} #}
+      {%- render '@vf-card', {
+        "newTheme": "primary",
+        "variant": "bordered",
+        "card_title": entry.data.title,
+        "card_href": entry.url | url,
+        "card_text": entry.data.subtitle,
+        "card_image__alt": entry.data.title
+      } %}
+        {# "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png", #}
+    {% endif %}
+  {%- endfor %}
+  </div>
+</section>

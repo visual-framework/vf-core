@@ -12,31 +12,34 @@ tags:
   - documentation
   - sections
 layout: layouts/section.njk
-templateEngineOverride: njk, md
+templateEngineOverride: njk
 ---
 
-#### In the right place?
-
-Need to just make a VF-powered site? If you want to make a site or design system that uses
-Visual Framework components, then [check out the "Visual Framework building guide"]({{ '/building' | url }}).
-
-#### Getting started <a id="getting-started"></a>
+<main class="vf-grid vf-grid__col-3">
+  <article class="vf-grid__col--span-2 | vf-content ">
+{% markdown %}
 
 If you'd like to contribute code, components or documentation to the Visual Framework 2.0,
-first of all: thanks!
+first of all: thanks! We welcome ideas, bug reports, opinions and pull requests.
 
-We welcome ideas, bug reports, opinions and pull requests. Telling the maintainers
-why you want or have done something is always very helpful.
+{% endmarkdown %}
+  </article>
+  <div></div>
+</main>
 
-<ol>
-{%- for page in collections['getting started'] | sort(false, true, 'order') %}
-{%- if page.data.layout %}
-  <li><a href="{{ page.url | url }}">{{ page.data.title }}</a></li>
-{%- endif %}
-{%- endfor %}
-  <li><a href="{{ "/guidance/creating-components" | url }}">Create a component</a></li>
-</ol>
+{% include "navigation-in-this-section.njk" %}
 
-#### General guidelines, best practice <a id="guidelines"></a>
 
-[See the Guidance section]({{ '/guidance' | url }})
+<div class="vf-grid vf-grid__col-3">
+  <article class="vf-grid__col--span-2 | vf-content ">
+{% markdown %}
+
+- Not writing new components and need to just make a VF-powered site?
+    <br>If you want to make a site or design system that uses Visual Framework components, then [check out the "Visual Framework building guide"]({{ '/building' | url }}).
+- General guidelines, best practice? <a id="guidelines"></a>
+    <br>[See the Guidance section]({{ '/guidance' | url }})
+
+{% endmarkdown %}
+  </article>
+  <div></div>
+</div>

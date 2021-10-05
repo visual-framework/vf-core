@@ -1,3 +1,7 @@
+### 3.6.1
+
+* Introduces new z-index token for overlays.
+
 ### 3.6.0
 
 * Accessibility: Set primary text to off-black.

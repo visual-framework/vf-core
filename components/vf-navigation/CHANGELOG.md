@@ -1,3 +1,7 @@
+### 3.0.0-beta.2
+
+* Minor README.md update.
+
 ### 3.0.0-beta.1
 
 * Re-release of 3.0.0-beta.0 to fix garbled version number.
