@@ -187,17 +187,9 @@ templateEngineOverride: njk
                    style="clear: both; /* insurance against strange components */"
           >
             {% if component.baseHandle == 'vf-u-fullbleed' %}
-              {# these get a fake iframe #}
-              <article class="vf-box vf-box--outline" style="
-                overflow: scroll;
-                margin: 0;
-                padding: 0;
-              ">
-                {% render '@'+variant.handle, variant.context %}
-              </article>
-
+              {% render '@'+variant.handle, variant.context %}
             {% else %}
-              <div class="vf-box"
+              <div class="vf-u-padding--400"
                    style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
               >
                 {# When you want a box with a slight shadow #}
@@ -273,41 +265,40 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
       {% endfor -%}
 
       {# Examples #}
-      <hr class="vf-divider" />
-      {% render '@vf-heading--display', {
+      {% render '@vf-heading', {
         "type": 1,
         "heading": "Examples",
         "id": "examples",
         "style": "invert",
         "tags": "h2"
       } %}
+      {% if variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element"%}
+      <section class="vf-grid vf-grid__col-3">
+      {% endif %}
       {%- for variant in variants %}
         {% if variant.isHidden == false and variant.context['isExample'] == true %}
-          <article class="vf-stack vf-stack--lg vf-u-margin__bottom--1200"
-                   style="clear: both; /* insurance against strange components */"
-          >
-            {% if component.baseHandle == 'vf-u-fullbleed' %}
-              {# these get a fake iframe #}
-              <article class="vf-box vf-box--outline" style="
-                overflow: scroll;
-                margin: 0;
-                padding: 0;
-              ">
-                {% render '@'+variant.handle, variant.context %}
-              </article>
-
-            {% else %}
-              <div class="vf-box"
-                   style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
-              >
-                {# When you want a box with a slight shadow #}
-                {% render '@'+variant.handle, variant.context %}
-              </div>
-            {% endif %}
-          </article>
+          {# {% if component.baseHandle == 'vf-u-fullbleed' %} #}
+          {% if variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element"%}
+            <article class="vf-u-padding--400"
+                style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
+            >
+              {# When you want a box with a slight shadow #}
+              {% render '@'+variant.handle, variant.context %}
+            </article>
+          {% else %}
+            <article class="vf-u-padding--400" style="
+              overflow: scroll;
+              margin: 0;
+              padding: 0;
+            ">
+              {% render '@'+variant.handle, variant.context %}
+            </article>
+          {% endif %}
         {% endif %}
-
       {% endfor -%}
+      {% if variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element"%}
+      </section>
+      {% endif %}
 
       {% markdown %}
 
