@@ -92,6 +92,12 @@
             <a href="{{ siteConfig.sections[section].url | url }}" class="vf-breadcrumbs__link">{{ siteConfig.sections[section].title }}</a>
           </li>
         {% endif %}
+        {# Components #}
+        {% if pagination.items[0] %}
+          <li class="vf-breadcrumbs__item">
+            <a href="/components" class="vf-breadcrumbs__link">Components and patterns</a>
+          </li>
+        {% endif %}
         {# Handle child components #}
         {% if pagination.items[0] %}
           {% if pagination.items[0].name.split('__')[1] %}

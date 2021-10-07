@@ -7,71 +7,7 @@ templateEngineOverride: njk
 {% set collectionComponents = component.items %}
 {% set variants = component.variants.items %}
 
-<div class="embl-grid">
-  <nav class="vf-tree vf-search-client-side--no-index">
-    <div class="vf-tree__inner | vf-u-padding--200">
-      {#- all component list -#}
-      {#- we're half-implement vf-tree for now until we can ... things -#}
-      {%- set types = ['layout', 'element', 'block', 'form', 'container', 'utility'] -%}
-
-      {%- for type in types -%}
-
-      {%- set componentList = [] -%}
-      {%- for item in fractalEnvironment.localComponents -%}
-
-        {# Normal "flat" components #}
-        {%- if item.isHidden == false and (item.variants.items[0].context['component-type'] == type or item.variants.items[0].context['component-type'] == 'embl-' + type) -%}
-          {% set componentList = (componentList.push({ "text": item.title, "link_list_href": ('/components/' + item.handle) | string | url }),componentList) %}
-        {%- endif -%}
-
-        {# Handle component collections #}
-        {%- if item.isCollection == true %}
-          {%- for collection in item.items %}
-            {% if collection.isHidden == false and (collection.variants.items[0].context['component-type'] == type or collection.variants.items[0].context['component-type'] == 'embl-' + type) %}
-              {# <pre>{{ item | dump(2)}}</pre> #}
-              {% set componentList = (componentList.push({ "text": collection.title, "link_list_href": ('/components/' + item.handle + '/' + collection.handle) | string | url }),componentList) %}
-            {%- endif %}
-          {%- endfor %}
-        {%- endif %}
-
-      {%- endfor -%}
-
-      {%- render '@vf-link-list--tight', {
-        "component-type": "block",
-        "component_modifier": "vf-links--tight vf-links__list--s",
-        "title": type | title,
-        "list_modifier": "secondary",
-        "list":
-          componentList
-      } -%}
-
-      {% endfor -%}
-      <!-- some tools don't have a natural place in the component library and are linked to githup -->
-      <h3 class="vf-links__heading">Tools</h3>
-      <ul class="vf-links__list vf-links__list--secondary | vf-list">
-        <li class="vf-list__item">
-          <a class="vf-list__link" href="https://github.com/visual-framework/vf-core/tree/develop/tools/vf-extensions">
-            VF extensions
-          </a>
-        </li>
-        <li class="vf-list__item">
-          <a class="vf-list__link" href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-extensions-react/README.md">
-            React extensions
-          </a>
-        </li>
-        <li class="vf-list__item">
-          <a class="vf-list__link" href="https://github.com/visual-framework/vf-core/tree/develop/tools/vf-sass-compilation">
-            Sass compilation
-          </a>
-        </li>
-        <li class="vf-list__item">
-          <a class="vf-list__link" href="https://github.com/visual-framework/vf-core/tree/develop/tools/vf-component-generator">
-            Component generator
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<div class="vf-grid">
 
   <section class="vf-content component-library-notes | vf-stack vf-stack--400">
     {# for any content set in the page, this is most likely blank #}
@@ -109,20 +45,9 @@ templateEngineOverride: njk
           "theme": "tertiary"
           } %}
         {% include "vf-core-components/vf-badge/vf-badge.njk" %}
-        It is strongly recommended that this <strong>not to be used</strong>. Read below for advice on how to migrate.</p></div>
+        It is strongly recommended that this <strong>not to be used</strong>.</p></div>
       </div>
     {%- endif %}
-
-    <h1>
-      {{ component.title }}
-      {# {{component.baseHandle}} #}
-      {% if collectionComponents %}
-      {% else %}
-        <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/components/{{component.baseHandle}}"><img src="https://img.shields.io/badge/github-{{component.baseHandle | replace("-","--")}}-blue" alt="github location" /></a>
-        <a class="vf-link" href="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}"><img src="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}.svg" alt="npm version"></a>
-        {# <a  href="https://www.npmjs.com/package/@visual-framework/{{component.baseHandle}}">npm</a> #}
-      {% endif %}
-    </h1>
 
     {% if component.handle == "vf-design-tokens" %}
       {% markdown %}
@@ -130,14 +55,37 @@ templateEngineOverride: njk
       {% endmarkdown %}
     {% endif %}
 
-    {# <pre>{{ component | dump(2)}}</pre> #}
-
     {# readme.md #}
     {% if component.notes %}
+      {% if collectionComponents %}
+      {% else %}
+        {% set componentLinks %}
+          <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/components/{{component.baseHandle}}"><img src="https://img.shields.io/badge/github-{{component.baseHandle | replace("-","--")}}-blue" alt="github location" /></a>
+          <a class="vf-link" href="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}"><img src="https://badge.fury.io/js/%40visual-framework%2F{{component.baseHandle}}.svg" alt="npm version"></a>
+        {% endset %}
+      {% endif %}
+
       {% set readmeAbout = component.notes | string | stringBetween("## About", "\n## ") %}
-      <p class="vf-lede">
-      {% if readmeAbout %}{{ readmeAbout | markdown | safe | striptags }}{% endif %}
-      </p>
+      {% if readmeAbout %}
+        {% set readmeAbout = readmeAbout | markdown | safe | striptags | string %}
+        {% render '@vf-intro', {
+          "id": "about",
+          "vf_intro_heading": component.title,
+          "vf_intro_badge": {
+            "style": [
+              "phases"
+            ],
+            "text": variants[0].context['component-type'],
+            "theme": "primary",
+            "badge_href": "/components#" + variants[0].context['component-type']
+          },
+          "vf_intro_subheading": "",
+          "vf_intro_lede": readmeAbout.val,
+          "vf_intro_text": [
+            componentLinks
+           ]
+        } %}
+      {% endif %}
     {% endif %}
 
     <hr class="vf-divider" />
@@ -162,60 +110,72 @@ templateEngineOverride: njk
     {% endif %}
 
     {# Table of contents #}
+    {% set navigationList = [
+      {
+        "text": "Usage",
+        "link_list_href": "#usage"
+      },
+      {
+        "text": "Variants",
+        "link_list_href": "#variants"
+      },
+      {
+        "text": "Examples",
+        "link_list_href": "#examples"
+      },
+      {
+        "text": "Install",
+        "link_list_href": "#install"
+      },
+      {
+        "text": "Changelog",
+        "link_list_href": "#changelog"
+      },
+      {
+        "text": "Assets",
+        "link_list_href": "#assets"
+      }
+    ] %}
+    {% render '@vf-link-list', {
+      "component_modifier": "vf-links__list--easy",
+      "title": "On this page",
+      "svg": true,
+      "list":
+        navigationList
+    } %}
 
-    {% if variants %}
-      {% if variants | length > 1 %}
-        {# If more than 1 variant type, show a heading #}
-        <h3 id="variants">Variants</h3>
-        {# Variant table of contents #}
-        {%- set variantList = [] -%}
-        {%- for variant in variants %}
-          {% if variant.isHidden == false%}
-            {% set variantList = (variantList.push({
-              "text": variant.title,
-              "link_list_href": '#' + variant.handle
-            }), variantList)
-            %}
-          {% endif %}
-        {% endfor %}
-
-        {% render '@vf-link-list', {
-          "component_modifier": "vf-links__list--easy",
-          "title": "",
-          "svg": true,
-          "list":
-            variantList
-        } %}
-
-        <hr class="vf-divider" />
-
-      {% endif %}
-    {% endif %}
+    <hr class="vf-divider" />
 
     {% if component.notes %}
       {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
       {% if readmeUsage %}
-        <section class="vf-u-margin__top--800">
-          {% render '@vf-heading--display', {
-            "type": 1,
-            "heading": "Usage",
-            "id": "usage",
-            "style": "invert",
-            "tags": "h2"
+        <section class="embl-grid">
+          {% render '@vf-section-header', {
+            "section_title": "Usage",
+            "id": "Usage",
+            "href": ""
           } %}
+          <article>
+          {{ readmeUsage | markdown | safe }}
+          </article>
         </section>
-        {{ readmeUsage | markdown | safe }}
       {% endif %}
     {% endif %}
 
     {# ---- #}
 
     {% if variants %}
+      {% render '@vf-heading--display', {
+        "type": 1,
+        "heading": "Variants",
+        "id": "variants",
+        "style": "invert",
+        "tags": "h2"
+      } %}
       {%- for variant in variants %}
-        {% if variant.isHidden == false%}
-          {% if variants | length > 1 %}
+        {% if variant.isHidden == false and variant.context['isExample'] != true %}
+          {% if variants | length > 1  %}
             {# If more than 1 variant type, show variant specific details #}
-
             {% render '@vf-section-header--is-a-link', {
               "section_title": "" + variant.label + " variant",
               "id": variant.handle,
@@ -244,7 +204,7 @@ templateEngineOverride: njk
                 {% render '@'+variant.handle, variant.context %}
               </div>
             {% endif %}
-
+{# variant.context['isExample'] != true and #}
             {% if variant.context['component-type'] != "utility" and variant.context['component-type'] != "grid" and variant.context['component-type'] != "embl-grid" %}
               {# Utility and grid variants have no practical njk or react templates #}
               <details class="vf-details vf-box vf-box--outline">
@@ -307,6 +267,43 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
                 {%- render '@'+variant.handle, variant.context, false, { escape: false, beautify: true, highlight: true } %}
               </pre>
             </details>
+          </article>
+        {% endif %}
+
+      {% endfor -%}
+
+      {# Examples #}
+      <hr class="vf-divider" />
+      {% render '@vf-heading--display', {
+        "type": 1,
+        "heading": "Examples",
+        "id": "examples",
+        "style": "invert",
+        "tags": "h2"
+      } %}
+      {%- for variant in variants %}
+        {% if variant.isHidden == false and variant.context['isExample'] == true %}
+          <article class="vf-stack vf-stack--lg vf-u-margin__bottom--1200"
+                   style="clear: both; /* insurance against strange components */"
+          >
+            {% if component.baseHandle == 'vf-u-fullbleed' %}
+              {# these get a fake iframe #}
+              <article class="vf-box vf-box--outline" style="
+                overflow: scroll;
+                margin: 0;
+                padding: 0;
+              ">
+                {% render '@'+variant.handle, variant.context %}
+              </article>
+
+            {% else %}
+              <div class="vf-box"
+                   style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
+              >
+                {# When you want a box with a slight shadow #}
+                {% render '@'+variant.handle, variant.context %}
+              </div>
+            {% endif %}
           </article>
         {% endif %}
 

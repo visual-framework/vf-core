@@ -1,0 +1,65 @@
+{# tree navigation removed from component preview #}
+<nav class="vf-tree vf-search-client-side--no-index">
+  <div class="vf-tree__inner | vf-u-padding--200">
+    {#- all component list -#}
+    {#- we're half-implement vf-tree for now until we can ... things -#}
+    {%- set types = ['layout', 'element', 'block', 'form', 'container', 'utility'] -%}
+
+    {%- for type in types -%}
+
+    {%- set componentList = [] -%}
+    {%- for item in fractalEnvironment.localComponents -%}
+
+      {# Normal "flat" components #}
+      {%- if item.isHidden == false and (item.variants.items[0].context['component-type'] == type or item.variants.items[0].context['component-type'] == 'embl-' + type) -%}
+        {% set componentList = (componentList.push({ "text": item.title, "link_list_href": ('/components/' + item.handle) | string | url }),componentList) %}
+      {%- endif -%}
+
+      {# Handle component collections #}
+      {%- if item.isCollection == true %}
+        {%- for collection in item.items %}
+          {% if collection.isHidden == false and (collection.variants.items[0].context['component-type'] == type or collection.variants.items[0].context['component-type'] == 'embl-' + type) %}
+            {# <pre>{{ item | dump(2)}}</pre> #}
+            {% set componentList = (componentList.push({ "text": collection.title, "link_list_href": ('/components/' + item.handle + '/' + collection.handle) | string | url }),componentList) %}
+          {%- endif %}
+        {%- endfor %}
+      {%- endif %}
+
+    {%- endfor -%}
+
+    {%- render '@vf-link-list--tight', {
+      "component-type": "block",
+      "component_modifier": "vf-links--tight vf-links__list--s",
+      "title": type | title,
+      "list_modifier": "secondary",
+      "list":
+        componentList
+    } -%}
+
+    {% endfor -%}
+    <!-- some tools don't have a natural place in the component library and are linked to github -->
+    <h3 class="vf-links__heading">Tools</h3>
+    <ul class="vf-links__list vf-links__list--secondary | vf-list">
+      <li class="vf-list__item">
+        <a class="vf-list__link" href="https://github.com/visual-framework/vf-core/tree/develop/tools/vf-extensions">
+          VF extensions
+        </a>
+      </li>
+      <li class="vf-list__item">
+        <a class="vf-list__link" href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-extensions-react/README.md">
+          React extensions
+        </a>
+      </li>
+      <li class="vf-list__item">
+        <a class="vf-list__link" href="https://github.com/visual-framework/vf-core/tree/develop/tools/vf-sass-compilation">
+          Sass compilation
+        </a>
+      </li>
+      <li class="vf-list__item">
+        <a class="vf-list__link" href="https://github.com/visual-framework/vf-core/tree/develop/tools/vf-component-generator">
+          Component generator
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
