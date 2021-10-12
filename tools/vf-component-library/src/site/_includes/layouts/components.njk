@@ -187,17 +187,24 @@ hideSectionNavigation: true
           <article class="vf-stack vf-stack--lg vf-u-margin__bottom--1200"
                    style="clear: both; /* insurance against strange components */"
           >
-            {% if component.baseHandle == 'vf-u-fullbleed' %}
-              {% render '@'+variant.handle, variant.context %}
-            {% else %}
-              <div class="vf-u-padding--400"
-                   style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
-              >
-                {# When you want a box with a slight shadow #}
-                {% render '@'+variant.handle, variant.context %}
-              </div>
+            {% if variants[0].context['exampleMultiColumns'] != "false" and (variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element") %}
+              <section class="vf-grid vf-grid__col-3">
+              <div><!--empty--></div>
             {% endif %}
-{# variant.context['isExample'] != true and #}
+              {% if component.baseHandle == 'vf-u-fullbleed' %}
+                {% render '@'+variant.handle, variant.context %}
+              {% else %}
+                <div class="vf-u-padding--400"
+                    style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
+                >
+                  {# When you want a box with a slight shadow #}
+                  {% render '@'+variant.handle, variant.context %}
+                </div>
+              {% endif %}
+            {% if variants[0].context['exampleMultiColumns'] != "false" and (variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element") %}
+              <div><!--empty--></div>
+              </section>
+            {% endif %}
             {% if variant.context['component-type'] != "utility" and variant.context['component-type'] != "grid" and variant.context['component-type'] != "embl-grid" %}
               {# Utility and grid variants have no practical njk or react templates #}
               <details class="vf-details vf-box vf-box--outline">
@@ -273,19 +280,26 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
         "style": "invert",
         "tags": "h2"
       } %}
-      {% if variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element"%}
-      <section class="vf-grid vf-grid__col-3">
+      {% if variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element" %}
+      <section class="{% if variants[0].context['exampleMultiColumns'] != "false" %}vf-grid vf-grid__col-3{% else %}{% endif %}">
       {% endif %}
       {%- for variant in variants %}
         {% if variant.isHidden == false and variant.context['isExample'] == true %}
           {# {% if component.baseHandle == 'vf-u-fullbleed' %} #}
-          {% if variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element"%}
-            <article class="vf-u-padding--400"
-                style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
-            >
-              {# When you want a box with a slight shadow #}
-              {% render '@'+variant.handle, variant.context %}
-            </article>
+          {% if variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element" %}
+            <section>
+              {% render '@vf-section-header', {
+                "section_title": variant.label,
+                "id": variant.handle,
+                "href": "#" + variant.handle
+              } %}
+              <article class="vf-u-padding--400"
+                  style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
+              >
+                {# When you want a box with a slight shadow #}
+                {% render '@'+variant.handle, variant.context %}
+              </article>
+            </section>
           {% else %}
             <article class="vf-u-padding--400" style="
               overflow: scroll;

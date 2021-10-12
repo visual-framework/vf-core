@@ -2,13 +2,14 @@
 title: Table
 # Label shown on index pages
 label: Table
-status: alpha
+status: beta
 
 variants:
   - name: default
 
   - name: has footer
     context:
+      isExample: true
       table_footer:
         - text: Hello
           colspans: 3
@@ -16,23 +17,29 @@ variants:
           colspans: 1
   - name: has caption
     context:
+      isExample: true
       table_caption: Hello Caption
   - name: has row heading
     context:
+      isExample: true
       firstCellIsHeader: true
   - name: actions
     context:
+      isExample: true
       inline_actions:
         - edit
         - delete
   - name: sortable
     context:
+      isExample: true
       sortable: true
   - name: selectable
     context:
+      isExample: true
       selectable: true
   - name: selectable (selected)
     context:
+      isExample: true
       selected: true
       selectable: true
       actions:
@@ -40,9 +47,7 @@ variants:
         - delete
         - download
         - cancel
-
-
-
+  # Deprecated variants
   - name: striped
     hidden: true
     status: deprecated
@@ -95,16 +100,14 @@ variants:
 
 context:
   component-type: block
-
+  exampleMultiColumns: false
   count: 0
-
   table_headings:
     - title: Event
     - title: Date
       sorted: top
     - title: Type
     - title: Location
-
   table_rows:
     -
       - selected_row: true
