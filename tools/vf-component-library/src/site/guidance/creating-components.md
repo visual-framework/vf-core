@@ -1,5 +1,5 @@
 ---
-title: "Components: creating new ones and revising existing"
+title: "Creating and changing components"
 subtitle: When and how to make and change components
 intro: Creating and amending code is a technical task that should follow a certain style and be actioned in process.
 date: 2020-12-11 19:33:50
