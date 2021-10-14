@@ -1,8 +1,3 @@
-### 2.0.2
-
-* Use new interactive colour token.
-  * https://github.com/visual-framework/vf-core/issues/1688
-
 ### 2.0.1
 
 * Bug: Add missing `@import 'vf-global-variables';` to generate standalone `vf-tabs.css`.

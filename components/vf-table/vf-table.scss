@@ -18,13 +18,17 @@
 
 @import 'vf-table.variables.scss';
 
+
 .vf-table {
   background-color: neutral(0);
   border-collapse: collapse;
 }
 
+
+
 .vf-table__caption {
   @include set-type(text-heading--4);
+
   text-align: left;
 }
 
@@ -83,6 +87,7 @@
   }
 }
 
+
 .vf-table__cell {
   @include set-type(text-body--2, $custom-margin-bottom: 0);
 
@@ -98,15 +103,18 @@
   }
 }
 
+
 .vf-table__row .vf-table__heading {
   @include set-type(text-heading--5, $custom-margin-bottom: 0);
 
   text-align: left;
 }
 
+
+
 .vf-table__body {
   & .vf-table__row:not(.vf-table__row--selected):hover {
-    background-color: interactive-color('background');
+    background-color: ui-color(yellow);
   }
 }
 
@@ -123,19 +131,19 @@
 
 .vf-table__cell--actions {
   .vf-button--icon {
-    color: interactive-color();
+    color: color(blue);
     font-weight: 400;
     &:visited,
     &:hover,
     &:focus {
-      color: interactive-color();
+      color: color(blue);
       font-weight: 400;
     }
   }
 }
 
 .vf-table__row--selected {
-  background-color: interactive-color(background);
+  background-color: color(blue);
   color: ui-color(white);
 
 
@@ -163,7 +171,7 @@
 // Table Actions
 
 .vf-table__actions {
-  background-color: interactive-color();
+  background-color: color(blue);;
   padding: 16px;
 
   .vf-button {
@@ -232,3 +240,4 @@ html:not(.vf-disable-deprecated) {
     table-layout: fixed;
   }
 }
+

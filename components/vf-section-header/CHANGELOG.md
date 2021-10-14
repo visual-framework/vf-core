@@ -1,7 +1,3 @@
-### 1.5.3
-
-* Bug: following 1.5.2, ensures that links are always style correctly.
-
 ### 1.5.2
 
 * Accessibility: When section header is a link, it should still be wrapped an `h2`
