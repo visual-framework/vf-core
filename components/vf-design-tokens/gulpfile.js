@@ -100,6 +100,7 @@ gulp.task("tokens:json", () =>
     "./src/maps/vf-color__background.yml",
     "./src/maps/vf-color__brand.yml",
     "./src/maps/vf-color__buttons.yml",
+    "./src/maps/vf-color__interactive.yml",
     "./src/maps/vf-color__text.yml",
   ])
     .pipe(theoG({
@@ -129,6 +130,7 @@ gulp.task("tokens:props", () =>
     "./src/maps/vf-color__background.yml",
     "./src/maps/vf-color__brand.yml",
     "./src/maps/vf-color__buttons.yml",
+    "./src/maps/vf-color__interactive.yml",
     "./src/maps/vf-color__text.yml",
   ])
     .pipe(theoG({
