@@ -182,5 +182,5 @@ gulp.task("vf-tokens", gulp.parallel(
 
 // an alias for developers who easily forget
 gulp.task("vf-design-tokens", gulp.parallel(
-  'tokens:command-help'
+  "tokens:command-help"
 ));

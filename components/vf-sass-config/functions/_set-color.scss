@@ -48,3 +48,11 @@
   $value: "vf-color--neutral--" + $color-name;
   @return map-get($vf-color__neutral-map, $value);
 }
+
+@function interactive-color($color-name: default) {
+  $value: "vf-color__interactive";
+  @if $color-name != default {
+    $value: "vf-color__interactive--" + $color-name;
+  }
+  @return map-get($vf-color__brand-map, $value);
+}
