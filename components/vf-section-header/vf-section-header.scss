@@ -17,8 +17,9 @@
     margin-top: map-get($vf-spacing-map, vf-spacing--500);
   }
 }
-.vf-section-header__heading--is-link {
-  @include inline-link($vf-link--visited-color: map-get($vf-colors-map, vf-color--blue));
+.vf-section-header__heading--is-link,
+.vf-section-header__heading--is-link a {
+  @include inline-link($vf-link--visited-color: color-interactive());
   cursor: pointer;
   display: grid;
   grid-column-gap: space(100);
@@ -26,7 +27,7 @@
 
   .vf-section-header__icon {
     fill: currentColor;
-    padding-top: 0.1em; // to compensate for ascender, this value should be fairly consistent across most type families
+    padding-top: .1em; // to compensate for ascender, this value should be fairly consistent across most type families
     transform: translateX(map-get($vf-spacing-map, vf-spacing--100));
     // @todo: some sort of centralised and reusable docs, tokens, guidance on animations
     transition-duration: 125ms;
