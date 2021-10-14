@@ -51,17 +51,17 @@ function vfLocationNearestDetect(locationsList) {
  * Receive a location and process it against a user location if any.
  * @example vfLocationNearestResolve(locationsList, userLocation)
  * @param {object} [locationsList] - An object of locations
- * @param {object} [userLocation] - An obhject with .latitude and .lognitude
+ * @param {object} [userLocation] - An object with .latitude and .longitude
  */
 function vfLocationNearestResolve(locationsList, userLocation) {
   // console.log(locationsList, userLocation);
-  console.log("user at",userLocation.latitude + ", " + userLocation.longitude);
+  // console.log("user at",userLocation.latitude + ", " + userLocation.longitude);
 
-  // Determing which location is closest using circles
+  // Determine which location is closest using circles
   // https://stackoverflow.com/questions/21279559/geolocation-closest-locationlat-long-from-my-position/21297385#21297385
   function calculateNearestCity(latitude, longitude) {
 
-    // Convert Degress to Radians
+    // Convert Degrees to Radians
     function Deg2Rad(deg) {
       return deg * Math.PI / 180;
     }

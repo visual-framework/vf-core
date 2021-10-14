@@ -1,5 +1,7 @@
 ### 2.0.2
 
+* Prevent hijacking of scroll when focusing tabs.
+  * https://github.com/visual-framework/vf-core/pull/1696
 * Use new interactive colour token.
   * https://github.com/visual-framework/vf-core/issues/1688
 
