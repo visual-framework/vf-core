@@ -31,7 +31,7 @@ layout: layouts/base.njk
 
 <section class="embl-grid">
   {% render '@vf-section-header', {
-    "section_title": "Text and interactive",
+    "section_title": "Text",
     "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-color__text.map.scss",
     "id": "text"
   } %}
@@ -43,6 +43,22 @@ layout: layouts/base.njk
     {% endfor %}
   </article>
 </section>
+
+<section class="embl-grid">
+  {% render '@vf-section-header', {
+    "section_title": "Interactive",
+    "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-color__interactive.map.scss",
+    "id": "text"
+  } %}
+  <article class="vf-grid vf-grid__col-2">
+    {% for item in tokens.interactive.properties %}
+      {% include "./token-card.njk" %}
+    {% else %}
+      <p>Something went wrong.</p>
+    {% endfor %}
+  </article>
+</section>
+
 
 <section class="embl-grid">
   {% render '@vf-section-header', {

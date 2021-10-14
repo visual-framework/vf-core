@@ -1,3 +1,8 @@
+### 2.6.2
+
+* Add map to `interactive-color` sass map
+  * https://github.com/visual-framework/vf-core/issues/1688
+
 ### 2.6.1
 
 * Improve reliability of mixin for `link-color` and `brand-color` when using the default color.

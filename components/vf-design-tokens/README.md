@@ -8,6 +8,11 @@
 
 ## Usage
 
+### Developing
+
+1. `yarn install`
+1. `gulp vf-tokens`
+1. commit changes
 
 ## Install
 

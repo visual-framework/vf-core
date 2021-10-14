@@ -1,3 +1,8 @@
+### 3.6.2
+
+* Add `interactive-color` tokens.
+  * https://github.com/visual-framework/vf-core/issues/1688
+
 ### 3.6.1
 
 * Introduces new z-index token for overlays.
