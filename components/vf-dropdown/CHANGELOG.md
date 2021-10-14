@@ -1,3 +1,8 @@
+### 1.0.0-alpha.4
+
+* Use new interactive colour token.
+  * https://github.com/visual-framework/vf-core/issues/1688
+
 ### 1.0.0-alpha.3
 
 * Basic implementation of vf-dropdown component

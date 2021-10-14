@@ -17,7 +17,7 @@ templateEngineOverride: njk
 } %}
 {%- endif %}
 
-{%- if content | length > 1 and is_index -%}
+{%- if (content | length > 1 and is_index) or (full_width) -%}
   {{ content | safe }}
 {%- elseif content | length > 1 -%}
 <main class="embl-grid embl-grid--has-centered-content">

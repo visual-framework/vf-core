@@ -1,3 +1,8 @@
+### 1.2.0-rc.3
+
+* Use new interactive colour token.
+  * https://github.com/visual-framework/vf-core/issues/1688
+
 ### 1.2.0-rc.2
 
 * restyles the arrows on sortable tables

@@ -15,24 +15,14 @@ layout: layouts/section.njk
 templateEngineOverride: njk
 ---
 
-<main class="vf-grid vf-grid__col-3">
+{% include "navigation-in-this-section.njk" %}
+
+<div class="vf-grid vf-grid__col-3">
   <article class="vf-grid__col--span-2 | vf-content ">
 {% markdown %}
 
 If you'd like to contribute code, components or documentation to the Visual Framework 2.0,
 first of all: thanks! We welcome ideas, bug reports, opinions and pull requests.
-
-{% endmarkdown %}
-  </article>
-  <div></div>
-</main>
-
-{% include "navigation-in-this-section.njk" %}
-
-
-<div class="vf-grid vf-grid__col-3">
-  <article class="vf-grid__col--span-2 | vf-content ">
-{% markdown %}
 
 - Not writing new components and need to just make a VF-powered site?
     <br>If you want to make a site or design system that uses Visual Framework components, then [check out the "Visual Framework building guide"]({{ '/building' | url }}).
