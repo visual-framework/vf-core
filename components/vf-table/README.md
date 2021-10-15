@@ -2,6 +2,10 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-table.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-table)
 
+## About
+
+Ever useful for presentation of tabular information and data — never to be used for layout.
+
 ## Usage
 
 ### CSS Class Reference
@@ -13,7 +17,6 @@
 | `vf-table--bordered` | `vf-table` | adds a border around all elements                                      |
 | `vf-table--compact`  | `vf-table` | Reduces the padding on the heading and cells                           |
 | `vf-table--loose`    | `vf-table` | Increases the padding on the heading and cells                         |
-|                      |            |                                                                        |
 
 ## Install
 
