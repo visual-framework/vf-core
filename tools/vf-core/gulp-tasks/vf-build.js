@@ -10,40 +10,40 @@ module.exports = function(gulp, buildDestionation) {
   // but we need to see which Fractal build mode to invoke (or not at all, when it's not needed)
   let gulpFractalBuildTask;
   switch (global.vfBuildFractalMode) {
-    case 'dataObject':
-      // just render the objects to memory for further use
-      gulpFractalBuildTask = 'vf-fractal:dataobject';
-      break;
-    case 'none':
-      // don't invoke fractal at all
-      gulpFractalBuildTask = 'vf-build:fractaldummybuild';
-      break;
-    case 'normal':
-      // standard full build of all static html for components
-      gulpFractalBuildTask = 'vf-fractal:build';
-      break;
-    default:
-      console.warn(`Unrecognised vfBuildFractalMode option of ${global.vfBuildFractalMode}, proceeding with standard build.`)
-      // standard full build of all static html for components
-      gulpFractalBuildTask = 'vf-fractal:build';
-      break;
+  case "dataObject":
+    // just render the objects to memory for further use
+    gulpFractalBuildTask = "vf-fractal:dataobject";
+    break;
+  case "none":
+    // don't invoke fractal at all
+    gulpFractalBuildTask = "vf-build:fractaldummybuild";
+    break;
+  case "normal":
+    // standard full build of all static html for components
+    gulpFractalBuildTask = "vf-fractal:build";
+    break;
+  default:
+    console.warn(`Unrecognised vfBuildFractalMode option of ${global.vfBuildFractalMode}, proceeding with standard build.`);
+    // standard full build of all static html for components
+    gulpFractalBuildTask = "vf-fractal:build";
+    break;
   }
 
-  gulp.task('vf-build:fractaldummybuild', function (done) {
+  gulp.task("vf-build:fractaldummybuild", function (done) {
     // an empty task as we can't run no gulp task using this approach
     done();
   });
 
   // Rollup all-in-one build all VF tasks as static assets
-  gulp.task('vf-build',
+  gulp.task("vf-build",
     gulp.series(
-      'vf-clean',
-      'vf-css:package-info',
+      "vf-clean",
+      "vf-css:package-info",
       gulp.parallel (
-        gulp.series('vf-css:generate-component-css', 'vf-css:build', 'vf-css:production', 'vf-component-assets', 'vf-scripts'),
-        gulp.series(gulpFractalBuildTask, 'vf-templates-precompile')
+        gulp.series("vf-css:generate-component-css", "vf-css:build", "vf-css:production", "vf-component-assets", "vf-scripts"),
+        gulp.series(gulpFractalBuildTask, "vf-templates-precompile")
       )
-  ));
+    ));
 
   return gulp;
 };

@@ -5,10 +5,10 @@
  * This makes dependency management a bit cleaner
  */
 module.exports = function(gulp, buildDestionation) {
-  const del = require('del');
+  const del = require("del");
 
-  gulp.task('vf-clean', function(){
-    return del([buildDestionation, 'build', 'temp'], {force:true});
+  gulp.task("vf-clean", function(){
+    return del([buildDestionation, "build", "temp"], {force:true});
   });
 
   return gulp;

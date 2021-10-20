@@ -6,16 +6,16 @@
 
 module.exports = function(gulp, path, componentPath) {
 
-  const chalk = require('chalk');
-  const fs = require('fs');
-  const nunjucks = require('nunjucks');
-  const fastglob = require('fast-glob');
+  const chalk = require("chalk");
+  const fs = require("fs");
+  const nunjucks = require("nunjucks");
+  const fastglob = require("fast-glob");
 
   // Precompile vf-core Nunjucks templates
   // Requires that the fractal environment be initialised first
-  gulp.task('vf-templates-precompile', function(done) {
+  gulp.task("vf-templates-precompile", function(done) {
 
-    const componentList = fastglob.sync([componentPath+'/**/*.njk',componentPath+'/**/**/*.njk'], {
+    const componentList = fastglob.sync([componentPath+"/**/*.njk",componentPath+"/**/**/*.njk"], {
       allowEmpty: true,
       objectMode: true
       // absolute: false
@@ -23,8 +23,8 @@ module.exports = function(gulp, path, componentPath) {
     });
 
     // bail if fractal hasn't been started
-    if (typeof global.fractal === 'undefined') {
-      console.log(chalk.red('The Fractal environment has not been initialised. Exiting the gulp task and proceeding.'));
+    if (typeof global.fractal === "undefined") {
+      console.log(chalk.red("The Fractal environment has not been initialised. Exiting the gulp task and proceeding."));
       return done();
     }
 
@@ -32,7 +32,7 @@ module.exports = function(gulp, path, componentPath) {
     const env = global.fractal.components._engine._engine;
 
     componentList.forEach(component => {
-      component.commonName = component.name.replace('.njk','');
+      component.commonName = component.name.replace(".njk","");
       const vfPackage = `@visual-framework/${component.commonName}`;
       const src = path.resolve(
         __dirname,
@@ -40,7 +40,7 @@ module.exports = function(gulp, path, componentPath) {
       );
       const dest = path.resolve(
         __dirname,
-        component.path.replace('.njk', '.precompiled.js')
+        component.path.replace(".njk", ".precompiled.js")
       );
       const front = `/**\n * Precompiled Nunjucks template: ${component.name}\n */\n`;
       if (!fs.existsSync(src)) {
@@ -69,8 +69,8 @@ module.exports = function(gulp, path, componentPath) {
   });
 
   // A standalone command to start fractal and build the templates
-  gulp.task('vf-templates-precompile:test', gulp.series(
-    'vf-fractal:dataobject', 'vf-templates-precompile'
+  gulp.task("vf-templates-precompile:test", gulp.series(
+    "vf-fractal:dataobject", "vf-templates-precompile"
   ));
 
   return gulp;

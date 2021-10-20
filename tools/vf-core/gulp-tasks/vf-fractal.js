@@ -12,7 +12,7 @@ module.exports = function(gulp, path) {
   // start fractal in a desired mode, and await it to return the environment
   let startFractal = function(mode) {
     return new Promise(function(resolve) {
-      const fractalConfig = path.resolve('../vf-core/fractal.js').replace(/\\/g, '/');
+      const fractalConfig = path.resolve("../vf-core/fractal.js").replace(/\\/g, "/");
       require(fractalConfig).initialize(mode, fractalReadyCallback);
 
       function fractalReadyCallback(fractal) {
@@ -20,20 +20,20 @@ module.exports = function(gulp, path) {
         resolve();
       }
     });
-  }
+  };
 
-  gulp.task('vf-fractal:start', function(done) {
-    startFractal('server').then(done);
+  gulp.task("vf-fractal:start", function(done) {
+    startFractal("server").then(done);
   });
 
-  gulp.task('vf-fractal:build', function(done) {
+  gulp.task("vf-fractal:build", function(done) {
     global.vfOpenBrowser = false;
-    startFractal('build').then(done);
+    startFractal("build").then(done);
   });
 
-  gulp.task('vf-fractal:dataobject', function(done) {
+  gulp.task("vf-fractal:dataobject", function(done) {
     global.vfOpenBrowser = false;
-    startFractal('dataobject').then(done);
+    startFractal("dataobject").then(done);
   });
 
   return gulp;
