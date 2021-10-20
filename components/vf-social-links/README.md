@@ -2,6 +2,10 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-social-links.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-social-links)
 
+## About
+
+Links to social services.
+
 ## Usage
 
 ### Variants Available

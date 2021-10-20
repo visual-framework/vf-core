@@ -6,7 +6,7 @@
 
 A template to specify favicons for your site.
 
-### Usage
+## Usage
 
 ```
 {% raw %}
