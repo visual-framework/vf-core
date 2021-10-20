@@ -1,6 +1,7 @@
 ### 2.2.0
 
 * Drops custom margin-bottom, you should rely on vf-stack.
+* https://github.com/visual-framework/vf-core/pull/1698
 
 ### 2.1.2
 

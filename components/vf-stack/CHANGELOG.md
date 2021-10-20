@@ -2,6 +2,7 @@
 
 * With `vf-stack` more consistently adopted we remove `!important` and `vf-u-fullbleed` override. Some spacing regressions are possible.
 * Sets a null vf-stack at the lowest CSS specificity.
+* https://github.com/visual-framework/vf-core/pull/1698
 
 ### 2.1.2
 

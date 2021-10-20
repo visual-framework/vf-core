@@ -1,6 +1,7 @@
 ### 2.0.3
 
 * Use `set-type` mixin to set margins.
+* https://github.com/visual-framework/vf-core/pull/1698
 
 ### 2.0.2
 

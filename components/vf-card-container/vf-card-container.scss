@@ -18,8 +18,9 @@
 
 @import 'vf-card-container.variables.scss';
 
-// An element immediately after vf-card-container should receive more spacing
-.vf-stack .vf-card-container + * {
+// An element immediately before or after vf-card-container should receive more spacing
+.vf-stack .vf-card-container + *,
+.vf-stack * + .vf-card-container {
   --vf-stack-margin--custom: var(--page-grid-gap);
 }
 

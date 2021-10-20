@@ -1,6 +1,7 @@
 ### 3.3.2
 
 * Drop use of vf-stack-margin--custom.
+* https://github.com/visual-framework/vf-core/pull/1698
 
 ### 3.3.1
 
