@@ -1,3 +1,7 @@
+### 2.0.3
+
+* Use `set-type` mixin to set margins.
+
 ### 2.0.2
 
 * Prevent hijacking of scroll when focusing tabs.

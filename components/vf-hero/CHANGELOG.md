@@ -1,3 +1,7 @@
+### 3.3.2
+
+* Drop use of vf-stack-margin--custom.
+
 ### 3.3.1
 
 * Reduces vf-hero bottom margin.

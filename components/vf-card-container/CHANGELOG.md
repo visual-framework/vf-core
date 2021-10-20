@@ -1,3 +1,8 @@
+### 3.2.1
+
+* Uses vf-stack for spacing to apply to elements immediately after vf-card-container.
+* Removes spacing between fullbleed card containers and fullbleed items (footers, heroes)
+
 ### 3.2.0
 
 * Fix README formatting.

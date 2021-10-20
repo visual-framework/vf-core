@@ -23,7 +23,7 @@
   // The hero bottom margin is created by pushing the next element "down"
   & + :not(.vf-u-fullbleed):not(.vf-navigation) {
     margin-top: map-get($vf-spacing-map, vf-spacing--800);
-    --vf-stack-margin--custom: #{map-get($vf-spacing-map, vf-spacing--800)};
+    --vf-stack-margin: #{map-get($vf-spacing-map, vf-spacing--800)};
   }
 }
 
@@ -82,9 +82,7 @@
 
 .vf-hero__subheading {
   @include set-type(text-heading--4, $custom-margin-bottom: 0);
-
-  --vf-stack-margin--custom: 0;
-
+  --vf-stack-margin: 0;
   max-width: 50ch;
 }
 

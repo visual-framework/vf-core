@@ -1,3 +1,8 @@
+### 3.0.0
+
+* With `vf-stack` more consistently adopted we remove `!important` and `vf-u-fullbleed` override. Some spacing regressions are possible.
+* Sets a null vf-stack at the lowest CSS specificity.
+
 ### 2.1.2
 
 * vf-stack no longer applies between a `vf-hero` and `vf-u-fullbleed`.

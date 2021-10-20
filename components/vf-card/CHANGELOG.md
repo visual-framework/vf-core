@@ -1,3 +1,7 @@
+### 2.6.2
+
+* Use vf-stack custom property for card text spacing.
+
 ### 2.6.1
 
 * Resolves an accessibility issue with contrast for the striped card subheading variant.

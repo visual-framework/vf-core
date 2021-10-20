@@ -1,3 +1,7 @@
+### 2.2.0
+
+* Drops custom margin-bottom, you should rely on vf-stack.
+
 ### 2.1.2
 
 * Fixes CSS to match stylelint rules.
