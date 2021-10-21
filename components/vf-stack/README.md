@@ -4,19 +4,17 @@
 
 ## About
 
-This can be used to set the flow of child components.
+This sets the vertical spacing of child components.
 
 ## Usage
 
-Some (and soon all) `vf-core` components will come without any margin spacing (this is to avoid adding margins where it is not needed).
+Most `vf-core` components come without any margin spacing to avoid adding margins where not needed. Instead vertical spacing is controlled by `vf-stack`.
 
-You can add the `vf-stack` class name to existing containers (like `vf-content`) or containers you create yourself in your codebase.
-
-Note: `vf-grid` (1.0.0) and `embl-grid` (2.0.1) now automaticaly add gaps to their child elements as needed. So you should not use `vf-stack` alongside these.
+Where vertical spacing is required withing a component, the `vf-stack` class name to existing containers (like `vf-hero`) or containers you create yourself in your codebase.
 
 ### Variants
 
-We use CSS custom properties to control this vertical rhythm. For browsers that do not support CSS custom properties (IE 11) we provide a default value of `1rem` so that child components get some spacing. This value is overriden by browsers that understand CSS custom properties.
+We use CSS custom properties to control this vertical rhythm. For browsers that do not support CSS custom properties (IE 11) we provide a default value of `1rem` so that child components get some spacing. This value is overridden by browsers that understand CSS custom properties.
 
 | variant name | description                                        |
 | ------------ | -------------------------------------------------- |
