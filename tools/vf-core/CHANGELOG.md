@@ -1,3 +1,8 @@
+### 2.2.33
+
+* Update sass to 1.43.2
+* https://github.com/visual-framework/vf-core/pull/1677
+
 ### 2.2.30
 
 * Dependency bump.
