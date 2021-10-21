@@ -1,3 +1,9 @@
+### 3.2.1
+
+* Uses vf-stack for spacing to apply to elements immediately before or after vf-card-container.
+* Removes spacing between fullbleed card containers and fullbleed items (footers, heroes)
+* https://github.com/visual-framework/vf-core/pull/1698
+
 ### 3.2.0
 
 * Fix README formatting.

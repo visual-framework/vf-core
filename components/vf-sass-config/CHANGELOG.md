@@ -1,3 +1,8 @@
+### 2.7.0
+
+* `@mixin set-type` margin-top now inherits any applicable vf-stack margin.
+* https://github.com/visual-framework/vf-core/pull/1698
+
 ### 2.6.2
 
 * Add map to `interactive-color` sass map

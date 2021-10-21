@@ -1,3 +1,8 @@
+### 3.0.0
+
+* Allow margins to be handled by `set-type` mixin.
+* https://github.com/visual-framework/vf-core/pull/1698
+
 ### 3.0.0-alpha.0
 
 * reworks the inputs to make more use of nunjucks

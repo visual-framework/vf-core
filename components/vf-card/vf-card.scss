@@ -301,6 +301,10 @@
   .vf-card__text {
     margin-bottom: 0;
   }
+  .vf-card__text {
+    margin-top: #{map-get($vf-spacing-map, vf-spacing--400)}; /* IE Fallback */
+    margin-top: var(--vf-stack-margin--custom, var(--vf-stack-margin, #{map-get($vf-spacing-map, vf-spacing--400)}));
+  }
 }
 
 // --------------------------------------------------------------------------------

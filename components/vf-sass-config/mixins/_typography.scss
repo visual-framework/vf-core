@@ -75,19 +75,18 @@
     // don't set any margin
   }
   @else if $custom-margin-bottom != 'auto' {
-    margin: 0 0 $custom-margin-bottom 0;
+    margin: var(--vf-stack-margin, 0) 0 $custom-margin-bottom 0;
     // margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
   }
   @else {
     @if (str-index($font-size, 'body--')) {
       margin: 0 0 $vf-text-margin--bottom 0;
-      margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+      margin: var(--vf-stack-margin, 0) 0 var(--vf-text-margin--bottom, 16px) 0;
     }
     @else if (str-index($font-size, 'heading--')) {
       // Placeholder code for when we want a distinct $vf-heading-margin--bottom
       margin: 0 0 $vf-text-margin--bottom 0;
-      margin: 0 0 var(--vf-text-margin--bottom, 16px) 0;
+      margin: var(--vf-stack-margin, 0) 0 var(--vf-text-margin--bottom, 16px) 0;
     }
   }
-
 }

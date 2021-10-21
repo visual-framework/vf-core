@@ -10,7 +10,7 @@
  */
 
 .vf-form__select {
-  @include set-type(text-body--2);
+  @include set-type(text-body--2, $custom-margin-bottom: 0);
 
   /* stylelint-disable */
   --webkit-appearance: none;
@@ -26,7 +26,6 @@
   box-sizing: border-box;
   color: color(grey--dark);
   display: block;
-  margin: 0;
   max-width: 100%;
   padding: map-get($vf-spacing-map, vf-spacing--200);
   width: 100%;
@@ -39,14 +38,11 @@
     color: set-ui-color(vf-ui-color--black);
     outline: 0;
   }
-
 }
 
 .vf-form__select::-ms-expand {
   display: none;
 }
-
-
 
 .vf-form__select option {
   font-weight: normal;
