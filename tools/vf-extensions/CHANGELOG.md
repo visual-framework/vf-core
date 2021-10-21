@@ -1,4 +1,4 @@
-## 1.0.2
+## 2.0.0-alpha.1
 
 * Support Eleventy 1.0.0 change in how its build process works
   * https://github.com/visual-framework/vf-core/pull/1257
