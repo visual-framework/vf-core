@@ -13,32 +13,30 @@ module.exports = function(gulp) {
 
   // Init Eleventy
   gulp.task("eleventy:init", function(done) {
-    elev = require("../11ty/eleventy-cmd.js");
+    console.log("eleventy:init is no longer required. You can remove it from your gulpfile.js");
     done();
   });
 
   // Run eleventy for local development
   gulp.task("eleventy:develop", function(done) {
+    console.log("eleventy:develop underway");
     process.argv.push("--serve");
     process.env.ELEVENTY_ENV = "development";
-
-    // You could instead use elev.write() here, but then you should add your own browsersync task
-    elev.watch().then(function() {
-      console.log("Eleventy loaded, serving to browser");
-      elev.serve("3000");
-      done();
-    });
+    elev = require("../11ty/eleventy-cmd.js");
   });
 
   // Run eleventy as a static build
   gulp.task("eleventy:build", function(done) {
     process.argv.push("--quiet");
     process.env.ELEVENTY_ENV = "production";
-
-    elev.write().then(function() {
-      console.log("Done building 11ty");
-      done();
-    });
+    elev = require("../11ty/eleventy-cmd.js");
+    elev.init()
+      .then(function () {
+        elev.write().then(function() {
+          console.log("Done building 11ty");
+          done();
+        });
+      });
   });
 
   // Refresh eleventy
