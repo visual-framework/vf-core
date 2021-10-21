@@ -43,7 +43,7 @@ function vfTabs(scope) {
       }
     }
 
-    newTab.focus();
+    newTab.focus({preventScroll:true});
     // Make the active tab focusable by the user (Tab key)
     newTab.removeAttribute("tabindex");
     // Set the selected state
@@ -91,7 +91,7 @@ function vfTabs(scope) {
         e.preventDefault();
         // If the down key is pressed, move focus to the open panel,
         // otherwise switch to the adjacent tab
-        dir === "down" ? panels[i].focus() : tabs[dir] ? switchTab(tabs[dir]) : void 0;
+        dir === "down" ? panels[i].focus({preventScroll:true}) : tabs[dir] ? switchTab(tabs[dir]) : void 0;
       }
     });
   });

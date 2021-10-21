@@ -20,22 +20,21 @@
  * 2. default for when browsers don't support CSS custom properties.
  * 3. removes top margin for any child of the vf-stack component.
  *
- * notes:
- * a: We are using `!important` here because some components have
- *    margin set that we need to overide.
- * b: We can probably remove the custom property when all components
- *    have been purged of margin-bottom too.
- *
  */
 
 [class^='vf-stack'] > * {
-  margin-bottom: 0 !important; /* [1] */
-  margin-top: 0 !important; /* [2] */
+  margin-bottom: 0; /* [1] */
+  margin-top: 0; /* [2] */
+}
+
+// Sets a null vf-stack at the lowest css specificity
+.vf-stack > * + * > * {
+  --vf-stack-margin: 0;
 }
 
 .vf-stack > * + * {
   margin-top: #{map-get($vf-spacing-map, vf-spacing--400)}; /* IE Fallback */
-  margin-top: var(--vf-stack-margin--custom, var(--vf-stack-margin, #{map-get($vf-spacing-map, vf-spacing--400)})) !important; /* [3] */
+  margin-top: var(--vf-stack-margin--custom, var(--vf-stack-margin, #{map-get($vf-spacing-map, vf-spacing--400)})); /* [3] */
 }
 
 .vf-stack--200 > * + * {
@@ -65,3 +64,9 @@
 .vf-stack--1600 > * + * {
   --vf-stack-margin: #{map-get($vf-spacing-map, vf-spacing--1600)};
 }
+
+// vf-stack should not apply between a hero and vf-u-fullbleed
+.vf-stack > .vf-hero + .vf-u-fullbleed {
+  margin-top: unset !important;
+}
+

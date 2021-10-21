@@ -1,0 +1,14 @@
+{%- if context %}
+  {% set width = context.width %}
+  {% set helperText = context.helperText %}
+  {% set progressPercent = context.progressPercent %}
+  {% set id = context.id %}
+{%- endif -%}
+<div
+  role="progressbar" aria-valuenow="{{progressPercent}}" aria-valuemin="0" aria-valuemax="100"
+  class="vf-progress-indicator"{% if width %} style="--vf-progress-indicator__width: {{width}}"{% endif %}>
+  <div class="vf-progress-indicator__mark" style="--vf-progress-indicator__percent: {{progressPercent}}%"></div>
+  {% if helperText -%}
+  <p class="vf-progress-indicator__helper-text">{{helperText}}</p>
+  {%- endif %}
+</div>

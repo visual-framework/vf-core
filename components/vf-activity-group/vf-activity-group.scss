@@ -9,15 +9,17 @@
  * Location: #{map-get($componentInfo, 'location')}
  */
 
-.vf-activity-group {
-  background-color: color(grey--lightest);
-  grid-column: 1 / -1;
-}
-.vf-activity-group__heading {
-  @include set-type(text-heading--4);
-  @include margin--block(bottom, 16px);
-}
+html:not(.vf-disable-deprecated) {
+  .vf-activity-group {
+    background-color: color(grey--lightest);
+    grid-column: 1 / -1;
+  }
+  .vf-activity-group__heading {
+    @include set-type(text-heading--4);
+    @include margin--block(bottom, 16px);
+  }
 
-.vf-activity {
-  grid-column: 2 / auto;
+  .vf-activity {
+    grid-column: 2 / auto;
+  }
 }

@@ -24,7 +24,7 @@ As the `vf-button` is relatively large, depending on the context, you may wish t
 
 #### Alignment
 
-As a general rule, the `vf-button` should be left aligned on the page and when used inside a larger component. 
+As a general rule, the `vf-button` should be left aligned on the page and when used inside a larger component.
 
 When used in conjuction with a single form input, as in [the vf-search component](https://stable.visual-framework.dev/components/vf-search/), the `vf-button` needs to be inline with the input and to the right of it.
 
@@ -47,6 +47,38 @@ Try to keep the text on the button short and clear.
 ### Related documentation
 
 The guidelines on buttons in [the GOV.UK Design System](https://design-system.service.gov.uk/components/button/) and [the Carbon Design System](https://www.carbondesignsystem.com/components/button/usage/) include additional advice on when and how to use buttons.
+
+### Angular
+
+As of vf-button v2.0.0-alpha.2 vf-button has experimental Angular support.
+
+1. install `yarn add @visual-framework/vf-button`
+2. import in your app.module
+   ```
+   import { VfButton } from "@visual-framework/button/button.component";
+
+   @NgModule({
+     declarations: [VfButton, YourOtherComponents],
+     ...
+   })
+   ```
+3. use
+   ```
+   <a vf-button href="//embl.org" primary="true" small="true">Hello world</a>
+   ```
+4. add to your styles.scss
+   ```
+   @import '~@visual-framework/vf-button/vf-button.scss';
+   ```
+   (you should also make use of [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter))
+
+Depending on the success of this method, we plan to add standardized guidance to the component library and component generator.
+
+#### Usage
+
+`<a vf-button href="//embl.org" primary="true" small="true">Hello</a>`
+
+
 
 ## Install
 

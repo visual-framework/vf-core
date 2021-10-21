@@ -1,3 +1,8 @@
+### 1.1.1
+
+* Remove use of long deprecated `vf-banner--phase` variant and replace with `vf-banner--alert vf-banner--info`.
+* Adds `vf-u-margin__top--400` to handle cases of nested output where `vf-stack` may not reach.
+
 ### 1.1.0
 
 * Capture all links without `vf-banner__link` class.

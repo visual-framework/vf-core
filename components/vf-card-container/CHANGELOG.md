@@ -1,3 +1,16 @@
+### 3.2.1
+
+* Uses vf-stack for spacing to apply to elements immediately before or after vf-card-container.
+* Removes spacing between fullbleed card containers and fullbleed items (footers, heroes)
+* https://github.com/visual-framework/vf-core/pull/1698
+
+### 3.2.0
+
+* Fix README formatting.
+* Halves vertical spacing between `vf-section-header` and vf-cards.
+* Refines container vertical by using `--page-grid-gap)`.
+* Adds 4 column card support for when cards have no imagery.
+
 ### 3.1.2
 
 * Updates example to use content of different lengths.

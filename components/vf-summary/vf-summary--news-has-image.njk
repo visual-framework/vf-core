@@ -6,7 +6,7 @@
   {% set summary__image_alt = context.summary__image_alt %}
   {% set summary__date = context.summary__date %}
   {% set summary__category = context.summary__category %}
-{%- endif %}
+{%- endif -%}
 
 <article class="vf-summary vf-summary--news">
   <span class="vf-summary__date">{{summary__date}}</span>
@@ -16,12 +16,14 @@
       {{ summary__title }}
     </a>
   </h3>
+  {% if summary__text -%}
   <p class="vf-summary__text">
-    {% if summary__category %}
+    {% if summary__category -%}
     <span class="vf-summary__category">
       {{summary__category}}
     </span>
-    {% endif %}
+    {%- endif %}
     {{summary__text}}
   </p>
+  {%- endif %}
 </article>

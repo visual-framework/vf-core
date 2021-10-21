@@ -18,10 +18,23 @@
 
 @import 'vf-card-container.variables.scss';
 
+// An element immediately before or after vf-card-container should receive more spacing
+.vf-stack .vf-card-container + *,
+.vf-stack * + .vf-card-container {
+  --vf-stack-margin--custom: var(--page-grid-gap);
+}
+
+// no spacing between fullbleed card containers and fullbleed items
+.vf-stack .vf-card-container.vf-u-fullbleed + .vf-u-fullbleed,
+.vf-stack .vf-card-container.vf-u-fullbleed + .vf-hero,
+.vf-stack .vf-card-container.vf-u-fullbleed + .vf-footer {
+  --vf-stack-margin--custom: 0;
+}
+
 .vf-card-container {
   grid-column: 1 / -1;
-  margin: 0 0 3rem 0;
-  padding: 2rem 0;
+  padding: 2rem 0; // IE11 fallback
+  padding: var(--page-grid-gap) 0;
 }
 
 .vf-card-container__inner {
@@ -33,7 +46,7 @@
   @supports (display: grid) {
     --vf-card-container__grid--size: 18rem;
     display: grid;
-    gap: var(--page-grid-gap);
+    gap: calc(var(--page-grid-gap) / 2) var(--page-grid-gap);
     grid-template-columns: repeat(auto-fit, minmax(var(--vf-card-container__grid--size--overide, var(--vf-card-container__grid--size)), 1fr));
     margin: 0 auto;
     max-width: $vf-layout--comfortable;
@@ -55,6 +68,23 @@
   .vf-card {
     margin-bottom: 40px;
     width: 30%;
+    @supports (display: grid) {
+      margin-bottom: unset;
+      width: unset;
+    }
+  }
+}
+
+.vf-card-container__col-4 .vf-card-container__inner {
+  @supports (display: grid) {
+    --vf-card-container__grid--size: 18rem;
+    // @media (min-width: $vf-breakpoint--sm) {
+    // --vf-card-container__grid--size: 20rem;
+    // }
+  }
+
+  .vf-card {
+    width: 24%;
     @supports (display: grid) {
       margin-bottom: unset;
       width: unset;

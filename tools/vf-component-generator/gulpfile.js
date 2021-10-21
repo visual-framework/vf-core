@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const fs = require('fs');
-const path = require('path');
-const gulp = require('gulp');
+const fs = require("fs");
+const path = require("path");
+const gulp = require("gulp");
 
 // Pull configuration from the package.json:
 // const {componentPath, componentDirectories, buildDestionation} = require('../vf-config');
@@ -14,4 +14,4 @@ const gulp = require('gulp');
 // Not familiar with JS Modules? Don't fret, it can be a lot like wrapping code in a function; here's
 // a nice quick start: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#Exporting_module_features
 // require('./gulp-tasks/_gulp_rollup.js')(gulp, path, componentPath, componentDirectories, buildDestionation);
-require(path.resolve('.', __dirname + '/gulp-tasks/vf-generator.js'))(gulp, path);
+require(path.resolve(".", __dirname + "/gulp-tasks/vf-generator.js"))(gulp, path);

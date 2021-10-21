@@ -1,0 +1,53 @@
+# The title shown on the component page
+title: Bookmark
+# Label shown on index pages
+label: Bookmark
+status: alpha
+# The template used from /components/_previews
+#
+# Per-variant options
+variants:
+  - name: default
+    label: Default
+    hidden: true
+  - name: button
+    label: Button
+    hidden: false
+    context:
+      bookmark_href: "JavaScript:Void(0);"
+      label_inactive: Add as bookmark
+      label_active: Bookmarked
+      is_active: false
+      modifier: button
+      icon: heart
+  - name: button active example
+    label: Button active (example)
+    hidden: false
+    context:
+      bookmark_href: "JavaScript:Void(0);"
+      label_inactive: Add as bookmark
+      label_active: Bookmarked
+      is_active: true
+      modifier: button
+      icon: heart
+  - name: inline
+    label: Inline
+    hidden: false
+    context:
+      bookmark_href: "JavaScript:Void(0);"
+      label_inactive: Bookmark
+      label_active: Bookmarked
+      is_active: true
+      modifier: inline
+      icon: star
+# Global component context
+context:
+  component-type: element
+  # custom-values: passed as {{custom-values}}
+  # - note: you in your custom-values you should use dashes `-`
+  #         and not underscores `_` as underscores prevent inherited template use
+  # title: Title text
+  # text: String of text
+  # image: ../../assets/vf-component-name/assets/vf-component-name.png
+  # - note on paths: be sure to prefix with `../../`
+  # - Why? https://github.com/visual-framework/vf-core/issues/364

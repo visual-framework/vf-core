@@ -1,8 +1,12 @@
-## 1.0.1
+## 1.0.2
 
 * Support Eleventy 1.0.0 change in how its build process works
   * https://github.com/visual-framework/vf-core/pull/1257
   * https://github.com/11ty/eleventy/releases/tag/v0.12.1
+
+### 1.0.1
+
+* Dependency update.
 
 ### 1.0.0
 

@@ -1,4 +1,4 @@
-// Don't do anything by default
+// Do not do anything by default
 module.exports = function() {
   return true;
 };

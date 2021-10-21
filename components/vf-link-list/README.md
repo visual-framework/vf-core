@@ -4,9 +4,26 @@
 
 ## About
 
-The Links List component is a robust list group that can be used in a variety of grid layouts.
+This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. See "usage" for information on migrating.
 
 ## Usage
+
+### Migrating
+
+This deprecates vf-links-list as many components are either widely unused or only seldom used — for the components that aren't yet used much we also have major revisions coming and we wish to discourage use of components that are about to be overhauled.
+
+Usage of this component can by substituted with other components or new ones under development:
+
+- Links List Default: use vf-list + vf-heading
+- Links List no heading: use vf-list
+- Links List Tight: use vf-list  (we may add a vf-list--tight variant subject to demand)
+- Links List Very Easy: see above
+- Links List Easy: to be overhauled as vf-navigation--on-page
+- Links List Has Images: use vf-summary--has-image or vf-flag--middle
+
+### Original guidance
+
+The Links List component is a robust list group that can be used in a variety of grid layouts.
 
 The Links List can have a title `<h3 class="vf-links__heading">Example Title</h3>`.
 

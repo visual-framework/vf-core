@@ -9,33 +9,35 @@
  * Location: #{map-get($componentInfo, 'location')}
  */
 
-.vf-header {
-  background-position: top center;
-  background-size: cover;
-  box-sizing: border-box;
-  display: grid;
-  grid-column: 1 / -1;
-  width: 100%;
-}
-
-.vf-header {
-  .vf-navigation--main {
+html:not(.vf-disable-deprecated) {
+  .vf-header {
+    background-position: top center;
+    background-size: cover;
+    box-sizing: border-box;
+    display: grid;
     grid-column: 1 / -1;
+    width: 100%;
   }
-  .vf-navigation--additional {
-    grid-column: 1 / -1;
+
+  .vf-header {
+    .vf-navigation--main {
+      grid-column: 1 / -1;
+    }
+    .vf-navigation--additional {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+  }
+
+  .vf-header__navigation--site {
+    background-color: color(grey--dark);
+    & > * {
+      margin-left: -16px;
+    }
+  }
+
+  .vf-header__navigation--additional {
+    background-color: color(grey--dark);
     grid-row: 2;
   }
-}
-
-.vf-header__navigation--site {
-  background-color: color(grey--dark);
-  & > * {
-    margin-left: -16px;
-  }
-}
-
-.vf-header__navigation--additional {
-  background-color: color(grey--dark);
-  grid-row: 2;
 }

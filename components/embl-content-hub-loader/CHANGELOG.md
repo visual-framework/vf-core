@@ -1,3 +1,7 @@
+### 1.1.1
+
+* Avoid a null variable issue when contentHub returns no results.
+
 ### 1.1.0
 
 * adds overrides for more permutations of where the vf-global header lives

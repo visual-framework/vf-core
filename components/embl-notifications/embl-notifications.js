@@ -49,9 +49,11 @@ function emblNotificationsInject(message) {
     target.parentNode.prepend(output);
     vfBanner();
   } else if (message.field_notification_position == "inline") {
-    output.classList.add("vf-grid"); // we wrap in vf-grid for layout
+    output.classList.add("vf-grid", "vf-u-margin__top--400"); // we wrap in vf-grid for layout
+    // we use vf-u-margin__top--400 as this element is usually inserted inside a contentHub wrapper and not affected by body.vf-stack
+    // if vf-stack is set, this will have no practical affect
     output.innerHTML = `
-      <div class="vf-banner vf-banner--phase | vf-content">
+      <div class="vf-banner vf-banner--alert vf-banner--info | vf-content">
         <div class="vf-banner__content">
           <p class="vf-banner__text">${message.body}</p>
         </div>

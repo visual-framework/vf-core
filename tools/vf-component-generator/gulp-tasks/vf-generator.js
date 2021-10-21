@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Expose vf-component gulp task as a JS module
@@ -6,12 +6,12 @@
  */
 
 module.exports = function(gulp, path) {
-  const shell = require('gulp-shell');
+  const shell = require("gulp-shell");
 
-  const generatorPath = path.resolve(__dirname, '..');
+  const generatorPath = path.resolve(__dirname, "..");
 
-  gulp.task('vf-component', shell.task(
-    ['yo ' + generatorPath]
+  gulp.task("vf-component", shell.task(
+    ["yo " + generatorPath]
   ));
 
   return gulp;

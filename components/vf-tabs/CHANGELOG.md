@@ -1,3 +1,15 @@
+### 2.0.3
+
+* Use `set-type` mixin to set margins.
+* https://github.com/visual-framework/vf-core/pull/1698
+
+### 2.0.2
+
+* Prevent hijacking of scroll when focusing tabs.
+  * https://github.com/visual-framework/vf-core/pull/1696
+* Use new interactive colour token.
+  * https://github.com/visual-framework/vf-core/issues/1688
+
 ### 2.0.1
 
 * Bug: Add missing `@import 'vf-global-variables';` to generate standalone `vf-tabs.css`.

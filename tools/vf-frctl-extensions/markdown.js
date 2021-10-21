@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const renderMarkdown   = require('marked');
-const nunjucks = require('nunjucks');
+const renderMarkdown   = require("marked");
+const nunjucks = require("nunjucks");
 
 // Add support for markdown blocks inside html
 // Sample:
@@ -20,7 +20,7 @@ module.exports = function(fractal){
   // Licence: https://github.com/zephraph/nunjucks-markdown/blob/master/LICENSE
   function MarkdownExtenstion() {
 
-    this.tags = ['markdown'];
+    this.tags = ["markdown"];
 
     this.parse = function(parser, nodes, lexer) {
       var tok = parser.nextToken();
@@ -31,10 +31,10 @@ module.exports = function(fractal){
 
       // If arguments, return the fileTag constructed node
       if(args.children.length > 0)
-        return new nodes.CallExtension(this, 'fileTag', args);
+        return new nodes.CallExtension(this, "fileTag", args);
 
       // Otherwise parse until the close block and move the parser to the next position
-      var body = parser.parseUntilBlocks('endmarkdown');
+      var body = parser.parseUntilBlocks("endmarkdown");
 
       // I found Nunjucks  to be incredibly convoluted on how to just get some data into the BlockTag function,
       // this finally worked by faking another template node.
@@ -43,14 +43,14 @@ module.exports = function(fractal){
       parser.advanceAfterBlockEnd();
 
       // Return the constructed blockTag node
-      return new nodes.CallExtension(this, 'run', args, [body, tabStart]);
+      return new nodes.CallExtension(this, "run", args, [body, tabStart]);
     };
 
     // Markdown rendering for the file tag. Use the nunjucks.render function to render
     // the actual contents of the file. Pass the results through the markdown renderer.
     this.fileTag = function(environment, file) {
       return new nunjucks.runtime.SafeString(renderMarkdown(env.render(file, environment.ctx)));
-    }
+    };
 
     // Markdown rendering for the block. Pretty simple, just get the body text and pass
     // it through the markdown renderer.
@@ -76,7 +76,7 @@ module.exports = function(fractal){
       }
 
       return new nunjucks.runtime.SafeString(renderMarkdown(body));
-    }
+    };
 
   }
 

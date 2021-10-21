@@ -11,7 +11,7 @@ The `vf-divider` component creates a horizontal dividing rule that can help sepa
 The `vf-divider` component will be the width of if's container. So inside of `<body>` of your page it will be a maximum of 1300px.
 
 ```
-<body class="vf-body">
+<body class="vf-body | vf-stack vf-stack--400">
   <hr class="vf-divider">
 </body>
 ```

@@ -1,3 +1,13 @@
+### 1.5.3
+
+* Bug: following 1.5.2, ensures that links are always style correctly.
+
+### 1.5.2
+
+* Accessibility: When section header is a link, it should still be wrapped an `h2`
+  * https://github.com/visual-framework/vf-core/issues/1683
+* Whitespace control
+
 ### 1.5.1
 
 * Fixes the vertical centering of the svg arrow on vf-section-header. Also aligns better with the Figma design kit.

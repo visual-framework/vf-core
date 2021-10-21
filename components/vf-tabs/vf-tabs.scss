@@ -10,6 +10,7 @@
  */
 
 .vf-tabs__list {
+  @include set-type(text-body--2, $custom-margin-bottom: 0);
   display: inline-flex;
   flex-wrap: wrap;
   padding: 0;
@@ -29,7 +30,6 @@
 
 .vf-tabs__item {
   display: inline-block;
-  margin-top: .5rem;
   position: relative;
 }
 
@@ -55,14 +55,14 @@
 }
 
 .vf-tabs__link.is-active {
-  border-bottom-color: color(blue);
-  color: color(blue);
+  border-bottom-color: interactive-color(default);
+  color: interactive-color(default);
   text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layour shift
   z-index: 5150;
 
   &:hover,
   &:focus {
-    color: color(blue);
+    color: interactive-color(default);
   }
 }
 

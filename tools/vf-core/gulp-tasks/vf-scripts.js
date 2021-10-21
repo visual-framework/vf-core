@@ -6,37 +6,37 @@
  */
 
 module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation) {
-  const rename = require('gulp-rename');
-  const rollup = require('gulp-better-rollup');
-  const includePaths = require('rollup-plugin-includepaths');
-  const babel = require('gulp-babel');
-  const deleteLines = require('gulp-delete-lines');
-  const eslint = require('gulp-eslint');
+  const rename = require("gulp-rename");
+  const rollup = require("gulp-better-rollup");
+  const includePaths = require("rollup-plugin-includepaths");
+  const babel = require("gulp-babel");
+  const deleteLines = require("gulp-delete-lines");
+  const eslint = require("gulp-eslint");
 
   var jsPaths = [componentPath];
 
   // Construct jsPaths to import from componentDirectories
   for (let directory = 0; directory < componentDirectories.length; directory++) {
-    jsPaths.push(path.resolve('.', componentPath, componentDirectories[directory]).replace(/\\/g, '/'));
+    jsPaths.push(path.resolve(".", componentPath, componentDirectories[directory]).replace(/\\/g, "/"));
   }
 
   // add any multi-component paths
   // todo: this obviously doesn't support componentDirectories, but we need to
   //       architect a better way of supporting nested sub-components,
   //       perhaps it is `vf-form`'s responsibility to do a rollup for JS and CSS
-  jsPaths.push(componentPath + '/vf-form');
+  jsPaths.push(componentPath + "/vf-form");
 
   // Rollup all JS imports into CJS and babel them to ES5
-  gulp.task('vf-scripts:es5', function() {
+  gulp.task("vf-scripts:es5", function() {
     let includePathOptions = {
       include: {},
       paths: jsPaths,
       // If you need to make any components cited as "external"
       // external: ['vfTabs'],
-      extensions: ['.js']
+      extensions: [".js"]
     };
 
-    return gulp.src(componentPath + '/vf-componenet-rollup/scripts.js')
+    return gulp.src(componentPath + "/vf-componenet-rollup/scripts.js")
       // .pipe(sourcemaps.init())
       .pipe(rollup({
         // There is no `input` option as rollup integrates into the gulp pipeline
@@ -60,7 +60,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
           includePaths(includePathOptions)
         ]
       }, {
-        format: 'cjs',
+        format: "cjs",
       }))
       // If you wish to inline sourcemap into the exported .js file:
       // Rollups `sourcemap` option is unsupported. Use `gulp-sourcemaps` plugin instead
@@ -69,38 +69,38 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       // When components are requested but not found, rollupJS leaves them as a node-style
       // `require()`, this trims those
       .pipe(deleteLines({
-         'filters': [
-         /require\('/i
-         ]
-       }))
-       .pipe(babel({
-        'presets': [
+        "filters": [
+          /require\('/i
+        ]
+      }))
+      .pipe(babel({
+        "presets": [
           [
-            '@babel/preset-env',
+            "@babel/preset-env",
             {
-              'targets': '> 0.25%, not dead, last 2 versions'
+              "targets": "> 0.25%, not dead, last 2 versions"
             }
           ]
         ]
       }))
 
-  .pipe(gulp.dest(buildDestionation + '/scripts'));
+      .pipe(gulp.dest(buildDestionation + "/scripts"));
   });
 
 
   // Eventually we'll want to support ES6 natively with ES5 as fallback, `scripts.es5.js`
-  gulp.task('vf-scripts:modern', function() {
-    return gulp.src(componentPath + '/vf-componenet-rollup/scripts.js')
-        .pipe(rename(function (path) {
-          path.extname = '.modern.js';
-        }))
-      .pipe(gulp.dest(buildDestionation + '/scripts'));
+  gulp.task("vf-scripts:modern", function() {
+    return gulp.src(componentPath + "/vf-componenet-rollup/scripts.js")
+      .pipe(rename(function (path) {
+        path.extname = ".modern.js";
+      }))
+      .pipe(gulp.dest(buildDestionation + "/scripts"));
   });
 
   // JS Lint
   // For config see .eslintrc.js
-  const vfJsLintPaths = [componentPath+'/**/embl-*.js', componentPath+'/**/vf-*.js', '!assets/**/*.js',  '!'+componentPath+'/**/*.precompiled.js'];
-  gulp.task('vf-lint:js-soft-fail', function() {
+  const vfJsLintPaths = [componentPath+"/**/embl-*.js", componentPath+"/**/vf-*.js", "!assets/**/*.js",  "!"+componentPath+"/**/*.precompiled.js"];
+  gulp.task("vf-lint:js-soft-fail", function() {
     return gulp.src(vfJsLintPaths)
       // a minimal rule set if .eslintrc.js is missing (avoid build break)
       .pipe(eslint({
@@ -113,7 +113,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       .pipe(eslint.format());
   });
 
-  gulp.task('vf-lint:js-hard-fail', function() {
+  gulp.task("vf-lint:js-hard-fail", function() {
     return gulp.src(vfJsLintPaths)
       // a minimal rule set if .eslintrc.js is missing (avoid build break)
       .pipe(eslint({
@@ -125,8 +125,8 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       .pipe(eslint.failAfterError());
   });
 
-  gulp.task('vf-scripts', gulp.series(
-    'vf-scripts:es5', 'vf-scripts:modern', 'vf-lint:js-soft-fail'
+  gulp.task("vf-scripts", gulp.series(
+    "vf-scripts:es5", "vf-scripts:modern", "vf-lint:js-soft-fail"
   ));
 
   return gulp;

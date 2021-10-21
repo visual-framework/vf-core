@@ -1,6 +1,6 @@
 ---
-title: Consultation process
-subtitle: The Visual Framework 2.0 is an open source project meant for the wider life science community, so we aim to be transparent about which components are canonized, what isn't and why decisions are made.
+title: Consultation and governance
+subtitle: Transparency and outreach about which components are made.
 date: 2020-11-02 12:24:50
 is_index: false
 section: about
@@ -13,7 +13,7 @@ layout: layouts/base.njk
 
 {% render '@vf-intro', {
   "vf_intro_heading": title,
-  "vf_intro_lede": subtitle,
+  "vf_intro_lede": "As an open source project meant for the wider life science community, we are transparent about which components are canonized, what isn't and why decisions are made.",
   "vf_intro_subheading": "",
   "vf_intro_text": [
     'With this wide remit, the VF needs to be disciplined and flexible — empathy, consideration and consultation are key to our governance approach.',
@@ -38,7 +38,7 @@ layout: layouts/base.njk
 - Compatible
   - Use the VF without breaking your other tools (i.e. Bootstrap)
 - Flexible
-  - Overridable where necessary (i.e. “the button isn’t working for our use case”)
+  - Override where necessary (i.e. “the button isn’t working for our use case”)
 
 The VF enables all EMBL websites and collaborations to:
 - be built better, faster, cheaper
@@ -155,16 +155,38 @@ If you have an idea you'd like to suggest, the best places to begin are:
 
 In any case we'll help you convert it to an actionable proposal for the correct group of consultation.
 
-### What if my idea gets rejected?
+{% endmarkdown %}
+</div>
+<div>
+  {% set context = {
+    "card_heading": "Create a component",
+    "card_href": "/guidance/creating-components/",
+    "card_subheading": "Want to put your idea into code?",
+    "variant": "striped",
+    "newTheme": "primary"
+  }
+  %}
+  {% include "vf-core-components/vf-card/vf-card.njk" %}
+</div>
+</section>
+<section class="embl-grid embl-grid--has-centered-content">
+{% render '@vf-section-header', {
+  "section_title": "What if my idea gets rejected?",
+  "id": "whatif",
+  "vf_section__content": ""
+} %}
+<div class="vf-content">
 
-The agreed implementation doesn't cover my needs?
-
-Even if your need can't be accommodated:
-
-- the Visual Framework accommodate customisation at the edge (in Sass or JavaScript) or core changes (by bringing your own build process or design tokens)
-- you can [create and use a custom component in your local project]({{ '/building' | url }}) and share the component on npm for others to use
+{% markdown %}
 
 The Visual Framework allows "local rule". You won't be blocked from adding and overriding components.
+
+If an agreed implementation doesn't cover your needs, you can still:
+
+- use the Visual Framework accommodate customisation at the edge (in Sass or JavaScript) or core changes (by bringing your own build process or design tokens)
+- you can [create and use a custom component in your local project]({{ '/building' | url }}) and share the component on npm for others to use
+
+If you need help understanding how to do this, reach out to the community on Slack or GitHub.
 
 {% endmarkdown %}
 </div>
@@ -172,7 +194,7 @@ The Visual Framework allows "local rule". You won't be blocked from adding and o
 
 <section class="embl-grid embl-grid--has-centered-content">
 {% render '@vf-section-header', {
-  "section_title": "We achieve",
+  "section_title": "We aim to achieve",
   "id": "achieve",
   "vf_section__content": ""
 } %}

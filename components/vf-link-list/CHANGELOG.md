@@ -1,3 +1,18 @@
+### 1.5.0
+
+This deprecates vf-link-list as many components are either widely unused or only seldom used — for the components that aren't yet used much we also have major revisions coming and we wish to discourage use of components that are about to be overhauled.
+
+* Links List Default: use vf-list + vf-heading
+* Links List no heading: use vf-list
+* Links List Tight: use vf-list  (we may add a vf-list--tight variant subject to demand)
+* Links List Very Easy: see above
+* Links List Easy: to be overhauled as vf-navigation--on-page
+* Links List Has Images: use vf-summary--has-image or vf-flag--middle
+
+Additionally there has been a confusion between when to use vf-list and vf-link-list that we're want to address.
+
+https://github.com/visual-framework/vf-core/issues/1649
+
 ### 1.4.0
 
 * Requires at least `@visual-framework@vf-sass-config@2.6.1`.

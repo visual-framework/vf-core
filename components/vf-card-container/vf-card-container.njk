@@ -1,15 +1,14 @@
 {% if context %}
-
-{% set modifier = context.modifier %}
-{% set vf_cards = context.vf_cards %}
-{% set container_section__header = context.container_section__header %}
-{% set cardtype = context.variant %}
-{% set cards_aspect_ratio = context.cards_aspect_ratio %}
-
+  {% set modifier = context.modifier %}
+  {% set vf_cards = context.vf_cards %}
+  {% set container_section__header = context.container_section__header %}
+  {% set cardtype = context.variant %}
+  {% set cards_aspect_ratio = context.cards_aspect_ratio %}
+  {% set cards_per_row = context.cards_per_row %}
 {% endif %}
 
 <section
-  class="vf-card-container{% if modifier %} | {{modifier}}{% endif %}"
+  class="vf-card-container{% if cards_per_row %} vf-card-container__col-{{cards_per_row}}{% endif %}{% if modifier %} | {{modifier}}{% endif %}"
   style="--vf-card__image--aspect-ratio: {{cards_aspect_ratio}};"
 >
   <div class="vf-card-container__inner">

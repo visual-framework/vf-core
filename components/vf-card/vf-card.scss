@@ -227,15 +227,14 @@
   }
 
   .vf-card__subheading {
-    background-color: color(green);
-    background-color: var(--vf-card-bg-color, #{color(green)});
+    background-color: color(green--dark);
+    background-color: var(--vf-card--striped-bg-color, #{color(green--dark)});
     color: ui-color(white);
     margin: map-get($vf-spacing-map, vf-spacing--400) * -1;
-    margin-bottom: 0;
-    margin-top: -.5rem !important;
+    margin-bottom: -1rem;
     padding: map-get($vf-spacing-map, vf-spacing--400);
     padding-bottom: map-get($vf-spacing-map, vf-spacing--200);
-    padding-top: 0;
+    padding-top: .5rem;
   }
 
   .vf-card__text {
@@ -301,6 +300,10 @@
   .vf-card__heading,
   .vf-card__text {
     margin-bottom: 0;
+  }
+  .vf-card__text {
+    margin-top: #{map-get($vf-spacing-map, vf-spacing--400)}; /* IE Fallback */
+    margin-top: var(--vf-stack-margin--custom, var(--vf-stack-margin, #{map-get($vf-spacing-map, vf-spacing--400)}));
   }
 }
 

@@ -1,0 +1,122 @@
+---
+title: Rollup release 2.5.2
+subtitle: This release brings a bug fixes, new design tokens and improved documentation.
+date: 2021-10-14 22:10:29
+version: 2.5.2
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{% markdown %}
+
+In addition to [new design tokens for interactive foreground and background colours](/design-tokens/theming/#interactive), we've refreshed the [guidance on the component creation process and technicalities](/guidance/creating-components/).
+
+Read below for details on the changes in each component.
+
+Our next release will [bring an overhaul to the component previews](https://github.com/visual-framework/vf-core/pull/1689).
+
+As always, you can [join the conversation on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+{% endmarkdown %}
+
+{% set context = {
+  "component_modifier": "vf-links__list--easy",
+  "title": "On this page",
+  "svg": true,
+  "list": [
+    {
+      "text": "Refinements",
+      "link_list_href": "#refinements"
+    },
+    {
+      "text": "Bug fixes",
+      "link_list_href": "#bugs"
+    }
+  ]
+}
+%}
+{% include blocks.links_list %}
+
+{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+
+#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
+<!-- Tools don't have pages in the component library -->
+
+#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
+
+{% endmacro %}
+
+{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
+{# endmacros ---/ #}
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+<br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ notes("vf-design-tokens", "3.6.2", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+
+* Add `interactive-color` tokens.
+    * https://github.com/visual-framework/vf-core/issues/1688
+
+{{ notes("vf-dropdown", "1.0.0-alpha.4", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+
+* Use new interactive colour token.
+    * https://github.com/visual-framework/vf-core/issues/1688
+
+{{ notes("vf-sass-config", "2.6.2", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+
+* Add map to `interactive-color` sass map
+    * https://github.com/visual-framework/vf-core/issues/1688
+
+{{ notes("vf-table", "1.2.0-rc.3", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+* Use new interactive colour token.
+    * https://github.com/visual-framework/vf-core/issues/1688
+
+{{ notes("vf-tabs", "VERSIONHERE", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+
+* Use new interactive colour token.
+    * https://github.com/visual-framework/vf-core/issues/1688
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+{{ notes("vf-location-nearest", "1.0.2", "0459997ca19e5d000edeb9a80b4041180e61a2fe") }}
+
+* Remove unneeded `console.log`.
+
+{{ notes("vf-tabs", "2.0.2", "0459997ca19e5d000edeb9a80b4041180e61a2fe") }}
+
+* Prevent hijacking of scroll when focusing tabs.
+    * https://github.com/visual-framework/vf-core/pull/1696
+
+{{ notes("vf-section-header", "1.5.3", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+
+* Bug: following 1.5.2, ensures that links are always style correctly.
+
+
+{% endmarkdown %}

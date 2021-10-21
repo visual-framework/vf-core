@@ -1,6 +1,6 @@
-const { DateTime } = require('luxon');
-const _            = require('lodash');
-const Path         = require('path');
+const { DateTime } = require("luxon");
+const _            = require("lodash");
+const Path         = require("path");
 
 module.exports = function(config) {
 
@@ -22,7 +22,7 @@ module.exports = function(config) {
   //   return 'ddd' + value;
   // });
 
-  // Add any utiliuty filters
+  // Add any utility filters
   config.addFilter("dateDisplay", (dateObj, format = "d LLL y") => {
     return DateTime.fromJSDate(dateObj, {
       zone: "utc"
@@ -33,12 +33,12 @@ module.exports = function(config) {
   // {{ 'string words' | camelize(true) }}
   config.addFilter("camelize", (str, upperCaseFirst = false) => {
     return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
-      if (upperCaseFirst) { 
+      if (upperCaseFirst) {
         return word.toUpperCase();
       } else {
         return index === 0 ? word.toLowerCase() : word.toUpperCase();
       }
-    }).replace(/\s+/g, '').replace('-', '');
+    }).replace(/\s+/g, "").replace("-", "");
   });
 
   // Split filter support

@@ -13,36 +13,38 @@ $vf-activity-list__item-background--color: ui-color(white);
 $vf-activity-list__item-border--color: color(grey);
 $vf-activity-list__blockquote-text--color: color(grey--dark);
 
-.vf-activity {
-  margin-bottom: 54px;
-}
-
-.vf-activity__date {
-  @include margin--block(bottom, 32px);
-  @include set-type(text-heading--5);
-}
-
-.vf-activity__list {
-  padding: 0;
-}
-
-.vf-activity__item {
-  @include set-type(text-body--2);
-  @include margin--block(bottom, 8px);
-
-  background-color: $vf-activity-list__item-background--color;
-  border: 1px solid $vf-activity-list__item-border--color;
-  padding: 22px 16px;
-
-  > a {
-    @include inline-link;
+html:not(.vf-disable-deprecated) {
+  .vf-activity {
+    margin-bottom: 54px;
   }
-}
 
-.vf-activity__blockquote {
-  @include set-type(text-body--5);
+  .vf-activity__date {
+    @include margin--block(bottom, 32px);
+    @include set-type(text-heading--5);
+  }
 
-  color: $vf-activity-list__blockquote-text--color;
-  margin-bottom: 8px;
-  margin-top: 16px;
+  .vf-activity__list {
+    padding: 0;
+  }
+
+  .vf-activity__item {
+    @include set-type(text-body--2);
+    @include margin--block(bottom, 8px);
+
+    background-color: $vf-activity-list__item-background--color;
+    border: 1px solid $vf-activity-list__item-border--color;
+    padding: 22px 16px;
+
+    > a {
+      @include inline-link;
+    }
+  }
+
+  .vf-activity__blockquote {
+    @include set-type(text-body--5);
+
+    color: $vf-activity-list__blockquote-text--color;
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
 }

@@ -1,4 +1,4 @@
-// vf-links
+// vf-link-list
 
 @import 'package.variables.scss';
 // Debug information from component's `package.json`:
@@ -9,6 +9,8 @@
  * Location: #{map-get($componentInfo, 'location')}
  */
 
+// html:not(.vf-disable-deprecated) {
+// disabled as it causes a specificity issue with vf-footer
 .vf-links {
   margin-bottom: map-get($vf-spacing-map, vf-spacing-xxl);
 }
@@ -142,3 +144,4 @@
     width: 1em;
   }
 }
+// }

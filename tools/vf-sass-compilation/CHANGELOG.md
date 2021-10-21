@@ -1,3 +1,7 @@
+### 1.1.15
+
+* Dependency bump.
+
 ### 1.1.13
 
 * Dependency bump.

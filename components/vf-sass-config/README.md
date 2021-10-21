@@ -14,7 +14,7 @@ Note: these utilise `vf-design-tokens`
 
 ### set-color.scss
 
- `set-color($color-name)`
+`set-color($color-name)`
 
 ### map-deep-get.scss
 

@@ -1,0 +1,82 @@
+// vf-dropdown
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import "package.variables.scss";
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+@import "vf-dropdown.variables.scss";
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-dropdown/vf-dropdown.scss';
+
+.vf-dropdown {
+  display: inline-block;
+}
+.vf-dropdown__label-container {
+  cursor: pointer;
+  display: flex;
+  font-weight: 600;
+  justify-content: space-between;
+  padding: .8rem;
+  position: relative;
+  z-index: set-layer(vf-z-index--overlay-top-content);
+}
+.vf-dropdown__label {
+  flex: 1;
+  margin-right: .8rem 1.5rem;
+  text-align: right;
+}
+.vf-dropdown__menu-container {
+  display: none;
+}
+.vf-dropdown__menu {
+  border-top: 1px solid neutral(200);
+  box-shadow: 0px 3px 6px 1px neutral(100);
+  padding: .5rem 0;
+  position: relative;
+  z-index: set-layer(vf-z-index--overlay-top-content);
+}
+.vf-dropdown__menu-item {
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  &:hover {
+    background-color: interactive-color('background');
+  }
+  &.active {
+    font-weight: 600;
+  }
+}
+.vf-dropdown__menu-item-link {
+  color: var(--vf-color__text--primary);
+  text-decoration: none;
+}
+.vf-dropdown-overlay {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: set-layer(vf-z-index--overlay);
+}
+
+.vf-dropdown--open {
+  .vf-dropdown__menu-container {
+    display: block;
+  }
+  .arrow-icon {
+    transform: rotate(180deg);
+  }
+}

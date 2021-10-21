@@ -4,13 +4,20 @@
 
 ## About
 
-A three-column container for `vf-card`.
+A multi-column container for `vf-card`.
+
+## Usage
+
+### Columns
+
+The containier defaults to three columns (the recommended number of image-based cards per row). However if text-only cards are being used, a 4-column variant is supported `cards_per_row: 4` which appends CSS class `vf-card-container__col-4`.
 
 ### CSS Custom Properties
 
 The `vf-card` component allows for a CSS custom property to be set to define the `aspect-ratio` of the card image. This can be set per card, but with the `vf-card-container` you should aim for consistency across the `vf-card`s it is displaying. Therefore we can pass the `aspect-ratio` value from this component and it will cascade through the CSS onto the cards. This is encapsulated to this container, which allows you to set different `aspect-ratio` values for different containers as needed.
 
-To set the `aspect-ratio` you will need to set the `card_custom_aspect_ratio` key/value pair in the `.yml` or the `&#x7B;&#x25;&#x20; render &#x20;&#x25;&#x7D;`   api of the `vf-card-container as needed.
+To set the `aspect-ratio` you will need to set the `card_custom_aspect_ratio` key/value pair in the `.yml` or the `&#x7B;&#x25;&#x20; render &#x20;&#x25;&#x7D;` api of the `vf-card-container as needed.
+
 ## Install
 
 This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `vf-card-container` with this command.

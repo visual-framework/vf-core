@@ -1,0 +1,44 @@
+// vf-progress-indicator
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import "package.variables.scss";
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+@import "vf-progress-indicator.variables.scss";
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-progress-indicator/vf-progress-indicator.scss';
+.vf-progress-indicator {
+  --vf-progress-indicator__width: 100%;
+  background-color: neutral(200);
+  height: .5rem;
+  margin-top: 1rem;
+  width: 100%; // IE11 fallback
+  width: var(--vf-progress-indicator__width, 100%);
+}
+.vf-progress-indicator__mark {
+  --vf-progress-indicator__percent: 1%;
+  background-color: color(green);
+  border-left: 1.5px solid color(green);
+  height: .5rem;
+  width: 1%; // IE11 fallback
+  width: var(--vf-progress-indicator__percent, 1%);
+}
+.vf-progress-indicator__helper-text {
+  @include set-type(text-body--5, $custom-margin-bottom: 0);
+  margin-top: .5rem;
+  text-align: right;
+}
