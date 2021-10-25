@@ -12,6 +12,19 @@ These tabs have been made with accessibility in mind, however tabs should be avo
 
 Nested tabs are also possible, as demonstrated in the example, however this provides further usability challenges and should be strongly avoided.
 
+### Deep linking
+
+A tab can be activated on page load by passing it on the link `#vf-tabs__section-tab_id`
+
+This is the default behaviour and can be deactivated when invoking vfTabs:
+
+```js
+// vfTabs(scope, activateDeepLinkOnLoad)
+vfTabs(document, false);
+```
+
+Note: The deep linking feature is not designed with `vf-location-nearest` compatibility. A `vf-location-nearest` tab may not respect a deep linked hash url.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-tabs` with this command.
