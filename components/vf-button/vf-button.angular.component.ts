@@ -18,7 +18,7 @@ import { Component, Input, OnInit } from "@angular/core";
       <ng-content></ng-content>
     </button>
   `,
-  styleUrls: ["./button.component.css"]
+  styleUrls: ["./vf-button.scss"]
 })
 export class VfButton implements OnInit {
   @Input() primary = false;

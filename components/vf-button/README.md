@@ -55,7 +55,7 @@ As of vf-button v2.0.0-alpha.2 vf-button has experimental Angular support.
 1. install `yarn add @visual-framework/vf-button`
 2. import in your app.module
    ```
-   import { VfButton } from "@visual-framework/button/button.component";
+   import { VfButton } from "@visual-framework/vf-button/vf-button.angular.component.ts";
 
    @NgModule({
      declarations: [VfButton, YourOtherComponents],
