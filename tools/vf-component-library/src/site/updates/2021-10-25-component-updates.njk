@@ -1,0 +1,135 @@
+---
+title: Rollup release 2.5.3
+subtitle: This rollup brings no bug fixes, but carries on work refining spacing and a new tabs page-link feature.
+date: 2021-10-25 17:10:29
+version: 2.5.3
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% markdown %}
+
+Following the [14 October 2021 release](../2021-10-14-component-updates/), this release continues optimisations to how `vf-stack` distributes vertical spacing.
+
+With `vf-stack` now more broadly adopted, spacing now "just works" in the vast majority of cases. `vf-stack` now moves to version `3.0.0` and drops the `!important` rules allowing for utility-class based overrides where required.
+
+Here's one example of how `vf-stack` now does better spacing when pairing two containers with [`vf-u-fullbleed`](/components/vf-u-fullbleed) backgrounds; before and after:
+
+<div class="vf-grid vf-grid__col-2">
+<figure class="vf-figure vf-figure--align vf-figure--align-centered">
+  <img class="vf-figure__image" src="https://user-images.githubusercontent.com/928100/138117806-4949ec1a-c5ab-4b97-b43a-a69d9eb348c9.png" alt="image of landing page" loading="lazy">
+  <figcaption class="vf-figure__caption">Before</figcaption>
+</figure>
+<figure class="vf-figure vf-figure--align vf-figure--align-centered">
+  <img class="vf-figure__image" src="https://user-images.githubusercontent.com/928100/138117836-ab7a9909-d314-493b-b062-ee2c54d84173.png" alt="image of landing page" loading="lazy">
+  <figcaption class="vf-figure__caption">After</figcaption>
+</figure>
+</div>
+
+We've also introduced a new [`vf-tabs`](/components/vf-tabs/#vf-tabs__section--88888) feature for linking to a page and activating a specific tab.
+
+Read below for details on the changes in each component.
+
+Oh, and you'll also now see [an overhaul to the component previews](https://github.com/visual-framework/vf-core/pull/1689).
+
+As always, you can [join the conversation on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+{% endmarkdown %}
+
+{% set context = {
+  "component_modifier": "vf-links__list--easy",
+  "title": "On this page",
+  "svg": true,
+  "list": [
+    {
+      "text": "Features",
+      "link_list_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "link_list_href": "#refinements"
+    }
+  ]
+}
+%}
+{% include blocks.links_list %}
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+<br/>
+
+### Features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-tabs", "2.1.0", "5bec7e3749c0002f6506255bb7781fe2b78c01d8") }}
+
+* Support activation of specific vf-tabs on page load `#vf-tabs__section=tab_id`
+* Exposes `vfTabsSwitch` function
+* https://github.com/visual-framework/vf-core/issues/1700
+
+{{ releaseLinks.notes("vf-stack", "3.0.0", "42ca1f6f96cf53a19de7f35d817879f65a6ee595") }}
+
+* With `vf-stack` more consistently adopted we remove `!important` and `vf-u-fullbleed` override. Some spacing regressions are possible.
+* Sets a null vf-stack at the lowest CSS specificity.
+* https://github.com/visual-framework/vf-core/pull/1698
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("embl-grid", "2.2.0", "42ca1f6f96cf53a19de7f35d817879f65a6ee595") }}
+
+* Drops custom margin-bottom, you should rely on vf-stack.
+* https://github.com/visual-framework/vf-core/pull/1698
+
+{{ releaseLinks.notes("vf-card-container", "3.2.1", "42ca1f6f96cf53a19de7f35d817879f65a6ee595") }}
+
+* Uses vf-stack for spacing to apply to elements immediately before or after vf-card-container.
+* Removes spacing between fullbleed card containers and fullbleed items (footers, heroes)
+* https://github.com/visual-framework/vf-core/pull/1698
+
+{{ releaseLinks.notes("vf-core", "2.2.33", "3fc168dbf2c5b2ad21d9e0d3a9e445a453f3c730") }}
+
+* Update sass to 1.43.2
+* https://github.com/visual-framework/vf-core/pull/1677
+
+{{ releaseLinks.notes("vf-card", "2.6.2", "42ca1f6f96cf53a19de7f35d817879f65a6ee595") }}
+
+* Use vf-stack custom property for card text spacing.
+
+{{ releaseLinks.notes("vf-form__select", "3.0.0", "42ca1f6f96cf53a19de7f35d817879f65a6ee595") }}
+
+* Allow margins to be handled by `set-type` mixin.
+* https://github.com/visual-framework/vf-core/pull/1698
+
+{{ releaseLinks.notes("vf-hero", "3.3.2", "42ca1f6f96cf53a19de7f35d817879f65a6ee595") }}
+
+* Drop use of vf-stack-margin--custom.
+* https://github.com/visual-framework/vf-core/pull/1698
+
+
+{{ releaseLinks.notes("vf-sass-config", "2.7.0", "42ca1f6f96cf53a19de7f35d817879f65a6ee595") }}
+
+* `@mixin set-type` margin-top now inherits any applicable vf-stack margin.
+* https://github.com/visual-framework/vf-core/pull/1698
+
+{% endmarkdown %}

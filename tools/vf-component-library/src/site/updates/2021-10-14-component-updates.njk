@@ -9,6 +9,8 @@ tags:
 layout: layouts/post.njk
 ---
 
+{%- import "component-release-links.njk" as releaseLinks -%}
+
 {% markdown %}
 
 In addition to [new design tokens for interactive foreground and background colours](/design-tokens/theming/#interactive), we've refreshed the [guidance on the component creation process and technicalities](/guidance/creating-components/).
@@ -39,22 +41,6 @@ As always, you can [join the conversation on Slack](https://join.slack.com/t/vis
 %}
 {% include blocks.links_list %}
 
-{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-
-#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
-
-{% endmacro %}
-
-{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-<!-- Tools don't have pages in the component library -->
-
-#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge vf-badge--secondary">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge vf-badge--secondary">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge vf-badge--secondary">git diff</a>
-
-{% endmacro %}
-
-{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
-{# endmacros ---/ #}
-
 {% markdown %}
 
 <section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
@@ -79,42 +65,42 @@ As a reminder, the rollup CSS and JS are compilations of many independently vers
 
 ### Refinements <a href="#refinements" id="refinements"></a>
 
-{{ notes("vf-design-tokens", "3.6.2", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+{{ releaseLinks.notes("vf-design-tokens", "3.6.2", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
 
 * Add `interactive-color` tokens.
     * https://github.com/visual-framework/vf-core/issues/1688
 
-{{ notes("vf-dropdown", "1.0.0-alpha.4", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+{{ releaseLinks.notes("vf-dropdown", "1.0.0-alpha.4", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
 
 * Use new interactive colour token.
     * https://github.com/visual-framework/vf-core/issues/1688
 
-{{ notes("vf-sass-config", "2.6.2", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+{{ releaseLinks.notes("vf-sass-config", "2.6.2", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
 
 * Add map to `interactive-color` sass map
     * https://github.com/visual-framework/vf-core/issues/1688
 
-{{ notes("vf-table", "1.2.0-rc.3", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+{{ releaseLinks.notes("vf-table", "1.2.0-rc.3", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
 * Use new interactive colour token.
     * https://github.com/visual-framework/vf-core/issues/1688
 
-{{ notes("vf-tabs", "VERSIONHERE", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+{{ releaseLinks.notes("vf-tabs", "VERSIONHERE", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
 
 * Use new interactive colour token.
     * https://github.com/visual-framework/vf-core/issues/1688
 
 ### Bug fixes <a href="#bugs" id="bugs"></a>
 
-{{ notes("vf-location-nearest", "1.0.2", "0459997ca19e5d000edeb9a80b4041180e61a2fe") }}
+{{ releaseLinks.notes("vf-location-nearest", "1.0.2", "0459997ca19e5d000edeb9a80b4041180e61a2fe") }}
 
 * Remove unneeded `console.log`.
 
-{{ notes("vf-tabs", "2.0.2", "0459997ca19e5d000edeb9a80b4041180e61a2fe") }}
+{{ releaseLinks.notes("vf-tabs", "2.0.2", "0459997ca19e5d000edeb9a80b4041180e61a2fe") }}
 
 * Prevent hijacking of scroll when focusing tabs.
     * https://github.com/visual-framework/vf-core/pull/1696
 
-{{ notes("vf-section-header", "1.5.3", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
+{{ releaseLinks.notes("vf-section-header", "1.5.3", "63c3bec9fe233120497f6ba33a9dc292a53185c0") }}
 
 * Bug: following 1.5.2, ensures that links are always style correctly.
 

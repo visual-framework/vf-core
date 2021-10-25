@@ -9,27 +9,11 @@ tags:
 layout: layouts/post.njk
 ---
 
+{%- import "component-release-links.njk" as releaseLinks -%}
+
 This week's release of components is minor and continue to focus on optimisation.
 
 Our next releases will likely contain [important changes on vf-form elements](https://github.com/visual-framework/vf-core/pull/1408) that will greatly improve the look and usability. We also [expect vf-masthead to be formally deprecated](https://github.com/visual-framework/vf-core/pull/1406).
-
-{# macros ---> #}
-{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-
-#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
-
-{% endmacro %}
-
-{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-<!-- Tools don't have pages in the component library -->
-
-#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
-
-{% endmacro %}
-
-
-{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
-{# endmacros ---/ #}
 
 <section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
 <article class="vf-box vf-box-theme--primary vf-box--easy">
@@ -53,7 +37,7 @@ As a reminder, the rollup CSS and JS are compilations of many independently vers
 
 We've given further consideration on how to best support React. We'll use a dual approach, providing full true React components for complex VF components. For less interactive components we'll continue to consume the precompiled Nunjucks templates.
 
-{{ notesTool("vf-extensions-react", "0.0.3", "57b76f040149e75e68a9926f1e68edfc646c45a7") }}
+{{ releaseLinks.notesTool("vf-extensions-react", "0.0.3", "57b76f040149e75e68a9926f1e68edfc646c45a7") }}
 
 * Update readme with refined approach to VF-React support.
   * https://github.com/visual-framework/vf-core/issues/1401
@@ -65,7 +49,7 @@ We've given further consideration on how to best support React. We'll use a dual
 
 <img class="vf-figure__image" alt="misaligned text" src="https://user-images.githubusercontent.com/928100/109184416-45cca400-778f-11eb-9f49-895676232e72.png" />
 
-{{ notes("vf-card", "2.5.2", "6b597ab28fddf3d7dfa9369ecd2316004e14c038") }}
+{{ releaseLinks.notes("vf-card", "2.5.2", "6b597ab28fddf3d7dfa9369ecd2316004e14c038") }}
 
 * adds `align-items: start;` to the card so all child align when in a card container.
   * https://github.com/visual-framework/vf-core/issues/1395
