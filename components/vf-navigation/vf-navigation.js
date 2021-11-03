@@ -1,7 +1,5 @@
-// only required for vf-navigation--on-this-page
-// scrollspy concept ported from https://codepen.io/zchee/pen/ogzvZZ
-
 // vf-navigation
+// only required for vf-navigation--on-this-page
 
 /**
  * Function for JS scroll to top functionality
@@ -9,6 +7,7 @@
  * @example vfNavigationOnThisPage()
  */
 export function vfNavigationOnThisPage() {
+  // this implements a scrollspy concept based on https://codepen.io/zchee/pen/ogzvZZ
   // const components = document.querySelectorAll("[data-vf-js-dropdown]");
 
   // for (let component of components) {
@@ -29,6 +28,7 @@ export function vfNavigationOnThisPage() {
 
   window.onscroll = function() {
     // to do: throttle and request animationframe
+    // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame#example
     var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
     for (i in sectionPositions) {
       if (sectionPositions[i] <= scrollPosition) {

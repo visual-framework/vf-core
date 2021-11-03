@@ -19,6 +19,7 @@ This variant of the `vf-navigation` can be used to link to sections of the site,
 This is typically placed below the `vf-hero` component but can be also found below the `vf-global-header`.
 
 There should be only one use of `vf-navigation--main` on a page.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-navigation` with this command.
@@ -36,6 +37,18 @@ The source files included are written in [Sass](http://sass-lang.com)(`scss`). Y
 ```
 
 Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)
+
+### JavaScript
+
+If using the `vf-navigation--on-this-page` variant, you should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
+
+```js
+import { vfNavigationOnThisPage } from "vf-navigation/vf-navigation.js";
+// Or import directly
+// import { vfGaIndicateLoaded } from '../components/raw/vf-navigation/vf-navigation.js';
+
+vfNavigationOnThisPage();
+```
 
 ## Help
 

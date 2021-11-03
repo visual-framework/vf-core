@@ -48,6 +48,7 @@
 
 // conceptual
 .vf-navigation--on-this-page {
+  overflow: unset;
   // sticky behaviours
   position: sticky;
   top: 0;
@@ -57,23 +58,17 @@
   &::before {
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, .2);
   }
-}
-
-.vf-links__list--easy .vf-list__link {
-  display: inline-block;
-}
-.vf-list__link.active {
-  text-decoration: underline;
-  text-decoration-thickness: 4px;
-  text-underline-offset: 10px;
-}
-
-/* list spacing */
-.vf-links__list .vf-list__item {
-  --vf-text-margin--bottom: 1rem;
-}
-.vf-links__list--easy {
-  overflow: unset;
+  .vf-navigation__item {
+    --vf-text-margin--bottom: 1rem;
+  }
+  .vf-navigation__link {
+    display: inline-block;
+  }
+  .vf-navigation__link.active {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 10px;
+  }
 }
 
 @media (min-width: $vf-breakpoint--md) {
@@ -81,7 +76,7 @@
 
 //  make it work right on mobile
 @media only screen and (max-device-width: 900px) {
-  .vf-links.vf-links__list--easy {
+  .vf-navigation--on-this-page {
     overflow-x: auto;
     overflow-y: hidden;
     position: relative;
@@ -91,17 +86,17 @@
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, .2);
   }
 
-  .vf-links.vf-links__list--easy.vf-u-fullbleed::before {
+  .vf-navigation--on-this-page.vf-u-fullbleed::before {
     box-shadow: none;
     display:  none;
   }
 
-  .vf-links.vf-links__list--easy > .vf-list{
+  .vf-navigation--on-this-page > .vf-list{
     flex-wrap: nowrap;
     margin-right: 0 !important;
   }
 
-  .vf-links.vf-links__list--easy  [class*="__item"] {
+  .vf-navigation--on-this-page [class*="__item"] {
     flex-shrink: 0;
   }
 }
