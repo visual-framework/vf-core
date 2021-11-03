@@ -23,7 +23,6 @@
   {% endif -%}
   <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
     <h3>{{ item.meta.friendlyName }}</h3>
-    <hr class="vf-divider">
     {%- if type == "typography" -%}
     <p class="vf-card__text"><span>Font Size: </span><code class="vf-code-example">{{ item.value.fontSize }}</code></p>
     <p class="vf-card__text"><span>Font Weight: </span><code class="vf-code-example">{{ item.value.fontWeight }}</code></p>
@@ -33,7 +32,6 @@
       <code class="vf-code-example">{{ item.value }}</code></p>
     {% endif %}
 
-    <hr class="vf-divider">
     {% if item.meta.sassVariable %}
       <p class="vf-card__text">Sass variable:
         <code class="vf-code-example">${{ item.meta.sassVariable }}</code></p>
@@ -44,7 +42,6 @@
         <code class="vf-code-example">{{item.meta.sassFunction}}({{ item.meta.sassMap }})</code></p>
     {% endif %}
     {% if item.meta.CSSCustomProperty %}
-      <hr class="vf-divider">
       <p class="vf-card__text">CSS custom property:
         <code class="vf-code-example">{{ item.meta.CSSCustomProperty }}</code></p>
     {% endif %}

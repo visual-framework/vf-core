@@ -27,7 +27,7 @@
 .vf-navigation__item {
   [aria-current='page'],
   [aria-selected='true'] {
-    color: neutral(900);
+    color: interactive-color();
     text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layout shift
   }
 }
@@ -52,55 +52,55 @@
 }
 
 .vf-navigation--on-this-page.vf-u-fullbleed {
-  overflow: unset;
-  // sticky behaviours
+  margin-bottom: map-get($vf-spacing-map, vf-spacing--400);
+  overflow-x: auto;
+  overflow-y: hidden;
   position: sticky;
   top: 0;
   background: white;
   z-index: 1001;
 
-  &::before {
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, .2);
-  }
-  .vf-navigation__item {
-    --vf-text-margin--bottom: 1rem;
-  }
   .vf-navigation__link {
-    display: inline-block;
+    &:focus,
+    &:hover {
+      text-decoration: none;
+      text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layout shift
+    }
   }
-  .vf-navigation__link.active {
+
+  .vf-navigation__link[aria-selected='true'] {
     text-decoration: underline;
     text-decoration-thickness: 4px;
-    text-underline-offset: 10px;
+    text-underline-offset: .5em;
+    text-underline-position: under;
+    text-decoration-color: interactive-color();
   }
-}
-
-@media (min-width: $vf-breakpoint--md) {
-}
-
-//  make it work right on mobile
-@media only screen and (max-device-width: 900px) {
-  .vf-navigation--on-this-page {
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
-    left: -20px;
-    padding-left: 20px;
-    width: calc(100% + 15px);
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, .2);
-  }
-
-  .vf-navigation--on-this-page.vf-u-fullbleed::before {
-    box-shadow: none;
-    display:  none;
-  }
-
-  .vf-navigation--on-this-page > .vf-list{
+  > .vf-list {
     flex-wrap: nowrap;
-    margin-right: 0 !important;
+    // margin-right: 0 !important;
   }
-
-  .vf-navigation--on-this-page [class*="__item"] {
+  [class*="__item"] {
     flex-shrink: 0;
   }
+}
+
+@media only screen and (min-width: $vf-breakpoint--md) {
+  .vf-navigation--on-this-page.vf-u-fullbleed {
+    overflow: unset; // allow shadow to bleed out
+    &::before {
+      box-shadow: 0 0 2px 1px rgba(0, 0, 0, .2);
+    }
+  }
+}
+//  make it work right on mobile
+@media only screen and (max-width: $vf-breakpoint--md) {
+  .vf-navigation--on-this-page.vf-u-fullbleed {
+    @include padding(map-get($vf-spacing-map, vf-spacing--200),map-get($vf-spacing-map, vf-spacing--800),map-get($vf-spacing-map, vf-spacing--200),map-get($vf-spacing-map, vf-spacing--500));
+    margin-left: -1em; // inverse of vf-body padding
+    width: calc(100% - 1em);
+  }
+  // .vf-navigation--on-this-page.vf-u-fullbleed::before {
+    // box-shadow: none;
+    // display: none;
+  // }
 }

@@ -30,7 +30,6 @@ export function vfNavigationOnThisPage() {
     return;
   }
 
-
   Array.prototype.forEach.call(section, function(e) {
     sectionPositions[e.id] = e.offsetTop;
   });
@@ -40,14 +39,10 @@ export function vfNavigationOnThisPage() {
     // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame#example
     var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
     for (i in sectionPositions) {
-      if (sectionPositions[i] <= scrollPosition) {
+      if (sectionPositions[i] <= scrollPosition + 15) {
         // only add remove the class if there is a new section to activate
         if (sectionList.querySelector("a[href*=" + i + "]") != null) {
           sectionList.querySelector("[aria-selected]").removeAttribute("aria-selected");
-
-          // firstTab.removeAttribute("aria-selected");
-          // firstTab.setAttribute("aria-selected", "true");
-
           sectionList.querySelector("a[href*=" + i + "]").setAttribute("aria-selected", "true");
         }
       }
