@@ -11,7 +11,6 @@
 
 @import 'vf-navigation.variables.scss';
 
-
 .vf-navigation__item {
   [aria-current='page'] {
     color: neutral(900);
@@ -48,6 +47,17 @@
 
 
 // conceptual
+.vf-navigation--on-this-page {
+  // sticky behaviours
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1001;
+
+  &::before {
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, .2);
+  }
+}
 
 .vf-links__list--easy .vf-list__link {
   display: inline-block;
@@ -57,15 +67,6 @@
   text-decoration-thickness: 4px;
   text-underline-offset: 10px;
 }
-.vf-sticky {
-  position: sticky;
-  top: 0;
-  background: white;
-  z-index: 1001;
-}
-.vf-sticky:before {
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .2);
-}
 
 /* list spacing */
 .vf-links__list .vf-list__item {
@@ -73,6 +74,9 @@
 }
 .vf-links__list--easy {
   overflow: unset;
+}
+
+@media (min-width: $vf-breakpoint--md) {
 }
 
 //  make it work right on mobile
@@ -93,7 +97,7 @@
   }
 
   .vf-links.vf-links__list--easy > .vf-list{
-  flex-wrap: nowrap;
+    flex-wrap: nowrap;
     margin-right: 0 !important;
   }
 
