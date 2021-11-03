@@ -11,13 +11,6 @@
 
 @import 'vf-navigation.variables.scss';
 
-.vf-navigation__item {
-  [aria-current='page'] {
-    color: neutral(900);
-    text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layour shift
-  }
-}
-
 .vf-navigation__link {
   @include inline-link(
     $vf-link--color: neutral(700),
@@ -31,6 +24,13 @@
   }
 }
 
+.vf-navigation__item {
+  [aria-current='page'],
+  [aria-selected='true'] {
+    color: neutral(900);
+    text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layout shift
+  }
+}
 .vf-navigation--main {
   .vf-navigation__link {
     @include set-type(text-body--2, $custom-margin-bottom: 0);
@@ -50,7 +50,7 @@
 .vf-navigation--on-this-page {
   overflow: unset;
   // sticky behaviours
-  position: sticky;
+  position: sticky !important; // conflict with vf-u-fullbleed
   top: 0;
   background: white;
   z-index: 1001;

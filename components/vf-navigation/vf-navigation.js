@@ -43,8 +43,12 @@ export function vfNavigationOnThisPage() {
       if (sectionPositions[i] <= scrollPosition) {
         // only add remove the class if there is a new section to activate
         if (sectionList.querySelector("a[href*=" + i + "]") != null) {
-          sectionList.querySelector(".active").classList.remove("active");
-          sectionList.querySelector("a[href*=" + i + "]").classList.add("active");
+          sectionList.querySelector("[aria-selected]").removeAttribute("aria-selected");
+
+          // firstTab.removeAttribute("aria-selected");
+          // firstTab.setAttribute("aria-selected", "true");
+
+          sectionList.querySelector("a[href*=" + i + "]").setAttribute("aria-selected", "true");
         }
       }
     }
