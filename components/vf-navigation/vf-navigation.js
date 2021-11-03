@@ -16,11 +16,20 @@ export function vfNavigationOnThisPage() {
   //   });
   // }
 
-  // to do: make this not explode if sectionList missing
   var sectionList = document.querySelectorAll("[data-vf-js-scroll-activate-container]")[0];
   var section = document.querySelectorAll("[data-vf-js-scroll-activate]");
   var sectionPositions = {};
   var i = 0;
+
+  if (!sectionList || !section) {
+    // exit: either sections or section content not found
+    return;
+  }
+  if (sectionList.length == 0 || section.length == 0) {
+    // exit: either sections or section content not found
+    return;
+  }
+
 
   Array.prototype.forEach.call(section, function(e) {
     sectionPositions[e.id] = e.offsetTop;
