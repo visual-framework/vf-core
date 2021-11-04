@@ -9,7 +9,8 @@
   {%- if classModifier %} vf-navigation--{{ classModifier }}{% endif -%}
   {%- if classModifier == 'on-this-page' %} | vf-u-fullbleed{%- endif %} | vf-cluster">
   <ul class="vf-navigation__list | vf-list | vf-cluster__inner"
-  {%- if classModifier == 'on-this-page' and activateJavascript == true %} data-vf-js-scroll-activate-container="true"{%- endif -%}
+  {%- if classModifier == 'on-this-page' and activateJavascript == true %} data-vf-js-navigation-on-this-page-container="true"{%- endif -%}
+  {%- if classModifier == 'on-this-page' and activateJavascript == false %} data-vf-js-navigation-on-this-page-container="false"{%- endif -%}
   >
     {% if heading -%}
     <li class="vf-navigation__item">

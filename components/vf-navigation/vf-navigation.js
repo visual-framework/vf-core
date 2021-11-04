@@ -16,8 +16,8 @@ export function vfNavigationOnThisPage() {
   //   });
   // }
 
-  var sectionList = document.querySelectorAll("[data-vf-js-scroll-activate-container]")[0];
-  var section = document.querySelectorAll("[data-vf-js-scroll-activate]");
+  var sectionList = document.querySelectorAll("[data-vf-js-navigation-on-this-page-container]")[0];
+  var section = document.querySelectorAll("[data-vf-js-navigation-on-this-page]");
   var sectionPositions = {};
   var i = 0;
 
@@ -39,7 +39,8 @@ export function vfNavigationOnThisPage() {
     // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame#example
     var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
     for (i in sectionPositions) {
-      if (sectionPositions[i] <= scrollPosition + 15) {
+      if (sectionPositions[i] <= scrollPosition + 70) {
+        // we activate the section 70 pixels before coming into view, as the sticky bar will cover it
         // only add remove the class if there is a new section to activate
         if (sectionList.querySelector("a[href*=" + i + "]") != null) {
           sectionList.querySelector("[aria-selected]").removeAttribute("aria-selected");
