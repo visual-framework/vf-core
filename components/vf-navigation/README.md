@@ -8,17 +8,32 @@ The `vf-navigation` component is a horizontal list of links to key pages of the 
 
 ## Usage
 
-### Global Navigation
+### Global navigation variant
 
 This variant of the `vf-navigation` is to be used as part of the `vf-global-header` to give a few 'quick links' that will be on every page.
 
-### Main Navigation
+### Main navigation variant
 
 This variant of the `vf-navigation` can be used to link to sections of the site, or part of the site the parent section.
 
 This is typically placed below the `vf-hero` component but can be also found below the `vf-global-header`.
 
 There should be only one use of `vf-navigation--main` on a page.
+
+### On this page navigation variant
+
+This sticky element allows users to quickly jump between sections on longer pages.
+
+There should be only one use of `vf-navigation--on-this-page` on a page.
+
+Using the `vfNavigationOnThisPage` JavaScript adds a quality-of-life improvement by automatically activating sections as the user scrolls them into view on the page.
+
+For this feature to work, anchor targets need two things:
+
+1. a data attribute: `data-vf-js-navigation-on-this-page="true"`
+2. an element id: `id="container-1"`
+
+These could be added to any item on the page, but would most logically be added to a `vf-grid`, `embl-grid` or `vf-section-header`
 
 ## Install
 
