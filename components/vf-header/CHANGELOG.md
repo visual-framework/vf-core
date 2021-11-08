@@ -1,3 +1,7 @@
+### 3.0.1
+
+* Removes usage of deleted `vf-navigation--additional` variant.
+
 ### 3.0.0
 
 * vf-header was an early concept on how we might accommodate multi-layers of branding ... but:

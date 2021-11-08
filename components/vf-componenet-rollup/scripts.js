@@ -58,6 +58,9 @@ vfBackToTop();
 import { vfDropdown } from "vf-dropdown/vf-dropdown.js";
 vfDropdown();
 
+import { vfNavigationOnThisPage } from "vf-navigation/vf-navigation.js";
+vfNavigationOnThisPage();
+
 import { emblContentMetaProperties_Read } from "embl-content-meta-properties/embl-content-meta-properties";
 
 import { emblNotifications } from "embl-notifications/embl-notifications";

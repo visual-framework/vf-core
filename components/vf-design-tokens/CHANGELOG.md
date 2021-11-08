@@ -1,3 +1,8 @@
+### 3.6.3
+
+* Fix documentation for sassFunction interactive-color
+* https://github.com/visual-framework/vf-core/pull/1711
+
 ### 3.6.2
 
 * Add `interactive-color` tokens.

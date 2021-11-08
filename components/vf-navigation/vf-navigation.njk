@@ -2,26 +2,33 @@
   {% set classModifier = context.classModifier %}
   {% set heading = context.heading %}
   {% set navigation = context.navigation %}
+  {% set activateJavascript = context.activateJavascript %}
 {%- endif -%}
 
 <nav class="vf-navigation
   {%- if classModifier %} vf-navigation--{{ classModifier }}{% endif -%}
-  {%- if classModifier == 'additional' %} | vf-u-fullbleed{% else %} | vf-cluster{%- endif -%}">
-  {% if heading %}
-  <h3 class="vf-navigation__heading">{{ heading }}</h3>
-  {% endif %}
-  <ul class="vf-navigation__list | vf-list | vf-cluster__inner">
-    {% for item in navigation %}
+  {%- if classModifier == 'on-this-page' %} | vf-u-fullbleed{%- endif %} | vf-cluster">
+  <ul class="vf-navigation__list | vf-list | vf-cluster__inner"
+  {%- if classModifier == 'on-this-page' and activateJavascript == true %} data-vf-js-navigation-on-this-page-container="true"{%- endif -%}
+  {%- if classModifier == 'on-this-page' and activateJavascript == false %} data-vf-js-navigation-on-this-page-container="false"{%- endif -%}
+  >
+    {% if heading -%}
+    <li class="vf-navigation__item">
+      {# <h3 class="vf-navigation__heading"></h3> #}
+      {{ heading }}
+    </li>
+    {%- endif %}
+    {%- for item in navigation %}
     <li class="vf-navigation__item">
       <a
       href="{{ item.navigation_href }}"
       class="vf-navigation__link"
-      {% if item.currentPage %} aria-current="page"{%- endif -%}>
-
+      {%- if item.currentPage %} aria-current="page"{%- endif -%}
+      {%- if item.currentSection %} aria-selected="true"{%- endif -%}
+      >
       {{- item.text -}}
-
       </a>
     </li>
-    {% endfor %}
+    {%- endfor %}
   </ul>
 </nav>
