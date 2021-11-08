@@ -21,7 +21,7 @@ export function vfNavigationOnThisPage() {
     return;
   }
 
-  Array.prototype.forEach.call(section, function(e) {
+  section.forEach(e => {
     sectionPositions[e.id] = e.offsetTop;
   });
 
