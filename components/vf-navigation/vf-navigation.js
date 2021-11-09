@@ -8,7 +8,7 @@
  */
 export function vfNavigationOnThisPage() {
   var sectionList = document.querySelectorAll("[data-vf-js-navigation-on-this-page-container='true'],[data-vf-js-navigation-on-this-page-container='1']")[0];
-  var section = document.querySelectorAll("[data-vf-js-navigation-on-this-page]");
+  var section = document.querySelectorAll("[id]");
   var sectionPositions = {};
   var i = 0;
 

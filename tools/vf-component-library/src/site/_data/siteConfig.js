@@ -28,6 +28,11 @@ module.exports = {
       title: "Building a site",
       summary: "How to make a project with Visual Framework components."
     },
+    designtokens: {
+      url: "/design-tokens",
+      title: "Design tokens",
+      summary: "Colour, typography, spacing and other stylistic decisions as structured data.."
+    },
     developing: {
       url: "/developing",
       title: "Contributing",

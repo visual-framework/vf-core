@@ -28,10 +28,7 @@ There should be only one use of `vf-navigation--on-this-page` on a page.
 
 Using the `vfNavigationOnThisPage` JavaScript adds a quality-of-life improvement by automatically activating sections as the user scrolls them into view on the page.
 
-For this feature to work, anchor targets need two things:
-
-1. a data attribute: `data-vf-js-navigation-on-this-page="true"`
-2. an element id: `id="container-1"`
+For this feature to work, anchor targets need two things an element id: `id="container-1"`
 
 These could be added to any item on the page, but would most logically be added to a `vf-grid`, `embl-grid` or `vf-section-header`
 

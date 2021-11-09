@@ -3,6 +3,7 @@ title: Theme colours
 date: 2021-06-22 12:24:50
 section: designtokens
 templateEngineOverride: njk
+hideSectionNavigation: true
 tags:
   - posts
   - sections
@@ -12,6 +13,41 @@ layout: layouts/base.njk
 
 {% set type %}color{% endset %}
 <h1 class="vf-intro__heading">{{ title }}</h1>
+
+{% set context = {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Brand",
+      "navigation_href": "#brand",
+      "currentSection": true
+    },
+    {
+      "text": "Text",
+      "navigation_href": "#text"
+    },
+    {
+      "text": "Interactive",
+      "navigation_href": "#interactive"
+    },
+    {
+      "text": "Buttons",
+      "navigation_href": "#buttons"
+    },
+    {
+      "text": "UI and neutral colours",
+      "navigation_href": "#ui"
+    },
+    {
+      "text": "Decorative",
+      "navigation_href": "#decorative"
+    }
+  ]
+}
+%}
+{% include "vf-core-components/vf-navigation/vf-navigation.njk" %}
 
 {# <pre>{{ tokens.themeBrand.properties | dump(2 )}}</pre> #}
 <section class="embl-grid">
@@ -64,7 +100,7 @@ layout: layouts/base.njk
   {% render '@vf-section-header', {
     "section_title": "Buttons",
     "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/maps/vf-color__buttons.map.scss",
-    "id": "Buttons"
+    "id": "buttons"
   } %}
   <article class="vf-grid vf-grid__col-2">
     {% for item in tokens.themeButtons.properties %}
