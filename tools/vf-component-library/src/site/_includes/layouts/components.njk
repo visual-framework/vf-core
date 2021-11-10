@@ -87,8 +87,6 @@ hideSectionNavigation: true
       {% endif %}
     {% endif %}
 
-    <hr class="vf-divider" />
-
     {# any sub-components, like vf-form #}
     {# @todo, this is still not rendering correctly #}
     {% if collectionComponents %}
@@ -109,7 +107,7 @@ hideSectionNavigation: true
     {% endif %}
 
     {# Table of contents #}
-    {% set navigationList = [
+    {# {% set navigationList = [
       {
         "text": "Usage",
         "link_list_href": "#usage"
@@ -141,9 +139,48 @@ hideSectionNavigation: true
       "svg": true,
       "list":
         navigationList
-    } %}
+    } %} #}
 
-    <hr class="vf-divider" />
+    {%- set useJavaScriptForOnThisPage = true -%}
+    {%- if component.handle == 'vf-navigation' -%}
+      {#- Don't use javascript for vf-navigation page as it conflicts with the demo -#}
+      {%- set useJavaScriptForOnThisPage = false -%}
+    {%- endif -%}
+
+    {%- set context = {
+      "heading": "On this page",
+      "classModifier": "on-this-page",
+      "activateJavascript": useJavaScriptForOnThisPage,
+      "navigation": [
+        {
+          "text": "Usage",
+          "navigation_href": "#usage",
+          "currentSection": true
+        },
+        {
+          "text": "Variants",
+          "navigation_href": "#variants"
+        },
+        {
+          "text": "Examples",
+          "navigation_href": "#examples"
+        },
+        {
+          "text": "Install",
+          "navigation_href": "#install"
+        },
+        {
+          "text": "Changelog",
+          "navigation_href": "#changelog"
+        },
+        {
+          "text": "Assets",
+          "navigation_href": "#assets"
+        }
+      ]
+    }
+    -%}
+    {%- include "vf-core-components/vf-navigation/vf-navigation.njk" -%}
 
     {% if component.notes %}
       {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}

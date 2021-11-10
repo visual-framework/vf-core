@@ -1,3 +1,7 @@
+### 1.1.16
+
+* Utilise new `vf-navigation--on-this-page`.
+
 ### 1.1.13
 
 * Documentation updates
