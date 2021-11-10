@@ -26,7 +26,7 @@ As the `vf-button` is relatively large, depending on the context, you may wish t
 
 As a general rule, the `vf-button` should be left aligned on the page and when used inside a larger component.
 
-When used in conjuction with a single form input, as in [the vf-search component](https://stable.visual-framework.dev/components/vf-search/), the `vf-button` needs to be inline with the input and to the right of it.
+When used in conjunction with a single form input, as in [the vf-search component](https://stable.visual-framework.dev/components/vf-search/), the `vf-button` needs to be inline with the input and to the right of it.
 
 When a `vf-button` is used in a banner (e.g. to accept cookies) it needs to follow the content and be right aligned.
 
@@ -74,11 +74,9 @@ As of vf-button v2.0.0-alpha.2 vf-button has experimental Angular support.
 
 Depending on the success of this method, we plan to add standardized guidance to the component library and component generator.
 
-#### Usage
+Usage:
 
 `<a vf-button href="//embl.org" primary="true" small="true">Hello</a>`
-
-
 
 ## Install
 
