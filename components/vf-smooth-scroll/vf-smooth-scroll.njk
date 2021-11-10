@@ -5,16 +5,25 @@
 
 <div class="vf-smooth-scroll">
 {# Simple example borrowed from https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior #}
-  <p class="nav">
+  <p>
       Scroll to:
       <a href="#pageA">A</a>
       <a href="#pageB">B</a>
       <a href="#pageC">C</a>
   </p>
-  <div id="example-element" style="scroll-behavior: smooth;">
-      <article id="vf-box">A</article>
-      <article id="vf-box">B</article>
-      <article id="vf-box">C</article>
+  <div class="vf-stack vf-stack--800" style="scroll-behavior: smooth; overflow-y: scroll; height: 100px; max-width: 350px;">
+      <article class="vf-card vf-card--brand vf-card--bordered" id="pageA">
+        <div class="vf-card__content | vf-stack vf-stack--400"><h3 class="vf-card__heading">Item A</h3><p class="vf-card__subheading">With sub–heading</p>
+        </div>
+      </article>
+      <article class="vf-card vf-card--brand vf-card--bordered" id="pageB">
+        <div class="vf-card__content | vf-stack vf-stack--400"><h3 class="vf-card__heading">Item B</h3><p class="vf-card__subheading">With sub–heading</p>
+        </div>
+      </article>
+      <article class="vf-card vf-card--brand vf-card--bordered" id="pageC">
+        <div class="vf-card__content | vf-stack vf-stack--400"><h3 class="vf-card__heading">Item C</h3><p class="vf-card__subheading">With sub–heading</p>
+        </div>
+      </article>
   </div>
 </div>
 
