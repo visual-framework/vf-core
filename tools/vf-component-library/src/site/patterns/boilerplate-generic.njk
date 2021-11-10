@@ -6,7 +6,7 @@ tags: posts
 layout: layouts/boilerplate.njk
 ---
 <!DOCTYPE html>
-<html lang="en" class="vf-no-js">
+<html lang="en" class="vf-no-js | vf-smooth-scroll">
 <head>
   {% render "@vf-no-js" %}
   <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
@@ -19,7 +19,7 @@ layout: layouts/boilerplate.njk
 
   <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
 </head>
-<body class="vf-body | vf-smooth-scroll vf-stack">
+<body class="vf-body vf-stack">
   <header class="vf-header">
     {% render "@vf-global-header" %}
   </header>

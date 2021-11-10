@@ -4,7 +4,18 @@
 {% endif %}
 
 <div class="vf-smooth-scroll">
-  /* vf-smooth-scroll template file */
+{# Simple example borrowed from https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior #}
+  <p class="nav">
+      Scroll to:
+      <a href="#pageA">A</a>
+      <a href="#pageB">B</a>
+      <a href="#pageC">C</a>
+  </p>
+  <div id="example-element" style="scroll-behavior: smooth;">
+      <article id="vf-box">A</article>
+      <article id="vf-box">B</article>
+      <article id="vf-box">C</article>
+  </div>
 </div>
 
 {# You can do Nunjucks logic in your templates that references the .yml settings

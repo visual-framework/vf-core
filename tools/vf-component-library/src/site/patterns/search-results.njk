@@ -7,7 +7,7 @@ tags: posts
 layout: layouts/boilerplate.njk
 ---
 <!DOCTYPE html>
-<html lang="en" class="vf-no-js">
+<html lang="en" class="vf-no-js | vf-smooth-scroll">
 <head>
   {% render "@vf-no-js" %}
   <title>{{ pagination.items[0].name or title or (renderData and renderData.title)}} | {{ siteConfig.siteInformation.title }}</title>
@@ -30,7 +30,7 @@ layout: layouts/boilerplate.njk
     https://stable.visual-framework.dev/building/
   -->
 </head>
-<body class="vf-body | vf-smooth-scroll vf-stack">
+<body class="vf-body vf-stack">
   <header class="vf-header">
     {% render "@vf-global-header" %}
   </header>
@@ -478,7 +478,7 @@ layout: layouts/boilerplate.njk
 
   {% if serverInfo.environment == "development" %}
   <div class="vf-grid">
-    <div class="vf-body | vf-smooth-scroll--text">
+    <div class="vf-body--text">
       <p><code class="vf-code-example__pre"> ⚠️ You're running the {{serverInfo.environment}} command; Page location {{ page.inputPath }} </code></p>
     </div>
   </div>

@@ -15,19 +15,24 @@
 // You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
 // @import 'vf-smooth-scroll/vf-smooth-scroll.scss';
 
+// This smooth scroll uses animations keyframes to allow search to only work
+// when the user clicks on a page (doesn't use native search)
+// More at https://schepp.dev/posts/smooth-scrolling-and-page-search/
+@keyframes vfsmoothscroll1 {
+  from, to { scroll-behavior: smooth; }
+}
+@keyframes vfsmoothscroll2 {
+  from, to { scroll-behavior: smooth; }
+}
 .vf-smooth-scroll:focus-within {
+  animation-name: vfsmoothscroll2;
   scroll-behavior: smooth;
+}
+.vf-smooth-scroll {
+  animation: vfsmoothscroll1 1s;
 }
 @media (prefers-reduced-motion: reduce) {
   .vf-smooth-scroll:focus-within {
     scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

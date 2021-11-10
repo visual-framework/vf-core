@@ -1,35 +1,24 @@
-👋 Hi component author, you've read the docs, right?
-
-- [What's a component](https://stable.visual-framework.dev/developing/components/what-is-a-component/)
-- [Updating, versioning a component](https://stable.visual-framework.dev/guidance/versioning-and-component-interoperability/)
-- [Sass and CSS guidelines](https://stable.visual-framework.dev/developing/guidelines/css/)
-- [Theming and variant guidance - TO COME](#tocome)
-- [JavaScript guidelines](https://stable.visual-framework.dev/developing/guidelines/javascript/)
-- [Making your first Pull Request](https://stable.visual-framework.dev/developing/getting-started/pull-requests/)
-- [More development guidance](https://stable.visual-framework.dev/developing/)
-- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
-
----
-
-# vf-smooth-scroll component
+# Smooth scroll utility component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-smooth-scroll.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-smooth-scroll)
 
 ## About
 
-[A one-sentence introduction to your project]
+This enables smooth scrolling when a user clicks on anchor links or other in-page scrolling is triggered.
 
 ## Usage
 
-[The dos and don'ts of using this component. Can be many paragraphs and subheadings.]
+This is an opt-in behaviour that is activated by putting the `vf-smooth-scroll` class on a parent element — a good place would be at `<html class="vf-smooth-scroll">` (note: it probably won't work if you add it your `<body>` element).
+
+Not that as of November 2021, CSS-based smooth scrolling [is still not support by Safari on Mac OS or iOS](https://caniuse.com/css-scroll-behavior).
 
 ### Accessibility
 
-[Add a note if the accessibility of this component has been validated.]
+This component targets WCAG 2.1 AA accessibility.
 
-This component targets WCAG 2.1 AA accessibility. Below you can find additional notes on accessibility best practice with this component:
+Generally this improves accessibility by smooth scrolling between content, for some scenarios the behaviour may become distracting.
 
-- Add any do's and do nots
+Note that smooth scrolling is disabled if a user has flagged `prefers-reduced-motion`.
 
 You can also read about [the Visual Framework's approach to accessibility](https://stable.visual-framework.dev/guidance/accessibility/).
 
@@ -41,22 +30,7 @@ This repository is distributed with [npm][https://www.npmjs.com/]. After [instal
 $ yarn add --dev @visual-framework/vf-smooth-scroll
 ```
 
-### JS
-
-[If your component uses JS]
-
-You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
-
-```js
-import { vfComponentName } from 'vf-smooth-scroll/vf-smooth-scroll';
-// Or import directly
-// import { vfComponentName } from '../components/raw/vf-smooth-scroll/vf-smooth-scroll.js';
-vfComponentName(); // if needed, invoke it
-```
-
 ### Sass/CSS
-
-[If your component uses Sass]
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
