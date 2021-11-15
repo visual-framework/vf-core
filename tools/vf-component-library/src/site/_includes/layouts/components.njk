@@ -167,7 +167,7 @@ hideSectionNavigation: true
         },
         {
           "text": "Install",
-          "navigation_href": "#install"
+          "navigation_href": "#installation"
         },
         {
           "text": "Changelog",
@@ -188,7 +188,7 @@ hideSectionNavigation: true
         <section class="embl-grid">
           {% render '@vf-section-header', {
             "section_title": "Usage",
-            "id": "Usage",
+            "id": "usage",
             "href": ""
           } %}
           <article>
@@ -383,7 +383,7 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
       {% endmarkdown %}
     {% endif %}
 
-      ### Assets
+      ### Assets <span id="assets"></span>
 
       - [Nunjucks template]({{ ('/assets/' + component.baseHandle + '/' + component.baseHandle + '.njk') | url }})
       - [Config]({{ ('/assets/' + component.baseHandle + '/' + component.baseHandle + '.config.yml') | url }})
