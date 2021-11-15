@@ -1,37 +1,31 @@
-👋 Hi component author, you've read the docs, right?
-
-- [What's a component](https://stable.visual-framework.dev/developing/components/what-is-a-component/)
-- [Updating, versioning a component](https://stable.visual-framework.dev/guidance/versioning-and-component-interoperability/)
-- [Sass and CSS guidelines](https://stable.visual-framework.dev/developing/guidelines/css/)
-- [Theming and variant guidance - TO COME](#tocome)
-- [JavaScript guidelines](https://stable.visual-framework.dev/developing/guidelines/javascript/)
-- [Making your first Pull Request](https://stable.visual-framework.dev/developing/getting-started/pull-requests/)
-- [More development guidance](https://stable.visual-framework.dev/developing/)
-- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
-
----
-
-# vf-mega-menu component
+# Mega menu component
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-mega-menu.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-mega-menu)
 
 ## About
 
-[A one-sentence introduction to your project]
+Paired with a good understanding of a site's information architecture and user journey, the mega menu can empower quick shortcut-style access to popular areas.
 
 ## Usage
 
-[The dos and don'ts of using this component. Can be many paragraphs and subheadings.]
+The mega menu should be seen as a empowering but optional feature. While a mega menu may allow a user to quickly move to a sub-section of a website, or laterally move from one silo to another, that empowering ability should be viewed as an optional user journey.
+
+Some users may fail to notice the mega menu by scrolling past it, be on a mobile device where the menu behaves differently, or the JavaScript-based feature may fail to load making the mega menu inaccessible.
+
+So a user journey should always be possible without the mega menu's content.
+
+### Caveats
+
+1. The mega menu currently is not designed to work on mobile
+2. In principle any content can be inserted into a mega menu
+3. Using more than one mega menu on a page is likely to confuse and overwhelm users
+4. A mega menu is not a substitute for a good information architecture
 
 ### Accessibility
 
-[Add a note if the accessibility of this component has been validated.]
+This component targets WCAG 2.1 AA accessibility.
 
-This component targets WCAG 2.1 AA accessibility. Below you can find additional notes on accessibility best practice with this component:
-
-- Add any do's and do nots
-
-You can also read about [the Visual Framework's approach to accessibility](https://stable.visual-framework.dev/guidance/accessibility/).
+It is harmful to user to hide critical information in a mega menu.
 
 ## Install
 
@@ -43,8 +37,6 @@ $ yarn add --dev @visual-framework/vf-mega-menu
 
 ### JS
 
-[If your component uses JS]
-
 You should import this component in `./components/vf-component-rollup/scripts.js` or your other JS process:
 
 ```js
@@ -55,8 +47,6 @@ vfComponentName(); // if needed, invoke it
 ```
 
 ### Sass/CSS
-
-[If your component uses Sass]
 
 The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
