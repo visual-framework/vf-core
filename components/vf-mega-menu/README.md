@@ -25,7 +25,7 @@ So a user journey should always be possible without the mega menu's content.
 
 This component targets WCAG 2.1 AA accessibility.
 
-It is harmful to user to hide critical information in a mega menu.
+Hiding critical or essintal information in a mega menu is harmful to users.
 
 ## Install
 
