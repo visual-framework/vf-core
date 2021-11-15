@@ -1,0 +1,78 @@
+// vf-mega-menu
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+@import 'vf-mega-menu.variables.scss';
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-mega-menu/vf-mega-menu.scss';
+.vf-mega-menu {
+  // You can utilise CSS custom properites
+  // --thing-text-color: var(--vf-mega-menu-theme-color--foreground, #{set-ui-color(vf-ui-color--black)});
+
+  // The are many mixins:
+  // https://stable.visual-framework.dev/components/detail/vf-sass-config.html
+  // @include set-type(text-body--2);
+
+  // You can also use the design tokens
+  // https://stable.visual-framework.dev/components/detail/vf-design-tokens.html
+  // --otherthing-color: var(--vf-mega-menu-theme-color--foreground, #{map-get($vf-colors-map, vf-color--green--darkest)});
+  // color: var(--otherthing-color);
+}
+
+// .vf-megamenu {
+// }
+
+.vf-megamenu__menu-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.vf-megamenu__expanded-content-container {
+  // TBD
+}
+
+[data-vf-js-megamenu-section] {
+  margin: 2rem 0 1rem 0;
+  border-bottom: 8px solid #18974c;
+  &[aria-hidden="true"] {
+    display: none;
+  }
+  &[aria-hidden="false"] {
+    display: block;
+  }
+}
+
+.vf-navigation__link {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1.6rem;
+  position: relative;
+
+  &.vf-megamenu__link--has-section:after {
+    content: url("data:image/svg+xml,%3Csvg class='arrow-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' height='12' width='12'%3E%3Cg transform='matrix(0.6666666666666666,0,0,0.6666666666666666,0,0)'%3E%3Cpath d='M12,19.5a2.34,2.34,0,0,1-1.73-.78L.46,7.57A1.85,1.85,0,1,1,3.23,5.13l8.58,9.75a.25.25,0,0,0,.38,0l8.58-9.75a1.85,1.85,0,1,1,2.77,2.44L13.73,18.72A2.34,2.34,0,0,1,12,19.5Z' style='fill: %23000000'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    margin-left: 0.4rem;
+    display: inline-block;
+  }
+  &.is-expanded {
+    font-weight: bold;
+  }
+  &.vf-megamenu__link--has-section.is-expanded:after {
+    transform: rotate(180deg);
+  }
+}
