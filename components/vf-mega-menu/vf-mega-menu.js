@@ -22,12 +22,6 @@
 // import { vfOthercomponent } from vfImportPrefix + '../vf-other-component/vf-other-component';
 //
 
-const allMegamenumegamenuComponents =
-  document.querySelectorAll("[data-vf-js-megamenu]") || [];
-
-//for each megamenu
-allMegamenumegamenuComponents.forEach(initMegamenu);
-
 function initMegamenu(megamenuComponent) {
   //add activated class to this megamenu. This will help us differentiate when menu is processed with JS and when its not.
   megamenuComponent.classList.add("vf-megamenu__activated");
@@ -129,26 +123,31 @@ function handleMenuClick(
 
 
 
-//  /**
-//   * The global function for this component
-//   * @example vfMegaMenu(firstPassedVar)
-//   * @param {string} [firstPassedVar]  - An option to be passed
-//   */
-// function vfMegaMenu(firstPassedVar) {
-//   firstPassedVar = firstPassedVar || 'defaultVal';
-//
-// }
-//
+ /**
+  * The global function for this component
+  * @example vfMegaMenu(firstPassedVar)
+  * @param {string} [firstPassedVar]  - An option to be passed
+  */
+function vfMegaMenu(firstPassedVar) {
+  firstPassedVar = firstPassedVar || 'defaultVal';
+
+  const allMegamenumegamenuComponents =
+  document.querySelectorAll("[data-vf-js-megamenu]") || [];
+
+  //for each megamenu
+  allMegamenumegamenuComponents.forEach(initMegamenu);
+}
+
 // // If you need to invoke the component by default
 // vfMegaMenu();
-//
-// // By default your component should be usable with js imports
-// export { vfMegaMenu };
-//
-// // You should also import it at ./components/vf-component-rollup/scripts.js
-// // import { vfMegaMenu } from 'vf-mega-menu/vf-mega-menu';
-// // Or import directly
-// // import { vfMegaMenu } from '../components/raw/vf-mega-menu/vf-mega-menu.js';
-// // And, if needed, invoke it
-// // vfMegaMenu();
+
+// By default your component should be usable with js imports
+export { vfMegaMenu };
+
+// You should also import it at ./components/vf-component-rollup/scripts.js
+// import { vfMegaMenu } from 'vf-mega-menu/vf-mega-menu';
+// Or import directly
+// import { vfMegaMenu } from '../components/raw/vf-mega-menu/vf-mega-menu.js';
+// And, if needed, invoke it
+// vfMegaMenu();
 
