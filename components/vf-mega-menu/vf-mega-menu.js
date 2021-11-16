@@ -26,21 +26,17 @@ function initMegaMenu(megaMenuComponent) {
   //add activated class to this mega menu. This will help us differentiate when menu is processed with JS and when its not.
   megaMenuComponent.classList.add("vf-mega-menu__activated");
 
-  const menuContainerComponent = megaMenuComponent.querySelector(
-    ".vf-mega-menu__container"
-  );
   let previousMenuLinkComponent, previousExpandedSectionComponent;
-  menuContainerComponent.addEventListener("click", function (event) {
-    const { target: linkComponent } = event;
-    console.log({ linkComponent });
-    const associatedSection = linkComponent.getAttribute(
-      "data-vf-js-mega-menu-section-id"
-    );
-    if (associatedSection) {
-      //do only if this link has associated section to expand/collapse
-      event.preventDefault();
 
-      console.log({ previousMenuLinkComponent });
+  megaMenuComponent.querySelectorAll("[data-vf-js-mega-menu-section-id]").forEach(item => {
+    item.addEventListener('click', event => {
+      event.preventDefault();
+      const { target: linkComponent } = event;
+      // console.log({ linkComponent });
+      // console.log({ previousMenuLinkComponent });
+      // const associatedSection = linkComponent.getAttribute(
+      //   "data-vf-js-mega-menu-section-id"
+      // );
 
       const newReferences = handleMenuClick(
         linkComponent,
@@ -50,7 +46,7 @@ function initMegaMenu(megaMenuComponent) {
       previousMenuLinkComponent = newReferences?.previousMenuLinkComponent;
       previousExpandedSectionComponent =
         newReferences?.previousExpandedSectionComponent;
-    }
+    });
   });
 }
 
