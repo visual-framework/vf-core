@@ -27,7 +27,7 @@ function initMegaMenu(megaMenuComponent) {
   megaMenuComponent.classList.add("vf-mega-menu__activated");
 
   const menuContainerComponent = megaMenuComponent.querySelector(
-    ".vf-mega-menu__menu-container"
+    ".vf-mega-menu__container"
   );
   let previousMenuLinkComponent, previousExpandedSectionComponent;
   menuContainerComponent.addEventListener("click", function (event) {
@@ -129,11 +129,10 @@ function handleMenuClick(
 function vfMegaMenu(firstPassedVar) {
   firstPassedVar = firstPassedVar || 'defaultVal';
 
-  const allMegamenumegaMenuComponents =
-  document.querySelectorAll("[data-vf-js-mega-menu]") || [];
+  const allMegaMenuComponents = document.querySelectorAll("[data-vf-js-mega-menu]") || [];
 
   //for each mega-menu
-  allMegamenumegaMenuComponents.forEach(initMegaMenu);
+  allMegaMenuComponents.forEach(initMegaMenu);
 }
 
 // // If you need to invoke the component by default
