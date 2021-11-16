@@ -12,7 +12,9 @@ The mega menu should be seen as a empowering but optional feature. While a mega 
 
 Some users may fail to notice the mega menu by scrolling past it, be on a mobile device where the menu behaves differently, or the JavaScript-based feature may fail to load making the mega menu inaccessible.
 
-So a user journey should always be possible without the mega menu's content.
+A user journey should always be possible without the mega menu's content.
+
+It is recommended to put your mega menu links at the `vf-global-header` level.
 
 ### Caveats
 

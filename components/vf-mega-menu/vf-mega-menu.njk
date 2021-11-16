@@ -3,30 +3,48 @@
   {# {% set vf-mega-menu = context.vf-mega-menu %} #}
 {% endif %}
 
-<div class="vf-mega-menu" data-vf-js-mega-menu role="menubar">
-  <a class="vf-navigation__link vf-mega-menu__link--has-section"
-    data-vf-js-mega-menu-section-id="topics-content-section" href="/topics">
-    Topics
-  </a>
-  <a class="vf-navigation__link vf-mega-menu__link--has-section"
-    data-vf-js-mega-menu-section-id="organization-content-section" href="/organization">
-    Organization structure
+{# It is recommended to put your mega menu links at the vf-global-header level #}
+<header class="vf-global-header vf-mega-menu" data-vf-js-mega-menu role="menubar">
+  <a href="/" class="vf-logo | vf-logo--has-text">
+    <img class="vf-logo__image" src="../../assets/vf-logo/assets/logo.svg" alt="Visual Framework for Life Science websites" loading="eager">
+    <span class="vf-logo__text">Visual Framework for Life Science websites</span>
   </a>
 
-  <a href="http://www.github.com" class="vf-navigation__link">Non menu link</a>
-  <a class="vf-navigation__link" data-vf-js-mega-menu-section-id="search-content-section" href="/search">
-    Search
-  </a>
-</div>
+  <nav class="vf-navigation vf-navigation--global | vf-cluster">
+    <ul class="vf-navigation__list | vf-list | vf-cluster__inner">
+      <li class="vf-navigation__item">
+        <a class="vf-navigation__link vf-mega-menu__link vf-mega-menu__link--has-section"
+          data-vf-js-mega-menu-section-id="topics-content-section" href="/topics">
+          Topics
+        </a>
+      </li>
+      <li class="vf-navigation__item">
+        <a class="vf-navigation__link vf-mega-menu__link vf-mega-menu__link--has-section"
+          data-vf-js-mega-menu-section-id="organization-content-section" href="/organization">
+          Organization structure
+        </a>
+      </li>
+      <li class="vf-navigation__item">
+        <a href="http://www.embl.org" class="vf-navigation__link vf-mega-menu__link">Normal link</a>
+      </li>
+      <li class="vf-navigation__item">
+        <a href="http://www.embl.org/about" class="vf-navigation__link">About us</a>
+      </li>
+      <li class="vf-navigation__item">
+        <a class="vf-navigation__link vf-mega-menu__link" data-vf-js-mega-menu-section-id="search-content-section" href="/search">
+          Search
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
 
 <div class="vf-mega-menu__content">
   <div class="vf-mega-menu__content__section" data-vf-js-mega-menu-section="topics-content-section" role="menu" aria-hidden="true">
     <section class="vf-summary-container | embl-grid">
       <div class="vf-section-header">
         <h2 class="vf-section-header__heading">EMBL topics</h2>
-        <p>
-          <strong>A unique approach to scientific services in Europe</strong>
-        </p>
+         <p class="vf-section-header__subheading">A unique approach to scientific services in Europe</p>
       </div>
       <div class="vf-section-content | vf-grid vf-grid__col-3">
         <div>
@@ -46,15 +64,6 @@
               </li>
               <li class="vf-navigation__item">
                 <a href="JavaScript:Void(0);" class="vf-navigation__link">Help</a>
-              </li>
-              <li class="vf-navigation__item">
-                <a href="JavaScript:Void(0);" class="vf-navigation__link">Licence</a>
-              </li>
-              <li class="vf-navigation__item">
-                <a href="JavaScript:Void(0);" class="vf-navigation__link">About</a>
-              </li>
-              <li class="vf-navigation__item">
-                <a href="JavaScript:Void(0);" class="vf-navigation__link">Feedback</a>
               </li>
             </ul>
           </nav>

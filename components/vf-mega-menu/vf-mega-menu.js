@@ -31,6 +31,7 @@ function initMegaMenu(megaMenuComponent) {
   megaMenuComponent.querySelectorAll("[data-vf-js-mega-menu-section-id]").forEach(item => {
     item.addEventListener('click', event => {
       event.preventDefault();
+      event.vfMegaMenuLink = true;
       const { target: linkComponent } = event;
       // console.log({ linkComponent });
       // console.log({ previousMenuLinkComponent });
@@ -48,7 +49,11 @@ function initMegaMenu(megaMenuComponent) {
         newReferences?.previousExpandedSectionComponent;
     });
   });
+
 }
+
+
+
 
 function handleMenuClick(
   menuItemComponent,
@@ -63,11 +68,34 @@ function handleMenuClick(
   const section = document.querySelector(
     `[data-vf-js-mega-menu-section="${sectionAttribute}"]`
   );
-  console.log(section);
+  // console.log("section", section, sectionAttribute);
 
   if (!section) {
     return;
   }
+
+  // Capture clicks on things other than mega menu elements
+  // https://www.blustemy.io/detecting-a-click-outside-an-element-in-javascript/
+  document.addEventListener("click", (evt) => {
+    let targetElement = evt.target; // clicked element
+    do {
+      if (targetElement == section || evt.vfMegaMenuLink == true) {
+        // This is a click inside. Do nothing, just return.
+        console.log("Clicked inside!")
+        return;
+      }
+      // Go up the DOM
+      targetElement = targetElement.parentNode;
+    } while (targetElement);
+
+    // This is a click outside.
+    console.log("Clicked outside!")
+    if (section.getAttribute("aria-hidden") === "false") {
+      console.log("hiding!")
+      section.setAttribute("aria-hidden", "true");
+    }
+  });
+
   //0. if section is visible, just hide it
   if (section.getAttribute("aria-hidden") === "false") {
     section.setAttribute("aria-hidden", "true");
