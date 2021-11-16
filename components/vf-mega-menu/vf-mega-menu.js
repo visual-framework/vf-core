@@ -22,19 +22,19 @@
 // import { vfOthercomponent } from vfImportPrefix + '../vf-other-component/vf-other-component';
 //
 
-function initMegamenu(megamenuComponent) {
-  //add activated class to this megamenu. This will help us differentiate when menu is processed with JS and when its not.
-  megamenuComponent.classList.add("vf-megamenu__activated");
+function initMegaMenu(megaMenuComponent) {
+  //add activated class to this mega menu. This will help us differentiate when menu is processed with JS and when its not.
+  megaMenuComponent.classList.add("vf-mega-menu__activated");
 
-  const menuContainerComponent = megamenuComponent.querySelector(
-    ".vf-megamenu__menu-container"
+  const menuContainerComponent = megaMenuComponent.querySelector(
+    ".vf-mega-menu__menu-container"
   );
   let previousMenuLinkComponent, previousExpandedSectionComponent;
   menuContainerComponent.addEventListener("click", function (event) {
     const { target: linkComponent } = event;
     console.log({ linkComponent });
     const associatedSection = linkComponent.getAttribute(
-      "data-vf-js-megamenu-section-id"
+      "data-vf-js-mega-menu-section-id"
     );
     if (associatedSection) {
       //do only if this link has associated section to expand/collapse
@@ -44,7 +44,7 @@ function initMegamenu(megamenuComponent) {
 
       const newReferences = handleMenuClick(
         linkComponent,
-        megamenuComponent,
+        megaMenuComponent,
         previousMenuLinkComponent,
         previousExpandedSectionComponent
       );
@@ -57,17 +57,17 @@ function initMegamenu(megamenuComponent) {
 
 function handleMenuClick(
   menuItemComponent,
-  megamenuComponent,
+  megaMenuComponent,
   previousMenuLinkComponent,
   previousExpandedSectionComponent
 ) {
   // console.log("expand / collapse");
   // debugger;
   const sectionAttribute = menuItemComponent.getAttribute(
-    "data-vf-js-megamenu-section-id"
+    "data-vf-js-mega-menu-section-id"
   );
-  const section = megamenuComponent.querySelector(
-    `[data-vf-js-megamenu-section="${sectionAttribute}"]`
+  const section = megaMenuComponent.querySelector(
+    `[data-vf-js-mega-menu-section="${sectionAttribute}"]`
   );
   console.log(section);
 
@@ -103,25 +103,23 @@ function handleMenuClick(
   };
 }
 
-// function createMenuSectionMap(megamenuComponent) {
-//   const allMenuComponents = megamenuComponent.querySelectorAll(
-//     "[data-vf-js-megamenu-section-id]"
+// function createMenuSectionMap(megaMenuComponent) {
+//   const allMenuComponents = megaMenuComponent.querySelectorAll(
+//     "[data-vf-js-mega-menu-section-id]"
 //   );
 
 //   const menuSectionsMap = new Map();
 //   allMenuComponents.forEach((component) => {
 //     const sectionAttribute = component.getAttribute(
-//       "data-vf-js-megamenu-section-id"
+//       "data-vf-js-mega-menu-section-id"
 //     );
-//     const section = megamenuComponent.querySelector(
-//       `[data-vf-js-megamenu-section="${sectionAttribute}"]`
+//     const section = megaMenuComponent.querySelector(
+//       `[data-vf-js-mega-menu-section="${sectionAttribute}"]`
 //     );
 //     menuSectionsMap.set(component, section);
 //   });
 //   return menuSectionsMap;
 // }
-
-
 
  /**
   * The global function for this component
@@ -131,11 +129,11 @@ function handleMenuClick(
 function vfMegaMenu(firstPassedVar) {
   firstPassedVar = firstPassedVar || 'defaultVal';
 
-  const allMegamenumegamenuComponents =
-  document.querySelectorAll("[data-vf-js-megamenu]") || [];
+  const allMegamenumegaMenuComponents =
+  document.querySelectorAll("[data-vf-js-mega-menu]") || [];
 
-  //for each megamenu
-  allMegamenumegamenuComponents.forEach(initMegamenu);
+  //for each mega-menu
+  allMegamenumegaMenuComponents.forEach(initMegaMenu);
 }
 
 // // If you need to invoke the component by default
