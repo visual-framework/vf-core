@@ -44,7 +44,6 @@ function initMegaMenu(megaMenuComponent) {
 
       const newReferences = handleMenuClick(
         linkComponent,
-        megaMenuComponent,
         previousMenuLinkComponent,
         previousExpandedSectionComponent
       );
@@ -57,7 +56,6 @@ function initMegaMenu(megaMenuComponent) {
 
 function handleMenuClick(
   menuItemComponent,
-  megaMenuComponent,
   previousMenuLinkComponent,
   previousExpandedSectionComponent
 ) {
@@ -66,7 +64,7 @@ function handleMenuClick(
   const sectionAttribute = menuItemComponent.getAttribute(
     "data-vf-js-mega-menu-section-id"
   );
-  const section = megaMenuComponent.querySelector(
+  const section = document.querySelector(
     `[data-vf-js-mega-menu-section="${sectionAttribute}"]`
   );
   console.log(section);
@@ -96,7 +94,6 @@ function handleMenuClick(
   menuItemComponent.classList.add("is-expanded");
 
   //4. return new link and section components to be stored as previous
-
   return {
     previousMenuLinkComponent: menuItemComponent,
     previousExpandedSectionComponent: section
