@@ -93,28 +93,61 @@
           </div>
           <div class="vf-section-content | vf-grid vf-grid__col-3">
             <div>
+              <div class="vf-section-header">
+                <h2 class="vf-section-header__heading"> </h2>
+              </div>
               <nav class="vf-navigation vf-navigation--main">
-                <ul class="vf-navigation__list | vf-list | vf-cluster__inner">
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--400">
                   <li class="vf-navigation__item">
-                    <a href="JavaScript:Void(0);" class="vf-navigation__link">Principles</a>
+                    <a href="/design-principles/" class="vf-navigation__link">Principles</a>
                   </li>
                   <li class="vf-navigation__item">
-                    <a href="JavaScript:Void(0);" class="vf-navigation__link">Updates and blog</a>
+                    <a href="/updates/" class="vf-navigation__link">Updates and blog</a>
                   </li>
                   <li class="vf-navigation__item">
-                    <a href="JavaScript:Void(0);" class="vf-navigation__link">Roadmap</a>
+                    <a href="/about/roadmap/" class="vf-navigation__link">Roadmap</a>
                   </li>
                   <li class="vf-navigation__item">
-                    <a href="JavaScript:Void(0);" class="vf-navigation__link">FAQ</a>
+                    <a href="/about/faq/" class="vf-navigation__link">FAQ</a>
                   </li>
                 </ul>
               </nav>
             </div>
             <div>
+              <div class="vf-section-header">
+                <h2 class="vf-section-header__heading"> </h2>
+              </div>
               <nav class="vf-navigation vf-navigation--main">
-                <ul class="vf-navigation__list | vf-list | vf-cluster__inner">
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--400">
                   <li class="vf-navigation__item">
-                    <a href="JavaScript:Void(0);" class="vf-navigation__link">Guidance</a>
+                    <a href="/guidance/" class="vf-navigation__link">Guidance</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/design-tokens/" class="vf-navigation__link">Design tokens</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/design-kit/" class="vf-navigation__link">Figma resources</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/troubleshooting/" class="vf-navigation__link">Troubleshooting</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div>
+              <div class="vf-section-header">
+                <h2 class="vf-section-header__heading"> </h2>
+              </div>
+              <nav class="vf-navigation vf-navigation--main">
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--400">
+                  <li class="vf-navigation__item">
+                    <a href="/developing/" class="vf-navigation__link">Contributing and developing</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/developing/getting-started/setting-up/" class="vf-navigation__link">Setting up your development environment</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/guidance/creating-components" class="vf-navigation__link">Creating a component</a>
                   </li>
                 </ul>
               </nav>
@@ -123,89 +156,95 @@
         </section>
       </div>
       <div class="vf-mega-menu__content__section" data-vf-js-mega-menu-section="components-content-section" role="menu" aria-hidden="true">
-        <section class="vf-summary-container | embl-grid">
-          <div class="vf-section-header">
-            <h2 class="vf-section-header__heading">Components</h2>
-            <p class="vf-section-header__text">Dozens of components and patterns to scale up quickly.</p>
-          </div>
-          <div class="vf-section-content | vf-grid vf-grid__col-3">
-            <article class="">
+        <section class="vf-summary-container">
+          {# <section class="vf-grid">
+            <div class="vf-section-header">
+              <h2 class="vf-section-header__heading">Components</h2>
+              <p class="vf-section-header__text">Dozens of components and patterns to scale up quickly.</p>
+            </div>
+          </section> #}
+          <section class="vf-grid">
+          <div class="vf-section-content | vf-grid vf-grid__col-4">
+            <article class="vf-stack vf-stack--400">
               {% set context = {
                 "section_title": "Patterns"
               }
               %}
               {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
               <div class="vf-content">
-                <ul>
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--200">
                 {%- for post in collections.posts | sort(false, true, 'data.title')  %}
-                {% if 'patterns' == post.data.section %}
-                {% set absolutePostUrl %}{{ metadata.id }}{{ post.url }}{% endset %}
-                  <li>
-                    <a href="{{ absolutePostUrl | url }}" class="vf-link">{{ post.data.title }}</a>
-                    <!-- {{ post.data.subtitle }} -->
-                  </li>
-                {% endif %}
+                  {% if 'patterns' == post.data.section %}
+                    {% set absolutePostUrl %}{{ metadata.id }}{{ post.url }}{% endset %}
+                      <li class="vf-navigation__item">
+                        <a href="{{ absolutePostUrl | url }}" class="vf-navigation__link">{{ post.data.title }}</a>
+                      </li>
+                  {% endif %}
                 {%- endfor %}
                 </ul>
               </div>
+
+              {% set context = { "section_title": "Container" } %}
+              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+              <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--200">
+                {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
+                  {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == "container" %}
+                  <li class="vf-navigation__item">
+                    <a class="vf-navigation__link" href="{{ item.handle}}">{{ item.title }}</a>
+                  </li>
+                  {% endif %}
+                {% endfor -%}
+              </ul>
             </article>
 
-            {% set types = ['container', 'block', 'element', 'layout', 'form', 'utility'] %}
-            {%- for type in types %}
-              <article class="">
-                {% set context = {
-                  "section_title": type | title + " components"
-                }
-                %}
+            <article class="vf-stack vf-stack--400">
+              {% set types = ['block'] %}
+              {%- for type in types %}
+                {% set context = { "section_title": type | title } %}
                 {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
-                <div class="vf-content">
-                  <ul>
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--200">
                   {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
                     {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == type %}
-                  <li><a class="vf-link" href="{{ item.handle}}">{{ item.title }}</a> <code> {{ item.name }} </code></li>
+                    <li class="vf-navigation__item">
+                      <a class="vf-navigation__link" href="{{ item.handle}}">{{ item.title }}</a>
+                    </li>
                     {% endif %}
                   {% endfor -%}
-                  </ul>
-                </div>
-              </article>
-            {% endfor -%}
-
-            <!-- some tools don't have a natural place in the component library and are linked to github -->
-            <article class="">
-              {% set context = {
-                "section_title": "Tools"
-              }
-              %}
-              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
-              <div class="vf-content">
-                <ul>
-                  <li class="">
-                    <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/tools/vf-extensions">
-                      VF extensions
-                    </a>
-                  </li>
-                  <li class="">
-                    <a class="vf-link" href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-extensions-react/README.md">
-                      React extensions
-                    </a>
-                  </li>
-                  <li class="">
-                    <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/tools/vf-sass-compilation">
-                      Sass compilation
-                    </a>
-                  </li>
-                  <li class="">
-                    <a class="vf-link" href="https://github.com/visual-framework/vf-core/tree/develop/tools/vf-component-generator">
-                      Component generator
-                    </a>
-                  </li>
                 </ul>
-              </div>
+              {% endfor -%}
             </article>
 
+            <article class="vf-stack vf-stack--400">
+              {% set types = ['element', 'layout'] %}
+              {%- for type in types %}
+                {% set context = { "section_title": type | title } %}
+                {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--200">
+                  {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
+                    {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == type %}
+                    <li class="vf-navigation__item">
+                      <a class="vf-navigation__link" href="{{ item.handle}}">{{ item.title }}</a>
+                    </li>
+                    {% endif %}
+                  {% endfor -%}
+                </ul>
+              {% endfor -%}
+            </article>
+
+            <!-- some tools don't have a natural place in the component library and are linked to github -->
+            <article class="vf-stack vf-stack--400">
+              {% set context = { "section_title": "Forms", "href": "/components#form" } %}
+              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+
+              {% set context = { "section_title": "Utility", "href": "/components#utility" } %}
+              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
 
 
+              {% set context = { "section_title": "Tools", "href": "/components#tools" } %}
+              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+            </article>
           </div>
+          </section>
         </section>
       </div>
       <div class="vf-mega-menu__content__section" data-vf-js-mega-menu-section="search-content-section" role="menu" aria-hidden="true">
