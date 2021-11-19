@@ -28,25 +28,40 @@ function initMegaMenu(megaMenuComponent) {
 
   let previousMenuLinkComponent, previousExpandedSectionComponent;
 
+  function getWidth() {
+    return Math.max(
+      document.body.scrollWidth,
+      document.documentElement.scrollWidth,
+      document.body.offsetWidth,
+      document.documentElement.offsetWidth,
+      document.documentElement.clientWidth
+    );
+  }
+
   megaMenuComponent.querySelectorAll("[data-vf-js-mega-menu-section-id]").forEach(item => {
     item.addEventListener('click', event => {
-      event.preventDefault();
-      event.vfMegaMenuLink = true;
-      const { target: linkComponent } = event;
+      // For now we do not show the mega menu on mobile.
+      // We still need to decide on approach for mobile support.
+      if (getWidth() > 768) {
+        event.preventDefault();
+        event.vfMegaMenuLink = true;
+        const { target: linkComponent } = event;
+        const newReferences = handleMenuClick(
+          linkComponent,
+          previousMenuLinkComponent,
+          previousExpandedSectionComponent
+        );
+        previousMenuLinkComponent = newReferences?.previousMenuLinkComponent;
+        previousExpandedSectionComponent =
+          newReferences?.previousExpandedSectionComponent;
+      } else {
+        console.warn(`vf-mega-menu: No mega menu shown. Mega menu is currently alpha and not supported on small screen sizes. Your screens size is ${getWidth()}`);
+      }
       // console.log({ linkComponent });
       // console.log({ previousMenuLinkComponent });
       // const associatedSection = linkComponent.getAttribute(
       //   "data-vf-js-mega-menu-section-id"
       // );
-
-      const newReferences = handleMenuClick(
-        linkComponent,
-        previousMenuLinkComponent,
-        previousExpandedSectionComponent
-      );
-      previousMenuLinkComponent = newReferences?.previousMenuLinkComponent;
-      previousExpandedSectionComponent =
-        newReferences?.previousExpandedSectionComponent;
     });
   });
 
@@ -81,7 +96,7 @@ function handleMenuClick(
     do {
       if (targetElement == section || evt.vfMegaMenuLink == true) {
         // This is a click inside. Do nothing, just return.
-        console.log("Clicked inside!")
+        // console.log("Clicked inside!")
         return;
       }
       // Go up the DOM
@@ -89,9 +104,9 @@ function handleMenuClick(
     } while (targetElement);
 
     // This is a click outside.
-    console.log("Clicked outside!")
+    // console.log("Clicked outside!")
     if (section.getAttribute("aria-hidden") === "false") {
-      console.log("hiding!")
+      // console.log("hiding!")
       section.setAttribute("aria-hidden", "true");
     }
   });
