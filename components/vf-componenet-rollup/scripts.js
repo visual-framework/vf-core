@@ -66,4 +66,7 @@ import { emblContentMetaProperties_Read } from "embl-content-meta-properties/emb
 import { emblNotifications } from "embl-notifications/embl-notifications";
 // emblNotifications();
 
+import { vfMegaMenu } from 'vf-mega-menu/vf-mega-menu';
+vfMegaMenu();
+
 // No default invokation
