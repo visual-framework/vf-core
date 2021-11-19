@@ -149,7 +149,8 @@ templateEngineOverride: njk
 
     If you're adding a custom component to any other project
 
-    - Install the [`vf-component-generator` package](https://github.com/visual-framework/vf-core/tree/develop/tools/vf-component-generator) `yarn add @visual-framework/vf-component-generator --dev`
+    - Install the [`vf-component-generator` package](https://github.com/visual-framework/vf-core/tree/develop/tools/vf-component-generator)
+    - `yarn add @visual-framework/vf-component-generator --dev`
 
     ##### Generate the new component files
 
