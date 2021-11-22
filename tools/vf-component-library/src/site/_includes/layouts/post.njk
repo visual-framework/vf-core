@@ -16,16 +16,13 @@ templateEngineOverride: njk
     {% if subtitle %}
 <div class="vf-lede">{{subtitle | markdown | safe | replace("<p>", "<span class='vf-content'>") | replace("</p>", "</span>") }}</div>
     {% endif %}
+    <p class="vf-summary__date">{{ date | dateDisplay }}</p>
   </div>
 </section>
 
 <main class="embl-grid embl-grid--has-centered-content">
 <div></div>
-<div class="vf-content">
-  <p class="vf-summary__date">
-    {{ date | dateDisplay }}
-  </p>
-
+<div class="vf-content | vf-stack vf-stack--400">
   {{ content | safe }}
 </div>
 </main>

@@ -1,4 +1,4 @@
-### 3.0.0-rc.1
+### 3.0.0-rc.0
 
 * Introduces `vf-navigation--on-this-page`.
 * Removes `vf-navigation--additional`.
