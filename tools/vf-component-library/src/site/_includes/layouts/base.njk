@@ -190,7 +190,7 @@
                 {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
                   {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == "container" %}
                   <li class="vf-navigation__item">
-                    <a class="vf-navigation__link" href="{{ item.handle}}">{{ item.title }}</a>
+                    <a class="vf-navigation__link" href="/components/{{ item.handle}}">{{ item.title }}</a>
                   </li>
                   {% endif %}
                 {% endfor -%}
@@ -206,7 +206,7 @@
                   {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
                     {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == type %}
                     <li class="vf-navigation__item">
-                      <a class="vf-navigation__link" href="{{ item.handle}}">{{ item.title }}</a>
+                      <a class="vf-navigation__link" href="/components/{{ item.handle}}">{{ item.title }}</a>
                     </li>
                     {% endif %}
                   {% endfor -%}
@@ -223,7 +223,7 @@
                   {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
                     {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == type %}
                     <li class="vf-navigation__item">
-                      <a class="vf-navigation__link" href="{{ item.handle}}">{{ item.title }}</a>
+                      <a class="vf-navigation__link" href="/components/{{ item.handle}}">{{ item.title }}</a>
                     </li>
                     {% endif %}
                   {% endfor -%}
@@ -236,9 +236,12 @@
               {% set context = { "section_title": "Forms", "href": "/components#form" } %}
               {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
 
+              <div><hr class="vf-divider"></div>
+
               {% set context = { "section_title": "Utility", "href": "/components#utility" } %}
               {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
 
+              <div><hr class="vf-divider"></div>
 
               {% set context = { "section_title": "Tools", "href": "/components#tools" } %}
               {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
