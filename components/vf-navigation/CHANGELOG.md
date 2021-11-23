@@ -1,3 +1,9 @@
+### 3.0.0-rc.0
+
+* Introduces `vf-navigation--on-this-page`.
+* Removes `vf-navigation--additional`.
+* https://github.com/visual-framework/vf-core/issues/1623
+
 ### 3.0.0-beta.2
 
 * Minor README.md update.

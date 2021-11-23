@@ -1,0 +1,125 @@
+---
+title: Rollup release 2.5.4
+subtitle: This rollup release brings interactivity improvements to ease navigation around VF-powered pages and sites.
+date: 2021-11-22 20:10:29
+version: 2.5.4
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Overview",
+      "navigation_href": "#overview",
+      "currentSection": true
+    },
+    {
+      "text": "Features",
+      "navigation_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<span class="" id="overview"></span>Following the [25 October 2021 release](../2021-10-25-component-updates/), this release continues work on improving the quality of life for user interaction; highlights include:
+
+- A new "on this page" component (`vf-navigation--on-this-page`)
+- Smooth scrolling for anchor links (`vf-smooth-scroll`)
+- A mega menu to speed deep page and lateral navigation (`vf-mega-menu`)
+
+You'll see all three of these used on the VF's component library.
+
+Note: the vf-mega-menu is in particularly early stage of development (`alpha.1`) and is subject to much change — feedback welcome!
+
+You'll also find a few bug fixes and optimisations. Read on for more!
+
+---
+
+As always, you can [join the conversation on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+{% endmarkdown %}
+
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+<br/>
+
+### Features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-mega-menu", "1.0.0-alpha.1", "2fdff722c95210f2aa6afb20d5dc49985b7b7af2") }}
+
+* Creates a mega menu.
+* https://github.com/visual-framework/vf-core/issues/1718
+
+{{ releaseLinks.notes("vf-smooth-scroll", "1.0.0-alpha.1", "acb0d66db846fcb9a7c96304d1422b7a8612e96c") }}
+
+* Introduce CSS-based smooth scroll component.
+
+{{ releaseLinks.notes("vf-navigation", "3.0.0-rc.0", "7f83795b0b2bb25386a11804909f8c0be70bb43b") }}
+
+* Introduces `vf-navigation--on-this-page`.
+* Removes `vf-navigation--additional`.
+* https://github.com/visual-framework/vf-core/issues/1623
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-button", "2.0.0-alpha.5", "6f0f44676bd5be11fb0e20f1482537d96bbb8513") }}
+
+* Readme formatting fixes.
+* Style import fixes for experimental angular support.
+
+{{ releaseLinks.notes("vf-card", "2.7.0", "6f0f44676bd5be11fb0e20f1482537d96bbb8513") }}
+
+* Updates `vf-stack` custom properties to work nicely with `vf-stack` version 3.
+
+{{ releaseLinks.notesTool("vf-design-tokens", "3.6.3", "7f83795b0b2bb25386a11804909f8c0be70bb43b") }}
+
+* Fix documentation for sassFunction interactive-color
+* https://github.com/visual-framework/vf-core/pull/1711
+
+{{ releaseLinks.notes("vf-header", "3.0.1", "7f83795b0b2bb25386a11804909f8c0be70bb43b") }}
+
+* Removes usage of deleted `vf-navigation--additional` variant.
+
+{{ releaseLinks.notes("vf-componenet-rollup", "1.4.4", "2fdff722c95210f2aa6afb20d5dc49985b7b7af2") }}
+
+* Add vf-mega-menu Sass and JS.
+* https://github.com/visual-framework/vf-core/issues/1718
+
+{{ releaseLinks.notes("vf-component-library", "1.1.16", "21066c56e55dd813ac674a853e4ecb31c961cf84") }}
+
+* Utilise new `vf-navigation--on-this-page`.
+* Update project boilerplate links at https://stable.visual-framework.dev/building/
+
+{% endmarkdown %}

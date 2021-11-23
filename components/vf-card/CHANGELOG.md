@@ -1,3 +1,7 @@
+### 2.7.0
+
+* Updates `vf-stack` custom properties to work nicely with `vf-stack` version 3.
+
 ### 2.6.2
 
 * Use vf-stack custom property for card text spacing.

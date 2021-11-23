@@ -8,6 +8,9 @@ tags:
   - changelog
 layout: layouts/post.njk
 ---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
 {% markdown %}
 
 In the month of March we've been busy with usability optimisations — particularly on major visual and functional improvements to the form elements — and other new components, fixes and improvements. Read on for more.
@@ -49,23 +52,6 @@ In the month of March we've been busy with usability optimisations — particula
 }
 %}
 {% include blocks.links_list %}
-
-{# macros ---> #}
-{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-
-#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
-
-{% endmacro %}
-
-{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-<!-- Tools don't have pages in the component library -->
-
-#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
-
-{% endmacro %}
-
-{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
-{# endmacros ---/ #}
 
 {% markdown %}
 
@@ -163,7 +149,7 @@ Here's a detailed list of the changes visible above, and changes you're not seei
 
 ## New flag layout component <a href="#forms" id="flag"></a>
 
-{{ notes("vf-flag", "1.0.0-alpha.1", "7f8c68bba5a08f0d5d3d494d5537d728812402d5") }}
+{{ releaseLinks.notes("vf-flag", "1.0.0-alpha.1", "7f8c68bba5a08f0d5d3d494d5537d728812402d5") }}
 
 * introduces the flag layout component.
 * adds all variants that match positions and spacing.g
@@ -171,52 +157,52 @@ Here's a detailed list of the changes visible above, and changes you're not seei
 
 ## Enhancements and fixes <a href="#forms" id="enhancements"></a>
 
-{{ notes("vf-hero", "3.2.0", "f1f806b5562c9704787f98fbf157b48bbf7b17c0") }}
+{{ releaseLinks.notes("vf-hero", "3.2.0", "f1f806b5562c9704787f98fbf157b48bbf7b17c0") }}
 
 * adds thinner `vf-hero--400` variant.
 * fixes `vf-hero__content vf-box` sizing padding calculation for `vf-hero--800` variant.
 * makes the maximum width of the `vf-hero__content` wider, but make smaller widths `max-content`.
 
-{{ notes("vf-design-tokens", "3.4.0", "f767f3a9e86741d58a9b1eb2f13be803596ff1ef") }}
+{{ releaseLinks.notes("vf-design-tokens", "3.4.0", "f767f3a9e86741d58a9b1eb2f13be803596ff1ef") }}
 
 * introduces neutral colours stack Design Tokens.
 * adds deprecation notices to relevant Design Tokens, to be remove in next major version release.
 
-{{ notes("vf-stack", "2.1.0", "e315a49906bfc742d804158071e7b2894a8fcbda") }}
+{{ releaseLinks.notes("vf-stack", "2.1.0", "e315a49906bfc742d804158071e7b2894a8fcbda") }}
 
 * adds more options: `200`,`500`,`1200`, and `1600` vertical spaces.
 
-{{ notes("vf-search", "2.0.0", "818e4681c0cb341566737c612cc940914109a529") }}
+{{ releaseLinks.notes("vf-search", "2.0.0", "818e4681c0cb341566737c612cc940914109a529") }}
 
 * adds a div around the form content.
 * makes changes to the CSS for `--inline` variant so it's responsive to the parent width.
 
 ## Chores <a href="#forms" id="chores"></a>
 
-{{ notesTool("vf-sass-config", "2.5.0", "f767f3a9e86741d58a9b1eb2f13be803596ff1ef") }}
+{{ releaseLinks.notesTool("vf-sass-config", "2.5.0", "f767f3a9e86741d58a9b1eb2f13be803596ff1ef") }}
 
 * adds neutral colour tokens function `neutral(Nn)`
 
-{{ notes("vf-card", "2.5.3", "bb1e5bafbf22ecd39214c98a83bc95805928497b") }}
+{{ releaseLinks.notes("vf-card", "2.5.3", "bb1e5bafbf22ecd39214c98a83bc95805928497b") }}
 
 * Corrects fix in 2.5.2 by using `align-content: start;`.
   * https://github.com/visual-framework/vf-core/issues/1395#issuecomment-801232527
 
-{{ notes("vf-card", "2.5.4", "63535a057c213e0685428c2472c18e1a02597fad") }}
+{{ releaseLinks.notes("vf-card", "2.5.4", "63535a057c213e0685428c2472c18e1a02597fad") }}
 
 * adds `word-break: break-word;` to text so the text won't exceed the box model.
 
-{{ notesTool("vf-frctl-extensions", "1.0.1", "0925481ea013188db901c1626c1fccfeac30240d") }}
+{{ releaseLinks.notesTool("vf-frctl-extensions", "1.0.1", "0925481ea013188db901c1626c1fccfeac30240d") }}
 
 * Updates highlightjs syntax of codeblock tag
   * https://github.com/visual-framework/vf-core/pull/1435
   * https://github.com/highlightjs/highlight.js/issues/2277
 
-{{ notes("vf-search-client-side", "1.0.2", "685b98003d83abebfdb33a1590d05ed721ce1cda") }}
+{{ releaseLinks.notes("vf-search-client-side", "1.0.2", "685b98003d83abebfdb33a1590d05ed721ce1cda") }}
 
 * Updates to match v2.0.0 of vf-search--inline
 
-{{ notes("vf-card-container", "3.1.2", "bb1e5bafbf22ecd39214c98a83bc95805928497b") }}
+{{ releaseLinks.notes("vf-card-container", "3.1.2", "bb1e5bafbf22ecd39214c98a83bc95805928497b") }}
 
 * Updates example to use content of different lengths.
 

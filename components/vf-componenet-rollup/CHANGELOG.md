@@ -1,3 +1,8 @@
+## 1.4.4
+
+* Add vf-mega-menu Sass and JS.
+* https://github.com/visual-framework/vf-core/issues/1718
+
 ## 1.4.3
 
 * Removes the unused vf-header component.

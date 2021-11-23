@@ -1,0 +1,158 @@
+// vf-mega-menu
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+@import 'vf-mega-menu.variables.scss';
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-mega-menu/vf-mega-menu.scss';
+.vf-mega-menu {
+  // You can utilise CSS custom properties
+  // --thing-text-color: var(--vf-mega-menu-theme-color--foreground, #{set-ui-color(vf-ui-color--black)});
+
+  // The are many mixins:
+  // https://stable.visual-framework.dev/components/detail/vf-sass-config.html
+  // @include set-type(text-body--2);
+
+  // You can also use the design tokens
+  // https://stable.visual-framework.dev/components/detail/vf-design-tokens.html
+  // --otherthing-color: var(--vf-mega-menu-theme-color--foreground, #{map-get($vf-colors-map, vf-color--green--darkest)});
+  // color: var(--otherthing-color);
+
+}
+
+.vf-mega-menu__link {
+  @media (min-width: $vf-breakpoint--xl) {
+    padding: 0.8rem 1.6rem;
+  }
+  display: flex;
+
+  &:focus,
+  &:hover,
+  &.is-expanded,
+  &.is-expanded:hover {
+    text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layout shift
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: interactive-color(default);
+    text-underline-offset: .5em;
+    text-underline-position: under;
+  }
+
+  &:hover {
+    color: interactive-color(default);
+  }
+
+  &.is-expanded,
+  &.is-expanded:hover {
+    color: unset;
+  }
+}
+
+.vf-mega-menu__link--has-section:after {
+  @media (min-width: $vf-breakpoint--lg) {
+    content: url("data:image/svg+xml,%3Csvg class='arrow-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' height='12' width='12'%3E%3Cg transform='matrix(0.6666666666666666,0,0,0.6666666666666666,0,0)'%3E%3Cpath d='M12,19.5a2.34,2.34,0,0,1-1.73-.78L.46,7.57A1.85,1.85,0,1,1,3.23,5.13l8.58,9.75a.25.25,0,0,0,.38,0l8.58-9.75a1.85,1.85,0,1,1,2.77,2.44L13.73,18.72A2.34,2.34,0,0,1,12,19.5Z' style='fill: %23000000'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    margin-left: 0.4rem;
+    display: inline-block;
+    &.is-expanded:after {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.vf-mega-menu__content {
+  // For now we do not show the mega menu on mobile.
+  // We still need to decide on approach for mobile support.
+  @media (max-width: $vf-breakpoint--md) {
+    display: none !important;
+  }
+}
+
+.vf-mega-menu__content__section {
+  position: absolute;
+  z-index: 10000000;
+  width: 100%;
+  left: 0;
+
+  // same border approach as vf-footer's line
+  // background-color: ui-color(grey--light);
+  background-color: ui-color(white);
+  border-bottom: 8px solid color(green);
+  grid-column: 1 / -1;
+  padding-bottom: 60px;
+  padding-top: 24px;
+  // position: relative;
+
+  &::before {
+    background-color: inherit;
+    box-shadow: 0 29px 24px rgba(0, 0, 0, .2), 0 100px 50px rgba(0,0,0,.3);
+    content: '';
+    grid-column: 1 / -1;
+    height: 100%;
+    margin-left: calc(50% - 50vw);
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: set-layer(vf-z-index--negative);
+  }
+
+  &::after {
+    background-color: color(green);
+    // box-shadow: 0 0px 50px rgba(0,0,0,.2);
+    content: '';
+    height: 8px;
+    margin-left: calc(50% - 50vw);
+    position: absolute;
+    bottom: -8px;
+    width: 100vw;
+    z-index: set-layer(vf-z-index--negative);
+  }
+
+  &[aria-hidden="true"] {
+    display: none;
+  }
+  &[aria-hidden="false"] {
+    display: block;
+  }
+
+  .vf-navigation--main .vf-navigation__link {
+    color: interactive-color(default);
+
+    &:hover {
+      color: interactive-color(default);
+    }
+  }
+
+  > .embl-grid {
+    --embl-grid-module--prime: 300px;
+    --page-grid-gap: 100px;
+  }
+
+  > .embl-grid.embl-grid--has-centered-content {
+    --embl-grid-module--prime: 200px;
+    --page-grid-gap: 50px;
+    // --embl-grid: var(--embl-grid-module--prime) auto var(--embl-grid-module--prime);
+  }
+
+  > .embl-grid,
+  > .vf-grid {
+    // grids should get a bit of left-right padding as they're not fully in vf-body
+    padding: 0 1rem;
+  }
+}
+
