@@ -87,8 +87,6 @@ hideSectionNavigation: true
       {% endif %}
     {% endif %}
 
-    <hr class="vf-divider" />
-
     {# any sub-components, like vf-form #}
     {# @todo, this is still not rendering correctly #}
     {% if collectionComponents %}
@@ -109,7 +107,7 @@ hideSectionNavigation: true
     {% endif %}
 
     {# Table of contents #}
-    {% set navigationList = [
+    {# {% set navigationList = [
       {
         "text": "Usage",
         "link_list_href": "#usage"
@@ -141,9 +139,48 @@ hideSectionNavigation: true
       "svg": true,
       "list":
         navigationList
-    } %}
+    } %} #}
 
-    <hr class="vf-divider" />
+    {%- set useJavaScriptForOnThisPage = true -%}
+    {%- if component.handle == 'vf-navigation' -%}
+      {#- Don't use javascript for vf-navigation page as it conflicts with the demo -#}
+      {%- set useJavaScriptForOnThisPage = false -%}
+    {%- endif -%}
+
+    {%- set context = {
+      "heading": "On this page",
+      "classModifier": "on-this-page",
+      "activateJavascript": useJavaScriptForOnThisPage,
+      "navigation": [
+        {
+          "text": "Usage",
+          "navigation_href": "#usage",
+          "currentSection": true
+        },
+        {
+          "text": "Variants",
+          "navigation_href": "#variants"
+        },
+        {
+          "text": "Examples",
+          "navigation_href": "#examples"
+        },
+        {
+          "text": "Install",
+          "navigation_href": "#installation"
+        },
+        {
+          "text": "Changelog",
+          "navigation_href": "#changelog"
+        },
+        {
+          "text": "Assets",
+          "navigation_href": "#assets"
+        }
+      ]
+    }
+    -%}
+    {%- include "vf-core-components/vf-navigation/vf-navigation.njk" -%}
 
     {% if component.notes %}
       {% set readmeUsage = component.notes | string | stringBetween("## Usage", "\n## ") %}
@@ -151,7 +188,7 @@ hideSectionNavigation: true
         <section class="embl-grid">
           {% render '@vf-section-header', {
             "section_title": "Usage",
-            "id": "Usage",
+            "id": "usage",
             "href": ""
           } %}
           <article>
@@ -292,7 +329,7 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
                 "href": "#" + variant.handle
               } %}
               <article class="vf-u-padding--400"
-                  style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
+                  style="background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
               >
                 {# When you want a box with a slight shadow #}
                 {% render '@'+variant.handle, variant.context %}
@@ -346,7 +383,7 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
       {% endmarkdown %}
     {% endif %}
 
-      ### Assets
+      ### Assets <span id="assets"></span>
 
       - [Nunjucks template]({{ ('/assets/' + component.baseHandle + '/' + component.baseHandle + '.njk') | url }})
       - [Config]({{ ('/assets/' + component.baseHandle + '/' + component.baseHandle + '.config.yml') | url }})

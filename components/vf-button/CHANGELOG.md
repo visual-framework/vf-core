@@ -1,3 +1,15 @@
+### 2.0.0-alpha.5
+
+* Readme formatting fixes.
+
+### 2.0.0-alpha.4
+
+* Style import fixes for experimental angular support.
+
+### 2.0.0-alpha.3
+
+* Fixes for experimental angular support.
+
 ### 2.0.0-alpha.2
 
 * Adds experimental angular support. See README.md for more.

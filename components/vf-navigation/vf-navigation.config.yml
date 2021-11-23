@@ -46,22 +46,35 @@ variants:
         - text: Feedback
           navigation_href: JavaScript:Void(0);
 
-
-  - name: additional
-    status: deprecated
-    hidden: true
+  - name: on-this-page
+    hidden: false
+    status: alpha
     context:
-      component-type: deprecated
-
-      heading: European Bioinformatics Institute
-      classModifier: additional
-      title: European Bioinformatics Institute
+      heading: On this page
+      classModifier: on-this-page
+      activateJavascript: false
       navigation:
-        - text: services
-          navigation_href: JavaScript:Void(0);
-        - text: research
-          navigation_href: JavaScript:Void(0);
-        - text: training
-          navigation_href: JavaScript:Void(0);
-        - text: about us
-          navigation_href: JavaScript:Void(0);
+        - text: Anchor 1
+          navigation_href: "#container-1"
+        - text: Anchor 2
+          navigation_href: "#container-2"
+          currentSection: true
+        - text: Anchor 3
+          navigation_href: "#container-3"
+
+  - name: on-this-page--example
+    context:
+      isExample: true
+      heading: On this page
+      classModifier: on-this-page
+      activateJavascript: true
+      navigation:
+        - text: Home
+          navigation_href: "#container-1"
+          currentSection: true
+        - text: Download
+          navigation_href: "#container-2"
+        - text: Release notes
+          navigation_href: "#container-3"
+        - text: Another item
+          navigation_href: "#container-4"

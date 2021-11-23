@@ -1,3 +1,9 @@
+### 2.1.0
+
+* Support activation of specific vf-tabs on page load `#vf-tabs__section=tab_id`
+* Exposes `vfTabsSwitch` function
+* https://github.com/visual-framework/vf-core/issues/1700
+
 ### 2.0.3
 
 * Use `set-type` mixin to set margins.

@@ -15,7 +15,7 @@ module.exports = {
   // vfVersion: "develop",
   // vfVersionPrefix: "dev.",
   // use this when tagging a release
-  vfVersion: "v2.5.2",
+  vfVersion: "v2.5.4",
   vfVersionPrefix: "",
   sections: {
     about: {
@@ -27,6 +27,11 @@ module.exports = {
       url: "/building",
       title: "Building a site",
       summary: "How to make a project with Visual Framework components."
+    },
+    designtokens: {
+      url: "/design-tokens",
+      title: "Design tokens",
+      summary: "Colour, typography, spacing and other stylistic decisions as structured data.."
     },
     developing: {
       url: "/developing",

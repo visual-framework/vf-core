@@ -11,14 +11,6 @@
 
 @import 'vf-navigation.variables.scss';
 
-
-.vf-navigation__item {
-  [aria-current='page'] {
-    color: neutral(900);
-    text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layour shift
-  }
-}
-
 .vf-navigation__link {
   @include inline-link(
     $vf-link--color: neutral(700),
@@ -32,6 +24,13 @@
   }
 }
 
+.vf-navigation__item {
+  [aria-current='page'],
+  [aria-selected='true'] {
+    color: interactive-color();
+    text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layout shift
+  }
+}
 .vf-navigation--main {
   .vf-navigation__link {
     @include set-type(text-body--2, $custom-margin-bottom: 0);
@@ -44,4 +43,70 @@
   @media (min-width: $vf-breakpoint--lg) {
     margin-left: auto;
   }
+}
+
+// On this page variant
+.vf-navigation--on-this-page.vf-u-fullbleed {
+  // conflict with vf-u-fullbleed
+  position: sticky;
+}
+
+.vf-navigation--on-this-page.vf-u-fullbleed {
+  margin-bottom: map-get($vf-spacing-map, vf-spacing--400);
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1001;
+
+  .vf-navigation__link {
+    &:focus,
+    &:hover {
+      text-decoration: none;
+      text-shadow: 1px 0 0 currentColor; // faux bold so there won't be any layout shift
+
+      text-decoration: underline;
+      text-decoration-thickness: 4px;
+      text-underline-offset: .5em;
+      text-underline-position: under;
+      text-decoration-color: neutral(900);
+    }
+  }
+
+  .vf-navigation__link[aria-selected='true'] {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-underline-offset: .5em;
+    text-underline-position: under;
+    text-decoration-color: interactive-color();
+  }
+  > .vf-list {
+    flex-wrap: nowrap;
+    // margin-right: 0 !important;
+  }
+  [class*="__item"] {
+    flex-shrink: 0;
+  }
+}
+
+@media only screen and (min-width: $vf-breakpoint--md) {
+  .vf-navigation--on-this-page.vf-u-fullbleed {
+    overflow: unset; // allow shadow to bleed out
+    &::before {
+      box-shadow: 0 0 2px 1px rgba(0, 0, 0, .2);
+    }
+  }
+}
+//  make it work right on mobile
+@media only screen and (max-width: $vf-breakpoint--md) {
+  .vf-navigation--on-this-page.vf-u-fullbleed {
+    @include padding(map-get($vf-spacing-map, vf-spacing--200),map-get($vf-spacing-map, vf-spacing--800),map-get($vf-spacing-map, vf-spacing--200),map-get($vf-spacing-map, vf-spacing--500));
+    margin-left: -1em; // inverse of vf-body padding
+    width: calc(100% - 1em);
+  }
+  // .vf-navigation--on-this-page.vf-u-fullbleed::before {
+    // box-shadow: none;
+    // display: none;
+  // }
 }

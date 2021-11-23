@@ -8,6 +8,9 @@ tags:
   - changelog
 layout: layouts/post.njk
 ---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
 {% markdown %}
 
 Hot off the heels of the [2.4.10 release](/updates/2021-03-29-component-updates/) we have updated some components, and updated the some pages on the documentation site. There are also a couple of `alpha` and `beta` releases of components making use of our layout components rather than component specific CSS as well as deprecating variants that are no longer used or have been previously improved.
@@ -38,22 +41,6 @@ Hot off the heels of the [2.4.10 release](/updates/2021-03-29-component-updates/
 %}
 {% include blocks.links_list %}
 
-{# macros ---> #}
-{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-
-#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
-
-{% endmacro %}
-
-{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-<!-- Tools don't have pages in the component library -->
-
-#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
-
-{% endmacro %}
-
-{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
-{# endmacros ---/ #}
 
 {% markdown %}
 
@@ -78,13 +65,13 @@ As a reminder, the rollup CSS and JS are compilations of many independently vers
 
 ### Search update <a href="#search" id="search"></a>
 
-{{ notes("vf-search-client-side", "3.0.0-alpha.0", "9d741e8e9d36cbffbbd8e9168599876b5f1f8b3e") }}
+{{ releaseLinks.notes("vf-search-client-side", "3.0.0-alpha.0", "9d741e8e9d36cbffbbd8e9168599876b5f1f8b3e") }}
 
 * Updates to replace v2.0.0 of vf-search--inline with `vf-form--search vf-form--search--responsive`
 
 ### Deprecation <a href="#deprecation" id="deprecation"></a>
 
-{{ notes("vf-navigation", "3.0.0-beta.0", "596050e643bc453d1ffcf5e47f9ff58e69a0e9a4") }}
+{{ releaseLinks.notes("vf-navigation", "3.0.0-beta.0", "596050e643bc453d1ffcf5e47f9ff58e69a0e9a4") }}
 
 * deprecated the `--additional` variant.
 * removes `--main` and `--global` Sass files, incorporating them into the base stylesheet.
@@ -92,28 +79,28 @@ As a reminder, the rollup CSS and JS are compilations of many independently vers
 * makes use of `vf-cluster` for layout in the markup.
 * adds some documentation.
 
-{{ notes("vf-componenet-rollup", "1.4.0", "596050e643bc453d1ffcf5e47f9ff58e69a0e9a4") }}
+{{ releaseLinks.notes("vf-componenet-rollup", "1.4.0", "596050e643bc453d1ffcf5e47f9ff58e69a0e9a4") }}
 
 * removes navigation variants as they're now part of base Sass file.
 
 ### Bugs and minor optimisations <a href="#bugs" id="bugs"></a>
 
-{{ notes("vf-hero", "3.2.1", "ada27b78684ed1145fd81b82107bcda5c8b11ee6") }}
+{{ releaseLinks.notes("vf-hero", "3.2.1", "ada27b78684ed1145fd81b82107bcda5c8b11ee6") }}
 
 * Resolves a Nunjucks bug on `vf_hero_text` from a yaml file under certain contexts.
   * https://github.com/visual-framework/vf-core/pull/1462
 * Allows vf_hero_heading_href to be passed in yaml.
 * Gobbles much of the whitespace.
 
-{{ notes("vf-sass-starter", "0.1.19", "477df90cb04449b6649022c5cb1983562b2f4895") }}
+{{ releaseLinks.notes("vf-sass-starter", "0.1.19", "477df90cb04449b6649022c5cb1983562b2f4895") }}
 
 * dependency bump.
 
-{{ notes("vf-banner", "1.7.2", "9f61cefe98eeb1bb9f079ed4b538484a2710d207") }}
+{{ releaseLinks.notes("vf-banner", "1.7.2", "9f61cefe98eeb1bb9f079ed4b538484a2710d207") }}
 
 * adds deprecation notices around the `--phase` variant.
 
-{{ notes("vf-design-tokens", "3.4.1", "114b4bfc175488b372b04e0c5b7a1136a0633fe4") }}
+{{ releaseLinks.notes("vf-design-tokens", "3.4.1", "114b4bfc175488b372b04e0c5b7a1136a0633fe4") }}
 
 * Adds a gulp command vf-design-tokens alias for developers who easily forget.
 

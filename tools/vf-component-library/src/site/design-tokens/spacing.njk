@@ -2,6 +2,7 @@
 title: Spacing and sizing
 date: 2018-10-19 12:24:50
 section: designtokens
+hideSectionNavigation: true
 templateEngineOverride: njk
 tags:
   - posts
@@ -11,6 +12,25 @@ layout: layouts/base.njk
 ---
 
 <h1 class="vf-intro__heading">{{ title }}</h1>
+
+{% set context = {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Spacing",
+      "navigation_href": "#spacing",
+      "currentSection": true
+    },
+    {
+      "text": "Breakpoints",
+      "navigation_href": "#breakpoints"
+    }
+  ]
+}
+%}
+{% include "vf-core-components/vf-navigation/vf-navigation.njk" %}
 
 <section class="embl-grid">
   {% render '@vf-section-header', {

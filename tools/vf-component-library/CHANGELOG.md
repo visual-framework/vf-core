@@ -1,3 +1,8 @@
+### 1.1.16
+
+* Utilise new `vf-navigation--on-this-page`.
+* Update project boilerplate links at https://stable.visual-framework.dev/building/
+
 ### 1.1.13
 
 * Documentation updates
