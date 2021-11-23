@@ -1,3 +1,9 @@
+### 1.2.0
+
+* Update node-html-parser to 5.1.0
+* Use eleventy v1.0.0-beta.8
+* https://github.com/visual-framework/vf-core/pull/1257
+
 ### 1.1.16
 
 * Utilise new `vf-navigation--on-this-page`.

@@ -1,3 +1,11 @@
+### 1.1.17
+
+* Update @babel/preset-env to 7.16.4
+* Update sass to 1.43.4
+* Update stylelint to 14.0.0
+* Update stylelint-order to 5.0.0
+* Update stylelint-scss to 4.0.0
+
 ### 1.1.15
 
 * Dependency bump.

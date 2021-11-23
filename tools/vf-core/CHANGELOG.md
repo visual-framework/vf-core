@@ -1,3 +1,8 @@
+### 2.2.34
+
+* Update marked to 4.0.4
+* Update browser-sync 2.27.7
+
 ### 2.2.33
 
 * Update sass to 1.43.2
