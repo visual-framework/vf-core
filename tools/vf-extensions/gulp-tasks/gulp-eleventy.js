@@ -23,6 +23,14 @@ module.exports = function(gulp) {
     process.argv.push("--serve");
     process.env.ELEVENTY_ENV = "development";
     elev = require("../11ty/eleventy-cmd.js");
+    elev.init()
+      .then(function () {
+        elev.watch().then(function() {
+          console.log("Started 11ty");
+          elev.serve(3030);
+          done();
+        });
+      });
   });
 
   // Run eleventy as a static build
@@ -49,4 +57,3 @@ module.exports = function(gulp) {
 
   return gulp;
 };
-

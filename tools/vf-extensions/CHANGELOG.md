@@ -1,3 +1,7 @@
+## 2.0.0-alpha.2
+
+* Further revises integration with eleventy-cmd.js to allow more control from gulp.
+
 ## 2.0.0-alpha.1
 
 * Support Eleventy 1.0.0 change in how its build process works

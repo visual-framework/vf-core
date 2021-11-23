@@ -98,20 +98,21 @@ try {
       .then(function () {
         try {
           if (argv.serve) {
-            let startBrowsersync = true;
-            elev
-              .watch()
-              .catch((e) => {
-                // Build failed but error message already displayed.
-                startBrowsersync = false;
-                // A build error occurred and we aren’t going to --serve
-              })
-              .then(function () {
-                if (startBrowsersync) {
-                  // elev.watch(argv.port);
-                  elev.serve(argv.port);
-                }
-              });
+            // we'll do our watch from gulp-eleventy
+            // let startBrowsersync = true;
+            // elev
+            //   .watch()
+            //   .catch((e) => {
+            //     // Build failed but error message already displayed.
+            //     startBrowsersync = false;
+            //     // A build error occurred and we aren’t going to --serve
+            //   })
+            //   .then(function () {
+            //     if (startBrowsersync) {
+            //       // elev.watch(argv.port);
+            //       elev.serve(argv.port);
+            //     }
+            //   });
           } else if (argv.watch) {
             elev.watch().catch((e) => {
               // A build error occurred and we aren’t going to --watch
