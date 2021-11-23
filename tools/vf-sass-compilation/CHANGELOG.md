@@ -1,3 +1,7 @@
+### 1.1.18
+
+* Add now required @babel/core dependency.
+
 ### 1.1.17
 
 * Update @babel/preset-env to 7.16.4

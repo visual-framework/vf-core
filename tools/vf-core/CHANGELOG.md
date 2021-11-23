@@ -1,3 +1,11 @@
+### 2.2.36
+
+* Use `renderMarkdown.parse` for marked 4+ support.
+
+### 2.2.35
+
+* Update @visual-framework/vf-frctl-extensions to ^2.0.0 for marked 4+ support.
+
 ### 2.2.34
 
 * Update marked to 4.0.4

@@ -58,14 +58,14 @@ module.exports = function(fractal){
 
       var body = body();
       var spacesRegex = /^[\s]+/;
-      var tabStart = tabStart(); // The column postion of the {% markdown %} tag.
+      var tabStart = tabStart(); // The column position of the {% markdown %} tag.
 
       if (tabStart > 0) { // If the {% markdown %} tag is tabbed in, normalize the content to the same depth.
         body = body.split(/\r?\n/); // Split into lines.
         body = body.map(function(line) {
           var startSpaces = line.match(spacesRegex);
           if (startSpaces && startSpaces[0].length >= tabStart) { // If the content is not at the same or greater tab depth, do nothing..
-            return line.slice(tabStart); // Subtract the column postion from the start of the string.
+            return line.slice(tabStart); // Subtract the column position from the start of the string.
           } else if (startSpaces) {
             return line.slice(startSpaces[0].length);
           } else {
@@ -75,8 +75,8 @@ module.exports = function(fractal){
         body = body.join("\n"); // Rejoin into one string.
       }
 
-      return new nunjucks.runtime.SafeString(renderMarkdown(body));
     };
+      return new nunjucks.runtime.SafeString(renderMarkdown.parse(body));
 
   }
 

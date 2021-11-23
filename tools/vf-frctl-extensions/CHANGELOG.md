@@ -1,3 +1,7 @@
+### 2.0.0
+
+* Invoke marked with `renderMarkdown.parse` for compatibility with version 4.
+
 ### 1.0.1
 
 * Updates highlightjs syntax of codeblock tag
