@@ -1,0 +1,103 @@
+---
+title: Rollup release 2.5.5
+subtitle: This rollup release updates build dependencies and readies VF sites for Eleventy version 1.0.
+date: 2021-11-23 12:10:29
+version: 2.5.5
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Overview",
+      "navigation_href": "#overview",
+      "currentSection": true
+    },
+    {
+      "text": "Features",
+      "navigation_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<span class="" id="overview"></span>Hot on the heels of the [2.5.4 release](../2021-11-22-component-updates/), this release focus on technical tooling by updating dependencies and preparing [for the Eleventy 1.0 release](https://www.11ty.dev/blog/eleventy-v1-beta/).
+
+To opt-in to using an Eleventy 1.0 beta, you'll need to update `vf-extensions` to at least version `2.0.0-alpha.1`
+
+Note that you'll find no new CSS styling or JavaScript features in this release.
+
+Read on for more!
+
+---
+
+As always, you can [join the conversation on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+{% endmarkdown %}
+
+
+{% markdown %}
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+<br/>
+
+### Features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notesTool("vf-extensions", "2.0.0-alpha.1", "40d76295ac2f67db65ec736959966be92f1399e2") }}
+
+* Support Eleventy 1.0.0 change in build process functionality
+* https://github.com/visual-framework/vf-core/pull/1257
+* https://github.com/11ty/eleventy/releases/tag/v0.12.1
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notesTool("vf-component-library", "1.2.0", "2e1f9152936dd271309d9d8c179f22eb803ee10c") }}
+
+* Update node-html-parser to 5.1.0
+* Use eleventy v1.0.0-beta.8
+* https://github.com/visual-framework/vf-core/pull/1257
+
+{{ releaseLinks.notesTool("vf-core", "2.2.34", "2e1f9152936dd271309d9d8c179f22eb803ee10c") }}
+
+* Update marked to 4.0.4
+* Update browser-sync 2.27.7
+
+{{ releaseLinks.notesTool("vf-sass-compilation", "1.1.17", "2e1f9152936dd271309d9d8c179f22eb803ee10c") }}
+
+* Update @babel/preset-env to 7.16.4
+* Update sass to 1.43.4
+* Update stylelint to 14.0.0
+* Update stylelint-order to 5.0.0
+* Update stylelint-scss to 4.0.0
+
+{% endmarkdown %}
