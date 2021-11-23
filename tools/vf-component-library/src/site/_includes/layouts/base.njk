@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="vf-no-js | vf-smooth-scroll">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,8 +44,8 @@
     <!-- Feed -->
     <link href="https://stable.visual-framework.dev/feed.xml" type="application/rss+xml" rel="alternate" title="Visual Framework 2.0 Updates">
   </head>
-  <body class="{{ bodyClass }} vf-body vf-stack" >
-    <header class="vf-global-header | vf-search-client-side--no-index">
+  <body class="{{ bodyClass }} vf-body | vf-stack">
+    <header class="vf-global-header vf-mega-menu" data-vf-js-mega-menu role="menubar">
       {% render '@vf-logo', {logo_href:  '/' | url, logo_text: 'Visual Framework', image: siteConfig.siteInformation.url + 'assets/vf-logo/assets/logo.svg', "hidden_text": false } %}
       <nav class="vf-navigation vf-navigation--global | vf-cluster">
         <ul class="vf-navigation__list | vf-list | vf-cluster__inner">
@@ -59,17 +59,223 @@
             <a href="{{ '/patterns' | url }}" class="vf-navigation__link">Examples</a>
           </li> -#}
           <li class="vf-navigation__item">
-            <a href="{{ '/search' | url }}" class="vf-navigation__link">Search</a>
+            <a class="vf-navigation__link vf-mega-menu__link vf-mega-menu__link--has-section" data-vf-js-mega-menu-section-id="about-content-section" href="/topics">
+              About
+            </a>
           </li>
           <li class="vf-navigation__item">
-            <a href="https://github.com/visual-framework/vf-core" class="vf-navigation__link">GitHub</a>
+            <a class="vf-navigation__link vf-mega-menu__link vf-mega-menu__link--has-section" data-vf-js-mega-menu-section-id="components-content-section" href="/organization">
+              Components
+            </a>
           </li>
           <li class="vf-navigation__item">
-            <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link">Slack</a>
+            <a href="https://github.com/visual-framework/vf-core" class="vf-navigation__link vf-mega-menu__link">GitHub</a>
+          </li>
+          <li class="vf-navigation__item">
+            <a href="https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ" class="vf-navigation__link vf-mega-menu__link">Slack</a>
+          </li>
+          <li class="vf-navigation__item">
+            <a class="vf-navigation__link vf-mega-menu__link" data-vf-js-mega-menu-section-id="search-content-section" href="/search">
+              Search
+            </a>
           </li>
         </ul>
       </nav>
     </header>
+
+    <div class="vf-mega-menu__content">
+      <div class="vf-mega-menu__content__section" data-vf-js-mega-menu-section="about-content-section" role="menu" aria-hidden="true">
+        <section class="vf-summary-container | embl-grid">
+          <div class="vf-section-header">
+            <h2 class="vf-section-header__heading">The Visual Framework</h2>
+            <p class="vf-section-header__text">Good defaults and technical flexibility for life science websites</p>
+            <p class="vf-section-header__text"><a href="/about">Learn about the framework</a></p>
+          </div>
+          <div class="vf-section-content | vf-grid vf-grid__col-3">
+            <div>
+              <div class="vf-section-header">
+                <h2 class="vf-section-header__heading"> </h2>
+              </div>
+              <nav class="vf-navigation vf-navigation--main">
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--400">
+                  <li class="vf-navigation__item">
+                    <a href="/design-principles/" class="vf-navigation__link">Principles</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/updates/" class="vf-navigation__link">Updates and blog</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/about/roadmap/" class="vf-navigation__link">Roadmap</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/about/faq/" class="vf-navigation__link">FAQ</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div>
+              <div class="vf-section-header">
+                <h2 class="vf-section-header__heading"> </h2>
+              </div>
+              <nav class="vf-navigation vf-navigation--main">
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--400">
+                  <li class="vf-navigation__item">
+                    <a href="/guidance/" class="vf-navigation__link">Guidance</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/design-tokens/" class="vf-navigation__link">Design tokens</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/design-kit/" class="vf-navigation__link">Figma resources</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/troubleshooting/" class="vf-navigation__link">Troubleshooting</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div>
+              <div class="vf-section-header">
+                <h2 class="vf-section-header__heading"> </h2>
+              </div>
+              <nav class="vf-navigation vf-navigation--main">
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--400">
+                  <li class="vf-navigation__item">
+                    <a href="/developing/" class="vf-navigation__link">Contributing and developing</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/developing/getting-started/setting-up/" class="vf-navigation__link">Setting up your development environment</a>
+                  </li>
+                  <li class="vf-navigation__item">
+                    <a href="/guidance/creating-components" class="vf-navigation__link">Creating a component</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="vf-mega-menu__content__section" data-vf-js-mega-menu-section="components-content-section" role="menu" aria-hidden="true">
+        <section class="vf-summary-container">
+          {# <section class="vf-grid">
+            <div class="vf-section-header">
+              <h2 class="vf-section-header__heading">Components</h2>
+              <p class="vf-section-header__text">Dozens of components and patterns to scale up quickly.</p>
+            </div>
+          </section> #}
+          <section class="vf-grid">
+          <div class="vf-section-content | vf-grid vf-grid__col-4">
+            <article class="vf-stack vf-stack--400">
+              {% set context = {
+                "section_title": "Patterns"
+              }
+              %}
+              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+              <div class="vf-content">
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--200">
+                {%- for post in collections.posts | sort(false, true, 'data.title')  %}
+                  {% if 'patterns' == post.data.section %}
+                    {% set absolutePostUrl %}{{ metadata.id }}{{ post.url }}{% endset %}
+                      <li class="vf-navigation__item">
+                        <a href="{{ absolutePostUrl | url }}" class="vf-navigation__link">{{ post.data.title }}</a>
+                      </li>
+                  {% endif %}
+                {%- endfor %}
+                </ul>
+              </div>
+
+              {% set context = { "section_title": "Container" } %}
+              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+              <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--200">
+                {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
+                  {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == "container" %}
+                  <li class="vf-navigation__item">
+                    <a class="vf-navigation__link" href="/components/{{ item.handle}}">{{ item.title }}</a>
+                  </li>
+                  {% endif %}
+                {% endfor -%}
+              </ul>
+            </article>
+
+            <article class="vf-stack vf-stack--400">
+              {% set types = ['block'] %}
+              {%- for type in types %}
+                {% set context = { "section_title": type | title } %}
+                {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--200">
+                  {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
+                    {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == type %}
+                    <li class="vf-navigation__item">
+                      <a class="vf-navigation__link" href="/components/{{ item.handle}}">{{ item.title }}</a>
+                    </li>
+                    {% endif %}
+                  {% endfor -%}
+                </ul>
+              {% endfor -%}
+            </article>
+
+            <article class="vf-stack vf-stack--400">
+              {% set types = ['element', 'layout'] %}
+              {%- for type in types %}
+                {% set context = { "section_title": type | title } %}
+                {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+                <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--200">
+                  {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
+                    {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == type %}
+                    <li class="vf-navigation__item">
+                      <a class="vf-navigation__link" href="/components/{{ item.handle}}">{{ item.title }}</a>
+                    </li>
+                    {% endif %}
+                  {% endfor -%}
+                </ul>
+              {% endfor -%}
+            </article>
+
+            <!-- some tools don't have a natural place in the component library and are linked to github -->
+            <article class="vf-stack vf-stack--400">
+              {% set context = { "section_title": "Forms", "href": "/components#form" } %}
+              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+
+              <div><hr class="vf-divider"></div>
+
+              {% set context = { "section_title": "Utility", "href": "/components#utility" } %}
+              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+
+              <div><hr class="vf-divider"></div>
+
+              {% set context = { "section_title": "Tools", "href": "/components#tools" } %}
+              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+            </article>
+          </div>
+          </section>
+        </section>
+      </div>
+      <div class="vf-mega-menu__content__section" data-vf-js-mega-menu-section="search-content-section" role="menu" aria-hidden="true">
+        <section class="embl-grid embl-grid--has-centered-content">
+          {% render '@vf-section-header', {
+            "section_title": "Search",
+            "id": "search",
+            "vf_section__content": [
+            ]
+          } %}
+          {# "The project offers dozens of components, patterns and diverse usability guidance." #}
+          {% render '@vf-search-client-side--default', {
+            "search_client_prompt": "Search components and documentation",
+            "search_client_button": true,
+            "search_client_button_text": "Search",
+            "search_client_action": "/search/",
+            "search_client_results": false
+          } %}
+          <div></div>
+        </section>
+        {# <ul class="vf-list vf-u-margin__bottom--800">
+          <li class="vf-list__item">a list item</li>
+          <li class="vf-list__item">another list item</li>
+          <li class="vf-list__item">and another list item</li>
+          <li class="vf-list__item">yet another list item</li>
+        </ul> #}
+      </div>
+    </div>
 
     {% if page.url != '/' and page.url != '/404.html' and is_index != true %}
     {# don't show breadcrumb on homepage #}

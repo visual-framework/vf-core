@@ -8,6 +8,9 @@ tags:
   - changelog
 layout: layouts/post.njk
 ---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
 {% markdown %}
 
 A minor release that introduces a new component, adds several fixes and [new accessibility guidance](/guidance/accessibility/).
@@ -38,22 +41,6 @@ Read on for more.
 %}
 {% include blocks.links_list %}
 
-{# macros ---> #}
-{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-
-#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
-
-{% endmacro %}
-
-{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-<!-- Tools don't have pages in the component library -->
-
-#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
-
-{% endmacro %}
-
-{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
-{# endmacros ---/ #}
 
 {% markdown %}
 
@@ -78,7 +65,7 @@ As a reminder, the rollup CSS and JS are compilations of many independently vers
 
 ### New component <a href="#new" id="new"></a>
 
-{{ notes("vf-back-to-top", "1.0.0-alpha.1", "9ae5261bdd7106160268a50fddbd575013c01d81") }}
+{{ releaseLinks.notes("vf-back-to-top", "1.0.0-alpha.1", "9ae5261bdd7106160268a50fddbd575013c01d81") }}
 
 Contributor Nitin Jadhav [has made his first new component](https://github.com/visual-framework/vf-core/pull/1490) 🥳
 
@@ -88,7 +75,7 @@ Contributor Nitin Jadhav [has made his first new component](https://github.com/v
 
 ### Tables <a href="#tables" id="tables"></a>
 
-{{ notes("vf-table", "1.2.0-rc.0", "1635ff3b77569cffe6f0c2766b2d008e0c2aaa47") }}
+{{ releaseLinks.notes("vf-table", "1.2.0-rc.0", "1635ff3b77569cffe6f0c2766b2d008e0c2aaa47") }}
 
 The vf-table component is [beginning a journey of improved UX, visual design and technical appearance](https://github.com/visual-framework/vf-core/discussions/1474).
 
@@ -99,16 +86,16 @@ The vf-table component is [beginning a journey of improved UX, visual design and
 
 ### Refinements <a href="#refinements" id="refinements"></a>
 
-{{ notes("vf-card", "2.5.5", "c28239263fc988321e186446b66ac42c48ee9512") }}
+{{ releaseLinks.notes("vf-card", "2.5.5", "c28239263fc988321e186446b66ac42c48ee9512") }}
 
 * corrects colouring of visited link in heading on striped variant.
 
-{{ notes("vf-hero", "3.2.2", "939a35a9d82e74d0f3d17bab449bd0b018a5fe8c") }}
+{{ releaseLinks.notes("vf-hero", "3.2.2", "939a35a9d82e74d0f3d17bab449bd0b018a5fe8c") }}
 
 * Allows html (for links) in vf-hero__subheading (and a few other fields) when using the Nunjucks template.
   * https://github.com/visual-framework/vf-core/pull/1485
 
- {{ notesTool("vf-component-generator", "1.1.4", "0b76ac1fc5ee937f7accc7d11f4b3babc2ef490d") }}
+ {{ releaseLinks.notesTool("vf-component-generator", "1.1.4", "0b76ac1fc5ee937f7accc7d11f4b3babc2ef490d") }}
 
 * Add accessibility section to README.md template.
 

@@ -4,13 +4,11 @@ pageClass: posts
 templateEngineOverride: njk
 ---
 
-{# {% include "navigation.njk" %} #}
-
 {#- Use this template for individual items of content. -#}
 
-{# <p class="date">
+{#- <p class="date">
   Posted as an example, on <time datetime="{{ date }}">{{ date | dateDisplay }}</time>
-</p> #}
+</p> -#}
 
 <section class="vf-intro">
   <div>
@@ -18,16 +16,13 @@ templateEngineOverride: njk
     {% if subtitle %}
 <div class="vf-lede">{{subtitle | markdown | safe | replace("<p>", "<span class='vf-content'>") | replace("</p>", "</span>") }}</div>
     {% endif %}
+    <p class="vf-summary__date">{{ date | dateDisplay }}</p>
   </div>
 </section>
 
 <main class="embl-grid embl-grid--has-centered-content">
 <div></div>
-<div class="vf-content">
-  <p class="vf-summary__date">
-    {{ date | dateDisplay }}
-  </p>
-
+<div class="vf-content | vf-stack vf-stack--400">
   {{ content | safe }}
 </div>
 </main>

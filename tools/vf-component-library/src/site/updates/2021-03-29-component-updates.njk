@@ -8,6 +8,9 @@ tags:
   - changelog
 layout: layouts/post.njk
 ---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
 {% markdown %}
 
 Following the larger [2.4.9 release](/updates/2021-03-24-component-updates/) we had a few minor bugs and places for optimisation, as well as continuing to improve the usability and look of existing components.
@@ -38,23 +41,6 @@ Following the larger [2.4.9 release](/updates/2021-03-24-component-updates/) we 
 %}
 {% include blocks.links_list %}
 
-{# macros ---> #}
-{% macro notes(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-
-#### [{{component}}](https://latest.visual-framework.dev/components/{{component}}/) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
-
-{% endmacro %}
-
-{% macro notesTool(component='vf-xxx', componentVersion='9.9.9', commitId='0123456789') %}
-<!-- Tools don't have pages in the component library -->
-
-#### [{{component}}](https://github.com/visual-framework/vf-core/tree/develop/tools/{{component}}/#readme) <span class="vf-badge">{{ componentVersion }}</span> <a href="https://www.npmjs.com/package/@visual-framework/{{component}}/v/{{componentVersion}}" class="vf-badge">npm</a> <a href="https://github.com/visual-framework/vf-core/commit/{{commitId}}" class="vf-badge">git diff</a>
-
-{% endmacro %}
-
-{% macro componentLink(component='vf-xxx') %}[{{component}}](https://latest.visual-framework.dev/components/{{component}}/){% endmacro %}
-{# endmacros ---/ #}
-
 {% markdown %}
 
 <section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
@@ -79,7 +65,7 @@ As a reminder, the rollup CSS and JS are compilations of many independently vers
 
 Following [2.4.9's work on forms](/updates/2021-03-24-component-updates/#forms), we carried through optimising the behaviour of vf-search to behave better on smaller width screens, like mobile phones.
 
-{{ notes("vf-search", "3.0.0-alpha.0", "fc7c42b8f20e83dba11fe8fa2ce4bc8b23e98d08") }}
+{{ releaseLinks.notes("vf-search", "3.0.0-alpha.0", "fc7c42b8f20e83dba11fe8fa2ce4bc8b23e98d08") }}
 
 * updates to code and documentation based on consultation and decisions made.
 * introduces the 'container' version
@@ -89,7 +75,7 @@ Following [2.4.9's work on forms](/updates/2021-03-24-component-updates/#forms),
 
 The vf-masthead had been eclipsed by the functionality of vf-hero. We've finally deprecated it and hidden it. You should migrate to vf-hero and the vf-masthead will be removed from the CDN css in the coming weeks.
 
-{{ notes("vf-masthead", "3.0.0", "cb8ee3a5f2936f56f52a6ffbd9a08a53c8bd02c7") }}
+{{ releaseLinks.notes("vf-masthead", "3.0.0", "cb8ee3a5f2936f56f52a6ffbd9a08a53c8bd02c7") }}
 
 * Formally deprecates the vf-masthead.
 * Reinstates stub JS so existing vf-scripts.js files won't fail.
@@ -97,33 +83,33 @@ The vf-masthead had been eclipsed by the functionality of vf-hero. We've finally
 
 ### Bugs and minor optimisations <a href="#bugs" id="bugs"></a>
 
-{{ notesTool("vf-sass-config", "2.5.2", "05ced3187663ff79eaa4e2b1a216a98c7f78a5b1") }}
+{{ releaseLinks.notesTool("vf-sass-config", "2.5.2", "05ced3187663ff79eaa4e2b1a216a98c7f78a5b1") }}
 
 * Fix key name in `vf-color--neutral` lookup.
   * https://github.com/visual-framework/vf-core/pull/1460
 
-{{ notesTool("vf-sass-config", "2.5.1", "fc7c42b8f20e83dba11fe8fa2ce4bc8b23e98d08") }}
+{{ releaseLinks.notesTool("vf-sass-config", "2.5.1", "fc7c42b8f20e83dba11fe8fa2ce4bc8b23e98d08") }}
 
 * adds neutral colours in the custom variables import file
 
-{{ notes("vf-content", "1.5.1", "cb8ee3a5f2936f56f52a6ffbd9a08a53c8bd02c7") }}
+{{ releaseLinks.notes("vf-content", "1.5.1", "cb8ee3a5f2936f56f52a6ffbd9a08a53c8bd02c7") }}
 
 * Fixes a bug with a non-existent @visual-framework/form was required.
 
-{{ notes("vf-body", "1.2.0", "e3bda5821977e3b386ca859005baf06bfaba0dd8") }}
+{{ releaseLinks.notes("vf-body", "1.2.0", "e3bda5821977e3b386ca859005baf06bfaba0dd8") }}
 
 * removes `box-sizing: border-box;`
 * adds a little more to the documentation.
 
-{{ notes("vf-form__input", "3.0.0-alpha.1", "49f459acc4c85e5e1227b2bd80fb23531c46d7d9") }}
+{{ releaseLinks.notes("vf-form__input", "3.0.0-alpha.1", "49f459acc4c85e5e1227b2bd80fb23531c46d7d9") }}
 
 * changes out the CSS for `invalid` as an actual class `vf-form__input--invalid`.
 
-{{ notes("vf-sidebar", "1.0.0-alpha.2", "5c2fc0747cfea9f7d18893a0b06aeb2c3b7889de") }}
+{{ releaseLinks.notes("vf-sidebar", "1.0.0-alpha.2", "5c2fc0747cfea9f7d18893a0b06aeb2c3b7889de") }}
 
 * updates examples to use image.
 
-{{ notes("vf-stack", "2.1.1", "64794d1292e683605e8d65046fe54082251c36f6") }}
+{{ releaseLinks.notes("vf-stack", "2.1.1", "64794d1292e683605e8d65046fe54082251c36f6") }}
 
 * adds usage guideline for include the default `vf-stack` and the size variant.
 

@@ -105,7 +105,7 @@ templateEngineOverride: njk
   <div class="vf-content">
     {% markdown %}
 
-    With an agreed concept, reference designs should be made in Figma (to be used with the [Design Kit](/design-kit/)).
+    With an agreed concept, reference designs should be made in Figma (to be used with the [Figma design resources](/design-kit/)).
 
     The design and technical implementation are an asynchronous process and both code and visuals will often need to be adapted as the other evolves. But, in an ideal world, each component implementation begins with a fully designed reference.
 
@@ -149,7 +149,8 @@ templateEngineOverride: njk
 
     If you're adding a custom component to any other project
 
-    - Install the [`vf-component-generator` package](https://github.com/visual-framework/vf-core/tree/develop/tools/vf-component-generator) `yarn add @visual-framework/vf-component-generator --dev`
+    - Install the [`vf-component-generator` package](https://github.com/visual-framework/vf-core/tree/develop/tools/vf-component-generator)
+    - `yarn add @visual-framework/vf-component-generator --dev`
 
     ##### Generate the new component files
 
@@ -195,7 +196,7 @@ templateEngineOverride: njk
     <details class="vf-details">
       <summary class="vf-details--summary">Visual design and design tokens</summary>
 
-      The visual design of the Visual Framework is done in [the Design kit](/design-kit/) and visuals can be created or revised as part of the parent issue for a ticket.
+      The visual design of the Visual Framework is done in [with the Figma design resources](/design-kit/) and visuals can be created or revised as part of the parent issue for a ticket.
 
       The design decisions of spacing, colours, branding, typography and the like are stored in the Visual Framework's [Design tokens](/design-tokens/) and accessible to your code through the mixins in the [Sass config and templates component](/components/vf-sass-config/); some common examples: `color: set-color(vf-ui-color--black);` and `@include set-type(text-body--3);`
 

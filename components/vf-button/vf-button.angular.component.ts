@@ -18,8 +18,9 @@ import { Component, Input, OnInit } from "@angular/core";
       <ng-content></ng-content>
     </button>
   `,
-  styleUrls: ["./button.component.css"]
+  styleUrls: []
 })
+// note: we don't pass style urls here, instead we include them in the overall project sass build process
 export class VfButton implements OnInit {
   @Input() primary = false;
   @Input() secondary = true;

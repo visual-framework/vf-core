@@ -134,7 +134,8 @@
 }
 
 .vf-card__subheading {
-  --vf-stack-margin--custom: #{space(100)};
+  --vf-stack-margin--custom: #{space(100)}; // fallback for vf-stack prior to version 3
+  --vf-stack-margin: #{space(100)};
 
   @include set-type(text-heading--5, $custom-margin-bottom: 0, $color: ignore);
 
@@ -231,7 +232,7 @@
     background-color: var(--vf-card--striped-bg-color, #{color(green--dark)});
     color: ui-color(white);
     margin: map-get($vf-spacing-map, vf-spacing--400) * -1;
-    margin-bottom: -1rem;
+    margin-top: 0;
     padding: map-get($vf-spacing-map, vf-spacing--400);
     padding-bottom: map-get($vf-spacing-map, vf-spacing--200);
     padding-top: .5rem;
@@ -241,7 +242,8 @@
     color: ui-color(white);
 
     &:first-of-type {
-      --vf-stack-margin--custom: 0;
+      --vf-stack-margin--custom: 0; // fallback for vf-stack prior to version 3
+      --vf-stack-margin: 0;
       // padding-top: map-get($vf-spacing-map, vf-spacing--400);
     }
 
@@ -254,7 +256,8 @@
 
   .vf-card__title + .vf-card__text,
   .vf-card__heading + .vf-card__text {
-    --vf-stack-margin--custom: #{space(400)};
+    --vf-stack-margin--custom: #{space(400)}; // fallback for vf-stack prior to version 3
+    --vf-stack-margin: #{space(400)};
   }
 }
 
