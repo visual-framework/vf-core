@@ -1,6 +1,7 @@
 ## 2.0.0-alpha.2
 
 * Further revises integration with eleventy-cmd.js to allow more control from gulp.
+* https://github.com/visual-framework/vf-core/pull/1721
 
 ## 2.0.0-alpha.1
 
