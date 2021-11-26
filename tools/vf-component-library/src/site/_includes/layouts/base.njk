@@ -291,6 +291,7 @@
             </li>
           {% endif %}
         {% endif %}
+
         {% if section %}
           {# don't show section link on a section #}
           {# load section breadcrumbs from siteConfig.js #}
@@ -312,6 +313,14 @@
             </li>
           {% endif %}
         {% endif %}
+        {# Guidance section #}
+        {% if tags %}
+          {% if 'guidance' in tags %}
+            <li class="vf-breadcrumbs__item">
+              <a href="{{ '/guidance' | url }}" class="vf-breadcrumbs__link">Guidance and principles</a>
+            </li>
+          {% endif %}
+        {% endif %}
         {# Standard page title #}
         <li class="vf-breadcrumbs__item" aria-current="location">
           {% if pagination.items[0].name %}
@@ -326,13 +335,6 @@
 
     {# Hero for sections #}
     {% if section and is_index -%}
-      {# <style>
-        .vf-hero.vf-component-library--hero {
-          --vf-hero--bg-image:
-            url("https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/roundels.png"),
-            url("https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/20201202_hero_emblorg_homepage-zoom-out.jpg")
-        }
-      </style> #}
       {%- set context = {
         "spacing": 400,
         "vf_hero_heading": siteConfig.sections[section].title,
@@ -345,29 +347,8 @@
       -%}
         {# "modifier_class": "vf-component-library--hero", #}
       {%- include "vf-core-components/vf-hero/vf-hero.njk" -%}
-    {% elseif section and (hideSectionNavigation != true) %}
-      {# Render sub nav for sections #}
-      {%- set navigationList = [] -%}
-      {%- for entry in collections[section] | sort(false, true, 'data.order') %}
-        {%- if entry.data.layout and  (entry.data.is_index != true) %}
-          {%- set isCurrent = false -%}
-          {%- if entry.url == page.url %}
-            {%- set isCurrent = true -%}
-          {%- endif %}
-          {% set navigationList = (navigationList.push({
-            "text": entry.data.title,
-            "order": entry.data.order,
-            "navigation_href": entry.url | url,
-            "currentPage": isCurrent
-          }),navigationList) %}
-        {%- endif %}
-      {%- endfor -%}
+    {% endif %}
 
-      {% render '@vf-navigation', {
-        "classModifier": "main",
-        "navigation": navigationList
-      } %}
-    {%- endif %}
 
     {{ content | safe }}
 
