@@ -1,6 +1,6 @@
 ---
 title: Updates on Visual Framework component changes
-subtitle: The Visual Framework 2.0 is maturing and we're working to do a better job communicating changes and individual component release notes.
+subtitle: The Visual Framework is maturing and we're working to do a better job communicating changes and individual component release notes.
 date: 2020-09-11 11:24:50
 tags:
   - posts
