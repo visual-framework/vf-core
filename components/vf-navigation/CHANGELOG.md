@@ -1,3 +1,7 @@
+### 3.0.0-rc.1
+
+* Give vf-navigation--on-this-page a bigger bottom margin on desktop as vf-u-fullbleed eats a bit of bottom margin by its nature.
+
 ### 3.0.0-rc.0
 
 * Introduces `vf-navigation--on-this-page`.
