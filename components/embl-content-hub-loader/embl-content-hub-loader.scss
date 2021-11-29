@@ -41,14 +41,16 @@
 
 // contentHub html responses are nested deep in divitis,
 // so we ensure a default vf--stack applies to grid containers
-.vf-stack > .vf-content-hub-html > * > .embl-grid,
-.vf-stack > .vf-content-hub-html > * > .vf-grid {
-  margin-top:var(--vf-stack-margin--custom, var(--vf-stack-margin, 1rem));
+.vf-stack .vf-content-hub-html .embl-grid,
+.vf-stack .vf-content-hub-html .vf-grid,
+.vf-stack .vf-content-hub-html .vf-content > * {
   --vf-stack-margin: 1rem;
   --vf-stack-margin--custom: 1rem;
+  margin-top: var(--vf-stack-margin, 1rem);
 }
-.vf-stack > .vf-content-hub-html > * > .embl-grid > *,
-.vf-stack > .vf-content-hub-html > * > .vf-grid > * {
-  --vf-stack-margin: 0;
-  --vf-stack-margin--custom: 0;
+.vf-stack .vf-content-hub-html .embl-grid > *,
+.vf-stack .vf-content-hub-html .vf-grid > *,
+.vf-stack .vf-content-hub-html .vf-content > * > * {
+ --vf-stack-margin: 0;
+ --vf-stack-margin--custom: 0
 }
