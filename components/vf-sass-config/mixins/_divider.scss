@@ -10,5 +10,7 @@
   border: none;
   height: 1px;
   margin-block: 0 var(--vf-divider-margin--block-end, $margin--block-end);
+  margin-top: #{map-get($vf-spacing-map, vf-spacing--400)}; /* IE Fallback */
+  margin-top: var(--vf-stack-margin, #{map-get($vf-spacing-map, vf-spacing--400)});
   width: 100%;
 }
