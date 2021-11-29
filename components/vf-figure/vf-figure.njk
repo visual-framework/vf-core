@@ -1,19 +1,26 @@
+{%- if context %}
+  {% set id = context.id %}
+  {% set vf_figure__align_inline_start = context.vf_figure__align_inline_start %}
+  {% set vf_figure__align_inline_end = context.vf_figure__align_inline_end %}
+  {% set vf_figure__align_centered = context.vf_figure__align_centered %}
+  {% set override_class = context.override_class %}
+  {% set imageUrl = context.imageUrl %}
+  {% set alttext = context.ovealttextrride_class %}
+  {% set html = context.html %}
+  {% set text = context.text %}
+{% endif -%}
+
 <figure
   {#- You're using an ID? Really?? That'll go here -#}
   {%- if id -%} id="{{-id-}}" {%- endif %}
-
   class="vf-figure
   {%- if vf_figure__align_inline_start %} vf-figure--align vf-figure--align-inline-start{% endif -%}
   {%- if vf_figure__align_inline_end %} vf-figure--align vf-figure--align-inline-end{% endif -%}
   {%- if vf_figure__align_centered %} vf-figure--align vf-figure--align-centered{% endif -%}
-
   {%- if override_class %} | {{override_class}}{% endif -%}"
 >
-
   <img class="vf-figure__image" src="{{imageUrl}}" alt="{{alttext}}" loading="lazy">
-
   <figcaption class="vf-figure__caption">
     {{- html | safe if html else text -}}
   </figcaption>
-
 </figure>

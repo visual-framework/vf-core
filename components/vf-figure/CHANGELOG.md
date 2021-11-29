@@ -1,3 +1,8 @@
+### 2.0.1
+
+* Support passed context.
+* https://github.com/visual-framework/vf-core/issues/1509
+
 ### 2.0.0
 
 * Removed `width: 100%` from the `.vf-figure__image` class.
