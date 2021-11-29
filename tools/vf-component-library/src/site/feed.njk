@@ -26,7 +26,18 @@ metadata:
     <link href="{{ absolutePostUrl }}"/>
     <updated>{{ post.date | rssDate }}</updated>
     <id>{{ absolutePostUrl }}</id>
-    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+    <content type="html">
+    {%- if serverInfo.environment == "development" -%}
+    Due to a bug in 1.0.0 Eleventy betas, `templateContent` is not always correctly built.
+
+      `TemplateContentPrematureUseError` was thrown:
+      [11ty]     TemplateContentPrematureUseError: Tried to use templateContent too early
+
+      So on dev we don't generate the RSS
+    {%- else -%}
+    {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}
+    {% endif -%}
+    </content>
   </entry>
   {%- endfor %}
 </feed>

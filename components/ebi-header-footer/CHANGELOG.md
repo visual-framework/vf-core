@@ -1,3 +1,8 @@
+### 2.1.1
+
+* No space between EBI black bar and a hero.
+* https://github.com/visual-framework/vf-core/pull/1724
+
 ### 2.1.0
 
 * Fix readme for proper display in component library docs.

@@ -1,3 +1,8 @@
+### 2.7.1
+
+* Make vf-divider respect vf-stack spacing.
+* https://github.com/visual-framework/vf-core/pull/1723
+
 ### 2.7.0
 
 * `@mixin set-type` margin-top now inherits any applicable vf-stack margin.
