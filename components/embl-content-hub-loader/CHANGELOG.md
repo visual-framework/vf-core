@@ -1,3 +1,8 @@
+### 1.2.0
+
+* contentHub html responses are nested deep in many layers of divs, so we ensure a default vf--stack applies to grid containers.
+* https://github.com/visual-framework/vf-core/pull/1725
+
 ### 1.1.1
 
 * Avoid a null variable issue when contentHub returns no results.

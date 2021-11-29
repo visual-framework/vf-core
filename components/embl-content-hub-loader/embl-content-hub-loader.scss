@@ -18,11 +18,11 @@
 .vf-grid > .embl-content-hub-html {
   grid-column: 1 / -1;
   // @todo: this should probably just be .embl-content-hub-html, but that requires a
-  //        disruptive change in the contenthub itself and will impact many systems.
+  //        disruptive change in the contentHub itself and will impact many systems.
   //        that change will require coordination
 }
 // contentHub html is sometimes placed as a direct child of `vf-body` which needs a
-// different grid-column ruleset.
+// different grid-column rule set.
 .vf-body > .vf-content-hub-html,
 .vf-body > .embl-content-hub-html {
   grid-column: main;
@@ -37,4 +37,20 @@
 // as nine times out of ten - it's ok.
 .vf-content-hub-html {
   --vf-stack-margin--custom: 0;
+}
+
+// contentHub html responses are nested deep in divitis,
+// so we ensure a default vf--stack applies to grid containers
+.vf-stack .vf-content-hub-html .embl-grid,
+.vf-stack .vf-content-hub-html .vf-grid,
+.vf-stack .vf-content-hub-html .vf-content > * {
+  --vf-stack-margin: 1rem;
+  --vf-stack-margin--custom: 1rem;
+  margin-top: var(--vf-stack-margin, 1rem);
+}
+.vf-stack .vf-content-hub-html .embl-grid > *,
+.vf-stack .vf-content-hub-html .vf-grid > *,
+.vf-stack .vf-content-hub-html .vf-content > * > * {
+ --vf-stack-margin: 0;
+ --vf-stack-margin--custom: 0
 }
