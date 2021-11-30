@@ -3,7 +3,7 @@ const { DateTime } = require("luxon");
 // Some various reusable configuration
 module.exports = {
   siteInformation: {
-    title: "The Visual Framework 2.0",
+    title: "The Visual Framework",
     short_description: "A front-end toolkit to quickly and collaboratively build better life science websites.",
     url: "https://stable.visual-framework.dev/",
     author: "Visual Framework system",

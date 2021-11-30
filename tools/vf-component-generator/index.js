@@ -5,7 +5,7 @@ var path = require("path");
 var config = require(path.resolve(".","package.json"));
 
 config.vfConfig = config.vfConfig || [];
-vfName = config.vfConfig.vfName || "Visual Framework 2.0";
+vfName = config.vfConfig.vfName || "Visual Framework";
 vfNamespace = config.vfConfig.vfNamespace || "vf-";
 vfComponentPath = config.vfConfig.vfComponentPath || path.resolve(__dirname, "../../components");
 
