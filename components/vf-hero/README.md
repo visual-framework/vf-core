@@ -8,9 +8,17 @@ The `vf-hero` component is to be used as a visual queue and page header. As need
 
 ## Usage
 
-By default the `vf-hero` makes use of the roundels background image. To keep the raw structure of the HTML and CSS the same this is applied using a CSS custom property.
+By default the `vf-hero` makes use of the roundels background image. To keep the raw structure of the HTML and CSS the same this is applied using a CSS custom property. The default variant is equivalent to `vf-hero--1200`.
 
-The default variant is equivalent to `vf-hero--1200` and the recommended image size is 3000 by 1000 pixels.
+### Hero background images
+
+You can bring your own image to use with the vf-hero.
+
+- Size: recommended image size for a typical hero is 3000 by 1000 pixels.
+- Positioning: people and other important imagery should be placed on the right side. The image will, by default, vertically centre and align to the right side.
+- Imagery: most of the image should be abstract as to not visually compete with the text in the hero box.
+- Text: do not use raster text as part of the image.
+- Consult design: the image should be made in consultation with your organisation's design team for brand alignment and input on how best to create it.
 
 ### Content
 
