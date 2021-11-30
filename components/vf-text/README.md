@@ -6,6 +6,12 @@
 
 For basic text formatting and sizes.
 
+## Usage
+
+The `vf-text` component leverages [the design token typography sizes](https://stable.visual-framework.dev/design-tokens/typography/).
+
+This component provides a utility-like functionality and you'll rarely need to directly use this component. When coding a component's Sass, it will typically be better to use the mixins (`@include set-type(text-body--6);`) than these `vf-text` classes.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-text` with this command.
