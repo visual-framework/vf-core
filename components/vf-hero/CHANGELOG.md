@@ -1,3 +1,8 @@
+### 3.3.3
+
+* Improve docs on vf-hero image sizing
+* https://github.com/visual-framework/vf-core/issues/1641
+
 ### 3.3.2
 
 * Drop use of vf-stack-margin--custom.
