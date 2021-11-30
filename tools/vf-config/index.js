@@ -38,7 +38,7 @@ if (config.name === "@visual-framework/vf-core") {
 }
 
 config.vfConfig = config.vfConfig || [];
-global.vfName = config.vfConfig.vfName || "Visual Framework 2.0";
+global.vfName = config.vfConfig.vfName || "Visual Framework";
 global.vfNamespace = config.vfConfig.vfNamespace || "vf-";
 global.vfComponentPath = config.vfConfig.vfComponentPath || path.resolve(".", "components");
 global.vfBuildDestination = config.vfConfig.vfBuildDestination || "temp/build-files";

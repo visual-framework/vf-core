@@ -1,6 +1,6 @@
-# Visual Framework 2.0 component library
+# Visual Framework component library
 
-The homepage, welcome and onboarding site for the Visual Framework 2.0 and its components.
+The homepage, welcome and onboarding site for the Visual Framework and its components.
 
 ## What's the Visual Framework?
 
