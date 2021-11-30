@@ -1,0 +1,114 @@
+---
+title: Rollup release 2.5.6
+subtitle: This rollup release adds a number of minor bug fixes, improves documentation and continues support for Eleventy version 1.0.
+date: 2021-11-30 16:10:29
+version: 2.5.6
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Overview",
+      "navigation_href": "#overview",
+      "currentSection": true
+    },
+    {
+      "text": "Features",
+      "navigation_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<span class="" id="overview"></span>Hot on the heels of the [2.5.5 release](../2021-11-23-component-updates/), this release resolves minor bugs, improves integration between contentHub and vf-stack and continues preparing [for the Eleventy 1.0 release](https://www.11ty.dev/blog/eleventy-v1-beta/).
+
+Read on for more!
+
+---
+
+As always, you can [join the conversation on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+<section class="vf-u-fullbleed vf-u-background-color-ui--grey--light"><br/>
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+</section>
+
+<br/>
+
+### Features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-extensions", "2.0.0-alpha.2", "3a40d0c59bbeed660f1e52797f76262b68df963f") }}
+
+* Further revises integration with eleventy-cmd.js to allow more control from gulp.
+* https://github.com/visual-framework/vf-core/pull/1721
+
+{{ releaseLinks.notes("embl-content-hub-loader", "1.2.0", "59f1dfb8eb7bf69944f8f2961e55ab360a5164e7") }}
+
+* contentHub html responses are nested deep in many layers of divs, so we ensure a default vf--stack applies to grid containers.
+* https://github.com/visual-framework/vf-core/pull/1725
+
+{{ releaseLinks.notes("ebi-header-footer", "2.1.1", "7531ed171b08c3cdb6a4ce48926b6e66885c8536") }}
+
+* No space between EBI black bar and a hero.
+* https://github.com/visual-framework/vf-core/pull/1724
+
+{{ releaseLinks.notes("vf-sass-config", "2.7.1", "9d5a2cc29cf8bceb7cd992ce5ba7e621b1f7afd8") }}
+
+* Make vf-divider respect vf-stack spacing.
+* https://github.com/visual-framework/vf-core/pull/1723
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-navigation", "3.0.0-rc.1", "69d61cca814ec79fc1a41c4dbb981c4d40c60f7d") }}
+
+* Give vf-navigation--on-this-page a bigger bottom margin on desktop as vf-u-fullbleed eats a bit of bottom margin by its nature.
+* https://github.com/visual-framework/vf-core/pull/1732
+
+{{ releaseLinks.notes("vf-heading", "1.1.0", "e27bdf3bf978d3ab17ddb44693cff5fcdeda09bd") }}
+
+* Changes of name of variants to reflect connection to design tokens.
+* https://github.com/visual-framework/vf-core/issues/1661
+
+{{ releaseLinks.notes("vf-text", "1.1.0", "e27bdf3bf978d3ab17ddb44693cff5fcdeda09bd") }}
+
+* Changes of name of variants to reflect connection to design tokens.
+* https://github.com/visual-framework/vf-core/issues/1661
+
+{{ releaseLinks.notes("vf-hero", "3.3.3", "2a78bcbe0a9950452c04d8951e1fc952bcb9ba29") }}
+
+* Improve docs on vf-hero image sizing
+* https://github.com/visual-framework/vf-core/issues/1641
+
+{{ releaseLinks.notes("vf-figure", "2.0.1", "658071aa1e0ac4ff220efb5abce6ce86ce42c5a0") }}
+
+* Support passed context.
+* https://github.com/visual-framework/vf-core/issues/1509
+
+{% endmarkdown %}
