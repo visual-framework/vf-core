@@ -1,3 +1,7 @@
+### 1.2.0
+
+* Support inserting after EBI black bar.
+
 ### 1.1.1
 
 * Remove use of long deprecated `vf-banner--phase` variant and replace with `vf-banner--alert vf-banner--info`.
