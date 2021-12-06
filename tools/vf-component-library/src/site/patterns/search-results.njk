@@ -410,48 +410,7 @@ layout: layouts/boilerplate.njk
         ]
       } %} #}
 
-      <nav class="vf-pagination" aria-label="Pagination">
-        <ul class="vf-pagination__list">
-
-          <li class="vf-pagination__item vf-pagination__item--pages-per">
-            <div class="vf-form__item--inline">
-              <label class="vf-form__label" for="vf-form__select">Results per page</label>
-
-              <select class="vf-form__select" id="vf-form__select">
-                <option value="10" selected>10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="40">40</option>
-                <option value="50">50</option>
-              </select>
-            </div>
-          </li>
-          <li class="vf-pagination__item">
-            <span class="vf-u-sr-only">Result </span> 1 - 10 of 1,345
-          </li>
-          <li class="vf-pagination__item vf-pagination__item--jump-back">
-            <a href="JavaScript:Void(0);" class="vf-pagination__link">
-              << <span class="vf-u-sr-only">First set</span>
-            </a>
-          </li>
-          <li class="vf-pagination__item vf-pagination__item--previous-page">
-            <a href="JavaScript:Void(0);" class="vf-pagination__link">
-              < Previous <span class="vf-u-sr-only">set</span>
-            </a>
-          </li>
-          <li class="vf-pagination__item vf-pagination__item--next-page">
-            <a href="JavaScript:Void(0);" class="vf-pagination__link">
-              Next > <span class="vf-u-sr-only">set</span>
-            </a>
-          </li>
-          <li class="vf-pagination__item vf-pagination__item--jump-forward">
-            <a href="JavaScript:Void(0);" class="vf-pagination__link">
-              >> <span class="vf-u-sr-only">Last set</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-
+      {% render '@vf-pagination' %}
 
       <div class="vf-show-hide vf-show-hide--hidden" data-vf-js-show-hide data-vf-js-show-hide-hidden>
       {% render '@vf-banner--info', {
