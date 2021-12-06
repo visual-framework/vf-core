@@ -4,7 +4,7 @@
 
 ## About
 
-Classic html list `<li>` types: order, unordered, bulleted and inline.
+Classic html list `<li>` and `<dl>` types: order, unordered, bulleted, inline and definition.
 
 ## Install
 

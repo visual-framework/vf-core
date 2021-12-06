@@ -1,5 +1,22 @@
-<ul
-{# You're using an ID? Really?? That'll go here #}
+{% spaceless %}
+{%- if context %}
+  {% set id = context.id %}
+  {% set list_type = context.list_type %}
+  {% set list = context.list %}
+  {% set definitions = context.definitions %}
+  {% set override_class = context.override_class %}
+{% endif -%}
+
+{# Determine type of element to use, if not explicitly set -#}
+{% if list_type == 'definition' %}
+  {% set parent_tag = 'dl' %}
+  {% set child_tag = 'dt' %}
+{% else %}
+  {% set parent_tag = 'ul' %}
+  {% set child_tag = 'li' %}
+{% endif %}
+
+<{{parent_tag}}
 {% if id %} id="{{-id-}}"{% endif %}
 
 class="vf-list
@@ -7,6 +24,19 @@ class="vf-list
   {%- if override_class %} | {{override_class}}{% endif -%}
 ">
   {% for item in list %}
-  <li class="vf-list__item">{{item}}</li>
+  {% if item.term %}
+    <{{child_tag}} class="vf-list__item vf-list--definition__term">
+    {{ item.term }}
+    </{{child_tag}}>
+    <dd class="vf-list__item vf-list--definition__details">
+    {{ item.definition }}
+    </dd>
+  {% else %}
+    <{{child_tag}} class="vf-list__item {{child_tag_class}}">
+      {{item}}
+    </{{child_tag}}>
+  {% endif %}
+
   {% endfor %}
-</ul>
+</{{parent_tag}}>
+{% endspaceless %}
