@@ -13,22 +13,40 @@
   @include list(vf-list);
   @include set-type(text-body--3);
 }
-.vf-list--l {
-  @include set-type(text-body--2);
-}
-
 .vf-list--ordered {
   @include list(vf-list--ordered, ordered);
 }
 .vf-list--unordered {
   @include list(vf-list--unordered, unordered);
 }
-
 .vf-list--inline  {
   @include list(vf-list--inline, inline);
   display: inline-block;
 }
 
+// VF definition lists
+// https://github.com/visual-framework/vf-core/issues/914
+.vf-list--definition {
+  @include list(vf-list--unordered, unordered);
+}
+.vf-list--definition__term {
+  @include set-type(text-heading--4);
+}
+.vf-list--definition__details {
+  @include set-type(text-body--2);
+}
+
+// List links
 .vf-list__link {
   @include inline-link;
+}
+
+// Utility style list modifiers
+.vf-list--l {
+  @include set-type(text-body--2);
+}
+.vf-list--tight {
+  .vf-list__item {
+    margin-bottom: map-get($vf-spacing-map, vf-spacing--100);
+  }
 }
