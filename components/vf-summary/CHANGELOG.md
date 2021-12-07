@@ -1,3 +1,9 @@
+### 1.6.1
+
+* vf-summary--event now uses a lowercase date format.
+* Removes ordinals from recommended date format (4th September 2021).
+* https://github.com/visual-framework/vf-core/issues/1673
+
 ### 1.6.0
 
 * Removes support for styling of `vf-summary` inside of `vf-box`. (this is no longer encouraged)
