@@ -1,3 +1,7 @@
+### 1.1.2
+
+* Minor update to example content.
+
 ### 1.1.1
 
 * changes any `set-` style functions to cleaner version
