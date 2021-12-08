@@ -122,6 +122,15 @@
     margin-bottom: map-get($vf-spacing-map, vf-spacing--400);
   }
 
+  dl:not([class*='vf-']) {
+    dt:not([class*='vf-']) {
+      @include set-type(text-heading--4, $custom-margin-bottom: 8px);
+    }
+    dd:not([class*='vf-']) {
+      @include set-type(text-body--2);
+    }
+  }
+
   img:not([class*='vf-']) {
     height: auto;
     max-width: 100%;

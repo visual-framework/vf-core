@@ -1,3 +1,7 @@
+### 1.6.7
+
+* Add support for definition lists.
+
 ### 1.6.3
 
 * Dependency bumps.
