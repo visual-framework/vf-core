@@ -1,0 +1,17 @@
+{% spaceless %}
+{%- if context %}
+  {% set id = context.id %}
+  {% set list = context.list %}
+  {% set override_class = context.override_class %}
+{% endif -%}
+
+<div
+{% if id %} id="{{-id-}}"{% endif %}
+class="vf-tags
+  {%- if override_class %} | {{override_class}}{% endif -%}
+">
+  {% for item in tags %}
+  <a class="vf-link vf-tag" href="{{item.label | safe}}">{{item.label}}</a>
+  {% endfor %}
+</div>
+{% endspaceless %}

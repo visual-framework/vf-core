@@ -1,0 +1,59 @@
+// vf-tags
+
+// **Thinking about deleting this file?**
+// If your component needs no CSS/Sass, we still recommend leaving the
+// scss files in place. As this is primarily a CSS framework, it is better to
+// leave the empty files so you know a file wasn't accidently omitted.
+// If you don't have any Sass, you can trim this block down to:
+// "This page was intentionally left blank"
+
+@import 'package.variables.scss';
+// Debug information from component's `package.json`:
+// ---
+/*!
+ * Component: #{map-get($componentInfo, 'name')}
+ * Version: #{map-get($componentInfo, 'version')}
+ * Location: #{map-get($componentInfo, 'location')}
+ * Build time: #{map-get($componentInfo, 'buildTimeStamp')}
+ */
+
+@import 'vf-tags.variables.scss';
+
+// You need to add this Sass file to ./components/vf-componenet-rollup/index.scss
+// @import 'vf-tags/vf-tags.scss';
+.vf-tags {
+  // You can utilise CSS custom properites
+  // --thing-text-color: var(--vf-tags-theme-color--foreground, #{set-ui-color(vf-ui-color--black)});
+
+  // The are many mixins:
+  // https://stable.visual-framework.dev/components/detail/vf-sass-config.html
+  // @include set-type(text-body--2);
+
+  // You can also use the design tokens
+  // https://stable.visual-framework.dev/components/detail/vf-design-tokens.html
+  // --otherthing-color: var(--vf-tags-theme-color--foreground, #{map-get($vf-colors-map, vf-color--green--darkest)});
+  // color: var(--otherthing-color);
+}
+
+.vf-tag.vf-link {
+  color:  text-color(secondary);
+  margin: 0 0 4px 0;
+  position: relative;
+}
+
+.vf-tag.vf-link:nth-last-child(n+2),
+.vf-tag.vf-link:nth-last-child(n+2) ~ .vf-tag.vf-link {
+  margin-right: #{map-get($vf-spacing-map, vf-spacing--200)};
+
+  &::before {
+    content: ',';
+    position: absolute;
+    right: -4px;
+  }
+}
+
+.vf-tag.vf-link:last-of-type {
+  &::before {
+    content: '' !important;
+  }
+}
