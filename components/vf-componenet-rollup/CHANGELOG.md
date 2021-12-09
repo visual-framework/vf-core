@@ -1,3 +1,8 @@
+## 1.4.5
+
+* Add vf-tags Sass.
+* https://github.com/visual-framework/vf-core/issues/875
+
 ## 1.4.4
 
 * Add vf-mega-menu Sass and JS.
