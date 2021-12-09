@@ -1,3 +1,7 @@
+### 2.1.2
+
+* Resolve a vf-stack + vf-content-hub + legacy black bar edge case.
+
 ### 2.1.1
 
 * No space between EBI black bar and a hero.
