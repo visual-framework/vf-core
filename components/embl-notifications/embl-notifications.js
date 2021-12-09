@@ -66,13 +66,19 @@ function emblNotificationsInject(message) {
     if (target.length > 0) {
       target[0].parentNode.insertBefore(output, target[0].nextSibling);
     } else {
-      // if no vf-header, show at vf-body
-      // @thought: we might instead make this show as "top"
-      let target = document.getElementsByClassName("vf-body");
+      // if no vf-header, perhaps there's a masthead-black-bar?
+      let target = document.getElementsByClassName("masthead-black-bar");
       if (target.length > 0) {
-        // output.classList.add('vf-u-grid--reset');
-        target[0].prepend(output);
-      } // if still no success, we soft fail
+        target[0].parentNode.insertBefore(output, target[0].nextSibling);
+      } else {
+        // if no vf-header, show at vf-body
+        // @thought: we might instead make this show as "top"
+        let target = document.getElementsByClassName("vf-body");
+        if (target.length > 0) {
+          // output.classList.add('vf-u-grid--reset');
+          target[0].prepend(output);
+        } // if still no success, we soft fail
+      }
     }
 
   } else if (message.field_notification_position == "top") {
