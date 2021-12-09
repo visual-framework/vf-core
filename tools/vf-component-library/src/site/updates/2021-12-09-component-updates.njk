@@ -1,0 +1,102 @@
+---
+title: Rollup release 2.5.7
+subtitle: This release has a package of minor features, improvements and bug fixes for lists, tags and EBI-specific support for the "black bar".
+date: 2021-12-09 12:10:29
+version: 2.5.7
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Features",
+      "navigation_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-list", "1.1.0", "e3c870bedfb3c18031d9e80e49764acdf4302927") }}
+
+* Add support to inherit context templates from Nunjucks.
+* Expose example of large variant (`vf-list-l`).
+* Add tight variant (`vf-list--tight`).
+* Add support for definition lists.
+* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl
+* https://github.com/visual-framework/vf-core/issues/914
+
+{{ releaseLinks.notes("embl-notifications", "1.2.0", "30251a11dd2f2e05e370ae248102003246435d2f") }}
+
+* Support inserting after EBI black bar.
+
+{{ releaseLinks.notes("vf-tags", "1.0.0-alpha.1", "a41f6b3ecf7b0efd14cc306c8ff7f91684c464c2") }}
+
+* Creates a prototype MVP vf-tags component that can be easily improved in the future.
+* https://github.com/visual-framework/vf-core/issues/875
+
+{{ releaseLinks.notes("vf-summary", "1.6.1", "a385691a85cf6f420941950344c79ecb5ddf273e") }}
+
+* vf-summary--event now uses a lowercase date format.
+* Removes ordinals from recommended date format (4th September 2021).
+* https://github.com/visual-framework/vf-core/issues/1673
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-componenet-rollup", "1.4.5", "a41f6b3ecf7b0efd14cc306c8ff7f91684c464c2") }}
+
+* Add vf-tags Sass.
+* https://github.com/visual-framework/vf-core/issues/875
+
+{{ releaseLinks.notes("ebi-header-footer", "2.1.2", "27260a7b77218093d0318bf5795956c9e844c068") }}
+
+* Resolve a vf-stack + vf-content-hub + legacy black bar edge case.
+
+{{ releaseLinks.notes("vf-bookmark", "1.0.0-alpha.2", "5b7d491a9d8de4a10fea92bcf13e9047d00b0006") }}
+
+* Fine tune icon vertical spacing.
+* https://github.com/visual-framework/vf-core/issues/1687
+
+{{ releaseLinks.notes("vf-article-meta-information", "1.1.2", "a385691a85cf6f420941950344c79ecb5ddf273e") }}
+
+* Minor update to example content.
+
+{{ releaseLinks.notes("vf-content", "1.6.7", "b5ca120f209a2f606978c1163a4a660c4c6bc2e5") }}
+
+* Add support for definition lists.
+
+---
+
+As always, you can [join the conversation on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+{% endmarkdown %}
