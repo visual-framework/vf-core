@@ -53,7 +53,7 @@ function emblNotificationsInject(message) {
     // we use vf-u-margin__top--400 as this element is usually inserted inside a contentHub wrapper and not affected by body.vf-stack
     // if vf-stack is set, this will have no practical affect
     output.innerHTML = `
-      <div class="vf-banner vf-banner--alert vf-banner--info | vf-content">
+      <div class="vf-banner vf-banner--alert vf-banner--info | vf-content" data-vf-google-analytics-region="notifications-banner">
         <div class="vf-banner__content">
           <p class="vf-banner__text">${message.body}</p>
         </div>
