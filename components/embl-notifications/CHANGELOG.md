@@ -1,3 +1,6 @@
+### 1.2.1
+
+* Support added for GA region. his region is generic for notifications.
 ### 1.2.0
 
 * Support inserting after EBI black bar.
