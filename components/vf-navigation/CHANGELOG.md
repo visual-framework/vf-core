@@ -1,3 +1,9 @@
+### 3.0.0-rc.2
+
+* Fixed bug where the `vf-navigation` component was getting overlapped by other components.
+* https://github.com/visual-framework/vf-core/issues/1755
+
+
 ### 3.0.0-rc.1
 
 * Give vf-navigation--on-this-page a bigger bottom margin on desktop as vf-u-fullbleed eats a bit of bottom margin by its nature.
