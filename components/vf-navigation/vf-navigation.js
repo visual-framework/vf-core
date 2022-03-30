@@ -32,9 +32,9 @@ export function vfNavigationOnThisPage() {
       if (sectionPositions[i] <= scrollPosition + 70) {
         // we activate the section 70 pixels before coming into view, as the sticky bar will cover it
         // only add remove the class if there is a new section to activate
-        if (sectionList.querySelector("a[href*=" + i + "]") != null) {
+        if (sectionList.querySelector("a[href*='" + i + "']") != null) {
           sectionList.querySelector("[aria-selected]").removeAttribute("aria-selected");
-          sectionList.querySelector("a[href*=" + i + "]").setAttribute("aria-selected", "true");
+          sectionList.querySelector("a[href*='" + i + "']").setAttribute("aria-selected", "true");
         }
       }
     }
