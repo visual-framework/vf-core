@@ -22,15 +22,11 @@ There should be only one use of `vf-navigation--main` on a page.
 
 ### On this page navigation variant
 
-This sticky element allows users to quickly jump between sections on longer pages.
+The `vfNavigationOnThisPage` JavaScript adds a quality-of-life improvement by automatically activating sections as the user scrolls them into view on the page. This sticky element allows users to quickly jump between sections on longer pages.
 
-There should be only one use of `vf-navigation--on-this-page` on a page.
-
-Using the `vfNavigationOnThisPage` JavaScript adds a quality-of-life improvement by automatically activating sections as the user scrolls them into view on the page.
-
-For this feature to work, anchor targets need two things an element id: `id="container-1"`
-
-These could be added to any item on the page, but would most logically be added to a `vf-grid`, `embl-grid` or `vf-section-header`
+- There should be only one use of `vf-navigation--on-this-page` on a page.
+- Anchor targets need an element id: `id="container-1"`. This can be added to any item on the page, but would most logically be added to a `vf-grid`, `embl-grid` or `vf-section-header` element.
+- Ensure `data-vf-js-navigation-on-this-page-container="true"` is present on `.vf-navigation__list`.
 
 ## Install
 
