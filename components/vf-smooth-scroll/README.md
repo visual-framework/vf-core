@@ -10,7 +10,7 @@ This enables smooth scrolling when a user clicks on anchor links or other in-pag
 
 This is an opt-in behaviour that is activated by putting the `vf-smooth-scroll` class on a parent element — a good place would be at `<html class="vf-smooth-scroll">` (note: it probably won't work if you add it your `<body>` element).
 
-Not that as of November 2021, CSS-based smooth scrolling [is still not support by Safari on Mac OS or iOS](https://caniuse.com/css-scroll-behavior).
+Note that as of Safari version 15.4 (released March 2022), CSS-based smooth scrolling [is supported by Safari on Mac OS or iOS](https://caniuse.com/css-scroll-behavior).
 
 ### Accessibility
 
