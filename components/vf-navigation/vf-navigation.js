@@ -22,19 +22,20 @@ export function vfNavigationOnThisPage() {
     // exit: either sections or section content not found
     return;
   }
-  if (sectionList.length == 0 || section.length == 0) {
+  if (sectionList.length === 0 || section.length === 0) {
     // exit: either sections or section content not found
     return;
   }
 
-  section.forEach((e) => {
-    sectionPositions[e.id] = e.offsetTop;
-  });
-  section.forEach((e) => {
-    sectionHeights[e.id] = e.offsetHeight;
-  });
-
   function activateNavigationItem() {
+    // althought costly, we recalculate the position of elements each time as things move or load dynamically
+    section.forEach((e) => {
+      var rect = e.getBoundingClientRect();
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      sectionPositions[e.id] = rect.top + scrollTop;
+      sectionHeights[e.id] = e.offsetHeight;
+    });
+
     var scrollPosition =
       document.documentElement.scrollTop || document.body.scrollTop;
     for (i in sectionPositions) {
@@ -42,17 +43,17 @@ export function vfNavigationOnThisPage() {
       if (sectionPositions[i] <= scrollPosition + 0) {
         // we activate the section 70 pixels before coming into view, as the sticky bar will cover it
         // only add remove the class if there is a new section to activate
+
         sectionList.forEach(function (currentValue, currentIndex, listObj) {
+          // console.log(currentValue.href);
           if (currentValue.href.includes(i)) {
             currentValue.setAttribute("aria-selected", "true");
           }
         }, "myThisArg");
       }
-      if (
-        sectionPositions[i] - scrollPosition <=
-          -Math.abs(window.innerHeight + sectionHeights[i] - 70) ||
-        sectionPositions[i] - scrollPosition >= window.innerHeight
-      ) {
+      var isNotYetOnScreen = sectionPositions[i] > scrollPosition;
+      var bottomOfElement = sectionPositions[i] + sectionHeights[i];
+      if (scrollPosition - 70 > bottomOfElement || isNotYetOnScreen) {
         // we activate the container only while it is in view
         sectionList.forEach(function (currentValue, currentIndex, listObj) {
           if (currentValue.href.includes(i)) {
@@ -61,10 +62,16 @@ export function vfNavigationOnThisPage() {
         }, "myThisArg");
       }
     }
+    isCalculating = false;
   }
 
+  var isCalculating = false;
   window.onscroll = function () {
-    // we could introduce throttling, but as this is a fairly simple repaint, throttling is not likely required
-    window.requestAnimationFrame(activateNavigationItem);
+    if (!isCalculating) {
+      isCalculating = true;
+      window.requestAnimationFrame(activateNavigationItem);
+    } else {
+      // console.log("throttled!");
+    }
   };
 }
