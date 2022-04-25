@@ -27,6 +27,7 @@ The `vfNavigationOnThisPage` JavaScript adds a quality-of-life improvement by au
 - There should be only one use of `vf-navigation--on-this-page` on a page.
 - Anchor targets need an element id: `id="container-1"`. This can be added to any item on the page, but would most logically be added to a `vf-grid`, `embl-grid` or `vf-section-header` element.
 - Ensure `data-vf-js-navigation-on-this-page-container="true"` is present on `.vf-navigation__list`.
+- Ensure each anchor link has a `data-vf-js-navigation-on-this-page-link`.
 
 ## Install
 
