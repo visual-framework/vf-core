@@ -1,3 +1,7 @@
+### 4.0.0-rc.1
+
+* Make vf-navigation--on-this-page more dynamic and reactive with `data-vf-js-navigation-on-this-page-link`.
+
 ### 3.0.0-rc.2
 
 * Fixed bug where the `vf-navigation` component was getting overlapped by other components.
