@@ -38,6 +38,7 @@ var lastGaEventTime = Date.now();
  * Port of https://github.com/ebiwd/EBI-Framework/blob/v1.3/js/foundationExtendEBI.js#L4
  * @param {object} [vfGaTrackOptions]
  * @param {binary} [vfGaTrackOptions.vfGaTrackPageLoad=true] If true, the function will track the initial page view. Set this to false if you track the page view in your HTML.
+ * @param {string} [vfGaTrackOptions.vfGa4MeasurementId] The GA4 site measurement ID.
  * @param {number} [numberOfGaChecksLimit=2]
  * @param {number} [checkTimeout=900]
  * @example
@@ -71,10 +72,15 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
     // unset our check
     vfGaIndicateUnloaded();
 
-    if (ga && ga.loaded) {
+    if (typeof gtag !== "undefined") {
+      // console.log('ga4 found')
+      el.setAttribute("data-vf-google-analytics-loaded", "true");
+      vfGaInit(vfGaTrackOptions);
+    } else if (ga && ga.loaded) {
       el.setAttribute("data-vf-google-analytics-loaded", "true");
       vfGaInit(vfGaTrackOptions);
     } else {
+      // console.log('scheduling')
       if (numberOfGaChecks <= numberOfGaChecksLimit) {
         setTimeout(function () {
           vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
@@ -116,21 +122,30 @@ function vfGetMeta(metaName) {
  * Hooks into common analytics tracking
  * @param {object} [vfGaTrackOptions]
  * @param {binary} [vfGaTrackOptions.vfGaTrackPageLoad=true] If true, the function will track the initial page view. Set this to false if you track the page view in your HTML.
+ * @param {string} [vfGaTrackOptions.vfGa4MeasurementId] The GA4 site measurement ID.
  */
 function vfGaInit(vfGaTrackOptions) {
+  // console.log('initing')
   /* eslint-disable no-redeclare*/
   var vfGaTrackOptions = vfGaTrackOptions || {};
   /* eslint-enable no-redeclare*/
   if (vfGaTrackOptions.vfGaTrackPageLoad == null) vfGaTrackOptions.vfGaTrackPageLoad = true;
-
-  // Need help
+  // Need help?
   // How to add dimension to your property
   // https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
   // https://support.google.com/analytics/answer/2709829?hl=en
 
+  if (typeof gtag === "undefined") {
+    // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
+    var gtag = function() {};
+    // console.log('GA4 dummy function has been set.');
+  }
+
   // standard google analytics bootstrap
   // @todo: add conditional
   ga("set", "anonymizeIp", true);
+  // For Gtag you should do this in your tracking snippet
+  // https://developers.google.com/analytics/devguides/collection/gtagjs/ip-anonymization
 
   // Use the more robust "beacon" logging, when available
   // https://developers.google.com/analytics/devguides/collection/analyticsjs/sending-hits
@@ -144,13 +159,18 @@ function vfGaInit(vfGaTrackOptions) {
     var dimension = toLog[1];
     var pageTypeName = toLog[0];
     ga("set", dimension, pageTypeName);
+    gtag('config', vfGaTrackOptions.vfGa4MeasurementId, {
+      'custom_map': { dimension: pageTypeName }
+    });
   }
 
   // If you want to track the network of visitors be sure to
   // - follow the setup guide at https://ipmeta.io/instructions
   // - view the directions in README.md
-  // note: this feature may be broken out as a seperate dependency if the code size needs to grow further
-  if (vfGaTrackOptions.vfGaTrackNetwork != null) {
+  // note: this feature may be broken out as a separate dependency if the code size needs to grow further
+  // note: the VF has not yet added support for this using gtag
+  //       https://ipmeta.io/instructions/google-analytics-4
+  if (vfGaTrackOptions.vfGaTrackNetwork != null && ga) {
     // a copy of https://ipmeta.io/plugin.js
     // included here to simplify usage and reduce external requests
     /* eslint-disable */
@@ -189,6 +209,7 @@ function vfGaInit(vfGaTrackOptions) {
   // standard google analytics bootstrap
   if (vfGaTrackOptions.vfGaTrackPageLoad) {
     ga("send", "pageview");
+    gtag("event", "page_view");
   }
 
   // If we want to send metrics in one go
@@ -304,6 +325,12 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
   /* eslint-enable no-redeclare*/
   let linkName;
 
+  if (typeof gtag === "undefined") {
+    // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
+    var gtag = function() {};
+    // console.log('GA4 dummy function has been set.');
+  }
+
   if (customEventName.length > 0) {
     linkName = customEventName;
   } else if (actedOnItem.dataset.vfAnalyticsLabel) {
@@ -381,12 +408,20 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       // email click
       var mailLink = href.replace(/^mailto\:/i, "");
       ga && ga("send", "event", "Email", "Region / " + parentContainer, mailLink);
+      gtag && gtag("event", "Region / " + parentContainer, {
+        "event_category": "Email",
+        "event_label": mailLink
+      });
       vfGaLogMessage("Email", "Region / " + parentContainer, mailLink, lastGaEventTime, actedOnItem);
     } else if (href && href.match(filetypes)) {
       // download event
       var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
       var filePath = href;
       ga && ga("send", "event", "Download", "Type / " + extension + " / " + parentContainer, filePath);
+      gtag && gtag("event", "Type / " + extension, {
+        "event_category": "Download",
+        "event_label": filePath
+      });
       vfGaLogMessage("Download", "Type / " + extension + " / " + parentContainer, filePath, lastGaEventTime, actedOnItem);
     }
     /* eslint-enable no-useless-escape */
@@ -397,6 +432,10 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       let newDestination = new URL(href, window.location);
       if (newDestination.hostname != window.location.hostname) {
         ga && ga("send", "event", "External links", "External link / " + linkName + " / " + parentContainer, href);
+        gtag && gtag("event", "External link / " + parentContainer, {
+          "event_category": "External links",
+          "event_label": href
+        });
         vfGaLogMessage("External links", "External link / " + linkName + " / " + parentContainer, href, lastGaEventTime, actedOnItem);
       }
     }
@@ -433,10 +472,18 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       }
 
       ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
+      gtag && gtag("event", "UI Element / " + parentContainer, {
+        "event_category": "UI",
+        "event_label": linkName
+      });
       vfGaLogMessage("UI", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
     } else {
       // generic catch all
       ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
+      gtag && gtag("event", "UI Element / " + parentContainer, {
+        "event_category": "UI",
+        "event_label": linkName
+      });
       vfGaLogMessage("UI", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
     }
   }

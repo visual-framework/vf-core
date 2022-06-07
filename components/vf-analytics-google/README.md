@@ -8,6 +8,10 @@ Supplementary behaviour (primarily JavaScript) to ease tracking with Google Anal
 
 ## Usage
 
+### GA4
+
+As of 1.1.0-rc.0 this contains initial gtag (GA4) support. For more info see issue [#1428](https://github.com/visual-framework/vf-core/issues/1428)
+
 ### User actions
 
 This component tracks three types of user engagement as actions in Google Analytics:
@@ -65,6 +69,7 @@ import { vfGaIndicateLoaded } from 'vf-analytics-google/vf-analytics-google';
 
 let vfGaTrackOptions = {
   vfGaTrackPageLoad: true,
+  vfGa4MeasurementId: "G-YOUR-GA4-ID-if_using_gtag"
   vfGaTrackNetwork: {
     serviceProvider: 'dimension2',
     networkDomain: 'dimension3',
