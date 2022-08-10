@@ -1,3 +1,12 @@
+### 1.2.3
+* Updated changelog
+
+### 1.2.2
+* Documentation upgrade
+
+### 1.2.1
+* New release
+
 ### 1.2.0
 
 * Update node-html-parser to 5.1.0
