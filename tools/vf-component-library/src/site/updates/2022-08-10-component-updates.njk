@@ -1,0 +1,87 @@
+---
+title: Rollup release 2.5.8
+subtitle: This release has a package of improvements and bug fixes for vf-navigation, vf-dropdown and vf-hero".
+date: 2022-08-10 15:42:00
+version: 2.5.8
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+
+{{ releaseLinks.notes("vf-component-initialization", "1.1.9", "9606c1986bc0559e4a9767328d5fbb19b08a6ddf") }}
+
+
+* Updates to Fractal 1.5.13 (for our use this is mostly minor bug fixes)
+  * https://github.com/visual-framework/vf-core/pull/1770
+
+{{ releaseLinks.notes("vf-smooth-scroll", "1.0.0-alpha.3", "b8d3236ec544a694a65e298a25c835bccb4279c6") }}
+
+* Updated documentation
+
+{{ releaseLinks.notes("vf-hero", "3.3.5", "1d010064239a4cb1bbaed75c7c65a10b29faaa66") }}
+
+* Changing from h1 to h2
+* https://github.com/visual-framework/vf-core/issues/1762
+
+
+
+{{ releaseLinks.notes("vf-dropdown", "1.0.0-alpha.6", "35b2a59d38ecddc65e0eee3b6a120a749741896f") }}
+
+* Fix: Make the whole dropdown area clickable
+  * https://github.com/visual-framework/vf-core/issues/1756
+
+
+{{ releaseLinks.notes("vf-navigation", "5.0.0", "7c824fb46665b1d07ec2d517c5778ce0f4e73d6d") }}
+
+* Removed: Attribute `data-vf-js-navigation-on-this-page-link` for vf-navigation--on-this-page
+* Changed: Improved accuracy of vf-navigation--on-this-page scrollspy, use existing attribute to get navigation links
+* Changed: Improve scrolling into an element when clicking a link of vf-navigation--on-this-page, take into account margin/padding
+* Fixed bug where the `vf-navigation` component was getting overlapped by other components.
+ * https://github.com/visual-framework/vf-core/issues/1755
+
+
+{{ releaseLinks.notes("embl-notifications", "1.2.2", "d40130ff71f96b7e2ce2d9fefe7673010ec336fb") }}
+
+* Support added for GA region. This region is generic for banner notifications.
+
+---
+
+As always, you can [join the conversation on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ).
+
+{% endmarkdown %}
