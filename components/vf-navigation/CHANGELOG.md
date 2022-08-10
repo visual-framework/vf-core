@@ -1,4 +1,10 @@
-### 4.0.0-rc.1
+### 5.0.0-rc.1
+
+* Removed: Attribute `data-vf-js-navigation-on-this-page-link` for vf-navigation--on-this-page
+* Changed: Improved accuracy of vf-navigation--on-this-page scrollspy, use existing attribute to get navigation links
+* Changed: Improve scrolling into an element when clicking a link of vf-navigation--on-this-page, take into account margin/padding
+
+### 4.0.0-rc.1 [YANKED]
 
 * Make vf-navigation--on-this-page more dynamic and reactive with `data-vf-js-navigation-on-this-page-link`.
 
