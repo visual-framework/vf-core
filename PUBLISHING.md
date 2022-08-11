@@ -8,6 +8,11 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 - [Versions in `vf-core`](https://stable.visual-framework.dev/developing/guidelines/versioning/)
 - [Updating component versions](https://stable.visual-framework.dev/developing/components/updating-a-component/)
 
+## Prerequisites
+- Have installed Lerna globally
+- Installed dependencies in `/tools/vf-core/` with `yarn install`
+- Installed dependencies in root folder with `yarn install`
+
 ## Release workflow
 
 ### 1. Component pre-release
@@ -16,6 +21,7 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
     - reminder: [we don't use `master`](https://github.com/visual-framework/vf-core/blob/master/README.md)
 1. see a list of changed packages
     - `lerna changed`
+1. ensure all packages to be released have ready an updated changelog and to which version are going to be bumped
 1. test publish
     - `yarn run lerna:test`
 
