@@ -415,9 +415,12 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       // email click
       var mailLink = href.replace(/^mailto\:/i, "");
       ga && ga("send", "event", "Email", "Region / " + parentContainer, mailLink);
-      gtag && gtag("event", "Region / " + parentContainer, {
-        "event_category": "Email",
-        "event_label": mailLink
+      gtag && gtag("event", "email ", {
+        "vf_analytics": "true",
+        "page_container": parentContainer,
+        "event_category": "UI",
+        "event_type": "Email",
+        "email_adress": mailLink
       });
       vfGaLogMessage("Email", "Region / " + parentContainer, mailLink, lastGaEventTime, actedOnItem);
     } else if (href && href.match(filetypes)) {
@@ -425,9 +428,13 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
       var filePath = href;
       ga && ga("send", "event", "Download", "Type / " + extension + " / " + parentContainer, filePath);
-      gtag && gtag("event", "Type / " + extension, {
-        "event_category": "Download",
-        "event_label": filePath
+      gtag && gtag("event", "file_download", {
+        "vf_analytics": "true",
+        "page_container": parentContainer,
+        "file_extension": extension,
+        "event_category": "UI",
+        "event_type": "Download",
+        "link_url": filePath
       });
       vfGaLogMessage("Download", "Type / " + extension + " / " + parentContainer, filePath, lastGaEventTime, actedOnItem);
     }
@@ -439,9 +446,13 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       let newDestination = new URL(href, window.location);
       if (newDestination.hostname != window.location.hostname) {
         ga && ga("send", "event", "External links", "External link / " + linkName + " / " + parentContainer, href);
-        gtag && gtag("event", "External link / " + parentContainer, {
-          "event_category": "External links",
-          "event_label": href
+        gtag && gtag("event", "link_external", {
+          "vf_analytics": "true",
+          "page_container": parentContainer,
+          "event_category": "UI",
+          "event_type": "External link or button",
+          "link_text": linkName,
+          "link_url": href
         });
         vfGaLogMessage("External links", "External link / " + linkName + " / " + parentContainer, href, lastGaEventTime, actedOnItem);
       }
@@ -479,19 +490,27 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       }
 
       ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
-      gtag && gtag("event", "UI Element / " + parentContainer, {
+      gtag && gtag("event", "click", {
+        "vf_analytics": "true",
+        "page_container": parentContainer,
         "event_category": "UI",
-        "event_label": linkName
+        "event_type": "Webform",
+        "link_text": linkName
       });
-      vfGaLogMessage("UI", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
+      vfGaLogMessage("UI Form", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
     } else {
       // generic catch all
+      vfGaLogMessage("vfGaTrackInteraction: generic catch all")
       ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
-      gtag && gtag("event", "UI Element / " + parentContainer, {
+      gtag && gtag("event", "click ", {
+        "vf_analytics": "true",
+        "page_container": parentContainer,
         "event_category": "UI",
-        "event_label": linkName
+        "event_type": "Link, button, image or similar",
+        "link_text": linkName,
+        "link_url": href
       });
-      vfGaLogMessage("UI", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
+      vfGaLogMessage("UI Catch all", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
     }
   }
 }
