@@ -426,7 +426,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       // email click
       var mailLink = href.replace(/^mailto\:/i, "");
       ga && ga("send", "event", "Email", "Region / " + parentContainer, mailLink);
-      gtag && gtag("event", "email ", {
+      gtag && gtag("event", "click ", {
         "vf_analytics": "true",
         "page_container": parentContainer,
         "event_category": "UI",
@@ -439,7 +439,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
       var filePath = href;
       ga && ga("send", "event", "Download", "Type / " + extension + " / " + parentContainer, filePath);
-      gtag && gtag("event", "file_download", {
+      gtag && gtag("event", "click", {
         "vf_analytics": "true",
         "page_container": parentContainer,
         "file_extension": extension,
@@ -457,7 +457,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       let newDestination = new URL(href, window.location);
       if (newDestination.hostname != window.location.hostname) {
         ga && ga("send", "event", "External links", "External link / " + linkName + " / " + parentContainer, href);
-        gtag && gtag("event", "link_external", {
+        gtag && gtag("event", "click", {
           "vf_analytics": "true",
           "page_container": parentContainer,
           "event_category": "UI",
