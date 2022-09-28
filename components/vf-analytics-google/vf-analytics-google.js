@@ -70,7 +70,9 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
   // If successful we set `data-vf-google-analytics-loaded` on the `body` to true.
   try {
     // unset our check
-    vfGaIndicateUnloaded();
+    if (el.getAttribute("data-vf-google-analytics-loaded") != "true") {
+      vfGaIndicateUnloaded();
+    }
 
     if (typeof gtag !== "undefined") {
       // console.log('ga4 found')
