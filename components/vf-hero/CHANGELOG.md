@@ -1,3 +1,8 @@
+### 3.3.4
+
+* Changing from h1 to h2
+* https://github.com/visual-framework/vf-core/issues/1762
+
 ### 3.3.3
 
 * Improve docs on vf-hero image sizing

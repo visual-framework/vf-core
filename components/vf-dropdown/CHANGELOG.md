@@ -1,3 +1,8 @@
+### 1.0.0-alpha.5
+
+* Fix: Make the whole dropdown area clickable
+  * https://github.com/visual-framework/vf-core/issues/1756
+
 ### 1.0.0-alpha.4
 
 * Use new interactive colour token.
