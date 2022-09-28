@@ -146,8 +146,13 @@ function vfGaInit(vfGaTrackOptions) {
 
   if (typeof gtag === "undefined") {
     // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
-    var gtag = function() {};
     vfGaLogMessage('GA4 dummy function has been set.');
+    window.gtag = function() {};
+  }
+  if (typeof ga === "undefined") {
+    // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
+    vfGaLogMessage('GA UA dummy function has been set.');
+    window.ga = function() {};
   }
 
   // standard google analytics bootstrap
@@ -340,7 +345,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
 
   if (typeof gtag === "undefined") {
     // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
-    var gtag = function() {};
+    window.gtag = function() {};
     vfGaLogMessage('GA4 dummy function has been set.');
   }
 
