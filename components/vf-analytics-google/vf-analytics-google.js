@@ -63,7 +63,7 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
   var el = document.querySelector("body");
 
   // debug
-  // console.log('checking',numberOfGaChecks,numberOfGaChecksLimit)
+  vfGaLogMessage('checking ' + numberOfGaChecks + ", limit: " + numberOfGaChecksLimit)
 
   numberOfGaChecks++;
 
@@ -76,11 +76,12 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
       // console.log('ga4 found')
       el.setAttribute("data-vf-google-analytics-loaded", "true");
       vfGaInit(vfGaTrackOptions);
+      vfGaLogMessage('ga4 found');
     } else if (ga && ga.loaded) {
       el.setAttribute("data-vf-google-analytics-loaded", "true");
       vfGaInit(vfGaTrackOptions);
     } else {
-      // console.log('scheduling')
+      vfGaLogMessage('GA tracking code not ready, scheduling another check');
       if (numberOfGaChecks <= numberOfGaChecksLimit) {
         setTimeout(function () {
           vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
@@ -88,6 +89,8 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
       }
     }
   } catch (err) {
+    vfGaLogMessage('error in vfGaIndicateLoaded');
+    console.log(err)
     if (numberOfGaChecks <= numberOfGaChecksLimit) {
       setTimeout(function () {
         vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
@@ -125,7 +128,7 @@ function vfGetMeta(metaName) {
  * @param {string} [vfGaTrackOptions.vfGa4MeasurementId] The GA4 site measurement ID.
  */
 function vfGaInit(vfGaTrackOptions) {
-  // console.log('initing')
+  vfGaLogMessage('initing vfGaInit')
   /* eslint-disable no-redeclare*/
   var vfGaTrackOptions = vfGaTrackOptions || {};
   /* eslint-enable no-redeclare*/
@@ -138,7 +141,7 @@ function vfGaInit(vfGaTrackOptions) {
   if (typeof gtag === "undefined") {
     // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
     var gtag = function() {};
-    // console.log('GA4 dummy function has been set.');
+    vfGaLogMessage('GA4 dummy function has been set.');
   }
 
   // standard google analytics bootstrap
@@ -208,6 +211,7 @@ function vfGaInit(vfGaTrackOptions) {
 
   // standard google analytics bootstrap
   if (vfGaTrackOptions.vfGaTrackPageLoad) {
+    vfGaLogMessage('sending page view');
     ga("send", "pageview");
     gtag("event", "page_view");
   }
@@ -218,6 +222,7 @@ function vfGaInit(vfGaTrackOptions) {
   //   // 'metric5': 'custom metric data'
   // });
 
+  vfGaLogMessage('prepare vfGaLinkTrackingInit');
   vfGaLinkTrackingInit();
 }
 
@@ -225,10 +230,12 @@ function vfGaInit(vfGaTrackOptions) {
  * Track clicks as events
  */
 function vfGaLinkTrackingInit() {
+  vfGaLogMessage('vfGaLinkTrackingInit');
   document.body.addEventListener("mousedown", function (evt) {
 
     // Debug event type clicked
-    // console.log(evt.target.tagName, evt.target);
+    vfGaLogMessage(evt.target.tagName);
+    vfGaLogMessage(evt.target);
 
     // we only track clicks on interactive elements (links, buttons, forms)
     if (evt.target) {
@@ -328,7 +335,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
   if (typeof gtag === "undefined") {
     // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
     var gtag = function() {};
-    // console.log('GA4 dummy function has been set.');
+    vfGaLogMessage('GA4 dummy function has been set.');
   }
 
   if (customEventName.length > 0) {
@@ -506,9 +513,14 @@ function vfGaLogMessage(eventCategory, eventAction, eventLabel, lastGaEventTime,
   if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
     if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose == "true") {
       /* eslint-disable */
-      console.log("%c Verbose analytics on ", "color: #FFF; background: #111; font-size: .75rem;");
-      console.log("clicked on: %o ", actedOnItem);
-      console.log("sent to GA: ", "event ->", eventCategory + " ->", eventAction + " ->", eventLabel, "; at: ", lastGaEventTime);
+      if (eventAction == undefined) {
+        // It's a simple message debug
+        console.log("Verbose analytics: %o ", eventCategory);
+      } else {
+        console.log("%c Verbose analytics on ", "color: #FFF; background: #111; font-size: .75rem;");
+        console.log("clicked on: %o ", actedOnItem);
+        console.log("sent to GA: ", "event ->", eventCategory + " ->", eventAction + " ->", eventLabel, "; at: ", lastGaEventTime);
+      }
       /* eslint-enable */
     }
   }
