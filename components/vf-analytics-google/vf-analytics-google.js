@@ -75,13 +75,17 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
     }
 
     if (typeof gtag !== "undefined") {
-      // console.log('ga4 found')
-      el.setAttribute("data-vf-google-analytics-loaded", "true");
-      vfGaInit(vfGaTrackOptions);
       vfGaLogMessage('ga4 found');
+      if (el.getAttribute("data-vf-google-analytics-loaded") != "true") {
+        el.setAttribute("data-vf-google-analytics-loaded", "true");
+        vfGaInit(vfGaTrackOptions);
+      }
     } else if (ga && ga.loaded) {
-      el.setAttribute("data-vf-google-analytics-loaded", "true");
-      vfGaInit(vfGaTrackOptions);
+      vfGaLogMessage('ua found');
+      if (el.getAttribute("data-vf-google-analytics-loaded") != "true") {
+        el.setAttribute("data-vf-google-analytics-loaded", "true");
+        vfGaInit(vfGaTrackOptions);
+      }
     } else {
       vfGaLogMessage('GA tracking code not ready, scheduling another check');
       if (numberOfGaChecks <= numberOfGaChecksLimit) {
