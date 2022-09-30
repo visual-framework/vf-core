@@ -429,9 +429,10 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       gtag && gtag("event", "click ", {
         "vf_analytics": "true",
         "page_container": parentContainer,
+        "event_label": mailLink,
         "event_category": "UI",
         "event_type": "Email",
-        "email_adress": mailLink
+        "email_address": mailLink
       });
       vfGaLogMessage("Email", "Region / " + parentContainer, mailLink, lastGaEventTime, actedOnItem);
     } else if (href && href.match(filetypes)) {
@@ -442,6 +443,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       gtag && gtag("event", "click", {
         "vf_analytics": "true",
         "page_container": parentContainer,
+        "event_label": filePath,
         "file_extension": extension,
         "event_category": "UI",
         "event_type": "Download",
@@ -504,6 +506,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       gtag && gtag("event", "click", {
         "vf_analytics": "true",
         "page_container": parentContainer,
+        "event_label": linkName,
         "event_category": "UI",
         "event_type": "Webform",
         "link_text": linkName
@@ -516,6 +519,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       gtag && gtag("event", "click ", {
         "vf_analytics": "true",
         "page_container": parentContainer,
+        "event_label": linkName,
         "event_category": "UI",
         "event_type": "Link, button, image or similar",
         "link_text": linkName,
