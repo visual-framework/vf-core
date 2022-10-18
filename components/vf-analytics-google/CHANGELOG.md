@@ -1,6 +1,6 @@
 ### 1.1.0-rc.0
 
-* Adds initial gtag (GA4) support.
+* Adds gtag (GA4) support.
 
 ### 1.0.4
 
