@@ -17,7 +17,7 @@ As of 1.1.0-rc.0 this contains gtag and GA4 support. The basics of vf-analytics-
 3. `page_container`
 4. `vf_analytics`
 
-[You can see a screenshot of the configuration here](https://user-images.githubusercontent.com/928100/193329800-4c750a70-1d77-4623-ba00-87db4d608511.png).
+[You can see a screenshot of the configuration here](https://user-images.githubusercontent.com/928100/193329800-4c750a70-1d77-4623-ba00-87db4d608511.png) and here is Google's documentation on [adding the custom dimensions to your GA4 property](https://support.google.com/analytics/answer/10075209?hl=en#new-custom-dimension) (this step is not needed in a UA property).
 
 For more info see issue [#1428](https://github.com/visual-framework/vf-core/issues/1428)
 
@@ -44,10 +44,14 @@ Track dimensions:
 <meta name="vf:page-type" content="category;pageTypeHere">
 ```
 
-How to add dimension to your property?
+For GA4 users, be sure to set this in your JS:
 
-- https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
-- https://support.google.com/analytics/answer/2709829?hl=en
+```js
+  vfGa4MeasurementId: "G-YOUR-GA4-ID-if_using_gtag"
+```
+
+And [add the custom dimension to your property](https://support.google.com/analytics/answer/10075209?hl=en#new-custom-dimension).
+
 
 ### Page region tracking
 
