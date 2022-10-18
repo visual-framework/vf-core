@@ -21,7 +21,7 @@ vfBannerElixir();
 import { vfGaIndicateLoaded } from "vf-analytics-google/vf-analytics-google";
 let vfGaTrackOptions = {
   vfGaTrackPageLoad: true,
-  vfGa4MeasurementId: "YourGa4TrackingId"
+  // vfGa4MeasurementId: "YourGa4TrackingId" // only required if tracking a custom dimension
 };
 vfGaIndicateLoaded(vfGaTrackOptions);
 
