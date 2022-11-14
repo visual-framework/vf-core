@@ -46,7 +46,7 @@ function vfBannerElixir(scope) {
   elixirBanner[0].innerHTML = `
     <div class="vf-flag vf-flag--middle vf-flag--400">
       <div class="vf-flag__media">
-        <a href="${link}" class="vf-banner__link"><img src="${logo}" alt="ELIXIR Logo"></a>
+        <img src="${logo}" alt="">
       </div>
       <div class="vf-flag__body">
         <h4 class='vf-banner__text--lg'><a href="${link}" class="vf-link">${name} is part of the ELIXIR infrastructure</a></h4>
