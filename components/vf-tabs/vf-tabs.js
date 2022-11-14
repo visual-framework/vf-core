@@ -31,12 +31,12 @@ function vfTabs(scope, activateDeepLinkOnLoad) {
     tab.setAttribute("role", "tab");
     tab.setAttribute("id", tabId);
     tab.setAttribute("data-tabs__item", tabId);
-    tab.setAttribute("tabindex", "-1");
+    tab.setAttribute("tabindex", "0");
     tab.parentNode.setAttribute("role", "presentation");
 
     // Reset any active tabs from a previous JS call
     tab.removeAttribute("aria-selected");
-    tab.setAttribute("tabindex", "-1");
+    // tab.setAttribute("tabindex", "-1");
     tab.classList.remove("is-active");
 
     // Handle clicking of tabs for mouse users
@@ -98,7 +98,7 @@ const vfTabsSwitch = (newTab, panels) => {
   let oldTab = parentTabSet.querySelector("[aria-selected]");
   if (oldTab) {
     oldTab.removeAttribute("aria-selected");
-    oldTab.setAttribute("tabindex", "-1");
+    // oldTab.setAttribute("tabindex", "-1");
     oldTab.classList.remove("is-active");
 
     for (let item = 0; item < panels.length; item++) {
