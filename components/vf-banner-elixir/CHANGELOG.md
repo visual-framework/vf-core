@@ -1,3 +1,6 @@
+### 1.0.0-alpha.2
+
+* removes redundant link in the Elixir logo
 ### 1.0.0-alpha.1
 
 * Initial version
