@@ -42,6 +42,9 @@ function vfTabs(scope, activateDeepLinkOnLoad) {
     // Handle clicking of tabs for mouse users
     tab.addEventListener("click", e => {
       e.preventDefault();
+      const data = e.target.getAttribute('data-tabs__item');
+      url = '#' + data;
+      window.history.pushState(data, null, url);
       vfTabsSwitch(e.currentTarget, panels);
     });
 
