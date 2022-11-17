@@ -33,13 +33,10 @@
     {%- for item in social_accounts -%}
     <li class="vf-social-links__item">
 
-      <a class="vf-social-links__link" href="{{item.url}}">
-        <span class="vf-u-sr-only">{{item.name}}</span>
-
+      <a class="vf-social-links__link" href="{{item.url}}" aria-label="Follow us on {{item.name}}">
         <svg aria-hidden="true" class="vf-icon vf-icon--social vf-icon--{{item.name}}" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
           <use xlink:href="{{item.useUrl}}"></use>
         </svg>
-
       </a>
 
     </li>
