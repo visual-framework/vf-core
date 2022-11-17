@@ -20,7 +20,8 @@ vfBannerElixir();
 
 import { vfGaIndicateLoaded } from "vf-analytics-google/vf-analytics-google";
 let vfGaTrackOptions = {
-  vfGaTrackPageLoad: true
+  vfGaTrackPageLoad: true,
+  // vfGa4MeasurementId: "YourGa4TrackingId" // only required if tracking a custom page-level dimension
 };
 vfGaIndicateLoaded(vfGaTrackOptions);
 

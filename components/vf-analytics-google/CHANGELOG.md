@@ -1,3 +1,7 @@
+### 1.1.0-rc.0
+
+* Adds gtag (GA4) support.
+
 ### 1.0.4
 
 * Fix an issue on ipmeta.io tracking in `riskCheck` function where `input` is undefined.
