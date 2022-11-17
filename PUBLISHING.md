@@ -53,6 +53,10 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 1. add release notes to the tag and link to the new blog post
     - https://github.com/visual-framework/vf-core/releases
     - https://stable.visual-framework.dev/updates/
+1. revert changes in this file: `/tools/vf-component-library/src/site/_data/siteConfig.js`
+    - So latest.visual-framework.dev is updated with latest changes from develop
+    - set `vfVersion` to `develop`
+    - set `vfVersionPrefix` to `dev.`
 
 ## Appendix of useful Lerna commands
 
