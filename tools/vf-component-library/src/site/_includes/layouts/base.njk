@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% if serverInfo.environment == "development" -%}
     <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
-    {%- else -%}
-    <link rel="stylesheet" href="https://{{ siteConfig.vfVersionPrefix }}assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
+    {%- elif siteConfig.vfVersionPrefix == "dev" -%}
+    <link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/develop/css/styles.css">
+    {%- else %}
+    <link rel="stylesheet" href="https://assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
     {%- endif %}
     <!--
       Want to build a site with the Visual Framework?
