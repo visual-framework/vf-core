@@ -1,3 +1,7 @@
+### 2.0.0-alpha.1
+
+* adds focus outline to the svg element
+
 ### 2.0.0-alpha.0
 
 * makes it cleaner.

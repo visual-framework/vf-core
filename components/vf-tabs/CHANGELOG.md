@@ -5,6 +5,7 @@
 ### 2.1.1
 
 * Adds focus indicator and enables keyboard navigation
+
 ### 2.1.0
 
 * Support activation of specific vf-tabs on page load `#vf-tabs__section=tab_id`

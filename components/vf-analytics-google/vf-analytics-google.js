@@ -38,6 +38,7 @@ var lastGaEventTime = Date.now();
  * Port of https://github.com/ebiwd/EBI-Framework/blob/v1.3/js/foundationExtendEBI.js#L4
  * @param {object} [vfGaTrackOptions]
  * @param {binary} [vfGaTrackOptions.vfGaTrackPageLoad=true] If true, the function will track the initial page view. Set this to false if you track the page view in your HTML.
+ * @param {string} [vfGaTrackOptions.vfGa4MeasurementId] The GA4 site measurement ID.
  * @param {number} [numberOfGaChecksLimit=2]
  * @param {number} [checkTimeout=900]
  * @example
@@ -62,19 +63,31 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
   var el = document.querySelector("body");
 
   // debug
-  // console.log('checking',numberOfGaChecks,numberOfGaChecksLimit)
+  vfGaLogMessage('checking ' + numberOfGaChecks + ", limit: " + numberOfGaChecksLimit)
 
   numberOfGaChecks++;
 
   // If successful we set `data-vf-google-analytics-loaded` on the `body` to true.
   try {
     // unset our check
-    vfGaIndicateUnloaded();
+    if (el.getAttribute("data-vf-google-analytics-loaded") != "true") {
+      vfGaIndicateUnloaded();
+    }
 
-    if (ga && ga.loaded) {
-      el.setAttribute("data-vf-google-analytics-loaded", "true");
-      vfGaInit(vfGaTrackOptions);
+    if (typeof gtag !== "undefined") {
+      vfGaLogMessage('ga4 found');
+      if (el.getAttribute("data-vf-google-analytics-loaded") != "true") {
+        el.setAttribute("data-vf-google-analytics-loaded", "true");
+        vfGaInit(vfGaTrackOptions);
+      }
+    } else if (ga && ga.loaded) {
+      vfGaLogMessage('ua found');
+      if (el.getAttribute("data-vf-google-analytics-loaded") != "true") {
+        el.setAttribute("data-vf-google-analytics-loaded", "true");
+        vfGaInit(vfGaTrackOptions);
+      }
     } else {
+      vfGaLogMessage('GA tracking code not ready, scheduling another check');
       if (numberOfGaChecks <= numberOfGaChecksLimit) {
         setTimeout(function () {
           vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
@@ -82,6 +95,8 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
       }
     }
   } catch (err) {
+    vfGaLogMessage('error in vfGaIndicateLoaded');
+    console.log(err)
     if (numberOfGaChecks <= numberOfGaChecksLimit) {
       setTimeout(function () {
         vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
@@ -116,21 +131,35 @@ function vfGetMeta(metaName) {
  * Hooks into common analytics tracking
  * @param {object} [vfGaTrackOptions]
  * @param {binary} [vfGaTrackOptions.vfGaTrackPageLoad=true] If true, the function will track the initial page view. Set this to false if you track the page view in your HTML.
+ * @param {string} [vfGaTrackOptions.vfGa4MeasurementId] The GA4 site measurement ID.
  */
 function vfGaInit(vfGaTrackOptions) {
+  vfGaLogMessage('initing vfGaInit')
   /* eslint-disable no-redeclare*/
   var vfGaTrackOptions = vfGaTrackOptions || {};
   /* eslint-enable no-redeclare*/
   if (vfGaTrackOptions.vfGaTrackPageLoad == null) vfGaTrackOptions.vfGaTrackPageLoad = true;
-
-  // Need help
+  // Need help?
   // How to add dimension to your property
   // https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
   // https://support.google.com/analytics/answer/2709829?hl=en
 
+  if (typeof gtag === "undefined") {
+    // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
+    vfGaLogMessage('GA4 dummy function has been set.');
+    window.gtag = function() {};
+  }
+  if (typeof ga === "undefined") {
+    // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
+    vfGaLogMessage('GA UA dummy function has been set.');
+    window.ga = function() {};
+  }
+
   // standard google analytics bootstrap
   // @todo: add conditional
   ga("set", "anonymizeIp", true);
+  // For Gtag you should do this in your tracking snippet
+  // https://developers.google.com/analytics/devguides/collection/gtagjs/ip-anonymization
 
   // Use the more robust "beacon" logging, when available
   // https://developers.google.com/analytics/devguides/collection/analyticsjs/sending-hits
@@ -144,13 +173,18 @@ function vfGaInit(vfGaTrackOptions) {
     var dimension = toLog[1];
     var pageTypeName = toLog[0];
     ga("set", dimension, pageTypeName);
+    gtag('config', vfGaTrackOptions.vfGa4MeasurementId, {
+      'custom_map': { dimension: pageTypeName }
+    });
   }
 
   // If you want to track the network of visitors be sure to
   // - follow the setup guide at https://ipmeta.io/instructions
   // - view the directions in README.md
-  // note: this feature may be broken out as a seperate dependency if the code size needs to grow further
-  if (vfGaTrackOptions.vfGaTrackNetwork != null) {
+  // note: this feature may be broken out as a separate dependency if the code size needs to grow further
+  // note: the VF has not yet added support for this using gtag
+  //       https://ipmeta.io/instructions/google-analytics-4
+  if (vfGaTrackOptions.vfGaTrackNetwork != null && ga) {
     // a copy of https://ipmeta.io/plugin.js
     // included here to simplify usage and reduce external requests
     /* eslint-disable */
@@ -188,7 +222,9 @@ function vfGaInit(vfGaTrackOptions) {
 
   // standard google analytics bootstrap
   if (vfGaTrackOptions.vfGaTrackPageLoad) {
+    vfGaLogMessage('sending page view');
     ga("send", "pageview");
+    gtag("event", "page_view");
   }
 
   // If we want to send metrics in one go
@@ -197,6 +233,7 @@ function vfGaInit(vfGaTrackOptions) {
   //   // 'metric5': 'custom metric data'
   // });
 
+  vfGaLogMessage('prepare vfGaLinkTrackingInit');
   vfGaLinkTrackingInit();
 }
 
@@ -204,10 +241,12 @@ function vfGaInit(vfGaTrackOptions) {
  * Track clicks as events
  */
 function vfGaLinkTrackingInit() {
+  vfGaLogMessage('vfGaLinkTrackingInit');
   document.body.addEventListener("mousedown", function (evt) {
 
     // Debug event type clicked
-    // console.log(evt.target.tagName, evt.target);
+    vfGaLogMessage(evt.target.tagName);
+    vfGaLogMessage(evt.target);
 
     // we only track clicks on interactive elements (links, buttons, forms)
     if (evt.target) {
@@ -304,6 +343,12 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
   /* eslint-enable no-redeclare*/
   let linkName;
 
+  if (typeof gtag === "undefined") {
+    // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
+    window.gtag = function() {};
+    vfGaLogMessage('GA4 dummy function has been set.');
+  }
+
   if (customEventName.length > 0) {
     linkName = customEventName;
   } else if (actedOnItem.dataset.vfAnalyticsLabel) {
@@ -339,7 +384,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
     // fallback to an href value
     if (linkName.length == 0 && actedOnItem.href) linkName = actedOnItem.href;
 
-    // special things for gloabl search box
+    // special things for global search box
     // if (parentContainer == 'Global search') {
     //   linkName = 'query: ' + jQuery('#global-search input#query').value;
     // }
@@ -381,12 +426,29 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       // email click
       var mailLink = href.replace(/^mailto\:/i, "");
       ga && ga("send", "event", "Email", "Region / " + parentContainer, mailLink);
+      gtag && gtag("event", "Region / " + parentContainer, {
+        "vf_analytics": "true",
+        "page_container": parentContainer,
+        "event_label": mailLink,
+        "event_category": "UI",
+        "event_type": "Email",
+        "email_address": mailLink
+      });
       vfGaLogMessage("Email", "Region / " + parentContainer, mailLink, lastGaEventTime, actedOnItem);
     } else if (href && href.match(filetypes)) {
       // download event
       var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
       var filePath = href;
       ga && ga("send", "event", "Download", "Type / " + extension + " / " + parentContainer, filePath);
+      gtag && gtag("event", "Type / " + extension + " / " + parentContainer, {
+        "vf_analytics": "true",
+        "page_container": parentContainer,
+        "event_label": filePath,
+        "file_extension": extension,
+        "event_category": "UI",
+        "event_type": "Download",
+        "link_url": filePath
+      });
       vfGaLogMessage("Download", "Type / " + extension + " / " + parentContainer, filePath, lastGaEventTime, actedOnItem);
     }
     /* eslint-enable no-useless-escape */
@@ -397,6 +459,14 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       let newDestination = new URL(href, window.location);
       if (newDestination.hostname != window.location.hostname) {
         ga && ga("send", "event", "External links", "External link / " + linkName + " / " + parentContainer, href);
+        gtag && gtag("event", "External link / " + parentContainer, {
+          "vf_analytics": "true",
+          "page_container": parentContainer,
+          "event_category": "UI",
+          "event_type": "External link or button",
+          "link_text": linkName,
+          "link_url": href
+        });
         vfGaLogMessage("External links", "External link / " + linkName + " / " + parentContainer, href, lastGaEventTime, actedOnItem);
       }
     }
@@ -433,11 +503,29 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       }
 
       ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
-      vfGaLogMessage("UI", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
+      gtag && gtag("event", "UI Element / " + parentContainer, {
+        "vf_analytics": "true",
+        "page_container": parentContainer,
+        "event_label": linkName,
+        "event_category": "UI " + parentContainer,
+        "event_type": "Webform",
+        "link_text": linkName
+      });
+      vfGaLogMessage("UI Form", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
     } else {
       // generic catch all
+      vfGaLogMessage("vfGaTrackInteraction: generic catch all")
       ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
-      vfGaLogMessage("UI", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
+      gtag && gtag("event", "UI Element / " + parentContainer, {
+        "vf_analytics": "true",
+        "page_container": parentContainer,
+        "event_label": linkName,
+        "event_category": "UI",
+        "event_type": "Link, button, image or similar",
+        "link_text": linkName,
+        "link_url": href
+      });
+      vfGaLogMessage("UI Catch all", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
     }
   }
 }
@@ -459,9 +547,14 @@ function vfGaLogMessage(eventCategory, eventAction, eventLabel, lastGaEventTime,
   if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose) {
     if (conditionalLoggingCheck.dataset.vfGoogleAnalyticsVerbose == "true") {
       /* eslint-disable */
-      console.log("%c Verbose analytics on ", "color: #FFF; background: #111; font-size: .75rem;");
-      console.log("clicked on: %o ", actedOnItem);
-      console.log("sent to GA: ", "event ->", eventCategory + " ->", eventAction + " ->", eventLabel, "; at: ", lastGaEventTime);
+      if (eventAction == undefined) {
+        // It's a simple message debug
+        console.log("Verbose analytics: %o ", eventCategory);
+      } else {
+        console.log("%c Verbose analytics on ", "color: #FFF; background: #111; font-size: .75rem;");
+        console.log("clicked on: %o ", actedOnItem);
+        console.log("sent to GA: ", "event ->", eventCategory + " ->", eventAction + " ->", eventLabel, "; at: ", lastGaEventTime);
+      }
       /* eslint-enable */
     }
   }

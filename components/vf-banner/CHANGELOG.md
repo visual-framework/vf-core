@@ -1,3 +1,7 @@
+### 1.9.2
+
+* Update focus indicators colors to increase contrast ratio and be easier to spot
+
 ### 1.9.1
 
 * `--inline` variant Nunjucks template file cleanup.
