@@ -8,6 +8,19 @@ Supplementary behaviour (primarily JavaScript) to ease tracking with Google Anal
 
 ## Usage
 
+### GA4
+
+As of 1.1.0-rc.0 this contains gtag and GA4 support. The basics of vf-analytics-google are plug-and-play, but to get the full value out if you need to add (currently) 4 "custom definitions":
+
+1. `event_category`
+2. `event_type`
+3. `page_container`
+4. `vf_analytics`
+
+[You can see a screenshot of the configuration here](https://user-images.githubusercontent.com/928100/193329800-4c750a70-1d77-4623-ba00-87db4d608511.png) and here is Google's documentation on [adding the custom dimensions to your GA4 property](https://support.google.com/analytics/answer/10075209?hl=en#new-custom-dimension) (this step is not needed in a UA property).
+
+For more info see issue [#1428](https://github.com/visual-framework/vf-core/issues/1428)
+
 ### User actions
 
 This component tracks three types of user engagement as actions in Google Analytics:
@@ -31,10 +44,14 @@ Track dimensions:
 <meta name="vf:page-type" content="category;pageTypeHere">
 ```
 
-How to add dimension to your property?
+For GA4 users, be sure to set this in your JS:
 
-- https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
-- https://support.google.com/analytics/answer/2709829?hl=en
+```js
+  vfGa4MeasurementId: "G-YOUR-GA4-ID-if_using_gtag"
+```
+
+And [add the custom dimension to your property](https://support.google.com/analytics/answer/10075209?hl=en#new-custom-dimension).
+
 
 ### Page region tracking
 
@@ -49,6 +66,14 @@ You can track the region of the page where an event occurs:
 Notes:
 - region names should not be repeated on the same page
 - nested regions are currently not fully supported
+
+### Not intended for use with Google Tag Manager
+
+You should not use `vf-analytics-google` with Google Tag Manager. The combination makes `vf-analytics-google` unreliable and often leads to race conditions where the gtag tracking may fail to work. This is not an issue with this code, rather it is consistent with most of my reading on best practice. It is summed up well at https://measureschool.com/google-tag-manager-vs-global-site-tag/
+
+> Both these tools utilize some common resources that can lead to conflict in some cases. For example, the data layer is one such resource that is used by both tools. Therefore, it is important to be careful while adding both of them together. You will also need to test the implementation of tools by checking whether the correct data is sent to these tools. Overall, the process is doable but complicated. That’s why I would recommend not to install them together on the same page.
+
+That is: if you want to use Google Tag Manager, you should use that for your events. If you want to use gtag.js + custom JS, then vf-google-analytics is good for you. This code will provide particular value if you need a consistent way to collect event data across many websites, which is what we're after.
 
 ### Verbose logging
 
@@ -65,6 +90,7 @@ import { vfGaIndicateLoaded } from 'vf-analytics-google/vf-analytics-google';
 
 let vfGaTrackOptions = {
   vfGaTrackPageLoad: true,
+  vfGa4MeasurementId: "G-YOUR-GA4-ID-if_using_gtag"
   vfGaTrackNetwork: {
     serviceProvider: 'dimension2',
     networkDomain: 'dimension3',
