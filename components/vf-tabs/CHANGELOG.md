@@ -1,6 +1,11 @@
+### 2.1.2
+
+* Dynamically updates the URL based on the active tab
+
 ### 2.1.1
 
-* adds focus indicator and enables keyboard navigation
+* Adds focus indicator and enables keyboard navigation
+
 ### 2.1.0
 
 * Support activation of specific vf-tabs on page load `#vf-tabs__section=tab_id`

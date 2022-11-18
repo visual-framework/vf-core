@@ -43,7 +43,13 @@ function vfTabs(scope, activateDeepLinkOnLoad) {
     tab.addEventListener("click", e => {
       e.preventDefault();
       vfTabsSwitch(e.currentTarget, panels);
-    });
+      // update url based on tab id
+      const data = e.target.getAttribute("id", tabId);
+      const url = '#' + data;
+      window.history.pushState(data, null, url);
+    });    
+
+
 
     // Handle keydown events for keyboard users
     tab.addEventListener("keydown", e => {
