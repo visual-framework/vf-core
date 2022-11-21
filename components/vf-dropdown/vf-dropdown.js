@@ -39,8 +39,8 @@ export function vfDropdown() {
       }
     });
     component.addEventListener("keyup", function(keyboardEvent) {
-      // if user presses Enter key, open the dropdown
-      if (keyboardEvent.keyCode === 13) {
+      // if user presses Enter or Space key, open the dropdown
+      if (keyboardEvent.code === 'Enter' || keyboardEvent.code === 'Space') {
         component.classList.toggle("vf-dropdown--open");
         if (component.getAttribute("aria-expanded") === "false") {
           component.setAttribute("aria-expanded", "true");
