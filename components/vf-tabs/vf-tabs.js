@@ -46,7 +46,7 @@ function vfTabs(scope, activateDeepLinkOnLoad) {
       // update url based on tab id
       const data = e.target.getAttribute("id", tabId);
       const url = '#' + data;
-      window.history.pushState(data, null, url);
+      window.history.replaceState(data, null, url);
     });    
 
 
