@@ -74,6 +74,7 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
       vfGaIndicateUnloaded();
     }
 
+    // check to see if gtag is loaded, and then if UA is loaded, and if neither, check once more (to a limit)
     if (typeof gtag !== "undefined") {
       vfGaLogMessage('ga4 found');
       if (el.getAttribute("data-vf-google-analytics-loaded") != "true") {
@@ -96,7 +97,6 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
     }
   } catch (err) {
     vfGaLogMessage('error in vfGaIndicateLoaded');
-    console.log(err)
     if (numberOfGaChecks <= numberOfGaChecksLimit) {
       setTimeout(function () {
         vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
