@@ -252,7 +252,7 @@ function vfGaLinkTrackingInit() {
     if (evt.target) {
       if (evt.target.tagName) {
         let clickedElementTag = evt.target.tagName.toLowerCase();
-        let actionElements = ["a", "button", "label", "input", "select", "textarea", "details"];
+        let actionElements = ["a", "button", "label", "input", "select", "textarea", "details", "area"];
         if (actionElements.indexOf(clickedElementTag) > -1) {
           vfGaTrackInteraction(evt.target);
           return;
@@ -507,7 +507,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
         "vf_analytics": "true",
         "page_container": parentContainer,
         "event_label": linkName,
-        "event_category": "UI " + parentContainer,
+        "event_category": "UI ",
         "event_type": "Webform",
         "link_text": linkName
       });
