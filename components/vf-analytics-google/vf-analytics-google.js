@@ -507,7 +507,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
         "vf_analytics": "true",
         "page_container": parentContainer,
         "event_label": linkName,
-        "event_category": "UI ",
+        "event_category": "UI",
         "event_type": "Webform",
         "link_text": linkName
       });
