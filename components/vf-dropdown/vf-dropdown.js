@@ -12,6 +12,7 @@ export function vfDropdown() {
   const SPACE_KEY = 32;
   const ENTER_KEY = 13;
   const TAB_KEY = 9;
+  const ESCAPE_KEY = 27;
   function isNavigationKey(keyboardEvent) {
     // if keyboard key is Arrow Up or Arrow Down
     return (
@@ -82,6 +83,12 @@ export function vfDropdown() {
         } else if (keyboardEvent.shiftKey && currentPos > 0) {
           currentPos -= 1;
         }
+      }
+      // If an user presses ESC key, close the dropdown
+      if (currentPos !== null && keyboardEvent.keyCode === ESCAPE_KEY) {
+        component.setAttribute("aria-expanded", "false");
+        component.classList.remove("vf-dropdown--open");
+        currentPos = null;
       }
     });
 
