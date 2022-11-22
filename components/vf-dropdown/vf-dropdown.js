@@ -32,7 +32,6 @@ export function vfDropdown() {
     component.addEventListener("focusout", function(e) {
       // if dropdown loses focus to another element that aren't its own links
       if (!e.currentTarget.contains(e.relatedTarget)) {
-        innerLabel.setAttribute("tabindex", "0");
         component.setAttribute("aria-expanded", "false");
         component.classList.remove("vf-dropdown--open");
         currentPos = null;
@@ -41,7 +40,12 @@ export function vfDropdown() {
     // to being able to prevent scrolling when user navigates with the keyboard
     // this must be done in the keydown event
     component.addEventListener("keydown", function(keyboardEvent) {
+      // when user navigates with arror up and down, prevent scrolling
       if (currentPos !== null && isNavigationKey(keyboardEvent)) {
+        keyboardEvent.preventDefault();
+      }
+      // when user open dropdown with SPACE key, prevent scrolling
+      if (keyboardEvent.keyCode === SPACE_KEY) {
         keyboardEvent.preventDefault();
       }
     });
@@ -77,7 +81,7 @@ export function vfDropdown() {
       }
       // Handle navigation with Tab key, must track position of the element that has
       // focus, to being able to navigate with both Tab and Arrow keys
-      if (currentPos !== null && keyboardEvent.keyCode === TAB_KEY ) {
+      if (currentPos !== null && keyboardEvent.keyCode === TAB_KEY) {
         if (!keyboardEvent.shiftKey && currentPos !== numOfLinks - 1) {
           currentPos += 1;
         } else if (keyboardEvent.shiftKey && currentPos > 0) {
