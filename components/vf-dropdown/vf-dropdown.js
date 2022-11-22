@@ -7,8 +7,11 @@
  */
 export function vfDropdown() {
   const components = document.querySelectorAll("[data-vf-js-dropdown]");
-  function isUpOrDownKey(keyboardEvent) {
-    return (keyboardEvent.key === "ArrowUp" || keyboardEvent.key === "ArrowDown");
+  function isNavigationKey(keyboardEvent) {
+    return (
+      keyboardEvent.key === "ArrowUp" ||
+      keyboardEvent.key === "ArrowDown"
+    );
   }
 
   for (let component of components) {
@@ -16,7 +19,6 @@ export function vfDropdown() {
     const innerLabel = component.querySelector(".vf-dropdown__label-container");
     innerLabel.setAttribute("tabindex", "0");
     const links = component.querySelectorAll(".vf-dropdown__menu-container .vf-dropdown__menu-item-link");
-    links.forEach(function(link) { link.setAttribute("tabindex", "-1") });
     const numOfLinks = links.length;
     let currentPos = null;
     component.setAttribute("aria-expanded", "false");
@@ -29,9 +31,16 @@ export function vfDropdown() {
         currentPos = null;
       }
     });
+    // to being able to prevent scrolling when user navigates with the keyboard
+    // this must be done in the keydown event
+    component.addEventListener("keydown", function(keyboardEvent) {
+      if (currentPos !== null && isNavigationKey(keyboardEvent)) {
+        keyboardEvent.preventDefault();
+      }
+    });
     component.addEventListener("keyup", function(keyboardEvent) {
-      // if user presses Enter key, open the dropdown
-      if (keyboardEvent.keyCode === 13) {
+      // if user presses Enter or Space key, open the dropdown
+      if (keyboardEvent.code === 'Enter' || keyboardEvent.code === 'Space') {
         component.classList.toggle("vf-dropdown--open");
         if (component.getAttribute("aria-expanded") === "false") {
           component.setAttribute("aria-expanded", "true");
@@ -42,7 +51,7 @@ export function vfDropdown() {
         innerLabel.setAttribute("tabindex", "-1");
       }
       let valueToAdd = 0;
-      if (currentPos !== null && isUpOrDownKey(keyboardEvent)) {
+      if (currentPos !== null && (isNavigationKey(keyboardEvent))) {
         switch(keyboardEvent.key) {
           case "ArrowUp":
             if (currentPos > 0) {
@@ -59,6 +68,15 @@ export function vfDropdown() {
         }
         currentPos += valueToAdd;
         links[currentPos].focus();
+      }
+      // Handle navigation with Tab key, must track position of the element that has
+      // focus, to being able to navigate with both Tab and Arrow keys
+      if (currentPos !== null && keyboardEvent.key === 'Tab') {
+        if (!keyboardEvent.shiftKey && currentPos !== numOfLinks - 1) {
+          currentPos += 1;
+        } else if (keyboardEvent.shiftKey && currentPos > 0) {
+          currentPos -= 1;
+        }
       }
     });
 
