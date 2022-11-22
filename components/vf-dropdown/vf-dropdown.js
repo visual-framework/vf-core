@@ -54,7 +54,6 @@ export function vfDropdown() {
           component.setAttribute("aria-expanded", "false");
         }
         currentPos = -1;
-        innerLabel.setAttribute("tabindex", "-1");
       }
       let valueToAdd = 0;
       if (currentPos !== null && (isNavigationKey(keyboardEvent))) {
