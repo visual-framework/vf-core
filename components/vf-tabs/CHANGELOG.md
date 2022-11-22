@@ -1,9 +1,6 @@
-### 2.1.2
-
-* Dynamically updates the URL based on the active tab
-
 ### 2.1.1
 
+* Dynamically updates the URL based on the active tab
 * Adds focus indicator and enables keyboard navigation
 
 ### 2.1.0
