@@ -36,17 +36,13 @@ function vfTabs(scope, activateDeepLinkOnLoad) {
 
     // Reset any active tabs from a previous JS call
     tab.removeAttribute("aria-selected");
-    // tab.setAttribute("tabindex", "-1");
+    tab.setAttribute("tabindex", "-1");
     tab.classList.remove("is-active");
 
     // Handle clicking of tabs for mouse users
     tab.addEventListener("click", e => {
       e.preventDefault();
       vfTabsSwitch(e.currentTarget, panels);
-      // update url based on tab id
-      const data = e.target.getAttribute("id", tabId);
-      const url = '#' + data;
-      window.history.replaceState(data, null, url);
     });    
 
 
@@ -99,12 +95,17 @@ function vfTabs(scope, activateDeepLinkOnLoad) {
 
 // The tab switching function
 const vfTabsSwitch = (newTab, panels) => {
+  // Update url based on tab id
+  const data = newTab.getAttribute("id");
+  const url = '#' + data;
+  window.history.replaceState(data, null, url);
+
   // get the parent ul of the clicked tab
   let parentTabSet = newTab.closest(".vf-tabs__list");
   let oldTab = parentTabSet.querySelector("[aria-selected]");
   if (oldTab) {
     oldTab.removeAttribute("aria-selected");
-    // oldTab.setAttribute("tabindex", "-1");
+    oldTab.setAttribute("tabindex", "-1");
     oldTab.classList.remove("is-active");
 
     for (let item = 0; item < panels.length; item++) {
