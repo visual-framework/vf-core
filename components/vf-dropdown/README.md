@@ -10,7 +10,7 @@ A dropdown component that can be used in navigation menus.
 
 Supports click trigger to open. User can select menu item or click outside menu to close it. When menu is open, outside clicks will be captured by menu.
 
-Currently, usage intended with navigation menu. Component is based on the [Example Disclosure Navigation Menu][https://www.w3.org/WAI/ARIA/apg/example-index/disclosure/disclosure-navigation.html#ex_label] of the ARIA Authoring Practices Guide (APG).
+Currently, usage intended with navigation menu. Component is based on the [Example Disclosure Navigation Menu](https://www.w3.org/WAI/ARIA/apg/example-index/disclosure/disclosure-navigation.html#ex_label) of the ARIA Authoring Practices Guide (APG).
 
 ## Install
 
