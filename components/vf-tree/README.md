@@ -22,7 +22,7 @@ There are several paramaters availabl when using the Nunjucks template:
 - `sublist` if an object of `title`s the item will be shown as a group
 - `artiveTrail: true` Highlights a tree as an active path and if it is a sublist, opens it
 
-You can see this component in action in the EMBL-EBI online tutorials, e.g. [A guide to bioinformatics][https://www.ebi.ac.uk/training/online/courses/a-guide-to/introduction/].
+You can see this component in action in the EMBL-EBI online tutorials, e.g. [A guide to bioinformatics](https://www.ebi.ac.uk/training/online/courses/a-guide-to/introduction/).
 
 ## Sass/CSS
 
