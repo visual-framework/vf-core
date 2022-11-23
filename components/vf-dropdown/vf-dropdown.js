@@ -92,6 +92,7 @@ export function vfDropdown() {
       if (currentPos !== null && keyboardEvent.keyCode === ESCAPE_KEY) {
         component.setAttribute("aria-expanded", "false");
         component.classList.remove("vf-dropdown--open");
+        innerLabel.focus();
         currentPos = null;
       }
     });
