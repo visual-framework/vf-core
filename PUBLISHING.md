@@ -12,6 +12,7 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 - Have installed Lerna globally
 - Installed dependencies in `/tools/vf-core/` with `yarn install`
 - Installed dependencies in root folder with `yarn install`
+- Have logged in to a npm account belonging to the visual-framework organization
 
 ## Release workflow
 
@@ -22,6 +23,7 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 1. see a list of changed packages
     - `lerna changed`
 1. ensure all packages to be released have ready an updated changelog and to which version are going to be bumped
+    - verify the new versions of each package doesn't exist on npm
 1. test publish
     - `yarn run lerna:test`
 
@@ -29,6 +31,9 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 
 1. publish to npm
     - `yarn run lerna:publish`
+    - lerna will prompt the versions of all packages twice
+        - 1st one to publish the packages to npm
+        - 2nd one to update package.json files of all packages published
 
 ### 3. Communications
 
@@ -37,6 +42,8 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 1. generate an update
     - `yarn run releasenotes`
     - format and review the newly made file at `tools/vf-component-library/src/site/updates`
+        - copy structure from previous release notes
+        - for each component, put latest changelog updates and link it with `releaseLinks.notes`
 
 ### 4. Post-release
 
