@@ -1,3 +1,7 @@
+## 1.4.6
+
+* Added option to use GA4 analytics
+
 ## 1.4.5
 
 * Add vf-tags Sass.
