@@ -44,7 +44,7 @@ Track dimensions:
 <meta name="vf:page-type" content="category;pageTypeHere">
 ```
 
-For GA4 users, be sure to set this in your JS:
+For GA4 users, be sure to set this when using `vfGaIndicateLoaded()`:
 
 ```js
   vfGa4MeasurementId: "G-YOUR-GA4-ID-if_using_gtag"
@@ -100,7 +100,8 @@ let vfGaTrackOptions = {
 vfGaIndicateLoaded(vfGaTrackOptions);
 ```
 
-`vfGaIndicateLoaded()` is the primary function and awaits and checks to see if Google Analytics client side JS has loaded. If it does, sets `<body data-vf-google-analytics-loaded='true'>`
+In parallel, you need to load and initialize the Google Analytics script you use (analytics.js or gtag.js).
+`vfGaIndicateLoaded()` is the primary function and awaits and checks to see if Google Analytics script has loaded. If it does, sets `<body data-vf-google-analytics-loaded='true'>`
 
 #### Options
 
