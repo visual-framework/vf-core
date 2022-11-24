@@ -1,0 +1,88 @@
+---
+title: Rollup release 2.5.9
+subtitle: This release has a package of enhancements for vf-analytics-google and accessibility improvements for vf-dropdown, vf-tabs, vf-banner, vf-banner-elixir, vf-tree and vf-social-links.
+date: 2022-11-24 12:30:00
+version: 2.5.9
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-componenet-rollup", "1.4.6", "c4365e2c15b7c6c6a6459564d78da5d7a7868248") }} 
+
+* Added option to use GA4 analytics.
+
+{{ releaseLinks.notes("vf-social-links", "0.0.3", "c4365e2c15b7c6c6a6459564d78da5d7a7868248") }} 
+
+* Replace hidden text with aria-labels to avoid contrast issue.
+
+{{ releaseLinks.notes("vf-component-library", "1.2.3", "c4365e2c15b7c6c6a6459564d78da5d7a7868248") }}
+
+* Fix issue loading scripts and styles for latest site.
+
+
+
+{{ releaseLinks.notes("vf-tabs", "2.1.2", "ef03be81698f0b2d3e3a2530d2455e59149485fb") }} 
+
+* Dynamically updates the URL based on the active tab.
+* Adds focus indicator and enables keyboard navigation.
+
+
+{{ releaseLinks.notes("vf-analytics-google", "1.1.0-rc.0", "b9692917a23e446c8d222f017b75bb1d0cb2d0b9") }} 
+
+* Adds gtag (GA4) support.
+
+{{ releaseLinks.notes("vf-banner", "1.9.2", "bd1d745b6bfd9487b834107da000ecf3ed471af3") }} 
+
+* Update focus indicators colors to increase contrast ratio and be easier to spot.
+
+{{ releaseLinks.notes("vf-banner-elixir", "1.0.0-alpha.2", "e179ae884431bf380e757df3f37a812464598286") }} 
+
+* removes redundant link in the Elixir logo.
+
+{{ releaseLinks.notes("vf-tree", "2.0.0-alpha.1", "e179ae884431bf380e757df3f37a812464598286") }} 
+
+* adds focus outline to the svg element.
+
+
+{{ releaseLinks.notes("vf-dropdown", "1.0.0-alpha.7", "f66f1bcd925283b60ea3329d6ff8e7c9fcd973d9") }} 
+
+* Add keyboard navigation.
+* https://github.com/visual-framework/vf-core/issues/1754
+
+{% endmarkdown %}

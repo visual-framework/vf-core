@@ -1,8 +1,5 @@
-### 1.2.4
-* Fix issue loading scripts and styles for latest site
-
 ### 1.2.3
-* Updated changelog
+* Fix issue loading scripts and styles for latest site
 
 ### 1.2.2
 * Documentation upgrade
