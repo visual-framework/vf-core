@@ -35,11 +35,12 @@ try {
       "dryrun",
       "help",
       "serve",
-      "passthroughall",
       "incremental",
+      "ignore-initial",
     ],
     default: {
       quiet: null,
+      "ignore-initial": false,
     },
     unknown: function (unknownArgument) {
       // throw new EleventyCommandCheckError(
@@ -88,7 +89,6 @@ try {
     elev.setPathPrefix(argv.pathprefix);
     elev.setDryRun(argv.dryrun);
     elev.setIncrementalBuild(argv.incremental);
-    elev.setPassthroughAll(argv.passthroughall);
     elev.setFormats(argv.formats);
 
     // careful, we can’t use async/await here to error properly

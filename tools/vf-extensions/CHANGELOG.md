@@ -1,3 +1,7 @@
+## 2.1.0-alpha.1
+
+* This adds support for Eleventy v2 and should remain backwards compatible with v1.
+
 ## 2.0.0-alpha.2
 
 * Further revises integration with eleventy-cmd.js to allow more control from gulp.
