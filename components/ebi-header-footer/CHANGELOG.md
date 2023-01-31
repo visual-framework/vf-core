@@ -1,3 +1,7 @@
+### 2.1.3
+
+* Resolve accessbility issues for EBI blackbar header for v1.4 and also fixes overlapping x button for search box.
+
 ### 2.1.2
 
 * Resolve a vf-stack + vf-content-hub + legacy black bar edge case.
