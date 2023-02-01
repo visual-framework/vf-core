@@ -1,3 +1,7 @@
+### 2.0.0-alpha.6
+
+* Changes the link variant to be a button element
+  
 ### 2.0.0-alpha.5
 
 * Readme formatting fixes.
