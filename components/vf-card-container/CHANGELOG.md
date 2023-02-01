@@ -1,3 +1,10 @@
+### 3.2.2
+
+* Added: Attribute ‘hidden’ to container_section__header in config and accordingly it adds ‘vf-u-sr-only’ css class to hide section header, this to fix component accessibility
+* Added: Added condition to components.njk to show example section for type=container
+* Changed: vf-u-background-color--grey--lightest to vf-u-background-color-ui--white to apply white background
+* https://github.com/visual-framework/vf-core/pull/1851
+
 ### 3.2.1
 
 * Uses vf-stack for spacing to apply to elements immediately before or after vf-card-container.
