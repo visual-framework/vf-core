@@ -14,9 +14,9 @@
 {% if href %}
 {% endif %}
 
-<div class="{%- if hidden %}vf-u-sr-only{% else %} vf-section-header {% endif -%}">
+<div class="vf-section-header">
   <{{tags}}
-    class="vf-section-header__heading {% if href %} vf-section-header__heading--is-link{% endif %}"
+    class="vf-section-header__heading{% if href %} vf-section-header__heading--is-link{% endif %}{%- if hidden %} vf-u-sr-only{% endif -%}"
     {%- if id %} id="{{id}}"{% endif -%}
   >
     {% if href %}<a href="{{href}}">{% endif %}
