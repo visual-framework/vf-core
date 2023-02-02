@@ -10,7 +10,6 @@ import { VfClassNormalize } from "../../tools/vf-extensions-react/vf-extensions-
 
 function VfButton({
   text,
-  button_href,
   theme,
   id,
   style,
@@ -20,7 +19,7 @@ function VfButton({
   ...rest
 }) {
   /* Conditional tag */
-  const Tag = button_href ? "a" : "button";
+  const Tag = "button";
 
   /* Conditional styles, strings, nullables, arrays of styles */
   const classNames = VfClassNormalize(
@@ -34,8 +33,7 @@ function VfButton({
 
   /* Conditional attributes will be only present iff they exist */
   const attributes = {
-    ...(id && { id }),
-    ...(button_href && { href: button_href }),
+    ...(id && { id })
   };
 
   return (
@@ -49,7 +47,6 @@ export default React.memo(VfButton);
 
 VfButton.propTypes = {
   text: PropTypes.string,
-  button_href: PropTypes.string,
   theme: PropTypes.string,
   id: PropTypes.string,
   style: PropTypes.oneOfType([
