@@ -1,5 +1,4 @@
 {% if context %}
-  {% set button_href = context.button_href %}
   {% set theme = context.theme %}
   {% set id = context.id %}
   {% set text = context.text %}
@@ -13,11 +12,8 @@
 {% spaceless %}
 
 {# Determine type of element to use, if not explicitly set -#}
-{% if (button_href) or (href) %}
-  {% set tags = 'a' %}
-{% else %}
-  {% set tags = 'button' %}
-{% endif %}
+{% set tags = 'button' %}
+
 
 {# Work out what colour theme is needed for the styling #}
 {% if theme %}
@@ -25,10 +21,6 @@
 {% endif %}
 
 <{{tags}}
-{# If there's an href put it here #}
-{%- if tags == 'a' %}
- href="{{ (button_href) or (href) }}"
-{%- endif %}
 {# You're using an ID? Really?? That'll go here #}
 {% if id %} id="{{-id-}}"{% endif %}
 

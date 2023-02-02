@@ -27,13 +27,13 @@
 <g transform="matrix(10,0,0,10,0,0)"><path d="M11,13.5l-4-4-4,4V1.5a1,1,0,0,1,1-1h6a1,1,0,0,1,1,1Z"></path></g></svg>
 {%- endset -%}
 
-<a href="{{ bookmark_href }}" class="vf-bookmark
+<button onclick="location.href='{{ bookmark_href }}';" class="vf-bookmark
 {% if is_active -%}vf-bookmark--active{%- endif %} vf-bookmark--{{ modifier }}
 |
 {% if modifier == "button" -%}
 vf-button vf-button--secondary
 {%- elseif modifier == "inline" -%}
-vf-link
+vf-button vf-button--link
 {%- endif %}
 ">
   {% if icon == "heart" -%}
@@ -46,7 +46,7 @@ vf-link
   {%- else -%}
     {{ label_inactive }}
   {%- endif %}
-</a>
+</button>
 
 {# You can do Nunjucks logic in your templates that references the .yml settings
    What's Nunjucks: https://mozilla.github.io/nunjucks/templating.html #}
