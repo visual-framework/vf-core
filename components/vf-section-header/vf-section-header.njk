@@ -4,6 +4,7 @@
 {% set section_title = context.section_title %}
 {% set section__subheading = context.section__subheading %}
 {% set vf_section__content = context.vf_section__content %}
+{% set hidden = context.hidden %}
 {% endif -%}
 
 {% spaceless %}
@@ -15,7 +16,7 @@
 
 <div class="vf-section-header">
   <{{tags}}
-    class="vf-section-header__heading{% if href %} vf-section-header__heading--is-link{% endif %}"
+    class="vf-section-header__heading{% if href %} vf-section-header__heading--is-link{% endif %}{%- if hidden %} vf-u-sr-only{% endif -%}"
     {%- if id %} id="{{id}}"{% endif -%}
   >
     {% if href %}<a href="{{href}}">{% endif %}
