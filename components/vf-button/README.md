@@ -64,7 +64,7 @@ As of vf-button v2.0.0-alpha.2 vf-button has experimental Angular support.
    ```
 3. use
    ```
-   <a vf-button href="//embl.org" primary="true" small="true">Hello world</a>
+   <button class="vf-button" primary="true" small="true">Hello world</button>
    ```
 4. add to your styles.scss
    ```
@@ -76,7 +76,9 @@ Depending on the success of this method, we plan to add standardized guidance to
 
 Usage:
 
-`<a vf-button href="//embl.org" primary="true" small="true">Hello</a>`
+```
+<button class="vf-button" primary="true" small="true">Hello</button>
+```
 
 ## Install
 

@@ -30,7 +30,7 @@ The component can be configured with a number of options.
     - determines the appropriate `label_inactive` or `label_active`
 - `modifier`: defaults to `inline`
     - `inline` or `button`
-- `icon`: defaults to `star`
+- `icon`: defaults to `heart`
     - `star` or `heart` (a bookmark icon may be added in the future)
 
 ### Accessibility

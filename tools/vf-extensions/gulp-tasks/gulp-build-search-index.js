@@ -34,7 +34,6 @@ module.exports = function(gulp, path, buildDestionation) {
         gutil.log(gutil.colors.green("Indexing:",file.path.split(buildDestionation)[1]));
 
         let text = fs.readFileSync(file.path, "utf8");
-
         let title = text.match(/<title>(.*?)<\/title>/gi) + " ";
         title = title.replace(/<title>(.*?)<\/title>/gi, "$1");
         title = title.split("|")[0]; // only keep anything before the first pipe
@@ -56,6 +55,8 @@ module.exports = function(gulp, path, buildDestionation) {
         body = body.replace(/ {3}/g, " "); // remove white space
         body = body.replace(/ {2}/g, " "); // remove white space
         body = body.replace(/"/g, "'"); // remove double quotes
+        body = body.replace(/null/g, " "); // taking care of null values
+
 
         output += endOfLine + "{\"id\":\""+counter+"\", \"title\": \""+title+"\", \"text\": \""+body+"\", \"tags\": \"\", ";
         counter = counter + 1;
