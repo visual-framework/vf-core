@@ -1,3 +1,7 @@
+### 1.0.0-alpha.3
+
+* Update from a link to a button element
+
 ### 1.0.0-alpha.2
 
 * Fine tune icon vertical spacing.
