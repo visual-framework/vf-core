@@ -26,11 +26,40 @@ variables:
 
 
 stages:
-  - build
+  - build-dev
+  - build-prod
   - deploy
 
-build:
-  stage: build
+build-dev:
+  stage: build-dev
+  tags:
+    - docker
+  script:
+    - yarn global add gulp-cli
+    - cd tools/vf-core
+    - yarn install
+    - gulp vf-core:prepare-deploy # to do: verify if bin/deploy-aws can use the vf-component-library build, if so we can drop this
+    - cd ../vf-component-library
+    - yarn install
+    - gulp build:dev
+  artifacts:
+    paths:
+      - tools/vf-core/build
+      - tools/vf-component-library/build
+  cache:
+    paths:
+      - node_modules
+      - tools/vf-component-library/node_modules
+  except:
+    - /^.visual-framework\/.*$/
+  only:
+    # only match on develop branch, or specific tag patterns
+    - develop
+    - /^v\d+\.\d+\.\d+$/
+    - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
+
+build-prod:
+  stage: build-pro
   tags:
     - docker
   script:
@@ -51,6 +80,11 @@ build:
       - tools/vf-component-library/node_modules
   except:
     - /^.visual-framework\/.*$/
+  only:
+    # only match on specific tag patterns
+    - /^v\d+\.\d+\.\d+$/
+    - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
+
 
 deploy-dev:
   stage: deploy
