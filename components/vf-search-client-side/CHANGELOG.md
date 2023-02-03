@@ -1,3 +1,8 @@
+### 2.0.2
+
+* Changed : Modified the logic to update search term in both the searchboxes (Menu and Current page)
+* https://github.com/visual-framework/vf-core/pull/1859
+
 ### 2.0.1
 
 * Changed : Modified the match condition to get information from <p> tag containing component information instead of getting the whole <body> text
