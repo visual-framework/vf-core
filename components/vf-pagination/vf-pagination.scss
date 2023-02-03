@@ -25,27 +25,29 @@
 }
 
 .vf-pagination__item--is-active {
-  background-color: color(grey);
-
   .vf-pagination__label {
-    color: ui-color(white);
+    font-weight: bold;
   }
 }
 
 .vf-pagination__label,
-.vf-pagination__link {
+.vf-pagination__link{
   @include set-type(text-body--3, $custom-margin-bottom: 0);
 
-  color: color(grey);
+  color: var(--vf-color__text--primary);
   display: block;
   padding: 4px 8px;
   text-decoration: none;
 }
 
-.vf-pagination__link:hover {
-  background-color: color(grey);
-  color: ui-color(white);
+.vf-pagination__link {
+  @include inline-link;
+  color: var(--vf-color__link);
 }
+
+.vf-pagination__link--visited, .vf-pagination__link:visited { color: var(--vf-color__link--visited); }
+
+.vf-pagination__link--hover,  .vf-pagination__link:hover { color: var(--vf-color__link--hover); }
 
 .vf-pagination__item--jump-back {
   border-right: 1px solid color(grey--lightest);
@@ -53,4 +55,16 @@
 
 .vf-pagination__item--jump-forward {
   border-left: 1px solid color(grey--lightest);
+}
+
+.disabled {
+  color: var(--vf-color__text--primary);
+  cursor: not-allowed;
+  pointer-events: all;
+}
+
+[disabled] {
+  color: var(--vf-color__text--primary);
+  cursor: not-allowed;
+  pointer-events: all;
 }
