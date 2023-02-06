@@ -10,7 +10,7 @@ A simple pagination component for long listings such as `search results`.
 
 [Nielsen Norman make the following recommendations about pagination](https://www.nngroup.com/articles/item-list-view-all/):
 
-- **Do not use pagination** for linear content such as long page or article. 
+- **Do not use pagination** for linear content such as a long page or article. 
 - Pagination can be useful for long listings (such as `search results`, article archives, etc) that consist of more than 100 items. If your list consists of fewer items you may not need to add pagination.
 
 ## Install
