@@ -8,6 +8,17 @@ A multi-column container for `vf-card`.
 
 ## Usage
 
+### Section header
+
+- Use one card container for all cards that belong to the same section.
+- Always include [a vf-section header](https://stable.visual-framework.dev/components/vf-section-header/index.html) to the card container. This ensures that your page will not have [skipped headings](https://www.w3.org/WAI/tutorials/page-structure/headings/#heading-ranks) between the cards and the preceding content outside the container.
+- If you do not want the section header to be visible, you can hide it using the class `vf-u-sr-only` (for screen reader only). See the [example with the hidden header below](#examples).
+
+### Card container background
+- Use a white background for both [striped (green) cards](https://stable.visual-framework.dev/components/vf-card/#vf-card--striped) and [bordered (white) cards](https://stable.visual-framework.dev/components/vf-card/#vf-card--bordered).
+- `vf-u-background-color-ui--grey--light` (which is called 'Gray lightest' in [the equivalent WP block](https://stable.visual-framework.dev/wordpress/blocks/container-block/)) may be used as an alternative background of bordered (white) cards, especially when the section header is hidden and there is no text between the section header and the cards. 
+- The [Meet our people page](https://www.ebi.ac.uk/about/jobs/meet-our-people) at the EMBL-EBI site includes examples of the card container that [pass the basic contrast tests for accessibility](https://wave.webaim.org/report#/https://www.ebi.ac.uk/about/jobs/meet-our-people#).
+
 ### Columns
 
 The containier defaults to three columns (the recommended number of image-based cards per row). However if text-only cards are being used, a 4-column variant is supported `cards_per_row: 4` which appends CSS class `vf-card-container__col-4`.
