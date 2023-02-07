@@ -21,11 +21,7 @@ layout: layouts/boilerplate.njk
   {% render "@embl-favicon" %}
   {% render "@embl-content-meta-properties", {"meta_who": "Group Jane", "meta_where": "Barcelona", "meta_what": "research", "meta_active": "what"} %}
 
-  {% if serverInfo.environment == "development" -%}
   <link rel="stylesheet" media="all" href="{{ '/css/styles.css' | url }}" />
-  {%- else -%}
-  <link rel="stylesheet" href="https://{{ siteConfig.vfVersionPrefix }}assets.emblstatic.net/vf/{{ siteConfig.vfVersion }}/css/styles.css">
-  {%- endif %}
   <!--
     Want to build a site with the Visual Framework?
     ---
