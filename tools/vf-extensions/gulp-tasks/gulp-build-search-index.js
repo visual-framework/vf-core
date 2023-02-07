@@ -37,8 +37,12 @@ module.exports = function(gulp, path, buildDestionation) {
         let title = text.match(/<title>(.*?)<\/title>/gi) + " ";
         title = title.replace(/<title>(.*?)<\/title>/gi, "$1");
         title = title.split("|")[0]; // only keep anything before the first pipe
-
-        let body = text.match(/<p class="vf-lede">(.*?)<\/p>/g) + " ";
+        var body = "";
+        body = text.match(/<p class="vf-lede">(.*?)<\/p>/g);
+        // fallback if body is empty show title as description for search instead of "null"
+        if (!body) {
+          body = title;
+        }
 
         // remove any elements with class="vf-search-client-side--no-index"
         let bodyHtml = HTMLParser.parse(body);
