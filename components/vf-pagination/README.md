@@ -8,10 +8,23 @@ A simple pagination component for long listings such as `search results`.
 
 ## Usage
 
-[Nielsen Norman make the following recommendations about pagination](https://www.nngroup.com/articles/item-list-view-all/):
+### When to use this component
 
-- **Do not use pagination** for linear content such as a long page or article. 
-- Pagination can be useful for long listings (such as `search results`, article archives, etc) that consist of more than 100 items. If your list consists of fewer items you may not need to add pagination.
+Use pagination:
+- for long listings (such as `search results` and article archives) that consist of more than 100 items. If your list consists of fewer items you may not need to add pagination.
+- when most users will only look at the content on the first page or first few pages.
+
+### When not to use this component
+
+Do not use pagination:
+- for linear content such as a long page or article.
+- when you are asking the user to complete a form. Instead, use `vf-button` to let the user move to the next page and a Back link to let them move to the previous page.
+
+Also see the recommendations by [Nielsen Norman](https://www.nngroup.com/articles/item-list-view-all/) and [the pagination compoment in gov.uk](https://design-system.service.gov.uk/components/pagination/).
+
+### Accessibility
+
+This component targets WCAG 2.1 AA accessibility.
 
 ## Install
 

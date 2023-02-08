@@ -8,7 +8,7 @@ Indicates if an item has been bookmarked to a list of favourites or similar. Use
 
 ## Usage
 
-This component shows if a piece of content has been selected by a user as a favourite using a text label and icon. See the EMBL-EBI Training site for examples of using [the inline variant to mark a training course as favourite](https://www.ebi.ac.uk/training/events/pride-database-proteomics-data-submission-access-and-visualisation/) and a customised version of [the button variant to mark a page as complete](https://www.ebi.ac.uk/training/online/courses/a-guide-to/molecular-sequence-features-and-analysis/).
+This component shows if a piece of content has been selected by a user as a favourite using a text label and icon.
 
 No JavaScript functionality is provided and it is expected that the state handling will be done on a case-by-case basis on the project application.
 
@@ -39,6 +39,11 @@ The component can be configured with a number of options.
 This component targets WCAG 2.1 AA accessibility.
 
 Note that the SVG icons use `aria-hidden="true"` as to be ignored by screen readers.
+
+### Pages that use this component
+
+The EMBL-EBI Training site includes pages that use [the inline variant to mark a training course as favourite](https://www.ebi.ac.uk/training/events/pride-database-proteomics-data-submission-access-and-visualisation/) and a customised version of [the button variant to mark a page as complete](https://www.ebi.ac.uk/training/online/courses/a-guide-to/molecular-sequence-features-and-analysis/).
+
 
 ## Install
 
