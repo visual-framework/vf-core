@@ -49,24 +49,27 @@ gulp.task("replace-endpoints:dev", function(done) {
   // console.log("coming in replace-endpoints:dev endpoints");
   return gulp.src([buildDestionation+"/**/*.html"])
     .pipe(through.obj(function (file, enc, cb) {
-      gutil.log(gutil.colors.green("Replacing text :",file.path.split(buildDestionation)[1]));
-      let text = fs.readFileSync(file.path, "utf8");
-
-      const final_text = replaceAll(text, prodToDevEndPointsReplace);
-      // prep file path
+      
       let localFilePath = file.path.split(buildDestionation)[1];
+      var final_text = "";
+      // // Update endpoints only for ebi-header-footer component page
+      if (localFilePath == "/components/ebi-header-footer/index.html") {
+        
+        gutil.log(gutil.colors.green("Replacing dev endpoints :",file.path.split(buildDestionation)[1]));
+        let text = fs.readFileSync(file.path, "utf8");
+        final_text = replaceAll(text, prodToDevEndPointsReplace);
+        fs.writeFileSync(file.path, final_text);
+      }   
       cb(null, file);
-      fs.writeFileSync(file.path, final_text);
+    })  
+    .on("end", function (status) {
+      gutil.log(gutil.colors.green("Finished replacing dev endpoints"));
     })
-      .on("finish", function (status) {
-        gutil.log(gutil.colors.green("Finished upating dev endpoints"));
-      })
-      .on("error", function(err) {
-        gutil.log(gutil.colors.red(err.message));
-        process.exit(1);
-      })
-    );
-
+    .on("error", function(err) {
+      gutil.log(gutil.colors.red(err.message));
+      process.exit(1);
+    })
+    )
 });
 
 // for prod site build
