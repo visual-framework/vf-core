@@ -1,6 +1,10 @@
+### 2.2.38
+
+* Dependency bump node upgrade
+
 ### 2.2.37
 
-* Dependency bump - Node upgrade.
+* Dependency bump
 
 ### 2.2.36
 
