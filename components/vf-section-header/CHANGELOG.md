@@ -1,3 +1,7 @@
+### 1.5.4
+
+* feat: Added hidden field (optional) to address accessibility issues for H2 tags
+
 ### 1.5.3
 
 * Bug: following 1.5.2, ensures that links are always style correctly.

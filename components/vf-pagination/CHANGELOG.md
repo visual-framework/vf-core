@@ -1,5 +1,6 @@
 ### 1.1.1
 
+* UI changes to fix accessibility issues
 * Changed : Modified the vf-pagination__link class to support vf-link styles
 * Changed : Modified the style for disabled links like 'Previous' (when on 1st page) so that it does not fail contrast check. Added example to showcase this behaviour.
 * Changed : Updated the current page number style to show bold text
