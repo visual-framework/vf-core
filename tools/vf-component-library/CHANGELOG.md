@@ -1,3 +1,8 @@
+### 1.2.4
+* Dependency bump
+* Gulp task for updating prod to dev endpoints for ebi-header-footer component
+* Updated css paths in .njk templates with relative paths
+
 ### 1.2.3
 * Fix issue loading scripts and styles for latest site
 

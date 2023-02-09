@@ -1,3 +1,7 @@
+### 2.2.37
+
+* Dependency bump - Node upgrade.
+
 ### 2.2.36
 
 * Use `renderMarkdown.parse` for marked 4+ support.
