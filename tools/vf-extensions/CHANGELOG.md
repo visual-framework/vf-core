@@ -1,3 +1,8 @@
+## 2.0.0-alpha.3
+
+* Bug fix - Updated search logic to show correct page description in search results
+* https://github.com/visual-framework/vf-core/pull/1857
+
 ## 2.0.0-alpha.2
 
 * Further revises integration with eleventy-cmd.js to allow more control from gulp.
