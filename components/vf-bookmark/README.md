@@ -4,13 +4,15 @@
 
 ## About
 
-Indicates if an item has been bookmarked to a list of favourites or similar.
+Indicates if an item has been bookmarked to a list of favourites or similar. Use `vf-button` instead of this component for the main call to action on a page.
 
 ## Usage
 
 This component shows if a piece of content has been selected by a user as a favourite using a text label and icon.
 
 No JavaScript functionality is provided and it is expected that the state handling will be done on a case-by-case basis on the project application.
+
+Use `vf-button` instead of this component for the main call to action on a page.
 
 ### Active state
 
@@ -31,7 +33,6 @@ The component can be configured with a number of options.
 - `modifier`: defaults to `inline`
     - `inline` or `button`
 - `icon`: defaults to `heart`
-    - `star` or `heart` (a bookmark icon may be added in the future)
 
 ### Accessibility
 
@@ -39,9 +40,14 @@ This component targets WCAG 2.1 AA accessibility.
 
 Note that the SVG icons use `aria-hidden="true"` as to be ignored by screen readers.
 
+### Pages that use this component
+
+The EMBL-EBI Training site includes pages that use [the inline variant to mark a training course as favourite](https://www.ebi.ac.uk/training/events/pride-database-proteomics-data-submission-access-and-visualisation/) and a customised version of [the button variant to mark a page as complete](https://www.ebi.ac.uk/training/online/courses/a-guide-to/molecular-sequence-features-and-analysis/).
+
+
 ## Install
 
-This repository is distributed with [npm][https://www.npmjs.com/]. After [installing npm][https://www.npmjs.com/get-npm] and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-bookmark` with this command.
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-bookmark` with this command.
 
 ```
 $ yarn add --dev @visual-framework/vf-bookmark

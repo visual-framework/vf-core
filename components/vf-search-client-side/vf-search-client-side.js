@@ -93,7 +93,9 @@ function vfSearchClientSide() {
 
   // set the input box to the search query
   if (typeof searchTerm !== "undefined") {
-    searchQueryInput[0].value = searchTerm;
+    searchQueryInput.forEach(inputbox => {
+      inputbox.value = searchTerm;
+    });
   }
 
   // get search box query string
