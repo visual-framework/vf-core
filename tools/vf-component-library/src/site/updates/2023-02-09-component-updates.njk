@@ -1,0 +1,104 @@
+---
+title: Rollup release 2.5.10
+subtitle: This release includes improvements in accessibility, usability, functionality and documentation of several VF components including vf-section-header, vf-pagination, vf-button, vf-card-container, vf-bookmark, vf-search-client-side and ebi-header-footer. We also improved the consistency of VF components with the corresponding WordPress blocks and started addressing issues with the VF site.
+date: 2023-02-09 12:30:00
+version: 2.5.10
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-search-client-side", "2.0.1", "69a3aa411375b7cc4659be1094eec3119d657e13") }}
+
+* Changed : Modified the logic to update search term in both the searchboxes (Menu and Current page)
+* https://github.com/visual-framework/vf-core/pull/1859
+
+{{ releaseLinks.notes("vf-component-library", "1.2.4", "c67a33a0ccb9e58dc2af274d0f60d82766a119d5") }}
+
+* Dependency bump
+* Gulp task for updating prod to dev endpoints for ebi-header-footer component
+* Updated css paths in .njk templates with relative paths
+* https://github.com/visual-framework/vf-core/pull/1865
+
+{{ releaseLinks.notes("vf-core", "2.2.38", "9c3847b89a2548a804e78d3772a9ef8f5ed7b5a9") }}
+
+* Dependency bump node upgrade
+* https://github.com/visual-framework/vf-core/pull/1847
+
+{{ releaseLinks.notes("vf-extensions", "2.0.0-alpha.3", "2c4322eacbd3202478d8fc178ec61933d9e38bd4") }}
+
+* Bug fix - Updated search logic to show correct page description in search results
+* https://github.com/visual-framework/vf-core/pull/1865
+
+{{ releaseLinks.notes("vf-pagination", "1.1.1", "330e6578b34eaabac1099a3fa64fee0efe5ad8f3") }}
+
+* UI changes to fix accessibility issues
+* Changed : Modified the vf-pagination__link class to support vf-link styles
+* Changed : Modified the style for disabled links like 'Previous' (when on 1st page) so that it does not fail contrast check. Added example to showcase this behaviour.
+* Changed : Updated the current page number style to show bold text
+* https://github.com/visual-framework/vf-core/pull/1858
+
+{{ releaseLinks.notes("vf-section-header", "1.5.4", "43e1b3c31aebe8873eb9d7b7cf6c3bb04dac723e") }}
+
+* feat: Added hidden field (optional) to address accessibility issues for H2 tags
+* https://github.com/visual-framework/vf-core/pull/1851
+
+{{ releaseLinks.notes("vf-bookmark", "1.0.0-alpha.3", "66d21ba95848efbe35f4f69735b4e53b192f0d42") }}
+
+* Update bookmark link to a button element
+* Default icon change to heart
+* https://github.com/visual-framework/vf-core/pull/1852
+
+{{ releaseLinks.notes("vf-button", "2.0.0-alpha.6", "3b9bd57cfa6d92c11f8c0cd6d5d4b4ad2ae6dfae") }}
+
+* Changes the link variant to be a button element
+* https://github.com/visual-framework/vf-core/pull/1849
+
+{{ releaseLinks.notes("vf-card-container", "3.2.2", "43e1b3c31aebe8873eb9d7b7cf6c3bb04dac723e") }}
+
+* Added: Attribute ‘hidden’ to container_section__header in config and accordingly it adds ‘vf-u-sr-only’ css class to hide section header, this to fix component accessibility
+* Added: Added condition to components.njk to show example section for type=container
+* Changed: vf-u-background-color--grey--lightest to vf-u-background-color-ui--white to apply white background
+* https://github.com/visual-framework/vf-core/pull/1851
+
+{{ releaseLinks.notes("ebi-header-footer", "2.1.3", "39dd9354d3f2a0b37cb6e698405458cc47cc2784") }}
+
+* Resolve accessbility issues for EBI blackbar header for v1.4 and also fixes overlapping x button for search box.
+* https://github.com/visual-framework/vf-core/pull/1847
+
+{% endmarkdown %}
