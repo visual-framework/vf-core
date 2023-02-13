@@ -39,6 +39,7 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 
 1. update the expected new tag version to `/tools/vf-component-library/src/site/_data/siteConfig.js`
     - see last tag `git describe --abbrev=0 --tags`
+1. Remove `dev` from `vfVersionPrefix` in `/tools/vf-component-library/src/site/_data/siteConfig.js`, this is needed only for development
 1. generate an update
     - `yarn run releasenotes`
     - format and review the newly made file at `tools/vf-component-library/src/site/updates`
