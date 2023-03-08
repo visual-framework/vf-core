@@ -1,3 +1,7 @@
+### 1.5.5
+
+* fix: Changed the hidden header code to show a header without a link. If not hidden then it'd show as usual.
+
 ### 1.5.4
 
 * feat: Added hidden field (optional) to address accessibility issues for H2 tags

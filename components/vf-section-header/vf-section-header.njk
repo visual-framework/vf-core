@@ -15,19 +15,30 @@
 {% endif %}
 
 <div class="vf-section-header">
-  <{{tags}}
-    class="vf-section-header__heading{% if href %} vf-section-header__heading--is-link{% endif %}{%- if hidden %} vf-u-sr-only{% endif -%}"
-    {%- if id %} id="{{id}}"{% endif -%}
-  >
-    {% if href %}<a href="{{href}}">{% endif %}
+  {# Check if the 'hidden' property is true and just show the h2 with title if it is #}
+  {% if hidden %}
+    <{{tags}}
+      class="vf-section-header__heading vf-u-sr-only"
+      {%- if id %} id="{{id}}"{% endif -%}
+    >
     {{- section_title -}}
-    {% if href %}</a>{% endif %}
+    </{{tags}}>
+  {# If the 'hidden' property is not true show the h2 with link and image #}
+  {% else %}
+    <{{tags}}
+      class="vf-section-header__heading{% if href %} vf-section-header__heading--is-link{% endif %}"
+      {%- if id %} id="{{id}}"{% endif -%}
+    >
+      {% if href %}<a href="{{href}}">{% endif %}
+      {{- section_title -}}
+      {% if href %}</a>{% endif %}
 
-    {%- if href %}
-      <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg>
-    {%- endif -%}
+      {%- if href %}
+        <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path></svg>
+      {%- endif -%}
 
-  </{{tags}}>
+    </{{tags}}>
+  {% endif %}
   {% if section__subheading %}
     <p class="vf-section-header__subheading">{{ section__subheading }}</p>
   {% endif %}
