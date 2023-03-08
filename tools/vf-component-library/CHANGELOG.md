@@ -1,3 +1,7 @@
+### 1.2.5
+
+* fix: Fix to replace common changelog to component specific changelog
+
 ### 1.2.4
 
 * Dependency bump
