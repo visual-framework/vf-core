@@ -372,15 +372,15 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
         {{ readmeInstallation | replace("## Install", "") | markdown | safe }}
       </details>
       {% endif %}
-
-      {% if 'CHANGELOG.md' | length %}
+      {# Check and then include CHANGELOG.md for the specific component #}
+      {% if '../vf-core-components/' + component.baseHandle + '/CHANGELOG.md' | length %}
       {% markdown %}
       <div class="vf-stack vf-stack--custom" style="--vf-stack-margin--custom: .5rem;">
       <h3>Changelog</h3>
       <details class="vf-details" id="changelog">
         <summary class="vf-details--summary">Changelog</summary>
 
-        {% include 'CHANGELOG.md' ignore missing %}
+        {% include '../vf-core-components/' + component.baseHandle + '/CHANGELOG.md' ignore missing %}
       </details>
       </div>
       {% endmarkdown %}
