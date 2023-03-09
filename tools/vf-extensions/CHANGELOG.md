@@ -1,3 +1,7 @@
+## 2.1.0-alpha.1
+
+* Feature: This adds support for Eleventy v2 and should remain backwards compatible with v1.
+
 ## 2.0.0-alpha.3
 
 * Bug fix - Updated search logic to show correct page description in search results
