@@ -12,7 +12,8 @@ A multi-column container for `vf-card`.
 
 - Use one card container for all cards that belong to the same section.
 - Always include [a vf-section header](https://stable.visual-framework.dev/components/vf-section-header/index.html) to the card container. This ensures that your page will not have [skipped headings](https://www.w3.org/WAI/tutorials/page-structure/headings/#heading-ranks) between the cards and the preceding content outside the container.
-- If you do not want the section header to be visible, you can hide it using the class `vf-u-sr-only` (for screen reader only). See the [example with the hidden header below](#examples).
+-  If you do not want the section header to be visible, you can hide it by passing `hidden` as true (hidden: true) inside the `container_section__header` section in card container config.yml setting. This value (true) applies the class `vf-u-sr-only` (for screen reader only) to the section header and hides it. See the [example with the hidden header below](#examples).
+- Hiding the heading can only be applied to a section header that is not a link (i.e. [the default variant](https://stable.visual-framework.dev/components/vf-section-header/index.html#vf-section-header--default)). Section headers that act as links should not be hidden because when users navigate with the keyboard the header is selected as a link but it will not be visible to them.
 
 ### Card container background
 - Use a white background for both [striped (green) cards](https://stable.visual-framework.dev/components/vf-card/#vf-card--striped) and [bordered (white) cards](https://stable.visual-framework.dev/components/vf-card/#vf-card--bordered).
@@ -26,7 +27,7 @@ The containier defaults to three columns (the recommended number of image-based 
 
 The `vf-card` component allows for a CSS custom property to be set to define the `aspect-ratio` of the card image. This can be set per card, but with the `vf-card-container` you should aim for consistency across the `vf-card`s it is displaying. Therefore we can pass the `aspect-ratio` value from this component and it will cascade through the CSS onto the cards. This is encapsulated to this container, which allows you to set different `aspect-ratio` values for different containers as needed.
 
-To set the `aspect-ratio` you will need to set the `card_custom_aspect_ratio` key/value pair in the `.yml` or the `&#x7B;&#x25;&#x20; render &#x20;&#x25;&#x7D;` api of the `vf-card-container as needed.
+To set the `aspect-ratio` you will need to set the `card_custom_aspect_ratio` key/value pair in the `.yml` or the `{#{% render %}#}` api of the `vf-card-container` as needed.
 
 ### Accessibility
 
