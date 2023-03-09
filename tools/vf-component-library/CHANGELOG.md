@@ -1,6 +1,6 @@
 ### 1.2.5
 
-* fix: Fix to replace common changelog to component specific changelog
+* Bug fix: Fixes identical changelog information for all components changelog section #1874
 
 ### 1.2.4
 
