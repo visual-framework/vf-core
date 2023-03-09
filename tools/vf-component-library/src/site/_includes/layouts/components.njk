@@ -372,21 +372,19 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
         {{ readmeInstallation | replace("## Install", "") | markdown | safe }}
       </details>
       {% endif %}
-      {# Iterate through the array of assets for current component and check for CHANGELOG.md. Include it if found. #}
-      {%- for asset in component.resources.assets %}
-        {% if asset.name === 'CHANGELOG.md' %}
-        {% markdown %}
-        <div class="vf-stack vf-stack--custom" style="--vf-stack-margin--custom: .5rem;">
-        <h3>Changelog</h3>
-        <details class="vf-details" id="changelog">
-          <summary class="vf-details--summary">Changelog</summary>
+      {# Check and then include CHANGELOG.md for the specific component #}
+      {% if '../vf-core-components/' + component.baseHandle + '/CHANGELOG.md' | length %}
+      {% markdown %}
+      <div class="vf-stack vf-stack--custom" style="--vf-stack-margin--custom: .5rem;">
+      <h3>Changelog</h3>
+      <details class="vf-details" id="changelog">
+        <summary class="vf-details--summary">Changelog</summary>
 
-          {% include '../vf-core-components/' + asset.relPath ignore missing %}
-        </details>
-        </div>
-        {% endmarkdown %}
-        {% endif %}
-      {%- endfor %}
+        {% include '../vf-core-components/' + component.baseHandle + '/CHANGELOG.md' ignore missing %}
+      </details>
+      </div>
+      {% endmarkdown %}
+      {% endif %}
 
     {% else %}
       {% markdown %}
