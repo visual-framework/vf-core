@@ -1,3 +1,7 @@
+### 1.2.5
+
+* Bug fix: Fixes identical changelog information for all components changelog section #1874
+
 ### 1.2.4
 
 * Dependency bump
