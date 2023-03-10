@@ -1,6 +1,7 @@
 ### 1.2.5
 
 * Bug fix: Fixes identical changelog information for all components changelog section #1874
+* Feature: Eleventy upgrade to version 2.0.0
 
 ### 1.2.4
 

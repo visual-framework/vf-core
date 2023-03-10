@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-// Forked from eleventy v1.0.0-beta.2
+// Forked from eleventy v2.0.0-beta.3
+// https://github.com/11ty/eleventy/blob/v2.0.0-beta.3/cmd.js
 
 // The main difference is that we comment out `elev.write()` for build time, allowing this to be run by a parent process.
 // Eleventy is build assuming it will be run from the command line, and we wish to use it as part of our gulp process.
@@ -19,15 +20,7 @@ try {
   let errorHandler = new EleventyErrorHandler();
   const EleventyCommandCheckError = require("@11ty/eleventy/src/EleventyCommandCheckError");
   const argv = require("minimist")(process.argv.slice(2), {
-    string: [
-      "input",
-      "output",
-      "formats",
-      "config",
-      "pathprefix",
-      "port",
-      "to",
-    ],
+    string: ["input", "output", "formats", "config", "pathprefix", "port", "to"],
     boolean: [
       "quiet",
       "version",
@@ -35,11 +28,12 @@ try {
       "dryrun",
       "help",
       "serve",
-      "passthroughall",
       "incremental",
+      "ignore-initial",
     ],
     default: {
       quiet: null,
+      "ignore-initial": false,
     },
     unknown: function (unknownArgument) {
       // throw new EleventyCommandCheckError(
@@ -88,7 +82,6 @@ try {
     elev.setPathPrefix(argv.pathprefix);
     elev.setDryRun(argv.dryrun);
     elev.setIncrementalBuild(argv.incremental);
-    elev.setPassthroughAll(argv.passthroughall);
     elev.setFormats(argv.formats);
 
     // careful, we can’t use async/await here to error properly
