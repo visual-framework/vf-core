@@ -1,3 +1,7 @@
+### 2.0.1
+
+* fix: Fixed space issue to make the 'default' variant example look like a link (#1895)
+
 ### 2.0.0
 
 * removes secondary link colours, as this is more often defined by the parent component.
