@@ -1,3 +1,9 @@
+### 2.0.1
+
+* Fixed: Fixed space issue to make the 'default' variant example look like a link (#1895)
+* Added: Added documentation for vf-link: description in About, Usage notes and links to related documentation.(#1894)
+* Added: Added accessibility note to vf-link documentation (#1899)
+
 ### 2.0.0
 
 * removes secondary link colours, as this is more often defined by the parent component.
