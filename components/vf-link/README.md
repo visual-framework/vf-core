@@ -33,6 +33,10 @@ For more information on links please consult the following documents:
 - [Writing Hyperlinks: Salient, Descriptive, Start with Keyword | Nielsen Norman Group](https://www.nngroup.com/articles/writing-links/)
 - [“Learn More” Links: You Can Do Better | Nielsen Norman Group](https://www.nngroup.com/articles/learn-more-links/)
 
+### Accessibility
+
+This component targets WCAG 2.1 AA accessibility.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-link` with this command.

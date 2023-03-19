@@ -1,15 +1,15 @@
 {% spaceless %}
 
 <a
-{%- if id %} id="{{-id-}}"{% endif -%}
+{% if id -%} id="{{-id-}}"{%- endif %}
 
 href="{{-link_href-}}"
 
-{%- if target %} target="_{{-target-}}"{% endif -%}
+{% if target -%} target="_{{-target-}}"{%- endif %}
 
 class="vf-link{%- if override_class %} | {{override_class}}{% endif -%}"
 
-{%- if disabled -%}disabled{%- endif %}
+{% if disabled -%}disabled{%- endif %}
 >
 
 {{- html | safe if html else text -}}
