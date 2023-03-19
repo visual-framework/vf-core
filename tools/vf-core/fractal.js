@@ -89,7 +89,7 @@ module.exports = {
     /* build destination */
     var vfBuilderPath = global.vfBuilderPath || __dirname + "/build";
     fractal.web.set("builder.dest", vfBuilderPath);
-    fractal.set("components.resources.assets.match",  ["**/*.njk", "**/*.config.yml", "**/*.scss", "**/CHANGELOG.md", "**/*.js","**/*.css", "!**/*.precompiled.js", "!**/package.variables.scss", "!**/index.scss"]);
+    fractal.set("components.resources.assets.match",  ["**/*.njk", "**/*.config.yml", "**/*.scss", "**/CHANGELOG.md", "**/*.js","**/*.css", "**/*component*.ts", "!**/*.precompiled.js", "!**/package.variables.scss", "!**/index.scss"]);
 
     /* configure web */
     var vfStaticPath = global.vfStaticPath || __dirname + "/temp/build-files";
