@@ -7,14 +7,21 @@ class VfBannerAngularComponent {
     constructor() {
         /*  Initialize values based on input values for basic banner */
         this.banner__type = 'basic';
-        this.banner__variant = '';
         this.banner__message = '';
         this.banner__dismissible = false;
         /* Initialize values based on input values for inline banner */
         this.banner__inline_href = '';
-        this.bannerclass = 'vf-banner vf-banner--alert ';
+        this.bannerclass = '';
     }
     ngOnInit() {
+        this.setValues();
+    }
+    ngOnChanges() {
+        this.setValues();
+    }
+    /* Set values as per input and updated changes */
+    setValues() {
+        this.bannerclass = 'vf-banner vf-banner--alert ';
         /*Based on banner type received set the banner class */
         switch (this.banner__variant) {
             case 'banner__info':
@@ -33,7 +40,7 @@ class VfBannerAngularComponent {
     }
 }
 VfBannerAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBannerAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-VfBannerAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.3", type: VfBannerAngularComponent, selector: "vf-banner", inputs: { banner__type: "banner__type", banner__variant: "banner__variant", banner__message: "banner__message", banner__dismissible: "banner__dismissible", banner__inline_href: "banner__inline_href" }, ngImport: i0, template: `
+VfBannerAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.3", type: VfBannerAngularComponent, selector: "vf-banner", inputs: { banner__type: "banner__type", banner__variant: "banner__variant", banner__message: "banner__message", banner__dismissible: "banner__dismissible", banner__inline_href: "banner__inline_href" }, usesOnChanges: true, ngImport: i0, template: `
   <!-- Basic Banner HTML -->
   <div *ngIf="banner__type === 'basic'" [class]="bannerclass">
   <div class="vf-banner__content">
