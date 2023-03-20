@@ -1,3 +1,7 @@
+### 4.0.0-alpha.0
+
+* Added : Experimental Angular support for Hero  component
+
 ### 3.3.4
 
 * Changing from h1 to h2
