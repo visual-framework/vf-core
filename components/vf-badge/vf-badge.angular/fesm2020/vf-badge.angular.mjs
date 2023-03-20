@@ -16,6 +16,13 @@ class VfBadgeAngularComponent {
         this.class = 'vf-badge ';
     }
     ngOnInit() {
+        this.setValues();
+    }
+    ngOnChanges() {
+        this.setValues();
+    }
+    /* Set values as per input and updated changes */
+    setValues() {
         /* Set values ass per the input */
         this.content = this.html !== '' ? this.html : this.text;
         this.class += this.theme !== '' ? 'vf-badge--' + this.theme + ' ' : '';
@@ -30,17 +37,17 @@ class VfBadgeAngularComponent {
     }
 }
 VfBadgeAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBadgeAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-VfBadgeAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.3", type: VfBadgeAngularComponent, selector: "vf-badge", inputs: { badge_href: "badge_href", theme: "theme", text: "text", style: "style", html: "html", override_class: "override_class", id: "id" }, ngImport: i0, template: `
-    <a [attr.id] = "id !== undefined ? id : null" *ngIf="badge_href !== ''" [href]="badge_href" [class]="class">{{content}}</a>
-    <span [attr.id] = "id !== undefined ? id : null" *ngIf="!badge_href || badge_href === null || badge_href === ''" [class]="class">{{content}}</span>
+VfBadgeAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.3", type: VfBadgeAngularComponent, selector: "vf-badge", inputs: { badge_href: "badge_href", theme: "theme", text: "text", style: "style", html: "html", override_class: "override_class", id: "id" }, usesOnChanges: true, ngImport: i0, template: `
+    <a [attr.id] = "id !== undefined ? id : null" *ngIf="badge_href !== ''" [href]="badge_href" [class]="class" [innerHTML]="content"></a>
+    <span [attr.id] = "id !== undefined ? id : null" *ngIf="!badge_href || badge_href === null || badge_href === ''" [class]="class" [innerHTML]="content"></span>
   `, isInline: true, dependencies: [{ kind: "directive", type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBadgeAngularComponent, decorators: [{
             type: Component,
             args: [{ selector: "vf-badge", template: `
-    <a [attr.id] = "id !== undefined ? id : null" *ngIf="badge_href !== ''" [href]="badge_href" [class]="class">{{content}}</a>
-    <span [attr.id] = "id !== undefined ? id : null" *ngIf="!badge_href || badge_href === null || badge_href === ''" [class]="class">{{content}}</span>
+    <a [attr.id] = "id !== undefined ? id : null" *ngIf="badge_href !== ''" [href]="badge_href" [class]="class" [innerHTML]="content"></a>
+    <span [attr.id] = "id !== undefined ? id : null" *ngIf="!badge_href || badge_href === null || badge_href === ''" [class]="class" [innerHTML]="content"></span>
   ` }]
-        }], ctorParameters: function () { return []; }, propDecorators: { badge_href: [{
+        }], propDecorators: { badge_href: [{
                 type: Input
             }], theme: [{
                 type: Input

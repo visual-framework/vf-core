@@ -1,3 +1,7 @@
+### 2.2.39
+
+* Added : Angular support for vf-badge, vf-banner, vf-hero
+
 ### 2.2.38
 
 * Dependency bump node upgrade
