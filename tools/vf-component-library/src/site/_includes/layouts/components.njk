@@ -279,6 +279,21 @@ This approach is best for bare-bones Nunjucks environments, such as precompiled 
                 {%- raw %}{% render '@{% endraw %}{{variant.baseHandle}}', {{variant.context | dump(2)}} {% raw %}%}{% endraw %}
                 </code></pre>
               </details>
+              {% set angularComponents = "vf-badge, vf-banner, vf-hero" %}
+              {% if component.baseHandle in angularComponents %}
+              <details class="vf-details vf-box vf-box--outline">
+                <summary class="vf-details--summary">Angular syntax</summary>
+                <pre><code>
+import { {{ component.baseHandle | camelize(true) | replace("-", "") }}AngularModule } from '@visual-framework/{{component.baseHandle}}/{{component.baseHandle}}.angular';
+@NgModule({
+  imports: [ {{ component.baseHandle | camelize(true) | replace("-", "") }}AngularModule, YourOtherModules],
+  ...
+})
+{{ '<' | escape }}{{ component.baseHandle }} parameter="value" />
+                </code></pre>
+                <br/><p>For individual parameter names and options, see the Nunjucks syntax example.</p>
+              </details>
+              {% endif %}
               {% set reactComponents = "vf-card, vf-button, vf-back-to-top" %}
               {% if component.baseHandle in reactComponents %}
               <details class="vf-details vf-box vf-box--outline">

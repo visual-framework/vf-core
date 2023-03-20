@@ -1,3 +1,7 @@
+### 3.0.0-alpha.0
+
+* Added : Experimental Angular support for Badge
+
 ### 2.0.1
 
 * Correct "secondry" typo.
