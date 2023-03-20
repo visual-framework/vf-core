@@ -1,0 +1,6 @@
+/*
+ * Public API Surface of vf-banner.angular
+ */
+export * from './lib/vf-banner.angular.component';
+export * from './lib/vf-banner.angular.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL3ZmLWJhbm5lci5hbmd1bGFyL3NyYy9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYyxtQ0FBbUMsQ0FBQztBQUNsRCxjQUFjLGdDQUFnQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqIFB1YmxpYyBBUEkgU3VyZmFjZSBvZiB2Zi1iYW5uZXIuYW5ndWxhclxuICovXG5cbmV4cG9ydCAqIGZyb20gJy4vbGliL3ZmLWJhbm5lci5hbmd1bGFyLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi92Zi1iYW5uZXIuYW5ndWxhci5tb2R1bGUnO1xuIl19

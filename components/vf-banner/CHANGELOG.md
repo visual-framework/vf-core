@@ -1,3 +1,7 @@
+### 2.0.0-alpha.0
+
+* Added : Experimental Angular support for basic and inline banner type. See README.md for more. Support for additional banner types planned for future sprint.
+
 ### 1.9.2
 
 * Update focus indicators colors to increase contrast ratio and be easier to spot

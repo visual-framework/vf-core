@@ -2,6 +2,9 @@
 
 * Bug fix: Fixes identical changelog information for all components changelog section #1874
 * Feature: Eleventy upgrade to version 2.0.0
+* Added: Angular experimental support for vf-badge component
+* Added: Angular experimental support for vf-banner component
+* Added: Angular experimental support for vf-hero component
 
 ### 1.2.4
 
