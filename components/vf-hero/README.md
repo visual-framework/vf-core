@@ -31,6 +31,8 @@ You can bring your own image to use with the vf-hero.
 | Text         | Optional content that can help explain the page content in a brief paragraph.                                                                               | `vf_hero_text`       |
 | Link Text    | The text for the hero 'call to action' link. Only works if there is associated Link HREF.                                                                                | `vf_hero_link_text`  |
 | Link HREF    |  The url that the Link Text would be pointing to and opens in the same browser tab. This only works if there is associated Link Text                                                                              | `vf_hero_link_href`  |
+| Spacing      | If added spacing can be any of these values only : 200, 400, 500, 600, 800, 1200, 1600   | 'spacing'
+
 
 | Content name | `.yml` key           | CSS classname         |
 | ------------ | -------------------- | --------------------- |
@@ -55,6 +57,58 @@ IE 11 will get the background colour and the "roundels" image. Under the approac
 ### EMBL usage
 
 For EMBL sites, the `vf-hero` can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`).
+
+### Angular
+
+As of version 4.0.0-alpha.0 vf-hero has experimental Angular support.
+This package was generated with Angular version 15.2.0 and has been tested on application with Angular version 15.2.0.
+
+1. install `yarn add @visual-framework/vf-hero`
+2. import in your app.module
+   ```
+   import { VfHeroAngularModule } from '@visual-framework/vf-hero/vf-hero.angular';
+   @NgModule({
+     imports: [VfHeroAngularModule, YourOtherModules],
+     ...
+   })
+   ```
+3. can be used as
+   ```
+   <vf-hero
+    [vf_hero_kicker]="'<a href=JavaScript:Void(0);>VF Hamburg</a> | Structural Biology'"
+    [vf_hero_heading]="'About the Hentze group!'"
+    [vf_hero_heading_href]="'JavaScript:Void(0);'"
+    [vf_hero_subheading]="'an example of some ancillary text'"
+    [vf_hero_text]="['The Hentze group combines biochemical and <a href=JavaScript:Void(0);>systems–level approaches</a> to investigate the connections between <a href=JavaScript:Void(0);>gene expression</a> and <a href=JavaScript:Void(0);>cell metabolism</a>, and their roles in human disease.']"
+    [vf_hero_link_text]="'Learn more'"
+    [vf_hero_link_href]="'JavaScript:Void(0);'"
+    [vf_hero_image_size]="'auto 28.5rem'">
+    </vf-hero>
+   ```
+4. add to your styles.scss
+   ```
+   @import '../node_modules/@visual-framework/vf-sass-config/index.scss';
+   @import '../node_modules/@visual-framework/vf-box/vf-box.scss';
+   @import '../node_modules/@visual-framework/vf-stack/vf-stack.scss';
+   @import '../node_modules/@visual-framework/vf-u-fullbleed/vf-u-fullbleed.scss';
+   @import '../node_modules/@visual-framework/vf-hero/vf-hero.scss';
+   ```
+   you should also install [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles
+
+Usage:
+
+```
+  <vf-hero
+  [vf_hero_kicker]="'<a href=JavaScript:Void(0);>VF Hamburg</a> | Structural Biology'"
+  [vf_hero_heading]="'About the Hentze group!'"
+  [vf_hero_heading_href]="'JavaScript:Void(0);'"
+  [vf_hero_subheading]="'an example of some ancillary text'"
+  [vf_hero_text]="['The Hentze group combines biochemical and <a href=JavaScript:Void(0);>systems–level approaches</a> to investigate the connections between <a href=JavaScript:Void(0);>gene expression</a> and <a href=JavaScript:Void(0);>cell metabolism</a>, and their roles in human disease.']"
+  [vf_hero_link_text]="'Learn more'"
+  [vf_hero_link_href]="'JavaScript:Void(0);'"
+  [vf_hero_image_size]="'auto 28.5rem'">
+  </vf-hero>
+```
 
 ## Install
 
