@@ -1,3 +1,6 @@
+### 3.2.3
+
+docs: Updated documentation for hidden flag usage and fixed 3.1.0 changelog text which was causing compile error
 ### 3.2.2
 
 * Added: Attribute ‘hidden’ to container_section__header in config and accordingly it adds ‘vf-u-sr-only’ css class to hide section header, this to fix component accessibility
