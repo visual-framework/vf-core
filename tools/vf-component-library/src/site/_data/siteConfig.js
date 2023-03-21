@@ -7,7 +7,7 @@ module.exports = {
     short_description: "A front-end toolkit to quickly and collaboratively build better life science websites.",
     url: "https://stable.visual-framework.dev/",
     author: "Visual Framework system",
-    email: "ken.hawkins@embl.de",
+    email: "web-development-team@ebi.ac.uk",
   },
   buildTime: DateTime.fromISO(new Date().toISOString()),
   // vfVersion: global.vfVersion,
@@ -15,7 +15,7 @@ module.exports = {
   // vfVersion: "develop",
   // vfVersionPrefix: "dev.",
   // use this when tagging a release
-  vfVersion: "v2.5.10",
+  vfVersion: "v2.5.12",
   vfVersionPrefix: "",
   sections: {
     about: {

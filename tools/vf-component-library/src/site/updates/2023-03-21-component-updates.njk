@@ -1,0 +1,106 @@
+---
+title: Rollup release 2.5.12
+subtitle: This release includes Angular support for vf-badge, vf-banner and vf-hero, we have also added 11ty support for v2. It also includes improvements in accessibility, usability, documentation of vf-card-container and updates to documentation of vf-link. We also addressed bug where all compononents changelog section was identical for each component on the site.
+date: 2023-03-21 10:30:00
+version: 2.5.12
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+   {
+      "text": "Features",
+      "link_list_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    },
+    {
+      "text": "Bug fixes",
+      "link_list_href": "#bugs"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### New features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-hero", "4.0.0-alpha.0", "2357f982860ec053163e6cb77f7b97d79b1dc872") }} 
+
+* Added : Experimental Angular support for Hero  component
+
+{{ releaseLinks.notes("vf-banner", "2.0.0-alpha.0", "9da745711ff2e74402bea72e3c1b440649d021c8") }} 
+
+* Added : Experimental Angular support for basic and inline banner type. See README.md for more. Support for additional banner types planned for future sprint.
+
+{{ releaseLinks.notes("vf-badge", "3.0.0-alpha.0", "4b71b95d3eb148148996ee6f04df6c35e612558d") }} 
+
+* Added : Experimental Angular support for Badge
+
+{{ releaseLinks.notes("vf-core", "2.2.39", "4b71b95d3eb148148996ee6f04df6c35e612558d") }} 
+
+* Added : Angular support for vf-badge, vf-banner, vf-hero
+
+
+{{ releaseLinks.notes("vf-extensions", "2.1.0-alpha.1", "81a71cf307167657f46275a311d98080aba438ce") }} 
+
+* Feature: This adds support for Eleventy v2 and should remain backwards compatible with v1.
+
+{{ releaseLinks.notes("vf-component-library", "1.2.5", "81a71cf307167657f46275a311d98080aba438ce") }} 
+
+* Feature: This adds support for Eleventy v2 and should remain backwards compatible with v1.
+* Added: Angular experimental support for vf-badge component
+* Added: Angular experimental support for vf-banner component
+* Added: Angular experimental support for vf-hero component
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-card-container", "3.2.3", "06733115050bb1d1456476e04a7342fd7242dc78") }} 
+
+* docs: Updated documentation for hidden flag usage and fixed 3.1.0 changelog text which was causing compile error
+* moves the `default` context data in the `.yml` file to a `variant` to allow easier use of `{#{% include %}#}`.
+
+{{ releaseLinks.notes("vf-link", "2.0.1", "9cf29c148ab40e6f9bd5e1f1ee627e97ee56f7e3") }} 
+
+* Fixed: Fixed space issue to make the 'default' variant example look like a link (#1895)
+* Added: Added documentation for vf-link: description in About, Usage notes and links to related documentation.(#1894)
+* Added: Added accessibility note to vf-link documentation (#1899)
+
+{{ releaseLinks.notes("vf-section-header", "1.5.5", "75f1933bc40b9273b61e3cbd47f372332e7a810b") }} 
+
+* fix: Changed the hidden header code to show a header without a link. If not hidden then it'd show as usual.
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+{{ releaseLinks.notes("vf-component-library", "1.2.5", "5055f1984ff2a9390e36b733fefb9f7979e7f220") }} 
+
+* Bug fix: Fixes identical changelog information for all components changelog section #1874
+
+
+{% endmarkdown %}
