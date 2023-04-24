@@ -1,0 +1,6 @@
+/*
+ * Public API Surface of vf-button.angular
+ */
+export * from './lib/vf-button.angular.component';
+export * from './lib/vf-button.angular.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL3ZmLWJ1dHRvbi5hbmd1bGFyL3NyYy9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYyxtQ0FBbUMsQ0FBQztBQUNsRCxjQUFjLGdDQUFnQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqIFB1YmxpYyBBUEkgU3VyZmFjZSBvZiB2Zi1idXR0b24uYW5ndWxhclxuICovXG5cbmV4cG9ydCAqIGZyb20gJy4vbGliL3ZmLWJ1dHRvbi5hbmd1bGFyLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi92Zi1idXR0b24uYW5ndWxhci5tb2R1bGUnO1xuIl19
