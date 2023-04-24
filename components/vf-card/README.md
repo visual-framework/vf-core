@@ -46,7 +46,7 @@ The `vf-card` can take a variety optional of content:
 
 ### CSS Custom Properties
 
-For browsers that support the CSS [`aspect-ratio`](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio) property we provide the option to stipulate the images aspect ratio in a card using a CSS custom property. By default, if no CSS custom property is set, the aspect ratio is `8 / 4`. This can be set on the individual cards using the nunjucks 'key' in the `.yml` or with the `{%  render %}` api using the variable `card_custom_aspect_ratio`.
+For browsers that support the CSS [`aspect-ratio`](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio) property we provide the option to stipulate the images aspect ratio in a card using a CSS custom property. By default, if no CSS custom property is set, the aspect ratio is `8 / 4`. This can be set on the individual cards using the nunjucks 'key' in the `.yml` or with the `{#{%  render %}#}` api using the variable `card_custom_aspect_ratio`.
 
 ```
 --vf-card__image--aspect-ratio: 16 / 9;
