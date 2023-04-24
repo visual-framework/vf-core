@@ -1,3 +1,7 @@
+### 4.0.0-alpha.1
+
+* Added : Angular syntax for different variants as compared to common syntax
+
 ### 4.0.0-alpha.0
 
 * Added : Experimental Angular support for Hero  component
