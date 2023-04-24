@@ -11,10 +11,14 @@ class VfBannerAngularComponent {
         this.banner__dismissible = false;
         /* Initialize values based on input values for inline banner */
         this.banner__inline_href = '';
+        /* Initialize values based on input values for Fixed banner */
+        this.banner__text = '';
+        this.data_service_id = 'MyService';
+        this.data_protection_version = '0.1';
         this.bannerclass = '';
     }
     ngOnInit() {
-        this.setValues();
+        //Initialize something
     }
     ngOnChanges() {
         this.setValues();
@@ -38,9 +42,15 @@ class VfBannerAngularComponent {
                 break;
         }
     }
+    ngAfterViewInit() {
+        /* For banner type 'fixed' and 'top' we need to include vf-banner.js which has scripts to render and add functionality to these banner types */
+        if (this.banner__type === 'fixed' || this.banner__type === 'top') {
+            vfBanner();
+        }
+    }
 }
 VfBannerAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBannerAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-VfBannerAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.3", type: VfBannerAngularComponent, selector: "vf-banner", inputs: { banner__type: "banner__type", banner__variant: "banner__variant", banner__message: "banner__message", banner__dismissible: "banner__dismissible", banner__inline_href: "banner__inline_href" }, usesOnChanges: true, ngImport: i0, template: `
+VfBannerAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.3", type: VfBannerAngularComponent, selector: "vf-banner", inputs: { banner__type: "banner__type", banner__variant: "banner__variant", banner__message: "banner__message", banner__dismissible: "banner__dismissible", banner__inline_href: "banner__inline_href", banner__text: "banner__text", data_service_id: "data_service_id", data_protection_version: "data_protection_version" }, usesOnChanges: true, ngImport: i0, template: `
   <!-- Basic Banner HTML -->
   <div *ngIf="banner__type === 'basic'" [class]="bannerclass">
   <div class="vf-banner__content">
@@ -56,7 +66,32 @@ VfBannerAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0
       <p class="vf-banner__text">This is a new web page. <a [href]="banner__inline_href" class="vf-link">Complete our quick survey</a> to help us make it better.</p>
     </div>
   </div>
-
+  <!-- Fixed Banner HTML -->
+  <div *ngIf="banner__type === 'fixed'" class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
+  data-vf-js-banner
+  data-vf-js-banner-state="dismissible"
+  [attr.data-vf-js-banner-button-text]="banner__text"
+  [attr.data-vf-js-banner-cookie-name]="data_service_id"
+  [attr.data-vf-js-banner-cookie-version]="data_protection_version"
+  data-vf-js-banner-extra-button="<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>"
+  data-vf-js-banner-auto-accept="false">
+    <div class="vf-banner__content | vf-grid" data-vf-js-banner-text>
+      <p class="vf-banner__text vf-banner__text--lg">
+        This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-banner__link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-banner__link" href="JavaScript:Void(0);">Terms Of Use</a>.
+      </p>
+    </div>
+  </div>
+  <!-- Top Banner HTML -->
+  <div *ngIf="banner__type === 'top'" class="vf-banner vf-banner--fixed vf-banner--top vf-banner--phase"
+  data-vf-js-banner
+  data-vf-js-banner-state="dismissible"
+  data-vf-js-banner-button-text="Close notice"
+  data-vf-js-banner-button-theme="primary">
+    <div class="vf-banner__content" data-vf-js-banner-text>
+      <span class="vf-badge vf-badge--primary">BETA</span>
+      <p class="vf-banner__text">This is the new EMBL.org <a [href]="banner__inline_href" class="vf-banner__link">Complete our quick survey</a> to help us make it better.</p>
+    </div>
+  </div>
     `, isInline: true, dependencies: [{ kind: "directive", type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBannerAngularComponent, decorators: [{
             type: Component,
@@ -78,7 +113,32 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImpor
       <p class="vf-banner__text">This is a new web page. <a [href]="banner__inline_href" class="vf-link">Complete our quick survey</a> to help us make it better.</p>
     </div>
   </div>
-
+  <!-- Fixed Banner HTML -->
+  <div *ngIf="banner__type === 'fixed'" class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
+  data-vf-js-banner
+  data-vf-js-banner-state="dismissible"
+  [attr.data-vf-js-banner-button-text]="banner__text"
+  [attr.data-vf-js-banner-cookie-name]="data_service_id"
+  [attr.data-vf-js-banner-cookie-version]="data_protection_version"
+  data-vf-js-banner-extra-button="<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>"
+  data-vf-js-banner-auto-accept="false">
+    <div class="vf-banner__content | vf-grid" data-vf-js-banner-text>
+      <p class="vf-banner__text vf-banner__text--lg">
+        This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-banner__link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-banner__link" href="JavaScript:Void(0);">Terms Of Use</a>.
+      </p>
+    </div>
+  </div>
+  <!-- Top Banner HTML -->
+  <div *ngIf="banner__type === 'top'" class="vf-banner vf-banner--fixed vf-banner--top vf-banner--phase"
+  data-vf-js-banner
+  data-vf-js-banner-state="dismissible"
+  data-vf-js-banner-button-text="Close notice"
+  data-vf-js-banner-button-theme="primary">
+    <div class="vf-banner__content" data-vf-js-banner-text>
+      <span class="vf-badge vf-badge--primary">BETA</span>
+      <p class="vf-banner__text">This is the new EMBL.org <a [href]="banner__inline_href" class="vf-banner__link">Complete our quick survey</a> to help us make it better.</p>
+    </div>
+  </div>
     `
                 }]
         }], propDecorators: { banner__type: [{
@@ -90,6 +150,12 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImpor
             }], banner__dismissible: [{
                 type: Input
             }], banner__inline_href: [{
+                type: Input
+            }], banner__text: [{
+                type: Input
+            }], data_service_id: [{
+                type: Input
+            }], data_protection_version: [{
                 type: Input
             }] } });
 
