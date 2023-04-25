@@ -1,33 +1,50 @@
-// vf-button for Angular
-// ---
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: "a[vf-button], button[vf-button]",
+  selector: 'vf-button',
   template: `
-    <button
-      class="vf-button"
-      [ngClass]="{
-        'vf-button--primary': primary,
-        'vf-button--secondary': secondary && !primary,
-        'vf-button--sm': small,
-        'vf-button--tertiary': disabled
-      }"
-      [disabled]="disabled"
-    >
-      <ng-content></ng-content>
-    </button>
+    <button [attr.id] = "id !== undefined ? id : null" [class]="class" [innerHTML]="content"></button>
   `,
-  styleUrls: []
+  styles: []
 })
-// note: we don't pass style urls here, instead we include them in the overall project sass build process
-export class VfButton implements OnInit {
-  @Input() primary = false;
-  @Input() secondary = true;
-  @Input() small = false;
-  @Input() disabled = false;
+export class VfButtonAngularComponent implements OnInit {
+  /*  Initialize values based on input values for button*/
+  @Input() theme  = '';
+  @Input() id:  string | undefined;
+  @Input() text = '';
+  @Input() style: Array<'primary' | 'secondary' | 'tertiary'> = [];
+  @Input() size: string | undefined;
+  @Input() override_class = '';
+  @Input() html = '';
 
-  constructor() {}
+  content =  '';
+  class = 'vf-button ';
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //Initialize something
+  }
+
+  ngOnChanges(): void {
+    this.setValues();
+  }
+
+  /* Set values as per input and updated changes */
+  setValues(): void {
+
+    /* Set values ass per the input */
+    this.content = this.html !== '' ? this.html : this.text;
+    this.class += this.theme !== '' ? 'vf-button--' + this.theme +  ' ' : '';
+    /* Update class value if styles are received in input */
+    if(this.style.length > 0) {
+      this.style.forEach(style => {
+        this.class += 'vf-button--' + style +  ' ';
+      });
+    }
+    /* Update class value if size is received in input */
+    if(this.size !== undefined) {
+      this.class += 'vf-button--' + this.size +  ' ';
+    }
+    /* Update class value if override style received in input */
+    this.class += this.override_class !== '' ? '| ' + this.override_class : '';
+  }
 }
