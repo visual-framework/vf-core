@@ -56,8 +56,8 @@ Like all JS-enabled components in the Visual Framework, if you wish to use the b
 As of version 2.0.0-alpha.0 vf-banner has experimental Angular support.
 This package was generated with Angular version 15.2.0 and has been tested on application with Angular version 15.2.0.
 
-1. install `yarn add @visual-framework/vf-banner`
-2. import in your app.module
+1. Install `yarn add @visual-framework/vf-banner`
+2. Import in your app.module
    ```
    import { VfBannerAngularModule } from '@visual-framework/vf-banner/vf-banner.angular';
 
@@ -66,26 +66,29 @@ This package was generated with Angular version 15.2.0 and has been tested on ap
      ...
    })
    ```
-3. can be used as
+3. Can be used as
    ```
    <vf-banner [banner__variant]="'banner__info'" [banner__dismissible]="true" [banner__message]="'Here is some very, <em>very</em> <a class=\'vf-banner__link\' href=\'#\' onclick=\'return false;\'>important information</a>'"></vf-banner>
    ```
 
    Possible combinations
 
-    | variable             | options           | default | release  |
-    | -------------------- | ----------------- | ------- | -------- |
-    | banner__message      |                   |         |          |
-    | banner__type         |                   | 'basic' | current  |
-    |                      | 'inline'          |         | current  |
-    |                      | 'fixed'           |         | upcoming |
-    |                      | 'top'             |         | upcoming |
-    | banner__variant      | 'banner__info'    |         |          |
-    |                      | 'banner__warning' |         |          |
-    |                      | 'banner__danger'  |         |          |
-    |                      | 'banner__success' |         |          |
-    | banner__dismissible  | true, false       | false   |          |
-    | banner__inline_href  |                   |         |          |
+    | Variable                  | Options           | Default | Release  | Applicable to banner types |
+    | ------------------------- | ----------------- | ------- | -------- | -------------------------- |
+    | banner__message           |                   |         |          | 'basic'                    |
+    | banner__type              |                   | 'basic' | current  | all types                  |
+    |                           | 'inline'          |         | current  |                            |
+    |                           | 'fixed'           |         | current  |                            |
+    |                           | 'top'             |         | current  |                            |
+    | banner__variant           | 'banner__info'    |         |          | 'basic'                    |
+    |                           | 'banner__warning' |         |          |                            |
+    |                           | 'banner__danger'  |         |          |                            |
+    |                           | 'banner__success' |         |          |                            |
+    | banner__dismissible       | true, false       | false   |          | 'basic'                    |
+    | banner__inline_href       |                   |         |          | 'inline', 'top'            |
+    | banner__text              |                   |         |          | 'fixed'                    |
+    | data_service_id           |                   |         |          | 'fixed'                    |
+    | data_protection_version   |                   |         |          | 'fixed'                    |
 
 4. CSS to be added to your styles.scss
    ```
@@ -101,13 +104,31 @@ This package was generated with Angular version 15.2.0 and has been tested on ap
    @import '../node_modules/@visual-framework/vf-banner/vf-banner--gdpr.scss';
 
    ```
+   for the 'fixed' and 'top' banner type additionally add below to styles.scss
+   ```
+   @import "../node_modules/@visual-framework/vf-badge/vf-badge.scss";
+   @import '../node_modules/@visual-framework/vf-button/vf-button.scss';
+   @import '../node_modules/@visual-framework/vf-grid/vf-grid.scss';
+
+   ```
    you should also install [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles
 
-Usage:
+5. Important note on 'fixed' and 'top' variants for Angular:
 
-```
-<vf-banner [banner__variant]="'banner__info'" [banner__dismissible]="true" [banner__message]="'Here is some very, <em>very</em> <a class=\'vf-banner__link\' href=\'#\' onclick=\'return false;\'>important information</a>'"></vf-banner>
-```
+   For the 'fixed' and 'top' variant to work properly in Angular we need to make sure we follow the below additional steps
+   1. Copy the vf-banner.js (from Assets section below) to your src/assets/vf-banner folder.
+   2. Comment or remove the  last line "export { vfBanner };" in this copied file.
+   3. In the angular.json inside "scripts": [] add the above file reference like -
+        "scripts": [
+              "src/assets/vf-banner/vf-banner.js"
+            ]
+   4. Rerun the project if already running.
+
+  Usage:
+
+  ```
+  <vf-banner [banner__variant]="'banner__info'" [banner__dismissible]="true" [banner__message]="'Here is some very, <em>very</em> <a class=\'vf-banner__link\' href=\'#\' onclick=\'return false;\'>important information</a>'"></vf-banner>
+  ```
 
 ## Install
 
