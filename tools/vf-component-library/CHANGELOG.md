@@ -1,3 +1,12 @@
+### 1.2.6
+
+* Bug fix: Fixed changelog for Pagination component. Extension to bug #1874
+* Added: Angular experimental support for vf-button component
+* Added: Angular experimental support for vf-banner component for 'fixed' and 'top' variant
+* Added: Angular syntax for different variants for vf-badge, vf-button, vf-banner, vf-hero component
+* Added: React experimental support for vf-badge component
+* Bug fix: Updated vf-card documentation to fix the typo
+
 ### 1.2.5
 
 * Bug fix: Fixes identical changelog information for all components changelog section #1874
