@@ -1,7 +1,11 @@
+### 3.0.0-alpha.0
+
+* Changed : Angular support for Button  component as a standalone package. See README.md for more.
+
 ### 2.0.0-alpha.6
 
 * Changes the link variant to be a button element
-  
+
 ### 2.0.0-alpha.5
 
 * Readme formatting fixes.

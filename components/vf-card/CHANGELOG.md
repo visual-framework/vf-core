@@ -1,3 +1,7 @@
+### 2.7.1
+
+* Bug fix: Updated vf-card documentation to fix the typo
+
 ### 2.7.0
 
 * Updates `vf-stack` custom properties to work nicely with `vf-stack` version 3.

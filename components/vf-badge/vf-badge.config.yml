@@ -14,18 +14,24 @@ variants:
     context:
       text: alpha
       theme: primary
+      angular: <vf-badge [text]="'alpha'" [theme]="'primary'" [id]="'Badge1'"/>
+      react: <VfBadge text="ALPHA" theme="primary" id="Badge1"/>
 
   - name: secondary
     context:
       isExample: true
       text: alpha
       theme: secondary
+      angular: <vf-badge [text]="'alpha'" [theme]="'secondary'" [style]="['primary', 'secondary']"></vf-badge>
+      react: <VfBadge text="ALPHA" theme="secondary"/>
 
   - name: tertiary
     context:
       isExample: true
       text: alpha
       theme: tertiary
+      angular: <vf-badge [text]="'alpha'" [theme]="'tertiary'" [id]="'Badge2'"></vf-badge>
+      react: <VfBadge text="ALPHA" theme="tertiary" id="Badge2"/>
 
   - name: link - primary
     context:
@@ -33,3 +39,5 @@ variants:
       badge_href: "JavaScript:Void(0);"
       theme: primary
       text: beta
+      angular: <vf-badge [text]="'beta'" [theme]="'primary'" [id]="'BadgeHref'" [badge_href]="'JavaScript:Void(0);'"></vf-badge>
+      react: <VfBadge text="BETA" style="primary" id="BadgeHref" badge_href="JavaScript:Void(0);"/>

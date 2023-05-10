@@ -1,23 +1,5 @@
 // vf-banner
 
-// Turn the below code snippet into a banner
-// <div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
-// data-vf-js-banner
-// data-vf-js-banner-state="persistent|dismissible|blocking" data-vf-js-banner-esc-close="y|n"
-// data-vf-js-banner-cookie-name="{{data-service-id}}"
-// data-vf-js-banner-cookie-version="{{data-protection-version}}"
-// data-vf-js-banner-extra-button="<a href='#'>string1</a><a href='#'>string2</a>">
-//   <div class="vf-banner__content | vf-grid">
-//     <p class="vf-text vf-text--body-l">
-//       This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-link" href="JavaScript:Void(0);">Terms Of Use</a>.
-//     </p>
-//
-//     <button class="vf-button vf-button--secondary">
-//       {{vf-data-protection-banner__link}}
-//     </button>
-//   </div>
-// </div>
-
 /**
  * Clear the cooke. This is mostly a development tool.
  */
@@ -275,24 +257,3 @@ function vfBannerInsert(banner,bannerId,scope) {
 }
 
 export { vfBanner };
-
-// By default this creates banners from HTML
-// optionally you can programatically supply
-// Target HTML
-// `<div class="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
-//       data-vf-js-banner
-//       data-vf-js-banner-id="32423"
-//
-// ></div>`
-// var programaticalBanner = {
-//   vfJsBanner: "",
-//   vfJsBannerButtonText: "I agree, dismiss this banner",
-//   vfJsBannerCookieName: "MyService",
-//   vfJsBannerCookieVersion: "0.1",
-//   vfJsBannerExtraButton: "<a href='#'>Optional button</a><a target='_blank' href='#'>New tab button</a>",
-//   vfJsBannerId: "2352286",
-//   vfJsBannerText: '<p class="vf-text vf-text--body-l">This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-link" href="JavaScript:Void(0);">Terms Of Use</a>.</p>',
-//   vfJsBannerState: "dismissible",
-//   vfJsBannerAutoAccept: "true"
-// };
-// vfBannerInsert(programaticalBanner,'32423');

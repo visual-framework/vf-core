@@ -50,25 +50,26 @@ The guidelines on buttons in [the GOV.UK Design System](https://design-system.se
 
 ### Angular
 
-As of vf-button v2.0.0-alpha.2 vf-button has experimental Angular support.
+Latest Angular package (3.0.0-alpha.0) was generated with Angular version 15.2.0 and has been tested on application with Angular version 15.2.0.
 
 1. install `yarn add @visual-framework/vf-button`
 2. import in your app.module
    ```
-   import { VfButton } from "@visual-framework/vf-button/vf-button.angular.component.ts";
+   import { VfButtonAngularModule } from '@visual-framework/vf-button/vf-button.angular';
 
    @NgModule({
-     declarations: [VfButton, YourOtherComponents],
+     imports: [VfButtonAngularModule, YourOtherModules],
      ...
    })
    ```
-3. use
+3. can be used as
    ```
-   <button class="vf-button" primary="true" small="true">Hello world</button>
+   <vf-button [text]="'Primary Button'" [theme]="'primary'"></vf-button>
    ```
 4. add to your styles.scss
    ```
-   @import '~@visual-framework/vf-button/vf-button.scss';
+   @import '../node_modules/@visual-framework/vf-sass-config/index.scss';
+   @import "../node_modules/@visual-framework/vf-button/vf-button.scss";
    ```
    (you should also make use of [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter))
 
@@ -77,7 +78,7 @@ Depending on the success of this method, we plan to add standardized guidance to
 Usage:
 
 ```
-<button class="vf-button" primary="true" small="true">Hello</button>
+<vf-button [text]="'Primary Button'" [theme]="'primary'"></vf-button>
 ```
 
 ## Install

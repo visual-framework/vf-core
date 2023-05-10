@@ -1,28 +1,23 @@
-// vf-button for Angular
-// ---
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VfButton } from "./vf-button.angular.component.ts";
+import { VfButtonAngularComponent } from './vf-button.angular.component';
 
-describe("ButtonComponent", () => {
-  let component: VfButton;
-  let fixture: ComponentFixture<VfButton>;
+describe('VfButtonAngularComponent', () => {
+  let component: VfButtonAngularComponent;
+  let fixture: ComponentFixture<VfButtonAngularComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [VfButton]
-      }).compileComponents();
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ VfButtonAngularComponent ]
     })
-  );
+    .compileComponents();
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(VfButton);
+    fixture = TestBed.createComponent(VfButtonAngularComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
