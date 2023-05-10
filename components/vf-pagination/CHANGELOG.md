@@ -1,3 +1,7 @@
+### 1.1.2
+
+* Bug fix : Changelog updated to match npmjs versions.
+
 ### 1.1.1
 
 * UI changes to fix accessibility issues
