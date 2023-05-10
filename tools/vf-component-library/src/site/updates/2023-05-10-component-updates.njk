@@ -1,0 +1,92 @@
+---
+title: Rollup release 2.5.13
+subtitle: This release includes React support for vf-badge, Angular support for vf-button as package, Additional variant support for vf-banner, Angular syntax for vf-badge, vf-banner, vf-button and vf-hero. We've also fixed the changelog for vf-pagination to show correct versions.
+date: 2023-05-10 2:30:00
+version: 2.5.13
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+   {
+      "text": "Features",
+      "link_list_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    },
+    {
+      "text": "Bug fixes",
+      "link_list_href": "#bugs"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### New features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-banner", "2.0.0-alpha.1", "dba63115fafd71d02abf807f757fd5b169a5daf3") }}
+
+* Added : Experimental Angular support for fixed and top banner type. See README.md for more.
+
+{{ releaseLinks.notes("vf-badge", "3.0.0-alpha.1", "91d362d4509dbae0caff8733014aac87ec8b2965") }}
+
+* Added : Angular syntax for different variants as compared to common syntax
+* Added : Experimental React support for Badge component
+
+{{ releaseLinks.notes("vf-hero", "4.0.0-alpha.1", "6782cf72b064cdd79ff6367d918d83561a602f04") }}
+
+* Added : Angular syntax for different variants as compared to common syntax
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-button", "3.0.0-alpha.0", "9c0a3945fde2442e37757730e0bc250ea675e101") }}
+
+* Changed : Angular support for Button  component as a standalone package. See README.md for more.
+
+{{ releaseLinks.notes("vf-component-library", "1.2.6", "e8e5c86ed1977788830449ce89ff59690e26595b") }}
+
+* Bug fix: Fixed changelog for Pagination component. Extension to bug #1874
+* Added: Angular experimental support for vf-button component
+* Added: Angular experimental support for vf-banner component for 'fixed' and 'top' variant
+* Added: Angular syntax for different variants for vf-badge, vf-button, vf-banner, vf-hero component
+* Added: React experimental support for vf-badge component
+* Bug fix: Updated vf-card documentation to fix the typo
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+{{ releaseLinks.notes("vf-card", "2.7.1", "0e6b93b0eacfab0d222bdb537294130e1bf90a5d") }}
+
+* Bug fix: Updated vf-card documentation to fix the typo
+
+{{ releaseLinks.notes("vf-pagination", "1.1.2", "ba042ceeb41e8f6a589014a245eb49797bf784c0") }}
+
+* Bug fix : Changelog updated to match npmjs versions.
+
+{% endmarkdown %}
