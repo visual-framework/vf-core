@@ -1,6 +1,7 @@
 ### 3.0.0-alpha.1
 
 * Added : Angular syntax for different variants as compared to common syntax
+* Added : Experimental React support for Badge component
 
 ### 3.0.0-alpha.0
 

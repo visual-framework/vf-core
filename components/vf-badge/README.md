@@ -64,6 +64,33 @@ Usage:
 <vf-badge [text]="'alpha'" [theme]="'primary'" [id]="'Badge1'"></vf-badge>
 ```
 
+### React
+
+As of version 3.0.0-alpha.1 vf-badge has experimental React support which has been tested on react version 18.2.0
+
+1. install `yarn add @visual-framework/vf-badge`
+2. import in the JS file wheree you want to include this component
+   ```
+   import VfBadge from '@visual-framework/vf-badge/vf-badge.react';
+
+   Make sure you have the jsx support enabled with babel. Alternatively, you can also copy the vf-badge.react.js file from below to your react project and import as per the location.
+   ```
+3. can be used as
+   ```
+   <VfBadge text="ALPHA" theme="primary" id="Badge1"/>
+   ```
+4. add beloow to your  CSS file
+   ```
+   @import '~@visual-framework/vf-sass-config/index.scss';
+   @import '~@visual-framework/vf-badge/vf-badge.css';
+   ```
+   you should also install and import  [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles
+
+Usage:
+
+```
+<VfBadge text="ALPHA" theme="primary" id="Badge1"/>
+```
 ## Install
 
 This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-profile` with this command.

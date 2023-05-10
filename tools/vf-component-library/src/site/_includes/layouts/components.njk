@@ -261,7 +261,7 @@ You'll need to pass a context object from your code or Yaml file ([example](http
 - or -
 {% set context = { {% endraw %}
 {%- for key, val in variant.context %}
-{% if key !== 'angular' %}"{{key}}" : {{ ['"', val, '",'] | join if val is string else [val,','] | join -}}{% endif %}
+{% if key !== 'angular' and key !== 'react' %}"{{key}}" : {{ ['"', val, '",'] | join if val is string else [val,','] | join -}}{% endif %}
 {%- endfor %}
 {% raw %} }
 %}
@@ -278,7 +278,7 @@ This approach is best for bare-bones Nunjucks environments, such as precompiled 
 {%- raw %}
 {% render '@{% endraw %}{{variant.baseHandle}}', {
   {%- for key, val in variant.context %}
-  {% if key !== 'angular' %}"{{key}}" : {{ ['"', val, '",'] | join if val is string else [val,','] | join -}}{% endif %}
+  {% if key !== 'angular' and key !== 'react' %}"{{key}}" : {{ ['"', val, '",'] | join if val is string else [val,','] | join -}}{% endif %}
 {%- endfor %}{% raw %}}
 %}{% endraw %}
                 </code></pre>
@@ -304,17 +304,23 @@ This approach is best for bare-bones Nunjucks environments, such as precompiled 
                 {% endif %}
               </details>
               {% endif %}
-              {% set reactComponents = "vf-card, vf-button, vf-back-to-top" %}
+              {% set reactComponents = "vf-card, vf-button, vf-back-to-top, vf-badge" %}
               {% if component.baseHandle in reactComponents %}
               <details class="vf-details vf-box vf-box--outline">
-                <summary class="vf-details--summary">React syntax (pre-alpha)</summary>
-                <pre><code>
+                <summary class="vf-details--summary">React syntax</summary>
+                {% if variant.context.react %}
+                  <pre><code>
+                    {{-variant.context.react | escape }}
+                  </code></pre>
+                {% else %}
+                  <pre><code>
 import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "@visual-framework/{{component.baseHandle}}/{{component.baseHandle}}.react.js";
 // or
 import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "@visual-framework/{{component.baseHandle}}/{{component.baseHandle}}.jsx";
 {{ '<' | escape }}{{ component.baseHandle | camelize(true) | replace("-", "") }} parameter="value" />
-                </code></pre>
-                <br/><p>For individual parameter names and options, see the Nunjucks syntax example. <a href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-extensions-react/README.md">Also follow the React setup guide</a>. Note: React support is in its early pre-alpha stage and not all component are yet supported.</p>
+                  </code></pre>
+                  <br/><p>For individual parameter names and options, see the Nunjucks syntax example. <a href="https://github.com/visual-framework/vf-core/blob/develop/tools/vf-extensions-react/README.md">Also follow the React setup guide</a>. Note: React support is in its early pre-alpha stage and not all component are yet supported.</p>
+                {% endif %}
               </details>
               {% endif %}
             {% endif %}
