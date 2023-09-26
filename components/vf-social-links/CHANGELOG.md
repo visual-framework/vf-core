@@ -1,3 +1,6 @@
+### 0.0.4
+* Updated Twitter icon with X icon
+
 ### 0.0.3
 * Replace hidden text with aria-labels to avoid contrast issue
 
