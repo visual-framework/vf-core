@@ -1,3 +1,8 @@
+### 1.0.1
+
+* Updated the Back to Top button to secondary and changed arrow colour.
+  * [Tracking issue](https://github.com/visual-framework/vf-core/issues/1956)
+
 ### 1.0.0-alpha.2
 
 * Fixed a null reference error.
