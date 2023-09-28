@@ -4,11 +4,35 @@
 
 ## About
 
-A way to quote and highlight text.
+The `vf-blockquote` highlights a section that is quoted from an external source.
 
 ## Usage
 
-The pullquote variant will be a decorative variation but has yet to be implemented, it may take inspiration from the [VF 1.3 pullquote](https://www.ebi.ac.uk/style-lab/websites/patterns/pullquotes.html).
+The `vf-blockquote` should be used to highlight texts from external sources like quotes and testimonials. It should be used for more than decorative purposes, ensuring that the text being quoted is relevant to the content of the page and adds value to the content. This component is not optimised for mobile devices.
+
+It should not be confused with a pull quote which highlights a section of text from the same source/page.
+
+Quotes should be as concise as possible. The impact of the blockquote is diminished when it has long texts as this overwhelms the reader.
+
+Provide proper attribution such as the name, source and relevant information to give credibility to the quote. The component allows you to add the image of the person, the name (Which can be linked to a profile or source page) and other attribution details.
+
+The blockquote is designed to be used on a white background, it is advisable to avoid using it on backgrounds with gradients, images or other colours. If the background colour is changed, ensure the contrast ratio between the texts and the background meet accessibility standards.
+
+
+### When to use
+
+- Quoting external sources such as individuals, experts, publications etc.
+- Testimonials and feedback can be highlighted using the `vf-blockquote`.
+
+### When not to use
+
+- Self-quoting or usage as a pull quote should be avoided in the context of the page/content. This component should not be used to highlight a portion of text from the same content.
+- `Vf-blockquotes` should not be used solely for decorative purposes, ensuring that the quoted text adds value to the content.
+
+### Accessibility
+
+- This component targets WCAG 2.1 AA accessibility.
+
 
 ## Install
 

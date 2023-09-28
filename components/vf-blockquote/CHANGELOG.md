@@ -1,3 +1,8 @@
+### 1.2.1
+
+* Updated the documentation for blockquote as per new implementation
+  * [Tracking issue](https://github.com/visual-framework/vf-core/issues/1957)
+
 ### 1.2.0
 
 * adds context `if` statement to make it useable in vf-11ty.
