@@ -10,7 +10,9 @@ The `vf-breadcrumb` component is a navigational item that can identify to the si
 
 The `vf-breadcrumb` component should follow the `vf-global-header` in the page layout.
 
-It should list no more than three items, including the current page. Each link in the component is separated by a `>` chevron. The page you are on should display an 'active' state in the breadcrumbs which is bold with no underline.
+Each link in the component is separated by a `>` chevron. The page you are on should display an 'active' state in the breadcrumbs which is bold with no underline.
+
+Ensure that the complete navigational path is displayed in the breadcrumbs on the desktop, exceptions can be made in the case where the related items component is used with the breadcrumbs, in this case It should list no more than three items, including the current page.
 
 ### Related breadcrumbs
 
