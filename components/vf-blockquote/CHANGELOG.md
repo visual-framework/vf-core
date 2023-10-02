@@ -1,3 +1,11 @@
+### 1.2.1
+
+* Changed: Modified the Blockquote  component in line with stakeholder requirements and to improve consistency
+* Added : Angular support for Blockquote component
+* Added : React support for Blockquote component
+* Documentation: Updated the documentation for blockquote as per new implementation
+* [Tracking issue](https://github.com/visual-framework/vf-core/issues/1945)
+
 ### 1.2.0
 
 * adds context `if` statement to make it useable in vf-11ty.
