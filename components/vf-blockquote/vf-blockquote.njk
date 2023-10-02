@@ -2,20 +2,37 @@
   {% set id = context.id %}
   {% set override_class = context.override_class %}
   {% set blockquote_text = context.blockquote_text %}
-  {% set blockquote_citation = context.blockquote_citation %}
+  {% set blockquote_author = context.blockquote_author %}
+  {% set blockquote_author_href = context.blockquote_author_href %}
+  {% set blockquote_author_details = context.blockquote_author_details %}
+  {% set blockquote_author_imageurl = context.blockquote_author_imageurl %}
 {% endif %}
 
-<blockquote{% if id %} id="{{-id-}}"{% endif %} class="vf-blockquote{%- if override_class %} | {{override_class}}{% endif %} | vf-stack vf-stack--400">
-  {% if (blockquote_text) or (html) or (text) %}
-    <p class="vf-blockquote__text">{{- (html) or (blockquote_text) | safe if (html) or (blockquote_text) else text -}}</p>
-  {% endif %}
+<blockquote{% if id %} id="{{-id-}}"{% endif %} class="vf-blockquote{%- if override_class %} | {{override_class}}{% endif %}">
+  <div class="vf-blockquote-flex-container">
 
-  {% if blockquote_citation %}
-  <footer class="vf-blockquote__footer">
-    <cite class="vf-blockquote__citation">
-      {{- blockquote_citation | safe -}}
-    </cite>
-  </footer>
-  {% endif %}
+    {% if (blockquote_author_imageurl) %}
+    <div class="vf-blockquote_author__image">
+      <img src="{{blockquote_author_imageurl}}" alt="" loading="lazy"/>
+    </div>
+    {% endif %}
+    <div>
+      {% if (blockquote_text) or (html) or (text) %}
+        <div>{{- (html) or (blockquote_text) | safe if (html) or (blockquote_text) else text -}}</div>
+      {% endif %}
 
+      <footer>
+      {% if blockquote_author_href %}
+        <a href="{{ blockquote_author_href }}" class="vf-blockquote_author__link">
+          <div>{{ blockquote_author }}</div>
+        </a>
+      {% else %}
+          <div>{{ blockquote_author }}</div>
+      {% endif %}
+      {% if blockquote_author_details %}
+        <div class="vf-blockquote_author_details">{{ blockquote_author_details }}</div>
+      {% endif %}
+      </footer>
+    </div>
+  </div>
 </blockquote>

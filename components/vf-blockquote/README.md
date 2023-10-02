@@ -4,11 +4,130 @@
 
 ## About
 
-A way to quote and highlight text.
+The `vf-blockquote` highlights a section that is quoted from an external source.
 
 ## Usage
 
-The pullquote variant will be a decorative variation but has yet to be implemented, it may take inspiration from the [VF 1.3 pullquote](https://www.ebi.ac.uk/style-lab/websites/patterns/pullquotes.html).
+The `vf-blockquote` should be used to highlight texts from external sources like quotes and testimonials. It should be used for more than decorative purposes, ensuring that the text being quoted is relevant to the content of the page and adds value to the content. This component is not optimised for mobile devices.
+
+It should not be confused with a pull quote which highlights a section of text from the same source/page.
+
+Quotes should be as concise as possible. The impact of the blockquote is diminished when it has long texts as this overwhelms the reader.
+
+Provide proper attribution such as the name, source and relevant information to give credibility to the quote. The component allows you to add the image of the person, the name (Which can be linked to a profile or source page) and other attribution details.
+
+The blockquote is designed to be used on a white background, it is advisable to avoid using it on backgrounds with gradients, images or other colours. If the background colour is changed, ensure the contrast ratio between the texts and the background meet accessibility standards.
+
+
+### When to use
+
+- Quoting external sources such as individuals, experts, publications etc.
+- Testimonials and feedback can be highlighted using the `vf-blockquote`.
+
+### When not to use
+
+- Self-quoting or usage as a pull quote should be avoided in the context of the page/content. This component should not be used to highlight a portion of text from the same content.
+- `Vf-blockquotes` should not be used solely for decorative purposes, ensuring that the quoted text adds value to the content.
+
+### Accessibility
+
+- This component targets WCAG 2.1 AA accessibility.
+
+### Angular
+
+As of version 1.2.1 vf-blockquote has experimental Angular support.
+This package was generated with Angular version 15.2.0 and has been tested on application with Angular version 15.2.0.
+
+1. install `yarn add @visual-framework/vf-blockquote`
+2. import in your app.module
+   ```
+   import { VfBlockquoteAngularModule } from '@visual-framework/vf-blockquote/vf-blockquote.angular';
+
+   @NgModule({
+     imports: [VfBlockquoteAngularModule, YourOtherModules],
+     ...
+   })
+   ```
+3. can be used as
+   ```
+   <vf-blockquote [blockquote_text]="'“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”'" [blockquote_author]="'Marion Burton'" [blockquote_author_imageurl]="'./assets/vf-icon--avatar.svg'" [blockquote_author_href]="'#'" [blockquote_author_details]="'Title and other details'"/>
+   ```
+4. add to your styles.scss
+   ```
+   @import '../node_modules/@visual-framework/vf-sass-config/index.scss';
+   @import '../node_modules/@visual-framework/vf-sass-config/mixins/vf-utility-mixins.scss';
+   @import '../node_modules/@visual-framework/vf-utility-classes/vf-utility-classes.scss';
+   @import '../node_modules/@visual-framework/vf-sass-utilities/vf-sass-utilities.scss';
+   @import '../node_modules/@visual-framework/vf-blockquote/vf-blockquote.scss';
+
+   @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: local('IBM Plex Sans Medium'),
+      local('IBMPlexSans-Medium'),
+      url('../node_modules/@visual-framework/vf-font-plex-sans/assets/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Medium.woff') format('woff'),
+      url('../node_modules/@visual-framework/vf-font-plex-sans/assets/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Medium.woff2') format('woff2');
+   }
+   ```
+
+5. Usage:
+
+    ```
+    <vf-blockquote [blockquote_text]="'“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”'"
+    [blockquote_author]="'Marion Burton'"
+    [blockquote_author_imageurl]="'./assets/vf-icon--avatar.svg'"
+    [blockquote_author_href]="'#'"
+    [blockquote_author_details]="'Title and other details'"/>
+    ```
+
+### React
+
+As of version 1.2.1 vf-blockquote has experimental React support which has been tested on react version 18.2.0
+
+1. install `yarn add @visual-framework/vf-blockquote`
+2. import in the JS file where you want to include this component
+   ```
+   import VfBlockquote from '@visual-framework/vf-blockquote/vf-blockquote.react';
+
+   Make sure you have the jsx support enabled with babel. Alternatively, you can also copy the vf-blockquote.react.js file from below to your react project and import as per the location.
+   ```
+3. can be used as
+   ```
+   <VfBlockquote blockquote_text='“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”'
+      blockquote_author='Marion Burton'
+      blockquote_author_imageurl='vf-icon--avatar.svg'
+      blockquote_author_href='#'
+      blockquote_author_details='Title and other details'/>
+   ```
+4. add below to your SCSS file
+   ```
+   @import '@visual-framework/vf-sass-config/index.scss';
+   @import '@visual-framework/vf-sass-config/mixins/vf-utility-mixins.scss';
+   @import '@visual-framework/vf-utility-classes/vf-utility-classes.scss';
+   @import '@visual-framework/vf-sass-utilities/vf-sass-utilities.scss';
+   @import '@visual-framework/vf-blockquote/vf-blockquote.scss';
+
+   @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 500;
+      src: local('IBM Plex Sans Medium'),
+        local('IBMPlexSans-Medium'),
+        url('../node_modules/@visual-framework/vf-font-plex-sans/assets/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Medium.woff') format('woff'),
+        url('../node_modules/@visual-framework/vf-font-plex-sans/assets/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Medium.woff2') format('woff2');
+    }
+   ```
+
+5. Usage:
+
+    ```
+    <VfBlockquote blockquote_text='“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”'
+          blockquote_author='Marion Burton'
+          blockquote_author_imageurl='vf-icon--avatar.svg'
+          blockquote_author_href='#'
+          blockquote_author_details='Title and other details'/>
+    ```
 
 ## Install
 
