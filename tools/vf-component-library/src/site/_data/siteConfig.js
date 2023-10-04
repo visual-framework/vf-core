@@ -12,10 +12,10 @@ module.exports = {
   buildTime: DateTime.fromISO(new Date().toISOString()),
   // vfVersion: global.vfVersion,
   // use this when NOT tagging a release
-  // vfVersion: "develop",
+  vfVersion: "develop",
   // vfVersionPrefix: "dev.",
   // use this when tagging a release
-  vfVersion: "v2.5.13",
+  // vfVersion: "v2.5.13",
   vfVersionPrefix: "",
   sections: {
     about: {
