@@ -1,3 +1,7 @@
+### 1.2.7
+* Documentation: Updated build process document with missing step for `vfVersion` update
+  * [Tracking issue](https://github.com/visual-framework/vf-core/issues/1966)
+
 ### 1.2.6
 
 * Bug fix: Fixed changelog for Pagination component. Extension to bug #1874
