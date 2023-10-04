@@ -1,5 +1,5 @@
 ### 1.2.7
-* Documentation: Updated build process document with missing step for `vfVersion` update
+* Documentation: Updated build process document with missing step for `vfVersionPrefix` update
   * [Tracking issue](https://github.com/visual-framework/vf-core/issues/1966)
 
 ### 1.2.6
