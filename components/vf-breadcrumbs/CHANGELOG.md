@@ -1,3 +1,8 @@
+### 2.0.5
+
+* Documentation: Updated usage guidelines to show full navigation path
+  * [Tracking issue](https://github.com/visual-framework/vf-core/issues/1957)
+
 ### 2.0.4
 
 * Bug: Final breadcrumb should never have an arrow.
