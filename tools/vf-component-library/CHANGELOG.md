@@ -1,6 +1,8 @@
 ### 1.2.7
 * Documentation: Updated build process document with missing step for `vfVersionPrefix` update
   * [Tracking issue](https://github.com/visual-framework/vf-core/issues/1966)
+* Added : Angular support for Blockquote component
+* Added : React support for Blockquote component
 
 ### 1.2.6
 
