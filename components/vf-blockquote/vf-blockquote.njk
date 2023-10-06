@@ -8,20 +8,17 @@
   {% set blockquote_author_imageurl = context.blockquote_author_imageurl %}
 {% endif %}
 
-<blockquote{% if id %} id="{{-id-}}"{% endif %} class="vf-blockquote{%- if override_class %} | {{override_class}}{% endif %}">
-  <div class="vf-blockquote-flex-container">
+<blockquote{% if id %} id="{{-id-}}"{% endif %} class="vf-blockquote vf-u-margin__left--800{%- if override_class %} | {{override_class}}{% endif %}">
 
     {% if (blockquote_author_imageurl) %}
-    <div class="vf-blockquote_author__image">
-      <img src="{{blockquote_author_imageurl}}" alt="" loading="lazy"/>
-    </div>
+      <img class="vf-profile__image vf-u-margin__right--600" src="{{blockquote_author_imageurl}}" alt="" loading="lazy"/>
     {% endif %}
     <div>
       {% if (blockquote_text) or (html) or (text) %}
         <div>{{- (html) or (blockquote_text) | safe if (html) or (blockquote_text) else text -}}</div>
       {% endif %}
 
-      <footer>
+      <footer class="vf-u-margin__top--600">
       {% if blockquote_author_href %}
         <a href="{{ blockquote_author_href }}" class="vf-blockquote_author__link">
           <div>{{ blockquote_author }}</div>
@@ -30,9 +27,8 @@
           <div>{{ blockquote_author }}</div>
       {% endif %}
       {% if blockquote_author_details %}
-        <div class="vf-blockquote_author_details">{{ blockquote_author_details }}</div>
+        <div class="vf-text-body--2">{{ blockquote_author_details }}</div>
       {% endif %}
       </footer>
     </div>
-  </div>
 </blockquote>

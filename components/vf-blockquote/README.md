@@ -38,8 +38,8 @@ The blockquote is designed to be used on a white background, it is advisable to 
 As of version 1.2.1 vf-blockquote has experimental Angular support.
 This package was generated with Angular version 15.2.0 and has been tested on application with Angular version 15.2.0.
 
-1. install `yarn add @visual-framework/vf-blockquote`
-2. import in your app.module
+1. Install `yarn add @visual-framework/vf-blockquote`
+2. Import in your app.module
    ```
    import { VfBlockquoteAngularModule } from '@visual-framework/vf-blockquote/vf-blockquote.angular';
 
@@ -48,85 +48,73 @@ This package was generated with Angular version 15.2.0 and has been tested on ap
      ...
    })
    ```
-3. can be used as
+3. Can be used as
    ```
-   <vf-blockquote [blockquote_text]="'“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”'" [blockquote_author]="'Marion Burton'" [blockquote_author_imageurl]="'./assets/vf-icon--avatar.svg'" [blockquote_author_href]="'#'" [blockquote_author_details]="'Title and other details'"/>
+   <vf-blockquote [blockquote_text]="'“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”'" [blockquote_author]="'Marion Burton'" [blockquote_author_imageurl]="'./assets/vf-icon--avatar.svg'"  [blockquote_author_href]="'#'" [blockquote_author_details]="'Title and other details'"/>
    ```
-4. add to your styles.scss
-   ```
-   @import '../node_modules/@visual-framework/vf-sass-config/index.scss';
-   @import '../node_modules/@visual-framework/vf-sass-config/mixins/vf-utility-mixins.scss';
-   @import '../node_modules/@visual-framework/vf-utility-classes/vf-utility-classes.scss';
-   @import '../node_modules/@visual-framework/vf-sass-utilities/vf-sass-utilities.scss';
-   @import '../node_modules/@visual-framework/vf-blockquote/vf-blockquote.scss';
+4. Styling changes
 
-   @font-face {
-    font-family: 'IBM Plex Sans';
-    font-style: normal;
-    font-weight: 500;
-    src: local('IBM Plex Sans Medium'),
-      local('IBMPlexSans-Medium'),
-      url('../node_modules/@visual-framework/vf-font-plex-sans/assets/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Medium.woff') format('woff'),
-      url('../node_modules/@visual-framework/vf-font-plex-sans/assets/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Medium.woff2') format('woff2');
-   }
+   In angular.json add the following in architect -> build -> options -> assets:
+    ```
+    {
+      "glob": "**/*",
+      "input": "./node_modules/@visual-framework/vf-font-plex-mono/assets/IBM-Plex-Mono",
+      "output": "./assets/fonts/IBM-Plex-Mono"
+    },
+    {
+      "glob": "**/*",
+      "input": "./node_modules/@visual-framework/vf-font-plex-sans/assets/IBM-Plex-Sans",
+      "output": "./assets/fonts/IBM-Plex-Sans"
+    }
+    ```
+    You should install [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles  and then add below code in your main SCSS file.
+    ```
+    $vf-font-plex-mono-prefix: '/assets/fonts';
+    $vf-font-plex-sans-prefix: '/assets/fonts';
+    @import '../node_modules/@visual-framework//vf-sass-starter/index.scss';
+    @import "../node_modules/@visual-framework/vf-text/vf-text.scss";
+    @import "../node_modules/@visual-framework/vf-profile/vf-profile.scss";
+    @import '../node_modules/@visual-framework/vf-blockquote/vf-blockquote.scss';
    ```
 
 5. Usage:
 
     ```
-    <vf-blockquote [blockquote_text]="'“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”'"
-    [blockquote_author]="'Marion Burton'"
-    [blockquote_author_imageurl]="'./assets/vf-icon--avatar.svg'"
-    [blockquote_author_href]="'#'"
-    [blockquote_author_details]="'Title and other details'"/>
+    <vf-blockquote [blockquote_text]="'“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”'" [blockquote_author]="'Marion Burton'" [blockquote_author_imageurl]="'./assets/vf-icon--avatar.svg'"  [blockquote_author_href]="'#'" [blockquote_author_details]="'Title and other details'"/>
     ```
 
 ### React
 
 As of version 1.2.1 vf-blockquote has experimental React support which has been tested on react version 18.2.0
 
-1. install `yarn add @visual-framework/vf-blockquote`
-2. import in the JS file where you want to include this component
+1. Install `yarn add @visual-framework/vf-blockquote`
+2. Import in the JS file where you want to include this component
    ```
    import VfBlockquote from '@visual-framework/vf-blockquote/vf-blockquote.react';
 
    Make sure you have the jsx support enabled with babel. Alternatively, you can also copy the vf-blockquote.react.js file from below to your react project and import as per the location.
    ```
-3. can be used as
+3. Can be used as
    ```
-   <VfBlockquote blockquote_text='“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”'
-      blockquote_author='Marion Burton'
-      blockquote_author_imageurl='vf-icon--avatar.svg'
-      blockquote_author_href='#'
-      blockquote_author_details='Title and other details'/>
+   <VfBlockquote blockquote_text="“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”" blockquote_author="Marion Burton" blockquote_author_imageurl="vf-icon--avatar.svg" blockquote_author_href="#" blockquote_author_details="Title and other details"/>
    ```
-4. add below to your SCSS file
-   ```
-   @import '@visual-framework/vf-sass-config/index.scss';
-   @import '@visual-framework/vf-sass-config/mixins/vf-utility-mixins.scss';
-   @import '@visual-framework/vf-utility-classes/vf-utility-classes.scss';
-   @import '@visual-framework/vf-sass-utilities/vf-sass-utilities.scss';
-   @import '@visual-framework/vf-blockquote/vf-blockquote.scss';
+4. Styling changes
 
-   @font-face {
-      font-family: 'IBM Plex Sans';
-      font-style: normal;
-      font-weight: 500;
-      src: local('IBM Plex Sans Medium'),
-        local('IBMPlexSans-Medium'),
-        url('../node_modules/@visual-framework/vf-font-plex-sans/assets/IBM-Plex-Sans/fonts/complete/woff/IBMPlexSans-Medium.woff') format('woff'),
-        url('../node_modules/@visual-framework/vf-font-plex-sans/assets/IBM-Plex-Sans/fonts/complete/woff2/IBMPlexSans-Medium.woff2') format('woff2');
-    }
-   ```
+   You should install [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles and then add below code in your main SCSS file
+    ```
+    $vf-font-plex-mono-prefix: '~@visual-framework/vf-font-plex-mono/assets';
+    $vf-font-plex-sans-prefix: '~@visual-framework/vf-font-plex-sans/assets';
+
+    @import '~@visual-framework//vf-sass-starter/index.scss';
+    @import "~@visual-framework/vf-profile/vf-profile.scss";
+    @import "~@visual-framework/vf-text/vf-text.scss";
+    @import '~@visual-framework/vf-blockquote/vf-blockquote.scss';
+    ```
 
 5. Usage:
 
     ```
-    <VfBlockquote blockquote_text='“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”'
-          blockquote_author='Marion Burton'
-          blockquote_author_imageurl='vf-icon--avatar.svg'
-          blockquote_author_href='#'
-          blockquote_author_details='Title and other details'/>
+    <VfBlockquote blockquote_text="“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.”" blockquote_author="Marion Burton" blockquote_author_imageurl="vf-icon--avatar.svg" blockquote_author_href="#" blockquote_author_details="Title and other details"/>
     ```
 
 ## Install
