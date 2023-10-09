@@ -25,7 +25,7 @@ class VfBlockquoteAngularComponent {
     /* Set values as per input and updated changes */
     setValues() {
         /* Conditional styles, strings, nullables, arrays of styles */
-        this.class = 'vf-blockquote';
+        this.class = 'vf-blockquote vf-u-margin__left--800';
         this.class += this.override_class ? this.override_class : '';
         /* Inner content of the quote based on whether HTML or Text */
         this.quote = this.blockquote_text
@@ -38,38 +38,30 @@ class VfBlockquoteAngularComponent {
 VfBlockquoteAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.9", ngImport: i0, type: VfBlockquoteAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
 VfBlockquoteAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.9", type: VfBlockquoteAngularComponent, selector: "vf-blockquote", inputs: { id: "id", html: "html", text: "text", blockquote_text: "blockquote_text", blockquote_author: "blockquote_author", blockquote_author_href: "blockquote_author_href", blockquote_author_details: "blockquote_author_details", blockquote_author_imageurl: "blockquote_author_imageurl", override_class: "override_class" }, usesOnChanges: true, ngImport: i0, template: `
     <blockquote [attr.id]="id !== undefined ? id : null" [class]="class">
-      <div class="vf-blockquote-flex-container">
-        <div *ngIf="blockquote_author_imageurl !== ''" class="vf-blockquote_author__image">
-          <img [src]="blockquote_author_imageurl" alt="" loading="lazy" />
-        </div>
+        <img *ngIf="blockquote_author_imageurl !== ''" class="vf-profile__image vf-u-margin__right--600" [src]="blockquote_author_imageurl" alt="" loading="lazy" />
         <div>
           <div>{{ quote }}</div>
-          <footer>
+          <footer class="vf-u-margin__top--600">
             <a *ngIf="blockquote_author_href !== ''; else quoteauthorplain" class="vf-blockquote_author__link" [href]="blockquote_author_href" [innerHTML]="blockquote_author"></a>
             <ng-template #quoteauthorplain>{{ blockquote_author }}</ng-template>
-            <div *ngIf="blockquote_author_details !== ''" class="vf-blockquote_author_details">{{ blockquote_author_details }}</div>
+            <div *ngIf="blockquote_author_details !== ''" class="vf-text-body--2">{{ blockquote_author_details }}</div>
           </footer>
         </div>
-      </div>
     </blockquote>
   `, isInline: true, dependencies: [{ kind: "directive", type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.9", ngImport: i0, type: VfBlockquoteAngularComponent, decorators: [{
             type: Component,
             args: [{ selector: 'vf-blockquote', template: `
     <blockquote [attr.id]="id !== undefined ? id : null" [class]="class">
-      <div class="vf-blockquote-flex-container">
-        <div *ngIf="blockquote_author_imageurl !== ''" class="vf-blockquote_author__image">
-          <img [src]="blockquote_author_imageurl" alt="" loading="lazy" />
-        </div>
+        <img *ngIf="blockquote_author_imageurl !== ''" class="vf-profile__image vf-u-margin__right--600" [src]="blockquote_author_imageurl" alt="" loading="lazy" />
         <div>
           <div>{{ quote }}</div>
-          <footer>
+          <footer class="vf-u-margin__top--600">
             <a *ngIf="blockquote_author_href !== ''; else quoteauthorplain" class="vf-blockquote_author__link" [href]="blockquote_author_href" [innerHTML]="blockquote_author"></a>
             <ng-template #quoteauthorplain>{{ blockquote_author }}</ng-template>
-            <div *ngIf="blockquote_author_details !== ''" class="vf-blockquote_author_details">{{ blockquote_author_details }}</div>
+            <div *ngIf="blockquote_author_details !== ''" class="vf-text-body--2">{{ blockquote_author_details }}</div>
           </footer>
         </div>
-      </div>
     </blockquote>
   ` }]
         }], propDecorators: { id: [{
