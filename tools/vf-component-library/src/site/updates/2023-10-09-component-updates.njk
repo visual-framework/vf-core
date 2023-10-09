@@ -1,0 +1,77 @@
+---
+title: Rollup release 2.5.14
+subtitle: This release includes React & Angular support for vf-blockquote as package along with documentation  update. Release also includes improvements to vf-back-to-top, Twitter logo update in vf-social-links components, updates to documentation of vf-breadcrumbs and vf-component-library.
+date: 2023-10-09 17:30:00
+version: 2.5.14
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+   {
+      "text": "Features",
+      "link_list_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### New features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-blockquote", "1.2.1", "22f07801641e6e5b25d92a5e7ef6cde407ef4453") }}
+
+* Changed: Modified the Blockquote  component in line with stakeholder requirements and to improve consistency
+* Added : Angular support for Blockquote component
+* Added : React support for Blockquote component
+* Documentation: Updated the documentation for blockquote as per new implementation [#1945](https://github.com/visual-framework/vf-core/issues/1945)
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-component-library", "1.2.7", "6ca3da362ef7f061de5c3c95acb646f7cf004381") }}
+
+* Documentation: Updated build process document with missing step for `vfVersion` update [#1966](https://github.com/visual-framework/vf-core/issues/1966)
+* Added : Angular support for Blockquote component
+* Added : React support for Blockquote component
+
+{{ releaseLinks.notes("vf-breadcrumbs", "2.0.5", "bdbf740f25f66a764f02a730e4ca0c27ed02327f") }}
+
+* Documentation: Updated usage guidelines to show full navigation path [#1957](https://github.com/visual-framework/vf-core/issues/1957)
+
+{{ releaseLinks.notes("vf-back-to-top", "1.0.1", "66b351660ea96ecb55ae60addbc6c7f46bd00b25") }}
+
+* Updated the Back to Top button to secondary and changed arrow colour. [#1956](https://github.com/visual-framework/vf-core/issues/1956)
+
+{{ releaseLinks.notes("vf-social-links", "0.0.4", "bb5dedad550358a644227bcf9b116e93149cdd61") }}
+
+* Updated Twitter icon with X icon
+
+{% endmarkdown %}
