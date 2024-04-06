@@ -4,6 +4,8 @@
 
 ## About
 
+Add a video with this component.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-video` with this command.

@@ -2,6 +2,10 @@
 
 [![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-form__legend.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-form__legend)
 
+## About
+
+A `vf-form__legend` is used to describe a group of inputs in a `vf-form`.
+
 ## Usage
 
 The `vf-form__legend` should only be used in a `vf-form__fieldset` and must be the first item in the fieldset.
