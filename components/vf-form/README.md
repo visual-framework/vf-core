@@ -4,7 +4,7 @@
 
 ## About
 
-The `vf-form` manages a group of form inputs and interactive controls to collect data that can be sent to a server. The `vf-form` is the wrapping component for all form elements.
+The `vf-form` manages a group of form inputs and interactive controls to collect data that can be sent to a server. The `vf-form` is the wrapping component for [all form elements](/components/#form).
 
 ## Usage
 
