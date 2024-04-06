@@ -31,7 +31,7 @@ The component can be configured with a number of options.
     - sets `vf-bookmark--active` CSS class
     - determines the appropriate `label_inactive` or `label_active`
 - `modifier`: defaults to `inline`
-    - `inline` or `button`
+    - `inline` or `button` or `small`
 - `icon`: defaults to `heart`
 
 ### Accessibility

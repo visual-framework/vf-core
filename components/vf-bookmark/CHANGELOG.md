@@ -1,3 +1,7 @@
+### 1.0.0-alpha.4
+
+* Added small button variant. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1974)
+
 ### 1.0.0-alpha.3
 
 * Update from a link to a button element
