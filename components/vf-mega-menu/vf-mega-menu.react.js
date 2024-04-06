@@ -11,7 +11,7 @@ import { vfNunjucksEnv } from "@visual-framework/vf-extensions-react/vf-extensio
 // any JS actions needed on component insertion
 class VfMegaMenuCallback extends React.Component {
   componentDidMount() {
-    console.log('any JS actions needed')
+    console.log("any JS actions needed");
   }
 
   render() {
@@ -19,15 +19,28 @@ class VfMegaMenuCallback extends React.Component {
   }
 }
 
-const VfMegaMenu = React.memo(({
-  variant, newTheme, card_image, card_text, card_image__alt, card_title
+const VfMegaMenu = React.memo(
+  ({
+    variant,
+    newTheme,
+    card_image,
+    card_text,
+    card_image__alt,
+    card_title
   }) => {
-    return React.createElement(React.Fragment, null,
+    return React.createElement(
+      React.Fragment,
+      null,
       React.createElement(Fragment, {
-          dangerouslySetInnerHTML: {
+        dangerouslySetInnerHTML: {
           // our HTML is handled by nunjucks, this should not receive user input
-          __html: vfNunjucksEnv.render('vf-mega-menu', {
-            variant: variant, newTheme: newTheme, card_image: card_image, card_text: card_text, card_image__alt: card_image__alt, card_title: card_title
+          __html: vfNunjucksEnv.render("vf-mega-menu", {
+            variant: variant,
+            newTheme: newTheme,
+            card_image: card_image,
+            card_text: card_text,
+            card_image__alt: card_image__alt,
+            card_title: card_title
           })
         }
       }),

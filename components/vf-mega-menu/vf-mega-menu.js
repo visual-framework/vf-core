@@ -38,37 +38,37 @@ function initMegaMenu(megaMenuComponent) {
     );
   }
 
-  megaMenuComponent.querySelectorAll("[data-vf-js-mega-menu-section-id]").forEach(item => {
-    item.addEventListener('click', event => {
-      // For now we do not show the mega menu on mobile.
-      // We still need to decide on approach for mobile support.
-      if (getWidth() > 768) {
-        event.preventDefault();
-        event.vfMegaMenuLink = true;
-        const { target: linkComponent } = event;
-        const newReferences = handleMenuClick(
-          linkComponent,
-          previousMenuLinkComponent,
-          previousExpandedSectionComponent
-        );
-        previousMenuLinkComponent = newReferences?.previousMenuLinkComponent;
-        previousExpandedSectionComponent =
-          newReferences?.previousExpandedSectionComponent;
-      } else {
-        console.warn(`vf-mega-menu: No mega menu shown. Mega menu is currently alpha and not supported on small screen sizes. Your screens size is ${getWidth()}`);
-      }
-      // console.log({ linkComponent });
-      // console.log({ previousMenuLinkComponent });
-      // const associatedSection = linkComponent.getAttribute(
-      //   "data-vf-js-mega-menu-section-id"
-      // );
+  megaMenuComponent
+    .querySelectorAll("[data-vf-js-mega-menu-section-id]")
+    .forEach(item => {
+      item.addEventListener("click", event => {
+        // For now we do not show the mega menu on mobile.
+        // We still need to decide on approach for mobile support.
+        if (getWidth() > 768) {
+          event.preventDefault();
+          event.vfMegaMenuLink = true;
+          const { target: linkComponent } = event;
+          const newReferences = handleMenuClick(
+            linkComponent,
+            previousMenuLinkComponent,
+            previousExpandedSectionComponent
+          );
+          previousMenuLinkComponent = newReferences?.previousMenuLinkComponent;
+          previousExpandedSectionComponent =
+            newReferences?.previousExpandedSectionComponent;
+        } else {
+          console.warn(
+            `vf-mega-menu: No mega menu shown. Mega menu is currently alpha and not supported on small screen sizes. Your screens size is ${getWidth()}`
+          );
+        }
+        // console.log({ linkComponent });
+        // console.log({ previousMenuLinkComponent });
+        // const associatedSection = linkComponent.getAttribute(
+        //   "data-vf-js-mega-menu-section-id"
+        // );
+      });
     });
-  });
-
 }
-
-
-
 
 function handleMenuClick(
   menuItemComponent,
@@ -91,7 +91,7 @@ function handleMenuClick(
 
   // Capture clicks on things other than mega menu elements
   // https://www.blustemy.io/detecting-a-click-outside-an-element-in-javascript/
-  document.addEventListener("click", (evt) => {
+  document.addEventListener("click", evt => {
     let targetElement = evt.target; // clicked element
     do {
       if (targetElement == section || evt.vfMegaMenuLink == true) {
@@ -157,15 +157,13 @@ function handleMenuClick(
 //   return menuSectionsMap;
 // }
 
- /**
-  * The global function for this component
-  * @example vfMegaMenu(firstPassedVar)
-  * @param {string} [firstPassedVar]  - An option to be passed
-  */
-function vfMegaMenu(firstPassedVar) {
-  firstPassedVar = firstPassedVar || 'defaultVal';
-
-  const allMegaMenuComponents = document.querySelectorAll("[data-vf-js-mega-menu]") || [];
+/**
+ * The global function for this component
+ * @example vfMegaMenu()
+ */
+function vfMegaMenu() {
+  const allMegaMenuComponents =
+    document.querySelectorAll("[data-vf-js-mega-menu]") || [];
 
   //for each mega-menu
   allMegaMenuComponents.forEach(initMegaMenu);
@@ -183,4 +181,3 @@ export { vfMegaMenu };
 // import { vfMegaMenu } from '../components/raw/vf-mega-menu/vf-mega-menu.js';
 // And, if needed, invoke it
 // vfMegaMenu();
-
