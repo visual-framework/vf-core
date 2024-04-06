@@ -1,6 +1,11 @@
+### 1.2.2
+
+* Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+
 ### 1.2.1
 
 * Support added for GA region. This region is generic for banner notifications.
+
 ### 1.2.0
 
 * Support inserting after EBI black bar.

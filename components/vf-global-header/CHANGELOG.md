@@ -1,3 +1,7 @@
+### 3.1.3
+
+* Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+
 ### 3.1.2
 
 * changes any `set-` style functions to cleaner version

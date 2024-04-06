@@ -4,6 +4,8 @@
 
 ## About
 
+A container for adding videos to your page.
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install thevf-video-container` with this command.

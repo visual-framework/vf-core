@@ -4,6 +4,8 @@
 
 ## About
 
+Generic page header with top level navigation links
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-global-header` with this command.
