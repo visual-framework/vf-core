@@ -65,7 +65,7 @@ templateEngineOverride: njk
 
       {% set readmeAbout = component.notes | string | stringBetween("## About", "\n## ") %}
       {% if readmeAbout %}
-        {% set readmeAbout = readmeAbout | markdown | safe | striptags | string %}
+        {% set readmeAbout = readmeAbout | markdown | safe | string %}
         {% render '@vf-intro', {
           "id": "about",
           "vf_intro_heading": component.title,
@@ -304,7 +304,7 @@ This approach is best for bare-bones Nunjucks environments, such as precompiled 
                 {% endif %}
               </details>
               {% endif %}
-              {% set reactComponents = "vf-card, vf-button, vf-back-to-top, vf-badge, vf-blockquote" %}
+              {% set reactComponents = "vf-card, vf-button, vf-back-to-top, vf-badge, vf-blockquote, vf-hero, vf-banner" %}
               {% if component.baseHandle in reactComponents %}
               <details class="vf-details vf-box vf-box--outline">
                 <summary class="vf-details--summary">React syntax</summary>

@@ -1,3 +1,17 @@
+### 1.2.8
+* Documentation: Added missing descriptions to components [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+* Documentation: Updated documentation for vf-form to cross link with form components  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1904)
+* Fixed: Redirects to pages added to fix missing pages/content [Tracking issue](https://github.com/visual-framework/vf-core/issues/1901)
+* Fixed: Removed empty pages from build process  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1900)
+* Fixed: Fixes for lint errors seen during build. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+* Fixed: Fixes for notices seen during build. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1936)
+* Fixed: Fixed `About` link in megamenu of VF site [Tracking issue](https://github.com/visual-framework/vf-core/issues/1953)
+* Fixed: Updated blog link in about page of VF site [Tracking issue](https://github.com/visual-framework/vf-core/issues/1975)
+* Added: Added Small button variant for vf-bookmark  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1974)
+* Added: Added React compatibility support for vf-hero component [Tracking issue](https://github.com/visual-framework/vf-core/issues/1876)
+* Added: Added React compatibility support for vf-banner component [Tracking issue](https://github.com/visual-framework/vf-core/issues/1878)
+* Bug fix: vf-dropdown links not clickable in Safari browser [Tracking issue](https://github.com/visual-framework/vf-core/issues/1973)
+
 ### 1.2.7
 * Documentation: Updated build process document with missing step for `vfVersionPrefix` update
   * [Tracking issue](https://github.com/visual-framework/vf-core/issues/1966)
