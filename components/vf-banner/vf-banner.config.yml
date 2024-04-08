@@ -12,6 +12,8 @@ context:
   alert_icon_text: dismiss
   angular: For 'top' variant - <vf-banner [banner__type]="'top'" [banner__inline_href]="'JavaScript:Void(0);'"></vf-banner>
            For 'fixed' variant - <vf-banner [banner__type]="'fixed'" [banner__text]="'I agree, dismiss this banner'"></vf-banner>
+  react:  For 'top' variant - <VfBanner banner__type="top" banner__inline_href="JavaScript:Void(0);"/>
+           For 'fixed' variant - <VfBanner banner__type="fixed" banner__text="I agree, dismiss this banner"/>
 variants:
 
   - name: info
@@ -20,24 +22,28 @@ variants:
       banner__dismissable: true
       banner__message: Here is some very, <em>very</em> <a class="vf-banner__link" href="JavaScript:Void(0);">important information</a>
       angular: <vf-banner [banner__variant]="'banner__info'" [banner__dismissible]="true" [banner__message]="'Here is some very, <em>very</em> <a class=\'vf-banner__link\' href=\'#\' onclick=\'return false;\'>important information</a>'"></vf-banner>
+      react: <VfBanner banner__variant="banner__info" banner__dismissible="true" banner__message="Here is some very, <em>very</em> <a class='vf-banner__link' href='#' onclick='return false;'>important information</a>"/>
   - name: warning
     context:
       banner__warning: true
       banner__dismissable: true
       banner__message: Easy now, easy does it. <a class="vf-banner__link" href="JavaScript:Void(0);">link example</a>
       angular: <vf-banner [banner__variant]="'banner__warning'" [banner__dismissible]="true" [banner__message]="'Easy now, easy does it. <a class=\'vf-banner__link\' href=\'JavaScript:Void(0);\'>link example</a>'"></vf-banner>
+      react: <VfBanner banner__variant="banner__warning" banner__dismissible="true" banner__message="Easy now, easy does it. <a class='vf-banner__link' href='JavaScript:Void(0);'>link example</a>"/>
   - name: danger
     context:
       banner__danger: true
       banner__dismissable: true
       banner__message: Oh dear, what have you done? <a class="vf-banner__link" href="JavaScript:Void(0);">link example</a>
       angular: <vf-banner [banner__variant]="'banner__danger'" [banner__message]="'Oh dear, what have you done? <a class=\'vf-banner__link\' href=\'JavaScript:Void(0);\'>link example</a>'"></vf-banner>
+      react: <VfBanner banner__variant="banner__danger" banner__message="Oh dear, what have you done? <a class='vf-banner__link' href='JavaScript:Void(0);'>link example</a>"/>
   - name: success
     context:
       banner__success: true
       banner__dismissable: true
       banner__message: Congratulations! You have made something <a class="vf-banner__link" href="JavaScript:Void(0);">awesome</a>!
       angular: <vf-banner [banner__variant]="'banner__success'" [banner__dismissible]="false" [banner__message]="'Congratulations! You have made something <a class=\'vf-banner__link\' href=\'JavaScript:Void(0);\'>awesome</a>!'"></vf-banner>
+      react: <VfBanner banner__variant="banner__success" banner__dismissible="false" banner__message="Congratulations! You have made something <a class='vf-banner__link' href='JavaScript:Void(0);'>awesome</a>!"/>
   - name: phase
     hidden: true
     status: deprecated
