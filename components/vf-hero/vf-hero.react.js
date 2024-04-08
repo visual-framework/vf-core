@@ -79,12 +79,12 @@ function VfHero({
         )}
         {vf_hero_text !== undefined
           ? vf_hero_text.map((hero_text) => (
-              <p
-                key={id}
-                className="vf-hero__text"
-                dangerouslySetInnerHTML={{ __html: hero_text }}
-              ></p>
-            ))
+            <p
+              key={id}
+              className="vf-hero__text"
+              dangerouslySetInnerHTML={{ __html: hero_text }}
+            ></p>
+          ))
           : ""}
         {vf_hero_link_href && vf_hero_link_text ? (
           <a className="vf-hero__link" href={vf_hero_link_href}>
