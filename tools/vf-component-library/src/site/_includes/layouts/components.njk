@@ -65,7 +65,7 @@ templateEngineOverride: njk
 
       {% set readmeAbout = component.notes | string | stringBetween("## About", "\n## ") %}
       {% if readmeAbout %}
-        {% set readmeAbout = readmeAbout | markdown | safe | string %}
+        {% set readmeAbout = readmeAbout | markdown | replace("<p>", "<span>") | replace("</p>", "</span>") | safe | string %}
         {% render '@vf-intro', {
           "id": "about",
           "vf_intro_heading": component.title,
