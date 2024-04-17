@@ -1,3 +1,7 @@
+### 4.0.0-alpha.2
+
+* Added : React support for Hero component.  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1876)
+
 ### 4.0.0-alpha.1
 
 * Added : Angular syntax for different variants as compared to common syntax

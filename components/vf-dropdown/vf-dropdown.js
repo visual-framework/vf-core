@@ -31,7 +31,8 @@ export function vfDropdown() {
     component.setAttribute("aria-expanded", "false");
     component.addEventListener("focusout", function(e) {
       // if dropdown loses focus to another element that aren't its own links
-      if (!e.currentTarget.contains(e.relatedTarget)) {
+      // check for relatedTarget to avoid bug with Safari
+      if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget)) {
         component.setAttribute("aria-expanded", "false");
         component.classList.remove("vf-dropdown--open");
         currentPos = null;

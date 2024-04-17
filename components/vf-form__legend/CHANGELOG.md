@@ -1,3 +1,7 @@
+### 2.0.0-alpha.1
+
+* Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+
 ### 2.0.0-alpha.0
 
 * reworks the legend to make more use of nunjucks

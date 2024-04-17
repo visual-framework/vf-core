@@ -4,6 +4,10 @@
 
 Fetches notifications from the EMBL contentHub URL of https://www.embl.org/api/v1/notifications?_format=json&source=contenthub and will display them, if a matching URL is found.
 
+## About
+
+Utility component for the EMBL site to serve as a backup for cases of major outages. Use [`vf-banner`](/components/vf-banner/) instead of this component for normal notifications.
+
 ## Usage
 
 This will also check a backup URL for cases of major outages.
