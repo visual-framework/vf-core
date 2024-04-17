@@ -15,10 +15,10 @@
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
 
-
 // Declare `ga` as a global for eslint
 /* global ga */
-
+window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
 /**
  * Utility method to invalidate prior GA check.
  */
@@ -52,10 +52,16 @@ var lastGaEventTime = Date.now();
  * };
  * vfGaIndicateLoaded(vfGaTrackOptions);
  */
-function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout) {
+function vfGaIndicateLoaded(
+  vfGaTrackOptions,
+  numberOfGaChecksLimit,
+  numberOfGaChecks,
+  checkTimeout
+) {
   /* eslint-disable no-redeclare*/
   var vfGaTrackOptions = vfGaTrackOptions || {};
-  if (vfGaTrackOptions.vfGaTrackPageLoad == null) vfGaTrackOptions.vfGaTrackPageLoad = true;
+  if (vfGaTrackOptions.vfGaTrackPageLoad == null)
+    vfGaTrackOptions.vfGaTrackPageLoad = true;
   var numberOfGaChecks = numberOfGaChecks || 0;
   var numberOfGaChecksLimit = numberOfGaChecksLimit || 5;
   var checkTimeout = checkTimeout || 900;
@@ -63,7 +69,9 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
   var el = document.querySelector("body");
 
   // debug
-  vfGaLogMessage('checking ' + numberOfGaChecks + ", limit: " + numberOfGaChecksLimit)
+  vfGaLogMessage(
+    "checking " + numberOfGaChecks + ", limit: " + numberOfGaChecksLimit
+  );
 
   numberOfGaChecks++;
 
@@ -76,30 +84,40 @@ function vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChe
 
     // check to see if gtag is loaded, and then if UA is loaded, and if neither, check once more (to a limit)
     if (typeof gtag !== "undefined") {
-      vfGaLogMessage('ga4 found');
+      vfGaLogMessage("ga4 found");
       if (el.getAttribute("data-vf-google-analytics-loaded") != "true") {
         el.setAttribute("data-vf-google-analytics-loaded", "true");
         vfGaInit(vfGaTrackOptions);
       }
     } else if (ga && ga.loaded) {
-      vfGaLogMessage('ua found');
+      vfGaLogMessage("ua found");
       if (el.getAttribute("data-vf-google-analytics-loaded") != "true") {
         el.setAttribute("data-vf-google-analytics-loaded", "true");
         vfGaInit(vfGaTrackOptions);
       }
     } else {
-      vfGaLogMessage('GA tracking code not ready, scheduling another check');
+      vfGaLogMessage("GA tracking code not ready, scheduling another check");
       if (numberOfGaChecks <= numberOfGaChecksLimit) {
-        setTimeout(function () {
-          vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
+        setTimeout(function() {
+          vfGaIndicateLoaded(
+            vfGaTrackOptions,
+            numberOfGaChecksLimit,
+            numberOfGaChecks,
+            checkTimeout
+          );
         }, 900); // give a second check if GA was slow to load
       }
     }
   } catch (err) {
-    vfGaLogMessage('error in vfGaIndicateLoaded');
+    vfGaLogMessage("error in vfGaIndicateLoaded");
     if (numberOfGaChecks <= numberOfGaChecksLimit) {
-      setTimeout(function () {
-        vfGaIndicateLoaded(vfGaTrackOptions,numberOfGaChecksLimit,numberOfGaChecks,checkTimeout);
+      setTimeout(function() {
+        vfGaIndicateLoaded(
+          vfGaTrackOptions,
+          numberOfGaChecksLimit,
+          numberOfGaChecks,
+          checkTimeout
+        );
       }, 900); // give a second check if GA was slow to load
     }
   }
@@ -134,11 +152,12 @@ function vfGetMeta(metaName) {
  * @param {string} [vfGaTrackOptions.vfGa4MeasurementId] The GA4 site measurement ID.
  */
 function vfGaInit(vfGaTrackOptions) {
-  vfGaLogMessage('initing vfGaInit')
+  vfGaLogMessage("initing vfGaInit");
   /* eslint-disable no-redeclare*/
   var vfGaTrackOptions = vfGaTrackOptions || {};
   /* eslint-enable no-redeclare*/
-  if (vfGaTrackOptions.vfGaTrackPageLoad == null) vfGaTrackOptions.vfGaTrackPageLoad = true;
+  if (vfGaTrackOptions.vfGaTrackPageLoad == null)
+    vfGaTrackOptions.vfGaTrackPageLoad = true;
   // Need help?
   // How to add dimension to your property
   // https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
@@ -146,12 +165,12 @@ function vfGaInit(vfGaTrackOptions) {
 
   if (typeof gtag === "undefined") {
     // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
-    vfGaLogMessage('GA4 dummy function has been set.');
+    vfGaLogMessage("GA4 dummy function has been set.");
     window.gtag = function() {};
   }
   if (typeof ga === "undefined") {
     // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
-    vfGaLogMessage('GA UA dummy function has been set.');
+    vfGaLogMessage("GA UA dummy function has been set.");
     window.ga = function() {};
   }
 
@@ -173,8 +192,8 @@ function vfGaInit(vfGaTrackOptions) {
     var dimension = toLog[1];
     var pageTypeName = toLog[0];
     ga("set", dimension, pageTypeName);
-    gtag('config', vfGaTrackOptions.vfGa4MeasurementId, {
-      'custom_map': { dimension: pageTypeName }
+    gtag("config", vfGaTrackOptions.vfGa4MeasurementId, {
+      custom_map: { dimension: pageTypeName }
     });
   }
 
@@ -188,27 +207,212 @@ function vfGaInit(vfGaTrackOptions) {
     // a copy of https://ipmeta.io/plugin.js
     // included here to simplify usage and reduce external requests
     /* eslint-disable */
-    function providePlugin(pluginName,pluginConstructor){var ga=window[window.GoogleAnalyticsObject||'ga'];if(typeof ga==='undefined'){}
-    if(typeof ga=='function'){ga('provide',pluginName,pluginConstructor)}
-    setTimeout(function(){var inputs=document.querySelectorAll('input');if(inputs){for(var i=0;i<inputs.length;i++){inputs[i].addEventListener('blur',riskCheck)}}},750)}
-    function provideGtagPlugin(config){var i=0;var timer=setInterval(function(){++i;var gtag=window.gtag;if(typeof gtag!=="undefined"||i===5){Window.IpMeta=new IpMeta(gtag,config);Window.IpMeta.loadGtagNetworkFields();clearInterval(timer)}},500)}
-    function provideGtmPlugin(config){Window.IpMeta=new IpMeta([],config);Window.IpMeta.loadGtmNetworkFields();return[]}
-    function rc(d){var xhr=new XMLHttpRequest;xhr.open("POST",'https://risk.ipmeta.io/check',!0);xhr.setRequestHeader('Content-Type','application/json');xhr.send(JSON.stringify({assoc:d,}))}
-    function riskCheck(e){var input=e.srcElement.value;if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)){var domain=input.replace(/.*@/,"");rc(encr(domain))}}
-    var IpMeta=function(tracker,config){this.tracker=tracker;this.nameDimension=config.serviceProvider||config.nameDimension||'dimension1';this.domainDimension=config.networkDomain||config.domainDimension||'dimension2';this.typeDimension=config.networkType||config.typeDimension||'dimension3';this.gtmEventKey=config.gtmEventKey||'pageview';this.isLocal=config.local||!1;this.apiKey=config.apiKey;this.isDebug=config.debug};IpMeta.prototype.loadNetworkFields=function(){if(typeof Window.IpMeta==='undefined'){Window.IpMeta=this}
-    this.debugMessage('Loading network field parameters');enrichNetwork(this.apiKey,this.isLocal,function(fields,wasAsync){var wasAsync=wasAsync||!1;var nameValue=fields.name||'(not set)';var domainValue=fields.domain||'(not set)';var typeValue=fields.type||'(not set)';if(nameValue){Window.IpMeta.tracker.set(Window.IpMeta.nameDimension,nameValue);Window.IpMeta.debugMessage('Loaded network name: '+nameValue+' into '+Window.IpMeta.nameDimension)}
-    if(domainValue){Window.IpMeta.tracker.set(Window.IpMeta.domainDimension,domainValue);Window.IpMeta.debugMessage('Loaded network domain: '+domainValue+' into '+Window.IpMeta.domainDimension)}
-    if(typeValue){Window.IpMeta.tracker.set(Window.IpMeta.typeDimension,typeValue);Window.IpMeta.debugMessage('Loaded network type: '+typeValue+' into '+Window.IpMeta.typeDimension)}
-    if(wasAsync){Window.IpMeta.tracker.send('event','IpMeta','Enriched','IpMeta Enriched',{nonInteraction:!0})}})};IpMeta.prototype.setGtagMapping=function(fields){var nameValue=fields.name||'(not set)';var domainValue=fields.domain||'(not set)';var typeValue=fields.type||'(not set)';var mapping={};mapping[this.nameDimension]=nameValue;mapping[this.domainDimension]=domainValue;mapping[this.typeDimension]=typeValue;mapping.non_interaction=!0;Window.IpMeta.tracker('event','ipmeta_event',mapping)};IpMeta.prototype.loadGtagNetworkFields=function(){if(typeof Window.IpMeta==='undefined'){Window.IpMeta=this}
-    this.debugMessage('Loading network field parameters');enrichNetwork(this.apiKey,this.isLocal,function(fields,wasAsync){wasAsync=wasAsync||!1;Window.IpMeta.setGtagMapping(fields)})};IpMeta.prototype.loadGtmNetworkFields=function(){if(typeof Window.IpMeta==='undefined'){Window.IpMeta=this}
-    this.debugMessage('Loading network field parameters');var eventKey=this.gtmEventKey;enrichNetwork(this.apiKey,this.isLocal,function(fields,wasAsync){wasAsync=wasAsync||!1;var nameValue=fields.name||'(not set)';var domainValue=fields.domain||'(not set)';var typeValue=fields.type||'(not set)';var dataLayerObj={};dataLayerObj.event=eventKey;dataLayerObj.nameValue=nameValue;dataLayerObj.domainValue=domainValue;dataLayerObj.typeValue=typeValue;window.dataLayer=window.dataLayer||[];window.dataLayer.push(dataLayerObj)})};IpMeta.prototype.setDebug=function(enabled){this.isDebug=enabled};IpMeta.prototype.debugMessage=function(message){if(!this.isDebug)return;if(console)console.debug(message)};function enrichNetwork(key,local,callback){local=local||!1;storageKey=key+"ipmetaNetworkResponse";if(sessionStorage.getItem(storageKey)!==null){callback(JSON.parse(sessionStorage.getItem(storageKey)),!1);return}
-    var request=new XMLHttpRequest();var pl='h='+encodeURI(window.location.hostname);if(key){pl+='&k='+key}
-    var endpoint='https://ipmeta.io/api/enrich';if(local){endpoint='http://ipmeta.test/api/enrich'}
-    request.open('POST',endpoint,!0);request.setRequestHeader('Content-type','application/x-www-form-urlencoded');request.setRequestHeader('Accept','application/json');request.send(pl);request.onreadystatechange=function(){if(request.readyState==XMLHttpRequest.DONE){if(request.status===200){sessionStorage.setItem(storageKey,request.responseText);callback(JSON.parse(request.responseText),!0);return}
-    if(request.status===429){console.error(JSON.parse(request.responseText)[0]);return!1}
-    console.error('IpMeta lookup failed.  Returned status of '+request.status);return!1}}}
-    function encr(str){return'IPM'+btoa(btoa('bf2414cd32581225a82cc4fb46c67643'+btoa(str))+'dde9caf18a8fc7d8187f3aa66da8c6bb')}
-    providePlugin('ipMeta',IpMeta);
+    function providePlugin(pluginName, pluginConstructor) {
+      var ga = window[window.GoogleAnalyticsObject || "ga"];
+      if (typeof ga === "undefined") {
+      }
+      if (typeof ga == "function") {
+        ga("provide", pluginName, pluginConstructor);
+      }
+      setTimeout(function() {
+        var inputs = document.querySelectorAll("input");
+        if (inputs) {
+          for (var i = 0; i < inputs.length; i++) {
+            inputs[i].addEventListener("blur", riskCheck);
+          }
+        }
+      }, 750);
+    }
+    function provideGtagPlugin(config) {
+      var i = 0;
+      var timer = setInterval(function() {
+        ++i;
+        var gtag = window.gtag;
+        if (typeof gtag !== "undefined" || i === 5) {
+          Window.IpMeta = new IpMeta(gtag, config);
+          Window.IpMeta.loadGtagNetworkFields();
+          clearInterval(timer);
+        }
+      }, 500);
+    }
+    function provideGtmPlugin(config) {
+      Window.IpMeta = new IpMeta([], config);
+      Window.IpMeta.loadGtmNetworkFields();
+      return [];
+    }
+    function rc(d) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://risk.ipmeta.io/check", !0);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(JSON.stringify({ assoc: d }));
+    }
+    function riskCheck(e) {
+      var input = e.srcElement.value;
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)) {
+        var domain = input.replace(/.*@/, "");
+        rc(encr(domain));
+      }
+    }
+    var IpMeta = function(tracker, config) {
+      this.tracker = tracker;
+      this.nameDimension =
+        config.serviceProvider || config.nameDimension || "dimension1";
+      this.domainDimension =
+        config.networkDomain || config.domainDimension || "dimension2";
+      this.typeDimension =
+        config.networkType || config.typeDimension || "dimension3";
+      this.gtmEventKey = config.gtmEventKey || "pageview";
+      this.isLocal = config.local || !1;
+      this.apiKey = config.apiKey;
+      this.isDebug = config.debug;
+    };
+    IpMeta.prototype.loadNetworkFields = function() {
+      if (typeof Window.IpMeta === "undefined") {
+        Window.IpMeta = this;
+      }
+      this.debugMessage("Loading network field parameters");
+      enrichNetwork(this.apiKey, this.isLocal, function(fields, wasAsync) {
+        var wasAsync = wasAsync || !1;
+        var nameValue = fields.name || "(not set)";
+        var domainValue = fields.domain || "(not set)";
+        var typeValue = fields.type || "(not set)";
+        if (nameValue) {
+          Window.IpMeta.tracker.set(Window.IpMeta.nameDimension, nameValue);
+          Window.IpMeta.debugMessage(
+            "Loaded network name: " +
+              nameValue +
+              " into " +
+              Window.IpMeta.nameDimension
+          );
+        }
+        if (domainValue) {
+          Window.IpMeta.tracker.set(Window.IpMeta.domainDimension, domainValue);
+          Window.IpMeta.debugMessage(
+            "Loaded network domain: " +
+              domainValue +
+              " into " +
+              Window.IpMeta.domainDimension
+          );
+        }
+        if (typeValue) {
+          Window.IpMeta.tracker.set(Window.IpMeta.typeDimension, typeValue);
+          Window.IpMeta.debugMessage(
+            "Loaded network type: " +
+              typeValue +
+              " into " +
+              Window.IpMeta.typeDimension
+          );
+        }
+        if (wasAsync) {
+          Window.IpMeta.tracker.send(
+            "event",
+            "IpMeta",
+            "Enriched",
+            "IpMeta Enriched",
+            { nonInteraction: !0 }
+          );
+        }
+      });
+    };
+    IpMeta.prototype.setGtagMapping = function(fields) {
+      var nameValue = fields.name || "(not set)";
+      var domainValue = fields.domain || "(not set)";
+      var typeValue = fields.type || "(not set)";
+      var mapping = {};
+      mapping[this.nameDimension] = nameValue;
+      mapping[this.domainDimension] = domainValue;
+      mapping[this.typeDimension] = typeValue;
+      mapping.non_interaction = !0;
+      Window.IpMeta.tracker("event", "ipmeta_event", mapping);
+    };
+    IpMeta.prototype.loadGtagNetworkFields = function() {
+      if (typeof Window.IpMeta === "undefined") {
+        Window.IpMeta = this;
+      }
+      this.debugMessage("Loading network field parameters");
+      enrichNetwork(this.apiKey, this.isLocal, function(fields, wasAsync) {
+        wasAsync = wasAsync || !1;
+        Window.IpMeta.setGtagMapping(fields);
+      });
+    };
+    IpMeta.prototype.loadGtmNetworkFields = function() {
+      if (typeof Window.IpMeta === "undefined") {
+        Window.IpMeta = this;
+      }
+      this.debugMessage("Loading network field parameters");
+      var eventKey = this.gtmEventKey;
+      enrichNetwork(this.apiKey, this.isLocal, function(fields, wasAsync) {
+        wasAsync = wasAsync || !1;
+        var nameValue = fields.name || "(not set)";
+        var domainValue = fields.domain || "(not set)";
+        var typeValue = fields.type || "(not set)";
+        var dataLayerObj = {};
+        dataLayerObj.event = eventKey;
+        dataLayerObj.nameValue = nameValue;
+        dataLayerObj.domainValue = domainValue;
+        dataLayerObj.typeValue = typeValue;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(dataLayerObj);
+      });
+    };
+    IpMeta.prototype.setDebug = function(enabled) {
+      this.isDebug = enabled;
+    };
+    IpMeta.prototype.debugMessage = function(message) {
+      if (!this.isDebug) return;
+      if (console) console.debug(message);
+    };
+    function enrichNetwork(key, local, callback) {
+      local = local || !1;
+      storageKey = key + "ipmetaNetworkResponse";
+      if (sessionStorage.getItem(storageKey) !== null) {
+        callback(JSON.parse(sessionStorage.getItem(storageKey)), !1);
+        return;
+      }
+      var request = new XMLHttpRequest();
+      var pl = "h=" + encodeURI(window.location.hostname);
+      if (key) {
+        pl += "&k=" + key;
+      }
+      var endpoint = "https://ipmeta.io/api/enrich";
+      if (local) {
+        endpoint = "http://ipmeta.test/api/enrich";
+      }
+      request.open("POST", endpoint, !0);
+      request.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+      );
+      request.setRequestHeader("Accept", "application/json");
+      request.send(pl);
+      request.onreadystatechange = function() {
+        if (request.readyState == XMLHttpRequest.DONE) {
+          if (request.status === 200) {
+            sessionStorage.setItem(storageKey, request.responseText);
+            callback(JSON.parse(request.responseText), !0);
+            return;
+          }
+          if (request.status === 429) {
+            console.error(JSON.parse(request.responseText)[0]);
+            return !1;
+          }
+          console.error(
+            "IpMeta lookup failed.  Returned status of " + request.status
+          );
+          return !1;
+        }
+      };
+    }
+    function encr(str) {
+      return (
+        "IPM" +
+        btoa(
+          btoa("bf2414cd32581225a82cc4fb46c67643" + btoa(str)) +
+            "dde9caf18a8fc7d8187f3aa66da8c6bb"
+        )
+      );
+    }
+    providePlugin("ipMeta", IpMeta);
     /* eslint-enable */
 
     // Track the network
@@ -222,7 +426,7 @@ function vfGaInit(vfGaTrackOptions) {
 
   // standard google analytics bootstrap
   if (vfGaTrackOptions.vfGaTrackPageLoad) {
-    vfGaLogMessage('sending page view');
+    vfGaLogMessage("sending page view");
     ga("send", "pageview");
     gtag("event", "page_view");
   }
@@ -233,7 +437,7 @@ function vfGaInit(vfGaTrackOptions) {
   //   // 'metric5': 'custom metric data'
   // });
 
-  vfGaLogMessage('prepare vfGaLinkTrackingInit');
+  vfGaLogMessage("prepare vfGaLinkTrackingInit");
   vfGaLinkTrackingInit();
 }
 
@@ -241,43 +445,57 @@ function vfGaInit(vfGaTrackOptions) {
  * Track clicks as events
  */
 function vfGaLinkTrackingInit() {
-  vfGaLogMessage('vfGaLinkTrackingInit');
-  document.body.addEventListener("mousedown", function (evt) {
+  vfGaLogMessage("vfGaLinkTrackingInit");
+  document.body.addEventListener(
+    "mousedown",
+    function(evt) {
+      // Debug event type clicked
+      vfGaLogMessage(evt.target.tagName);
+      vfGaLogMessage(evt.target);
 
-    // Debug event type clicked
-    vfGaLogMessage(evt.target.tagName);
-    vfGaLogMessage(evt.target);
+      // we only track clicks on interactive elements (links, buttons, forms)
+      if (evt.target) {
+        if (evt.target.tagName) {
+          let clickedElementTag = evt.target.tagName.toLowerCase();
+          let actionElements = [
+            "a",
+            "button",
+            "label",
+            "input",
+            "select",
+            "textarea",
+            "details",
+            "area"
+          ];
+          if (actionElements.indexOf(clickedElementTag) > -1) {
+            vfGaTrackInteraction(evt.target);
+            return;
+          }
+        }
+      }
 
-    // we only track clicks on interactive elements (links, buttons, forms)
-    if (evt.target) {
-      if (evt.target.tagName) {
-        let clickedElementTag = evt.target.tagName.toLowerCase();
-        let actionElements = ["a", "button", "label", "input", "select", "textarea", "details", "area"];
-        if (actionElements.indexOf(clickedElementTag) > -1) {
-          vfGaTrackInteraction(evt.target);
+      // In the case that elements such as `span` are wrapped in action elements (e.g. `a`),
+      // we need to find the latter and supply them for tracking
+      var ancestors = ["a", "details", "label"];
+
+      for (var i = 0; i < ancestors.length; i++) {
+        var from = findParent(ancestors[i], evt.target || evt.srcElement);
+
+        if (from) {
+          vfGaTrackInteraction(from);
           return;
         }
       }
-    }
-
-    // In the case that elements such as `span` are wrapped in action elements (e.g. `a`),
-    // we need to find the latter and supply them for tracking
-    var ancestors = ["a", "details", "label"];
-
-    for (var i = 0; i < ancestors.length; i++) {
-      var from = findParent(ancestors[i], evt.target || evt.srcElement);
-
-      if (from) {
-        vfGaTrackInteraction(from);
-        return;
-      }
-    }
-  }, false );
+    },
+    false
+  );
 
   //find first parent with tagName [tagname]
-  function findParent(tagname,el){
-    while (el){
-      if ((el.nodeName || el.tagName).toLowerCase()===tagname.toLowerCase()){return el;}
+  function findParent(tagname, el) {
+    while (el) {
+      if ((el.nodeName || el.tagName).toLowerCase() === tagname.toLowerCase()) {
+        return el;
+      }
       el = el.parentNode;
     }
     return null;
@@ -307,8 +525,8 @@ function vfGaLinkTrackingInit() {
  * @returns {var} the last item in the array
  * @example linkName = actedOnItem.src.split('/').vfGaLinkLast();
  */
-if (!Array.prototype.vfGaLinkLast){
-  Array.prototype.vfGaLinkLast = function(){
+if (!Array.prototype.vfGaLinkLast) {
+  Array.prototype.vfGaLinkLast = function() {
     return this[this.length - 1];
   };
 }
@@ -317,7 +535,10 @@ if (!Array.prototype.vfGaLinkLast){
 // To be removed in 2.0.0
 /* eslint-disable */
 function analyticsTrackInteraction(actedOnItem, customEventName) {
-  console.warn("vfGa","As of 1.0.0-rc.3 analyticsTrackInteraction() is now vfGaTrackInteraction(). You function call is being proxied. You should update your code.");
+  console.warn(
+    "vfGa",
+    "As of 1.0.0-rc.3 analyticsTrackInteraction() is now vfGaTrackInteraction(). You function call is being proxied. You should update your code."
+  );
   vfGaTrackInteraction(actedOnItem, customEventName);
 }
 /* eslint-enable */
@@ -346,7 +567,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
   if (typeof gtag === "undefined") {
     // if the site is still using legacy GA, set a dummy gtag function so we don't have to add a bunch of if statements
     window.gtag = function() {};
-    vfGaLogMessage('GA4 dummy function has been set.');
+    vfGaLogMessage("GA4 dummy function has been set.");
   }
 
   if (customEventName.length > 0) {
@@ -366,7 +587,8 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
     // console.log('linkName',linkName);
 
     // if there's no text, it's probably and image
-    if (linkName.length == 0 && actedOnItem.hasAttribute("src")) linkName = actedOnItem.src.split("/").vfGaLinkLast();
+    if (linkName.length == 0 && actedOnItem.hasAttribute("src"))
+      linkName = actedOnItem.src.split("/").vfGaLinkLast();
     if (linkName.length == 0 && actedOnItem.value) linkName = actedOnItem.value;
 
     // is there an inner image?
@@ -375,8 +597,13 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
         // if alt text, use that
         if (actedOnItem.getElementsByTagName("img")[0].hasAttribute("alt")) {
           linkName = actedOnItem.getElementsByTagName("img")[0].alt;
-        } else if (actedOnItem.getElementsByTagName("img")[0].hasAttribute("src")) {
-          linkName = actedOnItem.getElementsByTagName("img")[0].src.split("/").vfGaLinkLast();
+        } else if (
+          actedOnItem.getElementsByTagName("img")[0].hasAttribute("src")
+        ) {
+          linkName = actedOnItem
+            .getElementsByTagName("img")[0]
+            .src.split("/")
+            .vfGaLinkLast();
         }
       }
     }
@@ -393,7 +620,9 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
   // Get closest parent container
   // Track the region of the link clicked (global nav, masthead, hero, main content, footer, etc)
   //data-vf-google-analytics-region="main-content-area-OR-SOME-OTHER-NAME"
-  let parentContainer = actedOnItem.closest("[data-vf-google-analytics-region]");
+  let parentContainer = actedOnItem.closest(
+    "[data-vf-google-analytics-region]"
+  );
   if (parentContainer) {
     parentContainer = parentContainer.dataset.vfGoogleAnalyticsRegion;
   } else {
@@ -403,7 +632,7 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
   // send to GA
   // Only if more than 100ms has past since last click.
   // Due to our structure, we fire multiple events, so we only send to GA the most specific event resolution
-  if ((Date.now() - lastGaEventTime) > 150) {
+  if (Date.now() - lastGaEventTime > 150) {
     // track link name and region
 
     // note that we've stored an event(s)
@@ -425,31 +654,53 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
     if (href && href.match(/^mailto\:/i)) {
       // email click
       var mailLink = href.replace(/^mailto\:/i, "");
-      ga && ga("send", "event", "Email", "Region / " + parentContainer, mailLink);
-      gtag && gtag("event", "Region / " + parentContainer, {
-        "vf_analytics": "true",
-        "page_container": parentContainer,
-        "event_label": mailLink,
-        "event_category": "UI",
-        "event_type": "Email",
-        "email_address": mailLink
-      });
-      vfGaLogMessage("Email", "Region / " + parentContainer, mailLink, lastGaEventTime, actedOnItem);
+      ga &&
+        ga("send", "event", "Email", "Region / " + parentContainer, mailLink);
+      gtag &&
+        gtag("event", "Region / " + parentContainer, {
+          vf_analytics: "true",
+          page_container: parentContainer,
+          event_label: mailLink,
+          event_category: "UI",
+          event_type: "Email",
+          email_address: mailLink
+        });
+      vfGaLogMessage(
+        "Email",
+        "Region / " + parentContainer,
+        mailLink,
+        lastGaEventTime,
+        actedOnItem
+      );
     } else if (href && href.match(filetypes)) {
       // download event
-      var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
+      var extension = /[.]/.exec(href) ? /[^.]+$/.exec(href) : undefined;
       var filePath = href;
-      ga && ga("send", "event", "Download", "Type / " + extension + " / " + parentContainer, filePath);
-      gtag && gtag("event", "Type / " + extension + " / " + parentContainer, {
-        "vf_analytics": "true",
-        "page_container": parentContainer,
-        "event_label": filePath,
-        "file_extension": extension,
-        "event_category": "UI",
-        "event_type": "Download",
-        "link_url": filePath
-      });
-      vfGaLogMessage("Download", "Type / " + extension + " / " + parentContainer, filePath, lastGaEventTime, actedOnItem);
+      ga &&
+        ga(
+          "send",
+          "event",
+          "Download",
+          "Type / " + extension + " / " + parentContainer,
+          filePath
+        );
+      gtag &&
+        gtag("event", "Type / " + extension + " / " + parentContainer, {
+          vf_analytics: "true",
+          page_container: parentContainer,
+          event_label: filePath,
+          file_extension: extension,
+          event_category: "UI",
+          event_type: "Download",
+          link_url: filePath
+        });
+      vfGaLogMessage(
+        "Download",
+        "Type / " + extension + " / " + parentContainer,
+        filePath,
+        lastGaEventTime,
+        actedOnItem
+      );
     }
     /* eslint-enable no-useless-escape */
 
@@ -458,16 +709,30 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
       // create a new URL from link
       let newDestination = new URL(href, window.location);
       if (newDestination.hostname != window.location.hostname) {
-        ga && ga("send", "event", "External links", "External link / " + linkName + " / " + parentContainer, href);
-        gtag && gtag("event", "External link / " + parentContainer, {
-          "vf_analytics": "true",
-          "page_container": parentContainer,
-          "event_category": "UI",
-          "event_type": "External link or button",
-          "link_text": linkName,
-          "link_url": href
-        });
-        vfGaLogMessage("External links", "External link / " + linkName + " / " + parentContainer, href, lastGaEventTime, actedOnItem);
+        ga &&
+          ga(
+            "send",
+            "event",
+            "External links",
+            "External link / " + linkName + " / " + parentContainer,
+            href
+          );
+        gtag &&
+          gtag("event", "External link / " + parentContainer, {
+            vf_analytics: "true",
+            page_container: parentContainer,
+            event_category: "UI",
+            event_type: "External link or button",
+            link_text: linkName,
+            link_url: href
+          });
+        vfGaLogMessage(
+          "External links",
+          "External link / " + linkName + " / " + parentContainer,
+          href,
+          lastGaEventTime,
+          actedOnItem
+        );
       }
     }
 
@@ -502,30 +767,46 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
         linkName = linkName + ", " + actedOnItem.value;
       }
 
-      ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
-      gtag && gtag("event", "UI Element / " + parentContainer, {
-        "vf_analytics": "true",
-        "page_container": parentContainer,
-        "event_label": linkName,
-        "event_category": "UI",
-        "event_type": "Webform",
-        "link_text": linkName
-      });
-      vfGaLogMessage("UI Form", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
+      ga &&
+        ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
+      gtag &&
+        gtag("event", "UI Element / " + parentContainer, {
+          vf_analytics: "true",
+          page_container: parentContainer,
+          event_label: linkName,
+          event_category: "UI",
+          event_type: "Webform",
+          link_text: linkName
+        });
+      vfGaLogMessage(
+        "UI Form",
+        "UI Element / " + parentContainer,
+        linkName,
+        lastGaEventTime,
+        actedOnItem
+      );
     } else {
       // generic catch all
-      vfGaLogMessage("vfGaTrackInteraction: generic catch all")
-      ga && ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
-      gtag && gtag("event", "UI Element / " + parentContainer, {
-        "vf_analytics": "true",
-        "page_container": parentContainer,
-        "event_label": linkName,
-        "event_category": "UI",
-        "event_type": "Link, button, image or similar",
-        "link_text": linkName,
-        "link_url": href
-      });
-      vfGaLogMessage("UI Catch all", "UI Element / " + parentContainer, linkName, lastGaEventTime, actedOnItem);
+      vfGaLogMessage("vfGaTrackInteraction: generic catch all");
+      ga &&
+        ga("send", "event", "UI", "UI Element / " + parentContainer, linkName);
+      gtag &&
+        gtag("event", "UI Element / " + parentContainer, {
+          vf_analytics: "true",
+          page_container: parentContainer,
+          event_label: linkName,
+          event_category: "UI",
+          event_type: "Link, button, image or similar",
+          link_text: linkName,
+          link_url: href
+        });
+      vfGaLogMessage(
+        "UI Catch all",
+        "UI Element / " + parentContainer,
+        linkName,
+        lastGaEventTime,
+        actedOnItem
+      );
     }
   }
 }
@@ -539,7 +820,13 @@ function vfGaTrackInteraction(actedOnItem, customEventName) {
  * @param {string} lastGaEventTime
  * @param {element} actedOnItem
  */
-function vfGaLogMessage(eventCategory, eventAction, eventLabel, lastGaEventTime, actedOnItem) {
+function vfGaLogMessage(
+  eventCategory,
+  eventAction,
+  eventLabel,
+  lastGaEventTime,
+  actedOnItem
+) {
   // conditional logging
   let conditionalLoggingCheck = document.querySelector("body");
   // debug: always turn on verbose analytics
@@ -551,9 +838,20 @@ function vfGaLogMessage(eventCategory, eventAction, eventLabel, lastGaEventTime,
         // It's a simple message debug
         console.log("Verbose analytics: %o ", eventCategory);
       } else {
-        console.log("%c Verbose analytics on ", "color: #FFF; background: #111; font-size: .75rem;");
+        console.log(
+          "%c Verbose analytics on ",
+          "color: #FFF; background: #111; font-size: .75rem;"
+        );
         console.log("clicked on: %o ", actedOnItem);
-        console.log("sent to GA: ", "event ->", eventCategory + " ->", eventAction + " ->", eventLabel, "; at: ", lastGaEventTime);
+        console.log(
+          "sent to GA: ",
+          "event ->",
+          eventCategory + " ->",
+          eventAction + " ->",
+          eventLabel,
+          "; at: ",
+          lastGaEventTime
+        );
       }
       /* eslint-enable */
     }

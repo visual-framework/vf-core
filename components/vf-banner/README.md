@@ -36,7 +36,7 @@ Like all JS-enabled components in the Visual Framework, if you wish to use the b
   - Only works with `blocking` banner state
   - data-vf-js-banner-esc-close=`"y"`
 - Button text:
-  - Optional, leaving off will not incekt a close button
+  - Optional, leaving off will not inject a close button
   - data-vf-js-banner-button-text="Accept and close"
 - Button theme:
   - Optional, leaving off will default to the secondary theme.
@@ -129,6 +129,75 @@ This package was generated with Angular version 15.2.0 and has been tested on ap
   ```
   <vf-banner [banner__variant]="'banner__info'" [banner__dismissible]="true" [banner__message]="'Here is some very, <em>very</em> <a class=\'vf-banner__link\' href=\'#\' onclick=\'return false;\'>important information</a>'"></vf-banner>
   ```
+
+### React
+
+As of version 2.0.0-alpha.2 vf-banner has experimental React support which has been tested on react version 18.2.0
+
+1. Install `yarn add @visual-framework/vf-banner`
+2. Import in the JS file where you want to include this component
+    ```
+    import VfBanner from '@visual-framework/vf-banner/vf-banner.react';
+
+    Make sure you have the jsx support enabled with babel. Alternatively, you can also copy the vf-banner.react.js file from below to your react project and import as per the location.
+    ```
+3. Can be used as
+    ```
+    <VfBanner banner__variant="banner__info" banner__dismissible="true" banner__message="Here is some very, <em>very</em> <a class='vf-banner__link' href='#' onclick='return false;'>important information</a>"/>
+    ```
+
+   Possible combinations
+
+    | Variable                  | Options           | Default | Release  | Applicable to banner types |
+    | ------------------------- | ----------------- | ------- | -------- | -------------------------- |
+    | banner__message           |                   |         |          | 'basic'                    |
+    | banner__type              |                   | 'basic' | current  | all types                  |
+    |                           | 'inline'          |         | current  |                            |
+    |                           | 'fixed'           |         | current  |                            |
+    |                           | 'top'             |         | current  |                            |
+    | banner__variant           | 'banner__info'    |         |          | 'basic'                    |
+    |                           | 'banner__warning' |         |          |                            |
+    |                           | 'banner__danger'  |         |          |                            |
+    |                           | 'banner__success' |         |          |                            |
+    | banner__dismissible       | true, false       | false   |          | 'basic'                    |
+    | banner__inline_href       |                   |         |          | 'inline', 'top'            |
+    | banner__text              |                   |         |          | 'fixed'                    |
+    | data_service_id           |                   |         |          | 'fixed'                    |
+    | data_protection_version   |                   |         |          | 'fixed'                    |
+
+4. CSS to be added to your styles.scss
+
+    You should install [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles and then add below code in your main SCSS file
+
+    ```
+    $vf-font-plex-mono-prefix: '~@visual-framework/vf-font-plex-mono/assets';
+    $vf-font-plex-sans-prefix: '~@visual-framework/vf-font-plex-sans/assets';
+
+    @import '~@visual-framework/vf-box/vf-box.scss';
+    @import '~@visual-framework/vf-stack/vf-stack.scss';
+    @import '~@visual-framework/vf-u-fullbleed/vf-u-fullbleed.scss';
+    ```
+
+    as per your banner of choice add all or some to your styles.scss
+
+    ```
+    @import '~@visual-framework/vf-banner/vf-banner.scss';
+    @import '~@visual-framework/vf-banner/vf-banner--phase.scss';
+    @import '~@visual-framework/vf-banner/vf-banner--alerts.scss';
+    @import '~@visual-framework/vf-banner/vf-banner--gdpr.scss';
+    ```
+    for the 'fixed' and 'top' banner type additionally add below to styles.scss
+    ```
+    @import '~@visual-framework/vf-banner/vf-banner--fixed.scss';
+    @import "~@visual-framework/vf-badge/vf-badge.scss";
+    @import '~@visual-framework/vf-button/vf-button.scss';
+    @import '~@visual-framework/vf-grid/vf-grid.scss';
+    ```
+    Usage:
+
+    ```
+    <VfBanner banner__variant="banner__info" banner__dismissible="true" banner__message="Here is some very, <em>very</em> <a class='vf-banner__link' href='#' onclick='return false;'>important information</a>"/>
+    ```
 
 ## Install
 

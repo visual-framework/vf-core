@@ -1,3 +1,7 @@
+### 1.2.2
+
+* Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+
 ### 1.2.1
 
 * Changed: Modified the Blockquote  component in line with stakeholder requirements and to improve consistency

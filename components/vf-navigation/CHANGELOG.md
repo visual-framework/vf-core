@@ -1,3 +1,7 @@
+### 5.0.0-rc.2
+
+* Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+
 ### 5.0.0-rc.1
 
 * Removed: Attribute `data-vf-js-navigation-on-this-page-link` for vf-navigation--on-this-page

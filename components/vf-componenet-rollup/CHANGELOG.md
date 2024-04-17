@@ -1,3 +1,7 @@
+## 1.4.7
+
+* Fixed build notices. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1936)
+
 ## 1.4.6
 
 * Added option to use GA4 analytics

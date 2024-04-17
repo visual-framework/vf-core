@@ -1,3 +1,7 @@
+### 1.1.0-rc.1
+
+* Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+
 ### 1.1.0-rc.0
 
 * Adds gtag (GA4) support.

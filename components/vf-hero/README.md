@@ -110,6 +110,44 @@ Usage:
   </vf-hero>
 ```
 
+### React
+
+As of version 4.0.0-alpha.2 vf-hero has experimental React support which has been tested on react version 18.2.0
+
+1. Install `yarn add @visual-framework/vf-hero`
+2. Import in the JS file where you want to include this component
+   ```
+   import VfHero from '@visual-framework/vf-hero/vf-hero.react';
+
+   Make sure you have the jsx support enabled with babel. Alternatively, you can also copy the vf-hero.react.js file from below to your react project and import as per the location.
+   ```
+3. Can be used as
+   ```
+   <VfHero
+      id="0"
+      vf_hero_kicker="<a href=JavaScript:Void(0);>VF Hamburg</a> | Structural Biology"
+      vf_hero_heading="About the Hentze group!"
+      vf_hero_heading_href="'JavaScript:Void(0);'"
+      vf_hero_subheading="an example of some ancillary text"
+      vf_hero_text={["The Hentze group combines biochemical and <a href=#>systems–level approaches</a> to investigate the connections between <a href=#>gene expression</a> and <a href=#>cell metabolism</a>, and their roles in human disease."]}
+      vf_hero_link_text="Learn more"
+      vf_hero_link_href="'JavaScript:Void(0);'"
+      vf_hero_image_size="auto 28.5rem"
+    />
+   ```
+4. Styling changes
+
+   You should install [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles and then add below code in your main SCSS file
+    ```
+    $vf-font-plex-mono-prefix: '~@visual-framework/vf-font-plex-mono/assets';
+    $vf-font-plex-sans-prefix: '~@visual-framework/vf-font-plex-sans/assets';
+
+    @import '~@visual-framework/vf-box/vf-box.scss';
+    @import '~@visual-framework/vf-stack/vf-stack.scss';
+    @import '~@visual-framework/vf-u-fullbleed/vf-u-fullbleed.scss';
+    @import '~@visual-framework/vf-hero/vf-hero.scss';
+    ```
+
 ## Install
 
 This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://nodejs.org/), you can install `vf-hero` with this command.
