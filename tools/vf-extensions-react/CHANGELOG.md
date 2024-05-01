@@ -1,3 +1,7 @@
+### 0.0.4
+
+* Dependency bump
+
 ### 0.0.3
 
 * Update readme with refined approach to VF-React support.
