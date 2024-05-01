@@ -1,0 +1,177 @@
+---
+title: Rollup release 2.5.15
+subtitle: This release includes React support for vf-hero along with new variant to vf-bookmark and fixes for lint errors/notices/warnings during build. It also includes bug fix for vf-dropdown; removal of empty pages; redirection to correct pages; link corrections; documentation update for vf-form and addition of missing descriptions to a few components. Moreover it includes some dependency updates and version corrections for a few packages.
+date: 2024-05-01 15:30:00
+version: 2.5.15
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+   {
+      "text": "Features",
+      "link_list_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### New features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-banner", "2.0.1", "89c64d3ef268174834e5a7c302b9126acbddf68c") }}
+
+* Added : React support for Banner component. See README.md for more. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1878)
+* Version bump
+
+{{ releaseLinks.notes("vf-hero", "4.0.1", "afb70e3d599ecfb2ff26ce1cc85a56d632b5d901") }}
+
+* Added : React support for Hero component.  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1876)
+* Version bump
+
+{{ releaseLinks.notes("vf-bookmark", "1.0.1", "eac9c2d68138833a391053929c68088ff291d524") }}
+
+* Added small button variant. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1974)
+* Version bump
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-component-library", "1.2.9", "f54eb0d2edc3810661d4e5fb05522b9a73c6ece7") }}
+
+* Documentation: Added missing descriptions to components [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+* Documentation: Updated documentation for vf-form to cross link with form components  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1904)
+* Fixed: Redirects to pages added to fix missing pages/content [Tracking issue](https://github.com/visual-framework/vf-core/issues/1901)
+* Fixed: Removed empty pages from build process  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1900)
+* Fixed: Fixes for lint errors seen during build. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+* Fixed: Fixes for notices seen during build. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1936)
+* Fixed: Fixed `About` link in megamenu of VF site [Tracking issue](https://github.com/visual-framework/vf-core/issues/1953)
+* Fixed: Updated blog link in about page of VF site [Tracking issue](https://github.com/visual-framework/vf-core/issues/1975)
+* Added: Added Small button variant for vf-bookmark  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1974)
+* Added: Added React compatibility support for vf-hero component [Tracking issue](https://github.com/visual-framework/vf-core/issues/1876)
+* Added: Added React compatibility support for vf-banner component [Tracking issue](https://github.com/visual-framework/vf-core/issues/1878)
+* Bug fix: vf-dropdown links not clickable in Safari browser [Tracking issue](https://github.com/visual-framework/vf-core/issues/1973)
+
+{{ releaseLinks.notes("embl-notifications", "1.2.4", "4fd496582612dc8ba0d1ff1adb09ad5950aea918") }}
+
+* Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+* Version bump
+
+{{ releaseLinks.notes("vf-form__legend", "2.0.1", "4fd496582612dc8ba0d1ff1adb09ad5950aea918") }}
+
+* Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+* Version bump
+
+{{ releaseLinks.notes("vf-global-header", "3.1.5", "4fd496582612dc8ba0d1ff1adb09ad5950aea918") }}
+
+* Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+* Version bump
+
+{{ releaseLinks.notes("vf-video-container", "1.0.1", "4fd496582612dc8ba0d1ff1adb09ad5950aea918") }}
+
+* Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+
+{{ releaseLinks.notes("vf-video", "1.0.1", "4fd496582612dc8ba0d1ff1adb09ad5950aea918") }}
+
+* Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+
+{{ releaseLinks.notes("vf-form", "2.0.1", "63b06fde53c027ca0279fd26a2432b1929fea789") }}
+
+* Updated documentation for `vf-form` so that it's cross linked to Form components. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1904)
+* Dependency bump
+
+{{ releaseLinks.notes("vf-componenet-rollup", "1.4.9", "e22524c6d5f2dc5133b736c4a2a231f6b983a782") }}
+
+* Fixed build notices. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1936)
+* Version bump
+
+{{ releaseLinks.notes("vf-analytics-google", "1.1.1", "6bedbf7439835140108f26ebd46488c0d6564f42") }}
+
+* Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+* Version bump
+
+{{ releaseLinks.notes("vf-badge", "3.0.1", "6bedbf7439835140108f26ebd46488c0d6564f42") }}
+
+* Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+* Version bump
+
+{{ releaseLinks.notes("vf-blockquote", "1.2.4", "6bedbf7439835140108f26ebd46488c0d6564f42") }}
+
+* Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+* Version bump
+
+{{ releaseLinks.notes("vf-mega-menu", "1.0.1", "6bedbf7439835140108f26ebd46488c0d6564f42") }}
+
+* Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+* Version bump
+
+{{ releaseLinks.notes("vf-navigation", "5.0.2", "6bedbf7439835140108f26ebd46488c0d6564f42") }}
+
+* Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+* Version bump
+
+{{ releaseLinks.notes("vf-tabs", "2.1.3", "6bedbf7439835140108f26ebd46488c0d6564f42") }}
+
+* Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+* Version bump
+
+{{ releaseLinks.notes("vf-content", "1.6.13", "a6bf1d734e36da70dd0482ae5b8bad93965c9d9e") }}
+
+* Dependency bump
+* Version bump
+
+{{ releaseLinks.notes("vf-component-initialization", "1.1.11", "a6bf1d734e36da70dd0482ae5b8bad93965c9d9e") }}
+
+* Dependency bump
+* Version bump
+
+{{ releaseLinks.notes("vf-extensions-react", "0.0.6", "a6bf1d734e36da70dd0482ae5b8bad93965c9d9e") }}
+
+* Dependency bump
+* Version bump
+
+{{ releaseLinks.notes("vf-sass-compilation", "1.1.21", "a6bf1d734e36da70dd0482ae5b8bad93965c9d9e") }}
+
+* Dependency bump
+* Version bump
+
+{{ releaseLinks.notes("vf-core", "2.2.41", "1306e81fdb420fba5a2999b85fec421f99ce66ee") }}
+
+* Dependency bump
+* Version bump
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+{{ releaseLinks.notes("vf-dropdown", "1.0.1", "0f157a5645f0fdd84edca5e1726487ef92c796fc") }}
+
+* Fix: Check for a truthy value of e.relatedTarget while focusing out of the dropdown. Avoid issue in Safari https://github.com/visual-framework/vf-core/issues/1973
+* Version bump
+
+{% endmarkdown %}
