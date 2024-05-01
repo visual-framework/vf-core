@@ -1,6 +1,10 @@
-### 1.1.19
+### 1.1.20
 
 * Dependency bump
+
+### 1.1.19
+
+* Version bump
 
 ### 1.1.18
 

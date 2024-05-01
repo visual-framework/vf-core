@@ -1,6 +1,14 @@
-### 2.0.0-alpha.1
+### 2.0.0-alpha.3
 
 * Updated documentation for `vf-form` so that it's cross linked to Form components. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1904)
+
+### 2.0.0-alpha.2
+
+* Dependency bump
+
+### 2.0.0-alpha.1
+
+* status updates pre-release
 
 ### 2.0.0-alpha.0
 

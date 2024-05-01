@@ -1,6 +1,38 @@
-### 1.1.2
+### 1.1.10
 
 * Dependency bump
+
+### 1.1.9
+
+* Dependency bump
+
+### 1.1.8
+
+* Dependency bump
+
+### 1.1.7
+
+* Dependency bump
+
+### 1.1.6
+
+* Dependency bump
+
+### 1.1.5
+
+* Dependency bump
+
+### 1.1.4
+
+* Dependency bump
+
+### 1.1.3
+
+* Dependency bump
+
+### 1.1.2
+
+* Added changelog
 
 ### 1.1.1
 

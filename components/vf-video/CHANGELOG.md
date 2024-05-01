@@ -1,6 +1,10 @@
-### 1.0.0-alpha.9
+### 1.0.0-beta.2
 
 * Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+
+### 1.0.0-beta.1
+
+* Readme cleanup
 
 ### 1.0.0-alpha.8
 

@@ -1,3 +1,19 @@
+### 1.6.12
+
+* Dependency bump
+
+### 1.6.11
+
+* Dependency bump
+
+### 1.6.10
+
+* Dependency bump
+
+### 1.6.9
+
+* Dependency bump
+
 ### 1.6.8
 
 * Dependency bump

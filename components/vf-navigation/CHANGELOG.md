@@ -1,6 +1,10 @@
-### 5.0.0-rc.2
+### 5.0.1
 
 * Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
+
+### 5.0.0
+
+* Version change
 
 ### 5.0.0-rc.1
 

@@ -1,6 +1,10 @@
-### 0.0.4
+### 0.0.5
 
 * Dependency bump
+
+### 0.0.4
+
+* Added react button component
 
 ### 0.0.3
 
