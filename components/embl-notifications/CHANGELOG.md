@@ -1,6 +1,10 @@
-### 1.2.2
+### 1.2.3
 
 * Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
+
+### 1.2.2
+
+* Version bump
 
 ### 1.2.1
 
