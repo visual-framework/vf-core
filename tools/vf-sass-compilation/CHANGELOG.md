@@ -1,3 +1,7 @@
+### 1.1.19
+
+* Dependency bump
+
 ### 1.1.18
 
 * Add now required @babel/core dependency.
