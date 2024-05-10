@@ -1,3 +1,8 @@
+## 1.4.8
+
+* Deprecated `vf-collapse` component. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1911)
+* Deprecated `vf-explainer` component. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1920)
+
 ## 1.4.7
 
 * Fixed build notices. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1936)

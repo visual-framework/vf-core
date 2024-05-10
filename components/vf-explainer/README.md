@@ -4,7 +4,8 @@
 
 ## About
 
-Life science websites love a bit of jargon and complicated concepts and "explainers" help for terms like: `ORCID`, `transcript isoform`, and `lymphoblastoid cell lines`.
+This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="https://stable.visual-framework.dev/components/vf-details">vf-details</a> component.
+Justification text: This component hasn't been implemented. The basic use case for providing details is supported by vf-details. For highlighting explanations we suggested that the Comms team uses vf-card.
 
 ## Usage
 

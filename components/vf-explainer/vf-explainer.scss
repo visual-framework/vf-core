@@ -17,8 +17,9 @@
  */
 
 @import 'vf-explainer.variables.scss';
-
-.vf-explainer:before {
-  content: 'This component has not yet been implement, see the README.md for more information.';
-  display: block;
+html:not(.vf-disable-deprecated) {
+  .vf-explainer:before {
+    content: 'This component has not yet been implement, see the README.md for more information.';
+    display: block;
+  }
 }
