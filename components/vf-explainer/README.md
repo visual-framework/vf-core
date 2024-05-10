@@ -4,7 +4,7 @@
 
 ## About
 
-This component has been <span style="color: rgb(228, 0, 70);">deprecated</span>. Please use the <a class="vf-link" href="https://stable.visual-framework.dev/components/vf-details">vf-details</a> component.
+This component has been <span class="vf-u-text-color--red">deprecated</span>. Please use the <a class="vf-link" href="https://stable.visual-framework.dev/components/vf-details">vf-details</a> component.
 Justification text: This component hasn't been implemented. The basic use case for providing details is supported by vf-details. For highlighting explanations we suggested that the Comms team uses vf-card.
 
 ## Usage
