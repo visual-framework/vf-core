@@ -57,7 +57,8 @@
 .vf-breadcrumbs__heading {
   @include set-type(text-body--3, $custom-margin-bottom: 0);
 
-  display: inline;
+  display: inline-block;
+  line-height: 2.75;
 
   @media (min-width: $vf-breakpoint--lg) {
     .vf-breadcrumbs__list + & {
@@ -68,4 +69,13 @@
 
 .vf-breadcrumbs__link {
   color: currentColor;
+  display: inline-block;
+  line-height: 2.75;
+}
+
+
+@media (max-width: $vf-breakpoint--md) {
+  .vf-breadcrumbs__list:not(.vf-breadcrumbs__list--related) > .vf-breadcrumbs__item:not(:nth-last-child(2)) {
+    display: none;
+  }
 }

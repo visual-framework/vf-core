@@ -4,7 +4,7 @@
 
 ## About
 
-The `vf-breadcrumb` component is a navigational item that can identify to the site visitor their location on the website. They are a visual representation of the site's heirachy.
+The `vf-breadcrumb` component is a navigational item that can identify to the site visitor their location on the website. They are a visual representation of the site's hierarchy.
 
 ## Usage
 
@@ -17,6 +17,23 @@ Ensure that the complete navigational path is displayed in the breadcrumbs on th
 ### Related breadcrumbs
 
 The "Related" variant allows you to indicate related items as additional navigation to the page the site visitor is on. They should be placed inside the `vf-breadcrumbs` `<nav>` element and be a seperate unordered list.
+
+### When to use
+
+Use the breadcrumb when users would need to understand their current location in a website’s navigation structure
+
+### When not to use
+
+Breadcrumbs should not be used for websites that have a single level of hierarchy.
+The breadcrumb nodes should not include parent categories which do not have separate pages. The only inactive link should be the current page’s node.
+
+### Responsive
+
+On smaller screens it is recommended that the paths of the breadcrumbs shown should be shortened. Configure the breadcrumbs to show only the direct parent node in the information architecture. This allows the user to see and navigate one step above in the website's hierarchy. The breaking point for the responsive breadcrumb is implemented at width below 768px.
+
+### Accessibility
+
+This component targets WCAG 2.1 AA accessibility.
 
 ## Install
 
