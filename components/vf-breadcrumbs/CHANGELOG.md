@@ -1,3 +1,9 @@
+### 2.0.6
+
+* Added: Changes for responsive breadcrumb  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2008)
+* Updated: Enhanced `vf-breadcrumb` accessibility by increasing target area [Tracking issue](https://github.com/visual-framework/vf-core/issues/2009)
+* Documentation: Updated usage guidelines for responsive [Tracking issue](https://github.com/visual-framework/vf-core/issues/2010)
+
 ### 2.0.5
 
 * Documentation: Updated usage guidelines to show full navigation path
