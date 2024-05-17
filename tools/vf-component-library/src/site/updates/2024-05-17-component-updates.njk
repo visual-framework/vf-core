@@ -1,0 +1,165 @@
+---
+title: Rollup release 2.5.16
+subtitle: This release includes responsive support along with accessibility enhancements and documentation updates for vf-breadcrumbs. It also includes changes for deprecating vf-collapse and vf-explainer and changelog corrections for multiple components.
+date: 2024-05-17 18:30:00
+version: 2.5.16
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    },
+    {
+      "text": "Deprecation",
+      "navigation_href": "#deprecation"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-breadcrumbs", "2.0.6", "1b437b2279d43f4db96d8cb3f076bca39d6d5394") }}
+
+* Added: Changes for responsive breadcrumb  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2008)
+* Updated: Enhanced `vf-breadcrumb` accessibility by increasing target area [Tracking issue](https://github.com/visual-framework/vf-core/issues/2009)
+* Documentation: Updated usage guidelines for responsive [Tracking issue](https://github.com/visual-framework/vf-core/issues/2010)
+
+{{ releaseLinks.notes("vf-component-library", "1.2.10", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Added: Changes for responsive breadcrumb  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2008)
+* Updated: Enhanced `vf-breadcrumb` accessibility by increasing target area [Tracking issue](https://github.com/visual-framework/vf-core/issues/2009)
+* Documentation: Updated usage guidelines for responsive breadcrumbs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2010)
+* Deprecated `vf-collapse` component. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1911)
+* Deprecated `vf-explainer` component. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1920)
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-componenet-rollup", "1.4.10", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Deprecated `vf-collapse` component. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1911)
+* Deprecated `vf-explainer` component. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1920)
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("embl-notifications", "1.2.5", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-analytics-google", "1.1.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-badge", "3.0.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-banner", "2.0.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-blockquote", "1.2.5", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-bookmark", "1.0.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-content", "1.6.14", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-dropdown", "1.0.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-form", "2.0.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-form__legend", "2.0.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-global-header", "3.1.6", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-hero", "4.0.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-mega-menu", "1.0.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-navigation", "5.0.3", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-tabs", "2.1.4", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-video-container", "1.0.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-video", "1.0.2", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-component-initialization", "1.1.12", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-core", "2.2.42", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-extensions-react", "0.0.7", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+{{ releaseLinks.notes("vf-sass-compilation", "1.1.22", "e2e646eec09c9de0964b1a473cf33e225ad99cfe") }}
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### Deprecation <a href="#deprecation" id="deprecation"></a>
+
+{{ releaseLinks.notes("vf-explainer", "0.0.3", "fe2d83bc4a40b30ffc7db2c9b21795c45e58227a") }}
+
+* Deprecated `vf-explainer` component. `vf-details` component needs to be used instead. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1920)
+
+{{ releaseLinks.notes("vf-collapse", "0.0.3", "22af08fd0039ec5a7b6f22706f8ba03b232e39c4") }}
+
+* Deprecated `vf-collapse` component. `vf-details` component needs to be used instead. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1911)
+
+{% endmarkdown %}
