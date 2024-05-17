@@ -1,3 +1,15 @@
+### 1.0.2
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 1.0.1
+
+* Version bump
+
+### 1.0.0
+
+* Version bump
+
 ### 1.0.0-alpha.4
 
 * Added small button variant. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1974)

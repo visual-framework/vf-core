@@ -1,4 +1,8 @@
-### 5.0.1
+### 5.0.3
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 5.0.2
 
 * Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)
 

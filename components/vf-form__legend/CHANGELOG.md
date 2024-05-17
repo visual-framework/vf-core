@@ -1,3 +1,15 @@
+### 2.0.2
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 2.0.1
+
+* Version bump
+
+### 2.0.0
+
+* Version bump
+
 ### 2.0.0-alpha.1
 
 * Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)

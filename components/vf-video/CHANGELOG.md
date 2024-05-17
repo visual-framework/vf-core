@@ -1,4 +1,8 @@
-### 1.0.0-beta.2
+### 1.0.2
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 1.0.1
 
 * Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
 

@@ -1,4 +1,8 @@
-### 1.1.10
+### 1.1.12
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 1.1.11
 
 * Dependency bump
 

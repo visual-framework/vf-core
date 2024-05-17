@@ -1,3 +1,15 @@
+### 3.1.6
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 3.1.5
+
+* Version bump
+
+### 3.1.4
+
+* Version bump
+
 ### 3.1.3
 
 * Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)

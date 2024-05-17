@@ -1,4 +1,12 @@
-### 1.2.8
+### 1.2.10
+* Added: Changes for responsive breadcrumb  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2008)
+* Updated: Enhanced `vf-breadcrumb` accessibility by increasing target area [Tracking issue](https://github.com/visual-framework/vf-core/issues/2009)
+* Documentation: Updated usage guidelines for responsive breadcrumbs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2010)
+* Deprecated `vf-collapse` component. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1911)
+* Deprecated `vf-explainer` component. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1920)
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 1.2.9
 * Documentation: Added missing descriptions to components [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
 * Documentation: Updated documentation for vf-form to cross link with form components  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1904)
 * Fixed: Redirects to pages added to fix missing pages/content [Tracking issue](https://github.com/visual-framework/vf-core/issues/1901)
