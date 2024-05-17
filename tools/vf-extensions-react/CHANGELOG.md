@@ -1,4 +1,8 @@
-### 0.0.5
+### 0.0.7
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 0.0.6
 
 * Dependency bump
 

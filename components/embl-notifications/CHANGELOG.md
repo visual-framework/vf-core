@@ -1,4 +1,8 @@
-### 1.2.3
+### 1.2.5
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 1.2.4
 
 * Added description to the component page on VF site. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1885)
 

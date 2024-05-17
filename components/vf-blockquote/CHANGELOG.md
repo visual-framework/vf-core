@@ -1,3 +1,15 @@
+### 1.2.5
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 1.2.4
+
+* Version bump
+
+### 1.2.3
+
+* Version bump
+
 ### 1.2.2
 
 * Fixed lint errors. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1935)

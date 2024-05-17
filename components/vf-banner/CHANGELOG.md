@@ -1,3 +1,15 @@
+### 2.0.2
+
+* Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
+
+### 2.0.1
+
+* Version bump
+
+### 2.0.0
+
+* Version bump
+
 ### 2.0.0-alpha.2
 
 * Added : React support for Banner component. See README.md for more. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1878)
