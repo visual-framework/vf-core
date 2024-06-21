@@ -1,4 +1,4 @@
-### 1.1.0
+### 1.1.1
 
 * Documentation: Added documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2011)
 * Documentation: Changed documentation of Ordered variant [Tracking issue](https://github.com/visual-framework/vf-core/issues/2012)
