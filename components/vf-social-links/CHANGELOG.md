@@ -1,3 +1,7 @@
+### 0.0.5
+* Fixed the spelling mistakes in documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
+* Added variants which are already supported [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
+
 ### 0.0.4
 * Updated Twitter icon with X icon
 
