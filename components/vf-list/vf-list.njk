@@ -11,6 +11,9 @@
 {% if list_type == 'definition' %}
   {% set parent_tag = 'dl' %}
   {% set child_tag = 'dt' %}
+{% elseif list_type == 'ordered' %}
+  {% set parent_tag = 'ol' %}
+  {% set child_tag = 'li' %}
 {% else %}
   {% set parent_tag = 'ul' %}
   {% set child_tag = 'li' %}
