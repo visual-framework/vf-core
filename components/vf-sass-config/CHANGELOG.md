@@ -1,3 +1,7 @@
+### 2.7.2
+
+* Changes to use primary colours instead of secondary colours for text-body.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2041)
+
 ### 2.7.1
 
 * Make vf-divider respect vf-stack spacing.
