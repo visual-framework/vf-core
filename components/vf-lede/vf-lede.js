@@ -18,11 +18,11 @@
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
 
-/**
-  * The global function for this component
-  * @example vfComponentName(firstPassedVar)
-  * @param {string} [firstPassedVar]  - An option to be passed
-  */
+/*
+* The global function for this component
+* @example vfComponentName(firstPassedVar)
+* @param {string} [firstPassedVar]  - An option to be passed
+*/
 // function vfComponentName(firstPassedVar) {
 //   firstPassedVar = firstPassedVar || 'defaultVal';
 //
