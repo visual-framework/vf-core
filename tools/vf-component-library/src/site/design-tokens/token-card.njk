@@ -4,7 +4,7 @@
   {% if type == "color" -%}
     <div style="background-color: {{ item.value}}; height: 200px; width: 100%;"></div>
   {%- elseif type == "typography" -%}
-    <div style="padding: 16px;">
+    <div class="vf-box">
       <p style="font-size: {{ item.value.fontSize }}; font-weight: {{ item.value.fontWeight }}; line-height: {{ item.value.lineHeight }}">{{ item.meta.pangram }}</p>
     </div>
   {%- elseif type == "spacing" -%}
@@ -21,7 +21,7 @@
       </div>
     </div>
   {% endif -%}
-  <section class="vf-stack | vf-card__content" style="--vf-stack-margin: .5rem;">
+  <section class="vf-card__content | vf-stack vf-stack--400">
     <h3>{{ item.meta.friendlyName }}</h3>
     {%- if type == "typography" -%}
     <p class="vf-card__text"><span>Font Size: </span><code class="vf-code-example">{{ item.value.fontSize }}</code></p>
