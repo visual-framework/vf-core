@@ -10,8 +10,8 @@ Links to social services.
 
 ### Variants Available
 
-- `vf-social-links--outline` this removes the background and gives a border around each icon square.
-- `dark-mode` if this is insdie a component that has `dark-mode` theeme then the colours swap.
+- `vf-social-links--outline` This removes the background and gives a border around each icon square.
+- `dark-mode` If this is inside a component that has `dark-mode` theme then the colours swap.
 
 ### SVG
 
@@ -39,7 +39,7 @@ You will need to make sure the SVG code below is added somewhere in your HTML (p
 </svg>
 ```
 
-This is in leiu of an icon system for you to pull things in automatically.
+This is in lieu of an icon system for you to pull things in automatically.
 
 ## Install
 
