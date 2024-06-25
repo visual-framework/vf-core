@@ -1,3 +1,8 @@
+### 3.6.4
+
+* Changes to link examples.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2030)
+* Naming convention of typography elements improved.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+
 ### 3.6.3
 
 * Fix documentation for sassFunction interactive-color
