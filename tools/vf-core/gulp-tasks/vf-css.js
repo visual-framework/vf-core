@@ -4,7 +4,7 @@
  * Expose vf-css gulp tasks as a JS module
  * This makes dependency management a bit cleaner
  */
-module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation, browserSync) {
+module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation) {
   const fastglob = require("fast-glob");
 
   // Sass and CSS Stuff
@@ -55,7 +55,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
 
     recursive(componentPath, ["*.css", "*.scss", "*.md", "*.njk", "_package.json"], function (err, files) {
       // filter components where no package.json is found
-      files.forEach(function(file, index, array) {
+      files.forEach(function(file, index) {
         if ((file.file.indexOf("package.json") < 0)) {
           delete files[index];
         }
@@ -122,7 +122,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
         } else if (availableComponents[underscoredTrucncatedFile]) {
           done({file: underscoredTrucncatedFile});
         } else {
-          let importWarning = `Notice: Couldn't find ${url} referenced in ${prev}, the CSS won\'t be included in the build. If this is expected, you might want to comment out the dependency.`;
+          let importWarning = "Notice: Couldn't find ${url} referenced in ${prev}, the CSS won't be included in the build. If this is expected, you might want to comment out the dependency.";
           console.warn(chalk.yellow(importWarning));
           done({ contents: `/* ${importWarning} */` });
         }

@@ -33,7 +33,6 @@ module.exports = function(gulp, path, componentPath) {
 
     componentList.forEach(component => {
       component.commonName = component.name.replace(".njk","");
-      const vfPackage = `@visual-framework/${component.commonName}`;
       const src = path.resolve(
         __dirname,
         component.path
