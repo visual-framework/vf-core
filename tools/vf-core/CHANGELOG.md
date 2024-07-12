@@ -1,3 +1,7 @@
+### 2.2.43
+
+* Fixed build errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/2052)
+
 ### 2.2.42
 
 * Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
