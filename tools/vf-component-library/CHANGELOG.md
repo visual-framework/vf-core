@@ -5,7 +5,6 @@
 * Fixed the spelling mistakes in documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
 * Fixed build errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/2052)
 * Added variants which are already supported [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
-* Added : Angular support for Blockquote component [Tracking issue](https://github.com/visual-framework/vf-core/issues/2037)
 * Changes to use primary colours instead of secondary colours for text-body.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2041)
 * Changes to link examples.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2030)
 * Updated: Naming convention updated as per design recommendations [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
