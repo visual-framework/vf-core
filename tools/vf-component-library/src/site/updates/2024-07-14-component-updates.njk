@@ -1,0 +1,111 @@
+---
+title: Rollup release 2.5.17
+subtitle: This release includes naming convention updates as well documentation updates for vf-heading, vf-text and page structure changes for design tokens. There are documentation updates for vf-list, vf-social-links, vf-link. It also includes fixes for build errors and primary to secondary colour change for vf-list examples.
+date: 2024-07-15 09:00:00
+version: 2.5.17
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    },
+    {
+      "text": "Documentation",
+      "navigation_href": "#documentation"
+    },
+    {
+      "text": "Bug fixes",
+      "navigation_href": "#bugs"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-component-library", "1.2.11", "3ca064c8ca31243a27d0f5fdc65457f431baa853") }}
+
+* Documentation: Added documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2011)
+* Documentation: Changed documentation of Ordered variant [Tracking issue](https://github.com/visual-framework/vf-core/issues/2012)
+* Documentation: Detailed documentation added [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+* Fixed the spelling mistakes in documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
+* Fixed build errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/2052)
+* Added variants which are already supported [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
+* Changes to use primary colours instead of secondary colours for text-body.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2041)
+* Changes to link examples.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2030)
+* Updated: Naming convention updated as per design recommendations [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+
+{{ releaseLinks.notes("vf-design-tokens", "3.6.4", "c89f999e148a7185600c448ef65d2d7834502013") }}
+
+* Changes to link examples.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2030)
+* Naming convention of typography elements improved.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+
+{{ releaseLinks.notes("vf-heading", "1.1.1", "c89f999e148a7185600c448ef65d2d7834502013") }}
+
+* Documentation: Detailed documentation added [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+* Updated: Naming convention updated as per design recommendations [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+
+{{ releaseLinks.notes("vf-text", "1.1.1", "c89f999e148a7185600c448ef65d2d7834502013") }}
+
+* Documentation: Detailed documentation added [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+* Updated: Naming convention updated as per design recommendations [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+
+{{ releaseLinks.notes("vf-link", "2.0.2", "3d3bd675a97c61c68459658466df052774f95eab") }}
+
+* Changes to link examples.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2030)
+
+{{ releaseLinks.notes("vf-sass-config", "2.7.2", "b4c750f2d90ddbcdb3f757a0d4d05db1b28ac205") }}
+
+* Changes to use primary colours instead of secondary colours for text-body.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2041)
+
+### Documentation <a href="#documentation" id="documentation"></a>
+
+{{ releaseLinks.notes("vf-list", "1.1.1", "0ffa72ffa0d310b864e3728a6eca7f2b5fdc9971") }}
+
+* Documentation: Added documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2011)
+* Documentation: Changed documentation of Ordered variant [Tracking issue](https://github.com/visual-framework/vf-core/issues/2012)
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+{{ releaseLinks.notes("vf-core", "2.2.43", "21e16fdd51500f4290c20ac9add7c690c1078d18") }}
+
+* Fixed build errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/2052)
+
+{{ releaseLinks.notes("vf-social-links", "0.0.5", "5b33d1f5187d3a1c2ea1480580eb2105a537f2a0") }}
+
+* Fixed the spelling mistakes in documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
+* Added variants which are already supported [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
+
+{{ releaseLinks.notes("vf-lede", "1.0.2", "21e16fdd51500f4290c20ac9add7c690c1078d18") }}
+
+* Changes for build errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/2052)
+
+{% endmarkdown %}
