@@ -10,13 +10,14 @@ Classic html list `<li>` and `<dl>` types: order, unordered, bulleted, inline an
 
 When presenting a series of text-only content such as words or names, consider using a list. The best list type to use will depend on the relationships between the terms.
 
-Default variant
-Use to present items without a specific order, like navigation menus or lists of features.
+Default variant:
+   - Use to present items without a specific order, like navigation menus or lists of features.
 
-Tight variant
-The same as the default variant, but with less space between items. Use when it would be preferable to show more items of the same list together.
-Large variant
-Larger items for when the list should be more prominent
+Tight variant:
+   - The same as the default variant, but with less space between items. Use when it would be preferable to show more items of the same list together.
+
+Large variant:
+   - Larger items for when the list should be more prominent
 
 Inline variant:
    - Use to display a list horizontally within a sentence or paragraph, such as a series of authors
