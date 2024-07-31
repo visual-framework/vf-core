@@ -1,3 +1,7 @@
+### 2.0.2
+
+* Changes to link examples.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2030)
+
 ### 2.0.1
 
 * Fixed: Fixed space issue to make the 'default' variant example look like a link (#1895)

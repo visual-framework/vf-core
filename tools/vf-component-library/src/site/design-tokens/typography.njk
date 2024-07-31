@@ -11,20 +11,51 @@ layout: layouts/base.njk
 ---
 
 {% set type %}typography{% endset %}
-{% render '@vf-section-header', {
-  "section_title": "Typography",
-  "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/vf-font--sans.scss",
-  "id": "brand"
-} %}
+<h1>Type sizes</h1>
 
-{# <pre>{{ tokens.themeBrand.properties | dump(2 )}}</pre> #}
-{# <section class="embl-grid"> #}
-<article class="vf-grid vf-grid__col-2">
-  {% for item in tokens.typographySans.properties %}
-    {% include "./token-card.njk" %}
-  {% else %}
-    <p>Something went wrong.</p>
-  {% endfor %}
-</article>
+{% set context = {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Headings",
+      "navigation_href": "#headings",
+      "currentSection": true
+    },
+    {
+      "text": "Body texts",
+      "navigation_href": "#bodytexts"
+    },
+    {
+      "text": "Buttons",
+      "navigation_href": "#buttons"
+    }
+  ]
+}
+%}
+{% include "vf-core-components/vf-navigation/vf-navigation.njk" %}
+{% set properties = tokens.typographySans.properties %}
+{# <pre>{{ tokens.typographySans.properties | dump(2 )}}</pre> #}
+{% for section, properties in properties | groupby("section") %}
+  <div class="embl-grid vf-u-margin__bottom--1200" id="{{- section | lower | replace(" ", "") -}}">
+    <div class="vf-section-header">
+      {% render '@vf-section-header', {
+        "section_title": section,
+        "href": "https://github.com/visual-framework/vf-core/blob/develop/components/vf-design-tokens/dist/sass/vf-font--sans.scss",
+        "id": section | lower | replace(" ", "")
+      } %}
+    </div>
+    <div class="vf-content">
+      <article class="vf-grid vf-grid__col-2">
+        {% for item in properties %}
+          {% include "./token-card.njk" %}
+        {% else %}
+          <p>Something went wrong.</p>
+        {% endfor %}
+      </article>
+    </div>
+  </div>
+{% endfor %}
 {# </section> #}
 

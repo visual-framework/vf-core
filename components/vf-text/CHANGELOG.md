@@ -1,3 +1,8 @@
+### 1.1.1
+
+* Documentation: Detailed documentation added [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+* Updated: Naming convention updated as per design recommendations [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+
 ### 1.1.0
 
 * Changes of name of variants to reflect connection to design tokens.

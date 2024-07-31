@@ -1,3 +1,6 @@
+{% if context %}
+  {% set variant = context.variant %}
+{% endif %}
 <svg aria-hidden="true" display="none" class="vf-icon-collection vf-icon-collection--social">
   <defs>
     <g id="vf-social--linkedin">
@@ -18,8 +21,7 @@
   </defs>
 </svg>
 
-
-<div class="vf-social-links">
+<div class="vf-social-links{%- if variant == 'outline' -%} --outline {%- endif -%} {%- if override_class %} | {{override_class}}{% endif -%}">
 
   {%- if heading -%}
   <h3 class="vf-social-links__heading">

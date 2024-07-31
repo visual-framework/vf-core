@@ -1,3 +1,14 @@
+### 1.2.11
+* Documentation: Added documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2011)
+* Documentation: Changed documentation of Ordered variant [Tracking issue](https://github.com/visual-framework/vf-core/issues/2012)
+* Documentation: Detailed documentation added [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+* Fixed the spelling mistakes in documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
+* Fixed build errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/2052)
+* Added variants which are already supported [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
+* Changes to use primary colours instead of secondary colours for text-body.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2041)
+* Changes to link examples.[Tracking issue](https://github.com/visual-framework/vf-core/issues/2030)
+* Updated: Naming convention updated as per design recommendations [Tracking issue](https://github.com/visual-framework/vf-core/issues/2043)
+
 ### 1.2.10
 * Added: Changes for responsive breadcrumb  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2008)
 * Updated: Enhanced `vf-breadcrumb` accessibility by increasing target area [Tracking issue](https://github.com/visual-framework/vf-core/issues/2009)

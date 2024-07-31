@@ -8,9 +8,41 @@ For basic heading formatting and sizes.
 
 ## Usage
 
-The `vf-heading` component leverages [the design token typography sizes](https://stable.visual-framework.dev/design-tokens/typography/).
+[EMBL’s primary corporate typeface](https://www.embl.org/guidelines/design/design-guidelines/typeface/) is IBM Plex Sans. Subdomains should use the same font except for cases where they have a different brand guideline.
 
-This component provides a utility-like functionality and you'll rarely need to directly use this component. When coding a component's Sass, it will typically be better to use the mixins (`@include set-type(text-heading--1);`) than these `vf-heading` classes.
+The `vf-heading` component leverages the design token typography sizes.
+
+Use heading tags, such as `<h1>` and `<h2>` to define the structure of a page. Apply tokens, such as `vf-text-heading--1` to define the size and other stylistic elements of the heading. 
+
+To establish a consistent content organisation throughout your site, style headings consistently. However, a heading level such as `<h1>` does not always need to correspond with the same token such as `vf-text-heading--1`. You can change the token if the page requires so but it is advisable to ensure the pages have a consistent heading structure whenever possible.
+
+This component provides utility-like functionality and you'll rarely need to directly use this component. When coding a component's Sass, it will typically be better to use the mixins (`@include set-type(text-heading--1);`) than these
+`vf-heading` classes.
+
+### How to use
+
+* Every page should have at least one heading (typically a h1).
+* All text that looks like a heading should be marked up as a heading.
+* All text that is marked up as a heading should be a conceptual section heading.
+* The heading hierarchy should be meaningful, e.g:
+`<h1>Recruitment: What to expect</h1>`
+`<h2>Our recruitment process</h2>`
+`<h3>Step 1: Application</h3>`
+
+Headings should be written in sentence case.
+
+### How not to use
+
+* Do not skip heading levels (e.g. from `<h1>` to `<h3>` without a `<h4>` on a page) as this causes issues to users of screen readers and other assistive technologies.
+* Do not use headings to style text that is not meant to be a heading element. Use a different vf-text style instead of a heading level for this type of text.
+
+### Related documentation
+
+For more information on headings please consult the following documents:
+* [Headings | Web Accessibility Initiative (WAI) | W3C9](https://www.w3.org/WAI/tutorials/page-structure/headings/)
+* [Easy Checks – A First Review of Web Accessibility | Web Accessibility Initiative (WAI) | W3C](https://www.w3.org/WAI/test-evaluate/preliminary/#headings)
+* [Regions, Headings, and Lists | Semantic Structure | WebAIM](https://webaim.org/techniques/semanticstructure/#headings)
+* [Typography | GOV.UK  Design System](https://design-system.service.gov.uk/styles/headings/)
 
 ## Install
 

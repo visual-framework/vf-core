@@ -8,9 +8,39 @@ For basic text formatting and sizes.
 
 ## Usage
 
-The `vf-text` component leverages [the design token typography sizes](https://stable.visual-framework.dev/design-tokens/typography/).
+[EMBL’s primary corporate typeface](https://www.embl.org/guidelines/design/design-guidelines/typeface/) is IBM Plex Sans. Subdomains should use the same font except for cases where they have a different brand guideline.
 
-This component provides a utility-like functionality and you'll rarely need to directly use this component. When coding a component's Sass, it will typically be better to use the mixins (`@include set-type(text-body--6);`) than these `vf-text` classes.
+The vf-text component leverages [the design token typography sizes](https://stable.visual-framework.dev/design-tokens/typography/).
+
+The default font size for paragraphs is 19px. 
+
+Apply tokens, such as `vf-text-body--1` to change the size and other stylistic elements of the default body text.
+
+This component provides utility-like functionality and you'll rarely need to directly use this component. When coding a component's Sass, it will typically be better to use the mixins (`@include set-type(text-body--1);`) than these
+`vf-text` classes.
+
+### How to use
+
+* Align a body of text to the left, this make it easier to read.
+* `Large body text` - The large body text variant is used for lead paragraphs and blockquotes.
+* `Default body text` - The default paragraph font size is 19px.
+* `Small body text` - Text smaller than 16px is defined as part of certain vf components. Avoid using this for standalone paragraph text because it can be too small to read.
+* For optimal readability avoid using body texts below 12 px.
+
+### How not to use
+
+* Do not justify (Align a body of text to both the left and right) a body of text as this causes readability issues
+* Do not use other typefaces in the Subdomains unless for cases with different brand guidelines.
+* Avoid using all caps, as this makes it harder for a reader to identify words by shapes.
+* Do not underline texts unless they are links.
+
+### Related documentation
+
+For more information on text please consult the following documents:
+* [Align texts on one side | W3C](https://www.w3.org/TR/WCAG20-TECHS/G169.html)
+* [Design for readability | Harvard University](https://accessibility.huit.harvard.edu/design-readability)
+* [Readability | Cambridge brand resources](https://www.cam.ac.uk/brand-resources/guidelines/typography-and-colour/readability)
+* [Typography | GOV.UK  Design System](https://design-system.service.gov.uk/styles/paragraphs/)
 
 ## Install
 
