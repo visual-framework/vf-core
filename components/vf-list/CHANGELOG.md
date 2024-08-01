@@ -1,3 +1,7 @@
+### 1.1.2
+
+* Documentation: Fixed documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2007)
+
 ### 1.1.1
 
 * Documentation: Added documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2011)
