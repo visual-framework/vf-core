@@ -1,3 +1,7 @@
+### 1.2.1
+
+* Documentation: Updated documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2047)
+
 ### 1.2.0-rc.3
 
 * Use new interactive colour token.
