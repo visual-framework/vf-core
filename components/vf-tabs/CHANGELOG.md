@@ -1,3 +1,7 @@
+### 2.1.5
+
+* Added : Experimental Angular support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2037)
+
 ### 2.1.4
 
 * Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)
