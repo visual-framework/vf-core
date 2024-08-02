@@ -1,3 +1,7 @@
+### 1.1.23
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
 ### 1.1.22
 
 * Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)

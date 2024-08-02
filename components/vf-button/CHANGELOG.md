@@ -1,3 +1,7 @@
+### 3.0.1
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
 ### 3.0.0-alpha.0
 
 * Changed : Angular support for Button  component as a standalone package. See README.md for more.

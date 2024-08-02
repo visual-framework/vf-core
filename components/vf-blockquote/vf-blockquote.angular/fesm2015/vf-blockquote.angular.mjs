@@ -35,8 +35,8 @@ class VfBlockquoteAngularComponent {
                 : this.text;
     }
 }
-VfBlockquoteAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.9", ngImport: i0, type: VfBlockquoteAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-VfBlockquoteAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.9", type: VfBlockquoteAngularComponent, selector: "vf-blockquote", inputs: { id: "id", html: "html", text: "text", blockquote_text: "blockquote_text", blockquote_author: "blockquote_author", blockquote_author_href: "blockquote_author_href", blockquote_author_details: "blockquote_author_details", blockquote_author_imageurl: "blockquote_author_imageurl", override_class: "override_class" }, usesOnChanges: true, ngImport: i0, template: `
+VfBlockquoteAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBlockquoteAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+VfBlockquoteAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.10", type: VfBlockquoteAngularComponent, selector: "vf-blockquote", inputs: { id: "id", html: "html", text: "text", blockquote_text: "blockquote_text", blockquote_author: "blockquote_author", blockquote_author_href: "blockquote_author_href", blockquote_author_details: "blockquote_author_details", blockquote_author_imageurl: "blockquote_author_imageurl", override_class: "override_class" }, usesOnChanges: true, ngImport: i0, template: `
     <blockquote [attr.id]="id !== undefined ? id : null" [class]="class">
         <img *ngIf="blockquote_author_imageurl !== ''" class="vf-profile__image vf-u-margin__right--600" [src]="blockquote_author_imageurl" alt="" loading="lazy" />
         <div>
@@ -49,7 +49,7 @@ VfBlockquoteAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14
         </div>
     </blockquote>
   `, isInline: true, dependencies: [{ kind: "directive", type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.9", ngImport: i0, type: VfBlockquoteAngularComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBlockquoteAngularComponent, decorators: [{
             type: Component,
             args: [{ selector: 'vf-blockquote', template: `
     <blockquote [attr.id]="id !== undefined ? id : null" [class]="class">
@@ -86,10 +86,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.9", ngImpor
 
 class VfBlockquoteAngularModule {
 }
-VfBlockquoteAngularModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.9", ngImport: i0, type: VfBlockquoteAngularModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-VfBlockquoteAngularModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.9", ngImport: i0, type: VfBlockquoteAngularModule, declarations: [VfBlockquoteAngularComponent], imports: [CommonModule], exports: [VfBlockquoteAngularComponent] });
-VfBlockquoteAngularModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.9", ngImport: i0, type: VfBlockquoteAngularModule, imports: [CommonModule] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.9", ngImport: i0, type: VfBlockquoteAngularModule, decorators: [{
+VfBlockquoteAngularModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBlockquoteAngularModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+VfBlockquoteAngularModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.10", ngImport: i0, type: VfBlockquoteAngularModule, declarations: [VfBlockquoteAngularComponent], imports: [CommonModule], exports: [VfBlockquoteAngularComponent] });
+VfBlockquoteAngularModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBlockquoteAngularModule, imports: [CommonModule] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBlockquoteAngularModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [
