@@ -14,7 +14,9 @@ function vfTabs(scope) {
   // Get relevant elements and collections
   const tabsList = scope.querySelectorAll("[data-vf-js-tabs]");
   const panelsList = scope.querySelectorAll("[data-vf-js-tabs-content]");
-  const panels = scope.querySelectorAll("[data-vf-js-tabs-content] [id^='vf-tabs__section']");
+  const panels = scope.querySelectorAll(
+    "[data-vf-js-tabs-content] [id^='vf-tabs__section']"
+  );
   const tabs = scope.querySelectorAll("[data-vf-js-tabs] .vf-tabs__link");
 
   if (!tabsList || !panels || !tabs) {
@@ -101,25 +103,27 @@ function vfTabs(scope) {
     Array.prototype.forEach.call(panels, panel => {
       let links = panel.querySelectorAll("[href*='vf-tabs__section']");
       links.forEach(link => {
-          link.addEventListener("click", e => {
-            e.preventDefault();
-            let href = e.currentTarget.getAttribute('href');
-            vfTabsDeepLinkOnLoad(tabs, href);
-          });
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          let href = e.currentTarget.getAttribute("href");
+          vfTabsDeepLinkOnLoad(tabs, href);
         });
       });
+    });
   }
 }
 
 // The tab switching function
-const vfTabsSwitch = (newTab) => {
+const vfTabsSwitch = newTab => {
   // Update url based on tab id
 
   // get the parent ul of the clicked tab
   let parentTabSet = newTab.closest(".vf-tabs");
   let parentPanelSet = parentTabSet.nextElementSibling;
   let tabs = parentTabSet.querySelectorAll("[data-vf-js-tabs] .vf-tabs__link");
-  let panels = parentPanelSet.querySelectorAll("[data-vf-js-tabs-content] [id^='vf-tabs__section']");
+  let panels = parentPanelSet.querySelectorAll(
+    "[data-vf-js-tabs-content] [id^='vf-tabs__section']"
+  );
 
   tabs.forEach(tab => {
     if (tab.getAttribute("aria-selected")) {
@@ -153,7 +157,7 @@ const vfTabsSwitch = (newTab) => {
 function vfTabsDeepLinkOnLoad(tabs, href) {
   // 1. See if there is a `#vf-tabs__section--88888`
   if (href) {
-    var hash = href.substring(href.indexOf('#') + 1 ) ;
+    var hash = href.substring(href.indexOf("#") + 1);
   } else {
     // No hash found
     return false;
