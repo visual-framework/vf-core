@@ -36,12 +36,12 @@ class VfBadgeAngularComponent {
         this.class += this.override_class !== '' ? '| ' + this.override_class : '';
     }
 }
-VfBadgeAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBadgeAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-VfBadgeAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.3", type: VfBadgeAngularComponent, selector: "vf-badge", inputs: { badge_href: "badge_href", theme: "theme", text: "text", style: "style", html: "html", override_class: "override_class", id: "id" }, usesOnChanges: true, ngImport: i0, template: `
+VfBadgeAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBadgeAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+VfBadgeAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.10", type: VfBadgeAngularComponent, selector: "vf-badge", inputs: { badge_href: "badge_href", theme: "theme", text: "text", style: "style", html: "html", override_class: "override_class", id: "id" }, usesOnChanges: true, ngImport: i0, template: `
     <a [attr.id] = "id !== undefined ? id : null" *ngIf="badge_href !== ''" [href]="badge_href" [class]="class" [innerHTML]="content"></a>
     <span [attr.id] = "id !== undefined ? id : null" *ngIf="!badge_href || badge_href === null || badge_href === ''" [class]="class" [innerHTML]="content"></span>
   `, isInline: true, dependencies: [{ kind: "directive", type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBadgeAngularComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBadgeAngularComponent, decorators: [{
             type: Component,
             args: [{ selector: "vf-badge", template: `
     <a [attr.id] = "id !== undefined ? id : null" *ngIf="badge_href !== ''" [href]="badge_href" [class]="class" [innerHTML]="content"></a>
@@ -65,10 +65,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImpor
 
 class VfBadgeAngularModule {
 }
-VfBadgeAngularModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBadgeAngularModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-VfBadgeAngularModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.3", ngImport: i0, type: VfBadgeAngularModule, declarations: [VfBadgeAngularComponent], imports: [CommonModule], exports: [VfBadgeAngularComponent] });
-VfBadgeAngularModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBadgeAngularModule, imports: [CommonModule] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBadgeAngularModule, decorators: [{
+VfBadgeAngularModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBadgeAngularModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+VfBadgeAngularModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.10", ngImport: i0, type: VfBadgeAngularModule, declarations: [VfBadgeAngularComponent], imports: [CommonModule], exports: [VfBadgeAngularComponent] });
+VfBadgeAngularModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBadgeAngularModule, imports: [CommonModule] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBadgeAngularModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [

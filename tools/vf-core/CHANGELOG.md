@@ -1,3 +1,7 @@
+### 2.2.44
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
 ### 2.2.43
 
 * Fixed build errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/2052)

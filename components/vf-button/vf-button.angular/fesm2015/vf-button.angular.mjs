@@ -37,11 +37,11 @@ class VfButtonAngularComponent {
         this.class += this.override_class !== '' ? '| ' + this.override_class : '';
     }
 }
-VfButtonAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfButtonAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-VfButtonAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.3", type: VfButtonAngularComponent, selector: "vf-button", inputs: { theme: "theme", id: "id", text: "text", style: "style", size: "size", override_class: "override_class", html: "html" }, usesOnChanges: true, ngImport: i0, template: `
+VfButtonAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfButtonAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+VfButtonAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.10", type: VfButtonAngularComponent, selector: "vf-button", inputs: { theme: "theme", id: "id", text: "text", style: "style", size: "size", override_class: "override_class", html: "html" }, usesOnChanges: true, ngImport: i0, template: `
     <button [attr.id] = "id !== undefined ? id : null" [class]="class" [innerHTML]="content"></button>
   `, isInline: true });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfButtonAngularComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfButtonAngularComponent, decorators: [{
             type: Component,
             args: [{ selector: 'vf-button', template: `
     <button [attr.id] = "id !== undefined ? id : null" [class]="class" [innerHTML]="content"></button>
@@ -64,10 +64,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImpor
 
 class VfButtonAngularModule {
 }
-VfButtonAngularModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfButtonAngularModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-VfButtonAngularModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.3", ngImport: i0, type: VfButtonAngularModule, declarations: [VfButtonAngularComponent], exports: [VfButtonAngularComponent] });
-VfButtonAngularModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfButtonAngularModule });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfButtonAngularModule, decorators: [{
+VfButtonAngularModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfButtonAngularModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+VfButtonAngularModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.10", ngImport: i0, type: VfButtonAngularModule, declarations: [VfButtonAngularComponent], exports: [VfButtonAngularComponent] });
+VfButtonAngularModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfButtonAngularModule });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfButtonAngularModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [
