@@ -49,8 +49,8 @@ class VfBannerAngularComponent {
         }
     }
 }
-VfBannerAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBannerAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-VfBannerAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.3", type: VfBannerAngularComponent, selector: "vf-banner", inputs: { banner__type: "banner__type", banner__variant: "banner__variant", banner__message: "banner__message", banner__dismissible: "banner__dismissible", banner__inline_href: "banner__inline_href", banner__text: "banner__text", data_service_id: "data_service_id", data_protection_version: "data_protection_version" }, usesOnChanges: true, ngImport: i0, template: `
+VfBannerAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBannerAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+VfBannerAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.10", type: VfBannerAngularComponent, selector: "vf-banner", inputs: { banner__type: "banner__type", banner__variant: "banner__variant", banner__message: "banner__message", banner__dismissible: "banner__dismissible", banner__inline_href: "banner__inline_href", banner__text: "banner__text", data_service_id: "data_service_id", data_protection_version: "data_protection_version" }, usesOnChanges: true, ngImport: i0, template: `
   <!-- Basic Banner HTML -->
   <div *ngIf="banner__type === 'basic'" [class]="bannerclass">
   <div class="vf-banner__content">
@@ -93,7 +93,7 @@ VfBannerAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0
     </div>
   </div>
     `, isInline: true, dependencies: [{ kind: "directive", type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBannerAngularComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBannerAngularComponent, decorators: [{
             type: Component,
             args: [{
                     selector: 'vf-banner',
@@ -161,10 +161,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImpor
 
 class VfBannerAngularModule {
 }
-VfBannerAngularModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBannerAngularModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-VfBannerAngularModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.3", ngImport: i0, type: VfBannerAngularModule, declarations: [VfBannerAngularComponent], imports: [CommonModule], exports: [VfBannerAngularComponent] });
-VfBannerAngularModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBannerAngularModule, imports: [CommonModule] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfBannerAngularModule, decorators: [{
+VfBannerAngularModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBannerAngularModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+VfBannerAngularModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.10", ngImport: i0, type: VfBannerAngularModule, declarations: [VfBannerAngularComponent], imports: [CommonModule], exports: [VfBannerAngularComponent] });
+VfBannerAngularModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBannerAngularModule, imports: [CommonModule] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfBannerAngularModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [

@@ -1,3 +1,11 @@
+### 1.2.12
+
+* Documentation: Updated documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2047)
+* Documentation: Fixed documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2007)
+* Added : Experimental Angular support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2037)
+* Updated : Dependencies updated across different packages [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+* Updated : 11ty/Eleventy boilerplate code with latest packages, fixed lint errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/2023)
+
 ### 1.2.11
 * Documentation: Added documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2011)
 * Documentation: Changed documentation of Ordered variant [Tracking issue](https://github.com/visual-framework/vf-core/issues/2012)

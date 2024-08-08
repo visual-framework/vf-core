@@ -43,8 +43,8 @@ class VfHeroAngularComponent {
         this.style += this.vf_hero_image_size !== '' ? ' --vf-hero--bg-image-size: ' + this.vf_hero_image_size : '';
     }
 }
-VfHeroAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfHeroAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-VfHeroAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.3", type: VfHeroAngularComponent, selector: "vf-hero", inputs: { vf_hero_image: "vf_hero_image", vf_hero_image_size: "vf_hero_image_size", vf_hero_kicker: "vf_hero_kicker", vf_hero_heading: "vf_hero_heading", vf_hero_heading_href: "vf_hero_heading_href", vf_hero_subheading: "vf_hero_subheading", vf_hero_text: "vf_hero_text", vf_hero_link_text: "vf_hero_link_text", vf_hero_link_href: "vf_hero_link_href", spacing: "spacing", id: "id", modifier_class: "modifier_class", vf_hero_heading_additional: "vf_hero_heading_additional" }, usesOnChanges: true, ngImport: i0, template: `
+VfHeroAngularComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfHeroAngularComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+VfHeroAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "15.2.10", type: VfHeroAngularComponent, selector: "vf-hero", inputs: { vf_hero_image: "vf_hero_image", vf_hero_image_size: "vf_hero_image_size", vf_hero_kicker: "vf_hero_kicker", vf_hero_heading: "vf_hero_heading", vf_hero_heading_href: "vf_hero_heading_href", vf_hero_subheading: "vf_hero_subheading", vf_hero_text: "vf_hero_text", vf_hero_link_text: "vf_hero_link_text", vf_hero_link_href: "vf_hero_link_href", spacing: "spacing", id: "id", modifier_class: "modifier_class", vf_hero_heading_additional: "vf_hero_heading_additional" }, usesOnChanges: true, ngImport: i0, template: `
     <section [attr.id] = "id !== undefined ? id : null" [ngClass]="class" [style]="style">
       <div class="vf-hero__content | vf-box | vf-stack vf-stack--400">
           <p *ngIf="vf_hero_kicker !== ''" class="vf-hero__kicker" [innerHTML]="vf_hero_kicker"></p>
@@ -67,7 +67,7 @@ VfHeroAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0",
       </div>
     </section>
   `, isInline: true, dependencies: [{ kind: "directive", type: i1.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }, { kind: "directive", type: i1.NgForOf, selector: "[ngFor][ngForOf]", inputs: ["ngForOf", "ngForTrackBy", "ngForTemplate"] }, { kind: "directive", type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfHeroAngularComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfHeroAngularComponent, decorators: [{
             type: Component,
             args: [{ selector: "vf-hero", template: `
     <section [attr.id] = "id !== undefined ? id : null" [ngClass]="class" [style]="style">
@@ -122,10 +122,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImpor
 
 class VfHeroAngularModule {
 }
-VfHeroAngularModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfHeroAngularModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-VfHeroAngularModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.3", ngImport: i0, type: VfHeroAngularModule, declarations: [VfHeroAngularComponent], imports: [CommonModule], exports: [VfHeroAngularComponent] });
-VfHeroAngularModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfHeroAngularModule, imports: [CommonModule] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.3", ngImport: i0, type: VfHeroAngularModule, decorators: [{
+VfHeroAngularModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfHeroAngularModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+VfHeroAngularModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.2.10", ngImport: i0, type: VfHeroAngularModule, declarations: [VfHeroAngularComponent], imports: [CommonModule], exports: [VfHeroAngularComponent] });
+VfHeroAngularModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfHeroAngularModule, imports: [CommonModule] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImport: i0, type: VfHeroAngularModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [

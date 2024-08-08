@@ -1,3 +1,7 @@
+### 2.1.1
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
 ## 2.1.0-alpha.1
 
 * Feature: This adds support for Eleventy v2 and should remain backwards compatible with v1.
