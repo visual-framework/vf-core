@@ -1,3 +1,7 @@
+### 1.1.6
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
 ### 1.1.5
 
 * Fix a bug in `camelize` function that only replaced first `-`.
