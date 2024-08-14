@@ -1,0 +1,123 @@
+---
+title: Rollup release 2.5.18
+subtitle: This release includes Angular support for vf-tabs. There are documentation updates for vf-list, vf-table. It also includes dependency updates for multiple packages including for 11ty/Eleventy boilerplate code, and also fixes for lint errors .
+date: 2024-08-14 09:00:00
+version: 2.5.18
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Features",
+      "navigation_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    },
+    {
+      "text": "Documentation",
+      "navigation_href": "#documentation"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### New features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-tabs", "2.1.5", "74e74597ae85a11c662ac4ca5d34f084c203f98a") }}
+
+* Added : Experimental Angular support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2037)
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-badge", "3.0.3", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{{ releaseLinks.notes("vf-banner", "2.0.3", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{{ releaseLinks.notes("vf-blockquote", "1.2.7", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{{ releaseLinks.notes("vf-button", "3.0.1", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{{ releaseLinks.notes("vf-content", "1.6.16", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{{ releaseLinks.notes("vf-hero", "4.0.3", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{{ releaseLinks.notes("vf-component-generator", "1.1.6", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{{ releaseLinks.notes("vf-component-initialization", "1.1.13", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{{ releaseLinks.notes("vf-component-library", "1.2.12", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+* Documentation: Updated documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2047)
+* Documentation: Fixed documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2007)
+* Added : Experimental Angular support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2037)
+* Updated : Dependencies updated across different packages [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+* Updated : 11ty/Eleventy boilerplate code with latest packages, fixed lint errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/2023)
+
+{{ releaseLinks.notes("vf-core", "2.2.44", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{{ releaseLinks.notes("vf-extensions", "2.1.1", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{{ releaseLinks.notes("vf-sass-compilation", "1.1.23", "c207f00f52440cc8b67062ef92c42efc308f7379") }}
+
+* Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+### Documentation <a href="#documentation" id="documentation"></a>
+
+{{ releaseLinks.notes("vf-list", "1.1.2", "5869360cd2bd6a0f302785617c1929cecb1f11d0") }}
+
+* Documentation: Fixed documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2007)
+
+{{ releaseLinks.notes("vf-table", "1.2.1", "9a088d5099f9b244f8fcc25272f703784ff5bd8d") }}
+
+* Documentation: Updated documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2047)
+
+{% endmarkdown %}
