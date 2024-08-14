@@ -1,6 +1,10 @@
-### 4.0.3
+### 4.0.4
 
 * Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+### 4.0.3
+
+* Version bump
 
 ### 4.0.2
 
