@@ -6,6 +6,18 @@
 
 A simple component to add the Visual Framework logo to a page. You'll likely want to use this one as a template to add your own logo.
 
+## Usage
+
+This component allows you to add the vf-logo on your page. It can also serve as a template to add your own logo if it has a similar layout and design to the vf-logo. Before using it, ensure that your logo usage guidance and design layout do not conflict with the component.
+
+Considering that texts in logo’s are classified as [essential](https://www.w3.org/WAI/WCAG21/Understanding/images-of-text#dfn-essential), there are [no contrast requirements](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) for adding a logo. However, where possible, make sure the logo is clearly visible against the background colour.
+
+### Useful links
+
+* [Design resources - EMBL](https://www.embl.org/internal-information/communications/design-resources/#vf-tabs__section-logos)
+* [Contrast (Minimum) (Level AA) - WCAG 2.1 Understanding Docs](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
+* [Images of Text (Level AA) - WCAG 2.1 Understanding Docs](https://www.w3.org/WAI/WCAG21/Understanding/images-of-text#dfn-essential)
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-logo` with this command.
