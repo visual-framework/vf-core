@@ -6,6 +6,10 @@
 
 Use this component to show a section of news content. It also offers a `vf-news-container--featured` variant with support for `vf-summary` for when news is a higher level and, well, featured content on layout.
 
+### Recommendations
+
+In a case where the descriptive text on the image is a repetition of the adjacent text, it is recommended to use a null alternative text on the image
+
 ## Install
 
 This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-news-container` with this command.

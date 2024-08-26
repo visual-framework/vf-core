@@ -8,10 +8,55 @@
  * Version: #{map-get($componentInfo, 'version')}
  * Location: #{map-get($componentInfo, 'location')}
  */
+ .vf-news-container {
+  .vf-summary {
+    .vf-summary__link {
+      @include set-type(text-body--2, $custom-margin-bottom: 0);
+
+      display: inline-block;
+      color: #3b6fb6;
+
+      &::after {
+        bottom: 0px;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 750px;
+        top: 0;
+        z-index: 512;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+ }
 
 .vf-news-container--featured {
   .vf-summary {
     grid-template-columns: none;
+
+    .vf-summary__link {
+      @include set-type(text-body--2, $custom-margin-bottom: 0);
+
+      display: inline-block;
+      color: #3b6fb6;
+
+      &::after {
+        bottom: 25px;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 512;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .vf-summary > .vf-summary__date {
