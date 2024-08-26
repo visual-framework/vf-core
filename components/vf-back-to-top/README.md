@@ -16,7 +16,42 @@ The inline variant can be used without JavaScript and placed at the bottom of co
 
 ### Floating variant
 
-Te floating variant is recommended for this component, which appears floating at the bottom right of page. It will appear once the user has scrolled down to 100% of the page height. This requires JavaScript to function.
+The floating variant is recommended for this component, which appears floating at the bottom right of page. It will appear once the user has scrolled down to 100% of the page height. This requires JavaScript to function.
+
+
+### Angular
+
+As of version 1.0.2 vf-back-to-top has experimental Angular support.
+This package was generated with Angular version 18.2.1 with fallback support for 15.2.4 and has been tested on application with Angular version 18.2.1
+
+1. install `yarn add @visual-framework/vf-back-to-top`
+2. import in your app.module
+   ```
+   import { VfBackToTopAngularModule } from '@visual-framework/vf-back-to-top/vf-back-to-top.angular';
+
+   @NgModule({
+     imports: [VfBackToTopAngularModule, YourOtherModules],
+     ...
+   })
+   ```
+3. can be used as
+   ```
+   <vf-back-to-top [type]="'inline'" [text]="'Top'" [scrollToId]="'top'" [example]="true"></vf-back-to-top>
+   <vf-back-to-top [type]="'floating'" [example]="false"></vf-back-to-top>
+   ```
+4. add to your styles.scss
+   ```
+   @import '../node_modules/@visual-framework/vf-sass-config/index.scss';
+   @import "../node_modules/@visual-framework/vf-back-to-top/vf-back-to-top.scss";
+   ```
+   you should also install [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles
+
+Usage:
+
+```
+<vf-back-to-top [type]="'inline'" [text]="'Top'" [scrollToId]="'top'" [example]="true"></vf-back-to-top>
+<vf-back-to-top [type]="'floating'" [example]="false"></vf-back-to-top>
+```
 
 ## Install
 

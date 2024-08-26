@@ -1,0 +1,6 @@
+/*
+ * Public API Surface of vf-back-to-top.angular
+ */
+export * from './lib/vf-back-to-top.angular.component';
+export * from './lib/vf-back-to-top.angular.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL3ZmLWJhY2stdG8tdG9wLmFuZ3VsYXIvc3JjL3B1YmxpYy1hcGkudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0dBRUc7QUFFSCxjQUFjLHdDQUF3QyxDQUFDO0FBQ3ZELGNBQWMscUNBQXFDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIHZmLWJhY2stdG8tdG9wLmFuZ3VsYXJcbiAqL1xuXG5leHBvcnQgKiBmcm9tICcuL2xpYi92Zi1iYWNrLXRvLXRvcC5hbmd1bGFyLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi92Zi1iYWNrLXRvLXRvcC5hbmd1bGFyLm1vZHVsZSc7XG4iXX0=
