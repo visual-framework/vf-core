@@ -70,4 +70,7 @@ import { emblNotifications } from "embl-notifications/embl-notifications";
 import { vfMegaMenu } from 'vf-mega-menu/vf-mega-menu';
 vfMegaMenu();
 
+import { vfTable } from 'vf-table/vf-table';
+vfTable();
+
 // No default invokation

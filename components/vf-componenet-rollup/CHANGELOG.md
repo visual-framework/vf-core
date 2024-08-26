@@ -1,3 +1,7 @@
+### 1.4.11
+
+* Fixed: Fixed issue with row selection and highlighting for vf-table [Tracking issue](https://github.com/visual-framework/vf-core/issues/2087)
+
 ### 1.4.10
 
 * Deprecated `vf-collapse` component. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1911)
