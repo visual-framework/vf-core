@@ -1,3 +1,7 @@
+### 1.2.2
+
+* Fixed: Fixed issue with row selection and highlighting for vf-table [Tracking issue](https://github.com/visual-framework/vf-core/issues/2087)
+
 ### 1.2.1
 
 * Documentation: Updated documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2047)
