@@ -1,3 +1,7 @@
+### 1.0.2
+
+* Added : Experimental Angular support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2088)
+
 ### 1.0.1
 
 * Updated the Back to Top button to secondary and changed arrow colour.
