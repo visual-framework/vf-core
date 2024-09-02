@@ -126,6 +126,36 @@ This package was generated with Angular version 15.2.0 and has been tested on ap
   <vf-tabs [tabsdata]="tabsdata"></vf-tabs>
   ```
 
+### React
+
+As of version 2.1.6 vf-tabs has experimental React support which has been tested on react version 18.2.0
+
+1. install `yarn add @visual-framework/vf-tabs`
+2. import in the JS file where you want to include this component
+   ```
+   import VfTabs from '@visual-framework/vf-tabs/vf-tabs.react';
+
+   Make sure you have the jsx support enabled with babel. Alternatively, you can also copy the vf-tabs.react.js file from below to your react project and import as per the location.
+   ```
+3. can be used as
+   ```
+   <VfTabs {...tabsData}/>
+
+   Here `tabsdata` can be declared just like above ( Angular section ).
+   ```
+4. add beloow to your  CSS file
+   ```
+   @import '~@visual-framework/vf-sass-config/index.scss';
+   @import '~@visual-framework/vf-tabs/vf-tabs.scss';
+   ```
+   you should also install and import  [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles
+
+Usage:
+
+```
+<VfTabs {...tabsData}/>
+```
+
 ### Deep linking
 
 A tab can be activated on page load by passing it on the link `#vf-tabs__section-tab_id`

@@ -1,3 +1,7 @@
+### 2.1.6
+
+* Added : React support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2089)
+
 ### 2.1.5
 
 * Added : Experimental Angular support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2037)

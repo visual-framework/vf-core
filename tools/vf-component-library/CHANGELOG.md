@@ -1,3 +1,13 @@
+### 1.2.13
+
+* Documentation: Updated documentation for vf-logo [Tracking issue](https://github.com/visual-framework/vf-core/issues/1910)
+* Fixed : Row selection and highlighting issue for vf-table [Tracking issue](https://github.com/visual-framework/vf-core/issues/2087)
+* Fixed : 11ty create-vf-project script [Tracking issue](https://github.com/visual-framework/vf-core/issues/2090)
+* Added : Angular support for vf-back-to-top [Tracking issue](https://github.com/visual-framework/vf-core/issues/2088)
+* Added : React support for vf-tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2089)
+* Updated : Made the image in news feed container clickable [Tracking issue](https://github.com/visual-framework/vf-core/issues/1750)
+* Updated : Changes to footer based on `intranet` implementation findings [Tracking issue](https://github.com/visual-framework/vf-core/issues/1978)
+
 ### 1.2.12
 
 * Documentation: Updated documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2047)
