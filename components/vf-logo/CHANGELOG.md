@@ -1,3 +1,7 @@
+### 1.5.2
+
+* Documentation : Updated documentation for vf-logo. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1910)
+
 ### 1.5.1
 
 * Makes logo larger only when using extreme variant.
