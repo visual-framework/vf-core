@@ -1,6 +1,6 @@
 ### 1.2.1
 
-* Changes to footer based on `intranet` implementation findings [Tracking issue](https://github.com/visual-framework/vf-core/issues/1978)
+* Changes to footer based on `EMBL-EBI Intranet` implementation findings [Tracking issue](https://github.com/visual-framework/vf-core/issues/1978)
 
 ### 1.2.0
 
