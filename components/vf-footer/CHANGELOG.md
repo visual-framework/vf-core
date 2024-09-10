@@ -1,3 +1,7 @@
+### 1.2.1
+
+* Changes to footer based on `EMBL-EBI Intranet` implementation findings [Tracking issue](https://github.com/visual-framework/vf-core/issues/1978)
+
 ### 1.2.0
 
 * Requires at least `@visual-framework@vf-sass-config@2.6.1`.
