@@ -1,3 +1,7 @@
+### 1.1.25
+
+* Degraded stylelint to fix build errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
 ### 1.1.24
 
 * Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
