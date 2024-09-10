@@ -1,3 +1,7 @@
+### 1.1.1
+
+* Updated: Made the image in news feed clickable  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1750)
+
 ### 1.1.0
 
 * Standardizes the featured news variant as 4 columns.
