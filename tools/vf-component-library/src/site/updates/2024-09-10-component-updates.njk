@@ -1,0 +1,106 @@
+---
+title: Rollup release 2.5.19
+subtitle: This release includes Angular support for vf-back-to-top and React support for vf-tabs. There are documentation updates for vf-logo. It also includes fixes for vf-table, create-vf-project, changes to vf-news-container for clickable image and footer styling and responsive changes.
+date: 2024-09-10 09:00:00
+version: 2.5.19
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Features",
+      "navigation_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    },
+    {
+      "text": "Documentation",
+      "navigation_href": "#documentation"
+    },
+    {
+      "text": "Bug fixes",
+      "navigation_href": "#bugs"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### New features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-back-to-top", "1.0.2", "1551caf72faebc7b1b1d37bf9fce95634d0112f0") }}
+
+* Added : Experimental Angular support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2088)
+
+{{ releaseLinks.notes("vf-tabs", "2.1.6", "1196f034a6f412d3b7b8fc6db328e250b6bf541d") }}
+
+* Added : React support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2089)
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-news-container", "1.1.1", "639912b247eeba6cb40e3338f16a2add84692dd2") }}
+
+* Updated: Made the image in news feed clickable  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1750)
+
+{{ releaseLinks.notes("vf-footer", "1.2.1", "e91d5f856d865e23fad3fead4f4e6a5008dab1b2") }}
+
+* Changes to footer based on `EMBL-EBI Intranet` implementation findings [Tracking issue](https://github.com/visual-framework/vf-core/issues/1978)
+
+{{ releaseLinks.notes("vf-componenet-library", "1.2.13", "1196f034a6f412d3b7b8fc6db328e250b6bf541d") }}
+
+* Documentation: Updated documentation for vf-logo [Tracking issue](https://github.com/visual-framework/vf-core/issues/1910)
+* Fixed : Row selection and highlighting issue for vf-table [Tracking issue](https://github.com/visual-framework/vf-core/issues/2087)
+* Fixed : 11ty create-vf-project script [Tracking issue](https://github.com/visual-framework/vf-core/issues/2090)
+* Added : Angular support for vf-back-to-top [Tracking issue](https://github.com/visual-framework/vf-core/issues/2088)
+* Added : React support for vf-tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2089)
+* Updated : Made the image in news feed container clickable [Tracking issue](https://github.com/visual-framework/vf-core/issues/1750)
+* Updated : Changes to footer based on `intranet` implementation findings [Tracking issue](https://github.com/visual-framework/vf-core/issues/1978)
+
+### Documentation <a href="#documentation" id="documentation"></a>
+
+{{ releaseLinks.notes("vf-logo", "1.5.2", "bdebcd3d58ac66048c86274ac65810cfc7c90c57") }}
+
+* Documentation : Updated documentation for vf-logo. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1910)
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+{{ releaseLinks.notes("vf-table", "1.2.2", "eadb6c17ed38f35e7c198d351709bf47591ac92e") }}
+
+* Fixed: Fixed issue with row selection and highlighting for vf-table [Tracking issue](https://github.com/visual-framework/vf-core/issues/2087)
+
+{{ releaseLinks.notes("vf-componenet-rollup", "1.4.11", "eadb6c17ed38f35e7c198d351709bf47591ac92e") }}
+
+* Fixed: Fixed issue with row selection and highlighting for vf-table [Tracking issue](https://github.com/visual-framework/vf-core/issues/2087)
+
+{{ releaseLinks.notes("vf-sass-compilation", "1.1.25", "5cd27a648550f76c0c5531421339929ff4f6e902") }}
+
+* Degraded stylelint to fix build errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
+
+{% endmarkdown %}
