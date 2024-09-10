@@ -31,8 +31,9 @@
     <tr class="vf-table__row">
       {%- if selectable -%}
         <th class="vf-table__heading" scope="col">
-          <input type="checkbox" id="select-all" class="vf-form__checkbox | vf-table__checkbox">
-          <label for="select-all" class="vf-form__label vf-table__label">
+          {% set header_count = count + 1 + range(1, 1000) | random %}
+          <input type="checkbox" id="select-all-{{header_count}}" class="vf-form__checkbox | vf-table__checkbox">
+          <label for="select-all-{{header_count}}" class="vf-form__label vf-table__label">
             <span class="vf-u-sr-only">Select all rows</span>
           </label>
         </th>
@@ -77,7 +78,7 @@
 
       {%- if selectable -%}
         <th class="vf-table__cell vf-table__cell--selectable" scope="row">
-            {% set count = count + 1 %}
+            {% set count = count + 1 + range(1, 1000) | random %}
             <input type="checkbox" id="checkbox-{{count}}" class="vf-form__checkbox | vf-table__checkbox"
             {% if selected %}
             {%- for cell in row %}

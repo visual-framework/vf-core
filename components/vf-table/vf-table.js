@@ -1,7 +1,5 @@
 // vf-table
 
-// Don't need JS? Then feel free to delete this file.
-
 /*
  * A note on the Visual Framework and JavaScript:
  * The VF is primairly a CSS framework so we've included only a minimal amount
@@ -16,28 +14,43 @@
  * This allows users who would prefer not to have this JS engange on an element
  * to drop `data-vf-js-component` and still maintain CSS styling.
  */
+function vfTable() {
+  var checkboxes = document.querySelectorAll("tbody tr input[type=checkbox]");
 
-// Uncomment this boilerplate
-// // if you need to import any other components' JS to use here
-// import { vfOthercomponent } from 'vf-other-component/vf-other-component';
-//
-//  /**
-//   * The global function for this component
-//   * @example vfcomponentName(firstPassedVar)
-//   * @param {string} [firstPassedVar]  - An option to be passed
-//   */
-// function vfcomponentName(firstPassedVar) {
-//   firstPassedVar = firstPassedVar || 'defaultVal';
-//
-// }
-//
-// // If you need to invoke the component by default
-// vfcomponentName();
-//
+  checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener("change", function() {
+      var tr = checkbox.closest("tr");
+      if (checkbox.checked) {
+        tr.classList.add("vf-table__row--selected");
+      } else {
+        tr.classList.remove("vf-table__row--selected");
+      }
+    });
+  });
+
+  var header_checkboxes = document.querySelectorAll(
+    ".vf-table__heading input[type=checkbox]"
+  );
+
+  header_checkboxes.forEach(function(header_checkbox) {
+    header_checkbox.addEventListener("change", function() {
+      var tbody = header_checkbox.closest("thead").nextElementSibling;
+      var checkboxes = tbody.querySelectorAll("tr input[type=checkbox]");
+      if (header_checkbox.checked) {
+        checkboxes.forEach(function(checkbox) {
+          checkbox.checked = true;
+          let event = new Event("change");
+          checkbox.dispatchEvent(event);
+        });
+      } else {
+        checkboxes.forEach(function(checkbox) {
+          checkbox.checked = false;
+          let event = new Event("change");
+          checkbox.dispatchEvent(event);
+        });
+      }
+    });
+  });
+}
 // // By default your component should be usable with js imports
-// export { vfcomponentName };
-//
-// // You should also import it at ./components/vf-core/scripts.js
-// // import { vfcomponentName } from '../components/raw/vf-component/vf-component.js';
-// // And, if needed, invoke it
-// // vfcomponentName();
+export { vfTable };
