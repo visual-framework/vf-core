@@ -119,7 +119,7 @@ const vfTabsSwitch = newTab => {
 
   // get the parent ul of the clicked tab
   let parentTabSet = newTab.closest(".vf-tabs");
-  let parentPanelSet = parentTabSet.nextElementSibling;
+  let parentPanelSet = parentTabSet.nextElementSibling || newTab.closest(".vf-tabs__list").nextElementSibling;
   let tabs = parentTabSet.querySelectorAll("[data-vf-js-tabs] .vf-tabs__link");
   let panels = parentPanelSet.querySelectorAll(
     "[data-vf-js-tabs-content] [id^='vf-tabs__section']"
