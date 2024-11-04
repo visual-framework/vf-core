@@ -1,3 +1,11 @@
+### 1.6.17
+
+* Dependency bump
+
+### 1.6.16
+
+* Dependency bump
+
 ### 1.6.15
 
 * Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
