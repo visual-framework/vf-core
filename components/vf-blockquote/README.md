@@ -8,7 +8,7 @@ The `vf-blockquote` highlights a section that is quoted from an external source.
 
 ## Usage
 
-The `vf-blockquote` should be used to highlight texts from external sources like quotes and testimonials. It should be used for more than decorative purposes, ensuring that the text being quoted is relevant to the content of the page and adds value to the content. This component is not optimised for mobile devices.
+The `vf-blockquote` should be used to highlight texts from external sources like quotes and testimonials. It should be used for more than decorative purposes, ensuring that the text being quoted is relevant to the content of the page and adds value to the content.
 
 It should not be confused with a pull quote which highlights a section of text from the same source/page.
 
@@ -28,6 +28,11 @@ The blockquote is designed to be used on a white background, it is advisable to 
 
 - Self-quoting or usage as a pull quote should be avoided in the context of the page/content. This component should not be used to highlight a portion of text from the same content.
 - `Vf-blockquotes` should not be used solely for decorative purposes, ensuring that the quoted text adds value to the content.
+
+### Size
+
+When using vf-blockquote with headings that have smaller font sizes such as 24 px, it is recommended to use the small-vf-blockquote variant as the default blockquote variant has a font size of 28px and could compete with smaller heading sizes for attention.
+When showing multiple quotes in a section, such as testimonials or multiple endorsements the small variant is recommended.
 
 ### Accessibility
 

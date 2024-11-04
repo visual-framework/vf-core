@@ -13,15 +13,58 @@
   @include blockquote;
   @include set-type(text-body--1);
   display: flex !important;
+  padding-left: 24px;
+
+  .vf-blockquote_author__link {
+    @include inline-link();
+  }
+
+  .vf-blockquote_author__details {
+    @include set-type(text-body--2, $custom-margin-bottom: 0);
+  }
 }
 
-.vf-blockquote::before {
+.vf-blockquote-small {
+  @include blockquote;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3em;
+  display: flex !important;
+  padding-left: 16px;
+
+  .vf-blockquote_author__link {
+    @include inline-link();
+    font-size: 16px;
+  }
+
+  .vf-blockquote_author__details {
+    @include set-type(text-body--3, $custom-margin-bottom: 0);
+  }
+}
+
+.vf-blockquote::before, .vf-blockquote-small:before {
   margin-right: 1.5rem;
   border-left: 1px solid var( --vf-color--grey);
-  left: 8px;
+  left: 0px;
   content: "";
 }
 
-.vf-blockquote_author__link {
-  @include inline-link();
+@media (max-width: 768px) {
+  .vf-blockquote, .vf-blockquote-small {
+    position: relative;
+  }
+
+  .vf-blockquote img, .vf-blockquote-small img {
+    --vf-profile-avatar--size: 64px;
+    position: absolute;
+    bottom: 0;
+    display: block;
+  }
+
+  .vf-blockquote-has-image footer {
+    width: calc(100% - 85px);
+    transform: translate(85px);
+    display: inline-block;
+    word-break: break-word;
+  }
 }

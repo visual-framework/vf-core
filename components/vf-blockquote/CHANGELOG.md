@@ -1,3 +1,7 @@
+### 1.2.8
+
+* Small variant added, documentation updated, responsive support added [Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)
+
 ### 1.2.7
 
 * Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
