@@ -1,0 +1,85 @@
+---
+title: Rollup release 2.5.20
+subtitle: This release includes small variant addition, documentation update and responsive support for `vf-blockquote` and HTML structure support for `vf-tabs` for `vf-wp` boilerplate code. It also includes dependency bumps for a few packages.
+date: 2024-11-04 15:30:00
+version: 2.5.20
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Features",
+      "navigation_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### New features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-blockquote", "1.2.8", "6bc828ea2d09343adc069486551bd83850a1da43") }}
+
+* Small variant added, documentation updated, responsive support added [Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)
+
+{{ releaseLinks.notes("vf-sass-config", "2.7.3", "6bc828ea2d09343adc069486551bd83850a1da43") }}
+
+* Small variant added, documentation updated, responsive support added for vf-blockquote [Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-component-library", "1.2.14", "fe95c268683891826f3b7c50d02a43149cdd4327") }}
+
+* Updated: Tabs script code updated to accommodate 'vf-wp' tabs HTML structure [Tracking issue](https://github.com/visual-framework/vf-core/issues/2147)
+* Updated: Small variant added, documentation updated, responsive support added [Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)
+
+{{ releaseLinks.notes("vf-tabs", "2.1.7", "69cbcb2dce350003d70f309dabb0fcc3c1b3026f") }}
+
+* Updated: Tabs script code updated to accommodate 'EMBL People' tabs HTML structure [Tracking issue](https://github.com/visual-framework/vf-core/issues/2147)
+
+{{ releaseLinks.notes("vf-content", "1.6.17", "aff38626608feb7514c66fe325d1fabc8bb3eb7e") }}
+
+* Dependency bump
+
+{{ releaseLinks.notes("vf-sass-config", "2.7.3", "aff38626608feb7514c66fe325d1fabc8bb3eb7e") }}
+
+* Dependency bump
+
+{{ releaseLinks.notes("vf-sass-starter", "0.1.30", "aff38626608feb7514c66fe325d1fabc8bb3eb7e") }}
+
+* Dependency bump
+
+{{ releaseLinks.notes("vf-core", "2.2.47", "aff38626608feb7514c66fe325d1fabc8bb3eb7e") }}
+
+* Dependency bump
+
+{% endmarkdown %}
