@@ -1,3 +1,8 @@
+### 1.2.14
+
+* Updated: Tabs script code updated to accommodate 'EMBL People' tabs HTML structure [Tracking issue](https://github.com/visual-framework/vf-core/issues/2147)
+* Updated: Small variant added, documentation updated, responsive support added [Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)
+
 ### 1.2.13
 
 * Documentation: Updated documentation for vf-logo [Tracking issue](https://github.com/visual-framework/vf-core/issues/1910)
