@@ -44,7 +44,7 @@ function vfTabs(scope) {
     // Handle clicking of tabs for mouse users
     tab.addEventListener("click", e => {
       e.preventDefault();
-      vfTabsSwitch(e.currentTarget);
+      vfTabsSwitch(e.currentTarget, panels);
     });
 
     // Handle keydown events for keyboard users
@@ -68,7 +68,7 @@ function vfTabs(scope) {
         dir === "down"
           ? panels[i].focus({ preventScroll: true })
           : tabs[dir]
-            ? vfTabsSwitch(tabs[dir])
+            ? vfTabsSwitch(tabs[dir], panels)
             : void 0;
       }
     });
@@ -100,13 +100,14 @@ function vfTabs(scope) {
 
   // activate any deeplinks to a specific tab
   if (activateDeepLinkOnLoad) {
+    vfTabsDeepLinkOnLoad(tabs, panels);
     Array.prototype.forEach.call(panels, panel => {
       let links = panel.querySelectorAll("[href*='vf-tabs__section']");
       links.forEach(link => {
         link.addEventListener("click", e => {
           e.preventDefault();
           let href = e.currentTarget.getAttribute("href");
-          vfTabsDeepLinkOnLoad(tabs, href);
+          vfTabsDeepLinkOnLoad(tabs, panels, href);
         });
       });
     });
@@ -114,16 +115,17 @@ function vfTabs(scope) {
 }
 
 // The tab switching function
-const vfTabsSwitch = newTab => {
+const vfTabsSwitch = (newTab, panels) => {
   // Update url based on tab id
+  const data = newTab.getAttribute("id");
+  var url = "#" + data;
+  // var url = window.location.origin + window.location.pathname + window.location.search;
+  // url += url.endsWith("/") ? "#" + data : "/#" + data;
+  window.history.pushState(data, null, url);
 
   // get the parent ul of the clicked tab
   let parentTabSet = newTab.closest(".vf-tabs");
-  let parentPanelSet = parentTabSet.nextElementSibling || newTab.closest(".vf-tabs__list").nextElementSibling;
   let tabs = parentTabSet.querySelectorAll("[data-vf-js-tabs] .vf-tabs__link");
-  let panels = parentPanelSet.querySelectorAll(
-    "[data-vf-js-tabs-content] [id^='vf-tabs__section']"
-  );
 
   tabs.forEach(tab => {
     if (tab.getAttribute("aria-selected")) {
@@ -154,10 +156,13 @@ const vfTabsSwitch = newTab => {
   });
 };
 
-function vfTabsDeepLinkOnLoad(tabs, href) {
+function vfTabsDeepLinkOnLoad(tabs, panels, href) {
+  var hash;
   // 1. See if there is a `#vf-tabs__section--88888`
-  if (href) {
-    var hash = href.substring(href.indexOf("#") + 1);
+  if (window.location.hash) {
+    hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+  } else if (href) {
+    hash = href.substring(href.indexOf("#") + 1);
   } else {
     // No hash found
     return false;
@@ -168,7 +173,7 @@ function vfTabsDeepLinkOnLoad(tabs, href) {
   Array.prototype.forEach.call(tabs, tab => {
     let tabId = tab.getAttribute("data-tabs__item");
     if (tabId == hash) {
-      vfTabsSwitch(tab);
+      vfTabsSwitch(tab, panels);
     }
   });
 }
