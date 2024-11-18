@@ -13,11 +13,18 @@ function VfBlockquote({
   blockquote_author_href,
   blockquote_author_details,
   blockquote_author_imageurl,
-  override_class
+  override_class,
+  modifier
 }) {
   /* Conditional styles, strings, nullables, arrays of styles */
-  let classNames = "vf-blockquote vf-u-margin__left--800";
+  let classNames =
+    modifier === "default" ? "vf-blockquote" : "vf-blockquote-small";
   classNames += override_class ? override_class : "";
+
+  let authorImgClassNames =
+    modifier === "default"
+      ? "vf-profile__image vf-u-margin__right--600"
+      : "vf-profile__image vf-profile--medium vf-u-margin__right--600";
 
   /* Inner content of the tag based on whether HTML or Text */
   const content = blockquote_text ? blockquote_text : html ? html : text;
@@ -30,7 +37,7 @@ function VfBlockquote({
     <blockquote {...attributes} className={classNames}>
       {blockquote_author_imageurl ? (
         <img
-          className="vf-profile__image vf-u-margin__right--600"
+          className={authorImgClassNames}
           src={blockquote_author_imageurl}
           alt=""
           loading="lazy"
@@ -38,22 +45,28 @@ function VfBlockquote({
       ) : (
         ""
       )}
-      <div>
+      <div
+        className={
+          blockquote_author_imageurl ? "vf-blockquote-has-image" : null
+        }
+      >
         <div>{content}</div>
 
-        <footer class="vf-u-margin__top--600">
+        <footer className="vf-u-margin__top--600">
           {blockquote_author_href ? (
             <a
               href={blockquote_author_href}
               className="vf-blockquote_author__link"
             >
-              <div>{blockquote_author}</div>
+              <div className="vf-blockquote_author">{blockquote_author}</div>
             </a>
           ) : (
             <div>{blockquote_author}</div>
           )}
           {blockquote_author_details ? (
-            <div className="vf-text-body--2">{blockquote_author_details}</div>
+            <div className="vf-blockquote_author__details">
+              {blockquote_author_details}
+            </div>
           ) : (
             ""
           )}
