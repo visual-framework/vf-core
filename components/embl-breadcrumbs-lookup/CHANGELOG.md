@@ -1,3 +1,7 @@
+### 1.2.1
+
+* Updated search URL parameter [Tracking issue](https://github.com/visual-framework/vf-core/issues/2163)
+
 ### 1.2.0
 
 * Improve breadcrumb behaviour to correctly show the active page.
