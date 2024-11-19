@@ -229,7 +229,7 @@ function emblBreadcrumbAppend(breadcrumbTarget,termName,facet,type) {
       // console.warn('embl-js-breadcrumbs-lookup: No matching breadcrumb found for `' + termName + '`; Will formulate a URL.');
       if (facet == "who") {
         // fallback for people: search people directory
-        termObject.url = "https://www.embl.org/search/?searchQuery="+termName.replace(/[\W_]+/g," ").replace(/\s+/g, "-").toLowerCase()+"&activeFacet=People%20directory&origin=breadcrumbTermNotFound";
+        termObject.url = "https://www.embl.org/search/#stq="+termName.replace(/[\W_]+/g," ").replace(/\s+/g, "-").toLowerCase()+"&activeFacet=People%20directory&origin=breadcrumbTermNotFound";
       } else {
         // otherwise try and search
         termObject.url = "https://www.embl.org/search/#stq="+termName+"&taxonomyFacet="+facet+"&origin=breadcrumbTermNotFound"; // if no link specified, do a search
