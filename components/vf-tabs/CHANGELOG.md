@@ -1,3 +1,7 @@
+### 2.1.9
+
+* Fixed: Tabs issue for some specific deep links on EMBL intranet
+
 ### 2.1.8
 
 * Fixed: Tabs script code updated to fix backward compatibility issues [Tracking issue](https://github.com/visual-framework/vf-core/issues/2147)

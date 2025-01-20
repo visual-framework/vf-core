@@ -101,16 +101,6 @@ function vfTabs(scope) {
   // activate any deeplinks to a specific tab
   if (activateDeepLinkOnLoad) {
     vfTabsDeepLinkOnLoad(tabs, panels);
-    Array.prototype.forEach.call(panels, panel => {
-      let links = panel.querySelectorAll("[href*='vf-tabs__section']");
-      links.forEach(link => {
-        link.addEventListener("click", e => {
-          e.preventDefault();
-          let href = e.currentTarget.getAttribute("href");
-          vfTabsDeepLinkOnLoad(tabs, panels, href);
-        });
-      });
-    });
   }
 }
 
@@ -156,13 +146,11 @@ const vfTabsSwitch = (newTab, panels) => {
   });
 };
 
-function vfTabsDeepLinkOnLoad(tabs, panels, href) {
+function vfTabsDeepLinkOnLoad(tabs, panels) {
   var hash;
   // 1. See if there is a `#vf-tabs__section--88888`
   if (window.location.hash) {
     hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
-  } else if (href) {
-    hash = href.substring(href.indexOf("#") + 1);
   } else {
     // No hash found
     return false;
