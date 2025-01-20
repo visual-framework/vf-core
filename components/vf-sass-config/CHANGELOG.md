@@ -1,3 +1,11 @@
+### 2.7.3
+
+* Dependency bump
+
+### 2.7.2
+
+* Small variant added, documentation updated, responsive support added for vf-blockquote [Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)
+
 ### 2.7.2
 
 * Small variant added, documentation updated, responsive support added for vf-blockquote [Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)

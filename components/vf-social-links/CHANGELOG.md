@@ -1,3 +1,6 @@
+### 0.0.6
+* Added Bluesky icon  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2167)
+
 ### 0.0.5
 * Fixed the spelling mistakes in documentation [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)
 * Added variants which are already supported [Tracking issue](https://github.com/visual-framework/vf-core/issues/2038)

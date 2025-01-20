@@ -1,3 +1,15 @@
+### 2.1.9
+
+* Fixed: Tabs issue for some specific deep links on EMBL intranet
+
+### 2.1.8
+
+* Fixed: Tabs script code updated to fix backward compatibility issues [Tracking issue](https://github.com/visual-framework/vf-core/issues/2147)
+
+### 2.1.7
+
+* Updated: Tabs script code updated to accommodate 'EMBL People' tabs HTML structure [Tracking issue](https://github.com/visual-framework/vf-core/issues/2147)
+
 ### 2.1.6
 
 * Added : React support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2089)
