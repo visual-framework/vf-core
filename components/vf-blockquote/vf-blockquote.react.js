@@ -14,7 +14,7 @@ function VfBlockquote({
   blockquote_author_details,
   blockquote_author_imageurl,
   override_class,
-  modifier
+  modifier = "default"
 }) {
   /* Conditional styles, strings, nullables, arrays of styles */
   let classNames =

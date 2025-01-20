@@ -10,17 +10,17 @@
 {% endif %}
 
 <blockquote{% if id %} id="{{-id-}}"{% endif %} class="
-  {% if modifier == "default" -%}
-  vf-blockquote
-  {%- elseif modifier == "small" -%}
+  {% if modifier and modifier == "small" -%}
   vf-blockquote-small
+  {%- else -%}
+  vf-blockquote
   {%- endif %}
   {%- if override_class %} | {{override_class}}{% endif %}"
 >
 
   {% if (blockquote_author_imageurl) %}
     <img class="vf-profile__image
-{% if modifier == "small" -%}
+{% if modifier and modifier == "small" -%}
 vf-profile--medium
 {%- endif %}
  vf-u-margin__right--600" src="{{blockquote_author_imageurl}}" alt="" loading="lazy"/>

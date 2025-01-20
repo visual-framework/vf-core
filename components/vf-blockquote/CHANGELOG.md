@@ -1,3 +1,7 @@
+### 1.2.9
+
+* Changed: Code updated for 'default' case when no modifier is supplied[Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)
+
 ### 1.2.8
 
 * Small variant added, documentation updated, responsive support added [Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)
