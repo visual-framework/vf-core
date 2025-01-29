@@ -1,3 +1,7 @@
+### 1.4.1
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 1.4.0
 
 * Links of `.vf-profile__link` use `inline-link` mixin.

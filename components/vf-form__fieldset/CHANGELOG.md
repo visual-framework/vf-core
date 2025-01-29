@@ -1,3 +1,7 @@
+### 2.0.0
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 2.0.0-alpha.0
 
 * Moves the `fieldset` outside of `vf-form` folder.

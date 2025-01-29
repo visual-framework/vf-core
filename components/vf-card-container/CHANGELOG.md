@@ -1,3 +1,7 @@
+### 3.2.4
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 3.2.3
 
 docs: Updated documentation for hidden flag usage and fixed 3.1.0 changelog text which was causing compile error

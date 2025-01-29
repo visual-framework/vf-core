@@ -1,3 +1,7 @@
+### 4.0.5
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 4.0.4
 
 * Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)

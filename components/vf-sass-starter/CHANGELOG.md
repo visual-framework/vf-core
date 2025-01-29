@@ -1,3 +1,7 @@
+### 0.1.31
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 0.1.30
 
 * Dependency bump.

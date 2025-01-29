@@ -1,4 +1,9 @@
+### 0.0.7
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 0.0.6
+
 * Added Bluesky icon  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2167)
 
 ### 0.0.5
