@@ -1,3 +1,9 @@
+import rename  from "gulp-rename";
+import rollup  from "gulp-better-rollup";
+import includePaths  from "rollup-plugin-includepaths";
+import babel  from "gulp-babel";
+import deleteLines  from "gulp-delete-lines";
+import eslint  from "gulp-eslint";
 "use strict";
 
 /**
@@ -5,13 +11,13 @@
  * This makes dependency management a bit cleaner
  */
 
-module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation) {
-  const rename = require("gulp-rename");
-  const rollup = require("gulp-better-rollup");
-  const includePaths = require("rollup-plugin-includepaths");
-  const babel = require("gulp-babel");
-  const deleteLines = require("gulp-delete-lines");
-  const eslint = require("gulp-eslint");
+export default function(gulp, path, componentPath, componentDirectories, buildDestionation) {
+  
+  
+  
+  
+  
+  
 
   var jsPaths = [componentPath];
 

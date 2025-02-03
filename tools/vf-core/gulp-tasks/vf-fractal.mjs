@@ -1,3 +1,4 @@
+import fractalConfig from "../fractal.js";
 "use strict";
 
 // const resolve = require('path').resolve
@@ -7,13 +8,13 @@
  * This makes dependency management a bit cleaner
  */
 
-module.exports = function(gulp, path) {
+export default function(gulp, path) {
 
   // start fractal in a desired mode, and await it to return the environment
   let startFractal = function(mode) {
     return new Promise(function(resolve) {
-      const fractalConfig = path.resolve("../vf-core/fractal.js").replace(/\\/g, "/");
-      require(fractalConfig).initialize(mode, fractalReadyCallback);
+      // const fractalConfig = path.resolve("../vf-core/fractal.js").replace(/\\/g, "/");
+      fractalConfig.initialize(mode, fractalReadyCallback);
 
       function fractalReadyCallback(fractal) {
         global.fractal = fractal; // "save" fractal so the templates and nunjucks environments are available

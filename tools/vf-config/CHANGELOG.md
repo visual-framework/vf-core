@@ -1,3 +1,7 @@
+### 1.0.1
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
 ### 1.0.1-alpha.0
 
 - Version bump only for package @visual-framework/vf-config

@@ -1,15 +1,22 @@
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+import chalk  from "chalk";
+import fs  from "fs";
+import nunjucks  from "nunjucks";
+import fastglob  from "fast-glob";
 "use strict";
 
 /**
  * Precompiled vf-core Nunjucks templates
  */
 
-module.exports = function(gulp, path, componentPath) {
+export default function(gulp, path, componentPath) {
 
-  const chalk = require("chalk");
-  const fs = require("fs");
-  const nunjucks = require("nunjucks");
-  const fastglob = require("fast-glob");
+
+
+
+
 
   // Precompile vf-core Nunjucks templates
   // Requires that the fractal environment be initialised first

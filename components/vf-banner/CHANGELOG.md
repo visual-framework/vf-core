@@ -1,3 +1,7 @@
+### 2.0.4
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
 ### 2.0.3
 
 * Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)

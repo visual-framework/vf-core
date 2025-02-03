@@ -1,3 +1,7 @@
+### 1.1.26
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
 ### 1.1.25
 
 * Degraded stylelint to fix build errors [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)
