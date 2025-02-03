@@ -1,3 +1,7 @@
+### 1.2.10
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+
 ### 1.2.9
 
 * Changed: Code updated for 'default' case when no modifier is supplied[Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)

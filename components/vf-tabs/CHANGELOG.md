@@ -1,3 +1,7 @@
+### 2.1.10
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+
 ### 2.1.9
 
 * Fixed: Tabs issue for some specific deep links on EMBL intranet
