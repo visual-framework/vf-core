@@ -1,3 +1,7 @@
+### 3.0.0
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 3.0.0-alpha.0
 
 * reworks the inputs to make more use of nunjucks

@@ -1,3 +1,7 @@
+### 1.2.1
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 1.2.0
 
 * Fixes the missing "about" in the readme.

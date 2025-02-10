@@ -1,3 +1,7 @@
+### 0.0.8
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 0.0.7
 
 * Changelog correction [Tracking issue](https://github.com/visual-framework/vf-core/issues/2035)

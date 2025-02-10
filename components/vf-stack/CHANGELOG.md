@@ -1,3 +1,7 @@
+### 3.0.1
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 3.0.0
 
 * With `vf-stack` more consistently adopted we remove `!important` and `vf-u-fullbleed` override. Some spacing regressions are possible.
