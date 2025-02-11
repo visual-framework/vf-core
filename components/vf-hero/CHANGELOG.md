@@ -1,3 +1,8 @@
+### 4.0.5
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 4.0.4
 
 * Dependency update [Tracking issue](https://github.com/visual-framework/vf-core/issues/1647)

@@ -1,3 +1,7 @@
+### 1.1.2
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 1.1.1
 
 * changes any `set-` style functions to cleaner version
