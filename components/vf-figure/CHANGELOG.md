@@ -1,5 +1,9 @@
 ### 2.0.1
 
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+### 2.0.1
+
 * Support passed context.
 * https://github.com/visual-framework/vf-core/issues/1509
 

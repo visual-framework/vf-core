@@ -1,3 +1,7 @@
+### 3.0.0
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 3.0.0-alpha.1
 
 * Refine spacing when more than 1 inline `vf-form__item`.

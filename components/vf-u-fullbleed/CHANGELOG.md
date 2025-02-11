@@ -1,3 +1,7 @@
+### 1.2.3
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 1.2.2
 
 * adds fallbacks for CSS that relied on CSS custom properties
