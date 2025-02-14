@@ -1,3 +1,4 @@
+import svgmin  from "gulp-svgmin";
 "use strict";
 
 /**
@@ -5,8 +6,8 @@
  * This makes dependency management a bit cleaner
  */
 
-module.exports = function(gulp, path, componentPath, buildDestionation) {
-  const svgmin = require("gulp-svgmin");
+export default function(gulp, path, componentPath, buildDestionation) {
+
 
   // Utility task to minify SVGs
   // After running you should check the quality differences of an SVG, and the
@@ -21,21 +22,21 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
   // make each component's `./assets` directory available
   gulp.task("vf-component-assets:directory", function() {
     return gulp
-      .src([componentPath + "/vf-core-components/**/assets/**/*", componentPath + "/**/assets/**/*"])
+      .src([componentPath + "/**/assets/**/*"])
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 
   // make each component's `./vf-component.css` compiled CSS available
   gulp.task("vf-component-assets:compiled-css", function() {
     return gulp
-      .src([componentPath + "/vf-core-components/**/*.css", componentPath + "/**/*.css"])
+      .src([componentPath + "/**/*.css"])
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 
   // make each component's `./*.js` files available
   gulp.task("vf-component-assets:js", function() {
     return gulp
-      .src([componentPath + "/vf-core-components/**/*.js", componentPath + "/**/*.js"])
+      .src([componentPath + "/**/*.js"])
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 
@@ -43,7 +44,7 @@ module.exports = function(gulp, path, componentPath, buildDestionation) {
   // note: you shouldn't use this in combination with the other vf-commponent-assets tasks (redundant)
   gulp.task("vf-component-assets:everything", function() {
     return gulp
-      .src([componentPath + "/vf-core-components/**/*.*", componentPath + "/**/*.*"])
+      .src([componentPath + "/**/*.*"])
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 

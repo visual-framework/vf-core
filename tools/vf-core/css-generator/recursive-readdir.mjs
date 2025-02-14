@@ -1,9 +1,12 @@
+import fs  from "fs";
+import p  from "path";
+import minimatch  from "minimatch";
 /*
 Forked from: https://github.com/jergason/recursive-readdir
 */
-var fs = require("fs");
-var p = require("path");
-var minimatch = require("minimatch");
+
+
+
 
 function patternMatcher(pattern) {
   return function(path, stats) {
@@ -80,4 +83,4 @@ function readdir(path, ignores, callback) {
   });
 }
 
-module.exports = readdir;
+export default readdir;

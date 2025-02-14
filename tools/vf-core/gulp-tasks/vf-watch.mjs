@@ -5,7 +5,7 @@
  * This makes dependency management a bit cleaner
  */
 
-module.exports = function(gulp, path, componentPath, reload) {
+export default function(gulp, path, componentPath, reload) {
   return gulp.task("vf-watch", function() {
     gulp.watch([componentPath + "/**/*.scss", "!" + componentPath + "/**/package.variables.scss"], { interval: 500 }, gulp.series("vf-css")).on("change", reload);
     gulp.watch([componentPath + "/**/*.js", "!" + componentPath + "/**/*.precompiled.js"], { interval: 500 }, gulp.series("vf-scripts")).on("change", reload);

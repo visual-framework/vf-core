@@ -1,37 +1,49 @@
+import fastglob  from "fast-glob";
+import sass  from "sass";
+import autoprefixer  from "gulp-autoprefixer";
+import recursive  from "../css-generator/recursive-readdir.mjs";
+import source  from "vinyl-source-stream";
+import fs  from "fs";
+import chalk  from "chalk";
+import gulpStylelint from "gulp-stylelint";
+import rename  from "gulp-rename";
+import _toesmTemp1  from "stream";
 "use strict";
 
 /**
  * Expose vf-css gulp tasks as a JS module
  * This makes dependency management a bit cleaner
  */
-module.exports = function(gulp, path, componentPath, componentDirectories, buildDestionation) {
-  const fastglob = require("fast-glob");
+export default function(gulp, path, componentPath, componentDirectories, buildDestionation) {
+
 
   // Sass and CSS Stuff
-  const sass = require("sass");
-  const autoprefixer = require("gulp-autoprefixer");
+
+
   const autoprefixerOptions = { overrideBrowserslist: ["last 2 versions", "> 5%", "Firefox ESR"] };
-  const recursive = require("../css-generator/recursive-readdir");
-  const source = require("vinyl-source-stream");
-  const fs = require("fs");
+
+
+
 
   // Build stuff
-  const chalk = require("chalk");
+
 
   // Linting things
-  const gulpStylelint   = require("gulp-stylelint");
+
   const SassInput = componentPath + "/vf-componenet-rollup/index.scss";
   const SassOutput = buildDestionation + "/css";
 
   // CSS Gen stuff
-  const rename = require("gulp-rename");
+
 
   // construct sass import paths
   var sassPaths = fastglob.sync([componentPath,componentPath+"/**","!"+componentPath+"/**/*.*"],{onlyFiles: false});
 
   // Lookup each component's package.json and make a package.scss
   gulp.task("vf-css:package-info", function(done) {
-    const Transform = require("stream").Transform;
+
+const Transform  = _toesmTemp1.Transform;
+
 
     // Convert part of the package.json to a sass map
     function packageJsonToScss(location) {
@@ -202,7 +214,7 @@ module.exports = function(gulp, path, componentPath, componentDirectories, build
       .src(vfScssLintPaths)
       .pipe(gulpStylelint({
         failAfterError: false,
-        reporters: [{formatter: "string", console: true}]
+        reporters: [{formatter: "string", console: false}]
       }));
   });
   gulp.task("vf-lint:scss-hard-fail", function() {
