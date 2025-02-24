@@ -1,6 +1,10 @@
-### 1.1.2
+### 1.1.3
 
 * Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+### 1.1.2
+
+* Version bump
 
 ### 1.1.1
 
