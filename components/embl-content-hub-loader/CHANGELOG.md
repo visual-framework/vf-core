@@ -1,3 +1,7 @@
+### 1.2.1
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 1.2.0
 
 * contentHub html responses are nested deep in many layers of divs, so we ensure a default vf--stack applies to grid containers.

@@ -1,3 +1,8 @@
+### 1.2.10
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
 ### 1.2.9
 
 * Changed: Code updated for 'default' case when no modifier is supplied[Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)

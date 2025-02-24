@@ -1,3 +1,9 @@
+### 1.0.3
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
 ### 1.0.2
 
 * Added : Experimental Angular support for Tabs [Tracking issue](https://github.com/visual-framework/vf-core/issues/2088)

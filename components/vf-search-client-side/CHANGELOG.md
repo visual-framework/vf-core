@@ -1,3 +1,7 @@
+### 2.0.2
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 2.0.1
 
 * Changed : Modified the logic to update search term in both the searchboxes (Menu and Current page)

@@ -1,3 +1,7 @@
+### 1.0.0
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
 ### 1.0.0-alpha.2
 
 * Handle image widths: as vf-flag uses a table layout, this does not mix well with `vf-content img` and max-width 100%.
