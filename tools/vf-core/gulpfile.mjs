@@ -25,7 +25,7 @@ gulpRollup(gulp, path, config.componentPath, config.componentDirectories, config
 gulp.task('vf-core:deploy-move-build-files', function() {
   // vf-core copy some assets into /temp as to de-conflict fractal asset writing
   console.info('Copying `/temp/build-files` assets.');
-  return gulp.src(buildDestionation + '/**/*')
+  return gulp.src(config.buildDestionation + '/**/*')
     .pipe(gulp.dest('./build')); // hard-coded as this is used only by vf-core directly
 });
 
