@@ -1,3 +1,7 @@
+### 2.7.2
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
 ### 2.7.1
 
 * Bug fix: Updated vf-card documentation to fix the typo

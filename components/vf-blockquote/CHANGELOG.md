@@ -1,3 +1,7 @@
+### 1.2.11
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
 ### 1.2.10
 
 * Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)

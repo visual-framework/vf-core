@@ -1,3 +1,7 @@
+### 2.0.5
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
 ### 2.0.4
 
 * Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
