@@ -3,13 +3,14 @@
  * See vf-extensions-react for usage guidance
  *
  */
-import { useEffect } from "react";
-import { vfTabs } from "@visual-framework/vf-tabs/vf-tabs";
+import React, { useEffect } from "react";
+import { vfTabs } from "@visual-framework/vf-tabs/vf-tabs.js";
 
 function VfTabs(tabsData) {
   useEffect(() => {
     vfTabs();
   }, []);
+
   return (
     <>
       <div className="vf-tabs">

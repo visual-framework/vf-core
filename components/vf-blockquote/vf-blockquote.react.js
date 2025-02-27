@@ -19,7 +19,7 @@ function VfBlockquote({
   /* Conditional styles, strings, nullables, arrays of styles */
   let classNames =
     modifier === "default" ? "vf-blockquote" : "vf-blockquote-small";
-  classNames += override_class ? override_class : "";
+  classNames += override_class ? " " + override_class : "";
 
   let authorImgClassNames =
     modifier === "default"
@@ -28,6 +28,7 @@ function VfBlockquote({
 
   /* Inner content of the tag based on whether HTML or Text */
   const content = blockquote_text ? blockquote_text : html ? html : text;
+  // dangerouslySetInnerHTML = { __html: content };
 
   /* Conditional attributes will be only present iff they exist */
   const attributes = {
@@ -50,7 +51,7 @@ function VfBlockquote({
           blockquote_author_imageurl ? "vf-blockquote-has-image" : null
         }
       >
-        <div>{content}</div>
+        <div dangerouslySetInnerHTML={{ __html: content }}></div>
 
         <footer className="vf-u-margin__top--600">
           {blockquote_author_href ? (

@@ -6,7 +6,6 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { VfClassNormalize } from "../../tools/vf-extensions-react/vf-extensions-react";
 
 function VfButton({
   text,
@@ -22,14 +21,17 @@ function VfButton({
   const Tag = "button";
 
   /* Conditional styles, strings, nullables, arrays of styles */
-  const classNames = VfClassNormalize(
+  const classNames = [
     "vf-button",
     theme && `vf-button--${theme}`,
-    outline && 'vf-button--outline',
+    outline && "vf-button--outline",
     size && `vf-button--${size}`,
-    style && [style].flat().map((item) => `vf-button--${item}`),
+    style && [style].flat().map(item => `vf-button--${item}`),
     override_class
-  );
+  ]
+    .flat(3) //flattens nested arrays
+    .filter(items => items) //removes falsy items
+    .join(" ");
 
   /* Conditional attributes will be only present iff they exist */
   const attributes = {
@@ -51,8 +53,8 @@ VfButton.propTypes = {
   id: PropTypes.string,
   style: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.oneOf(["primary", "outline", "tertiary"])),
-    PropTypes.string,
+    PropTypes.string
   ]),
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  override_class: PropTypes.string,
+  override_class: PropTypes.string
 };
