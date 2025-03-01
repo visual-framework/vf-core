@@ -4,7 +4,7 @@ import through from "through2";
 import gutil from "gulp-util";
 import fs from "fs";
 import { exit } from "process";
-import { deleteSync } from "del";
+import { deleteAsync } from "del";
 
 // Pull in optional configuration from the package.json file, a la:
 import {
@@ -27,8 +27,6 @@ import buildSearchIndex from "@visual-framework/vf-extensions/gulp-tasks/gulp-bu
 
 rollupCore(gulp, path, componentPath, componentDirectories, buildDestionation);
 rollupExtensions(gulp, path, componentPath, componentDirectories, buildDestionation);
-
-// search indexing
 buildSearchIndex(gulp, path, buildDestionation);
 
 // Watch folders for changes
@@ -63,6 +61,7 @@ gulp.task("replace-endpoints:dev", function(done) {
     })
     .on("end", function(status) {
       gutil.log(gutil.colors.green("Finished replacing dev endpoints"));
+      done();
     })
     .on("error", function(err) {
       gutil.log(gutil.colors.red(err.message));
@@ -71,7 +70,7 @@ gulp.task("replace-endpoints:dev", function(done) {
   );
 });
 
-gulp.task("apache-config", function() {
+gulp.task("apache-config", function(done) {
   const fileName = "build/.htaccess";
   const endOfLine = "\r\n";
   fs.writeFileSync(fileName, "# Static page mappings built with gulp");
@@ -108,6 +107,7 @@ gulp.task("apache-config", function() {
       })
       .on("finish", function() {
         gutil.log(gutil.colors.green("Finished writing .htaccess"));
+        done();
       })
       .on("error", function(err) {
         gutil.log(gutil.colors.red(err.message));
@@ -116,8 +116,8 @@ gulp.task("apache-config", function() {
     );
 });
 
-gulp.task("build-temp-clean", () => {
-  return deleteSync(["build/temp"]);
+gulp.task("build-temp-clean", function(done) {
+  deleteAsync(["build/temp"]).then(() => done());
 });
 
 gulp.task(
