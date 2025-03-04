@@ -4,7 +4,7 @@
  *
  */
 import { useEffect } from "react";
-import { vfBanner } from "../node_modules/@visual-framework/vf-banner/vf-banner";
+import { vfBanner } from "@visual-framework/vf-banner/vf-banner";
 
 function VfBanner({
   banner__type = "basic",
@@ -14,7 +14,7 @@ function VfBanner({
   banner__inline_href = "",
   banner__text = "",
   data_service_id = "MyService",
-  data_protection_version = "0.1"
+  data_protection_version = "0.1",
 }) {
   var bannerclass = "vf-banner vf-banner--alert ";
   var banner_msg;

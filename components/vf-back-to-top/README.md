@@ -34,12 +34,24 @@ This package was generated with Angular version 18.2.1 with fallback support for
      ...
    })
    ```
-3. can be used as
+3. JS file inclusion
+  * Copy the vf-back-to-top.js (from Assets section below) to your src/assets/vf-back-to-top folder (create new if not already).
+  * In the angular.json inside "scripts": [] add the above file reference like -
+      "scripts": [
+            "src/assets/vf-back-to-top/vf-back-to-top.js"
+          ]
+      and then add this function call
+      ```
+      vfBackToTop();
+      ```
+      where you're importing the the component.
+  * Rerun the project if already running.
+4. Can be used as
    ```
    <vf-back-to-top [type]="'inline'" [text]="'Top'" [scrollToId]="'top'" [example]="true"></vf-back-to-top>
    <vf-back-to-top [type]="'floating'" [example]="false"></vf-back-to-top>
    ```
-4. add to your styles.scss
+5. add to your styles.scss
    ```
    @import '../node_modules/@visual-framework/vf-sass-config/index.scss';
    @import "../node_modules/@visual-framework/vf-back-to-top/vf-back-to-top.scss";
@@ -51,6 +63,35 @@ Usage:
 ```
 <vf-back-to-top [type]="'inline'" [text]="'Top'" [scrollToId]="'top'" [example]="true"></vf-back-to-top>
 <vf-back-to-top [type]="'floating'" [example]="false"></vf-back-to-top>
+```
+
+### React
+
+vf-back-to-top now has React support which has been tested on react version 18.2.0
+
+1. install `yarn add @visual-framework/vf-back-to-top`
+2. import in the JS file where you want to include this component
+   ```
+   import VfBackToTop from '@visual-framework/vf-back-to-top/vf-back-to-top.react';
+
+   Make sure you have the jsx support enabled with babel. Alternatively, you can also copy the vf-back-to-top.react.js file from below to your react project and import as per the location.
+   ```
+3. can be used as
+   ```
+   <VfBackToTop type="floating" />
+   <VfBackToTop type="inline" text="Top" scrollToId="top" example="true" />
+   ```
+4. add beloow to your  CSS file
+   ```
+   @import '~@visual-framework/vf-sass-config/index.scss';
+   @import '~@visual-framework/vf-back-to-top/vf-back-to-top.css';
+   ```
+   you should also install and import  [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles
+
+Usage:
+
+```
+<VfBackToTop type="floating" />
 ```
 
 ## Install

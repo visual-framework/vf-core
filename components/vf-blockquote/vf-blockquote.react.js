@@ -14,17 +14,14 @@ function VfBlockquote({
   blockquote_author_details,
   blockquote_author_imageurl,
   override_class,
-  modifier = "default"
+  modifier = 'default',
 }) {
   /* Conditional styles, strings, nullables, arrays of styles */
   let classNames =
     modifier === "default" ? "vf-blockquote" : "vf-blockquote-small";
   classNames += override_class ? " " + override_class : "";
 
-  let authorImgClassNames =
-    modifier === "default"
-      ? "vf-profile__image vf-u-margin__right--600"
-      : "vf-profile__image vf-profile--medium vf-u-margin__right--600";
+  let authorImgClassNames = modifier === 'default' ? 'vf-profile__image vf-u-margin__right--600' : 'vf-profile__image vf-profile--medium vf-u-margin__right--600';
 
   /* Inner content of the tag based on whether HTML or Text */
   const content = blockquote_text ? blockquote_text : html ? html : text;
@@ -32,7 +29,7 @@ function VfBlockquote({
 
   /* Conditional attributes will be only present iff they exist */
   const attributes = {
-    ...(id && { id })
+    ...(id && { id }),
   };
   return (
     <blockquote {...attributes} className={classNames}>
@@ -65,9 +62,7 @@ function VfBlockquote({
             <div>{blockquote_author}</div>
           )}
           {blockquote_author_details ? (
-            <div className="vf-blockquote_author__details">
-              {blockquote_author_details}
-            </div>
+            <div className="vf-blockquote_author__details">{blockquote_author_details}</div>
           ) : (
             ""
           )}

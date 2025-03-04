@@ -11,7 +11,7 @@ const VfBadge = ({
   id
 }) => {
   const classNames = [
-    "vf-badge",
+    'vf-badge',
     theme && `vf-badge--${theme}`,
     style &&
       style
