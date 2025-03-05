@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import VfHero from "./vf-hero.react";
@@ -23,7 +22,7 @@ describe("VfHero Component", () => {
     render(<VfHero vf_hero_image="image.jpg" vf_hero_image_size="cover" />);
     expect(screen.getByRole("banner")).toHaveStyle({
       "--vf-hero--bg-image": "image.jpg",
-      "--vf-hero--bg-image-size": "cover",
+      "--vf-hero--bg-image-size": "cover"
     });
   });
 

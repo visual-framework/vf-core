@@ -1,5 +1,3 @@
-import React from "react";
-
 /*
  * vf-hero react component
  * See vf-extensions-react for usage guidance

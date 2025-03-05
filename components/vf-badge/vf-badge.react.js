@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 const VfBadge = ({
@@ -11,7 +10,7 @@ const VfBadge = ({
   id
 }) => {
   const classNames = [
-    'vf-badge',
+    "vf-badge",
     theme && `vf-badge--${theme}`,
     style &&
       style

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { vfBackToTop } from "@visual-framework/vf-back-to-top/vf-back-to-top";
 
-const VfBackToTop = ({ type, text, scrollToId, example }) => {
-  const [buttonText, setButtonText] = useState(text || 'Back to top');
+const VfBackToTop = ({ type, text, scrollToId }) => {
+  const [buttonText, setButtonText] = useState(text || "Back to top");
 
   useEffect(() => {
-    setButtonText(text || 'Back to top');
+    setButtonText(text || "Back to top");
     vfBackToTop();
   }, [text]);
 
@@ -13,7 +13,7 @@ const VfBackToTop = ({ type, text, scrollToId, example }) => {
     <div
       className={`vf-back-to-top vf-back-top--${type}`}
       data-vf-js-back-to-top
-      vf-back-top--floating={type === 'floating' ? '' : null}
+      vf-back-top--floating={type === "floating" ? "" : null}
     >
       <a
         role="link"

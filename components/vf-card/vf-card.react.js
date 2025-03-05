@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { vfNunjucksEnv } from "@visual-framework/vf-extensions-react/vf-extensions-react.js";
 

@@ -14,7 +14,7 @@ function VfBanner({
   banner__inline_href = "",
   banner__text = "",
   data_service_id = "MyService",
-  data_protection_version = "0.1",
+  data_protection_version = "0.1"
 }) {
   var bannerclass = "vf-banner vf-banner--alert ";
   var banner_msg;
