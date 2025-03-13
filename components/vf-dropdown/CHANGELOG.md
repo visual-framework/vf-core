@@ -1,3 +1,7 @@
+### 1.0.4
+
+* Fix: Corrected CSS and added ARIA attribute - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2129).
+
 ### 1.0.3
 
 * Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
