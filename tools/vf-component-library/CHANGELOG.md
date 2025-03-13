@@ -1,3 +1,7 @@
+### 1.2.16
+
+* Fix: Cropped display of `vf-search` examples having results [Tracking issue](https://github.com/visual-framework/vf-core/issues/2136)
+
 ### 1.2.15
 
 * Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
