@@ -32,8 +32,16 @@ A reference guide on how to do releases of the VF [monorepo](https://www.toptal.
 1. publish to npm
     - `yarn run lerna:publish`
     - lerna will prompt the versions of all packages twice
-        - 1st one to publish the packages to npm
+        - 1st one to publish the packages to npm. Please enter the code for `npm` from your authenticator app as that's a requirement now for 2 factor authentication.
         - 2nd one to update package.json files of all packages published
+2. In case there's a need to release a package prior to a full library release, do the following:
+    - Make sure the package code is updated and along with the respective CHANGELOG.md file and works well with rest of the code. Also make sure package.json is updated with the newer version you're going to push to `npm`.
+    `npm version patch` command can be used for updating the package.json in case you're doing a patch release.
+    - Commit this package code to `develop` branch and checkout this branch on your local. Again make sure the complete code works well with latest packages and there are no discrepancies.
+    - Make sure you're logged in to a `npm` account belonging to the visual-framework organization.
+    - In a terminal window, go to the package folder and then run `npm publish --dry-run`. This will do a dry run of the publish command and show if there's any error before publishing.
+    - If satisfied with dry run then do `npm publish`. It might ask you for code for `npm` from authenticator app for 2 factor authentication as mentioned above. Once the package is published to `npm` you'll get the confirmation in the window.
+    - When you're doing a full release make sure that the package changes are accounted for in the rollup release blog.
 
 ### 3. Communications
 
