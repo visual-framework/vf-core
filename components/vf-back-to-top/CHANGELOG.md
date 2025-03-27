@@ -1,3 +1,7 @@
+### 1.0.5
+
+* chore : Version bump
+
 ### 1.0.4
 
 * chore : Version bump
