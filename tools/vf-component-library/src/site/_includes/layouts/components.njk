@@ -231,8 +231,14 @@ templateEngineOverride: njk
                 <div class="vf-u-padding--400"
                     style="overflow: auto; background-image: linear-gradient(45deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(135deg, rgba(59, 111, 182, .1) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(59, 111, 182, .1) 75%), linear-gradient(135deg, transparent 75%, rgba(59, 111, 182, .1) 75%);background-size: 20px 20px; background-position-x: 0px, 10px, 10px, 0px;background-position-y: 0px, 0px, -10px, 10px;"
                 >
+                {% if component.baseHandle == 'vf-search' and 'vf-search--' in variant.handle and variant.context and variant.context.results %}
+                  <div style="height:350px;">
+                {% endif %}
                   {# When you want a box with a slight shadow #}
                   {% render '@'+variant.handle, variant.context %}
+                {% if component.baseHandle == 'vf-search' and 'vf-search--' in variant.handle and variant.context and variant.context.results %}
+                  </div>
+                {% endif %}
                 </div>
               {% endif %}
             {% if variants[0].context['exampleMultiColumns'] != "false" and (variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element") %}
