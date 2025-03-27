@@ -2,7 +2,16 @@ module.exports = {
   env: {
     es6: true,
     node: true,
-    browser: true
+    browser: true,
+    jest: true
+  },
+  globals: {
+    test: "readonly",
+    expect: "readonly",
+    describe: "readonly",
+    beforeEach: "readonly",
+    afterEach: "readonly",
+    jest: "readonly"
   },
   extends: "eslint:recommended",
   parserOptions: {

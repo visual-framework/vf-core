@@ -4,7 +4,7 @@
 
 ### 1.2.11
 
-* chore : Version bump
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
 
 ### 1.2.10
 

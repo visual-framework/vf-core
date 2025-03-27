@@ -1,39 +1,55 @@
-/*
- * vf-button react component
- * See vf-extensions-react for usage guidance
- *
- */
+import PropTypes from "prop-types";
 
-function VfBadge({ id, badge_href, text, html, theme, style, override_class }) {
-  /* Conditional styles, strings, nullables, arrays of styles */
+const VfBadge = ({
+  text,
+  badge_href,
+  theme,
+  style,
+  override_class,
+  html,
+  id
+}) => {
   const classNames = [
     "vf-badge",
     theme && `vf-badge--${theme}`,
-    style && style.split(",").map(item => `vf-badge--${item}`),
-    override_class && `| ${override_class}`
+    style &&
+      style
+        .split(",")
+        .map(s => `vf-badge--${s}`)
+        .join(" "),
+    override_class
   ]
-    .flat(3) //flattens nested arrays
-    .filter(items => items) //removes falsy items
+    .filter(Boolean)
     .join(" ");
 
-  /* Inner content of the tag based on whether HTML or Text */
-  const content = html ? html : text;
-
-  /* Conditional attributes will be only present iff they exist */
-  const attributes = {...(id && { id })};
-
-  /* Embed values from above and conditionally return anchor tag or span */
-  if (badge_href && badge_href !== "") {
+  if (badge_href) {
     return (
-      <a {...attributes} href={badge_href} className={classNames}>{content}</a>
-    );
-  } else {
-    return (
-      <span {...attributes} className={classNames}>
-        {content}
-      </span>
+      <a href={badge_href} className={classNames} id={id}>
+        {html ? <span dangerouslySetInnerHTML={{ __html: html }} /> : text}
+      </a>
     );
   }
-}
+
+  return (
+    <span
+      role="status"
+      className={classNames}
+      id={id}
+      {...(html ? { dangerouslySetInnerHTML: { __html: html } } : {})}
+    >
+      {!html && text}
+    </span>
+  );
+};
+
+VfBadge.propTypes = {
+  text: PropTypes.string,
+  badge_href: PropTypes.string,
+  theme: PropTypes.string,
+  style: PropTypes.string,
+  override_class: PropTypes.string,
+  html: PropTypes.string,
+  id: PropTypes.string
+};
 
 export default VfBadge;
