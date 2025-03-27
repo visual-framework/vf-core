@@ -1,0 +1,290 @@
+---
+title: Rollup release 2.5.21
+subtitle: This release includes changes and dependency updates for compatibility with ESM based NPM packages, backward compatibility for vf-tabs, search parameter update for embl-breadcrumbs-lookup and Bluesky logo addition in vf-social-links. It also includes test cases for Angular components and status chages for components from alpha/beta to live.
+date: 2025-02-25 15:30:00
+version: 2.5.21
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("embl-breadcrumbs-lookup", "1.2.2", "fe235073cb5ae0de47f4a431df18456b991bad04") }}
+
+* Updated search URL parameter [Tracking issue](https://github.com/visual-framework/vf-core/issues/2163)
+* Version bump
+
+{{ releaseLinks.notes("vf-button", "3.0.2", "6eb3d74a9cca3d2ef0809ec8019e2e03df317e1e") }}
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-hero", "4.0.5", "6eb3d74a9cca3d2ef0809ec8019e2e03df317e1e") }}
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-tabs", "2.1.10", "6eb3d74a9cca3d2ef0809ec8019e2e03df317e1e") }}
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+* Fixed: Tabs issue for some specific deep links on EMBL intranet
+* Fixed: Tabs script code updated to fix backward compatibility issues [Tracking issue](https://github.com/visual-framework/vf-core/issues/2147)
+
+{{ releaseLinks.notes("vf-banner", "2.0.4", "65eba302ca046156ef6fa8df10498b867d96ed09") }}
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-back-to-top", "1.0.3", "aa1d3f7cbf33c6c38eeae7fcc23e2597cb102dc8") }}
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-badge", "3.0.4", "aa1d3f7cbf33c6c38eeae7fcc23e2597cb102dc8") }}
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-blockquote", "1.2.10", "aa1d3f7cbf33c6c38eeae7fcc23e2597cb102dc8") }}
+
+* Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+* Changed: Code updated for 'default' case when no modifier is supplied[Tracking issue](https://github.com/visual-framework/vf-core/issues/2114)
+
+{{ releaseLinks.notes("vf-show-more", "1.1.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+* Version bump
+
+{{ releaseLinks.notes("vf-social-links", "0.0.7", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Added Bluesky icon  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2167)
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-content", "1.6.18", "65eba302ca046156ef6fa8df10498b867d96ed09") }}
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-design-tokens", "3.6.5", "65eba302ca046156ef6fa8df10498b867d96ed09") }}
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-component-generator", "1.1.7", "65eba302ca046156ef6fa8df10498b867d96ed09") }}
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-component-library", "1.2.15", "65eba302ca046156ef6fa8df10498b867d96ed09") }}
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-config", "1.0.1", "65eba302ca046156ef6fa8df10498b867d96ed09") }}
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-core", "2.2.48", "65eba302ca046156ef6fa8df10498b867d96ed09") }}
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-extensions", "2.1.3", "65eba302ca046156ef6fa8df10498b867d96ed09") }}
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("vf-sass-compilation", "1.1.26", "65eba302ca046156ef6fa8df10498b867d96ed09") }}
+
+* Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
+
+{{ releaseLinks.notes("embl-content-hub-loader", "1.2.1", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-article-meta-information", "1.1.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-bookmark", "1.0.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-card-container", "3.2.4", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-cluster", "1.0.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-details", "1.2.1", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-discussion", "1.0.2", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-dropdown", "1.0.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-figure", "2.0.2", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-flag", "1.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-form", "2.0.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-form__checkbox", "3.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-form__fieldset", "2.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-form__helper", "3.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-form__input", "3.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-form__item", "3.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-form__label", "3.0,0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-form__legend", "2.0.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-form__radio", "3.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-form__textarea/", "3.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-location-nearest", "1.0.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-navigation", "5.0.4", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-news-container", "1.1.2", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-profile", "1.0.1", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-progress-indicator", "1.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-sass-starter", "0.1.31", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-search-client-side", "2.0.2", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-search", "3.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-sidebar", "1.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-smooth-scroll", "1.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-stack", "3.0.1", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-table", "1.2.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-tags", "1.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-tree", "2.0.0", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-u-fullbleed", "1.2.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-video-container", "1.0.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-video-teaser", "2.0.1", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-video", "1.0.3", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{{ releaseLinks.notes("vf-extensions-react", "0.0.8", "c73779c5adad1a86968afbbba314825b564d6087") }}
+
+* Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
+
+{% endmarkdown %}

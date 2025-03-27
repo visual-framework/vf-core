@@ -1,3 +1,7 @@
+### 1.6.19
+
+* `vf-button` version correction
+
 ### 1.6.18
 
 * Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
