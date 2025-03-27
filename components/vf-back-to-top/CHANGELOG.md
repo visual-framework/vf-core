@@ -1,3 +1,11 @@
+### 1.0.5
+
+* chore : Version bump
+
+### 1.0.4
+
+* chore : Version bump
+
 ### 1.0.3
 
 * Changed: Test cases added for Angular  [Tracking issue](https://github.com/visual-framework/vf-core/issues/1932)
