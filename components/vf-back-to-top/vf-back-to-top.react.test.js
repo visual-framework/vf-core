@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+// eslint-disable-next-line no-unused-vars
 import VfBackToTop from "./vf-back-to-top.react";
 
 describe("VfBackToTop Component", () => {

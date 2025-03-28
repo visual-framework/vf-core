@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+// eslint-disable-next-line no-unused-vars
 import { VfCard } from "./vf-card.react";
 import { vfNunjucksEnv } from "@visual-framework/vf-extensions-react/vf-extensions-react.js";
 
