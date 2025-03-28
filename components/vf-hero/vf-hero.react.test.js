@@ -1,8 +1,9 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
+// eslint-disable-next-line no-unused-vars
 import VfHero from "./vf-hero.react";
 
-describe("VfHero Component", () => {
+describe("VfHero", () => {
   test("renders with default props", () => {
     render(<VfHero />);
     expect(screen.getByRole("banner")).toHaveClass("vf-hero vf-u-fullbleed");
@@ -33,7 +34,6 @@ describe("VfHero Component", () => {
         vf_hero_heading_href="https://example.com"
       />
     );
-    const heading = screen.getByText("Hero Heading");
     const headingLink = screen.getByRole("link", { name: "Hero Heading" });
     expect(headingLink).toHaveAttribute("href", "https://example.com");
   });

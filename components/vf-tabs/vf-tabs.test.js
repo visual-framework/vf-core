@@ -1,5 +1,6 @@
 // VfTabs.test.js
 import { render, screen } from "@testing-library/react";
+// eslint-disable-next-line no-unused-vars
 import VfTabs from "./vf-tabs.react";
 
 describe("VfTabs Component", () => {
