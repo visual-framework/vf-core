@@ -6,6 +6,13 @@ import fs from "fs";
 import { exit } from "process";
 import { deleteAsync } from "del";
 
+import { src, task } from 'gulp';
+import karma from 'karma';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+const { Server, config: karmaConfig } = karma;
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 // Pull in optional configuration from the package.json file, a la:
 import {
   componentPath,
@@ -28,6 +35,26 @@ import buildSearchIndex from "@visual-framework/vf-extensions/gulp-tasks/gulp-bu
 rollupCore(gulp, path, componentPath, componentDirectories, buildDestionation);
 rollupExtensions(gulp, path, componentPath, componentDirectories, buildDestionation);
 buildSearchIndex(gulp, path, buildDestionation);
+
+
+task('test', async function (done) {
+  try {
+    const parsedConfig = await karmaConfig.parseConfig(
+      `${__dirname}/karma.conf.js`,  // Path to Karma config file
+      {},                            // CLI options (empty)
+      { promiseConfig: true, throwErrors: true }
+    );
+
+    const server = new Server(parsedConfig, function (exitCode) {
+      done(exitCode === 0 ? null : new Error(`Karma test failed with code ${exitCode}`));
+    });
+
+    server.start();
+  } catch (error) {
+    console.error("Error starting Karma:", error);
+    done(error);
+  }
+});
 
 // Watch folders for changes
 gulp.task("watch", function() {
