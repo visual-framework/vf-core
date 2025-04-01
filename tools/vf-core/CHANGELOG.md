@@ -1,3 +1,7 @@
+### 2.2.49
+
+* chore : Version bump
+
 ### 2.2.48
 
 * Dependency update to be compatible with ESM packages[Tracking issue](https://github.com/visual-framework/vf-core/issues/2107)
