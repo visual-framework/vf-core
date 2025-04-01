@@ -1,3 +1,7 @@
+### 1.6.20
+
+* chore : Version bump
+
 ### 1.6.19
 
 * `vf-button` version correction
