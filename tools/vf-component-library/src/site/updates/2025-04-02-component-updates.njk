@@ -1,0 +1,100 @@
+---
+title: Rollup release 2.5.22
+subtitle: This release includes Angular bolierplate code, React test cases for multiple packages, fix for cropped display of `vf-search` examples having results, fix for progress indicator display and CSS fix and ARIA attribute for `vf-dropdown`
+date: 2025-04-01 23:50:00
+version: 2.5.22
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    },
+    {
+      "text": "Bug fixes",
+      "navigation_href": "#bugs"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-back-to-top", "1.0.9", "46746ccba81c37da71b4f43c323f62d58397ce13") }}
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
+{{ releaseLinks.notes("vf-badge", "3.0.4", "46746ccba81c37da71b4f43c323f62d58397ce13") }}
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
+{{ releaseLinks.notes("vf-banner", "2.0.5", "46746ccba81c37da71b4f43c323f62d58397ce13") }}
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
+{{ releaseLinks.notes("vf-blockquote", "1.2.14", "46746ccba81c37da71b4f43c323f62d58397ce13") }}
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
+{{ releaseLinks.notes("vf-button", "3.0.4", "46746ccba81c37da71b4f43c323f62d58397ce13") }}
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
+{{ releaseLinks.notes("vf-card", "2.7.2", "46746ccba81c37da71b4f43c323f62d58397ce13") }}
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
+{{ releaseLinks.notes("vf-hero", "4.0.6", "46746ccba81c37da71b4f43c323f62d58397ce13") }}
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
+{{ releaseLinks.notes("vf-tabs", "2.1.11", "46746ccba81c37da71b4f43c323f62d58397ce13") }}
+
+* Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
+
+{{ releaseLinks.notes("vf-dropdown", "1.0.4", "a27e4c1a4599bad0a49f338d457013404379bd1a") }}
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+* Fix: Corrected CSS and added ARIA attribute - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2129).
+
+{{ releaseLinks.notes("vf-progress-indicator", "1.0.1", "65fd9218ac82ddd3ba42d140b52a45fd462d68e2") }}
+
+* Fix: Corrected display of progress indicator - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2135).
+
+{{ releaseLinks.notes("vf-content", "1.6.20", "fe6d8a4b2f41b3bc3f1768d6c2be2417ef0a11c4") }}
+
+* Fix: Cropped display of `vf-search` examples having results [Tracking issue](https://github.com/visual-framework/vf-core/issues/2136)
+
+{{ releaseLinks.notes("vf-component-library", "1.2.16", "fe6d8a4b2f41b3bc3f1768d6c2be2417ef0a11c4") }}
+
+* Fix: Cropped display of `vf-search` examples having results [Tracking issue](https://github.com/visual-framework/vf-core/issues/2136)
+
+{% endmarkdown %}
