@@ -1,0 +1,37 @@
+<div class="vf-chatbot-action-prompt{% if modifier_class %} {{ modifier_class }}{% endif %}" data-vf-js-chatbot-action-prompt>
+  {% if action_type == "link" %}
+    <a
+      href="{{ action_url }}"
+      class="vf-chatbot-action-prompt__link"
+      {% if action_target %}target="{{ action_target }}"{% endif %}
+      {% if action_data %}data-vf-js-chatbot-action-data="{{ action_data }}"{% endif %}
+    >
+      {{ action_text }}
+    </a>
+  {% elif action_type == "phone" %}
+    <a
+      href="tel:{{ action_phone }}"
+      class="vf-chatbot-action-prompt__link"
+      {% if action_data %}data-vf-js-chatbot-action-data="{{ action_data }}"{% endif %}
+    >
+      {{ action_text }}
+    </a>
+  {% elif action_type == "form" %}
+    <a
+      href="#"
+      class="vf-chatbot-action-prompt__link"
+      {% if action_form %}data-vf-js-chatbot-action-form="{{ action_form }}"{% endif %}
+      {% if action_data %}data-vf-js-chatbot-action-data="{{ action_data }}"{% endif %}
+    >
+      {{ action_text }}
+    </a>
+  {% else %}
+    <a
+      href="#"
+      class="vf-chatbot-action-prompt__link"
+      {% if action_data %}data-vf-js-chatbot-action-data="{{ action_data }}"{% endif %}
+    >
+      {{ action_text }}
+    </a>
+  {% endif %}
+</div>

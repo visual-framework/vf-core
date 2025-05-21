@@ -32,7 +32,6 @@ class VFChatbotStandalone {
     this.suggestionBtns = this.container.querySelectorAll(
       "[data-vf-js-chatbot-standalone-suggestion]"
     );
-
     // API configuration - Mistral AI
     this.API_TOKEN = "";
     this.API_URL = "https://api.mistral.ai/v1/chat/completions";

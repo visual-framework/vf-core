@@ -1,0 +1,16 @@
+<div class="vf-chatbot" data-vf-js-chatbot>
+  <div class="vf-chatbot__container">
+    {% render '@vf-chatbot-fab', {
+      notification_count: notification_count | default(0),
+      fab_active: fab_active | default(false)
+    } %}
+
+    {% render '@vf-chatbot-modal', {
+      title: title | default("Chat with us"),
+      welcome_message: welcome_message | default("Hello! How can I help you today?"),
+      input_placeholder: input_placeholder | default("Type your message..."),
+      show_settings: show_settings | default(true),
+      ai_icon: "/assets/vf-chatbot/assets/ai-assistant-icon.svg"
+    } %}
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="vf-chatbot-prompt" data-vf-js-chatbot-prompt>
+  <div class="vf-chatbot-prompt__message vf-chatbot-prompt__message--user">
+    {{ message }}
+  </div>
+  
+  {% if loading %}
+  <div class="vf-chatbot-prompt__loading">
+    <span class="vf-chatbot-prompt__dot"></span>
+    <span class="vf-chatbot-prompt__dot"></span>
+    <span class="vf-chatbot-prompt__dot"></span>
+  </div>
+  {% endif %}
+
+  {% if response %}
+  <div class="vf-chatbot-prompt__message vf-chatbot-prompt__message--system">
+    {{ response | safe }}
+  </div>
+  {% endif %}
+</div>
