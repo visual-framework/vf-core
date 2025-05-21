@@ -1,0 +1,121 @@
+<!-- Standalone Chatbot -->
+<div class="vf-chatbot-standalone" data-vf-js-chatbot-standalone>
+  <div class="vf-chatbot-standalone__container">
+    <div class="vf-chatbot-standalone__header">
+      <div class="vf-chatbot-standalone__header-left">
+        <h2 class="vf-chatbot-standalone__title">
+          <!-- Try both relative and absolute paths -->
+          <img src="../../assets/vf-chatbot/assets/ai-assistant-icon.svg" alt="AI Assistant">
+          {{ title | default("AI assistant") }}
+        </h2>
+      </div>
+    </div>
+
+    <div class="vf-chatbot-standalone__content | vf-u-fullbleed vf-u-background-color-ui--grey--light">
+
+      <!-- Chat interface -->
+      <div class="vf-chatbot-standalone__chat" data-vf-js-chatbot-standalone-chat>
+        <!-- Messages container -->
+        <div class="vf-chatbot-standalone__messages" data-vf-js-chatbot-standalone-messages>
+          <!-- Initial welcome message from the assistant -->
+          {% if welcome_message %}
+            <!-- Welcome screen -->
+            <div class="vf-chatbot-standalone__welcome" data-vf-js-chatbot-standalone-welcome>
+              <div class="vf-chatbot-standalone__welcome-content">
+                <div class="vf-chatbot-standalone__welcome-logo">
+                  <img src="/assets/vf-chatbot/assets/ai-assistant-icon.svg" alt="AI Assistant">
+                </div>
+                <h2 class="vf-chatbot-standalone__welcome-title">{{ welcome_title | default('AI assistant') }}</h2>
+                <p class="vf-chatbot-standalone__welcome-description">
+                  {{ welcome_description | default("Welcome! I'm here to help you discover bioinformatics training and resources.") }}
+                </p>
+
+                <div class="vf-chatbot-standalone__welcome-suggestions">
+                  <p class="vf-chatbot-standalone__welcome-suggestions-title">Try asking me:</p>
+                  <div class="vf-chatbot-standalone__welcome-suggestions-grid">
+                    {% for suggestion in welcome_suggestions %}
+                      {% if loop.index == welcome_suggestions.length and welcome_suggestions.length > 2 %}
+                        {% render '@vf-chatbot-action-prompt', {
+                    action_text: suggestion,
+                    action_data: suggestion,
+                    modifier_class: "vf-chatbot-action-prompt--full-width",
+                    data_attribute: "data-vf-js-chatbot-standalone-suggestion=" + suggestion,
+                    data_vf_js_chatbot_action_prompt: true
+                  } %}
+                      {% else %}
+                        {% render '@vf-chatbot-action-prompt', {
+                    action_text: suggestion,
+                    action_data: suggestion,
+                    data_attribute: "data-vf-js-chatbot-standalone-suggestion=" + suggestion,
+                    data_vf_js_chatbot_action_prompt: true
+                  } %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {# <div class="vf-chatbot-message vf-chatbot-message--assistant">
+              <div class="vf-chatbot-message__avatar">
+                <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/ai-assistant-icon.svg') }}" alt="AI Assistant">
+              </div>
+              <div class="vf-chatbot-message__content">
+                {{ welcome_message | default('Hello! How can I help you today?') }}
+              </div>
+            </div> #}
+          {% endif %}
+          <!-- Messages will be added here dynamically -->
+        </div>
+
+        <!-- Loading indicator -->
+        <div class="vf-chatbot-standalone__loading" data-vf-js-chatbot-standalone-loading style="display: none;">
+          <div class="vf-chatbot-standalone__loading-dots">
+            <div class="vf-chatbot-standalone__loading-dot"></div>
+            <div class="vf-chatbot-standalone__loading-dot"></div>
+            <div class="vf-chatbot-standalone__loading-dot"></div>
+          </div>
+        </div>
+
+        <!-- Input area -->
+        {# <div class="vf-chatbot-standalone__welcome-input-container">
+          <div class="vf-chatbot-standalone__welcome-input-wrapper">
+            <input
+                type="text"
+                class="vf-chatbot-standalone__welcome-input"
+                placeholder="{{ input_placeholder | default('Ask me about Bioinformatics trainings...') }}"
+                data-vf-js-chatbot-standalone-welcome-input
+              >
+            <button
+                class="vf-chatbot-standalone__welcome-send-button"
+                aria-label="Send message"
+                data-vf-js-chatbot-standalone-welcome-send
+              >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" fill="white"/>
+              </svg>
+            </button>
+          </div>
+        </div> #}
+        <div class="vf-chatbot-standalone__input-container">
+          <div class="vf-chatbot-standalone__input-wrapper">
+            <textarea
+              class="vf-chatbot-standalone__input"
+              placeholder="{{ input_placeholder | default('Ask me about Bioinformatics trainings...') }}"
+              rows="1"
+              data-vf-js-chatbot-standalone-input
+            ></textarea>
+            <button
+              class="vf-chatbot-standalone__send-button"
+              aria-label="Send message"
+              data-vf-js-chatbot-standalone-send
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" fill="white"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
