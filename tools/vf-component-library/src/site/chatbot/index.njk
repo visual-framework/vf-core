@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Assistant | Chatbot</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/scripts/scripts.js"></script>
+  <!-- Add a specific script for the standalone chatbot page -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log("Chatbot page loaded, ensuring standalone chatbot is initialized");
+      // Single function to initialize all chatbot components
+      const initChatbot = () => {
+        if (typeof window.initVFChatbotStandalone === "function") {
+          window.initVFChatbotStandalone();
+
+          // Initialize supporting components only once
+          ["initVFChatbotActionPrompt", "initVFChatbotWelcome", "initVFChatbotPrompt"].forEach(fn => {
+            if (typeof window[fn] === "function") window[fn]();
+          });
+
+          return true;
+        }
+        return false;
+      };
+
+      // Try to initialize immediately
+      if (!initChatbot()) {
+        // If not successful, try once after a short delay
+        console.log("Waiting for chatbot scripts to load...");
+        setTimeout(initChatbot, 500);
+      }
+    });
+  </script>
+</head>
+<body>
+  {% render '@vf-chatbot-standalone', {
+    title: "AI Assistant",
+    welcome_title: "AI assistant",
+    welcome_description: "Welcome! I'm here to help you discover bioinformatics training and resources.",
+    welcome_message: "Hello! How can I help you today?",
+    input_placeholder: "Ask me about Bioinformatics trainings...",
+    show_suggestions: true,
+    show_close_button: true,
+    ai_icon: "../../assets/vf-chatbot/assets/ai-assistant-icon.svg",
+    welcome_logo: "../../assets/vf-chatbot/assets/ai-assistant-icon.svg",
+    welcome_suggestions: [
+      'Find workshops near research institutions',
+      'Recommend bioinformatics resources',
+      'What prerequisites do I need for advanced advanced courses?'
+    ]
+  } %}
+
+  <!-- Add a data attribute to indicate this is the standalone page -->
+  <div data-vf-js-standalone-chatbot-page style="display:none;"></div>
+</body>
+</html>
