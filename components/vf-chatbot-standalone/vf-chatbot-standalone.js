@@ -32,11 +32,9 @@ class VFChatbotStandalone {
     this.suggestionBtns = this.container.querySelectorAll(
       "[data-vf-js-chatbot-standalone-suggestion]"
     );
-
-    // API configuration - reuse from modal component
-    this.API_TOKEN = "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"; // Replace with your token
-    this.API_URL =
-      "https://huggingface.co/facebook/blenderbot-1B-distill";
+    // API configuration - Mistral AI
+    this.API_TOKEN = "";
+    this.API_URL = "https://api.mistral.ai/v1/chat/completions";
 
     // State
     this.hasInteracted = false;
@@ -207,9 +205,15 @@ class VFChatbotStandalone {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.API_TOKEN}`
+          "Authorization": `Bearer ${this.API_TOKEN}`
         },
-        body: JSON.stringify({ inputs: text })
+        body: JSON.stringify({
+          model: "mistral-tiny", // or another available model
+          messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: text }
+          ]
+        })
       })
         .then(response => {
           if (!response.ok) {
@@ -218,8 +222,9 @@ class VFChatbotStandalone {
           return response.json();
         })
         .then(data => {
-          if (data && data.generated_text) {
-            resolve(data.generated_text);
+          // Mistral returns: { choices: [{ message: { content: "..." } }] }
+          if (data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
+            resolve(data.choices[0].message.content);
           } else {
             reject(new Error("Invalid API response"));
           }

@@ -2,7 +2,7 @@ export class LLMApiHandler {
   constructor() {
     // You'll need to sign up at Hugging Face and get your API token
     // https://huggingface.co/settings/tokens
-    this.API_TOKEN = "0R6jmdaEMeRFCsUBnrbxhbSQyYhe03Z6"; //"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";
+    this.API_TOKEN = "";
     this.API_URL = "https://api.mistral.ai/v1/chat/completions";
       // "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill";
   }

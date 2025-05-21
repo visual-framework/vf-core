@@ -5,7 +5,7 @@ class VFChatbotModal {
     console.log("Initializing chatbot modal..."); // Debug log
 
     // API configuration
-    this.API_TOKEN = "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"; // Replace with your token
+    this.API_TOKEN = "";
     this.API_URL =
       "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill";
 
