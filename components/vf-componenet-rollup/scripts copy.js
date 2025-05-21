@@ -73,6 +73,9 @@ vfMegaMenu();
 import { vfTable } from 'vf-table/vf-table';
 vfTable();
 
+// No default invokation
+
+// Import chatbot components
 import { initVFChatbot } from 'vf-chatbot/vf-chatbot.js';
 import { initVFChatbotModal } from 'vf-chatbot-modal/vf-chatbot-modal.js';
 import { initVFChatbotStandalone } from 'vf-chatbot-standalone/vf-chatbot-standalone.js';
@@ -82,21 +85,31 @@ import { initVFChatbotWelcome } from 'vf-chatbot-welcome/vf-chatbot-welcome.js';
 import { initVFChatbotPrompt } from 'vf-chatbot-prompt/vf-chatbot-prompt.js';
 
 // Initialize all chatbot components when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  const chatbotFab = document.querySelector(".vf-chatbot-fab");
-  if (chatbotFab) {
-    chatbotFab.addEventListener("click", () => {
-      console.log("vf-chatbot-fab clicked");
-      initVFChatbot();
-      initVFChatbotModal();
-      initVFChatbotActionPrompt();
-      initVFChatbotFab();
-      initVFChatbotWelcome();
-      initVFChatbotPrompt();
-    });
-  } else {
-    console.error("vf-chatbot-fab button not found in the DOM.");
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Initializing chatbot components...');
+
+  // Initialize all chatbot components
+  initVFChatbot();
+  initVFChatbotModal();
+  initVFChatbotActionPrompt();
+  initVFChatbotFab();
+  initVFChatbotWelcome();
+  initVFChatbotPrompt();
+
+  // Handle standalone chatbot initialization with error handling
+  try {
+    if (typeof window.initVFChatbotStandalone === 'function') {
+      window.initVFChatbotStandalone();
+    } else if (typeof initVFChatbotStandalone === 'function') {
+      initVFChatbotStandalone();
+    }
+  } catch (error) {
+    console.warn('Could not initialize standalone chatbot:', error.message);
   }
 });
 
-// No default invokation
+// Commented out components
+// import { initVFChatbotHeader } from 'vf-chatbot-header/vf-chatbot-header.js';
+// import { initVFChatbotHeaderDropdown } from 'vf-chatbot-header-dropdown/vf-chatbot-header-dropdown.js';
+// import { initVFChatbotDialog } from 'vf-chatbot-dialog/vf-chatbot-dialog.js';
+// import { initVFChatbotCard } from 'vf-chatbot-card/vf-chatbot-card.js';

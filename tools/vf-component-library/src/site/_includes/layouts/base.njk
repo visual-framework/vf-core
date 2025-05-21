@@ -359,5 +359,12 @@
       <a class="vf-link" href="{{ "https://github.com/visual-framework/vf-core/blob/develop/tools/vf-component-library/" + page.inputPath | url }}">Propose a change</a> or <a href="{{ "/guidance/discussing-the-vf" | url }}" class="vf-link">discuss it</a>.
     </p>
     {% include "footer.njk" %}
+    {% render '@vf-chatbot', {
+      title: "AI Assistant",
+      welcome_message: "Welcome! How can I help you today?",
+      notification_count: 0,
+      fab_active: false,
+      show_settings: true
+    } %}
   </body>
 </html>

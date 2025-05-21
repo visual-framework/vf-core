@@ -1,0 +1,59 @@
+.vf-chatbot-action-prompt {
+  display: inline-block;
+  margin: 8px 8px 8px 0;
+
+  &__link {
+    display: inline-block;
+    padding: 12px 16px;
+    border: 1px solid #4b7fd1; // Thin blue border
+    color: #4b7fd1; // Blue text
+    background-color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 400; // Regular font weight
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none; // No underline
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: auto; // Width based on content
+    box-sizing: border-box;
+    white-space: nowrap; // Prevent text wrapping
+
+    &:hover, &:focus {
+      background-color: rgba(75, 127, 209, 0.1); // Light blue background on hover
+      color: #4b7fd1; // Keep text blue on hover
+      text-decoration: none; // No underline on hover
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  // Variants
+  &--small {
+    .vf-chatbot-action-prompt__link {
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+  }
+
+  &--large {
+    .vf-chatbot-action-prompt__link {
+      padding: 16px 24px;
+      font-size: 18px;
+    }
+  }
+
+  &--full-width {
+    display: block;
+    width: 100%;
+
+    .vf-chatbot-action-prompt__link {
+      display: block;
+      width: 100%;
+      white-space: normal; // Allow text wrapping for full-width
+    }
+  }
+}

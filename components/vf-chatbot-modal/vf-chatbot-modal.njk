@@ -1,0 +1,91 @@
+<!-- Chatbot modal -->
+<div class="vf-chatbot-modal" data-vf-js-chatbot-modal>
+  <div class="vf-chatbot-modal__header">
+    <div class="vf-chatbot-modal__header-left">
+      <h2 class="vf-chatbot-modal__title">
+        <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/ai-assistant-icon.svg') }}" alt="AI Assistant">
+        {{ title | default("AI Assistant") }}
+      </h2>
+    </div>
+    <div class="vf-chatbot-modal__controls">
+      <button
+        class="vf-chatbot-modal__control"
+        data-vf-js-chatbot-minimize
+        aria-label="Minimize chat"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M20 14H4v-2h16v2z"/>
+        </svg>
+      </button>
+      <button
+        class="vf-chatbot-modal__control"
+        data-vf-js-chatbot-close
+        aria-label="Close chat"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="vf-chatbot-modal__content">
+    <!-- Welcome screen -->
+    {% render '@vf-chatbot-welcome', {
+      welcome_title: welcome_title | default('AI Assistant'),
+      welcome_description: welcome_description | default('I can help you find information about our research, services, and more. What would you like to know?'),
+      welcome_features: welcome_features | default([
+        'Finding research publications',
+        'Learning about our services',
+        'Getting information about events',
+        'Understanding scientific concepts'
+      ]),
+      welcome_suggestions: welcome_suggestions | default([
+        'What is Metabolomics?',
+        'Tell me about your training courses',
+        'How can I access your data resources?',
+        'What research areas do you focus on?'
+      ])
+    } %}
+
+    <!-- Chat messages -->
+    <div class="vf-chatbot-modal__messages" data-vf-js-chatbot-messages>
+      {% if welcome_message %}
+      <div class="vf-chatbot-message vf-chatbot-message--assistant">
+        <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/ai-assistant-icon.svg') }}" alt="AI Assistant" class="vf-chatbot-message__avatar">
+        <div class="vf-chatbot-message__content">
+          {{ welcome_message | safe }}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="vf-chatbot-modal__input-area">
+      <div class="vf-chatbot-modal__input-wrapper">
+        <textarea
+          class="vf-chatbot-modal__input"
+          placeholder="{{ input_placeholder | default('Type your message...') }}"
+          rows="1"
+          data-vf-js-chatbot-input
+        ></textarea>
+        <button
+          class="vf-chatbot-modal__send-button"
+          aria-label="Send message"
+          data-vf-js-chatbot-send
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {% if show_suggestions %}
+    <div class="vf-chatbot-suggestions">
+      <button class="vf-chatbot-suggestions__input" data-vf-js-chatbot-suggestion="Ask me about Bioinformatics trainings...">
+        Ask me about Bioinformatics trainings...
+      </button>
+    </div>
+    {% endif %}
+  </div>
+</div>
