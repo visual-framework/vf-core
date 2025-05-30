@@ -1,0 +1,155 @@
+.vf-chatbot-feedback {
+  margin-top: 1rem;
+  font-family: inherit;
+
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__thumb {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+      color: #000;
+      transform: scale(1.1);
+    }
+
+    &--solid {
+      color: #000;
+
+      svg {
+        fill: currentColor;
+      }
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+  }
+
+  &__form {
+    margin-top: 1rem;
+
+    &-content {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      padding: 1rem;
+    }
+  }
+
+  &__title {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin: 0 0 1rem 0;
+  }
+
+  &__options {
+    display: inline-flex;
+    gap: 0.5rem;
+    flex-direction: row;
+    margin-bottom: 1rem;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__option {
+    @extend .vf-chatbot-action-prompt;
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background-color: #ffffff;
+    color: #3B6FB6;
+    border-radius: 0px;
+    border: 1px solid #224B9A;
+
+    &--selected {
+      background: #D1E3F6;
+    }
+  }
+
+  &__comment {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    background: #ffffff;
+
+    // &::placeholder {
+    //   color: #666;
+    // }
+
+    // &:focus {
+    //   outline: none;
+    //   border-color: #007c82;
+    // }
+  }
+
+  &__submit {
+    padding: 0.75rem;
+    background: #FFFFFF;
+    color: #3B6FB6;
+    border: 2px solid #3B6FB6;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    // &:hover {
+    //   background: #005e62;
+    // }
+  }
+
+  .vf-banner {
+    position: relative;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    &__close {
+      background: none;
+      border: none;
+      padding: 0.25rem;
+      cursor: pointer;
+      color: currentColor;
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      svg {
+        display: block;
+      }
+    }
+
+    &--success {
+      background-color: #ffffff;
+      color: #1A1C1A;
+    }
+
+    &--error {
+      background-color: #ffffff;
+      color: #1A1C1A;
+    }
+  }
+}

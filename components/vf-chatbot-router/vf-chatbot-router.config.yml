@@ -1,0 +1,43 @@
+title: Chatbot Router Component
+label: Chatbot Router
+preview: '@preview--components'
+status: alpha
+context:
+  component-type: element
+  # Component configuration
+  chatbotRoutes:
+    multiselect: false  # Set to true for multi-selection mode
+    maxMultiSelect: 3   # Maximum items that can be selected in multiselect mode
+    showSearch: true    # Show search box if items > 10
+    routes:
+      - id: general
+        title: General Assistant
+        description: General purpose AI assistant for your queries
+        selected: true
+      - id: code
+        title: Code Assistant
+        description: Specialized in helping with code and development tasks
+      - id: science
+        title: Science Assistant
+        description: Expert in scientific and research-related queries
+      - id: data
+        title: Data Analysis Assistant
+        description: Specialized in data analysis and visualization
+      - id: writing
+        title: Writing Assistant
+        description: Helps with writing and content creation
+variants:
+  - name: multiselect
+    context:
+      chatbotRoutes:
+        multiselect: true
+        routes:
+          - id: general
+            title: General Assistant
+            description: General purpose AI assistant for your queries
+          - id: code
+            title: Code Assistant
+            description: Specialized in helping with code and development tasks
+          - id: science
+            title: Science Assistant
+            description: Expert in scientific and research-related queries
