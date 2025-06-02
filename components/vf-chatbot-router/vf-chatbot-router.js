@@ -25,30 +25,35 @@ export class VFChatbotRouter {
     this.dropdownEl = this.el.querySelector("[data-vf-js-router-dropdown]");
     this.searchEl = this.el.querySelector("[data-vf-js-router-search]");
     this.clearEl = this.el.querySelector("[data-vf-js-router-clear]");
-    this.selectedTextEl = this.el.querySelector(".vf-chatbot-router__selected");
     this.listItems = this.el.querySelectorAll("[data-vf-js-router-item]");
 
     // Initialize dropdown as closed
     if (this.dropdownEl) {
-      this.dropdownEl.style.display = 'none';
+      this.dropdownEl.style.display = "none";
     }
 
     // Bind events
     this.bindEvents();
 
-    // Initialize selected items
+    // Initialize selected items and update display
+    let initSelection = false;
     this.listItems.forEach(item => {
       if (item.classList.contains("vf-chatbot-router__item--selected")) {
         this.selectedItems.add(item.getAttribute("data-route-id"));
-        this.updateSelectionDisplay();
+        initSelection = true;
       }
     });
+
+    // Update display after initial selection
+    if (initSelection) {
+      this.updateSelectionDisplay();
+    }
   }
 
   bindEvents() {
     // Toggle dropdown
     if (this.titleEl) {
-      this.titleEl.addEventListener("click", (e) => {
+      this.titleEl.addEventListener("click", e => {
         e.stopPropagation();
         this.toggleDropdown();
       });
@@ -56,7 +61,7 @@ export class VFChatbotRouter {
 
     // Search functionality
     if (this.searchEl) {
-      this.searchEl.addEventListener("input", (e) => {
+      this.searchEl.addEventListener("input", e => {
         e.stopPropagation();
         this.handleSearch(e.target.value);
       });
@@ -64,7 +69,7 @@ export class VFChatbotRouter {
 
     // Clear all selections
     if (this.clearEl) {
-      this.clearEl.addEventListener("click", (e) => {
+      this.clearEl.addEventListener("click", e => {
         e.preventDefault();
         e.stopPropagation();
         this.clearAllSelections();
@@ -73,27 +78,27 @@ export class VFChatbotRouter {
 
     // List item selection
     this.listItems.forEach(item => {
-      item.addEventListener("click", (e) => {
+      item.addEventListener("click", e => {
         e.stopPropagation();
         this.handleItemSelection(item);
       });
     });
 
     // Close dropdown when clicking outside
-    document.addEventListener("click", (e) => {
+    document.addEventListener("click", e => {
       if (!this.el.contains(e.target)) {
         this.closeDropdown();
       }
     });
 
     // Prevent dropdown from closing when clicking inside
-    this.dropdownEl?.addEventListener("click", (e) => {
+    this.dropdownEl?.addEventListener("click", e => {
       e.stopPropagation();
     });
   }
 
   toggleDropdown() {
-    const isExpanded = this.dropdownEl.style.display === 'block';
+    const isExpanded = this.dropdownEl.style.display === "block";
     if (isExpanded) {
       this.closeDropdown();
     } else {
@@ -102,12 +107,12 @@ export class VFChatbotRouter {
   }
 
   openDropdown() {
-    this.dropdownEl.style.display = 'block';
+    this.dropdownEl.style.display = "block";
     this.titleEl.classList.add("vf-chatbot-router__title--expanded");
   }
 
   closeDropdown() {
-    this.dropdownEl.style.display = 'none';
+    this.dropdownEl.style.display = "none";
     this.titleEl.classList.remove("vf-chatbot-router__title--expanded");
   }
 
@@ -145,6 +150,14 @@ export class VFChatbotRouter {
       this.selectedItems.clear();
       this.selectedItems.add(itemId);
       item.classList.add("vf-chatbot-router__item--selected");
+
+      // Update title text immediately
+      const title = item.querySelector(".vf-chatbot-router__item-title").textContent;
+      const titleText = this.el.querySelector(".vf-chatbot-router__title-text");
+      if (titleText) {
+        titleText.textContent = title;
+      }
+
       this.closeDropdown();
     }
 
@@ -172,34 +185,27 @@ export class VFChatbotRouter {
   }
 
   updateSelectionDisplay() {
-    if (!this.selectedTextEl) return;
+    const titleText = this.el.querySelector(".vf-chatbot-router__title-text");
+    if (!titleText) return;
 
     if (this.selectedItems.size === 0) {
-      this.selectedTextEl.textContent = "";
-      // Reset title to default in single select mode
-      if (!this.isMultiselect) {
-        const titleText = this.el.querySelector('.vf-chatbot-router__title-text');
-        if (titleText) {
-          titleText.textContent = "AI Assistant";
-        }
-      }
+      titleText.textContent = "Select services";
       return;
     }
 
-    if (this.isMultiselect) {
-      this.selectedTextEl.textContent = `${this.selectedItems.size} selected`;
-    } else {
+    if (!this.isMultiselect) {
       const selectedId = Array.from(this.selectedItems)[0];
-      const selectedItem = this.el.querySelector(`[data-route-id="${selectedId}"]`);
+      const selectedItem = this.el.querySelector(
+        `[data-route-id="${selectedId}"]`
+      );
       if (selectedItem) {
-        const title = selectedItem.querySelector('.vf-chatbot-router__item-title').textContent;
-        // For single select, update both the selection text and the title
-        const titleText = this.el.querySelector('.vf-chatbot-router__title-text');
-        if (titleText) {
-          titleText.textContent = title;
-        }
-        this.selectedTextEl.textContent = "";
+        const title = selectedItem.querySelector(
+          ".vf-chatbot-router__item-title"
+        ).textContent;
+        titleText.textContent = title;
       }
+    } else {
+      titleText.textContent = `${this.selectedItems.size} selected`;
     }
   }
 

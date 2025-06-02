@@ -1,7 +1,6 @@
 // vf-chatbot-standalone.js
 import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
-import { initVFChatbotRouter } from "../vf-chatbot-router/vf-chatbot-router.js";
 
 class VFChatbotStandalone {
   constructor(element) {
@@ -43,44 +42,17 @@ class VFChatbotStandalone {
       ".vf-button--dismiss"
     );
 
-    // Router element
-    this.routerEl = this.container.querySelector("[data-vf-js-chatbot-router]");
-
     // API configuration - Mistral AI
     this.API_TOKEN = "";
     this.API_URL = "https://api.mistral.ai/v1/chat/completions";
 
     // State
     this.hasInteracted = false;
-    this.currentAssistant = "general"; // Default assistant
 
-    // Initialize the UI
-    this.init();
-  }
-
-  init() {
-    // Initialize router if present
-    if (this.routerEl) {
-      const router = initVFChatbotRouter(this.routerEl);
-      this.routerEl.addEventListener('routeselection', (e) => {
-        this.handleRouteSelection(e.detail);
-      });
-    }
-
-    // Bind other events
     this.bindEvents();
     this.initAutoResize();
 
     console.log("Standalone chatbot initialized successfully"); // Debug log
-  }
-
-  handleRouteSelection(detail) {
-    const { selectedItems } = detail;
-    if (selectedItems && selectedItems.length > 0) {
-      this.currentAssistant = selectedItems[0];
-      // You can add logic here to change the assistant's behavior based on selection
-      console.log(`Switched to ${this.currentAssistant} assistant`);
-    }
   }
 
   bindEvents() {
@@ -482,15 +454,19 @@ function initVFChatbotStandalone() {
 }
 
 // Make initialization function available globally
+const global = (
+  typeof globalThis !== "undefined" ? globalThis :
+    typeof window !== "undefined" ? window :
+      typeof global !== "undefined" ? global :
+        typeof self !== "undefined" ? self : {}
+);
 if (typeof window !== "undefined") {
   window.VFChatbotStandalone = VFChatbotStandalone;
   window.initVFChatbotStandalone = initVFChatbotStandalone;
 
-  // Also make it available as a global variable without window prefix
-  if (typeof globalThis !== "undefined") {
-    globalThis.VFChatbotStandalone = VFChatbotStandalone;
-    globalThis.initVFChatbotStandalone = initVFChatbotStandalone;
-  }
+  // Also make it available as a global variable
+  global.VFChatbotStandalone = VFChatbotStandalone;
+  global.initVFChatbotStandalone = initVFChatbotStandalone;
 
   console.log("Exposed initVFChatbotStandalone to global scope");
 }

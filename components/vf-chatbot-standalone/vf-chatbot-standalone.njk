@@ -1,88 +1,218 @@
+{% set llm_selector = {
+          context: {
+            chatbotRoutes:
+              {
+                multiSelect: false,
+                showSearch: true,
+                showSearchThreshold: 5,
+                routes: [
+                  {
+                    id: "gpt4-turbo",
+                    title: "GPT-4 Turbo",
+                    description: "Advanced language model with broader context window and improved capabilities",
+                    selected: true
+                  },
+                  {
+                    id: "claude3-opus",
+                    title: "Claude 3 Opus",
+                    description: "Anthropic's most powerful model with enhanced reasoning and analysis capabilities"
+                  },
+                  {
+                    id: "gemini-ultra",
+                    title: "Gemini Ultra",
+                    description: "Google's most capable model for complex tasks and multitask reasoning"
+                  },
+                  {
+                    id: "llama3",
+                    title: "LLaMA 3",
+                    description: "Meta's open foundation model with strong performance across various tasks"
+                  },
+                  {
+                    id: "mixtral",
+                    title: "Mixtral 8x7B",
+                    description: "Mistral AI's mixture-of-experts model combining multiple specialized networks"
+                  },
+                  {
+                    id: "palm3",
+                    title: "PaLM 3",
+                    description: "Google's latest PaLM model optimized for reasoning and multilingual tasks"
+                  },
+                  {
+                    id: "gpt4-vision",
+                    title: "GPT-4 Vision",
+                    description: "Specialized version of GPT-4 for multimodal tasks including image understanding"
+                  },
+                  {
+                    id: "claude3-sonnet",
+                    title: "Claude 3 Sonnet",
+                    description: "Balanced model offering strong performance with improved efficiency"
+                  }
+                ]
+              }
+            }
+          }
+%}
+{% set services_single_selector = {
+          context: {
+            chatbotRoutes: {
+                multiSelect: false,
+                showSearch: true,
+                showSearchThreshold: 5,
+                routes: [
+                  {
+                    id: "ensembl",
+                    title: "Ensembl",
+                    description: "Genome browser for vertebrate genomes with comparative genomics tools",
+                    selected: true
+                  },
+                  {
+                    id: "uniprot",
+                    title: "UniProt",
+                    description: "Comprehensive resource for protein sequence and annotation data"
+                  },
+                  {
+                    id: "pfam",
+                    title: "Pfam",
+                    description: "Database of protein families and domains with HMM models"
+                  },
+                  {
+                    id: "interpro",
+                    title: "InterPro",
+                    description: "Integrated database of protein families, domains and functional sites"
+                  },
+                  {
+                    id: "chembl",
+                    title: "ChEMBL",
+                    description: "Database of bioactive drug-like small molecules and their targets"
+                  },
+                  {
+                    id: "pdbe",
+                    title: "PDBe",
+                    description: "European resource for 3D biological macromolecular structure data"
+                  },
+                  {
+                    id: "expression-atlas",
+                    title: "Expression Atlas",
+                    description: "Gene expression data across species and biological conditions"
+                  },
+                  {
+                    id: "pride",
+                    title: "PRIDE",
+                    description: "Repository of mass spectrometry-based proteomics data"
+                  },
+                  {
+                    id: "arrayexpress",
+                    title: "ArrayExpress",
+                    description: "Archive of functional genomics experiments"
+                  },
+                  {
+                    id: "intact",
+                    title: "IntAct",
+                    description: "Molecular interaction database derived from literature curation"
+                  },
+                  {
+                    id: "reactome",
+                    title: "Reactome",
+                    description: "Curated database of biological pathways and reactions"
+                  },
+                  {
+                    id: "metabolights",
+                    title: "MetaboLights",
+                    description: "Database for metabolomics experiments and derived information"
+                  }
+                ]
+              }
+            }
+          }
+%}
+{% set services_multi_selector = {
+          context: {
+            chatbotRoutes:
+              {
+                multiSelect: true,
+                maxMultiSelect: 3,
+                showSearch: true,
+                showSearchThreshold: 5,
+                routes: [
+                  {
+                    id: "ensembl",
+                    title: "Ensembl",
+                    description: "Genome browser for vertebrate genomes with comparative genomics tools",
+                    "selected": true
+                  },
+                  {
+                    id: "uniprot",
+                    title: "UniProt",
+                    description: "Comprehensive resource for protein sequence and annotation data"
+                  },
+                  {
+                    id: "pfam",
+                    title: "Pfam",
+                    description: "Database of protein families and domains with HMM models"
+                  },
+                  {
+                    id: "interpro",
+                    title: "InterPro",
+                    description: "Integrated database of protein families, domains and functional sites"
+                  },
+                  {
+                    id: "chembl",
+                    title: "ChEMBL",
+                    description: "Database of bioactive drug-like small molecules and their targets"
+                  },
+                  {
+                    id: "pdbe",
+                    title: "PDBe",
+                    description: "European resource for 3D biological macromolecular structure data"
+                  },
+                  {
+                    id: "expression-atlas",
+                    title: "Expression Atlas",
+                    description: "Gene expression data across species and biological conditions"
+                  },
+                  {
+                    id: "pride",
+                    title: "PRIDE",
+                    description: "Repository of mass spectrometry-based proteomics data"
+                  },
+                  {
+                    id: "arrayexpress",
+                    title: "ArrayExpress",
+                    description: "Archive of functional genomics experiments"
+                  },
+                  {
+                    id: "intact",
+                    title: "IntAct",
+                    description: "Molecular interaction database derived from literature curation"
+                  },
+                  {
+                    id: "reactome",
+                    title: "Reactome",
+                    description: "Curated database of biological pathways and reactions"
+                  },
+                  {
+                    id: "metabolights",
+                    title: "MetaboLights",
+                    description: "Database for metabolomics experiments and derived information"
+                  }
+                ]
+              }
+            }
+          }
+%}
+{% set routerContext = llm_selector %}
+{# {% set routerContext = services_single_selector %}
+{% set routerContext = services_multi_selector %} #}
 <!-- Standalone Chatbot -->
 <div class="vf-chatbot-standalone" data-vf-js-chatbot-standalone>
   <div class="vf-chatbot-standalone__container">
     <div class="vf-chatbot-standalone__header">
       <div class="vf-chatbot-standalone__header-left">
-        <h2 class="vf-chatbot-standalone__title">
-          <!-- Try both relative and absolute paths -->
-          <img src="../../assets/vf-chatbot/assets/ai-assistant-icon.svg" alt="AI Assistant">
-          {% set isMultiselect = true %}
-          {% set routerContext = {
-            context: {
-              chatbotRoutes: {
-                multiselect: isMultiselect,
-                showSearch: true,
-                routes: [
-                  {
-                    id: "general",
-                    title: "General Assistant",
-                    description: "General purpose AI assistant",
-                    selected: true
-                  },
-                  {
-                    id: "code",
-                    title: "Code Assistant",
-                    description: "Specialized in code and development"
-                  },
-                  {
-                    id: "science",
-                    title: "Science Assistant",
-                    description: "Expert in scientific queries"
-                  },
-                  {
-                    id: "general",
-                    title: "General Assistant",
-                    description: "General purpose AI assistant",
-                    selected: true
-                  },
-                  {
-                    id: "code",
-                    title: "Code Assistant",
-                    description: "Specialized in code and development"
-                  },
-                  {
-                    id: "science",
-                    title: "Science Assistant",
-                    description: "Expert in scientific queries"
-                  },
-                  {
-                    id: "general",
-                    title: "General Assistant",
-                    description: "General purpose AI assistant",
-                    selected: true
-                  },
-                  {
-                    id: "code",
-                    title: "Code Assistant",
-                    description: "Specialized in code and development"
-                  },
-                  {
-                    id: "science",
-                    title: "Science Assistant",
-                    description: "Expert in scientific queries"
-                  },
-                  {
-                    id: "general",
-                    title: "General Assistant",
-                    description: "General purpose AI assistant",
-                    selected: true
-                  },
-                  {
-                    id: "code",
-                    title: "Code Assistant",
-                    description: "Specialized in code and development"
-                  },
-                  {
-                    id: "science",
-                    title: "Science Assistant",
-                    description: "Expert in scientific queries"
-                  }
-                ]
-              }
-            }
-          } %}
-          {% render '@vf-chatbot-router', routerContext %}
-        </h2>
+        {# <div class="vf-chatbot-standalone__title"> #}
+        <!-- Try both relative and absolute paths -->
+        {# <img src="../../assets/vf-chatbot/assets/ai-assistant-icon.svg" alt="AI Assistant"> #}
+        {% render "@vf-chatbot-router", routerContext %}
+        {# </div> #}
       </div>
     </div>
 
@@ -90,45 +220,45 @@
 
       <!-- Chat interface -->
       <div class="vf-chatbot-standalone__chat" data-vf-js-chatbot-standalone-chat>
-          <!-- Initial welcome message from the assistant -->
-          {% if welcome_message %}
-            <!-- Welcome screen -->
-            <div class="vf-chatbot-standalone__welcome" data-vf-js-chatbot-standalone-welcome>
-              <div class="vf-chatbot-standalone__welcome-content">
-                <div class="vf-chatbot-standalone__welcome-logo">
-                  <img src="/assets/vf-chatbot/assets/ai-assistant-icon.svg" alt="AI Assistant">
-                </div>
-                <h2 class="vf-chatbot-standalone__welcome-title">{{ welcome_title | default('AI assistant') }}</h2>
-                <p class="vf-chatbot-standalone__welcome-description">
-                  {{ welcome_description | default("Welcome! I'm here to help you discover bioinformatics training and resources.") }}
-                </p>
+        <!-- Initial welcome message from the assistant -->
+        {% if welcome_message %}
+          <!-- Welcome screen -->
+          <div class="vf-chatbot-standalone__welcome" data-vf-js-chatbot-standalone-welcome>
+            <div class="vf-chatbot-standalone__welcome-content">
+              <div class="vf-chatbot-standalone__welcome-logo">
+                <img src="/assets/vf-chatbot/assets/ai-assistant-icon.svg" alt="AI Assistant">
+              </div>
+              <h2 class="vf-chatbot-standalone__welcome-title">{{ welcome_title | default('AI assistant') }}</h2>
+              <p class="vf-chatbot-standalone__welcome-description">
+                {{ welcome_description | default("Welcome! I'm here to help you discover bioinformatics training and resources.") }}
+              </p>
 
-                <div class="vf-chatbot-standalone__welcome-suggestions">
-                  <p class="vf-chatbot-standalone__welcome-suggestions-title">Try asking me:</p>
-                  <div class="vf-chatbot-standalone__welcome-suggestions-grid">
-                    {% for suggestion in welcome_suggestions %}
-                      {% if loop.index == welcome_suggestions.length and welcome_suggestions.length > 2 %}
-                        {% render '@vf-chatbot-action-prompt', {
+              <div class="vf-chatbot-standalone__welcome-suggestions">
+                <p class="vf-chatbot-standalone__welcome-suggestions-title">Try asking me:</p>
+                <div class="vf-chatbot-standalone__welcome-suggestions-grid">
+                  {% for suggestion in welcome_suggestions %}
+                    {% if loop.index == welcome_suggestions.length and welcome_suggestions.length > 2 %}
+                      {% render '@vf-chatbot-action-prompt', {
                     action_text: suggestion,
                     action_data: suggestion,
                     modifier_class: "vf-chatbot-action-prompt--full-width",
                     data_attribute: "data-vf-js-chatbot-standalone-suggestion=" + suggestion,
                     data_vf_js_chatbot_action_prompt: true
                   } %}
-                      {% else %}
-                        {% render '@vf-chatbot-action-prompt', {
+                    {% else %}
+                      {% render '@vf-chatbot-action-prompt', {
                     action_text: suggestion,
                     action_data: suggestion,
                     data_attribute: "data-vf-js-chatbot-standalone-suggestion=" + suggestion,
                     data_vf_js_chatbot_action_prompt: true
                   } %}
-                      {% endif %}
-                    {% endfor %}
-                  </div>
+                    {% endif %}
+                  {% endfor %}
                 </div>
               </div>
             </div>
-            {# <div class="vf-chatbot-message vf-chatbot-message--assistant">
+          </div>
+          {# <div class="vf-chatbot-message vf-chatbot-message--assistant">
               <div class="vf-chatbot-message__avatar">
                 <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/ai-assistant-icon.svg') }}" alt="AI Assistant">
               </div>
@@ -136,7 +266,7 @@
                 {{ welcome_message | default('Hello! How can I help you today?') }}
               </div>
             </div> #}
-          {% endif %}
+        {% endif %}
         <!-- Messages container -->
         <div class="vf-chatbot-standalone__messages" data-vf-js-chatbot-standalone-messages>
           <!-- Messages will be added here dynamically -->
@@ -177,16 +307,17 @@
         </div> #}
       </div>
       {% if disclaimer %}
-      <div class="vf-chatbot-standalone__disclaimer" data-vf-js-chatbot-standalone-disclaimer>
-        <div class="vf-banner vf-banner--alert vf-banner--info">
-          <div class="vf-banner__content">
-            <p class="vf-banner__text">{{ disclaimer }}</p>
-            <button role="button" aria-label="close notification banner" class="vf-button vf-button--icon vf-button--dismiss | vf-banner__button">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>dismiss banner</title><path d="M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"/></svg>
-            </button>
+        <div class="vf-chatbot-standalone__disclaimer" data-vf-js-chatbot-standalone-disclaimer>
+          <div class="vf-banner vf-banner--alert vf-banner--info">
+            <div class="vf-banner__content">
+              <p class="vf-banner__text">{{ disclaimer }}</p>
+              <button role="button" aria-label="close notification banner" class="vf-button vf-button--icon vf-button--dismiss | vf-banner__button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <title>dismiss banner</title><path d="M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"/></svg>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
       {% endif %}
       {# <div class="vf-chatbot-standalone__input-container"> #}
       <div class="vf-chatbot-standalone__input-wrapper">
