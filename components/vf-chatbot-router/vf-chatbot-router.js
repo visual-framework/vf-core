@@ -53,10 +53,18 @@ export class VFChatbotRouter {
   bindEvents() {
     // Toggle dropdown
     if (this.titleEl) {
-      this.titleEl.addEventListener("click", e => {
-        e.stopPropagation();
+      // Remove any existing listeners first
+      this.titleEl.removeEventListener("click", this.toggleDropdownHandler);
+
+      // Create a bound handler that we can reference later
+      this.toggleDropdownHandler = e => {
+        e.preventDefault(); // Prevent default behavior
+        e.stopImmediatePropagation(); // Stop multiple event triggers
         this.toggleDropdown();
-      });
+      };
+
+      // Add the new listener
+      this.titleEl.addEventListener("click", this.toggleDropdownHandler);
     }
 
     // Search functionality

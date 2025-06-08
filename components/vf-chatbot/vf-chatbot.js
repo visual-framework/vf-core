@@ -11,8 +11,8 @@ VFChatbot.prototype = {
   init: function() {
     if (!this.fab || !this.modal) return;
 
-    // Handle FAB click
-    this.fab.addEventListener("click", e => {
+    // Handle FAB toggle event
+    this.el.addEventListener("vf-chatbot-fab:toggle", e => {
       e.stopPropagation();
       this.toggleChat();
     });
@@ -31,15 +31,15 @@ VFChatbot.prototype = {
     });
 
     // Handle clicks outside modal
-    document.addEventListener("click", e => {
-      if (
-        !this.modal.classList.contains("vf-chatbot-modal--minimized") &&
-        !this.modal.contains(e.target) &&
-        !this.fab.contains(e.target)
-      ) {
-        this.closeChat();
-      }
-    });
+    // document.addEventListener("click", e => {
+    //   if (
+    //     !this.modal.classList.contains("vf-chatbot-modal--minimized") &&
+    //     !this.modal.contains(e.target) &&
+    //     !this.fab.contains(e.target)
+    //   ) {
+    //     this.closeChat();
+    //   }
+    // });
 
     // Handle escape key
     document.addEventListener("keydown", e => {
@@ -53,16 +53,14 @@ VFChatbot.prototype = {
   },
 
   toggleChat: function() {
-    const isMinimized = this.modal.classList.contains(
-      "vf-chatbot-modal--minimized"
-    );
-    const isActive = this.modal.classList.contains("vf-chatbot-modal--active");
-
-    if (isMinimized || !isActive) {
+    // Always show chat when hidden
+    if (!this.isModalOpen()) {
       this.openChat();
-    } else {
-      this.minimizeChat();
+      return;
     }
+
+    // If visible, minimize
+    this.minimizeChat();
   },
 
   openChat: function() {

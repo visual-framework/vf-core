@@ -1,91 +1,348 @@
+{% set llm_selector = {
+          context: {
+            chatbotRoutes:
+              {
+                multiSelect: false,
+                showSearch: true,
+                showSearchThreshold: 5,
+                routes: [
+                  {
+                    id: "gpt4-turbo",
+                    title: "GPT-4 Turbo",
+                    description: "Advanced language model with broader context window and improved capabilities",
+                    selected: true
+                  },
+                  {
+                    id: "claude3-opus",
+                    title: "Claude 3 Opus",
+                    description: "Anthropic's most powerful model with enhanced reasoning and analysis capabilities"
+                  },
+                  {
+                    id: "gemini-ultra",
+                    title: "Gemini Ultra",
+                    description: "Google's most capable model for complex tasks and multitask reasoning"
+                  },
+                  {
+                    id: "llama3",
+                    title: "LLaMA 3",
+                    description: "Meta's open foundation model with strong performance across various tasks"
+                  },
+                  {
+                    id: "mixtral",
+                    title: "Mixtral 8x7B",
+                    description: "Mistral AI's mixture-of-experts model combining multiple specialized networks"
+                  },
+                  {
+                    id: "palm3",
+                    title: "PaLM 3",
+                    description: "Google's latest PaLM model optimized for reasoning and multilingual tasks"
+                  },
+                  {
+                    id: "gpt4-vision",
+                    title: "GPT-4 Vision",
+                    description: "Specialized version of GPT-4 for multimodal tasks including image understanding"
+                  },
+                  {
+                    id: "claude3-sonnet",
+                    title: "Claude 3 Sonnet",
+                    description: "Balanced model offering strong performance with improved efficiency"
+                  }
+                ]
+              }
+            }
+          }
+%}
+{% set services_single_selector = {
+          context: {
+            chatbotRoutes: {
+                multiSelect: false,
+                showSearch: true,
+                showSearchThreshold: 5,
+                routes: [
+                  {
+                    id: "ensembl",
+                    title: "Ensembl",
+                    description: "Genome browser for vertebrate genomes with comparative genomics tools",
+                    selected: true
+                  },
+                  {
+                    id: "uniprot",
+                    title: "UniProt",
+                    description: "Comprehensive resource for protein sequence and annotation data"
+                  },
+                  {
+                    id: "pfam",
+                    title: "Pfam",
+                    description: "Database of protein families and domains with HMM models"
+                  },
+                  {
+                    id: "interpro",
+                    title: "InterPro",
+                    description: "Integrated database of protein families, domains and functional sites"
+                  },
+                  {
+                    id: "chembl",
+                    title: "ChEMBL",
+                    description: "Database of bioactive drug-like small molecules and their targets"
+                  },
+                  {
+                    id: "pdbe",
+                    title: "PDBe",
+                    description: "European resource for 3D biological macromolecular structure data"
+                  },
+                  {
+                    id: "expression-atlas",
+                    title: "Expression Atlas",
+                    description: "Gene expression data across species and biological conditions"
+                  },
+                  {
+                    id: "pride",
+                    title: "PRIDE",
+                    description: "Repository of mass spectrometry-based proteomics data"
+                  },
+                  {
+                    id: "arrayexpress",
+                    title: "ArrayExpress",
+                    description: "Archive of functional genomics experiments"
+                  },
+                  {
+                    id: "intact",
+                    title: "IntAct",
+                    description: "Molecular interaction database derived from literature curation"
+                  },
+                  {
+                    id: "reactome",
+                    title: "Reactome",
+                    description: "Curated database of biological pathways and reactions"
+                  },
+                  {
+                    id: "metabolights",
+                    title: "MetaboLights",
+                    description: "Database for metabolomics experiments and derived information"
+                  }
+                ]
+              }
+            }
+          }
+%}
+{% set services_multi_selector = {
+          context: {
+            chatbotRoutes:
+              {
+                multiSelect: true,
+                maxMultiSelect: 3,
+                showSearch: true,
+                showSearchThreshold: 5,
+                routes: [
+                  {
+                    id: "ensembl",
+                    title: "Ensembl",
+                    description: "Genome browser for vertebrate genomes with comparative genomics tools",
+                    "selected": true
+                  },
+                  {
+                    id: "uniprot",
+                    title: "UniProt",
+                    description: "Comprehensive resource for protein sequence and annotation data"
+                  },
+                  {
+                    id: "pfam",
+                    title: "Pfam",
+                    description: "Database of protein families and domains with HMM models"
+                  },
+                  {
+                    id: "interpro",
+                    title: "InterPro",
+                    description: "Integrated database of protein families, domains and functional sites"
+                  },
+                  {
+                    id: "chembl",
+                    title: "ChEMBL",
+                    description: "Database of bioactive drug-like small molecules and their targets"
+                  },
+                  {
+                    id: "pdbe",
+                    title: "PDBe",
+                    description: "European resource for 3D biological macromolecular structure data"
+                  },
+                  {
+                    id: "expression-atlas",
+                    title: "Expression Atlas",
+                    description: "Gene expression data across species and biological conditions"
+                  },
+                  {
+                    id: "pride",
+                    title: "PRIDE",
+                    description: "Repository of mass spectrometry-based proteomics data"
+                  },
+                  {
+                    id: "arrayexpress",
+                    title: "ArrayExpress",
+                    description: "Archive of functional genomics experiments"
+                  },
+                  {
+                    id: "intact",
+                    title: "IntAct",
+                    description: "Molecular interaction database derived from literature curation"
+                  },
+                  {
+                    id: "reactome",
+                    title: "Reactome",
+                    description: "Curated database of biological pathways and reactions"
+                  },
+                  {
+                    id: "metabolights",
+                    title: "MetaboLights",
+                    description: "Database for metabolomics experiments and derived information"
+                  }
+                ]
+              }
+            }
+          }
+%}
+{# {% set routerContext = llm_selector %} #}
+{# {% set routerContext = services_single_selector %} #}
+{% set routerContext = services_multi_selector %}
+
 <!-- Chatbot modal -->
 <div class="vf-chatbot-modal" data-vf-js-chatbot-modal>
-  <div class="vf-chatbot-modal__header">
-    <div class="vf-chatbot-modal__header-left">
-      <h2 class="vf-chatbot-modal__title">
-        <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/ai-assistant-icon.svg') }}" alt="AI Assistant">
-        {{ title | default("AI Assistant") }}
-      </h2>
-    </div>
-    <div class="vf-chatbot-modal__controls">
-      <button
-        class="vf-chatbot-modal__control"
-        data-vf-js-chatbot-minimize
-        aria-label="Minimize chat"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <path d="M20 14H4v-2h16v2z"/>
-        </svg>
-      </button>
-      <button
-        class="vf-chatbot-modal__control"
-        data-vf-js-chatbot-close
-        aria-label="Close chat"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-
-  <div class="vf-chatbot-modal__content">
-    <!-- Welcome screen -->
-    {% render '@vf-chatbot-welcome', {
-      welcome_title: welcome_title | default('AI Assistant'),
-      welcome_description: welcome_description | default('I can help you find information about our research, services, and more. What would you like to know?'),
-      welcome_features: welcome_features | default([
-        'Finding research publications',
-        'Learning about our services',
-        'Getting information about events',
-        'Understanding scientific concepts'
-      ]),
-      welcome_suggestions: welcome_suggestions | default([
-        'What is Metabolomics?',
-        'Tell me about your training courses',
-        'How can I access your data resources?',
-        'What research areas do you focus on?'
-      ])
-    } %}
-
-    <!-- Chat messages -->
-    <div class="vf-chatbot-modal__messages" data-vf-js-chatbot-messages>
-      {% if welcome_message %}
-      <div class="vf-chatbot-message vf-chatbot-message--assistant">
-        <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/ai-assistant-icon.svg') }}" alt="AI Assistant" class="vf-chatbot-message__avatar">
-        <div class="vf-chatbot-message__content">
-          {{ welcome_message | safe }}
-        </div>
+  <div class="vf-chatbot-modal__container">
+    <div class="vf-chatbot-modal__header">
+      <div class="vf-chatbot-modal__header-left">
+        {% render "@vf-chatbot-router", routerContext %}
       </div>
-      {% endif %}
-    </div>
-
-    <div class="vf-chatbot-modal__input-area">
-      <div class="vf-chatbot-modal__input-wrapper">
-        <textarea
-          class="vf-chatbot-modal__input"
-          placeholder="{{ input_placeholder | default('Type your message...') }}"
-          rows="1"
-          data-vf-js-chatbot-input
-        ></textarea>
+      <div class="vf-chatbot-modal__controls">
         <button
-          class="vf-chatbot-modal__send-button"
-          aria-label="Send message"
-          data-vf-js-chatbot-send
+          class="vf-chatbot-modal__control"
+          data-vf-js-chatbot-minimize
+          aria-label="Minimize chat"
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="white"/>
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M20 14H4v-2h16v2z"/>
+          </svg>
+        </button>
+        <button
+          class="vf-chatbot-modal__control"
+          data-vf-js-chatbot-close
+          aria-label="Close chat"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
           </svg>
         </button>
       </div>
     </div>
 
-    {% if show_suggestions %}
-    <div class="vf-chatbot-suggestions">
-      <button class="vf-chatbot-suggestions__input" data-vf-js-chatbot-suggestion="Ask me about Bioinformatics trainings...">
-        Ask me about Bioinformatics trainings...
-      </button>
+    <div class="vf-chatbot-modal__content | vf-u-background-color-ui--grey--light">
+      <!-- Chat interface -->
+      <div class="vf-chatbot-modal__chat" data-vf-js-chatbot-modal-chat>
+        <!-- Initial welcome message from the assistant -->
+        {% if welcome_message %}
+          <!-- Welcome screen -->
+          <div class="vf-chatbot-modal__welcome" data-vf-js-chatbot-modal-welcome>
+            <div class="vf-chatbot-modal__welcome-content">
+              <div class="vf-chatbot-modal__welcome-logo">
+                <img src="/assets/vf-chatbot/assets/vf-chatbot--icon-large.svg" alt="AI Assistant">
+              </div>
+              <h2 class="vf-chatbot-modal__welcome-title">{{ welcome_title | default('AI assistant') }}</h2>
+              <p class="vf-chatbot-modal__welcome-description">
+                {{ welcome_description | default("Welcome! I'm here to help you discover bioinformatics training and resources.") }}
+              </p>
+
+              <div class="vf-chatbot-modal__welcome-suggestions">
+                <p class="vf-chatbot-modal__welcome-suggestions-title">Try asking me:</p>
+                <div class="vf-chatbot-modal__welcome-suggestions-grid">
+                  {% set welcome_suggestions = [
+                      'Find workshops near research institutions',
+                      'Recommend bioinformatics resources',
+                      'What prerequisites do I need for advanced advanced courses?'
+                    ]
+                  %}
+                  {% for suggestion in welcome_suggestions %}
+                    {%
+                      render '@vf-chatbot-action-prompt', {
+                        action_text: suggestion,
+                        action_data: suggestion,
+                        data_attribute: "data-vf-js-chatbot-modal-suggestion=" + suggestion,
+                        data_vf_js_chatbot_action_prompt: true
+                      }
+                    %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {# <div class="vf-chatbot-message vf-chatbot-message--assistant">
+              <div class="vf-chatbot-message__avatar">
+                <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/vf-chatbot--icon.svg') }}" alt="AI Assistant">
+              </div>
+              <div class="vf-chatbot-message__content">
+                {{ welcome_message | default('Hello! How can I help you today?') }}
+              </div>
+            </div> #}
+        {% endif %}
+        <!-- Messages container -->
+        <div class="vf-chatbot-modal__messages" data-vf-js-chatbot-modal-messages>
+          <!-- Messages will be added here dynamically -->
+
+          <!-- Loading indicator -->
+          <div class="vf-chatbot-modal__loading" data-vf-js-chatbot-modal-loading style="display: none;">
+            <div class="vf-chatbot-message vf-chatbot-message--assistant">
+              <div class="vf-chatbot-message__avatar">
+                <div class="vf-chatbot-message__avatar-image">
+                <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-x-small.svg" alt="AI Assistant">
+                </div>
+                <span class="vf-chatbot-message__avatar-name">AI Assistant</span>
+              </div>
+              <div class="vf-chatbot-modal__loading-dots">
+                ...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      {% if disclaimer %}
+        <div class="vf-chatbot-modal__disclaimer" data-vf-js-chatbot-modal-disclaimer>
+          <div class="vf-banner vf-banner--alert vf-banner--info">
+            <div class="vf-banner__content">
+              <p class="vf-banner__text">{{ disclaimer }}</p>
+              <button role="button" aria-label="close notification banner" class="vf-button vf-button--icon vf-button--dismiss | vf-banner__button" data-vf-js-chatbot-disclaimer-close>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <title>dismiss banner</title><path d="M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% render "@vf-chatbot-dialog", {
+        title: "Close chat and delete conversation?",
+        message: "Are you sure you want to close the chat?",
+        submessage: "Your current conversation history will be permanently deleted.",
+        cancelLabel: "Keep chat open",
+        confirmLabel: "Close and delete"
+      } %}
+
+      <!-- Input area -->
+      <div class="vf-chatbot-modal__input-wrapper">
+        <textarea
+          class="vf-chatbot-modal__input"
+          placeholder="{{ input_placeholder | default('Ask me about Bioinformatics trainings...') }}"
+          rows="1"
+          data-vf-js-chatbot-modal-input
+        ></textarea>
+        <button
+          class="vf-chatbot-modal__send-button"
+          aria-label="Send message"
+          data-vf-js-chatbot-modal-send
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" fill="white"/>
+          </svg>
+        </button>
+      </div>
     </div>
-    {% endif %}
   </div>
 </div>

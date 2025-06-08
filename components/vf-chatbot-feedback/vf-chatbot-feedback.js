@@ -39,16 +39,23 @@ export class VFChatbotFeedback {
     );
 
     if (thumbsUp) {
-      thumbsUp.addEventListener("click", () =>
-        this.handleThumbsClick("positive")
-      );
+      thumbsUp.addEventListener("click", e => {
+        e.stopPropagation(); // Prevent bubbling
+        this.handleThumbsClick("positive");
+      });
     }
 
     if (thumbsDown) {
-      thumbsDown.addEventListener("click", () =>
-        this.handleThumbsClick("negative")
-      );
+      thumbsDown.addEventListener("click", e => {
+        e.stopPropagation(); // Prevent bubbling
+        this.handleThumbsClick("negative");
+      });
     }
+
+    // Stop propagation on the entire feedback component
+    this.el.addEventListener("click", e => {
+      e.stopPropagation();
+    });
   }
 
   handleThumbsClick(type) {
@@ -109,10 +116,11 @@ export class VFChatbotFeedback {
       </button>
     `;
 
-    // Add event listeners for options
+    // Add event listeners for options with stopPropagation
     const options = formEl.querySelectorAll(".vf-chatbot-feedback__option");
     options.forEach(option => {
       option.addEventListener("click", e => {
+        e.stopPropagation(); // Prevent bubbling
         // Remove selected class from all options
         options.forEach(opt =>
           opt.classList.remove("vf-chatbot-feedback__option--selected")
@@ -122,18 +130,16 @@ export class VFChatbotFeedback {
       });
     });
 
-    // Add submit handler
+    // Add submit handler with stopPropagation
     const submitBtn = formEl.querySelector(".vf-chatbot-feedback__submit");
-    submitBtn.addEventListener("click", () => this.submitFeedback());
+    submitBtn.addEventListener("click", e => {
+      e.stopPropagation(); // Prevent bubbling
+      this.submitFeedback();
+    });
 
     formContainer.appendChild(formEl);
     // Scroll the form into view
     formEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
-
-    // // Ensure the feedback form is visible
-    // setTimeout(() => {
-    //   formContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    // }, 100);
   }
 
   async submitFeedback() {
@@ -168,15 +174,16 @@ export class VFChatbotFeedback {
       </div>
     `;
 
-    // Add close button event listener
+    // Add close button event listener with stopPropagation
     const closeBtn = formContainer.querySelector(".vf-banner__close");
     if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
+      closeBtn.addEventListener("click", e => {
+        e.stopPropagation(); // Prevent bubbling
         formContainer.innerHTML = "";
       });
     }
 
-    // Hide the unselected thumb by setting display: none
+    // Hide the unselected thumb
     const otherThumb = this.el.querySelector(
       this.selectedFeedback === "positive"
         ? "[data-vf-js-feedback-thumbs-down]"
@@ -186,7 +193,7 @@ export class VFChatbotFeedback {
       otherThumb.style.display = "none";
     }
 
-    // Add solid class only to the selected thumb
+    // Add solid class to selected thumb
     const selectedThumb = this.el.querySelector(
       this.selectedFeedback === "positive"
         ? "[data-vf-js-feedback-thumbs-up]"
@@ -210,7 +217,7 @@ export class VFChatbotFeedback {
       </div>
     `;
 
-    // On error, remove solid class from both thumbs to restore original state
+    // Reset thumbs state
     const thumbsUp = this.el.querySelector("[data-vf-js-feedback-thumbs-up]");
     const thumbsDown = this.el.querySelector(
       "[data-vf-js-feedback-thumbs-down]"
@@ -218,10 +225,11 @@ export class VFChatbotFeedback {
     thumbsUp?.classList.remove("vf-chatbot-feedback__thumb--solid");
     thumbsDown?.classList.remove("vf-chatbot-feedback__thumb--solid");
 
-    // Add close button event listener
+    // Add close button event listener with stopPropagation
     const closeBtn = formContainer.querySelector(".vf-banner__close");
     if (closeBtn) {
-      closeBtn.addEventListener("click", () => {
+      closeBtn.addEventListener("click", e => {
+        e.stopPropagation(); // Prevent bubbling
         formContainer.innerHTML = "";
       });
     }

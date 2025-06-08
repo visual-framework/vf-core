@@ -1,6 +1,6 @@
-<div class="vf-chatbot-router" data-vf-js-chatbot-router {% if context.chatbotRoutes.multiselect %}data-multiselect="true"{% endif %}>
+<div class="vf-chatbot-router" data-vf-js-chatbot-router {% if context.chatbotRoutes.multiSelect %}data-multiselect="true"{% endif %}>
   <button class="vf-chatbot-router__title" data-vf-js-router-toggle>
-    <img src="../../assets/vf-chatbot/assets/ai-assistant-icon.svg" alt="AI Assistant">
+    <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-medium.svg" alt="AI Assistant">
     <div class="vf-chatbot-router__title-content">
       <span class="vf-chatbot-router__main-text">AI Assistant</span>
       <span class="vf-chatbot-router__title-text">Select services</span>
@@ -16,9 +16,11 @@
     </div>
     {% endif %}
 
-    {% if context.chatbotRoutes.multiselect %}
+    {% if context.chatbotRoutes.multiSelect %}
+    {% set maxSelect = context.chatbotRoutes.maxMultiSelect | default(3) %}
+
     <div class="vf-chatbot-router__header">
-      <span>Select up to {{ context.chatbotRoutes.maxMultiSelect }} services</span>
+      <span data-max-select="{{ maxSelect }}">Select up to {{ maxSelect }} services</span>
       <a href="#" class="vf-chatbot-router__clear" data-vf-js-router-clear>Clear all</a>
     </div>
     {% endif %}

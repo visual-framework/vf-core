@@ -6,8 +6,7 @@ context:
   component-type: element
   # Component configuration
   chatbotRoutes:
-    multiselect: false  # Set to true for multi-selection mode
-    maxMultiSelect: 3   # Maximum items that can be selected in multiselect mode
+    multiSelect: false  # Set to true for multi-selection mode
     showSearch: true    # Show search box if items > 10
     routes:
       - id: general
@@ -27,10 +26,11 @@ context:
         title: Writing Assistant
         description: Helps with writing and content creation
 variants:
-  - name: multiselect
+  - name: multiSelect
     context:
       chatbotRoutes:
-        multiselect: true
+        multiSelect: true
+        maxMultiSelect: 3   # Maximum items that can be selected in multiSelect mode
         routes:
           - id: general
             title: General Assistant

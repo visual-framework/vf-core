@@ -83,24 +83,17 @@ import { initVFChatbotPrompt } from 'vf-chatbot-prompt/vf-chatbot-prompt.js';
 import { VFChatbotFeedback } from 'vf-chatbot-feedback/vf-chatbot-feedback.js';
 import { initVFChatbotRouter } from 'vf-chatbot-router/vf-chatbot-router.js';
 // Initialize all chatbot components when DOM is loaded
+// Initialize all chatbot components once when the DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  const chatbotFab = document.querySelector(".vf-chatbot-fab");
-  if (chatbotFab) {
-    chatbotFab.addEventListener("click", () => {
-      console.log("vf-chatbot-fab clicked");
-      initVFChatbot();
-      initVFChatbotModal();
-      initVFChatbotActionPrompt();
-      initVFChatbotFab();
-      initVFChatbotWelcome();
-      initVFChatbotPrompt();
-      const routerEl = document.querySelector('[data-vf-js-chatbot-router]');
-      if (routerEl) {
-        initVFChatbotRouter(routerEl);
-      }
-    });
-  } else {
-    console.error("vf-chatbot-fab button not found in the DOM.");
+  initVFChatbot();
+  initVFChatbotModal();
+  initVFChatbotActionPrompt();
+  initVFChatbotFab();
+  initVFChatbotWelcome();
+  initVFChatbotPrompt();
+  const routerEl = document.querySelector('[data-vf-js-chatbot-router]');
+  if (routerEl) {
+    initVFChatbotRouter(routerEl);
   }
 });
 

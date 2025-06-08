@@ -223,7 +223,7 @@ class VFChatbotStandalone {
     userMessageEl.innerHTML = `
       <div class="vf-chatbot-message__avatar">
         <span class="vf-chatbot-message__avatar-name">You</span>
-        <img src="../../assets/vf-chatbot/assets/vf-icon--avatar.svg" alt="You">
+        <img src="../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg" alt="You">
       </div>
       <div class="vf-chatbot-message__content">${text}</div>
     `;
@@ -360,7 +360,9 @@ class VFChatbotStandalone {
       "vf-chatbot-message vf-chatbot-message--assistant";
     assistantMessageEl.innerHTML = `
       <div class="vf-chatbot-message__avatar">
-        <img src="../../assets/vf-chatbot/assets/ai-assistant-icon.svg" alt="AI Assistant">
+        <div class="vf-chatbot-message__avatar-image">
+        <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-x-small.svg" alt="AI Assistant">
+        </div>
         <span class="vf-chatbot-message__avatar-name">AI Assistant</span>
       </div>
       <div class="vf-chatbot-message__content">${text}</div>

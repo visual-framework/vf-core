@@ -200,9 +200,9 @@
             }
           }
 %}
-{% set routerContext = llm_selector %}
-{# {% set routerContext = services_single_selector %}
-{% set routerContext = services_multi_selector %} #}
+{# {% set routerContext = llm_selector %} #}
+{# {% set routerContext = services_single_selector %} #}
+{% set routerContext = services_multi_selector %}
 <!-- Standalone Chatbot -->
 <div class="vf-chatbot-standalone" data-vf-js-chatbot-standalone>
   <div class="vf-chatbot-standalone__container">
@@ -210,7 +210,7 @@
       <div class="vf-chatbot-standalone__header-left">
         {# <div class="vf-chatbot-standalone__title"> #}
         <!-- Try both relative and absolute paths -->
-        {# <img src="../../assets/vf-chatbot/assets/ai-assistant-icon.svg" alt="AI Assistant"> #}
+        {# <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon.svg" alt="AI Assistant"> #}
         {% render "@vf-chatbot-router", routerContext %}
         {# </div> #}
       </div>
@@ -226,7 +226,7 @@
           <div class="vf-chatbot-standalone__welcome" data-vf-js-chatbot-standalone-welcome>
             <div class="vf-chatbot-standalone__welcome-content">
               <div class="vf-chatbot-standalone__welcome-logo">
-                <img src="/assets/vf-chatbot/assets/ai-assistant-icon.svg" alt="AI Assistant">
+                <img src="/assets/vf-chatbot/assets/vf-chatbot--icon-large.svg" alt="AI Assistant">
               </div>
               <h2 class="vf-chatbot-standalone__welcome-title">{{ welcome_title | default('AI assistant') }}</h2>
               <p class="vf-chatbot-standalone__welcome-description">
@@ -260,7 +260,7 @@
           </div>
           {# <div class="vf-chatbot-message vf-chatbot-message--assistant">
               <div class="vf-chatbot-message__avatar">
-                <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/ai-assistant-icon.svg') }}" alt="AI Assistant">
+                <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/vf-chatbot--icon.svg') }}" alt="AI Assistant">
               </div>
               <div class="vf-chatbot-message__content">
                 {{ welcome_message | default('Hello! How can I help you today?') }}
@@ -275,7 +275,7 @@
           <div class="vf-chatbot-standalone__loading" data-vf-js-chatbot-standalone-loading style="display: none;">
             <div class="vf-chatbot-message vf-chatbot-message--assistant">
               <div class="vf-chatbot-message__avatar">
-                <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/ai-assistant-icon.svg') }}" alt="AI Assistant">
+                <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/vf-chatbot--icon-x-small.svg') }}" alt="AI Assistant">
                 <span class="vf-chatbot-message__avatar-name">AI Assistant</span>
               </div>
               <div class="vf-chatbot-standalone__loading-dots">
