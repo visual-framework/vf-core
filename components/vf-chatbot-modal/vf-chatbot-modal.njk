@@ -200,9 +200,9 @@
             }
           }
 %}
-{# {% set routerContext = llm_selector %} #}
+{% set routerContext = llm_selector %}
 {# {% set routerContext = services_single_selector %} #}
-{% set routerContext = services_multi_selector %}
+{# {% set routerContext = services_multi_selector %} #}
 
 <!-- Chatbot modal -->
 <div class="vf-chatbot-modal" data-vf-js-chatbot-modal>
@@ -251,23 +251,8 @@
 
               <div class="vf-chatbot-modal__welcome-suggestions">
                 <p class="vf-chatbot-modal__welcome-suggestions-title">Try asking me:</p>
-                <div class="vf-chatbot-modal__welcome-suggestions-grid">
-                  {% set welcome_suggestions = [
-                      'Find workshops near research institutions',
-                      'Recommend bioinformatics resources',
-                      'What prerequisites do I need for advanced advanced courses?'
-                    ]
-                  %}
-                  {% for suggestion in welcome_suggestions %}
-                    {%
-                      render '@vf-chatbot-action-prompt', {
-                        action_text: suggestion,
-                        action_data: suggestion,
-                        data_attribute: "data-vf-js-chatbot-modal-suggestion=" + suggestion,
-                        data_vf_js_chatbot_action_prompt: true
-                      }
-                    %}
-                  {% endfor %}
+                <div class="vf-chatbot-standalone__welcome-suggestions-grid" data-vf-js-chatbot-standalone-suggestions-grid>
+                  <!-- Suggestions will be populated dynamically from qa.json -->
                 </div>
               </div>
             </div>

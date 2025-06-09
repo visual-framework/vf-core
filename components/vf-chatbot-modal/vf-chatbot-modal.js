@@ -3,6 +3,7 @@ import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
 import { initVFChatbotRouter } from "../vf-chatbot-router/vf-chatbot-router.js";
 import { initVFChatbotDialog } from "../vf-chatbot-dialog/vf-chatbot-dialog.js";
+import { VFChatbotActionPrompt } from "../vf-chatbot-action-prompt/vf-chatbot-action-prompt.js";
 
 class VFChatbotModal {
   constructor(element) {
@@ -37,6 +38,12 @@ class VFChatbotModal {
     this.suggestionBtns = this.container.querySelectorAll(
       "[data-vf-js-chatbot-suggestion]"
     );
+
+    // Suggestions grid element
+    this.suggestionsGrid = this.container.querySelector(
+      "[data-vf-js-chatbot-standalone-suggestions-grid]"
+    );
+
     this.closeBtn = this.container.querySelector("[data-vf-js-chatbot-close]");
     this.dialog = document.querySelector("[data-vf-js-chatbot-dialog]");
 
@@ -66,9 +73,102 @@ class VFChatbotModal {
     this.hasInteracted = false;
     this.currentAssistant = "general"; // Default assistant
 
+    // Add QA data property
+    this.qaData = null;
+
+    // Load Q&A data
+    this.loadQADataAndPopulateSuggestions();
     // Initialize the UI
     this.init();
   }
+
+  async loadQADataAndPopulateSuggestions() {
+    try {
+      const response = await fetch(
+        "../../assets/vf-chatbot/assets/vf-chatbot-qa.json"
+      );
+      const data = await response.json();
+      this.qaData = data.predefinedQA;
+      this.fallbackResponses = data.fallbackResponses;
+
+      // Get random questions for suggestions
+      const questions = Object.keys(this.qaData);
+      const randomQuestions = questions
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3); // Get 3 random questions
+
+      // Populate suggestions grid
+      if (this.suggestionsGrid) {
+        randomQuestions.forEach((question, index) => {
+          const isLastAndOdd = index === 2 && randomQuestions.length === 3;
+          const promptHtml = `
+            <div class="vf-chatbot-action-prompt ${isLastAndOdd ? "vf-chatbot-action-prompt--full-width" : ""}"
+              data-vf-js-chatbot-standalone-suggestion="${question}"
+              data-vf-js-chatbot-action-prompt>
+              <a
+                href="#"
+                class="vf-chatbot-action-prompt__link"
+              >
+              ${question}
+              </a>
+            </div>`;
+          this.suggestionsGrid.insertAdjacentHTML("beforeend", promptHtml);
+
+          // Initialize the action prompt that was just added
+          const newPrompt = this.suggestionsGrid.lastElementChild;
+          new VFChatbotActionPrompt(newPrompt);
+        });
+
+        // Bind click events to new suggestion prompts
+        // this.bindSuggestionEvents();
+      }
+    } catch (error) {
+      console.error("Failed to load Q&A data:", error);
+    }
+  }
+
+  // bindSuggestionEvents() {
+  //   const suggestions = this.container.querySelectorAll(
+  //     "[data-vf-js-chatbot-standalone-suggestion]"
+  //   );
+  //   suggestions.forEach(suggestion => {
+  //     suggestion.addEventListener("click", () => {
+  //       const question = suggestion.getAttribute(
+  //         "data-vf-js-chatbot-standalone-suggestion"
+  //       );
+  //       this.handleSuggestionClick(question);
+  //     });
+  //   });
+  // }
+  // async loadQAData() {
+  //   try {
+  //     const response = await fetch('../../assets/vf-chatbot/assets/vf-chatbot-qa.json');
+  //     const data = await response.json();
+  //     this.qaData = data.predefinedQA;
+  //     this.fallbackResponses = data.fallbackResponses;
+
+  //     // Update suggestion prompts with random questions
+  //     this.updateSuggestionPrompts();
+  //   } catch (error) {
+  //     console.error('Failed to load Q&A data:', error);
+  //   }
+  // }
+
+  // updateSuggestionPrompts() {
+  //   if (!this.qaData || !this.suggestionBtns.length) return;
+
+  //   const questions = Object.keys(this.qaData);
+  //   const randomQuestions = questions
+  //     .sort(() => 0.5 - Math.random())
+  //     .slice(0, this.suggestionBtns.length);
+
+  //   this.suggestionBtns.forEach((btn, index) => {
+  //     if (randomQuestions[index]) {
+  //       btn.textContent = randomQuestions[index];
+  //       btn.setAttribute('data-vf-js-chatbot-suggestion', randomQuestions[index]);
+  //     }
+  //   });
+  // }
 
   init() {
     // Initialize router if present
@@ -333,69 +433,54 @@ class VFChatbotModal {
   processUserMessage(text) {
     // Show loading state
     this.setLoadingState(true);
+    // Check if we have a predefined answer
+        if (this.qaData && this.qaData[text]) {
+          const answer = this.qaData[text];
+          this.addAssistantResponse(
+            answer.answer || answer.html,
+            answer.sources || [],
+            answer.prompts || []
+          );
+          this.setLoadingState(false);
+          return;
+        }
 
-    // Call the API
-    this.callAPI(text)
-      .then(response => {
-        // Extract sources if available, otherwise use the original response text
-        const sources = response.sources || [
-          {
-            domain: "re3data.org",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "MetaboLights is a public repository for metabolomics data, including raw and processed data, metadata, and analysis results."
-          },
-          {
-            domain: "academic.oup.com",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "16 November 2024 - MetaboLights is a global, open-access database for metabolomics studies, providing raw experimental data and metadata. It supports multiple species and techniques, offering structured metabolite ..."
-          },
-          {
-            domain: "re3data.org",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "MetaboLights is a public repository for metabolomics data, including raw and processed data, metadata, and analysis results."
-          },
-          {
-            domain: "academic.oup.com",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "16 November 2024 - MetaboLights is a global, open-access database for metabolomics studies, providing raw experimental data and metadata. It supports multiple species and techniques, offering structured metabolite ..."
-          },
-          {
-            domain: "re3data.org",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "MetaboLights is a public repository for metabolomics data, including raw and processed data, metadata, and analysis results."
-          },
-          {
-            domain: "academic.oup.com",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "16 November 2024 - MetaboLights is a global, open-access database for metabolomics studies, providing raw experimental data and metadata. It supports multiple species and techniques, offering structured metabolite ..."
-          }
+        // Use random fallback response
+        const fallbackResponse = this.fallbackResponses[
+          Math.floor(Math.random() * this.fallbackResponses.length)
         ];
-        const responseText = response.html || response;
-
-        // Add assistant response to UI
-        this.addAssistantResponse(responseText, sources);
-
-        // Hide loading state
+        this.addAssistantResponse(fallbackResponse);
         this.setLoadingState(false);
-      })
-      .catch(error => {
-        console.error("API Error:", error);
-        // Fallback to simulated response if API fails
-        this.addAssistantResponse(this.getSimulatedResponse(text));
-        this.setLoadingState(false);
-      });
+        return;
+    // Check if we have a predefined answer
+    // if (this.qaData && this.qaData[text]) {
+    //   const answer = this.qaData[text];
+    //   const responseText = answer.answer || answer.html;
+    //   const sources = answer.sources || [];
+    //   const prompts = answer.prompts || [];
+
+    //   this.addAssistantResponse(responseText, sources, prompts);
+    //   this.setLoadingState(false);
+    //   return;
+    // }
+
+    // If no predefined answer, use existing API call
+    // this.callAPI(text)
+    //   .then(response => {
+    //     const sources = response.sources || [];
+    //     const responseText = response.html || response;
+    //     this.addAssistantResponse(responseText, sources);
+    //     this.setLoadingState(false);
+    //   })
+    //   .catch(error => {
+    //     console.error("API Error:", error);
+    //     // Use random fallback response
+    //     const fallbackResponse = this.fallbackResponses[
+    //       Math.floor(Math.random() * this.fallbackResponses.length)
+    //     ];
+    //     this.addAssistantResponse(fallbackResponse);
+    //     this.setLoadingState(false);
+    //   });
   }
 
   callAPI(text) {
@@ -440,7 +525,7 @@ class VFChatbotModal {
     });
   }
 
-  addAssistantResponse(text, sources = []) {
+  addAssistantResponse(text, sources = [], prompts = []) {
     if (!text || !this.messagesContainer) return;
 
     // Add assistant message to UI
@@ -481,6 +566,28 @@ class VFChatbotModal {
       }
 
       assistantMessageEl.appendChild(sourcesEl.el);
+    }
+
+    // Add action prompts if available
+    if (prompts && prompts.length > 0) {
+      const promptsEl = document.createElement("div");
+      promptsEl.className = "vf-chatbot-action-prompts";
+      promptsEl.innerHTML = `
+        <div class="vf-chatbot-action-prompts__list">
+          ${prompts.map(prompt => `
+            <div class="vf-chatbot-action-prompt">
+              <a
+                href="${prompt.action_url}"
+                class="vf-chatbot-action-prompt__link"
+                ${prompt.action_url.startsWith('tel:') ? '' : 'target="_blank"'}
+              >
+                ${prompt.action_text}
+              </a>
+            </div>
+          `).join("")}
+        </div>
+      `;
+      assistantMessageEl.appendChild(promptsEl);
     }
 
     // Add feedback

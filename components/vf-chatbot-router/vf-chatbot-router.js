@@ -48,6 +48,8 @@ export class VFChatbotRouter {
     if (initSelection) {
       this.updateSelectionDisplay();
     }
+
+    this.updateClearButton();
   }
 
   bindEvents() {

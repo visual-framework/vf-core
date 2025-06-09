@@ -105,26 +105,26 @@ class VFChatbotStandalone {
         });
 
         // Bind click events to new suggestion prompts
-        this.bindSuggestionEvents();
+        // this.bindSuggestionEvents();
       }
     } catch (error) {
       console.error("Failed to load Q&A data:", error);
     }
   }
 
-  bindSuggestionEvents() {
-    const suggestions = this.container.querySelectorAll(
-      "[data-vf-js-chatbot-standalone-suggestion]"
-    );
-    suggestions.forEach(suggestion => {
-      suggestion.addEventListener("click", () => {
-        const question = suggestion.getAttribute(
-          "data-vf-js-chatbot-standalone-suggestion"
-        );
-        this.handleSuggestionClick(question);
-      });
-    });
-  }
+  // bindSuggestionEvents() {
+  //   const suggestions = this.container.querySelectorAll(
+  //     "[data-vf-js-chatbot-standalone-suggestion]"
+  //   );
+  //   suggestions.forEach(suggestion => {
+  //     suggestion.addEventListener("click", () => {
+  //       const question = suggestion.getAttribute(
+  //         "data-vf-js-chatbot-standalone-suggestion"
+  //       );
+  //       this.handleSuggestionClick(question);
+  //     });
+  //   });
+  // }
 
   init() {
     // Initialize router if present
