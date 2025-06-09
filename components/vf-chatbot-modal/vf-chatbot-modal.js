@@ -244,7 +244,7 @@ class VFChatbotModal {
   minimize() {
     console.log("Modal minimizing, dispatching hide event"); // Debug log
     this.container.classList.remove("vf-chatbot-modal--active");
-    document.dispatchEvent(new CustomEvent('vf-chatbot-modal:hide'));
+    document.dispatchEvent(new CustomEvent("vf-chatbot-modal:hide"));
   }
 
   // UNUSED: maximize() is not needed since we use simple show/hide

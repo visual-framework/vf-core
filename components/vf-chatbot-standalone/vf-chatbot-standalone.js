@@ -2,6 +2,7 @@
 import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
 import { initVFChatbotRouter } from "../vf-chatbot-router/vf-chatbot-router.js";
+import { VFChatbotActionPrompt } from "../vf-chatbot-action-prompt/vf-chatbot-action-prompt.js";
 
 class VFChatbotStandalone {
   constructor(element) {
@@ -54,8 +55,75 @@ class VFChatbotStandalone {
     this.hasInteracted = false;
     this.currentAssistant = "general"; // Default assistant
 
+    // Suggestions grid element
+    this.suggestionsGrid = this.container.querySelector(
+      "[data-vf-js-chatbot-standalone-suggestions-grid]"
+    );
+
+    // Load Q&A data
+    this.loadQADataAndPopulateSuggestions();
+
     // Initialize the UI
     this.init();
+  }
+
+  async loadQADataAndPopulateSuggestions() {
+    try {
+      const response = await fetch(
+        "../../assets/vf-chatbot/assets/vf-chatbot-qa.json"
+      );
+      const data = await response.json();
+      this.qaData = data.predefinedQA;
+      this.fallbackResponses = data.fallbackResponses;
+
+      // Get random questions for suggestions
+      const questions = Object.keys(this.qaData);
+      const randomQuestions = questions
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3); // Get 3 random questions
+
+      // Populate suggestions grid
+      if (this.suggestionsGrid) {
+        randomQuestions.forEach((question, index) => {
+          const isLastAndOdd = index === 2 && randomQuestions.length === 3;
+          const promptHtml = `
+            <div class="vf-chatbot-action-prompt ${isLastAndOdd ? "vf-chatbot-action-prompt--full-width" : ""}"
+              data-vf-js-chatbot-standalone-suggestion="${question}"
+              data-vf-js-chatbot-action-prompt>
+              <a
+                href="#"
+                class="vf-chatbot-action-prompt__link"
+              >
+              ${question}
+              </a>
+            </div>`;
+          this.suggestionsGrid.insertAdjacentHTML("beforeend", promptHtml);
+
+          // Initialize the action prompt that was just added
+          const newPrompt = this.suggestionsGrid.lastElementChild;
+          new VFChatbotActionPrompt(newPrompt);
+        });
+
+        // Bind click events to new suggestion prompts
+        this.bindSuggestionEvents();
+      }
+    } catch (error) {
+      console.error("Failed to load Q&A data:", error);
+    }
+  }
+
+  bindSuggestionEvents() {
+    const suggestions = this.container.querySelectorAll(
+      "[data-vf-js-chatbot-standalone-suggestion]"
+    );
+    suggestions.forEach(suggestion => {
+      suggestion.addEventListener("click", () => {
+        const question = suggestion.getAttribute(
+          "data-vf-js-chatbot-standalone-suggestion"
+        );
+        this.handleSuggestionClick(question);
+      });
+    });
   }
 
   init() {
@@ -77,6 +145,24 @@ class VFChatbotStandalone {
           }
         });
       }
+    }
+
+    // Show chat interface by default
+    this.messagesContainer.style.display = "flex";
+
+    // Initialize input and bind events
+    if (this.input) {
+      // Bind input events
+      this.input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          this.sendMessage();
+        }
+      });
+    }
+
+    if (this.sendBtn) {
+      this.sendBtn.addEventListener("click", () => this.sendMessage());
     }
 
     // Bind other events
@@ -187,6 +273,11 @@ class VFChatbotStandalone {
     if (!this.input || !this.input.value.trim()) return;
 
     const text = this.input.value.trim();
+
+    // Always show chat interface
+    this.showChatInterface();
+
+    // Send the message
     this.sendUserMessage(text);
   }
 
@@ -245,66 +336,44 @@ class VFChatbotStandalone {
     // Show loading state
     this.setLoadingState(true);
 
-    // Call the API
-    this.callAPI(text)
-      .then(response => {
-        // Extract sources if available, otherwise use the original response text
-        const sources = response.sources || [
-          {
-            domain: "re3data.org",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "MetaboLights is a public repository for metabolomics data, including raw and processed data, metadata, and analysis results."
-          },
-          {
-            domain: "academic.oup.com",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "16 November 2024 - MetaboLights is a global, open-access database for metabolomics studies, providing raw experimental data and metadata. It supports multiple species and techniques, offering structured metabolite ..."
-          },
-          {
-            domain: "re3data.org",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "MetaboLights is a public repository for metabolomics data, including raw and processed data, metadata, and analysis results."
-          },
-          {
-            domain: "academic.oup.com",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "16 November 2024 - MetaboLights is a global, open-access database for metabolomics studies, providing raw experimental data and metadata. It supports multiple species and techniques, offering structured metabolite ..."
-          },
-          {
-            domain: "re3data.org",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "MetaboLights is a public repository for metabolomics data, including raw and processed data, metadata, and analysis results."
-          },
-          {
-            domain: "academic.oup.com",
-            title: "MetaboLights: open data repository for metabolomics",
-            url: "#",
-            description:
-              "16 November 2024 - MetaboLights is a global, open-access database for metabolomics studies, providing raw experimental data and metadata. It supports multiple species and techniques, offering structured metabolite ..."
-          }
-        ];
-        const responseText = response.html || response;
-        // Add assistant response to UI
-        this.addAssistantResponse(responseText, sources);
-        // Hide loading state
-        this.setLoadingState(false);
-      })
-      .catch(error => {
-        console.error("API Error:", error);
-        // Fallback to simulated response if API fails
-        this.addAssistantResponse(this.getSimulatedResponse(text));
-        this.setLoadingState(false);
-      });
+    // Check if we have a predefined answer
+    if (this.qaData && this.qaData[text]) {
+      const answer = this.qaData[text];
+      this.addAssistantResponse(
+        answer.answer || answer.html,
+        answer.sources || [],
+        answer.prompts || []
+      );
+      this.setLoadingState(false);
+      return;
+    }
+
+    // Use random fallback response
+    const fallbackResponse = this.fallbackResponses[
+      Math.floor(Math.random() * this.fallbackResponses.length)
+    ];
+    this.addAssistantResponse(fallbackResponse);
+    this.setLoadingState(false);
+    return;
+
+    // // If no predefined answer, either call API or use fallback
+    // this.callAPI(text)
+    //   .then(response => {
+    //     // Extract sources if available, otherwise use the original response text
+    //     const sources = response.sources || [];
+    //     const responseText = response.html || response.answer;
+    //     this.addAssistantResponse(responseText, sources);
+    //     this.setLoadingState(false);
+    //   })
+    //   .catch(error => {
+    //     console.error("API Error:", error);
+    //     // Use random fallback response
+    //     const fallbackResponse = this.fallbackResponses[
+    //       Math.floor(Math.random() * this.fallbackResponses.length)
+    //     ];
+    //     this.addAssistantResponse(fallbackResponse);
+    //     this.setLoadingState(false);
+    //   });
   }
 
   callAPI(text) {
@@ -350,14 +419,11 @@ class VFChatbotStandalone {
     });
   }
 
-  addAssistantResponse(text, sources = []) {
-    // Remove loading indicator
-    if (!text || !this.messagesContainer) return;
-
-    // Add assistant message to UI
+  addAssistantResponse(text, sources = [], prompts = []) {
     const assistantMessageEl = document.createElement("div");
-    assistantMessageEl.className =
-      "vf-chatbot-message vf-chatbot-message--assistant";
+    assistantMessageEl.className = "vf-chatbot-message vf-chatbot-message--assistant";
+
+    // Add message content
     assistantMessageEl.innerHTML = `
       <div class="vf-chatbot-message__avatar">
         <div class="vf-chatbot-message__avatar-image">
@@ -367,6 +433,8 @@ class VFChatbotStandalone {
       </div>
       <div class="vf-chatbot-message__content">${text}</div>
     `;
+
+    // Add sources if present
     if (sources && sources.length > 0) {
       // Add sources
       const sourcesEl = initVFChatbotSources(sources);
@@ -392,6 +460,28 @@ class VFChatbotStandalone {
 
       assistantMessageEl.appendChild(sourcesEl.el);
     }
+    // Add action prompts if present
+    if (prompts && prompts.length > 0) {
+      const promptsEl = document.createElement("div");
+      promptsEl.className = "vf-chatbot-action-prompts";
+      promptsEl.innerHTML = `
+        <div class="vf-chatbot-action-prompts__list">
+          ${prompts.map(prompt => `
+            <div class="vf-chatbot-action-prompt">
+              <a
+                href="${prompt.action_url}"
+                class="vf-chatbot-action-prompt__link"
+                ${prompt.action_url.startsWith("tel:") ? "" : "target='_blank'"}
+              >
+                ${prompt.action_text}
+              </a>
+            </div>
+          `).join("")}
+        </div>
+      `;
+      assistantMessageEl.appendChild(promptsEl);
+    }
+
     // Create feedback element with template
     const feedbackTemplate = `
       <div class="vf-chatbot-feedback" data-vf-js-chatbot-feedback>

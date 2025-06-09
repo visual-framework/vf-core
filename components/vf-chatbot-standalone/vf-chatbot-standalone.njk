@@ -235,25 +235,8 @@
 
               <div class="vf-chatbot-standalone__welcome-suggestions">
                 <p class="vf-chatbot-standalone__welcome-suggestions-title">Try asking me:</p>
-                <div class="vf-chatbot-standalone__welcome-suggestions-grid">
-                  {% for suggestion in welcome_suggestions %}
-                    {% if loop.index == welcome_suggestions.length and welcome_suggestions.length > 2 %}
-                      {% render '@vf-chatbot-action-prompt', {
-                    action_text: suggestion,
-                    action_data: suggestion,
-                    modifier_class: "vf-chatbot-action-prompt--full-width",
-                    data_attribute: "data-vf-js-chatbot-standalone-suggestion=" + suggestion,
-                    data_vf_js_chatbot_action_prompt: true
-                  } %}
-                    {% else %}
-                      {% render '@vf-chatbot-action-prompt', {
-                    action_text: suggestion,
-                    action_data: suggestion,
-                    data_attribute: "data-vf-js-chatbot-standalone-suggestion=" + suggestion,
-                    data_vf_js_chatbot_action_prompt: true
-                  } %}
-                    {% endif %}
-                  {% endfor %}
+                <div class="vf-chatbot-standalone__welcome-suggestions-grid" data-vf-js-chatbot-standalone-suggestions-grid>
+                  <!-- Suggestions will be populated dynamically from qa.json -->
                 </div>
               </div>
             </div>
