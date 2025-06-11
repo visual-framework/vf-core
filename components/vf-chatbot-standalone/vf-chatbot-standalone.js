@@ -1,7 +1,7 @@
 // vf-chatbot-standalone.js
 import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
-import { initVFChatbotRouter } from "../vf-chatbot-router/vf-chatbot-router.js";
+import { initVFChatbotSelector } from "../vf-chatbot-selector/vf-chatbot-selector.js";
 import { VFChatbotActionPrompt } from "../vf-chatbot-action-prompt/vf-chatbot-action-prompt.js";
 
 class VFChatbotStandalone {
@@ -44,8 +44,8 @@ class VFChatbotStandalone {
       ".vf-button--dismiss"
     );
 
-    // Router element
-    this.routerEl = this.container.querySelector("[data-vf-js-chatbot-router]");
+    // Selector element
+    this.selectorEl = this.container.querySelector("[data-vf-js-chatbot-selector]");
 
     // API configuration - Mistral AI
     this.API_TOKEN = "";
@@ -85,9 +85,9 @@ class VFChatbotStandalone {
       // Populate suggestions grid
       if (this.suggestionsGrid) {
         randomQuestions.forEach((question, index) => {
-          const isLastAndOdd = index === 2 && randomQuestions.length === 3;
+          // const isLastAndOdd = index === 2 && randomQuestions.length === 3;
           const promptHtml = `
-            <div class="vf-chatbot-action-prompt ${isLastAndOdd ? "vf-chatbot-action-prompt--full-width" : ""}"
+            <div class="vf-chatbot-action-prompt"
               data-vf-js-chatbot-standalone-suggestion="${question}"
               data-vf-js-chatbot-action-prompt>
               <a
@@ -127,21 +127,21 @@ class VFChatbotStandalone {
   // }
 
   init() {
-    // Initialize router if present
-    if (this.routerEl) {
-      const router = initVFChatbotRouter(this.routerEl);
-      this.routerEl.addEventListener("routeselection", e => {
+    // Initialize selector if present
+    if (this.selectorEl) {
+      const selector = initVFChatbotSelector(this.selectorEl);
+      this.selectorEl.addEventListener("routeselection", e => {
         this.handleRouteSelection(e.detail);
       });
 
       // Set initial route selection based on variant
-      if (this.routerEl.dataset.variant) {
-        const variantRoutes = this.routerEl.querySelectorAll(
-          "[data-vf-js-router-item]"
+      if (this.selectorEl.dataset.variant) {
+        const variantRoutes = this.selectorEl.querySelectorAll(
+          "[data-vf-js-selector-item]"
         );
         variantRoutes.forEach(item => {
-          if (item.dataset.routeId === this.routerEl.dataset.variant) {
-            router.handleItemSelection(item);
+          if (item.dataset.routeId === this.selectorEl.dataset.variant) {
+            selector.handleItemSelection(item);
           }
         });
       }
@@ -151,15 +151,15 @@ class VFChatbotStandalone {
     this.messagesContainer.style.display = "flex";
 
     // Initialize input and bind events
-    if (this.input) {
-      // Bind input events
-      this.input.addEventListener("keypress", (e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-          e.preventDefault();
-          this.sendMessage();
-        }
-      });
-    }
+    // if (this.input) {
+    //   // Bind input events
+    //   this.input.addEventListener("keypress", (e) => {
+    //     if (e.key === "Enter" && !e.shiftKey) {
+    //       e.preventDefault();
+    //       this.sendMessage();
+    //     }
+    //   });
+    // }
 
     if (this.sendBtn) {
       this.sendBtn.addEventListener("click", () => this.sendMessage());
@@ -186,12 +186,12 @@ class VFChatbotStandalone {
 
     // Send message events
     this.sendBtn?.addEventListener("click", () => this.sendMessage());
-    this.input?.addEventListener("keypress", e => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        this.sendMessage();
-      }
-    });
+    // this.input?.addEventListener("keypress", e => {
+    //   if (e.key === "Enter" && !e.shiftKey) {
+    //     e.preventDefault();
+    //     this.sendMessage();
+    //   }
+    // });
 
     // Welcome screen input events
     this.welcomeSendBtn?.addEventListener("click", () =>
@@ -352,7 +352,7 @@ class VFChatbotStandalone {
     const fallbackResponse = this.fallbackResponses[
       Math.floor(Math.random() * this.fallbackResponses.length)
     ];
-    this.addAssistantResponse(fallbackResponse);
+    this.addAssistantResponse(fallbackResponse["answer"],[], fallbackResponse["prompts"] || []);
     this.setLoadingState(false);
     return;
 

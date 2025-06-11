@@ -132,6 +132,8 @@
                 multiSelect: true,
                 maxMultiSelect: 3,
                 showSearch: true,
+                showAllServices: true,
+                showAllServicesSelected: true,
                 showSearchThreshold: 5,
                 routes: [
                   {
@@ -200,9 +202,9 @@
             }
           }
 %}
-{# {% set routerContext = llm_selector %} #}
-{# {% set routerContext = services_single_selector %} #}
-{% set routerContext = services_multi_selector %}
+{# {% set selectorContext = llm_selector %} #}
+{# {% set selectorContext = services_single_selector %} #}
+{% set selectorContext = services_multi_selector %}
 <!-- Standalone Chatbot -->
 <div class="vf-chatbot-standalone" data-vf-js-chatbot-standalone>
   <div class="vf-chatbot-standalone__container">
@@ -211,7 +213,7 @@
         {# <div class="vf-chatbot-standalone__title"> #}
         <!-- Try both relative and absolute paths -->
         {# <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon.svg" alt="AI Assistant"> #}
-        {% render "@vf-chatbot-router", routerContext %}
+        {% render "@vf-chatbot-selector", selectorContext %}
         {# </div> #}
       </div>
     </div>

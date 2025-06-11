@@ -232,6 +232,29 @@
       font-size: 16px;
       line-height: 1.5;
       background: transparent;
+      max-height: calc(5 * 1.5em); // Set max height to 5 lines
+      overflow-y: auto; // Add vertical scrollbar when needed
+      resize: none; // Prevent manual resizing
+      line-height: 1.5em; // Consistent line height
+
+      // Customize scrollbar appearance
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 3px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #666;
+      }
 
       &:focus {
         outline: none;

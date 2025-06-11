@@ -89,7 +89,7 @@ export class VFChatbotFeedback {
       type === "positive"
         ? this.positiveFeedbackOptions
         : this.negativeFeedbackOptions;
-    const formTitle = "Tell us more about your response";
+    const formTitle = "Tell us more about your response (optional)";
 
     const formEl = document.createElement("div");
     formEl.className = "vf-chatbot-feedback__form-content";

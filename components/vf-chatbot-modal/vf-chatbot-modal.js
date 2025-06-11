@@ -1,7 +1,7 @@
 // vf-chatbot-modal
 import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
-import { initVFChatbotRouter } from "../vf-chatbot-router/vf-chatbot-router.js";
+import { initVFChatbotSelector } from "../vf-chatbot-selector/vf-chatbot-selector.js";
 import { initVFChatbotDialog } from "../vf-chatbot-dialog/vf-chatbot-dialog.js";
 import { VFChatbotActionPrompt } from "../vf-chatbot-action-prompt/vf-chatbot-action-prompt.js";
 
@@ -44,6 +44,11 @@ class VFChatbotModal {
       "[data-vf-js-chatbot-standalone-suggestions-grid]"
     );
 
+    // Add minimize button reference
+    // this.minimizeBtn = this.container.querySelector(
+    //   "[data-vf-js-chatbot-minimize]"
+    // );
+
     this.closeBtn = this.container.querySelector("[data-vf-js-chatbot-close]");
     this.dialog = document.querySelector("[data-vf-js-chatbot-dialog]");
 
@@ -54,8 +59,8 @@ class VFChatbotModal {
       });
     }
 
-    // Router element
-    this.routerEl = this.container.querySelector("[data-vf-js-chatbot-router]");
+    // Selector element
+    this.selectorEl = this.container.querySelector("[data-vf-js-chatbot-selector]");
 
     // API configuration - Mistral AI
     this.API_TOKEN = "";
@@ -100,9 +105,9 @@ class VFChatbotModal {
       // Populate suggestions grid
       if (this.suggestionsGrid) {
         randomQuestions.forEach((question, index) => {
-          const isLastAndOdd = index === 2 && randomQuestions.length === 3;
+          // const isLastAndOdd = index === 2 && randomQuestions.length === 3;
           const promptHtml = `
-            <div class="vf-chatbot-action-prompt ${isLastAndOdd ? "vf-chatbot-action-prompt--full-width" : ""}"
+            <div class="vf-chatbot-action-prompt"
               data-vf-js-chatbot-standalone-suggestion="${question}"
               data-vf-js-chatbot-action-prompt>
               <a
@@ -171,21 +176,21 @@ class VFChatbotModal {
   // }
 
   init() {
-    // Initialize router if present
-    if (this.routerEl) {
-      const router = initVFChatbotRouter(this.routerEl);
-      this.routerEl.addEventListener("routeselection", e => {
+    // Initialize selector if present
+    if (this.selectorEl) {
+      const selector = initVFChatbotSelector(this.selectorEl);
+      this.selectorEl.addEventListener("routeselection", e => {
         this.handleRouteSelection(e.detail);
       });
 
       // Set initial route selection based on variant
-      if (this.routerEl.dataset.variant) {
-        const variantRoutes = this.routerEl.querySelectorAll(
-          "[data-vf-js-router-item]"
+      if (this.selectorEl.dataset.variant) {
+        const variantRoutes = this.selectorEl.querySelectorAll(
+          "[data-vf-js-selector-item]"
         );
         variantRoutes.forEach(item => {
-          if (item.dataset.routeId === this.routerEl.dataset.variant) {
-            router.handleItemSelection(item);
+          if (item.dataset.routeId === this.selectorEl.dataset.variant) {
+            selector.handleItemSelection(item);
           }
         });
       }
@@ -210,14 +215,20 @@ class VFChatbotModal {
   }
 
   bindEvents() {
+    // Bind minimize event
+    if (this.minimizeBtn) {
+      this.minimizeBtn.addEventListener("click", () => {
+        this.minimize();
+      });
+    }
     // Send message events
     this.sendBtn?.addEventListener("click", () => this.sendMessage());
-    this.input?.addEventListener("keypress", e => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        this.sendMessage();
-      }
-    });
+    // this.input?.addEventListener("keypress", e => {
+    //   if (e.key === "Enter" && !e.shiftKey) {
+    //     e.preventDefault();
+    //     this.sendMessage();
+    //   }
+    // });
 
     // Welcome screen events
     this.welcomeSendBtn?.addEventListener("click", () =>
@@ -342,9 +353,18 @@ class VFChatbotModal {
   }
 
   minimize() {
-    console.log("Modal minimizing, dispatching hide event"); // Debug log
+    // Hide modal
     this.container.classList.remove("vf-chatbot-modal--active");
-    document.dispatchEvent(new CustomEvent("vf-chatbot-modal:hide"));
+
+    // Dispatch event to show FAB
+    document.dispatchEvent(
+      new CustomEvent("vf-chatbot-modal:hide", {
+        bubbles: true
+      })
+    );
+
+    // Reset welcome screen if needed
+    this.resetWelcomeScreen();
   }
 
   // UNUSED: maximize() is not needed since we use simple show/hide
@@ -434,24 +454,24 @@ class VFChatbotModal {
     // Show loading state
     this.setLoadingState(true);
     // Check if we have a predefined answer
-        if (this.qaData && this.qaData[text]) {
-          const answer = this.qaData[text];
-          this.addAssistantResponse(
-            answer.answer || answer.html,
-            answer.sources || [],
-            answer.prompts || []
-          );
-          this.setLoadingState(false);
-          return;
-        }
+    if (this.qaData && this.qaData[text]) {
+      const answer = this.qaData[text];
+      this.addAssistantResponse(
+        answer.answer || answer.html,
+        answer.sources || [],
+        answer.prompts || []
+      );
+      this.setLoadingState(false);
+      return;
+    }
 
-        // Use random fallback response
-        const fallbackResponse = this.fallbackResponses[
-          Math.floor(Math.random() * this.fallbackResponses.length)
-        ];
-        this.addAssistantResponse(fallbackResponse);
-        this.setLoadingState(false);
-        return;
+    // Use random fallback response
+    const fallbackResponse = this.fallbackResponses[
+      Math.floor(Math.random() * this.fallbackResponses.length)
+    ];
+    this.addAssistantResponse(fallbackResponse["answer"],[], fallbackResponse["prompts"] || []);
+    this.setLoadingState(false);
+    return;
     // Check if we have a predefined answer
     // if (this.qaData && this.qaData[text]) {
     //   const answer = this.qaData[text];
@@ -579,7 +599,7 @@ class VFChatbotModal {
               <a
                 href="${prompt.action_url}"
                 class="vf-chatbot-action-prompt__link"
-                ${prompt.action_url.startsWith('tel:') ? '' : 'target="_blank"'}
+                ${prompt.action_url.startsWith("tel:") ? "" : 'target="_blank"'}
               >
                 ${prompt.action_text}
               </a>

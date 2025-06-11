@@ -200,16 +200,16 @@
             }
           }
 %}
-{% set routerContext = llm_selector %}
-{# {% set routerContext = services_single_selector %} #}
-{# {% set routerContext = services_multi_selector %} #}
+{% set selectorContext = llm_selector %}
+{# {% set selectorContext = services_single_selector %} #}
+{# {% set selectorContext = services_multi_selector %} #}
 
 <!-- Chatbot modal -->
 <div class="vf-chatbot-modal" data-vf-js-chatbot-modal>
   <div class="vf-chatbot-modal__container">
     <div class="vf-chatbot-modal__header">
       <div class="vf-chatbot-modal__header-left">
-        {% render "@vf-chatbot-router", routerContext %}
+        {% render "@vf-chatbot-selector", selectorContext %}
       </div>
       <div class="vf-chatbot-modal__controls">
         <button
@@ -317,6 +317,7 @@
           placeholder="{{ input_placeholder | default('Ask me about Bioinformatics trainings...') }}"
           rows="1"
           data-vf-js-chatbot-modal-input
+          maxlength="1000"
         ></textarea>
         <button
           class="vf-chatbot-modal__send-button"

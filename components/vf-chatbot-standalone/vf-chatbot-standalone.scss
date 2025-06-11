@@ -1,7 +1,7 @@
 // vf-chatbot-standalone.scss
 @import '../vf-banner/vf-banner.scss';
 @import '../vf-chatbot-sources/vf-chatbot-sources.scss';
-@import '../vf-chatbot-router/vf-chatbot-router.scss';
+@import '../vf-chatbot-selector/vf-chatbot-selector.scss';
 
 .vf-chatbot-standalone {
   display: flex;
@@ -78,6 +78,7 @@
     // background: #F5F5F5;
     // justify-content: center;
     border-radius: 4px 4px 4px 4px;
+    height: 85vh;
   }
 
   // Welcome screen styles
@@ -119,7 +120,7 @@
       font-size: 16px;
       line-height: 1.5;
       color: #666666;
-      height: 25vh;
+      height: 20vh;
       max-width: 450px;
     }
 
@@ -137,18 +138,18 @@
       &-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        justify-items: center; // Center items horizontally
+        justify-items: left; // Center items horizontally
         gap: 8px;
 
         // Make the last item span full width if it's the 3rd item
-        & > *:nth-child(3):last-child {
-          grid-column: 1 / -1;
-          justify-self: center; // Center the full-width item
-        }
+        // & > *:nth-child(3):last-child {
+        //   grid-column: 1 / -1;
+        //   justify-self: center; // Center the full-width item
+        // }
 
         // Ensure each grid cell only takes the width it needs
         & > * {
-          width: auto;
+          width: 100%;
           min-width: min-content;
         }
         @media (max-width: 480px) {
@@ -369,7 +370,7 @@
     bottom: 0px;
     z-index: 1000;
     // height: 97vh;
-    padding-bottom: 5%;
+    padding-bottom: 4%;
 
     .vf-banner {
       width: 50%;

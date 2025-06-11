@@ -1,7 +1,7 @@
-export class VFChatbotRouter {
+export class VFChatbotSelector {
   constructor(element) {
     if (!element) {
-      console.error("Router element is required");
+      console.error("Selector element is required");
       return;
     }
 
@@ -12,6 +12,7 @@ export class VFChatbotRouter {
       10
     );
     this.selectedItems = new Set();
+    // this.allServicesSelected = true; // Track "All services" state
 
     this.init();
   }
@@ -21,11 +22,14 @@ export class VFChatbotRouter {
     if (!this.el) return;
 
     // Get DOM elements
-    this.titleEl = this.el.querySelector("[data-vf-js-router-toggle]");
-    this.dropdownEl = this.el.querySelector("[data-vf-js-router-dropdown]");
-    this.searchEl = this.el.querySelector("[data-vf-js-router-search]");
-    this.clearEl = this.el.querySelector("[data-vf-js-router-clear]");
-    this.listItems = this.el.querySelectorAll("[data-vf-js-router-item]");
+    this.titleEl = this.el.querySelector("[data-vf-js-selector-toggle]");
+    this.dropdownEl = this.el.querySelector("[data-vf-js-selector-dropdown]");
+    this.searchEl = this.el.querySelector("[data-vf-js-selector-search]");
+    this.clearEl = this.el.querySelector("[data-vf-js-selector-clear]");
+    this.listItems = this.el.querySelectorAll("[data-vf-js-selector-item]");
+    this.allServicesItem = this.el.querySelector(
+      '[data-route-id="all"]'
+    ); // "All services" item
 
     // Initialize dropdown as closed
     if (this.dropdownEl) {
@@ -38,17 +42,24 @@ export class VFChatbotRouter {
     // Initialize selected items and update display
     let initSelection = false;
     this.listItems.forEach(item => {
-      if (item.classList.contains("vf-chatbot-router__item--selected")) {
+      if (item.classList.contains("vf-chatbot-selector__item--selected")) {
         this.selectedItems.add(item.getAttribute("data-route-id"));
         initSelection = true;
       }
     });
 
-    // Update display after initial selection
-    if (initSelection) {
-      this.updateSelectionDisplay();
+    // Initialize with "All services" if no selection
+    const hasSelectedItems = Array.from(this.listItems).some(
+      item => item !== this.allServicesItem &&
+      item.classList.contains("vf-chatbot-selector__item--selected")
+    );
+
+    if (!hasSelectedItems) {
+      this.selectAllServices();
     }
 
+    // Update display after initial selection
+    this.updateSelectionDisplay();
     this.updateClearButton();
   }
 
@@ -118,22 +129,22 @@ export class VFChatbotRouter {
 
   openDropdown() {
     this.dropdownEl.style.display = "block";
-    this.titleEl.classList.add("vf-chatbot-router__title--expanded");
+    this.titleEl.classList.add("vf-chatbot-selector__title--expanded");
   }
 
   closeDropdown() {
     this.dropdownEl.style.display = "none";
-    this.titleEl.classList.remove("vf-chatbot-router__title--expanded");
+    this.titleEl.classList.remove("vf-chatbot-selector__title--expanded");
   }
 
   handleSearch(query) {
     const searchQuery = query.toLowerCase();
     this.listItems.forEach(item => {
       const title = item
-        .querySelector(".vf-chatbot-router__item-title")
+        .querySelector(".vf-chatbot-selector__item-title")
         .textContent.toLowerCase();
       const description = item
-        .querySelector(".vf-chatbot-router__item-description")
+        .querySelector(".vf-chatbot-selector__item-description")
         .textContent.toLowerCase();
       const matches =
         title.includes(searchQuery) || description.includes(searchQuery);
@@ -143,27 +154,47 @@ export class VFChatbotRouter {
 
   handleItemSelection(item) {
     const itemId = item.getAttribute("data-route-id");
+    const isAllServices = itemId === 'all';
 
     if (this.isMultiselect) {
-      if (this.selectedItems.has(itemId)) {
-        this.selectedItems.delete(itemId);
-        item.classList.remove("vf-chatbot-router__item--selected");
-      } else if (this.selectedItems.size < this.maxMultiSelect) {
-        this.selectedItems.add(itemId);
-        item.classList.add("vf-chatbot-router__item--selected");
+      if (isAllServices) {
+        // If "All services" is clicked, deselect everything else
+        this.selectAllServices();
+      } else {
+        // If other service is clicked
+        if (this.selectedItems.has(itemId)) {
+          // Deselect the item
+          this.selectedItems.delete(itemId);
+          item.classList.remove("vf-chatbot-selector__item--selected");
+
+          // If nothing else is selected, select "All services"
+          if (this.selectedItems.size === 0) {
+            this.selectAllServices();
+          }
+        } else {
+          // Select the item and deselect "All services"
+          if (this.allServicesSelected) {
+            this.allServicesItem?.classList.remove("vf-chatbot-selector__item--selected");
+            this.allServicesSelected = false;
+          }
+          if (this.selectedItems.size < this.maxMultiSelect) {
+            this.selectedItems.add(itemId);
+            item.classList.add("vf-chatbot-selector__item--selected");
+          }
+        }
       }
     } else {
       // Single select mode
       this.listItems.forEach(listItem => {
-        listItem.classList.remove("vf-chatbot-router__item--selected");
+        listItem.classList.remove("vf-chatbot-selector__item--selected");
       });
       this.selectedItems.clear();
       this.selectedItems.add(itemId);
-      item.classList.add("vf-chatbot-router__item--selected");
+      item.classList.add("vf-chatbot-selector__item--selected");
 
       // Update title text immediately
-      const title = item.querySelector(".vf-chatbot-router__item-title").textContent;
-      const titleText = this.el.querySelector(".vf-chatbot-router__title-text");
+      const title = item.querySelector(".vf-chatbot-selector__item-title").textContent;
+      const titleText = this.el.querySelector(".vf-chatbot-selector__title-text");
       if (titleText) {
         titleText.textContent = title;
       }
@@ -173,44 +204,45 @@ export class VFChatbotRouter {
 
     this.updateSelectionDisplay();
     this.updateClearButton();
+    this.dispatchSelectionEvent();
+  }
 
-    // Dispatch custom event
-    this.el.dispatchEvent(
-      new CustomEvent("routeselection", {
-        detail: {
-          selectedItems: Array.from(this.selectedItems),
-          isMultiselect: this.isMultiselect
-        }
-      })
-    );
+  selectAllServices() {
+    // Clear all selections
+    this.selectedItems.clear();
+    this.listItems.forEach(item => {
+      item.classList.remove("vf-chatbot-selector__item--selected");
+    });
+
+    // Select "All services"
+    this.allServicesSelected = true;
+    this.allServicesItem?.classList.add("vf-chatbot-selector__item--selected");
   }
 
   clearAllSelections() {
-    this.selectedItems.clear();
-    this.listItems.forEach(item => {
-      item.classList.remove("vf-chatbot-router__item--selected");
-    });
+    // Clear everything and select "All services"
+    this.selectAllServices();
     this.updateSelectionDisplay();
     this.updateClearButton();
+    this.dispatchSelectionEvent();
   }
 
   updateSelectionDisplay() {
-    const titleText = this.el.querySelector(".vf-chatbot-router__title-text");
+    const titleText = this.el.querySelector(".vf-chatbot-selector__title-text");
     if (!titleText) return;
 
-    if (this.selectedItems.size === 0) {
+    if (this.allServicesSelected) {
+      titleText.textContent = "All services";
+    } else if (this.selectedItems.size === 0) {
       titleText.textContent = "Select services";
-      return;
-    }
-
-    if (!this.isMultiselect) {
+    } else if (!this.isMultiselect) {
       const selectedId = Array.from(this.selectedItems)[0];
       const selectedItem = this.el.querySelector(
         `[data-route-id="${selectedId}"]`
       );
       if (selectedItem) {
         const title = selectedItem.querySelector(
-          ".vf-chatbot-router__item-title"
+          ".vf-chatbot-selector__item-title"
         ).textContent;
         titleText.textContent = title;
       }
@@ -219,18 +251,32 @@ export class VFChatbotRouter {
     }
   }
 
+  dispatchSelectionEvent() {
+    this.el.dispatchEvent(
+      new CustomEvent("routeselection", {
+        detail: {
+          selectedItems: this.allServicesSelected
+            ? ['all']
+            : Array.from(this.selectedItems),
+          isMultiselect: this.isMultiselect,
+          isAllServices: this.allServicesSelected
+        }
+      })
+    );
+  }
+
   updateClearButton() {
     if (this.clearEl) {
       if (this.selectedItems.size > 0) {
-        this.clearEl.classList.add("vf-chatbot-router__clear--active");
+        this.clearEl.classList.add("vf-chatbot-selector__clear--active");
       } else {
-        this.clearEl.classList.remove("vf-chatbot-router__clear--active");
+        this.clearEl.classList.remove("vf-chatbot-selector__clear--active");
       }
     }
   }
 }
 
 // Function to initialize the component
-export function initVFChatbotRouter(element) {
-  return new VFChatbotRouter(element);
+export function initVFChatbotSelector(element) {
+  return new VFChatbotSelector(element);
 }
