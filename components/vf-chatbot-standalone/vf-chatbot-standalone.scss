@@ -6,7 +6,7 @@
 .vf-chatbot-standalone {
   display: flex;
   flex-direction: column;
-  margin: auto 15px;
+  margin: 16px 36px !important;
 
   &__container {
     display: flex;
@@ -20,7 +20,7 @@
   }
 
   &__header {
-    height: 64px;
+    // height: 64px;
     background: #ffffff;
     color: #000000;
     display: flex;
@@ -78,7 +78,7 @@
     // background: #F5F5F5;
     // justify-content: center;
     border-radius: 4px 4px 4px 4px;
-    height: 85vh;
+    // height: 85vh;
   }
 
   // Welcome screen styles
@@ -233,7 +233,7 @@
   }
 
   &__loading {
-    min-height: 50vh;
+    // min-height: 50vh;
     flex-direction: column;
     justify-items: flex-start;
     &-dots {
@@ -266,6 +266,11 @@
     position: relative;
     width: 50%;
     margin: 0 auto;
+
+
+    @media (max-width:$vf-breakpoint--md) {
+      width: 100%;
+    }
   }
 
   &__input {
@@ -277,7 +282,7 @@
     line-height: 1.5;
     resize: none;
     min-height: 40px;
-    max-height: 150px;
+    max-height: 125px;
     background: #FFFFFF;
 
     &::placeholder {

@@ -555,7 +555,7 @@ class VFChatbotModal {
     assistantMessageEl.innerHTML = `
       <div class="vf-chatbot-message__avatar">
         <div class="vf-chatbot-message__avatar-image">
-        <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-x-small.svg" alt="AI Assistant">
+        <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg" alt="AI Assistant">
         </div>
         <span class="vf-chatbot-message__avatar-name">AI Assistant</span>
       </div>

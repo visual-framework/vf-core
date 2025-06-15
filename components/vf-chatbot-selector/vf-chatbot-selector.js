@@ -27,9 +27,7 @@ export class VFChatbotSelector {
     this.searchEl = this.el.querySelector("[data-vf-js-selector-search]");
     this.clearEl = this.el.querySelector("[data-vf-js-selector-clear]");
     this.listItems = this.el.querySelectorAll("[data-vf-js-selector-item]");
-    this.allServicesItem = this.el.querySelector(
-      '[data-route-id="all"]'
-    ); // "All services" item
+    this.allServicesItem = this.el.querySelector('[data-route-id="all"]'); // "All services" item
 
     // Initialize dropdown as closed
     if (this.dropdownEl) {
@@ -50,8 +48,9 @@ export class VFChatbotSelector {
 
     // Initialize with "All services" if no selection
     const hasSelectedItems = Array.from(this.listItems).some(
-      item => item !== this.allServicesItem &&
-      item.classList.contains("vf-chatbot-selector__item--selected")
+      item =>
+        item !== this.allServicesItem &&
+        item.classList.contains("vf-chatbot-selector__item--selected")
     );
 
     if (!hasSelectedItems) {
@@ -154,7 +153,7 @@ export class VFChatbotSelector {
 
   handleItemSelection(item) {
     const itemId = item.getAttribute("data-route-id");
-    const isAllServices = itemId === 'all';
+    const isAllServices = itemId === "all";
 
     if (this.isMultiselect) {
       if (isAllServices) {
@@ -174,7 +173,9 @@ export class VFChatbotSelector {
         } else {
           // Select the item and deselect "All services"
           if (this.allServicesSelected) {
-            this.allServicesItem?.classList.remove("vf-chatbot-selector__item--selected");
+            this.allServicesItem?.classList.remove(
+              "vf-chatbot-selector__item--selected"
+            );
             this.allServicesSelected = false;
           }
           if (this.selectedItems.size < this.maxMultiSelect) {
@@ -193,8 +194,11 @@ export class VFChatbotSelector {
       item.classList.add("vf-chatbot-selector__item--selected");
 
       // Update title text immediately
-      const title = item.querySelector(".vf-chatbot-selector__item-title").textContent;
-      const titleText = this.el.querySelector(".vf-chatbot-selector__title-text");
+      const title = item.querySelector(".vf-chatbot-selector__item-title")
+        .textContent;
+      const titleText = this.el.querySelector(
+        ".vf-chatbot-selector__title-text"
+      );
       if (titleText) {
         titleText.textContent = title;
       }
@@ -256,7 +260,7 @@ export class VFChatbotSelector {
       new CustomEvent("routeselection", {
         detail: {
           selectedItems: this.allServicesSelected
-            ? ['all']
+            ? ["all"]
             : Array.from(this.selectedItems),
           isMultiselect: this.isMultiselect,
           isAllServices: this.allServicesSelected

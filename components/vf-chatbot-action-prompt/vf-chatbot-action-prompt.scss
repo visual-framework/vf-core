@@ -2,6 +2,7 @@
   display: inline-block;
 
   &__link {
+    border-radius: 4px;
     display: inline-block;
     padding: 10px 10px;
     border: 1px solid #4b7fd1; // Thin blue border
@@ -31,7 +32,7 @@
     }
 
     @media (max-width:$vf-breakpoint--md) {
-      white-space: nowrap;
+      width: auto;
     }
   }
 
@@ -60,4 +61,8 @@
     //   white-space: normal; // Allow text wrapping for full-width
     // }
   }
+
+    @media (max-width:$vf-breakpoint--md) {
+      display: contents;
+    }
 }

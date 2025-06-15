@@ -206,7 +206,7 @@
 
 <!-- Chatbot modal -->
 <div class="vf-chatbot-modal" data-vf-js-chatbot-modal>
-  <div class="vf-chatbot-modal__container">
+  {# <div class="vf-chatbot-modal__container"> #}
     <div class="vf-chatbot-modal__header">
       <div class="vf-chatbot-modal__header-left">
         {% render "@vf-chatbot-selector", selectorContext %}
@@ -242,7 +242,7 @@
           <div class="vf-chatbot-modal__welcome" data-vf-js-chatbot-modal-welcome>
             <div class="vf-chatbot-modal__welcome-content">
               <div class="vf-chatbot-modal__welcome-logo">
-                <img src="/assets/vf-chatbot/assets/vf-chatbot--icon-large.svg" alt="AI Assistant">
+                <img src="/assets/vf-chatbot/assets/vf-chatbot--icon-64x64-dark-green.svg" alt="AI Assistant">
               </div>
               <h2 class="vf-chatbot-modal__welcome-title">{{ welcome_title | default('AI assistant') }}</h2>
               <p class="vf-chatbot-modal__welcome-description">
@@ -275,7 +275,7 @@
             <div class="vf-chatbot-message vf-chatbot-message--assistant">
               <div class="vf-chatbot-message__avatar">
                 <div class="vf-chatbot-message__avatar-image">
-                <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-x-small.svg" alt="AI Assistant">
+                <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg" alt="AI Assistant">
                 </div>
                 <span class="vf-chatbot-message__avatar-name">AI Assistant</span>
               </div>
@@ -287,6 +287,7 @@
         </div>
       </div>
 
+    </div>
       <!-- Disclaimer -->
       {% if disclaimer %}
         <div class="vf-chatbot-modal__disclaimer" data-vf-js-chatbot-modal-disclaimer>
@@ -329,6 +330,5 @@
           </svg>
         </button>
       </div>
-    </div>
-  </div>
+  {# </div> #}
 </div>
