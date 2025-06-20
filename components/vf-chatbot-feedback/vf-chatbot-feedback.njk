@@ -1,15 +1,28 @@
-<div class="vf-chatbot-feedback" data-vf-js-chatbot-feedback>
-  <div class="vf-chatbot-feedback__actions">
-    <button class="vf-chatbot-feedback__thumb" data-vf-js-feedback-thumbs-up>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
-      </svg>
-    </button>
-    <button class="vf-chatbot-feedback__thumb" data-vf-js-feedback-thumbs-down>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3"></path>
-      </svg>
-    </button>
+<div class="vf-chatbot-feedback__form">
+  <div class="vf-chatbot-feedback__form-content">
+    <div class="vf-chatbot-feedback__form-content-header">
+      <div class="vf-chatbot-feedback__title">Tell us more (optional)</div>
+      <button role="button" class="vf-chatbot-feedback__form-close vf-button vf-button--icon vf-button--dismiss | vf-banner__button" type="button" aria-label="Close feedback form" data-vf-js-feedback-form-close>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <title>dismiss banner</title>
+          <path d="M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z" />
+        </svg>
+      </button>
+    </div>
+    <div class="vf-chatbot-feedback__options">
+      {% for option in options %}
+        <button class="vf-chatbot-feedback__option" data-feedback-option="{{option.label}}">
+          {{option.label}}
+        </button>
+      {% endfor %}
+    </div>
+    <div class="vf-chatbot-feedback__comment-title">Comments</div>
+    <textarea
+        class="vf-chatbot-feedback__comment"
+        rows="4"
+      ></textarea>
+    <button type="submit" class="vf-chatbot-feedback__submit" data-vf-js-feedback-submit>
+        Submit
+      </button>
   </div>
-  <div class="vf-chatbot-feedback__form"></div>
 </div>

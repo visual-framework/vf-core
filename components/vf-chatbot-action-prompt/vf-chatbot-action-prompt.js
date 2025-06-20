@@ -1,67 +1,78 @@
-// vf-chatbot-action-prompt.js
-
-class VFChatbotActionPrompt {
+export class VFChatbotActionPrompt {
   constructor(element) {
     this.el = element;
     this.link = this.el.querySelector(".vf-chatbot-action-prompt__link");
 
-    if (this.link) {
-      this.bindEvents();
-    }
-  }
-
-  bindEvents() {
-    this.link.addEventListener("click", event => {
-      // If it's a placeholder link or form action
-      if (
-        this.link.getAttribute("href") === "#" ||
-        this.link.hasAttribute("data-vf-js-chatbot-action-form") ||
-        this.link.hasAttribute("data-vf-js-chatbot-standalone-suggestion")
-      ) {
-        event.preventDefault();
-
-        // Handle form submission if needed
-        const formId = this.link.getAttribute("data-vf-js-chatbot-action-form");
-        if (formId) {
-          const form = document.getElementById(formId);
-          if (form) {
-            form.submit();
-            return;
-          }
-        }
-
-        // Get suggestion text if available
-        const suggestionText = this.link.getAttribute("data-vf-js-chatbot-standalone-suggestion");
-
-        // Get action data if available
-        const actionData = this.link.getAttribute(
-          "data-vf-js-chatbot-action-data"
-        ) || suggestionText;
-
-        // Dispatch custom event with action data
+    if (this.link && !this.link.hasAttribute("href")) {
+      this.link.addEventListener("click", e => {
+        e.preventDefault();
         this.el.dispatchEvent(
           new CustomEvent("vf-chatbot-action-prompt:click", {
             bubbles: true,
             detail: {
-              text: suggestionText || this.link.textContent.trim(),
-              data: actionData
+              text: this.link.textContent.trim()
             }
           })
         );
-      }
-    });
+      });
+    }
   }
 }
 
-// Initialize component
-function initVFChatbotActionPrompt() {
-  const actionPrompts = document.querySelectorAll(
-    "[data-vf-js-chatbot-action-prompt]"
-  );
+/**
+ * Creates and returns a fully functional action prompts component.
+ * @param {Array} prompts - Array of prompt objects, e.g., [{ action_text: 'Click me', action_url: '...' }]
+ * @returns {HTMLElement|null} - The action prompts component element or null if no prompts.
+ */
+function initVFChatbotActionPrompt(prompts) {
+  if (!prompts || prompts.length === 0) {
+    return null;
+  }
 
-  actionPrompts.forEach(actionPrompt => {
-    new VFChatbotActionPrompt(actionPrompt);
+  // Create the main container
+  const promptsContainer = document.createElement('div');
+  promptsContainer.className = 'vf-chatbot-action-prompts';
+
+  // Create the list container
+  const promptsList = document.createElement('div');
+  promptsList.className = 'vf-chatbot-action-prompts__list';
+
+  // Create and append each prompt
+  prompts.forEach(prompt => {
+    const promptEl = document.createElement('div');
+    promptEl.className = 'vf-chatbot-action-prompt';
+
+    const link = document.createElement('a');
+    link.className = 'vf-chatbot-action-prompt__link';
+    link.href = prompt.action_url || '#';
+    link.textContent = prompt.action_text;
+
+    // Set target attribute for external links
+    if (prompt.action_url && !prompt.action_url.startsWith('tel:')) {
+      link.target = '_blank';
+    }
+
+    // If no URL is provided, the prompt can dispatch an event on click
+    if (!prompt.action_url) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const event = new CustomEvent('vf-chatbot-action-prompt:click', {
+          bubbles: true,
+          detail: {
+            text: prompt.action_text
+          }
+        });
+        link.dispatchEvent(event);
+      });
+    }
+
+    promptEl.appendChild(link);
+    promptsList.appendChild(promptEl);
   });
+
+  promptsContainer.appendChild(promptsList);
+
+  return promptsContainer;
 }
 
-export { VFChatbotActionPrompt, initVFChatbotActionPrompt };
+export { initVFChatbotActionPrompt };

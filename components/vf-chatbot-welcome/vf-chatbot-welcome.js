@@ -1,59 +1,115 @@
 // vf-chatbot-welcome.js
 
-class VFChatbotWelcome {
+export class VFChatbotWelcome {
   constructor(element) {
     this.el = element;
-    this.startButton = this.el.querySelector("[data-vf-js-chatbot-start]");
-    this.suggestions = this.el.querySelectorAll(
-      "[data-vf-js-chatbot-suggestion]"
+    this.suggestionsGrid = this.el.querySelector(
+      "[data-vf-js-chatbot-welcome-suggestions-grid]"
     );
+    this.qaData = null;
+    this.boundHandleSuggestionClick = this.handleSuggestionClick.bind(this);
+  }
 
-    this.bindEvents();
+  async init() {
+    try {
+      await this.loadQAData();
+      this.populateSuggestions();
+      this.bindEvents();
+      return Promise.resolve();
+    } catch (error) {
+      console.error("Failed to initialize welcome component:", error);
+      return Promise.reject(error);
+    }
+  }
+
+  async loadQAData() {
+    try {
+      const response = await fetch(
+        "../../assets/vf-chatbot/assets/vf-chatbot-qa.json"
+      );
+      const data = await response.json();
+      this.qaData = data.predefinedQA;
+    } catch (error) {
+      console.error("Failed to load Q&A data:", error);
+    }
+  }
+
+  populateSuggestions() {
+    if (!this.qaData || !this.suggestionsGrid) return;
+
+    // Clear existing suggestions
+    this.suggestionsGrid.innerHTML = "";
+
+    // Get random questions
+    const questions = Object.keys(this.qaData);
+    const randomQuestions = questions
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 3);
+
+    // Create suggestion elements
+    randomQuestions.forEach((question, index) => {
+      const suggestionEl = document.createElement("div");
+      suggestionEl.className = `vf-chatbot-action-prompt`;
+      suggestionEl.setAttribute(
+        "data-vf-js-chatbot-welcome-suggestion",
+        question
+      );
+
+      suggestionEl.innerHTML = `
+        <a href="#" class="vf-chatbot-action-prompt__link">${question}</a>
+      `;
+
+      this.suggestionsGrid.appendChild(suggestionEl);
+    });
   }
 
   bindEvents() {
-    // Start conversation button
-    this.startButton?.addEventListener("click", () => {
-      this.hideWelcomeScreen();
-    });
+    // Remove existing event listener if any
+    this.suggestionsGrid?.removeEventListener(
+      "click",
+      this.boundHandleSuggestionClick
+    );
 
-    // Suggestion buttons
-    this.suggestions.forEach(suggestion => {
-      suggestion.addEventListener("click", () => {
-        const text = suggestion.getAttribute("data-vf-js-chatbot-suggestion");
-        this.sendSuggestion(text);
-      });
-    });
+    // Add single event listener using event delegation
+    this.suggestionsGrid?.addEventListener(
+      "click",
+      this.boundHandleSuggestionClick
+    );
   }
 
-  hideWelcomeScreen() {
-    // Hide welcome screen
-    this.el.style.display = "none";
+  handleSuggestionClick(e) {
+    e.preventDefault();
 
-    // Dispatch event to notify that welcome screen is closed
-    this.el.dispatchEvent(new CustomEvent("vf-chatbot-welcome:closed"));
-  }
+    const suggestionEl = e.target.closest(
+      "[data-vf-js-chatbot-welcome-suggestion]"
+    );
+    if (!suggestionEl) return;
 
-  sendSuggestion(text) {
-    // Hide welcome screen
-    this.hideWelcomeScreen();
+    const question = suggestionEl.getAttribute(
+      "data-vf-js-chatbot-welcome-suggestion"
+    );
+    if (!question || !this.qaData[question]) return;
 
-    // Dispatch event with the suggestion text
+    // Get answer data
+    const answer = this.qaData[question];
+
+    // Dispatch event only once
     this.el.dispatchEvent(
-      new CustomEvent("vf-chatbot-welcome:suggestion", {
-        detail: { text }
+      new CustomEvent("vf-chatbot-welcome:suggestion-click", {
+        bubbles: true,
+        detail: {
+          question,
+          answer: answer.answer || answer.html,
+          sources: answer.sources || [],
+          prompts: answer.prompts || []
+        }
       })
     );
   }
 }
 
 // Initialize
-function initVFChatbotWelcome() {
-  const welcomeElements = document.querySelectorAll(
-    "[data-vf-js-chatbot-welcome]"
-  );
-
-  welcomeElements.forEach(element => new VFChatbotWelcome(element));
+export function initVFChatbotWelcome() {
+  const elements = document.querySelectorAll("[data-vf-js-chatbot-welcome]");
+  elements.forEach(element => new VFChatbotWelcome(element));
 }
-
-export { VFChatbotWelcome, initVFChatbotWelcome };

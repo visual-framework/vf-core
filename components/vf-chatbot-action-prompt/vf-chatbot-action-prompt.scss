@@ -1,10 +1,18 @@
+.vf-chatbot-action-prompts {
+  &__list{
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+}
 .vf-chatbot-action-prompt {
   display: inline-block;
 
   &__link {
     border-radius: 4px;
     display: inline-block;
-    padding: 10px 10px;
+    padding: 10px;
     border: 1px solid #4b7fd1; // Thin blue border
     color: #4b7fd1; // Blue text
     background-color: #FFFFFF;
@@ -18,7 +26,11 @@
     width: 100%; // Width based on content
     height: 100%;
     box-sizing: border-box;
-    white-space: normal; // Prevent text wrapping
+    // white-space: nowrap;
+
+    @media (max-width: $vf-breakpoint--sm) {
+      white-space: normal;
+    }
 
     &:hover, &:focus {
       background-color: rgba(75, 127, 209, 0.1); // Light blue background on hover
@@ -29,10 +41,6 @@
 
     &:active {
       transform: translateY(1px);
-    }
-
-    @media (max-width:$vf-breakpoint--md) {
-      width: auto;
     }
   }
 
@@ -54,12 +62,6 @@
   &--full-width {
     display: block;
     width: 100%;
-
-    // .vf-chatbot-action-prompt__link {
-    //   display: block;
-    //   width: 100%;
-    //   white-space: normal; // Allow text wrapping for full-width
-    // }
   }
 
     @media (max-width:$vf-breakpoint--md) {

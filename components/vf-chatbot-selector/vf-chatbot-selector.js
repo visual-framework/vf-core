@@ -6,7 +6,7 @@ export class VFChatbotSelector {
     }
 
     this.el = element;
-    this.isMultiselect = this.el.hasAttribute("data-multiselect");
+    this.isMultiselect = this.el.getAttribute("data-multiselect") === "true";
     this.maxMultiSelect = parseInt(
       this.el.getAttribute("data-max-multiselect") || "3",
       10
@@ -14,7 +14,27 @@ export class VFChatbotSelector {
     this.selectedItems = new Set();
     // this.allServicesSelected = true; // Track "All services" state
 
+    this.showAllServices = this.el.getAttribute("data-show-all-services") === "true";
+    this.showAllServicesSelected = this.el.getAttribute("data-show-all-services-selected") === "true";
+
     this.init();
+    this.loadRoutes();
+  }
+
+  async loadRoutes() {
+    try {
+      const routesPath = this.el.getAttribute("data-routes-path");
+      if (!routesPath) return;
+
+      const response = await fetch(routesPath);
+      const data = await response.json();
+
+      // Update routes and refresh UI
+      this.routes = data.routes;
+      this.updateRoutesList();
+    } catch (error) {
+      console.error("Failed to load routes:", error);
+    }
   }
 
   init() {
@@ -60,6 +80,61 @@ export class VFChatbotSelector {
     // Update display after initial selection
     this.updateSelectionDisplay();
     this.updateClearButton();
+  }
+
+  updateRoutesList() {
+    const listEl = this.el.querySelector("[data-vf-js-chatbot-selector-list]");
+    if (!listEl || !this.routes) return;
+
+    // Clear existing list
+    listEl.innerHTML = "";
+    // Add "All services" option if enabled
+    if (this.showAllServices) {
+      const allServicesItem = document.createElement("li");
+      allServicesItem.className = "vf-chatbot-selector__item";
+      allServicesItem.setAttribute("data-vf-js-selector-item", "");
+      allServicesItem.setAttribute("data-route-id", "all");
+      allServicesItem.setAttribute("data-title", "All services");
+      if (this.showAllServicesSelected) {
+        allServicesItem.className += " vf-chatbot-selector__item--selected";
+        allServicesItem.setAttribute("data-selected", "true");
+      }
+      allServicesItem.innerHTML = `<div class="vf-chatbot-selector__item-content">
+          <div class="vf-chatbot-selector__item-title">All services</div>
+          <div class="vf-chatbot-selector__item-description">This would select all services</div>
+        </div>
+        <span class="vf-chatbot-selector__tick">&#9143;</span>`;
+      listEl.appendChild(allServicesItem);
+    }
+    // Add route items
+    this.routes.forEach(route => {
+      const item = document.createElement("li");
+      item.className = "vf-chatbot-selector__item";
+      if (!this.showAllServices && route.selected) {
+        item.className += " vf-chatbot-selector__item--selected";
+      }
+      item.setAttribute("data-vf-js-selector-item", "");
+      item.setAttribute("data-route-id", route.id);
+      item.setAttribute("data-title", route.title);
+
+      item.innerHTML = `
+        <div class="vf-chatbot-selector__item-content">
+          <div class="vf-chatbot-selector__item-title">${route.title}</div>
+          ${
+            route.description
+              ? `<div class="vf-chatbot-selector__item-description">${route.description}</div>`
+              : ""
+          }
+        </div>
+        <span class="vf-chatbot-selector__tick">&#9143;</span>`;
+
+      listEl.appendChild(item);
+    });
+
+    // Re-bind events after updating list
+    this.listItems = this.el.querySelectorAll("[data-vf-js-selector-item]");
+    this.allServicesItem = this.el.querySelector('[data-route-id="all"]');
+    this.bindEvents();
   }
 
   bindEvents() {

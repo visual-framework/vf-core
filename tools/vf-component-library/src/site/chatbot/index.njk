@@ -16,9 +16,9 @@
           window.initVFChatbotStandalone();
 
           // Initialize supporting components only once
-          ["initVFChatbotActionPrompt", "initVFChatbotWelcome", "initVFChatbotPrompt"].forEach(fn => {
-            if (typeof window[fn] === "function") window[fn]();
-          });
+          //["initVFChatbotActionPrompt", "initVFChatbotWelcome", "initVFChatbotPrompt"].forEach(fn => {
+          //  if (typeof window[fn] === "function") window[fn]();
+          //});
 
           return true;
         }
@@ -34,7 +34,7 @@
     });
   </script>
 </head>
-<body>
+<body class="vf-stack">
   <nav class="vf-breadcrumbs" aria-label="Breadcrumb">
     <ul class="vf-breadcrumbs__list | vf-list vf-list--inline">
       <li class="vf-breadcrumbs__item">
@@ -55,18 +55,13 @@
   {% render '@vf-chatbot-standalone', {
     title: "AI Assistant",
     welcome_title: "AI assistant",
-    welcome_description: "Welcome! I'm here to help you discover bioinformatics training and resources.",
+    welcome_description: "Welcome! I'm here to help you.",
     welcome_message: "Hello! How can I help you today?",
-    input_placeholder: "Ask me about Bioinformatics trainings...",
+    input_placeholder: "Ask me ...",
     show_suggestions: true,
     show_close_button: true,
     ai_icon: "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
-    welcome_logo: "../../assets/vf-chatbot/assets/vf-chatbot--icon-64x64-dark-green.svg",
-    welcome_suggestions: [
-      'Find workshops near research institutions',
-      'Recommend bioinformatics resources',
-      'What prerequisites do I need for advanced advanced courses?'
-    ]
+    welcome_logo: "../../assets/vf-chatbot/assets/vf-chatbot--icon-64x64-dark-green.svg"
   } %}
 
   <!-- Add a data attribute to indicate this is the standalone page -->

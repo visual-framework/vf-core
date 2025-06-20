@@ -1,19 +1,34 @@
-<div class="vf-chatbot-prompt" data-vf-js-chatbot-prompt>
-  <div class="vf-chatbot-prompt__message vf-chatbot-prompt__message--user">
-    {{ message }}
+<div class="vf-chatbot-message vf-chatbot-message--{{ type }}{% if isLoading %} vf-chatbot-message--loading{% endif %}">
+  <div class="vf-chatbot-message__avatar">
+    {% if type == "user" and avatar and avatar.name %}
+      <span class="vf-chatbot-message__avatar-name">{{ avatar.name }}</span>
+    {% endif %}
+    {% if avatar and avatar.src %}
+      <img src="{{ avatar.src }}" alt="{{ avatar.alt }}">
+    {% endif %}
+    {%  if type == "assistant" and avatar and avatar.name %}
+      <span class="vf-chatbot-message__avatar-name">{{ avatar.name }}</span>
+    {% endif %}
   </div>
-  
-  {% if loading %}
-  <div class="vf-chatbot-prompt__loading">
-    <span class="vf-chatbot-prompt__dot"></span>
-    <span class="vf-chatbot-prompt__dot"></span>
-    <span class="vf-chatbot-prompt__dot"></span>
-  </div>
-  {% endif %}
+  <div class="vf-chatbot-message__content">
+    {% if isLoading %}
+      <div class="vf-chatbot-loading-dots"><div></div><div></div><div></div></div>
+    {% else %}
+      {{ content | safe }}
+    {% endif %}
 
-  {% if response %}
-  <div class="vf-chatbot-prompt__message vf-chatbot-prompt__message--system">
-    {{ response | safe }}
+    {# Render sources if present #}
+    {% if sources and sources.length > 0 %}
+      {% render "@vf-chatbot-sources", { sources: sources } %}
+    {% endif %}
+
+    {# Render prompts if present #}
+    {% if prompts and prompts.length > 0 %}
+      <div class="vf-chatbot-prompts">
+        {% for prompt in prompts %}
+          {% render "@vf-chatbot-prompt", prompt %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
-  {% endif %}
 </div>

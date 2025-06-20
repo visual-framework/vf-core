@@ -1,24 +1,13 @@
-<div class="vf-chatbot-action-prompt{% if modifier_class %} {{ modifier_class }}{% endif %}" data-vf-js-chatbot-action-prompt>
+<div class="vf-chatbot-action-prompt">
   {% if action_url %}
-    <a
-      href="{{ action_url }}"
-      class="vf-chatbot-action-prompt__link"
-      {% if action_url.startsWith('tel:') %}
-        aria-label="Call {{ action_text }}"
-      {% else %}
-        target="_blank"
-        rel="noopener"
-      {% endif %}
-      {% if action_data %}data-vf-js-chatbot-action-data="{{ action_data }}"{% endif %}
-    >
+    <a href="{{ action_url }}"
+       class="vf-chatbot-action-prompt__link"
+       {% if action_target %}target="{{ action_target }}"{% endif %}>
       {{ action_text }}
     </a>
   {% else %}
-    <span
-      class="vf-chatbot-action-prompt__link"
-      {% if action_data %}data-vf-js-chatbot-action-data="{{ action_data }}"{% endif %}
-    >
+    <button class="vf-chatbot-action-prompt__link">
       {{ action_text }}
-    </span>
+    </button>
   {% endif %}
 </div>

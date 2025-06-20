@@ -1,4 +1,3 @@
-// vf-chatbot-modal
 import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
 import { initVFChatbotSelector } from "../vf-chatbot-selector/vf-chatbot-selector.js";
@@ -7,7 +6,6 @@ import { VFChatbotActionPrompt } from "../vf-chatbot-action-prompt/vf-chatbot-ac
 
 class VFChatbotModal {
   constructor(element) {
-    // console.log("Initializing chatbot modal..."); // UNUSED: Debug log
 
     // Store DOM elements
     this.container = element;
@@ -60,7 +58,9 @@ class VFChatbotModal {
     }
 
     // Selector element
-    this.selectorEl = this.container.querySelector("[data-vf-js-chatbot-selector]");
+    this.selectorEl = this.container.querySelector(
+      "[data-vf-js-chatbot-selector]"
+    );
 
     // API configuration - Mistral AI
     this.API_TOKEN = "";
@@ -469,7 +469,11 @@ class VFChatbotModal {
     const fallbackResponse = this.fallbackResponses[
       Math.floor(Math.random() * this.fallbackResponses.length)
     ];
-    this.addAssistantResponse(fallbackResponse["answer"],[], fallbackResponse["prompts"] || []);
+    this.addAssistantResponse(
+      fallbackResponse["answer"],
+      [],
+      fallbackResponse["prompts"] || []
+    );
     this.setLoadingState(false);
     return;
     // Check if we have a predefined answer
@@ -594,7 +598,9 @@ class VFChatbotModal {
       promptsEl.className = "vf-chatbot-action-prompts";
       promptsEl.innerHTML = `
         <div class="vf-chatbot-action-prompts__list">
-          ${prompts.map(prompt => `
+          ${prompts
+            .map(
+              prompt => `
             <div class="vf-chatbot-action-prompt">
               <a
                 href="${prompt.action_url}"
@@ -604,7 +610,9 @@ class VFChatbotModal {
                 ${prompt.action_text}
               </a>
             </div>
-          `).join("")}
+          `
+            )
+            .join("")}
         </div>
       `;
       assistantMessageEl.appendChild(promptsEl);

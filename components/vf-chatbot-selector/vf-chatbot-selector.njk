@@ -1,54 +1,42 @@
-<div class="vf-chatbot-selector" data-vf-js-chatbot-selector {% if context.chatbotRoutes.multiSelect %}data-multiselect="true"{% endif %}>
-  <button class="vf-chatbot-selector__title" data-vf-js-selector-toggle>
+<div
+  class="vf-chatbot-selector"
+  data-vf-js-chatbot-selector
+  {% if chatbotRoutes %}
+    data-routes-path="{{ chatbotRoutes.routes }}"
+    data-multiselect="{{ chatbotRoutes.multiSelect | default(false) }}"
+    data-max-multiselect="{{ chatbotRoutes.maxMultiSelect | default(1) }}"
+    data-show-search="{{ chatbotRoutes.showSearch | default(true) }}"
+    data-show-all-services="{{ chatbotRoutes.showAllServices | default(false) }}"
+  {% endif %}
+>
+<button class="vf-chatbot-selector__title" data-vf-js-selector-toggle>
     <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg" alt="AI Assistant">
     <div class="vf-chatbot-selector__title-content">
       <span class="vf-chatbot-selector__main-text">AI Assistant</span>
-      <span class="vf-chatbot-selector__title-text">Select services</span>
+      <span class="vf-chatbot-selector__title-text">{{ chatbotRoutes.title | default('Select option') }}</span>
     </div>
     <span class="vf-chatbot-selector__chevron">&#8964;</span>
   </button>
 
   <div class="vf-chatbot-selector__dropdown" data-vf-js-selector-dropdown>
 
-    {% if context.chatbotRoutes.showSearch and (context.chatbotRoutes.routes | length > context.chatbotRoutes.showSearchThreshold) %}
+    {% if chatbotRoutes.showSearch and (chatbotRoutes.routes | length > chatbotRoutes.showSearchThreshold) %}
     <div class="vf-chatbot-selector__search">
-      <input type="text" placeholder="Search" data-vf-js-selector-search>
+      <input type="text" placeholder="{{ chatbotRoutes.placeholder | default('Search...') }}" data-vf-js-selector-search>
     </div>
     {% endif %}
 
-    {% if context.chatbotRoutes.multiSelect %}
-    {% set maxSelect = context.chatbotRoutes.maxMultiSelect | default(3) %}
+    {% if chatbotRoutes.multiSelect %}
+    {% set maxSelect = chatbotRoutes.maxMultiSelect | default(3) %}
 
     <div class="vf-chatbot-selector__header">
       <span data-max-select="{{ maxSelect }}">Select up to {{ maxSelect }} services</span>
       <a href="#" class="vf-chatbot-selector__clear" data-vf-js-selector-clear>Clear all</a>
     </div>
     {% endif %}
-
-    <ul class="vf-chatbot-selector__list">
-      <!-- Add All services option first -->
-      {% if context.chatbotRoutes.showAllServices %}
-      <li class="vf-chatbot-selector__item{% if context.chatbotRoutes.showAllServices and context.chatbotRoutes.showAllServices %} vf-chatbot-selector__item--selected{% endif %}"
-          data-vf-js-selector-item
-          data-route-id="all">
-        <div class="vf-chatbot-selector__item-content">
-          <div class="vf-chatbot-selector__item-title">All services</div>
-          <div class="vf-chatbot-selector__item-description">This would select all services</div>
-        </div>
-        <span class="vf-chatbot-selector__tick">&#9143;</span>
-      </li>
-      {% endif %}
-      {% for route in context.chatbotRoutes.routes %}
-      <li class="vf-chatbot-selector__item{% if not context.chatbotRoutes.showAllServices and route.selected %} vf-chatbot-selector__item--selected{% endif %}"
-          data-vf-js-selector-item
-          data-route-id="{{ route.id }}">
-        <div class="vf-chatbot-selector__item-content">
-          <div class="vf-chatbot-selector__item-title">{{ route.title }}</div>
-          <div class="vf-chatbot-selector__item-description">{{ route.description }}</div>
-        </div>
-        <span class="vf-chatbot-selector__tick">&#9143;</span>
-      </li>
-      {% endfor %}
+    <ul class="vf-chatbot-selector__list" data-vf-js-chatbot-selector-list>
+      <!-- Routes will be populated dynamically via JavaScript -->
     </ul>
   </div>
+
 </div>

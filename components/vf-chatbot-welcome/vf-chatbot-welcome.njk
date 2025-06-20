@@ -1,41 +1,17 @@
 <div class="vf-chatbot-welcome" data-vf-js-chatbot-welcome>
-  <div class="vf-chatbot-welcome__header">
-    <img src="{{ welcome_icon | default('/assets/vf-chatbot/assets/vf-chatbot--icon-64x64-dark-green.svg') }}" alt="AI Assistant" class="vf-chatbot-welcome__icon">
-    <h2 class="vf-chatbot-welcome__title">{{ welcome_title | default('AI Assistant') }}</h2>
-  </div>
-
   <div class="vf-chatbot-welcome__content">
+    <div class="vf-chatbot-welcome__logo">
+      <img src="/assets/vf-chatbot/assets/vf-chatbot--icon-64x64-dark-green.svg" alt="AI Assistant">
+    </div>
+    <h2 class="vf-chatbot-welcome__title">{{ welcome_title | default('AI assistant') }}</h2>
     <p class="vf-chatbot-welcome__description">
-      {{ welcome_description | default('I can help you find information about our research, services, and more. What would you like to know?') }}
+      {{ welcome_description | default("Welcome! I'm here to help you.") }}
     </p>
-
-    {% if welcome_features %}
-    <div class="vf-chatbot-welcome__features">
-      <h3 class="vf-chatbot-welcome__features-title">I can help with:</h3>
-      <ul class="vf-chatbot-welcome__features-list">
-        {% for feature in welcome_features %}
-        <li class="vf-chatbot-welcome__feature">
-          <span class="vf-chatbot-welcome__feature-icon">✓</span>
-          {{ feature }}
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
   </div>
-
   <div class="vf-chatbot-welcome__suggestions">
-    <h3 class="vf-chatbot-welcome__suggestions-title">Try asking:</h3>
-    <div class="vf-chatbot-welcome__suggestions-list">
-      {% for suggestion in welcome_suggestions %}
-      <button class="vf-chatbot-welcome__suggestion" data-vf-js-chatbot-suggestion="{{ suggestion }}">
-        {{ suggestion }}
-      </button>
-      {% endfor %}
+    <p class="vf-chatbot-welcome__suggestions-title">Try asking me:</p>
+    <div class="vf-chatbot-welcome__suggestions-grid" data-vf-js-chatbot-welcome-suggestions-grid>
+      <!-- Suggestions will be populated dynamically from qa.json -->
     </div>
   </div>
-
-  <button class="vf-chatbot-welcome__start-button" data-vf-js-chatbot-start>
-    Start a conversation
-  </button>
 </div>

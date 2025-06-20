@@ -1,14 +1,22 @@
-title: Chatbot Feedback Component
-label: Chatbot Feedback
-status: alpha
-context:
-  positiveFeedbackOptions:
-    - 'Accurate answer'
-    - 'Easy to understand'
-    - 'Well formatted'
-    - 'Helpful'
-  negativeFeedbackOptions:
-    - 'Inaccurate answer'
-    - 'Did not use context'
-    - 'Poorly formatted'
-    - 'Not helpful'
+title: Chatbot Feedback Form
+variants:
+  - name: positive
+    context:
+      title: "What did you like about this response?"
+      options:
+        - id: "accurate"
+          label: "It's accurate"
+        - id: "helpful"
+          label: "It's helpful"
+        - id: "clear"
+          label: "It's clear"
+  - name: negative
+    context:
+      title: "What was the issue with this response?"
+      options:
+        - id: "inaccurate"
+          label: "It's inaccurate"
+        - id: "unhelpful"
+          label: "It's not helpful"
+        - id: "offensive"
+          label: "It's offensive or unsafe"

@@ -1,43 +1,51 @@
-title: Chatbot Selector Component
-label: Chatbot Selector
-preview: '@preview--components'
-status: alpha
+title: Chatbot Selector
 context:
-  component-type: element
-  # Component configuration
+  component-type: block
+  component-name: vf-chatbot-selector
   chatbotRoutes:
-    multiSelect: false  # Set to true for multi-selection mode
-    showSearch: true    # Show search box if items > 10
-    routes:
-      - id: general
-        title: General Assistant
-        description: General purpose AI assistant for your queries
-        selected: true
-      - id: code
-        title: Code Assistant
-        description: Specialized in helping with code and development tasks
-      - id: science
-        title: Science Assistant
-        description: Expert in scientific and research-related queries
-      - id: data
-        title: Data Analysis Assistant
-        description: Specialized in data analysis and visualization
-      - id: writing
-        title: Writing Assistant
-        description: Helps with writing and content creation
+    multiSelect: false
+    showSearch: true
+    showSearchThreshold: 5
+    routes: []
+    placeholder: "Select option"
+    title: "Selector"
+
 variants:
-  - name: multiSelect
+  - name: llm
+    label: LLM Selector
+    hidden: false
+    context:
+      chatbotRoutes:
+        multiSelect: false
+        showSearch: true
+        showSearchThreshold: 5
+        routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-llms.json"
+        placeholder: "Select LLM"
+        title: "Language Model"
+
+  - name: services-single
+    label: Single Service Selector
+    hidden: false
+    context:
+      chatbotRoutes:
+        multiSelect: false
+        showSearch: true
+        showSearchThreshold: 5
+        routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json"
+        placeholder: "Select service"
+        title: "Service"
+
+  - name: services-multi
+    label: Multi Service Selector
+    hidden: false
     context:
       chatbotRoutes:
         multiSelect: true
-        maxMultiSelect: 3   # Maximum items that can be selected in multiSelect mode
-        routes:
-          - id: general
-            title: General Assistant
-            description: General purpose AI assistant for your queries
-          - id: code
-            title: Code Assistant
-            description: Specialized in helping with code and development tasks
-          - id: science
-            title: Science Assistant
-            description: Expert in scientific and research-related queries
+        maxMultiSelect: 3
+        showSearch: true
+        showAllServices: true
+        showAllServicesSelected: true
+        showSearchThreshold: 5
+        routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json"
+        placeholder: "Select services"
+        title: "Services"
