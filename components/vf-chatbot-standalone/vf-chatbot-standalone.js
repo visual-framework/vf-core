@@ -46,10 +46,6 @@ class VFChatbotStandalone {
       "#loading-indicator-template"
     );
 
-    // // API configuration - Mistral AI
-    // this.API_TOKEN = "";
-    // this.API_URL = "https://api.mistral.ai/v1/chat/completions";
-
     // State
     this.currentAssistant = ""; // Default assistant
     // Load Q&A data
