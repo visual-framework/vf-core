@@ -47,7 +47,7 @@ export class VFChatbotSelector {
     this.searchEl = this.el.querySelector("[data-vf-js-selector-search]");
     this.clearEl = this.el.querySelector("[data-vf-js-selector-clear]");
     this.listItems = this.el.querySelectorAll("[data-vf-js-selector-item]");
-    this.allServicesItem = this.el.querySelector('[data-route-id="all"]'); // "All services" item
+    this.allServicesItem = this.el.querySelector('[data-route-id="all"]');
 
     // Initialize dropdown as closed
     if (this.dropdownEl) {
@@ -57,24 +57,36 @@ export class VFChatbotSelector {
     // Bind events
     this.bindEvents();
 
-    // Initialize selected items and update display
-    let initSelection = false;
+    // Check if any items are pre-selected (not including "All services")
+    let hasPreSelectedItems = false;
     this.listItems.forEach(item => {
+      const itemId = item.getAttribute("data-route-id");
       if (item.classList.contains("vf-chatbot-selector__item--selected")) {
-        this.selectedItems.add(item.getAttribute("data-route-id"));
-        initSelection = true;
+        if (itemId !== "all") {
+          // Only count non-"All services" items as pre-selected
+          this.selectedItems.add(itemId);
+          hasPreSelectedItems = true;
+        }
       }
     });
 
-    // Initialize with "All services" if no selection
-    const hasSelectedItems = Array.from(this.listItems).some(
-      item =>
-        item !== this.allServicesItem &&
-        item.classList.contains("vf-chatbot-selector__item--selected")
-    );
-
-    if (!hasSelectedItems) {
+    // If no items are pre-selected, default to "All services"
+    if (!hasPreSelectedItems && this.showAllServices) {
       this.selectAllServices();
+    } else if (!hasPreSelectedItems && !this.showAllServices) {
+      // If no "All services" option and no pre-selection, select first item for single-select
+      if (!this.isMultiselect && this.listItems.length > 0) {
+        const firstItem = this.listItems[0];
+        const firstItemId = firstItem.getAttribute("data-route-id");
+        this.selectedItems.add(firstItemId);
+        firstItem.classList.add("vf-chatbot-selector__item--selected");
+      }
+    } else if (hasPreSelectedItems) {
+      // If items are pre-selected, ensure "All services" is not selected
+      this.allServicesSelected = false;
+      if (this.allServicesItem) {
+        this.allServicesItem.classList.remove("vf-chatbot-selector__item--selected");
+      }
     }
 
     // Update display after initial selection
@@ -88,6 +100,10 @@ export class VFChatbotSelector {
 
     // Clear existing list
     listEl.innerHTML = "";
+
+    // Check if any routes have pre-selected state
+    const hasPreSelectedRoutes = this.routes.some(route => route.selected);
+
     // Add "All services" option if enabled
     if (this.showAllServices) {
       const allServicesItem = document.createElement("li");
@@ -95,24 +111,33 @@ export class VFChatbotSelector {
       allServicesItem.setAttribute("data-vf-js-selector-item", "");
       allServicesItem.setAttribute("data-route-id", "all");
       allServicesItem.setAttribute("data-title", "All services");
-      if (this.showAllServicesSelected) {
+
+      if (!hasPreSelectedRoutes && this.showAllServicesSelected) {
         allServicesItem.className += " vf-chatbot-selector__item--selected";
         allServicesItem.setAttribute("data-selected", "true");
       }
+
       allServicesItem.innerHTML = `<div class="vf-chatbot-selector__item-content">
           <div class="vf-chatbot-selector__item-title">All services</div>
           <div class="vf-chatbot-selector__item-description">This would select all services</div>
         </div>
-        <span class="vf-chatbot-selector__tick">&#9143;</span>`;
+        <span class="vf-chatbot-selector__tick">
+          <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.8478 19.4278C6.33162 19.4208 5.82376 19.2967 5.36257 19.0647C4.90137 18.8328 4.49889 18.4991 4.18551 18.0889L0.426086 13.8152C0.149005 13.4712 0.0154068 13.0335 0.0531476 12.5934C0.0908883 12.1533 0.297055 11.7447 0.62866 11.4529C0.960265 11.1611 1.39171 11.0085 1.83304 11.0271C2.27438 11.0456 2.69152 11.2338 2.99751 11.5523L6.52037 15.562C6.55956 15.6066 6.60755 15.6425 6.66133 15.6675C6.71511 15.6925 6.77349 15.7061 6.83279 15.7074C6.89209 15.7087 6.95101 15.6976 7.00582 15.675C7.06063 15.6523 7.11015 15.6185 7.15123 15.5758L21.0369 1.10375C21.1921 0.940538 21.3778 0.809473 21.5836 0.71804C21.7893 0.626608 22.0111 0.576599 22.2362 0.570868C22.4613 0.565137 22.6853 0.603797 22.8954 0.684641C23.1056 0.765484 23.2977 0.886928 23.4609 1.04204C23.6242 1.19715 23.7552 1.38289 23.8467 1.58865C23.9381 1.79441 23.9881 2.01617 23.9938 2.24126C23.9996 2.46635 23.9609 2.69036 23.8801 2.90051C23.7992 3.11066 23.6778 3.30282 23.5227 3.46604L9.46209 18.2655C9.1402 18.6414 8.7385 18.9409 8.28624 19.1419C7.83398 19.343 7.34257 19.4406 6.8478 19.4278Z" fill="#54585A"/>
+          </svg>
+        </span>`;
       listEl.appendChild(allServicesItem);
     }
+
     // Add route items
     this.routes.forEach(route => {
       const item = document.createElement("li");
       item.className = "vf-chatbot-selector__item";
-      if (!this.showAllServices && route.selected) {
+
+      if (route.selected) {
         item.className += " vf-chatbot-selector__item--selected";
       }
+
       item.setAttribute("data-vf-js-selector-item", "");
       item.setAttribute("data-route-id", route.id);
       item.setAttribute("data-title", route.title);
@@ -126,70 +151,128 @@ export class VFChatbotSelector {
               : ""
           }
         </div>
-        <span class="vf-chatbot-selector__tick">&#9143;</span>`;
+        <span class="vf-chatbot-selector__tick">
+          <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.8478 19.4278C6.33162 19.4208 5.82376 19.2967 5.36257 19.0647C4.90137 18.8328 4.49889 18.4991 4.18551 18.0889L0.426086 13.8152C0.149005 13.4712 0.0154068 13.0335 0.0531476 12.5934C0.0908883 12.1533 0.297055 11.7447 0.62866 11.4529C0.960265 11.1611 1.39171 11.0085 1.83304 11.0271C2.27438 11.0456 2.69152 11.2338 2.99751 11.5523L6.52037 15.562C6.55956 15.6066 6.60755 15.6425 6.66133 15.6675C6.71511 15.6925 6.77349 15.7061 6.83279 15.7074C6.89209 15.7087 6.95101 15.6976 7.00582 15.675C7.06063 15.6523 7.11015 15.6185 7.15123 15.5758L21.0369 1.10375C21.1921 0.940538 21.3778 0.809473 21.5836 0.71804C21.7893 0.626608 22.0111 0.576599 22.2362 0.570868C22.4613 0.565137 22.6853 0.603797 22.8954 0.684641C23.1056 0.765484 23.2977 0.886928 23.4609 1.04204C23.6242 1.19715 23.7552 1.38289 23.8467 1.58865C23.9381 1.79441 23.9881 2.01617 23.9938 2.24126C23.9996 2.46635 23.9609 2.69036 23.8801 2.90051C23.7992 3.11066 23.6778 3.30282 23.5227 3.46604L9.46209 18.2655C9.1402 18.6414 8.7385 18.9409 8.28624 19.1419C7.83398 19.343 7.34257 19.4406 6.8478 19.4278Z" fill="#54585A"/>
+          </svg>
+        </span>`;
 
       listEl.appendChild(item);
     });
 
-    // Re-bind events after updating list
+    // Update references and re-bind events ONCE
     this.listItems = this.el.querySelectorAll("[data-vf-js-selector-item]");
     this.allServicesItem = this.el.querySelector('[data-route-id="all"]');
-    this.bindEvents();
+
+    // Only bind list item events (don't call full bindEvents or init)
+    this.bindListItemEvents();
+
+    // Handle initial selections for loaded routes
+    this.handleInitialSelections();
   }
 
+  // New method to bind only list item events
+  bindListItemEvents() {
+    this.listItems.forEach(item => {
+      // Remove any existing listeners first
+      item.removeEventListener("click", this.itemClickHandler);
+
+      // Create bound handler
+      this.itemClickHandler = (e) => {
+        e.stopPropagation();
+        this.handleItemSelection(item);
+      };
+
+      // Add new listener
+      item.addEventListener("click", this.itemClickHandler);
+    });
+  }
+
+  // New method to handle initial selections without re-binding events
+  handleInitialSelections() {
+    // Don't reset the selectedItems Set here - it may already have pre-selected items
+    let hasPreSelectedItems = this.selectedItems.size > 0; // Check existing selectedItems first
+
+    // Also check DOM for any additional pre-selected items
+    this.listItems.forEach(item => {
+      const itemId = item.getAttribute("data-route-id");
+      if (item.classList.contains("vf-chatbot-selector__item--selected")) {
+        if (itemId !== "all") {
+          this.selectedItems.add(itemId);
+          hasPreSelectedItems = true;
+        }
+      }
+    });
+
+    // Set default selections only if no items are pre-selected
+    if (!hasPreSelectedItems && this.showAllServices && this.showAllServicesSelected) {
+      this.selectAllServices();
+    } else if (hasPreSelectedItems) {
+      // If items are pre-selected, ensure "All services" is not selected
+      this.allServicesSelected = false;
+      if (this.allServicesItem) {
+        this.allServicesItem.classList.remove("vf-chatbot-selector__item--selected");
+      }
+    }
+
+    // Update display
+    this.updateSelectionDisplay();
+    this.updateClearButton();
+  }
+
+  // Update bindEvents to store handlers for cleanup
   bindEvents() {
     // Toggle dropdown
     if (this.titleEl) {
-      // Remove any existing listeners first
       this.titleEl.removeEventListener("click", this.toggleDropdownHandler);
-
-      // Create a bound handler that we can reference later
       this.toggleDropdownHandler = e => {
-        e.preventDefault(); // Prevent default behavior
-        e.stopImmediatePropagation(); // Stop multiple event triggers
+        e.preventDefault();
+        e.stopImmediatePropagation();
         this.toggleDropdown();
       };
-
-      // Add the new listener
       this.titleEl.addEventListener("click", this.toggleDropdownHandler);
     }
 
     // Search functionality
     if (this.searchEl) {
-      this.searchEl.addEventListener("input", e => {
+      this.searchEl.removeEventListener("input", this.searchHandler);
+      this.searchHandler = e => {
         e.stopPropagation();
         this.handleSearch(e.target.value);
-      });
+      };
+      this.searchEl.addEventListener("input", this.searchHandler);
     }
 
     // Clear all selections
     if (this.clearEl) {
-      this.clearEl.addEventListener("click", e => {
+      this.clearEl.removeEventListener("click", this.clearHandler);
+      this.clearHandler = e => {
         e.preventDefault();
         e.stopPropagation();
         this.clearAllSelections();
-      });
+      };
+      this.clearEl.addEventListener("click", this.clearHandler);
     }
 
-    // List item selection
-    this.listItems.forEach(item => {
-      item.addEventListener("click", e => {
-        e.stopPropagation();
-        this.handleItemSelection(item);
-      });
-    });
+    // Bind list items
+    this.bindListItemEvents();
 
-    // Close dropdown when clicking outside
-    document.addEventListener("click", e => {
-      if (!this.el.contains(e.target)) {
-        this.closeDropdown();
-      }
-    });
+    // Document click handler (only add once)
+    if (!this.documentClickHandler) {
+      this.documentClickHandler = e => {
+        if (!this.el.contains(e.target)) {
+          this.closeDropdown();
+        }
+      };
+      document.addEventListener("click", this.documentClickHandler);
+    }
 
-    // Prevent dropdown from closing when clicking inside
-    this.dropdownEl?.addEventListener("click", e => {
-      e.stopPropagation();
-    });
+    // Dropdown click handler
+    if (this.dropdownEl) {
+      this.dropdownEl.removeEventListener("click", this.dropdownClickHandler);
+      this.dropdownClickHandler = e => e.stopPropagation();
+      this.dropdownEl.addEventListener("click", this.dropdownClickHandler);
+    }
   }
 
   toggleDropdown() {
@@ -217,9 +300,10 @@ export class VFChatbotSelector {
       const title = item
         .querySelector(".vf-chatbot-selector__item-title")
         .textContent.toLowerCase();
-      const description = item
-        .querySelector(".vf-chatbot-selector__item-description")
-        .textContent.toLowerCase();
+
+      const descriptionEl = item.querySelector(".vf-chatbot-selector__item-description");
+      const description = descriptionEl ? descriptionEl.textContent.toLowerCase() : "";
+
       const matches =
         title.includes(searchQuery) || description.includes(searchQuery);
       item.style.display = matches ? "flex" : "none";
@@ -286,16 +370,82 @@ export class VFChatbotSelector {
     this.dispatchSelectionEvent();
   }
 
+  handleItemClick(item) {
+    const itemId = item.getAttribute("data-route-id");
+
+    if (itemId === "all") {
+      // Handle "All services" selection
+      this.selectAllServices();
+    } else {
+      // Handle individual item selection
+      if (this.isMultiselect) {
+        // Multi-select logic
+        if (this.selectedItems.has(itemId)) {
+          // Deselect item
+          this.selectedItems.delete(itemId);
+          item.classList.remove("vf-chatbot-selector__item--selected");
+        } else {
+          // Select item and ensure we don't exceed max selection
+          if (this.selectedItems.size < this.maxMultiSelect) {
+            this.selectedItems.add(itemId);
+            item.classList.add("vf-chatbot-selector__item--selected");
+          }
+        }
+
+        // If we deselected all individual items, select "All services"
+        if (this.selectedItems.size === 0 && this.showAllServices) {
+          this.selectAllServices();
+        } else {
+          // Deselect "All services" when individual items are selected
+          this.allServicesSelected = false;
+          if (this.allServicesItem) {
+            this.allServicesItem.classList.remove("vf-chatbot-selector__item--selected");
+          }
+        }
+      } else {
+        // Single-select logic
+        // Clear all previous selections
+        this.selectedItems.clear();
+        this.listItems.forEach(li => {
+          li.classList.remove("vf-chatbot-selector__item--selected");
+        });
+
+        // Select the clicked item
+        this.selectedItems.add(itemId);
+        item.classList.add("vf-chatbot-selector__item--selected");
+
+        // Deselect "All services"
+        this.allServicesSelected = false;
+
+        // Close dropdown for single-select
+        this.closeDropdown();
+      }
+    }
+
+    // Update display and clear button
+    this.updateSelectionDisplay();
+    this.updateClearButton();
+  }
+
   selectAllServices() {
-    // Clear all selections
+    if (!this.showAllServices) return;
+
+    // Clear individual selections
     this.selectedItems.clear();
+
+    // Remove selected class from all individual items
     this.listItems.forEach(item => {
-      item.classList.remove("vf-chatbot-selector__item--selected");
+      const itemId = item.getAttribute("data-route-id");
+      if (itemId !== "all") {
+        item.classList.remove("vf-chatbot-selector__item--selected");
+      }
     });
 
     // Select "All services"
     this.allServicesSelected = true;
-    this.allServicesItem?.classList.add("vf-chatbot-selector__item--selected");
+    if (this.allServicesItem) {
+      this.allServicesItem.classList.add("vf-chatbot-selector__item--selected");
+    }
   }
 
   clearAllSelections() {

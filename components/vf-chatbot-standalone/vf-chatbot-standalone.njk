@@ -20,9 +20,9 @@
     multiSelect: true,
     maxMultiSelect: 3,
     showSearch: true,
+    showSearchThreshold: 5,
     showAllServices: true,
     showAllServicesSelected: true,
-    showSearchThreshold: 5,
     routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
     placeholder: "Select services",
     title: "Services"
@@ -108,6 +108,12 @@
         <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg" alt="Send request">
       </button>
     </div>
+    {% if footnote %}
+    <div class="vf-chatbot-standalone__footnote" data-vf-js-chatbot-standalone-footnote>
+      {{ footnote }}
+    </div>
+    {% endif %}
+
 
     <template id="feedback-positive-template">
       {% render "@vf-chatbot-feedback--positive" %}
