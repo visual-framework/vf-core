@@ -1,18 +1,17 @@
 .vf-chatbot-welcome {
-  width: 100%;
+  margin: 0 auto;
+  width: 55%;
 
   &__content {
-    // width: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    min-height: 40vh;
   }
 
   &__logo {
-    // margin-bottom: 16px;
 
     img {
       width: 64px;
@@ -118,8 +117,10 @@
     }
   }
 
+  @media (max-width:$vf-breakpoint--md) {
+    width: 95%;
+  }
   @media (max-width: 600px) {
-    display: flex;
-    flex-direction: column;
+    width: 88%;
   }
 }

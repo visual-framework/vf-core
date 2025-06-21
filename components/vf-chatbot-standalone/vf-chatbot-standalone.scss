@@ -5,10 +5,10 @@
 
 .vf-chatbot-standalone {
   display: flex;
+  justify-content: end;
   border-radius: 4px 4px 4px 4px;
   flex-direction: column;
-  height: 91vh;
-  margin: 8px 36px 16px 36px;
+  height: 90vh;
 
   &__container {
     display: flex;
@@ -22,9 +22,7 @@
   }
 
   &__header {
-    margin: 16px 36px !important;
-    // height: 64px;
-    // background: #ffffff;
+    margin-bottom: 24px;
     color: #000000;
     display: flex;
     align-items: center;
@@ -74,91 +72,7 @@
   }
 
   &__content {
-    justify-content: space-evenly;
-    height: 80vh;
-
-    width: 55%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @media (max-width:$vf-breakpoint--md) {
-      width: 95%;
-    }
-    @media (max-width: 600px) {
-      justify-content: flex-end;
-      width: 88%;
-      min-height: 300px;
-    }
-  }
-
-  // Welcome screen styles
-  &__welcome {
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    padding-top: 24px;
-
-    &-content {
-      width: 100%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    &-logo {
-      margin-bottom: 16px;
-
-      img {
-        width: 48px;
-        height: 48px;
-      }
-    }
-
-    &-title {
-      font-size: 24px;
-      font-weight: 500;
-      color: #1A1A1A;
-      margin: 0 0 12px 0;
-    }
-
-    &-description {
-      font-size: 16px;
-      line-height: 1.5;
-      color: #666666;
-      height: 20vh;
-      max-width: 450px;
-    }
-
-    &-suggestions {
-      margin-top: 16px;
-      width: 100%;
-
-      &-title {
-        font-size: 16px;
-        font-weight: 500;
-        color: #1A1A1A;
-        margin: 0 0 16px 0;
-      }
-
-      &-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-items: left; // Center items horizontally
-        gap: 8px;
-
-        // Ensure each grid cell only takes the width it needs
-        & > * {
-          width: 100%;
-          min-width: min-content;
-        }
-        @media (max-width: 480px) {
-          grid-template-columns: 1fr;
-        }
-      }
-    }
+    display: contents;
   }
 
   &__loading {
@@ -235,36 +149,26 @@
   }
 
   &__messages {
-    // display: flex;
+    margin: 0 auto;
     flex-direction: column;
-    // flex: 1 1 auto;
     overflow-y: auto;
-    width: 100%;
-    padding-top: 16px;
-    min-height: 0; // Required for flexbox scroll
-    max-height: 100%; // Ensures it doesn't overflow the parent
-
-    @media (max-width: 768px) {
-      padding: 16px;
+    width: 55%;
+    @media (max-width:$vf-breakpoint--md) {
+      width: 95%;
+    }
+    @media (max-width: 600px) {
+      width: 88%;
     }
   }
 
   &__disclaimer {
-    max-width: 51%;
-    width: max-content;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    bottom: 0px;
-    z-index: 1000;
-    padding-bottom: 4%;
+    margin: 0 auto;
+    width: 55%;
     @media (max-width:$vf-breakpoint--md) {
-      max-width: 85%;
+      width: 95%;
     }
     @media (max-width: 600px) {
-      max-width: 75%;
+      width: 88%;
     }
   }
 }
@@ -308,13 +212,6 @@
     font-size: 16px;
     line-height: 1.5;
   }
-}
-
-.vf-chatbot-standalone__welcome-logo img {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 16px;
-  object-fit: contain;
 }
 
 .vf-chatbot-message--user {

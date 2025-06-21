@@ -39,12 +39,8 @@ class VFChatbotStandalone {
     );
 
     this.userTemplate = this.container.querySelector("#user-message-template");
-    this.assistantTemplate = this.container.querySelector(
-      "#assistant-message-template"
-    );
-    this.loadingTemplate = this.container.querySelector(
-      "#loading-indicator-template"
-    );
+    this.assistantTemplate = this.container.querySelector( "#assistant-message-template");
+    this.loadingTemplate = this.container.querySelector("#loading-indicator-template");
 
     // State
     this.currentAssistant = ""; // Default assistant
