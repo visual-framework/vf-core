@@ -78,8 +78,7 @@ import { initVFChatbotModal } from 'vf-chatbot-modal/vf-chatbot-modal.js';
 import { initVFChatbotStandalone } from 'vf-chatbot-standalone/vf-chatbot-standalone.js';
 import { initVFChatbotFab } from 'vf-chatbot-fab/vf-chatbot-fab.js';
 import { initVFChatbotWelcome } from 'vf-chatbot-welcome/vf-chatbot-welcome.js';
-import { initVFChatbotPrompt } from 'vf-chatbot-prompt/vf-chatbot-prompt.js';
-import { VFChatbotFeedback } from 'vf-chatbot-feedback/vf-chatbot-feedback.js';
+// import { VFChatbotFeedback } from 'vf-chatbot-feedback/vf-chatbot-feedback.js';
 import { initVFChatbotSelector } from 'vf-chatbot-selector/vf-chatbot-selector.js';
 // Initialize all chatbot components when DOM is loaded
 // Initialize all chatbot components once when the DOM is loaded
@@ -88,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initVFChatbotModal();
   initVFChatbotFab();
   initVFChatbotWelcome();
-  initVFChatbotPrompt();
+  // initVFChatbotPrompt();
   const selectorEl = document.querySelector('[data-vf-js-chatbot-selector]');
   if (selectorEl) {
     initVFChatbotSelector(selectorEl);

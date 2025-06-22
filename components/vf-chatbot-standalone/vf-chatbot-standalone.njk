@@ -65,19 +65,7 @@
       <!-- Messages container -->
       <div class="vf-chatbot-standalone__messages" data-vf-js-chatbot-standalone-messages>
         <!-- Messages will be added here dynamically -->
-
-        <!-- Loading indicator -->
-        <div class="vf-chatbot-standalone__loading" data-vf-js-chatbot-standalone-loading style="display: none;">
-          <div class="vf-chatbot-message vf-chatbot-message--assistant">
-            <div class="vf-chatbot-message__avatar">
-              <img src="{{ ai_icon | default('../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg') }}" alt="AI Assistant">
-              <span class="vf-chatbot-message__avatar-name">AI Assistant</span>
-            </div>
-            <div class="vf-chatbot-standalone__loading-dots">
-              ...
-            </div>
-          </div>
-        </div>
+        <!-- Loading indicator will be inserted here when needed -->
       </div>
       {% if disclaimer %}
         <div class="vf-chatbot-standalone__disclaimer" data-vf-js-chatbot-standalone-disclaimer>
@@ -151,10 +139,14 @@
 
     <template id="loading-indicator-template">
       {% render "@vf-chatbot-prompt", {
-      type: "assistant",
-      isLoading: true,
-      avatar: { src: "...", alt: "AI Assistant", name: "AI Assistant" }
-    } %}
+        type: "assistant",
+        isLoading: true,
+        avatar: {
+          src: "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
+          alt: "AI Assistant",
+          name: "AI Assistant"
+        }
+      } %}
     </template>
 
     <template id="action-prompts-template">

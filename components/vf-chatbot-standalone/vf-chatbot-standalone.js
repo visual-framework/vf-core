@@ -16,9 +16,6 @@ class VFChatbotStandalone {
     this.messagesContainer = this.container.querySelector(
       "[data-vf-js-chatbot-standalone-messages]"
     );
-    this.loadingIndicator = this.container.querySelector(
-      "[data-vf-js-chatbot-standalone-loading]"
-    );
     this.input = this.container.querySelector(
       "[data-vf-js-chatbot-standalone-input]"
     );
@@ -28,9 +25,7 @@ class VFChatbotStandalone {
     this.disclaimer = this.container.querySelector(
       "[data-vf-js-chatbot-standalone-disclaimer]"
     );
-    this.disclaimerCloseBtn = this.disclaimer.querySelector(
-      ".vf-button--dismiss"
-    );
+    this.disclaimerCloseBtn = this.disclaimer?.querySelector(".vf-button--dismiss");
 
     // Selector element
     this.selectorEl = this.container.querySelector(
@@ -165,7 +160,7 @@ class VFChatbotStandalone {
   sendUserMessage(text) {
     if (!text || !this.messagesContainer) return;
     const userMessage = this.userTemplate.content.cloneNode(true);
-    const content = userMessage.querySelector(".vf-chatbot-message__content");
+    const content = userMessage.querySelector(".vf-chatbot-message__content-prompt");
 
     // Set text content
     content.textContent = text;
@@ -183,19 +178,22 @@ class VFChatbotStandalone {
   }
 
   processUserMessage(text) {
-    // Show loading state
+    // Show loading state immediately
     this.setLoadingState(true);
 
     // Check if we have a predefined answer
     if (this.qaData && this.qaData[text]) {
-      const response = this.qaData[text];
-      this.addAssistantResponse(
-        response.answer || '',
-        response.sources || [],
-        response.prompts || []
-      );
-      this.setLoadingState(false);
-      this.scrollToBottom();
+      // Add delay even for predefined answers to show loading indicator
+      setTimeout(() => {
+        const answer = this.qaData[text];
+        this.addAssistantResponse(
+          answer.answer || answer.html,
+          answer.sources || [],
+          answer.prompts || []
+        );
+        this.setLoadingState(false);
+        this.scrollToBottom();
+      }, 800); // 800ms delay for predefined answers
       return;
     } else if (this.callExternalAPI) {
       // Send custom event for external API call
@@ -261,19 +259,22 @@ class VFChatbotStandalone {
           this.scrollToBottom();
         }
       }, 10000); // 10 second timeout
+    } else {
+      // Add delay for fallback response as well
+      setTimeout(() => {
+        // Use random fallback response when API is not available
+        const fallbackResponse = this.fallbackResponses[
+          Math.floor(Math.random() * this.fallbackResponses.length)
+        ];
+        this.addAssistantResponse(
+          fallbackResponse["answer"],
+          [],
+          fallbackResponse["prompts"] || []
+        );
+        this.setLoadingState(false);
+        this.scrollToBottom();
+      }, 600); // 600ms delay for fallback responses
     }
-    // Use random fallback response
-    const fallbackResponse = this.fallbackResponses[
-      Math.floor(Math.random() * this.fallbackResponses.length)
-    ];
-    this.addAssistantResponse(
-      fallbackResponse["answer"],
-      [],
-      fallbackResponse["prompts"] || []
-    );
-    this.setLoadingState(false);
-    this.scrollToBottom();
-    return;
   }
 
   // Fix the addAssistantResponse method to avoid Nunjucks in JS
@@ -281,7 +282,7 @@ class VFChatbotStandalone {
     if (!this.assistantTemplate || !this.messagesContainer) return;
 
     const assistantMessage = this.assistantTemplate.content.cloneNode(true);
-    const content = assistantMessage.querySelector(".vf-chatbot-message__content");
+    const content = assistantMessage.querySelector(".vf-chatbot-message__content-prompt");
     content.innerHTML = text;
 
     // Initialize the feedback component for this message
@@ -344,10 +345,28 @@ class VFChatbotStandalone {
   }
 
   setLoadingState(isLoading) {
-    if (this.loadingIndicator) {
-      this.loadingIndicator.style.display = isLoading ? "flex" : "none";
+    if (isLoading) {
+      // Create loading indicator from template if it doesn't exist
+      if (!this.loadingIndicator) {
+        const loadingTemplate = this.container.querySelector('#loading-indicator-template');
+        if (loadingTemplate) {
+          const loadingContent = loadingTemplate.content.cloneNode(true);
+          this.loadingIndicator = loadingContent.firstElementChild;
+          this.messagesContainer.appendChild(this.loadingIndicator);
+        } else {
+          console.warn('Loading indicator template not found');
+          return;
+        }
+      }
+      this.loadingIndicator.style.display = 'block';
+    } else {
+      // Hide loading indicator
+      if (this.loadingIndicator) {
+        this.loadingIndicator.style.display = 'none';
+      }
     }
 
+    // Disable/enable input controls
     if (this.sendBtn) {
       this.sendBtn.disabled = isLoading;
     }

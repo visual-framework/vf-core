@@ -1,33 +1,23 @@
 <div class="vf-chatbot-message vf-chatbot-message--{{ type }}{% if isLoading %} vf-chatbot-message--loading{% endif %}">
   <div class="vf-chatbot-message__avatar">
-    {% if type == "user" and avatar and avatar.name %}
+    {% if avatar and avatar.name and type === 'user' %}
       <span class="vf-chatbot-message__avatar-name">{{ avatar.name }}</span>
     {% endif %}
     {% if avatar and avatar.src %}
       <img src="{{ avatar.src }}" alt="{{ avatar.alt }}">
     {% endif %}
-    {%  if type == "assistant" and avatar and avatar.name %}
+    {% if avatar and avatar.name and type === 'assistant' %}
       <span class="vf-chatbot-message__avatar-name">{{ avatar.name }}</span>
     {% endif %}
   </div>
-  <div class="vf-chatbot-message__content">
+  <div class="vf-chatbot-message__content vf-u-padding--200">
     {% if isLoading %}
-      <div class="vf-chatbot-loading-dots"><div></div><div></div><div></div></div>
+      <div class="vf-chatbot-message__content-loading-dots">
+        ...
+      </div>
     {% else %}
-      {{ content | safe }}
-    {% endif %}
-
-    {# Render sources if present #}
-    {% if sources and sources.length > 0 %}
-      {% render "@vf-chatbot-sources", { sources: sources } %}
-    {% endif %}
-
-    {# Render prompts if present #}
-    {% if prompts and prompts.length > 0 %}
-      <div class="vf-chatbot-prompts">
-        {% for prompt in prompts %}
-          {% render "@vf-chatbot-prompt", prompt %}
-        {% endfor %}
+      <div class="vf-chatbot-message__content-prompt vf-u-padding__left--200  vf-u-padding__right--200">
+        {{ content | safe }}
       </div>
     {% endif %}
   </div>
