@@ -97,7 +97,7 @@ export class VFChatbotFeedback {
   submitFeedback(formContainer) {
     // Show thank you message using vf-banner (dismissible)
     formContainer.innerHTML = `
-      <div class="vf-banner vf-banner--success" aria-label="Thank you" data-vf-js-banner>
+      <div class="vf-banner" aria-label="Thank you" data-vf-js-banner>
         <div class="vf-banner__content">
           <p class="vf-banner__text">Thank you for your feedback!</p>
           <button role="button" aria-label="close notification banner" class="vf-button vf-button--icon vf-button--dismiss | vf-banner__button">

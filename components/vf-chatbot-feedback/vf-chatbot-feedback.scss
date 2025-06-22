@@ -1,5 +1,4 @@
 .vf-chatbot-feedback {
-  font-family: inherit;
 
   &__actions {
     display: flex;
@@ -13,17 +12,16 @@
     border: none;
     padding: 10px;
     cursor: pointer;
-    color: #666;
     transition: color 0.2s, transform 0.2s;
     display: inline-flex;
     align-items: center;
 
     &:hover {
-      background-color: #E4E4E4;
+      background-color: var(--vf-color--neutral--200);
     }
 
     &--solid {
-      color: #000;
+      color: var(--vf-color--neutral--900);
 
       svg {
         fill: currentColor;
@@ -34,14 +32,14 @@
       display: block;
     }
   }
+  &__form-container {
+    border-radius: $vf-radius--xs;
+  }
 
   &__form {
-    margin-top: 1rem;
 
     &-content {
-      background: #ffffff;
-      border: 1px solid #e5e5e5;
-      padding: 1rem;
+      background-color: var(--vf-color--neutral--0);
 
       &-header {
         display: flex;
@@ -53,10 +51,8 @@
   }
 
   &__title {
-    color: #1A1C1A;
-    font-size: 19px;
-    font-weight: 500;
-    line-height: 28.50px;
+    @include set-type(text-heading--5);
+    margin-bottom: 0;
     word-wrap: break-word;
   }
 
@@ -64,7 +60,6 @@
     display: inline-flex;
     gap: 0.5rem;
     flex-direction: row;
-    margin-bottom: 1rem;
     flex-wrap: wrap;
 
     @media (max-width: 480px) {
@@ -73,21 +68,16 @@
   }
 
   &__option {
-    @extend .vf-chatbot-action-prompt;
-    // width: 100%;
+    @include set-type(text-body--5);
     text-align: left;
     padding: 10px;
-    background-color: #ffffff;
-    color: #3B6FB6;
-    border-radius: 4px;
-    border: 1px solid #224B9A;
+    background-color: var(--vf-color--neutral--0);
+    color: var(--vf-color--blue);
+    border-radius: $vf-radius--xs;
+    border: 1px solid var(--vf-color--blue);
     min-width: fit-content;
     cursor: pointer;
-    // flex: 1 1 150px;
     transition: background 0.2s;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22.40px;
     word-wrap: break-word;
 
     &--selected {
@@ -96,70 +86,31 @@
   }
 
   &__comment-title {
-    color: #1A1C1A;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 27.20px;
+    @include set-type(text-body--3);
     word-wrap: break-word
   }
 
   &__comment {
+    @include set-type(text-body--3);
     width: 99%;
-    margin-bottom: 24px;
-    font-family: inherit;
-    font-size: 0.875rem;
-    background: #ffffff;
+    background-color: var(--vf-color--neutral--0);
   }
 
   &__submit {
-    padding: 0.75rem;
-    background: #FFFFFF;
-    color: #3B6FB6;
-    border: 2px solid #3B6FB6;
-    font-weight: 500;
+    @include set-type(text-heading--5);
+    margin-bottom: 0;
+    background-color: var(--vf-color--neutral--0);
+    color: var(--vf-color--blue);
+    border: 2px solid var(--vf-color--blue);
     cursor: pointer;
     transition: background 0.2s;
   }
 
   .vf-banner {
-    position: relative;
-    padding: 1rem;
-    border-radius: 4px;
-    margin-top: 1rem;
-
+    @extend .vf-banner;
+    background-color: var(--vf-color--neutral--0);
     &__content {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    &__close {
-      background: none;
-      border: none;
-      padding: 0.25rem;
-      cursor: pointer;
-      color: currentColor;
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
-
-      &:hover {
-        opacity: 1;
-      }
-
-      svg {
-        display: block;
-      }
-    }
-
-    &--success {
-      background-color: #ffffff;
-      color: #1A1C1A;
-    }
-
-    &--error {
-      background-color: #ffffff;
-      color: #1A1C1A;
     }
   }
 }
