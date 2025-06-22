@@ -16,32 +16,27 @@
     img {
       width: 64px;
       height: 64px;
-      margin-bottom: 16px;
       object-fit: contain;
     }
   }
 
   &__title {
-    font-size: 24px;
-    font-weight: 500;
-    color: #1A1A1A;
-    margin: 0 0 12px 0;
+    @include set-type(text-heading--3);
+    margin-bottom: 0;
   }
 
   &__description {
-    font-size: 16px;
-    color: #666666;
+    @include set-type(text-body--3);
+      margin-bottom: 0;
   }
 
   &__suggestions {
-    // margin-top: 16px;
     width: 100%;
 
     &-title {
-      font-size: 16px;
-      font-weight: 500;
-      color: #1A1A1A;
-      margin: 0 0 16px 0;
+      @include set-type(text-body--5);
+      margin-bottom: 0;
+      text-align: center;
     }
 
     &-grid {
@@ -58,62 +53,6 @@
       @media (max-width: 480px) {
         grid-template-columns: 1fr;
       }
-    }
-  }
-
-  &__input-container {
-    margin-top: 32px;
-    width: 100%;
-    max-width: 500px;
-  }
-
-  &__input-wrapper {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    background: #FFFFFF;
-    border: 1px solid #E5E5E5;
-    border-radius: $vf-radius--sm;
-    overflow: hidden;
-  }
-
-  &__input {
-    flex: 1;
-    padding: 16px;
-    border: none;
-    font-size: 16px;
-    line-height: 1.5;
-    background: transparent;
-
-    &:focus {
-      outline: none;
-    }
-
-    &::placeholder {
-      color: #666666;
-    }
-  }
-
-  &__send-button {
-    background: #007AFF;
-    color: #ffffff;
-    border: none;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s ease;
-
-    &:hover {
-      background: darken(#007AFF, 10%);
-    }
-
-    svg {
-      width: 24px;
-      height: 24px;
     }
   }
 
