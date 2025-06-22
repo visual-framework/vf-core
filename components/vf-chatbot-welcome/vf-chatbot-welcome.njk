@@ -11,7 +11,15 @@
   <div class="vf-chatbot-welcome__suggestions">
     <p class="vf-chatbot-welcome__suggestions-title">Try asking me:</p>
     <div class="vf-chatbot-welcome__suggestions-grid" data-vf-js-chatbot-welcome-suggestions-grid>
-      <!-- Suggestions will be populated dynamically from qa.json -->
+      <!-- Suggestions will be populated dynamically from qa.json using the template below -->
     </div>
   </div>
+
+  <!-- Template for welcome suggestions using vf-chatbot-action-prompt -->
+  <template id="welcome-suggestion-template">
+    {% render "@vf-chatbot-action-prompt", {
+      action_text: "",
+      action_url: "#"
+    } %}
+  </template>
 </div>

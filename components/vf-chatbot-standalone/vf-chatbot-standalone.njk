@@ -58,7 +58,7 @@
       {% if welcome_message %}
         {% render "@vf-chatbot-welcome", {
           welcome_title: welcome_title,
-          welcome_description: welcome_description,
+          welcome_description: "Welcome! I'm here to help",
           welcome_message: welcome_message
         } %}
       {% endif %}
@@ -157,18 +157,19 @@
     } %}
     </template>
 
-    {% if prompts and prompts.length > 0 %}
+    <template id="action-prompts-template">
       <div class="vf-chatbot-action-prompts">
-        <div class="vf-chatbot-action-prompts__list">
-          {% for prompt in prompts %}
-            {% render "@vf-chatbot-action-prompt", {
-            action_text: prompt.action_text,
-            action_url: prompt.action_url,
-            action_target: "_blank" if prompt.action_url and not prompt.action_url.startswith("tel:") else "_self"
-          } %}
-          {% endfor %}
+        <div class="vf-chatbot-action-prompts__list" data-vf-js-action-prompts-list>
+          <!-- Individual prompts will be populated here -->
         </div>
       </div>
-    {% endif %}
+    </template>
+
+    <template id="single-action-prompt-template">
+      {% render "@vf-chatbot-action-prompt", {
+        action_text: "",
+        action_url: "#"
+      } %}
+    </template>
   </div>
 </div>

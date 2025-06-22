@@ -2,7 +2,6 @@ import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
 import { initVFChatbotSelector } from "../vf-chatbot-selector/vf-chatbot-selector.js";
 import { initVFChatbotDialog } from "../vf-chatbot-dialog/vf-chatbot-dialog.js";
-import { VFChatbotActionPrompt } from "../vf-chatbot-action-prompt/vf-chatbot-action-prompt.js";
 
 class VFChatbotModal {
   constructor(element) {
@@ -121,7 +120,6 @@ class VFChatbotModal {
 
           // Initialize the action prompt that was just added
           const newPrompt = this.suggestionsGrid.lastElementChild;
-          new VFChatbotActionPrompt(newPrompt);
         });
 
         // Bind click events to new suggestion prompts

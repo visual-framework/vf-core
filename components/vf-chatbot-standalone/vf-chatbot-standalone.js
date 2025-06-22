@@ -2,7 +2,6 @@
 import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
 import { initVFChatbotSelector } from "../vf-chatbot-selector/vf-chatbot-selector.js";
-import { initVFChatbotActionPrompt } from "../vf-chatbot-action-prompt/vf-chatbot-action-prompt.js";
 import { VFChatbotWelcome } from "../vf-chatbot-welcome/vf-chatbot-welcome.js";
 
 class VFChatbotStandalone {
@@ -189,17 +188,80 @@ class VFChatbotStandalone {
 
     // Check if we have a predefined answer
     if (this.qaData && this.qaData[text]) {
-      const answer = this.qaData[text];
+      const response = this.qaData[text];
       this.addAssistantResponse(
-        answer.answer || answer.html,
-        answer.sources || [],
-        answer.prompts || []
+        response.answer || '',
+        response.sources || [],
+        response.prompts || []
       );
       this.setLoadingState(false);
       this.scrollToBottom();
       return;
-    }
+    } else if (this.callExternalAPI) {
+      // Send custom event for external API call
+      const apiCallEvent = new CustomEvent('vf-chatbot:api-call', {
+        bubbles: true,
+        detail: {
+          question: text,
+          assistant: this.currentAssistant,
+          timestamp: Date.now()
+        }
+      });
 
+      // Listen for API response (add listener only once)
+      if (!this.apiResponseListener) {
+        this.apiResponseListener = (event) => {
+          const { response, sources, prompts, error } = event.detail;
+
+          if (error) {
+            // Handle API error - use fallback response
+            console.error('API call failed:', error);
+            const fallbackResponse = this.fallbackResponses[
+              Math.floor(Math.random() * this.fallbackResponses.length)
+            ];
+            this.addAssistantResponse(
+              fallbackResponse["answer"],
+              [],
+              fallbackResponse["prompts"] || []
+            );
+          } else {
+            // Handle successful API response
+            this.addAssistantResponse(
+              response,
+              sources || [],
+              prompts || []
+            );
+          }
+
+          this.setLoadingState(false);
+          this.scrollToBottom();
+        };
+
+        // Add the event listener to the container
+        this.container.addEventListener('vf-chatbot:api-response', this.apiResponseListener);
+      }
+
+      // Dispatch the API call event
+      this.container.dispatchEvent(apiCallEvent);
+
+      // Set a timeout fallback in case the API doesn't respond
+      setTimeout(() => {
+        // Check if we're still in loading state (API didn't respond)
+        if (this.sendBtn && this.sendBtn.disabled) {
+          console.warn('API call timeout - using fallback response');
+          const fallbackResponse = this.fallbackResponses[
+            Math.floor(Math.random() * this.fallbackResponses.length)
+          ];
+          this.addAssistantResponse(
+            fallbackResponse["answer"],
+            [],
+            fallbackResponse["prompts"] || []
+          );
+          this.setLoadingState(false);
+          this.scrollToBottom();
+        }
+      }, 10000); // 10 second timeout
+    }
     // Use random fallback response
     const fallbackResponse = this.fallbackResponses[
       Math.floor(Math.random() * this.fallbackResponses.length)
@@ -236,9 +298,41 @@ class VFChatbotStandalone {
     }
     // Add prompts if available
     if (prompts && prompts.length > 0) {
-      const promptsComponent = initVFChatbotActionPrompt(prompts);
-      if (promptsComponent) {
-        content.appendChild(promptsComponent);
+      const promptsTemplate = this.container.querySelector('#action-prompts-template');
+      const singlePromptTemplate = this.container.querySelector('#single-action-prompt-template');
+
+      if (promptsTemplate && singlePromptTemplate) {
+        // Clone the prompts container template
+        const promptsContainer = promptsTemplate.content.cloneNode(true);
+        const promptsList = promptsContainer.querySelector('[data-vf-js-action-prompts-list]');
+
+        // Create each individual prompt using the single prompt template
+        prompts.forEach(prompt => {
+          const promptEl = singlePromptTemplate.content.cloneNode(true);
+          const link = promptEl.querySelector('.vf-chatbot-action-prompt__link');
+          const wrapper = promptEl.querySelector('.vf-chatbot-action-prompt');
+
+          if (link && wrapper) {
+            link.href = prompt.action_url || '#';
+            link.textContent = prompt.action_text;
+            link.target = prompt.action_url?.startsWith('tel:') ? '_self' : '_blank';
+
+            // Add click event if no URL
+            if (!prompt.action_url) {
+              link.addEventListener('click', (e) => {
+                e.preventDefault();
+                link.dispatchEvent(new CustomEvent('vf-chatbot-action-prompt:click', {
+                  bubbles: true,
+                  detail: { text: prompt.action_text }
+                }));
+              });
+            }
+          }
+
+          promptsList.appendChild(promptEl);
+        });
+
+        content.appendChild(promptsContainer);
       }
     }
     if (feedbackContainer) {

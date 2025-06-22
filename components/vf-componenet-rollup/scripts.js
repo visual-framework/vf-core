@@ -76,7 +76,6 @@ vfTable();
 import { initVFChatbot } from 'vf-chatbot/vf-chatbot.js';
 import { initVFChatbotModal } from 'vf-chatbot-modal/vf-chatbot-modal.js';
 import { initVFChatbotStandalone } from 'vf-chatbot-standalone/vf-chatbot-standalone.js';
-import { initVFChatbotActionPrompt } from 'vf-chatbot-action-prompt/vf-chatbot-action-prompt.js';
 import { initVFChatbotFab } from 'vf-chatbot-fab/vf-chatbot-fab.js';
 import { initVFChatbotWelcome } from 'vf-chatbot-welcome/vf-chatbot-welcome.js';
 import { initVFChatbotPrompt } from 'vf-chatbot-prompt/vf-chatbot-prompt.js';
@@ -87,7 +86,6 @@ import { initVFChatbotSelector } from 'vf-chatbot-selector/vf-chatbot-selector.j
 document.addEventListener("DOMContentLoaded", () => {
   initVFChatbot();
   initVFChatbotModal();
-  initVFChatbotActionPrompt();
   initVFChatbotFab();
   initVFChatbotWelcome();
   initVFChatbotPrompt();

@@ -1,6 +1,5 @@
 .vf-chatbot-action-prompts {
   &__list{
-    margin-top: 16px;
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -10,15 +9,12 @@
   display: inline-block;
 
   &__link {
-    border-radius: 4px;
+    @include set-type(text-body--5);
+    border-radius: $vf-radius--xs;
     display: inline-block;
-    padding: 10px;
-    border: 1px solid var(--vf-color__link); // Thin blue border
-    color: var(--vf-color__link); // Blue text
+    border: 1px solid var(--vf-color__link);
+    color: var(--vf-color__link);
     background-color: #FFFFFF;
-    font-size: 14px;
-    font-weight: 400; // Regular font weight
-    line-height: 1.2;
     text-align: left;
     text-decoration: none; // No underline
     cursor: pointer;
@@ -26,45 +22,24 @@
     width: 100%; // Width based on content
     height: 100%;
     box-sizing: border-box;
-    // white-space: nowrap;
+    margin: 0;
 
     @media (max-width: $vf-breakpoint--sm) {
       white-space: normal;
     }
 
-    &:hover, &:focus {
-      background-color: rgba(75, 127, 209, 0.1); // Light blue background on hover
-      color: #4b7fd1; // Keep text blue on hover
-      text-decoration: none; // No underline on hover
-      outline: none;
-    }
+    // &:hover, &:focus {
+    //   background-color: rgba(75, 127, 209, 0.1); // Light blue background on hover
+    //   color: #4b7fd1; // Keep text blue on hover
+    //   text-decoration: none; // No underline on hover
+    //   outline: none;
+    // }
 
-    &:active {
-      transform: translateY(1px);
-    }
+    // &:active {
+    //   transform: translateY(1px);
+    // }
   }
-
-  // Variants
-  &--small {
-    .vf-chatbot-action-prompt__link {
-      padding: 8px 12px;
-      font-size: 14px;
-    }
+  @media (max-width:$vf-breakpoint--md) {
+    display: contents;
   }
-
-  &--large {
-    .vf-chatbot-action-prompt__link {
-      padding: 16px 24px;
-      font-size: 18px;
-    }
-  }
-
-  &--full-width {
-    display: block;
-    width: 100%;
-  }
-
-    @media (max-width:$vf-breakpoint--md) {
-      display: contents;
-    }
 }

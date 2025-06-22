@@ -46,20 +46,23 @@ export class VFChatbotWelcome {
       .sort(() => 0.5 - Math.random())
       .slice(0, 3);
 
-    // Create suggestion elements
+    // Create suggestion elements using template-based rendering
     randomQuestions.forEach((question, index) => {
-      const suggestionEl = document.createElement("div");
-      suggestionEl.className = `vf-chatbot-action-prompt`;
-      suggestionEl.setAttribute(
-        "data-vf-js-chatbot-welcome-suggestion",
-        question
-      );
+      const suggestionTemplate = document.querySelector('#welcome-suggestion-template');
+      if (suggestionTemplate) {
+        const suggestionEl = suggestionTemplate.content.cloneNode(true);
+        const link = suggestionEl.querySelector('.vf-chatbot-action-prompt__link');
+        const wrapper = suggestionEl.querySelector('.vf-chatbot-action-prompt');
 
-      suggestionEl.innerHTML = `
-        <a href="#" class="vf-chatbot-action-prompt__link">${question}</a>
-      `;
+        if (link && wrapper) {
+          link.textContent = question;
+          wrapper.setAttribute('data-vf-js-chatbot-welcome-suggestion', question);
 
-      this.suggestionsGrid.appendChild(suggestionEl);
+          this.suggestionsGrid.appendChild(suggestionEl);
+        }
+      } else {
+        console.warn('Welcome suggestion template not found');
+      }
     });
   }
 
@@ -99,7 +102,7 @@ export class VFChatbotWelcome {
         bubbles: true,
         detail: {
           question,
-          answer: answer.answer || answer.html,
+          answer: answer.answer || '',
           sources: answer.sources || [],
           prompts: answer.prompts || []
         }
