@@ -5,7 +5,6 @@
 .vf-chatbot-selector {
   position: relative;
   display: block;
-  font-family: var(--vf-font-family);
   width: 100%;
 }
 
@@ -17,15 +16,10 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--vf-text-color);
   text-align: left;
 
-  &:hover {
-    // background-color: var(--vf-color--grey--lightest);
-  }
-
   &--expanded {
-    .vf-chatbot-selector__chevron {
+    .vf-chatbot-selector__chevron svg{
       transform: rotate(180deg);
     }
   }
@@ -53,13 +47,11 @@
 .vf-chatbot-selector__title-text {
   @include set-type(text-body--5);
   margin-bottom: 0;
+  min-width: 120px;
 }
 
-.vf-chatbot-selector__chevron {
-  height: 25px;
+.vf-chatbot-selector__chevron svg{
   transition: transform 0.2s ease;
-  margin-left: 8px;
-  font-size: 16px;
 }
 
 .vf-chatbot-selector__dropdown {
@@ -67,8 +59,8 @@
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 300px;
-  max-width: 400px;
+  min-width: 275px;
+  max-width: 300px;
   background: var(--vf-color--neutral--0);
   box-shadow: 0 4px 6px var(--vf-color--grey--light);
   margin-top: 4px;
@@ -79,12 +71,13 @@
 }
 
 .vf-chatbot-selector__header {
+  @include set-type(text-body--5);
+  margin-bottom: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
+  padding: 8px 16px;
   border-bottom: 1px solid var(--vf-color--grey--light);
-  font-size: 14px;
 }
 
 .vf-chatbot-selector__clear {
@@ -103,10 +96,12 @@
 .vf-chatbot-selector__search {
 
   input {
+    @include set-type(text-body--3);
+    margin-bottom: 0;
     width: 94%;
-    padding: 8px 0px 8px 16px;
+    padding: 8px 16px;
+    padding-right: 0px;
     border: 1px solid #333;
-    font-size: 14px;
   }
 }
 
@@ -119,20 +114,16 @@
 }
 
 .vf-chatbot-selector__item {
+  @include set-type(text-body--3);
+  margin-bottom: 0;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 8px 16px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
-  &:hover {
-    // background-color: var(--vf-color--grey--lightest);
-  }
-
   &--selected {
-    // background-color: var(--vf-color--grey--light);
-
     .vf-chatbot-selector__tick {
       opacity: 1;
     }
@@ -145,19 +136,15 @@
 }
 
 .vf-chatbot-selector__item-title {
-  font-weight: 500;
-  margin-bottom: 4px;
+  @include set-type(text-body--3);
+  margin-bottom: 0;
 }
 
 .vf-chatbot-selector__item-description {
-  font-size: 14px;
-  color: var(--vf-color--grey--dark);
-  line-height: 1.4;
+  @include set-type(text-body--5);
+  margin-bottom: 0;
 }
 
 .vf-chatbot-selector__tick {
   opacity: 0;
-  color: var(--vf-color--grey--dark);
-  font-weight: bold;
-  transition: opacity 0.2s ease;
 }

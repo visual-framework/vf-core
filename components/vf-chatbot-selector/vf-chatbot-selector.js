@@ -476,7 +476,7 @@ export class VFChatbotSelector {
         titleText.textContent = title;
       }
     } else {
-      titleText.textContent = `${this.selectedItems.size} selected`;
+      titleText.textContent = `${this.selectedItems.size} service${this.selectedItems.size > 1 ? 's' : ''} selected`;
     }
   }
 
