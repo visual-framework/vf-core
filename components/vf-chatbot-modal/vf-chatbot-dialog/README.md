@@ -1,26 +1,21 @@
-# Chatbot Feedback component
+## 5. Dialog Component README
 
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-chatbot-feedback.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-chatbot-feedback)
+```markdown
+# Chatbot Dialog Component
 
-## About
-
-A feedback component for the Visual Framework chatbot that allows users to:
-- Provide thumbs up/down feedback on responses
-- Select specific feedback options based on their response
-- Add custom comments
-- See success/error states with closeable banners
+A confirmation dialog for the chatbot modal, used for confirming actions like closing the chat.
 
 ## Usage
 
 ```njk
-{% render "@vf-chatbot-shared-components/vf-chatbot-feedback", {
-  responseId: "response-123"
+{% render "@vf-chatbot-modal/vf-chatbot-dialog", {
+  title: "Close chat and delete conversation?",
+  message: "Are you sure you want to close the chat?",
+  submessage: "Your current conversation history will be permanently deleted.",
+  cancelLabel: "Keep chat open",
+  confirmLabel: "Close and delete"
 } %}
-
-<!-- OR for specific variants -->
-{% render "@vf-chatbot-shared-components/vf-chatbot-feedback--positive" %}
-{% render "@vf-chatbot-shared-components/vf-chatbot-feedback--negative" %}
-````
+```
 
 ## Install
 
