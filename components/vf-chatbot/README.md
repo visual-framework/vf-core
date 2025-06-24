@@ -23,7 +23,7 @@ While bots can be a solution to some business challenges, ensure that it is the 
 
 ### Deciding between modal vs. standalone
 
-The [chatbot modal](../vf-chatbot-modal) and [chatbot standalone](../vf-chatbot-standalone) are two distinct variants for delivering conversational interfaces. Choose between them based on use case needs and task complexity.
+The [chatbot standalone](../vf-chatbot-standalone) and [chatbot modal](../vf-chatbot-modal) are two distinct variants for delivering conversational interfaces. Choose between them based on use case needs and task complexity.
 
 #### Modal
 

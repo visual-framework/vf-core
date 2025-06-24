@@ -63,12 +63,12 @@
         } %}
       {% endif %}
       <!-- Messages container -->
-      <div class="vf-chatbot-standalone__messages vf-u-padding__top--400" data-vf-js-chatbot-standalone-messages>
+      <div class="vf-chatbot-standalone__messages vf-u-padding__top--400 vf-u-padding__right--400" data-vf-js-chatbot-standalone-messages>
         <!-- Messages will be added here dynamically -->
         <!-- Loading indicator will be inserted here when needed -->
       </div>
       {% if disclaimer %}
-        <div class="vf-chatbot-standalone__disclaimer" data-vf-js-chatbot-standalone-disclaimer>
+        <div class="vf-chatbot-standalone__disclaimer vf-u-padding__right--400" data-vf-js-chatbot-standalone-disclaimer>
           <div class="vf-banner vf-banner--alert vf-banner--info">
             <div class="vf-banner__content">
               <p class="vf-banner__text">{{ disclaimer }}</p>
@@ -81,26 +81,28 @@
         </div>
       {% endif %}
     </div>
-    <div class="vf-chatbot-standalone__input-wrapper">
-      <textarea
-      class="vf-chatbot-standalone__input"
-      placeholder="{{ input_placeholder | default('Ask me ...') }}"
-      rows="1"
-      data-vf-js-chatbot-standalone-input
-    ></textarea>
-      <button
-      class="vf-chatbot-standalone__send-button"
-      aria-label="Send message"
-      data-vf-js-chatbot-standalone-send
-    >
-        <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg" alt="Send request">
-      </button>
+    <div class="vf-chatbot-standalone__input-container vf-u-padding__right--400">
+      <div class="vf-chatbot-standalone__input-wrapper">
+        <textarea
+        class="vf-chatbot-standalone__input vf-form__textarea vf-u-padding__left--400"
+        placeholder="{{ input_placeholder | default('Ask me ...') }}"
+        rows="1"
+        data-vf-js-chatbot-standalone-input
+      ></textarea>
+        <button
+          class="vf-chatbot-standalone__send-button"
+          aria-label="Send message"
+          data-vf-js-chatbot-standalone-send
+        >
+          <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg" alt="Send request">
+        </button>
+      </div>
+      {% if footnote %}
+      <div class="vf-chatbot-standalone__footnote vf-u-margin__top--200" data-vf-js-chatbot-standalone-footnote>
+        {{ footnote }}
+      </div>
+      {% endif %}
     </div>
-    {% if footnote %}
-    <div class="vf-chatbot-standalone__footnote" data-vf-js-chatbot-standalone-footnote>
-      {{ footnote }}
-    </div>
-    {% endif %}
 
 
     <template id="feedback-positive-template">

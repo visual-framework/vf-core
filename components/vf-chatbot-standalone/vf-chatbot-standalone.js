@@ -166,7 +166,7 @@ class VFChatbotStandalone {
     content.textContent = text;
     this.messagesContainer.appendChild(userMessage);
     // Clear input if this came from the input field
-    if (this.input && this.input.value === text) {
+    if (this.input) {
       this.input.value = "";
       this.input.style.height = "auto"; // Reset height
     }
