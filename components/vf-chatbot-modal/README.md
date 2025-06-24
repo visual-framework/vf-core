@@ -1,16 +1,6 @@
-# Chatbot Modal Component
-
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-chatbot-modal.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-chatbot-modal)
-
-<h2 class="vf-u-type--lead">
-<span class="vf-badge vf-badge--primary vf-badge--phases">Alpha</span>
-</h2>
-
-A pop-up chatbot interface that can be triggered by the vf-chatbot-fab floating action button.
-
 ## About
 
-The chat modal component for the Visual Framework chatbot. This component provides the main chat interface that appears when users click the floating action button.
+The `vf-chatbot-modal`  component appears as an overlay, typically in the bottom right corner of the screen. It is designed for contextual assistance, allowing users to receive support without navigating away from the current page.
 
 ## Usage
 
@@ -80,13 +70,6 @@ The chatbot modal and [chatbot standalone](../vf-chatbot-standalone) are two dis
 | Source attribution | Chips are shown in relevant paragraphs which cite the sources. Links to the sources and more details can be accessed via a "View sources" button. |
 | Feedback on a query level | Users can assess the AI responses with a thumbs up/thumbs down or optional close/open response fields to give more details. |
 | Category selection | A dropdown in the title bar lets users switch focus areas (e.g LLM version or data source). Single or multi-selection variants can be used depending on the use case. |
-
-### Design assets
-
-Design resources for the vf-chatbot are available in our shared Figma library.
-
-You can access the Figma files here:
-[View vf-chatbot Design file in Figma](https://www.figma.com/file/yourfigmalink)
 
 ### Accessibility
 

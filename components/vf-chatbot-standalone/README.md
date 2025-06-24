@@ -1,14 +1,6 @@
-# Chatbot Standalone Component
-
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-chatbot-standalone.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-chatbot-standalone)
-
-<h2 class="vf-u-type--lead">
-<span class="vf-badge vf-badge--primary vf-badge--phases">Alpha</span>
-</h2>
-
 ## About
 
-A full-page standalone chatbot interface that can be accessed via a direct URL. This component reuses elements from the chatbot modal but is designed to work as a standalone page rather than a popup.
+The `vf-chatbot-standalone`   component provides a full-screen conversational interface between a user and an AI system. It is typically accessed through a dedicated route or external site. Designed for more complex interactions, it supports extended dialogues, exploration of multiple topics, and access to documents or detailed support resources.
 
 ## Usage
 
@@ -76,13 +68,6 @@ The [chatbot modal](../vf-chatbot-modal) and chatbot standalone are two distinct
 | Source attribution | Chips are shown in relevant paragraphs which cite the sources. Links to the sources and more details can be accessed via a "View sources" button. |
 | Feedback on a query level | Users can assess the AI responses with a thumbs up/thumbs down or optional close/open response fields to give more details. |
 | Category selection | A dropdown in the title bar lets users switch focus areas (e.g LLM version or data source). Single or multi-selection variants can be used depending on the use case. |
-
-### Design assets
-
-Design resources for the vf-chatbot are available in our shared Figma library.
-
-You can access the Figma files here:
-[View vf-chatbot Design file in Figma](https://www.figma.com/file/yourfigmalink)
 
 ### Working example
 

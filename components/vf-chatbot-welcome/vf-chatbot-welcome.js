@@ -1,13 +1,19 @@
 // vf-chatbot-welcome.js
 
 export class VFChatbotWelcome {
-  constructor(element) {
+  constructor(element, options = {}) {
     this.el = element;
     this.suggestionsGrid = this.el.querySelector(
       "[data-vf-js-chatbot-welcome-suggestions-grid]"
     );
     this.qaData = null;
     this.boundHandleSuggestionClick = this.handleSuggestionClick.bind(this);
+
+    // Get maxQuestions from data attribute or use default
+    this.maxQuestions =
+      options.maxQuestions ||
+      parseInt(this.el.dataset.maxQuestions, 10) ||
+      3; // Default to 3 if not specified
   }
 
   async init() {
@@ -44,7 +50,7 @@ export class VFChatbotWelcome {
     const questions = Object.keys(this.qaData);
     const randomQuestions = questions
       .sort(() => 0.5 - Math.random())
-      .slice(0, 3);
+      .slice(0, this.maxQuestions);
 
     // Create suggestion elements using template-based rendering
     randomQuestions.forEach((question, index) => {

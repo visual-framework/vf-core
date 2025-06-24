@@ -1,14 +1,6 @@
-# Chatbot Component
-
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-chatbot.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-chatbot)
-
 ## About
 
-These components provide an interactive AI chatbot interface for the Visual Framework.
-
-- **Modal Chatbot**: A pop-up dialog triggered by a floating action button
-- **Standalone Chatbot**: A full-page chatbot interface
-- **Shared Components**: Reusable elements used by both modal and standalone variants
+The `vf-chatbot` component enables conversational interaction between a user and an AI system. It is designed for flexibility and can be embedded in a page as a modal or accessed as a standalone solution.
 
 ## Usage
 
@@ -58,13 +50,6 @@ The [chatbot standalone](../vf-chatbot-standalone) and [chatbot modal](../vf-cha
 | Source attribution | Chips are shown in relevant paragraphs which cite the sources. Links to the sources and more details can be accessed via a "View sources" button. |
 | Feedback on a query level | Users can assess the AI responses with a thumbs up/thumbs down or optional close/open response fields to give more details. |
 | Category selection | A dropdown in the title bar lets users switch focus areas (e.g LLM version or data source). Single or multi-selection variants can be used depending on the use case. |
-
-### Design assets
-
-Design resources for the vf-chatbot are available in our shared Figma library.
-
-You can access the Figma files here:
-[View vf-chatbot Design file in Figma](https://www.figma.com/file/yourfigmalink)
 
 ### Accessibility
 

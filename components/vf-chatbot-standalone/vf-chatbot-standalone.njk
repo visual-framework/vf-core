@@ -32,7 +32,7 @@
 {# {% set selectorContext = services_single_selector %} #}
 {% set selectorContext = services_multi_selector %}
 <!-- Standalone Chatbot -->
-<div class="vf-content" data-vf-js-chatbot-standalone-container>
+<div class="vf-content vf-chatbot-standalone-container" data-vf-js-chatbot-standalone-container>
   <div class="vf-chatbot-standalone__header">
     <div class="vf-chatbot-standalone__header-left">
       {% if selectorContext %}
@@ -59,11 +59,12 @@
         {% render "@vf-chatbot-welcome", {
           welcome_title: welcome_title,
           welcome_description: "Welcome! I'm here to help",
-          welcome_message: welcome_message
+          welcome_message: 'Hello! How can I help you today?',
+          maxQuestions: 3
         } %}
       {% endif %}
       <!-- Messages container -->
-      <div class="vf-chatbot-standalone__messages vf-u-padding__top--400 vf-u-padding__right--400" data-vf-js-chatbot-standalone-messages>
+      <div class="vf-chatbot-standalone__messages vf-u-padding__right--400" data-vf-js-chatbot-standalone-messages>
         <!-- Messages will be added here dynamically -->
         <!-- Loading indicator will be inserted here when needed -->
       </div>

@@ -1,215 +1,12 @@
-{% set llm_selector = {
-          context: {
-            chatbotRoutes:
-              {
-                multiSelect: false,
-                showSearch: true,
-                showSearchThreshold: 5,
-                routes: [
-                  {
-                    id: "gpt4-turbo",
-                    title: "GPT-4 Turbo",
-                    description: "Advanced language model with broader context window and improved capabilities",
-                    selected: true
-                  },
-                  {
-                    id: "claude3-opus",
-                    title: "Claude 3 Opus",
-                    description: "Anthropic's most powerful model with enhanced reasoning and analysis capabilities"
-                  },
-                  {
-                    id: "gemini-ultra",
-                    title: "Gemini Ultra",
-                    description: "Google's most capable model for complex tasks and multitask reasoning"
-                  },
-                  {
-                    id: "llama3",
-                    title: "LLaMA 3",
-                    description: "Meta's open foundation model with strong performance across various tasks"
-                  },
-                  {
-                    id: "mixtral",
-                    title: "Mixtral 8x7B",
-                    description: "Mistral AI's mixture-of-experts model combining multiple specialized networks"
-                  },
-                  {
-                    id: "palm3",
-                    title: "PaLM 3",
-                    description: "Google's latest PaLM model optimized for reasoning and multilingual tasks"
-                  },
-                  {
-                    id: "gpt4-vision",
-                    title: "GPT-4 Vision",
-                    description: "Specialized version of GPT-4 for multimodal tasks including image understanding"
-                  },
-                  {
-                    id: "claude3-sonnet",
-                    title: "Claude 3 Sonnet",
-                    description: "Balanced model offering strong performance with improved efficiency"
-                  }
-                ]
-              }
-            }
-          }
-%}
-{% set services_single_selector = {
-          context: {
-            chatbotRoutes: {
-                multiSelect: false,
-                showSearch: true,
-                showSearchThreshold: 5,
-                routes: [
-                  {
-                    id: "ensembl",
-                    title: "Ensembl",
-                    description: "Genome browser for vertebrate genomes with comparative genomics tools",
-                    selected: true
-                  },
-                  {
-                    id: "uniprot",
-                    title: "UniProt",
-                    description: "Comprehensive resource for protein sequence and annotation data"
-                  },
-                  {
-                    id: "pfam",
-                    title: "Pfam",
-                    description: "Database of protein families and domains with HMM models"
-                  },
-                  {
-                    id: "interpro",
-                    title: "InterPro",
-                    description: "Integrated database of protein families, domains and functional sites"
-                  },
-                  {
-                    id: "chembl",
-                    title: "ChEMBL",
-                    description: "Database of bioactive drug-like small molecules and their targets"
-                  },
-                  {
-                    id: "pdbe",
-                    title: "PDBe",
-                    description: "European resource for 3D biological macromolecular structure data"
-                  },
-                  {
-                    id: "expression-atlas",
-                    title: "Expression Atlas",
-                    description: "Gene expression data across species and biological conditions"
-                  },
-                  {
-                    id: "pride",
-                    title: "PRIDE",
-                    description: "Repository of mass spectrometry-based proteomics data"
-                  },
-                  {
-                    id: "arrayexpress",
-                    title: "ArrayExpress",
-                    description: "Archive of functional genomics experiments"
-                  },
-                  {
-                    id: "intact",
-                    title: "IntAct",
-                    description: "Molecular interaction database derived from literature curation"
-                  },
-                  {
-                    id: "reactome",
-                    title: "Reactome",
-                    description: "Curated database of biological pathways and reactions"
-                  },
-                  {
-                    id: "metabolights",
-                    title: "MetaboLights",
-                    description: "Database for metabolomics experiments and derived information"
-                  }
-                ]
-              }
-            }
-          }
-%}
-{% set services_multi_selector = {
-          context: {
-            chatbotRoutes:
-              {
-                multiSelect: true,
-                maxMultiSelect: 3,
-                showSearch: true,
-                showSearchThreshold: 5,
-                routes: [
-                  {
-                    id: "ensembl",
-                    title: "Ensembl",
-                    description: "Genome browser for vertebrate genomes with comparative genomics tools",
-                    "selected": true
-                  },
-                  {
-                    id: "uniprot",
-                    title: "UniProt",
-                    description: "Comprehensive resource for protein sequence and annotation data"
-                  },
-                  {
-                    id: "pfam",
-                    title: "Pfam",
-                    description: "Database of protein families and domains with HMM models"
-                  },
-                  {
-                    id: "interpro",
-                    title: "InterPro",
-                    description: "Integrated database of protein families, domains and functional sites"
-                  },
-                  {
-                    id: "chembl",
-                    title: "ChEMBL",
-                    description: "Database of bioactive drug-like small molecules and their targets"
-                  },
-                  {
-                    id: "pdbe",
-                    title: "PDBe",
-                    description: "European resource for 3D biological macromolecular structure data"
-                  },
-                  {
-                    id: "expression-atlas",
-                    title: "Expression Atlas",
-                    description: "Gene expression data across species and biological conditions"
-                  },
-                  {
-                    id: "pride",
-                    title: "PRIDE",
-                    description: "Repository of mass spectrometry-based proteomics data"
-                  },
-                  {
-                    id: "arrayexpress",
-                    title: "ArrayExpress",
-                    description: "Archive of functional genomics experiments"
-                  },
-                  {
-                    id: "intact",
-                    title: "IntAct",
-                    description: "Molecular interaction database derived from literature curation"
-                  },
-                  {
-                    id: "reactome",
-                    title: "Reactome",
-                    description: "Curated database of biological pathways and reactions"
-                  },
-                  {
-                    id: "metabolights",
-                    title: "MetaboLights",
-                    description: "Database for metabolomics experiments and derived information"
-                  }
-                ]
-              }
-            }
-          }
-%}
-{% set selectorContext = llm_selector %}
+{# {% set selectorContext = llm_selector %} #}
 {# {% set selectorContext = services_single_selector %} #}
 {# {% set selectorContext = services_multi_selector %} #}
-
-<!-- Chatbot modal -->
+<!--
 <div class="vf-chatbot-modal" data-vf-js-chatbot-modal>
   {# <div class="vf-chatbot-modal__container"> #}
     <div class="vf-chatbot-modal__header">
       <div class="vf-chatbot-modal__header-left">
-        {% render "@vf-chatbot-selector", selectorContext %}
+        {# {% render "@vf-chatbot-selector", selectorContext %} #}
       </div>
       <div class="vf-chatbot-modal__controls">
         <button
@@ -234,11 +31,8 @@
     </div>
 
     <div class="vf-chatbot-modal__content | vf-u-background-color-ui--grey--light">
-      <!-- Chat interface -->
       <div class="vf-chatbot-modal__chat" data-vf-js-chatbot-modal-chat>
-        <!-- Initial welcome message from the assistant -->
-        {% if welcome_message %}
-          <!-- Welcome screen -->
+        {# {% if welcome_message %} #}
           <div class="vf-chatbot-modal__welcome" data-vf-js-chatbot-modal-welcome>
             <div class="vf-chatbot-modal__welcome-content">
               <div class="vf-chatbot-modal__welcome-logo">
@@ -246,13 +40,12 @@
               </div>
               <h2 class="vf-chatbot-modal__welcome-title">{{ welcome_title | default('AI assistant') }}</h2>
               <p class="vf-chatbot-modal__welcome-description">
-                {{ welcome_description | default("Welcome! I'm here to help you.") }}
+                {# {{ welcome_description | default("Welcome! I'm here to help you.") }} #}
               </p>
 
               <div class="vf-chatbot-modal__welcome-suggestions">
                 <p class="vf-chatbot-modal__welcome-suggestions-title">Try asking me:</p>
                 <div class="vf-chatbot-standalone__welcome-suggestions-grid" data-vf-js-chatbot-standalone-suggestions-grid>
-                  <!-- Suggestions will be populated dynamically from qa.json -->
                 </div>
               </div>
             </div>
@@ -265,12 +58,8 @@
                 {{ welcome_message | default('Hello! How can I help you today?') }}
               </div>
             </div> #}
-        {% endif %}
-        <!-- Messages container -->
+        {# {% endif %} #}
         <div class="vf-chatbot-modal__messages" data-vf-js-chatbot-modal-messages>
-          <!-- Messages will be added here dynamically -->
-
-          <!-- Loading indicator -->
           <div class="vf-chatbot-modal__loading" data-vf-js-chatbot-modal-loading style="display: none;">
             <div class="vf-chatbot-message vf-chatbot-message--assistant">
               <div class="vf-chatbot-message__avatar">
@@ -288,8 +77,7 @@
       </div>
 
     </div>
-      <!-- Disclaimer -->
-      {% if disclaimer %}
+      {# {% if disclaimer %} #}
         <div class="vf-chatbot-modal__disclaimer" data-vf-js-chatbot-modal-disclaimer>
           <div class="vf-banner vf-banner--alert vf-banner--info">
             <div class="vf-banner__content">
@@ -301,17 +89,15 @@
             </div>
           </div>
         </div>
-      {% endif %}
+      {# {% endif %} #}
 
-      {% render "@vf-chatbot-dialog", {
+      {# {% render "@vf-chatbot-dialog", {
         title: "Close chat and delete conversation?",
         message: "Are you sure you want to close the chat?",
         submessage: "Your current conversation history will be permanently deleted.",
         cancelLabel: "Keep chat open",
         confirmLabel: "Close and delete"
-      } %}
-
-      <!-- Input area -->
+      } %} #}
       <div class="vf-chatbot-modal__input-container">
         <textarea
           class="vf-chatbot-modal__input"
@@ -331,4 +117,4 @@
         </button>
       </div>
   {# </div> #}
-</div>
+</div>-->
