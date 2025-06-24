@@ -16,25 +16,6 @@ A confirmation dialog for the chatbot modal, used for confirming actions like cl
   confirmLabel: "Close and delete"
 } %}
 ```
-
-## Install
-
-This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-box` with this command.
-
-```
-$ yarn add --dev @visual-framework/vf-box
-```
-
-### Sass/CSS
-
-The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
-
-```
-@import "@visual-framework/vf-box/index.scss";
-```
-
-Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)
-
 ## Help
 
 - [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)

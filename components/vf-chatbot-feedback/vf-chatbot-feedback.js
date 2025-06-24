@@ -2,10 +2,14 @@ export class VFChatbotFeedback {
   constructor(container, messageId) {
     this.container = container;
     this.messageId = messageId;
-    this.positiveTemplate = document.querySelector('#feedback-positive-template');
-    this.negativeTemplate = document.querySelector('#feedback-negative-template');
+    this.positiveTemplate = document.querySelector(
+      "#feedback-positive-template"
+    );
+    this.negativeTemplate = document.querySelector(
+      "#feedback-negative-template"
+    );
     this.renderInitialState();
-    this.selectedThumb = '';
+    this.selectedThumb = "";
   }
 
   renderInitialState() {
@@ -28,9 +32,15 @@ export class VFChatbotFeedback {
   }
 
   bindThumbEvents() {
-    const upThumb = this.container.querySelector('[data-vf-js-feedback-thumb="up"]');
-    const downThumb = this.container.querySelector('[data-vf-js-feedback-thumb="down"]');
-    const formContainer = this.container.querySelector('.vf-chatbot-feedback__form-container');
+    const upThumb = this.container.querySelector(
+      '[data-vf-js-feedback-thumb="up"]'
+    );
+    const downThumb = this.container.querySelector(
+      '[data-vf-js-feedback-thumb="down"]'
+    );
+    const formContainer = this.container.querySelector(
+      ".vf-chatbot-feedback__form-container"
+    );
 
     upThumb?.addEventListener("click", () => {
       upThumb.classList.add("vf-chatbot-feedback__thumb--solid");
@@ -47,10 +57,13 @@ export class VFChatbotFeedback {
 
   showForm(type, formContainer) {
     if (!formContainer) {
-      formContainer = this.container.querySelector('.vf-chatbot-feedback__form-container');
+      formContainer = this.container.querySelector(
+        ".vf-chatbot-feedback__form-container"
+      );
     }
-    formContainer.innerHTML = '';
-    const template = type === 'positive' ? this.positiveTemplate : this.negativeTemplate;
+    formContainer.innerHTML = "";
+    const template =
+      type === "positive" ? this.positiveTemplate : this.negativeTemplate;
     if (template) {
       const formContent = template.content.cloneNode(true);
       formContainer.appendChild(formContent);
@@ -58,7 +71,9 @@ export class VFChatbotFeedback {
     }
 
     // Scroll chat window to bottom
-    const chatMessages = document.querySelector('[data-vf-js-chatbot-standalone-messages]');
+    const chatMessages = document.querySelector(
+      "[data-vf-js-chatbot-standalone-messages]"
+    );
     if (chatMessages) {
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -66,30 +81,44 @@ export class VFChatbotFeedback {
 
   bindFormEvents(formContainer) {
     // Option button selection logic (if needed)
-    const optionButtons = formContainer.querySelectorAll('.vf-chatbot-feedback__option');
+    const optionButtons = formContainer.querySelectorAll(
+      ".vf-chatbot-feedback__option"
+    );
     optionButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        optionButtons.forEach(b => b.classList.remove('vf-chatbot-feedback__option--selected'));
-        btn.classList.add('vf-chatbot-feedback__option--selected');
+      btn.addEventListener("click", () => {
+        optionButtons.forEach(b =>
+          b.classList.remove("vf-chatbot-feedback__option--selected")
+        );
+        btn.classList.add("vf-chatbot-feedback__option--selected");
       });
     });
 
     // Submit button logic
-    const submitBtn = formContainer.querySelector('[data-vf-js-feedback-submit]');
-    submitBtn?.addEventListener('click', () => this.submitFeedback(formContainer));
+    const submitBtn = formContainer.querySelector(
+      "[data-vf-js-feedback-submit]"
+    );
+    submitBtn?.addEventListener("click", () =>
+      this.submitFeedback(formContainer)
+    );
 
     // Close icon logic
-    const closeBtn = formContainer.querySelector('[data-vf-js-feedback-form-close]');
+    const closeBtn = formContainer.querySelector(
+      "[data-vf-js-feedback-form-close]"
+    );
     if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
+      closeBtn.addEventListener("click", () => {
         // Remove the feedback form
-        formContainer.innerHTML = '';
+        formContainer.innerHTML = "";
 
         // Remove solid class from both thumbs
-        const upThumb = this.container.querySelector('[data-vf-js-feedback-thumb="up"]');
-        const downThumb = this.container.querySelector('[data-vf-js-feedback-thumb="down"]');
-        upThumb?.classList.remove('vf-chatbot-feedback__thumb--solid');
-        downThumb?.classList.remove('vf-chatbot-feedback__thumb--solid');
+        const upThumb = this.container.querySelector(
+          '[data-vf-js-feedback-thumb="up"]'
+        );
+        const downThumb = this.container.querySelector(
+          '[data-vf-js-feedback-thumb="down"]'
+        );
+        upThumb?.classList.remove("vf-chatbot-feedback__thumb--solid");
+        downThumb?.classList.remove("vf-chatbot-feedback__thumb--solid");
       });
     }
   }
@@ -111,21 +140,27 @@ export class VFChatbotFeedback {
     `;
 
     // Hide the unselected thumb and disable the selected one
-    const upThumb = this.container.querySelector('[data-vf-js-feedback-thumb="up"]');
-    const downThumb = this.container.querySelector('[data-vf-js-feedback-thumb="down"]');
-    if (upThumb.classList.contains('vf-chatbot-feedback__thumb--solid')) {
-      downThumb.style.display = 'none';
+    const upThumb = this.container.querySelector(
+      '[data-vf-js-feedback-thumb="up"]'
+    );
+    const downThumb = this.container.querySelector(
+      '[data-vf-js-feedback-thumb="down"]'
+    );
+    if (upThumb.classList.contains("vf-chatbot-feedback__thumb--solid")) {
+      downThumb.style.display = "none";
       upThumb.disabled = true; // Disable the clicked thumb
-    } else if (downThumb.classList.contains('vf-chatbot-feedback__thumb--solid')) {
-      upThumb.style.display = 'none';
+    } else if (
+      downThumb.classList.contains("vf-chatbot-feedback__thumb--solid")
+    ) {
+      upThumb.style.display = "none";
       downThumb.disabled = true; // Disable the clicked thumb
     }
 
     // Add dismiss functionality
-    const banner = formContainer.querySelector('[data-vf-js-banner]');
-    const closeBtn = formContainer.querySelector('.vf-button--dismiss');
+    const banner = formContainer.querySelector("[data-vf-js-banner]");
+    const closeBtn = formContainer.querySelector(".vf-button--dismiss");
     if (banner && closeBtn) {
-      closeBtn.addEventListener('click', () => {
+      closeBtn.addEventListener("click", () => {
         banner.remove();
       });
     }

@@ -64,7 +64,9 @@ function initVFChatbotSources(messages) {
 
   // Helper function to scroll chat to bottom
   function scrollChatToBottom() {
-    const messagesContainer = document.querySelector('[data-vf-js-chatbot-standalone-messages]');
+    const messagesContainer = document.querySelector(
+      "[data-vf-js-chatbot-standalone-messages]"
+    );
     if (messagesContainer) {
       setTimeout(() => {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
