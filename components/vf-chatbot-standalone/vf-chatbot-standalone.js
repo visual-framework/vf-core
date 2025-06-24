@@ -25,7 +25,9 @@ class VFChatbotStandalone {
     this.disclaimer = this.container.querySelector(
       "[data-vf-js-chatbot-standalone-disclaimer]"
     );
-    this.disclaimerCloseBtn = this.disclaimer?.querySelector(".vf-button--dismiss");
+    this.disclaimerCloseBtn = this.disclaimer?.querySelector(
+      ".vf-button--dismiss"
+    );
 
     // Selector element
     this.selectorEl = this.container.querySelector(
@@ -33,8 +35,12 @@ class VFChatbotStandalone {
     );
 
     this.userTemplate = this.container.querySelector("#user-message-template");
-    this.assistantTemplate = this.container.querySelector( "#assistant-message-template");
-    this.loadingTemplate = this.container.querySelector("#loading-indicator-template");
+    this.assistantTemplate = this.container.querySelector(
+      "#assistant-message-template"
+    );
+    this.loadingTemplate = this.container.querySelector(
+      "#loading-indicator-template"
+    );
 
     // State
     this.currentAssistant = ""; // Default assistant
@@ -160,7 +166,9 @@ class VFChatbotStandalone {
   sendUserMessage(text) {
     if (!text || !this.messagesContainer) return;
     const userMessage = this.userTemplate.content.cloneNode(true);
-    const content = userMessage.querySelector(".vf-chatbot-message__content-prompt");
+    const content = userMessage.querySelector(
+      ".vf-chatbot-message__content-prompt"
+    );
 
     // Set text content
     content.textContent = text;
@@ -197,7 +205,7 @@ class VFChatbotStandalone {
       return;
     } else if (this.callExternalAPI) {
       // Send custom event for external API call
-      const apiCallEvent = new CustomEvent('vf-chatbot:api-call', {
+      const apiCallEvent = new CustomEvent("vf-chatbot:api-call", {
         bubbles: true,
         detail: {
           question: text,
@@ -208,12 +216,12 @@ class VFChatbotStandalone {
 
       // Listen for API response (add listener only once)
       if (!this.apiResponseListener) {
-        this.apiResponseListener = (event) => {
+        this.apiResponseListener = event => {
           const { response, sources, prompts, error } = event.detail;
 
           if (error) {
             // Handle API error - use fallback response
-            console.error('API call failed:', error);
+            console.error("API call failed:", error);
             const fallbackResponse = this.fallbackResponses[
               Math.floor(Math.random() * this.fallbackResponses.length)
             ];
@@ -224,11 +232,7 @@ class VFChatbotStandalone {
             );
           } else {
             // Handle successful API response
-            this.addAssistantResponse(
-              response,
-              sources || [],
-              prompts || []
-            );
+            this.addAssistantResponse(response, sources || [], prompts || []);
           }
 
           this.setLoadingState(false);
@@ -236,7 +240,10 @@ class VFChatbotStandalone {
         };
 
         // Add the event listener to the container
-        this.container.addEventListener('vf-chatbot:api-response', this.apiResponseListener);
+        this.container.addEventListener(
+          "vf-chatbot:api-response",
+          this.apiResponseListener
+        );
       }
 
       // Dispatch the API call event
@@ -246,7 +253,7 @@ class VFChatbotStandalone {
       setTimeout(() => {
         // Check if we're still in loading state (API didn't respond)
         if (this.sendBtn && this.sendBtn.disabled) {
-          console.warn('API call timeout - using fallback response');
+          console.warn("API call timeout - using fallback response");
           const fallbackResponse = this.fallbackResponses[
             Math.floor(Math.random() * this.fallbackResponses.length)
           ];
@@ -282,50 +289,63 @@ class VFChatbotStandalone {
     if (!this.assistantTemplate || !this.messagesContainer) return;
 
     const assistantMessage = this.assistantTemplate.content.cloneNode(true);
-    const content = assistantMessage.querySelector(".vf-chatbot-message__content-prompt");
+    const content = assistantMessage.querySelector(
+      ".vf-chatbot-message__content-prompt"
+    );
     content.innerHTML = text;
 
     // Initialize the feedback component for this message
-    const feedbackContainer = assistantMessage.querySelector('[data-vf-js-chatbot-feedback]');
+    const feedbackContainer = assistantMessage.querySelector(
+      "[data-vf-js-chatbot-feedback]"
+    );
 
     // Add sources if present
     if (sources && sources.length > 0) {
       // Add sources
       const sourcesEl = initVFChatbotSources(sources);
-      assistantMessage.insertBefore(
-      sourcesEl.el,
-      feedbackContainer
-    );
+      assistantMessage.insertBefore(sourcesEl.el, feedbackContainer);
     }
     // Add prompts if available
     if (prompts && prompts.length > 0) {
-      const promptsTemplate = this.container.querySelector('#action-prompts-template');
-      const singlePromptTemplate = this.container.querySelector('#single-action-prompt-template');
+      const promptsTemplate = this.container.querySelector(
+        "#action-prompts-template"
+      );
+      const singlePromptTemplate = this.container.querySelector(
+        "#single-action-prompt-template"
+      );
 
       if (promptsTemplate && singlePromptTemplate) {
         // Clone the prompts container template
         const promptsContainer = promptsTemplate.content.cloneNode(true);
-        const promptsList = promptsContainer.querySelector('[data-vf-js-action-prompts-list]');
+        const promptsList = promptsContainer.querySelector(
+          "[data-vf-js-action-prompts-list]"
+        );
 
         // Create each individual prompt using the single prompt template
         prompts.forEach(prompt => {
           const promptEl = singlePromptTemplate.content.cloneNode(true);
-          const link = promptEl.querySelector('.vf-chatbot-action-prompt__link');
-          const wrapper = promptEl.querySelector('.vf-chatbot-action-prompt');
+          const link = promptEl.querySelector(
+            ".vf-chatbot-action-prompt__link"
+          );
+          const wrapper = promptEl.querySelector(".vf-chatbot-action-prompt");
 
           if (link && wrapper) {
-            link.href = prompt.action_url || '#';
+            link.href = prompt.action_url || "#";
             link.textContent = prompt.action_text;
-            link.target = prompt.action_url?.startsWith('tel:') ? '_self' : '_blank';
+            link.target = prompt.action_url?.startsWith("tel:")
+              ? "_self"
+              : "_blank";
 
             // Add click event if no URL
             if (!prompt.action_url) {
-              link.addEventListener('click', (e) => {
+              link.addEventListener("click", e => {
                 e.preventDefault();
-                link.dispatchEvent(new CustomEvent('vf-chatbot-action-prompt:click', {
-                  bubbles: true,
-                  detail: { text: prompt.action_text }
-                }));
+                link.dispatchEvent(
+                  new CustomEvent("vf-chatbot-action-prompt:click", {
+                    bubbles: true,
+                    detail: { text: prompt.action_text }
+                  })
+                );
               });
             }
           }
@@ -348,21 +368,23 @@ class VFChatbotStandalone {
     if (isLoading) {
       // Create loading indicator from template if it doesn't exist
       if (!this.loadingIndicator) {
-        const loadingTemplate = this.container.querySelector('#loading-indicator-template');
+        const loadingTemplate = this.container.querySelector(
+          "#loading-indicator-template"
+        );
         if (loadingTemplate) {
           const loadingContent = loadingTemplate.content.cloneNode(true);
           this.loadingIndicator = loadingContent.firstElementChild;
           this.messagesContainer.appendChild(this.loadingIndicator);
         } else {
-          console.warn('Loading indicator template not found');
+          console.warn("Loading indicator template not found");
           return;
         }
       }
-      this.loadingIndicator.style.display = 'block';
+      this.loadingIndicator.style.display = "block";
     } else {
       // Hide loading indicator
       if (this.loadingIndicator) {
-        this.loadingIndicator.style.display = 'none';
+        this.loadingIndicator.style.display = "none";
       }
     }
 

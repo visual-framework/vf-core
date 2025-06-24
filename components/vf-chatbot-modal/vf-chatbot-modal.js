@@ -5,7 +5,6 @@ import { initVFChatbotDialog } from "../vf-chatbot-dialog/vf-chatbot-dialog.js";
 
 class VFChatbotModal {
   constructor(element) {
-
     // Store DOM elements
     this.container = element;
     this.chatInterface = this.container.querySelector(

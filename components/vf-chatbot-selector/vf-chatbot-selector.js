@@ -14,8 +14,10 @@ export class VFChatbotSelector {
     this.selectedItems = new Set();
     // this.allServicesSelected = true; // Track "All services" state
 
-    this.showAllServices = this.el.getAttribute("data-show-all-services") === "true";
-    this.showAllServicesSelected = this.el.getAttribute("data-show-all-services-selected") === "true";
+    this.showAllServices =
+      this.el.getAttribute("data-show-all-services") === "true";
+    this.showAllServicesSelected =
+      this.el.getAttribute("data-show-all-services-selected") === "true";
 
     this.init();
     this.loadRoutes();
@@ -85,7 +87,9 @@ export class VFChatbotSelector {
       // If items are pre-selected, ensure "All services" is not selected
       this.allServicesSelected = false;
       if (this.allServicesItem) {
-        this.allServicesItem.classList.remove("vf-chatbot-selector__item--selected");
+        this.allServicesItem.classList.remove(
+          "vf-chatbot-selector__item--selected"
+        );
       }
     }
 
@@ -178,7 +182,7 @@ export class VFChatbotSelector {
       item.removeEventListener("click", this.itemClickHandler);
 
       // Create bound handler
-      this.itemClickHandler = (e) => {
+      this.itemClickHandler = e => {
         e.stopPropagation();
         this.handleItemSelection(item);
       };
@@ -205,13 +209,19 @@ export class VFChatbotSelector {
     });
 
     // Set default selections only if no items are pre-selected
-    if (!hasPreSelectedItems && this.showAllServices && this.showAllServicesSelected) {
+    if (
+      !hasPreSelectedItems &&
+      this.showAllServices &&
+      this.showAllServicesSelected
+    ) {
       this.selectAllServices();
     } else if (hasPreSelectedItems) {
       // If items are pre-selected, ensure "All services" is not selected
       this.allServicesSelected = false;
       if (this.allServicesItem) {
-        this.allServicesItem.classList.remove("vf-chatbot-selector__item--selected");
+        this.allServicesItem.classList.remove(
+          "vf-chatbot-selector__item--selected"
+        );
       }
     }
 
@@ -301,8 +311,12 @@ export class VFChatbotSelector {
         .querySelector(".vf-chatbot-selector__item-title")
         .textContent.toLowerCase();
 
-      const descriptionEl = item.querySelector(".vf-chatbot-selector__item-description");
-      const description = descriptionEl ? descriptionEl.textContent.toLowerCase() : "";
+      const descriptionEl = item.querySelector(
+        ".vf-chatbot-selector__item-description"
+      );
+      const description = descriptionEl
+        ? descriptionEl.textContent.toLowerCase()
+        : "";
 
       const matches =
         title.includes(searchQuery) || description.includes(searchQuery);
@@ -399,7 +413,9 @@ export class VFChatbotSelector {
           // Deselect "All services" when individual items are selected
           this.allServicesSelected = false;
           if (this.allServicesItem) {
-            this.allServicesItem.classList.remove("vf-chatbot-selector__item--selected");
+            this.allServicesItem.classList.remove(
+              "vf-chatbot-selector__item--selected"
+            );
           }
         }
       } else {
@@ -476,7 +492,9 @@ export class VFChatbotSelector {
         titleText.textContent = title;
       }
     } else {
-      titleText.textContent = `${this.selectedItems.size} service${this.selectedItems.size > 1 ? 's' : ''} selected`;
+      titleText.textContent = `${this.selectedItems.size} service${
+        this.selectedItems.size > 1 ? "s" : ""
+      } selected`;
     }
   }
 

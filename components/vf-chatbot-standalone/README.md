@@ -84,6 +84,11 @@ Design resources for the vf-chatbot are available in our shared Figma library.
 You can access the Figma files here:
 [View vf-chatbot Design file in Figma](https://www.figma.com/file/yourfigmalink)
 
+### Working example
+
+You can access working example of standalone version here:
+[Visual Framework Chatbot - Standlone](/chatbot)
+
 ### Accessibility
 
 The component targets WCAG 2.1 AA accessibility standard.
