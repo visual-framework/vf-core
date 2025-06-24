@@ -1,0 +1,114 @@
+.vf-chatbot-feedback {
+
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__thumb {
+    padding: 0;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+
+    &:hover {
+      background-color: var(--vf-color--neutral--200);
+    }
+
+    &--solid {
+      color: var(--vf-color--neutral--900);
+
+      svg {
+        fill: currentColor;
+      }
+    }
+
+    svg {
+      display: block;
+    }
+  }
+
+  &__form {
+
+    &-content {
+      border-radius: $vf-radius--xs;
+      background-color: var(--vf-color--neutral--0);
+
+      &-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  &__title {
+    @include set-type(text-heading--5);
+    margin-bottom: 0;
+    word-wrap: break-word;
+  }
+
+  &__options {
+    display: inline-flex;
+    gap: 0.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__option {
+    @include set-type(text-body--5);
+    text-align: left;
+    padding: 10px;
+    background-color: var(--vf-color--neutral--0);
+    color: var(--vf-color--blue);
+    border-radius: $vf-radius--xs;
+    border: 1px solid var(--vf-color--blue);
+    min-width: fit-content;
+    cursor: pointer;
+    transition: background 0.2s;
+    word-wrap: break-word;
+
+    &--selected {
+      background-color: #D1E3F6;
+    }
+  }
+
+  &__comment-title {
+    @include set-type(text-body--3);
+    word-wrap: break-word
+  }
+
+  &__comment {
+    @include set-type(text-body--3);
+    width: 99%;
+    background-color: var(--vf-color--neutral--0);
+  }
+
+  &__submit {
+    @include set-type(text-heading--5);
+    margin-bottom: 0;
+    background-color: var(--vf-color--neutral--0);
+    color: var(--vf-color--blue);
+    border: 2px solid var(--vf-color--blue);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .vf-banner {
+    @extend .vf-banner;
+    background-color: var(--vf-color--neutral--0);
+    &__content {
+      display: flex;
+    }
+  }
+}

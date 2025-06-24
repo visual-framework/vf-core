@@ -235,17 +235,23 @@
 
             <!-- some tools don't have a natural place in the component library and are linked to github -->
             <article class="vf-stack vf-stack--400">
+
+              {% set context = { "section_title": "Chatbot", "href": "/components#chatbot" } %}
+              {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
+
+              <div><hr class="vf-divider"></div>
+
               {% set context = { "section_title": "Forms", "href": "/components#form" } %}
               {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
 
               <div><hr class="vf-divider"></div>
 
-              {% set context = { "section_title": "Utility", "href": "/components#utility" } %}
+              {% set context = { "section_title": "Tools", "href": "/components#tools" } %}
               {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
 
               <div><hr class="vf-divider"></div>
 
-              {% set context = { "section_title": "Tools", "href": "/components#tools" } %}
+              {% set context = { "section_title": "Utility", "href": "/components#utility" } %}
               {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
             </article>
           </div>
@@ -359,5 +365,12 @@
       <a class="vf-link" href="{{ "https://github.com/visual-framework/vf-core/blob/develop/tools/vf-component-library/" + page.inputPath | url }}">Propose a change</a> or <a href="{{ "/guidance/discussing-the-vf" | url }}" class="vf-link">discuss it</a>.
     </p>
     {% include "footer.njk" %}
+    {% render '@vf-chatbot', {
+      title: "AI Assistant",
+      welcome_message: "Welcome! How can I help you today?",
+      notification_count: 0,
+      fab_active: false,
+      show_settings: true
+    } %}
   </body>
 </html>

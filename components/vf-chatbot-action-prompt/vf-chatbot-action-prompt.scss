@@ -1,0 +1,45 @@
+.vf-chatbot-action-prompts {
+  &__list{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+}
+.vf-chatbot-action-prompt {
+  display: inline-block;
+
+  &__link {
+    @include set-type(text-body--5);
+    border-radius: $vf-radius--xs;
+    display: inline-block;
+    border: 1px solid var(--vf-color__link);
+    color: var(--vf-color__link);
+    background-color: #FFFFFF;
+    text-align: left;
+    text-decoration: none; // No underline
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%; // Width based on content
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+
+    @media (max-width: $vf-breakpoint--sm) {
+      white-space: normal;
+    }
+
+    // &:hover, &:focus {
+    //   background-color: rgba(75, 127, 209, 0.1); // Light blue background on hover
+    //   color: #4b7fd1; // Keep text blue on hover
+    //   text-decoration: none; // No underline on hover
+    //   outline: none;
+    // }
+
+    // &:active {
+    //   transform: translateY(1px);
+    // }
+  }
+  @media (max-width:$vf-breakpoint--md) {
+    display: contents;
+  }
+}

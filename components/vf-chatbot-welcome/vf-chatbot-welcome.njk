@@ -1,0 +1,25 @@
+<div class="vf-chatbot-welcome vf-u-padding__right--400" data-vf-js-chatbot-welcome>
+  <div class="vf-chatbot-welcome__content">
+    <div class="vf-chatbot-welcome__logo">
+      <img src="/assets/vf-chatbot/assets/vf-chatbot--icon-64x64-dark-green.svg" alt="AI Assistant">
+    </div>
+    <div class="vf-chatbot-welcome__title">{{ welcome_title | default('AI assistant') }}</div>
+    <div class="vf-chatbot-welcome__description">
+      {{ welcome_description | default("Welcome! I'm here to help you.") }}
+    </div>
+  </div>
+  <div class="vf-chatbot-welcome__suggestions">
+    <p class="vf-chatbot-welcome__suggestions-title">Try asking me:</p>
+    <div class="vf-chatbot-welcome__suggestions-grid" data-vf-js-chatbot-welcome-suggestions-grid>
+      <!-- Suggestions will be populated dynamically from qa.json using the template below -->
+    </div>
+  </div>
+
+  <!-- Template for welcome suggestions using vf-chatbot-action-prompt -->
+  <template id="welcome-suggestion-template">
+    {% render "@vf-chatbot-action-prompt", {
+      action_text: "",
+      action_url: "#"
+    } %}
+  </template>
+</div>

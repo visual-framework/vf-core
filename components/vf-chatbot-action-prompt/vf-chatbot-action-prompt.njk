@@ -1,0 +1,13 @@
+<div class="vf-chatbot-action-prompt">
+  {% if action_url %}
+    <a href="{{ action_url }}"
+       class="vf-chatbot-action-prompt__link vf-u-padding--200"
+       {% if action_target %}target="{{ action_target }}"{% endif %}>
+      {{ action_text }}
+    </a>
+  {% else %}
+    <button class="vf-chatbot-action-prompt__link vf-u-padding--200">
+      {{ action_text }}
+    </button>
+  {% endif %}
+</div>

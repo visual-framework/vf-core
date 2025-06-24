@@ -1,0 +1,68 @@
+.vf-chatbot-welcome {
+  margin: 0 auto;
+  width: 55%;
+
+  &__content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    @media (max-width: $vf-breakpoint--sm) {
+      min-height: 25vh;
+    }
+  }
+
+  &__logo {
+
+    img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+  }
+
+  &__title {
+    @include set-type(text-heading--3);
+    margin-bottom: 0;
+  }
+
+  &__description {
+    @include set-type(text-body--3);
+      margin-bottom: 0;
+  }
+
+  &__suggestions {
+    width: 100%;
+
+    &-title {
+      @include set-type(text-body--5);
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    &-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: left;
+      gap: 8px;
+
+      & > * {
+        width: 100%;
+        min-width: min-content;
+      }
+
+      @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  @media (max-width:$vf-breakpoint--md) {
+    width: 95%;
+  }
+  @media (max-width: $vf-breakpoint--sm) {
+    width: 88%;
+  }
+}

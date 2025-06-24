@@ -1,0 +1,27 @@
+<div class="vf-chatbot-message vf-chatbot-message--{{ type }}{% if isLoading %} vf-chatbot-message--loading{% endif %}">
+  <div class="vf-chatbot-message__avatar vf-u-margin__bottom--200">
+    {% if avatar and avatar.name and type === 'user' %}
+      <span class="vf-chatbot-message__avatar-name">{{ avatar.name }}</span>
+    {% endif %}
+    {% if avatar and avatar.src %}
+      <img src="{{ avatar.src }}" alt="{{ avatar.alt }}">
+    {% endif %}
+    {% if avatar and avatar.name and type === 'assistant' %}
+      <span class="vf-chatbot-message__avatar-name">{{ avatar.name }}</span>
+    {% endif %}
+  </div>
+  <div class="vf-chatbot-message__content vf-u-padding--200">
+    {% if isLoading %}
+      <div class="vf-chatbot-message__content-loading-dots">
+        ...
+      </div>
+    {% else %}
+      <div class="vf-chatbot-message__content-prompt vf-u-padding__left--200  vf-u-padding__right--200">
+        {{ content | safe }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% if allowFeedback and allowFeedback == true > 0 %}
+  <div class="vf-chatbot-feedback vf-u-margin__top--200" data-vf-js-chatbot-feedback></div>
+{% endif %}

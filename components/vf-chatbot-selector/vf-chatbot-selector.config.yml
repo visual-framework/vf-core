@@ -1,0 +1,53 @@
+title: Chatbot Selector
+label: Chatbot Selector
+status: alpha
+version: 0.0.1
+context:
+  component-name: vf-chatbot-selector
+  chatbotRoutes:
+    multiSelect: false
+    showSearch: true
+    showSearchThreshold: 5
+    routes: []
+    placeholder: "Select option"
+    title: "Selector"
+
+variants:
+  - name: llm
+    label: LLM Selector
+    hidden: false
+    context:
+      chatbotRoutes:
+        multiSelect: false
+        showSearch: true
+        showSearchThreshold: 5
+        routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-llms.json"
+        placeholder: "Select LLM"
+        title: "Language Model"
+
+  - name: services-single
+    label: Single Service Selector
+    hidden: false
+    context:
+      chatbotRoutes:
+        multiSelect: false
+        showSearch: true
+        showSearchThreshold: 5
+        routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json"
+        placeholder: "Select service"
+        title: "Service"
+
+  - name: services-multi
+    label: Multi Service Selector
+    hidden: false
+    context:
+      chatbotRoutes:
+        multiSelect: true
+        maxMultiSelect: 3
+        showSearch: true
+        showAllServices: true
+        showAllServicesSelected: true
+        showSearchThreshold: 5
+        routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json"
+        placeholder: "Select services"
+        title: "Services"

@@ -1,0 +1,102 @@
+.vf-chatbot-dialog {
+  position: absolute; // Change from fixed to absolute
+  top: 0;
+  left: 0;
+  padding: 5%;
+  width: 90%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; // Increase z-index to be above other modal elements
+
+  &__content {
+    background: white;
+    padding: 24px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: auto;
+    animation: dialogFadeIn 0.2s ease-out;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__body {
+    margin-bottom: 24px;
+
+    p {
+      margin: 8px 0;
+      color: #666;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    padding: 8px 16px;
+    border-radius: $vf-radius--xs;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &--outline {
+      background: none;
+      border: 1px solid #1a73e8;
+      color: #1a73e8;
+
+      &:hover {
+        background: rgba(26, 115, 232, 0.04);
+      }
+    }
+
+    &--primary {
+      background: #1a73e8;
+      border: none;
+      color: white;
+
+      &:hover {
+        background: #1557b0;
+      }
+    }
+  }
+}
+
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
