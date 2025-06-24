@@ -1,11 +1,18 @@
 title: Chatbot Modal
 label: Chatbot Modal
 status: alpha
-version: 0.0.1
-preview: '@preview'
 context:
-  title: AI Assistant
-  welcome_message: Hello! How can I help you today?
-  input_placeholder: Type your message...
-  show_suggestions: true
-  disclaimer: 'Disclaimer: This chatbot is designed to assist you with general information and basic inquiries. See our <a class="vf-banner__link" href="JavaScript:Void(0);">disclaimer notes</a>.'
+  component-type: element
+variants:
+  - name: default
+    hidden: true
+  - name: modal
+    label: Modal
+    hidden: false
+    context:
+      title: title | default("Chat with us")
+      welcome_message: welcome_message | default("Hello! How can I help you today?")
+      input_placeholder: input_placeholder | default("Type your message...")
+      show_settings: show_settings | default(true)
+      ai_icon: "/assets/vf-chatbot/assets/vf-chatbot--icon-64x64-dark-green.svg"
+      disclaimer: 'Disclaimer: This chatbot is designed to assist you with general information and basic inquiries. See our <a class="vf-banner__link" href="JavaScript:Void(0);">disclaimer notes</a>.'
