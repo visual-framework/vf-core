@@ -92,8 +92,7 @@ The style files included are written in [Sass](https://sass-lang.com/). If you'r
 
 ## Events
 
-The component dispatches a custom event when clicked:
-
+The component dispatches a custom event when clicked
 ## Help
 
 - [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)

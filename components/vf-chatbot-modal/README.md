@@ -91,7 +91,6 @@ You can access the Figma files here:
 ### Accessibility
 
 The component targets WCAG 2.1 AA accessibility standard.
-
 ## Help
 
 - [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)

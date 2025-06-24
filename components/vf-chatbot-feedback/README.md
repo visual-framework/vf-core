@@ -20,7 +20,6 @@ A feedback component for the Visual Framework chatbot that allows users to:
 <!-- OR for specific variants -->
 {% render "@vf-chatbot-shared-components/vf-chatbot-feedback--positive" %}
 {% render "@vf-chatbot-shared-components/vf-chatbot-feedback--negative" %}
-```
 
 ## Help
 

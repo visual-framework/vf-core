@@ -54,7 +54,6 @@ fabInstances[0].toggleModal(); // Toggle the modal state
   --vf-chatbot-fab-position-right: 20px;        /* Position from right */
 }
 ```
-
 ## Help
 
 - [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)

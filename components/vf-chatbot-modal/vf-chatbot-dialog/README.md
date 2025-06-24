@@ -16,7 +16,6 @@ A confirmation dialog for the chatbot modal, used for confirming actions like cl
   confirmLabel: "Close and delete"
 } %}
 ```
-
 ## Help
 
 - [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)
