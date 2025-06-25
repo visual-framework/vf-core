@@ -1,83 +1,61 @@
-## 12. Welcome Component README
-
-```markdown
 # Chatbot Welcome Component
 
-<h2 class="vf-u-type--lead">
-<span class="vf-badge vf-badge--primary vf-badge--phases">Alpha</span>
-</h2>
+## About
 
 Initial welcome screen for the chatbot, displaying a greeting and suggested questions.
 
 ## Usage
 
-```njk
-{% render "@vf-chatbot-shared-components/vf-chatbot-welcome", {
-  welcome_title: "AI Assistant",
-  welcome_description: "Welcome! I'm here to help",
-  welcome_message: "Ask me anything about our services, research, or support."
-} %}
+### When to use this component
+
+Use the chatbot welcome component to:
+
+- Provide a clear introduction to the chatbot's purpose and capabilities
+- Guide users with suggested questions or topics they can explore
+- Set expectations about what kind of help or information the chatbot can provide
+- Create a friendly, approachable first impression for the conversational interface
+- Reduce user uncertainty about how to start interacting with the chatbot
+
+The welcome screen is particularly effective when users might be unfamiliar with chatbots or when the chatbot serves specific, specialized functions that benefit from explanation.
+
+### When not to use this component
+
+This component is not to be used independent of the standalone or modal chatbot containers as it may not work correctly
+
+Avoid the welcome screen when:
+
+- Users are already familiar with the chatbot and frequent returning users would find it repetitive
+- The chatbot's purpose is immediately obvious from the context
+- Screen space is limited and you need to maximize the conversation area
+- The chatbot is embedded in a workflow where users have a specific, urgent task to complete
+- You have evidence that users prefer to jump straight into asking questions
+
+For experienced users or simple use cases, a minimal interface that goes directly to the input field may be more efficient.
+
+### Implementation
+
+The welcome component appears when the chatbot is first opened and includes:
+
+- A welcoming title and description
+- Brief explanation of the chatbot's capabilities
+- Clickable suggestion prompts to help users get started
+- Visual branding elements like icons or logos
+
+Users can either click on a suggested question or type their own query to begin the conversation.
+
+## Install
+
+```bash
+yarn add --dev @visual-framework/vf-chatbot-welcome
 ```
 
-import { VFChatbotWelcome } from "./vf-chatbot-welcome.js";
+### Sass/CSS
 
-const welcomeElement = document.querySelector('[data-vf-js-chatbot-welcome]');
-const welcome = new VFChatbotWelcome(welcomeElement);
+The style files included are written in [Sass](https://sass-lang.com/). If you're using a VF-core project, you can import it like this:
 
-// Initialize and load suggestion prompts
-await welcome.init({
-  suggestionsUrl: "../../assets/custom-suggestions.json"
-});
-````markdown
-<div class="vf-chatbot-welcome" data-vf-js-chatbot-welcome>
-  <div class="vf-chatbot-welcome__content">
-    <div class="vf-chatbot-welcome__logo">
-      <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-80x80-dark-green.svg" alt="AI Assistant">
-    </div>
-    <h3 class="vf-chatbot-welcome__title">AI Assistant</h3>
-    <p class="vf-chatbot-welcome__description">Welcome! I'm here to help</p>
-    <p class="vf-chatbot-welcome__message">Ask me anything about our services, research, or support.</p>
-
-    <div class="vf-chatbot-welcome__suggestions">
-      <h4 class="vf-chatbot-welcome__suggestions-title">Try asking me</h4>
-      <div class="vf-chatbot-welcome__suggestions-grid">
-        <!-- Suggestions will be populated here -->
-        <div class="vf-chatbot-welcome__suggestion" data-vf-js-suggestion>
-          <a href="#" class="vf-chatbot-welcome__suggestion-link">
-            What services do you offer?
-          </a>
-        </div>
-        <div class="vf-chatbot-welcome__suggestion" data-vf-js-suggestion>
-          <a href="#" class="vf-chatbot-welcome__suggestion-link">
-            How can I get support?
-          </a>
-        </div>
-        <div class="vf-chatbot-welcome__suggestion" data-vf-js-suggestion>
-          <a href="#" class="vf-chatbot-welcome__suggestion-link">
-            Tell me about your research
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Initialize welcome component
-    const welcomeElement = document.querySelector('[data-vf-js-chatbot-welcome]');
-    const welcome = new VFChatbotWelcome(welcomeElement);
-    welcome.init({
-      suggestionsUrl: "../../assets/custom-suggestions.json"
-    });
-
-    // Listen for suggestion clicks
-    welcomeElement.addEventListener('vf-chatbot-welcome:suggestion-click', function(event) {
-      console.log('Suggestion clicked:', event.detail.question);
-    });
-  });
-</script>
-````
+```scss
+@import "@visual-framework/vf-chatbot-welcome/index.scss";
+```
 
 ## Help
 

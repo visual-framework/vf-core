@@ -1,28 +1,51 @@
-# Chatbot Feedback component
+# Chatbot Feedback Component
 
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-chatbot-feedback.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-chatbot-feedback)
-
-## About
-
-A feedback component for the Visual Framework chatbot that allows users to:
-- Provide thumbs up/down feedback on responses
-- Select specific feedback options based on their response
-- Add custom comments
-- See success/error states with closeable banners
+Thumbs up/down feedback controls for the chatbot responses.
 
 ## Usage
 
-```njk
-{% render "@vf-chatbot-shared-components/vf-chatbot-feedback", {
-  responseId: "response-123"
-} %}
+### When to use this component
 
-<!-- OR for specific variants -->
-{% render "@vf-chatbot-shared-components/vf-chatbot-feedback--positive" %}
-{% render "@vf-chatbot-shared-components/vf-chatbot-feedback--negative" %}
+Use the chatbot feedback component to:
 
-## Help
+- Collect user satisfaction data on AI-generated responses
+- Identify which responses are helpful vs. unhelpful to improve the system
+- Allow users to quickly indicate whether their question was answered effectively
+- Gather specific feedback about response quality, accuracy, or relevance
+- Enable continuous improvement of the chatbot's performance through user input
 
-- [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)
-- [Open a ticket](https://github.com/visual-framework/vf-core/issues)
-- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
+Feedback is particularly valuable for AI systems where response quality can vary, and user input helps train and refine the system over time.
+
+### When not to use this component
+
+This component is not to be used independent of the standalone or modal chatbot containers as it may not work correctly
+
+Avoid feedback controls when:
+
+- The chatbot handles simple, transactional queries where feedback adds unnecessary friction
+- You lack the infrastructure to act on the feedback data collected
+- The interface is already cluttered and feedback would add visual noise
+- Users are completing time-sensitive tasks where feedback requests could be disruptive
+- The chatbot responses are primarily navigational or procedural rather than informational
+
+For simple FAQ-style bots or when feedback collection happens through other channels, this component may not be necessary.
+
+### Implementation
+
+The feedback component provides:
+
+- Simple thumbs up/down voting interface that's quick to use
+- Optional detailed feedback form for users who want to provide more context
+- Visual confirmation when feedback is submitted successfully
+- Discrete positioning that doesn't interfere with the conversation flow
+- Different feedback options for positive vs. negative responses
+- Success and error states with appropriate messaging
+- Analytics integration points for tracking feedback patterns
+
+Feedback appears below individual assistant responses, allowing granular assessment of each interaction rather than overall conversation rating.
+
+## Install
+
+```bash
+yarn add --dev @visual-framework/vf-chatbot-feedback
+````
