@@ -1,54 +1,81 @@
+## 9. Prompt Component README
+
+```markdown
 # Chatbot Prompt Component
 
 Message bubbles for user and assistant messages in the chatbot.
 
 ## Usage
 
-### When to use this component
+```njk
+<!-- User message -->
+<div class="vf-chatbot-message vf-chatbot-message--user">
+  <div class="vf-chatbot-message__avatar">
+    <img src="../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg" alt="You">
+  </div>
+  <div class="vf-chatbot-message__content">
+    <div class="vf-chatbot-message__content-prompt">
+      How do proteins fold?
+    </div>
+  </div>
+</div>
 
-Use the chatbot prompt component to:
+<!-- Assistant message with sources, prompts, and feedback -->
+<div class="vf-chatbot-message vf-chatbot-message--assistant">
+  <div class="vf-chatbot-message__avatar">
+    <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg" alt="AI Assistant">
+  </div>
+  <div class="vf-chatbot-message__content">
+    <div class="vf-chatbot-message__content-prompt">
+      Protein folding is the process by which a protein structure assumes its functional shape...
 
-- Display individual messages in the conversation thread between user and assistant
-- Show clear visual distinction between user messages and AI responses
-- Present structured content including text, sources, and interactive elements
-- Provide consistent formatting for all message types in the chat interface
-- Enable message-level interactions like feedback, copying, or sharing
+      <!-- Sources section -->
+      <div class="vf-chatbot-sources" data-vf-js-chatbot-sources>
+        <h3 class="vf-chatbot-sources__title">Sources</h3>
+        <ul class="vf-chatbot-sources__list">
+          <li class="vf-chatbot-sources__item">
+            <a href="https://example.com/protein-folding" target="_blank" class="vf-chatbot-sources__link">
+              Protein Folding Overview
+            </a>
+          </li>
+        </ul>
+      </div>
 
-The prompt component is the core building block of any chatbot conversation, handling both simple text exchanges and complex responses with multiple elements.
+      <!-- Action prompts -->
+      <div class="vf-chatbot-action-prompts">
+        <div class="vf-chatbot-action-prompts__list">
+          <div class="vf-chatbot-action-prompt">
+            <a href="#" class="vf-chatbot-action-prompt__link">
+              Tell me more about protein structures
+            </a>
+          </div>
+          <div class="vf-chatbot-action-prompt">
+            <a href="#" class="vf-chatbot-action-prompt__link">
+              What is AlphaFold?
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-### When not to use this component
+    <!-- Feedback controls -->
+    <div class="vf-chatbot-feedback" data-vf-js-chatbot-feedback>
+      <!-- Feedback content -->
+    </div>
+  </div>
+</div>
 
-This component is not to be used independent of the standalone or modal chatbot containers as it may not work correctly
-
-The prompt component is essential for chatbot interfaces, but consider alternatives when:
-
-- Displaying system messages or notifications (use dedicated alert components instead)
-- Showing typing indicators or loading states (use specialized loading components)
-- Presenting error messages that aren't part of the conversation flow
-- Displaying welcome screens or introductory content (use dedicated welcome components)
-
-Different message types may need different visual treatment than standard conversation prompts.
-
-### Implementation
-
-The prompt component provides:
-
-- Distinct styling for user vs. assistant messages
-- Avatar display with customizable images and names
-- Support for rich content including HTML, links, and embedded elements
-- Integration points for sources, action prompts, and feedback controls
-- Loading states for messages that are being generated
-- Responsive design that adapts to different screen sizes
-- Proper semantic markup for accessibility
-
-Messages appear in chronological order in the chat thread, with user messages typically aligned to one side and assistant responses to the other.
-
-## Install
-
-```bash
-yarn add --dev @visual-framework/vf-chatbot-prompt
-```
-
+<!-- Loading state -->
+{% render "@vf-chatbot-shared-components/vf-chatbot-prompt", {
+  type: "assistant",
+  isLoading: true,
+  avatar: {
+    src: "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
+    alt: "AI Assistant",
+    name: "AI Assistant"
+  }
+} %}
+````
 
 ## Help
 

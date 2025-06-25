@@ -1,47 +1,120 @@
+## 10. Selector Component README
+
+```markdown
 # Chatbot Selector Component
 
-Service selection dropdown for the chatbot, allowing users to choose which services to query.
+A configurable router component for the Visual Framework chatbot that provides:
+- Single/Multi-select functionality for different chatbot services
+- Searchable dropdown list for 10+ items
+- Visual feedback for selected items
+- Clear all functionality for multi-select mode
+- Configurable through YAML
 
 ## Usage
 
-### When to use this component
+```njk
+{% render "@vf-chatbot-shared-components/vf-chatbot-selector", {
+  chatbotRoutes: {
+    multiSelect: true,
+    maxMultiSelect: 3,
+    showSearch: true,
+    showSearchThreshold: 5,
+    showAllServices: true,
+    showAllServicesSelected: true,
+    routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
+    placeholder: "Select services",
+    title: "Services"
+  }
+} %}
+```
 
-Use the chatbot selector component to:
+```js
+import { initVFChatbotSelector } from "./vf-chatbot-selector.js";
 
-- Allow users to choose which AI model or service they want to interact with
-- Enable selection of specific databases or knowledge sources for targeted queries
-- Provide options for different types of assistance (e.g., general help, technical support, research queries)
-- Let users customize their chatbot experience based on their specific needs or expertise level
-- Switch between different language models or specialized AI assistants within the same interface
+// Initialize
+const selector = initVFChatbotSelector(document.querySelector('[data-vf-js-chatbot-selector]'));
 
-The selector is particularly useful when your chatbot integrates multiple services or when different user groups need access to different types of information or assistance.
+// Listen for selection changes
+document.querySelector('[data-vf-js-chatbot-selector]').addEventListener('routeselection', function(event) {
+  console.log('Selected routes:', event.detail.selectedItems);
+});
+```
 
-### When not to use this component
+```json
+[
+  {
+    "id": "service1",
+    "title": "General AI Assistant",
+    "subtitle": "General purpose assistant",
+    "icon": "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg"
+  },
+  {
+    "id": "service2",
+    "title": "Protein Analysis",
+    "subtitle": "Specialized in protein structures",
+    "icon": "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-blue.svg"
+  }
+]
+```
 
-This component is not to be used independent of the standalone or modal chatbot containers as it may not work correctly
+<!-- Single select -->
+<div class="vf-chatbot-selector" data-vf-js-chatbot-selector>
+  <div class="vf-chatbot-selector__title">
+    <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg" alt="Services">
+    <div class="vf-chatbot-selector__title-content">
+      <span class="vf-chatbot-selector__main-text">Services</span>
+      <span class="vf-chatbot-selector__arrow">
+        <svg width="10" height="6" viewBox="0 0 10 6">
+          <path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="2"/>
+        </svg>
+      </span>
+    </div>
+  </div>
 
-Avoid the selector when:
+  <div class="vf-chatbot-selector__dropdown">
+    <!-- Search input appears if showSearch is true -->
+    <div class="vf-chatbot-selector__search">
+      <input type="text" placeholder="Search services..." class="vf-chatbot-selector__search-input">
+    </div>
 
-- There's only one service or the choice is obvious from context
-- The selection would confuse users or add unnecessary complexity
-- Users typically need all available services simultaneously
-- The chatbot automatically determines the best service based on the query
-- The interface is already complex and additional options would overwhelm users
+    <!-- Options list -->
+    <div class="vf-chatbot-selector__options">
+      <!-- Options will be populated here -->
+    </div>
+  </div>
+</div>
 
-For simple, single-purpose chatbots or when the service selection happens outside the chat interface, this component may be unnecessary.
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Configure and initialize the selector
+    const selectorElement = document.querySelector('[data-vf-js-chatbot-selector]');
+    selectorElement.dataset.vfJsChatbotSelectorConfig = JSON.stringify({
+      multiSelect: true,
+      showSearch: true,
+      routes: [
+        {
+          "id": "service1",
+          "title": "General AI Assistant",
+          "subtitle": "General purpose assistant",
+          "icon": "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg"
+        },
+        {
+          "id": "service2",
+          "title": "Protein Analysis",
+          "subtitle": "Specialized in protein structures",
+          "icon": "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-blue.svg"
+        }
+      ]
+    });
 
-### Implementation
+    const selector = initVFChatbotSelector(selectorElement);
 
-The selector component appears in the chatbot header and provides:
-
-- Single or multi-select functionality depending on configuration
-- Search capability for lists with many options (10+ items)
-- Clear visual feedback showing selected services
-- Dropdown interface with chevron indicator
-- "Clear all" option for multi-select mode
-- Responsive design that works across different screen sizes
-
-Users can change their selection at any time during the conversation, with the chatbot adapting its responses based on the selected services.
+    // Listen for selection changes
+    selectorElement.addEventListener('routeselection', function(event) {
+      console.log('Selected routes:', event.detail.selectedItems);
+    });
+  });
+</script>
 
 ### Features
 
@@ -52,12 +125,6 @@ Users can change their selection at any time during the conversation, with the c
 5. Clear all functionality for multi-select mode
 6. Chevron indicator for dropdown state
 
-## Install
-
-```bash
-yarn add --dev @visual-framework/vf-chatbot-selector
-```
-
 ### Dependencies
 
 - @visual-framework/vf-sass-config
@@ -67,5 +134,4 @@ yarn add --dev @visual-framework/vf-chatbot-selector
 - [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)
 - [Open a ticket](https://github.com/visual-framework/vf-core/issues)
 - [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
-
 
