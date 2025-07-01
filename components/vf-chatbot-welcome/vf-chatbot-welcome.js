@@ -9,10 +9,10 @@ export class VFChatbotWelcome {
     this.qaData = null;
     this.boundHandleSuggestionClick = this.handleSuggestionClick.bind(this);
 
-    // Get maxQuestions from data attribute or use default
-    this.maxQuestions =
-      options.maxQuestions ||
-      parseInt(this.el.dataset.maxQuestions, 10) ||
+    // Get welcome_max_suggestions from data attribute or use default
+    this.welcome_max_suggestions =
+      options.welcome_max_suggestions ||
+      parseInt(this.el.dataset.welcome_max_suggestions, 10) ||
       3; // Default to 3 if not specified
   }
 
@@ -50,7 +50,7 @@ export class VFChatbotWelcome {
     const questions = Object.keys(this.qaData);
     const randomQuestions = questions
       .sort(() => 0.5 - Math.random())
-      .slice(0, this.maxQuestions);
+      .slice(0, this.welcome_max_suggestions);
 
     // Create suggestion elements using template-based rendering
     randomQuestions.forEach((question, index) => {
