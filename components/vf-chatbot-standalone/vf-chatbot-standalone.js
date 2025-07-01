@@ -46,17 +46,14 @@ class VFChatbotStandalone {
         send_button:
           "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
         main_logo_url:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg",
-        thumbs_up:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-thumbs-up.svg",
-        thumbs_down:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-thumbs-down.svg",
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg"
       },
 
       api: {
-        chat_endpoint: "/api/chat",
+        // chat_endpoint: "/api/chat", // Disabled to use fallback responses
         feedback_endpoint: "/api/feedback",
         suggestions_endpoint: "/api/suggestions",
+        sources_endpoint: "/api/sources",
         headers: {
           "Content-Type": "application/json",
         },
@@ -69,38 +66,15 @@ class VFChatbotStandalone {
         enable_sources: true,
         enable_welcome_suggestions: true,
         enable_typing_indicator: true,
-        enable_sound_notifications: false,
-        enable_conversation_history: true,
-        enable_file_upload: false,
-        enable_voice_input: false,
-        enable_retry: true
+        enable_disclaimer: true
       },
 
       behavior: {
         auto_scroll: true,
-        show_timestamps: false,
-        max_message_length: 1000,
-        typing_delay: 800,
-        retry_failed_messages: true,
-        conversation_timeout: 1800000,
+        typing_delay: 800
       },
 
-      // labels: {
-      //   send_button_aria: "Send message",
-      //   feedback_positive: "This was helpful",
-      //   feedback_negative: "This was not helpful",
-      //   typing_indicator: "AI is typing...",
-      //   error_message:
-      //     "Sorry, I could not process your request. Please try again.",
-      //   retry_button: "Retry",
-      // },
-
       handlers: {},
-
-      // theme: {
-      //   primary_color: "#007c82",
-      //   background_color: "#f8f9fa",
-      // },
     };
 
     // Merge configurations: default < data-attribute < custom
@@ -192,37 +166,15 @@ class VFChatbotStandalone {
     // Update input placeholder
     if (this.input) {
       this.input.placeholder = this.config.input_placeholder;
-      this.input.maxLength = this.config.behavior.max_message_length;
       // Initialize textarea height
       this.autoResizeTextarea();
     }
-
-    // Update send button aria label
-    // if (this.sendBtn) {
-    //   this.sendBtn.setAttribute("aria-label", this.config.labels.send_button_aria);
-    // }
 
     // Update auto-scroll behavior
     if (this.messagesContainer) {
       this.messagesContainer.dataset.autoScroll = this.config.behavior.auto_scroll;
     }
-
-    // Apply theme
-    // this.applyTheme();
   }
-
-  // applyTheme() {
-  //   if (this.config.theme) {
-  //     const style = document.createElement("style");
-  //     style.textContent = `
-  //       .vf-chatbot-standalone-container {
-  //         --vf-chatbot-primary-color: ${this.config.theme.primary_color};
-  //         --vf-chatbot-background-color: ${this.config.theme.background_color};
-  //       }
-  //     `;
-  //     document.head.appendChild(style);
-  //   }
-  // }
 
   setupState() {
     this.currentAssistant = "";
@@ -235,6 +187,17 @@ class VFChatbotStandalone {
     this.loadQADataAndPopulateSuggestions();
   }
 
+  setupState() {
+    this.currentAssistant = "";
+    this.conversationId = this.generateConversationId();
+    this.messageHistory = [];
+    this.loadingIndicator = null;
+    this.apiResponseListener = null;
+
+    // Load Q&A data if using fallback responses
+    this.loadQADataAndPopulateSuggestions();
+  }
+  
   setupEventHandlers() {
     // Setup global event handlers for custom functions
     this.setupCustomEventHandlers();
@@ -434,15 +397,39 @@ class VFChatbotStandalone {
   }
 
   async loadQADataAndPopulateSuggestions() {
+    // Set default fallback responses in case loading fails
+    this.fallbackResponses = [
+      {
+        answer: "Thank you for your question. I'm here to help with general information and basic inquiries.",
+        prompts: []
+      },
+      {
+        answer: "I appreciate you reaching out. While I may not have a specific answer, I'm designed to assist with various topics.",
+        prompts: []
+      },
+      {
+        answer: "That's an interesting question! I'm still learning and growing to better assist users like you.",
+        prompts: []
+      },
+      {
+        answer: "I understand you're looking for information. Please feel free to ask more specific questions that I might be able to help with.",
+        prompts: []
+      }
+    ];
+
     try {
       const response = await fetch(
         "../../assets/vf-chatbot/assets/vf-chatbot-qa.json"
       );
       const data = await response.json();
       this.qaData = data.predefinedQA;
-      this.fallbackResponses = data.fallbackResponses;
+      // Override with loaded fallback responses if available
+      if (data.fallbackResponses && data.fallbackResponses.length > 0) {
+        this.fallbackResponses = data.fallbackResponses;
+      }
     } catch (error) {
       console.error("Failed to load Q&A data:", error);
+      console.log("Using default fallback responses");
       this.onError(error, "qa_data_load");
     }
   }
@@ -627,9 +614,19 @@ class VFChatbotStandalone {
       } else {
         // Use fallback response
         setTimeout(() => {
-          const fallbackResponse = this.fallbackResponses[
-            Math.floor(Math.random() * this.fallbackResponses.length)
-          ];
+          let fallbackResponse;
+          
+          if (this.fallbackResponses && this.fallbackResponses.length > 0) {
+            fallbackResponse = this.fallbackResponses[
+              Math.floor(Math.random() * this.fallbackResponses.length)
+            ];
+          } else {
+            // Default fallback if no responses loaded
+            fallbackResponse = {
+              answer: "Thank you for your message. I'm here to help with general information and basic inquiries.",
+              prompts: []
+            };
+          }
           this.addAssistantResponse(
             fallbackResponse.answer,
             [],
@@ -819,22 +816,6 @@ class VFChatbotStandalone {
 
     this.scrollToBottom();
   }
-
-  // showErrorMessage() {
-  //   const errorText = this.config.labels.error_message;
-  //   let retryPrompts = [];
-
-  //   if (this.config.behavior.retry_failed_messages && this.config.features.enable_retry) {
-  //     retryPrompts = [
-  //       {
-  //         action_text: this.config.labels.retry_button,
-  //         action_url: "",
-  //       },
-  //     ];
-  //   }
-
-  //   this.addAssistantResponse(errorText, [], retryPrompts);
-  // }
 
   scrollToBottom() {
     if (this.config.behavior.auto_scroll && this.messagesContainer) {
