@@ -187,6 +187,17 @@ class VFChatbotStandalone {
     this.loadQADataAndPopulateSuggestions();
   }
 
+  setupState() {
+    this.currentAssistant = "";
+    this.conversationId = this.generateConversationId();
+    this.messageHistory = [];
+    this.loadingIndicator = null;
+    this.apiResponseListener = null;
+
+    // Load Q&A data if using fallback responses
+    this.loadQADataAndPopulateSuggestions();
+  }
+  
   setupEventHandlers() {
     // Setup global event handlers for custom functions
     this.setupCustomEventHandlers();
@@ -616,7 +627,6 @@ class VFChatbotStandalone {
               prompts: []
             };
           }
-          
           this.addAssistantResponse(
             fallbackResponse.answer,
             [],
