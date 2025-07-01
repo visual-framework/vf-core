@@ -85,22 +85,22 @@ class VFChatbotStandalone {
         conversation_timeout: 1800000,
       },
 
-      labels: {
-        send_button_aria: "Send message",
-        feedback_positive: "This was helpful",
-        feedback_negative: "This was not helpful",
-        typing_indicator: "AI is typing...",
-        error_message:
-          "Sorry, I could not process your request. Please try again.",
-        retry_button: "Retry",
-      },
+      // labels: {
+      //   send_button_aria: "Send message",
+      //   feedback_positive: "This was helpful",
+      //   feedback_negative: "This was not helpful",
+      //   typing_indicator: "AI is typing...",
+      //   error_message:
+      //     "Sorry, I could not process your request. Please try again.",
+      //   retry_button: "Retry",
+      // },
 
       handlers: {},
 
-      theme: {
-        primary_color: "#007c82",
-        background_color: "#f8f9fa",
-      },
+      // theme: {
+      //   primary_color: "#007c82",
+      //   background_color: "#f8f9fa",
+      // },
     };
 
     // Merge configurations: default < data-attribute < custom
@@ -193,12 +193,14 @@ class VFChatbotStandalone {
     if (this.input) {
       this.input.placeholder = this.config.input_placeholder;
       this.input.maxLength = this.config.behavior.max_message_length;
+      // Initialize textarea height
+      this.autoResizeTextarea();
     }
 
     // Update send button aria label
-    if (this.sendBtn) {
-      this.sendBtn.setAttribute("aria-label", this.config.labels.send_button_aria);
-    }
+    // if (this.sendBtn) {
+    //   this.sendBtn.setAttribute("aria-label", this.config.labels.send_button_aria);
+    // }
 
     // Update auto-scroll behavior
     if (this.messagesContainer) {
@@ -470,6 +472,13 @@ class VFChatbotStandalone {
       }
     });
 
+    // Auto-resize textarea functionality
+    this.input?.addEventListener("input", () => this.autoResizeTextarea());
+    this.input?.addEventListener("paste", () => {
+      // Use setTimeout to ensure the pasted content is processed
+      setTimeout(() => this.autoResizeTextarea(), 0);
+    });
+
     // Disclaimer close
     if (this.disclaimer && this.disclaimerCloseBtn) {
       this.disclaimerCloseBtn.addEventListener("click", () => {
@@ -496,6 +505,44 @@ class VFChatbotStandalone {
     const text = this.input.value.trim();
     this.showChatInterface();
     this.sendUserMessage(text);
+  }
+
+  autoResizeTextarea() {
+    if (!this.input) return;
+
+    // Reset height to auto to get the actual scroll height
+    this.input.style.height = 'auto';
+    
+    // Get computed styles
+    const computedStyle = window.getComputedStyle(this.input);
+    const lineHeight = parseFloat(computedStyle.lineHeight) || 24;
+    const paddingTop = parseFloat(computedStyle.paddingTop) || 0;
+    const paddingBottom = parseFloat(computedStyle.paddingBottom) || 0;
+    const borderTop = parseFloat(computedStyle.borderTopWidth) || 0;
+    const borderBottom = parseFloat(computedStyle.borderBottomWidth) || 0;
+    
+    // Calculate heights more accurately
+    const extraHeight = paddingTop + paddingBottom + borderTop + borderBottom;
+    const minHeight = lineHeight + extraHeight; // Height for 1 row
+    const maxHeight = (lineHeight * 5) + extraHeight; // Height for 5 rows
+    
+    // Get the scroll height (content height)
+    const scrollHeight = this.input.scrollHeight;
+    
+    // Calculate the new height, constrained by min and max
+    let newHeight = Math.max(minHeight, scrollHeight);
+    
+    if (newHeight >= maxHeight) {
+      // If content exceeds 5 rows, set to max height and enable scrolling
+      newHeight = maxHeight;
+      this.input.classList.add('vf-chatbot-standalone__input--scrollable');
+    } else {
+      // Remove scrollable class if content fits within 5 rows
+      this.input.classList.remove('vf-chatbot-standalone__input--scrollable');
+    }
+    
+    // Apply the new height
+    this.input.style.height = newHeight + 'px';
   }
 
   showChatInterface() {
@@ -542,6 +589,9 @@ class VFChatbotStandalone {
     if (this.input) {
       this.input.value = "";
       this.input.style.height = "auto";
+      // Reset textarea to minimum height and remove scrollable class
+      this.input.classList.remove('vf-chatbot-standalone__input--scrollable');
+      this.autoResizeTextarea();
     }
 
     this.scrollToBottom();
@@ -591,7 +641,7 @@ class VFChatbotStandalone {
     } catch (error) {
       console.error("Error processing message:", error);
       this.onError(error, "message_processing");
-      this.showErrorMessage();
+      // this.showErrorMessage();
     } finally {
       this.setLoadingState(false);
     }
@@ -742,9 +792,9 @@ class VFChatbotStandalone {
         const loadingText = this.loadingIndicator.querySelector(
           ".vf-chatbot-message__loading-text"
         );
-        if (loadingText) {
-          loadingText.textContent = this.config.labels.typing_indicator;
-        }
+        // if (loadingText) {
+        //   loadingText.textContent = this.config.labels.typing_indicator;
+        // }
 
         // Update avatar
         const avatar = this.loadingIndicator.querySelector("img");
@@ -770,21 +820,21 @@ class VFChatbotStandalone {
     this.scrollToBottom();
   }
 
-  showErrorMessage() {
-    const errorText = this.config.labels.error_message;
-    let retryPrompts = [];
+  // showErrorMessage() {
+  //   const errorText = this.config.labels.error_message;
+  //   let retryPrompts = [];
 
-    if (this.config.behavior.retry_failed_messages && this.config.features.enable_retry) {
-      retryPrompts = [
-        {
-          action_text: this.config.labels.retry_button,
-          action_url: "",
-        },
-      ];
-    }
+  //   if (this.config.behavior.retry_failed_messages && this.config.features.enable_retry) {
+  //     retryPrompts = [
+  //       {
+  //         action_text: this.config.labels.retry_button,
+  //         action_url: "",
+  //       },
+  //     ];
+  //   }
 
-    this.addAssistantResponse(errorText, [], retryPrompts);
-  }
+  //   this.addAssistantResponse(errorText, [], retryPrompts);
+  // }
 
   scrollToBottom() {
     if (this.config.behavior.auto_scroll && this.messagesContainer) {

@@ -2,7 +2,9 @@
 .vf-chatbot-standalone-container {
   background-color: var(--vf-color--neutral--0);
 }
+
 .vf-chatbot-standalone {
+  
   display: flex;
   justify-content: end;
   border-radius: $vf-radius--xs;
@@ -36,16 +38,29 @@
     flex-direction: column;
     width: 55%;
     margin: 16px auto;
+    padding-right: 1rem;
     @media (max-width:$vf-breakpoint--md) {
+      padding: 0 0.5rem;
       width: 95%;
     }
     @media (max-width: 600px) {
-      width: 88%;
+      // width: 88%;
+      padding: 0 0.5rem;
     }
   }
 
   &__input-wrapper {
     display: flex;
+    label {
+      visibility: hidden;
+      position: absolute;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      height: 1px; 
+      width: 1px;
+      overflow: hidden;
+    }
   }
 
   &__input-wrapper:hover, &__input-wrapper:focus-within {
@@ -59,17 +74,21 @@
     width: 100%;
     border: none;
     resize: none;
-    min-height: 40px;
-    max-height: 125px;
     background: #FFFFFF;
-
+    box-shadow: none !important;
     // /* When typing (not showing placeholder) */
     &:not(:placeholder-shown) {
       color: var(--vf-color__text--primary); /* Text color when typing */
     }
+
+    // When content exceeds 5 rows, show scrollbar
+    &.vf-chatbot-standalone__input--scrollable {
+      overflow-y: auto;
+    }
   }
 
   &__send-button {
+    height: fit-content;
     background: #3A77BC;
     border: none;
     padding-inline: 0px;
@@ -91,34 +110,43 @@
     flex-direction: column;
     overflow-y: auto;
     width: 55%;
+    padding-right: 1rem;
     @media (max-width:$vf-breakpoint--md) {
+      padding: 0 0.5rem;
       width: 95%;
     }
     @media (max-width: 600px) {
-      width: 88%;
+      // width: 88%;
+      padding: 0 0.5rem;
     }
   }
 
   &__disclaimer {
     margin: 0 auto;
     width: 55%;
+    padding-right: 1rem;
     @media (max-width:$vf-breakpoint--md) {
+      padding: 0 0.5rem;
       width: 95%;
     }
     @media (max-width: 600px) {
-      width: 88%;
+      // width: 88%;
+      padding: 0 0.5rem;
     }
   }
 
   &__footnote {
     @include set-type(text-body--5);
-    margin-bottom: 0px;
+    margin: 0 auto;
     text-align: center;
+    padding-right: 1rem;
     @media (max-width:$vf-breakpoint--md) {
       width: 95%;
+      padding: 0 0.5rem;
     }
     @media (max-width: 600px) {
-      width: 88%;
+      // width: 88%;
+      padding: 0 0.5rem;
     }
   }
 

@@ -34,7 +34,10 @@
 
     {% if chatbotRoutes.showSearch and (chatbotRoutes.routes | length > chatbotRoutes.showSearchThreshold) %}
     <div class="vf-chatbot-selector__search">
-      <input type="text" placeholder="{{ chatbotRoutes.placeholder | default('Search...') }}" data-vf-js-selector-search>
+      <label 
+        id="vf-chatbot-selector-search-label"
+        for="vf-chatbot-selector-search">Type to search</label>
+      <input type="text" id="vf-chatbot-selector-search" aria-labelledby="vf-chatbot-selector-search-label" placeholder="{{ chatbotRoutes.placeholder | default('Search...') }}" data-vf-js-selector-search>
     </div>
     {% endif %}
 

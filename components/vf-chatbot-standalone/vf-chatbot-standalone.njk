@@ -48,14 +48,6 @@
     retry_failed_messages: true,
     conversation_timeout: 1800000
   }),
-  labels: labels | default({
-    send_button_aria: "Send message",
-    feedback_positive: "This was helpful",
-    feedback_negative: "This was not helpful",
-    typing_indicator: "AI is typing...",
-    error_message: "Sorry, I could not process your request. Please try again.",
-    retry_button: "Retry"
-  }),
   selectorContext: selectorContext | default({
     chatbotRoutes: {
       multiSelect: true,
@@ -119,7 +111,7 @@
       {% endif %}
 
       <!-- Messages Container -->
-      <div class="vf-chatbot-standalone__messages vf-u-padding__right--400"
+      <div class="vf-chatbot-standalone__messages"
            data-vf-js-chatbot-standalone-messages
            data-auto-scroll="{{ config.behavior.auto_scroll }}">
         <!-- Messages will be added here dynamically -->
@@ -127,7 +119,7 @@
 
       <!-- Disclaimer Banner -->
       {% if config.disclaimer and config.features.enable_disclaimer %}
-        <div class="vf-chatbot-standalone__disclaimer vf-u-padding__right--400" data-vf-js-chatbot-standalone-disclaimer>
+        <div class="vf-chatbot-standalone__disclaimer" data-vf-js-chatbot-standalone-disclaimer>
           <div class="vf-banner vf-banner--alert vf-banner--info">
             <div class="vf-banner__content">
               <p class="vf-banner__text">{{ config.disclaimer | safe }}</p>
@@ -145,9 +137,14 @@
     </div>
 
     <!-- Input Container -->
-    <div class="vf-chatbot-standalone__input-container vf-u-padding__right--400">
+    <div class="vf-chatbot-standalone__input-container">
       <div class="vf-chatbot-standalone__input-wrapper">
+        <label 
+          id="vf-chatbot-standalone-input-label"
+          for="vf-chatbot-standalone-input">Ask me</label>
         <textarea
+          id="vf-chatbot-standalone-input"
+          aria-labelledby="vf-chatbot-standalone-input-label"
           class="vf-chatbot-standalone__input vf-form__textarea vf-u-padding__left--400"
           placeholder="{{ config.input_placeholder }}"
           rows="1"
@@ -156,7 +153,7 @@
         ></textarea>
         <button
           class="vf-chatbot-standalone__send-button"
-          aria-label="{{ config.labels.send_button_aria }}"
+          aria-label="Send message"
           data-vf-js-chatbot-standalone-send
         >
           <img src="{{ config.icons.send_button }}" alt="Send">
@@ -173,10 +170,10 @@
     <!-- Templates -->
     {% if config.features.enable_feedback %}
     <template id="feedback-positive-template">
-      {% render "@vf-chatbot-feedback--positive", { icon_src: config.icons.thumbs_up } %}
+      {% render "@vf-chatbot-feedback--positive" %}
     </template>
     <template id="feedback-negative-template">
-      {% render "@vf-chatbot-feedback--negative", { icon_src: config.icons.thumbs_down } %}
+      {% render "@vf-chatbot-feedback--negative" %}
     </template>
     {% endif %}
 
@@ -218,8 +215,7 @@
           src: config.icons.assistant_avatar,
           alt: config.title,
           name: config.title
-        },
-        loading_text: config.labels.typing_indicator
+        }
       } %}
     </template>
     {% endif %}
