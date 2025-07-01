@@ -1,156 +1,224 @@
-{% set llm_selector = {
-  chatbotRoutes: {
-    multiSelect: false,
-    showSearch: false,
-    routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-llms.json",
-    title: "LLMs"
-  }
+{% set config = {
+  title: title | default("AI Assistant"),
+  welcome_logo: welcome_logo | default(true),
+  welcome_message: welcome_message | default("Welcome! I'm here to help"),
+  welcome_logo_alt: welcome_logo_alt | default("AI Assistant"),
+  welcome_suggestions_title: welcome_suggestions_title | default("Try asking me:"),
+  input_placeholder: input_placeholder | default("Ask me ..."),
+  welcome_max_suggestions: welcome_max_suggestions | default(3),
+  disclaimer: disclaimer | default('Disclaimer: This chatbot is designed to assist you with general information and basic inquiries. See our <a class="vf-banner__link" target="_blank" href="https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website/">disclaimer notes</a>.') | safe,
+  footnote: footnote | default('Review AI generated content for accuracy. <a class="vf-link" target="_blank" href="https://embl.service-now.com/esc?id=sc_cat_item&sys_id=5eeb8eb91b92e650b376da88b04bcbc1">Leave feedback</a>.') | safe,
+  icons: icons | default({
+    assistant_avatar: "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
+    user_avatar: "../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg",
+    send_button: "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
+    main_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg",
+    thumbs_up: "../../assets/vf-chatbot/assets/vf-chatbot--icon-thumbs-up.svg",
+    thumbs_down: "../../assets/vf-chatbot/assets/vf-chatbot--icon-thumbs-down.svg"
+  }),
+  api: api | default({
+    chat_endpoint: "/api/chat",
+    feedback_endpoint: "/api/feedback",
+    suggestions_endpoint: "/api/suggestions",
+    sources_endpoint: "/api/sources",
+    headers:{
+      "Content-Type": "application/json",
+      "Authorization": "Bearer your-token"
+    },
+    timeout: 10000
+  }),
+  features: features | default({
+    enable_welcome: true,
+    enable_feedback: true,
+    enable_sources: true,
+    enable_welcome_suggestions: true,
+    enable_typing_indicator: true,
+    enable_sound_notifications: false,
+    enable_conversation_history: true,
+    enable_file_upload: false,
+    enable_voice_input: false,
+    enable_retry: true,
+    enable_disclaimer: true
+  }),
+  behavior: behavior | default({
+    auto_scroll: true,
+    show_timestamps: false,
+    max_message_length: 1000,
+    typing_delay: 800,
+    retry_failed_messages: true,
+    conversation_timeout: 1800000
+  }),
+  selectorContext: selectorContext | default({
+    chatbotRoutes: {
+      multiSelect: true,
+      maxMultiSelect: 3,
+      showSearch: true,
+      showSearchThreshold: 5,
+      showAllServices: true,
+      showAllServicesSelected: true,
+      routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
+      placeholder: "Select services",
+      title: "Services"
+    }
+  }),
+  handlers: handlers | default({
+    on_message_send: "handleMessageSend",
+    on_response_receive: "handleResponseReceive",
+    on_feedback_submit: "handleFeedbackSubmit",
+    on_suggestion_click: "handleSuggestionClick",
+    on_error: "handleError",
+    on_conversation_start: "handleConversationStart",
+    on_conversation_end: "handleConversationEnd"
+  })
 } %}
-{% set services_single_selector = {
-  chatbotRoutes: {
-    multiSelect: false,
-    showSearch: true,
-    showSearchThreshold: 5,
-    routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
-    title: "Services"
-  }
-} %}
-{% set services_multi_selector = {
-  chatbotRoutes: {
-    multiSelect: true,
-    maxMultiSelect: 3,
-    showSearch: true,
-    showSearchThreshold: 5,
-    showAllServices: true,
-    showAllServicesSelected: true,
-    routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
-    placeholder: "Select services",
-    title: "Services"
-  }
-} %}
-{# {% set selectorContext = llm_selector %} #}
-{# {% set selectorContext = services_single_selector %} #}
-{% set selectorContext = services_multi_selector %}
 <!-- Standalone Chatbot -->
-<div class="vf-content vf-chatbot-standalone-container" data-vf-js-chatbot-standalone-container>
+<div class="vf-content vf-chatbot-standalone-container"
+     data-vf-js-chatbot-standalone-container
+     data-vf-chatbot-config='{{ config | dump }}'>
+
   <div class="vf-chatbot-standalone__header">
     <div class="vf-chatbot-standalone__header-left">
-      {% if selectorContext %}
-        {% render "@vf-chatbot-selector", selectorContext %}
+      {% if config.selectorContext %}
+        {% render "@vf-chatbot-selector", config.selectorContext %}
       {% else %}
         <div class="vf-chatbot-selector">
           <div class="vf-chatbot-selector__title">
-            <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg" alt="AI Assistant">
+            <img src="{{ config.icons.main_logo_url }}" alt="{{ config.title }}">
             <div class="vf-chatbot-selector__title-content">
-              <span class="vf-chatbot-selector__main-text">AI Assistant</span>
+              <span class="vf-chatbot-selector__main-text">{{ config.title }}</span>
             </div>
           </div>
         </div>
       {% endif %}
     </div>
   </div>
-  <div class="vf-chatbot-standalone | vf-u-background-color-ui--grey--light vf-u-margin__bottom--400" data-vf-js-chatbot-standalone>
 
+  <div class="vf-chatbot-standalone | vf-u-background-color-ui--grey--light vf-u-margin__bottom--400" data-vf-js-chatbot-standalone>
     <div class="vf-chatbot-standalone__content" data-vf-js-chatbot-standalone-content>
 
-      <!-- Chat interface -->
-      <!-- Initial welcome message from the assistant -->
-      {% if welcome_message %}
+      <!-- Welcome Screen -->
+      {% if config.features.enable_welcome %}
         {% render "@vf-chatbot-welcome", {
-          welcome_title: welcome_title,
-          welcome_description: "Welcome! I'm here to help",
-          welcome_message: 'Hello! How can I help you today?',
-          maxQuestions: 3
+          welcome_logo: config.welcome_logo,
+          welcome_logo_url: config.icons.main_logo_url,
+          welcome_logo_alt: config.welcome_logo_alt,
+          welcome_title: config.title,
+          welcome_message: config.welcome_message,
+          welcome_suggestions_title: config.welcome_suggestions_title,
+          enable_welcome_suggestions: config.features.enable_welcome_suggestions,
+          welcome_max_suggestions: config.welcome_max_suggestions
         } %}
       {% endif %}
-      <!-- Messages container -->
-      <div class="vf-chatbot-standalone__messages vf-u-padding__right--400" data-vf-js-chatbot-standalone-messages>
+
+      <!-- Messages Container -->
+      <div class="vf-chatbot-standalone__messages"
+           data-vf-js-chatbot-standalone-messages
+           data-auto-scroll="{{ config.behavior.auto_scroll }}">
         <!-- Messages will be added here dynamically -->
-        <!-- Loading indicator will be inserted here when needed -->
       </div>
-      {% if disclaimer %}
-        <div class="vf-chatbot-standalone__disclaimer vf-u-padding__right--400" data-vf-js-chatbot-standalone-disclaimer>
+
+      <!-- Disclaimer Banner -->
+      {% if config.disclaimer and config.features.enable_disclaimer %}
+        <div class="vf-chatbot-standalone__disclaimer" data-vf-js-chatbot-standalone-disclaimer>
           <div class="vf-banner vf-banner--alert vf-banner--info">
             <div class="vf-banner__content">
-              <p class="vf-banner__text">{{ disclaimer }}</p>
-              <button role="button" aria-label="close notification banner" class="vf-button vf-button--icon vf-button--dismiss | vf-banner__button">
+              <p class="vf-banner__text">{{ config.disclaimer | safe }}</p>
+              <button role="button" aria-label="close notification banner"
+                      class="vf-button vf-button--icon vf-button--dismiss | vf-banner__button">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>dismiss banner</title><path d="M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"/></svg>
+                  <title>dismiss banner</title>
+                  <path d="M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z"/>
+                </svg>
               </button>
             </div>
           </div>
         </div>
       {% endif %}
     </div>
-    <div class="vf-chatbot-standalone__input-container vf-u-padding__right--400">
+
+    <!-- Input Container -->
+    <div class="vf-chatbot-standalone__input-container">
       <div class="vf-chatbot-standalone__input-wrapper">
+        <label 
+          id="vf-chatbot-standalone-input-label"
+          for="vf-chatbot-standalone-input">Ask me</label>
         <textarea
-        class="vf-chatbot-standalone__input vf-form__textarea vf-u-padding__left--400"
-        placeholder="{{ input_placeholder | default('Ask me ...') }}"
-        rows="1"
-        data-vf-js-chatbot-standalone-input
-      ></textarea>
+          id="vf-chatbot-standalone-input"
+          aria-labelledby="vf-chatbot-standalone-input-label"
+          class="vf-chatbot-standalone__input vf-form__textarea vf-u-padding__left--400"
+          placeholder="{{ config.input_placeholder }}"
+          rows="1"
+          maxlength="{{ config.behavior.max_message_length }}"
+          data-vf-js-chatbot-standalone-input
+        ></textarea>
         <button
           class="vf-chatbot-standalone__send-button"
           aria-label="Send message"
           data-vf-js-chatbot-standalone-send
         >
-          <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg" alt="Send request">
+          <img src="{{ config.icons.send_button }}" alt="Send">
         </button>
       </div>
-      {% if footnote %}
+
+      {% if config.footnote %}
       <div class="vf-chatbot-standalone__footnote vf-u-margin__top--200" data-vf-js-chatbot-standalone-footnote>
-        {{ footnote }}
+        {{ config.footnote }}
       </div>
       {% endif %}
     </div>
 
-
+    <!-- Templates -->
+    {% if config.features.enable_feedback %}
     <template id="feedback-positive-template">
       {% render "@vf-chatbot-feedback--positive" %}
     </template>
     <template id="feedback-negative-template">
       {% render "@vf-chatbot-feedback--negative" %}
     </template>
+    {% endif %}
 
     <template id="user-message-template">
       {% render "@vf-chatbot-prompt", {
-      type: "user",
-      avatar: {
-        src: "../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg",
-        alt: "You",
-        name: "You"
-      },
-      content: "Hello!"
-    } %}
+        type: "user",
+        avatar: {
+          src: config.icons.user_avatar,
+          alt: "You",
+          name: "You"
+        },
+        content: "Hello!",
+        show_timestamp: config.behavior.show_timestamps
+      } %}
     </template>
 
     <template id="assistant-message-template">
       {% render "@vf-chatbot-prompt", {
-      type: "assistant",
-      avatar: {
-        src: "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
-        alt: "AI Assistant",
-        name: "AI Assistant"
-      },
-      content: "How can I help you?",
-      sources: sources,
-      prompts: prompts,
-      allowFeedback: true
-    } %}
+        type: "assistant",
+        avatar: {
+          src: config.icons.assistant_avatar,
+          alt: config.title,
+          name: config.title
+        },
+        content: "How can I help you?",
+        sources: sources,
+        prompts: prompts,
+        allowFeedback: config.features.enable_feedback,
+        show_timestamp: config.behavior.show_timestamps
+      } %}
     </template>
 
+    {% if config.features.enable_typing_indicator %}
     <template id="loading-indicator-template">
       {% render "@vf-chatbot-prompt", {
         type: "assistant",
         isLoading: true,
         avatar: {
-          src: "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
-          alt: "AI Assistant",
-          name: "AI Assistant"
+          src: config.icons.assistant_avatar,
+          alt: config.title,
+          name: config.title
         }
       } %}
     </template>
+    {% endif %}
 
     <template id="action-prompts-template">
       <div class="vf-chatbot-action-prompts">

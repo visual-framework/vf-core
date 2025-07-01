@@ -5,11 +5,148 @@ import { initVFChatbotSelector } from "../vf-chatbot-selector/vf-chatbot-selecto
 import { VFChatbotWelcome } from "../vf-chatbot-welcome/vf-chatbot-welcome.js";
 
 class VFChatbotStandalone {
-  constructor(element) {
-    console.log("Initializing standalone chatbot..."); // Debug log
+  constructor(element, customConfig = {}) {
+    console.log("Initializing standalone chatbot with config:", customConfig);
 
-    // Store DOM elements
     this.container = element;
+    this.loadConfiguration(customConfig);
+    this.setupDOMElements();
+    this.setupState();
+    this.setupEventHandlers();
+    this.init();
+  }
+
+  loadConfiguration(customConfig) {
+    console.log("=== DEBUG loadConfiguration ===");
+    console.log("this.container:", this.container);
+    console.log("this.container.dataset:", this.container.dataset);
+
+    // Get config from data attribute
+    const dataConfig = this.container.dataset.vfChatbotConfig
+      ? JSON.parse(this.container.dataset.vfChatbotConfig)
+      : {};
+
+    console.log("dataConfig from HTML:", dataConfig);
+
+    // Default configuration
+    const defaultConfig = {
+      title: "AI Assistant",
+      welcome_logo: true,
+      welcome_message: "Welcome! I'm here to help",
+      welcome_logo_alt: "AI Assistant",
+      welcome_suggestions_title: "Try asking me:",
+      input_placeholder: "Ask me ...",
+      welcome_max_suggestions: 4,
+
+      icons: {
+        assistant_avatar:
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
+        user_avatar:
+          "../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg",
+        send_button:
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
+        main_logo_url:
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg",
+        thumbs_up:
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-thumbs-up.svg",
+        thumbs_down:
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-thumbs-down.svg",
+      },
+
+      api: {
+        chat_endpoint: "/api/chat",
+        feedback_endpoint: "/api/feedback",
+        suggestions_endpoint: "/api/suggestions",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        timeout: 10000,
+      },
+
+      features: {
+        enable_welcome: true,
+        enable_feedback: true,
+        enable_sources: true,
+        enable_welcome_suggestions: true,
+        enable_typing_indicator: true,
+        enable_sound_notifications: false,
+        enable_conversation_history: true,
+        enable_file_upload: false,
+        enable_voice_input: false,
+        enable_retry: true
+      },
+
+      behavior: {
+        auto_scroll: true,
+        show_timestamps: false,
+        max_message_length: 1000,
+        typing_delay: 800,
+        retry_failed_messages: true,
+        conversation_timeout: 1800000,
+      },
+
+      // labels: {
+      //   send_button_aria: "Send message",
+      //   feedback_positive: "This was helpful",
+      //   feedback_negative: "This was not helpful",
+      //   typing_indicator: "AI is typing...",
+      //   error_message:
+      //     "Sorry, I could not process your request. Please try again.",
+      //   retry_button: "Retry",
+      // },
+
+      handlers: {},
+
+      // theme: {
+      //   primary_color: "#007c82",
+      //   background_color: "#f8f9fa",
+      // },
+    };
+
+    // Merge configurations: default < data-attribute < custom
+    this.config = this.deepMerge(defaultConfig, dataConfig, customConfig);
+    console.log("Final merged config:", this.config);
+  }
+
+  deepMerge(...objects) {
+    return objects.reduce((prev, obj) => {
+      // ✅ FIX: Skip null/undefined objects
+      if (!obj || typeof obj !== 'object') {
+        return prev;
+      }
+
+      Object.keys(obj).forEach((key) => {
+        const pVal = prev[key];
+        const oVal = obj[key];
+
+        // ✅ FIX: Skip undefined values to maintain priority
+        if (oVal === undefined) {
+          return;
+        }
+
+        if (Array.isArray(pVal) && Array.isArray(oVal)) {
+          prev[key] = pVal.concat(...oVal);
+        } else if (
+          pVal &&
+          oVal &&
+          typeof pVal === "object" &&
+          typeof oVal === "object" &&
+          !Array.isArray(pVal) &&
+          !Array.isArray(oVal)
+        ) {
+          prev[key] = this.deepMerge(pVal, oVal);
+        } else {
+          // ✅ FIX: Only assign if oVal is not null/undefined
+          if (oVal !== null && oVal !== undefined) {
+            prev[key] = oVal;
+          }
+        }
+      });
+      return prev;
+    }, {});
+  }
+
+  setupDOMElements() {
     this.welcomeScreen = this.container.querySelector(
       "[data-vf-js-chatbot-welcome]"
     );
@@ -28,12 +165,11 @@ class VFChatbotStandalone {
     this.disclaimerCloseBtn = this.disclaimer?.querySelector(
       ".vf-button--dismiss"
     );
-
-    // Selector element
     this.selectorEl = this.container.querySelector(
       "[data-vf-js-chatbot-selector]"
     );
 
+    // Templates
     this.userTemplate = this.container.querySelector("#user-message-template");
     this.assistantTemplate = this.container.querySelector(
       "#assistant-message-template"
@@ -41,65 +177,260 @@ class VFChatbotStandalone {
     this.loadingTemplate = this.container.querySelector(
       "#loading-indicator-template"
     );
+    this.actionPromptsTemplate = this.container.querySelector(
+      "#action-prompts-template"
+    );
+    this.singlePromptTemplate = this.container.querySelector(
+      "#single-action-prompt-template"
+    );
 
-    // State
-    this.currentAssistant = ""; // Default assistant
-    // Load Q&A data
-    this.loadQADataAndPopulateSuggestions();
-
-    // Initialize the UI
-    this.init();
-
-    // Initialize welcome component
-    if (this.welcomeScreen) {
-      this.welcomeComponent = new VFChatbotWelcome(this.welcomeScreen);
-
-      // Wait for welcome component to be ready
-      this.welcomeComponent
-        .init()
-        .then(() => {
-          console.log("Welcome component initialized"); // Debug log
-          this.welcomeScreen.addEventListener(
-            "vf-chatbot-welcome:suggestion-click",
-            event => {
-              const question = event.detail.question;
-              this.showChatInterface();
-              this.sendUserMessage(question);
-            }
-          );
-        })
-        .catch(error => {
-          console.error("Failed to initialize welcome component:", error);
-        });
-    }
+    // Apply configuration to DOM elements
+    this.applyConfigurationToDOM();
   }
 
-  init() {
+  applyConfigurationToDOM() {
+    // Update input placeholder
+    if (this.input) {
+      this.input.placeholder = this.config.input_placeholder;
+      this.input.maxLength = this.config.behavior.max_message_length;
+      // Initialize textarea height
+      this.autoResizeTextarea();
+    }
+
+    // Update send button aria label
+    // if (this.sendBtn) {
+    //   this.sendBtn.setAttribute("aria-label", this.config.labels.send_button_aria);
+    // }
+
+    // Update auto-scroll behavior
+    if (this.messagesContainer) {
+      this.messagesContainer.dataset.autoScroll = this.config.behavior.auto_scroll;
+    }
+
+    // Apply theme
+    // this.applyTheme();
+  }
+
+  // applyTheme() {
+  //   if (this.config.theme) {
+  //     const style = document.createElement("style");
+  //     style.textContent = `
+  //       .vf-chatbot-standalone-container {
+  //         --vf-chatbot-primary-color: ${this.config.theme.primary_color};
+  //         --vf-chatbot-background-color: ${this.config.theme.background_color};
+  //       }
+  //     `;
+  //     document.head.appendChild(style);
+  //   }
+  // }
+
+  setupState() {
+    this.currentAssistant = "";
+    this.conversationId = this.generateConversationId();
+    this.messageHistory = [];
+    this.loadingIndicator = null;
+    this.apiResponseListener = null;
+
+    // Load Q&A data if using fallback responses
+    this.loadQADataAndPopulateSuggestions();
+  }
+
+  setupEventHandlers() {
+    // Setup global event handlers for custom functions
+    this.setupCustomEventHandlers();
+
+    // Bind internal events
+    this.bindEvents();
+  }
+
+  setupCustomEventHandlers() {
+    // Create wrapper functions that call user-defined handlers and emit events
+    const handlers = this.config.handlers;
+
+    // Message send handler
+    this.onMessageSend = (message) => {
+      const eventData = {
+        message,
+        conversationId: this.conversationId,
+        timestamp: Date.now(),
+      };
+
+      this.emitEvent("vf-chatbot:message-send", eventData);
+
+      if (
+        handlers.on_message_send &&
+        typeof window[handlers.on_message_send] === "function"
+      ) {
+        window[handlers.on_message_send](eventData);
+      }
+    };
+
+    // Response receive handler
+    this.onResponseReceive = (response, sources, prompts) => {
+      const eventData = {
+        response,
+        sources,
+        prompts,
+        conversationId: this.conversationId,
+        timestamp: Date.now(),
+      };
+
+      this.emitEvent("vf-chatbot:response-receive", eventData);
+
+      if (
+        handlers.on_response_receive &&
+        typeof window[handlers.on_response_receive] === "function"
+      ) {
+        window[handlers.on_response_receive](eventData);
+      }
+    };
+
+    // Feedback submit handler
+    this.onFeedbackSubmit = (messageId, feedbackType, feedbackText = "") => {
+      const eventData = {
+        messageId,
+        feedbackType,
+        feedbackText,
+        conversationId: this.conversationId,
+        timestamp: Date.now(),
+      };
+
+      this.emitEvent("vf-chatbot:feedback-submit", eventData);
+
+      // Call API if configured
+      if (this.config.api.feedback_endpoint) {
+        this.submitFeedbackToAPI(eventData);
+      }
+
+      if (
+        handlers.on_feedback_submit &&
+        typeof window[handlers.on_feedback_submit] === "function"
+      ) {
+        window[handlers.on_feedback_submit](eventData);
+      }
+    };
+
+    // Suggestion click handler
+    this.onSuggestionClick = (suggestion) => {
+      const eventData = {
+        suggestion,
+        conversationId: this.conversationId,
+        timestamp: Date.now(),
+      };
+
+      this.emitEvent("vf-chatbot:suggestion-click", eventData);
+
+      if (
+        handlers.on_suggestion_click &&
+        typeof window[handlers.on_suggestion_click] === "function"
+      ) {
+        window[handlers.on_suggestion_click](eventData);
+      }
+    };
+
+    // Error handler
+    this.onError = (error, context) => {
+      const eventData = {
+        error,
+        context,
+        conversationId: this.conversationId,
+        timestamp: Date.now(),
+      };
+
+      this.emitEvent("vf-chatbot:error", eventData);
+
+      if (handlers.on_error && typeof window[handlers.on_error] === "function") {
+        window[handlers.on_error](eventData);
+      }
+    };
+
+    // Conversation start handler
+    this.onConversationStart = () => {
+      const eventData = {
+        conversationId: this.conversationId,
+        timestamp: Date.now(),
+      };
+
+      this.emitEvent("vf-chatbot:conversation-start", eventData);
+
+      if (
+        handlers.on_conversation_start &&
+        typeof window[handlers.on_conversation_start] === "function"
+      ) {
+        window[handlers.on_conversation_start](eventData);
+      }
+    };
+
+    // Conversation end handler
+    this.onConversationEnd = () => {
+      const eventData = {
+        conversationId: this.conversationId,
+        messageCount: this.messageHistory.length,
+        timestamp: Date.now(),
+      };
+
+      this.emitEvent("vf-chatbot:conversation-end", eventData);
+
+      if (
+        handlers.on_conversation_end &&
+        typeof window[handlers.on_conversation_end] === "function"
+      ) {
+        window[handlers.on_conversation_end](eventData);
+      }
+    };
+  }
+
+  emitEvent(eventName, data) {
+    const event = new CustomEvent(eventName, {
+      bubbles: true,
+      detail: data,
+    });
+    this.container.dispatchEvent(event);
+  }
+
+  generateConversationId() {
+    return `conv_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  }
+
+  async init() {
+    console.log("Initializing chatbot with configuration:", this.config);
+
     // Initialize selector if present
     if (this.selectorEl) {
       const selector = initVFChatbotSelector(this.selectorEl);
-      this.selectorEl.addEventListener("routeselection", e => {
+      this.selectorEl.addEventListener("routeselection", (e) => {
         this.handleRouteSelection(e.detail);
       });
+    }
 
-      // Set initial route selection based on variant
-      if (this.selectorEl.dataset.variant) {
-        const variantRoutes = this.selectorEl.querySelectorAll(
-          "[data-vf-js-selector-item]"
-        );
-        variantRoutes.forEach(item => {
-          if (item.dataset.routeId === this.selectorEl.dataset.variant) {
-            selector.handleItemSelection(item);
+    // Initialize welcome component
+    if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
+      this.welcomeComponent = new VFChatbotWelcome(this.welcomeScreen, {
+        welcome_max_suggestions: this.config.welcome_max_suggestions,
+        suggestionsUrl: this.config.api.suggestions_endpoint,
+      });
+
+      try {
+        await this.welcomeComponent.init();
+        this.welcomeScreen.addEventListener(
+          "vf-chatbot-welcome:suggestion-click",
+          (event) => {
+            const question = event.detail.question;
+            this.onSuggestionClick(question);
+            this.showChatInterface();
+            this.sendUserMessage(question);
           }
-        });
+        );
+      } catch (error) {
+        console.error("Failed to initialize welcome component:", error);
+        this.onError(error, "welcome_component_init");
       }
     }
 
-    // Bind other events
-    this.bindEvents();
-    // this.initAutoResize();
+    // Trigger conversation start
+    this.onConversationStart();
 
-    console.log("Standalone chatbot initialized successfully"); // Debug log
+    console.log("Standalone chatbot initialized successfully");
   }
 
   async loadQADataAndPopulateSuggestions() {
@@ -112,6 +443,7 @@ class VFChatbotStandalone {
       this.fallbackResponses = data.fallbackResponses;
     } catch (error) {
       console.error("Failed to load Q&A data:", error);
+      this.onError(error, "qa_data_load");
     }
   }
 
@@ -119,34 +451,98 @@ class VFChatbotStandalone {
     const { selectedItems } = detail;
     if (selectedItems && selectedItems.length > 0) {
       this.currentAssistant = selectedItems[0];
-      // You can add logic here to change the assistant's behavior based on selection
       console.log(`Switched to ${this.currentAssistant} assistant`);
+
+      this.emitEvent("vf-chatbot:assistant-change", {
+        previousAssistant: this.currentAssistant,
+        newAssistant: selectedItems[0],
+        conversationId: this.conversationId,
+      });
     }
   }
 
   bindEvents() {
-    console.log("Binding events for standalone chatbot..."); // Debug log
-
     // Send message events
     this.sendBtn?.addEventListener("click", () => this.sendMessage());
-    // Listen for dismiss button click
+
+    this.input?.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        this.sendMessage();
+      }
+    });
+
+    // Auto-resize textarea functionality
+    this.input?.addEventListener("input", () => this.autoResizeTextarea());
+    this.input?.addEventListener("paste", () => {
+      // Use setTimeout to ensure the pasted content is processed
+      setTimeout(() => this.autoResizeTextarea(), 0);
+    });
+
+    // Disclaimer close
     if (this.disclaimer && this.disclaimerCloseBtn) {
       this.disclaimerCloseBtn.addEventListener("click", () => {
         this.disclaimer.classList.add("vf-u-display-none");
       });
     }
+
+    // Global feedback event listener
+    this.container.addEventListener("vf-chatbot-feedback:submit", (event) => {
+      const { messageId, feedbackType, feedbackText } = event.detail;
+      this.onFeedbackSubmit(messageId, feedbackType, feedbackText);
+    });
+
+    // Action prompt click listener
+    this.container.addEventListener("vf-chatbot-action-prompt:click", (event) => {
+      const { text } = event.detail;
+      this.sendUserMessage(text);
+    });
   }
 
   sendMessage() {
     if (!this.input || !this.input.value.trim()) return;
 
     const text = this.input.value.trim();
-
-    // Always show chat interface
     this.showChatInterface();
-
-    // Send the message
     this.sendUserMessage(text);
+  }
+
+  autoResizeTextarea() {
+    if (!this.input) return;
+
+    // Reset height to auto to get the actual scroll height
+    this.input.style.height = 'auto';
+    
+    // Get computed styles
+    const computedStyle = window.getComputedStyle(this.input);
+    const lineHeight = parseFloat(computedStyle.lineHeight) || 24;
+    const paddingTop = parseFloat(computedStyle.paddingTop) || 0;
+    const paddingBottom = parseFloat(computedStyle.paddingBottom) || 0;
+    const borderTop = parseFloat(computedStyle.borderTopWidth) || 0;
+    const borderBottom = parseFloat(computedStyle.borderBottomWidth) || 0;
+    
+    // Calculate heights more accurately
+    const extraHeight = paddingTop + paddingBottom + borderTop + borderBottom;
+    const minHeight = lineHeight + extraHeight; // Height for 1 row
+    const maxHeight = (lineHeight * 5) + extraHeight; // Height for 5 rows
+    
+    // Get the scroll height (content height)
+    const scrollHeight = this.input.scrollHeight;
+    
+    // Calculate the new height, constrained by min and max
+    let newHeight = Math.max(minHeight, scrollHeight);
+    
+    if (newHeight >= maxHeight) {
+      // If content exceeds 5 rows, set to max height and enable scrolling
+      newHeight = maxHeight;
+      this.input.classList.add('vf-chatbot-standalone__input--scrollable');
+    } else {
+      // Remove scrollable class if content fits within 5 rows
+      this.input.classList.remove('vf-chatbot-standalone__input--scrollable');
+    }
+    
+    // Apply the new height
+    this.input.style.height = newHeight + 'px';
   }
 
   showChatInterface() {
@@ -156,8 +552,6 @@ class VFChatbotStandalone {
     if (this.messagesContainer) {
       this.messagesContainer.style.display = "flex";
     }
-
-    // Focus on the input field
     if (this.input) {
       this.input.focus();
     }
@@ -165,128 +559,148 @@ class VFChatbotStandalone {
 
   sendUserMessage(text) {
     if (!text || !this.messagesContainer) return;
+
+    // Add to message history
+    this.messageHistory.push({
+      type: "user",
+      content: text,
+      timestamp: Date.now(),
+    });
+
+    // Trigger message send event
+    this.onMessageSend(text);
+
+    // Create user message element
     const userMessage = this.userTemplate.content.cloneNode(true);
     const content = userMessage.querySelector(
       ".vf-chatbot-message__content-prompt"
     );
-
-    // Set text content
     content.textContent = text;
+
+    // Update avatar if configured
+    const avatar = userMessage.querySelector("img");
+    if (avatar) {
+      avatar.src = this.config.icons.user_avatar;
+    }
+
     this.messagesContainer.appendChild(userMessage);
-    // Clear input if this came from the input field
+
+    // Clear input
     if (this.input) {
       this.input.value = "";
-      this.input.style.height = "auto"; // Reset height
+      this.input.style.height = "auto";
+      // Reset textarea to minimum height and remove scrollable class
+      this.input.classList.remove('vf-chatbot-standalone__input--scrollable');
+      this.autoResizeTextarea();
     }
 
     this.scrollToBottom();
-
-    // Process the message
     this.processUserMessage(text);
   }
 
-  processUserMessage(text) {
-    // Show loading state immediately
+  async processUserMessage(text) {
     this.setLoadingState(true);
 
-    // Check if we have a predefined answer
-    if (this.qaData && this.qaData[text]) {
-      // Add delay even for predefined answers to show loading indicator
-      setTimeout(() => {
-        const answer = this.qaData[text];
-        this.addAssistantResponse(
-          answer.answer || answer.html,
-          answer.sources || [],
-          answer.prompts || []
-        );
-        this.setLoadingState(false);
-        this.scrollToBottom();
-      }, 800); // 800ms delay for predefined answers
-      return;
-    } else if (this.callExternalAPI) {
-      // Send custom event for external API call
-      const apiCallEvent = new CustomEvent("vf-chatbot:api-call", {
-        bubbles: true,
-        detail: {
-          question: text,
-          assistant: this.currentAssistant,
-          timestamp: Date.now()
-        }
-      });
-
-      // Listen for API response (add listener only once)
-      if (!this.apiResponseListener) {
-        this.apiResponseListener = event => {
-          const { response, sources, prompts, error } = event.detail;
-
-          if (error) {
-            // Handle API error - use fallback response
-            console.error("API call failed:", error);
-            const fallbackResponse = this.fallbackResponses[
-              Math.floor(Math.random() * this.fallbackResponses.length)
-            ];
-            this.addAssistantResponse(
-              fallbackResponse["answer"],
-              [],
-              fallbackResponse["prompts"] || []
-            );
-          } else {
-            // Handle successful API response
-            this.addAssistantResponse(response, sources || [], prompts || []);
-          }
-
+    try {
+      // Check for predefined answers first
+      if (this.qaData && this.qaData[text]) {
+        setTimeout(() => {
+          const answer = this.qaData[text];
+          this.addAssistantResponse(
+            answer.answer || answer.html,
+            answer.sources || [],
+            answer.prompts || []
+          );
           this.setLoadingState(false);
-          this.scrollToBottom();
-        };
-
-        // Add the event listener to the container
-        this.container.addEventListener(
-          "vf-chatbot:api-response",
-          this.apiResponseListener
-        );
+        }, this.config.behavior.typing_delay);
+        return;
       }
 
-      // Dispatch the API call event
-      this.container.dispatchEvent(apiCallEvent);
-
-      // Set a timeout fallback in case the API doesn't respond
-      setTimeout(() => {
-        // Check if we're still in loading state (API didn't respond)
-        if (this.sendBtn && this.sendBtn.disabled) {
-          console.warn("API call timeout - using fallback response");
+      // Try API call if configured
+      if (this.config.api.chat_endpoint) {
+        const response = await this.callChatAPI(text);
+        this.addAssistantResponse(
+          response.response,
+          response.sources || [],
+          response.prompts || []
+        );
+      } else {
+        // Use fallback response
+        setTimeout(() => {
           const fallbackResponse = this.fallbackResponses[
             Math.floor(Math.random() * this.fallbackResponses.length)
           ];
           this.addAssistantResponse(
-            fallbackResponse["answer"],
+            fallbackResponse.answer,
             [],
-            fallbackResponse["prompts"] || []
+            fallbackResponse.prompts || []
           );
           this.setLoadingState(false);
-          this.scrollToBottom();
-        }
-      }, 10000); // 10 second timeout
-    } else {
-      // Add delay for fallback response as well
-      setTimeout(() => {
-        // Use random fallback response when API is not available
-        const fallbackResponse = this.fallbackResponses[
-          Math.floor(Math.random() * this.fallbackResponses.length)
-        ];
-        this.addAssistantResponse(
-          fallbackResponse["answer"],
-          [],
-          fallbackResponse["prompts"] || []
-        );
-        this.setLoadingState(false);
-        this.scrollToBottom();
-      }, 600); // 600ms delay for fallback responses
+        }, this.config.behavior.typing_delay);
+      }
+    } catch (error) {
+      console.error("Error processing message:", error);
+      this.onError(error, "message_processing");
+      // this.showErrorMessage();
+    } finally {
+      this.setLoadingState(false);
     }
   }
 
-  // Fix the addAssistantResponse method to avoid Nunjucks in JS
+  async callChatAPI(message) {
+    const requestData = {
+      message,
+      assistant: this.currentAssistant,
+      conversationId: this.conversationId,
+      messageHistory: this.config.features.enable_conversation_history
+        ? this.messageHistory
+        : [],
+    };
+
+    const response = await fetch(this.config.api.chat_endpoint, {
+      method: "POST",
+      headers: this.config.api.headers,
+      body: JSON.stringify(requestData),
+      signal: AbortSignal.timeout(this.config.api.timeout),
+    });
+
+    if (!response.ok) {
+      throw new Error(`API call failed: ${response.status} ${response.statusText}`);
+    }
+
+    return await response.json();
+  }
+
+  async submitFeedbackToAPI(feedbackData) {
+    try {
+      await fetch(this.config.api.feedback_endpoint, {
+        method: "POST",
+        headers: this.config.api.headers,
+        body: JSON.stringify(feedbackData),
+      });
+    } catch (error) {
+      console.error("Failed to submit feedback:", error);
+      this.onError(error, "feedback_submission");
+    }
+  }
+
   addAssistantResponse(text, sources = [], prompts = []) {
     if (!this.assistantTemplate || !this.messagesContainer) return;
+
+    const messageId = `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+    // Add to message history
+    this.messageHistory.push({
+      type: "assistant",
+      content: text,
+      sources,
+      prompts,
+      messageId,
+      timestamp: Date.now(),
+    });
+
+    // Trigger response receive event
+    this.onResponseReceive(text, sources, prompts);
 
     const assistantMessage = this.assistantTemplate.content.cloneNode(true);
     const content = assistantMessage.querySelector(
@@ -294,162 +708,211 @@ class VFChatbotStandalone {
     );
     content.innerHTML = text;
 
-    // Initialize the feedback component for this message
-    const feedbackContainer = assistantMessage.querySelector(
-      "[data-vf-js-chatbot-feedback]"
-    );
+    // Update avatar if configured
+    const avatar = assistantMessage.querySelector("img");
+    if (avatar) {
+      avatar.src = this.config.icons.assistant_avatar;
+    }
 
-    // Add sources if present
-    if (sources && sources.length > 0) {
-      // Add sources
+    // Add sources if enabled and present
+    if (
+      this.config.features.enable_sources &&
+      sources &&
+      sources.length > 0
+    ) {
+      const feedbackContainer = assistantMessage.querySelector(
+        "[data-vf-js-chatbot-feedback]"
+      );
       const sourcesEl = initVFChatbotSources(sources);
       assistantMessage.insertBefore(sourcesEl.el, feedbackContainer);
     }
-    // Add prompts if available
+
+    // Add prompts if present
     if (prompts && prompts.length > 0) {
-      const promptsTemplate = this.container.querySelector(
-        "#action-prompts-template"
-      );
-      const singlePromptTemplate = this.container.querySelector(
-        "#single-action-prompt-template"
-      );
-
-      if (promptsTemplate && singlePromptTemplate) {
-        // Clone the prompts container template
-        const promptsContainer = promptsTemplate.content.cloneNode(true);
-        const promptsList = promptsContainer.querySelector(
-          "[data-vf-js-action-prompts-list]"
-        );
-
-        // Create each individual prompt using the single prompt template
-        prompts.forEach(prompt => {
-          const promptEl = singlePromptTemplate.content.cloneNode(true);
-          const link = promptEl.querySelector(
-            ".vf-chatbot-action-prompt__link"
-          );
-          const wrapper = promptEl.querySelector(".vf-chatbot-action-prompt");
-
-          if (link && wrapper) {
-            link.href = prompt.action_url || "#";
-            link.textContent = prompt.action_text;
-            link.target = prompt.action_url?.startsWith("tel:")
-              ? "_self"
-              : "_blank";
-
-            // Add click event if no URL
-            if (!prompt.action_url) {
-              link.addEventListener("click", e => {
-                e.preventDefault();
-                link.dispatchEvent(
-                  new CustomEvent("vf-chatbot-action-prompt:click", {
-                    bubbles: true,
-                    detail: { text: prompt.action_text }
-                  })
-                );
-              });
-            }
-          }
-
-          promptsList.appendChild(promptEl);
-        });
-
-        content.appendChild(promptsContainer);
-      }
+      this.addActionPrompts(assistantMessage, prompts, content);
     }
-    if (feedbackContainer) {
-      new VFChatbotFeedback(feedbackContainer, `response-${Date.now()}`);
+
+    // Initialize feedback if enabled
+    if (this.config.features.enable_feedback) {
+      const feedbackContainer = assistantMessage.querySelector(
+        "[data-vf-js-chatbot-feedback]"
+      );
+      if (feedbackContainer) {
+        feedbackContainer.dataset.messageId = messageId;
+        new VFChatbotFeedback(feedbackContainer, messageId);
+      }
     }
 
     this.messagesContainer.appendChild(assistantMessage);
     this.scrollToBottom();
   }
 
-  setLoadingState(isLoading) {
-    if (isLoading) {
-      // Create loading indicator from template if it doesn't exist
-      if (!this.loadingIndicator) {
-        const loadingTemplate = this.container.querySelector(
-          "#loading-indicator-template"
-        );
-        if (loadingTemplate) {
-          const loadingContent = loadingTemplate.content.cloneNode(true);
-          this.loadingIndicator = loadingContent.firstElementChild;
-          this.messagesContainer.appendChild(this.loadingIndicator);
-        } else {
-          console.warn("Loading indicator template not found");
-          return;
+  addActionPrompts(assistantMessage, prompts, contentElement) {
+    if (!this.actionPromptsTemplate || !this.singlePromptTemplate) return;
+
+    const promptsContainer = this.actionPromptsTemplate.content.cloneNode(true);
+    const promptsList = promptsContainer.querySelector(
+      "[data-vf-js-action-prompts-list]"
+    );
+
+    prompts.forEach((prompt) => {
+      const promptEl = this.singlePromptTemplate.content.cloneNode(true);
+      const link = promptEl.querySelector(".vf-chatbot-action-prompt__link");
+
+      if (link) {
+        link.href = prompt.action_url || "#";
+        link.textContent = prompt.action_text;
+        link.target = prompt.action_url?.startsWith("tel:") ? "_self" : "_blank";
+
+        if (!prompt.action_url) {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.emitEvent("vf-chatbot-action-prompt:click", {
+              text: prompt.action_text,
+            });
+          });
         }
       }
-      this.loadingIndicator.style.display = "block";
+
+      promptsList.appendChild(promptEl);
+    });
+
+    contentElement.appendChild(promptsContainer);
+  }
+
+  setLoadingState(isLoading) {
+    if (!this.config.features.enable_typing_indicator) return;
+
+    if (isLoading) {
+      if (!this.loadingIndicator && this.loadingTemplate) {
+        const loadingContent = this.loadingTemplate.content.cloneNode(true);
+        this.loadingIndicator = loadingContent.firstElementChild;
+
+        // Update loading text
+        const loadingText = this.loadingIndicator.querySelector(
+          ".vf-chatbot-message__loading-text"
+        );
+        // if (loadingText) {
+        //   loadingText.textContent = this.config.labels.typing_indicator;
+        // }
+
+        // Update avatar
+        const avatar = this.loadingIndicator.querySelector("img");
+        if (avatar) {
+          avatar.src = this.config.icons.assistant_avatar;
+        }
+
+        this.messagesContainer.appendChild(this.loadingIndicator);
+      }
+      if (this.loadingIndicator) {
+        this.loadingIndicator.style.display = "block";
+      }
     } else {
-      // Hide loading indicator
       if (this.loadingIndicator) {
         this.loadingIndicator.style.display = "none";
       }
     }
 
-    // Disable/enable input controls
-    if (this.sendBtn) {
-      this.sendBtn.disabled = isLoading;
-    }
-
-    if (this.input) {
-      this.input.disabled = isLoading;
-    }
+    // Disable/enable controls
+    if (this.sendBtn) this.sendBtn.disabled = isLoading;
+    if (this.input) this.input.disabled = isLoading;
 
     this.scrollToBottom();
   }
 
+  // showErrorMessage() {
+  //   const errorText = this.config.labels.error_message;
+  //   let retryPrompts = [];
+
+  //   if (this.config.behavior.retry_failed_messages && this.config.features.enable_retry) {
+  //     retryPrompts = [
+  //       {
+  //         action_text: this.config.labels.retry_button,
+  //         action_url: "",
+  //       },
+  //     ];
+  //   }
+
+  //   this.addAssistantResponse(errorText, [], retryPrompts);
+  // }
+
   scrollToBottom() {
-    if (this.messagesContainer) {
+    if (this.config.behavior.auto_scroll && this.messagesContainer) {
       this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+    }
+  }
+
+  // Public API methods
+  resetConversation() {
+    this.messageHistory = [];
+    this.conversationId = this.generateConversationId();
+
+    if (this.messagesContainer) {
+      this.messagesContainer.innerHTML = "";
+    }
+
+    if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
+      this.welcomeScreen.style.display = "block";
+      this.messagesContainer.style.display = "none";
+    }
+
+    this.onConversationStart();
+  }
+
+  updateConfiguration(newConfig) {
+    this.config = this.deepMerge(this.config, newConfig);
+    this.applyConfigurationToDOM();
+    // this.applyTheme();
+  }
+
+  getConfiguration() {
+    return { ...this.config };
+  }
+
+  getConversationHistory() {
+    return [...this.messageHistory];
+  }
+
+  destroy() {
+    this.onConversationEnd();
+
+    // Remove event listeners
+    this.sendBtn?.removeEventListener("click", this.sendMessage);
+    this.input?.removeEventListener("keypress", this.handleKeyPress);
+
+    // Clean up API response listener
+    if (this.apiResponseListener) {
+      this.container.removeEventListener("vf-chatbot:api-response", this.apiResponseListener);
     }
   }
 }
 
-// Initialize
-function initVFChatbotStandalone() {
-  console.log("Looking for standalone chatbot elements..."); // Debug log
+// Global initialization function with configuration support
+function initVFChatbotStandalone(customConfig = {}) {
+  console.log("Looking for standalone chatbot elements...");
   const chatbotElements = document.querySelectorAll(
     "[data-vf-js-chatbot-standalone-container]"
   );
 
   if (chatbotElements.length === 0) {
     console.warn("No standalone chatbot elements found on page");
-    return;
+    return [];
   }
 
-  console.log(`Found ${chatbotElements.length} standalone chatbot elements`); // Debug log
+  console.log(`Found ${chatbotElements.length} standalone chatbot elements`);
 
-  // Initialize each standalone chatbot element
   const instances = [];
-  chatbotElements.forEach(element => {
-    instances.push(new VFChatbotStandalone(element));
+  chatbotElements.forEach((element) => {
+    instances.push(new VFChatbotStandalone(element, customConfig));
   });
 
   return instances;
-} // Make initialization function available globally
-const global =
-  typeof globalThis !== "undefined"
-    ? globalThis
-    : typeof window !== "undefined"
-    ? window
-    : typeof global !== "undefined"
-    ? global
-    : typeof self !== "undefined"
-    ? self
-    : {};
+}
 
+// Global exposure
 if (typeof window !== "undefined") {
   window.VFChatbotStandalone = VFChatbotStandalone;
   window.initVFChatbotStandalone = initVFChatbotStandalone;
-
-  // Also make it available as a global variable
-  global.VFChatbotStandalone = VFChatbotStandalone;
-  global.initVFChatbotStandalone = initVFChatbotStandalone;
-
-  console.log("Exposed initVFChatbotStandalone to global scope");
 }
 
-// Export both the class and the initialization function
 export { VFChatbotStandalone, initVFChatbotStandalone };

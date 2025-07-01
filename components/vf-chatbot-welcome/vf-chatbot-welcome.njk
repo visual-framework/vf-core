@@ -1,21 +1,27 @@
-<div class="vf-chatbot-welcome vf-u-padding__right--400"
+<div class="vf-chatbot-welcome"
      data-vf-js-chatbot-welcome
-     data-max-questions="4">
+     data-max-questions="{{ welcome_max_suggestions | default(4) }}">
   <div class="vf-chatbot-welcome__content">
-    <div class="vf-chatbot-welcome__logo">
-      <img src="/assets/vf-chatbot/assets/vf-chatbot--icon-64x64-dark-green.svg" alt="AI Assistant">
-    </div>
-    <div class="vf-chatbot-welcome__title">{{ welcome_title | default('AI assistant') }}</div>
-    <div class="vf-chatbot-welcome__description">
-      {{ welcome_description | default("Welcome! I'm here to help you.") }}
-    </div>
-  </div>
-  <div class="vf-chatbot-welcome__suggestions">
-    <p class="vf-chatbot-welcome__suggestions-title">Try asking me:</p>
-    <div class="vf-chatbot-welcome__suggestions-grid" data-vf-js-chatbot-welcome-suggestions-grid>
-      <!-- Suggestions will be populated dynamically from qa.json using the template below -->
+    {% if welcome_logo %}
+      <div class="vf-chatbot-welcome__logo">
+        <img src="{{ welcome_logo_url }}" alt="{{ welcome_logo_alt | default('AI assistant') }}">
+      </div>
+    {% endif %}
+    <h1 class="vf-chatbot-welcome__title">{{ welcome_title | default('AI assistant') }}</h1>
+    <div class="vf-chatbot-welcome__message">
+      {{ welcome_message | default("Welcome! I'm here to help") }}
     </div>
   </div>
+  {% if enable_welcome_suggestions %}
+    <div class="vf-chatbot-welcome__suggestions">
+      {% if welcome_suggestions_title %}
+        <p class="vf-chatbot-welcome__suggestions-title">{{ welcome_suggestions_title }}</p>
+      {% endif %}
+      <div class="vf-chatbot-welcome__suggestions-grid" data-vf-js-chatbot-welcome-suggestions-grid>
+        <!-- Suggestions will be populated dynamically from qa.json using the template below -->
+      </div>
+    </div>
+  {% endif %}
 
   <!-- Template for welcome suggestions using vf-chatbot-action-prompt -->
   <template id="welcome-suggestion-template">
