@@ -54,6 +54,7 @@ class VFChatbotStandalone {
         feedback_endpoint: "/api/feedback",
         suggestions_endpoint: "/api/suggestions",
         sources_endpoint: "/api/sources",
+        qa_data_url: "../../assets/vf-chatbot/assets/vf-chatbot-qa.json",
         headers: {
           "Content-Type": "application/json",
         },
@@ -66,7 +67,10 @@ class VFChatbotStandalone {
         enable_sources: true,
         enable_welcome_suggestions: true,
         enable_typing_indicator: true,
-        enable_disclaimer: true
+        enable_disclaimer: true,
+        enable_predefined_qa: true,
+        enable_fallback_responses: true,
+        enable_qa_data_loading: true
       },
 
       behavior: {
@@ -175,7 +179,21 @@ class VFChatbotStandalone {
       this.messagesContainer.dataset.autoScroll = this.config.behavior.auto_scroll;
     }
   }
+  setupState() {
+    this.currentAssistant = "";
+    this.conversationId = this.generateConversationId();
+    this.messageHistory = [];
+    this.loadingIndicator = null;
+    this.apiResponseListener = null;
 
+    // Load Q&A data if enabled
+    if (this.config.features.enable_qa_data_loading) {
+      this.loadQADataAndPopulateSuggestions();
+    } else {
+      // Initialize default fallback responses if data loading is disabled
+      this.initializeDefaultFallbackResponses();
+    }
+  }
   setupState() {
     this.currentAssistant = "";
     this.conversationId = this.generateConversationId();
@@ -186,7 +204,7 @@ class VFChatbotStandalone {
     // Load Q&A data if using fallback responses
     this.loadQADataAndPopulateSuggestions();
   }
-
+  
   setupState() {
     this.currentAssistant = "";
     this.conversationId = this.generateConversationId();
@@ -397,7 +415,54 @@ class VFChatbotStandalone {
   }
 
   async loadQADataAndPopulateSuggestions() {
-    // Set default fallback responses in case loading fails
+    // Initialize default fallback responses
+    this.initializeDefaultFallbackResponses();
+
+    // Skip loading if Q&A data loading is disabled
+    if (!this.config.features.enable_qa_data_loading) {
+      console.log("Q&A data loading is disabled");
+      return;
+    }
+
+    // Skip loading if no URL is configured
+    if (!this.config.api.qa_data_url) {
+      console.log("No Q&A data URL configured");
+      return;
+    }
+    try {
+      console.log(`Loading Q&A data from: ${this.config.api.qa_data_url}`);
+      const response = await fetch(this.config.api.qa_data_url);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      
+      const data = await response.json();
+      
+      // Load predefined Q&A if enabled
+      if (this.config.features.enable_predefined_qa && data.predefinedQA) {
+        this.qaData = data.predefinedQA;
+        console.log(`Loaded ${Object.keys(this.qaData).length} predefined Q&A pairs`);
+      } else {
+        console.log("Predefined Q&A loading is disabled or no data available");
+      }
+      
+      // Load fallback responses if enabled
+      if (this.config.features.enable_fallback_responses && data.fallbackResponses && data.fallbackResponses.length > 0) {
+        this.fallbackResponses = data.fallbackResponses;
+        console.log(`Loaded ${this.fallbackResponses.length} fallback responses`);
+      } else {
+        console.log("Using default fallback responses");
+      }
+    } catch (error) {
+      console.error("Failed to load Q&A data:", error);
+      console.log("Using default fallback responses");
+      this.onError(error, "qa_data_load");
+    }
+  }
+
+  initializeDefaultFallbackResponses() {
+    // Set default fallback responses
     this.fallbackResponses = [
       {
         answer: "Thank you for your question. I'm here to help with general information and basic inquiries.",
@@ -416,22 +481,9 @@ class VFChatbotStandalone {
         prompts: []
       }
     ];
-
-    try {
-      const response = await fetch(
-        "../../assets/vf-chatbot/assets/vf-chatbot-qa.json"
-      );
-      const data = await response.json();
-      this.qaData = data.predefinedQA;
-      // Override with loaded fallback responses if available
-      if (data.fallbackResponses && data.fallbackResponses.length > 0) {
-        this.fallbackResponses = data.fallbackResponses;
-      }
-    } catch (error) {
-      console.error("Failed to load Q&A data:", error);
-      console.log("Using default fallback responses");
-      this.onError(error, "qa_data_load");
-    }
+    
+    // Initialize empty Q&A data
+    this.qaData = {};
   }
 
   handleRouteSelection(detail) {
@@ -759,7 +811,17 @@ class VFChatbotStandalone {
       if (link) {
         link.href = prompt.action_url || "#";
         link.textContent = prompt.action_text;
-        link.target = prompt.action_url?.startsWith("tel:") ? "_self" : "_blank";
+        
+        // Set target and add accessibility attributes
+        if (prompt.action_url?.startsWith("tel:")) {
+          link.target = "_self";
+        } else if (prompt.action_url) {
+          link.target = "_blank";
+          // Add aria-label for screen readers to indicate it opens in a new tab
+          link.setAttribute("aria-label", `${prompt.action_text} (opens in new tab)`);
+          // Add rel="noopener noreferrer" for security
+          link.rel = "noopener noreferrer";
+        }
 
         if (!prompt.action_url) {
           link.addEventListener("click", (e) => {

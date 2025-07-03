@@ -7,13 +7,36 @@ export class VFChatbotWelcome {
       "[data-vf-js-chatbot-welcome-suggestions-grid]"
     );
     this.qaData = null;
+    this.predefinedQA = null;
+    this.fallbackResponses = null;
     this.boundHandleSuggestionClick = this.handleSuggestionClick.bind(this);
 
-    // Get welcome_max_suggestions from data attribute or use default
-    this.welcome_max_suggestions =
-      options.welcome_max_suggestions ||
-      parseInt(this.el.dataset.welcome_max_suggestions, 10) ||
-      3; // Default to 3 if not specified
+    // Configuration from data attributes with fallbacks
+    this.config = {
+      welcome_max_suggestions: options.welcome_max_suggestions ||
+        parseInt(this.el.dataset.maxQuestions, 10) || 4,
+      enable_qa_data_loading: options.enable_qa_data_loading !== undefined ?
+        options.enable_qa_data_loading : 
+        (this.el.dataset.enableQaDataLoading !== 'false'),
+      enable_predefined_qa: options.enable_predefined_qa !== undefined ?
+        options.enable_predefined_qa : 
+        (this.el.dataset.enablePredefinedQa !== 'false'),
+      enable_fallback_responses: options.enable_fallback_responses !== undefined ?
+        options.enable_fallback_responses : 
+        (this.el.dataset.enableFallbackResponses !== 'false'),
+      qa_data_url: options.qa_data_url || 
+        this.el.dataset.qaDataUrl || 
+        this.getDefaultQADataUrl()
+    };
+  }
+
+  /**
+   * Get the default QA data URL based on the current page location
+   * @returns {string} The default QA data URL
+   */
+  getDefaultQADataUrl() {
+    // Use a relative path that works from most page locations
+    return "../../assets/vf-chatbot/assets/vf-chatbot-qa.json";
   }
 
   async init() {
@@ -29,28 +52,95 @@ export class VFChatbotWelcome {
   }
 
   async loadQAData() {
+    // If Q&A data loading is disabled, don't load any data
+    if (!this.config.enable_qa_data_loading) {
+      console.log("Q&A data loading disabled for welcome component");
+      return;
+    }
+
+    // Check if qa_data_url is provided
+    if (!this.config.qa_data_url) {
+      console.warn("No Q&A data URL provided for welcome component");
+      return;
+    }
+
     try {
-      const response = await fetch(
-        "../../assets/vf-chatbot/assets/vf-chatbot-qa.json"
-      );
+      console.log(`Loading Q&A data from: ${this.config.qa_data_url}`);
+      const response = await fetch(this.config.qa_data_url);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch Q&A data: ${response.status} ${response.statusText}`);
+      }
+
       const data = await response.json();
-      this.qaData = data.predefinedQA;
+      this.qaData = data;
+      
+      // Store predefined Q&A if enabled
+      if (this.config.enable_predefined_qa && data.predefinedQA) {
+        this.predefinedQA = data.predefinedQA;
+        console.log("Predefined Q&A loaded successfully");
+      }
+      
+      // Store fallback responses if enabled
+      if (this.config.enable_fallback_responses && data.fallbackResponses && data.fallbackResponses.length > 0) {
+        this.fallbackResponses = data.fallbackResponses;
+        console.log("Fallback responses loaded successfully");
+      }
+      
     } catch (error) {
       console.error("Failed to load Q&A data:", error);
+      // Provide default fallback responses if loading fails
+      this.setDefaultFallbackResponses();
+    }
+  }
+
+  setDefaultFallbackResponses() {
+    if (this.config.enable_fallback_responses) {
+      this.fallbackResponses = [
+        {
+          answer: "I'm here to help with your questions. Please try asking about our services or general information.",
+          sources: [],
+          prompts: ["What services do you offer?", "How can I get started?", "Tell me more about your organization"]
+        },
+        {
+          answer: "I'm an AI assistant designed to help with information and basic inquiries. How can I assist you today?",
+          sources: [],
+          prompts: ["What can you help me with?", "How do I contact support?", "Where can I find more information?"]
+        }
+      ];
+      console.log("Using default fallback responses for welcome component");
     }
   }
 
   populateSuggestions() {
-    if (!this.qaData || !this.suggestionsGrid) return;
+    if (!this.suggestionsGrid) return;
 
     // Clear existing suggestions
     this.suggestionsGrid.innerHTML = "";
 
+    let questionsToShow = [];
+
+    // Try to get questions from predefined Q&A first
+    if (this.config.enable_predefined_qa && this.predefinedQA) {
+      questionsToShow = Object.keys(this.predefinedQA);
+    } 
+    // If no predefined Q&A, try to get prompts from fallback responses
+    else if (this.config.enable_fallback_responses && this.fallbackResponses) {
+      questionsToShow = this.fallbackResponses
+        .filter(response => response.prompts && response.prompts.length > 0)
+        .flatMap(response => response.prompts);
+    }
+
+    // If we still don't have questions, show a default message
+    if (questionsToShow.length === 0) {
+      console.log("No questions available for welcome suggestions");
+      return;
+    }
+
     // Get random questions
-    const questions = Object.keys(this.qaData);
-    const randomQuestions = questions
+    const randomQuestions = questionsToShow
       .sort(() => 0.5 - Math.random())
-      .slice(0, this.welcome_max_suggestions);
+      .slice(0, this.config.welcome_max_suggestions);
 
     // Create suggestion elements using template-based rendering
     randomQuestions.forEach((question, index) => {
@@ -104,10 +194,33 @@ export class VFChatbotWelcome {
     const question = suggestionEl.getAttribute(
       "data-vf-js-chatbot-welcome-suggestion"
     );
-    if (!question || !this.qaData[question]) return;
+    if (!question) return;
 
-    // Get answer data
-    const answer = this.qaData[question];
+    // Get answer data from predefined Q&A or fallback responses
+    let answerData = null;
+    
+    // First try predefined Q&A
+    if (this.config.enable_predefined_qa && this.predefinedQA && this.predefinedQA[question]) {
+      answerData = this.predefinedQA[question];
+    }
+    // If not found in predefined Q&A, try to find in fallback responses
+    else if (this.config.enable_fallback_responses && this.fallbackResponses) {
+      const fallbackResponse = this.fallbackResponses.find(
+        response => response.prompts && response.prompts.includes(question)
+      );
+      if (fallbackResponse) {
+        answerData = fallbackResponse;
+      }
+    }
+
+    // If still no answer data, provide a default response
+    if (!answerData) {
+      answerData = {
+        answer: "I'm here to help with your questions. Please try asking about our services or general information.",
+        sources: [],
+        prompts: ["What services do you offer?", "How can I get started?", "Tell me more about your organization"]
+      };
+    }
 
     // Dispatch event only once
     this.el.dispatchEvent(
@@ -115,9 +228,9 @@ export class VFChatbotWelcome {
         bubbles: true,
         detail: {
           question,
-          answer: answer.answer || "",
-          sources: answer.sources || [],
-          prompts: answer.prompts || []
+          answer: answerData.answer || "",
+          sources: answerData.sources || [],
+          prompts: answerData.prompts || []
         }
       })
     );

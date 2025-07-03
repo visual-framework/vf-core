@@ -602,7 +602,7 @@ class VFChatbotModal {
               <a
                 href="${prompt.action_url}"
                 class="vf-chatbot-action-prompt__link"
-                ${prompt.action_url.startsWith("tel:") ? "" : 'target="_blank"'}
+                ${prompt.action_url.startsWith("tel:") ? "" : 'target="_blank" rel="noopener noreferrer" aria-label="' + prompt.action_text + ' (opens in new tab)"'}
               >
                 ${prompt.action_text}
               </a>
