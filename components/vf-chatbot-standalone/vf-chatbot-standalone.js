@@ -179,7 +179,6 @@ class VFChatbotStandalone {
       this.messagesContainer.dataset.autoScroll = this.config.behavior.auto_scroll;
     }
   }
-
   setupState() {
     this.currentAssistant = "";
     this.conversationId = this.generateConversationId();
@@ -195,7 +194,17 @@ class VFChatbotStandalone {
       this.initializeDefaultFallbackResponses();
     }
   }
+  setupState() {
+    this.currentAssistant = "";
+    this.conversationId = this.generateConversationId();
+    this.messageHistory = [];
+    this.loadingIndicator = null;
+    this.apiResponseListener = null;
 
+    // Load Q&A data if using fallback responses
+    this.loadQADataAndPopulateSuggestions();
+  }
+  
   setupState() {
     this.currentAssistant = "";
     this.conversationId = this.generateConversationId();
@@ -420,7 +429,6 @@ class VFChatbotStandalone {
       console.log("No Q&A data URL configured");
       return;
     }
-
     try {
       console.log(`Loading Q&A data from: ${this.config.api.qa_data_url}`);
       const response = await fetch(this.config.api.qa_data_url);
@@ -446,7 +454,6 @@ class VFChatbotStandalone {
       } else {
         console.log("Using default fallback responses");
       }
-      
     } catch (error) {
       console.error("Failed to load Q&A data:", error);
       console.log("Using default fallback responses");
