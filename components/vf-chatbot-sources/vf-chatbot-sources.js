@@ -13,7 +13,7 @@ function initVFChatbotSources(messages) {
       message => `
     <li class="vf-chatbot-sources__item">
       <div class="vf-chatbot-sources__label">${message.domain}</div>
-      <a class="vf-link vf-chatbot-sources__link" href="${message.url}" target="_blank" rel="noopener noreferrer">
+      <a class="vf-link vf-chatbot-sources__link" href="${message.url}" target="_blank" rel="noopener noreferrer" aria-label="${message.title} (opens in new tab)">
         ${message.title}
       </a>
       <div class="vf-chatbot-sources__description">${message.description}</div>

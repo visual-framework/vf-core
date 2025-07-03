@@ -1,6 +1,10 @@
 <div class="vf-chatbot-welcome"
      data-vf-js-chatbot-welcome
-     data-max-questions="{{ welcome_max_suggestions | default(4) }}">
+     data-max-questions="{{ welcome_max_suggestions | default(4) }}"
+     data-enable-qa-data-loading="{{ enable_qa_data_loading | default(true) }}"
+     data-enable-predefined-qa="{{ enable_predefined_qa | default(true) }}"
+     data-enable-fallback-responses="{{ enable_fallback_responses | default(true) }}"
+     data-qa-data-url="{{ qa_data_url | default('../../assets/vf-chatbot/assets/vf-chatbot-qa.json') }}">
   <div class="vf-chatbot-welcome__content">
     {% if welcome_logo %}
       <div class="vf-chatbot-welcome__logo">

@@ -115,6 +115,9 @@ export class VFChatbotSelector {
       allServicesItem.setAttribute("data-vf-js-selector-item", "");
       allServicesItem.setAttribute("data-route-id", "all");
       allServicesItem.setAttribute("data-title", "All services");
+      allServicesItem.setAttribute("role", "button");
+      allServicesItem.setAttribute("tabindex", "0");
+      allServicesItem.setAttribute("aria-label", "Select all services");
 
       if (!hasPreSelectedRoutes && this.showAllServicesSelected) {
         allServicesItem.className += " vf-chatbot-selector__item--selected";
@@ -145,6 +148,9 @@ export class VFChatbotSelector {
       item.setAttribute("data-vf-js-selector-item", "");
       item.setAttribute("data-route-id", route.id);
       item.setAttribute("data-title", route.title);
+      item.setAttribute("role", "button");
+      item.setAttribute("tabindex", "0");
+      item.setAttribute("aria-label", `Select ${route.title}`);
 
       item.innerHTML = `
         <div class="vf-chatbot-selector__item-content">
@@ -180,15 +186,25 @@ export class VFChatbotSelector {
     this.listItems.forEach(item => {
       // Remove any existing listeners first
       item.removeEventListener("click", this.itemClickHandler);
+      item.removeEventListener("keydown", this.itemKeydownHandler);
 
-      // Create bound handler
+      // Create bound handlers
       this.itemClickHandler = e => {
         e.stopPropagation();
         this.handleItemSelection(item);
       };
 
-      // Add new listener
+      this.itemKeydownHandler = e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          e.stopPropagation();
+          this.handleItemSelection(item);
+        }
+      };
+
+      // Add new listeners
       item.addEventListener("click", this.itemClickHandler);
+      item.addEventListener("keydown", this.itemKeydownHandler);
     });
   }
 
