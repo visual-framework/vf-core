@@ -43,14 +43,23 @@
       padding: 0 0.5rem;
       width: 95%;
     }
-    @media (max-width: 600px) {
+    @media (max-width: $vf-breakpoint--sm) {
       // width: 88%;
       padding: 0 0.5rem;
+    }
+
+    @media (max-width: 480px) {
+      width: 100%;
+      padding:0px;
+      margin:0px;
+      margin-top: 16px;
+      border-top: 2px solid var(--vf-color--grey);
     }
   }
 
   &__input-wrapper {
     display: flex;
+    align-items: flex-end;
     label {
       visibility: hidden;
       position: absolute;
@@ -72,6 +81,7 @@
     margin-bottom: 0;
     align-content: center;
     width: 100%;
+    line-height: 2.1;
     border: none;
     resize: none;
     background: #FFFFFF;
@@ -93,15 +103,11 @@
     border: none;
     padding-inline: 0px;
     cursor: pointer;
-    transition: background 0.2s ease;
-
-    &:hover {
-      background: darken(#3A77BC, 10%);
-    }
-
-    svg {
-      width: 24px;
-      height: 24px;
+    img {
+      @media (max-width: 480px) {
+        height: 45px !important;
+        max-width: fit-content !important;
+      }
     }
   }
 
@@ -115,7 +121,7 @@
       padding: 0 0.5rem;
       width: 95%;
     }
-    @media (max-width: 600px) {
+    @media (max-width: $vf-breakpoint--sm) {
       // width: 88%;
       padding: 0 0.5rem;
     }
@@ -129,7 +135,7 @@
       padding: 0 0.5rem;
       width: 95%;
     }
-    @media (max-width: 600px) {
+    @media (max-width: $vf-breakpoint--sm) {
       // width: 88%;
       padding: 0 0.5rem;
     }
@@ -144,7 +150,7 @@
       width: 95%;
       padding: 0 0.5rem;
     }
-    @media (max-width: 600px) {
+    @media (max-width: $vf-breakpoint--sm) {
       // width: 88%;
       padding: 0 0.5rem;
     }

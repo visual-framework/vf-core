@@ -663,6 +663,7 @@ class VFChatbotStandalone {
           response.sources || [],
           response.prompts || []
         );
+        this.setLoadingState(false);
       } else {
         // Use fallback response
         setTimeout(() => {
@@ -690,9 +691,8 @@ class VFChatbotStandalone {
     } catch (error) {
       console.error("Error processing message:", error);
       this.onError(error, "message_processing");
-      // this.showErrorMessage();
-    } finally {
       this.setLoadingState(false);
+      // this.showErrorMessage();
     }
   }
 
@@ -847,14 +847,6 @@ class VFChatbotStandalone {
         const loadingContent = this.loadingTemplate.content.cloneNode(true);
         this.loadingIndicator = loadingContent.firstElementChild;
 
-        // Update loading text
-        const loadingText = this.loadingIndicator.querySelector(
-          ".vf-chatbot-message__loading-text"
-        );
-        // if (loadingText) {
-        //   loadingText.textContent = this.config.labels.typing_indicator;
-        // }
-
         // Update avatar
         const avatar = this.loadingIndicator.querySelector("img");
         if (avatar) {
@@ -862,7 +854,11 @@ class VFChatbotStandalone {
         }
 
         this.messagesContainer.appendChild(this.loadingIndicator);
+      } else if (this.loadingIndicator && !this.loadingIndicator.parentNode) {
+        // Re-append if it was removed from DOM
+        this.messagesContainer.appendChild(this.loadingIndicator);
       }
+      
       if (this.loadingIndicator) {
         this.loadingIndicator.style.display = "block";
       }
