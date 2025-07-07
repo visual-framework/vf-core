@@ -71,6 +71,12 @@ The chatbot modal and [chatbot standalone](../vf-chatbot-standalone) are two dis
 | Feedback on a query level | Users can assess the AI responses with a thumbs up/thumbs down or optional close/open response fields to give more details. |
 | Category selection | A dropdown in the title bar lets users switch focus areas (e.g LLM version or data source). Single or multi-selection variants can be used depending on the use case. |
 
+### Visual branding elements and content
+
+The Chatbot branding elements follow EMBL brand guidelines but can be updated to suit your use case. For advice on branding updates please contact the EMBL Communications Team.
+
+Texts shown in the examples are placeholder content. Please review and update all wording to fit your your project needs and ensure it meets legal, accessibility and organisational requirements.
+
 ### Accessibility
 
 The component targets WCAG 2.1 AA accessibility standard.

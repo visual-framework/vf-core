@@ -15,7 +15,7 @@ We use polyfill bundling from [Polyfill.io](https://cdn.polyfill.io/v3/url-build
 This is is what it looks like:
 
 ```js
-<script nomodule src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script nomodule src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=default"></script>
 ```
 
 In effect, this provides better support to Internet Explorer and very old versions of Chrome, FireFox and Safari.
