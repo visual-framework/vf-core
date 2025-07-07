@@ -17,17 +17,11 @@ class VFChatbotStandalone {
   }
 
   loadConfiguration(customConfig) {
-    console.log("=== DEBUG loadConfiguration ===");
-    console.log("this.container:", this.container);
-    console.log("this.container.dataset:", this.container.dataset);
 
     // Get config from data attribute
     const dataConfig = this.container.dataset.vfChatbotConfig
       ? JSON.parse(this.container.dataset.vfChatbotConfig)
       : {};
-
-    console.log("dataConfig from HTML:", dataConfig);
-
     // Default configuration
     const defaultConfig = {
       title: "AI Assistant",
@@ -37,6 +31,8 @@ class VFChatbotStandalone {
       welcome_suggestions_title: "Try asking me:",
       input_placeholder: "Ask me ...",
       welcome_max_suggestions: 4,
+      disclaimer: 'Disclaimer: This chatbot is designed to assist you with general information and basic inquiries. See our <a class="vf-banner__link" target="_blank" rel="noopener noreferrer" aria-label="disclaimer notes (opens in new tab)" href="https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website/">disclaimer notes</a>.',
+      footnote: 'Review AI generated content for accuracy. <a class="vf-link" target="_blank" rel="noopener noreferrer" aria-label="Leave feedback (opens in new tab)" href="https://embl.service-now.com/esc?id=sc_cat_item&sys_id=5eeb8eb91b92e650b376da88b04bcbc1">Leave feedback</a>.',
 
       icons: {
         assistant_avatar:
@@ -178,31 +174,6 @@ class VFChatbotStandalone {
     if (this.messagesContainer) {
       this.messagesContainer.dataset.autoScroll = this.config.behavior.auto_scroll;
     }
-  }
-  setupState() {
-    this.currentAssistant = "";
-    this.conversationId = this.generateConversationId();
-    this.messageHistory = [];
-    this.loadingIndicator = null;
-    this.apiResponseListener = null;
-
-    // Load Q&A data if enabled
-    if (this.config.features.enable_qa_data_loading) {
-      this.loadQADataAndPopulateSuggestions();
-    } else {
-      // Initialize default fallback responses if data loading is disabled
-      this.initializeDefaultFallbackResponses();
-    }
-  }
-  setupState() {
-    this.currentAssistant = "";
-    this.conversationId = this.generateConversationId();
-    this.messageHistory = [];
-    this.loadingIndicator = null;
-    this.apiResponseListener = null;
-
-    // Load Q&A data if using fallback responses
-    this.loadQADataAndPopulateSuggestions();
   }
   
   setupState() {
@@ -374,7 +345,6 @@ class VFChatbotStandalone {
   }
 
   async init() {
-    console.log("Initializing chatbot with configuration:", this.config);
 
     // Initialize selector if present
     if (this.selectorEl) {
@@ -387,8 +357,22 @@ class VFChatbotStandalone {
     // Initialize welcome component
     if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
       this.welcomeComponent = new VFChatbotWelcome(this.welcomeScreen, {
+         // Basic welcome configuration
+        welcome_title: this.config.title,
+        welcome_logo: this.config.welcome_logo,
+        welcome_message: this.config.welcome_message,
+        welcome_logo_alt: this.config.welcome_logo_alt,
+        welcome_suggestions_title: this.config.welcome_suggestions_title,
         welcome_max_suggestions: this.config.welcome_max_suggestions,
-        suggestionsUrl: this.config.api.suggestions_endpoint,
+        
+        // API configuration
+        qa_data_url: this.config.api.qa_data_url,
+        
+        // Feature toggles
+        enable_welcome_suggestions: this.config.features.enable_welcome_suggestions,
+        enable_qa_data_loading: this.config.features.enable_qa_data_loading,
+        enable_predefined_qa: this.config.features.enable_predefined_qa,
+        enable_fallback_responses: this.config.features.enable_fallback_responses
       });
 
       try {
@@ -415,8 +399,6 @@ class VFChatbotStandalone {
   }
 
   async loadQADataAndPopulateSuggestions() {
-    // Initialize default fallback responses
-    this.initializeDefaultFallbackResponses();
 
     // Skip loading if Q&A data loading is disabled
     if (!this.config.features.enable_qa_data_loading) {
@@ -430,7 +412,6 @@ class VFChatbotStandalone {
       return;
     }
     try {
-      console.log(`Loading Q&A data from: ${this.config.api.qa_data_url}`);
       const response = await fetch(this.config.api.qa_data_url);
       
       if (!response.ok) {
@@ -442,7 +423,6 @@ class VFChatbotStandalone {
       // Load predefined Q&A if enabled
       if (this.config.features.enable_predefined_qa && data.predefinedQA) {
         this.qaData = data.predefinedQA;
-        console.log(`Loaded ${Object.keys(this.qaData).length} predefined Q&A pairs`);
       } else {
         console.log("Predefined Q&A loading is disabled or no data available");
       }
@@ -450,51 +430,23 @@ class VFChatbotStandalone {
       // Load fallback responses if enabled
       if (this.config.features.enable_fallback_responses && data.fallbackResponses && data.fallbackResponses.length > 0) {
         this.fallbackResponses = data.fallbackResponses;
-        console.log(`Loaded ${this.fallbackResponses.length} fallback responses`);
       } else {
         console.log("Using default fallback responses");
       }
     } catch (error) {
       console.error("Failed to load Q&A data:", error);
-      console.log("Using default fallback responses");
       this.onError(error, "qa_data_load");
     }
-  }
-
-  initializeDefaultFallbackResponses() {
-    // Set default fallback responses
-    this.fallbackResponses = [
-      {
-        answer: "Thank you for your question. I'm here to help with general information and basic inquiries.",
-        prompts: []
-      },
-      {
-        answer: "I appreciate you reaching out. While I may not have a specific answer, I'm designed to assist with various topics.",
-        prompts: []
-      },
-      {
-        answer: "That's an interesting question! I'm still learning and growing to better assist users like you.",
-        prompts: []
-      },
-      {
-        answer: "I understand you're looking for information. Please feel free to ask more specific questions that I might be able to help with.",
-        prompts: []
-      }
-    ];
-    
-    // Initialize empty Q&A data
-    this.qaData = {};
   }
 
   handleRouteSelection(detail) {
     const { selectedItems } = detail;
     if (selectedItems && selectedItems.length > 0) {
-      this.currentAssistant = selectedItems[0];
+      this.currentAssistant = selectedItems.join(", ");
       console.log(`Switched to ${this.currentAssistant} assistant`);
 
       this.emitEvent("vf-chatbot:assistant-change", {
-        previousAssistant: this.currentAssistant,
-        newAssistant: selectedItems[0],
+        selectedAssistants: this.currentAssistant,
         conversationId: this.conversationId,
       });
     }
@@ -550,7 +502,7 @@ class VFChatbotStandalone {
     if (!this.input) return;
 
     // Reset height to auto to get the actual scroll height
-    this.input.style.height = 'auto';
+    // this.input.style.height = 'auto';
     
     // Get computed styles
     const computedStyle = window.getComputedStyle(this.input);
@@ -870,7 +822,7 @@ class VFChatbotStandalone {
 
     // Disable/enable controls
     if (this.sendBtn) this.sendBtn.disabled = isLoading;
-    if (this.input) this.input.disabled = isLoading;
+    // if (this.input) this.input.disabled = isLoading;
 
     this.scrollToBottom();
   }
@@ -937,8 +889,6 @@ function initVFChatbotStandalone(customConfig = {}) {
     console.warn("No standalone chatbot elements found on page");
     return [];
   }
-
-  console.log(`Found ${chatbotElements.length} standalone chatbot elements`);
 
   const instances = [];
   chatbotElements.forEach((element) => {

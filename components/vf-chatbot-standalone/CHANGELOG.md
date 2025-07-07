@@ -1,0 +1,9 @@
+# Changelog
+
+### 1.0.0-beta.1
+
+* Initial version
+* Auto-resizing textarea (1-5 rows with scroll)
+* Configurable Q&A data loading with fallback responses
+* Enhanced accessibility
+* Comprehensive event handling system
