@@ -74,6 +74,12 @@ The [chatbot modal](../vf-chatbot-modal) and chatbot standalone are two distinct
 You can access working example of standalone version here:
 [Visual Framework Chatbot - Standlone](/chatbot)
 
+### Visual branding elements and content
+
+The Chatbot branding elements follow EMBL brand guidelines but can be updated to suit your use case. For advice on branding updates please contact the EMBL Communications Team.
+
+Texts shown in the examples are placeholder content. Please review and update all wording to fit your your project needs and ensure it meets legal, accessibility and organisational requirements.
+
 ### Accessibility
 
 The component targets WCAG 2.1 AA accessibility standard.
