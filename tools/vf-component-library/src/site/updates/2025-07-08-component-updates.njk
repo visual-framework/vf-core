@@ -1,0 +1,112 @@
+---
+title: Rollup release 2.5.23
+subtitle: This release includes Standalone chatbot with it's dependent packages. It also includes update for polyfills.
+date: 2025-07-08 10:30:00
+version: 2.5.23
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Features",
+      "navigation_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### New features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-chatbot", "1.0.0-beta.1", "4e59e57dfc7c61ce6e39bcc9066bc096d6ce7976") }}
+
+* Added: Initial release of core chatbot functionality. Work in progress for modal chatbot version.
+
+{{ releaseLinks.notes("vf-chatbot-fab", "1.0.0-beta.1", "4e59e57dfc7c61ce6e39bcc9066bc096d6ce7976") }}
+
+* Added: Floating action button for chatbot access. Work in progress for modal chatbot version.
+
+{{ releaseLinks.notes("vf-chatbot-modal", "1.0.0-beta.1", "4e59e57dfc7c61ce6e39bcc9066bc096d6ce7976") }}
+
+* Added: Modal overlay chatbot interface. Work in progress for modal chatbot version.
+
+{{ releaseLinks.notes("vf-chatbot-standalone", "1.0.0-beta.1", "7023d09b95c0cf109f9bdcf197091e240fd94959") }}
+
+* Added: Initial release of standalone chatbot functionality.
+
+{{ releaseLinks.notes("vf-chatbot-action-prompt", "1.0.0-beta.1", "7023d09b95c0cf109f9bdcf197091e240fd94959") }}
+
+* Added: Initial release of interactive action buttons for chatbot responses.
+
+{{ releaseLinks.notes("vf-chatbot-feedback", "1.0.0-beta.1", "7023d09b95c0cf109f9bdcf197091e240fd94959") }}
+
+* Added: Initial release of user feedback collection component  for chatbot.
+
+{{ releaseLinks.notes("vf-chatbot-prompt", "1.0.0-beta.1", "7023d09b95c0cf109f9bdcf197091e240fd94959") }}
+
+* Added: Initial release of message prompts and suggestions component for chatbot.
+
+{{ releaseLinks.notes("vf-chatbot-selector", "1.0.0-beta.1", "7023d09b95c0cf109f9bdcf197091e240fd94959") }}
+
+* Added: Initial release of service/category selection interface for chatbot.
+
+{{ releaseLinks.notes("vf-chatbot-sources", "1.0.0-beta.1", "7023d09b95c0cf109f9bdcf197091e240fd94959") }}
+
+* Added: Initial release of source citation display component for chatbot.
+
+{{ releaseLinks.notes("vf-chatbot-welcome", "1.0.0-beta.1", "7023d09b95c0cf109f9bdcf197091e240fd94959") }}
+
+* Added: Initial release of welcome screen component for chatbot with suggested questions.
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-component-rollup", "1.4.12", "815f22f561f2c6b672dd8109698ca15b6a03aa86") }}
+
+Added VF Standalone Chatbot to component rollup.
+
+{{ releaseLinks.notes("vf-font-plex-mono", "1.1.2", "815f22f561f2c6b672dd8109698ca15b6a03aa86") }}
+
+Font added from CDN for the time being.
+
+{{ releaseLinks.notes("vf-font-plex-sans", "1.1.2", "815f22f561f2c6b672dd8109698ca15b6a03aa86") }}
+
+Font added from CDN for the time being.
+
+{{ releaseLinks.notes("vf-component-library", "1.2.17", "815f22f561f2c6b672dd8109698ca15b6a03aa86") }}
+
+Added VF Standalone Chatbot to component library.
+
+{{ releaseLinks.notes("vf-polyfill-js", "1.0.0", "112cf29d3c17e163d92de0cf6b4ada6c47345cb7") }}
+
+Updated polyfill URL.
+
+{% endmarkdown %}
