@@ -1,7 +1,7 @@
 {% set config = {
   title: title | default("AI Assistant"),
   welcome_logo: welcome_logo | default(true),
-  welcome_message: welcome_message | default("Welcome! I'm here to help"),
+  welcome_message: welcome_message | default("Welcome! I am here to help"),
   welcome_logo_alt: welcome_logo_alt | default("AI Assistant"),
   welcome_suggestions_title: welcome_suggestions_title | default("Try asking me:"),
   input_placeholder: input_placeholder | default("Ask me ..."),
@@ -9,15 +9,15 @@
   disclaimer: disclaimer | default('Disclaimer: This chatbot is designed to assist you with general information and basic inquiries. See our <a class="vf-banner__link" target="_blank" rel="noopener noreferrer" aria-label="disclaimer notes (opens in new tab)" href="https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website/">disclaimer notes</a>.') | safe,
   footnote: footnote | default('Review AI generated content for accuracy. <a class="vf-link" target="_blank" rel="noopener noreferrer" aria-label="Leave feedback (opens in new tab)" href="https://embl.service-now.com/esc?id=sc_cat_item&sys_id=5eeb8eb91b92e650b376da88b04bcbc1">Leave feedback</a>.') | safe,
   icons: icons | default({
-    assistant_avatar: "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
-    user_avatar: "../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg",
-    send_button: "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
-    main_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg"
+    assistant_avatar: "../../assets/vf-chatbot-standalone/assets/vf-chatbot--icon-16x16-dark-green.svg",
+    user_avatar: "../../assets/vf-chatbot-standalone/assets/vf-chatbot--avatar-user.svg",
+    send_button: "../../assets/vf-chatbot-standalone/assets/vf-chatbot--icon-send.svg",
+    main_logo_url: "../../assets/vf-chatbot-standalone/assets/vf-chatbot--icon-32x32-dark-green.svg"
   }),
   api: api | default({
-    feedback_endpoint: "/api/feedback",
-    suggestions_endpoint: "/api/suggestions",
-    sources_endpoint: "/api/sources",
+    chat_endpoint: false,
+    feedback_endpoint: false,
+    qa_data_url: "../../assets/vf-chatbot-standalone/assets/vf-chatbot-qa.json",
     headers:{
       "Content-Type": "application/json",
       "Authorization": "Bearer your-token"
@@ -30,7 +30,11 @@
     enable_sources: true,
     enable_welcome_suggestions: true,
     enable_typing_indicator: true,
-    enable_disclaimer: true
+    enable_disclaimer: true,
+    enable_predefined_qa: true,
+    enable_fallback_responses: true,
+    enable_qa_data_loading: true,
+    enable_instant_feedback: false
   }),
   behavior: behavior | default({
     auto_scroll: true,
@@ -44,7 +48,7 @@
       showSearchThreshold: 5,
       showAllServices: true,
       showAllServicesSelected: true,
-      routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
+      routes: "../../assets/vf-chatbot-standalone/assets/vf-chatbot-selector-services.json",
       placeholder: "Select services",
       title: "Services"
     }

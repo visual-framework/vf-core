@@ -1,7 +1,12 @@
 export class VFChatbotFeedback {
-  constructor(container, messageId) {
+  constructor(container, messageId, config = {}) {
     this.container = container;
     this.messageId = messageId;
+    this.config = {
+      enable_instant_feedback: false,
+      api_endpoint: null,
+      ...config
+    };
     this.positiveTemplate = document.querySelector(
       "#feedback-positive-template"
     );
@@ -33,10 +38,10 @@ export class VFChatbotFeedback {
 
   bindThumbEvents() {
     const upThumb = this.container.querySelector(
-      '[data-vf-js-feedback-thumb="up"]'
+      "[data-vf-js-feedback-thumb='up']"
     );
     const downThumb = this.container.querySelector(
-      '[data-vf-js-feedback-thumb="down"]'
+      "[data-vf-js-feedback-thumb='down']"
     );
     const formContainer = this.container.querySelector(
       ".vf-chatbot-feedback__form-container"
@@ -45,14 +50,124 @@ export class VFChatbotFeedback {
     upThumb?.addEventListener("click", () => {
       upThumb.classList.add("vf-chatbot-feedback__thumb--solid");
       downThumb.classList.remove("vf-chatbot-feedback__thumb--solid");
-      this.showForm("positive", formContainer);
+
+      if (this.config.enable_instant_feedback) {
+        // Submit feedback immediately without showing form
+        this.submitInstantFeedback("positive");
+        this.showSuccessBanner();
+      } else {
+        // Traditional flow - show feedback form
+        this.showForm("positive", formContainer);
+      }
     });
 
     downThumb?.addEventListener("click", () => {
       downThumb.classList.add("vf-chatbot-feedback__thumb--solid");
       upThumb.classList.remove("vf-chatbot-feedback__thumb--solid");
-      this.showForm("negative", formContainer);
+
+      if (this.config.enable_instant_feedback) {
+        // Submit feedback immediately without showing form
+        this.submitInstantFeedback("negative");
+        this.showSuccessBanner();
+      } else {
+        // Traditional flow - show feedback form
+        this.showForm("negative", formContainer);
+      }
     });
+  }
+
+  submitInstantFeedback(feedbackType) {
+    const feedbackData = {
+      messageId: this.messageId,
+      feedbackType: feedbackType,
+      feedbackText: "", // Empty for instant feedback
+      timestamp: Date.now()
+    };
+
+    // Emit event for parent component to handle
+    this.emitFeedbackEvent(feedbackData);
+
+    // Send to API if configured
+    if (this.config.api_endpoint) {
+      this.sendFeedbackToAPI(feedbackData);
+    }
+
+    console.log("Instant feedback submitted:", feedbackData);
+  }
+
+  showSuccessBanner() {
+    const formContainer = this.container.querySelector(
+      ".vf-chatbot-feedback__form-container"
+    );
+
+    // Show thank you message using vf-banner (dismissible)
+    formContainer.innerHTML = `
+      <div class="vf-banner" aria-label="Thank you" data-vf-js-banner>
+        <div class="vf-banner__content">
+          <p class="vf-banner__text">Thank you for your feedback!</p>
+          <button role="button" aria-label="close notification banner" class="vf-button vf-button--icon vf-button--dismiss | vf-banner__button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>dismiss banner</title>
+              <path d="M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    `;
+
+    // Hide the unselected thumb and disable the selected one
+    const upThumb = this.container.querySelector(
+      "[data-vf-js-feedback-thumb='up']"
+    );
+    const downThumb = this.container.querySelector(
+      "[data-vf-js-feedback-thumb='down']"
+    );
+    if (upThumb.classList.contains("vf-chatbot-feedback__thumb--solid")) {
+      downThumb.style.display = "none";
+      upThumb.disabled = true; // Disable the clicked thumb
+    } else if (
+      downThumb.classList.contains("vf-chatbot-feedback__thumb--solid")
+    ) {
+      upThumb.style.display = "none";
+      downThumb.disabled = true; // Disable the clicked thumb
+    }
+
+    // Add dismiss functionality
+    const banner = formContainer.querySelector("[data-vf-js-banner]");
+    const closeBtn = formContainer.querySelector(".vf-button--dismiss");
+    if (banner && closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        banner.remove();
+      });
+    }
+  }
+
+  emitFeedbackEvent(feedbackData) {
+    const event = new CustomEvent("vf-chatbot-feedback:submit", {
+      bubbles: true,
+      detail: feedbackData
+    });
+    this.container.dispatchEvent(event);
+  }
+
+  async sendFeedbackToAPI(feedbackData) {
+    try {
+      const response = await fetch(this.config.api_endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(feedbackData)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      console.log("Feedback sent to API successfully");
+    } catch (error) {
+      console.error("Failed to send feedback to API:", error);
+    }
   }
 
   showForm(type, formContainer) {
@@ -112,10 +227,10 @@ export class VFChatbotFeedback {
 
         // Remove solid class from both thumbs
         const upThumb = this.container.querySelector(
-          '[data-vf-js-feedback-thumb="up"]'
+          "[data-vf-js-feedback-thumb='up']"
         );
         const downThumb = this.container.querySelector(
-          '[data-vf-js-feedback-thumb="down"]'
+          "[data-vf-js-feedback-thumb='down']"
         );
         upThumb?.classList.remove("vf-chatbot-feedback__thumb--solid");
         downThumb?.classList.remove("vf-chatbot-feedback__thumb--solid");
@@ -124,45 +239,36 @@ export class VFChatbotFeedback {
   }
 
   submitFeedback(formContainer) {
-    // Show thank you message using vf-banner (dismissible)
-    formContainer.innerHTML = `
-      <div class="vf-banner" aria-label="Thank you" data-vf-js-banner>
-        <div class="vf-banner__content">
-          <p class="vf-banner__text">Thank you for your feedback!</p>
-          <button role="button" aria-label="close notification banner" class="vf-button vf-button--icon vf-button--dismiss | vf-banner__button">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <title>dismiss banner</title>
-              <path d="M14.3,12.179a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.442L12.177,9.7a.25.25,0,0,1-.354,0L2.561.442A1.5,1.5,0,0,0,.439,2.563L9.7,11.825a.25.25,0,0,1,0,.354L.439,21.442a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,0,0,2.122-2.121Z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    `;
+    // Collect form data for traditional feedback
+    const selectedOptions = formContainer.querySelectorAll(
+      ".vf-chatbot-feedback__option--selected"
+    );
+    const feedbackText = Array.from(selectedOptions)
+      .map(option => option.textContent.trim())
+      .join(", ");
 
-    // Hide the unselected thumb and disable the selected one
-    const upThumb = this.container.querySelector(
-      '[data-vf-js-feedback-thumb="up"]'
-    );
-    const downThumb = this.container.querySelector(
-      '[data-vf-js-feedback-thumb="down"]'
-    );
-    if (upThumb.classList.contains("vf-chatbot-feedback__thumb--solid")) {
-      downThumb.style.display = "none";
-      upThumb.disabled = true; // Disable the clicked thumb
-    } else if (
-      downThumb.classList.contains("vf-chatbot-feedback__thumb--solid")
-    ) {
-      upThumb.style.display = "none";
-      downThumb.disabled = true; // Disable the clicked thumb
+    const feedbackType = this.container
+      .querySelector("[data-vf-js-feedback-thumb='up']")
+      ?.classList.contains("vf-chatbot-feedback__thumb--solid")
+      ? "positive"
+      : "negative";
+
+    const feedbackData = {
+      messageId: this.messageId,
+      feedbackType: feedbackType,
+      feedbackText: feedbackText,
+      timestamp: Date.now()
+    };
+
+    // Emit event for parent component to handle
+    this.emitFeedbackEvent(feedbackData);
+
+    // Send to API if configured
+    if (this.config.api_endpoint) {
+      this.sendFeedbackToAPI(feedbackData);
     }
 
-    // Add dismiss functionality
-    const banner = formContainer.querySelector("[data-vf-js-banner]");
-    const closeBtn = formContainer.querySelector(".vf-button--dismiss");
-    if (banner && closeBtn) {
-      closeBtn.addEventListener("click", () => {
-        banner.remove();
-      });
-    }
+    // Show success banner (reuse existing logic)
+    this.showSuccessBanner();
   }
 }

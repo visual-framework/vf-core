@@ -17,7 +17,6 @@ class VFChatbotStandalone {
   }
 
   loadConfiguration(customConfig) {
-
     // Get config from data attribute
     const dataConfig = this.container.dataset.vfChatbotConfig
       ? JSON.parse(this.container.dataset.vfChatbotConfig)
@@ -31,30 +30,31 @@ class VFChatbotStandalone {
       welcome_suggestions_title: "Try asking me:",
       input_placeholder: "Ask me ...",
       welcome_max_suggestions: 4,
-      disclaimer: 'Disclaimer: This chatbot is designed to assist you with general information and basic inquiries. See our <a class="vf-banner__link" target="_blank" rel="noopener noreferrer" aria-label="disclaimer notes (opens in new tab)" href="https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website/">disclaimer notes</a>.',
-      footnote: 'Review AI generated content for accuracy. <a class="vf-link" target="_blank" rel="noopener noreferrer" aria-label="Leave feedback (opens in new tab)" href="https://embl.service-now.com/esc?id=sc_cat_item&sys_id=5eeb8eb91b92e650b376da88b04bcbc1">Leave feedback</a>.',
-
+      disclaimer:
+        'Disclaimer: This chatbot is designed to assist you with general information and basic inquiries. See our <a class="vf-banner__link" target="_blank" rel="noopener noreferrer" aria-label="disclaimer notes (opens in new tab)" href="https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website/">disclaimer notes</a>.',
+      footnote:
+        'Review AI generated content for accuracy. <a class="vf-link" target="_blank" rel="noopener noreferrer" aria-label="Leave feedback (opens in new tab)" href="https://embl.service-now.com/esc?id=sc_cat_item&sys_id=5eeb8eb91b92e650b376da88b04bcbc1">Leave feedback</a>.',
       icons: {
         assistant_avatar:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
+          "../../assets/vf-chatbot-standalone/assets/vf-chatbot--icon-16x16-dark-green.svg",
         user_avatar:
-          "../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg",
+          "../../assets/vf-chatbot-standalone/assets/vf-chatbot--avatar-user.svg",
         send_button:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
+          "../../assets/vf-chatbot-standalone/assets/vf-chatbot--icon-send.svg",
         main_logo_url:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg"
+          "../../assets/vf-chatbot-standalone/assets/vf-chatbot--icon-32x32-dark-green.svg"
       },
 
       api: {
-        // chat_endpoint: "/api/chat", // Disabled to use fallback responses
+        chat_endpoint: "/api/chat", // Disabled to use fallback responses
         feedback_endpoint: "/api/feedback",
-        suggestions_endpoint: "/api/suggestions",
-        sources_endpoint: "/api/sources",
-        qa_data_url: "../../assets/vf-chatbot/assets/vf-chatbot-qa.json",
+        qa_data_url:
+          "../../assets/vf-chatbot-standalone/assets/vf-chatbot-qa.json",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer your-token"
         },
-        timeout: 10000,
+        timeout: 10000
       },
 
       features: {
@@ -66,7 +66,8 @@ class VFChatbotStandalone {
         enable_disclaimer: true,
         enable_predefined_qa: true,
         enable_fallback_responses: true,
-        enable_qa_data_loading: true
+        enable_qa_data_loading: true,
+        enable_instant_feedback: false
       },
 
       behavior: {
@@ -74,7 +75,30 @@ class VFChatbotStandalone {
         typing_delay: 800
       },
 
-      handlers: {},
+      selectorContext: {
+        chatbotRoutes: {
+          multiSelect: true,
+          maxMultiSelect: 3,
+          showSearch: true,
+          showSearchThreshold: 5,
+          showAllServices: true,
+          showAllServicesSelected: true,
+          routes:
+            "../../assets/vf-chatbot-standalone/assets/vf-chatbot-selector-services.json",
+          placeholder: "Select services",
+          title: "Services"
+        }
+      },
+
+      handlers: {
+        on_message_send: "handleMessageSend",
+        on_response_receive: "handleResponseReceive",
+        on_feedback_submit: "handleFeedbackSubmit",
+        on_suggestion_click: "handleSuggestionClick",
+        on_error: "handleError",
+        on_conversation_start: "handleConversationStart",
+        on_conversation_end: "handleConversationEnd"
+      }
     };
 
     // Merge configurations: default < data-attribute < custom
@@ -85,11 +109,11 @@ class VFChatbotStandalone {
   deepMerge(...objects) {
     return objects.reduce((prev, obj) => {
       // ✅ FIX: Skip null/undefined objects
-      if (!obj || typeof obj !== 'object') {
+      if (!obj || typeof obj !== "object") {
         return prev;
       }
 
-      Object.keys(obj).forEach((key) => {
+      Object.keys(obj).forEach(key => {
         const pVal = prev[key];
         const oVal = obj[key];
 
@@ -175,7 +199,6 @@ class VFChatbotStandalone {
       this.messagesContainer.dataset.autoScroll = this.config.behavior.auto_scroll;
     }
   }
-  
   setupState() {
     this.currentAssistant = "";
     this.conversationId = this.generateConversationId();
@@ -186,7 +209,7 @@ class VFChatbotStandalone {
     // Load Q&A data if using fallback responses
     this.loadQADataAndPopulateSuggestions();
   }
-  
+
   setupEventHandlers() {
     // Setup global event handlers for custom functions
     this.setupCustomEventHandlers();
@@ -200,11 +223,11 @@ class VFChatbotStandalone {
     const handlers = this.config.handlers;
 
     // Message send handler
-    this.onMessageSend = (message) => {
+    this.onMessageSend = message => {
       const eventData = {
         message,
         conversationId: this.conversationId,
-        timestamp: Date.now(),
+        timestamp: Date.now()
       };
 
       this.emitEvent("vf-chatbot:message-send", eventData);
@@ -224,7 +247,7 @@ class VFChatbotStandalone {
         sources,
         prompts,
         conversationId: this.conversationId,
-        timestamp: Date.now(),
+        timestamp: Date.now()
       };
 
       this.emitEvent("vf-chatbot:response-receive", eventData);
@@ -244,7 +267,7 @@ class VFChatbotStandalone {
         feedbackType,
         feedbackText,
         conversationId: this.conversationId,
-        timestamp: Date.now(),
+        timestamp: Date.now()
       };
 
       this.emitEvent("vf-chatbot:feedback-submit", eventData);
@@ -263,11 +286,11 @@ class VFChatbotStandalone {
     };
 
     // Suggestion click handler
-    this.onSuggestionClick = (suggestion) => {
+    this.onSuggestionClick = suggestion => {
       const eventData = {
         suggestion,
         conversationId: this.conversationId,
-        timestamp: Date.now(),
+        timestamp: Date.now()
       };
 
       this.emitEvent("vf-chatbot:suggestion-click", eventData);
@@ -286,12 +309,15 @@ class VFChatbotStandalone {
         error,
         context,
         conversationId: this.conversationId,
-        timestamp: Date.now(),
+        timestamp: Date.now()
       };
 
       this.emitEvent("vf-chatbot:error", eventData);
 
-      if (handlers.on_error && typeof window[handlers.on_error] === "function") {
+      if (
+        handlers.on_error &&
+        typeof window[handlers.on_error] === "function"
+      ) {
         window[handlers.on_error](eventData);
       }
     };
@@ -300,7 +326,7 @@ class VFChatbotStandalone {
     this.onConversationStart = () => {
       const eventData = {
         conversationId: this.conversationId,
-        timestamp: Date.now(),
+        timestamp: Date.now()
       };
 
       this.emitEvent("vf-chatbot:conversation-start", eventData);
@@ -318,7 +344,7 @@ class VFChatbotStandalone {
       const eventData = {
         conversationId: this.conversationId,
         messageCount: this.messageHistory.length,
-        timestamp: Date.now(),
+        timestamp: Date.now()
       };
 
       this.emitEvent("vf-chatbot:conversation-end", eventData);
@@ -335,21 +361,22 @@ class VFChatbotStandalone {
   emitEvent(eventName, data) {
     const event = new CustomEvent(eventName, {
       bubbles: true,
-      detail: data,
+      detail: data
     });
     this.container.dispatchEvent(event);
   }
 
   generateConversationId() {
-    return `conv_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return `conv_${Date.now()}_${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
   }
 
   async init() {
-
     // Initialize selector if present
     if (this.selectorEl) {
       const selector = initVFChatbotSelector(this.selectorEl);
-      this.selectorEl.addEventListener("routeselection", (e) => {
+      this.selectorEl.addEventListener("routeselection", e => {
         this.handleRouteSelection(e.detail);
       });
     }
@@ -357,35 +384,38 @@ class VFChatbotStandalone {
     // Initialize welcome component
     if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
       this.welcomeComponent = new VFChatbotWelcome(this.welcomeScreen, {
-         // Basic welcome configuration
+        // Basic welcome configuration
         welcome_title: this.config.title,
         welcome_logo: this.config.welcome_logo,
         welcome_message: this.config.welcome_message,
         welcome_logo_alt: this.config.welcome_logo_alt,
         welcome_suggestions_title: this.config.welcome_suggestions_title,
         welcome_max_suggestions: this.config.welcome_max_suggestions,
-        
+
         // API configuration
         qa_data_url: this.config.api.qa_data_url,
-        
+
         // Feature toggles
-        enable_welcome_suggestions: this.config.features.enable_welcome_suggestions,
+        enable_welcome_suggestions: this.config.features
+          .enable_welcome_suggestions,
         enable_qa_data_loading: this.config.features.enable_qa_data_loading,
         enable_predefined_qa: this.config.features.enable_predefined_qa,
-        enable_fallback_responses: this.config.features.enable_fallback_responses
+        enable_fallback_responses: this.config.features
+          .enable_fallback_responses
       });
 
       try {
         await this.welcomeComponent.init();
         this.welcomeScreen.addEventListener(
           "vf-chatbot-welcome:suggestion-click",
-          (event) => {
+          event => {
             const question = event.detail.question;
             this.onSuggestionClick(question);
             this.showChatInterface();
             this.sendUserMessage(question);
           }
         );
+        this.welcomeScreen.scrollTop = this.welcomeScreen.scrollHeight;
       } catch (error) {
         console.error("Failed to initialize welcome component:", error);
         this.onError(error, "welcome_component_init");
@@ -399,7 +429,6 @@ class VFChatbotStandalone {
   }
 
   async loadQADataAndPopulateSuggestions() {
-
     // Skip loading if Q&A data loading is disabled
     if (!this.config.features.enable_qa_data_loading) {
       console.log("Q&A data loading is disabled");
@@ -413,22 +442,26 @@ class VFChatbotStandalone {
     }
     try {
       const response = await fetch(this.config.api.qa_data_url);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-      
+
       const data = await response.json();
-      
+
       // Load predefined Q&A if enabled
       if (this.config.features.enable_predefined_qa && data.predefinedQA) {
         this.qaData = data.predefinedQA;
       } else {
         console.log("Predefined Q&A loading is disabled or no data available");
       }
-      
+
       // Load fallback responses if enabled
-      if (this.config.features.enable_fallback_responses && data.fallbackResponses && data.fallbackResponses.length > 0) {
+      if (
+        this.config.features.enable_fallback_responses &&
+        data.fallbackResponses &&
+        data.fallbackResponses.length > 0
+      ) {
         this.fallbackResponses = data.fallbackResponses;
       } else {
         console.log("Using default fallback responses");
@@ -447,7 +480,7 @@ class VFChatbotStandalone {
 
       this.emitEvent("vf-chatbot:assistant-change", {
         selectedAssistants: this.currentAssistant,
-        conversationId: this.conversationId,
+        conversationId: this.conversationId
       });
     }
   }
@@ -456,7 +489,7 @@ class VFChatbotStandalone {
     // Send message events
     this.sendBtn?.addEventListener("click", () => this.sendMessage());
 
-    this.input?.addEventListener("keypress", (e) => {
+    this.input?.addEventListener("keypress", e => {
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
         this.sendMessage();
@@ -478,13 +511,13 @@ class VFChatbotStandalone {
     }
 
     // Global feedback event listener
-    this.container.addEventListener("vf-chatbot-feedback:submit", (event) => {
+    this.container.addEventListener("vf-chatbot-feedback:submit", event => {
       const { messageId, feedbackType, feedbackText } = event.detail;
       this.onFeedbackSubmit(messageId, feedbackType, feedbackText);
     });
 
     // Action prompt click listener
-    this.container.addEventListener("vf-chatbot-action-prompt:click", (event) => {
+    this.container.addEventListener("vf-chatbot-action-prompt:click", event => {
       const { text } = event.detail;
       this.sendUserMessage(text);
     });
@@ -503,7 +536,6 @@ class VFChatbotStandalone {
 
     // Reset height to auto to get the actual scroll height
     // this.input.style.height = 'auto';
-    
     // Get computed styles
     const computedStyle = window.getComputedStyle(this.input);
     const lineHeight = parseFloat(computedStyle.lineHeight) || 24;
@@ -511,29 +543,29 @@ class VFChatbotStandalone {
     const paddingBottom = parseFloat(computedStyle.paddingBottom) || 0;
     const borderTop = parseFloat(computedStyle.borderTopWidth) || 0;
     const borderBottom = parseFloat(computedStyle.borderBottomWidth) || 0;
-    
+
     // Calculate heights more accurately
     const extraHeight = paddingTop + paddingBottom + borderTop + borderBottom;
     const minHeight = lineHeight + extraHeight; // Height for 1 row
-    const maxHeight = (lineHeight * 5) + extraHeight; // Height for 5 rows
-    
+    const maxHeight = lineHeight * 5 + extraHeight; // Height for 5 rows
+
     // Get the scroll height (content height)
     const scrollHeight = this.input.scrollHeight;
-    
+
     // Calculate the new height, constrained by min and max
     let newHeight = Math.max(minHeight, scrollHeight);
-    
+
     if (newHeight >= maxHeight) {
       // If content exceeds 5 rows, set to max height and enable scrolling
       newHeight = maxHeight;
-      this.input.classList.add('vf-chatbot-standalone__input--scrollable');
+      this.input.classList.add("vf-chatbot-standalone__input--scrollable");
     } else {
       // Remove scrollable class if content fits within 5 rows
-      this.input.classList.remove('vf-chatbot-standalone__input--scrollable');
+      this.input.classList.remove("vf-chatbot-standalone__input--scrollable");
     }
-    
+
     // Apply the new height
-    this.input.style.height = newHeight + 'px';
+    this.input.style.height = newHeight + "px";
   }
 
   showChatInterface() {
@@ -555,7 +587,7 @@ class VFChatbotStandalone {
     this.messageHistory.push({
       type: "user",
       content: text,
-      timestamp: Date.now(),
+      timestamp: Date.now()
     });
 
     // Trigger message send event
@@ -581,7 +613,7 @@ class VFChatbotStandalone {
       this.input.value = "";
       this.input.style.height = "auto";
       // Reset textarea to minimum height and remove scrollable class
-      this.input.classList.remove('vf-chatbot-standalone__input--scrollable');
+      this.input.classList.remove("vf-chatbot-standalone__input--scrollable");
       this.autoResizeTextarea();
     }
 
@@ -620,23 +652,18 @@ class VFChatbotStandalone {
         // Use fallback response
         setTimeout(() => {
           let fallbackResponse;
-          
+
           if (this.fallbackResponses && this.fallbackResponses.length > 0) {
             fallbackResponse = this.fallbackResponses[
               Math.floor(Math.random() * this.fallbackResponses.length)
             ];
-          } else {
-            // Default fallback if no responses loaded
-            fallbackResponse = {
-              answer: "Thank you for your message. I'm here to help with general information and basic inquiries.",
-              prompts: []
-            };
+
+            this.addAssistantResponse(
+              fallbackResponse.answer,
+              [],
+              fallbackResponse.prompts || []
+            );
           }
-          this.addAssistantResponse(
-            fallbackResponse.answer,
-            [],
-            fallbackResponse.prompts || []
-          );
           this.setLoadingState(false);
         }, this.config.behavior.typing_delay);
       }
@@ -655,18 +682,20 @@ class VFChatbotStandalone {
       conversationId: this.conversationId,
       messageHistory: this.config.features.enable_conversation_history
         ? this.messageHistory
-        : [],
+        : []
     };
 
     const response = await fetch(this.config.api.chat_endpoint, {
       method: "POST",
       headers: this.config.api.headers,
       body: JSON.stringify(requestData),
-      signal: AbortSignal.timeout(this.config.api.timeout),
+      signal: AbortSignal.timeout(this.config.api.timeout)
     });
 
     if (!response.ok) {
-      throw new Error(`API call failed: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `API call failed: ${response.status} ${response.statusText}`
+      );
     }
 
     return await response.json();
@@ -677,7 +706,7 @@ class VFChatbotStandalone {
       await fetch(this.config.api.feedback_endpoint, {
         method: "POST",
         headers: this.config.api.headers,
-        body: JSON.stringify(feedbackData),
+        body: JSON.stringify(feedbackData)
       });
     } catch (error) {
       console.error("Failed to submit feedback:", error);
@@ -688,7 +717,9 @@ class VFChatbotStandalone {
   addAssistantResponse(text, sources = [], prompts = []) {
     if (!this.assistantTemplate || !this.messagesContainer) return;
 
-    const messageId = `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const messageId = `msg_${Date.now()}_${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
 
     // Add to message history
     this.messageHistory.push({
@@ -697,7 +728,7 @@ class VFChatbotStandalone {
       sources,
       prompts,
       messageId,
-      timestamp: Date.now(),
+      timestamp: Date.now()
     });
 
     // Trigger response receive event
@@ -716,11 +747,7 @@ class VFChatbotStandalone {
     }
 
     // Add sources if enabled and present
-    if (
-      this.config.features.enable_sources &&
-      sources &&
-      sources.length > 0
-    ) {
+    if (this.config.features.enable_sources && sources && sources.length > 0) {
       const feedbackContainer = assistantMessage.querySelector(
         "[data-vf-js-chatbot-feedback]"
       );
@@ -740,12 +767,19 @@ class VFChatbotStandalone {
       );
       if (feedbackContainer) {
         feedbackContainer.dataset.messageId = messageId;
-        new VFChatbotFeedback(feedbackContainer, messageId);
+
+        // Pass configuration to VFChatbotFeedback component
+        new VFChatbotFeedback(feedbackContainer, messageId, {
+          enable_instant_feedback: this.config.features.enable_instant_feedback,
+          api_endpoint: this.config.api.feedback_endpoint
+        });
       }
     }
 
     this.messagesContainer.appendChild(assistantMessage);
     this.scrollToBottom();
+
+    return messageId;
   }
 
   addActionPrompts(assistantMessage, prompts, contentElement) {
@@ -756,30 +790,33 @@ class VFChatbotStandalone {
       "[data-vf-js-action-prompts-list]"
     );
 
-    prompts.forEach((prompt) => {
+    prompts.forEach(prompt => {
       const promptEl = this.singlePromptTemplate.content.cloneNode(true);
       const link = promptEl.querySelector(".vf-chatbot-action-prompt__link");
 
       if (link) {
         link.href = prompt.action_url || "#";
         link.textContent = prompt.action_text;
-        
+
         // Set target and add accessibility attributes
         if (prompt.action_url?.startsWith("tel:")) {
           link.target = "_self";
         } else if (prompt.action_url) {
           link.target = "_blank";
           // Add aria-label for screen readers to indicate it opens in a new tab
-          link.setAttribute("aria-label", `${prompt.action_text} (opens in new tab)`);
+          link.setAttribute(
+            "aria-label",
+            `${prompt.action_text} (opens in new tab)`
+          );
           // Add rel="noopener noreferrer" for security
           link.rel = "noopener noreferrer";
         }
 
         if (!prompt.action_url) {
-          link.addEventListener("click", (e) => {
+          link.addEventListener("click", e => {
             e.preventDefault();
             this.emitEvent("vf-chatbot-action-prompt:click", {
-              text: prompt.action_text,
+              text: prompt.action_text
             });
           });
         }
@@ -810,7 +847,7 @@ class VFChatbotStandalone {
         // Re-append if it was removed from DOM
         this.messagesContainer.appendChild(this.loadingIndicator);
       }
-      
+
       if (this.loadingIndicator) {
         this.loadingIndicator.style.display = "block";
       }
@@ -873,7 +910,10 @@ class VFChatbotStandalone {
 
     // Clean up API response listener
     if (this.apiResponseListener) {
-      this.container.removeEventListener("vf-chatbot:api-response", this.apiResponseListener);
+      this.container.removeEventListener(
+        "vf-chatbot:api-response",
+        this.apiResponseListener
+      );
     }
   }
 }
@@ -891,7 +931,7 @@ function initVFChatbotStandalone(customConfig = {}) {
   }
 
   const instances = [];
-  chatbotElements.forEach((element) => {
+  chatbotElements.forEach(element => {
     instances.push(new VFChatbotStandalone(element, customConfig));
   });
 

@@ -102,7 +102,7 @@ class VFChatbotModal {
 
       // Populate suggestions grid
       if (this.suggestionsGrid) {
-        randomQuestions.forEach((question, index) => {
+        randomQuestions.forEach((question) => {
           // const isLastAndOdd = index === 2 && randomQuestions.length === 3;
           const promptHtml = `
             <div class="vf-chatbot-action-prompt"
@@ -118,7 +118,7 @@ class VFChatbotModal {
           this.suggestionsGrid.insertAdjacentHTML("beforeend", promptHtml);
 
           // Initialize the action prompt that was just added
-          const newPrompt = this.suggestionsGrid.lastElementChild;
+          // const newPrompt = this.suggestionsGrid.lastElementChild;
         });
 
         // Bind click events to new suggestion prompts
@@ -596,20 +596,26 @@ class VFChatbotModal {
       promptsEl.innerHTML = `
         <div class="vf-chatbot-action-prompts__list">
           ${prompts
-            .map(
-              prompt => `
-            <div class="vf-chatbot-action-prompt">
-              <a
-                href="${prompt.action_url}"
-                class="vf-chatbot-action-prompt__link"
-                ${prompt.action_url.startsWith("tel:") ? "" : 'target="_blank" rel="noopener noreferrer" aria-label="' + prompt.action_text + ' (opens in new tab)"'}
-              >
-                ${prompt.action_text}
-              </a>
-            </div>
-          `
-            )
-            .join("")}
+    .map(
+      prompt => `
+    <div class="vf-chatbot-action-prompt">
+      <a
+        href="${prompt.action_url}"
+        class="vf-chatbot-action-prompt__link"
+        ${
+  prompt.action_url.startsWith("tel:")
+    ? ""
+    : 'target="_blank" rel="noopener noreferrer" aria-label="' +
+              prompt.action_text +
+              ' (opens in new tab)"'
+        }
+      >
+        ${prompt.action_text}
+      </a>
+    </div>
+  `
+    )
+    .join("")}
         </div>
       `;
       assistantMessageEl.appendChild(promptsEl);
