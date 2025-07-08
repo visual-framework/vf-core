@@ -1,3 +1,7 @@
+### 1.2.17
+
+* Added: Added VF Standalone Chatbot [Tracking issue](https://github.com/visual-framework/vf-core/issues/2245)
+
 ### 1.2.16
 
 * Fix: Cropped display of `vf-search` examples having results [Tracking issue](https://github.com/visual-framework/vf-core/issues/2136)

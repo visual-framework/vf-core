@@ -1,3 +1,7 @@
+### 1.4.12
+
+* Added: Added VF Standalone Chatbot [Tracking issue](https://github.com/visual-framework/vf-core/issues/2245)
+
 ### 1.4.11
 
 * Fixed: Fixed issue with row selection and highlighting for vf-table [Tracking issue](https://github.com/visual-framework/vf-core/issues/2087)

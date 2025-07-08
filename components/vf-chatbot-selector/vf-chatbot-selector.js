@@ -49,7 +49,7 @@ export class VFChatbotSelector {
     this.searchEl = this.el.querySelector("[data-vf-js-selector-search]");
     this.clearEl = this.el.querySelector("[data-vf-js-selector-clear]");
     this.listItems = this.el.querySelectorAll("[data-vf-js-selector-item]");
-    this.allServicesItem = this.el.querySelector('[data-route-id="all"]');
+    this.allServicesItem = this.el.querySelector("[data-route-id='all']");
 
     // Initialize dropdown as closed
     if (this.dropdownEl) {
@@ -155,11 +155,11 @@ export class VFChatbotSelector {
       item.innerHTML = `
         <div class="vf-chatbot-selector__item-content">
           <div class="vf-chatbot-selector__item-title">${route.title}</div>
-          ${
-            route.description
-              ? `<div class="vf-chatbot-selector__item-description">${route.description}</div>`
-              : ""
-          }
+  ${
+  route.description
+    ? `<div class="vf-chatbot-selector__item-description">${route.description}</div>`
+    : ""
+}
         </div>
         <span class="vf-chatbot-selector__tick">
           <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -172,7 +172,7 @@ export class VFChatbotSelector {
 
     // Update references and re-bind events ONCE
     this.listItems = this.el.querySelectorAll("[data-vf-js-selector-item]");
-    this.allServicesItem = this.el.querySelector('[data-route-id="all"]');
+    this.allServicesItem = this.el.querySelector("[data-route-id='all']");
 
     // Only bind list item events (don't call full bindEvents or init)
     this.bindListItemEvents();

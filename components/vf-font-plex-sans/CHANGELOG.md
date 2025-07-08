@@ -1,3 +1,7 @@
+### 1.1.2
+
+* Fixed: Font added from CDN for the time being  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2263)
+
 ### 1.1.1
 
 * Resolve issue of missing import in index.scss

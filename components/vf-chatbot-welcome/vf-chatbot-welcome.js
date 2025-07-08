@@ -13,19 +13,25 @@ export class VFChatbotWelcome {
 
     // Configuration from data attributes with fallbacks
     this.config = {
-      welcome_max_suggestions: options.welcome_max_suggestions ||
-        parseInt(this.el.dataset.maxQuestions, 10) || 4,
-      enable_qa_data_loading: options.enable_qa_data_loading !== undefined ?
-        options.enable_qa_data_loading : 
-        (this.el.dataset.enableQaDataLoading !== 'false'),
-      enable_predefined_qa: options.enable_predefined_qa !== undefined ?
-        options.enable_predefined_qa : 
-        (this.el.dataset.enablePredefinedQa !== 'false'),
-      enable_fallback_responses: options.enable_fallback_responses !== undefined ?
-        options.enable_fallback_responses : 
-        (this.el.dataset.enableFallbackResponses !== 'false'),
-      qa_data_url: options.qa_data_url || 
-        this.el.dataset.qaDataUrl || 
+      welcome_max_suggestions:
+        options.welcome_max_suggestions ||
+        parseInt(this.el.dataset.maxQuestions, 10) ||
+        4,
+      enable_qa_data_loading:
+        options.enable_qa_data_loading !== undefined
+          ? options.enable_qa_data_loading
+          : this.el.dataset.enableQaDataLoading !== "false",
+      enable_predefined_qa:
+        options.enable_predefined_qa !== undefined
+          ? options.enable_predefined_qa
+          : this.el.dataset.enablePredefinedQa !== "false",
+      enable_fallback_responses:
+        options.enable_fallback_responses !== undefined
+          ? options.enable_fallback_responses
+          : this.el.dataset.enableFallbackResponses !== "false",
+      qa_data_url:
+        options.qa_data_url ||
+        this.el.dataset.qaDataUrl ||
         this.getDefaultQADataUrl()
     };
   }
@@ -67,26 +73,31 @@ export class VFChatbotWelcome {
     try {
       console.log(`Loading Q&A data from: ${this.config.qa_data_url}`);
       const response = await fetch(this.config.qa_data_url);
-      
+
       if (!response.ok) {
-        throw new Error(`Failed to fetch Q&A data: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Failed to fetch Q&A data: ${response.status} ${response.statusText}`
+        );
       }
 
       const data = await response.json();
       this.qaData = data;
-      
+
       // Store predefined Q&A if enabled
       if (this.config.enable_predefined_qa && data.predefinedQA) {
         this.predefinedQA = data.predefinedQA;
         console.log("Predefined Q&A loaded successfully");
       }
-      
+
       // Store fallback responses if enabled
-      if (this.config.enable_fallback_responses && data.fallbackResponses && data.fallbackResponses.length > 0) {
+      if (
+        this.config.enable_fallback_responses &&
+        data.fallbackResponses &&
+        data.fallbackResponses.length > 0
+      ) {
         this.fallbackResponses = data.fallbackResponses;
         console.log("Fallback responses loaded successfully");
       }
-      
     } catch (error) {
       console.error("Failed to load Q&A data:", error);
       // Provide default fallback responses if loading fails
@@ -98,14 +109,24 @@ export class VFChatbotWelcome {
     if (this.config.enable_fallback_responses) {
       this.fallbackResponses = [
         {
-          answer: "I'm here to help with your questions. Please try asking about our services or general information.",
+          answer:
+            "I'm here to help with your questions. Please try asking about our services or general information.",
           sources: [],
-          prompts: ["What services do you offer?", "How can I get started?", "Tell me more about your organization"]
+          prompts: [
+            "What services do you offer?",
+            "How can I get started?",
+            "Tell me more about your organization"
+          ]
         },
         {
-          answer: "I'm an AI assistant designed to help with information and basic inquiries. How can I assist you today?",
+          answer:
+            "I'm an AI assistant designed to help with information and basic inquiries. How can I assist you today?",
           sources: [],
-          prompts: ["What can you help me with?", "How do I contact support?", "Where can I find more information?"]
+          prompts: [
+            "What can you help me with?",
+            "How do I contact support?",
+            "Where can I find more information?"
+          ]
         }
       ];
       console.log("Using default fallback responses for welcome component");
@@ -123,7 +144,7 @@ export class VFChatbotWelcome {
     // Try to get questions from predefined Q&A first
     if (this.config.enable_predefined_qa && this.predefinedQA) {
       questionsToShow = Object.keys(this.predefinedQA);
-    } 
+    }
     // If no predefined Q&A, try to get prompts from fallback responses
     else if (this.config.enable_fallback_responses && this.fallbackResponses) {
       questionsToShow = this.fallbackResponses
@@ -143,7 +164,7 @@ export class VFChatbotWelcome {
       .slice(0, this.config.welcome_max_suggestions);
 
     // Create suggestion elements using template-based rendering
-    randomQuestions.forEach((question, index) => {
+    randomQuestions.forEach((question) => {
       const suggestionTemplate = document.querySelector(
         "#welcome-suggestion-template"
       );
@@ -198,9 +219,13 @@ export class VFChatbotWelcome {
 
     // Get answer data from predefined Q&A or fallback responses
     let answerData = null;
-    
+
     // First try predefined Q&A
-    if (this.config.enable_predefined_qa && this.predefinedQA && this.predefinedQA[question]) {
+    if (
+      this.config.enable_predefined_qa &&
+      this.predefinedQA &&
+      this.predefinedQA[question]
+    ) {
       answerData = this.predefinedQA[question];
     }
     // If not found in predefined Q&A, try to find in fallback responses
@@ -216,9 +241,14 @@ export class VFChatbotWelcome {
     // If still no answer data, provide a default response
     if (!answerData) {
       answerData = {
-        answer: "I'm here to help with your questions. Please try asking about our services or general information.",
+        answer:
+          "I'm here to help with your questions. Please try asking about our services or general information.",
         sources: [],
-        prompts: ["What services do you offer?", "How can I get started?", "Tell me more about your organization"]
+        prompts: [
+          "What services do you offer?",
+          "How can I get started?",
+          "Tell me more about your organization"
+        ]
       };
     }
 

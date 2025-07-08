@@ -72,7 +72,7 @@ The [chatbot modal](../vf-chatbot-modal) and chatbot standalone are two distinct
 ### Working example
 
 You can access working example of standalone version here:
-[Visual Framework Chatbot - Standlone](/chatbot)
+[Visual Framework Chatbot - Standalone](/chatbot)
 
 ### Visual branding elements and content
 
@@ -83,6 +83,403 @@ Texts shown in the examples are placeholder content. Please review and update al
 ### Accessibility
 
 The component targets WCAG 2.1 AA accessibility standard.
+
+Avoid this component when:
+
+- You need a simple modal overlay chatbot (use `vf-chatbot-modal` instead)
+- The interface needs to be embedded within existing content flows
+- You require real-time streaming responses (component currently supports request/response pattern)
+- Mobile space is extremely limited and you need a minimal interface
+
+### Installation
+
+```bash
+yarn add @visual-framework/vf-chatbot-standalone @visual-framework/vf-chatbot-action-prompt @visual-framework/vf-chatbot-feedback @visual-framework/vf-chatbot-prompt @visual-framework/vf-chatbot-selector @visual-framework/vf-chatbot-sources @visual-framework/vf-chatbot-welcome
+```
+
+### Sass/CSS
+
+```scss
+@import "@visual-framework/vf-chatbot-standalone/index.scss";
+```
+
+### JavaScript
+
+```javascript
+import { VFChatbotStandalone, initVFChatbotStandalone } from "@visual-framework/vf-chatbot-standalone";
+```
+
+### Implementation
+
+### Basic Setup
+
+1. **JavaScript Initialization**
+```javascript
+// Or with custom configuration
+const chatbotInstances = initVFChatbotStandalone(config);
+```
+where config is the configuration object with different options as described below 
+
+#### Core Configuration Options
+
+```javascript
+const config = {
+  // Basic Settings
+  title: "AI Assistant",
+  welcome_message: "Welcome! I'm here to help",
+  input_placeholder: "Ask me anything...",
+  welcome_max_suggestions: 4,
+  
+  // Content & Branding
+  disclaimer: 'Custom disclaimer with <a href="/privacy">privacy policy</a>',
+  footnote: 'Custom footnote with <a href="/feedback">feedback link</a>',
+  
+  // Icons & Assets
+  icons: {
+    assistant_avatar: "path/to/assistant-icon.svg",
+    user_avatar: "path/to/user-icon.svg",
+    send_button: "path/to/send-icon.svg",
+    main_logo_url: "path/to/logo.svg"
+  },
+  
+  // API Configuration
+  api: {
+    chat_endpoint: "/api/chat",
+    feedback_endpoint: "/api/feedback", 
+    qa_data_url: "path/to/qa-data.json",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer your-token"
+    },
+    timeout: 10000
+  },
+  
+  // Feature Toggles
+  features: {
+    enable_welcome: true,
+    enable_feedback: true,
+    enable_sources: true,
+    enable_welcome_suggestions: true,
+    enable_typing_indicator: true,
+    enable_disclaimer: true,
+    enable_predefined_qa: true,
+    enable_fallback_responses: true,
+    enable_qa_data_loading: true,
+    enable_instant_feedback: false
+  }
+};
+```
+
+#### Service Selector Configuration
+
+The chatbot includes an integrated selector component which can be configured to present different selection options to user:
+
+```javascript
+const selectorConfig = {
+  selectorContext: {
+    chatbotRoutes: {
+      // Multi-selection settings
+      multiSelect: true,
+      maxMultiSelect: 3,
+      
+      // Search functionality
+      showSearch: true,
+      showSearchThreshold: 5,
+      
+      // "All Services" option
+      showAllServices: true,
+      showAllServicesSelected: true,
+      
+      // Data source
+      routes: "assets/vf-chatbot-selector-services.json",
+      
+      // UI labels
+      placeholder: "Select services",
+      title: "Available Services"
+    }
+  }
+};
+```
+
+**Selector Data Format (JSON):**
+```json
+{
+  "routes": [
+    {
+      "id": "service-1",
+      "title": "Service 1 title"
+    },
+    {
+      "id": "service-2", 
+      "title": "Service 2 title"
+    }
+  ]
+}
+```
+
+### Event Handling
+
+#### Built-in Event Handlers
+
+Chatbot comes with a provision to allow custom event handlers. These handlers can be defined in your code to handle specific actions for different events triggered during interaction with chatbot. 
+Configure custom handlers for chatbot events:
+
+```javascript
+const config = {
+  handlers: {
+    on_message_send: "handleMessageSend",
+    on_response_receive: "handleResponseReceive", 
+    on_feedback_submit: "handleFeedbackSubmit",
+    on_suggestion_click: "handleSuggestionClick",
+    on_error: "handleError",
+    on_conversation_start: "handleConversationStart",
+    on_conversation_end: "handleConversationEnd"
+  }
+};
+
+// Implement handler functions
+function handleMessageSend(message, conversationId) {
+  console.log('User sent:', message);
+  // Track analytics, log conversations, etc.
+}
+
+function handleResponseReceive(response, sources, prompts) {
+  console.log('Assistant responded:', response);
+  // Process response, update UI, etc.
+}
+
+function handleFeedbackSubmit(feedbackData) {
+  console.log('Feedback received:', feedbackData);
+  // Send to analytics, update models, etc.
+}
+```
+
+#### Custom Event Listeners
+
+Likewise you can also listen to events emitted by the chatbot for specific interactions:
+
+```javascript
+// Listen for specific chatbot events
+document.addEventListener('vf-chatbot:message-send', (event) => {
+  const { message, conversationId } = event.detail;
+  // Handle message send
+});
+
+document.addEventListener('vf-chatbot:message-receive', (event) => {
+  const { message, conversationId } = event.detail;
+  // Handle message send
+});
+
+document.addEventListener('vf-chatbot-feedback:submit', (event) => {
+  const { messageId, feedbackType, feedbackText } = event.detail;
+  // Handle feedback submission
+});
+
+document.addEventListener('vf-chatbot-welcome:suggestion-click', (event) => {
+  const { question } = event.detail;
+  // Handle suggestion clicks
+});
+
+document.addEventListener('vf-chatbot:assistant-change', (obj) => {
+  const { selectedRoutes } = obj.selectedAssistants;
+  const { conversationId } = obj.conversationId;
+  // Handle service selection
+});
+
+document.addEventListener('vf-chatbot:error', (event) => {
+  const { message, conversationId } = event.detail;
+  // Handle message send
+});
+
+document.addEventListener('vf-chatbot:conversation-start', (event) => {
+  const { message, conversationId } = event.detail;
+  // Handle conversation start
+});
+
+document.addEventListener('vf-chatbot:conversation-end', (event) => {
+  const { message, conversationId } = event.detail;
+  // Handle conversation end
+});
+
+```
+
+### Feedback System Configuration
+
+#### Feedback (with form)
+```javascript
+const config = {
+  features: {
+    enable_feedback: true,
+    enable_instant_feedback: false // Default
+  }
+};
+```
+
+#### Instant Feedback (one-click)
+```javascript
+const config = {
+  features: {
+    enable_feedback: true,
+    enable_instant_feedback: true // Thumbs up/down only
+  }
+};
+```
+
+### Q&A Data Configuration
+
+Load predefined questions and answers:
+
+```javascript
+const config = {
+  features: {
+    enable_predefined_qa: true,
+    enable_qa_data_loading: true
+  },
+  api: {
+    qa_data_url: "path/to/qa-data.json"
+  }
+};
+```
+
+**Q&A Data Format:**
+```json
+{
+  "predefinedQA": {
+    "How can I submit genomic data to EMBL-EBI?": {
+      "answer": "To submit genomic data, visit the EMBL-EBI submission portal, where you’ll find step-by-step guides and tools for submitting sequencing data, assemblies, annotations, and more.",
+      "sources": [
+        {
+          "domain": "ebi.ac.uk",
+          "title": "EMBL's European Bioinformatics Institute",
+          "url": "https://www.ebi.ac.uk/",
+          "description": "Run BLAST searches against comprehensive sequence databases at EMBL-EBI."
+        },
+        {
+          "domain": "ena-docs.readthedocs.io",
+          "title": "ENA Documentation",
+          "url": "https://ena-docs.readthedocs.io/en/latest/",
+          "description": "ENA Documentation"
+        }
+      ]
+    }
+  },
+  "fallbackResponses": [
+    {
+      "answer": "I'm sorry, I'm having trouble connecting to my knowledge base right now. Could you try again in a moment?",
+      "prompts": [
+        {
+          "action_text": "Contact support team",
+          "action_url": "tel:+44 1223 494 444"
+        },
+        {
+          "action_text": "Submit a support request",
+          "action_url": "https://www.ebi.ac.uk/about/contact/support/"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### API Integration
+
+#### Chat Endpoint
+Your chat API should accept POST requests:
+
+```javascript
+// Request format
+{
+  "message": "User's question",
+  "conversationId": "unique-id",
+  "context": {
+    "selectedServices": ["service-1", "service-2"]
+  }
+}
+
+// Response format
+{
+  "response": "Assistant's answer",
+  "sources": [
+    {
+      "title": "Documentation Link",
+      "url": "https://example.com/docs"
+    }
+  ],
+  "prompts": [
+    {
+      "action_text": "Learn More",
+      "action_url": "https://example.com/learn"
+    }
+  ]
+}
+```
+
+#### Custom Welcome Screen
+```javascript
+const config = {
+  features: {
+    enable_welcome: true,
+    enable_welcome_suggestions: true
+  },
+  welcome_logo: true,
+  welcome_message: "Welcome to our AI assistant!",
+  welcome_suggestions_title: "Popular questions:",
+  welcome_max_suggestions: 6
+};
+```
+
+#### Source Citations
+```javascript
+const config = {
+  features: {
+    enable_sources: true
+  }
+};
+
+// Sources in API response
+{
+  "response": "Here's the information...",
+  "sources": [
+    {
+      "title": "Official Documentation", 
+      "url": "https://docs.example.com",
+      "description": "Complete guide to the platform"
+    }
+  ]
+}
+```
+
+#### Action Prompts
+```javascript
+// Action prompts in API response
+{
+  "response": "I can help you with that...",
+  "prompts": [
+    {
+      "action_text": "Start Tutorial",
+      "action_url": "https://example.com/tutorial"
+    },
+    {
+      "action_text": "Contact Support", 
+      "action_url": "mailto:support@example.com"
+    }
+  ]
+}
+```
+
+### Instance Management
+
+```javascript
+// Get chatbot configuration
+const config = chatbotInstance.getConfiguration();
+
+// Destroy instance
+chatbotInstance.destroy();
+```
+
+### React Integration
+
+The HTML template can be adapted for React applications. See the React syntax section below for implementation details on using the HTML template for the chatbot in JSX components.
 
 ## Help
 
