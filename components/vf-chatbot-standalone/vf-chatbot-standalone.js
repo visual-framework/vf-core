@@ -34,7 +34,6 @@ class VFChatbotStandalone {
         'Disclaimer: This chatbot is designed to assist you with general information and basic inquiries. See our <a class="vf-banner__link" target="_blank" rel="noopener noreferrer" aria-label="disclaimer notes (opens in new tab)" href="https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website/">disclaimer notes</a>.',
       footnote:
         'Review AI generated content for accuracy. <a class="vf-link" target="_blank" rel="noopener noreferrer" aria-label="Leave feedback (opens in new tab)" href="https://embl.service-now.com/esc?id=sc_cat_item&sys_id=5eeb8eb91b92e650b376da88b04bcbc1">Leave feedback</a>.',
-
       icons: {
         assistant_avatar:
           "../../assets/vf-chatbot-standalone/assets/vf-chatbot--icon-16x16-dark-green.svg",
@@ -200,7 +199,6 @@ class VFChatbotStandalone {
       this.messagesContainer.dataset.autoScroll = this.config.behavior.auto_scroll;
     }
   }
-
   setupState() {
     this.currentAssistant = "";
     this.conversationId = this.generateConversationId();
@@ -538,7 +536,6 @@ class VFChatbotStandalone {
 
     // Reset height to auto to get the actual scroll height
     // this.input.style.height = 'auto';
-
     // Get computed styles
     const computedStyle = window.getComputedStyle(this.input);
     const lineHeight = parseFloat(computedStyle.lineHeight) || 24;
