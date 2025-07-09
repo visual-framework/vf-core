@@ -90,13 +90,6 @@ Texts shown in the examples are placeholder content. Please review and update al
 
 The component targets WCAG 2.1 AA accessibility standard.
 
-Avoid this component when:
-
-- You need a simple modal overlay chatbot (use `vf-chatbot-modal` instead)
-- The interface needs to be embedded within existing content flows
-- You require real-time streaming responses (component currently supports request/response pattern)
-- Mobile space is extremely limited and you need a minimal interface
-
 ### Installation
 
 ```bash
