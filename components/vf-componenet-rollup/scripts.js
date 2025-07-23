@@ -83,6 +83,7 @@ import { initVFChatbotSelector } from 'vf-chatbot-selector/vf-chatbot-selector.j
 // Initialize all chatbot components when DOM is loaded
 // Initialize all chatbot components once when the DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
+  // initVFChatbot({chatbotBottomMargin:200});
   initVFChatbot();
   initVFChatbotModal();
   initVFChatbotFab();

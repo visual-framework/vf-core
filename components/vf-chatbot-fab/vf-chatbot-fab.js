@@ -3,7 +3,6 @@
 function VFChatbotFab(element) {
   this.el = element;
   this.chatIcon = this.el.querySelector(".vf-chatbot-fab__icon--chat");
-  // this.closeIcon = this.el.querySelector(".vf-chatbot-fab__icon--close");
 
   this.init();
 }
@@ -20,19 +19,14 @@ VFChatbotFab.prototype = {
   },
 
   toggleState: function() {
-    this.el.classList.toggle("vf-chatbot-fab--active");
-
-    // Toggle icons
-    if (this.el.classList.contains("vf-chatbot-fab--active")) {
-      this.chatIcon.style.display = "none";
-    }
+    this.el.classList.toggle("vf-chatbot-fab--inactive");
 
     // Dispatch event for parent chatbot component
     this.el.dispatchEvent(
       new CustomEvent("vf-chatbot-fab:toggle", {
         bubbles: true,
         detail: {
-          isActive: this.el.classList.contains("vf-chatbot-fab--active")
+          isActive: this.el.classList.contains("vf-chatbot-fab--inactive")
         }
       })
     );

@@ -1,20 +1,25 @@
 // vf-chatbot-modal.scss
+.vf-chatbot-modal-container {
+  background-color: var(--vf-color--neutral--0);
+  border-radius: $vf-radius--sm;
+  border-bottom-right-radius: 0px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
+}
 
 .vf-chatbot-modal {
+  
   display: flex;
   justify-content: end;
-  border-radius: $vf-radius--xs;
   flex-direction: column;
-  height: 75vh;
-  display: none;
+  height: 55vh;
+  border-radius: $vf-radius--sm;
+  border-bottom-right-radius: 0px;
 
   &__header {
-    margin-bottom: 24px;
     color: #000000;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    display: none;
 
     @media (max-width: 768px) {
       padding: 0 16px;
@@ -25,25 +30,47 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    display: none;
   }
 
   &__content {
     display: contents;
-    display: none;
   }
 
   &__input-container {
     display: flex;
-    display: none;
-    width: 55%;
-    margin: 16px auto;
-    @media (max-width:$vf-breakpoint--md) {
-      width: 95%;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 16px;
+    padding: 0 0.5rem;
+    width: 95%;
+
+    @media (max-width: 480px) {
+      width: 100%;
+      padding:0px;
+      margin:0px;
+      margin-top: 16px;
+      border-top: 2px solid var(--vf-color--grey);
     }
-    @media (max-width: $vf-breakpoint--sm) {
-      width: 88%;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    align-items: flex-end;
+    border: 1px solid transparent;
+    label {
+      visibility: hidden;
+      position: absolute;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      height: 1px; 
+      width: 1px;
+      overflow: hidden;
     }
+  }
+
+  &__input-wrapper:hover, &__input-wrapper:focus-within {
+    border: 1px solid var(--vf-color--blue);
   }
 
   &__input {
@@ -51,91 +78,70 @@
     margin-bottom: 0;
     align-content: center;
     width: 100%;
+    line-height: 2.1;
     border: none;
     resize: none;
-    min-height: 40px;
-    max-height: 125px;
     background: #FFFFFF;
-    // color: var(--vf-color--neutral--500);
-    /* Default state */
-    // border: 1px solid transparent; /* Start with transparent border */
-    // transition: border-color 0.2s ease;
-    // color: var(--vf-color--neutral--800); /* Default text color */
-
-    // /* Focus state */
-    // &:focus {
-    //   border: 1px solid var(--vf-color--blue); /* Blue border when focused - match this to your actual focus color */
-    //   outline: none; /* Remove default browser outline if needed */
-    // }
-
+    box-shadow: none !important;
     // /* When typing (not showing placeholder) */
     &:not(:placeholder-shown) {
       color: var(--vf-color__text--primary); /* Text color when typing */
     }
+
+    // When content exceeds 5 rows, show scrollbar
+    &--scrollable {
+      overflow-y: auto;
+    }
   }
 
   &__send-button {
+    height: fit-content;
     background: #3A77BC;
     border: none;
     padding-inline: 0px;
     cursor: pointer;
-    transition: background 0.2s ease;
-
-    &:hover {
-      background: darken(#3A77BC, 10%);
-    }
-
-    svg {
-      width: 24px;
-      height: 24px;
+    img {
+        height: 45px !important;
+        max-width: fit-content !important;
     }
   }
-
-  // &__input:focus ~ &__send-button,
-  // &__input:focus + &__send-button {
-  //   border: 1px solid var(--vf-color--blue); /* Same border as textarea focus */
-  // }
-
-  /* If the button is a child of another wrapper that's adjacent to the textarea */
-  // &__input:focus ~ .vf-chatbot-action-wrapper &__send-button,
-  // &__input:focus + .vf-chatbot-action-wrapper &__send-button {
-  //   border: 1px solid var(--vf-color--blue);
-  // }
 
   &__messages {
     margin: 0 auto;
     flex-direction: column;
     overflow-y: auto;
-    width: 55%;
-    @media (max-width:$vf-breakpoint--md) {
-      width: 95%;
-    }
-    @media (max-width: $vf-breakpoint--sm) {
-      width: 88%;
-    }
+    padding: 0 0.5rem;
+    width: 95%;
   }
 
   &__disclaimer {
     margin: 0 auto;
-    width: 55%;
-    @media (max-width:$vf-breakpoint--md) {
+      padding: 0 0.5rem;
       width: 95%;
-    }
-    @media (max-width: $vf-breakpoint--sm) {
-      width: 88%;
+    button {
+      padding: 12px;
     }
   }
 
   &__footnote {
     @include set-type(text-body--5);
+    margin: 0 auto;
     text-align: center;
-    margin: 8px auto;
-    width: 55%;
-    @media (max-width:$vf-breakpoint--md) {
-      width: 95%;
-    }
-    @media (max-width: $vf-breakpoint--sm) {
-      width: 88%;
-    }
+  }
+
+  &__header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__minimize,
+  &__close {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
   }
 }

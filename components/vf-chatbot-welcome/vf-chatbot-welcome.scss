@@ -1,8 +1,28 @@
+// Default width
 .vf-chatbot-welcome {
   overflow-y: auto;
   margin: 0 auto;
   width: 55%;
   padding-right: 1rem;
+}
+
+// If inside vf-chatbot-modal, override width
+.vf-chatbot-modal .vf-chatbot-welcome {
+  width: 95%;
+  padding: 0 0.5rem;
+
+
+  &__content {
+    min-height: 25vh;
+  }
+  &__suggestions {
+    &-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.vf-chatbot-welcome {
 
   &__content {
     text-align: center;

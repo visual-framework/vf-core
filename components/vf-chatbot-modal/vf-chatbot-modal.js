@@ -1,23 +1,162 @@
+// vf-chatbot-modal.js
 import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
 import { initVFChatbotSelector } from "../vf-chatbot-selector/vf-chatbot-selector.js";
+import { VFChatbotWelcome } from "../vf-chatbot-welcome/vf-chatbot-welcome.js";
 import { initVFChatbotDialog } from "../vf-chatbot-dialog/vf-chatbot-dialog.js";
 
 class VFChatbotModal {
-  constructor(element) {
-    // Store DOM elements
+  constructor(element, customConfig = {}) {
+    console.log("Initializing modal chatbot with config:", customConfig);
+
     this.container = element;
-    this.chatInterface = this.container.querySelector(
-      "[data-vf-js-chatbot-modal-chat]"
+    this.loadConfiguration(customConfig);
+    this.setupDOMElements();
+    this.setupState();
+    this.setupEventHandlers();
+    this.init();
+  }
+
+  loadConfiguration(customConfig) {
+    // Get config from data attribute
+    const dataConfig = this.container.dataset.vfChatbotConfig
+      ? JSON.parse(this.container.dataset.vfChatbotConfig)
+      : {};
+    // Default configuration
+    const defaultConfig = {
+      title: "AI Assistant",
+      welcome_logo: true,
+      welcome_message: "Welcome! I'm here to help",
+      welcome_logo_alt: "AI Assistant",
+      welcome_suggestions_title: "Try asking me:",
+      input_placeholder: "Ask me ...",
+      welcome_max_suggestions: 4,
+      disclaimer:
+        'Disclaimer: This chatbot is designed to assist you with general information and basic inquiries. See our <a class="vf-banner__link" target="_blank" rel="noopener noreferrer" aria-label="disclaimer notes (opens in new tab)" href="https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website/">disclaimer notes</a>.',
+      footnote:
+        'Review AI generated content for accuracy. <a class="vf-link" target="_blank" rel="noopener noreferrer" aria-label="Leave feedback (opens in new tab)" href="https://embl.service-now.com/esc?id=sc_cat_item&sys_id=5eeb8eb91b92e650b376da88b04bcbc1">Leave feedback</a>.',
+      icons: {
+        assistant_avatar:
+          "../../assets/vf-chatbot-modal/assets/vf-chatbot--icon-16x16-dark-green.svg",
+        user_avatar:
+          "../../assets/vf-chatbot-modal/assets/vf-chatbot--avatar-user.svg",
+        send_button:
+          "../../assets/vf-chatbot-modal/assets/vf-chatbot--icon-send.svg",
+        main_logo_url:
+          "../../assets/vf-chatbot-modal/assets/vf-chatbot--icon-32x32-dark-green.svg"
+      },
+
+      api: {
+        chat_endpoint: false, //"/api/chat", // Disabled to use fallback responses
+        feedback_endpoint: false, //"/api/feedback",
+        qa_data_url: "../../assets/vf-chatbot-modal/assets/vf-chatbot-qa.json",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer your-token"
+        },
+        timeout: 10000
+      },
+
+      features: {
+        enable_welcome: true,
+        enable_feedback: true,
+        enable_sources: true,
+        enable_welcome_suggestions: true,
+        enable_typing_indicator: true,
+        enable_disclaimer: true,
+        enable_predefined_qa: true,
+        enable_fallback_responses: true,
+        enable_qa_data_loading: true,
+        enable_instant_feedback: false
+      },
+
+      behavior: {
+        auto_scroll: true,
+        typing_delay: 800
+      },
+
+      selectorContext: {
+        chatbotRoutes: {
+          multiSelect: true,
+          maxMultiSelect: 3,
+          showSearch: true,
+          showSearchThreshold: 5,
+          showAllServices: true,
+          showAllServicesSelected: true,
+          routes:
+            "../../assets/vf-chatbot-modal/assets/vf-chatbot-selector-services.json",
+          placeholder: "Select services",
+          title: "Services"
+        }
+      },
+
+      handlers: {
+        on_message_send: "handleMessageSend",
+        on_response_receive: "handleResponseReceive",
+        on_feedback_submit: "handleFeedbackSubmit",
+        on_suggestion_click: "handleSuggestionClick",
+        on_error: "handleError",
+        on_conversation_start: "handleConversationStart",
+        on_conversation_end: "handleConversationEnd"
+      }
+    };
+
+    // Merge configurations: default < data-attribute < custom
+    this.config = this.deepMerge(defaultConfig, dataConfig, customConfig);
+    console.log("Final merged config:", this.config);
+  }
+
+  deepMerge(...objects) {
+    return objects.reduce((prev, obj) => {
+      // ✅ FIX: Skip null/undefined objects
+      if (!obj || typeof obj !== "object") {
+        return prev;
+      }
+
+      Object.keys(obj).forEach(key => {
+        const pVal = prev[key];
+        const oVal = obj[key];
+
+        // ✅ FIX: Skip undefined values to maintain priority
+        if (oVal === undefined) {
+          return;
+        }
+
+        if (Array.isArray(pVal) && Array.isArray(oVal)) {
+          prev[key] = pVal.concat(...oVal);
+        } else if (
+          pVal &&
+          oVal &&
+          typeof pVal === "object" &&
+          typeof oVal === "object" &&
+          !Array.isArray(pVal) &&
+          !Array.isArray(oVal)
+        ) {
+          prev[key] = this.deepMerge(pVal, oVal);
+        } else {
+          // ✅ FIX: Only assign if oVal is not null/undefined
+          if (oVal !== null && oVal !== undefined) {
+            prev[key] = oVal;
+          }
+        }
+      });
+      return prev;
+    }, {});
+  }
+
+  setupDOMElements() {
+    this.minimizeBtn = this.container.querySelector(
+      "[data-vf-js-chatbot-modal-minimize]"
     );
+    this.closeBtn = this.container.querySelector(
+      "[data-vf-js-chatbot-modal-close]"
+    );
+
     this.welcomeScreen = this.container.querySelector(
-      "[data-vf-js-chatbot-modal-welcome]"
+      "[data-vf-js-chatbot-welcome]"
     );
     this.messagesContainer = this.container.querySelector(
       "[data-vf-js-chatbot-modal-messages]"
-    );
-    this.loadingIndicator = this.container.querySelector(
-      "[data-vf-js-chatbot-modal-loading]"
     );
     this.input = this.container.querySelector(
       "[data-vf-js-chatbot-modal-input]"
@@ -25,305 +164,436 @@ class VFChatbotModal {
     this.sendBtn = this.container.querySelector(
       "[data-vf-js-chatbot-modal-send]"
     );
-    this.welcomeInput = this.container.querySelector(
-      "[data-vf-js-chatbot-welcome-input]"
+    this.disclaimer = this.container.querySelector(
+      "[data-vf-js-chatbot-modal-disclaimer]"
     );
-    this.welcomeSendBtn = this.container.querySelector(
-      "[data-vf-js-chatbot-welcome-send]"
+    this.disclaimerCloseBtn = this.disclaimer?.querySelector(
+      ".vf-button--dismiss"
     );
-    this.suggestionBtns = this.container.querySelectorAll(
-      "[data-vf-js-chatbot-suggestion]"
-    );
-
-    // Suggestions grid element
-    this.suggestionsGrid = this.container.querySelector(
-      "[data-vf-js-chatbot-standalone-suggestions-grid]"
-    );
-
-    // Add minimize button reference
-    // this.minimizeBtn = this.container.querySelector(
-    //   "[data-vf-js-chatbot-minimize]"
-    // );
-
-    this.closeBtn = this.container.querySelector("[data-vf-js-chatbot-close]");
-    this.dialog = document.querySelector("[data-vf-js-chatbot-dialog]");
-
-    if (this.dialog) {
-      this.dialogComponent = initVFChatbotDialog(this.dialog);
-      this.dialog.addEventListener("vf-chatbot-dialog:confirm", () => {
-        this.resetAndClose();
-      });
-    }
-
-    // Selector element
     this.selectorEl = this.container.querySelector(
       "[data-vf-js-chatbot-selector]"
     );
 
-    // API configuration - Mistral AI
-    this.API_TOKEN = "";
-    this.API_URL = "https://api.mistral.ai/v1/chat/completions";
-
-    // Disclaimer elements
-    this.disclaimerEl = this.container.querySelector(
-      "[data-vf-js-chatbot-modal-disclaimer]"
+    // Templates
+    this.userTemplate = this.container.querySelector("#user-message-template");
+    this.assistantTemplate = this.container.querySelector(
+      "#assistant-message-template"
     );
-    this.disclaimerCloseBtn = this.container.querySelector(
-      "[data-vf-js-chatbot-disclaimer-close]"
+    this.loadingTemplate = this.container.querySelector(
+      "#loading-indicator-template"
+    );
+    this.actionPromptsTemplate = this.container.querySelector(
+      "#action-prompts-template"
+    );
+    this.singlePromptTemplate = this.container.querySelector(
+      "#single-action-prompt-template"
     );
 
-    // State
-    this.hasInteracted = false;
-    this.currentAssistant = "general"; // Default assistant
-
-    // Add QA data property
-    this.qaData = null;
-
-    // Load Q&A data
-    this.loadQADataAndPopulateSuggestions();
-    // Initialize the UI
-    this.init();
+    this.dialog = this.container.querySelector("[data-vf-js-chatbot-dialog]");
+    // Apply configuration to DOM elements
+    this.applyConfigurationToDOM();
   }
 
-  async loadQADataAndPopulateSuggestions() {
-    try {
-      const response = await fetch(
-        "../../assets/vf-chatbot/assets/vf-chatbot-qa.json"
-      );
-      const data = await response.json();
-      this.qaData = data.predefinedQA;
-      this.fallbackResponses = data.fallbackResponses;
+  applyConfigurationToDOM() {
+    // Update input placeholder
+    if (this.input) {
+      this.input.placeholder = this.config.input_placeholder;
+      // Initialize textarea height
+      this.autoResizeTextarea();
+    }
 
-      // Get random questions for suggestions
-      const questions = Object.keys(this.qaData);
-      const randomQuestions = questions
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 3); // Get 3 random questions
-
-      // Populate suggestions grid
-      if (this.suggestionsGrid) {
-        randomQuestions.forEach((question) => {
-          // const isLastAndOdd = index === 2 && randomQuestions.length === 3;
-          const promptHtml = `
-            <div class="vf-chatbot-action-prompt"
-              data-vf-js-chatbot-standalone-suggestion="${question}"
-              data-vf-js-chatbot-action-prompt>
-              <a
-                href="#"
-                class="vf-chatbot-action-prompt__link"
-              >
-              ${question}
-              </a>
-            </div>`;
-          this.suggestionsGrid.insertAdjacentHTML("beforeend", promptHtml);
-
-          // Initialize the action prompt that was just added
-          // const newPrompt = this.suggestionsGrid.lastElementChild;
-        });
-
-        // Bind click events to new suggestion prompts
-        // this.bindSuggestionEvents();
-      }
-    } catch (error) {
-      console.error("Failed to load Q&A data:", error);
+    // Update auto-scroll behavior
+    if (this.messagesContainer) {
+      this.messagesContainer.dataset.autoScroll = this.config.behavior.auto_scroll;
     }
   }
+  setupState() {
+    this.currentAssistant = "";
+    this.conversationId = this.generateConversationId();
+    this.messageHistory = [];
+    this.loadingIndicator = null;
+    this.apiResponseListener = null;
 
-  // bindSuggestionEvents() {
-  //   const suggestions = this.container.querySelectorAll(
-  //     "[data-vf-js-chatbot-standalone-suggestion]"
-  //   );
-  //   suggestions.forEach(suggestion => {
-  //     suggestion.addEventListener("click", () => {
-  //       const question = suggestion.getAttribute(
-  //         "data-vf-js-chatbot-standalone-suggestion"
-  //       );
-  //       this.handleSuggestionClick(question);
-  //     });
-  //   });
-  // }
-  // async loadQAData() {
-  //   try {
-  //     const response = await fetch('../../assets/vf-chatbot/assets/vf-chatbot-qa.json');
-  //     const data = await response.json();
-  //     this.qaData = data.predefinedQA;
-  //     this.fallbackResponses = data.fallbackResponses;
+    // Load Q&A data if using fallback responses
+    this.loadQADataAndPopulateSuggestions();
+  }
 
-  //     // Update suggestion prompts with random questions
-  //     this.updateSuggestionPrompts();
-  //   } catch (error) {
-  //     console.error('Failed to load Q&A data:', error);
-  //   }
-  // }
+  setupEventHandlers() {
+    // Setup global event handlers for custom functions
+    this.setupCustomEventHandlers();
 
-  // updateSuggestionPrompts() {
-  //   if (!this.qaData || !this.suggestionBtns.length) return;
+    // Bind internal events
+    this.bindEvents();
+  }
 
-  //   const questions = Object.keys(this.qaData);
-  //   const randomQuestions = questions
-  //     .sort(() => 0.5 - Math.random())
-  //     .slice(0, this.suggestionBtns.length);
+  setupCustomEventHandlers() {
+    // Create wrapper functions that call user-defined handlers and emit events
+    const handlers = this.config.handlers;
 
-  //   this.suggestionBtns.forEach((btn, index) => {
-  //     if (randomQuestions[index]) {
-  //       btn.textContent = randomQuestions[index];
-  //       btn.setAttribute('data-vf-js-chatbot-suggestion', randomQuestions[index]);
-  //     }
-  //   });
-  // }
+    // Message send handler
+    this.onMessageSend = message => {
+      const eventData = {
+        message,
+        conversationId: this.conversationId,
+        timestamp: Date.now()
+      };
 
-  init() {
+      this.emitEvent("vf-chatbot:message-send", eventData);
+
+      if (
+        handlers.on_message_send &&
+        typeof window[handlers.on_message_send] === "function"
+      ) {
+        window[handlers.on_message_send](eventData);
+      }
+    };
+
+    // Response receive handler
+    this.onResponseReceive = (response, sources, prompts) => {
+      const eventData = {
+        response,
+        sources,
+        prompts,
+        conversationId: this.conversationId,
+        timestamp: Date.now()
+      };
+
+      this.emitEvent("vf-chatbot:response-receive", eventData);
+
+      if (
+        handlers.on_response_receive &&
+        typeof window[handlers.on_response_receive] === "function"
+      ) {
+        window[handlers.on_response_receive](eventData);
+      }
+    };
+
+    // Feedback submit handler
+    this.onFeedbackSubmit = (
+      messageId,
+      feedbackType,
+      feedbackText = "",
+      feedbackComment = ""
+    ) => {
+      const eventData = {
+        messageId,
+        feedbackType,
+        feedbackText,
+        feedbackComment,
+        conversationId: this.conversationId,
+        timestamp: Date.now()
+      };
+
+      this.emitEvent("vf-chatbot:feedback-submit", eventData);
+
+      // Call API if configured
+      if (this.config.api.feedback_endpoint) {
+        this.submitFeedbackToAPI(eventData);
+      }
+
+      if (
+        handlers.on_feedback_submit &&
+        typeof window[handlers.on_feedback_submit] === "function"
+      ) {
+        window[handlers.on_feedback_submit](eventData);
+      }
+    };
+
+    // Suggestion click handler
+    this.onSuggestionClick = suggestion => {
+      const eventData = {
+        suggestion,
+        conversationId: this.conversationId,
+        timestamp: Date.now()
+      };
+
+      this.emitEvent("vf-chatbot:suggestion-click", eventData);
+
+      if (
+        handlers.on_suggestion_click &&
+        typeof window[handlers.on_suggestion_click] === "function"
+      ) {
+        window[handlers.on_suggestion_click](eventData);
+      }
+    };
+
+    // Error handler
+    this.onError = (error, context) => {
+      const eventData = {
+        error,
+        context,
+        conversationId: this.conversationId,
+        timestamp: Date.now()
+      };
+
+      this.emitEvent("vf-chatbot:error", eventData);
+
+      if (
+        handlers.on_error &&
+        typeof window[handlers.on_error] === "function"
+      ) {
+        window[handlers.on_error](eventData);
+      }
+    };
+
+    // Conversation start handler
+    this.onConversationStart = () => {
+      const eventData = {
+        conversationId: this.conversationId,
+        timestamp: Date.now()
+      };
+
+      this.emitEvent("vf-chatbot:conversation-start", eventData);
+
+      if (
+        handlers.on_conversation_start &&
+        typeof window[handlers.on_conversation_start] === "function"
+      ) {
+        window[handlers.on_conversation_start](eventData);
+      }
+    };
+
+    // Conversation end handler
+    this.onConversationEnd = () => {
+      const eventData = {
+        conversationId: this.conversationId,
+        messageCount: this.messageHistory.length,
+        timestamp: Date.now()
+      };
+
+      this.emitEvent("vf-chatbot:conversation-end", eventData);
+
+      if (
+        handlers.on_conversation_end &&
+        typeof window[handlers.on_conversation_end] === "function"
+      ) {
+        window[handlers.on_conversation_end](eventData);
+      }
+    };
+  }
+
+  emitEvent(eventName, data) {
+    const event = new CustomEvent(eventName, {
+      bubbles: true,
+      detail: data
+    });
+    this.container.dispatchEvent(event);
+  }
+
+  generateConversationId() {
+    return `conv_${Date.now()}_${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
+  }
+
+  async init() {
     // Initialize selector if present
     if (this.selectorEl) {
       const selector = initVFChatbotSelector(this.selectorEl);
       this.selectorEl.addEventListener("routeselection", e => {
         this.handleRouteSelection(e.detail);
       });
+    }
 
-      // Set initial route selection based on variant
-      if (this.selectorEl.dataset.variant) {
-        const variantRoutes = this.selectorEl.querySelectorAll(
-          "[data-vf-js-selector-item]"
-        );
-        variantRoutes.forEach(item => {
-          if (item.dataset.routeId === this.selectorEl.dataset.variant) {
-            selector.handleItemSelection(item);
+    // Initialize welcome component
+    if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
+      this.welcomeComponent = new VFChatbotWelcome(this.welcomeScreen, {
+        // Basic welcome configuration
+        welcome_title: this.config.title,
+        welcome_logo: this.config.welcome_logo,
+        welcome_message: this.config.welcome_message,
+        welcome_logo_alt: this.config.welcome_logo_alt,
+        welcome_suggestions_title: this.config.welcome_suggestions_title,
+        welcome_max_suggestions: this.config.welcome_max_suggestions,
+
+        // API configuration
+        qa_data_url: this.config.api.qa_data_url,
+
+        // Feature toggles
+        enable_welcome_suggestions: this.config.features
+          .enable_welcome_suggestions,
+        enable_qa_data_loading: this.config.features.enable_qa_data_loading,
+        enable_predefined_qa: this.config.features.enable_predefined_qa,
+        enable_fallback_responses: this.config.features
+          .enable_fallback_responses
+      });
+
+      try {
+        await this.welcomeComponent.init();
+        this.welcomeScreen.addEventListener(
+          "vf-chatbot-welcome:suggestion-click",
+          event => {
+            const question = event.detail.question;
+            this.onSuggestionClick(question);
+            this.showChatInterface();
+            this.sendUserMessage(question);
           }
-        });
+        );
+        this.welcomeScreen.scrollTop = this.welcomeScreen.scrollHeight;
+      } catch (error) {
+        console.error("Failed to initialize welcome component:", error);
+        this.onError(error, "welcome_component_init");
       }
     }
 
-    // Initialize disclaimer if present
-    if (this.disclaimerEl && this.disclaimerCloseBtn) {
-      this.bindDisclaimerEvents();
+    // Trigger conversation start
+    this.onConversationStart();
+
+    console.log("Modal chatbot initialized successfully");
+  }
+
+  async loadQADataAndPopulateSuggestions() {
+    // Skip loading if Q&A data loading is disabled
+    if (!this.config.features.enable_qa_data_loading) {
+      console.log("Q&A data loading is disabled");
+      return;
     }
 
-    // Bind events
-    this.bindEvents();
-    this.initAutoResize();
+    // Skip loading if no URL is configured
+    if (!this.config.api.qa_data_url) {
+      console.log("No Q&A data URL configured");
+      return;
+    }
+    try {
+      const response = await fetch(this.config.api.qa_data_url);
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      // Load predefined Q&A if enabled
+      if (this.config.features.enable_predefined_qa && data.predefinedQA) {
+        this.qaData = data.predefinedQA;
+      } else {
+        console.log("Predefined Q&A loading is disabled or no data available");
+      }
+
+      // Load fallback responses if enabled
+      if (
+        this.config.features.enable_fallback_responses &&
+        data.fallbackResponses &&
+        data.fallbackResponses.length > 0
+      ) {
+        this.fallbackResponses = data.fallbackResponses;
+      } else {
+        console.log("Using default fallback responses");
+      }
+    } catch (error) {
+      console.error("Failed to load Q&A data:", error);
+      this.onError(error, "qa_data_load");
+    }
   }
 
   handleRouteSelection(detail) {
     const { selectedItems } = detail;
     if (selectedItems && selectedItems.length > 0) {
-      this.currentAssistant = selectedItems[0];
+      this.currentAssistant = selectedItems.join(", ");
       console.log(`Switched to ${this.currentAssistant} assistant`);
+
+      this.emitEvent("vf-chatbot:assistant-change", {
+        selectedAssistants: this.currentAssistant,
+        conversationId: this.conversationId
+      });
     }
   }
 
   bindEvents() {
-    // Bind minimize event
-    if (this.minimizeBtn) {
-      this.minimizeBtn.addEventListener("click", () => {
-        this.minimize();
-      });
-    }
+    this.minimizeBtn?.addEventListener("click", () => this.minimize());
+
+    this.closeBtn?.addEventListener("click", () => this.showCloseDialog());
+
     // Send message events
     this.sendBtn?.addEventListener("click", () => this.sendMessage());
-    // this.input?.addEventListener("keypress", e => {
-    //   if (e.key === "Enter" && !e.shiftKey) {
-    //     e.preventDefault();
-    //     this.sendMessage();
-    //   }
-    // });
 
-    // Welcome screen events
-    this.welcomeSendBtn?.addEventListener("click", () =>
-      this.sendWelcomeMessage()
-    );
-    this.welcomeInput?.addEventListener("keypress", e => {
+    this.input?.addEventListener("keypress", e => {
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
-        this.sendWelcomeMessage();
+        this.sendMessage();
       }
     });
 
-    // Welcome screen suggestion buttons
-    this.suggestionBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const text =
-          btn.getAttribute("data-vf-js-chatbot-suggestion") ||
-          btn.textContent.trim();
-
-        // Show chat interface
-        this.showChatInterface();
-
-        // Update the input field with the suggestion text
-        if (this.input && text) {
-          this.input.value = text;
-
-          // Adjust the height of the input field to match content
-          this.input.style.height = "auto";
-          this.input.style.height = this.input.scrollHeight + "px";
-        }
-
-        // Send the message to the API
-        if (text) {
-          this.sendUserMessage(text);
-        }
-      });
+    // Auto-resize textarea functionality
+    this.input?.addEventListener("input", () => this.autoResizeTextarea());
+    this.input?.addEventListener("paste", () => {
+      // Use setTimeout to ensure the pasted content is processed
+      setTimeout(() => this.autoResizeTextarea(), 0);
     });
 
-    // Modal controls
-    this.closeBtn?.addEventListener("click", e => {
-      e.preventDefault();
-      e.stopPropagation();
-      this.dialogComponent?.show();
-    });
-
-    // Listen for action prompt clicks
-    this.container.addEventListener("vf-chatbot-action-prompt:click", event => {
-      const { text } = event.detail;
-
-      // Show chat interface
-      this.showChatInterface();
-
-      // Update the input field with the suggestion text
-      if (this.input && text) {
-        this.input.value = text;
-
-        // Adjust the height of the input field to match content
-        this.input.style.height = "auto";
-        this.input.style.height = this.input.scrollHeight + "px";
-      }
-
-      // Send the message to the API
-      if (text) {
-        this.sendUserMessage(text);
-      }
-    });
-  }
-
-  bindDisclaimerEvents() {
-    this.disclaimerCloseBtn.addEventListener("click", e => {
-      e.stopPropagation(); // Prevent event from bubbling to modal
-      this.disclaimerEl.style.display = "none";
-    });
-  }
-
-  initAutoResize() {
-    // Auto-resize textarea as user types
-    if (this.input) {
-      this.input.addEventListener("input", () => {
-        this.input.style.height = "auto";
-        this.input.style.height = this.input.scrollHeight + "px";
+    // Disclaimer close
+    if (this.disclaimer && this.disclaimerCloseBtn) {
+      this.disclaimerCloseBtn.addEventListener("click", () => {
+        this.disclaimer.classList.add("vf-u-display-none");
       });
     }
+
+    // Global feedback event listener
+    this.container.addEventListener("vf-chatbot-feedback:submit", event => {
+      const {
+        messageId,
+        feedbackType,
+        feedbackText,
+        feedbackComment
+      } = event.detail;
+      this.onFeedbackSubmit(
+        messageId,
+        feedbackType,
+        feedbackText,
+        feedbackComment
+      );
+    });
+
+    // Action prompt click listener
+    this.container.addEventListener("vf-chatbot-action-prompt:click", event => {
+      const { text } = event.detail;
+      this.sendUserMessage(text);
+    });
   }
 
   sendMessage() {
     if (!this.input || !this.input.value.trim()) return;
 
     const text = this.input.value.trim();
+    this.showChatInterface();
     this.sendUserMessage(text);
   }
 
-  sendWelcomeMessage() {
-    if (!this.welcomeInput || !this.welcomeInput.value.trim()) return;
+  autoResizeTextarea() {
+    if (!this.input) return;
 
-    const text = this.welcomeInput.value.trim();
-    this.showChatInterface();
-    this.sendUserMessage(text);
+    // Reset height to auto to get the actual scroll height
+    // this.input.style.height = 'auto';
+    // Get computed styles
+    const computedStyle = window.getComputedStyle(this.input);
+    const lineHeight = parseFloat(computedStyle.lineHeight) || 24;
+    const paddingTop = parseFloat(computedStyle.paddingTop) || 0;
+    const paddingBottom = parseFloat(computedStyle.paddingBottom) || 0;
+    const borderTop = parseFloat(computedStyle.borderTopWidth) || 0;
+    const borderBottom = parseFloat(computedStyle.borderBottomWidth) || 0;
+
+    // Calculate heights more accurately
+    const extraHeight = paddingTop + paddingBottom + borderTop + borderBottom;
+    const minHeight = lineHeight + extraHeight; // Height for 1 row
+    const maxHeight = lineHeight * 5 + extraHeight; // Height for 5 rows
+
+    // Get the scroll height (content height)
+    const scrollHeight = this.input.scrollHeight;
+
+    // Calculate the new height, constrained by min and max
+    let newHeight = Math.max(minHeight, scrollHeight);
+
+    if (newHeight >= maxHeight) {
+      // If content exceeds 5 rows, set to max height and enable scrolling
+      newHeight = maxHeight;
+      this.input.classList.add("vf-chatbot-modal__input--scrollable");
+    } else {
+      // Remove scrollable class if content fits within 5 rows
+      this.input.classList.remove("vf-chatbot-modal__input--scrollable");
+    }
+
+    // Apply the new height
+    this.input.style.height = newHeight + "px";
   }
 
   showChatInterface() {
@@ -333,438 +603,393 @@ class VFChatbotModal {
     if (this.messagesContainer) {
       this.messagesContainer.style.display = "flex";
     }
-
-    // Focus on the input field
     if (this.input) {
       this.input.focus();
     }
-
-    this.hasInteracted = true;
   }
-
-  resetWelcomeScreen() {
-    if (this.welcomeScreen && !this.hasInteracted) {
-      this.welcomeScreen.style.display = "flex";
-      this.messagesContainer.style.display = "none";
-    }
-  }
-
-  minimize() {
-    // Hide modal
-    this.container.classList.remove("vf-chatbot-modal--active");
-
-    // Dispatch event to show FAB
-    document.dispatchEvent(
-      new CustomEvent("vf-chatbot-modal:hide", {
-        bubbles: true
-      })
-    );
-
-    // Reset welcome screen if needed
-    this.resetWelcomeScreen();
-  }
-
-  // UNUSED: maximize() is not needed since we use simple show/hide
-  /*
-  maximize() {
-    // First remove minimized to ensure smooth transition
-    this.container.classList.remove("vf-chatbot-modal--minimized");
-
-    // Small delay to ensure CSS transition works properly
-    requestAnimationFrame(() => {
-      this.container.classList.add("vf-chatbot-modal--active");
-
-      // Focus on input if it exists
-      const input = this.container.querySelector(".vf-chatbot-modal__input");
-      if (input) {
-        setTimeout(() => input.focus(), 300);
-      }
-    });
-
-    // Dispatch maximize event
-    this.container.dispatchEvent(new CustomEvent("vf-chatbot-modal:maximize"));
-
-    // Focus on input if welcome screen is not shown
-    if (this.hasInteracted) {
-      setTimeout(() => this.input.focus(), 300);
-    }
-  }
-  */
-
-  closeModal() {
-    this.container.classList.remove("vf-chatbot-modal--active");
-    this.container.classList.remove("vf-chatbot-modal--minimized");
-
-    // Reset welcome screen for next open
-    this.resetWelcomeScreen();
-
-    // Dispatch close event
-    this.container.dispatchEvent(new CustomEvent("vf-chatbot-modal:close"));
-  }
-
-  // UNUSED: toggleModal() is not needed with simplified show/hide
-  /*
-  toggleModal() {
-    const isMinimized = this.container.classList.contains(
-      "vf-chatbot-modal--minimized"
-    );
-    const isActive = this.container.classList.contains(
-      "vf-chatbot-modal--active"
-    );
-
-    if (isMinimized || !isActive) {
-      this.maximize();
-    } else {
-      this.minimize();
-    }
-  }
-  */
 
   sendUserMessage(text) {
     if (!text || !this.messagesContainer) return;
 
-    // Add user message to UI
-    const userMessageEl = document.createElement("div");
-    userMessageEl.className = "vf-chatbot-message vf-chatbot-message--user";
-    userMessageEl.innerHTML = `
-      <div class="vf-chatbot-message__avatar">
-        <span class="vf-chatbot-message__avatar-name">You</span>
-        <img src="../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg" alt="You">
-      </div>
-      <div class="vf-chatbot-message__content">${text}</div>
-    `;
-    this.messagesContainer.insertBefore(userMessageEl, this.loadingIndicator);
+    // Add to message history
+    this.messageHistory.push({
+      type: "user",
+      content: text,
+      timestamp: Date.now()
+    });
 
-    // Clear input if this came from the input field
-    if (this.input && this.input.value === text) {
+    // Trigger message send event
+    this.onMessageSend(text);
+
+    // Create user message element
+    const userMessage = this.userTemplate.content.cloneNode(true);
+    const content = userMessage.querySelector(
+      ".vf-chatbot-message__content-prompt"
+    );
+    content.textContent = text;
+
+    // Update avatar if configured
+    const avatar = userMessage.querySelector("img");
+    if (avatar) {
+      avatar.src = this.config.icons.user_avatar;
+    }
+
+    this.messagesContainer.appendChild(userMessage);
+
+    // Clear input
+    if (this.input) {
       this.input.value = "";
-      this.input.style.height = "auto"; // Reset height
+      this.input.style.height = "auto";
+      // Reset textarea to minimum height and remove scrollable class
+      this.input.classList.remove("vf-chatbot-modal__input--scrollable");
+      this.autoResizeTextarea();
     }
 
     this.scrollToBottom();
-
-    // Process the message
     this.processUserMessage(text);
   }
 
-  processUserMessage(text) {
-    // Show loading state
+  async processUserMessage(text) {
     this.setLoadingState(true);
-    // Check if we have a predefined answer
-    if (this.qaData && this.qaData[text]) {
-      const answer = this.qaData[text];
-      this.addAssistantResponse(
-        answer.answer || answer.html,
-        answer.sources || [],
-        answer.prompts || []
-      );
+
+    try {
+      // Check for predefined answers first
+      if (this.qaData && this.qaData[text]) {
+        setTimeout(() => {
+          const answer = this.qaData[text];
+          this.addAssistantResponse(
+            answer.answer || answer.html,
+            answer.sources || [],
+            answer.prompts || []
+          );
+          this.setLoadingState(false);
+        }, this.config.behavior.typing_delay);
+        return;
+      }
+
+      // Try API call if configured
+      if (this.config.api.chat_endpoint) {
+        const response = await this.callChatAPI(text);
+        this.addAssistantResponse(
+          response.response,
+          response.sources || [],
+          response.prompts || []
+        );
+        this.setLoadingState(false);
+      } else {
+        // Use fallback response
+        setTimeout(() => {
+          let fallbackResponse;
+
+          if (this.fallbackResponses && this.fallbackResponses.length > 0) {
+            fallbackResponse = this.fallbackResponses[
+              Math.floor(Math.random() * this.fallbackResponses.length)
+            ];
+
+            this.addAssistantResponse(
+              fallbackResponse.answer,
+              [],
+              fallbackResponse.prompts || []
+            );
+          }
+          this.setLoadingState(false);
+        }, this.config.behavior.typing_delay);
+      }
+    } catch (error) {
+      console.error("Error processing message:", error);
+      this.onError(error, "message_processing");
       this.setLoadingState(false);
-      return;
+      // this.showErrorMessage();
     }
-
-    // Use random fallback response
-    const fallbackResponse = this.fallbackResponses[
-      Math.floor(Math.random() * this.fallbackResponses.length)
-    ];
-    this.addAssistantResponse(
-      fallbackResponse["answer"],
-      [],
-      fallbackResponse["prompts"] || []
-    );
-    this.setLoadingState(false);
-    return;
-    // Check if we have a predefined answer
-    // if (this.qaData && this.qaData[text]) {
-    //   const answer = this.qaData[text];
-    //   const responseText = answer.answer || answer.html;
-    //   const sources = answer.sources || [];
-    //   const prompts = answer.prompts || [];
-
-    //   this.addAssistantResponse(responseText, sources, prompts);
-    //   this.setLoadingState(false);
-    //   return;
-    // }
-
-    // If no predefined answer, use existing API call
-    // this.callAPI(text)
-    //   .then(response => {
-    //     const sources = response.sources || [];
-    //     const responseText = response.html || response;
-    //     this.addAssistantResponse(responseText, sources);
-    //     this.setLoadingState(false);
-    //   })
-    //   .catch(error => {
-    //     console.error("API Error:", error);
-    //     // Use random fallback response
-    //     const fallbackResponse = this.fallbackResponses[
-    //       Math.floor(Math.random() * this.fallbackResponses.length)
-    //     ];
-    //     this.addAssistantResponse(fallbackResponse);
-    //     this.setLoadingState(false);
-    //   });
   }
 
-  callAPI(text) {
-    return new Promise((resolve, reject) => {
-      fetch(this.API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${this.API_TOKEN}`
-        },
-        body: JSON.stringify({
-          model: "mistral-tiny",
-          messages: [
-            { role: "system", content: "You are a helpful assistant." },
-            { role: "user", content: text }
-          ]
-        })
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`API error: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          if (
-            data &&
-            data.choices &&
-            data.choices[0] &&
-            data.choices[0].message &&
-            data.choices[0].message.content
-          ) {
-            resolve(data.choices[0].message.content);
-          } else {
-            reject(new Error("Invalid API response"));
-          }
-        })
-        .catch(error => {
-          console.error("API call failed:", error);
-          reject(error);
-        });
+  async callChatAPI(message) {
+    const requestData = {
+      message,
+      assistant: this.currentAssistant,
+      conversationId: this.conversationId,
+      messageHistory: this.config.features.enable_conversation_history
+        ? this.messageHistory
+        : []
+    };
+
+    const response = await fetch(this.config.api.chat_endpoint, {
+      method: "POST",
+      headers: this.config.api.headers,
+      body: JSON.stringify(requestData),
+      signal: AbortSignal.timeout(this.config.api.timeout)
     });
+
+    if (!response.ok) {
+      throw new Error(
+        `API call failed: ${response.status} ${response.statusText}`
+      );
+    }
+
+    return await response.json();
+  }
+
+  async submitFeedbackToAPI(feedbackData) {
+    try {
+      await fetch(this.config.api.feedback_endpoint, {
+        method: "POST",
+        headers: this.config.api.headers,
+        body: JSON.stringify(feedbackData)
+      });
+    } catch (error) {
+      console.error("Failed to submit feedback:", error);
+      this.onError(error, "feedback_submission");
+    }
   }
 
   addAssistantResponse(text, sources = [], prompts = []) {
-    if (!text || !this.messagesContainer) return;
+    if (!this.assistantTemplate || !this.messagesContainer) return;
 
-    // Add assistant message to UI
-    const assistantMessageEl = document.createElement("div");
-    assistantMessageEl.className =
-      "vf-chatbot-message vf-chatbot-message--assistant";
-    assistantMessageEl.innerHTML = `
-      <div class="vf-chatbot-message__avatar">
-        <div class="vf-chatbot-message__avatar-image">
-        <img src="../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg" alt="AI Assistant">
-        </div>
-        <span class="vf-chatbot-message__avatar-name">AI Assistant</span>
-      </div>
-      <div class="vf-chatbot-message__content">${text}</div>
-    `;
+    const messageId = `msg_${Date.now()}_${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
 
-    // Add sources if available
-    if (sources && sources.length > 0) {
+    // Add to message history
+    this.messageHistory.push({
+      type: "assistant",
+      content: text,
+      sources,
+      prompts,
+      messageId,
+      timestamp: Date.now()
+    });
+
+    // Trigger response receive event
+    this.onResponseReceive(text, sources, prompts);
+
+    const assistantMessage = this.assistantTemplate.content.cloneNode(true);
+    const content = assistantMessage.querySelector(
+      ".vf-chatbot-message__content-prompt"
+    );
+    content.innerHTML = text;
+
+    // Update avatar if configured
+    const avatar = assistantMessage.querySelector("img");
+    if (avatar) {
+      avatar.src = this.config.icons.assistant_avatar;
+    }
+
+    // Add sources if enabled and present
+    if (this.config.features.enable_sources && sources && sources.length > 0) {
+      const feedbackContainer = assistantMessage.querySelector(
+        "[data-vf-js-chatbot-feedback]"
+      );
       const sourcesEl = initVFChatbotSources(sources);
+      assistantMessage.insertBefore(sourcesEl.el, feedbackContainer);
+    }
 
-      // Enhance: scroll to bottom when sources are expanded
-      const toggleBtn = sourcesEl.el.querySelector(
-        "[data-vf-js-chatbot-sources-toggle]"
-      );
-      const sourcesDiv = sourcesEl.el.querySelector(
-        "[data-vf-js-chatbot-sources]"
-      );
+    // Add prompts if present
+    if (prompts && prompts.length > 0) {
+      this.addActionPrompts(assistantMessage, prompts, content);
+    }
 
-      if (toggleBtn && sourcesDiv) {
-        toggleBtn.addEventListener("click", () => {
-          // Wait for the sources div to expand, then scroll
-          setTimeout(() => {
-            if (this.messagesContainer) {
-              this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
-            }
-          }, 100);
+    // Initialize feedback if enabled
+    if (this.config.features.enable_feedback) {
+      const feedbackContainer = assistantMessage.querySelector(
+        "[data-vf-js-chatbot-feedback]"
+      );
+      if (feedbackContainer) {
+        feedbackContainer.dataset.messageId = messageId;
+
+        // Pass configuration to VFChatbotFeedback component
+        new VFChatbotFeedback(feedbackContainer, messageId, {
+          enable_instant_feedback: this.config.features.enable_instant_feedback,
+          api_endpoint: this.config.api.feedback_endpoint
         });
       }
-
-      assistantMessageEl.appendChild(sourcesEl.el);
     }
 
-    // Add action prompts if available
-    if (prompts && prompts.length > 0) {
-      const promptsEl = document.createElement("div");
-      promptsEl.className = "vf-chatbot-action-prompts";
-      promptsEl.innerHTML = `
-        <div class="vf-chatbot-action-prompts__list">
-          ${prompts
-    .map(
-      prompt => `
-    <div class="vf-chatbot-action-prompt">
-      <a
-        href="${prompt.action_url}"
-        class="vf-chatbot-action-prompt__link"
-        ${
-  prompt.action_url.startsWith("tel:")
-    ? ""
-    : 'target="_blank" rel="noopener noreferrer" aria-label="' +
-              prompt.action_text +
-              ' (opens in new tab)"'
-        }
-      >
-        ${prompt.action_text}
-      </a>
-    </div>
-  `
-    )
-    .join("")}
-        </div>
-      `;
-      assistantMessageEl.appendChild(promptsEl);
-    }
-
-    // Add feedback
-    const feedbackTemplate = `
-      <div class="vf-chatbot-feedback" data-vf-js-chatbot-feedback>
-        <div class="vf-chatbot-feedback__actions">
-          <button class="vf-chatbot-feedback__thumb" data-vf-js-feedback-thumbs-up>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M7 10V20M7 10H4C3.44772 10 3 10.4477 3 11V19C3 19.5523 3.44772 20 4 20H7M7 10L11.6276 2.93004C11.7326 2.7702 11.8705 2.63305 12.0319 2.52646C12.1934 2.41987 12.3746 2.34591 12.5639 2.30869C12.7532 2.27148 12.9472 2.27175 13.1364 2.30949C13.3256 2.34723 13.5065 2.42167 13.6676 2.52868C13.8287 2.63569 13.9661 2.77319 14.0706 2.93328C14.1751 3.09336 14.2445 3.27152 14.2748 3.45758C14.3051 3.64364 14.2957 3.83374 14.2471 4.01587C14.1986 4.19799 14.112 4.36857 13.9924 4.51725L12 7H16.2795C16.7799 7 17.2704 7.14549 17.7035 7.42152C18.1366 7.69755 18.4976 8.09734 18.7529 8.58079C19.0082 9.06425 19.1495 9.61509 19.1634 10.1793C19.1773 10.7436 19.0633 11.3021 18.8321 11.8L16.5724 16.7197C16.2001 17.5071 15.6042 18.1551 14.8667 18.5697C14.1291 18.9843 13.2869 19.1473 12.4614 19.0358L7 18V10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <button class="vf-chatbot-feedback__thumb" data-vf-js-feedback-thumbs-down>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M17 14V4M17 14H20C20.5523 14 21 13.5523 21 13V5C21 4.44772 20.5523 4 20 4H17M17 14L12.3724 21.07C12.2674 21.2298 12.1295 21.367 11.9681 21.4735C11.8066 21.5801 11.6254 21.6541 11.4361 21.6913C11.2468 21.7285 11.0528 21.7283 10.8636 21.6905C10.6744 21.6528 10.4935 21.5783 10.3324 21.4713C10.1713 21.3643 10.0339 21.2268 9.92937 21.0667C9.82487 20.9066 9.75555 20.7285 9.72522 20.5424C9.69489 20.3564 9.70426 20.1663 9.75285 19.9841C9.80144 19.802 9.88804 19.6314 10.0076 19.4828L12 17H7.72054C7.22011 17 6.72956 16.8545 6.29647 16.5785C5.86337 16.3025 5.50236 15.9027 5.24709 15.4192C4.99182 14.9358 4.85054 14.3849 4.83659 13.8207C4.82265 13.2564 4.93671 12.6979 5.16795 12.2L7.42763 7.28027C7.79992 6.49287 8.39583 5.84492 9.13337 5.43031C9.8709 5.01571 10.7131 4.85272 11.5386 4.96415L17 6V14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <div class="vf-chatbot-feedback__form"></div>
-      </div>
-    `;
-
-    const feedbackEl = document.createElement("div");
-    feedbackEl.innerHTML = feedbackTemplate;
-    assistantMessageEl.appendChild(feedbackEl.firstElementChild);
-
-    // Initialize feedback after element is in DOM
-    const feedbackComponent = assistantMessageEl.querySelector(
-      "[data-vf-js-chatbot-feedback]"
-    );
-    if (feedbackComponent) {
-      new VFChatbotFeedback(feedbackComponent, `response-${Date.now()}`);
-    }
-
-    // Insert before loading indicator
-    this.messagesContainer.insertBefore(
-      assistantMessageEl,
-      this.loadingIndicator
-    );
+    this.messagesContainer.appendChild(assistantMessage);
     this.scrollToBottom();
+
+    return messageId;
   }
 
-  // UNUSED: Old version of getSimulatedResponse can be removed
-  /*
-  getSimulatedResponse(text) {
-    // Simple response simulation
-    if (text.toLowerCase().includes("metabolomics")) {
-      return "Metabolomics is the large-scale study of small molecules,";
-    } else if (text.toLowerCase().includes("genomics")) {
-      return "Genomics is the study of the structure, function, evolution, and mapping of genomes.";
-    } else if (text.toLowerCase().includes("proteomics")) {
-      return "Proteomics is the study of the structure, function, and regulation of the proteome.";
-    } else if (text.toLowerCase().includes("transcriptomics")) {
-      return "Transcriptomics is the study of the complete set of RNA molecules within a cell.";
-    } else if (text.toLowerCase().includes("epigenomics")) {
-      return "Epigenomics is the study of heritable changes in gene function that do not involve changes to the DNA sequence.";
-    } else if (text.toLowerCase().includes("metabolomics")) {
-      return "Metabolomics is the large-scale study of small molecules,";
-    } else if (text.toLowerCase().includes("genomics")) {
-      return "Genomics is the study of the structure, function, evolution, and mapping of genomes.";
-    } else if (text.toLowerCase().includes("proteomics")) {
-      return "Proteomics is the study of the structure, function, and regulation of the proteome.";
-    } else if (text.toLowerCase().includes("transcriptomics")) {
-      return "Transcriptomics is the study of the complete set of RNA molecules within a cell.";
-    } else if (text.toLowerCase().includes("epigenomics")) {
-      return "Epigenomics is the study of heritable changes in gene function that do not involve changes to the DNA sequence.";
-    } else {
-      return "I'm sorry, I didn't understand that. Could you please provide more context or ask a specific question?";
-    }
+  addActionPrompts(assistantMessage, prompts, contentElement) {
+    if (!this.actionPromptsTemplate || !this.singlePromptTemplate) return;
+
+    const promptsContainer = this.actionPromptsTemplate.content.cloneNode(true);
+    const promptsList = promptsContainer.querySelector(
+      "[data-vf-js-action-prompts-list]"
+    );
+
+    prompts.forEach(prompt => {
+      const promptEl = this.singlePromptTemplate.content.cloneNode(true);
+      const link = promptEl.querySelector(".vf-chatbot-action-prompt__link");
+
+      if (link) {
+        link.href = prompt.action_url || "#";
+        link.textContent = prompt.action_text;
+
+        // Set target and add accessibility attributes
+        if (prompt.action_url?.startsWith("tel:")) {
+          link.target = "_self";
+        } else if (prompt.action_url) {
+          link.target = "_blank";
+          // Add aria-label for screen readers to indicate it opens in a new tab
+          link.setAttribute(
+            "aria-label",
+            `${prompt.action_text} (opens in new tab)`
+          );
+          // Add rel="noopener noreferrer" for security
+          link.rel = "noopener noreferrer";
+        }
+
+        if (!prompt.action_url) {
+          link.addEventListener("click", e => {
+            e.preventDefault();
+            this.emitEvent("vf-chatbot-action-prompt:click", {
+              text: prompt.action_text
+            });
+          });
+        }
+      }
+
+      promptsList.appendChild(promptEl);
+    });
+
+    contentElement.appendChild(promptsContainer);
   }
-  */
 
   setLoadingState(isLoading) {
-    if (this.loadingIndicator) {
-      this.loadingIndicator.style.display = isLoading ? "flex" : "none";
+    if (!this.config.features.enable_typing_indicator) return;
+
+    if (isLoading) {
+      if (!this.loadingIndicator && this.loadingTemplate) {
+        const loadingContent = this.loadingTemplate.content.cloneNode(true);
+        this.loadingIndicator = loadingContent.firstElementChild;
+
+        // Update avatar
+        const avatar = this.loadingIndicator.querySelector("img");
+        if (avatar) {
+          avatar.src = this.config.icons.assistant_avatar;
+        }
+
+        this.messagesContainer.appendChild(this.loadingIndicator);
+      } else if (this.loadingIndicator && !this.loadingIndicator.parentNode) {
+        // Re-append if it was removed from DOM
+        this.messagesContainer.appendChild(this.loadingIndicator);
+      }
+
+      if (this.loadingIndicator) {
+        this.loadingIndicator.style.display = "block";
+      }
+    } else {
+      if (this.loadingIndicator) {
+        this.loadingIndicator.style.display = "none";
+      }
     }
 
-    if (this.sendBtn) {
-      this.sendBtn.disabled = isLoading;
-    }
-
-    if (this.input) {
-      this.input.disabled = isLoading;
-    }
+    // Disable/enable controls
+    if (this.sendBtn) this.sendBtn.disabled = isLoading;
+    // if (this.input) this.input.disabled = isLoading;
 
     this.scrollToBottom();
   }
 
   scrollToBottom() {
-    if (this.messagesContainer) {
+    if (this.config.behavior.auto_scroll && this.messagesContainer) {
       this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
     }
   }
 
-  getSimulatedResponse() {
-    // Fallback responses when API fails
-    const fallbackResponses = [
-      "I'm sorry, I'm having trouble connecting to my knowledge base right now. Could you try again in a moment?",
-      "That's an interesting question. Let me think about how to best answer that for you.",
-      "I understand you're asking about bioinformatics training. We have several resources available. Could you tell me more about your specific interests?",
-      "Thank you for your question. We offer various workshops and online courses on that topic. Would you like me to provide more specific information?",
-      "I'd be happy to help with that. We have both introductory and advanced courses available depending on your experience level."
-    ];
+  // Public API methods
+  resetConversation() {
+    this.messageHistory = [];
+    this.conversationId = this.generateConversationId();
 
-    return fallbackResponses[
-      Math.floor(Math.random() * fallbackResponses.length)
-    ];
+    if (this.messagesContainer) {
+      this.messagesContainer.innerHTML = "";
+    }
+
+    if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
+      this.welcomeScreen.style.display = "block";
+      this.messagesContainer.style.display = "none";
+    }
+
+    this.onConversationStart();
   }
 
-  resetAndClose() {
-    // Clear chat history
-    this.messagesContainer.innerHTML = "";
+  updateConfiguration(newConfig) {
+    this.config = this.deepMerge(this.config, newConfig);
+    this.applyConfigurationToDOM();
+    // this.applyTheme();
+  }
 
-    // Reset to welcome screen
-    // this.showWelcomeScreen();
+  getConfiguration() {
+    return { ...this.config };
+  }
 
-    // Close modal
-    this.close();
+  getConversationHistory() {
+    return [...this.messageHistory];
+  }
 
-    // Dispatch event
-    this.container.dispatchEvent(new CustomEvent("vf-chatbot-modal:reset"));
+  minimize() {
+    const event = new Event("vf-chatbot-modal-container:close", {
+      bubbles: true
+    });
+    this.container.dispatchEvent(event);
+  }
+
+  showCloseDialog() {
+    if (this.dialog) {
+      // Initialize and show the dialog
+      initVFChatbotDialog(this.dialog);
+      this.dialog.style.display = "flex";
+
+      // Listen for dialog events
+      const onConfirm = () => {
+        this.resetConversation(); // <-- Reset to original state
+        this.dialog.removeEventListener("vf-chatbot-dialog:confirm", onConfirm);
+        this.minimize();
+      };
+      this.dialog.addEventListener("vf-chatbot-dialog:confirm", onConfirm);
+    }
+  }
+
+  destroy() {
+    this.onConversationEnd();
+
+    // Remove event listeners
+    this.sendBtn?.removeEventListener("click", this.sendMessage);
+    this.input?.removeEventListener("keypress", this.handleKeyPress);
+
+    // Clean up API response listener
+    if (this.apiResponseListener) {
+      this.container.removeEventListener(
+        "vf-chatbot:api-response",
+        this.apiResponseListener
+      );
+    }
   }
 }
 
-// Initialize
-function initVFChatbotModal() {
-  // console.log("Looking for chatbot elements..."); // UNUSED: Debug log
+// Global initialization function with configuration support
+function initVFChatbotModal(customConfig = {}) {
+  console.log("Looking for modal chatbot elements...");
   const chatbotElements = document.querySelectorAll(
-    "[data-vf-js-chatbot-modal]"
+    "[data-vf-js-chatbot-modal-container]"
   );
 
   if (chatbotElements.length === 0) {
-    console.warn("No chatbot elements found on page");
-    return;
+    console.warn("No modal chatbot elements found on page");
+    return [];
   }
-
-  // console.log(`Found ${chatbotElements.length} chatbot elements`); // UNUSED: Debug log
 
   const instances = [];
   chatbotElements.forEach(element => {
-    instances.push(new VFChatbotModal(element));
+    instances.push(new VFChatbotModal(element, customConfig));
   });
 
   return instances;
 }
 
-// REDUNDANT: Simplify global assignments
+// Global exposure
 if (typeof window !== "undefined") {
   window.VFChatbotModal = VFChatbotModal;
   window.initVFChatbotModal = initVFChatbotModal;

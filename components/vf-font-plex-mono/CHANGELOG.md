@@ -1,3 +1,7 @@
+### 1.1.3
+
+* Version bump
+
 ### 1.1.2
 
 * Fixed: Font added from CDN for the time being  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2263)

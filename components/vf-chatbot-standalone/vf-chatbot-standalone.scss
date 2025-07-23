@@ -60,6 +60,7 @@
   &__input-wrapper {
     display: flex;
     align-items: flex-end;
+    border: 1px solid transparent;
     label {
       visibility: hidden;
       position: absolute;
@@ -92,7 +93,7 @@
     }
 
     // When content exceeds 5 rows, show scrollbar
-    &.vf-chatbot-standalone__input--scrollable {
+    &--scrollable {
       overflow-y: auto;
     }
   }
@@ -131,6 +132,9 @@
     margin: 0 auto;
     width: 55%;
     padding-right: 1rem;
+    button {
+      padding: 12px;
+    }
     @media (max-width:$vf-breakpoint--md) {
       padding: 0 0.5rem;
       width: 95%;

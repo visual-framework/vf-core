@@ -316,8 +316,12 @@ export class VFChatbotSelector {
   }
 
   closeDropdown() {
-    this.dropdownEl.style.display = "none";
-    this.titleEl.classList.remove("vf-chatbot-selector__title--expanded");
+    if (this.dropdownEl) {
+      this.dropdownEl.style.display = "none";
+    }
+    if (this.titleEl) {
+      this.titleEl.classList.remove("vf-chatbot-selector__title--expanded");
+    }
   }
 
   handleSearch(query) {

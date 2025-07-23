@@ -46,8 +46,8 @@ class VFChatbotStandalone {
       },
 
       api: {
-        chat_endpoint: "/api/chat", // Disabled to use fallback responses
-        feedback_endpoint: "/api/feedback",
+        chat_endpoint: false, //"/api/chat", // Disabled to use fallback responses
+        feedback_endpoint: false, //"/api/feedback",
         qa_data_url:
           "../../assets/vf-chatbot-standalone/assets/vf-chatbot-qa.json",
         headers: {
@@ -261,11 +261,17 @@ class VFChatbotStandalone {
     };
 
     // Feedback submit handler
-    this.onFeedbackSubmit = (messageId, feedbackType, feedbackText = "") => {
+    this.onFeedbackSubmit = (
+      messageId,
+      feedbackType,
+      feedbackText = "",
+      feedbackComment = ""
+    ) => {
       const eventData = {
         messageId,
         feedbackType,
         feedbackText,
+        feedbackComment,
         conversationId: this.conversationId,
         timestamp: Date.now()
       };
@@ -512,8 +518,18 @@ class VFChatbotStandalone {
 
     // Global feedback event listener
     this.container.addEventListener("vf-chatbot-feedback:submit", event => {
-      const { messageId, feedbackType, feedbackText } = event.detail;
-      this.onFeedbackSubmit(messageId, feedbackType, feedbackText);
+      const {
+        messageId,
+        feedbackType,
+        feedbackText,
+        feedbackComment
+      } = event.detail;
+      this.onFeedbackSubmit(
+        messageId,
+        feedbackType,
+        feedbackText,
+        feedbackComment
+      );
     });
 
     // Action prompt click listener

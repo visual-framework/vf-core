@@ -2,16 +2,8 @@
   class="vf-chatbot-fab"
   aria-label="Open chat"
   data-vf-js-chatbot-fab
-  {% if fab_active %}class="vf-chatbot-fab--active"{% endif %}
+  {% if fab_active %}class="vf-chatbot-fab--inactive"{% endif %}
 >
-  {# Chat icon when closed #}
-  {# <svg class="vf-chatbot-fab__icon vf-chatbot-fab__icon--chat" viewBox="0 0 24 24">
-    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
-  </svg> #}
-  {# <svg class="vf-chatbot-fab__icon vf-chatbot-fab__icon--chat" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 23.11">
-    <defs><style>.cls-1{fill:#007b53;}</style></defs>
-    <path class="cls-1" d="M4.24,23.11l.02-6.47h-1.4c-1.57,0-2.85-1.28-2.85-2.85V2.85C0,1.28,1.28,0,2.85,0h18.29c1.57,0,2.85,1.28,2.85,2.85v10.93c0,1.57-1.28,2.85-2.85,2.85h-10.4l-6.51,6.47ZM2.85,1.07c-.98,0-1.78.8-1.78,1.78v10.93c0,.98.8,1.78,1.78,1.78h2.48v4.95s4.97-4.95,4.97-4.95h10.85c.98,0,1.78-.8,1.78-1.78V2.85c0-.98-.8-1.78-1.78-1.78H2.85Z"/><path class="cls-1" d="M18.27,6.16c.49.49,3.66,1.35,3.66,1.35,0,0-3.18.87-3.66,1.35s-1.35,3.66-1.35,3.66c0,0-.88-3.19-1.35-3.66s-3.66-1.35-3.66-1.35c0,0,3.11-.8,3.66-1.35s1.35-3.66,1.35-3.66c0,0,.86,3.17,1.35,3.66Z"/>
-  </svg> #}
   <svg class="vf-chatbot-fab__icon vf-chatbot-fab__icon--chat" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_3256_34050)">
     <path d="M4.23995 24.0191L4.25995 17.5491H2.85995C1.28995 17.5491 0.00994589 16.2691 0.00994589 14.6991V3.75906C-5.41061e-05 2.18906 1.27995 0.909058 2.84995 0.909058H21.1399C22.7099 0.909058 23.9899 2.18906 23.9899 3.75906V14.6891C23.9899 16.2591 22.7099 17.5391 21.1399 17.5391H10.7399L4.22995 24.0091L4.23995 24.0191ZM2.84995 1.97906C1.86995 1.97906 1.06995 2.77906 1.06995 3.75906V14.6891C1.06995 15.6691 1.86995 16.4691 2.84995 16.4691H5.32995V21.4191L10.2999 16.4691H21.1499C22.1299 16.4691 22.9299 15.6691 22.9299 14.6891V3.75906C22.9299 2.77906 22.1299 1.97906 21.1499 1.97906H2.84995Z" fill="white"/>
@@ -23,10 +15,6 @@
     </clipPath>
     </defs>
   </svg>
-  {# Close icon when open #}
-  {# <svg class="vf-chatbot-fab__icon vf-chatbot-fab__icon--close" viewBox="0 0 24 24" style="display: none;">
-    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-  </svg> #}
 
   {% if notification_count > 0 %}
   <span class="vf-chatbot-fab__badge">{{ notification_count }}</span>

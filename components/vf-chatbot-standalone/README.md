@@ -270,7 +270,7 @@ document.addEventListener('vf-chatbot:message-receive', (event) => {
 });
 
 document.addEventListener('vf-chatbot-feedback:submit', (event) => {
-  const { messageId, feedbackType, feedbackText } = event.detail;
+  const { messageId, feedbackType, feedbackText, feedbackComment } = event.detail;
   // Handle feedback submission
 });
 

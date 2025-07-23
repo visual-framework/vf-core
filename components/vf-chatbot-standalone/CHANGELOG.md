@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0.0-beta.3
+
+* Fixed: Added code to return feedback comments
+
 ### 1.0.0-beta.2
 
 * Updated package.json with correct settings
