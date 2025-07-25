@@ -40,4 +40,10 @@ function initVFChatbotFab() {
   }
 }
 
+// Global exposure
+if (typeof window !== "undefined") {
+  window.VFChatbotFab = VFChatbotFab;
+  window.initVFChatbotFab = initVFChatbotFab;
+}
+
 export { VFChatbotFab, initVFChatbotFab };

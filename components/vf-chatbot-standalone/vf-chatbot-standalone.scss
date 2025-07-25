@@ -13,7 +13,7 @@
 
   &__header {
     margin-bottom: 24px;
-    color: #000000;
+    color: var(--vf-color--neutral--900);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -85,7 +85,7 @@
     line-height: 2.1;
     border: none;
     resize: none;
-    background: #FFFFFF;
+    background: var(--vf-color--neutral--0);
     box-shadow: none !important;
     // /* When typing (not showing placeholder) */
     &:not(:placeholder-shown) {
@@ -126,6 +126,16 @@
       // width: 88%;
       padding: 0 0.5rem;
     }
+  }
+
+  &__messages-no-scrollbar {
+    @extend .vf-chatbot-standalone__messages;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+
+  &__messages-no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   &__disclaimer {

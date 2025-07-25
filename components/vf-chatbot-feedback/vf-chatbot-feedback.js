@@ -188,14 +188,6 @@ export class VFChatbotFeedback {
       // Bring the feedback form into view
       formContainer.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-
-    // Scroll chat window to bottom
-    const chatMessages = document.querySelector(
-      "[data-vf-js-chatbot-standalone-messages]"
-    );
-    if (chatMessages) {
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
   }
 
   bindFormEvents(formContainer) {

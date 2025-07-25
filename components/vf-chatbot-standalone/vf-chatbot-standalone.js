@@ -17,12 +17,20 @@ class VFChatbotStandalone {
   }
 
   loadConfiguration(customConfig) {
-    // Get config from data attribute
-    const dataConfig = this.container.dataset.vfChatbotConfig
-      ? JSON.parse(this.container.dataset.vfChatbotConfig)
-      : {};
+    // Get config from data-vf-chatbot-config attribute
+    let dataConfig = {};
+    const attr = this.container.getAttribute("data-vf-chatbot-config");
+    if (attr) {
+      try {
+        dataConfig = JSON.parse(attr);
+      } catch (e) {
+        console.warn("Invalid JSON in data-vf-chatbot-config:", e);
+      }
+    }
+
     // Default configuration
     const defaultConfig = {
+      type: "standalone",
       title: "AI Assistant",
       welcome_logo: true,
       welcome_message: "Welcome! I'm here to help",
@@ -36,20 +44,20 @@ class VFChatbotStandalone {
         'Review AI generated content for accuracy. <a class="vf-link" target="_blank" rel="noopener noreferrer" aria-label="Leave feedback (opens in new tab)" href="https://embl.service-now.com/esc?id=sc_cat_item&sys_id=5eeb8eb91b92e650b376da88b04bcbc1">Leave feedback</a>.',
       icons: {
         assistant_avatar:
-          "../../assets/vf-chatbot-standalone/assets/vf-chatbot--icon-16x16-dark-green.svg",
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
         user_avatar:
-          "../../assets/vf-chatbot-standalone/assets/vf-chatbot--avatar-user.svg",
+          "../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg",
         send_button:
-          "../../assets/vf-chatbot-standalone/assets/vf-chatbot--icon-send.svg",
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
         main_logo_url:
-          "../../assets/vf-chatbot-standalone/assets/vf-chatbot--icon-32x32-dark-green.svg"
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg"
       },
 
       api: {
         chat_endpoint: false, //"/api/chat", // Disabled to use fallback responses
         feedback_endpoint: false, //"/api/feedback",
         qa_data_url:
-          "../../assets/vf-chatbot-standalone/assets/vf-chatbot-qa.json",
+          "../../assets/vf-chatbot/assets/vf-chatbot-qa.json",
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer your-token"
@@ -61,6 +69,7 @@ class VFChatbotStandalone {
         enable_welcome: true,
         enable_feedback: true,
         enable_sources: true,
+        enable_sources_custom_format: false,
         enable_welcome_suggestions: true,
         enable_typing_indicator: true,
         enable_disclaimer: true,
@@ -72,7 +81,8 @@ class VFChatbotStandalone {
 
       behavior: {
         auto_scroll: true,
-        typing_delay: 800
+        typing_delay: 800,
+        show_scrollbar: false
       },
 
       selectorContext: {
@@ -84,7 +94,7 @@ class VFChatbotStandalone {
           showAllServices: true,
           showAllServicesSelected: true,
           routes:
-            "../../assets/vf-chatbot-standalone/assets/vf-chatbot-selector-services.json",
+            "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
           placeholder: "Select services",
           title: "Services"
         }
@@ -763,12 +773,32 @@ class VFChatbotStandalone {
     }
 
     // Add sources if enabled and present
-    if (this.config.features.enable_sources && sources && sources.length > 0) {
+    if (this.config.features.enable_sources && sources && (sources.length > 0 || sources != "")) {
       const feedbackContainer = assistantMessage.querySelector(
         "[data-vf-js-chatbot-feedback]"
       );
-      const sourcesEl = initVFChatbotSources(sources);
-      assistantMessage.insertBefore(sourcesEl.el, feedbackContainer);
+      let sourceHTML = "";
+      if (!this.config.features.enable_sources_custom_format && sources.length > 0){
+        sourceHTML = sources
+          .map(
+            message => `
+          <li class="vf-chatbot-sources__item">
+            <div class="vf-chatbot-sources__label">${message.domain}</div>
+            <a class="vf-link vf-chatbot-sources__link" href="${message.url}" target="_blank" rel="noopener noreferrer" aria-label="${message.title} (opens in new tab)">
+              ${message.title}
+            </a>
+            <div class="vf-chatbot-sources__description">${message.description}</div>
+          </li>
+        `
+          )
+        .join("");
+      } else if (this.config.features.enable_sources_custom_format && sources != ""){
+        sourceHTML = sources;
+      }
+      if(sourceHTML != "") {
+        const sourcesEl = initVFChatbotSources(sourceHTML);
+        assistantMessage.insertBefore(sourcesEl.el, feedbackContainer);
+      }
     }
 
     // Add prompts if present

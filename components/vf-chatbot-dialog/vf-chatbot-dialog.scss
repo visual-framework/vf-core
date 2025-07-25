@@ -4,7 +4,7 @@
   left: 0;
   padding: 5%;
   width: 90%;
-  height: 92%;
+  height: 56vh;
   background: rgba(0, 0, 0, 0.5);
   display: none;
   justify-content: center;
@@ -18,7 +18,7 @@
     padding: 16px 24px;
     width: 100%;
     max-width: 480px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px ui-color(black);
     position: relative;
     margin: auto;
     animation: dialogFadeIn 0.2s ease-out;
@@ -28,7 +28,7 @@
     display: flex;
     justify-content: space-between;
     align-items: self-start;
-    margin-bottom: 16px;
+    // margin-bottom: 16px;
   }
 
   &__title {
@@ -49,45 +49,34 @@
   }
 
   &__body {
-    margin-bottom: 32px;
-
     p {
       margin: 8px;
-      color: #666;
     }
   }
 
   &__actions {
     display: flex;
-    gap: 16px;
+    gap: 8px;
     justify-content: flex-end;
   }
 
   &__button {
     padding: 8px 16px;
-    border-radius: $vf-radius--xs;
+    width: 100%;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
 
     &--outline {
       background: none;
-      border: 1px solid #1a73e8;
-      color: #1a73e8;
-
-      &:hover {
-        background: rgba(26, 115, 232, 0.04);
-      }
+      border: 2px solid var(--vf-color--blue);
+      color: var(--vf-color--blue);
     }
 
     &--primary {
-      background: #1a73e8;
+      background: var(--vf-color--blue);
       border: none;
       color: white;
-
-      &:hover {
-        background: #1557b0;
-      }
     }
   }
 }

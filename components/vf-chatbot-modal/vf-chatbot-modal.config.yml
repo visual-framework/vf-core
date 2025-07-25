@@ -1,16 +1,16 @@
 title: Chatbot Modal
 label: Chatbot Modal
-status: beta
+status: alpha
 preview: '@preview'
 context:
-  component-type: container
+  component-type: element
   hide-from-sitemenu: true
 variants:
   - name: default
     context:
       config:
-
         # Basic Configuration
+        type: "modal"
         title: "AI Assistant"
         welcome_logo: true
         welcome_message: "Welcome! I'm here to help"
@@ -20,16 +20,18 @@ variants:
         welcome_max_suggestions: 4
         # Icons and Images (all customizable)
         icons:
-          assistant_avatar: "../../assets/vf-chatbot-modal/assets/vf-chatbot--icon-16x16-dark-green.svg"
-          user_avatar: "../../assets/vf-chatbot-modal/assets/vf-chatbot--avatar-user.svg"
-          send_button: "../../assets/vf-chatbot-modal/assets/vf-chatbot--icon-send.svg"
-          main_logo_url: "../../assets/vf-chatbot-modal/assets/vf-chatbot--icon-32x32-dark-green.svg"
+          assistant_avatar: "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg"
+          user_avatar: "../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg"
+          send_button: "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg"
+          main_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg"
+          minimize: "../../assets/vf-chatbot/assets/vf-chatbot--icon-minimize.svg"
+          close: "../../assets/vf-chatbot/assets/vf-chatbot--icon-close.svg"
 
         # API Configuration
         api:
           chat_endpoint: "/api/chat"
           feedback_endpoint: "/api/feedback"
-          qa_data_url: "../../assets/vf-chatbot-modal/assets/vf-chatbot-qa.json"
+          qa_data_url: "../../assets/vf-chatbot/assets/vf-chatbot-qa.json"
           headers:
             "Content-Type": "application/json"
             "Authorization": "Bearer your-token"
@@ -40,6 +42,7 @@ variants:
           enable_welcome: true
           enable_feedback: true
           enable_sources: true
+          enable_sources_custom_format: true
           enable_welcome_suggestions: true
           enable_typing_indicator: true
           enable_disclaimer: true
@@ -52,6 +55,7 @@ variants:
         behavior:
           auto_scroll: true
           typing_delay: 800
+          show_scrollbar: false
 
         selectorContext: 
           chatbotRoutes: 
@@ -61,7 +65,7 @@ variants:
             showSearchThreshold: 5
             showAllServices: true
             showAllServicesSelected: true
-            routes: "../../assets/vf-chatbot-modal/assets/vf-chatbot-selector-services.json"
+            routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json"
             placeholder: "Select services"
             title: "Services"
         
@@ -116,6 +120,7 @@ variants:
                     // enable_welcome: true,
                     enable_feedback: true,
                     enable_sources: true,
+                    enable_sources_custom_format: true,
                     // enable_welcome_suggestions: true,
                     enable_typing_indicator: true,
                     // enable_disclaimer: true,
@@ -127,6 +132,7 @@ variants:
                   behavior: {
                     auto_scroll: true,
                     typing_delay: 800,
+                    show_scrollbar: false
                   },
                   selectorContext: {
                     chatbotRoutes: {

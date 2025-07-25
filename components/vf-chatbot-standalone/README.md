@@ -80,20 +80,16 @@ The Chatbot branding elements follow EMBL brand guidelines but can be updated to
 
 Texts shown in the examples are placeholder content. Please review and update all wording to fit your your project needs and ensure it meets legal, accessibility and organisational requirements.
 
-### Visual branding elements and content
-
-The Chatbot branding elements follow EMBL brand guidelines but can be updated to suit your use case. For advice on branding updates please contact the EMBL Communications Team.
-
-Texts shown in the examples are placeholder content. Please review and update all wording to fit your your project needs and ensure it meets legal, accessibility and organisational requirements.
-
 ### Accessibility
 
 The component targets WCAG 2.1 AA accessibility standard.
 
-### Installation
+### Install
+
+This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-chatbot-standalone` and other dependant components with this command.
 
 ```bash
-yarn add @visual-framework/vf-chatbot-standalone @visual-framework/vf-chatbot-action-prompt @visual-framework/vf-chatbot-feedback @visual-framework/vf-chatbot-prompt @visual-framework/vf-chatbot-selector @visual-framework/vf-chatbot-sources @visual-framework/vf-chatbot-welcome
+yarn add @visual-framework/vf-chatbot @visual-framework/vf-chatbot-standalone @visual-framework/vf-chatbot-action-prompt @visual-framework/vf-chatbot-feedback @visual-framework/vf-chatbot-prompt @visual-framework/vf-chatbot-selector @visual-framework/vf-chatbot-sources @visual-framework/vf-chatbot-welcome
 ```
 
 ### Sass/CSS
@@ -105,17 +101,13 @@ yarn add @visual-framework/vf-chatbot-standalone @visual-framework/vf-chatbot-ac
 ### JavaScript
 
 ```javascript
-import { VFChatbotStandalone, initVFChatbotStandalone } from "@visual-framework/vf-chatbot-standalone";
-```
 
-### Implementation
 
-### Basic Setup
-
-1. **JavaScript Initialization**
-```javascript
-// Or with custom configuration
-const chatbotInstances = initVFChatbotStandalone(config);
+import { initVFChatbot } from 'vf-chatbot/vf-chatbot.js';
+import { initVFChatbotStandalone } from 'vf-chatbot-standalone/vf-chatbot-standalone.js';
+document.addEventListener("DOMContentLoaded", () => {
+  initVFChatbot(config);
+});
 ```
 where config is the configuration object with different options as described below 
 
@@ -124,15 +116,16 @@ where config is the configuration object with different options as described bel
 ```javascript
 const config = {
   // Basic Settings
+  type: "standalone",
   title: "AI Assistant",
   welcome_message: "Welcome! I'm here to help",
   input_placeholder: "Ask me anything...",
   welcome_max_suggestions: 4,
-  
+
   // Content & Branding
   disclaimer: 'Custom disclaimer with <a href="/privacy">privacy policy</a>',
   footnote: 'Custom footnote with <a href="/feedback">feedback link</a>',
-  
+
   // Icons & Assets
   icons: {
     assistant_avatar: "path/to/assistant-icon.svg",
@@ -140,11 +133,11 @@ const config = {
     send_button: "path/to/send-icon.svg",
     main_logo_url: "path/to/logo.svg"
   },
-  
+
   // API Configuration
   api: {
     chat_endpoint: "/api/chat",
-    feedback_endpoint: "/api/feedback", 
+    feedback_endpoint: "/api/feedback",
     qa_data_url: "path/to/qa-data.json",
     headers: {
       "Content-Type": "application/json",
@@ -152,12 +145,13 @@ const config = {
     },
     timeout: 10000
   },
-  
+
   // Feature Toggles
   features: {
     enable_welcome: true,
     enable_feedback: true,
     enable_sources: true,
+    enable_sources_custom_format: true,
     enable_welcome_suggestions: true,
     enable_typing_indicator: true,
     enable_disclaimer: true,
@@ -165,6 +159,35 @@ const config = {
     enable_fallback_responses: true,
     enable_qa_data_loading: true,
     enable_instant_feedback: false
+  },
+
+  // New options
+  behavior: {
+    auto_scroll: true,
+    typing_delay: 800,
+    show_scrollbar: false // or false to hide scrollbar
+  },
+  selectorContext: {
+    chatbotRoutes: {
+      multiSelect: true,
+      maxMultiSelect: 3,
+      showSearch: true,
+      showSearchThreshold: 5,
+      showAllServices: true,
+      showAllServicesSelected: true,
+      routes: "assets/vf-chatbot-selector-services.json",
+      placeholder: "Select services",
+      title: "Available Services"
+    }
+  },
+  handlers: {
+    on_message_send: "handleMessageSend",
+    on_response_receive: "handleResponseReceive",
+    on_feedback_submit: "handleFeedbackSubmit",
+    on_suggestion_click: "handleSuggestionClick",
+    on_error: "handleError",
+    on_conversation_start: "handleConversationStart",
+    on_conversation_end: "handleConversationEnd"
   }
 };
 ```
@@ -432,6 +455,7 @@ const config = {
 const config = {
   features: {
     enable_sources: true
+    enable_sources_custom_format: true,
   }
 };
 
@@ -464,16 +488,6 @@ const config = {
     }
   ]
 }
-```
-
-### Instance Management
-
-```javascript
-// Get chatbot configuration
-const config = chatbotInstance.getConfiguration();
-
-// Destroy instance
-chatbotInstance.destroy();
 ```
 
 ### React Integration

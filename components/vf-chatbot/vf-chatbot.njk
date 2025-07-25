@@ -1,10 +1,8 @@
-
-<div class="vf-chatbot" data-vf-js-chatbot>
-{% render '@vf-chatbot-fab' %}
-{% render '@vf-chatbot-modal', {
-  title: "AI Assistant",
-  welcome_title: "AI assistant",
-  welcome_message: "Hello! How can I help you today?",
-  input_placeholder: "Ask me ..."
-} %}
-</div>
+{% if config.type == "modal" %}
+  <div class="vf-chatbot" data-vf-js-chatbot>
+    {% render '@vf-chatbot-fab' %}
+    {% render '@vf-chatbot-modal', { config: config } %}
+  </div>
+{% elif config.type == "standalone" %}
+  {% render '@vf-chatbot-standalone', { config: config } %}
+{% endif %}

@@ -64,19 +64,31 @@ function getBottomBannerHeight(userHeight) {
   return 0;
 }
 
-function initVFChatbot(userOptions = {}) {
-  const elements = document.querySelectorAll("[data-vf-js-chatbot]");
-  const chatbotBottomMargin = getBottomBannerHeight(
-    userOptions.chatbotBottomMargin
-  );
-  elements.forEach(element => {
-    // Set CSS variable for FAB and modal margin
-    element.style.setProperty(
-      "--vf-bottom-banner-height",
-      `${chatbotBottomMargin}px`
+function initVFChatbot(config = {}) {
+  if(config && config.type == 'modal'){
+    const elements = document.querySelectorAll("[data-vf-js-chatbot]");
+    const chatbotBottomMargin = getBottomBannerHeight(
+      config.chatbotBottomMargin
     );
-    new VFChatbot(element);
-  });
+    elements.forEach(element => {
+      // Set CSS variable for FAB and modal margin
+      element.style.setProperty(
+        "--vf-bottom-banner-height",
+        `${chatbotBottomMargin}px`
+      );
+      new VFChatbot(element);
+      initVFChatbotFab();
+      initVFChatbotModal(config);
+    });
+  } else if(config && config.type == 'standalone'){
+    initVFChatbotStandalone(config);
+  }
+}
+
+// Global exposure
+if (typeof window !== "undefined") {
+  window.VFChatbot = VFChatbot;
+  window.initVFChatbot = initVFChatbot;
 }
 
 export { VFChatbot, initVFChatbot };
