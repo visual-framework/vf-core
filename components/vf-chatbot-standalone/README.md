@@ -132,6 +132,7 @@ const config = {
     user_avatar: "path/to/user-icon.svg",
     send_button: "path/to/send-icon.svg",
     main_logo_url: "path/to/logo.svg"
+    selector_logo_url: "path/to/selector-logo.svg",
   },
 
   // API Configuration

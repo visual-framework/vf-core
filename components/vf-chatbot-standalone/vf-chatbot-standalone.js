@@ -50,7 +50,8 @@ class VFChatbotStandalone {
         send_button:
           "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
         main_logo_url:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg"
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg",
+        selector_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg"
       },
 
       api: {

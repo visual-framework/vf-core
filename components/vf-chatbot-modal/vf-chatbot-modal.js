@@ -53,7 +53,8 @@ class VFChatbotModal {
         main_logo_url:
           "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg",
         minimize: "../../assets/vf-chatbot/assets/vf-chatbot--icon-minimize.svg",
-        close: "../../assets/vf-chatbot/assets/vf-chatbot--icon-close.svg"
+        close: "../../assets/vf-chatbot/assets/vf-chatbot--icon-close.svg",
+        selector_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg"
       },
 
       api: {

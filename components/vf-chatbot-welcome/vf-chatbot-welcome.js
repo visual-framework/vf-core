@@ -31,18 +31,8 @@ export class VFChatbotWelcome {
           : this.el.dataset.enableFallbackResponses !== "false",
       qa_data_url:
         options.qa_data_url ||
-        this.el.dataset.qaDataUrl ||
-        this.getDefaultQADataUrl()
+        this.el.dataset.qaDataUrl
     };
-  }
-
-  /**
-   * Get the default QA data URL based on the current page location
-   * @returns {string} The default QA data URL
-   */
-  getDefaultQADataUrl() {
-    // Use a relative path that works from most page locations
-    return "../../assets/vf-chatbot/assets/vf-chatbot-qa.json";
   }
 
   async init() {
