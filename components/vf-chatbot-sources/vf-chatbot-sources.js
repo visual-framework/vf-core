@@ -2,25 +2,11 @@ function VFChatbotSources(element) {
   this.el = element;
 }
 
-function initVFChatbotSources(messages) {
-  if (!messages) {
+function initVFChatbotSources(sourceHTML) {
+  if (!sourceHTML) {
     console.error("Message is required for VFChatbotSources");
     return null;
   }
-
-  const sourceHTML = messages
-    .map(
-      message => `
-    <li class="vf-chatbot-sources__item">
-      <div class="vf-chatbot-sources__label">${message.domain}</div>
-      <a class="vf-link vf-chatbot-sources__link" href="${message.url}" target="_blank" rel="noopener noreferrer" aria-label="${message.title} (opens in new tab)">
-        ${message.title}
-      </a>
-      <div class="vf-chatbot-sources__description">${message.description}</div>
-    </li>
-  `
-    )
-    .join("");
 
   const el = document.createElement("div");
   el.className = "vf-chatbot-sources-toggle";
@@ -62,18 +48,6 @@ function initVFChatbotSources(messages) {
     </div>
   `;
 
-  // Helper function to scroll chat to bottom
-  function scrollChatToBottom() {
-    const messagesContainer = document.querySelector(
-      "[data-vf-js-chatbot-standalone-messages]"
-    );
-    if (messagesContainer) {
-      setTimeout(() => {
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-      }, 100); // Small delay to allow DOM updates
-    }
-  }
-
   // Toggle logic
   const toggleBtn = el.querySelector("[data-vf-js-chatbot-sources-toggle]");
   const sourcesDiv = el.querySelector("[data-vf-js-chatbot-sources]");
@@ -82,17 +56,13 @@ function initVFChatbotSources(messages) {
   toggleBtn.addEventListener("click", () => {
     sourcesDiv.classList.remove("vf-chatbot-sources--collapsed");
     toggleBtn.style.display = "none";
-
-    // Scroll to bottom after expanding sources
-    scrollChatToBottom();
+    // Scroll the sources div into view
+    sourcesDiv.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 
   hideBtn.addEventListener("click", () => {
     sourcesDiv.classList.add("vf-chatbot-sources--collapsed");
     toggleBtn.style.display = "";
-
-    // Optional: scroll to bottom after collapsing as well
-    scrollChatToBottom();
   });
 
   return new VFChatbotSources(el);

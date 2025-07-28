@@ -2,7 +2,7 @@
 function VFChatbot(element) {
   this.el = element;
   this.fab = this.el.querySelector("[data-vf-js-chatbot-fab]");
-  this.modal = this.el.querySelector("[data-vf-js-chatbot-modal]");
+  this.modal = this.el.querySelector("[data-vf-js-chatbot-modal-container]");
 
   this.init();
 }
@@ -14,59 +14,30 @@ VFChatbot.prototype = {
     // Handle FAB toggle event
     this.el.addEventListener("vf-chatbot-fab:toggle", e => {
       e.stopPropagation();
-      this.toggleChat();
+      this.openChat();
     });
 
     // Handle modal events
-    this.modal.addEventListener("vf-chatbot-modal:close", () => {
-      this.fab.classList.remove("vf-chatbot-fab--active");
+    this.modal.addEventListener("vf-chatbot-modal-container:close", () => {
+      // this.fab.classList.remove("vf-chatbot-fab--inactive");
+      this.closeChat();
     });
-
-    this.modal.addEventListener("vf-chatbot-modal:minimize", () => {
-      this.fab.classList.remove("vf-chatbot-fab--active");
-    });
-
-    this.modal.addEventListener("vf-chatbot-modal:maximize", () => {
-      this.fab.classList.add("vf-chatbot-fab--active");
-    });
-
-    // Handle clicks outside modal
-    // document.addEventListener("click", e => {
-    //   if (
-    //     !this.modal.classList.contains("vf-chatbot-modal--minimized") &&
-    //     !this.modal.contains(e.target) &&
-    //     !this.fab.contains(e.target)
-    //   ) {
-    //     this.closeChat();
-    //   }
-    // });
 
     // Handle escape key
     document.addEventListener("keydown", e => {
       if (
         e.key === "Escape" &&
-        !this.modal.classList.contains("vf-chatbot-modal--minimized")
+        !this.modal.classList.contains("vf-chatbot-modal-container--inactive")
       ) {
         this.closeChat();
       }
     });
   },
 
-  toggleChat: function() {
-    // Always show chat when hidden
-    if (!this.isModalOpen()) {
-      this.openChat();
-      return;
-    }
-
-    // If visible, minimize
-    this.minimizeChat();
-  },
-
   openChat: function() {
-    this.fab.classList.add("vf-chatbot-fab--active");
-    this.modal.classList.remove("vf-chatbot-modal--minimized");
-    this.modal.classList.add("vf-chatbot-modal--active");
+    this.fab.classList.add("vf-chatbot-fab--inactive");
+    this.modal.classList.remove("vf-chatbot-modal-container--inactive");
+    this.modal.classList.add("vf-chatbot-modal-container--active");
 
     // Focus on input if it exists
     const input = this.modal.querySelector("[data-vf-js-chatbot-input]");
@@ -75,26 +46,49 @@ VFChatbot.prototype = {
     }
   },
 
-  minimizeChat: function() {
-    this.fab.classList.remove("vf-chatbot-fab--active");
-    this.modal.classList.add("vf-chatbot-modal--minimized");
-    this.modal.classList.remove("vf-chatbot-modal--active");
-  },
-
   closeChat: function() {
-    this.fab.classList.remove("vf-chatbot-fab--active");
-    this.modal.classList.remove("vf-chatbot-modal--active");
-    this.modal.classList.remove("vf-chatbot-modal--minimized");
-  },
-
-  isModalOpen: function() {
-    return this.modal.classList.contains("vf-chatbot-modal--active");
+    this.fab.classList.remove("vf-chatbot-fab--inactive");
+    this.modal.classList.remove("vf-chatbot-modal-container--active");
+    this.modal.classList.add("vf-chatbot-modal-container--inactive");
   }
 };
 
-function initVFChatbot() {
-  const elements = document.querySelectorAll("[data-vf-js-chatbot]");
-  elements.forEach(element => new VFChatbot(element));
+function getBottomBannerHeight(userHeight) {
+  // If user provided a height, use it
+  if (typeof userHeight === "number") return userHeight;
+  // Otherwise, check for .vf-banner--bottom
+  const banner = document.querySelector(".vf-banner--bottom");
+  if (banner) {
+    return banner.offsetHeight || 0;
+  }
+  return 0;
+}
+
+function initVFChatbot(config = {}) {
+  if(config && config.type == 'modal'){
+    const elements = document.querySelectorAll("[data-vf-js-chatbot]");
+    const chatbotBottomMargin = getBottomBannerHeight(
+      config.chatbotBottomMargin
+    );
+    elements.forEach(element => {
+      // Set CSS variable for FAB and modal margin
+      element.style.setProperty(
+        "--vf-bottom-banner-height",
+        `${chatbotBottomMargin}px`
+      );
+      new VFChatbot(element);
+      initVFChatbotFab();
+      initVFChatbotModal(config);
+    });
+  } else if(config && config.type == 'standalone'){
+    initVFChatbotStandalone(config);
+  }
+}
+
+// Global exposure
+if (typeof window !== "undefined") {
+  window.VFChatbot = VFChatbot;
+  window.initVFChatbot = initVFChatbot;
 }
 
 export { VFChatbot, initVFChatbot };

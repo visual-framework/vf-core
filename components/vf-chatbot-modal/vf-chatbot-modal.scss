@@ -1,49 +1,65 @@
 // vf-chatbot-modal.scss
+.vf-chatbot-modal-container {
+  background-color: var(--vf-color--neutral--0);
+  border-radius: $vf-radius--sm;
+  border-bottom-right-radius: 0px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
+}
 
 .vf-chatbot-modal {
+  
   display: flex;
   justify-content: end;
-  border-radius: $vf-radius--xs;
   flex-direction: column;
-  height: 75vh;
-  display: none;
+  height: 55vh;
+  border-bottom-left-radius: $vf-radius--sm;
+  border-bottom-right-radius: 0px;
 
   &__header {
-    margin-bottom: 24px;
-    color: #000000;
+    color: var(--vf-color--neutral--900);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    display: none;
-
-    @media (max-width: 768px) {
-      padding: 0 16px;
-    }
+    padding: 8px;
+    min-height: 48px;
   }
 
   &__header-left {
     display: flex;
     align-items: center;
     gap: 12px;
-    display: none;
   }
 
   &__content {
     display: contents;
-    display: none;
   }
 
   &__input-container {
     display: flex;
-    display: none;
-    width: 55%;
-    margin: 16px auto;
-    @media (max-width:$vf-breakpoint--md) {
-      width: 95%;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    border-top: 2px solid var(--vf-color--grey);
+  }
+
+  &__input-wrapper {
+    display: flex;
+    align-items: flex-end;
+    border: 1px solid transparent;
+    label {
+      visibility: hidden;
+      position: absolute;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      height: 1px; 
+      width: 1px;
+      overflow: hidden;
     }
-    @media (max-width: $vf-breakpoint--sm) {
-      width: 88%;
-    }
+  }
+
+  &__input-wrapper:hover, &__input-wrapper:focus-within {
+    border: 1px solid var(--vf-color--blue);
   }
 
   &__input {
@@ -51,91 +67,80 @@
     margin-bottom: 0;
     align-content: center;
     width: 100%;
+    line-height: 2.1;
     border: none;
     resize: none;
-    min-height: 40px;
-    max-height: 125px;
-    background: #FFFFFF;
-    // color: var(--vf-color--neutral--500);
-    /* Default state */
-    // border: 1px solid transparent; /* Start with transparent border */
-    // transition: border-color 0.2s ease;
-    // color: var(--vf-color--neutral--800); /* Default text color */
-
-    // /* Focus state */
-    // &:focus {
-    //   border: 1px solid var(--vf-color--blue); /* Blue border when focused - match this to your actual focus color */
-    //   outline: none; /* Remove default browser outline if needed */
-    // }
-
+    background: var(--vf-color--neutral--0);
+    box-shadow: none !important;
     // /* When typing (not showing placeholder) */
     &:not(:placeholder-shown) {
       color: var(--vf-color__text--primary); /* Text color when typing */
     }
+
+    // When content exceeds 5 rows, show scrollbar
+    &--scrollable {
+      overflow-y: auto;
+    }
   }
 
   &__send-button {
+    height: fit-content;
     background: #3A77BC;
     border: none;
     padding-inline: 0px;
     cursor: pointer;
-    transition: background 0.2s ease;
-
-    &:hover {
-      background: darken(#3A77BC, 10%);
-    }
-
-    svg {
-      width: 24px;
-      height: 24px;
+    img {
+        height: 45px !important;
+        max-width: fit-content !important;
     }
   }
-
-  // &__input:focus ~ &__send-button,
-  // &__input:focus + &__send-button {
-  //   border: 1px solid var(--vf-color--blue); /* Same border as textarea focus */
-  // }
-
-  /* If the button is a child of another wrapper that's adjacent to the textarea */
-  // &__input:focus ~ .vf-chatbot-action-wrapper &__send-button,
-  // &__input:focus + .vf-chatbot-action-wrapper &__send-button {
-  //   border: 1px solid var(--vf-color--blue);
-  // }
 
   &__messages {
     margin: 0 auto;
     flex-direction: column;
     overflow-y: auto;
-    width: 55%;
-    @media (max-width:$vf-breakpoint--md) {
-      width: 95%;
-    }
-    @media (max-width: $vf-breakpoint--sm) {
-      width: 88%;
-    }
+    padding: 0 1.5rem;
+    width: 88%;
+  }
+
+  &__messages-no-scrollbar {
+    @extend .vf-chatbot-modal__messages;
+    width: 89%;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+
+  &__messages-no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   &__disclaimer {
     margin: 0 auto;
-    width: 55%;
-    @media (max-width:$vf-breakpoint--md) {
-      width: 95%;
-    }
-    @media (max-width: $vf-breakpoint--sm) {
+      padding: 0 1.5rem;
       width: 88%;
+    button {
+      padding: 12px;
     }
   }
 
   &__footnote {
     @include set-type(text-body--5);
+    margin: 0 auto;
     text-align: center;
-    margin: 8px auto;
-    width: 55%;
-    @media (max-width:$vf-breakpoint--md) {
-      width: 95%;
-    }
-    @media (max-width: $vf-breakpoint--sm) {
-      width: 88%;
-    }
+  }
+
+  &__header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__minimize,
+  &__close {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s;
   }
 }

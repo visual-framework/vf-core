@@ -27,7 +27,6 @@
 
 
 .vf-chatbot-selector__title img {
-  width: 32px;
   margin: 10px;
   vertical-align: middle;
 }
@@ -70,6 +69,15 @@
   }
 }
 
+
+// If inside vf-chatbot-modal, override some styles
+.vf-chatbot-modal-container .vf-chatbot-selector__dropdown {
+  overflow-y: scroll;
+  z-index: 1000;
+  max-height: 40vh;
+  min-width: 385px;
+}
+
 .vf-chatbot-selector__header {
   @include set-type(text-body--5);
   margin-bottom: 0;
@@ -97,10 +105,16 @@
   input {
     @include set-type(text-body--3);
     margin-bottom: 0;
-    width: 94%;
+    width: 93%;
     padding: 8px 16px;
     padding-right: 0px;
-    border: 1px solid #333;
+    border: 2px solid #333;
+  }
+}
+
+.vf-chatbot-modal-container .vf-chatbot-selector__search {
+  input {
+    width: 95%;
   }
 }
 

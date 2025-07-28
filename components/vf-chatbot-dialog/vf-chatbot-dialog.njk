@@ -1,6 +1,6 @@
 <div class="vf-chatbot-dialog" data-vf-js-chatbot-dialog>
   <div class="vf-chatbot-dialog__content">
-    <div class="vf-chatbot-dialog__header">
+    <div class="vf-chatbot-dialog__header vf-u-margin__bottom--400">
       <h2 class="vf-chatbot-dialog__title">{{ title | default('Close chat and delete conversation?') }}</h2>
       <button class="vf-chatbot-dialog__close" data-vf-js-dialog-close aria-label="Close dialog">
         <svg width="24" height="24" viewBox="0 0 24 24">
@@ -9,9 +9,8 @@
       </button>
     </div>
 
-    <div class="vf-chatbot-dialog__body">
-      <p>{{ message | default('Are you sure you want to close the chat?') }}</p>
-      <p>{{ submessage | default('Your current conversation history will be permanently deleted.') }}</p>
+    <div class="vf-chatbot-dialog__body vf-u-margin__bottom--800">
+      <p>{{ message | default('Are you sure you want to close the chat? <br>Your current conversation history will be permanently deleted.') }}</p>
     </div>
 
     <div class="vf-chatbot-dialog__actions">

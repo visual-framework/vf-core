@@ -81,6 +81,7 @@ export class VFChatbotFeedback {
       messageId: this.messageId,
       feedbackType: feedbackType,
       feedbackText: "", // Empty for instant feedback
+      feedbackComment: "", // Empty for instant feedback
       timestamp: Date.now()
     };
 
@@ -183,14 +184,9 @@ export class VFChatbotFeedback {
       const formContent = template.content.cloneNode(true);
       formContainer.appendChild(formContent);
       this.bindFormEvents(formContainer);
-    }
 
-    // Scroll chat window to bottom
-    const chatMessages = document.querySelector(
-      "[data-vf-js-chatbot-standalone-messages]"
-    );
-    if (chatMessages) {
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      // Bring the feedback form into view
+      formContainer.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 
@@ -253,10 +249,14 @@ export class VFChatbotFeedback {
       ? "positive"
       : "negative";
 
+    const feedbackComment =
+      formContainer.querySelector(".vf-chatbot-feedback__comment").value || "";
+
     const feedbackData = {
       messageId: this.messageId,
       feedbackType: feedbackType,
       feedbackText: feedbackText,
+      feedbackComment: feedbackComment,
       timestamp: Date.now()
     };
 
