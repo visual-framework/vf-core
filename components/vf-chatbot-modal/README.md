@@ -107,7 +107,7 @@ yarn add @visual-framework/vf-chatbot @visual-framework/vf-chatbot-modal  @visua
 import { initVFChatbot } from 'vf-chatbot/vf-chatbot.js';
 import { initVFChatbotModal } from 'vf-chatbot-modal/vf-chatbot-modal.js';
 import { initVFChatbotFab } from 'vf-chatbot-fab/vf-chatbot-fab.js';
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   initVFChatbot(config);
 });
 ```

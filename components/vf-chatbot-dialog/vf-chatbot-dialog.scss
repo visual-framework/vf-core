@@ -4,7 +4,9 @@
   left: 0;
   padding: 5%;
   width: 90%;
-  height: 56vh;
+  height: -moz-available;          /* WebKit-based browsers will ignore this. */
+  height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  height: stretch;
   background: rgba(0, 0, 0, 0.5);
   display: none;
   justify-content: center;
