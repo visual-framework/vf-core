@@ -65,7 +65,7 @@ function getBottomBannerHeight(userHeight) {
 }
 
 function initVFChatbot(config = {}) {
-  if(config && config.type == 'modal'){
+  if (config && config.type == "modal") {
     const elements = document.querySelectorAll("[data-vf-js-chatbot]");
     const chatbotBottomMargin = getBottomBannerHeight(
       config.chatbotBottomMargin
@@ -80,7 +80,7 @@ function initVFChatbot(config = {}) {
       initVFChatbotFab();
       initVFChatbotModal(config);
     });
-  } else if(config && config.type == 'standalone'){
+  } else if (config && config.type == "standalone") {
     initVFChatbotStandalone(config);
   }
 }

@@ -48,13 +48,14 @@ class VFChatbotModal {
           "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
         user_avatar:
           "../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg",
-        send_button:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
+        send_button: "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
         main_logo_url:
           "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg",
-        minimize: "../../assets/vf-chatbot/assets/vf-chatbot--icon-minimize.svg",
+        minimize:
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-minimize.svg",
         close: "../../assets/vf-chatbot/assets/vf-chatbot--icon-close.svg",
-        selector_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg"
+        selector_logo_url:
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg"
       },
 
       api: {
@@ -788,12 +789,19 @@ class VFChatbotModal {
     }
 
     // Add sources if enabled and present
-    if (this.config.features.enable_sources && sources && (sources.length > 0 || sources != "")) {
+    if (
+      this.config.features.enable_sources &&
+      sources &&
+      (sources.length > 0 || sources != "")
+    ) {
       const feedbackContainer = assistantMessage.querySelector(
         "[data-vf-js-chatbot-feedback]"
       );
       let sourceHTML = "";
-      if (!this.config.features.enable_sources_custom_format && sources.length > 0){
+      if (
+        !this.config.features.enable_sources_custom_format &&
+        sources.length > 0
+      ) {
         sourceHTML = sources
           .map(
             message => `
@@ -806,11 +814,14 @@ class VFChatbotModal {
           </li>
         `
           )
-        .join("");
-      } else if (this.config.features.enable_sources_custom_format && sources != ""){
+          .join("");
+      } else if (
+        this.config.features.enable_sources_custom_format &&
+        sources != ""
+      ) {
         sourceHTML = sources;
       }
-      if(sourceHTML != "") {
+      if (sourceHTML != "") {
         const sourcesEl = initVFChatbotSources(sourceHTML);
         assistantMessage.insertBefore(sourcesEl.el, feedbackContainer);
       }

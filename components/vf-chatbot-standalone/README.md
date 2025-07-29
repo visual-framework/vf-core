@@ -105,7 +105,7 @@ yarn add @visual-framework/vf-chatbot @visual-framework/vf-chatbot-standalone @v
 
 import { initVFChatbot } from 'vf-chatbot/vf-chatbot.js';
 import { initVFChatbotStandalone } from 'vf-chatbot-standalone/vf-chatbot-standalone.js';
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   initVFChatbot(config);
 });
 ```
