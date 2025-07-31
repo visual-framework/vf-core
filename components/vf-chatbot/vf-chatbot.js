@@ -1,3 +1,8 @@
+
+import { initVFChatbotFab } from "vf-chatbot-fab/vf-chatbot-fab.js";
+import { initVFChatbotModal } from "vf-chatbot-modal/vf-chatbot-modal.js";
+import { initVFChatbotStandalone } from "vf-chatbot-standalone/vf-chatbot-standalone.js";
+
 // vf-chatbot
 function VFChatbot(element) {
   this.el = element;
@@ -44,12 +49,14 @@ VFChatbot.prototype = {
     if (input) {
       setTimeout(() => input.focus(), 300);
     }
+    localStorage.setItem("chatbotModalMinimized", "false");
   },
 
   closeChat: function() {
     this.fab.classList.remove("vf-chatbot-fab--inactive");
     this.modal.classList.remove("vf-chatbot-modal-container--active");
     this.modal.classList.add("vf-chatbot-modal-container--inactive");
+    localStorage.setItem("chatbotModalMinimized", "true");
   }
 };
 

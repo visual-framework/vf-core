@@ -159,6 +159,8 @@ class VFChatbotModal {
   }
 
   setupDOMElements() {
+    this.fab = document.querySelector("[data-vf-js-chatbot-fab]");
+
     this.minimizeBtn = this.container.querySelector(
       "[data-vf-js-chatbot-modal-minimize]"
     );
@@ -230,6 +232,126 @@ class VFChatbotModal {
 
     // Load Q&A data if using fallback responses
     this.loadQADataAndPopulateSuggestions();
+
+    // Restore conversation HTML from localStorage
+    const persistedHTML = this.loadConversationHTML();
+    if (persistedHTML && this.messagesContainer) {
+      this.messagesContainer.innerHTML = persistedHTML;
+      if (this.welcomeScreen) {
+        this.welcomeScreen.style.display = "none";
+      }
+      this.messagesContainer.style.display = "flex";
+      // Hide disclaimer if present
+      if (this.disclaimer) {
+        this.disclaimer.style.display = "none";
+      }
+      // Hide all loading indicator divs
+      const loadingDivs = this.messagesContainer.querySelectorAll(
+        ".vf-chatbot-message--loading"
+      );
+      loadingDivs.forEach(div => {
+        div.style.display = "none";
+      });
+      // Hide all feedback response banners
+      const feedbackBanners = this.messagesContainer.querySelectorAll(
+        ".vf-chatbot-feedback__form-container"
+      );
+      feedbackBanners.forEach(div => {
+        div.style.display = "none";
+      });
+      // Re-initialize feedback thumbs
+      const feedbackContainers = this.messagesContainer.querySelectorAll(
+        "[data-vf-js-chatbot-feedback]"
+      );
+      const feedbackState = JSON.parse(localStorage.getItem("chatbotModalFeedbackState") || "{}");
+      feedbackContainers.forEach(container => {
+        const messageId = container.dataset.messageId;
+        const feedbackType = feedbackState[messageId];
+        if (feedbackType) {
+          // Find thumb icons and set solid/active state
+          const positiveThumb = container.querySelector("[data-vf-js-feedback-thumb='up']");
+          const negativeThumb = container.querySelector("[data-vf-js-feedback-thumb='down']");
+          if (positiveThumb && feedbackType === "positive") {
+            positiveThumb.classList.add("vf-chatbot-feedback__thumb--solid");
+            if (negativeThumb) {
+              negativeThumb.classList.remove("vf-chatbot-feedback__thumb--solid");
+              negativeThumb.style.display = "none";
+            }
+          }
+          if (negativeThumb && feedbackType === "negative") {
+            negativeThumb.classList.add("vf-chatbot-feedback__thumb--solid");
+            if (positiveThumb) {
+              positiveThumb.classList.remove("vf-chatbot-feedback__thumb--solid");
+              positiveThumb.style.display = "none";
+            }
+          }
+        } else {
+          new VFChatbotFeedback(container, messageId, {
+            enable_instant_feedback: this.config.features.enable_instant_feedback,
+            api_endpoint: this.config.api.feedback_endpoint
+          });
+        }
+      });
+      // Re-initialize 'View sources' event listeners
+      const sourcesContainers = this.messagesContainer.querySelectorAll(
+        ".vf-chatbot-sources-toggle"
+      );
+      if (sourcesContainers) {
+        sourcesContainers.forEach(sourcesContainer => {
+          const toggleBtn = sourcesContainer.querySelector(
+            "[data-vf-js-chatbot-sources-toggle]"
+          );
+          const sourcesDiv = sourcesContainer.querySelector(
+            "[data-vf-js-chatbot-sources]"
+          );
+          const hideBtn = sourcesContainer.querySelector(
+            "[data-vf-js-chatbot-sources-hide]"
+          );
+
+          toggleBtn.addEventListener("click", () => {
+            sourcesDiv.classList.remove("vf-chatbot-sources--collapsed");
+            toggleBtn.style.display = "none";
+            // Scroll the sources div into view
+            // sourcesDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+          });
+          hideBtn.addEventListener("click", () => {
+            sourcesDiv.classList.add("vf-chatbot-sources--collapsed");
+            toggleBtn.style.display = "";
+          });
+          hideBtn.click();
+        });
+      }
+      // Keep chatbot open if there is persistedHTML
+      if (this.container) {
+        this.fab.classList.add("vf-chatbot-fab--inactive");
+        this.container.classList.remove("vf-chatbot-modal-container--inactive");
+        this.container.classList.add("vf-chatbot-modal-container--active");
+
+        // Focus on input if it exists
+        const input = this.container.querySelector(
+          "[data-vf-js-chatbot-input]"
+        );
+        if (input) {
+          setTimeout(() => input.focus(), 300);
+        }
+      }
+
+      const wasMinimized = localStorage.getItem("chatbotModalMinimized") === "true";
+      if (this.container) {
+        if (wasMinimized) {
+          this.fab.classList.remove("vf-chatbot-fab--inactive");
+          this.container.classList.remove("vf-chatbot-modal-container--active");
+          this.container.classList.add("vf-chatbot-modal-container--inactive");
+        } else {
+          this.fab.classList.add("vf-chatbot-fab--inactive");
+          this.container.classList.remove("vf-chatbot-modal-container--inactive");
+          this.container.classList.add("vf-chatbot-modal-container--active");
+          // Focus input if needed
+        }
+        this.scrollToBottom();
+      }
+      return; // Skip history-based rendering if HTML is present
+    }
   }
 
   setupEventHandlers() {
@@ -304,6 +426,11 @@ class VFChatbotModal {
       if (this.config.api.feedback_endpoint) {
         this.submitFeedbackToAPI(eventData);
       }
+
+      // Update local storage feedback state
+      let feedbackState = JSON.parse(localStorage.getItem("chatbotModalFeedbackState") || "{}");
+      feedbackState[messageId] = feedbackType; // e.g., "positive" or "negative"
+      localStorage.setItem("chatbotModalFeedbackState", JSON.stringify(feedbackState));
 
       if (
         handlers.on_feedback_submit &&
@@ -406,6 +533,20 @@ class VFChatbotModal {
       const selector = initVFChatbotSelector(this.selectorEl);
       this.selectorEl.addEventListener("routeselection", e => {
         this.handleRouteSelection(e.detail);
+        // Save selection on change
+        localStorage.setItem(
+          "vfChatbotSelectorSelection",
+          JSON.stringify(e.detail.selectedItems)
+        );
+      });
+
+      // Restore selection only after routes are loaded/rendered
+      this.selectorEl.addEventListener("routesloaded", () => {
+        this.savedSelection = localStorage.getItem("vfChatbotSelectorSelection");
+        if (this.savedSelection) {
+          const selectedItems = JSON.parse(this.savedSelection);
+          selector.setSelection(selectedItems);
+        }
       });
     }
 
@@ -649,6 +790,7 @@ class VFChatbotModal {
     }
 
     this.messagesContainer.appendChild(userMessage);
+    this.saveConversationHTML(this.messagesContainer.innerHTML);
 
     // Clear input
     if (this.input) {
@@ -847,8 +989,8 @@ class VFChatbotModal {
         });
       }
     }
-
     this.messagesContainer.appendChild(assistantMessage);
+    this.saveConversationHTML(this.messagesContainer.innerHTML);
     this.scrollToBottom();
 
     return messageId;
@@ -949,6 +1091,12 @@ class VFChatbotModal {
 
     if (this.messagesContainer) {
       this.messagesContainer.innerHTML = "";
+      localStorage.removeItem("chatbotModalConversationHTML");
+      localStorage.removeItem("chatbotModalFeedbackState");
+      localStorage.removeItem("chatbotModalMinimized");
+    }
+    if (this.savedSelection) {
+      localStorage.removeItem("vfChatbotSelectorSelection");
     }
 
     if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
@@ -1010,6 +1158,15 @@ class VFChatbotModal {
         this.apiResponseListener
       );
     }
+  }
+
+  // Helper functions for conversation persistence
+  saveConversationHTML(html) {
+    localStorage.setItem("chatbotModalConversationHTML", html);
+  }
+
+  loadConversationHTML() {
+    return localStorage.getItem("chatbotModalConversationHTML") || "";
   }
 }
 
