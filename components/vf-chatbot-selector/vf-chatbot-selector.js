@@ -179,6 +179,9 @@ export class VFChatbotSelector {
 
     // Handle initial selections for loaded routes
     this.handleInitialSelections();
+
+    // Dispatch event to signal routes are loaded and UI is ready
+    this.el.dispatchEvent(new CustomEvent("routesloaded"));
   }
 
   // New method to bind only list item events
@@ -461,6 +464,34 @@ export class VFChatbotSelector {
     // Update display and clear button
     this.updateSelectionDisplay();
     this.updateClearButton();
+  }
+
+  setSelection(selectedItems) {
+    // Deselect all first
+    this.selectedItems.clear();
+    this.listItems.forEach(item => {
+      item.classList.remove("vf-chatbot-selector__item--selected");
+    });
+
+    // If "all" is selected
+    if (selectedItems.includes("all")) {
+      this.selectAllServices();
+    } else {
+      selectedItems.forEach(id => {
+        const item = this.el.querySelector(`[data-route-id="${id}"]`);
+        if (item) {
+          item.classList.add("vf-chatbot-selector__item--selected");
+          this.selectedItems.add(id);
+        }
+      });
+      this.allServicesSelected = false;
+      if (this.allServicesItem) {
+        this.allServicesItem.classList.remove("vf-chatbot-selector__item--selected");
+      }
+    }
+    this.updateSelectionDisplay();
+    this.updateClearButton();
+    this.dispatchSelectionEvent();
   }
 
   selectAllServices() {

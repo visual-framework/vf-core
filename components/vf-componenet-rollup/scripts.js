@@ -74,9 +74,6 @@ import { vfTable } from 'vf-table/vf-table';
 vfTable();
 
 import { initVFChatbot } from 'vf-chatbot/vf-chatbot.js';
-import { initVFChatbotModal } from 'vf-chatbot-modal/vf-chatbot-modal.js';
-import { initVFChatbotStandalone } from 'vf-chatbot-standalone/vf-chatbot-standalone.js';
-import { initVFChatbotFab } from 'vf-chatbot-fab/vf-chatbot-fab.js';
 window.addEventListener("load", function() {
   initVFChatbot({
         type: "modal",

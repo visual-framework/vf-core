@@ -391,7 +391,7 @@ class VFChatbotStandalone {
   async init() {
     // Initialize selector if present
     if (this.selectorEl) {
-      const selector = initVFChatbotSelector(this.selectorEl);
+      initVFChatbotSelector(this.selectorEl);
       this.selectorEl.addEventListener("routeselection", e => {
         this.handleRouteSelection(e.detail);
       });
