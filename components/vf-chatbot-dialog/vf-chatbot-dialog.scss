@@ -2,11 +2,12 @@
   position: absolute; // Change from fixed to absolute
   top: 0;
   left: 0;
-  padding: 5%;
+  padding: 0 5%;
   width: 90%;
-  height: -moz-available;          /* WebKit-based browsers will ignore this. */
-  height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-  height: stretch;
+  height: -webkit-fill-available;  // Safari/WebKit
+  height: -moz-available;          // Firefox
+  height: fill-available;
+  height: 100%;                   // Fallback for all browsers
   background: rgba(0, 0, 0, 0.5);
   display: none;
   justify-content: center;
