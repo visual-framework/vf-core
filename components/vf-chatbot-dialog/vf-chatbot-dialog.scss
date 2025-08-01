@@ -2,8 +2,8 @@
   position: absolute; // Change from fixed to absolute
   top: 0;
   left: 0;
-  padding: 0 5%;
-  width: 90%;
+  padding: 0 8px;
+  width: 96%;
   height: -webkit-fill-available;  // Safari/WebKit
   height: -moz-available;          // Firefox
   height: fill-available;
@@ -18,7 +18,7 @@
 
   &__content {
     background: white;
-    padding: 16px 24px;
+    padding: 16px;
     width: 100%;
     max-width: 480px;
     box-shadow: 0 4px 6px ui-color(black);
@@ -35,8 +35,7 @@
   }
 
   &__title {
-    font-size: 24px;
-    font-weight: 500;
+    @include set-type(text-heading--4);
     margin: 0;
   }
 
@@ -51,12 +50,6 @@
     }
   }
 
-  &__body {
-    p {
-      margin: 8px;
-    }
-  }
-
   &__actions {
     display: flex;
     gap: 8px;
@@ -64,9 +57,9 @@
   }
 
   &__button {
+    @include set-type(text-button--2);
     padding: 8px 16px;
     width: 100%;
-    font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
 
