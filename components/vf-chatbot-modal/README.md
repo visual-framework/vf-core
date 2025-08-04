@@ -90,7 +90,7 @@ The component targets WCAG 2.1 AA accessibility standard.
 This repository is distributed with [npm](https://www.npmjs.com/). After [installing npm](https://www.npmjs.com/get-npm) and [yarn](https://classic.yarnpkg.com/en/docs/install), you can install `vf-chatbot-modal` and other dependant components with this command.
 
 ```bash
-yarn add @visual-framework/vf-chatbot @visual-framework/vf-chatbot-modal  @visual-framework/vf-chatbot-fab  @visual-framework/vf-chatbot-dialog @visual-framework/vf-chatbot-action-prompt @visual-framework/vf-chatbot-feedback @visual-framework/vf-chatbot-prompt @visual-framework/vf-chatbot-selector @visual-framework/vf-chatbot-sources @visual-framework/vf-chatbot-welcome
+yarn add @visual-framework/vf-chatbot @visual-framework/vf-chatbot-modal
 ```
 
 ### Sass/CSS
@@ -105,9 +105,7 @@ yarn add @visual-framework/vf-chatbot @visual-framework/vf-chatbot-modal  @visua
 
 
 import { initVFChatbot } from 'vf-chatbot/vf-chatbot.js';
-import { initVFChatbotModal } from 'vf-chatbot-modal/vf-chatbot-modal.js';
-import { initVFChatbotFab } from 'vf-chatbot-fab/vf-chatbot-fab.js';
-window.addEventListener("load", () => {
+window.addEventListener("load", function() {
   initVFChatbot(config);
 });
 ```
@@ -188,7 +186,23 @@ const config = {
     on_suggestion_click: "handleSuggestionClick",
     on_error: "handleError",
     on_conversation_start: "handleConversationStart",
-    on_conversation_end: "handleConversationEnd"
+    on_conversation_end: "handleConversationEnd",
+    on_fab_click: "handleFabClick",
+    on_dialog_confirm: "handleDialogConfirm",
+    on_dialog_cancel: "handleDialogCancel",
+    on_minimize: "handleMinimize"
+  },
+  feedback_options: {
+    positive: [
+      { id: "accurate", label: "Accurate" },
+      { id: "easy", label: "Easy to understand" },
+      { id: "formatted", label: "Well formatted" }
+    ],
+    negative: [
+      { id: "inaccurate", label: "Inaccurate answer" },
+      { id: "nocontext", label: "Did not use context" },
+      { id: "poorformat", label: "Poorly formatted" }
+    ]
   }
 };
 ```
@@ -222,6 +236,8 @@ const selectorConfig = {
     }
   }
 };
+
+Please note that if you want to opt for a single selection option version of the selector dropdown, you need to omit the multiSelect, maxMultiSelect, showAllServices and showAllServicesSelected properties from the selectorConfig above.
 ```
 
 **Selector Data Format (JSON):**
@@ -229,12 +245,12 @@ const selectorConfig = {
 {
   "routes": [
     {
-      "id": "service-1",
-      "title": "Service 1 title"
+      "id": "model-1",
+      "title": "Model 1 title"
     },
     {
-      "id": "service-2", 
-      "title": "Service 2 title"
+      "id": "model-2", 
+      "title": "Model 2 title"
     }
   ]
 }
@@ -256,7 +272,11 @@ const config = {
     on_suggestion_click: "handleSuggestionClick",
     on_error: "handleError",
     on_conversation_start: "handleConversationStart",
-    on_conversation_end: "handleConversationEnd"
+    on_conversation_end: "handleConversationEnd",
+    on_fab_click: "handleFabClick",
+    on_dialog_confirm: "handleDialogConfirm",
+    on_dialog_cancel: "handleDialogCancel",
+    on_minimize: "handleMinimize"
   }
 };
 
@@ -334,6 +354,18 @@ const config = {
   features: {
     enable_feedback: true,
     enable_instant_feedback: false // Default
+  },
+  feedback_options: {
+    positive: [
+      { id: "accurate", label: "Accurate" },
+      { id: "easy", label: "Easy to understand" },
+      { id: "formatted", label: "Well formatted" }
+    ],
+    negative: [
+      { id: "inaccurate", label: "Inaccurate answer" },
+      { id: "nocontext", label: "Did not use context" },
+      { id: "poorformat", label: "Poorly formatted" }
+    ]
   }
 };
 ```
@@ -460,7 +492,7 @@ const config = {
   }
 };
 
-// Sources in API response
+// Sources in API response (predefined format)
 {
   "response": "Here's the information...",
   "sources": [
@@ -470,6 +502,20 @@ const config = {
       "description": "Complete guide to the platform"
     }
   ]
+}
+
+// Sources in API response (custom format)
+{
+  "response": "Here's the information...",
+  "sources": `<nav>
+				  <ul>
+					<li><a href="#nowhere" title="Lorum ipsum dolor sit amet">Lorem</a></li>
+					<li><a href="#nowhere" title="Aliquam tincidunt mauris eu risus">Aliquam</a></li>
+					<li><a href="#nowhere" title="Morbi in sem quis dui placerat ornare">Morbi</a></li>
+					<li><a href="#nowhere" title="Praesent dapibus, neque id cursus faucibus">Praesent</a></li>
+					<li><a href="#nowhere" title="Pellentesque fermentum dolor">Pellentesque</a></li>
+				  </ul>
+				</nav>`
 }
 ```
 

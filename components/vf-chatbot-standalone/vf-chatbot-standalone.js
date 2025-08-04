@@ -108,6 +108,19 @@ class VFChatbotStandalone {
         on_error: "handleError",
         on_conversation_start: "handleConversationStart",
         on_conversation_end: "handleConversationEnd"
+      },
+
+      feedback_options: {
+        positive: [
+          { id: "accurate", label: "Accurate" },
+          { id: "easy", label: "Easy to understand" },
+          { id: "formatted", label: "Well formatted" }
+        ],
+        negative: [
+          { id: "inaccurate", label: "Inaccurate answer" },
+          { id: "nocontext", label: "Did not use context" },
+          { id: "poorformat", label: "Poorly formatted" }
+        ]
       }
     };
 
@@ -827,7 +840,9 @@ class VFChatbotStandalone {
         // Pass configuration to VFChatbotFeedback component
         new VFChatbotFeedback(feedbackContainer, messageId, {
           enable_instant_feedback: this.config.features.enable_instant_feedback,
-          api_endpoint: this.config.api.feedback_endpoint
+          api_endpoint: this.config.api.feedback_endpoint,
+          positiveOptions: this.config.feedback_options?.positive,
+          negativeOptions: this.config.feedback_options?.negative
         });
       }
     }

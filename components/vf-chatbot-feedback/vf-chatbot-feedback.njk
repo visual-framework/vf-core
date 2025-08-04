@@ -10,14 +10,14 @@
       </button>
     </div>
     <div class="vf-chatbot-feedback__options">
-      {% for option in options %}
+      {% set feedback_options = config.feedback_options or options %}
+      {% for option in feedback_options %}
         <button class="vf-chatbot-feedback__option" data-feedback-option="{{option.id}}">
           {{option.label}}
         </button>
       {% endfor %}
     </div>
-    <label id="vf-chatbot-feedback-comment-title" for=
-        id="vf-chatbot-feedback-comment" class="vf-chatbot-feedback__comment-title">Comments</label>
+    <label id="vf-chatbot-feedback-comment-title" for="vf-chatbot-feedback-comment" class="vf-chatbot-feedback__comment-title">Comments</label>
     <textarea
         id="vf-chatbot-feedback-comment"
         aria-labelledby="vf-chatbot-feedback-comment-title"

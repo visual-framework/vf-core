@@ -49,14 +49,14 @@ VFChatbot.prototype = {
     if (input) {
       setTimeout(() => input.focus(), 300);
     }
-    localStorage.setItem("chatbotModalMinimized", "false");
+    sessionStorage.setItem("chatbotModalMinimized", "false");
   },
 
   closeChat: function() {
     this.fab.classList.remove("vf-chatbot-fab--inactive");
     this.modal.classList.remove("vf-chatbot-modal-container--active");
     this.modal.classList.add("vf-chatbot-modal-container--inactive");
-    localStorage.setItem("chatbotModalMinimized", "true");
+    sessionStorage.setItem("chatbotModalMinimized", "true");
   }
 };
 
