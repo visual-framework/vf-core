@@ -142,6 +142,18 @@ window.addEventListener("load", function() {
           on_error: "handleError",
           on_conversation_start: "handleConversationStart",
           on_conversation_end: "handleConversationEnd"
+        },
+        feedback_options: {
+          positive: [
+            { id: "accurate", label: "Accurate" },
+            { id: "easy", label: "Easy to understand" },
+            { id: "formatted", label: "Well formatted" }
+          ],
+          negative: [
+            { id: "inaccurate", label: "Inaccurate" },
+            { id: "nocontext", label: "Did not use context" },
+            { id: "poorformat", label: "Poorly formatted" }
+          ]
         }
       });
 });

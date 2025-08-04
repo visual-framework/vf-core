@@ -206,7 +206,7 @@
                 {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
                 <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--200">
                   {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
-                    {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == type %}
+                    {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == type and not item.variants.items[0].context['hide-from-sitemenu']%}
                     <li class="vf-navigation__item">
                       <a class="vf-navigation__link" href="/components/{{ item.handle}}">{{ item.title }}</a>
                     </li>
@@ -223,7 +223,7 @@
                 {% include "vf-core-components/vf-section-header/vf-section-header.njk" %}
                 <ul class="vf-navigation__list | vf-list | vf-cluster__inner | vf-stack vf-stack--200">
                   {%- for item in fractalEnvironment.localComponents | sort(false, true, 'title')  %}
-                    {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == type %}
+                    {%- if item.isHidden == false and item.variants.items[0].context['component-type'] == type and not item.variants.items[0].context['hide-from-sitemenu']%}
                     <li class="vf-navigation__item">
                       <a class="vf-navigation__link" href="/components/{{ item.handle}}">{{ item.title }}</a>
                     </li>
@@ -430,7 +430,23 @@
           on_suggestion_click: "handleSuggestionClick",
           on_error: "handleError",
           on_conversation_start: "handleConversationStart",
-          on_conversation_end: "handleConversationEnd"
+          on_conversation_end: "handleConversationEnd",
+          on_fab_click: "handleFabClick",
+          on_dialog_confirm: "handleDialogConfirm",
+          on_dialog_cancel: "handleDialogCancel",
+          on_minimize: "handleMinimize"
+        },
+        feedback_options: {
+          positive: [
+            { id: "accurate", label: "Accurate" },
+            { id: "easy", label: "Easy to understand" },
+            { id: "formatted", label: "Well formatted" }
+          ],
+          negative: [
+            { id: "inaccurate", label: "Inaccurate answer" },
+            { id: "nocontext", label: "Did not use context" },
+            { id: "poorformat", label: "Poorly formatted" }
+          ]
         }
       }
     }

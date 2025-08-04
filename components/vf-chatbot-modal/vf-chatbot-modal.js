@@ -111,7 +111,24 @@ class VFChatbotModal {
         on_suggestion_click: "handleSuggestionClick",
         on_error: "handleError",
         on_conversation_start: "handleConversationStart",
-        on_conversation_end: "handleConversationEnd"
+        on_conversation_end: "handleConversationEnd",
+        on_fab_click: "handleFabClick",
+        on_dialog_confirm: "handleDialogConfirm",
+        on_dialog_cancel: "handleDialogCancel",
+        on_minimize: "handleMinimize"
+      },
+
+      feedback_options: {
+        positive: [
+          { id: "accurate", label: "Accurate" },
+          { id: "easy", label: "Easy to understand" },
+          { id: "formatted", label: "Well formatted" }
+        ],
+        negative: [
+          { id: "inaccurate", label: "Inaccurate answer" },
+          { id: "nocontext", label: "Did not use context" },
+          { id: "poorformat", label: "Poorly formatted" }
+        ]
       }
     };
 
@@ -233,7 +250,7 @@ class VFChatbotModal {
     // Load Q&A data if using fallback responses
     this.loadQADataAndPopulateSuggestions();
 
-    // Restore conversation HTML from localStorage
+    // Restore conversation HTML from sessionStorage
     const persistedHTML = this.loadConversationHTML();
     if (persistedHTML && this.messagesContainer) {
       this.messagesContainer.innerHTML = persistedHTML;
@@ -243,7 +260,7 @@ class VFChatbotModal {
       this.messagesContainer.style.display = "flex";
       // Hide disclaimer if present
       if (this.disclaimer) {
-        this.disclaimer.style.display = "none";
+        this.disclaimer.classList.add("vf-u-display-none");
       }
       // Hide all loading indicator divs
       const loadingDivs = this.messagesContainer.querySelectorAll(
@@ -263,7 +280,7 @@ class VFChatbotModal {
       const feedbackContainers = this.messagesContainer.querySelectorAll(
         "[data-vf-js-chatbot-feedback]"
       );
-      const feedbackState = JSON.parse(localStorage.getItem("chatbotModalFeedbackState") || "{}");
+      const feedbackState = JSON.parse(sessionStorage.getItem("chatbotModalFeedbackState") || "{}");
       feedbackContainers.forEach(container => {
         const messageId = container.dataset.messageId;
         const feedbackType = feedbackState[messageId];
@@ -288,7 +305,9 @@ class VFChatbotModal {
         } else {
           new VFChatbotFeedback(container, messageId, {
             enable_instant_feedback: this.config.features.enable_instant_feedback,
-            api_endpoint: this.config.api.feedback_endpoint
+            api_endpoint: this.config.api.feedback_endpoint,
+            positiveOptions: this.config.feedback_options?.positive,
+            negativeOptions: this.config.feedback_options?.negative
           });
         }
       });
@@ -336,7 +355,7 @@ class VFChatbotModal {
         }
       }
 
-      const wasMinimized = localStorage.getItem("chatbotModalMinimized") === "true";
+      const wasMinimized = sessionStorage.getItem("chatbotModalMinimized") === "true";
       if (this.container) {
         if (wasMinimized) {
           this.fab.classList.remove("vf-chatbot-fab--inactive");
@@ -428,9 +447,9 @@ class VFChatbotModal {
       }
 
       // Update local storage feedback state
-      let feedbackState = JSON.parse(localStorage.getItem("chatbotModalFeedbackState") || "{}");
+      let feedbackState = JSON.parse(sessionStorage.getItem("chatbotModalFeedbackState") || "{}");
       feedbackState[messageId] = feedbackType; // e.g., "positive" or "negative"
-      localStorage.setItem("chatbotModalFeedbackState", JSON.stringify(feedbackState));
+      sessionStorage.setItem("chatbotModalFeedbackState", JSON.stringify(feedbackState));
 
       if (
         handlers.on_feedback_submit &&
@@ -511,6 +530,70 @@ class VFChatbotModal {
         window[handlers.on_conversation_end](eventData);
       }
     };
+
+    // FAB click handler
+    this.onFabClick = () => {
+      const eventData = {
+        conversationId: this.conversationId,
+        timestamp: Date.now()
+      };
+      this.emitEvent("vf-chatbot-fab:click", eventData);
+
+      if (
+        handlers.on_fab_click &&
+        typeof window[handlers.on_fab_click] === "function"
+      ) {
+        window[handlers.on_fab_click](eventData);
+      }
+    };
+
+    // Dialog confirm handler
+    this.onDialogConfirm = () => {
+      const eventData = {
+        conversationId: this.conversationId,
+        timestamp: Date.now()
+      };
+      this.emitEvent("vf-chatbot-dialog:confirm", eventData);
+
+      if (
+        handlers.on_dialog_confirm &&
+        typeof window[handlers.on_dialog_confirm] === "function"
+      ) {
+        window[handlers.on_dialog_confirm](eventData);
+      }
+    };
+
+    // Dialog cancel handler
+    this.onDialogCancel = () => {
+      const eventData = {
+        conversationId: this.conversationId,
+        timestamp: Date.now()
+      };
+      this.emitEvent("vf-chatbot-dialog:cancel", eventData);
+
+      if (
+        handlers.on_dialog_cancel &&
+        typeof window[handlers.on_dialog_cancel] === "function"
+      ) {
+        window[handlers.on_dialog_cancel](eventData);
+      }
+    };
+
+    // Minimize handler
+    this.onMinimize = () => {
+      const eventData = {
+        conversationId: this.conversationId,
+        timestamp: Date.now()
+      };
+      this.emitEvent("vf-chatbot-modal:minimize", eventData);
+
+      if (
+        handlers.on_minimize &&
+        typeof window[handlers.on_minimize] === "function"
+      ) {
+        window[handlers.on_minimize](eventData);
+      }
+    };
   }
 
   emitEvent(eventName, data) {
@@ -534,7 +617,7 @@ class VFChatbotModal {
       this.selectorEl.addEventListener("routeselection", e => {
         this.handleRouteSelection(e.detail);
         // Save selection on change
-        localStorage.setItem(
+        sessionStorage.setItem(
           "vfChatbotSelectorSelection",
           JSON.stringify(e.detail.selectedItems)
         );
@@ -542,7 +625,7 @@ class VFChatbotModal {
 
       // Restore selection only after routes are loaded/rendered
       this.selectorEl.addEventListener("routesloaded", () => {
-        this.savedSelection = localStorage.getItem("vfChatbotSelectorSelection");
+        this.savedSelection = sessionStorage.getItem("vfChatbotSelectorSelection");
         if (this.savedSelection) {
           const selectedItems = JSON.parse(this.savedSelection);
           selector.setSelection(selectedItems);
@@ -655,7 +738,10 @@ class VFChatbotModal {
   }
 
   bindEvents() {
-    this.minimizeBtn?.addEventListener("click", () => this.minimize());
+    this.minimizeBtn?.addEventListener("click", () => {
+      this.onMinimize();
+      this.minimize();
+    });
 
     this.closeBtn?.addEventListener("click", () => this.showCloseDialog());
 
@@ -704,6 +790,10 @@ class VFChatbotModal {
       const { text } = event.detail;
       this.sendUserMessage(text);
     });
+
+    this.fab?.addEventListener("click", this.onFabClick);
+    this.dialog?.addEventListener("vf-chatbot-dialog:confirm", this.onDialogConfirm);
+    this.dialog?.addEventListener("vf-chatbot-dialog:cancel", this.onDialogCancel);
   }
 
   sendMessage() {
@@ -985,7 +1075,9 @@ class VFChatbotModal {
         // Pass configuration to VFChatbotFeedback component
         new VFChatbotFeedback(feedbackContainer, messageId, {
           enable_instant_feedback: this.config.features.enable_instant_feedback,
-          api_endpoint: this.config.api.feedback_endpoint
+          api_endpoint: this.config.api.feedback_endpoint,
+          positiveOptions: this.config.feedback_options?.positive,
+          negativeOptions: this.config.feedback_options?.negative
         });
       }
     }
@@ -1091,15 +1183,21 @@ class VFChatbotModal {
 
     if (this.messagesContainer) {
       this.messagesContainer.innerHTML = "";
-      localStorage.removeItem("chatbotModalConversationHTML");
-      localStorage.removeItem("chatbotModalFeedbackState");
-      localStorage.removeItem("chatbotModalMinimized");
+      sessionStorage.removeItem("chatbotModalConversationHTML");
+      sessionStorage.removeItem("chatbotModalFeedbackState");
+      sessionStorage.removeItem("chatbotModalMinimized");
     }
     if (this.savedSelection) {
-      localStorage.removeItem("vfChatbotSelectorSelection");
+      sessionStorage.removeItem("vfChatbotSelectorSelection");
     }
 
     if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
+      if (this.disclaimer && this.disclaimerCloseBtn) {
+        this.disclaimer.classList.remove("vf-u-display-none");
+        this.disclaimerCloseBtn.addEventListener("click", () => {
+          this.disclaimer.classList.add("vf-u-display-none");
+        });
+      }
       this.welcomeScreen.style.display = "block";
       this.messagesContainer.style.display = "none";
     }
@@ -1162,11 +1260,11 @@ class VFChatbotModal {
 
   // Helper functions for conversation persistence
   saveConversationHTML(html) {
-    localStorage.setItem("chatbotModalConversationHTML", html);
+    sessionStorage.setItem("chatbotModalConversationHTML", html);
   }
 
   loadConversationHTML() {
-    return localStorage.getItem("chatbotModalConversationHTML") || "";
+    return sessionStorage.getItem("chatbotModalConversationHTML") || "";
   }
 }
 

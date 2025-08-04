@@ -13,6 +13,18 @@ export class VFChatbotFeedback {
     this.negativeTemplate = document.querySelector(
       "#feedback-negative-template"
     );
+    this.positiveOptions = config.positiveOptions || [
+      { id: "accurate", label: "Accurate answer" },
+      { id: "easy", label: "Easy to understand" },
+      { id: "formatted", label: "Well formatted" },
+      { id: "helpful", label: "Helpful" }
+    ];
+    this.negativeOptions = config.negativeOptions || [
+      { id: "inaccurate", label: "Inaccurate answer" },
+      { id: "nocontext", label: "Did not use context" },
+      { id: "poorformat", label: "Poorly formatted" },
+      { id: "nothelpful", label: "Not helpful" }
+    ];
     this.renderInitialState();
     this.selectedThumb = "";
   }

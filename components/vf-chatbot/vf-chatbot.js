@@ -49,16 +49,23 @@ VFChatbot.prototype = {
     if (input) {
       setTimeout(() => input.focus(), 300);
     }
-    localStorage.setItem("chatbotModalMinimized", "false");
+    sessionStorage.setItem("chatbotModalMinimized", "false");
   },
 
   closeChat: function() {
     this.fab.classList.remove("vf-chatbot-fab--inactive");
     this.modal.classList.remove("vf-chatbot-modal-container--active");
     this.modal.classList.add("vf-chatbot-modal-container--inactive");
-    localStorage.setItem("chatbotModalMinimized", "true");
+    sessionStorage.setItem("chatbotModalMinimized", "true");
   }
 };
+
+// Utility to update bottom banner height for all chatbots
+function updateChatbotBottomMargin(heightPx = 0) {
+  document.querySelectorAll("[data-vf-js-chatbot]").forEach(element => {
+    element.style.setProperty("--vf-bottom-banner-height", `${heightPx}px`);
+  });
+}
 
 function getBottomBannerHeight(userHeight) {
   // If user provided a height, use it
@@ -66,6 +73,18 @@ function getBottomBannerHeight(userHeight) {
   // Otherwise, check for .vf-banner--bottom
   const banner = document.querySelector(".vf-banner--bottom");
   if (banner) {
+    // If your banner emits a custom event on close, listen for it:
+    banner.addEventListener("vf-banner:close", () => {
+      updateChatbotBottomMargin(0);
+    });
+
+    // Or, if you have a close button:
+    const closeBtn = banner.querySelector("[data-vf-js-banner-close]");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        updateChatbotBottomMargin(0);
+      });
+    }
     return banner.offsetHeight || 0;
   }
   return 0;
