@@ -68,10 +68,15 @@
   }
 
   &__item {
+    margin-top: 8px;
     padding: 0 16px;
     line-height: 1.5;
     border-bottom: 1px solid var(--vf-color--neutral--400);
     word-wrap: break-word;
+
+    &:first-child {
+      margin-top: 0px;
+    }
 
     &:last-child {
       padding-bottom: 0;
@@ -82,11 +87,12 @@
   &__label {
     @include set-type(text-body--5);
     margin-bottom: 0px;
-    line-height: 27.20px;
+    line-height: 28px;
   }
 
   &__link {
     @include set-type(text-body--3);
+    font-weight: 500;
     margin-bottom: 0;
     line-height: 22px;
   }

@@ -6,34 +6,13 @@
 .vf-chatbot {
   z-index: 100000;
   position: fixed;
-  bottom: calc(2rem + var(--vf-bottom-banner-height, 0px));
-  right: 2rem;
+  bottom: calc(2rem + var(--vf-chatbot-modal-bottom-margin, 0px));
+  right: calc(2rem + var(--vf-chatbot-modal-right-margin, 0px));
 
-  .vf-chatbot-modal-container {
-    position: fixed;
-    bottom: inherit;
-    right: inherit;
-    width: 92%;
-    max-width: 400px;
-    display: none;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-
-    &--active {
-      display: flex;
-      flex-direction: column;
-      opacity: 1;
-      transform: translateY(0);
+  &-modal-container{
+    @media (max-width: 480px) {
+      bottom: 0;
+      right: 0;
     }
-
-    &--inactive {
-      display: none;
-    }
-  }
-
-  @media (max-width: $vf-breakpoint--sm) {
-    bottom: calc(1rem + var(--vf-bottom-banner-height, 0px));
-    right: 1rem;
   }
 }

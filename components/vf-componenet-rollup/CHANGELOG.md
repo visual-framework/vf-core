@@ -1,3 +1,9 @@
+
+
+### 1.4.13
+
+* Added: Added VF Modal Chatbot [Tracking issue](https://github.com/visual-framework/vf-core/issues/2299)
+
 ### 1.4.12
 
 * Added: Added VF Standalone Chatbot [Tracking issue](https://github.com/visual-framework/vf-core/issues/2245)

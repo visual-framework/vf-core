@@ -1,19 +1,60 @@
 // vf-chatbot-modal.scss
 .vf-chatbot-modal-container {
+  position: fixed;
+  bottom: inherit;
+  right: inherit;
+  width: 92%;
+  max-width: 400px;
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   background-color: var(--vf-color--neutral--0);
   border-radius: $vf-radius--sm;
   border-bottom-right-radius: 0px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, .25);
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+
+  &--active {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &--inactive {
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+  }
 }
 
 .vf-chatbot-modal {
-  
   display: flex;
   justify-content: end;
   flex-direction: column;
-  height: 55vh;
+  height: 60vh;
   border-bottom-left-radius: $vf-radius--sm;
   border-bottom-right-radius: 0px;
+
+  @media (max-width: 480px) {
+    width: 100vw !important;
+    height: 93vh !important;
+    min-width: 100vw !important;
+    min-height: 93vh !important;
+    max-width: 100vw !important;
+    max-height: 93vh !important;
+    border-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
 
   &__header {
     color: var(--vf-color--neutral--900);
@@ -45,14 +86,13 @@
   &__input-wrapper {
     display: flex;
     align-items: flex-end;
-    border: 1px solid transparent;
     label {
       visibility: hidden;
       position: absolute;
       border: 0;
       padding: 0;
       margin: 0;
-      height: 1px; 
+      height: 1px;
       width: 1px;
       overflow: hidden;
     }
@@ -81,13 +121,13 @@
 
   &__send-button {
     height: fit-content;
-    background: #3A77BC;
+    background: #3a77bc;
     border: none;
     padding-inline: 0px;
     cursor: pointer;
     img {
-        height: 45px !important;
-        max-width: fit-content !important;
+      height: 45px !important;
+      max-width: fit-content !important;
     }
   }
 
@@ -108,6 +148,14 @@
 
   &__messages-no-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
+  }
+  &__disclaimer {
+    p {
+    font-size: 14px;
+    }
+    .vf-button--dismiss {
+      padding: 10px;
+    }
   }
 
   &__footnote {

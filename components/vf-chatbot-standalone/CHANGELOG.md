@@ -2,6 +2,9 @@
 
 ### 1.0.0-beta.3
 
+* Updated : Standalone variant initialization moved to `vf-chatbot` component
+* Updated : Added more config options
+* Updated : Changes for chatbot modal variant
 * Fixed: Added code to return feedback comments
 
 ### 1.0.0-beta.2

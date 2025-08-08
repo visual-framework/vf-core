@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0.0-beta.3
+
+* Added : Initial code for chatbot modal variant
+
 ### 1.0.0-beta.2
 
 * Updated package.json with correct settings
