@@ -1,4 +1,3 @@
-
 import { initVFChatbotFab } from "vf-chatbot-fab/vf-chatbot-fab.js";
 import { initVFChatbotModal } from "vf-chatbot-modal/vf-chatbot-modal.js";
 import { initVFChatbotStandalone } from "vf-chatbot-standalone/vf-chatbot-standalone.js";
@@ -60,47 +59,61 @@ VFChatbot.prototype = {
   }
 };
 
-// Utility to update bottom banner height for all chatbots
-function updateChatbotBottomMargin(heightPx = 0) {
+// Utility to update bottom/right margin for all chatbots
+function updateChatbotBottomMargin(bottomMarginPx = 0, rightMarginPx =0) {
   document.querySelectorAll("[data-vf-js-chatbot]").forEach(element => {
-    element.style.setProperty("--vf-bottom-banner-height", `${heightPx}px`);
+    element.style.setProperty("--vf-chatbot-modal-bottom-margin", `${bottomMarginPx}px`);
+    element.style.setProperty("--vf-chatbot-modal-right-margin", `${rightMarginPx}px`);
   });
 }
 
-function getBottomBannerHeight(userHeight) {
-  // If user provided a height, use it
-  if (typeof userHeight === "number") return userHeight;
-  // Otherwise, check for .vf-banner--bottom
-  const banner = document.querySelector(".vf-banner--bottom");
-  if (banner) {
-    // If your banner emits a custom event on close, listen for it:
-    banner.addEventListener("vf-banner:close", () => {
-      updateChatbotBottomMargin(0);
+function getChatbotBottomMargin(userSuppliedMargin) {
+  // If user provided a margin, use it
+  if (typeof userSuppliedMargin === "number") return userSuppliedMargin;
+
+  // Find all visible banners with .vf-banner--bottom
+  const banners = Array.from(document.querySelectorAll(".vf-banner--bottom"))
+    .filter(banner => {
+      // Only consider banners that are displayed (not display: none)
+      return !!(banner.offsetParent || (window.getComputedStyle(banner).display !== "none" && banner.offsetHeight > 0));
     });
 
-    // Or, if you have a close button:
+  // Get the tallest banner's offsetHeight
+  let maxHeight = 0;
+  banners.forEach(banner => {
+    // Listen for close events to update margin
+    banner.addEventListener("vf-banner:close", () => {
+      updateChatbotBottomMargin(0, 0);
+    });
     const closeBtn = banner.querySelector("[data-vf-js-banner-close]");
     if (closeBtn) {
       closeBtn.addEventListener("click", () => {
-        updateChatbotBottomMargin(0);
+        updateChatbotBottomMargin(0, 0);
       });
     }
-    return banner.offsetHeight || 0;
-  }
-  return 0;
+    if (banner.offsetHeight > maxHeight) {
+      maxHeight = banner.offsetHeight;
+    }
+  });
+
+  return [ maxHeight, 0];
 }
 
 function initVFChatbot(config = {}) {
   if (config && config.type == "modal") {
     const elements = document.querySelectorAll("[data-vf-js-chatbot]");
-    const chatbotBottomMargin = getBottomBannerHeight(
+    const chatbotBottomMargin = getChatbotBottomMargin(
       config.chatbotBottomMargin
-    );
+    ) || [0, 0];
     elements.forEach(element => {
       // Set CSS variable for FAB and modal margin
       element.style.setProperty(
-        "--vf-bottom-banner-height",
-        `${chatbotBottomMargin}px`
+        "--vf-chatbot-modal-bottom-margin",
+        `${chatbotBottomMargin[0]}px`
+      );
+      element.style.setProperty(
+        "--vf-chatbot-modal-right-margin",
+        `${chatbotBottomMargin[1]}px`
       );
       new VFChatbot(element);
       initVFChatbotFab();

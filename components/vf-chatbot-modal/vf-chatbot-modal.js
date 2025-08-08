@@ -129,7 +129,9 @@ class VFChatbotModal {
           { id: "nocontext", label: "Did not use context" },
           { id: "poorformat", label: "Poorly formatted" }
         ]
-      }
+      },
+      enable_session_persistence: true,
+      restore_minimized_state: true // If true, restore minimized state after navigation
     };
 
     // Merge configurations: default < data-attribute < custom
@@ -357,14 +359,14 @@ class VFChatbotModal {
 
       const wasMinimized = sessionStorage.getItem("chatbotModalMinimized") === "true";
       if (this.container) {
-        if (wasMinimized) {
-          this.fab.classList.remove("vf-chatbot-fab--inactive");
-          this.container.classList.remove("vf-chatbot-modal-container--active");
-          this.container.classList.add("vf-chatbot-modal-container--inactive");
-        } else {
+        if (this.config.restore_minimized_state && !wasMinimized) {
           this.fab.classList.add("vf-chatbot-fab--inactive");
           this.container.classList.remove("vf-chatbot-modal-container--inactive");
           this.container.classList.add("vf-chatbot-modal-container--active");
+        } else {
+          this.fab.classList.remove("vf-chatbot-fab--inactive");
+          this.container.classList.remove("vf-chatbot-modal-container--active");
+          this.container.classList.add("vf-chatbot-modal-container--inactive");
           // Focus input if needed
         }
         this.scrollToBottom();
@@ -447,9 +449,11 @@ class VFChatbotModal {
       }
 
       // Update local storage feedback state
-      let feedbackState = JSON.parse(sessionStorage.getItem("chatbotModalFeedbackState") || "{}");
-      feedbackState[messageId] = feedbackType; // e.g., "positive" or "negative"
-      sessionStorage.setItem("chatbotModalFeedbackState", JSON.stringify(feedbackState));
+      if (this.config.enable_session_persistence) {
+        let feedbackState = JSON.parse(sessionStorage.getItem("chatbotModalFeedbackState") || "{}");
+        feedbackState[messageId] = feedbackType; // e.g., "positive" or "negative"
+        sessionStorage.setItem("chatbotModalFeedbackState", JSON.stringify(feedbackState));
+      }
 
       if (
         handlers.on_feedback_submit &&
@@ -617,18 +621,22 @@ class VFChatbotModal {
       this.selectorEl.addEventListener("routeselection", e => {
         this.handleRouteSelection(e.detail);
         // Save selection on change
-        sessionStorage.setItem(
-          "vfChatbotSelectorSelection",
-          JSON.stringify(e.detail.selectedItems)
-        );
+        if (this.config.enable_session_persistence) {
+          sessionStorage.setItem(
+            "vfChatbotSelectorSelection",
+            JSON.stringify(e.detail.selectedItems)
+          );
+        }
       });
 
       // Restore selection only after routes are loaded/rendered
       this.selectorEl.addEventListener("routesloaded", () => {
-        this.savedSelection = sessionStorage.getItem("vfChatbotSelectorSelection");
-        if (this.savedSelection) {
-          const selectedItems = JSON.parse(this.savedSelection);
-          selector.setSelection(selectedItems);
+        if (this.config.enable_session_persistence) {
+          this.savedSelection = sessionStorage.getItem("vfChatbotSelectorSelection");
+          if (this.savedSelection) {
+            const selectedItems = JSON.parse(this.savedSelection);
+            selector.setSelection(selectedItems);
+          }
         }
       });
     }
@@ -1183,23 +1191,18 @@ class VFChatbotModal {
 
     if (this.messagesContainer) {
       this.messagesContainer.innerHTML = "";
-      sessionStorage.removeItem("chatbotModalConversationHTML");
-      sessionStorage.removeItem("chatbotModalFeedbackState");
-      sessionStorage.removeItem("chatbotModalMinimized");
+      if (this.config.enable_session_persistence) {
+        sessionStorage.removeItem("chatbotModalConversationHTML");
+        sessionStorage.removeItem("chatbotModalFeedbackState");
+        sessionStorage.removeItem("chatbotModalMinimized");
+      }
     }
-    if (this.savedSelection) {
+    if (this.savedSelection && this.config.enable_session_persistence) {
       sessionStorage.removeItem("vfChatbotSelectorSelection");
     }
 
     if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
-      if (this.disclaimer && this.disclaimerCloseBtn) {
-        this.disclaimer.classList.remove("vf-u-display-none");
-        this.disclaimerCloseBtn.addEventListener("click", () => {
-          this.disclaimer.classList.add("vf-u-display-none");
-        });
-      }
       this.welcomeScreen.style.display = "block";
-      this.messagesContainer.style.display = "none";
     }
 
     this.onConversationStart();
@@ -1260,11 +1263,16 @@ class VFChatbotModal {
 
   // Helper functions for conversation persistence
   saveConversationHTML(html) {
-    sessionStorage.setItem("chatbotModalConversationHTML", html);
+    if (this.config.enable_session_persistence) {
+      sessionStorage.setItem("chatbotModalConversationHTML", html);
+    }
   }
 
   loadConversationHTML() {
-    return sessionStorage.getItem("chatbotModalConversationHTML") || "";
+    if (this.config.enable_session_persistence) {
+      return sessionStorage.getItem("chatbotModalConversationHTML") || "";
+    }
+    return "";
   }
 }
 

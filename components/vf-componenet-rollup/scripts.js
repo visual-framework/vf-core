@@ -154,7 +154,9 @@ window.addEventListener("load", function() {
             { id: "nocontext", label: "Did not use context" },
             { id: "poorformat", label: "Poorly formatted" }
           ]
-        }
+        },
+        enable_session_persistence: true,
+        restore_minimized_state: true // If true, restore minimized state after navigation
       });
 });
 

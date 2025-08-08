@@ -81,6 +81,14 @@ The Chatbot branding elements follow EMBL brand guidelines but can be updated to
 
 Texts shown in the examples are placeholder content. Please review and update all wording to fit your your project needs and ensure it meets legal, accessibility and organisational requirements.
 
+### Adding the Floating Action Button (FAB)
+
+We recommend using only one Floating Action Button (FAB) per screen. If a page already includes a FAB, consider integrating its functionality into the chatbot or prioritising the most important action for the user’s journey on that page. 
+
+Place the FAB 32 pixels from the bottom and 32 pixels from the right edge of the screen. This keeps the button in a consistent and expected position across different pages. If there’s a banner on the screen, position the FAB 32 pixels above the top edge of the banner instead. This helps keep the FAB visible and avoids overlap.
+
+This guidance applies to both desktop and mobile.
+
 ### Accessibility
 
 The component targets WCAG 2.1 AA accessibility standard.
