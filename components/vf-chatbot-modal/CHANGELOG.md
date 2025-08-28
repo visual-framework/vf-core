@@ -3,6 +3,7 @@
 ### 1.0.0-beta.3
 
 * Added : Initial code for chatbot modal variant
+* Added : React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
 
 ### 1.0.0-beta.2
 

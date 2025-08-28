@@ -114,44 +114,38 @@ where config is the configuration object with different options as described bel
 
 ```javascript
 const config = {
-  // Basic Settings
   type: "standalone",
   title: "AI Assistant",
+  welcome_logo: true,
   welcome_message: "Welcome! I'm here to help",
-  input_placeholder: "Ask me anything...",
+  welcome_logo_alt: "AI Assistant",
+  welcome_suggestions_title: "Try asking me:",
+  input_placeholder: "Ask me ...",
   welcome_max_suggestions: 4,
-
-  // Content & Branding
-  disclaimer: 'Custom disclaimer with <a href="/privacy">privacy policy</a>',
-  footnote: 'Custom footnote with <a href="/feedback">feedback link</a>',
-
-  // Icons & Assets
+  disclaimer: 'Disclaimer: This chatbot is designed to assist you with general information and basic inquiries. See our <a class="vf-banner__link" target="_blank" rel="noopener noreferrer" aria-label="disclaimer notes (opens in new tab)" href="https://www.ebi.ac.uk/data-protection/privacy-notice/embl-ebi-public-website/">disclaimer notes</a>.',
+  footnote: 'Review AI generated content for accuracy. <a class="vf-link" target="_blank" rel="noopener noreferrer" aria-label="Leave feedback (opens in new tab)" href="https://embl.service-now.com/esc?id=sc_cat_item&sys_id=5eeb8eb91b92e650b376da88b04bcbc1">Leave feedback</a>.',
   icons: {
-    assistant_avatar: "path/to/assistant-icon.svg",
-    user_avatar: "path/to/user-icon.svg",
-    send_button: "path/to/send-icon.svg",
-    main_logo_url: "path/to/logo.svg",
-    selector_logo_url: "path/to/selector-logo.svg",
+    assistant_avatar: "../../assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg",
+    user_avatar: "../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg",
+    send_button: "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
+    main_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg",
+    minimize: "../../assets/vf-chatbot/assets/vf-chatbot--icon-minimize.svg",
+    close: "../../assets/vf-chatbot/assets/vf-chatbot--icon-close.svg"
   },
-
-  // API Configuration
   api: {
-    chat_endpoint: "/api/chat",
-    feedback_endpoint: "/api/feedback",
-    qa_data_url: "path/to/qa-data.json",
-    headers: {
+    chat_endpoint: false,
+    feedback_endpoint: false,
+    qa_data_url: "../../assets/vf-chatbot/assets/vf-chatbot-qa.json",
+    headers:{
       "Content-Type": "application/json",
       "Authorization": "Bearer your-token"
     },
     timeout: 10000
   },
-
-  // Feature Toggles
   features: {
     enable_welcome: true,
     enable_feedback: true,
     enable_sources: true,
-    enable_sources_custom_format: true,
     enable_welcome_suggestions: true,
     enable_typing_indicator: true,
     enable_disclaimer: true,
@@ -160,12 +154,10 @@ const config = {
     enable_qa_data_loading: true,
     enable_instant_feedback: false
   },
-
-  // New options
   behavior: {
     auto_scroll: true,
     typing_delay: 800,
-    show_scrollbar: false // or false to hide scrollbar
+    show_scrollbar: false
   },
   selectorContext: {
     chatbotRoutes: {
@@ -175,9 +167,9 @@ const config = {
       showSearchThreshold: 5,
       showAllServices: true,
       showAllServicesSelected: true,
-      routes: "assets/vf-chatbot-selector-services.json",
+      routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
       placeholder: "Select services",
-      title: "Available Services"
+      title: "Services"
     }
   },
   handlers: {
@@ -196,7 +188,7 @@ const config = {
       { id: "formatted", label: "Well formatted" }
     ],
     negative: [
-      { id: "inaccurate", label: "Inaccurate answer" },
+      { id: "inaccurate", label: "Inaccurate" },
       { id: "nocontext", label: "Did not use context" },
       { id: "poorformat", label: "Poorly formatted" }
     ]
@@ -528,9 +520,42 @@ const config = {
 }
 ```
 
-### React Integration
+### React
 
-The HTML template can be adapted for React applications. See the React syntax section below for implementation details on using the HTML template for the chatbot in JSX components.
+This component now has React support which has been tested on react version 18.2.0
+
+1. Install `yarn add @visual-framework/vf-chatbot @visual-framework/vf-chatbot-standalone`
+2. Import in the JS file where you want to include this component
+   ```
+   import VFChatbot from '@visual-framework/vf-chatbot/vf-chatbot.react';
+
+   Make sure you have the jsx support enabled with babel. Alternatively, you can also copy the vf-chatbot.react.js file from below to your react project and import as per the location.
+   ```
+3. Can be used as
+   ```
+   <VFChatbot config={chatbotConfig} />
+
+   where chatbotConfig is defined as above. Please make sure to specify paths appended with `${process.env.PUBLIC_URL}`
+   e.g. assistant_avatar: `${process.env.PUBLIC_URL}/assets/vf-chatbot/assets/vf-chatbot--icon-16x16-dark-green.svg`,
+   ```
+4. Styling changes
+
+   You should install [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles and then add below code in your main SCSS file
+    ```
+    $vf-font-plex-mono-prefix: '~@visual-framework/vf-font-plex-mono/assets';
+    $vf-font-plex-sans-prefix: '~@visual-framework/vf-font-plex-sans/assets';
+
+    @import '~@visual-framework//vf-sass-starter/index.scss';
+    @import "~@visual-framework/vf-link/vf-link.scss";
+    @import "~@visual-framework/vf-chatbot/vf-chatbot.scss";
+    @import "~@visual-framework/vf-chatbot-modal/index.scss";
+    @import "~@visual-framework/vf-chatbot-standalone/index.scss";
+    ```
+
+5. Usage:
+
+    ```
+    <VFChatbot config={chatbotConfig} />
 
 ## Help
 
