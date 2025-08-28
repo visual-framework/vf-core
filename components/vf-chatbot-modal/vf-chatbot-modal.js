@@ -2,7 +2,7 @@
 import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
 import { initVFChatbotSelector } from "../vf-chatbot-selector/vf-chatbot-selector.js";
-import { VFChatbotWelcome } from "../vf-chatbot-welcome/vf-chatbot-welcome.js";
+import { initVFChatbotWelcome } from "../vf-chatbot-welcome/vf-chatbot-welcome.js";
 import { initVFChatbotDialog } from "../vf-chatbot-dialog/vf-chatbot-dialog.js";
 
 class VFChatbotModal {
@@ -53,9 +53,7 @@ class VFChatbotModal {
           "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg",
         minimize:
           "../../assets/vf-chatbot/assets/vf-chatbot--icon-minimize.svg",
-        close: "../../assets/vf-chatbot/assets/vf-chatbot--icon-close.svg",
-        selector_logo_url:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg"
+        close: "../../assets/vf-chatbot/assets/vf-chatbot--icon-close.svg"
       },
 
       api: {
@@ -100,7 +98,10 @@ class VFChatbotModal {
           routes:
             "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
           placeholder: "Select services",
-          title: "Services"
+          title: "Services",
+          selector_logo_url:
+            "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg",
+          selector_logo_title: "AI Assistant"
         }
       },
 
@@ -282,31 +283,42 @@ class VFChatbotModal {
       const feedbackContainers = this.messagesContainer.querySelectorAll(
         "[data-vf-js-chatbot-feedback]"
       );
-      const feedbackState = JSON.parse(sessionStorage.getItem("chatbotModalFeedbackState") || "{}");
+      const feedbackState = JSON.parse(
+        sessionStorage.getItem("chatbotModalFeedbackState") || "{}"
+      );
       feedbackContainers.forEach(container => {
         const messageId = container.dataset.messageId;
         const feedbackType = feedbackState[messageId];
         if (feedbackType) {
           // Find thumb icons and set solid/active state
-          const positiveThumb = container.querySelector("[data-vf-js-feedback-thumb='up']");
-          const negativeThumb = container.querySelector("[data-vf-js-feedback-thumb='down']");
+          const positiveThumb = container.querySelector(
+            "[data-vf-js-feedback-thumb='up']"
+          );
+          const negativeThumb = container.querySelector(
+            "[data-vf-js-feedback-thumb='down']"
+          );
           if (positiveThumb && feedbackType === "positive") {
             positiveThumb.classList.add("vf-chatbot-feedback__thumb--solid");
             if (negativeThumb) {
-              negativeThumb.classList.remove("vf-chatbot-feedback__thumb--solid");
+              negativeThumb.classList.remove(
+                "vf-chatbot-feedback__thumb--solid"
+              );
               negativeThumb.style.display = "none";
             }
           }
           if (negativeThumb && feedbackType === "negative") {
             negativeThumb.classList.add("vf-chatbot-feedback__thumb--solid");
             if (positiveThumb) {
-              positiveThumb.classList.remove("vf-chatbot-feedback__thumb--solid");
+              positiveThumb.classList.remove(
+                "vf-chatbot-feedback__thumb--solid"
+              );
               positiveThumb.style.display = "none";
             }
           }
         } else {
           new VFChatbotFeedback(container, messageId, {
-            enable_instant_feedback: this.config.features.enable_instant_feedback,
+            enable_instant_feedback: this.config.features
+              .enable_instant_feedback,
             api_endpoint: this.config.api.feedback_endpoint,
             positiveOptions: this.config.feedback_options?.positive,
             negativeOptions: this.config.feedback_options?.negative
@@ -347,6 +359,7 @@ class VFChatbotModal {
         this.fab.classList.add("vf-chatbot-fab--inactive");
         this.container.classList.remove("vf-chatbot-modal-container--inactive");
         this.container.classList.add("vf-chatbot-modal-container--active");
+        this.container.setAttribute("aria-modal", true);
 
         // Focus on input if it exists
         const input = this.container.querySelector(
@@ -357,19 +370,23 @@ class VFChatbotModal {
         }
       }
 
-      const wasMinimized = sessionStorage.getItem("chatbotModalMinimized") === "true";
+      const wasMinimized =
+        sessionStorage.getItem("chatbotModalMinimized") === "true";
       if (this.container) {
         if (this.config.restore_minimized_state && !wasMinimized) {
           this.fab.classList.add("vf-chatbot-fab--inactive");
-          this.container.classList.remove("vf-chatbot-modal-container--inactive");
+          this.container.classList.remove(
+            "vf-chatbot-modal-container--inactive"
+          );
           this.container.classList.add("vf-chatbot-modal-container--active");
+          this.container.setAttribute("aria-modal", true);
         } else {
           this.fab.classList.remove("vf-chatbot-fab--inactive");
           this.container.classList.remove("vf-chatbot-modal-container--active");
           this.container.classList.add("vf-chatbot-modal-container--inactive");
+          this.container.setAttribute("aria-modal", false);
           // Focus input if needed
         }
-        this.scrollToBottom();
       }
       return; // Skip history-based rendering if HTML is present
     }
@@ -450,9 +467,14 @@ class VFChatbotModal {
 
       // Update local storage feedback state
       if (this.config.enable_session_persistence) {
-        let feedbackState = JSON.parse(sessionStorage.getItem("chatbotModalFeedbackState") || "{}");
+        let feedbackState = JSON.parse(
+          sessionStorage.getItem("chatbotModalFeedbackState") || "{}"
+        );
         feedbackState[messageId] = feedbackType; // e.g., "positive" or "negative"
-        sessionStorage.setItem("chatbotModalFeedbackState", JSON.stringify(feedbackState));
+        sessionStorage.setItem(
+          "chatbotModalFeedbackState",
+          JSON.stringify(feedbackState)
+        );
       }
 
       if (
@@ -632,7 +654,9 @@ class VFChatbotModal {
       // Restore selection only after routes are loaded/rendered
       this.selectorEl.addEventListener("routesloaded", () => {
         if (this.config.enable_session_persistence) {
-          this.savedSelection = sessionStorage.getItem("vfChatbotSelectorSelection");
+          this.savedSelection = sessionStorage.getItem(
+            "vfChatbotSelectorSelection"
+          );
           if (this.savedSelection) {
             const selectedItems = JSON.parse(this.savedSelection);
             selector.setSelection(selectedItems);
@@ -643,29 +667,8 @@ class VFChatbotModal {
 
     // Initialize welcome component
     if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
-      this.welcomeComponent = new VFChatbotWelcome(this.welcomeScreen, {
-        // Basic welcome configuration
-        welcome_title: this.config.title,
-        welcome_logo: this.config.welcome_logo,
-        welcome_message: this.config.welcome_message,
-        welcome_logo_alt: this.config.welcome_logo_alt,
-        welcome_suggestions_title: this.config.welcome_suggestions_title,
-        welcome_max_suggestions: this.config.welcome_max_suggestions,
-
-        // API configuration
-        qa_data_url: this.config.api.qa_data_url,
-
-        // Feature toggles
-        enable_welcome_suggestions: this.config.features
-          .enable_welcome_suggestions,
-        enable_qa_data_loading: this.config.features.enable_qa_data_loading,
-        enable_predefined_qa: this.config.features.enable_predefined_qa,
-        enable_fallback_responses: this.config.features
-          .enable_fallback_responses
-      });
-
       try {
-        await this.welcomeComponent.init();
+        initVFChatbotWelcome(this.welcomeScreen);
         this.welcomeScreen.addEventListener(
           "vf-chatbot-welcome:suggestion-click",
           event => {
@@ -673,6 +676,9 @@ class VFChatbotModal {
             this.onSuggestionClick(question);
             this.showChatInterface();
             this.sendUserMessage(question);
+          },
+          {
+            once: true
           }
         );
         this.welcomeScreen.scrollTop = this.welcomeScreen.scrollHeight;
@@ -800,8 +806,14 @@ class VFChatbotModal {
     });
 
     this.fab?.addEventListener("click", this.onFabClick);
-    this.dialog?.addEventListener("vf-chatbot-dialog:confirm", this.onDialogConfirm);
-    this.dialog?.addEventListener("vf-chatbot-dialog:cancel", this.onDialogCancel);
+    this.dialog?.addEventListener(
+      "vf-chatbot-dialog:confirm",
+      this.onDialogConfirm
+    );
+    this.dialog?.addEventListener(
+      "vf-chatbot-dialog:cancel",
+      this.onDialogCancel
+    );
   }
 
   sendMessage() {
@@ -1028,6 +1040,24 @@ class VFChatbotModal {
       avatar.src = this.config.icons.assistant_avatar;
     }
 
+    // Initialize feedback if enabled
+    if (this.config.features.enable_feedback) {
+      const feedbackContainer = assistantMessage.querySelector(
+        "[data-vf-js-chatbot-feedback]"
+      );
+      if (feedbackContainer) {
+        feedbackContainer.dataset.messageId = messageId;
+
+        // Pass configuration to VFChatbotFeedback component
+        new VFChatbotFeedback(feedbackContainer, messageId, {
+          enable_instant_feedback: this.config.features.enable_instant_feedback,
+          api_endpoint: this.config.api.feedback_endpoint,
+          positiveOptions: this.config.feedback_options?.positive,
+          negativeOptions: this.config.feedback_options?.negative
+        });
+      }
+    }
+
     // Add sources if enabled and present
     if (
       this.config.features.enable_sources &&
@@ -1072,23 +1102,6 @@ class VFChatbotModal {
       this.addActionPrompts(assistantMessage, prompts, content);
     }
 
-    // Initialize feedback if enabled
-    if (this.config.features.enable_feedback) {
-      const feedbackContainer = assistantMessage.querySelector(
-        "[data-vf-js-chatbot-feedback]"
-      );
-      if (feedbackContainer) {
-        feedbackContainer.dataset.messageId = messageId;
-
-        // Pass configuration to VFChatbotFeedback component
-        new VFChatbotFeedback(feedbackContainer, messageId, {
-          enable_instant_feedback: this.config.features.enable_instant_feedback,
-          api_endpoint: this.config.api.feedback_endpoint,
-          positiveOptions: this.config.feedback_options?.positive,
-          negativeOptions: this.config.feedback_options?.negative
-        });
-      }
-    }
     this.messagesContainer.appendChild(assistantMessage);
     this.saveConversationHTML(this.messagesContainer.innerHTML);
     this.scrollToBottom();

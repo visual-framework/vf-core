@@ -34,15 +34,39 @@
   &--assistant {
     margin-right: auto;
 
-    // .vf-chatbot-message__avatar {
-    //   margin-bottom: 8px;
-    // }
-
     .vf-chatbot-message__content {
       background-color: var(--vf-color--neutral--0);
       color: var(--vf-color__text--primary);
-      // margin-bottom: 8px;
     }
+  }
+
+  &__content-loading-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    min-height: 1.5em;
+  }
+
+  &__dot {
+    width: 0.2em;
+    height: 0.2em;
+    background: var(--vf-color--neutral--900);
+    border-radius: 50%;
+    display: inline-block;
+    animation: vf-chatbot-dot-pulse 1s infinite alternate;
+  }
+
+  &__dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &__dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes vf-chatbot-dot-pulse {
+    0% { opacity: 0.3; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.4); }
   }
 
   @media (max-width: 768px) {

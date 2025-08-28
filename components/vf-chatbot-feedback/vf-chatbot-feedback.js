@@ -194,6 +194,7 @@ export class VFChatbotFeedback {
       type === "positive" ? this.positiveTemplate : this.negativeTemplate;
     if (template) {
       const formContent = template.content.cloneNode(true);
+      formContent.children[0].style.display = "block";
       formContainer.appendChild(formContent);
       this.bindFormEvents(formContainer);
 
@@ -283,4 +284,19 @@ export class VFChatbotFeedback {
     // Show success banner (reuse existing logic)
     this.showSuccessBanner();
   }
+}
+
+// Add this function at the end of the file:
+export function initVFChatbotFeedback(
+  container,
+  messageId = null,
+  config = {}
+) {
+  if (!container) return;
+  // Prevent double-initialization
+  if (container.__vfChatbotFeedbackInstance)
+    return container.__vfChatbotFeedbackInstance;
+  const instance = new VFChatbotFeedback(container, messageId, config);
+  container.__vfChatbotFeedbackInstance = instance;
+  return instance;
 }

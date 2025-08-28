@@ -34,7 +34,7 @@
   }
 
   &__form {
-
+    display: none;
     &-content {
       border-radius: $vf-radius--xs;
       background-color: var(--vf-color--neutral--0);
@@ -44,6 +44,9 @@
         flex-direction: row;
         justify-content: center;
         margin-bottom: 24px;
+        @media (max-width: 480px) {
+          margin-bottom: 16px;
+        }
       }
     }
   }
@@ -70,7 +73,7 @@
     text-align: left;
     padding: 11px;
     background-color: var(--vf-color--neutral--0);
-    color: var(--vf-color--blue);
+    color: var(--vf-color--blue--dark);
     border-radius: $vf-radius--xs;
     border: 1px solid var(--vf-color--blue);
     min-width: fit-content;
@@ -99,6 +102,7 @@
 
     @media (max-width: 480px) {
       width: 95%;
+      margin-bottom: 16px;
     }
   }
 
