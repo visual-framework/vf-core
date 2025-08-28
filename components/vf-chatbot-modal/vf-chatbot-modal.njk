@@ -1,29 +1,29 @@
 <!-- Modal Chatbot -->
-<div class="vf-content vf-chatbot-modal-container"
+<div class="vf-content vf-chatbot-modal-container" role="dialog" aria-label="{{ config.title }} chatbot"
      data-vf-js-chatbot-modal-container
      data-vf-chatbot-config="{{ config | dump | escape }}">
 
-  <div class="vf-chatbot-modal__header">
-    <div class="vf-chatbot-modal__header-left">
+  <div role="region" aria-label="Chatbot header" class="vf-chatbot-modal__header">
+    <div role="region" aria-label="Chatbot selector" class="vf-chatbot-modal__header-left">
       {% if config.selectorContext %}
         {% render "@vf-chatbot-selector", config.selectorContext %}
       {% else %}
         <div class="vf-chatbot-selector">
           <div class="vf-chatbot-selector__title">
-            <img src="{{ config.icons.selector_logo_url }}" alt="{{ config.title }}">
+            <img src="{{ config.selectorContext.selector_logo_url }}" alt="{{ config.selectorContext.selector_logo_title }} logo">
             <div class="vf-chatbot-selector__title-content">
-              <span class="vf-chatbot-selector__main-text">{{ config.title }}</span>
+              <span class="vf-chatbot-selector__main-text">{{ config.selectorContext.selector_logo_title }}</span>
             </div>
           </div>
         </div>
       {% endif %}
     </div>
     <div class="vf-chatbot-modal__header-right">
-      <button class="vf-chatbot-modal__minimize" aria-label="Minimize" data-vf-js-chatbot-modal-minimize>
-        <img src="{{ config.icons.minimize }}" alt="Minimize">
+      <button class="vf-chatbot-modal__minimize" aria-label="Minimize chatbot" data-vf-js-chatbot-modal-minimize>
+        <img src="{{ config.icons.minimize }}" alt="Minimize chatbot">
       </button>
-      <button class="vf-chatbot-modal__close" aria-label="Close" data-vf-js-chatbot-modal-close>
-        <img src="{{ config.icons.close }}" alt="Close">
+      <button class="vf-chatbot-modal__close" aria-label="Close chatbot" data-vf-js-chatbot-modal-close>
+        <img src="{{ config.icons.close }}" alt="Close chatbot">
       </button>
     </div>
   </div>
@@ -41,12 +41,18 @@
           welcome_message: config.welcome_message,
           welcome_suggestions_title: config.welcome_suggestions_title,
           enable_welcome_suggestions: config.features.enable_welcome_suggestions,
-          welcome_max_suggestions: config.welcome_max_suggestions
+          welcome_max_suggestions: config.welcome_max_suggestions,
+          qa_data_url: config.api.qa_data_url,
+          enable_welcome_suggestions: config.features.enable_welcome_suggestions,
+          enable_qa_data_loading: config.features.enable_qa_data_loading,
+          enable_predefined_qa: config.features.enable_predefined_qa,
+          enable_fallback_responses: config.features.enable_fallback_responses
         } %}
       {% endif %}
 
       <!-- Messages Container -->
-      <div class="{{ 'vf-chatbot-modal__messages-no-scrollbar' if config.behavior.show_scrollbar == false  else 'vf-chatbot-modal__messages'}}  vf-u-margin__bottom--400"
+      <div role="region" aria-label="Chat messages"
+           class="{{ 'vf-chatbot-modal__messages-no-scrollbar' if config.behavior.show_scrollbar == false  else 'vf-chatbot-modal__messages'}}  vf-u-margin__bottom--400"
            data-vf-js-chatbot-modal-messages
            data-auto-scroll="{{ config.behavior.auto_scroll }}">
         <!-- Messages will be added here dynamically -->
@@ -54,7 +60,7 @@
 
       <!-- Disclaimer Banner -->
       {% if config.disclaimer and config.features.enable_disclaimer %}
-        <div class="vf-chatbot-modal__disclaimer" data-vf-js-chatbot-modal-disclaimer>
+        <div role="region" aria-label="Disclaimer banner" class="vf-chatbot-modal__disclaimer" data-vf-js-chatbot-modal-disclaimer>
           <div class="vf-banner vf-banner--alert vf-banner--info">
             <div class="vf-banner__content">
               <p class="vf-banner__text">{{ config.disclaimer | safe }}</p>
@@ -72,7 +78,7 @@
     </div>
 
     <!-- Input Container -->
-    <div class="vf-chatbot-modal__input-container">
+    <div role="region" aria-label="Chat message input" class="vf-chatbot-modal__input-container">
       <div class="vf-chatbot-modal__input-wrapper">
         <label class="vf-u-sr-only"
           id="vf-chatbot-modal-input-label"
@@ -95,7 +101,7 @@
       </div>
 
       {% if config.footnote %}
-      <div class="vf-chatbot-modal__footnote vf-u-margin__top--200" data-vf-js-chatbot-modal-footnote>
+      <div role="region" aria-label="footnote" class="vf-chatbot-modal__footnote vf-u-margin__top--200 vf-u-margin__bottom--200" data-vf-js-chatbot-modal-footnote>
         {{ config.footnote }}
       </div>
       {% endif %}
@@ -118,7 +124,7 @@
         type: "user",
         avatar: {
           src: config.icons.user_avatar,
-          alt: "You",
+          alt: "Your avatar",
           name: "You"
         },
         content: "Hello!"
@@ -130,7 +136,7 @@
         type: "assistant",
         avatar: {
           src: config.icons.assistant_avatar,
-          alt: config.title,
+          alt: "{{config.title}} avatar",
           name: config.title
         },
         content: "How can I help you?",

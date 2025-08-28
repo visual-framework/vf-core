@@ -18,10 +18,15 @@
   padding: 0 1.5rem;
 
   &__content {
-    min-height: 25vh;
+    min-height: 30vh;
+    min-height: 30dvh;
     @media (max-width: 480px) {
       min-height: 35vh;
-      justify-content: start;
+      min-height: 35dvh;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
   &__suggestions {
@@ -31,6 +36,13 @@
     &-grid {
       grid-template-columns: 1fr;
     }
+  }
+
+  @media (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
   }
 }
 

@@ -1,4 +1,5 @@
-<div class="vf-chatbot-welcome"
+<div role="region" aria-label="Chatbot welcome screen" 
+     class="vf-chatbot-welcome"
      data-vf-js-chatbot-welcome
      data-max-questions="{{ welcome_max_suggestions | default(4) }}"
      data-enable-qa-data-loading="{{ enable_qa_data_loading | default(true) }}"
@@ -8,7 +9,7 @@
   <div class="vf-chatbot-welcome__content">
     {% if welcome_logo %}
       <div class="vf-chatbot-welcome__logo">
-        <img src="{{ welcome_logo_url }}" alt="{{ welcome_logo_alt | default('AI assistant') }}">
+        <img src="{{ welcome_logo_url }}" alt="{{ welcome_logo_alt | default('AI assistant logo') }}">
       </div>
     {% endif %}
     <h1 class="vf-chatbot-welcome__title">{{ welcome_title | default('AI assistant') }}</h1>

@@ -30,9 +30,9 @@ export class VFChatbotWelcome {
           ? options.enable_fallback_responses
           : this.el.dataset.enableFallbackResponses !== "false",
       qa_data_url:
-        options.qa_data_url ||
         this.el.dataset.qaDataUrl
     };
+    this.init();
   }
 
   async init() {
@@ -258,7 +258,6 @@ export class VFChatbotWelcome {
 }
 
 // Initialize
-export function initVFChatbotWelcome() {
-  const elements = document.querySelectorAll("[data-vf-js-chatbot-welcome]");
-  elements.forEach(element => new VFChatbotWelcome(element));
+export function initVFChatbotWelcome(element) {
+  return new VFChatbotWelcome(element);
 }

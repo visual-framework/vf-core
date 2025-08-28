@@ -10,9 +10,9 @@
       {% else %}
         <div class="vf-chatbot-selector">
           <div class="vf-chatbot-selector__title">
-            <img src="{{ config.icons.selector_logo_url }}" alt="{{ config.title }}">
+            <img src="{{ config.selectorContext.selector_logo_url }}" alt="{{ config.selectorContext.selector_logo_title }}">
             <div class="vf-chatbot-selector__title-content">
-              <span class="vf-chatbot-selector__main-text">{{ config.title }}</span>
+              <span class="vf-chatbot-selector__main-text">{{ config.selectorContext.selector_logo_title }}</span>
             </div>
           </div>
         </div>
@@ -33,7 +33,12 @@
           welcome_message: config.welcome_message,
           welcome_suggestions_title: config.welcome_suggestions_title,
           enable_welcome_suggestions: config.features.enable_welcome_suggestions,
-          welcome_max_suggestions: config.welcome_max_suggestions
+          welcome_max_suggestions: config.welcome_max_suggestions,
+          qa_data_url: config.api.qa_data_url,
+          enable_welcome_suggestions: config.features.enable_welcome_suggestions,
+          enable_qa_data_loading: config.features.enable_qa_data_loading,
+          enable_predefined_qa: config.features.enable_predefined_qa,
+          enable_fallback_responses: config.features.enable_fallback_responses
         } %}
       {% endif %}
 

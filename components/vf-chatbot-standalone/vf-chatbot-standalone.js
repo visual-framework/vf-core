@@ -2,7 +2,7 @@
 import { initVFChatbotSources } from "../vf-chatbot-sources/vf-chatbot-sources";
 import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js";
 import { initVFChatbotSelector } from "../vf-chatbot-selector/vf-chatbot-selector.js";
-import { VFChatbotWelcome } from "../vf-chatbot-welcome/vf-chatbot-welcome.js";
+import { initVFChatbotWelcome } from "../vf-chatbot-welcome/vf-chatbot-welcome.js";
 
 class VFChatbotStandalone {
   constructor(element, customConfig = {}) {
@@ -49,9 +49,7 @@ class VFChatbotStandalone {
           "../../assets/vf-chatbot/assets/vf-chatbot--avatar-user.svg",
         send_button: "../../assets/vf-chatbot/assets/vf-chatbot--icon-send.svg",
         main_logo_url:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg",
-        selector_logo_url:
-          "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg"
+          "../../assets/vf-chatbot/assets/vf-chatbot--icon-32x32-dark-green.svg"
       },
 
       api: {
@@ -96,7 +94,9 @@ class VFChatbotStandalone {
           routes:
             "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
           placeholder: "Select services",
-          title: "Services"
+          title: "Services",
+          selector_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg",
+          selector_logo_title: "AI Assistant"
         }
       },
 
@@ -410,31 +410,10 @@ class VFChatbotStandalone {
       });
     }
 
-    // Initialize welcome component
     if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
-      this.welcomeComponent = new VFChatbotWelcome(this.welcomeScreen, {
-        // Basic welcome configuration
-        welcome_title: this.config.title,
-        welcome_logo: this.config.welcome_logo,
-        welcome_message: this.config.welcome_message,
-        welcome_logo_alt: this.config.welcome_logo_alt,
-        welcome_suggestions_title: this.config.welcome_suggestions_title,
-        welcome_max_suggestions: this.config.welcome_max_suggestions,
-
-        // API configuration
-        qa_data_url: this.config.api.qa_data_url,
-
-        // Feature toggles
-        enable_welcome_suggestions: this.config.features
-          .enable_welcome_suggestions,
-        enable_qa_data_loading: this.config.features.enable_qa_data_loading,
-        enable_predefined_qa: this.config.features.enable_predefined_qa,
-        enable_fallback_responses: this.config.features
-          .enable_fallback_responses
-      });
-
       try {
-        await this.welcomeComponent.init();
+        initVFChatbotWelcome(this.welcomeScreen);
+        // await this.welcomeComponent.init();
         this.welcomeScreen.addEventListener(
           "vf-chatbot-welcome:suggestion-click",
           event => {
@@ -442,6 +421,9 @@ class VFChatbotStandalone {
             this.onSuggestionClick(question);
             this.showChatInterface();
             this.sendUserMessage(question);
+          },
+          {
+            once: true
           }
         );
         this.welcomeScreen.scrollTop = this.welcomeScreen.scrollHeight;
@@ -450,6 +432,7 @@ class VFChatbotStandalone {
         this.onError(error, "welcome_component_init");
       }
     }
+    // }
 
     // Trigger conversation start
     this.onConversationStart();
@@ -785,6 +768,24 @@ class VFChatbotStandalone {
       avatar.src = this.config.icons.assistant_avatar;
     }
 
+    // Initialize feedback if enabled
+    if (this.config.features.enable_feedback) {
+      const feedbackContainer = assistantMessage.querySelector(
+        "[data-vf-js-chatbot-feedback]"
+      );
+      if (feedbackContainer) {
+        feedbackContainer.dataset.messageId = messageId;
+
+        // Pass configuration to VFChatbotFeedback component
+        new VFChatbotFeedback(feedbackContainer, messageId, {
+          enable_instant_feedback: this.config.features.enable_instant_feedback,
+          api_endpoint: this.config.api.feedback_endpoint,
+          positiveOptions: this.config.feedback_options?.positive,
+          negativeOptions: this.config.feedback_options?.negative
+        });
+      }
+    }
+
     // Add sources if enabled and present
     if (
       this.config.features.enable_sources &&
@@ -827,24 +828,6 @@ class VFChatbotStandalone {
     // Add prompts if present
     if (prompts && prompts.length > 0) {
       this.addActionPrompts(assistantMessage, prompts, content);
-    }
-
-    // Initialize feedback if enabled
-    if (this.config.features.enable_feedback) {
-      const feedbackContainer = assistantMessage.querySelector(
-        "[data-vf-js-chatbot-feedback]"
-      );
-      if (feedbackContainer) {
-        feedbackContainer.dataset.messageId = messageId;
-
-        // Pass configuration to VFChatbotFeedback component
-        new VFChatbotFeedback(feedbackContainer, messageId, {
-          enable_instant_feedback: this.config.features.enable_instant_feedback,
-          api_endpoint: this.config.api.feedback_endpoint,
-          positiveOptions: this.config.feedback_options?.positive,
-          negativeOptions: this.config.feedback_options?.negative
-        });
-      }
     }
 
     this.messagesContainer.appendChild(assistantMessage);
