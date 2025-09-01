@@ -4,6 +4,7 @@
 
 * Updated : Changes for chatbot modal variant
 * Updated : Code modified to remove scrollbar
+* Added : React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
 
 ### 1.0.0-beta.2
 

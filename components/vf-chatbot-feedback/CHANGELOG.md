@@ -4,6 +4,7 @@
 
 * Added : Changes for chatbot modal variant
 * Fixed: Added code to return feedback comments
+* Added : React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
 
 ### 1.0.0-beta.2
 
