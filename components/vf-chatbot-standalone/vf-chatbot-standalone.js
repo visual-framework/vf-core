@@ -421,9 +421,6 @@ class VFChatbotStandalone {
             this.onSuggestionClick(question);
             this.showChatInterface();
             this.sendUserMessage(question);
-          },
-          {
-            once: true
           }
         );
         this.welcomeScreen.scrollTop = this.welcomeScreen.scrollHeight;
