@@ -63,7 +63,11 @@ VFChatbot.prototype = {
 
     // Focus first focusable element or modal itself
     const focusables = getFocusable();
-    if (focusables.length) {
+    // Try to focus the input first
+    const input = modal.querySelector("[data-vf-js-chatbot-modal-input]");
+    if (input) {
+      input.focus();
+    } else if (focusables.length) {
       focusables[0].focus();
     } else {
       modal.setAttribute("tabindex", "-1");
@@ -122,7 +126,7 @@ VFChatbot.prototype = {
     this.enableFocusTrap();
 
     // Focus on input if it exists
-    const input = this.modal.querySelector("[data-vf-js-chatbot-input]");
+    const input = this.modal.querySelector("[data-vf-js-chatbot-modal-input]");
     if (input) {
       setTimeout(() => input.focus(), 300);
 

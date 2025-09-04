@@ -6,7 +6,6 @@ import { initVFChatbotWelcome } from "../vf-chatbot-welcome/vf-chatbot-welcome.j
 
 class VFChatbotStandalone {
   constructor(element, customConfig = {}) {
-    console.log("Initializing standalone chatbot with config:", customConfig);
 
     this.container = element;
     this.loadConfiguration(customConfig);
@@ -905,6 +904,7 @@ class VFChatbotStandalone {
     } else {
       if (this.loadingIndicator) {
         this.loadingIndicator.style.display = "none";
+        this.messagesContainer.removeChild(this.loadingIndicator);
       }
     }
 

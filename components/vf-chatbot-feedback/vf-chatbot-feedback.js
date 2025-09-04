@@ -176,8 +176,6 @@ export class VFChatbotFeedback {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      console.log("Feedback sent to API successfully");
     } catch (error) {
       console.error("Failed to send feedback to API:", error);
     }

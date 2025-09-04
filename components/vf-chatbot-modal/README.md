@@ -172,15 +172,14 @@ const config = {
   },
   selectorContext: {
     chatbotRoutes: {
-      multiSelect: true,
-      maxMultiSelect: 3,
+      multiSelect: false,
       showSearch: true,
       showSearchThreshold: 5,
-      showAllServices: true,
-      showAllServicesSelected: true,
-      routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
-      placeholder: "Select services",
-      title: "Services"
+      routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-llms.json",
+      placeholder: "Search",
+      title: "Services",
+      selector_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg",
+      selector_logo_title: "AI Assistant"
     }
   },
   handlers: {
@@ -190,7 +189,11 @@ const config = {
     on_suggestion_click: "handleSuggestionClick",
     on_error: "handleError",
     on_conversation_start: "handleConversationStart",
-    on_conversation_end: "handleConversationEnd"
+    on_conversation_end: "handleConversationEnd",
+    on_fab_click: "handleFabClick",
+    on_dialog_confirm: "handleDialogConfirm",
+    on_dialog_cancel: "handleDialogCancel",
+    on_minimize: "handleMinimize"
   },
   feedback_options: {
     positive: [
@@ -204,7 +207,7 @@ const config = {
       { id: "poorformat", label: "Poorly formatted" }
     ]
   },
-  enable_session_persistence: true,
+  enable_session_persistence: true, // If true, the chatbot will remember the conversation and state across page reloads or navigation (using sessionStorage)
   restore_minimized_state: true // If true, restore minimized state after navigation
 };
 ```
@@ -232,9 +235,11 @@ const selectorConfig = {
       // Data source
       routes: "assets/vf-chatbot-selector-services.json",
       
-      // UI labels
+      // UI labels and logo
       placeholder: "Search",
-      title: "Available Services"
+      title: "Available Services",
+      selector_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg",
+      selector_logo_title: "AI Assistant"
     }
   }
 };
@@ -510,14 +515,14 @@ const config = {
 {
   "response": "Here's the information...",
   "sources": `<nav>
-				  <ul>
-					<li><a href="#nowhere" title="Lorum ipsum dolor sit amet">Lorem</a></li>
-					<li><a href="#nowhere" title="Aliquam tincidunt mauris eu risus">Aliquam</a></li>
-					<li><a href="#nowhere" title="Morbi in sem quis dui placerat ornare">Morbi</a></li>
-					<li><a href="#nowhere" title="Praesent dapibus, neque id cursus faucibus">Praesent</a></li>
-					<li><a href="#nowhere" title="Pellentesque fermentum dolor">Pellentesque</a></li>
-				  </ul>
-				</nav>`
+    <ul>
+    <li><a href="#nowhere" title="Lorum ipsum dolor sit amet">Lorem</a></li>
+    <li><a href="#nowhere" title="Aliquam tincidunt mauris eu risus">Aliquam</a></li>
+    <li><a href="#nowhere" title="Morbi in sem quis dui placerat ornare">Morbi</a></li>
+    <li><a href="#nowhere" title="Praesent dapibus, neque id cursus faucibus">Praesent</a></li>
+    <li><a href="#nowhere" title="Pellentesque fermentum dolor">Pellentesque</a></li>
+    </ul>
+  </nav>`
 }
 ```
 

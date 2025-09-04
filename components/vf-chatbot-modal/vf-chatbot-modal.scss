@@ -7,8 +7,8 @@
   max-width: 400px;
   display: none;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  // transform: translateY(20px);
+  // transition: opacity 0.3s ease, transform 0.3s ease;
   background-color: var(--vf-color--neutral--0);
   border-radius: $vf-radius--sm;
   border-bottom-right-radius: 0px;
@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     opacity: 1;
-    transform: translateY(0);
+    // transform: translateY(0);
   }
 
   &--inactive {
@@ -60,6 +60,10 @@
     border-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
+  }
+  
+  @media (max-height: 1050px) {
+    height: 70vh;
   }
 
   &__header {
