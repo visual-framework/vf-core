@@ -169,7 +169,9 @@ const config = {
       showAllServicesSelected: true,
       routes: "../../assets/vf-chatbot/assets/vf-chatbot-selector-services.json",
       placeholder: "Select services",
-      title: "Services"
+      title: "Services",
+      selector_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg",
+      selector_logo_title: "AI Assistant"
     }
   },
   handlers: {
@@ -218,9 +220,11 @@ const selectorConfig = {
       // Data source
       routes: "assets/vf-chatbot-selector-services.json",
       
-      // UI labels
+      // UI labels and logo
       placeholder: "Select services",
-      title: "Available Services"
+      title: "Available Services",
+      selector_logo_url: "../../assets/vf-chatbot/assets/vf-chatbot--icon-24x24-dark-green.svg",
+      selector_logo_title: "AI Assistant"
     }
   }
 };
@@ -491,14 +495,14 @@ const config = {
 {
   "response": "Here's the information...",
   "sources": `<nav>
-				  <ul>
-					<li><a href="#nowhere" title="Lorum ipsum dolor sit amet">Lorem</a></li>
-					<li><a href="#nowhere" title="Aliquam tincidunt mauris eu risus">Aliquam</a></li>
-					<li><a href="#nowhere" title="Morbi in sem quis dui placerat ornare">Morbi</a></li>
-					<li><a href="#nowhere" title="Praesent dapibus, neque id cursus faucibus">Praesent</a></li>
-					<li><a href="#nowhere" title="Pellentesque fermentum dolor">Pellentesque</a></li>
-				  </ul>
-				</nav>`
+    <ul>
+    <li><a href="#nowhere" title="Lorum ipsum dolor sit amet">Lorem</a></li>
+    <li><a href="#nowhere" title="Aliquam tincidunt mauris eu risus">Aliquam</a></li>
+    <li><a href="#nowhere" title="Morbi in sem quis dui placerat ornare">Morbi</a></li>
+    <li><a href="#nowhere" title="Praesent dapibus, neque id cursus faucibus">Praesent</a></li>
+    <li><a href="#nowhere" title="Pellentesque fermentum dolor">Pellentesque</a></li>
+    </ul>
+  </nav>`
 }
 ```
 

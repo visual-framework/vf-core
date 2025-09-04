@@ -7,7 +7,6 @@ import { initVFChatbotDialog } from "../vf-chatbot-dialog/vf-chatbot-dialog.js";
 
 class VFChatbotModal {
   constructor(element, customConfig = {}) {
-    console.log("Initializing modal chatbot with config:", customConfig);
 
     this.container = element;
     this.loadConfiguration(customConfig);
@@ -363,7 +362,7 @@ class VFChatbotModal {
 
         // Focus on input if it exists
         const input = this.container.querySelector(
-          "[data-vf-js-chatbot-input]"
+          "[data-vf-js-chatbot-modal-input]"
         );
         if (input) {
           setTimeout(() => input.focus(), 300);
@@ -669,15 +668,23 @@ class VFChatbotModal {
     if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
       try {
         initVFChatbotWelcome(this.welcomeScreen);
-        this.welcomeScreen.addEventListener(
-          "vf-chatbot-welcome:suggestion-click",
-          event => {
-            const question = event.detail.question;
-            this.onSuggestionClick(question);
-            this.showChatInterface();
-            this.sendUserMessage(question);
-          }
-        );
+
+        // Only add the event listener if not already present
+        const existingListeners = this.welcomeScreen._hasSuggestionClickListener;
+        if (!existingListeners) {
+          this.welcomeScreen.addEventListener(
+            "vf-chatbot-welcome:suggestion-click",
+            event => {
+              const question = event.detail.question;
+              this.onSuggestionClick(question);
+              this.showChatInterface();
+              this.sendUserMessage(question);
+            }
+          );
+          // Mark that the listener has been added
+          this.welcomeScreen._hasSuggestionClickListener = true;
+        }
+
         this.welcomeScreen.scrollTop = this.welcomeScreen.scrollHeight;
       } catch (error) {
         console.error("Failed to initialize welcome component:", error);
@@ -1178,6 +1185,7 @@ class VFChatbotModal {
     } else {
       if (this.loadingIndicator) {
         this.loadingIndicator.style.display = "none";
+        this.messagesContainer.removeChild(this.loadingIndicator);
       }
     }
 
@@ -1212,7 +1220,7 @@ class VFChatbotModal {
     }
 
     if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
-      this.welcomeScreen.style.display = "block";
+      this.welcomeScreen.style.display = "flex";
     }
 
     this.onConversationStart();
