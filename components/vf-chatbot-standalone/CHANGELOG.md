@@ -1,12 +1,16 @@
 # Changelog
 
-### 1.0.0-beta.3
+### 1.0.0-beta.4
 
 * Updated : Standalone variant initialization moved to `vf-chatbot` component
 * Updated : Added more config options
 * Updated : Changes for chatbot modal variant
 * Fixed: Added code to return feedback comments
 * Added : React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+### 1.0.0-beta.3
+
+* Version bump
 
 ### 1.0.0-beta.2
 
