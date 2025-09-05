@@ -1,3 +1,7 @@
+### 2.2.50
+
+* chore : Version bump
+
 ### 2.2.49
 
 * chore : Version bump
