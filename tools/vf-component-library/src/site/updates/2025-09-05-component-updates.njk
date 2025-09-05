@@ -1,0 +1,108 @@
+---
+title: Rollup release 2.5.25
+subtitle: This release includes addition of chatbot modal along with addition of React support, and relevant updates to standalone, and all dependent packages.
+date: 2025-09-05 10:30:00
+version: 2.5.25
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Features",
+      "navigation_href": "#features"
+    },
+    {
+      "text": "Refinements",
+      "navigation_href": "#refinements"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### New features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-chatbot", "1.0.0-beta.3", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Updated: Standalone and modal variant initialization moved to `vf-chatbot` component
+* Updated: Added more config options
+* Added: Changes for chatbot modal variant
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+{{ releaseLinks.notes("vf-chatbot-fab", "1.0.0-beta.3", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Added: Floating action button for modal chatbot access.
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+{{ releaseLinks.notes("vf-chatbot-modal", "1.0.0-beta.3", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Added: Modal chatbot interface.
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+{{ releaseLinks.notes("vf-chatbot-standalone", "1.0.0-beta.4", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Updated: Standalone variant initialization moved to `vf-chatbot` component
+* Updated: Added more config options
+* Updated: Changes for chatbot modal variant
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+{{ releaseLinks.notes("vf-chatbot-action-prompt", "1.0.0-beta.3", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Added: Changes for chatbot modal variant
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+{{ releaseLinks.notes("vf-chatbot-feedback", "1.0.0-beta.4", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Added: Changes for chatbot modal variant
+* Fixed: Added code to return feedback comments
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+{{ releaseLinks.notes("vf-chatbot-prompt", "1.0.0-beta.3", "4b4afcf65e139fe80c9785af6e07cbebc7ef944f") }}
+* Added: Changes for chatbot modal variant
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+{{ releaseLinks.notes("vf-chatbot-selector", "1.0.0-beta.3", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Added: Changes for chatbot modal variant
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+{{ releaseLinks.notes("vf-chatbot-sources", "1.0.0-beta.3", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Added: Changes for chatbot modal variant
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+{{ releaseLinks.notes("vf-chatbot-welcome", "1.0.0-beta.3", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Updated: Changes for chatbot modal variant
+* Updated: Code modified to remove scrollbar
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+{{ releaseLinks.notes("vf-chatbot-dialog", "1.0.0-beta.1", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Added: Initial version for modal chatbot variant
+* Added: React support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2314)
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-component-rollup", "1.4.13", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Added: Added VF Modal Chatbot [Tracking issue](https://github.com/visual-framework/vf-core/issues/2299)
+
+{{ releaseLinks.notes("vf-component-library", "1.2.18", "0e33230ddcaeb82f220b6acf472f02d1170a1c9f") }}
+* Added: Added VF Modal Chatbot [Tracking issue](https://github.com/visual-framework/vf-core/issues/2299)
+
+{% endmarkdown %}
