@@ -1,0 +1,6 @@
+/*
+ * Public API Surface of vf-chatbot.angular
+ */
+export * from './lib/vf-chatbot.angular.module';
+export * from './lib/vf-chatbot.angular.component';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL3ZmLWNoYXRib3QuYW5ndWxhci9zcmMvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGNBQWMsaUNBQWlDLENBQUM7QUFDaEQsY0FBYyxvQ0FBb0MsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qXG4gKiBQdWJsaWMgQVBJIFN1cmZhY2Ugb2YgdmYtY2hhdGJvdC5hbmd1bGFyXG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9saWIvdmYtY2hhdGJvdC5hbmd1bGFyLm1vZHVsZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi92Zi1jaGF0Ym90LmFuZ3VsYXIuY29tcG9uZW50JztcbiJdfQ==
