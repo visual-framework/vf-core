@@ -1,0 +1,55 @@
+---
+title: Rollup release 2.5.26
+subtitle: This release fixes binary asset corruption in gulp v5 builds and includes an update to the EMBL favicon template.
+date: 2026-02-06 19:00:00
+version: 2.5.26
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+  "heading": "On this page",
+  "classModifier": "on-this-page",
+  "activateJavascript": true,
+  "navigation": [
+    {
+      "text": "Bug fixes",
+      "navigation_href": "#bugs"
+    }
+  ]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Bug fixes <a href="#bugs" id="bugs"></a>
+
+{{ releaseLinks.notes("vf-core", "2.2.51", "576a24b212b9f0ffe3e9e05d4cf3dc0ef0970c1a") }}
+* Fixed: Fix added for gulp v5 to correctly create/copy binary assets [Tracking issue](https://github.com/visual-framework/vf-core/issues/2227)
+
+{{ releaseLinks.notes("vf-component-library", "1.2.19", "1a36a8e9203f677410a9fb2cb6137437622c5eef") }}
+* Fixed: Fix added for gulp v5 to correctly create/copy binary assets [Tracking issue](https://github.com/visual-framework/vf-core/issues/2227)
+
+{{ releaseLinks.notes("embl-favicon", "1.0.5", "576a24b212b9f0ffe3e9e05d4cf3dc0ef0970c1a") }}
+* Updated: Nunjucks template for new EMBL favicon [Tracking issue](https://github.com/visual-framework/vf-core/issues/2227)
+
+{% endmarkdown %}
