@@ -14,7 +14,7 @@ export default function(gulp, path, componentPath, buildDestionation) {
   // filesize savings.
   gulp.task("vf-svg", () => {
     return gulp
-      .src(componentPath + "/**/*.svg")
+      .src(componentPath + "/**/*.svg", { encoding: false })
       .pipe(svgmin())
       .pipe(gulp.dest(componentPath));
   });
@@ -22,21 +22,21 @@ export default function(gulp, path, componentPath, buildDestionation) {
   // make each component's `./assets` directory available
   gulp.task("vf-component-assets:directory", function() {
     return gulp
-      .src([componentPath + "/**/assets/**/*"])
+      .src([componentPath + "/**/assets/**/*"], { encoding: false })
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 
   // make each component's `./vf-component.css` compiled CSS available
   gulp.task("vf-component-assets:compiled-css", function() {
     return gulp
-      .src([componentPath + "/**/*.css"])
+      .src([componentPath + "/**/*.css"], { encoding: false })
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 
   // make each component's `./*.js` files available
   gulp.task("vf-component-assets:js", function() {
     return gulp
-      .src([componentPath + "/**/*.js"])
+      .src([componentPath + "/**/*.js"], { encoding: false })
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 
@@ -44,7 +44,7 @@ export default function(gulp, path, componentPath, buildDestionation) {
   // note: you shouldn't use this in combination with the other vf-commponent-assets tasks (redundant)
   gulp.task("vf-component-assets:everything", function() {
     return gulp
-      .src([componentPath + "/**/*.*"])
+      .src([componentPath + "/**/*.*"], { encoding: false })
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 

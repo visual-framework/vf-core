@@ -1,3 +1,7 @@
+### 1.0.5
+
+* Updated Nunjucks template for new EMBL favicon at [Tracking issue](https://github.com/visual-framework/vf-core/issues/2227)
+
 ### 1.0.4
 
 * Added new EMBL favicon size [Tracking issue](https://github.com/visual-framework/vf-core/issues/2227)
