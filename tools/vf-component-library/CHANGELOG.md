@@ -1,3 +1,7 @@
+### 1.2.19
+
+* Fixed : Fix added for gulp v5 to to create binary assets [Tracking issue](https://github.com/visual-framework/vf-core/issues/2227)
+
 ### 1.2.18
 
 * Added: Added VF Modal Chatbot [Tracking issue](https://github.com/visual-framework/vf-core/issues/2299)
