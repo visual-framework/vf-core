@@ -75,7 +75,7 @@ VfBannerAngularComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0
   data-vf-js-banner-auto-accept="false">
     <div class="vf-banner__content | vf-grid" data-vf-js-banner-text>
       <p class="vf-banner__text vf-banner__text--lg">
-        This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-banner__link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-banner__link" href="JavaScript:Void(0);">Terms Of Use</a>.
+        This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-banner__link" href="JavaScript:Void(0);">Privacy Notice</a>.
       </p>
     </div>
   </div>
@@ -122,7 +122,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.2.10", ngImpo
   data-vf-js-banner-auto-accept="false">
     <div class="vf-banner__content | vf-grid" data-vf-js-banner-text>
       <p class="vf-banner__text vf-banner__text--lg">
-        This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-banner__link" href="JavaScript:Void(0);">Privacy Notice</a> and <a class="vf-banner__link" href="JavaScript:Void(0);">Terms Of Use</a>.
+        This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a class="vf-banner__link" href="JavaScript:Void(0);">Privacy Notice</a>.
       </p>
     </div>
   </div>
