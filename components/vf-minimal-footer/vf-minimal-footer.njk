@@ -1,88 +1,114 @@
 {# vf-minimal-footer #}
-{# Params:
-   footer__theme        : 'dark' (default) | 'light'
-   footer__logo_src     : path to logo image
-   footer__logo_alt     : logo alt text
-   footer__notice       : mission/description text
-   footer__links        : list of {text, href} for legal links
-   partner__heading     : heading above the partner strip
-   partner__variant     : 'logos' | 'columns' | 'summary' | none
-   partner__logos       : list of {href, src, alt} for logos variant
-  partner__columns     : list of {text, href} for columns variant
-   partner__description : description text for summary variant
-   partner__cta_text    : CTA link text for summary variant
-   partner__cta_href    : CTA link href for summary variant
-   partner__stats       : list of {number, label} for summary variant
-#}
-
 {% set _theme = footer__theme if footer__theme else 'dark' %}
 {% set _isLight = true if _theme == 'light' else false %}
+{% set _logoSrc = '../../assets/vf-minimal-footer/assets/embl-ebi-rgb-full-colour.svg' if _isLight else '../../assets/vf-minimal-footer/assets/embl-ebi-rgb-all-white.png' %}
 
-{# ── Main footer ─────────────────────────────────────────── #}
 {% if partner__variant %}
-<div class="vf-footer vf-minimal-footer vf-u-background-color-ui--white vf-u-padding__top--400 vf-u-padding__bottom--400 vf-minimal-footer__partners">
-      {% if partner__heading %}
-      <h4 class="vf-text-body--4 vf-u-text-color--grey--dark vf-u-margin__bottom--400">{{ partner__heading }}</h4>
-      {% endif %}
+<div class="vf-footer vf-u-background-color-ui--white vf-footer__partners">
+  <div class="vf-footer__inner">
+      <h4 class="vf-u-type__text-body--4 vf-u-text-color--grey--dark">Our partners/collaborators</h4>
 
-      {# Logos variant #}
       {% if partner__variant == 'logos' %}
       <ul class="vf-grid vf-grid__col-6 vf-list">
-        {% for logo in partner__logos %}
         <li class="vf-list__item">
-          <a href="{{ logo.href }}" class="vf-list__link">
-            <img src="{{ logo.src }}" alt="{{ logo.alt }}" width="174" height="64">
+          <a href="JavaScript:Void(0);" class="vf-list__link">
+            <img src="../../assets/vf-minimal-footer/assets/landscape-placeholder.svg" alt="Partner logo" width="174" height="64">
           </a>
         </li>
-        {% endfor %}
+        <li class="vf-list__item">
+          <a href="JavaScript:Void(0);" class="vf-list__link">
+            <img src="../../assets/vf-minimal-footer/assets/landscape-placeholder.svg" alt="Partner logo" width="174" height="64">
+          </a>
+        </li>
+        <li class="vf-list__item">
+          <a href="JavaScript:Void(0);" class="vf-list__link">
+            <img src="../../assets/vf-minimal-footer/assets/landscape-placeholder.svg" alt="Partner logo" width="174" height="64">
+          </a>
+        </li>
+        <li class="vf-list__item">
+          <a href="JavaScript:Void(0);" class="vf-list__link">
+            <img src="../../assets/vf-minimal-footer/assets/landscape-placeholder.svg" alt="Partner logo" width="174" height="64">
+          </a>
+        </li>
+        <li class="vf-list__item">
+          <a href="JavaScript:Void(0);" class="vf-list__link">
+            <img src="../../assets/vf-minimal-footer/assets/landscape-placeholder.svg" alt="Partner logo" width="174" height="64">
+          </a>
+        </li>
+        <li class="vf-list__item">
+          <a href="JavaScript:Void(0);" class="vf-list__link">
+            <img src="../../assets/vf-minimal-footer/assets/landscape-placeholder.svg" alt="Partner logo" width="174" height="64">
+          </a>
+        </li>
       </ul>
 
-      {# Columns variant #}
       {% elif partner__variant == 'columns' %}
-      <div class="vf-u-padding__left--400">
+      <div>
         <ul class="vf-grid vf-grid__col-3 vf-list">
-          {% for item in partner__columns %}
           <li class="vf-list__item">
-            <a href="{{ item.href }}" class="vf-list__link">{{ item.text }}</a>
+            <a href="JavaScript:Void(0);" class="vf-list__link">Partner 1</a>
           </li>
-          {% endfor %}
+          <li class="vf-list__item">
+            <a href="JavaScript:Void(0);" class="vf-list__link">Partner 2</a>
+          </li>
+          <li class="vf-list__item">
+            <a href="JavaScript:Void(0);" class="vf-list__link">Partner 3</a>
+          </li>
+          <li class="vf-list__item">
+            <a href="JavaScript:Void(0);" class="vf-list__link">Partner 4</a>
+          </li>
+          <li class="vf-list__item">
+            <a href="JavaScript:Void(0);" class="vf-list__link">Partner 5</a>
+          </li>
+          <li class="vf-list__item">
+            <a href="JavaScript:Void(0);" class="vf-list__link">Partner 6</a>
+          </li>
+          <li class="vf-list__item">
+            <a href="JavaScript:Void(0);" class="vf-list__link">Partner 7</a>
+          </li>
+          <li class="vf-list__item">
+            <a href="JavaScript:Void(0);" class="vf-list__link">Partner 8</a>
+          </li>
+          <li class="vf-list__item">
+            <a href="JavaScript:Void(0);" class="vf-list__link">Partner 9</a>
+          </li>
         </ul>
       </div>
 
-      {# Summary variant #}
       {% elif partner__variant == 'summary' %}
       <div class="vf-grid vf-grid__col-4">
-        <div class="vf-u-padding__left--400">
-          {% if partner__description %}
-          <p class="vf-text-body--3 vf-u-text-color--grey--dark vf-u-margin__bottom--200">{{ partner__description }}</p>
-          {% endif %}
-          {% if partner__cta_text %}
-          <a href="{{ partner__cta_href }}" class="vf-text-body--4 vf-u-text-color--grey--dark">{{ partner__cta_text }}</a>
-          {% endif %}
+        <div>
+          <p>Partnership statement. A short description of the partnerships, collaborations or consortium.</p>
+          <a href="JavaScript:Void(0);">See all collaborators</a>
         </div>
-        {% for stat in partner__stats %}
-        <div class="vf-minimal-footer__stat vf-table__label">
-          <p class="vf-text-heading--2 vf-u-margin__bottom--0">{{ stat.number }}</p>
-          <p class="vf-text-body--4 vf-u-text-color--grey--dark vf-u-margin__bottom--0">{{ stat.label }}</p>
+        <div class="vf-footer__stat vf-table__label">
+          <p>35</p>
+          <p>Data partners</p>
         </div>
-        {% endfor %}
+        <div class="vf-footer__stat vf-table__label">
+          <p>4</p>
+          <p>Supporting funders</p>
+        </div>
+        <div class="vf-footer__stat vf-table__label">
+          <p>35</p>
+          <p>Research institutions</p>
+        </div>
       </div>
       {% endif %}
+    </div>
   </div>
 {% endif %}
 
-<footer class="vf-minimal-footer vf-footer{% if partner__variant %} vf-minimal-footer--without-rule{% endif %}{% if _isLight %} vf-footer--light vf-u-background-color-ui--white{% endif %} vf-u-padding__top--600 vf-u-padding__bottom--800">
-    <div class="vf-footer__logo-mission | vf-u-grid-gap--600 vf-u-margin__bottom--200">
-      <a href="https://www.ebi.ac.uk" class="vf-logo vf-u-grid__col--span-1--md vf-u-grid__col--span-1--lg">
-        <img class="vf-logo__image" src="{{ footer__logo_src }}" alt="{{ footer__logo_alt | default('EMBL-EBI') }}" loading="eager">
+<footer class="vf-footer {% if partner__variant %} vf-footer--without-rule{% endif %}{% if _isLight %} vf-footer--light{% endif %} | {% if _isLight %}vf-u-background-color-ui--white{% else %}vf-u-background-color-ui--dark-grey{% endif %}">
+    <div class="vf-footer__inner">
+      <a href="https://www.ebi.ac.uk" class="vf-logo">
+        <img class="vf-logo__image" src="{{ _logoSrc }}" alt="EMBL-EBI Logo" loading="eager">
       </a>
-      <div class="vf-footer__mission vf-u-padding__top--200 vf-u-grid__col--span-3--md vf-u-grid__col--span-3--lg">
-        <p class="vf-footer__notice vf-u-margin__bottom--0{% if _isLight %} vf-u-text-color--ui--black{% endif %}">{{ footer__notice }}</p>
-      </div>
+        <p class="vf-footer__notice">[Name of resource] is developed and maintained by EMBL-EBI, a world leader in biological data resources.</p>
+    <section class="vf-footer__legal vf-grid__col--span-all | vf-grid vf-grid__col-1">
+    <span class="vf-footer__link vf-u-text-color--grey--lightest">Copyright © Your Organisation</span>
+      <a class="vf-footer__link vf-u-text-color--white" href="JavaScript:Void(0);">Terms of use</a>
+      <a class="vf-footer__link vf-u-text-color--grey--lightest" href="JavaScript:Void(0);">Another entry</a>
+   </section>
     </div>
-    <section class="vf-footer__legal | vf-grid vf-grid__col-1 | vf-u-padding__top--600">
-      {% for link in footer__links %}
-      <a class="vf-footer__link{% if _isLight %} | vf-u-text-color--ui--black{% endif %}" href="{{ link.href }}">{{ link.text }}</a>
-      {% endfor %}
-    </section>
 </footer>

@@ -33,9 +33,9 @@ For cases like this we recommend using the Modular variant which offers more fle
 
 | Variant | Examples | Description |
 | --- | --- | --- |
-| Modular | VF-footer | Use when footer sections need to be customised |
-| EMBL-EBI Corporate Variant | EMBL_EBI header-footer | Use the EMBL-EBI corporate variant for organisational or self-contained experiences |
-| Minimal | - | Use when only essential brand and legal information is needed |
+| [Modular](../vf-footer) | VF-footer | Use when footer sections need to be customised |
+| EMBL-EBI Corporate Variant | [EMBL_EBI header-footer](../ebi-header-footer) | Use the EMBL-EBI corporate variant for organisational or self-contained experiences |
+|  | [Minimal](../vf-minimal-footer) | Use when only essential brand and legal information is needed |
 
 ### Collaboration section variants
 

@@ -1,229 +1,210 @@
-// vf-footer
+.vf-footer .vf-logo__image {
+  display: block;
+  height: auto;
+}
 
-@import 'package.variables.scss';
-// Debug information from component's `package.json`:
-// ---
-/*!
- * Component: #{map-get($componentInfo, 'name')}
- * Version: #{map-get($componentInfo, 'version')}
- * Location: #{map-get($componentInfo, 'location')}
- */
+$vf-footer-partner-logo-width: 174px;
+$vf-footer-partner-logo-height: 64px;
+$vf-footer-partner-rule-width: 8px;
 
-@import 'vf-footer.variables.scss';
-
+// Keep spacing consistent across the three logical rows.
 .vf-footer {
-  background-color: color(grey--dark);
-  border-top: 8px solid color(green);
-  grid-column: 1 / -1;
-  padding-bottom: 60px;
-  padding-top: 24px;
-  position: relative;
-
-  &::before {
-    background-color: inherit;
-    content: '';
-    grid-column: 1 / -1;
-    height: 100%;
-    margin-left: calc(50% - 50vw);
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    z-index: set-layer(vf-z-index--negative);
-  }
-
-  &::after {
-    background-color: color(green);
-    content: '';
-    height: 8px;
-    margin-left: calc(50% - 50vw);
-    position: absolute;
-    top: -8px;
-    width: 100vw;
-    z-index: set-layer(vf-z-index--negative);
-  }
-
-  .vf-links {
-    margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
+  border-top: 4px solid color(green);
 }
 
-.vf-footer__notice {
-  @include set-type(text-body--3);
-
-  color: ui-color(white);
-  max-width: 45em;
+.vf-footer__partners {
+  border-top: $vf-footer-partner-rule-width solid color(green);
+  padding-top: map-get($vf-spacing-map, vf-spacing--400);
+  padding-bottom: map-get($vf-spacing-map, vf-spacing--400);
 }
 
-.vf-footer__inner {
-  grid-column: main;
-  margin: 0 auto;
-  max-width: $vf-layout--comfortable;
+// Partner column/summary padding
+.vf-footer__partners .vf-grid.vf-grid__col-4 > div:first-child,
+.vf-footer__partners > div {
+  padding-left: map-get($vf-spacing-map, vf-spacing--400);
+}
+
+// Main footer row padding
+.vf-footer > .vf-grid.vf-grid__col-2 {
+  padding-bottom: map-get($vf-spacing-map, vf-spacing--800);
+}
+
+// Legal section padding
+.vf-footer__legal {
+  padding-bottom: map-get($vf-spacing-map, vf-spacing--800);
+  @include set-type(text-body--5, $custom-margin-bottom: 0);
+}
+
+.vf-footer__legal span {
+  color: var(--vf-color--grey--lightest, #fff);
+}
+
+// List reset padding
+.vf-footer .vf-links__list {
   padding: 0;
 }
 
-.vf-footer__legal {
-  color: ui-color(white);
-  column-gap: var(--page-grid-gap);
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  .vf-list {
-    width: 100%;
-  }
+.vf-footer.vf-footer--without-rule {
+  border-top: 0;
+}
 
-  .vf-footer__legal-text,
-  .vf-footer__link {
-    font-size: 14px;
-  }
-  .vf-footer__legal-text {
-    color: color(grey--lightest);
-  }
-  .vf-footer__link {
-    text-decoration: none;
-  }
-  .vf-list {
-    font-size: 19px;
-  }
+.vf-footer.vf-footer--without-rule::after {
+  display: none;
+}
 
+// Heading styles with margins
+.vf-footer h4 {
+  @include set-type(text-body--4, $custom-margin-bottom: map-get($vf-spacing-map, vf-spacing--400));
+  color: var(--vf-color--grey--lightest, #fff);
+}
 
-  .vf-footer__legal-text,
-  .vf-footer__link {
-    padding-top: 6px;
-    padding-bottom: 6px;
-  }
+.vf-links__heading {
+  @include set-type(text-body--4, $custom-margin-bottom: map-get($vf-spacing-map, vf-spacing--400));
+  color: var(--vf-color--grey--lightest, #fff);
+}
 
-  @media (min-width: $vf-breakpoint--lg) {
-    display: grid;
-    grid-template-columns: repeat(4, max-content);
-  }
+// Partner section text styles with margins
+.vf-footer__partners h4 {
+  @include set-type(text-body--4, $custom-margin-bottom: map-get($vf-spacing-map, vf-spacing--400));
+  color: var(--vf-color--grey--dark, #54585a);
+}
+
+.vf-footer__partners p {
+  @include set-type(text-body--3, $custom-margin-bottom: map-get($vf-spacing-map, vf-spacing--200));
+  color: var(--vf-color--grey--dark, #54585a);
+}
+
+// List item margins
+.vf-footer .vf-links__list {
+  padding: 0;
+  margin: 0;
+}
+
+.vf-footer .vf-list__item {
+  margin-bottom: map-get($vf-spacing-map, vf-spacing--200);
+}
+
+// Link styles in footer
+.vf-footer a.vf-list__link {
+  @include set-type(text-body--2, $custom-margin-bottom: 0);
+  color: var(--vf-color--ui--white, #fff);
 }
 
 .vf-footer__link {
-  @include inline-link(
-    $vf-link--color: $vf-footer-link--color,
-    $vf-link--hover-color: $vf-footer-link--hover-color,
-    $vf-link--visited-color: $vf-footer-link--visited-color
-  );
+  @include set-type(text-body--5, $custom-margin-bottom: 0);
+  color: var(--vf-color--ui--white, #fff);
 }
 
-.vf-footer__list--legal {
-  grid-column: 1 / -1;
-
-  .vf-list__item:not(:last-of-type) {
-    margin-right: 24px;
-  }
+// Contact details styles with margins
+.vf-footer__contact p {
+  @include set-type(text-body--5, $custom-margin-bottom: map-get($vf-spacing-map, vf-spacing--200));
+  color: var(--vf-color--grey--lightest, #fff);
 }
 
-.vf-footer__links-group {
-  border: solid 0px color(grey--lightest);
-  border-width: 1px 0;
-  margin-bottom: 12px;
-  padding-bottom: 24px;
-  grid-template-columns: repeat(5, 1fr);
-
-  .vf-links__heading {
-    @include set-type(text-body--6, $custom-margin-bottom: 8px, $color: ignore);
-    color: color(grey--lightest);
-    text-transform: uppercase;
-
-    .vf-heading__link {
-      @include inline-link(
-        $vf-link--color: $vf-footer-link--color,
-        $vf-link--hover-color: $vf-footer-link--hover-color,
-        $vf-link--visited-color: $vf-footer-link--visited-color
-      );
-    }
-  }
-
-  .vf-links {
-    padding-bottom: 0;
-    padding-top: 12px;
-  }
-
-  .vf-list:last-of-type {
-    margin-bottom: 0;
-  }
-
-  .vf-list__item {
-    color: color(grey--lightest);
-    margin-bottom: 0;
-  }
-
-  .vf-list__link {
-    text-decoration: none;
-  }
-
-  @media (min-width: $vf-breakpoint--lg) {
-    padding-bottom: 4rem;
-  }
-
+.vf-footer__contact a {
+  @include set-type(text-body--5, $custom-margin-bottom: 0);
+  color: var(--vf-color--ui--white, #fff);
 }
 
-.vf-footer .vf-links__link {
-  @include inline-link(
-    $vf-link--color: $vf-footer-link--color,
-    $vf-link--hover-color: $vf-footer-link--hover-color,
-    $vf-link--visited-color: $vf-footer-link--visited-color
-  );
+// Notice/mission statement styles
+.vf-footer__notice {
+  @include set-type(text-body--3, $custom-margin-bottom: 0);
+
+  flex-grow: 4;
+  line-height: 1.2;
+  color: var(--vf-color--ui--white, #fff);
 }
 
-.vf-footer .vf-list__link {
-  @include inline-link(
-    $vf-link--color: $vf-footer-link--color,
-    $vf-link--hover-color: $vf-footer-link--hover-color,
-    $vf-link--visited-color: $vf-footer-link--visited-color
-  );
-  margin-right: 0;
+.vf-footer__legal a {
+  @include set-type(text-body--5, $custom-margin-bottom: 0);
+  color: var(--vf-color--ui--white, #fff);
+}
+
+// Partner stat styles
+.vf-footer__stat p {
+  margin: 0;
+}
+
+.vf-footer .vf-footer__stat p:first-child {
+  @include set-type(text-heading--2, $custom-margin-bottom: 0);
+}
+
+.vf-footer .vf-footer__stat p:last-child {
+  @include set-type(text-body--4, $custom-margin-bottom: 0);
+}
+
+// Logo section margin
+.vf-footer > .vf-grid > div:first-child {
+  margin-bottom: map-get($vf-spacing-map, vf-spacing--800);
+}
+
+.vf-footer__logo-wrapper {
+  margin-bottom: map-get($vf-spacing-map, vf-spacing--800);
+}
+
+.vf-footer__partners .vf-list__item {
+  margin-bottom: 0 !important;
+}
+
+.vf-footer__partners .vf-list__item img {
+  width: $vf-footer-partner-logo-width !important;
+  height: $vf-footer-partner-logo-height !important;
+}
+
+.vf-footer__social-link {
   text-decoration: none;
+  margin: 0 6px;
+}
+.vf-footer--light,.vf-u-background-color-ui--white{
+  z-index: 1;
+}
+.vf-footer--light .vf-u-text-color--white {
+  color: var(--vf-color--ui--black, #000);
 }
 
-
-// IE 10/11 only fixes
-@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
-
-  // This, more generally, addresses things that don't support css grid, but I think that for us means "IE"
-  // This also doesn't have any responsive support, but, again, not sure if that's important for IE?
-  @media (min-width: $vf-breakpoint--lg) {
-    .vf-footer {
-      left: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      min-width: 100vw;
-      position: relative;
-      right: 50%;
-      width: 100vw;
-    }
-    .vf-footer__inner {
-      margin: 0 auto;
-      max-width: $vf-layout--comfortable;
-    }
-  }
+.vf-footer--light .vf-u-text-color--grey--lightest {
+  color: var(--vf-color--grey--dark, #54585a);
 }
 
-@media (max-width: 768px) {
-
-  .vf-footer__links-group {
-    grid-template-columns: repeat(3, 1fr);
-
-    .vf-list__item {
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-  }
-
-  .vf-footer__legal .vf-footer__legal-text,  .vf-footer__legal .vf-footer__link {
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
-
-  .vf-footer .vf-grid {
-    grid-row-gap: 0rem;
-  }
+// Light theme text and link color overrides
+.vf-footer--light h4 {
+  color: var(--vf-color--grey--dark, #54585a);
 }
 
-@media (max-width: 600px) {
+.vf-footer--light .vf-links__heading {
+  color: var(--vf-color--grey--dark, #54585a);
+}
 
-  .vf-footer__links-group {
-    grid-template-columns: repeat(1, 1fr);
-  }
+.vf-footer--light a.vf-list__link {
+  color: var(--vf-color--grey--dark, #54585a);
+}
+
+.vf-footer--light .vf-footer__link {
+  color: var(--vf-color--ui--black, #000);
+}
+
+.vf-footer--light .vf-footer__contact p {
+  color: var(--vf-color--grey--dark, #54585a);
+}
+
+.vf-footer--light .vf-footer__contact a {
+  color: var(--vf-color--ui--black, #000);
+}
+
+.vf-footer--light .vf-footer__notice {
+  color: var(--vf-color--ui--black, #000);
+}
+
+.vf-footer--light .vf-footer__legal span {
+  color: var(--vf-color--grey--dark, #54585a);
+}
+
+.vf-footer--light .vf-footer__legal a {
+  color: var(--vf-color--ui--black, #000);
+}
+
+.vf-footer.vf-footer--light .vf-footer__link:hover,
+.vf-footer__partners .vf-list__link,
+.vf-footer__partners .vf-list__item:hover {
+  color: ui-color(black) !important;
 }
