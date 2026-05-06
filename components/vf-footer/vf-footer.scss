@@ -7,6 +7,13 @@ $vf-footer-partner-logo-width: 174px;
 $vf-footer-partner-logo-height: 64px;
 $vf-footer-partner-rule-width: 8px;
 
+// 32px gap between all direct child rows inside the footer inner wrapper
+.vf-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: map-get($vf-spacing-map, vf-spacing--800);
+}
+
 // Keep spacing consistent across the three logical rows.
 
 .vf-footer__partners {
@@ -30,6 +37,11 @@ $vf-footer-partner-rule-width: 8px;
 .vf-footer__legal {
   padding-bottom: map-get($vf-spacing-map, vf-spacing--800);
   @include set-type(text-body--5, $custom-margin-bottom: 0);
+
+  @media (max-width: 768px) {
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 .vf-footer__legal span {
@@ -148,9 +160,17 @@ $vf-footer-partner-rule-width: 8px;
   height: $vf-footer-partner-logo-height !important;
 }
 
+.vf-footer__social {
+  padding-top: map-get($vf-spacing-map, vf-spacing--800);
+}
+
 .vf-footer__social-link {
   text-decoration: none;
   margin: 0 6px;
+
+  @media (max-width: 768px) {
+    margin: 0 5px;
+  }
 }
 .vf-footer--light,.vf-u-background-color-ui--white{
   z-index: 1;
