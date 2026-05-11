@@ -100,10 +100,15 @@
 
 <footer class="vf-footer {% if partner__variant %} vf-footer--without-rule{% endif %}{% if _isLight %} vf-footer--light{% endif %} | {% if _isLight %}vf-u-background-color-ui--white{% else %}vf-u-background-color-ui--dark-grey{% endif %}">
 <div class="vf-footer__inner">
-<div class="vf-grid vf-grid__col-2">
+{% if footer__show_intro_notice != false %}
+<p class="vf-footer__notice">The Visual Framework is a toolkit to quickly and collaboratively build better life science websites.</p>
+{% endif %}
+<div class="{% if footer__show_intro_notice != false %} vf-footer__links-group{% else %}vf-grid vf-grid__col-2{% endif %}">
   <!-- ROW 1: Logo + Mission (4) | Category Links (8) -->
   <!-- Logo -->
+  {% if footer__show_logo != false or footer__show_mission != false %}
   <div class="vf-footer__logo-wrapper">
+    {% if footer__show_logo != false %}
     <a href="https://www.ebi.ac.uk" class="vf-logo">
       <img
         class="vf-logo__image"
@@ -112,19 +117,22 @@
         loading="eager"
       />
     </a>
+    {% endif %}
+    {% if footer__show_mission != false %}
     <div class="vf-grid vf-grid__col-2">
     <!-- Mission Statement -->
     <p class="vf-u-type__text-body--3 vf-footer__notice vf-footer__text-secondary ">
-      Mission statement, a description of a site or organisation and what its goals are. Lorem ipsum dolor sit amet,
-      consectetur adipiscing elit.
+      A description of a site or organisation and what its goals are.
     </p>
     <p>
     </p>
     </div>
+    {% endif %}
   </div>
+  {% endif %}
   <div>
     <!-- Category Links -->
-    <div class="vf-grid vf-grid__col-3 ">
+    <div class="vf-grid {% if footer__show_intro_notice != false %}vf-grid__col-5{% else %}vf-grid__col-3{% endif %} ">
       <div class="vf-links">
         <h4 class="vf-links__heading vf-u-text-color--grey--lightest">
           CATEGORY
@@ -206,6 +214,62 @@
           </li>
         </ul>
       </div>
+      {% if footer__show_intro_notice != false %}
+      <div class="vf-links">
+        <h4 class="vf-links__heading vf-u-text-color--grey--lightest">
+          CATEGORY
+        </h4>
+        <ul class="vf-links__list | vf-list">
+          <li class="vf-list__item">
+            <a class="vf-list__link vf-u-text-color--white" href="JavaScript:Void(0);">
+              Entry
+            </a>
+          </li>
+          <li class="vf-list__item">
+            <a class="vf-list__link vf-u-text-color--white" href="JavaScript:Void(0);">
+              Entry
+            </a>
+          </li>
+          <li class="vf-list__item">
+            <a class="vf-list__link vf-u-text-color--white" href="JavaScript:Void(0);">
+              Entry
+            </a>
+          </li>
+          <li class="vf-list__item">
+            <a class="vf-list__link vf-u-text-color--white" href="JavaScript:Void(0);">
+              Entry
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="vf-links">
+        <h4 class="vf-links__heading vf-u-text-color--grey--lightest">
+          CATEGORY
+        </h4>
+        <ul class="vf-links__list | vf-list">
+          <li class="vf-list__item">
+            <a class="vf-list__link vf-u-text-color--white" href="JavaScript:Void(0);">
+              Entry
+            </a>
+          </li>
+          <li class="vf-list__item">
+            <a class="vf-list__link vf-u-text-color--white" href="JavaScript:Void(0);">
+              Entry
+            </a>
+          </li>
+          <li class="vf-list__item">
+            <a class="vf-list__link vf-u-text-color--white" href="JavaScript:Void(0);">
+              Entry
+            </a>
+          </li>
+          <li class="vf-list__item">
+            <a class="vf-list__link vf-u-text-color--white" href="JavaScript:Void(0);">
+              Entry
+            </a>
+          </li>
+        </ul>
+      </div>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -213,11 +277,28 @@
    <!-- ROW 2: Contact Details (4) | Social Icons (8) -->
    <div class="vf-grid vf-grid__col-2">
       <!-- Contact Details -->
+       {% if footer__show_sublinks != false %}
+      <ul class="vf-footer__list vf-footer__list--legal | vf-list vf-list--inline">
+        <li class="vf-list__item">
+          <a href="JavaScript:Void(0);" class="vf-list__link">Entry</a>
+        </li>
+        <li class="vf-list__item">
+          <a href="JavaScript:Void(0);" class="vf-list__link">Entry</a>
+        </li>
+        <li class="vf-list__item">
+          <a href="JavaScript:Void(0);" class="vf-list__link">Entry</a>
+        </li>
+      </ul>
+      {% endif %}
+      {% if footer__show_contact != false %}
       <div class="vf-footer__contact">
-         <p class="vf-u-type__text-body--5 vf-u-text-color--grey--lightest">Tel: +49 00 000 000.</p>
-         <p class="vf-u-type__text-body--5 vf-u-text-color--grey--lightest">Maybe an address too, 5555, Somewhere, Earth.</p>
-         <a href="JavaScript:Void(0);" class="vf-footer__link vf-u-text-color--white">Full contact details</a>
+
+        <p class="vf-u-type__text-body--5 vf-u-text-color--grey--lightest">Tel: +49 00 000 000.</p>
+        <p class="vf-u-type__text-body--5 vf-u-text-color--grey--lightest">Maybe an address too, 5555, Somewhere, Earth.</p>
+        <a href="JavaScript:Void(0);" class="vf-footer__link vf-u-text-color--white">Full contact details</a>
       </div>
+      {% endif %}
+      {% if footer__show_social != false %}
       <div>
          <!-- Social Icons -->
          <div class="vf-footer__social vf-u-display--flex vf-u-float__right">
@@ -253,6 +334,7 @@
             </a>
          </div>
       </div>
+      {% endif %}
    </div>
    <!-- ROW 3: Copyright (12) -->
   <section class="vf-footer__legal vf-grid__col--span-all | vf-grid vf-grid__col-1">
