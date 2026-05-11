@@ -28,7 +28,8 @@ This footer is designed to display branding and essential content within the EMB
 -   Where the social media channels are to be added
 
 For cases like this we recommend using the Modular variant which offers more flexibility.
-
+<br>
+<br>
 ### Deciding what to use
 
 | Variant | Description |
@@ -37,6 +38,8 @@ For cases like this we recommend using the Modular variant which offers more fle
 | [EMBL_EBI header-footer](../ebi-header-footer) | Use the EMBL-EBI corporate variant for organisational or self-contained experiences |
 | [Minimal](../vf-minimal-footer) | Use when only essential brand and legal information is needed |
 
+<br>
+<br>
 ### Collaboration section variants
 
 The collaborations section provides standardised patterns for displaying varying levels of partnerships and collaborations. The display format adapts based on the number of collaborators.
@@ -81,6 +84,9 @@ When you have 10 or more partners, synthesise them into categories with summary 
 
 -   Placeholder text can be customisable
 
+<br>
+<br>
+
 ### Choosing the right collaboration variant
 
 | Variant | Nº of partners | Usage |
@@ -89,11 +95,16 @@ When you have 10 or more partners, synthesise them into categories with summary 
 | Text links in columns | 1 - 9 | Maintains readability whilst accommodating more partners |
 | Categorised summary | 10+ | Prevents footer from becoming overwhelming; directs users to dedicated page |
 
+<br>
+<br>
+
 ### Usability and content guidance
 
 The content in the footer is designed to clearly describe the relationship between the services and EMBL-EBI. The footer has clear link labels and descriptions such as: "[Name of resource] is developed and maintained by EMBL-EBI, a world leader in biological data resources", for other use cases of descriptions, contact the Comms team via this email comms@ebi.ac.uk for support with appropriate wording.
 
 The content in the minimal footer variant is standardised to ensure consistency across our services.
+<br>
+<br>
 
 | Element | Required | Notes |
 | --- | --- | --- |
@@ -102,6 +113,8 @@ The content in the minimal footer variant is standardised to ensure consistency 
 | Utility & legal links | Yes | Bottom bar with Terms of use, EMBL-EBI affiliation and copyright. These links should be retained. |
 | Collaborators | No | This can be added for acknowledgment of collaborators |
 
+<br>
+<br>
 ### Terms of Use (ToU)
 
 Guidelines for domains requiring both Organisation-wide and Service-specific Terms

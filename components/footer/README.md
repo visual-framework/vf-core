@@ -35,13 +35,6 @@ The footer should be omitted when:
 - The layout requires a minimal footprint.
 - A modal, micro-interaction, or contained workflow does not represent a full-page experience.
 
-### Deciding what to use
-
-| Variant | Description |
-| --- | --- |
-| [Modular](../vf-footer)  | Use when footer sections need to be customised |
-| [EMBL_EBI header-footer](../ebi-header-footer) | Use the EMBL-EBI corporate variant for organisational or self-contained experiences |
-| [Minimal](../vf-minimal-footer) | Use when only essential brand and legal information is needed |
 
 ### Themes
 
@@ -75,7 +68,19 @@ This component targets WCAG 2.1 AA accessibility standard.
 
 -   **Screen readers:** Semantic HTML and ARIA labels ensure footer content is properly announced
 
--   **Responsive design:** Footer adapts appropriately across mobile (600px), tablet (768px) and desktop (1154px) breakpoints
+-   **Responsive design:** Footer adapts appropriately across mobile (600px), tablet (768px) and desktop (1154px) breakpoints  
+<br>
+<br>
+### Deciding what to use
+
+| Variant | Description |
+| --- | --- |
+| [Modular](../vf-footer)  | Use when footer sections need to be customised |
+| [Minimal](../vf-minimal-footer) | Use when only essential brand and legal information is needed |
+| [EMBL_EBI header-footer](../ebi-header-footer) | Use the EMBL-EBI corporate variant for organisational or self-contained experiences |
+
+<br>
+<br>
 
 ## Install
 
@@ -100,3 +105,4 @@ Make sure you import Sass requirements along with the modules. You can use a [pr
 - [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)
 - [Open a ticket](https://github.com/visual-framework/vf-core/issues)
 - [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
+
