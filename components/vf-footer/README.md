@@ -26,7 +26,7 @@ Modular in the context of the vf-footer refers to the ability to enable or disab
 | Custom links | Use website specific navigation organised by category. If custom navigation is not required, it is recommended to use the Minimal footer component instead | Required |
 | Contact details | Contact details are flexible and can accommodate short or long text formats. All contact methods can be linked as needed, with the option to direct users to a dedicated contact page. | Optional |
 | Social media | Link to relevant social channels | Optional |
-| Utility | The bottom section contains links such as Terms of use, copyright and other utility links | Optional |
+| Utility | The bottom section contains links such as Terms of use, copyright and other utility links | Optional. Uses the same legal section structure as the modular footer pattern for consistency. |
 
 ### When to use
 

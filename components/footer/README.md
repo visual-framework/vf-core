@@ -37,11 +37,11 @@ The footer should be omitted when:
 
 ### Deciding what to use
 
-| Variant | Examples | Description |
-| --- | --- | --- |
-| [Modular](../vf-footer) | VF-footer | Use when footer sections need to be customised |
-| EMBL-EBI Corporate Variant | [EMBL_EBI header-footer](../ebi-header-footer) | Use the EMBL-EBI corporate variant for organisational or self-contained experiences |
-|  | [Minimal](../vf-minimal-footer) | Use when only essential brand and legal information is needed |
+| Variant | Description |
+| --- | --- |
+| [Modular](../vf-footer)  | Use when footer sections need to be customised |
+| [EMBL_EBI header-footer](../ebi-header-footer) | Use the EMBL-EBI corporate variant for organisational or self-contained experiences |
+| [Minimal](../vf-minimal-footer) | Use when only essential brand and legal information is needed |
 
 ### Themes
 
@@ -63,13 +63,19 @@ The collaborations section provides standardised patterns for displaying varying
 
 This component targets WCAG 2.1 AA accessibility standard.
 
-- Links provide direct location description [Manual testing required]: Ensure link text is descriptive and not ambiguous. WCAG A 2.4.4 Link purpose (in context)
-- Keyboard navigation: All links and interactive elements are keyboard accessible
-- Focus indicators: Clear visual focus states meet 3:1 contrast requirements
-- Touch targets: All clickable elements meet the minimum 44x44 pixel touch target size on mobile and tablet
-- Colour contrast: Text and link colours have been tested against both light and dark backgrounds
-- Screen readers: Semantic HTML and ARIA labels ensure footer content is properly announced
-- Responsive design: Footer adapts appropriately across mobile (600px), tablet (768px) and desktop (1154px) breakpoints
+-   **Links provide direct location description [Manual testing required]:** Ensure link text is descriptive and not ambiguous. WCAG A 2.4.4 Link purpose (in context)
+
+-   **Keyboard navigation:** All links and interactive elements are keyboard accessible
+
+-   **Focus indicators:** Clear visual focus states meet 3:1 contrast requirements
+
+-   **Touch targets:** All clickable elements meet the minimum 44×44 pixel touch target size on mobile and tablet
+
+-   **Colour contrast:** Text and link colours have been tested against both light and dark backgrounds
+
+-   **Screen readers:** Semantic HTML and ARIA labels ensure footer content is properly announced
+
+-   **Responsive design:** Footer adapts appropriately across mobile (600px), tablet (768px) and desktop (1154px) breakpoints
 
 ## Install
 
