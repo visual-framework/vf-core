@@ -1,3 +1,6 @@
+### 1.2.2
+
+* Layout and styling updates including inner wrapper, spacing tokens, social icons, and mobile responsiveness improvements
 ### 1.2.1
 
 * Changes to footer based on `EMBL-EBI Intranet` implementation findings [Tracking issue](https://github.com/visual-framework/vf-core/issues/1978)

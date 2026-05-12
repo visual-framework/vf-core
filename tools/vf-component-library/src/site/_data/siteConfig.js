@@ -15,7 +15,11 @@ module.exports = {
   // vfVersion: "develop",
   // vfVersionPrefix: "dev.",
   // use this when tagging a release
+<<<<<<< vf-chatbot
   vfVersion: "v2.5.25",
+=======
+  vfVersion: "v2.5.26",
+>>>>>>> develop
   vfVersionPrefix: "dev",
   sections: {
     about: {

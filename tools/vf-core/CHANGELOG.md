@@ -1,3 +1,7 @@
+### 2.2.51
+
+* fix : Fix added for gulp v5 to to create binary assets [Tracking issue](https://github.com/visual-framework/vf-core/issues/2227)
+
 ### 2.2.50
 
 * chore : Version bump

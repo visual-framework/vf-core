@@ -1,52 +1,33 @@
 # Footer component
 
-[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-footer.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-footer)
+[![npm version](https://badge.fury.io/js/%40visual-framework%2Fvf-minimal-footer.svg)](https://badge.fury.io/js/%40visual-framework%2Fvf-minimal-footer)
 
 ## About
 
-The vf-footer is a flexible footer component that allows websites to configure different modules based on their specific needs whilst maintaining consistent branding.
+The EMBL-EBI-minimal-footer provides a consistent approach to displaying our brand image, essential links and legal information at the bottom of our service pages.
 
 ## Usage
-
 ### Description
 
-The vf-footer provides a flexible and structured approach to footer configuration. It allows configuration of specific sections and adjustment of text content as needed, while maintaining consistent layout, accessibility compliance, and brand identity.
-
-### What does 'modular' mean?
-
-Modular in the context of the vf-footer refers to the ability to enable or disable sections and customise text within them. It does not mean you can change the order of sections. The visual sequence is fixed to maintain consistency and meet accessibility requirements. If your service requires a different section order, please contact the Visual Framework team to discuss your use case.
-<br>
-
-### Configurable sections
-
-| Element | Usage | Notes |
-| --- | --- | --- |
-| Collaborations | Display partner, funder or collaborator logos | Optional |
-| Custom logo | Highlight the specific branding | Optional |
-| Mission statement | Provide context about the service or organisation | Optional |
-| Custom links | Use website specific navigation organised by category. If custom navigation is not required, it is recommended to use the Minimal footer component instead | Required |
-| Contact details | Contact details are flexible and can accommodate short or long text formats. All contact methods can be linked as needed, with the option to direct users to a dedicated contact page. | Optional |
-| Social media | Link to relevant social channels | Optional |
-| Utility | The bottom section contains links such as Terms of use, copyright and other utility links | Optional. Uses the same legal section structure as the modular footer pattern for consistency. |
-
-<br>
+This footer is designed to display branding and essential content within the EMBL-EBI ecosystem without overwhelming the user experience. This approach ensures a clear and consistent representation of the EMBL-EBI identity across services and websites, and provides a structured pattern for communicating partnerships and collaborations.
 
 ### When to use
 
-Use the VF-Modular footer when your website requires:
+-   Across EMBL-EBI platforms and organisational digital properties, particularly recommended for service pages within the ebi.ac.uk domain
 
--   To display social media channels
--   Service-specific navigation or utility links
--   Needs to display its own logo and mission statement
--   Requires a flexible footer structure that can evolve
+-   Where the EBML-EBI branding, essential links and legal information are required
+
+-   For task oriented pages such as payment pages or registration pages
+
 -   Where there is a need to show collaboration with multiple partners
 
 ### When not to use
 
-The Visual Framework offers other footer variants that may better suit other use cases:
+-   In cases where the footer needs to reflect the service site's navigation
 
--   If your site only needs basic branding, essential links, and legal information without service-specific navigation or social media, use Minimal footer instead
--   If your site requires full EMBL-EBI institutional presence with parent navigation across all major organisational sections it is recommended to use the EMBL_EBI header-footer
+-   Where the social media channels are to be added
+
+For cases like this we recommend using the Modular variant which offers more flexibility.
 <br>
 
 ### Deciding what to use
@@ -65,33 +46,44 @@ The collaborations section provides standardised patterns for displaying varying
 
 The Collaborations section renders its own top green border. Remove the footer's default top margin line to prevent duplication.
 
-#### Logos display (1 - 6 partners)
+Logos display (1 - 6 partners)
 
 When you have between 1 and 6 partners, display their logos horizontally across the section.
 
 -   Uses a 6-column grid at desktop breakpoint (1154px+)
+
 -   One logo per column
+
 -   Maximum logo dimensions: 174px width and 64x height
+
 -   Logos centred within their column
+
 -   Scale down logos proportionally if they exceed maximum dimensions
+
 -   For best image resolution, svg usage is recommended
 
-#### Partners links in columns (1 - 9 partners)
+Partners links in columns (1 - 9 partners)
 
 When you have between 1 and 9 partners, you need to display their names as text links.
 
--   3-column layout on desktop
+-   3-column layout on desktop 
+
 -   Partner names displayed as clickable links
+
 -   Text aligned left within each column
 
-#### Categorised summary (10+ partners)
+Categorised summary (10+ partners)
 
 When you have 10 or more partners, synthesise them into categories with summary numbers and a "See all collaborators" link.
 
 -   Optional partnership statement describing the nature of collaborations
+
 -   Summary categories displayed as numbers with labels (e.g., "35 Data partners", "4 Supporting funders")
+
 -   "See all collaborators" link that directs to a dedicated page listing all partners
+
 -   Placeholder text can be customisable
+
 <br>
 
 ### Choosing the right collaboration variant
@@ -104,13 +96,29 @@ When you have 10 or more partners, synthesise them into categories with summary 
 
 <br>
 
+### Usability and content guidance
+
+The content in the footer is designed to clearly describe the relationship between the services and EMBL-EBI. The footer has clear link labels and descriptions such as: "[Name of resource] is developed and maintained by EMBL-EBI, a world leader in biological data resources", for other use cases of descriptions, contact the Comms team via this email comms@ebi.ac.uk for support with appropriate wording.
+
+The content in the minimal footer variant is standardised to ensure consistency across our services.
+<br>
+
+| Element | Required | Notes |
+| --- | --- | --- |
+| EMBL-EBI logo | Yes | The logo should not be altered on the services page |
+| Description | Yes | The content should reflect the relationship between the service and EMBL-EBI |
+| Utility & legal links | Yes | Bottom bar with Terms of use, EMBL-EBI affiliation and copyright. These links should be retained. |
+| Collaborators | No | This can be added for acknowledgment of collaborators |
+
+<br>
+
 ### Terms of Use (ToU)
 
 Guidelines for domains requiring both Organisation-wide and Service-specific Terms
 
 When a domain requires both organisation-wide Terms of Use and service-specific Terms of Use, teams should create a single dedicated page that clearly presents both sets of terms together. This consolidated approach ensures users can easily understand which terms apply to their specific use case while maintaining a single, clear ToU link in the footer. This prevents confusion from multiple links with similar names and provides a better user experience.
 
-#### Cookie banner pattern
+Cookie banner pattern
 
 Avoid including ToU in cookie banners. Terms of Use should remain permanently visible in the footer rather than in a dismissible cookie consent banner. Cookie banners are temporary and can be dismissed by users, removing access to critical legal information. By keeping ToU in the footer, users can always access this information whenever needed, regardless of their cookie consent choices.
 
@@ -118,11 +126,11 @@ Avoid including ToU in cookie banners. Terms of Use should remain permanently vi
 
 The footer is available in two colour schemes: light and dark, to establish clear visual distinction from page content.
 
-Apply the light scheme when the page background uses colour or tone, and the dark scheme when the background is white or near-white. This intentional contrast ensures users can clearly identify where the main content concludes and the footer begins.
+Apply the  light scheme when the page background uses colour or tone, and the dark scheme when the background is white or near-white. This intentional contrast ensures users can clearly identify where the main content concludes and the footer begins.
 
 ### Responsiveness
 
-The component is designed to adapt seamlessly across different screen sizes. The layout of the custom links section wraps 2 column grids on tablet (Breaking point 768px) and 1 column on mobile (breaking point 600px). Spacing, readability, and target touch size are optimised for accessibility and ease of use.
+The elements wrap across the tablet and mobile breaking points while ensuring spacing, readability and target touch size are optimised for accessibility and ease of use.
 
 ### Accessibility
 
@@ -144,10 +152,10 @@ This component targets WCAG 2.1 AA accessibility standard.
 
 ## Install
 
-This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-footer` with this command.
+This component is distributed with npm. After [installing npm](https://www.npmjs.com/get-npm), you can install the `vf-minimal-footer` with this command.
 
 ```
-$ yarn add --dev @visual-framework/vf-footer
+$ yarn add --dev @visual-framework/vf-minimal-footer
 ```
 
 ### Sass/CSS
@@ -155,7 +163,7 @@ $ yarn add --dev @visual-framework/vf-footer
 The source files included are written in [Sass](http://sass-lang.com)(`scss`). You can point your Sass `include-path` at your `node_modules` directory and import it like this.
 
 ```
-@import "@visual-framework/vf-footer/index.scss";
+@import "@visual-framework/vf-minimal-footer/index.scss";
 ```
 
 Make sure you import Sass requirements along with the modules. You can use a [project boilerplate](https://stable.visual-framework.dev/building/) or the [`vf-sass-starter`](https://stable.visual-framework.dev/components/vf-sass-starter/)
