@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import ReactDOMServer from "react-dom/server";
-import { initVFChatbotWelcome } from "./vf-chatbot-welcome.js";
 import { VFChatbotActionPrompt } from "../vf-chatbot-action-prompt/vf-chatbot-action-prompt.react";
 
 export function VFChatbotWelcome({
@@ -21,9 +20,6 @@ export function VFChatbotWelcome({
   const templateRef = useRef(null);
 
   useEffect(() => {
-    if (welcomeRef.current) {
-      initVFChatbotWelcome(welcomeRef.current);
-    }
     if (templateRef.current) {
       const htmlString = ReactDOMServer.renderToStaticMarkup(
         <VFChatbotActionPrompt action_url="#" action_text="" />
