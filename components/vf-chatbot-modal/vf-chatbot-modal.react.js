@@ -59,6 +59,7 @@ export function VFChatbotModal({
             name: config.title
           }}
           content="How can I help you?"
+          allowFeedback={config.features.enable_feedback}
         />
       );
       assistantMessageTemplateRef.current.innerHTML = htmlString;

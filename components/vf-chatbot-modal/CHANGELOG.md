@@ -1,5 +1,17 @@
 # Changelog
 
+### 1.0.0
+
+* Version bump
+
+### 1.0.0-beta.5
+
+* Fixed : Updated CSS for bottom margin
+
+### 1.0.0-beta.4
+
+* Fixed : Updated React file to pass allowFeedback config to prompt component
+
 ### 1.0.0-beta.3
 
 * Added : Initial code for chatbot modal variant
