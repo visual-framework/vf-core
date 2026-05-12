@@ -82,7 +82,7 @@ function VfBanner({
     );
   case "fixed":
     banner_msg =
-      "This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a className='vf-banner__link' href='JavaScript:Void(0);'>Privacy Notice</a> and <a className='vf-banner__link' href='JavaScript:Void(0);'>Terms Of Use</a>.";
+      "This website uses cookies, and the limiting processing of your personal data to function. By using the site you are agreeing to this as outlined in our <a className='vf-banner__link' href='JavaScript:Void(0);'>Privacy Notice</a>.";
     return (
       <div
         className="vf-banner vf-banner--fixed vf-banner--bottom vf-banner--notice"
