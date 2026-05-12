@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0
+
+* Version bump
+
+### 1.0.0-beta.4
+
+* Fixed : Updated React file to avaoid double initialization of component
+
 ### 1.0.0-beta.3
 
 * Updated : Changes for chatbot modal variant

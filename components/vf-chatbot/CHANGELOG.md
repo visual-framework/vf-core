@@ -1,5 +1,13 @@
 # Changelog
 
+### 1.0.0
+
+* Version bump
+
+### 1.0.0-beta.4
+
+* Updated : `initVFChatbot` now returns appropriate instance/s, allowing callers to access and customise it.
+
 ### 1.0.0-beta.3
 
 * Updated : Standalone and modal variant initialization moved to `vf-chatbot` component
