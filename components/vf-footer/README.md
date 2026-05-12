@@ -16,7 +16,7 @@ The vf-footer provides a flexible and structured approach to footer configuratio
 
 Modular in the context of the vf-footer refers to the ability to enable or disable sections and customise text within them. It does not mean you can change the order of sections. The visual sequence is fixed to maintain consistency and meet accessibility requirements. If your service requires a different section order, please contact the Visual Framework team to discuss your use case.
 <br>
-<br>
+
 ### Configurable sections
 
 | Element | Usage | Notes |
@@ -30,7 +30,7 @@ Modular in the context of the vf-footer refers to the ability to enable or disab
 | Utility | The bottom section contains links such as Terms of use, copyright and other utility links | Optional. Uses the same legal section structure as the modular footer pattern for consistency. |
 
 <br>
-<br>
+
 ### When to use
 
 Use the VF-Modular footer when your website requires:
@@ -48,16 +48,15 @@ The Visual Framework offers other footer variants that may better suit other use
 -   If your site only needs basic branding, essential links, and legal information without service-specific navigation or social media, use Minimal footer instead
 -   If your site requires full EMBL-EBI institutional presence with parent navigation across all major organisational sections it is recommended to use the EMBL_EBI header-footer
 <br>
-<br>
+
 ### Deciding what to use
 
 | Variant | Description |
 | --- | --- |
 | [Modular](../vf-footer)  | Use when footer sections need to be customised |
 | [Minimal](../vf-minimal-footer) | Use when only essential brand and legal information is needed |
-| [EMBL_EBI header-footer](../ebi-header-footer) | Use the EMBL-EBI corporate variant for organisational or self-contained experiences
+| [EMBL_EBI header-footer](../ebi-header-footer) | Use the EMBL-EBI corporate variant for organisational or self-contained experiences |
 
-<br>
 <br>
 
 ### Collaboration section variants
@@ -94,7 +93,7 @@ When you have 10 or more partners, synthesise them into categories with summary 
 -   "See all collaborators" link that directs to a dedicated page listing all partners
 -   Placeholder text can be customisable
 <br>
-<br>
+
 ### Choosing the right collaboration variant
 
 | Variant | Nº of partners | Usage |
@@ -103,7 +102,6 @@ When you have 10 or more partners, synthesise them into categories with summary 
 | Text links in columns | 1 - 9 | Maintains readability whilst accommodating more partners |
 | Categorised summary | 10+ | Prevents footer from becoming overwhelming; directs users to dedicated page |
 
-<br>
 <br>
 
 ### Terms of Use (ToU)
