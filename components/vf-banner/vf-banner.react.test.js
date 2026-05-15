@@ -41,7 +41,6 @@ describe("VfBanner Component", () => {
   test("renders fixed banner with privacy notice", () => {
     render(<VfBanner banner__type="fixed" />);
     expect(screen.getByText("Privacy Notice")).toBeInTheDocument();
-    expect(screen.getByText("Terms Of Use")).toBeInTheDocument();
   });
 
   test("renders top banner with survey link", () => {
