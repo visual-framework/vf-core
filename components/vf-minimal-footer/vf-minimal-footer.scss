@@ -10,3 +10,20 @@
 	margin: 0;
     color: var(--vf-color--ui--grey-lightest, #D0D0CE);
 }
+
+.vf-minimal-footer .vf-footer__legal {
+	padding-bottom: map-get($vf-spacing-map, vf-spacing--800);
+	@include set-type(text-body--5, $custom-margin-bottom: 0);
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1rem;
+	text-align: left;
+
+	@media (max-width: 768px) {
+		flex-wrap: nowrap;
+		grid-template-columns: unset;
+		grid-row-gap: 0;
+	}
+}
