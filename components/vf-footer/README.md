@@ -15,6 +15,7 @@ The vf-footer provides a flexible and structured approach to footer configuratio
 ### What does 'modular' mean?
 
 Modular in the context of the vf-footer refers to the ability to enable or disable sections and customise text within them. It does not mean you can change the order of sections. The visual sequence is fixed to maintain consistency and meet accessibility requirements. If your service requires a different section order, please contact the Visual Framework team to discuss your use case.
+
 <br>
 
 ### Configurable sections
@@ -141,6 +142,10 @@ This component targets WCAG 2.1 AA accessibility standard.
 -   **Screen readers:** Semantic HTML and ARIA labels ensure footer content is properly announced
 
 -   **Responsive design:** Footer adapts appropriately across mobile (600px), tablet (768px) and desktop (1154px) breakpoints
+
+### Legacy footer support
+
+The modular footer was introduced to address the limitations of the older footer. The legacy version is still listed here; however, we recommend reviewing your current implementation and upgrading to the newer version.
 
 ## Install
 
