@@ -52,7 +52,8 @@
 .vf-footer__legal {
   color: ui-color(white);
   column-gap: var(--page-grid-gap);
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  text-align: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
   .vf-list {
     width: 100%;
@@ -200,6 +201,9 @@
   .vf-footer__links-group {
     grid-template-columns: repeat(1, 1fr);
   }
+  .vf-minimal-footer__intro{
+    display: block;
+  }
 }
 
 .vf-footer .vf-logo__image {
@@ -214,7 +218,7 @@ $vf-footer-partner-rule-width: 8px;
 .vf-footer__inner {
   display: flex;
   flex-direction: column;
-  gap: map-get($vf-spacing-map, vf-spacing--800);
+  gap: 1rem;
   grid-column: main;
   margin: 0 auto;
   max-width: $vf-layout--comfortable;
@@ -230,11 +234,13 @@ $vf-footer-partner-rule-width: 8px;
 }
 
 // Partner column/summary padding
-.vf-footer__partners .vf-grid.vf-grid__col-4 > div:first-child,
-.vf-footer__partners > div {
-  padding-left: map-get($vf-spacing-map, vf-spacing--400);
+.vf-footer__partners .vf-grid.vf-grid__col-5 > div:first-child{
+  padding-left: 0px;
 }
 
+.vf-footer__partners a {
+  text-decoration: none;
+}
 // Main footer row padding
 .vf-footer > .vf-grid.vf-grid__col-2 {
   padding-bottom: map-get($vf-spacing-map, vf-spacing--800);
@@ -245,9 +251,14 @@ $vf-footer-partner-rule-width: 8px;
   padding-bottom: map-get($vf-spacing-map, vf-spacing--800);
   @include set-type(text-body--5, $custom-margin-bottom: 0);
 
-  @media (max-width: 430px) {
+  @media (max-width: 600px) {
     justify-content: center;
     text-align: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-row-gap: 0rem;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: auto;
   }
 }
 
@@ -279,6 +290,11 @@ $vf-footer-partner-rule-width: 8px;
   @include set-type(text-body--4, $custom-margin-bottom: map-get($vf-spacing-map, vf-spacing--400));
   color: var(--vf-color--grey, #54585a);
   font-weight: 400;
+  margin-bottom: 0px;
+}
+
+.vf-footer__partners-summary-heading {
+  margin-bottom: map-get($vf-spacing-map, vf-spacing--200);
 }
 
 .vf-footer__partners p {
@@ -361,7 +377,9 @@ $vf-footer-partner-rule-width: 8px;
 .vf-footer__logo-wrapper {
   margin-bottom: map-get($vf-spacing-map, vf-spacing--800);
 }
-
+.vf-footer__partners .vf-list {
+  grid-row-gap: 0px;
+}
 .vf-footer__partners .vf-list__item {
   margin-bottom: 0 !important;
 }
@@ -373,6 +391,9 @@ $vf-footer-partner-rule-width: 8px;
 
 .vf-footer__social {
   padding-top: map-get($vf-spacing-map, vf-spacing--800);
+}
+.vf-footer__social.vf-u-display--flex.vf-u-float__right {
+    float: left !important;
 }
 
 .vf-footer__social-link {
