@@ -1,0 +1,52 @@
+---
+title: Rollup release 2.5.28
+subtitle: This release includes feedback changes and fixes for vf-footer and vf-minimal-footer.
+date: 2026-05-21 09:30:00
+version: 2.5.28
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+	"heading": "On this page",
+	"classModifier": "on-this-page",
+	"activateJavascript": true,
+	"navigation": [
+		{
+			"text": "Refinements",
+			"navigation_href": "#refinements"
+		}
+	]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-footer", "1.2.3", "0fc03da05349f7c6bffef23e3f9591318f265378") }}
+* Updated: Release with feedback changes and bug fixes.
+
+{{ releaseLinks.notes("vf-minimal-footer", "1.0.0-beta.2", "0fc03da05349f7c6bffef23e3f9591318f265378") }}
+* Updated: Release with feedback changes and bug fixes.
+
+{% endmarkdown %}
