@@ -1,15 +1,16 @@
 {# vf-minimal-footer #}
 {% set _theme = footer__theme if footer__theme else 'dark' %}
 {% set _isLight = true if _theme == 'light' else false %}
-{% set _logoSrc = '../../assets/vf-minimal-footer/assets/embl-ebi-rgb-full-colour.svg' if _isLight else '../../assets/vf-minimal-footer/assets/embl-ebi-rgb-all-white.png' %}
+{% set _logoSrc = '../../assets/vf-minimal-footer/assets/embl-ebi-rgb-full-colour.png' if _isLight else '../../assets/vf-minimal-footer/assets/embl-ebi-rgb-all-white.png' %}
 
 {% if partner__variant %}
-<div class="vf-footer vf-u-background-color-ui--white vf-footer__partners">
+<div class="vf-footer vf-minimal-footer vf-u-background-color-ui--white vf-footer__partners">
   <div class="vf-footer__inner">
-      <h4 class="vf-u-type__text-body--4 vf-u-text-color--grey--dark">OUR PARTNERS/COLLABORATORS</h4>
 
       {% if partner__variant == 'logos' %}
-      <ul class="vf-grid vf-grid__col-6 vf-list">
+      <div>
+      <h4 class="vf-u-type__text-body--4 vf-u-text-color--grey--dark">OUR PARTNERS/COLLABORATORS</h4>
+      <ul class="vf-grid vf-grid__col-6 vf-list logos-variant">
         <li class="vf-list__item">
           <a href="JavaScript:Void(0);" class="vf-list__link">
             <img src="../../assets/vf-minimal-footer/assets/landscape-placeholder.svg" alt="Partner logo" width="174" height="64">
@@ -41,9 +42,11 @@
           </a>
         </li>
       </ul>
+      </div>
 
       {% elif partner__variant == 'columns' %}
       <div>
+        <h4 class="vf-u-type__text-body--4 vf-u-text-color--grey--dark">OUR PARTNERS/COLLABORATORS</h4>
         <ul class="vf-grid vf-grid__col-3 vf-list">
           <li class="vf-list__item">
             <a href="JavaScript:Void(0);" class="vf-list__link">Partner 1</a>
@@ -76,9 +79,10 @@
       </div>
 
       {% elif partner__variant == 'summary' %}
-      <div class="vf-grid vf-grid__col-4">
-        <div>
-          <p>Partnership statement. A short description of the partnerships, collaborations or consortium.</p>
+      <div class="vf-grid vf-grid__col-5 vf-footer__partners-summary-grid">
+        <div class="vf-grid__col--span-2">
+          <h4 class="vf-u-type__text-body--4 vf-u-text-color--grey--dark">OUR PARTNERS/COLLABORATORS</h4>
+          <p class="vf-u-type__text-body--3 vf-u-text-color--grey--dark">Partnership statement. A short description of the partnerships, collaborations or consortium.</p>
           <a class="vf-u-type__text-body--4 vf-u-text-color--grey--dark vf-pagination__link" href="JavaScript:Void(0);">See all collaborators</a>
         </div>
         <div class="vf-footer__stat vf-table__label">
@@ -99,7 +103,7 @@
   </div>
 {% endif %}
 
-<footer class="vf-footer {% if partner__variant %} vf-footer--without-rule{% endif %}{% if _isLight %} vf-footer--light{% endif %} | {% if _isLight %}vf-u-background-color-ui--white{% else %}vf-u-background-color-ui--dark-grey{% endif %}">
+<footer class="vf-footer vf-minimal-footer {% if partner__variant %} vf-footer--without-rule{% endif %}{% if _isLight %} vf-footer--light{% endif %} | {% if _isLight %}vf-u-background-color-ui--grey--light{% else %}vf-u-background-color-ui--dark-grey{% endif %}">
     <div class="vf-footer__inner">
       <div class="vf-minimal-footer__intro">
         <a href="https://www.ebi.ac.uk" class="vf-logo">
