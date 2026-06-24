@@ -1,0 +1,15 @@
+namePrefix: ${PROJECT_NAME_SANITISED}-
+
+labels:
+  - includeSelectors: true
+    includeTemplates: true
+    pairs:
+      project: ${PROJECT_NAME_SANITISED}
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - hpa.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true

@@ -10,6 +10,11 @@ image: node:18.20.4
 
 variables:
   # project specific variables can be defined here
+  GIT_SUBMODULE_STRATEGY: recursive
+  DOCKER_DRIVER: overlay2
+  GIT_STRATEGY: fetch
+  CS_DOCKERFILE_PATH: $CI_PROJECT_DIR/Dockerfile
+  IMAGE_NAME: "$CI_REGISTRY/$CI_PROJECT_PATH:$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_ID"
   VM_DEV: "$EXTCORE_DEV_VMS"
   VM_PROD: "$EXTCORE_PROD_VMS"
   VM_PATH_STABLE: /var/www/drupal/stable.visual-framework.dev # tags
@@ -145,3 +150,58 @@ deploy-aws-prod:
     # only match on specific tag patterns
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
+
+
+build-image:
+  stage: build-dev
+  tags:
+    - dind
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $IMAGE_NAME .
+    - docker push $IMAGE_NAME
+  only:
+    - master
+    - develop
+    - tags
+
+.template: &deploy
+  image: ebiwd/alpine-ssh:latest
+  script:
+    - mkdir -p $HOME/.kube
+    - echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config
+    - sed -i -e "s|{{WEB_IMAGE}}|${IMAGE_NAME}|g" k8s/base/deployment.yaml
+    - kubectl kustomize k8s/overlays/$OVERLAY_DIR | kubectl --namespace=$NAMESPACE apply -f -
+
+deploy_dev:
+  stage: deploy
+  only:
+    - master
+  variables:
+    NAMESPACE: static-sites-dev
+    OVERLAY_DIR: dev
+    KUBE_CONFIG: $HH_EBIWD_STATIC_KUBE_CONFIG
+  needs: [build-image]
+  <<: *deploy
+
+deploy_prod_hh:
+  stage: deploy
+  only:
+    - tags
+  variables:
+    NAMESPACE: static-sites-prod
+    OVERLAY_DIR: prod
+    KUBE_CONFIG: $HH_EBIWD_STATIC_KUBE_CONFIG
+  needs: [build-image]
+  <<: *deploy
+
+deploy_prod_hx:
+  stage: deploy
+  only:
+    - tags
+  variables:
+    NAMESPACE: static-sites-prod
+    OVERLAY_DIR: prod
+    KUBE_CONFIG: $HX_EBIWD_STATIC_KUBE_CONFIG
+  needs: [build-image]
+  <<: *deploy
