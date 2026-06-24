@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY . /app
 RUN npm install -g gulp
-RUN yarn install
+RUN yarn --cwd tools/vf-core install
 RUN yarn --cwd tools/vf-component-library install
 RUN yarn --cwd tools/vf-component-library build
 

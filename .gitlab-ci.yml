@@ -14,7 +14,13 @@ variables:
   DOCKER_DRIVER: overlay2
   GIT_STRATEGY: fetch
   CS_DOCKERFILE_PATH: $CI_PROJECT_DIR/Dockerfile
-  IMAGE_NAME: "$CI_REGISTRY/$CI_PROJECT_PATH:$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_ID"
+  # Dependency scanning
+  DS_EXCLUDED_PATHS: ".git, vendor/bundle, node_modules"
+  # SAST + IaC scanning
+  SAST_EXCLUDED_PATHS: "node_modules, vendor, .git, dist, build, public/core, public/modules/contrib"
+  # Clean up naming constraints by using native GitLab CI predefined variables where possible
+  DOCKER_PROJECT_NAME: "${CI_PROJECT_NAME}"
+  IMAGE_NAME: "$CI_REGISTRY/$CI_PROJECT_PATH:$DOCKER_PROJECT_NAME-nginx-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_ID"
   VM_DEV: "$EXTCORE_DEV_VMS"
   VM_PROD: "$EXTCORE_PROD_VMS"
   VM_PATH_STABLE: /var/www/drupal/stable.visual-framework.dev # tags
@@ -28,25 +34,102 @@ variables:
   SSH_APACHE_KEY: secret-key
   AWS_KEY: key
   AWS_SECRET: secret-key
-
+# Note: Security scanning jobs are defined in the included templates and extended below with specific variables and rules
+include:
+  - template: Jobs/Dependency-Scanning.gitlab-ci.yml # Updated to the standard, stable template reference
+  - template: Jobs/Container-Scanning.gitlab-ci.yml
+  - template: Jobs/SAST.gitlab-ci.yml
+  - template: Jobs/Secret-Detection.gitlab-ci.yml
+  - template: Jobs/SAST-IaC.gitlab-ci.yml
 
 stages:
-  - build-dev
-  - build-prod
+  - build
+  - test
+  - security-scan        # ← new: all security scanning runs here, after build
   - deploy
 
-build-dev:
-  stage: build-dev
-  tags:
-    - docker
+####################################
+# GLOBAL TEMPLATE FOR WORKFLOW RULES
+####################################
+.security_scan_rules:
+  stage: security-scan  # Forces extended jobs into your custom stage globally
+  before_script: [] # CRUCIAL: Wipes out any global or inherited before_script crashes inside minimal scanner containers
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+  allow_failure: true # Optional: Don't fail the pipeline on security scan issues, but still report them
+
+####################################
+# SECURITY SCANNING OVERRIDES
+####################################
+
+# We use multi-inheritance arrays [template_job, rule_set] so we don't
+# overwrite the internal script properties defined by GitLab's core templates.
+
+# Global adjustments for included templates:
+semgrep-sast:
+  extends:
+    - .sast-analyzer
+    - .security_scan_rules
+
+gemnasium-dependency_scanning:
+  extends:
+    - .ds-analyzer
+    - .security_scan_rules
+
+secret_detection:
+  stage: security-scan
+  before_script: [] # Keep this to preserve container stability
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+
+kics-iac-sast:
+  extends:
+    - iac-sast
+    - .security_scan_rules
+
+# 2. Disable the default, unconfigured container scanning job to stop duplication
+container_scanning:
+  rules:
+    - when: never
+
+before_script:
+  - echo "Loading .env file..."     # Inform about loading environment variables
+  - set -a                         # Export all variables loaded from .env
+  - source ./.env                  # Load environment variables from .env file
+  - set +a                         # Stop exporting all variables
+  - export CI_COMMIT_SHA_SHORT=${CI_COMMIT_SHA::8}    # Shorten commit SHA for tagging
+
+nginx_container_scanning:
+  extends: [container_scanning, .security_scan_rules]
+  stage: security-scan
+  needs: [build_dev]
+  variables:
+    CS_IMAGE: "$IMAGE_NGINX"
+    CS_SEVERITY_THRESHOLD: "HIGH"
+    CS_REGISTRY_USER: "gitlab-ci-token"
+    CS_REGISTRY_PASSWORD: "$CI_JOB_TOKEN"
+
+
+####################################
+# BUILD
+####################################
+
+.template_build: &build
+  stage: build
+  tags: [dind] # Docker-in-Docker runner
   script:
-    - yarn global add gulp-cli
-    - cd tools/vf-core
-    - yarn install
-    - gulp vf-core:prepare-deploy # to do: verify if bin/deploy-aws can use the vf-component-library build, if so we can drop this
-    - cd ../vf-component-library
-    - yarn install
-    - gulp build:dev
+    - echo "Building images with the following variables:"
+    - echo "IMAGE_NGINX - $IMAGE_NGINX"
+    - echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY # Authenticate to Docker registry using token
+    - docker build -t $IMAGE_NGINX --build-arg ENV=$ENVIRONMENT -f Dockerfile_nginx . # Build NGINX image
+    - docker push $IMAGE_NGINX   # Push NGINX image
+
+build_dev:
+  stage: build
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"' # Only run on dev branch
+  variables:
+    ENVIRONMENT: dev
   artifacts:
     paths:
       - tools/vf-core/build
@@ -62,19 +145,14 @@ build-dev:
     - develop
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
+  <<: *build
 
-build-prod:
-  stage: build-prod
-  tags:
-    - docker
-  script:
-    - yarn global add gulp-cli
-    - cd tools/vf-core
-    - yarn install
-    - gulp vf-core:prepare-deploy # to do: verify if bin/deploy-aws can use the vf-component-library build, if so we can drop this
-    - cd ../vf-component-library
-    - yarn install
-    - gulp build
+build_prod:
+  stage: build
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"' # Temporarily  run on push to master (production)
+  variables:
+    ENVIRONMENT: prod
   artifacts:
     paths:
       - tools/vf-core/build
@@ -89,9 +167,67 @@ build-prod:
     # only match on specific tag patterns
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
+  <<: *build
 
+####################################
+# DEPLOY + POST-DEPLOY DRUSH
+####################################
+.template_deploy: &deploy
+  image: ebiwd/alpine-ssh:3.20
+  script:
+    - mkdir -p $HOME/.kube # Prepare kube config directory
+    - echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config # Decode and write kube config
+    # Dynamically set NFS server and paths based on datacenter, variables defined in Gitlab CI/CD settings
+    - |
+      echo "Env: $ENVIRONMENT | DC: $DATACENTER | DB DC: $DB_DATACENTER"
 
-deploy-dev:
+      ####################################
+      # ENV + DC MAPPING (SINGLE SOURCE)
+      ####################################
+      case "$ENVIRONMENT-$DATACENTER" in
+
+        dev-hh)
+          NAMESPACE="$PROJECT_NAMESPACE_DEV"
+          OVERLAY_DIR="dev"
+          ;;
+
+        prod-hh)
+          NAMESPACE="$PROJECT_NAMESPACE_PROD"
+          OVERLAY_DIR="prod-hh"
+          ;;
+
+        prod-hx)
+          NAMESPACE="$PROJECT_NAMESPACE_PROD"
+          OVERLAY_DIR="prod-hx"
+          ;;
+
+        *)
+          echo "❌ Invalid combination: ENV=$ENVIRONMENT, DATACENTER=$DATACENTER"
+          exit 1
+          ;;
+      esac
+
+      ####################################
+      # DEBUG OUTPUT (VERY USEFUL)
+      ####################################
+      echo "Namespace: $NAMESPACE"
+      echo "Overlay: $OVERLAY_DIR"
+    # Inject environment variables and prepare k8s overlays
+    - cp ./.env k8s/overlays/$OVERLAY_DIR/.env # Copy .env to k8s overlay
+    - mkdir -p k8s/base/config # Create config directory if it doesn't exist
+    # Update Kubernetes manifests with built image tags and NFS paths
+    - |
+      for file in k8s/base/*.yaml; do
+        sed -i \
+          -e "s|{{PROJECT_NAME}}|${PROJECT_NAME}|g" \
+          -e "s|{{NGINX_IMAGE}}|$IMAGE_NGINX|g" \
+          "$file"
+      done
+    - echo "🚀 Deploying application"
+    - kubectl kustomize k8s/overlays/$OVERLAY_DIR | envsubst | kubectl --namespace=$NAMESPACE apply -f - # Deploy application
+    - sleep 30 # Initial wait for 30 seconds before checking rollout status
+
+deploy_dev:
   stage: deploy
   image: ebiwd/alpine-ssh
   tags:
@@ -106,8 +242,17 @@ deploy-dev:
     - develop
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"' # Only run on dev branch
+  variables:
+    KUBE_CONFIG: $HH_EBIWD_STATIC_KUBE_CONFIG # Kube config secret for dev
+    DATACENTER: hh
+    ENVIRONMENT: dev
+    DB_DATACENTER: ''
+  needs: [build_dev]
+  <<: *deploy
 
-deploy-prod:
+deploy_prod_hh:
   stage: deploy
   image: ebiwd/alpine-ssh
   tags:
@@ -121,6 +266,39 @@ deploy-prod:
     # only match on specific tag patterns
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
+  rules:
+    - if: '$CI_COMMIT_TAG' # Only run on tag (production)
+  variables:
+    KUBE_CONFIG: $HH_EBIWD_STATIC_KUBE_CONFIG # Kube config secret for prod (hh)
+    ENVIRONMENT: prod
+    DATACENTER: hh
+    DB_DATACENTER: pg
+  needs: [build_prod]
+  <<: *deploy
+
+deploy_prod_hx:
+  stage: deploy
+  image: ebiwd/alpine-ssh
+  tags:
+    - docker
+  before_script:
+    - add-ssh-key ${SSH_OWNER_ID} "${SSH_OWNER_KEY}" ${SSH_APACHE_ID} "${SSH_APACHE_KEY}"
+    - add-search-domain ebi.ac.uk
+  script:
+    - for VM in ${VM_PROD}; do rsync -acv --delete-after tools/vf-component-library/build/. ${SSH_OWNER_ID}@${VM}:${VM_PATH_STABLE}/; done;
+  only:
+    # only match on specific tag patterns
+    - /^v\d+\.\d+\.\d+$/
+    - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
+  rules:
+    - if: '$CI_COMMIT_TAG' # Only run on tag (production)
+  variables:
+    KUBE_CONFIG: $HX_EBIWD_STATIC_KUBE_CONFIG # Kube config secret for prod (hx)
+    ENVIRONMENT: prod
+    DATACENTER: hx
+    DB_DATACENTER: fb
+  needs: [build_prod]
+  <<: *deploy
 
 deploy-aws-dev:
   stage: deploy
@@ -150,58 +328,3 @@ deploy-aws-prod:
     # only match on specific tag patterns
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
-
-
-build-image:
-  stage: build-dev
-  tags:
-    - dind
-  script:
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build -t $IMAGE_NAME .
-    - docker push $IMAGE_NAME
-  only:
-    - master
-    - develop
-    - tags
-
-.template: &deploy
-  image: ebiwd/alpine-ssh:latest
-  script:
-    - mkdir -p $HOME/.kube
-    - echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config
-    - sed -i -e "s|{{WEB_IMAGE}}|${IMAGE_NAME}|g" k8s/base/deployment.yaml
-    - kubectl kustomize k8s/overlays/$OVERLAY_DIR | kubectl --namespace=$NAMESPACE apply -f -
-
-deploy_dev:
-  stage: deploy
-  only:
-    - master
-  variables:
-    NAMESPACE: static-sites-dev
-    OVERLAY_DIR: dev
-    KUBE_CONFIG: $HH_EBIWD_STATIC_KUBE_CONFIG
-  needs: [build-image]
-  <<: *deploy
-
-deploy_prod_hh:
-  stage: deploy
-  only:
-    - tags
-  variables:
-    NAMESPACE: static-sites-prod
-    OVERLAY_DIR: prod
-    KUBE_CONFIG: $HH_EBIWD_STATIC_KUBE_CONFIG
-  needs: [build-image]
-  <<: *deploy
-
-deploy_prod_hx:
-  stage: deploy
-  only:
-    - tags
-  variables:
-    NAMESPACE: static-sites-prod
-    OVERLAY_DIR: prod
-    KUBE_CONFIG: $HX_EBIWD_STATIC_KUBE_CONFIG
-  needs: [build-image]
-  <<: *deploy
