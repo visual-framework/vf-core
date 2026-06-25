@@ -126,8 +126,6 @@ nginx_container_scanning:
 
 build_dev:
   stage: build
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"' # Only run on dev branch
   variables:
     ENVIRONMENT: dev
   artifacts:
@@ -149,8 +147,6 @@ build_dev:
 
 build_prod:
   stage: build
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"' # Temporarily  run on push to master (production)
   variables:
     ENVIRONMENT: prod
   artifacts:
@@ -242,8 +238,6 @@ deploy_dev:
     - develop
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"' # Only run on dev branch
   variables:
     KUBE_CONFIG: $HH_EBIWD_STATIC_KUBE_CONFIG # Kube config secret for dev
     DATACENTER: hh
@@ -266,8 +260,6 @@ deploy_prod_hh:
     # only match on specific tag patterns
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
-  rules:
-    - if: '$CI_COMMIT_TAG' # Only run on tag (production)
   variables:
     KUBE_CONFIG: $HH_EBIWD_STATIC_KUBE_CONFIG # Kube config secret for prod (hh)
     ENVIRONMENT: prod
@@ -290,8 +282,6 @@ deploy_prod_hx:
     # only match on specific tag patterns
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
-  rules:
-    - if: '$CI_COMMIT_TAG' # Only run on tag (production)
   variables:
     KUBE_CONFIG: $HX_EBIWD_STATIC_KUBE_CONFIG # Kube config secret for prod (hx)
     ENVIRONMENT: prod
