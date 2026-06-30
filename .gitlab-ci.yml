@@ -239,7 +239,7 @@ deploy_dev:
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
   variables:
-    KUBE_CONFIG: $HH_EBIWD_STATIC_KUBE_CONFIG # Kube config secret for dev
+    KUBE_CONFIG: $HH_EBIWD_EXTCORE_KUBE_CONFIG # Kube config secret for dev
     DATACENTER: hh
     ENVIRONMENT: dev
     DB_DATACENTER: ''
@@ -261,7 +261,7 @@ deploy_prod_hh:
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
   variables:
-    KUBE_CONFIG: $HH_EBIWD_STATIC_KUBE_CONFIG # Kube config secret for prod (hh)
+    KUBE_CONFIG: $HH_EBIWD_EXTCORE_KUBE_CONFIG # Kube config secret for prod (hh)
     ENVIRONMENT: prod
     DATACENTER: hh
     DB_DATACENTER: pg
@@ -283,7 +283,7 @@ deploy_prod_hx:
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
   variables:
-    KUBE_CONFIG: $HX_EBIWD_STATIC_KUBE_CONFIG # Kube config secret for prod (hx)
+    KUBE_CONFIG: $HX_EBIWD_EXTCORE_KUBE_CONFIG # Kube config secret for prod (hx)
     ENVIRONMENT: prod
     DATACENTER: hx
     DB_DATACENTER: fb
