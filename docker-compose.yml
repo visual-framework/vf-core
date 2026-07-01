@@ -1,0 +1,13 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${PROJECT_NAME_SANITISED}-web-service
+    environment:
+      NODE_ENV: ${ENVIRONMENT:-dev}
+    volumes:
+      - ./docker-assets/nginx.conf:/etc/nginx/conf.d/default.conf
+
+    ports:
+      - "8080:8080"

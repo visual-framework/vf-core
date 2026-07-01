@@ -63,3 +63,14 @@ There are a few ways that we discuss and track ideas:
 - ⁉ General: [Chat us](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ) for general ideas and discussion
 - ⚙️ Technical: [GitHub issues here](https://github.com/visual-framework/vf-core/issues) for implementing deeply technical and specific issues, like the Sass build process, browser bugs
 - 🏢 E-mail: if you have a sweeping Big Idea™️, e-mail Ken Hawkins <ken.hawkins@embl.de>
+
+## Kubernetes deployment
+
+This repository now also includes a static nginx image and Kustomize manifests for Kubernetes deployment.
+
+- `Dockerfile` builds the site from `tools/vf-component-library`
+- `k8s/base` contains the shared deployment, service, and HPA
+- `k8s/overlays/dev` sets a single-replica dev deployment
+- `k8s/overlays/prod` sets a two-replica prod deployment
+
+The deployment expects `WEB_IMAGE` to be substituted before apply, matching the templating approach used by `lro-website`.
