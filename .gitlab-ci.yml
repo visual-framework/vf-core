@@ -312,6 +312,7 @@ deploy-aws-dev:
     - develop
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
+  needs: [package_dev, build_dev]
 
 deploy-aws-prod:
   stage: deploy
@@ -326,3 +327,4 @@ deploy-aws-prod:
     # only match on specific tag patterns
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
+  needs: [package_prod, build_prod]
