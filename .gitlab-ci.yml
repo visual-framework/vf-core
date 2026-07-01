@@ -240,7 +240,7 @@ build_prod:
       for file in k8s/base/*.yaml; do
         sed -i \
           -e "s|{{PROJECT_NAME}}|${PROJECT_NAME}|g" \
-          -e "s|{{NGINX_IMAGE}}|$IMAGE_NGINX|g" \
+          -e "s|{{WEB_IMAGE}}|$IMAGE_NGINX|g" \
           "$file"
       done
     - echo "🚀 Deploying application"
