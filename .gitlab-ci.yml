@@ -19,7 +19,7 @@ variables:
   SAST_EXCLUDED_PATHS: "node_modules, vendor, .git, dist, build, public/core, public/modules/contrib"
   # Clean up naming constraints by using native GitLab CI predefined variables where possible
   DOCKER_PROJECT_NAME: "${CI_PROJECT_NAME}"
-  IMAGE_NAME: "$CI_REGISTRY/$CI_PROJECT_PATH:$DOCKER_PROJECT_NAME-nginx-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_ID"
+  IMAGE_NGINX: "$CI_REGISTRY/$CI_PROJECT_PATH:$DOCKER_PROJECT_NAME-nginx-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_ID"
   SSH_OWNER_ID: wd_drupl
   SSH_APACHE_ID: w3_wd01
   S3_BUCKET_DEV: origin.dev.vf.assets.emblstatic.net
