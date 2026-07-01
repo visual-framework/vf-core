@@ -199,7 +199,7 @@ build_prod:
     - echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config # Decode and write kube config
     # Dynamically set NFS server and paths based on datacenter, variables defined in Gitlab CI/CD settings
     - |
-      echo "Env: $ENVIRONMENT | DC: $DATACENTER | DB DC: $DB_DATACENTER"
+      echo "Env: $ENVIRONMENT | DC: $DATACENTER"
 
       ####################################
       # ENV + DC MAPPING (SINGLE SOURCE)
@@ -239,7 +239,6 @@ build_prod:
     - |
       for file in k8s/base/*.yaml; do
         sed -i \
-          -e "s|{{PROJECT_NAME}}|${PROJECT_NAME}|g" \
           -e "s|{{WEB_IMAGE}}|$IMAGE_NGINX|g" \
           "$file"
       done
@@ -257,7 +256,7 @@ deploy_dev:
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
   variables:
-    KUBE_CONFIG: $HH_EBIWD_EXTCORE_KUBE_CONFIG # Kube config secret for dev
+    KUBE_CONFIG: $HH_EBIWD_EXTCORE_KUBE_CONFIG_DEV # Kube config secret for dev
     DATACENTER: hh
     ENVIRONMENT: dev
     DB_DATACENTER: ''
@@ -274,7 +273,7 @@ deploy_prod_hh:
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
   variables:
-    KUBE_CONFIG: $HH_EBIWD_EXTCORE_KUBE_CONFIG # Kube config secret for prod (hh)
+    KUBE_CONFIG: $HH_EBIWD_EXTCORE_KUBE_CONFIG_PROD # Kube config secret for prod (hh)
     ENVIRONMENT: prod
     DATACENTER: hh
     DB_DATACENTER: pg
@@ -291,7 +290,7 @@ deploy_prod_hx:
     - /^v\d+\.\d+\.\d+$/
     - /^v\d+\.\d+\.\d+-(alpha|beta|rc)\.\d+$/
   variables:
-    KUBE_CONFIG: $HX_EBIWD_EXTCORE_KUBE_CONFIG # Kube config secret for prod (hx)
+    KUBE_CONFIG: $HX_EBIWD_EXTCORE_KUBE_CONFIG_PROD # Kube config secret for prod (hx)
     ENVIRONMENT: prod
     DATACENTER: hx
     DB_DATACENTER: fb
