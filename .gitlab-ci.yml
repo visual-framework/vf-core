@@ -51,7 +51,7 @@ stages:
   stage: security-scan  # Forces extended jobs into your custom stage globally
   before_script: [] # CRUCIAL: Wipes out any global or inherited before_script crashes inside minimal scanner containers
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - if: '$CI_COMMIT_REF_NAME == "develop" || $CI_COMMIT_REF_NAME == "master"'
   allow_failure: true # Optional: Don't fail the pipeline on security scan issues, but still report them
 
 ####################################
@@ -76,7 +76,7 @@ secret_detection:
   stage: security-scan
   before_script: [] # Keep this to preserve container stability
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - if: '$CI_COMMIT_REF_NAME == "develop" || $CI_COMMIT_REF_NAME == "master"'
 
 kics-iac-sast:
   extends:
