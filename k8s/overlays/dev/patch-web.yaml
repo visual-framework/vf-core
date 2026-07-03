@@ -6,14 +6,14 @@ spec:
   replicas: 1 # Add one replica for dev
   selector:
     matchLabels:
-      component: nginx
+      component: web
   template:
     metadata:
       labels:
-        component: nginx
+        component: web
     spec:
       containers:
-        - name: nginx
+        - name: web
           env:
             - name: ENV
               value: "dev"
