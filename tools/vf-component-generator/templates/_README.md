@@ -7,7 +7,7 @@
 - [JavaScript guidelines](https://stable.visual-framework.dev/developing/guidelines/javascript/)
 - [Making your first Pull Request](https://stable.visual-framework.dev/developing/getting-started/pull-requests/)
 - [More development guidance](https://stable.visual-framework.dev/developing/)
-- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
+
 
 ---
 
@@ -70,4 +70,4 @@ Make sure you import Sass requirements along with the modules. You can use a [pr
 
 - [Read the Visual Framework troubleshooting](https://stable.visual-framework.dev/troubleshooting/)
 - [Open a ticket](https://github.com/visual-framework/vf-core/issues)
-- [Chat on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ)
+

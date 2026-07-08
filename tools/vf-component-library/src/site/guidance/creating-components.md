@@ -32,7 +32,7 @@ templateEngineOverride: njk
     1. Is there an existing component that does this?
     1. Are there other components that can be adapted?
 
-    Begin by [chatting on Slack](https://join.slack.com/t/visual-framework/shared_invite/enQtNDAxNzY0NDg4NTY0LWFhMjEwNGY3ZTk3NWYxNWVjOWQ1ZWE4YjViZmY1YjBkMDQxMTNlNjQ0N2ZiMTQ1ZTZiMGM4NjU5Y2E0MjM3ZGQ) or [creating a discussion in GitHub](https://github.com/visual-framework/vf-core/discussions).
+    Begin by [creating a discussion in GitHub](https://github.com/visual-framework/vf-core/discussions).
 
     {% endmarkdown %}
   </div>
