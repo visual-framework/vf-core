@@ -51,6 +51,50 @@ For browsers that support the CSS [`aspect-ratio`](https://developer.mozilla.org
 ```
 --vf-card__image--aspect-ratio: 16 / 9;
 ```
+### React
+
+As of version 2.7.3 vf-card has experimental React support which has been tested on react version 20.20.2
+
+1. install `yarn add @visual-framework/vf-card`
+2. import in the JS file wheree you want to include this component
+   ```
+   import VfCard from '@visual-framework/vf-card/vf-card.jsx';
+
+   Make sure you have the jsx support enabled with babel. Alternatively, you can also copy the vf-card.react.js file from below to your react project and import as per the location.
+   ```
+3. can be used as
+   ```
+   <VfCard
+    card_image="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg"
+    card_image__alt="Image alt text"
+    card_heading="A Bordered Card Heading"
+    card_subheading="With sub–heading"
+    card_text={<>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?</>}
+    variant="bordered"
+    newTheme="primary"
+    card_href="JavaScript:Void(0);"/>
+   ```
+4. add beloow to your  CSS file
+   ```
+   @import '~@visual-framework/vf-sass-config/index.scss';
+   @import '~@visual-framework/vf-card/vf-card.css';
+   ```
+   you should also install and import  [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles
+
+Usage:
+
+```
+<VfCard
+  card_image="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/SCHOOLS_1011_ells-learninglab_hd_01_Cool_500px.jpg"
+  card_image__alt="Image alt text"
+  card_heading="A Bordered Card Heading"
+  card_subheading="With sub–heading"
+  card_text={<>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente harum, omnis provident saepe aut eius aliquam sequi fugit incidunt reiciendis, mollitia quos?</>}
+  variant="bordered"
+  newTheme="primary"
+  card_href="JavaScript:Void(0);"
+/>
+```
 
 ## Install
 
