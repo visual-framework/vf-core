@@ -1,3 +1,7 @@
+### 1.0.1
+
+* Removed : Removed reference of Slack from the website [Tracking issue](https://github.com/visual-framework/vf-core/issues/2366)
+
 ### 1.0.0
 
 * Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
