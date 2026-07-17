@@ -70,6 +70,34 @@ module.exports = function(config) {
     );
   });
 
+// Async shortcode for HTML import
+  // config.addNunjucksAsyncShortcode("importHtml", async function(url, flag = "") {
+  //   const stripWrapper = (flag === "strip");
+  //   const maxRetries = 3;
+  //   const retryDelay = 5000;
+
+  //   async function fetchWithRetry(url, retries) {
+  //     for (let attempt = 1; attempt <= retries; attempt++) {
+  //       try {
+  //         const response = await fetch(url);
+  //         if (response.ok) {
+  //           let htmlContent = await response.text();
+  //           if (stripWrapper) {
+  //             htmlContent = htmlContent.replace(
+  //               /<div class="vf-content-hub-html">([\s\S]*?)<\/div>/g, '$1'
+  //             );
+  //           }
+  //           return htmlContent;
+  //         }
+  //       } catch (error) {
+  //         if (attempt === retries) return "";
+  //       }
+  //       await new Promise(resolve => setTimeout(resolve, retryDelay));
+  //     }
+  //     return "";
+  //   }
+  //   return await fetchWithRetry(url, maxRetries);
+  // });
 
   // Shortcodes
   // https://www.11ty.io/docs/shortcodes/
@@ -111,7 +139,7 @@ module.exports = function(config) {
   // });
 
   // pass some assets right through
-  // config.addPassthroughCopy("./src/site/images");
+  config.addPassthroughCopy("./src/site/images");
 
   return {
     dir: {
