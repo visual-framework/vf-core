@@ -2,11 +2,47 @@
   <ul class="vf-pagination__list">
     {% for item in pagination__list %}
     <li class="vf-pagination__item{% if item.item_modifier %} {{ item.item_modifier }}{% endif %}">
-      {% if item.page_href %}
-      <a
-      href="{{ item.page_href }}"
-      class="vf-pagination__link">
-        {{ item.page_number }}<span class="vf-u-sr-only"> page</span>
+      {% if item.item_modifier == "vf-pagination__item--jump-back" %}
+      <a href="{{ item.page_href }}" class="vf-pagination__link"  aria-label="First page">
+        <span class="vf-pagination__icon" aria-hidden="true" onclick="window.scrollTo(0,100)">
+          <svg width="16" height="16" viewBox="0 0 20 20" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 5.5L8.5 10.5L13.5 15.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M9.5 5.5L4.5 10.5L9.5 15.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span class="vf-u-sr-only">First page</span>
+      </a>
+      {% elseif item.item_modifier == "vf-pagination__item--previous-page" %}
+      <a href="{{ item.page_href }}" class="vf-pagination__link"  aria-label="Previous page">
+        <span class="vf-pagination__icon" aria-hidden="true" onclick="window.scrollTo(0,100)">
+          <svg width="16" height="16" viewBox="0 0 20 20" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.5 5.5L6.5 10.5L11.5 15.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span class="vf-u-sr-only">Previous page</span>
+      </a>
+      {% elseif item.item_modifier == "vf-pagination__item--next-page" %}
+      <a href="{{ item.page_href }}" class="vf-pagination__link" aria-label="Next page">
+        <span class="vf-pagination__icon" aria-hidden="true" onclick="window.scrollTo(0,100)">
+          <svg width="16" height="16" viewBox="0 0 20 20" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.5 5.5L13.5 10.5L8.5 15.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span class="vf-u-sr-only">Next page</span>
+      </a>
+      {% elseif item.item_modifier == "vf-pagination__item--jump-forward" %}
+      <a href="{{ item.page_href }}" class="vf-pagination__link"  aria-label="Last page">
+        <span class="vf-pagination__icon" aria-hidden="true" onclick="window.scrollTo(0,100)">
+          <svg width="16" height="16" viewBox="0 0 20 20" focusable="false" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.5 5.5L11.5 10.5L6.5 15.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M10.5 5.5L15.5 10.5L10.5 15.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span class="vf-u-sr-only">Last page</span>
+      </a>
+      {% elseif item.page_href %}
+      <a href="{{ item.page_href }}" class="vf-pagination__link{% if item.item_modifier == 'vf-pagination__link--visited' %} vf-pagination__link--visited{% endif %}" onclick="window.scrollTo(0,100)">
+        <span class="vf-u-sr-only">Page </span>{{ item.page_number }}
       </a>
       {% elseif item.item_modifier == "vf-pagination__item--is-active" %}
       <span class="vf-pagination__label" aria-current="page">
