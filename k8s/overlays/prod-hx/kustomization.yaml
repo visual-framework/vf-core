@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: ${PROJECT_NAMESPACE_PROD}
+
+resources:
+  - ../../base
+
+# Add environment-specific labels to all resources in this overlay
+labels:
+  - includeSelectors: true
+    includeTemplates: true
+    pairs:
+      env: prod
+
+# configmap generator to create a configmap from the .env file, which can be used to inject environment variables into the pods
+configMapGenerator:
+  - name: ${PROJECT_NAME_SANITISED}-env-config
+    envs:
+      - ./.env
+
+# Patches to modify the base resources for the dev environment, such as adjusting resource limits, adding environment variables, or modifying the Nginx configuration for development purposes.
+patches:
+  - path: ./patch-web.yaml

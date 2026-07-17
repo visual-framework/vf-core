@@ -200,6 +200,7 @@ templateEngineOverride: njk
     {# ---- #}
 
     {% if variants %}
+      {% if component.baseHandle != 'footer' %}
       {% render '@vf-heading', {
         "type": 1,
         "heading": "Variants",
@@ -342,8 +343,17 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
         {% endif %}
 
       {% endfor -%}
+      {% endif %}
 
       {# Examples #}
+      {% set hasExamples = false %}
+      {%- for variant in variants %}
+        {% if variant.isHidden == false and variant.context['isExample'] == true %}
+          {% set hasExamples = true %}
+        {% endif %}
+      {% endfor -%}
+
+      {% if hasExamples %}
       {% render '@vf-heading', {
         "type": 1,
         "heading": "Examples",
@@ -351,7 +361,8 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
         "style": "invert",
         "tags": "h2"
       } %}
-      {% if variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element" %}
+      {% endif %}
+      {% if hasExamples and (variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element") %}
       <section class="{% if variants[0].context['exampleMultiColumns'] != "false" %}vf-grid vf-grid__col-3{% else %}{% endif %}">
       {% endif %}
       {%- for variant in variants %}
@@ -394,13 +405,14 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
           {% endif %}
         {% endif %}
       {% endfor -%}
-      {% if variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element"%}
+      {% if hasExamples and (variants[0].context['component-type'] == "block" or variants[0].context['component-type'] == "element") %}
       </section>
       {% endif %}
 
       {% markdown %}
 
       {% if component.notes %}
+      {% if component.baseHandle != 'footer' %}
       {% set readmeInstallation = component.notes | string | stringBetween("## Install", "\n## ") %}
 
       {% if readmeInstallation %}
@@ -422,6 +434,7 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
       </div>
       {% endmarkdown %}
       {% endif %}
+      {% endif %}
 
     {% else %}
       {% markdown %}
@@ -431,6 +444,7 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
       {% endmarkdown %}
     {% endif %}
 
+      {% if component.baseHandle != 'footer' %}
       ### Assets <span id="assets"></span>
 
       - [Nunjucks template]({{ ('/assets/' + component.baseHandle + '/' + component.baseHandle + '.njk') | url }})
@@ -439,6 +453,7 @@ import { {{ component.baseHandle | camelize(true) | replace("-", "") }} } from "
       {%- for asset in component.resources.assets %}
       - [{{asset.base}}]({{ ('/assets/' + asset.relPath ) | url }})
       {%- endfor %}
+      {% endif %}
 
       {% endmarkdown %}
     {% endif %}

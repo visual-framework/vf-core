@@ -1,3 +1,8 @@
+### 1.2.20
+
+* Added : Added new k8s configuration for deployment [Tracking issue](https://github.com/visual-framework/vf-core/issues/2389)
+* Removed : Removed reference of Slack from the website [Tracking issue](https://github.com/visual-framework/vf-core/issues/2366)
+
 ### 1.2.19
 
 * Fixed : Fix added for gulp v5 to to create binary assets [Tracking issue](https://github.com/visual-framework/vf-core/issues/2227)

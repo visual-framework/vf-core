@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 1 # Add one replica for dev
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: web
+          env:
+            - name: ENV
+              value: "dev"
+            - name: DATACENTER
+              value: "hh"
+            - name: DB_DATACENTER
+              value: "pg"
+            - name: HTTP_PROXY
+              value: "http://pg-wwwcache.ebi.ac.uk:3128"
+            - name: HTTPS_PROXY
+              value: "http://pg-wwwcache.ebi.ac.uk:3128"

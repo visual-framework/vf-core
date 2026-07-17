@@ -1,0 +1,74 @@
+---
+title: Rollup release 2.5.27
+subtitle: This release includes footer refinements, a new minimal footer component, chatbot stabilization updates, and a banner link update.
+date: 2026-05-12 10:30:00
+version: 2.5.27
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+	"heading": "On this page",
+	"classModifier": "on-this-page",
+	"activateJavascript": true,
+	"navigation": [
+		{
+			"text": "Features",
+			"navigation_href": "#features"
+		},
+		{
+			"text": "Refinements",
+			"navigation_href": "#refinements"
+		}
+	]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### New features <a href="#features" id="features"></a>
+
+{{ releaseLinks.notes("vf-minimal-footer", "1.0.0-beta.1", "63ed242d847e40a95f01af25753b5bd876f53a0b") }}
+* Added: Initial stable release after testing.
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("vf-banner", "2.0.6", "7786d76746432c13069b3e8ac4208579cfeaaacf") }}
+* Changed: Removed "Terms of use" link [Tracking issue](https://embl.atlassian.net/browse/LROP-107)
+
+{{ releaseLinks.notes("vf-chatbot", "1.0.0", "e7cded1a441340c3ed2bdcd1ecb247317a312c5c") }}
+* Updated: Version bump to `1.0.0`.
+* Updated: `initVFChatbot` now returns appropriate instance/s, allowing callers to access and customise it.
+
+{{ releaseLinks.notes("vf-chatbot-modal", "1.0.0", "e7cded1a441340c3ed2bdcd1ecb247317a312c5c") }}
+* Updated: Version bump to `1.0.0`.
+* Fixed: Updated CSS for bottom margin.
+* Fixed: Updated React file to pass `allowFeedback` config to prompt component.
+
+{{ releaseLinks.notes("vf-chatbot-welcome", "1.0.0", "e7cded1a441340c3ed2bdcd1ecb247317a312c5c") }}
+* Updated: Version bump to `1.0.0`.
+* Fixed: Updated React file to avoid double initialization of component.
+
+{{ releaseLinks.notes("vf-footer", "1.2.2", "63ed242d847e40a95f01af25753b5bd876f53a0b") }}
+* Updated: Layout and styling updates including inner wrapper, spacing tokens, social icons, and mobile responsiveness improvements.
+
+{% endmarkdown %}

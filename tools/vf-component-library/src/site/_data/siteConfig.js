@@ -15,8 +15,8 @@ module.exports = {
   // vfVersion: "develop",
   // vfVersionPrefix: "dev.",
   // use this when tagging a release
-  vfVersion: "v2.5.26",
-  vfVersionPrefix: "dev",
+  vfVersion: "v2.5.28",
+  vfVersionPrefix: "",
   sections: {
     about: {
       url: "/about",

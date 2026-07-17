@@ -218,6 +218,7 @@ function initVFChatbot(config = {}) {
     const chatbotBottomMargin = getChatbotBottomMargin(
       config.chatbotBottomMargin
     ) || [0, 0];
+    let modalInstances = [];
     elements.forEach(element => {
       // Set CSS variable for FAB and modal margin
       element.style.setProperty(
@@ -230,10 +231,11 @@ function initVFChatbot(config = {}) {
       );
       new VFChatbot(element);
       initVFChatbotFab();
-      initVFChatbotModal(config);
+      modalInstances = modalInstances.concat(initVFChatbotModal(config));
     });
+    return modalInstances;
   } else if (config && config.type == "standalone") {
-    initVFChatbotStandalone(config);
+    return initVFChatbotStandalone(config);
   }
 }
 

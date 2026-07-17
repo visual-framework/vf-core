@@ -1,3 +1,7 @@
+### 2.0.6
+
+* Changed: Removed 'Terms of use' link [Tracking issue](https://embl.atlassian.net/browse/LROP-107)
+
 ### 2.0.5
 
 * Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
