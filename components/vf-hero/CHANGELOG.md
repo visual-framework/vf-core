@@ -1,3 +1,7 @@
+### 4.0.7
+
+* Changed: Documentation updated  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2392)
+
 ### 4.0.6
 
 * Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
