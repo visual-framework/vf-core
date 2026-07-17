@@ -1,3 +1,7 @@
+### 3.0.1
+
+* Changed: Documentation updated for mini search - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2134).
+
 ### 3.0.0
 
 * Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).
