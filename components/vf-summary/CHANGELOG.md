@@ -1,3 +1,7 @@
+### 1.6.2
+
+* Changed: Updated documentation to reflect `vf-box` deprecation and also removed has-decorative-image variant as per design team suggestion (avoiding redundancy with news-has-image variant) [Tracking issue](https://github.com/visual-framework/vf-core/issues/2139)
+
 ### 1.6.1
 
 * vf-summary--event now uses a lowercase date format.
