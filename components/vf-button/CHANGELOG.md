@@ -1,3 +1,7 @@
+### 3.0.5
+
+* Changed: Updated code to remove Nunjucks template dependency and updated documentation for React support using JSX [Tracking issue](https://github.com/visual-framework/vf-core/issues/2400)
+
 ### 3.0.4
 
 * Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)

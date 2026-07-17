@@ -14,7 +14,8 @@ By default the `vf-hero` makes use of the roundels background image. To keep the
 
 You can bring your own image to use with the vf-hero.
 
-- Size: recommended image size for a typical hero is 3000 by 1000 pixels.
+- Size: Image size should be below 500KB
+- Format: WebP or AVIF provide better image quality at smaller file sizes
 - Positioning: people and other important imagery should be placed on the right side. The image will, by default, vertically centre and align to the right side.
 - Imagery: most of the image should be abstract as to not visually compete with the text in the hero box.
 - Text: do not use raster text as part of the image.

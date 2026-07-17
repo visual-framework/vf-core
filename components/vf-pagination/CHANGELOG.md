@@ -1,3 +1,7 @@
+### 1.1.3
+
+* Changed: Pagination updated as per Intranet and LRO implementation findings [Tracking issue](https://github.com/visual-framework/vf-core/issues/1977)
+
 ### 1.1.2
 
 * Bug fix : Changelog updated to match npmjs versions.
