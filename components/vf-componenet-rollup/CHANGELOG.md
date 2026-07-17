@@ -1,6 +1,10 @@
-### 1.4.14
+### 1.4.15
 
 * Optimised the component by removing dependency of old header (with VF 1.4) and footer loading from contenthub. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2333)
+
+### 1.4.14
+
+* Version bump
 
 ### 1.4.13
 
