@@ -1,3 +1,7 @@
+### 1.2.4
+
+* Fix for removing extra padding on sites (e.g. LRO site)
+
 ### 1.2.3
 
 * Release with feedback changes and bug fixes

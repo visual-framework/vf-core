@@ -1,0 +1,4245 @@
+/* EMBL-EBI Icons for the Life Sciences
+ * See documentation at https://www.ebi.ac.uk/style-lab/general/fonts/
+ */
+
+/* A set of generic utility icons.
+ * - Contains icons from EBI-Social, EBI-Generic, EBI-Functional
+ * - Adds non-redundant icons from Font Awesome
+ * - EBI-Functional key mappings have not changed
+ * See note at https://github.com/ebiwd/EBI-Icon-fonts/issues/22
+*/
+/*
+ * Contains icon from Font Awesome Free 5 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: 'EBI-Common';
+  src:url('EBI-Common/fonts/EBI-Common.woff2') format('woff2'),
+    url('EBI-Common/fonts/EBI-Common.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Biological concepts and top-level icons (e.g. Services, Research, etc. */
+@font-face {
+  font-family: 'EBI-Conceptual';
+  src:url('EBI-Conceptual/fonts/EBI-Conceptual.woff2') format('woff2'),
+    url('EBI-Conceptual/fonts/EBI-Conceptual.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Icons for commonly referenced species and orgamisms */
+@font-face {
+  font-family: 'EBI-Species';
+  src:url('EBI-Species/fonts/EBI-Species.woff2') format('woff2'),
+    url('EBI-Species/fonts/EBI-Species.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Specific file formats */
+@font-face {
+  font-family: 'EBI-FileFormats';
+  src:url('EBI-FileFormats/fonts/EBI-FileFormats.woff2') format('woff2'),
+    url('EBI-FileFormats/fonts/EBI-FileFormats.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chemistry font */
+@font-face {
+  font-family: 'EBI-Chemistry';
+  src:url('EBI-Chemistry/fonts/EBI-Chemistry.woff2') format('woff2'),
+    url('EBI-Chemistry/fonts/EBI-Chemistry.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Generic, functional or activity-orientated icons */
+/* !LEGACY! We recommend using EBI-Common
+ * See note at https://github.com/ebiwd/EBI-Icon-fonts/issues/22
+ */
+@font-face {
+  font-family: 'EBI-Functional';
+  src:url('EBI-Functional/fonts/EBI-Functional.woff2') format('woff2'),
+    url('EBI-Functional/fonts/EBI-Functional.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Generic icons that can be used as decoration or emphasis */
+/* !LEGACY! We recommend using EBI-Common
+ * See note at https://github.com/ebiwd/EBI-Icon-fonts/issues/22
+ */
+@font-face {
+  font-family: 'EBI-Generic';
+  src:url('EBI-Generic/fonts/EBI-Generic.woff2') format('woff2'),
+    url('EBI-Generic/fonts/EBI-Generic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Icons for social media */
+/* !LEGACY! We recommend using EBI-Common
+ * See note at https://github.com/ebiwd/EBI-Icon-fonts/issues/22
+ */
+@font-face {
+  font-family: 'EBI-SocialMedia';
+  src:url('EBI-SocialMedia/fonts/EBI-SocialMedia.woff2') format('woff2'),
+    url('EBI-SocialMedia/fonts/EBI-SocialMedia.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* General .icon support  */
+.icon {
+  text-decoration: none;
+  font-style: normal;
+  text-rendering: optimizeLegibility !important;
+  background-size: contain;
+  font-weight: 400;
+}
+input.icon-common,
+.icon-common:before,
+input.icon-conceptual,
+.icon-conceptual:before,
+input.icon-functional,
+.icon-functional:before,
+input.icon-generic,
+.icon-generic:before,
+input.icon-species,
+.icon-species:before,
+input.icon-socialmedia,
+.icon-socialmedia:before,
+input.icon-fileformats,
+.icon-fileformats:before,
+input.icon-chemistry,
+.icon-chemistry:before {
+  content: attr(data-icon);
+  text-transform: none;
+}
+i.icon-common,
+input.icon-common,
+.icon-common:before {
+  font-family: 'EBI-Common';
+}
+i.icon-conceptual,
+input.icon-conceptual,
+.icon-conceptual:before {
+  font-family: 'EBI-Conceptual';
+}
+i.icon-functional,
+input.icon-functional,
+.icon-functional:before {
+  font-family: 'EBI-Functional';
+}
+i.icon-generic,
+input.icon-generic,
+.icon-generic:before {
+  font-family: 'EBI-Generic';
+}
+i.icon-species,
+input.icon-species,
+.icon-species:before {
+  font-family: 'EBI-Species';
+}
+i.icon-socialmedia,
+input.icon-socialmedia,
+.icon-socialmedia:before {
+  font-family: 'EBI-SocialMedia';
+}
+input.icon-fileformats,
+.icon-fileformats:before {
+  font-size: 123.1%;
+  font-family: 'EBI-FileFormats';
+}
+i.icon-chemistry,
+input.icon-chemistry,
+.icon-chemistry:before {
+  font-family: 'EBI-Chemistry';
+}
+/* icon utility class */
+.icon.icon-spacer:before { padding-right: .5rem; }
+
+/*
+For each individual EBI-*.css font file as made by grunt-webfont:
+https://github.com/sapegin/grunt-webfont#template
+*/
+
+/* Icons */
+
+
+.icon.icon-chemistry.icon-direction_left:before {
+	content:"\6c";
+}
+
+
+.icon.icon-chemistry.icon-direction_reversible:before {
+	content:"\52";
+}
+
+
+.icon.icon-chemistry.icon-direction_right:before {
+	content:"\72";
+}
+
+
+.icon.icon-chemistry.icon-direction_unknown:before {
+	content:"\55";
+}
+
+/*
+For each individual EBI-*.css font file as made by grunt-webfont:
+https://github.com/sapegin/grunt-webfont#template
+*/
+
+/* Icons */
+
+
+.icon.icon-common.icon-clock:before {
+	content:"\f017";
+}
+
+
+.icon.icon-common.icon-address-book:before {
+	content:"\f2b9";
+}
+
+
+.icon.icon-common.icon-address-card:before {
+	content:"\f2bb";
+}
+
+
+.icon.icon-common.icon-adjust:before {
+	content:"\f042";
+}
+
+
+.icon.icon-common.icon-align-center:before {
+	content:"\f037";
+}
+
+
+.icon.icon-common.icon-align-justify:before {
+	content:"\f039";
+}
+
+
+.icon.icon-common.icon-align-left:before {
+	content:"\f036";
+}
+
+
+.icon.icon-common.icon-align-right:before {
+	content:"\f038";
+}
+
+
+.icon.icon-common.icon-ambulance:before {
+	content:"\f0f9";
+}
+
+
+.icon.icon-common.icon-american-sign-language-interpreting:before {
+	content:"\f2a3";
+}
+
+
+.icon.icon-common.icon-anchor:before {
+	content:"\f13d";
+}
+
+
+.icon.icon-common.icon-angle-double-down:before {
+	content:"\f103";
+}
+
+
+.icon.icon-common.icon-angle-double-left:before {
+	content:"\f100";
+}
+
+
+.icon.icon-common.icon-angle-double-right:before {
+	content:"\f101";
+}
+
+
+.icon.icon-common.icon-angle-double-up:before {
+	content:"\f102";
+}
+
+
+.icon.icon-common.icon-angle-down:before {
+	content:"\f107";
+}
+
+
+.icon.icon-common.icon-angle-left:before {
+	content:"\f104";
+}
+
+
+.icon.icon-common.icon-angle-right:before {
+	content:"\f105";
+}
+
+
+.icon.icon-common.icon-angle-up:before {
+	content:"\f106";
+}
+
+
+.icon.icon-common.icon-archive:before {
+	content:"\f187";
+}
+
+
+.icon.icon-common.icon-arrow-alt-circle-down:before {
+	content:"\f358";
+}
+
+
+.icon.icon-common.icon-arrow-alt-circle-left:before {
+	content:"\f359";
+}
+
+
+.icon.icon-common.icon-arrow-alt-circle-right:before {
+	content:"\f35a";
+}
+
+
+.icon.icon-common.icon-arrow-alt-circle-up:before {
+	content:"\f35b";
+}
+
+
+.icon.icon-common.icon-arrow-circle-down:before {
+	content:"\f0ab";
+}
+
+
+.icon.icon-common.icon-arrow-circle-left:before {
+	content:"\f0a8";
+}
+
+
+.icon.icon-common.icon-arrow-circle-right:before {
+	content:"\f0a9";
+}
+
+
+.icon.icon-common.icon-arrow-circle-up:before {
+	content:"\f0aa";
+}
+
+
+.icon.icon-common.icon-arrow-down:before {
+	content:"\f063";
+}
+
+
+.icon.icon-common.icon-arrow-left:before {
+	content:"\f060";
+}
+
+
+.icon.icon-common.icon-arrow-right:before {
+	content:"\f061";
+}
+
+
+.icon.icon-common.icon-arrow-up:before {
+	content:"\f062";
+}
+
+
+.icon.icon-common.icon-arrows-alt-h:before {
+	content:"\f337";
+}
+
+
+.icon.icon-common.icon-arrows-alt-v:before {
+	content:"\f338";
+}
+
+
+.icon.icon-common.icon-arrows-alt:before {
+	content:"\f0b2";
+}
+
+
+.icon.icon-common.icon-assistive-listening-systems:before {
+	content:"\f2a2";
+}
+
+
+.icon.icon-common.icon-asterisk:before {
+	content:"\f069";
+}
+
+
+.icon.icon-common.icon-at:before {
+	content:"\f1fa";
+}
+
+
+.icon.icon-common.icon-audio-description:before {
+	content:"\f29e";
+}
+
+
+.icon.icon-common.icon-backward:before {
+	content:"\f04a";
+}
+
+
+.icon.icon-common.icon-balance-scale:before {
+	content:"\f24e";
+}
+
+
+.icon.icon-common.icon-ban:before {
+	content:"\f05e";
+}
+
+
+.icon.icon-common.icon-barcode:before {
+	content:"\f02a";
+}
+
+
+.icon.icon-common.icon-bars:before {
+	content:"\f0c9";
+}
+
+
+.icon.icon-common.icon-baseball-ball:before {
+	content:"\f433";
+}
+
+
+.icon.icon-common.icon-basketball-ball:before {
+	content:"\f434";
+}
+
+
+.icon.icon-common.icon-bath:before {
+	content:"\f2cd";
+}
+
+
+.icon.icon-common.icon-battery-empty:before {
+	content:"\f244";
+}
+
+
+.icon.icon-common.icon-battery-full:before {
+	content:"\f240";
+}
+
+
+.icon.icon-common.icon-battery-half:before {
+	content:"\f242";
+}
+
+
+.icon.icon-common.icon-battery-quarter:before {
+	content:"\f243";
+}
+
+
+.icon.icon-common.icon-battery-three-quarters:before {
+	content:"\f241";
+}
+
+
+.icon.icon-common.icon-bed:before {
+	content:"\f236";
+}
+
+
+.icon.icon-common.icon-beer:before {
+	content:"\f0fc";
+}
+
+
+.icon.icon-common.icon-bell-slash:before {
+	content:"\f1f6";
+}
+
+
+.icon.icon-common.icon-bell:before {
+	content:"\f0f3";
+}
+
+
+.icon.icon-common.icon-bicycle:before {
+	content:"\f206";
+}
+
+
+.icon.icon-common.icon-binoculars:before {
+	content:"\f1e5";
+}
+
+
+.icon.icon-common.icon-birthday-cake:before {
+	content:"\f1fd";
+}
+
+
+.icon.icon-common.icon-blind:before {
+	content:"\f29d";
+}
+
+
+.icon.icon-common.icon-bold:before {
+	content:"\f032";
+}
+
+
+.icon.icon-common.icon-bolt:before {
+	content:"\f0e7";
+}
+
+
+.icon.icon-common.icon-bomb:before {
+	content:"\f1e2";
+}
+
+
+.icon.icon-common.icon-book:before {
+	content:"\f02d";
+}
+
+
+.icon.icon-common.icon-bookmark:before {
+	content:"\f02e";
+}
+
+
+.icon.icon-common.icon-bowling-ball:before {
+	content:"\f436";
+}
+
+
+.icon.icon-common.icon-braille:before {
+	content:"\f2a1";
+}
+
+
+.icon.icon-common.icon-briefcase:before {
+	content:"\f0b1";
+}
+
+
+.icon.icon-common.icon-bug:before {
+	content:"\f188";
+}
+
+
+.icon.icon-common.icon-building:before {
+	content:"\f1ad";
+}
+
+
+.icon.icon-common.icon-bullhorn:before {
+	content:"\f0a1";
+}
+
+
+.icon.icon-common.icon-bullseye:before {
+	content:"\f140";
+}
+
+
+.icon.icon-common.icon-calculator:before {
+	content:"\f1ec";
+}
+
+
+.icon.icon-common.icon-calendar-alt:before {
+	content:"\f073";
+}
+
+
+.icon.icon-common.icon-calendar-check:before {
+	content:"\f274";
+}
+
+
+.icon.icon-common.icon-calendar-minus:before {
+	content:"\f272";
+}
+
+
+.icon.icon-common.icon-calendar-plus:before {
+	content:"\f271";
+}
+
+
+.icon.icon-common.icon-calendar-times:before {
+	content:"\f273";
+}
+
+
+.icon.icon-common.icon-calendar:before {
+	content:"\f133";
+}
+
+
+.icon.icon-common.icon-caret-down:before {
+	content:"\f0d7";
+}
+
+
+.icon.icon-common.icon-caret-left:before {
+	content:"\f0d9";
+}
+
+
+.icon.icon-common.icon-caret-right:before {
+	content:"\f0da";
+}
+
+
+.icon.icon-common.icon-caret-square-down:before {
+	content:"\f150";
+}
+
+
+.icon.icon-common.icon-caret-square-left:before {
+	content:"\f191";
+}
+
+
+.icon.icon-common.icon-caret-square-right:before {
+	content:"\f152";
+}
+
+
+.icon.icon-common.icon-caret-square-up:before {
+	content:"\f151";
+}
+
+
+.icon.icon-common.icon-caret-up:before {
+	content:"\f0d8";
+}
+
+
+.icon.icon-common.icon-cart-arrow-down:before {
+	content:"\f218";
+}
+
+
+.icon.icon-common.icon-cart-plus:before {
+	content:"\f217";
+}
+
+
+.icon.icon-common.icon-certificate:before {
+	content:"\f0a3";
+}
+
+
+.icon.icon-common.icon-chart-area:before {
+	content:"\f1fe";
+}
+
+
+.icon.icon-common.icon-chart-bar:before {
+	content:"\f080";
+}
+
+
+.icon.icon-common.icon-chart-line:before {
+	content:"\f201";
+}
+
+
+.icon.icon-common.icon-chart-pie:before {
+	content:"\f200";
+}
+
+
+.icon.icon-common.icon-check-circle:before {
+	content:"\f058";
+}
+
+
+.icon.icon-common.icon-check-square:before {
+	content:"\f14a";
+}
+
+
+.icon.icon-common.icon-check:before {
+	content:"\f00c";
+}
+
+
+.icon.icon-common.icon-chevron-circle-down:before {
+	content:"\f13a";
+}
+
+
+.icon.icon-common.icon-chevron-circle-left:before {
+	content:"\f137";
+}
+
+
+.icon.icon-common.icon-chevron-circle-right:before {
+	content:"\f138";
+}
+
+
+.icon.icon-common.icon-chevron-circle-up:before {
+	content:"\f139";
+}
+
+
+.icon.icon-common.icon-chevron-down:before {
+	content:"\f078";
+}
+
+
+.icon.icon-common.icon-chevron-left:before {
+	content:"\f053";
+}
+
+
+.icon.icon-common.icon-chevron-right:before {
+	content:"\f054";
+}
+
+
+.icon.icon-common.icon-chevron-up:before {
+	content:"\f077";
+}
+
+
+.icon.icon-common.icon-child:before {
+	content:"\f1ae";
+}
+
+
+.icon.icon-common.icon-circle-notch:before {
+	content:"\f1ce";
+}
+
+
+.icon.icon-common.icon-circle:before {
+	content:"\f111";
+}
+
+
+.icon.icon-common.icon-clipboard:before {
+	content:"\f328";
+}
+
+
+.icon.icon-common.icon-clone:before {
+	content:"\f24d";
+}
+
+
+.icon.icon-common.icon-closed-captioning:before {
+	content:"\f20a";
+}
+
+
+.icon.icon-common.icon-cloud-download-alt:before {
+	content:"\f381";
+}
+
+
+.icon.icon-common.icon-cloud-upload-alt:before {
+	content:"\f382";
+}
+
+
+.icon.icon-common.icon-cloud:before {
+	content:"\f0c2";
+}
+
+
+.icon.icon-common.icon-code-branch:before {
+	content:"\f126";
+}
+
+
+.icon.icon-common.icon-code:before {
+	content:"\f121";
+}
+
+
+.icon.icon-common.icon-coffee:before {
+	content:"\f0f4";
+}
+
+
+.icon.icon-common.icon-cog:before {
+	content:"\f013";
+}
+
+
+.icon.icon-common.icon-cogs:before {
+	content:"\f085";
+}
+
+
+.icon.icon-common.icon-columns:before {
+	content:"\f0db";
+}
+
+
+.icon.icon-common.icon-comment-alt:before {
+	content:"\f27a";
+}
+
+
+.icon.icon-common.icon-comment:before {
+	content:"\f075";
+}
+
+
+.icon.icon-common.icon-comments:before {
+	content:"\f086";
+}
+
+
+.icon.icon-common.icon-compass:before {
+	content:"\f14e";
+}
+
+
+.icon.icon-common.icon-compress:before {
+	content:"\f066";
+}
+
+
+.icon.icon-common.icon-copy:before {
+	content:"\f0c5";
+}
+
+
+.icon.icon-common.icon-copyright:before {
+	content:"\f1f9";
+}
+
+
+.icon.icon-common.icon-credit-card:before {
+	content:"\f09d";
+}
+
+
+.icon.icon-common.icon-crop:before {
+	content:"\f125";
+}
+
+
+.icon.icon-common.icon-crosshairs:before {
+	content:"\f05b";
+}
+
+
+.icon.icon-common.icon-cube:before {
+	content:"\f1b2";
+}
+
+
+.icon.icon-common.icon-cubes:before {
+	content:"\f1b3";
+}
+
+
+.icon.icon-common.icon-cut:before {
+	content:"\f0c4";
+}
+
+
+.icon.icon-common.icon-database:before {
+	content:"\f1c0";
+}
+
+
+.icon.icon-common.icon-deaf:before {
+	content:"\f2a4";
+}
+
+
+.icon.icon-common.icon-desktop:before {
+	content:"\f108";
+}
+
+
+.icon.icon-common.icon-dollar-sign:before {
+	content:"\f155";
+}
+
+
+.icon.icon-common.icon-dot-circle:before {
+	content:"\f192";
+}
+
+
+.icon.icon-common.icon-download:before {
+	content:"\f019";
+}
+
+
+.icon.icon-common.icon-edit:before {
+	content:"\f044";
+}
+
+
+.icon.icon-common.icon-eject:before {
+	content:"\f052";
+}
+
+
+.icon.icon-common.icon-ellipsis-h:before {
+	content:"\f141";
+}
+
+
+.icon.icon-common.icon-ellipsis-v:before {
+	content:"\f142";
+}
+
+
+.icon.icon-common.icon-envelope-open:before {
+	content:"\f2b6";
+}
+
+
+.icon.icon-common.icon-envelope-square:before {
+	content:"\f199";
+}
+
+
+.icon.icon-common.icon-envelope:before {
+	content:"\f0e0";
+}
+
+
+.icon.icon-common.icon-eraser:before {
+	content:"\f12d";
+}
+
+
+.icon.icon-common.icon-euro-sign:before {
+	content:"\f153";
+}
+
+
+.icon.icon-common.icon-exchange-alt:before {
+	content:"\f362";
+}
+
+
+.icon.icon-common.icon-exclamation-circle:before {
+	content:"\f06a";
+}
+
+
+.icon.icon-common.icon-exclamation-triangle:before {
+	content:"\f071";
+}
+
+
+.icon.icon-common.icon-exclamation:before {
+	content:"\f12a";
+}
+
+
+.icon.icon-common.icon-expand-arrows-alt:before {
+	content:"\f31e";
+}
+
+
+.icon.icon-common.icon-expand:before {
+	content:"\75";
+}
+
+
+.icon.icon-common.icon-external-link-alt:before {
+	content:"\f35d";
+}
+
+
+.icon.icon-common.icon-external-link-square-alt:before {
+	content:"\f360";
+}
+
+
+.icon.icon-common.icon-eye-dropper:before {
+	content:"\f1fb";
+}
+
+
+.icon.icon-common.icon-eye-slash:before {
+	content:"\f070";
+}
+
+
+.icon.icon-common.icon-eye:before {
+	content:"\f06e";
+}
+
+
+.icon.icon-common.icon-fast-backward:before {
+	content:"\f049";
+}
+
+
+.icon.icon-common.icon-fast-forward:before {
+	content:"\f050";
+}
+
+
+.icon.icon-common.icon-female:before {
+	content:"\f182";
+}
+
+
+.icon.icon-common.icon-file-signature:before {
+	content:"\f573";
+}
+
+
+.icon.icon-common.icon-film:before {
+	content:"\f008";
+}
+
+
+.icon.icon-common.icon-filter:before {
+	content:"\66";
+}
+
+
+.icon.icon-common.icon-fire-extinguisher:before {
+	content:"\f134";
+}
+
+
+.icon.icon-common.icon-fire:before {
+	content:"\f06d";
+}
+
+
+.icon.icon-common.icon-flag-checkered:before {
+	content:"\f11e";
+}
+
+
+.icon.icon-common.icon-flag:before {
+	content:"\f024";
+}
+
+
+.icon.icon-common.icon-flask:before {
+	content:"\f0c3";
+}
+
+
+.icon.icon-common.icon-folder-open:before {
+	content:"\f07c";
+}
+
+
+.icon.icon-common.icon-folder:before {
+	content:"\f07b";
+}
+
+
+.icon.icon-common.icon-font:before {
+	content:"\f031";
+}
+
+
+.icon.icon-common.icon-football-ball:before {
+	content:"\f44e";
+}
+
+
+.icon.icon-common.icon-forward:before {
+	content:"\f04e";
+}
+
+
+.icon.icon-common.icon-futbol:before {
+	content:"\f1e3";
+}
+
+
+.icon.icon-common.icon-gamepad:before {
+	content:"\f11b";
+}
+
+
+.icon.icon-common.icon-gavel:before {
+	content:"\f0e3";
+}
+
+
+.icon.icon-common.icon-gem:before {
+	content:"\f3a5";
+}
+
+
+.icon.icon-common.icon-genderless:before {
+	content:"\f22d";
+}
+
+
+.icon.icon-common.icon-gift:before {
+	content:"\f06b";
+}
+
+
+.icon.icon-common.icon-glass-martini:before {
+	content:"\f000";
+}
+
+
+.icon.icon-common.icon-globe:before {
+	content:"\f0ac";
+}
+
+
+.icon.icon-common.icon-golf-ball:before {
+	content:"\f450";
+}
+
+
+.icon.icon-common.icon-graduation-cap:before {
+	content:"\f19d";
+}
+
+
+.icon.icon-common.icon-h-square:before {
+	content:"\f0fd";
+}
+
+
+.icon.icon-common.icon-hand-lizard:before {
+	content:"\f258";
+}
+
+
+.icon.icon-common.icon-hand-paper:before {
+	content:"\f256";
+}
+
+
+.icon.icon-common.icon-hand-peace:before {
+	content:"\f25b";
+}
+
+
+.icon.icon-common.icon-hand-point-down:before {
+	content:"\f0a7";
+}
+
+
+.icon.icon-common.icon-hand-point-left:before {
+	content:"\f0a5";
+}
+
+
+.icon.icon-common.icon-hand-point-right:before {
+	content:"\f0a4";
+}
+
+
+.icon.icon-common.icon-hand-point-up:before {
+	content:"\f0a6";
+}
+
+
+.icon.icon-common.icon-hand-pointer:before {
+	content:"\f25a";
+}
+
+
+.icon.icon-common.icon-hand-rock:before {
+	content:"\f255";
+}
+
+
+.icon.icon-common.icon-hand-scissors:before {
+	content:"\f257";
+}
+
+
+.icon.icon-common.icon-hand-spock:before {
+	content:"\f259";
+}
+
+
+.icon.icon-common.icon-handshake:before {
+	content:"\f2b5";
+}
+
+
+.icon.icon-common.icon-hashtag:before {
+	content:"\f292";
+}
+
+
+.icon.icon-common.icon-hdd:before {
+	content:"\f0a0";
+}
+
+
+.icon.icon-common.icon-heading:before {
+	content:"\f1dc";
+}
+
+
+.icon.icon-common.icon-headphones:before {
+	content:"\f025";
+}
+
+
+.icon.icon-common.icon-heart:before {
+	content:"\f004";
+}
+
+
+.icon.icon-common.icon-heartbeat:before {
+	content:"\f21e";
+}
+
+
+.icon.icon-common.icon-history:before {
+	content:"\f1da";
+}
+
+
+.icon.icon-common.icon-home:before {
+	content:"\f015";
+}
+
+
+.icon.icon-common.icon-hospital:before {
+	content:"\f0f8";
+}
+
+
+.icon.icon-common.icon-hourglass-end:before {
+	content:"\f253";
+}
+
+
+.icon.icon-common.icon-hourglass-half:before {
+	content:"\f252";
+}
+
+
+.icon.icon-common.icon-hourglass-start:before {
+	content:"\f251";
+}
+
+
+.icon.icon-common.icon-hourglass:before {
+	content:"\f254";
+}
+
+
+.icon.icon-common.icon-i-cursor:before {
+	content:"\f246";
+}
+
+
+.icon.icon-common.icon-id-badge:before {
+	content:"\f2c1";
+}
+
+
+.icon.icon-common.icon-id-card:before {
+	content:"\f2c2";
+}
+
+
+.icon.icon-common.icon-image:before {
+	content:"\f03e";
+}
+
+
+.icon.icon-common.icon-images:before {
+	content:"\f302";
+}
+
+
+.icon.icon-common.icon-inbox:before {
+	content:"\f01c";
+}
+
+
+.icon.icon-common.icon-indent:before {
+	content:"\f03c";
+}
+
+
+.icon.icon-common.icon-industry:before {
+	content:"\f275";
+}
+
+
+.icon.icon-common.icon-italic:before {
+	content:"\f033";
+}
+
+
+.icon.icon-common.icon-key:before {
+	content:"\f084";
+}
+
+
+.icon.icon-common.icon-keyboard:before {
+	content:"\f11c";
+}
+
+
+.icon.icon-common.icon-language:before {
+	content:"\f1ab";
+}
+
+
+.icon.icon-common.icon-laptop:before {
+	content:"\f109";
+}
+
+
+.icon.icon-common.icon-leaf:before {
+	content:"\f06c";
+}
+
+
+.icon.icon-common.icon-lemon:before {
+	content:"\f094";
+}
+
+
+.icon.icon-common.icon-level-down-alt:before {
+	content:"\f3be";
+}
+
+
+.icon.icon-common.icon-level-up-alt:before {
+	content:"\f3bf";
+}
+
+
+.icon.icon-common.icon-lightbulb:before {
+	content:"\f0eb";
+}
+
+
+.icon.icon-common.icon-link:before {
+	content:"\f0c1";
+}
+
+
+.icon.icon-common.icon-lira-sign:before {
+	content:"\f195";
+}
+
+
+.icon.icon-common.icon-list-ol:before {
+	content:"\f0cb";
+}
+
+
+.icon.icon-common.icon-list-ul:before {
+	content:"\f0ca";
+}
+
+
+.icon.icon-common.icon-list:before {
+	content:"\f03a";
+}
+
+
+.icon.icon-common.icon-location-arrow:before {
+	content:"\f124";
+}
+
+
+.icon.icon-common.icon-long-arrow-alt-down:before {
+	content:"\f309";
+}
+
+
+.icon.icon-common.icon-long-arrow-alt-left:before {
+	content:"\f30a";
+}
+
+
+.icon.icon-common.icon-long-arrow-alt-right:before {
+	content:"\f30b";
+}
+
+
+.icon.icon-common.icon-long-arrow-alt-up:before {
+	content:"\f30c";
+}
+
+
+.icon.icon-common.icon-low-vision:before {
+	content:"\f2a8";
+}
+
+
+.icon.icon-common.icon-magic:before {
+	content:"\f0d0";
+}
+
+
+.icon.icon-common.icon-magnet:before {
+	content:"\f076";
+}
+
+
+.icon.icon-common.icon-male:before {
+	content:"\f183";
+}
+
+
+.icon.icon-common.icon-map-pin:before {
+	content:"\f276";
+}
+
+
+.icon.icon-common.icon-map-signs:before {
+	content:"\f277";
+}
+
+
+.icon.icon-common.icon-mars-double:before {
+	content:"\f227";
+}
+
+
+.icon.icon-common.icon-mars-stroke-h:before {
+	content:"\f22b";
+}
+
+
+.icon.icon-common.icon-mars-stroke-v:before {
+	content:"\f22a";
+}
+
+
+.icon.icon-common.icon-mars-stroke:before {
+	content:"\f229";
+}
+
+
+.icon.icon-common.icon-mars:before {
+	content:"\f222";
+}
+
+
+.icon.icon-common.icon-medkit:before {
+	content:"\f0fa";
+}
+
+
+.icon.icon-common.icon-mercury:before {
+	content:"\f223";
+}
+
+
+.icon.icon-common.icon-microchip:before {
+	content:"\f2db";
+}
+
+
+.icon.icon-common.icon-microphone-slash:before {
+	content:"\f131";
+}
+
+
+.icon.icon-common.icon-microphone:before {
+	content:"\f130";
+}
+
+
+.icon.icon-common.icon-minus-circle:before {
+	content:"\f056";
+}
+
+
+.icon.icon-common.icon-minus-square:before {
+	content:"\f146";
+}
+
+
+.icon.icon-common.icon-minus:before {
+	content:"\f068";
+}
+
+
+.icon.icon-common.icon-mobile-alt:before {
+	content:"\f3cd";
+}
+
+
+.icon.icon-common.icon-mobile:before {
+	content:"\f10b";
+}
+
+
+.icon.icon-common.icon-money-bill-alt:before {
+	content:"\f3d1";
+}
+
+
+.icon.icon-common.icon-moon:before {
+	content:"\f186";
+}
+
+
+.icon.icon-common.icon-motorcycle:before {
+	content:"\f21c";
+}
+
+
+.icon.icon-common.icon-mouse-pointer:before {
+	content:"\f245";
+}
+
+
+.icon.icon-common.icon-music:before {
+	content:"\f001";
+}
+
+
+.icon.icon-common.icon-neuter:before {
+	content:"\f22c";
+}
+
+
+.icon.icon-common.icon-newspaper:before {
+	content:"\f1ea";
+}
+
+
+.icon.icon-common.icon-object-group:before {
+	content:"\f247";
+}
+
+
+.icon.icon-common.icon-object-ungroup:before {
+	content:"\f248";
+}
+
+
+.icon.icon-common.icon-outdent:before {
+	content:"\f03b";
+}
+
+
+.icon.icon-common.icon-paint-brush:before {
+	content:"\f1fc";
+}
+
+
+.icon.icon-common.icon-paper-plane:before {
+	content:"\f1d8";
+}
+
+
+.icon.icon-common.icon-paperclip:before {
+	content:"\f0c6";
+}
+
+
+.icon.icon-common.icon-paragraph:before {
+	content:"\f1dd";
+}
+
+
+.icon.icon-common.icon-passport:before {
+	content:"\f5ab";
+}
+
+
+.icon.icon-common.icon-paste:before {
+	content:"\f0ea";
+}
+
+
+.icon.icon-common.icon-pause-circle:before {
+	content:"\f28b";
+}
+
+
+.icon.icon-common.icon-pause:before {
+	content:"\f04c";
+}
+
+
+.icon.icon-common.icon-paw:before {
+	content:"\f1b0";
+}
+
+
+.icon.icon-common.icon-pen-square:before {
+	content:"\f14b";
+}
+
+
+.icon.icon-common.icon-pencil-alt:before {
+	content:"\f303";
+}
+
+
+.icon.icon-common.icon-percent:before {
+	content:"\f295";
+}
+
+
+.icon.icon-common.icon-phone:before {
+	content:"\f095";
+}
+
+
+.icon.icon-common.icon-plane:before {
+	content:"\f072";
+}
+
+
+.icon.icon-common.icon-play-circle:before {
+	content:"\f144";
+}
+
+
+.icon.icon-common.icon-play:before {
+	content:"\76";
+}
+
+
+.icon.icon-common.icon-plug:before {
+	content:"\f1e6";
+}
+
+
+.icon.icon-common.icon-plus-circle:before {
+	content:"\f055";
+}
+
+
+.icon.icon-common.icon-plus-square:before {
+	content:"\f0fe";
+}
+
+
+.icon.icon-common.icon-plus:before {
+	content:"\f067";
+}
+
+
+.icon.icon-common.icon-podcast:before {
+	content:"\f2ce";
+}
+
+
+.icon.icon-common.icon-pound-sign:before {
+	content:"\f154";
+}
+
+
+.icon.icon-common.icon-power-off:before {
+	content:"\f011";
+}
+
+
+.icon.icon-common.icon-print:before {
+	content:"\50";
+}
+
+
+.icon.icon-common.icon-puzzle-piece:before {
+	content:"\f12e";
+}
+
+
+.icon.icon-common.icon-qrcode:before {
+	content:"\f029";
+}
+
+
+.icon.icon-common.icon-question-circle:before {
+	content:"\f059";
+}
+
+
+.icon.icon-common.icon-question:before {
+	content:"\f128";
+}
+
+
+.icon.icon-common.icon-quote-left:before {
+	content:"\f10d";
+}
+
+
+.icon.icon-common.icon-quote-right:before {
+	content:"\f10e";
+}
+
+
+.icon.icon-common.icon-random:before {
+	content:"\f074";
+}
+
+
+.icon.icon-common.icon-recycle:before {
+	content:"\f1b8";
+}
+
+
+.icon.icon-common.icon-redo-alt:before {
+	content:"\f2f9";
+}
+
+
+.icon.icon-common.icon-redo:before {
+	content:"\7d";
+}
+
+
+.icon.icon-common.icon-reply-all:before {
+	content:"\f122";
+}
+
+
+.icon.icon-common.icon-reply:before {
+	content:"\f3e5";
+}
+
+
+.icon.icon-common.icon-retweet:before {
+	content:"\f079";
+}
+
+
+.icon.icon-common.icon-road:before {
+	content:"\f018";
+}
+
+
+.icon.icon-common.icon-rocket:before {
+	content:"\f135";
+}
+
+
+.icon.icon-common.icon-rss:before {
+	content:"\f09e";
+}
+
+
+.icon.icon-common.icon-ruble-sign:before {
+	content:"\f158";
+}
+
+
+.icon.icon-common.icon-rupee-sign:before {
+	content:"\f156";
+}
+
+
+.icon.icon-common.icon-search-minus:before {
+	content:"\f010";
+}
+
+
+.icon.icon-common.icon-search-plus:before {
+	content:"\f00e";
+}
+
+
+.icon.icon-common.icon-search:before {
+	content:"\f002";
+}
+
+
+.icon.icon-common.icon-server:before {
+	content:"\f233";
+}
+
+
+.icon.icon-common.icon-share-alt:before {
+	content:"\f1e0";
+}
+
+
+.icon.icon-common.icon-share-square:before {
+	content:"\f14d";
+}
+
+
+.icon.icon-common.icon-share:before {
+	content:"\f064";
+}
+
+
+.icon.icon-common.icon-shekel-sign:before {
+	content:"\f20b";
+}
+
+
+.icon.icon-common.icon-shield-alt:before {
+	content:"\f3ed";
+}
+
+
+.icon.icon-common.icon-ship:before {
+	content:"\f21a";
+}
+
+
+.icon.icon-common.icon-shower:before {
+	content:"\f2cc";
+}
+
+
+.icon.icon-common.icon-sign-in-alt:before {
+	content:"\f2f6";
+}
+
+
+.icon.icon-common.icon-sign-language:before {
+	content:"\f2a7";
+}
+
+
+.icon.icon-common.icon-sign-out-alt:before {
+	content:"\f2f5";
+}
+
+
+.icon.icon-common.icon-signal:before {
+	content:"\f012";
+}
+
+
+.icon.icon-common.icon-sitemap:before {
+	content:"\f0e8";
+}
+
+
+.icon.icon-common.icon-sliders-h:before {
+	content:"\f1de";
+}
+
+
+.icon.icon-common.icon-snowflake:before {
+	content:"\f2dc";
+}
+
+
+.icon.icon-common.icon-sort-alpha-down:before {
+	content:"\f15d";
+}
+
+
+.icon.icon-common.icon-sort-alpha-up:before {
+	content:"\f15e";
+}
+
+
+.icon.icon-common.icon-sort-amount-down:before {
+	content:"\f160";
+}
+
+
+.icon.icon-common.icon-sort-amount-up:before {
+	content:"\f161";
+}
+
+
+.icon.icon-common.icon-sort-down:before {
+	content:"\f0dd";
+}
+
+
+.icon.icon-common.icon-sort-numeric-down:before {
+	content:"\f162";
+}
+
+
+.icon.icon-common.icon-sort-numeric-up:before {
+	content:"\f163";
+}
+
+
+.icon.icon-common.icon-sort-up:before {
+	content:"\f0de";
+}
+
+
+.icon.icon-common.icon-sort:before {
+	content:"\f0dc";
+}
+
+
+.icon.icon-common.icon-spinner:before {
+	content:"\f110";
+}
+
+
+.icon.icon-common.icon-square-full:before {
+	content:"\f45c";
+}
+
+
+.icon.icon-common.icon-square:before {
+	content:"\f0c8";
+}
+
+
+.icon.icon-common.icon-star-half:before {
+	content:"\f089";
+}
+
+
+.icon.icon-common.icon-star:before {
+	content:"\f005";
+}
+
+
+.icon.icon-common.icon-step-backward:before {
+	content:"\f048";
+}
+
+
+.icon.icon-common.icon-step-forward:before {
+	content:"\f051";
+}
+
+
+.icon.icon-common.icon-stethoscope:before {
+	content:"\f0f1";
+}
+
+
+.icon.icon-common.icon-sticky-note:before {
+	content:"\f249";
+}
+
+
+.icon.icon-common.icon-stop-circle:before {
+	content:"\f28d";
+}
+
+
+.icon.icon-common.icon-stop:before {
+	content:"\f04d";
+}
+
+
+.icon.icon-common.icon-stopwatch:before {
+	content:"\f2f2";
+}
+
+
+.icon.icon-common.icon-street-view:before {
+	content:"\f21d";
+}
+
+
+.icon.icon-common.icon-strikethrough:before {
+	content:"\f0cc";
+}
+
+
+.icon.icon-common.icon-subscript:before {
+	content:"\f12c";
+}
+
+
+.icon.icon-common.icon-subway:before {
+	content:"\f239";
+}
+
+
+.icon.icon-common.icon-suitcase:before {
+	content:"\f0f2";
+}
+
+
+.icon.icon-common.icon-sun:before {
+	content:"\f185";
+}
+
+
+.icon.icon-common.icon-superscript:before {
+	content:"\f12b";
+}
+
+
+.icon.icon-common.icon-sync-alt:before {
+	content:"\f2f1";
+}
+
+
+.icon.icon-common.icon-sync:before {
+	content:"\f021";
+}
+
+
+.icon.icon-common.icon-table-tennis:before {
+	content:"\f45d";
+}
+
+
+.icon.icon-common.icon-table:before {
+	content:"\f0ce";
+}
+
+
+.icon.icon-common.icon-tablet-alt:before {
+	content:"\f3fa";
+}
+
+
+.icon.icon-common.icon-tablet:before {
+	content:"\f10a";
+}
+
+
+.icon.icon-common.icon-tachometer-alt:before {
+	content:"\f3fd";
+}
+
+
+.icon.icon-common.icon-tag:before {
+	content:"\f02b";
+}
+
+
+.icon.icon-common.icon-tags:before {
+	content:"\f02c";
+}
+
+
+.icon.icon-common.icon-tasks:before {
+	content:"\f0ae";
+}
+
+
+.icon.icon-common.icon-taxi:before {
+	content:"\f1ba";
+}
+
+
+.icon.icon-common.icon-terminal:before {
+	content:"\f120";
+}
+
+
+.icon.icon-common.icon-text-height:before {
+	content:"\f034";
+}
+
+
+.icon.icon-common.icon-text-width:before {
+	content:"\f035";
+}
+
+
+.icon.icon-common.icon-th-large:before {
+	content:"\f009";
+}
+
+
+.icon.icon-common.icon-th-list:before {
+	content:"\f00b";
+}
+
+
+.icon.icon-common.icon-th:before {
+	content:"\f00a";
+}
+
+
+.icon.icon-common.icon-thermometer-empty:before {
+	content:"\f2cb";
+}
+
+
+.icon.icon-common.icon-thermometer-full:before {
+	content:"\f2c7";
+}
+
+
+.icon.icon-common.icon-thermometer-half:before {
+	content:"\f2c9";
+}
+
+
+.icon.icon-common.icon-thermometer-quarter:before {
+	content:"\f2ca";
+}
+
+
+.icon.icon-common.icon-thermometer-three-quarters:before {
+	content:"\f2c8";
+}
+
+
+.icon.icon-common.icon-thumbs-down:before {
+	content:"\f165";
+}
+
+
+.icon.icon-common.icon-thumbs-up:before {
+	content:"\f164";
+}
+
+
+.icon.icon-common.icon-thumbtack:before {
+	content:"\f08d";
+}
+
+
+.icon.icon-common.icon-ticket-alt:before {
+	content:"\f3ff";
+}
+
+
+.icon.icon-common.icon-times-circle:before {
+	content:"\f057";
+}
+
+
+.icon.icon-common.icon-times:before {
+	content:"\f00d";
+}
+
+
+.icon.icon-common.icon-tint:before {
+	content:"\f043";
+}
+
+
+.icon.icon-common.icon-toggle-off:before {
+	content:"\f204";
+}
+
+
+.icon.icon-common.icon-toggle-on:before {
+	content:"\f205";
+}
+
+
+.icon.icon-common.icon-trademark:before {
+	content:"\f25c";
+}
+
+
+.icon.icon-common.icon-train:before {
+	content:"\f238";
+}
+
+
+.icon.icon-common.icon-transgender-alt:before {
+	content:"\f225";
+}
+
+
+.icon.icon-common.icon-transgender:before {
+	content:"\f224";
+}
+
+
+.icon.icon-common.icon-trash-alt:before {
+	content:"\f2ed";
+}
+
+
+.icon.icon-common.icon-trash:before {
+	content:"\f1f8";
+}
+
+
+.icon.icon-common.icon-tree:before {
+	content:"\f1bb";
+}
+
+
+.icon.icon-common.icon-trophy:before {
+	content:"\f091";
+}
+
+
+.icon.icon-common.icon-truck:before {
+	content:"\f0d1";
+}
+
+
+.icon.icon-common.icon-tty:before {
+	content:"\f1e4";
+}
+
+
+.icon.icon-common.icon-tv:before {
+	content:"\f26c";
+}
+
+
+.icon.icon-common.icon-umbrella:before {
+	content:"\f0e9";
+}
+
+
+.icon.icon-common.icon-underline:before {
+	content:"\f0cd";
+}
+
+
+.icon.icon-common.icon-undo-alt:before {
+	content:"\f2ea";
+}
+
+
+.icon.icon-common.icon-undo:before {
+	content:"\f0e2";
+}
+
+
+.icon.icon-common.icon-universal-access:before {
+	content:"\f29a";
+}
+
+
+.icon.icon-common.icon-university:before {
+	content:"\f19c";
+}
+
+
+.icon.icon-common.icon-unlink:before {
+	content:"\f127";
+}
+
+
+.icon.icon-common.icon-unlock-alt:before {
+	content:"\f13e";
+}
+
+
+.icon.icon-common.icon-unlock:before {
+	content:"\f09c";
+}
+
+
+.icon.icon-common.icon-upload:before {
+	content:"\f093";
+}
+
+
+.icon.icon-common.icon-user-circle:before {
+	content:"\f2bd";
+}
+
+
+.icon.icon-common.icon-user-md:before {
+	content:"\f0f0";
+}
+
+
+.icon.icon-common.icon-user-plus:before {
+	content:"\f234";
+}
+
+
+.icon.icon-common.icon-user-secret:before {
+	content:"\f21b";
+}
+
+
+.icon.icon-common.icon-user-times:before {
+	content:"\f235";
+}
+
+
+.icon.icon-common.icon-user:before {
+	content:"\f007";
+}
+
+
+.icon.icon-common.icon-users:before {
+	content:"\f0c0";
+}
+
+
+.icon.icon-common.icon-utensil-spoon:before {
+	content:"\f2e5";
+}
+
+
+.icon.icon-common.icon-utensils:before {
+	content:"\f2e7";
+}
+
+
+.icon.icon-common.icon-venus-double:before {
+	content:"\f226";
+}
+
+
+.icon.icon-common.icon-venus-mars:before {
+	content:"\f228";
+}
+
+
+.icon.icon-common.icon-venus:before {
+	content:"\f221";
+}
+
+
+.icon.icon-common.icon-video:before {
+	content:"\f03d";
+}
+
+
+.icon.icon-common.icon-volleyball-ball:before {
+	content:"\f45f";
+}
+
+
+.icon.icon-common.icon-volume-down:before {
+	content:"\f027";
+}
+
+
+.icon.icon-common.icon-volume-off:before {
+	content:"\f026";
+}
+
+
+.icon.icon-common.icon-volume-up:before {
+	content:"\f028";
+}
+
+
+.icon.icon-common.icon-wheelchair:before {
+	content:"\f193";
+}
+
+
+.icon.icon-common.icon-wifi:before {
+	content:"\f1eb";
+}
+
+
+.icon.icon-common.icon-window-close:before {
+	content:"\f410";
+}
+
+
+.icon.icon-common.icon-window-maximize:before {
+	content:"\f2d0";
+}
+
+
+.icon.icon-common.icon-window-minimize:before {
+	content:"\f2d1";
+}
+
+
+.icon.icon-common.icon-window-restore:before {
+	content:"\f2d2";
+}
+
+
+.icon.icon-common.icon-won-sign:before {
+	content:"\f159";
+}
+
+
+.icon.icon-common.icon-wrench:before {
+	content:"\f0ad";
+}
+
+
+.icon.icon-common.icon-yen-sign:before {
+	content:"\f157";
+}
+
+
+.icon.icon-common.icon-add-job:before {
+	content:"\29";
+}
+
+
+.icon.icon-common.icon-align:before {
+	content:"\69";
+}
+
+
+.icon.icon-common.icon-analyse-graph:before {
+	content:"\7a";
+}
+
+
+.icon.icon-common.icon-analyse-percent_0:before {
+	content:"\42";
+}
+
+
+.icon.icon-common.icon-analyse-percent_100:before {
+	content:"\45";
+}
+
+
+.icon.icon-common.icon-analyse-percent_40:before {
+	content:"\43";
+}
+
+
+.icon.icon-common.icon-analyse:before {
+	content:"\41";
+}
+
+
+.icon.icon-common.icon-approved-job:before {
+	content:"\28";
+}
+
+
+.icon.icon-common.icon-attach:before {
+	content:"\61";
+}
+
+
+.icon.icon-common.icon-browse:before {
+	content:"\62";
+}
+
+
+.icon.icon-common.icon-close:before {
+	content:"\78";
+}
+
+
+.icon.icon-common.icon-collapse-closed:before {
+	content:"\39";
+}
+
+
+.icon.icon-common.icon-collapse-open:before {
+	content:"\38";
+}
+
+
+.icon.icon-common.icon-collapse:before {
+	content:"\77";
+}
+
+
+.icon.icon-common.icon-compare:before {
+	content:"\4f";
+}
+
+
+.icon.icon-common.icon-database-submit:before {
+	content:"\44";
+}
+
+
+.icon.icon-common.icon-down-page:before {
+	content:"\2b07";
+}
+
+
+.icon.icon-common.icon-download-alt:before {
+	content:"\3d";
+}
+
+
+.icon.icon-common.icon-edit-user:before {
+	content:"\35";
+}
+
+
+.icon.icon-common.icon-first-page:before {
+	content:"\5b";
+}
+
+
+.icon.icon-common.icon-fullscreen-collapse:before {
+	content:"\47";
+}
+
+
+.icon.icon-common.icon-fullscreen:before {
+	content:"\46";
+}
+
+
+.icon.icon-common.icon-hierarchy:before {
+	content:"\68";
+}
+
+
+.icon.icon-common.icon-last-page:before {
+	content:"\5d";
+}
+
+
+.icon.icon-common.icon-lock:before {
+	content:"\4c";
+}
+
+
+.icon.icon-common.icon-login:before {
+	content:"\6c";
+}
+
+
+.icon.icon-common.icon-mapping:before {
+	content:"\30";
+}
+
+
+.icon.icon-common.icon-move:before {
+	content:"\6d";
+}
+
+
+.icon.icon-common.icon-next-page:before {
+	content:"\3e";
+}
+
+
+.icon.icon-common.icon-previous-page:before {
+	content:"\3c";
+}
+
+
+.icon.icon-common.icon-remove:before {
+	content:"\2d";
+}
+
+
+.icon.icon-common.icon-save:before {
+	content:"\53";
+}
+
+
+.icon.icon-common.icon-scaleable:before {
+	content:"\59";
+}
+
+
+.icon.icon-common.icon-search-document:before {
+	content:"\6a";
+}
+
+
+.icon.icon-common.icon-send:before {
+	content:"\6e";
+}
+
+
+.icon.icon-common.icon-submit:before {
+	content:"\5f";
+}
+
+
+.icon.icon-common.icon-target:before {
+	content:"\f10c";
+}
+
+
+.icon.icon-common.icon-tool:before {
+	content:"\74";
+}
+
+
+.icon.icon-common.icon-unassigned-job:before {
+	content:"\2a";
+}
+
+
+.icon.icon-common.icon-up-page:before {
+	content:"\2b06";
+}
+
+
+.icon.icon-common.icon-accommodation:before {
+	content:"\f220";
+}
+
+
+.icon.icon-common.icon-alumni:before {
+	content:"\f22f";
+}
+
+
+.icon.icon-common.icon-announcement:before {
+	content:"\f230";
+}
+
+
+.icon.icon-common.icon-basket:before {
+	content:"\f23f";
+}
+
+
+.icon.icon-common.icon-beta:before {
+	content:"\f24a";
+}
+
+
+.icon.icon-common.icon-bike:before {
+	content:"\f24f";
+}
+
+
+.icon.icon-common.icon-biotech:before {
+	content:"\f250";
+}
+
+
+.icon.icon-common.icon-bus:before {
+	content:"\f207";
+}
+
+
+.icon.icon-common.icon-camera:before {
+	content:"\f030";
+}
+
+
+.icon.icon-common.icon-car:before {
+	content:"\f1b9";
+}
+
+
+.icon.icon-common.icon-careers:before {
+	content:"\f25f";
+}
+
+
+.icon.icon-common.icon-classification:before {
+	content:"\f26f";
+}
+
+
+.icon.icon-common.icon-contact:before {
+	content:"\f278";
+}
+
+
+.icon.icon-common.icon-crosslink:before {
+	content:"\f27b";
+}
+
+
+.icon.icon-common.icon-discuss:before {
+	content:"\f27f";
+}
+
+
+.icon.icon-common.icon-documentation:before {
+	content:"\f283";
+}
+
+
+.icon.icon-common.icon-drug:before {
+	content:"\f28c";
+}
+
+
+.icon.icon-common.icon-elixir:before {
+	content:"\f28e";
+}
+
+
+.icon.icon-common.icon-embl:before {
+	content:"\f29b";
+}
+
+
+.icon.icon-common.icon-external-systems:before {
+	content:"\f29f";
+}
+
+
+.icon.icon-common.icon-face-to-face:before {
+	content:"\f2af";
+}
+
+
+.icon.icon-common.icon-funding:before {
+	content:"\f2ba";
+}
+
+
+.icon.icon-common.icon-group:before {
+	content:"\f2be";
+}
+
+
+.icon.icon-common.icon-gtls:before {
+	content:"\f2bf";
+}
+
+
+.icon.icon-common.icon-health:before {
+	content:"\f2c0";
+}
+
+
+.icon.icon-common.icon-info:before {
+	content:"\f129";
+}
+
+
+.icon.icon-common.icon-location:before {
+	content:"\f2cf";
+}
+
+
+.icon.icon-common.icon-mailing-list:before {
+	content:"\f2d4";
+}
+
+
+.icon.icon-common.icon-math:before {
+	content:"\f2df";
+}
+
+
+.icon.icon-common.icon-meet-us:before {
+	content:"\f2e1";
+}
+
+
+.icon.icon-common.icon-new:before {
+	content:"\f2e3";
+}
+
+
+.icon.icon-common.icon-newcomers:before {
+	content:"\f2e4";
+}
+
+
+.icon.icon-common.icon-nutraceuticals:before {
+	content:"\f2e8";
+}
+
+
+.icon.icon-common.icon-open-day:before {
+	content:"\f2e9";
+}
+
+
+.icon.icon-common.icon-publication:before {
+	content:"\f2ec";
+}
+
+
+.icon.icon-common.icon-research:before {
+	content:"\f2ee";
+}
+
+
+.icon.icon-common.icon-resource:before {
+	content:"\f2ef";
+}
+
+
+.icon.icon-common.icon-reviewed-data:before {
+	content:"\f2f0";
+}
+
+
+.icon.icon-common.icon-services:before {
+	content:"\f2f3";
+}
+
+
+.icon.icon-common.icon-steps:before {
+	content:"\f2f4";
+}
+
+
+.icon.icon-common.icon-support:before {
+	content:"\f2f7";
+}
+
+
+.icon.icon-common.icon-systems:before {
+	content:"\f2f8";
+}
+
+
+.icon.icon-common.icon-test:before {
+	content:"\f2fb";
+}
+
+
+.icon.icon-common.icon-text-mining:before {
+	content:"\f2fc";
+}
+
+
+.icon.icon-common.icon-toolkit:before {
+	content:"\f2fd";
+}
+
+
+.icon.icon-common.icon-training:before {
+	content:"\f2ff";
+}
+
+
+.icon.icon-common.icon-tutorial:before {
+	content:"\f300";
+}
+
+
+.icon.icon-common.icon-unreviewed-data:before {
+	content:"\f301";
+}
+
+
+.icon.icon-common.icon-walk:before {
+	content:"\f304";
+}
+
+
+.icon.icon-common.icon-android:before {
+	content:"\f17b";
+}
+
+
+.icon.icon-common.icon-apple:before {
+	content:"\f179";
+}
+
+
+.icon.icon-common.icon-blogger:before {
+	content:"\f37c";
+}
+
+
+.icon.icon-common.icon-facebook:before {
+	content:"\f09a";
+}
+
+
+.icon.icon-common.icon-flickr:before {
+	content:"\f16e";
+}
+
+
+.icon.icon-common.icon-github:before {
+	content:"\f09b";
+}
+
+
+.icon.icon-common.icon-googleplus:before {
+	content:"\f10f";
+}
+
+
+.icon.icon-common.icon-linkedin:before {
+	content:"\f08c";
+}
+
+
+.icon.icon-common.icon-linux:before {
+	content:"\f17c";
+}
+
+
+.icon.icon-common.icon-orcid:before {
+	content:"\f112";
+}
+
+
+.icon.icon-common.icon-skype:before {
+	content:"\f17e";
+}
+
+
+.icon.icon-common.icon-slideshare:before {
+	content:"\f1e7";
+}
+
+
+.icon.icon-common.icon-twitter:before {
+	content:"\f099";
+}
+
+
+.icon.icon-common.icon-vimeo:before {
+	content:"\f40a";
+}
+
+
+.icon.icon-common.icon-weibo:before {
+	content:"\f18a";
+}
+
+
+.icon.icon-common.icon-windows:before {
+	content:"\f17a";
+}
+
+
+.icon.icon-common.icon-wordpress:before {
+	content:"\f19a";
+}
+
+
+.icon.icon-common.icon-youtube:before {
+	content:"\f167";
+}
+
+/*
+For each individual EBI-*.css font file as made by grunt-webfont:
+https://github.com/sapegin/grunt-webfont#template
+*/
+
+/* Icons */
+
+
+.icon.icon-conceptual.icon-chemical:before {
+	content:"\62";
+}
+
+
+.icon.icon-conceptual.icon-cross-domain:before {
+	content:"\63";
+}
+
+
+.icon.icon-conceptual.icon-dna:before {
+	content:"\64";
+}
+
+
+.icon.icon-conceptual.icon-expression:before {
+	content:"\67";
+}
+
+
+.icon.icon-conceptual.icon-literature:before {
+	content:"\6c";
+}
+
+
+.icon.icon-conceptual.icon-ontology:before {
+	content:"\6f";
+}
+
+
+.icon.icon-conceptual.icon-proteins:before {
+	content:"\50";
+}
+
+
+.icon.icon-conceptual.icon-structures-3d:before {
+	content:"\53";
+}
+
+
+.icon.icon-conceptual.icon-structures:before {
+	content:"\73";
+}
+
+
+.icon.icon-conceptual.icon-systems:before {
+	content:"\79";
+}
+
+/*
+For each individual EBI-*.css font file as made by grunt-webfont:
+https://github.com/sapegin/grunt-webfont#template
+*/
+
+/* Icons */
+
+
+.icon.icon-fileformats.icon-AGP:before {
+	content:"\41";
+}
+
+
+.icon.icon-fileformats.icon-BAM:before {
+	content:"\42";
+}
+
+
+.icon.icon-fileformats.icon-CML:before {
+	content:"\43";
+}
+
+
+.icon.icon-fileformats.icon-CRAM:before {
+	content:"\52";
+}
+
+
+.icon.icon-fileformats.icon-CSV:before {
+	content:"\63";
+}
+
+
+.icon.icon-fileformats.icon-DOC:before {
+	content:"\64";
+}
+
+
+.icon.icon-fileformats.icon-FASTA:before {
+	content:"\61";
+}
+
+
+.icon.icon-fileformats.icon-FASTQ:before {
+	content:"\66";
+}
+
+
+.icon.icon-fileformats.icon-FLAT:before {
+	content:"\46";
+}
+
+
+.icon.icon-fileformats.icon-GFF:before {
+	content:"\47";
+}
+
+
+.icon.icon-fileformats.icon-IMG:before {
+	content:"\49";
+}
+
+
+.icon.icon-fileformats.icon-JSON:before {
+	content:"\4a";
+}
+
+
+.icon.icon-fileformats.icon-MDL:before {
+	content:"\4d";
+}
+
+
+.icon.icon-fileformats.icon-OBO:before {
+	content:"\4f";
+}
+
+
+.icon.icon-fileformats.icon-OWL:before {
+	content:"\6f";
+}
+
+
+.icon.icon-fileformats.icon-PDF:before {
+	content:"\70";
+}
+
+
+.icon.icon-fileformats.icon-Postscript:before {
+	content:"\33";
+}
+
+
+.icon.icon-fileformats.icon-PSI-MI_JSON:before {
+	content:"\f101";
+}
+
+
+.icon.icon-fileformats.icon-PSI-MI_TAB:before {
+	content:"\32";
+}
+
+
+.icon.icon-fileformats.icon-PSI-MI_XML:before {
+	content:"\31";
+}
+
+
+.icon.icon-fileformats.icon-RD:before {
+	content:"\72";
+}
+
+
+.icon.icon-fileformats.icon-RDF_XML:before {
+	content:"\44";
+}
+
+
+.icon.icon-fileformats.icon-RXN:before {
+	content:"\58";
+}
+
+
+.icon.icon-fileformats.icon-SDF:before {
+	content:"\73";
+}
+
+
+.icon.icon-fileformats.icon-TSV:before {
+	content:"\76";
+}
+
+
+.icon.icon-fileformats.icon-TXT:before {
+	content:"\74";
+}
+
+
+.icon.icon-fileformats.icon-XML:before {
+	content:"\78";
+}
+
+
+.icon.icon-fileformats.icon-ZIP:before {
+	content:"\5a";
+}
+
+/*
+For each individual EBI-*.css font file as made by grunt-webfont:
+https://github.com/sapegin/grunt-webfont#template
+*/
+
+/* Icons */
+
+
+.icon.icon-functional.icon-add-job:before {
+	content:"\29";
+}
+
+
+.icon.icon-functional.icon-add-user:before {
+	content:"\37";
+}
+
+
+.icon.icon-functional.icon-add:before {
+	content:"\2b";
+}
+
+
+.icon.icon-functional.icon-align:before {
+	content:"\69";
+}
+
+
+.icon.icon-functional.icon-analyse-graph:before {
+	content:"\7a";
+}
+
+
+.icon.icon-functional.icon-analyse-percent_0:before {
+	content:"\42";
+}
+
+
+.icon.icon-functional.icon-analyse-percent_100:before {
+	content:"\45";
+}
+
+
+.icon.icon-functional.icon-analyse-percent_40:before {
+	content:"\43";
+}
+
+
+.icon.icon-functional.icon-analyse:before {
+	content:"\41";
+}
+
+
+.icon.icon-functional.icon-approve:before {
+	content:"\2f";
+}
+
+
+.icon.icon-functional.icon-approved-job:before {
+	content:"\28";
+}
+
+
+.icon.icon-functional.icon-attach:before {
+	content:"\61";
+}
+
+
+.icon.icon-functional.icon-browse:before {
+	content:"\62";
+}
+
+
+.icon.icon-functional.icon-close:before {
+	content:"\78";
+}
+
+
+.icon.icon-functional.icon-collapse-closed:before {
+	content:"\39";
+}
+
+
+.icon.icon-functional.icon-collapse-open:before {
+	content:"\38";
+}
+
+
+.icon.icon-functional.icon-collapse:before {
+	content:"\77";
+}
+
+
+.icon.icon-functional.icon-compare:before {
+	content:"\4f";
+}
+
+
+.icon.icon-functional.icon-crop:before {
+	content:"\5c";
+}
+
+
+.icon.icon-functional.icon-cut:before {
+	content:"\63";
+}
+
+
+.icon.icon-functional.icon-database-submit:before {
+	content:"\44";
+}
+
+
+.icon.icon-functional.icon-delete:before {
+	content:"\64";
+}
+
+
+.icon.icon-functional.icon-down-page:before {
+	content:"\2b07";
+}
+
+
+.icon.icon-functional.icon-download:before {
+	content:"\3d";
+}
+
+
+.icon.icon-functional.icon-edit-user:before {
+	content:"\35";
+}
+
+
+.icon.icon-functional.icon-edit:before {
+	content:"\65";
+}
+
+
+.icon.icon-functional.icon-expand:before {
+	content:"\75";
+}
+
+
+.icon.icon-functional.icon-filter:before {
+	content:"\66";
+}
+
+
+.icon.icon-functional.icon-first-page:before {
+	content:"\5b";
+}
+
+
+.icon.icon-functional.icon-fullscreen:before {
+	content:"\46";
+}
+
+
+.icon.icon-functional.icon-hierarchy:before {
+	content:"\68";
+}
+
+
+.icon.icon-functional.icon-last-page:before {
+	content:"\5d";
+}
+
+
+.icon.icon-functional.icon-like:before {
+	content:"\6b";
+}
+
+
+.icon.icon-functional.icon-lock:before {
+	content:"\4c";
+}
+
+
+.icon.icon-functional.icon-login:before {
+	content:"\6c";
+}
+
+
+.icon.icon-functional.icon-mapping:before {
+	content:"\30";
+}
+
+
+.icon.icon-functional.icon-menu:before {
+	content:"\4d";
+}
+
+
+.icon.icon-functional.icon-move:before {
+	content:"\6d";
+}
+
+
+.icon.icon-functional.icon-next-page:before {
+	content:"\3e";
+}
+
+
+.icon.icon-functional.icon-play:before {
+	content:"\76";
+}
+
+
+.icon.icon-functional.icon-previous-page:before {
+	content:"\3c";
+}
+
+
+.icon.icon-functional.icon-print:before {
+	content:"\50";
+}
+
+
+.icon.icon-functional.icon-redo:before {
+	content:"\7d";
+}
+
+
+.icon.icon-functional.icon-refresh:before {
+	content:"\52";
+}
+
+
+.icon.icon-functional.icon-remove-user:before {
+	content:"\36";
+}
+
+
+.icon.icon-functional.icon-remove:before {
+	content:"\2d";
+}
+
+
+.icon.icon-functional.icon-save:before {
+	content:"\53";
+}
+
+
+.icon.icon-functional.icon-scaleable:before {
+	content:"\59";
+}
+
+
+.icon.icon-functional.icon-search-document:before {
+	content:"\6a";
+}
+
+
+.icon.icon-functional.icon-search:before {
+	content:"\31";
+}
+
+
+.icon.icon-functional.icon-send:before {
+	content:"\6e";
+}
+
+
+.icon.icon-functional.icon-settings:before {
+	content:"\73";
+}
+
+
+.icon.icon-functional.icon-share:before {
+	content:"\72";
+}
+
+
+.icon.icon-functional.icon-stop:before {
+	content:"\6f";
+}
+
+
+.icon.icon-functional.icon-submit:before {
+	content:"\5f";
+}
+
+
+.icon.icon-functional.icon-target:before {
+	content:"\54";
+}
+
+
+.icon.icon-functional.icon-tool:before {
+	content:"\74";
+}
+
+
+.icon.icon-functional.icon-unassigned-job:before {
+	content:"\2a";
+}
+
+
+.icon.icon-functional.icon-undo:before {
+	content:"\7b";
+}
+
+
+.icon.icon-functional.icon-unlock:before {
+	content:"\55";
+}
+
+
+.icon.icon-functional.icon-up-page:before {
+	content:"\2b06";
+}
+
+
+.icon.icon-functional.icon-view:before {
+	content:"\34";
+}
+
+
+.icon.icon-functional.icon-zoom-in:before {
+	content:"\33";
+}
+
+
+.icon.icon-functional.icon-zoom-out:before {
+	content:"\32";
+}
+
+/*
+For each individual EBI-*.css font file as made by grunt-webfont:
+https://github.com/sapegin/grunt-webfont#template
+*/
+
+/* Icons */
+
+
+.icon.icon-generic.icon-accommodation:before {
+	content:"\61";
+}
+
+
+.icon.icon-generic.icon-alert:before {
+	content:"\6c";
+}
+
+
+.icon.icon-generic.icon-alumni:before {
+	content:"\41";
+}
+
+
+.icon.icon-generic.icon-announcement:before {
+	content:"\55";
+}
+
+
+.icon.icon-generic.icon-basket:before {
+	content:"\62";
+}
+
+
+.icon.icon-generic.icon-beta:before {
+	content:"\3e";
+}
+
+
+.icon.icon-generic.icon-bike:before {
+	content:"\33";
+}
+
+
+.icon.icon-generic.icon-biotech:before {
+	content:"\42";
+}
+
+
+.icon.icon-generic.icon-bus:before {
+	content:"\31";
+}
+
+
+.icon.icon-generic.icon-calendar:before {
+	content:"\72";
+}
+
+
+.icon.icon-generic.icon-camera:before {
+	content:"\21";
+}
+
+
+.icon.icon-generic.icon-car:before {
+	content:"\32";
+}
+
+
+.icon.icon-generic.icon-careers:before {
+	content:"\63";
+}
+
+
+.icon.icon-generic.icon-classification:before {
+	content:"\65";
+}
+
+
+.icon.icon-generic.icon-clock:before {
+	content:"\7b";
+}
+
+
+.icon.icon-generic.icon-contact:before {
+	content:"\43";
+}
+
+
+.icon.icon-generic.icon-crosslink:before {
+	content:"\64";
+}
+
+
+.icon.icon-generic.icon-database:before {
+	content:"\44";
+}
+
+
+.icon.icon-generic.icon-discuss:before {
+	content:"\5c";
+}
+
+
+.icon.icon-generic.icon-documentation:before {
+	content:"\3b";
+}
+
+
+.icon.icon-generic.icon-drug:before {
+	content:"\75";
+}
+
+
+.icon.icon-generic.icon-elixir:before {
+	content:"\25";
+}
+
+
+.icon.icon-generic.icon-email:before {
+	content:"\45";
+}
+
+
+.icon.icon-generic.icon-embl:before {
+	content:"\26";
+}
+
+
+.icon.icon-generic.icon-external-link:before {
+	content:"\78";
+}
+
+
+.icon.icon-generic.icon-external-systems:before {
+	content:"\79";
+}
+
+
+.icon.icon-generic.icon-face-to-face:before {
+	content:"\66";
+}
+
+
+.icon.icon-generic.icon-find-us:before {
+	content:"\5d";
+}
+
+
+.icon.icon-generic.icon-funding:before {
+	content:"\46";
+}
+
+
+.icon.icon-generic.icon-graph:before {
+	content:"\67";
+}
+
+
+.icon.icon-generic.icon-group:before {
+	content:"\7d";
+}
+
+
+.icon.icon-generic.icon-gtls:before {
+	content:"\47";
+}
+
+
+.icon.icon-generic.icon-health:before {
+	content:"\68";
+}
+
+
+.icon.icon-generic.icon-help:before {
+	content:"\3f";
+}
+
+
+.icon.icon-generic.icon-home:before {
+	content:"\48";
+}
+
+
+.icon.icon-generic.icon-industry:before {
+	content:"\49";
+}
+
+
+.icon.icon-generic.icon-info:before {
+	content:"\69";
+}
+
+
+.icon.icon-generic.icon-link:before {
+	content:"\4c";
+}
+
+
+.icon.icon-generic.icon-location:before {
+	content:"\5b";
+}
+
+
+.icon.icon-generic.icon-lovedata:before {
+	content:"\6f";
+}
+
+
+.icon.icon-generic.icon-mailing-list:before {
+	content:"\6d";
+}
+
+
+.icon.icon-generic.icon-math:before {
+	content:"\76";
+}
+
+
+.icon.icon-generic.icon-meet-us:before {
+	content:"\4d";
+}
+
+
+.icon.icon-generic.icon-mobile-device:before {
+	content:"\2f";
+}
+
+
+.icon.icon-generic.icon-new:before {
+	content:"\3c";
+}
+
+
+.icon.icon-generic.icon-newcomers:before {
+	content:"\6e";
+}
+
+
+.icon.icon-generic.icon-news:before {
+	content:"\4e";
+}
+
+
+.icon.icon-generic.icon-nutraceuticals:before {
+	content:"\22";
+}
+
+
+.icon.icon-generic.icon-open-day:before {
+	content:"\4f";
+}
+
+
+.icon.icon-generic.icon-piechart:before {
+	content:"\70";
+}
+
+
+.icon.icon-generic.icon-plane:before {
+	content:"\34";
+}
+
+
+.icon.icon-generic.icon-publication:before {
+	content:"\50";
+}
+
+
+.icon.icon-generic.icon-research:before {
+	content:"\29";
+}
+
+
+.icon.icon-generic.icon-resource:before {
+	content:"\52";
+}
+
+
+.icon.icon-generic.icon-reviewed-data:before {
+	content:"\71";
+}
+
+
+.icon.icon-generic.icon-services:before {
+	content:"\28";
+}
+
+
+.icon.icon-generic.icon-steps:before {
+	content:"\23";
+}
+
+
+.icon.icon-generic.icon-support:before {
+	content:"\73";
+}
+
+
+.icon.icon-generic.icon-systems:before {
+	content:"\53";
+}
+
+
+.icon.icon-generic.icon-terms:before {
+	content:"\f101";
+}
+
+
+.icon.icon-generic.icon-test:before {
+	content:"\30";
+}
+
+
+.icon.icon-generic.icon-text-mining:before {
+	content:"\58";
+}
+
+
+.icon.icon-generic.icon-toolkit:before {
+	content:"\3a";
+}
+
+
+.icon.icon-generic.icon-train:before {
+	content:"\37";
+}
+
+
+.icon.icon-generic.icon-training:before {
+	content:"\54";
+}
+
+
+.icon.icon-generic.icon-tutorial:before {
+	content:"\74";
+}
+
+
+.icon.icon-generic.icon-unreviewed-data:before {
+	content:"\51";
+}
+
+
+.icon.icon-generic.icon-video:before {
+	content:"\56";
+}
+
+
+.icon.icon-generic.icon-walk:before {
+	content:"\36";
+}
+
+/*
+For each individual EBI-*.css font file as made by grunt-webfont:
+https://github.com/sapegin/grunt-webfont#template
+*/
+
+/* Icons */
+
+
+.icon.icon-socialmedia.icon-android:before {
+	content:"\61";
+}
+
+
+.icon.icon-socialmedia.icon-apple:before {
+	content:"\41";
+}
+
+
+.icon.icon-socialmedia.icon-blogger:before {
+	content:"\42";
+}
+
+
+.icon.icon-socialmedia.icon-facebook:before {
+	content:"\46";
+}
+
+
+.icon.icon-socialmedia.icon-flickr:before {
+	content:"\66";
+}
+
+
+.icon.icon-socialmedia.icon-github:before {
+	content:"\67";
+}
+
+
+.icon.icon-socialmedia.icon-googleplus:before {
+	content:"\47";
+}
+
+
+.icon.icon-socialmedia.icon-linkedin:before {
+	content:"\4c";
+}
+
+
+.icon.icon-socialmedia.icon-linux:before {
+	content:"\58";
+}
+
+
+.icon.icon-socialmedia.icon-orcid:before {
+	content:"\4f";
+}
+
+
+.icon.icon-socialmedia.icon-rss:before {
+	content:"\52";
+}
+
+
+.icon.icon-socialmedia.icon-skype:before {
+	content:"\73";
+}
+
+
+.icon.icon-socialmedia.icon-slideshare:before {
+	content:"\53";
+}
+
+
+.icon.icon-socialmedia.icon-twitter:before {
+	content:"\54";
+}
+
+
+.icon.icon-socialmedia.icon-vimeo:before {
+	content:"\56";
+}
+
+
+.icon.icon-socialmedia.icon-weibo:before {
+	content:"\57";
+}
+
+
+.icon.icon-socialmedia.icon-windows:before {
+	content:"\77";
+}
+
+
+.icon.icon-socialmedia.icon-wordpress:before {
+	content:"\50";
+}
+
+
+.icon.icon-socialmedia.icon-youtube:before {
+	content:"\59";
+}
+
+/*
+For each individual EBI-*.css font file as made by grunt-webfont:
+https://github.com/sapegin/grunt-webfont#template
+*/
+
+/* Icons */
+
+
+.icon.icon-species.icon-alpaca:before {
+	content:"\61";
+}
+
+
+.icon.icon-species.icon-amoeba:before {
+	content:"\30";
+}
+
+
+.icon.icon-species.icon-anolis:before {
+	content:"\37";
+}
+
+
+.icon.icon-species.icon-armadillo:before {
+	content:"\6c";
+}
+
+
+.icon.icon-species.icon-aspergillus:before {
+	content:"\a3";
+}
+
+
+.icon.icon-species.icon-barley:before {
+	content:"\35";
+}
+
+
+.icon.icon-species.icon-bat:before {
+	content:"\28";
+}
+
+
+.icon.icon-species.icon-bee:before {
+	content:"\24";
+}
+
+
+.icon.icon-species.icon-brachypodium:before {
+	content:"\25";
+}
+
+
+.icon.icon-species.icon-brassica:before {
+	content:"\42";
+}
+
+
+.icon.icon-species.icon-bug:before {
+	content:"\62";
+}
+
+
+.icon.icon-species.icon-c-elegans:before {
+	content:"\57";
+}
+
+
+.icon.icon-species.icon-cat:before {
+	content:"\41";
+}
+
+
+.icon.icon-species.icon-chicken:before {
+	content:"\6b";
+}
+
+
+.icon.icon-species.icon-chimpanzee:before {
+	content:"\69";
+}
+
+
+.icon.icon-species.icon-corn:before {
+	content:"\63";
+}
+
+
+.icon.icon-species.icon-cow:before {
+	content:"\43";
+}
+
+
+.icon.icon-species.icon-diatom:before {
+	content:"\32";
+}
+
+
+.icon.icon-species.icon-dog:before {
+	content:"\64";
+}
+
+
+.icon.icon-species.icon-dolphin:before {
+	content:"\44";
+}
+
+
+.icon.icon-species.icon-ecoli:before {
+	content:"\4c";
+}
+
+
+.icon.icon-species.icon-elephant:before {
+	content:"\65";
+}
+
+
+.icon.icon-species.icon-ferret:before {
+	content:"\21";
+}
+
+
+.icon.icon-species.icon-finch:before {
+	content:"\6e";
+}
+
+
+.icon.icon-species.icon-fly:before {
+	content:"\46";
+}
+
+
+.icon.icon-species.icon-frog:before {
+	content:"\66";
+}
+
+
+.icon.icon-species.icon-fungus:before {
+	content:"\75";
+}
+
+
+.icon.icon-species.icon-glycinemax:before {
+	content:"\5e";
+}
+
+
+.icon.icon-species.icon-goat:before {
+	content:"\6d";
+}
+
+
+.icon.icon-species.icon-gorilla:before {
+	content:"\47";
+}
+
+
+.icon.icon-species.icon-grapes:before {
+	content:"\4f";
+}
+
+
+.icon.icon-species.icon-guinea-pig:before {
+	content:"\67";
+}
+
+
+.icon.icon-species.icon-hedgehog:before {
+	content:"\6f";
+}
+
+
+.icon.icon-species.icon-horse:before {
+	content:"\68";
+}
+
+
+.icon.icon-species.icon-human:before {
+	content:"\48";
+}
+
+
+.icon.icon-species.icon-kangaroo-rat:before {
+	content:"\33";
+}
+
+
+.icon.icon-species.icon-louse:before {
+	content:"\34";
+}
+
+
+.icon.icon-species.icon-marmoset:before {
+	content:"\71";
+}
+
+
+.icon.icon-species.icon-monkey:before {
+	content:"\72";
+}
+
+
+.icon.icon-species.icon-monodelphis:before {
+	content:"\39";
+}
+
+
+.icon.icon-species.icon-mosquito:before {
+	content:"\31";
+}
+
+
+.icon.icon-species.icon-mouse-lemur:before {
+	content:"\4e";
+}
+
+
+.icon.icon-species.icon-mouse:before {
+	content:"\4d";
+}
+
+
+.icon.icon-species.icon-orangutan:before {
+	content:"\2a";
+}
+
+
+.icon.icon-species.icon-papio:before {
+	content:"\38";
+}
+
+
+.icon.icon-species.icon-pig:before {
+	content:"\70";
+}
+
+
+.icon.icon-species.icon-plant:before {
+	content:"\50";
+}
+
+
+.icon.icon-species.icon-plasmodium:before {
+	content:"\40";
+}
+
+
+.icon.icon-species.icon-platypus:before {
+	content:"\55";
+}
+
+
+.icon.icon-species.icon-pufferfish:before {
+	content:"\45";
+}
+
+
+.icon.icon-species.icon-rabbit:before {
+	content:"\74";
+}
+
+
+.icon.icon-species.icon-rat:before {
+	content:"\52";
+}
+
+
+.icon.icon-species.icon-ray:before {
+	content:"\2b";
+}
+
+
+.icon.icon-species.icon-rice:before {
+	content:"\36";
+}
+
+
+.icon.icon-species.icon-scorpion:before {
+	content:"\73";
+}
+
+
+.icon.icon-species.icon-sheep:before {
+	content:"\78";
+}
+
+
+.icon.icon-species.icon-shrew:before {
+	content:"\51";
+}
+
+
+.icon.icon-species.icon-snail:before {
+	content:"\27";
+}
+
+
+.icon.icon-species.icon-spider:before {
+	content:"\53";
+}
+
+
+.icon.icon-species.icon-squirrel:before {
+	content:"\49";
+}
+
+
+.icon.icon-species.icon-tick:before {
+	content:"\26";
+}
+
+
+.icon.icon-species.icon-tomatoes:before {
+	content:"\29";
+}
+
+
+.icon.icon-species.icon-virus:before {
+	content:"\76";
+}
+
+
+.icon.icon-species.icon-wallaby:before {
+	content:"\77";
+}
+
+
+.icon.icon-species.icon-yeast:before {
+	content:"\59";
+}
+
+
+.icon.icon-species.icon-zebrafish:before {
+	content:"\5a";
+}
+
+
+/* Don't speak icons that don't have aria-label
+   https://github.com/ebiwd/EBI-Icon-fonts/issues/25
+   */
+@media speech {
+  .icon.icon-common:not([aria-label]),
+  .icon.icon-socialmedia:not([aria-label]),
+  .icon.icon-species:not([aria-label]),
+  .icon.icon-generic:not([aria-label]),
+  .icon.icon-fileformats:not([aria-label]),
+  .icon.icon-functional:not([aria-label]),
+  .icon.icon-chemistry:not([aria-label]) {
+    display:none;
+  }
+}
