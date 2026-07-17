@@ -80,6 +80,33 @@ Usage:
 ```
 <vf-button [text]="'Primary Button'" [theme]="'primary'"></vf-button>
 ```
+### React
+
+As of version 3.0.5 vf-button has experimental React support which has been tested on react version 20.20.2
+
+1. install `yarn add @visual-framework/vf-button`
+2. import in the JS file wheree you want to include this component
+   ```
+   import VfCard from '@visual-framework/vf-button/vf-button.jsx';
+
+   Make sure you have the jsx support enabled with babel. Alternatively, you can also copy the vf-button.jsx file from below to your react project and import as per the location.
+   ```
+3. can be used as
+   ```
+   <VfButton text="Primary Button" theme="primary" />
+   ```
+4. add beloow to your  CSS file
+   ```
+   @import '~@visual-framework/vf-sass-config/index.scss';
+   @import '~@visual-framework/vf-button/vf-button.css';
+   ```
+   you should also install and import  [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles
+
+Usage:
+
+```
+<VfButton text="Primary Button" theme="primary" />
+```
 
 ## Install
 

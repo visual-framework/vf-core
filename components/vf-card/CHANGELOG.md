@@ -1,3 +1,8 @@
+### 2.7.3
+
+* Changed: Updated code to remove Nunjucks template dependency and updated documentation for React support using JSX [Tracking issue](https://github.com/visual-framework/vf-core/issues/2400)
+* Changed : Updated card examples to remove links with `vf-card__link` [Tracking issue](https://github.com/visual-framework/vf-core/issues/2125)
+
 ### 2.7.2
 
 * Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
