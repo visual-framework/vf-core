@@ -12,6 +12,18 @@ preview: "@preview--nogrid"
 #   hidden: true
 context:
   component-type: container
+  # Recommended responsive image settings:
+  # - mobile: 360x200
+  # - desktop: 1920x1080
+  # - large/high-res: 2560x1440
+  # vf_hero_image_mobile_src: "https://example.org/hero-mobile-360x200.jpg"
+  # vf_hero_image_src: "https://example.org/hero-desktop-1920x1080.jpg"
+  # vf_hero_image_large_src: "https://example.org/hero-large-2560x1440.jpg"
+  # vf_hero_image_width: 1920
+  # vf_hero_image_height: 1080
+  # vf_hero_image_sizes: "(max-width: 767px) 100vw, 1920px"
+  # vf_hero_image_fetchpriority: high
+  # vf_hero_image_loading: eager
 
 
 
@@ -60,6 +72,14 @@ variants:
       vf_hero_link_text: Learn more
       vf_hero_link_href: JavaScript:Void(0);
       vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
+      vf_hero_image_mobile_src: https://www.embl.org/files/wp-content/uploads/vf-hero-mobile-360x200.jpg
+      vf_hero_image_src: https://www.embl.org/files/wp-content/uploads/vf-hero-intense-1920x1080.jpg
+      vf_hero_image_large_src: https://www.embl.org/files/wp-content/uploads/vf-hero-intense-2560x1440.jpg
+      vf_hero_image_width: 1920
+      vf_hero_image_height: 1080
+      vf_hero_image_sizes: '(max-width: 767px) 100vw, 1920px'
+      vf_hero_image_fetchpriority: high
+      vf_hero_image_loading: eager
       angular:
         <vf-hero
         [vf_hero_kicker]="'<a href=JavaScript:Void(0);>VF Hamburg</a> | Structural Biology'"
@@ -68,7 +88,14 @@ variants:
         [vf_hero_text]="['The Hentze group combines biochemical and <a href=JavaScript:Void(0);>systems–level approaches</a> to investigate the connections between <a href=JavaScript:Void(0);>gene expression</a> and <a href=JavaScript:Void(0);>cell metabolism</a>, and their roles in human disease.']"
         [vf_hero_link_text]="'Learn more'"
         [vf_hero_link_href]="'JavaScript:Void(0);'"
-        [vf_hero_image]="'url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png)'">
+        [vf_hero_image]="'url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png)'"
+        [vf_hero_image_mobile_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-mobile-360x200.jpg'"
+        [vf_hero_image_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-intense-1920x1080.jpg'"
+        [vf_hero_image_large_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-intense-2560x1440.jpg'"
+        [vf_hero_image_width]="'1920'"
+        [vf_hero_image_height]="'1080'"
+        [vf_hero_image_fetchpriority]="'high'"
+        [vf_hero_image_loading]="'eager'">
         </vf-hero>
       react:
         <VfHero
@@ -80,6 +107,13 @@ variants:
           vf_hero_link_text="Learn more"
           vf_hero_link_href="'JavaScript:Void(0);'"
           vf_hero_image="url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png)"
+          vf_hero_image_mobile_src="https://www.embl.org/files/wp-content/uploads/vf-hero-mobile-360x200.jpg"
+          vf_hero_image_src="https://www.embl.org/files/wp-content/uploads/vf-hero-intense-1920x1080.jpg"
+          vf_hero_image_large_src="https://www.embl.org/files/wp-content/uploads/vf-hero-intense-2560x1440.jpg"
+          vf_hero_image_width="1920"
+          vf_hero_image_height="1080"
+          vf_hero_image_fetchpriority="high"
+          vf_hero_image_loading="eager"
         />
 
   - name: spacing (400)

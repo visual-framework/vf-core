@@ -14,7 +14,8 @@ By default the `vf-hero` makes use of the roundels background image. To keep the
 
 You can bring your own image to use with the vf-hero.
 
-- Size: recommended image size for a typical hero is 3000 by 1000 pixels.
+- Size: Image size should be below 500KB
+- Format: WebP or AVIF provide better image quality at smaller file sizes
 - Positioning: people and other important imagery should be placed on the right side. The image will, by default, vertically centre and align to the right side.
 - Imagery: most of the image should be abstract as to not visually compete with the text in the hero box.
 - Text: do not use raster text as part of the image.
@@ -43,6 +44,15 @@ You can bring your own image to use with the vf-hero.
 | Text         | `vf_hero_text`       | `vf-hero__text`       |
 | Link Text    | `vf_hero_link_text`  | `vf-hero__link`       |
 | Link HREF    | `vf_hero_link_href`  | n/a                   |
+| Image Mobile | `vf_hero_image_mobile_src` | `vf-hero__image` |
+| Image Desktop | `vf_hero_image_src` | `vf-hero__image` |
+| Image Large | `vf_hero_image_large_src` | `vf-hero__image` |
+| Image Width | `vf_hero_image_width` | `vf-hero__image` |
+| Image Height | `vf_hero_image_height` | `vf-hero__image` |
+| Image Priority | `vf_hero_image_fetchpriority` | `vf-hero__image` |
+| Image Loading | `vf_hero_image_loading` | `vf-hero__image` |
+| Image Sizes | `vf_hero_image_sizes` | `vf-hero__image` |
+| Image Alt | `vf_hero_image_alt` | `vf-hero__image` |
 
 ### CSS Custom Properties
 
@@ -82,7 +92,14 @@ This package was generated with Angular version 15.2.0 and has been tested on ap
     [vf_hero_text]="['The Hentze group combines biochemical and <a href=JavaScript:Void(0);>systems–level approaches</a> to investigate the connections between <a href=JavaScript:Void(0);>gene expression</a> and <a href=JavaScript:Void(0);>cell metabolism</a>, and their roles in human disease.']"
     [vf_hero_link_text]="'Learn more'"
     [vf_hero_link_href]="'JavaScript:Void(0);'"
-    [vf_hero_image_size]="'auto 28.5rem'">
+   [vf_hero_image_size]="'auto 28.5rem'"
+   [vf_hero_image_mobile_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-mobile-360x200.jpg'"
+   [vf_hero_image_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-intense-1920x1080.jpg'"
+   [vf_hero_image_large_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-intense-2560x1440.jpg'"
+   [vf_hero_image_width]="'1920'"
+   [vf_hero_image_height]="'1080'"
+   [vf_hero_image_fetchpriority]="'high'"
+   [vf_hero_image_loading]="'eager'">
     </vf-hero>
    ```
 4. add to your styles.scss
@@ -106,7 +123,14 @@ Usage:
   [vf_hero_text]="['The Hentze group combines biochemical and <a href=JavaScript:Void(0);>systems–level approaches</a> to investigate the connections between <a href=JavaScript:Void(0);>gene expression</a> and <a href=JavaScript:Void(0);>cell metabolism</a>, and their roles in human disease.']"
   [vf_hero_link_text]="'Learn more'"
   [vf_hero_link_href]="'JavaScript:Void(0);'"
-  [vf_hero_image_size]="'auto 28.5rem'">
+   [vf_hero_image_size]="'auto 28.5rem'"
+   [vf_hero_image_mobile_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-mobile-360x200.jpg'"
+   [vf_hero_image_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-intense-1920x1080.jpg'"
+   [vf_hero_image_large_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-intense-2560x1440.jpg'"
+   [vf_hero_image_width]="'1920'"
+   [vf_hero_image_height]="'1080'"
+   [vf_hero_image_fetchpriority]="'high'"
+   [vf_hero_image_loading]="'eager'">
   </vf-hero>
 ```
 
@@ -133,6 +157,13 @@ As of version 4.0.0-alpha.2 vf-hero has experimental React support which has bee
       vf_hero_link_text="Learn more"
       vf_hero_link_href="'JavaScript:Void(0);'"
       vf_hero_image_size="auto 28.5rem"
+         vf_hero_image_mobile_src="https://www.embl.org/files/wp-content/uploads/vf-hero-mobile-360x200.jpg"
+         vf_hero_image_src="https://www.embl.org/files/wp-content/uploads/vf-hero-intense-1920x1080.jpg"
+         vf_hero_image_large_src="https://www.embl.org/files/wp-content/uploads/vf-hero-intense-2560x1440.jpg"
+         vf_hero_image_width="1920"
+         vf_hero_image_height="1080"
+         vf_hero_image_fetchpriority="high"
+         vf_hero_image_loading="eager"
     />
    ```
 4. Styling changes

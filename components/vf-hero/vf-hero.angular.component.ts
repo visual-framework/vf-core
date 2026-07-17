@@ -5,6 +5,20 @@ import { Component, Input, OnInit } from "@angular/core";
   selector: "vf-hero",
   template: `
     <section [attr.id] = "id !== undefined ? id : null" [ngClass]="class" [style]="style">
+      <picture *ngIf="hasResponsiveMedia" class="vf-hero__media">
+        <source *ngIf="vf_hero_image_large_src !== ''" media="(min-width: 1600px)" [attr.srcset]="vf_hero_image_large_src">
+        <source *ngIf="vf_hero_image_mobile_src !== ''" media="(max-width: 767px)" [attr.srcset]="vf_hero_image_mobile_src">
+        <img
+          class="vf-hero__image"
+          [attr.src]="vf_hero_image_src !== '' ? vf_hero_image_src : vf_hero_image_mobile_src"
+          [attr.sizes]="vf_hero_image_sizes !== '' ? vf_hero_image_sizes : null"
+          [attr.alt]="vf_hero_image_alt"
+          [attr.width]="vf_hero_image_width !== '' ? vf_hero_image_width : '1920'"
+          [attr.height]="vf_hero_image_height !== '' ? vf_hero_image_height : '1080'"
+          [attr.loading]="vf_hero_image_loading !== '' ? vf_hero_image_loading : 'eager'"
+          [attr.fetchpriority]="vf_hero_image_fetchpriority !== '' ? vf_hero_image_fetchpriority : 'high'"
+          decoding="async">
+      </picture>
       <div class="vf-hero__content | vf-box | vf-stack vf-stack--400">
           <p *ngIf="vf_hero_kicker !== ''" class="vf-hero__kicker" [innerHTML]="vf_hero_kicker"></p>
 
@@ -33,6 +47,15 @@ export class VfHeroAngularComponent implements OnInit {
   /* Initialize values based on input values */
   @Input() vf_hero_image = '';
   @Input() vf_hero_image_size = '';
+  @Input() vf_hero_image_src = '';
+  @Input() vf_hero_image_mobile_src = '';
+  @Input() vf_hero_image_large_src = '';
+  @Input() vf_hero_image_alt = '';
+  @Input() vf_hero_image_width = '';
+  @Input() vf_hero_image_height = '';
+  @Input() vf_hero_image_fetchpriority = '';
+  @Input() vf_hero_image_loading = '';
+  @Input() vf_hero_image_sizes = '';
   @Input() vf_hero_kicker = '';
   @Input() vf_hero_heading = '';
   @Input() vf_hero_heading_href = '';
@@ -47,6 +70,7 @@ export class VfHeroAngularComponent implements OnInit {
 
   class = '';
   style = '';
+  hasResponsiveMedia = false;
   vf_hero_link_innerhtml = '';
 
   ngOnInit(): void {
@@ -62,6 +86,7 @@ export class VfHeroAngularComponent implements OnInit {
     /* Initialize/Reset the values for class and style */
     this.class = 'vf-hero ';
     this.style = '';
+    this.hasResponsiveMedia = false;
 
     if (this.vf_hero_heading_additional !== '') {
       this.vf_hero_kicker = this.vf_hero_heading_additional;
@@ -69,6 +94,8 @@ export class VfHeroAngularComponent implements OnInit {
 
     /* Set values ass per the input */
     this.class += this.spacing !== undefined ? 'vf-hero--' + this.spacing +  ' ' : '';
+    this.hasResponsiveMedia = this.vf_hero_image_src !== '' || this.vf_hero_image_mobile_src !== '' || this.vf_hero_image_large_src !== '';
+    this.class += this.hasResponsiveMedia ? 'vf-hero--has-media ' : '';
     this.class += '| vf-u-fullbleed';
     this.class += this.modifier_class !== '' ? ' ' + this.modifier_class : '';
     this.style += this.vf_hero_image !== '' ? '--vf-hero--bg-image: ' + this.vf_hero_image : '';

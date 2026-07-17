@@ -27,6 +27,28 @@ describe("VfHero", () => {
     });
   });
 
+  test("renders responsive hero media with high-priority image attrs", () => {
+    render(
+      <VfHero
+        vf_hero_image_mobile_src="/hero-mobile-360x200.jpg"
+        vf_hero_image_src="/hero-desktop-1920x1080.jpg"
+        vf_hero_image_large_src="/hero-large-2560x1440.jpg"
+        vf_hero_image_sizes="(max-width: 767px) 100vw, 1920px"
+      />
+    );
+
+    const banner = screen.getByRole("banner");
+    expect(banner).toHaveClass("vf-hero--has-media");
+
+    const img = screen.getByRole("img");
+    expect(img).toHaveAttribute("src", "/hero-desktop-1920x1080.jpg");
+    expect(img).toHaveAttribute("fetchpriority", "high");
+    expect(img).toHaveAttribute("loading", "eager");
+    expect(img).toHaveAttribute("width", "1920");
+    expect(img).toHaveAttribute("height", "1080");
+    expect(img).toHaveAttribute("sizes", "(max-width: 767px) 100vw, 1920px");
+  });
+
   test("renders with heading and link", () => {
     render(
       <VfHero

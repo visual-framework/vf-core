@@ -15,6 +15,8 @@
   background-color: color(green);
   background-image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/roundels.png');
   background-image: var(--vf-hero--bg-image, url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/roundels.png'));
+  overflow: hidden;
+  position: relative;
 
   padding: map-get($vf-spacing-map, vf-spacing--800) 0;
   padding: var(--vf-hero--spacing, #{map-get($vf-spacing-map, vf-spacing--1200)}) 0;
@@ -31,6 +33,24 @@
   background-size: cover;
   background-size: var(--vf-hero--bg-image-size, cover);
   z-index: 1;
+}
+
+.vf-hero--has-media.vf-u-fullbleed::before {
+  content: none;
+}
+
+.vf-hero__media {
+  inset: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.vf-hero__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .vf-hero__content {

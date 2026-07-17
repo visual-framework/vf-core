@@ -3,6 +3,15 @@ import * as i0 from "@angular/core";
 export declare class VfHeroAngularComponent implements OnInit {
     vf_hero_image: string;
     vf_hero_image_size: string;
+    vf_hero_image_src: string;
+    vf_hero_image_mobile_src: string;
+    vf_hero_image_large_src: string;
+    vf_hero_image_alt: string;
+    vf_hero_image_width: string;
+    vf_hero_image_height: string;
+    vf_hero_image_fetchpriority: string;
+    vf_hero_image_loading: string;
+    vf_hero_image_sizes: string;
     vf_hero_kicker: string;
     vf_hero_heading: string;
     vf_hero_heading_href: string;
@@ -16,10 +25,11 @@ export declare class VfHeroAngularComponent implements OnInit {
     vf_hero_heading_additional: string;
     class: string;
     style: string;
+    hasResponsiveMedia: boolean;
     vf_hero_link_innerhtml: string;
     ngOnInit(): void;
     ngOnChanges(): void;
     setValues(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<VfHeroAngularComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<VfHeroAngularComponent, "vf-hero", never, { "vf_hero_image": "vf_hero_image"; "vf_hero_image_size": "vf_hero_image_size"; "vf_hero_kicker": "vf_hero_kicker"; "vf_hero_heading": "vf_hero_heading"; "vf_hero_heading_href": "vf_hero_heading_href"; "vf_hero_subheading": "vf_hero_subheading"; "vf_hero_text": "vf_hero_text"; "vf_hero_link_text": "vf_hero_link_text"; "vf_hero_link_href": "vf_hero_link_href"; "spacing": "spacing"; "id": "id"; "modifier_class": "modifier_class"; "vf_hero_heading_additional": "vf_hero_heading_additional"; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<VfHeroAngularComponent, "vf-hero", never, { "vf_hero_image": "vf_hero_image"; "vf_hero_image_size": "vf_hero_image_size"; "vf_hero_image_src": "vf_hero_image_src"; "vf_hero_image_mobile_src": "vf_hero_image_mobile_src"; "vf_hero_image_large_src": "vf_hero_image_large_src"; "vf_hero_image_alt": "vf_hero_image_alt"; "vf_hero_image_width": "vf_hero_image_width"; "vf_hero_image_height": "vf_hero_image_height"; "vf_hero_image_fetchpriority": "vf_hero_image_fetchpriority"; "vf_hero_image_loading": "vf_hero_image_loading"; "vf_hero_image_sizes": "vf_hero_image_sizes"; "vf_hero_kicker": "vf_hero_kicker"; "vf_hero_heading": "vf_hero_heading"; "vf_hero_heading_href": "vf_hero_heading_href"; "vf_hero_subheading": "vf_hero_subheading"; "vf_hero_text": "vf_hero_text"; "vf_hero_link_text": "vf_hero_link_text"; "vf_hero_link_href": "vf_hero_link_href"; "spacing": "spacing"; "id": "id"; "modifier_class": "modifier_class"; "vf_hero_heading_additional": "vf_hero_heading_additional"; }, {}, never, never, false, never>;
 }
