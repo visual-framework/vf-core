@@ -14,7 +14,7 @@ This is the default search component that can be used to search your site. When 
 
 ### Mini Search
 
-This is very much a work-in-progress prototype and **not to be used**.
+The mini search variant changes the submit button label from text to an icon, separate from responsive behaviour, helping you make better use of limited space where the search component is displayed. It is best suited to small containers such as filter panels. Although the text label is removed from the visible component, it remains available to screen readers.
 
 ### Search Container
 
