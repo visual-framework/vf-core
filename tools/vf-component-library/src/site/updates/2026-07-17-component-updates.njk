@@ -1,0 +1,90 @@
+---
+title: Rollup release 2.5.29
+subtitle: This release includes Kubernetes changes, Corporate Header & Footer optimisations, Card and Button refinements for React, Pagination enhancements, accessibility updates, documentation improvements.
+date: 2026-07-17 16:30:00
+version: 2.5.29
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+	"heading": "On this page",
+	"classModifier": "on-this-page",
+	"activateJavascript": true,
+	"navigation": [
+		{
+			"text": "Refinements",
+			"navigation_href": "#refinements"
+		},
+		{
+			"text": "Documentation",
+			"navigation_href": "#documentation"
+		}
+	]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("tools/vf-core", "2.2.52", "69b68e2ed00760748afe4d73efb40d4d4f858485") }}
+* Removed: Reference of Slack from the website. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2366)
+
+{{ releaseLinks.notes("tools/vf-component-library", "1.2.20", "71b42028a73d8c8d240ff63ead2dd603c10c0b35") }}
+* Added: New k8s configuration for deployment. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2389)
+
+{{ releaseLinks.notes("vf-componenet-rollup", "1.4.15", "5bef0887b7c2dbddbbfb2b29e7f48570588de10f") }}
+* Optimised the component by removing dependency of old header (with VF 1.4) and footer loading from contenthub. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2333)
+
+{{ releaseLinks.notes("ebi-header-footer", "2.1.4", "5bef0887b7c2dbddbbfb2b29e7f48570588de10f") }}
+* Optimised the component by removing dependency of old header (with VF 1.4) and footer loading from contenthub. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2333)
+
+{{ releaseLinks.notes("vf-footer", "1.2.4", "5bef0887b7c2dbddbbfb2b29e7f48570588de10f") }}
+* Optimised the component by removing dependency of old header (with VF 1.4) and footer loading from contenthub. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2333)
+* Fixed: Removed extra padding on sites (e.g. LRO site).
+
+{{ releaseLinks.notes("vf-pagination", "1.1.3", "7b66a9981febeb14da757d11265b8d5c1187bca5") }}
+* Changed: Pagination updated as per Intranet and LRO implementation findings. [Tracking issue](https://github.com/visual-framework/vf-core/issues/1977)
+
+{{ releaseLinks.notes("vf-card", "2.7.3", "71a54931b62dfdcd8e583679e7945686d87cc03e") }}
+* Changed: Updated code to remove Nunjucks template dependency and updated documentation for React support using JSX. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2400)
+* Changed: Updated card examples to remove links with `vf-card__link`. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2125)
+
+### Documentation <a href="#documentation" id="documentation"></a>
+
+{{ releaseLinks.notes("vf-search-client-side", "2.0.3", "abfcbb36b4111c894953518f30e101436865832c") }}
+* Updated: Documentation and accessibility fixes for search. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2134)
+
+{{ releaseLinks.notes("vf-search", "3.0.1", "abfcbb36b4111c894953518f30e101436865832c") }}
+* Changed: Documentation updated for mini search. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2134)
+
+{{ releaseLinks.notes("vf-hero", "4.0.7", "0cdc9f3652e46c0666a56835fb0045977c05be5d") }}
+* Changed: Documentation updated. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2392)
+
+{{ releaseLinks.notes("vf-button", "3.0.5", "71a54931b62dfdcd8e583679e7945686d87cc03e") }}
+* Changed: Updated code to remove Nunjucks template dependency and updated documentation for React support using JSX. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2400)
+
+{{ releaseLinks.notes("vf-summary", "1.6.2", "3d787ab2947a046f1ca13aec33aba8cc7c786099") }}
+* Changed: Updated documentation to reflect `vf-box` deprecation and removed has-decorative-image variant as per design feedback. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2139)
+
+{% endmarkdown %}
