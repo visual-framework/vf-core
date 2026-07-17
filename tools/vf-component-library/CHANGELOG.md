@@ -2,6 +2,7 @@
 
 * Added : Added new k8s configuration for deployment [Tracking issue](https://github.com/visual-framework/vf-core/issues/2389)
 * Removed : Removed reference of Slack from the website [Tracking issue](https://github.com/visual-framework/vf-core/issues/2366)
+* Optimised the component by removing dependency of old header (with VF 1.4) and footer loading from contenthub. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2333)
 
 ### 1.2.19
 
