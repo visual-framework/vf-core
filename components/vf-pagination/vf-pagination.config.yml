@@ -18,55 +18,105 @@ variants:
   - name: default
     context:
       pagination__list:
-        - page_number: Previous
-          page_href: 'JavaScript:Void(0);'
+        - page_href: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--jump-back
+        - page_href: 'JavaScript:Void(0);'
           item_modifier: vf-pagination__item--previous-page
         - page_number: 1
           page_href: 'JavaScript:Void(0);'
         - page_number: 2
           page_href: 'JavaScript:Void(0);'
-        - page_number: ...
-        - page_number: 17
+        - page_number: 3
           page_href: 'JavaScript:Void(0);'
-        - page_number: 18
+        - page_number: 4
           item_modifier: vf-pagination__item--is-active
-        - page_number: 19
+        - page_number: 5
           page_href: 'JavaScript:Void(0);'
-        - page_number: ...
-        - page_number: 91
+        - page_href: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--next-page
+        - page_href: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--jump-forward
+
+  - name: default mobile
+    context:
+      pagination__list:
+        - page_href: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--jump-back
+        - page_href: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--previous-page
+        - page_number: 1
           page_href: 'JavaScript:Void(0);'
-        - page_number: 92
+        - page_number: 2
           page_href: 'JavaScript:Void(0);'
-        - page_number: Next
+        - page_number: 3
           page_href: 'JavaScript:Void(0);'
+        - page_href: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--next-page
+        - page_href: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--jump-forward
+
+  - name: default without jump controls
+    context:
+      pagination__list:
+        - page_href: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--previous-page
+        - page_number: 1
+          page_href: 'JavaScript:Void(0);'
+        - page_number: 2
+          page_href: 'JavaScript:Void(0);'
+        - page_number: 3
+          page_href: 'JavaScript:Void(0);'
+        - page_number: 4
+          item_modifier: vf-pagination__item--is-active
+        - page_number: 5
+          page_href: 'JavaScript:Void(0);'
+        - page_number: 6
+          page_href: 'JavaScript:Void(0);'
+        - page_number: 7
+          page_href: 'JavaScript:Void(0);'
+        - page_href: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--next-page
+
+  - name: default mobile without jump controls
+    context:
+      pagination__list:
+        - page_href: 'JavaScript:Void(0);'
+          item_modifier: vf-pagination__item--previous-page
+        - page_number: 1
+          page_href: 'JavaScript:Void(0);'
+        - page_number: 2
+          page_href: 'JavaScript:Void(0);'
+        - page_number: 3
+          page_href: 'JavaScript:Void(0);'
+        - page_number: 4
+          item_modifier: vf-pagination__item--is-active
+        - page_number: 5
+          page_href: 'JavaScript:Void(0);'
+        - page_href: 'JavaScript:Void(0);'
           item_modifier: vf-pagination__item--next-page
 
   - name: First page selected
     context:
       isExample: true
       pagination__list:
-        - page_number: Previous
-          item_modifier: vf-pagination__item--previous-page disabled
         - page_number: 1
           item_modifier: vf-pagination__item--is-active
         - page_number: 2
           item_modifier: vf-pagination__link--visited
           page_href: 'JavaScript:Void(0);'
-        - page_number: ...
-        - page_number: 17
+        - page_number: 3
           page_href: 'JavaScript:Void(0);'
-        - page_number: 18
+        - page_number: 4
           page_href: 'JavaScript:Void(0);'
-        - page_number: 19
+        - page_number: 5
           page_href: 'JavaScript:Void(0);'
-        - page_number: ...
-        - page_number: 91
+        - page_number: 6
           page_href: 'JavaScript:Void(0);'
-        - page_number: 92
+        - page_number: 7
           page_href: 'JavaScript:Void(0);'
-        - page_number: Next
-          page_href: 'JavaScript:Void(0);'
+        - page_href: 'JavaScript:Void(0);'
           item_modifier: vf-pagination__item--next-page
+
   - name: compact
     hidden: true
     status: deprecated

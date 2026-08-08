@@ -13,15 +13,18 @@
 
 .vf-pagination__list {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 0.25rem;
   list-style-type: none;
   padding-left: 0;
 }
 .vf-pagination__item {
-  align-self: baseline;
-  // flex: 1 1 0;
+  align-self: center;
   text-align: center;
-  @include padding--inline(all,map-get($vf-spacing-map, vf-spacing--200));
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .vf-pagination__item--is-active {
@@ -35,14 +38,36 @@
   @include set-type(text-body--3, $custom-margin-bottom: 0);
 
   color: var(--vf-color__text--primary);
-  display: block;
-  padding: 4px 8px;
+  align-items: center;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 400;
+  justify-content: center;
+  line-height: 1.2;
+  padding: 14px;
   text-decoration: none;
 }
 
 .vf-pagination__link {
   @include inline-link;
   color: var(--vf-color__link);
+
+  &[aria-disabled="true"],
+  &[aria-current="page"] {
+    pointer-events: none;
+  }
+
+  &:hover:not([aria-current="page"]),
+  &:focus-visible {
+    background: #f3f3f3;
+    color: #3b6fb6;
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #3b6fb6;
+    outline-offset: 3px;
+  }
 }
 
 .vf-pagination__link--visited, .vf-pagination__link:visited { color: var(--vf-color__link--visited); }
@@ -50,11 +75,31 @@
 .vf-pagination__link--hover,  .vf-pagination__link:hover { color: var(--vf-color__link--hover); }
 
 .vf-pagination__item--jump-back {
-  border-right: 1px solid color(grey--lightest);
+  border-right: none;
 }
 
 .vf-pagination__item--jump-forward {
-  border-left: 1px solid color(grey--lightest);
+  border-left: none;
+}
+
+.vf-pagination__item--is-active {
+  .vf-pagination__label,
+  .vf-pagination__link {
+    color: #1a1c1a;
+  }
+}
+
+.vf-pagination__item--is-disabled {
+  .vf-pagination__label,
+  .vf-pagination__link {
+    display: none;
+  }
+}
+
+.vf-pagination__icon svg {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .disabled {
@@ -67,4 +112,8 @@
   color: var(--vf-color__text--primary);
   cursor: not-allowed;
   pointer-events: all;
+}
+
+.vf-pagination[hidden] {
+  display: none !important;
 }

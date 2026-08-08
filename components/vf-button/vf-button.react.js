@@ -1,39 +1,58 @@
-// vf-button for React
-// See vf-extensions-react for usage guidance
-// We use vanilla JS templates for react for compatibility with create react app
-// ---
-import React from "react";
-import Fragment from "react-dom-fragment";
-// eslint-disable-next-line no-unused-vars
-import VfButtonTemplate from "./vf-button.precompiled.js";  // import templates before the nunjucks env
-import { vfNunjucksEnv } from "@visual-framework/vf-extensions-react/vf-extensions-react.js";
+/*
+ * vf-button react component
+ * See vf-extensions-react for usage guidance
+ *
+ */
 
-// any JS actions needed on component insertion
-class VfButtonCallback extends React.Component {
-  componentDidMount() {
-    // console.log("any JS actions needed");
-  }
+import React from 'react';
+import PropTypes from 'prop-types';
 
-  render() {
-    return React.createElement(React.Fragment, null);
-  }
-}
-
-const VfButton = React.memo(({
-  text, theme
+export const VfButton = ({
+  text,
+  theme,
+  id,
+  style,
+  size,
+  outline = false,
+  override_class = "",
+  ...rest
 }) => {
-  return React.createElement(React.Fragment, null,
-    React.createElement(Fragment, {
-      dangerouslySetInnerHTML: {
-        // our HTML is handled by nunjucks, this should not receive user input
-        __html: vfNunjucksEnv.render("vf-button", {
-          text: text, theme: theme
-        })
-      }
-    }),
-    React.createElement(VfButtonCallback, null)
-  );
-}
-);
+  const classNames = [
+    "vf-button",
+    theme && `vf-button--${theme}`,
+    outline && "vf-button--outline",
+    size && `vf-button--${size}`,
+    style && [style].flat().map(item => `vf-button--${item}`),
+    override_class
+  ]
+    .flat(3)
+    .filter(items => items)
+    .join(" ");
 
-export { VfButton };
+  const attributes = {
+    ...(id && { id })
+  };
+
+  return React.createElement(
+    'button',
+    {
+      className: classNames,
+      ...attributes,
+      ...rest
+    },
+    text
+  );
+};
+
+VfButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  theme: PropTypes.string,
+  id: PropTypes.string,
+  style: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]),
+  size: PropTypes.string,
+  outline: PropTypes.bool,
+  override_class: PropTypes.string
+};

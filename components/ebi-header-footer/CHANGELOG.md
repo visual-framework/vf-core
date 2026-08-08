@@ -1,3 +1,7 @@
+### 2.1.4
+
+* Optimised the component by removing dependency of old header (with VF 1.4) and footer loading from contenthub. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2333)
+
 ### 2.1.3
 
 * Resolve accessbility issues for EBI blackbar header for v1.4 and also fixes overlapping x button for search box.
