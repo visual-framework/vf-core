@@ -1,3 +1,7 @@
+### 2.1.12
+
+* Changed: Updated documentation  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2426)
+
 ### 2.1.11
 
 * Changed: Test cases added for React  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2174)
