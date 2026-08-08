@@ -108,7 +108,7 @@ window.addEventListener("load", function() {
   initVFChatbot(config);
 });
 ```
-where config is the configuration object with different options as described below 
+where config is the configuration object with different options as described below
 
 #### Core Configuration Options
 
@@ -208,18 +208,18 @@ const selectorConfig = {
       // Multi-selection settings
       multiSelect: true,
       maxMultiSelect: 3,
-      
+
       // Search functionality
       showSearch: true,
       showSearchThreshold: 5,
-      
+
       // "All Services" option
       showAllServices: true,
       showAllServicesSelected: true,
-      
+
       // Data source
       routes: "assets/vf-chatbot-selector-services.json",
-      
+
       // UI labels and logo
       placeholder: "Select services",
       title: "Available Services",
@@ -241,7 +241,7 @@ Please note that if you want to opt for a single selection option version of the
       "title": "Service 1 title"
     },
     {
-      "id": "service-2", 
+      "id": "service-2",
       "title": "Service 2 title"
     }
   ]
@@ -252,14 +252,14 @@ Please note that if you want to opt for a single selection option version of the
 
 #### Built-in Event Handlers
 
-Chatbot comes with a provision to allow custom event handlers. These handlers can be defined in your code to handle specific actions for different events triggered during interaction with chatbot. 
+Chatbot comes with a provision to allow custom event handlers. These handlers can be defined in your code to handle specific actions for different events triggered during interaction with chatbot.
 Configure custom handlers for chatbot events:
 
 ```javascript
 const config = {
   handlers: {
     on_message_send: "handleMessageSend",
-    on_response_receive: "handleResponseReceive", 
+    on_response_receive: "handleResponseReceive",
     on_feedback_submit: "handleFeedbackSubmit",
     on_suggestion_click: "handleSuggestionClick",
     on_error: "handleError",
@@ -485,7 +485,7 @@ const config = {
   "response": "Here's the information...",
   "sources": [
     {
-      "title": "Official Documentation", 
+      "title": "Official Documentation",
       "url": "https://docs.example.com",
       "description": "Complete guide to the platform"
     }
@@ -517,12 +517,62 @@ const config = {
       "action_url": "https://example.com/tutorial"
     },
     {
-      "action_text": "Contact Support", 
+      "action_text": "Contact Support",
       "action_url": "mailto:support@example.com"
     }
   ]
 }
 ```
+
+### Angular
+
+This component now has experimental Angular support.
+
+1. Install `yarn add @visual-framework/vf-chatbot @visual-framework/vf-chatbot-standalone`
+2. Import in your app module
+  ```
+  import { VfChatbotAngularModule } from '@visual-framework/vf-chatbot/vf-chatbot.angular';
+
+  @NgModule({
+    imports: [VfChatbotAngularModule, YourOtherModules],
+    ...
+  })
+  ```
+3. JS assets inclusion
+  * Copy required JS files to your Angular `src/assets` folder, keeping these paths:
+    - `src/assets/vf-chatbot-fab/vf-chatbot-fab.js`
+    - `src/assets/vf-chatbot-dialog/vf-chatbot-dialog.js`
+    - `src/assets/vf-chatbot-feedback/vf-chatbot-feedback.js`
+    - `src/assets/vf-chatbot-selector/vf-chatbot-selector.js`
+    - `src/assets/vf-chatbot-sources/vf-chatbot-sources.js`
+    - `src/assets/vf-chatbot-welcome/vf-chatbot-welcome.js`
+    - `src/assets/vf-chatbot/vf-chatbot.js`
+    - `src/assets/vf-chatbot-modal/vf-chatbot-modal.js`
+    - `src/assets/vf-chatbot-standalone/vf-chatbot-standalone.js`
+  * In `angular.json`, ensure the files above are listed in `scripts: []`.
+  * Rerun the project if already running.
+4. Can be used as
+  ```
+  <vf-chatbot [config]="chatbotConfig"></vf-chatbot>
+
+  // component.ts
+  chatbotConfig = {
+    type: 'standalone'
+    // ...other options from the config examples above
+  };
+  ```
+5. Add below to your `styles.scss`
+  ```
+  $vf-font-plex-mono-prefix: '~@visual-framework/vf-font-plex-mono/assets';
+  $vf-font-plex-sans-prefix: '~@visual-framework/vf-font-plex-sans/assets';
+
+  @import '~@visual-framework/vf-sass-starter/index.scss';
+  @import '~@visual-framework/vf-link/vf-link.scss';
+  @import '~@visual-framework/vf-chatbot/vf-chatbot.scss';
+  @import '~@visual-framework/vf-chatbot-modal/index.scss';
+  @import '~@visual-framework/vf-chatbot-standalone/index.scss';
+  ```
+  You should also install [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles.
 
 ### React
 

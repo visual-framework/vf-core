@@ -5,16 +5,18 @@
 import { initVFChatbotFab } from "../vf-chatbot-fab/vf-chatbot-fab.js";
 import { initVFChatbotModal } from "../vf-chatbot-modal/vf-chatbot-modal.js";
 import { initVFChatbotStandalone } from "../vf-chatbot-standalone/vf-chatbot-standalone.js";
+import { createStorageAdapter } from "./vf-chatbot-storage.js";
 // Accessibility helpers
 let previouslyFocusedElement = null;
 let focusTrapHandler = null;
 let escapeHandler = null;
 
 // vf-chatbot
-function VFChatbot(element) {
+function VFChatbot(element, config = {}) {
   this.el = element;
   this.fab = this.el.querySelector("[data-vf-js-chatbot-fab]");
   this.modal = this.el.querySelector("[data-vf-js-chatbot-modal-container]");
+  this.storage = createStorageAdapter(config);
 
   this.init();
 }
@@ -143,7 +145,7 @@ VFChatbot.prototype = {
       });
     }
 
-    sessionStorage.setItem("chatbotModalMinimized", "false");
+    this.storage.setItem("chatbotModalMinimized", "false");
   },
   closeChat: function() {
     this.fab.classList.remove("vf-chatbot-fab--inactive");
@@ -157,7 +159,7 @@ VFChatbot.prototype = {
       previouslyFocusedElement.focus();
     }
 
-    sessionStorage.setItem("chatbotModalMinimized", "true");
+    this.storage.setItem("chatbotModalMinimized", "true");
   }
 };
 
@@ -229,7 +231,7 @@ function initVFChatbot(config = {}) {
         "--vf-chatbot-modal-right-margin",
         `${chatbotBottomMargin[1]}px`
       );
-      new VFChatbot(element);
+      new VFChatbot(element, config);
       initVFChatbotFab();
       modalInstances = modalInstances.concat(initVFChatbotModal(config));
     });

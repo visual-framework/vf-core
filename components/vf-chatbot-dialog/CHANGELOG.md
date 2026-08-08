@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0.0
+
+* Added : Experimental React support for VF Chatbot component [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
 ### 1.0.0-beta.1
 
 * Added : Initial version for modal chatbot variant
