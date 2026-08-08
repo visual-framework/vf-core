@@ -1,3 +1,7 @@
+### 1.0.10
+
+* Fixed: VF-Back to top button used to hide behind the footer  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2385)
+
 ### 1.0.9
 
 * chore : Version bump
