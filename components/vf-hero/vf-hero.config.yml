@@ -16,9 +16,10 @@ context:
   # - mobile: 360x200
   # - desktop: 1920x1080
   # - large/high-res: 2560x1440
-  # vf_hero_image_mobile_src: "https://example.org/hero-mobile-360x200.jpg"
-  # vf_hero_image_src: "https://example.org/hero-desktop-1920x1080.jpg"
-  # vf_hero_image_large_src: "https://example.org/hero-large-2560x1440.jpg"
+  # Example Cloudimage URLs:
+  # vf_hero_image_mobile_src: "https://acxngcvroo.cloudimg.io/v7/https://example.org/hero.jpg?width=360&height=200&func=crop"
+  # vf_hero_image_src: "https://acxngcvroo.cloudimg.io/v7/https://example.org/hero.jpg?width=1920&height=1080&func=crop"
+  # vf_hero_image_large_src: "https://acxngcvroo.cloudimg.io/v7/https://example.org/hero.jpg?width=2560&height=1440&func=crop"
   # vf_hero_image_width: 1920
   # vf_hero_image_height: 1080
   # vf_hero_image_sizes: "(max-width: 767px) 100vw, 1920px"
@@ -62,7 +63,7 @@ variants:
           vf_hero_link_href="'JavaScript:Void(0);'"
           vf_hero_image_size="auto 28.5rem"
         />
-  - name: default with image
+  - name: default with image (responsive)
     context:
       vf_hero_kicker: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
       vf_hero_heading: About the Hentze group!
@@ -71,10 +72,11 @@ variants:
         - The Hentze group combines biochemical and <a href="JavaScript:Void(0);">systems–level approaches</a> to investigate the connections between <a href="JavaScript:Void(0);">gene expression</a> and <a href="JavaScript:Void(0);">cell metabolism</a>, and their roles in human disease.
       vf_hero_link_text: Learn more
       vf_hero_link_href: JavaScript:Void(0);
-      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');
-      vf_hero_image_mobile_src: https://www.embl.org/files/wp-content/uploads/vf-hero-mobile-360x200.jpg
-      vf_hero_image_src: https://www.embl.org/files/wp-content/uploads/vf-hero-intense-1920x1080.jpg
-      vf_hero_image_large_src: https://www.embl.org/files/wp-content/uploads/vf-hero-intense-2560x1440.jpg
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif')
+      vf_hero_image_size: null
+      vf_hero_image_mobile_src: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif?width=360&height=200&func=crop
+      vf_hero_image_src: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif?width=1920&height=1080&func=crop
+      vf_hero_image_large_src: https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif?width=2560&height=1440&func=crop
       vf_hero_image_width: 1920
       vf_hero_image_height: 1080
       vf_hero_image_sizes: '(max-width: 767px) 100vw, 1920px'
@@ -88,10 +90,10 @@ variants:
         [vf_hero_text]="['The Hentze group combines biochemical and <a href=JavaScript:Void(0);>systems–level approaches</a> to investigate the connections between <a href=JavaScript:Void(0);>gene expression</a> and <a href=JavaScript:Void(0);>cell metabolism</a>, and their roles in human disease.']"
         [vf_hero_link_text]="'Learn more'"
         [vf_hero_link_href]="'JavaScript:Void(0);'"
-        [vf_hero_image]="'url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png)'"
-        [vf_hero_image_mobile_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-mobile-360x200.jpg'"
-        [vf_hero_image_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-intense-1920x1080.jpg'"
-        [vf_hero_image_large_src]="'https://www.embl.org/files/wp-content/uploads/vf-hero-intense-2560x1440.jpg'"
+        [vf_hero_image]="'url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif)'"
+        [vf_hero_image_mobile_src]="'https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif?width=360&height=200&func=crop'"
+        [vf_hero_image_src]="'https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif?width=1920&height=1080&func=crop'"
+        [vf_hero_image_large_src]="'https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif?width=2560&height=1440&func=crop'"
         [vf_hero_image_width]="'1920'"
         [vf_hero_image_height]="'1080'"
         [vf_hero_image_fetchpriority]="'high'"
@@ -106,16 +108,47 @@ variants:
           vf_hero_text={["The Hentze group combines biochemical and <a href=#>systems–level approaches</a> to investigate the connections between <a href=#>gene expression</a> and <a href=#>cell metabolism</a>, and their roles in human disease."]}
           vf_hero_link_text="Learn more"
           vf_hero_link_href="'JavaScript:Void(0);'"
-          vf_hero_image="url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png)"
-          vf_hero_image_mobile_src="https://www.embl.org/files/wp-content/uploads/vf-hero-mobile-360x200.jpg"
-          vf_hero_image_src="https://www.embl.org/files/wp-content/uploads/vf-hero-intense-1920x1080.jpg"
-          vf_hero_image_large_src="https://www.embl.org/files/wp-content/uploads/vf-hero-intense-2560x1440.jpg"
+          vf_hero_image="url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif)"
+          vf_hero_image_mobile_src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif?width=360&height=200&func=crop"
+          vf_hero_image_src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif?width=1920&height=1080&func=crop"
+          vf_hero_image_large_src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.avif?width=2560&height=1440&func=crop"
           vf_hero_image_width="1920"
           vf_hero_image_height="1080"
           vf_hero_image_fetchpriority="high"
           vf_hero_image_loading="eager"
         />
-
+  - name: default with image
+    context:
+      vf_hero_kicker: <a href="JavaScript:Void(0);">VF Hamburg</a> | Structural Biology
+      vf_hero_heading: About the Hentze group!
+      vf_hero_subheading: an example of some ancillary text
+      vf_hero_text:
+        - The Hentze group combines biochemical and <a href="JavaScript:Void(0);">systems–level approaches</a> to investigate the connections between <a href="JavaScript:Void(0);">gene expression</a> and <a href="JavaScript:Void(0);">cell metabolism</a>, and their roles in human disease.
+      vf_hero_link_text: Learn more
+      vf_hero_link_href: JavaScript:Void(0);
+      vf_hero_image_size: null
+      vf_hero_image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png')
+      angular:
+        <vf-hero
+        [vf_hero_kicker]="'<a href=JavaScript:Void(0);>VF Hamburg</a> | Structural Biology'"
+        [vf_hero_heading]="'About the Hentze group!'"
+        [vf_hero_subheading]="'an example of some ancillary text'"
+        [vf_hero_text]="['The Hentze group combines biochemical and <a href=JavaScript:Void(0);>systems–level approaches</a> to investigate the connections between <a href=JavaScript:Void(0);>gene expression</a> and <a href=JavaScript:Void(0);>cell metabolism</a>, and their roles in human disease.']"
+        [vf_hero_link_text]="'Learn more'"
+        [vf_hero_link_href]="'JavaScript:Void(0);'"
+        [vf_hero_image]="'url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png)'">
+        </vf-hero>
+      react:
+        <VfHero
+          id="1"
+          vf_hero_kicker="<a href=JavaScript:Void(0);>VF Hamburg</a> | Structural Biology"
+          vf_hero_heading="About the Hentze group!"
+          vf_hero_subheading="an example of some ancillary text"
+          vf_hero_text={["The Hentze group combines biochemical and <a href=#>systems–level approaches</a> to investigate the connections between <a href=#>gene expression</a> and <a href=#>cell metabolism</a>, and their roles in human disease."]}
+          vf_hero_link_text="Learn more"
+          vf_hero_link_href="'JavaScript:Void(0);'"
+          vf_hero_image="url(https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png)"
+        />
   - name: spacing (400)
     context:
       spacing: 400

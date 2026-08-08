@@ -33,7 +33,6 @@ describe("VfHero", () => {
         vf_hero_image_mobile_src="/hero-mobile-360x200.jpg"
         vf_hero_image_src="/hero-desktop-1920x1080.jpg"
         vf_hero_image_large_src="/hero-large-2560x1440.jpg"
-        vf_hero_image_sizes="(max-width: 767px) 100vw, 1920px"
       />
     );
 
@@ -47,6 +46,20 @@ describe("VfHero", () => {
     expect(img).toHaveAttribute("width", "1920");
     expect(img).toHaveAttribute("height", "1080");
     expect(img).toHaveAttribute("sizes", "(max-width: 767px) 100vw, 1920px");
+  });
+
+  test("uses the default sizes hint when none is provided", () => {
+    render(
+      <VfHero
+        vf_hero_image_mobile_src="/hero-mobile-360x200.jpg"
+        vf_hero_image_src="/hero-desktop-1920x1080.jpg"
+      />
+    );
+
+    expect(screen.getByRole("img")).toHaveAttribute(
+      "sizes",
+      "(max-width: 767px) 100vw, 1920px"
+    );
   });
 
   test("renders with heading and link", () => {

@@ -31,6 +31,8 @@ function VfHero({
     !!vf_hero_image_src ||
     !!vf_hero_image_mobile_src ||
     !!vf_hero_image_large_src;
+  const resolvedImageSizes =
+    vf_hero_image_sizes || "(max-width: 767px) 100vw, 1920px";
   const classNames = `vf-hero${
     hasResponsiveMedia ? " vf-hero--has-media" : ""
   } vf-u-fullbleed ${modifier_class || ""}`;
@@ -63,7 +65,7 @@ function VfHero({
           <img
             className="vf-hero__image"
             src={vf_hero_image_src || vf_hero_image_mobile_src}
-            {...(vf_hero_image_sizes && { sizes: vf_hero_image_sizes })}
+            sizes={resolvedImageSizes}
             alt={vf_hero_image_alt || ""}
             width={vf_hero_image_width}
             height={vf_hero_image_height}

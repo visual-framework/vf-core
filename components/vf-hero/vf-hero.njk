@@ -47,7 +47,7 @@
     <img
       class="vf-hero__image"
       src="{{ vf_hero_image_src | default(vf_hero_image_mobile_src, true) }}"
-      {%- if vf_hero_image_sizes %} sizes="{{ vf_hero_image_sizes }}"{% endif -%}
+      sizes="{{ vf_hero_image_sizes | default('(max-width: 767px) 100vw, 1920px', true) }}"
       alt="{{ vf_hero_image_alt | default('', true) }}"
       width="{{ vf_hero_image_width | default('1920', true) }}"
       height="{{ vf_hero_image_height | default('1080', true) }}"

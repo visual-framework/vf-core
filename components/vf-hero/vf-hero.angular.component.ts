@@ -11,7 +11,7 @@ import { Component, Input, OnInit } from "@angular/core";
         <img
           class="vf-hero__image"
           [attr.src]="vf_hero_image_src !== '' ? vf_hero_image_src : vf_hero_image_mobile_src"
-          [attr.sizes]="vf_hero_image_sizes !== '' ? vf_hero_image_sizes : null"
+          [attr.sizes]="vf_hero_image_sizes !== '' ? vf_hero_image_sizes : '(max-width: 767px) 100vw, 1920px'"
           [attr.alt]="vf_hero_image_alt"
           [attr.width]="vf_hero_image_width !== '' ? vf_hero_image_width : '1920'"
           [attr.height]="vf_hero_image_height !== '' ? vf_hero_image_height : '1080'"
