@@ -1,5 +1,9 @@
 ### 2.2.52
 
+* Fix : Fixed the issue for the 'vf-core-components' folder being added for component assets [Tracking issue](https://github.com/visual-framework/vf-core/issues/2447)
+
+### 2.2.52
+
 * Removed : Removed reference of Slack from the website [Tracking issue](https://github.com/visual-framework/vf-core/issues/2366)
 
 ### 2.2.51

@@ -209,12 +209,29 @@ const Transform  = _toesmTemp1.Transform;
   // Sass Lint
   // For stylelint config rules see .stylelinrc
   const vfScssLintPaths = [componentPath+"/**/embl-*.scss", componentPath+"/**/vf-*.scss", "!"+componentPath+"/**/index.scss", "!assets/**/*.scss", "!"+componentPath+"/vf-design-tokens/dist/**/*.scss"];
+
+  function vfStylelintFormatter(results) {
+    let output = "";
+    results.forEach(function(result) {
+      if (!result.warnings || result.warnings.length === 0) {
+        return;
+      }
+
+      output += result.source + "\n";
+      result.warnings.forEach(function(warning) {
+        output += "  " + warning.line + ":" + warning.column + " " + warning.severity + " " + warning.text + "\n";
+      });
+    });
+
+    return output;
+  }
+
   gulp.task("vf-lint:scss-soft-fail", function() {
     return gulp
       .src(vfScssLintPaths)
       .pipe(gulpStylelint({
         failAfterError: false,
-        reporters: [{formatter: "string", console: false}]
+        reporters: [{formatter: vfStylelintFormatter, console: false}]
       }));
   });
   gulp.task("vf-lint:scss-hard-fail", function() {
@@ -222,7 +239,7 @@ const Transform  = _toesmTemp1.Transform;
       .src(vfScssLintPaths)
       .pipe(gulpStylelint({
         failAfterError: true,
-        reporters: [{formatter: "string", console: true}]
+        reporters: [{formatter: vfStylelintFormatter, console: true}]
       }));
   });
 
