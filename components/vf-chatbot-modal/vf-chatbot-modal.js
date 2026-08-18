@@ -4,6 +4,7 @@ import { VFChatbotFeedback } from "../vf-chatbot-feedback/vf-chatbot-feedback.js
 import { initVFChatbotSelector } from "../vf-chatbot-selector/vf-chatbot-selector.js";
 import { initVFChatbotWelcome } from "../vf-chatbot-welcome/vf-chatbot-welcome.js";
 import { initVFChatbotDialog } from "../vf-chatbot-dialog/vf-chatbot-dialog.js";
+import { createStorageAdapter } from "../vf-chatbot/vf-chatbot-storage.js";
 
 class VFChatbotModal {
   constructor(element, customConfig = {}) {
@@ -131,11 +132,13 @@ class VFChatbotModal {
         ]
       },
       enable_session_persistence: true,
+      persistence_storage: "sessionStorage", // "sessionStorage" | "localStorage"
       restore_minimized_state: true // If true, restore minimized state after navigation
     };
 
     // Merge configurations: default < data-attribute < custom
     this.config = this.deepMerge(defaultConfig, dataConfig, customConfig);
+    this.storage = createStorageAdapter(this.config);
     console.log("Final merged config:", this.config);
   }
 
@@ -252,7 +255,7 @@ class VFChatbotModal {
     // Load Q&A data if using fallback responses
     this.loadQADataAndPopulateSuggestions();
 
-    // Restore conversation HTML from sessionStorage
+    // Restore conversation HTML from configured browser storage
     const persistedHTML = this.loadConversationHTML();
     if (persistedHTML && this.messagesContainer) {
       this.messagesContainer.innerHTML = persistedHTML;
@@ -283,7 +286,7 @@ class VFChatbotModal {
         "[data-vf-js-chatbot-feedback]"
       );
       const feedbackState = JSON.parse(
-        sessionStorage.getItem("chatbotModalFeedbackState") || "{}"
+        this.getStorageItem("chatbotModalFeedbackState") || "{}"
       );
       feedbackContainers.forEach(container => {
         const messageId = container.dataset.messageId;
@@ -370,7 +373,7 @@ class VFChatbotModal {
       }
 
       const wasMinimized =
-        sessionStorage.getItem("chatbotModalMinimized") === "true";
+        this.getStorageItem("chatbotModalMinimized") === "true";
       if (this.container) {
         if (this.config.restore_minimized_state && !wasMinimized) {
           this.fab.classList.add("vf-chatbot-fab--inactive");
@@ -464,13 +467,13 @@ class VFChatbotModal {
         this.submitFeedbackToAPI(eventData);
       }
 
-      // Update local storage feedback state
+      // Update persisted feedback state
       if (this.config.enable_session_persistence) {
         let feedbackState = JSON.parse(
-          sessionStorage.getItem("chatbotModalFeedbackState") || "{}"
+          this.getStorageItem("chatbotModalFeedbackState") || "{}"
         );
         feedbackState[messageId] = feedbackType; // e.g., "positive" or "negative"
-        sessionStorage.setItem(
+        this.setStorageItem(
           "chatbotModalFeedbackState",
           JSON.stringify(feedbackState)
         );
@@ -643,7 +646,7 @@ class VFChatbotModal {
         this.handleRouteSelection(e.detail);
         // Save selection on change
         if (this.config.enable_session_persistence) {
-          sessionStorage.setItem(
+          this.setStorageItem(
             "vfChatbotSelectorSelection",
             JSON.stringify(e.detail.selectedItems)
           );
@@ -653,7 +656,7 @@ class VFChatbotModal {
       // Restore selection only after routes are loaded/rendered
       this.selectorEl.addEventListener("routesloaded", () => {
         if (this.config.enable_session_persistence) {
-          this.savedSelection = sessionStorage.getItem(
+          this.savedSelection = this.getStorageItem(
             "vfChatbotSelectorSelection"
           );
           if (this.savedSelection) {
@@ -1210,13 +1213,13 @@ class VFChatbotModal {
     if (this.messagesContainer) {
       this.messagesContainer.innerHTML = "";
       if (this.config.enable_session_persistence) {
-        sessionStorage.removeItem("chatbotModalConversationHTML");
-        sessionStorage.removeItem("chatbotModalFeedbackState");
-        sessionStorage.removeItem("chatbotModalMinimized");
+        this.removeStorageItem("chatbotModalConversationHTML");
+        this.removeStorageItem("chatbotModalFeedbackState");
+        this.removeStorageItem("chatbotModalMinimized");
       }
     }
     if (this.savedSelection && this.config.enable_session_persistence) {
-      sessionStorage.removeItem("vfChatbotSelectorSelection");
+      this.removeStorageItem("vfChatbotSelectorSelection");
     }
 
     if (this.welcomeScreen && this.config.features.enable_welcome_suggestions) {
@@ -1228,6 +1231,7 @@ class VFChatbotModal {
 
   updateConfiguration(newConfig) {
     this.config = this.deepMerge(this.config, newConfig);
+    this.storage = createStorageAdapter(this.config);
     this.applyConfigurationToDOM();
     // this.applyTheme();
   }
@@ -1280,15 +1284,27 @@ class VFChatbotModal {
   }
 
   // Helper functions for conversation persistence
+  getStorageItem(key) {
+    return this.storage.getItem(key);
+  }
+
+  setStorageItem(key, value) {
+    this.storage.setItem(key, value);
+  }
+
+  removeStorageItem(key) {
+    this.storage.removeItem(key);
+  }
+
   saveConversationHTML(html) {
     if (this.config.enable_session_persistence) {
-      sessionStorage.setItem("chatbotModalConversationHTML", html);
+      this.setStorageItem("chatbotModalConversationHTML", html);
     }
   }
 
   loadConversationHTML() {
     if (this.config.enable_session_persistence) {
-      return sessionStorage.getItem("chatbotModalConversationHTML") || "";
+      return this.getStorageItem("chatbotModalConversationHTML") || "";
     }
     return "";
   }

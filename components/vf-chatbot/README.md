@@ -22,6 +22,7 @@ The [chatbot standalone](../vf-chatbot-standalone) and [chatbot modal](../vf-cha
 - For in-context support (e.g. help with current page or workflow)
 - Access point is via a floating action button on the page
 - Supports simple tasks such as getting information
+- Supports configurable persistence storage via `persistence_storage` (`sessionStorage` or `localStorage`)
 
 #### Standalone
 
