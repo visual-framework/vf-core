@@ -61,7 +61,7 @@ You can bring your own image to use with the vf-hero.
 
 <br>
 
-For responsive hero delivery, use Cloudimage transformation URLs on the image sources. The recommended pattern is:
+For responsive hero delivery, use <a href="https://docs.cloudimage.io/transformations/image-operations" target="_blank" rel="noopener">Cloudimage transformation</a> URLs on the image sources. The recommended pattern is:
 
 - Mobile image: `width=360&height=200&func=crop`
 - Desktop image: `width=1920&height=1080&func=crop`
@@ -81,7 +81,7 @@ IE 11 will get the background colour and the "roundels" image. Under the approac
 
 ### EMBL usage
 
-For EMBL sites, the `vf-hero` can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`). When you want the hero to be responsive in the initial HTML, prefer the Cloudimage transformation URLs shown above and pass them through the responsive image props instead of relying on the CSS background alone.
+For EMBL sites, the `vf-hero` can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`). When you want the hero to be responsive in the initial HTML, prefer the Cloudimage transformation URLs shown above and pass them through the responsive image props instead of relying on the CSS background alone. <a href="https://docs.cloudimage.io/transformations/image-operations" target="_blank" rel="noopener">Here</a> is more documentation on the available image transformations for Cloudimage API.
 
 ### Angular
 
