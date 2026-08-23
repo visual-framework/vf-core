@@ -1,3 +1,7 @@
+### 1.2.2
+
+* Changed: Updated documentation  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2127)
+
 ### 1.2.1
 
 * Updated status to live - [Tracking issue](https://github.com/visual-framework/vf-core/issues/2170).

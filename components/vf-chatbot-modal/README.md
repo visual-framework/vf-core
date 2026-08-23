@@ -83,7 +83,7 @@ Texts shown in the examples are placeholder content. Please review and update al
 
 ### Adding the Floating Action Button (FAB)
 
-We recommend using only one Floating Action Button (FAB) per screen. If a page already includes a FAB, consider integrating its functionality into the chatbot or prioritising the most important action for the user’s journey on that page. 
+We recommend using only one Floating Action Button (FAB) per screen. If a page already includes a FAB, consider integrating its functionality into the chatbot or prioritising the most important action for the user’s journey on that page.
 
 Place the FAB 32 pixels from the bottom and 32 pixels from the right edge of the screen. This keeps the button in a consistent and expected position across different pages. If there’s a banner on the screen, position the FAB 32 pixels above the top edge of the banner instead. This helps keep the FAB visible and avoids overlap.
 
@@ -118,7 +118,7 @@ window.addEventListener("load", function() {
   initVFChatbot(config);
 });
 ```
-where config is the configuration object with different options as described below 
+where config is the configuration object with different options as described below
 
 #### Core Configuration Options
 
@@ -207,10 +207,16 @@ const config = {
       { id: "poorformat", label: "Poorly formatted" }
     ]
   },
-  enable_session_persistence: true, // If true, the chatbot will remember the conversation and state across page reloads or navigation (using sessionStorage)
+  enable_session_persistence: true, // If true, the chatbot will remember the conversation and state across page reloads or navigation
+  persistence_storage: "sessionStorage", // "sessionStorage" (tab-scoped) or "localStorage" (shared across tabs)
   restore_minimized_state: true // If true, restore minimized state after navigation
 };
 ```
+
+When `enable_session_persistence` is true, you can choose where state is stored:
+
+- `sessionStorage`: keeps chat state only for the current tab/window.
+- `localStorage`: shares chat state across tabs on the same origin.
 
 #### Service Selector Configuration
 
@@ -223,18 +229,18 @@ const selectorConfig = {
       // Multi-selection settings
       multiSelect: true,
       maxMultiSelect: 3,
-      
+
       // Search functionality
       showSearch: true,
       showSearchThreshold: 5,
-      
+
       // "All Services" option
       showAllServices: true,
       showAllServicesSelected: true,
-      
+
       // Data source
       routes: "assets/vf-chatbot-selector-services.json",
-      
+
       // UI labels and logo
       placeholder: "Search",
       title: "Available Services",
@@ -256,7 +262,7 @@ Please note that if you want to opt for a single selection option version of the
       "title": "Model 1 title"
     },
     {
-      "id": "model-2", 
+      "id": "model-2",
       "title": "Model 2 title"
     }
   ]
@@ -267,14 +273,14 @@ Please note that if you want to opt for a single selection option version of the
 
 #### Built-in Event Handlers
 
-Chatbot comes with a provision to allow custom event handlers. These handlers can be defined in your code to handle specific actions for different events triggered during interaction with chatbot. 
+Chatbot comes with a provision to allow custom event handlers. These handlers can be defined in your code to handle specific actions for different events triggered during interaction with chatbot.
 Configure custom handlers for chatbot events:
 
 ```javascript
 const config = {
   handlers: {
     on_message_send: "handleMessageSend",
-    on_response_receive: "handleResponseReceive", 
+    on_response_receive: "handleResponseReceive",
     on_feedback_submit: "handleFeedbackSubmit",
     on_suggestion_click: "handleSuggestionClick",
     on_error: "handleError",
@@ -504,7 +510,7 @@ const config = {
   "response": "Here's the information...",
   "sources": [
     {
-      "title": "Official Documentation", 
+      "title": "Official Documentation",
       "url": "https://docs.example.com",
       "description": "Complete guide to the platform"
     }
@@ -537,12 +543,54 @@ const config = {
       "action_url": "https://example.com/tutorial"
     },
     {
-      "action_text": "Contact Support", 
+      "action_text": "Contact Support",
       "action_url": "mailto:support@example.com"
     }
   ]
 }
 ```
+
+### Angular
+
+This component now has experimental Angular support.
+
+1. Install `yarn add @visual-framework/vf-chatbot @visual-framework/vf-chatbot-modal`
+2. Import in your app module
+  ```
+  import { VfChatbotAngularModule } from '@visual-framework/vf-chatbot/vf-chatbot.angular';
+
+  @NgModule({
+    imports: [VfChatbotAngularModule, YourOtherModules],
+    ...
+  })
+  ```
+3. JS assets inclusion
+  * Copy required JS files to your Angular `src/assets` folder, keeping these paths:
+    - `src/assets/vf-chatbot/vf-chatbot.js`
+    - `src/assets/vf-chatbot-modal/vf-chatbot-modal.js`
+  * In `angular.json`, add these file references in `scripts: []`.
+  * Rerun the project if already running.
+4. Can be used as
+  ```
+  <vf-chatbot [config]="chatbotConfig"></vf-chatbot>
+
+  // component.ts
+  chatbotConfig = {
+    type: 'modal'
+    // ...other options from the config examples above
+  };
+  ```
+5. Add below to your `styles.scss`
+  ```
+  $vf-font-plex-mono-prefix: '~@visual-framework/vf-font-plex-mono/assets';
+  $vf-font-plex-sans-prefix: '~@visual-framework/vf-font-plex-sans/assets';
+
+  @import '~@visual-framework/vf-sass-starter/index.scss';
+  @import '~@visual-framework/vf-link/vf-link.scss';
+  @import '~@visual-framework/vf-chatbot/vf-chatbot.scss';
+  @import '~@visual-framework/vf-chatbot-modal/index.scss';
+  ```
+  You should also install [vf-sass-starter](https://stable.visual-framework.dev/components/vf-sass-starter) for the styles.
 
 ### React
 
