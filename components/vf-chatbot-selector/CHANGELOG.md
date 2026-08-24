@@ -2,7 +2,7 @@
 
 ### 1.0.0
 
-* Added : Experimental React support for VF Chatbot component [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+* Added : Angular support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
 
 ### 1.0.0-beta.3
 
