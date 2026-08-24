@@ -2,7 +2,8 @@
 
 ### 1.0.1
 
-* Added : Experimental React support for VF Chatbot component [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+* Added : Angular support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+* Added : Support for configurable persistence storage via `persistence_storage` (`sessionStorage` or `localStorage`)
 
 ### 1.0.0
 
