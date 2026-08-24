@@ -1,3 +1,7 @@
+### 4.0.8
+
+* Changed: Update vf-hero component for optimised responsive image delivery and performance  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2405)
+
 ### 4.0.7
 
 * Changed: Documentation updated  [Tracking issue](https://github.com/visual-framework/vf-core/issues/2392)

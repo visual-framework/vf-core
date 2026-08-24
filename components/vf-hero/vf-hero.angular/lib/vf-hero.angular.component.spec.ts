@@ -75,4 +75,30 @@ describe('VfHeroAngularComponent', () => {
     expect(linkElement.nativeElement.innerHTML).toContain('Link Text');
     expect(linkElement.nativeElement.getAttribute('href')).toBe('http://example.com');
   });
+
+  it('should render responsive media with high priority defaults', () => {
+    component.vf_hero_image_mobile_src = '/hero-mobile-360x200.jpg';
+    component.vf_hero_image_src = '/hero-desktop-1920x1080.jpg';
+    component.vf_hero_image_large_src = '/hero-large-2560x1440.jpg';
+    fixture.detectChanges();
+
+    expect(component.class).toContain('vf-hero--has-media');
+
+    const imageElement = fixture.debugElement.query(By.css('.vf-hero__image'));
+    expect(imageElement.nativeElement.getAttribute('src')).toBe('/hero-desktop-1920x1080.jpg');
+    expect(imageElement.nativeElement.getAttribute('fetchpriority')).toBe('high');
+    expect(imageElement.nativeElement.getAttribute('loading')).toBe('eager');
+    expect(imageElement.nativeElement.getAttribute('width')).toBe('1920');
+    expect(imageElement.nativeElement.getAttribute('height')).toBe('1080');
+    expect(imageElement.nativeElement.getAttribute('sizes')).toBe('(max-width: 767px) 100vw, 1920px');
+  });
+
+  it('should use the default sizes hint when one is not provided', () => {
+    component.vf_hero_image_mobile_src = '/hero-mobile-360x200.jpg';
+    component.vf_hero_image_src = '/hero-desktop-1920x1080.jpg';
+    fixture.detectChanges();
+
+    const imageElement = fixture.debugElement.query(By.css('.vf-hero__image'));
+    expect(imageElement.nativeElement.getAttribute('sizes')).toBe('(max-width: 767px) 100vw, 1920px');
+  });
 });

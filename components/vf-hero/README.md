@@ -14,6 +14,10 @@ By default the `vf-hero` makes use of the roundels background image. To keep the
 
 You can bring your own image to use with the vf-hero.
 
+- Dimensions - recommended dimensions for the hero image are:
+    - Desktop: 1920 × 1080 px
+    - Mobile: 360 × 200 px
+    - Large / high-res displays: 2560 × 1440 px
 - Size: Image size should be below 500KB
 - Format: WebP or AVIF provide better image quality at smaller file sizes
 - Positioning: people and other important imagery should be placed on the right side. The image will, by default, vertically centre and align to the right side.
@@ -25,15 +29,16 @@ You can bring your own image to use with the vf-hero.
 
 | Content name | Usage                                                                          | `.yml` key           |
 | ------------ | ------------------------------------------------------------------------------ | -------------------- |
-| Heading      | To be used for the heading of the page.                                                                               | `vf_hero_heading`    |
-| Heading HREF | To be used as a 'return to home' link for the micro site. | `vf_hero_heading_href` |
-| Subheading   | Optional content to be used along with the Heading for a terse explainer.                                                                               | `vf_hero_subheading` |
+| Heading      | To be used for the heading of the page.                                        | `vf_hero_heading`    |
+| Heading HREF | To be used as a 'return to home' link for the micro site.                      | `vf_hero_heading_href` |
+| Subheading   | Optional content to be used along with the Heading for a terse explainer.      | `vf_hero_subheading` |
 | Kicker       | Optional content that helps define the context of overall content of the page. | `vf_hero_kicker`     |
-| Text         | Optional content that can help explain the page content in a brief paragraph.                                                                               | `vf_hero_text`       |
-| Link Text    | The text for the hero 'call to action' link. Only works if there is associated Link HREF.                                                                                | `vf_hero_link_text`  |
-| Link HREF    |  The url that the Link Text would be pointing to and opens in the same browser tab. This only works if there is associated Link Text                                                                              | `vf_hero_link_href`  |
-| Spacing      | If added spacing can be any of these values only : 200, 400, 500, 600, 800, 1200, 1600   | 'spacing'
+| Text         | Optional content that can help explain the page content in a brief paragraph.  | `vf_hero_text`       |
+| Link Text    | The text for the hero 'call to action' link. Only works if there is associated Link HREF.  | `vf_hero_link_text`  |
+| Link HREF    |  The url that the Link Text would be pointing to and opens in the same browser tab. This only works if there is associated Link Text | `vf_hero_link_href`  |
+| Spacing      | If added spacing can be any of these values only : 200, 400, 500, 600, 800, 1200, 1600   | 'spacing'  |
 
+<br>
 
 | Content name | `.yml` key           | CSS classname         |
 | ------------ | -------------------- | --------------------- |
@@ -44,6 +49,25 @@ You can bring your own image to use with the vf-hero.
 | Text         | `vf_hero_text`       | `vf-hero__text`       |
 | Link Text    | `vf_hero_link_text`  | `vf-hero__link`       |
 | Link HREF    | `vf_hero_link_href`  | n/a                   |
+| Image Mobile | `vf_hero_image_mobile_src` | `vf-hero__image` |
+| Image Desktop | `vf_hero_image_src` | `vf-hero__image` |
+| Image Large | `vf_hero_image_large_src` | `vf-hero__image` |
+| Image Width | `vf_hero_image_width` | `vf-hero__image` |
+| Image Height | `vf_hero_image_height` | `vf-hero__image` |
+| Image Priority | `vf_hero_image_fetchpriority` | `vf-hero__image` |
+| Image Loading | `vf_hero_image_loading` | `vf-hero__image` |
+| Image Sizes | `vf_hero_image_sizes` | `vf-hero__image` |
+| Image Alt | `vf_hero_image_alt` | `vf-hero__image` |
+
+<br>
+
+For responsive hero delivery, use <a href="https://docs.cloudimage.io/transformations/image-operations" target="_blank" rel="noopener">Cloudimage transformation</a> URLs on the image sources. The recommended pattern is:
+
+- Mobile image: `width=360&height=200&func=crop`
+- Desktop image: `width=1920&height=1080&func=crop`
+- Large/high-res image: `width=2560&height=1440&func=crop`
+
+The initial HTML renders the hero image with `fetchpriority="high"`, `loading="eager"`, and explicit `width` and `height` defaults to help LCP and layout stability.
 
 ### CSS Custom Properties
 
@@ -57,7 +81,7 @@ IE 11 will get the background colour and the "roundels" image. Under the approac
 
 ### EMBL usage
 
-For EMBL sites, the `vf-hero` can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`).
+For EMBL sites, the `vf-hero` can take an image (provided by Design) which should be uploaded to [the files site](https://www.embl.org/files) and applied using the custom property available (`--vf-hero--bg-image`). When you want the hero to be responsive in the initial HTML, prefer the Cloudimage transformation URLs shown above and pass them through the responsive image props instead of relying on the CSS background alone. <a href="https://docs.cloudimage.io/transformations/image-operations" target="_blank" rel="noopener">Here</a> is more documentation on the available image transformations for Cloudimage API.
 
 ### Angular
 
@@ -83,7 +107,14 @@ This package was generated with Angular version 15.2.0 and has been tested on ap
     [vf_hero_text]="['The Hentze group combines biochemical and <a href=JavaScript:Void(0);>systems–level approaches</a> to investigate the connections between <a href=JavaScript:Void(0);>gene expression</a> and <a href=JavaScript:Void(0);>cell metabolism</a>, and their roles in human disease.']"
     [vf_hero_link_text]="'Learn more'"
     [vf_hero_link_href]="'JavaScript:Void(0);'"
-    [vf_hero_image_size]="'auto 28.5rem'">
+    [vf_hero_image_size]="'auto 28.5rem'"
+    [vf_hero_image_mobile_src]="'https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png?width=360&height=200&func=crop'"
+    [vf_hero_image_src]="'https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png?width=1920&height=1080&func=crop'"
+    [vf_hero_image_large_src]="'https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png?width=2560&height=1440&func=crop'"
+    [vf_hero_image_width]="'1920'"
+    [vf_hero_image_height]="'1080'"
+    [vf_hero_image_fetchpriority]="'high'"
+    [vf_hero_image_loading]="'eager'">
     </vf-hero>
    ```
 4. add to your styles.scss
@@ -107,7 +138,14 @@ Usage:
   [vf_hero_text]="['The Hentze group combines biochemical and <a href=JavaScript:Void(0);>systems–level approaches</a> to investigate the connections between <a href=JavaScript:Void(0);>gene expression</a> and <a href=JavaScript:Void(0);>cell metabolism</a>, and their roles in human disease.']"
   [vf_hero_link_text]="'Learn more'"
   [vf_hero_link_href]="'JavaScript:Void(0);'"
-  [vf_hero_image_size]="'auto 28.5rem'">
+  [vf_hero_image_size]="'auto 28.5rem'"
+  [vf_hero_image_mobile_src]="'https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png?width=360&height=200&func=crop'"
+  [vf_hero_image_src]="'https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png?width=1920&height=1080&func=crop'"
+  [vf_hero_image_large_src]="'https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png?width=2560&height=1440&func=crop'"
+  [vf_hero_image_width]="'1920'"
+  [vf_hero_image_height]="'1080'"
+  [vf_hero_image_fetchpriority]="'high'"
+  [vf_hero_image_loading]="'eager'">
   </vf-hero>
 ```
 
@@ -134,6 +172,13 @@ As of version 4.0.0-alpha.2 vf-hero has experimental React support which has bee
       vf_hero_link_text="Learn more"
       vf_hero_link_href="'JavaScript:Void(0);'"
       vf_hero_image_size="auto 28.5rem"
+      vf_hero_image_mobile_src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png?width=360&height=200&func=crop"
+      vf_hero_image_src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png?width=1920&height=1080&func=crop"
+      vf_hero_image_large_src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png?width=2560&height=1440&func=crop"
+      vf_hero_image_width="1920"
+      vf_hero_image_height="1080"
+      vf_hero_image_fetchpriority="high"
+      vf_hero_image_loading="eager"
     />
    ```
 4. Styling changes
