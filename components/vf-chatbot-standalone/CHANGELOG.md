@@ -1,8 +1,12 @@
 # Changelog
 
-### 1.0.0
+### 1.0.1
 
 * Added : Angular support [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
+### 1.0.0
+
+* Version bump
 
 ### 1.0.0-beta.4
 

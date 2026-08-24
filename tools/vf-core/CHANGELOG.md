@@ -1,4 +1,8 @@
-### 2.2.52
+### 2.2.54
+
+* Version bump
+
+### 2.2.53
 
 * Fix : Fixed the issue for the 'vf-core-components' folder being added for component assets [Tracking issue](https://github.com/visual-framework/vf-core/issues/2447)
 
