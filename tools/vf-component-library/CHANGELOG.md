@@ -1,3 +1,7 @@
+### 1.2.22
+
+* Version bump
+
 ### 1.2.21
 
 * Added : Added new k8s configuration for deployment [Tracking issue](https://github.com/visual-framework/vf-core/issues/2389)
