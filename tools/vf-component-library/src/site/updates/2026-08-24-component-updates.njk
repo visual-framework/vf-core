@@ -1,0 +1,102 @@
+---
+title: Rollup release 2.5.30
+subtitle: This release includes Angular support and configurable persistence storage for the Chatbot family of components, a vf-core asset path fix, a Back to top footer fix, optimised responsive image delivery for Hero, and documentation improvements.
+date: 2026-08-24 16:30:00
+version: 2.5.30
+tags:
+  - posts
+  - changelog
+layout: layouts/post.njk
+---
+
+{%- import "component-release-links.njk" as releaseLinks -%}
+
+{% render '@vf-navigation', {
+	"heading": "On this page",
+	"classModifier": "on-this-page",
+	"activateJavascript": true,
+	"navigation": [
+		{
+			"text": "Refinements",
+			"navigation_href": "#refinements"
+		},
+		{
+			"text": "Documentation",
+			"navigation_href": "#documentation"
+		}
+	]
+} %}
+
+{% markdown %}
+
+<article class="vf-box vf-box-theme--primary vf-box--easy">
+<h3 class="vf-box__heading">
+This releases {{version}} to the CDN
+</h3>
+<div class="vf-box__text">
+
+[`https://assets.emblstatic.net/vf/v{{version}}/css/styles.css`](https://assets.emblstatic.net/vf/v{{version}}/css/styles.css) <br/>
+[`https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js`](https://assets.emblstatic.net/vf/v{{version}}/scripts/scripts.js)
+
+As a reminder, the rollup CSS and JS are compilations of many independently versioned components and is likely to contain changes that may disrupt the look of your site. We advise testing. Even better is to build your own CSS rollup from the npm sources, [you can find a guide here]({{ '/building' | url }}).
+
+{#- don't forget to add the latest version to /tools/vf-component-library/src/site/_data/siteConfig.js -#}
+
+</div>
+</article><br/>
+
+### Refinements <a href="#refinements" id="refinements"></a>
+
+{{ releaseLinks.notes("tools/vf-core", "2.2.54", "bb984a240aa12ea91df37a2195a3d114c2d488f0") }}
+* Fixed: Fixed the issue for the 'vf-core-components' folder being added for component assets. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2447)
+
+{{ releaseLinks.notes("vf-chatbot", "1.0.1", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+* Added: Support for configurable persistence storage via `persistence_storage` (`sessionStorage` or `localStorage`) for modal.
+
+{{ releaseLinks.notes("vf-chatbot-modal", "1.0.1", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+* Added: Support for configurable persistence storage via `persistence_storage` (`sessionStorage` or `localStorage`).
+
+{{ releaseLinks.notes("vf-chatbot-standalone", "1.0.1", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
+{{ releaseLinks.notes("vf-chatbot-welcome", "1.0.1", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
+{{ releaseLinks.notes("vf-chatbot-action-prompt", "1.0.0", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
+{{ releaseLinks.notes("vf-chatbot-dialog", "1.0.0", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
+{{ releaseLinks.notes("vf-chatbot-fab", "1.0.0", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
+{{ releaseLinks.notes("vf-chatbot-feedback", "1.0.0", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
+{{ releaseLinks.notes("vf-chatbot-prompt", "1.0.0", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
+{{ releaseLinks.notes("vf-chatbot-selector", "1.0.0", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
+{{ releaseLinks.notes("vf-chatbot-sources", "1.0.0", "df11ed6c527e5c056ae25f1d3ccb5632acd7ee07") }}
+* Added: Angular support. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2328)
+
+{{ releaseLinks.notes("vf-back-to-top", "1.0.10", "23ee719b7630a3357204f80caaf0671d0565168e") }}
+* Fixed: Back to top button used to hide behind the footer. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2385)
+
+{{ releaseLinks.notes("vf-hero", "4.0.8", "cd2518b987139f3d27fb83475355f1523b5354b9") }}
+* Changed: Updated vf-hero component for optimised responsive image delivery and performance. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2405)
+
+### Documentation <a href="#documentation" id="documentation"></a>
+
+{{ releaseLinks.notes("vf-details", "1.2.2", "72e08da6bef4e2a552e3bb0edf0365dc1e0073d2") }}
+* Changed: Updated documentation. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2127)
+
+{{ releaseLinks.notes("vf-tabs", "2.1.12", "134ce561c01450d36d2655eeff44db65fffae988") }}
+* Changed: Updated documentation. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2426)
+
+{% endmarkdown %}
