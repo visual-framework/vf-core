@@ -1,4 +1,5 @@
 import svgmin  from "gulp-svgmin";
+import _toesmTemp1  from "stream";
 "use strict";
 
 /**
@@ -7,6 +8,24 @@ import svgmin  from "gulp-svgmin";
  */
 
 export default function(gulp, path, componentPath, buildDestionation) {
+
+  const Transform  = _toesmTemp1.Transform;
+
+  // Keep output layout stable for downstream consumers by removing only a
+  // leading vf-core-components/ segment when present.
+  function stripVfCoreComponentsPrefix() {
+    return new Transform({
+      objectMode: true,
+      transform(file, _, done) {
+        const relativePath = file.relative.replace(/\\/g, "/");
+        if (relativePath.indexOf("vf-core-components/") === 0) {
+          const normalizedPath = relativePath.replace(/^vf-core-components\//, "");
+          file.path = path.resolve(file.base, normalizedPath);
+        }
+        done(null, file);
+      }
+    });
+  }
 
 
   // Utility task to minify SVGs
@@ -22,21 +41,24 @@ export default function(gulp, path, componentPath, buildDestionation) {
   // make each component's `./assets` directory available
   gulp.task("vf-component-assets:directory", function() {
     return gulp
-      .src([componentPath + "/**/assets/**/*"], { encoding: false })
+      .src([componentPath + "/**/assets/**/*"], { encoding: false, base: componentPath })
+      .pipe(stripVfCoreComponentsPrefix())
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 
   // make each component's `./vf-component.css` compiled CSS available
   gulp.task("vf-component-assets:compiled-css", function() {
     return gulp
-      .src([componentPath + "/**/*.css"], { encoding: false })
+      .src([componentPath + "/**/*.css"], { encoding: false, base: componentPath })
+      .pipe(stripVfCoreComponentsPrefix())
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 
   // make each component's `./*.js` files available
   gulp.task("vf-component-assets:js", function() {
     return gulp
-      .src([componentPath + "/**/*.js"], { encoding: false })
+      .src([componentPath + "/**/*.js"], { encoding: false, base: componentPath })
+      .pipe(stripVfCoreComponentsPrefix())
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 
@@ -44,7 +66,8 @@ export default function(gulp, path, componentPath, buildDestionation) {
   // note: you shouldn't use this in combination with the other vf-commponent-assets tasks (redundant)
   gulp.task("vf-component-assets:everything", function() {
     return gulp
-      .src([componentPath + "/**/*.*"], { encoding: false })
+      .src([componentPath + "/**/*.*"], { encoding: false, base: componentPath })
+      .pipe(stripVfCoreComponentsPrefix())
       .pipe(gulp.dest(buildDestionation + "/assets"));
   });
 
