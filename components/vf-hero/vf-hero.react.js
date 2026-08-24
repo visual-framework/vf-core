@@ -14,14 +14,31 @@ function VfHero({
   vf_hero_link_href,
   vf_hero_image,
   vf_hero_image_size,
+  vf_hero_image_src,
+  vf_hero_image_mobile_src,
+  vf_hero_image_large_src,
+  vf_hero_image_alt,
+  vf_hero_image_width = "1920",
+  vf_hero_image_height = "1080",
+  vf_hero_image_fetchpriority = "high",
+  vf_hero_image_loading = "eager",
+  vf_hero_image_sizes,
   vf_hero_kicker,
   vf_hero_heading_additional,
   modifier_class
 }) {
-  const classNames = `vf-hero vf-u-fullbleed ${modifier_class || ""}`;
+  const hasResponsiveMedia =
+    !!vf_hero_image_src ||
+    !!vf_hero_image_mobile_src ||
+    !!vf_hero_image_large_src;
+  const resolvedImageSizes =
+    vf_hero_image_sizes || "(max-width: 767px) 100vw, 1920px";
+  const classNames = `vf-hero${
+    hasResponsiveMedia ? " vf-hero--has-media" : ""
+  } vf-u-fullbleed ${modifier_class || ""}`;
   const styles = {
-    "--vf-hero--bg-image": vf_hero_image,
-    "--vf-hero--bg-image-size": vf_hero_image_size
+    ...(vf_hero_image && { "--vf-hero--bg-image": vf_hero_image }),
+    ...(vf_hero_image_size && { "--vf-hero--bg-image-size": vf_hero_image_size })
   };
   const attributes = {
     ...(id && { id })
@@ -34,6 +51,30 @@ function VfHero({
       className={classNames}
       style={styles}
     >
+      {hasResponsiveMedia ? (
+        <picture className="vf-hero__media">
+          {vf_hero_image_large_src ? (
+            <source
+              media="(min-width: 1600px)"
+              srcSet={vf_hero_image_large_src}
+            />
+          ) : null}
+          {vf_hero_image_mobile_src ? (
+            <source media="(max-width: 767px)" srcSet={vf_hero_image_mobile_src} />
+          ) : null}
+          <img
+            className="vf-hero__image"
+            src={vf_hero_image_src || vf_hero_image_mobile_src}
+            sizes={resolvedImageSizes}
+            alt={vf_hero_image_alt || ""}
+            width={vf_hero_image_width}
+            height={vf_hero_image_height}
+            loading={vf_hero_image_loading}
+            fetchPriority={vf_hero_image_fetchpriority}
+            decoding="async"
+          />
+        </picture>
+      ) : null}
       <div className="vf-hero__content | vf-box | vf-stack vf-stack--400">
         {vf_hero_kicker ? (
           <p className="vf-hero__kicker">{vf_hero_kicker}</p>
@@ -41,7 +82,9 @@ function VfHero({
         {vf_hero_heading ? (
           <h1 className="vf-hero__heading">
             {vf_hero_heading_href ? (
-              <a href={vf_hero_heading_href}>{vf_hero_heading}</a>
+              <a className="vf-hero__heading_link" href={vf_hero_heading_href}>
+                {vf_hero_heading}
+              </a>
             ) : (
               vf_hero_heading
             )}

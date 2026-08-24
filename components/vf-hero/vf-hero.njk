@@ -1,6 +1,16 @@
 {% spaceless %}
 {%- if context %}
   {% set vf_hero_image = context.vf_hero_image %}
+  {% set vf_hero_image_size = context.vf_hero_image_size %}
+  {% set vf_hero_image_src = context.vf_hero_image_src %}
+  {% set vf_hero_image_mobile_src = context.vf_hero_image_mobile_src %}
+  {% set vf_hero_image_large_src = context.vf_hero_image_large_src %}
+  {% set vf_hero_image_alt = context.vf_hero_image_alt %}
+  {% set vf_hero_image_width = context.vf_hero_image_width %}
+  {% set vf_hero_image_height = context.vf_hero_image_height %}
+  {% set vf_hero_image_fetchpriority = context.vf_hero_image_fetchpriority %}
+  {% set vf_hero_image_loading = context.vf_hero_image_loading %}
+  {% set vf_hero_image_sizes = context.vf_hero_image_sizes %}
 
   {% set vf_hero_kicker = context.vf_hero_kicker %}
   {% set vf_hero_heading = context.vf_hero_heading %}
@@ -26,10 +36,26 @@
 {%- endif -%}
 {% endspaceless %}
 <section
-  class="vf-hero{% if spacing %} vf-hero--{{spacing}}{% endif %} | vf-u-fullbleed {%- if modifier_class %} {{ modifier_class }}{% endif %}"
+  class="vf-hero{% if spacing %} vf-hero--{{spacing}}{% endif %}{% if vf_hero_image_src or vf_hero_image_mobile_src or vf_hero_image_large_src %} vf-hero--has-media{% endif %} | vf-u-fullbleed {%- if modifier_class %} {{ modifier_class }}{% endif %}"
   style="{%- if vf_hero_image -%}--vf-hero--bg-image: {{vf_hero_image}}{%- endif -%}
   {%- if vf_hero_image_size %} --vf-hero--bg-image-size: {{vf_hero_image_size}}{%- endif -%}
   ">
+  {%- if vf_hero_image_src or vf_hero_image_mobile_src or vf_hero_image_large_src -%}
+  <picture class="vf-hero__media">
+    {%- if vf_hero_image_large_src %}<source media="(min-width: 1600px)" srcset="{{ vf_hero_image_large_src }}">{% endif -%}
+    {%- if vf_hero_image_mobile_src %}<source media="(max-width: 767px)" srcset="{{ vf_hero_image_mobile_src }}">{% endif -%}
+    <img
+      class="vf-hero__image"
+      src="{{ vf_hero_image_src | default(vf_hero_image_mobile_src, true) }}"
+      sizes="{{ vf_hero_image_sizes | default('(max-width: 767px) 100vw, 1920px', true) }}"
+      alt="{{ vf_hero_image_alt | default('', true) }}"
+      width="{{ vf_hero_image_width | default('1920', true) }}"
+      height="{{ vf_hero_image_height | default('1080', true) }}"
+      loading="{{ vf_hero_image_loading | default('eager', true) }}"
+      fetchpriority="{{ vf_hero_image_fetchpriority | default('high', true) }}"
+      decoding="async">
+  </picture>
+  {%- endif -%}
   <div class="vf-hero__content | vf-box | vf-stack vf-stack--400">
     {%- if vf_hero_kicker -%}
       <p class="vf-hero__kicker">{{- vf_hero_kicker | safe -}}</p>
