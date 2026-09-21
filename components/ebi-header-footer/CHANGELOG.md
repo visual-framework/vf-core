@@ -1,3 +1,7 @@
+### 2.1.5
+
+* Added new link for 'Access and benefit sharing'. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2455)
+
 ### 2.1.4
 
 * Optimised the component by removing dependency of old header (with VF 1.4) and footer loading from contenthub. [Tracking issue](https://github.com/visual-framework/vf-core/issues/2333)
